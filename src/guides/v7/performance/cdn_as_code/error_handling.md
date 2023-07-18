@@ -6,11 +6,11 @@ This guide covers how to handle origin errors at the edge to display custom erro
 
 The examples found in this guide can be found in the [edgio-v7-error-handling-example](https://github.com/edgio-docs/edgio-v7-error-handling-example) repository.
 
-## The `catch` method {/* the-catch-method */}
+## The `catch` Method {/*the-catch-method*/}
 
 EdgeJS provides a [`catch`](/docs/api/core/classes/router_Router.default.html#catch) method that you can use to responses that result in an error. There are two main ways to use this method:
 
-## Displaying a custom error page {/* displaying-a-custom-error-page */}
+## Displaying a Custom Error Page {/*displaying-a-custom-error-page*/}
 
 In this example we catch all responses with a 5xx status code and serve a static error page with a 500 status code:
 
@@ -42,7 +42,7 @@ export default new Router()
   });
 ```
 
-## Retrying the request from a different origin {/* retrying-the-request-from-a-different-origin */}
+## Retrying the Request from a Different Origin {/*retrying-the-request-from-a-different-origin*/}
 
 In this example, we have a legacy origin that we want to use as a fallback if the primary origin returns a 5xx status code. Assuming you have an origin
 called "legacy" configured in your `{{ CONFIG_FILE }}` file, you can use the `set_origin` option to retry the request from the legacy origin:

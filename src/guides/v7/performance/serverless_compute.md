@@ -6,7 +6,7 @@ title: Serverless Compute
 
 {{ PRODUCT }} makes it easy to develop, test, and deploy serverless functions without a JavaScript framework. Simply declare your routes and use the `compute`, or `proxy` with the `transformResponse` option, methods to compute responses based on your own custom logic.
 
-## Availability {/* availability */}
+## Availability {/*availability*/}
 
 {{ PRODUCT }} allows you to cache and deliver your content through any of our points of presence (POPs) around the world. However, your serverless code will be computed within one of the following global regions:
 
@@ -30,7 +30,7 @@ Enterprise customers may choose the region where their workloads will run. Alter
 
 {{ PREREQ.md }}
 
-## Getting Started {/* getting-started */}
+## Getting Started {/*getting-started*/}
 
 To create a new {{ PRODUCT }} project using serverless functions, run:
 
@@ -47,7 +47,7 @@ npx degit https://github.com/edgio-docs/edgio-serverless-example my-serverless-f
 ```
 -->
 
-## Responding to requests {/* responding-to-requests */}
+## Responding to Requests {/*responding-to-requests*/}
 
 Use the [compute](/docs/api/core/classes/router_RouteHelper.default.html#compute) method to generate a synthetic response:
 
@@ -102,7 +102,7 @@ export default new Router().get('/some-route/:someParam', ({compute}) => {
 
 See [RouteHelper](/docs/api/core/classes/router_RouteHelper.default.html) for all of the methods that you can call when responding to a request.
 
-## Modifying a response from the origin {/* modifying-a-response-from-the-origin */}
+## Modifying a Response from the Origin {/*modifying-a-response-from-the-origin*/}
 
 Serverless functions can be used to modify responses from the origin by using the `proxy` method with the `transformResponse` option. First, configure an origin in the `{{ CONFIG_FILE }}` located in the root of your project:
 
@@ -198,7 +198,7 @@ export default new Router().get('/some-route/:someParam', ({proxy}) => {
 
 You can also access any of the request fields documented in [Responding to requests](#responding-to-requests).
 
-## Caching Responses {/* caching-responses */}
+## Caching Responses {/*caching-responses*/}
 
 To improve performance and minimize cost, cache the responses returned by your serverless functions whenever possible:
 
@@ -222,7 +222,7 @@ export default new Router().get('/', ({cache, compute}) => {
 
 See the [cache](/docs/api/core/classes/router_RouteHelper.default.html#cache) method for more options.
 
-## Running your project locally {/* running-your-project-locally */}
+## Running Your Project Locally {/*running-your-project-locally*/}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -232,7 +232,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 
 This will start your project in watch mode. Any changes your make to your source code will instantly take effect without restarting.
 
-## Deploying your project to {{ PRODUCT }} {/* deploying-your-project-to */}
+## Deploying Your Project to {{ Product }} {/*deploying-your-project-to*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
@@ -240,7 +240,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-## Limits {/* limits */}
+## Limits {/*limits*/}
 
 {{ PRODUCT }} Serverless Compute limits are listed below.
 

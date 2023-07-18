@@ -22,7 +22,7 @@ Traffic splitting allows you to distribute a hostname's traffic across multiple 
 
 </Callout>
 
-## Quick Start
+## Quick Start {/*quick-start*/}
 
 Setting up traffic spliting involves performing the following steps:
 

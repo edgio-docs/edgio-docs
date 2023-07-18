@@ -24,7 +24,7 @@ A breakdown of team and private spaces is illustrated below.
 
 ![Types of Spaces](/images/v7/basics/setup-overview.png)
 
-## Managing Teams
+## Managing Teams {/*managing-teams*/}
 
 Team management consists of:
 

@@ -29,7 +29,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
 
 If you don't already have a Spartacus application, you can create one using:
 
-#### 1. Create a new Angular App {/*1-create-a-new-angular-app*/}
+#### 1. Create a New Angular App {/*1-create-a-new-angular-app*/}
 
 **Spartacus 2.x only supports Angular version 9.x**
 **Spartacus 3.x only supports Angular version 10.x**
@@ -60,7 +60,7 @@ The previous command created:
 
 You can now run `npm run build:ssr && npm run serve:ssr` to access your server-side rendered app at `localhost:4000`.
 
-#### 3. Initializing your Project {/*3-initializing-your-project*/}
+#### 3. Initializing Your Project {/*3-initializing-your-project*/}
 
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
@@ -79,7 +79,7 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 - The `sw` folder - Contains the files needed to build the service worker that that provides static asset and API prefetching.
 
-#### 4. Update `{{ CONFIG_FILE }}` {/*4-update-*/}
+#### 4. Update `{{ Config_file }}` {/*4-update-*/}
 
 For an app called `my-{{ PRODUCT_NAME_LOWER }}-spartacus-app` the {{ PRODUCT }} config file created by `{{ FULL_CLI_NAME }} init` will look like so:
 
@@ -99,7 +99,7 @@ module.exports = {
 
 If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project {{ FULL_CLI_NAME }} build`.
 
-#### 5. Update OCC `baseUrl` endpoint {/*5-update-occ-baseurl-endpoint*/}
+#### 5. Update Occ `baseurl` Endpoint {/*5-update-occ-baseurl-endpoint*/}
 
 The `baseUrl` should be updated to use the remote URL when `window` is not defined (i.e., for SSR), and the current host when `window` is defined. For example:
 
@@ -111,9 +111,9 @@ baseUrl: typeof window !== 'undefined'
 
 This value is defined in the `backend` property of the options parameter to `B2cStorefrontModule.withConfig({})` in the `app.module.ts` file, but is best set using environment variables in the `environment.ts` and `environment.prod.ts` files.
 
-## Adding prefetching {/*adding-prefetching*/}
+## Adding Prefetching {/*adding-prefetching*/}
 
-### Upstream request tracking {/*upstream-request-tracking*/}
+### Upstream Request Tracking {/*upstream-request-tracking*/}
 
 Prefetching for a Spartacus app can be enabled by listening to upstream requests made when server-side rendering a specific page. `{{ PACKAGE_NAME }}/prefetch` library will pick up on the upstream requests made by reading the `{{ HEADER_PREFIX }}-upstream-requests` response header. An example scenario:
 
@@ -184,7 +184,7 @@ server.get('*', (req, res) => {
 export default server
 ```
 
-### Fixing response header overflows {/*fixing-response-header-overflows*/}
+### Fixing Response Header Overflows {/*fixing-response-header-overflows*/}
 
 Some CDNs, such as Akamai, impose low limits on the size of response headers. Prefetching works by listing all of the upstream API URLs fetched during SSR in
 a `{{ HEADER_PREFIX }}-upstream-requests` response header. If your application makes many upstream requests for each page during SSR, this header can
@@ -194,7 +194,7 @@ be quite long and exceed the maximum length allowed by your CDN. To mitigate thi
 createRenderCallback(res, { maxHeaderLength: 500 })
 ```
 
-### Service worker {/*service-worker*/}
+### Service Worker {/*service-worker*/}
 
 The build command places the built `service-worker.js` under `dist` so `{{ PACKAGE_NAME }}/angular` will know to static serve the file.
 

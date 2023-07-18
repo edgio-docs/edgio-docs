@@ -7,7 +7,7 @@ detection and mitigation. {{ PRODUCT_SECURITY_ADVANCED_BOT }} is agile, intellig
 all internet traffic, web reconnaissance, automated bots, and legitimate website
 visitors.
 
-## Getting Started  {/*getting-started*/}
+## Getting Started {/*getting-started*/}
 
 Get started with {{ PRODUCT_SECURITY_ADVANCED_BOT }} by requesting that we activate it on your account. After which, we will set it up for you. No additional configuration is required on your part.
 

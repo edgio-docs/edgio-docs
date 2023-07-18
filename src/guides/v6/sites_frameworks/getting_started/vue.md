@@ -25,7 +25,7 @@ Edgio supports both Vue 2 and Vue 3, using both CLIs - `@vue/cli` and `vite`.
 
 {{ PREREQ.md }}
 
-## Create your Vue site {/*create-your-vue-site*/}
+## Create Your Vue Site {/*create-your-vue-site*/}
 
 If you don't have an existing Vue 3 site, you can create one by running:
 
@@ -40,7 +40,7 @@ If you need help with Vue initialization, please follow the [create-vue project'
 {{ PRODUCT }} also supports the older, Webpack-based `@vue/cli` - more on that in the [Vue CLI documentation](https://cli.vuejs.org).
 
 
-## Initializing your Project {/*initializing-your-project*/}
+## Initializing Your Project {/*initializing-your-project*/}
 
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
@@ -130,7 +130,7 @@ You can do a production build of your app and test it locally using:
 
 Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
 
-## Deploy to {{ PRODUCT }} {/*deploy-to*/}
+## Deploy to {{ Product }} {/*deploy-to*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 

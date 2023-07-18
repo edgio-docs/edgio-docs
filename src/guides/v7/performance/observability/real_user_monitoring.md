@@ -6,7 +6,7 @@ Our real user monitoring (RUM) library allows real-time tracking of your website
 
 <Video src="https://player.vimeo.com/video/691615391" />
 
-## What are Core Web Vitals? {/* what-are-core-web-vitals */}
+## What Are Core Web Vitals? {/*what-are-core-web-vitals*/}
 
 In [May of 2021](https://developers.google.com/search/blog/2020/11/timing-for-page-experience), Google began ranking websites based on a
 set of performance metrics called [Core Web Vitals](https://web.dev/vitals/). This change effectively made site performance an SEO ranking factor.
@@ -20,7 +20,7 @@ be tracked via [Google Search Console](https://search.google.com/search-console/
 
 <a id="why-use-layer0-to-track-core-web-vitals"></a>
 
-## Why use {{ PRODUCT_NAME }} to track Core Web Vitals? {/* why-use-to-track-core-web-vitals */}
+## Why Use {{ Product_name }} to Track Core Web Vitals? {/*why-use-to-track-core-web-vitals*/}
 
 The benefits of using {{ PRODUCT }} instead of Google Search Console to track Core Web Vitals are that it allows you to:
 
@@ -29,7 +29,7 @@ The benefits of using {{ PRODUCT }} instead of Google Search Console to track Co
 - Analyze score across a number of dimensions such as country, device, and connection type
 - Identify which pages are most negatively impacting your search ranking.
 
-## Installing Real User Monitoring (RUM) {/* installation */}
+## Installing Real User Monitoring (Rum) {/*installing-real-user-monitoring-rum*/}
 
 Tracking Core Web Vitals on {{ PRODUCT_NAME }} requires adding the `{{ PACKAGE_NAME }}/rum` client library to your application. The {{ PORTAL_LINK }} provides information on how to install this library using a script tag, Google tag manager, npm, and yarn.
 
@@ -48,7 +48,7 @@ Tracking Core Web Vitals on {{ PRODUCT_NAME }} requires adding the `{{ PACKAGE_N
 
     </Callout>
 
-### Script Tag and Google Tag Manager {/* google-tag-manager */}
+### Script Tag and Google Tag Manager {/*script-tag-and-google-tag-manager*/}
 
 Add Core Web Vitals tracking by adding the following code to each page in your application:
 
@@ -83,7 +83,7 @@ Add Core Web Vitals tracking by adding the following code to each page in your a
 
 </SnippetGroup>
 
-### NPM or Yarn {/* npm-or-yarn */}
+### Npm or Yarn {/*npm-or-yarn*/}
 
 Install the Core Web Vitals library by running the following npm or yarn command:
 
@@ -109,7 +109,7 @@ new Metrics({
 }).collect();
 ```
 
-## Tie URLs to Page Templates {/* tie-urls-to-page-templates */}
+## Tie Urls to Page Templates {/*tie-urls-to-page-templates*/}
 
 Tie URLs to page templates by passing an optional `router` parameter to `Metrics`.
 
@@ -209,7 +209,7 @@ For non single page applications (e.g. traditional "multi-page apps"), you can a
 </script>
 ```
 
-## Track Additional Data {/* track-additional-data */}
+## Track Additional Data {/*track-additional-data*/}
 
 You can tie the following data to Core Web Vitals:
 
@@ -239,7 +239,7 @@ new {{ RUM_NS }}.Metrics({
   // This is automatically set for sites that are deployed on {{ PRODUCT_NAME }}.
   splitTestVariant: 'name-of-variant',
 
-## Custom cache TTL {/*custom-cache-ttl*/}
+## Custom Cache Ttl {/*custom-cache-ttl*/}
 
 Information about routes is fetched from `/__edgio__/cache-manifest.js` file and then cached in `localStorage`.
 The default expiration time is set to 1 hour and it's possible to change it by providing `cacheManifestTTL` option.

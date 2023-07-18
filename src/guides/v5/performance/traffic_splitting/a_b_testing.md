@@ -4,7 +4,7 @@ title: A/B Testing
 
 {{ PRODUCT_NAME }} makes it easy to conduct A/B testing without performance penalties by executing splits at the edge through an easy-to-use yet powerful interface. A/B Testing, also known as split testing, is a marketing experiment wherein you split your audience to test a number of variations. This may include canary deploys, blue-green tests, iterative migration off of a legacy website, personalization, and more. A/B and split testing are fundamentally the same, but the context in which they are used may differ by name.
 
-## How A/B Testing Works {/*how-split-testing-works*/}
+## How A/b Testing Works {/*how-ab-testing-works*/}
 
 You can perform two kinds of A/B tests with {{ PRODUCT_NAME }}:
 
@@ -13,7 +13,7 @@ You can perform two kinds of A/B tests with {{ PRODUCT_NAME }}:
 
 The first option is configured in EdgeJS within the project, the second option is configured in the console application.
 
-## A/B Testing Multiple Implementations {/*ab-testing-multiple-implementations*/}
+## A/b Testing Multiple Implementations {/*ab-testing-multiple-implementations*/}
 
 To A/B test multiple implementations of the same site, simply deploy each implementation to a separate [environment](/guides/basics/environments); then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#configuring-the-split-test).
 
@@ -72,7 +72,7 @@ After deploying a router with multiple destinations, all requests will be sent t
 
 Check out the [Traffic Splitting](/guides/performance/traffic_splitting) guide for more detail.
 
-## Configuring the A/B Test {/*configuring-the-split-test*/}
+## Configuring the A/b Test {/*configuring-the-ab-test*/}
 
 Navigate to the environment in which you want to configure the A/B test and click _Edit_:
 
@@ -108,15 +108,15 @@ A/B testing cannot be nested behind other A/B testing. Requests are processed th
 
 A/B testing across vastly different versions of {{ PRODUCT_NAME }} may lead to unexpected results, and it is strongly recommended to keep similar versions. A/B testing from v4 to v3, or even between v4.5 and v4.0 may introduce subtle bugs due to evolving features across versions. Within one major version things should work reliably.
 
-## Ending the A/B Test {/*ending-the-split-test*/}
+## Ending the A/b Test {/*ending-the-ab-test*/}
 
 To end the A/B test, you can either deploy a new version of your app with the router destinations removed, or update the environment to send 100% of traffic to a specific destination.
 
-## Third-Party CDNs {/*third-party-cdns*/}
+## Third-Party Cdns {/*third-party-cdns*/}
 
 If {{ PRODUCT_NAME }} is behind a third-party CDN, it is critical that you update the third party CDN to not cache responses from {{ PRODUCT_NAME }} nor to affect any cookies that begin with `{{ COOKIE_PREFIX }}_`. You can find more details [here](/guides/performance/third_party_cdns#split-testing).
 
-## How Requests are Routed {/*how-requests-are-routed*/}
+## How Requests Are Routed {/*how-requests-are-routed*/}
 
 When an A/B test is active, all users are assigned to a random number between 1 and 100 via a cookie called `{{ COOKIE_PREFIX }}_bucket`. This cookie assignment is done at the edge before the user's first request hits the cache, so there is no performance penalty for new users.
 
@@ -130,17 +130,17 @@ When an A/B test is active, {{ PRODUCT_NAME }} will automatically set a `{{ COOK
 
 The default cache key includes the `{{ COOKIE_PREFIX }}_destination` cookie. As such, you do not need to define additional headers to further the cache key. Each destination is cached independently and as long as someone doesn’t manually change their cookies, they will be served cached content from the correct bucket.
 
-## Security, Redirects and A/B Tests {/*security-redirects-and-split-tests*/}
+## Security, Redirects and A/b Tests {/*security-redirects-and-ab-tests*/}
 
 Each environment defines security rules, redirect rules, and A/B test rules. When traffic is processed by the {{ PRODUCT_NAME }} servers, the `host` header is used to determine which environment rules are executed. Normally when you have multiple environments you access each of them using different `host` headers. E.g. `www.mysite.com` to access a `production` environment and `new.mysite.com` to access the `new` environment. In this scenario each environment can have its own security rules and redirect rules. Requests arriving at `www.mysite.com` execute the rules in the `production` environment. Requests arriving at `new.mysite.com` execute the rules in the `new` environment.
 
 But when A/B testing is enabled, all the traffic arrives using the same `host` header. In this case, only the rules for that environment are executed. Using the above example, when an A/B test is setup on the `production` environment that splits traffic to `production` or `new` all traffic arriving at `www.mysite.com` executes the `production` security, redirect, and A/B testing rules. Even if the result of the A/B test is to use the `new` environment, the security, redirect, and A/B testing rules of the `new` environment are _not_ executed. Traffic arriving at `new.mysite.com` bypasses the A/B test rules on the `production` environment, so it executes the `new` environment's rules normally.
 
-## Metrics and Cache Purging with A/B Tests {/*metrics-and-cache-purging-with-split-tests*/}
+## Metrics and Cache Purging with A/b Tests {/*metrics-and-cache-purging-with-ab-tests*/}
 
 When A/B tests are enabled, all metrics and caching are recorded under the environment that is the result of the A/B test. Using the above example, all traffic arrives on `www.mysite.com` but to see the traffic and caching metrics for requests A/B test to the `new` environment, you need to view those graphs in `new` environment in {{ PORTAL }}. This is also true for cache purging. To purge traffic that was split to the `new` environment you use the cache purge button in the `new` environment in {{ PORTAL }}. If want to purge the entire cache during a split you need to purge both the `production` cache and the `new` cache.
 
-## Compatibility with A/B Testing Tools {/*compatibility-with-ab-testing-tools*/}
+## Compatibility with A/b Testing Tools {/*compatibility-with-ab-testing-tools*/}
 
 {{ PRODUCT_NAME }} A/B testing routes traffic at the edge based on a variety of criteria. It does not identify user cohorts (although it can split on cohorts identified by another tool) or report business metrics about A/B tests since there are many great tools for that. We recommend you utilize an A/B testing tool that supports server-side integration such as Monetate, Optimizely, Adobe Test, Google Experiments, or Visual Web Optimizer. These tools will set a cookie or header that can be used to split traffic using the appropriate criteria described above.
 

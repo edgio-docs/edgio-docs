@@ -4,7 +4,7 @@ title: Fastboot
 
 This guide shows you how to deploy an [Ember Fastboot](https://ember-fastboot.com/) application to {{ PRODUCT }}.
 
-## Example {/* example */}
+## Example {/*example*/}
 
 <ExampleButtons
   title="Fastboot"
@@ -13,7 +13,7 @@ This guide shows you how to deploy an [Ember Fastboot](https://ember-fastboot.co
   deployFromRepo
 />
 
-## Connector {/* connector */}
+## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 
@@ -29,7 +29,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
 
 {{ SIGN_UP }}
 
-## Getting Started {/* getting-started */}
+## Getting Started {/*getting-started*/}
 
 To prepare your Fastboot app for deployment on the {{ PRODUCT }}, run the following command in the root folder of your project:
 
@@ -50,7 +50,7 @@ This will automatically add all of the required dependencies and files to your p
 
 <a id="adding-service-worker"></a>
 
-## Adding {{ PRODUCT_NAME }} Service Worker {/* adding-service-worker */}
+## Adding {{ Product_name }} Service Worker {/*adding-service-worker*/}
 
 To add {{ PRODUCT_NAME }} service worker to your app, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` hook when the app first loads. For example, you can alter
 `app/app.js` as follows:
@@ -78,11 +78,11 @@ if (typeof navigator != 'undefined') {
 }
 ```
 
-## dependencies vs devDependencies {/* dependencies-vs-devdependencies */}
+## Dependencies Vs Devdependencies {/*dependencies-vs-devdependencies*/}
 
 To reduce serverless cold-start times, limit the packages listed in the `dependencies` section of your `package.json` to only those packages used at runtime. The `{{ PACKAGE_NAME }}/fastboot` package must also be included in `dependencies`. Other packages not used at runtime should be included in `devDependencies`. Only those packages listed in `dependencies` are deployed to {{ PRODUCT_NAME }} along with your application code.
 
-## {{ CONFIG_FILE }} {/* config-file */}
+## {{ Config_file }} {/**/} {/**/}
 
 Ember fastboot apps should always have the following in {{ CONFIG_FILE }}:
 
@@ -93,7 +93,7 @@ module.exports = {
 };
 ```
 
-## Running Locally {/* running-locally */}
+## Running Locally {/*running-locally*/}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -101,7 +101,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 {{ FULL_CLI_NAME }} dev
 ```
 
-### Simulate edge caching locally {/* simulate-edge-caching-locally */}
+### Simulate Edge Caching Locally {/*simulate-edge-caching-locally*/}
 
 To simulate edge caching locally, run:
 
@@ -109,7 +109,7 @@ To simulate edge caching locally, run:
 {{ FULL_CLI_NAME }} dev --cache
 ```
 
-## Deploying {/* deploying */}
+## Deploying {/*deploying*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 

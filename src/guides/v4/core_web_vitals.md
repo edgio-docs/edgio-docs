@@ -6,7 +6,7 @@ This guide shows you how to track your website's [Core Web Vitals](https://web.d
 
 <Video src="https://player.vimeo.com/video/691615391"/>
 
-## What are Core Web Vitals? {/*what-are-core-web-vitals*/}
+## What Are Core Web Vitals? {/*what-are-core-web-vitals*/}
 
 In [May of 2021](https://developers.google.com/search/blog/2020/11/timing-for-page-experience), Google began ranking websites based on a
 set of performance metrics called [Core Web Vitals](https://web.dev/vitals/). This change effectively made site performance an SEO ranking factor.
@@ -19,7 +19,7 @@ be tracked via [Google Search Console](https://search.google.com/search-console/
 - It's hard to diagnose Core Web Vitals by page type or URL.
 - It's impossible to A/B test the impact of site optimizations on Core Web Vitals. Note that to effectively A/B test performance optimizations you need both a RUM measurement tool and split testing at the edge, both of which {{ PRODUCT_NAME }} provides.
 
-## Why use {{ PRODUCT_NAME }} to track Core Web Vitals? {/*why-use-layer0-to-track-core-web-vitals*/}
+## Why Use {{ Product_name }} to Track Core Web Vitals? {/*why-use-to-track-core-web-vitals*/}
 
 Instead of relying solely on Google Search Console, we recommend tracking Core Web Vitals using {{ PRODUCT_NAME }} so that you can:
 
@@ -66,7 +66,7 @@ To add Core Web Vitals tracking via a script tag, add the following to each page
 </script>
 ```
 
-### NPM or Yarn {/*npm-or-yarn*/}
+### Npm or Yarn {/*npm-or-yarn*/}
 
 To install the Core Web Vitals library using npm, run:
 
@@ -90,7 +90,7 @@ new Metrics({
 }).collect()
 ```
 
-## Tie URLs to Page Templates {/*tie-urls-to-page-templates*/}
+## Tie Urls to Page Templates {/*tie-urls-to-page-templates*/}
 
 You can tie URLs to page templates by providing an optional `router` parameter to `Metrics`.
 

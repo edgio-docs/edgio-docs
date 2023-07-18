@@ -50,12 +50,12 @@ A Security Application configuration:
 
     </Callout>
 
-## Traffic Identification {/* traffic-identification */}
+## Traffic Identification {/*traffic-identification*/}
 
 Identify the set of traffic to which a Security Application
 configuration's rules will be applied by host, URL path, or both.
 
-### Host {/* host */}
+### Host {/*host*/}
 
 By default, a Security Application configuration applies to all
 hosts. However, you may limit a Security Application
@@ -84,7 +84,7 @@ configuration to one or more hosts. {{ PRODUCT_SECURITY }} compares the entire
 
     [Learn more.](#match-comparison-modes)
 
-### URL Path {/* url-path */}
+### URL Path {/*url-path*/}
 
 By default, a Security Application configuration applies to all
 URL paths. However, you may limit a Security Application
@@ -114,7 +114,7 @@ against the specified value.
 
     [Learn more.](#match-comparison-modes)
 
-### Match Comparison Modes {/* match-comparison-modes */}
+### Match Comparison Modes {/*match-comparison-modes*/}
 
 Your Security Application configuration determines how {{ PRODUCT_SECURITY }}
 compares a request's host or URL path against the specified value. The
@@ -136,7 +136,7 @@ available modes are listed below.
 
 </Callout>
 
-#### Exact Match (Multiple Entries) {/* exact-match-multiple-entries */}
+#### Exact Match (Multiple Entries) {/*exact-match-multiple-entries*/}
 
 {{ PRODUCT_SECURITY }} compares the specified value(s) against the entire host or URL path.
 It will only apply this Security Application configuration to a
@@ -167,7 +167,7 @@ comparison is case-sensitive.
 
 `Batch`
 
-#### Wildcard Match {/* wildcard-match */}
+#### Wildcard Match {/*wildcard-match*/}
 
 {{ PRODUCT_SECURITY }} checks whether the entire host or URL path is a case-sensitive match
 for the wildcard pattern. The supported set of wildcards are listed
@@ -209,7 +209,7 @@ The following sample request will match the above pattern:
 
 `https://cdn.example.com/marketing/mycampaign/image.png`
 
-#### Regex Match {/* regex-match */}
+#### Regex Match {/*regex-match*/}
 
 {{ PRODUCT_SECURITY }} checks whether the entire host or URL path is a match for the
 pattern defined in a regular expression.
@@ -238,7 +238,7 @@ pattern defined in a regular expression.
 
 `Cat#7`
 
-## Threat Detection {/* threat-detection */}
+## Threat Detection {/*threat-detection*/}
 
 Identify threats by adding the following rule(s) to your Security
 Application configuration:
@@ -311,7 +311,7 @@ You may apply an access, custom, or managed rule in one of the following modes:
 
 </Callout>
 
-## Enforcement {/* enforcement */}
+## Enforcement {/*enforcement*/}
 
 You may customize how rules that run in [production mode](#enforcement-mode) will be enforced. Enforcement is triggered when:
 -   A threat is detected when the security policy defined within an access rule, custom rule, or managed rule is violated.
@@ -406,7 +406,7 @@ The available enforcement actions are described below.
 
         **Example:** `http://cdn.mydomain.com/marketing/busy.html`
 
-### Event Variables {/* event-variables */}
+### Event Variables {/*event-variables*/}
 
 A custom response header value or a custom response body may include
 variables that describe the event. These variables are described below.
@@ -425,7 +425,7 @@ response body by enclosing it with double curly braces.
 
 `{{EVENT_ID}}`
 
-## Order of Precedence {/* order-of-precedence */}
+## Order of Precedence {/*order-of-precedence*/}
 
 The recommended practice is to create a Security Application
 configuration that is tuned for each of your applications. This allows
@@ -443,7 +443,7 @@ configuration in the list.
 
 </Callout>
 
-## Security Application Administration {/* security-application-administration */}
+## Security Application Administration {/*security-application-administration*/}
 
 You may create, modify, and delete Security Application
 configurations.

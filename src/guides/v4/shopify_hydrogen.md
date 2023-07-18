@@ -28,7 +28,7 @@ You’ve installed the following dependencies:
 
 {{ SIGN_UP }}
 
-## Install the {{ PRODUCT_NAME }} CLI {/*install-the-layer0-cli*/}
+## Install the {{ Product_name }} CLI {/*install-the-cli*/}
 
 If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 
@@ -36,7 +36,7 @@ If you have not already done so, install the [{{ PRODUCT_NAME }} CLI](cli)
 npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 ```
 
-## Create a new Shopify Hydrogen app {/*create-a-new-shopify-hydrogen-app*/}
+## Create a New Shopify Hydrogen App {/*create-a-new-shopify-hydrogen-app*/}
 
 If you don't already have a Shopify Hydrogen app, create one by running the following:
 
@@ -96,9 +96,9 @@ npm run dev
   });
   ```
 
-## Configuring your Shopify Hydrogen app for {{ PRODUCT_NAME }} {/*configuring-your-shopify-hydrogen-app-for-layer0*/}
+## Configuring Your Shopify Hydrogen App for {{ Product_name }} {/*configuring-your-shopify-hydrogen-app-for*/}
 
-### Initialize your project {/*initialize-your-project*/}
+### Initialize Your Project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ CLI_NAME }} init`:
 
@@ -113,7 +113,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT_NAME }}
 - `routes.js` - A default routes file that sends all requests to Shopify Hydrogen.
 
-### Update {{ PRODUCT_NAME }} Configuration {/*update-layer0-configuration*/}
+### Update {{ Product_name }} Configuration {/*update-configuration*/}
 
 Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 
@@ -125,7 +125,7 @@ module.exports = {
 }
 ```
 
-### Creating {{ PRODUCT }} connector files {/*creating-layer0-connector-files*/}
+### Creating {{ Product }} Connector Files {/*creating-connector-files*/}
 
 - Install `@vercel/nft` for Node.js File Tracing, by the following command:
   ```bash
@@ -204,7 +204,7 @@ module.exports = {
     };
   ```
 
-### Configure the routes {/*configure-the-routes*/}
+### Configure the Routes {/*configure-the-routes*/}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -265,7 +265,7 @@ module.exports = new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Shopify Hydrogen app locally on {{ PRODUCT_NAME }} {/*run-the-shopify-hydrogen-app-locally-on-layer0*/}
+### Run the Shopify Hydrogen App Locally on {{ Product_name }} {/*run-the-shopify-hydrogen-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

@@ -14,7 +14,7 @@ This guide shows you how to deploy an [Ember.js](https://emberjs.com/) applicati
 
 {{ PREREQ.md }}
 
-## Create a new Ember.js app {/*create-a-new-emberjs-app*/}
+## Create a New Ember.JS App {/*create-a-new-emberjs-app*/}
 
 If you don't already have an Ember.js app, create one by running the following:
 
@@ -30,9 +30,9 @@ You can verify your app works by running it locally with:
 ember serve
 ```
 
-## Configuring your Ember.js app for {{ PRODUCT }} {/*configuring-your-emberjs-app-for-edgio*/}
+## Configuring Your Ember.JS App for {{ Product }} {/*configuring-your-emberjs-app-for*/}
 
-### Initialize your project {/*initialize-your-project*/}
+### Initialize Your Project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ CLI_NAME }} init`:
 
@@ -47,7 +47,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Ember.js.
 
-### Configure the routes {/*configure-the-routes*/}
+### Configure the Routes {/*configure-the-routes*/}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -84,7 +84,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Ember.js app locally on the {{ PRODUCT_PLATFORM }} {/*run-the-emberjs-app-locally-on-the-app-platform*/}
+### Run the Ember.JS App Locally on the {{ Product_platform }} {/*run-the-emberjs-app-locally-on-the*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

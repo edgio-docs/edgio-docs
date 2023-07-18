@@ -4,7 +4,7 @@ title: Next.js Commerce
 
 This guide shows you how to deploy the [Next.js Commerce](https://github.com/vercel/commerce) starter kit on {{ PRODUCT }}. Note that Next.js Commerce repo is actively under development. This repo requires an account on the [BigCommerce](https://www.bigcommerce.com/) platform. BigCommerce has a generous free trial which can be used.
 
-## Next.js Commerce Example {/* nextjs-commerce-example */}
+## Next.js Commerce Example {/*nextjs-commerce-example*/}
 
 Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) template running on {{ PRODUCT }}. It uses all of the latest Next.js 10 features including image optimization, localization, and incremental static regeneration with stale-while-revalidate.
 
@@ -20,13 +20,13 @@ Here is an example of the [Next.js Commerce](https://nextjs.org/commerce) templa
 
 {{ PREREQ.md }}
 
-## Deploy the Example {/* deploy-the-example */}
+## Deploy the Example {/*deploy-the-example*/}
 
 Quickly launch an example with no code by clicking the "Deploy to {{ PRODUCT }}" button.
 
 <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nextjs-commerce-example" />
 
-## Deploying the Official Next.js Commerce Repository {/* deploying-the-official-nextjs-commerce-repository */}
+## Deploying the Official Next.js Commerce Repository {/*deploying-the-official-nextjs-commerce-repository*/}
 
 If you wish to deploy to {{ PRODUCT }} from the official Next.js Commerce repository, follow these steps:
 
@@ -86,7 +86,7 @@ Or from within `site` directory
 
 ---
 
-## Learn More {/* learn-more */}
+## Learn More {/*learn-more*/}
 
 <Callout type="info">
 

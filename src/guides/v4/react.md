@@ -16,7 +16,7 @@ Here's an example React app running on {{ PRODUCT }}:
 
 {{ PREREQ.md }}
 
-### New project {/*new-project*/}
+### New Project {/*new-project*/}
 
 This guide will use [Create React App](https://create-react-app.dev/) to generate a project. You can also reference the [example app](https://github.com/layer0-docs/static-react-example) for a complete version of the code.
 
@@ -31,7 +31,7 @@ cd {{ PRODUCT_NAME_LOWER }}-cra
 
 Follow the additional sections below regarding the Create React App setup to finish the project setup.
 
-### Existing project {/*existing-project*/}
+### Existing Project {/*existing-project*/}
 
 Then, in the root folder of your project, run:
 
@@ -46,15 +46,15 @@ This will automatically add all of the required dependencies and files to your p
 - `{{ CONFIG_FILE }}` - The main configuration file for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to React. This file can be updated add caching or proxy URLs to a different origin.
 
-## Configure your project {/*configure-your-project*/}
+## Configure Your Project {/*configure-your-project*/}
 
-### {{ PRODUCT }} Router {/*edgio-router*/}
+### {{ Product }} Router {/*router*/}
 
 Using the `Router` class from `{{ PACKAGE_NAME }}/core`, you'll configure caching for each of your routes, and forward requests to the server module you configured in the previous section using the `proxy` function.
 
 Note: Change `dist` to match whatever your configured output file is.
 
-#### General routes file for React app {/*general-routes-file-for-react-app*/}
+#### General Routes File for React App {/*general-routes-file-for-react-app*/}
 
 ```js
 // routes.js
@@ -262,7 +262,7 @@ app.use((request, response, next) => {
 module.exports = app
 ```
 
-## Bundling your server with Webpack {/*bundling-your-server-with-webpack*/}
+## Bundling Your Server with Webpack {/*bundling-your-server-with-webpack*/}
 
 We recommend bundling your server with [Webpack](https://webpack.js.org/). Your webpack config should use the following settings:
 

@@ -32,7 +32,7 @@ Data storage units are defined below.
 | Total number of prerendered requests                  | 25,000 per deployment |
 | Maximum number of nested requests                     | 3                     | "Nested" means an {{ PRODUCT }} site is the upstream of itself or of another {{ PRODUCT }} site. Exceeding this will result in 538 [status code](/guides/performance/response#status-codes).     |
 
-#### Reserved Headers {/*prohibited-headers*/}
+#### Reserved Headers {/*reserved-headers*/}
 
 The following headers are served for use by {{ PRODUCT }}. You may not modify these request headers. 
 

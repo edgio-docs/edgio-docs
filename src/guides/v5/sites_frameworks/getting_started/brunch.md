@@ -14,7 +14,7 @@ This guide shows you how to deploy a [Brunch](https://brunch.io/) application to
 
 {{ PREREQ.md }}
 
-## Create a new Brunch app {/*create-a-new-brunch-app*/}
+## Create a New Brunch App {/*create-a-new-brunch-app*/}
 
 If you don't already have a Brunch app, create one by running the following:
 
@@ -29,9 +29,9 @@ You can verify your app works by running it locally with:
 npm run start
 ```
 
-## Configuring your Brunch app for {{ PRODUCT }} {/*configuring-your-brunch-app-for*/}
+## Configuring Your Brunch App for {{ Product }} {/*configuring-your-brunch-app-for*/}
 
-### Initialize your project {/*initialize-your-project*/}
+### Initialize Your Project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
@@ -46,7 +46,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Brunch.
 
-### Configure the routes {/*configure-the-routes*/}
+### Configure the Routes {/*configure-the-routes*/}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -66,7 +66,7 @@ export default new Router()
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Brunch app locally on {{ PRODUCT }} {/*run-the-brunch-app-locally-on*/}
+### Run the Brunch App Locally on {{ Product }} {/*run-the-brunch-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

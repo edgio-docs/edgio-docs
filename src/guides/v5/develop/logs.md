@@ -14,7 +14,7 @@ title: Logs
 
 ![build](/images/logs/build.png)
 
-## Serverless Compute Console Logs (Server Logs) {/*server-logs*/}
+## Serverless Compute Console Logs (Server Logs) {/*serverless-compute-console-logs-server-logs*/}
 
 Serverless Compute supports the ability to log console messages. Console messages are defined within your application using methods, such as `console.log()`, `console.warn()`, and `console.error()`. 
 
@@ -41,7 +41,7 @@ You may view these console messages in real time or as log data.
 
 [View log field definitions.](#serverless-compute-console-and-dri-log-fields)
 
-### Deep Request Inspection (DRI) {/*deep-request-inspection*/}
+### Deep Request Inspection (Dri) {/*deep-request-inspection-dri*/}
 
 <Video src="https://www.youtube.com/watch?v=M0KPpX89nO4"/>
 
@@ -71,7 +71,7 @@ One use case for DRI is to analyze traffic during a deployment by tailing the se
 4.  Mark the **Deep Request Inspection is disabled** option.
 5.  From the banner at the top of the page, click **Activate**.
 
-### Serverless Compute Console <!-- and DRI --> Log Fields {/*serverless-compute-console-and-dri-log-fields*/}
+### Serverless Compute Console <!-- And Dri --> Log Fields {/*serverless-compute-console-and-dri-log-fields*/}
 
 <Callout type="info">
 
@@ -199,7 +199,7 @@ An access log file may contain the following fields:
 -   **zip (*String*):** <a id="zip" /> Indicates whether the response was compressed. Returns `1` for compressed responses and `0` for uncompressed responses.
 
 
-## Log Aggregation Tools {/*setting-up-log-aggregation-tools*/}
+## Log Aggregation Tools {/*log-aggregation-tools*/}
 
 {{ PRODUCT }} temporarily stores log data within Amazon S3. Use a log aggregation tool to extract log data from AWS S3. Here are a few popular log aggregation tools:
 

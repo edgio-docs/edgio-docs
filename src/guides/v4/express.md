@@ -13,7 +13,7 @@ npm i -g {{ PACKAGE_NAME }}/cli # yarn global add {{ PACKAGE_NAME }}/cli
 {{ CLI_NAME }} init
 ```
 
-## Running your app locally {/*running-your-app-locally*/}
+## Running Your App Locally {/*running-your-app-locally*/}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -29,7 +29,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ CLI_NAME }} deploy
 ```
 
-## Overriding the default app location {/*overriding-the-default-app-location*/}
+## Overriding the Default App Location {/*overriding-the-default-app-location*/}
 
 When you deploy your Express app to the {{ PRODUCT_PLATFORM }}, the {{ PRODUCT }} CLI bundles your app as a single javascript file so that it can be run as a serverless function. By default, {{ COMPANY_NAME }} looks for your app in the following common locations:
 
@@ -100,7 +100,7 @@ module.exports = {
 };
 ```
 
-## Transpiling and TypeScript support {/*transpiling-and-typescript-support*/}
+## Transpiling and TypeScript Support {/*transpiling-and-typescript-support*/}
 
 {{ PRODUCT }} will automatically transpile JavaScript and TypeScript source code for running on Node.js version 14. If you want to control how
 source files are compiled, you can transpile your app on your own and point your `appPath` config to the transpiled version of your app's main entry point.

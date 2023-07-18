@@ -24,7 +24,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
 
 {{ SIGN_UP }}
 
-## Getting Started {/* getting-started */}
+## Getting Started {/*getting-started*/}
 
 If you don't already have a Frontity app, use the terminal (or command prompt on Windows) to create one using the commands below:
 
@@ -49,7 +49,7 @@ This will automatically add all of the required dependencies and files to your p
 - `sw/service-worker.js` - The source code for your service worker, which enables prefetching when running on {{ PRODUCT_NAME }}.
 - `{{ CONFIG_FILE }}` - Contains configuration options for deploying on {{ PRODUCT_NAME }}.
 
-## Adding the {{ Product_name }} Service Worker {/* adding-the-service-worker */}
+## Adding the {{ Product_name }} Service Worker {/*adding-the-service-worker*/}
 
 To add the {{ PRODUCT_NAME }} service worker to your app, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` in a `useEffect` hook when the app first loads. For example, you can alter
 the Header component in your theme as follows:
@@ -68,7 +68,7 @@ const Header = ({ state }) => {
 }
 ```
 
-## Prefetching Content {/* prefetching-content */}
+## Prefetching Content {/*prefetching-content*/}
 
 To prefetch data into the browser cache using the service worker, use the `Prefetch` component from `{{ PACKAGE_NAME }}/react`. This component prefetches a specific url from the {{ PRODUCT_NAME }} edge when it becomes visible in the viewport. You typically wrap it around links. For example:
 
@@ -87,7 +87,7 @@ function MyComponent() {
 }
 ```
 
-## Running Locally {/* running-locally */}
+## Running Locally {/*running-locally*/}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -95,7 +95,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 {{ CLI_NAME }} dev
 ```
 
-### Simulate Edge Caching Locally {/* simulate-edge-caching-locally */}
+### Simulate Edge Caching Locally {/*simulate-edge-caching-locally*/}
 
 To simulate edge caching locally, run:
 
@@ -103,7 +103,7 @@ To simulate edge caching locally, run:
 {{ CLI_NAME }} dev --cache
 ```
 
-## Deploying {/* deploying */}
+## Deploying {/*deploying*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 

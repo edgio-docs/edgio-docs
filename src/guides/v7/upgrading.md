@@ -25,7 +25,7 @@ Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} to version 7 involves the 
 13. [Configure your Firewall](#configure-your-firewall)
 14. [Update your DNS](#update-your-dns)
 
-## Step 1: Rename Layer0 Components {/* step-1-rename-layer0-components */}
+## Step 1: Rename Layer0 Components {/*step-1-rename-layer0-components*/}
 
 This section only applies to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} 4 and earlier. Skip this step if you are using a later version.
 
@@ -163,7 +163,7 @@ Perform the following steps for each of your properties:
 
     <!-- List additional 4.x considerations here and link them to more info -->
 
-## Step 2: Upgrade to Node.js 16.x {/* step-2-upgrade-to-nodejs-16x */}
+## Step 2: Upgrade to Node.js 16.x {/*step-2-upgrade-to-nodejs-16x*/}
 
 <Callout type="info">
 
@@ -185,11 +185,11 @@ Additionally, check your CI/CD environment for Node.js version settings. If your
 
 </Callout>
 
-## Step 3: Create an {{ Product }} Account {/* step-3-create-an-account */}
+## Step 3: Create an {{ Product }} Account {/*step-3-create-an-account*/}
 
 Although you already have an existing account through `app.layer0.co`, you will need to [sign up for a new account through {{ APP_DOMAIN }}]({{ APP_URL }}/signup) using the same email address, Google account, or Github account.
 
-## Step 4: Create a Team {/* step-4-create-a-team */}
+## Step 4: Create a Team {/*step-4-create-a-team*/}
 
 If the property being migrated belongs to a team space, then you will need to recreate that team within {{ APP_DOMAIN }}.
 
@@ -209,7 +209,7 @@ If you are an enterprise customer, contact your account manager or our [sales de
 
 </Callout>
 
-## Step 5: Create a Property {/* step-5-create-a-property */}
+## Step 5: Create a Property {/*step-5-create-a-property*/}
 
 You now need to create your property within the {{ PORTAL }}.
 
@@ -238,7 +238,7 @@ You now need to create your property within the {{ PORTAL }}.
 
 6.  Click **Create Property**.
 
-## Step 6: Define Environments {/* step-6-define-environments */}
+## Step 6: Define Environments {/*step-6-define-environments*/}
 
 If the property being migrated uses multiple environments in version 6, then you should recreate those environments within your new property.
 
@@ -263,7 +263,7 @@ If the property being migrated uses multiple environments in version 6, then you
 
 5.  Click **Create**.
 
-## Step 7: Upgrade the {{ Product }} CLI {/* step-7-upgrade-the-cli */}
+## Step 7: Upgrade the {{ Product }} CLI {/*step-7-upgrade-the-cli*/}
 
 Install the latest version of our CLI.
 
@@ -285,7 +285,7 @@ yarn global add @{{ FULL_CLI_NAME }}/cli
 
 </SnippetGroup>
 
-## Step 8: Upgrade {{ Product }} Packages {/* step-8-upgrade-packages */}
+## Step 8: Upgrade {{ Product }} Packages {/*step-8-upgrade-packages*/}
 
 Update all {{ PRODUCT }} packages to version 7 using the CLI.
 
@@ -299,7 +299,7 @@ If you are upgrading from version 4 and earlier, then you should have already up
 
 </Callout>
 
-## Step 9: Update Your CDN-As-Code Configuration {/* step-9-update-your-cdn-as-code-configuration */}
+## Step 9: Update Your CDN-As-Code Configuration {/*step-9-update-your-cdn-as-code-configuration*/}
 
 Updating your CDN-as-code configuration to be compatible with version 7 involves:
 
@@ -312,7 +312,7 @@ Updating your CDN-as-code configuration to be compatible with version 7 involves
 - [Device classification](#device-classification)
 - [Response headers](#response-headers)
 
-### {{ Config_file }} Settings {/* settings */}
+### {{ Config_file }} Settings {/*settings*/}
 
 Update each property's {{ CONFIG_FILE }} as indicated below.
 
@@ -456,7 +456,7 @@ Update each property's {{ CONFIG_FILE }} as indicated below.
   },
   ```
 
-### Routes {/* routes */}
+### Routes {/*routes*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 introduces a new JSON syntax for defining the set of features that will be applied to a route.
 
@@ -528,7 +528,7 @@ new Router()
 The limitation is you can only do one of these per request
 -->
 
-### Cache Key Customization {/* cache-key-customization */}
+### Cache Key Customization {/*cache-key-customization*/}
 
 Customize the cache key through `cache_key_rewrite` instead of `CustomCacheKey`. Additionally, there are some subtle differences in our device classification implementation.
 
@@ -539,7 +539,7 @@ Customize the cache key through `cache_key_rewrite` instead of `CustomCacheKey`.
 | addBrowser                     | Use `%{wurfl_cap_mobile_browser}` instead.                                                                                                         |
 | addDevice                      | Use `%{wurfl_vcap_is_smartphone}` and `%{wurfl_cap_is_tablet}` instead. These variables return `true \| false` instead of `0 \| 1`.                |
 
-### Matching Behavior {/* matching-behavior */}
+### Matching Behavior {/*matching-behavior*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and earlier returns an immediate response upon encountering one of the following methods:
 
@@ -577,7 +577,7 @@ new Router()
   .get(‘/’, ({ proxy }) => proxy(‘web’))
 ```
 
-### Redirects {/* redirects */}
+### Redirects {/*redirects*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and earlier allows you to set redirects by uploading a CSV file within the {{ PORTAL }}. This capability is unsupported in version 7. However, you may define redirects within your routes through the `url_redirect` feature.
 
@@ -603,7 +603,7 @@ new Router()
   });
 ```
 
-### Geolocation {/* geolocation */}
+### Geolocation {/*geolocation*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and earlier adds the following geo-location request headers to all requests sent to the origin:
 
@@ -629,7 +629,7 @@ new Router().match('/:path', {
 });
 ```
 
-### Device Classification {/* device-classification */}
+### Device Classification {/*device-classification*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and earlier adds the following device classification headers to all requests sent to the origin:
 
@@ -663,7 +663,7 @@ new Router().match('/:path', {
 });
 ```
 
-### Response Headers {/* response-headers */}
+### Response Headers {/*response-headers*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and adds the following headers with each response:
 
@@ -692,7 +692,7 @@ new Router().match('/:path', {
 
     [Learn more.](/guides/performance/response#requesting-debug-cache-information)
 
-## Step 10: Real User Monitoring (Rum) token {/* step-10-real-user-monitoring-rum-token */}
+## Step 10: Real User Monitoring (Rum) token {/*step-10-real-user-monitoring-rum-token*/}
 
 If you are tracking Core Web Vitals through RUM, then you will need to update the `initEdgioRum` script to use your version 7 token. Your version 7 token is provided on the **Core Web Vitals** page.
 
@@ -710,7 +710,7 @@ If you are tracking Core Web Vitals through RUM, then you will need to update th
   onload="initEdgioRum()"></script>
 ```
 
-## Step 11: Build Your {{ Product }} Properties {/* step-11-build-your-properties */}
+## Step 11: Build Your {{ Product }} Properties {/*step-11-build-your-properties*/}
 
 Build each of your {{ PRODUCT }} properties by running the following command in its root directory:
 
@@ -746,7 +746,7 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 
     Run `{{ FULL_CLI_NAME }} build` to rebuild your {{ PRODUCT }} property.
 
-## Step 12: Deploy to {{ Product }} {/* step-12-deploy-to */}
+## Step 12: Deploy to {{ Product }} {/*step-12-deploy-to*/}
 
 Once you have successfully built your property, run the following command to deploy your property to {{ PRODUCT }}:
 
@@ -775,7 +775,7 @@ Once you have successfully built your property, run the following command to dep
 
 - The above syntax is only required for your first deployment. After which, you may deploy by running: `{{ FULL_CLI_NAME }} deploy`
 
-## Step 13: Configure Your Firewall {/* step-13-configure-your-firewall */}
+## Step 13: Configure Your Firewall {/*step-13-configure-your-firewall*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 uses a different set of IP blocks than previous versions. This means that you need to update your firewall to allow:
 
@@ -786,7 +786,7 @@ View our IP blocks by clicking **Instructions** from the **Origins** page.
 
 [Learn more.](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses)
 
-## Step 14: Update Your DNS {/* step-14-update-your-dns */}
+## Step 14: Update Your DNS {/*step-14-update-your-dns*/}
 
 <Callout type="important">
 
@@ -805,11 +805,11 @@ Although version 6 supports both A and CNAME records, version 7 only supports CN
 
 </Callout>
 
-## Migration Complete {/* migration-complete */}
+## Migration Complete {/*migration-complete*/}
 
 Congratulations on successfully migrating {{ PRODUCT }} to version 7!
 
-## Additional Considerations {/* additional-considerations */}
+## Additional Considerations {/*additional-considerations*/}
 
 Review the following changes and revise your configuration as needed:
 
@@ -819,18 +819,18 @@ Review the following changes and revise your configuration as needed:
 - [GraphQL Caching End-of-Life](#graphql-caching-eol)
 - [Duplicate Query String Parameters](#duplicate-query-string-parameters)
 
-### Cache-Manifest.JS File {/* cache-manifestjs-file */}
+### Cache-Manifest.JS File {/*cache-manifestjs-file*/}
 
 Version 7 no longer generates or uses the `cache-manifest.js` file. If you detect `404 Not Found` requests for `cache-manifest.js` after upgrading to version 7, verify that:
 
 - You have upgraded the `{{ PACKAGE_NAME }}/prefetch` library to version 7.
 - Your application no longer references the `@layer0/prefetch` library.
 
-### JWT Access Control End-Of-Life {/* jwt-access-control-end-of-life */}
+### JWT Access Control End-Of-Life {/*jwt-access-control-end-of-life*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 does not support JWT access control. Previous versions allowed you to configure on a per route basis whether requests would be allowed or denied according to a JWT token.
 
-### Permalink Indexing {/* permalink-indexing */}
+### Permalink Indexing {/*permalink-indexing*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.1+ automatically adds the `x-robots-tag: noindex, nofollow` header all responses being served from edge links and permalinks. This prevents search engines from indexing those links. By default, this header will not be added to any responses served from a custom domain. Prior to version 5.1, the `.noIndexPermalink()` function was an opt-in solution to achieve the same effect.
 
@@ -842,11 +842,11 @@ However, if you want to override this default behavior and allow search engines 
 new Router({indexPermalink: true});
 ```
 
-### GraphQL Caching End-Of-Life {/* graphql-caching-end-of-life */}
+### GraphQL Caching End-Of-Life {/*graphql-caching-end-of-life*/}
 
 {{ PRODUCT }} ended support for caching of GraphQL operations. If your {{ PRODUCT }} router ({{ ROUTES_FILE }}) contains usage of `.graphqlOperation(...)`, you should remove it. Otherwise, your application will fail to build.
 
-### Duplicate Query String Parameters {/* duplicate-query-string-parameters */}
+### Duplicate Query String Parameters {/*duplicate-query-string-parameters*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} will no longer modify the request's query string when it detects a duplicate query string parameter.
 

@@ -6,7 +6,7 @@ title: Jekyll
 
 {{ PREREQ.md }}
 
-## Create your Jekyll site {/*create-your-jekyll-site*/}
+## Create Your Jekyll Site {/*create-your-jekyll-site*/}
 
 If you don't have an existing Jekyll site, you can create one by running:
 
@@ -16,7 +16,7 @@ jekyll new my-jekyll-site
 cd my-jekyll-site
 ```
 
-## Add {{ PRODUCT }} {/*add*/}
+## Add {{ Product }} {/*add*/}
 
 ```bash
 # Next, create a stub package.json:
@@ -26,7 +26,7 @@ npm init
 {{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
-## Update your {{ PRODUCT }} Router {/*update-your-router*/}
+## Update Your {{ Product }} Router {/*update-your-router*/}
 
 Paste the following into `routes.js`:
 

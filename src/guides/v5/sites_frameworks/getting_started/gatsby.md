@@ -81,7 +81,7 @@ const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 module.exports = new Router().use(gatsbyRoutes)
 ```
 
-### Adding routes to a different origin {/*adding-routes-to-a-different-origin*/}
+### Adding Routes to a Different Origin {/*adding-routes-to-a-different-origin*/}
 
 To proxy some URLs to a different origin, you need first to configure that origin in your `{{ CONFIG_FILE }}` file.
 

@@ -12,7 +12,7 @@ Configuring SAML (Security Assertion Markup Language) for your {{ PRODUCT }} acc
 
 {{ PRODUCT }} currently supports SAML SSO setup via a SAML metadata discovery URL. This setup process will combine configuration in your {{ PRODUCT }} team account as well as your SAML provider.
 
-### Enable SAML Single Sign on in {{ PRODUCT }} {/*enable-saml-single-sign-on-in-layer0*/}
+### Enable Saml Single Sign on in {{ Product }} {/*enable-saml-single-sign-on-in*/}
 
 1. Login to your existing [{{ PRODUCT }}]({{ WWW_URL}}) account and change to your team.
 2. Navigate to team settings.
@@ -29,13 +29,13 @@ Configuring SAML (Security Assertion Markup Language) for your {{ PRODUCT }} acc
 
 ![](/images/saml/saml4.jpg)
 
-### Disable other sign-in methods {/*disable-other-sign-in-methods*/}
+### Disable Other Sign-In Methods {/*disable-other-sign-in-methods*/}
 
 Once you have verified the configuration and it appears to be working, then you can disable all other sign-in methods for SSO users.
 
 ![](/images/saml/saml5.jpg)
 
-#### Linking existing team members {/*linking-existing-team-members*/}
+#### Linking Existing Team Members {/*linking-existing-team-members*/}
 
 When you already have team members in your team, they can still login to existing account with any sign-in method. They need to link their account to the SAML provider. Accounts can be linked from their user settings [My Account](https://app.layer0.co/account) page.
 

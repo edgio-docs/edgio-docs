@@ -24,7 +24,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
 
 {{ PREREQ.md }}
 
-## Create a new Sanity Studio app {/*create-a-new-sanity-studio-app*/}
+## Create a New Sanity Studio App {/*create-a-new-sanity-studio-app*/}
 
 The command below will help you set up Sanity Studio:
 
@@ -32,9 +32,9 @@ The command below will help you set up Sanity Studio:
 npm create @sanity/latest
 ```
 
-## Configuring your Sanity Studio app for {{ PRODUCT }} {/*configuring-your-sanity-studio-app-for*/}
+## Configuring Your Sanity Studio App for {{ Product }} {/*configuring-your-sanity-studio-app-for*/}
 
-### Initialize your project {/*initialize-your-project*/}
+### Initialize Your Project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
@@ -77,7 +77,7 @@ You can do a production build of your app and test it locally using:
 
 Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
 
-## Deploy to {{ PRODUCT }} {/*deploy-to*/}
+## Deploy to {{ Product }} {/*deploy-to*/}
 
 Deploy your app to the {{ PRODUCT }} cloud by running the following command in your project's root directory:
 

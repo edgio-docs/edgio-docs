@@ -6,7 +6,7 @@ title: Getting Started with CDN-As-Code ({{ EDGEJS_LABEL}})
 
 {{ PRODUCT }} provides a CDN-as-code platform that allows you to configure CDN behavior using {{ EDGEJS_LABEL }} within a file ({{ ROUTES_FILE }}) stored alongside your code. This allows you to leverage the power of source control for collaboration and to link your CDN configurations with specific versions of your web application.
 
-## Quick Start {/* quick-start */}
+## Quick Start {/*quick-start*/}
 
 Get started with CDN-as-code by either experimenting with:
 
@@ -26,11 +26,11 @@ Get started with CDN-as-code by either experimenting with:
 
 - Your web application or website.
 
-### Create a Property {/* create-a-property */}
+### Create a Property {/*create-a-property*/}
 
 Create a property. If you have already performed this step, proceed to the next step. [Learn more.](/guides/getting_started)
 
-### Initialize Your Property {/* initialize-your-property */}
+### Initialize Your Property {/*initialize-your-property*/}
 
 Use the {{ PRODUCT }} CLI to initialize your property. If you have already performed this step, proceed to the next step.
 
@@ -156,14 +156,14 @@ Use the {{ PRODUCT }} CLI to initialize your property. If you have already perfo
           edg deploy
     ```
 
-### {{ Product }} Files {/* files */}
+### {{ Product }} Files {/*files*/}
 
 During the initialization process, the {{ PRODUCT }} CLI created the following files:
 
 - `{{ CONFIG_FILE }}`: This file contains the configuration for your {{ PRODUCT }} property. You can use this file to configure your property's name, environments, origins, and other settings. [Learn more](/guides/performance/cdn_as_code/edgio_config).
 - {{ ROUTES_FILE }}: This file contains the router rules for your {{ PRODUCT }} property. You can use this file to define how {{ PRODUCT }} will handle requests to your property.
 
-## Config File {/* config-file */}
+## Config File {/*config-file*/}
 
 The `{{ CONFIG_FILE }}` file contains some configurations the router may reference for handling requests along with other components such as [connectors](/guides/sites_frameworks/connectors).
 
@@ -237,7 +237,7 @@ The relevant configuration options generated include the `name` and `origins` pr
 
 [Learn more](/guides/performance/cdn_as_code/edgio_config) about the `{{ CONFIG_FILE }}` file and all the configuration options it supports.
 
-## Routes File {/* routes-file */}
+## Routes File {/*routes-file*/}
 
 The `{{ PACKAGE_NAME }}/core` package provides a JavaScript API for controlling routing and caching from your code base rather than a CDN web portal. Using this _{{ EDGEJS_LABEL }}_ approach allows this vital routing logic to be properly tested, reviewed, and version controlled, just like the rest of your application code.
 
@@ -258,7 +258,7 @@ The routes file contains [Rules](/guides/performance/rules) that:
 - Identifies requests by HTTP method, URL path, query string parameters, cookies, and request headers.
 - Determines how our CDN will handle the above requests. For example, you may configure those requests to be cached, prefetched, passed through without modification, served as static content, and more.
 
-### Default Route Configuration {/* default-route-configuration */}
+### Default Route Configuration {/*default-route-configuration*/}
 
 By default, your {{ ROUTES_FILE }} contains the following configuration:
 
@@ -290,11 +290,11 @@ The above route matches all requests that start with `/api/` and instructs {{ PR
 - Allow prefetched requests to be served from cache for one day.
 - Proxy those requests to your `origin` backend when we cannot serve them from cache.
 
-## Routes {/* routes */}
+## Routes {/*routes*/}
 
 A route identifies a set of requests through any combination of URL path, HTTP method, cookies, request headers, query string parameters and more (see [Conditions](/guides/performance/rules/conditions)). The following routes show various ways for identifying requests.
 
-### Parts of a Route {/* parts-of-a-route */}
+### Parts of a Route {/*parts-of-a-route*/}
 
 Routes define a set of [Rules](/guides/performance/rules) that determine how requests will be handed by {{ PRODUCT }}.
 
@@ -305,7 +305,7 @@ The `.match()` takes two arguments: `.match(criteria, features)`. The [`.match()
 - `criteria` can be a String for a simple path matching, or an Object that defines more specific criteria for matching requests such as HTTP method, headers, cookies, and query string parameters.
 - `features` is an Object that defines how {{ PRODUCT }} will handle the requests that match the criteria, such as caching, redirects, proxying to an origin server, and more.
 
-### Route Criteria {/* route-criteria */}
+### Route Criteria {/*route-criteria*/}
 
 Below are some simple examples of how to match requests using the `.match()` method.
 
@@ -342,7 +342,7 @@ Below are some simple examples of how to match requests using the `.match()` met
 
 Learn more advanced syntax with [Route Criteria and Conditions](/guides/performance/cdn_as_code/route_criteria).
 
-### Route Features {/* route-features */}
+### Route Features {/*route-features*/}
 
 Once you have identified a set of requests, you need to define how {{ PRODUCT }} will handle those requests. The following routes show various ways in which requests can be processed.
 
@@ -392,7 +392,7 @@ router.get('/old/path', {
 
 Learn more advanced syntax with [Route Features](/guides/performance/cdn_as_code/route_features).
 
-### Defining Routes {/* defining-routes */}
+### Defining Routes {/*defining-routes*/}
 
 Routes are defined by calling a method on the `Router` class based on the HTTP method you intend to match. For example, you can handle a `GET` request a specific path or pattern using the `Router.get(...)` method. The router contains methods for all the supported HTTP methods. The following methods are available:
 
@@ -407,7 +407,7 @@ Routes are defined by calling a method on the `Router` class based on the HTTP m
 
 A full list of supported functions can be found in the [Router API documentation](/docs/api/core/classes/router_Router.default.html).
 
-## Route Execution {/* route-execution */}
+## Route Execution {/*route-execution*/}
 
 When {{ PRODUCT_NAME }} receives a request, it executes **each route that matches the request** in the order in which they are declared.
 
@@ -427,14 +427,14 @@ export default new Router()
   });
 ```
 
-## Testing Locally {/* testing-locally */}
+## Testing Locally {/*testing-locally*/}
 
 You may run {{ PRODUCT }} in local development mode to preview your website on your local machine prior to deployment. Local development mode allows for rapid development by letting you to quickly test changes prior to deployment.
 
 1.  From the command line or terminal, type `{{ CLI_CMD(dev) }}`.
 2.  Preview your website by loading `https://127.0.0.1:3000` from within your preferred web browser.
 
-## Deploying Your Property {/* deploying-your-property */}
+## Deploying Your Property {/*deploying-your-property*/}
 
 Evaluate site performance and QA functionality by deploying your property to {{ PRODUCT }}. Run the following command from your property's root directory:
 
@@ -446,7 +446,7 @@ Assess performance and caching behavior from the {{ PORTAL_LINK }}. Fine-tune yo
 
 [Learn more.](/guides/basics/hostnames_and_origins#serving-traffic-through)
 
-## Examples {/* examples */}
+## Examples {/*examples*/}
 
 Use our sample website to gain hands-on experience on how to set up {{ PRODUCT }} {{ PRODUCT_EDGE }}. Specifically, you can browse our sample websites, view their source code, and even experiment on them by deploying them to {{ PRODUCT }}.
 
@@ -487,6 +487,6 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
   repoUrl="https://github.com/edgio-docs/edgio-v7-full-featured-performance-example"
 />
 
-## Issues? {/* issues */}
+## Issues? {/*issues*/}
 
 If you have any issues during this process, check our [forums]({{ FORUM_URL }}) for assistance.

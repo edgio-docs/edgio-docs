@@ -10,13 +10,13 @@ A fully [PCI-compliant](#is-waf-a-pci-compliant-solution) solution, {{ PRODUCT_N
 
 This guide shows you how to keep your site and platform secure using {{ PRODUCT_NAME }}.
 
-## DDoS (Distributed Denial of Service) {/*ddos-distributed-denial-of-service*/}
+## Ddos (Distributed Denial of Service) {/*ddos-distributed-denial-of-service*/}
 
 {{ PRODUCT_NAME }} Enterprise customers enjoy always-on DDoS protection inside of our high-bandwidth, globally distributed network. Our solution offers basic protection against common layer 3 and 4 attacks in real-time so you never have to sacrifice performance for protection.
 
-## WAF (Web Application Firewall) {/*waf-web-application-firewall*/}
+## Waf (Web Application Firewall) {/*waf-web-application-firewall*/}
 
-### WAF Overview {/*waf-overview*/}
+### Waf Overview {/*waf-overview*/}
 
 WAF is a web application firewall that helps protect your web applications and APIs against common web exploits an attacker may use to compromise your security, overwhelm resources, and affect the availability of your application.
 
@@ -26,7 +26,7 @@ The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be
 
 ### Managed Rule Groups {/*managed-rule-groups*/}
 
-#### {{ PRODUCT_NAME }} Managed Rules {/*managed-rules*/}
+#### {{ Product_name }} Managed Rules {/*managed-rules*/}
 
 ​​The {{ PRODUCT_NAME }} Managed rule group contains rules that are generally applicable to web applications. This provides protection against exploitation of a wide range of vulnerabilities, including high risk and commonly occurring vulnerabilities described in OWASP&reg; publications such as [OWASP Top 10](https://owasp.org/www-project-top-ten/).
 
@@ -79,7 +79,7 @@ The SQL database rule group contains rules to block request patterns associated 
 
 ---
 
-#### Add Rule Groups to a WAF {/*add-rule-groups-to-a-waf*/}
+#### Add Rule Groups to a Waf {/*add-rule-groups-to-a-waf*/}
 
 ![Add Rule Groups to WAF](/images/security/addrulegroup1.jpg?width=700 'Add Rule Groups to WAF')
 
@@ -97,7 +97,7 @@ The SQL database rule group contains rules to block request patterns associated 
 
 ---
 
-#### Add Single Rules to a WAF {/*add-single-rules-to-a-waf*/}
+#### Add Single Rules to a Waf {/*add-single-rules-to-a-waf*/}
 
 ![Add Single Rule to WAF](/images/security/addrulegroup1.jpg?width=700 'Add Single Rule to WAF')
 
@@ -116,7 +116,7 @@ The SQL database rule group contains rules to block request patterns associated 
 
 ---
 
-#### Apply a WAF to Your Environment {/*apply-a-waf-to-your-environment*/}
+#### Apply a Waf to Your Environment {/*apply-a-waf-to-your-environment*/}
 
 Prerequisite: Configured WAF rules and/or rule groups.
 
@@ -152,7 +152,7 @@ You can monitor the impact of your bots by flagging each bot type of request gai
 
 [Bot Control Rule Descriptions](/guides/security/managed_rule_groups#bot-control-rules)
 
-### Detect Bots with EdgeJS {/*detect-bots-with-edgejs*/}
+### Detect Bots with Edgejs {/*detect-bots-with-edgejs*/}
 
 #### General Information {/*general-information*/}
 
@@ -249,7 +249,7 @@ Here is a sample log file highlighting the WAF data ("waf":"botLib,flagged","waf
 
 ![WAF Log File Example](/images/security/log.jpg?width=700 'WAF Log File Example')
 
-## Access Control by IP Address {/*access-control-by-ip-address*/}
+## Access Control by Ip Address {/*access-control-by-ip-address*/}
 
 Restrict access to your website on a per environment basis through an IP address access control list. This type of access control list determines the set of traffic that will either be automatically allowed or blocked based off the client's IPv4 address. 
 
@@ -309,9 +309,9 @@ Restrict access to your website on a per environment basis through a country acc
 
 5.  Click **Save changes**.
 
-## Website Security with EdgeJS {/*website-security-with-edgejs*/}
+## Website Security with Edgejs {/*website-security-with-edgejs*/}
 
-### Content Security Policy (CSP) {/*content-security-policy-csp*/}
+### Content Security Policy (Csp) {/*content-security-policy-csp*/}
 
 [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement to distribution of malware.
 
@@ -354,7 +354,7 @@ basic authentication. Any environment without those environment variables will n
 
 Once deployed, the router will return 403 Forbidden for requests that have the incorrect basic authentication token, and 401 Unauthorized for requests that have no basic authentication token.
 
-### SSL {/*ssl*/}
+### Ssl {/*ssl*/}
 
 By default {{ PRODUCT_NAME }} only serves traffic over the `https` protocol. It automatically redirects `http` requests to the same URL, including any query strings, on `https`.
 
@@ -417,30 +417,30 @@ router.get('/some/path/depending/on/language/cookie', ({ cache }) => {
 })
 ```
 
-## FAQs {/*faqs*/}
+## Faqs {/*faqs*/}
 
-### What’s the difference between WAF-1 and WAF-2? {/*whats-the-difference-between-waf-1-and-waf-2*/}
+### What’s the Difference between Waf-1 and Waf-2? {/*whats-the-difference-between-waf-1-and-waf-2*/}
 
 You can configure 2 different WAF instances, allowing you to apply different sets of security rules to different environments.
 
-### How do I know which version to use? {/*how-do-i-know-which-version-to-use*/}
+### How Do I Know Which Version to Use? {/*how-do-i-know-which-version-to-use*/}
 
 Like all {{ PRODUCT_NAME }} products, WAF gives you access to all previous and active versions of your configuration so you have historical setups in case you need to roll back the current version.While editing, the version is in a _Draft_ state; once activated, the version is _Active_.
 
-### What is the difference between flagging and blocking a rule or rule group? {/*what-is-the-difference-between-flagging-and-blocking-a-rule-or-rule-group*/}
+### What Is the Difference between Flagging and Blocking a Rule or Rule Group? {/*what-is-the-difference-between-flagging-and-blocking-a-rule-or-rule-group*/}
 
 To flag a rule or rule group means to mark it if the rule would have been activated without actually denying the traffic. In contrast, when you block a rule or rule group, traffic is denied on affected routes. You can view both flagged and blocked data in your [{{ PRODUCT }} console]({{ APP_URL }}/).
 
-### What are {{ PRODUCT_NAME }} Managed Rules and why should I apply this rule group? {/*what-are-managed-rules-and-why-should-i-apply-this-rule-group*/}
+### What Are {{ Product_name }} Managed Rules and Why Should I Apply This Rule Group? {/*what-are-managed-rules-and-why-should-i-apply-this-rule-group*/}
 
 Managed rules block specific known threats. {{ PRODUCT }} recommends this rule group for all WAF use cases.
 
 Note: {{ PRODUCT }} recommends that all customers activate the _Bad Input - Log4J_ rule group.
 
-### Is WAF a PCI-compliant solution? {/*is-waf-a-pci-compliant-solution*/}
+### Is Waf a Pci-Compliant Solution? {/*is-waf-a-pci-compliant-solution*/}
 
 Yes. {{ PRODUCT }} maintains PCI-DSS Level 1 compliance by undergoing annual audits from approved Visa and MasterCard auditors.
 
-### What is the minimum level of encryption for {{ PRODUCT_NAME }}? {/*what-is-the-minimum-level-of-encryption-for-*/}
+### What Is the Minimum Level of Encryption for {{ Product_name }}? {/*what-is-the-minimum-level-of-encryption-for-*/}
 
 {{ PRODUCT_NAME }} enforces a minimum version of TLS 1.2 or higher.

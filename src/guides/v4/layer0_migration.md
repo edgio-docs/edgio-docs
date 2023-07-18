@@ -30,11 +30,11 @@ Lastly, your site code will need to be updated to reference the new `@layer0` mo
 
 Build your project and verify everything is functioning as expected. You should then deploy your site to your testing environment and re-verify functionality.
 
-## Edge and Permalinks will Change Automatically {/*edge-and-permalinks-will-change-automatically*/}
+## Edge and Permalinks Will Change Automatically {/*edge-and-permalinks-will-change-automatically*/}
 
 Once you deploy the new version of {{ PRODUCT }}, your Edge links will change to have the format `*.layer0-limelight.link`. Your current edge links will switch to the new format on the next deployment for that environment. Old edge links may continue to work correctly for a while but they are considered deprecated and will be turned off without further notice. Permalinks will remain `*.free.layer0-perma.link`.
 
-## DNS will Need Updating for Custom Domains {/*dns-will-need-updating-for-custom-domains*/}
+## DNS Will Need Updating for Custom Domains {/*dns-will-need-updating-for-custom-domains*/}
 
 If you have a custom domain pointing to {{ PRODUCT }}, you will need to update your A/CNAME record. To obtain the new network details, navigate to https://app.layer0.co and go to your site. Click the _Environments_ tab and choose the environment that has the custom domain. From there, click on the _Networking_ tab.
 
@@ -67,7 +67,7 @@ The prefixes of the response headers have changed from `x-xdn-*` to `{{ HEADER_P
 
 The prefixes of the cookies have changed from `xdn` to `layer0`. For example, `xdn_destination` is now `layer0_destination`.
 
-### REST API {/*rest-api*/}
+### Rest API {/*rest-api*/}
 
 If you are using the REST API, it is recommended to update to the new endpoint, https://app.layer0.co/api/v1/.
 

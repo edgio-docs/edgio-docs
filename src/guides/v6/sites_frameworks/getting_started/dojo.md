@@ -14,7 +14,7 @@ This guide shows you how to deploy a [Dojo](https://dojo.io/) application to {{ 
 
 {{ PREREQ.md }}
 
-## Create a new Dojo app {/*create-a-new-dojo-app*/}
+## Create a New Dojo App {/*create-a-new-dojo-app*/}
 
 If you don't already have a Dojo app, create one by running the following:
 
@@ -30,9 +30,9 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Dojo app for {{ PRODUCT }} {/*configuring-your-dojo-app-for*/}
+## Configuring Your Dojo App for {{ Product }} {/*configuring-your-dojo-app-for*/}
 
-### Initialize your project {/*initialize-your-project*/}
+### Initialize Your Project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
@@ -47,7 +47,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.ts` - A default routes file that sends all requests to Dojo.
 
-### Configure the routes {/*configure-the-routes*/}
+### Configure the Routes {/*configure-the-routes*/}
 
 Update `routes.ts` at the root of your project to the following:
 
@@ -67,7 +67,7 @@ export default new Router()
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Dojo app locally on {{ PRODUCT }} {/*run-the-dojo-app-locally-on*/}
+### Run the Dojo App Locally on {{ Product }} {/*run-the-dojo-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

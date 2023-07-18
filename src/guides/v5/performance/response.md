@@ -16,7 +16,7 @@ Identifies the network protocol and version (e.g., HTTP/1.1) used to transmit th
 
 [HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) are how the web signals errors and other states from the server to the web browser. If there is an error from your backend website, the error is simply forwarded by {{ PRODUCT_NAME }} to the browser.
 
-### {{ PRODUCT_NAME }} exclusive status codes {/*exclusive-status-codes*/}
+### {{ Product_name }} Exclusive Status Codes {/*exclusive-status-codes*/}
 
 If the error is generated in {{ PRODUCT_NAME }} itself, the platform generates a 53x or 54x HTTP status code:
 
@@ -50,7 +50,7 @@ Obviously, your project can set status codes of their own, which may sometimes m
 
 <a id="standard-status-codes"></a>
 
-### Standard status codes used by {{ PRODUCT_NAME }} itself {/*standard-status-codes-used-by-itself*/}
+### Standard Status Codes Used by {{ Product_name }} Itself {/*standard-status-codes-used-by-itself*/}
 
 {{ PRODUCT_NAME }} also issues these standard response codes:
 
@@ -90,7 +90,7 @@ Obviously, your project can set status codes of their own, which may sometimes m
 -   [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements for each {{ PRODUCT }} component through which a request was routed. It also provides cache status information for edge and global POPs.
 -   [{{ HEADER_PREFIX }}-version](#-version-response-header): Describes the {{ PRODUCT }} deployment.
 
-### {{ HEADER_PREFIX }}-status Response Header {/*-status-response-header*/}
+### {{ Header_prefix }}-Status Response Header {/*-status-response-header*/}
 
 The `{{ HEADER_PREFIX }}-status` response header contains an HTTP status code for each POP component that processed the request. This comma-delimited list is presented sequentially according to the order in which POP components processed the request.
 
@@ -113,7 +113,7 @@ The following sample response header indicates that the following POP components
 `{{ HEADER_PREFIX }}-status: eh=200,ed=200,gh=200,gd=200,p=200,w=200` <a id="structure-of--header_prefix--t"></a>
 -->
 
-### {{ HEADER_PREFIX }}-t Response Header {/*-t-response-header*/}
+### {{ Header_prefix }}-T Response Header {/*-t-response-header*/}
 
 The `{{ HEADER_PREFIX }}-t` response header contains time measurements for each {{ PRODUCT }} POP component through which a request was routed. It also provides cache status information for edge and global POPs. This data is presented sequentially according to the order in which POP components processed the request.
 
@@ -237,7 +237,7 @@ Most metrics follow the above convention. However, there are some metrics that u
     -   **Image Optimization:** If the route contains an image optimization tag, such as Next [Image](https://nextjs.org/docs/api-reference/next/image) or Nuxt [nuxt-img](https://image.nuxtjs.org/components/nuxt-img/),  instead of `transformResponse`, then this metric measures processing time in milliseconds.
 
 <!--
-#### Sample {{ HEADER_PREFIX }}-t Response Headers {/*sample-t-response-headers*/}
+#### Sample {{ Header_prefix }}-T Response Headers {/*sample-t-response-headers*/}
 
 Sample response headers for both standard traffic and Serverless Compute are explained below.
 
@@ -298,7 +298,7 @@ We will now examine each metric defined within the above sample response header:
 | `wz=1`     | Indicates either a `transformResponse` time or processing time in milliseconds. [Learn more.](#wz)
 -->
 
-### {{ HEADER_PREFIX }}-version Response Header {/*-version-response-header*/}
+### {{ Header_prefix }}-Version Response Header {/*-version-response-header*/}
 
 The `{{ HEADER_PREFIX }}-version` response header describes the latest {{ PRODUCT }} deployment using the following syntax:
 

@@ -9,7 +9,7 @@ Receive daily or weekly notifications for the following type of events:
 -   Cache hit ratio for one or more environment(s). You may restrict this notification to only report when the cache hit ratio falls below a specific threshold.
 -   Purged content for one or more environment(s).
 
-## Alert Administration
+## Alert Administration {/*alert-administration*/}
 
 You may create, modify, delete, disable, and re-enable alert configurations. 
 

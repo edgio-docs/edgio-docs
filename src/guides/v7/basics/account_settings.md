@@ -22,7 +22,7 @@ The {{ PORTAL }} uses your profile icon, account name, and your email address to
 3.  Set the desired name.
 4.  Click the <Image inline src="/images/v7/icons/save.png" alt="Save" /> icon.
 
-## Date/Time Preferences {/*date-time-preferences*/}
+## Date/time Preferences {/*datetime-preferences*/}
 
 By default, date/time values are displayed as a time period relative to the present. Additionally, hovering over a date/time value displays a timestamp. You may change how date/time values are displayed.
 
@@ -97,7 +97,7 @@ You may reset your password at any time. Resetting a password will generate an e
 4.  Specify a new password and then confirm it by typing it again.
 5.  Click **Change Password**.
 
-## Multi-factor Authentication {/*multi-factor-authentication*/}
+## Multi-Factor Authentication {/*multi-factor-authentication*/}
 
 Protect your user account from unauthorized access by enabling multi-factor authentication (MFA). MFA is an additional security requirement that requires a time-sensitive token when logging into {{ PRODUCT }} properties, such as:
 
@@ -239,7 +239,7 @@ Your account is automatically locked for 30 minutes after six consecutive unsucc
 We currently do not support the ability to remember your computer. 
 
 
-### SMS Messaging {/*sms-messaging*/}
+### Sms Messaging {/*sms-messaging*/}
 
 Text messages containing time-sensitive tokens can be sent directly to your cell phone or messaging device via SMS. Setting up SMS messaging does not require the installation of a software application. Provide the phone number corresponding to your cell phone or messaging device. A text message containing a time-sensitive token will be sent to your phone.
 
@@ -304,7 +304,7 @@ The syntax for specifying phone numbers varies by location.
 3.  From within the **Text Message** section, click the <Image inline src="/images/v7/icons/delete-2.png" alt="Delete" /> icon.
 4.  When prompted for confirmation, type your password within the **Enter your current password to confirm delete** option and then click **Delete**.
 
-### SMS Messaging Troubleshooting {/*sms-messaging-troubleshooting*/}
+### Sms Messaging Troubleshooting {/*sms-messaging-troubleshooting*/}
 
 **Missing MFA Text Messages**
 

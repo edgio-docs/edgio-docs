@@ -6,7 +6,7 @@ This guide shows you how to deploy a [Nuxt3](https://v3.nuxtjs.org) application 
 
 Note: Nuxt3 is still in beta and is not recommended for production.
 
-## Example {/* example */}
+## Example {/*example*/}
 
 <ExampleButtons
   title="Nuxt3"
@@ -24,11 +24,11 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
 -->
 {{ PREREQ.md }}
 
-## Getting Started {/* getting-started */}
+## Getting Started {/*getting-started*/}
 
 Follow the instructions to create a new Nuxt3 application, run it in a local dev server, and deploy to {{ PRODUCT }}.
 
-#### 1. Create a New Nuxt3 Application {/* 1-create-a-new-nuxt3-application */}
+#### 1. Create a New Nuxt3 Application {/*1-create-a-new-nuxt3-application*/}
 
 To create a new Nuxt3 application, run:
 
@@ -50,7 +50,7 @@ Then install dependencies with the command:
 npm install # yarn install
 ```
 
-#### 2. Add {{ Product }} to the Nuxt3 Application {/* 2-add-to-the-nuxt3-application */}
+#### 2. Add {{ Product }} to the Nuxt3 Application {/*2-add-to-the-nuxt3-application*/}
 
 To add {{ PRODUCT }} to the Nuxt3 application, run:
 
@@ -58,7 +58,7 @@ To add {{ PRODUCT }} to the Nuxt3 application, run:
 {{ CLI_NAME }} init
 ```
 
-#### 3. Run the Nuxt3 App Locally with {{ Product }} {/* 3-run-the-nuxt3-app-locally-with */}
+#### 3. Run the Nuxt3 App Locally with {{ Product }} {/*3-run-the-nuxt3-app-locally-with*/}
 
 To run the Nuxt3 app locally with {{ PRODUCT }}, run:
 
@@ -68,7 +68,7 @@ To run the Nuxt3 app locally with {{ PRODUCT }}, run:
 
 Vist [http://localhost:3000](http://localhost:3000) to view the application.
 
-#### 4. Run the Nuxt3 App in Local Production Mode with {{ Product }} {/* 4-run-the-nuxt3-app-in-local-production-mode-with */}
+#### 4. Run the Nuxt3 App in Local Production Mode with {{ Product }} {/*4-run-the-nuxt3-app-in-local-production-mode-with*/}
 
 To run the Nuxt3 app in local production mode with {{ PRODUCT }}, run:
 
@@ -76,7 +76,7 @@ To run the Nuxt3 app in local production mode with {{ PRODUCT }}, run:
 {{ CLI_NAME }} build && {{ CLI_NAME }} run --production
 ```
 
-#### 5. Deploy the Nuxt3 App to {{ Product }} {/* 5-deploy-the-nuxt3-app-to */}
+#### 5. Deploy the Nuxt3 App to {{ Product }} {/*5-deploy-the-nuxt3-app-to*/}
 
 Note: Add or update the `name` field in the `package.json` file.
 
@@ -88,18 +88,18 @@ Deploy your app to {{ PRODUCT }} by running the following command in your projec
 
 See [deploying](deploy_apps) for more information.
 
-### Resources {/* resources */}
+### Resources {/*resources*/}
 1. [Routing with EdgeJS](https://docs.layer0.co/guides/routing)
 2. [Prefetching with EdgeJS](https://docs.layer0.co/guides/prefetching)
 
-## Troubleshoot {/* troubleshoot */}
+## Troubleshoot {/*troubleshoot*/}
 
-#### Error: Variable Siteslug of Type String! Was Provided Invalid Value {/* error-variable-siteslug-of-type-string-was-provided-invalid-value */}
+#### Error: Variable Siteslug of Type String! Was Provided Invalid Value {/*error-variable-siteslug-of-type-string-was-provided-invalid-value*/}
 
 This error throws on deployment with `0 deploy`. To fix this:
 - Add/Update the `name` field in the `package.json` file, OR
 - Deploy with the name flag, via, `0 deploy --name=site-slug`
 
-#### Tsconfig.JSON:3:13: Warning: Cannot Find Base Config File "./.nuxt/tsconfig.JSON" {/* tsconfigjson313-warning-cannot-find-base-config-file-nuxttsconfigjson */}
+#### Tsconfig.JSON:3:13: Warning: Cannot Find Base Config File "./.nuxt/tsconfig.JSON" {/*tsconfigjson313-warning-cannot-find-base-config-file-nuxttsconfigjson*/}
 
 This is a resolved Nuxt3 error. More on [this GitHub Issue](https://github.com/nuxt/framework/issues/1912).

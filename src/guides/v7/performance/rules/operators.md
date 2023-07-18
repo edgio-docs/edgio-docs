@@ -4,7 +4,7 @@ title: Operators Reference
 
 A comparison operator determines when a request satisfies a condition by defining the relationship between a variable and a value. Each operator is briefly described below.
 
-### Equals
+### Equals {/*equals*/}
 
 Indicates that the value derived from the request must be an exact match to the value defined within a condition.
 
@@ -16,7 +16,7 @@ The following request will result in a match when the `Query String` condition i
 
 `http://cdn.example.com?media\'*'`
 
-### Does Not Equal
+### Does Not Equal {/*does-not-equal*/}
 
 Indicates that the value derived from the request must be different from the value defined within a condition.
 
@@ -28,7 +28,7 @@ The following request will result in a match when the `Query String` condition i
 
 `http://cdn.example.com?type=media\video`
 
-### Matches (Simple)
+### Matches (Simple) {/*matches-simple*/}
 
 Indicates that the value derived from the request must match the pattern defined within a condition. You may define a pattern using our [route path syntax](/guides/performance/cdn_as_code#route-pattern-syntax).
 
@@ -44,7 +44,7 @@ The following request will result in a match when the `Path` condition is set to
 
 `http://cdn.example.com/shows/5309`
 
-### Matches Regular Expression
+### Matches Regular Expression {/*matches-regular-expression*/}
 
 Indicates that the value derived from the request must match a [Perl-compatible regular expression](https://pcre.org/) defined within the **Match Value** option.
 
@@ -78,7 +78,7 @@ The following request will result in a match when the `Path` condition is set to
 
 `http://cdn.example.com/shows/5309`
 
-### Does Not Match Regular Expression
+### Does Not Match Regular Expression {/*does-not-match-regular-expression*/}
 
 Indicates that the value derived from the request must not match a regular expression. 
 
@@ -88,7 +88,7 @@ The following request will result in a match when the `Path` condition is set to
 
 `http://cdn.example.com/shows/cdn-detectives`
 
-### In
+### In {/*in*/}
 
 Indicates that the value derived from the request must be an exact match to the one of the value(s) defined within a condition.
 
@@ -100,7 +100,7 @@ Indicates that the value derived from the request must be an exact match to the 
 
 </Callout>
 
-### Not In
+### Not In {/*not-in*/}
 
 Indicates that the value derived from the request must not be an exact match to the one of the value(s) defined within a condition.
 
@@ -110,18 +110,18 @@ Indicates that the value derived from the request must not be an exact match to 
 
 </Callout>
 
-### Less than
+### Less Than {/*less-than*/}
 
 Indicates that the value derived from the request must be less than the value(s) defined within a condition.
 
-### Less than or Equal
+### Less than or Equal {/*less-than-or-equal*/}
 
 Indicates that the value derived from the request must be less than or equal to the value(s) defined within a condition.
 
-### Greater than
+### Greater Than {/*greater-than*/}
 
 Indicates that the value derived from the request must be greater than the value(s) defined within a condition.
 
-### Greater than or Equal
+### Greater than or Equal {/*greater-than-or-equal*/}
 
 Indicates that the value derived from the request must be greater than or equal to the value(s) defined within a condition.

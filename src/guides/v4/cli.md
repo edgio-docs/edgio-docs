@@ -30,7 +30,7 @@ Before deploying your site, verify that all functionality, including request/res
 
 ## Commands {/*commands*/}
 
-### build {/*build*/}
+### Build {/*build*/}
 
 Creates a build of your app optimized for production.
 
@@ -48,7 +48,7 @@ Creates a build of your app optimized for production.
 {{ CLI_NAME }} build
 ```
 
-### cache-clear {/*cache-clear*/}
+### Cache-Clear {/*cache-clear*/}
 
 Clears the cache. If neither `--path` nor `--surrogate-key` is specified, the entire cache for the
 specified environment will be cleared.
@@ -69,7 +69,7 @@ specified environment will be cleared.
 {{ CLI_NAME }} cache-clear --team=my-team --site=my-site --environment=production --path=/p/*
 ```
 
-### completion {/*completion*/}
+### Completion {/*completion*/}
 
 Creates a script that provides autocompletion for {{ PRODUCT_NAME }} CLI commands that can be installed in your shell.
 
@@ -79,19 +79,19 @@ Creates a script that provides autocompletion for {{ PRODUCT_NAME }} CLI command
 {{ CLI_NAME }} completion
 ```
 
-#### Using ZSH {/*using-zsh*/}
+#### Using Zsh {/*using-zsh*/}
 
 ```bash
 {{ CLI_NAME }} completion >> ~/.zshrc
 ```
 
-#### Using BASH {/*using-bash*/}
+#### Using Bash {/*using-bash*/}
 
 ```bash
 {{ CLI_NAME }} completion >> ~/.bashrc
 ```
 
-### deploy {/*deploy*/}
+### Deploy {/*deploy*/}
 
 Builds and deploys your site on {{ PRODUCT_NAME }}.
 
@@ -135,7 +135,7 @@ The `layer0 deploy` command writes a file called `.layer0/deployment-manifest.js
 {{ CLI_NAME }} deploy my-team --environment=production
 ```
 
-### docs {/*docs*/}
+### Docs {/*docs*/}
 
 Open the {{ PRODUCT_NAME }} documentation in your browser.
 
@@ -145,7 +145,7 @@ Open the {{ PRODUCT_NAME }} documentation in your browser.
 {{ CLI_NAME }} docs
 ```
 
-### dev {/*dev*/}
+### Dev {/*dev*/}
 
 Runs your project in development mode, simulating the {{ PRODUCT_NAME }} cloud environment. This command is a simplified version of `{{ CLI_NAME }} run`, with only the --cache option being supported.
 
@@ -161,7 +161,7 @@ Runs your project in development mode, simulating the {{ PRODUCT_NAME }} cloud e
 {{ CLI_NAME }} dev
 ```
 
-### init {/*init*/}
+### Init {/*init*/}
 
 Run in an existing app to add all required packages and files need to publish your app on {{ PRODUCT_NAME }}
 
@@ -177,7 +177,7 @@ Run in an existing app to add all required packages and files need to publish yo
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--connector` | The name of a specific connector package to install, or a path to a directory that implements the [connector interface](/guides/connectors#section_implementing_a_connector_directly_within_your_project). |
 
-### login {/*login*/}
+### Login {/*login*/}
 
 Logs into {{ PRODUCT_NAME }} via the developer console.
 
@@ -187,7 +187,7 @@ Logs into {{ PRODUCT_NAME }} via the developer console.
 {{ CLI_NAME }} login
 ```
 
-### logout {/*logout*/}
+### Logout {/*logout*/}
 
 Logs out of {{ PRODUCT_NAME }}
 
@@ -197,7 +197,7 @@ Logs out of {{ PRODUCT_NAME }}
 {{ CLI_NAME }} logout
 ```
 
-### run {/*run*/}
+### Run {/*run*/}
 
 Runs your app locally. Uses port 3000 by default. You can change this by setting the `PORT` environment variable. For example: `PORT=5000 {{ CLI_NAME }} run`.
 
@@ -222,7 +222,7 @@ Or to run a deployment bundle downloaded from {{ PRODUCT_NAME }} Developer Conso
 
 Production mode is always used when running downloaded bundles.
 
-### use {/*use*/}
+### Use {/*use*/}
 
 Switches the version of all {{ PACKAGE_NAME }}/\* packages in your project.
 
@@ -250,7 +250,7 @@ To install the latest preview:
 
 ---
 
-### Error: Cannot find module ... on `{{ CLI_NAME }} init` {/*error-cannot-find-module--on-0-init*/}
+### Error: Cannot Find Module ... on `{{ Cli_name }} Init` {/*error-cannot-find-module-on-init*/}
 
 An uncommon issue when running `{{ CLI_NAME }} init` can present a similar error:
 

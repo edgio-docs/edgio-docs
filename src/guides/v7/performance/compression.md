@@ -7,7 +7,7 @@ Compress content through:
 -   Our edge servers. This is known as edge server compression.
 -   Our Serverless layer.
 
-## Origin Server Compression {/* origin-server-compression */}
+## Origin Server Compression {/*origin-server-compression*/}
 
 Origin server compression occurs when a web server associated with your origin configuration compresses the response it provides to {{ PRODUCT }}. This type of compression requires both of the following conditions to be met:
 
@@ -25,7 +25,7 @@ Origin server compression occurs when a web server associated with your origin c
 
 </Callout>
 
-## Edge Server Compression {/* edge-server-compression */}
+## Edge Server Compression {/*edge-server-compression*/}
 
 Edge server compression occurs when an edge server compresses cached content and provides this compressed response to the client. It requires all of the following conditions to be met:
 
@@ -36,7 +36,7 @@ Edge server compression occurs when an edge server compresses cached content and
 | Cached content  | An uncompressed version of the requested content must already be cached on the POP closest to the client that requested it. <Callout type="info">By default, {{ PRODUCT }} caches the response as provided by an origin server or the Serverless layer. Specifically, if the response is uncompressed and eligible to be cached, then {{ PRODUCT }} will cache the uncompressed response. </Callout> |
 | Eligible file size  | The file size of the requested content must fall within the following range: <ul><li>Greater than approximately 128 bytes (`Content-Length: 128`)</li><li>Less than approximately 3 MB</li></ul> |
 
-### Enabling Edge Server Compression {/* enabling-edge-server-compression */}
+### Enabling Edge Server Compression {/*enabling-edge-server-compression*/}
 
 Edge server compression requires enabling compression for the desired content types (aka MIME type or media type). Sample content types are provided below.
 
@@ -86,13 +86,13 @@ The following examples demonstrate how to enable edge server compression using:
 
 </Callout>
 
-## Cache Implications {/* cache-implications */}
+## Cache Implications {/*cache-implications*/}
 
 If your caching policy allows the requested content to be cached, then {{ PRODUCT }} can cache each version of the requested content that it serves. 
 
 For example, if {{ PRODUCT }} serves a Gzip, DEFLATE, and an uncompressed version of the requested content, then it can potentially cache 3 different versions of that content on our network.
 
-## How Does Compression Work? {/* how-does-compression-work */}
+## How Does Compression Work? {/*how-does-compression-work*/}
 
 The process through which requested content is compressed is outlined below. 
 
@@ -114,7 +114,7 @@ The process through which requested content is compressed is outlined below.
 
 3.  The request will be forwarded to either an origin server or the Serverless layer. Either entity will provide a compressed or uncompressed response according to whether it can apply compression. {{ PRODUCT }} will serve the response to the client. Your caching policy dictates whether the response will be cached.
 
-## Applying Brotli Compression through Serverless {/* applying-brotli-compression-through-serverless */}
+## Applying Brotli Compression through Serverless {/*applying-brotli-compression-through-serverless*/}
 
 The Serverless layer supports Brotli encoding if the web browser accepts Brotli and the response is considered [eligible for compression](#compressible-types). Apply Brotli compression under these conditions through `brotliCompressSync`.
 
@@ -155,7 +155,7 @@ You would need to invoke the above just prior to sending back the response, simi
   }
 ```
 
-### Compressible Types {/* compressible-types */}
+### Compressible Types {/*compressible-types*/}
 
 The Serverless layer considers a response eligible for compression when either of the following conditions are satisfied:
 

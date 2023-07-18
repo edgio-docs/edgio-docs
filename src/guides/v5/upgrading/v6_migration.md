@@ -37,7 +37,7 @@ Migrate from version 5.x to 6 through the following steps:
 5.  [JWT Access Control End-of-Life](#jwt-access-control-end-of-life)
 6.  [Optional: Permalink Indexing](#permalink-indexing)
  
-## Step 1: Upgrade Node.js {/*upgrade-node-js*/}
+## Step 1: Upgrade Node.js {/*step-1-upgrade-nodejs*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 runs your apps in Node.js v16. Therefore, we strongly recommend that you use Node.js v16.x when developing your web application. 
 
@@ -53,7 +53,7 @@ Once you are using Node.js v16, update your application code to be compatible wi
 
 </Callout>
 
-## Step 2: Upgrade the {{ PRODUCT }} CLI {/*upgrade-the-cli*/}
+## Step 2: Upgrade the {{ Product }} CLI {/*step-2-upgrade-the-cli*/}
 
 Install the latest version of our CLI.
 
@@ -75,7 +75,7 @@ npm install -g @edgio/cli
 yarn global add @edgio/cli
 ```
 
-## Step 3: Use {{ PRODUCT }} Packages Version 6 {/*use-packages-version-6*/}
+## Step 3: Use {{ Product }} Packages Version 6 {/*step-3-use-packages-version-6*/}
 
 Update all {{ PRODUCT }} packages to version 6 using the CLI.
 
@@ -83,7 +83,7 @@ Update all {{ PRODUCT }} packages to version 6 using the CLI.
 edgio use ^6.0.0 
 ```
 
-## Step 4: Build your {{ PRODUCT }} Properties {/*build-your-properties*/}
+## Step 4: Build Your {{ Product }} Properties {/*step-4-build-your-properties*/}
 
 Build each of your {{ PRODUCT }} properties by running the following command in its root directory:
 
@@ -119,11 +119,11 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 
     Run `{{ FULL_CLI_NAME }} build` to rebuild your {{ PRODUCT }} property.
 
-## Step 5: JWT Access Control End-of-Life {/*jwt-access-control-end-of-life*/}
+## Step 5: JWT Access Control End-Of-Life {/*step-5-jwt-access-control-end-of-life*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 does not support JWT access control. Previous versions allowed you to     configure on a per route basis whether requests would be allowed or denied according to a JWT token.
 
-## Step 6: (Optional) Permalink Indexing {/*permalink-indexing*/}
+## Step 6: (Optional) permalink Indexing {/*step-6-optional-permalink-indexing*/}
 
 For {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.1/6.0 and above, the `x-robots-tag: noindex, nofollow` header is automatically added to all responses being served from edge links and permalinks to prevent search engines from indexing those links. By default, this header will not be added to any responses served from a custom domain. Prior to version 5.1/6, the `.noIndexPermalink()` function was an opt-in solution to achieve the same effect.
 

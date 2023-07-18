@@ -6,7 +6,7 @@ This guide describes how to get up and running with {{ PRODUCT_NAME }} for tradi
 
 Note that the speed benefit for traditional sites from {{ PRODUCT_NAME }} is dependent on the site’s JavaScript usage during the page load. If a page has JavaScript heavy processing during load it may reduce the benefit from {{ PRODUCT_NAME }}. Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to request site analysis prior to installation. Our typical turnaround time is 1 to 2 business days.
 
-## How {{ PRODUCT_NAME }} for Traditional Sites Works {/* how-for-traditional-sites-works */}
+## How {{ Product_name }} for Traditional Sites Works {/*how-for-traditional-sites-works*/}
 
 As shown below, {{ PRODUCT_NAME }} becomes the main CDN for your site:
 
@@ -19,7 +19,7 @@ Requests for your site will now pass through {{ PRODUCT_NAME }}'s globally distr
 - Globally distributed caching: Pages and content that are in {{ PRODUCT_NAME }} cache will be returned to the user faster than being fetched from your server.
 - Predictive prefetching: {{ PRODUCT_NAME }} predictively prefetch and serve data to the device _before_ the user even requests it. By effectively streaming page data to the device a few seconds ahead of the shopper, the page load becomes instantaneous because there is no network to wait for. Normally the increased traffic from this kind of data streaming would overload your server, but {{ PRODUCT_NAME }}'s caching layer acts as a "shield" to protect your origin for this load.
 
-## Implementation Process {/* implementation-process */}
+## Implementation Process {/*implementation-process*/}
 
 The high level implementation process for {{ PRODUCT_NAME }} is:
 
@@ -31,7 +31,7 @@ The high level implementation process for {{ PRODUCT_NAME }} is:
 
 We highly recommend performing this process on a staging server before attempting to try it on your production website.
 
-## Make Sure Your Pages are Cacheable {/* make-sure-your-pages-are-cacheable */}
+## Make Sure Your Pages Are Cacheable {/*make-sure-your-pages-are-cacheable*/}
 
 {{ PRODUCT_NAME }} will only prefetch and accelerate pages that are cacheable, i.e. do not have user specific content. The good news is that most pages can be made cacheable with only a few adjustments. Let's walk through an example.
 
@@ -65,7 +65,7 @@ Use this worksheet when auditing your site for personalized content to inventory
 
 [{{ PRODUCT_NAME }} Origin Content Changes Worksheet](https://docs.google.com/spreadsheets/d/1vFQl6Eh8vF9CbDpuu9cRYYzPyqBfLcNrRRU_0QwqAMM/edit?usp=sharing)
 
-## Connector {/* connector */}
+## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 
@@ -79,7 +79,7 @@ This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors
 
 {{ PREREQ.md }}
 
-## Setup a Project {/* setup-a-project */}
+## Setup a Project {/*setup-a-project*/}
 
 Create a project through the following command:
 
@@ -100,7 +100,7 @@ If possible, try to run the above command from your website's root directory.
 
 </Callout>
 
-### Project Structure {/* project-structure */}
+### Project Structure {/*project-structure*/}
 
 Before we get started, you should familiarize yourself with some of the key files in the {{ PRODUCT_NAME }} project:
 
@@ -111,7 +111,7 @@ Before we get started, you should familiarize yourself with some of the key file
 - `routes.ts`: This is where the routes to be cached and prefetched are defined, as well as what to pass through without modification and what to serve up as static content.
 - `browser.ts`: This is the entry point for the `main.js` javascript bundle which is added to the window.
 
-## Configure Caching and Prefetching {/* configure-caching-and-prefetching */}
+## Configure Caching and Prefetching {/*configure-caching-and-prefetching*/}
 
 Next we need to configure the caching in our newly created project. To do so, add a route for each URL you want to cache to the `routes.ts` file. For example, consider a site where the homepage (`/`), category pages (`/category/xxxx`), and product pages (`/product/yyyy`) are to be cached. Then your `routes.ts` file would look like:
 
@@ -164,7 +164,7 @@ Refer to the guides on [CDN-as-code](/guides/performance/cdn_as_code) and [Cachi
 
 In addition to configuring your caching in `routes.ts` as shown above, you may need to employ [advanced prefetching techniques](#advanced-prefetching-techniques) to achieve the best possible performance
 
-### Understanding Caching and Prefetching {/* understanding-caching-and-prefetching */}
+### Understanding Caching and Prefetching {/*understanding-caching-and-prefetching*/}
 
 By injecting `main.js` into your app's front-end code, your app will automatically prefetch all visible HTML links with URLs that match a route configured with `edge.maxAgeSeconds` and `browser.serviceWorkerSeconds` (in essence, when you configure a route to be cached, you are also declaring it to be a candidate for prefetching as well). Links that are visible when the page first loads are fetched immediately. Additional links will be fetched when the user scrolls down the page and more links become visible.
 
@@ -172,11 +172,11 @@ Prefetching can generate substantial additional network traffic. {{ PRODUCT_NAME
 
 <a id="test-your-code-locally"></a>
 
-## Test Your Code Locally and on {{ PRODUCT_NAME }} {/* test-your-code-locally-and-on */}
+## Test Your Code Locally and on {{ Product_name }} {/*test-your-code-locally-and-on*/}
 
 Now that you've configured your caching in `routes.ts`, you should test it in your local development environment and on {{ PRODUCT_NAME }}.
 
-### Running Locally {/* running-locally */}
+### Running Locally {/*running-locally*/}
 
 To test the caching behavior locally, run your project with the [local cache option](/guides/performance/caching#caching-during-development) as shown below:
 
@@ -186,7 +186,7 @@ To test the caching behavior locally, run your project with the [local cache opt
 
 <a id="running"></a>
 
-### Running on {{ PRODUCT_NAME }} {/* running-on */}
+### Running on {{ Product_name }} {/*running-on*/}
 
 Now that you're satisfied with your site in local development, it's time to deploy it to {{ PRODUCT_NAME }} Cloud. Once your code is deployed to {{ PRODUCT_NAME }} Cloud, you can formally evaluate site performance and QA functionality.
 
@@ -198,7 +198,7 @@ Deploy the build to {{ PRODUCT_NAME }} by running the `{{ FULL_CLI_NAME }} deplo
 
 Consult the [Deployment guide](/guides/basics/deployments) for more information on the options for deploying your site.
 
-## Go Live by Changing the DNS {/* go-live-by-changing-the-dns */}
+## Go Live by Changing the DNS {/*go-live-by-changing-the-dns*/}
 
 After you've configured and tested your site on {{ PRODUCT_NAME }}, it's time to take it live. At a high level, the process is:
 
@@ -216,15 +216,15 @@ The third step (configuring your DNS) will be the crucial step that effectively 
 
 Before going live, you should use the [{{ PRODUCT_NAME }} Onboarding Discovery Worksheet](https://docs.google.com/spreadsheets/d/11T-Dqcv5a_bS6mVj-t9-qrTn5o-Qdn9CjXO3yEHS4zY/) to help you think through common use cases and concerns and ensure a smooth launch.
 
-## Advanced Prefetching Techniques {/* advanced-prefetching-techniques */}
+## Advanced Prefetching Techniques {/*advanced-prefetching-techniques*/}
 
 An introduction to prefetching is available in the [Prefetching guide](/guides/performance/prefetching). In addition, here are some techniques to take full advantage of the power of prefetching.
 
-### Deep Fetching {/* deep-fetching */}
+### Deep Fetching {/*deep-fetching*/}
 
 Deep fetching is an important technique for {{ PRODUCT_NAME }} projects. By default, only HTML content is prefetched. In order to achieve truly instant page transitions, all of the assets needed to render the content that appears above the fold needs to be deep fetched. Refer to the [Deep Fetching](/guides/performance/prefetching#deep-fetching) section of the [Prefetching guide](/guides/performance/prefetching) for more details on how to configure deep fetching in your project.
 
-### Prefetching POSTs {/* prefetching-posts */}
+### Prefetching Posts {/*prefetching-posts*/}
 
 Most assets that need to be prefetched are HTTP `GET` requests. It is also possible to prefetch `POST` requests with some additional configuration.
 
@@ -259,7 +259,7 @@ export default new Router()
   });
 ```
 
-### Prefetching based on Element Visibility {/* prefetching-based-on-element-visibility */}
+### Prefetching Based on Element Visibility {/*prefetching-based-on-element-visibility*/}
 
 By default, `<a>` tags are watched by the Prefetcher so that the value of their `href` attributes are prefetched once the links become visible in the viewport. However, sometimes you might need to trigger a prefetch based on the visibility of other types of elements.
 
@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 ```
 
-### Maintenance {/* maintenance */}
+### Maintenance {/*maintenance*/}
 
 For the most part maintenance for traditional sites running on {{ PRODUCT_NAME }} is minimal. However, the typical scenarios that require changes are:
 

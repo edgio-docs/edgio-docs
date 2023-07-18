@@ -8,7 +8,7 @@ title: Express
 
 {{ PREREQ.md }}
 
-### Initialize your project {/*initialize-your-project*/}
+### Initialize Your Project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
@@ -24,7 +24,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Ember.js.
 
-### Configure the routes {/*configure-the-routes*/}
+### Configure the Routes {/*configure-the-routes*/}
 
 The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Express server via a fallback route.
 
@@ -42,7 +42,7 @@ export default new Router()
   .static('public')
 ```
 
-## Running your app locally {/* running-your-app-locally */}
+## Running Your App Locally {/*running-your-app-locally*/}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -50,7 +50,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 {{ FULL_CLI_NAME }} dev
 ```
 
-## Deploying {/* deploying */}
+## Deploying {/*deploying*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
@@ -58,7 +58,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-## Overriding the default app location {/* overriding-the-default-app-location */}
+## Overriding the Default App Location {/*overriding-the-default-app-location*/}
 
 When you deploy your Express app to the {{ PRODUCT_PLATFORM }}, the {{ PRODUCT }} CLI bundles your app as a single javascript file so that it can be run as a serverless function. By default, {{ COMPANY_NAME }} looks for your app in the following common locations:
 
@@ -87,7 +87,7 @@ module.exports = {
 
 The file you specify in `appPath` should export an instance of an express app using `export default` or `module.exports`.
 
-## Serving Static Assets {/* serving-static-assets */}
+## Serving Static Assets {/*serving-static-assets*/}
 
 If your express app serves any static assets, you'll need to add routes to your {{ PRODUCT }} router configuration to serve them from the edge. For example, to serve all paths under `/assets` from `dist/client/assets`:
 
@@ -110,7 +110,7 @@ export default new Router()
   })
 ```
 
-## Adding Additional Files Needed during SSR {/* adding-additional-files-needed-during-ssr */}
+## Adding Additional Files Needed during SSR {/*adding-additional-files-needed-during-ssr*/}
 
 If your express app expects to be able to read files from the filesystem at runtime, for example an index.html template, you can ensure they are included in the app bundle that is deployed to {{ PRODUCT_PLATFORM }}'s serverless workers by adding the following to {{ CONFIG_FILE }}
 
@@ -125,12 +125,12 @@ module.exports = {
 };
 ```
 
-## Transpiling and TypeScript support {/* transpiling-and-typescript-support */}
+## Transpiling and TypeScript Support {/*transpiling-and-typescript-support*/}
 
 {{ PRODUCT }} will automatically transpile JavaScript and TypeScript source code for running on Node.js version 14. If you want to control how
 source files are compiled, you can transpile your app on your own and point your `appPath` config to the transpiled version of your app's main entry point.
 
-## Bundling Options {/* bundling-options */}
+## Bundling Options {/*bundling-options*/}
 
 By default, {{ PRODUCT }} uses ESBuild to transpile and bundle your application code. If you're having difficulty fitting your app within the limit for serverless bundles, you can try bundling with [ncc](https://github.com/vercel/ncc), which should produce smaller bundles, by adding the following to {{ CONFIG_FILE }}:
 

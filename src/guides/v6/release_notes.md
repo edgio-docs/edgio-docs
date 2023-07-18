@@ -10,17 +10,17 @@ See [NPM Packages Changelog](/guides/changelog) for release notes related to the
 
 </Callout>
 
-#### {{ PORTAL }} - April 27, 2023
+#### {{ Portal }} - April 27, 2023 {/*-april-27-2023*/}
 
-##### Security Updates 
+##### Security Updates {/*security-updates*/}
 - Console Security UI: Add reCAPTCHA
 
-##### General Updates
+##### General Updates {/*general-updates*/}
 - Allow team admin to set up a list of allowed IPs for console access.
 
-#### {{ PORTAL }} - April 20, 2023
+#### {{ Portal }} - April 20, 2023 {/*-april-20-2023*/}
 
-##### Rules UI Updates
+##### Rules UI Updates {/*rules-ui-updates*/}
 
 - Added HTTP variables to autocomplete along with inline descriptions
 - Added device classification HTTP variables
@@ -31,7 +31,7 @@ See [NPM Packages Changelog](/guides/changelog) for release notes related to the
 - Removed 'equals'/'not equals' operators for the random number condition
 - Fixed regexp input field growing with user input in the "Rewrite URL" feature
 
-##### Security Updates
+##### Security Updates {/*security-updates*/}
 
 - Applied loading skeletons to filter sections in the Security dashboard
 - Updated Managed Rules Latest Ruleset
@@ -41,7 +41,7 @@ See [NPM Packages Changelog](/guides/changelog) for release notes related to the
 - Added Spoof Bot default action type
 - Added warning icon to Managed Rules tabs & fixed bot rules tab errors
 
-##### General Updates
+##### General Updates {/*general-updates*/}
 
 - Fixed role changes visually not being saved when navigating from the Members page
 - Temporarily removed "Api Clients" setting card

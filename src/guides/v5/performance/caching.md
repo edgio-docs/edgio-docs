@@ -139,7 +139,7 @@ This allows you to cache different content, depending on the type of device in t
 
 Customizing caching keys is a very powerful tool to make your site faster. At the same time, it is easy to apply it too broadly causing a loss of performance due to lower cache hit ratio. The key to correctly using cache customization is to apply it judiciously and narrowly for specific routes.
 
-### Caching Responses for POST and other non-GET/HEAD Requests {/*caching-responses-for-post-and-other-non-gethead-requests*/}
+### Caching Responses for Post and Other Non-Get/head Requests {/*caching-responses-for-post-and-other-non-gethead-requests*/}
 
 {{ PRODUCT_NAME }} only supports caching responses for `GET` and `HEAD` requests. Some APIs, particularly those implemented with GraphQL, use `POST` requests by default, with queries being sent through the request body.
 
@@ -188,7 +188,7 @@ Cache-Control: max-age=1, stale-while-revalidate=59
 
 ![maxAge staleWhileRevalidate diagram](/images/caching/stale-max-age.png)
 
-## Preventing a Response from being Cached {/*preventing-a-response-from-being-cached*/}
+## Preventing a Response from Being Cached {/*preventing-a-response-from-being-cached*/}
 
 By default, {{ PRODUCT_NAME }} will cache responses that satisfy all of the following conditions:
 
@@ -211,7 +211,7 @@ router.get('/some/uncacheable/path', ({ cache, proxy }) => {
 })
 ```
 
-## How do I know if a response was served from the cache? {/*how-do-i-know-if-a-response-was-served-from-the-cache*/}
+## How Do I Know If a Response Was Served from the Cache? {/*how-do-i-know-if-a-response-was-served-from-the-cache*/}
 
 To know if a response is being cached, examine the `{{ HEADER_PREFIX }}-t` response header. There are two components that indicate caching status:
 
@@ -224,19 +224,19 @@ You will see one of the following values for these components:
 - `cached` - The response was added to the cache, but was not served from the cache (aka a cache "miss" that may be a "hit" for the next request)
 - `hit` - The response was served from the cache
 
-## Why is my response not being cached? {/*why-is-my-response-not-being-cached*/}
+## Why Is My Response Not Being Cached? {/*why-is-my-response-not-being-cached*/}
 
 To understand why a response was not cached, examine the `{{ HEADER_PREFIX }}-caching-status` response header. It will have one of the following values:
 
-### ok {/*ok*/}
+### Ok {/*ok*/}
 
 The response was cached or served from the cache (see `{{ HEADER_PREFIX }}-t`).
 
-### disabled {/*disabled*/}
+### Disabled {/*disabled*/}
 
 The response was not cached because the edge caching was explicitly disabled (see [Preventing a Response from being Cached](#preventing-a-response-from-being-cached)).
 
-### no-max-age {/*no-max-age*/}
+### No-Max-Age {/*no-max-age*/}
 
 The response was not cached because there was no `cache-control` response header with a non-zero `max-age` or `s-maxage` value. To cache the response, call `cache` in your route handler with `edge.maxAgeSeconds` set. For example:
 
@@ -252,11 +252,11 @@ new Router().get('/', ({ cache }) => {
 
 You can also cache the response by adding a `cache-control` header with non-zero `max-age` or `s-maxage` value to the upstream response.
 
-### code {/*code*/}
+### Code {/*code*/}
 
 The response was not cached because the response had a status code >= 400.
 
-### private {/*private*/}
+### Private {/*private*/}
 
 The response was not cached because it contained a `cache-control` header with `private`. To cache the response, use:
 
@@ -272,27 +272,27 @@ new Router().get('/', ({ cache }) => {
 
 You can also remove the `private` value from the upstream response's `cache-control` header.
 
-### method {/*method*/}
+### Method {/*method*/}
 
 The response was not cached because the request method was something other than `HEAD` or `GET`, and the route that set the caching behavior used `match`. To cache the `POST` responses, for example, use `router.post()` instead of `router.match()`.
 
-### body-too-big {/*body-too-big*/}
+### Body-Too-Big {/*body-too-big*/}
 
 The response was not cached because the request body was more than 8000 bytes.
 
-### set-cookie {/*set-cookie*/}
+### Set-Cookie {/*set-cookie*/}
 
 The response was not cached because it contained a `set-cookie` header. To cache the response, use `removeUpstreamResponseHeader('set-cookie')` to remove the set-cookie header.
 
-### deployment {/*deployment*/}
+### Deployment {/*deployment*/}
 
 The response was not cached because it was received during the brief time (less than 1 minute) that a new version of the app was being propagated through the global network of POPs. There is no need to take any action because this status goes away as soon as the new version is completely propagated.
 
-### debug {/*debug*/}
+### Debug {/*debug*/}
 
 The response was not cached because the request was issued with `{{ HEADER_PREFIX }}-debug` header set to `1`. In debug mode, {{ PRODUCT_NAME }} will respond with more data that is useful for troubleshooting. However, the increased header footprint may lead to header overflow and other failures, so this should be used only during actual troubleshooting.
 
-### pass {/*pass*/}
+### Pass {/*pass*/}
 
 The response was not cached due to unknown reasons. If you happen to receive this status then please contact [support]({{ SUPPORT_URL }}).
 
@@ -304,7 +304,7 @@ Hit-for-pass disables the usual request coalescing behavior temporarily, when th
 
 Disabling this, such as when the upstream resource is serving errors can help alleviate pressure at all stages of the request lifecycle.
 
-## Caching During Development {/*caching-during-development*/}
+## Caching during Development {/*caching-during-development*/}
 
 By default, caching is turned off during development. This is done to ensure that developers don't see stale responses after making changes to their code or other upstream APIs. You can enable caching during development by running your app with:
 
@@ -317,7 +317,7 @@ The cache will automatically be cleared when you make changes to your router. A 
 - `edge.staleWhileRevalidateSeconds` is not yet implemented. Only `edge.maxAgeSeconds` is used to set the cache time to live.
 - `edge.key` is not supported. Cache keys are always based solely on url, method, the `accept-encoding` and `host` headers, and body.
 
-## Ensuring Versioned Browser Assets are Permanently Available {/*ensuring-versioned-browser-assets-are-permanently-available*/}
+## Ensuring Versioned Browser Assets Are Permanently Available {/*ensuring-versioned-browser-assets-are-permanently-available*/}
 
 In order to ensure that users who are actively browsing your site do not experience issues during a deployment, developers can
 configure certain client-side assets to be permanently available, even after a new version of the site has been deployed. For example,

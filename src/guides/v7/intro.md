@@ -62,7 +62,7 @@ Learn about the benefits of upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }
     
     -   We have introduced a new method called `conditional` to Router that uses a new JSON syntax and supports conditional logic.
 
-## Try It Out  {/*try-it-out*/}
+## Try It Out {/*try-it-out*/}
 
 Try {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 by creating an account at [{{ APP_DOMAIN }}](https://{{ APP_DOMAIN }}). 
 

@@ -40,15 +40,15 @@ function replaceConstantInHeader(header) {
 }
 
 function addHeaderID(line, slugger) {
-  // check if we're a header at all
-  if (!line.startsWith('#')) {
+  // check if we're a header at all, or ignore if it contains an edgejs tag
+  if (!line.startsWith('#') || /<edgejs>(.*?)<\/edgejs>/.test(line)) {
     return line;
   }
 
-  const match = /^(#+\s+)([^{]+)(\{\s*(?:\/\*([^*\/]+)\*\/)?\s*\})(.*)$/.exec(
-    line
-  );
+  const match =
+    /^(#+\s+)(.+?)(\s*\{(?:\/\*|#)([^\}\*\/]+)(?:\*\/)?\}\s*)?$/.exec(line);
   const isHeaderWithConstant = line.includes('{{') || line.includes('}}');
+
   const before = isHeaderWithConstant
     ? replaceConstantInHeader(match[1] + match[2])
     : match[1] + match[2];
@@ -93,10 +93,7 @@ function addHeaderID(line, slugger) {
   return (
     match[1] +
     title(match[2], {special: packageJson.titles}) +
-    ' {/* ' +
-    id.trim() +
-    ' */}' +
-    ` ${remainingHeading}`
+    ` {/*${id.trim()}*/}`
   ).trim();
 }
 
@@ -124,7 +121,7 @@ function addHeaderIDs(lines) {
 }
 
 async function main(paths) {
-  paths = paths.length === 0 ? ['src/pages'] : paths;
+  paths = paths.length === 0 ? ['src/guides'] : paths;
 
   const [unifiedMod, remarkParseMod, remarkSlugMod] = await Promise.all([
     import('unified'),

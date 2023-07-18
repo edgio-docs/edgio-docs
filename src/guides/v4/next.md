@@ -4,7 +4,7 @@ title: Next.js
 
 This guide shows you how to deploy a [Next.js](https://nextjs.org/) application to {{ PRODUCT }}.
 
-## Example {/* example */}
+## Example {/*example*/}
 
 <ExampleButtons
   title="Next.js SSR"
@@ -13,7 +13,7 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
   deployFromRepo
 />
 
-## Next.js Commerce {/* nextjs-commerce */}
+## Next.js Commerce {/*nextjs-commerce*/}
 
 For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to our [Next.js Commerce Guide](next_commerce).
 
@@ -29,11 +29,11 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
   View the Connector Code
 </ButtonLink>
 -->
-## Supported Versions {/* supported-versions */}
+## Supported Versions {/*supported-versions*/}
 
 {{ PRODUCT_NAME }} supports Next.js version 9 through 12.
 
-## Supported Features {/* supported-features */}
+## Supported Features {/*supported-features*/}
 
 {{ PRODUCT_NAME }} supports all of the most powerful features of Next.js, including:
 
@@ -54,9 +54,9 @@ When installing the {{ PRODUCT }} CLI globally in a virtual environment that has
 
 If you run into permission issues while attempting to install the {{ PRODUCT }} CLI globally on your local development machine, these may be fixed by using [nvm](https://github.com/nvm-sh/nvm) to manage Node and NPM.
 
-## Getting Started {/* getting-started */}
+## Getting Started {/*getting-started*/}
 
-### Create a Next.js Application {/* create-a-nextjs-application */}
+### Create a Next.js Application {/*create-a-nextjs-application*/}
 
 If you don't already have a Next.js application, you can create one using:
 
@@ -70,7 +70,7 @@ npx create-next-app@^12
 
 </Callout>
 
-### Initializing Your Project {/* initializing-your-project */}
+### Initializing Your Project {/*initializing-your-project*/}
 
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
@@ -89,7 +89,7 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
-## Next.js Config Plugins {/* nextjs-config-plugins */}
+## Next.js Config Plugins {/*nextjs-config-plugins*/}
 
 If your project does not have a `next.config.js` file, one will automatically be added when you run `{{ CLI_NAME }} init`. Doing so adds two plugins:
 
@@ -110,7 +110,7 @@ module.exports = with{{ PRODUCT_LEGACY }}(
 )
 ```
 
-### With{{ Product_legacy }} {/* with */}
+### With{{ Product_legacy }} {/*with*/}
 
 The `with{{ PRODUCT_LEGACY }}` plugin optimizes the Next.js build for running on {{ PRODUCT }}. It is required to deploy your application on {{ PRODUCT }} and accepts the following parameters:
 
@@ -125,11 +125,11 @@ The `with{{ PRODUCT_LEGACY }}` plugin optimizes the Next.js build for running on
 
 </Callout>
 
-### Withserviceworker {/* withserviceworker */}
+### Withserviceworker {/*withserviceworker*/}
 
 The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT }}'s [prefetching](/guides/next#section_prefetching) functionality.
 
-## {{ Product_name }} Devtools {/* devtools */}
+## {{ Product_name }} Devtools {/*devtools*/}
 
 By default, [Devtools](/guides/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, add the `disableLayer0DevTools` flag:
 
@@ -148,7 +148,7 @@ module.exports = with{{ PRODUCT_LEGACY }}(
 )
 ```
 
-## Running Locally {/* running-locally */}
+## Running Locally {/*running-locally*/}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -156,7 +156,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 {{ CLI_NAME }} dev
 ```
 
-## Deploying {/* deploying */}
+## Deploying {/*deploying*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
@@ -166,7 +166,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 See [deploying](deploy_apps) for more information.
 
-## Prefetching {/* prefetching */}
+## Prefetching {/*prefetching*/}
 
 The `{{ CLI_NAME }} init` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at `sw/service-worker.js`. If you have an existing service worker that uses workbox, you can copy its contents into `sw/service-worker.js` and simply add the following to your service worker:
 
@@ -176,7 +176,7 @@ import {Prefetcher} from '{{ PACKAGE_NAME }}/prefetch/sw';
 new Prefetcher().route();
 ```
 
-## Adding the {{ Product_name }} Service Worker {/* adding-the-service-worker */}
+## Adding the {{ Product_name }} Service Worker {/*adding-the-service-worker*/}
 
 To add the {{ PRODUCT_NAME }} service worker to your app, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` in a `useEffect` hook when the app first loads. For example, you can alter the `pages/_app.js` in your Next.js app as follows:
 
@@ -246,7 +246,7 @@ export async function getServerSideProps({params: {id}}) {
 
 The `Prefetch` component fetches data for the linked page from {{ PRODUCT }}'s edge cache and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
 
-## Routing {/* routing */}
+## Routing {/*routing*/}
 
 {{ PRODUCT }} supports Next.js's built-in routing scheme for both page and API routes, including Next.js 9's clean dynamic routes. The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Next.js via a fallback route:
 
@@ -273,7 +273,7 @@ export default new Router()
   .use(nextRoutes);
 ```
 
-### Nextroutes {/* nextroutes */}
+### Nextroutes {/*nextroutes*/}
 
 In the code above, `nextRoutes` adds all Next.js routes to the router based on the `/pages` directory. You can add additional routes before and after `nextRoutes`. For example, you can choose to send some URLs to an alternate backend. This is useful for gradually replacing an existing site with a new Next.js app.
 
@@ -305,11 +305,11 @@ module.exports = {
 
 Using environment variables here allows you to configure different legacy domains for each {{ PRODUCT }} environment.
 
-### Rewrites and Redirects {/* rewrites-and-redirects */}
+### Rewrites and Redirects {/*rewrites-and-redirects*/}
 
 The `nextRoutes` plugin automatically adds routes for [rewrites](https://nextjs.org/docs/api-reference/next.config.js/rewrites) and [redirects](https://nextjs.org/docs/api-reference/next.config.js/redirects) specified in `next.config.js`. Redirects are served directly from the network edge to maximize performance.
 
-### Caching {/* caching */}
+### Caching {/*caching*/}
 
 The easiest way to add edge caching to your Next.js app is to add caching routes before `nextRoutes`. For example,
 imagine you have `/pages/p/[productId].js`. Here's how you can SSR responses as well as cache calls to `getServerSideProps`:
@@ -347,7 +347,7 @@ new Router()
   .use(nextRoutes);
 ```
 
-### Preventing Next.js Pages from Being Cached by Other Cdns {/* preventing-nextjs-pages-from-being-cached-by-other-cdns */}
+### Preventing Next.js Pages from Being Cached by Other Cdns {/*preventing-nextjs-pages-from-being-cached-by-other-cdns*/}
 
 By default, Next.js adds a `cache-control: private, no-cache, no-store, must-revalidate` header to all responses from `getServerSideProps`. The presence of `private` would prevent {{ PRODUCT_NAME }} from caching the response, so `nextRoutes` from `{{ PACKAGE_NAME }}/next` automatically removes the `private` portion of the header to enable caching at the edge. If you want your responses to be private, you need to specify a `cache-control` header using the router:
 
@@ -362,7 +362,7 @@ new Router().get('/my-private-page', ({setResponseHeader}) => {
 
 Doing so will prevent other CDNs running in front of {{ PRODUCT_NAME }} from caching the response.
 
-## Using Next-I18next {/* using-next-i18next */}
+## Using Next-I18next {/*using-next-i18next*/}
 
 The [next-i18next](https://github.com/isaachinman/next-i18next) package is a popular solution for adding localization to Next.js apps. It has some issues when running in serverless deployments, but you can work around these:
 
@@ -422,7 +422,7 @@ module.exports = {
 
 A working example app can be found [here](https://github.com/layer0-docs/layer0-next-i18n-example).
 
-## Serverless Bundling {/* serverless-bundling */}
+## Serverless Bundling {/*serverless-bundling*/}
 
 Next.js has continued to improve how it bundles production builds for deployment on serverless architectures. {{ PRODUCT_NAME }} takes advantage of these improvementsby applying different configuration options depending on the version of Next.js being used:
 
@@ -439,7 +439,7 @@ Note that NextRouter.render404 and renderNextPage are retired when using Next.js
 
 </Callout>
 
-## Support for Next.js Middleware (Beta) {/* support-for-nextjs-middleware-beta */}
+## Support for Next.js Middleware (Beta) {/*support-for-nextjs-middleware-beta*/}
 
 {{ PRODUCT_NAME }} supports Next.js middleware starting with Next.js 12.2.0.
 

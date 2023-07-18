@@ -37,7 +37,7 @@ Note that this configuration will allow you to set breakpoints in both your {{ P
 
 {{ PRODUCT_NAME }} provides two types of logs to help you debug issues with your application.
 
-### [Server Logs](/guides/logs#section_server_logs) {/*server-logs*/}
+### [server Logs](/guides/logs#section_server_logs) {/*server-logs*/}
 
 By viewing the server logs in the {{ PRODUCT_NAME }} Developer Console, you can see all of the messages logged by your application using `console.log`, `console.warn`, etc...
 
@@ -73,7 +73,7 @@ Access logs contain information about all requests, even those that never reach 
 
 [Learn more](/guides/logs#section_access_logs)
 
-## Confirming Behavior with CURL {/*confirming-behavior-with-curl*/}
+## Confirming Behavior with Curl {/*confirming-behavior-with-curl*/}
 
 Removing the browser as a variable in your equation is a good way to confirm what the origin server is doing. Below are a few of the common CURL commands we leverage to verify behavior.
 
@@ -120,7 +120,7 @@ curl -vv --silent https://www.yoursite.com/?layer0_debug=true 2>&1 | grep minica
 
 `2>&1` is only present to make terminal work with `grep`
 
-## Checking your Permalinks vs Edge links {/*checking-your-permalinks-vs-edge-links*/}
+## Checking Your Permalinks Vs Edge Links {/*checking-your-permalinks-vs-edge-links*/}
 
 A Permalink request will skip the edge (cache) and go straight to the serverless tier. This will likely degrade performance, but does allow for verification of a function.
 
@@ -158,7 +158,7 @@ module.exports = with{{ PRODUCT_LEGACY }}(
 )
 ```
 
-### Nuxt.js {/*nuxtjs*/}
+### Nuxt.JS {/*nuxtjs*/}
 
 Set `{{ FULL_CLI_NAME }}SourceMaps: true` in the config for `@layer0/nuxt/module` in `buildModules` in `nuxt.config.js`:
 

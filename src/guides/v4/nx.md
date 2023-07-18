@@ -4,7 +4,7 @@ title: Nx
 
 [Nx](https://nx.dev/) is a smart, fast and extensible build system with first class monorepo support and powerful integrations. It has a powerful core and a rich plugin ecosystem.
 
-## Nx and {{ PRODUCT }} {/*nx-and-edgio*/}
+## Nx and {{ Product }} {/*nx-and*/}
 
 Because every Nx project can be different, there are a couple ways to implement it.
 
@@ -25,11 +25,11 @@ Here we use [Next.js](https://nextjs.org/) for the example Nx project.
 
 {{ PREREQ.md }}
 
-## Start a Nx project from scratch {/*start-a-nx-project-from-scratch*/}
+## Start a Nx Project from Scratch {/*start-a-nx-project-from-scratch*/}
 
 The following steps take you through set-up of a new Nx workspace. The same process can be used to add {{ PRODUCT }} to your existing Nx repo.
 
-### Generate the Nx workspace {/*generate-the-nx-workspace*/}
+### Generate the Nx Workspace {/*generate-the-nx-workspace*/}
 
 To create the starter workspace, we will us Nx to generate the workspace. For this example, we will use the Next.js preset, but you can easily adapt this to any framework. Visit the Nx [docs](https://nx.dev/getting-started/intro) for more information on the available [presets](https://nx.dev/cli/create-nx-workspace#preset).
 
@@ -47,7 +47,7 @@ npx create-nx-workspace --preset=next
 
 There will be a series of questions. When the one to choose the `Application name` comes, enter __`{{ PRODUCT_NAME_LOWER }}-nx-next-app`__. The other answers can be of your choosing.
 
-### Add {{ PRODUCT }} to the application {/*add-edgio-to-the-application*/}
+### Add {{ Product }} to the Application {/*add-to-the-application*/}
 
 Because Nx wants dependencies installed at root level, we will `init` the project at root level to install the necesssary packages, but setup configurations to read into the next app we generated. The {{ PRODUCT }} next connector expects to be in the project repo, so we will create our own custom connector with the necesssary configurations.
 

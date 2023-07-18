@@ -2,7 +2,7 @@
 title: Limits and Caveats
 ---
 
-## {{ PRODUCT_NAME }} Platform Limits {/*layer0-platform-limits*/}
+## {{ Product_name }} Platform Limits {/*platform-limits*/}
 
 This guide describes caveats and limits of {{ PRODUCT_NAME }} platform as applied to all projects running on it.
 
@@ -64,7 +64,7 @@ Move all build-time dependencies such as webpack, babel, etc... to devDependenci
 
 Following are the possible fixes that would help you reduce serverless bundle size by better engineering. If none of these does it, feel free to raise an issue on [Edgio Forums](https://forum.layer0.co).
 
-#### Possible Fix [1]: Segregating devDependencies from dependencies {/*segregate-devdependencies-from-dependencies*/}
+#### Possible Fix [1]: Segregating Devdependencies from Dependencies {/*possible-fix-1-segregating-devdependencies-from-dependencies*/}
 
 Typically, this is due to node_modules marked as `dependencies` when they are more appropriate in `devDependencies` within the `package.json` file. Modules marked as dependencies will be included in the serverless bundle. Dev-only modules such as `babel`, `jest`, `webpack`, etc. should be moved to `devDependencies` as shown:
 
@@ -81,7 +81,7 @@ Typically, this is due to node_modules marked as `dependencies` when they are mo
 }
 ```
 
-#### Possible Fix [2]: Segregating assets from serverless bundle {/*segregate-assets-from-serverless*/}
+#### Possible Fix [2]: Segregating Assets from Serverless Bundle {/*possible-fix-2-segregating-assets-from-serverless-bundle*/}
 
 Additionally, this can be related to assets (such as fonts or images) that are imported into your project code. These resources are typically better referenced as static assets which are stored outside of the serverless bundle.
 
@@ -102,7 +102,7 @@ Now, you can update your code references from importing the assets to referencin
 + <div><img src="/assets/images/Image1.png"/></div>
 ```
 
-#### Possible Fix [3]: Computing which node_modules be included in the serverless bundle {/*compute-which-node-modules-to-be-included-in-serverless-bundle*/}
+#### Possible Fix [3]: Computing Which Node_modules Be Included in the Serverless Bundle {/*possible-fix-3-computing-which-node_modules-be-included-in-the-serverless-bundle*/}
 
 It might be possible, that [Possible Fix [1]](#segregate-devdependencies-from-dependencies) reduces your serverless bundle size, but not reduce it to less than 50 MB (250 MB Uncompresssed). Another way to identify which dependencies would be required in the runtime is to use `@vercel/nft` package (a "Node.js dependency tracing utility").
 
@@ -172,8 +172,8 @@ module.exports = {
 }
 ```
 
-## {{ PRODUCT_NAME }} Platform Caveats {/*layer0-platform-caveats*/}
-### NodeJS native extensions {/*nodejs-native-extensions*/}
+## {{ Product_name }} Platform Caveats {/*platform-caveats*/}
+### Nodejs Native Extensions {/*nodejs-native-extensions*/}
 
 In a lof of scenarios, NodeJS native extensions might be required to perform specific tasks related to your application.
 For example, you might need to use [OpenCV](https://github.com/peterbraden/node-opencv) to perform some checks on an image before making it publicly available.
@@ -209,7 +209,7 @@ includeFiles: {
 Or you could choose to bundle everything in the packages listed in the `dependencies` property of `package.json` by using
 [`includeNodeModules` property](/guides/layer0_config#includenodemodules).
 
-### Readonly filesystem in serverless runtime {/*readonly-filesystem-in-serverless-runtime*/}
+### Readonly Filesystem in Serverless Runtime {/*readonly-filesystem-in-serverless-runtime*/}
 
 Web developers often use the filesystem as a temporary data source for their applications. That includes creating and/or
 manipulating files based on user requests. For example, storing user uploaded files locally and stripping metadata

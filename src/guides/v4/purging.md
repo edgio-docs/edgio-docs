@@ -26,7 +26,7 @@ You can choose to purge all entries, purge by path, or by surrogate keys. You ca
 
 To purge responses via the CLI, see the [CLI reference](/guides/cli#section_cache_clear).
 
-## REST API {/*rest-api*/}
+## Rest API {/*rest-api*/}
 
 To purge responses via the REST API, see the [REST API reference](/guides/rest_api#section_clear_cache).
 
@@ -38,11 +38,11 @@ By default, all response are purged from the cache when you deploy a new version
 
 __Caution:__ While preserving the cache between deployments can greatly reduce the load on your origin following a deployment, it can also lead to inconsistent behavior if the new version of your browser code receives an old, incompatible API response from the cache. Before enabling this feature, we recommend adding an API version number to your URL scheme to ensure that breaking changes to your API don't affect your website's functionality when old responses are served from the cache.
 
-## Static prerendering after clearing the cache {/*static-prerendering-after-clearing-the-cache*/}
+## Static Prerendering after Clearing the Cache {/*static-prerendering-after-clearing-the-cache*/}
 
 If you have [static prerendering] enabled, the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PRODUCT_NAME }} Developer Console or run `{{ CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
 
-## Surrogate Keys (Cache Tags) {/*surrogate-keys*/}
+## Surrogate Keys (Cache Tags) {/*surrogate-keys-cache-tags*/}
 
 Efficient cache purging is an essential part of keeping your website fast and reducing the load on your origin servers. Purging all entries from the cache all may increase your website's load time while the cache repopulates. If you purge all entries from the cache more than once a week, consider using surrogate keys for more targeted purging.
 
@@ -72,7 +72,7 @@ layer0 cache-clear --team=my-team --site=my-site --environment=production --surr
 
 Here are some ways that you can automate cache purging:
 
-### NPM Scripts {/*npm-scripts*/}
+### Npm Scripts {/*npm-scripts*/}
 
 Here is an example script you can add to your `package.json` to handle cache clearing for each environment. You can also configure scripts to clear by surrogate key, path, or group (As defined in {{ PRODUCT_NAME }} Console)
 

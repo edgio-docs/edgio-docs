@@ -13,7 +13,7 @@ Route features identify actions that will be applied to a request. Popular featu
 
 See [Features Reference](/guides/performance/rules/features) for a complete list of features and their behavior.
 
-## Defining Route Features {/* defining-route-features */}
+## Defining Route Features {/*defining-route-features*/}
 
 As outlined in the [Route Features](/guides/performance/cdn_as_code#route-features) section of the CDN-as-Code guide, route features are defined as the second argument to the `Router` method being called in the `routes.js` file, such as `.match()`, `.get()`, `.post()`, etc.
 
@@ -30,11 +30,11 @@ router.match('/:path*', {
 });
 ```
 
-## Common Routing Features {/* common-routing-features */}
+## Common Routing Features {/*common-routing-features*/}
 
 The following sections describe common routing features and how to use them.
 
-## Debug Cache Headers {/* debug-cache-headers */}
+## Debug Cache Headers {/*debug-cache-headers*/}
 
 The debug cache response headers provide additional information about the cache policy applied to the requested asset. [Learn more.](/guides/performance/response#requesting-debug-cache-information)
 
@@ -123,9 +123,9 @@ Response Body
 ➜  ~
 ```
 
-## Proxying an Origin {/* proxying-an-origin */}
+## Proxying an Origin {/*proxying-an-origin*/}
 
-### Same Path {/* same-path */}
+### Same Path {/*same-path*/}
 
 To forward a request to the same path on one of the origins listed in `{{ CONFIG_FILE }}`, use the `origin` feature:
 
@@ -157,7 +157,7 @@ module.exports = {
 };
 ```
 
-### Different Path {/* different-path */}
+### Different Path {/*different-path*/}
 
 To forward the request to a different path, use the `url.url_rewrite` feature:
 
@@ -178,7 +178,7 @@ router.get('/products/:productId', {
 });
 ```
 
-### Adding Caching {/* adding-caching */}
+### Adding Caching {/*adding-caching*/}
 
 To cache proxied requests at the edge, use the `caching` feature:
 
@@ -194,7 +194,7 @@ router.get('/products/:productId', {
 });
 ```
 
-### Altering the Request {/* altering-the-request */}
+### Altering the Request {/*altering-the-request*/}
 
 You can alter request headers when forwarding a request to a backend:
 
@@ -213,7 +213,7 @@ router.get('/products/:productId', {
 
 The above example makes use of the `headers.set_request_headers` feature.
 
-### Altering the Response {/* altering-the-response */}
+### Altering the Response {/*altering-the-response*/}
 
 You can also alter the response before and after the cache:
 
@@ -256,7 +256,7 @@ router.get('/products/:productId', {
 
 Additional information on the `headers` feature can be found in the [Features](/guides/performance/rules/features#headers) guide.
 
-### Altering All Responses {/* altering-all-responses */}
+### Altering All Responses {/*altering-all-responses*/}
 
 You can also write catch-all routes that will alter all responses. One example where this is useful is injecting [Content Security Policy](/guides/security/edgejs_security#content-security-policy-csp) headers.
 
@@ -283,7 +283,7 @@ router.match(
 The rules for interpolating the values of request and response objects can be found in the [routing](/guides/performance/cdn_as_code#embedded-values) guide.
 Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/performance/cdn_as_code#route-execution) for more information on route execution order and sending responses.
 
-## Manipulating Cookies {/* manipulating-cookies */}
+## Manipulating Cookies {/*manipulating-cookies*/}
 
 You can manipulate cookies before they are sent to the browser using `headers.set_response_headers`:
 
@@ -301,7 +301,7 @@ router.get('/products/:productId', {
 });
 ```
 
-### Adding Options to Cookies {/* adding-options-to-cookies */}
+### Adding Options to Cookies {/*adding-options-to-cookies*/}
 
 In addition to the name and value of the cookie, you can also add attributes to each cookie. For
 information on possible cookie attributes, please refer to https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie
@@ -330,7 +330,7 @@ router.get('/products/:productId', {
 });
 ```
 
-## Proxying to Different Backends Based on Different Host Names {/* proxying-to-different-backends-based-on-different-host-names */}
+## Proxying to Different Backends Based on Different Host Names {/*proxying-to-different-backends-based-on-different-host-names*/}
 
 To proxy to different backends by matching the `host` header (e.g. different backends for different international sites):
 
@@ -374,7 +374,7 @@ router
   );
 ```
 
-## Serving a Static File {/* serving-a-static-file */}
+## Serving a Static File {/*serving-a-static-file*/}
 
 To serve a specific file, use the [`serveStatic`](/docs/api/core/classes/router_RouteHelper.default.html#serveStatic) method.
 
@@ -394,7 +394,7 @@ router
   .get('/favicon.ico', ({serveStatic}) => serveStatic('public/favicon.ico'));
 ```
 
-## Serving Static Files from a Directory {/* serving-static-files-from-a-directory */}
+## Serving Static Files from a Directory {/*serving-static-files-from-a-directory*/}
 
 To serve a files from a directory, use the [`serveStatic`](/docs/api/core/classes/router_RouteHelper.default.html#serveStatic) method.
 
@@ -414,7 +414,7 @@ router
   .get('/assets/:path*', ({serveStatic}) => serveStatic('public/:path*'));
 ```
 
-## Serving the Service Worker {/* serving-the-service-worker */}
+## Serving the Service Worker {/*serving-the-service-worker*/}
 
 Similar to the above example, you can serve the service worker from its directory (e.g. `/dist/service-worker.js`).
 
@@ -436,7 +436,7 @@ router
   );
 ```
 
-## Routing to Serverless {/* routing-to-serverless */}
+## Routing to Serverless {/*routing-to-serverless*/}
 
 If your request needs to be run on the serverless tier, you can use the `SERVERLESS_ORIGIN_NAME` origin to render your result using your application. Use this method to respond with an SSR or API result from your application:
 
@@ -498,7 +498,7 @@ router.get('/products/:id', ({ serveStatic, cache }) => {
 })
 ``` -->
 
-## Responding with a String Response Body {/* responding-with-a-string-response-body */}
+## Responding with a String Response Body {/*responding-with-a-string-response-body*/}
 
 To respond with a simple, constant string as the response body use the `response.set_response_body` and `response.set_done` features:
 
@@ -552,7 +552,7 @@ router.get('/hello/:name', ({cache, setResponseHeader, compute, send}) => {
 });
 ```
 
-### Redirecting {/* redirecting */}
+### Redirecting {/*redirecting*/}
 
 To redirect the browser to a different URL, use the `url.url_redirect` feature, optionally specifying the HTTP status code:
 
@@ -587,7 +587,7 @@ router.get('/p/:productId', ({redirect, compute, cache}) => {
 });
 ```
 
-### Redirecting All Traffic to a Different Domain {/* redirecting-all-traffic-to-a-different-domain */}
+### Redirecting All Traffic to a Different Domain {/*redirecting-all-traffic-to-a-different-domain*/}
 
 ```js
 // Redirect all traffic except those with host header starting with www. to www.mydomain.com
@@ -617,9 +617,9 @@ router.match(
 );
 ```
 
-## Blocking Unwanted Traffic {/* blocking-unwanted-traffic */}
+## Blocking Unwanted Traffic {/*blocking-unwanted-traffic*/}
 
-### Blocking Traffic from Specific Countries {/* blocking-traffic-from-specific-countries */}
+### Blocking Traffic from Specific Countries {/*blocking-traffic-from-specific-countries*/}
 
 If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [country code](/guides/reference/country_codes) using the `location.country` match condition:
 
@@ -670,7 +670,7 @@ router.conditional({
 You can find more about geolocation headers [here](/guides/performance/request#request-headers).
 
 <!-- TODO need support for regex client IP matching
-### Allowing Specific Ips {/* allowing-specific-ips */}
+### Allowing Specific Ips {/*allowing-specific-ips*/}
 
 If you need to block all traffic except requests that originate from specific IP addresses, you can do so by matching requests by the [{{ HEADER_PREFIX }}-client-ip](/guides/request_headers#general-headers) header:
 
@@ -691,7 +691,7 @@ router.get(
 })
 ``` -->
 
-### Blocking Search Engine Crawlers {/* blocking-search-engine-crawlers */}
+### Blocking Search Engine Crawlers {/*blocking-search-engine-crawlers*/}
 
 If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag.
 

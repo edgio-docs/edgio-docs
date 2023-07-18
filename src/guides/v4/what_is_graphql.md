@@ -12,7 +12,7 @@ title: What is GraphQL?
 
 GraphQL was built in 2012 to support Facebook mobile apps. Facebook open sourced the project in 2015, and in 2018, it was moved to the GraphQL Foundation.
 
-## What is GraphQL? {/*what-is-graphql*/}
+## What Is GraphQL? {/*what-is-graphql*/}
 
 GraphQL is a specification that describes the behavior of a GraphQL server. It is a set of guidelines on how requests and responses should be handled like supported protocols, format of the data that can be accepted by the server, format of the response returned by the server, and so on.
 

@@ -4,7 +4,7 @@ title: Third-Party CDNs
 
 {{ PRODUCT_NAME }} is designed and built to be the component of your site to which your users will directly connect to from their devices. Such components are colloquially known as "edge components". But sometimes you may prefer to run {{ PRODUCT_NAME }} behind a third-party CDN due to a pre-existing contract. {{ PRODUCT_NAME }} fully supports this use case but it's important to call out some common pitfalls with this kind of network topology.
 
-## HTTP traffic protocol {/*http-traffic-protocol*/}
+## HTTP Traffic Protocol {/*http-traffic-protocol*/}
 
 In order for {{ PRODUCT_NAME }} to correctly determine the HTTP protocol (HTTP or HTTPS) used by the user agent, the third-party party CDN must use the same protocol that the user agent used. Thus, if the user agent has connected with HTTPS, the request passed to {{ PRODUCT_NAME }} must also be HTTPS, otherwise a security hole has been created, ripe for the man-in-the-middle attack. Conversely, if the user agent connected with HTTP, the request passed to {{ PRODUCT_NAME }} must also be HTTP so that the router rules that depend on the protocol continue to work correctly.
 
@@ -34,7 +34,7 @@ When {{ PRODUCT_NAME }} is behind a third-party CDN, we strongly recommend that 
 
 Caching and traffic metrics are another area that is affected by CDN caching or any kind of traffic shaping where {{ PRODUCT_NAME }} no longer sees all the traffic that your site is serving. If the third-party CDN is caching responses, then the perceived cache hit ratio on {{ PRODUCT_NAME }} will be lower than it actually is ({{ PRODUCT_NAME }} would only serve cache misses but never cache hits). If the third-party CDN is routing some traffic away from {{ PRODUCT_NAME }}, then the traffic metrics will be affected as the {{ PRODUCT_NAME }} Developer Console will only provide statistics for the traffic that goes through {{ PRODUCT_NAME }}.
 
-## Client IPs {/*client-ips*/}
+## Client Ips {/*client-ips*/}
 
 When behind a third-party CDN, there is no way for {{ PRODUCT_NAME }} to securely determine the IP of the user agent that originated the request, hence the `{{ HEADER_PREFIX }}-client-ip` header will contain the IP of the third-party CDN rather than the actual user agent. Relying on headers like `x-forwarded-for` to determine the IP necessarily introduces a security hole where attackers can simply spoof the IP and work around IP allow/block and geolocation blocking features of the plaform. Since {{ PRODUCT_NAME }} uses the client IP to determine the [geolocation headers](/guides/request_headers#section_geolocation_headers), this means that geolocation headers will also have incorrect values.
 
@@ -71,6 +71,6 @@ As mentioned above, when not running on edge, it is impossible for {{ PRODUCT_NA
 
 {{ PRODUCT_NAME }} access logs continue to function normally but since they are not on the edge they may not include all of the traffic that comes to your site.
 
-## Allowing IPs {/*allowing-ips*/}
+## Allowing Ips {/*allowing-ips*/}
 
 {{ PRODUCT_NAME }} does not block any validly formed HTTP traffic coming from any IP so there is no need to specifically allow the backend IPs of your third-party CDN.

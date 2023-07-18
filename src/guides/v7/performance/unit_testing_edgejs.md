@@ -102,7 +102,7 @@ If the route being tested has an upstream request or serves a static file, you w
 
 These functions reference the backend entries defined in your `{{ CONFIG_FILE }}` file.
 
-#### Mocking _backendHost_ Example {/*mocking-backendhost-example*/}
+#### Mocking _backendhost_ Example {/*mocking-backendhost-example*/}
 
 Routes that use `proxy` to fetch from a backend can be mocked using `backendHost(name)`, where `name` is the key used for the backend defined in `{{ CONFIG_FILE }}`.
 
@@ -143,7 +143,7 @@ it('should cache the collections page at the edge for 1 hour', async () => {
 })
 ```
 
-#### Mocking _staticHost_ Example {/*mocking-statichost-example*/}
+#### Mocking _statichost_ Example {/*mocking-statichost-example*/}
 
 For serving static assets, mock the asset host using `staticHost()`.
 

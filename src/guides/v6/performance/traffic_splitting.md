@@ -114,7 +114,7 @@ module.exports = new Router()
 ```
 After deploying a router with multiple destinations, all requests will be sent to the first destination until you have defined traffic splitting rules within the {{ PORTAL }}.
 
-### Step 3. Configure Traffic Splitting Rules in the {{ PORTAL }} {/*step-3-configure-traffic-splitting-rules-in-the-developer-console*/}
+### Step 3. Configure Traffic Splitting Rules in the {{ Portal }} {/*step-3-configure-traffic-splitting-rules-in-the*/}
 
 1.  [Log into your account]({{ APP_URL }}/login/), then navigate to the environment in which you want to configure the iterative migration and click Edit:
 

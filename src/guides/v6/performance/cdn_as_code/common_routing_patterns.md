@@ -230,7 +230,7 @@ router.get('/favicon.ico', ({ serveStatic, cache }) => {
 })
 ```
 
-## Serving Static Files From a Directory {/*serving-static-files-from-a-directory*/}
+## Serving Static Files from a Directory {/*serving-static-files-from-a-directory*/}
 
 Here's an example that serves all requests by sending the corresponding file in the `public` directory
 
@@ -259,7 +259,7 @@ router.get('/some/:path*', ({ renderWithApp, cache }) => {
 })
 ```
 
-### Falling Back to Server-side Rendering {/*falling-back-to-server-side-rendering*/}
+### Falling Back to Server-Side Rendering {/*falling-back-to-server-side-rendering*/}
 
 If you render some but not all paths for a given route at build time, you can fall back to server side rendering using the `onNotFound` option. Add the `loadingPage`
 option to display a loading page while server-side rendering is in progress.
@@ -387,7 +387,7 @@ router.match({ headers: { host: /^(www\.).*$/ } }, ({ redirect }) => {
 
 ## Blocking Unwanted Traffic {/*blocking-unwanted-traffic*/}
 
-### Blocking traffic from specific countries {/*blocking-traffic-from-specific-countries*/}
+### Blocking Traffic from Specific Countries {/*blocking-traffic-from-specific-countries*/}
 
 If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) geolocation header:
 
@@ -406,7 +406,7 @@ router.get(
 
 You can find more about geolocation headers [here](/guides/performance/request).
 
-### Allowing Specific IPs {/*allowing-specific-ips*/}
+### Allowing Specific Ips {/*allowing-specific-ips*/}
 
 If you need to block all traffic except requests that originate from specific IP addresses, you can do so by matching requests by the [{{ HEADER_PREFIX }}-client-ip](/guides/performance/request#general-headers) header:
 

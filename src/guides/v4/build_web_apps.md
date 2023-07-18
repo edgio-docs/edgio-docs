@@ -8,7 +8,7 @@ The easiest way to get started is by using one of our "Deploy to {{ PRODUCT }}" 
 
 **{{ PRODUCT_NAME }} only supports Node.js version 14**
 
-### Nuxt.js {/*nuxtjs*/}
+### Nuxt.JS {/*nuxtjs*/}
 
 [Deploy Nuxt.js to {{ PRODUCT }}](https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-nuxt-example)
 
@@ -18,13 +18,13 @@ The easiest way to get started is by using one of our "Deploy to {{ PRODUCT }}" 
 
 **More frameworks available under "Frameworks" in the nav.**
 
-## New or existing applications {/*new-or-existing-applications*/}
+## New or Existing Applications {/*new-or-existing-applications*/}
 
 Generate a new app or deploy an existing one to {{ PRODUCT_NAME }}. You will need to already have a [{{ PRODUCT_NAME}} account](https://app.layer0.co/signup). Follow the steps below.
 
 {{ SYSTEM_REQUIREMENTS_H3.md }}
 
-### Existing app {/*existing-app*/}
+### Existing App {/*existing-app*/}
 
 To add {{ PRODUCT_NAME }} to an existing app, run the following:
 
@@ -34,7 +34,7 @@ $ {{ CLI_NAME }} init
 $ {{ CLI_NAME }} deploy
 ```
 
-### New app {/*new-app*/}
+### New App {/*new-app*/}
 
 To create a new {{ PRODUCT_NAME }} compatible app, run:
 

@@ -14,7 +14,7 @@ This guide shows you how to deploy a [VuePress](https://vuepress.vuejs.org/) app
 
 {{ PREREQ.md }}
 
-## Create a new VuePress app {/*create-a-new-vuepress-app*/}
+## Create a New Vuepress App {/*create-a-new-vuepress-app*/}
 
 If you don't already have a VuePress app, create one by running the following:
 
@@ -30,15 +30,15 @@ You can verify your app works by running it locally with:
 yarn dev
 ```
 
-## Configuring your VuePress app for {{ PRODUCT }} {/*configuring-your-vuepress-app-for-edgio*/}
+## Configuring Your Vuepress App for {{ Product }} {/*configuring-your-vuepress-app-for*/}
 
-### Update package.json {/*update-packagejson*/}
+### Update package.JSON {/*update-packagejson*/}
 ```diff
 -		            "build": "vuepress build src",
 +		            "build": "vuepress build src -d=public",
 ```
 
-### Initialize your project {/*initialize-your-project*/}
+### Initialize Your Project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ CLI_NAME }} init`:
 
@@ -53,7 +53,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to VuePress.
 
-### Configure the routes {/*configure-the-routes*/}
+### Configure the Routes {/*configure-the-routes*/}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -83,7 +83,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the VuePress app locally on {{ PRODUCT }} {/*run-the-vuepress-app-locally-on-edgio*/}
+### Run the Vuepress App Locally on {{ Product }} {/*run-the-vuepress-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

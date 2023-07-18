@@ -4,7 +4,7 @@ title: Angular
 
 This guide shows you how to deploy an [Angular](https://angular.io) application to {{ PRODUCT }}.
 
-## Example {/* example */}
+## Example {/*example*/}
 
 <ExampleButtons
   title="Angular SSR"
@@ -22,11 +22,11 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
 -->
 {{ PREREQ.md }}
 
-## Getting Started {/* getting-started */}
+## Getting Started {/*getting-started*/}
 
 If you don't already have an Angular application, you can create one using the following steps:
 
-#### 1. Create a New Angular App {/* 1-create-a-new-angular-app */}
+#### 1. Create a New Angular App {/*1-create-a-new-angular-app*/}
 
 ```bash
 npm install -g @angular/cli
@@ -35,7 +35,7 @@ ng new my-{{ PRODUCT_NAME_LOWER }}-angular-app
 
 You should now have a working starter app. Run `ng serve` to see the application running on `localhost:4200`.
 
-#### 2. Add Ssr {/* 2-add-ssr */}
+#### 2. Add SSR {/*2-add-ssr*/}
 
 To deploy your Angular application on {{ PRODUCT }} it needs to support server-side rendering (SSR). To add SSR support, run:
 
@@ -58,7 +58,7 @@ You can now run `npm run build:ssr && npm run serve:ssr` to access your server-s
 
 To prepare your Angular application for deployment on {{ PRODUCT }}:
 
-#### 3. Initializing Your Project {/* 3-initializing-your-project */}
+#### 3. Initializing Your Project {/*3-initializing-your-project*/}
 
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
@@ -74,11 +74,11 @@ This will automatically add all of the required dependencies and files to your p
 - `{{ CONFIG_FILE }}`- Contains various configuration options for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 
-#### 4. Use the Right Angular Project {/* 4-use-the-right-angular-project */}
+#### 4. Use the Right Angular Project {/*4-use-the-right-angular-project*/}
 
 If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project {{ CLI_NAME }} build`.
 
-## Routing {/* routing */}
+## Routing {/*routing*/}
 
 The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Angular server via a fallback route.
 
@@ -92,7 +92,7 @@ import { angularRoutes } from '{{ PACKAGE_NAME }}/angular'
 export default new Router().use(angularRoutes)
 ```
 
-## Caching {/* caching */}
+## Caching {/*caching*/}
 
 The easiest way to add edge caching to your Angular app is to add caching routes before the middleware. For example,
 imagine you have a route `/pages/c/:categoryId`:
@@ -117,7 +117,7 @@ new Router()
   .use(angularRoutes)
 ```
 
-## Running Locally {/* running-locally */}
+## Running Locally {/*running-locally*/}
 
 To test your app locally, run:
 
@@ -141,7 +141,7 @@ For example:
 ANGULAR_PROJECT=my-project {{ CLI_NAME }} run
 ```
 
-## Deploying {/* deploying */}
+## Deploying {/*deploying*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 

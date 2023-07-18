@@ -4,7 +4,7 @@ title: Swell
 
 This guide shows you how to deploy a Swell application on {{ PRODUCT_NAME }}. Clone the repo [layer0-swell](https://github.com/layer0-docs/layer0-swell) to get the entire setup.
 
-## What is Swell? {/*what-is-swell*/}
+## What Is Swell? {/*what-is-swell*/}
 
 [Swell](https://www.swell.is/) is a customizable headless ecommerce platform that supports unique business models and customer experiences for global B2C and B2B merchants. Swell's API-first backend and modern development tools provide a future-proof platform for innovative businesses from small coffee roasters to international enterprises.
 
@@ -20,7 +20,7 @@ A Swell powered ecommerce backend and a Nuxt.js app for the framework.
 
 {{ PREREQ.md }}
 
-## Create a new Swell app {/*create-a-new-swell-app*/}
+## Create a New Swell App {/*create-a-new-swell-app*/}
 
 If you don't already have a Swell app, create one by running the following:
 
@@ -44,7 +44,7 @@ This account enables access to your store ID and API key which are necessary for
 - Under one of the secret keys, click on the eye icon to make the key visible.
 - Copy the secret key.
 
-### Add variables to .env {/*add-variables-to-env*/}
+### Add Variables to .Env {/*add-variables-to-env*/}
 
 Add your Swell store ID, public key and url to `.env`:
 
@@ -62,9 +62,9 @@ yarn run dev
 
 <a id="configuring-your-swell-app"></a>
 
-## Configuring your Swell app for {{ PRODUCT_NAME }} {/*configuring-your-swell-app-for*/}
+## Configuring Your Swell App for {{ Product_name }} {/*configuring-your-swell-app-for*/}
 
-### Modify nuxt.config.js {/*modify-nuxtconfigjs*/}
+### Modify Nuxt.config.JS {/*modify-nuxtconfigjs*/}
 
 In the existing `nuxt.config.js` configuration, add "{{ PACKAGE_NAME }}/nuxt/module" to `buildModules`:
 
@@ -88,7 +88,7 @@ Options:
 
 </Callout>
 
-### Initialize your project {/*initialize-your-project*/}
+### Initialize Your Project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
@@ -113,7 +113,7 @@ This command will also update your `package.json` with the following changes:
 
 <a id="run-swell-app-locally-on-layer0"></a>
 
-## Run Swell app locally on {{ PRODUCT }} {/*run-swell-app-locally-on*/}
+## Run Swell App Locally on {{ Product }} {/*run-swell-app-locally-on*/}
 
 Run the Swell app with the command:
 
@@ -135,7 +135,7 @@ Deploy the build to {{ PRODUCT_NAME }} by running the `{{ FULL_CLI_NAME }} deplo
 
 Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
 
-## Bonus: Generate pages on demand {/*bonus-generate-pages-on-demand*/}
+## Bonus: Generate Pages on Demand {/*bonus-generate-pages-on-demand*/}
 
 1. To preserve packages that are imported in the `modules` directories required in the generating pages on the server, update `package.json` as follows:
 

@@ -8,15 +8,15 @@ Each request for your content will generate a response from a server. This respo
 -   [Response headers](#response-headers)
 -   [Response body](#response-body)
 
-## Protocol and Version {/* protocol-and-version */}
+## Protocol and Version {/*protocol-and-version*/}
 
 Identifies the network protocol and version (e.g., HTTP/1.1) used to transmit the response to the client. This protocol and version typically matches the one defined in the request. If an invalid protocol or version was requested, then the response will return a `505 HTTP Version Not Supported`.
 
-## Status Codes {/* status-codes */}
+## Status Codes {/*status-codes*/}
 
 [HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) are how the web signals errors and other states from the server to the web browser. If there is an error from your backend website, the error is simply forwarded by {{ PRODUCT_NAME }} to the browser.
 
-### {{ Product_name }} Exclusive Status Codes {/* exclusive-status-codes */}
+### {{ Product_name }} Exclusive Status Codes {/*exclusive-status-codes*/}
 
 If the error is generated in {{ PRODUCT_NAME }} itself, the platform generates a 53x or 54x HTTP status code:
 
@@ -50,7 +50,7 @@ Obviously, your project can set status codes of their own, which may sometimes m
 
 <a id="standard-status-codes"></a>
 
-### Standard Status Codes Used by {{ Product_name }} Itself {/* standard-status-codes-used-by-itself */}
+### Standard Status Codes Used by {{ Product_name }} Itself {/*standard-status-codes-used-by-itself*/}
 
 {{ PRODUCT_NAME }} also issues these standard response codes:
 
@@ -60,7 +60,7 @@ Obviously, your project can set status codes of their own, which may sometimes m
 | 404  | Not Found           | The server cannot find the requested resource. This usually occurs when the browser requests a page that your app does not have. A 404 will also occur when a request does not match any of the routes in your {{ PRODUCT_NAME }} router. [Learn more.](/guides/performance/cdn_as_code). |
 | 412  | Precondition Failed | This code is returned when the query string parameter `{{ COOKIE_PREFIX }}_prefetch` equals `1` and the content was not found in the edge cache.                                                                                                                                               |
 
-## Response Headers {/* response-headers */}
+## Response Headers {/*response-headers*/}
 
 <Callout type="info">
 
@@ -78,7 +78,7 @@ The response headers generated for content requested through our CDN describe th
 -   Response headers that define or describe the requested content's cache policy.
 -   Information that identifies the edge server that served the response.
 
-### Common Response Headers {/* common-response-headers */}
+### Common Response Headers {/*common-response-headers*/}
 
 Common response headers are described below.
 
@@ -147,7 +147,7 @@ Common response headers are described below.
     
         **Response header value:** `111 - "Revalidation Failed", 110 - "Response is stale"`
 
-### {{ Product }}-Specific Headers {/* -specific-headers */}
+### {{ Product }}-Specific Headers {/*-specific-headers*/}
 
 {{ PRODUCT }}-specific headers are described below.
 
@@ -228,7 +228,7 @@ Common response headers are described below.
 
     -   **ENVIRONMENT ID:** Identifies an environment by its system-defined ID.
 
-### Requesting Debug Cache Information {/* requesting-debug-cache-information */}
+### Requesting Debug Cache Information {/*requesting-debug-cache-information*/}
 
 The debug cache response headers provide additional information about the cache policy applied to the requested asset. The response sent from our edge servers to a user will only include debug cache response headers when the following conditions are true:
 
@@ -255,7 +255,7 @@ The debug cache response headers provide additional information about the cache 
 
     </Callout>
 
-#### Cache Status Code Information {/* cache-status-code-information */}
+#### Cache Status Code Information {/*cache-status-code-information*/}
 
 The following response headers identify a server and how it handled the response:
 
@@ -283,7 +283,7 @@ The terms used in the above response header syntax are defined below:
 
 -   **POP:** Indicates the three-letter abbreviation for the POP that handled the request.
     
-#### Cacheable Response Header {/* cacheable-response-header */}
+#### Cacheable Response Header {/*cacheable-response-header*/}
 
 The `x-ec-check-cacheable` response header indicates whether the requested content could have been cached.
 
@@ -307,13 +307,13 @@ The term `CACHEABLE` indicates whether the requested content could have been cac
 
 -   **UNKNOWN:** Indicates that our servers were unable to assess whether the requested asset was cacheable. This typically occurs when the request is denied due to Token-Based Authentication.
 
-#### Cache Key Response Header {/* cache-key-response-header */}
+#### Cache Key Response Header {/*cache-key-response-header*/}
 
 The `x-ec-cache-key` response header indicates the cache key associated with the requested content. A cache key identifies an asset for the purposes of caching. In other words, our servers will check for a cached version of an asset according to its cache key.
 
 [Learn more about cache keys.](/guides/performance/caching/cache_key)
 
-#### Cache State Response Header {/* cache-state-response-header */}
+#### Cache State Response Header {/*cache-state-response-header*/}
 
 The `x-ec-cache-state` response header indicates the cache state of the requested content at the time it was requested.
 
@@ -341,7 +341,7 @@ The terms used in the above response header syntax are defined below:
     
 -   **EXPIRES SECONDS:** Indicates the number of seconds remaining before the date/time specified in the Expires response header. If the Expires response header was not included in the response, then this term will report none.
 
-#### Time Unit Abbreviations {/* time-unit-abbreviations */}
+#### Time Unit Abbreviations {/*time-unit-abbreviations*/}
 
 The following abbreviations are used for time units:
 
@@ -351,7 +351,7 @@ The following abbreviations are used for time units:
 -   **m:** Month(s)
 -   **y:** Year(s)
 
-### {{ Header_prefix }}-T Response Header {/* -t-response-header */}
+### {{ Header_prefix }}-T Response Header {/*-t-response-header*/}
 
 The {{ HEADER_PREFIX }}-t response header is solely returned for Serverless requests ({{ PRODUCT }} {{ PLATFORM }} and Serverless Compute). It contains time measurements for each Serverless component. 
 
@@ -400,13 +400,13 @@ We will now examine each metric defined within the above sample response header:
 
 <a id="serverless-compute-cold-start-timing"></a>
 
-## Serverless  - Cold Start Timing {/* serverless-cold-start-timing */}
+## Serverless  - Cold Start Timing {/*serverless-cold-start-timing*/}
 
 To calculate the Serverless cold start timing you must take the difference between `pf` and `wt` in the `{{ HEADER_PREFIX }}-t` header. `wt` is time taken for the Serverless worker to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. To [track timings](/guides/performance#tracking-your-own-timings) for a function, it is possible to add specific code to do that.
 
 Based on the example above, that would be `809 (pf) - 722 (wt) = 87ms`.
 
-## Response Body {/* response-body */}
+## Response Body {/*response-body*/}
 
 Contains the data provided in response to the request.
 

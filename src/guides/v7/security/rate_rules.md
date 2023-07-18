@@ -12,7 +12,7 @@ another URL, or sent a custom response. The type of enforcement action
 that will take place is determined by the Security Application
 configuration that leverages it.
 
-## How Does It Work? {/* how-does-it-work */}
+## How Does It Work? {/*how-does-it-work*/}
 
 A rate rule restricts the rate of traffic that may be directed to one or
 more web sites. HTTP/HTTPS requests that exceed a rate rule will not be
@@ -68,7 +68,7 @@ honored.
 
 [View sample scenarios.](#scenario-1-rate-limiting-all-requests)
 
-## Configuration {/* configuration */}
+## Configuration {/*configuration*/}
 
 Setting up a rate rule involves defining a rate limit and determining how that rate limit will be applied. You may also specify additional critieria that identify the set of requests to which this rate rule will be applied.
 
@@ -90,7 +90,7 @@ Setting up a rate rule involves defining a rate limit and determining how that r
     Each condition identifies the type of requests that are eligible for rate limiting by URL path, request headers, IP address, file extension, and/or request method.
 -   **Action:** A [Security Application configuration](/guides/security/security_applications#enforcement) determines the type of action that will be applied to requests that exceed the above rate limit.
 
-### Source {/* source */}
+### Source {/*source*/}
 
 Apply a rate limit across all requests or to each unique
 client. Define this behavior from within the **Apply rate limit
@@ -113,7 +113,7 @@ to** option. The available modes are described below.
 
     </Callout>
 
-### Rate Limit {/* rate-limit */}
+### Rate Limit {/*rate-limit*/}
 
 The maximum rate at which requests will be honored before a predefined
 action is applied to it is known as the rate limit. A rate limit defines
@@ -167,7 +167,7 @@ limit** option.
         requests may be load balanced across anywhere from 1 to 50
         different edge servers in a single POP.
 
-### Condition Group {/* condition-group */}
+### Condition Group {/*condition-group*/}
 
 A condition group defines one or more prerequisites that must be met
 before a request will count towards the rate limit.
@@ -345,7 +345,7 @@ The types of prerequisites that may be defined are described below.
 
         </Callout>
 
-## Multiple Rate Rules {/* multiple-rate-rules */}
+## Multiple Rate Rules {/*multiple-rate-rules*/}
 
 You may define multiple rate rules within a [Security Application
 configuration](/guides/security/security_applications). This type of setup provides greater
@@ -357,7 +357,7 @@ Common use cases for multiple rules:
 -   Define rules based on traffic profiles.
 -   Define rules that track abnormal traffic patterns.
 
-### Rule Order {/* rule-order */}
+### Rule Order {/*rule-order*/}
 
 The order in which rules are listed is critical, since it determines
 which rule will be applied to a request.
@@ -388,7 +388,7 @@ which rule will be applied to a request.
 
 -   Reorder rules by dragging the rate rule's <Image inline src="/images/v7/icons/drag.png" /> icon.
 
-## Rate Rule Administration {/* rate-rule-administration */}
+## Rate Rule Administration {/*rate-rule-administration*/}
 
 You may create, modify, and delete rate rules.
 
@@ -535,7 +535,7 @@ delete that Security Application configuration.
 4.  Click **Delete**.
 5.  Click **Confirm**.
 
-## Sample Scenario 1: Rate Limiting All Requests {/* sample-scenario-1-rate-limiting-all-requests */}
+## Sample Scenario 1: Rate Limiting All Requests {/*sample-scenario-1-rate-limiting-all-requests*/}
 
 This scenario assumes that a different edge server is handling each
 unique request URL. 
@@ -595,7 +595,7 @@ The CDN handled the above requests in the following manner:
         All requests for Logo.png were
         honored, since it did not exceed the rate rule.
 
-## Sample Scenario 2: Rate Limiting Unique Clients {/* sample-scenario-2-rate-limiting-unique-clients */}
+## Sample Scenario 2: Rate Limiting Unique Clients {/*sample-scenario-2-rate-limiting-unique-clients*/}
 
 This scenario assumes that a different edge server is handling each
 unique request URL. 
@@ -639,7 +639,7 @@ limit (i.e., 50 requests per minute).
 
 </Callout>
 
-## Sample Scenario 3: Multiple Rate Rules {/* sample-scenario-3-multiple-rate-rules */}
+## Sample Scenario 3: Multiple Rate Rules {/*sample-scenario-3-multiple-rate-rules*/}
 
 This scenario assumes that a single edge server is handling all of these
 requests.

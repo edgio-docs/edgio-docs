@@ -15,7 +15,7 @@ title: Scully
 
 {{ PREREQ.md }}
 
-## Create your Scully site {/*create-your-scully-site*/}
+## Create Your Scully Site {/*create-your-scully-site*/}
 
 Clone this starter example and install dependencies:
 
@@ -24,7 +24,7 @@ git clone https://github.com/edgio-docs/edgio-scully-example
 yarn install
 ```
 
-### Run the Scully app locally on {{ PRODUCT }} {/*run-the-scully-app-locally-on*/}
+### Run the Scully App Locally on {{ Product }} {/*run-the-scully-app-locally-on*/}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -36,7 +36,7 @@ Load the site http://127.0.0.1:3000
 
 This will listen to any changes inside the folder src, with live reloads!
 
-### Run the Scully app in local production on the {{ PRODUCT_PLATFORM }} {/*run-the-scully-app-in-local-production-on-the*/}
+### Run the Scully App in Local Production on the {{ Product_platform }} {/*run-the-scully-app-in-local-production-on-the*/}
 
 Create a production build using:
 ```bash

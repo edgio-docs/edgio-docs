@@ -14,7 +14,7 @@ This guide shows you how to deploy a [Remix](https://remix.run/) application to 
 
 {{ PREREQ.md }}
 
-## Create a new Remix app {/*create-a-new-remix-app*/}
+## Create a New Remix App {/*create-a-new-remix-app*/}
 
 If you don't already have a Remix app, create one by running the following:
 
@@ -30,9 +30,9 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Remix app for {{ PRODUCT }} {/*configuring-your-remix-app-for*/}
+## Configuring Your Remix App for {{ Product }} {/*configuring-your-remix-app-for*/}
 
-### Initialize your project {/*initialize-your-project*/}
+### Initialize Your Project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
@@ -49,7 +49,7 @@ This will automatically update your `package.json` and add all of the required {
 
 <a id="install-express"></a>
 
-### Install {{ PACKAGE_NAME }}/express {/*install-express*/}
+### Install {{ Package_name }}/express {/*install-express*/}
 
 Install {{ PACKAGE_NAME }}/express by running the following:
 
@@ -57,7 +57,7 @@ Install {{ PACKAGE_NAME }}/express by running the following:
 npm install -D {{ PACKAGE_NAME }}/express
 ```
 
-### Update {{ PRODUCT }} Configuration {/*update-configuration*/}
+### Update {{ Product }} Configuration {/*update-configuration*/}
 
 Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 
@@ -75,7 +75,7 @@ module.exports = {
 }
 ```
 
-### Configure the routes {/*configure-the-routes*/}
+### Configure the Routes {/*configure-the-routes*/}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -104,7 +104,7 @@ module.exports = new Router()
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Remix app locally on {{ PRODUCT }} {/*run-the-remix-app-locally-on*/}
+### Run the Remix App Locally on {{ Product }} {/*run-the-remix-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

@@ -28,7 +28,7 @@ To configure your own project to be deploy button ready, there's a few steps to 
 2. Next, create a basic `deploy` script as described below. Typically, this can simply be `layer0 deploy`, but if your site requires additional processing outside of the standard {{PRODUCT_NAME}} build/deploy process, you will need to modify this script to include the necessary steps to make your site production-ready.
 3. Create a GitHub workflow as described below. This makes sure GitHub Actions is properly configured to build the project.
 
-#### Add `deploy` Script to `package.json` {/*add-deploy-script-to-packagejson*/}
+#### Add `deploy` Script to `package.JSON` {/*add-deploy-script-to-packagejson*/}
 
 ```json
 // additional scripts may need to be called based on your app build process
@@ -37,7 +37,7 @@ To configure your own project to be deploy button ready, there's a few steps to 
 
 Lastly, create a GitHub workflow file called `layer0.yml`. This will be triggered automatically by {{PRODUCT_NAME}} during the deploy process.
 
-#### Create `.github/workflows/layer0.yml` Workflow {/*create-githubworkflowslayer0yml-workflow*/}
+#### Create `.GitHub/workflows/layer0.yml` Workflow {/*create-githubworkflowslayer0yml-workflow*/}
 
 ```yml
 name: Deploy to {{ PRODUCT }}

@@ -28,7 +28,7 @@ Learn about reserved request headers and how requests are routed through our ser
 
     ![](/images/overview/request-flow-serverless-compute-disabled-caching.png)
 
-### POP Components {/*pop-components*/}
+### Pop Components {/*pop-components*/}
 
 All POPs have the following components:
 
@@ -55,7 +55,7 @@ If a request is routed to an origin server through both an edge and global POP, 
 
 </Callout>
 
-### General headers {/*general-headers*/}
+### General Headers {/*general-headers*/}
 
 - `x-request-id`: unique request ID on {{ PRODUCT_NAME }} which may optionally be provided by you when issuing the requests to {{ PRODUCT_NAME }}
 - `{{ HEADER_PREFIX }}-client-ip`: the client IP address from which the request to {{ PRODUCT_NAME }} edge components originated; cannot be used for user agent IP identification when [{{ PRODUCT_NAME }} is behind another CDN](/guides/performance/third_party_cdns)).
@@ -63,7 +63,7 @@ If a request is routed to an origin server through both an edge and global POP, 
 - `{{ HEADER_PREFIX }}-original-qs`: contains the original query string if [custom caching](/guides/performance/caching#customizing-the-cache-key) rules exclude query strings for the matching route; otherwise not set
 - `{{ HEADER_PREFIX }}-protocol`: the protocol on which the connection to your site has been established; it can either be `https` or `http`; see more details [here](/guides/security/security_suite#ssl)
 
-### User agent headers {/*user-agent-headers*/}
+### User Agent Headers {/*user-agent-headers*/}
 
 User agent headers are headers that {{ PRODUCT_NAME }} derives by analyzing the received `user-agent` request header.
 
@@ -74,7 +74,7 @@ User agent headers are headers that {{ PRODUCT_NAME }} derives by analyzing the 
 
 These values are provided as best effort as user agent, especially adversarial ones, can control the values by which we determine the values above.
 
-### Geolocation headers {/*geolocation-headers*/}
+### Geolocation Headers {/*geolocation-headers*/}
 
 Geolocation headers contain the geographical information about the provenance of the request. They are based on the IP of the actual request or, if overriding need is presented, on the content of `{{ HEADER_PREFIX }}-client-ip` request header.
 
@@ -88,6 +88,6 @@ Geolocation headers contain the geographical information about the provenance of
 
 These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee the accuracy of geolocation based on the client's IP address. See also [geolocation](/guides/performance/third_party_cdns#client-ips) behind [third-party CDNs](/guides/performance/third_party_cdns).
 
-### Static prerendering headers {/*static-prerendering-headers*/}
+### Static Prerendering Headers {/*static-prerendering-headers*/}
 
 - `{{ HEADER_PREFIX }}-preload`: Will be "1" if the request originated from [Static Prerendering](/guides/performance/static_prerendering). Otherwise this header will not be present.

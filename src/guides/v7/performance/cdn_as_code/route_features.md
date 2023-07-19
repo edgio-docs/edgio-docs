@@ -20,21 +20,21 @@ As outlined in the [Route Features](/guides/performance/cdn_as_code#route-featur
 The argument is an Object that supports features outlined in the [Features Reference](/guides/performance/rules/features). The following example shows how to define a route feature that proxies a request, sending it to the origin host and caching it for 1 hour:
 
 ```js
- router.match('/:path*', {
-   caching: {
-     max_age: "1h"
-   },
-   origin: {
-     set_origin: "origin"
-   }
- })
+router.match('/:path*', {
+  caching: {
+    max_age: '1h',
+  },
+  origin: {
+    set_origin: 'origin',
+  },
+});
 ```
 
 ## Common Routing Features
 
 The following sections describe common routing features and how to use them.
 
-## Debug Mode {/* debug-mode */}
+## Debug Cache Headers {/* debug-cache-headers */}
 
 The debug cache response headers provide additional information about the cache policy applied to the requested asset. [Learn more.](/guides/performance/response#requesting-debug-cache-information)
 
@@ -281,7 +281,7 @@ router.match(
 ```
 
 The rules for interpolating the values of request and response objects can be found in the [routing](/guides/performance/cdn_as_code#embedded-values) guide.
-Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/routing#route-execution) for more information on route execution order and sending responses.
+Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/performance/cdn_as_code#route-execution) for more information on route execution order and sending responses.
 
 ## Manipulating Cookies {/* manipulating-cookies */}
 
@@ -376,77 +376,64 @@ router
 
 ## Serving a Static File {/* serving-a-static-file */}
 
-To serve a specific file use the `origin.set_origin` feature with the `edgio_static` value:
+To serve a specific file, use the [`serveStatic`](/docs/api/core/classes/router_RouteHelper.default.html#serveStatic) method.
+
+{{ routehelper_usage.md }}
 
 ```js
-router.get('/favicon.ico', {
-  caching: {
-    max_age: '1d',
-    client_max_age: '1h',
-  },
-  origin: {
-    set_origin: 'edgio_static',
-  },
-  url: {
-    url_rewrite: [
-      {
-        source: '/favicon.ico',
-        syntax: 'path-to-regexp',
-        destination: '/assets/favicon.ico',
-      },
-    ],
-  },
-});
+router
+  // cache the favicon for 1 day
+  .get('/favicon.ico', {
+    caching: {
+      max_age: '1d',
+      client_max_age: '1h',
+    },
+  })
+
+  // serve the favicon from the `public` directory
+  .get('/favicon.ico', ({serveStatic}) => serveStatic('public/favicon.ico'));
 ```
 
 ## Serving Static Files From a Directory {/* serving-static-files-from-a-directory */}
 
-Here's an example that serves all requests by sending the corresponding file in the `public` directory
+To serve a files from a directory, use the [`serveStatic`](/docs/api/core/classes/router_RouteHelper.default.html#serveStatic) method.
+
+{{ routehelper_usage.md }}
 
 ```js
-router.get('/:path*', {
-  caching: {
-    max_age: '1d',
-    bypass_client_cache: true,
-  },
-  origin: {
-    set_origin: 'edgio_static',
-  },
-  url: {
-    url_rewrite: [
-      {
-        source: '/:path*',
-        syntax: 'path-to-regexp',
-        destination: '/public/:path*',
-      },
-    ],
-  },
-});
+router
+  // cache the static assets for 1 day
+  .get('/assets/:path*', {
+    caching: {
+      max_age: '1d',
+      client_max_age: '1h',
+    },
+  })
+
+  // serve the assets from the `public` directory
+  .get('/assets/:path*', ({serveStatic}) => serveStatic('public/:path*'));
 ```
 
 ## Serving the Service Worker {/* serving-the-service-worker */}
 
-Similar to the above example, you can serve the service worker from its directory (e.g. `/dist/service-worker.js`):
+Similar to the above example, you can serve the service worker from its directory (e.g. `/dist/service-worker.js`).
+
+{{ routehelper_usage.md }}
 
 ```js
-router.match('/service-worker.js', {
-  caching: {
-    max_age: '1d',
-    bypass_client_cache: true,
-  },
-  origin: {
-    set_origin: 'edgio_static',
-  },
-  url: {
-    url_rewrite: [
-      {
-        source: '/service-worker.js',
-        syntax: 'path-to-regexp',
-        destination: '/dist/service-worker.js',
-      },
-    ],
-  },
-});
+router
+  // cache the service worker for 1 day
+  .get('/service-worker.js', {
+    caching: {
+      max_age: '1d',
+      client_max_age: '1h',
+    },
+  })
+
+  // serve the service worker from the `dist` directory
+  .get('/service-worker.js', ({serveStatic}) =>
+    serveStatic('dist/service-worker.js')
+  );
 ```
 
 ## Routing to Serverless {/* routing-to-serverless */}
@@ -544,7 +531,7 @@ When using `response.set_response_body` to send a response, or to stop processin
 
 To compute a dynamic response, use the [`compute`](/docs/api/core/classes/router_RouteHelper.default.html#compute) method.
 
-{{ routehelper_usage.md}}
+{{ routehelper_usage.md }}
 
 ```js
 router.get('/hello/:name', ({cache, setResponseHeader, compute, send}) => {
@@ -584,7 +571,7 @@ router.get('/p/:productId', {
 
 To compute the destination URL, use the [`compute`](/docs/api/core/classes/router_RouteHelper.default.html#compute) method.
 
-{{ routehelper_usage.md}}
+{{ routehelper_usage.md }}
 
 ```js
 router.get('/p/:productId', ({redirect, compute, cache}) => {

@@ -104,7 +104,7 @@ The captured parameter value will be provided as an array.
 router.match(
   {
     path: '/some-path', // value is route-pattern syntax
-    method: /GET|POST/i, // value is a regular expression
+    method: "GET", // value is a string
     cookies: {currency: /^(usd)$/i}, // keys are cookie names, values are regular expressions
     headers: {'some-header': /^some-value$/i}, // keys are header names, values are regular expressions
     query: {page: /^(1|2|3)$/}, // keys are query parameter names, values are regular expressions
@@ -144,7 +144,7 @@ router.match(
       },
     },
     method: {
-      not: /POST/i,
+      not: "POST",
     },
     cookies: {
       currency: {

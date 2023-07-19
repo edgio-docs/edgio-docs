@@ -4,8 +4,6 @@ title: Predictive Prefetch
 
 {{ PRODUCT_NAME }} allows you to speed up the user's browsing experience by prefetching pages and API calls that they are likely to need.
 
-<Video src="https://www.youtube.com/watch?v=lfhSDCNgzfs" />
-
 ## Traffic Shielding {/* traffic-shielding */}
 
 You might think that prefetching will put significant additional load on the infrastructure hosting your APIs. That's actually not the case! {{ PRODUCT_NAME }} only serves prefetch requests from the edge cache. It will never make a request to the origin if a prefetch request cannot be served from the edge cache, so your servers will never see an increased load.
@@ -14,9 +12,9 @@ You might think that prefetching will put significant additional load on the inf
 
 To enable prefetching, your site's service worker needs to use the `{{ PACKAGE_NAME }}/prefetch` library's `Prefetcher` class. If your site doesn't currently have a service worker, one can easily be created using Google's [Workbox](https://developers.google.com/web/tools/workbox).
 
-Here's an example service worker based on Workbox:
+Here's a sample service worker based on Workbox using the `Prefetcher` class from `{{ PACKAGE_NAME }}/prefetch`:
 
-```js
+```js filename="service-worker.js"
 import {skipWaiting, clientsClaim} from 'workbox-core';
 import {precacheAndRoute} from 'workbox-precaching';
 import {Prefetcher} from '{{ PACKAGE_NAME }}/prefetch/sw';
@@ -28,16 +26,6 @@ precacheAndRoute(self.__WB_MANIFEST || []);
 new Prefetcher().route();
 ```
 
-Once you've created a service worker, code running in the browser window needs to register the service worker before prefetching can begin. How you do this depends on the front-end framework that you use.
-
-If you're not using a front-end framework, you can use the `install` function from `{{ PACKAGE_NAME }}/prefetch` to install the service worker. Here's an example:
-
-```js
-import install from '{{ PACKAGE_NAME }}/prefetch/window/install';
-
-install();
-```
-
 ## Serving the Service Worker {/* serving-the-service-worker */}
 
 After you have created a service worker, your router will need to be configued to serve the file. The following code will vary depending on the location of your service worker file. In this example, we will define a route that serves requests for `/service-worker.js`:
@@ -46,101 +34,169 @@ After you have created a service worker, your router will need to be configued t
 import {Router} from '{{ PACKAGE_NAME }}/core';
 
 export default new Router()
-  // Here we configure a route for the service worker.
+  // cache the service worker at the edge for 1 day
   .match('/service-worker.js', {
     caching: {
       max_age: '1d',
       bypass_client_cache: true,
-    },
-    origin: {
-      set_origin: 'edgio_static',
-    },
-    url: {
-      url_rewrite: [
-        {
-          source: '/service-worker.js',
-          syntax: 'path-to-regexp',
-          destination: '/dist/service-worker.js', // the location of your service worker file
-        },
-      ],
-    },
-  });
-```
-
-## Configuring Routes for Prefetching {/* configuring-routes-for-prefetching */}
-
-To ensure that excessive prefetch traffic isn't passed on to your origin, {{ PRODUCT_NAME }} will serve prefetch requests when a cached response is available at the edge. By default, all prefetch requests will be cached at the edge for 2 minutes (see [`DEFAULT_MAX_AGE_SECONDS`](/docs/api/prefetch/interfaces/sw_Prefetcher.PrefetcherConfig.html#defaultMaxAgeSeconds)). Additionally, you may configure a route that caches responses at the edge and in the service worker within your router, optionally giving it longer cache time for greater performance. In this example we define a route that caches product API calls for one hour:
-
-```js filename="routes.js"
-import {Router} from '{{ PACKAGE_NAME }}/core';
-
-export default new Router()
-  // Here we configure a route for the service worker.
-  .match('/service-worker.js', {
-    caching: {
-      max_age: '1d',
-      bypass_client_cache: true,
-    },
-    origin: {
-      set_origin: 'edgio_static',
-    },
-    url: {
-      url_rewrite: [
-        {
-          source: '/service-worker.js',
-          syntax: 'path-to-regexp',
-          destination: '/dist/service-worker.js', // the location of your service worker file
-        },
-      ],
     },
   })
 
-  // Here we configure a route for the product API.
-  .get('/api/products/:id.json', {
-    caching: {
-      max_age: '1h',
-      stale_while_revalidate: '1d',
-      service_worker_max_age: '1h',
-    },
-    headers: {
-      set_response_headers: {
-        'x-sw-cache-control': 'max-age=3600',
-      },
-    },
+  // serve the service worker from the /dist directory
+  .match('/service-worker.js', ({serviceWorker}) => {
+    serviceWorker('dist/service-worker.js');
   });
 ```
 
-Note that if you prefetch a URL without setting `caching.service_worker_max_age` as shown above, the response will still be prefetched and cached by the service worker with a short TTL (2 minutes by default). You can change the default TTL by setting `defaultMaxAgeSeconds` when initializing the Prefetcher instance in your service worker:
+## Registering the Service Worker {/* registering-the-service-worker */}
 
-```js
-const prefetcher = new Prefetcher({defaultMaxAgeSeconds: 60 * 10}); // set the default TTL to 10 minutes
-```
+Once you've created and defined a route to serve the service worker, code running in the browser window needs to register the service worker before prefetching can begin.
 
-## Prefetching a URL {/* prefetching-a-url */}
+If you're not using a front-end framework that already registers the service worker, you can invoke the `install` function from `{{ PACKAGE_NAME }}/prefetch` to install the service worker within your client-side code. As an example, if your client-side code is in `app.js`, you can install the service worker by adding the following code to `app.js`:
 
-To prefetch a URL, call the `prefetch` function from `{{ PACKAGE_NAME }}/prefetch/window`. Here we prefetch data for a product page using the route we configured in the previous example.
+<a id="sample-install-prefetch-code" />
 
-```js
-import {prefetch} from '{{ PACKAGE_NAME }}/prefetch/window';
+```js filename="app.js"
+import { install , prefetch } from '{{ PACKAGE_NAME }}/prefetch/window';
 
-prefetch('/api/products/1.json');
-```
+/*
+  Your client-side code here
+*/
 
-Prefetch requests are given the lowest priority. This ensures that they do not block more critical requests like API calls, images, scripts, and navigation.
-
-Optionally is possible to override default TTL or the value of `serviceWorkerSeconds` defined in `routes.js` by providing the `maxAgeSeconds` option to `prefetch` function call. This option is applied only to that function call and doesn't affect any other calls made later.
-
-```js
-import {prefetch} from '{{ PACKAGE_NAME }}/prefetch/window';
-
-prefetch('/api/products/1.json', 'fetch', {
-  maxAgeSeconds: 300, // 5 minutes
+// install the service worker
+document.addEventListener('DOMContentLoaded', () => {
+  install({
+    /* install options */
+  });
 });
 ```
 
-All prefetch function options can be found in its API Documentation [here](/docs/api/prefetch/types/window_prefetch.PrefetchConfiguration.html).
+Now when your client-side code runs, the service worker will be installed and ready to prefetch URLs.
 
-## React {/* react */}
+See [InstallOptions](/docs/api/prefetch/interfaces/window_InstallOptions.default.html) for additional configuration when installing the service worker.
+
+## Defining a Prefetching Caching Policy {/* defining-a-prefetching-caching-policy */}
+
+To ensure that excessive prefetch traffic isn't passed on to your origin, {{ PRODUCT_NAME }} will serve prefetch requests when a cached response is available at the edge. You may configure a route that caches responses at the edge and in the service worker within your router, optionally giving it longer cache time for greater performance. In this example we define a route that caches product API calls for one hour:
+
+```js diff filename="routes.js"
+import {Router} from '{{ PACKAGE_NAME }}/core';
+
+export default new Router()
+  // cache the service worker at the edge for 1 day
+  .match('/service-worker.js', {
+    caching: {
+      max_age: '1d',
+      bypass_client_cache: true,
+    },
+  })
+
+  // serve the service worker from the /dist directory
+  .match('/service-worker.js', ({serviceWorker}) => {
+    serviceWorker('dist/service-worker.js');
+  })
+
++  // cache policy for product API calls
++  .get('/api/products/:id.json', {
++    caching: {
++      max_age: '1h',
++      stale_while_revalidate: '1d',
++      service_worker_max_age: '1h',
++    },
++    headers: {
++      set_response_headers: {
++        'x-sw-cache-control': 'max-age=3600',
++      },
++    },
++  });
+```
+
+Note that if you prefetch a URL without setting `caching.service_worker_max_age` as shown above, the response will still be prefetched and cached by the service worker with a short TTL (2 minutes by default). You can change the default TTL by setting [`defaultMaxAgeSeconds`](/docs/api/prefetch/interfaces/sw_Prefetcher.PrefetcherConfig.html#defaultMaxAgeSeconds) when initializing the `Prefetcher` instance in your service worker. For example, to set the default TTL to 10 minutes, you would initialize the `Prefetcher` instance as follows:
+
+```js filename="service-worker.js"
+const prefetcher = new Prefetcher({defaultMaxAgeSeconds: 60 * 10}); // set the local cache TTL to 10 minutes
+```
+
+## Prefetching Urls {/* prefetching-urls */}
+
+With the service worker installed and a cache policy configured, you can now begin prefetching URLs. Prefetch requests are given the lowest priority. This ensures that they do not block more critical requests like API calls, images, scripts, and navigation.
+
+<Callout type="important">
+
+Note that in versions prior to {{ PRODUCT }} v7, prefetching was automatic based on routes defined with a caching rule utilizing the `cache-manifest.js` file. This is no longer the case in {{ PRODUCT }} v7. You must now explicitly prefetch URLs using the `prefetch` function, utilizing the [`watch`](/docs/api/prefetch/interfaces/window_InstallOptions.default.html#watch) option to prefetch URLs based on element visibility.
+
+</Callout>
+
+The [`prefetch`](/docs/api/prefetch/functions/window_prefetch.prefetch.html) function accepts a URL and an optional `config` object with properties defined in the [`PrefetchConfiguration`](/docs/api/prefetch/types/window_prefetch.PrefetchConfiguration.html) interface. This function may be called at any time after the service worker is installed. The following sections describe various ways to implement prefetching.
+
+### Automatic Prefetching {/* automatic-prefetching */}
+
+To automatically prefetch URLs based on element visibility, you can use the [`watch`](/docs/api/prefetch/interfaces/window_InstallOptions.default.html#watch) option when installing the service worker. The `watch` option accepts an array of objects with `selector` and `callback` properties. The `selector` property is a CSS selector that matches elements to watch for visibility. The `callback` property is a function that is called when an element matching the selector becomes visible. The callback function is passed the element as an argument. The following example will prefetch URLs for all links with an `href` attribute that are visible on the page:
+
+```js filename="app.js"
+import { install, prefetch } from '{{ PACKAGE_NAME }}/prefetch/window';
+
+/*
+  Your client-side code here
+*/
+
+// install the service worker
+document.addEventListener('DOMContentLoaded', () => {
+  install({
+    watch: [
+      {
+        selector: 'a[href^="/"]',
+        callback: (el) => {
+          prefetch(el.getAttribute('href'));
+        },
+      },
+      {
+        selector: 'link[href^="/"]',
+        callback: (el) => {
+          prefetch(el.getAttribute('href'));
+        },
+      },
+    ],
+  });
+});
+```
+
+### Manual Prefetching {/* manual-prefetching */}
+
+Manual prefetching utilizes the same `prefetch` function as automatic prefetching, but is called manually from your client-side code. This could be useful if you want to prefetch URLs based on user interaction or other events. The following example will prefetch URLs for links with an `href` attribute when the user hovers over them:
+
+```js filename="app.js"
+import { install, prefetch } from '{{ PACKAGE_NAME }}/prefetch/window';
+
+/*
+  Your client-side code here
+*/
+
+document.addEventListener('DOMContentLoaded', () => {
+  install({
+    /* install options */
+  });
+
+  // prefetch URLs when the user hovers over them
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.tagName === 'A') {
+      prefetch(e.target.getAttribute('href'));
+    }
+  });
+});
+```
+
+## Framework Prefetch Components {/* framework-prefetch-components */}
+
+{{ PRODUCT }} provides prefetch component integration for a few of the following front-end frameworks:
+
+  - [Next.js](#nextjs)
+  - [React](#react)
+  - [Vue.js](#vuejs)
+
+These components allow for easier prefetch integration with your existing framework code.
+
+### React {/* react */}
 
 The `{{ PACKAGE_NAME }}/react` package provides a `Prefetch` component that you can wrap around any link to prefetch the link when it becomes visible in the viewport:
 
@@ -158,7 +214,7 @@ function ProductLink({product}) {
 
 By default, `Prefetch` will fetch and cache the URL in the link's `href` attribute. If you have a single page app, you most likely want to prefetch the corresponding API call for the page rather than the page's HTML. The example above shows you how to set the `url` property to control which URL is prefetched.
 
-## Next.js {/* nextjs */}
+### Next.js {/* nextjs */}
 
 If you're using Next.js with `getServerSideProps`, use `createNextDataURL` from `{{ PACKAGE_NAME }}/next/client` to prefetch the data for the linked page.
 
@@ -210,7 +266,7 @@ export async function getServerSideProps({params: {id}}) {
 }
 ```
 
-## Vue {/* vue */}
+### Vue.js {/* vuejs */}
 
 The `{{ PACKAGE_NAME }}/vue` package provides a `Prefetch` component that you can wrap around any link to prefetch the link when it becomes visible in the viewport:
 
@@ -239,7 +295,7 @@ By default, prefetching only fetches the JSON API data or HTML document for a pr
 
 To add deep fetching to your project, add the [DeepFetchPlugin](/docs/api/prefetch/classes/sw_DeepFetchPlugin.default.html) to your service worker. The `DeepFetchPlugin` is then configured with an array of selectors that describe which assets need to be prefetched:
 
-```js
+```js filename="service-worker.js"
 import {Prefetcher} from '{{ PACKAGE_NAME }}/prefetch/sw';
 import DeepFetchPlugin from '{{ PACKAGE_NAME }}/prefetch/sw/DeepFetchPlugin';
 
@@ -256,11 +312,11 @@ new Prefetcher({
 
 The `DeepFetchPlugin` can parse both HTML and JSON documents to extract the page assets that must be deep fetched. For {{ PRODUCT_NAME }} projects that are headless (i.e. the front end communicates with the backend through an API), you'll typically use the JSON option. However if the backend and front-end endpoints are communicating using HTML responses then you'll want to use the HTML option. Note that you can mix both HTML and JSON configuration objects in the an array passed to the `DeepFetchPlugin`.
 
-### Deep fetching URLs in JSON responses {/* deep-fetching-urls-in-json-responses */}
+### Deep Fetching Urls in JSON Responses {/* deep-fetching-urls-in-json-responses */}
 
-For JSON responses, you'll pass the `DeepFetchPlugin` an array of [DeepFetchJsonConfig interface]({{ DOCS_URL }}/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchjsonconfig.html) objects. These `DeepFetchJsonConfig` objects describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
+For JSON responses, you'll pass the `DeepFetchPlugin` an array of [DeepFetchJsonConfig interface](/docs/api/prefetch/classes/sw_DeepFetchPlugin.default.html#jsonConfigs) objects. These `DeepFetchJsonConfig` objects describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
 
-```js
+```js filename="service-worker.js"
 new DeepFetchPlugin([
   // parses the category API response to deep fetch the product images:
   {
@@ -279,13 +335,13 @@ new DeepFetchPlugin([
 
 The `jsonQuery` syntax is provided by the [json-query](https://github.com/auditassistant/json-query) library. You can test your JSON queries using their [JSON-query Tester Sandbox](https://maxleiko.github.io/json-query-tester/).
 
-### Deep Fetching for HTML documents {/* deep-fetching-for-html-documents */}
+### Deep Fetching for HTML Documents {/* deep-fetching-for-html-documents */}
 
-To deep fetch HTML documents, pass the plugin objects that match the [DeepFetchHtmlConfig interface]({{ DOCS_URL }}/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchhtmlconfig.html) and describe which HTML elements need to be prefetched via CSS selectors.
+To deep fetch HTML documents, pass the plugin objects that match the [DeepFetchHtmlConfig interface](/docs/api/prefetch/classes/sw_DeepFetchPlugin.default.html#htmlConfigs) and describe which HTML elements need to be prefetched via CSS selectors.
 
 For example, imagine you're configuring prefetching for a product page and you want to ensure the main product image is prefetched so that it appears immediately when the page loads. If the main product image is displayed with an HTML `img` element with a CSS class called `product-featured-media`, it can be prefetched by adding the following to the DeepFetchPlugin:
 
-```js
+```js filename="service-worker.js"
 import {Prefetcher} from '{{ PACKAGE_NAME }}/prefetch/sw';
 import DeepFetchPlugin from '{{ PACKAGE_NAME }}/prefetch/sw/DeepFetchPlugin';
 
@@ -303,11 +359,11 @@ new Prefetcher({
 });
 ```
 
-#### Computing the URL to be prefetched {/* computing-the-url-to-be-prefetched */}
+#### Computing the URL to Be Prefetched {/* computing-the-url-to-be-prefetched */}
 
 In the example above the `img` element's `src` attribute contains URL that needs to be prefetched. Sometimes finding the URL to prefetch is not so straightforward. For example, apps sometimes use JavaScript to compute the URL for responsive images based on the user's device size. In such cases you can provide a `callback` function which will be passed all matching elements and decide what URLs to prefetch. Here is an example:
 
-```typescript
+```typescript filename="service-worker.js"
 import {Prefetcher, prefetch} from '{{ PACKAGE_NAME }}/prefetch/sw';
 import DeepFetchPlugin, {
   DeepFetchCallbackParam,
@@ -348,7 +404,7 @@ By default, {{ PRODUCT_NAME }} will only serve prefetch requests from the edge c
 1. Ensure that the URLs you're prefetching match exactly those that are fetched during page navigation. Prefetch URLs will have `?{{ COOKIE_PREFIX }}_prefetch=1` whereas the URLs associated with page navigation won't. That's okay. The `{{ COOKIE_PREFIX }}_*` query parameters are automatically excluded from the cache key. Just ensure that there are no other differences.
 2. Ensure that `caching` settings have stale-while-revalidate enabled. For example:
 
-```js
+```js filename="routes.js"
 router.get('/p/:productId', {
   caching: {
     max_age: '1h',
@@ -366,7 +422,7 @@ router.get('/p/:productId', {
 3. Consider increasing `caching.max_age`. The shorter the cache time to live is, the more prefetches will fail.
 4. Set the `includeCacheMisses` install option to `true`. This should be used with caution and is not recommended for use in production because it will significantly increase the traffic to your origin or API servers.
 
-```js
+```js filename="app.js"
 import install from '{{ PACKAGE_NAME }}/prefetch/window/install';
 
 // Call the following once when the page loads to allow prefetch requests to be served when responses

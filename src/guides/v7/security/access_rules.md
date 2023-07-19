@@ -39,7 +39,7 @@ blacklists for the following categories:
 
     <a id="country"></a>
 
--   **Country:** Identifies requests by the country from which the request originated. Specify each desired country using a [country code](/reference/country_codes).  
+-   **Country:** Identifies requests by the country from which the request originated. Specify each desired country using a [country code](/guides/reference/country_codes).  
 
     <Callout type="info">
 

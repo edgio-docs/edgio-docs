@@ -318,7 +318,7 @@ new Router()
 
 Determines whether the cache key will include or exclude query string parameters associated with a request. 
 
-[Learn more about cache keys.](/guides/performance/caching#cache-key)
+[Learn more about cache keys.](/guides/performance/caching/cache_key)
 
 Include or exclude all query string parameters through the `Include All` or `Exclude All` modes. Alternatively, include or exclude specific query string parameters through the `Include` or `Include All Except` modes.
 
@@ -337,7 +337,7 @@ Include or exclude all query string parameters through the `Include All` or `Exc
 -   **Include All Except:** Contains the set of parameter(s) will be excluded from the cache key. All other query string parameters will be included in the cache key.
 
 <edgejs>
-[Learn more about cache keys.](/guides/performance/caching#cache-key)
+[Learn more about cache keys.](/guides/performance/caching/cache_key)
 
 Include or exclude all query string parameters through the `include_all` property or `exclude_all` property. Alternatively, include or exclude specific query string parameters through the `include` property, `exclude` property, or both.
 
@@ -949,7 +949,7 @@ new Router()
 
 Rewrites the default cache key for a set of requests. 
 
-[Learn more about cache keys.](/guides/performance/caching#cache-key)
+[Learn more about cache keys.](/guides/performance/caching/cache_key)
 
 **Key information:**
 
@@ -984,26 +984,10 @@ Rewrites the default cache key for a set of requests.
 
         </Callout>
 
-**Example:**
-
-This example demonstrates how to apply a custom default cache key for requests to the `marketing` folder. Specifically, we will append the value assigned to the `Session-Type` request header to the default cache key. A sample URL is provided below.
-
-`https://www.example.com/conferences/marketing/index.htm`
-
-We will now set the **Source** option to the following pattern to identify requests to the `marketing` folder:
-
-`/conferences/marketing/(.*)`
-
-The last URL segment is set to `(.*)`. This regular expression syntax matches any number of characters that follow `/conferences/marketing/`. 
-
-We will now set the default cache key to the request's relative path followed by a dash and the value assigned to the `Session-Type` request header by setting the **Destination** option to:
-
-`/conferences/marketing/$1-%{http_Session_Type}`
-
-Notice that we are using `$1`, which is a numbered backreference, to reintroduce the value captured by `(.*)` within the **Source** option.
+View examples on how to add [cookies](/guides/performance/caching/cache_key#cookie-example) or the [client's country](/guides/performance/caching/cache_key#country-example) to the cache key.
 
 <edgejs>
-[Learn more about cache keys.](/guides/performance/caching#cache-key)
+[Learn more about cache keys.](/guides/performance/caching/cache_key)
 
 **Key information:**
 

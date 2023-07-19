@@ -286,8 +286,7 @@ Application configuration:
 
 <a id="enforcement-mode"></a>
 
-You may apply an access, custom, or managed rule in
-one of the following modes:
+You may apply an access, custom, or managed rule in one of the following modes:
 -   **Production:** This mode secures your application by allowing
     you to choose from a variety of actions through which your security
     policy will be [enforced](#enforcement).
@@ -314,10 +313,8 @@ one of the following modes:
 
 ## Enforcement {/*enforcement*/}
 
-You may customize how rules that run in [production
-mode](#enforcement-mode) will be enforced. Enforcement is triggered when:
--   A threat is detected when the security policy defined within an
-    access rule, custom rule, or managed rule is violated.
+You may customize how rules that run in [production mode](#enforcement-mode) will be enforced. Enforcement is triggered when:
+-   A threat is detected when the security policy defined within an access rule, custom rule, or managed rule is violated.
 -   A rate limit defined within a rate rule is exceeded.
 
 <Callout type="info">

@@ -10,7 +10,7 @@ title: Recent Event Logs
     
     By default, the dashboard displays recent log events for [threats](#threat-log-data) (i.e., access rule, custom rule, and managed rule violations).
 
-2.  Optional. Click on the [Bot](#bot-log-data), [Rates](#rate-limit-log-data), or [Rate Enforcement](#rate-enforcement-log-data) tab to view recent log events for bot traffic or rate limiting.
+2.  Optional. Click on the [Bot](#bot-log-data), [Rates](#rate-limit-log-data), or [Rate Enforcement](#rate-limit-enforcement-log-data) tab to view recent log events for bot traffic or rate limiting.
 
 ## Threat Log Data {/*threat-log-data*/}
 

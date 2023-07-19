@@ -14,14 +14,14 @@ Note: Nuxt3 is still in beta and is not recommended for production.
   repoUrl="https://github.com/layer0-docs/layer0-nuxt3-example" 
   deployFromRepo />
 
-## Connector {/*connector*/}
+<!--## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-nuxt-nitro-connector">
   View the Connector Code
 </ButtonLink>
-
+-->
 {{ PREREQ.md }}
 
 ## Getting Started {/*getting-started*/}
@@ -36,7 +36,7 @@ To create a new Nuxt3 application, run:
 npx nuxi init <app-name>
 ```
 
-Note: Learn more about [npx](https://nodejs.dev/learn/the-npx-nodejs-package-runner) and [Creating a new Nuxt3 project](https://v3.nuxtjs.org/getting-started/installation#new-project).
+Note: Learn more about [npx](https://docs.npmjs.com/cli/v9/commands/npx) and [Creating a new Nuxt3 project](https://v3.nuxtjs.org/getting-started/installation#new-project).
 
 After the installation is complete, change directory to the new project:
 

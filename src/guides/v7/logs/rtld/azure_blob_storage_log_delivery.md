@@ -77,7 +77,7 @@ RTLD may automatically deliver compressed log data to an Azure Blob Storage cont
     
     2.  Optional. Set the **Prefix** option to a value that defines a virtual log file storage location and/or a prefix that will be added to each log file added to your container.
 
-        [Learn more.](#log-file-prefix)
+        [Learn more about prefixes.](#log-file-prefix)
     
     3.  From the **Access Type** option, select whether log data uploads will be authorized via a SAS token or an access key and then paste it in the field below it.
     

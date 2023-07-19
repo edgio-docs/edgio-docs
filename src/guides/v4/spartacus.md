@@ -5,7 +5,7 @@ title: Spartacus for SAP Commerce Cloud (formerly SAP Hybris)
 This guide shows you how to deploy a [Spartacus](https://sap.github.io/spartacus-docs) application to {{ PRODUCT }}.
 
 <ButtonLinksGroup>
-  <ButtonLink variant="fill" type="default" href="https://layer0-docs-layer0-spartacus-example-default.layer0-limelight.link/">
+  <ButtonLink variant="fill" type="default" href="https://edgio-community-examples-spartacus-live.layer0-limelight.link/electronics-spa/">
     Try the Spartacus Example Site
     </ButtonLink>
   <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-spartacus-example">
@@ -14,14 +14,14 @@ This guide shows you how to deploy a [Spartacus](https://sap.github.io/spartacus
   <ButtonLink variant="stroke" type="deploy" withIcon={true} href="https://app.layer0.co/deploy?button&deploy&repo=https%3A%2F%2Fgithub.com%2Flayer0-docs%2Flayer0-spartacus-example" />
 </ButtonLinksGroup>
 
-## Connector {/*connector*/}
+<!--## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-spartacus-connector">
  View the Connector Code
 </ButtonLink>
-
+-->
 {{ PREREQ.md }}
 
 

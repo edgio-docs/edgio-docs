@@ -88,6 +88,7 @@ const EXAMPLES_REPOS = {
   'static-vue': 'https://github.com/edgio-docs/edgio-static-vuejs-example',
 };
 
+const TEAM_ID = `-   \`<TEAM ID>\`**:** Required. Replace this variable with your team's tenant ID.`;
 const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up*/}
 
 Deploying requires an account on ${PRODUCT}. [Sign up here for free.](${APP_URL}/signup)`;
@@ -481,6 +482,7 @@ const config = {
   STARTER_NAME,
   STATUS_URL,
   SUPPORT_URL,
+  TEAM_ID,
   YEAR,
   WWW_URL,
   RUM_NS,

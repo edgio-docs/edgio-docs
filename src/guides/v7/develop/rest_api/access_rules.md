@@ -19,7 +19,7 @@ Automate the following tasks:
 
 </Callout>
 
-## Authorization
+## Authorization {/*authorization*/}
 
 Authorize requests through the `app.waf` scope.
 
@@ -37,7 +37,7 @@ A request to create an access rule is described below.
 
 Define the following variable when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 
 <h4>Request Headers</h4>
 
@@ -97,7 +97,7 @@ The response body for a successful request contains the following properties:
 A sample JSON request is shown below.
 
 ```json
-POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/acl  HTTP/1.1
+POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {
@@ -223,7 +223,7 @@ A request to delete an access rule is described below.
 
 Define the following variable when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<ACCESS RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired access rule.
 
     <Callout type="tip">
@@ -259,7 +259,7 @@ The response body for a successful request contains the following properties:
 A sample JSON request is shown below.
 
 ```json
-DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/acl/CGifudum  HTTP/1.1
+DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl/CGifudum  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -291,7 +291,7 @@ A request to retrieve all access rules is described below.
 
 Define the following variable when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 
 <h4>Request Headers</h4>
 
@@ -320,7 +320,7 @@ The response body for a successful request contains the following response eleme
 A sample JSON request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/acl  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -353,7 +353,7 @@ A request to retrieve an access rule is described below.
 
 Define the following variable when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<ACCESS RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired access rule.
 
     <Callout type="tip">
@@ -418,7 +418,7 @@ All entries within a cookie, referrer, URL, or user agent whitelist, accesslist,
 A sample JSON request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/acl/CGifudum  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl/CGifudum  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -547,7 +547,7 @@ A request to update an access rule is described below.
 
 Define the following variable when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<ACCESS RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired access rule.
 
     <Callout type="tip">
@@ -615,7 +615,7 @@ The response body for a successful request contains the following properties:
 A sample JSON request is shown below.
 
 ```json
-PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/acl/CGifudum  HTTP/1.1
+PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl/CGifudum  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {

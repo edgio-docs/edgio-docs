@@ -24,7 +24,7 @@ Retrieve all available managed rule sets (e.g., ERS), policies (e.g., TW IP Repu
 
 </Callout>
 
-## Authorization
+## Authorization {/*authorization*/}
 
 Authorize requests through the `app.waf` scope.
 
@@ -42,7 +42,7 @@ A request to create a managed rule is described below.
 
 Define the following variable when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 
 <h4>Request Headers</h4>
 
@@ -199,7 +199,7 @@ A request to delete a managed rule is described below.
 
 Define the following variables when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<MANAGED RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired managed rule. Use the [Get All Managed Rules operation](#get-all-managed-rules) to retrieve a list of managed rules and their system-defined IDs.
 
 <h4>Request Headers</h4>
@@ -260,7 +260,7 @@ A request to retrieve all managed rules is described below.
 
 Define the following variable when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 
 <h4>Request Headers</h4>
 
@@ -328,7 +328,7 @@ A request to retrieve policies is described below.
 
 Define the following variables when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<RULE SET ID>`**:** Required. Replace this variable with the system-defined ID of the rule set whose policies will be retrieved. Find out the system-defined ID of the rule set associated with the desired managed rule through the `ruleset_id` response property of the [Get Managed Rule operation](#get-managed-rule). Alternatively, retrieve a list of the available rule sets and their system-defined IDs through the [Get Available Managed Rule Sets operation](#get-available-managed-rule-sets).
 -   `<RULE SET VERSION>`**:** Required. Replace this variable with the version of the rule set whose policies will be retrieved. Find out the version of the rule set associated with the desired managed rule through the `ruleset_version` response property of the [Get Managed Rule operation](#get-managed-rule).
 
@@ -498,7 +498,7 @@ A request to retrieve rule sets is described below.
 
 Define the following variable when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 
 <h4>Request Headers</h4>
 
@@ -594,7 +594,7 @@ A request to retrieve rules is described below.
 
 Define the following variables when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<RULE SET ID>`**:** Required. Replace this variable with the system-defined ID of the rule set that contains the policy whose rules will be retrieved. Find out the system-defined ID of the rule set associated with the desired managed rule through the `ruleset_id` response property of the [Get Managed Rule operation](#get-managed-rule). Alternatively, retrieve a list of the available rule sets and their system-defined IDs through the [Get Available Managed Rule Sets operation](#get-available-managed-rule-sets).
 -   `<RULE SET VERSION>`**:** Required. Replace this variable with the version of the rule set that contains the policy whose rules will be retrieved. Find out the version of the rule set associated with the desired managed rule through the `ruleset_version` response property of the [Get Managed Rule operation](#get-managed-rule).
 -   `<POLICY ID>`**:** Required. Replace this variable with the system-defined ID of the policy whose rules will be retrieved. Use the [Get Available Policies operation](#get-available-policies) to retrieve a list of the available policies and their system-defined IDs.
@@ -710,7 +710,7 @@ A request to retrieve a managed rule is described below.
 
 Define the following variables when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<MANAGED RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired managed rule. Use the [Get All Managed Rules operation](#get-all-managed-rules) to retrieve a list of managed rules and their system-defined IDs.
 
 <h4>Request Headers</h4>
@@ -866,7 +866,7 @@ A request to update a managed rule is described below.
 
 Define the following variables when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<MANAGED RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired managed rule. Use the [Get All Managed Rules operation](#get-all-managed-rules) to retrieve a list of managed rules and their system-defined IDs.
 
 <h4>Request Headers</h4>

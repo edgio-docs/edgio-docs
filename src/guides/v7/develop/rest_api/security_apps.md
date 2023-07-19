@@ -22,7 +22,7 @@ A Security App:
 
 </Callout>
 
-## Authorization
+## Authorization {/*authorization*/}
 
 Authorize requests through the `app.waf` scope.
 
@@ -40,7 +40,7 @@ A request to retrieve all Security Apps is described below.
 
 Define the following variable when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 
 <h4>Request Headers</h4>
 
@@ -75,7 +75,7 @@ The response body for a successful request contains the following response eleme
 A sample JSON request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/scopes  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/scopes  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -187,7 +187,7 @@ A request to manage Security Apps is described below.
 
 Define the following variable when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 
 <h4>Request Headers</h4>
 
@@ -228,7 +228,7 @@ The response body for a successful request contains the following properties:
 A sample JSON request is shown below.
 
 ```json
-POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/scopes  HTTP/1.1
+POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/scopes  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 ```json

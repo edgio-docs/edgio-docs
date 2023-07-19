@@ -106,7 +106,7 @@ Automate the following tasks:
     -   The request satisfies at least one `variable` object in the root of the `sec_rule` object.
     -   The request satisfies at least one `variable` object in each `chained_rule` object.
 
-## Authorization
+## Authorization {/*authorization*/}
 
 Authorize requests through the `app.waf` scope.
 
@@ -126,7 +126,7 @@ A request to create a custom rule set is described below.
 
 Define the following variable when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 
 <h4>Request Headers</h4>
 
@@ -298,7 +298,7 @@ A request to delete a custom rule is described below.
 
 Define the following variables when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<CUSTOM RULE ID>`**:** Replace this variable with the system-defined ID for your custom rule. Use the [Get All Custom Rules operation](#get-all-custom-rules) to retrieve a list of custom rule sets and their IDs.
 
 <h4>Request Headers</h4>
@@ -360,7 +360,7 @@ A request to retrieve all custom rule sets is described below.
 
 Define the following variable when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 
 <h4>Request Headers</h4>
 
@@ -424,7 +424,7 @@ A request to retrieve a custom rule is described below.
 
 Define the following variables when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<CUSTOM RULE ID>`**:** Replace this variable with the system-defined ID for your custom rule. Use the [Get All Custom Rules operation](#get-all-custom-rules) to retrieve a list of custom rule sets and their IDs.
 
 
@@ -596,7 +596,7 @@ A request to update a custom rule set is described below.
 
 Define the following variables when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<CUSTOM RULE ID>`**:** Replace this variable with the system-defined ID for your custom rule. Use the [Get All Custom Rules operation](#get-all-custom-rules) to retrieve a list of custom rule sets and their IDs.
 
 <h4>Request Headers</h4>

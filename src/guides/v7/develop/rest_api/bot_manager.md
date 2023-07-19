@@ -20,13 +20,15 @@ Automate the following tasks:
     -   [Get Bot Rule Set](#get-bot-rule-set)
     -   [Update Bot Rule Set](#update-bot-rule-set)
 
+Retrieve all known bots through the [Get Known Bots operation](#get-known-bots).
+
 <Callout type="info">
 
   WAF Insights does not support automation through our REST API web service. If you are currently using WAF Insights, upgrade your WAF solution to take advantage of our REST API.
 
 </Callout>
 
-## Setup
+## Setup {/*setup*/}
 
 Set up bot manager by performing the following steps:
 1.  Create a bot rule set configuration through the [Add Bot Rule Set operation](#add-bot-rule-set).
@@ -37,7 +39,7 @@ Set up bot manager by performing the following steps:
 
 -   Setting up bot manager involves two configurations:
     -   **Bot Manager Configuration:** This configuration defines a set of enforcement actions and when they will be applied to traffic. You must assign a bot rule set to this configuration through the `bots_prod_id` property.
-    -   **Bot Rule Set:** This configuration defines how bot traffic will be identified through one or more bot rules. Each bot rule defines how {{ PRODUCT }} will identify bots for a set of requests. You may identify bot traffic through our bot reputation database or through custom match conditions. 
+    -   **Bot Rule Set:** This configuration defines how bot traffic will be identified through one or more bot rule(s). Each bot rule defines how {{ PRODUCT }} will identify bots for a set of requests. You may identify bot traffic through our bot reputation database or through custom match conditions. 
         -   **Reputation Database:** A bot rule that relies on our reputation database is defined through the `directive.include` property.
         
             **Example:**
@@ -125,7 +127,7 @@ Set up bot manager by performing the following steps:
     -   The request satisfies at least one `variable` object in the root of the `sec_rule` object.
     -   The request satisfies at least one `variable` object in each `chained_rule` object.
 
-## Authorization
+## Authorization {/*authorization*/}
 
 Authorize requests through the `app.bot_security` scope.
 
@@ -145,7 +147,7 @@ A request to add a bot manager configuration is described below.
 
 Define the following variable when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 
 <h4>Request Headers</h4>
 
@@ -255,7 +257,7 @@ A request to delete a bot manager configuration is described below.
 
 Define the following variables when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot manager configuration. Use the [Get All Bot Manager Configurations operation](#get-all-bot-manager-configurations) to retrieve a list of bot manager configurations and their system-defined IDs.
 
 <h4>Request Headers</h4>
@@ -317,7 +319,7 @@ A request to retrieve all bot manager configurations is described below.
 
 Define the following variable when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 
 <h4>Request Headers</h4>
 
@@ -369,7 +371,7 @@ Content-Length: 114
 
 ## Get Bot Manager Configuration {/*get-bot-manager-configuration*/}
 
-Retrieves a bot manager configuration. A bot manager configuration contains one or more bot rules. 
+Retrieves a bot manager configuration. A bot manager configuration contains one or more bot rule(s). 
 
 <h3>Request</h3>
 
@@ -379,7 +381,7 @@ A request to retrieve a bot manager configuration is described below.
 
 Define the following variables when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot manager configuration. Use the [Get All Bot Manager Configurations operation](#get-all-bot-manager-configurations) to retrieve a list of bot manager configurations and their system-defined IDs.
 
 <h4>Request Headers</h4>
@@ -468,7 +470,7 @@ FINDME
 
 ## Update Bot Manager Configuration {/*update-bot-manager-configuration*/}
 
-Updates a bot manager configuration. A bot manager configuration contains one or more bot rules. 
+Updates a bot manager configuration. A bot manager configuration contains one or more bot rule(s). 
 
 <h3>Request</h3>
 
@@ -478,7 +480,7 @@ A request to update a bot manager configuration is described below.
 
 Define the following variables when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot manager configuration. Use the [Get All Bot Manager Configurations operation](#get-all-bot-manager-configurations) to retrieve a list of bot manager configurations and their system-defined IDs.
 
 <h4>Request Headers</h4>
@@ -618,7 +620,7 @@ A request to add a bot rule set is described below.
 
 Define the following variable when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 
 <h4>Request Headers</h4>
 
@@ -670,7 +672,7 @@ The `variable` array identifies each request element for which a comparison will
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|type|String|Required. Determines the request element that will be assessed. Valid values are:<ul><li>**GEO:** Identifies the country from which the request originated by its 2 character country code. </li><li>QUERY_STRING </li><li>**REMOTE_ADDR:** Identifies the client's IP address. </li><li>REMOTE_ASN </li><li>REQUEST_COOKIES </li><li>REQUEST_FILENAME</li><li>REQUEST_HEADERS </li><li>REQUEST_METHOD </li><li>REQUEST_URI</li></ul> If a request element consists of one or more key-value pairs (e.g., `REQUEST_HEADERS`), then you may identify a key through a `match` object. If `is_count` has been disabled, then you may identify a specific value through the `operator` object.|
+|type|String|Required. Determines the request element that will be assessed. Valid values are:<ul><li>BOT_SCORE</li><li>**GEO:** Identifies the country from which the request originated by its 2 character country code. </li><li>JA3</li><li>QUERY_STRING </li><li>**REMOTE_ADDR:** Identifies the client's IP address. </li><li>REMOTE_ASN </li><li>REQUEST_COOKIES </li><li>**REQUEST_FILENAME:** Request URL path.</li><li>REQUEST_HEADERS </li><li>REQUEST_METHOD</li><li>REQUEST_URI</li></ul> If a request element consists of one or more key-value pair(s) (e.g., `REQUEST_HEADERS`), then you may identify a key through a `match` object. If `is_count` has been disabled, then you may identify a specific value through the `operator` object.|
 |match|Array of objects|Contains comparison settings for the request element identified by the `type` property.|
 |is_count|Boolean|Determines whether a comparison will be performed between the `operator` object and a string value or the number of matches found. Valid values are:<ul><li>**true:** A counter will increment whenever the request element defined by this `variable object` is found. Our service will compare this value against the `operator.value` property. If you enable the `is_count` property, then you must also set the `operator.type` property to `EQ`.</li><li>**false:** Our service will compare the string value derived from the request element defined by this `variable` object against the `operator.value` property.</li></ul>|
 
@@ -713,8 +715,9 @@ The `operator` object describes the comparison that will be performed on the req
 |Name|Data Type|Description|
 |--- |--- |--- |
 |is_negated|Boolean|Indicates whether a condition will be satisfied when the value derived from the request element defined within a `variable` object matches or does not match the `value` property. Valid values are:<ul><li>**True:** Does not match</li><li>**False:** Matches</li></ul>|
-|type|String|Required. Indicates how the system will interpret the comparison between the `value` property and the value derived from the request element defined within a `variable` object. Valid values are:<ul><li>**RX:** Indicates that the string value derived from the request element must satisfy the regular expression defined in the `value` property. </li><li>**STREQ:** Indicates that the string value derived from the request element must be an exact match to the `value` property.</li><li>**CONTAINS:** Indicates that the `value` property must contain the string value derived from the request element.</li><li>**BEGINSWITH:** Indicates that the `value` property must start with the string value derived from the request element.</li><li>**ENDSWITH:** Indicates that the `value` property must end with the string value derived from the request element.</li><li>**EQ:** Indicates that the number derived from the `variable` object must be an exact match to the `value` property. You should only use `EQ` when the `is_count` property has been enabled.</li><li>**IPMATCH:** Requires that the request's IP address either be contained by an IP block or be an exact match to an IP address defined in the `value` property. Only use `IPMATCH` with the `REMOTE_ADDR` variable.</li></ul>|
-|value|String|Required. Indicates a value that will be compared against the string or number value derived from the request element defined within a `variable` object. If you are identifying traffic by URL path (`REQUEST_URI`), then you should specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining this property. <br />**Example:** `/marketing` <br />If you are identifying traffic by IP address (`REMOTE_ADDR` / `IPMATCH`), then you should use a comma-delimited list to specify multiple IP blocks and IP addresses. <br />**Example:** `192.0.2.20,203.0.113.0/24,2001:DB8::/32`|
+|type|String|Required. Indicates how the system will interpret the comparison between the `value` property and the value derived from the request element defined within a `variable` object. Valid values are:<ul><li>**RX:** Indicates that the string value derived from the request element must satisfy the regular expression defined in the `value` property. </li><li>**STREQ:** Indicates that the string value derived from the request element must be an exact match to the `value` or `values` property.</li><li>**CONTAINS:** Indicates that the `value` property must contain the string value derived from the request element.</li><li>**BEGINSWITH:** Indicates that the `value` property must start with the string value derived from the request element.</li><li>**ENDSWITH:** Indicates that the `value` property must end with the string value derived from the request element.</li><li>**EQ:** Indicates that the number derived from the `variable` object must be an exact match to the `value` property. You should only use `EQ` when the `is_count` property has been enabled.</li><li>**IPMATCH:** Requires that the request's IP address either be contained by an IP block or be an exact match to an IP address defined in the `value` property. Only use `IPMATCH` with the `REMOTE_ADDR` variable.</li></ul>|
+|value|String|Indicates a value that will be compared against the string or number value derived from the request element defined within a `variable` object. If you are identifying traffic by URL path (`REQUEST_URI`), then you should specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining this property. <br />**Example:** `/marketing` <br />If you are identifying traffic by IP address (`REMOTE_ADDR` / `IPMATCH`), then you should use a comma-delimited list to specify multiple IP blocks and IP addresses. <br />**Example:** `192.0.2.20,203.0.113.0/24,2001:DB8::/32`|
+|values|Array of string values| This property is only applicable when performing a STREQ match by JA3 variable. Indicates the value(s) that will be compared against the string or number value derived from the request element defined within a `variable` object.|
 
 ##### chained_rule Array
 
@@ -808,7 +811,7 @@ A request to delete a bot rule set is described below.
 
 Define the following variables when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<BOT RULE SET ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot rule set. Use the [Get All Bot Rule Sets operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their system-defined IDs.
 
 <h4>Request Headers</h4>
@@ -870,7 +873,7 @@ A request to retrieve all bot rule sets is described below.
 
 Define the following variable when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 
 <h4>Request Headers</h4>
 
@@ -922,7 +925,7 @@ Content-Length: 114
 
 ## Get Bot Rule Set {/*get-bot-rule-set*/}
 
-Retrieves a bot rule set. A bot rule set contains one or more bot rules. 
+Retrieves a bot rule set. A bot rule set contains one or more bot rule(s). 
 
 <h3>Request</h3>
 
@@ -932,7 +935,7 @@ A request to retrieve a bot rule set is described below.
 
 Define the following variables when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<BOT RULE SET ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot rule set. Use the [Get All Bot Rule Sets operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their system-defined IDs.
 
 <h4>Request Headers</h4>
@@ -985,7 +988,7 @@ The `variable` array identifies each request element for which a comparison will
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|type|String|Determines the request element that will be assessed. Valid values are:<ul><li>**GEO:** Identifies the country from which the request originated by its 2 character country code. </li><li>QUERY_STRING </li><li>**REMOTE_ADDR:** Identifies the client's IP address. </li><li>REMOTE_ASN </li><li>REQUEST_COOKIES </li><li>REQUEST_FILENAME</li><li>REQUEST_HEADERS </li><li>REQUEST_METHOD </li><li>REQUEST_URI</li></ul> <br />If a request element consists of one or more key-value pairs (e.g., `REQUEST_HEADERS`), then you may identify a key through a `match` object. If `is_count` has been disabled, then you may identify a specific value through the `operator` object.|
+|type|String|Required. Determines the request element that will be assessed. Valid values are:<ul><li>BOT_SCORE</li><li>**GEO:** Identifies the country from which the request originated by its 2 character country code. </li><li>JA3</li><li>QUERY_STRING </li><li>**REMOTE_ADDR:** Identifies the client's IP address. </li><li>REMOTE_ASN </li><li>REQUEST_COOKIES </li><li>**REQUEST_FILENAME:** Request URL path.</li><li>REQUEST_HEADERS </li><li>REQUEST_METHOD</li><li>REQUEST_URI</li></ul> If a request element consists of one or more key-value pair(s) (e.g., `REQUEST_HEADERS`), then you may identify a key through a `match` object. If `is_count` has been disabled, then you may identify a specific value through the `operator` object.|
 |match|Array of objects|Contains comparison settings for the request element identified by the `type` property.|
 |is_count|Boolean|Determines whether a comparison will be performed between the `operator` object and a string value or the number of matches found. Valid values are:<ul><li>**true:** A counter will increment whenever the request element defined by this `variable object` is found. Our service will compare this value against the `operator.value` property. If you enable the `is_count` property, then you must also set the `operator.type` property to `EQ`.</li><li>**false:** Our service will compare the string value derived from the request element defined by this `variable` object against the `operator.value` property.</li></ul>|
 
@@ -1029,8 +1032,9 @@ The `operator` object describes the comparison that will be performed on the req
 |Name|Data Type|Description|
 |--- |--- |--- |
 |is_negated|Boolean|Indicates whether a condition will be satisfied when the value derived from the request element defined within a `variable` object matches or does not match the `value` property. Valid values are:<ul><li>**True:** Does not match</li><li>**False:** Matches</li></ul>|
-|type|String|Indicates how the system will interpret the comparison between the `value` property and the value derived from the request element defined within a `variable` object. Valid values are:<ul><li>**RX:** Indicates that the string value derived from the request element must satisfy the regular expression defined in the `value` property. </li><li>**STREQ:** Indicates that the string value derived from the request element must be an exact match to the `value` property.</li><li>**CONTAINS:** Indicates that the `value` property must contain the string value derived from the request element.</li><li>**BEGINSWITH:** Indicates that the `value` property must start with the string value derived from the request element.</li><li>**ENDSWITH:** Indicates that the `value` property must end with the string value derived from the request element.</li><li>**EQ:** Indicates that the number derived from the `variable` object must be an exact match to the `value` property. You should only use `EQ` when the `is_count` property has been enabled.</li><li>**IPMATCH:** Requires that the request's IP address either be contained by an IP block or be an exact match to an IP address defined in the `value` property. Only use `IPMATCH` with the `REMOTE_ADDR` variable.</li></ul>|
+|type|String|Indicates how the system will interpret the comparison between the `value` property and the value derived from the request element defined within a `variable` object. Valid values are:<ul><li>**RX:** Indicates that the string value derived from the request element must satisfy the regular expression defined in the `value` property. </li><li>**STREQ:** Indicates that the string value derived from the request element must be an exact match to the `value` or `values` property.</li><li>**CONTAINS:** Indicates that the `value` property must contain the string value derived from the request element.</li><li>**BEGINSWITH:** Indicates that the `value` property must start with the string value derived from the request element.</li><li>**ENDSWITH:** Indicates that the `value` property must end with the string value derived from the request element.</li><li>**EQ:** Indicates that the number derived from the `variable` object must be an exact match to the `value` property. You should only use `EQ` when the `is_count` property has been enabled.</li><li>**IPMATCH:** Requires that the request's IP address either be contained by an IP block or be an exact match to an IP address defined in the `value` property. Only use `IPMATCH` with the `REMOTE_ADDR` variable.</li></ul>|
 |value|String|Indicates a value that will be compared against the string or number value derived from the request element defined within a `variable` object. |
+|values|Array of string values| This property is only applicable when performing a STREQ match by JA3 variable. Indicates the value(s) that will be compared against the string or number value derived from the request element defined within a `variable` object.|
 
 ##### chained_rule Array
 
@@ -1101,7 +1105,7 @@ Content-Length: 750
 
 ## Update Bot Rule Set {/*update-bot-rule-set*/}
 
-Updates a bot rule set. A bot rule set contains one or more bot rules. 
+Updates a bot rule set. A bot rule set contains one or more bot rule(s). 
 
 <h3>Request</h3>
 
@@ -1111,7 +1115,7 @@ A request to update a bot rule set is described below.
 
 Define the following variables when submitting the above request:
 
--   `<TEAM ID>`**:** Required. Replace this variable with your team's tenant ID. 
+{{ TEAM_ID }}
 -   `<BOT RULE SET ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot rule set. Use the [Get All Bot Rule Sets operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their system-defined IDs.
 
 <h4>Request Headers</h4>
@@ -1164,7 +1168,7 @@ The `variable` array identifies each request element for which a comparison will
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|type|String|Required. Determines the request element that will be assessed. Valid values are:<ul><li>**GEO:** Identifies the country from which the request originated by its 2 character country code. </li><li>QUERY_STRING </li><li>**REMOTE_ADDR:** Identifies the client's IP address. </li><li>REMOTE_ASN </li><li>REQUEST_COOKIES </li><li>REQUEST_FILENAME</li><li>REQUEST_HEADERS </li><li>REQUEST_METHOD </li><li>REQUEST_URI</li></ul> <br />If a request element consists of one or more key-value pairs (e.g., `REQUEST_HEADERS`), then you may identify a key through a `match` object. If `is_count` has been disabled, then you may identify a specific value through the `operator` object.|
+|type|String|Required. Determines the request element that will be assessed. Valid values are:<ul><li>BOT_SCORE</li><li>**GEO:** Identifies the country from which the request originated by its 2 character country code. </li><li>JA3</li><li>QUERY_STRING </li><li>**REMOTE_ADDR:** Identifies the client's IP address. </li><li>REMOTE_ASN </li><li>REQUEST_COOKIES </li><li>**REQUEST_FILENAME:** Request URL path.</li><li>REQUEST_HEADERS </li><li>REQUEST_METHOD</li><li>REQUEST_URI</li></ul> If a request element consists of one or more key-value pair(s) (e.g., `REQUEST_HEADERS`), then you may identify a key through a `match` object. If `is_count` has been disabled, then you may identify a specific value through the `operator` object.|
 |match|Array of objects|Contains comparison settings for the request element identified by the `type` property.|
 |is_count|Boolean|Determines whether a comparison will be performed between the `operator` object and a string value or the number of matches found. Valid values are:<ul><li>**true:** A counter will increment whenever the request element defined by this `variable object` is found. Our service will compare this value against the `operator.value` property. If you enable the `is_count` property, then you must also set the `operator.type` property to `EQ`.</li><li>**false:** Our service will compare the string value derived from the request element defined by this `variable` object against the `operator.value` property.</li></ul>|
 
@@ -1200,14 +1204,6 @@ The `action` object determines whether the value derived from the request elemen
 |msg|String|Determines the rule message that will be assigned to this bot rule. This message is exposed through the Bot Events view of the Security dashboard. This field is only applicable for the `action` object that resides in the root of the `sec_rule` object. <br />**Default Value:** Blank|
 |t|Array of string values|Determines the set of transformations that will be applied to the value derived from the request element identified in a `variable` object (i.e., source value). Transformations are always applied to the source value, regardless of the number of transformations that have been defined. Valid values are:<ul><li>**NONE:** Indicates that the source value should not be modified.</li><li>**LOWERCASE:** Indicates that the source value should be converted to lowercase characters.</li><li>**URLDECODE:** Indicates that the source value should be URL decoded. This transformation is useful when the source value has been URL encoded twice.</li><li>**REMOVENULLS:** Indicates that null values should be removed from the source value.</li></ul> A criterion is satisfied if the source value or any of the modified string values meet the conditions defined by the `operator` object.|
 
-The `operator` object describes the comparison that will be performed on the request element(s) defined within a `variable` object using the following properties:
-
-|Name|Data Type|Description|
-|--- |--- |--- |
-|is_negated|Boolean|Indicates whether a condition will be satisfied when the value derived from the request element defined within a `variable` object matches or does not match the `value` property. Valid values are:<ul><li>**True:** Does not match</li><li>**False:** Matches</li></ul>|
-|type|String|Indicates how the system will interpret the comparison between the `value` property and the value derived from the request element defined within a `variable` object. Valid values are:<ul><li>**RX:** Indicates that the string value derived from the request element must satisfy the regular expression defined in the `value` property. </li><li>**STREQ:** Indicates that the string value derived from the request element must be an exact match to the `value` property.</li><li>**CONTAINS:** Indicates that the `value` property must contain the string value derived from the request element.</li><li>**BEGINSWITH:** Indicates that the `value` property must start with the string value derived from the request element.</li><li>**ENDSWITH:** Indicates that the `value` property must end with the string value derived from the request element.</li><li>**EQ:** Indicates that the number derived from the `variable` object must be an exact match to the `value` property. You should only use `EQ` when the `is_count` property has been enabled.</li><li>**IPMATCH:** Requires that the request's IP address either be contained by an IP block or be an exact match to an IP address defined in the `value` property. Only use `IPMATCH` with the `REMOTE_ADDR` variable.</li></ul>|
-|value|String|Indicates a value that will be compared against the string or number value derived from the request element defined within a `variable` object. |
-
 ##### operator Object
 
 The `operator` object describes the comparison that will be performed on the request element(s) defined within a `variable` object using the following properties:
@@ -1215,8 +1211,9 @@ The `operator` object describes the comparison that will be performed on the req
 |Name|Data Type|Description|
 |--- |--- |--- |
 |is_negated|Boolean|Indicates whether a condition will be satisfied when the value derived from the request element defined within a `variable` object matches or does not match the `value` property. Valid values are:<ul><li>**True:** Does not match</li><li>**False:** Matches</li></ul>|
-|type|String|Indicates how the system will interpret the comparison between the `value` property and the value derived from the request element defined within a `variable` object. Valid values are:<ul><li>**RX:** Indicates that the string value derived from the request element must satisfy the regular expression defined in the `value` property. </li><li>**STREQ:** Indicates that the string value derived from the request element must be an exact match to the `value` property.</li><li>**CONTAINS:** Indicates that the `value` property must contain the string value derived from the request element.</li><li>**BEGINSWITH:** Indicates that the `value` property must start with the string value derived from the request element.</li><li>**ENDSWITH:** Indicates that the `value` property must end with the string value derived from the request element.</li><li>**EQ:** Indicates that the number derived from the `variable` object must be an exact match to the `value` property. You should only use `EQ` when the `is_count` property has been enabled.</li><li>**IPMATCH:** Requires that the request's IP address either be contained by an IP block or be an exact match to an IP address defined in the `value` property. Only use `IPMATCH` with the `REMOTE_ADDR` variable.</li></ul>|
+|type|String|Indicates how the system will interpret the comparison between the `value` property and the value derived from the request element defined within a `variable` object. Valid values are:<ul><li>**RX:** Indicates that the string value derived from the request element must satisfy the regular expression defined in the `value` property. </li><li>**STREQ:** Indicates that the string value derived from the request element must be an exact match to the `value` or `values` property.</li><li>**CONTAINS:** Indicates that the `value` property must contain the string value derived from the request element.</li><li>**BEGINSWITH:** Indicates that the `value` property must start with the string value derived from the request element.</li><li>**ENDSWITH:** Indicates that the `value` property must end with the string value derived from the request element.</li><li>**EQ:** Indicates that the number derived from the `variable` object must be an exact match to the `value` property. You should only use `EQ` when the `is_count` property has been enabled.</li><li>**IPMATCH:** Requires that the request's IP address either be contained by an IP block or be an exact match to an IP address defined in the `value` property. Only use `IPMATCH` with the `REMOTE_ADDR` variable.</li></ul>|
 |value|String|Indicates a value that will be compared against the string or number value derived from the request element defined within a `variable` object. |
+|values|Array of string values| This property is only applicable when performing a STREQ match by JA3 variable. Indicates the value(s) that will be compared against the string or number value derived from the request element defined within a `variable` object.|
 
 ##### chained_rule Array
 
@@ -1295,5 +1292,54 @@ Content-Length: 65
     "id": "pfJKToQF",
     "status": "success",
     "success": true
+}
+```
+
+## Get Known Bots {/*get-known-bots*/}
+
+Retrieve a list of known bots. 
+
+<h3>Request</h3>
+
+A request to retrieve known bots is described below.
+
+`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/known-bots/companies`
+
+<h4>Request Headers</h4>
+
+This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+
+<h4>Request Body</h4>
+
+Request body properties are not required by this operation.
+
+{{ API_RESPONSE.md }}
+
+<h4>Response Body</h4>
+
+The response body for a successful request contains an array of string values. Each string value is a known bot. 
+
+{{ API_ERRORS.md }}
+
+<h3>Sample Request and Response (JSON)</h3>
+
+A sample JSON request is shown below.
+
+```json
+GET  {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/known-bots/companies  HTTP/1.1
+{{ API_SAMPLE_REQUEST_HEADERS.md }}
+```
+
+A sample JSON response is shown below.
+
+```json
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: application/json; charset=utf-8
+Date:  Thu, 15 Apr 2021 12:00:00 GMT
+Content-Length: 65
+
+{
+FINDME
 }
 ```

@@ -16,27 +16,29 @@ const packageJson = require('../../package.json');
 
 let modules;
 
+const variableRe = /{{\s*(\w+)(\(([^)]*)\))?\s*}}/gi;
+
 // Looks for constants in headings and replaces the constants.
 function replaceConstantInHeader(header) {
-  const replacedHeader = header.replace(/{{\s*(\w+)\s*}}/g, (match) => {
-    const constantStringInMatch = match.replace(/{{|}}/g, '').trim();
-    const replacedConstant = mdConstants[constantStringInMatch];
+  return header.replace(variableRe, '');
+}
 
-    if (!replacedConstant) {
-      console.log(
-        'Note: Hey, it looks like the constant `%s` in heading `%s` is undefined. Replaced it with an empty string',
-        match,
-        header
-      );
+/**
+ *
+ * @param {String} str
+ * @returns Array of constants placeholders in the string
+ */
+function getConstantsAsSpecial(str) {
+  const variableRe = /({{\s*(\w+)(\(([^)]*)\))?\s*}})/gi;
+  const matches = [];
+  let match;
 
-      return '';
-    }
-    // don't substitute constants in ids
-    // return replacedConstant;
-    return '';
-  });
+  while ((match = variableRe.exec(str)) !== null) {
+    const [, placeholder] = match;
+    matches.push(placeholder);
+  }
 
-  return replacedHeader;
+  return matches;
 }
 
 function addHeaderID(line, slugger) {
@@ -88,11 +90,11 @@ function addHeaderID(line, slugger) {
     );
   }
 
-  const remainingHeading = (match[5] || '').trim();
-
   return (
     match[1] +
-    title(match[2], {special: packageJson.titles}) +
+    title(match[2], {
+      special: [...packageJson.titles, ...getConstantsAsSpecial(match[2])],
+    }) +
     ` {/*${id.trim()}*/}`
   ).trim();
 }

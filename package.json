@@ -17,7 +17,7 @@
     "prettier": "yarn format:source",
     "prettier:diff": "yarn nit:source",
     "lint-heading-ids": "node scripts/headingIdLinter.js",
-    "fix-headings": "node scripts/headingIdLinter.js --fix",
+    "_fix-headings": "node scripts/headingIdLinter.js --fix",
     "fix-callouts": "node scripts/headingCalloutLinter.js --fix",
     "ci-check": "npm-run-all prettier:diff --parallel lint tsc lint-heading-ids",
     "tsc": "tsc --noEmit",
@@ -35,9 +35,6 @@
     ],
     "src/templates/table_*.md": [
       "yarn update-template-tables"
-    ],
-    "src/guides/**/*.md": [
-      "yarn fix-headings --fix --force-new"
     ]
   },
   "resolutions": {
@@ -46,7 +43,7 @@
   "dependencies": {
     "@docsearch/css": "3.0.0-alpha.41",
     "@docsearch/react": "3.0.0-alpha.41",
-    "@edgio/rum": "^6.0.0",
+    "@edgio/rum": "^7.0.0",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@headlessui/react": "^1.7.7",
@@ -54,7 +51,7 @@
     "@mdx-js/react": "^1.6.16",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.13",
-    "@octokit/core": "^4.0.5",
+    "@octokit/core": "^4.2.4",
     "cheerio": "^1.0.0-rc.12",
     "classnames": "^2.2.6",
     "github-download-directory": "^3.0.0",
@@ -78,12 +75,12 @@
     "winston": "^3.8.2"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.0.5",
-    "@edgio/core": "^6.0.5",
-    "@edgio/devtools": "^6.0.5",
-    "@edgio/next": "^6.0.5",
-    "@edgio/prefetch": "^6.0.5",
-    "@edgio/react": "^6.0.5",
+    "@edgio/cli": "^7.0.23",
+    "@edgio/core": "^7.0.23",
+    "@edgio/devtools": "^7.0.23",
+    "@edgio/next": "^7.0.23",
+    "@edgio/prefetch": "^7.0.23",
+    "@edgio/react": "^7.0.23",
     "@mdx-js/loader": "^1.6.16",
     "@types/body-scroll-lock": "^2.6.1",
     "@types/classnames": "^2.3.1",

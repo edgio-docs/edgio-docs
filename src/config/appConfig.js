@@ -1,5 +1,5 @@
 import {PRODUCT} from '../../constants';
-// IMPORTANT
+
 export const siteConfig = {
   editUrl: 'https://github.com/edgio-docs/edgio-docs/edit/src/pages',
   copyright: `Copyright © ${new Date().getFullYear()} ${PRODUCT}. All Rights Reserved.`,

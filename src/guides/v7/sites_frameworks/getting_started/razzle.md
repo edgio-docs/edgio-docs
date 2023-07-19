@@ -48,7 +48,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 {{ FULL_CLI_NAME }} dev
 ```
 
-### Simulate Edge Caching Locally {/*simulate-edge-caching-locally*/}
+### Simulate edge caching locally {/*simulate-edge-caching-locally*/}
 
 To simulate edge caching locally, run:
 

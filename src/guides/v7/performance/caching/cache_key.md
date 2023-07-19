@@ -12,7 +12,7 @@ View a request's cache key through the `x-ec-cache-key` response header. By defa
 
 [Learn how to generate this response header.](/guides/performance/response#requesting-debug-cache-information)
 
-## Customizing the Cache Key {/*customizing-the-cache-key*/}
+## Customizing the Cache Key {/* customizing-the-cache-key */}
 
 If your web application relies on query string parameter(s), request header(s), or cookie(s) when generating a response, then you should customize the cache key to include those elements. 
 
@@ -40,11 +40,11 @@ If your web application relies on query string parameter(s), request header(s), 
 	
 	</Callout>
 
-## Sample Custom Cache Key Implementations {/*sample-custom-cache-key-implementations*/}
+## Sample Custom Cache Key Implementations {/* sample-custom-cache-key-implementations */}
 
 Examples of how to customize the cache key are provided below.
 
-### Query String Parameter Example {/*query-string-parameter-example*/}
+### Query String Parameter Example {/* query-string-parameter-example */}
 
 Add the `page` and `filters` query string parameters to the cache key using either of the following methods:
 -   **Rules:** Create a rule that sets the [Cache Key Query String feature](/guides/performance/rules/features#cache-key-query-string) to `Include` the `page` and `filters` query string parameters.
@@ -64,7 +64,7 @@ Add the `page` and `filters` query string parameters to the cache key using eith
     });
     ```
 
-### Cookie Example {/*cookie-example*/}
+### Cookie Example {/* cookie-example */}
 
 This example demonstrates how to apply a custom default cache key for requests to the `marketing` folder. A sample URL is provided below.
 
@@ -100,7 +100,7 @@ Specifically, we will append the `language` and `currency` cookies to the cache 
       },
     });
     ```
-### Country Example {/*country-example*/}
+### Country Example {/* country-example */}
 
 This example demonstrates how to add geolocation metadata to the cache key for requests to the `marketing` folder. A sample URL is provided below.
 
@@ -138,7 +138,7 @@ Specifically, we will add the country from which the request originated to the c
 
 </Callout>
 
-## Cache Key Reference {/*cache-key-reference*/}
+## Cache Key Reference {/* cache-key-reference */}
 
 By default, our edge servers use the following syntax when calculating a cache key:
 

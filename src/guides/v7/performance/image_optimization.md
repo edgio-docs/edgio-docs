@@ -30,7 +30,7 @@ Optimize images through the following steps:
 
     -   Requesting data from the client through [client hints](#client-hints).
 
-## How Does It Work? {/*how-does-it-work*/}
+## How Does It Work? {/*how-does-it-work-*/}
 
 A client's request URL determines the set of transformations that will be applied to an image. For example, the following request URL will resize the source image to 500 x 500 and then apply a blur effect to the resized image:
 
@@ -46,7 +46,7 @@ Upon receiving a request for an optimized image, our CDN will check whether an i
 
 ![How does it work?](/images/v7/performance/image-optimization-hdiw.png)
 
-## Image Requirements {/*image-requirements*/}
+## Image Requirements{/*image-requirements*/}
 
 Restrictions vary according to whether {{ PRODUCT }} Image Optimization will process or generate an image.
 
@@ -197,7 +197,7 @@ Use a comma to separate multiple values.
 
 [Try now.](https://edgeio.whitecdn.com/demo.jpg?auto=webp,smallest)
 
-### Bg-Color {/*bg-color*/}
+### Bg-color {/*bg-color*/}
 
 Sets the background color for transparent content and padding added by [pad](#pad) and [canvas](#canvas).
 
@@ -792,7 +792,7 @@ The response from our CDN varies according to results for the request to optimiz
 |No Image|400 Bad Request|{{ PRODUCT }} was unable to optimize the requested image due to an unsupported query string parameter or value. Check the request URL and try again. The response will include the following headers:<br />`x-edgeio-status: ERROR`<br />`x-edgeio-error: Error Message`<br /><br />Check the `x-edgeio-error` response header for additional information on why the request failed.|
 |No Image|5xx|{{ PRODUCT }} was unable to communicate with your origin server and both the source and optimized image were not previously cached.|
 
-## Bypassing {{ Product }} Image Optimization {/*bypassing-image-optimization*/}
+## Bypassing {{ PRODUCT }} Image Optimization {/*bypassing-image-optimization*/}
 
 Prevent {{ PRODUCT }} from transforming an image by including the following header in the request:
 
@@ -837,7 +837,7 @@ We will apply different fit modes to a source image (3520 x 2347 pixels) that ha
 
 [Try now.](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500)
 
-#### Crop {/*crop*/}
+#### Crop
 
 Applying crop mode will proportionately crop the width from both sides of the image. This occurs because the source image's aspect ratio is different than the specified region.
 
@@ -847,7 +847,7 @@ Applying crop mode will proportionately crop the width from both sides of the im
 
 [Try now.](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500&fit=crop)
 
-#### Cover {/*cover*/}
+#### Cover
 
 Applying `cover` mode resizes the image's height to 500 pixels. However, the image's width will extend beyond the `width` parameter in order to maintain the source image's original aspect ratio.
 
@@ -857,7 +857,7 @@ Applying `cover` mode resizes the image's height to 500 pixels. However, the ima
 
 [Try now.](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500&fit=cover)
 
-#### Bounds {/*bounds*/}
+#### Bounds
 
 Applying bounds mode resizes the image's height to 500 pixels. However, the image's width will fall short of the `width` parameter in order to maintain the source image's original aspect ratio while ensuring that the image fits within the specified region.
 
@@ -867,7 +867,7 @@ Applying bounds mode resizes the image's height to 500 pixels. However, the imag
 
 [Try now.](https://edgeio.whitecdn.com/demo.jpg?width=500&height=500&fit=bounds)
 
-#### Smart {/*smart*/}
+#### Smart
 
 Applying smart mode centers the image on its subject matter and then proportionally crops the width from both sides of the image. This occurs because the source image's aspect ratio is different than the specified region.
 

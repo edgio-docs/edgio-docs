@@ -65,7 +65,7 @@ You can find the DNS and allowed IP configurations in the _Networking_ tab for y
 
 In order to configure your DNS provider to direct traffic for a particular set of domains to {{ PRODUCT_NAME }}, you must create DNS records for your website. If you are launching a new site, then you can create the records whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
 
-#### Using a Sub-Domain (E.g. Www.mywebsite.xyz) {/*using-a-sub-domain-eg-wwwmywebsitexyz*/}
+#### Using a Sub-domain (e.g. www.mywebsite.xyz) {/*using-a-sub-domain-eg-wwwmywebsitexyz*/}
 
 To host your site on a subdomain, add a `CNAME` record with the value shown under _DNS Configuration_ (see above).
 
@@ -80,7 +80,7 @@ dig www.mywebsite.xyz
 www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.layer0-limelight.link.
 ```
 
-#### Using an Apex Domain (E.g. Mywebsite.xyz) {/*using-an-apex-domain-eg-mywebsitexyz*/}
+#### Using an Apex Domain (e.g. mywebsite.xyz) {/*using-an-apex-domain-eg-mywebsitexyz*/}
 
 To host your site on the apex domain, create multiple `A` records on your apex domain, with the following Anycast IP address values: 208.69.180.11, 208.69.180.12, 208.69.180.13, 208.69.180.14
 
@@ -98,7 +98,7 @@ mywebsite.xyz.        599    IN    A        208.69.180.13
 mywebsite.xyz.        599    IN    A        208.69.180.14
 ```
 
-#### Using Both an Apex Domain and a Sub-Domain (E.g. Mywebsite.xyz and Www.mywebsite.xyz) {/*using-both-an-apex-domain-and-a-sub-domain-eg-mywebsitexyz-and-wwwmywebsitexyz*/}
+#### Using Both an Apex Domain and a Sub-domain (e.g. mywebsite.xyz and www.mywebsite.xyz) {/*using-both-an-apex-domain-and-a-sub-domain-eg-mywebsitexyz-and-wwwmywebsitexyz*/}
 
 - Create the multiple `A` records with the IPs, on your apex domain (see above).
 - Create a `CNAME` record for your sub-domain, with the value of your apex domain.
@@ -117,11 +117,11 @@ mywebsite.xyz.        599    IN    A        208.69.180.14
    mywebsite.xyz.        599    IN    A        208.69.180.14
    ```
 
-### Allowing {{ Product_name }} Ip Addresses {/*allowing-ip-addresses*/}
+### Allowing {{ PRODUCT_NAME }} IP Addresses {/*allowing-layer0-ip-addresses*/}
 
 Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are allowed in the security layer in front of your origin and/or API servers. The IP addresses you need to allow can be found on the _Allowlisting_ section of the _Networking_ tab of the _Environment_ page. Note that each team may have their own set of IPs so these values cannot be copied from one team to another.
 
-## Tls/ssl {/*tlsssl*/}
+## TLS/SSL {/*tlsssl*/}
 
 All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured with TLS (Transport Layer Security). TLS, also known as SSL (Secure Sockets Layer), is a cryptographic protocol to communicate securely over the Internet. TLS provides end-to-end data encryption and data integrity for all web requests.
 
@@ -387,7 +387,7 @@ To upload a certificate, you must have the **Admin** role on your team, and your
 - Intermediate certificates (IC) used by CA, including CA's signing certificate
 - Private key that was generated at the time of the CSR.
 
-#### Uploading the Certificate {/*uploading-the-certificate*/}
+#### Uploading the certificate {/*uploading-the-certificate*/}
 
 To upload your SSL certificate, do the following:
 

@@ -18,7 +18,7 @@ Our access log data describes each request served by {{ PRODUCT }}.
 
 ![access](/images/logs/access.png)
 
-## Access Log Fields {/*access-log-fields*/}
+## Access Log Fields {/* access-log-fields */}
 
 An access log file may contain the following fields:
 
@@ -86,7 +86,7 @@ An access log file may contain the following fields:
 - **xut (_String_):** <a id="xut" /> Indicates the value for the `{{ HEADER_PREFIX }}-user-t` response header (e.g., `fetch:/path=123`). The `{{ HEADER_PREFIX }}-user-t` response header contains [performance](/guides/performance) metrics.
 - **zip (_String_):** <a id="zip" /> Indicates whether the response was compressed. Returns `1` for compressed responses and `0` for uncompressed responses.
 
-## Log Aggregation Tools {/*log-aggregation-tools*/}
+## Log Aggregation Tools {/* setting-up-log-aggregation-tools */}
 
 {{ PRODUCT }} temporarily stores log data within Amazon S3. Use a log aggregation tool to extract log data from AWS S3. Here are a few popular log aggregation tools:
 

@@ -16,7 +16,7 @@ Sanity Studio is a single page app (SPA) written in React, where you can configu
 
 {{ PREREQ.md }}
 
-## Create a New Sanity Studio App {/*create-a-new-sanity-studio-app*/}
+## Create a new Sanity Studio app {/*create-a-new-sanity-studio-app*/}
 
 First, install the [Sanity CLI](https://www.npmjs.com/package/@sanity/cli):
 
@@ -36,9 +36,9 @@ The Sanity CLI will walk you through the necessary steps to set up a project, le
 sanity start
 ```
 
-## Configuring Your Sanity Studio App for {{ Product }} {/*configuring-your-sanity-studio-app-for*/}
+## Configuring your Sanity Studio app for {{ PRODUCT }} {/*configuring-your-sanity-studio-app-for-edgio*/}
 
-### Initialize Your Project {/*initialize-your-project*/}
+### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ CLI_NAME }} init`:
 
@@ -53,7 +53,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Sanity Studio.
 
-### Configure the Routes {/*configure-the-routes*/}
+### Configure the routes {/*configure-the-routes*/}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -86,7 +86,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Sanity Studio App Locally on {{ Product }} {/*run-the-sanity-studio-app-locally-on*/}
+### Run the Sanity Studio app locally on {{ PRODUCT }} {/*run-the-Sanity Studio-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -125,7 +125,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 Refer to the [Deploying](deploy_apps) guide for more information on the `deploy` command and its options.
 
-## Post Deployment Whitelisting {/*post-deployment-whitelisting*/}
+## Post Deployment Whitelisting {/*post-deployment*/}
 
 Once Sanity Studio is deployed, you will need to add it's URL to Sanity’s [CORS origins settings](https://www.sanity.io/docs/front-ends/cors). You can do this from the command line:
 

@@ -4,7 +4,7 @@ title: Next.js
 
 This guide shows you how to deploy a [Next.js](https://nextjs.org/) application to {{ PRODUCT }}.
 
-## Example {/*example*/}
+## Example {/* example */}
 
 <ExampleButtons
   title="Next.js SSR"
@@ -18,11 +18,11 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
 
 -->
 
-## Supported Versions {/*supported-versions*/}
+## Supported Versions {/* supported-versions */}
 
 {{ PRODUCT_NAME }} supports Next.js version 9 through 13.
 
-## Supported Features {/*supported-features*/}
+## Supported Features {/* supported-features */}
 
 {{ PRODUCT_NAME }} supports all of the most powerful features of Next.js, including:
 
@@ -38,9 +38,9 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
 
 {{ PREREQ.md }}
 
-## Getting Started {/*getting-started*/}
+## Getting Started {/* getting-started */}
 
-### Create a Next.js Application {/*create-a-nextjs-application*/}
+### Create a Next.js Application {/* create-a-nextjs-application */}
 
 If you don't already have a Next.js application, you can create one using:
 
@@ -48,7 +48,7 @@ If you don't already have a Next.js application, you can create one using:
 npx create-next-app@latest
 ```
 
-### Initializing Your Project {/*initializing-your-project*/}
+### Initializing your Project {/* initializing-your-project */}
 
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
@@ -65,7 +65,7 @@ This will automatically add all of the required dependencies and files to your p
 - The `{{ PACKAGE_NAME }}/react` package - Provides a `Prefetch` component for prefetching pages.
   {{ INIT_DEFAULT_FILES.md }}
 
-## Config Options {/*config-options*/}
+## Config Options {/* config-options */}
 
 In the generated `{{ CONFIG_FILE }}` file, you can customize how {{ PRODUCT }} builds and runs your Next.js application. Using the `next` key, you can configure the following options:
 
@@ -80,13 +80,13 @@ In the generated `{{ CONFIG_FILE }}` file, you can customize how {{ PRODUCT }} b
 | `proxyToServerlessByDefault` | Reduces the number of generated rules by adding the default catch-all rule that proxies all requests to Next.js in serverless. Set this option to `false` if you want to proxy all unmatched pages to a different origin. | `true`  |
 | `enforceTrailingSlash`       | Adds rules with Next's internal redirects that either add or remove a trailing slash. When set to `false`, the redirect is performed only by the Next.js server itself and doesn't affect other origins.                  | `true`  |
 
-## {{ Product }} Next.js Plugin {/*nextjs-plugin*/}
+## {{ PRODUCT }} Next.js Plugin {/* next-plugin */}
 
 {{ PRODUCT_NAME }} provides the following plugin for Next.js. This plugin is automatically added to your project when you run `{{ FULL_CLI_NAME }} init`.
 
 If your project does not have a `next.config.js` file, one will automatically be added when you run `{{ FULL_CLI_NAME }} init`. Doing so adds the following plugin:
 
-### With{{ Product }} (Required) {/*with-required*/}
+### with{{ PRODUCT }} (required)
 
 The `with{{ PRODUCT }}` plugin optimizes the Next.js build for running on {{ PRODUCT }}. It is required to deploy your application on {{ PRODUCT }}.
 
@@ -100,7 +100,7 @@ module.exports = with{{ PRODUCT }}({
 })
 ```
 
-## {{ Product_name }} Devtools {/*devtools*/}
+## {{ PRODUCT_NAME }} Devtools {/* devtools */}
 
 To understand better the caching mechanism, you can add {{ PRODUCT }} Devtools to see the caching metrics. Add the following code to your `_app.tsx` file:
 
@@ -113,7 +113,7 @@ const MyApp = ({Component, pageProps}) => {
 };
 ```
 
-## Running Locally {/*running-locally*/}
+## Running Locally {/* running-locally */}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -121,7 +121,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 {{ FULL_CLI_NAME }} dev
 ```
 
-## Deploying {/*deploying*/}
+## Deploying {/* deploying */}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
@@ -131,7 +131,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 See [Deployments](/guides/basics/deployments) for more information.
 
-## Prefetching {/*prefetching*/}
+## Prefetching {/* prefetching */}
 
 {{ PREFETCH_TIER1_INTRO }}
 
@@ -187,7 +187,7 @@ export async function getServerSideProps({params: {id}}) {
 
 The `Prefetch` component fetches data for the linked page from {{ PRODUCT }}'s edge cache and adds it to the service worker's cache when the link becomes visible in the viewport. When the user taps on the link, the page transition will be instantaneous because the browser won't need to fetch data from the network.
 
-### Registering the Service Worker {/*registering-the-service-worker*/}
+### Registering the Service Worker {/* registering-the-service-worker */}
 
 To enable prefetching, you need to register the service worker in your app. You can skip this step if your app is already using a service worker. If not, add the following code to your `pages/_app.js` file:
 
@@ -208,7 +208,7 @@ Starting with Next.js 13, when the `app` directory is used, adding `useServiceWo
 
 </Callout>
 
-## Routing {/*routing*/}
+## Routing {/* routing */}
 
 {{ PRODUCT }} supports Next.js's built-in routing scheme. The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Next.js:
 
@@ -221,7 +221,7 @@ export default new Router()
   .use(nextRoutes);
 ```
 
-### Routing Requests to Other Origins {/*routing-requests-to-other-origins*/}
+### Routing Requests to Other Origins {/* routing-requests-to-other-origins */}
 
 To route certain requests to an origin other than your Next.js app, first add the origin to `edgio.config.js`:
 
@@ -260,7 +260,7 @@ export default new Router()
   });
 ```
 
-### Preview Mode {/*preview-mode*/}
+### Preview Mode {/* preview-mode */}
 
 To be able to use [Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode) while being able to cache the respective pages, update your routes to match the requests that contain the two cookies `__prerender_bypass` & `__next_preview_data`, and send those to serverless for rendering.
 
@@ -288,11 +288,11 @@ export default new Router()
   );
 ```
 
-### Rewrites and Redirects {/*rewrites-and-redirects*/}
+### Rewrites and Redirects {/* rewrites-and-redirects */}
 
 The `nextRoutes` plugin automatically adds routes for [rewrites](https://nextjs.org/docs/api-reference/next.config.js/rewrites) and [redirects](https://nextjs.org/docs/api-reference/next.config.js/redirects) specified in `next.config.js`. Redirects are served directly from the network edge to maximize performance.
 
-### Caching {/*caching*/}
+### Caching {/* caching */}
 
 The easiest way to add edge caching to your Next.js app is to add caching routes after `nextRoutes`. For example,
 imagine you have `/pages/p/[productId].js`. Here's how you can SSR responses as well as cache calls to `getServerSideProps`:
@@ -330,7 +330,7 @@ export default new Router()
   })
 ```
 
-### Preventing Next.js Pages from Being Cached by Other Cdns {/*preventing-nextjs-pages-from-being-cached-by-other-cdns*/}
+### Preventing Next.js pages from being cached by other CDNs {/* preventing-nextjs-pages-from-being-cached-by-other-cdns */}
 
 If you are using a CDN in front of {{ PRODUCT_NAME }} and you want to prevent it from caching Next.js pages, you can do so by setting the `bypass_client_cache` option to `true`:
 
@@ -346,7 +346,7 @@ new Router()
   });
 ```
 
-## Using Next-I18next {/*using-next-i18next*/}
+## Using next-i18next {/* using-next-i18next */}
 
 The [next-i18next](https://github.com/isaachinman/next-i18next) package is a popular solution for adding localization to Next.js apps. It has some issues when running in serverless deployments, but you can work around these:
 
@@ -402,7 +402,7 @@ module.exports = {
 
 <!-- A working example app can be found [here](https://github.com/edgio-docs/edgio-next-i18n-example). -->
 
-## Image Optimizer {/*image-optimizer*/}
+## Image optimizer {/* image-optimizer */}
 
 By default, Next.js image optimizer is replaced by our image optimizer, which is available in all build modes. You can disable it and use the built-in Next.js image optimizer instead by adding `disableImageOptimizer: true` to the `next` config in the `{{ CONFIG_FILE }}` file.
 
@@ -420,7 +420,7 @@ Note that Next.js apps built in serverless mode don't include a Next.js image op
 
 </Callout>
 
-## Serverless Bundling {/*serverless-bundling*/}
+## Serverless Bundling {/* serverless-bundling */}
 
 Next.js has continued to improve how it bundles production builds for deployment on serverless architectures. {{ PRODUCT_NAME }} takes advantage of these improvements by applying different configuration options depending on the version of Next.js being used:
 
@@ -437,13 +437,13 @@ Note that NextRouter.render404 and renderNextPage are retired when using Next.js
 
 </Callout>
 
-## Support for Next.js Middleware (Beta) {/*support-for-nextjs-middleware-beta*/}
+## Support for Next.js Middleware (BETA) {/* support-for-nextjs-middleware-beta */}
 
 {{ PRODUCT_NAME }} supports Next.js middleware starting with Next.js 12.2.0.
 
 When using Next.js middleware it should be noted that the middleware functions are only executed at the serverless layer, after the edge cache. Middleware that you want to execute on each request needs to have caching disabled explicitly for the route on which the middleware is enabled. Some Middleware use cases such as rewriting the request to another route would be fine to cache. These use cases need to be evaluated on a per route basis with caching enabled/disabled based on the desired result.
 
-## Runtime Variables Configuration {/*runtime-variables-configuration*/}
+## Runtime Variables Configuration {/* runtime-variables-configuration */}
 
 {{ PRODUCT }} supports runtime variables in `serverRuntimeConfig` and `publicRuntimeConfig` properties of `next.config.js`. For more information, visit the [Next.js Runtime Configuration](https://nextjs.org/docs/api-reference/next.config.js/runtime-configuration) documentation.
 

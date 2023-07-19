@@ -166,7 +166,7 @@ Note that your `{{ CONFIG_FILE }}` file is loaded during deployment to configure
 deploy your site, there won't be any environment variables defined, so you need to include defaults in `{{ CONFIG_FILE }}` as
 shown in the example above.
 
-## Dotenv {/*dotenv*/}
+## dotenv {/*dotenv*/}
 
 To configure secrets during local development, we recommend using [dotenv](https://github.com/motdotla/dotenv).
 If you would like to reference environment variables read from `.env` in `{{ CONFIG_FILE }}`, add the following at the top

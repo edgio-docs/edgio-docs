@@ -11,11 +11,11 @@ We also support static page generation:
 - At build time through Static Site Generation (SSG).
 - After your site has been built through [Incremental Static Regeneration (ISR)](/guides/sites_frameworks/isg).
 
-## Getting Started {/*getting-started*/}
+## Getting Started {/* getting-started */}
 
 {{ PRODUCT }} {{ PRODUCT_PLATFORM }} provides [Next](/guides/sites_frameworks/getting_started/next), [Nuxt](/guides/sites_frameworks/getting_started/nuxt), and [Nuxt3](/guides/sites_frameworks/getting_started/nuxt3) integrations through which you can deploy your websites and applications to {{ PRODUCT }}. Getting started with {{ PRODUCT }} {{ PRODUCT_PLATFORM }} involves initializing your {{ PRODUCT }} property through our CLI. Our CLI will then automatically detect your framework and configure your app accordingly.
 
-## Compute Regions {/*compute-regions*/}
+## Compute Regions {/* compute-regions */}
 
 {{ PRODUCT }} allows you to cache and deliver your content through any of our points of presence (POPs) around the world. However, your serverless code will run in one of the following global regions:
 

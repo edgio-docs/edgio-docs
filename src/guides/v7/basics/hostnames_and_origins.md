@@ -239,7 +239,7 @@ The manner in which an unavailable server affects load balancing is described be
 3.  If the server is still unavailable, then CDN traffic will not be load balanced to the corresponding hostname or IP address for a brief, but slightly longer time period.
 4.  Steps 2 and 3 repeat until the server becomes available.
 
-## Firewall - Allowing {{ Product }} Ip Addresses {/*firewall-allowing-ip-addresses*/}
+## Firewall - Allowing {{ PRODUCT }} IP Addresses {/*firewall-allowing-ip-addresses*/}
 
 As clients request your site, {{ PRODUCT }} sends traffic through our network to the servers associated with your origin configuration(s). You must configure your firewall to allow this traffic to ensure that these requests are not blocked.
 
@@ -273,7 +273,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
     </Callout>
 
-## Serving Traffic through {{ Product }} {/*serving-traffic-through*/}
+## Serving Traffic through {{ PRODUCT }} {/*serving-traffic-through*/}
 
 Once you are ready to serve traffic through {{ PRODUCT }}, you will need to configure DNS for each hostname. DNS configuration consists of defining a CNAME record that points your hostname to our service. 
 

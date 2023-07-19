@@ -4,11 +4,11 @@ title: Performance
 
 This guide shows you how to monitor and improve the performance of your application running on {{ PRODUCT_NAME }}.
 
-## Built-In Timings {/*built-in-timings*/}
+## Built-in Timings {/*built-in-timings*/}
 
 All responses contain an [{{ HEADER_PREFIX }}-t](/guides/response_headers#section_structure_of_) header that contains the time the request spent at each layer of the {{ PRODUCT_NAME }} stack.
 
-## Tracking Your Own Timings {/*tracking-your-own-timings*/}
+## Tracking your Own Timings {/*tracking-your-own-timings*/}
 
 You can use the `{{ PACKAGE_NAME }}/core/timing` module to track how long it takes parts of your code to execute. A common case is
 tracking how long it takes to fetch a result from an upstream API. For example:
@@ -32,7 +32,7 @@ try {
 
 ## Performance Optimizations {/*performance-optimizations*/}
 
-### Turn off Caching When Not Needed {/*turn-off-caching-when-not-needed*/}
+### Turn off Caching When not Needed {/*turn-off-caching-when-not-needed*/}
 
 For `GET` routes that you know you will not or must not cache, always explicitly disable caching. This indicates to {{ PRODUCT_NAME }} that it should not try to coalesce requests which leads to improved performance especially on slower upstreams.
 

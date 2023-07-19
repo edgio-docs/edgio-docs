@@ -52,257 +52,257 @@ Note that if you are not an Enterprise tier customer you will see a message to c
 
 Access logs contain the following fields:
 
-### Timestamp (Number) {/*timestamp-number*/}
+### timestamp (number) {/*timestamp*/}
 
 Millisecond resolution of the request start time in UNIX epoch.
 
-### Bld (String) {/*bld-string*/}
+### bld (string) {/*bld*/}
 
 The application's build number processing this request. Example '1021'.
 
-### Eid (String) {/*eid-string*/}
+### eid (string) {/*eid*/}
 
 The active environment ID in {{ PRODUCT_NAME }}.
 
 _Available since {{ PRODUCT_NAME }} v2.9.0._
 
-### Ev (Number) {/*ev-number*/}
+### ev (number) {/*ev*/}
 
 The active environment version number. Example 95 (number). 
 
-### Ip (String) {/*ip-string*/}
+### ip (string) {/*ip*/}
 
 IP of the most downstream client, determined either through XFF or by reading socket information.
 
-### Met (String) {/*met-string*/}
+### met (string) {/*met*/}
 
 HTTP method.
 
-### Hh (String) {/*hh-string*/}
+### hh (string) {/*hh*/}
 
 Host header as received from the downstream.
 
-### URL (String) {/*url-string*/}
+### url (string) {/*url*/}
 
 HTTP path.
 
-### H2 (String) {/*h2-string*/}
+### h2 (string) {/*h2*/}
 
 Flag indicating whether downstream connection is http/2 or not. Can be '0' or '1'. 
 
-### Psh (Number) {/*psh-number*/}
+### psh (number) {/*psh*/}
 
 Flag indicating whether this request is an http/2 server-side push or not. Can be 0 or 1. 
 
-### Code (String) {/*code-string*/}
+### code (string) {/*code*/}
 
 HTTP response status code.
 
-### Ic (Integer) {/*ic-integer*/}
+### ic (integer) {/*ic*/}
 
 Flag indicating whether this request was cacheable even in theory. Can be 0 or 1. 
 
-### Cc (String) {/*cc-string*/}
+### cc (string) {/*cc*/}
 
 Country code per geo-location.
 
-### S_rq (Number) {/*s_rq-number*/}
+### s_rq (number) {/*s_rq*/}
 
 Size of the request in bytes.
 
-### S_rs (Number) {/*s_rs-number*/}
+### s_rs (number) {/*s_rs*/}
 
 Size of the response in bytes.
 
-### Ds (String) {/*ds-string*/}
+### ds (string) {/*ds*/}
 
 Destination, determined by split testing rules, if any; if no rules, the value is left as the default router.
 
-### Be (String) {/*be-string*/}
+### be (string) {/*be*/}
 
 Backend, determined by the routing rules. The names come from the `backends` structure exported from your `{{ CONFIG_FILE }}` file.
 
-### Bk (String) {/*bk-string*/}
+### bk (string) {/*bk*/}
 
 Split testing bucket cookie value.
 
-### Zip (String) {/*zip-string*/}
+### zip (string) {/*zip*/}
 
 Flag indicating whether the response is compressed or not. Can be '0' or '1'. 
 
-### Rid (String) {/*rid-string*/}
+### rid (string) {/*rid*/}
 
 Unique request ID.
 
-### Waf (String) {/*waf-string*/}
+### waf (string) {/*waf*/}
 
 WAF security state: geo for geo blocking, bl for block list, `dl-{list name}` for dynamic lists
 if the request was blocked; wl for allow list, by for bypass if the request was passed.
 
-### Sh (Number) {/*sh-number*/}
+### sh (number) {/*sh*/}
 
 Flag indicating whether the request was shielded. Can be 0 or 1. 
 
-### Dv (String) {/*dv-string*/}
+### dv (string) {/*dv*/}
 
 Device type desktop, smartphone, tablet, mobile.
 
-### Vn (String) {/*vn-string*/}
+### vn (string) {/*vn*/}
 
 Vendor: apple, microsoft, android.
 
-### Br (String) {/*br-string*/}
+### br (string) {/*br*/}
 
 Browser: chrome, safari, firefox.
 
-### Bot (Number) {/*bot-number*/}
+### bot (number) {/*bot*/}
 
 Flag indicating whether the request was made by a bot. Can be 0 or 1. 
 
-### Er (Number) {/*er-number*/}
+### er (number) {/*er*/}
 
 Flag indicating whether the request was responded from edge (not true for cache hits, just for synthetic requests). Can be 0 or 1. 
 
-### Clv (Number) {/*clv-number*/}
+### clv (number) {/*clv*/}
 
 Cache level on which the request was responded or 0 if it was a miss. Possible values are 0 - miss, 1 - Level 1 hit (edge), 2 - level 2 hit (global).
 
-### Stl (Number) {/*stl-number*/}
+### stl (number) {/*stl*/}
 
 Indicates if the response was stale or not. Can be 0 or 1.
 
-### Done (String) {/*done-string*/}
+### done (string) {/*done*/}
 
 Flag indicating if the response has completed (analogous to 499 in Nginx). '0' or '1'. 
 
-### Cs (String) {/*cs-string*/}
+### cs (string) {/*cs*/}
 
 [Caching status](/guides/caching#section_why_is_my_response_not_being_cached_) (why something was or wasn't cached).
 
-### Ct (String) {/*ct-string*/}
+### ct (string) {/*ct*/}
 
 Response content type.
 
-### Xmr (String) {/*xmr-string*/}
+### xmr (string) {/*xmr*/}
 
 Request header {{ HEADER_PREFIX }}-matched-routes, logs all routes matched and is required to order the routes table in caching metrics.
 
-### Rfr (String) {/*rfr-string*/}
+### rfr (string) {/*rfr*/}
 
 Referrer request header (note the misspelling per HTTP standard).
 
-### Ua (String) {/*ua-string*/}
+### ua (string) {/*ua*/}
 
 User agent.
 
-### Xmt (String) {/*xmt-string*/}
+### xmt (string) {/*xmt*/}
 
 Response [{{ HEADER_PREFIX }}-t](/guides/response_headers#section_structure_of_) header with different critical path timings.
 Example: 'eh=4,ect=2,ecc=hit'.
 
-### Xut (String) {/*xut-string*/}
+### xut (string) {/*xut*/}
 
 Response {{ HEADER_PREFIX }}-user-t header with different user [performance](/guides/performance) metrics.
 Example: fetch:/path=123
 
-### Xms (String) {/*xms-string*/}
+### xms (string) {/*xms*/}
 
 Response {{ HEADER_PREFIX }}-status header with different critical path status codes. Example: 'eh=200,ed=200,gh=200,gd=200,p=200,w=200'.
 
-### Pre (Number or Not Present) {/*pre-number-or-not-present*/}
+### pre (number or not present) {/*pre*/}
 
 If {{ COOKIE_PREFIX }}\_prefetch parameter was specified value of 1, otherwise not present.
 
-### Uv (String) {/*uv-string*/}
+### uv (string) {/*uv*/}
 
 Upstream response's `vary` header value.
 
-### Bip (String) {/*bip-string*/}
+### bip (string) {/*bip*/}
 
 IP of the backend that responded to the request.
 
-### Hrid (String) {/*hrid-string*/}
+### hrid (string) {/*hrid*/}
 
 Request ID of the response hit in the cache. Corresponds to [`{{ HEADER_PREFIX }}-hit-request-id`](response_headers#section_general_headers) response header.
 
-### Ac (String) {/*ac-string*/}
+### ac (string) {/*ac*/}
 
 Accept-Encoding header value. Example: 'gzip'.
 
-### Asn (String) {/*asn-string*/}
+### asn (string) {/*asn*/}
 
 The ASN for the (Autonomous System Number) for this IP.
 Example: '20940'.
 
-### Ce (String) {/*ce-string*/}
+### ce (string) {/*ce*/}
 
 The normalized value of content encoding header as used by edge. Example: 'gzip'.
 
-### Ckh (String) {/*ckh-string*/}
+### ckh (string) {/*ckh*/}
 
 Cache key hash.
 
-### Cv (String) {/*cv-string*/}
+### cv (string) {/*cv*/}
 
 Edgio edge compiler version. Example '1.7.3'.
 
-### Cy (String) {/*cy-string*/}
+### cy (string) {/*cy*/}
 
 City name per geo-location. Example: 'new york'.
 
-### JWT (String) {/*jwt-string*/}
+### jwt (string) {/*jwt*/}
 
 Value of the recommended action per JWT parsing. Can be one of "", "blocked", "permit", "redirect".
 
-### Lo (String) {/*lo-string*/}
+### lo (string) {/*lo*/}
 
 Geographical longitude per geo-location. Example '-73.98'.
 
-### Lt (String) {/*lt-string*/}
+### lt (string) {/*lt*/}
 
 Geographical latitude per geo-location. Example '40.76'.
 
-### Lp (Number) {/*lp-number*/}
+### lp (number) {/*lp*/}
 
 Flag indicating if loading page was served during incremental static rendering. Can be 0 or 1 (number).
 
-### Pc (String) {/*pc-string*/}
+### pc (string) {/*pc*/}
 
 Postal code per geo-location. Example: '10020'
 
-### Prl (Number) {/*prl-number*/}
+### prl (number) {/*prl*/}
 
 Flag indicating if this was a preload request. Can be 0 or 1. 
 
-### Prod (Number) {/*prod-number*/}
+### prod (number) {/*prod*/}
 
 Indicates whether this request belongs to the production environment. Can be 0 or 1 (number).
 
-### Sc (String) {/*sc-string*/}
+### sc (string) {/*sc*/}
 
 State code as per geo-location
 Example: 'NY'
 
-### Sec (String) {/*sec-string*/}
+### sec (string) {/*sec*/}
 
 Security - set to "ip_block_list" if blocked by IP or "country_block_list" if blocked by country code on the edge.
 
-### Ssl (Number) {/*ssl-number*/}
+### ssl (number) {/*ssl*/}
 
 A flag that indicates whether the request was done on HTTPS protocol. Can be 0 or 1.
 
-### T (String) {/*t-string*/}
+### t (string) {/*t*/}
 
 Same as `xmt`. 
 
-### V (String) {/*v-string*/}
+### v (string) {/*v*/}
 
 Layer0/Edgio platform version. Example: '4.19.3'
 
-### Wafv (String) {/*wafv-string*/}
+### wafv (string) {/*wafv*/}
 
 Version of the WAF. Can be an empty string if WAF was not enabled, otherwise the version of the WAF (like 'WAF-1,2').
 
-### Xff (String) {/*xff-string*/}
+### xff (string) {/*xff*/}
 
 The value of the header 'x-forwarded-for'.

@@ -9,7 +9,7 @@ title: Install Node.js and npm
 
 Although you may use a higher version of Node.js, your app will run using the above version when deployed to {{ PRODUCT }}. Therefore, we strongly recommend that you use the Node.js version that corresponds to your {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version when developing your web application.
 
-## Node.js Installation {/*nodejs-installation*/}
+## Node.js Installation {/* node-installation */}
 
 The recommended method for installing Node.js is through a version manager like [nvm](https://github.com/nvm-sh/nvm).
 
@@ -53,7 +53,7 @@ The recommended method for installing Node.js is through a version manager like 
 
   </SnippetGroup>
 
-## Package Managers {/*package-managers*/}
+## Package managers {/* package-managers */}
 
 [npm](https://www.npmjs.com/) is a package manager integrated into Node.
 

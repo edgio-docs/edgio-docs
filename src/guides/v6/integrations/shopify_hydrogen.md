@@ -30,7 +30,7 @@ You’ve installed the following dependencies:
 
 {{ INSTALL_CLI.md }}
 
-## Create a New Shopify Hydrogen App {/*create-a-new-shopify-hydrogen-app*/}
+## Create a new Shopify Hydrogen app {/*create-a-new-shopify-hydrogen-app*/}
 
 If you don't already have a Shopify Hydrogen app, create one by running the following:
 
@@ -92,9 +92,9 @@ npm run dev
 
 <a id="configuring-your-shopify-hydrogen-app"></a>
 
-## Configuring Your Shopify Hydrogen App for {{ Product_name }} {/*configuring-your-shopify-hydrogen-app-for*/}
+## Configuring your Shopify Hydrogen app for {{ PRODUCT_NAME }} {/*configuring-your-shopify-hydrogen-app-for*/}
 
-### Initialize Your Project {/*initialize-your-project*/}
+### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
@@ -111,7 +111,7 @@ This will automatically update your `package.json` and add all of the required {
 
 <a id="update-configuration"></a>
 
-### Update {{ Product_name }} Configuration {/*update-configuration*/}
+### Update {{ PRODUCT_NAME }} Configuration {/*update-configuration*/}
 
 Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 
@@ -125,7 +125,7 @@ module.exports = {
 
 <a id="creating-connector-files"></a>
 
-### Creating {{ Product }} Connector Files {/*creating-connector-files*/}
+### Creating {{ PRODUCT }} connector files {/*creating-connector-files*/}
 
 - Install `@vercel/nft` for Node.js File Tracing, by the following command:
   ```bash
@@ -204,7 +204,7 @@ module.exports = {
     };
   ```
 
-### Configure the Routes {/*configure-the-routes*/}
+### Configure the routes {/*configure-the-routes*/}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -264,7 +264,7 @@ Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full s
 
 <a id="run-the-shopify-hydrogen-app-locally"></a>
 
-### Run the Shopify Hydrogen App Locally on {{ Product_name }} {/*run-the-shopify-hydrogen-app-locally-on*/}
+### Run the Shopify Hydrogen app locally on {{ PRODUCT_NAME }} {/*run-the-shopify-hydrogen-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

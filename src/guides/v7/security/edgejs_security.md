@@ -4,7 +4,7 @@ title: Website Security through EdgeJS
 
 Use CDN-as-code (EdgeJS) to apply basic security to your website.
 
-## Content Security Policy (Csp) {/*content-security-policy-csp*/}
+## Content Security Policy (Csp) {/* content-security-policy-csp */}
 
 [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement to distribution of malware.
 
@@ -50,7 +50,7 @@ basic authentication. Any environment without those environment variables will n
 
 Once deployed, the router will return 403 Forbidden for requests that have the incorrect basic authentication token, and 401 Unauthorized for requests that have no basic authentication token.
 
-## Ssl {/*ssl*/}
+## Ssl {/* ssl */}
 
 By default {{ PRODUCT_NAME }} only serves traffic over the `https` protocol. It automatically redirects `http` requests to the same URL, including any query strings, on `https`.
 
@@ -79,7 +79,7 @@ Additionally:
 - During local development all requests will appear secure by default. To test your router for `http` protocol matching you must either set the `local_{{ COOKIE_PREFIX }}_emulate_http_protocol` cookie to `true` (if using a browser) or send an `{{ HEADER_PREFIX }}-protocol` request header set to `http`.
 -->
 
-## Tls Version {/*tls-version*/}
+## Tls Version {/* tls-version */}
 
 We recommend that you enable TLS 1.3, 1.2, or both on your web server(s). 
 
@@ -87,13 +87,13 @@ We recommend that you enable TLS 1.3, 1.2, or both on your web server(s).
 -   A recommended best practice is to disable support for SSL/TLS versions 1.1 or older.
 -   TLS 1.3 improves security and performance of internet communications. Specifically, it eliminates known TLS 1.2 security vulnerabilities and prevents snooping and man-in-the-middle attacks.
 
-## HTTP/1/2 Version {/*http12-version*/}
+## HTTP/1/2 Version {/* http12-version */}
 
 We support the following HTTP protocol versions for client requests to our network:
 -   **HTTP/1:** {{ PRODUCT }} uses the HTTP protocol version defined in the request when proxying requests to an origin and in the response provided to the client.
 -   **HTTP/2:** {{ PRODUCT }} uses the the HTTP/1.1 protocol when proxying requests to an origin and the HTTP/2 protocol for the response provided to the client.
 
-## Secrets {/*secrets*/}
+## Secrets {/* secrets */}
 
 Rather than putting secret values such as API keys in your code and checking them into source control, you can securely
 store them in environment variables, then access them in your code from `process.env`. 
@@ -118,7 +118,7 @@ Deploying to an environment using a deploy token pulls all environment variables
 
 Use environment variables to store all of your build and runtime secrets in a single place, {{ PORTAL }}, rather than storing some in your CI system's secret manager.
 
-## Cache Poisoning {/*cache-poisoning*/}
+## Cache Poisoning {/* cache-poisoning */}
 
 [Cache poisoning attack](https://owasp.org/www-community/attacks/Cache_Poisoning) is described by OWASP&reg; as:
 
@@ -139,11 +139,11 @@ export default new Router().match("/language/specific/:path", {
 });
 ```
 <!--
-## Bot Detection {/*bot-detection*/}
+## Bot Detection {/* bot-detection */}
 
 {{ PRODUCT_NAME }} examines the `user-agent` header in an incoming request to determine if it includes a string that indicates if it is a bot, and if so, injects `1` in the `{{ HEADER_PREFIX }}-device-is-bot` request header, which will be visible to your server code. If the `user-agent` header does not include any of the strings indicating a bot, a `0` value is injected.
 
-### User Agents and Bots {/*user-agents-and-bots*/}
+### User Agents and Bots {/* user-agents-and-bots */}
 
 The following table list the user agents that {{ PRODUCT_NAME }} examines and describes the corresponding bots.
 

@@ -24,7 +24,7 @@ This Astro example app uses server-side rendering.
 
 {{ PREREQ.md }}
 
-## Create Your Astro Site {/*create-your-astro-site*/}
+## Create your Astro site {/*create-your-astro-site*/}
 
 If you don't have an existing Astro site, you can create one by running:
 
@@ -45,7 +45,7 @@ npm run dev
 npm run build
 ```
 
-## Initializing Your Project {/*initializing-your-project*/}
+## Initializing your Project {/*initializing-your-project*/}
 
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
@@ -53,7 +53,7 @@ Initialize your project for use with {{ PRODUCT }} by running the following comm
 {{ CLI_NAME }} init
 ```
 
-## Update Your {{ Product }} Router {/*update-your-router*/}
+## Update your {{ PRODUCT }} Router {/*update-your-edgio-router*/}
 
 Paste the following into `routes.js` or `routes.ts`, depending on the results of the `{{ CLI_NAME }} init` command:
 
@@ -97,7 +97,7 @@ You can remove the origin backend from `{{ CONFIG_FILE }}`:
 module.exports = {}
 ```
 
-## Deploy to {{ Product }} {/*deploy-to*/}
+## Deploy to {{ PRODUCT }} {/*deploy-to-edgio*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands in your project's root directory:
 

@@ -4,7 +4,7 @@ title: Contributing to the {{ PRODUCT_NAME }} Documentation
 
 {{ PRODUCT_NAME }} is all about putting power in the hands of developers and our documentation is no different. The source code for the {{ PRODUCT_NAME }} developer docs (i.e. this site you're reading now) is in an open [repository on GitHub](https://github.com/{{ DOCS_REPO }}) and we welcome feedback and pull requests. If you've found a typo or a better way to explain something, please submit a [pull request](https://github.com/layer0-docs/layer0-docs/pulls) or [file an issue](https://github.com/layer0-docs/layer0-docs/issues)! Others will likely stumble over the same problem and benefit from your insight.
 
-## Running Locally {/*running-locally*/}
+## Running Locally {/* running-locally */}
 
 To run the {{ PRODUCT_NAME }} docs on your machine, first clone the repository locally,
 
@@ -27,11 +27,11 @@ yarn dev
 
 Finally, visit the site in your browser at http://127.0.0.1:3000.
 
-## Architecture {/*architecture*/}
+## Architecture {/* architecture */}
 
 {{ PRODUCT_NAME }} docs is a simple Next.js application running on {{ PRODUCT_NAME }} (yes we [dogfood](https://en.wikipedia.org/wiki/Eating_your_own_dog_food)). The content is stored as pages called "guides". Each guide is a Markdown file located in the [guides folder](https://github.com/{{ DOCS_REPO }}/tree/main/src/pages/guides)
 
-## How to Contribute {/*how-to-contribute*/}
+## How to Contribute {/* how-to-contribute */}
 
 If you need to modify an existing guide, you can use the `src/data/SidebarMenuItems.tsx` file to locate the corresponding Markdown file to edit. If your contribution needs its own guide, you'll need to create a new Markdown file in the `guides` folder and add a reference to it in `src/data/SidebarMenuItems.tsx`.
 
@@ -52,11 +52,11 @@ We recommend the following process for submitting a change:
 
 ---
 
-## Custom Components {/*custom-components*/}
+## Custom Components {/* custom-components */}
 
 Use the custom components below to enhance the look and feel of your guides.
 
-### Callout {/*callout*/}
+### Callout {/* callout */}
 
 Call attention to specific part of the guide with callouts.
 
@@ -127,7 +127,7 @@ The above code renders:
 </Callout>
 
 ---
-### Codeblock {/*codeblock*/}
+### Codeblock {/* codeblock */}
 
 Provide a language-module for syntax highlighting or none if you still need to use a codeblock.
 
@@ -152,14 +152,14 @@ upload.build.layer0.co
 app.layer0.co
 ```
 
-### Video {/*video*/}
+### Video {/* video */}
 
 ```tsx
 <Video src="video src url"/>
 ```
 
 ---
-### Button Link {/*button-link*/}
+### Button Link {/* button-link */}
 
 ```tsx
 /*
@@ -193,7 +193,7 @@ Renders:
 
 ---
 
-### Button Links Group {/*button-links-group*/}
+### Button Links Group {/* button-links-group */}
 
 ```tsx
 <ButtonLinksGroup>

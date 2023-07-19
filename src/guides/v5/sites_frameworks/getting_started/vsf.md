@@ -16,7 +16,7 @@ Here's an example Vue Storefront 2 app running on {{ PRODUCT }}:
 
 {{ PREREQ.md }}
 
-## Run the Vsf CLI {/*run-the-vsf-cli*/}
+## Run the VSF CLI {/*run-the-vsf-cli*/}
 
 The Vue Storefront CLI tool will generate a preconfigured boilerplate project for you. Use these commands to create a new project and update to the latest dependencies.
 
@@ -47,9 +47,9 @@ cd <project-name>
 npm install
 ```
 
-## Configuring Your Vue Storefront App for {{ Product }} {/*configuring-your-vue-storefront-app-for*/}
+## Configuring your Vue Storefront app for {{ PRODUCT }} {/*configuring-your-vue-storefront-app-for*/}
 
-### Initialize Your Project {/*initialize-your-project*/}
+### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 

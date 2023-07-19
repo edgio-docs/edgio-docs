@@ -14,7 +14,7 @@ This guide shows you how to deploy a [Ionic Vue](https://ionicframework.com/docs
 
 {{ PREREQ.md }}
 
-## Create a New Ionic Vue App {/*create-a-new-ionic-vue-app*/}
+## Create a new Ionic Vue app {/*create-a-new-ionic-vue-app*/}
 
 If you don't already have a Ionic Vue app, create one by running the following:
 
@@ -30,9 +30,9 @@ You can verify your app works by running it locally with:
 npm run start
 ```
 
-## Configuring Your Ionic Vue App for {{ Product }} {/*configuring-your-ionic-vue-app-for*/}
+## Configuring your Ionic Vue app for {{ PRODUCT }} {/*configuring-your-ionic-vue-app-for-edgio*/}
 
-### Initialize Your Project {/*initialize-your-project*/}
+### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ CLI_NAME }} init`:
 
@@ -47,7 +47,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Ionic Vue.
 
-### Configure the Routes {/*configure-the-routes*/}
+### Configure the routes {/*configure-the-routes*/}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -80,7 +80,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Ionic Vue App Locally on {{ Product }} {/*run-the-ionic-vue-app-locally-on*/}
+### Run the Ionic Vue app locally on {{ PRODUCT }} {/*run-the-ionic-vue-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

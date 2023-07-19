@@ -27,7 +27,7 @@ Deploying your web application behind {{ PRODUCT }} optimizes the delivery of yo
 
 ![traffic](/images/starter/traffic.png)
 
-## CDN-As-Code {/*cdn-as-code*/}
+## CDN-As-Code {/* cdn-as-code */}
 
 Our CDN-as-code approach to configuration allows you to configure CDN behavior using {{ EDGEJS_LABEL }} within a file ({{ ROUTES_FILE }}) stored alongside your code. This allows you to leverage the power of source control for collaboration and to link your CDN configurations with specific versions of your web application.
 
@@ -42,7 +42,7 @@ By default, our CLI automatically creates `routes.js` and `{{ CONFIG_FILE }}` up
 
 </Callout>
 
-## Default Route Configuration {/*default-route-configuration*/}
+## Default Route Configuration {/* default-route-configuration */}
 
 By default, your {{ ROUTES_FILE }} contains the following configuration:
 
@@ -85,7 +85,7 @@ Add, modify, and remove backends by editing the [{{ CONFIG_FILE }} file](/guides
 
 </Callout>
 
-## Routes {/*routes*/}
+## Routes {/* routes */}
 
 A route identifies a set of requests through any combination of URL path, HTTP method, cookies, request headers, and query string parameters. The following routes show various ways for identifying requests.
 
@@ -142,7 +142,7 @@ Once you have identified a set of requests, you need to define how {{ PRODUCT }}
 
 [View additional examples.](/guides/performance/cdn_as_code/common_routing_patterns)
 
-### Defining Routes {/*defining-routes*/}
+### Defining Routes {/* defining-a-route */}
 
 We will now define a route by uncommenting the constants and the `match()` method in your {{ ROUTES_FILE }} file. It should now look similar to the following configuration:
 
@@ -282,14 +282,14 @@ export default new Router()
 
 The final line in your {{ ROUTES_FILE }} defines a `fallback()` method that proxies all requests that do not match a route to your `origin` backend.
 
-## Testing Locally {/*testing-locally*/}
+## Testing Locally {/* deploy-locally */}
 
 You may run {{ PRODUCT }} in local development mode to preview your website on your local machine prior to deployment. Local development mode allows for rapid development by allowing you to quickly test changes prior to deployment.
 
 1.  From the command line or terminal, type `{{ FULL_CLI_NAME }} dev`.
 2.  Preview your website by loading `https://127.0.0.1:3000` from within your preferred web browser.
 
-## Deploying Your Property {/*deploying-your-property*/}
+## Deploying Your Property {/* deploy-to */}
 
 Evaluate site performance and QA functionality by deploying your property to {{ PRODUCT }}. Run the following command from your property's root directory:
 
@@ -301,7 +301,7 @@ Assess performance and caching behavior from the {{ PORTAL }}. Fine-tune your co
 
 [Learn more.](/guides/basics/domains)
 
-## Examples {/*examples*/}
+## Examples {/* example */}
 
 Use our sample websites to gain hands-on experience on how to set up {{ PRODUCT }} {{ PRODUCT_EDGE }}. Specifically, you can browse our sample websites, view their source code, and even experiment on them by deploying them to {{ PRODUCT }}.
 
@@ -345,6 +345,6 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
   deployFromRepo
 />
 
-## Issues? {/*issues*/}
+## Issues? {/* issues */}
 
 If you have any issues during this process, check our [forums]({{ FORUM_URL }}) for assistance.

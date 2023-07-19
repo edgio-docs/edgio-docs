@@ -10,7 +10,7 @@ To gain access to the api, provide a deploy token via the `x-api-key` header. De
 
 ## Methods {/*methods*/}
 
-### Clear-Cache {/*clear-cache*/}
+### clear-cache {/*clear-cache*/}
 
 `POST {{ APP_URL }}/api/v1/clear-cache`
 

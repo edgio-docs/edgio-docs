@@ -12,7 +12,7 @@ title: Recent Event Logs
 
 2.  Optional. Click on the [Bot](#bot-log-data), [Rates](#rate-limit-log-data), or [Rate Enforcement](#rate-limit-enforcement-log-data) tab to view recent log events for bot traffic or rate limiting.
 
-## Threat Log Data {/*threat-log-data*/}
+## Threat Log Data {/* threat-log-data */}
 
 The **Threats** tab contains log events for recent access rule, custom rule, or managed rule violations. The header bar for each violation contains the following information:
 -   `<Rule Message>`**:** Identifies the rule that was violated.
@@ -27,7 +27,7 @@ The **Threats** tab contains log events for recent access rule, custom rule, or 
 
 `Access rule for Marketing site [10s ago 15:01:23.45 UTC]`
 
-### Threat Log Fields {/*threat-log-fields*/}
+### Threat Log Fields {/* threat-log-fields */}
 
 Clicking on an event (i.e., rule violation) expands that entry to show detailed information about it. Each event field is described below.
 -   **Timestamp:** Indicates the point-in-time at which the rule violation occurred. This timestamp is reported using a 24 hour time format (UTC/GMT).
@@ -65,7 +65,7 @@ Clicking on an event (i.e., rule violation) expands that entry to show detailed 
 -   **User Agent:** Indicates the user agent that submitted the request that triggered the rule violation. 
     This information is derived from the `User-Agent` request header.
 
-#### Sub Events {/*sub-events*/}
+#### Sub Events {/* sub-events */}
 
 In addition to the core set of fields described above, a sub event for
 each rule that was violated by the request will be reported. The syntax
@@ -134,7 +134,7 @@ Each sub event contains the following fields:
 
 -   **Total Anomaly Score:** Indicates the anomaly score assigned to the request. This score is determined by the number of rules that were violated and their severity.
 
-## Bot Log Data {/*bot-log-data*/}
+## Bot Log Data {/* bot-log-data */}
 
 The **Bot** tab contains log events for recent requests that were flagged as bot traffic. Each request is described as follows:
 
@@ -151,7 +151,7 @@ A sample rule violation is provided below.
 
 `Enforced Rule: Marketing [10s ago 12:00:00.00 UTC]`
 
-### Bot Log Fields {/*bot-log-fields*/}
+### Bot Log Fields {/* bot-log-fields */}
 
 A brief description for each field used to describe/categorize bot traffic is provided below.
 
@@ -214,7 +214,7 @@ A brief description for each field used to describe/categorize bot traffic is pr
 -   **URL:** Indicates the URL for which a browser challenge was issued.
 -   **User Agent:** Indicates the user agent (e.g., web browser) that submitted the request that resulted in a browser challenge. A request's user agent is defined in the `User-Agent` request header.
 
-## Rate Limit Log Data {/*rate-limit-log-data*/}
+## Rate Limit Log Data {/* rate-limit-log-data */}
 
 The **Rates** tab contains log events for recent requests that were rate limited. Each request is described as follows:
 
@@ -239,7 +239,7 @@ A sample rule violation is provided below.
 
 `Action Type: CUSTOM-RESPONSE`
 
-### Rate Limit Log Fields {/*rate-limit-log-fields*/}
+### Rate Limit Log Fields {/* rate-limit-log-fields */}
 
 A brief description for each field used to describe/categorize rate limited requests is provided below.
 -   **Client IP:** Identifies the IP address (IPv4) of the client from which the request originated.
@@ -273,7 +273,7 @@ A brief description for each field used to describe/categorize rate limited requ
 -   **URL:** Indicates the URL of the request that was rate limited.   
 -   **User Agent:** Indicates the user agent that submitted the request that was rate limited. A request's user agent is defined in the `User-Agent` request header.             
 
-## Rate Limit Enforcement Log Data {/*rate-limit-enforcement-log-data*/}
+## Rate Limit Enforcement Log Data {/* rate-limit-enforcement-log-data */}
 
 The **Rate Enforcement** tab contains log events for recent rate limit enforcement events. Each enforcement event is described as follows:
 
@@ -294,7 +294,7 @@ A sample rule violation is provided below.
 
 `Action Type: drop-request`
 
-### Rate Limit Enforcement Log Fields {/*rate-limit-enforcement-log-fields*/}
+### Rate Limit Enforcement Log Fields {/* rate-limit-enforcement-log-fields */}
 
 A brief description for each field used to describe/categorize rate
 limiting enforcement is provided below.

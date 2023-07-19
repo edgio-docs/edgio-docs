@@ -8,7 +8,7 @@ Use Observability to monitor the performance of an application running on {{ PRO
 -   Analyze the performance for specific requests through the [{{ HEADER_PREFIX }}-t](/guides/performance/response#-t-response-header). This response header contains the time the request spent at each layer of the {{ PRODUCT }} stack.
 -   Track code execution time through our `{{ PACKAGE_NAME }}/core/timing` module.
 
-## Tracking Your Own Timings {/*tracking-your-own-timings*/}
+## Tracking your Own Timings {/*tracking-your-own-timings*/}
 
 You can use the `{{ PACKAGE_NAME }}/core/timing` module to track how long it takes parts of your code to execute. A common case is
 tracking how long it takes to fetch a result from an upstream API. For example:

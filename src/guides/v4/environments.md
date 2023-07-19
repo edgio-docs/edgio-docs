@@ -71,7 +71,7 @@ You can create environment variables on a {{PRODUCT_NAME}} environment basis. En
 * User-defined - see [Creating and Editing Environment Variables](#creating-environment-variables)
 * Built-in - see [Built-in Environment Variables](#built-in-environment-variables)
 
-### Creating and Editing Environment Variables {/*creating-and-editing-environment-variables*/}
+### Creating and Editing Environment Variables {/*creating-environment-variables*/}
 
 1. Navigate to your site and select the _ENVIRONMENTS_ tab:
 
@@ -117,7 +117,7 @@ To add or edit environment variables, you must create a new environment version 
 
   ![env-var-list](/images/environments/env-var-list.png)
 
-### Built-In Environment Variables {/*built-in-environment-variables*/}
+### Built-in Environment Variables {/*built-in-environment-variables*/}
 
 {{ PRODUCT_NAME }} automatically injects the following environment variables:
 
@@ -126,11 +126,11 @@ To add or edit environment variables, you must create a new environment version 
 
 ### Accessing Environment Variables {/*accessing-environment-variables*/}
 
-#### At Build Time {/*at-build-time*/}
+#### At Build Time {/*accessing-environment-variables-at-build-time*/}
 
 When you deploy to an environment using a deploy token, for example by running `{{ CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the {{ PRODUCT_NAME }} Developer Console and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, the {{ PRODUCT_NAME }} Developer Console, rather than storing some in your CI system's secret manager.
 
-#### At Run Time {/*at-run-time*/}
+#### At Run Time {/*accessing-environment-variables-at-run-time*/}
 
 The variables you configure on an environment can be accessed in your code using `process.env`. A common use case is to configure
 different backend host names in `{{ CONFIG_FILE }}` based on the environment. Here is an example where the origin backend is determined
@@ -154,7 +154,7 @@ Note that your `{{ CONFIG_FILE }}` file is loaded during deployment to configure
 deploy your site, there won't be any environment variables defined, so you need to include defaults in `{{ CONFIG_FILE }}` as
 shown in the example above.
 
-## Dotenv {/*dotenv*/}
+## dotenv {/*dotenv*/}
 
 To configure secrets during local development, we recommend using [dotenv](https://github.com/motdotla/dotenv).
 If you would like to reference environment variables read from `.env` in `{{ CONFIG_FILE }}`, add the following at the top

@@ -45,7 +45,7 @@ The two general types of iterative site migrations are _gradual migrations_ and 
   2. As new pieces are ready, you do the same for them.
   3. When all pieces have been deployed you remove traffic from the legacy site. 
 
-# Migrating Sites - General Steps {/*migrating-sites-general-steps*/}
+# Migrating Sites - General Steps {/*migrating-sites---general-steps*/}
 
 ## Separate Sites {/*separate-sites*/}
 
@@ -114,7 +114,7 @@ module.exports = new Router()
 ```
 After deploying a router with multiple destinations, all requests will be sent to the first destination until you have defined traffic splitting rules within the {{ PRODUCT }} Developer Console.
 
-## Step 3. Configure Traffic Splitting Rules in the {{ Product }} Developer Console {/*step-3-configure-traffic-splitting-rules-in-the-developer-console*/}
+## Step 3. Configure Traffic Splitting Rules in the {{ PRODUCT }} Developer Console {/*step-3-configure-traffic-splitting-rules-in-the-developer-console*/}
 
 1. [Log into your account](https://app.layer0.co/login/), then navigate to the environment in which you want to configure the iterative migration and click Edit:
 

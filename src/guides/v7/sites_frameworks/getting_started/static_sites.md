@@ -30,7 +30,7 @@ Here are a few examples of common static sites served by {{ PRODUCT }}.
 
 {{ PREREQ.md }}
 
-## Getting Started {/*getting-started*/}
+## Getting Started {/* getting-started */}
 
 To prepare your static app for deployment on {{ PRODUCT }}, run the following command in your project's root directory:
 
@@ -47,13 +47,13 @@ project. These include:
 - `routes.js` - A default routes file that sends all requests to Next.js. Update this file to add caching or proxy some URLs to a different origin.
 - `sw/service-worker.js` A service worker implemented using Workbox.
 
-## Generate Static Resources {/*generate-static-resources*/}
+## Generate Static Resources {/* generate-static-resources */}
 
 If you're building an app that bundles static resources, you will want to generate those files before contuining. Typically, this is handled using a build script such as `npm run build`. This may differ depending on your framework.
 
 The built version of your app will typically reside in a `/build` or `/dist` directory.
 
-## Router Configuration {/*router-configuration*/}
+## Router Configuration {/* router-configuration */}
 
 The {{ PRODUCT }} router is used for configuring where the static resources reside and how to serve them. Using the example above, let's assume your site is bundled under the `/build` directory and has the following structure:
 
@@ -86,7 +86,7 @@ export defaultnew Router()
   .get('/:path*', ({ serveStatic }) => serveStatic('src/:path*'))
 ```
 
-## Deploying {/*deploying*/}
+## Deploying {/* deploying */}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 

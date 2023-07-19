@@ -225,7 +225,7 @@ router.match(
 )
 ```
 
-## Body Matching for Post Requests {/*body-matching-for-post-requests*/}
+## Body Matching for POST requests {/*body-matching-for-post-requests*/}
 
 You can also match HTTP `POST` requests based on their request body content as in the following example:
 
@@ -255,7 +255,7 @@ router.match(
 )
 ```
 
-### Caching & Post Body Matching {/*caching-post-body-matching*/}
+### Caching & POST Body Matching {/*caching--post-body-matching*/}
 
 When body matching is combined with `cache` in a route, **the HTTP request body will automatically be used as the cache key.** For example, the code below will cache GraphQL `GetProducts` queries using the entire request body as the cache key:
 
@@ -294,7 +294,7 @@ router.match(
 )
 ```
 
-### Post Body Matching Criteria {/*post-body-matching-criteria*/}
+### POST Body Matching Criteria {/*post-body-matching-criteria*/}
 
 The `criteria` property can be a string or regular expression.
 

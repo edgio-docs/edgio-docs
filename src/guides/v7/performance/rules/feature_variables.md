@@ -251,7 +251,7 @@ Text that matches a specific pattern can be removed from either the beginning or
 
     `%{<VARIABLE>%<PATTERN>}`
 
-### Find and Replace {/*find-and-replace*/}
+### Find And Replace {/*find-and-replace*/}
 
 Find and replace syntax is described below.
 

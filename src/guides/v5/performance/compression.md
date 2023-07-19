@@ -21,25 +21,25 @@ When requesting data via HTTP from the {{ PRODUCT_NAME }} servers, browsers incl
 
 `accept-encoding` header is taken into account for splitting the cache by default. Expect different cache(s) for different accept-encoding header(s) for otherwise an identical request.
 
-### Gzip Compression Support {/*gzip-compression-support*/}
+### Gzip compression support {/*gzip-compression-support*/}
 
 Gzip is supported in the following ways:
 
 * Pass-through of upstream Gzip responses if the browser accepts Gzip.
 * Encoding of upstream non-encoded responses if the browsers accepts Gzip or Gzip and Brotli.
 
-### Brotli Compression Support {/*brotli-compression-support*/}
+### Brotli compression support {/*brotli-compression-support*/}
 
 Brotli is supported in the following ways:
 
 * Pass-through of upstream Brotli responses if the browser accepts Brotli.
 * Encoding of upstream non-encoded responses if the browsers *only* accepts Brotli.
 
-### Enabling Brotli Compression {/*enabling-brotli-compression*/}
+### Enabling Brotli compression {/*enabling-brotli-compression*/}
 
 To enable Brotli (`br`) compression you need to ensure your project uses a version of `{{ PACKAGE_NAME }}` >= `4.11.0`. To upgrade `{{ PACKAGE_NAME }}` to the latest version in your project use `{{ FULL_CLI_NAME }} use {{ PACKAGE_VERSION }}` and redeploy your project.
 
-## What Is Compressed? {/*what-is-compressed*/}
+## What is Compressed? {/*what-is-compressed*/}
 
 When {{ PRODUCT_NAME }} servers receive a request they inspect the `accept-encoding` header. The following logic is used to determine response compression:
 
@@ -94,7 +94,7 @@ or the url ends in one of these file extensions:
 * `.json`
 * `.svg`
 
-## Applying Brotli Compression in Serverless {/*applying-brotli-compression-in-serverless*/}
+## Applying Brotli compression in serverless {/*applying-brotli-compression-in-serverless*/}
 
 {{ PRODUCT_NAME }} serverless supports Brotli encoding starting with version `4.14.0` but, as described above, only for the [content types](#compressible-types) recognized as compressible by the platform and if the browsers *only* accepts Brotli.
 

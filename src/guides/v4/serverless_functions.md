@@ -20,7 +20,7 @@ Or you can clone this example repo: [layer0-serverless-example](https://github.c
 npx degit https://github.com/layer0-docs/layer0-serverless-example my-serverless-functions
 ```
 
-## Responding to Requests {/*responding-to-requests*/}
+## Responding to requests {/*responding-to-requests*/}
 
 Use the [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) function to generate a synthetic response:
 
@@ -75,7 +75,7 @@ export default new Router().get('/some-route/:someParam', ({ compute }) => {
 
 See [ResponseWriter](/docs/api/core/classes/_router_responsewriter_.responsewriter.html) for all of the functions that you can call when responding to a request.
 
-## Modifying a Response from the Origin {/*modifying-a-response-from-the-origin*/}
+## Modifying a response from the origin {/*modifying-a-response-from-the-origin*/}
 
 Serverless functions can be used to modify responses from the origin by using the `proxy` function with the `transformResponse` option. First, configure an origin by adding a `backend` to `{{ CONFIG_FILE }}` in the root of your project:
 
@@ -183,7 +183,7 @@ export default new Router().get('/', ({ cache, compute }) => {
 
 See the [cache](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) function for more options.
 
-## Running Your Project Locally {/*running-your-project-locally*/}
+## Running your project locally {/*running-your-project-locally*/}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -193,7 +193,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 
 This will start your project in watch mode. Any changes your make to your source code will instantly take effect without restarting.
 
-## Deploying Your Project to {{ Product }} {/*deploying-your-project-to*/}
+## Deploying your project to {{ PRODUCT }} {/*deploying-your-project-to-edgio*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 

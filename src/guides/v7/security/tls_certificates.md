@@ -13,7 +13,7 @@ title: TLS Certificates
 
     **Sample domain:** `my-team-my-site-feature-a-1234.{{ LINK_DOMAIN }}`
 
-### Autogenerating Tls Certificates {/*autogenerating-tls-certificates*/}
+### Autogenerating TLS Certificates {/*autogenerating-tls-certificates*/}
 
 {{ PRODUCT_NAME }} can automatically generate TLS Certificates on your behalf using [Let's Encrypt](https://letsencrypt.org/). These certificates are free, valid for 3 months, and automatically renewed as long as the following technical requirements remain met:
 
@@ -151,7 +151,7 @@ If you have previously used Let's Encrypt to generate certificates for your host
 
 [Learn more about DNS TXT domain control.](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge)
 
-#### Tls Certificate Verification {/*tls-certificate-verification*/}
+#### TLS Certificate Verification {/*tls-certificate-verification*/}
 
 Once the above requirements are met, you should verify that a TLS certificate for each of your hostnames has been generated.
 
@@ -171,7 +171,7 @@ Once the above requirements are met, you should verify that a TLS certificate fo
 
 4.  Wait a few minutes and then verify that a certificate was created for that hostname.
 
-### Manually Creating a Tls Certificate {/*manually-creating-a-tls-certificate*/}
+### Manually Creating a TLS Certificate {/*creating-a-certificate-manually*/}
 
 <Callout type="info">
 

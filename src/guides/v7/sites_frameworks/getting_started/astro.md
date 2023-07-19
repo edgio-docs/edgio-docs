@@ -24,7 +24,7 @@ This Astro example app uses server-side rendering.
   deployFromRepo
 /> -->
 
-## Connector {/*connector*/}
+## Connector {/* connector */}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 
@@ -38,7 +38,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
 
 {{ PREREQ.md }}
 
-## Create Your Astro Site {/*create-your-astro-site*/}
+## Create your Astro site {/* create-your-astro-site */}
 
 If you don't have an existing Astro site, you can create one by running:
 
@@ -46,7 +46,7 @@ If you don't have an existing Astro site, you can create one by running:
 npm create astro@latest
 ```
 
-## Initializing Your Project {/*initializing-your-project*/}
+## Initializing your Project {/* initializing-your-project */}
 
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
@@ -63,7 +63,7 @@ This will automatically add all of the required dependencies and files to your p
 - `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to the Astro. Update this file to add caching or proxy some URLs to a different origin.
 
-## Routing {/*routing*/}
+## Routing {/* routing */}
 
 The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Astro server via a fallback route.
 
@@ -77,9 +77,9 @@ const {astroRoutes} = require('{{ PACKAGE_NAME }}/astro');
 export default new Router().use(astroRoutes);
 ```
 
-## Enable Server Side Rendering {/*enable-server-side-rendering*/}
+## Enable Server Side Rendering {/* enable-server-side-rendering */}
 
-### Specify Apppath inside {{ Config_file }} {/*specify-apppath-inside*/}
+### Specify appPath inside {{ CONFIG_FILE }} {/* specify-apppath-inside */}
 
 After you've setup [@astrojs/node with Astro](https://docs.astro.build/en/guides/integrations-guide/node/), specify server file path in {{ CONFIG_FILE }} as below:
 
@@ -96,7 +96,7 @@ module.exports = {
 
 If you're using custom server file for enabling server side rendering, make sure your server is listening to port via process.env['PORT'].
 
-## Running Locally {/*running-locally*/}
+## Running Locally {/* running-locally */}
 
 To test your app locally, run:
 
@@ -112,7 +112,7 @@ You can do a production build of your app and test it locally using:
 
 Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
 
-## Deploy to {{ Product }} {/*deploy-to*/}
+## Deploy to {{ PRODUCT }} {/* deploy-to */}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands in your project's root directory:
 

@@ -6,7 +6,7 @@ This guide covers the steps you need to take your site live on {{ PRODUCT_NAME }
 
 Creating custom domains is always done in the context of creating or updating an environment.
 
-## Configuration Overview {/*configuration-overview*/}
+## Configuration Overview {/* configuration-overview */}
 
 1. If needed, create an environment using instructions in [Environments](/guides/basics/environments).
 
@@ -18,7 +18,7 @@ Creating custom domains is always done in the context of creating or updating an
 
 5. Configure [TLS/SSL](#tlsssl) for the domain.
 
-## Custom Domains {/*custom-domains*/}
+## Custom Domains {/* custom-domains */}
 
 Before going live, you must create a production environment and configure your domains.
 
@@ -55,14 +55,14 @@ To configure your custom domains:
 
    ![activateEnvironment](/images/production/activate-environment.png)
 
-### Migrating from Fastly {/*migrating-from-fastly*/}
+### Migrating from Fastly {/* migrating-from-fastly */}
 
 If you're migrating to {{ PRODUCT_NAME }} from [Fastly](https://www.fastly.com/), you will need to do the following before adding your domains to your {{ PRODUCT_NAME }} environment:
 
 - Contact [Fastly support](https://support.fastly.com/hc/en-us/requests/new?ticket_form_id=360000269711) and request that control of your domains be transferred to {{ PRODUCT_NAME }}. Be sure to explicitly list each domain that needs to be transferred and ask Fastly to contact `support@{{ DOMAIN }}` if they need {{ PRODUCT_NAME }} to confirm the transfer.
 - Before going live with {{ PRODUCT_NAME }}, you will need to ensure that you've removed your domains from all active Fastly services. To remove domains from a service, clone the service, remove the domains, then activate the new version of the service. Once the new service version is activated you can add the domains to your {{ PRODUCT_NAME }} environment and activate it.
 
-## Set up DNS {/*set-up-dns*/}
+## Set up DNS {/* setup-dns */}
 
 In order to configure your DNS provider to direct traffic for a particular set of domains to {{ PRODUCT_NAME }}, you must create DNS records for your website. If you are launching a new site, then you can create the records whenever you feel ready. For sites that are already live, the DNS update is the last step. Once you have updated your DNS you are committed to launching.
 
@@ -70,7 +70,7 @@ To see the DNS configuration values, click the _Actions needed_ button in the _D
 
 ![dns configuration](/images/production/setup-dns.png)
 
-### Using a Sub-Domain {/*using-a-sub-domain*/}
+### Using a Sub-domain {/* using-a-sub-domain-eg-wwwmywebsitexyz */}
 
 To host your site on a subdomain (e.g. `www.mywebsite.xyz`), add a `CNAME` record with the value shown under _DNS Configuration_ (see above).
 
@@ -85,7 +85,7 @@ dig www.mywebsite.xyz
 www.mywebsite.xyz.   599    IN    CNAME    d12ea738-71b3-25e8-c771-6fdd3f6bd8ba.layer0-limelight.link.
 ```
 
-### Using an Apex Domain {/*using-an-apex-domain*/}
+### Using an Apex Domain {/* using-an-apex-domain-eg-mywebsitexyz */}
 
 To host your site on the apex domain (e.g. `mywebsite.xyz`), create multiple `A` records on your apex domain, with the following Anycast IP address values: 208.69.180.11, 208.69.180.12, 208.69.180.13, 208.69.180.14
 
@@ -103,7 +103,7 @@ mywebsite.xyz.        599    IN    A        208.69.180.13
 mywebsite.xyz.        599    IN    A        208.69.180.14
 ```
 
-### Using Both an Apex Domain and a Sub-Domain {/*using-both-an-apex-domain-and-a-sub-domain*/}
+### Using Both an Apex Domain and a Sub-domain {/* using-both-an-apex-domain-and-a-sub-domain-eg-mywebsitexyz-and-wwwmywebsitexyz */}
 
 - Create the multiple `A` records with the IPs, on your apex domain (see above).
 - Create a `CNAME` record for your sub-domain, with the value of your apex domain.
@@ -124,13 +124,13 @@ mywebsite.xyz.        599    IN    A        208.69.180.14
   mywebsite.xyz.        599    IN    A        208.69.180.14
   ```
 
-## Allowing {{ Product_name }} Ip Addresses {/*allowing-ip-addresses*/}
+## Allowing {{ PRODUCT_NAME }} IP Addresses {/* allowing-ip-addresses */}
 
 Before going live, ensure that all {{ PRODUCT_NAME }} IP addresses are allowed in the security layer in front of your origin and/or API servers. The IP addresses you need to allow can be found on the _Allowlisting_ section under the _Origin Security_ tab for your property. Note that each team may have their own set of IPs so these values cannot be copied from one team to another.
 
 ![allowlisting](/images/production/allowlist.png)
 
-## Tls/ssl {/*tlsssl*/}
+## TLS/SSL {/* tlsssl */}
 
 All data transmitted to and from your {{ PRODUCT_NAME }} site must be secured with TLS (Transport Layer Security). TLS, also known as SSL (Secure Sockets Layer), is a cryptographic protocol to communicate securely over the Internet. TLS provides end-to-end data encryption and data integrity for all web requests.
 
@@ -142,7 +142,7 @@ If you already have an existing certificate, you can use it by skipping ahead to
 
 </Callout>
 
-### Obtaining a Certificate Automatically {/*obtaining-a-certificate-automatically*/}
+### Obtaining a Certificate Automatically {/* obtaining-a-certificate-automatically */}
 
 {{ PRODUCT_NAME }} can generate SSL Certificates on your behalf using [_Let's Encrypt_](https://letsencrypt.org/). Certificates are free, valid for 3 months, and automatically renewed as long as the technical requirements, shown below, remain met:
 
@@ -325,7 +325,7 @@ If you already have an existing certificate, you can use it by skipping ahead to
 
    ![ssl-generation-03](/images/production/ssl-generation-03.png)
 
-### Creating a Certificate Manually {/*creating-a-certificate-manually*/}
+### Creating a Certificate Manually {/* creating-a-certificate-manually */}
 
 TLS certificates are issued by Certificate Authorities (CA) based on Certificate Signing Request (CSR) that they receive from you. Alongside the CSR the same process creates the certificate's private key. You only need to share your CSR with CA, not the private key which you should store securely.
 
@@ -377,9 +377,9 @@ You will want to add all the additional domains into the `alt_names` section. Th
 4. Verify your CSR contains the expected domains by running `openssl req -in {{ PRODUCT_NAME_LOWER }}.csr -noout -text | grep DNS`
 5. Read the CSR (e.g. `cat {{ PRODUCT_NAME_LOWER }}.csr`) or copy to your clipboard (on OSX `cat {{ PRODUCT_NAME_LOWER }}.csr | pbcopy`) and send it to your CA for certification.
 
-### Uploading Your Certificate {/*uploading-your-certificate*/}
+### Uploading Your Certificate {/* uploading-your-certificate */}
 
-#### Prerequisites {/*prerequisites*/}
+#### Prerequisites {/* prerequisites */}
 
 To upload a certificate, you must have the **Admin** role on your team, and your team must be upgraded to {{ PRODUCT_NAME }} Enterprise.
 
@@ -389,7 +389,7 @@ To upload a certificate, you must have the **Admin** role on your team, and your
 - Intermediate certificates (IC) used by CA, including CA's signing certificate
 - Private key that was generated at the time of the CSR.
 
-#### Uploading the Certificate {/*uploading-the-certificate*/}
+#### Uploading the certificate {/* uploading-the-certificate */}
 
 To upload your SSL certificate, do the following:
 

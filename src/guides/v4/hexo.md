@@ -14,7 +14,7 @@ This guide shows you how to deploy a [Hexo](https://hexo.io/) application to {{ 
 
 {{ PREREQ.md }}
 
-## Create a New Hexo App {/*create-a-new-hexo-app*/}
+## Create a new Hexo app {/*create-a-new-hexo-app*/}
 
 If you don't already have a Hexo app, create one by running the following:
 
@@ -31,9 +31,9 @@ You can verify your app works by running it locally with:
 hexo server
 ```
 
-## Configuring Your Hexo App for {{ Product }} {/*configuring-your-hexo-app-for*/}
+## Configuring your Hexo app for {{ PRODUCT }} {/*configuring-your-hexo-app-for-edgio*/}
 
-### Initialize Your Project {/*initialize-your-project*/}
+### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ CLI_NAME }} init`:
 
@@ -48,7 +48,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Hexo.
 
-### Configure the Routes {/*configure-the-routes*/}
+### Configure the routes {/*configure-the-routes*/}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -78,7 +78,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Hexo App Locally on {{ Product }} {/*run-the-hexo-app-locally-on*/}
+### Run the Hexo app locally on {{ PRODUCT }} {/*run-the-hexo-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

@@ -24,7 +24,7 @@ An access rule identifies legitimate traffic and threats by:
 
 </Callout>
 
-## Basic Access Controls {/*basic-access-controls*/}
+## Basic Access Controls {/* basic-access-controls */}
 
 Control access to your content by creating whitelists, accesslists, and
 blacklists for the following categories:
@@ -132,7 +132,7 @@ blacklists for the following categories:
 
 -   **User Agent:** Identifies requests by the user agent that acted on behalf of a user to submit the request. A successful match is found when the specified regular expression matches any portion of the `User-Agent` request header value.
 
-### Whitelists {/*whitelists*/}
+### Whitelists {/* whitelists */}
 
 The purpose of a whitelist is to identify legitimate traffic.
 -   Traffic is whitelisted if it satisfies at least one whitelist
@@ -141,7 +141,7 @@ The purpose of a whitelist is to identify legitimate traffic.
     without inspecting them. As a result, all other security requirements are
     not applicable to whitelisted traffic.
 
-### Accesslists {/*accesslists*/}
+### Accesslists {/* accesslists */}
 
 The purpose of an accesslist is to identify traffic that may access your
 content upon passing a threat assessment. If one or more accesslists
@@ -149,7 +149,7 @@ have been defined, {{ PRODUCT_SECURITY }} will only inspect requests that satis
 one criterion in each defined accesslist. All other traffic, unless it
 has been whitelisted, will be blocked.
 
-### Blacklists {/*blacklists*/}
+### Blacklists {/* blacklists */}
 
 The purpose of a blacklist is to describe unwanted traffic.
 
@@ -219,7 +219,7 @@ The purpose of a blacklist is to describe unwanted traffic.
     whether the requested content will be served from cache or your web
     server.
 
-## Additional Access Controls {/*additional-access-controls*/}
+## Additional Access Controls {/* additional-access-controls */}
 
 Unlike the access controls described above, the following access
 controls are limited to identifying malicious traffic:
@@ -230,7 +230,7 @@ controls are limited to identifying malicious traffic:
 -   [File size](#file-size)
 -   [Request headers](#request-headers)
 
-### HTTP Methods {/*http-methods*/}
+### HTTP Methods {/* http-methods */}
 
 Define the set of valid and invalid HTTP request methods through the
 **Allowed HTTP Methods** option.
@@ -244,7 +244,7 @@ Define the set of valid and invalid HTTP request methods through the
 
     `GET | POST | OPTIONS | HEAD | PUT | DELETE`
 
-### Media Types (Aka Content Types) {/*media-types-aka-content-types*/}
+### Media Types (Aka Content Types) {/* media-types-aka-content-types */}
 
 Define the set of valid media types (aka content types or MIME types)
 via the **Allowed Request Content Types** option.
@@ -311,7 +311,7 @@ via the **Allowed Request Content Types** option.
 
     `application/json`
 
-### File Extensions {/*file-extensions*/}
+### File Extensions {/* file-extensions */}
 
 Define the set of invalid file extensions via the **Extension
 Blacklist** option.
@@ -334,7 +334,7 @@ Blacklist** option.
 
     `.dll`
 
-### File Size {/*file-size*/}
+### File Size {/* file-size */}
 
 Define the maximum file size, in bytes, for a `POST`
 request via the **Single File Upload Limit** option
@@ -355,7 +355,7 @@ message through a managed rule.
 </Callout>
 
 
-### Request Headers {/*request-headers*/}
+### Request Headers {/* request-headers */}
 
 Define the set of invalid request headers via the **Header
 Blacklist** option.
@@ -367,7 +367,7 @@ Blacklist** option.
 -   Header names are case-insensitive.
 -   List each desired request header on a separate line.
 
-## Access Rule Administration {/*access-rule-administration*/}
+## Access Rule Administration {/* access-rule-administration */}
 
 You may create, modify, and delete access rules.
 

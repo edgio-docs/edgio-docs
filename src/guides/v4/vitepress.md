@@ -14,13 +14,13 @@ This guide shows you how to deploy a [VitePress](https://vitepress.vuejs.org/) a
 
 {{ PREREQ.md }}
 
-## Create a New Vitepress App {/*create-a-new-vitepress-app*/}
+## Create a new VitePress app {/*create-a-new-vitepress-app*/}
 
 If you don't already have a VitePress app, create one by following the [official guide](https://vitepress.vuejs.org/guide/getting-started.html#getting-started).
 
-## Configuring Your Vitepress App for {{ Product }} {/*configuring-your-vitepress-app-for*/}
+## Configuring your VitePress app for {{ PRODUCT }} {/*configuring-your-vitepress-app-for-edgio*/}
 
-### Initialize Your Project {/*initialize-your-project*/}
+### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ CLI_NAME }} init`:
 
@@ -35,7 +35,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to VitePress.
 
-### Configure the Routes {/*configure-the-routes*/}
+### Configure the routes {/*configure-the-routes*/}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -65,7 +65,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Vitepress App Locally on {{ Product }} {/*run-the-vitepress-app-locally-on*/}
+### Run the VitePress app locally on {{ PRODUCT }} {/*run-the-vitepress-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

@@ -4,7 +4,7 @@ title: RedwoodJS
 
 This guide shows you how to deploy a [RedwoodJS](https://redwoodjs.com/) application to {{ PRODUCT }}.
 
-## Example {/*example*/}
+## Example {/* example */}
 
 <ExampleButtons
   title="RedwoodJS"
@@ -16,7 +16,7 @@ This guide shows you how to deploy a [RedwoodJS](https://redwoodjs.com/) applica
 
 {{ PREREQ.md }}
 
-## Getting Started {/*getting-started*/}
+## Getting Started {/* getting-started */}
 
 If you don't already have a RedwoodJS app, use the terminal (or command prompt on Windows) to create one using the commands below:
 
@@ -26,7 +26,7 @@ yarn create redwood-app ./my-redwood-app
 
 To prepare your RedwoodJS app for deployment on {{ PRODUCT }}, you can use both the RedwoodJS or {{ PRODUCT }} CLI depending on what you prefer.
 
-### Using Redwoodjs CLI {/*using-redwoodjs-cli*/}
+### Using Redwoodjs CLI {/* using-redwoodjs-cli */}
 
 You will first need to setup {{ PRODUCT }} as a deploy provider via:
 
@@ -36,7 +36,7 @@ yarn rw setup deploy {{ FULL_CLI_NAME }}
 
 This will verify that the {{ PRODUCT }} CLI is setup on your system and initialize the application accordingly.
 
-### Using the {{ Product }} CLI {/*using-the-cli*/}
+### Using the {{ Product }} CLI {/* using-the-cli */}
 
 For preparing using the {{ PRODUCT }} CLI, run:
 
@@ -51,7 +51,7 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to RedwoodJS. Update this file to add caching or proxy some URLs to a different origin.
 - `{{ CONFIG_FILE }}` - Contains configuration options for deploying on {{ PRODUCT }}.
 
-## Running Locally {/*running-locally*/}
+## Running Locally {/* running-locally */}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -59,7 +59,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 {{ CLI_NAME }} dev
 ```
 
-### Simulate Edge Caching Locally {/*simulate-edge-caching-locally*/}
+### Simulate Edge Caching Locally {/* simulate-edge-caching-locally */}
 
 To simulate edge caching locally, run:
 
@@ -67,7 +67,7 @@ To simulate edge caching locally, run:
 {{ CLI_NAME }} dev --cache
 ```
 
-## Deploying {/*deploying*/}
+## Deploying {/* deploying */}
 
 You can deploy using the RedwoodJS CLI using:
 

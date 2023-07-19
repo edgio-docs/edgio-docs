@@ -13,7 +13,7 @@ You can perform two kinds of split tests with {{ PRODUCT_NAME }}:
 
 The first option is configured in EdgeJS within the project, the second option is configured in the console application.
 
-## A/b Testing Multiple Implementations {/*ab-testing-multiple-implementations*/}
+## A/B Testing Multiple Implementations {/*ab-testing-multiple-implementations*/}
 
 To A/B test multiple implementations of the same site, simply deploy each implementation to a separate [environment](environments); then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#configuring-the-split-test).
 
@@ -110,11 +110,11 @@ Split testing across vastly different versions of {{ PRODUCT_NAME }} may lead to
 
 To end the split test, you can either deploy a new version of your app with the router destinations removed, or update the environment to send 100% of traffic to a specific destination.
 
-## Third-Party Cdns {/*third-party-cdns*/}
+## Third-Party CDNs {/*third-party-cdns*/}
 
 If {{ PRODUCT_NAME }} is behind a third-party CDN, it is critical that you update the third party CDN to not cache responses from {{ PRODUCT_NAME }} nor to affect any cookies that begin with `{{ COOKIE_PREFIX }}_`. You can find more details [here](third_party_cdns#section_split_testing).
 
-## How Requests Are Routed {/*how-requests-are-routed*/}
+## How Requests are Routed {/*how-requests-are-routed*/}
 
 When a split test is active, all users are assigned to a random number between 1 and 100 via a cookie called `{{ COOKIE_PREFIX }}_bucket`. This cookie assignment is done at the edge before the user's first request hits the cache, so there is no performance penalty for new users.
 
@@ -138,7 +138,7 @@ But when split testing is enabled, all the traffic arrives using the same `host`
 
 When split tests are enabled, all metrics and caching are recorded under the environment that is the result of the split test. Using the above example, all traffic arrives on `www.mysite.com` but to see the traffic and caching metrics for requests split test to the `new` environment, you need to view those graphs in `new` environment in {{ PRODUCT_NAME }} Developer Console. This is also true for cache purging. To purge traffic that was split to the `new` environment you use the cache purge button in the `new` environment in {{ PRODUCT_NAME }} Developer Console. If want to purge the entire cache during a split you need to purge both the `production` cache and the `new` cache.
 
-## Compatibility with A/b Testing Tools {/*compatibility-with-ab-testing-tools*/}
+## Compatibility with A/B Testing Tools {/*compatibility-with-ab-testing-tools*/}
 
 {{ PRODUCT_NAME }} split testing routes traffic at the edge based on a variety of criteria. It does not identify user cohorts (although it can split on cohorts identified by another tool) or report business metrics about A/B tests since there are many great tools for that. We recommend you utilize an A/B testing tool that supports server-side integration such as Monetate, Optimizely, Adobe Test, Google Experiments, or Visual Web Optimizer. These tools will set a cookie or header that can be used to split traffic using the appropriate criteria described above.
 

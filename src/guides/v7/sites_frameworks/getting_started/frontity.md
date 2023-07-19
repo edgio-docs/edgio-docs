@@ -48,7 +48,7 @@ This will automatically add all of the required dependencies and files to your p
 
 <a id="adding-the-service-worker"></a>
 
-## Adding the {{ Product_name }} Service Worker {/*adding-the-service-worker*/}
+## Adding the {{ PRODUCT_NAME }} Service Worker {/*adding-the-service-worker*/}
 
 To add the {{ PRODUCT_NAME }} service worker to your app, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` in a `useEffect` hook when the app first loads. For example, you can alter
 the Header component in your theme as follows:
@@ -94,7 +94,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 {{ FULL_CLI_NAME }} dev
 ```
 
-### Simulate Edge Caching Locally {/*simulate-edge-caching-locally*/}
+### Simulate edge caching locally {/*simulate-edge-caching-locally*/}
 
 To simulate edge caching locally, run:
 

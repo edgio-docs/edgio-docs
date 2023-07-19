@@ -11,7 +11,7 @@ Get started with {{ PRODUCT }} by satisfying our [prerequisites](#prerequisites)
 
 <Video src="https://youtu.be/kCGBgzkaOJ0" />
 
-## Quick Start {/*quick-start*/}
+## Quick Start {/* quick-start */}
 
 If you already have [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs) and an [{{ PRODUCT }} account](#account-creation), then you can use a single command to:
 
@@ -62,7 +62,7 @@ Replace `<PROPERTY>` with the name for this configuration. If you are also setti
 You are now ready to optimize and secure the delivery of your website.
 [Learn more.](#next-steps)
 
-## Prerequisites {/*prerequisites*/}
+## Prerequisites {/* prerequisites */}
 
 {{ PRODUCT }} requires:
 
@@ -78,7 +78,7 @@ You are now ready to optimize and secure the delivery of your website.
 - {{ PRODUCT }} CLI
 - {{ PRODUCT }} account
 
-### {{ Product }} CLI Installation {/*cli-installation*/}
+### {{ PRODUCT }} CLI Installation {/* cli-installation */}
 
 Use the [{{ PRODUCT }} CLI](/guides/develop/cli) to build, test, and deploy your website to {{ PRODUCT }}. Install it through either npm or yarn.
 
@@ -94,7 +94,7 @@ yarn global add {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
 
 </SnippetGroup>
 
-### {{ Product }} Account Creation {/*account-creation*/}
+### {{ PRODUCT }} Account Creation {/* account-creation */}
 
 Signing up for an {{ PRODUCT }} account is free and quick.
 
@@ -107,7 +107,7 @@ Signing up for an {{ PRODUCT }} account is free and quick.
 
 2.  Click **Accept** to accept our terms of service and privacy policy.
 
-## Step 1: Create an {{ Product }} Property {/*step-1-create-an-property*/}
+## Step 1: Create an {{ PRODUCT }} Property {/* create-property */}
 
 Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} property. A property determines how {{ PRODUCT }} will process your website's traffic.
 
@@ -160,14 +160,14 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 4.  When prompted, confirm the selection of `Use the current directory` by pressing the `ENTER` key.
 5.  When prompted, select either the `npm` or `yarn` package manager and then press the `ENTER` key.
 
-## Step 2: Testing Locally {/*step-2-testing-locally*/}
+## Step 2: Testing Locally {/* testing-locally */}
 
 You may run {{ PRODUCT }} in local development mode to preview your website on your local machine prior to deployment. Local development mode allows for rapid development by allowing you to quickly test changes prior to deployment.
 
 1.  From the command line or terminal, type `{{ FULL_CLI_NAME }} dev`.
 2.  Preview your website by loading `https://127.0.0.1:3000` from within your preferred web browser.
 
-## Step 3: Deploying Your Property {/*step-3-deploying-your-property*/}
+## Step 3: Deploying Your Property {/* deploy-property */}
 
 Run the following command from your property's root directory to deploy it to {{ PRODUCT }}:
 
@@ -175,7 +175,7 @@ Run the following command from your property's root directory to deploy it to {{
 {{ FULL_CLI_NAME }} deploy
 ```
 
-## Next Steps {/*next-steps*/}
+## Next Steps {/* next-steps */}
 
 Once you have successfully deployed your property to {{ PRODUCT }}, our CLI provides the following URLs:
 

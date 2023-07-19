@@ -14,7 +14,7 @@ enables you to quickly address long-term and zero-day vulnerabilities.
 
 </Callout>
 
-## Custom Rule Sets {/*custom-rule-sets*/}
+## Custom Rule Sets {/* custom-rule-sets */}
 
 A custom rule set defines how threats will be identified through rules.
 Each rule contains:
@@ -41,7 +41,7 @@ Each rule contains:
 
 </Callout>
 
-### Threat Identification {/*threat-identification*/}
+### Threat Identification {/* threat-identification */}
 
 {{ PRODUCT_SECURITY }} identifies a threat when a request satisfies at least one rule in a
 custom rule set. A rule is satisfied when a match is found for one or
@@ -88,13 +88,13 @@ of the following circumstances:
 
 </Callout>
 
-#### Conditions {/*conditions*/}
+#### Conditions {/* conditions */}
 
 A condition determines how requests will be identified through
 variables, operators, match values, transformations, and negative
 matching.
 
-##### Variables {/*variables*/}
+##### Variables {/* variables */}
 
 A variable identifies the request element that {{ PRODUCT_SECURITY }} will analyze. We
 support the following request elements:
@@ -330,7 +330,7 @@ support the following request elements:
 
 </Callout>
 
-##### Operators {/*operators*/}
+##### Operators {/* operators */}
 
 An operator determines how {{ PRODUCT_SECURITY }} will compare a match value against the
 request element identified by a variable.
@@ -363,7 +363,7 @@ request element identified by a variable.
 
     </Callout>
 
-##### Match Value {/*match-value*/}
+##### Match Value {/* match-value */}
 
 {{ PRODUCT_SECURITY }} uses a match value to identify threats.
 -   **Default:** By default, {{ PRODUCT_SECURITY }} compares a match value against the
@@ -399,7 +399,7 @@ for this configuration.
 
 </Callout>
 
-##### Match Transformations {/*match-transformations*/}
+##### Match Transformations {/* match-transformations */}
 
 {{ PRODUCT_SECURITY }} can transform the source value before it inspects it. Select one or
 more of the following transformations to allow {{ PRODUCT_SECURITY }} to compare the match
@@ -413,7 +413,7 @@ value against the result of each selected transformation:
     transformation is useful when the source value has been URL encoded
     twice.
 
-## Custom Rule Administration {/*custom-rule-administration*/}
+## Custom Rule Administration {/* custom-rule-administration */}
 
 You may create, modify, and delete custom rule sets.
 

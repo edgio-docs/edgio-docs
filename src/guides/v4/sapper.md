@@ -6,7 +6,7 @@ This guide shows you how to deploy a [Sapper](https://sapper.svelte.dev/) applic
 
 <Video src="https://www.youtube.com/watch?v=Xt_UlQiXDgQ"/>
 
-## Example SSR Site {/*example-ssr-site*/}
+## Example Ssr Site {/* example-ssr-site */}
 
 This Sapper example app uses server-side rendering and prefetching to provide lightening-fast transitions between pages.
 
@@ -28,7 +28,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
 
 {{ SIGN_UP }}
 
-## Getting Started {/*getting-started*/}
+## Getting Started {/* getting-started */}
 
 If you don't already have a Sapper app, use the terminal (or command prompt on Windows) to create one using the commands below:
 
@@ -60,7 +60,7 @@ This will automatically add all of the required dependencies and files to your p
 - `{{ CONFIG_FILE }}`
 - `routes.js` - A default routes file that sends all requests to Sapper. Update this file to add caching or proxy some URLs to a different origin.
 
-## Webpack {/*webpack*/}
+## Webpack {/* webpack */}
 
 If you're using webpack to build your app, update `webpack.config.js` to bundle all dependencies in the server build:
 
@@ -75,7 +75,7 @@ If you're using webpack to build your app, update `webpack.config.js` to bundle 
                  {
 ```
 
-## Rollup {/*rollup*/}
+## Rollup {/* rollup */}
 
 If you're using Rollup to build your app, install `@rollup/plugin-json`:
 
@@ -115,7 +115,7 @@ and
 +external: require('module').builtinModules,
 ```
 
-## Running Locally {/*running-locally*/}
+## Running Locally {/* running-locally */}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -123,7 +123,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 {{ CLI_NAME }} dev
 ```
 
-### Simulate Edge Caching Locally {/*simulate-edge-caching-locally*/}
+### Simulate Edge Caching Locally {/* simulate-edge-caching-locally */}
 
 To simulate edge caching locally, run:
 
@@ -131,7 +131,7 @@ To simulate edge caching locally, run:
 {{ CLI_NAME }} dev --cache
 ```
 
-## Deploying {/*deploying*/}
+## Deploying {/* deploying */}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
@@ -141,11 +141,11 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 See [deploying](deploy_apps) for more information.
 
-## Prefetching {/*prefetching*/}
+## Prefetching {/* prefetching */}
 
 Follow these steps to add prefetching to your app:
 
-### Service Worker {/*service-worker*/}
+### Service Worker {/* service-worker */}
 
 Add the following to `src/service-worker.js`:
 
@@ -161,7 +161,7 @@ new Prefetcher().route()
 /* end: add this to src/service-worker.js */
 ```
 
-### Prefetch Component {/*prefetch-component*/}
+### Prefetch Component {/* prefetch-component */}
 
 To prefetch data when links become visible in the viewport, wrap the link in the `Prefetch` component from `{{ PACKAGE_NAME }}/svelte`
 

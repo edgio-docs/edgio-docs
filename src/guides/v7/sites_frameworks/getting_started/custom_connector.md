@@ -8,7 +8,7 @@ Custom Connector lets you build and deploy your project to {{ PRODUCT }} for any
 
 <!-- ## Why Custom Connector {/* why-custom-connector */} -->
 
-## Using Custom Connector {/*using-custom-connector*/}
+## Using Custom Connector {/* using-custom-connector */}
 
 To use the Custom Connector with your project, you'll first need to initialize your project using the {{ PRODUCT }} CLI with the following:
 
@@ -53,7 +53,7 @@ When initialization process is finished, {{ PRODUCT }} will automatically add al
 - `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }} including the connector [configuration](#custom-connector-configuration).
 - `routes.js` - A default routes file that sends all requests to the underlaying framework. Update this file to add caching or proxy some URLs to a different origin.
 
-## Routing {/*routing*/}
+## Routing {/* routing */}
 
 The default `routes.js` file created by `{{ CLI_CMD(init) }}` sends all requests to your framework's server.
 
@@ -69,7 +69,7 @@ export default new Router().use(customRoutes);
 
 See [Routes](/guides/performance/cdn_as_code#routes) for information on defining routes, caching, and more.
 
-## Running Locally {/*running-locally*/}
+## Running Locally {/* running-locally */}
 
 To test your app locally, run:
 
@@ -85,7 +85,7 @@ You can do a production build of your app and test it locally using:
 
 Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
 
-## Deploy to {{ Product }} {/*deploy-to*/}
+## Deploy to {{ Product }} {/* deploy-to */}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands in your project's root directory:
 
@@ -95,7 +95,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands 
 
 See [Deployments](/guides/basics/deployments) for more information.
 
-## Custom Connector Configuration {/*custom-connector-configuration*/}
+## Custom Connector Configuration {/* custom-connector-configuration */}
 
 After you initialize your project with the `{{ CLI_CMD(init) }}` command, {{ PRODUCT }} will create a `{{ CONFIG_FILE }}` file in your project's root directory. In the `{{ CONFIG_FILE }}` file you can configure your Custom Connector.
 
@@ -123,7 +123,7 @@ In the `customConnector` object you can configure the following options:
 - `devCommand` - The dev command of your app. Default value is an empty string. This command is used when you run `{{ FULL_CLI_NAME }} dev` command.
 - `devReadyMessageOrTimeout` - A message to be printed when dev server is ready or timeout value in seconds to wait. Default value is `0`.
 
-## Connector {/*connector*/}
+## Connector {/* connector */}
 
 This connector is not built for a specific framework, it is used as a fallback for frameworks that are not directly supported by {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 

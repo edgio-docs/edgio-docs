@@ -22,7 +22,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
 
 {{ PREREQ.md }}
   
-## Create Your Mkdocs Site {/*create-your-mkdocs-site*/}
+## Create your MkDocs site {/*create-your-mkdocs-site*/}
 
 If you don't have an existing MkDocs site, you can create one by following:
 
@@ -34,7 +34,7 @@ mkdocs new my-mkdocs-app
 cd my-mkdocs-app
 ```
 
-## Initializing Your Project with {{ Product }} {/*initializing-your-project-with*/}
+## Initializing your project with {{ PRODUCT }} {/*initialize-your-project*/}
 
 Then, in the root folder of your project, run:
 
@@ -80,7 +80,7 @@ You can do a production build of your app and test it locally using:
 
 Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
 
-## Deploy to {{ Product }} {/*deploy-to*/}
+## Deploy to {{ PRODUCT }} {/*deploy-to*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands in your project's root directory:
 

@@ -25,11 +25,11 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
 {{ PREREQ.md }}
 
 
-## Getting Started {/*getting-started*/}
+## Getting Started {/* getting-started */}
 
 If you don't already have a Spartacus application, you can create one using:
 
-#### 1. Create a New Angular App {/*1-create-a-new-angular-app*/}
+#### 1. Create a New Angular App {/* 1-create-a-new-angular-app */}
 
 **Spartacus 2.x only supports Angular version 9.x**
 **Spartacus 3.x only supports Angular version 10.x**
@@ -41,7 +41,7 @@ ng new my-layer0-spartacus-app
 
 You should now have a working starter app. Run `ng serve` to see the application running on `localhost:4200`.
 
-#### 2. Add Spartacus with SSR {/*2-add-spartacus-with-ssr*/}
+#### 2. Add Spartacus with Ssr {/* 2-add-spartacus-with-ssr */}
 
 To deploy your Spartacus application on {{ PRODUCT }} it needs to support server-side rendering (SSR). To add SSR support, run:
 
@@ -60,7 +60,7 @@ The previous command created:
 
 You can now run `npm run build:ssr && npm run serve:ssr` to access your server-side rendered app at `localhost:4000`.
 
-#### 3. Initializing Your Project {/*3-initializing-your-project*/}
+#### 3. Initializing Your Project {/* 3-initializing-your-project */}
 
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
@@ -79,7 +79,7 @@ This will automatically add all of the required dependencies and files to your p
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 - The `sw` folder - Contains the files needed to build the service worker that that provides static asset and API prefetching.
 
-#### 4. Update `{{ Config_file }}` {/*4-update-*/}
+#### 4. Update `{{ Config_file }}` {/* 4-update- */}
 
 For an app called `my-layer0-spartacus-app` the {{ PRODUCT }} config file created by `{{ CLI_NAME }} init` will look like so:
 
@@ -99,7 +99,7 @@ module.exports = {
 
 If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project {{ CLI_NAME }} build`.
 
-#### 5. Update Occ `baseurl` Endpoint {/*5-update-occ-baseurl-endpoint*/}
+#### 5. Update Occ `baseurl` Endpoint {/* 5-update-occ-baseurl-endpoint */}
 
 The `baseUrl` should be updated to use the remote URL when `window` is not defined (i.e., for SSR), and the current host when `window` is defined. For example:
 
@@ -111,9 +111,9 @@ baseUrl: typeof window !== 'undefined'
 
 This value is defined in the `backend` property of the options parameter to `B2cStorefrontModule.withConfig({})` in the `app.module.ts` file, but is best set using environment variables in the `environment.ts` and `environment.prod.ts` files.
 
-## Adding Prefetching {/*adding-prefetching*/}
+## Adding Prefetching {/* adding-prefetching */}
 
-### Upstream Request Tracking {/*upstream-request-tracking*/}
+### Upstream Request Tracking {/* upstream-request-tracking */}
 
 Prefetching for a Spartacus app can be enabled by listening to upstream requests made when server-side rendering a specific page. `{{ PACKAGE_NAME }}/prefetch` library will pick up on the upstream requests made by reading the `{{ HEADER_PREFIX }}-upstream-requests` response header. An example scenario:
 
@@ -185,7 +185,7 @@ server.get('*', (req, res) => {
 export default server
 ```
 
-### Fixing Response Header Overflows {/*fixing-response-header-overflows*/}
+### Fixing Response Header Overflows {/* fixing-response-header-overflows */}
 
 Some CDNs, such as Akamai, impose low limits on the size of response headers. Prefetching works by listing all of the upstream API URLs fetched during SSR in
 a `{{ HEADER_PREFIX }}-upstream-requests` response header. If your application makes many upstream requests for each page during SSR, this header can
@@ -195,7 +195,7 @@ be quite long and exceed the maximum length allowed by your CDN. To mitigate thi
 createRenderCallback(res, { maxHeaderLength: 500 })
 ```
 
-### Service Worker {/*service-worker*/}
+### Service Worker {/* service-worker */}
 
 The build command places the built `service-worker.js` under `dist` so `{{ PACKAGE_NAME }}/angular` will know to static serve the file.
 
@@ -255,7 +255,7 @@ ServiceWorkerModule.register(
 
 Add `"skipLibCheck": true,` to `tsconfig.json` to avoid type errors from `workbox` library during build.
 
-## Routing and Cache Configuration {/*routing-and-cache-configuration*/}
+## Routing and Cache Configuration {/* routing-and-cache-configuration */}
 
 The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to Angular server via a fallback route.
 
@@ -331,7 +331,7 @@ return new Router()
 }
 ```
 
-## Running Locally {/*running-locally*/}
+## Running Locally {/* running-locally */}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -347,7 +347,7 @@ You can do a production build of your app and test it locally using:
 
 Setting `--production` runs your app exactly as it will be uploaded to the {{ PRODUCT }} cloud using serverless-offline.
 
-## Deploying {/*deploying*/}
+## Deploying {/* deploying */}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 

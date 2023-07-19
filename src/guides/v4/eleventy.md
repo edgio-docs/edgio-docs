@@ -14,7 +14,7 @@ This guide shows you how to deploy a [Eleventy](https://www.11ty.dev/) applicati
 
 {{ PREREQ.md }}
 
-## Create a New Eleventy App {/*create-a-new-eleventy-app*/}
+## Create a new Eleventy app {/*create-a-new-eleventy-app*/}
 
 If you don't already have a Eleventy app, create one by running the following:
 
@@ -33,7 +33,7 @@ You can verify your app works by running it locally with:
 eleventy --serve
 ```
 
-## Configuring Your Eleventy App for {{ Product }} {/*configuring-your-eleventy-app-for*/}
+## Configuring your Eleventy app for {{ PRODUCT }} {/*configuring-your-eleventy-app-for-edgio*/}
 
 Create a package.json at the root of your project with the following:
 
@@ -50,7 +50,7 @@ Create a package.json at the root of your project with the following:
 }
 ```
 
-### Initialize Your Project {/*initialize-your-project*/}
+### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ CLI_NAME }} init`:
 
@@ -65,7 +65,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Eleventy.
 
-### Configure the Routes {/*configure-the-routes*/}
+### Configure the routes {/*configure-the-routes*/}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -95,7 +95,7 @@ export default new Router()
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Eleventy App Locally on {{ Product }} {/*run-the-eleventy-app-locally-on*/}
+### Run the Eleventy app locally on {{ PRODUCT }} {/*run-the-eleventy-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

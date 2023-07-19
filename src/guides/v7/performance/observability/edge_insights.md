@@ -55,7 +55,7 @@ Generating a report consists of performing the following steps:
 
 The following common use cases are provided to demonstrate various ways in which you may use Edge Insights to gain insight into traffic patterns or to troubleshoot issues.
 
-#### Was My Software Update Delivered Throughout the United States? {/*was-my-software-update-delivered-throughout-the-united-states*/}
+#### Was my software update delivered throughout the United States? {/*was-my-software-update-delivered-through-the-united-states*/}
 
 1.  From the **Data Source** option, select `Access Logs (Full - last 6 hours)`.
 2.  From the **Time Period** option, define the desired time period.
@@ -84,7 +84,7 @@ The following common use cases are provided to demonstrate various ways in which
 7.  Review the status codes.
 8.  Optional. Dig into a specific status code by clicking on it and then reviewing log entries from the Logs section.
 
-#### Why Do I See a Spike in 404 Not Found Responses? {/*why-do-i-see-a-spike-in-404-not-found-responses*/}
+#### Why do I see a spike in 404 Not Found responses? {/*why-do-i-see-a-spike-in-404-not-found-responses*/}
 
 1.  From the **Data Source** option, select `Access Logs (Full - last 6 hours)`.
 2.  From the **Top Results** section, select the `HTTP Status Code` field.
@@ -107,7 +107,7 @@ The following common use cases are provided to demonstrate various ways in which
 
 </Callout>
 
-#### Why Do I See a Traffic Spike? {/*why-do-i-see-a-traffic-spike*/}
+#### Why do I see a traffic spike? {/*why-do-i-see-a-traffic-spike*/}
 
 1.  From the **Data Source** option, select `Access Logs (Full - last 6 hours)`.
 2.  From the **Time Period** option, define a time period that covers that traffic spike.
@@ -117,7 +117,7 @@ The following common use cases are provided to demonstrate various ways in which
 3.  From the **Top Results** section, select the `URL Path` field.
 4.  Review the top requests for that time period.
 
-#### Why Do I See a Spike in Waf Alerts? {/*why-do-i-see-a-spike-in-wafalerts*/}
+#### Why do I see a spike in WAF alerts? {/*why-do-i-see-a-spike-in-waf-alerts*/}
 
 1.  From the **Data Source** option, select WAF Alerts.
 2.  From the **Time Period** option, define a time period that covers that spike.
@@ -131,7 +131,7 @@ The following common use cases are provided to demonstrate various ways in which
     
 5.  From the **Logs** section, click on a log entry. Review key fields (e.g., `url` and `user_agent`).
 
-#### Why Do I See a Spike in Rate Limited Requests? {/*why-do-i-see-a-spike-in-rate-limited-requests*/}
+#### Why do I see a spike in rate limited requests? {/*why-do-i-see-a-spike-in-rate-limited-requests*/}
 
 1.  From the **Data Source** option, select Rate Limiting Alerts.
 2.  From the **Time Period** option, define a time period that covers that spike.
@@ -368,7 +368,7 @@ Each Rate Limiting field is defined below.
 
 {{ table_rate_limiting_alerts.md }}
 
-## Waf Alerts {/*waf-alerts*/}
+## WAF Alerts {/*waf-alerts*/}
 
 Use the WAF Alerts data source for historical and near real-time analysis of [recent threats to site traffic](/guides/security/waf). For example, use this data to:
 

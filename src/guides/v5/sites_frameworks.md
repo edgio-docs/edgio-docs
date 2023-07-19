@@ -20,7 +20,7 @@ We also support static page generation:
 
 </Callout>
 
-## Compute Regions {/*compute-regions*/}
+## Compute Regions {/*regions*/}
 
 {{ PRODUCT }} allows you to cache and deliver your content through any of our points of presence (POPs) around the world. However, your serverless code will run in one of the following global regions:
 

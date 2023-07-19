@@ -4,11 +4,11 @@ title: Troubleshooting
 
 This guide shows you how to troubleshoot applications running on {{ PRODUCT_NAME }}. Below are some steps to follow when working locally or attempting to address site performance.
 
-## Server Timings {/*server-timings*/}
+## Server Timings {/* server-timings */}
 
 When measuring the performance of your server, we provide numerous headers to decipher timings of requests. Visit our section on [response headers](/guides/performance/response#server-timing-response-header) for an in-depth explanation on the values available and how to leverage them.
 
-## Visual Studio Code {/*visual-studio-code*/}
+## Visual Studio Code {/* visual-studio-code */}
 
 To debug a {{ PRODUCT_NAME }} application in Visual Studio Code:
 
@@ -33,11 +33,11 @@ The above assumes that the workspace folder is your app's root directory. If tha
 
 Note that this configuration will allow you to set breakpoints in both your {{ PRODUCT_NAME }} router as well as your application code (for example in Next.js, Nuxt.js, Angular, etc...).
 
-## Logs {/*logs*/}
+## Logs {/* logs */}
 
 {{ PRODUCT_NAME }} provides two types of logs to help you debug issues with your application.
 
-### Server Logs {/*server-logs*/}
+### Server Logs {/* server-logs */}
 
 By viewing the server logs in the {{ PORTAL }}, you can see all of the messages logged by your application using `console.log`, `console.warn`, etc...
 
@@ -67,13 +67,13 @@ Note that whenever possible, we strongly recommend to always proxy the traffic f
 
 [Learn more.](/guides/logs/server_logs)
 
-### Access Logs {/*access-logs*/}
+### Access Logs {/* access-logs */}
 
 Access logs contain information about all requests, even those that never reach your application code (e.g. cache hits, static assets, requests routed to custom backends, edge redirects, and so on).
 
 [Learn more](/guides/logs/access_logs)
 
-## Confirming Behavior with Curl {/*confirming-behavior-with-curl*/}
+## Confirming Behavior with Curl {/* confirming-behavior-with-curl */}
 
 Removing the browser as a variable in your equation is a good way to confirm what the origin server is doing. Below are a few of the common CURL commands we leverage to verify behavior.
 
@@ -118,7 +118,7 @@ curl -vv --silent https://www.yoursite.com/?{{ PRODUCT_NAME_LOWER }}_debug=true 
 
 `2>&1` is only present to make terminal work with `grep`
 
-## Checking Your Permalinks Vs Edge Links {/*checking-your-permalinks-vs-edge-links*/}
+## Checking Your Permalinks Vs Edge Links {/* checking-your-permalinks-vs-edge-links */}
 
 A Permalink request will skip the edge (cache) and go straight to the serverless tier. This will likely degrade performance, but does allow for verification of a function.
 
@@ -126,7 +126,7 @@ The edge link will route through the edge.
 
 You can find both links on the detail page of a deployment.
 
-## Source Maps {/*source-maps*/}
+## Source Maps {/* source-maps */}
 
 {{ PRODUCT }} automatically produces a source map for your router file so that all runtime errors that occur during routing will have a stacktrace that references the original source file. If your application build produces source maps for the server bundle, these will also be used when reporting errors. {{ PRODUCT }} provides a convenient way to enable source maps when using Next and Nuxt:
 
@@ -136,7 +136,7 @@ We noticed some performance issues related to sourcemaps being loaded in our Ser
 
 </Callout>
 
-### Next.js {/*nextjs*/}
+### Next.js {/* nextjs */}
 
 Set `{{ FULL_CLI_NAME }}SourceMaps: true` in your `next.config.js`:
 
@@ -152,7 +152,7 @@ module.exports = with{{ PRODUCT }}(
 )
 ```
 
-### Nuxt.JS {/*nuxtjs*/}
+### Nuxt.JS {/* nuxtjs */}
 
 Set `{{ FULL_CLI_NAME }}SourceMaps: true` in the config for `{{ PACKAGE_NAME }}/nuxt/module` in `buildModules` in `nuxt.config.js`:
 
@@ -168,9 +168,9 @@ module.exports = {
   Application-level source maps are not enabled by default as they can be quite large and cause the serverless bundle to be larger than the 50MB limit.
 </Callout>
 
-## Troubleshooting 539 Status Codes {/*troubleshooting-539-status-codes*/}
+## Troubleshooting 539 Status Codes {/* troubleshooting-539-status-codes */}
 
-### Overview {/*overview*/}
+### Overview {/* overview */}
 
 539 status codes (see [Status Codes](/guides/performance/response#status-codes)) are timeout errors, which can be:
 
@@ -184,21 +184,21 @@ We noticed some performance issues related to sourcemaps being loaded in our Ser
 
 </Callout>
 
-#### Assumptions {/*assumptions*/}
+#### Assumptions {/* assumptions */}
 
 You have deployed your site to {{ PRODUCT }}. All your website code resides with {{ PRODUCT }} as SSR (server-side rendering) code. Your backend (server) simply contains data that is needed by your website code to construct a page and return it to a requesting client or browser.
 See [Architecture](/guides/performance#architecture) for more information.
 
-#### Typical Request Flows {/*typical-request-flows*/}
+#### Typical Request Flows {/* typical-request-flows */}
 
 Following are two request flows that are helpful as background to troubleshooting information.
 
-##### Cached Assets Served {/*cached-assets-served*/}
+##### Cached Assets Served {/* cached-assets-served */}
 
 1. A requesting client sends a request to {{ PRODUCT }} for an asset.
 2. The {{ PRODUCT }} edge finds the asset in cache and returns it to the client.
 
-##### Assets Served via Customer SSR Code and Customer Backend {/*assets-served-via-customer-ssr-code-and-customer-backend*/}
+##### Assets Served via Customer Ssr Code and Customer Backend {/* assets-served-via-customer-ssr-code-and-customer-backend */}
 
 This flow is where 539 errors might occur.
 
@@ -211,7 +211,7 @@ This flow is where 539 errors might occur.
 
 _Note:_ a variant on caching is ISR where {{ PRODUCT }} caches just for a few hours or days.
 
-#### Allowlist Overview {/*allowlist-overview*/}
+#### Allowlist Overview {/* allowlist-overview */}
 
 When you run your site on {{ PRODUCT_NAME }}, all requests come in through four IP addresses, and servers are programmed to interpret this as a DDoS attack. At this point, the server either blocks or rate-limits the requests. In either case, timeouts occur and 539 errors are returned.
 
@@ -221,7 +221,7 @@ To prevent this scenario, you must configure your server with allowlisted {{ PR
 
 [Learn more.](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses)
 
-### Procedure {/*procedure*/}
+### Procedure {/* procedure */}
 
 When you are testing a web page, you might encounter 539 status code errors. You might also see the errors in logs if you signed up for Log Shipping.
 
@@ -239,7 +239,7 @@ If you see 539 errors, the issue could be any of the following:
 - A problem with the backend server
 - An allowlist error
 
-#### Good Request Example {/*good-request-example*/}
+#### Good Request Example {/* good-request-example */}
 
 Before continuing, it is helpful to see what a good request and response flow looks like. A request with no errors has four lines:
 
@@ -252,7 +252,7 @@ Before continuing, it is helpful to see what a good request and response flow lo
 | 3    | The request from your SSR code to your backend server. If this line ends with a `<status code> in XXms`, then the SSR received a response from your backend server. In this example the HTTP status code was `200`, indicating success. If the line does not end with a `<status code> in XXms`, there was a problem with the request to your backend server (see [Backend Server Error](#backend-server-error)). |
 | 4    | The response from the SSR to the browser, and ends with the status code for the response. If this line is present, the SSR code ran to completion. If this line is missing there was a problem (see [Error in SSR Code](#error-in-ssr-code)).                                                                                                                                                                     |
 
-#### Error in SSR Code {/*error-in-ssr-code*/}
+#### Error in Ssr Code {/* error-in-ssr-code */}
 
 If a request looks like the following, your SSR code contains an error.
 
@@ -269,7 +269,7 @@ _Note:_ There is no response from the SSR code to the browser as shown in line 4
 - Took too long to return a response
 - Threw an exception and never returned a response
 
-#### Backend Server Error {/*backend-server-error*/}
+#### Backend Server Error {/* backend-server-error */}
 
 If a request looks like the following, your backend server is either down, overloaded or has an allowlist error.
 
@@ -286,7 +286,7 @@ _Note:_ If line 3:
 - Ends in a status code other than `200`, then the SSR code received a non-`200` code from the backend server.
 - Does not end in a status code at all, then the SSR did not receive a response from the backend and the problem can be either an allowlist error or a timeout error. See "Distinguishing an Allow List Error from a Timeout Error." See [Distinguishing an Allowlist Error from a Timeout Error](#distinguishing-an-allowlist-error-from-a-timeout-error).
 
-#### Distinguishing an Allowlist Error from a Timeout Error {/*distinguishing-an-allowlist-error-from-a-timeout-error*/}
+#### Distinguishing an Allowlist Error from a Timeout Error {/* distinguishing-an-allowlist-error-from-a-timeout-error */}
 
 To determine if there is an allowlist error, do the following:
 
@@ -298,13 +298,13 @@ To determine if there is an allowlist error, do the following:
 
 The outcome will be either [SSR code error](#ssr-code-error) or an [allowlist error](#allowlist-error).
 
-#### SSR Code Error {/*ssr-code-error*/}
+#### Ssr Code Error {/* ssr-code-error */}
 
 If the command fails or does not respond, there is an error in your code, most likely a badly formed request.
 
 Troubleshoot your code to find and fix the error.
 
-#### Allowlist Error {/*allowlist-error*/}
+#### Allowlist Error {/* allowlist-error */}
 
 If the command succeeds and finishes quickly, it is probably an allowlist error.
 Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses) to your server's IP allowlist.

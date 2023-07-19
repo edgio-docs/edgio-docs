@@ -2,7 +2,7 @@
 title: Managed Rule Groups 
 ---
 
-## {{ Product }} Managed Rules {/*managed-rules*/}
+## {{ PRODUCT }} Managed Rules {/*layer0-managed-rules*/}
 
 <Callout type="danger">
 

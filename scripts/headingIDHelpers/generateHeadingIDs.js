@@ -42,15 +42,15 @@ function getConstantsAsSpecial(str) {
 }
 
 function addHeaderID(line, slugger) {
-  // check if we're a header at all, or ignore if it contains an edgejs tag
-  if (!line.startsWith('#') || /<edgejs>(.*?)<\/edgejs>/.test(line)) {
+  // check if we're a header at all
+  if (!line.startsWith('#')) {
     return line;
   }
 
-  const match =
-    /^(#+\s+)(.+?)(\s*\{(?:\/\*|#)([^\}\*\/]+)(?:\*\/)?\}\s*)?$/.exec(line);
+  const match = /^(#+\s+)([^{]+)(\{\s*(?:\/\*([^*\/]+)\*\/)?\s*\})(.*)$/.exec(
+    line
+  );
   const isHeaderWithConstant = line.includes('{{') || line.includes('}}');
-
   const before = isHeaderWithConstant
     ? replaceConstantInHeader(match[1] + match[2])
     : match[1] + match[2];
@@ -123,7 +123,7 @@ function addHeaderIDs(lines) {
 }
 
 async function main(paths) {
-  paths = paths.length === 0 ? ['src/guides'] : paths;
+  paths = paths.length === 0 ? ['src/pages'] : paths;
 
   const [unifiedMod, remarkParseMod, remarkSlugMod] = await Promise.all([
     import('unified'),

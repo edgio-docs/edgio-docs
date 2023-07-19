@@ -14,7 +14,7 @@ This guide shows you how to deploy a [SolidJS](https://solidjs.com) application 
 
 {{ PREREQ.md }}
 
-## Create a New Solidjs App {/*create-a-new-solidjs-app*/}
+## Create a new SolidJS app {/*create-a-new-solidjs-app*/}
 
 If you don't already have a SolidJS app, create one by running the following:
 
@@ -30,9 +30,9 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring Your Solidjs App for {{ Product }} {/*configuring-your-solidjs-app-for*/}
+## Configuring your SolidJS app for {{ PRODUCT }} {/*configuring-your-solidjs-app-for*/}
 
-### Initialize Your Project {/*initialize-your-project*/}
+### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
@@ -47,7 +47,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to SolidJS.
 
-### Configure the Routes {/*configure-the-routes*/}
+### Configure the routes {/*configure-the-routes*/}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -67,7 +67,7 @@ export default new Router()
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Solidjs App Locally on {{ Product }} {/*run-the-solidjs-app-locally-on*/}
+### Run the SolidJS app locally on {{ PRODUCT }} {/*run-the-solidjs-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

@@ -24,7 +24,7 @@ This guide will use [Create React App](https://create-react-app.dev/) to generat
 npx create-react-app my-app
 ```
 
-## Initializing Your Project with {{ Product }} {/*initializing-your-project-with*/}
+## Initializing your project with {{ PRODUCT }} {/*initializing-your-project-with*/}
 
 Then, in the root folder of your project, run:
 
@@ -69,7 +69,7 @@ You can do a production build of your app and test it locally using:
 
 Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
 
-## Deploy to {{ Product }} {/*deploy-to*/}
+## Deploy to {{ PRODUCT }} {/*deploy-to*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands in your project's root directory:
 

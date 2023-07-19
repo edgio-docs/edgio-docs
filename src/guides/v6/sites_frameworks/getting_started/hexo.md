@@ -24,7 +24,7 @@ This guide shows you how to deploy a [Hexo](https://hexo.io/) application to {{ 
 
 {{ PREREQ.md }}
 
-## Create a New Hexo App {/*create-a-new-hexo-app*/}
+## Create a new Hexo app {/*create-a-new-hexo-app*/}
 
 If you don't already have a Hexo app, create one by running the following:
 
@@ -41,9 +41,9 @@ You can verify your app works by running it locally with:
 hexo server
 ```
 
-## Configuring Your Hexo App for {{ Product }} {/*configuring-your-hexo-app-for*/}
+## Configuring your Hexo app for {{ PRODUCT }} {/*configuring-your-hexo-app-for*/}
 
-### Initialize Your Project {/*initialize-your-project*/}
+### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
@@ -89,7 +89,7 @@ You can do a production build of your app and test it locally using:
 
 Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
 
-## Deploy to {{ Product }} {/*deploy-to*/}
+## Deploy to {{ PRODUCT }} {/*deploy-to*/}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands in your project's root directory:
 

@@ -24,7 +24,7 @@ To configure your own project to be deploy button ready, there's a few steps to 
 2. Next, create a basic `deploy` script as described below. Typically, this can simply be `{{ FULL_CLI_NAME }} deploy`, but if your site requires additional processing outside of the standard {{ PRODUCT }} build/deploy process, you will need to modify this script to include the necessary steps to make your site production-ready.
 3. Create a GitHub workflow as described below. This makes sure GitHub Actions is properly configured to build the project.
 
-#### Add `deploy` Script to `package.JSON` {/*add-deploy-script-to-packagejson*/}
+#### Add `deploy` Script to `package.json` {/*add-deploy-script-to-packagejson*/}
 
 ```json
 // additional scripts may need to be called based on your app build process
@@ -35,7 +35,7 @@ Lastly, create a GitHub workflow file called `edgio.yml`. This will be triggered
 
 <a id="create-githubworkflowslayer0yml-workflow"></a>
 
-#### Create `.GitHub/workflows/edgio.yml` Workflow {/*create-githubworkflowsedgioyml-workflow*/}
+#### Create `.github/workflows/edgio.yml` Workflow {/*create-githubworkflowsedgioyml-workflow*/}
 
 ```yml
 name: Deploy to {{ PRODUCT }}

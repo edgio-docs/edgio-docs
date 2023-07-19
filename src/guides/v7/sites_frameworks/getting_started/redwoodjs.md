@@ -32,7 +32,7 @@ yarn create redwood-app ./my-redwood-app
 
 To prepare your RedwoodJS app for deployment on {{ PRODUCT }}, you can use both the RedwoodJS or {{ PRODUCT }} CLI depending on what you prefer.
 
-### Using Redwoodjs CLI {/*using-redwoodjs-cli*/}
+### Using RedwoodJS CLI {/*using-redwoodjs-cli*/}
 
 You will first need to setup {{ PRODUCT }} as a deploy provider via:
 
@@ -42,7 +42,7 @@ yarn rw setup deploy {{ FULL_CLI_NAME }}
 
 This will verify that the {{ PRODUCT }} CLI is setup on your system and initialize the application accordingly.
 
-### Using the {{ Product }} CLI {/*using-the-cli*/}
+### Using the {{ PRODUCT }} CLI {/*using-the-cli*/}
 
 For preparing using the {{ PRODUCT }} CLI, run:
 
@@ -65,7 +65,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 {{ FULL_CLI_NAME }} dev
 ```
 
-### Simulate Edge Caching Locally {/*simulate-edge-caching-locally*/}
+### Simulate edge caching locally {/*simulate-edge-caching-locally*/}
 
 To simulate edge caching locally, run:
 

@@ -14,7 +14,7 @@ This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application to
 
 {{ PREREQ.md }}
 
-## Create a New Vue.js App {/*create-a-new-vuejs-app*/}
+## Create a new Vue.js app {/*create-a-new-vuejs-app*/}
 
 If you don't already have a Vue.js app, create one by using the Vue CLI:
 
@@ -40,9 +40,9 @@ cd hello-world
 npm run serve
 ```
 
-## Configuring Your Vue.js App for {{ Product }} {/*configuring-your-vuejs-app-for*/}
+## Configuring your Vue.js app for {{ PRODUCT }} {/*configuring-your-vuejs-app-for-edgio*/}
 
-### Initialize Your Project {/*initialize-your-project*/}
+### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ CLI_NAME }} init`:
 
@@ -57,7 +57,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Vue.js.
 
-### Adding {{ Product }} Service Worker {/*adding-service-worker*/}
+### Adding {{ PRODUCT }} Service Worker {/*adding-edgio-service-worker*/}
 
 To add service worker to your Vue app, run the following in the root folder of your project:
 
@@ -146,7 +146,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = config
 ```
 
-### Configure the Routes {/*configure-the-routes*/}
+### Configure the routes {/*configure-the-routes*/}
 
 Next you'll need to configure {{ PRODUCT }} routing in the `routes.js` file.
 
@@ -172,7 +172,7 @@ The example above assumes you're using Vue as a single page app. It routes the s
 
 Refer to the [Routing](routing) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Vue.js App Locally on {{ Product }} {/*run-the-vuejs-app-locally-on*/}
+### Run the Vue.js app locally on {{ PRODUCT }} {/*run-the-vuejs-app-locally-on-edgio*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

@@ -4,7 +4,7 @@ title: Bloomreach
 
 This guide shows you how to deploy a [Bloomreach](https://www.bloomreach.com/) backed application on {{ PRODUCT }}.
 
-## What Is Bloomreach? {/*what-is-bloomreach*/}
+## What is Bloomreach? {/*what-is-bloomreach*/}
 
 Bloomreach is an API driven platform offering that focuses on powerful [content](https://www.bloomreach.com/en/products/content), customer [engagement](https://www.bloomreach.com/en/products/engagement), and product [discovery](https://www.bloomreach.com/en/products/discovery) offerings to achieve true personalization and drive unparalleled business growth. Their offerings and deep partner network create the ability to develop a performant and capable site offering.
 
@@ -36,7 +36,7 @@ This example is a React app powered by Bloomreach Content. The following is base
 
 {{ PREREQ.md }}
 
-## Launch the {{ Product }} Example Application {/*launch-the-example-application*/}
+## Launch the {{ PRODUCT }} example application {/*launch-the-layer0-example-application*/}
 
 If you are not yet a Bloomreach customer, but would like to demo their service, the quickest way to get access to an instance is by reaching out to our [Partner]({{ PARTNERS_CONTACT }}) team. Alternatively, {{ PRODUCT }} has setup a sample application that can be used to get started with viewing the service, seeing optimal configurations, and more.
 
@@ -48,7 +48,7 @@ The sample application does the following things:
 - [Caching](/guides/prefetching) configuration for GraphQL operations, API operations, and static operations have been added in the `routes.ts` file.
 - To view [Prefetching](/guides/prefetching) in operation, view the `<Link />` component. This wraps menu items and category items to prefetch the content of those links to allow content to be served from instantly from the browser's cache.
 
-### Get the Code {/*get-the-code*/}
+### Get the code {/*get-the-code*/}
 
 There are a couple options to continue:
 
@@ -63,7 +63,7 @@ If you were to clone the repo directly,
 git clone git@github.com:layer0-docs/layer0-docs-bloomreach-reference-spa-example.git
 ```
 
-### Configure the Project {/*configure-the-project*/}
+### Configure the project {/*configure-the-project*/}
 
 From within the project, let's configure and review a couple of items. This is a sample project static React application.
 

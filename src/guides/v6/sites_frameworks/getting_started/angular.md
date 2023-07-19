@@ -28,7 +28,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
 
 If you don't already have an Angular application, you can create one using the following steps:
 
-#### 1. Create a New Angular App {/*1-create-a-new-angular-app*/}
+#### 1. Create a new Angular App {/*1-create-a-new-angular-app*/}
 
 ```bash
 npm install -g @angular/cli
@@ -37,7 +37,7 @@ ng new my-{{ PRODUCT_NAME_LOWER }}-angular-app
 
 You should now have a working starter app. Run `ng serve` to see the application running on `localhost:4200`.
 
-#### 2. Initializing Your Project {/*2-initializing-your-project*/}
+#### 2. Initializing your Project {/*2-initializing-your-project*/}
 
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
@@ -53,7 +53,7 @@ This will automatically add all of the required dependencies and files to your p
 - `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
 
-#### 3. Use the Right Angular Project {/*3-use-the-right-angular-project*/}
+#### 3. Use the right angular project {/*3-use-the-right-angular-project*/}
 
 If you have several projects and the `defaultProject` as specified in `angular.json` is not the project with the SSR build, specify the correct project with the `ANGULAR_PROJECT` environment variable. For example: `ANGULAR_PROJECT=my-ssr-project {{ FULL_CLI_NAME }} build`.
 

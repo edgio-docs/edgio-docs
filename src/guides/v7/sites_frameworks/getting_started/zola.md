@@ -10,7 +10,7 @@ This guide shows you how to deploy a [Zola](https://www.getzola.org/) applicatio
 
 {{ PREREQ.md }}
 
-## Create a New Zola App {/*create-a-new-zola-app*/}
+## Create a new Zola app {/*create-a-new-zola-app*/}
 
 ### Step 1: Install Zola {/*step-1-install-zola*/}
 
@@ -71,7 +71,7 @@ For reference, by the **end** of this overview, our `myblog` directory will have
 └── themes/
 ```
 
-### Step 3: Start the Zola Server {/*step-3-start-the-zola-server*/}
+### Step 3: Start the Zola server {/*step-3-start-the-zola-server*/}
 
 Let's start the Zola development server with:
 
@@ -81,7 +81,7 @@ Building site...
 -> Creating 0 pages (0 orphan), 0 sections, and processing 0 images
 ```
 
-## Configuring Your Zola App for {{ Product }} {/*configuring-your-zola-app-for*/}
+## Configuring your Zola app for {{ PRODUCT }} {/*configuring-your-zola-app-for*/}
 
 Create a `package.json` at the root of your project with the following:
 
@@ -89,7 +89,7 @@ Create a `package.json` at the root of your project with the following:
 npm init
 ```
 
-### Initialize Your Project {/*initialize-your-project*/}
+### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
@@ -104,7 +104,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Zola.
 
-### Configure the Routes {/*configure-the-routes*/}
+### Configure the routes {/*configure-the-routes*/}
 
 Update `routes.js` at the root of your project to the following:
 
@@ -121,7 +121,7 @@ export default new Router()
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Zola App Locally on {{ Product }} {/*run-the-zola-app-locally-on*/}
+### Run the Zola app locally on {{ PRODUCT }} {/*run-the-zola-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

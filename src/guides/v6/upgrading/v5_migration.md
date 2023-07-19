@@ -42,7 +42,7 @@ Migrate from version 4.x to 5 through the following steps:
 8.  [Optional: Review your code for duplicate query string parameters.](#optional-review-your-code-for-duplicate-query-string-parameters)
 9.  [Optional: Permalink Indexing](#permalink-indexing)
 
-## Step 1: Upgrade the {{ Product }} CLI {/*step-1-upgrade-the-cli*/}
+## Step 1: Upgrade the {{ PRODUCT }} CLI {/*upgrade-the-cli*/}
  
 We have renamed the {{ PRODUCT }} CLI from `0 | layer0` to `{{ CLI_NAME }} | {{ FULL_CLI_NAME }}`. Install the latest version of our CLI.
 
@@ -64,7 +64,7 @@ npm install -g @edgio/cli@^5.0.0
 yarn global add @edgio/cli@^5.0.0
 ```
 
-## Step 2: Rename Layer0.config.JS {/*step-2-rename-layer0configjs*/}
+## Step 2: Rename layer0.config.js {/*rename-layer0configjs*/}
 
 For each site, rename `layer0.config.js` to `edgio.config.js`. 
 
@@ -74,7 +74,7 @@ For each site, rename `layer0.config.js` to `edgio.config.js`.
 
 </Callout>
 
-## Step 3: Rename {{ Product }} Packages {/*step-3-rename-packages*/}
+## Step 3: Rename {{ PRODUCT }} Packages {/*rename-packages*/}
 
 For each site, rename all references to {{ PRODUCT }} packages from `@layer0` to `{{ PACKAGE_NAME }}`.
 
@@ -152,7 +152,7 @@ For each site, rename all references to {{ PRODUCT }} packages from `@layer0` to
     ...
     ```
 
-## Step 4: Install Dependencies {/*step-4-install-dependencies*/}
+## Step 4: Install Dependencies {/*install-dependencies*/}
 
 Install the dependencies defined in the previous step. 
 
@@ -174,11 +174,11 @@ yarn install
 
 </Callout>
 
-## Step 5: Update Scripts That Reference the {{ Product }} CLI {/*step-5-update-scripts-that-reference-the-cli*/}
+## Step 5: Update Scripts that Reference the {{ PRODUCT }} CLI {/*update-scripts-that-reference-the-cli*/}
 
 Update all references to the {{ PRODUCT }} CLI within your `package.json` scripts from `0 | layer0` to either `{{ CLI_NAME }}` or `{{ FULL_CLI_NAME }}`.
 
-## Step 6: Ignore {{ Product }} Build Artifacts {/*step-6-ignore-build-artifacts*/}
+## Step 6: Ignore {{ PRODUCT }} Build Artifacts {/*ignore-build-artifacts*/}
 
 To exclude build artifacts from being tracked in version control, update your `.gitignore` file with the following:
 
@@ -188,11 +188,11 @@ To exclude build artifacts from being tracked in version control, update your `.
 .edgio
 ```
 
-## Step 7: GraphQL Caching End-Of-Life {/*step-7-graphql-caching-end-of-life*/}
+## Step 7: GraphQL Caching End-of-Life {/*graphql-caching-eol*/}
 
 {{ PRODUCT }} has ended support for caching of GraphQL operations in version 5. If your {{ PRODUCT }} router ({{ ROUTES_FILE }}) contains usage of `.graphqlOperation(...)`, you should remove it. Otherwise, your application will fail to build.
 
-## Step 8 (Optional): Review Your Code for Duplicate Query String Parameters {/*step-8-optional-review-your-code-for-duplicate-query-string-parameters*/}
+## Step 8 (Optional): Review Your Code for Duplicate Query String Parameters {/*optional-review-your-code-for-duplicate-query-string-parameters*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5 will no longer modify the request's query string when it detects a duplicate query string parameter.
 
@@ -210,7 +210,7 @@ For example, we will examine how both versions of {{ PRODUCT }} handle the follo
 
 Review your code to see whether it generates duplicate query string parameters. If it does, update it to handle multiple query string parameters with the same name.
 
-## Step 9: (Optional) permalink Indexing {/*step-9-optional-permalink-indexing*/}
+## Step 9: (Optional) Permalink Indexing {/*permalink-indexing*/}
 
 For {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.1 and above, the `x-robots-tag: noindex` header is automatically added to all responses being served from edge links and permalinks to prevent search engines from indexing those links. By default, this header will not be added to any responses served from a custom domain. Prior to version 5.1, the `.noIndexPermalink()` function was an opt-in solution to achieve the same effect.
 

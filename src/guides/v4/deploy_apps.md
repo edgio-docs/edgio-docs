@@ -4,7 +4,7 @@ title: Deploying
 
 This guide walks you through deploying your app to {{ PRODUCT_NAME }}.
 
-## Deploy from the CLI {/*deploy-from-the-cli*/}
+## Deploy From the CLI {/*deploy-from-the-cli*/}
 
 Once you've created your {{ PRODUCT_NAME }} project, run the following to deploy your site to your private space on {{ PRODUCT_NAME }} using the CLI:
 

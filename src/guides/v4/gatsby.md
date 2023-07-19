@@ -6,7 +6,7 @@ This guide shows you how to deploy an [Gatsby](https://www.gatsbyjs.com/) applic
 
 <Video src="https://www.youtube.com/watch?v=ici9j6oF_5E" />
 
-## Example {/*example*/}
+## Example {/* example */}
 
 <ExampleButtons
   title="Gatsby SSG"
@@ -24,7 +24,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
 -->
 {{ PREREQ.md }}
 
-## Getting Started {/*getting-started*/}
+## Getting Started {/* getting-started */}
 
 If you don't already have a Gatsby application, you can create one using:
 
@@ -49,7 +49,7 @@ This will automatically add all of the required dependencies and files to your p
 - `{{ CONFIG_FILE }}`
 - `routes.js` - A default routes file that sends all requests to your Gatsby static site. Update this file to add caching or proxy some URLs to a different origin.
 
-## Running Locally {/*running-locally*/}
+## Running Locally {/* running-locally */}
 
 You can test the integration of the {{ PRODUCT_PLATFORM }} router with your gatsby site locally using:
 
@@ -57,7 +57,7 @@ You can test the integration of the {{ PRODUCT_PLATFORM }} router with your gats
 {{ CLI_NAME }} dev
 ```
 
-## Deploying {/*deploying*/}
+## Deploying {/* deploying */}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
@@ -67,7 +67,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 See [Deploying](deploy_apps) guide for more information.
 
-## Routing {/*routing*/}
+## Routing {/* routing */}
 
 The default `routes.js` file created by `{{ CLI_NAME }} init` sends all requests to the Gatsby static site.
 
@@ -85,7 +85,7 @@ module.exports = new Router()
   .use(gatsbyRoutes)
 ```
 
-### Adding Routes to a Different Origin {/*adding-routes-to-a-different-origin*/}
+### Adding Routes to a Different Origin {/* adding-routes-to-a-different-origin */}
 
 To proxy some URLs to a different origin, you need first to configure that origin in your `{{ CONFIG_FILE }}` file.
 

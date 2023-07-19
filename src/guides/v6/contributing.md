@@ -4,7 +4,7 @@ title: Contributing to the {{ PRODUCT_NAME }} Documentation
 
 {{ PRODUCT_NAME }} is about empowering developers and our documentation is no different. We welcome feedback whether it consists of fixing a typo or a better explanation. You can find the source code for this documentation site in a public [GitHub repository](https://github.com/{{ DOCS_REPO }}). Once you have made the desired changes, submit a [pull request](https://github.com/edgio-docs/edgio-docs/pulls). Alternatively, you can let us know how we can improve the documentation by [filing an issue](https://github.com/edgio-docs/edgio-docs/issues).
 
-## Running the Documentation Site Locally {/*running-the-documentation-site-locally*/}
+## Running the Documentation Site Locally {/* running-locally */}
 
 Run our documentation site on your local machine through the following steps:
 
@@ -29,11 +29,11 @@ Run our documentation site on your local machine through the following steps:
 
 Once you have performed the above steps, you will be able to view a local instance of the documentation site in your browser at http://127.0.0.1:3000.
 
-## Architecture {/*architecture*/}
+## Architecture {/* architecture */}
 
 {{ PRODUCT_NAME }} documentation is a Next.js application running on {{ PRODUCT_NAME }}. Each article is a Markdown file located in the [guides folder](https://github.com/{{ DOCS_REPO }}/tree/main/src/pages/guides).
 
-## How to Contribute {/*how-to-contribute*/}
+## How to Contribute {/* how-to-contribute */}
 
 You may contribute to our documentation by either:
 
@@ -56,7 +56,7 @@ For more details, the Pro Git book has a <a href="https://git-scm.com/book/en/v2
 
 ---
 
-## Formatting {/*formatting*/}
+## Formatting {/* formatting */}
 
 Use [standard Markdown syntax](https://www.markdownguide.org/cheat-sheet/) when formatting content. Follow these guidelines when formatting content:
 
@@ -76,7 +76,7 @@ Use [standard Markdown syntax](https://www.markdownguide.org/cheat-sheet/) when 
 
   Add a CNAME DNS entry whose value is set to `_acme-challenge.<DOMAIN>`.
 
-## Callout {/*callout*/}
+## Callout {/* callout */}
 
 Add a callout to bring attention to a specific part of the guide.
 
@@ -149,7 +149,7 @@ Identifies a configuration or action that can negatively impact your site's perf
 
 ---
 
-## Fenced Code Block {/*fenced-code-block*/}
+## Fenced Code Block {/* codeblock */}
 
 Fence code excerpts with triple backticks. If the code is language-specific, then you should indicate that language by appending it to the starting triple backticks (e.g., ` ```html ` or ` ```bash `).
 
@@ -212,7 +212,7 @@ To highlight lines based on a diff, mark lines with a leading `+`/`-` and specif
   .fallback(({ renderWithApp }) => renderWithApp())
 ```
 
-## Video {/*video*/}
+## Video {/* video */}
 
 ```tsx
 <Video src="video src url" />
@@ -220,7 +220,7 @@ To highlight lines based on a diff, mark lines with a leading `+`/`-` and specif
 
 ---
 
-## Button Link {/*button-link*/}
+## Button Link {/* button-link */}
 
 ```tsx
 /*
@@ -267,7 +267,7 @@ Renders:
 
 ---
 
-## Button Links Group {/*button-links-group*/}
+## Button Links Group {/* button-links-group */}
 
 ```tsx
 <ButtonLinksGroup>

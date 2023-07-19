@@ -11,14 +11,14 @@ Managing your caching policy and cached content is critical for achieving optima
 -   [Caching content by query string, request headers, or additional custom criteria](/guides/performance/caching/cache_key#customizing-the-cache-key)
 -   [Purging content.](/guides/performance/caching/purging)
 
-## Caching {/*caching*/}
+## Caching {/* caching */}
 Caching creates a copy of the requested content within our edge and Origin Shield POPs. This improves your site's performance by allowing clients to retrieve your content from the POP closest to them instead of your origin servers. 
 
-## Environments and Caching {/*environments-and-caching*/}
+## Environments and Caching {/* environments-and-caching */}
 
 Each environment provides a separate edge cache for the most recent deployment. Although older deployments do not support edge caching, you may re-enable it by [rolling back to that version](/guides/basics/deployments#versioning).
 
-## Edge and Origin Shield Caching {/*edge-and-origin-shield-caching*/}
+## Edge and Origin Shield Caching {/* edge-and-origin-shield-caching */}
 
 {{ PRODUCT }} may cache your content on our:
 
@@ -29,7 +29,7 @@ There is very little difference in time to first byte (TTFB) for responses serve
 
 [Learn more about Origin Shield.](/guides/security/origin_shield)
 
-## Default Caching Policy {/*default-caching-policy*/}
+## Default Caching Policy {/* default-caching-policy */}
 
 By default, a response is eligible for caching when it satisifes all of the following requirements:
 
@@ -43,13 +43,13 @@ For requests that satisfy the above conditions, {{ PRODUCT }} caches the respons
 
 [View the request flow for determining whether to serve a response from cache.](/guides/performance/caching/cache_request_flow)
 
-## Caching a Response {/*caching-a-response*/}
+## Caching a Response {/* caching-a-response */}
 
 Define a caching policy through:
 -   **Response headers:** Define cache directives within response headers. Set these response headers through your web server's configuration or by defining a rule with header features (e.g., [Set Response Headers feature](/guides/performance/rules/features#set-response-headers)).
 -   **Rules:** Define a [rule with caching features](#rules). 
 
-### Cache Directives (Response Headers) {/*cache-directives-response-headers*/}
+### Cache Directives (Response Headers) {/* cache-directives-response-headers */}
 
 An origin server or the Serverless layer may include headers in the response that contain cache directives. These cache directives may determine how long our servers will cache that response. By default, our servers honor the following response headers:
 
@@ -73,7 +73,7 @@ An origin server or the Serverless layer may include headers in the response tha
 -   Refer to your web server’s documentation to learn how to define response headers.
 -   You may override a web server's cache policy by creating a rule or route.
 
-### Defining a Caching Policy through Rules {/*defining-a-caching-policy-through-rules*/}
+### Defining a Caching Policy through Rules {/* defining-a-caching-policy-through-rules */}
 
 Set or override a cache policy by creating a rule that identifies the desired set of requests and the caching policy that will be applied to them. 
 
@@ -95,7 +95,7 @@ Commonly used features for defining a caching policy are listed below.
 
 [View all caching-related features.](/guides/performance/rules/features#caching)
 
-#### Defining a Caching Policy through CDN-As-Code {/*defining-a-caching-policy-through-cdn-as-code*/}
+#### Defining a Caching Policy through CDN-As-Code {/* defining-a-caching-policy-through-cdn-as-code */}
 
 Add the [caching](/docs/api/core/interfaces/types.Caching.html) feature to your route:
 
@@ -115,13 +115,13 @@ router.get('/some/path', {
 });
 ```
 
-### Cache Key {/*cache-key*/}
+### Cache Key {/* cache-key */}
 
 Our servers use cache keys to determine whether a cached response exists for a specific request. Specifically, they calculate a cache key for each request. They then use this cache key to check for a cached response. 
 
 [Learn more about cache keys.](/guides/performance/caching/cache_key)
 
-### Caching Responses for Post and Put Requests {/*caching-responses-for-post-and-put-requests*/}
+### Caching Responses for Post and Put Requests {/* caching-responses-for-post-and-put-requests */}
 
 By default, {{ PRODUCT }} only caches responses for `GET` requests. Cache the response for `POST`, `PUT`, or both HTTP methods using either of the following methods:
 
@@ -135,7 +135,7 @@ By default, {{ PRODUCT }} only caches responses for `GET` requests. Cache the re
     });
     ```
 
-### Caching Private Responses {/*caching-private-responses*/}
+### Caching Private Responses {/* caching-private-responses */}
 
 By default, {{ PRODUCT }} does not cache the response when it contains [certain cache directives](#response-headers) (e.g., `Cache-Control: private`). Instruct our CDN to ignore these cache directives through either of the following methods:
 
@@ -149,7 +149,7 @@ By default, {{ PRODUCT }} does not cache the response when it contains [certain 
     });
     ```
 
-### Client Caching {/*client-caching*/}
+### Client Caching {/* client-caching */}
 
 Content can be cached on our network or the client's machine. Define how long content is cached on a client's machine through:
 
@@ -162,7 +162,7 @@ Content can be cached on our network or the client's machine. Define how long co
 
 </Callout>
 
-## Revalidation {/*revalidation*/}
+## Revalidation {/* revalidation */}
 
 Revalidation is the process through which an edge server checks the origin to find out whether a newer version of the requested cached content exists. If the origin indicates that the requested content has not changed, then our servers will serve cached content to the client and then update its TTL according to the provided cache instructions.
 
@@ -179,7 +179,7 @@ Our servers can only perform a revalidation when the following conditions are tr
 
     </Callout>
 
-## Preventing a Response from Being Cached {/*preventing-a-response-from-being-cached*/}
+## Preventing a Response from Being Cached {/* preventing-a-response-from-being-cached */}
 
 There are certain cases under which you may wish to disable caching. For example, caching should be disabled for requests that typically generate unique responses. You may disable caching for these types of requests using either of the following methods:
 
@@ -202,7 +202,7 @@ By default, {{ PRODUCT_NAME }} will cache responses that satisfy all of the foll
 4. The response must have a valid `cache-control` header that includes a positive `max-age` or `s-maxage` and does not include a `private` clause. You can override this by using [router caching](#caching-a-response) and [forcing private responses](#caching-private-responses).
 -->
 
-## How Do I Know If a Response Was Served from the Cache? {/*how-do-i-know-if-a-response-was-served-from-the-cache*/}
+## How Do I Know If a Response Was Served from the Cache? {/* how-do-i-know-if-a-response-was-served-from-the-cache */}
 
 Responses served from cache contain the [x-cache: HIT](/guides/performance/response#-specific-headers) response header.
 
@@ -218,19 +218,19 @@ You will see one of the following values for these components:
 - `cached` - The response was added to the cache, but was not served from the cache (aka a cache "miss" that may be a "hit" for the next request)
 - `hit` - The response was served from the cache
 
-## Why Is My Response Not Being Cached? {/*why-is-my-response-not-being-cached*/}
+## Why Is My Response Not Being Cached? {/* why-is-my-response-not-being-cached */}
 
 To understand why a response was not cached, examine the `{{ HEADER_PREFIX }}-caching-status` response header. It will have one of the following values:
 
-### Ok {/*ok*/}
+### Ok {/* ok */}
 
 The response was cached or served from the cache (see `{{ HEADER_PREFIX }}-t`).
 
-### Disabled {/*disabled*/}
+### Disabled {/* disabled */}
 
 The response was not cached because the edge caching was explicitly disabled (see [Preventing a Response from being Cached](#preventing-a-response-from-being-cached)).
 
-### No-Max-Age {/*no-max-age*/}
+### No-Max-Age {/* no-max-age */}
 
 The response was not cached because there was no `cache-control` response header with a non-zero `max-age` or `s-maxage` value. To cache the response, set `max_age` under your `caching` rule. For example:
 
@@ -244,11 +244,11 @@ router.get('/some/path', {
 
 You can also cache the response by adding a `cache-control` header with non-zero `max-age` or `s-maxage` value to the upstream response.
 
-### Code {/*code*/}
+### Code {/* code */}
 
 The response was not cached because the response had a status code >= 400.
 
-### Private {/*private*/}
+### Private {/* private */}
 
 The response was not cached because it contained a `cache-control` header with `private`. To cache the response, use:
 
@@ -262,15 +262,15 @@ router.get('/some/path', {
 
 You can also remove the `private` value from the upstream response's `cache-control` header. See [Altering the Response](/guides/performance/cdn_as_code/common_routing_patterns#altering-the-response) for more information.
 
-### Method {/*method*/}
+### Method {/* method */}
 
 The response was not cached because the request method was something other than `HEAD` or `GET`, and the route that set the caching behavior used `match`. To cache the `POST` responses, for example, use `router.post()` instead of `router.match()`.
 
-### Body-Too-Big {/*body-too-big*/}
+### Body-Too-Big {/* body-too-big */}
 
 The response was not cached because the request body was more than 8000 bytes.
 
-### Set-Cookie {/*set-cookie*/}
+### Set-Cookie {/* set-cookie */}
 
 The response was not cached because it contained a `set-cookie` header. To cache the response, use `headers` feature to remove the `set-cookie` header:
 
@@ -288,15 +288,15 @@ router.get('/some/path', {
 
 See [Altering the Response](/guides/performance/cdn_as_code/common_routing_patterns#altering-the-response) for more information.
 
-### Deployment {/*deployment*/}
+### Deployment {/* deployment */}
 
 The response was not cached because it was received during the brief time (less than 1 minute) that a new version of the app was being propagated through the global network of POPs. There is no need to take any action because this status goes away as soon as the new version is completely propagated.
 
-### Debug {/*debug*/}
+### Debug {/* debug */}
 
 The response was not cached because the request was issued with `{{ HEADER_PREFIX }}-debug` header set to `1`. In debug mode, {{ PRODUCT_NAME }} will respond with more data that is useful for troubleshooting. However, the increased header footprint may lead to header overflow and other failures, so this should be used only during actual troubleshooting.
 
-### Pass {/*pass*/}
+### Pass {/* pass */}
 
 The response was not cached due to unknown reasons. If you happen to receive this status then please contact [support]({{ SUPPORT_URL }}).
 
@@ -309,7 +309,7 @@ Hit-for-pass disables the usual request coalescing behavior temporarily, when th
 Disabling this, such as when the upstream resource is serving errors can help alleviate pressure at all stages of the request lifecycle.
 -->
 
-## Caching during Development {/*caching-during-development*/}
+## Caching during Development {/* caching-during-development */}
 
 By default, caching is disabled during local development. This configuration prevents stale responses from being served after making changes to your code or upstream APIs. Enable caching during local development by passing the `--cache` option when running the {{ PRODUCT }} CLI in development mode:
 
@@ -320,7 +320,7 @@ By default, caching is disabled during local development. This configuration pre
 The cache will automatically be cleared when you make changes to your router.
 
 <!-- TODO: determine JSON syntax for serving static permenent assets
-## Ensuring Versioned Browser Assets Are Permanently Available {/*ensuring-versioned-browser-assets-are-permanently-available*/}
+## Ensuring Versioned Browser Assets Are Permanently Available {/* ensuring-versioned-browser-assets-are-permanently-available */}
 
 In order to ensure that users who are actively browsing your site do not experience issues during a deployment, developers can
 configure certain client-side assets to be permanently available, even after a new version of the site has been deployed. For example,

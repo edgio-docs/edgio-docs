@@ -27,7 +27,7 @@ You may view these console messages in real time or as log data.
 
 [View log field definitions.](#serverless-compute-console-and-dri-log-fields)
 
-## Deep Request Inspection (Dri) {/*deep-request-inspection-dri*/}
+## Deep Request Inspection (Dri) {/* deep-request-inspection-dri */}
 
 <Video src="https://www.youtube.com/watch?v=M0KPpX89nO4"/>
 
@@ -61,7 +61,7 @@ One use case for DRI is to analyze traffic during a deployment by tailing the se
 3.  Click **Enable Deep Request Inspection**.
 4.  When prompted, confirm enablement and redeploy your site by clicking **ENABLE DEEP REQUEST INSPECTION**.
 
-## Serverless Compute Console <!-- And Dri --> Log Fields {/*serverless-compute-console-and-dri-log-fields*/}
+## Serverless Compute Console <!-- And Dri --> Log Fields {/* serverless-compute-console-and-dri-log-fields */}
 
 <Callout type="info">
 
@@ -103,7 +103,7 @@ level:
 
 -->
 
-## Log Aggregation Tools {/*log-aggregation-tools*/}
+## Log Aggregation Tools {/* log-aggregation-tools */}
 
 {{ PRODUCT }} temporarily stores log data within Amazon S3. Use a log aggregation tool to extract log data from AWS S3. Here are a few popular log aggregation tools:
 

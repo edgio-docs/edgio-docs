@@ -12,7 +12,7 @@ See [NPM Packages Changelog](/guides/changelog) for release notes related to the
 
 #### {{ Portal }} - April 27, 2023 {/*-april-27-2023*/}
 
-##### Security Updates {/*security-updates*/}
+##### Security Updates  {/*security-updates*/}
 - Console Security UI: Add reCAPTCHA
 
 ##### General Updates {/*general-updates*/}

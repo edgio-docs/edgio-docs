@@ -68,7 +68,7 @@ For example, the following response header applies three surrogate keys to the c
 
 `Surrogate-Key: sports basketball march-tournament`
 
-## {{ Portal }} {/**/} {/**/}
+## {{ Portal }} {/**/}
 
 Use the {{ PORTAL }} to purge cached content within a specific environment. 
 

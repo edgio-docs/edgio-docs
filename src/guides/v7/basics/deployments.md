@@ -4,7 +4,7 @@ title: Deployments
 
 A deployment is required to apply changes to your code or configuration to an environment. 
 
-## Deploying {/*deploying*/}
+## Deploying  {/*deploying*/}
 
 Deploy to an environment using either of the following methods:
 

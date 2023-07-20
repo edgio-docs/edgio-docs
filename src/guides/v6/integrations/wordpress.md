@@ -79,9 +79,9 @@ Once you have confirmed that your deployed {{ PRODUCT }} site is proxying conten
 
 {{ PRODUCT }} provides a WordPress plugin you may leverage to set cache TTL and automatically clear the {{ PRODUCT }} cache when a change is made to your site.
 
-First, to obtain the latest plugin version, [click here](/archive/github/edgio/edgiowordpress/wp-content/plugins/edgio) to download the ZIP file.
+First, to obtain the latest plugin version, [click here](/zip/edgio_wordpress_plugin.zip) to download the ZIP file.
 
-<ButtonLink href="/archive/github/edgio/edgiowordpress/wp-content/plugins/edgio">
+<ButtonLink href="/zip/edgio_wordpress_plugin.zip">
   Download Plugin
 </ButtonLink>
 

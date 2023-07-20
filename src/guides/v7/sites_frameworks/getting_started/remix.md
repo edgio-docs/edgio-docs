@@ -45,7 +45,7 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring Your Remix App for {{ Product }} {/* configuring-your-remix-app-for */}
+## Configuring Your Remix App for {{ PRODUCT }} {/* configuring-your-remix-app-for */}
 
 ### Initialize Your Project {/* initialize-your-project */}
 
@@ -67,7 +67,7 @@ This will automatically update your `package.json` and add all of the required {
 
 In order for {{ PRODUCT }} to correctly bundle your app, there's a few configurations that need to be modified.
 
-#### Update `package.JSON` `type` Property {/* update-packagejson-type-property */}
+#### Update the `type` Property in `package.json` {/* update-the-type-property-in-packagejson */}
 
 In most cases, a Remix app will have `"type": "module"` in the `package.json` file. This property should be removed as {{ PRODUCT }} does not support it at this time.
 
@@ -87,7 +87,7 @@ In most cases, a Remix app will have `"type": "module"` in the `package.json` fi
 }
 ```
 
-#### Update `remix.config.JS` `servermoduleformat` Property {/* update-remixconfigjs-servermoduleformat-property */}
+#### Update the `servermoduleformat` Property in  `remix.config.js` {/* update-the-servermoduleformat-property-in-remixconfigjs */}
 
 Additionally, the `serverModuleFormat` property in the `remix.config.js` file should be set to `cjs`, and use the CommonJS module format.
 
@@ -113,7 +113,46 @@ Additionally, the `serverModuleFormat` property in the `remix.config.js` file sh
 };
 ```
 
-### Update {{ Product }} Configuration File {/* update-configuration-file */}
+#### Alter the Build Import in `server.js` {/* alter-the-build-import-in-serverjs */}
+
+By default, Remix will us ES imports in the `server.js` file using a top-level `await import` which is not compatible with CommonJS modules. These should be changed to a `require` statement instead.
+
+```js diff filename="server.js"
+- import * as fs from "node:fs";
++ const fs = require("node:fs");
+
+- import { createRequestHandler } from "@remix-run/express";
++ const { createRequestHandler } = require("@remix-run/express");
+- import { broadcastDevReady, installGlobals } from "@remix-run/node";
++ const { broadcastDevReady, installGlobals } = require("@remix-run/node");
+- import chokidar from "chokidar";
++ const chokidar = require("chokidar");
+- import compression from "compression";
++ const compression = require("compression");
+- import express from "express";
++ const express = require("express");
+- import morgan from "morgan";
++ const morgan = require("morgan");
+
+installGlobals();
+
+const BUILD_PATH = "./build/index.js";
+/**
+ * @type { import('@remix-run/node').ServerBuild | Promise<import('@remix-run/node').ServerBuild> }
+ */
+- let build = await import(BUILD_PATH);
++ let build = require(BUILD_PATH);
+
+const app = express();
+
+/* ... */
+```
+
+<Callout type="important">
+  With various changes made to the Remix app configuration, it's important to ensure that the app still works as expected. Build the app locally using `npm run build` to verify there are no errors.
+</Callout>
+
+### Update {{ PRODUCT }} Configuration File {/* update-configuration-file */}
 
 Update `{{ CONFIG_FILE }}` `serverless` property to include the `public` and `build` directories:
 
@@ -168,7 +207,7 @@ export default new Router()
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Remix App Locally on {{ Product }} {/* run-the-remix-app-locally-on */}
+### Run the Remix App Locally on {{ PRODUCT }} {/* run-the-remix-app-locally-on */}
 
 Create a development build of your app by running the following in your project's root directory:
 

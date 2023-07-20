@@ -12,13 +12,14 @@ The following operations automate the administration of WAF.
 
 | Type            | Description  |
 |-----------------|---|
-| Security Apps   | A Security Application Manager configuration:<ul><li>Identifies the set of traffic to which it applies by hostname, a URL path, or both.</li><li><p>Defines how threats will be detected via access rules, custom rules, managed rules, and rate rules.</p><Callout type="tip">If one or more condition group(s) have been defined within a rate rule, then traffic will only be rate limited when it also satisfies at least one of those condition groups.</Callout></li><li>Defines the production and/or audit enforcement action that will be applied to traffic identified as threats.</li></ul><br /><br />**Endpoints:** <ul><li>[Get All Security Application Manager Configuration (Scopes)](Get-All-Scopes.htmFINDME)</li><li>[Manage All Security Application Manager Configurations (Scopes)](Manage-All-Scopes.htmFINDME)</li></ul>  |
+| Security Apps   | A Security App configuration:<ul><li>Identifies the set of traffic to which it applies by hostname, a URL path, or both.</li><li><p>Defines how threats will be detected through access rules, API schemas, custom rules, managed rules, and rate rules.</p><Callout type="tip">If one or more condition group(s) have been defined within a rate rule, then traffic will only be rate limited when it also satisfies at least one of those condition groups.</Callout></li><li>Defines the production and/or audit enforcement action that will be applied to traffic identified as threats.</li></ul><br /><br />**Endpoints:** <ul><li>[Get All Security Application Manager Configuration (Scopes)](/guides/v7/develop/rest_api/security/security_apps#get-all-security-apps-scopes)</li><li>[Manage All Security Application Manager Configurations (Scopes)](/guides/v7/develop/rest_api/security/security_apps#manage-all-security-apps-scopes)</li></ul>  |
 | Access Rules    |   |
+| API Security    |   |
 | Rate Rules      |   |
 | Bot Manager     |   |
 | Custom Rules    |   |
 | Managed Rules   |   |
-| API Security    |   |
+
 
 <!--
 

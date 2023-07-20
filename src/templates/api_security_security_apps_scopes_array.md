@@ -8,8 +8,7 @@ The `scopes` array describes each Security App using the following properties:
 |acl_audit_id|String|Indicates the system-defined ID for the access rule that will audit production traffic for this Security App. Use the Get All Access Rules (ACLs) endpoint to retrieve a list of access rules and their IDs.|
 |acl_prod_action|Object|Contains properties that describe the type of action that will take place when an access rule defined within the `acl_prod_id` property is violated.|
 |acl_prod_id|String|Indicates the system-defined ID for the access rule that will be applied to production traffic for this Security App. Use the Get All Access Rules (ACLs) endpoint to retrieve a list of access rules and their IDs.|
-|bots_prod_action|Object|Contains properties that describe the browser challenge that will be applied to requests that satisfy the bot rule set defined within the `bot_prod_id` property.|
-|bots_prod_id|String|Indicates the system-defined ID for the bot rule set that will be applied to production traffic for this Security App. Use the Get All Bot Rule Sets endpoint to retrieve a list of bot rule sets and their IDs.|
+|bot_manager_config_id|String|Identifies a bot manager configuration by its system-defined ID. Use the [Get All Bot Manager Configurations operation](/guides/v7/develop/rest_api_security/bot_manager#get-all-bot-manager-configurations) to retrieve a list of bot manager configurations and their system-defined IDs. |
 |host|Object|Contains properties that describe a hostname match condition.|
 |id|String|Identifies the current Security App by its system-defined ID.|
 |limits|Array of objects|Identifies the set of rate rules that will be enforced for this Security App and the enforcement action that will be applied to rate limited requests.|
@@ -19,6 +18,9 @@ The `scopes` array describes each Security App using the following properties:
 |profile_audit_id|String|Indicates the system-defined ID for the managed rule that will audit production traffic for this Security App. Use the Get All Managed Rules (Profiles) endpoint to retrieve a list of managed rules and their IDs.|
 |profile_prod_action|Object|Contains properties that describe the type of action that will take place when the managed rule defined within the `profile_prod_id` property is violated.|
 |profile_prod_id|String|Indicates the system-defined ID for the managed rule that will be applied to production traffic for this Security App. Use the Get All Managed Rules (Profiles) endpoint to retrieve a list of managed rules and their IDs.|
+|recaptcha_action_name | String | Indicates the name of the reCAPTCHA configuration. |
+|recaptcha_secret_key | String | Indicates the secret key provided by Google. |
+|recaptcha_site_key | String |Indicates the site key provided by Google. |
 |rules_audit_action|Object|Contains properties that describe the type of action that will take place when the custom rule set defined within the `rules_audit_id` property is violated.|
 |rules_audit_id|String|Indicates the system-defined ID for the custom rule set that will audit production traffic for this Security App. Use the Get All Custom Rule Sets endpoint to retrieve a list of custom rule sets and their IDs.|
 |rules_prod_action|Object|Contains properties that describe the type of action that will take place when the custom rule set defined within the rules_prod_id property is violated.|
@@ -37,20 +39,6 @@ The `acl_prod_action`, `profile_prod_action`, and `rules_prod_action` objects de
 |response_headers|Object|`enf_type:` `CUSTOM_RESPONSE`. Indicates the set of response headers for traffic identified as a threat. Each response header is specified as a name/value pair.|
 |status|Integer|`enf_type` = `CUSTOM_RESPONSE`. Indicates the HTTP status code (e.g., 404) for the custom response for traffic identified as a threat.|
 |url|String|`enf_type` = `REDIRECT_302 Only`. Indicates the URL to which malicious requests will be redirected.|
-
-###### bots_prod_action Object
-
-The `bots_prod_action` object describes the browser challenge that will be applied to requests that satisfy the configuration defined by `bots_prod_id`. This object may contain the following properties:
-
-|Name|Data Type|Description|
-|--- |--- |--- |
-|enf_type|String|This property must be set to `BROWSER_CHALLENGE`.|
-|id|String|Reserved for future use.|
-|is_custom_challenge|Boolean|Indicates whether we will serve a standard or custom browser challenge. Valid values are: `true \| false`|
-|name|String|Indicates the name assigned to this enforcement action configuration.|
-|response_body_base64|String|`is_custom_challenge: True`. Contains a Base64 encoded HTML page that we will serve as a custom browser challenge. This HTML page must satisfy the following requirements:<ul><li>It must contain the following mustache: \{\{BOT_JS}} <br />Due to the speed at which our JavaScript function is executed, we recommend that you place the \{\{BOT_JS}} mustache after all rendered content (e.g., near the end of the document's body). <br />We will replace the above \{\{BOT_JS}} mustache with JavaScript upon serving a browser challenge.</li><li>It must check whether the user agent allows JavaScript using a `<noscript>` tag. Your custom HTML must display an error message if it has been disabled.</li><li>It must check whether the user agent allows third-party cookies. Your custom HTML must display an error message if they have been disabled.</li></ul> A custom browser challenge will not be served if your custom HTML does not satisfy the above requirements.|
-|status|Integer|Indicates the HTTP status code (e.g., `404`) for the response provided to clients that are being served the browser challenge.|
-|valid_for_sec|Integer|Indicates the number of minutes for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge to be solved. Specify a value between 1 and 1,440 minutes.|
 
 ###### CONFIGURATION_audit_action Object
 

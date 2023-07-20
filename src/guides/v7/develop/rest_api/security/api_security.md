@@ -26,6 +26,7 @@ Set up API security by performing the following steps:
 1.  Create an empty API gateway configuration through the [Add API Gateway Configuration operation](#add-api-gateway-configuration).
 2.  Create an API schema through the [Add API Schema operation](#add-api-schema) and assign it to the API gateway created in the previous step.
 3.  Update the API gateway configuration created in step 1 through the [Update API Gateway Configuration operation](#add-api-gateway-configuration) to identify the API schema that will be used to screen requests for a specific URL path. 
+4.  Update a security apps configuration to enforce this API gateway configuration through the [Manage All Security Apps (Scopes) operation](/guides/develop/rest_api/security/security_apps#manage-all-security-apps-scopes).
 
 **Key information:** <a id="key-information" />
 

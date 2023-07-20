@@ -590,34 +590,36 @@ const nav = {
             {
               title: 'Security',
               path: 'develop/rest_api/security',
-            },
-            {
-              title: 'Security Apps',
-              path: 'develop/rest_api/security/security_apps',
-            },
-            {
-              title: 'Access Rules',
-              path: 'develop/rest_api/security/access_rules',
-            },
-            {
-              title: 'Rate Rules',
-              path: 'develop/rest_api/security/rate_rules',
-            },
-            {
-              title: 'Bot Manager',
-              path: 'develop/rest_api/security/bot_manager',
-            },
-            {
-              title: 'Custom Rules',
-              path: 'develop/rest_api/security/custom_rules',
-            },
-            {
-              title: 'Managed Rules',
-              path: 'develop/rest_api/security/managed_rules',
-            },
-            {
-              title: 'API Security',
-              path: 'develop/rest_api/security/api_security',
+              routes: [
+                {
+                  title: 'Security Apps',
+                  path: 'develop/rest_api/security/security_apps',
+                },
+                {
+                  title: 'Access Rules',
+                  path: 'develop/rest_api/security/access_rules',
+                },
+                {
+                  title: 'API Security',
+                  path: 'develop/rest_api/security/api_security',
+                },
+                {
+                  title: 'Rate Rules',
+                  path: 'develop/rest_api/security/rate_rules',
+                },
+                {
+                  title: 'Bot Manager',
+                  path: 'develop/rest_api/security/bot_manager',
+                },
+                {
+                  title: 'Custom Rules',
+                  path: 'develop/rest_api/security/custom_rules',
+                },
+                {
+                  title: 'Managed Rules',
+                  path: 'develop/rest_api/security/managed_rules',
+                },
+              ],			
             },
           ],
         },

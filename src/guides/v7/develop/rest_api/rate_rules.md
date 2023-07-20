@@ -39,9 +39,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -168,9 +166,7 @@ Define the following variables when submitting the above request:
 {{ TEAM_ID }}
 -   `<RATE RULE ID>`**:** Required. Replace this variable with the system-defined ID of the desired rate rule. Use the [Get All Rate Rules operation](#get-all-rate-rules) to retrieve a list of rate rules and their IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -229,9 +225,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -291,9 +285,7 @@ Define the following variables when submitting the above request:
 {{ TEAM_ID }}
 -   `<RATE RULE ID>`**:** Required. Replace this variable with the system-defined ID of the desired rate rule. Use the [Get All Rate Rules operation](#get-all-rate-rules) to retrieve a list of rate rules and their IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -401,9 +393,7 @@ Define the following variable when submitting the above request:
 {{ TEAM_ID }}
 -   `<RATE RULE ID>`**:** Required. Replace this variable with the system-defined ID of the desired rate rule. Use the [Get All Rate Rules operation](#get-all-rate-rules) to retrieve a list of rate rules and their IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 

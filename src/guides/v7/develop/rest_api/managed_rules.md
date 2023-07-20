@@ -44,9 +44,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -202,9 +200,7 @@ Define the following variables when submitting the above request:
 {{ TEAM_ID }}
 -   `<MANAGED RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired managed rule. Use the [Get All Managed Rules operation](#get-all-managed-rules) to retrieve a list of managed rules and their system-defined IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -262,9 +258,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -332,9 +326,7 @@ Define the following variables when submitting the above request:
 -   `<RULE SET ID>`**:** Required. Replace this variable with the system-defined ID of the rule set whose policies will be retrieved. Find out the system-defined ID of the rule set associated with the desired managed rule through the `ruleset_id` response property of the [Get Managed Rule operation](#get-managed-rule). Alternatively, retrieve a list of the available rule sets and their system-defined IDs through the [Get Available Managed Rule Sets operation](#get-available-managed-rule-sets).
 -   `<RULE SET VERSION>`**:** Required. Replace this variable with the version of the rule set whose policies will be retrieved. Find out the version of the rule set associated with the desired managed rule through the `ruleset_version` response property of the [Get Managed Rule operation](#get-managed-rule).
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -500,9 +492,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -599,9 +589,7 @@ Define the following variables when submitting the above request:
 -   `<RULE SET VERSION>`**:** Required. Replace this variable with the version of the rule set that contains the policy whose rules will be retrieved. Find out the version of the rule set associated with the desired managed rule through the `ruleset_version` response property of the [Get Managed Rule operation](#get-managed-rule).
 -   `<POLICY ID>`**:** Required. Replace this variable with the system-defined ID of the policy whose rules will be retrieved. Use the [Get Available Policies operation](#get-available-policies) to retrieve a list of the available policies and their system-defined IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -713,9 +701,7 @@ Define the following variables when submitting the above request:
 {{ TEAM_ID }}
 -   `<MANAGED RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired managed rule. Use the [Get All Managed Rules operation](#get-all-managed-rules) to retrieve a list of managed rules and their system-defined IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -869,9 +855,7 @@ Define the following variables when submitting the above request:
 {{ TEAM_ID }}
 -   `<MANAGED RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired managed rule. Use the [Get All Managed Rules operation](#get-all-managed-rules) to retrieve a list of managed rules and their system-defined IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 

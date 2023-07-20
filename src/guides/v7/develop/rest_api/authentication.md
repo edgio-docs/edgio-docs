@@ -7,19 +7,19 @@ Only authenticated requests to the REST API will be processed. This authenticati
 1. Identifies the client application making the request.
 2. Verifies that this client application has sufficient permissions to perform the requested action.
 
-Authentication requires passing a unique value (i.e., token). Generate a token generated from your [OAuth 2.0](FINDME) credentials. By default, this type of token expires after 300 seconds.
+Authentication requires passing a unique value (i.e., token). Generate a token generated from your [OAuth 2.0](#client-applications) credentials. By default, this type of token expires after 300 seconds.
     
-[Register your client application](FINDME) through the {{ IDENTITY_LINK }} to generate OAuth 2.0 credentials through which you may authorize requests submitted to our API gateway ({{ API_DOMAIN }}).
+[Register your client application](#administering-api-clients) through the {{ IDENTITY_LINK }} to generate OAuth 2.0 credentials through which you may authorize requests submitted to our API gateway ({{ API_DOMAIN }}).
 
-## Quick Start
+## Quick Start {/*quick-start*/}
 
 Get started with our latest APIs by performing the following steps:
 
-1. [Create an API client](FINDME) for the desired application. Authorize this client by only assigning it the [scope(s)](FINDME) required by the endpoint(s) with which it will interact.
-2. Use this client's ID and secret key to [generate a temporary access token](FINDME).
-3. [Authorize your API requests](FINDME) using the temporary access token generated in the previous step.
+1. [Create an API client](#administering-api-clients) for the desired application. Authorize this client by only assigning it the [scope(s)](#scopes) required by the endpoint(s) with which it will interact.
+2. Use this client's ID and secret key to [generate a temporary access token](#generating-access-tokens).
+3. [Authorize your API requests](#authorizing-requests) using the temporary access token generated in the previous step.
 
-## OAuth 2.0 Authorization Flow
+## OAuth 2.0 Authorization Flow {/*oauth20-authorization-flow*/}
 
 REST API authorization is managed by a centralized identity management solution called Identity Service (IDS). IDS leverages OAuth 2.0, which complies with the specification defined within [RFC 6749](https://tools.ietf.org/html/rfc6749), to authorize requests to the API.
 
@@ -43,9 +43,9 @@ Requests to our API gateway are authorized through the following workflow:
 
 This workflow is illustrated below.
 
-![](FINDME../Resources/Images/Authentication-Authorization.png)
+![](/images/v7/rest-api/authentication-authorization.png)
 
-## Scopes
+## Scopes {/*scopes*/}
 
 A scope authorizes an API client to perform specific actions (e.g., create and retrieve configurations). A scope is defined using the following hierarchy:
 
@@ -92,7 +92,7 @@ The above hierarchy allows you to grant broad or narrow permissions to your clie
     | app.bot_security  | Authorizes full access to Bot Manager.  |
     | app.api_security  | Authorizes full access to API Security.  |
 
-## Client Applications
+## Client Applications {/*client-applications*/}
 
 Register your client application before interacting with REST API services hosted on our API gateway. You must assign one or more scope(s) when registering an API client. Each scope identifies the set of actions that a client is authorized to perform. 
 
@@ -107,7 +107,7 @@ Upon successfully registering your client application, the following information
 -   If you suspect that a secret key has been compromised, then you should immediately create a new secret key, update your client to use the new secret key, and then delete the old secret key.
 -   A security best practice is to generate separate API clients for each unique application that will interact with our REST API service.
 
-### Administering API Clients
+### Administering API Clients {/*administering-api-clients*/}
 
 You can create, modify, and delete API clients.
 
@@ -137,7 +137,7 @@ A Quick Start page is shown upon creating an account for your API client. This p
 1. Navigate to the {{ IDENTITY_LINK }}.
 2. Click **Clients** from the side navigation pane.
 3. Verify that the **Assigned to Tenant** option is set to the desired team.
-4. Click on ![](FINDME../Resources/Images/Icon/Icon-Open-Configuration.png) corresponding to the desired account.
+4. Click on ![](/images/v7/icons/open-configuration.png) corresponding to the desired account.
 5. Perform one or more of the following tasks:
 
     -   **Update Name/Description:**
@@ -170,8 +170,8 @@ A Quick Start page is shown upon creating an account for your API client. This p
         2. Identify the secret key that you would like to view or copy.
         3. Click either of the following icons:
 
-            -   ![](FINDME../Resources/Images/Icon/Icon-View.png): Displays the secret key.
-            -   ![](FINDME../Resources/Images/Icon/Icon-Copy-2.png): Copies the secret key.
+            -   ![](/images/v7/icons/view.png): Displays the secret key.
+            -   ![](/images/v7/icons/copy.png): Copies the secret key.
 
     -   **Delete a Secret Key:**
 
@@ -183,7 +183,7 @@ A Quick Start page is shown upon creating an account for your API client. This p
 
         1. Click the **Client Secrets** tab.
         2. Identify the secret key that you would like to delete. Verify that it is no longer being used by your API client or script.
-        3. Click ![](FINDME../Resources/Images/Icon/Icon-Trash-BW.png) next to the secret key identified in the previous step.
+        3. Click ![](/images/v7/icons/trash.png) next to the secret key identified in the previous step.
         4. Click **I understand, please delete the client secret** to confirm the deletion of the secret key.
 
     -   **Update Scopes:**
@@ -209,7 +209,7 @@ A Quick Start page is shown upon creating an account for your API client. This p
 6. Click **Delete Client**.
 7. Click **I understand, please delete the client** to confirm the deletion of the API client.
 
-## Generating Access Tokens
+## Generating Access Tokens {/*generating-access-tokens*/}
 
 Each request to our REST API service must be authorized through an access token. Access tokens provide temporary authorization (e.g., 5 minutes) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
 
@@ -253,11 +253,12 @@ Content-Length: 830
 }
 ```
 
-## Authorizing Requests
+## Authorizing Requests {/*authorizing-requests*/}
 
 Requests to our API gateway must be authorized through an access token. Specify an access token within the `Authorization` request header when submitting a request to our REST API service.
 
 **Authorization header syntax:** `Bearer <TOKEN>`
+
 **Key information:**
 
 -   The term "Bearer" and the token value are not case-sensitive.
@@ -266,7 +267,7 @@ Requests to our API gateway must be authorized through an access token. Specify 
     -   **Insufficient Permissions:** The scope associated with the token is insufficient for the requested action.
     -   **Expired Token:** A token automatically expires after 300 seconds (i.e., 5 minutes). Once a token has expired, it can no longer authorize requests.
 
-### Examples
+### Examples {/*examples*/}
 
 A sample `Authorization` request header is provided below.
 

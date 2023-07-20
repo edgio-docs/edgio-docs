@@ -97,9 +97,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -188,9 +186,7 @@ Define the following variable when submitting the above request:
 {{ TEAM_ID }}
 -   `<API GATEWAY CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired API gateway configuration. Use the [Get All API Gateway Configurations operation](#get-all-api-gateway-configurations) to retrieve a list of API gateway configurations and their system-defined IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -236,9 +232,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -294,9 +288,7 @@ Define the following variables when submitting the above request:
 {{ TEAM_ID }}
 -   `<API GATEWAY CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired API gateway configuration. Use the [Get All API Gateway Configurations operation](#get-all-api-gateway-configurations) to retrieve a list of API gateway configurations and their system-defined IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -376,9 +368,7 @@ Define the following variables when submitting the above request:
 {{ TEAM_ID }}
 -   `<API GATEWAY CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired API gateway configuration. Use the [Get All API Gateway Configurations operation](#get-all-api-gateway-configurations) to retrieve a list of API gateway configurations and their system-defined IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -468,9 +458,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -552,9 +540,7 @@ Define the following variable when submitting the above request:
 {{ TEAM_ID }}
 -   `<API SCHEMA ID>`**:** Required. Replace this variable with the system-defined ID for the desired API schema. Use the [Get All API Schemas operation](#get-all-api-schemas) to retrieve a list of API schemas and their system-defined IDs
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -600,9 +586,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -658,9 +642,7 @@ Define the following variables when submitting the above request:
 {{ TEAM_ID }}
 -   `<API SCHEMA ID>`**:** Required. Replace this variable with the system-defined ID for the desired API schema. Use the [Get All API Schemas operation](#get-all-api-schemas) to retrieve a list of API schemas and their system-defined IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -748,9 +730,7 @@ Define the following variables when submitting the above request:
 {{ TEAM_ID }}
 -   `<API SCHEMA ID>`**:** Required. Replace this variable with the system-defined ID for the desired API schema. Use the [Get All API Schemas operation](#get-all-api-schemas) to retrieve a list of API schemas and their system-defined IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 

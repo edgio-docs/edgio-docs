@@ -149,9 +149,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -260,9 +258,7 @@ Define the following variables when submitting the above request:
 {{ TEAM_ID }}
 -   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot manager configuration. Use the [Get All Bot Manager Configurations operation](#get-all-bot-manager-configurations) to retrieve a list of bot manager configurations and their system-defined IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -321,9 +317,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -384,9 +378,7 @@ Define the following variables when submitting the above request:
 {{ TEAM_ID }}
 -   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot manager configuration. Use the [Get All Bot Manager Configurations operation](#get-all-bot-manager-configurations) to retrieve a list of bot manager configurations and their system-defined IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -483,9 +475,7 @@ Define the following variables when submitting the above request:
 {{ TEAM_ID }}
 -   `<BOT MANAGER CONFIGURATION ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot manager configuration. Use the [Get All Bot Manager Configurations operation](#get-all-bot-manager-configurations) to retrieve a list of bot manager configurations and their system-defined IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -622,9 +612,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -814,9 +802,7 @@ Define the following variables when submitting the above request:
 {{ TEAM_ID }}
 -   `<BOT RULE SET ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot rule set. Use the [Get All Bot Rule Sets operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their system-defined IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -875,9 +861,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -938,9 +922,7 @@ Define the following variables when submitting the above request:
 {{ TEAM_ID }}
 -   `<BOT RULE SET ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot rule set. Use the [Get All Bot Rule Sets operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their system-defined IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -1118,9 +1100,7 @@ Define the following variables when submitting the above request:
 {{ TEAM_ID }}
 -   `<BOT RULE SET ID>`**:** Required. Replace this variable with the system-defined ID for the desired bot rule set. Use the [Get All Bot Rule Sets operation](#get-all-bot-rule-sets) to retrieve a list of bot rule sets and their system-defined IDs.
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -1305,9 +1285,7 @@ A request to retrieve known bots is described below.
 
 `GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/known-bots/companies`
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 

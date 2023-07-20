@@ -28,7 +28,7 @@ Authorize requests through the `app.waf` scope.
 
 [Learn more about authorization.](/guides/develop/rest_api/authentication)
 
-## Get All Security Apps (Scopes)
+## Get All Security Apps (Scopes) {/*get-all-security-apps-scopes*/}
 
 Retrieves a list of Security Apps and their properties. 
 
@@ -42,9 +42,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -156,7 +154,7 @@ Content-Length: 1889
 }
 ```
 
-## Manage All Security Apps (Scopes)
+## Manage All Security Apps (Scopes) {/*manage-all-security-apps-scopes*/}
 
 Creates, updates, and deletes one or more Security Apps. 
 
@@ -175,7 +173,7 @@ Creates, updates, and deletes one or more Security Apps.
 
 -   The recommended method for updating your Security Apps is to perform the following steps:
     
-    1.  Retrieve your current set of Security Apps via the [Get All Security Apps (Scopes) operation](FINDME).
+    1.  Retrieve your current set of Security Apps via the [Get All Security Apps (Scopes) operation](#get-all-security-apps-scopes).
     2.  Add, modify, or remove Security Apps from the response as needed.
     3.  Post the updated response to this operation.
 
@@ -189,9 +187,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME/../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 

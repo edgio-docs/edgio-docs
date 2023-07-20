@@ -89,6 +89,10 @@ const EXAMPLES_REPOS = {
 };
 
 const TEAM_ID = `-   \`<TEAM ID>\`**:** Required. Replace this variable with your team's tenant ID.`;
+const API_REQUEST_HEADERS = `<h4>Request Headers</h4>
+
+Set up your API client to pass our [common request headers](/guides/develop/rest_api/api_request_response#request-headers).`;
+
 const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up*/}
 
 Deploying requires an account on ${PRODUCT}. [Sign up here for free.](${APP_URL}/signup)`;
@@ -439,6 +443,7 @@ const config = {
   APP_URL,
   API_URL,
   API_SECURITY_VERSION,
+  API_REQUEST_HEADERS,
   CLI_CMD,
   CLI_NAME,
   CONFIG_FILE,

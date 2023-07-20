@@ -39,9 +39,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -228,13 +226,11 @@ Define the following variable when submitting the above request:
 
     <Callout type="tip">
 
-      Use the [Get All Access Rules (ACLs) operation](FINDME) to retrieve a list of access rules and their system-defined IDs
+      Use the [Get All Access Rules (ACLs) operation](#get-all-access-rules-acl) to retrieve a list of access rules and their system-defined IDs
 
 	</Callout>
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -293,9 +289,7 @@ Define the following variable when submitting the above request:
 
 {{ TEAM_ID }}
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -358,13 +352,11 @@ Define the following variable when submitting the above request:
 
     <Callout type="tip">
 
-      Use the [Get All Access Rules (ACLs) operation](FINDME) to retrieve a list of access rules and their system-defined IDs
+      Use the [Get All Access Rules (ACLs) operation](#get-all-access-rules-acl) to retrieve a list of access rules and their system-defined IDs
 
 	</Callout>
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 
@@ -552,13 +544,11 @@ Define the following variable when submitting the above request:
 
     <Callout type="tip">
 
-      Use the [Get All Access Rules (ACLs) operation](FINDME) to retrieve a list of access rules and their system-defined IDs
+      Use the [Get All Access Rules (ACLs) operation](#get-all-access-rules-acl) to retrieve a list of access rules and their system-defined IDs
 
 	</Callout>
 
-<h4>Request Headers</h4>
-
-This operation only takes advantage of [common request headers](FINDME../../Introduction/Common_Request_and_Response_Elements.htm#Request).
+{{ API_REQUEST_HEADERS }}
 
 <h4>Request Body</h4>
 

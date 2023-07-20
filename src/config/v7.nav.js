@@ -579,7 +579,7 @@ const nav = {
               title: 'Authentication',
               path: 'develop/rest_api/authentication',
             },
-			{
+            {
               title: 'API Request and Response',
               path: 'develop/rest_api/api_request_response',
             },

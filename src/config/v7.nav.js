@@ -593,31 +593,31 @@ const nav = {
             },
             {
               title: 'Security Apps',
-              path: 'develop/rest_api/security_apps',
+              path: 'develop/rest_api/security/security_apps',
             },
             {
               title: 'Access Rules',
-              path: 'develop/rest_api/access_rules',
+              path: 'develop/rest_api/security/access_rules',
             },
             {
               title: 'Rate Rules',
-              path: 'develop/rest_api/rate_rules',
+              path: 'develop/rest_api/security/rate_rules',
             },
             {
               title: 'Bot Manager',
-              path: 'develop/rest_api/bot_manager',
+              path: 'develop/rest_api/security/bot_manager',
             },
             {
               title: 'Custom Rules',
-              path: 'develop/rest_api/custom_rules',
+              path: 'develop/rest_api/security/custom_rules',
             },
             {
               title: 'Managed Rules',
-              path: 'develop/rest_api/managed_rules',
+              path: 'develop/rest_api/security/managed_rules',
             },
             {
               title: 'API Security',
-              path: 'develop/rest_api/api_security',
+              path: 'develop/rest_api/security/api_security',
             },
           ],
         },

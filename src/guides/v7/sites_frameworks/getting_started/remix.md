@@ -2,12 +2,6 @@
 title: Remix
 ---
 
-<Callout type="warning">
-
-  This article is incompatible with [recent Remix changes](https://remix.run/docs/en/1.18.1/pages/technical-explanation#http-handler-and-adapters). We plan on updating this article to work with the latest version of Remix. In the meantime, contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to get started with Remix.
-
-</Callout>
-
 This guide shows you how to deploy a [Remix](https://remix.run/) application to {{ PRODUCT }}.
 
 <!-- ## Example {/*example*/}
@@ -20,14 +14,29 @@ This guide shows you how to deploy a [Remix](https://remix.run/) application to 
 
 {{ PREREQ.md }}
 
-## Create a new Remix app {/*create-a-new-remix-app*/}
+## Create a New Remix App {/* create-a-new-remix-app */}
 
 If you don't already have a Remix app, create one by running the following:
 
 ```bash
 npx create-remix@latest
-# Choose express server
-cd project-name
+```
+
+To ensure your Remix app works with {{ PRODUCT }}, make the following selections when prompted:
+
+```plaintext diff highlight="2,8"
+? What type of app do you want to create? (Use arrow keys)
+❯ Just the basics
+  A pre-configured stack ready for production
+...
+? Where do you want to deploy? Choose Remix App Server if you're unsure; it's easy to change deployment targets.
+  Remix App Server
+❯ Express Server
+  Architect
+  Fly.io
+  Netlify
+  Vercel
+  Cloudflare Pages
 ```
 
 You can verify your app works by running it locally with:
@@ -36,9 +45,9 @@ You can verify your app works by running it locally with:
 npm run dev
 ```
 
-## Configuring your Remix app for {{ PRODUCT }} {/*configuring-your-remix-app-for*/}
+## Configuring Your Remix App for {{ Product }} {/* configuring-your-remix-app-for */}
 
-### Initialize your project {/*initialize-your-project*/}
+### Initialize Your Project {/* initialize-your-project */}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
@@ -50,94 +59,140 @@ This will automatically update your `package.json` and add all of the required {
 
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
+- The `{{ PACKAGE_NAME }}/express` package - Allows you to run your application using the configured Express server
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Remix.
 
-<a id="install-express"></a>
+### Modify Remix's Server Configuration {/* modify-remixs-server-configuration */}
 
-### Install {{ PACKAGE_NAME }}/express {/*install-express*/}
+In order for {{ PRODUCT }} to correctly bundle your app, there's a few configurations that need to be modified.
 
-Install {{ PACKAGE_NAME }}/express by running the following:
+#### Update `package.JSON` `type` Property {/* update-packagejson-type-property */}
 
-```bash
-npm install -D {{ PACKAGE_NAME }}/express
-```
+In most cases, a Remix app will have `"type": "module"` in the `package.json` file. This property should be removed as {{ PRODUCT }} does not support it at this time.
 
-### Update {{ PRODUCT }} Configuration {/*update-configuration*/}
-
-Update `{{ CONFIG_FILE }}` at the root of your project to the following:
-
-```js
-// This file was automatically added by {{ FULL_CLI_NAME }} deploy.
-// You should commit this file to source control.
-module.exports = {
-  connector: '{{ PACKAGE_NAME }}/express',
-  express: {
-    appPath: './server/index.js',
+```js diff filename="package.json"
+{
+  "name": "remix-app",
+  "version": "0.0.0",
+  "description": "A Remix app",
+  "main": "index.js",
+-  "type": "module",
+  "scripts": {
+    "dev": "remix dev",
+    "build": "remix build",
+    "start": "remix run"
   },
-  serverless: {
-    include: ['public'],
-  },
+  ...
 }
 ```
 
-### Configure the routes {/*configure-the-routes*/}
+#### Update `remix.config.JS` `servermoduleformat` Property {/* update-remixconfigjs-servermoduleformat-property */}
 
-Update `routes.js` at the root of your project to the following:
+Additionally, the `serverModuleFormat` property in the `remix.config.js` file should be set to `cjs`, and use the CommonJS module format.
 
-```js
-// This file was added by {{ FULL_CLI_NAME }} init.
+```js diff filename="remix.config.js"
+/** @type {import('@remix-run/dev').AppConfig} */
+- export default {
++ module.exports = {
+  ignoredRouteFiles: ["**/.*"],
+  // appDirectory: "app",
+  // assetsBuildDirectory: "public/build",
+  // serverBuildPath: "build/index.js",
+  // publicPath: "/build/",
+-  serverModuleFormat: "esm",
++  serverModuleFormat: "cjs",
+  future: {
+    v2_dev: true,
+    v2_errorBoundary: true,
+    v2_headers: true,
+    v2_meta: true,
+    v2_normalizeFormMethod: true,
+    v2_routeConvention: true,
+  },
+};
+```
+
+### Update {{ Product }} Configuration File {/* update-configuration-file */}
+
+Update `{{ CONFIG_FILE }}` `serverless` property to include the `public` and `build` directories:
+
+```js diff filename="{{ CONFIG_FILE }}" highlight="10,17,18"
+// This file was automatically added by edgio init.
 // You should commit this file to source control.
-const ONE_HOUR = 60 * 60
-const ONE_DAY = 24 * ONE_HOUR
+// Learn more about this file at https://docs.edg.io/guides/edgio_config
+module.exports = {
+  connector: '@edgio/express',
 
-const { Router } = require('@{{ PACKAGE_NAME }}/core/router')
+  /* ... */
 
-module.exports = new Router()
-  .match('/:path*', ({ renderWithApp }) => {
-    renderWithApp()
+  // Options for hosting serverless functions on Edgio
+  serverless: {
+    // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
+    // This option generally isn't needed as Edgio automatically includes all modules imported by your code in the bundle that
+    // is uploaded during deployment
+    // includeNodeModules: false,
+  
+    // Include additional paths that are dynamically loaded by your app at runtime here when building the serverless bundle.
+    include: ['public/**/*', 'build/**/*'],
+  },
+
+  /* ... */
+}
+
+```
+
+### Configure the Caching Policy {/* configure-the-caching-policy */}
+
+Update the {{ ROUTES_FILE }} to add a caching policy for your app's SSR pages and static assets:
+
+```js diff filename="routes.js" ins="7-11"
+/// This file was automatically added by edgio init.
+// You should commit this file to source control.
+import { Router } from '@edgio/core'
+
+export default new Router()
+  .match('/:path*', {
+    caching: {
+      max_age: '1d',
+      stale_while_revalidate: '1d',
+      service_worker_max_age: '1h',
+    },
+
+    origin: {
+      set_origin: 'edgio_serverless',
+    },
   })
-  .match('/', ({ cache, renderWithApp }) => {
-    cache({
-      edge: {
-        maxAgeSeconds: ONE_DAY,
-      },
-      browser: false,
-    })
-    renderWithApp()
-  })
+  .static('public')
 ```
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Remix app locally on {{ PRODUCT }} {/*run-the-remix-app-locally-on*/}
+### Run the Remix App Locally on {{ Product }} {/* run-the-remix-app-locally-on */}
 
-Create a production build of your app by running the following in your project's root directory:
-
-```bash
-npm run build
-```
-
-Run {{ PRODUCT }} on your local machine:
+Create a development build of your app by running the following in your project's root directory:
 
 ```bash
-{{ FULL_CLI_NAME }} run --production
+# start the {{ PRODUCT }} dev server
+{{ CLI_CMD(dev) }}
 ```
 
 Load the site http://127.0.0.1:3000
 
-## Deploying {/*deploying*/}
+## Deploying {/* deploying */}
 
 Create a production build of your app by running the following in your project's root directory:
 
 ```bash
+# build your app for production
 npm run build
 ```
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ FULL_CLI_NAME }} deploy
+# deploy the {{ PRODUCT }} production bundle
+{{ CLI_CMD(deploy) }}
 ```
 
 Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.

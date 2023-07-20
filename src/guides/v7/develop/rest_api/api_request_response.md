@@ -2,6 +2,7 @@
 title: API Request and Response
 ---
 
+This section provides an overview of the basic structure for the request to our REST API services and the response provided to the client.
 
 ## HTTP Method {/*http-method*/}
 

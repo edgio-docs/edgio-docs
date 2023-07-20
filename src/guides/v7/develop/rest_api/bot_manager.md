@@ -22,12 +22,6 @@ Automate the following tasks:
 
 Retrieve all known bots through the [Get Known Bots operation](#get-known-bots).
 
-<Callout type="info">
-
-  WAF Insights does not support automation through our REST API web service. If you are currently using WAF Insights, upgrade your WAF solution to take advantage of our REST API.
-
-</Callout>
-
 ## Setup {/*setup*/}
 
 Set up bot manager by performing the following steps:

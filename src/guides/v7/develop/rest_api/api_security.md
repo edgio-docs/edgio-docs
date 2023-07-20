@@ -20,12 +20,6 @@ Automate the following tasks:
     -   [Get API Schema](#get-api-schema)
     -   [Update API Schema](#update-api-schema)
 
-<Callout type="info">
-
-  WAF Insights does not support automation through our REST API web service. If you are currently using WAF Insights, upgrade your WAF solution to take advantage of our REST API.
-
-</Callout>
-
 ## Setup {/*setup*/}
 
 Set up API security by performing the following steps:

@@ -13,12 +13,6 @@ Automate the following tasks:
 -   [Get Custom Rule](#get-custom-rule)
 -   [Update Custom Rule](#update-custom-rule)
 
-<Callout type="info">
-
-  WAF Insights does not support automation through our REST API web service. If you are currently using WAF Insights, upgrade your WAF solution to take advantage of our REST API.
-
-</Callout>
-
 **Key information:** <a id="key-information" />
 
 -   A custom rule set may contain up to 10 custom rules. Each `directive` object defines a custom rule via the `sec_rule` object.

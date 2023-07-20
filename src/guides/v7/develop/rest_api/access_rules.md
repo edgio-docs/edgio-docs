@@ -13,12 +13,6 @@ Automate the following tasks:
 -   [Get Access Rule (ACL)](#get-access-rule-acl)
 -   [Update Access Rule (ACL)](#update-access-rule-acl)
 
-<Callout type="info">
-
-  WAF Insights does not support automation through our REST API web service. If you are currently using WAF Insights, upgrade your WAF solution to take advantage of our REST API.
-
-</Callout>
-
 ## Authorization {/*authorization*/}
 
 Authorize requests through the `app.waf` scope.

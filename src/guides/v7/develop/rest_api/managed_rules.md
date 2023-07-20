@@ -18,12 +18,6 @@ Retrieve all available managed rule sets (e.g., ERS), policies (e.g., TW IP Repu
 -   [Get Available Managed Rule Sets](#get-available-managed-rule-sets)
 -   [Get Available Rules](#get-available-rules)
 
-<Callout type="info">
-
-  WAF Insights does not support automation through our REST API web service. If you are currently using WAF Insights, upgrade your WAF solution to take advantage of our REST API.
-
-</Callout>
-
 ## Authorization {/*authorization*/}
 
 Authorize requests through the `app.waf` scope.

@@ -47,27 +47,7 @@ npm run dev
 
 ## Configuring Your Remix App for {{ PRODUCT }} {/*configuring-your-remix-app-for*/}
 
-### Initialize Your Project {/*initialize-your-project*/}
-
-In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
-
-```bash
-{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
-```
-
-This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
-
-- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
-- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- The `{{ PACKAGE_NAME }}/express` package - Allows you to run your application using the configured Express server
-- `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
-- `routes.js` - A default routes file that sends all requests to Remix.
-
-### Modify Remix's Server Configuration {/*modify-remixs-server-configuration*/}
-
-In order for {{ PRODUCT }} to correctly bundle your app, there's a few configurations that need to be modified.
-
-#### Update the `type` Property in `package.json` {/*update-the-type-property-in-packagejson*/}
+### Update the `type` Property in `package.json` {/*update-the-type-property-in-packagejson*/}
 
 In most cases, a Remix app will have `"type": "module"` in the `package.json` file. This property should be removed as {{ PRODUCT }} does not support it at this time.
 
@@ -87,35 +67,31 @@ In most cases, a Remix app will have `"type": "module"` in the `package.json` fi
 }
 ```
 
-#### Update the `servermoduleformat` Property in  `remix.config.js` {/*update-the-servermoduleformat-property-in-remixconfigjs*/}
+### Initialize Your Project {/*initialize-your-project*/}
 
-Additionally, the `serverModuleFormat` property in the `remix.config.js` file should be set to `cjs`, and use the CommonJS module format.
+In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
-```js diff filename="remix.config.js"
-/** @type {import('@remix-run/dev').AppConfig} */
-- export default {
-+ module.exports = {
-  ignoredRouteFiles: ["**/.*"],
-  // appDirectory: "app",
-  // assetsBuildDirectory: "public/build",
-  // serverBuildPath: "build/index.js",
-  // publicPath: "/build/",
--  serverModuleFormat: "esm",
-+  serverModuleFormat: "cjs",
-  future: {
-    v2_dev: true,
-    v2_errorBoundary: true,
-    v2_headers: true,
-    v2_meta: true,
-    v2_normalizeFormMethod: true,
-    v2_routeConvention: true,
-  },
-};
+```bash
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }} --connector @edgio/express
 ```
 
-#### Alter the Build Import in `server.js` {/*alter-the-build-import-in-serverjs*/}
+This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
 
-By default, Remix will us ES imports in the `server.js` file using a top-level `await import` which is not compatible with CommonJS modules. These should be changed to a `require` statement instead.
+- The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
+- The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
+- The `{{ PACKAGE_NAME }}/express` package - Allows you to run your application using the configured Express server
+- `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
+- `routes.js` - A default routes file that sends all requests to Remix.
+
+### Modify Remix's Server Configuration {/*modify-remixs-server-configuration*/}
+
+In order for {{ PRODUCT }} to correctly bundle your app, there's a few configurations that need to be modified.
+
+#### Setup the Express Server {/*setup-the-express-server*/}
+
+If you created a new Remix application following the steps above, you will have already selected the Express server as your deployment target. If you are using an existing Remix application, you will need to update your `server.js` file with a compatible Express server.
+
+For either scenario, we've provided a sample Express server below that you can use to replace the default `server.js` file in your project.
 
 ```js diff filename="server.js"
 - import * as fs from "node:fs";
@@ -145,7 +121,95 @@ const BUILD_PATH = "./build/index.js";
 
 const app = express();
 
-/* ... */
+app.use(compression());
+
+// http://expressjs.com/en/advanced/best-practice-security.html#at-a-minimum-disable-x-powered-by-header
+app.disable("x-powered-by");
+
+// Remix fingerprints its assets so we can cache forever.
+app.use(
+  "/build",
+  express.static("public/build", { immutable: true, maxAge: "1y" })
+);
+
+// Everything else (like favicon.ico) is cached for an hour. You may want to be
+// more aggressive with this caching.
+app.use(express.static("public", { maxAge: "1h" }));
+
+app.use(morgan("tiny"));
+
+app.all(
+  "*",
+  process.env.NODE_ENV === "development"
+    ? createDevRequestHandler()
+    : createRequestHandler({
+        build,
+        mode: process.env.NODE_ENV,
+      })
+);
+
+const port = process.env.PORT || 3000;
+app.listen(port, async () => {
+  console.log(`Express server listening on port ${port}`);
+
+  if (process.env.NODE_ENV === "development") {
+    broadcastDevReady(build);
+  }
+});
+
+function createDevRequestHandler() {
+  const watcher = chokidar.watch(BUILD_PATH, { ignoreInitial: true });
+
+  watcher.on("all", async () => {
+    // 1. purge require cache && load updated server build
+    const stat = fs.statSync(BUILD_PATH);
+    build = import(BUILD_PATH + "?t=" + stat.mtimeMs);
+    // 2. tell dev server that this app server is now ready
+    broadcastDevReady(await build);
+  });
+
+  return async (req, res, next) => {
+    try {
+      //
+      return createRequestHandler({
+        build: await build,
+        mode: "development",
+      })(req, res, next);
+    } catch (error) {
+      next(error);
+    }
+  };
+}
+```
+
+<Callout type="important">
+  Note that the `server.js` file is using CommonJS `require` instead of ES `import`. This is required for {{ PRODUCT }} to correctly bundle your app.
+</Callout>
+
+#### Update the `servermoduleformat` Property in  `remix.config.js` {/*update-the-servermoduleformat-property-in-remixconfigjs*/}
+
+Additionally, the `serverModuleFormat` property in the `remix.config.js` file should be set to `cjs`, and use the CommonJS module format.
+
+```js diff filename="remix.config.js"
+/** @type {import('@remix-run/dev').AppConfig} */
+- export default {
++ module.exports = {
+  ignoredRouteFiles: ["**/.*"],
+  // appDirectory: "app",
+  // assetsBuildDirectory: "public/build",
+  // serverBuildPath: "build/index.js",
+  // publicPath: "/build/",
+-  serverModuleFormat: "esm",
++  serverModuleFormat: "cjs",
+  future: {
+    v2_dev: true,
+    v2_errorBoundary: true,
+    v2_headers: true,
+    v2_meta: true,
+    v2_normalizeFormMethod: true,
+    v2_routeConvention: true,
+  },
+};
 ```
 
 <Callout type="important">

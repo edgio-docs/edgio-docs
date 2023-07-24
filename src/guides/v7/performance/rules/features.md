@@ -1908,7 +1908,7 @@ Response features manipulate the response sent to the client.
 Determines whether prefetching will be allowed for cache misses.
 
 <edgejs>
-Determines whether prefetching will be disabled for cache misses.
+Determines whether prefetching will be allowed for cache misses.
 
 **Example:**
 
@@ -1922,7 +1922,7 @@ new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, prefetching is allowed for cache misses.
+**Default Behavior:** By default, prefetching is disabled for cache misses.
 
 #### Compress Content Types {/*compress-content-types*/}
 

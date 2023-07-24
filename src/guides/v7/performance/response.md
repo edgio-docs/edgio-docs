@@ -209,7 +209,7 @@ Common response headers are described below.
 
     [Learn more.](/guides/performance/caching/purging#surrogate-keys-cache-tags)
 
--   [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements and cache status information for Serverless requests ({{ PRODUCT }} {{ PLATFORM }} and Serverless Compute).
+-   [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements and cache status information for Serverless requests ({{ PRODUCT }} {{ PRODUCT_PLATFORM }} and Serverless Compute).
 
 -   **{{ HEADER_PREFIX }}-version:** Indicates basic information for your current deployment.
 
@@ -353,7 +353,7 @@ The following abbreviations are used for time units:
 
 ### {{ HEADER_PREFIX }}-t Response Header {/*-t-response-header*/}
 
-The {{ HEADER_PREFIX }}-t response header is solely returned for Serverless requests ({{ PRODUCT }} {{ PLATFORM }} and Serverless Compute). It contains time measurements for each Serverless component. 
+The {{ HEADER_PREFIX }}-t response header is solely returned for Serverless requests ({{ PRODUCT }} {{ PRODUCT_PLATFORM }} and Serverless Compute). It contains time measurements for each Serverless component. 
 
 **Syntax:**
 

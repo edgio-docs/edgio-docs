@@ -1,7 +1,4 @@
-import PluginBase from '@edgio/core/plugins/PluginBase';
-import {Router} from '@edgio/core/router';
-import Request from '@edgio/core/router/Request';
-import RouteGroup from '@edgio/core/router/RouteGroup';
+import Router, {RouterPlugin} from '@edgio/core/router/Router';
 import JSZip from 'jszip';
 
 /**
@@ -24,8 +21,7 @@ interface IZipItem {
   /** File content to be written */
   data: string | ArrayBuffer | Uint8Array | Buffer;
 }
-class ArchiveRoutes extends PluginBase {
-  private groupName = 'zip_routes_group';
+class ArchiveRoutes implements RouterPlugin {
   private routes: IZipRoute[] = [];
   private router?: Router;
   private handler;
@@ -41,8 +37,6 @@ class ArchiveRoutes extends PluginBase {
   };
 
   constructor(routes?: IZipRoute[]) {
-    super();
-
     this.routes = routes || [];
 
     this.handler =
@@ -74,18 +68,15 @@ class ArchiveRoutes extends PluginBase {
 
   onRegister(router: Router) {
     this.router = router;
-    this.router.group(this.groupName, (group) => this.addRoutesToGroup(group));
+
+    this.routes.forEach((route) => {
+      router.match(route.route, this.handler(route.callback));
+    });
   }
 
   addRoute(route: string, callback: ICallback) {
     this.routes.push({route, callback});
     return this;
-  }
-
-  private addRoutesToGroup(group: RouteGroup) {
-    this.routes.forEach((route) => {
-      group.match(route.route, this.handler(route.callback));
-    });
   }
 
   private cleanPath(path: string) {

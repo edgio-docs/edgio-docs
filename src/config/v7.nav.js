@@ -290,7 +290,7 @@ const nav = {
               path: 'sites_frameworks/getting_started/brunch',
             },
             {
-              title: 'Nodejs Connector',
+              title: 'Node.js Connector',
               path: 'sites_frameworks/getting_started/nodejs_connector',
             },
             {

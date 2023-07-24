@@ -1,8 +1,6 @@
 const {join} = require('path');
 const globby = require('globby').sync;
-const {withEdgio, withServiceWorker} = require('@edgio/next/config');
-const mdConstants = require('./constants');
-const {remarkPlugins} = require('./plugins/markdownToHtml');
+const {withEdgio} = require('@edgio/next/config');
 
 function getLatestVersion() {
   const files = globby('v*.config.js', {
@@ -14,9 +12,7 @@ function getLatestVersion() {
     return match ? parseInt(match[1]) : 0;
   });
 
-  const latestVersion = Math.max(...versions).toString();
-
-  return latestVersion;
+  return Math.max(...versions).toString();
 }
 
 const _preEdgioExport = {
@@ -48,40 +44,6 @@ const _preEdgioExport = {
       );
     }
 
-    // Add our custom markdown loader in order to support frontmatter
-    // and layout
-    // config.module.rules.push({
-    //   test: /.mdx?$/, // load both .md and .mdx files
-    //   use: [
-    //     options.defaultLoaders.babel,
-    //     {
-    //       loader: '@mdx-js/loader',
-    //       options: {
-    //         remarkPlugins,
-    //       },
-    //     },
-    //     // IMPORTANT: This is the page layouts loader
-    //     // The tree is MyApp, AppShell, Page...
-    //     // This is the starting point of the app. Makes sure all pages
-    //     // 1. Are all .mdx files as oppose .ts or .tsx — it essentially reads
-    //     // from the file-system without having to getStaticProps and co
-    //     join(__dirname, './plugins/md-layout-loader'),
-
-    //     // Replace template strings (eg. {{ PRODUCT_NAME }} ) in .md files
-    //     {
-    //       loader: 'string-replace-loader',
-    //       options: {
-    //         search: '{{\\s*(\\w+)\\s*}}',
-    //         flags: 'gi',
-    //         replace(match, p1, offset, string) {
-    //           // return the matching constants value or the original match if not found
-    //           return mdConstants[p1] || match;
-    //         },
-    //       },
-    //     },
-    //   ],
-    // });
-
     return config;
   },
 };
@@ -89,9 +51,7 @@ const _preEdgioExport = {
 module.exports = (phase, config) => {
   process.env.NEXT_PUBLIC_LATEST_VERSION = getLatestVersion();
 
-  return withEdgio(
-    withServiceWorker({
-      ..._preEdgioExport,
-    })
-  );
+  return withEdgio({
+    ..._preEdgioExport,
+  });
 };

@@ -100,7 +100,7 @@ A nested rule is a rule that is added to another rule's IF, ELSE IF, or ELSE sta
 
 For example, the following illustration demonstrates a nested rule whose logic will only be applied for specific types of images:
 
-![Nested rule](/images/v7/performance/rules-nested-rule.png)
+![Nested rule](/images/v7/performance/rules-nested-rule.png?width=700)
 
 **Key information:**
 

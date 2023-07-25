@@ -2,12 +2,6 @@
 title: Remix
 ---
 
-<Callout type="warning">
-
-  This article is incompatible with [recent Remix changes](https://remix.run/docs/en/1.18.1/pages/technical-explanation#http-handler-and-adapters). We plan on updating this article to work with the latest version of Remix. In the meantime, contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to get started with Remix.
-
-</Callout>
-
 This guide shows you how to deploy a [Remix](https://remix.run/) application to {{ PRODUCT }}.
 
 <!-- ## Example {/*example*/}

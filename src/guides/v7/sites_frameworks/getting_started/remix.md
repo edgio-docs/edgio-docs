@@ -30,6 +30,9 @@ npx create-remix@latest
 cd project-name
 ```
 
+If asked for "What type of app do you want to create?", choose "Just the basics".
+If asked for "Where do you want to deploy?", choose "Express Server".
+
 You can verify your app works by running it locally with:
 
 ```bash
@@ -50,22 +53,15 @@ This will automatically update your `package.json` and add all of the required {
 
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
+- The `{{ PACKAGE_NAME }}/express` package - Allows you to deploy the Express server based app on {{ PRODUCT }}
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Remix.
 
 <a id="install-express"></a>
 
-### Install {{ PACKAGE_NAME }}/express {/*install-express*/}
-
-Install {{ PACKAGE_NAME }}/express by running the following:
-
-```bash
-npm install -D {{ PACKAGE_NAME }}/express
-```
-
 ### Update {{ PRODUCT }} Configuration {/*update-configuration*/}
 
-Update `{{ CONFIG_FILE }}` at the root of your project to the following:
+Update `{{ CONFIG_FILE }}` at the root of your project to the following configuration:
 
 ```js
 // This file was automatically added by {{ FULL_CLI_NAME }} deploy.
@@ -73,42 +69,13 @@ Update `{{ CONFIG_FILE }}` at the root of your project to the following:
 module.exports = {
   connector: '{{ PACKAGE_NAME }}/express',
   express: {
-    appPath: './server/index.js',
+    appPath: './server.js', // Assuming that this is your Express server file
   },
   serverless: {
-    include: ['public'],
+    include: [ 'build/**/*' ], // Assuming that Remix compiles to "build" directory
   },
 }
 ```
-
-### Configure the routes {/*configure-the-routes*/}
-
-Update `routes.js` at the root of your project to the following:
-
-```js
-// This file was added by {{ FULL_CLI_NAME }} init.
-// You should commit this file to source control.
-const ONE_HOUR = 60 * 60
-const ONE_DAY = 24 * ONE_HOUR
-
-const { Router } = require('@{{ PACKAGE_NAME }}/core/router')
-
-module.exports = new Router()
-  .match('/:path*', ({ renderWithApp }) => {
-    renderWithApp()
-  })
-  .match('/', ({ cache, renderWithApp }) => {
-    cache({
-      edge: {
-        maxAgeSeconds: ONE_DAY,
-      },
-      browser: false,
-    })
-    renderWithApp()
-  })
-```
-
-Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
 ### Run the Remix app locally on {{ PRODUCT }} {/*run-the-remix-app-locally-on*/}
 
@@ -137,7 +104,7 @@ npm run build
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
 ```bash
-{{ FULL_CLI_NAME }} deploy
+{{ FULL_CLI_NAME }} {{ PACKAGE_NAME }}:deploy
 ```
 
 Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.

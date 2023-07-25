@@ -104,7 +104,7 @@ The captured parameter value will be provided as an array.
 router.match(
   {
     path: '/some-path', // value is route-pattern syntax
-    method: "GET", // value is a string
+    method: 'GET', // value is a string
     cookies: {currency: /^(usd)$/i}, // keys are cookie names, values are regular expressions
     headers: {'some-header': /^some-value$/i}, // keys are header names, values are regular expressions
     query: {page: /^(1|2|3)$/}, // keys are query parameter names, values are regular expressions
@@ -144,7 +144,7 @@ router.match(
       },
     },
     method: {
-      not: "POST",
+      not: 'POST',
     },
     cookies: {
       currency: {
@@ -242,19 +242,137 @@ router.match(
 
 Regular expression matching is also available for matching query parameters, cookies, and request headers, and more. Any property of [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html) that accepts [`CriteriaValue`](/docs/api/core/types/router_RouteCriteria.CriteriaValue.html) or [`OptionalCriteriaValue`](/docs/api/core/types/router_RouteCriteria.OptionalCriteriaValue.html) types can use a regular expression and negation.
 
-
-
 ## Conditional Routes {/* conditional-routes */}
 
-Conditional routes allow you to apply [Rules](/guides/performance/rules) to a request using advanced if/then logic by the means of logical and comparison operators.
+Conditional routes allow you to apply [Rules](/guides/performance/rules) to a request using advanced if/then logic by the means of logical and comparison operators. [Nested rules](#nested-rules) may also be applied using multiple routers.
 
 ### Using the `.if()`, `.elseif()`, and `.else()` Methods {/* using-the-if-elseif-and-else-methods */}
 
-The `.if()`, `.elseif()`, and `.else()` methods are used to apply if/then logic to a request. These methods accept a single argument of type `Matches`. You can see the full specification of the `Matches` type in the [API reference](/docs/api/core/interfaces/types.Matches.html).
+The [`.if()`](/docs/api/core/classes/router_Router.default.html#if), [`.elseif()`](/docs/api/core/classes/router_Router.default.html#elseif), and [`.else()`](/docs/api/core/classes/router_Router.default.html#else) methods are members of the [Router](/docs/api/core/classes/router_Router.default.html) class and are used to apply if/then logic to a request. These methods can be chained together to create complex rules. Additionally, there are [`.and()`](/docs/api/core/functions/router_RouteCriteria.and.html), [`.or()`](/docs/api/core/functions/router_RouteCriteria.or.html) and [`.not()`](/docs/api/core/functions/router_RouteCriteria.not.html) functions that can be used as logical operators within the `.if()` and `.elseif()` methods.
 
-```js filename="./routes.js"
+<Callout type="important">
 
+  It's important to note the chaining order of the conditional methods (`.if()`, `.elseif()`, and `.else()`). The `.if()` method must be called first, followed by any number of `.elseif()` methods, and finally the `.else()` method.
+
+  The following example is invalid:
+
+  ```js diff highlight="3"
+  router
+    .if(/* ... */)
+    .get(/* ... */)
+    .elseif(/* ... */)
+    .else(/* ... */);
+  ```
+
+</Callout>
+
+#### IF / ELSE Condition {/* if-else-condition */}
+
+```js
+import {Router, and, or, not} from '@edgio/core';
+
+export default new Router()
+  .if(
+    {
+      path: '/foo',
+    },
+    {
+      response: {
+        set_response_body: 'Hello, /foo!',
+      },
+    }
+  )
+  .else({
+    response: {
+      set_response_body: 'Hello, world!',
+    },
+  });
 ```
+
+In this example, if the request path is `/foo`, the response body will be `Hello, /foo!`. For all other request paths, the response body will be `Hello, world!`.
+
+#### IF / ELSEIF / ELSE Condition {/* if-elseif-else-condition */}
+
+```js
+import {Router, and, or, not} from '@edgio/core';
+
+export default new Router()
+  .if(
+    {
+      path: '/foo',
+    },
+    {
+      response: {
+        set_response_body: 'Hello, /foo!',
+      },
+    }
+  )
+  .elseif(
+    {
+      path: '/bar',
+    },
+    {
+      response: {
+        set_response_body: 'Hello, /bar!',
+      },
+    }
+  )
+  .else({
+    response: {
+      set_response_body: 'Hello, world!',
+    },
+  });
+```
+
+In this example, if the request path is `/foo`, the response body will be `Hello, /foo!`. If the request path is `/bar`, the response body will be `Hello, /bar!`. For all other request paths, the response body will be `Hello, world!`.
+
+#### Logical Operators {/* logical-operators */}
+
+Using the `.and()` and `.or()` functions, you can create more complex logic within your conditional rules. Logic may also be negated using the `.not()` function.
+
+```js
+import {Router, and, or, not} from '@edgio/core';
+
+export default new Router()
+  .if(
+    or(
+      {
+        path: '/foo',
+      },
+      {
+        path: '/bar',
+      }
+    ),
+    {
+      response: {
+        set_response_body: 'Hello, /foo or /bar!',
+      },
+    }
+  )
+  .elseif(
+    and(
+      {path: '/baz'},
+      {
+        method: {
+          not: 'POST',
+        },
+      }
+    ),
+    {
+      response: {
+        set_response_body: 'Hello, /baz with a non-POST method!',
+      },
+    }
+  )
+  .else({
+    response: {
+      set_response_body: 'Hello, world!',
+    },
+  });
+```
+
+### Nested Rules {/* nested-rules */}
+
 
 
 ### Using the `.conditional()` Method {/* using-the-conditional-method */}

@@ -241,7 +241,9 @@ The response body for a successful request contains the following response eleme
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-| FINDME | | |
+| id | String | Indicates the API gateway configuration's system-defined ID. |
+| name | String | Indicates the name of the API gateway configuration. |
+|last_modified_date |String |Indicates the date and time at which this configuration was last modified.|
 
 {{ API_ERRORS.md }}
 
@@ -261,10 +263,15 @@ HTTP/1.1 200 OK
 Cache-Control: private
 Content-Type: application/json; charset=utf-8
 Date:  Thu, 15 Apr 2021 12:00:00 GMT
-Content-Length: 221
+Content-Length: 155
 
-[
-FINDME   
+[{
+        "id": "e3mpHQY5",
+        "name": "api.example.com"
+    }, {
+        "id": "d2m4H6Yj",
+        "name": "api-internal.example.com"
+    }
 ]
 ```
 
@@ -595,7 +602,9 @@ The response body for a successful request contains the following response eleme
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-| FINDME | | |
+| id | String | Indicates the API schema's system-defined ID. |
+| name | String | Indicates the name of the API schema. |
+|last_modified_date |String |Indicates the date and time at which this configuration was last modified.|
 
 {{ API_ERRORS.md }}
 
@@ -615,10 +624,12 @@ HTTP/1.1 200 OK
 Cache-Control: private
 Content-Type: application/json; charset=utf-8
 Date:  Thu, 15 Apr 2021 12:00:00 GMT
-Content-Length: 221
+Content-Length: 74
 
-[
-FINDME   
+[{
+        "id": "mnriXoB6",
+        "name": "Sample API schema"
+    }
 ]
 ```
 

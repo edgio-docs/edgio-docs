@@ -71,6 +71,9 @@ module.exports = {
 }
 ```
 
+### Update Remix serverModuleFormat to "cjs"
+Update `remix.config.js` in your project and change the `serverModuleFormat` property to `cjs`:
+
 ### Run the Remix app locally on {{ PRODUCT }} {/*run-the-remix-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:

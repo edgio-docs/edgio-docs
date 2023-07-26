@@ -18,7 +18,7 @@ Purge by relative path, surrogate key, or all cached content using the:
 
 <Callout type="info">
 
-  By default, deploying to {{ PRODUCT }} automatically purges that environment's cached content. [Learn more.](#deployments)
+  By default, deploying to {{ PRODUCT }} preserves an environment's cached content. [Learn more.](#deployments)
 
 </Callout>
 
@@ -118,11 +118,11 @@ Purge cached content through the {{ PRODUCT }} REST API through the [clear-cache
 
 ## Deployments {/*deployments*/}
 
-By default, all cached responses are purged from an environment when you deploy a new version of your site. Override this behavior by marking the **Preserve cache between deployments** setting on the **Caching** page.
+By default, cached content is preserved when you deploy a new version of your site. Override this behavior by clearing the **Preserve cache between deployments** setting on the **Caching** page.
 
 <Callout type="warning">
 
-  While preserving the cache between deployments can greatly reduce the load on your origin following a deployment, it can also lead to inconsistent behavior if the new version of your browser code receives an old, incompatible API response from the cache. Before enabling this feature, we recommend adding an API version number to your URL scheme to ensure that breaking changes to your API don't affect your website's functionality when old responses are served from the cache.
+  While preserving the cache between deployments can greatly reduce the load on your origin following a deployment, it can also lead to inconsistent behavior if the new version of your browser code receives an old, incompatible API response from the cache. If you plan on preserving cache content between deployments, then we recommend adding an API version number to your URL scheme to ensure that breaking changes to your API don't affect your website's functionality when old responses are served from the cache.
 
 </Callout>
 

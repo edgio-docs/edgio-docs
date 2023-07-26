@@ -30,7 +30,7 @@ router.match('/:path*', {
 });
 ```
 
-Route features are often defined using Object notation, but in some cases, it may be necessary to use [RouteHelper](/docs/api/core/classes/router_RouteHelper.default.html) methods to define features. Some functionality such as [transforming requests/responses](#transforming-requests--responses) or [serving static files](#serving-a-static-file) requires the use of `RouteHelper` methods.
+Route features are often defined using Object notation, but in some cases, it may be necessary to use [RouteHelper](/docs/api/core/classes/router_RouteHelper.default.html) methods to define features. Some functionality such as [transforming requests/responses](#transforming-requests-responses) or [serving static files](#serving-a-static-file) requires the use of `RouteHelper` methods.
 
 {{ routehelper_usage.md }}
 

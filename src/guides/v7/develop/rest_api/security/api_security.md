@@ -135,7 +135,7 @@ A successful request returns a `200 OK` without a response body.
 
 <h3>Sample Request and Response (JSON)</h3>
 
-A sample JSON request is shown below.
+A sample HTTP request is shown below.
 
 ```json
 POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/api_gw  HTTP/1.1
@@ -158,6 +158,8 @@ POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/api_gw  HTTP/1.1
     ]
 }
 ```
+
+A sample response is shown below.
 
 ```json
 HTTP/1.1 200 OK
@@ -197,14 +199,14 @@ A successful request returns a `200 OK` without a response body.
 
 <h3>Sample Request and Response (JSON)</h3>
 
-A sample JSON request is shown below.
+A sample HTTP request is shown below.
 
 ```json
 DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/api_gw/CGifudum  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
-A sample JSON response is shown below.
+A sample response is shown below.
 
 ```json
 HTTP/1.1 200 OK
@@ -249,14 +251,14 @@ The response body for a successful request contains the following response eleme
 
 <h3>Sample Request and Response (JSON)</h3>
 
-A sample JSON request is shown below.
+A sample HTTP request is shown below.
 
 ```json
 GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/api_gw  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
-A sample JSON response is shown below.
+A sample response is shown below.
 
 ```json
 HTTP/1.1 200 OK
@@ -339,14 +341,14 @@ The `path` object identifies requests by URL path through the following properti
 
 <h3>Sample Request and Response (JSON)</h3>
 
-A sample JSON request is shown below.
+A sample HTTP request is shown below.
 
 ```json
 GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/api_gw/1exlud2e  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
-A sample JSON response is shown below.
+A sample response is shown below.
 
 ```json
 HTTP/1.1 200 OK
@@ -433,7 +435,7 @@ A successful request returns a `200 OK` without a response body.
 
 <h3>Sample Request and Response (JSON)</h3>
 
-A sample JSON request is shown below.
+A sample HTTP request is shown below.
 
 ```json
 POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/api_gw/fnm3f892msd9A1  HTTP/1.1
@@ -456,6 +458,8 @@ POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/api_gw/fnm3f892msd9A1  H
     ]
 }
 ```
+
+A sample response is shown below.
 
 ```json
 HTTP/1.1 200 OK
@@ -504,7 +508,7 @@ A successful request returns a `200 OK` without a response body.
 
 <h3>Sample Request and Response (JSON)</h3>
 
-A sample JSON request is shown below.
+A sample HTTP request is shown below.
 
 ```json
 POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/api_schema  HTTP/1.1
@@ -539,6 +543,8 @@ POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/api_schema  HTTP/1.1
     "required": ["price"]
 }
 ```
+
+A sample response is shown below.
 
 ```json
 HTTP/1.1 200 OK
@@ -578,14 +584,14 @@ A successful request returns a `200 OK` without a response body.
 
 <h3>Sample Request and Response (JSON)</h3>
 
-A sample JSON request is shown below.
+A sample HTTP request is shown below.
 
 ```json
 DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/api_schema/C3ifgeum  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
-A sample JSON response is shown below.
+A sample response is shown below.
 
 ```json
 HTTP/1.1 200 OK
@@ -630,14 +636,14 @@ The response body for a successful request contains the following response eleme
 
 <h3>Sample Request and Response (JSON)</h3>
 
-A sample JSON request is shown below.
+A sample HTTP request is shown below.
 
 ```json
 GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/api_schema  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
-A sample JSON response is shown below.
+A sample response is shown below.
 
 ```json
 HTTP/1.1 200 OK
@@ -693,12 +699,14 @@ The response body for a successful request contains the following response eleme
 
 <h3>Sample Request and Response (JSON)</h3>
 
-A sample JSON request is shown below.
+A sample HTTP request is shown below.
 
 ```json
 GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/api_schema/kmWY3L8o  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
+
+A sample response is shown below.
 
 ```json
 HTTP/1.1 200 OK
@@ -780,12 +788,14 @@ A successful request returns a `200 OK` without a response body.
 
 <h3>Sample Request and Response (JSON)</h3>
 
-A sample JSON request is shown below.
+A sample HTTP request is shown below.
 
 ```json
 PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/api_schema/kmWY3L8o  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
+
+A sample response is shown below.
 
 ```json
 HTTP/1.1 200 OK

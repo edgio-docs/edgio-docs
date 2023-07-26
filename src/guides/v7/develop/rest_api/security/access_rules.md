@@ -86,7 +86,7 @@ The response body for a successful request contains the following properties:
 
 <h3>Sample Request and Response (JSON)</h3>
 
-A sample JSON request is shown below.
+A sample HTTP request is shown below.
 
 ```json
 POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl  HTTP/1.1
@@ -187,7 +187,7 @@ POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl  HTTP/1.1
 }
 ```
 
-A sample JSON response is shown below.
+A sample response is shown below.
 
 ```json
 HTTP/1.1 200 OK
@@ -246,14 +246,14 @@ The response body for a successful request contains the following properties:
 
 <h3>Sample Request and Response (JSON)</h3>
 
-A sample JSON request is shown below.
+A sample HTTP request is shown below.
 
 ```json
 DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl/CGifudum  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
-A sample JSON response is shown below.
+A sample response is shown below.
 
 ```json
 HTTP/1.1 200 OK
@@ -305,14 +305,14 @@ The response body for a successful request contains the following response eleme
 
 <h3>Sample Request and Response (JSON)</h3>
 
-A sample JSON request is shown below.
+A sample HTTP request is shown below.
 
 ```json
 GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
-A sample JSON response is shown below.
+A sample response is shown below.
 
 ```json
 HTTP/1.1 200 OK
@@ -401,14 +401,14 @@ All entries within a cookie, referrer, URL, or user agent whitelist, accesslist,
 
 <h3>Sample Request and Response (JSON)</h3>
 
-A sample JSON request is shown below.
+A sample HTTP request is shown below.
 
 ```json
 GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl/CGifudum  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
-A sample JSON response is shown below.
+A sample response is shown below.
 
 ```json
 HTTP/1.1 200 OK
@@ -596,7 +596,7 @@ The response body for a successful request contains the following properties:
 
 <h3>Sample Request and Response (JSON)</h3>
 
-A sample JSON request is shown below.
+A sample HTTP request is shown below.
 
 ```json
 PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl/CGifudum  HTTP/1.1
@@ -698,7 +698,7 @@ PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl/CGifudum  HTTP/1.1
 }
 ```
 
-A sample JSON response is shown below.
+A sample response is shown below.
 
 ```json
 HTTP/1.1 200 OK

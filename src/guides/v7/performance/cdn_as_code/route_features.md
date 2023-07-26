@@ -30,7 +30,34 @@ router.match('/:path*', {
 });
 ```
 
-Route features are often defined using Object notation, but in some cases, it may be necessary to use [RouteHelper](/docs/api/core/classes/router_RouteHelper.default.html) methods to define features. Some functionality such as transforming requests/responses or [serving static files](#serving-a-static-file) requires the use of `RouteHelper` methods.
+Route features are often defined using Object notation, but in some cases, it may be necessary to use [RouteHelper](/docs/api/core/classes/router_RouteHelper.default.html) methods to define features. Some functionality such as [transforming requests/responses](#transforming-requests--responses) or [serving static files](#serving-a-static-file) requires the use of `RouteHelper` methods.
+
+{{ routehelper_usage.md }}
+
+To help with the mix of Object notation and `RouteHelper` methods, you can use `addFeatures()` to combine Object-notated features within a `RouteHelper` instance:
+
+```js
+// Using different notation styles
+router
+  .get('/some-path', {
+    caching: {
+      max_age: '1h',
+    },
+  })
+  .get('/some-path', ({serveStatic}) => {
+    serveStatic('public/some-path.html');
+  });
+
+// Combining notation styles
+router.get('/some-path', ({addFeatures, serveStatic}) => {
+  addFeatures({
+    caching: {
+      max_age: '1h',
+    },
+  });
+  serveStatic('public/some-path.html');
+});
+```
 
 ## Common Routing Features
 
@@ -313,14 +340,16 @@ router.get('/products/:productId', ({proxy}) => {
 Similarly, you can modify the response from the origin before it is sent to the client using the `transformResponse` function. This example shows how you could add an HTML `script` tag to the response body before sending it to the client:
 
 ```js
-import responseBodyToString from '@edgio/core/utils/responseBodyToString'
+import responseBodyToString from '@edgio/core/utils/responseBodyToString';
 import $ from 'cheerio';
 /* ... */
 router.get('/products/:productId', ({proxy}) => {
   proxy('origin', {
     transformResponse: (response) => {
       const body = responseBodyToString(response.body);
-      const $body = $(body).append('<script src="https://example.com/script.js"></script>');
+      const $body = $(body).append(
+        '<script src="https://example.com/script.js"></script>'
+      );
       response.body = $body.html();
     },
   });

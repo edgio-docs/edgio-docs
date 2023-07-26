@@ -250,21 +250,22 @@ Conditional routes allow you to apply [Rules](/guides/performance/rules) to a re
 
 The [`.if()`](/docs/api/core/classes/router_Router.default.html#if), [`.elseif()`](/docs/api/core/classes/router_Router.default.html#elseif), and [`.else()`](/docs/api/core/classes/router_Router.default.html#else) methods are members of the [Router](/docs/api/core/classes/router_Router.default.html) class and are used to apply if/then logic to a request. These methods can be chained together to create complex rules. Additionally, there are [`.and()`](/docs/api/core/functions/router_RouteCriteria.and.html), [`.or()`](/docs/api/core/functions/router_RouteCriteria.or.html) and [`.not()`](/docs/api/core/functions/router_RouteCriteria.not.html) functions that can be used as logical operators within the `.if()` and `.elseif()` methods.
 
-<Callout type="important">
+It's important to note the chaining order of the conditional methods. The `.else()` method must follow either directly after the `.if()` method or after an `.elseif()` method. The `.elseif()` method must follow directly after the `.if()` method or another `.elseif()` method.
 
-  It's important to note the chaining order of the conditional methods (`.if()`, `.elseif()`, and `.else()`). The `.if()` method must be called first, followed by any number of `.elseif()` methods, and finally the `.else()` method.
+The following example is invalid and will fail to compile:
 
-  The following example is invalid:
+```js diff highlight="3,5"
+router
+  .if(/* ... */)
+  .get(/* ... */)
+  .elseif(/* ... */)
+  .match(/* ... */)
+  .else(/* ... */);
+```
 
-  ```js diff highlight="3"
-  router
-    .if(/* ... */)
-    .get(/* ... */)
-    .elseif(/* ... */)
-    .else(/* ... */);
-  ```
+The signature for the `.if()` and `.elseif()` methods are the same for defining conditions and features. The first argument is of the [`ConditionCriteria`](/docs/api/core/types/router_RouteCriteria.ConditionCriteria.html) type used to define one or more conditions. The remaining _N_ arguments are of type [`ConditionalParam`](/docs/api/core/types/router_Router.ConditionParam.html) where one or more features or routers (for [nested rules](#nested-rules)) may be defined.
 
-</Callout>
+The `.else()` method accepts _N_ number of arguments of type [`ConditionalParam`](/docs/api/core/types/router_Router.ConditionParam.html) where one or more features or routers (for [nested rules](#nested-rules)) may be defined.
 
 #### IF / ELSE Condition {/* if-else-condition */}
 
@@ -352,11 +353,9 @@ export default new Router()
   .elseif(
     and(
       {path: '/baz'},
-      {
-        method: {
-          not: 'POST',
-        },
-      }
+      not({
+        method: 'POST',
+      })
     ),
     {
       response: {
@@ -373,7 +372,37 @@ export default new Router()
 
 ### Nested Rules {/* nested-rules */}
 
+Nested rules are rules applied to an existing conditional route. They are a subset of rules under a parent `.if()`, `.elseif()`, or `.else()` method. Nested rules are defined using a new `Router` instance.
 
+For example, you can use rules to split traffic to different origins based on a cookie, and nested rules to handle requests to a specific path. The example below will send traffic to different origins depending on the cookie value, and then apply nested rules to rewrite the URL path for requests to `/assets/*` to `/public/assets/*`:
+
+```js
+import {Router} from '@edgio/core';
+
+export default new Router()
+  .if(
+    {cookies: {experience: 'new'}},
+    {origin: {set_origin: 'new_origin'}},
+    new Router().match('/assets/:path*', {
+      url: {
+        url_rewrite: [
+          {
+            source: '/assets/:path*',
+            destination: '/public/assets/:path*',
+            syntax: 'path-to-regexp',
+          },
+        ],
+      },
+    })
+  )
+  .else({origin: {set_origin: 'legacy_origin'}});
+```
+
+<Callout type="important">
+
+  Nested rules _must_ use a new `Router` instance. You cannot use the same `Router` instance for both the parent and nested rules.
+
+</Callout>
 
 ### Using the `.conditional()` Method {/* using-the-conditional-method */}
 

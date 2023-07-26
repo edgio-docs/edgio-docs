@@ -304,8 +304,13 @@ The response body for a successful request contains the following response eleme
 
 |Name|Data Type|Description|
 |--- |--- |--- |
+|customer_id |String |Identifies your account number. |
+| id |String |Identifies this API gateway configuration by its system-defined ID. |
+|last_modified_by |String |Reserved for future use.|
+|last_modified_date |String |Indicates the date and time at which this configuration was last modified.|
 | name | String | Indicates the name of this API gateway configuration. |
 | rules | Array of objects | Contains one or more rule(s) that identify a set of requests and a JSON schema through which {{ PRODUCT }} will screen that traffic. |
+| team_config | Boolean | Returns `true`. |
 
 ##### rules Array
 
@@ -313,7 +318,7 @@ The `rules` array contains an object for each rule. This object contains the fol
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-| id | String | Indicates the API gateway configuration's system-defined ID.|
+| id | String | Indicates the rule's system-defined ID.|
 | name | String | Indicates the name of this rule. |
 | methods  | Array of string values | Identifies the set of API requests that will be screened by one or more HTTP method(s). Valid values are: `GET \| DELETE \| PATCH \| POST \| PUT` |
 | path | Object | Identifies the set of API requests that will be screened by URL path.  |
@@ -351,7 +356,22 @@ Date:  Thu, 15 Apr 2021 12:00:00 GMT
 Content-Length: 1400
 
 {
-FINDME
+    "id": "1exlud2e",
+    "name": "My API Gateway",
+    "customer_id": "0001",
+    "rules": [{
+            "name": "Widgets API",
+            "methods": [
+                "POST", "GET", "PATCH", "DELETE"
+            ],
+            "path": {
+                "is_negated": false,
+                "type": "RX",
+                "value": "/widgets/.*"
+            },
+            "schema_id": "MMOEG9qK"
+        }
+    ]
 }
 ```
 

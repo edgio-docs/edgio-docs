@@ -14,7 +14,7 @@ See [NPM Packages Changelog](/guides/changelog) for release notes related to the
 
 | Date  | Description                                                                                                                            |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| 7/24/2023  | **Rules:** <ul><li>The `Query String` match condition has been renamed to [Origin Query String](/guides/performance/rules/conditions#origin-query-string)</li><li>Added the [Query String](/guides/performance/rules/conditions#query-string) match condition. </li><li>The {{ PORTAL }} now remembers your show / hide rule number preference. </li></ul> |
+| 7/24/2023  | **Rules:** <ul><li>The `Query String` match condition has been renamed to [Origin Query String](/guides/performance/rules/conditions#origin-query-string)</li><li>Added the [Query String](/guides/performance/rules/conditions#querystring) match condition. </li><li>The {{ PORTAL }} now remembers your show / hide rule number preference. </li></ul> |
 | 7/19/2023  | **{{ PRODUCT }} Chrome Extension:** <ul><li>Translates the `x-edg-components` and `x-edg-t` response headers to metadata that is easier to understand. </li><li>The **Request Details** pane now displays request headers.</li></ul> |
 | 7/19/2023  | [{{ PRODUCT }} EdgeJS Fiddle]({{ FIDDLE_URL }}): <ul><li>Files are now listed within the left-hand pane.</li><li>Introduced the ability to add, delete, and rename files. </li><li>The middle pane now displays the contents of the currently selected file.</li></ul> |
 | 7/17/2023  | **Rules:** <ul><li>Introduced [nested rules](/guides/performance/rules#nested-rules).</li></ul> |

@@ -340,7 +340,7 @@ The response body for a successful request contains the following response prope
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample HTTP request is shown below.
 
@@ -506,7 +506,7 @@ The response body for a successful request contains the following response prope
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample HTTP request is shown below.
 
@@ -602,7 +602,7 @@ The response body for a successful request contains the following response prope
 
 {{ API_ERRORS.md }}
 
-### Sample Request and Response
+<h3>Sample Request and Response (JSON)</h3>
 
 A sample HTTP request is shown below.
 

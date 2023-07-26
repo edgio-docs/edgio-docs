@@ -1182,6 +1182,83 @@ router.conditional({
 ```
 </edgejs>
 
+#### Origin Query String {/*origin-query-string*/} <edgejs>request</edgejs>
+
+Identifies requests by the query string of the requested URL. This query string comparison is performed on rewritten or redirected URLs.
+
+**Key information:**
+
+-   This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Query](#query) match condition to match on the original query string submitted by the client.
+-   The value associated with this match condition will be compared against the entire request's query string.
+-   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, the text specified in the **Value** option should not include a leading question mark (?).
+-   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
+
+    -   **SPACE:** %20
+    -   **&:** %26
+    -   **%:** %25
+
+-   Matching against URLs that contain non-US-ASCII characters requires that you specify encoded Unicode characters (e.g., `%E3%81%93`).
+    -   Encode all Unicode characters before setting the **Value** option. This match condition only accepts encoded Unicode characters.
+
+        **Example:**
+
+        You should include the following characters instead of こんにちは when defining this match condition's value: `%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF`
+
+    -   The majority of user agents (e.g., web browsers) encode non-US-ASCII characters in the request's query string before submitting the request to our CDN. By default, our CDN service does not decode those characters.
+
+        <Callout type="tip">
+
+          Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
+
+        </Callout>
+
+<edgejs>
+**Key information:**
+
+-   This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Query](#query) match condition to match on the original query string submitted by the client.
+-   The value associated with this match condition will be compared against the entire request's query string.
+-   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, do not include a leading question mark (?).
+-   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
+
+    -   **SPACE:** %20
+    -   **&:** %26
+    -   **%:** %25
+
+-   Matching against URLs that contain non-US-ASCII characters requires that you specify encoded Unicode characters (e.g., `%E3%81%93`).
+    -   Encode all Unicode characters. This match condition only accepts encoded Unicode characters.
+
+        **Example:**
+
+        You should include the following characters instead of こんにちは when defining this match condition's value: `%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF`
+
+    -   The majority of user agents (e.g., web browsers) encode non-US-ASCII characters in the request's query string before submitting the request to our CDN. By default, our CDN service does not decode those characters.
+
+        <Callout type="tip">
+
+          Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
+
+        </Callout>
+-   **Supported operators:** `=== | !== | =~ | !~`
+
+**Example:**
+
+```
+router.conditional({
+    if: [{
+            '===': [{
+                    request: 'origin_query_string',
+                },
+                'country=france',
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+</edgejs>
+
 #### Path {/*path*/} <edgejs>request</edgejs>
 
 Identifies requests by the relative path of the request URL submitted by the client.
@@ -1483,7 +1560,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Query String {/*query-string*/} <edgejs>request</edgejs>
+#### Query String {/*querystring*/} <edgejs>request</edgejs>
 
 Identifies requests by the query string of the requested URL. This query string comparison is performed on rewritten or redirected URLs.
 

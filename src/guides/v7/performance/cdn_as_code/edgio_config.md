@@ -4,6 +4,18 @@ title: {{ CONFIG_FILE }} Configuration
 
 The `{{ CONFIG_FILE }}` config file in your app's root directory contains configuration options that control how your app runs on {{ PRODUCT_NAME }}. This file is automatically created when you run `{{ FULL_CLI_NAME }} init`. It should export an object with the following properties:
 
+## name {/* name */}
+
+The `name` config is the name your property will be deployed under. If this is omitted, the `name` property in your `package.json` will be used.
+
+## team {/* team */}
+
+The `team` config is the name of the team your property will be deployed under. If this is omitted, the deployment will be created under your personal (Private Space) team.
+
+## routes {/* routes */}
+
+The `routes` config is the path to your routes file relative to the root of your project. Defaults to `routes.js`.
+
 ## origins {/* origins */}
 
 The `origins` config is an array of objects whose properties are:

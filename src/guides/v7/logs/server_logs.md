@@ -6,7 +6,7 @@ Serverless Compute supports the ability to log console messages. Console message
 
 [Learn more about the console object.](https://developer.mozilla.org/en-US/docs/Web/API/console) 
 
-You may view these console messages in real time<!-- or as log data-->. From within the {{ PORTAL_LINK }}, load the desired deployment and then click on the `SERVER` tab. Focus on specific data by limiting the output to your IP address or through a regular expression. 
+You may view these console messages in real time<!-- or as log data-->. From within the {{ PORTAL_LINK }}, load the desired deployment and then click on the `Serverless` tab. Focus on specific data by limiting the output to your IP address or through a regular expression. 
 <!--
 -   **Real Time:** 
 -   **Log Data:** Retrieve log data from an AWS S3 bucket.
@@ -23,7 +23,7 @@ You may view these console messages in real time<!-- or as log data-->. From wit
         - Key ID
         - Secret access key
 -->
-![server](/images/logs/logs-serverless.png?width=700)
+![server](/images/v7/logs/logs-serverless.png?width=700)
 
 [View log field definitions.](#serverless-compute-console-and-dri-log-fields)
 

@@ -248,9 +248,36 @@ Conditional routes allow you to apply [Rules](/guides/performance/rules) to a re
 
 ### Using the `.if()`, `.elseif()`, and `.else()` Methods {/* using-the-if-elseif-and-else-methods */}
 
-The [`.if()`](/docs/api/core/classes/router_Router.default.html#if), [`.elseif()`](/docs/api/core/classes/router_Router.default.html#elseif), and [`.else()`](/docs/api/core/classes/router_Router.default.html#else) methods are members of the [Router](/docs/api/core/classes/router_Router.default.html) class and are used to apply if/then logic to a request. These methods can be chained together to create complex rules. Additionally, there are [`.and()`](/docs/api/core/functions/router_RouteCriteria.and.html), [`.or()`](/docs/api/core/functions/router_RouteCriteria.or.html) and [`.not()`](/docs/api/core/functions/router_RouteCriteria.not.html) functions that can be used as logical operators within the `.if()` and `.elseif()` methods.
+The `.if()`, `.elseif()`, and `.else()` methods are members of the [Router](/docs/api/core/classes/router_Router.default.html) class and are used to apply if/then logic to a request. These methods can be chained together to create complex rules. Additionally, there are [`.and()`](/docs/api/core/functions/router_RouteCriteria.and.html), [`.or()`](/docs/api/core/functions/router_RouteCriteria.or.html) and [`.not()`](/docs/api/core/functions/router_RouteCriteria.not.html) functions that can be used as logical operators within the `.if()` and `.elseif()` methods.
 
-It's important to note the chaining order of the conditional methods. The `.else()` method must follow either directly after the `.if()` method or after an `.elseif()` method. The `.elseif()` method must follow directly after the `.if()` method or another `.elseif()` method.
+It's important to note the chaining order of the conditional methods.
+
+- `.if()` does not require a following `.elseif()` or `.else()` method.
+
+  ```js
+  router.if(/* ... */).get(/* ... */).match(/* ... */);
+  ```
+
+- `.else()` must follow directly after the `.if()` method or after an `.elseif()` method.
+
+  ```js
+  router
+    .if(/* ... */)
+    .else(/* ... */)
+    .get(/* ... */)
+    .match(/* ... */);
+  ```
+
+- `.elseif()` must follow directly after the `.if()` method or another `.elseif()` method.
+
+  ```js
+  router
+    .if(/* ... */)
+    .elseif(/* ... */)
+    .else(/* ... */)
+    .get(/* ... */)
+    .match(/* ... */);
+  ```
 
 The following example is invalid and will fail to compile:
 
@@ -263,9 +290,9 @@ router
   .else(/* ... */);
 ```
 
-The signature for the `.if()` and `.elseif()` methods are the same for defining conditions and features. The first argument is of the [`ConditionCriteria`](/docs/api/core/types/router_RouteCriteria.ConditionCriteria.html) type used to define one or more conditions. The remaining _N_ arguments are of type [`ConditionalParam`](/docs/api/core/types/router_Router.ConditionParam.html) where one or more features or routers (for [nested rules](#nested-rules)) may be defined.
+The signature for the [`.if()`](/docs/api/core/classes/router_Router.default.html#if) and [`.elseif()`](/docs/api/core/classes/router_Router.default.html#elseif) methods are the same for defining conditions and features. The first argument is of the [`ConditionCriteria`](/docs/api/core/types/router_RouteCriteria.ConditionCriteria.html) type used to define one or more conditions. The remaining _N_ arguments are of type [`ConditionalParam`](/docs/api/core/types/router_Router.ConditionParam.html) where one or more features or routers (for [nested rules](#nested-rules)) may be defined.
 
-The `.else()` method accepts _N_ number of arguments of type [`ConditionalParam`](/docs/api/core/types/router_Router.ConditionParam.html) where one or more features or routers (for [nested rules](#nested-rules)) may be defined.
+The [`.else()`](/docs/api/core/classes/router_Router.default.html#else) method accepts _N_ number of arguments of type [`ConditionalParam`](/docs/api/core/types/router_Router.ConditionParam.html) where one or more features or routers (for [nested rules](#nested-rules)) may be defined.
 
 #### IF / ELSE Condition {/* if-else-condition */}
 
@@ -400,7 +427,7 @@ export default new Router()
 
 <Callout type="important">
 
-  Nested rules _must_ use a new `Router` instance. You cannot use the same `Router` instance for both the parent and nested rules.
+Nested rules _must_ use a new `Router` instance. You cannot use the same `Router` instance for both the parent and nested rules.
 
 </Callout>
 

@@ -6,9 +6,9 @@ Serverless Compute supports the ability to log console messages. Console message
 
 [Learn more about the console object.](https://developer.mozilla.org/en-US/docs/Web/API/console) 
 
-You may view these console messages in real time or as log data.
-
--   **Real Time:** From within the {{ PORTAL_LINK }}, load the desired deployment and then click on the `SERVER` tab. Focus on specific data by limiting the output to your IP address or through a regular expression. 
+You may view these console messages in real time<!-- or as log data-->. From within the {{ PORTAL_LINK }}, load the desired deployment and then click on the `SERVER` tab. Focus on specific data by limiting the output to your IP address or through a regular expression. 
+<!--
+-   **Real Time:** 
 -   **Log Data:** Retrieve log data from an AWS S3 bucket.
 
     <Callout type="info">
@@ -22,8 +22,8 @@ You may view these console messages in real time or as log data.
         - Base AWS S3 bucket URL (Server Logs)
         - Key ID
         - Secret access key
-
-![server](/images/logs/server.png)
+-->
+![server](/images/logs/logs-serverless.png?width=700)
 
 [View log field definitions.](#serverless-compute-console-and-dri-log-fields)
 
@@ -101,8 +101,6 @@ Log data for Serverless Compute console messages <!-- and DRI --> may contain th
 level:
     -   **100 - 104:** Indicates log data generated as a result of Deep Request Inspection.
 
--->
-
 ## Log Aggregation Tools {/*setting-up-log-aggregation-tools*/}
 
 {{ PRODUCT }} temporarily stores log data within Amazon S3. Use a log aggregation tool to extract log data from AWS S3. Here are a few popular log aggregation tools:
@@ -112,3 +110,4 @@ level:
 - AWS Athena | [[docs]](https://aws.amazon.com/blogs/big-data/analyzing-data-in-s3-using-amazon-athena/)
 - Splunk | [[S3 ingest docs]](https://docs.splunk.com/Documentation/AddOns/released/AWS/S3)
 - Loggly | [[S3 ingest docs]](https://documentation.solarwinds.com/en/Success_Center/loggly/Content/admin/s3-ingestion-auto.htm)
+-->

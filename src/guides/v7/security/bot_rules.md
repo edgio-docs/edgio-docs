@@ -612,7 +612,7 @@ You may create, modify, and delete Bot Manager configurations.
 
         <Callout type="info">
 
-          Place each entry on a separate line.
+          Add an entry by typing it and then pressing `ENTER`.
 
         </Callout>
 

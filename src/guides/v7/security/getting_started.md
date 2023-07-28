@@ -2,8 +2,7 @@
 title: Securing Your Web Applications ({{ PRODUCT_SECURITY }})
 ---
 
-Our security offering is
-designed to secure your web applications against malicious and unwanted traffic.
+Our security offering is designed to secure your web applications against malicious and unwanted traffic.
 The core methods through which it secures site traffic are listed below.
 
 -   Leverages our distributed worldwide network to provide protection
@@ -16,14 +15,11 @@ The core methods through which it secures site traffic are listed below.
 
 ## Prerequisites {/*prerequisites*/}
 
-Before you can secure your traffic, you will need an {{ COMPANY_NAME }} site configuration for the desired website. Perform the following steps to create a site configuration:	
-
-1.  If you do not already have an {{ COMPANY_NAME }} account, then you should <a href="{{ APP_URL }}/signup">sign up for a free account</a>.
-2.  Once you have confirmed your email and accepted our terms of service, you will be prompted for your site's URL. Once you have provided it, click **Launch my site**.
+Before you can secure your traffic, you will need an {{ COMPANY_NAME }} [team](/guides/basics/collaboration#managing-teams) and a [property](/guides/getting_started#create-property) for the desired website. 
 
 <Callout type="tip">
 
-  {{ PRODUCT }} provides basic application layer security to all accounts. However, we also offer more comprehensive solutions. {{ ACCOUNT_UPGRADE }}
+  {{ PRODUCT }} provides basic application layer security to all teams. However, we also offer more comprehensive solutions. {{ ACCOUNT_UPGRADE }}
 
 </Callout>
 
@@ -40,7 +36,7 @@ and managed rule are provided below.
 
 <Callout type="tip">
 
-  This tutorial covers how to set up basic application layer protection. However, our Business and Premier customers may use a [custom rule](/guides/security/custom_rules) to identify
+  This tutorial covers how to set up basic application layer protection. However, our Premier or Business customers may use a [custom rule](/guides/security/custom_rules) to identify
   threats using custom criteria that takes into account your site's
   traffic profile to identify specific threats and to avoid false positives.
 
@@ -57,8 +53,7 @@ denied, or screened through whitelists, accesslists, and blacklists.
 3.  In the **Name** option, type *My Access Rule*.
 4.  From the **Add an Access Control** option, select **IP**.
 5.  Click **Add Blacklist**.
-6.  Specify an IP address from which suspicious traffic originates.
-7.  Specify an additional IP address on a separate line. Repeat this step as needed.
+6.  Add an IP address from which suspicious traffic originates by typing it and then pressing `ENTER`. Repeat this step as needed.
 
     [View sample configuration.](/images/v7/security/getting_started_access_rules.png)
 
@@ -138,23 +133,21 @@ Security Application configuration before performing data analysis.
 
 ### Identify Trends {/*identify-trends*/}
 
-Identify trends by reviewing the Threats dashboard's graph and detailed alert data.
+Identify trends by reviewing the **Threats** view of the Security dashboard.
 
-1.  From the {{ PORTAL_LINK }}, click on the **AppOps** tab.
-2.  Click **Open on my.edgecast.com** to load the **Security** page.
-3.  From the **Security** page's navigation pane, click **Overview**.
-3.  Verify that the **Threats** tab is active.
-4.  Review the graph at the top of the dashboard. Check for an abnormally high number of detected threats.
+1.  Navigate to the Security dashboard.
+
+    {{ SECURITY_NAV }} **Dashboard**. Verify that the **Threats** tab is active.
+2.  Review the top graph. Check for an abnormally high number of detected threats.
 
 ### Analyze Individual Threats {/*analyze-individual-threats*/}
 
 Ensure that {{ PRODUCT_SECURITY }} is correctly identifying threats by viewing detailed information on detected threats.
 
-1.  Click the <Image inline src="/images/v7/icons/event_log.png" alt="Event log icon" /> (event log) icon from the upper-right hand side of the window.
-2.  Click on each alert to view detailed information on it.
+1.  From the right-hand pane, filter threats by clicking on the desired rule message, URL, user agent, etc.
 
-    -   Pay special attention to the requested URL. Verify that it is an illegitimate request.
-    -   If an alert was generated for a legitimate request, then review the **Rule Tags**, **Matched On**, and **Matched Value** fields to see why the request was flagged.
+    -   Scroll down to the `URL` section. Pay special attention to the requested URL(s). Verify that it is an illegitimate request.
+    -   If an alert was generated for a legitimate request, expand the request from the `Log Events` section and then review the **Rule Tags**, **Matched On**, and **Matched Value** fields to see why the request was flagged.
 
         -   Check whether the web application may be changed to prevent this type of request from occurring.
         -   Our recommendation is that all of the following conditions be met before disabling a rule:

@@ -247,7 +247,7 @@ Define the set of valid and invalid HTTP request methods through the
 ### Media Types (aka Content Types) {/*media-types-aka-content-types-*/}
 
 Define the set of valid media types (aka content types or MIME types)
-via the **Allowed Request Content Types** option.
+through the **Allowed Request Content Types** option.
 
 **Key information:**
 
@@ -294,7 +294,7 @@ via the **Allowed Request Content Types** option.
             violation of this access rule and enforce the security
             policy (e.g., alert or block) defined within your [security application 
             configuration](/guides/security/security_applications#enforcement-mode).
--   List each desired media type on a separate line.
+-   Add a media type by typing it and then pressing `ENTER`.
 -   Media types are case-insensitive.
 
 -   **Sample media types:**
@@ -321,7 +321,7 @@ Blacklist** option.
 -   {{ PRODUCT_SECURITY }} flags a request as a threat when its file extension matches one
     defined by this option.
 -   File extensions are case-insensitive.
--   List each desired file extension on a separate line.
+-   Add a file extension by typing it and then pressing `ENTER`.
 -   **Syntax:** 
 
     `.<File Extension>`
@@ -365,7 +365,7 @@ Blacklist** option.
 -   {{ PRODUCT_SECURITY }} flags a request as a threat when it contains a header whose name
     matches one defined by this option.
 -   Header names are case-insensitive.
--   List each desired request header on a separate line.
+-   Add a request header by typing it and then pressing `ENTER`.
 
 ## Access Rule Administration {/*access-rule-administration*/}
 

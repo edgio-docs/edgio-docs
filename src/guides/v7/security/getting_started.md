@@ -19,7 +19,7 @@ Before you can secure your traffic, you will need an {{ COMPANY_NAME }} [team](/
 
 <Callout type="tip">
 
-  {{ PRODUCT }} provides basic application layer security to all teams. However, we also offer more comprehensive solutions. {{ ACCOUNT_UPGRADE }}
+  {{ PRODUCT }} allows all teams to set up basic application layer security. However, we also offer more comprehensive solutions. {{ ACCOUNT_UPGRADE }}
 
 </Callout>
 
@@ -51,9 +51,9 @@ denied, or screened through whitelists, accesslists, and blacklists.
     {{ SECURITY_NAV }} **Access Rules**.
 2.  Click **+ New Access Ruleset**.
 3.  In the **Name** option, type *My Access Rule*.
-4.  From the **Add an Access Control** option, select **IP**.
+4.  From the **Add an Access Control** option, select *IP*.
 5.  Click **Add Blacklist**.
-6.  Add an IP address from which suspicious traffic originates by typing it and then pressing `ENTER`. Repeat this step as needed.
+6.  From within this blacklist section, add an IP address from which suspicious traffic originates by typing it and then pressing `ENTER`. Repeat this step as needed.
 
     ![](/images/v7/security/getting_started_access_rules.png?width=600)
 
@@ -69,8 +69,8 @@ Create a rate rule that restricts the flow of traffic from a client to your appl
 2.  Click **+ New Rate Ruleset**.
 3.  In the **Name** option, type *My Rate Rule*.
 4.  In the **Rate Limit** option, type *100*.
-5.  In the **Time period** option, select **1 minute**.
-6.  In the **Apply rate limit to** option, select **IP address**.
+5.  From the **Time period** option, select *1 minute*.
+6.  From the **Apply rate limit to** option, select *IP address*.
 
     ![](/images/v7/security/getting_started_rate_rules.png?width=600)
 
@@ -87,8 +87,8 @@ application layer attacks.
 2.  Click **+ New Managed Ruleset**.
 3.  In the **Name** option, type *My Managed Rule*.
 4.  Click the **Inbound Policies** tab. 
-5.  Set the **Threshold** option to **5**.
-6.  Set the **Paranoia Level** option to **1**.
+5.  Set the **Threshold** option to *5*.
+6.  Set the **Paranoia Level** option to *1*.
 7.  From the **Policies** section, disable policies that do not apply to your application. 
 
     For example, you may safely disable **Adv Drupal**, **Adv SharePoint**, and **Adv WordPress** if your application does not leverage those platforms.
@@ -105,18 +105,17 @@ A Security App configuration defines the set of traffic that will be inspected a
     {{ SECURITY_NAV }} **Security Apps**.
 2.  Click **+ New Security App**.
 3.  In the **Name** option, type *My Security App*.
-4.  From the **Rules **section, click **Access Rule**.
-5.  From the **Production Access Rule** option, select *My Access
-Rule*.
+4.  From the **Rules** section, click **Access Rule**.
+5.  From the **Production Access Rule** option, select *My Access Rule*.
 6.  From the **Action type** option, select *Alert only*.
-7.  From the **Rules **section, click **Rate Rules**.
+7.  From the **Rules** section, click **Rate Rules**.
 8.  From the **Add Rate Rule** option, select *My Rate Rule*.
 9.  From the **Action type** option, select *Drop*.
 10. From the **Rules** section, click **Managed Rule**.
 11. From the **Production Managed Rule** option, select *My Managed Rule*.
 12. From the **Action type** option, select *Alert only*.
 
-    [View sample configuration.](/images/v7/security/getting_started_security_app.png?width=600)
+    ![](/images/v7/security/getting_started_security_app.png?width=600)
 
 13. Click **Save**.
 
@@ -149,8 +148,7 @@ Ensure that {{ PRODUCT_SECURITY }} is correctly identifying threats by viewing d
 
 1.  From the right-hand pane, filter threats by clicking on the desired rule message, URL, user agent, etc.
 
-    -   Scroll down to the `URL` section. Pay special attention to the requested URL(s). Verify that it is an illegitimate request.
-    -   If an alert was generated for a legitimate request, expand the request from the `Log Events` section and then review the **Rule Tags**, **Matched On**, and **Matched Value** fields to see why the request was flagged.
+    -   If an alert was generated for a legitimate request, scroll down to the `URL` section of the right-hand pane and click on the desired URL. After which, expand a request from the `Log Events` section and then review the **Rule Tags**, **Matched On**, and **Matched Value** fields to see why the request was flagged.
 
         -   Check whether the web application may be changed to prevent this type of request from occurring.
         -   Our recommendation is that all of the following conditions be met before disabling a rule:

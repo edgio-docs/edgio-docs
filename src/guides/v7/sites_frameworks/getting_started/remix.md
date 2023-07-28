@@ -47,7 +47,7 @@ npm run dev
 
 ## Configuring Your Remix App for {{ PRODUCT }} {/*configuring-your-remix-app-for*/}
 
-### Update the `type` Property in `package.json` {/*update-the-type-property-in-packagejson*/}
+### Update the type Property in package.json {/*update-the-type-property-in-packagejson*/}
 
 In most cases, a Remix app will have `"type": "module"` in the `package.json` file. This property should be removed as {{ PRODUCT }} does not support it at this time.
 
@@ -85,11 +85,11 @@ This will automatically update your `package.json` and add all of the required {
 
 ### Modify Remix's Server Configuration {/*modify-remixs-server-configuration*/}
 
-In order for {{ PRODUCT }} to correctly bundle your app, there's a few configurations that need to be modified.
+{{ PRODUCT }} requires a few changes to your configuration to correctly bundle your app.
 
-#### Setup the Express Server {/*setup-the-express-server*/}
+#### Set Up the Express Server {/*set-up-the-express-server*/}
 
-If you created a new Remix application following the steps above, you will have already selected the Express server as your deployment target. If you are using an existing Remix application, you will need to update your `server.js` file with a compatible Express server.
+If you created a Remix application by following the above steps, you will have already selected the Express server as your deployment target. If you are using an existing Remix application, you will need to update your `server.js` file with a compatible Express server.
 
 For either scenario, we've provided a sample Express server below that you can use to replace the default `server.js` file in your project.
 
@@ -186,9 +186,9 @@ function createDevRequestHandler() {
   Note that the `server.js` file is using CommonJS `require` instead of ES `import`. This is required for {{ PRODUCT }} to correctly bundle your app.
 </Callout>
 
-#### Update the `servermoduleformat` Property in  `remix.config.js` {/*update-the-servermoduleformat-property-in-remixconfigjs*/}
+#### Update the servermoduleformat Property in  remix.config.js {/*update-the-servermoduleformat-property-in-remixconfigjs*/}
 
-Additionally, the `serverModuleFormat` property in the `remix.config.js` file should be set to `cjs`, and use the CommonJS module format.
+Use the CommonJS module format by setting the `serverModuleFormat` property in the `remix.config.js` file to `cjs`.
 
 ```js diff filename="remix.config.js"
 /** @type {import('@remix-run/dev').AppConfig} */

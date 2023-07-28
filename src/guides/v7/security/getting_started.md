@@ -72,7 +72,7 @@ Create a rate rule that restricts the flow of traffic from a client to your appl
 5.  In the **Time period** option, select **1 minute**.
 6.  In the **Apply rate limit to** option, select **IP address**.
 
-    ![](/images/v7/security/getting_started_rate_rules.png)
+    ![](/images/v7/security/getting_started_rate_rules.png?width=600)
 
 7.  Toggle the **Rule Status** option to **On**.
 8.  Click **Save**.
@@ -93,7 +93,7 @@ application layer attacks.
 
     For example, you may safely disable **Adv Drupal**, **Adv SharePoint**, and **Adv WordPress** if your application does not leverage those platforms.
 
-    ![](/images/v7/security/getting_started_managed_rule.png)
+    ![](/images/v7/security/getting_started_managed_rule.png?width=600)
 
 8.  Click **Save**.
 
@@ -116,7 +116,7 @@ Rule*.
 11. From the **Production Managed Rule** option, select *My Managed Rule*.
 12. From the **Action type** option, select *Alert only*.
 
-    [View sample configuration.](/images/v7/security/getting_started_security_app.png)
+    [View sample configuration.](/images/v7/security/getting_started_security_app.png?width=600)
 
 13. Click **Save**.
 

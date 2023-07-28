@@ -318,7 +318,7 @@ If you need to modify a request before going to an origin, or modify the respons
 
 {{ routehelper_usage.md }}
 
-#### `transformRequest` {/* transformRequest */}
+#### transformRequest Function {/* transformRequest-function */}
 
 You can modify the request before it is sent to the origin using the `transformRequest` function. This example shows how you could add a `foo` property to the reuqest body before sending it to the origin:
 
@@ -335,7 +335,7 @@ router.get('/products/:productId', ({proxy}) => {
 });
 ```
 
-#### `transformResponse` {/* transformResponse */}
+#### transformResponse Function{/* transformResponse-function */}
 
 Similarly, you can modify the response from the origin before it is sent to the client using the `transformResponse` function. This example shows how you could add an HTML `script` tag to the response body before sending it to the client:
 

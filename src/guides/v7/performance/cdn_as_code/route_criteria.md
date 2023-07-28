@@ -115,7 +115,7 @@ router.match(
 );
 ```
 
-## Negated Route Matching (Using `not`) {/* negated-route-matching-using-not */}
+## Negated Route Matching (not) {/* negated-route-matching-not */}
 
 Previously, we showed how to match requests based on path, method, query parameters, cookies, and request headers. You can also negate these matches by specifying a `not` key in the object passed to your route criteria. For example, the following route matches all requests whose relative path does not match `/some-path`:
 
@@ -246,7 +246,7 @@ Regular expression matching is also available for matching query parameters, coo
 
 Conditional routes allow you to apply [Rules](/guides/performance/rules) to a request using advanced if/then logic by the means of logical and comparison operators. [Nested rules](#nested-rules) may also be applied using multiple routers.
 
-### Using the `.if()`, `.elseif()`, and `.else()` Methods {/* using-the-if-elseif-and-else-methods */}
+### Using the .if(), .elseif(), and .else() Methods {/* using-the-if-elseif-and-else-methods */}
 
 The `.if()`, `.elseif()`, and `.else()` methods are members of the [Router](/docs/api/core/classes/router_Router.default.html) class and are used to apply if/then logic to a request. These methods can be chained together to create complex rules. Additionally, there are [`.and()`](/docs/api/core/functions/router_RouteCriteria.and.html), [`.or()`](/docs/api/core/functions/router_RouteCriteria.or.html) and [`.not()`](/docs/api/core/functions/router_RouteCriteria.not.html) functions that can be used as logical operators within the `.if()` and `.elseif()` methods.
 
@@ -431,7 +431,7 @@ Nested rules _must_ use a new `Router` instance. You cannot use the same `Router
 
 </Callout>
 
-### Using the `.conditional()` Method {/* using-the-conditional-method */}
+### Using the .conditional() Method {/* using-the-conditional-method */}
 
 Let's revisit the example from our [Default Route Configuration](/guides/performance/cdn_as_code#default-route-configuration) section where we cached all requests to `/api/*`:
 

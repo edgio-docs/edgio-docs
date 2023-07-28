@@ -7,7 +7,7 @@ A match condition identifies the set of requests to which one or more feature(s)
 | Category  | Match Conditions  |
 |---|---|
 | Location  | <ul><li>[ASN](#asn)</li><li>[City](#city)</li><li>[Continent](#continent)</li><li>[Country](#country)</li><li>[DMA Code](#dma-code)</li><li>[Latitude](#latitude)</li><li>[Longitude](#longitude)</li><li>[Postal Code](#postal-code)</li><li>[Region Code](#region-code)</li></ul> |
-| Request  | <ul><li>[Client IP](#client-ip)</li><li>[Cookie](#cookie)</li><li>[Directory](#directory)</li><li>[Extension](#extension)</li><li>[Filename](#filename)</li><li>[Method](#method)</li><li>[Origin Path](#origin-path)</li><li>[Path](#path)</li><li>[POP Code](#pop-code)</li><li>[Query](#query)</li><li>[Query Parameter](#query-parameter)</li><li>[Query String](#query-string)</li><li>[Referring Domain](#referring-domain)</li><li>[Request Header](#request-header)</li><li>[Scheme](#scheme)</li></ul>  |
+| Request  | <ul><li>[Client IP](#client-ip)</li><li>[Cookie](#cookie)</li><li>[Directory](#directory)</li><li>[Extension](#extension)</li><li>[Filename](#filename)</li><li>[Method](#method)</li><li>[Origin Path](#origin-path)</li><li>[Origin Query String](#origin-query-string)</li><li>[Path](#path)</li><li>[POP Code](#pop-code)</li><li>[Query](#query)</li><li>[Query Parameter](#query-parameter)</li><li>[Query String](#query-string)</li><li>[Referring Domain](#referring-domain)</li><li>[Request Header](#request-header)</li><li>[Scheme](#scheme)</li></ul>  |
 | Device  | <ul><li>[Brand Name](#brand-name)</li><li hidden>[Device Operating System](#device-operating-system)</li><li>[Dual Orientation](#dual-orientation)</li><li>[HTML Preferred DTD](#html-preferred-dtd)</li><li>[Image Inlining](#image-inlining)</li><li>[Is Android](#is-android)</li><li>[Is App](#is-app)</li><li hidden>[Is Full Desktop](#is-full-desktop)</li><li>[Is iOS](#is-ios)</li><li>[Is Robot](#is-robot)</li><li>[Is Smartphone](#is-smartphone)</li><li>[Is SmartTV](#is-smarttv)</li><li>[Is Tablet](#is-tablet)</li><li>[Is Touchscreen](#is-touchscreen)</li><li>[Is Windows Phone](#is-windows-phone)</li><li>[Is Wireless Device](#is-wireless-device)</li><li>[Marketing Name](#marketing-name)</li><li>[Mobile Browser](#mobile-browser)</li><li>[Model Name](#model-name)</li><li>[Progressive Download](#progressive-download)</li><li>[Release Date](#release-date)</li><li>[Resolution Height](#resolution-height)</li><li>[Resolution Width](#resolution-width)</li></ul>  |
 | Miscellaneous  | <ul><li>[Random Integer](#random-integer)</li></ul>  |
 | Response  | <ul><li>[Response Status Code](#response-status-code)</li></ul>  |
@@ -1188,7 +1188,7 @@ Identifies requests by the query string of the requested URL. This query string 
 
 **Key information:**
 
--   This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Query](#query) match condition to match on the original query string submitted by the client.
+-   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#url-rewrite) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query String](#query-string) match condition to match on the query string submitted by the client. 
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, the text specified in the **Value** option should not include a leading question mark (?).
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1215,7 +1215,7 @@ Identifies requests by the query string of the requested URL. This query string 
 <edgejs>
 **Key information:**
 
--   This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Query](#query) match condition to match on the original query string submitted by the client.
+-   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#url-rewrite) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query String](#query-string) match condition to match on the query string submitted by the client. 
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, do not include a leading question mark (?).
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1243,19 +1243,16 @@ Identifies requests by the query string of the requested URL. This query string 
 **Example:**
 
 ```
-router.conditional({
-    if: [{
-            '===': [{
-                    request: 'origin_query_string',
-                },
-                'country=france',
-            ],
-        }, {
-            // Features
-            },
-        },
-    ],
-});
+export default new Router().if(
+  {
+    edgeControlCriteria: {
+      "===": [{ request: "origin_query_string" }, "country=france"],
+    },
+  },
+  { 
+    // Features
+  }
+);
 ```
 </edgejs>
 
@@ -1428,13 +1425,14 @@ router.conditional({
 
 #### Query {/*query*/} <edgejs>request</edgejs>
 
-Identifies requests by the query string of the request URL submitted by the client.
+Identifies requests by a query string parameter of the request URL submitted by the client.
 
 **Key information:**
+-   Although you may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#url-rewrite) or [redirect](/guides/performance/rules/features#url-redirect) a URL, this comparision will always be performed against the request URL submitted by the client. Use the [Query Parameter](#query-parameter) match condition to match on a query string parameter for a rewritten or redirected URL.
+-   **Syntax:** `<NAME>=<VALUE>`
 
--   Although you may configure {{ PRODUCT }} to rewrite or redirect a URL, this query string comparision will always be performed against the  request URL submitted by the client. Use the [Query String](#query-string) match condition to match on a rewritten or redirected URL.
--   The value associated with this match condition will be compared against the entire request's query string.
--   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, the text specified in the **Value** option should not include a leading question mark (?).
+    **Example:** The following value is only satisfied when the request submitted by the client contains a query string parameter whose name is `country` and whose value is `US`: `country=US`
+
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
 
     -   **SPACE:** %20
@@ -1459,9 +1457,11 @@ Identifies requests by the query string of the request URL submitted by the clie
 <edgejs>
 **Key information:**
 
--   Although you may configure {{ PRODUCT }} to rewrite or redirect a URL, this query string comparision will always be performed against the  request URL submitted by the client. Use the [Query String](#query-string) match condition to match on a rewritten or redirected URL.
--   The value associated with this match condition will be compared against the entire request's query string.
--   For the purposes of this match condition, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, do not include a leading question mark (?) when defining this match condition.
+-   Although you may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#url-rewrite) or [redirect](/guides/performance/rules/features#url-redirect) a URL, this comparision will always be performed against the request URL submitted by the client. Use the [Query Parameter](#query-parameter) match condition to match on a query string parameter for a rewritten or redirected URL.
+-   **Syntax:** `<NAME>=<VALUE>`
+
+    **Example:** The following value is only satisfied when the request submitted by the client contains a query string parameter whose name is `country` and whose value is `US`: `country=US`
+
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
 
     -   **SPACE:** %20
@@ -1487,19 +1487,12 @@ Identifies requests by the query string of the request URL submitted by the clie
 **Example:**
 
 ```
-router.conditional({
-    if: [{
-            '===': [{
-                    request: 'query',
-                },
-                'country=france',
-            ],
-        }, {
-            // Features
-            },
-        },
-    ],
-});
+export default new Router().match(
+  { query: "country=france" },
+  { 
+    // Features
+  }
+);
 ```
 </edgejs>
 
@@ -1509,6 +1502,7 @@ Identifies requests by the value assigned to a query string parameter in the req
 
 **Key information:**
 
+-   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#url-rewrite) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query](#query) match condition to match on a query string parameter submitted by the client. 
 -   **Parameter name:**
 
     -   Query parameter name comparisons are case-insensitive.
@@ -1526,6 +1520,7 @@ Identifies requests by the value assigned to a query string parameter in the req
 <edgejs>
 **Key information:**
 
+-   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#url-rewrite) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query](#query) match condition to match on a query string parameter submitted by the client. 
 -   **Parameter name:**
 
     -   Query parameter name comparisons are case-insensitive.
@@ -1544,29 +1539,26 @@ Identifies requests by the value assigned to a query string parameter in the req
 **Example:**
 
 ```
-router.conditional({
-    if: [{
-            '===': [{
-                    request.origin_query: 'country',
-                },
-                'france',
-            ],
-        }, {
-            // Features
-            },
-        },
-    ],
-});
+export default new Router().if(
+  {
+    edgeControlCriteria: {
+      "===": [{ "request.origin_query": "country" }, "france"],
+    },
+  },
+  { 
+    // Features  
+  }
+);
 ```
 </edgejs>
 
-#### Query String {/*querystring*/} <edgejs>request</edgejs>
+#### Query String {/*query-string*/} <edgejs>request</edgejs>
 
-Identifies requests by the query string of the requested URL. This query string comparison is performed on rewritten or redirected URLs.
+Identifies requests by the query string of the requested URL. This query string comparison is performed on the request submitted by the client.
 
 **Key information:**
 
--   This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Query](#query) match condition to match on the original query string submitted by the client.
+-   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#url-rewrite) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This comparison is performed before {{ PRODUCT }} rewrites or redirects the request. Use the [Origin Query String](#origin-query-string) match condition to match on a query string of a rewritten or redirected URL.
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, the text specified in the **Value** option should not include a leading question mark (?).
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1593,7 +1585,7 @@ Identifies requests by the query string of the requested URL. This query string 
 <edgejs>
 **Key information:**
 
--   This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Query](#query) match condition to match on the original query string submitted by the client.
+-   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#url-rewrite) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This comparison is performed before {{ PRODUCT }} rewrites or redirects the request. Use the [Origin Query String](#origin-query-string) match condition to match on a query string of a rewritten or redirected URL.
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, do not include a leading question mark (?).
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1621,19 +1613,12 @@ Identifies requests by the query string of the requested URL. This query string 
 **Example:**
 
 ```
-router.conditional({
-    if: [{
-            '===': [{
-                    request: 'origin_query_string',
-                },
-                'country=france',
-            ],
-        }, {
-            // Features
-            },
-        },
-    ],
-});
+export default new Router().if(
+  { edgeControlCriteria: { "===": [{ request: "querystring" }, "country=france"] } },
+  { 
+    // Features
+ }
+);
 ```
 </edgejs>
 

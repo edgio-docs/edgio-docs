@@ -1111,7 +1111,7 @@ Identifies requests by the request URL's relative path. This relative path compa
 
 **Key information:**
 
--   This relative path comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Path](#path) match condition to match on the original relative path submitted by the client.
+-   This relative path comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#rewrite-url) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Path](#path) match condition to match on the original relative path submitted by the client.
 -   This relative path starts directly after the hostname.
 -   For the purpose of satisfying this condition, query strings in the URL are ignored.
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1131,14 +1131,14 @@ Identifies requests by the request URL's relative path. This relative path compa
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. <!-- If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values. -->
+          Curl does not encode non-US-ASCII characters. 
 
         </Callout>
 
 <edgejs>
 **Key information:**
 
--   This relative path comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#url-rewrite) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Path](#path) match condition to match on the original relative path submitted by the client.
+-   This relative path comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#rewrite-url) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Path](#path) match condition to match on the original relative path submitted by the client.
 -   This relative path starts directly after the hostname.
 -   For the purpose of satisfying this condition, query strings in the URL are ignored.
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1158,7 +1158,7 @@ Identifies requests by the request URL's relative path. This relative path compa
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. <!-- If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values. -->
+          Curl does not encode non-US-ASCII characters. 
 
         </Callout>
 -   **Supported operators:** `== | != | =~ | !~`
@@ -1188,7 +1188,7 @@ Identifies requests by the query string of the requested URL. This query string 
 
 **Key information:**
 
--   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#url-rewrite) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query String](#query-string) match condition to match on the query string submitted by the client. 
+-   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#rewrite-url) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query String](#query-string) match condition to match on the query string submitted by the client. 
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, the text specified in the **Value** option should not include a leading question mark (?).
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1208,14 +1208,14 @@ Identifies requests by the query string of the requested URL. This query string 
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
+          Curl does not encode non-US-ASCII characters. 
 
         </Callout>
 
 <edgejs>
 **Key information:**
 
--   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#url-rewrite) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query String](#query-string) match condition to match on the query string submitted by the client. 
+-   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#rewrite-url) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query String](#query-string) match condition to match on the query string submitted by the client. 
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, do not include a leading question mark (?).
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1235,7 +1235,7 @@ Identifies requests by the query string of the requested URL. This query string 
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
+          Curl does not encode non-US-ASCII characters. 
 
         </Callout>
 -   **Supported operators:** `=== | !== | =~ | !~`
@@ -1282,7 +1282,7 @@ Identifies requests by the relative path of the request URL submitted by the cli
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. <!-- If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values. -->
+          Curl does not encode non-US-ASCII characters. 
 
         </Callout>
 
@@ -1309,7 +1309,7 @@ Identifies requests by the relative path of the request URL submitted by the cli
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. <!-- If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values. -->
+          Curl does not encode non-US-ASCII characters. 
 
         </Callout>
 -   **Supported operators:** `=== | !== | == | != | =~ | !~ | in | not_in`
@@ -1428,10 +1428,10 @@ router.conditional({
 Identifies requests by a query string parameter of the request URL submitted by the client.
 
 **Key information:**
--   Although you may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#url-rewrite) or [redirect](/guides/performance/rules/features#url-redirect) a URL, this comparision will always be performed against the request URL submitted by the client. Use the [Query Parameter](#query-parameter) match condition to match on a query string parameter for a rewritten or redirected URL.
+-   Although you may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#rewrite-url) or [redirect](/guides/performance/rules/features#url-redirect) a URL, this comparision will always be performed against the request URL submitted by the client. Use the [Query Parameter](#query-parameter) match condition to match on a query string parameter for a rewritten or redirected URL.
 -   **Syntax:** `<NAME>=<VALUE>`
 
-    **Example:** The following value is only satisfied when the request submitted by the client contains a query string parameter whose name is `country` and whose value is `US`: `country=US`
+    **Example:** The following value is only satisfied when the request submitted by the client contains a query string parameter whose name is *country* and whose value is *US*: `country=US`
 
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
 
@@ -1450,17 +1450,17 @@ Identifies requests by a query string parameter of the request URL submitted by 
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. <!--If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.-->
+          Curl does not encode non-US-ASCII characters. 
 
         </Callout>
 
 <edgejs>
 **Key information:**
 
--   Although you may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#url-rewrite) or [redirect](/guides/performance/rules/features#url-redirect) a URL, this comparision will always be performed against the request URL submitted by the client. Use the [Query Parameter](#query-parameter) match condition to match on a query string parameter for a rewritten or redirected URL.
+-   Although you may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#rewrite-url) or [redirect](/guides/performance/rules/features#url-redirect) a URL, this comparision will always be performed against the request URL submitted by the client. Use the [Query Parameter](#query-parameter) match condition to match on a query string parameter for a rewritten or redirected URL.
 -   **Syntax:** `<NAME>=<VALUE>`
 
-    **Example:** The following value is only satisfied when the request submitted by the client contains a query string parameter whose name is `country` and whose value is `US`: `country=US`
+    **Example:** The following value is only satisfied when the request submitted by the client contains a query string parameter whose name is *country* and whose value is *US*: `country=US`
 
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
 
@@ -1479,7 +1479,7 @@ Identifies requests by a query string parameter of the request URL submitted by 
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. <!--If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.-->
+          Curl does not encode non-US-ASCII characters. 
 
         </Callout>
 -   **Supported operators:** `=== | !== | =~ | !~`
@@ -1502,7 +1502,7 @@ Identifies requests by the value assigned to a query string parameter in the req
 
 **Key information:**
 
--   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#url-rewrite) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query](#query) match condition to match on a query string parameter submitted by the client. 
+-   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#rewrite-url) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query](#query) match condition to match on a query string parameter submitted by the client. 
 -   **Parameter name:**
 
     -   Query parameter name comparisons are case-insensitive.
@@ -1520,7 +1520,7 @@ Identifies requests by the value assigned to a query string parameter in the req
 <edgejs>
 **Key information:**
 
--   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#url-rewrite) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query](#query) match condition to match on a query string parameter submitted by the client. 
+-   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#rewrite-url) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query](#query) match condition to match on a query string parameter submitted by the client. 
 -   **Parameter name:**
 
     -   Query parameter name comparisons are case-insensitive.
@@ -1558,7 +1558,7 @@ Identifies requests by the query string of the requested URL. This query string 
 
 **Key information:**
 
--   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#url-rewrite) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This comparison is performed before {{ PRODUCT }} rewrites or redirects the request. Use the [Origin Query String](#origin-query-string) match condition to match on a query string of a rewritten or redirected URL.
+-   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#rewrite-url) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This comparison is performed before {{ PRODUCT }} rewrites or redirects the request. Use the [Origin Query String](#origin-query-string) match condition to match on a query string of a rewritten or redirected URL.
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, the text specified in the **Value** option should not include a leading question mark (?).
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1578,14 +1578,14 @@ Identifies requests by the query string of the requested URL. This query string 
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
+          Curl does not encode non-US-ASCII characters. 
 
         </Callout>
 
 <edgejs>
 **Key information:**
 
--   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#url-rewrite) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This comparison is performed before {{ PRODUCT }} rewrites or redirects the request. Use the [Origin Query String](#origin-query-string) match condition to match on a query string of a rewritten or redirected URL.
+-   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#rewrite-url) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This comparison is performed before {{ PRODUCT }} rewrites or redirects the request. Use the [Origin Query String](#origin-query-string) match condition to match on a query string of a rewritten or redirected URL.
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, do not include a leading question mark (?).
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1605,7 +1605,7 @@ Identifies requests by the query string of the requested URL. This query string 
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. If you would like to test this match condition using curl, then you will need to create a mutually exclusive match section (i.e., IF / ELSE IF). Each conditional expression within that statement should contain this match condition with the Encoded option set to different values.
+          Curl does not encode non-US-ASCII characters. 
 
         </Callout>
 -   **Supported operators:** `=== | !== | =~ | !~`

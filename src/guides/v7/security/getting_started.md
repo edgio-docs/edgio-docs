@@ -49,13 +49,13 @@ denied, or screened through whitelists, accesslists, and blacklists.
 
 1.  Navigate to the **Access Rules** page.
     {{ SECURITY_NAV }} **Access Rules**.
-2.  Click **Add Access Rule**.
+2.  Click **+ New Access Ruleset**.
 3.  In the **Name** option, type *My Access Rule*.
 4.  From the **Add an Access Control** option, select **IP**.
 5.  Click **Add Blacklist**.
 6.  Add an IP address from which suspicious traffic originates by typing it and then pressing `ENTER`. Repeat this step as needed.
 
-    [View sample configuration.](/images/v7/security/getting_started_access_rules.png)
+    ![](/images/v7/security/getting_started_access_rules.png?width=600)
 
 7.  Click **Save**.
 
@@ -66,14 +66,16 @@ Create a rate rule that restricts the flow of traffic from a client to your appl
 
 1.  Navigate to the **Rate Rules** page.
     {{ SECURITY_NAV }} **Rate Rules**.
-2.  Click **Add Rate Rule**.
-3.  In the **Rule name** option, type *My Rate Rule*.
-4.  In the **Apply rate limit to** option, select **IP address**.
-5.  In the **Rate limit** section, set the **Number of requests** option to *100* and the **Time period** option to **1 minute**.
+2.  Click **+ New Rate Ruleset**.
+3.  In the **Name** option, type *My Rate Rule*.
+4.  In the **Rate Limit** option, type *100*.
+5.  In the **Time period** option, select **1 minute**.
+6.  In the **Apply rate limit to** option, select **IP address**.
 
-    [View sample configuration.](/images/v7/security/getting_started_rate_rules.png)
+    ![](/images/v7/security/getting_started_rate_rules.png)
 
-6.  Click **Save**.
+7.  Toggle the **Rule Status** option to **On**.
+8.  Click **Save**.
 
 ### Create a Managed Rule {/*create-a-managed-rule*/}
 
@@ -82,43 +84,45 @@ application layer attacks.
 
 1.  Navigate to the **Managed Rules** page.
     {{ SECURITY_NAV }} **Managed Rules**.
-2.  Click **Add Managed Rule**.
+2.  Click **+ New Managed Ruleset**.
 3.  In the **Name** option, type *My Managed Rule*.
-4.  Click the **Policies** tab. In the **Ruleset** option, select **ECRS 2022-08-10**.
+4.  Click the **Inbound Policies** tab. 
 5.  Set the **Threshold** option to **5**.
 6.  Set the **Paranoia Level** option to **1**.
-7.  From the **Policies** section, disable policies that do not apply to your application. For example, you may safely disable **Adv Drupal**, **Adv SharePoint**, and **Adv WordPress** if your application does not leverage those platforms.
+7.  From the **Policies** section, disable policies that do not apply to your application. 
 
-    [View sample configuration.](/images/v7/security/getting_started_managed_rule.png)
+    For example, you may safely disable **Adv Drupal**, **Adv SharePoint**, and **Adv WordPress** if your application does not leverage those platforms.
+
+    ![](/images/v7/security/getting_started_managed_rule.png)
 
 8.  Click **Save**.
 
-## Step 2: Create a Security Application Configuration {/*step-2-create-a-security-application-configuration*/}
+## Step 2: Create a Security App {/*step-2-create-a-security-app*/}
 
-A Security Application configuration defines the set of traffic that will be inspected and identifies the security policy that will be applied to it. Instructions on how to create a Security Application configuration for all of your site's traffic is provided below.
+A Security App configuration defines the set of traffic that will be inspected and identifies the security policy that will be applied to it. Instructions on how to create a Security App configuration for all of your site's traffic is provided below.
 
-1.  Navigate to the **Security Application Manager** page.
+1.  Navigate to the **Security Apps** page.
     {{ SECURITY_NAV }} **Security Apps**.
-2.  Click **Add New**.
-3.  In the **Name** option, type *My Security Application*.
+2.  Click **+ New Security App**.
+3.  In the **Name** option, type *My Security App*.
 4.  From the **Rules **section, click **Access Rule**.
-5.  From the **Production Access Rule** option, select **My Access
-Rule**.
-6.  From the **Action type** option, select **Alert only**.
+5.  From the **Production Access Rule** option, select *My Access
+Rule*.
+6.  From the **Action type** option, select *Alert only*.
 7.  From the **Rules **section, click **Rate Rules**.
-8.  From the **Add Rate Rule** option, select **My Rate Rule**.
-9.  From the **Action type** option, select **Drop request**.
+8.  From the **Add Rate Rule** option, select *My Rate Rule*.
+9.  From the **Action type** option, select *Drop*.
 10. From the **Rules** section, click **Managed Rule**.
-11. From the **Production Managed Rule** option, select **My Managed Rule**.
-12. From the **Action type** option, select **Alert only**.
+11. From the **Production Managed Rule** option, select *My Managed Rule*.
+12. From the **Action type** option, select *Alert only*.
 
-    [View sample configuration.](/images/v7/security/getting_started_application.png)
+    [View sample configuration.](/images/v7/security/getting_started_security_app.png)
 
 13. Click **Save**.
 
 ## Step 3: Monitor Threats {/*step-3-monitor-threats*/}
 
-The **Threats** tab on the **Security** dashboard illustrates threat detection trends and lists recent illegitimate requests. This dashboard is a useful tool for:
+The **Threats** view on the **Security** dashboard illustrates threat detection trends and lists recent illegitimate requests. This dashboard is a useful tool for:
 
 -   Verifying that a new or an updated security policy will not impact legitimate traffic.
 -   Analyzing threats directed to your site.
@@ -127,9 +131,8 @@ By default, the dashboard tracks the set of threats detected over the last week.
 
 ### Data Gathering {/*data-gathering*/}
 
-After your Security Application configuration has been implemented, time needs to pass to allow {{ PRODUCT_SECURITY }} to
-gather sufficient data from which trends may be detected. Wait a reasonable amount of time (e.g., 24 hours) after setting up a
-Security Application configuration before performing data analysis. 
+After your Security App configuration has been implemented, time needs to pass to allow {{ PRODUCT_SECURITY }} to
+gather sufficient data from which trends may be detected. Wait a reasonable amount of time (e.g., 24 hours) after setting up a Security App configuration before performing data analysis. 
 
 ### Identify Trends {/*identify-trends*/}
 

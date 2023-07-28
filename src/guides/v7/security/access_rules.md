@@ -473,7 +473,7 @@ You may create, modify, and delete access rules.
 
         </Callout>
 
-6.  Click **Submit**.
+6.  Click **Save**.
 
 **To modify an access rule**
 
@@ -481,7 +481,7 @@ You may create, modify, and delete access rules.
     {{ SECURITY_NAV }} **Access Rules**.
 2.  Click on the desired access rule.
 3.  Make the desired changes.
-4.  Click **Submit**.
+4.  Click **Save**.
 
 **To delete an access rule**
 

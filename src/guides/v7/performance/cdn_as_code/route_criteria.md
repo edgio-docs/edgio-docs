@@ -279,15 +279,15 @@ It's important to note the chaining order of the conditional methods.
     .match(/* ... */);
   ```
 
-The following example is invalid and will fail to compile:
+The following example is invalid as `.elseif()` and `.else()` are not following directly after `.if()` or `.elseif()`:
 
 ```js diff highlight="3,5"
 router
   .if(/* ... */)
   .get(/* ... */)
-  .elseif(/* ... */)
+  .elseif(/* ... */) // must follow directly after .if() or .elseif()
   .match(/* ... */)
-  .else(/* ... */);
+  .else(/* ... */); // must follow directly after .if() or .elseif()
 ```
 
 The signature for the [`.if()`](/docs/api/core/classes/router_Router.default.html#if) and [`.elseif()`](/docs/api/core/classes/router_Router.default.html#elseif) methods are the same for defining conditions and features. The first argument is of the [`ConditionCriteria`](/docs/api/core/types/router_RouteCriteria.ConditionCriteria.html) type used to define one or more conditions. The remaining _N_ arguments are of type [`ConditionalParam`](/docs/api/core/types/router_Router.ConditionParam.html) where one or more features or routers (for [nested rules](#nested-rules)) may be defined.

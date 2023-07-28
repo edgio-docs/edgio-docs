@@ -1,7 +1,9 @@
+# *
 User-agent: *
 Allow: /
 
-User-agent: *
-Disallow: /docs/v*
+# Host
+Host: https://docs.edg.io
 
+# Sitemaps
 Sitemap: https://docs.edg.io/sitemap.xml

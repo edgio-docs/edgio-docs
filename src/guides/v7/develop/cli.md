@@ -44,7 +44,7 @@ Creates a build of your app optimized for production.
 
 | Name                       | Description                                                                                                                                                                                                                                                                                                                                 |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--skip-framework`         | Alias: "-s". Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router                                                                                                                                                                                                                                      |
+| `--skipFramework, -s`      | Alias: "-s". Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router                                                                                                                                                                                                                                      |
 | `--disablePermanentAssets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                      |
 | `--includeSources`         | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/performance/cdn_as_code/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
 
@@ -61,13 +61,13 @@ specified environment will be cleared.
 
 #### Options {/* options */}
 
-| Name              | Description                                                              |
-| ----------------- | ------------------------------------------------------------------------ |
-| `--team`          | (Required) The team name                                                 |
-| `--property`      | (Required) The property name                                             |
-| `--environment`   | (Required) The environment name                                          |
-| `--path`          | A path to clear. Use "\*" as a wildcard                                  |
-| `--surrogate-key` | Clears all responses assigned to the specified surrogate key (cache tag) |
+| Name                  | Description                                                              |
+| --------------------- | ------------------------------------------------------------------------ |
+| `--team`              | (Required) The team name                                                 |
+| `--property`          | (Required) The property name                                             |
+| `--environment`       | (Required) The environment name                                          |
+| `--path, -p`          | A path to clear. Use "\*" as a wildcard                                  |
+| `--surrogate-key, -s` | Clears all responses assigned to the specified surrogate key (cache tag) |
 
 #### Example {/* example */}
 
@@ -137,13 +137,15 @@ Uses `curl` to make a request to the specified URL, highlighting Edgio-specific 
 
 #### Options {/* options */}
 
-| Name          | Description                                                                                                                                       |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--json`      | Outputs the response variables in JSON format, including telemetry data, headers, cookies, and the body (if using `--show-body`) [default: false] |
-| `--debug`     | Run in verbose mode. This has no effect when using with `--json` option.                                                                          |
-| `--save-body` | Writes the response body to a temporary file path which is set in the output. This has no effect when using with `--json` option.                 |
-| `--show-body` | Prints the response body in the output. [default: false]                                                                                          |
-| `--help`      | View help information for options to the curl command.                                                                                            |
+| Name                         | Description                                                                                                                                       |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--json`                     | Outputs the response variables in JSON format, including telemetry data, headers, cookies, and the body (if using `--show-body`) [default: false] |
+| `--debug`                    | Run in verbose mode. This has no effect when using with `--json` option.                                                                          |
+| `--save-body`                | Writes the response body to a temporary file path which is set in the output. This has no effect when using with `--json` option.                 |
+| `--show-body`                | Prints the response body in the output. [default: false]                                                                                          |
+| `--max-body-length`          | Maximum body length that will be returned. [default: 1024]                                                                                        |
+| `--curl-bin-path`            | Allows overriding path to curl bin. This is only required when curl is not in $PATH or you need to run different versions of curl.                |
+| `--highlight-headers, --hlh` | This will highlight matching headers. This has no effect when using with `--json` option. [default: ["x-0-","cache-control"]]                     |
 
 #### Example {/* example */}
 
@@ -210,14 +212,13 @@ Builds and deploys your property on {{ PRODUCT_NAME }}.
 
 | Name                       | Description                                                                                                                                                                                                                                                                                                                                 |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--team`                   | The name of the team under which the property will be deployed. If omitted, the `team` config in `{{ CONFIG_FILE }}` will be used, or deployed to your private space if omitted.                                                                                                                                                            |
+| `--team, -t`               | The name of the team under which the property will be deployed. If omitted, the `team` config in `{{ CONFIG_FILE }}` will be used, or deployed to your private space if omitted.                                                                                                                                                            |
 | `--property`               | The name of the property to deploy. By default the `name` field in `{{ CONFIG_FILE }}` or `package.json` is used.                                                                                                                                                                                                                           |
-| `--environment`            | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                                                                 |
-| `--branch`                 | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                                                            |
-| `--skipFramework`          | Skips running the framework build and uses the previous build instead.                                                                                                                                                                                                                                                                      |
+| `--environment, -e`        | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                                                                 |
+| `--branch, -b`             | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                                                            |
+| `--skipFramework, --sf`    | Skips running the framework build and uses the previous build instead.                                                                                                                                                                                                                                                                      |
 | `--skipBuild`              | Skips running the `{{ CLI_CMD(build) }}` command, including the framework build, and uses the previous build instead.                                                                                                                                                                                                                       |
 | `--token`                  | Authenticates using a deploy token rather than your user credentials. Use this option when deploying from CI. Alternatively, you can also specify the deploy token by setting the `EDGIO_DEPLOY_TOKEN` environment variable.                                                                                                                |
-| `--commit-url`             | The URL at which the commit can be viewed in your source control provided. If your package.json provides the repository attribute the commit URL will be derived automatically if you use GitHub, GitLab, or BitBucket.                                                                                                                     |
 | `--includeSources`         | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/performance/cdn_as_code/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
 | `--disablePermanentAssets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                      |
 
@@ -242,6 +243,22 @@ The `deploy` command writes a file called `.edgio/deployment-manifest.json`, whi
 {{ CLI_CMD(deploy) }} my-team --environment=production
 ```
 
+### dev {/* dev */}
+
+Runs your project in development mode, simulating the {{ PRODUCT_NAME }} cloud environment. This command is a simplified version of `{{ FULL_CLI_NAME }} run`, with only the --cache option being supported.
+
+#### Options {/* options */}
+
+| Name          | Description                                                                                     |
+| ------------- | ----------------------------------------------------------------------------------------------- |
+| `--cache, -c` | Enables caching during local development so that you can test the caching logic in your router. |
+
+#### Example {/* example */}
+
+```bash
+{{ FULL_CLI_NAME }} dev
+```
+
 ### docs {/* docs */}
 
 Open the {{ PRODUCT_NAME }} documentation in your browser.
@@ -250,22 +267,6 @@ Open the {{ PRODUCT_NAME }} documentation in your browser.
 
 ```bash
 {{ FULL_CLI_NAME }} docs
-```
-
-### dev {/* dev */}
-
-Runs your project in development mode, simulating the {{ PRODUCT_NAME }} cloud environment. This command is a simplified version of `{{ FULL_CLI_NAME }} run`, with only the --cache option being supported.
-
-#### Options {/* options */}
-
-| Name      | Description                                                                                     |
-| --------- | ----------------------------------------------------------------------------------------------- |
-| `--cache` | Enables caching during local development so that you can test the caching logic in your router. |
-
-#### Example {/* example */}
-
-```bash
-{{ FULL_CLI_NAME }} dev
 ```
 
 ### env {/* env */}
@@ -280,11 +281,12 @@ Manage deployed property's environments and environment variables.
 
 #### Options {/* options */}
 
-| Name            | Description                                                                           |
-| --------------- | ------------------------------------------------------------------------------------- |
-| `--team`        | The name of the team under which the property belongs. Uses private space if omitted. |
-| `--property`    | The property to pull variables from. Uses package.json name property if omitted.      |
-| `--environment` | Environment to pull variables from. Uses default environment if omitted.              |
+| Name                | Description                                                                           |
+| ------------------- | ------------------------------------------------------------------------------------- |
+| `--team, -t`        | The name of the team under which the property belongs. Uses private space if omitted. |
+| `--property`        | The property to pull variables from. Uses package.json name property if omitted.      |
+| `--environment, -e` | Environment to pull variables from. Uses default environment if omitted.              |
+| `--path`            | Path to your site's root directory. Uses current directory by default.                |
 
 #### Example {/* example */}
 
@@ -310,11 +312,25 @@ If you are not using the latest version of {{ PRODUCT }}, then you must specify 
 
 #### Options {/* options */}
 
-| Name                              | Description                                                                                                                                                                                                         |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--connector`                     | The name of a specific connector package to install, or a path to a directory that implements the [connector interface](/guides/sites_frameworks/connectors#implementing-a-connector-directly-within-your-project). |
-| `--{{PRODUCT_NAME_LOWER}}Version` | The version of {{ PRODUCT_NAME }} to install. Defaults to `latest`.                                                                                                                                                 |
-| `--skip{{PRODUCT_NAME}}Deps`      | Skips installing {{ PRODUCT_NAME }} packages.                                                                                                                                                                       |
+| Name                              | Description                                                                                                                                                                                                                                                                                                                                 |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--{{PRODUCT_NAME_LOWER}}Version` | The version of {{ PRODUCT_NAME }} to install. Defaults to `latest`.                                                                                                                                                                                                                                                                         |
+| `--skip{{PRODUCT_NAME}}Deps`      | Skips installing {{ PRODUCT_NAME }} packages.                                                                                                                                                                                                                                                                                               |
+| `--connector`                     | The name of a specific connector package to install, or a path to a directory that implements the [connector interface](/guides/sites_frameworks/connectors#implementing-a-connector-directly-within-your-project).                                                                                                                         |
+| `--name`                          | The name of the property. Defaults to the `name` field in `package.json`.                                                                                                                                                                                                                                                                   |
+| `--team, -t`                      | The name of the team under which the property belongs. Uses private space if omitted.                                                                                                                                                                                                                                                       |
+| `--origin`                        | The domain or IP address of the origin to use for the property.                                                                                                                                                                                                                                                                             |
+| `--deploy`                        | Deploys the property after initializing.                                                                                                                                                                                                                                                                                                    |
+| `--skipFramework, --sf`           | Skips installing the framework (Next.js, Vue, Angular, etc..) and simply rebundles your router.                                                                                                                                                                                                                                             |
+| `--includeSources`                | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/performance/cdn_as_code/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
+| `--disablePermanentAssets`        | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                      |
+| `--property`                      | The name of the property to deploy. By default the `name` field in `{{ CONFIG_FILE }}` or `package.json` is used.                                                                                                                                                                                                                           |
+| `--skip-build`                    | Skips running the `{{ CLI_CMD(build) }}` command, including the framework build, and uses the previous build instead.                                                                                                                                                                                                                       |
+| `--path`                          | Path to your site's root directory. Uses current directory by default.                                                                                                                                                                                                                                                                      |
+| `--branch, -b`                    | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                                                            |
+| `--environment, -e`               | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                                                                 |
+| `--commit-url`                    | The URL at which the commit can be viewed in your source control provided. If your package.json provides the repository attribute the commit URL will be derived automatically if you use GitHub, GitLab, or BitBucket.                                                                                                                     |
+| `--disable-team-check`            | Skips the check to see if the property is being deployed to a personal team and also exists on a shared team.                                                                                                                                                                                                                               |
 
 ### login {/* login */}
 
@@ -336,16 +352,32 @@ Logs out of {{ PRODUCT_NAME }}
 {{ FULL_CLI_NAME }} logout
 ```
 
+### ls {/* ls */}
+
+Lists all teams, properties and environments associated with your account.
+
+#### Example {/* example */}
+
+```bash
+{{ CLI_CMD(ls) }}
+```
+
 ### run {/* run */}
 
-Runs your app locally. Uses port 3000 by default. You can change this by setting the `PORT` environment variable. For example: `PORT=5000 {{ FULL_CLI_NAME }} run`.
+Runs your project locally, simulating {{ PRODUCT }} cloud environment. When no arguments are provided, this command is the same as `{{ CLI_CMD(dev) }}`.
+
+#### Parameters {/* parameters */}
+
+| Name                           | Description                                                                         |
+| ------------------------------ | ----------------------------------------------------------------------------------- |
+| `[archive] <path-to-zip-file>` | The path to a deployment archive (zip) file downloaded from Edgio Developer Console |
 
 #### Options {/* options */}
 
-| Name           | Description                                                                                                                                                                                                                     |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--production` | Runs a production build of your app, simulating the cloud environment. This can also be achieved by setting the NODE_ENV environment variable to `true`. You need to run `{{ FULL_CLI_NAME }} build` first.                     |
-| `--cache`      | Enables caching during local development so that you can test the caching logic in your router. By default caching is turned off in local development to ensure you don't see stale responses as you make changes to your code. |
+| Name               | Description                                                                                                                                                                                                                     |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--production, -p` | Runs a production build of your app, simulating the cloud environment. This can also be achieved by setting the NODE_ENV environment variable to `true`. You need to run `{{ FULL_CLI_NAME }} build` first.                     |
+| `--cache, -c`      | Enables caching during local development so that you can test the caching logic in your router. By default caching is turned off in local development to ensure you don't see stale responses as you make changes to your code. |
 
 #### Example {/* example */}
 
@@ -385,6 +417,16 @@ To install the latest preview:
 
 ```bash
 {{ FULL_CLI_NAME }} use next
+```
+
+### whoami {/* whoami */}
+
+Outputs the email address associated with the logged in user.
+
+#### Example {/* example */}
+
+```bash
+{{ CLI_CMD(whoami) }}
 ```
 
 ## Troubleshooting {/* troubleshooting */}

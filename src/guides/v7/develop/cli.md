@@ -137,15 +137,15 @@ Uses `curl` to make a request to the specified URL, highlighting Edgio-specific 
 
 #### Options {/* options */}
 
-| Name                         | Description                                                                                                                                       |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--json`                     | Outputs the response variables in JSON format, including telemetry data, headers, cookies, and the body (if using `--show-body`) [default: false] |
-| `--debug`                    | Run in verbose mode. This has no effect when using with `--json` option.                                                                          |
-| `--save-body`                | Writes the response body to a temporary file path which is set in the output. This has no effect when using with `--json` option.                 |
-| `--show-body`                | Prints the response body in the output. [default: false]                                                                                          |
-| `--max-body-length`          | Maximum body length that will be returned. [default: 1024]                                                                                        |
-| `--curl-bin-path`            | Allows overriding path to curl bin. This is only required when curl is not in $PATH or you need to run different versions of curl.                |
-| `--highlight-headers, --hlh` | This will highlight matching headers. This has no effect when using with `--json` option. [default: ["x-0-","cache-control"]]                     |
+| Name                         | Description                                                                                                                                           |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--json`                     | Outputs the response variables in JSON format, including telemetry data, headers, cookies, and the body (if using `--show-body`). Defaults to `false` |
+| `--debug`                    | Run in verbose mode. This has no effect when using with `--json` option.                                                                              |
+| `--save-body`                | Writes the response body to a temporary file path which is set in the output. This has no effect when using with `--json` option.                     |
+| `--show-body`                | Prints the response body in the output. Defaults to `false`.                                                                                          |
+| `--max-body-length`          | Maximum body length that will be returned. Defaults to 1024.                                                                                          |
+| `--curl-bin-path`            | Allows overriding path to curl bin. This is only required when curl is not in $PATH or you need to run different versions of curl.                    |
+| `--highlight-headers, --hlh` | This will highlight matching headers. This has no effect when using with `--json` option. Defaults to `["x-0-","cache-control"]`.                     |
 
 #### Example {/* example */}
 

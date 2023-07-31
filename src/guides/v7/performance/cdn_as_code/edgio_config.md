@@ -2,23 +2,25 @@
 title: {{ CONFIG_FILE }} Configuration
 ---
 
-The `{{ CONFIG_FILE }}` config file in your app's root directory contains configuration options that control how your app runs on {{ PRODUCT_NAME }}. This file is automatically created when you run `{{ FULL_CLI_NAME }} init`. It should export an object with the following properties:
+The `{{ CONFIG_FILE }}` config file in your app's root directory contains configuration properties (referred to by their key) that control how your app runs on {{ PRODUCT_NAME }}. This file is automatically created when you run `{{ FULL_CLI_NAME }} init`. It should export an object with the following properties:
 
 ## name {/* name */}
 
-The `name` config is the name your property will be deployed under. If this is omitted, the `name` property in your `package.json` will be used.
+The `name` key is the name your property will be deployed under. If this is omitted, the `name` key in your `package.json` will be used.
 
 ## team {/* team */}
 
-The `team` config is the name of the team your property will be deployed under. If this is omitted, the deployment will be created under your personal (Private Space) team.
+The `team` key is the name of the team your property will be deployed under. If this is omitted, the deployment will be created under your personal (Private Space) team.
 
 ## routes {/* routes */}
 
-The `routes` config is the path to your routes file relative to the root of your project. Defaults to `routes.js`.
+The `routes` key is the path to your routes file relative to the root of your project. Defaults to `routes.js`.
 
 ## origins {/* origins */}
 
-The `origins` config is an array of objects whose properties are:
+Origns are the backends that {{ PRODUCT_NAME }} will proxy requests to, and define how {{ PRODUCT_NAME }} will communicate with your web server(s). 
+
+The `origins` key is an array of objects whose properties are:
 
 | Property                                   | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ------------------------------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -41,9 +43,9 @@ The `origins` config is an array of objects whose properties are:
 
 ## environments {/* environments */}
 
-The `environments` config allows you to define different deployment environments and hostnames for your app. This is useful for deploying to staging or production environments.
+This configuration allows you to define different deployment environments and hostnames for your app. This is useful for deploying to staging or production environments.
 
-The `environments` config is an object whose keys define the name of the environment and whose values are objects with the following properties:
+The `environments` key is an object whose properties define the name of the environment and whose values are objects with the following properties:
 
 | Property                                     | Type     | Description                                                                      |
 | -------------------------------------------- | -------- | -------------------------------------------------------------------------------- |
@@ -52,8 +54,6 @@ The `environments` config is an object whose keys define the name of the environ
 | `<ENV_NAME>.hostnames[].hostname`            | String   | (Required) The hostname for the environment.                                     |
 | `<ENV_NAME>.hostnames[].default_origin_name` | String   | Optional default origin this hostname should use                                 |
 | `<ENV_NAME>.hostnames[].tls`                 | Object   | Optional [TLS configuration](/docs/api/core/interfaces/types.Hostnames.html#tls) |
-
-
 
 <!--| `<ENV_NAME>.hostnames[].report_code` | Number | (unknown use) | -->
 
@@ -80,13 +80,9 @@ module.exports = {
 };
 ```
 
-## routes {/* routes */}
-
-The path to your routes file relative to the root of your app. Defaults to `routes.js`.
-
 ## staticAssets {/* staticassets */}
 
-The `staticAssets` config is an array of objects determining how {{ PRODUCT_NAME }} handles static assets in your app configured with the following properties:
+The `staticAssets` key is an array of objects determining how {{ PRODUCT_NAME }} handles static assets in your app configured with the following properties:
 
 | Property    | Type     | Description                                                                                          |
 | ----------- | -------- | ---------------------------------------------------------------------------------------------------- |
@@ -95,7 +91,7 @@ The `staticAssets` config is an array of objects determining how {{ PRODUCT_NAME
 
 ## serverless {/* serverless */}
 
-The `serverless` config Object includes the following properties:
+The `serverless` key is an object with the following properties:
 
 | Property             | Type     | Description                                                                                                                                           |
 | -------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |

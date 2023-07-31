@@ -32,15 +32,22 @@ Set up API security by performing the following steps:
 
 -   Setting up API security involves two configurations:
     -   **API Gateway Configuration:** This configuration defines the conditions under which an API schema will be enforced. 
-    -   **API Schema:** This configuration defines a JSON schema (draft 4) to which API requests must conform.
+    -   **API Schema:** This configuration defines a JSON schema to which API requests must conform.
 	
 	    <Callout type="tip">
 		
-		  The JSON Schema site provides [guidance and examples on how to define a JSON schema](https://json-schema.org/understanding-json-schema/index.html). Make sure to only use syntax supported by draft 4.
+		  The JSON Schema site provides [guidance and examples on how to define a JSON schema](https://json-schema.org/understanding-json-schema/index.html). Restrictions on supported syntax are documented below. 
 		
 		</Callout>
 
--   An API schema is a JSON schema (draft 4) with a few additional properties (e.g., `api_gw_id`). 
+-   An API schema is a JSON schema with a few additional properties (e.g., `api_gw_id`). {{ PRODUCT }} restricts syntax support as follows:
+
+    -   {{ PRODUCT }} ignores the `$schema` keyword.
+    -   Specify `exclusiveMaximum` and `exclusiveMinimum` as integers. 
+    -   Remote schemas are unsupported.	
+    -   [String formats](https://json-schema.org/understanding-json-schema/reference/string.html#built-in-formats) introduced after draft 4 are unsupported. For example, the following formats are unsupported: `time | date | duration | idn-email`
+    -   The following keywords are unsupported:
+        `$anchor | $comment | $dynamicAnchor | $dynamicRef | $recursiveRef |const | contentEncoding | contentMediaType| contentSchema | dependentRequired | if-then-else | minContains | maxContains | prefixItems | propertyNames | unevaluated`
 -   A common method for setting up an API schema is to define the expected data type through the `type` property. 
 
     **String Example:** The following sample schema requires an API request to only contain a single string value:
@@ -51,10 +58,9 @@ Set up API security by performing the following steps:
         "type": "string"
     }
     ```
+	**Object Examples:** The following sample schema requires an API request to contain an object. This object must contain a property called `email` set to a properly formatted email address:
 	
-	**Object Example:** The following sample schema requires an API request to contain an object. This object must contain a property called `email` set to a properly formatted email address:
-	
-	```json
+    ```json
 	{
 	    "api_gw_id": "mnriXoB6",
 	    "type": "object",
@@ -66,9 +72,41 @@ Set up API security by performing the following steps:
     	},
         "required": ["email"]
 	}
-	```
-	
--   Use a JSON schema linter to fine-tune your API schema before applying it to your traffic. 
+    ```
+
+    The following sample schema requires an API request to contain an object. This object must contain a property called `price` set to a number greater than 0. If this object contains `latitude`, `longitude`, or `id`, then the validation defined for those properties will be enforced. For example, `latitude` may only be set to -90, 90, or any number in between that range.
+
+    ```json
+    {
+        "api_gw_id": "fg3r67doc1",
+        "type": "object",
+        "properties": {
+            "latitude": {
+                "type": "number",
+                "minimum": -90,
+                "maximum": 90
+            },
+            "longitude": {
+                "type": "number",
+                "minimum": -180,
+                "maximum": 180
+            },
+            "id": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 999,
+                "exclusiveMaximum": false
+            },
+            "price": {
+                "type": "number",
+                "minimum": 0,
+                "exclusiveMinimum": true
+            }
+        },
+        "required": ["price"]
+    }
+    ```
+- Use a JSON schema linter to fine - tune your API schema before applying it to your traffic.
 
     For example, the [JSON Schema Link site](https://jsonschemalint.com/#!/version/draft-04/markup/json) checks whether your JSON schema is valid and validates it against a sample API request.
 

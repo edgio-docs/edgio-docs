@@ -231,6 +231,10 @@ const nav = {
           path: 'security/waf',
         },
         {
+          title: 'Getting Started',
+          path: 'security/getting_started',
+        },
+        {
           title: 'Access Rules',
           path: 'security/access_rules',
         },

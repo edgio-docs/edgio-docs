@@ -397,7 +397,7 @@ You may create, modify, and delete managed rules.
     5.  In the **Applied Rule ID's** option, type the ID for
         a rule that will be ignored when processing the requests
         identified in steps 8.3 and 8.4 and then press 'ENTER'. Repeat this step as needed.
-9.  Click **Submit**.
+9.  Click **Save**.
 
 **To modify a managed rule**
 
@@ -415,7 +415,7 @@ You may create, modify, and delete managed rules.
     {{ SECURITY_NAV }} **Managed Rules**.
 2.  Click on the desired managed rule.
 3.  Make the desired changes.
-4.  Click **Submit**.
+4.  Click **Save**.
 
 **To delete a managed rule**
 

@@ -414,7 +414,7 @@ By default, {{ PRODUCT_NAME }} CLI outputs logs at the `info` level. You may cha
 - TRACE
 - WARN
 
-#### Example {/* log-level-output-example */}
+**Example:**
 
 ```plaintext
 LOG_LEVEL=TRACE {{ CLI_CMD(run) }}

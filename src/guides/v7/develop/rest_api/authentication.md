@@ -7,7 +7,7 @@ Only authenticated requests to the REST API will be processed. This authenticati
 1. Identifies the client application making the request.
 2. Verifies that this client application has sufficient permissions to perform the requested action.
 
-Authentication requires passing a unique value (i.e., token). Generate a token generated from your [OAuth 2.0](#client-applications) credentials. By default, this type of token expires after 300 seconds.
+Authentication requires passing a unique value (i.e., token). Generate a token generated from your [OAuth 2.0](#client-applications) credentials. By default, this type of token expires after 60 seconds.
     
 [Register your client application](#administering-api-clients) through the {{ IDENTITY_LINK }} to generate OAuth 2.0 credentials through which you may authorize requests submitted to our API gateway ({{ API_DOMAIN }}).
 
@@ -117,7 +117,7 @@ The recommended approach for switching to a new secret key is to create a secret
 
 1. Navigate to the {{ IDENTITY_LINK }}.
 2. Click **Clients** from the side navigation pane.
-3. Verify that the **Assigned to Tenant** option is set to the desired team.
+3. Verify that the **Assigned to Organization** option is set to the desired team.
 4. Click **Create New Client**.
 5. In the **Name** option, assign a name that describes this API client.
 6. In the **Permissions** section, mark each scope that will be assigned to the API client.
@@ -137,7 +137,7 @@ A Quick Start page is shown upon creating an account for your API client. This p
 1. Navigate to the {{ IDENTITY_LINK }}.
 2. Click **Clients** from the side navigation pane.
 3. Verify that the **Assigned to Tenant** option is set to the desired team.
-4. Click on ![](/images/v7/icons/open-configuration.png) corresponding to the desired account.
+4. Click on <Image inline src="/images/v7/icons/open-configuration.png" alt="Open" /> corresponding to the desired account.
 5. Perform one or more of the following tasks:
 
     -   **Update Name/Description:**
@@ -170,8 +170,8 @@ A Quick Start page is shown upon creating an account for your API client. This p
         2. Identify the secret key that you would like to view or copy.
         3. Click either of the following icons:
 
-            -   ![](/images/v7/icons/view.png): Displays the secret key.
-            -   ![](/images/v7/icons/copy.png): Copies the secret key.
+            -    <Image inline src="/images/v7/icons/view.png" alt="View" />: Displays the secret key.
+            -    <Image inline src="/images/v7/icons/copy.png" alt="Copy" />: Copies the secret key.
 
     -   **Delete a Secret Key:**
 
@@ -183,7 +183,7 @@ A Quick Start page is shown upon creating an account for your API client. This p
 
         1. Click the **Client Secrets** tab.
         2. Identify the secret key that you would like to delete. Verify that it is no longer being used by your API client or script.
-        3. Click ![](/images/v7/icons/trash.png) next to the secret key identified in the previous step.
+        3. Click <Image inline src="/images/v7/icons/trash.png" alt="Delete" /> next to the secret key identified in the previous step.
         4. Click **I understand, please delete the client secret** to confirm the deletion of the secret key.
 
     -   **Update Scopes:**
@@ -247,9 +247,9 @@ Date: Thu, 15 Apr 2021 12:00:00 GMT
 Content-Length: 830
 
 {
-"access_token": "A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ",
-"expires_in": 300,
-"token_type": "Bearer"
+    "access_token": "A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ",
+    "expires_in": 300,
+    "token_type": "Bearer"
 }
 ```
 

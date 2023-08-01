@@ -41,7 +41,7 @@ Set up API security by performing the following steps:
 		</Callout>
 
 -   An API schema is a JSON schema with a few additional properties (e.g., `api_gw_id`). {{ PRODUCT }} restricts syntax support as follows:
-
+    -   A number  with a zero fractional part (e.g., *1.0*, or *42.0*) is not considered an integer.
     -   {{ PRODUCT }} ignores the `$schema` keyword.
     -   Specify `exclusiveMaximum` and `exclusiveMinimum` as integers. 
     -   Remote schemas are unsupported.	

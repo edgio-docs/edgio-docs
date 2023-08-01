@@ -406,13 +406,13 @@ This may be related to an outdated global version of {{ PRODUCT_NAME }} CLI. The
 
 ### Log Level Output {/* log-level-output */}
 
-By default, {{ PRODUCT_NAME }} CLI outputs logs at the `info` level. You may change this to obtain more output information of the CLI command being executed. To change the log level, set the `LOG_LEVEL` environment variable to one of the following values:
+By default, {{ PRODUCT_NAME }} CLI outputs logs at the INFO level. You may change this to obtain more output information of the CLI command being executed. To change the log level, set the `LOG_LEVEL` environment variable to one of the following values:
 
-- DEBUG
-- ERROR
-- INFO
-- TRACE
-- WARN
+- ERROR: Only errors are logged, providing critical information about issues and failures.
+- WARN: Errors and warnings are logged, offering insights into potential problems and anomalies.
+- INFO: Errors, warnings, and information are logged, presenting general operational information about the command being executed. **(default)**
+- DEBUG: Includes everything logged at the INFO level, plus additional debugging information, helpful for developers during development and testing.
+- TRACE: Includes all the information logged at the DEBUG level, and even more detailed information, useful for deep troubleshooting of code execution and performance analysis.
 
 **Example:**
 

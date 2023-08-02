@@ -478,66 +478,39 @@ configurations.
 1.  Navigate to the **Security Application Manager** page.
     {{ SECURITY_NAV }} **Security Apps**.
 2.  Click **Add New**.
-3.  In the **Name** option, type the unique name by which this
-    Security Application configuration will be identified.
-4.  Optional. Identify the set of traffic to which this security policy
-    will be applied by defining a hostname and/or URL path through the
-    **Hostname** and **URL path(s)** options.
+3.  In the **Name** option, type the unique name by which this Security Application configuration will be identified.
+4.  Optional. Identify the set of traffic to which this security policy will be applied by defining a hostname and/or URL path through the **Hostname** and **URL path(s)** options.
 
     Select one of the following modes:
-    -   **Default:** Use this mode to apply this Security
-        Application configuration regardless of the request's
-        host or URL path.
-    -   **Exact match (multiple entries):** Use this mode to apply
-        this Security Application configuration to the specified
-        hostname(s) or URL path(s).
+    -   **Default:** Use this mode to apply this Security Application configuration regardless of the request's host or URL path.
+    -   **Exact match (multiple entries):** Use this mode to apply this Security Application configuration to the specified hostname(s) or URL path(s).
 
         [Learn more.](#exact-match-multiple-entries)
 
-    -   **Wildcard match:** Use this mode to apply this Security
-        Application configuration to all hostnames or URL paths
-        that satisfy the specified wildcard pattern.
+    -   **Wildcard match:** Use this mode to apply this Security Application configuration to all hostnames or URL paths that satisfy the specified wildcard pattern.
 
         [Learn more.](#wildcard-match)
-    -   **Regex match:** Use this mode to apply this Security
-        Application configuration to all hostnames or URL paths
-        that satisfy the specified regular expression pattern.
+    -   **Regex match:** Use this mode to apply this Security Application configuration to all hostnames or URL paths that satisfy the specified regular expression pattern.
 
         [Learn more.](#regex-match)
 
     <Callout type="info">
 
-      Enable the **Negative match** option to configure a Security
-      Application configuration to look for requests that do not
-      match the specified value or pattern.
+      Enable the **Negative match** option to configure a Security Application configuration to look for requests that do not match the specified value or pattern.
 
     </Callout>
-5.  Optional. Select an access rule through which production traffic
-    will be screened and determine how threats identified by it are
-    handled.
-
-    <Callout type="info">
-
-      If you have not already created the desired access rule, you can save your Security Application configuration, [create an access rule](/guides/security/access_rules#access-rule-administration), edit your Security Application configuration, and then resume this procedure.
-
-    </Callout>
+5.  Optional. Select an [access rule](/guides/security/access_rules#access-rule-administration) through which production traffic will be screened and determine how threats identified by it are handled.
 
     1.  From the **Rules** section, click **Access Rule**.
-    2.  From the **Production Access Rule** option, select the
-        desired access rule.
-    3.  Optional. From the **Action name** option, type a name
-         that describes the enforcement action configuration.
-    4.  From the **Action type** option, determine how threats
-        identified by the access rule selected in step 5.2 will be
-        handled (i.e., block, alert, redirect, or send a custom
-        response).
+    2.  From the **Production Access Rule** option, select the desired access rule.
+    3.  Optional. From the **Action name** option, type a name that describes the enforcement action configuration.
+    4.  From the **Action type** option, determine how threats identified by the access rule selected in step 5.2 will be handled (i.e., block, alert, redirect, or send a custom response).
 
         [Learn more.](#enforcement)
 
 6.  Optional. [Audit production traffic](#threat-detection) using a new access rule.
     1.  From the **Rules** section, click **Access Rule**.
-    2.  From the **Audit Access Rule** option, select the desired
-        access rule.
+    2.  From the **Audit Access Rule** option, select the desired access rule.
 
     <Callout type="info">
 
@@ -547,99 +520,77 @@ configurations.
 
     <Callout type="info">
 
-      Disable auditing by setting the **Audit Managed Rule** option
-      to `No Audit Rule`.
+      Disable auditing by setting the **Audit Access Rule** option to `No Audit Rule`.
 
     </Callout>
 
-7.  Optional. Select a rate rule through which production traffic will be rate limited.
+7.  Optional. Select an [API security configuration](/guides/security/api_security#api-security-administration) through which production traffic will be screened and determine how threats identified by it are handled.
+
+    1.  From the **Rules** section, click **API Security Rule**.
+    2.  From the **Production API Security Rule** option, select the desired API security rule.
+    3.  From the **Action type** option, determine how threats identified by the access rule selected in step 7.2 will be handled (i.e., block, alert, redirect, or send a custom response).
+
+        [Learn more.](#enforcement)
+
+8.  Optional. [Audit production traffic](#threat-detection) using a new API security rule.
+
+    1.  From the **Rules** section, click **API Security Rule**.
+    2.  From the **Audit API Security Rule** option, select the desired API Security rule.
 
     <Callout type="info">
 
-      If you have not already created the desired rate rule, you can save
-      your Security Application configuration, [create a rate
-      rule](/guides/security/rate_rules#rate-rule-administration), edit your Security
-      Application configuration, and then resume this procedure.
+      Filter the **Threats** tab of the **Security** dashboard by the above API Security rule or the `audit` profile type to track detected threats.
 
     </Callout>
 
+    <Callout type="info">
+
+      Disable auditing by setting the **Audit API Security Rule** option to `No Audit Rule`.
+
+    </Callout>
+
+9.  Optional. Select a [rate rule](/guides/security/rate_rules#rate-rule-administration) through which production traffic will be rate limited.
+
     1.  From the **Rules** section, click **Rate Rules**.
-    2.  From the **Add Rate Rule** option, select the desired
-        rate rule.
+    2.  From the **Add Rate Rule** option, select the desired rate rule.
 
         <Callout type="info">
 
-          If the selected rate rule contains a condition group, then a
-          request must satisfy the Security Application
-          configuration's host and URL path match conditions and all of
-          the conditions within at least one condition group in order to
-          be eligible for rate limiting.
+          If the selected rate rule contains a condition group, then a request must satisfy the Security Application configuration's host and URL path match conditions and all of the conditions within at least one condition group in order to be eligible for rate limiting.
 
         </Callout>
 
-    3.  Optional. From the **Action name** option, type a name
-         that describes the enforcement action configuration.
-    4.  From the **Action type** option, determine how threats
-        identified by the managed rule selected in step 7.2 will be
-        handled (i.e., drop request, alert, redirect, or send a custom
-        response).
+    3.  Optional. From the **Action name** option, type a name that describes the enforcement action configuration.
+    4.  From the **Action type** option, determine how threats identified by the rate rule selected in step 9.2 will be handled (i.e., drop request, alert, redirect, or send a custom response).
 
         [Learn more.](#enforcement)
 
         <Callout type="important">
 
-          {{ PRODUCT_SECURITY }} does not perform further [evaluation of a
-          request](/guides/security/waf#threat-detection) once enforcement is
-          triggered. For this reason, we recommend that you limit your use
-          of the `Alert Only` enforcement to the shortest amount
-          of time necessary to validate changes to your configuration.
+          {{ PRODUCT_SECURITY }} does not perform further [evaluation of a request](/guides/security/waf#threat-detection) once enforcement is triggered. For this reason, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.
 
         </Callout>
 
-    5.  From the **Time period** option, select the time period
-        for which the action selected in the next step will be applied
-        to clients that exceed the rate limit defined in the rate rule
-        selected in step 7.2.
+    5.  From the **Time period** option, select the time period for which the action selected in the next step will be applied to clients that exceed the rate limit defined in the rate rule selected in step 9.2.
 
         <Callout type="info">
 
-          A "client" is defined by each rate rule according to the
-          **Apply rate limit to** option. For example, configuring
-          that option to **Any request** will apply the selected
-          action to all requests regardless of the number of requests
-          generated by each device. Alternatively, identifying clients by
-          **IP Address** will only apply the selected action to
-          requests that originate from each IP address that violates the
-          specified rate limit.
+          A "client" is defined by each rate rule according to the **Apply rate limit to** option. For example, configuring that option to **Any request** will apply the selectedaction to all requests regardless of the number of requests generated by each device. Alternatively, identifying clients by **IP Address** will only apply the selected action to requests that originate from each IP address that violates the specified rate limit.
 
         </Callout>
 
-    6.  If you would like to apply an additional rate limit, then repeat
-        steps 7.2 - 7.5.
+    6.  If you would like to apply an additional rate limit, then repeat steps 9.2 - 9.5.
 
         <Callout type="tip">
 
-          Use multiple rate rules to apply different rate limits to
-          various traffic profiles. Set up this type of configuration
-          using either a single or multiple Security Application
-          configurations. If you assign multiple rate rules to a single
-          Security Application configuration, then each rate rule
-          should contain one or more [condition
-          group(s)](/guides/security/rate_rules#condition-group).
+          Use multiple rate rules to apply different rate limits to various traffic profiles. Set up this type of configuration using either a single or multiple Security Application configurations. If you assign multiple rate rules to a single
+          Security Application configuration, then each rate rule should contain one or more [condition group(s)](/guides/security/rate_rules#condition-group).
 
         </Callout>
 
     <a id="bot-rule-configuration"></a>
 
-8.  Optional. Select a bot manager configuration that identifies the set of production traffic that will be secured by Bot Manager.
-
-    <Callout type="info">
-
-      If you have not already created the desired bot manager configuration, you can save
-      your Security Application configuration, [create a bot manager configuration](/guides/security/bot_rules#bot-rule-administration), edit your Security
-      Application configuration, and then resume this procedure.
-
-    </Callout>
+10. Optional. Select a [bot manager configuration](/guides/security/bot_rules#bot-rule-administration) that identifies the set of production traffic that will be secured by Bot Manager.
 
     1.  From the **Rules** section, click **Bot Manager**.
     2.  From the **Production Bot Rule** option, select the desired bot manager configuration.
@@ -650,36 +601,18 @@ configurations.
             3.  Set the **reCAPTCHA Site Key** option to the site key provided by Google. 
             4.  Set the **reCAPTCHA Secret Key** option to the secret key provided by Google.
 
-9.  Optional. Select a custom rule through which production traffic will
-    be screened and determine how threats identified by it are handled.
-
-    <Callout type="info">
-
-      If you have not already created the desired custom rule, you can
-      save your Security Application configuration, [create a
-      custom rule](/guides/security/custom_rules#custom-rule-administration), edit your
-      Security Application configuration, and then resume this
-      procedure.
-
-    </Callout>
+11. Optional. Select a [custom rule](/guides/security/custom_rules#custom-rule-administration) through which production traffic will be screened and determine how threats identified by it are handled.
 
     1.  From the **Rules** section, click **Custom Rule**.
-    2.  From the **Production Custom Rule** option, select the
-        desired custom rule.
-    3.  Optional. From the **Action name** option, type a name
-         that describes the enforcement action configuration.
-    4.  From the **Action type** option, determine how threats
-        identified by the custom rule selected in step 9.2 will be
-        handled (i.e., block, alert, redirect, or send a custom
-        response).
+    2.  From the **Production Custom Rule** option, select the desired custom rule.
+    3.  Optional. From the **Action name** option, type a name that describes the enforcement action configuration.
+    4.  From the **Action type** option, determine how threats identified by the custom rule selected in step 11.2 will be handled (i.e., block, alert, redirect, or send a custom response).
 
         [Learn more.](#enforcement)
 
-10. Optional. [Audit production traffic](#threat-detection) using a new
-    custom rule.
+12. Optional. [Audit production traffic](#threat-detection) using a new custom rule.
     1.  From the **Rules** section, click **Custom Rule**.
-    2.  From the **Audit Custom Rule** option, select the desired
-        custom rule.
+    2.  From the **Audit Custom Rule** option, select the desired custom rule.
 
     <Callout type="info">
 
@@ -694,39 +627,18 @@ configurations.
 
     </Callout>
 
-11. Optional. Select a managed rule through which production traffic
-    will be screened and determine how threats identified by it are
-    handled.
+13. Optional. Select a [managed rule](/guides/security/managed_rules#managedruleadministration) through which production traffic will be screened and determine how threats identified by it are handled.
 
-    <Callout type="info">
-
-      If you have not already created the desired manged rule, you can
-      save your Security Application configuration, [create a
-      managed rule](/guides/security/managed_rules#managedruleadministration), edit
-      your Security Application configuration, and then resume
-      this procedure.
-
-    </Callout>
-
-    1.  From the **Rules** section, click **Managed
-        Rule**.
-    2.  From the **Production Managed Rule** option, select the
-        desired managed rule.
-    3.  Optional. From the **Action name** option, type a name
-         that describes the enforcement action configuration.
-    4.  From the **Action type** option, determine how threats
-        identified by the managed rule selected in step 11.2 will be
-        handled (i.e., block, alert, redirect, or send a custom
-        response).
+    1.  From the **Rules** section, click **Managed Rule**.
+    2.  From the **Production Managed Rule** option, select the desired managed rule.
+    3.  Optional. From the **Action name** option, type a name that describes the enforcement action configuration.
+    4.  From the **Action type** option, determine how threats identified by the managed rule selected in step 13.2 will be handled (i.e., block, alert, redirect, or send a custom response).
 
         [Learn more.](#enforcement)
 
-12. Optional. [Audit production traffic](#threat-detection) using a new
-    managed rule.
-    1.  From the **Rules** section, click **Managed
-        Rule**.
-    2. From the **Audit Managed Rule** option, select the
-        desired managed rule.
+14. Optional. [Audit production traffic](#threat-detection) using a new managed rule.
+    1.  From the **Rules** section, click **Managed Rule**.
+    2. From the **Audit Managed Rule** option, select the desired managed rule.
 
     <Callout type="info">
 
@@ -741,16 +653,14 @@ configurations.
 
     </Callout>
 
-13. Click **Save**.
-14. Click **Apply All Changes**.
-15. Click **Save Changes**.
+15. Click **Save**.
+16. Click **Apply All Changes**.
+17. Click **Save Changes**.
 
 **To reorder Security Application configurations**
 1.  Navigate to the **Security Application Manager** page.
     {{ SECURITY_NAV }} **Security Apps**.
-2.  Drag the desired
-    configuration's <Image inline src="/images/v7/icons/drag.png" /> icon
-    to the desired position.
+2.  Drag the desired configuration's <Image inline src="/images/v7/icons/drag.png" /> icon to the desired position.
 3.  Click **Apply All Changes**.
 4.  Click **Save Changes**.
 

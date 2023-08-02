@@ -15,7 +15,7 @@ Set up an API security configuration by performing the following steps:
 
     <Callout type="important">
 	
-	  You must define an API schema before setting up your API gateway configuration.
+	  Setting up a new API security rule requires creating at least one API schema. Your API gateway configuration will be read-only until you do so. 
 	
 	</Callout>
 
@@ -23,13 +23,13 @@ Set up an API security configuration by performing the following steps:
 
 ### API Gateway {/*api-gateway*/}
 
-An API gateway configuration identifies an API schema and the set of requests that must conform to that JSON schema. By default, all requests will be inspected. You may restrict inspection by:
+An API gateway configuration identifies an API schema and the set of requests that must conform to that JSON schema. By default, your API gateway configuration validates all requests against an API schema. However, you may restrict inspection by:
 
 -   **Relative Path(s):** You may restrict payload inspection to one or more relative path(s). This relative path starts directly after the hostname. The available comparison modes are listed below.
     -   **Default:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} will inspect all requests to ensure that they satisfy the API schema.
-    -   [Exact match (multiple entries):](#exact-match-multiple-entries) Use this mode to specify each desired relative path.
-    -   [Wildcard match:](#wildcard-match) Use this mode to specify a wildcard pattern for the relative path.
-    -   [Regex match:](#regex-match) Use this mode to specify a regular expression for the relative path.
+    -   [Exact match (multiple entries):](#exact-match-multiple-entries) Restrict inspection to specific relative path(s).
+    -   [Wildcard match:](#wildcard-match) Restrict inspection to a wildcard pattern for the relative path.
+    -   [Regex match:](#regex-match) Restrict inspection to a regular expression for the relative path.
 	
         <Callout type="info">
 
@@ -129,7 +129,7 @@ The following sample request will match the above pattern:
 
 **Does Not Match:**
 
-`Category 7`
+`/Category 7`
 
 `/Cat#7`
 
@@ -146,7 +146,7 @@ An API schema is a JSON schema that describes the structure for a valid API payl
 #### JSON Schema Syntax
 
 The JSON Schema site provides [guidance and examples on how to define a JSON schema](https://json-schema.org/understanding-json-schema/index.html). {{ PRODUCT }} restricts syntax support as follows:
--   A number  with a zero fractional part (e.g., *1.0*, or *42.0*) is not considered an integer.
+-   {{ PRODUCT }} does not consider a number  with a zero fractional part (e.g., *1.0*, or *42.0*) an integer.
 -   {{ PRODUCT }} ignores the `$schema` keyword.
 -   Specify `exclusiveMaximum` and `exclusiveMinimum` as integers. 
 -   Remote schemas are unsupported.	
@@ -237,7 +237,7 @@ You may create, modify, and delete API security configurations.
     {{ SECURITY_NAV }} **API Security**.
 2.  Click **+ Create New API Rule**.
 3.  In the **Name of Ruleset** option, type a name for this API security configuration.
-4.  Click the **Schemas** tab. {{ PRODUCT }} will save your configuration. You may now add an API gateway configuration and an API schema to your API security configuration.
+4.  Click the **Schemas** tab. {{ PRODUCT }} will save your configuration. You must save an API schema, as described in the next step, before setting up an API gateway configuration.
 5.  Add a JSON schema that defines the structure for a valid API payload.
     1.  Click **+ Create New** and then click on the new API schema (i.e., *Schema 1*).
     2.  In the **Name** option, type a name for this JSON schema. 
@@ -250,6 +250,14 @@ You may create, modify, and delete API security configurations.
             5.  When finished, click **Apply**.
         -   **Upload Schema:** Upload an API schema by clicking **Upload Schema JSON**, selecting the desired file, and then clicking **Open**.
     4.  Click **Save Schema**.
+    5.  Repeat steps 5.1 - 5.4 for each API schema that you would like to add to this API security rule. 
+	
+    <Callout type="tip">
+
+      You may apply different API schemas to different endpoints or operations by creating an API gateway configuration for each API schema. You should then restrict each API gateway configuration to only apply API schema validation to the desired set of endpoints or operations.
+
+    </Callout>
+
 6.  Add an API gateway configuration that identifies the API schema created in the previous step and the set of requests to which it will be applied.
     1.  Click the **API GW Rules** tab.
     2.  Click **+ Create New**.
@@ -260,7 +268,7 @@ You may create, modify, and delete API security configurations.
 
             If you selected *Exact Match*, then you may specify multiple relative paths. Press **ENTER** after typing each desired URL path.
 
-    5.  Optional. Restrict the set of requests that will be inspected by HTTP method by selecting it from the **Methods** option. Repeat this step as needed.
+    5.  Optional. Restrict the set of requests that will be inspected by HTTP method by selecting the desired HTTP method from the **Methods** option. Repeat this step as needed.
     6.  From the **Schema ID** option, select the API schema created in step 5.
     7.  Click **Save**.
 

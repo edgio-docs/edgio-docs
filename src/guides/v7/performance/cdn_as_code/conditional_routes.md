@@ -145,7 +145,7 @@ export default new Router()
 
 ### Nested Rules {/* nested-rules */}
 
-Nested rules are applied to an existing conditional route. They are a set of rules under a parent `.if()`, `.elseif()`, or `.else()` method. Nested rules are defined using a new `Router` instance.
+Nested rules are applied to an existing conditional route. They are a set of child rules under a parent `.if()`, `.elseif()`, or `.else()` method. Nested rules are defined using a new `Router` instance.
 
 <Callout type="important">
 

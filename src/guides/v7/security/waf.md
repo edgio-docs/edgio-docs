@@ -89,11 +89,11 @@ Additional information on each of the above steps is provided below.
 
 ## Threat Detection {/*threat-detection*/}
 
-A Security Application configuration contains security rules that define
-the criteria that determine whether traffic is legitimate or a threat.
-{{ PRODUCT_SECURITY }} leverages this security configuration and performs a sequential
-check for each criterion. An overview of this security check is provided
-below.
+A Security Application configuration contains security rules that define the criteria that determine whether traffic is legitimate or a threat. {{ PRODUCT_SECURITY }} leverages this security configuration and performs a sequential check for each criterion. An overview of this security check is illustrated below.
+
+![](/images/v7/security/request_screening_overview.png)
+
+Each request undergoes the following security workflow:
 
 1.  Does the request meet a whitelist criterion? If so, it is
     considered legitimate and no further checks will be performed.

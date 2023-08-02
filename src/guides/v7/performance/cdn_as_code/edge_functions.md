@@ -2,43 +2,71 @@
 title: Edge Functions
 ---
 
-Edge Functions enable you to execute a small piece of JavaScript code on our edge servers. This code can be used to modify requests and responses as well as make additional calls to your defined origins.
+Edge Functions enable you to execute a small piece of JavaScript code on our edge servers. This code can be used to modify requests and responses as well as make additional calls to your defined origins. The benefits of using Edge Functions include enhancing performance by reducing latency, improving user experience by personalizing content, and increasing security by managing authentication and redirection at the edge. They allow you to execute your code closer to users, reducing the need to go back to the original server and thus, provide faster services.
 
-**Key information:**
+## Key Information {/* key_information */}
 
-- Edge Functions are invoked when the `edge_function:` option is specified in your `routes.js` to assign a piece of JavaScript code a specific route.
-- Each Edge Function is stored in a separate file and assigned to a specific route in your `routes.js` file.
-- Each Edge Function file exports the entry point `export default async function handleHttpRequest(request, context) { < your edge function code goes here > }`.
+Edge Functions are invoked when the `edge_function` feature is specified in your `routes.js` to assign a piece of JavaScript code a specific route:
 
-  - `request` is a object representing the the incoming request.
-  - `context` is a read-only object which provides additional information about the request and your environment.
-    - `context.client` is a key value store of the client's network information. Refer to the `virt_` variables in [Feature Variables](/guides/performance/rules/feature_variables)
-    - `context.device` is a key value store of the client's device capabilities. Refer to the `wurlf_` variables in [Feature Variables](/guides/performance/rules/feature_variables)
-    - `context.environmentVars` is a key value store of environment variables as defined in the Edgio console under the Property -> Environment -> Environment Variables section. TBD: Add reference
-    - `context.geo` is a key value store of the client's geo location. Refer to the `geo_` variables in [Feature Variables](/guides/performance/rules/feature_variables)
-    - `context.metrics` provides a set of functions for injecting metrics into your edge function. Metrics are sent to the [access logs](guides/logs/access_logs) and can be used to track the performance of your edge functions. Valid metric IDs are 0 through 9. Each metric ID can be used to track a different metric. The following functions are available:
-      - `context.metrics.add(id: integer, value: integer)` - adds a value to the metric with the given id.
-      - `context.metrics.startTimer(id: integer)` - starts a timer for the metric with the given id. Only one timer can be active at a time for a given metric id.
-      - `context.metrics.stopTimer(id: integer)` - stops a timer for the metric with the given id.
-    - `context.origins` is a key value store of origin servers as defined in the Edgio console under the Property -> Environment -> Origins section (or the `edgio.config.js` file.) Refer to [origin configuration](/guides/basics/hostnames_and_origins#origin)
-    - `context.requestVars` - is a key value store containing information about this property which includes values set using [Set Variables](#set-variables).
-    - `context.respondWith(response)` each edge function must call `context.respondWith(response)` to return the response from your edge function to the downstream client. Refer to [context.respondWith(response)](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith)
-    - `context.waitUntil(promise)` a function that waits until the given promise is fulfilled. Refer to [context.waitUntil(promise)](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil)
+```js filename="./routes.js"
+new Router().get('/', {
+  edge_function: './path/to/function.js',
+});
+```
 
-- Edge Functions global namespace provide access to the following:
-  - [console object](https://developer.mozilla.org/en-US/docs/Web/API/console) - The standard console object used to log messages to the console.
-  - [Headers Class](https://developer.mozilla.org/en-US/docs/Web/API/Headers) - The standard Headers class used to manipulate headers on requests and responses.
-  - [Request Class](https://developer.mozilla.org/en-US/docs/Web/API/Request) - The standard Request class used access the intial request on this route and to make new requests to the origin server.
-  - [Response Class](https://developer.mozilla.org/en-US/docs/Web/API/Response) - The standard Response class used to access responses from the origin server and to create new downstream responses.
-  - [fetch(request)](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) - The standard fetch() function use to makes requests to the origin server. It returns a promise that resolves to a response.
-  - [TextDecoder](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder) - Polyfill class to manage decoding text.
-  - [TextEncoder](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder) - Polyfill class to manage encoding text.
+Each Edge Function is stored in a separate file and assigned to a specific route in your `routes.js` file. An Edge Function file must export the following entry point:
+
+```js
+export default async function handleHttpRequest(request, context) {
+  /* your edge function code goes here */
+}
+```
+
+When a request is received for a route that has an Edge Function assigned to it, the Edge Function is invoked. The Edge Function is passed two parameters: `request` and `context`.
+
+### Edge Function Parameters {/* edge_function_parameters */}
+
+`request` is an object representing the incoming request and `context` is a read-only object providing additional information about the request and your environment, such as access to the client's network information, device capabilities, geo location, environment variables, origin servers, and information about this property including values set using variables. It also provides functions for injecting metrics into your edge function and for returning the response from your edge function to the downstream client.
+
+| Parameter                       | Type            | Description                                                                                                                                   | Reference                                                                                                |
+| ------------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `request`                       | Object          | Represents the incoming request                                                                                                               |                                                                                                          |
+| `context`                       | Object          | A read-only object providing additional information about the request and your environment                                                    |                                                                                                          |
+| `context.client`                | Key-value store | The client's network information                                                                                                              | `virt_` variables in [Feature Variables](/guides/performance/rules/feature_variables)                    |
+| `context.device`                | Key-value store | The client's device capabilities                                                                                                              | `wurlf_` variables in [Feature Variables](/guides/performance/rules/feature_variables)                   |
+| `context.environmentVars`       | Key-value store | Environment variables as defined in the {{ PRODUCT }} console under the Property -> Environment -> Environment Variables section              | [Environment Variables](/guides/basics/environments#environment-variables)                               |
+| `context.geo`                   | Key-value store | The client's geo location                                                                                                                     | `geo_` variables in [Feature Variables](/guides/performance/rules/feature_variables)                     |
+| `context.metrics`               | Object          | Provides functions for injecting metrics into your edge function                                                                              | [Access Logs](guides/logs/access_logs)                                                                   |
+| `context.origins`               | Key-value store | Origin servers as defined in the {{ PRODUCT }} console under the Property -> Environment -> Origins section (or the `{{ CONFIG_FILE }}` file) | [Origin Configuration](/guides/basics/hostnames_and_origins#origin)                                      |
+| `context.requestVars`           | Key-value store | Information about this property including values set using Set Variables                                                                      | [Set Variables](/guides/performance/rules/features#set-variables)                                        |
+| `context.respondWith(response)` | Function        | Must be called to return the response from your edge function to the downstream client                                                        | [context.respondWith(response)](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith) |
+| `context.waitUntil(promise)`    | Function        | Waits until the given promise is fulfilled                                                                                                    | [context.waitUntil(promise)](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil) |
+
+### Metrics Functions {/* metrics_functions */}
+
+| Function                                           | Description                                                                                                   |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `context.metrics.add(id: integer, value: integer)` | Adds a value to the metric with the given id                                                                  |
+| `context.metrics.startTimer(id: integer)`          | Starts a timer for the metric with the given id. Only one timer can be active at a time for a given metric id |
+| `context.metrics.stopTimer(id: integer)`           | Stops a timer for the metric with the given id                                                                |
+
+### Edge Function Namespace {/* edge_function_namespace */}
+
+Edge Functions global namespace provide access to the following:
+
+| Global Object/Class | Description                                                                                                            | Reference                                                                   |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `console` object    | The standard console object used to log messages to the console                                                        | [Console Object](https://developer.mozilla.org/en-US/docs/Web/API/console)  |
+| `Headers` Class     | The standard Headers class used to manipulate headers on requests and responses                                        | [Headers Class](https://developer.mozilla.org/en-US/docs/Web/API/Headers)   |
+| `Request` Class     | The standard Request class used access the initial request on this route and to make new requests to the origin server | [Request Class](https://developer.mozilla.org/en-US/docs/Web/API/Request)   |
+| `Response` Class    | The standard Response class used to access responses from the origin server and to create new downstream responses     | [Response Class](https://developer.mozilla.org/en-US/docs/Web/API/Response) |
+| `fetch(request)`    | The standard fetch() function used to makes requests to the origin server                                              | [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)     |
+| `TextDecoder`       | Polyfill class to manage decoding text                                                                                 | [TextDecoder](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder) |
+| `TextEncoder`       | Polyfill class to manage encoding text                                                                                 | [TextEncoder](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder) |
 
 ## Limitations {/* limitations */}
 
-Edge Functions are limited to 2MB of memory at runtime. This includes the compiled Javascript byte code, variables, requests, context object and responses.
-
-Edge Functions are limited to 50ms of CPU time and 2 minutes of total execution time. The time your edge function spends waiting for a response from an origin server does not count against the 50ms CPU limit.
+Edge Functions are limited to 2MB of memory at runtime. This includes the compiled JavaScript byte code, variables, requests, context object, and responses. Edge Functions are limited to 50ms of CPU time and 2 minutes of total execution time. The time your edge function spends waiting for a response from an origin server does not count against the 50ms CPU limit.
 
 ## Edge Function Examples {/* examples */}
 

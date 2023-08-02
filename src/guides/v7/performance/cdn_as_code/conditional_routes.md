@@ -16,12 +16,6 @@ The `.if()`, `.elseif()`, and `.else()` methods are members of the [Router](/doc
 
 It's important to note the chaining order of the conditional methods.
 
-- `.if()` does not require a following `.elseif()` or `.else()` method.
-
-  ```js
-  router.if(/* ... */).get(/* ... */).match(/* ... */);
-  ```
-
 - `.else()` must follow directly after the `.if()` method or after an `.elseif()` method.
 
   ```js

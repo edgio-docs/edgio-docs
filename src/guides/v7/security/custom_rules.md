@@ -431,91 +431,58 @@ You may create, modify, and delete custom rule sets.
 **To create a custom rule set**
 1.  Navigate to the **Custom Rules** page.
     {{ SECURITY_NAV }} **Custom Rules**.
-2.  Click **Add Custom Rule**.
+2.  Click **+ New Custom Ruleset**.
 3.  In the **Name** option, type the unique name by which this
     custom rule set will be identified. This name should be sufficiently
     descriptive to identify it when setting up a Security Application
     configuration.
-4.  Create a custom rule by clicking **+ Add Rule**. Find the rule's **Name**
-    option and set it to a name that identifies
-    the purpose of this rule.
-5.  In the **Rule ID** option, specify a number between
-    66,000,000 and 66,999,999.
-6.  In the **Rule message** option, type a brief description for
-    this rule.
-7.  The default rule contains a default condition. Modify this condition
-    to determine how {{ PRODUCT_SECURITY }} will identify threats.
-    1.  From the condition's **Variable** option, select the
-        request element through which {{ PRODUCT_SECURITY }} will identify threats.
+4.  By default, a blank rule is associated with each new custom rule. Under the **Rules** section, find the rule's **Rule message** option and set it to a brief description that identifies the purpose of this rule.
+5.  In the **Rule ID** option, specify a number between 66,000,000 and 66,999,999.
+6.  The default rule contains a default condition. Modify this condition to determine how {{ PRODUCT_SECURITY }} will identify threats.
+    1.  From the condition's **Variable** option, select the request element through which {{ PRODUCT_SECURITY }} will identify threats.
 
         [Learn more about variables.](#variables)
 
-    2.  Certain variables (e.g., request cookies and request header)
-        match on name and value. If you have selected this type of
-        variable, then perform the following steps:
+    2.  Certain variables (e.g., request cookies and request header) match on name and value. If you have selected this type of variable, then perform the following steps:
 
         1.  Click **+ Add Match**.
         2.  From the **Name** option, type the desired name.
 
             <Callout type="info">
 
-              For example, match for requests that contain an
-              `Authorization` header by setting this option to
-              *Authorization*.
+              For example, match for requests that contain an `Authorization` header by setting this option to *Authorization*.
 
             </Callout>
 
-        3.  Optional. Mark the **Negative Match** option to match
-            for requests that do not contain a matching value for the
-            name defined in the previous step.
-        4.  If you specified a regular expression in the **Name**
-            option, then you should mark the **Regex Match**
-            option.
-        5.  Optional. Add another match through which this variable can
-            be satisfied by repeating steps 7.2.1 - 7.2.4.
-    3.  Optional. Mark the **Count** option to match by the
-         number of instances that a match is found instead of by
-         inspecting that request element.
+        3.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the name defined in the previous step.
+        4.  If you specified a regular expression in the **Name** option, then you should mark the **Regex Match** option.
+        5.  Optional. Add another match through which this variable can be satisfied by repeating steps 6.2.1 - 6.2.4.
+    3.  Optional. Mark the **Count** option to match by the number of instances that a match is found instead of by inspecting that request element.
 
         [Learn more.](#count)
 
-    4.  Optional. Click **+ Add Variable** to add another
-        variable through which this request may be satisfied. Repeat
-        steps 7.1 - 7.3.
+    4.  Optional. Click **+ Add Variable** to add another variable through which this request may be satisfied. Repeat steps 6.1 - 6.3.
 
         <Callout type="info">
 
-          If you would like to a use a different match value for this
-          variable, then you should create a new rule. Alternatively, if
-          you would like to require both variables prior to threat
-          identification, then you should add it as a new condition to
+          If you would like to a use a different match value for this variable, then you should create a new rule. Alternatively, if you would like to require both variables prior to threat identification, then you should add it as a new condition to
           this rule.
 
         </Callout>
 
-    5.  From the **Operator** option, select an operator that
-        determines how {{ PRODUCT_SECURITY }} will compare the match value to the request
-        element identified by the above variable.
+    5.  From the **Operator** option, select an operator that determines how {{ PRODUCT_SECURITY }} will compare the match value to the request element identified by the above variable.
 
         [Learn more.](#operators)
 
-    6.  In the **Match value** option, type the value that will
-        be compared against the request element identified by the above
-        variable.
-    7.  From the **Match transformations** option, select each
-        transformation that will be applied to the source value.
+    6.  In the **Match value** option, type the value that will be compared against the request element identified by the above variable.
+    7.  From the **Match transformations** option, select each transformation that will be applied to the source value.
 
         [Learn more.](#match-transformations)
 
-    8.  Optional. Mark the **Negative Match** option to match
-        for requests that do not contain a matching value for the
-        value defined in step 7.6.
-8.  Optional. Click **+ Add Condition** to add another
-    condition that must be met prior to threat identification. Repeat
-    step 7 for this new condition.
-9.  Optional. Click **+ Add Rule** to add another rule through
-    which {{ PRODUCT_SECURITY }} may identify threats. Repeat steps 7 and 8.
-10. Click **Save**.
+    8.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the value defined in step 6.6.
+7.  Optional. Click **+ Add Condition** to add another condition that must be met prior to threat identification. Repeat step 6 for this new condition.
+8.  Optional. Click **+ Add Rule** to add another rule through which {{ PRODUCT_SECURITY }} may identify threats. Repeat steps 6 and 7.
+9. Click **Save**.
 
 **To modify a custom rule set**
 1.  Navigate to the **Custom Rules** page.
@@ -541,15 +508,11 @@ You may create, modify, and delete custom rule sets.
 
 <Callout type="important">
 
-  You cannot delete a custom rule that is associated with a Security
-  Application configuration. Please either modify the Security
-  Application configuration to point to a different custom rule or
-  delete that Security Application configuration.
+  You cannot delete a custom rule that is associated with a Security Application configuration. Please either modify the Security Application configuration to point to a different custom rule or delete that Security Application configuration.
 
 </Callout>
 
-1.  Check your Security Application configurations to verify
-    that the desired custom rule is not in use.
+1.  Check your Security Application configurations to verify that the desired custom rule is not in use.
 2.  Navigate to the **Custom Rules** page.
     {{ SECURITY_NAV }} **Custom Rules**.
 3.  Click on the desired custom rule set.

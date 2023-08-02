@@ -116,9 +116,7 @@ against the specified value.
 
 ### Match Comparison Modes {/*match-comparison-modes*/}
 
-Your Security Application configuration determines how {{ PRODUCT_SECURITY }}
-compares a request's host or URL path against the specified value. The
-available modes are listed below.
+Your Security Application configuration determines how {{ PRODUCT_SECURITY }} compares a request's host or URL path against the specified value. The available modes are listed below.
 -   **Default:** {{ PRODUCT_SECURITY }} will not perform a comparison. It will apply
     the current Security Application configuration to all hosts
     or URL paths.
@@ -520,11 +518,7 @@ configurations.
 
     <Callout type="info">
 
-      If you have not already created the desired access rule, you can
-      save your Security Application configuration, [create an
-      access rule](/guides/security/access_rules#access-rule-administration), edit your
-      Security Application configuration, and then resume this
-      procedure.
+      If you have not already created the desired access rule, you can save your Security Application configuration, [create an access rule](/guides/security/access_rules#access-rule-administration), edit your Security Application configuration, and then resume this procedure.
 
     </Callout>
 
@@ -540,8 +534,7 @@ configurations.
 
         [Learn more.](#enforcement)
 
-6.  Optional. [Audit production traffic](#threat-detection) using a new
-    access rule.
+6.  Optional. [Audit production traffic](#threat-detection) using a new access rule.
     1.  From the **Rules** section, click **Access Rule**.
     2.  From the **Audit Access Rule** option, select the desired
         access rule.
@@ -559,8 +552,7 @@ configurations.
 
     </Callout>
 
-7.  Optional. Select a rate rule through which production traffic will
-    be rate limited.
+7.  Optional. Select a rate rule through which production traffic will be rate limited.
 
     <Callout type="info">
 

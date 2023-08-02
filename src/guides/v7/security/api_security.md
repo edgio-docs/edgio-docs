@@ -5,7 +5,13 @@ title: API Security
 Use API security to:
 
 -   Define valid payloads for API requests. {{ PRODUCT }} categorizes a request as a threat when the payload violates at least one of your requirements.
--   Discover the APIs that are being requested in the last 30 days. 
+-   Discover the APIs that have been requested in the last 30 days. 
+
+<Callout type="info">
+
+  API security requires activation. {{ ACCOUNT_UPGRADE }}
+
+</Callout>
 
 ## Setup {/*setup*/}
 
@@ -32,10 +38,10 @@ Set up an API security configuration by performing the following steps:
 
 ### API Gateway {/*api-gateway*/}
 
-An API gateway configuration identifies an API schema and the set of requests that must conform to that JSON schema. By default, your API gateway configuration validates all requests against an API schema. However, you may restrict inspection by:
+An API gateway configuration identifies an API schema and the set of requests that must conform to that JSON schema. By default, your API gateway configuration validates all `POST`, `PUT`, and `PATCH` requests against an API schema. However, you may restrict inspection by:
 
 -   **Relative Path(s):** You may restrict payload inspection to one or more relative path(s). This relative path starts directly after the hostname. The available comparison modes are listed below.
-    -   **Default:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} will inspect all requests to ensure that they satisfy the API schema.
+    -   **Default:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} will inspect all `POST`, `PUT`, and `PATCH` requests to ensure that they satisfy the API schema.
     -   [Exact match (multiple entries):](#exact-match-multiple-entries) Restrict inspection to specific relative path(s).
     -   [Wildcard match:](#wildcard-match) Restrict inspection to a wildcard pattern for the relative path.
     -   [Regex match:](#regex-match) Restrict inspection to a regular expression for the relative path.

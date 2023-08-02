@@ -6,6 +6,7 @@ A Security App configuration:
 -   [Identifies the set of traffic](#traffic-identification) to which it applies by hostname, a URL path, or both.
 -   Defines how [threats will be detected](#threat-detection) through:
     -   **Access Rules:** An access rule identifies legitimate traffic and threats through access control lists.
+    -   **API Security Rules:** An API security rules validates the payload for `POST`, `PUT`, and `PATCH` requests against a JSON schema.
     -   **Rate Rules:** A rate rule defines the rate of traffic that may be directed to one or more web sites.
     -   **Bot Manager:** A bot manager configuration identifies bot traffic.
     -   **Custom Rules:** A custom rule identifies threats using custom criteria that takes into account your site's traffic profile to avoid false positives.

@@ -57,7 +57,7 @@ Secure your web applications by defining security rules and then creating a Secu
 
 Additional information on each of the above steps is provided below.
 
--   **Step 1 - Create Security Rules:** Create modular rules (i.e., Access Rules, Rate Rules, Bot Rules, Custom Rules, and Managed Rules) through which you may define security policies for inbound HTTP/HTTPS traffic. These rules identify legitimate traffic or threats through:
+-   **Step 1 - Create Security Rules:** Create modular rules (i.e., Access Rules, API Security Rules, Rate Rules, Bot Rules, Custom Rules, and Managed Rules) through which you may define security policies for inbound HTTP/HTTPS traffic. These rules identify legitimate traffic or threats through:
     - Access controls (e.g., IP address, country, URL, etc.).
     - API schemas.
     - Rate limits.
@@ -74,7 +74,6 @@ Additional information on each of the above steps is provided below.
   Different applications and types of requests may require varying levels of protection. Create security rules and Security App configurations for each use case that requires a unique level of protection.
 
 </Callout>
-
 
 ## Threat Detection {/*threat-detection*/}
 

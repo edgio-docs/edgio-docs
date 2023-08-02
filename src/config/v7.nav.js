@@ -259,7 +259,7 @@ const nav = {
           path: 'security/managed_rules',
         },
         {
-          title: 'Security Applications',
+          title: 'Security Apps',
           path: 'security/security_applications',
         },
         {

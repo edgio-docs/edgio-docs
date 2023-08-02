@@ -204,7 +204,7 @@ you can take advantage of the `edgeControlCriteria` criteria property, and write
 
 The property `edgeControlCriteria` is defined in `Matches` type format (see [Conditionals](performance/cdn_as_code/conditional_routes#conditionals) section). 
 
-Following example applies the nested logic if device is a tablet and the metod is GET (combination of both criteria definition formats):
+Following example applies the nested logic if device is a tablet and the metod is GET (combination of both criteria formats):
 
 ```js
 import {Router, and} from '@edgio/core';

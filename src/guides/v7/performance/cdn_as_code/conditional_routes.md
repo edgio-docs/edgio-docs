@@ -6,7 +6,7 @@ Conditional routes allow you to apply [Rules](/guides/performance/rules) to a re
 
 <Callout type="important">
 
-This documentation expects you to be familiar with defining simple rules through `.get()`, `.match()` and `.post()` [Router](/docs/api/core/classes/router_Router.default.html) methods, as explained in [Route Criteria and Conditions](/guides/performance/cdn_as_code/route_criteria) documentation.
+This documentation expects you to be familiar with defining simple rules through `.get()`, `.match()` and `.post()` [Router](/docs/api/core/classes/router_Router.default.html) methods, as explained in [Route Criteria and Conditions](/guides/performance/cdn_as_code/route_criteria) and [Route Features](/guides/performance/cdn_as_code/route_features) documentation.
 
 </Callout>
 
@@ -193,15 +193,53 @@ export default new Router()
     })
   )
   .else({ origin: { set_origin: 'legacy_origin' } });
+  
 ```
+
+
+### Complex Criteria {/* complex-criteria */}
+
+If you wish to use `.if()`, `.elseif()`, and `.else()` methods, but your criteria is not supported by [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html),
+you can take advantage of the `edgeControlCriteria` criteria property, and write the JSON logic yourself.
+
+The property `edgeControlCriteria` is defined in `Matches` type format (see [Conditionals](performance/cdn_as_code/conditional_routes#conditionals) section). 
+
+Following example applies the nested logic if device is a tablet and the metod is GET (combination of both criteria definition formats):
+
+```js
+import {Router, and} from '@edgio/core';
+
+export default new Router()
+  .if(
+    and(
+      { method: "GET" },
+      {
+        edgeControlCriteria: { 
+          "===": [{ device: "is_tablet" }, true] 
+        } 
+      }
+    ),
+    new Router().if(/* ... */)
+  );
+```
+
 
 ## Using the .conditional() Method {/* using-the-conditional-method */}
 
 <Callout type="warning">
 
-This method of defining complex rules is no longer optimal. See [Replacing .conditional() with .if()](/guides/performance/cdn_as_code/conditional_routes#conditionals-to-if) section to learn how you can map your existing `conditional()` logic to more powerful `if()` calls, use criteria fallbacks.
+This method of defining complex rules is no longer optimal - the `.if()`, `.elseif()`, and `.else()` methods should be used instead, as they are both simpler and more powerful.
 
 </Callout>
+
+<Callout type="important">
+
+The mapping of old `.conditional()` to `.if()` calls is done automatically when you deploy your application and export your rules to EdgeJS in {{ PORTAL_LINK }}.
+
+If you wish to learn how to use `export to EdgeJS` functionality, see [Rules](performance/rules#export-rules-edgejs) documentation.
+
+</Callout>
+
 
 Let's revisit the example from our [Default Route Configuration](/guides/performance/cdn_as_code#default-route-configuration) section where we cached all requests to `/api/*`:
 
@@ -451,35 +489,3 @@ export default new Router().conditional({
   ],
 });
 ```
-
-### Replacing .conditional() with .if() {/* conditionals-to-if */}
-
-If you wish to use `.if()`, `.elseif()`, and `.else()` methods, but you are currently using the `.conditional()` method,
-you can take advantage of the `edgeControlCriteria` criteria property, and pass in a criteria in previously defined `Matches` format (see [Conditionals](performance/cdn_as_code/conditional_routes#conditionals) section). 
-This way, you can still use all of the powerful features `.if()` method and alike provide, even if your route contains criteria not supported by [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html). 
-
-Following example applies the nested logic if device is a tablet:
-
-```js
-import {Router} from '@edgio/core';
-
-export default new Router()
-  .if(
-    {
-      edgeControlCriteria: { 
-        "===": [{ device: "is_tablet" }, true] 
-      } 
-    },
-    new Router().if(/* ... */)
-  );
-```
-
-
-<Callout type="important">
-
-The mapping from `.conditional()` to `.if()` calls will be done for you automatically when you deploy your application and export your rules to EdgeJS in {{ PORTAL_LINK }}.
-
-If you wish to learn how to use `export to EdgeJS` functionality, see [Rules](performance/rules#export-rules-edgejs) documentation.
-
-</Callout>
-

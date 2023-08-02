@@ -14,28 +14,16 @@ This documentation expects you to be familiar with defining simple rules through
 
 The `.if()`, `.elseif()`, and `.else()` methods are members of the [Router](/docs/api/core/classes/router_Router.default.html) class and are used to apply if/then logic to a request. These methods can be chained together to create complex rules. Additionally, you can use [`.and()`](/docs/api/core/functions/router_RouteCriteria.and.html), [`.or()`](/docs/api/core/functions/router_RouteCriteria.or.html) and [`.not()`](/docs/api/core/functions/router_RouteCriteria.not.html) utility functions as logical operators within the `.if()` and `.elseif()` criteria.
 
-It's important to note the chaining order of the conditional methods.
+It's important to note the chaining order of the conditional methods. Calls of `.else()` and `.elseif()` must follow directly after the `.if()` method or another `.elseif()` method, as such:
 
-- `.else()` must follow directly after the `.if()` method or after an `.elseif()` method.
-
-  ```js
-  router
-    .if(/* ... */)
-    .else(/* ... */)
-    .get(/* ... */)
-    .match(/* ... */);
-  ```
-
-- `.elseif()` must follow directly after the `.if()` method or another `.elseif()` method.
-
-  ```js
-  router
-    .if(/* ... */)
-    .elseif(/* ... */)
-    .else(/* ... */)
-    .get(/* ... */)
-    .match(/* ... */);
-  ```
+```js
+router
+  .if(/* ... */)
+  .elseif(/* ... */)
+  .else(/* ... */)
+  .get(/* ... */)
+  .match(/* ... */);
+```
 
 The following example is invalid as `.elseif()` and `.else()` are not following directly after `.if()` or `.elseif()`:
 

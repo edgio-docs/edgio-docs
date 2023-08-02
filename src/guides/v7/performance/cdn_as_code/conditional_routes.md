@@ -234,7 +234,7 @@ This method of defining complex rules is no longer optimal - the `.if()`, `.else
 
 <Callout type="important">
 
-The mapping of your old `.conditional()` to `.if()` calls can be done through `export to EdgeJS` functionality in {{ PORTAL_LINK }}. To learn more, see [Rules](performance/rules#export-rules-edgejs) documentation.
+The mapping of your old `.conditional()` calls to simplified `.if()` calls can be done through `export to EdgeJS` functionality in {{ PORTAL_LINK }}. To learn more, see [Rules](performance/rules#export-rules-edgejs) documentation.
 
 </Callout>
 

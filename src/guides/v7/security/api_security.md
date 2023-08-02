@@ -229,6 +229,7 @@ You may create, modify, and delete API security configurations.
 
 -   Administer API security configurations from the **API Security** page.
 -   Apply an API security configuration to production traffic by adding it to a [Security App configuration](/guides/security/security_applications) and then determining how it will be enforced. Multiple Security App configurations may use the same API security configuration. Leverage this capability to tailor security screening by application or traffic profile.
+-   Setting up a new API security rule requires creating at least one API schema. Your API gateway configuration will be read-only until you do so.
 -   It may take up to 2 minutes for an update to an API security configuration to be applied across our entire network.
 
 **To create an API security configuration**

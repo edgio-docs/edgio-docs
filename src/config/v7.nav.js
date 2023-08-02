@@ -239,6 +239,10 @@ const nav = {
           path: 'security/access_rules',
         },
         {
+          title: 'API Security',
+          path: 'security/api_security',
+        },
+        {
           title: 'Rate Rules',
           path: 'security/rate_rules',
         },

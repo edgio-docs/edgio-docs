@@ -135,23 +135,26 @@ Each request undergoes the following security workflow:
 
     </Callout>
 
-4.  Has the rate limit been exceeded? If so, then the request is
+4.  Does the request's payload violate an API schema? If so, then the request is
     identified as a threat and no further checks will be performed.
 
-5.  Was the client identified as a bot? If so, then the
+5.  Has the rate limit been exceeded? If so, then the request is
+    identified as a threat and no further checks will be performed.
+
+6.  Was the client identified as a bot? If so, then the
     request is identified as a threat and no further checks will be
     performed.
 
-6.  The request will undergo threat detection analysis if the 
+7.  The request will undergo threat detection analysis if the 
     Security Application configuration has been assigned a custom rule set. Was a
     rule in the custom rule set satisfied? If so, then the request is
     identified as a threat and no further checks will be performed.
 
-7.  Will the request be served from cache instead of being forwarded to
+8.  Will the request be served from cache instead of being forwarded to
     an origin server? If so, it is considered legitimate and no further
     checks will be performed.
 
-8.  The request will undergo additional threat detection analysis if the 
+9.  The request will undergo additional threat detection analysis if the 
     Security Application configuration has been assigned a managed rule set. A
     request will be classified as a threat when the severity and
     frequency of rule violations exceeds the configured threshold.

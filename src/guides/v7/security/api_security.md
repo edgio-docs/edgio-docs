@@ -2,7 +2,10 @@
 title: API Security
 ---
 
-Use API security to define valid payloads for API requests. {{ PRODUCT }} categorizes a request as a threat when the payload violates at least one of your requirements.
+Use API security to:
+
+-   Define valid payloads for API requests. {{ PRODUCT }} categorizes a request as a threat when the payload violates at least one of your requirements.
+-   Discover the APIs that are being requested in the last 30 days. 
 
 ## Setup {/*setup*/}
 
@@ -295,3 +298,13 @@ You may create, modify, and delete API security configurations.
 3.  Click on the desired API security configuration.
 4.  Click **Delete**.
 5.  Click **Confirm**.
+
+## API Discovery
+
+{{ PRODUCT }} automatically discovers all API requests for the last 30 days. 
+
+**Key information:**
+
+-   Expand an endpoint break down request statistics by HTTP method and status code. 
+-   Request statistics are rounded to whole numbers. This may cause some entries to display *100%* or *0%* even though there are multiple entries for that endpoint. 
+-   Use this information to discover legacy or deprecated endpoints that are still being requested. 

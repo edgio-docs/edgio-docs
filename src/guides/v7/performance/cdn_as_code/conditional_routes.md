@@ -477,7 +477,7 @@ export default new Router()
 
 <Callout type="important">
 
-The mapping from `.conditional()` to `.if()` calls will be done for you automatically when you deploy your application, and export your rules to EdgeJS in {{ PORTAL_LINK }}.
+The mapping from `.conditional()` to `.if()` calls will be done for you automatically when you deploy your application and export your rules to EdgeJS in {{ PORTAL_LINK }}.
 
 If you wish to learn how to use `export to EdgeJS` functionality, see [Rules](performance/rules#export-rules-edgejs) documentation.
 

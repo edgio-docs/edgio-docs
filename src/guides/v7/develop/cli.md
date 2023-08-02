@@ -441,3 +441,72 @@ An uncommon issue when running `{{ FULL_CLI_NAME }} init` can present a similar 
 > Error: Cannot find module ‘/Users/myUser/Projects/my-{{ PACKAGE_NAME }}-poc/node_modules/{{ PACKAGE_NAME }}/angular/bin/init’
 
 This may be related to an outdated global version of {{ PRODUCT_NAME }} CLI. The telltale sign is reference to `/bin/` in the module path. This is an old convention. Recommended approach would be to `npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}` and then run `{{ FULL_CLI_NAME }} init` on the project.
+
+### Log Level Output {/* log-level-output */}
+
+By default, {{ PRODUCT_NAME }} CLI outputs logs at the INFO level. You may change this to obtain more output information of the CLI command being executed. To change the log level, set the `LOG_LEVEL` environment variable to one of the following values:
+
+- ERROR: Only errors are logged, providing critical information about issues and failures.
+- WARN: Errors and warnings are logged, offering insights into potential problems and anomalies.
+- INFO: Errors, warnings, and information are logged, presenting general operational information about the command being executed. **(default)**
+- DEBUG: Includes everything logged at the INFO level, plus additional debugging information, helpful for developers during development and testing.
+- TRACE: Includes all the information logged at the DEBUG level, and even more detailed information, useful for deep troubleshooting of code execution and performance analysis.
+
+**Example:**
+
+```plaintext
+LOG_LEVEL=TRACE {{ CLI_CMD(run) }}
+
+> Starting Edgio in development mode with caching disabled...
+> Building service worker... done.
+> Bundling router... done.
+> Bundling edge functions... done.
+> Recompile of router, config and edge functions... done.
+> Edgio ready on http://127.0.0.1:3000
+
+Next info  - Loaded env from /Projects/edgio-docs/edgio-docs/.env
+Next warn  - You have enabled experimental feature (scrollRestoration) in next.config.js.
+Next warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
+
+Next event - compiled client and server successfully in 14.9s (1498 modules)
+DEBUG [RequestHandler] GET /
+TRACE executed UriRaw: ModRewrite in 12ms
+TRACE executed UriClean: ModAccess in 12ms
+TRACE executed UriClean: ModRedirect in 6ms
+TRACE executed UriClean: ModSetEnv in 13ms
+TRACE executed UriClean: ModCache in 3ms
+TRACE executed UriClean: ModProxyFeatures in 4ms
+TRACE executed UriClean: ModStream in 1ms
+TRACE executed HandleDocRoot: ModCache in 0ms
+TRACE executed HandleDocRoot: ModTranscode in 0ms
+TRACE executed SendRequestContent: ModEdgeFunctions in 0ms
+TRACE Serverless hint proxy:0
+DEBUG [RequestContext] skipping to compute, function #0
+DEBUG [Backend] fetch {
+  protocol: 'http:',
+  slashes: true,
+  auth: null,
+  host: '127.0.0.1:3001',
+  port: '3001',
+  hostname: '127.0.0.1',
+  hash: null,
+  search: null,
+  query: [Object: null prototype] {},
+  pathname: '/',
+  path: '/',
+  href: 'http://127.0.0.1:3001/',
+  method: 'GET',
+  timeout: 0,
+  agent: null,
+  body: <Buffer >,
+  headers: {
+    host: '127.0.0.1:3001',
+    'user-agent': 'curl/8.1.2',
+    accept: '*/*',
+    'x-edg-serverless-hint': 'proxy:0',
+    'x-prerender-revalidate': '',
+    'x-forwarded-proto': 'http'
+  }
+}
+...
+```

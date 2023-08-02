@@ -159,10 +159,10 @@ const nav = {
           title: 'Serverless Compute',
           path: 'performance/serverless_compute',
         },
-        {
-          title: 'Unit Testing (EdgeJS)',
-          path: 'performance/unit_testing_edgejs',
-        },
+        // {
+        //   title: 'Unit Testing (EdgeJS)',
+        //   path: 'performance/unit_testing_edgejs',
+        // },
         {
           title: 'Image Optimization',
           path: 'performance/image_optimization',

@@ -85,6 +85,10 @@ const nav = {
               title: 'Route Features',
               path: 'performance/cdn_as_code/route_features',
             },
+            {
+              title: 'Conditional Routes',
+              path: 'performance/cdn_as_code/conditional_routes',
+            },
             // {
             //   title: 'Edge Functions',
             //   path: 'performance/cdn_as_code/edge_functions',

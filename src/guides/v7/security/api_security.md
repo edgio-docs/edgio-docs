@@ -24,6 +24,12 @@ Set up an API security configuration by performing the following steps:
 
 2.  Assign an API security rule to a security app configuration and define the enforcement action that will be applied to requests that violate the API schema(s) defined in the previous step. 
 
+<Callout type="tip">
+	
+  By default, API security validation is applied to all `POST`, `PUT`, and `PATCH` requests that satisfy your security app's hostname and URL path requirements. If your website uses those HTTP methods for non-API requests, then it is strongly recommended to define one or more URL path(s) within your API gateway configuration.
+	
+</Callout>
+
 ### API Gateway {/*api-gateway*/}
 
 An API gateway configuration identifies an API schema and the set of requests that must conform to that JSON schema. By default, your API gateway configuration validates all requests against an API schema. However, you may restrict inspection by:
@@ -146,7 +152,7 @@ An API schema is a JSON schema that describes the structure for a valid API payl
 
 </Callout>
 
-#### JSON Schema Syntax
+#### JSON Schema Syntax {/*json-schema-syntax*/}
 
 The JSON Schema site provides [guidance and examples on how to define a JSON schema](https://json-schema.org/understanding-json-schema/index.html). {{ PRODUCT }} restricts syntax support as follows:
 -   {{ PRODUCT }} does not consider a number  with a zero fractional part (e.g., *1.0*, or *42.0*) an integer.
@@ -164,7 +170,7 @@ The JSON Schema site provides [guidance and examples on how to define a JSON sch
 
 </Callout>
 
-#### JSON Schema Examples
+#### JSON Schema Examples {/*json-schema-examples*/}
 A common method for setting up an API schema is to define the expected data type through the `type` property. 
 
 -   **String Example:** The following sample schema requires an API request to only contain a single string value:
@@ -299,7 +305,7 @@ You may create, modify, and delete API security configurations.
 4.  Click **Delete**.
 5.  Click **Confirm**.
 
-## API Discovery
+## API Discovery {/*api-discovery*/}
 
 {{ PRODUCT }} automatically discovers all API requests for the last 30 days. 
 

@@ -515,7 +515,7 @@ You may create, modify, and delete custom rule sets.
     step 7 for this new condition.
 9.  Optional. Click **+ New Rule** to add another rule through
     which {{ PRODUCT_SECURITY }} may identify threats. Repeat steps 7 and 8.
-10. Click **Submit**.
+10. Click **Save**.
 
 **To modify a custom rule set**
 1.  Navigate to the **Custom Rules** page.
@@ -535,7 +535,7 @@ You may create, modify, and delete custom rule sets.
         </Callout>
 
     -   Delete a rule by clicking the <Image inline src="/images/icons/delete.png" alt="Delete icon" /> icon that appears to the right of the **Name** option and then clicking **Confirm**.
-4.  Click **Submit**.
+4.  Click **Save**.
 
 **To delete a custom rule set**
 

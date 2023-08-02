@@ -6,10 +6,18 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
 
 ## Example {/* example */}
 
+Next.js offers two different file-based routing schemes you can use to build your app. See the [Pages Router](https://nextjs.org/docs/pages/building-your-application/routing) and [App Router](https://nextjs.org/docs/app/building-your-application/routing) sections of the Next.js documentation for more information. {{ PRODUCT_NAME }} supports both routing schemes with examples of each below:
+
 <ExampleButtons
-  title="Next.js SSR"
+  title="Next.js SSR w/ Pages Router"
   siteUrl="https://edgio-community-examples-v7-nextjs-live.edgio.link/"
   repoUrl="https://github.com/edgio-docs/edgio-v7-nextjs-example"
+/>
+
+<ExampleButtons
+  title="Next.js SSR w/ App Router"
+  siteUrl="https://edgio-community-examples-v7-nextjs-app-router-live.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-nextjs-app-router-example"
 />
 
 <!-- ## Next.js Commerce {/* nextjs-commerce */}

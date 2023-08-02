@@ -365,15 +365,7 @@ The available enforcement actions are described below.
         ```
 
     -   **HTTP Status Code:** Defines the HTTP status code that will be sent to the client.  
-    -   **Custom Response Headers:** Defines one or more response headers that will be sent to the client. Define each custom response header on a separate line.
-
-        **Syntax:** 
-
-        `<Name>:<Value>`
-
-        **Example:** 
-
-        `MyCustomHeader: True`
+    -   **Custom Response Headers:** Defines one or more response headers that will be sent to the client. Add a custom response header by clicking **+ Add Response Header**, setting the **Name** option to the name of the response header, and then setting the **Value** option to the response header value.
 
         <Callout type="tip">
 
@@ -383,7 +375,7 @@ The available enforcement actions are described below.
 
         <Callout type="info">
 
-          All characters, including spaces, defined before or after the colon will be treated as a part of the specified header name or value, respectively.
+          All characters, including spaces, will be treated as a part of the specified header name or value, respectively.
 
         </Callout>
 

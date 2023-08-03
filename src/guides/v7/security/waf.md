@@ -109,7 +109,7 @@ Each request undergoes the following security workflow:
 
     </Callout>
 
-4.  The payload for `POST`, `PUT`, and `PATCH` requests will undergo additional threat detection analysis if the Security App configuration has been assigned an API security rule. Does the request's payload violate an API schema? If so, then the request is identified as a threat and no further checks will be performed.
+4.  The payload for `POST`, `PUT`, and `PATCH` requests will undergo additional threat detection analysis if the Security App configuration has been assigned an API Security ruleset. Does the request's payload violate an API schema? If so, then the request is identified as a threat and no further checks will be performed.
 
 5.  Has the rate limit been exceeded? If so, then the request is identified as a threat and no further checks will be performed.
 

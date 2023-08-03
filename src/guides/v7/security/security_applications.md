@@ -6,7 +6,7 @@ A Security App configuration:
 -   [Identifies the set of traffic](#traffic-identification) to which it applies by hostname, a URL path, or both.
 -   Defines how [threats will be detected](#threat-detection) through:
     -   **Access Rules:** An access rule identifies legitimate traffic and threats through access control lists.
-    -   **API Security Rules:** An API security rules validates the payload for `POST`, `PUT`, and `PATCH` requests against a JSON schema.
+    -   **API Security Ruleset:** An API Security rule validates the payload for `POST`, `PUT`, and `PATCH` requests against a JSON schema.
     -   **Rate Rules:** A rate rule defines the rate of traffic that may be directed to one or more web sites.
     -   **Bot Manager:** A bot manager configuration identifies bot traffic.
     -   **Custom Rules:** A custom rule identifies threats using custom criteria that takes into account your site's traffic profile to avoid false positives.
@@ -24,7 +24,7 @@ A Security App configuration:
       Standard security practices dictate that measures should be taken to prevent sensitive data (e.g., credit card information or passwords) from being passed as clear text from the client to your origin server. Another incentive for encrypting sensitive data is that it will be logged by our system when an alert is triggered as a result of this data. If sensitive data cannot be encrypted or obfuscated, then it is strongly recommended to contact our technical customer support to disable logging for the **Matched Value** field.
 
     </Callout>
--   Allows you to keep your applications secure with known configurations and audit new access rules, API security rules, custom rules, and managed rules without impacting production traffic. Use the **Threats** tab of the **Security** dashboard to isolate and analyze threats detected as a result of an audit of new access rules,  API security rules, custom rules, and managed rules.
+-   Allows you to keep your applications secure with known configurations and audit new access rules, API Security rules, custom rules, and managed rules without impacting production traffic. Use the **Threats** tab of the **Security** dashboard to isolate and analyze threats detected as a result of an audit of new access rules,  API Security rules, custom rules, and managed rules.
 
     <Callout type="info">
 
@@ -191,7 +191,7 @@ The following sample request will match the above pattern:
 
 Identify threats by adding the following rule(s) to your Security App configuration:
 -   **Access Rules:** An [access rule](/guides/security/access_rules) identifies legitimate traffic and threats through access control lists.
--   **API Security Rules:** An [API security rule](/guides/security/api_security) identifies threats by validating the payload of `POST`, `PUT`, and `PATCH` requests against a JSON schema.
+-   **API Security Ruleset:** An [API Security rule](/guides/security/api_security) identifies threats by validating the payload of `POST`, `PUT`, and `PATCH` requests against a JSON schema.
 -   **Rate Rules:** A [rate rule](/guides/security/rate_rules) identifies malicious or unnecessary traffic through traffic patterns.
 
     <Callout type="info">
@@ -362,7 +362,7 @@ You may create, modify, and delete Security App configurations.
       The recommended approach is to apply the most restrictive policy to as much traffic as possible while causing minimal impact to data delivery.
 
     </Callout>
--   Apply [access rules](/guides/security/access_rules), [API security](/guides/security/api_security), [rate rules](/guides/security/rate_rules), [bot manager configurations](/guides/security/bot_rules), [custom
+-   Apply [access rules](/guides/security/access_rules), [API Security](/guides/security/api_security), [rate rules](/guides/security/rate_rules), [bot manager configurations](/guides/security/bot_rules), [custom
     rules](/guides/security/custom_rules), and [managed rules](/guides/security/managed_rules) to production traffic by adding it to a Security App configuration and then determining how it will be enforced.
 
     <Callout type="info">
@@ -371,7 +371,7 @@ You may create, modify, and delete Security App configurations.
       profile.
 
     </Callout>
--   Use [audit mode](#threat-detection) to verify that new access rules, API security rules, custom rules, and managed rules will not generate substantial false positives.
+-   Use [audit mode](#threat-detection) to verify that new access rules, API Security rules, custom rules, and managed rules will not generate substantial false positives.
 -   It may take up to 2 minutes for an updated Security App configuration to be applied across our entire network.
 
 **To create a Security App configuration**
@@ -424,22 +424,22 @@ You may create, modify, and delete Security App configurations.
 
     </Callout>
 
-7.  Optional. Select an [API security configuration](/guides/security/api_security#api-security-administration) through which production traffic will be screened and determine how threats identified by it are handled.
+7.  Optional. Select an [API Security ruleset](/guides/security/api_security#api-security-ruleset-administration) through which production traffic will be screened and determine how threats identified by it are handled.
 
     1.  From the **Rules** section, click **API Security Rule**.
-    2.  From the **Production API Security Rule** option, select the desired API security rule.
-    3.  From the **Action type** option, determine how threats identified by the access rule selected in step 7.2 will be handled (i.e., block, alert, redirect, or send a custom response).
+    2.  From the **Production API Security Rule** option, select the desired API Security ruleset.
+    3.  From the **Action type** option, determine how threats identified by the API Security ruleset selected in step 7.2 will be handled (i.e., block, alert, redirect, or send a custom response).
 
         [Learn more.](#enforcement)
 
-8.  Optional. [Audit production traffic](#threat-detection) using a new API security rule.
+8.  Optional. [Audit production traffic](#threat-detection) using a new API Security ruleset.
 
     1.  From the **Rules** section, click **API Security Rule**.
-    2.  From the **Audit API Security Rule** option, select the desired API Security rule.
+    2.  From the **Audit API Security Rule** option, select the desired API Security ruleset.
 
     <Callout type="info">
 
-      Filter the **Threats** tab of the **Security** dashboard by the above API Security rule or the `audit` profile type to track detected threats.
+      Filter the **Threats** tab of the **Security** dashboard by the above API Security ruleset or the `audit` profile type to track detected threats.
 
     </Callout>
 

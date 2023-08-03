@@ -2,43 +2,43 @@
 title: API Security
 ---
 
-Use API security to:
+Use API Security to:
 
 -   Define valid payloads for API requests. {{ PRODUCT }} categorizes a request as a threat when the payload violates at least one of your requirements.
 -   Discover the APIs that have been requested in the last 30 days. 
 
 <Callout type="info">
 
-  API security requires activation. {{ ACCOUNT_UPGRADE }}
+  API Security requires activation. {{ ACCOUNT_UPGRADE }}
 
 </Callout>
 
 ## Setup {/*setup*/}
 
-Set up an API security configuration by performing the following steps:
+Set up an API Security configuration by performing the following steps:
 
-1.  Create an API security rule. An API security rule consists of the following components:
+1.  Create an API Security ruleset. An API Security ruleset consists of the following components:
 
-    -   **API Gateway:** Define one or more API gateway configurations. Each of these configurations identifies an API schema and the conditions under which it will be enforced.
+    -   **API Security Rules:** Define one or more API Security rules. Each of these configurations identifies an API schema and the conditions under which it will be enforced.
     -   **API Schema:** An API schema is a JSON schema that describes the structure for a valid API payload.
 
     <Callout type="important">
 	
-	  Setting up a new API security rule requires creating at least one API schema. Your API gateway configuration will be read-only until you do so. 
+	  Setting up a new API Security rule requires creating at least one API schema. Your API Security rule will be read-only until you do so. 
 	
 	</Callout>
 
-2.  Assign an API security rule to a security app configuration and define the enforcement action that will be applied to requests that violate the API schema(s) defined in the previous step. 
+2.  Assign an API Security rule to a Security App configuration and define the enforcement action that will be applied to requests that violate the API schema(s) defined in the previous step. 
 
 <Callout type="tip">
 	
-  By default, API security validation is applied to all `POST`, `PUT`, and `PATCH` requests that satisfy your security app's hostname and URL path requirements. If your website uses those HTTP methods for non-API requests, then it is strongly recommended to define one or more URL path(s) within your API gateway configuration.
+  By default, {{ PRODUCT }} validates all `POST`, `PUT`, and `PATCH` requests that satisfy your security app's hostname and URL path requirements. If your website uses those HTTP methods for non-API requests, then it is strongly recommended to define one or more URL path(s) within your API Security rule.
 	
 </Callout>
 
-### API Gateway {/*api-gateway*/}
+### API Security Rule {/*api-security rule*/}
 
-An API gateway configuration identifies an API schema and the set of requests that must conform to that JSON schema. By default, your API gateway configuration validates all `POST`, `PUT`, and `PATCH` requests against an API schema. However, you may restrict inspection by:
+An API Security rule identifies an API schema and the set of requests that must conform to that JSON schema. By default, your API Security rule validates all `POST`, `PUT`, and `PATCH` requests against an API schema. However, you may restrict inspection by:
 
 -   **Relative Path(s):** You may restrict payload inspection to one or more relative path(s). This relative path starts directly after the hostname. The available comparison modes are listed below.
     -   **Default:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} will inspect all `POST`, `PUT`, and `PATCH` requests to ensure that they satisfy the API schema.
@@ -236,24 +236,24 @@ A common method for setting up an API schema is to define the expected data type
     }
     ```
 
-## API Security Administration {/*api-security-administration*/}
+## API Security Ruleset Administration {/*api-security-ruleset-administration*/}
 
-You may create, modify, and delete API security configurations.
+You may create, modify, and delete API Security rulesets.
 
 **Key information:**
 
--   Administer API security configurations from the **API Security** page.
--   Apply an API security configuration to production traffic by adding it to a [Security App configuration](/guides/security/security_applications) and then determining how it will be enforced. Multiple Security App configurations may use the same API security configuration. Leverage this capability to tailor security screening by application or traffic profile.
--   Setting up a new API security rule requires creating at least one API schema. Your API gateway configuration will be read-only until you do so.
--   It may take up to 2 minutes for an update to an API security configuration to be applied across our entire network.
+-   Administer API Security rulesets from the **API Security** page.
+-   Apply an API Security ruleset to production traffic by adding it to a [Security App configuration](/guides/security/security_applications) and then determining how it will be enforced. Multiple Security App configurations may use the same Security ruleset. 
+-   Setting up a new API Security rule requires creating at least one API schema. Your API Security rule will be read-only until you do so.
+-   It may take up to 2 minutes for an update to an API Security ruleset to be applied across our entire network.
 
-**To create an API security configuration**
+**To create an API Security ruleset**
 
 1.  Navigate to the **API Security** page.
     {{ SECURITY_NAV }} **API Security**.
 2.  Click **+ Create New API Rule**.
-3.  In the **Name of Ruleset** option, type a name for this API security configuration.
-4.  Click the **Schemas** tab. {{ PRODUCT }} will save your configuration. You must save an API schema, as described in the next step, before setting up an API gateway configuration.
+3.  In the **Name of Ruleset** option, type a name for this API Security ruleset.
+4.  Click the **Schemas** tab. {{ PRODUCT }} will save your configuration. You must save an API schema, as described in the next step, before setting up an API Security rule.
 5.  Add a JSON schema that defines the structure for a valid API payload.
     1.  Click **+ Create New** and then click on the new API schema (i.e., *Schema 1*).
     2.  In the **Name** option, type a name for this JSON schema. 
@@ -266,18 +266,18 @@ You may create, modify, and delete API security configurations.
             5.  When finished, click **Apply**.
         -   **Upload Schema:** Upload an API schema by clicking **Upload Schema JSON**, selecting the desired file, and then clicking **Open**.
     4.  Click **Save Schema**.
-    5.  Repeat steps 5.1 - 5.4 for each API schema that you would like to add to this API security rule. 
+    5.  Repeat steps 5.1 - 5.4 for each API schema that you would like to add to this API Security rule. 
 	
     <Callout type="tip">
 
-      You may apply different API schemas to different endpoints or operations by creating an API gateway configuration for each API schema. You should then restrict each API gateway configuration to only apply API schema validation to the desired set of endpoints or operations.
+      You may apply different API schemas to different endpoints or operations by creating an API Security rule for each API schema. You should then restrict each API Security rule to only apply API schema validation to the desired set of endpoints or operations.
 
     </Callout>
 
-6.  Add an API gateway configuration that identifies the API schema created in the previous step and the set of requests to which it will be applied.
+6.  Add an API Security rule that identifies the API schema created in the previous step and the set of requests to which it will be applied.
     1.  Click the **API GW Rules** tab.
     2.  Click **+ Create New**.
-    3.  In the **Name** option, type a name for this API gateway configuration.
+    3.  In the **Name** option, type a name for this API Security rule.
     4.  Optional. Restrict the set of requests that will be inspected to one or more specific relative path(s).
         1.  From the **URL Path(s)** option, determine whether {{ PRODUCT }} will perform URL path comparisons by [exact match](#exact-match-multiple-entries), [regular expression](#regex-match), or [wildcards](#wildcard-match).
         2.  Specify the desired relative path or regular expression. 
@@ -288,26 +288,26 @@ You may create, modify, and delete API security configurations.
     6.  From the **Schema ID** option, select the API schema created in step 5.
     7.  Click **Save**.
 
-**To modify an API security configuration**
+**To modify an API Security ruleset**
 
-1.  Navigate to the **API security** page.
-    {{ SECURITY_NAV }} **API security**.
-2.  Click on the desired API security configuration.
+1.  Navigate to the **API Security** page.
+    {{ SECURITY_NAV }} **API Security**.
+2.  Click on the desired API Security ruleset.
 3.  Make the desired changes.
 4.  Click **Save**.
 
-**To delete an API security configuration**
+**To delete an API Security ruleset**
 
 <Callout type="important">
 
-  You cannot delete an API security configuration that is associated with a Security App configuration. Please either modify the Security App configuration to point to a different API security or delete that Security App configuration.
+  You cannot delete an API Security ruleset that is associated with a Security App configuration. Please either modify the Security App configuration to point to a different API Security ruleset or delete that Security App configuration.
 
 </Callout>
 
-1.  Check your Security App configurations to verify that the desired API security configuration is not in use.
-2.  Navigate to the **API security** page.
-    {{ SECURITY_NAV }} **API security**.
-3.  Click on the desired API security configuration.
+1.  Check your Security App configurations to verify that the desired API Security ruleset is not in use.
+2.  Navigate to the **API Security** page.
+    {{ SECURITY_NAV }} **API Security**.
+3.  Click on the desired API Security ruleset.
 4.  Click **Delete**.
 5.  Click **Confirm**.
 

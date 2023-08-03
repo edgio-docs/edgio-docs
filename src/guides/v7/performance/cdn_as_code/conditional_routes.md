@@ -179,14 +179,14 @@ export default new Router()
 ```
 
 
-### Complex Criteria {/* complex-criteria */}
+### Advanced Conditionals {/* advanced-conditionals */}
 
 If you wish to use `.if()`, `.elseif()`, and `.else()` methods, but your criteria is not supported by [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html),
 you can take advantage of the `edgeControlCriteria` criteria property, and write the JSON logic yourself.
 
-The property `edgeControlCriteria` is defined in `Matches` type format (see [Conditionals](performance/cdn_as_code/conditional_routes#conditionals) section). 
+The `edgeControlCriteria` property is defined in `Matches` type format (see [Conditionals](/guides/performance/cdn_as_code/conditional_routes#conditionals) section). 
 
-Following example applies the nested logic if device is a tablet and the metod is GET (combination of both criteria formats):
+The following example applies the nested logic if the device is a tablet and the method is GET (combination of both criteria formats):
 
 ```js
 import {Router, and} from '@edgio/core';
@@ -204,7 +204,6 @@ export default new Router()
     new Router().if(/* ... */)
   );
 ```
-
 
 ## Using the .conditional() Method {/* using-the-conditional-method */}
 

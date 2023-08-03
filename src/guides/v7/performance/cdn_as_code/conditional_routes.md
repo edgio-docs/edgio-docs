@@ -166,10 +166,10 @@ export default new Router()
 ## Complex Criteria {/* complex-criteria */}
 
 If you wish to use `.if()`, `.elseif()`, and `.else()` methods, but your criteria is not supported by [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html),
-you can take advantage of the `edgeControlCriteria` property, and write the JSON logic yourself. The property is of type `Matches`. 
+you can use the `edgeControlCriteria` property to write custom JSON logic. The property is of type `Matches`. 
 You can see the full specification of the `Matches` type in the [API reference](/docs/api/core/interfaces/types.Matches.html).
 
-Following example applies the nested logic if device is a tablet and the metod is GET (combination of both criteria formats):
+Following example applies the nested logic if device is a tablet and the method is GET (combination of both criteria formats):
 
 ```js
 import {Router, and} from '@edgio/core';

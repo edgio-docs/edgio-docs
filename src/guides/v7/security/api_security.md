@@ -317,6 +317,6 @@ You may create, modify, and delete API Security rulesets.
 
 **Key information:**
 
--   Expand an endpoint break down request statistics by HTTP method and status code. 
+-   Expand an endpoint to break down request statistics by HTTP method and status code. 
 -   Request statistics are rounded to whole numbers. This may cause some entries to display *100%* or *0%* even though there are multiple entries for that endpoint. 
 -   Use this information to discover legacy or deprecated endpoints that are still being requested. 

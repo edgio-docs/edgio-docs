@@ -10,6 +10,13 @@ See [NPM Packages Changelog](/guides/changelog) for release notes related to the
 
 </Callout>
 
+## August 2023
+
+| Date  | Description                                                                                                                            |
+|------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| 8/1/2023 | **Security:**  <ul><li>Added the [API Security](/guides/security/api_security) feature. API Security validates the payload of API requests to a JSON schema. </li></ul> |
+| 8/1/2023 | **Analytics:**  <ul><li>Added the RTLD Bot feature. RTLD Bot delivers log data for threats identified by Bot Manager. </li></ul> |
+
 ## July 2023
 
 | Date  | Description                                                                                                                            |

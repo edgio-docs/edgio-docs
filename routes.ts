@@ -153,6 +153,7 @@ router.match('/docs/:path*', {
       );
       const upstreamResBody = await upstreamRes.text();
       res.setHeader('content-type', upstreamRes.headers.get('content-type'));
+      res.statusCode = upstreamRes.status;
       res.body = upstreamResBody;
 
       // due to relative paths in the response, if the path doesn't end with a trailing

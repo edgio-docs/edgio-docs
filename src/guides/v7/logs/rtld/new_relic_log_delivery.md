@@ -20,7 +20,7 @@ RTLD may automatically deliver compressed log data to your New Relic account by 
 
 2.  Upon completing the above step, you should create a log delivery profile for New Relic.
 
-{{ RTLD_PROFILE_SETUP_1 }} `New Relic`.
+{{ RTLD_PROFILE_SETUP_1.md }} `New Relic`.
 
 4.  Define how RTLD will communicate with New Relic.
 
@@ -28,4 +28,4 @@ RTLD may automatically deliver compressed log data to your New Relic account by 
     2.  Set the **Event Type** option to a label that identifies log data delivered to New Relic as a result of this profile. Specify a label that solely consists of alphanumeric characters, underscores, and colons.
     3.  Set the **Insert Key** option to an Inserts insight API key.
 
-{{ RTLD_PROFILE_SETUP_2 }}
+{{ RTLD_PROFILE_SETUP_2.md }}

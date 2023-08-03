@@ -55,7 +55,7 @@ RTLD may automatically deliver compressed log data to a Google Cloud Storage buc
 
 4.  Upon completing the above steps, you should create a log delivery profile for Google Cloud Storage.
 
-{{ RTLD_PROFILE_SETUP_1 }} `Google Cloud Storage`.
+{{ RTLD_PROFILE_SETUP_1.md }} `Google Cloud Storage`.
 
 4.  Define how RTLD will communicate with Google Cloud Storage.
 
@@ -64,4 +64,4 @@ RTLD may automatically deliver compressed log data to a Google Cloud Storage buc
     
         [Learn more about prefixes.](#log-file-prefix)
 
-{{ RTLD_PROFILE_SETUP_2 }}
+{{ RTLD_PROFILE_SETUP_2.md }}

@@ -15,7 +15,7 @@ RTLD may automatically deliver compressed log data to Datadog by submitting HTTP
 2.  Identify the Datadog location to which log data will be delivered.
 3.  Upon completing the above steps, you should create a log delivery profile for Datadog.
 
-{{ RTLD_PROFILE_SETUP_1 }} `Datadog`.
+{{ RTLD_PROFILE_SETUP_1.md }} `Datadog`.
 
 4.  Define how RTLD will communicate with Datadog.
 
@@ -23,4 +23,4 @@ RTLD may automatically deliver compressed log data to Datadog by submitting HTTP
     2.  From the **Datadog API Key** option, paste your Datadog API key. This API key authorizes our service to upload log data to Datadog.
     3.  From the **Datadog Service Attribute Value** option, type a value that identifies the data delivered as a result of this profile. Our service sets Datadog's service reserved attribute to this value.
 
-{{ RTLD_PROFILE_SETUP_2 }}
+{{ RTLD_PROFILE_SETUP_2.md }}

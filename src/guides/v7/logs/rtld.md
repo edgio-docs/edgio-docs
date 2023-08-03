@@ -8,7 +8,7 @@ Real-Time Log Delivery (RTLD) delivers log data in near real-time to a variety o
     
     <Callout type="info">
 
-      This feature must be purchased separately. For more information, please contact your CDN account manager.
+      This feature must be purchased separately. For more information, please contact your account manager.
 
     </Callout>
 
@@ -16,7 +16,7 @@ Real-Time Log Delivery (RTLD) delivers log data in near real-time to a variety o
 
     <Callout type="info">
 
-      RTLD WAF requires WAF Premier, WAF Standard, or WAF Essentials. If you currently have WAF Insights and would like to use this capability, please contact your CDN account manager to upgrade to the full version.
+      RTLD WAF requires {{ PRODUCT_SECURITY }} Premier, Standard, or Essentials. If you currently have {{ PRODUCT_SECURITY }} Insights and would like to use this capability, contact your account manager to upgrade to the full version.
 
     </Callout>
 
@@ -25,18 +25,18 @@ Real-Time Log Delivery (RTLD) delivers log data in near real-time to a variety o
       RTLD WAF delivers log data for threats identified by WAF. It excludes log data for rate limited requests as determined by rate rules. Use RTLD Rate Limiting to deliver log data for rate limited requests.
 
     </Callout>
--   **Real-Time Log Delivery Rate Limiting (RTLD Rate Limiting):** Delivers log data that describes requests for which [Web Application Firewall (WAF)](/guides/security/waf) enforced a rate limit as defined through a rate rule.
+-   **Real-Time Log Delivery Rate Limiting (RTLD Rate Limiting):** Delivers log data that describes requests for which {{ PRODUCT }} enforced a rate limit as defined through a [rate rule](/guides/security/rate_rules).
 
     <Callout type="info">
 
-      RTLD Rate Limiting requires WAF Premier, WAF Standard, or WAF Essentials. If you currently have WAF Insights and would like to use this capability, please contact your CDN account manager to upgrade to the full version.
+      RTLD Rate Limiting requires {{ PRODUCT_SECURITY }} Premier, Standard, or Essentials. If you currently have {{ PRODUCT_SECURITY }} Insights and would like to use this capability, contact your account manager to upgrade to the full version.
 
     </Callout>
--   **Real-Time Log Delivery Bot Manager (RTLD Bot Manager):** Delivers log data that describes requests for which [Bot Manager](/guides/security/bot_rules) identified bot traffic.
+-   **Real-Time Log Delivery Bot Manager (RTLD Bot Manager):** Delivers log data that describes requests for which [Bot Manager](/guides/security/bot_rules) identified as bot traffic.
 
     <Callout type="info">
 
-      RTLD Bot manager requires Bot Manager. Bot Manager requires activation. {{ ACCOUNT_UPGRADE }}
+      RTLD Bot Manager requires Bot Manager. Bot Manager requires activation. {{ ACCOUNT_UPGRADE }}
 
     </Callout>
 
@@ -56,8 +56,9 @@ RTLD delivers compressed log data to one or more of the following destination(s)
 Log data consists a set of log entries. Each entry describes either:
 
 -   **RTLD CDN:** A HTTP/HTTPS request that was directed to our CDN service.
--   **RTLD Rate Limiting:** A HTTP/HTTPS request that exceeded a rate limit enforced by a Security Application Manager configuration.
 -   **RTLD WAF:** A HTTP/HTTPS request that was identified as a threat by WAF and information on why it was deemed a threat.
+-   **RTLD Rate Limiting:** A HTTP/HTTPS request that exceeded a rate limit enforced by a Security App configuration.
+-   **RTLD Bot Manager:** A HTTP/HTTPS request that was identified as originating from a bot. 
 
 If our service is unable to deliver log data, then we will store it for up to 3 days and deliver it when communication resumes. If we cannot deliver log data within 3 days, then it will be permanently deleted.
 
@@ -92,7 +93,7 @@ You may create multiple profiles. This allows you to:
     
 -   Log fields vary by RTLD module.
     
-    Learn more about log fields: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
+    Learn more about log fields: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot Manager](/guides/logs/rtld/log_fields_rtld_bot_manager)
     
 -   Log data will only be delivered when a profile's status is enabled.
 -   The procedure for creating and modifying profiles varies by the destination to which log files will be delivered. Learn more about delivering to:

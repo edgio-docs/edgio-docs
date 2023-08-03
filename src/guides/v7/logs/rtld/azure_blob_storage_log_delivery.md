@@ -69,7 +69,7 @@ RTLD may automatically deliver compressed log data to an Azure Blob Storage cont
 
 3.  Upon completing the above steps, you should create a log delivery profile for Azure Blob Storage.
 
-{{ RTLD_PROFILE_SETUP_1 }} `Azure Blob Storage`.
+{{ RTLD_PROFILE_SETUP_1.md }} `Azure Blob Storage`.
 
 4.  Define how RTLD will communicate with Azure Blob Storage.
 
@@ -83,4 +83,4 @@ RTLD may automatically deliver compressed log data to an Azure Blob Storage cont
     
         If you plan on providing a SAS token, make sure that the token has permission to write to the blob/container. Additionally, it should start with `sv=` and it should not include a `?`.
 
-{{ RTLD_PROFILE_SETUP_2 }}
+{{ RTLD_PROFILE_SETUP_2.md }}

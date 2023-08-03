@@ -95,7 +95,7 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
 
 5.  Upon completing the above steps, you should create a log delivery profile for AWS S3.
 
-{{ RTLD_PROFILE_SETUP_1 }} `AWS S3`.
+{{ RTLD_PROFILE_SETUP_1.md }} `AWS S3`.
 
 4.  Define how RTLD will communicate with AWS S3.
 
@@ -107,4 +107,4 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
 
     3.  From the **AWS Region** option, select the region assigned to the AWS S3 bucket.
 
-{{ RTLD_PROFILE_SETUP_2 }}
+{{ RTLD_PROFILE_SETUP_2.md }}

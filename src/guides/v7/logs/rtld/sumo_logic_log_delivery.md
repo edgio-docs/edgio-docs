@@ -41,10 +41,10 @@ RTLD may automatically deliver compressed log data to Sumo Logic by submitting H
 
 2.  Upon completing the above steps, you should create a log delivery profile for Sumo Logic.
 
-{{ RTLD_PROFILE_SETUP_1 }} `Sumo Logic`.
+{{ RTLD_PROFILE_SETUP_1.md }} `Sumo Logic`.
 
 4.  Define how RTLD will communicate with Sumo Logic.
 
     In the **Sumo Logic URL** option, paste the URL associated with your [HTTP Source](#http-source).
 
-{{ RTLD_PROFILE_SETUP_2 }}
+{{ RTLD_PROFILE_SETUP_2.md }}

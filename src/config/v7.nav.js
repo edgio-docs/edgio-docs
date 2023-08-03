@@ -159,10 +159,10 @@ const nav = {
           title: 'Serverless Compute',
           path: 'performance/serverless_compute',
         },
-        {
-          title: 'Unit Testing (EdgeJS)',
-          path: 'performance/unit_testing_edgejs',
-        },
+        // {
+        //   title: 'Unit Testing (EdgeJS)',
+        //   path: 'performance/unit_testing_edgejs',
+        // },
         {
           title: 'Image Optimization',
           path: 'performance/image_optimization',
@@ -229,6 +229,10 @@ const nav = {
         {
           title: 'Web Application Firewall (WAF)',
           path: 'security/waf',
+        },
+        {
+          title: 'Getting Started',
+          path: 'security/getting_started',
         },
         {
           title: 'Access Rules',

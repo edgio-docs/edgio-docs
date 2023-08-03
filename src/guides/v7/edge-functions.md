@@ -17,7 +17,7 @@ new Router().get('/', {
 Each Edge Function is stored in a separate file and assigned to a specific route in your `routes.js` file. An Edge Function file must export the following entry point:
 
 ```js
-export default async function handleHttpRequest(request, context) {
+export async function handleHttpRequest(request, context) {
   /* your edge function code goes here */
 }
 ```
@@ -86,7 +86,7 @@ new Router()
 
 ```js filename="./edge-functions/home-page.js"
 // Example edge function that injects a header into the response
-export default async function handleHttpRequest(request, context) {
+export async function handleHttpRequest(request, context) {
   // Forward the incoming request to the defined origin server.
   const response = await fetch(request, {edgio: {origin: 'legacy_server'}});
 
@@ -100,7 +100,7 @@ export default async function handleHttpRequest(request, context) {
 
 ```js filename="./edge-functions/product.js"
 // Example edge function that modifies a response from the origin server
-export default async function handleHttpRequest(request, context) {
+export async function handleHttpRequest(request, context) {
   // Forward the incoming request to the defined origin server.
   const response = await fetch(request, {edgio: {origin: 'json_api_server'}});
 
@@ -120,7 +120,7 @@ export default async function handleHttpRequest(request, context) {
 
 ```js filename="./edge-functions/contacts.js"
 // Example edge function makes multiple fetches
-export default async function handleHttpRequest(request, context) {
+export async function handleHttpRequest(request, context) {
   const myBackend = 'http://api.backend-example.com';
 
   // Get the list of phone contacts

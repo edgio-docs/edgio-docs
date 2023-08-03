@@ -243,8 +243,8 @@ You may create, modify, and delete API Security rulesets.
 **Key information:**
 
 -   Administer API Security rulesets from the **API Security** page.
--   Apply an API Security ruleset to production traffic by adding it to a [Security App configuration](/guides/security/security_applications) and then determining how it will be enforced. Multiple Security App configurations may use the same Security ruleset. 
--   Setting up a new API Security rule requires creating at least one API schema. Your API Security rule will be read-only until you do so.
+-   Apply an API Security ruleset to production traffic by adding it to a [Security App configuration](/guides/security/security_applications) and then determining how it will be enforced. Multiple Security App configurations may use the same API Security ruleset. 
+-   Setting up a new API Security rule requires creating at least one API schema within the current API Security ruleset. Your API Security rule will be read-only until you do so.
 -   It may take up to 2 minutes for an update to an API Security ruleset to be applied across our entire network.
 
 **To create an API Security ruleset**

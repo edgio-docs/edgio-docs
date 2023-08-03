@@ -156,6 +156,15 @@ router.match('/docs/:path*', {
       res.statusCode = upstreamRes.status;
       res.body = upstreamResBody;
 
+      if (res.statusCode.toString().match(/^4\d\d$/)) {
+        console.error(
+          'Error fetching API docs',
+          res.statusCode,
+          targetPath,
+          upstreamRes
+        );
+      }
+
       // due to relative paths in the response, if the path doesn't end with a trailing
       // slash (eg. /api/core), then assets will be requested from the wrong path (eg. /api/assets/...)
       // so we need to rewrite the paths to include the last path segment

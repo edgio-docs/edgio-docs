@@ -2,43 +2,20 @@
 title: Real-Time Log Delivery (RTLD)
 ---
 
-Real-Time Log Delivery (RTLD) delivers log data in near real-time to a variety of destinations. It consists of two modules, which are:
+Real-Time Log Delivery (RTLD) delivers log data in near real-time to a variety of destinations. It consists of the following modules, which are:
 
--   **Real-Time Log Delivery CDN (RTLD CDN):** Delivers log data that describes requests submitted to our CDN service.
-    
-    <Callout type="info">
+| Module  | Description   | Requirements  |
+|---|---|---|
+| RTLD CDN  | Delivers log data that describes requests submitted to our CDN service.  | Purchased Separately  |
+| RTLD WAF  | Delivers log data that describes requests identified as threats by [Web Application Firewall (WAF)](/guides/security/waf). <br />It excludes log data for threats identified by Rate Rules or Bot Manager. | {{ PRODUCT_SECURITY }} Premier, Standard, or Essentials  |
+| RTLD Rate Limiting  | Delivers log data that describes requests for which {{ PRODUCT }} enforced a rate limit as defined through a [rate rule](/guides/security/rate_rules).   | {{ PRODUCT_SECURITY }} Premier, Standard, or Essentials  |
+| RTLD Bot Manager  | Delivers log data that describes requests for which [Bot Manager](/guides/security/bot_rules) identified as bot traffic.  | Bot Manager  |
 
-      This feature must be purchased separately. For more information, please contact your account manager.
+<Callout type="info">
 
-    </Callout>
+  {{ ACCOUNT_UPGRADE }}
 
--   **Real-Time Log Delivery WAF (RTLD WAF):** Delivers log data that describes requests identified as threats by [Web Application Firewall (WAF)](/guides/security/waf).
-
-    <Callout type="info">
-
-      RTLD WAF requires {{ PRODUCT_SECURITY }} Premier, Standard, or Essentials. If you currently have {{ PRODUCT_SECURITY }} Insights and would like to use this capability, contact your account manager to upgrade to the full version.
-
-    </Callout>
-
-    <Callout type="info">
-
-      RTLD WAF delivers log data for threats identified by WAF. It excludes log data for rate limited requests as determined by rate rules. Use RTLD Rate Limiting to deliver log data for rate limited requests.
-
-    </Callout>
--   **Real-Time Log Delivery Rate Limiting (RTLD Rate Limiting):** Delivers log data that describes requests for which {{ PRODUCT }} enforced a rate limit as defined through a [rate rule](/guides/security/rate_rules).
-
-    <Callout type="info">
-
-      RTLD Rate Limiting requires {{ PRODUCT_SECURITY }} Premier, Standard, or Essentials. If you currently have {{ PRODUCT_SECURITY }} Insights and would like to use this capability, contact your account manager to upgrade to the full version.
-
-    </Callout>
--   **Real-Time Log Delivery Bot Manager (RTLD Bot Manager):** Delivers log data that describes requests for which [Bot Manager](/guides/security/bot_rules) identified as bot traffic.
-
-    <Callout type="info">
-
-      RTLD Bot Manager requires Bot Manager. Bot Manager requires activation. {{ ACCOUNT_UPGRADE }}
-
-    </Callout>
+</Callout>
 
 RTLD delivers compressed log data to one or more of the following destination(s):
 

@@ -697,6 +697,8 @@ router.match(
 If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [country code](/guides/reference/country_codes) using the `location.country` match condition:
 
 ```js
+import {or} from '@edgio/core';
+
 router.if(or(
   { 
     edgeControlCriteria: {

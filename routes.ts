@@ -123,72 +123,71 @@ router.match('/docs/:path*', {
 });
 
 // proxy v?.x api docs to the latest version
-[3, 4, 5, 6, 7].forEach((v) => {
-  // proxy /docs/v?.x to the latest version
-  router.match(`/docs/v${v}.x/:path*`, ({compute}) => {
-    compute(async (req, res) => {
-      // fetch the list of current published versions
-      const versions = await (
-        await fetch('https://docs.edg.io/docs/versions')
-      ).text();
+router.match(`/docs/v:version.x/:path*`, ({compute}) => {
+  compute(async (req, res) => {
+    const v = req.params!.version;
 
-      const targetVersion = semverMaxSatisfying(
-        versions.replace(/\n/g, '').split(','),
-        `v${v}.x`
+    // fetch the list of current published versions
+    const versions = await (
+      await fetch('https://docs.edg.io/docs/versions')
+    ).text();
+
+    const targetVersion = semverMaxSatisfying(
+      versions.replace(/\n/g, '').split(','),
+      `v${v}.x`
+    );
+
+    let targetPath = req.path.replace(`/docs/v${v}.x`, `/${targetVersion}`);
+    const lastPathSegment = targetPath.split('/').reverse()[0];
+    const hasTrailingSlash = targetPath.endsWith('/');
+    const hasFileExtension = lastPathSegment.includes('.');
+    const slashSeparator = hasTrailingSlash ? '' : '/';
+
+    // set path to index.html if it doesn't end with a file extension
+    if (!hasFileExtension) {
+      targetPath = targetPath + slashSeparator + 'index.html';
+    }
+
+    const upstreamRes = await fetch(
+      `https://${DOCS_PAGES_DOMAIN}${targetPath}`
+    );
+    const upstreamResBody = await upstreamRes.text();
+    res.setHeader('content-type', upstreamRes.headers.get('content-type'));
+    res.statusCode = upstreamRes.status;
+    res.body = upstreamResBody;
+
+    if (res.statusCode.toString().match(/^4\d\d$/)) {
+      console.error(
+        'Error fetching API docs',
+        res.statusCode,
+        targetPath,
+        upstreamRes
       );
+    }
 
-      let targetPath = req.path.replace(`/docs/v${v}.x`, `/${targetVersion}`);
-      const lastPathSegment = targetPath.split('/').reverse()[0];
-      const hasTrailingSlash = targetPath.endsWith('/');
-      const hasFileExtension = lastPathSegment.includes('.');
-      const slashSeparator = hasTrailingSlash ? '' : '/';
+    // due to relative paths in the response, if the path doesn't end with a trailing
+    // slash (eg. /api/core), then assets will be requested from the wrong path (eg. /api/assets/...)
+    // so we need to rewrite the paths to include the last path segment
+    if (!hasTrailingSlash && !hasFileExtension) {
+      const $ = load(upstreamResBody ?? '');
 
-      // set path to index.html if it doesn't end with a file extension
-      if (!hasFileExtension) {
-        targetPath = targetPath + slashSeparator + 'index.html';
-      }
+      // prepend ${lastPathSegment} to all elements with an href or src attribute
+      $('*[href], *[src]').each((i, el) => {
+        const $el = $(el);
+        const href = $el.attr('href');
+        const src = $el.attr('src');
 
-      const upstreamRes = await fetch(
-        `https://${DOCS_PAGES_DOMAIN}${targetPath}`
-      );
-      const upstreamResBody = await upstreamRes.text();
-      res.setHeader('content-type', upstreamRes.headers.get('content-type'));
-      res.statusCode = upstreamRes.status;
-      res.body = upstreamResBody;
+        if (href) {
+          $el.attr('href', `${lastPathSegment}/${href}`);
+        }
 
-      if (res.statusCode.toString().match(/^4\d\d$/)) {
-        console.error(
-          'Error fetching API docs',
-          res.statusCode,
-          targetPath,
-          upstreamRes
-        );
-      }
+        if (src) {
+          $el.attr('src', `${lastPathSegment}/${src}`);
+        }
+      });
 
-      // due to relative paths in the response, if the path doesn't end with a trailing
-      // slash (eg. /api/core), then assets will be requested from the wrong path (eg. /api/assets/...)
-      // so we need to rewrite the paths to include the last path segment
-      if (!hasTrailingSlash && !hasFileExtension) {
-        const $ = load(upstreamResBody ?? '');
-
-        // prepend ${lastPathSegment} to all elements with an href or src attribute
-        $('*[href], *[src]').each((i, el) => {
-          const $el = $(el);
-          const href = $el.attr('href');
-          const src = $el.attr('src');
-
-          if (href) {
-            $el.attr('href', `${lastPathSegment}/${href}`);
-          }
-
-          if (src) {
-            $el.attr('src', `${lastPathSegment}/${src}`);
-          }
-        });
-
-        res.body = $.html();
-      }
-    });
+      res.body = $.html();
+    }
   });
 });
 

@@ -30,35 +30,35 @@ Filter log data to only include relevant information and to reduce the amount of
 
 You may filter by:
 
--   **Access Rule:**<a href="access-rule" /> Set the **Filter By Access Rule** option to one or more access rule(s) by selecting or typing them.
+-   **Access Rule:**<a id="access-rule" /> Set the **Filter By Access Rule** option to one or more access rule(s) by selecting or typing them.
 
--   **Client IP:**<a href="client-ip" /> Set the **Filter by Client IP** option to one or more IP addresses.
+-   **Client IP:**<a id="client-ip" /> Set the **Filter by Client IP** option to one or more IP addresses.
 
--   **Country:**<a href="country" /> Set the **Filter by Country** option to the desired set of countries by selecting them. 
+-   **Country:**<a id="country" /> Set the **Filter by Country** option to the desired set of countries by selecting them. 
 
     Filter the list by typing the entire or partial country name. For example, typing `un` will filter the list to include all countries that contain `un` (e.g., United States and United Kingdom).
 
--   **Custom Rule:**<a href="custom-rule" /> Set the **Filter By Custom Rule** option to one or more custom rule(s) by selecting or typing each desired name. 
+-   **Custom Rule:**<a id="custom-rule" /> Set the **Filter By Custom Rule** option to one or more custom rule(s) by selecting or typing each desired name. 
 
--   **Enforcement Action:**<a href="enforcement-action" /> Set the **Filter By Action Type** option to one or more enforcement action(s) by selecting or typing them.
+-   **Enforcement Action:**<a id="enforcement-action" /> Set the **Filter By Action Type** option to one or more enforcement action(s) by selecting or typing them.
 
--   **Hostname:**<a href="hostname" /> From within the **Filter by Hostname** section, click within the **Hostnames** option and select the desired hostname(s). 
+-   **Hostname:**<a id="hostname" /> From within the **Filter by Hostname** section, click within the **Hostnames** option and select the desired hostname(s). 
 
     Filter the list by typing the entire or partial hostname. For example, typing `co` will filter the list to include all hostnames that contain `co` (e.g., cdn.example.com and corp.example.org).
 
--   **Managed Rule:**<a href="managed-rule" /> Set the **Filter By Managed Rule** option to one or more managed rule(s) by selecting or typing their names.
+-   **Managed Rule:**<a id="managed-rule" /> Set the **Filter By Managed Rule** option to one or more managed rule(s) by selecting or typing their names.
 
--   **Rate Rule:**<a href="rate-rule" /> Set the **Filter By Action Limit ID** option to one or more rate rule(s) by typing their names. 
+-   **Rate Rule:**<a id="rate-rule" /> Set the **Filter By Action Limit ID** option to one or more rate rule(s) by typing their names. 
 
--   **Request Method:**<a href="request-method" /> Set the **Filter By Request Method** option to one or more request method(s) by selecting or typing them.
+-   **Request Method:**<a id="request-method" /> Set the **Filter By Request Method** option to one or more request method(s) by selecting or typing them.
 
--   **Security App Configuration:**<a href="security-app-configuration" /> Set the **Filter By Scope Name** option to one or more Security App configuration(s) by selecting or typing their names. 
+-   **Security App Configuration:**<a id="security-app-configuration" /> Set the **Filter By Scope Name** option to one or more Security App configuration(s) by selecting or typing their names. 
 
--   **Status Code:**<a href="status-code" /> Set the **Filter by Status Code** option by selecting each status code class (e.g., `2xx` or `3xx`) for which log data will be delivered.  
+-   **Status Code:**<a id="status-code" /> Set the **Filter by Status Code** option by selecting each status code class (e.g., `2xx` or `3xx`) for which log data will be delivered.  
 
--   **URL:**<a href="url" /> Set the **Filter By URL Regex** option to a RE2-compatible regular expression pattern that identifies the set of URLs by which log data will be filtered.
+-   **URL:**<a id="url" /> Set the **Filter By URL Regex** option to a RE2-compatible regular expression pattern that identifies the set of URLs by which log data will be filtered.
 
--   **User Agent:**<a href="user-agent" /> Set the **Filter by User Agent** option to a RE2-compatible regular expression pattern that identifies the set of user agents by which log data will be filtered.
+-   **User Agent:**<a id="user-agent" /> Set the **Filter by User Agent** option to a RE2-compatible regular expression pattern that identifies the set of user agents by which log data will be filtered.
 
 ### Matches or Does Not Match {/*matches-or-does-not-match*/}
 

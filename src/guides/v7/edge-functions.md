@@ -73,6 +73,8 @@ Edge Functions are limited to 2MB of memory at runtime. This includes the compil
 
 ## Edge Function Examples {/* examples */}
 
+Below are some examples of how to use Edge Functions by Edgio. We also maintain a [GitHub repository](https://github.com/Edgio/Edge-Functions-Examples) with more detailed examples of real-world use cases.
+
 ```js filename="./routes.js"
 // Example router assigning edge functions to different routes.
 new Router()

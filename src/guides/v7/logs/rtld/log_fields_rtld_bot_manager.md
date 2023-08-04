@@ -75,7 +75,7 @@ The `logs` array contains an object for each log entry associated with the curre
 -   **captcha_status (*String*):** CAPTCHA Status. (Category: Event) Indicates the result of a reCAPTCHA event. Valid values are:
 
     -   **STATUS_NONE:** Indicates that reCAPTCHA was not applied to the request.
-    -   **ISSUED_NO_GOOGLE_TOKEN:** Indicates that Google reCAPTCHA did not issue a token.
+    -   **ISSUED_NO_GOOGLE_TOKEN:** Indicates either a new browser session or that Google reCAPTCHA did not issue a token.
     -   **FAILED_RESULT_BOT:** Indicates that the request failed Google reCAPTCHA.
     -   **FAILED_RESULT_ERROR:** Indicates that an error occurred during the Google reCAPTCHA.
     -   **ECTOKEN_CORRUPTED:** Indicates that a reCAPTCHA was served due to an invalid token. This status is typically reported when a user agent submits a request that includes a token that our service cannot decrypt.

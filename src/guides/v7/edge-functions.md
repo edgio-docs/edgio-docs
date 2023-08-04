@@ -13,6 +13,9 @@ new Router().get('/', {
   edge_function: './path/to/function.js',
 });
 ```
+<Callout type="tip">
+If you're new to Edgio or not familiar with the above code, please read our [CDN-as-Code guide](/guides/v7/performance/cdn_as_code) to understand how this works, including how to initialize a project and how to deploy it.
+</Callout>
 
 Each Edge Function is stored in a separate file and assigned to a specific route in your `routes.js` file. An Edge Function file must export the following entry point:
 

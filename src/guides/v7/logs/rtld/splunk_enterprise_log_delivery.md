@@ -15,7 +15,7 @@ The format for log data delivered to Splunk Enterprise is JSON Lines. This log f
         
     For information on how to set up Splunk Enterprise, please refer to [their documentation](https://docs.splunk.com/Documentation).
 
--   The set of available log fields varies by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
+-   The set of available log fields varies by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager)
 
 **To set up Splunk Enterprise log delivery**
 

@@ -74,7 +74,7 @@ You may create multiple profiles. This allows you to:
     
 -   Log fields vary by RTLD module.
     
-    Learn more about log fields: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot Manager](/guides/logs/rtld/log_fields_rtld_bot_manager)
+    Learn more about log fields: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager)
     
 -   Log data will only be delivered when a profile's status is enabled.
 -   The procedure for creating and modifying profiles varies by the destination to which log files will be delivered. Learn more about delivering to:

@@ -85,10 +85,6 @@ const nav = {
               title: 'Route Features',
               path: 'performance/cdn_as_code/route_features',
             },
-            // {
-            //   title: 'Edge Functions',
-            //   path: 'performance/cdn_as_code/edge_functions',
-            // },
             {
               title: 'Error Handling',
               path: 'performance/cdn_as_code/error_handling',
@@ -204,6 +200,11 @@ const nav = {
           path: 'performance/limits',
         },
       ],
+    },
+    {
+      title: 'Edge Functions',
+      path: 'edge-functions',
+      icon: 'edge-functions',
     },
     {
       title: 'Security',

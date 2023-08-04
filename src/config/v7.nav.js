@@ -208,7 +208,7 @@ const nav = {
     {
       title: 'Edge Functions',
       path: 'edge-functions',
-      icon: 'spark',
+      icon: 'edge-functions',
     },
     {
       title: 'Security',

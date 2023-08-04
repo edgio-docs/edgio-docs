@@ -6,7 +6,7 @@ RTLD may automatically deliver compressed log data to a Google Cloud Storage buc
 
 **Key information:**
 
--   The set of available log fields varies by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
+-   The set of available log fields varies by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager)
 -   RTLD applies gzip compression to log data. Google Cloud Storage stores compressed log data as an object with a `gz` file extension. 
 
     [Learn more.](/guides/logs/rtld/log_file_naming_convention)
@@ -55,7 +55,7 @@ RTLD may automatically deliver compressed log data to a Google Cloud Storage buc
 
 4.  Upon completing the above steps, you should create a log delivery profile for Google Cloud Storage.
 
-{{ RTLD_PROFILE_SETUP_1 }} `Google Cloud Storage`.
+{{ RTLD_PROFILE_SETUP_1.md }} `Google Cloud Storage`.
 
 4.  Define how RTLD will communicate with Google Cloud Storage.
 
@@ -64,4 +64,4 @@ RTLD may automatically deliver compressed log data to a Google Cloud Storage buc
     
         [Learn more about prefixes.](#log-file-prefix)
 
-{{ RTLD_PROFILE_SETUP_2 }}
+{{ RTLD_PROFILE_SETUP_2.md }}

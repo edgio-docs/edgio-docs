@@ -544,6 +544,10 @@ const nav = {
               path: '',
             },
             {
+              title: 'Filtering Log Data',
+              path: 'logs/rtld/filtering_log_data',
+            },
+            {
               title: 'Log File Naming Convention',
               path: 'logs/rtld/log_file_naming_convention',
             },
@@ -560,12 +564,16 @@ const nav = {
               path: 'logs/rtld/log_fields_rtld_cdn',
             },
             {
+              title: 'Log Fields (RTLD WAF)',
+              path: 'logs/rtld/log_fields_rtld_waf',
+            },
+            {
               title: 'Log Fields (RTLD Rate Limiting',
               path: 'logs/rtld/log_fields_rtld_rate_limiting',
             },
             {
-              title: 'Log Fields (RTLD WAF)',
-              path: 'logs/rtld/log_fields_rtld_waf',
+              title: 'Log Fields (RTLD Bot)',
+              path: 'logs/rtld/log_fields_rtld_bot_manager',
             },
           ],
         },

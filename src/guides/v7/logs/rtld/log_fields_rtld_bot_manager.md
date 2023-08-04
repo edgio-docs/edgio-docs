@@ -72,7 +72,7 @@ The `logs` array contains an object for each log entry associated with the curre
 -   **bot_score (*Integer*):** Bot Score. (Category: Event) Indicates the request's bot score. This score indicates our level of confidence that the request originated from a bot. 
 -   **captcha_error_msg (*String*):** CAPTCHA Error Msg. (Category: Event) Indicates the reCAPTCHA error message.
 -   **captcha_score (*Decimal*):** CAPTCHA Score. (Category: Event) Indicates the request's reCAPTCHA score. Returns `0.000000` if reCAPTCHA was not applied to the request.
--   **captcha_status (*String*):** CAPTCHA Status. (Category: Event) Indicates the request's reCAPTCHA status. Valid values are:
+-   **captcha_status (*String*):** CAPTCHA Status. (Category: Event) Indicates the result of a reCAPTCHA event. Valid values are:
 
     -   **STATUS_NONE:** Indicates that reCAPTCHA was not applied to the request.
     -   **ISSUED_NO_GOOGLE_TOKEN:** Indicates that Google reCAPTCHA did not issue a token.

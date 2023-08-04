@@ -86,10 +86,6 @@ const nav = {
               path: 'performance/cdn_as_code/route_features',
             },
             {
-              title: 'Edge Functions',
-              path: 'edge-functions',
-            },
-            {
               title: 'Error Handling',
               path: 'performance/cdn_as_code/error_handling',
             },

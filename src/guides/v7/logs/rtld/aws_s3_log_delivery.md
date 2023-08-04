@@ -69,7 +69,7 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
     			],
     			"Resource": [
     				"arn:aws:s3:::BUCKET-NAME",
-    				"arn:aws:s3:::BUCKET-NAME/\*"
+    				"arn:aws:s3:::BUCKET-NAME/*"
     			]
     		}
     	]

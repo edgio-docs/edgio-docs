@@ -43,7 +43,7 @@ A threat event occurs when an access rule, custom rule, or managed rule is viola
 
 [View field definitions.](/guides/security/recent_event_logs#threat-log-fields)
 
-## Browser Challenges View {/*bot-view*/}
+## Bot Events View {/*bot-events-view*/}
 
 A bot event occurs when a bot manager rule is violated. Analyze recently detected bot traffic to 
 -   Visualize peak bot traffic time periods and the amount of bot traffic directed at your web application and APIs.

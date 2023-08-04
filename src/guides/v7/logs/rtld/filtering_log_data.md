@@ -4,21 +4,21 @@ title: Filtering Log Data
 
 Filter log data to only include relevant information and to reduce the amount of data being ingested. Filtering options vary by RTLD module.
 
-| Filter                                                    | RTLD CDN | RTLD WAF | RTLD Rate Limiting | RTLD Bot Manager |
-| --------------------------------------------------------- | -------- | -------- | ------------------ | ---------------- |
-| [Access Rule](#access-rule)                               | No       | Yes      | No                 | FINDME           |
-| [Client IP](#client-ip)                                   | No       | No       | Yes                | FINDME           |
-| [Country](#country)                                       | No       | Yes      | Yes                | FINDME           |
-| [Custom Rule](#custom-rule)                               | No       | Yes      | No                 | FINDME           |
-| [Enforcement Action](#enforcement-action)                 | No       | No       | Yes                | FINDME           |
-| [Hostname](#hostname)                                     | Yes      | Yes      | Yes                | FINDME           |
-| [Managed Rule](#managed-rule)                             | No       | Yes      | No                 | FINDME           |
-| [Rate Rule](#rate-rule)                                   | No       | No       | Yes                | FINDME           |
-| [Request Method](#request-method)                         | No       | No       | Yes                | FINDME           |
-| [Security App configuration](#security-app-configuration) | No       | Yes      | Yes                | FINDME           |
-| [Status Code](#status-code)                               | Yes      | No       | No                 | FINDME           |
-| [User Agent](#user-agent)                                 | Yes      | Yes      | Yes                | FINDME           |
-| [URL](#url)                                               | No       | No       | Yes                | FINDME           |
+| Filter                                                    | RTLD CDN                                                   | RTLD WAF                                                   | RTLD Rate Limiting                                         | RTLD Bot Manager |
+| --------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------- |
+| [Access Rule](#access-rule)                               |                                                            | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> |                                                            | FINDME           |
+| [Client IP](#client-ip)                                   |                                                            |                                                            | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> | FINDME           |
+| [Country](#country)                                       |                                                            | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> | FINDME           |
+| [Custom Rule](#custom-rule)                               |                                                            | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> |                                                            | FINDME           |
+| [Enforcement Action](#enforcement-action)                 |                                                            |                                                            | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> | FINDME           |
+| [Hostname](#hostname)                                     | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> | FINDME           |
+| [Managed Rule](#managed-rule)                             |                                                            | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> |                                                            | FINDME           |
+| [Rate Rule](#rate-rule)                                   |                                                            |                                                            | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> | FINDME           |
+| [Request Method](#request-method)                         |                                                            |                                                            | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> | FINDME           |
+| [Security App configuration](#security-app-configuration) |                                                            | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> | FINDME           |
+| [Status Code](#status-code)                               | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> |                                                            |                                                            | FINDME           |
+| [User Agent](#user-agent)                                 | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> | FINDME           |
+| [URL](#url)                                               |                                                            |                                                            | <Image inline src="/images/v7/icons/save.png" alt="Yes" /> | FINDME           |
 
 <Callout type="info">
 
@@ -36,7 +36,7 @@ You may filter by:
 
 -   **Country:**<a href="country" /> Set the **Filter by Country** option to the desired set of countries by selecting them. 
 
-    Filter the list by typing the entire or partial country name. For example, typing \`un\` will filter the list to include all countries that contain \`un\` (e.g., United States and United Kingdom).
+    Filter the list by typing the entire or partial country name. For example, typing `un` will filter the list to include all countries that contain `un` (e.g., United States and United Kingdom).
 
 -   **Custom Rule:**<a href="custom-rule" /> Set the **Filter By Custom Rule** option to one or more custom rule(s) by selecting or typing each desired name. 
 
@@ -44,7 +44,7 @@ You may filter by:
 
 -   **Hostname:**<a href="hostname" /> From within the **Filter by Hostname** section, click within the **Hostnames** option and select the desired hostname(s). 
 
-    Filter the list by typing the entire or partial hostname. For example, typing \`co\` will filter the list to include all hostnames that contain \`co\` (e.g., cdn.example.com and corp.example.org).
+    Filter the list by typing the entire or partial hostname. For example, typing `co` will filter the list to include all hostnames that contain `co` (e.g., cdn.example.com and corp.example.org).
 
 -   **Managed Rule:**<a href="managed-rule" /> Set the **Filter By Managed Rule** option to one or more managed rule(s) by selecting or typing their names.
 
@@ -54,7 +54,7 @@ You may filter by:
 
 -   **Security App Configuration:**<a href="security-app-configuration" /> Set the **Filter By Scope Name** option to one or more Security App configuration(s) by selecting or typing their names. 
 
--   **Status Code:**<a href="status-code" /> Set the **Filter by Status Code** option by selecting each status code class (e.g., \`2xx\` or \`3xx\`) for which log data will be delivered.  
+-   **Status Code:**<a href="status-code" /> Set the **Filter by Status Code** option by selecting each status code class (e.g., `2xx` or `3xx`) for which log data will be delivered.  
 
 -   **URL:**<a href="url" /> Set the **Filter By URL Regex** option to a RE2-compatible regular expression pattern that identifies the set of URLs by which log data will be filtered.
 

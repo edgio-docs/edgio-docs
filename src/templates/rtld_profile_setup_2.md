@@ -21,11 +21,7 @@
 
         </Callout>
 
-7.  Determine whether log data will be filtered.
-
-    -   [RTLD CDN](#filtering-rtld-cdn-log-data)
-    -   [RTLD Rate Limiting](#filtering-rtld-rate-limiting-log-data)
-    -   [RTLD WAF](#filtering-rtld-waf-log-data)
+7.  Determine whether [log data will be filtered](/guides/logs/rtld/filtering_log_data).
 
 8.  By default, all log fields are enabled on a new log delivery profile. Clear each field for which log data should not be reported. Adjust the set of log fields that will be included within this log delivery profile from within the **Fields** section.
 

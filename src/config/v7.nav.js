@@ -543,6 +543,10 @@ const nav = {
               path: '',
             },
             {
+              title: 'Filtering Log Data',
+              path: 'logs/rtld/filtering_log_data',
+            },
+            {
               title: 'Log File Naming Convention',
               path: 'logs/rtld/log_file_naming_convention',
             },

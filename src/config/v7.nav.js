@@ -87,7 +87,7 @@ const nav = {
             },
             {
               title: 'Edge Functions',
-              path: 'performance/cdn_as_code/edge_functions',
+              path: 'edge-functions',
             },
             {
               title: 'Error Handling',
@@ -204,6 +204,11 @@ const nav = {
           path: 'performance/limits',
         },
       ],
+    },
+    {
+      title: 'Edge Functions',
+      path: 'edge-functions',
+      icon: 'spark',
     },
     {
       title: 'Security',

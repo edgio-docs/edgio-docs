@@ -4,12 +4,12 @@ title: Real-Time Log Delivery (RTLD)
 
 Real-Time Log Delivery (RTLD) delivers log data in near real-time to a variety of destinations. It consists of the following modules, which are:
 
-| Module  | Description   | Requirements  |
-|---|---|---|
-| RTLD CDN  | Delivers log data that describes requests submitted to our CDN service.  | Purchased Separately  |
-| RTLD WAF  | Delivers log data that describes requests identified as threats by [Web Application Firewall (WAF)](/guides/security/waf). <br />It excludes log data for threats identified by Rate Rules or Bot Manager. | {{ PRODUCT_SECURITY }} Premier, Standard, or Essentials  |
-| RTLD Rate Limiting  | Delivers log data that describes requests for which {{ PRODUCT }} enforced a rate limit as defined through a [rate rule](/guides/security/rate_rules).   | {{ PRODUCT_SECURITY }} Premier, Standard, or Essentials  |
-| RTLD Bot Manager  | Delivers log data that describes requests for which [Bot Manager](/guides/security/bot_rules) identified as bot traffic.  | Bot Manager  |
+| Module             | Description                                                                                                                                                                                                | Requirements                                            |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| RTLD CDN           | Delivers log data that describes requests submitted to our CDN service.                                                                                                                                    | Purchased Separately                                    |
+| RTLD WAF           | Delivers log data that describes requests identified as threats by [Web Application Firewall (WAF)](/guides/security/waf). <br />It excludes log data for threats identified by Rate Rules or Bot Manager. | {{ PRODUCT_SECURITY }} Premier, Standard, or Essentials |
+| RTLD Rate Limiting | Delivers log data that describes requests for which {{ PRODUCT }} enforced a rate limit as defined through a [rate rule](/guides/security/rate_rules).                                                     | {{ PRODUCT_SECURITY }} Premier, Standard, or Essentials |
+| RTLD Bot           | Delivers log data that describes requests for which [Bot Manager](/guides/security/bot_rules) identified as bot traffic.                                                                                   | Bot Manager                                             |
 
 <Callout type="info">
 
@@ -35,7 +35,7 @@ Log data consists a set of log entries. Each entry describes either:
 -   **RTLD CDN:** A HTTP/HTTPS request that was directed to our CDN service.
 -   **RTLD WAF:** A HTTP/HTTPS request that was identified as a threat by WAF and information on why it was deemed a threat.
 -   **RTLD Rate Limiting:** A HTTP/HTTPS request that exceeded a rate limit enforced by a Security App configuration.
--   **RTLD Bot Manager:** A HTTP/HTTPS request that was identified as originating from a bot. 
+-   **RTLD Bot:** A HTTP/HTTPS request that was identified as originating from a bot. 
 
 <Callout type="info">
 

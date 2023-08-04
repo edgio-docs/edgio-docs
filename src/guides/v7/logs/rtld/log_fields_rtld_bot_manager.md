@@ -74,16 +74,17 @@ The `logs` array contains an object for each log entry associated with the curre
 -   **captcha_score (*Decimal*):** CAPTCHA Score. (Category: Event) Indicates the request's reCAPTCHA score. Returns `0.000000` if reCAPTCHA was not applied to the request.
 -   **captcha_status (*String*):** CAPTCHA Status. (Category: Event) Indicates the request's reCAPTCHA status. Valid values are:
 
--   **STATUS_NONE:** Indicates that reCAPTCHA was not applied to the request.
--   **ISSUED_NO_GOOGLE_TOKEN:** Indicates that Google reCAPTCHA did not issue a token.
--   **FAILED_RESULT_BOT:** Indicates that the request failed Google reCAPTCHA.
--   **FAILED_RESULT_ERROR:** Indicates that an error occurred during the Google reCAPTCHA.
--   **ECTOKEN_CORRUPTED:** Indicates that a reCAPTCHA was served due to an invalid token. This status is typically reported when a user agent submits a request that includes a token that our service cannot decrypt.
--   **ECTOKEN_IP_MISMATCH:** Indicates that a reCAPTCHA was served due to an invalid token. This status is typically reported when a token is shared or the user's IP address is modified after the initial token was generated.
--   **ECTOKEN_UA_MISMATCH:** Indicates that a reCAPTCHA was served due to an invalid token. This status is typically reported when a token is shared with another user agent (e.g., web browser) within the same machine.
--   **ECTOKEN_EXPIRED:** Indicates that a reCAPTCHA was served due to an expired token. This status is typically reported when a user agent (e.g., web browser) submits a request after the expiration of the previously solved reCAPTCHA. 
+    -   **STATUS_NONE:** Indicates that reCAPTCHA was not applied to the request.
+    -   **ISSUED_NO_GOOGLE_TOKEN:** Indicates that Google reCAPTCHA did not issue a token.
+    -   **FAILED_RESULT_BOT:** Indicates that the request failed Google reCAPTCHA.
+    -   **FAILED_RESULT_ERROR:** Indicates that an error occurred during the Google reCAPTCHA.
+    -   **ECTOKEN_CORRUPTED:** Indicates that a reCAPTCHA was served due to an invalid token. This status is typically reported when a user agent submits a request that includes a token that our service cannot decrypt.
+    -   **ECTOKEN_IP_MISMATCH:** Indicates that a reCAPTCHA was served due to an invalid token. This status is typically reported when a token is shared or the user's IP address is modified after the initial token was generated.
+    -   **ECTOKEN_UA_MISMATCH:** Indicates that a reCAPTCHA was served due to an invalid token. This status is typically reported when a token is shared with another user agent (e.g., web browser) within the same machine.
+    -   **ECTOKEN_EXPIRED:** Indicates that a reCAPTCHA was served due to an expired token. This status is typically reported when a user agent (e.g., web browser) submits a request after the expiration of the previously solved reCAPTCHA. 
 
 -   **challenge_status (*String*):** Challenge Status. (Category: Event) Indicates the result of a browser challenge. Valid values are:
+
     -   **NONE:** Indicates that a browser challenge was not issued.
     -   **IP_MISMATCH:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a token is shared or the user's IP address is modified after the initial token was generated.  
     -   **NO_TOKEN:** Indicates that a browser challenge was served for a new session.  
@@ -91,7 +92,7 @@ The `logs` array contains an object for each log entry associated with the curre
     -   **TOKEN_EXPIRED:** Indicates that a browser challenge was served due to an expired token. This status is typically reported when a user agent (e.g., web browser) submits a request after the expiration of the previously solved browser challenge. 
     -   **UA_MISMATCH:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a token is shared with another user agent (e.g., web browser) within the same machine.
     -   **WRONG_ANSWER:** Indicates that a browser challenge was served because the user was unable to solve the previous browser challenge. This status may also be reported when the user agent (e.g., web browser) submits a tampered token.
-                            
+
 -   **client_city (*String*):** City Name. (Category: Client Geography) Indicates the city from which the request originated.
 -   **client_country_code (*String*):** Country Code. (Category: Client Geography) Indicates the [two-character ISO 3166-1 code for the country](/guides/reference/country_codes) from which the request originated.
 -   **client_country (*String*):** Country Name. (Category: Client Geography) Indicates the country from which the request originated.

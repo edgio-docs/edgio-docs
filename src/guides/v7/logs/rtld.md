@@ -37,7 +37,11 @@ Log data consists a set of log entries. Each entry describes either:
 -   **RTLD Rate Limiting:** A HTTP/HTTPS request that exceeded a rate limit enforced by a Security App configuration.
 -   **RTLD Bot Manager:** A HTTP/HTTPS request that was identified as originating from a bot. 
 
-If our service is unable to deliver log data, then we will store it for up to 3 days and deliver it when communication resumes. If we cannot deliver log data within 3 days, then it will be permanently deleted.
+<Callout type="info">
+
+  If our service is unable to deliver log data, then we will store it for up to 3 days and deliver it when communication resumes. If we cannot deliver log data within 3 days, then it will be permanently deleted.
+
+</Callout>
 
 ## Quick Start {/*quick-start*/}
 

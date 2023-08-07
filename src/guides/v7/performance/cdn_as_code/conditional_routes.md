@@ -18,7 +18,7 @@ The signature for the [`.if()`](/docs/api/core/classes/router_Router.default.htm
 
 The [`.else()`](/docs/api/core/classes/router_Router.default.html#else) method accepts _N_ number of arguments of type [`ConditionalFeaturesParam`](/docs/api/core/types/router_Router.ConditionFeaturesParam.html) where one or more features or routers (for [nested rules](#nested-rules)) may be defined.
 
-#### IF / ELSE Condition {/* if-else-condition */}
+### IF / ELSE Condition {/* if-else-condition */}
 
 ```js
 import {Router, and, or, not} from '@edgio/core';
@@ -43,7 +43,7 @@ export default new Router()
 
 In this example, if the request path is `/foo`, the response body will be `Hello, /foo!`. For all other request paths, the response body will be `Hello, world!`.
 
-#### IF / ELSEIF / ELSE Condition {/* if-elseif-else-condition */}
+### IF / ELSEIF / ELSE Condition {/* if-elseif-else-condition */}
 
 ```js
 import {Router, and, or, not} from '@edgio/core';
@@ -84,7 +84,7 @@ Calls of `.else()` and `.elseif()` must follow directly after an `.if()` call or
 
 </Callout>
 
-#### Logical Operators {/* logical-operators */}
+## Logical Operators {/* logical-operators */}
 
 Using the `and()` and `or()` helper functions, you can create more complex logic within your conditional rules. Logic may also be negated using the `not()` helper function.
 
@@ -109,7 +109,7 @@ export default new Router()
   )
   .elseif(
     and(
-      { path: '/baz' },
+      {path: '/baz'},
       not({
         method: 'POST',
       })
@@ -144,8 +144,8 @@ import {Router} from '@edgio/core';
 
 export default new Router()
   .if(
-    { cookies: { experience: 'new' } },
-    { origin: { set_origin: 'new_origin' } },
+    {cookies: {experience: 'new'}},
+    {origin: {set_origin: 'new_origin'}},
     new Router().match('/assets/:path*', {
       url: {
         url_rewrite: [
@@ -158,15 +158,13 @@ export default new Router()
       },
     })
   )
-  .else({ origin: { set_origin: 'legacy_origin' } });
-  
+  .else({origin: {set_origin: 'legacy_origin'}});
 ```
-
 
 ## Advanced Criteria {/* advanced-criteria */}
 
 If you wish to use `.if()`, `.elseif()`, and `.else()` methods, but your criteria is not supported by [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html),
-you can use the `edgeControlCriteria` property to write custom JSON logic. The property is of type `Matches`. 
+you can use the `edgeControlCriteria` property to write custom JSON logic. The property is of type `Matches`.
 You can see the full specification of the `Matches` type in the [API reference](/docs/api/core/interfaces/types.Matches.html).
 
 Following example applies the nested logic if device is a tablet and the method is GET (combination of both criteria formats):
@@ -178,11 +176,11 @@ export default new Router()
   .if(
     and(
       {
-        edgeControlCriteria: { 
+        edgeControlCriteria: {
           "===": [
-            { 
-              device: "is_tablet" 
-            }, 
+            {
+              device: "is_tablet"
+            },
             true
           ]
         },
@@ -197,16 +195,15 @@ export default new Router()
 
 <Callout type="warning">
 
-This method of defining complex rules is no longer optimal - the `.if()`, `.elseif()`, and `.else()` methods should be used instead, as they are both simpler and more powerful.
+This method of defining complex rules is no longer optimal - the `.if()`, `.elseif()`, and `.else()` methods should be used instead.
 
 </Callout>
 
 <Callout type="important">
 
-The mapping of your old `.conditional()` calls to simplified `.if()` calls can be done through `export to EdgeJS` functionality in {{ PORTAL_LINK }}. To learn more, see [Rules](performance/rules#export-rules-edgejs) documentation.
+The mapping of your old `.conditional()` calls to simplified `.if()` calls can be done through `Export to EdgeJS` functionality in {{ PORTAL_LINK }}. To learn more, see [Rules](/guides/performance/rules#export-rules-edgejs) documentation.
 
 </Callout>
-
 
 Let's revisit the example from our [Default Route Configuration](/guides/performance/cdn_as_code#default-route-configuration) section where we cached all requests to `/api/*`:
 
@@ -233,7 +230,7 @@ export default new Router()
 Using the example above for caching the `/api/*` path, we can rewrite the same route using the [`conditional()`](/docs/api/core/classes/router_Router.default.html#conditional) method. This method accepts a single argument of type `Matches`. You can see the full specification of the `Matches` type in the [API reference](/docs/api/core/interfaces/types.Matches.html).
 
 ```js filename="./routes.js"
-import { Router } from '@edgio/core/router';
+import {Router} from '@edgio/core/router';
 
 export default new Router().conditional({
   if: [
@@ -350,7 +347,6 @@ Conditionals define the expectations that must be met, using comparison operator
 | `not_in` | Value is not in the array.        |
 | `=~`     | Regular expression match.         |
 | `!~`     | Negated regular expression match. |
-
 
 <Callout type="important">
 

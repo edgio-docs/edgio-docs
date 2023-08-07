@@ -12,7 +12,7 @@ This documentation expects you to be familiar with defining simple rules through
 
 ## Using the .if(), .elseif(), and .else() Methods {/* using-the-if-elseif-and-else-methods */}
 
-The `.if()`, `.elseif()`, and `.else()` methods are members of the [Router](/docs/api/core/classes/router_Router.default.html) class and are used to apply if/then logic to a request. These methods can be chained together to create complex rules. Additionally, you can use [`.and()`](/docs/api/core/functions/router_RouteCriteria.and.html), [`.or()`](/docs/api/core/functions/router_RouteCriteria.or.html) and [`.not()`](/docs/api/core/functions/router_RouteCriteria.not.html) utility functions as logical operators within the `.if()` and `.elseif()` criteria.
+The `.if()`, `.elseif()`, and `.else()` methods are members of the [Router](/docs/api/core/classes/router_Router.default.html) class and are used to apply if/then logic to a request. These methods can be chained together to create complex rules. Additionally, you can use [Logical Operator Functions](#logical-and-or-not-functions) within the `.if()` and `.elseif()` criteria for more advanced conditioning.
 
 The signature for the [`.if()`](/docs/api/core/classes/router_Router.default.html#if) and [`.elseif()`](/docs/api/core/classes/router_Router.default.html#elseif) methods is similiar as for defining simple conditions and features. The first argument of the [`ConditionCriteria`](/docs/api/core/types/router_RouteCriteria.ConditionCriteria.html) type is used to define one or more conditions. The remaining _N_ arguments are of type [`ConditionalFeaturesParam`](/docs/api/core/types/router_Router.ConditionFeaturesParam.html) where one or more features or routers (for [nested rules](#nested-rules)) may be defined.
 
@@ -84,9 +84,9 @@ Calls of `.else()` and `.elseif()` must follow directly after an `.if()` call or
 
 </Callout>
 
-## Logical Operators {/* logical-operators */}
+## Logical .and(), .or(), not() Functions {/* logical-and-or-not-functions */}
 
-Using the `and()` and `or()` helper functions, you can create more complex logic within your conditional rules. Logic may also be negated using the `not()` helper function.
+Using the [`.and()`](/docs/api/core/functions/router_RouteCriteria.and.html), [`.or()`](/docs/api/core/functions/router_RouteCriteria.or.html) and [`.not()`](/docs/api/core/functions/router_RouteCriteria.not.html) helper functions, you can create more complex logic within your conditional rules.
 
 ```js
 import {Router, and, or, not} from '@edgio/core';
@@ -196,10 +196,6 @@ export default new Router()
 <Callout type="warning">
 
 This method of defining complex rules is no longer optimal - the `.if()`, `.elseif()`, and `.else()` methods should be used instead.
-
-</Callout>
-
-<Callout type="important">
 
 The mapping of your old `.conditional()` calls to simplified `.if()` calls can be done through `Export to EdgeJS` functionality in {{ PORTAL_LINK }}. To learn more, see [Rules](/guides/performance/rules#export-rules-edgejs) documentation.
 
@@ -316,9 +312,9 @@ Currently, only a single `and/or` operator is supported. The following would be 
 
 </Callout>
 
-#### Conditionals {/* conditionals */}
+#### Criteria Format {/* criteria-format */}
 
-Conditionals define the expectations that must be met, using comparison operators, for the features to be applied to the request. This example of a single conditional identifies the type of comparison to take against the [`RulesVariables`](/docs/api/core/interfaces/types.RulesVariables.html) and the expected value:
+The criteria define the expectations that must be met, using comparison operators, for the features to be applied to the request. This example of a single conditional identifies the type of comparison to take against the [`RulesVariables`](/docs/api/core/interfaces/types.RulesVariables.html) and the expected value:
 
 ```js
 {

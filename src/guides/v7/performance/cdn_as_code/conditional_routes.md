@@ -10,33 +10,11 @@ This documentation expects you to be familiar with defining simple rules through
 
 </Callout>
 
-### Using the .if(), .elseif(), and .else() Methods {/* using-the-if-elseif-and-else-methods */}
+## Using the .if(), .elseif(), and .else() Methods {/* using-the-if-elseif-and-else-methods */}
 
 The `.if()`, `.elseif()`, and `.else()` methods are members of the [Router](/docs/api/core/classes/router_Router.default.html) class and are used to apply if/then logic to a request. These methods can be chained together to create complex rules. Additionally, you can use [`.and()`](/docs/api/core/functions/router_RouteCriteria.and.html), [`.or()`](/docs/api/core/functions/router_RouteCriteria.or.html) and [`.not()`](/docs/api/core/functions/router_RouteCriteria.not.html) utility functions as logical operators within the `.if()` and `.elseif()` criteria.
 
-It's important to note the chaining order of the conditional methods. Calls of `.else()` and `.elseif()` must follow directly after the `.if()` method or another `.elseif()` method, as such:
-
-```js
-router
-  .if(/* ... */)
-  .elseif(/* ... */)
-  .else(/* ... */)
-  .get(/* ... */)
-  .match(/* ... */);
-```
-
-The following example is invalid as `.elseif()` and `.else()` are not following directly after `.if()` or `.elseif()`:
-
-```js diff highlight="3,5"
-router
-  .if(/* ... */)
-  .get(/* ... */)
-  .elseif(/* ... */) // must follow directly after .if() or .elseif()
-  .match(/* ... */)
-  .else(/* ... */); // must follow directly after .if() or .elseif()
-```
-
-The signature for the [`.if()`](/docs/api/core/classes/router_Router.default.html#if) and [`.elseif()`](/docs/api/core/classes/router_Router.default.html#elseif) methods is similiar as for defining simple conditions and features. The first argument of the [`ConditionCriteria`](/docs/api/core/types/router_RouteCriteria.ConditionCriteria.html) type is used to define one or more conditions. The remaining _N_ arguments are of type [`ConditionalFeaturesParam`](/docs/api/core/types/router_Router.ConditionFeaturesParam.html) where one or more features or routers (for [nested rules](#nested-rules)) may be defined. More on that later.
+The signature for the [`.if()`](/docs/api/core/classes/router_Router.default.html#if) and [`.elseif()`](/docs/api/core/classes/router_Router.default.html#elseif) methods is similiar as for defining simple conditions and features. The first argument of the [`ConditionCriteria`](/docs/api/core/types/router_RouteCriteria.ConditionCriteria.html) type is used to define one or more conditions. The remaining _N_ arguments are of type [`ConditionalFeaturesParam`](/docs/api/core/types/router_Router.ConditionFeaturesParam.html) where one or more features or routers (for [nested rules](#nested-rules)) may be defined.
 
 The [`.else()`](/docs/api/core/classes/router_Router.default.html#else) method accepts _N_ number of arguments of type [`ConditionalFeaturesParam`](/docs/api/core/types/router_Router.ConditionFeaturesParam.html) where one or more features or routers (for [nested rules](#nested-rules)) may be defined.
 
@@ -100,6 +78,12 @@ export default new Router()
 
 In this example, if the request path is `/foo`, the response body will be `Hello, /foo!`. If the request path is `/bar`, the response body will be `Hello, /bar!`. For all other request paths, the response body will be `Hello, world!`.
 
+<Callout type="important">
+
+Calls of `.else()` and `.elseif()` must follow directly after an `.if()` call or another `.elseif()` call.
+
+</Callout>
+
 #### Logical Operators {/* logical-operators */}
 
 Using the `and()` and `or()` helper functions, you can create more complex logic within your conditional rules. Logic may also be negated using the `not()` helper function.
@@ -143,7 +127,7 @@ export default new Router()
   });
 ```
 
-### Nested Rules {/* nested-rules */}
+## Nested Rules {/* nested-rules */}
 
 Nested rules are applied to an existing conditional route. They are a set of child rules under a parent `.if()`, `.elseif()`, or `.else()` method. Nested rules are defined using a new `Router` instance.
 
@@ -179,14 +163,13 @@ export default new Router()
 ```
 
 
-### Advanced Conditionals {/* advanced-conditionals */}
+## Advanced Criteria {/* advanced-criteria */}
 
 If you wish to use `.if()`, `.elseif()`, and `.else()` methods, but your criteria is not supported by [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html),
-you can take advantage of the `edgeControlCriteria` criteria property, and write the JSON logic yourself.
+you can use the `edgeControlCriteria` property to write custom JSON logic. The property is of type `Matches`. 
+You can see the full specification of the `Matches` type in the [API reference](/docs/api/core/interfaces/types.Matches.html).
 
-The `edgeControlCriteria` property is defined in `Matches` type format (see [Conditionals](/guides/performance/cdn_as_code/conditional_routes#conditionals) section). 
-
-The following example applies the nested logic if the device is a tablet and the method is GET (combination of both criteria formats):
+Following example applies the nested logic if device is a tablet and the method is GET (combination of both criteria formats):
 
 ```js
 import {Router, and} from '@edgio/core';
@@ -194,11 +177,16 @@ import {Router, and} from '@edgio/core';
 export default new Router()
   .if(
     and(
-      { method: "GET" },
       {
         edgeControlCriteria: { 
-          "===": [{ device: "is_tablet" }, true] 
-        } 
+          "===": [
+            { 
+              device: "is_tablet" 
+            }, 
+            true
+          ]
+        },
+        { method: "GET" }
       }
     ),
     new Router().if(/* ... */)
@@ -342,7 +330,7 @@ Conditionals define the expectations that must be met, using comparison operator
       request: 'method', // rules variable
     },
     'GET', // expected value
-  ],
+  ]
 }
 ```
 
@@ -363,108 +351,9 @@ Conditionals define the expectations that must be met, using comparison operator
 | `=~`     | Regular expression match.         |
 | `!~`     | Negated regular expression match. |
 
-### Example {/* example */}
 
-This example shows multiple conditionals that use various comparison operators and rules variables:
+<Callout type="important">
 
-```js filename="./routes.js"
-import {Router} from '@edgio/core/router';
+If your routes file contains old `.conditional()` calls, they can be simplified to `.if()` calls through `export to EdgeJS` functionality in {{ PORTAL_LINK }}. To learn more, see [Rules](performance/rules#export-rules-edgejs) documentation.
 
-export default new Router().conditional({
-  if: [
-    {
-      and: [
-        {
-          '=~': [
-            {
-              'request.header': 'x-test',
-            },
-            '^foo$',
-          ],
-        },
-        {
-          and: [
-            {
-              '!==': [
-                {
-                  request: 'method',
-                },
-                'DELETE',
-              ],
-            },
-            {
-              and: [
-                {
-                  '==': [
-                    {
-                      request: 'path',
-                    },
-                    '/api/v:version/:path*',
-                  ],
-                },
-                {
-                  and: [
-                    {
-                      not_in: [
-                        {
-                          request: 'path',
-                        },
-                        ['/api/v1', '/api/v2'],
-                      ],
-                    },
-                    {
-                      and: [
-                        {
-                          '!~': [
-                            {
-                              'request.cookie': 'user_level',
-                            },
-                            '^level_(1|2)$',
-                          ],
-                        },
-                        {
-                          and: [
-                            {
-                              '===': [
-                                {
-                                  device: 'is_robot',
-                                },
-                                true,
-                              ],
-                            },
-                            {
-                              '>=': [
-                                {
-                                  device: 'resolution_height',
-                                },
-                                800,
-                              ],
-                            },
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      caching: {
-        bypass_client_cache: true,
-        service_worker_max_age: '1d',
-        max_age: {
-          200: '1d',
-        },
-        stale_while_revalidate: '1h',
-      },
-      origin: {
-        set_origin: 'origin',
-      },
-    },
-  ],
-});
-```
+</Callout>

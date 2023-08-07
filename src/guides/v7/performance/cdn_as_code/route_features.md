@@ -697,50 +697,48 @@ router.match(
 If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [country code](/guides/reference/country_codes) using the `location.country` match condition:
 
 ```js
-router.conditional({
-  if: [
-    {
-      or: [
+import {or} from '@edgio/core';
+
+router.if(or(
+  { 
+    edgeControlCriteria: {
+      '===': [
         {
-          '===': [
-            {
-              location: 'country',
-            },
-            'XX',
-          ],
+          location: 'country',
         },
+        'XX',
+      ]
+    }
+  },
+  { 
+    edgeControlCriteria: {
+      '===': [
         {
-          or: [
-            {
-              '===': [
-                {
-                  location: 'country',
-                },
-                'XY',
-              ],
-            },
-            {
-              '===': [
-                {
-                  location: 'country',
-                },
-                'XZ',
-              ],
-            },
-          ],
+          location: 'country',
         },
-      ],
+        'XY',
+      ]
+    }
+  },
+  { 
+    edgeControlCriteria: {
+      '===': [
+        {
+          location: 'country',
+        },
+        'XZ',
+      ]
+    }
+  }),
+  {
+    access: {
+      deny_access: true,
     },
-    {
-      access: {
-        deny_access: true,
-      },
-    },
-  ],
-});
+  }
+);
 ```
 
-You can find more about geolocation headers [here](/guides/performance/request#request-headers).
+You can find more about geolocation headers [here](/guides/performance/request#request-headers). You can read more about complex rules [here](/guides/performance/cdn_as_code/conditional_routes).
 
 <!-- TODO need support for regex client IP matching
 ### Allowing Specific IPs {/*allowing-specific-ips*/}

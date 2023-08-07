@@ -47,11 +47,14 @@ function Accordion({
   });
 
   const isActiveLink = route.path.length > 0;
+  const currentPathAtCurrentDepth = currentRoutePath.split('/')[depth];
+  const routePathAtCurrentDepth = route.path.split('/')[depth];
   const childElement = (
     <a
       className="menu-toggle__wrap"
       data-is-highlighted={
-        currentRoutePath.split('/')[depth] === route.path.split('/')[depth]
+        currentPathAtCurrentDepth &&
+        currentPathAtCurrentDepth === routePathAtCurrentDepth
       }
       {...getToggleProps({
         onClick: onSelect,

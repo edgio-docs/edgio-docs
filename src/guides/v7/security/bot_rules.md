@@ -255,7 +255,7 @@ A request must satisfy at least one rule before WAF will consider it bot traffic
 
     </Callout>
     
--   **Edgecast Reputation DB:** This type of rule is satisfied when the client's IP address matches an IP address defined within our reputation database. Our reputation database contains a list of IP addresses known to be used by bots.
+-   **{{ PRODUCT }} Reputation DB:** This type of rule is satisfied when the client's IP address matches an IP address defined within our reputation database. Our reputation database contains a list of IP addresses known to be used by bots.
 
 **Example #1:**
 
@@ -278,7 +278,7 @@ This example assumes that your Bot Manager configuration contains the following 
 | Rule | Type                   | Description                                                                                                |
 |------|------------------------|------------------------------------------------------------------------------------------------------------|
 | 1    | Custom matches         | This rule contains two conditions.                                                                         |
-| 2    | Edgecast Reputation DB | This rule is satisfied when the client's IP address matches an IP address within our reputation database. |
+| 2    | {{ PRODUCT }}  Reputation DB | This rule is satisfied when the client's IP address matches an IP address within our reputation database. |
 
 Assuming the above configuration, {{ PRODUCT }} {{ PRODUCT_SECURITY }} applies bot rules protection under either of the following circumstances:
 
@@ -601,7 +601,7 @@ You may create, modify, and delete Bot Manager configurations.
             8.  In the **Match value** option, type the value that will be compared against the request element identified by the above variable.
             9.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the value defined in the previous step.
             10.  Optional. Click **+ Add Condition** to add another condition that must be met prior to request identification. 
-        -   **Edgecast Reputation DB:** This type of rule is satisfied when the client's IP address matches an IP address within our reputation database. Proceed to the next step.
+        -   **{{ PRODUCT }}  Reputation DB:** This type of rule is satisfied when the client's IP address matches an IP address within our reputation database. Proceed to the next step.
 
     3.   Click the **Save** button that appears directly below your rule.
 8.  Optional. Add another rule by repeating step 7.

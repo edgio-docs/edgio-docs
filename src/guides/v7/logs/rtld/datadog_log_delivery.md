@@ -7,7 +7,7 @@ RTLD may automatically deliver compressed log data to Datadog by submitting HTTP
 **Key information:**
 
 -   The format for log data delivered to Datadog is JSON Array. This log format does not provide information that uniquely identifies a set of log data. As a result, there is no way to check for gaps in sequence numbers when attempting to identify missing log data.
--   The set of available log fields varies by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
+-   The set of available log fields varies by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager)
 
 **To prepare Datadog for log delivery**
 
@@ -15,7 +15,7 @@ RTLD may automatically deliver compressed log data to Datadog by submitting HTTP
 2.  Identify the Datadog location to which log data will be delivered.
 3.  Upon completing the above steps, you should create a log delivery profile for Datadog.
 
-{{ RTLD_PROFILE_SETUP_1 }} `Datadog`.
+{{ RTLD_PROFILE_SETUP_1.md }} `Datadog`.
 
 4.  Define how RTLD will communicate with Datadog.
 
@@ -23,4 +23,4 @@ RTLD may automatically deliver compressed log data to Datadog by submitting HTTP
     2.  From the **Datadog API Key** option, paste your Datadog API key. This API key authorizes our service to upload log data to Datadog.
     3.  From the **Datadog Service Attribute Value** option, type a value that identifies the data delivered as a result of this profile. Our service sets Datadog's service reserved attribute to this value.
 
-{{ RTLD_PROFILE_SETUP_2 }}
+{{ RTLD_PROFILE_SETUP_2.md }}

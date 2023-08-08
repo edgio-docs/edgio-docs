@@ -666,10 +666,12 @@ const nav = {
         {
           title: '{{ PACKAGE_NAME }}/core',
           path: '/docs/api/core',
+          external: true,
         },
         {
           title: '{{ PACKAGE_NAME }}/prefetch',
           path: '/docs/api/prefetch',
+          external: true,
         },
         {
           title: 'CLI',

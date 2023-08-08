@@ -657,12 +657,12 @@ const nav = {
         },
         {
           title: '@edgio/core',
-          path: '/docs/api/core',
+          path: '/docs/v7.x/api/core/',
           external: true,
         },
         {
           title: '@edgio/prefetch',
-          path: '/docs/api/prefetch',
+          path: '/docs/v7.x/api/prefetch/',
           external: true,
         },
         {

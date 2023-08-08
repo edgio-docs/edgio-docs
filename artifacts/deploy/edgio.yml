@@ -74,7 +74,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       deploy_token: ${{secrets.EDGIO_DEPLOY_TOKEN}}
-      api_url: 'https://api.edgio-dev.app'
+      api_url: 'https://api.edgio.app'
     steps:
       - name: Check for deploy token secret
         if: env.deploy_token == ''

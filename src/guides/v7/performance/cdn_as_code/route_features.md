@@ -15,9 +15,11 @@ See [Features Reference](/guides/performance/rules/features) for a complete list
 
 ## Defining Route Features
 
-As outlined in the [Route Features](/guides/performance/cdn_as_code#route-features) section of the CDN-as-Code guide, route features are defined as the second argument to the `Router` method being called in the `routes.js` file, such as `.match()`, `.get()`, `.post()`, etc. Features may also be defined in [conditional routes](/guides/performance/cdn_as_code/route_criteria#conditional-routes) such as `.if()`, `.elseif()`, etc.
+As outlined in the [Route Features](/guides/performance/cdn_as_code#route-features) section of the CDN-as-Code guide:
+- Route features are defined as the second argument to the `Router` method being called in the `routes.js` file, such as `.match()`, `.get()`, `.post()`, etc.
+- May also be defined in [conditional routes](/guides/performance/cdn_as_code/route_criteria#conditional-routes) such as `.if()`, `.elseif()`, etc.
 
-The argument is an Object that supports features outlined in the [Features Reference](/guides/performance/rules/features). The following example shows how to define a route feature that proxies a request, sending it to the origin host and caching it for 1 hour:
+The argument is an object that supports features outlined in the [Features Reference](/guides/performance/rules/features). The following example shows how to define a route feature that proxies a request to the origin host and caches it for 1 hour:
 
 ```js
 router.match('/:path*', {
@@ -30,34 +32,44 @@ router.match('/:path*', {
 });
 ```
 
-Route features are often defined using Object notation, but in some cases, it may be necessary to use [RouteHelper](/docs/api/core/classes/router_RouteHelper.default.html) methods to define features. Some functionality such as [transforming requests/responses](#transforming-requests-responses) or [serving static files](#serving-a-static-file) requires the use of `RouteHelper` methods.
+Route features are often defined using object notation, but in some cases, it may be necessary to use [RouteHelper](/docs/api/core/classes/router_RouteHelper.default.html) methods to define features. Some functionality such as [transforming requests/responses](#transforming-requests-responses) or [serving static files](#serving-a-static-file) requires the use of `RouteHelper` methods.
 
 {{ routehelper_usage.md }}
 
-To help with the mix of Object notation and `RouteHelper` methods, you can use `addFeatures()` to combine Object-notated features within a `RouteHelper` instance:
+When you're mixing usage of object notation and `RouteHelper` methods, the `addFeatures()` function allows you to seamlessly integrate features defined in object notation directly within `RouteHelper` instance. The examples below illustrate the two notation styles, and then show how to combine them:
 
 ```js
 // Using different notation styles
 router
+  // Define caching using object notation
   .get('/some-path', {
     caching: {
       max_age: '1h',
     },
   })
+  
+  // Serve a static file using a RouteHelper method
   .get('/some-path', ({serveStatic}) => {
     serveStatic('public/some-path.html');
   });
 
+/* or */
+
 // Combining notation styles
 router.get('/some-path', ({addFeatures, serveStatic}) => {
+  // Use `addFeatures` RouteHelper method to define caching using object notation
   addFeatures({
     caching: {
       max_age: '1h',
     },
   });
+
+  // Use `serveStatic` RouteHelper method to serve a static file
   serveStatic('public/some-path.html');
 });
 ```
+
+While both of these examples are functionally equivalent, the second example is more flexible because it allows you to define a single route using both notation styles for different features.
 
 ## Common Routing Features
 
@@ -320,7 +332,7 @@ If you need to modify a request before going to an origin, or modify the respons
 
 #### transformRequest Function {/* transformRequest-function */}
 
-You can modify the request before it is sent to the origin using the `transformRequest` function. This example shows how you could add a `foo` property to the reuqest body before sending it to the origin:
+You can modify the request before it is sent to the origin using the `transformRequest` function. This example shows how you could add a `foo` property to the request body before sending it to the origin:
 
 ```js
 router.get('/products/:productId', ({proxy}) => {
@@ -738,7 +750,7 @@ router.if(or(
 );
 ```
 
-You can find more about geolocation headers [here](/guides/performance/request#request-headers). You can read more about complex rules [here](/guides/performance/cdn_as_code/conditional_routes).
+Learn more about geolocation headers in the [Request guide](/guides/performance/request#request-headers). For detailed information on complex rules, see [Conditional Routes](/guides/performance/cdn_as_code/conditional_routes).
 
 <!-- TODO need support for regex client IP matching
 ### Allowing Specific IPs {/*allowing-specific-ips*/}

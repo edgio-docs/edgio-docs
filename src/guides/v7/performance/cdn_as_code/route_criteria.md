@@ -245,6 +245,6 @@ Regular expression matching is also available for matching query parameters, coo
 
 <Callout type="important">
 
-For learning how to define conditional logic and nested rules, see [Conditional Routes](/guides/performance/cdn_as_code/conditional_routes) documentation.
+To learn about defining conditional logic and nested rules, refer to the [Conditional Routes](/guides/performance/cdn_as_code/conditional_routes) documentation.
 
 </Callout>

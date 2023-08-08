@@ -99,7 +99,7 @@ export async function handleHttpRequest(request, context) {
   response.headers.set('X-Edge-Function', 'home-page.js');
 
   // Return the response and end the edge function.
-  context.responseWith(response);
+  context.respondWith(response);
 }
 ```
 
@@ -119,7 +119,7 @@ export async function handleHttpRequest(request, context) {
   // Note: Since the original response body is read-only,
   // we must create a new response with the updated body.
   const jsonBody = JSON.stringify(body);
-  context.responseWith(new Response(jsonBody, response));
+  context.respondWith(new Response(jsonBody, response));
 }
 ```
 
@@ -153,7 +153,7 @@ export async function handleHttpRequest(request, context) {
   // Return the response and end the edge function as JSON
   const jsonBody = JSON.stringify(body);
 
-  context.responseWith(
+  context.respondWith(
     new Response(jsonBody, 200, {headers: {'Content-Type': 'application/json'}})
   );
 }

@@ -619,6 +619,118 @@ const nav = {
           title: 'Country Codes',
           path: 'reference/country_codes',
         },
+        {
+          title: 'HTTP Status Codes',
+          path: '/guides/performance/response#status-codes',
+        },
+        {
+          title: 'Response Headers',
+          path: '/guides/performance/response#response-headers',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'Rules',
+          path: '',
+        },
+        {
+          title: 'Match Conditions',
+          path: '/guides/performance/rules/conditions',
+        },
+        {
+          title: 'Features',
+          path: '/guides/performance/rules/features',
+        },
+        {
+          title: 'Feature Variables',
+          path: '/guides/performance/rules/feature_variables',
+        },
+        {
+          title: 'Operators',
+          path: '/guides/performance/rules/operators',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'CDN-as-Code (EdgeJS)',
+          path: '',
+        },
+        {
+          title: '{{ CONFIG_FILE }}',
+          path: '/guides/performance/cdn_as_code/edgio_config',
+        },
+        {
+          title: '{{ PACKAGE_NAME }}/core',
+          path: '/docs/api/core',
+        },
+        {
+          title: '{{ PACKAGE_NAME }}/prefetch',
+          path: '/docs/api/prefetch',
+        },
+        {
+          title: 'CLI',
+          path: '/guides/develop/cli#commands',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'REST API',
+          path: '',
+        },
+        {
+          title: 'Purge (cache-clear)',
+          path: '/guides/develop/rest_api',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'Log Data',
+          path: '',
+        },
+        {
+          title: 'Access Logs',
+          path: '',
+        },
+        {
+          title: 'Edge Insights',
+          path: '/guides/performance/observability/edge_insights',
+        },
+        {
+          title: 'Serverless Compute Console',
+          path: '/guides/logs/server_logs#serverless-compute-console-and-dri-log-fields',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'RTLD',
+          path: '',
+        },
+        {
+          title: 'RTLD CDN',
+          path: '/guides/logs/rtld/log_fields_rtld_cdn',
+        },
+        {
+          title: 'RTLD WAF',
+          path: '/guides/logs/rtld/log_fields_rtld_waf',
+        },
+        {
+          title: 'RTLD Rate Limiting',
+          path: '/guides/logs/rtld/log_fields_rtld_rate_limiting',
+        },
+        {
+          title: 'RTLD Bot',
+          path: '/guides/logs/rtld/log_fields_rtld_bot_manager',
+        },
       ],
     },
     {

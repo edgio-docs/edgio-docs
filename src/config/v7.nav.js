@@ -619,6 +619,84 @@ const nav = {
           title: 'Country Codes',
           path: 'reference/country_codes',
         },
+        {
+          title: 'HTTP Status Codes',
+          path: '/guides/performance/response#status-codes',
+        },
+        {
+          title: 'Response Headers',
+          path: '/guides/performance/response#response-headers',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'Rules - Match Conditions',
+          path: '/guides/performance/rules/conditions',
+        },
+        {
+          title: 'Rules - Features',
+          path: '/guides/performance/rules/features',
+        },
+        {
+          title: 'Rules - Feature Variables',
+          path: '/guides/performance/rules/feature_variables',
+        },
+        {
+          title: 'Rules - Operators',
+          path: '/guides/performance/rules/operators',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'edgio.config.js Configuration',
+          path: '/guides/performance/cdn_as_code/edgio_config',
+        },
+        {
+          title: '@edgio/core',
+          path: '/docs/api/core',
+          external: true,
+        },
+        {
+          title: '@edgio/prefetch',
+          path: '/docs/api/prefetch',
+          external: true,
+        },
+        {
+          title: 'CLI',
+          path: '/guides/develop/cli#commands',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'Purge REST API',
+          path: '/guides/develop/rest_api',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'RTLD CDN',
+          path: '/guides/logs/rtld/log_fields_rtld_cdn',
+        },
+        {
+          title: 'RTLD WAF',
+          path: '/guides/logs/rtld/log_fields_rtld_waf',
+        },
+        {
+          title: 'RTLD Rate Limiting',
+          path: '/guides/logs/rtld/log_fields_rtld_rate_limiting',
+        },
+        {
+          title: 'RTLD Bot',
+          path: '/guides/logs/rtld/log_fields_rtld_bot_manager',
+        },
       ],
     },
     {

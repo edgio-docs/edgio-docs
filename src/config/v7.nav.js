@@ -632,23 +632,19 @@ const nav = {
           path: '',
         },
         {
-          title: 'Rules',
-          path: '',
-        },
-        {
-          title: 'Match Conditions',
+          title: 'Rules - Match Conditions',
           path: '/guides/performance/rules/conditions',
         },
         {
-          title: 'Features',
+          title: 'Rules - Features',
           path: '/guides/performance/rules/features',
         },
         {
-          title: 'Feature Variables',
+          title: 'Rules - Feature Variables',
           path: '/guides/performance/rules/feature_variables',
         },
         {
-          title: 'Operators',
+          title: 'Rules - Operators',
           path: '/guides/performance/rules/operators',
         },
         {
@@ -656,20 +652,16 @@ const nav = {
           path: '',
         },
         {
-          title: 'CDN-as-Code (EdgeJS)',
-          path: '',
-        },
-        {
-          title: '{{ CONFIG_FILE }}',
+          title: 'edgio.config.js Configuration',
           path: '/guides/performance/cdn_as_code/edgio_config',
         },
         {
-          title: '{{ PACKAGE_NAME }}/core',
+          title: '@edgio/core',
           path: '/docs/api/core',
           external: true,
         },
         {
-          title: '{{ PACKAGE_NAME }}/prefetch',
+          title: '@edgio/prefetch',
           path: '/docs/api/prefetch',
           external: true,
         },
@@ -682,39 +674,11 @@ const nav = {
           path: '',
         },
         {
-          title: 'REST API',
-          path: '',
-        },
-        {
-          title: 'Purge (cache-clear)',
+          title: 'Purge REST API',
           path: '/guides/develop/rest_api',
         },
         {
           title: '',
-          path: '',
-        },
-        {
-          title: 'Log Data',
-          path: '',
-        },
-        {
-          title: 'Access Logs',
-          path: '',
-        },
-        {
-          title: 'Edge Insights',
-          path: '/guides/performance/observability/edge_insights',
-        },
-        {
-          title: 'Serverless Compute Console',
-          path: '/guides/logs/server_logs#serverless-compute-console-and-dri-log-fields',
-        },
-        {
-          title: '',
-          path: '',
-        },
-        {
-          title: 'RTLD',
           path: '',
         },
         {

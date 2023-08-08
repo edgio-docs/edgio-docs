@@ -7,7 +7,7 @@ RTLD may automatically deliver compressed log data to a web server by submitting
 **Key information:**
 
 -   RTLD applies gzip compression to log data. Each HTTPS `POST` request includes a `Content-Encoding` header set to `gzip`.
--   Log fields vary by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
+-   Log fields vary by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager)
 
 **To prepare your web servers for log delivery**
 
@@ -38,7 +38,7 @@ RTLD may automatically deliver compressed log data to a web server by submitting
 
 4.  Upon completing the above steps, you should create a log delivery profile for HTTP `POST`.
 
-{{ RTLD_PROFILE_SETUP_1 }} `HTTP POST`.
+{{ RTLD_PROFILE_SETUP_1.md }} `HTTP POST`.
 
 4.  Define how RTLD will communicate with your web server(s).
 
@@ -68,4 +68,4 @@ RTLD may automatically deliver compressed log data to a web server by submitting
         
         -   **None:** Select this mode if your web server(s) allow content to be posted without authorization.
 
-{{ RTLD_PROFILE_SETUP_2 }}
+{{ RTLD_PROFILE_SETUP_2.md }}

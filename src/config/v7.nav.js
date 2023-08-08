@@ -85,10 +85,6 @@ const nav = {
               title: 'Route Features',
               path: 'performance/cdn_as_code/route_features',
             },
-            // {
-            //   title: 'Edge Functions',
-            //   path: 'performance/cdn_as_code/edge_functions',
-            // },
             {
               title: 'Error Handling',
               path: 'performance/cdn_as_code/error_handling',
@@ -206,6 +202,11 @@ const nav = {
       ],
     },
     {
+      title: 'Edge Functions',
+      path: 'edge-functions',
+      icon: 'edge-functions',
+    },
+    {
       title: 'Security',
       path: 'security',
       icon: 'shield',
@@ -239,6 +240,10 @@ const nav = {
           path: 'security/access_rules',
         },
         {
+          title: 'API Security',
+          path: 'security/api_security',
+        },
+        {
           title: 'Rate Rules',
           path: 'security/rate_rules',
         },
@@ -255,7 +260,7 @@ const nav = {
           path: 'security/managed_rules',
         },
         {
-          title: 'Security Applications',
+          title: 'Security Apps',
           path: 'security/security_applications',
         },
         {
@@ -539,6 +544,10 @@ const nav = {
               path: '',
             },
             {
+              title: 'Filtering Log Data',
+              path: 'logs/rtld/filtering_log_data',
+            },
+            {
               title: 'Log File Naming Convention',
               path: 'logs/rtld/log_file_naming_convention',
             },
@@ -555,12 +564,16 @@ const nav = {
               path: 'logs/rtld/log_fields_rtld_cdn',
             },
             {
+              title: 'Log Fields (RTLD WAF)',
+              path: 'logs/rtld/log_fields_rtld_waf',
+            },
+            {
               title: 'Log Fields (RTLD Rate Limiting',
               path: 'logs/rtld/log_fields_rtld_rate_limiting',
             },
             {
-              title: 'Log Fields (RTLD WAF)',
-              path: 'logs/rtld/log_fields_rtld_waf',
+              title: 'Log Fields (RTLD Bot)',
+              path: 'logs/rtld/log_fields_rtld_bot_manager',
             },
           ],
         },

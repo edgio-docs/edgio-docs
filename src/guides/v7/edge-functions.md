@@ -69,7 +69,7 @@ Edge Functions global namespace provide access to the following:
 
 ## Limitations {/* limitations */}
 
-Edge Functions are limited to 2MB of memory at runtime. This includes the compiled JavaScript byte code, variables, requests, context object, and responses. Edge Functions are limited to 50ms of CPU time and 2 minutes of total execution time. The time your edge function spends waiting for a response from an origin server does not count against the 50ms CPU limit.
+Edge Functions are limited to 2MB of memory at runtime. This includes the compiled JavaScript byte code, variables, requests, context object, and responses. Edge Functions are limited to 50ms of CPU time and 60 seconds of total execution time. The time your edge function spends waiting for a response from an origin server does not count against the 50ms CPU limit.
 
 ## Edge Function Examples {/* examples */}
 

@@ -188,7 +188,7 @@ const {
 } = siteConfig.algolia;
 
 function transformItems(items: any) {
-  const hierarchyOrder = ['lvl3', 'lvl2', 'lvl1', 'lvl0'];
+  const hierarchyOrder = ['lvl4', 'lvl3', 'lvl2', 'lvl1', 'lvl0'];
 
   // append the search content to the url for highlighting
   return items.map((item: any) => {

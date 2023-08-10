@@ -143,7 +143,7 @@ export async function getStaticProps({params}: {params: any}) {
       },
     };
   } else if (!guide || !guide.length) {
-    // version with no remainig guide path so use as homepage
+    // version with no remaining guide path so use as homepage
     isHomepage = true;
     guide = ['index'];
   }
@@ -197,15 +197,6 @@ export async function getStaticProps({params}: {params: any}) {
       format: 'mdx',
     },
   });
-
-  if (mdxSource.frontmatter?.redirect) {
-    // return {
-    //   redirect: {
-    //     destination: mdxSource.frontmatter.redirect,
-    //     permanent: false,
-    //   },
-    // };
-  }
 
   return {props: {source: mdxSource, headings, version}};
 }

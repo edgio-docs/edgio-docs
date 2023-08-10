@@ -204,6 +204,10 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 7. If you are finished making changes to this environment, click **Deploy Changes**.
 <a id="primary-failover-load-balancing" />
 
+#### System-Defined Origins {/*system-defined-origin*/}
+
+
+
 ### Load Balancing {/*load-balancing*/}
 
 {{ PRODUCT }} load balances traffic proxied from our network to the web servers associated with an origin configuration using either primary/failover or round-robin mode. 

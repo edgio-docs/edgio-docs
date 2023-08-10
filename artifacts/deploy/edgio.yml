@@ -157,7 +157,7 @@ jobs:
           fi
           
           deploy_command+=" --token='${{ secrets.EDGIO_DEPLOY_TOKEN }}'"
-          deploy_command+=" --non-interactive --ignore-error='CONFIG_SOURCE_SWITCH' --branch='$BRANCH_NAME' --api-url='${{ env.api_url }}'"
+          deploy_command+=" --edgioVersion latest --non-interactive --ignore-error='CONFIG_SOURCE_SWITCH' --branch='$BRANCH_NAME' --api-url='${{ env.api_url }}'"
           eval "$deploy_command"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

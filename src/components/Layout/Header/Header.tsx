@@ -188,8 +188,38 @@ const {
 } = siteConfig.algolia;
 
 function transformItems(items: any) {
-  // do transformation here...
-  return items;
+  const hierarchyOrder = ['lvl4', 'lvl3', 'lvl2', 'lvl1', 'lvl0'];
+
+  // append the search content to the url for highlighting
+  return items.map((item: any) => {
+    const {hierarchy, content} = item;
+    const url = new URL(item.url);
+
+    // set the hostname to the current hostname
+    url.protocol = window.location.protocol;
+    url.host = window.location.host;
+
+    // set the content to highlight
+    let matchedText = content;
+
+    if (!matchedText) {
+      for (const key of hierarchyOrder) {
+        if (hierarchy[key]) {
+          matchedText = hierarchy[key];
+          break;
+        }
+      }
+    }
+
+    if (matchedText) {
+      url.hash = btoa(unescape(encodeURIComponent(matchedText)));
+    }
+
+    return {
+      ...item,
+      url,
+    };
+  });
 }
 
 export default function Header({

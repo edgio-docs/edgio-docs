@@ -6,8 +6,6 @@ Node.js Connector lets you build and deploy your project to {{ PRODUCT }} for an
 
 {{ PREREQ.md }}
 
-<!-- ## Why Node.js Connector {/* why-nodejs-connector */} -->
-
 ## Using Node.js Connector {/* using-nodejs-connector */}
 
 To use the Node.js Connector with your project, you'll first need to initialize your project using the {{ PRODUCT }} CLI with the following:

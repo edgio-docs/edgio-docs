@@ -2,7 +2,11 @@
 title: Conditional Routes
 ---
 
-Conditional routes allow you to apply [Rules](/guides/performance/rules) to a request using advanced if/then logic by the means of logical and comparison operators. [Nested rules](#nested-rules) may also be applied using multiple routers.
+Define a rule that uses advanced condition-based logic through:
+-   [.if(), .elseif(), and .else() methods.](#using-the-if-elseif-and-else-methods)
+-   [.and(), .or(), and .not() logical functions.](#logical-and-or-not-functions)
+-   [Comparison operators](#comparison-operators), such as `==`, `===`, and `=~`.
+-   Additional routers that establish [nested rules](#nested-rules).
 
 <Callout type="important">
 

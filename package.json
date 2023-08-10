@@ -6,7 +6,7 @@
   "scripts": {
     "edgio:dev": "edgio dev",
     "edgio:build": "edgio build",
-    "edgio:deploy": "edgio build && edgio deploy --skip-build",
+    "edgio:deploy": "edgio build && yarn sitemap && edgio deploy --skip-build",
     "analyze": "ANALYZE=true next build",
     "dev": "edgio dev",
     "build": "next build",
@@ -27,7 +27,7 @@
     "clean": "rimraf node_modules && yarn",
     "update-template-tables": "python3 scripts/md-tables-to-json.py",
     "validate-links": "node scripts/validateGuideLinks.js",
-    "postbuild": "next-sitemap"
+    "sitemap": "next-sitemap"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [

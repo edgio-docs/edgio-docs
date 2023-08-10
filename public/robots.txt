@@ -2,6 +2,10 @@
 User-agent: *
 Allow: /
 
+# *
+User-agent: *
+Disallow: /docs/v*
+
 # Host
 Host: https://docs.edg.io
 

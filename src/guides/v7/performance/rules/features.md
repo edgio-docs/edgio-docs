@@ -377,7 +377,7 @@ Include or exclude all query string parameters through the `include_all` propert
       })
     ```
 
--   **include (*Array of string values*):** Contains the set of parameter(s) that may be included in the cache key. A unique cache key will be generated for each request that contains a unique value for a query string parameter defined in this feature.
+-   **include (*Array of strings*):** Contains the set of parameter(s) that may be included in the cache key. A unique cache key will be generated for each request that contains a unique value for a query string parameter defined in this feature.
 
     **Example:**
 
@@ -392,7 +392,7 @@ Include or exclude all query string parameters through the `include_all` propert
       })
     ```
 
--   **include_all_except (*Array of string values*):** Contains the set of parameter(s) will be excluded from the cache key. All other query string parameters will be included in the cache key.
+-   **include_all_except (*Array of strings*):** Contains the set of parameter(s) will be excluded from the cache key. All other query string parameters will be included in the cache key.
 
     **Example:**
 

@@ -148,7 +148,7 @@ The `rules` array contains an object for each rule. This object contains the fol
 |--- |--- |--- |
 | id | String | Reserved for future use. |
 | name | String | Defines a name for this rule. |
-| methods  | Array of string values | Identifies the set of API requests that will be screened by one or more HTTP method(s). Valid values are: `GET \| DELETE \| PATCH \| POST \| PUT` |
+| methods  | Array of strings | Identifies the set of API requests that will be screened by one or more HTTP method(s). Valid values are: `GET \| DELETE \| PATCH \| POST \| PUT` |
 | path | Object | Identifies the set of API requests that will be screened by URL path.  |
 | response | Integer | Reserved for future use. | 
 | schema_id | String | Identifies an API schema by its system-defined ID. Use the [Get All API Schemas operation](#get-all-api-schemas) to retrieve a list of API schemas and their system-defined ID.  |
@@ -360,7 +360,7 @@ The `rules` array contains an object for each rule. This object contains the fol
 |--- |--- |--- |
 | id | String | Indicates the rule's system-defined ID.|
 | name | String | Indicates the name of this rule. |
-| methods  | Array of string values | Identifies the set of API requests that will be screened by one or more HTTP method(s). Valid values are: `GET \| DELETE \| PATCH \| POST \| PUT` |
+| methods  | Array of strings | Identifies the set of API requests that will be screened by one or more HTTP method(s). Valid values are: `GET \| DELETE \| PATCH \| POST \| PUT` |
 | path | Object | Identifies the set of API requests that will be screened by URL path.  |
 | response | Integer | Reserved for future use. | 
 | schema_id | String | Identifies an API schema by its system-defined ID. Use the [Get All API Schemas operation](#get-all-api-schemas) to retrieve a list of API schemas and their system-defined ID.  |
@@ -448,7 +448,7 @@ The `rules` array contains an object for each rule. This object contains the fol
 |--- |--- |--- |
 | id | String | Identifies a rule by its system-defined ID. |
 | name | String | Defines a name for this rule. |
-| methods  | Array of string values | Identifies the set of API requests that will be screened by one or more HTTP method(s). Valid values are: `GET \| DELETE \| PATCH \| POST \| PUT` |
+| methods  | Array of strings | Identifies the set of API requests that will be screened by one or more HTTP method(s). Valid values are: `GET \| DELETE \| PATCH \| POST \| PUT` |
 | path | Object | Identifies the set of API requests that will be screened by URL path.  |
 | response | Integer | Reserved for future use. | 
 | schema_id | String | Identifies an API schema by its system-defined ID. Use the [Get All API Schemas operation](#get-all-api-schemas) to retrieve a list of API schemas and their system-defined ID.  |
@@ -534,7 +534,7 @@ Pass the following request body properties:
 |customer_id |String |Identifies your account number. |
 |last_modified_date |String |Reserved for future use. |
 |type |String |Identifies the data type for the root element. This data type determines the set of allowed properties at the root. <br />For example, if you set this property to `object`, then this schema will expect an object at the root of the API request. Additionally, this configuration allows you to add a sibling property for any keyword supported by JSON schema (draft 4) for the object data type (e.g., `properties`, `patternProperties`, and `additionalProperties`). In turn, the `properties` property may contain a `type` property that determines the set of available properties that may be included within the `properties` object. |
-|required |Array of string values |Identifies each required property by name.|
+|required |Array of strings |Identifies each required property by name.|
 
 {{ API_RESPONSE.md }}
 
@@ -731,7 +731,7 @@ The response body for a successful request contains the following response eleme
 |customer_id |String |Identifies your account number. |
 |last_modified_date |String |Indicates the date and time at which this configuration was last modified.|
 |type |String |Identifies the data type for the root element. This data type determines the set of allowed properties at the root. <br />For example, if this property is set to `object`, then this schema will expect an object at the root of the API request. Additionally, this configuration supports a sibling property for any keyword supported by JSON schema (draft 4) for the object data type (e.g., `properties`, `patternProperties`, and `additionalProperties`). In turn, the `properties` property may contain a `type` property that determines the set of available properties that may be included within the `properties` object. |
-|required |Array of string values |Identifies each required property by name.|
+|required |Array of strings |Identifies each required property by name.|
 
 {{ API_ERRORS.md }}
 
@@ -814,7 +814,7 @@ Pass the following request body properties:
 |customer_id |String |Identifies your account number. |
 |last_modified_date |String |Reserved for future use. |
 |type |String |Identifies the data type for the root element. This data type determines the set of allowed properties at the root. <br />For example, if you set this property to `object`, then this schema will expect an object at the root of the API request. Additionally, this configuration allows you to add a sibling property for any keyword supported by JSON schema (draft 4) for the object data type (e.g., `properties`, `patternProperties`, and `additionalProperties`). In turn, the `properties` property may contain a `type` property that determines the set of available properties that may be included within the `properties` object. |
-|required |Array of string values |Identifies each required property by name.|
+|required |Array of strings |Identifies each required property by name.|
 
 {{ API_RESPONSE.md }}
 

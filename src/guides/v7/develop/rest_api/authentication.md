@@ -213,7 +213,7 @@ A Quick Start page is shown upon creating an account for your API client. This p
 
 Each request to our REST API service must be authorized through an access token. Access tokens provide temporary authorization (e.g., 5 minutes) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
 
-**Request syntax:** `POST https://account.edgio.app/connect/token`
+**Request syntax:** `POST https://{{ IDENTITY_TOKEN_DOMAIN }}/connect/token`
 
 Requests for access tokens requires:
 
@@ -229,12 +229,12 @@ Requests for access tokens requires:
 **Sample request:**
 
 ``` curl
-POST https://account.edgio.app/connect/token HTTP/1.1
+POST https://{{ IDENTITY_TOKEN_DOMAIN }}/connect/token HTTP/1.1
 Accept: application/json
 Content-Type: application/x-www-form-urlencoded
-Host: account.edgio.app
+Host: {{ IDENTITY_TOKEN_DOMAIN }}
 
-client_id=J23...BCd J2345678-abcd-9012-efgh-34567890aBCd&client_secret=Fad...DFv Fad323FSd4GSdce3DFv&grant_type=client_credentials&scope=app.waf
+client_id=J23d...B2Cd&client_secret=Fdad...DF3v&grant_type=client_credentials&scope=app.waf
 ```
 
 **Sample response:**
@@ -271,4 +271,4 @@ Requests to our API gateway must be authorized through an access token. Specify 
 
 A sample `Authorization` request header is provided below.
 
-`Authorization: Bearer A1bcbGciOiJSUzI1NiIsImtpZCI6Ij13N1VGQ01zOTIzQjI1MTYzRjU4MU1wQ0I3MUNBRDk3QjAzNkUwQjgiLCJ01XAiOiJKV1QiLCJ4NXQiOiJGMDc4bzVJN0pSWV9XQm9Ndcc5dGw3QTI0TGcifQ.1yJuYmYiOj11NjUzMDgwNzgsImV4cCI6MTU2NTMwODM3OCwiaXNzIjoiacR0ccM6Ly9pZC52ZG1zLmlvIiwiYXVkIjpbImc0dcBzOi8vaWQudmRtcy5pby9yZXNvdXJjZXMiLCJlYy5ydWxlcyJdLCJjbGllbnRfaWQiOiIxNTccOWZmZi04MTQzLTRmOW1tOWY1Yi1jNDgzZWVkNzclM2QiLCJzY29wZSI6WyJlYy5ydWxlcyJdfQ.XQ4TvzDrwLo4bO71cb1TbgYxmtcgTzC46Do0A9F3inAqw1qcr\_Nr9IgRDxJDqR4Udc9QR86LVTQC2-ogGWP3pI12GtDtiUQdKYs5fpcuMf2Kbqau6kuU1M5BJm\_GOcBNCCAJnU7SrDprVbPlwanGqk3yjcyo9nto8KWCRTwq2t31UQ1Ci31FZSr4vaMZJqk1vBW6NS3-yGowGCZbSIQBKpSgcc75coPtSjF1Qi6M4yORDyMC8c3KKlIp2b-6mpfDFXINIFV-XvnNuQ9v-lcc43\_VWuDA\_cQO8wmS4VzS1Ac1tpg1Pp4Bcdtjt12yKAXvi0X19R1BDmpxmO17cRRKYQ`
+`Authorization: Bearer A1bcbGciOiJSUzI1NiIsImtpZCI6Ij13N1VGQ01zOTIzQjI1MTYzRjU4MU1wQ0I3MUNBRDk3QjAzNkUwQjgiLCJ01XAiOiJKV1QiLCJ4NXQiOiJGMDc4bzVJN0pSWV9XQm9Ndcc5dGw3QTI0TGcifQ.1yJuYmYiOj11NjUzMDgwNzgsImV4cCI6MTU2NTMwODM3OCwiaXNzIjoiacR0ccM6Ly9pZC52ZG1zLmlvIiwiYXVkIjpbImc0dcBzOi8vaWQudmRtcy5pby9yZXNvdXJjZXMiLCJlYy5ydWxlcyJdLCJjbGllbnRfaWQiOiIxNTccOWZmZi04MTQzLTRmOW1tOWY1Yi1jNDgzZWVkNzclM2QiLCJzY29wZSI6WyJlYy5ydWxlcyJdfQ.XQ4TvzDrwLo4bO71cb1TbgYxmtcgTzC46Do0A9F3inAqw1qcrNr9IgRDxJDqR4Udc9QR86LVTQC2-ogGWP3pI12GtDtiUQdKYs5fpcuMf2Kbqau6kuU1M5BJmGOcBNCCAJnU7SrDprVbPlwanGqk3yjcyo9nto8KWCRTwq2t31UQ1Ci31FZSr4vaMZJqk1vBW6NS3-yGowGCZbSIQBKpSgcc75coPtSjF1Qi6M4yORDyMC8c3KKlIp2b-6mpfDFXINIFV-XvnNuQ9v-lcc43VWuDAcQO8wmS4VzS1Ac1tpg1Pp4Bcdtjt12yKAXvi0X19R1BDmpxmO17cRRKYQ`

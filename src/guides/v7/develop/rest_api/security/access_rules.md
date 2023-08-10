@@ -41,14 +41,14 @@ Pass the following request body properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|allowed_http_methods|Array of string values|Identifies each allowed HTTP method (e.g., `GET`).|
-|allowed_request_content_types|Array of string values|Identifies each allowed media type (e.g., `application/json`).|
+|allowed_http_methods|Array of strings|Identifies each allowed HTTP method (e.g., `GET`).|
+|allowed_request_content_types|Array of strings|Identifies each allowed media type (e.g., `application/json`).|
 |asn|Object|Contains access controls for autonomous system numbers (ASNs).|
 |cookie|Object|Contains access controls for cookie names. All cookies defined within a whitelist, accesslist, or blacklist are regular expressions.|
 |country|Object|Contains access controls for countries. Specify each desired country using its [country code](/guides/reference/country_codes).|
 |customer_id|String|Identifies your account by its customer account number.|
-|disallowed_extensions|Array of string values|Indicates each file extension for which WAF will send an alert or block the request.|
-|disallowed_headers|Array of string values|Indicates each request header for which WAF will send an alert or block the request.|
+|disallowed_extensions|Array of strings|Indicates each file extension for which WAF will send an alert or block the request.|
+|disallowed_headers|Array of strings|Indicates each request header for which WAF will send an alert or block the request.|
 |ip|Object|Contains access controls for IPv4 and/or IPv6 addresses. Specify each desired IP address using standard IPv4/IPv6 and CIDR notation.|
 |max_file_size|Integer|Indicates the maximum file size, in bytes, for a `POST` request body.|
 |name|String|Assigns a name to this access rule.|
@@ -64,9 +64,9 @@ The `asn`, `cookie`, `country`, `ip`, `referer`, `url`, and `user_agent` objects
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|accesslist|Array of string or integer values|Contains entries that identify traffic that may access your content upon passing a threat assessment. ASN access controls are integer values. All other access controls are string values.|
-|blacklist|Array of string or integer values|Contains entries that identify traffic that will be blocked or for which an alert will be generated. ASN access controls are integer values. All other access controls are string values.|
-|whitelist|Array of string or integer values|Contains entries that identify traffic that may access your content without undergoing threat assessment. ASN access controls are integer values. All other access controls are string values.|
+|accesslist|Array of string or integer values|Contains entries that identify traffic that may access your content upon passing a threat assessment. ASN access controls are integer values. All other access controls are strings.|
+|blacklist|Array of string or integer values|Contains entries that identify traffic that will be blocked or for which an alert will be generated. ASN access controls are integer values. All other access controls are strings.|
+|whitelist|Array of string or integer values|Contains entries that identify traffic that may access your content without undergoing threat assessment. ASN access controls are integer values. All other access controls are strings.|
 
 All entries within a cookie, referrer, URL, or user agent whitelist, accesslist, or blacklist are regular expressions.
 
@@ -339,7 +339,7 @@ A request to retrieve an access rule is described below.
 
 `GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/acl/<ACCESS RULE ID>`
 
-Define the following variable when submitting the above request:
+Define the following variables when submitting the above request:
 
 {{ TEAM_ID }}
 -   `<ACCESS RULE ID>`**:** Required. Replace this variable with the system-defined ID for the desired access rule.
@@ -360,18 +360,18 @@ Request body properties are not required by this operation.
 
 <h4>Response Body</h4>
 
-The response body for a successful request contains the following response elements for each access rule:
+The response body for a successful request contains the following response elements:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|allowed_http_methods|Array of string values|Identifies each allowed HTTP method (e.g., `GET`).|
-|allowed_request_content_types|Array of string values|Identifies each allowed media type (e.g., `application/json`).|
+|allowed_http_methods|Array of strings|Identifies each allowed HTTP method (e.g., `GET`).|
+|allowed_request_content_types|Array of strings|Identifies each allowed media type (e.g., `application/json`).|
 |asn|Object|Contains access controls for autonomous system numbers (ASNs).|
 |cookie|Object|Contains access controls for cookie names. All cookies defined within a whitelist, accesslist, or blacklist are regular expressions.|
 |country|Object|Contains access controls for countries. Each country is identified by its [country code](/guides/reference/country_codes).|
 |customer_id|String|Identifies your account by its customer account number.|
-|disallowed_extensions|Array of string values|Indicates each file extension for which WAF will send an alert or block the request.|
-|disallowed_headers|Array of string values|Indicates each request header for which WAF will send an alert or block the request.|
+|disallowed_extensions|Array of strings|Indicates each file extension for which WAF will send an alert or block the request.|
+|disallowed_headers|Array of strings|Indicates each request header for which WAF will send an alert or block the request.|
 |id|String|Indicates the system-defined ID for this access rule.|
 |ip|Object|Contains access controls for IPv4 and/or IPv6 addresses. Each IP address is defined through standard IPv4/IPv6 and CIDR notation.|
 |last_modified_by|String|Reserved for future use.|
@@ -391,9 +391,9 @@ The `asn`, `cookie`, `country`, `ip`, `referer`, `url`, and `user_agent` objects
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|accesslist|Array of string or integer values|Contains entries that identify traffic that may access your content upon passing a threat assessment. ASN access controls are integer values. All other access controls are string values.|
-|blacklist|Array of string or integer values|Contains entries that identify traffic that will be blocked or for which an alert will be generated. ASN access controls are integer values. All other access controls are string values.|
-|whitelist|Array of string or integer values|Contains entries that identify traffic that may access your content without undergoing threat assessment. ASN access controls are integer values. All other access controls are string values.|
+|accesslist|Array of string or integer values|Contains entries that identify traffic that may access your content upon passing a threat assessment. ASN access controls are integer values. All other access controls are strings.|
+|blacklist|Array of string or integer values|Contains entries that identify traffic that will be blocked or for which an alert will be generated. ASN access controls are integer values. All other access controls are strings.|
+|whitelist|Array of string or integer values|Contains entries that identify traffic that may access your content without undergoing threat assessment. ASN access controls are integer values. All other access controls are strings.|
 
 All entries within a cookie, referrer, URL, or user agent whitelist, accesslist, or blacklist are regular expressions.
 
@@ -550,14 +550,14 @@ Pass the following request body properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|allowed_http_methods|Array of string values|Identifies each allowed HTTP method (e.g., `GET`).|
-|allowed_request_content_types|Array of string values|Identifies each allowed media type (e.g., `application/json`).|
+|allowed_http_methods|Array of strings|Identifies each allowed HTTP method (e.g., `GET`).|
+|allowed_request_content_types|Array of strings|Identifies each allowed media type (e.g., `application/json`).|
 |asn|Object|Contains access controls for autonomous system numbers (ASNs).|
 |cookie|Object|Contains access controls for cookie names. All cookies defined within a whitelist, accesslist, or blacklist are regular expressions.|
 |country|Object|Contains access controls for countries. Specify each desired country using its [country code](/guides/reference/country_codes).|
 |customer_id|String|Identifies your account by its customer account number.|
-|disallowed_extensions|Array of string values|Indicates each file extension for which WAF will send an alert or block the request.|
-|disallowed_headers|Array of string values|Indicates each request header for which WAF will send an alert or block the request.|
+|disallowed_extensions|Array of strings|Indicates each file extension for which WAF will send an alert or block the request.|
+|disallowed_headers|Array of strings|Indicates each request header for which WAF will send an alert or block the request.|
 |id|String|Indicates the system-defined ID for this access rule.|
 |ip|Object|Contains access controls for IPv4 and/or IPv6 addresses. Specify each desired IP address using standard IPv4/IPv6 and CIDR notation.|
 |max_file_size|Integer|Indicates the maximum file size, in bytes, for a `POST` request body.|
@@ -574,9 +574,9 @@ The `asn`, `cookie`, `country`, `ip`, `referer`, `url`, and `user_agent` objects
 
 |Name|Data Type|Description|
 |--- |--- |--- |
-|accesslist|Array of string or integer values|Contains entries that identify traffic that may access your content upon passing a threat assessment. ASN access controls are integer values. All other access controls are string values.|
-|blacklist|Array of string or integer values|Contains entries that identify traffic that will be blocked or for which an alert will be generated. ASN access controls are integer values. All other access controls are string values.|
-|whitelist|Array of string or integer values|Contains entries that identify traffic that may access your content without undergoing threat assessment. ASN access controls are integer values. All other access controls are string values.|
+|accesslist|Array of string or integer values|Contains entries that identify traffic that may access your content upon passing a threat assessment. ASN access controls are integer values. All other access controls are strings.|
+|blacklist|Array of string or integer values|Contains entries that identify traffic that will be blocked or for which an alert will be generated. ASN access controls are integer values. All other access controls are strings.|
+|whitelist|Array of string or integer values|Contains entries that identify traffic that may access your content without undergoing threat assessment. ASN access controls are integer values. All other access controls are strings.|
 
 All entries within a cookie, referrer, URL, or user agent whitelist, accesslist, or blacklist are regular expressions.
 

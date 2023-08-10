@@ -36,6 +36,7 @@ const DOMAIN_LEGACY = 'layer0.co';
 const API_DOMAIN = 'edgioapis.com';
 const APP_DOMAIN = `edgio.app`;
 const IDENTITY_DOMAIN = `account.edgio.app`;
+const IDENTITY_TOKEN_DOMAIN = `id.edgio.app`;
 const LINK_DOMAIN = `edgio.link`;
 const PERMALINK_DOMAIN = `edgio-perma.link`;
 const RUM_DOMAIN = `rum.edgio.net`;
@@ -56,6 +57,7 @@ const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
 const API_URL = `https://${API_DOMAIN}/app`;
 const IDENTITY_URL = `https://${IDENTITY_DOMAIN}`;
 const API_SECURITY_VERSION = '0.9';
+const API_CONFIG_VERSION = '0.1';
 const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
 
 const PORTAL_LINK = `[${PORTAL}](${LOGIN_URL})`;

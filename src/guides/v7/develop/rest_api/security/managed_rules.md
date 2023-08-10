@@ -49,7 +49,7 @@ Pass the following request body properties:
 |disabled_rules|Array of objects |Contains all disabled rules. <br /> **Default Value:** `Null`|
 |general_settings|Object|Required. Contains settings that define the profile for a valid request.|
 |name|String|Indicates the name of the managed rule.|
-|policies|Array of string values|Contains a list of policies that have been enabled on this managed rule. Use the [Get Available Policies operation](#get-available-policies) to retrieve a list of policies and their IDs.|
+|policies|Array of strings|Contains a list of policies that have been enabled on this managed rule. Use the [Get Available Policies operation](#get-available-policies) to retrieve a list of policies and their IDs.|
 |rule_target_updates|Array of objects|Defines one or more targets that will be ignored and/or replaced.<br /> **Key information:** <ul><li>If `is_negated` is set to `true`, then this target identifies rule criterion that will be ignored when identifying threats.</li><li>The `replace_target` property defines criterion that will be used to identify threats instead of the existing criterion.</li><li>If `is_regex` property is set to `true`, then you may use regular expressions to define criteria for identifying multiple types of threats.</li><li>A maximum of 25 target configurations may be created.</li></ul>|
 |ruleset_id|String|Required. Indicates the ID for the rule set associated with this managed rule. Use the [Get Available Managed Rule Sets operation](#get-available-managed-rule-sets) to retrieve a list of rule sets and their IDs.|
 |ruleset_version|String|Required. Indicates the version of the rule set associated with this managed rule.|
@@ -73,9 +73,9 @@ The `general_settings` object describes a valid request using the following prop
 |arg_length|Integer|Required. Indicates the maximum number of characters for any single query string property value.|
 |arg_name_length|Integer|Required. Indicates the maximum number of characters for any single query string property name.|
 |combined_file_sizes|Integer|Indicates the total file size for multipart message lengths.|
-|ignore_cookie|Array of string values|Identifies each cookie that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
-|ignore_header|Array of string values|Identifies each request header that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
-|ignore_query_args|Array of string values|Identifies each query string argument that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
+|ignore_cookie|Array of strings|Identifies each cookie that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
+|ignore_header|Array of strings|Identifies each request header that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
+|ignore_query_args|Array of strings|Identifies each query string argument that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
 |json_parser|Boolean|Determines whether JSON payloads will be inspected. Valid values are: `true \| false`|
 |max_num_args|Integer|Required. Indicates the maximum number of query string properties.|
 |paranoia_level|Integer|Indicates the balance between the level of protection and false positives. Valid values are: `1 \| 2 \| 3 \| 4`|
@@ -502,7 +502,7 @@ The response body for a successful request contains the following response prope
 |--- |--- |--- |
 |description|String|This property is reserved for future use.|
 |id|String|Identifies a rule set by its system-defined ID.|
-|versions|Array of string values|Identifies the current versions of the rule set identified by the `id` response property.|
+|versions|Array of strings|Identifies the current versions of the rule set identified by the `id` response property.|
 
 {{ API_ERRORS.md }}
 
@@ -717,7 +717,7 @@ The response body for a successful request contains the following response eleme
 |last_modified_by|String|Reserved for future use.|
 |last_modified_date|String|Indicates the date and time at which the managed rule was last modified. <br />**Syntax:** `YYYY-MM-DDThh:mm:ss:ffffffZ` |
 |name|String|Indicates the name of the managed rule.|
-|policies|Array of string values|Contains a list of policies that have been enabled on this managed rule. Identify each desired policy by its system-defined ID. Use the [Get Available Policies operation](#get-available-policies) to retrieve a list of policies and their IDs.|
+|policies|Array of strings|Contains a list of policies that have been enabled on this managed rule. Identify each desired policy by its system-defined ID. Use the [Get Available Policies operation](#get-available-policies) to retrieve a list of policies and their IDs.|
 |rule_target_updates|Array of objects|Defines one or more targets that will be ignored and/or replaced.<br />**Key information:** <ul><li>If `is_negated` is set to `true`, then this target identifies rule criterion that will be ignored when identifying threats.</li><li>The `replace_target` property defines criterion that will be used to identify threats instead of the existing criterion.</li><li>If `is_regex` property is set to `true`, then you may use regular expressions to define criteria for identifying multiple types of threats.</li><li>A maximum of 25 target configurations may be created.</li></ul>|
 |ruleset_id|String|Indicates the ID for the rule set associated with this managed rule. Use the [Get Available Managed Rule Sets operation](#get-available-managed-rule-sets) to retrieve a list of rule sets and their IDs.|
 |ruleset_version|String|Indicates the version of the rule set associated with this managed rule.|
@@ -742,9 +742,9 @@ The `general_settings` object describes a valid request using the following prop
 |arg_length|Integer|Indicates the maximum number of characters for any single query string property value.|
 |arg_name_length|Integer|Indicates the maximum number of characters for any single query string property name.|
 |combined_file_sizes|Integer|Indicates the total file size for multipart message lengths.|
-|ignore_cookie|Array of string values|Identifies each cookie that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
-|ignore_header|Array of string values|Identifies each request header that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
-|ignore_query_args|Array of string values|Identifies each query string argument that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
+|ignore_cookie|Array of strings|Identifies each cookie that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
+|ignore_header|Array of strings|Identifies each request header that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
+|ignore_query_args|Array of strings|Identifies each query string argument that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
 |json_parser|Boolean|Indicates whether JSON payloads will be inspected. Valid values are: `true \| false`|
 |max_num_args|Integer|Indicates the maximum number of query string properties.|
 |paranoia_level|Integer|Indicates the balance between the level of protection and false positives. Valid values are: `1 \| 2 \| 3 \| 4`|
@@ -860,7 +860,7 @@ Pass the following request body properties:
 |disabled_rules|Array of objects |Contains all disabled rules. <br /> **Default Value:** `Null`|
 |general_settings|Object|Required. Contains settings that define the profile for a valid request.|
 |name|String|Indicates the name of the managed rule.|
-|policies|Array of string values|Contains a list of policies that have been enabled on this managed rule. Use the [Get Available Policies operation](#get-available-policies) to retrieve a list of policies and their IDs.|
+|policies|Array of strings|Contains a list of policies that have been enabled on this managed rule. Use the [Get Available Policies operation](#get-available-policies) to retrieve a list of policies and their IDs.|
 |rule_target_updates|Array of objects|Defines one or more targets that will be ignored and/or replaced. <br />**Key information:** <ul><li>If `is_negated` is set to `true`, then this target identifies rule criterion that will be ignored when identifying threats.</li><li>The `replace_target` property defines criterion that will be used to identify threats instead of the existing criterion.</li><li>If `is_regex` property is set to `true`, then you may use regular expressions to define criteria for identifying multiple types of threats.</li><li>A maximum of 25 target configurations may be created.</li></ul>|
 |ruleset_id|String|Required. Indicates the ID for the rule set associated with this managed rule. Use the [Get Available Managed Rule Sets operation](#get-available-managed-rule-sets) to retrieve a list of rule sets and their IDs.|
 |ruleset_version|String|Required. Indicates the version of the rule set associated with this managed rule.|
@@ -884,9 +884,9 @@ The `general_settings` object describes a valid request using the following prop
 |arg_length|Integer|Required. Indicates the maximum number of characters for any single query string property value.|
 |arg_name_length|Integer|Required. Indicates the maximum number of characters for any single query string property name.|
 |combined_file_sizes|Integer|Indicates the total file size for multipart message lengths.|
-|ignore_cookie|Array of string values|Identifies each cookie that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
-|ignore_header|Array of string values|Identifies each request header that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
-|ignore_query_args|Array of string values|Identifies each query string argument that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
+|ignore_cookie|Array of strings|Identifies each cookie that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
+|ignore_header|Array of strings|Identifies each request header that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
+|ignore_query_args|Array of strings|Identifies each query string argument that will be ignored for the purpose of determining whether a request is a threat. Each element in this array defines a regular expression.|
 |json_parser|Boolean|Determines whether JSON payloads will be inspected. Valid values are: `true \| false`|
 |max_num_args|Integer|Required. Indicates the maximum number of query string properties.|
 |paranoia_level|Integer|Indicates the balance between the level of protection and false positives. Valid values are:`1 \| 2 \| 3 \| 4`|

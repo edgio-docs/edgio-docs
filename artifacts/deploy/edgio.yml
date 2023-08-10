@@ -37,7 +37,7 @@ jobs:
           # Check if package-lock.json file exists
           if [ -f "package-lock.json" ]; then
             # Use npm
-            npm i -g @edgio/cli
+            npm i -g @edgio/cli@latest
           else
             # Check if yarn.lock file exists
             if [ -f "yarn.lock" ]; then
@@ -129,7 +129,7 @@ jobs:
       - name: Install dependencies
         run: |
           if [ ${{ steps.package.outputs.package_manager }} = "npm" ]; then
-            npm i -g @edgio/cli
+            npm i -g @edgio/cli@latest
             npm ci --legacy-peer-deps
             echo "Using npm - Global packages"
           elif [ ${{ steps.package.outputs.package_manager }} = "yarn" ]; then

@@ -36,7 +36,6 @@ export function Page({children}: PageProps) {
 
       try {
         const highlight = decodeURIComponent(escape(atob(hash)));
-        console.log('text to highlight', highlight);
         if (highlight.length > 0 && contentInnerRef.current) {
           highlightElementByText(highlight as string, contentInnerRef.current);
         }

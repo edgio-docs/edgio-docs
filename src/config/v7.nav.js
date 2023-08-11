@@ -86,6 +86,10 @@ const nav = {
               path: 'performance/cdn_as_code/route_features',
             },
             {
+              title: 'Conditional Routes',
+              path: 'performance/cdn_as_code/conditional_routes',
+            },
+            {
               title: 'Error Handling',
               path: 'performance/cdn_as_code/error_handling',
             },
@@ -299,8 +303,8 @@ const nav = {
               path: 'sites_frameworks/getting_started/brunch',
             },
             {
-              title: 'Custom Connector',
-              path: 'sites_frameworks/getting_started/custom_connector',
+              title: 'Node.js Connector',
+              path: 'sites_frameworks/getting_started/nodejs_connector',
             },
             {
               title: 'Docusaurus',

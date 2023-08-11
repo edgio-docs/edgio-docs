@@ -92,7 +92,7 @@ Common response headers are described below.
 
     </Callout>
 
--   **Cache-Control: max-age:** Indicates the maximum length of time that a request is considered fresh. An edge server can serve fresh content directly from cache without having to perform a revalidation with the origin server. <!--Default value: 604800 The default value indicates that the max-age for the requested content is 7 days Max-age is defined in seconds. 604800 seconds = 7 days.-->
+-   **Cache-Control: max-age:** Indicates the maximum length of time that a request is considered fresh. An edge server can serve fresh content directly from cache without having to perform a revalidation with the origin server. 
 -   **Content-Encoding:** Indicates that a compressed version of the requested content was served to the client. This response header indicates the asset's compression type (e.g., gzip, deflate, bzip2, etc.).
 -   **Content-Length:** Indicates the size of the response body in octets.
 -   **Content-Type:** Indicates the media type (aka content type) for the response body.

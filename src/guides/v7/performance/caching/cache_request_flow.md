@@ -16,7 +16,7 @@ If Origin Shield has been enabled on your origin, then the edge server may reval
 
 ![](/images/v7/performance/request-flow-edge-origin-shield-origin.png)
 
-### {{ PRODUCT }} cloud
+### {{ PRODUCT }} Cloud
 
 {{ PRODUCT }} routes [Cloud Functions](/guides/performance/serverless_compute) and [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) requests similar to traffic sent to your origin servers. However, cache misses are forwarded to a cloud load balancer which distributes requests to a cloud worker.
 

@@ -114,7 +114,7 @@ The process through which requested content is compressed is outlined below.
 
 3.  The request will be forwarded to either an origin server or the {{ PRODUCT }} cloud. Either entity will provide a compressed or uncompressed response according to whether it can apply compression. {{ PRODUCT }} will serve the response to the client. Your caching policy dictates whether the response will be cached.
 
-## Applying Brotli Compression through the {{ PRODUCT }} cloud {/*applying-brotli-compression-through-the-cloud*/}
+## Applying Brotli Compression through the {{ PRODUCT }} Cloud {/*applying-brotli-compression-through-the-cloud*/}
 
 The {{ PRODUCT }} cloud supports Brotli encoding if the web browser accepts Brotli and the response is considered [eligible for compression](#compressible-types). Apply Brotli compression under these conditions through `brotliCompressSync`.
 

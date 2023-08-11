@@ -86,6 +86,10 @@ const nav = {
               path: 'performance/cdn_as_code/route_features',
             },
             {
+              title: 'Conditional Routes',
+              path: 'performance/cdn_as_code/conditional_routes',
+            },
+            {
               title: 'Error Handling',
               path: 'performance/cdn_as_code/error_handling',
             },

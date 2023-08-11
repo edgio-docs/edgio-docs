@@ -70,11 +70,11 @@ module.exports = {
 
 Options:
 
-- `{{ FULL_CLI_NAME }}SourceMaps: true|false`: when true, the {{ PRODUCT }} Cloud build includes sourcemap files which make debugging easier when tailing the server logs in the {{ PORTAL }}. It also increases the {{ PRODUCT }} Cloud bundle size, which may push your deployments over the 50MB (compressed) limit.
+- `{{ FULL_CLI_NAME }}SourceMaps: true|false`: when true, the {{ PRODUCT }} cloud build includes sourcemap files which make debugging easier when tailing the server logs in the {{ PORTAL }}. It also increases the {{ PRODUCT }} cloud bundle size, which may push your deployments over the 50MB (compressed) limit.
 
 <Callout type="warning">
 
-We noticed some performance issues related to sourcemaps being loaded in the {{ PRODUCT }} Cloud, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
+We noticed some performance issues related to sourcemaps being loaded in the {{ PRODUCT }} cloud, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
 
 </Callout>
 
@@ -564,7 +564,7 @@ npm update -g {{ PACKAGE_NAME }}/cli
 
 ### Error on deploy: `{{ PRODUCT_NAME_LOWER }}-deploy-lambda: Unzipped size must be smaller than...` {/* error-on-deploy-deploy-lambda-unzipped-size-must-be-smaller-than */}
 
-As the error states, there is an upper limit on how big a package can be when deployed to the {{ PRODUCT }} Cloud. Some common strategies for solving:
+As the error states, there is an upper limit on how big a package can be when deployed to the {{ PRODUCT }} cloud. Some common strategies for solving:
 
 - You may need to move some dependencies as [described here](#modules-vs-buildmodules). Only dependencies are copied up to the lambda.
 - Make sure you are using imports in a smart way. A common example is changing: `import { get } from lodash` to `import get from lodash/get` to avoid unnecessary bloat in your modules

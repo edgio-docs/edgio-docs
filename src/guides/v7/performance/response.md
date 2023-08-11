@@ -156,7 +156,7 @@ Common response headers are described below.
     **Example:** `x-cache: HIT`
 
 -  **x-ec-debug:** Contains the requested debug cache metadata when the [Debug Header feature](/guides/performance/rules/features#debug-header) has been enabled. [Learn more.](#requesting-debug-cache-information)
--   **{{ HEADER_PREFIX }}-aws-region:** Indicates the [AWS region](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions) from which a request to the {{ PRODUCT }} Cloud was served. 
+-   **{{ HEADER_PREFIX }}-aws-region:** Indicates the [AWS region](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions) from which a request to the {{ PRODUCT }} cloud was served. 
 <!--
 -   **{{ HEADER_PREFIX }}-caching-status:** Indicates cache status information. If the response was not cached or served from cache, then it will report the reason why it was not cached.
 
@@ -166,7 +166,7 @@ Common response headers are described below.
 
     [Learn more.](/guides/performance/caching#why-is-my-response-not-being-cached)
 -->
--   **{{ HEADER_PREFIX }}-components:** Contains {{ PRODUCT }} Cloud information that is primarily meant for internal use when troubleshooting issues.
+-   **{{ HEADER_PREFIX }}-components:** Contains {{ PRODUCT }} cloud information that is primarily meant for internal use when troubleshooting issues.
 -   **{{ HEADER_PREFIX }}-hit-request-id:** For responses served from cache, this header indicates the unique ID of the request that was cached on our CDN.
     <a id="-mr" />
 	
@@ -209,7 +209,7 @@ Common response headers are described below.
 
     [Learn more.](/guides/performance/caching/purging#surrogate-keys-cache-tags)
 
--   [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements and cache status information for {{ PRODUCT }} Cloud requests ({{ PRODUCT }} {{ PRODUCT_PLATFORM }} and Cloud Functions).
+-   [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements and cache status information for {{ PRODUCT }} cloud requests ({{ PRODUCT }} {{ PRODUCT_PLATFORM }} and Cloud Functions).
 
 -   **{{ HEADER_PREFIX }}-version:** Indicates basic information for your current deployment.
 
@@ -353,7 +353,7 @@ The following abbreviations are used for time units:
 
 ### {{ HEADER_PREFIX }}-t Response Header {/*-t-response-header*/}
 
-The {{ HEADER_PREFIX }}-t response header is solely returned for {{ PRODUCT }} Cloud requests ({{ PRODUCT }} {{ PRODUCT_PLATFORM }} and Cloud Functions). It contains time measurements for each cloud component. 
+The {{ HEADER_PREFIX }}-t response header is solely returned for {{ PRODUCT }} cloud requests ({{ PRODUCT }} {{ PRODUCT_PLATFORM }} and Cloud Functions). It contains time measurements for each cloud component. 
 
 **Syntax:**
 
@@ -390,12 +390,12 @@ We will now examine each metric defined within the above sample response header:
 | `pt=2202`   | Indicates the total time from a cloud load balancer was 2,202 milliseconds.                    |
 | `pc=1`     | Indicates the request count for a cloud load balancer was 1.                                 |
 | `pf=2201`   | Indicates the fetch time from a cloud load balancer was 2,201 milliseconds.                 |
-| `wbt=1379`  | Indicates that billed time for the {{ PRODUCT }} Cloud was 1,379 milliseconds.                                |
-| `wbm=896`  | Indicates that billed memory for {{ PRODUCT }} Cloud was 896 Megabytes.                                |
+| `wbt=1379`  | Indicates that billed time for the {{ PRODUCT }} cloud was 1,379 milliseconds.                                |
+| `wbm=896`  | Indicates that billed memory for {{ PRODUCT }} cloud was 896 Megabytes.                                |
 | `wm=162`   | Indicates that memory usage for a cloud worker was 162 Megabytes. |
 | `wt=1062`   | Indicates that the workload time for a cloud worker was 1,062 milliseconds.          |
-| `wc=1`    | Indicates that this instance of {{ PRODUCT }} Cloud was invoked 1 time.                    |
-| `wg=1320`| Indicates that this instance of {{ PRODUCT }} Cloud has been running for 1,320 seconds.                         |
+| `wc=1`    | Indicates that this instance of {{ PRODUCT }} cloud was invoked 1 time.                    |
+| `wg=1320`| Indicates that this instance of {{ PRODUCT }} cloud has been running for 1,320 seconds.                         |
 | `wl=1062` | Indicates that the  total processing time for all cloud workers for all requests is 1,062 milliseconds. |
 
 <a id="serverless-compute-cold-start-timing"></a>

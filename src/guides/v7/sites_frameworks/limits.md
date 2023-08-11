@@ -18,7 +18,7 @@ For example, you might need to use [OpenCV](https://github.com/peterbraden/node-
 Or you might need to use extensions like [`node-microtime`](https://github.com/wadey/node-microtime) for finer-grained performance analysis.
 
 When {{ PRODUCT_NAME }} bundles your application for deployment, we also do some "tree-shaking" to remove unnecessary files in your build.
-This makes the bundle size smaller and more efficient to load on the {{ PRODUCT }} Cloud during a cold-start.
+This makes the bundle size smaller and more efficient to load on the {{ PRODUCT }} cloud during a cold-start.
 But it could have unintended consequences where we might strip away native extension binaries required for your
 application to function.
 
@@ -115,7 +115,7 @@ Typically, this is due to node_modules marked as `dependencies` when they are mo
 }
 ```
 
-### [2]: Segregating assets from THE {{ PRODUCT }} Cloud bundle {/* possible-fix-2-segregating-assets-from-serverless-bundle */}
+### [2]: Segregating assets from the {{ PRODUCT }} cloud bundle {/* possible-fix-2-segregating-assets-from-serverless-bundle */}
 
 Additionally, this can be related to assets (such as fonts or images) that are imported into your project code. These resources are typically better referenced as static assets which are stored outside of the bundle.
 
@@ -136,7 +136,7 @@ Now, you can update your code references from importing the assets to referencin
 + <div><img src="/assets/images/Image1.png"/></div>
 ```
 
-### [3]: Computing which node_modules be included in the {{ PRODUCT }} Cloud bundle {/* possible-fix-3-computing-which-node_modules-be-included-in-the-serverless-bundle */}
+### [3]: Computing which node_modules be included in the {{ PRODUCT }} cloud bundle {/* possible-fix-3-computing-which-node_modules-be-included-in-the-serverless-bundle */}
 
 It might be possible, that [[1]](#possible-fix-1-segregating-devdependencies-from-dependencies) reduces your bundle size, but not reduce it to less than 50 MB (250 MB Uncompresssed). Another way to identify which dependencies would be required in the runtime is to use `@vercel/nft` package (a "Node.js dependency tracing utility").
 

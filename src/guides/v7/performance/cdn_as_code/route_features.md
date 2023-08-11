@@ -326,7 +326,7 @@ Note that catch-all routes that alter headers, cookies, or caching can be placed
 
 ### Transforming Requests / Responses {/* transforming-requests-responses */}
 
-If you need to modify a request before going to an origin, or modify the response from an origin, you may use `transformRequest` and `transformResponse` functions on the `proxy` handler. Transform functions will be executed within the {{ PRODUCT }} Cloud, and will not be executed on the edge. See [Cloud Functions](/guides/performance/serverless_compute) for more information.
+If you need to modify a request before going to an origin, or modify the response from an origin, you may use `transformRequest` and `transformResponse` functions on the `proxy` handler. Transform functions will be executed within the {{ PRODUCT }} cloud, and will not be executed on the edge. See [Cloud Functions](/guides/performance/serverless_compute) for more information.
 
 {{ routehelper_usage.md }}
 
@@ -523,7 +523,7 @@ router
 
 ## Routing to Cloud Functions {/* routing-to-cloud-functions */}
 
-If your request needs to be run on the {{ PRODUCT }} Cloud, you can use the `SERVERLESS_ORIGIN_NAME` origin to render your result using your application. Use this method to respond with an SSR or API result from your application:
+If your request needs to be run on the {{ PRODUCT }} cloud, you can use the `SERVERLESS_ORIGIN_NAME` origin to render your result using your application. Use this method to respond with an SSR or API result from your application:
 
 ```js
 import {SERVERLESS_ORIGIN_NAME} from '@edgio/core/origins';

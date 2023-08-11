@@ -242,7 +242,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 ## Limits {/* limits */}
 
-{{ PRODUCT }} Cloud Functions limits are listed below.
+{{ PRODUCT }} cloud Functions limits are listed below.
 
 - Our Cloud Functions have a maximum runtime of 20 seconds per request. The response for a function that exceeds this limit is a [539 Project Timeout](/guides/performance/response#exclusive-status-codes).
 - Our Cloud Functions workers are allowed to generate a response body with a maximum file size of 6 MB.

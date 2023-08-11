@@ -1890,7 +1890,7 @@ new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, requests that are not served from cache are served through either the {{ PRODUCT }} Cloud or the origin configuration mapped to the request's hostname. 
+**Default Behavior:** By default, requests that are not served from cache are served through either the {{ PRODUCT }} cloud or the origin configuration mapped to the request's hostname. 
 
 ## Response {/*response*/}
 

@@ -41,14 +41,14 @@ Note that this configuration will allow you to set breakpoints in both your {{ P
 
 By viewing the server logs in the {{ PORTAL }}, you can see all of the messages logged by your application using `console.log`, `console.warn`, etc...
 
-By enabling [Deep Request Inspection](/guides/logs/server_logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} Cloud. You can also see each upstream API request made by your application.
+By enabling [Deep Request Inspection](/guides/logs/server_logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} cloud. You can also see each upstream API request made by your application.
 
-You can also use the server logs to debug **routing issues** going to **custom backends** by temporarily moving the proxy from the edge to the {{ PRODUCT }} Cloud:
+You can also use the server logs to debug **routing issues** going to **custom backends** by temporarily moving the proxy from the edge to the {{ PRODUCT }} cloud:
 
 ```js
   .get('/p/:productId', ({ cache }) => {
     proxy('origin', {
-      // The presence of transformRequest and transformResponse ensure that proxying is done in the {{ PRODUCT }} Cloud, not at the edge.
+      // The presence of transformRequest and transformResponse ensure that proxying is done in the {{ PRODUCT }} cloud, not at the edge.
       transformRequest: (req) => {
         console.log('Request ID', req.headers['x-request-id'])
         // Log request properties that you want to troubleshoot.
@@ -63,7 +63,7 @@ You can also use the server logs to debug **routing issues** going to **custom b
 
 Once you have this deployed, you can observe the output in your [server logs](/guides/logs/server_logs).
 
-Note that whenever possible, we strongly recommend to always proxy the traffic from the edge, as that is more performant and avoids {{ PRODUCT }} Cloud surcharges. The solution above should only be used as a temporary measure while addressing issues.
+Note that whenever possible, we strongly recommend to always proxy the traffic from the edge, as that is more performant and avoids {{ PRODUCT }} cloud surcharges. The solution above should only be used as a temporary measure while addressing issues.
 
 [Learn more.](/guides/logs/server_logs)
 
@@ -120,7 +120,7 @@ curl -vv --silent https://www.yoursite.com/?{{ PRODUCT_NAME_LOWER }}_debug=true 
 
 ## Checking your Permalinks vs Edge links {/* checking-your-permalinks-vs-edge-links */}
 
-A Permalink request will skip the edge (cache) and go straight to the {{ PRODUCT }} Cloud. This will likely degrade performance, but does allow for verification of a function.
+A Permalink request will skip the edge (cache) and go straight to the {{ PRODUCT }} cloud. This will likely degrade performance, but does allow for verification of a function.
 
 The edge link will route through the edge.
 
@@ -132,7 +132,7 @@ You can find both links on the detail page of a deployment.
 
 <Callout type="warning">
 
-We noticed some performance issues related to sourcemaps being loaded in the {{ PRODUCT }} Cloud, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
+We noticed some performance issues related to sourcemaps being loaded in the {{ PRODUCT }} cloud, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
 
 </Callout>
 
@@ -180,7 +180,7 @@ module.exports = {
 
 <Callout type="warning">
 
-We noticed some performance issues related to sourcemaps being loaded in the {{ PRODUCT }} Cloud, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
+We noticed some performance issues related to sourcemaps being loaded in the {{ PRODUCT }} cloud, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
 
 </Callout>
 

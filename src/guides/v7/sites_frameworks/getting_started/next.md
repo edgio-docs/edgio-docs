@@ -84,8 +84,8 @@ In the generated `{{ CONFIG_FILE }}` file, you can customize how {{ PRODUCT }} b
 | `disableDevtools`            | Disables the {{ PRODUCT }} development tools widget on the site. <a id="disableDevtools"></a>                                                                                                                             | `false` |
 | `disableServiceWorker`       | Disables the build of the service worker.                                                                                                                                                                                 | `false` |
 | `forceServerBuild`           | Forces the `{{ PACKAGE_NAME }}/next` connector to use the server build. This config option replaces the NEXT_FORCE_SERVER_BUILD env variable.                                                                             | `false` |
-| `optimizeServerBuild`        | Optimizes the server build by bundling all server assets and decreasing the overall startup time. This option has no effect on apps with the {{ PRODUCT }} Cloud build. This option is set to `false` for Next 13.x apps.              | `true`  |
-| `proxyToServerlessByDefault` | Reduces the number of generated rules by adding the default catch-all rule that proxies all requests to Next.js to the {{ PRODUCT }} Cloud. Set this option to `false` if you want to proxy all unmatched pages to a different origin. | `true`  |
+| `optimizeServerBuild`        | Optimizes the server build by bundling all server assets and decreasing the overall startup time. This option has no effect on apps with the {{ PRODUCT }} cloud build. This option is set to `false` for Next 13.x apps.              | `true`  |
+| `proxyToServerlessByDefault` | Reduces the number of generated rules by adding the default catch-all rule that proxies all requests to Next.js to the {{ PRODUCT }} cloud. Set this option to `false` if you want to proxy all unmatched pages to a different origin. | `true`  |
 | `enforceTrailingSlash`       | Adds rules with Next's internal redirects that either add or remove a trailing slash. When set to `false`, the redirect is performed only by the Next.js server itself and doesn't affect other origins.                  | `true`  |
 
 ## {{ PRODUCT }} Next.js Plugin {/* next-plugin */}
@@ -270,7 +270,7 @@ export default new Router()
 
 ### Preview Mode {/* preview-mode */}
 
-To be able to use [Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode) while being able to cache the respective pages, update your routes to match the requests that contain the two cookies `__prerender_bypass` & `__next_preview_data`, and send those to the {{ PRODUCT }} Cloud for rendering.
+To be able to use [Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode) while being able to cache the respective pages, update your routes to match the requests that contain the two cookies `__prerender_bypass` & `__next_preview_data`, and send those to the {{ PRODUCT }} cloud for rendering.
 
 ```js filename="routes.js" ins="8-21"
 import {Router} from '{{ PACKAGE_NAME }}/core/router';
@@ -356,7 +356,7 @@ new Router()
 
 ## Using next-i18next {/* using-next-i18next */}
 
-The [next-i18next](https://github.com/isaachinman/next-i18next) package is a popular solution for adding localization to Next.js apps. It has some issues when running in {{ PRODUCT }} Cloud deployments, but you can work around these:
+The [next-i18next](https://github.com/isaachinman/next-i18next) package is a popular solution for adding localization to Next.js apps. It has some issues when running in {{ PRODUCT }} cloud deployments, but you can work around these:
 
 First, you need to _not_ use the default name for the `next-i18next.config.js` file. We recommend renaming it `i18next.config.js`. When you use the default name, next-i18next will try to load the config when the Cloud Function starts and since it is not bundled with the app, it will fail.
 
@@ -424,7 +424,7 @@ module.exports = {
 
 <Callout type="info">
 
-Note that Next.js apps built in {{ PRODUCT }} Cloud mode don't include a Next.js image optimizer. Disabling our image optimizer without providing an alternative may cause them to fail.
+Note that Next.js apps built in {{ PRODUCT }} cloud mode don't include a Next.js image optimizer. Disabling our image optimizer without providing an alternative may cause them to fail.
 
 </Callout>
 
@@ -449,7 +449,7 @@ Note that NextRouter.render404 and renderNextPage are retired when using Next.js
 
 {{ PRODUCT_NAME }} supports Next.js middleware starting with Next.js 12.2.0.
 
-When using Next.js middleware it should be noted that the middleware functions are only executed within the {{ PRODUCT }} Cloud, after the edge cache. Middleware that you want to execute on each request needs to have caching disabled explicitly for the route on which the middleware is enabled. Some Middleware use cases such as rewriting the request to another route would be fine to cache. These use cases need to be evaluated on a per route basis with caching enabled/disabled based on the desired result.
+When using Next.js middleware it should be noted that the middleware functions are only executed within the {{ PRODUCT }} cloud, after the edge cache. Middleware that you want to execute on each request needs to have caching disabled explicitly for the route on which the middleware is enabled. Some Middleware use cases such as rewriting the request to another route would be fine to cache. These use cases need to be evaluated on a per route basis with caching enabled/disabled based on the desired result.
 
 ## Runtime Variables Configuration {/* runtime-variables-configuration */}
 

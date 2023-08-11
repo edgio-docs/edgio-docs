@@ -6,7 +6,7 @@ title: Devtools
 
 - Edge and browser caching
 - Prefetching
-- The flow of responses from the {{ PRODUCT }} Cloud to the edge and browser caches
+- The flow of responses from the {{ PRODUCT }} cloud to the edge and browser caches
 
 ![devtools](/images/devtools/devtools.png?width=300)
 

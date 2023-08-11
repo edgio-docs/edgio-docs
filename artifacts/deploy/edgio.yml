@@ -150,14 +150,12 @@ jobs:
           
           if [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
             deploy_command+=" --environment=staging"
-          elif [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
-            deploy_command+=" --environment=default"
           elif [[ "$GITHUB_EVENT_NAME" == "release" ]]; then
             deploy_command+=" --environment=production"
           fi
           
           deploy_command+=" --token='${{ secrets.EDGIO_DEPLOY_TOKEN }}'"
-          deploy_command+=" --non-interactive --ignore-error='CONFIG_SOURCE_SWITCH' --branch='$BRANCH_NAME' --api-url='${{ env.api_url }}'"
+          deploy_command+=" --non-interactive --branch='$BRANCH_NAME' --api-url='${{ env.api_url }}'"
           eval "$deploy_command"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

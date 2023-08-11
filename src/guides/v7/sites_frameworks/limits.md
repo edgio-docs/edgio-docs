@@ -7,8 +7,8 @@ title: Limits
 - You may need to [manually include NodeJS addons (aka native extensions).](#nodejs-native-extensions)
 - Your code will only be granted [read-only access to the file system.](#readonly-filesystem-in-serverless-runtime)
 - [Your project's bundle size](#serverless-bundle-size-limitation) cannot exceed 50 MB compressed or 250 MB uncompressed.
-- Our serverless functions have a maximum runtime of 20 seconds per request. The response for a function that exceeds this limit is a [539 Project Timeout](/guides/performance/response#exclusive-status-codes).
-- Our Serverless Compute workers are allowed to generate a response body with a maximum file size of 6 MB.
+- Our Cloud Functions have a maximum runtime of 20 seconds per request. The response for a function that exceeds this limit is a [539 Project Timeout](/guides/performance/response#exclusive-status-codes).
+- Our Cloud Function workers are allowed to generate a response body with a maximum file size of 6 MB.
 - Your project must comply with all applicable [{{ PRODUCT }} {{ PRODUCT_EDGE }} limitations.](/guides/performance/limits)
 
 ## NodeJS native extensions {/* nodejs-native-extensions */}
@@ -18,7 +18,7 @@ For example, you might need to use [OpenCV](https://github.com/peterbraden/node-
 Or you might need to use extensions like [`node-microtime`](https://github.com/wadey/node-microtime) for finer-grained performance analysis.
 
 When {{ PRODUCT_NAME }} bundles your application for deployment, we also do some "tree-shaking" to remove unnecessary files in your build.
-This makes the bundle size smaller and more efficient to load on our serverless platform during a cold-start.
+This makes the bundle size smaller and more efficient to load on the {{ PRODUCT }} Cloud during a cold-start.
 But it could have unintended consequences where we might strip away native extension binaries required for your
 application to function.
 
@@ -85,9 +85,9 @@ Another thing to keep in mind is that "tmp" directory is ephemeral, meaning that
 file in "tmp", it most likely won’t be available in the next request. That’s why you’ll need to use external services
 to store permanent file storage. These external services can be Amazon S3, Google Cloud Storage, or any other storage service.
 
-## Serverless Bundle Size Limitation {/* serverless-bundle-size-limitation */}
+## Bundle Size Limitation {/* serverless-bundle-size-limitation */}
 
-{{ PRODUCT }} has a serverless bundle limit for your project of 50 MB (250 MB uncompressed). If your deployment to {{ PRODUCT }} fails due to exceeding the bundle limit, you will see the following error message:
+{{ PRODUCT }} has a bundle limit for your project of 50 MB (250 MB uncompressed). If your deployment to {{ PRODUCT }} fails due to exceeding the bundle limit, you will see the following error message:
 
 ```
 2022-08-08T13:47:13Z - internal error - Error in xdn-deploy-lambda: Your production build exceeds the maximum allowed size of 50 MB (compressed) / 250 MB (uncompressed).
@@ -96,11 +96,11 @@ Please ensure that list of dependencies in package.json contains only those pack
 Move all build-time dependencies such as webpack, babel, etc... to devDependencies, rerun npm | yarn install, and try to deploy again.
 ```
 
-Following are the possible fixes that would help you reduce serverless bundle size by better engineering. If none of these does it, feel free to raise an issue on [{{ PRODUCT }} Forums]({{ FORUM_URL }}).
+Following are the possible fixes that would help you reduce bundle size by better engineering. If none of these does it, feel free to raise an issue on [{{ PRODUCT }} Forums]({{ FORUM_URL }}).
 
 ### [1]: Segregating devDependencies from dependencies {/* possible-fix-1-segregating-devdependencies-from-dependencies */}
 
-Typically, this is due to node_modules marked as `dependencies` when they are more appropriate in `devDependencies` within the `package.json` file. Modules marked as dependencies will be included in the serverless bundle. Dev-only modules such as `babel`, `jest`, `webpack`, etc. should be moved to `devDependencies` as shown:
+Typically, this is due to node_modules marked as `dependencies` when they are more appropriate in `devDependencies` within the `package.json` file. Modules marked as dependencies will be included in the bundle. Dev-only modules such as `babel`, `jest`, `webpack`, etc. should be moved to `devDependencies` as shown:
 
 ```diff
 "dependencies": {
@@ -115,9 +115,9 @@ Typically, this is due to node_modules marked as `dependencies` when they are mo
 }
 ```
 
-### [2]: Segregating assets from serverless bundle {/* possible-fix-2-segregating-assets-from-serverless-bundle */}
+### [2]: Segregating assets from THE {{ PRODUCT }} Cloud bundle {/* possible-fix-2-segregating-assets-from-serverless-bundle */}
 
-Additionally, this can be related to assets (such as fonts or images) that are imported into your project code. These resources are typically better referenced as static assets which are stored outside of the serverless bundle.
+Additionally, this can be related to assets (such as fonts or images) that are imported into your project code. These resources are typically better referenced as static assets which are stored outside of the bundle.
 
 You can remedy this by creating a `public` directory in the root of your project. Move all of your font and image assets to this path. Then, create a route in `routes.js` to serve those requests as static assets using the following as an example:
 
@@ -136,9 +136,9 @@ Now, you can update your code references from importing the assets to referencin
 + <div><img src="/assets/images/Image1.png"/></div>
 ```
 
-### [3]: Computing which node_modules be included in the serverless bundle {/* possible-fix-3-computing-which-node_modules-be-included-in-the-serverless-bundle */}
+### [3]: Computing which node_modules be included in the {{ PRODUCT }} Cloud bundle {/* possible-fix-3-computing-which-node_modules-be-included-in-the-serverless-bundle */}
 
-It might be possible, that [[1]](#possible-fix-1-segregating-devdependencies-from-dependencies) reduces your serverless bundle size, but not reduce it to less than 50 MB (250 MB Uncompresssed). Another way to identify which dependencies would be required in the runtime is to use `@vercel/nft` package (a "Node.js dependency tracing utility").
+It might be possible, that [[1]](#possible-fix-1-segregating-devdependencies-from-dependencies) reduces your bundle size, but not reduce it to less than 50 MB (250 MB Uncompresssed). Another way to identify which dependencies would be required in the runtime is to use `@vercel/nft` package (a "Node.js dependency tracing utility").
 
 Step 1. Install `@vercel/nft` as devDependency:
 

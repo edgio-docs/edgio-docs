@@ -4,7 +4,7 @@ title: Sites
 
 {{ PRODUCT }} {{ PRODUCT_PLATFORM }} is a Jamstack platform built from the ground up to run high-performance websites and web apps. It is the only Jamstack platform with an integrated world-class CDN ([{{ PRODUCT }} {{ PRODUCT_EDGE }}](/guides/performance)) and a state-of-the-art [web security suite](/guides/security). {{ PRODUCT }} {{ PRODUCT_PLATFORM }} enables you to build your web apps faster and leverage a global CDN in your application code to achieve optimal performance for your production traffic.
 
-Build upon these performance improvements through Server-Side Rendering (SSR). {{ PRODUCT }} {{ PRODUCT_PLATFORM }} takes an SSR-first approach that enables you to render your web apps using our Serverless Compute at any scale. This allows your teams to focus on shipping features that your customers will love instead of maintaining and scaling your backend server infrastructure. {{ PRODUCT }} {{ PRODUCT_PLATFORM }} improves real-world performance through [precise control over caching](/guides/performance/caching/cache_key) that allows you to cache highly dynamic content. Responses served from the CDN cache will achieve a comparable Time to First Byte (TTFB) as static cached content.
+Build upon these performance improvements through Server-Side Rendering (SSR). {{ PRODUCT }} {{ PRODUCT_PLATFORM }} takes an SSR-first approach that enables you to render your web apps using our Cloud Functions at any scale. This allows your teams to focus on shipping features that your customers will love instead of maintaining and scaling your backend server infrastructure. {{ PRODUCT }} {{ PRODUCT_PLATFORM }} improves real-world performance through [precise control over caching](/guides/performance/caching/cache_key) that allows you to cache highly dynamic content. Responses served from the CDN cache will achieve a comparable Time to First Byte (TTFB) as static cached content.
 
 We also support static page generation:
 
@@ -17,7 +17,7 @@ We also support static page generation:
 
 ## Compute Regions {/* regions */}
 
-{{ PRODUCT }} allows you to cache and deliver your content through any of our points of presence (POPs) around the world. However, your serverless code will run in one of the following global regions:
+{{ PRODUCT }} allows you to cache and deliver your content through any of our points of presence (POPs) around the world. However, your {{ PRODUCT }} Cloud code will run in one of the following global regions:
 
 - **Americas**: Eastern US and Western US
 - **Europe**: Ireland, UK, Western Europe, Northern Europe, Central Europe
@@ -35,4 +35,4 @@ Edgio ensures high availability for your computing workloads by:
 - Running your code within two separate data centers.
 - Setting up automatic DNS failover between those data centers.
 - Load balancing computing requests between redundant processes.
-- Applying an Origin Shield to our Serverless Compute workers. If your requests are cacheable, then this allows more requests to be served from cache.
+- Applying an Origin Shield to our cloud workers. If your requests are cacheable, then this allows more requests to be served from cache.

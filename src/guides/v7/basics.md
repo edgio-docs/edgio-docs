@@ -36,4 +36,4 @@ Once you have set up a basic configuration, you are ready to take full advantage
     -   A [Web Application Firewall solution](/guides/security/waf) through which you can monitor, detect, and prevent application layer attacks.
 	-   Basic [website security](/guides/security/edgejs_security), such as a Content Security Policy (CSP), a TLS certificate, Basic Authentication enforcement, environment variables for sensitive data (e.g., API keys), and protection against cache poisoning. 
 	-   An [Origin shield](/guides/security/origin_shield) that reduces traffic to your origin servers through an additional caching layer.
--   [{{ PRODUCT_PLATFORM }}.](/guides/sites_frameworks/getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our serverless workers to quickly render server-side content in a scalable manner.
+-   [{{ PRODUCT_PLATFORM }}.](/guides/sites_frameworks/getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our cloud workers to quickly render server-side content in a scalable manner.

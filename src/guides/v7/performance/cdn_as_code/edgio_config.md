@@ -183,7 +183,7 @@ module.exports = {
   //   },
   // },
 
-  // Options for hosting serverless functions on Edgio
+  // Options for hosting Cloud Functions on Edgio
   // serverless: {
   //   // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
   //   // This option generally isn't needed as Edgio automatically includes all modules imported by your code in the bundle that

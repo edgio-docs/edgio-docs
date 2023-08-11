@@ -2,7 +2,7 @@
 title: Purging Cached Content
 ---
 
-Purge cached content to force the CDN to request a new version of that content from an origin server or Serverless Compute. This ensures that the latest version of that content is delivered to your clients.
+Purge cached content to force the CDN to request a new version of that content from an origin server or Cloud Functions. This ensures that the latest version of that content is delivered to your clients.
 
 <Callout type="info">
 

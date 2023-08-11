@@ -1890,7 +1890,7 @@ new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, requests that are not served from cache are served through either Serverless layer or the origin configuration mapped to the request's hostname. 
+**Default Behavior:** By default, requests that are not served from cache are served through either the {{ PRODUCT }} Cloud or the origin configuration mapped to the request's hostname. 
 
 ## Response {/*response*/}
 
@@ -1923,14 +1923,14 @@ Defines the set of media types (aka content type) that are eligible for edge ser
 
 **Key information:**
 
--   This feature only applies to assets whose size is less than 1 MB. Larger assets will not be compressed by our servers.
+-   This feature only applies to assets whose size is less than 3 MB. Larger assets will not be compressed by our servers.
 -   Certain types of content, such as images, video, and audio media assets (e.g., JPG, MP3, MP4, etc.), are already compressed. Additional compression on these types of assets will not significantly diminish file size. Therefore, the compression of these types of assets is not recommended.
 -   Wildcard characters, such as asterisks, are not supported.
 
 <edgejs>
 **Key information:**
 
--   This feature only applies to assets whose size is less than 1 MB. Larger assets will not be compressed by our servers.
+-   This feature only applies to assets whose size is less than 3 MB. Larger assets will not be compressed by our servers.
 -   Certain types of content, such as images, video, and audio media assets (e.g., JPG, MP3, MP4, etc.), are already compressed. Additional compression on these types of assets will not significantly diminish file size. Therefore, the compression of these types of assets is not recommended.
 -   Wildcard characters, such as asterisks, are not supported.
 

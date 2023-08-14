@@ -204,8 +204,20 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 7. If you are finished making changes to this environment, click **Deploy Changes**.
 <a id="primary-failover-load-balancing" />
 
-#### System-Defined Origins {/*system-defined-origin*/}
+#### System-Defined Origins {/*system-defined-origins*/}
 
+{{ PRODUCT }} may add one or more of the following origin configurations to your property, based on certain features that you enable. 
+
+<Callout type="important">
+
+  These system-defined origins should not be modified or deleted.
+
+</Callout>
+
+- **`{{ PRODUCT_LOWER }}_image_optimizer`**: Used for serving images through the [image optimization](/guides/performance/image_optimization) feature.
+- **`{{ PRODUCT_LOWER }}_permanent_static`**: Used for serving [static assets](/guides/performance/cdn_as_code/edgio_config#staticassets) configured to persist across deployments.
+- **`{{ PRODUCT_LOWER }}_serverless`**: Used for serving requests through the {{ PRODUCT }} cloud.
+- **`{{ PRODUCT_LOWER }}_static`**: Used for serving [static assets](/guides/performance/cdn_as_code/edgio_config#staticassets).
 
 
 ### Load Balancing {/*load-balancing*/}

@@ -122,7 +122,7 @@ jobs:
           elif [ -f "yarn.lock" ]; then
             package_manager="yarn"
           else
-            echo "No lock file found. Please run 'npm ci' or 'yarn install --frozen-lockfile' to install dependencies."
+            echo "No lock file found. Please run 'npm i' or 'yarn install' to install dependencies."
             exit 1
           fi
           echo "package_manager=$package_manager" >> $GITHUB_OUTPUT

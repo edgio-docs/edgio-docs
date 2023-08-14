@@ -178,6 +178,7 @@ const config = {
   STARTER_NAME,
   STATUS_URL,
   SUPPORT_URL,
+  CONTACT_SUPPORT,
   YEAR,
   WWW_URL,
   RUM_NS,

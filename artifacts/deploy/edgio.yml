@@ -45,7 +45,7 @@ jobs:
               yarn global add @edgio/cli@latest
             else
               # No lock file found
-              echo "No lock file found. Please run 'npm ci' or 'yarn install' to install dependencies."
+              echo "No lock file found. Please run 'npm i' or 'yarn install' to install dependencies."
               exit 1
             fi
           fi

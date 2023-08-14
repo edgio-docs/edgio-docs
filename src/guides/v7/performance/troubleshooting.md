@@ -2,6 +2,24 @@
 title: Troubleshooting
 ---
 
+
+If the resource exists and you are using CDN-as-code, check whether the request  This usually occurs when the browser requests a page that your app does not have. 
+
+A `404 Not Found` will also occur when a request does not match any of the routes in your {{ PRODUCT }} router. [Learn more.](/guides/performance/cdn_as_code).                                                                                                                                                                                                                         
+
+502
+self-signed
+sni
+
+531 Project Upstream Connection Error
+
+Common causes are:  the upstream host you specified in your project is incorrect, the DNS entry you defined points to the wrong server, your servers are not responding, or you need to add the {{ PRODUCT }} IP addresses to your allowlist. (Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses) to your server's IP allowlist.)     
+
+
+
+
+
+
 This guide shows you how to troubleshoot applications running on {{ PRODUCT_NAME }}. Below are some steps to follow when working locally or attempting to address site performance.
 
 ## Server Timings {/* server-timings */}
@@ -169,6 +187,11 @@ module.exports = {
 </Callout>
 
 ## Troubleshooting 539 Status Codes {/* troubleshooting-539-status-codes */}
+
+**Timeouts:** Your project's serverless code did not respond on time, either due to slow or blocking upstream or to badly handled asynchronous requests in code (e.g. missing `await` or call to `callback`). **Troubleshooting:** You can view the timings and status codes of the components in the stack in the [{{ HEADER_PREFIX }}-t header](#-t-response-header). Use [server logs](/guides/logs/server_logs) and [performance profiling](/guides/performance/observability#tracking-your-own-timings) to debug. You can also debug using information in [Troubleshooting 539 Status Codes, which includes information about detecting allowlist errors. 
+
+
+
 
 ### Overview {/* overview */}
 

@@ -2,29 +2,64 @@
 title: Troubleshooting
 ---
 
+Troubleshoot delivery and performance issues using the following tools and information:
 
-If the resource exists and you are using CDN-as-code, check whether the request  This usually occurs when the browser requests a page that your app does not have. 
+-   [{{ PRODUCT }} Developer Tools:](#developer-tools-chrome-extension) This Chrome extension describes each request associated with the current page. Use this information to gain insight into delivery issues, caching, and performance. 
+-   [Edge Insights:](#edge-insights) Review detailed information about each request to your website in near real-time.
+-   [Visual Studio Code:](#visual-studio-code) This tool allows you to add breakpoints within your code to troubleshoot delivery issues.
+-   [Server Logs:](#server-logs) Review messages from your application.
+-   [Access Logs:](access-logs) Review historical information for requests to your website.
+-   [curl:](#curl) Issue requests to your website using curl. This tool allows you to eliminate browser-specific behavior when troubleshooting issues. 
+-   [Permalinks:](#checking-your-permalinks-vs-edge-links) Test your website using a permalink by bypass our caching mechanism.
+-   [Source Maps:](#source-maps) Review our source map to investigate runtime errors that occur during routing. Additionally, if you are using the Next or Nuxt framework, then you can enable a source map for your application code. 
+-   **Status Codes:** We provide troubleshooting information for specific status codes.
 
-A `404 Not Found` will also occur when a request does not match any of the routes in your {{ PRODUCT }} router. [Learn more.](/guides/performance/cdn_as_code).                                                                                                                                                                                                                         
+## {{ PRODUCT }} Developer Tools Chrome Extension (/*developer-tools-chrome-extension*/)
 
-502
-self-signed
-sni
+The [{{ PRODUCT }} Developer Tools Chrome extension](https://chrome.google.com/webstore/detail/edgio-developer-tools/ieehikdcdpeailgpfdbafhnbfhpdgefm) provides detailed information for the current page and all of the requests spawned from it. Spawned requests include everything from static assets to prefetch requests.
 
-531 Project Upstream Connection Error
+![{{ PRODUCT }} Developer Tools Chrome extension](/images/v7/performance/edgio-developer-tools-chrome-extension-overview.png?width=700)
 
-Common causes are:  the upstream host you specified in your project is incorrect, the DNS entry you defined points to the wrong server, your servers are not responding, or you need to add the {{ PRODUCT }} IP addresses to your allowlist. (Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses) to your server's IP allowlist.)     
+<Callout type="important">
 
+  You must enable the [Debug Cache Headers](/guides/performance/rules/features#debug-header) [(debug_header)](/guides/performance/cdn_as_code/route_features#debug-cache-headers) feature to unlock the power of the {{ PRODUCT }} Developer Tools Chrome extension.
 
+</Callout>
 
+**Tips:**
 
+-   Verify that the request was delivered using the latest build by comparing the **Deployment** column against the latest deployment reported on the {{ PORTAL }}'s **Deployment** page.
+-   Verify that the desired set of rules are being applied to the request by checking the **Matched Rules** column. Rules use zero-based numbering.
+    -   **{{ PORTAL }}:** Click on the `Show Rule Numbers` link on the **Rules** page to display rule numbers next to each rule.
+    
+        ![Rules page showing rule numbers](/images/v7/performance/rules-rule-numbers.png?width=600)
 
+    -   **CDN-as-Code:** You will need to count each rule within your {{ ROUTES_FILE }}.
+-   Check whether a request was served from cache through the **Cache Status** column. 
+-   Click on a request to view edge cache information, performance statistics, request headers, and response headers.
 
-This guide shows you how to troubleshoot applications running on {{ PRODUCT_NAME }}. Below are some steps to follow when working locally or attempting to address site performance.
+## Edge Insights {/*edge-insights*/}
 
-## Server Timings {/* server-timings */}
+Edge Insights allows you to view near real-time information for all requests to your website. 
 
-When measuring the performance of your server, we provide numerous headers to decipher timings of requests. Visit our section on [response headers](/guides/performance/response#server-timing-response-header) for an in-depth explanation on the values available and how to leverage them.
+**Tips:**
+
+-   Troubleshoot a specific status code by filtering for it and then inspecting a request. 
+    1.  Load the desired environment-specific **Edge Insights** page.
+    2.  Verify that the **Data Source** option is set to `Access Logs`.
+    3.  Scroll down to the **Top Results** section.
+    4.  Verify that `HTTP Status Code` has been selected for one of the pie charts.
+    5.  From within the pie chart, click on the desired status code. The entire dashboard will be filtered by that status code. 
+    6.  Scroll down to the **Logs** section.
+    7.  Inspect each request to gain insight into why this status code is occurring.
+    
+        For example, if you are looking into `404 Not Found`, check the `url` and the `referer` field to identify the problematic URL and the URL from which the request originated.
+    
+        <Callout type="tip">
+        
+          Filter for a specific field by typing the desired name in the upper-right hand search bar.
+        
+        </Callout>
 
 ## Visual Studio Code {/* visual-studio-code */}
 
@@ -51,17 +86,14 @@ The above assumes that the workspace folder is your app's root directory. If tha
 
 Note that this configuration will allow you to set breakpoints in both your {{ PRODUCT_NAME }} router as well as your application code (for example in Next.js, Nuxt.js, Angular, etc...).
 
-## Logs {/* logs */}
-
-{{ PRODUCT_NAME }} provides two types of logs to help you debug issues with your application.
-
-### Server Logs {/* server-logs */}
+<a id="logs" />
+## Server Logs {/* server-logs */}
 
 By viewing the server logs in the {{ PORTAL }}, you can see all of the messages logged by your application using `console.log`, `console.warn`, etc...
 
 By enabling [Deep Request Inspection](/guides/logs/server_logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} serverless cloud. You can also see each upstream API request made by your application.
 
-You can also use the server logs to debug **routing issues** going to **custom backends** by temporarily moving the proxy from the edge to serverless:
+Debug issues related to routing to your origin by temporarily moving the proxy from the edge to serverless:
 
 ```js
   .get('/p/:productId', ({ cache }) => {
@@ -79,19 +111,19 @@ You can also use the server logs to debug **routing issues** going to **custom b
   })
 ```
 
-Once you have this deployed, you can observe the output in your [server logs](/guides/logs/server_logs).
+Once it has been deployed, you can observe the output in your [server logs](/guides/logs/server_logs).
 
-Note that whenever possible, we strongly recommend to always proxy the traffic from the edge, as that is more performant and avoids serverless surcharges. The solution above should only be used as a temporary measure while addressing issues.
+We strongly recommend to proxy traffic from the edge whenever possible, as that is more performant and avoids serverless surcharges. The above solution should only be used as a temporary measure while addressing issues.
 
-[Learn more.](/guides/logs/server_logs)
+[Learn more about server logs.](/guides/logs/server_logs)
 
-### Access Logs {/* access-logs */}
+## Access Logs {/* access-logs */}
 
 Access logs contain information about all requests, even those that never reach your application code (e.g. cache hits, static assets, requests routed to custom backends, edge redirects, and so on).
 
-[Learn more](/guides/logs/access_logs)
+[Learn more about access logs.](/guides/logs/access_logs)
 
-## Confirming Behavior with CURL {/* confirming-behavior-with-curl */}
+## curl {/* confirming-behavior-with-curl */}
 
 Removing the browser as a variable in your equation is a good way to confirm what the origin server is doing. Below are a few of the common CURL commands we leverage to verify behavior.
 
@@ -186,14 +218,55 @@ module.exports = {
   Application-level source maps are not enabled by default as they can be quite large and cause the serverless bundle to be larger than the 50MB limit.
 </Callout>
 
-## Troubleshooting 539 Status Codes {/* troubleshooting-539-status-codes */}
+## Status Codes {/*status-codes*/}
+
+
+
+
+
+### 404 Not Found Status Code
+
+Troubleshoot this status code by performing the following steps:
+
+-   Use [Edge Insights](#edge-insights) to identify the URL and the referrer from which the request originated. Check the `url` and the `referer` field, respectively.
+-   If the resource exists and you are using CDN-as-code, use the [{{ PRODUCT }} Developer Tools Chrome Extension](developer-tools-chrome-extension) check whether the request matches a rule in your {{ ROUTES_FILE }}.
+
+### 502 Bad Gateway Status Code
+
+Troubleshoot this status code by identifying the origin configuration that is experiencing an issue and then performing the following steps:
+
+-   Use [Edge Insights](#edge-insights) to check whether you need to update your origin configuration's SNI settings.
+
+    1.  Filter Edge Insights by the `502 Bad Gateway` status code. 
+    2.  Scroll down to the **Logs** section and view a request. 
+    3.  Check whether the request contains `proxy_hard_error` set to `HARD_ERR_502_SSL_CONNECT_ERROR`. 
+    
+    If you see this error, then you need to update the SNI hint to a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN).
+
+-   If the client's `Host` header does not match a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN), then you will need to update the **Override Host Header** option.
+-   If you are using a self-signed certificate, then you must enable the **Allow Self-Signed Certs** option on the desired origin configuration.
+-   If you have pinned a certificate to the desired origin configuration, then you may need to pin an additional certificate.
+
+<!--
+Troubleshooting the error with Edge Insights by looking for one of the failed requests, searching for "PROXY_HARD_ERROR" in the Log view and understanding the value. For example:
+
+Most often you can fix this by changing the origin settings in console. Some combination of setting the SNI hint and/or host header will do the job. Sometimes you also need to allow self signed certs, depending on the cert provider the customer users.
+What does the "X-Ec-Proxy-Error: 11" response error mean? I saw this when trying to access the site.
+The user should be able to find this guide by searching for "502", "Bad Gateway", and "HARD_ERR_502_SSL_CONNECT_ERROR"
+-->
+
+### 531 Project Upstream Connection Error Status Code
+
+Common causes are:  the upstream host you specified in your project is incorrect, the DNS entry you defined points to the wrong server, your servers are not responding, or you need to add the {{ PRODUCT }} IP addresses to your allowlist. (Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses) to your server's IP allowlist.)   
+
+
+### 539 Project Timeout Status Code {/* troubleshooting-539-status-codes */}
 
 **Timeouts:** Your project's serverless code did not respond on time, either due to slow or blocking upstream or to badly handled asynchronous requests in code (e.g. missing `await` or call to `callback`). **Troubleshooting:** You can view the timings and status codes of the components in the stack in the [{{ HEADER_PREFIX }}-t header](#-t-response-header). Use [server logs](/guides/logs/server_logs) and [performance profiling](/guides/performance/observability#tracking-your-own-timings) to debug. You can also debug using information in [Troubleshooting 539 Status Codes, which includes information about detecting allowlist errors. 
 
 
 
 
-### Overview {/* overview */}
 
 539 status codes (see [Status Codes](/guides/performance/response#status-codes)) are timeout errors, which can be:
 
@@ -232,9 +305,13 @@ This flow is where 539 errors might occur.
 5. The SSR assembles the page and sends it to the {{ PRODUCT_NAME }} edge.
 6. The {{ PRODUCT_NAME }} edge caches the page and returns it to the client.
 
-_Note:_ a variant on caching is ISR where {{ PRODUCT }} caches just for a few hours or days.
+<Callout type="info">
 
-#### Allowlist Overview {/* allowlist-overview */}
+  A variant on caching is ISR where {{ PRODUCT }} caches just for a few hours or days.
+
+</Callout>
+
+#### Allowlist {/* allowlist-overview */}
 
 When you run your site on {{ PRODUCT_NAME }}, all requests come in through four IP addresses, and servers are programmed to interpret this as a DDoS attack. At this point, the server either blocks or rate-limits the requests. In either case, timeouts occur and 539 errors are returned.
 
@@ -287,7 +364,11 @@ If a request looks like the following, your SSR code contains an error.
 | 2    | The request from the {{ PRODUCT }} edge to your SSR code. The line ends with a `200`. |
 | 3    | The request from your SSR code to your backend server. The line ends with a `200`.    |
 
-_Note:_ There is no response from the SSR code to the browser as shown in line 4 in [Good Request Example](#good-request-example). Troubleshoot your code and fix the error. Common errors are that your SSR code:
+<Callout type="info">
+
+  There is no response from the SSR code to the browser as shown in line 4 in [Good Request Example](#good-request-example). Troubleshoot your code and fix the error. Common errors are that your SSR code:
+
+</Callout>
 
 - Took too long to return a response
 - Threw an exception and never returned a response

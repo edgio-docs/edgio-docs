@@ -28,7 +28,7 @@ import '../styles/scrollbar.css';
 const EmptyAppShell: React.FC = ({children}) => <>{children}</>;
 
 // CWV for Edgio
-new Metrics({token: 'cdc8d6df-476b-4e2d-ae1a-f8c6893a39a8'}).collect();
+new Metrics({token: 'a5c2ebb3-dd43-4c36-b082-fb499a7bcd8d'}).collect();
 
 // List of fallback components
 const ChangeLogFallBackPage = dynamic(

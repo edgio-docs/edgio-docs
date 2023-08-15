@@ -4,17 +4,19 @@ title: Troubleshooting
 
 Troubleshoot delivery and performance issues using the following tools and information:
 
--   [{{ PRODUCT }} Developer Tools:](#developer-tools-chrome-extension) This Chrome extension describes each request associated with the current page. Use this information to gain insight into delivery issues, caching, and performance. 
--   [Edge Insights:](#edge-insights) Review detailed information about each request to your website in near real-time.
--   [Visual Studio Code:](#visual-studio-code) This tool allows you to add breakpoints within your code to troubleshoot delivery issues.
--   [Server Logs:](#server-logs) Review messages from your application.
--   [Access Logs:](access-logs) Review historical information for requests to your website.
--   [curl:](#curl) Issue requests to your website using curl. This tool allows you to eliminate browser-specific behavior when troubleshooting issues. 
--   [Permalinks:](#checking-your-permalinks-vs-edge-links) Test your website using a permalink by bypass our caching mechanism.
--   [Source Maps:](#source-maps) Review our source map to investigate runtime errors that occur during routing. Additionally, if you are using the Next or Nuxt framework, then you can enable a source map for your application code. 
--   **Status Codes:** We provide troubleshooting information for specific status codes.
+| Tool  | Description  |
+|---|---|
+| [{{ PRODUCT }} Developer Tools](#developer-tools-chrome-extension)   | This Chrome extension describes each request associated with the current page. Use this information to gain insight into delivery issues, caching, and performance. |
+| [Edge Insights](#edge-insights)                                      | Review detailed information about each request to your website in near real-time. |
+| [Visual Studio Code](#visual-studio-code)                            | This tool allows you to add breakpoints within your code to troubleshoot delivery issues. |
+| [Server Logs](#server-logs)                                          | Review messages from your application. |
+| [Access Logs](access-logs)                                           | Review historical information for requests to your website. |
+| [curl](#curl)                                                        | Issue requests to your website using curl. This tool allows you to eliminate browser-specific behavior when troubleshooting issues. |
+| [Permalinks](#checking-your-permalinks-vs-edge-links)                | Test your website using a permalink by bypass our caching mechanism. |
+| [Source Maps](#source-maps)                                          | Review our source map to investigate runtime errors that occur during routing. Additionally, if you are using the Next or Nuxt framework, then you can enable a source map for your application code. |
+| [Status Codes](#status-codes)                                        | We provide troubleshooting information for specific status codes. |
 
-## {{ PRODUCT }} Developer Tools Chrome Extension (/*developer-tools-chrome-extension*/)
+## {{ PRODUCT }} Developer Tools Chrome Extension {/*developer-tools-chrome-extension*/}
 
 The [{{ PRODUCT }} Developer Tools Chrome extension](https://chrome.google.com/webstore/detail/edgio-developer-tools/ieehikdcdpeailgpfdbafhnbfhpdgefm) provides detailed information for the current page and all of the requests spawned from it. Spawned requests include everything from static assets to prefetch requests.
 
@@ -26,9 +28,16 @@ The [{{ PRODUCT }} Developer Tools Chrome extension](https://chrome.google.com/w
 
 </Callout>
 
-**Tips:**
+**Troubleshooting tips:**
 
--   Verify that the request was delivered using the latest build by comparing the **Deployment** column against the latest deployment reported on the {{ PORTAL }}'s **Deployment** page.
+-   Verify the environment version by comparing the **Environment** column against the latest deployment to that environment. 
+
+    Find out the environment version for the latest deployment by navigating to the desired environment, clicking **Deployments**, and then checking the **Environments** column. 
+    
+    For example, the {{ PRODUCT }} Developer Tools Chrome extension's **Environment** column should report `v3` for requests to a website powered by the following production environment:
+    
+    ![Sample deployments](/images/v7/basics/deployments.png?width=600)
+    
 -   Verify that the desired set of rules are being applied to the request by checking the **Matched Rules** column. Rules use zero-based numbering.
     -   **{{ PORTAL }}:** Click on the `Show Rule Numbers` link on the **Rules** page to display rule numbers next to each rule.
     

@@ -111,10 +111,10 @@ Geolocation headers contain the geographical information about the provenance of
 These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee the accuracy of geolocation based on the client's IP address. See also [geolocation](/guides/third_party_cdns#client-ips) behind [third-party CDNs](/guides/third_party_cdns).
 -->
 
-### Static prerendering headers {/*static-prerendering-headers*/}
+<!--### Static prerendering headers {/*static-prerendering-headers*/}
 
 - `{{ HEADER_PREFIX }}-preload`: Will be "1" if the request originated from [Static Prerendering](/guides/performance/static_prerendering). Otherwise this header will not be present.
-
+-->
 ## Request Body {/*request-body*/}
 
 Requests that are proxied through our network to an origin server will include a request body except if either of the following conditions are true:

@@ -97,10 +97,10 @@ The `serverless` key is an object with the following properties:
 | -------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `includeNodeModules` | Boolean  | If `true`, the packages listed in the `dependencies` property of `package.json` will be included in the build that is deployed to {{ PRODUCT_NAME }}. |
 | `include`            | String[] | A list of glob patterns that match or omit files to be included in the serverless bundle. Example: `lang/**/*`                                        |
-
+<!--
 ## prerenderConcurrency {/* prerenderconcurrency */}
 
-The maximum number of URLs that will be concurrently prerendered during deployment when [static prerendering](/guides/performance/static_prerendering) is enabled. Defaults to 200, which is the maximum allowed value.
+The maximum number of URLs that will be concurrently prerendered during deployment when [static prerendering](/guides/performance/static_prerendering) is enabled. Defaults to 200, which is the maximum allowed value.-->
 
 ## sources {/* sources */}
 

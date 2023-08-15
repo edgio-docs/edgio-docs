@@ -28,24 +28,39 @@ The [{{ PRODUCT }} Developer Tools Chrome extension](https://chrome.google.com/w
 
 </Callout>
 
-**Troubleshooting tips:**
+**General troubleshooting tips:**
 
--   Verify the environment version by comparing the **Environment** column against the latest deployment to that environment. 
+-   Verify that you are using the latest environment version.
 
-    Find out the environment version for the latest deployment by navigating to the desired environment, clicking **Deployments**, and then checking the **Environments** column. 
+    1.  Find the environment version through which a request was served by checking the **Environment** column within {{ PRODUCT }} Developer Tools.
+    2.  Find the latest environment version by navigating to the desired environment, clicking **Deployments**, and then checking the **Environments** column. 
     
     For example, the {{ PRODUCT }} Developer Tools Chrome extension's **Environment** column should report `v3` for requests to a website powered by the following production environment:
     
     ![Sample deployments](/images/v7/basics/deployments.png?width=600)
     
--   Verify that the desired set of rules are being applied to the request by checking the **Matched Rules** column. Rules use zero-based numbering.
+-   Verify that the desired set of rules are being applied to the request by checking the **Matched Rules** column within {{ PRODUCT }} Developer Tools. Rules use zero-based numbering.
     -   **{{ PORTAL }}:** Click on the `Show Rule Numbers` link on the **Rules** page to display rule numbers next to each rule.
     
         ![Rules page showing rule numbers](/images/v7/performance/rules-rule-numbers.png?width=600)
 
-    -   **CDN-as-Code:** You will need to count each rule within your {{ ROUTES_FILE }}.
--   Check whether a request was served from cache through the **Cache Status** column. 
--   Click on a request to view edge cache information, performance statistics, request headers, and response headers.
+    -   **CDN-as-Code:** Count each rule within your {{ ROUTES_FILE }}. Alternatively, you may use the {{ PORTAL }} to identify the rule(s) being applied to the request.
+
+**Troubleshooting caching:**
+
+Check whether a request was served from cache through the **Cache Status** column. 
+
+-   **Hit:** Indicates that the request was served from cache. 
+-   **Miss:** Indicates that {{ PRODUCT }} could not find a cached version of the requested content with a valid time-to-live (TTL) on that edge server. 
+-   **No-Cache:** Indicates that the request is uncacheable. If you have a custom cache policy, verify that it is being applied to this request. Check the **Matched Rules** column to see the set of rules applied to this request. 
+-   **Blank:** A blank value indicates that the request was not served through {{ PRODUCT }}.
+
+[View our default caching policy.](/guides/performance/caching#default-caching-policy)
+
+**Troubleshooting performance:**
+
+-   Check the **TTFB** column for a high value. This column measures time to first byte. This metric is indicative of responsiveness.
+-   Check the **Total Time** column for a high value. This column measures the total amount of time it took to serve a response to the client. 
 
 ## Edge Insights {/*edge-insights*/}
 

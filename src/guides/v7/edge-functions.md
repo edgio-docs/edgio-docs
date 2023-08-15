@@ -4,18 +4,21 @@ title: Edge Functions
 
 Edge Functions enable you to execute a small piece of JavaScript code on our edge servers. This code can be used to modify requests and responses as well as make additional calls to your defined origins. The benefits of using Edge Functions include enhancing performance by reducing latency, improving user experience by personalizing content, and increasing security by managing authentication and redirection at the edge. They allow you to execute your code closer to users, reducing the need to go back to the original server and thus, provide faster services.
 
-## Key Information {/* key_information */}
+**Key information:**
 
-Edge Functions are invoked when the `edge_function` feature is specified in your `routes.js` to assign a piece of JavaScript code a specific route:
+- Edge Functions assume you are familiar with our [CDN-as-Code](/guides/performance/cdn_as_code) approach for defining rules.
+- They require your {{ PORTAL }} team to be configured to use the Edge Functions feature. [Contact support]({{ HELP_URL }}) to enable this feature.
+
+## Getting Started {/* getting_started */}
+
+{{ prereq.md }}
 
 ```js filename="./routes.js"
 new Router().get('/', {
   edge_function: './path/to/function.js',
 });
 ```
-<Callout type="tip">
-If you're new to Edgio or not familiar with the above code, please read our [CDN-as-Code guide](/guides/v7/performance/cdn_as_code) to understand how this works, including how to initialize a project and how to deploy it.
-</Callout>
+
 
 Each Edge Function is stored in a separate file and assigned to a specific route in your `routes.js` file. An Edge Function file must export the following entry point:
 

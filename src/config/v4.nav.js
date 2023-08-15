@@ -5,7 +5,7 @@ const nav = {
     {
       title: 'Getting Started',
       icon: 'spark',
-      path: 'v4_getting_started',
+      path: 'webapp_cdn_getting_started',
       routes: [
         {
           title: 'Performance',
@@ -28,7 +28,7 @@ const nav = {
     {
       title: 'Performance',
       icon: 'server',
-      path: 'v4_performance',
+      path: 'routing',
       routes: [
         {
           title: 'Routing with EdgeJS',
@@ -131,7 +131,7 @@ const nav = {
     {
       title: 'Sites',
       icon: 'book-plain',
-      path: 'v4_sites',
+      path: 'connectors',
       routes: [
         {
           title: 'Connectors',
@@ -334,7 +334,7 @@ const nav = {
     {
       title: 'Security',
       icon: 'shield',
-      path: 'v4_security',
+      path: 'security',
       routes: [
         {
           title: 'Security Suite',
@@ -377,7 +377,7 @@ const nav = {
     {
       title: 'Accounts & Teams',
       icon: 'user',
-      path: 'v4_accounts_teams',
+      path: 'alerts',
       routes: [
         {
           title: 'Alerts',
@@ -396,7 +396,7 @@ const nav = {
     {
       title: 'Developer Tools',
       icon: 'code-plain',
-      path: 'v4_developer_tools',
+      path: 'cli',
       routes: [
         {
           title: 'CLI',
@@ -423,7 +423,7 @@ const nav = {
     {
       title: 'APIs',
       icon: 'code-plain',
-      path: 'v4_apis',
+      path: 'rest_api',
       routes: [
         {
           title: 'REST API',
@@ -454,7 +454,7 @@ const nav = {
     {
       title: 'Reference',
       icon: 'stacks-plain',
-      path: 'v4_reference',
+      path: 'limits',
       routes: [
         {
           title: 'Limits & Caveats',

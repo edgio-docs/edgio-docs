@@ -93,37 +93,37 @@ export const getStaticPaths = async () => {
   // Prerendered page logic below. However, because some of the guides define
   // redirects, redirects cannot be prerendered and must be handled by SSR.
   // Therefore, we disable prerendering for now and fallback to SSR for all.
-  return {
-    paths: [],
-    fallback: 'blocking',
-  };
+  // return {
+  //   paths: [],
+  //   fallback: 'blocking',
+  // };
 
   // prerender guides for the latest version only; previous versions will
   // fallback to SSR
-  // const version = `v${process.env.NEXT_PUBLIC_LATEST_VERSION}`;
-  // paths.push(
-  //   ...[
-  //     version, // version homepage
-  //     ...baseGuides.map((path) => join(version, path)), // versioned base guides
-  //     ...allGuides.filter((path) => path.startsWith(version)), // versioned overrides
-  //   ]
-  // );
+  const version = `v${process.env.NEXT_PUBLIC_LATEST_VERSION}`;
+  paths.push(
+    ...[
+      version, // version homepage
+      ...baseGuides.map((path) => join(version, path)), // versioned base guides
+      ...allGuides.filter((path) => path.startsWith(version)), // versioned overrides
+    ]
+  );
 
-  // // convert paths to routes
-  // routes.push(
-  //   ...[...new Set(paths)].map((path) => ({params: {slug: path.split('/')}}))
-  // );
+  // convert paths to routes
+  routes.push(
+    ...[...new Set(paths)].map((path) => ({params: {slug: path.split('/')}}))
+  );
 
-  // if (isProductionBuild()) {
-  //   logger.prod(JSON.stringify(paths));
-  // }
+  if (isProductionBuild()) {
+    logger.prod(JSON.stringify(paths));
+  }
 
-  // // in the end, only routes matching `/guides/v7/*` will be prerendered
-  // // and the rest (eg. /guides/v6/*) will fallback to SSR
-  // return {
-  //   paths: routes,
-  //   fallback: 'blocking',
-  // };
+  // in the end, only routes matching `/guides/v7/*` will be prerendered
+  // and the rest (eg. /guides/v6/*) will fallback to SSR
+  return {
+    paths: routes,
+    fallback: 'blocking',
+  };
 };
 
 export async function getStaticProps({params}: {params: any}) {
@@ -143,7 +143,7 @@ export async function getStaticProps({params}: {params: any}) {
       },
     };
   } else if (!guide || !guide.length) {
-    // version with no remainig guide path so use as homepage
+    // version with no remaining guide path so use as homepage
     isHomepage = true;
     guide = ['index'];
   }
@@ -197,15 +197,6 @@ export async function getStaticProps({params}: {params: any}) {
       format: 'mdx',
     },
   });
-
-  if (mdxSource.frontmatter?.redirect) {
-    return {
-      redirect: {
-        destination: mdxSource.frontmatter.redirect,
-        permanent: false,
-      },
-    };
-  }
 
   return {props: {source: mdxSource, headings, version}};
 }

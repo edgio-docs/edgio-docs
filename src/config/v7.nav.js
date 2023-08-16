@@ -86,6 +86,10 @@ const nav = {
               path: 'performance/cdn_as_code/route_features',
             },
             {
+              title: 'Conditional Routes',
+              path: 'performance/cdn_as_code/conditional_routes',
+            },
+            {
               title: 'Error Handling',
               path: 'performance/cdn_as_code/error_handling',
             },
@@ -121,10 +125,10 @@ const nav = {
             },
           ],
         },
-        {
-          title: 'Static Prerendering',
-          path: 'performance/static_prerendering',
-        },
+        // {
+          // title: 'Static Prerendering',
+          // path: 'performance/static_prerendering',
+        // },
         {
           title: 'Predictive Prefetch',
           path: 'performance/prefetching',
@@ -299,8 +303,8 @@ const nav = {
               path: 'sites_frameworks/getting_started/brunch',
             },
             {
-              title: 'Custom Connector',
-              path: 'sites_frameworks/getting_started/custom_connector',
+              title: 'Node.js Connector',
+              path: 'sites_frameworks/getting_started/nodejs_connector',
             },
             {
               title: 'Docusaurus',
@@ -670,6 +674,84 @@ const nav = {
         {
           title: 'Country Codes',
           path: 'reference/country_codes',
+        },
+        {
+          title: 'HTTP Status Codes',
+          path: '/guides/performance/response#status-codes',
+        },
+        {
+          title: 'Response Headers',
+          path: '/guides/performance/response#response-headers',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'Rules - Match Conditions',
+          path: '/guides/performance/rules/conditions',
+        },
+        {
+          title: 'Rules - Features',
+          path: '/guides/performance/rules/features',
+        },
+        {
+          title: 'Rules - Feature Variables',
+          path: '/guides/performance/rules/feature_variables',
+        },
+        {
+          title: 'Rules - Operators',
+          path: '/guides/performance/rules/operators',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'edgio.config.js Configuration',
+          path: '/guides/performance/cdn_as_code/edgio_config',
+        },
+        {
+          title: '@edgio/core',
+          path: '/docs/v7.x/api/core/',
+          external: true,
+        },
+        {
+          title: '@edgio/prefetch',
+          path: '/docs/v7.x/api/prefetch/',
+          external: true,
+        },
+        {
+          title: 'CLI',
+          path: '/guides/develop/cli#commands',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'Purge REST API',
+          path: '/guides/develop/rest_api',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'RTLD CDN',
+          path: '/guides/logs/rtld/log_fields_rtld_cdn',
+        },
+        {
+          title: 'RTLD WAF',
+          path: '/guides/logs/rtld/log_fields_rtld_waf',
+        },
+        {
+          title: 'RTLD Rate Limiting',
+          path: '/guides/logs/rtld/log_fields_rtld_rate_limiting',
+        },
+        {
+          title: 'RTLD Bot',
+          path: '/guides/logs/rtld/log_fields_rtld_bot_manager',
         },
       ],
     },

@@ -31,6 +31,10 @@ There is very little difference in time to first byte (TTFB) for responses serve
 
 ## Default Caching Policy {/*default-caching-policy*/}
 
+{{ PRODUCT }} only caches eligible responses when either of the following conditions are met:
+-   An origin server provides cache instructions (aka [cache directives](#cache-directives)).
+-   A rule defines a caching policy.
+
 By default, a response is eligible for caching when it satisifes all of the following requirements:
 
 | Requirement        | Description                                                                                                                                                                                                                                                                                                                                 |
@@ -39,7 +43,7 @@ By default, a response is eligible for caching when it satisifes all of the foll
 | HTTP Status Code   | `200 OK`                                                                                                                                                                                                                                                                                                                                    |
 | Number of Requests | Varies by content type. <br /><br />A POP considers requests for the following content types eligible for caching after a single request: <ul><li>text/html</li><li>text/css</li><li>text/xml</li><li>application/json</li><li>application/javascript</li><li>application/xml</li></ul> It requires 2 requests for all other content types. |
 
-For requests that satisfy the above conditions, {{ PRODUCT }} caches the response according to the cache instructions (aka cache directives) provided by the origin server. If an origin server does not provide cache directives, then it will be assigned a time to live (TTL) of 7 days (i.e., `Cache-Control: max-age=604800`). {{ PRODUCT }} can serve cached content until its TTL expires. After which, it will need to revalidate to find out whether the response has changed.
+{{ PRODUCT }} can serve cached content until its time to live (TTL) expires. After which, it will need to revalidate to find out whether the response has changed.
 
 [View the request flow for determining whether to serve a response from cache.](/guides/performance/caching/cache_request_flow)
 
@@ -49,7 +53,7 @@ Define a caching policy through:
 -   **Response headers:** Define cache directives within response headers. Set these response headers through your web server's configuration or by defining a rule with header features (e.g., [Set Response Headers feature](/guides/performance/rules/features#set-response-headers)).
 -   **Rules:** Define a [rule with caching features](#rules). 
 
-### Cache Directives (Response Headers) {/* response-headers */}
+### Cache Directives (Response Headers) {/* cache-directives */}
 
 An origin server or the Serverless layer may include headers in the response that contain cache directives. These cache directives may determine how long our servers will cache that response. By default, our servers honor the following response headers:
 

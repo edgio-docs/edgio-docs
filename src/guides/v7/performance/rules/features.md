@@ -1113,8 +1113,8 @@ Defines a `max-age` interval for edge server to origin server cache revalidation
 -   This feature does not have an observable effect on the response sent to a user. However, it may have an effect on the amount of revalidation traffic sent from our edge servers to the origin server.
 
 </edgejs>
-
-**Default Behavior:** By default, requests that do not provide a max-age indication through either their `Cache-Control` or `Expires` header will be assigned a default max-age interval of 7 days.
+<!--
+**Default Behavior:** By default, requests that do not provide a max-age indication through either their `Cache-Control` or `Expires` header will be assigned a default max-age interval of 7 days.-->
 
 #### Set Service Worker Max Age {/*set-service-worker-max-age*/}
 

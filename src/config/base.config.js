@@ -18,6 +18,7 @@ const PRODUCT_LEGACY_LOWER = PRODUCT_LEGACY.toLowerCase();
 const PORTAL = `${COMPANY_NAME} Console`;
 const IDENTITY_DASHBOARD = `${PRODUCT} Identity Dashboard`;
 const DOCS_NAME = `${COMPANY_NAME} Docs`;
+const CHROME_EXTENSION = `${COMPANY_NAME} Developer Tools Chrome extension`;
 
 const CLI_NAME = 'edg';
 const FULL_CLI_NAME = 'edgio';
@@ -127,6 +128,8 @@ yarn global add ${PACKAGE_NAME}/cli
 </SnippetGroup>
 `;
 
+const CONTACT_SUPPORT = `Contact our [technical customer support](${ HELP_URL }).`;
+
 const SECURITY_NAV = `1.  From the ${PORTAL_LINK}, select the desired team space. 
     2.  From the **Security** section, click `;
 
@@ -155,9 +158,13 @@ const config = {
   PRODUCT_LEGACY_LOWER,
   APP_DOMAIN,
   APP_URL,
+<<<<<<< HEAD
   API_URL,
   API_SECURITY_VERSION,
   API_REQUEST_HEADERS,
+=======
+  CHROME_EXTENSION,
+>>>>>>> main
   CLI_CMD,
   CLI_NAME,
   CONFIG_FILE,
@@ -199,8 +206,12 @@ const config = {
   STARTER_NAME,
   STATUS_URL,
   SUPPORT_URL,
+<<<<<<< HEAD
   SAMPLE_TEAM_ID,
   TEAM_ID,
+=======
+  CONTACT_SUPPORT,
+>>>>>>> main
   YEAR,
   WWW_URL,
   RUM_NS,

@@ -67,7 +67,7 @@ The response body for a successful request contains the following response eleme
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/scopes  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/scopes  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -218,7 +218,7 @@ The response body for a successful request contains the following properties:
 A sample HTTP request is shown below.
 
 ```json
-POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/scopes  HTTP/1.1
+POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/scopes  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {

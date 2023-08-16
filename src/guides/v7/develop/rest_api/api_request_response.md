@@ -30,7 +30,7 @@ Requests to services that leverage our API gateway follow this basic pattern:
 -   `<TEAM ID>`**:** Identifies your team by its system-defined ID.
 -   `<RESOURCE>`**:** Identifies the type of resource to which the action defined by the HTTP method will be applied.
 
-**Sample request:** `{{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/profile`
+**Sample request:** `{{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/profile`
 
 ## Request Headers {/*request-headers*/}
 

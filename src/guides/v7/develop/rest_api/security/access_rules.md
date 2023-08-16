@@ -89,7 +89,7 @@ The response body for a successful request contains the following properties:
 A sample HTTP request is shown below.
 
 ```json
-POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl  HTTP/1.1
+POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/acl  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {
@@ -249,7 +249,7 @@ The response body for a successful request contains the following properties:
 A sample HTTP request is shown below.
 
 ```json
-DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl/CGifudum  HTTP/1.1
+DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/acl/CGifudum  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -308,7 +308,7 @@ The response body for a successful request contains the following response eleme
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/acl  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -322,9 +322,10 @@ Date:  Thu, 15 Apr 2021 12:00:00 GMT
 Content-Length: 141
 
 [{
+        "id": "VSgeVhmb",
         "name": "My Access Rule",
-        "last_modified_date": "2020-12-17T20:44:23.695323Z",
-        "id": "VSgeVhmb"
+        "super_capacity": false,
+        "last_modified_date": "2023-07-28T19:10:42.931050Z"
     }
 ]
 ```
@@ -364,6 +365,7 @@ The response body for a successful request contains the following response eleme
 
 |Name|Data Type|Description|
 |--- |--- |--- |
+|allow_anonymous_proxy |Boolean | Determines whether we will detect requests that use an anonymizer or anonymous proxy tool. |
 |allowed_http_methods|Array of strings|Identifies each allowed HTTP method (e.g., `GET`).|
 |allowed_request_content_types|Array of strings|Identifies each allowed media type (e.g., `application/json`).|
 |asn|Object|Contains access controls for autonomous system numbers (ASNs).|
@@ -374,13 +376,15 @@ The response body for a successful request contains the following response eleme
 |disallowed_headers|Array of strings|Indicates each request header for which WAF will send an alert or block the request.|
 |id|String|Indicates the system-defined ID for this access rule.|
 |ip|Object|Contains access controls for IPv4 and/or IPv6 addresses. Each IP address is defined through standard IPv4/IPv6 and CIDR notation.|
-|last_modified_by|String|Reserved for future use.|
+|last_modified_by|String|Identifies the {{ PORTAL }} user that last modified this access rule. This field does not reflect updates performed through the REST API.|
 |last_modified_date|String|Indicates the timestamp at which this access rule was last modified. <br />**Syntax:** `YYYY-MM-DDThh:mm:ss:ffffffZ`|
 |max_file_size|Integer|Indicates the maximum file size, in bytes, for a `POST` request body.|
 |name|String|Indicates the name assgined to this access rule.|
 |referer|Object|Contains access controls for referrers. All referrers defined within a whitelist, accesslist, or blacklist are regular expressions.|
 |response_header_name|String|Indicates the name of the response header that will be included with blocked requests.|
 |sd_iso|Object|Contains access controls for country subdivisons (e.g., states or provinces). Each country subdivision is defined as an ISO-3166-2 code.|
+| super_capacity | Boolean | Indicates whether this is a high-capacity access rule. A high-capacity access rule supports up to 10,000 IP addresses or IP blocks. |
+| team_config | Boolean | Returns `true`. |
 |url|Object|Contains access controls for URL paths. This URL path starts directly after the hostname. All URL paths defined within a whitelist, accesslist, or blacklist are regular expressions.|
 |user_agent|Object|Contains access controls for user agents. All user agents defined within a whitelist, accesslist, or blacklist are regular expressions.|
 |version|String|Reserved for future use.|
@@ -404,7 +408,7 @@ All entries within a cookie, referrer, URL, or user agent whitelist, accesslist,
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl/CGifudum  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/acl/CGifudum  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -415,13 +419,28 @@ HTTP/1.1 200 OK
 Cache-Control: private
 Content-Type: application/json; charset=utf-8
 Date:  Thu, 15 Apr 2021 12:00:00 GMT
-Content-Length: 1400
+Content-Length: 2671
 
 {
-    "allowed_http_versions": [
-        "HTTP/1.0",
-        "HTTP/1.1",
-        "HTTP/2.0"
+    "allow_anonymous_proxy": true,
+    "allowed_http_methods": [
+        "GET",
+        "POST",
+        "PUT",
+        "HEAD",
+        "OPTIONS",
+        "PATCH",
+        "DELETE"
+    ],
+    "allowed_request_content_types": [
+        "application/json",
+        "application/x-amf",
+        "application/x-www-form-urlencoded",
+        "application/xml",
+        "multipart/form-data",
+        "text/html",
+        "text/plain",
+        "text/xml"
     ],
     "asn": {
         "accesslist": [],
@@ -429,19 +448,16 @@ Content-Length: 1400
         "whitelist": []
     },
     "cookie": {
-        "blacklist": [
-            "bot"
-        ],
-        "whitelist": [
-            "trusted"
-        ]
+        "accesslist": [],
+        "blacklist": [],
+        "whitelist": []
     },
     "country": {
         "accesslist": [],
         "blacklist": [],
         "whitelist": []
     },
-    "customer_id": "0001",
+    "customer_id": "{{ SAMPLE_TEAM_ID }}",
     "disallowed_extensions": [
         ".asa",
         ".asax",
@@ -454,9 +470,8 @@ Content-Length: 1400
         ".cer",
         ".cfg",
         ".cmd",
-        ".com",
-        ".config",
         ".conf",
+        ".config",
         ".cs",
         ".csproj",
         ".csr",
@@ -465,6 +480,7 @@ Content-Length: 1400
         ".dbf",
         ".dll",
         ".dos",
+        ".exe",
         ".htr",
         ".htw",
         ".ida",
@@ -488,26 +504,37 @@ Content-Length: 1400
         ".sql",
         ".sys",
         ".vb",
-        ".vbs",
         ".vbproj",
+        ".vbs",
         ".vsdisco",
         ".webinfo",
         ".xsd",
-        ".xsx/"
+        ".xsx"
     ],
+    "disallowed_headers": [],
     "id": "CGifudum",
     "ip": {
         "accesslist": [],
         "blacklist": [],
         "whitelist": []
     },
-    "last_modified_date": "2020-06-03T23:02:22.803847Z",
-    "name": "ACL configuration",
+    "last_modified_by": "joe@example.com via Edgio AppOps Console",
+    "last_modified_date": "2023-07-28T19:10:42.931050Z",
+    "max_file_size": 6291456,
+    "name": "My Access Rule",
     "referer": {
         "accesslist": [],
         "blacklist": [],
         "whitelist": []
     },
+    "response_header_name": "x-edgio-security-audit",
+    "sd_iso": {
+        "accesslist": [],
+        "blacklist": [],
+        "whitelist": []
+    },
+    "super_capacity": false,
+    "team_config": true,
     "url": {
         "accesslist": [],
         "blacklist": [],
@@ -517,7 +544,8 @@ Content-Length: 1400
         "accesslist": [],
         "blacklist": [],
         "whitelist": []
-    }
+    },
+    "version": null
 }
 ```
 
@@ -599,10 +627,30 @@ The response body for a successful request contains the following properties:
 A sample HTTP request is shown below.
 
 ```json
-PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl/CGifudum  HTTP/1.1
+PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/acl/CGifudum  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {
+    "allow_anonymous_proxy": true,
+    "allowed_http_methods": [
+        "GET",
+        "POST",
+        "PUT",
+        "HEAD",
+        "OPTIONS",
+        "PATCH",
+        "DELETE"
+    ],
+    "allowed_request_content_types": [
+        "application/json",
+        "application/x-amf",
+        "application/x-www-form-urlencoded",
+        "application/xml",
+        "multipart/form-data",
+        "text/html",
+        "text/plain",
+        "text/xml"
+    ],
     "asn": {
         "accesslist": [],
         "blacklist": [],
@@ -621,7 +669,7 @@ PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl/CGifudum  HTTP/1.1
         "blacklist": [],
         "whitelist": []
     },
-    "customer_id": "0001",
+    "customer_id": "{{ SAMPLE_TEAM_ID }}",
     "disallowed_extensions": [
         ".asa",
         ".asax",
@@ -634,9 +682,8 @@ PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl/CGifudum  HTTP/1.1
         ".cer",
         ".cfg",
         ".cmd",
-        ".com",
-        ".config",
         ".conf",
+        ".config",
         ".cs",
         ".csproj",
         ".csr",
@@ -645,6 +692,7 @@ PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl/CGifudum  HTTP/1.1
         ".dbf",
         ".dll",
         ".dos",
+        ".exe",
         ".htr",
         ".htw",
         ".ida",
@@ -668,23 +716,37 @@ PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl/CGifudum  HTTP/1.1
         ".sql",
         ".sys",
         ".vb",
-        ".vbs",
         ".vbproj",
+        ".vbs",
         ".vsdisco",
         ".webinfo",
         ".xsd",
-        ".xsx/"
+        ".xsx"
     ],
+    "disallowed_headers": [],
+    "id": "CGifudum",
     "ip": {
         "accesslist": [],
         "blacklist": [],
         "whitelist": []
     },
+    "last_modified_by": "joe@example.com via Edgio AppOps Console",
+    "last_modified_date": "2023-07-28T19:10:42.931050Z",
+    "max_file_size": 6291456,
+    "name": "My Access Rule",
     "referer": {
         "accesslist": [],
         "blacklist": [],
         "whitelist": []
     },
+    "response_header_name": "x-edgio-security-audit",
+    "sd_iso": {
+        "accesslist": [],
+        "blacklist": [],
+        "whitelist": []
+    },
+    "super_capacity": false,
+    "team_config": true,
     "url": {
         "accesslist": [],
         "blacklist": [],
@@ -694,7 +756,8 @@ PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/acl/CGifudum  HTTP/1.1
         "accesslist": [],
         "blacklist": [],
         "whitelist": []
-    }
+    },
+    "version": null
 }
 ```
 
@@ -708,7 +771,7 @@ Date:  Thu, 15 Apr 2021 12:00:00 GMT
 Content-Length: 51
 
 {
-    "id": "dQndQsnv",
+    "id": "CGifudum",
     "status": "success",
     "success": true
 }

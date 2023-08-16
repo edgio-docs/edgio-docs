@@ -244,6 +244,10 @@ Define the set of valid and invalid HTTP request methods through the
 
     `GET | POST | OPTIONS | HEAD | PUT | DELETE`
 
+### Anonmymous Proxy {/*anonymous-proxy*/}
+
+Determine whether we will detect requests that use an anonymizer or anonymous proxy tool through the **Detect Anon Proxy** option.
+
 ### Media Types (aka Content Types) {/*media-types-aka-content-types-*/}
 
 Define the set of valid media types (aka content types or MIME types)

@@ -225,7 +225,7 @@ The response body for a successful request contains the following properties:
 A sample HTTP request is shown below.
 
 ```json
-POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/rules  HTTP/1.1
+POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/rules  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {
@@ -318,7 +318,7 @@ The response body for a successful request contains the following properties:
 A sample HTTP request is shown below.
 
 ```json
-DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/rules/N8NxAJOA  HTTP/1.1
+DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/rules/N8NxAJOA  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -377,7 +377,7 @@ The response body for a successful request contains the following response eleme
 A sample HTTP request is shown below.
 
 ```json
-GET {{API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/rules  HTTP/1.1
+GET {{API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/rules  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -516,7 +516,7 @@ Each object within the `chained_rule` array describes an additional set of crite
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/rules/N8NxAJOA  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/rules/N8NxAJOA  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -691,7 +691,7 @@ The response body for a successful request contains the following properties:
 A sample HTTP request is shown below.
 
 ```json
-PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/rules/N8NxAJOA  HTTP/1.1
+PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/rules/N8NxAJOA  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {

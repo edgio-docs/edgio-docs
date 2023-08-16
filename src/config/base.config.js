@@ -54,10 +54,11 @@ const HELP_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b41
 const SUPPORT_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const DOCS_URL = `https://${DOCS_DOMAIN}`;
 const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
-const API_URL = `https://${API_DOMAIN}/app`;
+const API_URL = `https://${API_DOMAIN}/`;
 const IDENTITY_URL = `https://${IDENTITY_DOMAIN}`;
 const API_SECURITY_VERSION = '0.9';
 const API_CONFIG_VERSION = '0.1';
+const SAMPLE_TEAM_ID = '12345678-1234-1234-1234-1234567890ab';
 const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
 
 const PORTAL_LINK = `[${PORTAL}](${LOGIN_URL})`;
@@ -198,6 +199,7 @@ const config = {
   STARTER_NAME,
   STATUS_URL,
   SUPPORT_URL,
+  SAMPLE_TEAM_ID,
   TEAM_ID,
   YEAR,
   WWW_URL,

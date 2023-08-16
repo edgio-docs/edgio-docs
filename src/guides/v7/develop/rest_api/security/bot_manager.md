@@ -213,7 +213,7 @@ The response body for a successful request contains the following properties:
 A sample HTTP request is shown below.
 
 ```json
-POST  {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bot-managers  HTTP/1.1
+POST  {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/bot-managers  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {
@@ -277,7 +277,7 @@ The response body for a successful request contains the following properties:
 A sample HTTP request is shown below.
 
 ```json
-DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bot-managers/pfJKToQF  HTTP/1.1
+DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/bot-managers/pfJKToQF  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -336,7 +336,7 @@ The response body for a successful request contains the following response eleme
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bot-managers  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/bot-managers  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -436,7 +436,7 @@ The `known_bots` array contains an object for each known bot that {{ PRODUCT }} 
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bot-managers/pfJKToQF  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/bot-managers/pfJKToQF  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -539,7 +539,7 @@ The response body for a successful request contains the following properties:
 A sample HTTP request is shown below.
 
 ```json
-PUT  {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bot-managers/pfJKToQF  HTTP/1.1
+PUT  {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/bot-managers/pfJKToQF  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {
@@ -730,7 +730,7 @@ The response body for a successful request contains the following properties:
 A sample HTTP request is shown below.
 
 ```json
-POST  {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bots  HTTP/1.1
+POST  {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/bots  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {
@@ -821,7 +821,7 @@ The response body for a successful request contains the following properties:
 A sample HTTP request is shown below.
 
 ```json
-DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bots/pfJKToQF  HTTP/1.1
+DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/bots/pfJKToQF  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -880,7 +880,7 @@ The response body for a successful request contains the following response eleme
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bots  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/bots  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -1029,7 +1029,7 @@ Each object within the chained_rule array describes an additional set of criteri
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bots/pfJKToQF  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/bots/pfJKToQF  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -1218,7 +1218,7 @@ The response body for a successful request contains the following properties:
 A sample HTTP request is shown below.
 
 ```json
-PUT  {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/bots/pfJKToQF  HTTP/1.1
+PUT  {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/bots/pfJKToQF  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {

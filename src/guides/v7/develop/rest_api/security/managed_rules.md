@@ -117,7 +117,7 @@ The response body for a successful request contains the following properties:
 A sample HTTP request is shown below.
 
 ```json
-POST {{ API_URL }}/12345/waf/{{ API_SECURITY_VERSION }}/profile  HTTP/1.1
+POST {{ API_URL }}/{{ SAMPLE_TEAM_ID }}/waf/{{ API_SECURITY_VERSION }}/profile  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {
@@ -219,7 +219,7 @@ The response body for a successful request contains the following properties:
 A sample HTTP request is shown below.
 
 ```json
-DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/profile/Oxeludse  HTTP/1.1
+DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/profile/Oxeludse  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 A sample response is shown below.
@@ -280,7 +280,7 @@ The response body for a successful request contains the following response eleme
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/profile  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/profile  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -345,7 +345,7 @@ The response body for a successful request contains the following response prope
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/profile/rulesets/ECRS/version/latest/policies HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/profile/rulesets/ECRS/version/latest/policies HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -511,7 +511,7 @@ The response body for a successful request contains the following response prope
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/profile/rulesets HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/profile/rulesets HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -607,7 +607,7 @@ The response body for a successful request contains the following response prope
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/profile/rulesets/ECRS/version/latest/policies/r2000_ec_custom_rule.conf.json/rules HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/profile/rulesets/ECRS/version/latest/policies/r2000_ec_custom_rule.conf.json/rules HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -774,7 +774,7 @@ The `rule_target_updates` array describes each target using the following proper
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/profile/Oxeludse  HTTP/1.1
+GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/profile/Oxeludse  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -928,7 +928,7 @@ The response body for a successful request contains the following properties:
 A sample HTTP request is shown below.
 
 ```json
-PUT {{API_URL }}/waf/{{ API_SECURITY_VERSION }}/12345/profile/Oxeludse  HTTP/1.1
+PUT {{API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/profile/Oxeludse  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {

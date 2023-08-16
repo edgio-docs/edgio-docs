@@ -158,13 +158,10 @@ const config = {
   PRODUCT_LEGACY_LOWER,
   APP_DOMAIN,
   APP_URL,
-<<<<<<< HEAD
   API_URL,
   API_SECURITY_VERSION,
   API_REQUEST_HEADERS,
-=======
   CHROME_EXTENSION,
->>>>>>> main
   CLI_CMD,
   CLI_NAME,
   CONFIG_FILE,
@@ -206,12 +203,9 @@ const config = {
   STARTER_NAME,
   STATUS_URL,
   SUPPORT_URL,
-<<<<<<< HEAD
   SAMPLE_TEAM_ID,
   TEAM_ID,
-=======
   CONTACT_SUPPORT,
->>>>>>> main
   YEAR,
   WWW_URL,
   RUM_NS,

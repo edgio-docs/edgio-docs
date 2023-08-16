@@ -58,7 +58,7 @@ An access log file may contain the following fields:
 - **met (_String_):** <a id="met" /> Indicates the request's HTTP method (e.g., `GET`, `HEAD`, and `POST`).
 - **pc (_String_):** <a id="pc" /> Indicates the postal code from which the request originated (e.g., `90405`).
 - **pre (_Number_):** <a id="pre" /> Indicates whether the request was prefetched. Returns `1` for requests that have the `{{ COOKIE_PREFIX }}_prefetch=1` query string parameter and `0` for all other requests.
-- **prl (_Number_):** <a id="prl" /> Indicates whether the request was due to [static prerendering](/guides/performance/static_prerendering). Returns `1` for static prerendering requests and `0` for all other traffic.
+<!-- - **prl (_Number_):** <a id="prl" /> Indicates whether the request was due to [static prerendering](/guides/performance/static_prerendering). Returns `1` for static prerendering requests and `0` for all other traffic. -->
 - **prod (_Number_):** <a id="prod" /> Indicates whether the request was directed at the production environment. Returns `1` for the production environment and `0` for all other environments.
 - **psh (_Number_):** <a id="psh" /> Indicates whether this response was sent due to HTTP/2 server push. Returns `1` for a HTTP/2 server push and `0` for client-driven requests.
 - **rfr (_String_):** <a id="rfr" /> Indicates the value for the `Referer` request header.

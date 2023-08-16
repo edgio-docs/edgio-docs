@@ -200,7 +200,7 @@ curl -vv --silent https://www.yoursite.com/?{{ PRODUCT_NAME_LOWER }}_debug=true 
 
 ## Source Maps {/* source-maps */}
 
-If you are using a CDN-as-code, then {{ PRODUCT }} automatically produces a source map for your router file. This source map contains a stacktrace that references the original source file for each runtime error that occurs during routing. If your application build produces source maps for the server bundle, these will also be used when reporting errors. 
+If you are using CDN-as-code, then {{ PRODUCT }} automatically produces a source map for your router file. This source map contains a stacktrace that references the original source file for each runtime error that occurs during routing. If your application build produces source maps for the server bundle, these will also be used when reporting errors. 
 
 **Key information:**
 

@@ -22,13 +22,18 @@ Troubleshoot:
     
     ![Sample deployments](/images/v7/basics/deployments.png?width=600)
     
--   <a id="applied-rules" />**Applied Rules:** Verify that the desired set of rules are being applied to the request by checking the **Matched Rules** column within the {{ CHROME_EXTENSION }}. Rules use zero-based numbering.
-    -   **{{ PORTAL }}:** Click on the `Show Rule Numbers` link on the **Rules** page to display rule numbers next to each rule.
+-   <a id="applied-rules" />**Applied Rules:** Verify that the desired set of rules are being applied to the request by performing the following steps:
+
+    1.  Find out the set of rules that were applied to the request by checking the **Matched Rules** column within the {{ CHROME_EXTENSION }}. 
+    2.  Look up those rules from within the **Rules** page  of the {{ PORTAL }}. Click on the `Show Rule Numbers` link to display rule numbers next to each rule.
     
         ![Rules page showing rule numbers](/images/v7/performance/rules-rule-numbers.png?width=600)
-
-    -   **CDN-as-Code:** Count each rule within your {{ ROUTES_FILE }}. Alternatively, you may use the {{ PORTAL }} to identify the rule(s) being applied to the request.
-
+    
+    **Key information:**
+    
+    -   Rules use zero-based numbering.
+    -   Use the above procedure even if you are using CDN-as-code. {{ PRODUCT }} automatically adds system-defined rules when you deploy your CDN-as-code configuration. As a result, counting rules within your {{ ROUTES_FILE }} will be inaccurate.
+    
 -   **Testing Without Caching:** Use a permalink to ensure that {{ PRODUCT }} does not serve cached content when testing your website. A permalink forces {{ PRODUCT }} to proxy your request to either the serverless tier or your origin. Although this may degrade performance, it is useful when verifying functionality. 
 
     A permalink is assigned to each deployment. View a deployment's permalink by navigating to the **Deployments** page for the desired environment and then clicking on the desired deployment version. 
@@ -147,8 +152,8 @@ Access logs contain information about all requests, even those that never reach 
 
 Removing the browser as a variable in your equation is a good way to confirm what the origin server is doing. Below are a few of the common CURL commands we leverage to verify behavior.
 
-<!--The option `-k` will not validate a SSL certificate if that is not yet configured.
--->
+Use the `-k` option to skip TLS validation if a TLS certificate has not been provisioned for the requested domain. 
+
 **View Headers Only**
 
 ```bash

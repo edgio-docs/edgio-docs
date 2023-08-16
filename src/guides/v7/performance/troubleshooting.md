@@ -15,21 +15,21 @@ Troubleshoot:
 
 -   **Latest Environment Version:** Delays in configuration propagation may cause {{ PRODUCT }} to serve some requests using an older configuration. Upon detecting unexpected behavior, it is important to verify that all requests are using the latest environment version.
 
-    1.  Find the environment version through which a request was served by checking the **Environment** column within [{{ PRODUCT }} Developer Tools Chrome extension](#developer-tools-chrome-extension).
+    1.  Find the environment version through which a request was served by checking the **Environment** column within [{{ CHROME_EXTENSION }}](#developer-tools-chrome-extension).
     2.  Find the latest environment version from within the {{ PORTAL }} by navigating to the desired environment, clicking **Deployments**, and then checking the **Environments** column. 
     
-    For example, the {{ PRODUCT }} Developer Tools Chrome extension's **Environment** column should report `v3` for requests to a website powered by the following production environment:
+    For example, the {{ CHROME_EXTENSION }}'s **Environment** column should report `v3` for requests to a website powered by the following production environment:
     
     ![Sample deployments](/images/v7/basics/deployments.png?width=600)
     
--   <a id="applied-rules" />**Applied Rules:** Verify that the desired set of rules are being applied to the request by checking the **Matched Rules** column within {{ PRODUCT }} Developer Tools. Rules use zero-based numbering.
+-   <a id="applied-rules" />**Applied Rules:** Verify that the desired set of rules are being applied to the request by checking the **Matched Rules** column within the {{ CHROME_EXTENSION }}. Rules use zero-based numbering.
     -   **{{ PORTAL }}:** Click on the `Show Rule Numbers` link on the **Rules** page to display rule numbers next to each rule.
     
         ![Rules page showing rule numbers](/images/v7/performance/rules-rule-numbers.png?width=600)
 
     -   **CDN-as-Code:** Count each rule within your {{ ROUTES_FILE }}. Alternatively, you may use the {{ PORTAL }} to identify the rule(s) being applied to the request.
 
--   **Testing Without Caching:** Use a permalink to ensure that {{ PRODUCT }} does not serve cached content when testing your website. A permalink forces {{ PRODUCT }} to proxy your request to either the serverless tier or your origin. Although this may degrade performance, it is useful when verifying a function. 
+-   **Testing Without Caching:** Use a permalink to ensure that {{ PRODUCT }} does not serve cached content when testing your website. A permalink forces {{ PRODUCT }} to proxy your request to either the serverless tier or your origin. Although this may degrade performance, it is useful when verifying functionality. 
 
     A permalink is assigned to each deployment. View a deployment's permalink by navigating to the **Deployments** page for the desired environment and then clicking on the desired deployment version. 
 
@@ -58,7 +58,7 @@ Troubleshoot delivery and performance issues using the following tools:
 
 | Tool  | Description  |
 |----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [{{ PRODUCT }} Developer Tools](#developer-tools-chrome-extension)   | This Chrome extension describes each request associated with the current page. Use this information to gain insight into delivery issues, caching, and performance. |
+| [{{ CHROME_EXTENSION }}](#developer-tools-chrome-extension)          | This Chrome extension describes each request associated with the current page. Use this information to gain insight into delivery issues, caching, and performance. |
 | [Edge Insights](#edge-insights)                                      | Review detailed information about each request to your website in near real-time. |
 | [Visual Studio Code](#visual-studio-code)                            | This tool allows you to add breakpoints within your code to troubleshoot delivery issues. |
 | [Server Logs](#server-logs)                                          | Review messages from your application. |
@@ -66,15 +66,15 @@ Troubleshoot delivery and performance issues using the following tools:
 | [curl](#curl)                                                        | Issue requests to your website using curl. This tool allows you to eliminate browser-specific behavior when troubleshooting issues. |
 | [Source Maps](#source-maps)                                          | Review our source map to investigate runtime errors that occur during routing. Additionally, if you are using the Next or Nuxt framework, then you can enable a source map for your application code. |
 
-## {{ PRODUCT }} Developer Tools Chrome Extension {/*developer-tools-chrome-extension*/}
+## {{ CHROME_EXTENSION }} {/*developer-tools-chrome-extension*/}
 
-The [{{ PRODUCT }} Developer Tools Chrome extension](https://chrome.google.com/webstore/detail/edgio-developer-tools/ieehikdcdpeailgpfdbafhnbfhpdgefm) provides detailed information for the current page and all of the requests spawned from it. Spawned requests include everything from static assets to prefetch requests.
+The [{{ CHROME_EXTENSION }}](https://chrome.google.com/webstore/detail/edgio-developer-tools/ieehikdcdpeailgpfdbafhnbfhpdgefm) provides detailed information for the current page and all of the requests spawned from it. Spawned requests include everything from static assets to prefetch requests.
 
-![{{ PRODUCT }} Developer Tools Chrome extension](/images/v7/performance/edgio-developer-tools-chrome-extension-overview.png?width=700)
+![{{ CHROME_EXTENSION }}](/images/v7/performance/edgio-developer-tools-chrome-extension-overview.png?width=700)
 
 <Callout type="important">
 
-  You must enable the [Debug Headers](/guides/performance/rules/features#debug-header) [(debug_header)](/guides/performance/cdn_as_code/route_features#debug-cache-headers) feature to unlock the power of the {{ PRODUCT }} Developer Tools Chrome extension.
+  You must enable the [Debug Headers](/guides/performance/rules/features#debug-header) [(debug_header)](/guides/performance/cdn_as_code/route_features#debug-cache-headers) feature to unlock the power of the {{ CHROME_EXTENSION }}.
 
 </Callout>
 
@@ -253,7 +253,7 @@ Troubleshooting information for common status codes is provided below. [Learn mo
 Troubleshoot this status code by performing the following steps:
 
 -   Use Edge Insights, [as described above](#status-codes), to identify the URL and the referrer from which the request originated. Check the `url` and the `referer` field, respectively.
--   If the resource exists and you are using CDN-as-code, use the [{{ PRODUCT }} Developer Tools Chrome Extension](developer-tools-chrome-extension) to check whether the [request matches a rule](#applied-rules) in your {{ ROUTES_FILE }}.
+-   If the resource exists and you are using CDN-as-code, use the [{{ CHROME_EXTENSION }}](developer-tools-chrome-extension) to check whether the [request matches a rule](#applied-rules) in your {{ ROUTES_FILE }}.
 
 ### 502 Bad Gateway Status Code {/*502-bad-gateway-status-code*/}
 

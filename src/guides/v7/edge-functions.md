@@ -9,11 +9,11 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 - Edge Functions assume you are familiar with our [CDN-as-Code](/guides/performance/cdn_as_code) approach for defining rules.
 - They require your {{ PORTAL }} team to be configured to use the Edge Functions feature. [Contact support]({{ HELP_URL }}) to enable this feature.
 
-## Getting Started {/* getting_started */}
+## Getting Started {/* getting-started */}
 
 {{ prereq.md }}
 
-## Defining Edge Functions {/* defining_edge_functions */}
+## Defining Edge Functions {/* defining-edge-functions */}
 
 Edge Functions are defined in your `routes.js` file using the `edge_function` property on a route. The `edge_function` property accepts a string representing the path to the Edge Function file.
 
@@ -33,7 +33,7 @@ export async function handleHttpRequest(request, context) {
 
 When a request is received for a route that has an Edge Function assigned to it, the Edge Function is invoked. The Edge Function is passed two parameters: `request` and `context`.
 
-### Edge Function Parameters {/* edge_function_parameters */}
+### Edge Function Parameters {/* edge-function-parameters */}
 
 `request` is an object representing the incoming request and `context` is a read-only object providing additional information about the request and your environment, such as access to the client's network information, device capabilities, geo location, environment variables, origin servers, and information about this property including values set using variables. It also provides functions for injecting metrics into your edge function and for returning the response from your edge function to the downstream client.
 
@@ -51,7 +51,7 @@ When a request is received for a route that has an Edge Function assigned to it,
 | `context.respondWith(response)` | Function        | Must be called to return the response from your edge function to the downstream client                                     | [context.respondWith(response)](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith) |
 | `context.waitUntil(promise)`    | Function        | Waits until the given promise is fulfilled                                                                                 | [context.waitUntil(promise)](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil) |
 
-### Metrics Functions {/* metrics_functions */}
+### Metrics Functions {/* metrics-functions */}
 
 | Function                                           | Description                                                                                                   |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -59,7 +59,7 @@ When a request is received for a route that has an Edge Function assigned to it,
 | `context.metrics.startTimer(id: integer)`          | Starts a timer for the metric with the given id. Only one timer can be active at a time for a given metric id |
 | `context.metrics.stopTimer(id: integer)`           | Stops a timer for the metric with the given id                                                                |
 
-### Edge Function Namespace {/* edge_function_namespace */}
+### Edge Function Namespace {/* edge-function-namespace */}
 
 Edge Functions global namespace provide access to the following:
 
@@ -73,7 +73,7 @@ Edge Functions global namespace provide access to the following:
 | `TextDecoder`       | Polyfill class to manage decoding text.                                                                                 | [TextDecoder](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder) |
 | `TextEncoder`       | Polyfill class to manage encoding text.                                                                                 | [TextEncoder](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder) |
 
-### Origin Requests Using fetch() {/* origin_requests_using_fetch */}
+### Origin Requests Using fetch() {/* origin-requests-using-fetch */}
 
 Before making a fetch, you must first define the origin in the `{{ CONFIG_FILE }}` file. Learn more in our [CDN-as-Code](/guides/performance/cdn_as_code#config-file) guide.
 
@@ -242,7 +242,7 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-### Polyfill Limitations {/* polyfill_limitations */}
+### Polyfill Limitations {/* polyfill-limitations */}
 
 It's worth noting that not all implementations will be able to accept polyfills, either due to the number of dependencies affected or the compiled size of the polyfill exceeding the [Limitations](#limitations) of Edge Functions.
 

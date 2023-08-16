@@ -22,7 +22,7 @@ Troubleshoot:
     
     ![Sample deployments](/images/v7/basics/deployments.png?width=600)
     
--   <a id="request-rules" />**Applied Rules:** Verify that the desired set of rules are being applied to the request by checking the **Matched Rules** column within {{ PRODUCT }} Developer Tools. Rules use zero-based numbering.
+-   <a id="applied-rules" />**Applied Rules:** Verify that the desired set of rules are being applied to the request by checking the **Matched Rules** column within {{ PRODUCT }} Developer Tools. Rules use zero-based numbering.
     -   **{{ PORTAL }}:** Click on the `Show Rule Numbers` link on the **Rules** page to display rule numbers next to each rule.
     
         ![Rules page showing rule numbers](/images/v7/performance/rules-rule-numbers.png?width=600)
@@ -41,7 +41,7 @@ Check whether a request was served from cache through the **Cache Status** colum
 -   **Miss:** Indicates that {{ PRODUCT }} could not find a cached version of the requested content with a valid time-to-live (TTL) on that edge server. 
 -   **No-Cache:** Indicates that the request is uncacheable. 
 
-    Find out why a custom cache policy is not being applied to this request by [reviewing the rules applied to this request](#request-rules). 
+    Find out why a custom cache policy is not being applied to this request by [reviewing the rules applied to this request](#applied-rules). 
 
 -   **Blank:** A blank value indicates that the request was not served through {{ PRODUCT }}.
 
@@ -239,8 +239,8 @@ Gain insight into why {{ PRODUCT }} returned a specific status code by filtering
 6.  Scroll down to the **Logs** section.
 7.  Inspect each request to gain insight into why this status code is occurring.
 
-    `404 Not Found`: Check the `url` and the `referer` field to identify the problematic URL and the URL from which the request originated.
-    `502 Bad Gateway`: Check whether the request contains `proxy_hard_error` set to `HARD_ERR_502_SSL_CONNECT_ERROR` to identify a [SNI issue](#502-bad-gateway-status-code). 
+    -   `404 Not Found`: Check the `url` and the `referer` field to identify the problematic URL and the URL from which the request originated.
+    -   `502 Bad Gateway`: Check whether the request contains `proxy_hard_error` set to `HARD_ERR_502_SSL_CONNECT_ERROR` to identify a [SNI issue](#502-bad-gateway-status-code). 
 
     <Callout type="tip">
 
@@ -254,8 +254,8 @@ Troubleshooting information for common status codes is provided below. [Learn mo
 
 Troubleshoot this status code by performing the following steps:
 
--   Use [Edge Insights](#edge-insights) to identify the URL and the referrer from which the request originated. Check the `url` and the `referer` field, respectively.
--   If the resource exists and you are using CDN-as-code, use the [{{ PRODUCT }} Developer Tools Chrome Extension](developer-tools-chrome-extension) check whether the request matches a rule in your {{ ROUTES_FILE }}.
+-   Use Edge Insights, [as described above](#status-codes), to identify the URL and the referrer from which the request originated. Check the `url` and the `referer` field, respectively.
+-   If the resource exists and you are using CDN-as-code, use the [{{ PRODUCT }} Developer Tools Chrome Extension](developer-tools-chrome-extension) to check whether the [request matches a rule](#applied-rules) in your {{ ROUTES_FILE }}.
 
 ### 502 Bad Gateway Status Code {/*502-bad-gateway-status-code*/}
 
@@ -263,7 +263,7 @@ Troubleshoot this status code by identifying the origin configuration that is ex
 
 -   Use Edge Insights to check whether you need to update your origin configuration's SNI settings.
 
-    1.  [Filter Edge Insights](#edge-insights) by the `502 Bad Gateway` status code. 
+    1.  Filter Edge Insights, [as described above](#status-codes) by the `502 Bad Gateway` status code. 
     2.  Scroll down to the **Logs** section and view a request. 
     3.  Check whether the request contains `proxy_hard_error` set to `HARD_ERR_502_SSL_CONNECT_ERROR`. 
     
@@ -288,7 +288,7 @@ Common causes are:
 -   The upstream host you specified in your project is incorrect.
 -   The DNS entry you defined points to the wrong server.
 -   Your servers are not responding.
--   You need to add the {{ PRODUCT }} IP addresses to your allowlist. Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses) to your server's IP allowlist.
+-   You need to add the {{ PRODUCT }} IP addresses to your allowlist. Contact your operations team and ask them to add [our IP addresses](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses) to your firewall's IP allowlist.
 
 ### 539 Project Timeout Status Code {/* troubleshooting-539-status-codes */}
 

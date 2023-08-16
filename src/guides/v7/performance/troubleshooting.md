@@ -15,7 +15,7 @@ Troubleshoot:
 
 -   **Latest Environment Version:** Delays in configuration propagation may cause {{ PRODUCT }} to serve some requests using an older configuration. Upon detecting unexpected behavior, it is important to verify that all requests are using the latest environment version.
 
-    1.  Find the environment version through which a request was served by checking the **Environment** column within [{{ CHROME_EXTENSION }}](#developer-tools-chrome-extension).
+    1.  Find the environment version through which a request was served by checking the **Environment** column from within the [{{ CHROME_EXTENSION }}](#developer-tools-chrome-extension).
     2.  Find the latest environment version from within the {{ PORTAL }} by navigating to the desired environment, clicking **Deployments**, and then checking the **Environments** column. 
     
     For example, the {{ CHROME_EXTENSION }}'s **Environment** column should report `v3` for requests to a website powered by the following production environment:
@@ -40,7 +40,7 @@ Troubleshoot:
 
 ## Caching {/*caching*/}
 
-Check whether a request was served from cache through the **Cache Status** column. 
+Check whether a request was served from cache through the **Cache Status** column from within the [{{ CHROME_EXTENSION }}](#developer-tools-chrome-extension). 
 
 -   **Hit:** Indicates that the request was served from cache. 
 -   **Miss:** Indicates that {{ PRODUCT }} could not find a cached version of the requested content with a valid time-to-live (TTL) on that edge server. 
@@ -54,8 +54,10 @@ Check whether a request was served from cache through the **Cache Status** colum
 
 ## Performance {/*performance*/}
 
--   Check the **TTFB** column for a high value. This column measures time to first byte. This metric is indicative of responsiveness.
--   Check the **Total Time** column for a high value. This column measures the total amount of time it took to serve a response to the client. 
+From within the [{{ CHROME_EXTENSION }}](#developer-tools-chrome-extension), check:
+
+-   The **TTFB** column for a high value. This column measures time to first byte. This metric is indicative of responsiveness.
+-   The **Total Time** column for a high value. This column measures the total amount of time it took to serve a response to the client. 
 
 ## Troubleshooting Tools {/*troubleshooting-tools*/}
 
@@ -198,7 +200,7 @@ curl -vv --silent https://www.yoursite.com/?{{ PRODUCT_NAME_LOWER }}_debug=true 
 
 ## Source Maps {/* source-maps */}
 
-If you are using a CDN-as-code, then {{ PRODUCT }} automatically produces a source map for your router file. This source map contains a stacktrace that references the original source file for each runtime error that occurs during routing. If your application build produces source maps for the server bundle, these will also be used when reporting errors. 
+If you are using CDN-as-code, then {{ PRODUCT }} automatically produces a source map for your router file. This source map contains a stacktrace that references the original source file for each runtime error that occurs during routing. If your application build produces source maps for the server bundle, these will also be used when reporting errors. 
 
 **Key information:**
 

@@ -24,13 +24,13 @@ The [{{ PRODUCT }} Developer Tools Chrome extension](https://chrome.google.com/w
 
 <Callout type="important">
 
-  You must enable the [Debug Cache Headers](/guides/performance/rules/features#debug-header) [(debug_header)](/guides/performance/cdn_as_code/route_features#debug-cache-headers) feature to unlock the power of the {{ PRODUCT }} Developer Tools Chrome extension.
+  You must enable the [Debug Headers](/guides/performance/rules/features#debug-header) [(debug_header)](/guides/performance/cdn_as_code/route_features#debug-cache-headers) feature to unlock the power of the {{ PRODUCT }} Developer Tools Chrome extension.
 
 </Callout>
 
 **General troubleshooting tips:**
 
--   Verify that you are using the latest environment version.
+-   Verify that all requests are using the latest environment version.
 
     1.  Find the environment version through which a request was served by checking the **Environment** column within {{ PRODUCT }} Developer Tools.
     2.  Find the latest environment version by navigating to the desired environment, clicking **Deployments**, and then checking the **Environments** column. 
@@ -39,7 +39,7 @@ The [{{ PRODUCT }} Developer Tools Chrome extension](https://chrome.google.com/w
     
     ![Sample deployments](/images/v7/basics/deployments.png?width=600)
     
--   Verify that the desired set of rules are being applied to the request by checking the **Matched Rules** column within {{ PRODUCT }} Developer Tools. Rules use zero-based numbering.
+-   <a id="request-rules" />Verify that the desired set of rules are being applied to the request by checking the **Matched Rules** column within {{ PRODUCT }} Developer Tools. Rules use zero-based numbering.
     -   **{{ PORTAL }}:** Click on the `Show Rule Numbers` link on the **Rules** page to display rule numbers next to each rule.
     
         ![Rules page showing rule numbers](/images/v7/performance/rules-rule-numbers.png?width=600)
@@ -52,7 +52,10 @@ Check whether a request was served from cache through the **Cache Status** colum
 
 -   **Hit:** Indicates that the request was served from cache. 
 -   **Miss:** Indicates that {{ PRODUCT }} could not find a cached version of the requested content with a valid time-to-live (TTL) on that edge server. 
--   **No-Cache:** Indicates that the request is uncacheable. If you have a custom cache policy, verify that it is being applied to this request. Check the **Matched Rules** column to see the set of rules applied to this request. 
+-   **No-Cache:** Indicates that the request is uncacheable. 
+
+    Find out why a custom cache policy is not being applied to this request by [reviewing the rules applied to this request](#request-rules). 
+
 -   **Blank:** A blank value indicates that the request was not served through {{ PRODUCT }}.
 
 [View our default caching policy.](/guides/performance/caching#default-caching-policy)
@@ -66,49 +69,50 @@ Check whether a request was served from cache through the **Cache Status** colum
 
 Edge Insights allows you to view near real-time information for all requests to your website. 
 
-**Tips:**
+**To troubleshoot by status code**
 
--   Troubleshoot a specific status code by filtering for it and then inspecting a request. 
-    1.  Load the desired environment-specific **Edge Insights** page.
-    2.  Verify that the **Data Source** option is set to `Access Logs`.
-    3.  Scroll down to the **Top Results** section.
-    4.  Verify that `HTTP Status Code` has been selected for one of the pie charts.
-    5.  From within the pie chart, click on the desired status code. The entire dashboard will be filtered by that status code. 
-    6.  Scroll down to the **Logs** section.
-    7.  Inspect each request to gain insight into why this status code is occurring.
-    
-        For example, if you are looking into `404 Not Found`, check the `url` and the `referer` field to identify the problematic URL and the URL from which the request originated.
-    
-        <Callout type="tip">
-        
-          Filter for a specific field by typing the desired name in the upper-right hand search bar.
-        
-        </Callout>
+Filter log data by the desired status code and then review log data.
+
+1.  [Load the desired environment-specific Edge Insights page.](/guides/performance/observability/edge_insights#basic-usage)
+2.  Verify that the **Data Source** option is set to `Access Logs`.
+3.  Scroll down to the **Top Results** section.
+4.  Verify that `HTTP Status Code` has been selected for one of the pie charts.
+5.  From within the pie chart, click on the desired status code. The entire dashboard will be filtered by that status code. 
+6.  Scroll down to the **Logs** section.
+7.  Inspect each request to gain insight into why this status code is occurring.
+
+    `404 Not Found`: Check the `url` and the `referer` field to identify the problematic URL and the URL from which the request originated.
+    `502 Bad Gateway`: Check whether the request contains `proxy_hard_error` set to `HARD_ERR_502_SSL_CONNECT_ERROR` to identify a [SNI issue](#502-bad-gateway-status-code). 
+
+    <Callout type="tip">
+
+      Filter for a specific field by typing the desired name in the upper-right hand search bar.
+
+    </Callout>
 
 ## Visual Studio Code {/* visual-studio-code */}
 
-To debug a {{ PRODUCT_NAME }} application in Visual Studio Code:
+Set up debugging within Visual Studio Code for your CDN-as-code configuration through the following steps: 
 
-- Open `.vscode/launch.json`.
-- Click _Add Configuration..._ and select _Node.js: Launch Program_.
+1.  Open `.vscode/launch.json`.
+2.  Click **Add Configuration** and select **Node.js: Launch Program**.
+3.  Edit this configuration to look like this:
 
-Edit the resulting configuration to look like this:
+    ```js
+    {
+      "name": "Debug {{ PRODUCT_NAME }} App",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "autoAttachChildProcesses": true,
+      "program": "${workspaceFolder}/node_modules/{{ PACKAGE_NAME }}/cli",
+      "args": ["run"]
+    }
+    ```
 
-```js
-{
-  "name": "Debug {{ PRODUCT_NAME }} App",
-  "type": "node",
-  "request": "launch",
-  "cwd": "${workspaceFolder}",
-  "autoAttachChildProcesses": true,
-  "program": "${workspaceFolder}/node_modules/{{ PACKAGE_NAME }}/cli",
-  "args": ["run"]
-}
-```
+    If your workspace folder is not located in your app's root directory, then you will need to adjust the path defined within the `program` and `cwd` keys. The `program` config should always point to `{{ PACKAGE_NAME }}/cli`. The `cwd` config should point to the root directory of your app.
 
-The above assumes that the workspace folder is your app's root directory. If that is not the case, adjust `program` and `cwd` accordingly. The `program` config should always point to `{{ PACKAGE_NAME }}/cli`. The `cwd` config should point to the root directory of your app.
-
-Note that this configuration will allow you to set breakpoints in both your {{ PRODUCT_NAME }} router as well as your application code (for example in Next.js, Nuxt.js, Angular, etc...).
+This configuration allows you to set breakpoints in both your {{ PRODUCT_NAME }} router as well as your application code (e.g., Next.js, Nuxt.js, and Angular).
 
 <a id="logs" />
 ## Server Logs {/* server-logs */}
@@ -151,8 +155,8 @@ Access logs contain information about all requests, even those that never reach 
 
 Removing the browser as a variable in your equation is a good way to confirm what the origin server is doing. Below are a few of the common CURL commands we leverage to verify behavior.
 
-The option `-k` will not validate a SSL certificate if that is not yet configured.
-
+<!--The option `-k` will not validate a SSL certificate if that is not yet configured.
+-->
 **View Headers Only**
 
 ```bash
@@ -161,7 +165,9 @@ curl -o/dev/null -vv https://www.yoursite.com
 
 **Bypass DNS Resolution**
 
-Connect directly to the address listed after. This is good for sending a request straight to origin and bypassing {{ PRODUCT }}, or testing a connection to {{ PRODUCT }} before DNS cutover. Setting up a localhost DNS configuration is usually better for this if possible.
+Connect directly to a specific IP address. Use this command to:
+-   Send a request directly to the origin and bypass {{ PRODUCT }}
+-   Test the connection to {{ PRODUCT }} before DNS cutover. The recommended method for testing this connection is to define a localhost DNS configuration.
 
 ```bash
 curl -o/dev/null -vv
@@ -175,93 +181,83 @@ curl -o/dev/null -vv
     -H "Cookie: cache_enabled=true" https://www.yoursite.com/main.js
 ```
 
-**Send a Specific User agent**
+**Send a Specific User Agent**
 
 ```bash
 curl -o/dev/null -vv
     -H "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [FBAN/FBIOS;FBDV/iPhone10,2;FBMD/iPhone;FBSN/iOS;FBSV/13.6.1;FBSS/3;FBID/phone;FBLC/en_GB;FBOP/5];FBNV/1"
 ```
 
-**Skip the Cache**
+<!--**Skip the Cache**
 
-Adding a `{{ PRODUCT_NAME_LOWER }}_debug=true` to the query parameter will skip the cache and make it easy to check for dynamic data (i.e. personalized content). Append grep to search for specific values within the response output.
+Adding `{{ PRODUCT_NAME_LOWER }}_debug=true` to the query string skips the cache. This is useful when checking dynamic data. Append grep to search for specific values within the response output.
 
 ```bash
 curl -vv --silent https://www.yoursite.com/?{{ PRODUCT_NAME_LOWER }}_debug=true 2>&1 | grep minicart-quantity
 ```
 
-`2>&1` is only present to make terminal work with `grep`
+`2>&1` is only present to make terminal work with `grep`.
+-->
+## Using Permalinks to Skip Cache {/* checking-your-permalinks-vs-edge-links */}
 
-## Checking your Permalinks vs Edge links {/* checking-your-permalinks-vs-edge-links */}
+Test your website using a permalink to skip cache and force {{ PRODUCT }} to proxy your request to either the serverless tier or your origin. Although this may degrade performance, it is useful when verifying a function. 
 
-A Permalink request will skip the edge (cache) and go straight to the serverless tier. This will likely degrade performance, but does allow for verification of a function.
-
-The edge link will route through the edge.
-
-You can find both links on the detail page of a deployment.
+A permalink is assigned to each deployment. View a deployment's permalink by navigating to the **Deployments** page for the desired environment and then clicking on the desired deployment version. 
 
 ## Source Maps {/* source-maps */}
 
-{{ PRODUCT }} automatically produces a source map for your router file so that all runtime errors that occur during routing will have a stacktrace that references the original source file. If your application build produces source maps for the server bundle, these will also be used when reporting errors. {{ PRODUCT }} provides a convenient way to enable source maps when using Next and Nuxt:
+If you are using a CDN-as-code, then {{ PRODUCT }} automatically produces a source map for your router file. This source map contains a stacktrace that references the original source file for each runtime error that occurs during routing. If your application build produces source maps for the server bundle, these will also be used when reporting errors. 
 
-<Callout type="warning">
+**Key information:**
 
-We noticed some performance issues related to sourcemaps being loaded in our Serverless infrastructure, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
+-   By default, application-level source maps are not enabled, since they may cause the serverless bundle to be larger than the 50MB limit.
+-   Source maps loaded within our Serverless infrastructure may result in `539 Project Timeout` errors due to performance issues. If this occurs, try again with sourcemaps disabled. 
 
 </Callout>
 
-### Next.js {/* nextjs */}
+{{ PRODUCT }} provides a convenient way to enable source maps when using Next and Nuxt:
 
-Set `{{ FULL_CLI_NAME }}SourceMaps: true` in your `next.config.js`:
+-   **Next.js:** Set `{{ FULL_CLI_NAME }}SourceMaps: true` in your `next.config.js`:
 
-```js filename="./next.config.js"
-const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
+    ```js filename="./next.config.js"
+    const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
 
-module.exports = with{{ PRODUCT }}(
-  withServiceWorker({
-    // Output sourcemaps so that stacktraces have original source filenames and line numbers when tailing
-    // the logs in the {{ PORTAL }}.
-    {{ FULL_CLI_NAME }}SourceMaps: true,
-  }),
-)
-```
+    module.exports = with{{ PRODUCT }}(
+      withServiceWorker({
+        // Output sourcemaps so that stacktraces have original source filenames and line numbers when tailing
+        // the logs in the {{ PORTAL }}.
+        {{ FULL_CLI_NAME }}SourceMaps: true,
+      }),
+    )
+    ```
+-   **Nuxt.js:** Set `{{ FULL_CLI_NAME }}SourceMaps: true` in the config for `{{ PACKAGE_NAME }}/nuxt/module` in `buildModules` in `nuxt.config.js`:
 
-### Nuxt.js {/* nuxtjs */}
-
-Set `{{ FULL_CLI_NAME }}SourceMaps: true` in the config for `{{ PACKAGE_NAME }}/nuxt/module` in `buildModules` in `nuxt.config.js`:
-
-```js filename="./nuxt.config.js"
-module.exports = {
-  // ...
-  buildModules: [['{{ PACKAGE_NAME }}/nuxt/module', { {{ FULL_CLI_NAME }}SourceMaps: true }]],
-  // ...
-}
-```
-
-<Callout type="important">
-  Application-level source maps are not enabled by default as they can be quite large and cause the serverless bundle to be larger than the 50MB limit.
-</Callout>
+    ```js filename="./nuxt.config.js"
+    module.exports = {
+      // ...
+      buildModules: [['{{ PACKAGE_NAME }}/nuxt/module', { {{ FULL_CLI_NAME }}SourceMaps: true }]],
+      // ...
+    }
+    ```
 
 ## Status Codes {/*status-codes*/}
 
+Troubleshooting information for common status codes is provided below. [Learn more about status codes.](/guides/performance/response#status-codes)
 
-
-
-
-### 404 Not Found Status Code
+### 404 Not Found Status Code {/*404-not-found-status-code*/}
 
 Troubleshoot this status code by performing the following steps:
 
 -   Use [Edge Insights](#edge-insights) to identify the URL and the referrer from which the request originated. Check the `url` and the `referer` field, respectively.
 -   If the resource exists and you are using CDN-as-code, use the [{{ PRODUCT }} Developer Tools Chrome Extension](developer-tools-chrome-extension) check whether the request matches a rule in your {{ ROUTES_FILE }}.
 
-### 502 Bad Gateway Status Code
+### 502 Bad Gateway Status Code {/*502-bad-gateway-status-code*/}
 
 Troubleshoot this status code by identifying the origin configuration that is experiencing an issue and then performing the following steps:
 
--   Use [Edge Insights](#edge-insights) to check whether you need to update your origin configuration's SNI settings.
+-   Use Edge Insights to check whether you need to update your origin configuration's SNI settings.
 
-    1.  Filter Edge Insights by the `502 Bad Gateway` status code. 
+    1.  [Filter Edge Insights](#edge-insights) by the `502 Bad Gateway` status code. 
     2.  Scroll down to the **Logs** section and view a request. 
     3.  Check whether the request contains `proxy_hard_error` set to `HARD_ERR_502_SSL_CONNECT_ERROR`. 
     
@@ -279,61 +275,50 @@ What does the "X-Ec-Proxy-Error: 11" response error mean? I saw this when trying
 The user should be able to find this guide by searching for "502", "Bad Gateway", and "HARD_ERR_502_SSL_CONNECT_ERROR"
 -->
 
-### 531 Project Upstream Connection Error Status Code
+### 531 Project Upstream Connection Error Status Code {/*531-project-upstream-connection-error-status-code*/}
 
-Common causes are:  the upstream host you specified in your project is incorrect, the DNS entry you defined points to the wrong server, your servers are not responding, or you need to add the {{ PRODUCT }} IP addresses to your allowlist. (Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses) to your server's IP allowlist.)   
+Common causes are:  
 
+-   The upstream host you specified in your project is incorrect.
+-   The DNS entry you defined points to the wrong server.
+-   Your servers are not responding.
+-   You need to add the {{ PRODUCT }} IP addresses to your allowlist. Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses) to your server's IP allowlist.
 
 ### 539 Project Timeout Status Code {/* troubleshooting-539-status-codes */}
 
-**Timeouts:** Your project's serverless code did not respond on time, either due to slow or blocking upstream or to badly handled asynchronous requests in code (e.g. missing `await` or call to `callback`). **Troubleshooting:** You can view the timings and status codes of the components in the stack in the [{{ HEADER_PREFIX }}-t header](#-t-response-header). Use [server logs](/guides/logs/server_logs) and [performance profiling](/guides/performance/observability#tracking-your-own-timings) to debug. You can also debug using information in [Troubleshooting 539 Status Codes, which includes information about detecting allowlist errors. 
+Your project's serverless code did not respond on time. This issue typically arises in step 4 or 5 of the following request flow:
 
+1.  A requesting client sends a request to {{ PRODUCT }} for an asset.
+2.  {{ PRODUCT_NAME }} does not find it in its cache and examines routing rules.
+3.  {{ PRODUCT_NAME }} sends requests to server-side rendering (SSR) code.
+4.  The SSR code makes calls to the customer backend to get data needed for the page.
+5.  The SSR assembles the page and sends it to the {{ PRODUCT_NAME }} edge.
+6.  The {{ PRODUCT_NAME }} edge caches the page and returns it to the client.
 
+This issue may be due to:
 
+- An error in your SSR code. For example, your asynchronous requests may be missing `await` or call to `callback`.
+- A backend error (server overloaded or offline).
+- An allowlist issue.
 
+Troubleshoot this status code by:
 
-539 status codes (see [Status Codes](/guides/performance/response#status-codes)) are timeout errors, which can be:
-
-- An error in your SSR code
-- A backend error (server overloaded or offline)
-- An allowlist issue
-
-<Callout type="warning">
-
-We noticed some performance issues related to sourcemaps being loaded in our Serverless infrastructure, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
-
-</Callout>
-
+-   Viewing the timings and status codes of the components in the stack in the [{{ HEADER_PREFIX }}-t header](#-t-response-header). 
+-   Analyzing [server logs](/guides/logs/server_logs).
+-   Performing [performance profiling](/guides/performance/observability#tracking-your-own-timings) 
+-   Detecting allowlist errors. 
+-   Loading source maps within our Serverless infrastructure. If this occurs, try again with sourcemaps disabled. 
+<!--
 #### Assumptions {/* assumptions */}
 
 You have deployed your site to {{ PRODUCT }}. All your website code resides with {{ PRODUCT }} as SSR (server-side rendering) code. Your backend (server) simply contains data that is needed by your website code to construct a page and return it to a requesting client or browser.
 See [Architecture](/guides/performance#architecture) for more information.
-
-#### Typical Request Flows {/* typical-request-flows */}
-
-Following are two request flows that are helpful as background to troubleshooting information.
-
-##### Cached Assets Served {/* cached-assets-served */}
-
-1. A requesting client sends a request to {{ PRODUCT }} for an asset.
-2. The {{ PRODUCT }} edge finds the asset in cache and returns it to the client.
-
-##### Assets Served via Customer SSR Code and Customer Backend {/* assets-served-via-customer-ssr-code-and-customer-backend */}
-
-This flow is where 539 errors might occur.
-
-1. A requesting client sends a request to {{ PRODUCT }} for an asset.
-2. {{ PRODUCT_NAME }} does not find it in its cache and examines routing rules.
-3. {{ PRODUCT_NAME }} sends requests to SSR code.
-4. The SSR code makes calls to the customer backend to get data needed for the page.
-5. The SSR assembles the page and sends it to the {{ PRODUCT_NAME }} edge.
-6. The {{ PRODUCT_NAME }} edge caches the page and returns it to the client.
-
 <Callout type="info">
 
   A variant on caching is ISR where {{ PRODUCT }} caches just for a few hours or days.
 
 </Callout>
+-->
 
 #### Allowlist {/* allowlist-overview */}
 
@@ -347,7 +332,7 @@ To prevent this scenario, you must configure your server with allowlisted {{ PR
 
 ### Procedure {/* procedure */}
 
-When you are testing a web page, you might encounter 539 status code errors. You might also see the errors in logs if you signed up for Log Shipping.
+When you are testing a web page, you might encounter 539 status code errors. You might also see the errors in logs.
 
 1. Open your project in {{ PRODUCT_NAME }}, then drill down to the deployment that is experiencing the 539 errors.
 

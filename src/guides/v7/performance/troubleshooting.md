@@ -213,8 +213,6 @@ If you are using a CDN-as-code, then {{ PRODUCT }} automatically produces a sour
 -   By default, application-level source maps are not enabled, since they may cause the serverless bundle to be larger than the 50MB limit.
 -   Source maps loaded within our Serverless infrastructure may result in `539 Project Timeout` errors due to performance issues. If this occurs, try again with sourcemaps disabled. 
 
-</Callout>
-
 {{ PRODUCT }} provides a convenient way to enable source maps when using Next and Nuxt:
 
 -   **Next.js:** Set `{{ FULL_CLI_NAME }}SourceMaps: true` in your `next.config.js`:

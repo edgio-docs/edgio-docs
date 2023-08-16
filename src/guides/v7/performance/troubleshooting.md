@@ -54,7 +54,7 @@ Check whether a request was served from cache through the **Cache Status** colum
 
 ## Troubleshooting Tools {/*troubleshooting-tools*/}
 
-Troubleshoot delivery and performance issues using the following tools and information:
+Troubleshoot delivery and performance issues using the following tools:
 
 | Tool  | Description  |
 |----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -64,9 +64,7 @@ Troubleshoot delivery and performance issues using the following tools and infor
 | [Server Logs](#server-logs)                                          | Review messages from your application. |
 | [Access Logs](access-logs)                                           | Review historical information for requests to your website. |
 | [curl](#curl)                                                        | Issue requests to your website using curl. This tool allows you to eliminate browser-specific behavior when troubleshooting issues. |
-| [Permalinks](#checking-your-permalinks-vs-edge-links)                | Test your website using a permalink by bypass our caching mechanism. |
 | [Source Maps](#source-maps)                                          | Review our source map to investigate runtime errors that occur during routing. Additionally, if you are using the Next or Nuxt framework, then you can enable a source map for your application code. |
-| [Status Codes](#status-codes)                                        | We provide troubleshooting information for specific status codes. |
 
 ## {{ PRODUCT }} Developer Tools Chrome Extension {/*developer-tools-chrome-extension*/}
 
@@ -82,7 +80,7 @@ The [{{ PRODUCT }} Developer Tools Chrome extension](https://chrome.google.com/w
 
 ## Edge Insights {/*edge-insights*/}
 
-Edge Insights allows you to view near real-time information for all requests to your website. 
+[Edge Insights](/guides/performance/observability/edge_insights) allows you to view near real-time information for all requests to your website. 
 
 ## Visual Studio Code {/* visual-studio-code */}
 

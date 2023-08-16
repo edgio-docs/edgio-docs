@@ -2,10 +2,62 @@
 title: Troubleshooting
 ---
 
+Troubleshoot:
+
+-   [General issues](#general-troubleshooting-procedures)
+-   [Caching](#caching)
+-   [Performance](#performance)
+-   [Status codes](status-codes)
+
+[Learn more about our troubleshooting tools.](#troubleshooting-tools)
+
+## General Troubleshooting Procedures {/*general-troubleshooting-procedures*/}
+
+-   **Latest Environment Version:** Delays in configuration propagation may cause {{ PRODUCT }} to serve some requests using an older configuration. Upon detecting unexpected behavior, it is important to verify that all requests are using the latest environment version.
+
+    1.  Find the environment version through which a request was served by checking the **Environment** column within [{{ PRODUCT }} Developer Tools Chrome extension](#developer-tools-chrome-extension).
+    2.  Find the latest environment version from within the {{ PORTAL }} by navigating to the desired environment, clicking **Deployments**, and then checking the **Environments** column. 
+    
+    For example, the {{ PRODUCT }} Developer Tools Chrome extension's **Environment** column should report `v3` for requests to a website powered by the following production environment:
+    
+    ![Sample deployments](/images/v7/basics/deployments.png?width=600)
+    
+-   <a id="request-rules" />**Applied Rules:** Verify that the desired set of rules are being applied to the request by checking the **Matched Rules** column within {{ PRODUCT }} Developer Tools. Rules use zero-based numbering.
+    -   **{{ PORTAL }}:** Click on the `Show Rule Numbers` link on the **Rules** page to display rule numbers next to each rule.
+    
+        ![Rules page showing rule numbers](/images/v7/performance/rules-rule-numbers.png?width=600)
+
+    -   **CDN-as-Code:** Count each rule within your {{ ROUTES_FILE }}. Alternatively, you may use the {{ PORTAL }} to identify the rule(s) being applied to the request.
+
+-   **Testing Without Caching:** Use a permalink to ensure that {{ PRODUCT }} does not serve cached content when testing your website. A permalink forces {{ PRODUCT }} to proxy your request to either the serverless tier or your origin. Although this may degrade performance, it is useful when verifying a function. 
+
+    A permalink is assigned to each deployment. View a deployment's permalink by navigating to the **Deployments** page for the desired environment and then clicking on the desired deployment version. 
+
+## Caching {/*caching*/}
+
+Check whether a request was served from cache through the **Cache Status** column. 
+
+-   **Hit:** Indicates that the request was served from cache. 
+-   **Miss:** Indicates that {{ PRODUCT }} could not find a cached version of the requested content with a valid time-to-live (TTL) on that edge server. 
+-   **No-Cache:** Indicates that the request is uncacheable. 
+
+    Find out why a custom cache policy is not being applied to this request by [reviewing the rules applied to this request](#request-rules). 
+
+-   **Blank:** A blank value indicates that the request was not served through {{ PRODUCT }}.
+
+[View our default caching policy.](/guides/performance/caching#default-caching-policy)
+
+## Performance {/*performance*/}
+
+-   Check the **TTFB** column for a high value. This column measures time to first byte. This metric is indicative of responsiveness.
+-   Check the **Total Time** column for a high value. This column measures the total amount of time it took to serve a response to the client. 
+
+## Troubleshooting Tools {/*troubleshooting-tools*/}
+
 Troubleshoot delivery and performance issues using the following tools and information:
 
 | Tool  | Description  |
-|---|---|
+|----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [{{ PRODUCT }} Developer Tools](#developer-tools-chrome-extension)   | This Chrome extension describes each request associated with the current page. Use this information to gain insight into delivery issues, caching, and performance. |
 | [Edge Insights](#edge-insights)                                      | Review detailed information about each request to your website in near real-time. |
 | [Visual Studio Code](#visual-studio-code)                            | This tool allows you to add breakpoints within your code to troubleshoot delivery issues. |
@@ -28,67 +80,9 @@ The [{{ PRODUCT }} Developer Tools Chrome extension](https://chrome.google.com/w
 
 </Callout>
 
-**General troubleshooting tips:**
-
--   Verify that all requests are using the latest environment version.
-
-    1.  Find the environment version through which a request was served by checking the **Environment** column within {{ PRODUCT }} Developer Tools.
-    2.  Find the latest environment version by navigating to the desired environment, clicking **Deployments**, and then checking the **Environments** column. 
-    
-    For example, the {{ PRODUCT }} Developer Tools Chrome extension's **Environment** column should report `v3` for requests to a website powered by the following production environment:
-    
-    ![Sample deployments](/images/v7/basics/deployments.png?width=600)
-    
--   <a id="request-rules" />Verify that the desired set of rules are being applied to the request by checking the **Matched Rules** column within {{ PRODUCT }} Developer Tools. Rules use zero-based numbering.
-    -   **{{ PORTAL }}:** Click on the `Show Rule Numbers` link on the **Rules** page to display rule numbers next to each rule.
-    
-        ![Rules page showing rule numbers](/images/v7/performance/rules-rule-numbers.png?width=600)
-
-    -   **CDN-as-Code:** Count each rule within your {{ ROUTES_FILE }}. Alternatively, you may use the {{ PORTAL }} to identify the rule(s) being applied to the request.
-
-**Troubleshooting caching:**
-
-Check whether a request was served from cache through the **Cache Status** column. 
-
--   **Hit:** Indicates that the request was served from cache. 
--   **Miss:** Indicates that {{ PRODUCT }} could not find a cached version of the requested content with a valid time-to-live (TTL) on that edge server. 
--   **No-Cache:** Indicates that the request is uncacheable. 
-
-    Find out why a custom cache policy is not being applied to this request by [reviewing the rules applied to this request](#request-rules). 
-
--   **Blank:** A blank value indicates that the request was not served through {{ PRODUCT }}.
-
-[View our default caching policy.](/guides/performance/caching#default-caching-policy)
-
-**Troubleshooting performance:**
-
--   Check the **TTFB** column for a high value. This column measures time to first byte. This metric is indicative of responsiveness.
--   Check the **Total Time** column for a high value. This column measures the total amount of time it took to serve a response to the client. 
-
 ## Edge Insights {/*edge-insights*/}
 
 Edge Insights allows you to view near real-time information for all requests to your website. 
-
-**To troubleshoot by status code**
-
-Filter log data by the desired status code and then review log data.
-
-1.  [Load the desired environment-specific Edge Insights page.](/guides/performance/observability/edge_insights#basic-usage)
-2.  Verify that the **Data Source** option is set to `Access Logs`.
-3.  Scroll down to the **Top Results** section.
-4.  Verify that `HTTP Status Code` has been selected for one of the pie charts.
-5.  From within the pie chart, click on the desired status code. The entire dashboard will be filtered by that status code. 
-6.  Scroll down to the **Logs** section.
-7.  Inspect each request to gain insight into why this status code is occurring.
-
-    `404 Not Found`: Check the `url` and the `referer` field to identify the problematic URL and the URL from which the request originated.
-    `502 Bad Gateway`: Check whether the request contains `proxy_hard_error` set to `HARD_ERR_502_SSL_CONNECT_ERROR` to identify a [SNI issue](#502-bad-gateway-status-code). 
-
-    <Callout type="tip">
-
-      Filter for a specific field by typing the desired name in the upper-right hand search bar.
-
-    </Callout>
 
 ## Visual Studio Code {/* visual-studio-code */}
 
@@ -198,11 +192,6 @@ curl -vv --silent https://www.yoursite.com/?{{ PRODUCT_NAME_LOWER }}_debug=true 
 
 `2>&1` is only present to make terminal work with `grep`.
 -->
-## Using Permalinks to Skip Cache {/* checking-your-permalinks-vs-edge-links */}
-
-Test your website using a permalink to skip cache and force {{ PRODUCT }} to proxy your request to either the serverless tier or your origin. Although this may degrade performance, it is useful when verifying a function. 
-
-A permalink is assigned to each deployment. View a deployment's permalink by navigating to the **Deployments** page for the desired environment and then clicking on the desired deployment version. 
 
 ## Source Maps {/* source-maps */}
 
@@ -240,7 +229,26 @@ If you are using a CDN-as-code, then {{ PRODUCT }} automatically produces a sour
 
 ## Status Codes {/*status-codes*/}
 
-Troubleshooting information for common status codes is provided below. [Learn more about status codes.](/guides/performance/response#status-codes)
+Gain insight into why {{ PRODUCT }} returned a specific status code by filtering Edge Insights by the desired status code and then reviewing log data.
+
+1.  [Load the desired environment-specific Edge Insights page.](/guides/performance/observability/edge_insights#basic-usage)
+2.  Verify that the **Data Source** option is set to `Access Logs`.
+3.  Scroll down to the **Top Results** section.
+4.  Verify that `HTTP Status Code` has been selected for one of the pie charts.
+5.  From within the pie chart, click on the desired status code. The entire dashboard will be filtered by that status code. 
+6.  Scroll down to the **Logs** section.
+7.  Inspect each request to gain insight into why this status code is occurring.
+
+    `404 Not Found`: Check the `url` and the `referer` field to identify the problematic URL and the URL from which the request originated.
+    `502 Bad Gateway`: Check whether the request contains `proxy_hard_error` set to `HARD_ERR_502_SSL_CONNECT_ERROR` to identify a [SNI issue](#502-bad-gateway-status-code). 
+
+    <Callout type="tip">
+
+      Filter for a specific field by typing the desired name in the upper-right hand search bar.
+
+    </Callout>
+
+Troubleshooting information for common status codes is provided below. [Learn more about other status codes.](/guides/performance/response#status-codes)
 
 ### 404 Not Found Status Code {/*404-not-found-status-code*/}
 
@@ -332,13 +340,10 @@ To prevent this scenario, you must configure your server with allowlisted {{ PR
 
 When you are testing a web page, you might encounter 539 status code errors. You might also see the errors in logs.
 
-1. Open your project in {{ PRODUCT_NAME }}, then drill down to the deployment that is experiencing the 539 errors.
-
-![](/images/539-errors/deployments-tab.png?width=1000)
-
-1. Click the _SERVER_ tab header at the bottom of the page, then click the _Resume logs_ arrow or the _Logging is paused_ link to resume logging.
-
-![](/images/539-errors/resume-logging.png?width=1000)
+1.  Open your project in {{ PRODUCT_NAME }}, then drill down to the deployment that is experiencing the 539 errors.
+<!-- ![](/images/539-errors/deployments-tab.png?width=1000) -->
+1.  Click the _SERVER_ tab header at the bottom of the page, then click the _Resume logs_ arrow or the _Logging is paused_ link to resume logging.
+<!-- ![](/images/539-errors/resume-logging.png?width=1000) -->
 
 If you see 539 errors, the issue could be any of the following:
 

@@ -96,11 +96,11 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-You can also use the [`createFetchWithOrigin()`](#createFetchWithOrigin) function to create a modified `fetch()` function that includes the origin server. See the [Polyfills](#polyfills) section for more information.
+You can also use the [`createFetchForOrigin()`](#createFetchForOrigin) function to create a modified `fetch()` function that includes the origin server. See the [Polyfills](#polyfills) section for more information.
 
 ```js
 export async function handleHttpRequest(request, context) {
-  const fetch = createFetchWithOrigin('web');
+  const fetch = createFetchForOrigin('web');
 
   const resp = await fetch('https://your-server.com');
 
@@ -116,9 +116,9 @@ Some libraries allow you to specify a `fetch()` function to use. For example, Pl
 
 ```js
 import {connect} from '@planetscale/database';
-import {createFetchWithOrigin} from './polyfills';
+import {createFetchForOrigin} from './polyfills';
 
-const fetch = createFetchWithOrigin('planetscale');
+const fetch = createFetchForOrigin('planetscale');
 
 export async function handleHttpRequest(request, context) {
   const env = context.environmentVars;
@@ -143,10 +143,10 @@ export async function handleHttpRequest(request, context) {
 This approach allows for creating unique `fetch()` functions for each origin server. Optionally, you can override the global `fetch()` function if you are unable to specify a `fetch()` function in your library.
 
 ```js
-import createFetchWithOrigin from './polyfills';
+import createFetchForOrigin from './polyfills';
 
 export async function handleHttpRequest(request, context) {
-  const fetch = createFetchWithOrigin('api');
+  const fetch = createFetchForOrigin('api');
 
   // override the global fetch() function
   global.fetch = fetch;
@@ -159,9 +159,35 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
+## Testing Locally {/* testing-locally */}
+
+You may run {{ PRODUCT }} in local development mode to preview your website on your local machine prior to deployment. Local development mode allows for rapid development by letting you to quickly test changes prior to deployment.
+
+1.  From the command line or terminal, type `{{ CLI_CMD(dev) }}`.
+2.  Preview your website by loading `https://127.0.0.1:3000` from within your preferred web browser.
+
+Note that Edge Functions executed in local development mode are simulated and may not reflect the behavior or performance of deployed Edge Functions.
+
+## Deploying Your Property {/* deploying-your-property */}
+
+Evaluate site performance and QA functionality by deploying your property to {{ PRODUCT }}. Run the following command from your property's root directory:
+
+```bash
+{{ CLI_CMD(deploy) }}
+```
+
+Note that Edge Functions must be enabled for your {{ PORTAL }} team in order to deploy your property. [Contact support]({{ HELP_URL }}) to enable this feature.
+
 ## Limitations {/* limitations */}
 
-Edge Functions are limited to 2MB of memory at runtime. This includes the compiled JavaScript byte code, variables, requests, context object, and responses. Edge Functions are limited to 50ms of CPU time and 60 seconds of total execution time. The time your edge function spends waiting for a response from an origin server does not count against the 50ms CPU limit.
+Edge Functions are limited to 2MB of memory at runtime. This includes the compiled JavaScript byte code, variables, requests, context object, and responses. All Edge Functions are compiled into a single bundle to deploy to our edge servers. If the total size of all compiled Edge Functions exceeds 2MB, the deployment will fail with a 400 error.
+
+```plaintext
+2023-08-14T17:37:04Z - error - external - Schema validation error: properties.0.edge_functions.quickjs_bytecode_base64 exceeds maximum size. Max: 204800, got: 417309
+2023-08-14T17:37:04Z - error - external - Error: the server responded with status 400
+```
+
+Edge Functions are limited to 50ms of CPU time and 60 seconds of total execution time. The time your edge function spends waiting for a response from an origin server does not count against the 50ms CPU limit.
 
 ## Polyfills {/* polyfills */}
 
@@ -200,9 +226,9 @@ It's important to note that Edge Functions are not Node.js functions. Your code 
   };
   ```
 
-- `createFetchWithOrigin` for the `fetch()` API <a id="createFetchWithOrigin"></a>
+- `createFetchForOrigin` for the `fetch()` API <a id="createFetchForOrigin"></a>
 
-  ```js filename="./polyfills/createFetchWithOrigin.js"
+  ```js filename="./polyfills/createFetchForOrigin.js"
   /**
    * Creates a fetch function with an additional 'edgio' option to specify the origin.
    *
@@ -210,7 +236,7 @@ It's important to note that Edge Functions are not Node.js functions. Your code 
    * @returns {function} - A modified fetch function.
    * @throws {Error} If the origin name is not provided.
    */
-  export default function createFetchWithOrigin(originName) {
+  export default function createFetchForOrigin(originName) {
     if (!originName) {
       throw new Error(
         "'originName' is required and must be a name defined in edgio.config.js"
@@ -236,8 +262,12 @@ You can import these polyfills into your Edge Function file and use them as need
 ```js filename="./edge-functions/example.js"
 import './polyfills/url-parse.js';
 import './polyfills/buffer.js';
+import createFetchForOrigin from './polyfills/createFetchForOrigin';
+
+const fetch = createFetchForOrigin('web');
 
 export async function handleHttpRequest(request, context) {
+  const response = await fetch(/* ... */);
   /* ... */
 }
 ```
@@ -265,9 +295,9 @@ new Router()
 ```
 
 ```js filename="./edge-functions/home-page.js"
-import createFetchWithOrigin from './polyfills/createFetchWithOrigin';
+import createFetchForOrigin from './polyfills/createFetchForOrigin';
 
-const fetch = createFetchWithOrigin('legacy_server');
+const fetch = createFetchForOrigin('legacy_server');
 
 // Example edge function that injects a header into the response
 export async function handleHttpRequest(request, context) {
@@ -283,9 +313,9 @@ export async function handleHttpRequest(request, context) {
 ```
 
 ```js filename="./edge-functions/product.js"
-import createFetchWithOrigin from './polyfills/createFetchWithOrigin';
+import createFetchForOrigin from './polyfills/createFetchForOrigin';
 
-const fetch = createFetchWithOrigin('json_api_server');
+const fetch = createFetchForOrigin('json_api_server');
 
 // Example edge function that modifies a response from the origin server
 export async function handleHttpRequest(request, context) {
@@ -307,9 +337,9 @@ export async function handleHttpRequest(request, context) {
 ```
 
 ```js filename="./edge-functions/contacts.js"
-import createFetchWithOrigin from './polyfills/createFetchWithOrigin';
+import createFetchForOrigin from './polyfills/createFetchForOrigin';
 
-const fetch = createFetchWithOrigin('json_api_server');
+const fetch = createFetchForOrigin('json_api_server');
 
 // Example edge function makes multiple fetches
 export async function handleHttpRequest(request, context) {

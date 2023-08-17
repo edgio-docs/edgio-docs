@@ -55,7 +55,7 @@ const HELP_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b41
 const SUPPORT_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const DOCS_URL = `https://${DOCS_DOMAIN}`;
 const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
-const API_URL = `https://${API_DOMAIN}/`;
+const API_URL = `https://${API_DOMAIN}`;
 const IDENTITY_URL = `https://${IDENTITY_DOMAIN}`;
 const API_SECURITY_VERSION = '0.9';
 const API_CONFIG_VERSION = '0.1';

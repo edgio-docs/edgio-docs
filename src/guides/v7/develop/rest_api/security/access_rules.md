@@ -41,12 +41,12 @@ Pass the following request body properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
+|allow_anonymous_proxy |Boolean | Determines whether we will detect requests that use an anonymizer or anonymous proxy tool. |
 |allowed_http_methods|Array of strings|Identifies each allowed HTTP method (e.g., `GET`).|
 |allowed_request_content_types|Array of strings|Identifies each allowed media type (e.g., `application/json`).|
 |asn|Object|Contains access controls for autonomous system numbers (ASNs).|
 |cookie|Object|Contains access controls for cookie names. All cookies defined within a whitelist, accesslist, or blacklist are regular expressions.|
 |country|Object|Contains access controls for countries. Specify each desired country using its [country code](/guides/reference/country_codes).|
-|customer_id|String|Identifies your account by its customer account number.|
 |disallowed_extensions|Array of strings|Indicates each file extension for which WAF will send an alert or block the request.|
 |disallowed_headers|Array of strings|Indicates each request header for which WAF will send an alert or block the request.|
 |ip|Object|Contains access controls for IPv4 and/or IPv6 addresses. Specify each desired IP address using standard IPv4/IPv6 and CIDR notation.|
@@ -55,12 +55,14 @@ Pass the following request body properties:
 |referer|Object|Contains access controls for referrers. All referrers defined within a whitelist, accesslist, or blacklist are regular expressions.|
 |response_header_name|String|Determines the name of the response header that will be included with blocked requests.|
 |sd_iso|Object|Contains access controls for country subdivisons (e.g., states or provinces). Specify each desired country subdivision using an ISO-3166-2 code.|
+| super_capacity | Boolean | Indicates whether this is a high-capacity access rule. A high-capacity access rule supports up to 10,000 IP addresses or IP blocks. |
+| team_config | Boolean | Required. Set to `true`. |
 |url|Object|Contains access controls for URL paths. Specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining `value \| values`. <br />**Sample value:** `/marketing` <br />All URL paths defined within a whitelist, accesslist, or blacklist are regular expressions.|
 |user_agent|Object|Contains access controls for user agents. All user agents defined within a whitelist, accesslist, or blacklist are regular expressions.|
 
 ##### Access Control Object {/*access-control-object-add-access-rule-acl*/}
 
-The `asn`, `cookie`, `country`, `ip`, `referer`, `url`, and `user_agent` objects contain the following properties:
+The `asn`, `cookie`, `country`, `ip`, `referer`, `sd_iso`, `url`, and `user_agent` objects contain the following properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
@@ -183,7 +185,8 @@ POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/acl  HTTP
         "accesslist": [],
         "blacklist": [],
         "whitelist": []
-    }
+    },
+    "team_config": true
 }
 ```
 
@@ -391,7 +394,7 @@ The response body for a successful request contains the following response eleme
 
 ##### Access Control Object {/*access-control-object-get-access-rule-acl*/}
 
-The `asn`, `cookie`, `country`, `ip`, `referer`, `url`, and `user_agent` objects contain the following properties:
+The `asn`, `cookie`, `country`, `ip`, `referer`, `sd_iso`, `url`, and `user_agent` objects contain the following properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
@@ -578,6 +581,7 @@ Pass the following request body properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |
+|allow_anonymous_proxy |Boolean | Determines whether we will detect requests that use an anonymizer or anonymous proxy tool. |
 |allowed_http_methods|Array of strings|Identifies each allowed HTTP method (e.g., `GET`).|
 |allowed_request_content_types|Array of strings|Identifies each allowed media type (e.g., `application/json`).|
 |asn|Object|Contains access controls for autonomous system numbers (ASNs).|
@@ -593,12 +597,14 @@ Pass the following request body properties:
 |referer|Object|Contains access controls for referrers. All referrers defined within a whitelist, accesslist, or blacklist are regular expressions.|
 |response_header_name|String|Determines the name of the response header that will be included with blocked requests.|
 |sd_iso|Object|Contains access controls for country subdivisons (e.g., states or provinces). Specify each desired country subdivision using an [ISO-3166-2 code](https://www.iso.org/obp/ui/#search/code/).|
+| super_capacity | Boolean | Indicates whether this is a high-capacity access rule. A high-capacity access rule supports up to 10,000 IP addresses or IP blocks. |
+| team_config | Boolean | Required. Set to `true`. |
 |url|Object|Contains access controls for URL paths. Specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining `value \| values`. <br />**Sample value:** `/marketing` <br />All URL paths defined within a whitelist, accesslist, or blacklist are regular expressions.|
 |user_agent|Object|Contains access controls for user agents. All user agents defined within a whitelist, accesslist, or blacklist are regular expressions.|
 
 ##### Access Control Object {/*access-control-object-update-access-rule-acl*/}
 
-The `asn`, `cookie`, `country`, `ip`, `referer`, `url`, and `user_agent` objects contain the following properties:
+The `asn`, `cookie`, `country`, `ip`, `referer`, `sd_iso`, `url`, and `user_agent` objects contain the following properties:
 
 |Name|Data Type|Description|
 |--- |--- |--- |

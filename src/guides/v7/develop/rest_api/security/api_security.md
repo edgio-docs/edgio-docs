@@ -124,7 +124,7 @@ Creates an API gateway configuration.
 
 A request to add an API gateway configuration is described below.
 
-`POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_gw`
+`POST {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_gw`
 
 Define the following variable when submitting the above request:
 
@@ -176,7 +176,7 @@ A successful request returns a `200 OK` without a response body.
 A sample HTTP request is shown below.
 
 ```json
-POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_gw  HTTP/1.1
+POST {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_gw  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {
@@ -214,7 +214,7 @@ Deletes an API gateway configuration.
 
 A request to delete an API gateway configuration is described below.
 
-`DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_gw/<API GATEWAY CONFIGURATION ID>`
+`DELETE {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_gw/<API GATEWAY CONFIGURATION ID>`
 
 Define the following variable when submitting the above request:
 
@@ -240,7 +240,7 @@ A successful request returns a `200 OK` without a response body.
 A sample HTTP request is shown below.
 
 ```json
-DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_gw/CGifudum  HTTP/1.1
+DELETE {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_gw/CGifudum  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -261,7 +261,7 @@ Retrieves a list of API gateway configurations.
 
 A request to retrieve all API gateway configurations is described below.
 
-`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_gw`
+`GET {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_gw`
 
 Define the following variable when submitting the above request:
 
@@ -292,7 +292,7 @@ The response body for a successful request contains the following response eleme
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_gw  HTTP/1.1
+GET {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_gw  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -323,7 +323,7 @@ Retrieves an API gateway configuration.
 
 A request to retrieve an API gateway configuration is described below.
 
-`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_gw/<API GATEWAY CONFIGURATION ID>`
+`GET {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_gw/<API GATEWAY CONFIGURATION ID>`
 
 Define the following variables when submitting the above request:
 
@@ -382,7 +382,7 @@ The `path` object identifies requests by URL path through the following properti
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_gw/1exlud2e  HTTP/1.1
+GET {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_gw/1exlud2e  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -423,7 +423,7 @@ Updates an API gateway configuration.
 
 A request to update an API gateway configuration is described below.
 
-`PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_gw/<API GATEWAY CONFIGURATION ID>`
+`PUT {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_gw/<API GATEWAY CONFIGURATION ID>`
 
 Define the following variables when submitting the above request:
 
@@ -476,7 +476,7 @@ A successful request returns a `200 OK` without a response body.
 A sample HTTP request is shown below.
 
 ```json
-POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_gw/fnm3f892msd9A1  HTTP/1.1
+POST {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_gw/fnm3f892msd9A1  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {
@@ -516,7 +516,7 @@ Creates an API schema. An API schema is a JSON schema (draft 4) with a few addit
 
 A request to add an API schema is described below.
 
-`POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_schema`
+`POST {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_schema`
 
 Define the following variable when submitting the above request:
 
@@ -549,7 +549,7 @@ A successful request returns a `200 OK` without a response body.
 A sample HTTP request is shown below.
 
 ```json
-POST {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_schema  HTTP/1.1
+POST {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_schema  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 
 {
@@ -599,7 +599,7 @@ Deletes an API schema.
 
 A request to delete an API schema is described below.
 
-`DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_schema/<API SCHEMA ID>`
+`DELETE {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_schema/<API SCHEMA ID>`
 
 Define the following variable when submitting the above request:
 
@@ -625,7 +625,7 @@ A successful request returns a `200 OK` without a response body.
 A sample HTTP request is shown below.
 
 ```json
-DELETE {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_schema/C3ifgeum  HTTP/1.1
+DELETE {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_schema/C3ifgeum  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -646,7 +646,7 @@ Retrieves a list of API schemas.
 
 A request to retrieve all API schemas is described below.
 
-`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_schema`
+`GET {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_schema`
 
 Define the following variable when submitting the above request:
 
@@ -677,7 +677,7 @@ The response body for a successful request contains the following response eleme
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_schema  HTTP/1.1
+GET {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_schema  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -705,7 +705,7 @@ Retrieves an API schema. An API schema is a JSON schema (draft 4) with a few add
 
 A request to retrieve an API schema is described below.
 
-`GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_schema/<API SCHEMA ID>`
+`GET {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_schema/<API SCHEMA ID>`
 
 Define the following variables when submitting the above request:
 
@@ -740,7 +740,7 @@ The response body for a successful request contains the following response eleme
 A sample HTTP request is shown below.
 
 ```json
-GET {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_schema/kmWY3L8o  HTTP/1.1
+GET {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_schema/kmWY3L8o  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 
@@ -795,7 +795,7 @@ Updates an API schema. An API schema is a JSON schema (draft 4) with a few addit
 
 A request to update an API schema is described below.
 
-`PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_schema/<API SCHEMA ID>`
+`PUT {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/<TEAM ID>/api_schema/<API SCHEMA ID>`
 
 Define the following variables when submitting the above request:
 
@@ -829,7 +829,7 @@ A successful request returns a `200 OK` without a response body.
 A sample HTTP request is shown below.
 
 ```json
-PUT {{ API_URL }}/waf/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_schema/kmWY3L8o  HTTP/1.1
+PUT {{ API_URL }}/api-security/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/api_schema/kmWY3L8o  HTTP/1.1
 {{ API_SAMPLE_REQUEST_HEADERS.md }}
 ```
 

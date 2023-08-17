@@ -125,10 +125,10 @@ const nav = {
             },
           ],
         },
-        {
-          title: 'Static Prerendering',
-          path: 'performance/static_prerendering',
-        },
+        // {
+          // title: 'Static Prerendering',
+          // path: 'performance/static_prerendering',
+        // },
         {
           title: 'Predictive Prefetch',
           path: 'performance/prefetching',

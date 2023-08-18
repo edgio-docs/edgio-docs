@@ -241,10 +241,11 @@ In the `{{ CONFIG_FILE }}`, the `origins` property allows you to define one or m
 
 The configuration above shows a single origin named `web` that connects to `my-custom-property.com` as defined by the `hosts` property.
 
-```js
+```js highlight="5"
 origins: [
   {
     // The name of the backend origin
+    // Proxy requests to this origin by referencing this name within your router
     name: 'web',
 
     // Uncomment the following to override the host header sent from the browser when connecting to the origin

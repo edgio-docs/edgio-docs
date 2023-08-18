@@ -9,13 +9,11 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 - Edge Functions assume you are familiar with our [CDN-as-Code](/guides/performance/cdn_as_code) approach for defining rules.
 - Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}
 
-## Getting Started {/* getting-started */}
-
 {{ prereq.md }}
 
 ## Defining Edge Functions {/* defining-edge-functions */}
 
-Edge Functions are defined in your `routes.js` file using the `edge_function` property on a route. The `edge_function` property accepts a string representing the path to the Edge Function file.
+Edge Functions are defined in your `routes.js` file using the `edge_function` property on a route. The `edge_function` property accepts a string representing the path to the edge function file.
 
 ```js filename="./routes.js"
 new Router().get('/', {
@@ -23,7 +21,7 @@ new Router().get('/', {
 });
 ```
 
-Each Edge Function is stored in a separate file and assigned to a specific route in your `routes.js` file. An Edge Function file must export the following entry point:
+Each edge function is stored in a separate file and assigned to a specific route in your `routes.js` file. An edge function file must export the following entry point:
 
 ```js
 export async function handleHttpRequest(request, context) {
@@ -31,9 +29,11 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-When a request is received for a route that has an Edge Function assigned to it, the Edge Function is invoked. The Edge Function is passed two parameters: `request` and `context`.
+When a request is received for a route that has an edge function assigned to it, the edge function is invoked.
 
 ### Edge Function Parameters {/* edge-function-parameters */}
+
+The edge function is passed two parameters: `request` and `context`.
 
 `request` is an object representing the incoming request and `context` is a read-only object providing additional information about the request and your environment, such as access to the client's network information, device capabilities, geo location, environment variables, origin servers, and information about this property including values set using variables. It also provides functions for injecting metrics into your edge function and for returning the response from your edge function to the downstream client.
 
@@ -166,7 +166,7 @@ You may run {{ PRODUCT }} in local development mode to preview your website on y
 1.  From the command line or terminal, type `{{ CLI_CMD(dev) }}`.
 2.  Preview your website by loading `https://127.0.0.1:3000` from within your preferred web browser.
 
-Note that Edge Functions executed in local development mode are simulated and may not reflect the behavior or performance of deployed Edge Functions.
+Note that edge functions executed in local development mode are simulated and may not reflect the behavior or performance of deployed edge functions.
 
 ## Deploying Your Property {/* deploying-your-property */}
 
@@ -180,18 +180,18 @@ Note that Edge Functions must be enabled for your {{ PORTAL }} team in order to 
 
 ## Limitations {/* limitations */}
 
-Edge Functions are limited to 2MB of memory at runtime. This includes the compiled JavaScript byte code, variables, requests, context object, and responses. All Edge Functions are compiled into a single bundle to deploy to our edge servers. If the total size of all compiled Edge Functions exceeds 2MB, the deployment will fail with a 400 error.
+Edge functions are limited to 2MB of memory at runtime. This includes the compiled JavaScript byte code, variables, requests, context object, and responses. All functions are compiled into a single bundle to deploy to our edge servers. If the total size of all compiled functions exceeds 2MB, the deployment will fail with a 400 error.
 
 ```plaintext
 2023-08-14T17:37:04Z - error - external - Schema validation error: properties.0.edge_functions.quickjs_bytecode_base64 exceeds maximum size. Max: 204800, got: 417309
 2023-08-14T17:37:04Z - error - external - Error: the server responded with status 400
 ```
 
-Edge Functions are limited to 50ms of CPU time and 60 seconds of total execution time. The time your edge function spends waiting for a response from an origin server does not count against the 50ms CPU limit.
+Edge functions are limited to 50ms of CPU time and 60 seconds of total execution time. The time your edge function spends waiting for a response from an origin server does not count against the 50ms CPU limit.
 
 ## Polyfills {/* polyfills */}
 
-It's important to note that Edge Functions are not Node.js functions. Your code or third-party libraries may not work as expected if they are referencing Node.js specific APIs (e.g. `URL`, `Buffer`, etc). Because of this, we recommend using polyfills when needed. Below are some examples of polyfills you can use in your Edge Functions. Add these files to your project and import them into your Edge Function files as needed.
+It's important to note that edge functions are not Node.js functions. Your code or third-party libraries may not work as expected if they are referencing Node.js specific APIs (e.g. `URL`, `Buffer`, etc). Because of this, we recommend using polyfills when needed. Below are some examples of polyfills you can use in your edge functions. Add these files to your project and import them into your edge function files as needed.
 
 - `url-parse` for the `URL` API
 
@@ -257,7 +257,7 @@ It's important to note that Edge Functions are not Node.js functions. Your code 
 
 ### Usage {/* usage */}
 
-You can import these polyfills into your Edge Function file and use them as needed. For example, if you need to use the `URL` and `Buffer` APIs, you can import the files directly.
+You can import these polyfills into your edge function file and use them as needed. For example, if you need to use the `URL` and `Buffer` APIs, you can import the files directly.
 
 ```js filename="./edge-functions/example.js"
 import './polyfills/url-parse.js';

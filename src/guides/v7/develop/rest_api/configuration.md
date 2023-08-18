@@ -21,7 +21,7 @@ Retrieves a configuration bundle. This bundle may contain origin configurations,
 
 A request to retrieve a configuration bundle is described below.
 
-`GET {{ API_URL }}/config/{{ API_CONFIG_VERSION }}/<TEAM ID>/config/<BUNDLE ID>`
+`GET {{ API_URL }}/config/{{ API_CONFIG_VERSION }}/<TEAM ID>/configs/<BUNDLE ID>`
 
 Define the following variables when submitting the above request:
 
@@ -89,6 +89,33 @@ The `rtld` object contains all RTLD configurations associated with this configur
 |Name|Data Type|Description|
 |--- |--- |--- |
 | | | |
+
+
+{{ API_ERRORS.md }}
+
+<h3>Sample Request and Response (JSON)</h3>
+
+A sample HTTP request is shown below.
+
+```json
+GET {{ API_URL }}/config/{{ API_SECURITY_VERSION }}/{{ SAMPLE_TEAM_ID }}/configs  HTTP/1.1
+{{ API_SAMPLE_REQUEST_HEADERS.md }}
+```
+
+A sample response is shown below.
+
+```json
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Type: application/json; charset=utf-8
+Date:  Thu, 15 Apr 2021 12:00:00 GMT
+Content-Length: 65
+
+{ FINDME 
+}
+```
+
+
 
 
 

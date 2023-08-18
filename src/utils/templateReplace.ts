@@ -79,7 +79,7 @@ export default function templateReplace(file: string, data: StringMap) {
     }
 
     if (!value) {
-      logger.dev(msg);
+      logger.exception(msg);
     }
 
     return value || defValue;

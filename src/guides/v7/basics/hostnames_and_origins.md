@@ -206,7 +206,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 #### System-Defined Origins {/*system-defined-origins*/}
 
-{{ PRODUCT }} may add one or more of the following origin configurations to your property, based on certain features that you enable. 
+{{ PRODUCT }} may add one or more of the following origin configurations to your property, based on certain features being used. 
 
 <Callout type="important">
 

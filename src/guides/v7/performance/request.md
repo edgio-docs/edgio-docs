@@ -51,7 +51,7 @@ Our CDN accepts `POST` requests regardless of whether they contain a payload.
 
 ## Request Protocol Version {/*request-protocol-version*/}
 
-The CDN service communicates using the HTTP protocol version (e.g., HTTP/1.0 or HTTP/1.1) defined in the request. The HTTP/2.0 protocol version is only used for the communication between the client and the edge of our network.
+The CDN service communicates using the HTTP protocol version (i.e., HTTP/1.0 or HTTP/1.1) defined in the request. The HTTP/2.0 protocol version is only used for the communication between the client and the edge of our network.
 
 <Callout type="info">
 

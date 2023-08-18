@@ -51,7 +51,13 @@ Our CDN accepts `POST` requests regardless of whether they contain a payload.
 
 ## Request Protocol Version {/*request-protocol-version*/}
 
-The CDN service communicates using the HTTP protocol version (i.e., HTTP/1.0 or HTTP/1.1) defined in the request. The HTTP/2.0 protocol version is only used for the communication between the client and the edge of our network.
+The CDN service communicates using the HTTP protocol version (e.g., HTTP/1.0 or HTTP/1.1) defined in the request. The HTTP/2.0 protocol version is only used for the communication between the client and the edge of our network.
+
+<Callout type="info">
+
+  {{ PRODUCT }} also supports HTTP/3, but it requires enablement. Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to enable it on your account.
+
+</Callout>
 
 ## Request URL {/*request-url*/}
 

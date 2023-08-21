@@ -18,7 +18,7 @@ The `routes` key is the path to your routes file relative to the root of your pr
 
 ## origins {/* origins */}
 
-Origns are the backends that {{ PRODUCT_NAME }} will proxy requests to, and define how {{ PRODUCT_NAME }} will communicate with your web server(s). 
+Origns are the backends that {{ PRODUCT_NAME }} will proxy requests to, and define how {{ PRODUCT_NAME }} will communicate with your web server(s).
 
 The `origins` key is an array of objects whose properties are:
 
@@ -97,6 +97,7 @@ The `serverless` key is an object with the following properties:
 | -------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `includeNodeModules` | Boolean  | If `true`, the packages listed in the `dependencies` property of `package.json` will be included in the build that is deployed to {{ PRODUCT_NAME }}. |
 | `include`            | String[] | A list of glob patterns that match or omit files to be included in the serverless bundle. Example: `lang/**/*`                                        |
+
 <!--
 ## prerenderConcurrency {/* prerenderconcurrency */}
 
@@ -114,6 +115,49 @@ sources: [
   '!(**/secrets/**/*)', // except everything in the secrets directory
 ];
 ```
+
+## interpolationValues {/* interpolation-values */}
+
+The `interpolationValues` key is utilized for managing [feature variables](/guides/performance/rules/feature_variables) that are needed for content interpolation in the production environment but are not available in local development.
+
+| Property                       | Type   |
+| ------------------------------ | ------ |
+| `geo_city`                     | string |
+| `geo_country`                  | string |
+| `geo_latitude`                 | string |
+| `geo_longitude`                | string |
+| `geo_postal_code`              | string |
+| `is_origin_shield`             | string |
+| `is_subrequest`                | string |
+| `physical_doc_root`            | string |
+| `physical_path`                | string |
+| `physical_rel_path`            | string |
+| `referring_domain`             | string |
+| `virt_dst_asnum`               | string |
+| `virt_dst_continent`           | string |
+| `virt_dst_country`             | string |
+| `virt_dst_port`                | string |
+| `virt_http_version`            | string |
+| `virt_ssl_cipher`              | string |
+| `virt_ssl_client_cipher_codes` | string |
+| `virt_ssl_client_ciphers`      | string |
+| `virt_ssl_client_tlsext_ids`   | string |
+| `virt_ssl_protocol`            | string |
+| `wurfl_cap_is_tablet`          | string |
+| `wurfl_cap_mobile_browser`     | string |
+| `wurfl_vcap_is_android`        | string |
+| `wurfl_vcap_is_full_desktop`   | string |
+| `wurfl_vcap_is_ios`            | string |
+| `wurfl_vcap_is_robot`          | string |
+| `wurfl_vcap_is_smartphone`     | string |
+
+For instance, the value `virt_dst_country` is only available in a production environment. To enable this value for local development, you should set the following property:
+
+```js
+interpolationValues.virt_dst_country: 'US'
+```
+
+Setting these properties can replicate the behavior of the production environment within your local development workspace.
 
 <a id="example-config"></a>
 

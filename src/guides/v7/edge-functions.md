@@ -6,7 +6,7 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 
 **Key information:**
 
-- Edge Functions assume you are familiar with our [CDN-as-Code](/guides/performance/cdn_as_code) approach for defining rules.
+- This article assumes that you are familiar with our [CDN-as-Code](/guides/performance/cdn_as_code) approach for defining rules.
 - Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}
 
 {{ prereq.md }}

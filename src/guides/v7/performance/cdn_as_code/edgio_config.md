@@ -10,7 +10,7 @@ The `name` key is the name your property will be deployed under. If this is omit
 
 ## team {/* team */}
 
-The `team` key is the name of the team your property will be deployed under. If this is omitted, the deployment will be created under your personal (Private Space) team.
+The `team` key is the name of the organization your property will be deployed under. If this is omitted, the deployment will be created under your personal (Private Space) organization.
 
 ## routes {/* routes */}
 
@@ -129,8 +129,8 @@ module.exports = {
   // The name of the site in Edgio to which this app should be deployed.
   // name: 'my-site-name',
 
-  // The name of the team in Edgio to which this app should be deployed.
-  // team: 'my-team-name',
+  // The name of the organization in Edgio to which this app should be deployed.
+  // team: 'my-organization-name',
 
   // Overrides the default path to the routes file. The path should be relative to the root of your app.
   // routes: 'routes.js',

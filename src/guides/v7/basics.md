@@ -12,7 +12,7 @@ Combine the above solutions to ensure the secure delivery of your website while 
 
 Before you can take advantage of {{ PRODUCT_EDGE }}, {{ PRODUCT_SECURITY }}, and {{ PRODUCT_PLATFORM }}, you should set up the following basic {{ PRODUCT }} configuration:
 
--   [An {{ PRODUCT }} team space.](/guides/basics/collaboration) By default, your account will only have a private space that may only be accessed through your user account. Create a team space if you plan on collaborating with other teammates.
+-   [An {{ PRODUCT }} organization.](/guides/basics/collaboration) By default, your account will only have a private space that may only be accessed through your user account. Create an organization if you plan on collaborating with other teammates.
 -   [An {{ PRODUCT }} property.](/guides/getting_started#create-property) A property instructs {{ PRODUCT }} how to process requests to your website.
 -   [An environment.](/guides/basics/environments) An environment allows you to serve your site on different domains. For example, you can create environments for development, staging, and production to which you can deploy builds as they progress through your release workflow.
 -   [A hostname](/guides/basics/hostnames_and_origins#hostnames) that identifies the domains through which traffic will be served. You must also authorize {{ PRODUCT }} to generate a TLS certificate for this hostname.

@@ -11,7 +11,7 @@ Deploy to an environment using either of the following methods:
 -   **{{ PORTAL }}:** Use this method to deploy changes made within the {{ PORTAL }}. 
     1.  Load the desired environment.
 
-        1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
+        1.  From the {{ PORTAL_LINK }}, select your private space or the desired organization.
         2.  Select the desired property.
         3.  From the left-hand pane, select the desired environment from under the **Environments** section.
 
@@ -24,7 +24,7 @@ Deploy to an environment using either of the following methods:
 -   **{{ PRODUCT }} CLI:** Use this method to deploy changes from your local machine (e.g., changes to {{ CONFIG_FILE }} or {{ ROUTES_FILE }}).
 
     ```bash
-    {{ FULL_CLI_NAME }} deploy [<TEAM>] [--environment=<ENVIRONMENT>]
+    {{ FULL_CLI_NAME }} deploy [<ORGANIZATION>] [--environment=<ENVIRONMENT>]
     ```
     <Callout type="info">
 
@@ -55,7 +55,7 @@ Deployments are versioned. Each deployment is assigned a unique version number. 
 
 ## Branches and Deployments {/*branches-and-deployments*/}
 
-Each time you deploy your site to {{ PRODUCT }} a deployment is created and given a unique and permanent URL based on the team name, site name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by the default. If not, you can specify the `--branch` option when running `{{ FULL_CLI_NAME }} deploy`.
+Each time you deploy your site to {{ PRODUCT }} a deployment is created and given a unique and permanent URL based on the name of the organization, site name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by default. If not, you can specify the `--branch` option when running `{{ FULL_CLI_NAME }} deploy`.
 
 ![Deployments](/images/v7/basics/deployments.png?width=450)
 

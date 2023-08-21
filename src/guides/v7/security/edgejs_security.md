@@ -93,6 +93,12 @@ We support the following HTTP protocol versions for client requests to our netwo
 -   **HTTP/1:** {{ PRODUCT }} uses the HTTP protocol version defined in the request when proxying requests to an origin and in the response provided to the client.
 -   **HTTP/2:** {{ PRODUCT }} uses the the HTTP/1.1 protocol when proxying requests to an origin and the HTTP/2 protocol for the response provided to the client.
 
+<Callout type="info">
+
+  {{ PRODUCT }} also supports HTTP/3 for the communication between the client and the edge of our network, but it requires enablement. Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to enable it on your account.
+
+</Callout>
+
 ## Secrets {/*secrets*/}
 
 Rather than putting secret values such as API keys in your code and checking them into source control, you can securely

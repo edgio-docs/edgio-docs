@@ -12,7 +12,7 @@ You may create properties within a private space or an organization.
 
     </Callout>
 
--   **Organization:** {{ PRODUCT }} allows you to collaborate with other organization members through an organization. An organization provides a hub for all property-related tasks, such as managing a property's configuration, deploying code, and reviewing analytics.
+-   **Organization:** {{ PRODUCT }} allows you to collaborate with other team members through an organization. An organization provides a hub for all property-related tasks, such as managing a property's configuration, deploying code, and reviewing analytics.
 
 <!-- <Callout type="tip">
 
@@ -34,7 +34,7 @@ Organization management consists of:
 
 **To create an organization**
 
-1.  From the {{ PORTAL_LINK }}, click on the <Image inline src="/images/v7/icons/menu-up-down.png" alt="Menu" /> icon next to your name and then click on **Create an organization**. 
+1.  From the {{ PORTAL_LINK }}, click on the <Image inline src="/images/v7/icons/menu-up-down.png" alt="Menu" /> icon next to your name and then click on **Create an Organization**. 
 
     ![Space menu](/images/v7/basics/team-create.png)
 
@@ -52,7 +52,7 @@ Organization management consists of:
 
 <a id="roles" />
 
-Each organization member must be assigned one of the following roles:
+Each member of an organization must be assigned one of the following roles:
 
 -   **Read only:** This type of user may only view this organization's configuration and all of the properties that it contains.
 -   **Purger:** This type of user has the same permissions as the *Read only* role. Additionally, this role allows a user to purge cached content for any property associated with this organization.

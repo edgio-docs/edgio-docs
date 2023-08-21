@@ -55,11 +55,11 @@ Deployments are versioned. Each deployment is assigned a unique version number. 
 
 ## Branches and Deployments {/*branches-and-deployments*/}
 
-Each time you deploy your site to {{ PRODUCT }} a deployment is created and given a unique and permanent URL based on the name of the organization, site name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by default. If not, you can specify the `--branch` option when running `{{ FULL_CLI_NAME }} deploy`.
+Deploying changes to {{ PRODUCT }} generates a deployment build. Upon the completion of this deployment, this build is assigned a unique and permanent URL based on the organization name, property name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by default. If not, you can specify the `--branch` option when running `{{ FULL_CLI_NAME }} deploy`.
 
 ![Deployments](/images/v7/basics/deployments.png?width=450)
 
-Having each deployment be simultaneously and permanently accessible makes it easy to preview other developers' work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to {{ PRODUCT }}.
+Permanently accessible deployment builds allows you to preview other developers' work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to {{ PRODUCT }}.
 
 ## Deploy from CI {/*deploy-from-ci*/}
 

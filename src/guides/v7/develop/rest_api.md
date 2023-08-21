@@ -30,9 +30,9 @@ Note that only one of the optional arguments can be passed at a time, for exampl
 
 ```json
 {
-  "team": "the organization's name",
-  "site": "the property's name",
-  "environment": "the environment's name",
+  "team": "the organization name",
+  "site": "the property name",
+  "environment": "the environment name",
   "paths": ["Optional. An array of paths to clear. Use * as a wildcard."],
   "surrogateKeys": ["Optional. An array of surrogate keys to clear"],
   "cacheHashes": ["Optional. An array of cache hashes to clear"]

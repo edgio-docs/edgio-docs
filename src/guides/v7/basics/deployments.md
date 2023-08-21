@@ -26,6 +26,7 @@ Deploy to an environment using either of the following methods:
     ```bash
     {{ FULL_CLI_NAME }} deploy [<TEAM>] [--environment=<ENVIRONMENT>]
     ```
+
     <Callout type="info">
 
       If you omit the `environment` argument, then the deployment will be applied to the `production` environment.
@@ -36,7 +37,7 @@ Deploy to an environment using either of the following methods:
 
     Once the deployment is complete, the CLI will output the URL for your site. Your property's name is automatically derived from the `name` field in `package.json`. This can be overridden by using `--property` option when running `{{ FULL_CLI_NAME }} deploy`.
 
-    {{ system_origins_callout.md }}
+{{ system_origins_callout.md }}
 
 
 ## Versioning {/*versioning*/}

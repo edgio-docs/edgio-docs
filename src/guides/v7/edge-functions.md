@@ -13,7 +13,7 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 
 ## Defining Edge Functions {/* defining-edge-functions */}
 
-Edge Functions are defined in your `routes.js` file using the `edge_function` property on a route. The `edge_function` property accepts a string representing the path to the edge function file.
+Define an edge function within your {{ ROUTES_FILE }} file by adding the `edge_function` property to a route. The `edge_function` property accepts a string representing the path to the edge function file.
 
 ```js filename="./routes.js"
 new Router().get('/', {

@@ -71,7 +71,7 @@ export default function templateReplace(file: string, data: StringMap) {
 
   return template.replaceAll(variableRe, (match, key, ...args) => {
     const defValue = encode(match, {mode: 'extensive'});
-    const msg = `No constant found for template variable '${match}' in '${file}'. This will render as ${defValue}.\n`;
+    const msg = `No constant found for template variable '${match}' in '${file}'. This will render as ${match}.\n`;
     let value = data[key];
 
     if (typeof value === 'function') {
@@ -79,9 +79,9 @@ export default function templateReplace(file: string, data: StringMap) {
     }
 
     if (!value) {
-      logger.exception(msg);
+      logger.warn(msg);
     }
 
-    return value || defValue;
+    return value || match;
   });
 }

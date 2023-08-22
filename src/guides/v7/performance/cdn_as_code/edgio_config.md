@@ -118,7 +118,7 @@ sources: [
 
 ## interpolationValues {/* interpolation-values */}
 
-The `interpolationValues` key is utilized for managing [feature variables](/guides/performance/rules/feature_variables) that are needed for content interpolation in the production environment but are not available in local development.
+The following [feature variables](/guides/performance/rules/feature_variables) are only populated in a deployed environment. You can use the `interpolationValues` key to set these values in your local development environment for testing rules. Values set in this configuration are not propagated to the deployed environment.
 
 | Property                       | Type   |
 | ------------------------------ | ------ |

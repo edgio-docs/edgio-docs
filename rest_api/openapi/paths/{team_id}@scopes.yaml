@@ -1,0 +1,76 @@
+get:
+  operationId: get-security-applications
+  tags:
+    - Security Applications (Scopes)
+  summary: GET Scopes
+  description: Get scopes configuration for a given team.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  responses:
+    '200':
+      description: Scopes created successfully
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Scopes.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+post:
+  operationId: create-security-applications
+  tags:
+    - Security Applications (Scopes)
+  summary: POST Scopes
+  description: Create new scopes for a given team.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/Scopes.yaml
+  responses:
+    '200':
+      description: Scopes created successfully
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Scopes.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+put:
+  operationId: update-security-applications
+  tags:
+    - Security Applications (Scopes)
+  summary: PUT Scopes
+  description: Update exiting scopes for a given team.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/Scopes.yaml
+  responses:
+    '200':
+      description: Scopes updated successfully
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Scopes.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+delete:
+  operationId: delete-security-application
+  tags:
+    - Security Applications (Scopes)
+  summary: DELETE Scopes
+  description: Delete exiting scopes for a given team.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  responses:
+    '200':
+      description: Scopes successfully deleted
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

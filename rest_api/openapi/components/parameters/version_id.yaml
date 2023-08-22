@@ -1,0 +1,6 @@
+name: version_id
+in: path
+required: true
+description: the id of a version
+schema:
+  type: string

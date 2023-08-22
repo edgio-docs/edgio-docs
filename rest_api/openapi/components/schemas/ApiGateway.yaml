@@ -1,0 +1,19 @@
+title: API gateway object
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  customer_id:
+    type: string
+  last_modified_date:
+    type: string
+  last_modified_by:
+    type: string
+  team_config:
+    type: boolean
+  rules:
+    type: array
+    items:
+      $ref: ./ApiRule.yaml

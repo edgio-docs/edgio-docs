@@ -1,0 +1,21 @@
+title: Browser Challenge Action
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  enf_type:
+    type: string
+    enum:
+      - BROWSER_CHALLENGE
+  is_custom_challenge:
+    type: boolean
+  response_body_base64:
+    type: string
+  valid_for_sec:
+    type: integer
+    format: uint32
+  status:
+    type: integer
+    format: uint32

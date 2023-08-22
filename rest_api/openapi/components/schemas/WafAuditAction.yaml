@@ -1,0 +1,12 @@
+title: Waf Audit Action
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  enf_type:
+    description: Only ALERT is supported for audits
+    type: string
+    enum:
+      - ALERT

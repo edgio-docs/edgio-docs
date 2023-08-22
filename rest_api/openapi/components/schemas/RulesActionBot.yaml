@@ -1,0 +1,17 @@
+title: Action Object
+type: object
+properties:
+  id:
+    type: string
+    description: Numeric string in the range 77000000-77999999
+  msg:
+    type: string
+  t:
+    type: array
+    items:
+      type: string
+      enum:
+        - NONE
+        - LOWERCASE
+        - URLDECODE
+        - REMOVENULLS

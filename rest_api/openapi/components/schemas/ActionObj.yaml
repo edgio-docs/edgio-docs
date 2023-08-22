@@ -1,0 +1,15 @@
+title: Actions
+type: object
+properties:
+  ALERT:
+    $ref: ./AlertAction.yaml
+  CUSTOM_RESPONSE:
+    $ref: ./CustomResponseAction.yaml
+  BLOCK_REQUEST:
+    $ref: ./BlockRequestAction.yaml
+  REDIRECT_302:
+    $ref: ./RedirectAction.yaml
+  BROWSER_CHALLENGE:
+    $ref: ./BrowserChallengeAction.yaml
+  RECAPTCHA:
+    $ref: ./RecaptchaAction.yaml

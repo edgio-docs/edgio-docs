@@ -1,0 +1,5 @@
+description: Rate limit exceeded.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/Error.yaml

@@ -1,0 +1,49 @@
+get:
+  operationId: get-api-gateways
+  tags:
+    - API Gateways
+  summary: GET API Gateways
+  description: List all API Gateway rules for a given team.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  responses:
+    '200':
+      description: A list of Api Gateway id's and names for the team
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ObjShort.yaml
+          examples:
+            response:
+              value:
+                - id: e3mpHQY5
+                  name: sample_apigateway_config
+    '404':
+      description: team not found
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+post:
+  operationId: create-api-gateway-rule
+  tags:
+    - API Gateways
+  summary: POST API Gateway Rule
+  description: Create a new API Gateway for a given team.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/APIGateway.yaml
+  responses:
+    '200':
+      description: Api Gateway created successfully
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

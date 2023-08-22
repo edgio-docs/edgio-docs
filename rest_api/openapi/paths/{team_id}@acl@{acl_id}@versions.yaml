@@ -1,0 +1,27 @@
+parameters:
+  - $ref: ../components/parameters/team_id.yaml
+  - $ref: ../components/parameters/acl_id.yaml
+get:
+  operationId: get-acl-versions
+  tags:
+    - Access Control List (ACL)
+  summary: GET versions of an acl object
+  description: Get existing versions of acl id.
+  responses:
+    '200':
+      description: A list of versions for that acl id.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              '@id':
+                type: string
+              '@type':
+                type: string
+              items:
+                type: array
+                items:
+                  $ref: ../components/schemas/version_short.yaml
+    '404':
+      description: acl not found

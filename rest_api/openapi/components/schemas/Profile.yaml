@@ -1,0 +1,33 @@
+title: Profile
+type: object
+properties:
+  version:
+    type: string
+  id:
+    type: string
+  name:
+    type: string
+  team_id:
+    type: string
+  last_modified_date:
+    type: string
+  last_modified_by:
+    type: string
+  ruleset_id:
+    type: string
+  ruleset_version:
+    type: string
+  policies:
+    type: array
+    items:
+      type: string
+  general_settings:
+    $ref: ./GeneralSettings.yaml
+  disabled_rules:
+    type: array
+    items:
+      $ref: ./DisabledRule.yaml
+  rule_target_updates:
+    type: array
+    items:
+      $ref: ./RuleTargetUpdate.yaml

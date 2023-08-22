@@ -1,0 +1,7 @@
+title: Condition
+type: object
+properties:
+  target:
+    $ref: ./Target.yaml
+  op:
+    $ref: ./Op.yaml

@@ -1,0 +1,15 @@
+title: ACL Strings
+type: object
+properties:
+  accesslist:
+    type: array
+    items:
+      type: string
+  blacklist:
+    type: array
+    items:
+      type: string
+  whitelist:
+    type: array
+    items:
+      type: string

@@ -1,0 +1,33 @@
+title: Action
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  duration_sec:
+    description: Number of seconds this action will be applied
+    type: integer
+    format: uint32
+    enum:
+      - 10
+      - 60
+      - 300
+  url:
+    type: string
+  status:
+    type: integer
+    format: uint32
+  response_body_base64:
+    type: string
+  enf_type:
+    type: string
+    enum:
+      - REDIRECT_302
+      - CUSTOM_RESPONSE
+      - DROP_REQUEST
+      - ALERT
+  response_headers:
+    type: array
+    items:
+      $ref: ./ResponseHeader.yaml

@@ -1,0 +1,47 @@
+title: Scope
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  recaptcha_action_name:
+    type: string
+  recaptcha_secret_key:
+    type: string
+  recaptcha_site_key:
+    type: string
+  host:
+    $ref: ./Operation.yaml
+  path:
+    $ref: ./Operation.yaml
+  acl_audit_id:
+    type: string
+  acl_audit_action:
+    $ref: ./WafAuditAction.yaml
+  acl_prod_id:
+    type: string
+  acl_prod_action:
+    $ref: ./WafProdAction.yaml
+  rules_audit_id:
+    type: string
+  rules_audit_action:
+    $ref: ./WafAuditAction.yaml
+  rules_prod_id:
+    type: string
+  rules_prod_action:
+    $ref: ./WafProdAction.yaml
+  profile_audit_id:
+    type: string
+  profile_audit_action:
+    $ref: ./WafAuditAction.yaml
+  profile_prod_id:
+    type: string
+  profile_prod_action:
+    $ref: ./WafProdAction.yaml
+  bot_manager_config_id:
+    type: string
+  limits:
+    type: array
+    items:
+      $ref: ./ScopeLimit.yaml

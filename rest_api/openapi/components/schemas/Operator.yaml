@@ -1,0 +1,22 @@
+title: Operator Object
+type: object
+properties:
+  type:
+    type: string
+    enum:
+      - RX
+      - STREQ
+      - EQ
+      - CONTAINS
+      - BEGINSWITH
+      - ENDSWITH
+      - IPMATCH
+  value:
+    type: string
+  values:
+    description: Max 20 entries.
+    type: string
+  is_negated:
+    type: boolean
+required:
+  - type

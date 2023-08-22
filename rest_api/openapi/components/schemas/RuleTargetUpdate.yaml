@@ -1,0 +1,13 @@
+title: Rule Target Update
+type: object
+properties:
+  target:
+    type: string
+  target_match:
+    type: string
+  rule_id:
+    type: string
+  is_regex:
+    type: boolean
+  is_negated:
+    type: boolean

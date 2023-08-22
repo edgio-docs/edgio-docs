@@ -1,0 +1,7 @@
+title: Security Rule
+type: object
+properties:
+  sec_rule:
+    $ref: ./SecRuleObj.yaml
+required:
+  - sec_rule

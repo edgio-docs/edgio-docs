@@ -1,0 +1,5 @@
+title: version response
+type: object
+properties:
+  version:
+    type: integer

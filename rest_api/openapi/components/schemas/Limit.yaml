@@ -1,0 +1,43 @@
+title: Limit
+type: object
+properties:
+  version:
+    type: integer
+    format: uint32
+  id:
+    type: string
+  name:
+    type: string
+  team_id:
+    type: string
+  last_modified_date:
+    type: string
+  last_modified_by:
+    type: string
+  disabled:
+    type: boolean
+  duration_sec:
+    description: >-
+      Number of seconds of the rolling window that tracks the number of requests
+      eligible for rate limiting.
+    type: integer
+    format: uint32
+    enum:
+      - 1
+      - 5
+      - 10
+      - 30
+      - 60
+      - 120
+      - 300
+  num:
+    type: integer
+    format: uint32
+  keys:
+    type: array
+    items:
+      $ref: ./LimitKeyType.yaml
+  condition_groups:
+    type: array
+    items:
+      $ref: ./ConditionGroup.yaml

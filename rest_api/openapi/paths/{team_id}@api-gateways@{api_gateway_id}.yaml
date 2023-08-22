@@ -1,0 +1,74 @@
+parameters:
+  - $ref: ../components/parameters/team_id.yaml
+  - $ref: ../components/parameters/api_gateway_id.yaml
+get:
+  operationId: get-api-gateway-rule
+  tags:
+    - API Gateways
+  summary: GET API Gateway Rule Object
+  description: Get a API Gateway object from a API Gateway id.
+  responses:
+    '200':
+      description: Successful Response
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ApiGateway.yaml
+    '404':
+      description: API Gateway not found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+put:
+  operationId: update-api-gateway-rule
+  tags:
+    - API Gateways
+  summary: PUT API Gateway Object
+  description: Modify a API Gateway object identified by id.
+  requestBody:
+    $ref: ../components/requestBodies/APIGateway.yaml
+  responses:
+    '200':
+      description: API Gateway successfully updated
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '404':
+      description: API Gateway not found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+delete:
+  operationId: delete-api-gateway-rule
+  tags:
+    - API Gateways
+  summary: DELETE API Gateway Object
+  description: Delete a API Gateway object identified by id.
+  responses:
+    '200':
+      description: API Gateway successfully deleted
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '404':
+      description: API Gateway not found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

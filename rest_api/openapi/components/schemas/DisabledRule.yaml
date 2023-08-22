@@ -1,0 +1,7 @@
+title: Disabled Rule
+type: object
+properties:
+  policy_id:
+    type: string
+  rule_id:
+    type: string

@@ -1,0 +1,9 @@
+title: Match
+type: object
+properties:
+  value:
+    type: string
+  is_negated:
+    type: boolean
+  is_regex:
+    type: boolean

@@ -1,0 +1,7 @@
+type: string
+enum:
+  - FILE_EXT
+  - REMOTE_ADDR
+  - REQUEST_HEADERS
+  - REQUEST_METHOD
+  - REQUEST_URI

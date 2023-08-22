@@ -1,0 +1,13 @@
+title: Object Short
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  last_modified_date:
+    type: string
+required:
+  - id
+  - name
+  - last_modified_date

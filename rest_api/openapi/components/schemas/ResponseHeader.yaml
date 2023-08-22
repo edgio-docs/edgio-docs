@@ -1,0 +1,4 @@
+title: Response Header
+type: object
+additionalProperties:
+  type: string

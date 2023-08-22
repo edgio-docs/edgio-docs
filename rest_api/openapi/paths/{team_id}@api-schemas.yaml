@@ -1,0 +1,49 @@
+get:
+  operationId: get-api-schemas
+  tags:
+    - API Schemas
+  summary: GET API Schemas
+  description: List all API Schemas for a given team.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  responses:
+    '200':
+      description: A list of API Schema id's and names for the team
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ObjShort.yaml
+          examples:
+            response:
+              value:
+                - id: e3mpHQY5
+                  name: sample_api_schema_config
+    '404':
+      description: team not found
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+post:
+  operationId: create-api-schema
+  tags:
+    - API Schemas
+  summary: POST API Schema
+  description: Create a new API Schema for a given team.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/APISchema.yaml
+  responses:
+    '200':
+      description: API Schema created successfully
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

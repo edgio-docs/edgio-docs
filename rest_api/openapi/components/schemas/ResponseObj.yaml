@@ -1,0 +1,9 @@
+title: Response Object
+type: object
+properties:
+  id:
+    type: string
+  status:
+    type: string
+  success:
+    type: boolean

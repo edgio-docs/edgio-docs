@@ -1,0 +1,49 @@
+get:
+  operationId: get-acl-rules
+  tags:
+    - Access Control List (ACL)
+  summary: GET ACLs
+  description: List all ACLs for a given team.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  responses:
+    '200':
+      description: A list of ACL id's and names for the team
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ObjShort.yaml
+          examples:
+            response:
+              value:
+                - id: e3mpHQY5
+                  name: sample_acl_config
+    '404':
+      description: team not found
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+post:
+  operationId: create-acl-rule
+  tags:
+    - Access Control List (ACL)
+  summary: POST ACL
+  description: Create a new ACL for a given team.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/Acl.yaml
+  responses:
+    '200':
+      description: ACL created successfully
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Acl.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

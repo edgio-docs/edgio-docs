@@ -1,0 +1,6 @@
+name: bot_manager_id
+in: path
+required: true
+description: The Bot Manager id
+schema:
+  type: string

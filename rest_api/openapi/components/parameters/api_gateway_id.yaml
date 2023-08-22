@@ -1,0 +1,6 @@
+name: api_gateway_id
+in: path
+required: true
+description: The APi Gateway id
+schema:
+  type: string

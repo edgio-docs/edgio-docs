@@ -1,0 +1,15 @@
+title: API Rule Object
+type: object
+properties:
+  name:
+    type: string
+  id:
+    type: string
+  methods:
+    type: array
+    items:
+      type: string
+  path:
+    $ref: ./Operator.yaml
+  schema_id:
+    type: string

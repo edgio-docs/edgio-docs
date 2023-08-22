@@ -1,0 +1,6 @@
+name: profile_id
+in: path
+required: true
+description: The Profile id
+schema:
+  type: string

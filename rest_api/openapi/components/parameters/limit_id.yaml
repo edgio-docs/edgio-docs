@@ -1,0 +1,6 @@
+name: limit_id
+in: path
+required: true
+description: The Limit id
+schema:
+  type: string

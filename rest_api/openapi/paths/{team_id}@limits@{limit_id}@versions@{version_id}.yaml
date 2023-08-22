@@ -1,0 +1,19 @@
+parameters:
+  - $ref: ../components/parameters/team_id.yaml
+  - $ref: ../components/parameters/limit_id.yaml
+  - $ref: ../components/parameters/version_id.yaml
+get:
+  operationId: get-limit-version
+  tags:
+    - Rate Rules (Limits)
+  summary: GET specific version of limit object identified by version id
+  description: Get get specific version of limit object.
+  responses:
+    '200':
+      description: Version for that limit object.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/version_long.yaml
+    '404':
+      description: version not found

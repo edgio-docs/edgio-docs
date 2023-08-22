@@ -1,0 +1,18 @@
+title: Custom Response Action
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  enf_type:
+    type: string
+    enum:
+      - CUSTOM_RESPONSE
+  response_body_base64:
+    type: string
+  status:
+    type: integer
+    format: uint32
+  response_headers:
+    $ref: ./ResponseHeader.yaml

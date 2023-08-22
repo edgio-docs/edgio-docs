@@ -1,0 +1,15 @@
+get:
+  operationId: get-known-companies
+  tags:
+    - Known Bots
+  summary: GET Known Company Bots
+  description: GET list of known bots belonging to companies
+  responses:
+    '200':
+      description: List of company bots
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: string

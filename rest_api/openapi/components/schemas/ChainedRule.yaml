@@ -1,0 +1,11 @@
+title: Chained Rule
+type: object
+properties:
+  variable:
+    type: array
+    items:
+      $ref: ./Variable.yaml
+  operator:
+    $ref: ./Operator.yaml
+  action:
+    $ref: ./RulesAction.yaml

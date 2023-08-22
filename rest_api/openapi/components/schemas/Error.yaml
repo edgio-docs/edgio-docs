@@ -1,0 +1,12 @@
+properties:
+  success:
+    type: boolean
+  errors:
+    type: array
+    items:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer

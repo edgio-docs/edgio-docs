@@ -1,0 +1,50 @@
+title: ACL
+type: object
+properties:
+  version:
+    type: string
+  id:
+    type: string
+  name:
+    type: string
+  team_id:
+    type: string
+  last_modified_date:
+    type: string
+  last_modified_by:
+    type: string
+  country:
+    $ref: ./AclStrings.yaml
+  ip:
+    $ref: ./AclStrings.yaml
+  referer:
+    $ref: ./AclStrings.yaml
+  url:
+    $ref: ./AclStrings.yaml
+  cookie:
+    $ref: ./AclStrings.yaml
+  user_agent:
+    $ref: ./AclStrings.yaml
+  asn:
+    $ref: ./AclAsns.yaml
+  allowed_http_methods:
+    type: array
+    items:
+      type: string
+  allowed_request_content_types:
+    type: array
+    items:
+      type: string
+  disallowed_extensions:
+    type: array
+    items:
+      type: string
+  disallowed_headers:
+    type: array
+    items:
+      type: string
+  max_file_size:
+    type: integer
+    format: uint64
+  response_header_name:
+    type: string

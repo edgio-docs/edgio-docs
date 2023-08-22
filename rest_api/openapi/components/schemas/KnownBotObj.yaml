@@ -1,0 +1,18 @@
+title: Known Bot Object
+type: object
+properties:
+  action_type:
+    type: string
+    enum:
+      - ALERT
+      - BLOCK_REQUEST
+      - CUSTOM_RESPONSE
+      - BROWSER_CHALLENGE
+      - REDIRECT_302
+      - RECAPTCHA
+  bot_token:
+    description: must be one of available bot tokens
+    type: string
+required:
+  - action_type
+  - bot_token

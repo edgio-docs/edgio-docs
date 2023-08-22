@@ -1,0 +1,7 @@
+title: ScopeLimit
+type: object
+properties:
+  id:
+    type: string
+  action:
+    $ref: ./LimitsAction.yaml

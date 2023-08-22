@@ -1,0 +1,18 @@
+title: ACL ASNs
+type: object
+properties:
+  accesslist:
+    type: array
+    items:
+      type: integer
+      format: uint32
+  blacklist:
+    type: array
+    items:
+      type: integer
+      format: uint32
+  whitelist:
+    type: array
+    items:
+      type: integer
+      format: uint32

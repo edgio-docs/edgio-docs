@@ -1,0 +1,12 @@
+title: ConditionGroup
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  conditions:
+    description: Max 5 entries.
+    type: array
+    items:
+      $ref: ./Condition.yaml

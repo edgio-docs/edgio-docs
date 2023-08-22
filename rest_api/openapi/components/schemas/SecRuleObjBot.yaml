@@ -1,0 +1,25 @@
+title: Sec Rule Object
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  variable:
+    description: Max 20 entries.
+    type: array
+    items:
+      $ref: ./VariableBot.yaml
+  operator:
+    $ref: ./OperatorBot.yaml
+  action:
+    $ref: ./RulesActionBot.yaml
+  chained_rule:
+    description: Max 5 entries.
+    type: array
+    items:
+      $ref: ./ChainedRuleBot.yaml
+required:
+  - variable
+  - action
+  - operator

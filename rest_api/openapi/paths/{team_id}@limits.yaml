@@ -1,0 +1,51 @@
+get:
+  operationId: get-rate-rules
+  tags:
+    - Rate Rules (Limits)
+  summary: GET Rate Rules
+  description: List all Limits for a given team.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  responses:
+    '200':
+      description: A list of Limit id's and names for the team
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ObjShort.yaml
+          examples:
+            response:
+              value:
+                - id: e3mpHQY5
+                  name: sample_limit_config
+    '404':
+      description: team not found
+    '500':
+      $ref: ../components/responses/error_500.yaml
+post:
+  operationId: create-rate-rule
+  tags:
+    - Rate Rules (Limits)
+  summary: POST Rate Rule
+  description: Create a new Limit for a given team.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/Limit.yaml
+  responses:
+    '200':
+      description: Limit created successfully
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Limit.yaml
+    '400':
+      $ref: ../components/responses/error_400.yaml
+    '403':
+      $ref: ../components/responses/error_403.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

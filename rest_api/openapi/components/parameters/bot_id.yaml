@@ -1,0 +1,6 @@
+name: bot_id
+in: path
+required: true
+description: The Bot id
+schema:
+  type: string

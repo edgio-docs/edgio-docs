@@ -1,0 +1,6 @@
+name: rule_id
+in: path
+required: true
+description: The Rule id
+schema:
+  type: string

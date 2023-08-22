@@ -1,0 +1,9 @@
+title: Reputation DB Include
+type: object
+properties:
+  include:
+    description: >-
+      Optional object to allow Bot rule to issue challenge to IP found in Edgio
+      Reputation Database
+    enum:
+      - r3010_ec_bot_challenge_reputation.conf.json

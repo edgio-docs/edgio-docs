@@ -1,0 +1,11 @@
+title: Block Action
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  enf_type:
+    type: string
+    enum:
+      - BLOCK_REQUEST

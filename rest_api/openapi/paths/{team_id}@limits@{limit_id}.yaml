@@ -1,0 +1,56 @@
+parameters:
+  - $ref: ../components/parameters/team_id.yaml
+  - $ref: ../components/parameters/limit_id.yaml
+get:
+  operationId: get-rate-rule
+  tags:
+    - Rate Rules (Limits)
+  summary: GET Rate Rule Object
+  description: Get a Limit object from an Limit id.
+  responses:
+    '200':
+      description: Successful Response
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Limit.yaml
+    '404':
+      description: Limit not found
+    '500':
+      $ref: ../components/responses/error_500.yaml
+put:
+  operationId: update-rate-rule
+  tags:
+    - Rate Rules (Limits)
+  summary: PUT Rate Rule Object
+  description: Modify a Limit object identified by id.
+  requestBody:
+    $ref: ../components/requestBodies/Limit.yaml
+  responses:
+    '200':
+      description: Limit successfully updated
+    '400':
+      $ref: ../components/responses/error_400.yaml
+    '404':
+      description: Limit not found
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+delete:
+  operationId: delete-rate-rule
+  tags:
+    - Rate Rules (Limits)
+  summary: DELETE Rate Rule Object
+  description: Delete a Limit object identified by id.
+  responses:
+    '200':
+      description: Limit successfully deleted
+    '400':
+      $ref: ../components/responses/error_400.yaml
+    '404':
+      description: Limit not found
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

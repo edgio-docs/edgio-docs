@@ -1,0 +1,22 @@
+title: Recaptcha Action
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  enf_type:
+    type: string
+    enum:
+      - RECAPTCHA
+  valid_for_sec:
+    type: integer
+    format: uint32
+  status:
+    type: integer
+    format: uint32
+  failed_action_type:
+    type: string
+    enum:
+      - ALERT
+      - BLOCK_REQUEST

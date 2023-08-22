@@ -1,0 +1,6 @@
+name: scope_id
+in: path
+required: true
+description: The scope id
+schema:
+  type: string

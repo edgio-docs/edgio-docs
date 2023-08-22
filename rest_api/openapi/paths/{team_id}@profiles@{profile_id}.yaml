@@ -1,0 +1,54 @@
+parameters:
+  - $ref: ../components/parameters/team_id.yaml
+  - $ref: ../components/parameters/profile_id.yaml
+get:
+  operationId: get-managed-rule
+  tags:
+    - Managed Rules (Profiles)
+  summary: GET Profile Object
+  description: Get a Profile object from an Profile id.
+  responses:
+    '200':
+      description: Successful Response
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Profile.yaml
+    '404':
+      description: Profile not found
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+put:
+  operationId: update-managed-rule
+  tags:
+    - Managed Rules (Profiles)
+  summary: PUT Profile Object
+  description: Modify a Profile object identified by id.
+  requestBody:
+    $ref: ../components/requestBodies/Profile.yaml
+  responses:
+    '200':
+      description: Profile successfully updated
+    '404':
+      description: Profile not found
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+delete:
+  operationId: delete-managed-rule
+  tags:
+    - Managed Rules (Profiles)
+  summary: DELETE Profile Object
+  description: Delete a Profile object identified by id.
+  responses:
+    '200':
+      description: Profile successfully deleted
+    '404':
+      description: Profile not found
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

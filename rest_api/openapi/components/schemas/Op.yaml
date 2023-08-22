@@ -1,0 +1,20 @@
+type: object
+properties:
+  type:
+    $ref: ./OpType.yaml
+  value:
+    description: 'Required for RX type, not allowed for IPMATCH or EM type.'
+    type: string
+  is_regex:
+    type: boolean
+  values:
+    description: >-
+      Required for IPMATCH or EM type, not allowed for RX type.  Max 200 entries
+      for IPMATCH, max 100 entries for EM.
+    type: array
+    items:
+      type: string
+  is_negated:
+    type: boolean
+  is_case_insensitive:
+    type: boolean

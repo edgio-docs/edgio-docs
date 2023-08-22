@@ -1,0 +1,52 @@
+get:
+  operationId: get-managed-rules
+  tags:
+    - Managed Rules (Profiles)
+  summary: GET Profiles
+  description: List all Profiles for a given team.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  responses:
+    '200':
+      description: A list of Profile id's and names for the team
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ProfileShort.yaml
+          examples:
+            response:
+              value:
+                - id: e3mpHQY5
+                  name: sample_profile_config
+                  created_date: '06/10/2020 05:54:31 PM'
+                  ruleset_version: '2019-11-01'
+                  ruleset_id: ECRS
+    '404':
+      description: team not found
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+post:
+  operationId: create-managed-rule
+  tags:
+    - Managed Rules (Profiles)
+  summary: POST Profile
+  description: Create a new Profile for a given team.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/Profile.yaml
+  responses:
+    '200':
+      description: Profile created successfully
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Profile.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

@@ -1,0 +1,74 @@
+parameters:
+  - $ref: ../components/parameters/team_id.yaml
+  - $ref: ../components/parameters/api_schema_id.yaml
+get:
+  operationId: get-api-schema
+  tags:
+    - API Schemas
+  summary: GET API Schema Object
+  description: Get an API Schema object from a API Schema id.
+  responses:
+    '200':
+      description: Successful Response
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ApiSchema.yaml
+    '404':
+      description: API Schema not found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+put:
+  operationId: update-api-schema
+  tags:
+    - API Schemas
+  summary: PUT API Schema Object
+  description: Modify an API Schema object identified by id.
+  requestBody:
+    $ref: ../components/requestBodies/APISchema.yaml
+  responses:
+    '200':
+      description: API Schema successfully updated
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '404':
+      description: API Schema not found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+delete:
+  operationId: delete-api-schema
+  tags:
+    - API Schemas
+  summary: DELETE API Schema Object
+  description: Delete an API Schema object identified by id.
+  responses:
+    '200':
+      description: API Schema successfully deleted
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '404':
+      description: API Schema not found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

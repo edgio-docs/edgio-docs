@@ -1,0 +1,22 @@
+title: Operation
+type: object
+properties:
+  value:
+    description: 'Required for RX or GLOB type, not allowed for EM type'
+    type: string
+  values:
+    description: 'Required for EM type, not allowed for RX or GLOB type'
+    type: array
+    items:
+      type: string
+  is_negated:
+    type: boolean
+  is_case_insensitive:
+    type: boolean
+  type:
+    description: The type of match to use on value/values
+    type: string
+    enum:
+      - GLOB
+      - EM
+      - RX

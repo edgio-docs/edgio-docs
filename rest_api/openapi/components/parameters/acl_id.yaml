@@ -1,0 +1,6 @@
+name: acl_id
+in: path
+required: true
+description: The ACL id
+schema:
+  type: string

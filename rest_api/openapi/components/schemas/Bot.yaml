@@ -1,0 +1,20 @@
+title: Bot
+type: object
+properties:
+  id:
+    type: string
+  directive:
+    description: Maximum of 10 directives allowed
+    type: array
+    items:
+      anyOf:
+        - $ref: ./RepDb.yaml
+        - $ref: ./SecRuleBot.yaml
+  team_id:
+    type: string
+  last_modified_date:
+    type: string
+  name:
+    type: string
+required:
+  - directive

@@ -1,0 +1,25 @@
+title: Waf Production Action
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  url:
+    type: string
+  status:
+    type: integer
+    format: uint32
+  response_body_base64:
+    type: string
+  enf_type:
+    type: string
+    enum:
+      - REDIRECT_302
+      - CUSTOM_RESPONSE
+      - BLOCK_REQUEST
+      - ALERT
+  response_headers:
+    type: array
+    items:
+      $ref: ./ResponseHeader.yaml

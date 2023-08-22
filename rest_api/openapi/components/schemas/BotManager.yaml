@@ -1,0 +1,47 @@
+title: Bot Manager
+type: object
+properties:
+  actions:
+    $ref: ./ActionObj.yaml
+  bots_prod_id:
+    description: Bot Rule Id
+    type: string
+  exception_cookie:
+    type: array
+    items:
+      type: string
+  exception_ja3:
+    type: array
+    items:
+      type: string
+  exception_url:
+    type: array
+    items:
+      type: string
+  exception_user_agent:
+    type: array
+    items:
+      type: string
+  inspect_known_bots:
+    type: boolean
+  known_bots:
+    type: array
+    items:
+      $ref: ./KnownBotObj.yaml
+  team_id:
+    type: string
+  last_modified_date:
+    type: string
+  last_modified_by:
+    type: string
+  name:
+    type: string
+  spoof_bot_action_type:
+    type: string
+    enum:
+      - ALERT
+      - BLOCK_REQUEST
+      - CUSTOM_RESPONSE
+      - BROWSER_CHALLENGE
+      - REDIRECT_302
+      - RECAPTCHA

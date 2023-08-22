@@ -1,0 +1,22 @@
+title: Profile Short
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  created_date:
+    type: string
+  last_modified_date:
+    type: string
+  ruleset_id:
+    type: string
+  ruleset_version:
+    type: string
+required:
+  - id
+  - name
+  - created_date
+  - last_modified_date
+  - ruleset_id
+  - ruleset_version

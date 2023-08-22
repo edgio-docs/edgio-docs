@@ -1,0 +1,6 @@
+name: api_schema_id
+in: path
+required: true
+description: The API Schema id
+schema:
+  type: string

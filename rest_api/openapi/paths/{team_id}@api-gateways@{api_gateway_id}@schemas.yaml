@@ -1,0 +1,28 @@
+parameters:
+  - $ref: ../components/parameters/team_id.yaml
+  - $ref: ../components/parameters/api_gateway_id.yaml
+get:
+  operationId: get-api-gateway-rule-schemas
+  tags:
+    - API Gateways
+  summary: GET API Schema objects attached to API Gateway Rule
+  description: Get an API Schema object from a API Gateway id.
+  responses:
+    '200':
+      description: Successful Response
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ApiSchema.yaml
+    '404':
+      description: API Gateway not found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

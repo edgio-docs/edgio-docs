@@ -1,0 +1,49 @@
+title: General Settings
+type: object
+properties:
+  arg_length:
+    type: integer
+    format: uint32
+  arg_name_length:
+    type: integer
+    format: uint32
+  max_num_args:
+    type: integer
+    format: uint32
+  total_arg_length:
+    type: integer
+    format: uint32
+  combined_file_sizes:
+    type: integer
+    format: uint64
+  max_file_size:
+    type: integer
+    format: uint64
+  response_header_name:
+    type: string
+  validate_utf8_encoding:
+    type: boolean
+  xml_parser:
+    type: boolean
+  process_request_body:
+    type: boolean
+  json_parser:
+    type: boolean
+  paranoia_level:
+    type: integer
+    format: uint32
+  anomaly_threshold:
+    type: integer
+    format: uint32
+  ignore_cookie:
+    type: array
+    items:
+      type: string
+  ignore_header:
+    type: array
+    items:
+      type: string
+  ignore_query_args:
+    type: array
+    items:
+      type: string

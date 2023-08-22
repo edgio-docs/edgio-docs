@@ -1,0 +1,54 @@
+parameters:
+  - $ref: ../components/parameters/team_id.yaml
+  - $ref: ../components/parameters/rule_id.yaml
+get:
+  operationId: get-custom-rule
+  tags:
+    - Custom Rules
+  summary: GET Custom Rule Object
+  description: Get a Rule object from a Rule id.
+  responses:
+    '200':
+      description: Successful Response
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Rule.yaml
+    '404':
+      description: Rule not found
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+put:
+  operationId: update-custom-rule
+  tags:
+    - Custom Rules
+  summary: PUT Custom Rule Object
+  description: Modify a Rule object identified by id.
+  requestBody:
+    $ref: ../components/requestBodies/Rule.yaml
+  responses:
+    '200':
+      description: Rule successfully updated
+    '404':
+      description: Rule not found
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+delete:
+  operationId: delete-custom-rule
+  tags:
+    - Custom Rules
+  summary: DELETE Custom Rule Object
+  description: Delete a Rule object identified by id.
+  responses:
+    '200':
+      description: Rule successfully deleted
+    '404':
+      description: Rule not found
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

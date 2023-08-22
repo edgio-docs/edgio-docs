@@ -1,0 +1,7 @@
+type: object
+properties:
+  type:
+    $ref: ./TargetType.yaml
+  value:
+    description: Required for REQUEST_HEADERS type
+    type: string

@@ -1,0 +1,27 @@
+parameters:
+  - $ref: ../components/parameters/team_id.yaml
+  - $ref: ../components/parameters/bot_id.yaml
+get:
+  operationId: get-bot-versions
+  tags:
+    - Bot Rules
+  summary: GET versions of a bot rule object
+  description: Get existing versions of bot rule id.
+  responses:
+    '200':
+      description: A list of versions for that bot rule id.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              '@id':
+                type: string
+              '@type':
+                type: string
+              items:
+                type: array
+                items:
+                  $ref: ../components/schemas/version_short.yaml
+    '404':
+      description: bot rule not found

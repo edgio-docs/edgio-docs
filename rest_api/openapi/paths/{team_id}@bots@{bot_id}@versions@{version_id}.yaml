@@ -1,0 +1,19 @@
+parameters:
+  - $ref: ../components/parameters/team_id.yaml
+  - $ref: ../components/parameters/bot_id.yaml
+  - $ref: ../components/parameters/version_id.yaml
+get:
+  operationId: get-bot-rule-version
+  tags:
+    - Bot Rules
+  summary: GET specific version of bot rule object identified by version id
+  description: Get get specific version of bot rule object.
+  responses:
+    '200':
+      description: Version for that bot rule object.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/version_long.yaml
+    '404':
+      description: version not found

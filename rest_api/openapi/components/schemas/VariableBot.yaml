@@ -1,0 +1,22 @@
+title: Variable
+type: object
+properties:
+  type:
+    type: string
+    enum:
+      - REQUEST_HEADERS
+      - REQUEST_URI
+      - REQUEST_METHOD
+      - REQUEST_COOKIES
+      - QUERY_STRING
+      - GEO
+      - REMOTE_ADDR
+  match:
+    description: Max 20 entries.
+    type: array
+    items:
+      $ref: ./MatchBot.yaml
+  is_count:
+    type: boolean
+required:
+  - type

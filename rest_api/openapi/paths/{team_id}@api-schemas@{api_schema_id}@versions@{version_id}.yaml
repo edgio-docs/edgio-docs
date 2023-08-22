@@ -1,0 +1,19 @@
+parameters:
+  - $ref: ../components/parameters/team_id.yaml
+  - $ref: ../components/parameters/api_schema_id.yaml
+  - $ref: ../components/parameters/version_id.yaml
+get:
+  operationId: get-api-schema-version
+  tags:
+    - API Schemas
+  summary: GET specific version of API schema object identified by version id
+  description: Get get specific version of API Schema object.
+  responses:
+    '200':
+      description: Version for that api schema object.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/version_long.yaml
+    '404':
+      description: version not found

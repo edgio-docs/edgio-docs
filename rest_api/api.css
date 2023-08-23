@@ -134,7 +134,7 @@ data-styled.g42[id="sc-eBMEME"]{content:"cPThXn,"}/*!sc*/
 .dJWFsO a{-webkit-text-decoration:auto;text-decoration:auto;color:#32329f;}/*!sc*/
 .dJWFsO a:visited{color:#32329f;}/*!sc*/
 .dJWFsO a:hover{color:#6868cf;-webkit-text-decoration:auto;text-decoration:auto;}/*!sc*/
-.dwkgVY{font-family:Roboto,sans-serif;font-weight:400;line-height:1.5em;}/*!sc*/
+.dwkgVY{font-family:Roboto,sans-serif;font-weight:400;line-height:1.5em;font-size:15px;}/*!sc*/
 .dwkgVY p:last-child{margin-bottom:0;}/*!sc*/
 .dwkgVY p:first-child{margin-top:0;}/*!sc*/
 .dwkgVY p:last-child{margin-bottom:0;}/*!sc*/
@@ -362,7 +362,7 @@ data-styled.g131[id="sc-eBHhsj"]{content:"dhHelK,"}/*!sc*/
 .eSbAVe svg{color:#0065FB;}/*!sc*/
 @media print{.eSbAVe{display:none;}}/*!sc*/
 data-styled.g132[id="sc-iXzfSG"]{content:"eSbAVe,"}/*!sc*/
-.eJNCiX{font-family:Roboto,sans-serif;font-size:14px;font-weight:400;line-height:1.5em;color:#333333;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;text-align:left;-webkit-font-smoothing:antialiased;font-smoothing:antialiased;text-rendering:optimizeSpeed !important;tap-highlight-color:rgba(0,0,0,0);-webkit-text-size-adjust:100%;text-size-adjust:100%;}/*!sc*/
+.eJNCiX{font-family:Roboto,sans-serif;font-size:16px;font-weight:400;line-height:1.5em;color:#333333;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;text-align:left;-webkit-font-smoothing:antialiased;font-smoothing:antialiased;text-rendering:optimizeSpeed !important;tap-highlight-color:rgba(0,0,0,0);-webkit-text-size-adjust:100%;text-size-adjust:100%;}/*!sc*/
 .eJNCiX *{box-sizing:border-box;-webkit-tap-highlight-color:rgba(255,255,255,0);}/*!sc*/
 data-styled.g133[id="sc-lnPyaJ"]{content:"eJNCiX,"}/*!sc*/
 .iEaKWZ{z-index:1;position:relative;overflow:hidden;width:calc(100% - 260px);contain:layout;}/*!sc*/
@@ -378,3 +378,10 @@ data-styled.g137[id="sc-kqGoIF"]{content:"eLSrIr,"}/*!sc*/
 .eajCCh{position:absolute;left:22px;height:1.8em;width:0.9em;}/*!sc*/
 .eajCCh path{fill:#333333;}/*!sc*/
 data-styled.g138[id="sc-dxcDKg"]{content:"eajCCh,"}/*!sc*/
+.property-name,
+.wfptf,
+.bzckyT,
+.eQaxld,
+.search-input,
+.dwkgVY
+{font-family:Roboto,sans-serif;font-size:15px;}

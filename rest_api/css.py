@@ -26,8 +26,12 @@ if start_head != -1 and end_head != -1:
     link_tag = '<link rel="stylesheet" href="api.css">'
     cleaned_head_with_link = cleaned_head + '\n' + link_tag
 
+    # Update the <title> tag content
+    new_title = 'Edgio API Reference'
+    cleaned_head_with_title = cleaned_head_with_link.replace('API Reference | ReDoc', new_title)
+
     # Build the cleaned HTML
-    cleaned_html = html_content[:start_head + len('<head>')] + cleaned_head_with_link + html_content[end_head:]
+    cleaned_html = html_content[:start_head + len('<head>')] + cleaned_head_with_title + html_content[end_head:]
 
     # Save the modified HTML back to the original file
     with open(file_path, 'w') as file:

@@ -14,7 +14,9 @@ Key information about our REST API services:
     
     Authenticate and authorize your requests by passing the `Authorization` header with the following value:
        
-    `Authorization: Bearer <OAUTH 2.0 TOKEN>`
+    ```
+    Authorization: Bearer <OAUTH 2.0 TOKEN>
+    ```
     
     [Learn more about authorization.](https://docs.edg.io/guides/develop/rest_api/authentication)
 
@@ -55,14 +57,20 @@ A scope authorizes an API client to perform specific actions (e.g., create and r
 
 Each request to our REST API service must be authorized through an access token. Access tokens provide temporary authorization (e.g., 5 minutes) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
 
-**Request syntax:** `POST https://{{ IDENTITY_TOKEN_DOMAIN }}/connect/token`
+**Access token request:** 
+
+```
+POST https://id.edgio.app/connect/token
+```
 
 Requests for access tokens requires:
 
 -   A `Content-Type` header set to `application/x-www-form-urlencoded`.
 -   A request body set to:
 
-    `client_id=<CLIENT ID>&client_secret=<SECRET>&grant_type=client_credentials&scope=<SCOPES>`
+    ```
+    client_id=<CLIENT ID>&client_secret=<SECRET>&grant_type=client_credentials&scope=<SCOPES>
+    ```
 
     -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your REST API client.
     -   `<SECRET>`**:** Represents the secret assigned to your REST API client.
@@ -71,10 +79,10 @@ Requests for access tokens requires:
 **Sample request:**
 
 ``` curl
-POST https://{{ IDENTITY_TOKEN_DOMAIN }}/connect/token HTTP/1.1
+POST https://id.edgio.app/connect/token HTTP/1.1
 Accept: application/json
 Content-Type: application/x-www-form-urlencoded
-Host: {{ IDENTITY_TOKEN_DOMAIN }}
+Host: id.edgio.app
 
 client_id=J23d...B2Cd&client_secret=Fdad...DF3v&grant_type=client_credentials&scope=app.waf
 ```
@@ -95,7 +103,7 @@ Content-Length: 830
 }
 ```
 
-## HTTP Method
+## HTTP Methods
 
 HTTP method is a critical component of a request to our REST API service as it determines the type of action being requested.
 
@@ -104,12 +112,8 @@ HTTP method is a critical component of a request to our REST API service as it d
 -   **POST:** Creates a resource (e.g., custom rule or managed rule configuration).
 -   **PUT:** Updates a resource (e.g., custom rule or managed rule configuration).
 
-<Callout type="info">
-
-  Our REST API service may return a `405 Method Not Allowed` response for requests submitted with an unsupported HTTP method.
+Our REST API service may return a `405 Method Not Allowed` response for requests submitted with an unsupported HTTP method.
   
-</Callout>
-
 ## Request URL
 
 Requests to services that leverage our API gateway follow this basic pattern:
@@ -121,7 +125,11 @@ Requests to services that leverage our API gateway follow this basic pattern:
 -   `<TEAM ID>`**:** Identifies your team by its system-defined ID.
 -   `<RESOURCE>`**:** Identifies the type of resource to which the action defined by the HTTP method will be applied.
 
-**Sample request:** `https://edgioapis.com/waf/0.9/12345678-1234-1234-1234-1234567890ab/profile`
+**Sample request:** 
+
+```
+https://edgioapis.com/waf/0.9/12345678-1234-1234-1234-1234567890ab/profile
+```
 
 ## Request Headers
 
@@ -136,7 +144,7 @@ Request headers provide information about your request to a REST API service. Th
 | Authorization  | Authorize requests through the `Authorization` request header. [Learn more about authorization.](/guides/develop/rest_api/authorization#authorizing-requests)                                                       |
 | Accept         | This header should indicate the format in which the response will be returned. The recommended value for this request header is: `application/json`.                                                                |
 | Content-Type   | This header should indicate the format of the request body. The recommended value for this request header is: `application/json`. <br />You may omit this header when an endpoint does not have request properties. |
-| Host           | This header, which is set by the user agent, indicates the host name corresponding to the requested endpoint (i.e., {{ API_DOMAIN }}.                                                                               |
+| Host           | This header, which is set by the user agent, indicates the host name corresponding to the requested endpoint (i.e., edgio.app).                                                                               |
 | Content-Length | This header, which is set by the user agent, indicates the number of bytes contained in the request body.                                                                                                           |
 
 ## Request Body

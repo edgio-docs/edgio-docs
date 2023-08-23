@@ -23,12 +23,15 @@ if start_head != -1 and end_head != -1:
     cleaned_head = remove_style_tags(head_content)
 
     # Insert the <link> tag into the <head> section
-    link_tag = '<link rel="stylesheet" href="api.css">'
+    link_tag = '<meta charset="utf-8" /><link rel="stylesheet" href="api.css">'
     cleaned_head_with_link = cleaned_head + '\n' + link_tag
+    
+    # Update JS reference
+    cleaned_head_with_js_ref = cleaned_head_with_link.replace('https://cdn.redoc.ly/redoc/v2.0.0/bundles/redoc.standalone.js', "redoc.standalone.js")
 
     # Update the <title> tag content
     new_title = 'Edgio API Reference'
-    cleaned_head_with_title = cleaned_head_with_link.replace('API Reference | ReDoc', new_title)
+    cleaned_head_with_title = cleaned_head_with_js_ref.replace('API Reference | ReDoc', new_title)
 
     # Build the cleaned HTML
     cleaned_html = (

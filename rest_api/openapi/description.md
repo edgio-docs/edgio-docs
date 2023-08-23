@@ -53,7 +53,7 @@ A scope authorizes an API client to perform specific actions (e.g., create and r
 
 [Learn more about scopes.](https://docs.edg.io/guides/develop/rest_api/authentication#scopes)
 
-## Generating Access Tokens 
+## Access Tokens 
 
 Each request to our REST API service must be authorized through an access token. Access tokens provide temporary authorization (e.g., 5 minutes) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
 

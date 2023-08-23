@@ -14,7 +14,7 @@ Learn basic information about our services:
        
     `Authorization: Bearer <OAUTH 2.0 TOKEN>`
     
-    Requests are authorized via OAuth 2.0.  [Learn more about authorization.](/develop/rest_api/authentication)
+    Requests are authorized via OAuth 2.0.  [Learn more about authorization.](#section/Authentication)
 
 -   **Request-Response (Accept and Content-Type):** JSON
     
@@ -41,7 +41,7 @@ Authentication requires passing a unique value (i.e., token). Generate a token g
     
 [Register your client application](#administering-api-clients) through the {{ IDENTITY_LINK }} to generate OAuth 2.0 credentials through which you may authorize requests submitted to our API gateway ({{ API_DOMAIN }}).
 
-### Quick Start {/*quick-start*/}
+### Quick Start
 
 Get started with our latest APIs by performing the following steps:
 
@@ -49,7 +49,7 @@ Get started with our latest APIs by performing the following steps:
 2. Use this client's ID and secret key to [generate a temporary access token](#generating-access-tokens).
 3. [Authorize your API requests](#authorizing-requests) using the temporary access token generated in the previous step.
 
-### OAuth 2.0 Authorization Flow {/*oauth20-authorization-flow*/}
+### OAuth 2.0 Authorization Flow
 
 REST API authorization is managed by a centralized identity management solution called Identity Service (IDS). IDS leverages OAuth 2.0, which complies with the specification defined within [RFC 6749](https://tools.ietf.org/html/rfc6749), to authorize requests to the API.
 
@@ -122,7 +122,9 @@ The above hierarchy allows you to grant broad or narrow permissions to your clie
     | app.bot_security  | Authorizes full access to Bot Manager.  |
     | app.api_security  | Authorizes full access to API Security.  |
 
-### Client Applications {/*client-applications*/}
+<a id="client-applications"></a>
+
+### Client Applications
 
 Register your client application before interacting with REST API services hosted on our API gateway. You must assign one or more scope(s) when registering an API client. Each scope identifies the set of actions that a client is authorized to perform. 
 

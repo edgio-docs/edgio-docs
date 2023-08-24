@@ -567,6 +567,12 @@ const items = {
       iconDark: <IconStencilDark />,
     },
     {
+      title: 'SvelteKit',
+      path: '/guides/sites_frameworks/getting_started/sveltekit',
+      icon: <IconSvelte />,
+      iconDark: <IconSvelte />,
+    },
+    {
       title: 'VitePress',
       path: '/guides/sites_frameworks/getting_started/vitepress',
       icon: <IconVitePress />,

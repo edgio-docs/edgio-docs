@@ -18,7 +18,7 @@ Key information about our REST API services:
     Authorization: Bearer <OAUTH 2.0 TOKEN>
     ```
     
-    [Learn more about authorization.](https://docs.edg.io/guides/develop/rest_api/authentication)
+    <a href="https://docs.edg.io/guides/develop/rest_api/authentication" target="_blank">Learn more about authorization.</a>    
 
 -   **Request-Response (Accept and Content-Type):** JSON
     
@@ -38,9 +38,9 @@ Key information about our REST API services:
 
 Get started with our latest APIs by performing the following steps:
 
-1. [Create an API client](https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients) for the desired application. Authorize this client by only assigning it the [scope(s)](https://docs.edg.io/guides/develop/rest_api/authentication#scopes) required by the endpoint(s) with which it will interact.
-2. Use this client's ID and secret key to [generate a temporary access token](https://docs.edg.io/guides/develop/rest_api/authentication#generating-access-tokens).
-3. [Authorize your API requests](https://docs.edg.io/guides/develop/rest_api/authentication#authorizing-requests) using the temporary access token generated in the previous step.
+1. <a href="https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients" target="_blank">Create an API client</a> for the desired application. Authorize this client by only assigning it the <a href="https://docs.edg.io/guides/develop/rest_api/authentication#scopes" target="_blank">scope(s)</a> required by the endpoint(s) with which it will interact.
+2. Use this client's ID and secret key to <a href="https://docs.edg.io/guides/develop/rest_api/authentication#generating-access-tokens" target="_blank">generate a temporary access token</a>.
+3. <a href="https://docs.edg.io/guides/develop/rest_api/authentication#authorizing-requests" target="_blank">Authorize your API requests</a> using the temporary access token generated in the previous step.
 
 ## Scopes
 
@@ -51,7 +51,7 @@ A scope authorizes an API client to perform specific actions (e.g., create and r
 | app.bot_security  | Authorizes full access to Bot Manager.  |
 | app.api_security  | Authorizes full access to API Security.  |
 
-[Learn more about scopes.](https://docs.edg.io/guides/develop/rest_api/authentication#scopes)
+<a href="https://docs.edg.io/guides/develop/rest_api/authentication#scopes" target="_blank">Learn more about scopes.</a>
 
 ## Access Tokens 
 
@@ -141,7 +141,7 @@ Request headers provide information about your request to a REST API service. Th
 
 | Request Header | Description                                                                                                                                                                                                         |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Authorization  | Authorize requests through the `Authorization` request header. [Learn more about authorization.](/guides/develop/rest_api/authorization#authorizing-requests)                                                       |
+| Authorization  | Authorize requests through the `Authorization` request header. <a href="https://docs.edg.io/guides/develop/rest_api/authorization#authorizing-requests" target="_blank">Learn more about authorization.</a>                                                       |
 | Accept         | This header should indicate the format in which the response will be returned. The recommended value for this request header is: `application/json`.                                                                |
 | Content-Type   | This header should indicate the format of the request body. The recommended value for this request header is: `application/json`. <br />You may omit this header when an endpoint does not have request properties. |
 | Host           | This header, which is set by the user agent, indicates the host name corresponding to the requested endpoint (i.e., edgio.app).                                                                               |

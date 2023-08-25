@@ -1,12 +1,16 @@
 properties:
   success:
     type: boolean
+    description: Returns `false`.
   errors:
     type: array
-    items:
+    description: Describes the error.
+    items:    
       type: object
       properties:
         message:
           type: string
+          description: A brief description of the error.
         code:
           type: integer
+          description: Error code.

@@ -1,5 +1,6 @@
 title: Operator Object
 type: object
+description: Identifies the set of API requests that will be screened by URL path.
 properties:
   type:
     type: string
@@ -11,12 +12,40 @@ properties:
       - BEGINSWITH
       - ENDSWITH
       - IPMATCH
+    description: |
+
+      Indicates how Edgio will interpret the comparison between the request’s path and the `value` property. Valid values are:
+      
+      -   **RX:** Indicates that the request's path must satisfy the regular expression defined in the `value` property.
+
+      -   **STREQ:** Indicates that the request's path must be an exact match to the `value` property.
+
+      -   **CONTAINS:** Indicates that the `value` property must contain the request's path.
+
+      -   **BEGINSWITH:** Indicates that the `value` property must start with the request's path.
+
+      -   **ENDSWITH:** Indicates that the `value` property must end with the request's path.
+
   value:
     type: string
+    description: | 
+    
+      Indicates a value that will be compared against the request’s path. Specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining this property.
+      
+      **Sample value:** `/marketing`
+
   values:
     description: Max 20 entries.
     type: string
   is_negated:
     type: boolean
+    description: |
+    
+      Determines whether this condition is satisfied when the request’s path matches the pattern defined in the `value` property. Valid values are:
+      
+      -   **True:** Does not match
+
+      -   **False:** Matches
+
 required:
   - type

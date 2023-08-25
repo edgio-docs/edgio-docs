@@ -5,21 +5,17 @@ get:
   operationId: get-api-schema
   tags:
     - API Schemas
-  summary: GET API Schema Object
-  description: Get an API Schema object from a API Schema id.
+  summary: Get API Schema
+  description: Retrieves an API schema. An API schema contains a JSON schema (draft 4) that may be used to screen API requests. 
   responses:
     '200':
-      description: Successful Response
+      description: OK. An API schema was retrieved.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/ApiSchema.yaml
     '404':
-      description: API Schema not found
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Error.yaml
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':
@@ -28,23 +24,24 @@ put:
   operationId: update-api-schema
   tags:
     - API Schemas
-  summary: PUT API Schema Object
-  description: Modify an API Schema object identified by id.
+  summary: Update API Schema
+  description: |
+
+    Updates an API schema. An API schema contains a JSON schema (draft 4) that may be used to screen API requests. 
+
+    [View key configuration information.](https://docs.edg.io/guides/security/api_security#api-schema)
+
   requestBody:
     $ref: ../components/requestBodies/APISchema.yaml
   responses:
     '200':
-      description: API Schema successfully updated
+      description: OK. An API schema was updated.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/ResponseObj.yaml
     '404':
-      description: API Schema not found
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Error.yaml
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':
@@ -53,21 +50,17 @@ delete:
   operationId: delete-api-schema
   tags:
     - API Schemas
-  summary: DELETE API Schema Object
-  description: Delete an API Schema object identified by id.
+  summary: Delete API Schema
+  description: Deletes an API schema.
   responses:
     '200':
-      description: API Schema successfully deleted
+      description: OK. An API Schema was deleted.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/ResponseObj.yaml
     '404':
-      description: API Schema not found
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Error.yaml
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':

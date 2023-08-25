@@ -5,11 +5,11 @@ get:
   operationId: get-api-gateway-rule-schemas
   tags:
     - API Gateways
-  summary: GET API Schema objects attached to API Gateway Rule
-  description: Get an API Schema object from a API Gateway id.
+  summary: Get API Security Ruleset's API Schemas
+  description: Retrieves a list of API schemas associated with an API Security ruleset. 
   responses:
     '200':
-      description: Successful Response
+      description: OK. A list of API schemas was retrieved.
       content:
         application/json:
           schema:
@@ -17,11 +17,7 @@ get:
             items:
               $ref: ../components/schemas/ApiSchema.yaml
     '404':
-      description: API Gateway not found
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Error.yaml
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':

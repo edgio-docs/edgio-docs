@@ -1,6 +1,6 @@
 name: team_id
 in: path
 required: true
-description: The team id
+description: Identifies your organization by its system-defined ID. 
 schema:
   type: string

@@ -11,7 +11,7 @@ info:
 tags:
   - name: Security Applications (Scopes)
     x-displayName: Security Apps
-    description: >
+    description: |
 
       A Security App:
 
@@ -22,16 +22,18 @@ tags:
       -   Audit new access rules, API Security rules, custom rules, and managed rules.
 
       -   Defines the production and audit enforcement action that will be applied to the requests identified as threats by access rules, API security ruleset, rate rules, custom ruleset, and managed rules.
+
+      <a href="https://docs.edg.io/guides/security/security_applications" target="_blank">Learn more about Security Apps.</a>
   - name: Access Control List (ACL)
     x-displayName: Access Rules
-    description: > 
+    description: | 
     
       An access rule identifies legitimate traffic and threats through access controls.
       
       <a href="https://docs.edg.io/guides/security/access_rules" target="_blank">Learn more about access rules.</a>
   - name: Custom Rules
     x-displayName: Custom Rules
-    description: > 
+    description: | 
     
       A custom rule tailors how Edgio Security identifies a threat.
       
@@ -39,7 +41,7 @@ tags:
     
   - name: Rate Rules (Limits)
     x-displayName: Rate Rules 
-    description: > 
+    description: | 
 
       A rate rule restricts the flow of site traffic.
 
@@ -47,7 +49,7 @@ tags:
 
   - name: Managed Rules (Profiles)
     x-displayName: Managed Rules (Profiles)
-    description: > 
+    description: | 
     
       A managed rule identifies threats through predefined rules and prevents false positives.
       
@@ -55,7 +57,7 @@ tags:
 
   - name: Bot Rules
     x-displayName: Bot Ruleset
-    description: >
+    description: |
     
       A bot ruleset contains one or more rule(s) for determining how bots will be identified. 
             
@@ -63,7 +65,7 @@ tags:
 
   - name: Bot Managers
     x-displayName: Bot Manager Configuration
-    description: >
+    description: |
     
       A bot manager configuration:
 
@@ -79,7 +81,7 @@ tags:
 
   - name: API Gateways
     x-displayName: API Security Ruleset
-    description: >
+    description: |
     
       An API Security ruleset contains one or more API Security rule(s). Each of these rules identifies an API schema and the conditions under which it will be enforced.
       
@@ -89,7 +91,7 @@ tags:
       
   - name: API Schemas
     x-displayName: API Schemas
-    description: >
+    description: |
     
       An API schema is a JSON schema that describes the structure for a valid API payload.
       

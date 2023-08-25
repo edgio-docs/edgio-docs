@@ -8,6 +8,8 @@
   "scripts": {
     "start": "openapi preview-docs",
     "build": "openapi bundle -o dist",
-    "test": "openapi lint"
+    "test": "openapi lint",
+    "pull-console-api": "mkdir -p tmp && ruby scripts/pull_console_api.rb",
+    "split-console-api": "mkdir -p tmp/split && openapi split tmp/console_oapi3.json --outDir tmp/split"
   }
 }

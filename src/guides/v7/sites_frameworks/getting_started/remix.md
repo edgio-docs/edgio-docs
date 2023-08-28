@@ -22,9 +22,9 @@ If you don't already have a Remix app, create one by running the following:
 npx create-remix@latest
 ```
 
-To ensure your Remix app works with {{ PRODUCT }}, make the following selections when prompted:
+To ensure your Remix app works with {{ PRODUCT }}, select the Express server as your deployment target when prompted:
 
-```plaintext diff highlight="2,8"
+```plaintext diff highlight="2,7"
 ? What type of app do you want to create? (Use arrow keys)
 ❯ Just the basics
   A pre-configured stack ready for production
@@ -47,29 +47,9 @@ npm run dev
 
 ## Configuring Your Remix App for {{ PRODUCT }} {/*configuring-your-remix-app-for*/}
 
-### Update the type Property in package.json {/*update-the-type-property-in-packagejson*/}
-
-In most cases, a Remix app will have `"type": "module"` in the `package.json` file. This property should be removed as {{ PRODUCT }} does not support it at this time.
-
-```js diff filename="package.json"
-{
-  "name": "remix-app",
-  "version": "0.0.0",
-  "description": "A Remix app",
-  "main": "index.js",
--  "type": "module",
-  "scripts": {
-    "dev": "remix dev",
-    "build": "remix build",
-    "start": "remix run"
-  },
-  ...
-}
-```
-
 ### Initialize Your Project {/*initialize-your-project*/}
 
-In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
+In the root directory of your project, we'll setup {{ PRODUCT }} to use the Express connector by running the following:
 
 ```bash
 {{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }} --connector @edgio/express
@@ -83,6 +63,62 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Remix.
 
+### Add @vercel/nft Bundler {/*add-vercelnft-bundler*/}
+
+By default, {{ PRODUCT }} will use `esbuild` to bundle your app. However, the Express server generated after running `npx create-remix@latest` has features best supported by the `@vercel/nft` bundler. To use this bundler, install it by running the following in your project's root directory:
+
+```bash
+npm install @vercel/nft --save-dev
+```
+
+Next, modify the `{{ CONFIG_FILE }}` file to use the `@vercel/nft` bundler:
+
+```js diff filename="{{ CONFIG_FILE }}" highlight="36"
+// This file was automatically added by edgio init.
+// You should commit this file to source control.
+// Learn more about this file at https://docs.edg.io/guides/edgio_config
+module.exports = {
+  connector: '@edgio/express',
+
+  // The name of the property in Edgio to which this app should be deployed.
+  // name: 'my-site-name',
+
+  // The name of the organization in Edgio to which this app should be deployed.
+  // organization: 'my-organization-name',
+
+  // Overrides the default path to the routes file. The path should be relative to the root of your app.
+  // routes: 'routes.js',
+
+  express: {
+    // The main entry point for your app, which exports an instance of express app.
+    // This file and its dependencies will be bundled into a single file for serverless deployment.
+    //
+    // If omitted, Edgio will try to find your app in one of the following files:
+    // - ./src/server.ts
+    // - ./src/server.js
+    // - ./src/app.ts
+    // - ./src/app.js
+    // - ./src/index.ts
+    // - ./src/index.js
+    // - ./server.js
+    // - ./app.js
+    // - ./index.js
+    //
+    // Uncomment the line below to specify the path to the app:
+    // appPath: './src/app.js',
+    // Uncomment the line below to bundle your express app using @vercel/nft to reduce the bundle size and cold start times
+    // nft (Node file trace) produces an exploded, tree-shaken bundle with a node_modules directory containing only those modules
+    // used by your app.
+    bundler: '@vercel/nft',
+    // Uncomment the line below to bundle your express app using @vercel/ncc to reduce the bundle size and cold start times
+    // NCC produces an a single-file, tree-shaken bundle containing only those modules used by your app.
+    // bundler: '@vercel/ncc',
+  },
+
+/* ... */
+};
+```
+
 ### Modify Remix's Server Configuration {/*modify-remixs-server-configuration*/}
 
 {{ PRODUCT }} requires a few changes to your configuration to correctly bundle your app.
@@ -94,30 +130,24 @@ If you created a Remix application by following the above steps, you will have a
 For either scenario, we've provided a sample Express server below that you can use to replace the default `server.js` file in your project.
 
 ```js diff filename="server.js"
-- import * as fs from "node:fs";
-+ const fs = require("node:fs");
+import * as fs from "node:fs";
 
-- import { createRequestHandler } from "@remix-run/express";
-+ const { createRequestHandler } = require("@remix-run/express");
-- import { broadcastDevReady, installGlobals } from "@remix-run/node";
-+ const { broadcastDevReady, installGlobals } = require("@remix-run/node");
-- import chokidar from "chokidar";
-+ const chokidar = require("chokidar");
-- import compression from "compression";
-+ const compression = require("compression");
-- import express from "express";
-+ const express = require("express");
-- import morgan from "morgan";
-+ const morgan = require("morgan");
+import { createRequestHandler } from "@remix-run/express";
+import { broadcastDevReady, installGlobals } from "@remix-run/node";
+import chokidar from "chokidar";
+import compression from "compression";
+import express from "express";
+import morgan from "morgan";
+import sourceMapSupport from "source-map-support";
 
+sourceMapSupport.install();
 installGlobals();
 
 const BUILD_PATH = "./build/index.js";
 /**
  * @type { import('@remix-run/node').ServerBuild | Promise<import('@remix-run/node').ServerBuild> }
  */
-- let build = await import(BUILD_PATH);
-+ let build = require(BUILD_PATH);
+let build = await import(BUILD_PATH);
 
 const app = express();
 
@@ -182,40 +212,6 @@ function createDevRequestHandler() {
 }
 ```
 
-<Callout type="important">
-  Note that the `server.js` file is using CommonJS `require` instead of ES `import`. This is required for {{ PRODUCT }} to correctly bundle your app.
-</Callout>
-
-#### Update the servermoduleformat Property in  remix.config.js {/*update-the-servermoduleformat-property-in-remixconfigjs*/}
-
-Use the CommonJS module format by setting the `serverModuleFormat` property in the `remix.config.js` file to `cjs`.
-
-```js diff filename="remix.config.js"
-/** @type {import('@remix-run/dev').AppConfig} */
-- export default {
-+ module.exports = {
-  ignoredRouteFiles: ["**/.*"],
-  // appDirectory: "app",
-  // assetsBuildDirectory: "public/build",
-  // serverBuildPath: "build/index.js",
-  // publicPath: "/build/",
--  serverModuleFormat: "esm",
-+  serverModuleFormat: "cjs",
-  future: {
-    v2_dev: true,
-    v2_errorBoundary: true,
-    v2_headers: true,
-    v2_meta: true,
-    v2_normalizeFormMethod: true,
-    v2_routeConvention: true,
-  },
-};
-```
-
-<Callout type="important">
-  With various changes made to the Remix app configuration, it's important to ensure that the app still works as expected. Build the app locally using `npm run build` to verify there are no errors.
-</Callout>
-
 ### Update {{ PRODUCT }} Configuration File {/*update-configuration-file*/}
 
 Update `{{ CONFIG_FILE }}` `serverless` property to include the `public` and `build` directories:
@@ -242,7 +238,6 @@ module.exports = {
 
   /* ... */
 }
-
 ```
 
 ### Configure the Caching Policy {/*configure-the-caching-policy*/}

@@ -120,7 +120,7 @@ store them in environment variables, then access them in your code from `process
 
 Deploying to an environment using a deploy token pulls all environment variables and applies them to `process.env`. This allows these variables to be accessed at build time. 
 
-**Deploying with a deploy token example:** `{{ FULL_CLI_NAME }} deploy my-team --environment=production --token=(my token)`
+**Deploying with a deploy token example:** `{{ FULL_CLI_NAME }} deploy my-organization --environment=production --token=(my token)`
 
 Use environment variables to store all of your build and runtime secrets in a single place, {{ PORTAL }}, rather than storing some in your CI system's secret manager.
 

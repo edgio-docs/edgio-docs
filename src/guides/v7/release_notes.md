@@ -44,5 +44,5 @@ See [NPM Packages Changelog](/guides/changelog) for release notes related to the
 
 | Date  | Description                                                                                                                            |
 |-------|----------------------------------------------------------------------------------------------------------------------------------------|
-| 4/27/2023  | **{{ PRODUCT_SECURITY }}:** <ul><li>Added reCAPTCHA support.</li></ul> **{{ PORTAL }}:** <ul><li>A team admin may now define a list of allowed IPs for {{ PORTAL }} access.</li></ul>  |
+| 4/27/2023  | **{{ PRODUCT_SECURITY }}:** <ul><li>Added reCAPTCHA support.</li></ul> **{{ PORTAL }}:** <ul><li>An admin user may now define a list of allowed IPs for {{ PORTAL }} access.</li></ul>  |
 | 4/20/2023  | **Rules:** <ul><li>Added HTTP variables to autocomplete along with inline descriptions.</li><li>Added device classification HTTP variables.</li><li>Removed `equals` and `not equals` operators for the `Random Integer (random)` match condition.</li></ul> **{{ PRODUCT }} {{ PRODUCT_SECURITY }}:** <ul><li>Updated Managed Rules Latest ruleset.</li><li>Added Alert and Block tabs into Bot Manager Actions.</li><li>Added Spoof Bot default action type.</li></ul>  |

@@ -30,8 +30,8 @@ Note that only one of the optional arguments can be passed at a time, for exampl
 
 ```json
 {
-  "team": "the team name",
-  "site": "the site name",
+  "team": "the organization name",
+  "site": "the property name",
   "environment": "the environment name",
   "paths": ["Optional. An array of paths to clear. Use * as a wildcard."],
   "surrogateKeys": ["Optional. An array of surrogate keys to clear"],
@@ -45,8 +45,8 @@ Note that only one of the optional arguments can be passed at a time, for exampl
 const fetch = require('node-fetch')
 
 const deployToken = '*****'
-const team = 'my-team'
-const site = 'my-site'
+const team = 'my-organization'
+const site = 'my-property'
 const environment = 'production'
 const paths = ['/some/path']
 

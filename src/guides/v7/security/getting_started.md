@@ -15,11 +15,11 @@ The core methods through which it secures site traffic are listed below.
 
 ## Prerequisites {/*prerequisites*/}
 
-Before you can secure your traffic, you will need an {{ COMPANY_NAME }} [team](/guides/basics/collaboration#managing-teams) and a [property](/guides/getting_started#create-property) for the desired website. 
+Before you can secure your traffic, you will need an {{ COMPANY_NAME }} [organization](/guides/basics/collaboration#managing-teams) and a [property](/guides/getting_started#create-property) for the desired website. 
 
 <Callout type="tip">
 
-  {{ PRODUCT }} allows all teams to set up basic application layer security. However, we also offer more comprehensive solutions. {{ ACCOUNT_UPGRADE }}
+  {{ PRODUCT }} allows all organizations to set up basic application layer security. However, we also offer more comprehensive solutions. {{ ACCOUNT_UPGRADE }}
 
 </Callout>
 

@@ -4,17 +4,11 @@ title: Web Application Firewall (WAF)
 
 Monitor, detect, and prevent application layer attacks through our Web Application Firewall (WAF). Our WAF inspects inbound HTTP/HTTPS traffic against reactive and proactive security policies and blocks malicious activity in-band and on a real-time basis. 
 
-<Callout type="info">
+**Key information:**
 
-  WAF requires a team space. It cannot be applied to a private space. 
-
-</Callout>
-
-<Callout type="info">
-
-  Our service includes a basic offering called {{ PRODUCT_SECURITY }} Insights. However, we also offer more comprehensive security soutions. {{ ACCOUNT_UPGRADE }}
-
-</Callout>
+-   WAF requires an {{ PRODUCT }} organization. It cannot be applied to a private space. 
+-   Set up WAF at the organization level. This allows you to apply general security policies across all of your organization's properties. You may also define granular security policies that only apply to specific requests. 
+-   Our service includes a basic offering called {{ PRODUCT_SECURITY }} Insights. However, we also offer more comprehensive security soutions. {{ ACCOUNT_UPGRADE }}
 
 Use our WAF to:
 

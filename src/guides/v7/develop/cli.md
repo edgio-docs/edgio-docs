@@ -63,7 +63,7 @@ specified environment will be cleared.
 
 | Name                  | Description                                                              |
 | --------------------- | ------------------------------------------------------------------------ |
-| `--team`              | (Required) The team name                                                 |
+| `--team`              | (Required) The organization name                                         |
 | `--property`          | (Required) The property name                                             |
 | `--environment`       | (Required) The environment name                                          |
 | `--path, -p`          | A path to clear. Use "\*" as a wildcard                                  |
@@ -72,7 +72,7 @@ specified environment will be cleared.
 #### Example {/* example */}
 
 ```bash
-{{ FULL_CLI_NAME }} cache-clear --team=my-team --property=my-property --environment=production --path=/p/*
+{{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my-property --environment=production --path=/p/*
 ```
 
 ### completion {/* completion */}
@@ -206,13 +206,13 @@ Builds and deploys your property on {{ PRODUCT_NAME }}.
 
 | Name   | Description                                                                                                                                  |
 | ------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `team` | The name of the team under which the property will be deployed. The property will be deployed to your private space will be used if omitted. |
+| `team` | The name of the organization under which the property will be deployed. The property will be deployed to your private space will be used if omitted. |
 
 #### Options {/* options */}
 
 | Name                       | Description                                                                                                                                                                                                                                                                                                                                 |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--team, -t`               | The name of the team under which the property will be deployed. If omitted, the `team` config in `{{ CONFIG_FILE }}` will be used, or deployed to your private space if omitted.                                                                                                                                                            |
+| `--team, -t`               | The name of the organization under which the property will be deployed. If omitted, the `team` config in `{{ CONFIG_FILE }}` will be used, or deployed to your private space if omitted.                                                                                                                                                            |
 | `--property`               | The name of the property to deploy. By default the `name` field in `{{ CONFIG_FILE }}` or `package.json` is used.                                                                                                                                                                                                                           |
 | `--environment, -e`        | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                                                                 |
 | `--branch, -b`             | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                                                            |
@@ -240,7 +240,7 @@ The `deploy` command writes a file called `.edgio/deployment-manifest.json`, whi
 #### Example {/* example */}
 
 ```bash
-{{ CLI_CMD(deploy) }} my-team --environment=production
+{{ CLI_CMD(deploy) }} my-organization --environment=production
 ```
 
 ### dev {/* dev */}
@@ -283,7 +283,7 @@ Manage deployed property's environments and environment variables.
 
 | Name                | Description                                                                           |
 | ------------------- | ------------------------------------------------------------------------------------- |
-| `--team, -t`        | The name of the team under which the property belongs. Uses private space if omitted. |
+| `--team, -t`        | The name of the organization under which the property belongs. Uses private space if omitted. |
 | `--property`        | The property to pull variables from. Uses package.json name property if omitted.      |
 | `--environment, -e` | Environment to pull variables from. Uses default environment if omitted.              |
 | `--path`            | Path to your site's root directory. Uses current directory by default.                |
@@ -291,7 +291,7 @@ Manage deployed property's environments and environment variables.
 #### Example {/* example */}
 
 ```bash
-{{ FULL_CLI_NAME }} env pull .env.local --team my-team --property my-property --environment production
+{{ FULL_CLI_NAME }} env pull .env.local --team my-organization --property my-property --environment production
 ```
 
 ### init {/* init */}
@@ -318,7 +318,7 @@ If you are not using the latest version of {{ PRODUCT }}, then you must specify 
 | `--skip{{PRODUCT_NAME}}Deps`      | Skips installing {{ PRODUCT_NAME }} packages.                                                                                                                                                                                                                                                                                               |
 | `--connector`                     | The name of a specific connector package to install, or a path to a directory that implements the [connector interface](/guides/sites_frameworks/connectors#implementing-a-connector-directly-within-your-project).                                                                                                                         |
 | `--name`                          | The name of the property. Defaults to the `name` field in `package.json`.                                                                                                                                                                                                                                                                   |
-| `--team, -t`                      | The name of the team under which the property belongs. Uses private space if omitted.                                                                                                                                                                                                                                                       |
+| `--team, -t`                      | The name of the organization under which the property belongs. Uses private space if omitted.                                                                                                                                                                                                                                                       |
 | `--origin`                        | The domain or IP address of the origin to use for the property.                                                                                                                                                                                                                                                                             |
 | `--deploy`                        | Deploys the property after initializing.                                                                                                                                                                                                                                                                                                    |
 | `--skipFramework, --sf`           | Skips installing the framework (Next.js, Vue, Angular, etc..) and simply rebundles your router.                                                                                                                                                                                                                                             |
@@ -330,7 +330,7 @@ If you are not using the latest version of {{ PRODUCT }}, then you must specify 
 | `--branch, -b`                    | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                                                            |
 | `--environment, -e`               | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                                                                 |
 | `--commit-url`                    | The URL at which the commit can be viewed in your source control provided. If your package.json provides the repository attribute the commit URL will be derived automatically if you use GitHub, GitLab, or BitBucket.                                                                                                                     |
-| `--disable-team-check`            | Skips the check to see if the property is being deployed to a personal team and also exists on a shared team.                                                                                                                                                                                                                               |
+| `--disable-team-check`            | Skips the check to see if the property is being deployed to a private space and also exists within an organization.                                                                                                                                                                                                                               |
 
 ### login {/* login */}
 
@@ -354,7 +354,7 @@ Logs out of {{ PRODUCT_NAME }}
 
 ### ls {/* ls */}
 
-Lists all teams, properties and environments associated with your account.
+Lists all organizations, properties and environments associated with your account.
 
 #### Example {/* example */}
 

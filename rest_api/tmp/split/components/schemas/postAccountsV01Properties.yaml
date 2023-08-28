@@ -1,0 +1,10 @@
+required:
+  - organization_id
+  - slug
+type: object
+properties:
+  slug:
+    type: string
+  organization_id:
+    type: string
+description: Create a new property

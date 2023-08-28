@@ -1,0 +1,56 @@
+post:
+  tags:
+    - purge requests
+  summary: Purge Cache of Environment
+  description: Request cache purge of environment
+  operationId: postCacheV01PurgeRequests
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/postCacheV01PurgeRequests.yaml
+    required: true
+  responses:
+    '202':
+      description: Request cache purge of environment
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Cache_V1_Entities_PurgeRequest.yaml
+    '400':
+      description: UserError
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: RecordNotFound
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: RateLimitReached
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: ServerError
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  x-codegen-request-body-name: postCacheV01PurgeRequests

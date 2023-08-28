@@ -1,0 +1,50 @@
+get:
+  tags:
+    - purge requests
+  summary: Get Status of Cache Purge
+  description: Request status of cache purge
+  operationId: getCacheV01PurgeRequestsRequestId
+  parameters:
+    - name: request_id
+      in: path
+      description: The ID identifying the original purge request.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Request status of cache purge
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Cache_V1_Entities_PurgeRequest.yaml
+    '400':
+      description: UserError
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: RecordNotFound
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: ServerError
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml

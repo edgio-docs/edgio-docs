@@ -145,7 +145,7 @@ Request headers provide information about your request to a REST API service. Th
 | Authorization  | Authorize requests through the `Authorization` request header. <a href="https://docs.edg.io/guides/develop/rest_api/authorization#authorizing-requests" target="_blank">Learn more about authorization.</a>                                                       |
 | Accept         | This header should indicate the format in which the response will be returned. The recommended value for this request header is: `application/json`.                                                                |
 | Content-Type   | This header should indicate the format of the request body. The recommended value for this request header is: `application/json`. <br />You may omit this header when an endpoint does not have request properties. |
-| Host           | This header, which is set by the user agent, indicates the host name corresponding to the requested endpoint (i.e., edgio.app).                                                                               |
+| Host           | This header, which is set by the user agent, indicates the host name corresponding to the requested endpoint (i.e., id.edgio.app).                                                                               |
 | Content-Length | This header, which is set by the user agent, indicates the number of bytes contained in the request body.                                                                                                           |
 
 ## Request Body

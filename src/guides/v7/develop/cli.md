@@ -61,13 +61,14 @@ specified environment will be cleared.
 
 #### Options {/* options */}
 
-| Name                  | Description                                                              |
-| --------------------- | ------------------------------------------------------------------------ |
-| `--team`              | (Required) The organization name                                         |
-| `--property`          | (Required) The property name                                             |
-| `--environment`       | (Required) The environment name                                          |
-| `--path, -p`          | A path to clear. Use "\*" as a wildcard                                  |
-| `--surrogate-key, -s` | Clears all responses assigned to the specified surrogate key (cache tag) |
+| Name                  | Description                                                                    |
+| --------------------- | ------------------------------------------------------------------------------ |
+| `--team`              | <ul><li>**{{PRODUCT }} CLI version 7.2.2 or higher:** Deprecated. Use `--organization` instead. </li><li>**{{PRODUCT }} CLI version 7.2.1 or lower:** (Required) The organization name</li></ul>         |
+| `--organization`      | **{{PRODUCT }} CLI version 7.2.2 or higher:** (Required) The organization name |
+| `--property`          | (Required) The property name                                                   |
+| `--environment`       | (Required) The environment name                                                |
+| `--path, -p`          | A path to clear. Use "\*" as a wildcard                                        |
+| `--surrogate-key, -s` | Clears all responses assigned to the specified surrogate key (cache tag)       |
 
 #### Example {/* example */}
 

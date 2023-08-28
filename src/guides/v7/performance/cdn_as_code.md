@@ -133,13 +133,13 @@ Use the {{ PRODUCT }} CLI to initialize your property. If you have already perfo
       ***** Deployment Complete *****************************************************
       *                                                                             *
       *  🖥  Edgio Developer Console:                                                *
-      *  https://edgio.app/<YOUR-TEAM>/my-custom-property.com/env/default/builds/1  *
+      *  https://edgio.app/<YOUR-ORGANIZATION>/my-custom-property.com/env/default/builds/1  *
       *                                                                             *
       *  🔗 Permalink:                                                              *
-      *  https://<YOUR-TEAM>-my-custom-property-com-1.free.edgio-perma.link         *
+      *  https://<YOUR-ORGANIZATION>-my-custom-property-com-1.free.edgio-perma.link         *
       *                                                                             *
       *  🌎 Edge:                                                                   *
-      *  https://<YOUR-TEAM>-my-custom-property-com-default.edgio.link              *
+      *  https://<YOUR-ORGANIZATION>-my-custom-property-com-default.edgio.link              *
       *                                                                             *
       *******************************************************************************
 
@@ -174,11 +174,11 @@ The default `{{ CONFIG_FILE }}` file contains the following configuration based 
 // You should commit this file to source control.
 // Learn more about this file at https://docs.edg.io/guides/edgio_config
 module.exports = {
-  // The name of the site in Edgio to which this app should be deployed.
+  // The name of the property in Edgio to which this app should be deployed.
   name: 'my-custom-property.com',
 
-  // The name of the team in Edgio to which this app should be deployed.
-  // team: 'my-team-name',
+  // The name of the organization in Edgio to which this app should be deployed.
+  // team: 'my-organization-name',
 
   // Overrides the default path to the routes file. The path should be relative to the root of your app.
   // routes: 'routes.js',

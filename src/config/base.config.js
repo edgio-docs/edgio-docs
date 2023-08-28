@@ -115,10 +115,10 @@ yarn global add ${PACKAGE_NAME}/cli
 
 const CONTACT_SUPPORT = `Contact our [technical customer support](${ HELP_URL }).`;
 
-const SECURITY_NAV = `1.  From the ${PORTAL_LINK}, select the desired team space. 
+const SECURITY_NAV = `1.  From the ${PORTAL_LINK}, select the desired organization. 
     2.  From the **Security** section, click `;
 
-const ENV_NAV = `1.  From the ${PORTAL_LINK}, select the desired private or team space.
+const ENV_NAV = `1.  From the ${PORTAL_LINK}, select the desired private space or organization.
     2.  Select the desired property.
     3.  From the left-hand pane, select the desired environment from under the **Environments** section.
     4.  From the left-hand pane, select`;

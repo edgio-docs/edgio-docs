@@ -41,7 +41,7 @@ npm run dev
 
 ### Initialize Your Project {/*initialize-your-project*/}
 
-In the root directory of your project, we'll setup {{ PRODUCT }} to use the Express connector by running the following:
+In the root directory of your project, we'll set up {{ PRODUCT }} to use the Express connector by running the following:
 
 ```bash
 {{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }} --connector @edgio/express

@@ -756,7 +756,7 @@ Once you have successfully built your property, run the following command to dep
     {{ FULL_CLI_NAME }} deploy --property=<PROPERTY> --organization=<ORGANIZATION>
     ```
 
-    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.1 or lower"
+    ```bash tabLabel="Version 7.2.1 or lower"
     {{ FULL_CLI_NAME }} deploy --property=<PROPERTY> --team=<ORGANIZATION>
     ```
 

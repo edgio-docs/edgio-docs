@@ -78,7 +78,7 @@ specified environment will be cleared.
     {{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my-property --environment=production --path=/p/*    
     ```
 
-    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.1 or lower"
+    ```bash tabLabel="Version 7.2.1 or lower"
     {{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my-property --environment=production --path=/p/*    
     ```
 
@@ -307,7 +307,7 @@ Manage deployed property's environments and environment variables.
     {{ FULL_CLI_NAME }} env pull .env.local --organization my-organization --property my-property --environment production
     ```
 
-    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.1 or lower"
+    ```bash tabLabel="Version 7.2.1 or lower"
     {{ FULL_CLI_NAME }} env pull .env.local --team my-organization --property my-property --environment production
     ```
 

@@ -316,7 +316,7 @@ Deploy the build to {{ PRODUCT_NAME }} by running the `{{ FULL_CLI_NAME }} deplo
     {{ CLI_NAME }} deploy --organization=<ORGANIZATION>
     ```
 
-    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.1 or lower"
+    ```bash tabLabel="Version 7.2.1 or lower"
     {{ CLI_NAME }} deploy --team=<ORGANIZATION>
     ```
 

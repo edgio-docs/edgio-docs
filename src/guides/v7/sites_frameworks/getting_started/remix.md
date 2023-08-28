@@ -4,14 +4,6 @@ title: Remix
 
 This guide shows you how to deploy a [Remix](https://remix.run/) application to {{ PRODUCT }}.
 
-<!-- ## Example {/*example*/}
-
-<ExampleButtons
-  title="Remix Express"
-  siteUrl="https://layer0-docs-layer0-remix-express-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/edgio-docs/edgio-remix-express-example" 
-  deployFromRepo /> -->
-
 {{ PREREQ.md }}
 
 ## Create a New Remix App {/*create-a-new-remix-app*/}
@@ -294,3 +286,10 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 ```
 
 Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
+
+## Example {/*example*/}
+
+<ExampleButtons
+  title="Remix Express"
+  siteUrl="https://edgio-community-examples-v7-remix-live.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-remix-example" />

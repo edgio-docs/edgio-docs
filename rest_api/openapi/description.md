@@ -45,11 +45,12 @@ Get started with our latest APIs by performing the following steps:
 ## Scopes
 
 A scope authorizes an API client to perform specific actions (e.g., create and retrieve configurations). One or more scope(s) must also be defined when requesting an access token. You may only specify a scope that has been explicitly granted or inherited from a broader scope. Common scopes are listed below.
-| Scope  | Description  |
-|---|---|
-| app.waf  | Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules.   |
-| app.bot_security  | Authorizes full access to Bot Manager.  |
-| app.api_security  | Authorizes full access to API Security.  |
+
+| Scope            | Description                                                                                         |
+| ---------------- | --------------------------------------------------------------------------------------------------- |
+| app.waf          | Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules. |
+| app.bot_security | Authorizes full access to Bot Manager.                                                              |
+| app.api_security | Authorizes full access to API Security.                                                             |
 
 <a href="https://docs.edg.io/guides/develop/rest_api/authentication#scopes" target="_blank">Learn more about scopes.</a>
 

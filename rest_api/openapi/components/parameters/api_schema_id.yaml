@@ -1,6 +1,11 @@
 name: api_schema_id
 in: path
 required: true
-description: The API Schema id
+description: |
+
+  Identifies an API schema by its system-defined ID. 
+  
+  Use the [Get All API Schemas operation](#tag/API-Schemas/operation/get-api-schemas) to retrieve a list of API schemas and their system-defined IDs.
+
 schema:
   type: string

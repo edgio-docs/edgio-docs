@@ -5,21 +5,17 @@ get:
   operationId: get-api-gateway-rule
   tags:
     - API Gateways
-  summary: GET API Gateway Rule Object
-  description: Get a API Gateway object from a API Gateway id.
+  summary: Get API Security Ruleset
+  description: Retrieves an API Security ruleset.
   responses:
     '200':
-      description: Successful Response
+      description: OK. An API Security ruleset was retrieved.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/ApiGateway.yaml
     '404':
-      description: API Gateway not found
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Error.yaml
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':
@@ -28,23 +24,19 @@ put:
   operationId: update-api-gateway-rule
   tags:
     - API Gateways
-  summary: PUT API Gateway Object
-  description: Modify a API Gateway object identified by id.
+  summary: Update API Security Ruleset
+  description: Updates an API Security ruleset.
   requestBody:
     $ref: ../components/requestBodies/APIGateway.yaml
   responses:
     '200':
-      description: API Gateway successfully updated
+      description: OK. An API Security ruleset was updated.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/ResponseObj.yaml
     '404':
-      description: API Gateway not found
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Error.yaml
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':
@@ -53,21 +45,17 @@ delete:
   operationId: delete-api-gateway-rule
   tags:
     - API Gateways
-  summary: DELETE API Gateway Object
-  description: Delete a API Gateway object identified by id.
+  summary: Delete API Security Ruleset
+  description: Deletes an API Security ruleset.
   responses:
     '200':
-      description: API Gateway successfully deleted
+      description: OK. An API Security ruleset was deleted.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/ResponseObj.yaml
     '404':
-      description: API Gateway not found
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Error.yaml
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':

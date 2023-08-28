@@ -750,16 +750,24 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 
 Once you have successfully built your property, run the following command to deploy your property to {{ PRODUCT }}:
 
-```bash
-{{ FULL_CLI_NAME }} deploy --property=<PROPERTY> --team=<ORGANIZATION>
-```
+<SnippetGroup>
+
+    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
+    {{ FULL_CLI_NAME }} deploy --property=<PROPERTY> --organization=<ORGANIZATION>
+    ```
+
+    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.1 or lower"
+    {{ FULL_CLI_NAME }} deploy --property=<PROPERTY> --team=<ORGANIZATION>
+    ```
+
+</SnippetGroup>
 
 **Key information:**
 
 - Replace the following placeholders:
 
   - `<PROPERTY>`: Replace this placeholder with the name of the property created in step 5.
-  - `<ORGANIZATION>`: Replace this placeholder with the name of the organization created in step 4. If you are deploying to a property in a private space, then you should omit `--team=<ORGANIZATION>` from this command.
+  - `<ORGANIZATION>`: Replace this placeholder with the name of the organization created in step 4. If you are deploying to a property in a private space, then you should omit this option (i.e., `--organization` or `--team`) from this command.
 
 - Upon running the above command:
 

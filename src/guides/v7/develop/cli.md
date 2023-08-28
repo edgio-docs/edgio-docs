@@ -72,9 +72,17 @@ specified environment will be cleared.
 
 #### Example {/* example */}
 
-```bash
-{{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my-property --environment=production --path=/p/*
-```
+<SnippetGroup>
+
+    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
+    {{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my-property --environment=production --path=/p/*    
+    ```
+
+    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.1 or lower"
+    {{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my-property --environment=production --path=/p/*    
+    ```
+
+</SnippetGroup>
 
 ### completion {/* completion */}
 
@@ -213,7 +221,8 @@ Builds and deploys your property on {{ PRODUCT_NAME }}.
 
 | Name                       | Description                                                                                                                                                                                                                                                                                                                                 |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--team, -t`               | The name of the organization under which the property will be deployed. If omitted, the `team` config in `{{ CONFIG_FILE }}` will be used, or deployed to your private space if omitted.                                                                                                                                                            |
+| `--team, -t`               | <ul><li>**{{PRODUCT }} CLI version 7.2.2 or higher:** Deprecated. Use `--organization` instead. </li><li>**{{PRODUCT }} CLI version 7.2.1 or lower:** The name of the organization under which the property will be deployed. If omitted, the `team` config in `{{ CONFIG_FILE }}` will be used, or deployed to your private space if omitted. </li></ul>                                                                                                                                                            |
+| `--organization`           | **{{PRODUCT }} CLI version 7.2.2 or higher:** The name of the organization under which the property will be deployed. If omitted, the `team` config in `{{ CONFIG_FILE }}` will be used, or deployed to your private space if omitted.     |
 | `--property`               | The name of the property to deploy. By default the `name` field in `{{ CONFIG_FILE }}` or `package.json` is used.                                                                                                                                                                                                                           |
 | `--environment, -e`        | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                                                                 |
 | `--branch, -b`             | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                                                            |
@@ -284,16 +293,25 @@ Manage deployed property's environments and environment variables.
 
 | Name                | Description                                                                           |
 | ------------------- | ------------------------------------------------------------------------------------- |
-| `--team, -t`        | The name of the organization under which the property belongs. Uses private space if omitted. |
+| `--team, -t`               | <ul><li>**{{PRODUCT }} CLI version 7.2.2 or higher:** Deprecated. Use `--organization` instead. </li><li>**{{PRODUCT }} CLI version 7.2.1 or lower:** The name of the organization under which the property belongs. Uses private space if omitted.</li></ul>                                                                                                                                                            |
+| `--organization`           | **{{PRODUCT }} CLI version 7.2.2 or higher:** The name of the organization under which the property belongs. Uses private space if omitted.     |
 | `--property`        | The property to pull variables from. Uses package.json name property if omitted.      |
 | `--environment, -e` | Environment to pull variables from. Uses default environment if omitted.              |
 | `--path`            | Path to your site's root directory. Uses current directory by default.                |
 
 #### Example {/* example */}
 
-```bash
-{{ FULL_CLI_NAME }} env pull .env.local --team my-organization --property my-property --environment production
-```
+<SnippetGroup>
+
+    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
+    {{ FULL_CLI_NAME }} env pull .env.local --organization my-organization --property my-property --environment production
+    ```
+
+    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.1 or lower"
+    {{ FULL_CLI_NAME }} env pull .env.local --team my-organization --property my-property --environment production
+    ```
+
+</SnippetGroup>
 
 ### init {/* init */}
 

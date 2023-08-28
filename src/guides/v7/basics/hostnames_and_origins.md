@@ -204,7 +204,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 7. If you are finished making changes to this environment, click **Deploy Changes**.
 <a id="primary-failover-load-balancing" />
 
-#### System-Defined Origins {/*system-defined-origins*/}
+### System-Defined Origins {/*system-defined-origins*/}
 
 {{ PRODUCT }} may add one or more of the following origin configurations to your property, based on certain features being used. 
 

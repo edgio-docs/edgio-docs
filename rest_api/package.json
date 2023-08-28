@@ -9,7 +9,9 @@
     "start": "openapi preview-docs",
     "build": "openapi bundle -o dist",
     "test": "openapi lint",
-    "pull-console-api": "mkdir -p tmp && ruby scripts/pull_console_api.rb",
-    "split-console-api": "mkdir -p tmp/split && openapi split tmp/console_oapi3.json --outDir tmp/split"
+    "console-api:pull": "mkdir -p tmp && ruby scripts/pull_console_api.rb",
+    "console-api:split": "mkdir -p tmp/split && openapi split tmp/console_oapi3.json --outDir tmp/split",
+    "console-api:integrate": "mkdir -p openapi/paths/ && cp tmp/split/components/schemas/*.yaml openapi/components/schemas/ && cp tmp/split/paths/*.yaml openapi/paths/ && ruby scripts/integrate.rb",
+    "console-api:clean": "git checkout openapi && git clean -fd openapi"
   }
 }

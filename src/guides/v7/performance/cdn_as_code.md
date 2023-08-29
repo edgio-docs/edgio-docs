@@ -204,14 +204,14 @@ module.exports = {
     },
   ],
 
-  // Options for hosting serverless functions on Edgio
+  // Options for hosting Cloud Functions on Edgio
   // serverless: {
   //   // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
   //   // This option generally isn't needed as Edgio automatically includes all modules imported by your code in the bundle that
   //   // is uploaded during deployment
   //   includeNodeModules: true,
   //
-  //   // Include additional paths that are dynamically loaded by your app at runtime here when building the serverless bundle.
+  //   // Include additional paths that are dynamically loaded by your app at runtime here when building the bundle.
   //   include: ['views/**/*'],
   // },
 
@@ -450,7 +450,7 @@ import {Router} from '{{ PACKAGE_NAME }}/core';
 import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
 
 export default new Router()
-  // Send requests to serverless and render the response with Next.js
+  // Send requests to the {{ PRODUCT }} cloud and render the response with Next.js
   .use(nextRoutes)
 
   // Cache all requests to /products/:id for 1 hour
@@ -507,7 +507,7 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
   </Callout>
 
 - [Transforming and optimizing images](/guides/performance/image_optimization)
-- Transforming the response through [Serverless Compute](/guides/performance/serverless_compute)
+- Transforming the response through [Cloud Functions](/guides/performance/serverless_compute)
 - [Removing response headers](/guides/performance/cdn_as_code/route_features#altering-the-response)
 - [Normalizing the cache key](/guides/performance/caching#customizing-the-cache-key)
 - Generating performance insights through [DevTools](/guides/performance/observability/devtools)

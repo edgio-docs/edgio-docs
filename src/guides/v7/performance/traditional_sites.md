@@ -363,14 +363,14 @@ const postCacheConfig = {
 };
 
 export default new Router()
-  // When the request is a GET, convert it to post using serverless compute and cache the result
+  // When the request is a GET, convert it to post using Cloud Functions and cache the result
   .get('/some-post-path', ({cache, proxy}) => {
     cache(postCacheConfig);
     proxy('origin', {
       transformRequest: transformMethod('post'),
     });
   })
-  // When the request is a POST, forward it to origin from the edge without using serverless compute
+  // When the request is a POST, forward it to origin from the edge without using Cloud Functions
   .post('/some-post-path', ({cache, proxy}) => {
     cache(postCacheConfig);
     proxy('origin');

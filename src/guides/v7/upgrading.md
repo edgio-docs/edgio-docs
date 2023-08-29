@@ -381,10 +381,10 @@ Update each property's {{ CONFIG_FILE }} as indicated below.
       // configured in {{ CONFIG_FILE }} instead of the {{ PORTAL }}
       // Previous versions only supported a single shield in a single region.
 
-      // If your serverless region is US East, use:
+      // If your {{ PRODUCT }} cloud region is US East, use:
       shields: {us_east: 'DCD'},
 
-      // If your serverless region is US West, instead use:
+      // If your {{ PRODUCT }} cloud region is US West, instead use:
       // shields: { us_west: 'SAC'},
 
       // Uncomment the following lines to define a configuration equivalent to disableCheckCert: true

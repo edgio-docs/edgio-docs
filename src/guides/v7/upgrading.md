@@ -13,7 +13,7 @@ Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} to version 7 involves the 
 1.  **{{ PRODUCT_LEGACY }} (Version 4 and Earlier):** [Rename layer0.config.js and {{ PRODUCT }} packages.](#rename-layer0-components)
 2.  **Version 5 and Earlier:** [Upgrade Node.js](#upgrade-to-node-js-16-x) to version 16.x and update your application to be compatible with Node.js 16.x.
 3.  [Create an {{ PRODUCT }} account.](#create-account)
-4.  [Create a team.](#create-team)
+4.  [Create an organization.](#create-an-organization)
 5.  [Create a property.](#create-property)
 6.  [Define environments.](#define-environments)
 7.  [Upgrade the {{ PRODUCT }} CLI.](#upgrade-the-cli)
@@ -189,23 +189,23 @@ Additionally, check your CI/CD environment for Node.js version settings. If your
 
 Although you already have an existing account through `app.layer0.co`, you will need to [sign up for a new account through {{ APP_DOMAIN }}]({{ APP_URL }}/signup) using the same email address, Google account, or Github account.
 
-## Step 4: Create a Team {/* create-team */}
+## Step 4: Create an Organization {/* create-an-organization */}
 
-If the property being migrated belongs to a team space, then you will need to recreate that team within {{ APP_DOMAIN }}.
+If the property being migrated belongs to a {{ PRODUCT_LEGACY }} team space, then you will need to recreate it within {{ APP_DOMAIN }}.
 
-1.  From the {{ PORTAL_LINK }}, click on the <Image inline src="/images/v7/icons/menu-up-down.png" alt="Menu" /> icon next to your name and then click on **Create a team**.
+1.  From the {{ PORTAL_LINK }}, click on the <Image inline src="/images/v7/icons/menu-up-down.png" alt="Menu" /> icon next to your name and then click on **Create an Organization**.
 
     ![Space menu](/images/v7/basics/team-create.png)
 
-2.  In the **Team Name** option, assign a name to your team (e.g., `my-company`) and then click **Create a Team**.
+2.  In the **Organization Name** option, assign a name to your organization (e.g., `my-company`) and then click **Create an Organization**.
 
-    ![Add a Team](/images/v7/basics/team-create-2.png)
+    ![Add an Organization](/images/v7/basics/team-create-2.png)
 
 3.  Invite the desired team members. [Learn more.](/guides/basics/collaboration#managing-team-members)
 
 <Callout type="important">
 
-If you are an enterprise customer, contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to upgrade your newly created team.
+  If you are an enterprise customer, contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to upgrade your newly created organization.
 
 </Callout>
 
@@ -216,9 +216,9 @@ You now need to create your property within the {{ PORTAL }}.
 1.  From the {{ PORTAL_LINK }}, determine where you will create a property.
 
     - **Private Space:** By default, the {{ PORTAL }} loads your private space. Access to a property created in your private space is restricted to your account. Proceed to the next step.
-    - **Team Space:** Load the desired team by clicking the <Image inline src="/images/v7/icons/menu-up-down.png" alt="Menu" /> icon that appears next to your name and then selecting the desired team.
+    - **Organization:** Load the desired organization by clicking the <Image inline src="/images/v7/icons/menu-up-down.png" alt="Menu" /> icon that appears next to your name and then selecting the desired organization.
 
-      ![Team Selection](/images/v7/basics/team-selection.png)
+      ![Organization Selection](/images/v7/basics/team-selection.png)
 
 2.  Click **+ New Property**.
 3.  In the **Property Name** option, assign a unique name to this property.
@@ -244,7 +244,7 @@ If the property being migrated uses multiple environments in version 6, then you
 
 1.  Load the **Environments** page.
 
-    1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
+    1.  From the {{ PORTAL_LINK }}, select the desired private space or organization.
     2.  Select the desired property.
     3.  From the left-hand pane, click **Environments**.
 
@@ -254,9 +254,9 @@ If the property being migrated uses multiple environments in version 6, then you
 
 3.  In the **Name** option, specify a name for this environment. This name may consist of lowercase characters, numbers, dashes (`-`), and underscores (`_`).
 
-4.  Determine deployment permissions through the **Allow all team members to deploy to this environment** option.
+4.  Determine deployment permissions through the **Allow all organization members to deploy to this environment** option.
 
-    - Mark this option to allow all team members to deploy to this environment.
+    - Mark this option to allow all members of this organization to deploy to this environment.
     - Clear this option to restrict deployment to admins and the deploy token.
 
     ![limit environment](/images/v7/basics/environment-permissions.png?width=450)
@@ -751,7 +751,7 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 Once you have successfully built your property, run the following command to deploy your property to {{ PRODUCT }}:
 
 ```bash
-{{ FULL_CLI_NAME }} deploy --property=<PROPERTY> --team=<TEAM>
+{{ FULL_CLI_NAME }} deploy --property=<PROPERTY> --team=<ORGANIZATION>
 ```
 
 **Key information:**
@@ -759,7 +759,7 @@ Once you have successfully built your property, run the following command to dep
 - Replace the following placeholders:
 
   - `<PROPERTY>`: Replace this placeholder with the name of the property created in step 5.
-  - `<TEAM>`: Replace this placeholder with the name of the team created in step 4. If you are deploying to a property in a private space, then you should omit `--team=<TEAM>` from this command.
+  - `<ORGANIZATION>`: Replace this placeholder with the name of the organization created in step 4. If you are deploying to a property in a private space, then you should omit `--team=<ORGANIZATION>` from this command.
 
 - Upon running the above command:
 
@@ -790,14 +790,14 @@ View our IP blocks by clicking **Instructions** from the **Origins** page.
 
 <Callout type="important">
 
-If you are an enterprise customer and have not already reached out to your account manager to upgrade your team, please do so before serving traffic through {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7. You may contact our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463.
+  If you are an enterprise customer and have not already reached out to your account manager to upgrade your organization, please do so before serving traffic through {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7. You may contact our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463.
 
 </Callout>
 
 Once you are ready to serve traffic through {{ PRODUCT }}, you will need to update the DNS for each of your hostname(s). Specifically, version 7 requires a CNAME record that points to a service domain that is either specific to your property’s:
 
 - [Environment](/guides/basics/hostnames_and_origins#environment-specific-service-domain)
-- [Team Space](/guides/basics/hostnames_and_origins#space-specific-service-domain).
+- [Organization](/guides/basics/hostnames_and_origins#space-specific-service-domain).
 
 <Callout type="info">
 

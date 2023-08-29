@@ -236,7 +236,7 @@ You may create, modify, and delete rules.
 
 **Key information:**
 
--   You may make changes without affecting an environment's traffic. This allows you to collaborate with other team members when setting up rules and to stage changes until they are needed. 
+-   You may make changes without affecting an environment's traffic. This allows you to collaborate with other teammates when setting up rules and to stage changes until they are needed. 
 
     For example, a sales event may require URL redirects or a different caching policy than standard site traffic. You can stage these changes until they are needed for the sales event.
 

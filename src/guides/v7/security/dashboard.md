@@ -18,7 +18,7 @@ The {{ PRODUCT_SECURITY }} dashboard provides the means through which you may pe
 **To view the dashboard**
 1.  Navigate to the {{ PRODUCT_SECURITY }} dashboard.
 
-    1.  From the {{ PORTAL_LINK }}, select the desired team space.    
+    1.  From the {{ PORTAL_LINK }}, select the desired organization.    
     2.  Click **Security**.
     
     By default, the dashboard displays recent [threats](#threats-view) (i.e., access rule, custom rule, and managed rule violations).

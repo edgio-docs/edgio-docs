@@ -253,7 +253,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
 <Callout type="important">
 
-  IP blocks may vary by team. 
+  IP blocks may vary by organization. 
 
 </Callout>
 
@@ -310,18 +310,18 @@ From your DNS service provider, point your hostname(s) to a service domain that 
 {{ PRODUCT }} assigns a different service domain to:
 
 -   Your private space.
--   Each team space to which you belong. 
+-   Each organization to which you belong. 
 
-You may point any hostname defined within a space to its service domain. 
+You may point any hostname defined within a private space or organization to its service domain. 
 
-**To view the service domain assigned to a space**
+**To view the service domain**
 
 1.  Load the space's **Settings** page.
 
-    1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
+    1.  From the {{ PORTAL_LINK }}, select the desired private space or organization.
     2.  Click **Settings**.
 
-2.  From the **Team DNS Configuration** section, click <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
+2.  From the **Organization DNS Configuration** section, click <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
 
 ### DNS Verification {/*dns-verification*/}
 

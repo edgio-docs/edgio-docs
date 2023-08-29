@@ -206,7 +206,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 ### System-Defined Origins {/*system-defined-origins*/}
 
-{{ PRODUCT }} may add one or more of the following origin configurations to your property, based on certain features being used. 
+{{ PRODUCT }} will add the following origin configurations for properties deployed using our [CDN-as-code (EdgeJS)](/guides/performance/cdn_as_code) approach:
 
 <Callout type="important">
 

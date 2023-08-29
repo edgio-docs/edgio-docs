@@ -16,7 +16,7 @@ tags:
     x-displayName: Deployment Info
     description: Retrieve information and log data for a previous deployment.
   - name: configs
-    x-displayName: Configuration
+    x-displayName: CDN Configuration
     description: Deploy or retrieve a CDN configuration.
   - name: purge requests
     x-displayName: Purge

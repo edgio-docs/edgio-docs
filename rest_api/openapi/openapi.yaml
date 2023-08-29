@@ -9,6 +9,27 @@ info:
   description:
     $ref: description.md
 tags:
+  - name: tls-certs
+    x-displayName: TLS Certificates
+    description: Automate TLS certificate management.
+  - name: deployments
+    x-displayName: Deployment Info
+    description: Retrieve information and log data for a previous deployment.
+  - name: configs
+    x-displayName: CDN Configuration
+    description: Deploy or retrieve a CDN configuration.
+  - name: purge requests
+    x-displayName: Purge
+    description: Purge cached content and retrieve information about previously submitted purge requests.
+  - name: environments
+    x-displayName: Environments
+    description: Automate environment management.
+  - name: properties
+    x-displayName: Properties
+    description: Automate property management.
+  - name: organizations
+    x-displayName: Organizations
+    description: Automate organization management.
   - name: Security Applications (Scopes)
     x-displayName: Security Apps
     description: |
@@ -97,6 +118,104 @@ tags:
       
       <a href="https://docs.edg.io/guides/security/api_security#json-schema-syntax" target="_blank">Learn more about supported JSON schema syntax.</a>
 paths:
+  /config/v0.1/tls-certs/{cert_id}:
+    $ref: paths/config_v0.1_tls-certs_{cert_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com/config/v0.1/'
+    security:
+      - bearerAuth:
+          - app.config
+  /config/v0.1/tls-certs:
+    $ref: paths/config_v0.1_tls-certs.yaml
+    servers:
+      - url: 'https://edgioapis.com/config/v0.1/'
+    security:
+      - bearerAuth:
+          - app.config
+  /config/v0.1/deployments/{deployment_id}/logs:
+    $ref: paths/config_v0.1_deployments_{deployment_id}_logs.yaml
+    servers:
+      - url: 'https://edgioapis.com/config/v0.1/'
+    security:
+      - bearerAuth:
+          - app.config
+  /config/v0.1/deployments/{deployment_id}:
+    $ref: paths/config_v0.1_deployments_{deployment_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com/config/v0.1/'
+    security:
+      - bearerAuth:
+          - app.config
+  /config/v0.1/configs/{config_id}:
+    $ref: paths/config_v0.1_configs_{config_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com/config/v0.1/'
+    security:
+      - bearerAuth:
+          - app.config
+  /config/v0.1/configs:
+    $ref: paths/config_v0.1_configs.yaml
+    servers:
+      - url: 'https://edgioapis.com/config/v0.1/'
+    security:
+      - bearerAuth:
+          - app.config
+  /cache/v0.1/purge-requests/{request_id}:
+    $ref: paths/cache_v0.1_purge-requests_{request_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com/cache/v0.1/'
+    security:
+      - bearerAuth:
+          - app.cache
+  /cache/v0.1/purge-requests:
+    $ref: paths/cache_v0.1_purge-requests.yaml
+    servers:
+      - url: 'https://edgioapis.com/cache/v0.1/'
+    security:
+      - bearerAuth:
+          - app.config
+  /accounts/v0.1/environments/{environment_id}:
+    $ref: paths/accounts_v0.1_environments_{environment_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com/accounts/v0.1/'
+    security:
+      - bearerAuth:
+          - app.accounts
+  /accounts/v0.1/environments:
+    $ref: paths/accounts_v0.1_environments.yaml
+    servers:
+      - url: 'https://edgioapis.com/accounts/v0.1/'
+    security:
+      - bearerAuth:
+          - app.accounts
+  /accounts/v0.1/properties/{property_id}:
+    $ref: paths/accounts_v0.1_properties_{property_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com/accounts/v0.1/'
+    security:
+      - bearerAuth:
+          - app.accounts
+  /accounts/v0.1/properties:
+    $ref: paths/accounts_v0.1_properties.yaml
+    servers:
+      - url: 'https://edgioapis.com/accounts/v0.1/'
+    security:
+      - bearerAuth:
+          - app.accounts
+  /accounts/v0.1/organizations/{organization_id}:
+    $ref: paths/accounts_v0.1_organizations_{organization_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com/accounts/v0.1/'
+    security:
+      - bearerAuth:
+          - app.accounts
+  /accounts/v0.1/organizations:
+    $ref: paths/accounts_v0.1_organizations.yaml
+    servers:
+      - url: 'https://edgioapis.com/accounts/v0.1/'
+    security:
+      - bearerAuth:
+          - app.accounts
   '/{team_id}/scopes':
     $ref: 'paths/{team_id}@scopes.yaml'
     servers:
@@ -370,7 +489,17 @@ components:
       scheme: bearer
       bearerFormat: JWT
 x-tagGroups:
-  - name: waf
+  - name: Cache
+    tags:
+      - purge requests
+  - name: Deployments
+    tags:
+      - configs
+      - deployments      
+  - name: TLS Certificates
+    tags:
+      - tls-certs
+  - name: WAF (Security)
     tags:
       - Access Control List (ACL)
       - API Gateways
@@ -381,3 +510,10 @@ x-tagGroups:
       - Custom Rules
       - Managed Rules (Profiles)
       - Security Applications (Scopes)
+  - name: Organizations
+    tags:
+      - organizations
+  - name: Properties
+    tags:
+      - properties
+      - environments

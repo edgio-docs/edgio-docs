@@ -1,0 +1,10 @@
+type: object
+properties:
+  message:
+    type: string
+    description: Error Message
+  details:
+    type: array
+    items:
+      $ref: ./BaseApi_Entities_UserErrorData.yaml
+description: BaseApi_Entities_UserError model

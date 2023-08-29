@@ -1,0 +1,31 @@
+required:
+  - environment_id
+  - purge_type
+type: object
+properties:
+  environment_id:
+    type: string
+    description: >-
+      The ID of the environment you wish to purge cache for, also known as
+      environment tenant ID.
+  purge_type:
+    type: string
+    description: |
+      - `all_entries`: Purges all cache
+      - `path`: Purges paths from cache further specified via `values`
+      - `surrogate_key`: Purges surrogate keys specified via `values`
+    enum:
+      - all_entries
+      - path
+      - surrogate_key
+  values:
+    type: array
+    description: >
+      Depending on `purge_type` this parameter is used to specify further
+      options:
+        - Leave empty if `purge_type` is `all_entries`.
+        - If `purge_type` is `path`, `values` specifies all the paths subject to purging.
+        - If `purge_type` is `surrogate_key`, `values` specifies all the surrogate keys subject to purging.
+    items:
+      type: string
+description: Request cache purge of environment

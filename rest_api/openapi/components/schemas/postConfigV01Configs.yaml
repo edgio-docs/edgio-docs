@@ -1,0 +1,45 @@
+required:
+  - environment_id
+  - hostnames
+  - origins
+type: object
+properties:
+  environment_id:
+    type: string
+  origins:
+    type: array
+    description: List of origins for the configuration.
+    example:
+      - name: Edgio
+        hosts:
+          - location:
+              - hostname: https://test-origin.edgio.net
+    items:
+      type: string
+  hostnames:
+    type: array
+    description: List of hostnames for the configuration.
+    example:
+      - hostname: test-origin.edgio.net
+    items:
+      type: string
+  rules:
+    type: array
+    description: List of rules for the configuration.
+    example:
+      - if:
+          - '==':
+              - request: path
+              - /api/:path
+          - caching:
+              bypass_cache: true
+    items:
+      type: string
+  rtld:
+    type: object
+    properties: {}
+    description: Real-time log delivery configuration.
+    example:
+      custom_response_headers:
+        - server-timing
+description: Replace and deploy a complete edge configuration for the given environment

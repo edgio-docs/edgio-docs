@@ -1,0 +1,68 @@
+openapi: 3.0.1
+info:
+  title: Edgio Edgio APIs
+  description: API spec for Edgio APIs
+  termsOfService: https://edg.io/legal/terms-of-service/
+  contact:
+    name: info@edg.io
+    url: https://edg.io/contact-support/
+    email: info@edg.io
+  version: 1.0.0-beta
+servers:
+  - url: //edgioapis.com/
+security:
+  - Bearer: []
+tags:
+  - name: tls-certs
+    description: Operations about tls-certs
+  - name: deployments
+    description: Operations about deployments
+  - name: configs
+    description: Operations about configs
+  - name: purge requests
+    description: Operations about purge requests
+  - name: environments
+    description: Operations about environments
+  - name: properties
+    description: Operations about properties
+  - name: organizations
+    description: Operations about organizations
+paths:
+  /config/v0.1/tls-certs/{cert_id}:
+    $ref: paths/config_v0.1_tls-certs_{cert_id}.yaml
+  /config/v0.1/tls-certs:
+    $ref: paths/config_v0.1_tls-certs.yaml
+  /config/v0.1/deployments/{deployment_id}/logs:
+    $ref: paths/config_v0.1_deployments_{deployment_id}_logs.yaml
+  /config/v0.1/deployments/{deployment_id}:
+    $ref: paths/config_v0.1_deployments_{deployment_id}.yaml
+  /config/v0.1/configs/{config_id}:
+    $ref: paths/config_v0.1_configs_{config_id}.yaml
+  /config/v0.1/configs:
+    $ref: paths/config_v0.1_configs.yaml
+  /cache/v0.1/purge-requests/{request_id}:
+    $ref: paths/cache_v0.1_purge-requests_{request_id}.yaml
+  /cache/v0.1/purge-requests:
+    $ref: paths/cache_v0.1_purge-requests.yaml
+  /accounts/v0.1/environments/{environment_id}:
+    $ref: paths/accounts_v0.1_environments_{environment_id}.yaml
+  /accounts/v0.1/environments:
+    $ref: paths/accounts_v0.1_environments.yaml
+  /accounts/v0.1/properties/{property_id}:
+    $ref: paths/accounts_v0.1_properties_{property_id}.yaml
+  /accounts/v0.1/properties:
+    $ref: paths/accounts_v0.1_properties.yaml
+  /accounts/v0.1/organizations/{organization_id}:
+    $ref: paths/accounts_v0.1_organizations_{organization_id}.yaml
+  /accounts/v0.1/organizations:
+    $ref: paths/accounts_v0.1_organizations.yaml
+components:
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: |+
+        Enter the JWT token with the `Bearer` prefix, e.g. `Bearer abcdef`.
+        The token will need the following scopes:
+
+      name: Authorization
+      in: header

@@ -1,0 +1,39 @@
+required:
+  - '@id'
+  - '@type'
+  - id
+type: object
+properties:
+  '@type':
+    type: string
+    description: Resource type.
+  '@id':
+    type: string
+    description: >-
+      Used to specify the URI for the resource. Can be used by clients to
+      navigate back to that specific resource.
+  '@links':
+    type: object
+    properties: {}
+    description: Links to related resources.
+  id:
+    type: string
+    description: Resource unique identifier.
+  partner_id:
+    type: string
+    description: Partner ID
+  name:
+    type: string
+    description: Organization name
+  dns_domain_name:
+    type: string
+    description: Configure your hostname CNAMEs to point to this domain.
+  created_at:
+    type: string
+    description: Created at
+    format: date-time
+  updated_at:
+    type: string
+    description: Updated at
+    format: date-time
+description: Accounts_V1_Entities_Organization model

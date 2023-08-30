@@ -101,7 +101,7 @@ Common response headers are described below.
 
     <a id="server-timing-response-header" />
 
--   **Server-Timing:** {{ PRODUCT }} returns this response header when the [Server-Timing Header feature](/guides/performance/rules/features#server-timing-header) has been enabled. The `Server-Timing` response header contains cache status information and information about the POP that served the response. 
+-   **Server-Timing:** This response header contains cache status information and information about the POP that served the response. 
 
     **Syntax:** `server-timing: edgio_cache;desc=<CACHE STATUS CODE>,edgio_pop;desc=<POP>,edgio_country;desc=<COUNTRY>`
 

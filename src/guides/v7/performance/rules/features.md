@@ -1446,26 +1446,6 @@ new Router()
 ```
 </edgejs>
 
-
-#### Server-Timing Header {/*server-timing-header*/}
-
-Determines whether to include the [Server-Timing header](/guides/performance/response#server-timing-response-header) in the response. The `Server-Timing` response header contains cache status information and information about the POP that served the response. 
-
-<edgejs>
-**Example:**
-
-```js filename="./routes.js"
-new Router()
-  .get('/', {
-    headers: {
-      "server_timing_header": true,
-    }
-  })
-```
-</edgejs>
-
-**Default Behavior:** By default, the response excludes the `server-timing` response header.
-
 #### Set Client IP Custom Header {/*set-client-ip-custom-header*/}
 
 Adds a custom request header that identifies the requesting client by IP address. 

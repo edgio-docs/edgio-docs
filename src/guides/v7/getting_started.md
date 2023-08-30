@@ -39,7 +39,7 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
     <Callout type="info">
 
-      If you are integrating a JavaScript framework with {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, then you will take advantage of our CDN-as-code approach to configuration. This approach allows you to define your CDN configuration, including backends, within your code. Additionally, it allows you to fulfill requests through [Serverless Compute](/guides/performance/serverless_compute). As a result, you are not required to define an origin configuration.
+      If you are integrating a JavaScript framework with {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, then you will take advantage of our CDN-as-code approach to configuration. This approach allows you to define your CDN configuration, including backends, within your code. Additionally, it allows you to fulfill requests through [Cloud Functions](/guides/performance/serverless_compute). As a result, you are not required to define an origin configuration.
 
     </Callout>
 
@@ -110,4 +110,4 @@ You are now ready to:
     -   Gain performance insights through which you can fine-tune your configuration through our [Observability](/guides/performance/observability/real_user_monitoring) solution.
     -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/guides/performance/traffic_splitting) solution.
 -   Set up {{ PRODUCT }} [Security.](/guides/security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our [Web Application Firewall solution](/guides/security/waf). {{ ACCOUNT_UPGRADE }}
--   Set up {{ PRODUCT }} [Sites.](/guides/sites_frameworks/getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our serverless workers to quickly render server-side content in a scalable manner.
+-   Set up {{ PRODUCT }} [Sites.](/guides/sites_frameworks/getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our cloud workers to quickly render server-side content in a scalable manner.

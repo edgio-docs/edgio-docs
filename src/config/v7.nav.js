@@ -156,7 +156,7 @@ const nav = {
           ],
         },
         {
-          title: 'Serverless Compute',
+          title: 'Cloud Functions',
           path: 'performance/serverless_compute',
         },
         // {

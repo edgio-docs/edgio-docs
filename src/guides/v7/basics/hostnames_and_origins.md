@@ -2,18 +2,26 @@
 title: Hostnames and Origins
 ---
 
-Setting up the delivery of your site through {{ PRODUCT }} requires the following configuration for each desired [environment](/guides/basics/environments):
+Setting up the delivery of your website through {{ PRODUCT }} requires the following configuration for each desired [environment](/guides/basics/environments):
 
--   **Hostname:** Identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
--   **Origin:** Defines how our service will communicate with your web servers.
+-   **Hostname:** A hostname identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
+-   **Source:** Define the source from which {{ PRODUCT }} will retrieve content. You may retrieve content from any combination of the following sources:
+    -   **Origin:** An origin configuration defines how our service will communicate with your web servers.
+    -   **{{ PRODUCT }} cloud:** The {{ PRODUCT }} cloud, which powers [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) and [Cloud Functions](/guides/performance/serverless_compute), allows you to run serverless code.
+    
+Control how {{ PRODUCT }} communicates with your web servers or our cloud by mapping hostnames to origin configurations.
 
-Control how {{ PRODUCT }} communicates with your web servers by mapping hostnames to origin configurations.
+<Callout type="info">
+
+  {{ PRODUCT }} cloud requires a CDN-as-code configuration. We automatically create system-defined origin configurations for our cloud infrastructure as part of your initial CDN-as-code deployment. 
+  
+</Callout>
 
 ![Hostname and Origin Workflow](/images/v7/basics/hostnames-origins.png?width=781)
 
-You may also serve your site through [Serverless Compute](/guides/performance/serverless_compute). You may serve all of your site traffic through Serverless Compute, your origin server(s), or any combination of both.
+You may serve your site through our cloud, your origin server(s), or any combination of both. 
 
-![Hostname, Origin, and Serverless Compute Workflow](/images/v7/basics/hostnames-origins-serverless-compute.png)
+![Hostname, Origin, and Cloud Workflow](/images/v7/basics/hostnames-origins-cloud.png)
 
 ## Quick Start {/*quick-start*/}
 
@@ -265,7 +273,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
     ![Firewall instructions](/images/v7/basics/origins-instructions.png)
 
-    The **Allowlisting** window will display a list of IPv4 and IPv6 blocks for standard traffic, a list of IP blocks for Serverless Compute, and the domain to which the {{ PRODUCT }} CLI connects when deploying to a development or CI/CD environment.
+    The **Allowlisting** window will display a list of IPv4 and IPv6 blocks for standard traffic, Perimeter 81 for network security, AWS NAT gateway for the {{ PRODUCT }} cloud, and the domain to which the {{ PRODUCT }} CLI connects when deploying to a development or CI/CD environment.
 
     <Callout type="important">
 

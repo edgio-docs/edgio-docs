@@ -16,5 +16,8 @@ properties:
     properties: {}
     description: Links to related resources.
   logs:
-    $ref: ./Config_V1_Entities_Deployment_LogLine.yaml
+    type: array
+    description: Array of logs
+    items:
+      $ref: ./Config_V1_Entities_Deployment_LogLine.yaml
 description: Config_V1_Entities_Deployment_Logs model

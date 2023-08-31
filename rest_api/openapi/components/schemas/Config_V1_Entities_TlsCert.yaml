@@ -47,6 +47,8 @@ properties:
   alternative_names:
     type: array
     description: Alternative names
+    items:
+      type: string
   activation_error:
     type: string
     description: Activation error

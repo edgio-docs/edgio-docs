@@ -18,5 +18,8 @@ properties:
     description: Total number of items.
     format: int32
   items:
-    $ref: ./Accounts_V1_Entities_Environment.yaml
+    type: array
+    description: Array of items.
+    items:
+      $ref: ./Accounts_V1_Entities_Environment.yaml
 description: Accounts_V1_Entities_Environment_Collection model

@@ -18,5 +18,8 @@ properties:
     description: Total number of items.
     format: int32
   items:
-    $ref: ./Config_V1_Entities_TlsCert.yaml
+    type: array
+    description: Array of items.
+    items:
+      $ref: ./Config_V1_Entities_TlsCert.yaml
 description: Config_V1_Entities_TlsCert_Collection model

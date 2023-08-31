@@ -9,7 +9,7 @@ info:
     email: info@edg.io
   version: 1.0.0-beta
 servers:
-  - url: //edgioapis.com/
+  - url: //localhost:3000/api
 security:
   - Bearer: []
 tags:

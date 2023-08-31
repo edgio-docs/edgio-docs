@@ -25,9 +25,25 @@ properties:
   name:
     type: string
     description: Organization name
-  dns_domain_name:
+  pci_compliance:
     type: string
-    description: Configure your hostname CNAMEs to point to this domain.
+    description: >-
+      The overall PCI compliance based on the PCI settings of all environments
+      in scope of this organization
+    enum:
+      - pci
+      - non_pci
+      - mixed
+  pci_dns_domain_name:
+    type: string
+    description: >-
+      The PCI-compliant DNS domain for this organization. Configure your
+      hostname CNAMEs to point to this domain.
+  non_pci_dns_domain_name:
+    type: string
+    description: >-
+      The non PCI-compliant DNS domain for this organization. Configure your
+      hostname CNAMEs to point to this domain.
   created_at:
     type: string
     description: Created at

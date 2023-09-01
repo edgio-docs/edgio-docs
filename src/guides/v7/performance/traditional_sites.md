@@ -310,9 +310,17 @@ Now that you're satisfied with your site in local development, it's time to depl
 
 Deploy the build to {{ PRODUCT_NAME }} by running the `{{ FULL_CLI_NAME }} deploy` command:
 
-```bash
-{{ CLI_NAME }} deploy --team=<TEAM>
-```
+<SnippetGroup>
+
+    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
+    {{ CLI_NAME }} deploy --organization=<ORGANIZATION>
+    ```
+
+    ```bash tabLabel="Version 7.2.1 or lower"
+    {{ CLI_NAME }} deploy --team=<ORGANIZATION>
+    ```
+
+</SnippetGroup>
 
 Consult the [Deployment guide](/guides/basics/deployments) for more information on the options for deploying your site.
 

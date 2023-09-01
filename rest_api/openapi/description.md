@@ -6,19 +6,17 @@ Key information about our REST API services:
 
 -   **Protocol:** HTTPS
     
-    Communication (i.e., request-response) with our web services is only permitted via HTTPS. This ensures the privacy and integrity of your data.
+    Communication (i.e., request-response) with our web services is only permitted through HTTPS. This ensures the privacy and integrity of your data.
 
 -   **Authentication/Authorization:** `Authorization` Header
     
-    Our REST API services require authentication and authorization before a request to one of our endpoints will be honored.
-    
-    Authenticate and authorize your requests by passing the `Authorization` header with the following value:
+    Authenticate and authorize your requests by generating a token and then passing it through the `Authorization` header:
        
     ```
     Authorization: Bearer <OAUTH 2.0 TOKEN>
     ```
     
-    <a href="https://docs.edg.io/guides/develop/rest_api/authentication" target="_blank">Learn more about authorization.</a>    
+    [Get started.](#section/Quick-Start)
 
 -   **Request-Response (Accept and Content-Type):** JSON
     
@@ -30,17 +28,26 @@ Key information about our REST API services:
 
 -   **Services:** Our REST API consists of the following services:
 
-    -   **waf:** This service contains operations that allow you to retrieve and administer the following configurations: security apps, access rules, rate rules, custom rules, and managed rules.
-    -   **bot-security:** This service contains operations that allow you to retrieve and administer Bot Manager configurations.
-    -   **api-security:** This service contains operations that allow you to retrieve and administer API Security configurations.
+    | Service      | Functionality                                                                                                               |
+    | ------------ | --------------------------------------------------------------------------------------------------------------------------- |
+    | cache        | Purge cached content and find out purge status.                                                                             |
+    | config       | Deploy CDN configurations and retrieve deployment information and log data                                                  |
+    | accounts     | Retrieve and manage organizations, properties, and environments.                                                            |
+    | waf          | Retrieve and manage the following configurations: security apps, access rules, rate rules, custom rules, and managed rules. |
+    | bot-security | Retrieve and manage bot manager configurations.                                                                             |
+    | api-security | Retrieve and manage API security configurations.                                                                            |
 
 ## Quick Start
 
 Get started with our latest APIs by performing the following steps:
 
-1. <a href="https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients" target="_blank">Create an API client</a> for the desired application. Authorize this client by only assigning it the <a href="https://docs.edg.io/guides/develop/rest_api/authentication#scopes" target="_blank">scope(s)</a> required by the endpoint(s) with which it will interact.
-2. Use this client's ID and secret key to <a href="https://docs.edg.io/guides/develop/rest_api/authentication#generating-access-tokens" target="_blank">generate a temporary access token</a>.
-3. <a href="https://docs.edg.io/guides/develop/rest_api/authentication#authorizing-requests" target="_blank">Authorize your API requests</a> using the temporary access token generated in the previous step.
+1. <a href="https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients" target="_blank">Create an API client</a> for the desired application from the <a href="https://account.edgio.app/#/clients" target="_blank">Account dashboard (account.edgio.app)</a>. Grant the set of scope(s) required by the endpoint(s) with which it will interact.
+2. Use this client's ID and secret key to <a href="#section/Access-Tokens" target="_blank">generate a temporary access token</a>.
+3. [Authorize your API requests](#section/Access-Tokens) by passing the temporary access token generated in the previous step through the `Authorization` request header.
+
+```
+Authorization: Bearer A1bcbGciImtpZCI6Ij13N1VGQ01z...
+```
 
 ## Scopes
 
@@ -48,11 +55,12 @@ A scope authorizes an API client to perform specific actions (e.g., create and r
 
 | Scope            | Description                                                                                         |
 | ---------------- | --------------------------------------------------------------------------------------------------- |
+| app.cache        | Authorizes full access for purging cached content and retrieve purge status information.            |
+| app.config       | Authorizes full access for deploying CDN configurations and retrieving deployment information and log data. |
+| app.account      | Authorizes full access to manage organizations, properties, and environments.                       |
 | app.waf          | Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules. |
 | app.bot_security | Authorizes full access to Bot Manager.                                                              |
 | app.api_security | Authorizes full access to API Security.                                                             |
-
-<a href="https://docs.edg.io/guides/develop/rest_api/authentication#scopes" target="_blank">Learn more about scopes.</a>
 
 ## Access Tokens 
 

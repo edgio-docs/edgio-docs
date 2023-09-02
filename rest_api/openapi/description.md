@@ -42,7 +42,7 @@ Key information about our REST API services:
 Get started with our latest APIs by performing the following steps:
 
 1. <a href="https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients" target="_blank">Create an API client</a> for the desired application from the <a href="https://account.edgio.app/#/clients" target="_blank">Account dashboard (account.edgio.app)</a>. Grant the set of scope(s) required by the endpoint(s) with which it will interact.
-2. Use this client's ID and secret key to <a href="#section/Access-Tokens" target="_blank">generate a temporary access token</a>.
+2. Use this client's ID and secret key to [generate a temporary access token](#section/Access-Tokens).
 3. [Authorize your API requests](#section/Access-Tokens) by passing the temporary access token generated in the previous step through the `Authorization` request header.
 
 ```

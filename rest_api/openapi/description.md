@@ -46,7 +46,9 @@ Get started with our latest APIs by performing the following steps:
 3. Authorize your API requests by passing the temporary access token generated in the previous step through the `Authorization` request header.
 
 ```
-Authorization: Bearer A1bcbGciImtpZCI6Ij13N1VGQ01z...
+curl --request GET \
+     --url https://edgioapis.com/waf/v0.9/12345678-1234-1234-1234-1234567890ab/scopes \
+     --header 'Authorization: Bearer  A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ'
 ```
 
 ## Scopes
@@ -64,7 +66,22 @@ A scope authorizes an API client to perform specific actions (e.g., create and r
 
 ## Access Tokens 
 
-Each request to our REST API service must be authorized through an access token. Access tokens provide temporary authorization (e.g., 5 minutes) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
+Each request to a REST API service must be authorized by passing an access token to the `Authorization` request header.
+
+**Sample Authorization request header:**
+```
+Authorization: Bearer A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ
+```
+
+**Sample API request:**
+
+```
+curl --request GET \
+     --url https://edgioapis.com/waf/v0.9/12345678-1234-1234-1234-1234567890ab/scopes \
+     --header 'Authorization: Bearer  A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ'
+```
+
+Access tokens provide temporary authorization (e.g., 1 minute) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
 
 **Access token request:** 
 
@@ -85,7 +102,7 @@ Requests for access tokens requires:
     -   `<SECRET>`**:** Represents the secret assigned to your REST API client.
     -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. Common scopes are listed below.
 
-**Sample request:**
+**Sample access token request:**
 
 ``` curl
 POST https://id.edgio.app/connect/token HTTP/1.1
@@ -118,6 +135,7 @@ HTTP method is a critical component of a request to our REST API service as it d
 
 -   **DELETE:** Deletes a resource (e.g., custom rule or managed rule configuration).
 -   **GET:** Retrieves all or a specific resource.
+-   **PATCH:** Partially updates a resource (e.g., environment).
 -   **POST:** Creates a resource (e.g., custom rule or managed rule configuration).
 -   **PUT:** Updates a resource (e.g., custom rule or managed rule configuration).
 
@@ -125,19 +143,17 @@ Our REST API service may return a `405 Method Not Allowed` response for requests
   
 ## Request URL
 
-Requests to services that leverage our API gateway follow this basic pattern:
+The base URL for our REST API follows this basic pattern:
 
-`https://edgioapis.com/<SERVICE>/<VERSION>/<TEAM ID>/<RESOURCE>`
+`https://edgioapis.com/<SERVICE>/<VERSION>/`
 
--   `<SERVICE>`**:** Identifies the REST API web service (e.g., waf) designed to manage requests for a specific set of resources.
+-   `<SERVICE>`**:** Identifies the REST API web service (e.g., cache, waf, and bot-security) designed to manage requests for a specific set of resources.
 -   `<VERSION>`**:** Identifies the version of the REST API service that will be called.
--   `<TEAM ID>`**:** Identifies your team by its system-defined ID.
--   `<RESOURCE>`**:** Identifies the type of resource to which the action defined by the HTTP method will be applied.
 
-**Sample request:** 
+**Sample Request URL:** 
 
 ```
-https://edgioapis.com/waf/0.9/12345678-1234-1234-1234-1234567890ab/profile
+https://edgioapis.com/cache/v0.1/purge-requests
 ```
 
 ## Request Headers
@@ -151,14 +167,14 @@ Request headers provide information about your request to a REST API service. Th
 | Request Header | Description                                                                                                                                                                                                         |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Authorization  | Authorize requests through the `Authorization` request header. <a href="https://docs.edg.io/guides/develop/rest_api/authorization#authorizing-requests" target="_blank">Learn more about authorization.</a>                                                       |
-| Accept         | This header should indicate the format in which the response will be returned. The recommended value for this request header is: `application/json`.                                                                |
-| Content-Type   | This header should indicate the format of the request body. The recommended value for this request header is: `application/json`. <br />You may omit this header when an endpoint does not have request properties. |
-| Host           | This header, which is set by the user agent, indicates the host name corresponding to the requested endpoint (i.e., id.edgio.app).                                                                               |
+| Accept         | This header should indicate the format in which the response will be returned. If you pass this header, set it to: `application/json`.                                                                |
+| Content-Type   | This header should indicate the format of the request body. If you pass this header, set it to: `application/json`. <br />You may omit this header when an endpoint does not have request properties. |
+| Host           | This header, which is set by the user agent, indicates the host name corresponding to the requested endpoint (i.e., edgioapis.com or id.edgio.app).                                                                               |
 | Content-Length | This header, which is set by the user agent, indicates the number of bytes contained in the request body.                                                                                                           |
 
 ## Request Body
 
-`PUT` and `POST` requests typically require request body properties that describe the action that will take place. These request body properties are case-sensitive.
+`POST`, `PUT`, and `PATCH` requests typically require request body properties that describe the action that will take place. These request body properties are case-sensitive.
 
 ## Response Headers
 

@@ -100,6 +100,10 @@ tags:
       
       <a href="https://docs.edg.io/guides/security/bot_rules" target="_blank">Learn more about bot manager.</a>
 
+  - name: Known Bots
+    x-displayName: Known Bots
+    description: Lists all known bots.
+
   - name: API Gateways
     x-displayName: API Security Ruleset
     description: |
@@ -121,98 +125,98 @@ paths:
   /config/v0.1/tls-certs/{cert_id}:
     $ref: paths/config_v0.1_tls-certs_{cert_id}.yaml
     servers:
-      - url: 'https://edgioapis.com/config/v0.1/'
+      - url: 'https://edgioapis.com/'
     security:
       - bearerAuth:
           - app.config
   /config/v0.1/tls-certs:
     $ref: paths/config_v0.1_tls-certs.yaml
     servers:
-      - url: 'https://edgioapis.com/config/v0.1/'
+      - url: 'https://edgioapis.com/'
     security:
       - bearerAuth:
           - app.config
   /config/v0.1/deployments/{deployment_id}/logs:
     $ref: paths/config_v0.1_deployments_{deployment_id}_logs.yaml
     servers:
-      - url: 'https://edgioapis.com/config/v0.1/'
+      - url: 'https://edgioapis.com/'
     security:
       - bearerAuth:
           - app.config
   /config/v0.1/deployments/{deployment_id}:
     $ref: paths/config_v0.1_deployments_{deployment_id}.yaml
     servers:
-      - url: 'https://edgioapis.com/config/v0.1/'
+      - url: 'https://edgioapis.com/'
     security:
       - bearerAuth:
           - app.config
   /config/v0.1/configs/{config_id}:
     $ref: paths/config_v0.1_configs_{config_id}.yaml
     servers:
-      - url: 'https://edgioapis.com/config/v0.1/'
+      - url: 'https://edgioapis.com/'
     security:
       - bearerAuth:
           - app.config
   /config/v0.1/configs:
     $ref: paths/config_v0.1_configs.yaml
     servers:
-      - url: 'https://edgioapis.com/config/v0.1/'
+      - url: 'https://edgioapis.com/'
     security:
       - bearerAuth:
           - app.config
   /cache/v0.1/purge-requests/{request_id}:
     $ref: paths/cache_v0.1_purge-requests_{request_id}.yaml
     servers:
-      - url: 'https://edgioapis.com/cache/v0.1/'
+      - url: 'https://edgioapis.com/'
     security:
       - bearerAuth:
           - app.cache
   /cache/v0.1/purge-requests:
     $ref: paths/cache_v0.1_purge-requests.yaml
     servers:
-      - url: 'https://edgioapis.com/cache/v0.1/'
+      - url: 'https://edgioapis.com/'
     security:
       - bearerAuth:
           - app.config
   /accounts/v0.1/environments/{environment_id}:
     $ref: paths/accounts_v0.1_environments_{environment_id}.yaml
     servers:
-      - url: 'https://edgioapis.com/accounts/v0.1/'
+      - url: 'https://edgioapis.com/'
     security:
       - bearerAuth:
           - app.accounts
   /accounts/v0.1/environments:
     $ref: paths/accounts_v0.1_environments.yaml
     servers:
-      - url: 'https://edgioapis.com/accounts/v0.1/'
+      - url: 'https://edgioapis.com/'
     security:
       - bearerAuth:
           - app.accounts
   /accounts/v0.1/properties/{property_id}:
     $ref: paths/accounts_v0.1_properties_{property_id}.yaml
     servers:
-      - url: 'https://edgioapis.com/accounts/v0.1/'
+      - url: 'https://edgioapis.com/'
     security:
       - bearerAuth:
           - app.accounts
   /accounts/v0.1/properties:
     $ref: paths/accounts_v0.1_properties.yaml
     servers:
-      - url: 'https://edgioapis.com/accounts/v0.1/'
+      - url: 'https://edgioapis.com/'
     security:
       - bearerAuth:
           - app.accounts
   /accounts/v0.1/organizations/{organization_id}:
     $ref: paths/accounts_v0.1_organizations_{organization_id}.yaml
     servers:
-      - url: 'https://edgioapis.com/accounts/v0.1/'
+      - url: 'https://edgioapis.com/'
     security:
       - bearerAuth:
           - app.accounts
   /accounts/v0.1/organizations:
     $ref: paths/accounts_v0.1_organizations.yaml
     servers:
-      - url: 'https://edgioapis.com/accounts/v0.1/'
+      - url: 'https://edgioapis.com/'
     security:
       - bearerAuth:
           - app.accounts
@@ -475,13 +479,6 @@ paths:
     security:
       - bearerAuth:
           - app.bot-security
-  /bots/policies:
-    $ref: paths/bots@policies.yaml
-    servers:
-      - url: 'https://edgioapis.com/bot-security/v0.9/'
-    security:
-      - bearerAuth:
-          - app.bot-security
 components:
   securitySchemes:
     bearerAuth:
@@ -507,6 +504,7 @@ x-tagGroups:
       - Rate Rules (Limits)
       - Bot Managers
       - Bot Rules
+      - Known Bots
       - Custom Rules
       - Managed Rules (Profiles)
       - Security Applications (Scopes)

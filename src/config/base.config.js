@@ -61,6 +61,8 @@ const EDGEJS_LABEL = 'EdgeJS';
 
 const YEAR = '2023';
 
+const BOT_MUSTACHE = `\`{{BOT_JS}}\``;
+
 const EXAMPLES_REPOS = {
   angular: 'https://github.com/edgio-docs/edgio-angular-example',
   astro: 'https://github.com/edgio-docs/edgio-astro-example',
@@ -182,6 +184,7 @@ const config = {
   SUPPORT_URL,
   CONTACT_SUPPORT,
   YEAR,
+  BOT_MUSTACHE,
   WWW_URL,
   RUM_NS,
   PACKAGE_VERSION,

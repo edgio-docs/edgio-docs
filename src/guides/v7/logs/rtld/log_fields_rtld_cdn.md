@@ -135,7 +135,7 @@ The `logs` array contains an object for each log entry associated with the curre
 
     **Example:** `TLSv1.3`
 
--   `cookie_<COOKIE>`** (*String*):** Cookie. Indicates the value of the cookie defined within the field name. A key-value pair will be included for each cookie defined within the **Custom Cookies** option.
+-   `cookie_<COOKIE>` **(*String*):** Cookie. Indicates the value of the cookie defined within the field name. A key-value pair will be included for each cookie defined within the **Custom Cookies** option.
 
     **Example:** The following key-value pair indicates that the `sessionId` cookie was set to `abc123def`:
 

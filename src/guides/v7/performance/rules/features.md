@@ -990,12 +990,11 @@ export default new Router()
 
 #### Rewrite Cache Key {/*rewrite-cache-key*/}
 
-Rewrites the default cache key for a set of requests. 
-
-[Learn more about cache keys.](/guides/performance/caching/cache_key)
+Rewrites the [default cache key](/guides/performance/caching/cache_key#cache-key-reference) for a set of requests. 
 
 **Key information:**
 
+-   This is an advanced feature that should only be used when you require precise control over the cache key. Consider using the [Cache Key feature](#cache-key) instead.
 -   Our servers use the cache key to check for a cached version of an asset.
 -   This feature allows you to customize the default cache key for a set of requests by replacing the following elements from the cache key:
     -   **Relative Path:** This relative URL path, which starts directly after the hostname, is derived from the request whose response is being cached. 

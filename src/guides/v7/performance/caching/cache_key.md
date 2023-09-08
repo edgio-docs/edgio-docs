@@ -34,7 +34,7 @@ If your web application relies on query string parameter(s), request header(s), 
 
 <Callout type="tip">
 
-  We strongly recommend that you limit cache key customization to one of the above features per rule. Applying multiple cache key features can potentially generate conflicting cache keys or cause too much segmentation for your cached content.
+  We strongly recommend that you limit cache key customization to one of the above features per rule. Applying multiple cache key features may produce unexpected results or cause too much segmentation for your cached content.
 
 </Callout>
 
@@ -52,12 +52,11 @@ Restrict the cache key to only include the `page` and `filters` query string par
 -   **CDN-as-Code:** 
 
     ```js filename="./routes.js"
-    router.get('/some/path', {
+    export default new Router().always({
       caching: {
-        // Other options...
         cache_key: {
-          include_query_params: ["page", "filters"] 
-        }
+          include_query_params: ["page", "filters"],
+        },
       },
     });
     ```
@@ -135,7 +134,7 @@ Definitions for the above placeholder values are provided below.
 | `<ORIGIN CONFIGURATION>` | Indicates the name of the origin configuration associated with the request. <br /><br />**CDN-as-code:** Deploying a CDN-as-code configuration automatically generates the following system-defined origin configurations: `edgio_static`, `edgio_permanent_static`, `edgio_serverless`, and `edgio_image_optimizer`. Your rules determine on a per request basis which origin configuration will be applied to the cache key. View how {{ PRODUCT }} maps your code to these origin configurations from the **Rules** page. Returns `origin` when an origin configuration is inapplicable to a request. |
 | `<DEPLOYMENT VERSION>`   | Indicates the version of the deployment for the configuration that served the request whose response was cached.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | `<RELATIVE PATH>`        | Indicates the relative path to the requested content. This relative path starts directly after the hostname.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `<QUERY STRING HASH>`    | Indicates a hash of the request's query string. If the request URL does not contain a query string, then the cache key will exclude `q-<QUERY STRING HASH>_`. <Callout type="tip">Exclude the query string from the cache key through the [Cache Key Query String feature (cache_key_query_string)](/guides/performance/rules/features#cache-key-query-string) or by defining a custom cache key through the [Rewrite Cache Key feature (cache_key_rewrite)](/guides/performance/rules/features#rewrite-cache-key).</Callout>                                                                            |
+| `<QUERY STRING HASH>`    | Indicates a hash of the request's query string. If the request URL does not contain a query string, then the cache key will exclude `q-<QUERY STRING HASH>_`. <Callout type="tip">Exclude the query string from the cache key through the [Cache Key feature (cache_key)](/guides/performance/rules/features#cache-key).</Callout>                                                                            |
 | `<URI HASH>`             | Indicates a hash of the request URI.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | `<FILE EXTENSION>`       | Indicates the request's file extension (e.g., `.html`). It is excluded from the cache key when the request URL does not contain a file extension.                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 

@@ -320,7 +320,7 @@ Customizes the cache key through query string parameters, request headers, cooki
 
 [Learn more about cache keys.](/guides/performance/caching/cache_key)
 
--   **Query String Parameters:** Include or exclude all query string parameters by seting the **Query Parameters** option to either `Include All` or `Exclude All`. Alternatively, include or exclude specific query string parameters through the `Include` or `Include All Except` modes.
+-   **Query String Parameters:** Include or exclude all query string parameters by seting the **Query Parameters** option to either `Include All` or `Exclude All`. Alternatively, include or exclude specific query string parameters through the `Include Only` or `Include All Except` modes.
 
     -   **Include All:** Indicates that a unique cache key will be created for each request to an asset that includes a unique query string.
 
@@ -362,7 +362,7 @@ export default new Router().always({
 });
 ```
 </edgejs>
-**Default Behavior:** The [default cache key](/guides/performance/rules/feature_variables) includes all query string parameters and excludes request headers, cookies, and feature variables. 
+**Default Behavior:** The [default cache key](/guides/performance/caching/cache_key#cache-key-reference) includes all query string parameters and excludes request headers, cookies, and feature variables. 
 
 #### Cache Key Query String {/*cache-key-query-string*/}
 

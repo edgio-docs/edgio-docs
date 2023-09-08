@@ -126,8 +126,8 @@ const nav = {
           ],
         },
         // {
-          // title: 'Static Prerendering',
-          // path: 'performance/static_prerendering',
+        // title: 'Static Prerendering',
+        // path: 'performance/static_prerendering',
         // },
         {
           title: 'Predictive Prefetch',
@@ -446,10 +446,10 @@ const nav = {
               title: 'Stencil',
               path: 'sites_frameworks/getting_started/stencil',
             },
-            // {
-            //   title: 'Svelte',
-            //   path: 'sites_frameworks/getting_started/svelte',
-            // },
+            {
+              title: 'SvelteKit',
+              path: 'sites_frameworks/getting_started/sveltekit',
+            },
             // {
             //   title: 'UmiJS',
             //   path: 'sites_frameworks/getting_started/umijs',

@@ -13,7 +13,7 @@ title: SvelteKit
   deployFromRepo
 /> -->
 
-## Connector {/* connector */}
+<!-- ## Connector {/* connector */}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
 
@@ -23,19 +23,20 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
   withIcon={true}
   href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-sveltekit-connector">
   View the Connector Code
-</ButtonLink>
+</ButtonLink> -->
 
 {{ PREREQ.md }}
 
-## Create your SvelteKit site {/* create-your-sveltekit-site */}
+## Create Your Sveltekit App {/* create-your-sveltekit-app */}
 
-If you don't have an existing SvelteKit site, you can create one by running:
+If you don't have an existing SvelteKit app, you can create one by running:
 
 ```bash
 npm create svelte@latest my-svelte-app
 ```
 
-To use the default example app, make the following selections when prompted:
+To use the default app, make the following selections when prompted:
+
 ```plaintext diff highlight="2,8"
 ◆ Which Svelte app template?
   ❯ SvelteKit demo app (A demo app showcasing some of the features of SvelteKit - play a word guessing game that works without JavaScript!)
@@ -51,7 +52,7 @@ cd my-svelte-app
 npm install
 ```
 
-## Initializing your Project {/* initializing-your-project */}
+## Initializing Your Project {/* initializing-your-project */}
 
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
@@ -85,7 +86,7 @@ export default new Router().use(svelteKitRoutes);
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
 
-### Run the SvelteKit app locally on {{ PRODUCT_NAME }} {/*run-the-sveltekit-app-locally-on*/}
+### Run the Sveltekit App Locally on {{ PRODUCT_NAME }} {/*run-the-sveltekit-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

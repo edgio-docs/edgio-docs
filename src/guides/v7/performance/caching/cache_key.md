@@ -42,7 +42,7 @@ If your web application relies on query string parameter(s), request header(s), 
 
 Examples of how to customize the cache key are provided below.
 
-### Query String Parameter Example
+### Query String Parameter Example {/*query-string-parameter-example*/}
 
 Restrict the cache key to only include the `page` and `filters` query string parameters using either of the following methods:
 -   **Rules:** Create a rule that sets the [Cache Key feature](/guides/performance/rules/features#cache-key) to `Include Only` the `page` and `filters` query string parameters.

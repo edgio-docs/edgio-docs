@@ -24,21 +24,19 @@ If your web application relies on query string parameter(s), request header(s), 
 
     For example, if the response varies according to a single query string parameter, then you should only add that query string parameter to your cache key. Adding additional query string parameters may cause too much segmentation for your cached content and thus reduce your cache hit ratio.
 
--   Customize the cache key for a specific set of requests by implementing either of the following features within a rule or route:
+-   Customize the cache key for a specific set of requests by implementing one of the following features within a rule or route:
 
-    -   [Cache Key Query String:](/guides/performance/rules/features#cache-key-query-string) Use this feature if you need to include one or more query string parameters in the cache key.
+    | Feature                                                                              | CDN-as-Code                                                                                   | Description                                                                                                                              |
+    | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+    | [Cache Key](/guides/performance/rules/features#cache-key)                           | cache_key                                                                                     | Recommended. Use this feature to customize the cache key through query string parameters, request headers, cookies, and custom metadata. |
+    | [Cache Key Query String](/guides/performance/rules/features#cache-key-query-string) | [cache_key_query_string](/docs/api/core/interfaces/types.Caching.html#cache_key_query_string) | Use this feature if you need to include one or more query string parameters in the cache key.                                            |
+    | [Rewrite Cache Key](/guides/performance/rules/features#rewrite-cache-key)           | [cache_key_rewrite](/docs/api/core/interfaces/types.Caching.html#cache_key_rewrite)           | Advanced. Use this feature if you require precise control over how a cache key is calculated.                                            |
 
-        **CDN-as-code:** [cache_key_query_string](/docs/api/core/interfaces/types.Caching.html#cache_key_query_string) 
+<Callout type="tip">
 
-    -   [Rewrite Cache Key:](/guides/performance/rules/features#rewrite-cache-key) Use this feature if you require additional control over how a cache key is calculated.
+  We strongly recommend that you limit cache key customization to one of the above features per rule. Applying multiple cache key features can potentially generate conflicting cache keys or cause too much segmentation for your cached content.
 
-        **CDN-as-code:** [cache_key_rewrite](/docs/api/core/interfaces/types.Caching.html#cache_key_rewrite) 
-
-    <Callout type="tip">
-	
-	  We recommend only using one of the above features per rule, since the Rewrite Cache Key feature overwrites the relative path and the query string defined within the cache key. The results may be hard to predict if you apply both features within the same rule. However, the Rewrite Cache Key feature will be applied first.
-	
-	</Callout>
+</Callout>
 
 ## Sample Custom Cache Key Implementations {/*sample-custom-cache-key-implementations*/}
 
@@ -46,10 +44,10 @@ Examples of how to customize the cache key are provided below.
 
 ### Query String Parameter Example
 
-Add the `page` and `filters` query string parameters to the cache key using either of the following methods:
--   **Rules:** Create a rule that sets the [Cache Key Query String feature](/guides/performance/rules/features#cache-key-query-string) to `Include` the `page` and `filters` query string parameters.
+Restrict the cache key to only include the `page` and `filters` query string parameters using either of the following methods:
+-   **Rules:** Create a rule that sets the [Cache Key feature](/guides/performance/rules/features#cache-key) to `Include Only` the `page` and `filters` query string parameters.
 
-    ![Cache Key Query String feature example](/images/v7/performance/cache-key-query-string-example.png?width=450)
+    ![Cache Key feature example](/images/v7/performance/cache-key-header-example.png?width=450)
 
 -   **CDN-as-Code:** 
 
@@ -57,9 +55,9 @@ Add the `page` and `filters` query string parameters to the cache key using eith
     router.get('/some/path', {
       caching: {
         // Other options...
-        cache_key_query_string: {
-          include: ['page', 'filters'],
-        },
+        cache_key: {
+          include_query_params: ["page", "filters"] 
+        }
       },
     });
     ```
@@ -70,32 +68,22 @@ This example demonstrates how to apply a custom default cache key for requests t
 
 `https://www.example.com/conferences/marketing/index.htm`
 
-Specifically, we will append the `language` and `currency` cookies to the cache key using either of the following methods:
+Specifically, we will include the `language` and `currency` cookies within the cache key using either of the following methods:
 
--   **Rules:** Create a rule that defines the [Rewrite Cache Key feature](/guides/performance/rules/features#rewrite-cache-key) as indicated below:
-    -   **Source:** Set this to option to the relative path for the set of requests whose cache key will be rewritten. In this case, we will set it to the following pattern to identify requests for the `marketing` folder:
-	
-        `/conferences/marketing/(.*)`
-		
-		The last URL segment is set to `(.*)`. This regular expression syntax matches any number of characters that follow `/conferences/marketing/`. 
+-   **Rules:** Create a rule that defines:
+    -   The [Path match condition](/guides/performance/rules/conditions#path). Set the **Match Value** option to `/conferences/marketing/:asset`.
+    -   The [Cache Key feature](/guides/performance/rules/features#cache-key). Add `language` and `currency` to the **Cookies** option. 
 
-    -   **Destination:** Set this option to the cache key's replacement pattern. In this case, we will set the default cache key to the request's relative path followed by a dash and the value assigned to the `language` and `currency` cookies:
-	
-        `/conferences/marketing/$1-%{cookie_language}-%{cookie_currency}`
-
-        Notice that we are using `$1`, which is a numbered backreference, to reintroduce the value captured by `(.*)` within the **Source** option.
-		
-        ![Rewrite Cache Key feature example](/images/v7/performance/rewrite-cache-key-example.png?width=450)
+        ![Cache Key feature example](/images/v7/performance/cache-key-cookie-example.png?width=450)
 
 -   **CDN-as-Code:** 
 
     ```js filename="./routes.js"
-    router.get('/conferences/marketing', {
+    export default new Router().match("/conferences/marketing/:asset", {
       caching: {
-        // Other options...
-        cache_key_rewrite: {
-          source: '/conferences/marketing/(.*)',
-          destination: '/conferences/marketing/$1-%{cookie_language}-%{cookie_currency}',
+        cache_key: {
+          include_all_query_params: true,
+          include_cookies: ["language", "currency"],
         },
       },
     });
@@ -108,25 +96,20 @@ This example demonstrates how to add geolocation metadata to the cache key for r
 
 Specifically, we will add the country from which the request originated to the cache key using either of the following methods:
 
--   **Rules:** Create a rule that defines the [Rewrite Cache Key feature](/guides/performance/rules/features#rewrite-cache-key) as indicated below:
-    -   **Source:** Set this to option to the relative path for the set of requests whose cache key will be rewritten.
-	
-        `/marketing/images/(.*)`
-    -   **Destination:** Set this option to the cache key's replacement pattern.
-	
-        `%{path}-%{geo_country}`
-		
-		Notice that we are using the `%{path}` [feature variable](/guides/performance/rules/feature_variables) to reintroduce the relative path into the cache key. Alternatively, we could have used a backreference as demonstrated in the [cookie example](#cookie-example)
+-   **Rules:** Create a rule that defines:
+    -   The [Path match condition](/guides/performance/rules/conditions#path). Set the **Match Value** option to `/conferences/marketing/:asset`.
+    -   The [Cache Key feature](/guides/performance/rules/features#cache-key). Add `%{geo_country}` to the **Expressions** option. 
+
+        ![Cache Key feature example](/images/v7/performance/cache-key-country-example.png?width=450)
 
 -   **CDN-as-Code:** 
 
     ```js filename="./routes.js"
-    router.get('/conferences/marketing', {
+    export default new Router().match("/conferences/marketing/:asset", {
       caching: {
-        // Other options...
-        cache_key_rewrite: {
-          source: '/marketing/images/(.*)',
-          destination: '%{path}-%{geo_country}',
+        cache_key: {
+          include_all_query_params: true,
+          include_expressions: ["%{geo_country}"],
         },
       },
     });
@@ -134,7 +117,7 @@ Specifically, we will add the country from which the request originated to the c
 
 <Callout type="tip">
 
-  Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct the cache key's replacement pattern. However, you may not use response metadata when defining a cache key.
+  Use [feature variables](/guides/performance/rules/feature_variables) when defining expressions. However, you may not use response metadata when defining a cache key.
 
 </Callout>
 

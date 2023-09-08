@@ -1,4 +1,5 @@
 type: string
+description: Determines how requests will be identified. 
 enum:
   - FILE_EXT
   - REMOTE_ADDR

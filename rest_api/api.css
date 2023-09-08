@@ -70,8 +70,8 @@ data-styled.g22[id="sc-gFqAkR"]{content:"eRqgPI,"}/*!sc*/
 .ccPhmY .sc-ikkxIA,.ccPhmY .sc-ikkxIA .sc-ikkxIA .sc-ikkxIA,.ccPhmY .sc-ikkxIA .sc-ikkxIA .sc-ikkxIA .sc-ikkxIA .sc-ikkxIA{margin:1em;margin-right:0;background:#fafafa;}/*!sc*/
 .ccPhmY .sc-ikkxIA .sc-ikkxIA,.ccPhmY .sc-ikkxIA .sc-ikkxIA .sc-ikkxIA .sc-ikkxIA,.ccPhmY .sc-ikkxIA .sc-ikkxIA .sc-ikkxIA .sc-ikkxIA .sc-ikkxIA .sc-ikkxIA{background:#ffffff;}/*!sc*/
 data-styled.g24[id="sc-dAbbOL"]{content:"ccPhmY,"}/*!sc*/
-.dHowgL > ul{list-style:none;padding:0;margin:0;margin:0 -5px;}/*!sc*/
-.dHowgL > ul > li{padding:5px 10px;display:inline-block;background-color:#11171a;border-bottom:1px solid rgba(0,0,0,0.5);cursor:pointer;text-align:center;outline:none;color:#ccc;margin:0 5px 5px 5px;border:1px solid #07090b;border-radius:5px;min-width:60px;font-size:0.9em;font-weight:bold;}/*!sc*/
+.dHowgL > ul{list-style:none;padding:0;margin: 0 -5px -5px 0;}/*!sc*/
+.dHowgL > ul > li{padding:5px 10px;display:inline-block;background-color:#11171a;border-bottom:1px solid rgba(0,0,0,0.5);cursor:pointer;text-align:center;outline:none;color:#ccc;margin: 0 1px;border:1px solid #07090b;border-radius:5px;min-width:60px;font-size:0.9em;font-weight:bold;}/*!sc*/
 .dHowgL > ul > li.react-tabs__tab--selected{color:#333333;background:#ffffff;}/*!sc*/
 .dHowgL > ul > li.react-tabs__tab--selected:focus{outline:auto;}/*!sc*/
 .dHowgL > ul > li:only-child{-webkit-flex:none;-ms-flex:none;flex:none;min-width:100px;}/*!sc*/
@@ -237,7 +237,7 @@ data-styled.g51[id="sc-JrDLc"]{content:"hMzemk,"}/*!sc*/
 data-styled.g52[id="sc-fjvvzt"]{content:"dMqZRk,"}/*!sc*/
 .hzinCC{font-family:"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:12px;position:absolute;z-index:1;top:-11px;left:12px;font-weight:600;color:rgba(255,255,255,0.7);}/*!sc*/
 data-styled.g53[id="sc-bbSZdi"]{content:"hzinCC,"}/*!sc*/
-.hEqesG{position:relative;}/*!sc*/
+.hEqesG{display:none;position:relative;}/*!sc*/
 data-styled.g54[id="sc-fBWQRz"]{content:"hEqesG,"}/*!sc*/
 .gKuDgt{margin-top:15px;}/*!sc*/
 data-styled.g57[id="sc-hCPjZK"]{content:"gKuDgt,"}/*!sc*/
@@ -401,6 +401,8 @@ data-styled.g137[id="sc-kqGoIF"]{content:"eLSrIr,"}/*!sc*/
 .eajCCh{position:absolute;left:22px;height:1.8em;width:0.9em;}/*!sc*/
 .eajCCh path{fill:#333333;}/*!sc*/
 data-styled.g138[id="sc-dxcDKg"]{content:"eajCCh,"}/*!sc*/
+
+.eJDRKz {display: none;}
 
 .property-name,
 .wfptf,

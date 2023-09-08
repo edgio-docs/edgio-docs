@@ -1,8 +1,15 @@
 title: Variable
 type: object
+description: 
 properties:
   type:
     type: string
+    description: |
+
+      Determines the request element that will be assessed. 
+
+      <a href="https://docs.edg.io/guides/v7/security/matched_on_variables" target="_blank">Learn more about matched on variables.</a>
+
     enum:
       - REQUEST_HEADERS
       - REQUEST_URI
@@ -12,11 +19,21 @@ properties:
       - GEO
       - REMOTE_ADDR
   match:
-    description: Max 20 entries.
+    description: Contains comparison settings for the request element identified by the `type` property. You may define up to 20 entries.
     type: array
     items:
       $ref: ./MatchBot.yaml
   is_count:
     type: boolean
+    description: | 
+    
+      Determines whether a comparison will be performed between the operator object and a string value or the number of matches found. Valid values are:
+
+      -   **true:** A counter will increment whenever the request element defined by this `variable` object is found. Our service will compare this value against `operator.value`.
+
+          If you enable the `is_count` property, then you must also set the `operator.type` property to `EQ`.
+
+    -   **false:** Our service will compare the string value derived from the request element defined by this variable object against `operator.value`.
+
 required:
   - type

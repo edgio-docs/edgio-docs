@@ -3,5 +3,7 @@ type: object
 properties:
   policy_id:
     type: string
+    description: The system-defined ID for the policy associated with a disabled rule.    
   rule_id:
     type: string
+    description: The rule's system-defined ID.

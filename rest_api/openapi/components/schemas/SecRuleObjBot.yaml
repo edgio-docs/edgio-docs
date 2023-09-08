@@ -1,13 +1,17 @@
 title: Sec Rule Object
 type: object
+description: A configuration for a bot rule that uses custom match conditions.
 properties:
   id:
     type: string
+    description: The bot rule's system-defined ID.
   name:
     type: string
+    description: The bot rule's name.
   variable:
-    description: Max 20 entries.
+    description: Contains criteria that identifies a request element. You may define up to 20 entries.
     type: array
+    description: 
     items:
       $ref: ./VariableBot.yaml
   operator:
@@ -15,7 +19,7 @@ properties:
   action:
     $ref: ./RulesActionBot.yaml
   chained_rule:
-    description: Max 5 entries.
+    description: Contains additional criteria that must be satisfied to identify traffic to which this bot rule will be applied. You may add up to 5 `chained_rule` objects per bot rule.
     type: array
     items:
       $ref: ./ChainedRuleBot.yaml

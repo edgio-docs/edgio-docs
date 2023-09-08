@@ -1,3 +1,24 @@
+post:
+  operationId: create-bot-manager
+  tags:
+    - Bot Managers
+  summary: POST Bot Manager
+  description: Create a new Bot Manager for a given team.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/BotManager.yaml
+  responses:
+    '200':
+      description: Bot Manager created successfully
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
 get:
   operationId: get-bot-managers
   tags:
@@ -22,27 +43,6 @@ get:
                   name: sample_bot_manager_config
     '404':
       description: team not found
-    '429':
-      $ref: ../components/responses/error_429.yaml
-    '500':
-      $ref: ../components/responses/error_500.yaml
-post:
-  operationId: create-bot-manager
-  tags:
-    - Bot Managers
-  summary: POST Bot Manager
-  description: Create a new Bot Manager for a given team.
-  parameters:
-    - $ref: ../components/parameters/team_id.yaml
-  requestBody:
-    $ref: ../components/requestBodies/BotManager.yaml
-  responses:
-    '200':
-      description: Bot Manager created successfully
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/ResponseObj.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':

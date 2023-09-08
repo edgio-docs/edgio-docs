@@ -1,11 +1,15 @@
 title: Alert Action
 type: object
+description: Generates an alert. 
 properties:
   id:
     type: string
+    description: The enforcement action's system-defined ID.
   name:
     type: string
+    description: The enforcement action's name.
   enf_type:
     type: string
+    description: The type of enforcement action. 
     enum:
       - ALERT

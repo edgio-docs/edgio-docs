@@ -2,8 +2,6 @@ title: Reputation DB Include
 type: object
 properties:
   include:
-    description: >-
-      Optional object to allow Bot rule to issue challenge to IP found in Edgio
-      Reputation Database
+    description: Indicates that the bot rule that will use our reputation database. This type of rule is satisfied when the client’s IP address matches an IP address defined within our reputation database. Our reputation database contains a list of IP addresses known to be used by bots.     
     enum:
       - r3010_ec_bot_challenge_reputation.conf.json

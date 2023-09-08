@@ -31,8 +31,8 @@ properties:
     type: string
     description: List of rules for the configuration.
     example: ''
-  rtld:
+  experiments:
     type: string
-    description: Real-time log delivery configuration.
+    description: List of experiments for the configuration.
     example: ''
 description: Config_V1_Entities_Config model

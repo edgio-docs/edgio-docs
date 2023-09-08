@@ -1,7 +1,15 @@
 type: object
+description: Describes the type of match condition.
 properties:
   type:
+    description: Determines how requests will be identified. 
     $ref: ./TargetType.yaml
   value:
-    description: Required for REQUEST_HEADERS type
+    description: |
+    
+      Required for `REQUEST_HEADERS` type. The name of the request header through which requests will be identified. Valid values are: 
+      
+      ```
+      Host | Referer User-Agent
+      ```
     type: string

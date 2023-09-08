@@ -1,5 +1,6 @@
 title: Security Rule
 type: object
+description: Indicates that the bot rule that will use custom match conditions. This type of rule is satisfied when a match is found for each of its conditions. A condition determines request identification by defining what will be matched (i.e., `variable`), how it will be matched (i.e., `operator`), and a match value.
 properties:
   sec_rule:
     $ref: ./SecRuleObjBot.yaml

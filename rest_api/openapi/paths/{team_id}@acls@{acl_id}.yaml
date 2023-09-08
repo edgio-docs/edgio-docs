@@ -5,17 +5,17 @@ get:
   operationId: get-acl-rule
   tags:
     - Access Control List (ACL)
-  summary: GET ACL Object
-  description: Get an ACL object from an ACL id.
+  summary: Get Access Rule
+  description: Retrieves an access rule that identifies threats through whitelists, accesslists, and blacklists.
   responses:
     '200':
-      description: Successful Response
+      description: OK. An access rule was retrieved.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Acl.yaml
     '404':
-      description: ACL not found
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':
@@ -24,15 +24,15 @@ put:
   operationId: update-acl-rule
   tags:
     - Access Control List (ACL)
-  summary: PUT ACL Object
-  description: Modify an ACL object identified by id.
+  summary: Update Access Rule
+  description: Updates an access rule that identifies threats through whitelists, accesslists, and blacklists.
   requestBody:
     $ref: ../components/requestBodies/Acl.yaml
   responses:
     '200':
-      description: ACL successfully updated
+      description: OK. An access rule was updated. 
     '404':
-      description: ACL not found
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':
@@ -41,13 +41,13 @@ delete:
   operationId: delete-acl-rule
   tags:
     - Access Control List (ACL)
-  summary: DELETE ACL Object
-  description: Delete an ACL object identified by id.
+  summary: Delete Access Rule
+  description: Deletes an access rule.
   responses:
     '200':
-      description: ACL successfully deleted
+      description: OK. An access rule was deleted. 
     '404':
-      description: ACL not found
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':

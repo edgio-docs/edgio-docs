@@ -21,12 +21,16 @@ tags:
     description: Operations about configs
   - name: purge requests
     description: Operations about purge requests
+  - name: members
+    description: Operations about members
   - name: environments
     description: Operations about environments
   - name: properties
     description: Operations about properties
   - name: organizations
     description: Operations about organizations
+  - name: bff
+    description: Operations about bffs
 paths:
   /config/v0.1/tls-certs/{cert_id}:
     $ref: paths/config_v0.1_tls-certs_{cert_id}.yaml
@@ -44,6 +48,10 @@ paths:
     $ref: paths/cache_v0.1_purge-requests_{request_id}.yaml
   /cache/v0.1/purge-requests:
     $ref: paths/cache_v0.1_purge-requests.yaml
+  /accounts/v0.1/members/{member_id}:
+    $ref: paths/accounts_v0.1_members_{member_id}.yaml
+  /accounts/v0.1/members:
+    $ref: paths/accounts_v0.1_members.yaml
   /accounts/v0.1/environments/{environment_id}:
     $ref: paths/accounts_v0.1_environments_{environment_id}.yaml
   /accounts/v0.1/environments:
@@ -56,6 +64,8 @@ paths:
     $ref: paths/accounts_v0.1_organizations_{organization_id}.yaml
   /accounts/v0.1/organizations:
     $ref: paths/accounts_v0.1_organizations.yaml
+  /bff/traffic/{query_name}:
+    $ref: paths/bff_traffic_{query_name}.yaml
 components:
   securitySchemes:
     Bearer:

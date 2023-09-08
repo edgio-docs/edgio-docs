@@ -1,4 +1,4 @@
-description: Rate limit exceeded.
+description: Too Many Requests. Rate limit exceeded.
 content:
   application/json:
     schema:

@@ -1,4 +1,14 @@
 title: Response Header
 type: object
+description: |
+
+  The set of headers for the custom response sent to the client. Each response header is specified as a name/value pair.
+
+  **Example:**
+
+  ```
+  "x-custom-response": "acl-rejected"
+  ```
+
 additionalProperties:
   type: string

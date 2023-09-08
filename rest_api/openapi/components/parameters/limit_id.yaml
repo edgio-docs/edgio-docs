@@ -1,6 +1,11 @@
 name: limit_id
 in: path
 required: true
-description: The Limit id
+description: |
+
+  A rate rule's system-defined ID. 
+  
+  Use the [Get All Rate Rules operation](#tag/Rate-Rules-(Limits)/operation/get-rate-rules) to retrieve a list of rate rules and their system-defined IDs.
+
 schema:
   type: string

@@ -1,18 +1,24 @@
 title: Custom Response Action
 type: object
+description: Returns a custom response.
 properties:
   id:
     type: string
+    description: The enforcement action's system-defined ID.
   name:
     type: string
+    description: The enforcement action's name.
   enf_type:
     type: string
+    description: The type of enforcement action. 
     enum:
       - CUSTOM_RESPONSE
   response_body_base64:
     type: string
+    description: The Base64 encoded payload for the custom response sent to the client.
   status:
     type: integer
     format: uint32
+    description: The HTTP status code (e.g., `404`) for the custom response sent to the client.
   response_headers:
     $ref: ./ResponseHeader.yaml

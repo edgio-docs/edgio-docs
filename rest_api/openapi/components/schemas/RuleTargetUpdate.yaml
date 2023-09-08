@@ -3,11 +3,25 @@ type: object
 properties:
   target:
     type: string
+    description: Identifies the type of data source (e.g., `REQUEST_COOKIES`, `ARGS`, `GEO`, etc.) for which a target will be created. The maximum size of this value is 256 characters.
   target_match:
     type: string
+    description: Identifies a name or category (e.g., cookie name, query string name, country code, etc.) for the data source defined in the `target` parameter. The category defined by this parameter will be analyzed when identifying threats. The maximum size of this value is 256 characters.
   rule_id:
     type: string
+    description: Identifies a rule by its system-defined ID. The configuration defined within this object will alter the behavior of the rule identified by this parameter.
   is_regex:
     type: boolean
+    description: | 
+    
+      Determines whether the value defined within the `target_match` parameter will be treated as a regular expression or a literal value.
+      
+      **Default Value:** false
+
   is_negated:
     type: boolean
+    description: |
+
+      Determines whether the target defined within this object will be ignored when identifying threats.
+
+      **Default Value:** false

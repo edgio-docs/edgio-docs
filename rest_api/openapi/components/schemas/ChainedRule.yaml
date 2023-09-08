@@ -1,11 +1,15 @@
 title: Chained Rule
 type: object
+description: Each object within the `chained_rule` array describes an additional set of criteria that must be satisfied in order to identify a malicious request.
 properties:
   variable:
     type: array
+    description: Identifies each request element for which a comparison will be made.
     items:
       $ref: ./Variable.yaml
   operator:
+    description: Indicates the comparison that will be performed on the string value(s) derived from the request element(s) defined within the `variable` array.
     $ref: ./Operator.yaml
   action:
+    description: Determines whether the string value derived from the request element identified in a `variable` object will be transformed and the metadata that will be used to identify malicious traffic.
     $ref: ./RulesAction.yaml

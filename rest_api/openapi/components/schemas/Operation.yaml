@@ -2,21 +2,36 @@ title: Operation
 type: object
 properties:
   value:
-    description: 'Required for RX or GLOB type, not allowed for EM type'
+    description: Required for `RX` or `GLOB` type. The value that will be compared against the request. 
     type: string
   values:
-    description: 'Required for EM type, not allowed for RX or GLOB type'
+    description: Required for `EM` type. A list of value(s). Each value will be compared against the request.
     type: array
     items:
       type: string
   is_negated:
     type: boolean
+    description: Indicates whether this match condition will be satisfied when the request matches or does not match the value defined by the `value` or `values` property. 
   is_case_insensitive:
     type: boolean
+    description: |
+    
+      `EM` type only. Indicates whether the comparison between the request and the `values` property is case-sensitive.
+
   type:
-    description: The type of match to use on value/values
     type: string
     enum:
       - GLOB
       - EM
       - RX
+    description: |
+
+      Indicates how the system will interpret the comparison between the request and the value defined within the `value` or `values` property. Valid values are:
+
+      -   **EM:** Indicates that request element being compared (i.e., hostname or URL path) must be an exact match to one of the case-sensitive values specified in the `values` property.
+
+      -   **GLOB:** Indicates that the request element being compared (i.e., hostname or URL path) must be an exact match to the wildcard pattern defined in the `value` property. 
+
+      -   **RX:** Indicates that the request element being compared (i.e., hostname or URL path) must be an exact match to the regular expression defined in the `value` property.
+
+      If you do not wish to restrict this Security App by the current request element (i.e., hostname or URL path), then you should set this property to `GLOB` and the `value` property to `*`. This is the default configuration.

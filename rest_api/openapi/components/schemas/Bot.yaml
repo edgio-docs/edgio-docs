@@ -3,8 +3,9 @@ type: object
 properties:
   id:
     type: string
+    description: The bot rule set's system-defined ID.
   directive:
-    description: Maximum of 10 directives allowed
+    description:  Contains the bot rules associated with this bot rule set. You may create up to 10 bot rules per bot rule set.
     type: array
     items:
       anyOf:
@@ -12,9 +13,17 @@ properties:
         - $ref: ./SecRuleBot.yaml
   team_id:
     type: string
+    description: |
+
+      Your organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab). 
+  
+      From the Edgio Console, select your organization from the top menu and then click **Settings**. It is listed under **Organization ID**.
+
   last_modified_date:
     type: string
+    description: The date and time at which this bot rule set was last modified.
   name:
     type: string
+    description: The bot rule set's name.
 required:
   - directive

@@ -5,34 +5,34 @@ get:
   operationId: get-rate-rule
   tags:
     - Rate Rules (Limits)
-  summary: GET Rate Rule Object
-  description: Get a Limit object from an Limit id.
+  summary: Get Rate Rule
+  description: Retrieves a rate rule. A rate rule determines the maximum number of requests that will be allowed within a given time period.
   responses:
     '200':
-      description: Successful Response
+      description: OK. A rate rule was retrieved.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Limit.yaml
     '404':
-      description: Limit not found
+      $ref: ../components/responses/error_404.yaml
     '500':
       $ref: ../components/responses/error_500.yaml
 put:
   operationId: update-rate-rule
   tags:
     - Rate Rules (Limits)
-  summary: PUT Rate Rule Object
-  description: Modify a Limit object identified by id.
+  summary: Update Rate Rule
+  description: Updates a rate rule that determines the maximum number of requests that will be allowed within a given time period.
   requestBody:
     $ref: ../components/requestBodies/Limit.yaml
   responses:
     '200':
-      description: Limit successfully updated
+      description: OK. A rate rule was updated. 
     '400':
       $ref: ../components/responses/error_400.yaml
     '404':
-      description: Limit not found
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':
@@ -41,15 +41,15 @@ delete:
   operationId: delete-rate-rule
   tags:
     - Rate Rules (Limits)
-  summary: DELETE Rate Rule Object
-  description: Delete a Limit object identified by id.
+  summary: Delete Rate Rule
+  description: Deletes a rate rule.
   responses:
     '200':
-      description: Limit successfully deleted
+      description: OK. A rate rule was deleted. 
     '400':
       $ref: ../components/responses/error_400.yaml
     '404':
-      description: Limit not found
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':

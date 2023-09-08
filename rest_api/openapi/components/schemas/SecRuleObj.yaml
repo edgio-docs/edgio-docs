@@ -1,21 +1,26 @@
 title: Sec Rule Object
 type: object
+description: Describes a custom rule.
 properties:
   id:
     type: string
+    description: The custom rule's system-defined ID.
   name:
     type: string
+    description: The custom rule's name.
   variable:
-    description: Max 20 entries.
+    description: Contains criteria that identifies a request element. You may define up to 20 entries.
     type: array
     items:
       $ref: ./Variable.yaml
   operator:
+    description: The comparison that will be performed against the request element(s) identified within a `variable` object.
     $ref: ./Operator.yaml
   action:
+    description: Determines whether the string identified in a `variable` object will be transformed and the metadata that will be assigned to malicious traffic.
     $ref: ./RulesAction.yaml
   chained_rule:
-    description: Max 5 entries.
+    description: Contains additional criteria that must be satisfied to identify a malicious request. You may add up to 5 `chained_rule` objects per custom rule.
     type: array
     items:
       $ref: ./ChainedRule.yaml

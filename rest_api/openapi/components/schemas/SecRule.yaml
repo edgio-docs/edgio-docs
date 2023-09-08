@@ -2,6 +2,7 @@ title: Security Rule
 type: object
 properties:
   sec_rule:
+    description: Defines a custom rule.
     $ref: ./SecRuleObj.yaml
 required:
   - sec_rule

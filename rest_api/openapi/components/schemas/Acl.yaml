@@ -3,48 +3,79 @@ type: object
 properties:
   version:
     type: string
+    description: Reserved for future use.
   id:
     type: string
+    description: The access rule's system-defined ID.
   name:
     type: string
+    description: The access rule's name.
   team_id:
     type: string
+    description: |
+
+      Your organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab). 
+
+      From the Edgio Console, select your organization from the top menu and then click **Settings**. It is listed under **Organization ID**.
+
   last_modified_date:
     type: string
+    description: The date and time at which this configuration was last modified.
   last_modified_by:
     type: string
+    description: The Edgio Console user that last modified this access rule. This field does not reflect updates performed through the REST API.
   country:
-    $ref: ./AclStrings.yaml
+    description: Contains access controls for countries. Each country is identified by its <a href="https://docs.edg.io/guides/reference/country_codes" target="_blank">country code</a>.
+    allOf:
+      - $ref: ./AclStrings.yaml
   ip:
-    $ref: ./AclStrings.yaml
+    description: Contains access controls for IPv4 and/or IPv6 addresses. Each IP address is defined through standard IPv4/IPv6 and CIDR notation.
+    allOf:
+      - $ref: ./AclStrings.yaml
   referer:
-    $ref: ./AclStrings.yaml
+    description: Contains access controls for referrers. All referrers defined within a whitelist, accesslist, or blacklist are regular expressions.
+    allOf:
+      - $ref: ./AclStrings.yaml
   url:
-    $ref: ./AclStrings.yaml
+    description: Contains access controls for URL paths. This URL path starts directly after the hostname. All URL paths defined within a whitelist, accesslist, or blacklist are regular expressions.
+    allOf:
+      - $ref: ./AclStrings.yaml
   cookie:
-    $ref: ./AclStrings.yaml
+    description: Contains access controls for cookie names. All cookies defined within a whitelist, accesslist, or blacklist are regular expressions.
+    allOf:
+      - $ref: ./AclStrings.yaml
   user_agent:
-    $ref: ./AclStrings.yaml
+    description: Contains access controls for user agents. All user agents defined within a whitelist, accesslist, or blacklist are regular expressions.
+    allOf:
+      - $ref: ./AclStrings.yaml
   asn:
-    $ref: ./AclAsns.yaml
+    description: Contains access controls for autonomous system numbers (ASNs).
+    allOf:
+      - $ref: ./AclAsns.yaml
   allowed_http_methods:
     type: array
+    description: Identifies each allowed HTTP method (e.g., `GET`).
     items:
       type: string
   allowed_request_content_types:
     type: array
+    description: Identifies each allowed media type (e.g., `application/json`).
     items:
       type: string
   disallowed_extensions:
     type: array
+    description: A list of file extension(s) for which WAF will send an alert or block the request.
     items:
       type: string
   disallowed_headers:
     type: array
+    description: A list of request header(s) for which WAF will send an alert or block the request.
     items:
       type: string
   max_file_size:
     type: integer
     format: uint64
+    description: The maximum file size, in bytes, for a `POST` request body.
   response_header_name:
     type: string
+    description: The name of the response header that will be included with blocked requests.

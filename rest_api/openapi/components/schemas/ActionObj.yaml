@@ -1,5 +1,6 @@
 title: Actions
 type: object
+description: Contains an object for each enforcement action associated with this bot manager configuration.
 properties:
   ALERT:
     $ref: ./AlertAction.yaml

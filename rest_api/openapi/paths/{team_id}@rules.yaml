@@ -1,14 +1,35 @@
+post:
+  operationId: create-custom-rule
+  tags:
+    - Custom Rules
+  summary: Add Custom Rule
+  description: Creates a custom rule that defines custom threat assessment criteria.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/Rule.yaml
+  responses:
+    '200':
+      description: OK. A custom rule was created.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Rule.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
 get:
   operationId: get-custom-rules
   tags:
     - Custom Rules
-  summary: GET Custom Rules
-  description: List all Rules for a given team.
+  summary: Get All Custom Rules
+  description: Retrieves a list of custom rules. A custom rule allows you to define custom threat assessment criterion.
   parameters:
     - $ref: ../components/parameters/team_id.yaml
   responses:
     '200':
-      description: A list of Rule id's and names for the team
+      description: OK. A list of custom rules was retrieved.
       content:
         application/json:
           schema:
@@ -21,28 +42,7 @@ get:
                 - id: e3mpHQY5
                   name: sample_rule_config
     '404':
-      description: team not found
-    '429':
-      $ref: ../components/responses/error_429.yaml
-    '500':
-      $ref: ../components/responses/error_500.yaml
-post:
-  operationId: create-custom-rule
-  tags:
-    - Custom Rules
-  summary: POST Custom Rule
-  description: Create a new Rule for a given team.
-  parameters:
-    - $ref: ../components/parameters/team_id.yaml
-  requestBody:
-    $ref: ../components/requestBodies/Rule.yaml
-  responses:
-    '200':
-      description: Rule created successfully
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Rule.yaml
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':

@@ -1,3 +1,24 @@
+post:
+  operationId: create-bot-rule
+  tags:
+    - Bot Rules
+  summary: POST Bot Rules
+  description: Create a new Bot for a given team.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/Bot.yaml
+  responses:
+    '200':
+      description: Bot created successfully
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Bot.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
 get:
   operationId: get-bot-rules
   tags:
@@ -22,27 +43,6 @@ get:
                   name: sample_bot_config
     '404':
       description: team not found
-    '429':
-      $ref: ../components/responses/error_429.yaml
-    '500':
-      $ref: ../components/responses/error_500.yaml
-post:
-  operationId: create-bot-rule
-  tags:
-    - Bot Rules
-  summary: POST Bot Rules
-  description: Create a new Bot for a given team.
-  parameters:
-    - $ref: ../components/parameters/team_id.yaml
-  requestBody:
-    $ref: ../components/requestBodies/Bot.yaml
-  responses:
-    '200':
-      description: Bot created successfully
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Bot.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':

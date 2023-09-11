@@ -156,7 +156,7 @@ const nav = {
           ],
         },
         {
-          title: 'Serverless Compute',
+          title: 'Cloud Functions',
           path: 'performance/serverless_compute',
         },
         // {
@@ -446,10 +446,10 @@ const nav = {
               title: 'Stencil',
               path: 'sites_frameworks/getting_started/stencil',
             },
-            // {
-            //   title: 'Svelte',
-            //   path: 'sites_frameworks/getting_started/svelte',
-            // },
+            {
+              title: 'SvelteKit',
+              path: 'sites_frameworks/getting_started/sveltekit',
+            },
             // {
             //   title: 'UmiJS',
             //   path: 'sites_frameworks/getting_started/umijs',

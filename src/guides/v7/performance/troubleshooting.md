@@ -34,7 +34,7 @@ Troubleshoot:
     -   Rules use zero-based numbering.
     -   Use the above procedure even if you are using CDN-as-code. {{ PRODUCT }} automatically adds system-defined rules when you deploy your CDN-as-code configuration. As a result, counting rules within your {{ ROUTES_FILE }} will be inaccurate.
     
--   **Testing Without Caching:** Use a permalink to ensure that {{ PRODUCT }} does not serve cached content when testing your website. A permalink forces {{ PRODUCT }} to proxy your request to either the serverless tier or your origin. Although this may degrade performance, it is useful when verifying functionality. 
+-   **Testing Without Caching:** Use a permalink to ensure that {{ PRODUCT }} does not serve cached content when testing your website. A permalink forces {{ PRODUCT }} to proxy your request to either the {{ PRODUCT }} cloud or your origin. Although this may degrade performance, it is useful when verifying functionality. 
 
     A permalink is assigned to each deployment. View a deployment's permalink by navigating to the **Deployments** page for the desired environment and then clicking on the desired deployment version. 
 
@@ -118,14 +118,14 @@ This configuration allows you to set breakpoints in both your {{ PRODUCT_NAME }}
 
 By viewing the server logs in the {{ PORTAL }}, you can see all of the messages logged by your application using `console.log`, `console.warn`, etc...
 
-By enabling [Deep Request Inspection](/guides/logs/server_logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application via the {{ PRODUCT }} serverless cloud. You can also see each upstream API request made by your application.
+By enabling [Deep Request Inspection](/guides/logs/server_logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application through the {{ PRODUCT }} cloud. You can also see each upstream API request made by your application.
 
-Debug issues related to routing to your origin by temporarily moving the proxy from the edge to serverless:
+Debug issues related to routing to your origin by temporarily moving the proxy from the edge to the {{ PRODUCT }} cloud:
 
 ```js
   .get('/p/:productId', ({ cache }) => {
     proxy('origin', {
-      // The presence of transformRequest and transformResponse ensure that proxying is done in serverless, not at the edge.
+      // The presence of transformRequest and transformResponse ensure that proxying is done in the {{ PRODUCT }} cloud, not at the edge.
       transformRequest: (req) => {
         console.log('Request ID', req.headers['x-request-id'])
         // Log request properties that you want to troubleshoot.
@@ -140,7 +140,7 @@ Debug issues related to routing to your origin by temporarily moving the proxy f
 
 Once it has been deployed, you can observe the output in your [server logs](/guides/logs/server_logs).
 
-We strongly recommend to proxy traffic from the edge whenever possible, as that is more performant and avoids serverless surcharges. The above solution should only be used as a temporary measure while addressing issues.
+We strongly recommend to proxy traffic from the edge whenever possible, as that is more performant and avoids {{ PRODUCT }} cloud surcharges. The above solution should only be used as a temporary measure while addressing issues.
 
 [Learn more about server logs.](/guides/logs/server_logs)
 
@@ -204,8 +204,8 @@ If you are using CDN-as-code, then {{ PRODUCT }} automatically produces a source
 
 **Key information:**
 
--   By default, application-level source maps are not enabled, since they may cause the serverless bundle to be larger than the 50MB limit.
--   Source maps loaded within our Serverless infrastructure may result in `539 Project Timeout` errors due to performance issues. If this occurs, try again with sourcemaps disabled. 
+-   By default, application-level source maps are not enabled, since they may cause the {{ PRODUCT }} cloud bundle to be larger than the 50MB limit.
+-   Source maps loaded within our {{ PRODUCT }} cloud infrastructure may result in `539 Project Timeout` errors due to performance issues. If this occurs, try again with sourcemaps disabled. 
 
 {{ PRODUCT }} provides a convenient way to enable source maps when using Next and Nuxt:
 
@@ -297,7 +297,7 @@ Common causes are:
 
 ### 539 Project Timeout Status Code {/* troubleshooting-539-status-codes */}
 
-Your project's serverless code did not respond on time. This issue typically arises in step 4 or 5 of the following request flow:
+Your project's {{ PRODUCT }} cloud code did not respond on time. This issue typically arises in step 4 or 5 of the following request flow:
 
 1.  A requesting client sends a request to {{ PRODUCT }} for an asset.
 2.  {{ PRODUCT_NAME }} does not find it in its cache and examines routing rules.
@@ -318,7 +318,7 @@ Troubleshoot this status code by:
 -   Analyzing [server logs](/guides/logs/server_logs).
 -   Performing [performance profiling](/guides/performance/observability#tracking-your-own-timings) 
 -   Detecting allowlist errors. 
--   Loading source maps within our Serverless infrastructure. If this occurs, try again with sourcemaps disabled. 
+-   Loading source maps within our {{ PRODUCT }} cloud infrastructure. If this occurs, try again with sourcemaps disabled. 
 <!--
 #### Assumptions {/* assumptions */}
 

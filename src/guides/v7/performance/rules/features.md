@@ -1446,26 +1446,6 @@ new Router()
 ```
 </edgejs>
 
-
-#### Server-Timing Header {/*server-timing-header*/}
-
-Determines whether to include the [Server-Timing header](/guides/performance/response#server-timing-response-header) in the response. The `Server-Timing` response header contains cache status information and information about the POP that served the response. 
-
-<edgejs>
-**Example:**
-
-```js filename="./routes.js"
-new Router()
-  .get('/', {
-    headers: {
-      "server_timing_header": true,
-    }
-  })
-```
-</edgejs>
-
-**Default Behavior:** By default, the response excludes the `server-timing` response header.
-
 #### Set Client IP Custom Header {/*set-client-ip-custom-header*/}
 
 Adds a custom request header that identifies the requesting client by IP address. 
@@ -1890,7 +1870,7 @@ new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, requests that are not served from cache are served through either Serverless layer or the origin configuration mapped to the request's hostname. 
+**Default Behavior:** By default, requests that are not served from cache are served through either the {{ PRODUCT }} cloud or the origin configuration mapped to the request's hostname. 
 
 ## Response {/*response*/}
 
@@ -1923,14 +1903,14 @@ Defines the set of media types (aka content type) that are eligible for edge ser
 
 **Key information:**
 
--   This feature only applies to assets whose size is less than 1 MB. Larger assets will not be compressed by our servers.
+-   This feature only applies to assets whose size is less than 3 MB. Larger assets will not be compressed by our servers.
 -   Certain types of content, such as images, video, and audio media assets (e.g., JPG, MP3, MP4, etc.), are already compressed. Additional compression on these types of assets will not significantly diminish file size. Therefore, the compression of these types of assets is not recommended.
 -   Wildcard characters, such as asterisks, are not supported.
 
 <edgejs>
 **Key information:**
 
--   This feature only applies to assets whose size is less than 1 MB. Larger assets will not be compressed by our servers.
+-   This feature only applies to assets whose size is less than 3 MB. Larger assets will not be compressed by our servers.
 -   Certain types of content, such as images, video, and audio media assets (e.g., JPG, MP3, MP4, etc.), are already compressed. Additional compression on these types of assets will not significantly diminish file size. Therefore, the compression of these types of assets is not recommended.
 -   Wildcard characters, such as asterisks, are not supported.
 

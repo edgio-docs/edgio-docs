@@ -133,13 +133,13 @@ Use the {{ PRODUCT }} CLI to initialize your property. If you have already perfo
       ***** Deployment Complete *****************************************************
       *                                                                             *
       *  🖥  Edgio Developer Console:                                                *
-      *  https://edgio.app/<YOUR-TEAM>/my-custom-property.com/env/default/builds/1  *
+      *  https://edgio.app/<YOUR-ORGANIZATION>/my-custom-property.com/env/default/builds/1  *
       *                                                                             *
       *  🔗 Permalink:                                                              *
-      *  https://<YOUR-TEAM>-my-custom-property-com-1.free.edgio-perma.link         *
+      *  https://<YOUR-ORGANIZATION>-my-custom-property-com-1.free.edgio-perma.link         *
       *                                                                             *
       *  🌎 Edge:                                                                   *
-      *  https://<YOUR-TEAM>-my-custom-property-com-default.edgio.link              *
+      *  https://<YOUR-ORGANIZATION>-my-custom-property-com-default.edgio.link              *
       *                                                                             *
       *******************************************************************************
 
@@ -174,11 +174,11 @@ The default `{{ CONFIG_FILE }}` file contains the following configuration based 
 // You should commit this file to source control.
 // Learn more about this file at https://docs.edg.io/guides/edgio_config
 module.exports = {
-  // The name of the site in Edgio to which this app should be deployed.
+  // The name of the property in Edgio to which this app should be deployed.
   name: 'my-custom-property.com',
 
-  // The name of the team in Edgio to which this app should be deployed.
-  // team: 'my-team-name',
+  // The name of the organization in Edgio to which this app should be deployed.
+  // team: 'my-organization-name',
 
   // Overrides the default path to the routes file. The path should be relative to the root of your app.
   // routes: 'routes.js',
@@ -204,14 +204,14 @@ module.exports = {
     },
   ],
 
-  // Options for hosting serverless functions on Edgio
+  // Options for hosting Cloud Functions on Edgio
   // serverless: {
   //   // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
   //   // This option generally isn't needed as Edgio automatically includes all modules imported by your code in the bundle that
   //   // is uploaded during deployment
   //   includeNodeModules: true,
   //
-  //   // Include additional paths that are dynamically loaded by your app at runtime here when building the serverless bundle.
+  //   // Include additional paths that are dynamically loaded by your app at runtime here when building the bundle.
   //   include: ['views/**/*'],
   // },
 
@@ -450,7 +450,7 @@ import {Router} from '{{ PACKAGE_NAME }}/core';
 import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
 
 export default new Router()
-  // Send requests to serverless and render the response with Next.js
+  // Send requests to the {{ PRODUCT }} cloud and render the response with Next.js
   .use(nextRoutes)
 
   // Cache all requests to /products/:id for 1 hour
@@ -509,7 +509,7 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
   </Callout>
 
 - [Transforming and optimizing images](/guides/performance/image_optimization)
-- Transforming the response through [Serverless Compute](/guides/performance/serverless_compute)
+- Transforming the response through [Cloud Functions](/guides/performance/serverless_compute)
 - [Removing response headers](/guides/performance/cdn_as_code/route_features#altering-the-response)
 - [Normalizing the cache key](/guides/performance/caching#customizing-the-cache-key)
 - Generating performance insights through [DevTools](/guides/performance/observability/devtools)

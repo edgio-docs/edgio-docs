@@ -31,25 +31,48 @@ export async function handleHttpRequest(request, context) {
 
 When a request is received for a route that has an edge function assigned to it, the edge function is invoked.
 
-### Edge Function Parameters {/* edge-function-parameters */}
+## Responding to the Client {/* responding-to-the-client */}
+
+Edge functions must respond to the client by returning a `Response` object or a `Promise` that resolves to a `Response` object. The `Response` object can be created using the `Response` class or by calling the `fetch()` function. See the [Edge Function Namespace](#edge-function-namespace) section for more information.
+
+```js filename="./edge-functions/example.js"
+export async function handleHttpRequest(request, context) {
+  const defaultResponse = new Response('Hello World!');
+  const response = await fetch('https://your-server.com' /* origin options */);
+
+  if (!response.ok) {
+    return defaultResponse;
+  }
+
+  return response;
+}
+```
+
+<Callout type="important">
+ 
+As of v7.2.3, the `context.respondWith()` function is deprecated. You must return a `Response` object or a `Promise` that resolves to a `Response` object to respond to the client.
+
+</Callout>
+
+## Edge Function Parameters {/* edge-function-parameters */}
 
 The edge function is passed two parameters: `request` and `context`.
 
 `request` is an object representing the incoming request and `context` is a read-only object providing additional information about the request and your environment, such as access to the client's network information, device capabilities, geo location, environment variables, origin servers, and information about this property including values set using variables. It also provides functions for injecting metrics into your edge function and for returning the response from your edge function to the downstream client.
 
-| Parameter                       | Type            | Description                                                                                                                | Reference                                                                                                |
-| ------------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `request`                       | Object          | Represents the incoming request                                                                                            | [Request](https://developer.mozilla.org/en-US/docs/Web/API/Request)                                      |
-| `context`                       | Object          | A read-only object providing additional information about the request and your environment                                 |                                                                                                          |
-| `context.client`                | Key-value store | The client's network information                                                                                           | `virt_` variables in [Feature Variables](/guides/performance/rules/feature_variables)                    |
-| `context.device`                | Key-value store | The client's device capabilities                                                                                           | `wurfl_` variables in [Feature Variables](/guides/performance/rules/feature_variables)                   |
-| `context.environmentVars`       | Key-value store | Environment variables as defined in the {{ PORTAL }} (_Property_ -> _Environment_ --> **Environment Variables**)           | [Environment Variables](/guides/basics/environments#environment-variables)                               |
-| `context.geo`                   | Key-value store | The client's geo location                                                                                                  | `geo_` variables in [Feature Variables](/guides/performance/rules/feature_variables)                     |
-| `context.metrics`               | Object          | Provides functions for injecting [metrics](#metrics_functions) into your edge function                                     | [Access Logs](/guides/logs/access_logs)                                                                  |
-| `context.origins`               | Key-value store | Origin servers as defined in the {{ PORTAL }} (_Property_ -> _Environment_ -> **Origins**) or the `{{ CONFIG_FILE }}` file | [Origin Configuration](/guides/basics/hostnames_and_origins#origin)                                      |
-| `context.requestVars`           | Key-value store | Information about this property including values set using Set Variables                                                   | [Set Variables](/guides/performance/rules/features#set-variables)                                        |
-| `context.respondWith(response)` | Function        | Must be called to return the response from your edge function to the downstream client                                     | [context.respondWith(response)](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith) |
-| `context.waitUntil(promise)`    | Function        | Waits until the given promise is fulfilled                                                                                 | [context.waitUntil(promise)](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil) |
+| Parameter                           | Type            | Description                                                                                                                                                                                                                                                     | Reference                                                                                                |
+| ----------------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `request`                           | Object          | Represents the incoming request                                                                                                                                                                                                                                 | [Request](https://developer.mozilla.org/en-US/docs/Web/API/Request)                                      |
+| `context`                           | Object          | A read-only object providing additional information about the request and your environment                                                                                                                                                                      |                                                                                                          |
+| `context.client`                    | Key-value store | The client's network information                                                                                                                                                                                                                                | `virt_` variables in [Feature Variables](/guides/performance/rules/feature_variables)                    |
+| `context.device`                    | Key-value store | The client's device capabilities                                                                                                                                                                                                                                | `wurfl_` variables in [Feature Variables](/guides/performance/rules/feature_variables)                   |
+| `context.environmentVars`           | Key-value store | Environment variables as defined in the {{ PORTAL }} (_Property_ -> _Environment_ --> **Environment Variables**)                                                                                                                                                | [Environment Variables](/guides/basics/environments#environment-variables)                               |
+| `context.geo`                       | Key-value store | The client's geo location                                                                                                                                                                                                                                       | `geo_` variables in [Feature Variables](/guides/performance/rules/feature_variables)                     |
+| `context.metrics`                   | Object          | Provides functions for injecting [metrics](#metrics_functions) into your edge function                                                                                                                                                                          | [Access Logs](/guides/logs/access_logs)                                                                  |
+| `context.origins`                   | Key-value store | Origin servers as defined in the {{ PORTAL }} (_Property_ -> _Environment_ -> **Origins**) or the `{{ CONFIG_FILE }}` file                                                                                                                                      | [Origin Configuration](/guides/basics/hostnames_and_origins#origin)                                      |
+| `context.requestVars`               | Key-value store | Information about this property including values set using Set Variables                                                                                                                                                                                        | [Set Variables](/guides/performance/rules/features#set-variables)                                        |
+| ~~`context.respondWith(response)`~~ | Function        | <ul><li>**{{ PRODUCT }} v7.2.3 or higher:** Deprecated. See [Responding to the Client](#responding-to-the-client).</li><li>**{{ PRODUCT }} v7.2.2 or lower:** Must be called to return the response from your edge function to the downstream client.</li></ul> | [context.respondWith(response)](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith) |
+| `context.waitUntil(promise)`        | Function        | Waits until the given promise is fulfilled                                                                                                                                                                                                                      | [context.waitUntil(promise)](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil) |
 
 ### Metrics Functions {/* metrics-functions */}
 
@@ -92,7 +115,7 @@ export async function handleHttpRequest(request, context) {
   /* ... */
 
   // return the response to the client
-  context.respondWith(resp);
+  return resp;
 }
 ```
 
@@ -108,7 +131,7 @@ export async function handleHttpRequest(request, context) {
   /* ... */
 
   // return the response to the client
-  context.respondWith(resp);
+  return resp;
 }
 ```
 
@@ -136,7 +159,7 @@ export async function handleHttpRequest(request, context) {
   /* ... */
 
   // return the response to the client
-  context.respondWith(resp);
+  return resp;
 }
 ```
 
@@ -155,7 +178,7 @@ export async function handleHttpRequest(request, context) {
   /* ... */
 
   // return the response to the client
-  context.respondWith(resp);
+  return resp;
 }
 ```
 
@@ -243,14 +266,14 @@ It's important to note that edge functions are not Node.js functions. Your code 
       );
     }
 
-    return (url, options = {}, ...rest) => {
+    return (url, options = {}) => {
       const modifiedOptions = {
         ...options,
         edgio: {
           origin: originName,
         },
       };
-      return fetch(url, modifiedOptions, ...rest);
+      return fetch(url, modifiedOptions);
     };
   }
   ```
@@ -308,7 +331,7 @@ export async function handleHttpRequest(request, context) {
   response.headers.set('X-Edge-Function', 'home-page.js');
 
   // Return the response and end the edge function.
-  context.respondWith(response);
+  return resp;
 }
 ```
 
@@ -332,7 +355,8 @@ export async function handleHttpRequest(request, context) {
   // Note: Since the original response body is read-only,
   // we must create a new response with the updated body.
   const jsonBody = JSON.stringify(body);
-  context.respondWith(new Response(jsonBody, response));
+
+  return new Response(jsonBody, response);
 }
 ```
 
@@ -366,8 +390,8 @@ export async function handleHttpRequest(request, context) {
   // Return the response and end the edge function as JSON
   const jsonBody = JSON.stringify(body);
 
-  context.respondWith(
-    new Response(jsonBody, 200, {headers: {'Content-Type': 'application/json'}})
-  );
+  return new Response(jsonBody, 200, {
+    headers: {'Content-Type': 'application/json'},
+  });
 }
 ```

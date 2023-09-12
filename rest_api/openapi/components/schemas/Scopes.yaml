@@ -3,17 +3,29 @@ type: object
 properties:
   version:
     type: string
+    description: Reserved for future use
   id:
     type: string
+    description: The Security App's system-defined ID.
   name:
     type: string
+    description: The Security App's name.
   team_id:
     type: string
+    description: |
+
+      Your organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab). 
+
+      From the Edgio Console, select your organization from the top menu and then click **Settings**. It is listed under **Organization ID**.
+
   last_modified_date:
     type: string
+    description: The date and time at which a Security App returned by the `scopes` array was last modified.
   last_modified_by:
     type: string
+    description: The Edgio Console user that last modified this access rule. This field does not reflect updates performed through the REST API.
   scopes:
     type: array
+    description: Contains a list of Security Apps.
     items:
       $ref: ./Scope.yaml

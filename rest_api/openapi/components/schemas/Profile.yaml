@@ -3,31 +3,68 @@ type: object
 properties:
   version:
     type: string
+    description: Reserved for future use.
   id:
     type: string
+    description: The managed rule's system-defined ID.
   name:
     type: string
+    description: The managed rule's name.
   team_id:
     type: string
+    description: |
+
+      Your organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab). 
+
+      From the Edgio Console, select your organization from the top menu and then click **Settings**. It is listed under **Organization ID**.
+
   last_modified_date:
     type: string
+    description: The date and time at which this configuration was last modified.
   last_modified_by:
     type: string
+    description: The Edgio Console user that last modified this managed rule. This field does not reflect updates performed through the REST API.
   ruleset_id:
     type: string
+    description: The ID for the ruleset associated with this managed rule.
   ruleset_version:
     type: string
+    description: The version of the ruleset associated with this managed rule.
   policies:
     type: array
+    description: Contains a list of policies that have been enabled on this managed rule.
     items:
       type: string
   general_settings:
-    $ref: ./GeneralSettings.yaml
+    description: Contains settings that define the profile for a valid request.
+    allOf:
+      - $ref: ./GeneralSettings.yaml
   disabled_rules:
     type: array
+    description: |
+    
+      Contains all disabled rules. 
+      
+      **Default Value:** Null
     items:
-      $ref: ./DisabledRule.yaml
+      allOf:
+        - $ref: ./DisabledRule.yaml
   rule_target_updates:
     type: array
+    description: |
+
+      Defines one or more targets that will be ignored and/or replaced.
+
+      **Key information:**
+
+      -   If `is_negated` is set to `true`, then this target identifies rule criterion that will be ignored when identifying threats.
+
+      -   The `replace_target` property defines criterion that will be used to identify threats instead of the existing criterion.
+
+      -   If `is_regex` is set to `true`, then you may use regular expressions to define criteria for identifying multiple types of threats.
+
+      -   A maximum of 25 target configurations may be created.
+
     items:
-      $ref: ./RuleTargetUpdate.yaml
+      allOf:
+        - $ref: ./RuleTargetUpdate.yaml

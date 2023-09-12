@@ -4,46 +4,72 @@ properties:
   arg_length:
     type: integer
     format: uint32
+    description: The maximum number of characters for any single query string parameter value.
   arg_name_length:
     type: integer
     format: uint32
+    description: The maximum number of characters for any single query string parameter name.
   max_num_args:
     type: integer
     format: uint32
+    description: The maximum number of query string parameters.
   total_arg_length:
     type: integer
     format: uint32
+    description: The maximum number of characters for the query string value.
   combined_file_sizes:
     type: integer
     format: uint64
+    description: The total file size for multipart message lengths.
   max_file_size:
     type: integer
     format: uint64
+    description: End-of-life. This property does not affect your security configuration. Use the [Add Access Rule](#tag/Access-Control-List-(ACL)/operation/create-acl-rule) and the [Update Access Rule](#tag/Access-Control-List-(ACL)/operation/update-acl-rule) operations to manage this setting.
   response_header_name:
     type: string
+    description: Determines the name of the response header that will be included with blocked requests. 
   validate_utf8_encoding:
     type: boolean
+    description: |
+
+      Indicates whether WAF may check whether a request variable (e.g., ARGS, ARGS_NAMES, and REQUEST_FILENAME) is a valid UTF-8 string. This validation includes checking for missing bytes, invalid characters, and ASCII to UTF-8 character mapping. 
+      
+      You should only enable this validation if your web server or application uses UTF-8. Otherwise, this validation will result in many false positives.
+
   xml_parser:
     type: boolean
+    description: Determines whether XML payloads will be inspected. 
   process_request_body:
     type: boolean
+    description: Indicates whether WAF will inspect a POST request body. 
   json_parser:
     type: boolean
+    description: Determines whether JSON payloads will be inspected. 
   paranoia_level:
     type: integer
     format: uint32
+    description: |
+
+      The balance between the level of protection and false positives. Valid values are:
+
+      `1 | 2 | 3 | 4`
+
   anomaly_threshold:
     type: integer
     format: uint32
+    description: The anomaly score threshold.
   ignore_cookie:
     type: array
+    description: Identifies each cookie that will be ignored for the purpose of determining whether a request is malicious traffic. Each entry is a regular expression.
     items:
       type: string
   ignore_header:
     type: array
+    description: Identifies each request header that will be ignored for the purpose of determining whether a request is malicious traffic. Each entry is a regular expression.
     items:
       type: string
   ignore_query_args:
     type: array
+    description: Identifies each query string argument that will be ignored for the purpose of determining whether a request is malicious traffic. Each entry is a regular expression.
     items:
       type: string

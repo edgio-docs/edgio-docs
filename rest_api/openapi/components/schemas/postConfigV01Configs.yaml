@@ -35,11 +35,11 @@ properties:
               bypass_cache: true
     items:
       type: string
-  rtld:
-    type: object
-    properties: {}
-    description: Real-time log delivery configuration.
+  experiments:
+    type: array
+    description: List of experiments for the configuration.
     example:
-      custom_response_headers:
-        - server-timing
+      - {}
+    items:
+      type: string
 description: Replace and deploy a complete edge configuration for the given environment

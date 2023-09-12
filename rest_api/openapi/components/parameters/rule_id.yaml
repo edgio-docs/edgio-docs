@@ -1,6 +1,10 @@
 name: rule_id
 in: path
 required: true
-description: The Rule id
+description: |
+
+  A custom rule's system-defined ID. 
+  
+  Use the [Get All Custom Rules operation](#tag/Custom-Rules/operation/get-custom-rules) to retrieve a list of custom rules and their system-defined IDs.
 schema:
   type: string

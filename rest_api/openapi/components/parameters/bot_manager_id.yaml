@@ -1,6 +1,6 @@
 name: bot_manager_id
 in: path
 required: true
-description: The Bot Manager id
+description: The bot manager configuration's system-defined ID. 
 schema:
   type: string

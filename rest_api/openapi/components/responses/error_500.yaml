@@ -1,4 +1,4 @@
-description: An unexpected error occured.
+description: Internal Server Error. An unexpected error occured.
 content:
   application/json:
     schema:

@@ -3,7 +3,7 @@ in: path
 required: true
 description: |
 
-  Identifies an API Security Ruleset by its system-defined ID. 
+  An API Security Ruleset's system-defined ID. 
   
   Use the [Get All API Security Rulesets operation](#tag/API-Gateways/operation/get-api-gateways) to retrieve a list of API Security Rulesets and their system-defined IDs.
   

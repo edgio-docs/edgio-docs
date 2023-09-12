@@ -1,5 +1,6 @@
 title: Variable
 type: object
+description: Identifies a request element for which a comparison will be made.
 properties:
   type:
     type: string
@@ -13,12 +14,31 @@ properties:
       - ARGS_POST
       - GEO
       - REMOTE_ADDR
+    description: |
+    
+      A variable that determines the type of request element that will be assessed. 
+
+      -   If a request element consists of one or more key-value pairs, then you may identify a key through a `match` object. 
+
+      -   If `is_count` has been disabled, then you may identify a specific value through the `operator` object. 
+
+      <a href="https://docs.edg.io/guides/v7/security/matched_on_variables" target="_blank">Learn more about matched on variables.</a>
+
   match:
-    description: Max 20 entries.
+    description: Contains comparison conditions for the request element identified by the `type` property. You may define up to 20 conditions. 
     type: array
     items:
-      $ref: ./Match.yaml
+      allOf:
+        - $ref: ./Match.yaml
   is_count:
+    description: | 
+
+      Determines whether a comparison will be performed between the operator object and a string value or the number of matches found. Valid values are:
+
+      -   **true:** A counter will increment whenever the request element defined by this `variable` object is found. The `operator` object will perform a comparison against this number. If you enable `is_count`, then you must also set the `type` property to `EQ`.
+
+      -   **false:** The `operator` object will perform a comparison against the string value derived from the request element defined by this `variable` object.
+
     type: boolean
 required:
   - type

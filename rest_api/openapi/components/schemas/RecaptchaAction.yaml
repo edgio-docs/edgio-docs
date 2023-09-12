@@ -1,22 +1,29 @@
 title: Recaptcha Action
 type: object
+description: Performs an automated assessment of a client’s interaction with your site. This assessment, which is performed without user interaction, requires <a href="https://www.google.com/recaptcha/about/" target="_blank">Google reCAPTCHA v3</a>.
 properties:
   id:
     type: string
+    description: The enforcement action's system-defined ID.
   name:
     type: string
+    description: The enforcement action's name.
   enf_type:
     type: string
+    description: The type of enforcement action. 
     enum:
       - RECAPTCHA
   valid_for_sec:
     type: integer
     format: uint32
+    description: The  number of seconds for which our CDN will serve content to a client that passes a reCAPTCHA assessment without requiring an additional assessment. Valid values are `1`-`86400`.
   status:
     type: integer
     format: uint32
+    description: The HTTP status code (e.g., `200`) for the response sent to the client. Certain status codes (e.g., `204`) may prevent clients that successfully solve a reCAPTCHA from properly displaying your site.
   failed_action_type:
     type: string
+    description: The enforcement action that will be applied when the client’s reCAPTCHA score is unacceptable. 
     enum:
       - ALERT
       - BLOCK_REQUEST

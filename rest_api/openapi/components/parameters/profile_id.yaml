@@ -1,6 +1,10 @@
 name: profile_id
 in: path
 required: true
-description: The Profile id
+description: |
+
+  A managed rule's system-defined ID. 
+  
+  Use the [Get All Managed Rules operation](#tag/Managed-Rules-(Profiles)/operation/get-managed-rules) to retrieve a list of managed rules and their system-defined IDs.
 schema:
   type: string

@@ -3,10 +3,12 @@ type: object
 properties:
   id:
     type: string
+    description: The rate rule's system-defined ID.
   name:
     type: string
+    description: The rate rule's name.
   duration_sec:
-    description: Number of seconds this action will be applied
+    description: The length of time, in seconds, that the action defined within this object will be applied to a client that violates the rate rule identified by the `id` property. 
     type: integer
     format: uint32
     enum:
@@ -15,13 +17,26 @@ properties:
       - 300
   url:
     type: string
+    description: |
+
+      `REDIRECT_302`: The URL to which rate limited requests will be redirected.
+
   status:
     type: integer
     format: uint32
+    description: |
+
+      `CUSTOM_RESPONSE`: The HTTP status code (e.g., `404`) for the custom response sent to rate limited requests.
+
   response_body_base64:
     type: string
+    description: |
+
+      `CUSTOM_RESPONSE`: The Base64 encoded response body that will be sent to rate limited requests. 
+
   enf_type:
     type: string
+    description: The enforcement action that will be applied to rate limited requests. 
     enum:
       - REDIRECT_302
       - CUSTOM_RESPONSE
@@ -29,5 +44,14 @@ properties:
       - ALERT
   response_headers:
     type: array
+    description: |
+    
+      `CUSTOM_RESPONSE`: Contains the set of headers that will be included in the response sent to rate limited requests. 
+    
+      **Syntax:**
+      
+      ```
+      "Response Header": "Value"
+      ```
     items:
       $ref: ./ResponseHeader.yaml

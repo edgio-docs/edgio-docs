@@ -1,8 +1,15 @@
 title: Known Bot Object
 type: object
+description: Contains the set of known bots that Edgio may automatically detect and the enforcement action that may be applied to them.
 properties:
   action_type:
     type: string
+    description: |
+
+      The type of enforcement action that will be applied to a known bot. 
+
+      <a href="https://docs.edg.io/guides/security/bot_rules#actions" target="_blank">Learn more about enforcement actions.</a>
+
     enum:
       - ALERT
       - BLOCK_REQUEST
@@ -11,7 +18,7 @@ properties:
       - REDIRECT_302
       - RECAPTCHA
   bot_token:
-    description: must be one of available bot tokens
+    description: A token that identifies a known bot.
     type: string
 required:
   - action_type

@@ -1,21 +1,29 @@
 title: Browser Challenge Action
 type: object
+description: Requires clients to solve a browser challenge before honoring the request.
 properties:
   id:
     type: string
+    description: The enforcement action's system-defined ID.
   name:
     type: string
+    description: The enforcement action's name.
   enf_type:
     type: string
+    description: The type of enforcement action. 
     enum:
       - BROWSER_CHALLENGE
   is_custom_challenge:
     type: boolean
+    description: Determines whether to serve a standard or custom browser challenge.
   response_body_base64:
     type: string
+    description: The Base64 encoded payload for the custom browser challenge sent to the client.
   valid_for_sec:
     type: integer
     format: uint32
+    description: The  number of minutes for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge to be solved. Valid values are `1`-`1440`.
   status:
     type: integer
     format: uint32
+    description: The HTTP status code (e.g., `200`) for the response sent to the client. Certain status codes (e.g., `204`) may prevent clients that successfully solve a browser challenge from properly displaying your site.

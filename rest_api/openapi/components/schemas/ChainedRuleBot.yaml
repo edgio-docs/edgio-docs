@@ -3,6 +3,7 @@ type: object
 properties:
   variable:
     type: array
+    description: Identifies each request element for which a comparison will be made.
     items:
       $ref: ./VariableBot.yaml
   operator:

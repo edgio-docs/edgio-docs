@@ -1,13 +1,37 @@
 title: Action Object
 type: object
+description: Determines whether the value derived from the request element identified in a `variable` object will be transformed and the metadata that will be used to identify malicious traffic.
 properties:
   id:
     type: string
-    description: Numeric string in the range 66000000-66999999
+    description: |
+
+      Determines the custom ID that will be assigned to this custom rule. This custom ID is exposed through the Security dashboard. Valid values fall within this range: `66000000 - 66999999`. This field is only applicable for the `action` object that resides in the root of the `sec_rule` object. 
+
+      **Default value:** Random number
   msg:
     type: string
+    description: |
+
+      Determines the rule message that will be assigned to this custom rule. This message is exposed through the Security dashboard. This field is only applicable for the `action` object that resides in the root of the `sec_rule` object.
+
+      **Default Value:** Blank
+
   t:
-    description: Max 20 entries.
+    description: |
+
+      Determines the set of transformations that will be applied to the value derived from the request element identified in a `variable` object (i.e., source value). Transformations are always applied to the source value, regardless of the number of transformations that have been defined. Valid values are:
+
+      -   **NONE:** Indicates that the source value should not be modified.
+
+      -   **LOWERCASE:** Indicates that the source value should be converted to lowercase characters.
+
+      -   **URLDECODE:** Indicates that the source value should be URL decoded. This transformation is useful when the source value has been URL encoded twice.
+
+      -   **REMOVENULLS:** Indicates that null values should be removed from the source value.
+
+      A criterion is satisfied if the source value or any of the modified string values meet the conditions defined by the `operator` object. 
+
     type: array
     items:
       type: string

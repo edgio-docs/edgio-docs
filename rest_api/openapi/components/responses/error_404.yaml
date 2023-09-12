@@ -1,4 +1,4 @@
-description: Not found. The requested resource does not exist.
+description: Not Found. The requested resource does not exist.
 content:
   application/json:
     schema:

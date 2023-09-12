@@ -1,14 +1,35 @@
+post:
+  operationId: create-managed-rule
+  tags:
+    - Managed Rules (Profiles)
+  summary: Add Managed Rule
+  description: Creates a managed rule that identifies a rule set configuration and describes a valid request.
+  parameters:
+    - $ref: ../components/parameters/team_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/Profile.yaml
+  responses:
+    '200':
+      description: OK. A managed rule was created. 
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Profile.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
 get:
   operationId: get-managed-rules
   tags:
     - Managed Rules (Profiles)
-  summary: GET Profiles
-  description: List all Profiles for a given team.
+  summary: Get All Managed Rules
+  description: Retrieves a list of managed rules. A managed rule identifies a rule set configuration and describes a valid request.
   parameters:
     - $ref: ../components/parameters/team_id.yaml
   responses:
     '200':
-      description: A list of Profile id's and names for the team
+      description: OK. A list of managed rules was retrieved. 
       content:
         application/json:
           schema:
@@ -24,28 +45,7 @@ get:
                   ruleset_version: '2019-11-01'
                   ruleset_id: ECRS
     '404':
-      description: team not found
-    '429':
-      $ref: ../components/responses/error_429.yaml
-    '500':
-      $ref: ../components/responses/error_500.yaml
-post:
-  operationId: create-managed-rule
-  tags:
-    - Managed Rules (Profiles)
-  summary: POST Profile
-  description: Create a new Profile for a given team.
-  parameters:
-    - $ref: ../components/parameters/team_id.yaml
-  requestBody:
-    $ref: ../components/requestBodies/Profile.yaml
-  responses:
-    '200':
-      description: Profile created successfully
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Profile.yaml
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':

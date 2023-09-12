@@ -3,45 +3,75 @@ type: object
 properties:
   id:
     type: string
+    description: The Security App's system-defined ID.
   name:
     type: string
+    description: The Security App's name.
   recaptcha_action_name:
     type: string
+    description: The reCAPTCHA configuration's name.
   recaptcha_secret_key:
     type: string
+    description: The reCAPTCHA secret key provided by Google.
   recaptcha_site_key:
     type: string
+    description: The reCAPTCHA site key provided by Google.
   host:
-    $ref: ./Operation.yaml
+    description: A hostname match condition.
+    allOf:
+      - $ref: ./Operation.yaml
   path:
-    $ref: ./Operation.yaml
+    description: A URL path match condition.
+    allOf:
+      - $ref: ./Operation.yaml
   acl_audit_id:
     type: string
+    description: The system-defined ID for the access rule that will audit your traffic.
   acl_audit_action:
-    $ref: ./WafAuditAction.yaml
+    description: The type of action that will take place when the access rule defined within the `acl_audit_id` property is violated.
+    allOf:
+      - $ref: ./WafAuditAction.yaml
   acl_prod_id:
     type: string
+    description: The system-defined ID for the access rule that will be applied to your traffic.
   acl_prod_action:
-    $ref: ./WafProdAction.yaml
+    description: The type of action that will take place when the access rule defined within the `acl_prod_id` property is violated.
+    allOf:
+      - $ref: ./WafProdAction.yaml
   rules_audit_id:
     type: string
+    description: The system-defined ID for the custom rule that will audit your traffic.
   rules_audit_action:
-    $ref: ./WafAuditAction.yaml
+    description: Identifies the type of action that will take place when the access rule defined within the `rules_audit_id` property is violated.
+    allOf:
+      - $ref: ./WafAuditAction.yaml
   rules_prod_id:
     type: string
+    description: The system-defined ID for the custom rule that will be applied to your traffic.
   rules_prod_action:
-    $ref: ./WafProdAction.yaml
+    description: The type of action that will take place when the access rule defined within the `rules_prod_id` property is violated.
+    allOf:
+      - $ref: ./WafProdAction.yaml
   profile_audit_id:
     type: string
+    description: The system-defined ID for the managed rule that will audit your traffic.
   profile_audit_action:
-    $ref: ./WafAuditAction.yaml
+    description: The type of action that will take place when the managed rule defined within the `profile_audit_id` property is violated.
+    allOf:
+      - $ref: ./WafAuditAction.yaml
   profile_prod_id:
     type: string
+    description: The system-defined ID for the managed rule that will be applied to your traffic.
   profile_prod_action:
-    $ref: ./WafProdAction.yaml
+    description: The type of action that will take place when the managed rule defined within the `profile_prod_id` property is violated.
+    allOf:
+      - $ref: ./WafProdAction.yaml
   bot_manager_config_id:
     type: string
+    description: The system-defined ID for the bot manager configuration that will be applied to your traffic.
   limits:
     type: array
+    description: The set of rate rules that will be enforced for this Security App and the enforcement action that will be applied to rate limited requests.
     items:
-      $ref: ./ScopeLimit.yaml
+      allOf:
+      - $ref: ./ScopeLimit.yaml

@@ -38,7 +38,7 @@ Edge functions must respond to the client by returning a `Response` object or a 
 ```js filename="./edge-functions/example.js"
 export async function handleHttpRequest(request, context) {
   const defaultResponse = new Response('Hello World!');
-  const response = await fetch('https://your-server.com' /* origin options */);
+  const response = await fetch('https://your-server.com', /* origin options */);
 
   if (!response.ok) {
     return defaultResponse;

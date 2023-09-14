@@ -24,8 +24,26 @@ new Router().get('/', {
 Each edge function is stored in a separate file and assigned to a specific route in your `routes.js` file. An edge function file must export the following entry point:
 
 ```js
+/**
+ * Handles an HTTP request and returns a response.
+ *
+ * @async
+ * @param {Request} request - Represents the incoming request.
+ * @param {Object} context - Provides additional information about the request and environment.
+ * @param {Object} context.client - The client's network information.
+ * @param {Object} context.device - The client's device capabilities.
+ * @param {Object} context.environmentVars - Environment variables as defined in the Developer Console.
+ * @param {Object} context.geo - The client's geo location.
+ * @param {Object} context.metrics - Provides functions for injecting metrics into your edge function.
+ * @param {Function} context.metrics.add - Adds a value to the metric with the given ID.
+ * @param {Function} context.metrics.startTimer - Starts a timer for the metric with the given ID. Only one timer can be active at a time for a given metric ID.
+ * @param {Function} context.metrics.stopTimer - Stops a timer for the metric with the given ID.
+ * @param {Object} context.origins - Origin servers as defined in the {{ PORTAL }} or the {{ CONFIG_FILE }} file.
+ * @param {Object} context.requestVars - Information about this property including values set using Set Variables.
+ * @returns {Response | Promise<Response>}
+ */
 export async function handleHttpRequest(request, context) {
-  /* your edge function code goes here */
+  // ... function code ...
 }
 ```
 
@@ -53,6 +71,69 @@ export async function handleHttpRequest(request, context) {
 As of v7.2.3, the `context.respondWith()` function is deprecated. You must return a `Response` object or a `Promise` that resolves to a `Response` object to respond to the client.
 
 </Callout>
+
+## Request Object {/* request-object */}
+
+Edge functions are passed a `Request` object representing the incoming request. This object provides methods and properties for accessing the request's headers, body, URL, and more.
+
+### Supported Methods and Properties
+
+- **Headers**: Access the request headers using `request.headers`.
+- **Body**: The request body can be read as:
+  - **ArrayBuffer**: `await request.arrayBuffer()`
+  - **JSON**: `await request.json()`
+  - **Text**: `await request.text()`
+- **Method**: `request.method` to get the HTTP method of the request.
+- **URL**: `request.url` provides the full URL, and `request.path` gives the request path.
+- **Cloning**: To clone a request without its body, use `request.cloneWithoutBody()`.
+
+### Unsupported Methods and Properties
+
+The following properties and methods from the standard [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) API are not supported:
+
+- `request.blob()`
+- `request.cache`
+- `request.credentials`
+- `request.clone()`
+- `request.destination`
+- `request.formData()`
+- `request.integrity`
+- `request.mode`
+- `request.redirect`
+- `request.referrer`
+- `request.referrerPolicy`
+- `request.signal`
+
+**Note**: The above-mentioned unsupported methods and properties will throw an error if attempted to be used.
+
+## Response Object {/* response-object */}
+
+Edge functions must return a `Response|Promise<Response>` object representing the HTTP response. This object provides methods and properties for accessing and setting the response's headers, body, status, and more. A response can be created using the `Response` class or by calling the `fetch()` function. See the [Edge Function Namespace](#edge-function-namespace) section for more information.
+
+### Supported Methods and Properties
+
+- **Headers**: Access or modify the response headers using `response.headers`.
+- **Body**: The response body can be interacted with using:
+  - **ArrayBuffer**: `await response.arrayBuffer()`
+  - **JSON**: `await response.json()`
+  - **Text**: `await response.text()`
+- **Status**: `response.status` to get the HTTP status code of the response. `response.statusText` provides the corresponding status text.
+- **URL**: `response.url` provides the URL of the response.
+- **Redirected**: `response.redirected` is a property that indicates whether the response is a result of a redirection.
+  - **Note**: a response can be redirected up to 5 times before an exception is thrown.
+- **Redirection**: Create a redirected response using `Response.redirect(url, status)`.
+- **Cloning**: To clone a response without its body, use `response.cloneWithoutBody()`.
+
+### Unsupported Methods and Properties
+
+The following properties and methods from the standard [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) API are not supported:
+
+- `response.blob()`
+- `response.clone()`
+- `response.formData()`
+- `response.type`
+
+**Note**: The above-mentioned unsupported methods and properties will throw an error if attempted to be used.
 
 ## Edge Function Parameters {/* edge-function-parameters */}
 
@@ -96,7 +177,7 @@ Edge Functions global namespace provide access to the following:
 | `TextDecoder`       | Polyfill class to manage decoding text.                                                                                 | [TextDecoder](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder) |
 | `TextEncoder`       | Polyfill class to manage encoding text.                                                                                 | [TextEncoder](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder) |
 
-### Origin Requests Using fetch() {/* origin-requests-using-fetch */}
+## Origin Requests Using fetch() {/* origin-requests-using-fetch */}
 
 Before making a fetch, you must first define the origin in the `{{ CONFIG_FILE }}` file. Learn more in our [CDN-as-Code](/guides/performance/cdn_as_code#config-file) guide.
 
@@ -212,7 +293,7 @@ Edge functions are limited to 2MB of memory at runtime. This includes the compil
 
 Edge functions are limited to 50ms of CPU time and 60 seconds of total execution time. The time your edge function spends waiting for a response from an origin server does not count against the 50ms CPU limit.
 
-## Polyfills {/* polyfills */}
+## Polyfills and Helpers {/* polyfills-and-helpers */}
 
 It's important to note that edge functions are not Node.js functions. Your code or third-party libraries may not work as expected if they are referencing Node.js specific APIs (e.g. `URL`, `Buffer`, etc). Because of this, we recommend using polyfills when needed. Below are some examples of polyfills you can use in your edge functions. Add these files to your project and import them into your edge function files as needed.
 
@@ -249,11 +330,46 @@ It's important to note that edge functions are not Node.js functions. Your code 
   };
   ```
 
+- `process.env` Namespace
+
+  This namespace is not globally available in edge functions. You can use the following polyfill to set environment variables from the context object.
+
+  ```js filename="./polyfills/process-env.js"
+  /**
+   * Polyfill for process.env.
+   */
+  global.process = global.process || { env: {} };
+  
+  /**
+   * Sets environment variables from a given context.
+   *
+   * @param {Object} context - The context object containing environment variables.
+   * @param {Object} context.environmentVars - Key-value pairs of environment variables.
+   */
+  export function setEnvFromContext({ environmentVars }) {
+    Object.assign(process.env, environmentVars);
+  }
+  ```
+
+### Helper Functions {/* helper-functions */}
+
 - `createFetchForOrigin` for the `fetch()` API <a id="createFetchForOrigin"></a>
+
+  This function returns a modified `fetch()` function that includes the origin server. This is useful for making multiple requests to the same origin or overriding the global function.
+  
+  **Note**: Some third-party libraries let you specify a `fetch()` function. If you are unable to set this in your library, you can override the global one using this helper. See the [Origin Requests Using fetch()](#origin-requests-using-fetch) section for more details.
+  
 
   ```js filename="./polyfills/createFetchForOrigin.js"
   /**
-   * Creates a fetch function with an additional 'edgio' option to specify the origin.
+   * Creates a fetch function with an additional 'edgio' option to specify the origin. Example usage:
+   *
+   * // create a fetch function for the 'web' origin.
+   * const fetch = createFetchForOrigin('web');
+   * const response = await fetch('https://your-server.com');
+   *
+   * // override the global fetch() function
+   * global.fetch = createFetchForOrigin('web');;
    *
    * @param {string} originName - The origin name defined in edgio.config.js.
    * @returns {function} - A modified fetch function.

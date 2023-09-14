@@ -49,92 +49,6 @@ export async function handleHttpRequest(request, context) {
 
 When a request is received for a route that has an edge function assigned to it, the edge function is invoked.
 
-## Responding to the Client {/* responding-to-the-client */}
-
-Edge functions must respond to the client by returning a `Response` object or a `Promise` that resolves to a `Response` object. The `Response` object can be created using the `Response` class or by calling the `fetch()` function. See the [Edge Function Namespace](#edge-function-namespace) section for more information.
-
-```js filename="./edge-functions/example.js"
-export async function handleHttpRequest(request, context) {
-  const defaultResponse = new Response('Hello World!');
-  const response = await fetch('https://your-server.com', /* origin options */);
-
-  if (!response.ok) {
-    return defaultResponse;
-  }
-
-  return response;
-}
-```
-
-<Callout type="important">
- 
-As of v7.2.3, the `context.respondWith()` function is deprecated. You must return a `Response` object or a `Promise` that resolves to a `Response` object to respond to the client.
-
-</Callout>
-
-## Request Object {/* request-object */}
-
-Edge functions are passed a `Request` object representing the incoming request. This object provides methods and properties for accessing the request's headers, body, URL, and more.
-
-### Supported Methods and Properties
-
-- **Headers**: Access the request headers using `request.headers`.
-- **Body**: The request body can be read as:
-  - **ArrayBuffer**: `await request.arrayBuffer()`
-  - **JSON**: `await request.json()`
-  - **Text**: `await request.text()`
-- **Method**: `request.method` to get the HTTP method of the request.
-- **URL**: `request.url` provides the full URL, and `request.path` gives the request path.
-- **Cloning**: To clone a request without its body, use `request.cloneWithoutBody()`.
-
-### Unsupported Methods and Properties
-
-The following properties and methods from the standard [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) API are not supported:
-
-- `request.blob()`
-- `request.cache`
-- `request.credentials`
-- `request.clone()`
-- `request.destination`
-- `request.formData()`
-- `request.integrity`
-- `request.mode`
-- `request.redirect`
-- `request.referrer`
-- `request.referrerPolicy`
-- `request.signal`
-
-**Note**: The above-mentioned unsupported methods and properties will throw an error if attempted to be used.
-
-## Response Object {/* response-object */}
-
-Edge functions must return a `Response|Promise<Response>` object representing the HTTP response. This object provides methods and properties for accessing and setting the response's headers, body, status, and more. A response can be created using the `Response` class or by calling the `fetch()` function. See the [Edge Function Namespace](#edge-function-namespace) section for more information.
-
-### Supported Methods and Properties
-
-- **Headers**: Access or modify the response headers using `response.headers`.
-- **Body**: The response body can be interacted with using:
-  - **ArrayBuffer**: `await response.arrayBuffer()`
-  - **JSON**: `await response.json()`
-  - **Text**: `await response.text()`
-- **Status**: `response.status` to get the HTTP status code of the response. `response.statusText` provides the corresponding status text.
-- **URL**: `response.url` provides the URL of the response.
-- **Redirected**: `response.redirected` is a property that indicates whether the response is a result of a redirection.
-  - **Note**: a response can be redirected up to 5 times before an exception is thrown.
-- **Redirection**: Create a redirected response using `Response.redirect(url, status)`.
-- **Cloning**: To clone a response without its body, use `response.cloneWithoutBody()`.
-
-### Unsupported Methods and Properties
-
-The following properties and methods from the standard [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) API are not supported:
-
-- `response.blob()`
-- `response.clone()`
-- `response.formData()`
-- `response.type`
-
-**Note**: The above-mentioned unsupported methods and properties will throw an error if attempted to be used.
-
 ## Edge Function Parameters {/* edge-function-parameters */}
 
 The edge function is passed two parameters: `request` and `context`.
@@ -171,11 +85,109 @@ Edge Functions global namespace provide access to the following:
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | `console` object    | The standard console object used to log messages to the console.                                                        | [Console Object](https://developer.mozilla.org/en-US/docs/Web/API/console)  |
 | `Headers` Class     | The standard Headers class used to manipulate headers on requests and responses.                                        | [Headers Class](https://developer.mozilla.org/en-US/docs/Web/API/Headers)   |
-| `Request` Class     | The standard Request class used access the initial request on this route and to make new requests to the origin server. | [Request Class](https://developer.mozilla.org/en-US/docs/Web/API/Request)   |
-| `Response` Class    | The standard Response class used to access responses from the origin server and to create new downstream responses      | [Response Class](https://developer.mozilla.org/en-US/docs/Web/API/Response) |
+| `Request` Class     | The standard Request class used access the initial request on this route and to make new requests to the origin server. | [Request Class](#request-class)                                             |
+| `Response` Class    | The standard Response class used to access responses from the origin server and to create new downstream responses      | [Response Class](#response-class)                                           |
 | `fetch(request)`    | A [modified fetch() function](#origin-requests-using-fetch) used to makes requests to the origin server.                | [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)     |
 | `TextDecoder`       | Polyfill class to manage decoding text.                                                                                 | [TextDecoder](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder) |
 | `TextEncoder`       | Polyfill class to manage encoding text.                                                                                 | [TextEncoder](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder) |
+
+### Request Class {/* request-class */}
+
+<Callout type="info">
+
+Edge functions use a modified version of the standard [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) API. See the [Unsupported Methods and Properties](#request-unsupported-methods-and-properties) section for more information.
+
+</Callout>
+
+Edge functions are passed a `Request` instance representing the incoming request. This object provides methods and properties for accessing the request's headers, body, URL, and more.
+
+#### Supported Methods and Properties {/* request-supported-methods-and-properties */}
+
+- **Headers**: Access the request headers using `request.headers`.
+- **Body**: The request body can be read as:
+  - **ArrayBuffer**: `await request.arrayBuffer()`
+  - **JSON**: `await request.json()`
+  - **Text**: `await request.text()`
+- **Method**: `request.method` to get the HTTP method of the request.
+- **URL**: `request.url` provides the full URL, and `request.path` gives the request path.
+- **Cloning**: To clone a request without its body, use `request.cloneWithoutBody()`.
+
+#### Unsupported Methods and Properties {/* request-unsupported-methods-and-properties */}
+
+The following properties and methods from the standard [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) API are not supported:
+
+- `request.blob()`
+- `request.cache`
+- `request.credentials`
+- `request.clone()`
+- `request.destination`
+- `request.formData()`
+- `request.integrity`
+- `request.mode`
+- `request.redirect`
+- `request.referrer`
+- `request.referrerPolicy`
+- `request.signal`
+
+**Note**: The above-mentioned unsupported methods and properties will throw an error if attempted to be used.
+
+### Response Class {/* response-class */}
+
+<Callout type="info">
+
+Edge functions use a modified version of the standard [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) API. See the [Unsupported Methods and Properties](#response-unsupported-methods-and-properties) section for more information.
+
+</Callout>
+
+Origins fetch requests and edge functions return a `Response` instance representing the response. This object provides methods and properties for accessing and setting the response's headers, body, status, and more. A response can be created using the `Response` class or by calling the `fetch()` function. See the [Edge Function Namespace](#edge-function-namespace) section for more information.
+
+#### Supported Methods and Properties {/* response-supported-methods-and-properties */}
+
+- **Headers**: Access or modify the response headers using `response.headers`.
+- **Body**: The response body can be interacted with using:
+  - **ArrayBuffer**: `await response.arrayBuffer()`
+  - **JSON**: `await response.json()`
+  - **Text**: `await response.text()`
+- **Status**: `response.status` to get the HTTP status code of the response. `response.statusText` provides the corresponding status text.
+- **URL**: `response.url` provides the URL of the response.
+- **Redirected**: `response.redirected` is a property that indicates whether the response is a result of a redirection.
+  - **Note**: a response can be redirected up to 5 times before an exception is thrown.
+- **Redirection**: Create a redirected response using `Response.redirect(url, status)`.
+- **Cloning**: To clone a response without its body, use `response.cloneWithoutBody()`.
+
+#### Unsupported Methods and Properties {/* response-unsupported-methods-and-properties */}
+
+The following properties and methods from the standard [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) API are not supported:
+
+- `response.blob()`
+- `response.clone()`
+- `response.formData()`
+- `response.type`
+
+**Note**: The above-mentioned unsupported methods and properties will throw an error if attempted to be used.
+
+## Responding to the Client {/* responding-to-the-client */}
+
+Edge functions must respond to the client by returning a `Response` object or a `Promise` that resolves to a `Response` object. The `Response` object can be created using the `Response` class or by calling the `fetch()` function. See the [Edge Function Namespace](#edge-function-namespace) section for more information.
+
+```js filename="./edge-functions/example.js"
+export async function handleHttpRequest(request, context) {
+  const defaultResponse = new Response('Hello World!');
+  const response = await fetch('https://your-server.com' /* origin options */);
+
+  if (!response.ok) {
+    return defaultResponse;
+  }
+
+  return response;
+}
+```
+
+<Callout type="important">
+ 
+As of v7.2.3, the `context.respondWith()` function is deprecated. You must return a `Response` object or a `Promise` that resolves to a `Response` object to respond to the client.
+
+</Callout>
 
 ## Origin Requests Using fetch() {/* origin-requests-using-fetch */}
 
@@ -338,15 +350,15 @@ It's important to note that edge functions are not Node.js functions. Your code 
   /**
    * Polyfill for process.env.
    */
-  global.process = global.process || { env: {} };
-  
+  global.process = global.process || {env: {}};
+
   /**
    * Sets environment variables from a given context.
    *
    * @param {Object} context - The context object containing environment variables.
    * @param {Object} context.environmentVars - Key-value pairs of environment variables.
    */
-  export function setEnvFromContext({ environmentVars }) {
+  export function setEnvFromContext({environmentVars}) {
     Object.assign(process.env, environmentVars);
   }
   ```
@@ -356,9 +368,8 @@ It's important to note that edge functions are not Node.js functions. Your code 
 - `createFetchForOrigin` for the `fetch()` API <a id="createFetchForOrigin"></a>
 
   This function returns a modified `fetch()` function that includes the origin server. This is useful for making multiple requests to the same origin or overriding the global function.
-  
+
   **Note**: Some third-party libraries let you specify a `fetch()` function. If you are unable to set this in your library, you can override the global one using this helper. See the [Origin Requests Using fetch()](#origin-requests-using-fetch) section for more details.
-  
 
   ```js filename="./polyfills/createFetchForOrigin.js"
   /**

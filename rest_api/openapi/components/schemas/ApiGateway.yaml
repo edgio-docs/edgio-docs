@@ -18,9 +18,11 @@ properties:
     description: The Edgio Console user that last modified this access rule. This field does not reflect updates performed through the REST API.
   team_config:
     type: boolean
-    description: Set to `true`. 
+    description: This property must always be `true`. If passed in the request, set it to `true`.
   rules:
     type: array
     description: Contains one or more rule(s) that identify a set of requests and a JSON schema through which Edgio will screen that traffic.
     items:
       $ref: ./ApiRule.yaml
+required:
+  - team_config

@@ -1,0 +1,19 @@
+parameters:
+  - $ref: ../components/parameters/organization_id.yaml
+  - $ref: ../components/parameters/acl_id.yaml
+  - $ref: ../components/parameters/version_id.yaml
+get:
+  operationId: get-acl-version
+  tags:
+    - Access Control List (ACL)
+  summary: GET specific version of acl object identified by version id
+  description: Get get specific version of acl object.
+  responses:
+    '200':
+      description: Version for that acl object.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/version_long.yaml
+    '404':
+      description: version not found

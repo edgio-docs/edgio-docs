@@ -11,7 +11,7 @@ properties:
       anyOf:
         - $ref: ./RepDb.yaml
         - $ref: ./SecRuleBot.yaml
-  team_id:
+  customer_id:
     type: string
     description: |
 
@@ -25,5 +25,9 @@ properties:
   name:
     type: string
     description: The bot rule set's name.
+  team_config:
+    type: boolean
+    description:  This property must always be `true`. If passed in the request, set it to `true`.
 required:
   - directive
+  - team_config

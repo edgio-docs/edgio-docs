@@ -46,7 +46,7 @@ properties:
     description: Contains the set of known bots that Edgio may automatically detect and the enforcement action that may be applied to them.
     items:
       $ref: ./KnownBotObj.yaml
-  team_id:
+  customer_id:
     type: string
     description: |
 
@@ -78,3 +78,8 @@ properties:
       - BROWSER_CHALLENGE
       - REDIRECT_302
       - RECAPTCHA
+  team_config:
+    type: boolean
+    description: This property must always be `true`. If passed in the request, set it to `true`.
+required:
+  - team_config

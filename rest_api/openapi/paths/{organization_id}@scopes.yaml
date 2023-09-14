@@ -1,0 +1,110 @@
+post:
+  operationId: create-security-applications
+  tags:
+    - Security Applications (Scopes)
+  summary: Initialize Security App
+  description: Initializes Security App by creating your first Security App configuration. If one or more Security App(s) exist, you may only use the [Manage All Security Apps operation](#tag/Security-Applications-(Scopes)/operation/update-security-applications) to add, update, or delete Security Apps.
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/Scopes.yaml
+  responses:
+    '200':
+      description: OK. A Security App was created.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+get:
+  operationId: get-security-applications
+  tags:
+    - Security Applications (Scopes)
+  summary: Get All Security Apps
+  description: Retrieves a list of Security Apps.
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  responses:
+    '200':
+      description: OK. A list of Security Apps was retrieved.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Scopes.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+put:
+  operationId: update-security-applications
+  tags:
+    - Security Applications (Scopes)
+  summary: Manage All Security Apps
+  description: |
+  
+    Creates, updates, and deletes one or more Security Apps. Each Security App:
+
+    -   Identifies the set of traffic to which it applies by hostname, a URL path, or both.
+
+    -   Defines how threats will be detected via access rules, custom rule sets, managed rules, and rate rules.
+
+        If one or more condition group(s) have been defined within a rate rule, then traffic will only be rate limited when it also satisfies at least one of those condition groups.
+
+    -   Defines how threats will be handled through a production enforcement action, audit enforcement action, or both.
+
+    **Key information:**
+
+    -   This operation allows you to quickly create, update, or delete one or more Security Apps. These actions cannot be undone.
+
+    -   Create a Security App by adding a scope object in the request.
+
+    -   Update a Security App by modifying an existing scope object in the request. The id property identifies the Security App that will be updated.
+
+    -   Delete a Security App by excluding a scope object from the request.
+
+        All Security Apps that are not explicitly defined within the request will be deleted.
+
+    -   The recommended method for updating your Security Apps is to perform the following steps:
+
+        1.  If you have not created at least one Security App, then you should do so either through the Edgio Console or through the [Initialize Security Apps operation](#tag/Security-Applications-(Scopes)/operation/create-security-applications).
+
+        2.  Retrieve your current set of Security Apps through the [Get All Security Apps operation](#tag/Security-Applications-(Scopes)/operation/get-security-applications).
+
+        3.  Add, modify, or remove Security Apps from the response as needed.
+
+        4.  Pass the updated payload to this operation.
+
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/Scopes.yaml
+  responses:
+    '200':
+      description: OK. A Security App was updated.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+# This operation is reserved for internal use. Delete one or more Security Apps through the Manage Security Apps operation.
+# delete:
+#   operationId: delete-security-application
+#   tags:
+#     - Security Applications (Scopes)
+#   summary: Delete Security App
+#   description: Deletes a Security App.
+#   parameters:
+#     - $ref: ../components/parameters/organization_id.yaml
+#   responses:
+#     '200':
+#       description: OK. A Security App was deleted.
+#     '429':
+#       $ref: ../components/responses/error_429.yaml
+#     '500':
+#       $ref: ../components/responses/error_500.yaml

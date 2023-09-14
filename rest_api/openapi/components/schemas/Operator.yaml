@@ -30,7 +30,7 @@ properties:
     type: string
     description: | 
     
-      A value that will be compared against the request’s path. Specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining this property.
+      The value that will be compared against the request’s path. Specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining this property.
       
       **Sample value:** `/marketing`
 

@@ -220,253 +220,253 @@ paths:
     security:
       - bearerAuth:
           - app.accounts
-  '/{team_id}/scopes':
-    $ref: 'paths/{team_id}@scopes.yaml'
+  '/{organization_id}/scopes':
+    $ref: 'paths/{organization_id}@scopes.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9/'
     security:
       - bearerAuth:
           - app.waf
-#  '/{team_id}/scopes/{scope_id}/versions':
-#    $ref: 'paths/{team_id}@scopes@{scope_id}@versions.yaml'
+#  '/{organization_id}/scopes/{scope_id}/versions':
+#    $ref: 'paths/{organization_id}@scopes@{scope_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.waf
-#  '/{team_id}/scopes/{scope_id}/versions/{version_id}':
-#    $ref: 'paths/{team_id}@scopes@{scope_id}@versions@{version_id}.yaml'
+#  '/{organization_id}/scopes/{scope_id}/versions/{version_id}':
+#    $ref: 'paths/{organization_id}@scopes@{scope_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.waf
-  '/{team_id}/acls':
-    $ref: 'paths/{team_id}@acls.yaml'
+  '/{organization_id}/acls':
+    $ref: 'paths/{organization_id}@acls.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9/'
     security:
       - bearerAuth:
           - app.waf
-  '/{team_id}/acls/{acl_id}':
-    $ref: 'paths/{team_id}@acls@{acl_id}.yaml'
+  '/{organization_id}/acls/{acl_id}':
+    $ref: 'paths/{organization_id}@acls@{acl_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9/'
     security:
       - bearerAuth:
           - app.waf
-#  '/{team_id}/acl/{acl_id}/versions':
-#    $ref: 'paths/{team_id}@acl@{acl_id}@versions.yaml'
+#  '/{organization_id}/acl/{acl_id}/versions':
+#    $ref: 'paths/{organization_id}@acl@{acl_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.waf
-#  '/{team_id}/acl/{acl_id}/versions/{version_id}':
-#    $ref: 'paths/{team_id}@acl@{acl_id}@versions@{version_id}.yaml'
+#  '/{organization_id}/acl/{acl_id}/versions/{version_id}':
+#    $ref: 'paths/{organization_id}@acl@{acl_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.waf
-  '/{team_id}/rules':
-    $ref: 'paths/{team_id}@rules.yaml'
+  '/{organization_id}/rules':
+    $ref: 'paths/{organization_id}@rules.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9/'
     security:
       - bearerAuth:
           - app.waf
-  '/{team_id}/rules/{rule_id}':
-    $ref: 'paths/{team_id}@rules@{rule_id}.yaml'
+  '/{organization_id}/rules/{rule_id}':
+    $ref: 'paths/{organization_id}@rules@{rule_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9/'
     security:
       - bearerAuth:
           - app.waf
-#  '/{team_id}/rules/{rule_id}/versions':
-#    $ref: 'paths/{team_id}@rules@{rule_id}@versions.yaml'
+#  '/{organization_id}/rules/{rule_id}/versions':
+#    $ref: 'paths/{organization_id}@rules@{rule_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.waf
-#  '/{team_id}/rules/{rule_id}/versions/{version_id}':
-#    $ref: 'paths/{team_id}@rules@{rule_id}@versions@{version_id}.yaml'
+#  '/{organization_id}/rules/{rule_id}/versions/{version_id}':
+#    $ref: 'paths/{organization_id}@rules@{rule_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.waf
-  '/{team_id}/limits':
-    $ref: 'paths/{team_id}@limits.yaml'
+  '/{organization_id}/limits':
+    $ref: 'paths/{organization_id}@limits.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9/'
     security:
       - bearerAuth:
           - app.waf
-  '/{team_id}/limits/{limit_id}':
-    $ref: 'paths/{team_id}@limits@{limit_id}.yaml'
+  '/{organization_id}/limits/{limit_id}':
+    $ref: 'paths/{organization_id}@limits@{limit_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9/'
     security:
       - bearerAuth:
           - app.waf
-#  '/{team_id}/limits/{limit_id}/versions':
-#    $ref: 'paths/{team_id}@limits@{limit_id}@versions.yaml'
+#  '/{organization_id}/limits/{limit_id}/versions':
+#    $ref: 'paths/{organization_id}@limits@{limit_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.waf
-#  '/{team_id}/limits/{limit_id}/versions/{version_id}':
-#    $ref: 'paths/{team_id}@limits@{limit_id}@versions@{version_id}.yaml'
+#  '/{organization_id}/limits/{limit_id}/versions/{version_id}':
+#    $ref: 'paths/{organization_id}@limits@{limit_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.waf
-  '/{team_id}/profiles':
-    $ref: 'paths/{team_id}@profiles.yaml'
+  '/{organization_id}/profiles':
+    $ref: 'paths/{organization_id}@profiles.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9/'
     security:
       - bearerAuth:
           - app.waf
-  '/{team_id}/profiles/{profile_id}':
-    $ref: 'paths/{team_id}@profiles@{profile_id}.yaml'
+  '/{organization_id}/profiles/{profile_id}':
+    $ref: 'paths/{organization_id}@profiles@{profile_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9/'
     security:
       - bearerAuth:
           - app.waf
-#  '/{team_id}/profiles/{profile_id}/versions':
-#    $ref: 'paths/{team_id}@profiles@{profile_id}@versions.yaml'
+#  '/{organization_id}/profiles/{profile_id}/versions':
+#    $ref: 'paths/{organization_id}@profiles@{profile_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.waf
-#  '/{team_id}/profiles/{profile_id}/versions/{version_id}':
-#    $ref: 'paths/{team_id}@profiles@{profile_id}@versions@{version_id}.yaml'
+#  '/{organization_id}/profiles/{profile_id}/versions/{version_id}':
+#    $ref: 'paths/{organization_id}@profiles@{profile_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.waf
-  '/{team_id}/api-gateways':
-    $ref: 'paths/{team_id}@api-gateways.yaml'
+  '/{organization_id}/api-gateways':
+    $ref: 'paths/{organization_id}@api-gateways.yaml'
     servers:
       - url: 'https://edgioapis.com/api-security/v0.9/'
     security:
       - bearerAuth:
           - app.api.security
-  '/{team_id}/api-gateways/{api_gateway_id}':
-    $ref: 'paths/{team_id}@api-gateways@{api_gateway_id}.yaml'
+  '/{organization_id}/api-gateways/{api_gateway_id}':
+    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/api-security/v0.9/'
     security:
       - bearerAuth:
           - app.api.security
-  '/{team_id}/api-gateways/{api_gateway_id}/schemas':
-    $ref: 'paths/{team_id}@api-gateways@{api_gateway_id}@schemas.yaml'
+  '/{organization_id}/api-gateways/{api_gateway_id}/schemas':
+    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@schemas.yaml'
     servers:
       - url: 'https://edgioapis.com/api-security/v0.9/'
     security:
       - bearerAuth:
           - app.api.security
-#  '/{team_id}/api-gateways/{api_gateway_id}/versions':
-#    $ref: 'paths/{team_id}@api-gateways@{api_gateway_id}@versions.yaml'
+#  '/{organization_id}/api-gateways/{api_gateway_id}/versions':
+#    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/api-security/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.api.security
-#  '/{team_id}/api-gateways/{api_gateway_id}/versions/{version_id}':
-#    $ref: 'paths/{team_id}@api-gateways@{api_gateway_id}@versions@{version_id}.yaml'
+#  '/{organization_id}/api-gateways/{api_gateway_id}/versions/{version_id}':
+#    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/api-security/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.api.security
-  '/{team_id}/api-schemas':
-    $ref: 'paths/{team_id}@api-schemas.yaml'
+  '/{organization_id}/api-schemas':
+    $ref: 'paths/{organization_id}@api-schemas.yaml'
     servers:
       - url: 'https://edgioapis.com/api-security/v0.9/'
     security:
       - bearerAuth:
           - app.api.security
-  '/{team_id}/api-schemas/{api_schema_id}':
-    $ref: 'paths/{team_id}@api-schemas@{api_schema_id}.yaml'
+  '/{organization_id}/api-schemas/{api_schema_id}':
+    $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/api-security/v0.9/'
     security:
       - bearerAuth:
           - app.api.security
-#  '/{team_id}/api-schemas/{api_schema_id}/versions':
-#    $ref: 'paths/{team_id}@api-schemas@{api_schema_id}@versions.yaml'
+#  '/{organization_id}/api-schemas/{api_schema_id}/versions':
+#    $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/api-security/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.api.security
-#  '/{team_id}/api-schemas/{api_schema_id}/versions/{version_id}':
-#    $ref: 'paths/{team_id}@api-schemas@{api_schema_id}@versions@{version_id}.yaml'
+#  '/{organization_id}/api-schemas/{api_schema_id}/versions/{version_id}':
+#    $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/api-security/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.api.security
-  '/{team_id}/bots':
-    $ref: 'paths/{team_id}@bots.yaml'
+  '/{organization_id}/bots':
+    $ref: 'paths/{organization_id}@bots.yaml'
     servers:
       - url: 'https://edgioapis.com/bot-security/v0.9/'
     security:
       - bearerAuth:
           - app.bot-security
-  '/{team_id}/bots/{bot_id}':
-    $ref: 'paths/{team_id}@bots@{bot_id}.yaml'
+  '/{organization_id}/bots/{bot_id}':
+    $ref: 'paths/{organization_id}@bots@{bot_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/bot-security/v0.9/'
     security:
       - bearerAuth:
           - app.bot-security
-#  '/{team_id}/bots/{bot_id}/versions':
-#    $ref: 'paths/{team_id}@bots@{bot_id}@versions.yaml'
+#  '/{organization_id}/bots/{bot_id}/versions':
+#    $ref: 'paths/{organization_id}@bots@{bot_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/bot-security/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.bot-security
-#  '/{team_id}/bots/{bot_id}/versions/{version_id}':
-#    $ref: 'paths/{team_id}@bots@{bot_id}@versions@{version_id}.yaml'
+#  '/{organization_id}/bots/{bot_id}/versions/{version_id}':
+#    $ref: 'paths/{organization_id}@bots@{bot_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/bot-security/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.bot-security
-  '/{team_id}/bot-managers':
-    $ref: 'paths/{team_id}@bot-managers.yaml'
+  '/{organization_id}/bot-managers':
+    $ref: 'paths/{organization_id}@bot-managers.yaml'
     servers:
       - url: 'https://edgioapis.com/bot-security/v0.9/'
     security:
       - bearerAuth:
           - app.bot-security
-  '/{team_id}/bot-managers/{bot_manager_id}':
-    $ref: 'paths/{team_id}@bot-managers@{bot_manager_id}.yaml'
+  '/{organization_id}/bot-managers/{bot_manager_id}':
+    $ref: 'paths/{organization_id}@bot-managers@{bot_manager_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/bot-security/v0.9/'
     security:
       - bearerAuth:
           - app.bot-security
-#  '/{team_id}/bot-managers/{bot_manager_id}/versions':
-#    $ref: 'paths/{team_id}@bot-managers@{bot_manager_id}@versions.yaml'
+#  '/{organization_id}/bot-managers/{bot_manager_id}/versions':
+#    $ref: 'paths/{organization_id}@bot-managers@{bot_manager_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/bot-security/v0.9/'
 #    security:
 #      - bearerAuth:
 #          - app.bot-security
-#  '/{team_id}/bot-manager/{bot_manager_id}/versions/{version_id}':
-#    $ref: 'paths/{team_id}@bot-manager@{bot_manager_id}@versions@{version_id}.yaml'
+#  '/{organization_id}/bot-manager/{bot_manager_id}/versions/{version_id}':
+#    $ref: 'paths/{organization_id}@bot-manager@{bot_manager_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/bot-security/v0.9/'
 #    security:

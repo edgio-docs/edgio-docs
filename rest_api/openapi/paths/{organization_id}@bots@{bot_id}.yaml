@@ -1,0 +1,58 @@
+parameters:
+  - $ref: ../components/parameters/organization_id.yaml
+  - $ref: ../components/parameters/bot_id.yaml
+get:
+  operationId: get-bot-rule
+  tags:
+    - Bot Rules
+  summary: GET Bot Rule Object
+  description: Get a Bot object from a Bot id.
+  responses:
+    '200':
+      description: Successful Response
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Bot.yaml
+    '404':
+      description: Bot not found
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+put:
+  operationId: update-bot-rule
+  tags:
+    - Bot Rules
+  summary: PUT Bot Rule Object
+  description: Modify a Bot object identified by id.
+  requestBody:
+    $ref: ../components/requestBodies/Bot.yaml
+  responses:
+    '200':
+      description: Bot successfully updated
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '404':
+      description: Bot not found
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+delete:
+  operationId: delete-bot-rule
+  tags:
+    - Bot Rules
+  summary: DELETE Bot Rule Object
+  description: Delete a Bot object identified by id.
+  responses:
+    '200':
+      description: Bot successfully deleted
+    '404':
+      description: Bot not found
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

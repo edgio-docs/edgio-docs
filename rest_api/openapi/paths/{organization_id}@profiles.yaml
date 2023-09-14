@@ -1,0 +1,52 @@
+post:
+  operationId: create-managed-rule
+  tags:
+    - Managed Rules (Profiles)
+  summary: Add Managed Rule
+  description: Creates a managed rule that identifies a rule set configuration and describes a valid request.
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/Profile.yaml
+  responses:
+    '200':
+      description: OK. A managed rule was created. 
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+get:
+  operationId: get-managed-rules
+  tags:
+    - Managed Rules (Profiles)
+  summary: Get All Managed Rules
+  description: Retrieves a list of managed rules. A managed rule identifies a rule set configuration and describes a valid request.
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  responses:
+    '200':
+      description: OK. A list of managed rules was retrieved. 
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ProfileShort.yaml
+          examples:
+            response:
+              value:
+                - id: e3mpHQY5
+                  name: sample_profile_config
+                  created_date: '06/10/2020 05:54:31 PM'
+                  ruleset_version: '2019-11-01'
+                  ruleset_id: ECRS
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

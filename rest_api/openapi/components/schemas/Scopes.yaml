@@ -10,7 +10,7 @@ properties:
   name:
     type: string
     description: The Security App's name.
-  team_id:
+  customer_id:
     type: string
     description: |
 
@@ -29,3 +29,8 @@ properties:
     description: Contains a list of Security Apps.
     items:
       $ref: ./Scope.yaml
+  team_config:
+    type: boolean
+    description: This property must always be `true`. If passed in the request, set it to `true`.
+required:
+  - team_config

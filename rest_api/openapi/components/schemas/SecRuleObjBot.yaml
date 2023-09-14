@@ -11,7 +11,6 @@ properties:
   variable:
     description: Contains criteria that identifies a request element. You may define up to 20 entries.
     type: array
-    description: 
     items:
       $ref: ./VariableBot.yaml
   operator:

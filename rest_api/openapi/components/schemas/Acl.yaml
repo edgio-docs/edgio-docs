@@ -10,7 +10,7 @@ properties:
   name:
     type: string
     description: The access rule's name.
-  team_id:
+  customer_id:
     type: string
     description: |
 
@@ -26,6 +26,10 @@ properties:
     description: The Edgio Console user that last modified this access rule. This field does not reflect updates performed through the REST API.
   country:
     description: Contains access controls for countries. Each country is identified by its <a href="https://docs.edg.io/guides/reference/country_codes" target="_blank">country code</a>.
+    allOf:
+      - $ref: ./AclStrings.yaml
+  sd_iso:
+    description: Contains access controls for country subdivisions. Each country subdivision is identified by its <a href="https://www.iso.org/obp/ui/#search/code/" target="_blank">ISO-3166-2 code</a>.
     allOf:
       - $ref: ./AclStrings.yaml
   ip:
@@ -48,10 +52,17 @@ properties:
     description: Contains access controls for user agents. All user agents defined within a whitelist, accesslist, or blacklist are regular expressions.
     allOf:
       - $ref: ./AclStrings.yaml
+  ja3:
+    description: Requires Edgio Premier. Contains access controls for JA3 fingerprints.
+    allOf:
+      - $ref: ./AclStrings.yaml
   asn:
     description: Contains access controls for autonomous system numbers (ASNs).
     allOf:
       - $ref: ./AclAsns.yaml
+  allow_anonymous_proxy:
+    type: boolean
+    description: Determines whether we will detect requests that use an anonymizer or anonymous proxy tool.
   allowed_http_methods:
     type: array
     description: Identifies each allowed HTTP method (e.g., `GET`).
@@ -79,3 +90,8 @@ properties:
   response_header_name:
     type: string
     description: The name of the response header that will be included with blocked requests.
+  team_config:
+    type: boolean
+    description: This property must always be `true`. If passed in the request, set it to `true`.
+required:
+  - team_config

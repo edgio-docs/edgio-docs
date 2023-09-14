@@ -14,6 +14,8 @@ properties:
       - ARGS_POST
       - GEO
       - REMOTE_ADDR
+      - REMOTE_ASN
+      - REQUEST_FILENAME
     description: |
     
       A variable that determines the type of request element that will be assessed. 

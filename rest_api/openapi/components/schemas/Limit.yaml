@@ -11,7 +11,7 @@ properties:
   name:
     type: string
     description: The rate rule's name.
-  team_id:
+  customer_id:
     type: string
     description: |
 
@@ -72,3 +72,8 @@ properties:
     items:
       allOf:
         - $ref: ./ConditionGroup.yaml
+  team_config:
+    type: boolean
+    description: This property must always be `true`. If passed in the request, set it to `true`.
+required:
+  - team_config

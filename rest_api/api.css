@@ -72,7 +72,7 @@ data-styled.g22[id="sc-gFqAkR"]{content:"eRqgPI,"}/*!sc*/
 data-styled.g24[id="sc-dAbbOL"]{content:"ccPhmY,"}/*!sc*/
 .dHowgL > ul{list-style:none;padding:0;margin: 0 -5px -5px 0;}/*!sc*/
 .dHowgL > ul > li{padding:5px 10px;display:inline-block;background-color:#11171a;border-bottom:1px solid rgba(0,0,0,0.5);cursor:pointer;text-align:center;outline:none;color:#ccc;margin: 0 1px;border:1px solid #07090b;border-radius:5px;min-width:60px;font-size:0.9em;font-weight:bold;}/*!sc*/
-.dHowgL > ul > li.react-tabs__tab--selected{color:#333333;background:#ffffff;}/*!sc*/
+.dHowgL > ul > li.react-tabs__tab--selected{color:#333333;background:lightsteelblue;}/*!sc*/
 .dHowgL > ul > li.react-tabs__tab--selected:focus{outline:auto;}/*!sc*/
 .dHowgL > ul > li:only-child{-webkit-flex:none;-ms-flex:none;flex:none;min-width:100px;}/*!sc*/
 .dHowgL > ul > li.tab-success{color:#1d8127;}/*!sc*/
@@ -102,10 +102,16 @@ data-styled.g30[id="sc-bXCLTC"]{content:"dHowgL,"}/*!sc*/
 .gTGgei .token.entity{cursor:help;}/*!sc*/
 .gTGgei .token.deleted{color:red;}/*!sc*/
 data-styled.g32[id="sc-eeDRCY"]{content:"gTGgei,"}/*!sc*/
-.efufqz{opacity:0.7;-webkit-transition:opacity 0.3s ease;transition:opacity 0.3s ease;text-align:right;}/*!sc*/
-.efufqz:focus-within{opacity:1;}/*!sc*/
-.efufqz > button{background-color:transparent;border:0;color:inherit;padding:2px 10px;font-family:Roboto,sans-serif;font-size:14px;line-height:1.5em;cursor:pointer;outline:0;}/*!sc*/
-.efufqz > button:hover,.efufqz > button:focus{background:rgba(255,255,255,0.1);}/*!sc*/
+.efufqz,
+.hIuvjA{opacity:0.7;-webkit-transition:opacity 0.3s ease;transition:opacity 0.3s ease;text-align:right;}/*!sc*/
+.efufqz:focus-within,
+.hIuvjA:focus-within{opacity:1;}/*!sc*/
+.efufqz > button,
+.hIuvjA > button{border: 1px solid cornflowerblue !important; background-color:cornflowerblue !important;border-radius:5px;margin:0 5px;color:inherit;padding:4px 10px;font-family:Roboto,sans-serif;font-size:13px;line-height:1.5em;cursor:pointer;outline:0;}/*!sc*/
+.efufqz > button:hover,
+.efufqz > button:focus,
+.hIuvjA > button:hover,
+.hIuvjA > button:focus{background:rgba(255,255,255,0.1);}/*!sc*/
 data-styled.g33[id="sc-koXPp"]{content:"efufqz,"}/*!sc*/
 .dONwwR:hover .sc-koXPp{opacity:1;}/*!sc*/
 data-styled.g34[id="sc-bmzYkS"]{content:"dONwwR,"}/*!sc*/

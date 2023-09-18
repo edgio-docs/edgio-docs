@@ -5,7 +5,7 @@ info:
   x-logo:
     url: 'https://docs.edg.io/_next/static/media/edgio-dark.ea0d686f.webp'
     backgroundColor: '#FFFFFF'
-    altText: 'Example logo'
+    altText: 'Logo'
   description:
     $ref: description.md
 tags:

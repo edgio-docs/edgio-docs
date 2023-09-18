@@ -12,6 +12,7 @@ const PRODUCT_EDGE = 'Performance';
 const PRODUCT_APPLICATIONS = 'Applications';
 const PRODUCT_PLATFORM = 'Sites';
 const PRODUCT_SECURITY = 'Security';
+const PRODUCT_LOWER = PRODUCT.toLowerCase();
 const PRODUCT_NAME_LOWER = PRODUCT.toLowerCase();
 const PRODUCT_NAME_UPPER = PRODUCT.toUpperCase();
 const PRODUCT_LEGACY_LOWER = PRODUCT_LEGACY.toLowerCase();
@@ -115,7 +116,7 @@ yarn global add ${PACKAGE_NAME}/cli
 </SnippetGroup>
 `;
 
-const CONTACT_SUPPORT = `Contact our [technical customer support](${ HELP_URL }).`;
+const CONTACT_SUPPORT = `Contact our [technical customer support](${HELP_URL}).`;
 
 const SECURITY_NAV = `1.  From the ${PORTAL_LINK}, select the desired organization. 
     2.  From the **Security** section, click `;
@@ -133,6 +134,7 @@ const config = {
   ACCOUNT_UPGRADE,
   COMPANY_NAME,
   PRODUCT,
+  PRODUCT_LOWER,
   PRODUCT_LEGACY,
   PRODUCT_APPLICATIONS,
   PRODUCT_EDGE,

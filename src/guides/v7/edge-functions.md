@@ -155,7 +155,11 @@ Origin fetch requests and edge functions return a `Response` instance representi
 - **Status**: `response.status` to get the HTTP status code of the response. `response.statusText` provides the corresponding status text.
 - **URL**: `response.url` provides the URL of the response.
 - **Redirected**: `response.redirected` is a property that indicates whether the response is a result of a redirection.
-  - **Note**: a response can be redirected up to 5 times before an exception is thrown.
+    <Callout type="info">
+
+      You may redirect a response up to 5 times before an exception is thrown.
+
+    </Callout>
 - **Redirection**: Create a redirected response using `Response.redirect(url, status)`.
 - **Cloning**: To clone a response without its body, use `response.cloneWithoutBody()`.
 

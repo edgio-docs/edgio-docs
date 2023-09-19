@@ -3,9 +3,9 @@ type: object
 properties:
   id:
     type: string
-    description: The bot rule set's system-defined ID.
+    description: The bot ruleset's system-defined ID.
   directive:
-    description:  Contains the bot rules associated with this bot rule set. You may create up to 10 bot rules per bot rule set.
+    description:  Contains the bot rules associated with this bot ruleset. You may create up to 10 bot rules per bot ruleset.
     type: array
     items:
       anyOf:
@@ -21,10 +21,10 @@ properties:
 
   last_modified_date:
     type: string
-    description: The date and time at which this bot rule set was last modified.
+    description: The date and time at which this bot ruleset was last modified.
   name:
     type: string
-    description: The bot rule set's name.
+    description: The bot ruleset's name.
   team_config:
     type: boolean
     description:  This property must always be `true`. If passed in the request, set it to `true`.

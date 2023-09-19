@@ -1,6 +1,0 @@
-type: object
-properties:
-  path:
-    type: string
-  message:
-    type: string

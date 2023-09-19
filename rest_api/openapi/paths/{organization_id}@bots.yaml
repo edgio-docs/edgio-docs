@@ -2,15 +2,15 @@ post:
   operationId: create-bot-rule
   tags:
     - Bot Rules
-  summary: POST Bot Rules
-  description: Create a new Bot for a given team.
+  summary: Add Bot Ruleset
+  description: Creates a bot ruleset. A bot ruleset defines criteria for bot identification.
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   requestBody:
     $ref: ../components/requestBodies/Bot.yaml
   responses:
     '200':
-      description: Bot created successfully
+      description: OK. A bot ruleset was created.
       content:
         application/json:
           schema:
@@ -23,13 +23,13 @@ get:
   operationId: get-bot-rules
   tags:
     - Bot Rules
-  summary: GET Bot Rules
-  description: List all Bots for a given team.
+  summary: Get All Bot Rulesets
+  description: Lists all bot rulesets. 
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   responses:
     '200':
-      description: A list of Bot id's and names for the team
+      description: OK. A list of bot rulesets was retrieved.
       content:
         application/json:
           schema:
@@ -42,7 +42,7 @@ get:
                 - id: e3mpHQY5
                   name: sample_bot_config
     '404':
-      description: team not found
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':

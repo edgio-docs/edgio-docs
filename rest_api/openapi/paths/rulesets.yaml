@@ -1,0 +1,14 @@
+get:
+  operationId: get-rulesets
+    - WAF Rulesets
+  summary: Get Edgio Rulesets
+  description: Retrieve a list of available Edgio rulesets. You may assign an Edgio ruleset to a managed rule to determine the set of policies and rules through traffic can be screened.
+  responses:
+    '200':
+      description: OK. A list of Edgio rulesets was retrieved.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Ruleset.yaml

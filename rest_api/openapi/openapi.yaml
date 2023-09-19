@@ -353,6 +353,28 @@ paths:
 #    security:
 #      - bearerAuth:
 #          - app.waf
+  '/rulesets':
+    $ref: 'paths/rulesets.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9/'
+    security:
+      - bearerAuth:
+          - app.waf
+  '/rulesets/{ruleset_id}':
+    $ref: 'paths/rulesets@{ruleset_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9/'
+    security:
+      - bearerAuth:
+          - app.waf
+#  '/rulesets/{ruleset_id}/version/{version_id}':
+#    $ref: 'paths/rulesets@{ruleset_id}@version@{version_id}.yaml'
+#    servers:
+#      - url: 'https://edgioapis.com/waf/v0.9/'
+#    security:
+#      - bearerAuth:
+#          - app.waf
+    
   '/{organization_id}/api-gateways':
     $ref: 'paths/{organization_id}@api-gateways.yaml'
     servers:

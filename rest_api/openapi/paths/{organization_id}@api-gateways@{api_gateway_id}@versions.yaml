@@ -24,8 +24,4 @@ get:
                 items:
                   $ref: ../components/schemas/version_short.yaml
     '404':
-      description: API gateway not found
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Error.yaml
+      $ref: ../components/responses/error_404.yaml

@@ -18,7 +18,7 @@ properties:
     description: The ID for the ruleset associated with this managed rule. 
   ruleset_version:
     type: string
-    description: The version of the rule set associated with this managed rule.
+    description: The version of the ruleset associated with this managed rule.
 required:
   - id
   - name

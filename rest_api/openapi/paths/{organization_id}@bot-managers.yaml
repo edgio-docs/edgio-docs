@@ -2,15 +2,15 @@ post:
   operationId: create-bot-manager
   tags:
     - Bot Managers
-  summary: POST Bot Manager
-  description: Create a new Bot Manager for a given team.
+  summary: Create Bot Manager Configuration
+  description: Creates a bot manager configuration.
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   requestBody:
     $ref: ../components/requestBodies/BotManager.yaml
   responses:
     '200':
-      description: Bot Manager created successfully
+      description: OK. A bot manager configuration was created.
       content:
         application/json:
           schema:
@@ -23,13 +23,13 @@ get:
   operationId: get-bot-managers
   tags:
     - Bot Managers
-  summary: GET Bot Managers
-  description: List all Bot Managers for a given team.
+  summary: Get All Bot Manager Configurations
+  description: Retrieves a list of bot manager configurations. A bot manager configuration can detect and mitigate undesired bot traffic.
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   responses:
     '200':
-      description: A list of Bot manager id's and names for the team
+      description: OK. A list of bot manager configurations was retrieved. 
       content:
         application/json:
           schema:
@@ -42,7 +42,7 @@ get:
                 - id: e3mpHQY5
                   name: sample_bot_manager_config
     '404':
-      description: team not found
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':

@@ -3,8 +3,8 @@ in: path
 required: true
 description: |
 
-  A bot manager configuration's system-defined ID. 
+  A bot ruleset's system-defined ID. 
   
-  Use the [Get All Bot Manager Configurations operation](#tag/Bot-Managers/operation/get-bot-managers) to retrieve a list of bot manager configurations and their system-defined IDs.
+  Use the [Get All Bot Rulesets operation](#tag/Bot-Rules/operation/get-bot-rules) to retrieve a list of bot rulesets and their system-defined IDs.
 schema:
   type: string

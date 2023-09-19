@@ -49,7 +49,7 @@ put:
 
     -   Identifies the set of traffic to which it applies by hostname, a URL path, or both.
 
-    -   Defines how threats will be detected via access rules, custom rule sets, managed rules, and rate rules.
+    -   Defines how threats will be detected through access rules, custom rules, managed rules, and rate rules.
 
         If one or more condition group(s) have been defined within a rate rule, then traffic will only be rate limited when it also satisfies at least one of those condition groups.
 

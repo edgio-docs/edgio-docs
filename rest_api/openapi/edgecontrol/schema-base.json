@@ -1,0 +1,1328 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "type": "object",
+    "required": [
+        "properties"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "properties": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/property"
+            },
+            "minItems": 1
+        },
+        "rules": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/rules"
+            }
+        },
+        "rtld": {
+            "$ref": "#/definitions/rtld"
+        },
+        "experiments": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/experiment"
+            }
+        }
+    },
+    "definitions": {
+        "single_line_string": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_ :;.,\\\\'\/\"?!()[\\]{}@<>=+#$&`|~^%*-]*$"
+        },
+        "hostname": {
+            "type": "string",
+            "pattern": "^(((?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9])|(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|\\[((?:[a-fA-F\\d]{1,4}:){7}(?:[a-fA-F\\d]{1,4}|:)|(?:[a-fA-F\\d]{1,4}:){6}(?:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|:[a-fA-F\\d]{1,4}|:)|(?:[a-fA-F\\d]{1,4}:){5}(?::(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,2}|:)|(?:[a-fA-F\\d]{1,4}:){4}(?:(:[a-fA-F\\d]{1,4}){0,1}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,3}|:)|(?:[a-fA-F\\d]{1,4}:){3}(?:(:[a-fA-F\\d]{1,4}){0,2}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,4}|:)|(?:[a-fA-F\\d]{1,4}:){2}(?:(:[a-fA-F\\d]{1,4}){0,3}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,5}|:)|(?:[a-fA-F\\d]{1,4}:){1}(?:(:[a-fA-F\\d]{1,4}){0,4}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,6}|:)|(?::((?::[a-fA-F\\d]{1,4}){0,5}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(?::[a-fA-F\\d]{1,4}){1,7}|:)))(%[0-9a-zA-Z]{1,})?\\])$"
+        },
+        "hostnames": {
+            "additionalProperties": false,
+            "type": "object",
+            "required": [
+                "hostname"
+            ],
+            "properties": {
+                "hostname": {
+                    "$ref": "#/definitions/hostname"
+                },
+                "default_origin_name": {
+                    "type": "string"
+                },
+                "report_code": {
+                    "type": "number"
+                },
+                "tls": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "npn": {
+                            "type": "boolean"
+                        },
+                        "alpn": {
+                            "type": "boolean"
+                        },
+                        "protocols": {
+                            "type": "string"
+                        },
+                        "use_sigalgs": {
+                            "type": "boolean"
+                        },
+                        "sni": {
+                            "type": "boolean"
+                        },
+                        "sni_strict": {
+                            "type": "boolean"
+                        },
+                        "sni_host_match": {
+                            "type": "boolean"
+                        },
+                        "client_renegotiation": {
+                            "type": "boolean"
+                        },
+                        "options": {
+                            "type": "string"
+                        },
+                        "cipher_list": {
+                            "type": "string"
+                        },
+                        "named_curve": {
+                            "type": "string"
+                        },
+                        "oscp": {
+                            "type": "boolean"
+                        },
+                        "pem": {
+                            "type": "string"
+                        },
+                        "ca": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "origin_backends": {
+            "additionalProperties": false,
+            "type": "object",
+            "required": [
+                "location"
+            ],
+            "properties": {
+                "weight": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "dns_max_ttl": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 4294967295
+                },
+                "dns_preference": {
+                    "type": "string",
+                    "enum": [
+                        "prefv4",
+                        "prefv6",
+                        "onlyv4",
+                        "onlyv6"
+                    ]
+                },
+                "max_hard_pool": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 65535
+                },
+                "dns_min_ttl": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 4294967295
+                },
+                "location": {
+                    "anyOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                    "hostname"
+                                ],
+                                "properties": {
+                                    "port": {
+                                        "type": "integer",
+                                        "minimum": 1,
+                                        "maximum": 65535
+                                    },
+                                    "hostname": {
+                                        "$ref": "#/definitions/hostname"
+                                    }
+                                }
+                            },
+                            "maxItems": 10
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/hostname"
+                            },
+                            "maxItems": 10
+                        },
+                        {
+                            "$ref": "#/definitions/hostname",
+                            "$comment": "this is the super abbreviated case, where only a single hostname is specified"
+                        }
+                    ]
+                },
+                "max_pool": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 65535  
+                },
+                "balancer": {
+                    "type": "string",
+                    "enum": [
+                        "carp",
+                        "sqf",
+                        "primary_failover",
+                        "round_robin"
+                    ]
+                },
+                "scheme": {
+                    "type": "string",
+                    "$comment": "'match' is default, and means put the same thing in http-backends and https-backends with 80/443 port respectively",
+                    "enum": [
+                        "http",
+                        "https",
+                        "match"
+                    ]
+                }
+            }
+        },
+        "origins": {
+            "$comment": "this object translates to a few blocks of sf config, proxy-core.balancer and proxy-core.{http-,https-,}backends",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9_.-]*$"
+                },
+                "type": {
+                    "$comment": "'customer_origin' is default, and means that the origin is a customer origin, 'cdn_storage' on the contrary means that the content is hosted in house.",
+                    "type": "string",
+                    "enum": [
+                        "customer_origin",
+                        "cdn_storage"
+                    ],
+                    "default": "customer_origin"
+                },
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/origin_backends"
+                    }
+                },
+                "balancer": {
+                    "$comment": "this comes from http://sailfish.edgecast.com/ecdoc/mod-proxy-core.html#proxy-core-balancer",
+                    "type": "string",
+                    "enum": [
+                        "primary_failover",
+                        "round_robin",
+                        "carp",
+                        "carp64",
+                        "static_with_tags",
+                        "static_weighted",
+                        "static_nocache_bypass",
+                        "sqf"
+                    ]
+                },
+                "override_host_header": {
+                    "type": "string",
+                    "pattern": "^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]$"
+                },
+                "shields": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "global": {
+                            "type": "string",
+                            "pattern": "^[A-Z]{3}$"
+                        },
+                        "apac": {
+                            "type": "string",
+                            "pattern": "^([A-Z]{3}|bypass)$"
+                        },
+                        "emea": {
+                            "type": "string",
+                            "pattern": "^([A-Z]{3}|bypass)$"
+                        },
+                        "us_west": {
+                            "type": "string",
+                            "pattern": "^([A-Z]{3}|bypass)$"
+                        },
+                        "us_east": {
+                            "type": "string",
+                            "pattern": "^([A-Z]{3}|bypass)$"
+                        }
+                    },
+                    "minProperties": 1
+                },
+                "pci_certified_shields": {
+                    "type": "boolean"
+                },
+                "tls_verify": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "use_sni": {
+                            "type": "boolean"
+                        },
+                        "sni_hint_and_strict_san_check": {
+                            "$ref": "#/definitions/hostname"
+                        },
+                        "allow_self_signed_certs": {
+                            "type": "boolean"
+                        },
+                        "pinned_certs": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "minLength": 40,
+                                "maxLength": 40,
+                                "pattern": "^[0-9a-fA-F]+$"
+                            },
+                            "maxItems": 5
+                        }
+                    }
+                }
+            }
+        },
+        "http_status_code": {
+            "type": "integer",
+            "enum":[
+                200,201,202,203,204,205,206,207,208,226,300,301,302,304,305,306,307,308,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,421,422,423,424,425,426,428,429,431,440,444,451,499,500,501,502,503,504,505,506,507,508,509,510,511,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,888,893
+            ]
+        },
+        "http_response_header": {
+            "type": "object",
+            "$comment": "key is the header name, + means append.  second pattern is to ensure that certain ones are never provided with a value",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^[+]?[-_a-zA-Z0-9 .]+$": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/single_line_string",
+                            "$comment": "most commonly just a flat string"
+                        },
+                        {
+                            "$ref": "#/definitions/rules_variables",
+                            "$comment": "can also be a variable from another place"
+                        }
+                    ]
+                },
+                "^(Accept-Ranges|Age|Connection|Content-Encoding|Content-Length|Content-Range|Date|Server|Trailer|Transfer-Encoding|Upgrade|Vary|Via|Warning|X-EC.*)$": {
+                    "type": "null"
+                }
+            }
+        },
+        "http_request_header": {
+            "type": "object",
+            "$comment": "key is the header name, + means append.  second pattern is to ensure that certain ones are never provided with a value",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^[+]?[-_a-zA-Z0-9 .]+$": {
+                    "$ref": "#/definitions/single_line_string"
+                },
+                "^(Forwarded-For|Host|Vary|Via|Warning|X-Forwarded-For|X-EC.*)$": {
+                    "type": "null"
+                }
+            }
+        },
+        "http_response_no_body": {
+            "type": "object",
+            "$comment": "represent a simple response with code and header but no body",
+            "additionalProperties": false,
+            "properties": {
+                "code": {
+                    "$ref": "#/definitions/http_status_code"
+                },
+                "headers": {
+                    "$ref": "#/definitions/http_response_header"
+                }
+            }
+        },
+        "header_treatment": {
+            "type": "string",
+            "enum": [
+                "pass",
+                "overwrite",
+                "if_missing",
+                "remove"
+            ]
+        },
+        "time_interval": {
+            "type": "string",
+            "$comment": "this captures the acceptable format: https://gitlab.edgecastcdn.net/edgecast/http-dev/sailfish/-/blob/master/src/core/utils/conversions.cc#L46",
+            "pattern": "^[0-9]+(s|m|h|d|w|y)$"
+        },
+        "header_name": {
+            "type": "string",
+            "pattern": "^[+]?[-_a-zA-Z0-9 .]+$"
+        },
+        "variable_name": {
+            "type": "string",
+            "pattern": "^[-_a-zA-Z0-9]+$"
+        },
+        "bytes": {
+            "type": "string",
+            "$comment": "captures acceptable formats for bytes: https://git.edgecastcdn.net/EdgeCast/sailfish-src/blob/master/src/conversions.cc#L81",
+            "pattern": "^[0-9]+(k|M|G|T|ki|Mi|Gi|Ti)?B$"
+        },
+        "regex_rewrite": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "source": {
+                    "type": "string"
+                },
+                "destination": {
+                    "type": "string"
+                }
+            }
+        },
+        "generic_field": {
+            "type": "string",
+            "pattern": "[-_\\.a-zA-Z0-9]+"
+        },
+        "device_attributes": {
+            "type": "string",
+            "enum": [
+                "device_os",
+                "brand_name",
+                "dual_orientation",
+                "html_preferred_dtd",
+                "image_inlining",
+                "is_android",
+                "is_app",
+                "is_full_desktop",
+                "is_ios",
+                "is_robot",
+                "is_smartphone",
+                "is_smarttv",
+                "is_tablet",
+                "is_touchscreen",
+                "is_windows_phone",
+                "is_wireless_device",
+                "marketing_name",
+                "mobile_browser",
+                "model_name",
+                "progressive_download",
+                "release_date",
+                "resolution_height",
+                "resolution_width"
+            ]
+        },
+        "access": {
+            "type": "object",
+            "properties": {
+                "deny_access": {
+                    "type": "boolean"
+                },
+                "token_auth_denial_code": {
+                    "$ref": "#/definitions/http_response_no_body"
+                },
+                "token_auth_ignore_url_case": {
+                    "type": "boolean"
+                },
+                "token_auth": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "caching": {
+            "type": "object",
+            "properties": {
+                "bandwidth_throttling": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "kbytes_per_sec": {
+                            "type": "integer"
+                        },
+                        "prebuf_seconds": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "kbytes_per_sec"
+                    ]
+                },
+                "bypass_cache": {
+                    "type": "boolean"
+                },
+                "cache_control_header_treatment": {
+                    "$ref": "#/definitions/header_treatment"
+                },
+                "expires_header_treatment": {
+                    "$ref": "#/definitions/header_treatment"
+                },
+                "client_max_age": {
+                    "$ref": "#/definitions/time_interval"
+                },
+                "cache_key_query_string": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "include_all": {
+                            "type": "boolean"
+                        },
+                        "exclude_all": {
+                            "type": "boolean"
+                        },
+                        "include": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "include_all_except": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "cache_key_rewrite": {
+                    "$ref": "#/definitions/regex_rewrite"
+                },
+                "cache_key": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "include_all_query_params": { "type": "boolean" },
+                        "exclude_all_query_params": { "type": "boolean" },
+                        "include_query_params": { "type": "array", "minItems": 1, "items": { "type": "string"} },
+                        "include_all_query_params_except": { "type": "array", "minItems": 1, "items": { "type": "string"} },
+                        "include_headers": {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": {
+                                "$ref": "#/definitions/header_name"
+                            }
+                        },
+                        "include_cookies": {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": {
+                                "$ref": "#/definitions/header_name"
+                            }
+                        },
+                        "include_expressions": {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": {
+                                "$ref": "#/definitions/single_line_string"
+                            }
+                        }
+                    }
+                },
+                "max_age": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/time_interval",
+                            "$comment": "when just an interval, is for 200 status code"
+                        },
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "patternProperties": {
+                                "^[1-5][0-9][0-9]$": {
+                                    "$ref": "#/definitions/time_interval"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "h264_support": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "pattern": "(\\.[^. ]+\\s*)+"
+                    }
+                },
+                "h264_support_video_seek_params": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "seek_start": {
+                            "$ref": "#/definitions/generic_field"
+                        },
+                        "seek_end": {
+                            "$ref": "#/definitions/generic_field"
+                        }
+                    },
+                    "required": [
+                        "seek_start"
+                    ]
+                },
+                "honor_no_cache_request_header": {
+                    "type": "boolean"
+                },
+                "ignore_origin_no_cache": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/http_status_code"
+                    }
+                },
+                "ignore_unsatisfiable_ranges": {
+                    "type": "boolean"
+                },
+                "revalidate_after_origin_unavailable": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/time_interval",
+                            "$comment": "when just an interval, is for 200 status code"
+                        },
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "patternProperties": {
+                                "^[1-5][0-9][0-9]$": {
+                                    "$ref": "#/definitions/time_interval"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "partial_cache_sharing_min_hit_size": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "prevalidate_cached_content": {
+                    "$ref": "#/definitions/time_interval"
+                },
+                "refresh_zero_byte_cache_files": {
+                    "type": "boolean"
+                },
+                "cacheable_status_codes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/http_status_code"
+                    }
+                },
+                "stale_on_error": {
+                    "type": "boolean"
+                },
+                "stale_while_revalidate": {
+                    "$ref": "#/definitions/time_interval"
+                },
+                "enable_caching_for_methods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "GET",
+                            "POST",
+                            "PUT"
+                        ]
+                    }
+                },
+                "cacheable_request_body_size": {
+                    "$ref": "#/definitions/bytes"
+                },
+                "revalidate_while_stale_timer": {
+                    "type": "integer"
+                },
+                "bypass_client_cache": {
+                    "type": "boolean"
+                },
+                "service_worker_max_age": {
+                    "$ref": "#/definitions/time_interval"
+                },
+                "allow_empty_query_in_cache_key": {
+                    "type": "boolean"
+                },
+                "first_hit_caching":{
+                    "type": "boolean"
+                }
+            }
+        },
+        "comment": {
+            "type": "string",
+            "maxLength": 2000
+        },
+        "edge_function": {
+            "type": "string"
+        },
+        "response": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "set_status_code": {
+                    "anyOf": [
+                        { "$ref": "#/definitions/http_status_code" },
+                        {
+                            "$ref": "#/definitions/single_line_string",
+                            "$comment": "most commonly just a flat string"
+                        }
+                    ]
+                },
+                "set_done": {
+                    "type": "boolean"
+                },
+                "set_response_body":{
+                    "type": "string",
+                    "$comment":"sets the response body to the base64 encoded string provided by the user"
+                },
+                "allow_prefetching_uncached_content": {
+                    "type": "boolean"
+                },
+                "compress_content_types": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "pattern": "[-\\+a-zA-Z0-9]+/[-\\+\\.a-zA-Z0-9]+"
+                    }
+                },
+                "optimize_images":{
+                    "type": "boolean"
+                },
+                "retry_from_hostname":{
+                    "type": "string",
+                    "$comment":"sets the hostname dynamically"
+                }
+            }
+        },
+        "headers": {
+            "type": "object",
+            "properties": {
+                "debug_header": {
+                    "type": "boolean"
+                },
+                "set_request_headers": {
+                    "$ref": "#/definitions/http_request_header"
+                },
+                "set_response_headers": {
+                    "$ref": "#/definitions/http_response_header"
+                },
+                "add_response_headers": {
+                    "$ref": "#/definitions/http_response_header"
+                },
+                "set_client_ip_custom_header": {
+                    "$ref": "#/definitions/generic_field"
+                },
+                "remove_response_headers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "remove_origin_response_headers":{
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "server_timing_header":{
+                    "type":"boolean"
+                },
+                "set_origin_response_headers": {
+                    "$ref": "#/definitions/http_response_header"
+                }
+            }
+        },
+        "logs": {
+            "type": "object",
+            "properties": {
+                "custom_log_field_format": {
+                    "type": "string"
+                },
+                "log_query_string": {
+                    "type": "boolean"
+                },
+                "mask_client_subnet": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "origin": {
+            "type": "object",
+            "properties": {
+                "max_keep_alive_requests": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "proxy_special_headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/generic_field"
+                    }
+                },
+                "set_origin": {
+                    "type": "string"
+                }
+            }
+        },
+        "client": {
+            "type": "object",
+            "properties": {
+                "quic": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "set_variables": {
+            "type": "object",
+            "patternProperties": {
+                "^[-_a-zA-Z0-9]+$": {
+                    "$ref": "#/definitions/single_line_string",
+                    "$comment": "most commonly just a flat string"
+                }
+            }
+        },
+        "url": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "follow_redirects": {
+                    "type": "boolean"
+                },
+                "url_rewrite": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "source": {
+                                "type": "string"
+                            },
+                            "destination": {
+                                "type": "string"
+                            },
+                            "syntax":{
+                                "type":"string",
+                                "enum": [
+                                    "regexp",
+                                    "path-to-regexp"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "url_redirect": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "code": {
+                            "$ref": "#/definitions/http_status_code"
+                        }, 
+                        "source": {
+                            "type": "string"
+                        },
+                        "destination": {
+                            "type": "string"
+                        },
+                        "syntax":{
+                            "type":"string",
+                            "enum": [
+                                "regexp",
+                                "path-to-regexp"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "features": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "edge_function": {
+                    "$ref": "#/definitions/edge_function"
+                },
+                "comment": {
+                    "$ref": "#/definitions/comment"
+                },
+                "access": {
+                    "unevaluatedProperties": false,
+                    "$ref": "#/definitions/access"
+                },
+                "caching": {
+                    "unevaluatedProperties": false,
+                    "$ref": "#/definitions/caching"
+                },
+                "response": {
+                    "unevaluatedProperties": false,
+                    "$ref": "#/definitions/response"
+                },
+                "headers": {
+                    "unevaluatedProperties": false,
+                    "$ref": "#/definitions/headers"
+                },
+                "logs": {
+                    "unevaluatedProperties": false,
+                    "$ref": "#/definitions/logs"
+                },
+                "origin": {
+                    "unevaluatedProperties": false,
+                    "$ref": "#/definitions/origin"
+                },
+                "url": {
+                    "unevaluatedProperties": false,
+                    "$ref": "#/definitions/url"
+                },
+                "client": {
+                    "unevaluatedProperties": false,
+                    "$ref": "#/definitions/client"
+                },
+                "set_variables":{
+                    "unevaluatedProperties": false,
+                    "$ref": "#/definitions/set_variables"             
+                }
+            }
+        },
+        "rules_variables": {
+            "type": "object",
+            "$comment": "variable specification",
+            "maxProperties": 1,
+            "additionalProperties": false,
+            "properties": {
+                "request": {
+                    "type": "string",
+                    "enum": [
+                        "client_ip",
+                        "referring_domain",
+                        "method",
+                        "scheme",
+                        "origin_path",
+                        "origin_query_string",
+                        "pop_code",
+                        "path",
+                        "query",
+                        "querystring"
+                    ]
+                },
+                "request.path": {
+                    "type": "string",
+                    "enum": [
+                        "directory",
+                        "filename",
+                        "extension"                        
+                    ],
+                    "$comment": "request path component matching"
+                },
+                "request.origin_query": {
+                    "type": "string"
+                },
+                "request.cookie": {
+                    "type": "string"
+                },
+                "request.header": {
+                    "type": "string"
+                },
+                "random": {
+                    "type": "integer",
+                    "$comment": "used to generate a random number in the 0_THIS range"
+                },
+                "location": {
+                    "type": "string",
+                    "enum": [
+                        "asn",
+                        "city",
+                        "continent",
+                        "country",
+                        "dma_code",
+                        "latitude",
+                        "longitude",
+                        "postal_code",
+                        "region_code",
+                        "metro_code"
+                    ]
+                },
+                "variable": {
+                    "type": "string",
+                    "enum": [
+                        "is_origin_shield",
+                        "usrvar_enable_debug",
+                        "usrvar_enable_sf_debug",
+                        "usrvar_enable_options_resp",
+                        "usrvar_options",
+                        "status",
+                        "country_code"
+                    ]
+                },
+                "pop_code": {
+                    "type": "string"
+                },
+                "device": {
+                    "$ref": "#/definitions/device_attributes"
+                },
+                "response": {
+                    "type": "string",
+                    "enum": [
+                        "status_code"
+                    ]
+                }
+            }
+        },
+        "matches": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "if": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$comment": "nested matches",
+                                "$ref": "#/definitions/matches"
+                            },
+                            {
+                                "$ref": "#/definitions/boolean"
+                            },
+                            {
+                                "$comment": "this is the first/odd elements that define a conditional statement",
+                                "$ref": "#/definitions/conditionals"
+                            },
+                            {
+                                "$comment": "these are the actual features be enabled",
+                                "$ref": "#/definitions/features"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "anyOf": [
+                                        {
+                                            "$comment": "these are the actual features be enabled",
+                                            "$ref": "#/definitions/features"
+                                        },
+                                        {
+                                            "$comment": "nested matches",
+                                            "$ref": "#/definitions/matches"
+                                        }     
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "minItems": 2,
+                    "$comment": "2 arguments is if-then.  3 is if-then-else.  anything more takes if-then elseif-then"
+                },
+                "comment": {
+                    "$ref": "schema-base.json#/definitions/comment"
+                }                
+            }
+        },
+        "variant": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "weight"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9-._]+$"                     
+                },
+                "name": {
+                    "type": "string"
+                },
+                "weight": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "features": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/features"
+                    }
+                }
+            }
+        },
+        "boolean": {
+            "type": "object",
+            "$comment": "this is all based on jsonlogic: http://jsonlogic.com/operations.html#logic-and-boolean-operations, and is separated from 'rules' so we can exclude features here, so you can't say 'if feature'",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^(or|and)$": {
+                    "type": "array",
+                    "items": {
+                        "$comment": "this is the list of what we need to give a logic comparison, needs to support both variables and static values",
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/boolean"
+                            },
+                            {
+                                "$comment": "this is the first/odd elements that define a conditional statement",
+                                "$ref": "#/definitions/conditionals"
+                            }
+                        ]
+                    },
+                    "minItems": 2
+                }
+            }
+        },
+        "conditionals": {
+            "type": "object",
+            "$comment": "this is all based on jsonlogic: http://jsonlogic.com/operations.html#logic-and-boolean-operations, and is separated from 'rules' so we can exclude features here, so you can't say 'if feature'",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^(==|!=|===|!==)$": {
+                    "type": "array",
+                    "items": {
+                        "$comment": "this is the list of what we need to give a logic comparison, needs to support both variables and static values",
+                        "anyOf": [
+                            {
+                                "type": [
+                                    "integer",
+                                    "string",
+                                    "number",
+                                    "boolean"
+                                ],
+                                "$comment": "static values to compare with things"
+                            },
+                            {
+                                "$ref": "#/definitions/rules_variables"
+                            }
+                        ]
+                    },
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "$comment": "only ever two operands for a logical condition"
+                },
+                "^(<|<=)$": {
+                    "$comment": "numeric operations that can double as 'between' operations. 2 values is simple, 3 is 'between' like 1, 2, 3 -> true;  1, 4, 3 -> false;",
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/rules_variables"
+                            },
+                            {
+                                "type": [
+                                    "number",
+                                    "integer"
+                                ]
+                            }
+                        ]
+                    },
+                    "minItems": 2,
+                    "maxItems": 3
+                },
+                "^(>|>=)$": {
+                    "$comment": "numeric operations",
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/rules_variables"
+                            },
+                            {
+                                "type": [
+                                    "number",
+                                    "integer"
+                                ]
+                            }
+                        ]
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                },
+                "^(in|not_in)$": {
+                    "$comment": "numeric operations",
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/rules_variables"
+                            },
+                            {
+                                "type": [
+                                    "string",
+                                    "array"
+                                ]
+                            }
+                        ]
+                    },
+                    "minItems": 2
+                },
+                "^(=~|!~)$": {
+                    "$comment": "regex string match and not match",
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/rules_variables"
+                            },
+                            {
+                                "type": [
+                                    "string",
+                                    "integer"
+                                ]
+                            }
+                        ]
+                    },
+                    "minItems": 2
+                }
+            }
+        },
+        "rules": {
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/matches"
+                },
+                {
+                    "$comment": "we need to be able to drop all features in here too, to cover 'always' conditions natively",
+                    "$ref": "#/definitions/features"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/features"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "property": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "name",
+                "origins",
+                "hostnames"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9 ()_.-]{1,50}$"
+                },
+                "origins": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/origins"
+                    },
+                    "minItems": 1,
+                    "maxItems": 100
+                },
+                "hostnames": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/hostnames"
+                    },
+                    "minItems": 1
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/rules"
+                    }
+                },
+                "edge_functions": {
+                    "$ref": "#/definitions/edge_functions"
+                },
+                "environment_variables": {
+                    "$ref": "#/definitions/environment_variables"
+                }
+            }
+        },
+        "rtld": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "custom_request_headers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 1
+                },
+                "custom_response_headers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 1
+                },
+                "custom_cookies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 1
+                }
+            },
+            "minProperties": 1
+        },
+        "edge_functions": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "quickjs_bytecode_base64": {
+                    "type": "string"
+                }
+            }
+        },
+        "environment_variables": {
+            "additionalProperties": false,
+            "type": "object",
+            "patternProperties": {
+                "^[-_a-zA-Z0-9]+$": {
+                    "$ref": "#/definitions/single_line_string",
+                    "$comment": "most commonly just a flat string"
+                }
+            }
+        },
+        "experiment": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "active",
+                "variants"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9-._]+$"        
+                },
+                "name": {
+                    "type": "string"
+                },
+                "active": {
+                    "type": "boolean"
+                },
+                "criteria": {
+                    "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/definitions/boolean"
+                                },
+                                {
+                                    "$ref": "#/definitions/conditionals"
+                                }
+                            ]
+                        }
+                },
+                "variants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/variant"
+                    },
+                    "minItems": 2,
+                    "maxItems": 100
+                }
+            }
+        }
+    }
+}

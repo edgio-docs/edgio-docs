@@ -1,6 +1,7 @@
 get:
   operationId: get-ruleset-version-policies
-    - WAF Ruleset version policies
+  tags:
+    - Edgio Rulesets
   summary: Get Policies (Edgio Ruleset)
   description: Retrieve a list of policies associated with an Edgio ruleset. 
   responses:

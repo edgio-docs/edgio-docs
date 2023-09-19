@@ -1,6 +1,7 @@
 get:
   operationId: get-ruleset-versions
-    - WAF Ruleset versions
+  tags:
+    - Edgio Rulesets
   summary: Get Edgio Ruleset Versions
   description: Retrieve a list of the available versions for a specific Edgio ruleset. You may assign an Edgio ruleset to a managed rule to determine the set of policies and rules through traffic can be screened.
   responses:

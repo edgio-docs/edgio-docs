@@ -143,7 +143,7 @@ Edge functions use a modified version of the standard [`Response`](https://devel
 
 </Callout>
 
-Origins fetch requests and edge functions return a `Response` instance representing the response. This object provides methods and properties for accessing and setting the response's headers, body, status, and more. A response can be created using the `Response` class or by calling the `fetch()` function. See the [Edge Function Namespace](#edge-function-namespace) section for more information.
+Origin fetch requests and edge functions return a `Response` instance representing the response. This object provides methods and properties for accessing and setting the response's headers, body, status code, and more. Create a response through the `Response` class or by calling the `fetch()` function. See the [Edge Function Namespace](#edge-function-namespace) section for more information.
 
 #### Supported Methods and Properties {/* response-supported-methods-and-properties */}
 

@@ -28,7 +28,7 @@ Determines whether requests are rejected with a `403 Forbidden` response.
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     access: {
       "deny_access": true,
@@ -55,7 +55,7 @@ Determines whether Token-Based Authentication will be applied to a request.
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     access: {
       "token_auth": true,
@@ -87,7 +87,7 @@ Determines the type of response that will be returned to a user when a request i
     **Example:** 
 
     ```js filename="./routes.js"
-    new Router()
+    export default new Router()
       .get('/', {
         access: {
           "token_auth_denial_code": {
@@ -105,7 +105,7 @@ Determines the type of response that will be returned to a user when a request i
     **Example:** 
 
     ```js filename="./routes.js"
-    new Router()
+    export default new Router()
       .get('/', {
         access: {
           "token_auth_denial_code": {
@@ -134,7 +134,7 @@ Determines whether URL comparisons made by the following Token-Based Authenticat
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     access: {
       "token_auth_ignore_url_case": true,
@@ -171,7 +171,7 @@ The purpose of this time period of unrestricted bandwidth is to prevent a media 
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "bandwidth_throttling": {
@@ -193,7 +193,7 @@ Determines whether our CDN will honor your caching policy when determining wheth
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/random-numbers', {
     caching: {
       "bypass_cache": true,
@@ -230,7 +230,7 @@ Determines whether our CDN will instruct the client to bypass cache.
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "bypass_client_cache": true,
@@ -302,7 +302,7 @@ Valid values are:
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "cache_control_header_treatment": "pass",
@@ -313,6 +313,56 @@ new Router()
 </edgejs>
 
 **Default Behavior:** Overwrite
+
+#### Cache Key {/*cache-key*/}
+
+Customizes the cache key through query string parameters, request headers, cookies, and custom metadata. 
+
+[Learn more about cache keys.](/guides/performance/caching/cache_key)
+
+-   **Query String Parameters:** Include or exclude all query string parameters by seting the **Query Parameters** option to either `Include All` or `Exclude All`. Alternatively, include or exclude specific query string parameters through the `Include Only` or `Include All Except` modes.
+
+    -   **Include All:** Indicates that a unique cache key will be created for each request to an asset that includes a unique query string.
+
+        <Callout type="info">
+
+          This type of configuration is not typically recommended since it may lead to a small percentage of cache hits. This will increase the load on the origin server, since it will have to serve more requests. 
+
+        </Callout>
+
+    -   **Exclude All:** Indicates that all query string parameters will be excluded from the cache key. 
+
+    -   **Include Only:** Contains the set of parameter(s) that may be included in the cache key. A unique cache key will be generated for each request that contains a unique value for a query string parameter defined in this feature.
+
+    -   **Include All Except:** Contains the set of parameter(s) will be excluded from the cache key. All other query string parameters will be included in the cache key.
+
+-   **Request Headers:** Add a request header to the cache key by typing its name in the **Headers** option and then pressing `ENTER`. Repeat as needed. If the header is present in the request, then its value will be included within the cache key. 
+
+-   **Cookies:** Add a cookie to the cache key by typing its name in the **Cookies** option and then pressing `ENTER`. Repeat as needed. If the cookie is present in the request, then its value will be included within the cache key.
+
+-   **Custom Metadata:** Include any combination of [feature variables](/guides/performance/rules/feature_variables) and static text through the **Expressions** option. 
+
+    <Callout type="tip">
+    
+      The **Expressions** option supports autocompletion. Type `%{` to see a list of feature variable suggestions.
+    
+    </Callout>
+
+<edgejs>
+**Example:** 
+
+```js filename="./routes.js"
+export default new Router().always({
+  caching: {
+    cache_key: {
+      include_all_query_params: true,
+      include_expressions: ["%{geo_country}"],
+    },
+  },
+});
+```
+</edgejs>
+**Default Behavior:** The [default cache key](/guides/performance/caching/cache_key#cache-key-reference) includes all query string parameters and excludes request headers, cookies, and feature variables. 
 
 #### Cache Key Query String {/*cache-key-query-string*/}
 
@@ -352,7 +402,7 @@ Include or exclude all query string parameters through the `include_all` propert
     **Example:**
 
     ```js filename="./routes.js"
-    new Router()
+    export default new Router()
       .get('/', {
         caching: {
           "cache_key_query_string": {
@@ -367,7 +417,7 @@ Include or exclude all query string parameters through the `include_all` propert
     **Example:**
 
     ```js filename="./routes.js"
-    new Router()
+    export default new Router()
       .get('/', {
         caching: {
           "cache_key_query_string": {
@@ -382,7 +432,7 @@ Include or exclude all query string parameters through the `include_all` propert
     **Example:**
 
     ```js filename="./routes.js"
-    new Router()
+    export default new Router()
       .get('/', {
         caching: {
           "cache_key_query_string": {
@@ -397,7 +447,7 @@ Include or exclude all query string parameters through the `include_all` propert
     **Example:**
 
     ```js filename="./routes.js"
-    new Router()
+    export default new Router()
       .get('/', {
         caching: {
           "cache_key_query_string": {
@@ -461,7 +511,7 @@ Restricts caching to requests whose body does not exceed the specified file size
 **Example:** 
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "cacheable_request_body_size": "12kB",
@@ -491,7 +541,7 @@ Defines the set of status codes that can result in cached content.
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "cacheable_status_codes": [300, 301, 302],
@@ -537,7 +587,7 @@ Determines whether `POST` and `PUT` requests are eligible for caching on our net
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "enable_caching_for_methods": ["POST", "PUT"],
@@ -610,7 +660,7 @@ Valid values are:
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "expires_header_treatment": 'if_missing',
@@ -649,7 +699,7 @@ Determines the types of H.264 file formats that may be used when streaming conte
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "h264_support": [".mp4", ".f4v"],
@@ -693,7 +743,7 @@ Determines whether an HTTP client's no-cache requests will be forwarded to the o
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "honor_no_cache_request_header": true,
@@ -726,7 +776,7 @@ Determines on a per HTTP status code basis whether our CDN will ignore cache dir
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "ignore_origin_no_cache": [200, 300, 301],
@@ -749,7 +799,7 @@ Enabling this feature prevents our edge servers from responding to an invalid by
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "ignore_unsatisfiable_ranges": true,
@@ -768,7 +818,7 @@ Defines the minimum file size (bytes) for caching partial content.
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "partial_cache_sharing_min_hit_size": 1048576,
@@ -789,7 +839,7 @@ Determines whether cached content will be eligible for early revalidation before
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "prevalidate_cached_content": "10m",
@@ -824,7 +874,7 @@ Enabling this feature causes our edge server to re-fetch the asset from the orig
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "refresh_zero_byte_cache_files": true,
@@ -880,7 +930,7 @@ Any value configured for this feature is superseded by `Cache-Control:must-reval
     **Example:**
 
     ```js filename="./routes.js"
-    new Router()
+    export default new Router()
       .get('/', {
         caching: {
           "revalidate_after_origin_unavailable": {
@@ -898,7 +948,7 @@ Any value configured for this feature is superseded by `Cache-Control:must-reval
     **Example:**
 
     ```js filename="./routes.js"
-    new Router()
+    export default new Router()
       .get('/', {
         caching: {
           "revalidate_after_origin_unavailable": "10h",
@@ -927,7 +977,7 @@ Determines how often, in seconds, the system will attempt to connect to an unava
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "revalidate_while_stale_timer": 200,
@@ -940,12 +990,11 @@ new Router()
 
 #### Rewrite Cache Key {/*rewrite-cache-key*/}
 
-Rewrites the default cache key for a set of requests. 
-
-[Learn more about cache keys.](/guides/performance/caching/cache_key)
+Rewrites the [default cache key](/guides/performance/caching/cache_key#cache-key-reference) for a set of requests. 
 
 **Key information:**
 
+-   This is an advanced feature that should only be used when you require precise control over the cache key. Consider using the [Cache Key feature](#cache-key) instead.
 -   Our servers use the cache key to check for a cached version of an asset.
 -   This feature allows you to customize the default cache key for a set of requests by replacing the following elements from the cache key:
     -   **Relative Path:** This relative URL path, which starts directly after the hostname, is derived from the request whose response is being cached. 
@@ -1014,7 +1063,7 @@ This example demonstrates how to apply a custom default cache key for requests t
 `https://www.example.com/conferences/marketing/index.htm`
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "cache_key_rewrite": {
@@ -1051,7 +1100,7 @@ Enabling this feature will generate `Cache-Control:max-age` and `Expires` header
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "client_max_age": "10h",
@@ -1083,7 +1132,7 @@ Defines a `max-age` interval for edge server to origin server cache revalidation
     **Example:**
 
     ```js filename="./routes.js"
-    new Router()
+    export default new Router()
       .get('/', {
         caching: {
           "max_age": {
@@ -1101,7 +1150,7 @@ Defines a `max-age` interval for edge server to origin server cache revalidation
     **Example:**
 
     ```js filename="./routes.js"
-    new Router()
+    export default new Router()
       .get('/', {
         caching: {
           "max_age": "10h",
@@ -1131,7 +1180,7 @@ Set the amount of time that must pass before a browser can check for a new versi
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "service_worker_max_age": "6m",
@@ -1166,7 +1215,7 @@ Enabling this feature serves stale content when an error occurs during a connect
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "stale_on_error": true,
@@ -1211,7 +1260,7 @@ The following formula indicates the length of time during which stale content ma
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     caching: {
       "stale_while_revalidate": "10m",
@@ -1300,7 +1349,7 @@ However, if the response already contains an `event-type` response header set to
 The following example adds an `event-type` response header set to `basketball`:
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     headers: {
       "add_response_headers": {
@@ -1347,7 +1396,7 @@ Our CDN returns debug cache response headers when both of the following are true
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     headers: {
       "debug_header": true,
@@ -1378,7 +1427,7 @@ Deletes one or more header(s) from the response provided by an origin server.
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     headers: {
       "remove_origin_response_headers": ["city", "state", "zipcode"],
@@ -1437,7 +1486,7 @@ Deletes one or more header(s) from a response.
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     headers: {
       "remove_response_headers": ["city", "state", "zipcode"],
@@ -1476,7 +1525,7 @@ Define the name of the custom request header to which the requesting client's IP
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     headers: {
       "set_client_ip_custom_header": "client-ip",
@@ -1536,7 +1585,7 @@ The following example:
 -   Appends ` ott` to the `broadcast` header's value. For example, if it were set to `network`, then the new value after this feature has been applied will be `network ott`.
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     headers: {
       "set_request_headers": {
@@ -1631,7 +1680,7 @@ The following example:
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     headers: {
       "set_response_headers": {
@@ -1699,7 +1748,7 @@ Determines the value that will be assigned to RTLD's custom log field.
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     logs: {
       "custom_log_field_format": "%{Accept-Encoding}i %{Referer}i %{Authorization}i",
@@ -1718,7 +1767,7 @@ Determines whether a query string will be stored along with the URL in access lo
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     logs: {
       "log_query_string": true,
@@ -1777,7 +1826,7 @@ This feature masks a client's subnet by:
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     logs: {
       "mask_client_subnet": true,
@@ -1810,7 +1859,7 @@ Defines the maximum number of requests for a `Keep-Alive` connection before it i
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     origin: {
       "max_keep_alive_requests": 12000,
@@ -1841,7 +1890,7 @@ Defines the set of CDN-specific request headers that will be forwarded from an e
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     origin: {
       "proxy_special_headers": ["X-Forwarded-For","X-Host","X-EC-Tag"],
@@ -1861,7 +1910,7 @@ Defines the [origin configuration](/guides/basics/hostnames_and_origins#origin) 
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     origin: {
       "set_origin": "marketing",
@@ -1886,7 +1935,7 @@ Determines whether prefetching will be allowed for cache misses.
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     response: {
       "allow_prefetching_uncached_content": true,
@@ -1917,7 +1966,7 @@ Defines the set of media types (aka content type) that are eligible for edge ser
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     response: {
       "compress_content_types": ["text/plain", "text/html", "text/css"],
@@ -1958,7 +2007,7 @@ Determines whether {{ PRODUCT }} will be allowed to [process or generate an imag
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .match('/:path*/:file.:ext(jpg|jpeg|png)', {
     response: {
       "optimize_images": true,
@@ -1983,7 +2032,7 @@ Determines whether to prevent the request from being proxied from our network to
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     response: {
       "set_status_code": 200,
@@ -2016,7 +2065,7 @@ Defines a custom response body.
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     response: {
       "set_response_body": "<!DOCTYPE html><title>hi</title>",
@@ -2035,7 +2084,7 @@ Defines the HTTP status code for the response sent to the client.
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     response: {
       "set_status_code": 200,
@@ -2100,7 +2149,7 @@ The `set_variables` object assigns a value to one or more user-defined variable(
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     set_variables: {
         "traffic": "standard",
@@ -2138,7 +2187,7 @@ Determines whether requests may be redirected to the hostname defined in the `Lo
 **Example:**
 
 ```js filename="./routes.js"
-new Router()
+export default new Router()
   .get('/', {
     url: {
       "follow_redirects": true,
@@ -2223,7 +2272,7 @@ This feature allows our edge servers to rewrite the URL without performing a tra
         **Example:**
 
         ```js filename="./routes.js"
-        new Router()
+        export default new Router()
           .get('/', {
             url: {
               "url_rewrite": [{
@@ -2240,7 +2289,7 @@ This feature allows our edge servers to rewrite the URL without performing a tra
         **Example:**
 
         ```js filename="./routes.js"
-        new Router()
+        export default new Router()
           .get('/', {
             url: {
               "url_rewrite": [{
@@ -2317,7 +2366,7 @@ Pass the following properties:
     **Example:**
 
     ```js filename="./routes.js"
-    new Router()
+    export default new Router()
       .get('/', {
         url: {
           "url_redirect": {
@@ -2335,7 +2384,7 @@ Pass the following properties:
     **Example:**
 
     ```js filename="./routes.js"
-    new Router()
+    export default new Router()
       .get('/', {
         url: {
           "url_redirect": {

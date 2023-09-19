@@ -10,6 +10,12 @@ See [NPM Packages Changelog](/guides/changelog) for release notes related to the
 
 </Callout>
 
+## September 2023 {/*september-2023*/}
+
+| Date  | Description                                                                                                                            |
+|------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| 9/15/2023 | **{{ PRODUCT_SECURITY }}:** The [order in which Bot Manager detects bot traffic](/guides/security/bot_rules#bot-manager-advanced) has changed. It now checks whether traffic matches your rules before checking for known or spoofed bots.   |
+
 ## August 2023 {/*august-2023*/}
 
 | Date  | Description                                                                                                                            |

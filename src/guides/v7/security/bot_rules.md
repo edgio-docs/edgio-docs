@@ -34,11 +34,10 @@ traffic is blocked. [Learn more.](#browser-challenge)
 
 ### Bot Manager Advanced {/*bot-manager-advanced*/}
 
-Bot Manager Advanced inspects each request to determine whether the client:
+Bot Manager Advanced inspects each request to determine whether the request:
 
-1.  Matches a known good bot (e.g., search bot).
-2.  Is spoofing a known good bot.
-3.  Matches a rule. A rule defines the criteria that our service will use to identify a bad bot.
+1.  Matches an exception. [Exceptions](#exceptions) identify trafic that should bypass bot detection.
+2.  Matches a rule. A rule defines the criteria that our service will use to identify a bad bot.
     
     You may identify bots using:
     
@@ -55,12 +54,15 @@ Bot Manager Advanced inspects each request to determine whether the client:
 
     -   The JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic as a specific bot across various IP addresses and ports.
 
+3.  Matches a known good bot (e.g., search bot).
+4.  Is spoofing a known good bot.
+
 **Key information:**
 
 -   Your configuration determines how our service will handle the above traffic patterns.
 -   If a request satisfies multiple criteria, then the above order determines the action that will be applied to it. Specifically, the order of precedence is:
     
-    `Known Bots > Spoofed Bots > Bots Identified by a Rule`
+    `Exceptions > Bots Identified by a Rule > Known Bots > Spoofed Bots`
     
 -   Bypass the above bot detection measures by creating an exception for one or more URL(s), user agent(s), JA3 fingerprint(s), or cookie(s).
 

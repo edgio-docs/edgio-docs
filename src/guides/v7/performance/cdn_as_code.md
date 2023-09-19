@@ -428,6 +428,7 @@ Learn more advanced syntax with [Route Features](/guides/performance/cdn_as_code
 
 Routes are defined by calling a method on the `Router` class based on the HTTP method you intend to match. For example, you can handle a `GET` request a specific path or pattern using the `Router.get(...)` method. The router contains methods for all the supported HTTP methods. The following methods are available:
 
+- `always` (matches all requests)
 - `delete`
 - `get`
 - `head`

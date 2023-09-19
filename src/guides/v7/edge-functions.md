@@ -129,7 +129,11 @@ The following properties and methods from the standard [`Request`](https://devel
 - `request.referrerPolicy`
 - `request.signal`
 
-**Note**: The above-mentioned unsupported methods and properties will throw an error if attempted to be used.
+<Callout type="info">
+
+  Using an unsupported method or property will throw an error.
+
+</Callout>
 
 ### Response Class {/* response-class */}
 

@@ -377,7 +377,11 @@ It's important to note that edge functions are not Node.js functions. Your code 
 
   This function returns a modified `fetch()` function that includes the origin server. This is useful for making multiple requests to the same origin or overriding the global function.
 
-  **Note**: Some third-party libraries let you specify a `fetch()` function. If you are unable to set this in your library, you can override the global one using this helper. See the [Origin Requests Using fetch()](#origin-requests-using-fetch) section for more details.
+    <Callout type="info">
+
+      Some third-party libraries let you specify a `fetch()` function. If you are unable to set this in your library, you can override the global one using this helper. See the [Origin Requests Using fetch()](#origin-requests-using-fetch) section for more details.
+
+    </Callout>
 
   ```js filename="./polyfills/createFetchForOrigin.js"
   /**

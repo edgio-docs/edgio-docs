@@ -106,7 +106,7 @@
     "/config/v0.1/tls-certs/{cert_id}": {
       "servers": [
         {
-          "url": "https://edgioapis.com/"
+          "url": "https://edgioapis.com"
         }
       ],
       "security": [
@@ -200,7 +200,7 @@
     "/config/v0.1/tls-certs": {
       "servers": [
         {
-          "url": "https://edgioapis.com/"
+          "url": "https://edgioapis.com"
         }
       ],
       "security": [
@@ -395,7 +395,7 @@
     "/config/v0.1/deployments/{deployment_id}/logs": {
       "servers": [
         {
-          "url": "https://edgioapis.com/"
+          "url": "https://edgioapis.com"
         }
       ],
       "security": [
@@ -489,7 +489,7 @@
     "/config/v0.1/deployments/{deployment_id}": {
       "servers": [
         {
-          "url": "https://edgioapis.com/"
+          "url": "https://edgioapis.com"
         }
       ],
       "security": [
@@ -583,7 +583,7 @@
     "/config/v0.1/configs/{config_id}": {
       "servers": [
         {
-          "url": "https://edgioapis.com/"
+          "url": "https://edgioapis.com"
         }
       ],
       "security": [
@@ -677,7 +677,7 @@
     "/config/v0.1/configs": {
       "servers": [
         {
-          "url": "https://edgioapis.com/"
+          "url": "https://edgioapis.com"
         }
       ],
       "security": [
@@ -772,7 +772,7 @@
     "/cache/v0.1/purge-requests/{request_id}": {
       "servers": [
         {
-          "url": "https://edgioapis.com/"
+          "url": "https://edgioapis.com"
         }
       ],
       "security": [
@@ -867,7 +867,7 @@
     "/cache/v0.1/purge-requests": {
       "servers": [
         {
-          "url": "https://edgioapis.com/"
+          "url": "https://edgioapis.com"
         }
       ],
       "security": [
@@ -972,7 +972,7 @@
     "/accounts/v0.1/environments/{environment_id}": {
       "servers": [
         {
-          "url": "https://edgioapis.com/"
+          "url": "https://edgioapis.com"
         }
       ],
       "security": [
@@ -1237,7 +1237,7 @@
     "/accounts/v0.1/environments": {
       "servers": [
         {
-          "url": "https://edgioapis.com/"
+          "url": "https://edgioapis.com"
         }
       ],
       "security": [
@@ -1432,7 +1432,7 @@
     "/accounts/v0.1/properties/{property_id}": {
       "servers": [
         {
-          "url": "https://edgioapis.com/"
+          "url": "https://edgioapis.com"
         }
       ],
       "security": [
@@ -1697,7 +1697,7 @@
     "/accounts/v0.1/properties": {
       "servers": [
         {
-          "url": "https://edgioapis.com/"
+          "url": "https://edgioapis.com"
         }
       ],
       "security": [
@@ -1892,7 +1892,7 @@
     "/accounts/v0.1/organizations/{organization_id}": {
       "servers": [
         {
-          "url": "https://edgioapis.com/"
+          "url": "https://edgioapis.com"
         }
       ],
       "security": [
@@ -2157,7 +2157,7 @@
     "/accounts/v0.1/organizations": {
       "servers": [
         {
-          "url": "https://edgioapis.com/"
+          "url": "https://edgioapis.com"
         }
       ],
       "security": [
@@ -2353,7 +2353,7 @@
     "/{organization_id}/scopes": {
       "servers": [
         {
-          "url": "https://edgioapis.com/waf/v0.9/"
+          "url": "https://edgioapis.com/waf/v0.9"
         }
       ],
       "security": [
@@ -2466,7 +2466,7 @@
     "/{organization_id}/acls": {
       "servers": [
         {
-          "url": "https://edgioapis.com/waf/v0.9/"
+          "url": "https://edgioapis.com/waf/v0.9"
         }
       ],
       "security": [
@@ -2561,7 +2561,7 @@
     "/{organization_id}/acls/{acl_id}": {
       "servers": [
         {
-          "url": "https://edgioapis.com/waf/v0.9/"
+          "url": "https://edgioapis.com/waf/v0.9"
         }
       ],
       "security": [
@@ -2666,7 +2666,7 @@
     "/{organization_id}/rules": {
       "servers": [
         {
-          "url": "https://edgioapis.com/waf/v0.9/"
+          "url": "https://edgioapis.com/waf/v0.9"
         }
       ],
       "security": [
@@ -2761,7 +2761,7 @@
     "/{organization_id}/rules/{rule_id}": {
       "servers": [
         {
-          "url": "https://edgioapis.com/waf/v0.9/"
+          "url": "https://edgioapis.com/waf/v0.9"
         }
       ],
       "security": [
@@ -2866,7 +2866,7 @@
     "/{organization_id}/limits": {
       "servers": [
         {
-          "url": "https://edgioapis.com/waf/v0.9/"
+          "url": "https://edgioapis.com/waf/v0.9"
         }
       ],
       "security": [
@@ -2964,7 +2964,7 @@
     "/{organization_id}/limits/{limit_id}": {
       "servers": [
         {
-          "url": "https://edgioapis.com/waf/v0.9/"
+          "url": "https://edgioapis.com/waf/v0.9"
         }
       ],
       "security": [
@@ -3072,7 +3072,7 @@
     "/{organization_id}/profiles": {
       "servers": [
         {
-          "url": "https://edgioapis.com/waf/v0.9/"
+          "url": "https://edgioapis.com/waf/v0.9"
         }
       ],
       "security": [
@@ -3170,7 +3170,7 @@
     "/{organization_id}/profiles/{profile_id}": {
       "servers": [
         {
-          "url": "https://edgioapis.com/waf/v0.9/"
+          "url": "https://edgioapis.com/waf/v0.9"
         }
       ],
       "security": [
@@ -3275,7 +3275,7 @@
     "/rulesets": {
       "servers": [
         {
-          "url": "https://edgioapis.com/waf/v0.9/"
+          "url": "https://edgioapis.com/waf/v0.9"
         }
       ],
       "security": [
@@ -3312,7 +3312,7 @@
     "/rulesets/{ruleset_id}": {
       "servers": [
         {
-          "url": "https://edgioapis.com/waf/v0.9/"
+          "url": "https://edgioapis.com/waf/v0.9"
         }
       ],
       "security": [
@@ -3349,7 +3349,7 @@
     "/{organization_id}/api-gateways": {
       "servers": [
         {
-          "url": "https://edgioapis.com/api-security/v0.9/"
+          "url": "https://edgioapis.com/api-security/v0.9"
         }
       ],
       "security": [
@@ -3444,7 +3444,7 @@
     "/{organization_id}/api-gateways/{api_gateway_id}": {
       "servers": [
         {
-          "url": "https://edgioapis.com/api-security/v0.9/"
+          "url": "https://edgioapis.com/api-security/v0.9"
         }
       ],
       "security": [
@@ -3556,7 +3556,7 @@
     "/{organization_id}/api-gateways/{api_gateway_id}/schemas": {
       "servers": [
         {
-          "url": "https://edgioapis.com/api-security/v0.9/"
+          "url": "https://edgioapis.com/api-security/v0.9"
         }
       ],
       "security": [
@@ -3610,7 +3610,7 @@
     "/{organization_id}/api-schemas": {
       "servers": [
         {
-          "url": "https://edgioapis.com/api-security/v0.9/"
+          "url": "https://edgioapis.com/api-security/v0.9"
         }
       ],
       "security": [
@@ -3705,7 +3705,7 @@
     "/{organization_id}/api-schemas/{api_schema_id}": {
       "servers": [
         {
-          "url": "https://edgioapis.com/api-security/v0.9/"
+          "url": "https://edgioapis.com/api-security/v0.9"
         }
       ],
       "security": [
@@ -3817,7 +3817,7 @@
     "/{organization_id}/bots": {
       "servers": [
         {
-          "url": "https://edgioapis.com/bot-security/v0.9/"
+          "url": "https://edgioapis.com/bot-security/v0.9"
         }
       ],
       "security": [
@@ -3912,7 +3912,7 @@
     "/{organization_id}/bots/{bot_id}": {
       "servers": [
         {
-          "url": "https://edgioapis.com/bot-security/v0.9/"
+          "url": "https://edgioapis.com/bot-security/v0.9"
         }
       ],
       "security": [
@@ -4017,7 +4017,7 @@
     "/{organization_id}/bot-managers": {
       "servers": [
         {
-          "url": "https://edgioapis.com/bot-security/v0.9/"
+          "url": "https://edgioapis.com/bot-security/v0.9"
         }
       ],
       "security": [
@@ -4112,7 +4112,7 @@
     "/{organization_id}/bot-managers/{bot_manager_id}": {
       "servers": [
         {
-          "url": "https://edgioapis.com/bot-security/v0.9/"
+          "url": "https://edgioapis.com/bot-security/v0.9"
         }
       ],
       "security": [
@@ -4217,7 +4217,7 @@
     "/known-bots/companies": {
       "servers": [
         {
-          "url": "https://edgioapis.com/bot-security/v0.9/"
+          "url": "https://edgioapis.com/bot-security/v0.9"
         }
       ],
       "security": [

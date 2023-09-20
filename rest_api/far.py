@@ -2,7 +2,7 @@ import re
 
 # Define a dictionary of replacements
 replacements = {
-    r'/%7B(.*?)%7D': r'{\1}',  # Replace /%7BVALUE%7D with {VALUE}
+    r'/%7B(.*?)%7D': r'/{\1}',  # Replace /%7BVALUE%7D with {VALUE}
     r'Node\s*\+\s*Request': r'Node',      # Replace Node + Request with Node
     r'Javascript\s*\+\s*Xhr': r'JavaScript',  # Replace Javascript + Xhr with JavaScript
     r'Shell\s*\+\s*Curl': r'curl',         # Replace Shell + Curl with curl

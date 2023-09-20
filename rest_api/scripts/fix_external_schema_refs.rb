@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 require 'json'
-# require 'pry'
+require 'pry'
 
 console_openapi_path = 'tmp/console_oapi3.json'
-external_schema_ref_key = 'x-externalSchemaRef'
 external_schemas_path_relative_from_openapi_schemas = '../../'
 
 oapi_schema = JSON.parse(File.read(console_openapi_path))
@@ -14,9 +13,10 @@ oapi_schema['components']['schemas'].each do |_k, v|
   next unless v.key?('properties')
 
   v['properties'].each do |_property_name, property_definition|
-    next unless property_definition.key?(external_schema_ref_key)
+    description = property_definition['description']
+    next unless description && description =~ /Defined externally:\s*(\S+)/
 
-    external_schema_pointer = property_definition[external_schema_ref_key]
+    external_schema_pointer = Regexp.last_match(1)
     property_definition.replace(
       {
         '$ref' => Pathname.new(external_schemas_path_relative_from_openapi_schemas).join(external_schema_pointer).to_s

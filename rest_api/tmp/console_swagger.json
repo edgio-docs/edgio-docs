@@ -2534,8 +2534,7 @@
               ]
             }
           ],
-          "x-externalSchemaRef": "edgecontrol/schema-base.json#/definitions/property/properties/origins",
-          "description": "List of origins for the configuration."
+          "description": "List of origins for the configuration. Defined externally: edgecontrol/schema-base.json#/definitions/property/properties/origins"
         },
         "hostnames": {
           "type": "string",
@@ -2544,8 +2543,7 @@
               "hostname": "test-origin.edgio.net"
             }
           ],
-          "x-externalSchemaRef": "edgecontrol/schema-base.json#/definitions/property/properties/hostnames",
-          "description": "List of hostnames for the configuration."
+          "description": "List of hostnames for the configuration. Defined externally: edgecontrol/schema-base.json#/definitions/property/properties/hostnames"
         },
         "rules": {
           "type": "string",
@@ -2568,8 +2566,7 @@
               ]
             }
           ],
-          "x-externalSchemaRef": "edgecontrol/schema-base.json#/definitions/property/properties/rules",
-          "description": "List of rules for the configuration."
+          "description": "List of rules for the configuration. Defined externally: edgecontrol/schema-base.json#/definitions/property/properties/rules"
         },
         "experiments": {
           "type": "string",
@@ -2594,7 +2591,7 @@
         },
         "origins": {
           "type": "array",
-          "description": "List of origins for the configuration.",
+          "description": "List of origins for the configuration. Defined externally: edgecontrol/schema-base.json#/definitions/property/properties/origins",
           "items": {
             "type": "string"
           },
@@ -2615,7 +2612,7 @@
         },
         "hostnames": {
           "type": "array",
-          "description": "List of hostnames for the configuration.",
+          "description": "List of hostnames for the configuration. Defined externally: edgecontrol/schema-base.json#/definitions/property/properties/hostnames",
           "items": {
             "type": "string"
           },
@@ -2627,7 +2624,7 @@
         },
         "rules": {
           "type": "array",
-          "description": "List of rules for the configuration.",
+          "description": "List of rules for the configuration. Defined externally: edgecontrol/schema-base.json#/definitions/property/properties/rules",
           "items": {
             "type": "string"
           },

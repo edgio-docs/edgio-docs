@@ -9,10 +9,12 @@ info:
     email: info@edg.io
   version: 1.0.0-beta
 servers:
-  - url: //edgioapis.com/
+  - url: //localhost:3000/api
 security:
   - Bearer: []
 tags:
+  - name: environment-variables
+    description: Operations about environment-variables
   - name: tls-certs
     description: Operations about tls-certs
   - name: deployments
@@ -32,6 +34,10 @@ tags:
   - name: bff
     description: Operations about bffs
 paths:
+  /config/v0.1/environment-variables/{environment_variable_id}:
+    $ref: paths/config_v0.1_environment-variables_{environment_variable_id}.yaml
+  /config/v0.1/environment-variables:
+    $ref: paths/config_v0.1_environment-variables.yaml
   /config/v0.1/tls-certs/{cert_id}:
     $ref: paths/config_v0.1_tls-certs_{cert_id}.yaml
   /config/v0.1/tls-certs:
@@ -62,8 +68,6 @@ paths:
     $ref: paths/accounts_v0.1_properties.yaml
   /accounts/v0.1/organizations/{organization_id}:
     $ref: paths/accounts_v0.1_organizations_{organization_id}.yaml
-  /accounts/v0.1/organizations:
-    $ref: paths/accounts_v0.1_organizations.yaml
   /bff/traffic/{query_name}:
     $ref: paths/bff_traffic_{query_name}.yaml
 components:

@@ -1,0 +1,98 @@
+get:
+  tags:
+    - environment-variables
+  summary: Read environment variable
+  description: Read environment variable
+  operationId: getConfigV01EnvironmentVariablesEnvironmentVariableId
+  parameters:
+    - name: environment_variable_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Read environment variable
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Config_V1_Entities_EnvironmentVariable.yaml
+    '400':
+      description: UserError
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: RecordNotFound
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: ServerError
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+delete:
+  tags:
+    - environment-variables
+  summary: Delete environment variable
+  description: Delete environment variable
+  operationId: deleteConfigV01EnvironmentVariablesEnvironmentVariableId
+  parameters:
+    - name: environment_variable_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: Delete environment variable
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Config_V1_Entities_EnvironmentVariable.yaml
+    '400':
+      description: UserError
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: RecordNotFound
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: ServerError
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml

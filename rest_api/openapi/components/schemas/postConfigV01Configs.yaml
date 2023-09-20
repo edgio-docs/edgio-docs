@@ -7,11 +7,34 @@ properties:
   environment_id:
     type: string
   origins:
-    $ref: ../../edgecontrol/schema-base.json#/definitions/property/properties/origins
+    type: array
+    description: List of origins for the configuration.
+    example:
+      - name: Edgio
+        hosts:
+          - location:
+              - hostname: https://test-origin.edgio.net
+    items:
+      type: string
   hostnames:
-    $ref: ../../edgecontrol/schema-base.json#/definitions/property/properties/hostnames
+    type: array
+    description: List of hostnames for the configuration.
+    example:
+      - hostname: test-origin.edgio.net
+    items:
+      type: string
   rules:
-    $ref: ../../edgecontrol/schema-base.json#/definitions/property/properties/rules
+    type: array
+    description: List of rules for the configuration.
+    example:
+      - if:
+          - '==':
+              - request: path
+              - /api/:path
+          - caching:
+              bypass_cache: true
+    items:
+      type: string
   experiments:
     type: array
     description: List of experiments for the configuration.

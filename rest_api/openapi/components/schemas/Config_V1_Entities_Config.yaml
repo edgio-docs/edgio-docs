@@ -20,11 +20,17 @@ properties:
     type: string
     description: Resource unique identifier.
   origins:
-    $ref: ../../edgecontrol/schema-base.json#/definitions/property/properties/origins
+    type: string
+    description: List of origins for the configuration.
+    example: ''
   hostnames:
-    $ref: ../../edgecontrol/schema-base.json#/definitions/property/properties/hostnames
+    type: string
+    description: List of hostnames for the configuration.
+    example: ''
   rules:
-    $ref: ../../edgecontrol/schema-base.json#/definitions/property/properties/rules
+    type: string
+    description: List of rules for the configuration.
+    example: ''
   experiments:
     type: string
     description: List of experiments for the configuration.

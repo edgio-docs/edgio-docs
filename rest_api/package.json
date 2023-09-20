@@ -12,6 +12,7 @@
     "test": "openapi lint",
     "console-api:pull": "mkdir -p tmp && sh scripts/pull_console_swagger.sh",
     "console-api:convert": "mkdir -p tmp && sh scripts/convert_swagger_to_oapi3.sh",
+    "console-api:fix-external-schema-refs": "ruby scripts/fix_external_schema_refs.rb",
     "console-api:split": "rm -r tmp/split && mkdir -p tmp/split && openapi split tmp/console_oapi3.json --outDir tmp/split",
     "console-api:integrate": "mkdir -p openapi/paths/ && cp tmp/split/components/schemas/*.yaml openapi/components/schemas/ && cp tmp/split/paths/*.yaml openapi/paths/",
     "console-api:clean": "git checkout openapi && git clean -fd openapi"

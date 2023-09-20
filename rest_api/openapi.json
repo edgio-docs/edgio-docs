@@ -6,7 +6,7 @@
     "x-logo": {
       "url": "https://docs.edg.io/_next/static/media/edgio-dark.ea0d686f.webp",
       "backgroundColor": "#FFFFFF",
-      "altText": "Example logo"
+      "altText": "Logo"
     },
     "description": "Our REST-compliant web services facilitate the integration of our services into your workflow(s), applications, or interfaces.\n\n## Introduction\n\nKey information about our REST API services:\n\n-   **Protocol:** HTTPS\n    \n    Communication (i.e., request-response) with our web services is only permitted through HTTPS. This ensures the privacy and integrity of your data.\n\n-   **Authentication/Authorization:** `Authorization` Header\n    \n    Authenticate and authorize your requests by generating a token and then passing it through the `Authorization` header:\n       \n    ```\n    Authorization: Bearer <OAUTH 2.0 TOKEN>\n    ```\n    \n    [Get started.](#section/Quick-Start)\n\n-   **Request-Response (Accept and Content-Type):** JSON\n    \n    We expect the request body to use JavaScript Object Notation (JSON) format. Inform our web servers that the expected format for the request-response will be JSON through the `Accept` and `Content-Type` request headers.\n    \n-   **Programming Language:** Agnostic\n    \n    Our REST API services are designed to be programming language-agnostic. Feel free to use your preferred programming language (e.g., C#, C, PHP, Perl, etc.).\n\n-   **Services:** Our REST API consists of the following services:\n\n    | Service      | Functionality                                                                                                               |\n    | ------------ | --------------------------------------------------------------------------------------------------------------------------- |\n    | cache        | Purge cached content and find out purge status.                                                                             |\n    | config       | Deploy CDN configurations and retrieve deployment information and log data                                                  |\n    | accounts     | Retrieve and manage organizations, properties, and environments.                                                            |\n    | waf          | Retrieve and manage the following configurations: security apps, access rules, rate rules, custom rules, and managed rules. |\n    | bot-security | Retrieve and manage bot manager configurations.                                                                             |\n    | api-security | Retrieve and manage API security configurations.                                                                            |\n\n## Quick Start\n\nGet started with our latest APIs by performing the following steps:\n\n1. <a href=\"https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients\" target=\"_blank\">Create an API client</a> for the desired application from the <a href=\"https://account.edgio.app/#/clients\" target=\"_blank\">Account dashboard (account.edgio.app)</a>. Grant the set of scope(s) required by the endpoint(s) with which it will interact.\n2. Use this client's ID and secret key to [generate a temporary access token](#section/Access-Tokens).\n3. Authorize your API requests by passing the temporary access token generated in the previous step through the `Authorization` request header.\n\n```\ncurl --request GET \\\n     --url https://edgioapis.com/waf/v0.9/12345678-1234-1234-1234-1234567890ab/scopes \\\n     --header 'Authorization: Bearer  A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ'\n```\n\n## Scopes\n\nA scope authorizes an API client to perform specific actions (e.g., create and retrieve configurations). One or more scope(s) must also be defined when requesting an access token. You may only specify a scope that has been explicitly granted or inherited from a broader scope. Common scopes are listed below.\n\n| Scope            | Description                                                                                         |\n| ---------------- | --------------------------------------------------------------------------------------------------- |\n| app.cache        | Authorizes full access for purging cached content and retrieve purge status information.            |\n| app.config       | Authorizes full access for deploying CDN configurations and retrieving deployment information and log data. |\n| app.account      | Authorizes full access to manage organizations, properties, and environments.                       |\n| app.waf          | Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules. |\n| app.bot_security | Authorizes full access to Bot Manager.                                                              |\n| app.api_security | Authorizes full access to API Security.                                                             |\n\n## Access Tokens \n\nEach request to a REST API service must be authorized by passing an access token to the `Authorization` request header.\n\n**Sample Authorization request header:**\n```\nAuthorization: Bearer A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ\n```\n\n**Sample API request:**\n\n```\ncurl --request GET \\\n     --url https://edgioapis.com/waf/v0.9/12345678-1234-1234-1234-1234567890ab/scopes \\\n     --header 'Authorization: Bearer  A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ'\n```\n\nAccess tokens provide temporary authorization (e.g., 1 minute) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.\n\n**Access token request:** \n\n```\nPOST https://id.edgio.app/connect/token\n```\n\nRequests for access tokens requires:\n\n-   A `Content-Type` header set to `application/x-www-form-urlencoded`.\n-   A request body set to:\n\n    ```\n    client_id=<CLIENT ID>&client_secret=<SECRET>&grant_type=client_credentials&scope=<SCOPES>\n    ```\n\n    -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your REST API client.\n    -   `<SECRET>`**:** Represents the secret assigned to your REST API client.\n    -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. Common scopes are listed below.\n\n**Sample access token request:**\n\n``` curl\nPOST https://id.edgio.app/connect/token HTTP/1.1\nAccept: application/json\nContent-Type: application/x-www-form-urlencoded\nHost: id.edgio.app\n\nclient_id=J23d...B2Cd&client_secret=Fdad...DF3v&grant_type=client_credentials&scope=app.waf\n```\n\n**Sample response:**\n\n```\nHTTP/1.1 200 OK\nCache-Control: no-store, no-cache, max-age=0\nContent-Type: application/json; charset=UTF-8\nDate: Thu, 15 Apr 2021 12:00:00 GMT\nContent-Length: 830\n\n{\n    \"access_token\": \"A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ\",\n    \"expires_in\": 300,\n    \"token_type\": \"Bearer\"\n}\n```\n\n## HTTP Methods\n\nHTTP method is a critical component of a request to our REST API service as it determines the type of action being requested.\n\n-   **DELETE:** Deletes a resource (e.g., custom rule or managed rule configuration).\n-   **GET:** Retrieves all or a specific resource.\n-   **PATCH:** Partially updates a resource (e.g., environment).\n-   **POST:** Creates a resource (e.g., custom rule or managed rule configuration).\n-   **PUT:** Updates a resource (e.g., custom rule or managed rule configuration).\n\nOur REST API service may return a `405 Method Not Allowed` response for requests submitted with an unsupported HTTP method.\n  \n## Request URL\n\nThe base URL for our REST API follows this basic pattern:\n\n`https://edgioapis.com/<SERVICE>/<VERSION>/`\n\n-   `<SERVICE>`**:** Identifies the REST API web service (e.g., cache, waf, and bot-security) designed to manage requests for a specific set of resources.\n-   `<VERSION>`**:** Identifies the version of the REST API service that will be called.\n\n**Sample Request URL:** \n\n```\nhttps://edgioapis.com/cache/v0.1/purge-requests\n```\n\n## Request Headers\n\nRequest headers provide information about your request to a REST API service. This information allows our server to authenticate your request and provides information that allows it to receive and translate the request body.\n\n**Key information:**\n-   The use of a Byte Order Mark (BOM) in a request to the REST API is not supported. Some user agents are configured to automatically include a BOM. Please either configure the user agent to exclude the BOM or use a different user agent.\n-   Request header values are case-insensitive.\n\n| Request Header | Description                                                                                                                                                                                                         |\n| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| Authorization  | Authorize requests through the `Authorization` request header. <a href=\"https://docs.edg.io/guides/develop/rest_api/authorization#authorizing-requests\" target=\"_blank\">Learn more about authorization.</a>                                                       |\n| Accept         | This header should indicate the format in which the response will be returned. If you pass this header, set it to: `application/json`.                                                                |\n| Content-Type   | This header should indicate the format of the request body. If you pass this header, set it to: `application/json`. <br />You may omit this header when an endpoint does not have request properties. |\n| Host           | This header, which is set by the user agent, indicates the host name corresponding to the requested endpoint (i.e., edgioapis.com or id.edgio.app).                                                                               |\n| Content-Length | This header, which is set by the user agent, indicates the number of bytes contained in the request body.                                                                                                           |\n\n## Request Body\n\n`POST`, `PUT`, and `PATCH` requests typically require request body properties that describe the action that will take place. These request body properties are case-sensitive.\n\n## Response Headers\n\nResponse headers provide information about the response to your request to the REST API service. A brief description is provided for the response headers that are returned by most endpoints. Standard HTTP response headers are typically returned along with these common response headers.\n\n| Response Header | Description                                                                          |\n| --------------- | ------------------------------------------------------------------------------------ |\n| Cache-Control   | Indicates the cache-control policy for the response body.                            |\n| Content-Length  | Indicates the number of bytes in the response body.                                  |\n| Content-Type    | Indicates the format of the response body (e.g., `application/json; charset=utf-8`). |\n| I_am            | This header is reserved for internal use.                                            |\n| Date            | Identifies the date and time (UTC) at which your request was processed.              |\n\nIn addition to the above headers, the response may also include the following headers:\n\n`x-amz-apigw-id | x-amzn-Remapped-Date | x-amzn-Remapped-Server | x-amzn-RequestId | X-AspNet-Version | X-Location`\n\nThese headers are reserved for future use.\n"
   },
@@ -70,6 +70,11 @@
       "name": "Managed Rules (Profiles)",
       "x-displayName": "Managed Rules (Profiles)",
       "description": "\nA managed rule identifies threats through predefined rules and prevents false positives.\n\n<a href=\"https://docs.edg.io/guides/security/managed_rules\" target=\"_blank\">Learn more about managed rules.</a>\n"
+    },
+    {
+      "name": "Edgio Rulesets",
+      "x-displayName": "Edgio Rulesets",
+      "description": "\nAn Edgio ruleset contains a set of managed security policies that identifies threats and provides generic protection against a variety of unknown vulnerabilities. Edgio rulesets are versioned. A new version is released whenever an Edgio ruleset is updated.\n"
     },
     {
       "name": "Bot Rules",
@@ -2429,7 +2434,7 @@
           "Security Applications (Scopes)"
         ],
         "summary": "Manage All Security Apps",
-        "description": "\nCreates, updates, and deletes one or more Security Apps. Each Security App:\n\n-   Identifies the set of traffic to which it applies by hostname, a URL path, or both.\n\n-   Defines how threats will be detected via access rules, custom rule sets, managed rules, and rate rules.\n\n    If one or more condition group(s) have been defined within a rate rule, then traffic will only be rate limited when it also satisfies at least one of those condition groups.\n\n-   Defines how threats will be handled through a production enforcement action, audit enforcement action, or both.\n\n**Key information:**\n\n-   This operation allows you to quickly create, update, or delete one or more Security Apps. These actions cannot be undone.\n\n-   Create a Security App by adding a scope object in the request.\n\n-   Update a Security App by modifying an existing scope object in the request. The id property identifies the Security App that will be updated.\n\n-   Delete a Security App by excluding a scope object from the request.\n\n    All Security Apps that are not explicitly defined within the request will be deleted.\n\n-   The recommended method for updating your Security Apps is to perform the following steps:\n\n    1.  If you have not created at least one Security App, then you should do so either through the Edgio Console or through the [Initialize Security Apps operation](#tag/Security-Applications-(Scopes)/operation/create-security-applications).\n\n    2.  Retrieve your current set of Security Apps through the [Get All Security Apps operation](#tag/Security-Applications-(Scopes)/operation/get-security-applications).\n\n    3.  Add, modify, or remove Security Apps from the response as needed.\n\n    4.  Pass the updated payload to this operation.\n",
+        "description": "\nCreates, updates, and deletes one or more Security Apps. Each Security App:\n\n-   Identifies the set of traffic to which it applies by hostname, a URL path, or both.\n\n-   Defines how threats will be detected through access rules, custom rules, managed rules, and rate rules.\n\n    If one or more condition group(s) have been defined within a rate rule, then traffic will only be rate limited when it also satisfies at least one of those condition groups.\n\n-   Defines how threats will be handled through a production enforcement action, audit enforcement action, or both.\n\n**Key information:**\n\n-   This operation allows you to quickly create, update, or delete one or more Security Apps. These actions cannot be undone.\n\n-   Create a Security App by adding a scope object in the request.\n\n-   Update a Security App by modifying an existing scope object in the request. The id property identifies the Security App that will be updated.\n\n-   Delete a Security App by excluding a scope object from the request.\n\n    All Security Apps that are not explicitly defined within the request will be deleted.\n\n-   The recommended method for updating your Security Apps is to perform the following steps:\n\n    1.  If you have not created at least one Security App, then you should do so either through the Edgio Console or through the [Initialize Security Apps operation](#tag/Security-Applications-(Scopes)/operation/create-security-applications).\n\n    2.  Retrieve your current set of Security Apps through the [Get All Security Apps operation](#tag/Security-Applications-(Scopes)/operation/get-security-applications).\n\n    3.  Add, modify, or remove Security Apps from the response as needed.\n\n    4.  Pass the updated payload to this operation.\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -3083,7 +3088,7 @@
           "Managed Rules (Profiles)"
         ],
         "summary": "Add Managed Rule",
-        "description": "Creates a managed rule that identifies a rule set configuration and describes a valid request.",
+        "description": "Creates a managed rule that identifies a ruleset configuration and describes a valid request.",
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -3117,7 +3122,7 @@
           "Managed Rules (Profiles)"
         ],
         "summary": "Get All Managed Rules",
-        "description": "Retrieves a list of managed rules. A managed rule identifies a rule set configuration and describes a valid request.",
+        "description": "Retrieves a list of managed rules. A managed rule identifies a ruleset configuration and describes a valid request.",
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -3189,7 +3194,7 @@
           "Managed Rules (Profiles)"
         ],
         "summary": "Get Managed Rule",
-        "description": "Retrieves a managed rule that identifies a rule set configuration and describes a valid request.",
+        "description": "Retrieves a managed rule that identifies a ruleset configuration and describes a valid request.",
         "responses": {
           "200": {
             "description": "OK. A managed rule was retrieved.",
@@ -3218,7 +3223,7 @@
           "Managed Rules (Profiles)"
         ],
         "summary": "Update Managed Rule",
-        "description": "Updates a managed rule that identifies a rule set configuration and describes a valid request.",
+        "description": "Updates a managed rule that identifies a ruleset configuration and describes a valid request.",
         "requestBody": {
           "$ref": "#/components/requestBodies/Profile"
         },
@@ -3263,6 +3268,80 @@
           },
           "500": {
             "$ref": "#/components/responses/error_500"
+          }
+        }
+      }
+    },
+    "/rulesets": {
+      "servers": [
+        {
+          "url": "https://edgioapis.com/waf/v0.9/"
+        }
+      ],
+      "security": [
+        {
+          "bearerAuth": [
+            "app.waf"
+          ]
+        }
+      ],
+      "get": {
+        "operationId": "get-rulesets",
+        "tags": [
+          "Edgio Rulesets"
+        ],
+        "summary": "Get Edgio Rulesets",
+        "description": "Retrieve a list of available Edgio rulesets. You may assign an Edgio ruleset to a managed rule to determine the set of policies and rules through traffic can be screened.",
+        "responses": {
+          "200": {
+            "description": "OK. A list of Edgio rulesets was retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Ruleset"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rulesets/{ruleset_id}": {
+      "servers": [
+        {
+          "url": "https://edgioapis.com/waf/v0.9/"
+        }
+      ],
+      "security": [
+        {
+          "bearerAuth": [
+            "app.waf"
+          ]
+        }
+      ],
+      "get": {
+        "operationId": "get-ruleset-versions",
+        "tags": [
+          "Edgio Rulesets"
+        ],
+        "summary": "Get Edgio Ruleset Versions",
+        "description": "Retrieve a list of the available versions for a specific Edgio ruleset. You may assign an Edgio ruleset to a managed rule to determine the set of policies and rules through traffic can be screened.",
+        "responses": {
+          "200": {
+            "description": "OK. A list of the available versions for a specific Edgio ruleset was retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -3753,8 +3832,8 @@
         "tags": [
           "Bot Rules"
         ],
-        "summary": "POST Bot Rules",
-        "description": "Create a new Bot for a given team.",
+        "summary": "Add Bot Ruleset",
+        "description": "Creates a bot ruleset. A bot ruleset defines criteria for bot identification.",
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -3765,7 +3844,7 @@
         },
         "responses": {
           "200": {
-            "description": "Bot created successfully",
+            "description": "OK. A bot ruleset was created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3787,8 +3866,8 @@
         "tags": [
           "Bot Rules"
         ],
-        "summary": "GET Bot Rules",
-        "description": "List all Bots for a given team.",
+        "summary": "Get All Bot Rulesets",
+        "description": "Lists all bot rulesets.",
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -3796,7 +3875,7 @@
         ],
         "responses": {
           "200": {
-            "description": "A list of Bot id's and names for the team",
+            "description": "OK. A list of bot rulesets was retrieved.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3819,7 +3898,7 @@
             }
           },
           "404": {
-            "description": "team not found"
+            "$ref": "#/components/responses/error_404"
           },
           "429": {
             "$ref": "#/components/responses/error_429"
@@ -3856,11 +3935,11 @@
         "tags": [
           "Bot Rules"
         ],
-        "summary": "GET Bot Rule Object",
-        "description": "Get a Bot object from a Bot id.",
+        "summary": "Get Bot Ruleset",
+        "description": "Retrieves a bot ruleset. A bot ruleset defines criteria for bot identification.",
         "responses": {
           "200": {
-            "description": "Successful Response",
+            "description": "OK. A bot ruleset was retrieved.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3870,7 +3949,7 @@
             }
           },
           "404": {
-            "description": "Bot not found"
+            "$ref": "#/components/responses/error_404"
           },
           "429": {
             "$ref": "#/components/responses/error_429"
@@ -3885,14 +3964,14 @@
         "tags": [
           "Bot Rules"
         ],
-        "summary": "PUT Bot Rule Object",
-        "description": "Modify a Bot object identified by id.",
+        "summary": "Update Bot Ruleset",
+        "description": "Updates a bot ruleset. A bot ruleset defines criteria for bot identification.",
         "requestBody": {
           "$ref": "#/components/requestBodies/Bot"
         },
         "responses": {
           "200": {
-            "description": "Bot successfully updated",
+            "description": "OK. A bot ruleset was updated.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3902,7 +3981,7 @@
             }
           },
           "404": {
-            "description": "Bot not found"
+            "$ref": "#/components/responses/error_404"
           },
           "429": {
             "$ref": "#/components/responses/error_429"
@@ -3917,14 +3996,14 @@
         "tags": [
           "Bot Rules"
         ],
-        "summary": "DELETE Bot Rule Object",
-        "description": "Delete a Bot object identified by id.",
+        "summary": "Delete Bot Ruleset",
+        "description": "Deletes a bot ruleset. A bot ruleset defines criteria for bot identification.",
         "responses": {
           "200": {
-            "description": "Bot successfully deleted"
+            "description": "OK. A bot ruleset was deleted."
           },
           "404": {
-            "description": "Bot not found"
+            "$ref": "#/components/responses/error_404"
           },
           "429": {
             "$ref": "#/components/responses/error_429"
@@ -3953,8 +4032,8 @@
         "tags": [
           "Bot Managers"
         ],
-        "summary": "POST Bot Manager",
-        "description": "Create a new Bot Manager for a given team.",
+        "summary": "Create Bot Manager Configuration",
+        "description": "Creates a bot manager configuration.",
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -3965,7 +4044,7 @@
         },
         "responses": {
           "200": {
-            "description": "Bot Manager created successfully",
+            "description": "OK. A bot manager configuration was created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3987,8 +4066,8 @@
         "tags": [
           "Bot Managers"
         ],
-        "summary": "GET Bot Managers",
-        "description": "List all Bot Managers for a given team.",
+        "summary": "Get All Bot Manager Configurations",
+        "description": "Retrieves a list of bot manager configurations. A bot manager configuration can detect and mitigate undesired bot traffic.",
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -3996,7 +4075,7 @@
         ],
         "responses": {
           "200": {
-            "description": "A list of Bot manager id's and names for the team",
+            "description": "OK. A list of bot manager configurations was retrieved.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4019,7 +4098,7 @@
             }
           },
           "404": {
-            "description": "team not found"
+            "$ref": "#/components/responses/error_404"
           },
           "429": {
             "$ref": "#/components/responses/error_429"
@@ -4056,11 +4135,11 @@
         "tags": [
           "Bot Managers"
         ],
-        "summary": "GET Bot Manager Object",
-        "description": "Get a Bot Manager object from a Bot Manager id.",
+        "summary": "Get Bot Manager Configuration",
+        "description": "Retrieves a bot manager configuration.",
         "responses": {
           "200": {
-            "description": "Successful Response",
+            "description": "OK. A bot manager configuration was retrieved.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4070,7 +4149,7 @@
             }
           },
           "404": {
-            "description": "Bot Manager not found"
+            "$ref": "#/components/responses/error_404"
           },
           "429": {
             "$ref": "#/components/responses/error_429"
@@ -4085,14 +4164,14 @@
         "tags": [
           "Bot Managers"
         ],
-        "summary": "PUT Bot Manager Object",
-        "description": "Modify a Bot Manager object identified by id.",
+        "summary": "Update Bot Manager Configuration",
+        "description": "Updates a bot manager configuration.",
         "requestBody": {
           "$ref": "#/components/requestBodies/BotManager"
         },
         "responses": {
           "200": {
-            "description": "Bot Manager successfully updated",
+            "description": "OK. A bot manager configuration was updated.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4102,7 +4181,7 @@
             }
           },
           "404": {
-            "description": "Bot Manager not found"
+            "$ref": "#/components/responses/error_404"
           },
           "429": {
             "$ref": "#/components/responses/error_429"
@@ -4117,14 +4196,14 @@
         "tags": [
           "Bot Managers"
         ],
-        "summary": "DELETE Bot Manager Object",
-        "description": "Delete a Bot Manager object identified by id.",
+        "summary": "Delete Bot Manager Configuration",
+        "description": "Deletes a bot manager configuration.",
         "responses": {
           "200": {
-            "description": "Bot Manager successfully deleted"
+            "description": "OK. A bot manager configuration was deleted."
           },
           "404": {
-            "description": "Bot Manager not found"
+            "$ref": "#/components/responses/error_404"
           },
           "429": {
             "$ref": "#/components/responses/error_429"
@@ -4153,19 +4232,39 @@
         "tags": [
           "Known Bots"
         ],
-        "summary": "GET Known Company Bots",
-        "description": "GET list of known bots belonging to companies",
+        "summary": "Get Available Known Bots",
+        "description": "Retrieves a list of all known bots. Each known bot is identified by a token (e.g., `google` and `yahoo`).",
         "responses": {
           "200": {
-            "description": "List of company bots",
+            "description": "OK. A list of known bots was retrieved.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
+                  "description": "Contains a list of known bots.",
                   "items": {
                     "type": "string"
                   }
-                }
+                },
+                "example": [
+                  "ahrefs",
+                  "apple",
+                  "aspiegel",
+                  "baidu",
+                  "datadog",
+                  "line",
+                  "msn",
+                  "neeva",
+                  "pingdom",
+                  "semrush",
+                  "uptimerobot",
+                  "yahoo",
+                  "yandex",
+                  "google",
+                  "facebook",
+                  "twitter",
+                  "other"
+                ]
               }
             }
           }
@@ -5748,11 +5847,7 @@
           },
           "value": {
             "type": "string",
-            "description": "\nThe value that will be compared against the request’s path. Specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining this property.\n\n**Sample value:** `/marketing`\n"
-          },
-          "values": {
-            "description": "Max 20 entries.",
-            "type": "string"
+            "description": "\nA value that will be compared against the request’s path. Specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining this property.\n\n**Sample value:** `/marketing`\n"
           },
           "is_negated": {
             "type": "boolean",
@@ -6131,7 +6226,7 @@
           },
           "ruleset_version": {
             "type": "string",
-            "description": "The version of the rule set associated with this managed rule."
+            "description": "The version of the ruleset associated with this managed rule."
           }
         },
         "required": [
@@ -6381,6 +6476,31 @@
           "team_config"
         ]
       },
+      "Ruleset": {
+        "title": "Ruleset",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The Edgio ruleset's system-defined ID."
+          },
+          "description": {
+            "type": "string",
+            "description": "The Edgio ruleset's description."
+          },
+          "versions": {
+            "type": "array",
+            "description": "The Edgio ruleset's available versions.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "display": {
+            "type": "string",
+            "description": "The Edgio ruleset's name."
+          }
+        }
+      },
       "ApiRule": {
         "title": "API Rule Object",
         "type": "object",
@@ -6405,9 +6525,12 @@
           },
           "schema_id": {
             "type": "string",
-            "description": "\nAn API schema's system-defined ID. \n\nUse the [Get All API Schemas operation](#tag/API-Schemas/operation/get-api-schemas) to retrieve a list of API schemas and their system-defined ID.\n"
+            "description": "\nAn API schema's system-defined ID. \n\nUse the [Get All API Schemas operation](#tag/API-Schemas/operation/get-api-schemas) to retrieve a list of API schemas and their system-defined IDs.\n"
           }
-        }
+        },
+        "required": [
+          "schema_id"
+        ]
       },
       "ApiGateway": {
         "title": "API gateway object",
@@ -6637,10 +6760,10 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "The bot rule set's system-defined ID."
+            "description": "The bot ruleset's system-defined ID."
           },
           "directive": {
-            "description": "Contains the bot rules associated with this bot rule set. You may create up to 10 bot rules per bot rule set.",
+            "description": "Contains the bot rules associated with this bot ruleset. You may create up to 10 bot rules per bot ruleset.",
             "type": "array",
             "items": {
               "anyOf": [
@@ -6659,11 +6782,11 @@
           },
           "last_modified_date": {
             "type": "string",
-            "description": "The date and time at which this bot rule set was last modified."
+            "description": "The date and time at which this bot ruleset was last modified."
           },
           "name": {
             "type": "string",
-            "description": "The bot rule set's name."
+            "description": "The bot ruleset's name."
           },
           "team_config": {
             "type": "boolean",
@@ -6920,7 +7043,7 @@
           },
           "bots_prod_id": {
             "type": "string",
-            "description": "\nThe system-defined ID for the bot rule set that will be applied to production traffic when this bot manager configuration is applied to a Security App. \n\nUse the [Get All Bot Rule Sets operation](#tag/Bot-Managers/operation/get-bot-managers) to retrieve a list of bot rule sets and their system-defined IDs.\n"
+            "description": "\nThe system-defined ID for the bot ruleset that will be applied to production traffic when this bot manager configuration is applied to a Security App. \n\nUse the [Get All Bot Rulesets operation](#tag/Bot-Rules/operation/get-bot-rules) to retrieve a list of bot rulesets and their system-defined IDs.\n"
           },
           "exception_cookie": {
             "type": "array",
@@ -7067,7 +7190,7 @@
         "name": "bot_id",
         "in": "path",
         "required": true,
-        "description": "\nA bot manager configuration's system-defined ID. \n\nUse the [Get All Bot Manager Configurations operation](#tag/Bot-Managers/operation/get-bot-managers) to retrieve a list of bot manager configurations and their system-defined IDs.\n",
+        "description": "\nA bot ruleset's system-defined ID. \n\nUse the [Get All Bot Rulesets operation](#tag/Bot-Rules/operation/get-bot-rules) to retrieve a list of bot rulesets and their system-defined IDs.\n",
         "schema": {
           "type": "string"
         }
@@ -7076,7 +7199,7 @@
         "name": "bot_manager_id",
         "in": "path",
         "required": true,
-        "description": "The bot manager configuration's system-defined ID.",
+        "description": "\nA bot manager configuration's system-defined ID.\n\nUse the [Get All Bot Managers operation](#tag/Bot-Managers/operation/get-bot-managers) to retrieve a list of bot manager configurations and their system-defined IDs.\n",
         "schema": {
           "type": "string"
         }
@@ -7259,6 +7382,7 @@
         "Known Bots",
         "Custom Rules",
         "Managed Rules (Profiles)",
+        "Edgio Rulesets",
         "Security Applications (Scopes)"
       ]
     },

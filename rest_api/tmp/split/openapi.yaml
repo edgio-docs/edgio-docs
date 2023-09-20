@@ -13,6 +13,8 @@ servers:
 security:
   - Bearer: []
 tags:
+  - name: environment-variables
+    description: Operations about environment-variables
   - name: tls-certs
     description: Operations about tls-certs
   - name: deployments
@@ -32,6 +34,10 @@ tags:
   - name: bff
     description: Operations about bffs
 paths:
+  /config/v0.1/environment-variables/{environment_variable_id}:
+    $ref: paths/config_v0.1_environment-variables_{environment_variable_id}.yaml
+  /config/v0.1/environment-variables:
+    $ref: paths/config_v0.1_environment-variables.yaml
   /config/v0.1/tls-certs/{cert_id}:
     $ref: paths/config_v0.1_tls-certs_{cert_id}.yaml
   /config/v0.1/tls-certs:

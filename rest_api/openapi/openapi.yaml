@@ -76,6 +76,12 @@ tags:
       
       <a href="https://docs.edg.io/guides/security/managed_rules" target="_blank">Learn more about managed rules.</a>
 
+  - name: Edgio Rulesets
+    x-displayName: Edgio Rulesets
+    description: | 
+
+      An Edgio ruleset contains a set of managed security policies that identifies threats and provides generic protection against a variety of unknown vulnerabilities. Edgio rulesets are versioned. A new version is released whenever an Edgio ruleset is updated.
+
   - name: Bot Rules
     x-displayName: Bot Ruleset
     description: |
@@ -529,6 +535,7 @@ x-tagGroups:
       - Known Bots
       - Custom Rules
       - Managed Rules (Profiles)
+      - Edgio Rulesets
       - Security Applications (Scopes)
   - name: Organizations
     tags:

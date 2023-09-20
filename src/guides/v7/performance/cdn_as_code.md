@@ -77,7 +77,7 @@ Use the {{ PRODUCT }} CLI to initialize your property. If you have already perfo
 
     If this is your first time using the {{ PRODUCT }} CLI to deploy, then you will be prompted to log in to the {{ PORTAL_LINK }}. To log in, select `Continue`. This will open a browser window where you may log in by creating a new account, or authenticating with a third-party provider such as Google or GitHub. Once you log in, you'll be prompted to authorize creating a local access token:
 
-    ![Local Access Token](/images/v7/performance/cli-auth-token.png)
+    ![Local Access Token](/images/v7/performance/cli-auth-token.png?width=500)
 
     After clicking **Create access token**, you may return back to the CLI and continue with the deployment.
 
@@ -133,13 +133,13 @@ Use the {{ PRODUCT }} CLI to initialize your property. If you have already perfo
       ***** Deployment Complete *****************************************************
       *                                                                             *
       *  🖥  Edgio Developer Console:                                                *
-      *  https://edgio.app/<YOUR-TEAM>/my-custom-property.com/env/default/builds/1  *
+      *  https://edgio.app/<YOUR-ORGANIZATION>/my-custom-property.com/env/default/builds/1  *
       *                                                                             *
       *  🔗 Permalink:                                                              *
-      *  https://<YOUR-TEAM>-my-custom-property-com-1.free.edgio-perma.link         *
+      *  https://<YOUR-ORGANIZATION>-my-custom-property-com-1.free.edgio-perma.link         *
       *                                                                             *
       *  🌎 Edge:                                                                   *
-      *  https://<YOUR-TEAM>-my-custom-property-com-default.edgio.link              *
+      *  https://<YOUR-ORGANIZATION>-my-custom-property-com-default.edgio.link              *
       *                                                                             *
       *******************************************************************************
 
@@ -174,11 +174,11 @@ The default `{{ CONFIG_FILE }}` file contains the following configuration based 
 // You should commit this file to source control.
 // Learn more about this file at https://docs.edg.io/guides/edgio_config
 module.exports = {
-  // The name of the site in Edgio to which this app should be deployed.
+  // The name of the property in Edgio to which this app should be deployed.
   name: 'my-custom-property.com',
 
-  // The name of the team in Edgio to which this app should be deployed.
-  // team: 'my-team-name',
+  // The name of the organization in Edgio to which this app should be deployed.
+  // team: 'my-organization-name',
 
   // Overrides the default path to the routes file. The path should be relative to the root of your app.
   // routes: 'routes.js',
@@ -186,7 +186,7 @@ module.exports = {
   origins: [
     {
       // The name of the backend origin
-      name: 'origin',
+      name: 'web',
 
       // Uncomment the following to override the host header sent from the browser when connecting to the origin
       // override_host_header: 'example.com',
@@ -194,7 +194,7 @@ module.exports = {
       // The list of origin hosts to which to connect
       hosts: [
         {
-          // The domain name or IP address of the origin serve r
+          // The domain name or IP address of the origin server
           location: 'my-custom-property.com',
         },
       ],
@@ -204,14 +204,14 @@ module.exports = {
     },
   ],
 
-  // Options for hosting serverless functions on Edgio
+  // Options for hosting Cloud Functions on Edgio
   // serverless: {
   //   // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
   //   // This option generally isn't needed as Edgio automatically includes all modules imported by your code in the bundle that
   //   // is uploaded during deployment
   //   includeNodeModules: true,
   //
-  //   // Include additional paths that are dynamically loaded by your app at runtime here when building the serverless bundle.
+  //   // Include additional paths that are dynamically loaded by your app at runtime here when building the bundle.
   //   include: ['views/**/*'],
   // },
 
@@ -234,6 +234,38 @@ The relevant configuration options generated include the `name` and `origins` pr
 
 - The `name` property is used to identify your {{ PRODUCT }} property in the {{ PORTAL_LINK }}
 - The `origins` property is used to configure the origins to which the router will connect when handling requests.
+
+### Defining Origins {/* defining-origins */}
+
+In the `{{ CONFIG_FILE }}`, the `origins` property allows you to define one or more origins that {{ PRODUCT }} will use to communicate with your web servers.
+
+The configuration above shows a single origin named `web` that connects to `my-custom-property.com` as defined by the `hosts` property.
+
+```js highlight="5"
+origins: [
+  {
+    // The name of the backend origin
+    // Proxy requests to this origin by referencing this name within your router
+    name: 'web',
+
+    // Uncomment the following to override the host header sent from the browser when connecting to the origin
+    // override_host_header: 'example.com',
+
+    // The list of origin hosts to which to connect
+    hosts: [
+      {
+        // The domain name or IP address of the origin server
+        location: 'my-custom-property.com',
+      },
+    ],
+
+    // Uncomment the following to configure a shield
+    // shields: { us_east: 'DCD' },
+  },
+];
+```
+
+The origin name set here will be referenced later when configuring the router to proxy requests.
 
 [Learn more](/guides/performance/cdn_as_code/edgio_config) about the `{{ CONFIG_FILE }}` file and all the configuration options it supports.
 
@@ -288,7 +320,7 @@ The above route matches all requests that start with `/api/` and instructs {{ PR
 - Allow us to serve stale content for one hour.
 - Instruct the browser to treat the response as immediately stale.
 - Allow prefetched requests to be served from cache for one day.
-- Proxy those requests to your `origin` backend when we cannot serve them from cache.
+- Proxy those requests to your `web` backend when we cannot serve them from cache.
 
 ## Routes {/* routes */}
 
@@ -346,7 +378,7 @@ Learn more advanced syntax with [Route Criteria and Conditions](/guides/performa
 
 Once you have identified a set of requests, you need to define how {{ PRODUCT }} will handle those requests. The following routes show various ways in which requests can be processed.
 
-- Apply a caching policy to all requests and proxy cache misses to the `origin` backend:
+- Apply a caching policy to all requests and proxy cache misses to the `web` backend:
 
 ```js
  router.match('/:path*', {
@@ -355,13 +387,13 @@ Once you have identified a set of requests, you need to define how {{ PRODUCT }}
        max_age: "1h"
      },
      origin: {
-       set_origin: "origin"
+       set_origin: "web"
      }
    }
  })
 ```
 
-- Set the `images` response header and proxy cache misses to the `origin` backend for all `GET` requests whose URL path starts with `/marketing/images/`:
+- Set the `images` response header and proxy cache misses to the `web` backend for all `GET` requests whose URL path starts with `/marketing/images/`:
 
 ```js
 router.get('/marketing/images/:path*', {
@@ -371,7 +403,7 @@ router.get('/marketing/images/:path*', {
     },
   },
   origin: {
-    set_origin: 'origin',
+    set_origin: 'web',
   },
 });
 ```
@@ -418,7 +450,7 @@ import {Router} from '{{ PACKAGE_NAME }}/core';
 import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
 
 export default new Router()
-  // Send requests to serverless and render the response with Next.js
+  // Send requests to the {{ PRODUCT }} cloud and render the response with Next.js
   .use(nextRoutes)
 
   // Cache all requests to /products/:id for 1 hour
@@ -441,6 +473,8 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 ```bash
 {{ CLI_CMD(deploy) }}
 ```
+
+{{ system_origins_callout.md }}
 
 Assess performance and caching behavior from the {{ PORTAL_LINK }}. Fine-tune your configuration by adding routes and then redeploying your property. Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
 
@@ -475,7 +509,7 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
   </Callout>
 
 - [Transforming and optimizing images](/guides/performance/image_optimization)
-- Transforming the response through [Serverless Compute](/guides/performance/serverless_compute)
+- Transforming the response through [Cloud Functions](/guides/performance/serverless_compute)
 - [Removing response headers](/guides/performance/cdn_as_code/route_features#altering-the-response)
 - [Normalizing the cache key](/guides/performance/caching#customizing-the-cache-key)
 - Generating performance insights through [DevTools](/guides/performance/observability/devtools)

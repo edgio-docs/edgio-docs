@@ -2,13 +2,13 @@
 title: Server Logs
 ---
 
-Serverless Compute supports the ability to log console messages. Console messages are defined within your application using methods, such as `console.log()`, `console.warn()`, and `console.error()`. 
+Cloud Functions supports the ability to log console messages. Console messages are defined within your application using methods, such as `console.log()`, `console.warn()`, and `console.error()`. 
 
 [Learn more about the console object.](https://developer.mozilla.org/en-US/docs/Web/API/console) 
 
-You may view these console messages in real time or as log data.
-
--   **Real Time:** From within the {{ PORTAL_LINK }}, load the desired deployment and then click on the `SERVER` tab. Focus on specific data by limiting the output to your IP address or through a regular expression. 
+You may view these console messages in real time<!-- or as log data-->. From within the {{ PORTAL_LINK }}, load the desired deployment and then click on the `Serverless` tab. Focus on specific data by limiting the output to your IP address or through a regular expression. 
+<!--
+-   **Real Time:** 
 -   **Log Data:** Retrieve log data from an AWS S3 bucket.
 
     <Callout type="info">
@@ -22,8 +22,8 @@ You may view these console messages in real time or as log data.
         - Base AWS S3 bucket URL (Server Logs)
         - Key ID
         - Secret access key
-
-![server](/images/logs/server.png)
+-->
+![server](/images/v7/logs/logs-serverless.png?width=700)
 
 [View log field definitions.](#serverless-compute-console-and-dri-log-fields)
 
@@ -38,7 +38,7 @@ You may view these console messages in real time or as log data.
 </Callout>
 
 Use DRI to view the headers and body for:
--   Every request served through {{ PRODUCT }} Serverless Compute.
+-   Every request served through {{ PRODUCT }} cloud Functions.
 -   Each upstream API request made by your application.
 
 <Callout type="warning">
@@ -61,7 +61,7 @@ One use case for DRI is to analyze traffic during a deployment by tailing the se
 3.  Click **Enable Deep Request Inspection**.
 4.  When prompted, confirm enablement and redeploy your site by clicking **ENABLE DEEP REQUEST INSPECTION**.
 
-## Serverless Compute Console <!-- and DRI --> Log Fields {/*serverless-compute-console-and-dri-log-fields*/}
+## Cloud Functions Console <!-- and DRI --> Log Fields {/*serverless-compute-console-and-dri-log-fields*/}
 
 <Callout type="info">
 
@@ -69,7 +69,7 @@ One use case for DRI is to analyze traffic during a deployment by tailing the se
 
 </Callout>
 
-Log data for Serverless Compute console messages <!-- and DRI --> may contain the following fields:
+Log data for Cloud Functions console messages <!-- and DRI --> may contain the following fields:
 
 -   **awsTag:** <a id="awsTag" /> Reserved for future use.
 -   **clientIp:** <a id="clientIp" /> Indicates the IP address (IPv4 or IPv6) for the computer that submitted the request.
@@ -86,7 +86,7 @@ Log data for Serverless Compute console messages <!-- and DRI --> may contain th
 
 -   **rg:** <a id="rg" /> Requires {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.0.3 or higher. Indicates the region your serverless code was processed.
 -   **time:** <a id="time" /> Indicates the Unix time, in milliseconds, at which the request was submitted.
--   **wi:** Requires {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.0.3 or higher. Indicates the unique ID of the Serverless Compute instance that ran your serverless code.
+-   **wi:** Requires {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.0.3 or higher. Indicates the unique ID of the Cloud Functions instance that ran your serverless code.
 
 <!--
 -   **data:** <a id="data" /> Contains additional information about the request logged by [Deep Request Inspection](#deep-request-inspection).
@@ -101,8 +101,6 @@ Log data for Serverless Compute console messages <!-- and DRI --> may contain th
 level:
     -   **100 - 104:** Indicates log data generated as a result of Deep Request Inspection.
 
--->
-
 ## Log Aggregation Tools {/*setting-up-log-aggregation-tools*/}
 
 {{ PRODUCT }} temporarily stores log data within Amazon S3. Use a log aggregation tool to extract log data from AWS S3. Here are a few popular log aggregation tools:
@@ -112,3 +110,4 @@ level:
 - AWS Athena | [[docs]](https://aws.amazon.com/blogs/big-data/analyzing-data-in-s3-using-amazon-athena/)
 - Splunk | [[S3 ingest docs]](https://docs.splunk.com/Documentation/AddOns/released/AWS/S3)
 - Loggly | [[S3 ingest docs]](https://documentation.solarwinds.com/en/Success_Center/loggly/Content/admin/s3-ingestion-auto.htm)
+-->

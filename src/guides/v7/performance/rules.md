@@ -29,7 +29,7 @@ There are two workflows for defining your CDN configuration:
 -   Generate and deploy rules through the {{ PORTAL_LINK }}.
 -   Define a [CDN-as-Code configuration](/guides/performance/cdn_as_code) and then deploy it through the {{ PRODUCT }} CLI. 
 
-![Rules and CDN-as-Code](/images/v7/performance/rules-cdn-as-code.png)
+![Rules and CDN-as-Code](/images/v7/performance/rules-cdn-as-code.png?width=700)
 
 Deploying to an environment always overrides the previous configuration. However, if you use a different workflow, you may not be aware of how a deployment will override your current configuration. 
 
@@ -85,6 +85,27 @@ There are three types of statement:
   [Learn how to toggle this behavior.](#multiple-conditions)
 
 </Callout>
+
+### Nested Rules {/*nested-rules*/}
+
+A nested rule is a rule that is added to another rule's IF, ELSE IF, or ELSE statement. {{ PRODUCT }} will only check a nested rule's logic when the following prerequisites are satisfied:
+
+1.  The request satisfies the rule's logic to reach the statement where the rule was nested.
+
+    For example, if a rule is nested under the second ELSE IF statement, then it must not satisfy the match condition(s) defined under the IF statement or the ELSE IF statement that is listed above this one.
+	
+	Alternatively, if a rule is nested under an ELSE statement, then a request cannot satisfy any other IF or ELSE IF statement in that rule.
+
+2.  The request satisfies all of the match condition(s) associated with the IF or ELSE IF statement where the rule was nested. This prerequisite is automatically satisfied for ELSE statements, since they do not have match conditions. 
+
+For example, the following illustration demonstrates a nested rule whose logic will only be applied for specific types of images:
+
+![Nested rule](/images/v7/performance/rules-nested-rule.png?width=700)
+
+**Key information:**
+
+-   You may nest a rule under any statement. 
+-   Add a nested rule by finding the desired statement, clicking `+ Add`, and then selecting `Add Nested Rule`.
 
 ### Conditions {/*conditions*/}
 
@@ -215,7 +236,7 @@ You may create, modify, and delete rules.
 
 **Key information:**
 
--   You may make changes without affecting an environment's traffic. This allows you to collaborate with other team members when setting up rules and to stage changes until they are needed. 
+-   You may make changes without affecting an environment's traffic. This allows you to collaborate with other teammates when setting up rules and to stage changes until they are needed. 
 
     For example, a sales event may require URL redirects or a different caching policy than standard site traffic. You can stage these changes until they are needed for the sales event.
 

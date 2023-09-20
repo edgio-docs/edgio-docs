@@ -85,10 +85,10 @@ const nav = {
               title: 'Route Features',
               path: 'performance/cdn_as_code/route_features',
             },
-            // {
-            //   title: 'Edge Functions',
-            //   path: 'performance/cdn_as_code/edge_functions',
-            // },
+            {
+              title: 'Conditional Routes',
+              path: 'performance/cdn_as_code/conditional_routes',
+            },
             {
               title: 'Error Handling',
               path: 'performance/cdn_as_code/error_handling',
@@ -125,10 +125,10 @@ const nav = {
             },
           ],
         },
-        {
-          title: 'Static Prerendering',
-          path: 'performance/static_prerendering',
-        },
+        // {
+        // title: 'Static Prerendering',
+        // path: 'performance/static_prerendering',
+        // },
         {
           title: 'Predictive Prefetch',
           path: 'performance/prefetching',
@@ -160,13 +160,13 @@ const nav = {
           ],
         },
         {
-          title: 'Serverless Compute',
+          title: 'Cloud Functions',
           path: 'performance/serverless_compute',
         },
-        {
-          title: 'Unit Testing (EdgeJS)',
-          path: 'performance/unit_testing_edgejs',
-        },
+        // {
+        //   title: 'Unit Testing (EdgeJS)',
+        //   path: 'performance/unit_testing_edgejs',
+        // },
         {
           title: 'Image Optimization',
           path: 'performance/image_optimization',
@@ -210,6 +210,11 @@ const nav = {
       ],
     },
     {
+      title: 'Edge Functions',
+      path: 'edge-functions',
+      icon: 'edge-functions',
+    },
+    {
       title: 'Security',
       path: 'security',
       icon: 'shield',
@@ -235,8 +240,16 @@ const nav = {
           path: 'security/waf',
         },
         {
+          title: 'Getting Started',
+          path: 'security/getting_started',
+        },
+        {
           title: 'Access Rules',
           path: 'security/access_rules',
+        },
+        {
+          title: 'API Security',
+          path: 'security/api_security',
         },
         {
           title: 'Rate Rules',
@@ -255,7 +268,7 @@ const nav = {
           path: 'security/managed_rules',
         },
         {
-          title: 'Security Applications',
+          title: 'Security Apps',
           path: 'security/security_applications',
         },
         {
@@ -294,8 +307,8 @@ const nav = {
               path: 'sites_frameworks/getting_started/brunch',
             },
             {
-              title: 'Custom Connector',
-              path: 'sites_frameworks/getting_started/custom_connector',
+              title: 'Node.js Connector',
+              path: 'sites_frameworks/getting_started/nodejs_connector',
             },
             {
               title: 'Docusaurus',
@@ -437,10 +450,10 @@ const nav = {
               title: 'Stencil',
               path: 'sites_frameworks/getting_started/stencil',
             },
-            // {
-            //   title: 'Svelte',
-            //   path: 'sites_frameworks/getting_started/svelte',
-            // },
+            {
+              title: 'SvelteKit',
+              path: 'sites_frameworks/getting_started/sveltekit',
+            },
             // {
             //   title: 'UmiJS',
             //   path: 'sites_frameworks/getting_started/umijs',
@@ -539,6 +552,10 @@ const nav = {
               path: '',
             },
             {
+              title: 'Filtering Log Data',
+              path: 'logs/rtld/filtering_log_data',
+            },
+            {
               title: 'Log File Naming Convention',
               path: 'logs/rtld/log_file_naming_convention',
             },
@@ -555,12 +572,16 @@ const nav = {
               path: 'logs/rtld/log_fields_rtld_cdn',
             },
             {
+              title: 'Log Fields (RTLD WAF)',
+              path: 'logs/rtld/log_fields_rtld_waf',
+            },
+            {
               title: 'Log Fields (RTLD Rate Limiting',
               path: 'logs/rtld/log_fields_rtld_rate_limiting',
             },
             {
-              title: 'Log Fields (RTLD WAF)',
-              path: 'logs/rtld/log_fields_rtld_waf',
+              title: 'Log Fields (RTLD Bot)',
+              path: 'logs/rtld/log_fields_rtld_bot_manager',
             },
           ],
         },
@@ -605,6 +626,84 @@ const nav = {
         {
           title: 'Country Codes',
           path: 'reference/country_codes',
+        },
+        {
+          title: 'HTTP Status Codes',
+          path: '/guides/performance/response#status-codes',
+        },
+        {
+          title: 'Response Headers',
+          path: '/guides/performance/response#response-headers',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'Rules - Match Conditions',
+          path: '/guides/performance/rules/conditions',
+        },
+        {
+          title: 'Rules - Features',
+          path: '/guides/performance/rules/features',
+        },
+        {
+          title: 'Rules - Feature Variables',
+          path: '/guides/performance/rules/feature_variables',
+        },
+        {
+          title: 'Rules - Operators',
+          path: '/guides/performance/rules/operators',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'edgio.config.js Configuration',
+          path: '/guides/performance/cdn_as_code/edgio_config',
+        },
+        {
+          title: '@edgio/core',
+          path: '/docs/v7.x/api/core/',
+          external: true,
+        },
+        {
+          title: '@edgio/prefetch',
+          path: '/docs/v7.x/api/prefetch/',
+          external: true,
+        },
+        {
+          title: 'CLI',
+          path: '/guides/develop/cli#commands',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'Purge REST API',
+          path: '/guides/develop/rest_api',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'RTLD CDN',
+          path: '/guides/logs/rtld/log_fields_rtld_cdn',
+        },
+        {
+          title: 'RTLD WAF',
+          path: '/guides/logs/rtld/log_fields_rtld_waf',
+        },
+        {
+          title: 'RTLD Rate Limiting',
+          path: '/guides/logs/rtld/log_fields_rtld_rate_limiting',
+        },
+        {
+          title: 'RTLD Bot',
+          path: '/guides/logs/rtld/log_fields_rtld_bot_manager',
         },
       ],
     },

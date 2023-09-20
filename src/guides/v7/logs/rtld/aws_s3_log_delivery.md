@@ -6,7 +6,7 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
 
 **Key information:**
 
--   The set of available log fields varies by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
+-   The set of available log fields varies by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager)
 -   RTLD applies gzip compression to log data. AWS S3 stores compressed log data as an object with a `gz` file extension.
     
     [Learn more.](/guides/logs/rtld/log_file_naming_convention)
@@ -69,7 +69,7 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
     			],
     			"Resource": [
     				"arn:aws:s3:::BUCKET-NAME",
-    				"arn:aws:s3:::BUCKET-NAME/\*"
+    				"arn:aws:s3:::BUCKET-NAME/*"
     			]
     		}
     	]
@@ -95,7 +95,7 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
 
 5.  Upon completing the above steps, you should create a log delivery profile for AWS S3.
 
-{{ RTLD_PROFILE_SETUP_1 }} `AWS S3`.
+{{ RTLD_PROFILE_SETUP_1.md }} `AWS S3`.
 
 4.  Define how RTLD will communicate with AWS S3.
 
@@ -107,4 +107,4 @@ RTLD may automatically deliver compressed log data to an AWS S3 bucket by submit
 
     3.  From the **AWS Region** option, select the region assigned to the AWS S3 bucket.
 
-{{ RTLD_PROFILE_SETUP_2 }}
+{{ RTLD_PROFILE_SETUP_2.md }}

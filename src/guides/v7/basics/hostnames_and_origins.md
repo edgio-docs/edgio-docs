@@ -2,18 +2,26 @@
 title: Hostnames and Origins
 ---
 
-Setting up the delivery of your site through {{ PRODUCT }} requires the following configuration for each desired [environment](/guides/basics/environments):
+Setting up the delivery of your website through {{ PRODUCT }} requires the following configuration for each desired [environment](/guides/basics/environments):
 
--   **Hostname:** Identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
--   **Origin:** Defines how our service will communicate with your web servers.
+-   **Hostname:** A hostname identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
+-   **Source:** Define the source from which {{ PRODUCT }} will retrieve content. You may retrieve content from any combination of the following sources:
+    -   **Origin:** An origin configuration defines how our service will communicate with your web servers.
+    -   **{{ PRODUCT }} cloud:** The {{ PRODUCT }} cloud, which powers [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) and [Cloud Functions](/guides/performance/serverless_compute), allows you to run serverless code.
+    
+Control how {{ PRODUCT }} communicates with your web servers or our cloud by mapping hostnames to origin configurations.
 
-Control how {{ PRODUCT }} communicates with your web servers by mapping hostnames to origin configurations.
+<Callout type="info">
+
+  {{ PRODUCT }} cloud requires a CDN-as-code configuration. We automatically create system-defined origin configurations for our cloud infrastructure as part of your initial CDN-as-code deployment. 
+  
+</Callout>
 
 ![Hostname and Origin Workflow](/images/v7/basics/hostnames-origins.png?width=781)
 
-You may also serve your site through [Serverless Compute](/guides/performance/serverless_compute). You may serve all of your site traffic through Serverless Compute, your origin server(s), or any combination of both.
+You may serve your site through our cloud, your origin server(s), or any combination of both. 
 
-![Hostname, Origin, and Serverless Compute Workflow](/images/v7/basics/hostnames-origins-serverless-compute.png)
+![Hostname, Origin, and Cloud Workflow](/images/v7/basics/hostnames-origins-cloud.png)
 
 ## Quick Start {/*quick-start*/}
 
@@ -204,6 +212,22 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 7. If you are finished making changes to this environment, click **Deploy Changes**.
 <a id="primary-failover-load-balancing" />
 
+### System-Defined Origins {/*system-defined-origins*/}
+
+{{ PRODUCT }} will add the following origin configurations for properties deployed using our [CDN-as-code (EdgeJS)](/guides/performance/cdn_as_code) approach:
+
+<Callout type="important">
+
+  These system-defined origins should not be modified or deleted.
+
+</Callout>
+
+- **`{{ PRODUCT_LOWER }}_image_optimizer`**: Used for serving images through the [image optimization](/guides/performance/image_optimization) feature.
+- **`{{ PRODUCT_LOWER }}_permanent_static`**: Used for serving [static assets](/guides/performance/cdn_as_code/edgio_config#staticassets) configured to persist across deployments.
+- **`{{ PRODUCT_LOWER }}_serverless`**: Used for serving requests through the {{ PRODUCT }} cloud.
+- **`{{ PRODUCT_LOWER }}_static`**: Used for serving [static assets](/guides/performance/cdn_as_code/edgio_config#staticassets).
+
+
 ### Load Balancing {/*load-balancing*/}
 
 {{ PRODUCT }} load balances traffic proxied from our network to the web servers associated with an origin configuration using either primary/failover or round-robin mode. 
@@ -245,7 +269,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
 <Callout type="important">
 
-  IP blocks may vary by team. 
+  IP blocks may vary by organization. 
 
 </Callout>
 
@@ -265,7 +289,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
     ![Firewall instructions](/images/v7/basics/origins-instructions.png)
 
-    The **Allowlisting** window will display a list of IPv4 and IPv6 blocks for standard traffic, a list of IP blocks for Serverless Compute, and the domain to which the {{ PRODUCT }} CLI connects when deploying to a development or CI/CD environment.
+    The **Allowlisting** window will display a list of IPv4 and IPv6 blocks for standard traffic, Perimeter 81 for network security, AWS NAT gateway for the {{ PRODUCT }} cloud, and the domain to which the {{ PRODUCT }} CLI connects when deploying to a development or CI/CD environment.
 
     <Callout type="important">
 
@@ -302,18 +326,18 @@ From your DNS service provider, point your hostname(s) to a service domain that 
 {{ PRODUCT }} assigns a different service domain to:
 
 -   Your private space.
--   Each team space to which you belong. 
+-   Each organization to which you belong. 
 
-You may point any hostname defined within a space to its service domain. 
+You may point any hostname defined within a private space or organization to its service domain. 
 
-**To view the service domain assigned to a space**
+**To view the service domain**
 
 1.  Load the space's **Settings** page.
 
-    1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
+    1.  From the {{ PORTAL_LINK }}, select the desired private space or organization.
     2.  Click **Settings**.
 
-2.  From the **Team DNS Configuration** section, click <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
+2.  From the **Organization DNS Configuration** section, click <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
 
 ### DNS Verification {/*dns-verification*/}
 

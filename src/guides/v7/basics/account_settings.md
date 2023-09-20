@@ -155,7 +155,7 @@ Look up a time-sensitive token within a Time-based One-time Password-compatible 
 
     <Callout type="tip">
 
-      Automatically define the account's name and secret key by scanning a QR code. Otherwise, you will need to manually enter this information.
+      Automatically define the account name and secret key by scanning a QR code. Otherwise, you will need to manually enter this information.
 
     </Callout>
 

@@ -53,6 +53,12 @@ Our CDN accepts `POST` requests regardless of whether they contain a payload.
 
 The CDN service communicates using the HTTP protocol version (i.e., HTTP/1.0 or HTTP/1.1) defined in the request. The HTTP/2.0 protocol version is only used for the communication between the client and the edge of our network.
 
+<Callout type="info">
+
+  {{ PRODUCT }} also supports HTTP/3 for the communication between the client and the edge of our network, but it requires enablement. Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to enable it on your account.
+
+</Callout>
+
 ## Request URL {/*request-url*/}
 
 By default, requests that are proxied through our network to an origin server will include the entire URL submitted by the client. If the requested URL includes a query string, then it will also be forwarded to the origin server. Request URLs, with the exception of the scheme and domain name, are case-sensitive.
@@ -111,10 +117,10 @@ Geolocation headers contain the geographical information about the provenance of
 These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee the accuracy of geolocation based on the client's IP address. See also [geolocation](/guides/third_party_cdns#client-ips) behind [third-party CDNs](/guides/third_party_cdns).
 -->
 
-### Static prerendering headers {/*static-prerendering-headers*/}
+<!--### Static prerendering headers {/*static-prerendering-headers*/}
 
 - `{{ HEADER_PREFIX }}-preload`: Will be "1" if the request originated from [Static Prerendering](/guides/performance/static_prerendering). Otherwise this header will not be present.
-
+-->
 ## Request Body {/*request-body*/}
 
 Requests that are proxied through our network to an origin server will include a request body except if either of the following conditions are true:

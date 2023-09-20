@@ -2,7 +2,7 @@
 title: Purging Cached Content
 ---
 
-Purge cached content to force the CDN to request a new version of that content from an origin server or Serverless Compute. This ensures that the latest version of that content is delivered to your clients.
+Purge cached content to force the CDN to request a new version of that content from an origin server or Cloud Functions. This ensures that the latest version of that content is delivered to your clients.
 
 <Callout type="info">
 
@@ -18,7 +18,7 @@ Purge by relative path, surrogate key, or all cached content using the:
 
 <Callout type="info">
 
-  By default, deploying to {{ PRODUCT }} automatically purges that environment's cached content. [Learn more.](#deployments)
+  By default, deploying to {{ PRODUCT }} preserves an environment's cached content. [Learn more.](#deployments)
 
 </Callout>
 
@@ -104,9 +104,17 @@ Purge cached content through the {{ PRODUCT }} CLI by passing the [cache-clear a
 
 Run the following command to purge the `basketball` surrogate key from the `production` environment from the `my-videos` property:
 
-```bash
-{{ FULL_CLI_NAME }} cache-clear --team=my-team --property=my-videos --environment=production --surrogate-key=basketball
-```
+<SnippetGroup>
+
+    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
+    {{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my-videos --environment=production --surrogate-key=basketball
+    ```
+
+    ```bash tabLabel="Version 7.2.1 or lower"
+    {{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my-videos --environment=production --surrogate-key=basketball
+    ```
+
+</SnippetGroup>
 
 ## REST API {/*rest-api*/}
 
@@ -118,17 +126,17 @@ Purge cached content through the {{ PRODUCT }} REST API through the [clear-cache
 
 ## Deployments {/*deployments*/}
 
-By default, all cached responses are purged from an environment when you deploy a new version of your site. Override this behavior by marking the **Preserve cache between deployments** setting on the **Caching** page.
+By default, cached content is preserved when you deploy a new version of your site. Override this behavior by clearing the **Preserve cache between deployments** setting on the **Caching** page.
 
 <Callout type="warning">
 
-  While preserving the cache between deployments can greatly reduce the load on your origin following a deployment, it can also lead to inconsistent behavior if the new version of your browser code receives an old, incompatible API response from the cache. Before enabling this feature, we recommend adding an API version number to your URL scheme to ensure that breaking changes to your API don't affect your website's functionality when old responses are served from the cache.
+  While preserving the cache between deployments can greatly reduce the load on your origin following a deployment, it can also lead to inconsistent behavior if the new version of your browser code receives an old, incompatible API response from the cache. If you plan on preserving cache content between deployments, then we recommend adding an API version number to your URL scheme to ensure that breaking changes to your API don't affect your website's functionality when old responses are served from the cache.
 
 </Callout>
-
+<!--
 ## Static prerendering after clearing the cache {/*static-prerendering-after-clearing-the-cache*/}
 
-If you have enabled [static prerendering](/guides/performance/static_prerendering), the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PORTAL }} or run `{{ FULL_CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.
+If you have enabled [static prerendering](/guides/performance/static_prerendering), the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PORTAL }} or run `{{ FULL_CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.-->
 
 ## Automated Purging {/*automated-purging*/}
 
@@ -140,17 +148,34 @@ Here is an example script you can add to your `package.json` to handle cache cle
 
 These scripts assume that you have created environments called "production", "staging", and "development and you have created a deploy key for your site and added it as a secret in your repo called "{{ PRODUCT_NAME_LOWER }}\_deploy_token".
 
-```js
-  "scripts": {
-    ...
-    "clearcache:dev": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:stage": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=staging --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=production --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod:pdps": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod:plps": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    ...
-  },
-```
+
+<SnippetGroup>
+
+    ```js tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
+      "scripts": {
+        ...
+        "clearcache:dev": "{{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        "clearcache:stage": "{{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my{{ PRODUCT_NAME }}App --environment=staging --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        "clearcache:prod": "{{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my{{ PRODUCT_NAME }}App --environment=production --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        "clearcache:prod:pdps": "{{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        "clearcache:prod:plps": "{{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        ...
+      },
+    ```
+
+    ```js tabLabel="Version 7.2.1 or lower"
+      "scripts": {
+        ...
+        "clearcache:dev": "{{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        "clearcache:stage": "{{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my{{ PRODUCT_NAME }}App --environment=staging --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        "clearcache:prod": "{{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my{{ PRODUCT_NAME }}App --environment=production --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        "clearcache:prod:pdps": "{{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        "clearcache:prod:plps": "{{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        ...
+      },
+    ```
+
+</SnippetGroup>
 
 ### GitHub Actions {/*github-actions*/}
 

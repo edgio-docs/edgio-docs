@@ -10,55 +10,42 @@ Each request for your content will generate a response from a server. This respo
 
 ## Protocol and Version {/*protocol-and-version*/}
 
-Identifies the network protocol and version (e.g., HTTP/1.1) used to transmit the response to the client. This protocol and version typically matches the one defined in the request. If an invalid protocol or version was requested, then the response will return a `505 HTTP Version Not Supported`.
+By default, {{ PRODUCT }} communicates with your origin and clients using the HTTP protocol version (i.e., HTTP/1.0 or HTTP/1.1) defined in the request. However, the HTTP/2 protocol is solely used to communicate between our network and the client. This means that HTTP/2 requests that result in a cache miss will be forwarded to an origin server using the HTTP/1.1 protocol.
+
+If a client requests an invalid protocol or version, then {{ PRODUCT }} will return a `505 HTTP Version Not Supported` response.
 
 ## Status Codes {/*status-codes*/}
 
-[HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) are how the web signals errors and other states from the server to the web browser. If there is an error from your backend website, the error is simply forwarded by {{ PRODUCT_NAME }} to the browser.
+<a id="exclusive-status-codes"></a><a id="standard-status-codes"></a>[HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) are how the web signals errors and other states from the server to the web browser. If there is an issue with the request, {{ PRODUCT }} will either forward the error from the origin or respond with one of the following response codes:
 
-### {{ PRODUCT_NAME }} exclusive status codes {/*exclusive-status-codes*/}
-
-If the error is generated in {{ PRODUCT_NAME }} itself, the platform generates a 53x or 54x HTTP status code:
-
-| CODE | NAME                                   | DESCRIPTION                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| ---- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 530  | Internal {{ PRODUCT_NAME }} Error      | Unexpected error in {{ PRODUCT_NAME }}. Please contact [support]({{ HELP_URL }}) immediately.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| 531  | Project Upstream Connection Error | Your project failed to establish an upstream connection. This is different from 536 where your project timed out waiting for a response from the upstream. Common causes are the upstream host you specified in your project is incorrect, the DNS entry you defined points to the wrong server, your servers are not responding, or you need to add the {{ PRODUCT_NAME }} IP addresses to your allowlist. (Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses) to your server's IP allowlist.) |
-| 532  | Project Response Too Large             | Your project returned a response size greater than the allowed 6MB.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| 533  | Project Upstream TLS Error             | The was an error negotiating a secure TLS connection with the upstream. Common causes are the host name provided does not match the name in the upstream TLS certificate, or the upstream TLS certificate has expired.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| 534  | Project Error                          | Your project's serverless code has failed unexpectedly or has issued a malformed response. Use [server logs](/guides/logs/server_logs) to debug.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| 535  | Unknown Project                        | The HTTP header `host` is missing or does not match any {{ PRODUCT_NAME }} deployment. Check your requesting URL and your project config.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| <a id="536"></a> 536  | Project HTTP Response Timeout          | {{ PRODUCT_NAME }} did not receive an HTTP response from the upstream. Common causes are the upstream dropped the connection prematurely, the upstream application threw an exception, and the upstream took too long to respond.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| 537  | Project DNS Resolution Error           | Failed to resolve the host name through DNS, which might indicate a problem with your DNS provider or incorrectly configured domain name.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| 538  | Project Request Loop                   | The {{ PRODUCT_NAME }} project exceeded the maximum level (3) of nested {{ PRODUCT_NAME }} requests. "Nested" means an {{ PRODUCT_NAME }} site is the upstream of itself or of another {{ PRODUCT_NAME }} site.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| 539  | Project Timeout                        | The 539 status code is primarily caused by timeouts, but can also be caused by lack of allow lists (white lists) configured on your backend server. **Timeouts:** Your project's serverless code did not respond on time, either due to slow or blocking upstream or to badly handled asynchronous requests in code (e.g. missing `await` or call to `callback`). **Troubleshooting:** You can view the timings and status codes of the components in the stack in the [{{ HEADER_PREFIX }}-t header](#-t-response-header). Use [server logs](/guides/logs/server_logs) and [performance profiling](/guides/performance/observability#tracking-your-own-timings) to debug. You can also debug using information in [Troubleshooting 539 Status Codes](/guides/performance/troubleshooting#troubleshooting-539-status-codes), which includes information about detecting allow list errors. |
-| 540  | Out of Memory                          | Your project's serverless code caused an out-of-memory situation. Use [server logs](/guides/logs/server_logs) to debug and lower the memory use.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| 541  | {{ PRODUCT_NAME }} Out of Workers      | The traffic was so high that the request could not be scheduled for processing within the scheduling timeout. Please contact [support]({{ SUPPORT_URL }}) to upgrade your account.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| 542  | Project Header Overflow                | The {{ PRODUCT_NAME }} project's request or response had too many HTTP headers. See [limits](/guides/performance/limits)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| 543  | Global Upstream Timeout                | The request failed to propagate between {{ PRODUCT_NAME }} edge and the Origin Shield POP. Please contact [support]({{ HELP_URL }}).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| 544  | Invalid Host Header                    | The {{ PRODUCT_NAME }} received a value in `host` header that is not a valid domain name.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| 545  | {{ PRODUCT_NAME }} Component Not Ready | An unprepared {{ PRODUCT_NAME }} component received traffic. Please contact [support]({{ HELP_URL }}) immediately.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| 546  | {{ PRODUCT_NAME }} Origin Shield POP TLS Error | The was an error negotiating a secure TLS connection with the {{ PRODUCT_NAME }} Origin Shield POP. Please contact [support]({{ HELP_URL }}) immediately. |
-| 547  | {{ PRODUCT_NAME }} Origin Shield POP No HTTP Response | {{ PRODUCT_NAME }} did not receive an HTTP response from the Origin Shield POP. Please contact [support]({{ HELP_URL }}) immediately. |
-| 548  | {{ PRODUCT_NAME }} Origin Shield POP DNS Resolution Error | {{ PRODUCT_NAME }} failed to resolve the Origin Shield POP's host name through DNS. Please contact [support]({{ HELP_URL }}) immediately. |
-
+| CODE                                                          | NAME                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | DESCRIPTION                                                                                                                                                                                                                       |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 400 Bad Request                                               | The URL is too long or the request headers are too large. [View request limits.](/guides/performance/limits#request-and-response-limits) |
+| [404 Not Found](/guides/performance/troubleshooting#404-not-found) | The server could not find the requested resource. |
+| 412 Precondition Failed                                       | The requested content was not prefetched because it was not cached on the POP closest to the client. {{ PRODUCT }} only prefetches cached content. |
+| 505 HTTP Version Not Supported                                | An invalid HTTP protocol or version was requested. |
+| 530 Internal {{ PRODUCT }} Error                              | Unexpected error. {{ CONTACT_SUPPORT }} |
+| [531 Project Upstream Connection Error](/guides/performance/troubleshooting#531-project-upstream-connection-error)                         | {{ PRODUCT }} could not establish a connection to your origin. |
+| 532 Project Response Too Large                                | The response from the {{ PRODUCT }} cloud exceeded the [maximum response body limit](/guides/performance/limits#request-and-response-limits). |
+| 533 Project Upstream TLS Error                                | There was an error negotiating a secure TLS connection with the origin. Check whether the upstream TLS certificate has expired and whether the provided host name matches the upstream TLS certificate. |
+| 534 Project Error                                             | Your project's serverless code has failed unexpectedly or has issued a malformed response. Use [server logs](/guides/logs/server_logs) to debug. |
+| 535 Unknown Project                                           | The `host` header is missing or does not match any {{ PRODUCT }} deployment. Check the request and your project configuration. |
+| <a id="536"></a>536 Project HTTP Response Timeout             | {{ PRODUCT }} did not receive an HTTP response from the upstream. Common causes are the upstream dropped the connection prematurely, the upstream application threw an exception, and the upstream took too long to respond. |
+| 537 Project DNS Resolution Error                              | Failed to resolve the host name through DNS, which might indicate a problem with your DNS provider or an incorrectly configured domain. |
+| 538 Project Request Loop                                      | The {{ PRODUCT }} project exceeded the maximum level (3) of nested {{ PRODUCT }} requests. A request is nested when the {{ PRODUCT }} property is the upstream of itself or of another {{ PRODUCT }} property. |
+| [539 Project Timeout](/guides/performance/troubleshooting#troubleshooting-539-status-codes) | This status code is primarily caused by timeouts, but can also be caused by a lack of allowlists (whitelists) configured on your web server(s). |
+| 540 Out of Memory                                             | An {{ PRODUCT }} cloud worker ran out of memory when processing your project's serverless code. Use [server logs](/guides/logs/server_logs) to debug and lower memory usage. |
+| 541 {{ PRODUCT }} Out of Workers                              | A request could not be scheduled for processing due to the amount of traffic on your website. {{ ACCOUNT_UPGRADE }} |
+| 542 Project Header Overflow                                   | The {{ PRODUCT }} project's request or response contained too many HTTP headers. [View request limits.](/guides/performance/limits#request-and-response-limits) |
+| 543 Global Upstream Timeout                                   | The request failed to propagate between the edge of our network and the Origin Shield POP. {{ CONTACT_SUPPORT }} |
+| 544 Invalid Host Header                                       | The `host` header is set to an invalid domain. |
+| 545 {{ PRODUCT }} Component Not Ready                         | An unprepared {{ PRODUCT }} component received traffic.  {{ CONTACT_SUPPORT }} |
+| 546 {{ PRODUCT }} Origin Shield POP TLS Error                 | There was an error negotiating a secure TLS connection with the Origin Shield POP.  {{ CONTACT_SUPPORT }} |
+| 547 {{ PRODUCT }} Origin Shield POP No HTTP Response          | {{ PRODUCT }} did not receive an HTTP response from the Origin Shield POP.  {{ CONTACT_SUPPORT }} |
+| 548 {{ PRODUCT }} Origin Shield POP DNS Resolution Error      | {{ PRODUCT }} failed to resolve the Origin Shield POP's host name through DNS.  {{ CONTACT_SUPPORT }} |
 <!--
-| 549 | {{ PRODUCT_NAME }} Captcha Served | Indicates that {{ PRODUCT_SECURITY_ADVANCED_BOT }} flagged a request as potential bot traffic. As a result, {{ PRODUCT }} served a CAPTCHA challenge instead of your site. Only visitors that can solve this challenge will be allowed to proceed to your site. |
+| 549{{ PRODUCT }} Captcha Served | Indicates that {{ PRODUCT_SECURITY_ADVANCED_BOT }} flagged a request as potential bot traffic. As a result, {{ PRODUCT }} served a CAPTCHA challenge instead of your site. Only visitors that can solve this challenge will be allowed to proceed to your site. |
 -->
-
-Obviously, your project can set status codes of their own, which may sometimes match codes above. We encourage you to avoid setting your own status code so as to lower troubleshooting overhead and other issues.
-
-<a id="standard-status-codes"></a>
-
-### Standard status codes used by {{ PRODUCT_NAME }} itself {/*standard-status-codes-used-by-itself*/}
-
-{{ PRODUCT_NAME }} also issues these standard response codes:
-
-| CODE | NAME                | DESCRIPTION                                                                                                                                                                                                                                                                                    |
-| ---- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 400  | Bad Request         | The URL is too long or the request headers are too large. See [limits](/guides/performance/limits)                                                                                                                                                                                                         |
-| 404  | Not Found           | The server cannot find the requested resource. This usually occurs when the browser requests a page that your app does not have. A 404 will also occur when a request does not match any of the routes in your {{ PRODUCT_NAME }} router. [Learn more.](/guides/performance/cdn_as_code). |
-| 412  | Precondition Failed | This code is returned when the query string parameter `{{ COOKIE_PREFIX }}_prefetch` equals `1` and the content was not found in the edge cache.                                                                                                                                               |
 
 ## Response Headers {/*response-headers*/}
 
@@ -92,7 +79,7 @@ Common response headers are described below.
 
     </Callout>
 
--   **Cache-Control: max-age:** Indicates the maximum length of time that a request is considered fresh. An edge server can serve fresh content directly from cache without having to perform a revalidation with the origin server. <!--Default value: 604800 The default value indicates that the max-age for the requested content is 7 days Max-age is defined in seconds. 604800 seconds = 7 days.-->
+-   **Cache-Control: max-age:** Indicates the maximum length of time that a request is considered fresh. An edge server can serve fresh content directly from cache without having to perform a revalidation with the origin server. 
 -   **Content-Encoding:** Indicates that a compressed version of the requested content was served to the client. This response header indicates the asset's compression type (e.g., gzip, deflate, bzip2, etc.).
 -   **Content-Length:** Indicates the size of the response body in octets.
 -   **Content-Type:** Indicates the media type (aka content type) for the response body.
@@ -114,7 +101,7 @@ Common response headers are described below.
 
     <a id="server-timing-response-header" />
 
--   **Server-Timing:** {{ PRODUCT }} returns this response header when the [Server-Timing Header feature](/guides/performance/rules/features#server-timing-header) has been enabled. The `Server-Timing` response header contains cache status information and information about the POP that served the response. 
+-   **Server-Timing:** This response header contains cache status information and information about the POP that served the response. 
 
     **Syntax:** `server-timing: edgio_cache;desc=<CACHE STATUS CODE>,edgio_pop;desc=<POP>,edgio_country;desc=<COUNTRY>`
 
@@ -156,7 +143,7 @@ Common response headers are described below.
     **Example:** `x-cache: HIT`
 
 -  **x-ec-debug:** Contains the requested debug cache metadata when the [Debug Header feature](/guides/performance/rules/features#debug-header) has been enabled. [Learn more.](#requesting-debug-cache-information)
--   **{{ HEADER_PREFIX }}-aws-region:** Indicates the [AWS region](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions) from which a Serverless request was served. 
+-   **{{ HEADER_PREFIX }}-aws-region:** Indicates the [AWS region](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions) from which a request to the {{ PRODUCT }} cloud was served. 
 <!--
 -   **{{ HEADER_PREFIX }}-caching-status:** Indicates cache status information. If the response was not cached or served from cache, then it will report the reason why it was not cached.
 
@@ -166,7 +153,7 @@ Common response headers are described below.
 
     [Learn more.](/guides/performance/caching#why-is-my-response-not-being-cached)
 -->
--   **{{ HEADER_PREFIX }}-components:** Contains Serverless information that is primarily meant for internal use when troubleshooting issues.
+-   **{{ HEADER_PREFIX }}-components:** Contains {{ PRODUCT }} cloud information that is primarily meant for internal use when troubleshooting issues.
 -   **{{ HEADER_PREFIX }}-hit-request-id:** For responses served from cache, this header indicates the unique ID of the request that was cached on our CDN.
     <a id="-mr" />
 	
@@ -197,11 +184,11 @@ Common response headers are described below.
 
     **Example:** `{{ HEADER_PREFIX }}-p: 1`
 
--   **{{ HEADER_PREFIX }}-platform-aws-account:** Identifies the AWS account corresponding to the Serverless worker that processed a request.
+-   **{{ HEADER_PREFIX }}-platform-aws-account:** Identifies the AWS account corresponding to the cloud worker that processed a request.
 -   **{{ HEADER_PREFIX }}-request-id:** Indicates the request's unique ID.
--   **{{ HEADER_PREFIX }}-status]:** Contains a comma-delimited list of HTTP status codes for each Serverless component that processed the request.
-    -   **p**: Serverless load balancer
-    -   **w**: Serverless worker
+-   **{{ HEADER_PREFIX }}-status]:** Contains a comma-delimited list of HTTP status codes for each cloud component that processed the request.
+    -   **p**: Cloud load balancer
+    -   **w**: Cloud worker
 
     **Example:** `{{ HEADER_PREFIX }}-status: p=200,w=200`
 	
@@ -209,7 +196,7 @@ Common response headers are described below.
 
     [Learn more.](/guides/performance/caching/purging#surrogate-keys-cache-tags)
 
--   [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements and cache status information for Serverless requests ({{ PRODUCT }} {{ PLATFORM }} and Serverless Compute).
+-   [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements and cache status information for {{ PRODUCT }} cloud requests ({{ PRODUCT }} {{ PRODUCT_PLATFORM }} and Cloud Functions).
 
 -   **{{ HEADER_PREFIX }}-version:** Indicates basic information for your current deployment.
 
@@ -353,7 +340,7 @@ The following abbreviations are used for time units:
 
 ### {{ HEADER_PREFIX }}-t Response Header {/*-t-response-header*/}
 
-The {{ HEADER_PREFIX }}-t response header is solely returned for Serverless requests ({{ PRODUCT }} {{ PLATFORM }} and Serverless Compute). It contains time measurements for each Serverless component. 
+The {{ HEADER_PREFIX }}-t response header is solely returned for {{ PRODUCT }} cloud requests ({{ PRODUCT }} {{ PRODUCT_PLATFORM }} and Cloud Functions). It contains time measurements for each cloud component. 
 
 **Syntax:**
 
@@ -361,25 +348,25 @@ The {{ HEADER_PREFIX }}-t response header is solely returned for Serverless requ
 
 Valid values are:
 
--   **pt**: Serverless load balancer time. Indicates the total time, in milliseconds, it took to process the Serverless request. This metric measures the time between when the Serverless load balancer receives the request and when it sends a response to the client.
--   **pc**: Serverless load balancer counter. Indicates the number of requests generated by the Serverless load balancer. A value greater than `1` indicates that the load balancer had to scale the request by adding it to a queue and then resubmitting it. This occurs due to low available compute capacity.
--   **pf**: Serverless load balancer fetch time. Indicates the total time, in milliseconds, it took to fetch a response from a Serverless worker. Specifically, it measures the amount of time between when the Serverless load balancer forwards a request to a Serverless worker and when it receives a response.
--   **wbt**: Serverless worker billed time. Indicates the total billed time in milliseconds. This measurement may be higher than `wt`, since it includes Serverless workload time and time spent capturing Serverless log data.
--   **wbm**: Serverless worker billed memory. Indicates billed memory usage in Megabytes. This metric measures memory allocated to the Serverless worker.
--   **wm**: Serverless worker memory. Indicates actual Serverless worker memory usage in Megabytes.
--   **wt**: Serverless worker time. Indicates the total time, in milliseconds, it took for the Serverless worker to generate a response.
--   **wc**: Serverless worker count. Indicates the number of times that a Serverless worker was invoked for this request.
--   **wg**: Serverless worker age. Indicates the amount of time, in milliseconds, that the instance of the Serverless worker that processed the request has been running.
--   **wl**: Serverless worker lifetime. Indicates the total processing time, in milliseconds, for all Serverless workers for all requests.
+-   **pt**: Cloud load balancer time. Indicates the total time, in milliseconds, it took to process the cloud request. This metric measures the time between when the cloud load balancer receives the request and when it sends a response to the client.
+-   **pc**: Cloud load balancer counter. Indicates the number of requests generated by the cloud load balancer. A value greater than `1` indicates that the load balancer had to scale the request by adding it to a queue and then resubmitting it. This occurs due to low available compute capacity.
+-   **pf**: Cloud load balancer fetch time. Indicates the total time, in milliseconds, it took to fetch a response from a cloud worker. Specifically, it measures the amount of time between when the cloud load balancer forwards a request to a cloud worker and when it receives a response.
+-   **wbt**: Cloud worker billed time. Indicates the total billed time in milliseconds. This measurement may be higher than `wt`, since it includes cloud workload time and time spent capturing cloud log data.
+-   **wbm**: Cloud worker billed memory. Indicates billed memory usage in Megabytes. This metric measures memory allocated to the cloud worker.
+-   **wm**: Cloud worker memory. Indicates actual cloud worker memory usage in Megabytes.
+-   **wt**: Cloud worker time. Indicates the total time, in milliseconds, it took for the cloud worker to generate a response.
+-   **wc**: Cloud worker count. Indicates the number of times that a cloud worker was invoked for this request.
+-   **wg**: Cloud worker age. Indicates the amount of time, in milliseconds, that the instance of the cloud worker that processed the request has been running.
+-   **wl**: Cloud worker lifetime. Indicates the total processing time, in milliseconds, for all cloud workers for all requests.
 <!--
--   **pu:** Serverless load balancer upstream fetch time. Indicates the total time, in milliseconds, it took to fetch a response from an origin. Specifically, it measures the amount of time between when the Serverless load balancer forwards a request to an origin and when it receives a response.
--   **wa:** Indicates the `transformRequest` time, in milliseconds, as measured by a Serverless worker.
--   **wp:** Indicates the fetch or proxy time, in milliseconds, as measured by a Serverless worker.
--   **wr:** Indicates the amount of time, in milliseconds, that the Serverless worker spent evaluating the route through which this request will be processed.
+-   **pu:** Cloud load balancer upstream fetch time. Indicates the total time, in milliseconds, it took to fetch a response from an origin. Specifically, it measures the amount of time between when the cloud load balancer forwards a request to an origin and when it receives a response.
+-   **wa:** Indicates the `transformRequest` time, in milliseconds, as measured by a cloud worker.
+-   **wp:** Indicates the fetch or proxy time, in milliseconds, as measured by a cloud worker.
+-   **wr:** Indicates the amount of time, in milliseconds, that the cloud worker spent evaluating the route through which this request will be processed.
 -   **wz:** If the route uses `transformResponse`, then this metric measures the `transformResponse` time in milliseconds.
 -->
 
-**Example:** The following sample {{ HEADER_PREFIX }}-t response header is for a Serverless Compute request:
+**Example:** The following sample {{ HEADER_PREFIX }}-t response header is for a Cloud Functions request:
 
 `{{ HEADER_PREFIX }}-t: pt=2202,pc=1,pf=2201,wbt=1379,wbm=896,wm=162,wt=1062,wc=1,wg=1320,wl=1062`
 
@@ -387,22 +374,22 @@ We will now examine each metric defined within the above sample response header:
 
 | Value | Description |
 | -------------- | -------------- |
-| `pt=2202`   | Indicates the total time from a Serverless load balancer was 2,202 milliseconds.                    |
-| `pc=1`     | Indicates the request count for a Serverless load balancer was 1.                                 |
-| `pf=2201`   | Indicates the fetch time from a Serverless load balancer was 2,201 milliseconds.                 |
-| `wbt=1379`  | Indicates that billed time for Serverless was 1,379 milliseconds.                                |
-| `wbm=896`  | Indicates that billed memory for Serverless was 896 Megabytes.                                |
-| `wm=162`   | Indicates that memory usage for a Serverless worker was 162 Megabytes. |
-| `wt=1062`   | Indicates that the workload time for a Serverless worker was 1,062 milliseconds.          |
-| `wc=1`    | Indicates that this instance of Serverless was invoked 1 time.                    |
-| `wg=1320`| Indicates that this instance of Serverless has been running for 1,320 seconds.                         |
-| `wl=1062` | Indicates that the  total processing time for all Serverless workers for all requests is 1,062 milliseconds. |
+| `pt=2202`   | Indicates the total time from a cloud load balancer was 2,202 milliseconds.                    |
+| `pc=1`     | Indicates the request count for a cloud load balancer was 1.                                 |
+| `pf=2201`   | Indicates the fetch time from a cloud load balancer was 2,201 milliseconds.                 |
+| `wbt=1379`  | Indicates that billed time for the {{ PRODUCT }} cloud was 1,379 milliseconds.                                |
+| `wbm=896`  | Indicates that billed memory for {{ PRODUCT }} cloud was 896 Megabytes.                                |
+| `wm=162`   | Indicates that memory usage for a cloud worker was 162 Megabytes. |
+| `wt=1062`   | Indicates that the workload time for a cloud worker was 1,062 milliseconds.          |
+| `wc=1`    | Indicates that this instance of {{ PRODUCT }} cloud was invoked 1 time.                    |
+| `wg=1320`| Indicates that this instance of {{ PRODUCT }} cloud has been running for 1,320 seconds.                         |
+| `wl=1062` | Indicates that the  total processing time for all cloud workers for all requests is 1,062 milliseconds. |
 
 <a id="serverless-compute-cold-start-timing"></a>
 
-## Serverless  - Cold Start Timing {/*serverless-cold-start-timing*/}
+## Cloud  - Cold Start Timing {/*serverless-cold-start-timing*/}
 
-To calculate the Serverless cold start timing you must take the difference between `pf` and `wt` in the `{{ HEADER_PREFIX }}-t` header. `wt` is time taken for the Serverless worker to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. To [track timings](/guides/performance#tracking-your-own-timings) for a function, it is possible to add specific code to do that.
+To calculate the Cloud cold start timing you must take the difference between `pf` and `wt` in the `{{ HEADER_PREFIX }}-t` header. `wt` is time taken for the Cloud worker to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. To [track timings](/guides/performance#tracking-your-own-timings) for a function, it is possible to add specific code to do that.
 
 Based on the example above, that would be `809 (pf) - 722 (wt) = 87ms`.
 

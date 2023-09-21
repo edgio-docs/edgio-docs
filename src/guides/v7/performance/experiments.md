@@ -2,7 +2,7 @@
 title: Experimentation
 ---
 
-Experimentation allows you to apply different website experiences to your clients. Typically, it is used for canary releases, trunk-based development, dark releases, feature releases, and segmented releases. 
+Experimentation allows you to serve different website experiences to your clients. Typically, it is used for canary releases, trunk-based development, dark releases, feature releases, and segmented releases. 
 
 **Sample Use Cases:**
 
@@ -20,7 +20,7 @@ Set up your experiments through the following steps:
 
 ## How Does It Work? {/*how-does-it-work*/}
 
-If a request satisfies the criteria for one or more experiments, it is assigned the `x-edg-experiments` cookie. This cookie identifies each variant of an experiment that has been assigned to the client. A variant identifies the set of actions that will be applied to the request. This cookie will persist until your experiment configuration changes. 
+If a request satisfies the criteria for one or more experiments, it is assigned the `{{ HEADER_PREFIX }}-experiments-info` cookie. This cookie identifies each variant of an experiment that has been assigned to the client. A variant identifies the set of actions that will be applied to the request. This cookie will persist until your experiment configuration changes. 
 
 ## {{ HEADER_PREFIX }}-experiments-info Cookie {/*-experiments-cookie*/}
 
@@ -35,7 +35,7 @@ The above variables are defined below:
 -   `<VARIANT>`**:** The name of the variant.
 -   `<VARIANT ID>`**:** The variant's system-defined ID.
 
-If multiple experiments have been applied to the client, then each one will be delimited by a comma.
+If multiple experiments have been applied to the client, then they will be delimited by a comma.
 
 **Sample {{ HEADER_PREFIX }}-experiments-info Cookie:**
 
@@ -161,6 +161,6 @@ You may create, enable, disable, and delete experiments.
 
     {{ ENV_NAV }} **Experimentation**.
 
-2.  Click on the <Image inline src="/images/v7/icons/delete-4.png" alt="Delete" /> icon next to the desired experiment.
+2.  Click on the <Image inline src="/images/v7/icons/delete-5.png" alt="Delete" /> icon next to the desired experiment.
 3.  When prompted, confirm the deletion by clicking **Delete experiment**.
 4.  Click  **Deploy Changes**.

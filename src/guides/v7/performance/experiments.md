@@ -20,26 +20,18 @@ Set up your experiments through the following steps:
 
 ## How Does It Work? {/*how-does-it-work*/}
 
-If a request satisfies the criteria for one or more experiments, it is assigned the `{{ HEADER_PREFIX }}-experiments-info` cookie. This cookie identifies each variant of an experiment that has been assigned to the client. A variant identifies the set of actions that will be applied to the request. This cookie will persist until your experiment configuration changes. 
+Once you have deployed at least one experiment, then all clients will be assigned a value from 0 - 99 through the `{{ HEADER_PREFIX }}-experiments` cookie. This value will persist until the client clears their cookies. If the client satisfies an experiment's criteria, then this value determines the variant to which it will be assigned. 
 
-## {{ HEADER_PREFIX }}-experiments-info Cookie {/*-experiments-cookie*/}
+If a request satisfies the criteria for one or more experiments, it is assigned the `{{ HEADER_PREFIX }}-experiments-info` cookie. This cookie identifies each variant of an experiment that has been assigned to the client. A variant identifies the set of actions that will be applied to the request. This cookie will persist until your experiment configuration changes or the client clears their cookies. 
 
-The `{{ HEADER_PREFIX }}-experiments-info` cookie identifies the variants that have been assigned to a client. It uses the following syntax for each variant that has been assigned to a client:
+## Experimentation Cookies {/*experimentation-cookies*/}
 
-`%22<EXPERIMENT>_<BUCKET>%22:%22<VARIANT>_<VARIANT ID>%22`
+Experimentation assigns the `{{ HEADER_PREFIX }}-experiments` and the `{{ HEADER_PREFIX }}-experiments-info` cookie to each client.
 
-The above variables are defined below:
-
--   `<EXPERIMENT>`**:** The name of the experiment.
--   `<BUCKET>`**:** The system-defined ID of the bucket assigned to the client.
--   `<VARIANT>`**:** The name of the variant.
--   `<VARIANT ID>`**:** The variant's system-defined ID.
-
-If multiple experiments have been applied to the client, then they will be delimited by a comma.
-
-**Sample {{ HEADER_PREFIX }}-experiments-info Cookie:**
-
-`{{ HEADER_PREFIX }}-experiments-info=%7B%22Landing_page_1238476236%22:%22New_landing_page_816213%22,%22Banner_8123712%22:%22Existing_banner_712312%22%7D`
+| Cookie                                 | Description                                                                                                                                                                                                             |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `{{ HEADER_PREFIX }}-experiments`      | This cookie assigns a value from 0 - 99 to a client. Once a client has been assigned a number, it will persist. This allows you to slowly ramp up traffic sent to a particular variant. <br />**Sample Cookie:** <br /> `{{ HEADER_PREFIX }}-experiments=27` |
+| `{{ HEADER_PREFIX }}-experiments-info` | This cookie assigns variants to a client. It uses the following syntax for each variant that has been assigned to a client: <br />`%22<EXPERIMENT>_<BUCKET>%22:%22<VARIANT>_<VARIANT ID>%22` <br />The above variables are defined below: <ul><li>`<EXPERIMENT>`**:** The name of the experiment.</li><li>`<BUCKET>`**:** The system-defined ID of the bucket assigned to the client.</li><li>`<VARIANT>`**:** The name of the variant. If the client has not been assigned to a variant, then it will return `null` instead of `<VARIANT>_<VARIANT_ID>`. </li><li>`<VARIANT ID>`**:** The variant's system-defined ID.</li></ul>If multiple experiments have been applied to the client, then they will be delimited by a comma. <br />**Sample Cookie:** <br />`{{ HEADER_PREFIX }}-experiments-info=%7B%22Landing_page_1238476236%22:%22New_landing_page_816213%22,%22Banner_8123712%22:%22Existing_banner_712312%22%7D`|
 
 ## Experiments {/*experiments*/}
 
@@ -114,7 +106,7 @@ You may create, enable, disable, and delete experiments.
     
         <Callout type="info">
 
-          The traffic percentage defined for all variants must add up to 100%. For example, if you have 3 variants and you have assigned 33% to 2 of them, then the third variant must be assigned 34% (33% + 33% + 34% = 100). 
+          The traffic percentage defined for all variants defined within a specific experiment must add up to 100%. For example, if you have 3 variants and you have assigned 33% to 2 of them, then the third variant must be assigned 34% (33% + 33% + 34% = 100). 
         
         </Callout>
 
@@ -136,11 +128,26 @@ You may create, enable, disable, and delete experiments.
 
 <Callout type="important">
 
-  Once you have deployed an experiment, it cannot be changed. 
+  Once you have deployed an experiment, you may only modify how traffic is distributed between variants. 
   
-  If you must modify a deployed experiment, then you will need to recreate it and then delete the old experiment.
+  If you must modify a deployed experiment's criteria, variables, or actions, then you will need to recreate it and then delete the old experiment.
 
 </Callout>
+
+**To modify an experiment's traffic distribution**
+1.  Load the **Experimentation** page.
+
+    {{ ENV_NAV }} **Experimentation**.
+
+2.  Modify the desired variant's traffic percentage.
+
+    1.  Expand the desired experiment.
+    2.  Find the desired variant and set its **Percentage** option to the desired percentage of this experiment's traffic.
+    3.  Repeat the previous step for each of the experiment's variants. 
+    
+        Make sure that the sum of the traffic percentages assigned to all variants within that experiment add up to 100%.
+
+3.  Apply your changes by clicking **Deploy Changes**.
 
 **To enable or disable an experiment's status**
 

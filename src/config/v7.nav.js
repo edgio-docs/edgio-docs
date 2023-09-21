@@ -612,6 +612,10 @@ const nav = {
             },
           ],
         },
+        {
+          title: 'Upgrading Edgio Packages',
+          path: 'develop/upgrading_packages',
+        },
       ],
     },
     {

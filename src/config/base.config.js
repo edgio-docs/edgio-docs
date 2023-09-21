@@ -115,7 +115,7 @@ yarn global add ${PACKAGE_NAME}/cli
 </SnippetGroup>
 `;
 
-const CONTACT_SUPPORT = `Contact our [technical customer support](${ HELP_URL }).`;
+const CONTACT_SUPPORT = `Contact our [technical customer support](${HELP_URL}).`;
 
 const SECURITY_NAV = `1.  From the ${PORTAL_LINK}, select the desired organization. 
     2.  From the **Security** section, click `;

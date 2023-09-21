@@ -134,7 +134,7 @@ const nav = {
           path: 'performance/prefetching',
         },
         {
-          title: 'Experiments',
+          title: 'Experimentation',
           path: 'performance/experiments',
         },
         {

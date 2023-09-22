@@ -28,7 +28,7 @@ If a request satisfies the criteria for one or more experiments, it is assigned 
 
 Experimentation assigns the `{{ HEADER_PREFIX }}-experiments` and the `{{ HEADER_PREFIX }}-experiments-info` cookie to each client.
 
-#### {{ HEADER_PREFIX }}-experiments Cookie
+#### {{ HEADER_PREFIX }}-experiments Cookie {/*-experiments-cookie*/}
 
 This cookie assigns a value from 0 - 99 to a client. Once a client has been assigned a number, it will persist. This allows you to slowly ramp up traffic sent to a particular variant. 
 
@@ -36,7 +36,7 @@ This cookie assigns a value from 0 - 99 to a client. Once a client has been assi
 
 `{{ HEADER_PREFIX }}-experiments=27`
 
-#### {{ HEADER_PREFIX }}-experiments-info Cookie
+#### {{ HEADER_PREFIX }}-experiments-info Cookie {/*-experiments-info-cookie*/}
 
 This cookie assigns variants to a client. It uses the following syntax for each variant that has been assigned to a client:
 

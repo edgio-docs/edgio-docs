@@ -20,7 +20,7 @@ Set up your experiments through the following steps:
 
 ## How Does It Work? {/*how-does-it-work*/}
 
-Once you have deployed at least one experiment, then all clients will be assigned a value from 0 - 99 through the `{{ HEADER_PREFIX }}-experiments` cookie. This value will persist until the client clears their cookies. If the client satisfies an experiment's criteria, then this value determines the variant to which it will be assigned. 
+Once you have deployed at least one experiment, then each client will be assigned a value from 0 - 99 through the `{{ HEADER_PREFIX }}-experiments` cookie. This value will persist until the client clears their cookies. If the client satisfies an experiment's criteria, then this value determines the variant to which it will be assigned. 
 
 If a request satisfies the criteria for one or more experiments, it is assigned the `{{ HEADER_PREFIX }}-experiments-info` cookie. This cookie identifies each variant of an experiment that has been assigned to the client. A variant identifies the set of actions that will be applied to the request. This cookie will persist until your experiment configuration changes or the client clears their cookies. 
 
@@ -118,7 +118,7 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 
     3.  Define how a request will be compared against a value or state. In some cases, this involves selecting a [comparison operator](/guides/performance/rules/operators) and defining the value that will be compared against the request.
     4.  Click **Add Condition**.
-    5.  Optional. Add another match criterion by repeating steps 4.1 - 4.4. Repeat this step as needed.
+    5.  Optional. Add another match criterion by repeating steps 4.i - 4.iv. Repeat this step as needed.
 5.  Define two or more variants.
     1.  From the **Name** option, assign a name to this variant. 
 
@@ -138,13 +138,13 @@ You may create, enable, disable, and delete experiments. You may also adjust the
         2.  Select the desired [feature](/guides/performance/rules/features). 
         3.  Configure the selected feature.
         4.  Click **Add Feature**.
-        5.  Optional. Add another action by repeating steps 5.3.1 - 5.3.4. Repeat this step as needed.
+        5.  Optional. Add another action by repeating steps 5.iii.a - 5.iii.d. Repeat this step as needed.
 
-    4.  Configure the second variant by repeating steps 5.1 - 5.3.
+    4.  Configure the second variant by repeating steps 5.i - 5.iii.
     5.  Optional. Add and configure another variant. Repeat this step as needed.
 
         1. Click **+ Add Variant**.
-        2. Repeat steps 5.1 - 5.3.
+        2. Repeat steps 5.i - 5.iii.
 
 6.  Apply your experiment(s) to your traffic by clicking **Deploy Changes**.
 

@@ -69,8 +69,8 @@
         "tags": [
           "environment-variables"
         ],
-        "summary": "Read environment variable",
-        "description": "Read environment variable",
+        "summary": "Read Environment Variable",
+        "description": "Read an environment variable.",
         "operationId": "getConfigV01EnvironmentVariablesEnvironmentVariableId",
         "parameters": [
           {
@@ -84,7 +84,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Read environment variable",
+            "description": "Read an environment variable.",
             "content": {
               "application/json": {
                 "schema": {
@@ -94,7 +94,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -124,7 +124,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -134,7 +134,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -149,8 +149,8 @@
         "tags": [
           "environment-variables"
         ],
-        "summary": "Delete environment variable",
-        "description": "Delete environment variable",
+        "summary": "Delete Environment Variable",
+        "description": "Delete an environment variable.",
         "operationId": "deleteConfigV01EnvironmentVariablesEnvironmentVariableId",
         "parameters": [
           {
@@ -164,7 +164,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Delete environment variable",
+            "description": "Delete an environment variable.",
             "content": {
               "application/json": {
                 "schema": {
@@ -174,7 +174,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -204,7 +204,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -214,7 +214,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -231,14 +231,14 @@
         "tags": [
           "environment-variables"
         ],
-        "summary": "List environment variables",
-        "description": "List environment variables",
+        "summary": "Get All Environment Variables",
+        "description": "Returns all environment variables associated with an environment.",
         "operationId": "getConfigV01EnvironmentVariables",
         "parameters": [
           {
             "name": "page",
             "in": "query",
-            "description": "Page number starting from 0",
+            "description": "0-based page number.",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -248,7 +248,7 @@
           {
             "name": "page_size",
             "in": "query",
-            "description": "Number of results per page. Accepted value from 1-100. Default: 20",
+            "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -274,7 +274,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List environment variables",
+            "description": "Returns all environment variables associated with an environment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -284,7 +284,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -314,7 +314,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -324,7 +324,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -339,8 +339,8 @@
         "tags": [
           "environment-variables"
         ],
-        "summary": "Create or replace environment variable",
-        "description": "Create or replace environment variable",
+        "summary": "Create or Replace Environment Variable",
+        "description": "Create or replace an environment variable.",
         "operationId": "putConfigV01EnvironmentVariables",
         "requestBody": {
           "content": {
@@ -354,7 +354,7 @@
         },
         "responses": {
           "200": {
-            "description": "Create or replace environment variable",
+            "description": "Create or replace an environment variable.",
             "content": {
               "application/json": {
                 "schema": {
@@ -364,7 +364,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -394,7 +394,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -404,7 +404,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -422,13 +422,14 @@
         "tags": [
           "tls-certs"
         ],
-        "summary": "Read tls cert",
-        "description": "Read tls cert",
+        "summary": "Get TLS Certificate",
+        "description": "Returns a TLS certificate.",
         "operationId": "getConfigV01TlsCertsCertId",
         "parameters": [
           {
             "name": "cert_id",
             "in": "path",
+            "description": "The TLS certificate's system-defined ID. Use the [Get All Certificates operation](#tag/tls-certs/operation/getConfigV01TlsCerts) to retrieve a list of TLS certificates and their system-defined IDs.\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -437,7 +438,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Read tls cert",
+            "description": "Returns a TLS certificate.",
             "content": {
               "application/json": {
                 "schema": {
@@ -447,7 +448,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -477,7 +478,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -487,7 +488,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -504,14 +505,14 @@
         "tags": [
           "tls-certs"
         ],
-        "summary": "List tls certs",
-        "description": "List historical TLS certificates for an environment",
+        "summary": "Get All TLS Certificates",
+        "description": "Returns all TLS certificates associated with an environment.",
         "operationId": "getConfigV01TlsCerts",
         "parameters": [
           {
             "name": "page",
             "in": "query",
-            "description": "Page number starting from 0",
+            "description": "0-based page number.",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -521,7 +522,7 @@
           {
             "name": "page_size",
             "in": "query",
-            "description": "Number of results per page. Accepted value from 1-100. Default: 20",
+            "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -531,6 +532,7 @@
           {
             "name": "environment_id",
             "in": "query",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab). \n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -539,7 +541,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List historical TLS certificates for an environment",
+            "description": "Returns all TLS certificates associated with an environment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -549,7 +551,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -579,7 +581,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -589,7 +591,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -604,8 +606,8 @@
         "tags": [
           "tls-certs"
         ],
-        "summary": "Create a new tls cert",
-        "description": "Upload and activate a new TLS certificate for an environment",
+        "summary": "Upload TLS Certificate",
+        "description": "Upload your TLS certificate to activate it within a specific environment.",
         "operationId": "postConfigV01TlsCerts",
         "requestBody": {
           "content": {
@@ -619,7 +621,7 @@
         },
         "responses": {
           "201": {
-            "description": "Upload and activate a new TLS certificate for an environment",
+            "description": "Upload your TLS certificate to activate it within a specific environment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -629,7 +631,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -659,7 +661,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -669,7 +671,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -687,13 +689,14 @@
         "tags": [
           "deployments"
         ],
-        "summary": "Get the logs for a specific deployment",
-        "description": "Get the logs for a specific deployment",
+        "summary": "Get Deployment Logs",
+        "description": "Retrieve log data for a specific deployment.",
         "operationId": "getConfigV01DeploymentsDeploymentIdLogs",
         "parameters": [
           {
             "name": "deployment_id",
             "in": "path",
+            "description": "The deployment's system-defined ID. This ID is returned by the [Deploy CDN Configuration operation's](#tag/configs/operation/postConfigV01Configs) `id` property.\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -702,7 +705,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Get the logs for a specific deployment",
+            "description": "Retrieve log data for a specific deployment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -712,7 +715,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -742,7 +745,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -752,7 +755,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -769,13 +772,14 @@
         "tags": [
           "deployments"
         ],
-        "summary": "Read deployment",
-        "description": "Read deployment",
+        "summary": "Get Deployment",
+        "description": "Retrieve information about a specific deployment.",
         "operationId": "getConfigV01DeploymentsDeploymentId",
         "parameters": [
           {
             "name": "deployment_id",
             "in": "path",
+            "description": "The deployment's system-defined ID. This ID is returned by the [Deploy CDN Configuration operation's](#tag/configs/operation/postConfigV01Configs) `id` property.\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -784,7 +788,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Read deployment",
+            "description": "Retrieve information about a specific deployment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -794,7 +798,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -824,7 +828,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -834,7 +838,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -851,8 +855,8 @@
         "tags": [
           "configs"
         ],
-        "summary": "Retrieve an Edge Configuration",
-        "description": "Get a specific Edge Configuration",
+        "summary": "Get CDN Configuration",
+        "description": "Retrieve an environment's origin configurations, hostnames, rules, and experiments.\n\nUse the [Get Environment operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId) to retrieve the system-defined ID (`@links.active_config.id`) for an environment's active configuration\n",
         "operationId": "getConfigV01ConfigsConfigId",
         "parameters": [
           {
@@ -866,7 +870,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Get a specific Edge Configuration",
+            "description": "Retrieve an environment's origin configurations, hostnames, rules, and experiments.\n\nUse the [Get Environment operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId) to retrieve the system-defined ID (`@links.active_config.id`) for an environment's active configuration\n",
             "content": {
               "application/json": {
                 "schema": {
@@ -876,7 +880,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -906,7 +910,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -916,7 +920,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -933,8 +937,8 @@
         "tags": [
           "configs"
         ],
-        "summary": "Deploy Edge Configuration on environment",
-        "description": "Replace and deploy a complete edge configuration for the given environment",
+        "summary": "Deploy CDN Configuration",
+        "description": "Deploys your configuration to a specific environment. This deployment overwrites any existing origin configurations, hostnames, rules, and experiments.\n",
         "operationId": "postConfigV01Configs",
         "requestBody": {
           "content": {
@@ -948,7 +952,7 @@
         },
         "responses": {
           "202": {
-            "description": "Replace and deploy a complete edge configuration for the given environment",
+            "description": "Deploys your configuration to a specific environment. This deployment overwrites any existing origin configurations, hostnames, rules, and experiments.\n",
             "content": {
               "application/json": {
                 "schema": {
@@ -958,7 +962,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -988,7 +992,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -998,7 +1002,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1016,14 +1020,14 @@
         "tags": [
           "purge requests"
         ],
-        "summary": "Get Status of Cache Purge",
-        "description": "Request status of cache purge",
+        "summary": "Get Purge Request",
+        "description": "Retrieves information, including status, about a purge request.",
         "operationId": "getCacheV01PurgeRequestsRequestId",
         "parameters": [
           {
             "name": "request_id",
             "in": "path",
-            "description": "The ID identifying the original purge request.",
+            "description": "The purge request's system-defined ID. This ID is returned by the [Purge Cache operation](#tag/purge-requests/operation/postCacheV01PurgeRequests).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -1032,7 +1036,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Request status of cache purge",
+            "description": "Retrieves information, including status, about a purge request.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1042,7 +1046,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1072,7 +1076,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1082,7 +1086,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1099,8 +1103,8 @@
         "tags": [
           "purge requests"
         ],
-        "summary": "Purge Cache of Environment",
-        "description": "Request cache purge of environment",
+        "summary": "Purge Cache",
+        "description": "Submits a request to purge cached content from a specific environment. Purging content invalidates the cached version of an asset from our edge servers. You may submit up to 50 concurrent purge requests. For the purpose of concurrency, each value defined within the `values` property is considered a separate purge request. Find out the current status of your purge request by passing the purge request ID, which is returned by the `id` property, to the [Get Purge Request operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).\n",
         "operationId": "postCacheV01PurgeRequests",
         "requestBody": {
           "content": {
@@ -1114,7 +1118,7 @@
         },
         "responses": {
           "202": {
-            "description": "Request cache purge of environment",
+            "description": "Submits a request to purge cached content from a specific environment. Purging content invalidates the cached version of an asset from our edge servers. You may submit up to 50 concurrent purge requests. For the purpose of concurrency, each value defined within the `values` property is considered a separate purge request. Find out the current status of your purge request by passing the purge request ID, which is returned by the `id` property, to the [Get Purge Request operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).\n",
             "content": {
               "application/json": {
                 "schema": {
@@ -1124,7 +1128,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1154,7 +1158,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1164,7 +1168,7 @@
             }
           },
           "429": {
-            "description": "RateLimitReached",
+            "description": "Too Many Requests",
             "content": {
               "application/json": {
                 "schema": {
@@ -1174,7 +1178,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1192,8 +1196,6 @@
         "tags": [
           "members"
         ],
-        "summary": "Read member",
-        "description": "Read member",
         "operationId": "getAccountsV01MembersMemberId",
         "parameters": [
           {
@@ -1207,7 +1209,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Read member",
+            "description": "get Member(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -1217,7 +1219,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1247,7 +1249,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1257,7 +1259,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1272,8 +1274,6 @@
         "tags": [
           "members"
         ],
-        "summary": "Delete member",
-        "description": "Delete member",
         "operationId": "deleteAccountsV01MembersMemberId",
         "parameters": [
           {
@@ -1287,7 +1287,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Delete member",
+            "description": "deleted Member",
             "content": {
               "application/json": {
                 "schema": {
@@ -1297,7 +1297,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1327,7 +1327,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1337,7 +1337,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1352,8 +1352,6 @@
         "tags": [
           "members"
         ],
-        "summary": "Update member",
-        "description": "Update member",
         "operationId": "patchAccountsV01MembersMemberId",
         "parameters": [
           {
@@ -1377,7 +1375,7 @@
         },
         "responses": {
           "200": {
-            "description": "Update member",
+            "description": "patched Member",
             "content": {
               "application/json": {
                 "schema": {
@@ -1387,7 +1385,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1417,7 +1415,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1427,7 +1425,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1445,14 +1443,14 @@
         "tags": [
           "members"
         ],
-        "summary": "List members",
-        "description": "List members",
+        "summary": " members",
+        "description": " members",
         "operationId": "getAccountsV01Members",
         "parameters": [
           {
             "name": "page",
             "in": "query",
-            "description": "Page number starting from 0",
+            "description": "0-based page number.",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -1462,7 +1460,7 @@
           {
             "name": "page_size",
             "in": "query",
-            "description": "Number of results per page. Accepted value from 1-100. Default: 20",
+            "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -1480,7 +1478,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List members",
+            "description": " members",
             "content": {
               "application/json": {
                 "schema": {
@@ -1490,7 +1488,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1520,7 +1518,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1530,7 +1528,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1545,8 +1543,6 @@
         "tags": [
           "members"
         ],
-        "summary": "Create a new member",
-        "description": "Create a new member",
         "operationId": "postAccountsV01Members",
         "requestBody": {
           "content": {
@@ -1560,7 +1556,7 @@
         },
         "responses": {
           "201": {
-            "description": "Create a new member",
+            "description": "created Member",
             "content": {
               "application/json": {
                 "schema": {
@@ -1570,7 +1566,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1600,7 +1596,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1610,7 +1606,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1628,8 +1624,8 @@
         "tags": [
           "environments"
         ],
-        "summary": "Read environment",
-        "description": "Read environment",
+        "summary": "Get Environment",
+        "description": "Retrieves an environment's settings and metadata. The system-defined ID for the environment's active configuration is returned by the `@links.active_config.id` property.\"\n",
         "operationId": "getAccountsV01EnvironmentsEnvironmentId",
         "parameters": [
           {
@@ -1643,7 +1639,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Read environment",
+            "description": "Retrieves an environment's settings and metadata. The system-defined ID for the environment's active configuration is returned by the `@links.active_config.id` property.\"\n",
             "content": {
               "application/json": {
                 "schema": {
@@ -1653,7 +1649,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1683,7 +1679,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1693,7 +1689,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1708,8 +1704,8 @@
         "tags": [
           "environments"
         ],
-        "summary": "Delete environment",
-        "description": "Delete environment",
+        "summary": "Delete Environment",
+        "description": "Deletes an environment.",
         "operationId": "deleteAccountsV01EnvironmentsEnvironmentId",
         "parameters": [
           {
@@ -1723,7 +1719,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Delete environment",
+            "description": "Deletes an environment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1733,7 +1729,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1763,7 +1759,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1773,7 +1769,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1788,8 +1784,8 @@
         "tags": [
           "environments"
         ],
-        "summary": "Update environment",
-        "description": "Update environment",
+        "summary": "Update Environment",
+        "description": "Updates an environment.",
         "operationId": "patchAccountsV01EnvironmentsEnvironmentId",
         "parameters": [
           {
@@ -1813,7 +1809,7 @@
         },
         "responses": {
           "200": {
-            "description": "Update environment",
+            "description": "Updates an environment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1823,7 +1819,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1853,7 +1849,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1863,7 +1859,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1881,14 +1877,14 @@
         "tags": [
           "environments"
         ],
-        "summary": "List environments",
-        "description": "List environments",
+        "summary": "Get All Environments",
+        "description": "Returns all environments that belong to the specified property.",
         "operationId": "getAccountsV01Environments",
         "parameters": [
           {
             "name": "page",
             "in": "query",
-            "description": "Page number starting from 0",
+            "description": "0-based page number.",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -1898,7 +1894,7 @@
           {
             "name": "page_size",
             "in": "query",
-            "description": "Number of results per page. Accepted value from 1-100. Default: 20",
+            "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -1908,6 +1904,7 @@
           {
             "name": "property_id",
             "in": "query",
+            "description": "The property's system-defined ID.",
             "required": true,
             "schema": {
               "type": "string"
@@ -1916,7 +1913,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List environments",
+            "description": "Returns all environments that belong to the specified property.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1926,7 +1923,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1956,7 +1953,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1966,7 +1963,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1981,8 +1978,8 @@
         "tags": [
           "environments"
         ],
-        "summary": "Create a new environment",
-        "description": "Create a new environment",
+        "summary": "Add Environment",
+        "description": "Creates an environment.",
         "operationId": "postAccountsV01Environments",
         "requestBody": {
           "content": {
@@ -1996,7 +1993,7 @@
         },
         "responses": {
           "201": {
-            "description": "Create a new environment",
+            "description": "Creates an environment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2006,7 +2003,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -2036,7 +2033,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -2046,7 +2043,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -2064,8 +2061,8 @@
         "tags": [
           "properties"
         ],
-        "summary": "Read property",
-        "description": "Read property",
+        "summary": "Get Property",
+        "description": "Retrieve a property.",
         "operationId": "getAccountsV01PropertiesPropertyId",
         "parameters": [
           {
@@ -2079,7 +2076,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Read property",
+            "description": "Retrieve a property.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2089,7 +2086,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -2119,7 +2116,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -2129,7 +2126,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -2144,8 +2141,8 @@
         "tags": [
           "properties"
         ],
-        "summary": "Delete property",
-        "description": "Delete property",
+        "summary": "Delete Property",
+        "description": "Delete a property.",
         "operationId": "deleteAccountsV01PropertiesPropertyId",
         "parameters": [
           {
@@ -2159,7 +2156,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Delete property",
+            "description": "Delete a property.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2169,7 +2166,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -2199,7 +2196,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -2209,7 +2206,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -2224,8 +2221,8 @@
         "tags": [
           "properties"
         ],
-        "summary": "Update property",
-        "description": "Update property",
+        "summary": "Update Property",
+        "description": "Update a property.",
         "operationId": "patchAccountsV01PropertiesPropertyId",
         "parameters": [
           {
@@ -2249,7 +2246,7 @@
         },
         "responses": {
           "200": {
-            "description": "Update property",
+            "description": "Update a property.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2259,7 +2256,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -2289,7 +2286,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -2299,7 +2296,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -2317,14 +2314,14 @@
         "tags": [
           "properties"
         ],
-        "summary": "List properties",
-        "description": "List properties",
+        "summary": "Get All Properties",
+        "description": "Returns all properties.",
         "operationId": "getAccountsV01Properties",
         "parameters": [
           {
             "name": "page",
             "in": "query",
-            "description": "Page number starting from 0",
+            "description": "0-based page number.",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -2334,7 +2331,7 @@
           {
             "name": "page_size",
             "in": "query",
-            "description": "Number of results per page. Accepted value from 1-100. Default: 20",
+            "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -2344,6 +2341,7 @@
           {
             "name": "organization_id",
             "in": "query",
+            "description": "An organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab). \n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -2352,7 +2350,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List properties",
+            "description": "Returns all properties.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2362,7 +2360,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -2392,7 +2390,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -2402,7 +2400,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -2417,8 +2415,8 @@
         "tags": [
           "properties"
         ],
-        "summary": "Create a new property",
-        "description": "Create a new property",
+        "summary": "Create Property",
+        "description": "Create a property.",
         "operationId": "postAccountsV01Properties",
         "requestBody": {
           "content": {
@@ -2432,7 +2430,7 @@
         },
         "responses": {
           "201": {
-            "description": "Create a new property",
+            "description": "Create a property.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2442,7 +2440,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -2472,7 +2470,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -2482,7 +2480,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -2500,8 +2498,8 @@
         "tags": [
           "organizations"
         ],
-        "summary": "Read organization",
-        "description": "Read organization",
+        "summary": "Get Organization",
+        "description": "Retrieves information about an organization.",
         "operationId": "getAccountsV01OrganizationsOrganizationId",
         "parameters": [
           {
@@ -2515,7 +2513,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Read organization",
+            "description": "Retrieves information about an organization.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2525,7 +2523,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -2555,7 +2553,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -2565,7 +2563,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -2580,8 +2578,8 @@
         "tags": [
           "organizations"
         ],
-        "summary": "Delete organization",
-        "description": "Delete organization",
+        "summary": "Delete Organization",
+        "description": "Deletes an organization.",
         "operationId": "deleteAccountsV01OrganizationsOrganizationId",
         "parameters": [
           {
@@ -2595,7 +2593,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Delete organization",
+            "description": "Deletes an organization.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2605,7 +2603,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -2635,7 +2633,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -2645,7 +2643,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -2660,8 +2658,8 @@
         "tags": [
           "organizations"
         ],
-        "summary": "Update organization",
-        "description": "Update organization",
+        "summary": "Update Organization",
+        "description": "Updates an organization.",
         "operationId": "patchAccountsV01OrganizationsOrganizationId",
         "parameters": [
           {
@@ -2685,7 +2683,7 @@
         },
         "responses": {
           "200": {
-            "description": "Update organization",
+            "description": "Updates an organization.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2695,7 +2693,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -2725,7 +2723,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -2735,7 +2733,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -2791,11 +2789,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -2840,10 +2838,11 @@
         "properties": {
           "message": {
             "type": "string",
-            "description": "Error Message"
+            "description": "Error message."
           },
           "details": {
             "type": "array",
+            "description": "Describes the error.",
             "items": {
               "$ref": "#/components/schemas/BaseApi_Entities_UserErrorData"
             }
@@ -2855,10 +2854,12 @@
         "type": "object",
         "properties": {
           "path": {
-            "type": "string"
+            "type": "string",
+            "description": "The requested endpoint's path."
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "description": "A brief description of the error."
           }
         }
       },
@@ -2893,7 +2894,7 @@
             "type": "boolean"
           }
         },
-        "description": "Create or replace environment variable"
+        "description": "Create or replace an environment variable."
       },
       "Config_V1_Entities_EnvironmentVariable_Collection": {
         "required": [
@@ -2904,11 +2905,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "$ref": "#/components/schemas/BaseApi_Entities_HyperionNavigationLinks"
@@ -2969,11 +2970,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -2986,7 +2987,7 @@
           },
           "environment_id": {
             "type": "string",
-            "description": "Environment ID"
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab). \n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
           },
           "primary_cert": {
             "type": "string",
@@ -2998,44 +2999,44 @@
           },
           "expiration": {
             "type": "string",
-            "description": "Expiration date",
+            "description": "The TLS certificate's expiration date and time (UTC).",
             "format": "date-time"
           },
           "status": {
             "type": "string",
-            "description": "Status"
+            "description": "The TLS certificate's status. Returns one of the following states:\n\n-  `created`: The TLS certificate has been created, but it has not yet been activated. \n-  `activating:` Edgio is in the process of activating the TLS certificate.\n-  `activated:` The TLS certificate is currently active. \n-  `failed:` The activation of the TLS certificate failed.\n-  `expired:` The TLS certificate has expired. \n"
           },
           "generated": {
             "type": "boolean",
-            "description": "Generated"
+            "description": "Returns `true` for TLS certificates generated by Edgio. Returns `false` for existing TLS certificates that were uploaded to Edgio.\n"
           },
           "serial": {
             "type": "string",
-            "description": "Serial"
+            "description": "The TLS certificate's serial number."
           },
           "common_name": {
             "type": "string",
-            "description": "Common name"
+            "description": "The TLS certificate's common name (CN)."
           },
           "alternative_names": {
             "type": "array",
-            "description": "Alternative names",
+            "description": "The TLS certificate's Subject Alternative Names (SAN).",
             "items": {
               "type": "string"
             }
           },
           "activation_error": {
             "type": "string",
-            "description": "Activation error"
+            "description": "Contains an error message if the TLS certificate could not be activated. "
           },
           "created_at": {
             "type": "string",
-            "description": "Created at",
+            "description": "The TLS certificate's creation date and time (UTC).",
             "format": "date-time"
           },
           "updated_at": {
             "type": "string",
-            "description": "Updated at",
+            "description": "The TLS certificate's last modification date and time (UTC).",
             "format": "date-time"
           }
         },
@@ -3050,19 +3051,23 @@
         "type": "object",
         "properties": {
           "environment_id": {
-            "type": "string"
+            "type": "string",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab). \n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
           },
           "primary_cert": {
-            "type": "string"
+            "type": "string",
+            "description": "Your TLS certificate. We require this certificate to be issued by a Certificate Authority."
           },
           "intermediate_cert": {
-            "type": "string"
+            "type": "string",
+            "description": "The intermediate certificates (IC) used by the CA, including the CA’s signing certificate."
           },
           "private_key": {
-            "type": "string"
+            "type": "string",
+            "description": "The private key that was generated with the CSR."
           }
         },
-        "description": "Upload and activate a new TLS certificate for an environment"
+        "description": "Upload your TLS certificate to activate it within a specific environment."
       },
       "Config_V1_Entities_TlsCert_Collection": {
         "required": [
@@ -3073,11 +3078,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "$ref": "#/components/schemas/BaseApi_Entities_HyperionNavigationLinks"
@@ -3089,7 +3094,7 @@
           },
           "items": {
             "type": "array",
-            "description": "Array of items.",
+            "description": "List of TLS certificates associated with the specified environment.",
             "items": {
               "$ref": "#/components/schemas/Config_V1_Entities_TlsCert"
             }
@@ -3106,11 +3111,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -3119,7 +3124,7 @@
           },
           "logs": {
             "type": "array",
-            "description": "Array of logs",
+            "description": "The deployment's log messages.",
             "items": {
               "$ref": "#/components/schemas/Config_V1_Entities_Deployment_LogLine"
             }
@@ -3132,15 +3137,15 @@
         "properties": {
           "message": {
             "type": "string",
-            "description": "Log message"
+            "description": "Log message."
           },
           "level": {
             "type": "string",
-            "description": "Log level"
+            "description": "Log level."
           },
           "timestamp": {
             "type": "string",
-            "description": "Log timestamp",
+            "description": "The date and time (UTC) at which the message was logged.",
             "format": "date-time"
           }
         }
@@ -3155,11 +3160,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -3172,16 +3177,16 @@
           },
           "status": {
             "type": "string",
-            "description": "Indicates the status for the deployment.\nValid values are:\n  - `created`: Initial state.\n  - `uploading`: Waiting for CLI to upload the build. Only applicable for EdgeJS deployments.\n  - `provisioning`: Waiting for the CDN to provision the environment.\n  - `deploying`: Deploying the build to cloud & edge.\n  - `waiting`: Waiting for the edge propagation to complete.\n  - `completed`: Indicates that the deployment has been completed.\n  - `canceled`: Indicates that the deployment has been canceled.\n  - `failed`: Indicates that the deployment has failed.\n"
+            "description": "Indicates the deployment's status. Valid values are:\n  - `created`: The deployment has been created but has not yet been deployed.\n  - `uploading`: The CLI is uploading the build. This state is only applicable for EdgeJS deployments.\n  - `provisioning`: The CDN is provisioning the environment.\n  - `deploying`: The build is being deployed to our network.\n  - `waiting`: The build is being propagated throughout our network.\n  - `completed`: The build was deployed successfully to our network.\n  - `canceled`: The deployment was canceled.\n  - `failed`: The deployment has failed.\n"
           },
           "created_at": {
             "type": "string",
-            "description": "Indicates the date and time (UTC) at which the deployment was submitted.",
+            "description": "The date and time (UTC) at which the deployment was submitted.",
             "format": "date-time"
           },
           "completed_at": {
             "type": "string",
-            "description": "Indicates the date and time (UTC) at which the deployment was completed.",
+            "description": "The date and time (UTC) at which the deployment was completed.",
             "format": "date-time"
           }
         },
@@ -3197,11 +3202,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -3213,17 +3218,23 @@
             "description": "Resource unique identifier."
           },
           "origins": {
-            "$ref": "../../edgecontrol/schema-base.json#/definitions/property/properties/origins"
+            "type": "string",
+            "description": "List of origin configurations.\n\nYou cannot delete or change the name of an origin configuration that has been mapped to a hostname. Attempting to do so will generate a `404 Bad Request` whose error message is similar to the following one:\n\n`Invalid config: Schema validation error: properties.0.hostnames.0: Origin 'web' not found`\n\nDefined externally: edgecontrol/schema-base.json#/definitions/property/properties/origins\n",
+            "example": ""
           },
           "hostnames": {
-            "$ref": "../../edgecontrol/schema-base.json#/definitions/property/properties/hostnames"
+            "type": "string",
+            "description": "List of hostnames. Defined externally: edgecontrol/schema-base.json#/definitions/property/properties/hostnames",
+            "example": ""
           },
           "rules": {
-            "$ref": "../../edgecontrol/schema-base.json#/definitions/property/properties/rules"
+            "type": "string",
+            "description": "List of rules defined using JSON syntax.\n\nView your current set of rules in JSON syntax from within the Edgio Console by navigating to the **Rules** page and then clicking **JSON Editor**.\n\nDefined externally: edgecontrol/schema-base.json#/definitions/property/properties/rules\n",
+            "example": ""
           },
           "experiments": {
             "type": "string",
-            "description": "List of experiments for the configuration.",
+            "description": "List of experiments.",
             "example": ""
           }
         },
@@ -3238,20 +3249,71 @@
         "type": "object",
         "properties": {
           "environment_id": {
-            "type": "string"
+            "type": "string",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
           },
           "origins": {
-            "$ref": "../../edgecontrol/schema-base.json#/definitions/property/properties/origins"
+            "type": "array",
+            "description": "List of origin configurations.\n\nYou cannot delete or change the name of an origin configuration that has been mapped to a hostname. Attempting to do so will generate a `404 Bad Request` whose error message is similar to the following one:\n\n`Invalid config: Schema validation error: properties.0.hostnames.0: Origin 'web' not found`\n\nDefined externally: edgecontrol/schema-base.json#/definitions/property/properties/origins\n",
+            "example": [
+              {
+                "name": "web",
+                "hosts": [
+                  {
+                    "location": [
+                      {
+                        "hostname": "https://test-origin.edgio.net"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "items": {
+              "type": "string"
+            }
           },
           "hostnames": {
-            "$ref": "../../edgecontrol/schema-base.json#/definitions/property/properties/hostnames"
+            "type": "array",
+            "description": "List of hostnames. Defined externally: edgecontrol/schema-base.json#/definitions/property/properties/hostnames",
+            "example": [
+              {
+                "hostname": "cdn.example.com"
+              }
+            ],
+            "items": {
+              "type": "string"
+            }
           },
           "rules": {
-            "$ref": "../../edgecontrol/schema-base.json#/definitions/property/properties/rules"
+            "type": "array",
+            "description": "List of rules defined using JSON syntax.\n\nView your current set of rules in JSON syntax from within the Edgio Console by navigating to the **Rules** page and then clicking **JSON Editor**.\n\nDefined externally: edgecontrol/schema-base.json#/definitions/property/properties/rules\n",
+            "example": [
+              {
+                "if": [
+                  {
+                    "==": [
+                      {
+                        "request": "path"
+                      },
+                      "/api/:path"
+                    ]
+                  },
+                  {
+                    "caching": {
+                      "bypass_cache": true
+                    }
+                  }
+                ]
+              }
+            ],
+            "items": {
+              "type": "string"
+            }
           },
           "experiments": {
             "type": "array",
-            "description": "List of experiments for the configuration.",
+            "description": "List of experiments.",
             "example": [
               {}
             ],
@@ -3260,7 +3322,7 @@
             }
           }
         },
-        "description": "Replace and deploy a complete edge configuration for the given environment"
+        "description": "Deploys your configuration to a specific environment. This deployment overwrites any existing origin configurations, hostnames, rules, and experiments.\n"
       },
       "Cache_V1_Entities_PurgeRequest": {
         "required": [
@@ -3272,11 +3334,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -3285,25 +3347,25 @@
           },
           "id": {
             "type": "string",
-            "description": "Identifies a purge request by its unique ID and allows further tracking"
+            "description": "The purge request's system-defined ID."
           },
           "status": {
             "type": "string",
-            "description": "Indicates the status for the purge requests defined in the bulk purge request.\nValid values are:\n  - `in_progress`: Indicates that the purge request has not yet been completed.\n  - `done`: Indicates that the purge request has been completed.\n"
+            "description": "The purge request's status. Valid values are:\n  - `in_progress`: Edgio is still purging content.\n  - `done`: Edgio has purged the requested content.\n"
           },
           "created_at": {
             "type": "string",
-            "description": "Indicates the date and time (UTC) at which the purge request was submitted.",
+            "description": "The date and time (UTC) at which the purge request was submitted.",
             "format": "date-time"
           },
           "completed_at": {
             "type": "string",
-            "description": "Indicates the date and time (UTC) at which the purge request was completed.",
+            "description": "The date and time (UTC) at which the purge request was completed.",
             "format": "date-time"
           },
           "progress_percentage": {
             "type": "number",
-            "description": "Identifies the percentage of purge request completion.",
+            "description": "The purge request's completion percentage.",
             "format": "float"
           }
         },
@@ -3318,11 +3380,11 @@
         "properties": {
           "environment_id": {
             "type": "string",
-            "description": "The ID of the environment you wish to purge cache for, also known as environment tenant ID."
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
           },
           "purge_type": {
             "type": "string",
-            "description": "- `all_entries`: Purges all cache\n- `path`: Purges paths from cache further specified via `values`\n- `surrogate_key`: Purges surrogate keys specified via `values`\n",
+            "description": "- `all_entries`: Purge all cached content. \n- `path`: Purge one or more relative path(s) defined within the `values` property.\n- `surrogate_key`: Purge one or more surrogate key(s) defined within the `values` property.\n",
             "enum": [
               "all_entries",
               "path",
@@ -3331,13 +3393,13 @@
           },
           "values": {
             "type": "array",
-            "description": "Depending on `purge_type` this parameter is used to specify further options:\n  - Leave empty if `purge_type` is `all_entries`.\n  - If `purge_type` is `path`, `values` specifies all the paths subject to purging.\n  - If `purge_type` is `surrogate_key`, `values` specifies all the surrogate keys subject to purging.\n",
+            "description": "Defines the set of content will be purged. The `purge_type` property's value determines what should be passed.\n  - `all_entries`: Omit this property or pass an empty array.\n  - `path`: Pass one or more relative path(s). This relative path starts directly after the hostname. Use an `*` to represent zero or more characters.\n  - `surrogate_key`: Pass one or more surrogate key(s) (aka cache tags). \n",
             "items": {
               "type": "string"
             }
           }
         },
-        "description": "Request cache purge of environment"
+        "description": "Submits a request to purge cached content from a specific environment. Purging content invalidates the cached version of an asset from our edge servers. You may submit up to 50 concurrent purge requests. For the purpose of concurrency, each value defined within the `values` property is considered a separate purge request. Find out the current status of your purge request by passing the purge request ID, which is returned by the `id` property, to the [Get Purge Request operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).\n"
       },
       "Accounts_V1_Entities_Member": {
         "required": [
@@ -3349,11 +3411,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -3365,21 +3427,21 @@
           },
           "role": {
             "type": "string",
-            "description": "Role name"
+            "description": "The user's role."
           },
           "created_at": {
             "type": "string",
-            "description": "Created at",
+            "description": "The user's creation date and time (UTC).",
             "format": "date-time"
           },
           "updated_at": {
             "type": "string",
-            "description": "Updated at",
+            "description": "The user's last modification date and time (UTC).",
             "format": "date-time"
           },
           "user_email": {
             "type": "string",
-            "description": "Associated user's email"
+            "description": "The user's email."
           }
         },
         "description": "Accounts_V1_Entities_Member model"
@@ -3397,8 +3459,7 @@
               "super_admin"
             ]
           }
-        },
-        "description": "Update member"
+        }
       },
       "postAccountsV01Members": {
         "required": [
@@ -3423,8 +3484,7 @@
               "super_admin"
             ]
           }
-        },
-        "description": "Create a new member"
+        }
       },
       "Accounts_V1_Entities_Member_Collection": {
         "required": [
@@ -3435,11 +3495,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "$ref": "#/components/schemas/BaseApi_Entities_HyperionNavigationLinks"
@@ -3451,7 +3511,7 @@
           },
           "items": {
             "type": "array",
-            "description": "Array of items.",
+            "description": "List of users.",
             "items": {
               "$ref": "#/components/schemas/Accounts_V1_Entities_Member"
             }
@@ -3469,11 +3529,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -3490,32 +3550,32 @@
           },
           "name": {
             "type": "string",
-            "description": "Environment name"
+            "description": "The environment's name."
           },
           "can_members_deploy": {
             "type": "boolean",
-            "description": "Allow non-admin members to deploy to this environment"
+            "description": "Determines whether all organization members may deploy to this environment. Disabling this option restricts deployments to admin users and the deploy token."
           },
           "http_request_logging": {
             "type": "boolean",
-            "description": "Enable deep-request inspection for serverless logs"
+            "description": "Determines whether deep-request inspection for serverless logs will be enabled."
           },
           "default_domain_name": {
             "type": "string",
-            "description": "Default hostname where the CDN serves the traffic, in addition to custom hostnames"
+            "description": "The default hostname through which traffic for this environment is served."
           },
           "dns_domain_name": {
             "type": "string",
-            "description": "Configure your hostname CNAMEs to point to this domain"
+            "description": "Serve traffic for this environment by pointing your CNAMEs to this domain."
           },
           "created_at": {
             "type": "string",
-            "description": "Created at",
+            "description": "The environment's creation date and time (UTC).",
             "format": "date-time"
           },
           "updated_at": {
             "type": "string",
-            "description": "Updated at",
+            "description": "The environment's last modification date and time (UTC).",
             "format": "date-time"
           }
         },
@@ -3525,19 +3585,23 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "The environment's name. This name may only consist of lowercase characters, numbers, dashes, and underscores.\n"
           },
           "can_members_deploy": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether all organization memmbers may deploy to this environment. Disabling this option restricts deployments to admin users and the deploy token.\n"
           },
           "http_request_logging": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether deep-request inspection for serverless logs will be enabled."
           },
           "preserve_cache": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether deploying a new build to this environment will use the same cache as the previous deployment.\n"
           }
         },
-        "description": "Update environment"
+        "description": "Updates an environment."
       },
       "postAccountsV01Environments": {
         "required": [
@@ -3547,19 +3611,23 @@
         "type": "object",
         "properties": {
           "property_id": {
-            "type": "string"
+            "type": "string",
+            "description": "The property's system-defined ID."
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "The environment's name. This name may only consist of lowercase characters, numbers, dashes, and underscores.\n"
           },
           "can_members_deploy": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether all organization memmbers may deploy to this environment. Disabling this option restricts deployments to admin users and the deploy token.\"\n"
           },
           "http_request_logging": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether deep-request inspection for serverless logs will be enabled."
           }
         },
-        "description": "Create a new environment"
+        "description": "Creates an environment."
       },
       "Accounts_V1_Entities_Environment_Collection": {
         "required": [
@@ -3570,11 +3638,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "$ref": "#/components/schemas/BaseApi_Entities_HyperionNavigationLinks"
@@ -3586,7 +3654,7 @@
           },
           "items": {
             "type": "array",
-            "description": "Array of items.",
+            "description": "List of environments.",
             "items": {
               "$ref": "#/components/schemas/Accounts_V1_Entities_Environment"
             }
@@ -3604,11 +3672,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -3620,21 +3688,20 @@
             "description": "Resource unique identifier."
           },
           "organization_id": {
-            "type": "string",
-            "description": "Organization ID"
+            "type": "string"
           },
           "slug": {
             "type": "string",
-            "description": "Property slug"
+            "description": "The property's name."
           },
           "created_at": {
             "type": "string",
-            "description": "Created at",
+            "description": "The property's creation date and time (UTC).",
             "format": "date-time"
           },
           "updated_at": {
             "type": "string",
-            "description": "Updated at",
+            "description": "The property's last modification date and time (UTC).",
             "format": "date-time"
           }
         },
@@ -3644,10 +3711,11 @@
         "type": "object",
         "properties": {
           "slug": {
-            "type": "string"
+            "type": "string",
+            "description": "The property's name. Space characters are converted to dashes."
           }
         },
-        "description": "Update property"
+        "description": "Update a property."
       },
       "postAccountsV01Properties": {
         "required": [
@@ -3657,13 +3725,15 @@
         "type": "object",
         "properties": {
           "slug": {
-            "type": "string"
+            "type": "string",
+            "description": "The property's name. Space characters are converted to dashes."
           },
           "organization_id": {
-            "type": "string"
+            "type": "string",
+            "description": "The system-defined ID for the organization under which this property will be created."
           }
         },
-        "description": "Create a new property"
+        "description": "Create a property."
       },
       "Accounts_V1_Entities_Property_Collection": {
         "required": [
@@ -3674,11 +3744,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "$ref": "#/components/schemas/BaseApi_Entities_HyperionNavigationLinks"
@@ -3690,7 +3760,7 @@
           },
           "items": {
             "type": "array",
-            "description": "Array of items.",
+            "description": "List of properties.",
             "items": {
               "$ref": "#/components/schemas/Accounts_V1_Entities_Property"
             }
@@ -3708,11 +3778,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -3725,7 +3795,7 @@
           },
           "partner_id": {
             "type": "string",
-            "description": "Partner ID"
+            "description": "The system-defined ID for the partner account under which the organization was created."
           },
           "name": {
             "type": "string",
@@ -3733,7 +3803,7 @@
           },
           "pci_compliance": {
             "type": "string",
-            "description": "The overall PCI compliance based on the PCI settings of all environments in scope of this organization",
+            "description": "The organization's PCI compliance status. This state is determined by checking PCI-compliance across all environments associated with this organization. Valid values are:\n\n-   **pci:** All environments are PCI-compliant.\n-   **non_pci:** All environments are not PCI-compliant.\n-   **mixed:** Some environments are PCI-compliant.\n",
             "enum": [
               "pci",
               "non_pci",
@@ -3742,20 +3812,20 @@
           },
           "pci_dns_domain_name": {
             "type": "string",
-            "description": "The PCI-compliant DNS domain for this organization. Configure your hostname CNAMEs to point to this domain."
+            "description": "The organization's PCI-compliant DNS domain.\n\nServe traffic through our PCI-compliant network by pointing your CNAMEs to this domain.\n"
           },
           "non_pci_dns_domain_name": {
             "type": "string",
-            "description": "The non PCI-compliant DNS domain for this organization. Configure your hostname CNAMEs to point to this domain."
+            "description": "The organization's DNS domain for standard traffic.\n\nServe traffic that does not require PCI-compliance by pointing your CNAMEs to this domain.\n"
           },
           "created_at": {
             "type": "string",
-            "description": "Created at",
+            "description": "The organization's creation date and time (UTC).",
             "format": "date-time"
           },
           "updated_at": {
             "type": "string",
-            "description": "Updated at",
+            "description": "The organization's last modification date and time (UTC).",
             "format": "date-time"
           }
         },
@@ -3765,10 +3835,11 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "The organization's name."
           }
         },
-        "description": "Update organization"
+        "description": "Updates an organization."
       }
     },
     "securitySchemes": {

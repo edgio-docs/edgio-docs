@@ -28,10 +28,32 @@ If a request satisfies the criteria for one or more experiments, it is assigned 
 
 Experimentation assigns the `{{ HEADER_PREFIX }}-experiments` and the `{{ HEADER_PREFIX }}-experiments-info` cookie to each client.
 
-| Cookie                                 | Description                                                                                                                                                                                                             |
-| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `{{ HEADER_PREFIX }}-experiments`      | This cookie assigns a value from 0 - 99 to a client. Once a client has been assigned a number, it will persist. This allows you to slowly ramp up traffic sent to a particular variant. <br />**Sample Cookie:** <br /> `{{ HEADER_PREFIX }}-experiments=27` |
-| `{{ HEADER_PREFIX }}-experiments-info` | This cookie assigns variants to a client. It uses the following syntax for each variant that has been assigned to a client: <br />`%22<EXPERIMENT>_<BUCKET>%22:%22<VARIANT>_<VARIANT ID>%22` <br />The above variables are defined below: <ul><li>`<EXPERIMENT>`**:** The name of the experiment.</li><li>`<BUCKET>`**:** The system-defined ID of the bucket assigned to the client.</li><li>`<VARIANT>`**:** The name of the variant. If the client has not been assigned to a variant, then it will return `null` instead of `<VARIANT>_<VARIANT_ID>`. </li><li>`<VARIANT ID>`**:** The variant's system-defined ID.</li></ul>If multiple experiments have been applied to the client, then they will be delimited by a comma. <br />**Sample Cookie:** <br />`{{ HEADER_PREFIX }}-experiments-info=%7B%22Landing_page_1238476236%22:%22New_landing_page_816213%22,%22Banner_8123712%22:%22Existing_banner_712312%22%7D`|
+#### {{ HEADER_PREFIX }}-experiments Cookie
+
+This cookie assigns a value from 0 - 99 to a client. Once a client has been assigned a number, it will persist. This allows you to slowly ramp up traffic sent to a particular variant. 
+
+**Sample Cookie:** 
+
+`{{ HEADER_PREFIX }}-experiments=27`
+
+#### {{ HEADER_PREFIX }}-experiments-info Cookie
+
+This cookie assigns variants to a client. It uses the following syntax for each variant that has been assigned to a client:
+
+`%22<EXPERIMENT>_<BUCKET>%22:%22<VARIANT>_<VARIANT ID>%22` 
+
+The above variables are defined below: 
+
+-   `<EXPERIMENT>`**:** The name of the experiment.
+-   `<BUCKET>`**:** The system-defined ID of the bucket assigned to the client.
+-   `<VARIANT>`**:** The name of the variant. If the client has not been assigned to a variant, then it will return `null` instead of `<VARIANT>_<VARIANT_ID>`. 
+-   `<VARIANT ID>`**:** The variant's system-defined ID.
+
+If multiple experiments have been applied to the client, then they will be delimited by a comma. 
+
+**Sample Cookie:** 
+
+`{{ HEADER_PREFIX }}-experiments-info=%7B%22Landing_page_1238476236%22:%22New_landing_page_816213%22,%22Banner_8123712%22:%22Existing_banner_712312%22%7D`
 
 ## Experiments {/*experiments*/}
 
@@ -69,7 +91,7 @@ A variant identifies the percentage of traffic to which a set of actions (aka [f
 
 ## Managing Experiments
 
-You may create, enable, disable, and delete experiments.
+You may create, enable, disable, and delete experiments. You may also adjust the distribution of traffic between variants.
 
 **Key information:**
 

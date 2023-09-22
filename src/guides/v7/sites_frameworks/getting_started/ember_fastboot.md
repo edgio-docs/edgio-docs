@@ -77,7 +77,7 @@ if (typeof navigator != 'undefined') {
 
 ## dependencies vs devDependencies {/* dependencies-vs-devdependencies */}
 
-To reduce serverless cold-start times, limit the packages listed in the `dependencies` section of your `package.json` to only those packages used at runtime. The `{{ PACKAGE_NAME }}/fastboot` package must also be included in `dependencies`. Other packages not used at runtime should be included in `devDependencies`. Only those packages listed in `dependencies` are deployed to {{ PRODUCT_NAME }} along with your application code.
+To reduce {{ PRODUCT }} cloud cold-start times, limit the packages listed in the `dependencies` section of your `package.json` to only those packages used at runtime. The `{{ PACKAGE_NAME }}/fastboot` package must also be included in `dependencies`. Other packages not used at runtime should be included in `devDependencies`. Only those packages listed in `dependencies` are deployed to {{ PRODUCT_NAME }} along with your application code.
 
 ## {{ CONFIG_FILE }} {/* config-file */}
 
@@ -115,5 +115,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 ```bash
 {{ FULL_CLI_NAME }} deploy
 ```
+
+{{ system_origins_callout.md }}
 
 See [Deployments](/guides/basics/deployments) for more information.

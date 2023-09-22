@@ -2,7 +2,7 @@
 title: Cache Request Flow
 ---
 
-{{ PRODUCT }} can cache the response provided by an origin server or the Serverless layer on either an edge POP or an Origin Shield POP. The following diagrams demonstrate how we determine whether a response is served from cache for each of these components.
+{{ PRODUCT }} can cache the response provided by an origin server or the {{ PRODUCT }} cloud on either an edge POP or an Origin Shield POP. The following diagrams demonstrate how we determine whether a response is served from cache for each of these components.
 
 ## Origin Server
 
@@ -16,8 +16,8 @@ If Origin Shield has been enabled on your origin, then the edge server may reval
 
 ![](/images/v7/performance/request-flow-edge-origin-shield-origin.png)
 
-### Serverless
+### {{ PRODUCT }} Cloud
 
-{{ PRODUCT }} routes [Serverless Compute](/guides/performance/serverless_compute) and [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) requests similar to traffic sent to your origin servers. However, cache misses are forwarded to a Serverless load balancer which distributes requests to a Serverless worker.
+{{ PRODUCT }} routes [Cloud Functions](/guides/performance/serverless_compute) and [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) requests similar to traffic sent to your origin servers. However, cache misses are forwarded to a cloud load balancer which distributes requests to a cloud worker.
 
 ![](/images/v7/performance/request-flow-serverless.png)

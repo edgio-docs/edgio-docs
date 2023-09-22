@@ -7,7 +7,7 @@ title: Performance
 Improve your site's performance through:
 
 -   Full control over when to [cache](/guides/performance/caching) and [prefetch](/guides/performance/prefetching) your content. Caching improves performance by bringing the data closer to your users, while prefetching anticipates your user's needs by instructing the browser to request content before it is neeeded. 
--   [Serverless computing](/guides/performance/serverless_compute). Computing your JavaScript functions within our cloud reduces latency and origin server load.
+-   [Cloud Functions](/guides/performance/serverless_compute). Computing your JavaScript functions within our cloud reduces latency and origin server load.
 -   On the fly [image optimization](/guides/performance/image_optimization).
 
 Speed up your development lifecycle through:
@@ -30,7 +30,7 @@ Speed up your development lifecycle through:
 {{ PRODUCT }} ensures high availability when optimizing site performance through:
 
 -   Scalability. {{ PRODUCT }} automatically scales resources whenever it detects increased traffic levels. 
--   Origin Shield. This promotes high availability by funneling requests to a second caching layer instead of your web servers or our Serverless Compute workers. The first caching layer consists of our edge POPs, while the second caching layer consists of our Origin Shield POPs.
+-   Origin Shield. This promotes high availability by funneling requests to a second caching layer instead of your web servers or our cloud workers. The first caching layer consists of our edge POPs, while the second caching layer consists of our Origin Shield POPs.
 -   Redundancy. {{ PRODUCT }} computes your code within two data centers. These data centers, which are located close to your API servers, are configured with automatic DNS failover. Additionally, each data center provides redundancy for individual processes and load balances the traffic between them.
 
 [Learn how to get started with {{ PRODUCT }} {{ PRODUCT_EDGE }}.](/guides/performance/getting_started) 

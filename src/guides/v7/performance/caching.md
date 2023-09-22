@@ -55,7 +55,7 @@ Define a caching policy through:
 
 ### Cache Directives (Response Headers) {/* cache-directives */}
 
-An origin server or the Serverless layer may include headers in the response that contain cache directives. These cache directives may determine how long our servers will cache that response. By default, our servers honor the following response headers:
+An origin server or the {{ PRODUCT }} cloud may include headers in the response that contain cache directives. These cache directives may determine how long our servers will cache that response. By default, our servers honor the following response headers:
 
 - **Cache-Control: private:** Prevents our servers from caching the response.
 - **Cache-Control: no-store:** Prevents our servers from caching the response.

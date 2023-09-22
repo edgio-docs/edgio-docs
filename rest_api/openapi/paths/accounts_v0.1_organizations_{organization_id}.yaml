@@ -1,8 +1,8 @@
 get:
   tags:
     - organizations
-  summary: Read organization
-  description: Read organization
+  summary: Get Organization
+  description: Retrieves information about an organization.
   operationId: getAccountsV01OrganizationsOrganizationId
   parameters:
     - name: organization_id
@@ -12,13 +12,13 @@ get:
         type: string
   responses:
     '200':
-      description: Read organization
+      description: Retrieves information about an organization.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Accounts_V1_Entities_Organization.yaml
     '400':
-      description: UserError
+      description: Bad Request
       content:
         application/json:
           schema:
@@ -36,13 +36,13 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: RecordNotFound
+      description: Not Found
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: ServerError
+      description: Internal Server Error
       content:
         application/json:
           schema:
@@ -50,8 +50,8 @@ get:
 delete:
   tags:
     - organizations
-  summary: Delete organization
-  description: Delete organization
+  summary: Delete Organization
+  description: Deletes an organization.
   operationId: deleteAccountsV01OrganizationsOrganizationId
   parameters:
     - name: organization_id
@@ -61,13 +61,13 @@ delete:
         type: string
   responses:
     '204':
-      description: Delete organization
+      description: Deletes an organization.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Accounts_V1_Entities_Organization.yaml
     '400':
-      description: UserError
+      description: Bad Request
       content:
         application/json:
           schema:
@@ -85,13 +85,13 @@ delete:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: RecordNotFound
+      description: Not Found
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: ServerError
+      description: Internal Server Error
       content:
         application/json:
           schema:
@@ -99,8 +99,8 @@ delete:
 patch:
   tags:
     - organizations
-  summary: Update organization
-  description: Update organization
+  summary: Update Organization
+  description: Updates an organization.
   operationId: patchAccountsV01OrganizationsOrganizationId
   parameters:
     - name: organization_id
@@ -117,13 +117,13 @@ patch:
     required: true
   responses:
     '200':
-      description: Update organization
+      description: Updates an organization.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Accounts_V1_Entities_Organization.yaml
     '400':
-      description: UserError
+      description: Bad Request
       content:
         application/json:
           schema:
@@ -141,13 +141,13 @@ patch:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: RecordNotFound
+      description: Not Found
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: ServerError
+      description: Internal Server Error
       content:
         application/json:
           schema:

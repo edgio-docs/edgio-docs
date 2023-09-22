@@ -12,4 +12,4 @@ properties:
     type: string
   secret:
     type: boolean
-description: Create or replace environment variable
+description: Create or replace an environment variable.

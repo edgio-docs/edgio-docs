@@ -6,6 +6,13 @@ type: object
 properties:
   environment_id:
     type: string
+    description: >
+      An environment's system-defined ID (e.g.,
+      12345678-1234-1234-1234-1234567890ab).
+
+
+      From the Edgio Console, navigate to the desired environment and then click
+      **Settings**. It is listed under **Environment ID**.
   origins:
     $ref: >-
       ../../edgecontrol/schema-base.json#/definitions/property/properties/origins
@@ -16,9 +23,12 @@ properties:
     $ref: ../../edgecontrol/schema-base.json#/definitions/property/properties/rules
   experiments:
     type: array
-    description: List of experiments for the configuration.
+    description: List of experiments.
     example:
       - {}
     items:
       type: string
-description: Replace and deploy a complete edge configuration for the given environment
+description: >
+  Deploys your configuration to a specific environment. This deployment
+  overwrites any existing origin configurations, hostnames, rules, and
+  experiments.

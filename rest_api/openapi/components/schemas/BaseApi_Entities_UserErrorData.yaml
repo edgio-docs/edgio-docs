@@ -2,5 +2,7 @@ type: object
 properties:
   path:
     type: string
+    description: The requested endpoint's path.
   message:
     type: string
+    description: A brief description of the error.

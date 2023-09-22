@@ -1,8 +1,11 @@
 post:
   tags:
     - configs
-  summary: Deploy Edge Configuration on environment
-  description: Replace and deploy a complete edge configuration for the given environment
+  summary: Deploy CDN Configuration
+  description: >
+    Deploys your configuration to a specific environment. This deployment
+    overwrites any existing origin configurations, hostnames, rules, and
+    experiments.
   operationId: postConfigV01Configs
   requestBody:
     content:
@@ -12,15 +15,16 @@ post:
     required: true
   responses:
     '202':
-      description: >-
-        Replace and deploy a complete edge configuration for the given
-        environment
+      description: >
+        Deploys your configuration to a specific environment. This deployment
+        overwrites any existing origin configurations, hostnames, rules, and
+        experiments.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Config_V1_Entities_Config.yaml
     '400':
-      description: UserError
+      description: Bad Request
       content:
         application/json:
           schema:
@@ -38,13 +42,13 @@ post:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: RecordNotFound
+      description: Not Found
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: ServerError
+      description: Internal Server Error
       content:
         application/json:
           schema:

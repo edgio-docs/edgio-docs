@@ -1,39 +1,48 @@
 get:
   tags:
     - properties
-  summary: List properties
-  description: List properties
+  summary: Get All Properties
+  description: Returns all properties.
   operationId: getAccountsV01Properties
   parameters:
     - name: page
       in: query
-      description: Page number starting from 0
+      description: 0-based page number.
       schema:
         type: integer
         format: int32
         default: 0
     - name: page_size
       in: query
-      description: 'Number of results per page. Accepted value from 1-100. Default: 20'
+      description: >-
+        Number of results per page. Valid values are: 1 - 100. **Default
+        value:** 20
       schema:
         type: integer
         format: int32
         default: 20
     - name: organization_id
       in: query
+      description: >
+        An organization's system-defined ID (e.g.,
+        12345678-1234-1234-1234-1234567890ab). 
+
+
+        From the Edgio Console, navigate to the desired organization and then
+        click **Settings**. It is listed under **Organization ID**.
       required: true
       schema:
         type: string
   responses:
     '200':
-      description: List properties
+      description: Returns all properties.
       content:
         application/json:
           schema:
             $ref: >-
               ../components/schemas/Accounts_V1_Entities_Property_Collection.yaml
     '400':
-      description: UserError
+      description: Bad Request
       content:
         application/json:
           schema:
@@ -51,13 +60,13 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: RecordNotFound
+      description: Not Found
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: ServerError
+      description: Internal Server Error
       content:
         application/json:
           schema:
@@ -65,8 +74,8 @@ get:
 post:
   tags:
     - properties
-  summary: Create a new property
-  description: Create a new property
+  summary: Create Property
+  description: Create a property.
   operationId: postAccountsV01Properties
   requestBody:
     content:
@@ -76,13 +85,13 @@ post:
     required: true
   responses:
     '201':
-      description: Create a new property
+      description: Create a property.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Accounts_V1_Entities_Property.yaml
     '400':
-      description: UserError
+      description: Bad Request
       content:
         application/json:
           schema:
@@ -100,13 +109,13 @@ post:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: RecordNotFound
+      description: Not Found
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: ServerError
+      description: Internal Server Error
       content:
         application/json:
           schema:

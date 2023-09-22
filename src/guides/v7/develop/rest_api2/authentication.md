@@ -221,30 +221,23 @@ Requests for access tokens requires:
     -   `<SECRET>`**:** Represents the secret assigned to your REST API client.
     -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. Common scopes are listed below.
 
-**Sample request:**
+**Sample access token request:**
 
 ``` curl
-POST https://{{ IDENTITY_TOKEN_DOMAIN }}/connect/token HTTP/1.1
-Accept: application/json
-Content-Type: application/x-www-form-urlencoded
-Host: {{ IDENTITY_TOKEN_DOMAIN }}
-
-client_id=J23d...B2Cd&client_secret=Fdad...DF3v&grant_type=client_credentials&scope=app.waf
+curl --request POST \
+  --url https://{{ IDENTITY_TOKEN_DOMAIN }}/connect/token \
+  --header 'content-type: application/x-www-form-urlencoded' \
+  --data 'client_id=J23d...B2Cd&client_secret=Fdad...DF3v&grant_type=client_credentials&scope=app.waf'
 ```
 
 **Sample response:**
 
 ```
-HTTP/1.1 200 OK
-Cache-Control: no-store, no-cache, max-age=0
-Content-Type: application/json; charset=UTF-8
-Date: Thu, 15 Apr 2021 12:00:00 GMT
-Content-Length: 830
-
 {
     "access_token": "A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ",
     "expires_in": 300,
-    "token_type": "Bearer"
+    "token_type": "Bearer",
+    "scope": "app.waf"
 }
 ```
 

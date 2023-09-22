@@ -97,16 +97,11 @@ curl --request POST \
 **Sample response:**
 
 ```
-HTTP/1.1 200 OK
-Cache-Control: no-store, no-cache, max-age=0
-Content-Type: application/json; charset=UTF-8
-Date: Thu, 15 Apr 2021 12:00:00 GMT
-Content-Length: 830
-
 {
     "access_token": "A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ",
     "expires_in": 300,
-    "token_type": "Bearer"
+    "token_type": "Bearer",
+    "scope": "app.waf"
 }
 ```
 

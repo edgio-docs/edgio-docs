@@ -16,7 +16,7 @@ Authentication requires passing a unique value (i.e., token). Generate a token g
 Get started with our latest APIs by performing the following steps:
 
 1. [Create an API client](#administering-api-clients) for the desired application. Authorize this client by only assigning it the [scope(s)](#scopes) required by the endpoint(s) with which it will interact.
-2. Use this client's ID and secret key to [generate a temporary access token](#generating-access-tokens).
+2. Use this client's ID, secret key, and scopes to [generate a temporary access token](#generating-access-tokens).
 3. [Authorize your API requests](#authorizing-requests) using the temporary access token generated in the previous step.
 
 ## OAuth 2.0 Authorization Flow {/*oauth20-authorization-flow*/}
@@ -85,12 +85,7 @@ The above hierarchy allows you to grant broad or narrow permissions to your clie
     
     `app.bot_security` -->
 -   One or more scope(s) must also be defined when requesting an access token. You may only specify a scope that has been explicitly granted or inherited from a broader scope.
--   Common scopes are listed below.
-    | Scope  | Description  |
-    |---|---|
-    | app.waf  | Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules.   |
-    | app.bot_security  | Authorizes full access to Bot Manager.  |
-    | app.api_security  | Authorizes full access to API Security.  |
+-   [Learn more about our scopes.](https://basic-security-ecdocs-production.edgio.link/preview/rest_api.html#section/Scopes)
 
 ## Client Applications {/*client-applications*/}
 

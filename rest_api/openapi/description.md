@@ -24,14 +24,14 @@ Key information about our REST API services:
     
 -   **Programming Language:** Agnostic
     
-    Our REST API services are designed to be programming language-agnostic. Feel free to use your preferred programming language (e.g., C#, C, PHP, Perl, etc.).
+    Our REST API services are designed to be programming language-agnostic. Feel free to use your preferred programming language (e.g., JavaScript, Python, C#, etc.).
 
 -   **Services:** Our REST API consists of the following services:
 
     | Service      | Functionality                                                                                                               |
     | ------------ | --------------------------------------------------------------------------------------------------------------------------- |
     | cache        | Purge cached content and find out purge status.                                                                             |
-    | config       | Deploy CDN configurations and retrieve deployment information and log data                                                  |
+    | config       | Deploy CDN configurations, retrieve deployment information and log data, and manage environment variables.                  |
     | accounts     | Retrieve and manage organizations, properties, and environments.                                                            |
     | waf          | Retrieve and manage the following configurations: security apps, access rules, rate rules, custom rules, and managed rules. |
     | bot-security | Retrieve and manage bot manager configurations.                                                                             |
@@ -42,7 +42,7 @@ Key information about our REST API services:
 Get started with our latest APIs by performing the following steps:
 
 1. <a href="https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients" target="_blank">Create an API client</a> for the desired application from the <a href="https://account.edgio.app/#/clients" target="_blank">Account dashboard (account.edgio.app)</a>. Grant the set of scope(s) required by the endpoint(s) with which it will interact.
-2. Use this client's ID and secret key to [generate a temporary access token](#section/Access-Tokens).
+2. Use this client's ID, secret key, and scopes to [generate a temporary access token](#section/Access-Tokens).
 3. Authorize your API requests by passing the temporary access token generated in the previous step through the `Authorization` request header.
 
 ```
@@ -55,41 +55,24 @@ curl --request GET \
 
 A scope authorizes an API client to perform specific actions (e.g., create and retrieve configurations). One or more scope(s) must also be defined when requesting an access token. You may only specify a scope that has been explicitly granted or inherited from a broader scope. Common scopes are listed below.
 
-| Scope            | Description                                                                                         |
-| ---------------- | --------------------------------------------------------------------------------------------------- |
-| app.cache        | Authorizes full access for purging cached content and retrieve purge status information.            |
-| app.config       | Authorizes full access for deploying CDN configurations and retrieving deployment information and log data. |
-| app.account      | Authorizes full access to manage organizations, properties, and environments.                       |
-| app.waf          | Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules. |
-| app.bot_security | Authorizes full access to Bot Manager.                                                              |
-| app.api_security | Authorizes full access to API Security.                                                             |
+| Scope            | Description                                                                                                                                  |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| app.cache        | Authorizes full access for purging cached content and retrieve purge status information.                                                     |
+| app.config       | Authorizes full access for deploying CDN configurations, retrieving deployment information and log data, and managing environment variables. |
+| app.account      | Authorizes full access to manage organizations, properties, and environments.                                                                |
+| app.waf          | Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules.                                          |
+| app.bot_security | Authorizes full access to Bot Manager.                                                                                                       |
+| app.api_security | Authorizes full access to API Security.                                                                                                      |
 
 ## Access Tokens 
 
-Each request to a REST API service must be authorized by passing an access token to the `Authorization` request header.
+Each request to a REST API service must be authorized by passing an access token to the `Authorization` request header. Access tokens provide temporary authorization (e.g., 1 minute) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
 
-**Sample Authorization request header:**
-```
-Authorization: Bearer A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ
-```
+Requesting an access token requires:
 
-**Sample API request:**
+-   Submitting a `POST` request to the following URL:
 
-```
-curl --request GET \
-     --url https://edgioapis.com/waf/v0.9/12345678-1234-1234-1234-1234567890ab/scopes \
-     --header 'Authorization: Bearer  A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ'
-```
-
-Access tokens provide temporary authorization (e.g., 1 minute) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
-
-**Access token request:** 
-
-```
-POST https://id.edgio.app/connect/token
-```
-
-Requests for access tokens requires:
+    `https://id.edgio.app/connect/token`
 
 -   A `Content-Type` header set to `application/x-www-form-urlencoded`.
 -   A request body set to:
@@ -105,12 +88,10 @@ Requests for access tokens requires:
 **Sample access token request:**
 
 ``` curl
-POST https://id.edgio.app/connect/token HTTP/1.1
-Accept: application/json
-Content-Type: application/x-www-form-urlencoded
-Host: id.edgio.app
-
-client_id=J23d...B2Cd&client_secret=Fdad...DF3v&grant_type=client_credentials&scope=app.waf
+curl --request POST \
+  --url https://id.edgio.app/connect/token \
+  --header 'content-type: application/x-www-form-urlencoded' \
+  --data 'client_id=J23d...B2Cd&client_secret=Fdad...DF3v&grant_type=client_credentials&scope=app.waf'
 ```
 
 **Sample response:**
@@ -127,6 +108,18 @@ Content-Length: 830
     "expires_in": 300,
     "token_type": "Bearer"
 }
+```
+
+### Authorizing Requests
+
+Pass an access token through the `Authorization` header when requesting the desired API operation.
+
+**Sample API request:**
+
+```
+curl --request GET \
+     --url https://edgioapis.com/waf/v0.9/12345678-1234-1234-1234-1234567890ab/scopes \
+     --header 'Authorization: Bearer  A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ'
 ```
 
 ## HTTP Methods

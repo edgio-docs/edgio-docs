@@ -4,34 +4,22 @@ title: REST API
 
 Our REST-compliant web services facilitate the integration of {{ PRODUCT }} into your workflow(s), applications, or interfaces.
 
-Learn basic information about our services:
+Learn basic information about our REST API:
 
--   **Protocol:** HTTPS
-    
-    Communication (i.e., request-response) with our web services is only permitted via HTTPS. This ensures the privacy and integrity of your data.
+-   Requests to our REST API require authentication. Authentication requires:
 
--   **Authentication/Authorization:** `Authorization` Header
+    -   An API client. [Learn how to generate an API client.](/guides/develop/rest_api/authentication#administering-api-clients)
+    -   An access token. 
     
-    Our REST API services require authentication and authorization before a request to one of our endpoints will be honored.
-    
-    Authenticate and authorize your requests by passing the `Authorization` header with the following value:
-       
-    `Authorization: Bearer <OAUTH 2.0 TOKEN>`
-    
-    Requests are authorized via OAuth 2.0.  [Learn more about authorization.](/develop/rest_api/authentication)
+        [Generate an access token](https://basic-security-ecdocs-production.edgio.link/preview/rest_api.html#section/Access-Tokens) by posting an API client's ID, secret key, and the desired [scopes](https://basic-security-ecdocs-production.edgio.link/preview/rest_api.html#section/Scopes).
 
--   **Request-Response (Accept and Content-Type):** JSON
-    
-    We expect the request body be formatted using JavaScript Object Notation (JSON). Inform our web servers that the expected format for the request-response will be JSON through the `Accept` and `Content-Type` request headers.
-    
--   **Programming Language:** Agnostic
-    
-    Our REST API services are designed to be programming language-agnostic. Feel free to use your preferred programming language (e.g., C#, C, PHP, Perl, etc.).
+    -   Passing the access token through the `Authorization` header when requesting a REST API operation. 
 
--   **Services:** Our REST API consists of the following services:
-    -   **accounts:** This service contains operations that allow you to retrieve and administer teams, properties, and environments.
-    -   **config:** This service contains operations that allow you to retrieve and set an environment's configuration.
-    -   **cache:** This service contains operations that allow you to purge content and retrieve status information for a purge request. 
-    -   **waf:** This service contains operations that allow you to retrieve and administer the following configurations: security apps, access rules, rate rules, custom rules, and managed rules.
-    -   **bot-security:** This service contains operations that allow you to retrieve and administer Bot Manager configurations.
-    -   **api-security:** This service contains operations that allow you to retrieve and administer API Security configurations.
+        ```
+        curl --request GET \
+             --url https://edgioapis.com/waf/v0.9/12345678-1234-1234-1234-1234567890ab/scopes \
+             --header 'Authorization: Bearer  A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ'
+        ```
+-   The [base URL](https://basic-security-ecdocs-production.edgio.link/preview/rest_api.html#section/Request-URL) varies according to the operation being requested.
+
+[View our REST API reference.](https://basic-security-ecdocs-production.edgio.link/preview/rest_api.html)

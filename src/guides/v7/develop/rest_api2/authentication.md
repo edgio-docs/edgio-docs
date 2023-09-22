@@ -85,7 +85,7 @@ The above hierarchy allows you to grant broad or narrow permissions to your clie
     
     `app.bot_security` -->
 -   One or more scope(s) must also be defined when requesting an access token. You may only specify a scope that has been explicitly granted or inherited from a broader scope.
--   [Learn more about our scopes.](https://basic-security-ecdocs-production.edgio.link/preview/rest_api.html#section/Scopes)
+-   [Learn more about our scopes.]({{ API_DOCS_URL }}#section/Scopes)
 
 ## Client Applications {/*client-applications*/}
 

@@ -55,6 +55,7 @@ const STATUS_URL = `https://status.${DOMAIN}`;
 const HELP_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const SUPPORT_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const DOCS_URL = `https://${DOCS_DOMAIN}`;
+const API_DOCS_URL = `https://basic-security-ecdocs-production.edgio.link/preview/rest_api.html`;
 const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
 const API_URL = `https://${API_DOMAIN}`;
 const IDENTITY_URL = `https://${IDENTITY_DOMAIN}`;
@@ -176,6 +177,7 @@ const config = {
   DOCS_PAGES_REPO_URL,
   DOCS_REPO,
   DOCS_URL,
+  API_DOCS_URL,
   DOMAIN,
   DOMAIN_LEGACY,
   EDGEJS_LABEL,

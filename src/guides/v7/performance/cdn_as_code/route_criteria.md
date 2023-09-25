@@ -8,29 +8,23 @@ As outlined in the [Route Criteria](/guides/performance/cdn_as_code#route-criter
 
 ## Matching All Requests {/* matching-all-requests */}
 
-To match all incoming requests, traditionally you would use the `.match()` method specifying an empty object as the first argument:
+Match all requests through either of the following methods:
 
-```js
-router.match({}, {
-  /* ... */
-});
-```
+- [`.match`](/docs/api/core/classes/router_Router.default.html#match) with an empty criteria object
 
-This method matches all requests, regardless of path, method, query parameters, cookies, or request headers.
+  ```js
+  router.match({}, {
+    /* ... */
+  });
+  ```
 
-<Callout type="info">
-
-  Starting from {{ PRODUCT }} v7.2.0, an alternative method was introduced: [`always()`](/docs/api/core/classes/router_Router.default.html#always). Its usage is analogous to `.match({})` and is designed for scenarios where you wish to apply logic to all incoming requests without specific conditions.
+- [`always`](/docs/api/core/classes/router_Router.default.html#always) (requires {{ PRODUCT }} v7.2.0 or later)
 
   ```js
   router.always({
     /* ... */
   });
   ```
-
-</Callout>
-
-
 ## Simple Path Matching {/* simple-path-matching */}
 
 The syntax for route paths utilizing simple matching is provided by [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp), which is the same library used by [Express](https://expressjs.com/).

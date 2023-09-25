@@ -426,19 +426,22 @@ Learn more advanced syntax with [Route Features](/guides/performance/cdn_as_code
 
 ### Defining Routes {/* defining-a-route */}
 
-Routes are defined by calling a method on the `Router` class based on the HTTP method you intend to match. For example, you can handle a `GET` request a specific path or pattern using the `Router.get(...)` method. The router contains methods for all the supported HTTP methods. The following methods are available:
+Routes are defined by calling a method on the `Router` class. While most methods correspond to HTTP methods, others allow for more flexible request matching.
 
-- `always` (matches all requests)
-- `delete`
+#### General Matching Methods:
+- `always` (matches all requests; requires {{ PRODUCT }} v7.2.0 or later)
+- `match` (matches on criteria including path, method, headers, cookies, and query string parameters)
+
+#### Standard HTTP Methods:
 - `get`
-- `head`
-- `match` (matches any HTTP method)
-- `options`
-- `patch`
 - `post`
 - `put`
+- `delete`
+- `patch`
+- `options`
+- `head`
 
-A full list of supported functions can be found in the [Router API documentation](/docs/api/core/classes/router_Router.default.html).
+For a complete list and details, refer to the [Router API documentation](/docs/api/core/classes/router_Router.default.html).
 
 ## Route Execution {/* route-execution */}
 

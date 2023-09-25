@@ -83,7 +83,7 @@ Requesting an access token requires:
 
     -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your REST API client.
     -   `<SECRET>`**:** Represents the secret assigned to your REST API client.
-    -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. Common scopes are listed below.
+    -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. 
 
 **Sample access token request:**
 

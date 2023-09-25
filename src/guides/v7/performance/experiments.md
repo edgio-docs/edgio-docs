@@ -20,40 +20,15 @@ Set up your experiments through the following steps:
 
 ## How Does It Work? {/*how-does-it-work*/}
 
-Once you have deployed at least one experiment, then each client will be assigned a value from 0 - 99 through the `{{ HEADER_PREFIX }}-experiments` cookie. This value will persist until the client clears their cookies. If the client satisfies an experiment's criteria, then this value determines the variant to which it will be assigned. 
+Once you have deployed at least one experiment, then each client will be assigned a random value from 0 - 99 through the `{{ HEADER_PREFIX }}-experiments` cookie. This value will persist until the client clears their cookies. This random value is critical for determining the variant(s) that will be assigned to the client. An experiment must contain two or more variants and each variant variant identifies the set of actions that will be applied to a request.
 
-If a request satisfies the criteria for one or more experiments, it is assigned the `{{ HEADER_PREFIX }}-experiments-info` cookie. This cookie identifies each variant of an experiment that has been assigned to the client. A variant identifies the set of actions that will be applied to the request. This cookie will persist until your experiment configuration changes or the client clears their cookies. 
+A client is eligible to participate in an experiment if the request satisfies the experiment's criteria. The response for experiment-eligible requests includes a `server-timing` header that identifies each variant of an experiment that has been assigned to the client. 
 
-## Experimentation Cookies {/*experimentation-cookies*/}
+<Callout type="info">
 
-Experimentation assigns the `{{ HEADER_PREFIX }}-experiments` and the `{{ HEADER_PREFIX }}-experiments-info` cookie to each client.
+  {{ PRODUCT }} adds [experimentation metadata](#experimentation-metadata) to each experiment-eligible request. Specifically, it adds a header to the request sent from {{ PRODUCT }} to the origin and it adds metadata to the response sent from {{ PRODUCT }} to the client. This allows you to use variant information within your application(s). The [{{ PRODUCT }} Experimentation repository (https://github.com/Edgio/Experimentation)](https://github.com/Edgio/Experimentation) contains utilities to facilitate the extraction of experiment and variant metadata.
 
-#### {{ HEADER_PREFIX }}-experiments Cookie {/*-experiments-cookie*/}
-
-This cookie assigns a value from 0 - 99 to a client. Once a client has been assigned a number, it will persist. This allows you to slowly ramp up traffic sent to a particular variant. 
-
-**Sample Cookie:** 
-
-`{{ HEADER_PREFIX }}-experiments=27`
-
-#### {{ HEADER_PREFIX }}-experiments-info Cookie {/*-experiments-info-cookie*/}
-
-This cookie assigns variants to a client. It uses the following syntax for each variant that has been assigned to a client:
-
-`%22<EXPERIMENT>_<BUCKET>%22:%22<VARIANT>_<VARIANT ID>%22` 
-
-The above variables are defined below: 
-
--   `<EXPERIMENT>`**:** The name of the experiment.
--   `<BUCKET>`**:** The system-defined ID of the bucket assigned to the client.
--   `<VARIANT>`**:** The name of the variant. If the client has not been assigned to a variant, then it will return `null` instead of `<VARIANT>_<VARIANT_ID>`. 
--   `<VARIANT ID>`**:** The variant's system-defined ID.
-
-If multiple experiments have been applied to the client, then they will be delimited by a comma. 
-
-**Sample Cookie:** 
-
-`{{ HEADER_PREFIX }}-experiments-info=%7B%22Landing_page_1238476236%22:%22New_landing_page_816213%22,%22Banner_8123712%22:%22Existing_banner_712312%22%7D`
+</Callout>
 
 ## Experiments {/*experiments*/}
 
@@ -193,3 +168,50 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 2.  Click on the <Image inline src="/images/v7/icons/delete-5.png" alt="Delete" /> icon next to the desired experiment.
 3.  When prompted, confirm the deletion by clicking **Delete experiment**.
 4.  Click  **Deploy Changes**.
+
+## Experimentation Metadata {/*experimentation-metadata*/}
+
+Experimentation assigns the `{{ HEADER_PREFIX }}-experiments` cookie to each client. If a client qualifies for one or more experiment(s), we will also provide experimentation information through a `{{ HEADER_PREFIX }}-experiments-info` upstream request header and the `server-timing` response header.
+
+#### {{ HEADER_PREFIX }}-experiments Cookie {/*-experiments-cookie*/}
+
+This cookie assigns a value from 0 - 99 to a client. Once a client has been assigned a number, it will persist until the client clears their cookies. This ensures a consistent experience across multiple browsing sessions. 
+
+**Sample Cookie:** 
+
+`{{ HEADER_PREFIX }}-experiments=24`
+
+#### {{ HEADER_PREFIX }}-experiments-info Upstream Request Header {/*-experiments-info-upstream-request-header*/}
+
+The `{{ HEADER_PREFIX }}-experiments-info` request header tracks the variants assigned to a client. Once a client has been assigned at least one variant, {{ PRODUCT }} add this header to the request sent to the origin. It contains the following syntax for each variant that has been assigned to a client:
+
+`%22<EXPERIMENT>_<BUCKET>%22%3A%22<VARIANT>_<VARIANT ID>%22`
+
+The above variables are defined below: 
+
+-   `<EXPERIMENT>`**:** The name of the experiment.
+-   `<BUCKET>`**:** The system-defined ID of the bucket assigned to the client.
+-   `<VARIANT>`**:** The name of the variant. If the client has not been assigned to a variant, then it will return `null` instead of `<VARIANT>_<VARIANT_ID>`. 
+-   `<VARIANT ID>`**:** The variant's system-defined ID.
+
+**Sample Value:** 
+
+`{{ HEADER_PREFIX }}-experiments-info: %7B%22Landing_page_1238476236%22:%22New_landing_page_816213%22,%22Banner_8123712%22:%22Existing_banner_712312%22%7D`
+
+#### Server-Timing Response Header {/*server-timing-response-header*/}
+
+The `server-timing` response header tracks the variants assigned to a client. It contains the following syntax for each variant that has been assigned to a client:
+
+`experiments;desc=%7B%22<EXPERIMENT>_<BUCKET>%22%3A%22<VARIANT>_<VARIANT ID>%22%7D`
+
+<Callout type="info">
+
+  Definitions for the above variables are provided within the [{{ HEADER_PREFIX }}-experiments-info Upstream Request Header section](#-experiments-info-upstream-request-header).
+
+</Callout>
+
+If multiple experiments have been applied to the client, then they will be delimited by a comma. 
+
+**Sample Server-Timing Response Header:** 
+
+`edgio_cache;desc=UNCACHEABLE,edgio_pop;desc=lac,edgio_country;desc=US,experiments;desc=%7B%22myexperiment_1695661110792%22%3A%22altlandingpage_1695661135500%22%7D`

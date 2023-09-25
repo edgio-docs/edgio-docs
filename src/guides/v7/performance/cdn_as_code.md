@@ -478,6 +478,8 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 {{ CLI_CMD(deploy) }}
 ```
 
+{{ system_origins_callout.md }}
+
 Assess performance and caching behavior from the {{ PORTAL_LINK }}. Fine-tune your configuration by adding routes and then redeploying your property. Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
 
 [Learn more.](/guides/basics/hostnames_and_origins#serving-traffic-through)

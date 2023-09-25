@@ -15,18 +15,22 @@ Experimentation allows you to serve different website experiences to your client
 Set up your experiments through the following steps:
 
 1.  Identify the environment (e.g., `production`) that will be configured.
-2.  Define one or more experiment(s) for that environment. For each experiment, you must define two or more variants. Each variant identifies the percentage of traffic to which a set of actions will be applied.
+2.  Define one or more experiment(s) for that environment. 
+
+    For each experiment, you must define two or more variants. Each variant identifies the percentage of traffic to which a set of actions will be applied.
 3.  Apply your experiment(s) to that environment by deploying your changes.
 
 ## How Does It Work? {/*how-does-it-work*/}
 
-Once you have deployed at least one experiment, then each client will be assigned a random value from 0 - 99 through the `{{ HEADER_PREFIX }}-experiments` cookie. This value will persist until the client clears their cookies. This random value is critical for determining the variant(s) that will be assigned to the client. An experiment must contain two or more variants and each variant variant identifies the set of actions that will be applied to a request.
+Once you have deployed at least one experiment, then each client will be assigned a random value from 0 - 99 through the `{{ HEADER_PREFIX }}-experiments` cookie. This value will persist until the client clears their cookies. This random value is critical for determining the variant(s) that will be assigned to the client. An experiment must contain two or more variants and each variant identifies the set of actions that will be applied to a request.
 
-A client is eligible to participate in an experiment if the request satisfies the experiment's criteria. The response for experiment-eligible requests includes a `server-timing` header that identifies each variant of an experiment that has been assigned to the client. 
+A client is eligible to participate in an experiment if the request satisfies the experiment's criteria. {{ PRODUCT }} processes the request with the set of actions associated with each variant assigned to the client. 
 
-<Callout type="info">
+{{ PRODUCT }} adds [experimentation metadata](#experimentation-metadata) to each experiment-eligible request. Specifically, it adds a header to the request sent from {{ PRODUCT }} to the origin and it adds metadata to the response sent from {{ PRODUCT }} to the client. This allows you to use variant information within your application(s). 
 
-  {{ PRODUCT }} adds [experimentation metadata](#experimentation-metadata) to each experiment-eligible request. Specifically, it adds a header to the request sent from {{ PRODUCT }} to the origin and it adds metadata to the response sent from {{ PRODUCT }} to the client. This allows you to use variant information within your application(s). The [{{ PRODUCT }} Experimentation repository (https://github.com/Edgio/Experimentation)](https://github.com/Edgio/Experimentation) contains utilities to facilitate the extraction of experiment and variant metadata.
+<Callout type="tip">
+
+  The [{{ PRODUCT }} Experimentation repository (https://github.com/Edgio/Experimentation)](https://github.com/Edgio/Experimentation) contains utilities to facilitate the extraction of experiment and variant metadata.
 
 </Callout>
 

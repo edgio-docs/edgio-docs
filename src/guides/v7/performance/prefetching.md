@@ -8,7 +8,92 @@ title: Predictive Prefetch
 
 You might think that prefetching will put significant additional load on the infrastructure hosting your APIs. That's actually not the case! {{ PRODUCT_NAME }} only serves prefetch requests from the edge cache. It will never make a request to the origin if a prefetch request cannot be served from the edge cache, so your servers will never see an increased load.
 
-## Configuring the Service Worker {/* configuring-the-service-worker */}
+## Prefetching with a traditional site
+To integrate prefetching into your existing site without needing to build a custom service-worker file, you can use our pre-built SW with `@edgio/prefetch/sw/Prefetcher`.
+This solution is suitable for most of the sites that are not using any JS front-end framework or can't be hosted on Edgio Sites for any other reason.
+
+### Registering the Service Worker {/* registering-the-service-worker-with-pre-built-package */}
+To register the pre-built service worker and enable prefetching, you simply need to add the following script tag to your existing site's HTML:
+
+```html filename="index.html"
+<script src="/__edgio__/prefetch/install.js"></script>
+```
+This script tag will always install the latest version of pre-built [@edgio/prefetch](https://www.npmjs.com/package/@edgio/prefetch?activeTab=versions) package. 
+If you wish to install specific version of this package, you can do so by adding the version to the script tag like this:
+```html filename="index.html" 
+<script src="/__edgio__/prefetch/v7.2.5/install.js"></script>
+```
+
+Usage example:
+```html filename="index.html"
+<html>
+<head>
+    <title>My awesome site</title>
+</head>
+<body>
+    <h1>My awesome page</h1>
+    <p>This site uses pre-built @edgio/prefetch from the CDN</p>
+    
++   <script src="/__edgio__/prefetch/install.js"></script>
+</body>
+</html> 
+```
+
+The following additional config attributes are available:
+
+| Option                       | Description                                                                                                                                                                  | Default |
+| ---------------------------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ------- |
+| `data-include-cache-misses`  | Set this option to true to send all requests to the origin even when they are not yet in the Edge cache.                                                                     | `false` |
+| `data-force-prefetch-ratio`  | This option allows to set probability that a prefetch request will be relayed to the origin even if a response is not in the cache. This should be a number between 0 and 1. | `0`     |
+
+Usage example:
+```html filename="index.html"
+<script src="/__edgio__/prefetch/install.js" data-include-cache-misses="true" data-force-prefetch-ratio="0.5"></script>
+```
+
+### Automatic Prefetching {/* automatic-prefetching-with-pre-built-package */}
+When the pre-built @edgio/prefetch is installed on your site, it will automatically prefetch all links on your site that are in the screen viewport and match any of the configured [Rules](/guides/v7/performance/rules#rules) that sets [`caching.max_age`](https://docs.edg.io/guides/v7/performance/rules/features#set-max-age) and [`caching.service_worker_max_age`](/guides/v7/performance/rules/features#set-service-worker-max-age) features.
+The resource is then cached in the browser for given amount of time which is defined by the `caching.service_worker_max_age` feature.
+The prefetch requests will succeed only in case the resource is already in the edge cache by default to not overload your origin servers.
+
+Let's start with following example:
+```html filename="index.html"
+<html>
+<head>
+    <title>My awesome site</title>
+</head>
+<body>
+    <h1>My awesome page</h1>
+    <p>This site uses pre-built @edgio/prefetch from the CDN</p>
+    <nav>
+        <a href="/pages/1">Page 1</a>
+        <a href="/pages/2">Page 2</a>
+        <a href="/pages/3">Page 3</a>
+    </nav>
+    
+    <script src="/__edgio__/prefetch/install.js"></script>
+</body>
+</html> 
+```
+To prefetch all navigation links in upper example we simply need to add the following rule in EdgeJS:
+```js filename="routes.js"
+import { Router } from '@edgio/core/router'
+
+export default new Router()
+    //  This rule's path matches the navigation links href attribute
+    .match("/pages/:id", {
+        caching: {
+            max_age: "1h", // Caches the response in the edge cache for 1 hour
+            service_worker_max_age: "1h" // Enables prefetching and caches the response in the browser SW cache for 1 hour
+        }
+    })
+```
+Or Console UI:
+![Prefetch rule](/images/v7/performance/prefetch_rule.png)
+
+## Prefetching with Edgio Sites
+
+### Configuring the Service Worker {/* configuring-the-service-worker */}
 
 To enable prefetching, your site's service worker needs to use the `{{ PACKAGE_NAME }}/prefetch` library's `Prefetcher` class. If your site doesn't currently have a service worker, one can easily be created using Google's [Workbox](https://developers.google.com/web/tools/workbox).
 
@@ -26,7 +111,7 @@ precacheAndRoute(self.__WB_MANIFEST || []);
 new Prefetcher().route();
 ```
 
-## Serving the Service Worker {/* serving-the-service-worker */}
+### Serving the Service Worker {/* serving-the-service-worker */}
 
 After you have created a service worker, your router will need to be configued to serve the file. The following code will vary depending on the location of your service worker file. In this example, we will define a route that serves requests for `/service-worker.js`:
 
@@ -48,7 +133,7 @@ export default new Router()
   });
 ```
 
-## Registering the Service Worker {/* registering-the-service-worker */}
+### Registering the Service Worker {/* registering-the-service-worker */}
 
 Once you've created and defined a route to serve the service worker, code running in the browser window needs to register the service worker before prefetching can begin.
 
@@ -75,7 +160,7 @@ Now when your client-side code runs, the service worker will be installed and re
 
 See [InstallOptions](/docs/api/prefetch/interfaces/window_InstallOptions.default.html) for additional configuration when installing the service worker.
 
-## Defining a Prefetching Caching Policy {/* defining-a-prefetching-caching-policy */}
+### Defining a Prefetching Caching Policy {/* defining-a-prefetching-caching-policy */}
 
 To ensure that excessive prefetch traffic isn't passed on to your origin, {{ PRODUCT_NAME }} will serve prefetch requests when a cached response is available at the edge. You may configure a route that caches responses at the edge and in the service worker within your router, optionally giving it longer cache time for greater performance. In this example we define a route that caches product API calls for one hour:
 
@@ -428,4 +513,42 @@ import install from '{{ PACKAGE_NAME }}/prefetch/window/install';
 // Call the following once when the page loads to allow prefetch requests to be served when responses
 // aren't available in the edge cache:
 install({includeCacheMisses: true});
+```
+
+## The cache-manifest.js File {/* the-cache-manifestjs-file */}
+
+This file is generated during deployment and is used by the `{{ PACKAGE_NAME }}/prefetch` to automatically prefetch all links on site based on configured Rules.
+The file is publicly available on `/__edgio__/cache-manifest.js` path.
+
+It exposes the Rules with following Features:
+- [`caching.max_age`](/guides/v7/performance/rules/features#set-max-age)
+- [`caching.service_worker_max_age`](/guides/v7/performance/rules/features#set-service-worker-max-age)
+- [`caching.bypass_cache`](/guides/v7/performance/rules/features#bypass-cache)
+- [`caching.bypass_client_cache`](/guides/v7/performance/rules/features#bypass-client-cache)
+
+and Conditions:
+- [`request.path`](/guides/v7/performance/rules/conditions#path)
+- [`request.method`](/guides/v7/performance/rules/conditions#method)
+- [`request.query`](/guides/v7/performance/rules/features#query)
+- [`request.scheme`](/guides/v7/performance/rules/features#scheme)
+- [`request.origin_query_string`](/guides/v7/performance/rules/conditions#origin-query-string)
+- `request.origin_query`
+- [`request.origin_path`](/guides/v7/performance/rules/conditions#origin-path)
+
+All other features and conditions are unsupported and will be ignored.
+
+If you don't want to expose the rule publicly in this file for any reason, you can explicitly exclude it by adding `cache-manifest-ignore` comment to it.
+
+Example:
+```js filename="routes.js"
+import { Router } from '@edgio/core/router'
+
+export default new Router()
+    // This rule will not be listed in the cache-manifest.js file
+    .get("/static/my-image.png", {
+        caching: {
+            max_age: "1h", // Caches the response in the edge cache for 1 hour
+        },
+        comment: "cache-manifest-ignore"
+    })
 ```

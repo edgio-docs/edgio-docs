@@ -441,7 +441,7 @@ It's worth noting that not all implementations will be able to accept polyfills,
 ## Edge Function Examples {/* examples */}
 
 <ExampleButtons
-  title="Brunch"
+  title="Edge Functions"
   siteUrl="https://edgio-community-examples-v7-edge-functions-live.edgio.link/"
   repoUrl="https://github.com/edgio-docs/edgio-v7-edge-functions-example" />
 

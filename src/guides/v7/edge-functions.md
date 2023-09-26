@@ -445,7 +445,7 @@ It's worth noting that not all implementations will be able to accept polyfills,
   siteUrl="https://edgio-community-examples-v7-edge-functions-live.edgio.link/"
   repoUrl="https://github.com/edgio-docs/edgio-v7-edge-functions-example" />
 
-Below are some additional examples of how to use Edge Functions by {{ PRODUCT }}.
+See additional examples of how to use Edge Functions by {{ PRODUCT }}:
 
 ```js filename="./routes.js"
 // Example router assigning edge functions to different routes.

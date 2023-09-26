@@ -198,9 +198,19 @@ The above variables are defined below:
 -   `<VARIANT>`**:** The name of the variant. If the client has not been assigned to a variant, then it will return `null` instead of `<VARIANT>_<VARIANT_ID>`. 
 -   `<VARIANT ID>`**:** The variant's system-defined ID.
 
+<Callout type="info">
+
+  If multiple experiments have been applied to the client, then they will be delimited by a comma. 
+
+</Callout>
+
 **Sample Value:** 
 
-`{{ HEADER_PREFIX }}-experiments-info: %7B%22Landing_page_1238476236%22:%22New_landing_page_816213%22,%22Banner_8123712%22:%22Existing_banner_712312%22%7D`
+`{{ HEADER_PREFIX }}-experiments-info: %7B%22Landing_page_1238476236%22%3A%22New_landing_page_816213%22,%22Banner_8123712%22:%22Existing_banner_712312%22%7D`
+
+The decoded version of above URL-encoded value is:
+
+`{"Landing_page_1238476236":"New_landing_page_816213","Banner_8123712":"Existing_banner_712312"}`
 
 #### Server-Timing Response Header {/*server-timing-response-header*/}
 
@@ -213,8 +223,6 @@ The `server-timing` response header tracks the variants assigned to a client. It
   Definitions for the above variables are provided within the [{{ HEADER_PREFIX }}-experiments-info Upstream Request Header section](#-experiments-info-upstream-request-header).
 
 </Callout>
-
-If multiple experiments have been applied to the client, then they will be delimited by a comma. 
 
 **Sample Server-Timing Response Header:** 
 

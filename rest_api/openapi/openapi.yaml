@@ -1,6 +1,5 @@
 openapi: 3.0.1
 info:
-  version: 0.9
   title: Edgio REST API
   x-logo:
     url: 'https://docs.edg.io/_next/static/media/edgio-dark.ea0d686f.webp'

@@ -59,7 +59,7 @@ A scope authorizes an API client to perform specific actions (e.g., create and r
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | app.cache        | Authorizes full access for purging cached content and retrieve purge status information.                                                     |
 | app.config       | Authorizes full access for deploying CDN configurations, retrieving deployment information and log data, and managing environment variables. |
-| app.account      | Authorizes full access to manage organizations, properties, and environments.                                                                |
+| app.accounts     | Authorizes full access to manage organizations, properties, and environments.                                                                |
 | app.waf          | Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules.                                          |
 | app.bot_security | Authorizes full access to Bot Manager.                                                                                                       |
 | app.api_security | Authorizes full access to API Security.                                                                                                      |
@@ -154,7 +154,7 @@ Request headers provide information about your request to a REST API service. Th
 
 | Request Header | Description                                                                                                                                                                                                         |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Authorization  | Authorize requests through the `Authorization` request header. <a href="https://edgio-community-docs-edg-io-v7-security-api.alt.free.edgio-perma.link/guides/develop/rest_api2/authorization#authorizing-requests" target="_blank">Learn more about authorization.</a>                                                       |
+| Authorization  | Authorize requests through the `Authorization` request header. <a href="https://edgio-community-docs-edg-io-v7-security-api.alt.free.edgio-perma.link/guides/develop/rest_api2/authentication#authorizing-requests" target="_blank">Learn more about authorization.</a>                                                       |
 | Accept         | This header should indicate the format in which the response will be returned. If you pass this header, set it to: `application/json`.                                                                |
 | Content-Type   | This header should indicate the format of the request body. If you pass this header, set it to: `application/json`. <br />You may omit this header when an endpoint does not have request properties. |
 | Host           | This header, which is set by the user agent, indicates the host name corresponding to the requested endpoint (i.e., edgioapis.com or id.edgio.app).                                                                               |

@@ -613,8 +613,8 @@ const nav = {
           ],
         },
         {
-          title: 'Upgrading Edgio Packages',
-          path: 'develop/upgrading_packages',
+          title: 'Updating Edgio Packages',
+          path: 'develop/updating_packages',
         },
       ],
     },

@@ -2,7 +2,7 @@
 title: Updating {{ PRODUCT }} Packages
 ---
 
-This guide provides an overview on how to update {{ PRODUCT }} packages for your project. The steps include using the  {{ PRODUCT }} CLI and verifying the updates by checking your `package.json` file. 
+This guide outlines how to update {{ PRODUCT }} packages using our CLI - covering version updates, dependency synchronization, and adjustments needed for compatibility across minor versions.
 
 
 ## Updating Your Project {/* updating-your-project */}

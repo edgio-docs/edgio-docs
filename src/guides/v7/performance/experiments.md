@@ -208,7 +208,7 @@ The above variables are defined below:
 
 `{{ HEADER_PREFIX }}-experiments-info: %7B%22Landing_page_1238476236%22%3A%22New_landing_page_816213%22,%22Banner_8123712%22:%22Existing_banner_712312%22%7D`
 
-The decoded version of above URL-encoded value is:
+The decoded version of the above URL-encoded value is:
 
 `{"Landing_page_1238476236":"New_landing_page_816213","Banner_8123712":"Existing_banner_712312"}`
 

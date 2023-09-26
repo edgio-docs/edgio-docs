@@ -68,7 +68,7 @@ A variant identifies the percentage of traffic to which a set of actions (aka [f
 -   [Set Variables](/guides/performance/rules/features#set-variables): Assigns a value to one or more user-defined variable(s) that are  passed to your bespoke traffic processing solution.
 -   [URL](/guides/performance/rules/features#url): Redirects or rewrites requests to a different URL.
 
-## Managing Experiments
+## Managing Experiments {/*managing-experiments*/}
 
 You may create, enable, disable, and delete experiments. You may also adjust the distribution of traffic between variants.
 
@@ -159,7 +159,7 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 2.  Perform either of the following steps:
 
     -   **Enable:** From the desired experiment, toggle the **Active** option to the on position (<Image inline src="/images/v7/icons/toggle-on-large.png" alt="Toggle on" />).
-    -   **Disable:** From the desired experiment, toggle the **Active** option to the off position (<Image inline src="/images/v7/icons/toggle-off-large.png" alt="Toggle on" />).
+    -   **Disable:** From the desired experiment, toggle the **Active** option to the off position (<Image inline src="/images/v7/icons/toggle-off-large.png" alt="Toggle off" />).
     
 3.  Click  **Deploy Changes**.
 

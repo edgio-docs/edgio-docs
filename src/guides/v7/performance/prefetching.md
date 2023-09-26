@@ -8,7 +8,7 @@ title: Predictive Prefetch
 
 You might think that prefetching will put significant additional load on the infrastructure hosting your APIs. That's actually not the case! {{ PRODUCT_NAME }} only serves prefetch requests from the edge cache. It will never make a request to the origin if a prefetch request cannot be served from the edge cache, so your servers will never see an increased load.
 
-## Prefetching with a traditional site
+## Prefetching with a traditional site {/* traditional-site */}
 To integrate prefetching into your existing site without needing to build a custom service-worker file, you can use our pre-built SW with `@edgio/prefetch/sw/Prefetcher`.
 This solution is suitable for most of the sites that are not using any JS front-end framework or can't be hosted on Edgio Sites for any other reason.
 
@@ -75,7 +75,7 @@ Let's start with following example:
 </body>
 </html> 
 ```
-To prefetch all navigation links in upper example we simply need to add the following rule in EdgeJS:
+To prefetch all navigation links in upper example we simply need to add the following rule via EdgeJS or Console UI:
 ```js filename="routes.js"
 import { Router } from '@edgio/core/router'
 
@@ -88,14 +88,50 @@ export default new Router()
         }
     })
 ```
-Or Console UI:
 ![Prefetch rule](/images/v7/performance/prefetch_rule.png)
 
-## Prefetching with Edgio Sites
+### Manual Prefetching {/* manual-prefetching-with-pre-built-package */}
+
+If you wish to prefetch some resources manually or do prefetching based on complex conditions, you can do so by calling `Edgio.prefetch()` function from your code.
+
+Example:
+```html filename="index.html"
+<html>
+<head>
+    <title>My awesome site</title>
+</head>
+<body>
+    <h1>My awesome page</h1>
+    <p>This site uses pre-built @edgio/prefetch from the CDN</p>
+    <nav>
+        <a href="/pages/1">Page 1</a>
+        <a href="/pages/2">Page 2</a>
+        <a href="/pages/3">Page 3</a>
+    </nav>
+    
+    <script src="/__edgio__/prefetch/install.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const { prefetch } = Edgio;
+            prefetch('/static/img/my-image.png');
+            prefetch('/static/img/another-image.png', 'image', {
+                // Override service_worker_max_age config for this call
+                maxAgeSeconds: 60 * 60 // 1 hour
+            });
+        });
+    </script>
+</body>
+</html> 
+```
+See the `prefetch()` function  [docs](/docs/api/prefetch/functions/window_prefetch.prefetch.html) for all config options.
+
+
+## Prefetching with Edgio Sites {/* edgio-sites */}
 
 ### Configuring the Service Worker {/* configuring-the-service-worker */}
 
-To enable prefetching, your site's service worker needs to use the `{{ PACKAGE_NAME }}/prefetch` library's `Prefetcher` class. If your site doesn't currently have a service worker, one can easily be created using Google's [Workbox](https://developers.google.com/web/tools/workbox).
+To integrate prefetching into your site using the @edgio/prefetch package, you need to build service-worker with `Prefetcher` class. 
+If your site doesn't currently have a service worker, one can easily be created using Google's [Workbox](https://developers.google.com/web/tools/workbox).
 
 Here's a sample service worker based on Workbox using the `Prefetcher` class from `{{ PACKAGE_NAME }}/prefetch`:
 

@@ -92,6 +92,7 @@ export default new Router()
 ![Prefetch rule](/images/v7/performance/prefetch_rule.png)
 
 When you now visit the page and open the Network tab in your browser's developer tools (F12), you should see that the links are automatically prefetched and cached in the browser SW cache:
+
 ![Prefetch requests on the Network tab of browser's developer tools](/images/v7/performance/prefetch_network_tab.png)
 
 ### Manual Prefetching {/* manual-prefetching-with-pre-built-package */}

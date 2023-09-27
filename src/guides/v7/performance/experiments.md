@@ -86,7 +86,7 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 2.  Click **+ Add Experiment**.
 3.  From the **Name** option, assign a name to the experiment. 
 
-    {{ PRODUCT }} populates the `{{ HEADER_PREFIX }}-experiments-info` cookie with this name. 
+    {{ PRODUCT }} populates the `{{ HEADER_PREFIX }}-experiments-info` upstream request header with this name. 
 
 4.  Optional. Restrict this experiment to a subset of your website traffic by defining one or more criterion.
 
@@ -101,7 +101,7 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 5.  Define two or more variants.
     1.  From the **Name** option, assign a name to this variant. 
 
-        {{ PRODUCT }} populates the `{{ HEADER_PREFIX }}-experiments-info` cookie with this name. 
+        {{ PRODUCT }} populates the `{{ HEADER_PREFIX }}-experiments-info` upstream request header with this name. 
 
     2.  Set the **Percentage** option to the percentage of this experiment's traffic to which this variant will be applied.
     
@@ -187,7 +187,7 @@ This cookie assigns a value from 0 - 99 to a client. Once a client has been assi
 
 #### {{ HEADER_PREFIX }}-experiments-info Upstream Request Header {/*-experiments-info-upstream-request-header*/}
 
-The `{{ HEADER_PREFIX }}-experiments-info` request header tracks the variants assigned to a client. Once a client has been assigned at least one variant, {{ PRODUCT }} add this header to the request sent to the origin. It contains the following syntax for each variant that has been assigned to a client:
+The `{{ HEADER_PREFIX }}-experiments-info` request header tracks the variants assigned to a client. {{ PRODUCT }} adds this header to requests proxied through our network to the origin. It contains the following syntax for each variant that has been assigned to a client:
 
 `%22<EXPERIMENT>_<BUCKET>%22%3A%22<VARIANT>_<VARIANT ID>%22`
 

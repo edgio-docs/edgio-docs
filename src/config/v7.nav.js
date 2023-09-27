@@ -600,11 +600,6 @@ const nav = {
               title: 'Authentication',
               path: 'develop/rest_api/authentication',
             },
-
-            {
-              title: 'Legacy Purge (Clear-Cache)',
-              path: 'develop/rest_api/cache_purge',
-            },
             {
               title: 'REST API Reference',
               path: '/rest_api/',

@@ -5,7 +5,7 @@
   "license": "CC",
   "scripts": {
     "edgio:dev": "edgio dev",
-    "edgio:build": "edgio build && yarn sitemap && yarn rest-api docs:generate",
+    "edgio:build": "yarn rest-api docs:bundle && edgio build && yarn sitemap",
     "edgio:deploy": "yarn edgio:build && edgio deploy --skip-build",
     "analyze": "ANALYZE=true next build",
     "dev": "edgio dev",

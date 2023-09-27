@@ -116,6 +116,22 @@ sources: [
 ];
 ```
 
+## cloudRuntime {/* cloudRuntime */}
+
+By default, deployments will detect what Node.js runtime is user running locally, and uses the same version in cloud. When creating new deployment, Edgio will also notify user roughly 2 months before the deprecation, so he has time to react.
+
+To force runtime version in cloud, one can use `cloudRuntime` edgio.config.js config property. 
+
+This way, user can run on different runtime locally, which allows for smoother migration between Node.js versions.
+
+Example:
+
+```js
+cloudRuntime: "nodejs18.x";
+```
+
+For more info on deprecation dates, please see [[AWS Lambda docs]](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
+
 ## interpolationValues {/* interpolation-values */}
 
 The following [feature variables](/guides/performance/rules/feature_variables) are only populated in a deployed environment. You can use the `interpolationValues` key to set these values in your local development environment for testing rules. Values set in this configuration are not propagated to the deployed environment.

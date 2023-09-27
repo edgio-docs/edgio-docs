@@ -120,9 +120,7 @@ sources: [
 
 By default, deployments will detect what Node.js runtime is user running locally, and uses the same version in cloud. When creating new deployment, Edgio will also notify user roughly 2 months before the deprecation, so he has time to react.
 
-To force runtime version in cloud, one can use `cloudRuntime` edgio.config.js config property. 
-
-This way, user can run on different runtime locally, which allows for smoother migration between Node.js versions.
+To force runtime version in cloud, one can use `cloudRuntime` property. At the moment, Edgio supports runtimes `nodejs16.x` and `nodejs18.x`.
 
 Example:
 
@@ -130,7 +128,10 @@ Example:
 cloudRuntime: "nodejs18.x";
 ```
 
-For more info on deprecation dates, please see [[AWS Lambda docs]](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
+Using the `cloudRuntime` property, user can run on different runtime locally, which allows for smoother migration between Node.js versions.
+
+For more info on deprecation dates, please see [AWS Lambda docs](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
+
 
 ## interpolationValues {/* interpolation-values */}
 

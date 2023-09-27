@@ -2134,7 +2134,7 @@
     "@docsearch/css" "3.0.0-alpha.41"
     algoliasearch "^4.0.0"
 
-"@edgio/cli@^7.2.5":
+"@edgio/cli@^7.1.0":
   version "7.2.7"
   resolved "https://registry.yarnpkg.com/@edgio/cli/-/cli-7.2.7.tgz#e44efe44ab62d735cc07a704ad832bfefa1f0429"
   integrity sha512-2OBfRbc+Dg/DPUpx6YAZiyLt728RUzgsmtKpn3CxFqPU0mfhsKGrn8PG4+ejg7rQ3wVmaH7mFOxq5TORZ42LDg==
@@ -2181,7 +2181,7 @@
     yauzl "^2.10.0"
     yazl "^2.5.1"
 
-"@edgio/core@^7.2.5", "@edgio/core@^7.2.7":
+"@edgio/core@^7.1.0", "@edgio/core@^7.2.7":
   version "7.2.7"
   resolved "https://registry.yarnpkg.com/@edgio/core/-/core-7.2.7.tgz#432aac941f3285f22e3d9f06a73a244c7ffbd1b9"
   integrity sha512-m3+BkItYFETNlxs/4ik9l7FldksP9HOQcE6YmLSFnlaGNlEbDV2wx4O0MrpW9gc/D6VlkSAYdOWWrIgJbLwfGA==
@@ -2232,7 +2232,7 @@
     workbox-build "^6.5.4"
     yaml-validator "^4.0.0"
 
-"@edgio/devtools@^7.2.5":
+"@edgio/devtools@^7.1.0":
   version "7.2.7"
   resolved "https://registry.yarnpkg.com/@edgio/devtools/-/devtools-7.2.7.tgz#9dd7afbd3c765017c727b0ddfc315f3c44055e9a"
   integrity sha512-I99kxnV4g3vtviNvzo8Qx0P49oHt6kwoF6MsWZbJMq9XpwfpbYqjBsWe+/hefjaL7ke+sD5NzgE+txvpMuT7OQ==
@@ -2241,7 +2241,7 @@
     lodash "^4.17.20"
     sirv-cli "^1.0.0"
 
-"@edgio/next@^7.2.5":
+"@edgio/next@^7.1.0":
   version "7.2.7"
   resolved "https://registry.yarnpkg.com/@edgio/next/-/next-7.2.7.tgz#d8b5a8db1dca761b3c2bd1cff6d5e6a7e5cd7334"
   integrity sha512-temulWS5dSwcghHNbuOs1Y9FKG9mYQfQ5cO5/1zfJEymqCoeZOensPJboTAXYzbVlAZ01P8O5+CSfD3hxfrt7A==
@@ -2262,7 +2262,7 @@
     webpack "^4.0.0"
     webpack-sources "^2.2.0"
 
-"@edgio/prefetch@^7.2.5":
+"@edgio/prefetch@^7.1.0":
   version "7.2.7"
   resolved "https://registry.yarnpkg.com/@edgio/prefetch/-/prefetch-7.2.7.tgz#21f7ef9999915031ac48cffd4ba2d400b7799b49"
   integrity sha512-pcc2hE7hidkx7Cx2l6smkG68rxhY674Pxa7dByHYYAjQqLVezG3IqUUFephU11IBKlufV52dftso8IhtL65EMQ==
@@ -2277,7 +2277,7 @@
     workbox-routing "^5.1.2"
     workbox-strategies "^5.1.2"
 
-"@edgio/react@^7.2.5":
+"@edgio/react@^7.1.0":
   version "7.2.7"
   resolved "https://registry.yarnpkg.com/@edgio/react/-/react-7.2.7.tgz#4d3a8f536d1108f31353815d2fa4117bd4abd595"
   integrity sha512-H89MAiOdF/evd2LjxlZiL3uNz3aTSLWSbrnUMseCZgKCvWTITejfrlnhnlv3k+PmlZGESfoWUS7cUO25PLh7QA==
@@ -3461,7 +3461,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@>=16", "@types/react@^18.0.0":
+"@types/react@*", "@types/react@18.0.1", "@types/react@>=16", "@types/react@^18.0.0":
   version "18.0.1"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.1.tgz#1b2e02fb7613212518733946e49fb963dfc66e19"
   integrity sha512-VnWlrVgG0dYt+NqlfMI0yUYb8Rdl4XUROyH+c6gq/iFCiZ805Vi//26UW38DHnxQkbDhnrIWTBiy6oKZqL11cw==

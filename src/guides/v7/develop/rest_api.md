@@ -1,79 +1,25 @@
 ---
-title: Purge (Clear-Cache) Rest API
+title: REST API
 ---
 
-Purge content through the [clear-cache endpoint](#clear-cache). 
+Our REST-compliant web services facilitate the integration of {{ PRODUCT }} into your workflow(s), applications, or interfaces.
 
-## Authentication {/*authentication*/}
+Learn basic information about our REST API:
 
-Authenticate API requests by passing a deploy token throgh the `x-api-key` header.
+-   Requests to our REST API require authentication. Authentication requires:
 
-**To create a deploy token**
-1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
-2.  Select the desired property.
-3.  From the left-hand pane, select **Settings**.
-4.  From the **Deploy Tokens** section, click **Create new Deploy Token**.
+    -   An API client. [Learn how to generate an API client.](/guides/develop/rest_api/authentication#administering-api-clients)
+    -   An access token. 
+    
+        [Generate an access token]({{ API_DOCS_URL }}#section/Access-Tokens) by posting an API client's ID, secret key, and the desired [scopes]({{ API_DOCS_URL }}#section/Scopes).
 
-## Methods {/*methods*/}
+    -   Passing the access token through the `Authorization` header when requesting a REST API operation. 
 
-### clear-cache {/*clear-cache*/}
+        ```
+        curl --request GET \
+             --url https://edgioapis.com/waf/v0.9/12345678-1234-1234-1234-1234567890ab/scopes \
+             --header 'Authorization: Bearer  A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ'
+        ```
+-   The [base URL]({{ API_DOCS_URL }}#section/Request-URL) varies according to the operation being requested.
 
-`POST {{ APP_URL }}/api/v1/clear-cache`
-
-Purges entries from the cache for a specific environment. You can purge specific paths or surrogate keys. If no paths or surrogate keys are provided all entries will be purged.
-
-#### Request Headers {/*request-headers*/}
-
-The following request headers are required:
-
-- `x-api-key`: A site deploy token
-- `content-type`: `"application/json"`
-
-#### Body {/*body*/}
-
-Provide the following parameters as JSON in the post body.
-Note that only one of the optional arguments can be passed at a time, for example `paths` and `surrogateKeys` cannot be cleared at once.
-
-```json
-{
-  "team": "the team name",
-  "site": "the site name",
-  "environment": "the environment name",
-  "paths": ["Optional. An array of paths to clear. Use * as a wildcard."],
-  "surrogateKeys": ["Optional. An array of surrogate keys to clear"],
-  "cacheHashes": ["Optional. An array of cache hashes to clear"]
-}
-```
-
-#### Example: {/*example*/}
-
-```js
-const fetch = require('node-fetch')
-
-const deployToken = '*****'
-const team = 'my-team'
-const site = 'my-site'
-const environment = 'production'
-const paths = ['/some/path']
-
-async function clearCache() {
-  const res = await fetch('{{ APP_URL }}/api/v1/clear-cache', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-      'x-api-key': deployToken,
-    },
-    body: JSON.stringify({
-      team,
-      site,
-      environment,
-      paths,
-    }),
-  })
-
-  console.log('Status:', res.status, res.statusText)
-  console.log('Body:', await res.text())
-}
-
-clearCache()
-```
+[View our REST API reference.]({{ API_DOCS_URL }})

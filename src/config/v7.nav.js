@@ -594,22 +594,26 @@ const nav = {
         },
         {
           title: 'REST API',
-          path: 'develop/rest_api2',
+          path: 'develop/rest_api',
           routes: [
             {
               title: 'Authentication',
-              path: 'develop/rest_api2/authentication',
+              path: 'develop/rest_api/authentication',
             },
             {
               title: 'REST API Reference',
               path: '/rest_api/',
               external: true,
-            },            
+            },
+            {
+              title: '',
+              path: '',
+            },
+            {
+              title: 'Legacy Purge (Clear-Cache)',
+              path: 'develop/rest_api/clear_cache',
+            },
           ],
-        },
-        {
-          title: 'Purge (Clear-Cache) API',
-          path: 'develop/clear_cache',
         },
         {
           title: 'EdgeJS API Reference',
@@ -693,8 +697,8 @@ const nav = {
           path: '',
         },
         {
-          title: 'Purge REST API',
-          path: '/guides/develop/rest_api',
+          title: 'Legacy Purge API',
+          path: '/guides/develop/rest_api/clear_cache',
         },
         {
           title: '',

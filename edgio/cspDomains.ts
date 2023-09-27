@@ -42,6 +42,7 @@ export const imgSrcDomains = [
   '*.moovweb.net',
   'edgeio.whitecdn.com',
   '*.edgio-perma.link',
+  '*.edg.io',
 ];
 
 export const mediaSrcDomains = ['www.youtube.com'];
@@ -67,10 +68,13 @@ export const scriptSrcDomains = [
   'googletagmanager.com',
   '*.clarity.ms',
   '*.edgio-perma.link',
+  '*.edg.io',
+  'blob:',
 ].sort();
 
 export const styleSrcDomains = [
   'fonts.googleapis.com',
   'cdn.jsdelivr.net',
   '*.edgio-perma.link',
+  '*.edg.io',
 ];

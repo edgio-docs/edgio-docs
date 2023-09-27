@@ -33,7 +33,7 @@ properties:
 
           If you enable the `is_count` property, then you must also set the `operator.type` property to `EQ`.
 
-    -   **false:** Our service will compare the string value derived from the request element defined by this variable object against `operator.value`.
+      -   **false:** Our service will compare the string value derived from the request element defined by this variable object against `operator.value`.
 
 required:
   - type

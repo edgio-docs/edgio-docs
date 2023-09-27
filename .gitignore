@@ -44,6 +44,7 @@ yarn-error.log*
 
 rest_api/tmp/split/components
 rest_api/tmp/split/paths
+rest_api/dist
 
 # IDE
 .fleet

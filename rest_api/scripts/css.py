@@ -11,7 +11,7 @@ def remove_style_tags(head_content):
     return head_content
 
 # Read the HTML file
-file_path = 'rest_api.html'
+file_path = './dist/rest_api.html'
 with open(file_path, 'r') as file:
     html_content = file.read()
 
@@ -46,4 +46,3 @@ if start_head != -1 and end_head != -1:
     print("HTML file has been updated.")
 else:
     print("No <head> section found in the HTML.")
-

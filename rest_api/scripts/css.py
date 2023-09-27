@@ -1,3 +1,5 @@
+import re
+
 def remove_style_tags(head_content):
     while True:
         start_tag = head_content.find('<style')
@@ -27,7 +29,7 @@ if start_head != -1 and end_head != -1:
     cleaned_head_with_link = cleaned_head + '\n' + link_tag
     
     # Update JS reference
-    cleaned_head_with_js_ref = cleaned_head_with_link.replace('https://cdn.redoc.ly/redoc/v2.0.0/bundles/redoc.standalone.js', "redoc.standalone.js")
+    cleaned_head_with_js_ref = re.sub(r'https://cdn\.redoc\.ly/.*?/redoc\.standalone\.js', 'redoc.standalone.js', cleaned_head_with_link)
 
     # Update the <title> tag content
     new_title = 'Edgio API Reference'

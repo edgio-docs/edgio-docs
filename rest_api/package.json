@@ -15,7 +15,7 @@
     "docs:bundle": "yarn docs:generate && python3 scripts/css.py && python3 scripts/far.py && cp -r assets/* dist"
   },
   "devDependencies": {
-    "@redocly/cli": "^1.2.0",
+    "@redocly/cli": "1.0.2",
     "@redocly/openapi-cli": "^1.0.0-beta.95",
     "snippet-enricher-cli": "^0.0.8"
   }

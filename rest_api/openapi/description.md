@@ -59,7 +59,7 @@ A scope authorizes an API client to perform specific actions (e.g., create and r
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | app.cache        | Authorizes full access for purging cached content and retrieve purge status information.                                                     |
 | app.config       | Authorizes full access for deploying CDN configurations, retrieving deployment information and log data, and managing environment variables. |
-| app.account      | Authorizes full access to manage organizations, properties, and environments.                                                                |
+| app.accounts     | Authorizes full access to manage organizations, properties, and environments.                                                                |
 | app.waf          | Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules.                                          |
 | app.bot_security | Authorizes full access to Bot Manager.                                                                                                       |
 | app.api_security | Authorizes full access to API Security.                                                                                                      |
@@ -83,7 +83,7 @@ Requesting an access token requires:
 
     -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your REST API client.
     -   `<SECRET>`**:** Represents the secret assigned to your REST API client.
-    -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. Common scopes are listed below.
+    -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. 
 
 **Sample access token request:**
 

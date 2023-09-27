@@ -2,14 +2,10 @@
 title: Authentication
 ---
 
-Only authenticated requests to the REST API will be processed. This authentication process serves the following two purposes:
+Our REST API requires authentication for all requests. This serves the following two purposes:
 
 1. Identifies the client application making the request.
 2. Verifies that this client application has sufficient permissions to perform the requested action.
-
-Authentication requires passing a unique value (i.e., token). Generate a token generated from your [OAuth 2.0](#client-applications) credentials. By default, this type of token expires after 60 seconds.
-    
-[Register your client application](#administering-api-clients) through the {{ IDENTITY_LINK }} to generate OAuth 2.0 credentials through which you may authorize requests submitted to our API gateway ({{ API_DOMAIN }}).
 
 ## Quick Start {/*quick-start*/}
 

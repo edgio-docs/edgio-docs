@@ -41,7 +41,7 @@ Key information about our REST API services:
 
 Get started with our latest APIs by performing the following steps:
 
-1. <a href="https://edgio-community-docs-edg-io-v7-security-api.alt.free.edgio-perma.link/guides/develop/rest_api2/authentication#administering-api-clients" target="_blank">Create an API client</a> for the desired application from the <a href="https://account.edgio.app/#/clients" target="_blank">Account dashboard (account.edgio.app)</a>. Grant the set of scope(s) required by the endpoint(s) with which it will interact.
+1. <a href="https://edgio-community-docs-edg-io-v7-security-api.alt.free.edgio-perma.link/guides/develop/rest_api/authentication#administering-api-clients" target="_blank">Create an API client</a> for the desired application from the <a href="https://account.edgio.app/#/clients" target="_blank">Account dashboard (account.edgio.app)</a>. Grant the set of scope(s) required by the endpoint(s) with which it will interact.
 2. Use this client's ID, secret key, and scopes to [generate a temporary access token](#section/Access-Tokens).
 3. Authorize your API requests by passing the temporary access token generated in the previous step through the `Authorization` request header.
 
@@ -154,7 +154,7 @@ Request headers provide information about your request to a REST API service. Th
 
 | Request Header | Description                                                                                                                                                                                                         |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Authorization  | Authorize requests through the `Authorization` request header. <a href="https://edgio-community-docs-edg-io-v7-security-api.alt.free.edgio-perma.link/guides/develop/rest_api2/authentication#authorizing-requests" target="_blank">Learn more about authorization.</a>                                                       |
+| Authorization  | Authorize requests through the `Authorization` request header. <a href="https://edgio-community-docs-edg-io-v7-security-api.alt.free.edgio-perma.link/guides/develop/rest_api/authorization#authorizing-requests" target="_blank">Learn more about authorization.</a>                                                       |
 | Accept         | This header should indicate the format in which the response will be returned. If you pass this header, set it to: `application/json`.                                                                |
 | Content-Type   | This header should indicate the format of the request body. If you pass this header, set it to: `application/json`. <br />You may omit this header when an endpoint does not have request properties. |
 | Host           | This header, which is set by the user agent, indicates the host name corresponding to the requested endpoint (i.e., edgioapis.com or id.edgio.app).                                                                               |

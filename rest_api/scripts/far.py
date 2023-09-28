@@ -28,9 +28,8 @@ def replace_and_write(input_file_path, output_file_path):
         print(f"An error occurred: {str(e)}")
 
 # Input and output file paths
-input_file_path = "rest_api.html"  # Replace with your input file path
-output_file_path = "rest_api_with_examples.html"  # Replace with your output file path
+input_file_path = "./dist/rest_api.html"  # Replace with your input file path
+output_file_path = "./dist/rest_api.html"  # Replace with your output file path
 
 # Call the function to replace occurrences and write to the output file
 replace_and_write(input_file_path, output_file_path)
-

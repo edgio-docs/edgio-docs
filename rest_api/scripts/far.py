@@ -29,7 +29,7 @@ def replace_and_write(input_file_path, output_file_path):
 
 # Input and output file paths
 input_file_path = "./dist/rest_api.html"  # Replace with your input file path
-output_file_path = "./dist/rest_api_with_examples.html"  # Replace with your output file path
+output_file_path = "./dist/rest_api.html"  # Replace with your output file path
 
 # Call the function to replace occurrences and write to the output file
 replace_and_write(input_file_path, output_file_path)

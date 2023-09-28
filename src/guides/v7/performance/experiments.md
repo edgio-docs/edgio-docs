@@ -194,7 +194,7 @@ The `{{ HEADER_PREFIX }}-experiments-info` request header tracks the variants as
 
 <Callout type="important">
 
-  {{ PRODUCT }} does not currently add this header to requests processed by Edge Functions. However, this header will be added to requests forwarded to Edge Functions in the future. 
+  {{ PRODUCT }} does not currently add this header to requests processed by Edge Functions. However, we plan on adding this header to requests forwarded to Edge Functions in the future. 
 
 </Callout>
 

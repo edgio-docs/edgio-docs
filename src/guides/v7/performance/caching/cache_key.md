@@ -122,9 +122,23 @@ Specifically, we will add the country from which the request originated to the c
 
 ## Cache Key Reference {/*cache-key-reference*/}
 
-By default, our edge servers use the following syntax when calculating a cache key:
+Your configuration determines how our edge servers construct the cache key.
+
+**Default Syntax:**
 
 `//http/80<ACCOUNT ID>/<ORIGIN CONFIGURATION>/<DEPLOYMENT VERSION>/<RELATIVE PATH>:/[q-<QUERY STRING HASH>_]hs-<URI HASH>[<FILE EXTENSION>]`
+
+**Cache Key Feature Syntax:**
+
+If the [Cache Key feature](/guides/performance/rules/features#cache-key) has been applied to a request, then the cache key will be calculated as follows:
+
+`//http/80<ACCOUNT ID>/<ORIGIN CONFIGURATION>/<DEPLOYMENT VERSION>/cache-key-customization=<HASH>/<RELATIVE PATH>:/[q-<QUERY STRING HASH>_]hs-<URI HASH>[<FILE EXTENSION>]`
+
+**Experimentation Syntax:**
+
+If one or more [experiment(s)](/guides/performance/experiments) apply to a request, then the cache key will be calculated as follows:
+
+`//http/80<ACCOUNT ID>/<ORIGIN CONFIGURATION>/<DEPLOYMENT VERSION>/cache-key-experiments=<HASH>/<RELATIVE PATH>:/[q-<QUERY STRING HASH>_]hs-<URI HASH>[<FILE EXTENSION>]`
 
 Definitions for the above placeholder values are provided below.
 

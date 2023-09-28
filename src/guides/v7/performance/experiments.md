@@ -190,7 +190,15 @@ This cookie assigns a value from 0 - 99 to a client. Once a client has been assi
 
 #### {{ HEADER_PREFIX }}-experiments-info Upstream Request Header {/*-experiments-info-upstream-request-header*/}
 
-The `{{ HEADER_PREFIX }}-experiments-info` request header tracks the variants assigned to a client. {{ PRODUCT }} adds this header to requests proxied through our network to the origin. It contains the following syntax for each variant that has been assigned to a client:
+The `{{ HEADER_PREFIX }}-experiments-info` request header tracks the variants assigned to a client. {{ PRODUCT }} adds this header to requests proxied through our network to the origin or the {{ PRODUCT }} Cloud. 
+
+<Callout type="important">
+
+  {{ PRODUCT }} does not currently add this header to requests processed by Edge Functions. However, this header will be added to requests forwarded to Edge Functions in the future. 
+
+</Callout>
+
+It contains the following syntax for each variant that has been assigned to a client:
 
 `%22<EXPERIMENT>_<BUCKET>%22%3A%22<VARIANT>_<VARIANT ID>%22`
 

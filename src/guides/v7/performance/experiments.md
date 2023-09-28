@@ -34,6 +34,12 @@ A client is eligible to participate in an experiment if the request satisfies th
 
 </Callout>
 
+<Callout type="info">
+
+  {{ PRODUCT }} uses a different formula to calculate the cache key for requests that satisfy at least one experiment. [View the cache key syntax.](/guides/performance/caching/cache_key#cache-key-reference)
+
+</Callout>
+
 ## Experiments {/*experiments*/}
 
 An experiment:

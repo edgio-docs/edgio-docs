@@ -130,13 +130,13 @@ Your configuration determines how our edge servers construct the cache key.
 
 **Cache Key Feature Syntax:**
 
-If the [Cache Key feature](/guides/performance/rules/features#cache-key) has been applied to a request, then the cache key will be calculated as follows:
+{{ PRODUCT }} calculates the cache key as follows when the [Cache Key feature](/guides/performance/rules/features#cache-key) is applicable to a request:
 
 `//http/80<ACCOUNT ID>/<ORIGIN CONFIGURATION>/<DEPLOYMENT VERSION>/cache-key-customization=<HASH>/<RELATIVE PATH>:/[q-<QUERY STRING HASH>_]hs-<URI HASH>[<FILE EXTENSION>]`
 
 **Experimentation Syntax:**
 
-If one or more [experiment(s)](/guides/performance/experiments) apply to a request, then the cache key will be calculated as follows:
+{{ PRODUCT }} calculates the cache key as follows when the request is eligible for one or more [experiment(s)](/guides/performance/experiments):
 
 `//http/80<ACCOUNT ID>/<ORIGIN CONFIGURATION>/<DEPLOYMENT VERSION>/cache-key-experiments=<HASH>/<RELATIVE PATH>:/[q-<QUERY STRING HASH>_]hs-<URI HASH>[<FILE EXTENSION>]`
 

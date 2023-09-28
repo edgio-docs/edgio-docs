@@ -175,7 +175,10 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 
 ## Experimentation Metadata {/*experimentation-metadata*/}
 
-Experimentation assigns the `{{ HEADER_PREFIX }}-experiments` cookie to each client. If a client qualifies for one or more experiment(s), we will also provide experimentation information through a `{{ HEADER_PREFIX }}-experiments-info` upstream request header and the `server-timing` response header.
+{{ PRODUCT }} provides experimentation metadata to the client and origin server.
+
+-   **Client:** {{ PRODUCT }} sets the `{{ HEADER_PREFIX }}-experiments` cookie and the `server-timing` response header.
+-   **Origin:** {{ PRODUCT }} sets the `{{ HEADER_PREFIX }}-experiments-info` header for requests proxied from our network to the origin.
 
 #### {{ HEADER_PREFIX }}-experiments Cookie {/*-experiments-cookie*/}
 

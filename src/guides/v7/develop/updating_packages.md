@@ -84,13 +84,13 @@ If using npm/yarn workspaces, even if the versions are synchronized, you might e
 1. Update all projects in the monorepo to use the same version range of `@edgio` packages.
 2. Lock the project to a specific version rather than a range. For instance, change `"@edgio/core": "^7.2.0"` to `"@edgio/core": "7.2.0"`.
 
-### {{ PRODUCT }} Connectors {/* -connectors */}
+### {{ PRODUCT }} Connectors {/* edgio-connectors */}
 
-If your project utilizes a connector in `edgio.config.js` matching `@edgio/*`, no changes are required. These connectors are maintained by {{ PRODUCT }}.
+If your project uses a connector in `edgio.config.js` matching `@edgio/*`, no changes are required. These connectors are maintained by {{ PRODUCT }}.
 
 ### Custom Connectors {/* custom-connectors */}
 
-For projects using a custom connector defined by a folder containing `dev.js`, `prod.js`, and `build.js` files in `edgio.config.js`, you may need the following adjustments:
+If your project uses a [custom connector](/guides/sites_frameworks/connectors#writing-a-connector), the following adjustments may be necessary:
 
 #### build.js: 
 
@@ -100,9 +100,9 @@ For projects using a custom connector defined by a folder containing `dev.js`, `
 
 #### prod.js:
 
-Update relative paths when importing files to absolute paths using the current working directory. For instance:
+Convert relative paths to absolute paths when importing files:
 
-```js
+```js filename="prod.js ({{ PRODUCT }} v7.1 and earlier)"
 require('../server.js')
 // or
 require('server.js')
@@ -110,7 +110,7 @@ require('server.js')
 
 Should change to:
 
-```js
+```js filename="prod.js ({{ PRODUCT }} v7.2)"
 require(join(process.cwd(), 'server.js'))
 // or
 require(resolve('server.js'))

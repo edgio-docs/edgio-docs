@@ -69,14 +69,18 @@ Errors such as `TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of
 }
 ```
 
-**Note**: At times, it may be necessary to delete the `node_modules` directory or the `package-lock.json/yarn.lock` file, then rerun `npm install` or `yarn install`. 
+<Callout type="info">
+
+  Fixing version sync issues may require deleting the `node_modules` directory, the `package-lock.json/yarn.lock` file, or both. After which, you must run the `npm install` or `yarn install` command.
+
+</Callout>
 
 If using npm/yarn workspaces, even if the versions are synchronized, you might encounter errors if the monorepo contains projects with different `@edgio` package versions. In such cases:
 
 1. Update all projects in the monorepo to use the same version range of `@edgio` packages.
 2. Lock the project to a specific version rather than a range. For instance, change `"@edgio/core": "^7.2.0"` to `"@edgio/core": "7.2.0"`.
 
-### Edgio's Connectors {/* edgios-connectors */}
+### {{ PRODUCT }} Connectors {/* -connectors */}
 
 If your project utilizes a connector in `edgio.config.js` matching `@edgio/*`, no changes are required. These connectors are maintained by {{ PRODUCT }}.
 

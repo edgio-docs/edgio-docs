@@ -84,7 +84,7 @@ export default new Router()
     //  This rule's path matches the navigation links href attribute
     .match("/pages/:id", {
         caching: {
-            max_age: "1h", // Caches the response in the edge cache for 1 hour
+            max_age: "1h", // Caches the response on the edge for 1 hour
             service_worker_max_age: "1h" // Enables automatic prefetching and caches the response in the browser SW cache for 1 hour
         }
     })
@@ -275,7 +275,7 @@ export default new Router()
     //  This rule's path matches the links href attribute
     .match("/pages/:id", {
         caching: {
-            max_age: "1h", // Caches the response in the edge cache for 1 hour
+            max_age: "1h", // Caches the response on the edge for 1 hour
             service_worker_max_age: "1h" // Enables automatic prefetching and caches the response in the browser SW cache for 1 hour
         }
     })
@@ -621,7 +621,7 @@ export default new Router()
     // This rule will not be listed in the cache-manifest.js file
     .get("/static/my-image.png", {
         caching: {
-            max_age: "1h", // Caches the response in the edge cache for 1 hour
+            max_age: "1h", // Caches the response on the edge for 1 hour
         },
         comment: "cache-manifest-ignore"
     })

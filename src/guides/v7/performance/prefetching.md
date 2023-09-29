@@ -604,8 +604,9 @@ It exposes the Rules with following Features:
 and Conditions:
 - [`request.path`](/guides/performance/rules/conditions#path)
 - [`request.method`](/guides/performance/rules/conditions#method)
-- [`request.query`](/guides/performance/rules/features#query)
-- [`request.scheme`](/guides/performance/rules/features#scheme)
+- [`request.scheme`](/guides/performance/rules/conditions#scheme)
+- [`request.query`](/guides/performance/rules/conditions#query)
+- [`request.querystring`](/guides/performance/rules/conditions#query-string)
 - [`request.origin_query_string`](/guides/performance/rules/conditions#origin-query-string)
 - `request.origin_query`
 - [`request.origin_path`](/guides/performance/rules/conditions#origin-path)

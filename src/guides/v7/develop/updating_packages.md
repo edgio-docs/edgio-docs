@@ -35,7 +35,11 @@ After updating your project, compare the dependency versions in your `package.js
   }
 ```
 
-**Note**: if you are using the `@edgio/rum` dependency, it will not be updated automatically nor will its version be synchronized with the other `@edgio` dependencies. You will need to use your package manager to update this dependency manually.
+<Callout type="info">
+
+  The `{{ PACKAGE_NAME }}/rum` package dependency is not automatically update or synchronized with other `{{ PACKAGE_NAME }}` dependencies. If you are using this package, you must use a package manager to update this dependency manually.
+
+</Callout>
 
 ## Changes from v7.x to v7.2 {/* changes-from-v7-v72 */}
 

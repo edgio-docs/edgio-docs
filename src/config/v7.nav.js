@@ -612,10 +612,6 @@ const nav = {
             },
           ],
         },
-        {
-          title: 'Updating Edgio Packages',
-          path: 'develop/updating_packages',
-        },
       ],
     },
     {
@@ -711,6 +707,16 @@ const nav = {
       title: 'Upgrading',
       path: 'upgrading',
       icon: 'add-circle',
+      routes: [
+        {
+          title: 'Upgrading to Verison 7',
+          path: 'upgrading/upgrading',
+        },
+        {
+          title: `Updating Packages`,
+          path: 'upgrading/updating_packages',
+        },
+      ],
     },
   ],
 };

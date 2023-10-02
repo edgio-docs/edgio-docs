@@ -53,7 +53,7 @@ Usage example:
 ```
 
 <Callout type="info">
-Note that prefetching will not work on sites served through plain HTTP protocol. This is because a service workers are restricted to running across HTTPS for security reasons. The only exception is localhost.
+Note that prefetching will not work on sites served through plain HTTP protocol. This is because service workers are restricted to running across HTTPS for security reasons. The only exception is localhost.
 </Callout>
 
 ### Automatic Prefetching {/* automatic-prefetching-with-pre-built-package */}
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
 Now when your client-side code runs, the service worker will be installed and ready to prefetch URLs.
 
 <Callout type="info">
-Note that prefetching will not work on sites served through plain HTTP protocol. This is because a service workers are restricted to running across HTTPS for security reasons. The only exception is localhost.
+Note that prefetching will not work on sites served through plain HTTP protocol. This is because service workers are restricted to running across HTTPS for security reasons. The only exception is localhost.
 </Callout>
 
 See [InstallOptions](/docs/api/prefetch/interfaces/window_InstallOptions.default.html) for additional configuration when installing the service worker.

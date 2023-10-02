@@ -167,4 +167,8 @@ export default [
     '/guides/v7/performance/cdn_as_code/getting_started',
     '/guides/v7/performance/cdn_as_code',
   ],
+  [
+    '/guides/v7/performance/experiments',
+    '/guides/v7/experimentation',
+  ],
 ];

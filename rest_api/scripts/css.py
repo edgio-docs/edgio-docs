@@ -32,7 +32,7 @@ if start_head != -1 and end_head != -1:
     cleaned_head_with_js_ref = re.sub(r'https://cdn\.redoc\.ly/.*?/redoc\.standalone\.js', 'redoc.standalone.js', cleaned_head_with_link)
 
     # Update the <title> tag content
-    new_title = 'Edgio API Reference'
+    new_title = 'Edgio REST API Reference'
     cleaned_head_with_title = cleaned_head_with_js_ref.replace('API Reference | ReDoc', new_title)
 
     # Build the cleaned HTML

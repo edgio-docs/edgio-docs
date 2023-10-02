@@ -437,3 +437,7 @@ data-styled.g138[id="sc-dxcDKg"]{content:"eajCCh,"}/*!sc*/
 {line-height: 1.3em;font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:15px;}
 
 .-depth2{font-size: 15px;}
+
+h1 span {
+  display: none;
+}

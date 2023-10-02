@@ -36,6 +36,9 @@ properties:
     description: >-
       Default hostname where the CDN serves the traffic, in addition to custom
       hostnames
+  pci_compliance:
+    type: boolean
+    description: When true the environment is setup for the PCI network footprint.
   dns_domain_name:
     type: string
     description: Configure your hostname CNAMEs to point to this domain

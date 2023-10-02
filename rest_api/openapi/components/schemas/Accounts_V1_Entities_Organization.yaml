@@ -38,12 +38,14 @@ properties:
     type: string
     description: >-
       The PCI-compliant DNS domain for this organization. Configure your
-      hostname CNAMEs to point to this domain.
+      hostname CNAMEs to point to this domain for environments configured with
+      PCI footprint enabled.
   non_pci_dns_domain_name:
     type: string
     description: >-
       The non PCI-compliant DNS domain for this organization. Configure your
-      hostname CNAMEs to point to this domain.
+      hostname CNAMEs to point to this domain for environments configured with
+      PCI footprint disabled.
   created_at:
     type: string
     description: Created at

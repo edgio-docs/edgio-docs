@@ -6,6 +6,4 @@ properties:
     type: boolean
   http_request_logging:
     type: boolean
-  preserve_cache:
-    type: boolean
 description: Update environment

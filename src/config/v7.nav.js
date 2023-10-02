@@ -134,6 +134,10 @@ const nav = {
           path: 'performance/prefetching',
         },
         {
+          title: 'Experimentation',
+          path: 'performance/experiments',
+        },
+        {
           title: 'Traffic Splitting',
           path: 'performance/traffic_splitting',
         },

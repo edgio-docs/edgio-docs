@@ -52,6 +52,10 @@ Usage example:
 <script src="/__edgio__/prefetch/install.js" data-include-cache-misses="true" data-force-prefetch-ratio="0.5"></script>
 ```
 
+<Callout type="info">
+Note that prefetching will not work on sites served through plain HTTP protocol. This is because a service workers are restricted to running across HTTPS for security reasons. The only exception is localhost.
+</Callout>
+
 ### Automatic Prefetching {/* automatic-prefetching-with-pre-built-package */}
 When the pre-built `@edgio/prefetch` is installed on your site, it will automatically prefetch all links on your site that are in the screen viewport and match any of the configured [Rules](/guides/performance/rules#rules) that sets [`caching.max_age`](https://docs.edg.io/guides/performance/rules/features#set-max-age) and [`caching.service_worker_max_age`](/guides/performance/rules/features#set-service-worker-max-age) features.
 The resource is then cached in the browser for given amount of time which is defined by the `caching.service_worker_max_age` feature.
@@ -200,6 +204,10 @@ document.addEventListener('DOMContentLoaded', () => {
 ```
 
 Now when your client-side code runs, the service worker will be installed and ready to prefetch URLs.
+
+<Callout type="info">
+Note that prefetching will not work on sites served through plain HTTP protocol. This is because a service workers are restricted to running across HTTPS for security reasons. The only exception is localhost.
+</Callout>
 
 See [InstallOptions](/docs/api/prefetch/interfaces/window_InstallOptions.default.html) for additional configuration when installing the service worker.
 

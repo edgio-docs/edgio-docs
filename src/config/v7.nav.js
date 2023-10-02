@@ -213,6 +213,7 @@ const nav = {
     {
       title: 'Experimentation',
       path: 'experimentation',
+      icon: 'experimentation',
     },
     {
       title: 'Security',

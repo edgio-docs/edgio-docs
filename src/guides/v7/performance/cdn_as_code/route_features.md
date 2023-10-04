@@ -13,7 +13,7 @@ Route features identify actions that will be applied to a request. Popular featu
 
 See [Features Reference](/guides/performance/rules/features) for a complete list of features and their behavior.
 
-## Defining Route Features
+## Defining Route Features {/* defining-route-features */}
 
 As outlined in the [Route Features](/guides/performance/cdn_as_code#route-features) section of the CDN-as-Code guide:
 - Route features are defined as the second argument to the `Router` method being called in the `routes.js` file, such as `.match()`, `.get()`, `.post()`, etc.
@@ -71,9 +71,50 @@ router.get('/some-path', ({addFeatures, serveStatic}) => {
 
 While both of these examples are functionally equivalent, the second example is more flexible because it allows you to define a single route using both notation styles for different features.
 
-## Common Routing Features
+## Caching {/* caching */}
 
-The following sections describe common routing features and how to use them.
+Add caching to a route using the [`caching`](/docs/api/core/interfaces/types.Caching.html) feature:
+
+```js
+router.get('/some/path', {
+  caching: {
+    max_age: '1d',
+    stale_while_revalidate: '',
+    service_worker_max_age: '1h',
+    bypass_client_cache: true,
+  },
+  headers: {
+    set_response_headers: {
+      'x-sw-cache-control': 'max-age=3600',
+    },
+  },
+});
+```
+
+### Customizing the Cache Key {/* customizing-the-cache-key */}
+
+A [cache key](/guides/performance/caching/cache_key) is automatically generated for each request, but if your web application relies on query string parameter(s), request header(s), or cookie(s) when generating a response, then you should customize the cache key to include those elements. You can customize the cache key using the [`cache_key`](docs/api/core/interfaces/types.Caching.html#cache_key) feature:
+
+```js
+router.get('/some/path', {
+  caching: {
+    max_age: '1d',
+    cache_key: {
+      cache_key: {
+        // query string options are mutually exclusive; only one can be used for the cache key.
+        exclude_all_query_params: boolean;
+        include_all_query_params: boolean;
+        include_all_query_params_except: ["session_id", "utm_source"];
+        include_query_params: ["page", "filters"],
+
+        include_headers: ["x-my-header"],
+        include_cookies: ["x-my-cookie", "language", "currency"],
+      },
+    },
+  },
+});
+```
+
 
 ## Debug Cache Headers {/* debug-cache-headers */}
 

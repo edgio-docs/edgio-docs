@@ -4,8 +4,6 @@ require 'json'
 require 'pry'
 
 console_openapi_path = 'tmp/console_oapi3.json'
-external_schemas_path_relative_from_openapi_schemas = '../../'
-
 oapi_schema = JSON.parse(File.read(console_openapi_path))
 
 # Here's where the schemas live
@@ -14,14 +12,11 @@ oapi_schema['components']['schemas'].each do |_k, v|
 
   v['properties'].each do |_property_name, property_definition|
     description = property_definition['description']
-    next unless description && description =~ /Defined externally:\s*(\S+)/
 
-    external_schema_pointer = Regexp.last_match(1)
-    property_definition.replace(
-      {
-        '$ref' => Pathname.new(external_schemas_path_relative_from_openapi_schemas).join(external_schema_pointer).to_s
-      }
-    )
+    next unless description && description =~ /Defined externally:\s*(\S+)/i
+
+    external_schema_uri = Regexp.last_match(1)
+    property_definition.replace({ '$ref' => external_schema_uri })
   end
 end
 

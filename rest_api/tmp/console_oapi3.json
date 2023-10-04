@@ -3471,19 +3471,13 @@
             "description": "Resource unique identifier."
           },
           "origins": {
-            "type": "string",
-            "description": "List of origin configurations.\n\nYou cannot delete or change the name of an origin configuration that has been mapped to a hostname. Attempting to do so will generate a `404 Bad Request` whose error message is similar to the following one:\n\n`Invalid config: Schema validation error: properties.0.hostnames.0: Origin 'web' not found`\n\nDefined externally: https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/origins\n",
-            "example": ""
+            "$ref": "https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/origins"
           },
           "hostnames": {
-            "type": "string",
-            "description": "List of hostnames. Defined externally: https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/hostnames",
-            "example": ""
+            "$ref": "https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/hostnames"
           },
           "rules": {
-            "type": "string",
-            "description": "List of rules defined using JSON syntax.\n\nView your current set of rules in JSON syntax from within the Edgio Console by navigating to the **Rules** page and then clicking **JSON Editor**.\n\nDefined externally: https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/rules\n",
-            "example": ""
+            "$ref": "https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/rules"
           },
           "experiments": {
             "type": "string",
@@ -3506,63 +3500,13 @@
             "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
           },
           "origins": {
-            "type": "array",
-            "description": "List of origin configurations.\n\nYou cannot delete or change the name of an origin configuration that has been mapped to a hostname. Attempting to do so will generate a `404 Bad Request` whose error message is similar to the following one:\n\n`Invalid config: Schema validation error: properties.0.hostnames.0: Origin 'web' not found`\n\nDefined externally: https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/origins\n",
-            "example": [
-              {
-                "name": "web",
-                "hosts": [
-                  {
-                    "location": [
-                      {
-                        "hostname": "https://test-origin.edgio.net"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "items": {
-              "type": "string"
-            }
+            "$ref": "https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/origins"
           },
           "hostnames": {
-            "type": "array",
-            "description": "List of hostnames. Defined externally: https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/hostnames",
-            "example": [
-              {
-                "hostname": "cdn.example.com"
-              }
-            ],
-            "items": {
-              "type": "string"
-            }
+            "$ref": "https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/hostnames"
           },
           "rules": {
-            "type": "array",
-            "description": "List of rules defined using JSON syntax.\n\nView your current set of rules in JSON syntax from within the Edgio Console by navigating to the **Rules** page and then clicking **JSON Editor**.\n\nDefined externally: https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/rules\n",
-            "example": [
-              {
-                "if": [
-                  {
-                    "==": [
-                      {
-                        "request": "path"
-                      },
-                      "/api/:path"
-                    ]
-                  },
-                  {
-                    "caching": {
-                      "bypass_cache": true
-                    }
-                  }
-                ]
-              }
-            ],
-            "items": {
-              "type": "string"
-            }
+            "$ref": "https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/rules"
           },
           "experiments": {
             "type": "array",

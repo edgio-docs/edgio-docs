@@ -21,7 +21,7 @@ properties:
     type: string
     description: >
       An environment's system-defined ID (e.g.,
-      12345678-1234-1234-1234-1234567890ab). 
+      12345678-1234-1234-1234-1234567890ab).
 
 
       From the Edgio Console, navigate to the desired environment and then click
@@ -43,16 +43,16 @@ properties:
 
 
       -  `created`: The TLS certificate has been created, but it has not yet
-      been activated. 
+      been activated.
 
       -  `activating:` Edgio is in the process of activating the TLS
       certificate.
 
-      -  `activated:` The TLS certificate is currently active. 
+      -  `activated:` The TLS certificate is currently active.
 
       -  `failed:` The activation of the TLS certificate failed.
 
-      -  `expired:` The TLS certificate has expired. 
+      -  `expired:` The TLS certificate has expired.
   generated:
     type: boolean
     description: >

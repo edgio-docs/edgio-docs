@@ -23,11 +23,18 @@ get:
         default: 20
     - name: key
       in: query
-      description: Find environment variable by their key
+      description: Find an environment variable by its key.
       schema:
         type: string
     - name: environment_id
       in: query
+      description: >
+        An environment's system-defined ID (e.g.,
+        12345678-1234-1234-1234-1234567890ab).
+
+
+        From the Edgio Console, navigate to the desired environment and then
+        click **Settings**. It is listed under **Environment ID**.
       required: true
       schema:
         type: string
@@ -72,8 +79,8 @@ get:
 put:
   tags:
     - environment-variables
-  summary: Create or Replace Environment Variable
-  description: Create or replace an environment variable.
+  summary: Set Environment Variable
+  description: Creates or updates an environment variable.
   operationId: putConfigV01EnvironmentVariables
   requestBody:
     content:
@@ -83,7 +90,7 @@ put:
     required: true
   responses:
     '200':
-      description: Create or replace an environment variable.
+      description: Creates or updates an environment variable.
       content:
         application/json:
           schema:

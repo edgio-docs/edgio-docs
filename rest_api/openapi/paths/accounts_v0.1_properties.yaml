@@ -25,7 +25,7 @@ get:
       in: query
       description: >
         An organization's system-defined ID (e.g.,
-        12345678-1234-1234-1234-1234567890ab). 
+        12345678-1234-1234-1234-1234567890ab).
 
 
         From the Edgio Console, navigate to the desired organization and then

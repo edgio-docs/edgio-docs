@@ -1,8 +1,8 @@
 get:
   tags:
     - environment-variables
-  summary: Read Environment Variable
-  description: Read an environment variable.
+  summary: Get Environment Variable
+  description: Returns an environment variable.
   operationId: getConfigV01EnvironmentVariablesEnvironmentVariableId
   parameters:
     - name: environment_variable_id
@@ -12,7 +12,7 @@ get:
         type: string
   responses:
     '200':
-      description: Read an environment variable.
+      description: Returns an environment variable.
       content:
         application/json:
           schema:
@@ -51,7 +51,7 @@ delete:
   tags:
     - environment-variables
   summary: Delete Environment Variable
-  description: Delete an environment variable.
+  description: Deletes an environment variable.
   operationId: deleteConfigV01EnvironmentVariablesEnvironmentVariableId
   parameters:
     - name: environment_variable_id
@@ -61,7 +61,7 @@ delete:
         type: string
   responses:
     '204':
-      description: Delete an environment variable.
+      description: Deletes an environment variable.
       content:
         application/json:
           schema:

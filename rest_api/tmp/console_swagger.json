@@ -75,7 +75,7 @@
     "/config/v0.1/environment-variables/{environment_variable_id}": {
       "delete": {
         "summary": "Delete Environment Variable",
-        "description": "Delete an environment variable.",
+        "description": "Deletes an environment variable.",
         "produces": [
           "application/json"
         ],
@@ -89,7 +89,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Delete an environment variable.",
+            "description": "Deletes an environment variable.",
             "schema": {
               "$ref": "#/definitions/Config_V1_Entities_EnvironmentVariable"
             }
@@ -131,8 +131,8 @@
         "operationId": "deleteConfigV01EnvironmentVariablesEnvironmentVariableId"
       },
       "get": {
-        "summary": "Read Environment Variable",
-        "description": "Read an environment variable.",
+        "summary": "Get Environment Variable",
+        "description": "Returns an environment variable.",
         "produces": [
           "application/json"
         ],
@@ -146,7 +146,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Read an environment variable.",
+            "description": "Returns an environment variable.",
             "schema": {
               "$ref": "#/definitions/Config_V1_Entities_EnvironmentVariable"
             }
@@ -190,8 +190,8 @@
     },
     "/config/v0.1/environment-variables": {
       "put": {
-        "summary": "Create or Replace Environment Variable",
-        "description": "Create or replace an environment variable.",
+        "summary": "Set Environment Variable",
+        "description": "Creates or updates an environment variable.",
         "produces": [
           "application/json"
         ],
@@ -210,7 +210,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Create or replace an environment variable.",
+            "description": "Creates or updates an environment variable.",
             "schema": {
               "$ref": "#/definitions/Config_V1_Entities_EnvironmentVariable"
             }
@@ -279,13 +279,14 @@
           {
             "in": "query",
             "name": "key",
-            "description": "Find environment variable by their key",
+            "description": "Find an environment variable by its key.",
             "type": "string",
             "required": false
           },
           {
             "in": "query",
             "name": "environment_id",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n",
             "type": "string",
             "required": true
           }
@@ -485,7 +486,7 @@
           {
             "in": "query",
             "name": "environment_id",
-            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab). \n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n",
             "type": "string",
             "required": true
           }
@@ -1821,7 +1822,7 @@
           {
             "in": "query",
             "name": "organization_id",
-            "description": "An organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab). \n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n",
+            "description": "An organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n",
             "type": "string",
             "required": true
           }
@@ -2054,6 +2055,251 @@
         "operationId": "getAccountsV01OrganizationsOrganizationId"
       }
     },
+    "/bff/ids/teams/{team_id}/feature-scopes": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "team_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get FeatureScope(s)"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "getBffIdsTeamsTeamIdFeatureScopes"
+      }
+    },
+    "/bff/ids/teams/{team_id}/clients/{client_id}/secrets/{secret_id}": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "team_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "client_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "secret_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "deleted Secret"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "deleteBffIdsTeamsTeamIdClientsClientIdSecretsSecretId"
+      }
+    },
+    "/bff/ids/teams/{team_id}/clients/{client_id}/secrets": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "team_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "client_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "created Secret"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "postBffIdsTeamsTeamIdClientsClientIdSecrets"
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "team_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "client_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get Secret(s)"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "getBffIdsTeamsTeamIdClientsClientIdSecrets"
+      }
+    },
+    "/bff/ids/teams/{team_id}/clients/{client_id}": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "team_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "client_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "deleted Client"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "deleteBffIdsTeamsTeamIdClientsClientId"
+      },
+      "patch": {
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "team_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "client_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "patched Client"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "patchBffIdsTeamsTeamIdClientsClientId"
+      }
+    },
+    "/bff/ids/teams/{team_id}/clients": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "team_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "created Client"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "postBffIdsTeamsTeamIdClients"
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "team_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get Client(s)"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "getBffIdsTeamsTeamIdClients"
+      }
+    },
     "/bff/traffic/{query_name}": {
       "post": {
         "produces": [
@@ -2110,29 +2356,29 @@
         },
         "environment_id": {
           "type": "string",
-          "description": "Environment ID"
+          "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
         },
         "key": {
           "type": "string",
-          "description": "Environment variable key"
+          "description": "The environment variable's name."
         },
         "value": {
           "type": "string",
-          "description": "Environment variable value"
+          "description": "The environment variable's value."
         },
         "secret": {
           "type": "boolean",
-          "description": "When true, the value cannot be read after being set"
+          "description": "Determines whether the environment variable's value will be masked using asterisks. Once this property has been enabled, it cannot be unset.\n"
         },
         "created_at": {
           "type": "string",
           "format": "date-time",
-          "description": "Created at"
+          "description": "The environment variable's creation date and time (UTC)."
         },
         "updated_at": {
           "type": "string",
           "format": "date-time",
-          "description": "Updated at"
+          "description": "The environment variable's last modification date and time (UTC)."
         }
       },
       "required": [
@@ -2186,16 +2432,20 @@
       "type": "object",
       "properties": {
         "environment_id": {
-          "type": "string"
+          "type": "string",
+          "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
         },
         "key": {
-          "type": "string"
+          "type": "string",
+          "description": "The environment variable's name."
         },
         "value": {
-          "type": "string"
+          "type": "string",
+          "description": "The environment variable's value."
         },
         "secret": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Determines whether the environment variable's value will be masked using asterisks. Once this property has been enabled, it cannot be unset.\n"
         }
       },
       "required": [
@@ -2203,7 +2453,7 @@
         "key",
         "value"
       ],
-      "description": "Create or replace an environment variable."
+      "description": "Creates or updates an environment variable."
     },
     "Config_V1_Entities_EnvironmentVariable_Collection": {
       "type": "object",
@@ -2230,7 +2480,7 @@
           "items": {
             "$ref": "#/definitions/Config_V1_Entities_EnvironmentVariable"
           },
-          "description": "Array of items."
+          "description": "List of environment variables."
         }
       },
       "required": [
@@ -2295,7 +2545,7 @@
         },
         "environment_id": {
           "type": "string",
-          "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab). \n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
+          "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
         },
         "primary_cert": {
           "type": "string",
@@ -2312,7 +2562,7 @@
         },
         "status": {
           "type": "string",
-          "description": "The TLS certificate's status. Returns one of the following states:\n\n-  `created`: The TLS certificate has been created, but it has not yet been activated. \n-  `activating:` Edgio is in the process of activating the TLS certificate.\n-  `activated:` The TLS certificate is currently active. \n-  `failed:` The activation of the TLS certificate failed.\n-  `expired:` The TLS certificate has expired. \n"
+          "description": "The TLS certificate's status. Returns one of the following states:\n\n-  `created`: The TLS certificate has been created, but it has not yet been activated.\n-  `activating:` Edgio is in the process of activating the TLS certificate.\n-  `activated:` The TLS certificate is currently active.\n-  `failed:` The activation of the TLS certificate failed.\n-  `expired:` The TLS certificate has expired.\n"
         },
         "generated": {
           "type": "boolean",
@@ -2360,7 +2610,7 @@
       "properties": {
         "environment_id": {
           "type": "string",
-          "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab). \n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
+          "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
         },
         "primary_cert": {
           "type": "string",
@@ -2539,7 +2789,7 @@
               ]
             }
           ],
-          "description": "List of origin configurations.\n\nYou cannot delete or change the name of an origin configuration that has been mapped to a hostname. Attempting to do so will generate a `404 Bad Request` whose error message is similar to the following one:\n\n`Invalid config: Schema validation error: properties.0.hostnames.0: Origin 'web' not found`\n\nDefined externally: edgecontrol/schema-base.json#/definitions/property/properties/origins\n"
+          "description": "List of origin configurations.\n\nYou cannot delete or change the name of an origin configuration that has been mapped to a hostname. Attempting to do so will generate a `404 Bad Request` whose error message is similar to the following one:\n\n`Invalid config: Schema validation error: properties.0.hostnames.0: Origin 'web' not found`\n\nDefined externally: https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/origins\n"
         },
         "hostnames": {
           "type": "string",
@@ -2548,7 +2798,7 @@
               "hostname": "cdn.example.com"
             }
           ],
-          "description": "List of hostnames. Defined externally: edgecontrol/schema-base.json#/definitions/property/properties/hostnames"
+          "description": "List of hostnames. Defined externally: https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/hostnames"
         },
         "rules": {
           "type": "string",
@@ -2571,7 +2821,7 @@
               ]
             }
           ],
-          "description": "List of rules defined using JSON syntax.\n\nView your current set of rules in JSON syntax from within the Edgio Console by navigating to the **Rules** page and then clicking **JSON Editor**.\n\nDefined externally: edgecontrol/schema-base.json#/definitions/property/properties/rules\n"
+          "description": "List of rules defined using JSON syntax.\n\nView your current set of rules in JSON syntax from within the Edgio Console by navigating to the **Rules** page and then clicking **JSON Editor**.\n\nDefined externally: https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/rules\n"
         },
         "experiments": {
           "type": "string",
@@ -2597,7 +2847,7 @@
         },
         "origins": {
           "type": "array",
-          "description": "List of origin configurations.\n\nYou cannot delete or change the name of an origin configuration that has been mapped to a hostname. Attempting to do so will generate a `404 Bad Request` whose error message is similar to the following one:\n\n`Invalid config: Schema validation error: properties.0.hostnames.0: Origin 'web' not found`\n\nDefined externally: edgecontrol/schema-base.json#/definitions/property/properties/origins\n",
+          "description": "List of origin configurations.\n\nYou cannot delete or change the name of an origin configuration that has been mapped to a hostname. Attempting to do so will generate a `404 Bad Request` whose error message is similar to the following one:\n\n`Invalid config: Schema validation error: properties.0.hostnames.0: Origin 'web' not found`\n\nDefined externally: https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/origins\n",
           "items": {
             "type": "string"
           },
@@ -2618,7 +2868,7 @@
         },
         "hostnames": {
           "type": "array",
-          "description": "List of hostnames. Defined externally: edgecontrol/schema-base.json#/definitions/property/properties/hostnames",
+          "description": "List of hostnames. Defined externally: https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/hostnames",
           "items": {
             "type": "string"
           },
@@ -2630,7 +2880,7 @@
         },
         "rules": {
           "type": "array",
-          "description": "List of rules defined using JSON syntax.\n\nView your current set of rules in JSON syntax from within the Edgio Console by navigating to the **Rules** page and then clicking **JSON Editor**.\n\nDefined externally: edgecontrol/schema-base.json#/definitions/property/properties/rules\n",
+          "description": "List of rules defined using JSON syntax.\n\nView your current set of rules in JSON syntax from within the Edgio Console by navigating to the **Rules** page and then clicking **JSON Editor**.\n\nDefined externally: https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/rules\n",
           "items": {
             "type": "string"
           },
@@ -2727,7 +2977,7 @@
         },
         "purge_type": {
           "type": "string",
-          "description": "- `all_entries`: Purge all cached content. \n- `path`: Purge one or more relative path(s) defined within the `values` property.\n- `surrogate_key`: Purge one or more surrogate key(s) defined within the `values` property.\n",
+          "description": "- `all_entries`: Purge all cached content.\n- `path`: Purge one or more relative path(s) defined within the `values` property.\n- `surrogate_key`: Purge one or more surrogate key(s) defined within the `values` property.\n",
           "enum": [
             "all_entries",
             "path",
@@ -2736,7 +2986,7 @@
         },
         "values": {
           "type": "array",
-          "description": "Defines the set of content will be purged. The `purge_type` property's value determines what should be passed.\n  - `all_entries`: Omit this property or pass an empty array.\n  - `path`: Pass one or more relative path(s). This relative path starts directly after the hostname. Use an `*` to represent zero or more characters.\n  - `surrogate_key`: Pass one or more surrogate key(s) (aka cache tags). \n",
+          "description": "Defines the set of content to be purged. The `purge_type` property's value determines what should be passed.\n  - `all_entries`: Omit this property or pass an empty array.\n  - `path`: Pass one or more relative path(s). This relative path starts directly after the hostname. Use an `*` to represent zero or more characters.\n  - `surrogate_key`: Pass one or more surrogate key(s) (aka cache tags).\n",
           "items": {
             "type": "string"
           }
@@ -2904,6 +3154,10 @@
         "default_domain_name": {
           "type": "string",
           "description": "The default hostname through which traffic for this environment is served."
+        },
+        "pci_compliance": {
+          "type": "boolean",
+          "description": "Determines whether this environment's traffic will be restricted to our PCI-compliant network or served through our entire network."
         },
         "dns_domain_name": {
           "type": "string",
@@ -3149,7 +3403,7 @@
             "non_pci",
             "mixed"
           ],
-          "description": "The organization's PCI compliance status. This state is determined by checking PCI-compliance across all environments associated with this organization. Valid values are:\n\n-   **pci:** All environments are PCI-compliant.\n-   **non_pci:** All environments are not PCI-compliant.\n-   **mixed:** Some environments are PCI-compliant.\n"
+          "description": "The organization's PCI compliance status. This state is determined by checking PCI-compliance across all environments associated with this organization. Valid values are:\n\n-   **pci:** All environments are PCI-compliant.\n-   **non_pci:** All environments use our entire network.\n-   **mixed:** Some environments are PCI-compliant.\n"
         },
         "pci_dns_domain_name": {
           "type": "string",
@@ -3157,7 +3411,7 @@
         },
         "non_pci_dns_domain_name": {
           "type": "string",
-          "description": "The organization's DNS domain for standard traffic.\n\nServe traffic that does not require PCI-compliance by pointing your CNAMEs to this domain.\n"
+          "description": "The organization's DNS domain for standard traffic. Standard traffic can use our entire network.\n\nServe traffic that does not require PCI-compliance by pointing your CNAMEs to this domain.\n"
         },
         "created_at": {
           "type": "string",

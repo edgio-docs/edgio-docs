@@ -35,7 +35,7 @@ properties:
 
       -   **pci:** All environments are PCI-compliant.
 
-      -   **non_pci:** All environments are not PCI-compliant.
+      -   **non_pci:** All environments use our entire network.
 
       -   **mixed:** Some environments are PCI-compliant.
     enum:
@@ -53,7 +53,8 @@ properties:
   non_pci_dns_domain_name:
     type: string
     description: >
-      The organization's DNS domain for standard traffic.
+      The organization's DNS domain for standard traffic. Standard traffic can
+      use our entire network.
 
 
       Serve traffic that does not require PCI-compliance by pointing your CNAMEs

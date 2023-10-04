@@ -37,6 +37,11 @@ properties:
   default_domain_name:
     type: string
     description: The default hostname through which traffic for this environment is served.
+  pci_compliance:
+    type: boolean
+    description: >-
+      Determines whether this environment's traffic will be restricted to our
+      PCI-compliant network or served through our entire network.
   dns_domain_name:
     type: string
     description: Serve traffic for this environment by pointing your CNAMEs to this domain.

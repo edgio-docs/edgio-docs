@@ -17,7 +17,7 @@ properties:
     format: int32
   items:
     type: array
-    description: Array of items.
+    description: List of environment variables.
     items:
       $ref: ./Config_V1_Entities_EnvironmentVariable.yaml
 description: Config_V1_Entities_EnvironmentVariable_Collection model

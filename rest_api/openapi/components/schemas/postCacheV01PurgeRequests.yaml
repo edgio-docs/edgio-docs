@@ -15,7 +15,7 @@ properties:
   purge_type:
     type: string
     description: >
-      - `all_entries`: Purge all cached content. 
+      - `all_entries`: Purge all cached content.
 
       - `path`: Purge one or more relative path(s) defined within the `values`
       property.
@@ -29,11 +29,11 @@ properties:
   values:
     type: array
     description: >
-      Defines the set of content will be purged. The `purge_type` property's
-      value determines what should be passed.
+      Defines the set of content to be purged. The `purge_type` property's value
+      determines what should be passed.
         - `all_entries`: Omit this property or pass an empty array.
         - `path`: Pass one or more relative path(s). This relative path starts directly after the hostname. Use an `*` to represent zero or more characters.
-        - `surrogate_key`: Pass one or more surrogate key(s) (aka cache tags). 
+        - `surrogate_key`: Pass one or more surrogate key(s) (aka cache tags).
     items:
       type: string
 description: >

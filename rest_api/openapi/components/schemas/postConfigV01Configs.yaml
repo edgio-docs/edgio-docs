@@ -15,12 +15,13 @@ properties:
       **Settings**. It is listed under **Environment ID**.
   origins:
     $ref: >-
-      ../../edgecontrol/schema-base.json#/definitions/property/properties/origins
+      https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/origins
   hostnames:
     $ref: >-
-      ../../edgecontrol/schema-base.json#/definitions/property/properties/hostnames
+      https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/hostnames
   rules:
-    $ref: ../../edgecontrol/schema-base.json#/definitions/property/properties/rules
+    $ref: >-
+      https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/rules
   experiments:
     type: array
     description: List of experiments.

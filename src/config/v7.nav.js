@@ -134,10 +134,6 @@ const nav = {
           path: 'performance/prefetching',
         },
         {
-          title: 'Experimentation',
-          path: 'performance/experiments',
-        },
-        {
           title: 'Traffic Splitting',
           path: 'performance/traffic_splitting',
         },
@@ -213,6 +209,11 @@ const nav = {
       title: 'Edge Functions',
       path: 'edge-functions',
       icon: 'edge-functions',
+    },
+    {
+      title: 'Experimentation',
+      path: 'experimentation',
+      icon: 'experimentation',
     },
     {
       title: 'Security',

@@ -1,8 +1,16 @@
 get:
   tags:
     - configs
-  summary: Retrieve an Edge Configuration
-  description: Get a specific Edge Configuration
+  summary: Get CDN Configuration
+  description: >
+    Retrieve an environment's origin configurations, hostnames, rules, and
+    experiments.
+
+
+    Use the [Get Environment
+    operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId)
+    to retrieve the system-defined ID (`@links.active_config.id`) for an
+    environment's active configuration
   operationId: getConfigV01ConfigsConfigId
   parameters:
     - name: config_id
@@ -12,13 +20,21 @@ get:
         type: string
   responses:
     '200':
-      description: Get a specific Edge Configuration
+      description: >
+        Retrieve an environment's origin configurations, hostnames, rules, and
+        experiments.
+
+
+        Use the [Get Environment
+        operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId)
+        to retrieve the system-defined ID (`@links.active_config.id`) for an
+        environment's active configuration
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Config_V1_Entities_Config.yaml
     '400':
-      description: UserError
+      description: Bad Request
       content:
         application/json:
           schema:
@@ -36,13 +52,13 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: RecordNotFound
+      description: Not Found
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: ServerError
+      description: Internal Server Error
       content:
         application/json:
           schema:

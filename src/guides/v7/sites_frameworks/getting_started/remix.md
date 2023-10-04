@@ -229,7 +229,7 @@ module.exports = {
 
   /* ... */
 
-  // Options for hosting serverless functions on Edgio
+  // Options for hosting Cloud Functions on Edgio
   serverless: {
     // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
     // This option generally isn't needed as Edgio automatically includes all modules imported by your code in the bundle that
@@ -297,5 +297,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 # deploy the {{ PRODUCT }} production bundle
 {{ CLI_CMD(deploy) }}
 ```
+
+{{ system_origins_callout.md }}
 
 Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.

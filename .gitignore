@@ -35,16 +35,18 @@ yarn-error.log*
 
 # layer0
 .layer0
-.vscode/
-
 .env
 
 # Edgio generated build directory
 .edgio
 
-.fleet
-
 # Console API temporary files
 
 rest_api/tmp/split/components
 rest_api/tmp/split/paths
+rest_api/dist
+
+# IDE
+.fleet
+.idea
+.vscode/

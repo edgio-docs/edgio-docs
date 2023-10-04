@@ -6,7 +6,7 @@ get:
   tags:
     - Managed Rules (Profiles)
   summary: Get Managed Rule
-  description: Retrieves a managed rule that identifies a rule set configuration and describes a valid request.
+  description: Retrieves a managed rule that identifies a ruleset configuration and describes a valid request.
   responses:
     '200':
       description: OK. A managed rule was retrieved.
@@ -25,7 +25,7 @@ put:
   tags:
     - Managed Rules (Profiles)
   summary: Update Managed Rule
-  description: Updates a managed rule that identifies a rule set configuration and describes a valid request.
+  description: Updates a managed rule that identifies a ruleset configuration and describes a valid request.
   requestBody:
     $ref: ../components/requestBodies/Profile.yaml
   responses:

@@ -2,21 +2,17 @@
 title: Authentication
 ---
 
-Only authenticated requests to the REST API will be processed. This authentication process serves the following two purposes:
+Our REST API requires authentication for all requests. This serves the following two purposes:
 
 1. Identifies the client application making the request.
 2. Verifies that this client application has sufficient permissions to perform the requested action.
-
-Authentication requires passing a unique value (i.e., token). Generate a token generated from your [OAuth 2.0](#client-applications) credentials. By default, this type of token expires after 60 seconds.
-    
-[Register your client application](#administering-api-clients) through the {{ IDENTITY_LINK }} to generate OAuth 2.0 credentials through which you may authorize requests submitted to our API gateway ({{ API_DOMAIN }}).
 
 ## Quick Start {/*quick-start*/}
 
 Get started with our latest APIs by performing the following steps:
 
 1. [Create an API client](#administering-api-clients) for the desired application. Authorize this client by only assigning it the [scope(s)](#scopes) required by the endpoint(s) with which it will interact.
-2. Use this client's ID and secret key to [generate a temporary access token](#generating-access-tokens).
+2. Use this client's ID, secret key, and scopes to [generate a temporary access token](#generating-access-tokens).
 3. [Authorize your API requests](#authorizing-requests) using the temporary access token generated in the previous step.
 
 ## OAuth 2.0 Authorization Flow {/*oauth20-authorization-flow*/}
@@ -85,12 +81,7 @@ The above hierarchy allows you to grant broad or narrow permissions to your clie
     
     `app.bot_security` -->
 -   One or more scope(s) must also be defined when requesting an access token. You may only specify a scope that has been explicitly granted or inherited from a broader scope.
--   Common scopes are listed below.
-    | Scope  | Description  |
-    |---|---|
-    | app.waf  | Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules.   |
-    | app.bot_security  | Authorizes full access to Bot Manager.  |
-    | app.api_security  | Authorizes full access to API Security.  |
+-   [Learn more about our scopes.]({{ API_DOCS_URL }}#section/Scopes)
 
 ## Client Applications {/*client-applications*/}
 
@@ -226,30 +217,23 @@ Requests for access tokens requires:
     -   `<SECRET>`**:** Represents the secret assigned to your REST API client.
     -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. Common scopes are listed below.
 
-**Sample request:**
+**Sample access token request:**
 
 ``` curl
-POST https://{{ IDENTITY_TOKEN_DOMAIN }}/connect/token HTTP/1.1
-Accept: application/json
-Content-Type: application/x-www-form-urlencoded
-Host: {{ IDENTITY_TOKEN_DOMAIN }}
-
-client_id=J23d...B2Cd&client_secret=Fdad...DF3v&grant_type=client_credentials&scope=app.waf
+curl --request POST \
+  --url https://{{ IDENTITY_TOKEN_DOMAIN }}/connect/token \
+  --header 'content-type: application/x-www-form-urlencoded' \
+  --data 'client_id=J23d...B2Cd&client_secret=Fdad...DF3v&grant_type=client_credentials&scope=app.waf'
 ```
 
 **Sample response:**
 
 ```
-HTTP/1.1 200 OK
-Cache-Control: no-store, no-cache, max-age=0
-Content-Type: application/json; charset=UTF-8
-Date: Thu, 15 Apr 2021 12:00:00 GMT
-Content-Length: 830
-
 {
     "access_token": "A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ",
     "expires_in": 300,
-    "token_type": "Bearer"
+    "token_type": "Bearer",
+    "scope": "app.waf"
 }
 ```
 

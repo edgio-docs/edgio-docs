@@ -7,9 +7,9 @@ properties:
     type: string
     description: |
     
-      The system-defined ID for the bot rule set that will be applied to production traffic when this bot manager configuration is applied to a Security App. 
+      The system-defined ID for the bot ruleset that will be applied to production traffic when this bot manager configuration is applied to a Security App. 
       
-      Use the [Get All Bot Rule Sets operation](#tag/Bot-Managers/operation/get-bot-managers) to retrieve a list of bot rule sets and their system-defined IDs.
+      Use the [Get All Bot Rulesets operation](#tag/Bot-Rules/operation/get-bot-rules) to retrieve a list of bot rulesets and their system-defined IDs.
 
   exception_cookie:
     type: array

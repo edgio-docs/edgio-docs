@@ -2,5 +2,4 @@ type: object
 properties:
   slug:
     type: string
-    description: The property's name. Space characters are converted to dashes.
-description: Update a property.
+description: Update property

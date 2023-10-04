@@ -5,17 +5,17 @@ get:
   operationId: get-bot-rule
   tags:
     - Bot Rules
-  summary: GET Bot Rule Object
-  description: Get a Bot object from a Bot id.
+  summary: Get Bot Ruleset
+  description: Retrieves a bot ruleset. A bot ruleset defines criteria for bot identification.
   responses:
     '200':
-      description: Successful Response
+      description: OK. A bot ruleset was retrieved.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Bot.yaml
     '404':
-      description: Bot not found
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':
@@ -24,19 +24,19 @@ put:
   operationId: update-bot-rule
   tags:
     - Bot Rules
-  summary: PUT Bot Rule Object
-  description: Modify a Bot object identified by id.
+  summary: Update Bot Ruleset
+  description: Updates a bot ruleset. A bot ruleset defines criteria for bot identification.
   requestBody:
     $ref: ../components/requestBodies/Bot.yaml
   responses:
     '200':
-      description: Bot successfully updated
+      description: OK. A bot ruleset was updated. 
       content:
         application/json:
           schema:
             $ref: ../components/schemas/ResponseObj.yaml
     '404':
-      description: Bot not found
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':
@@ -45,13 +45,13 @@ delete:
   operationId: delete-bot-rule
   tags:
     - Bot Rules
-  summary: DELETE Bot Rule Object
-  description: Delete a Bot object identified by id.
+  summary: Delete Bot Ruleset
+  description: Deletes a bot ruleset. A bot ruleset defines criteria for bot identification.
   responses:
     '200':
-      description: Bot successfully deleted
+      description: OK. A bot ruleset was deleted. 
     '404':
-      description: Bot not found
+      $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':

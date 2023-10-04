@@ -1,53 +1,44 @@
 get:
   tags:
     - environment-variables
-  summary: Get All Environment Variables
-  description: Returns all environment variables associated with an environment.
+  summary: List environment variables
+  description: List environment variables
   operationId: getConfigV01EnvironmentVariables
   parameters:
     - name: page
       in: query
-      description: 0-based page number.
+      description: Page number starting from 0
       schema:
         type: integer
         format: int32
         default: 0
     - name: page_size
       in: query
-      description: >-
-        Number of results per page. Valid values are: 1 - 100. **Default
-        value:** 20
+      description: 'Number of results per page. Accepted value from 1-100. Default: 20'
       schema:
         type: integer
         format: int32
         default: 20
     - name: key
       in: query
-      description: Find an environment variable by its key.
+      description: Find environment variable by their key
       schema:
         type: string
     - name: environment_id
       in: query
-      description: >
-        An environment's system-defined ID (e.g.,
-        12345678-1234-1234-1234-1234567890ab).
-
-
-        From the Edgio Console, navigate to the desired environment and then
-        click **Settings**. It is listed under **Environment ID**.
       required: true
       schema:
         type: string
   responses:
     '200':
-      description: Returns all environment variables associated with an environment.
+      description: List environment variables
       content:
         application/json:
           schema:
             $ref: >-
               ../components/schemas/Config_V1_Entities_EnvironmentVariable_Collection.yaml
     '400':
-      description: Bad Request
+      description: UserError
       content:
         application/json:
           schema:
@@ -65,13 +56,13 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: Not Found
+      description: RecordNotFound
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: Internal Server Error
+      description: ServerError
       content:
         application/json:
           schema:
@@ -79,8 +70,8 @@ get:
 put:
   tags:
     - environment-variables
-  summary: Set Environment Variable
-  description: Creates or updates an environment variable.
+  summary: Create or replace environment variable
+  description: Create or replace environment variable
   operationId: putConfigV01EnvironmentVariables
   requestBody:
     content:
@@ -90,13 +81,13 @@ put:
     required: true
   responses:
     '200':
-      description: Creates or updates an environment variable.
+      description: Create or replace environment variable
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Config_V1_Entities_EnvironmentVariable.yaml
     '400':
-      description: Bad Request
+      description: UserError
       content:
         application/json:
           schema:
@@ -114,13 +105,13 @@ put:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: Not Found
+      description: RecordNotFound
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: Internal Server Error
+      description: ServerError
       content:
         application/json:
           schema:

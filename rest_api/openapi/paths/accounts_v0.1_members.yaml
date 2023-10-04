@@ -1,22 +1,20 @@
 get:
   tags:
     - members
-  summary: ' members'
-  description: ' members'
+  summary: List members
+  description: List members
   operationId: getAccountsV01Members
   parameters:
     - name: page
       in: query
-      description: 0-based page number.
+      description: Page number starting from 0
       schema:
         type: integer
         format: int32
         default: 0
     - name: page_size
       in: query
-      description: >-
-        Number of results per page. Valid values are: 1 - 100. **Default
-        value:** 20
+      description: 'Number of results per page. Accepted value from 1-100. Default: 20'
       schema:
         type: integer
         format: int32
@@ -28,13 +26,13 @@ get:
         type: string
   responses:
     '200':
-      description: ' members'
+      description: List members
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Accounts_V1_Entities_Member_Collection.yaml
     '400':
-      description: Bad Request
+      description: UserError
       content:
         application/json:
           schema:
@@ -52,13 +50,13 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: Not Found
+      description: RecordNotFound
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: Internal Server Error
+      description: ServerError
       content:
         application/json:
           schema:
@@ -66,6 +64,8 @@ get:
 post:
   tags:
     - members
+  summary: Create a new member
+  description: Create a new member
   operationId: postAccountsV01Members
   requestBody:
     content:
@@ -75,13 +75,13 @@ post:
     required: true
   responses:
     '201':
-      description: created Member
+      description: Create a new member
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Accounts_V1_Entities_Member.yaml
     '400':
-      description: Bad Request
+      description: UserError
       content:
         application/json:
           schema:
@@ -99,13 +99,13 @@ post:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: Not Found
+      description: RecordNotFound
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: Internal Server Error
+      description: ServerError
       content:
         application/json:
           schema:

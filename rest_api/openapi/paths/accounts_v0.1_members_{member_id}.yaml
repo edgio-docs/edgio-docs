@@ -1,6 +1,8 @@
 get:
   tags:
     - members
+  summary: Read member
+  description: Read member
   operationId: getAccountsV01MembersMemberId
   parameters:
     - name: member_id
@@ -10,13 +12,13 @@ get:
         type: string
   responses:
     '200':
-      description: get Member(s)
+      description: Read member
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Accounts_V1_Entities_Member.yaml
     '400':
-      description: Bad Request
+      description: UserError
       content:
         application/json:
           schema:
@@ -34,13 +36,13 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: Not Found
+      description: RecordNotFound
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: Internal Server Error
+      description: ServerError
       content:
         application/json:
           schema:
@@ -48,6 +50,8 @@ get:
 delete:
   tags:
     - members
+  summary: Delete member
+  description: Delete member
   operationId: deleteAccountsV01MembersMemberId
   parameters:
     - name: member_id
@@ -57,13 +61,13 @@ delete:
         type: string
   responses:
     '204':
-      description: deleted Member
+      description: Delete member
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Accounts_V1_Entities_Member.yaml
     '400':
-      description: Bad Request
+      description: UserError
       content:
         application/json:
           schema:
@@ -81,13 +85,13 @@ delete:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: Not Found
+      description: RecordNotFound
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: Internal Server Error
+      description: ServerError
       content:
         application/json:
           schema:
@@ -95,6 +99,8 @@ delete:
 patch:
   tags:
     - members
+  summary: Update member
+  description: Update member
   operationId: patchAccountsV01MembersMemberId
   parameters:
     - name: member_id
@@ -110,13 +116,13 @@ patch:
     required: true
   responses:
     '200':
-      description: patched Member
+      description: Update member
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Accounts_V1_Entities_Member.yaml
     '400':
-      description: Bad Request
+      description: UserError
       content:
         application/json:
           schema:
@@ -134,13 +140,13 @@ patch:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: Not Found
+      description: RecordNotFound
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: Internal Server Error
+      description: ServerError
       content:
         application/json:
           schema:

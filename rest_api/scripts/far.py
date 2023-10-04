@@ -2,7 +2,7 @@ import re
 
 # Define a dictionary of replacements
 replacements = {
-    r'/%7B(.*?)%7D': r'{\1}',  # Replace /%7BVALUE%7D with {VALUE}
+    r'/%7B(.*?)%7D': r'/{\1}',  # Replace /%7BVALUE%7D with {VALUE}
     r'Node\s*\+\s*Request': r'Node',      # Replace Node + Request with Node
     r'Javascript\s*\+\s*Xhr': r'JavaScript',  # Replace Javascript + Xhr with JavaScript
     r'Shell\s*\+\s*Curl': r'curl',         # Replace Shell + Curl with curl
@@ -28,9 +28,8 @@ def replace_and_write(input_file_path, output_file_path):
         print(f"An error occurred: {str(e)}")
 
 # Input and output file paths
-input_file_path = "rest_api.html"  # Replace with your input file path
-output_file_path = "rest_api_with_examples.html"  # Replace with your output file path
+input_file_path = "./dist/rest_api.html"  # Replace with your input file path
+output_file_path = "./dist/rest_api.html"  # Replace with your output file path
 
 # Call the function to replace occurrences and write to the output file
 replace_and_write(input_file_path, output_file_path)
-

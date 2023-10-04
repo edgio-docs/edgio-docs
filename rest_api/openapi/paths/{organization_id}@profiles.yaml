@@ -3,7 +3,7 @@ post:
   tags:
     - Managed Rules (Profiles)
   summary: Add Managed Rule
-  description: Creates a managed rule that identifies a rule set configuration and describes a valid request.
+  description: Creates a managed rule that identifies a ruleset configuration and describes a valid request.
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   requestBody:
@@ -24,7 +24,7 @@ get:
   tags:
     - Managed Rules (Profiles)
   summary: Get All Managed Rules
-  description: Retrieves a list of managed rules. A managed rule identifies a rule set configuration and describes a valid request.
+  description: Retrieves a list of managed rules. A managed rule identifies a ruleset configuration and describes a valid request.
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   responses:

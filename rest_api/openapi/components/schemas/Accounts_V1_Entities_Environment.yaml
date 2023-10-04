@@ -6,10 +6,12 @@ type: object
 properties:
   '@type':
     type: string
-    description: The resource's type.
+    description: Resource type.
   '@id':
     type: string
-    description: The resource's relative path.
+    description: >-
+      Used to specify the URI for the resource. Can be used by clients to
+      navigate back to that specific resource.
   '@links':
     type: object
     properties: {}
@@ -22,35 +24,30 @@ properties:
     description: Property ID
   name:
     type: string
-    description: The environment's name.
+    description: Environment name
   can_members_deploy:
     type: boolean
-    description: >-
-      Determines whether all organization members may deploy to this
-      environment. Disabling this option restricts deployments to admin users
-      and the deploy token.
+    description: Allow non-admin members to deploy to this environment
   http_request_logging:
     type: boolean
-    description: >-
-      Determines whether deep-request inspection for serverless logs will be
-      enabled.
+    description: Enable deep-request inspection for serverless logs
   default_domain_name:
     type: string
-    description: The default hostname through which traffic for this environment is served.
+    description: >-
+      Default hostname where the CDN serves the traffic, in addition to custom
+      hostnames
   pci_compliance:
     type: boolean
-    description: >-
-      Determines whether this environment's traffic will be restricted to our
-      PCI-compliant network or served through our entire network.
+    description: When true the environment is setup for the PCI network footprint.
   dns_domain_name:
     type: string
-    description: Serve traffic for this environment by pointing your CNAMEs to this domain.
+    description: Configure your hostname CNAMEs to point to this domain
   created_at:
     type: string
-    description: The environment's creation date and time (UTC).
+    description: Created at
     format: date-time
   updated_at:
     type: string
-    description: The environment's last modification date and time (UTC).
+    description: Updated at
     format: date-time
 description: Accounts_V1_Entities_Environment model

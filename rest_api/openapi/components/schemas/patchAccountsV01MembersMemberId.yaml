@@ -8,3 +8,4 @@ properties:
       - member
       - admin
       - super_admin
+description: Update member

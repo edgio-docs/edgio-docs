@@ -12,6 +12,7 @@ const PRODUCT_EDGE = 'Performance';
 const PRODUCT_APPLICATIONS = 'Applications';
 const PRODUCT_PLATFORM = 'Sites';
 const PRODUCT_SECURITY = 'Security';
+const PRODUCT_LOWER = PRODUCT.toLowerCase();
 const PRODUCT_NAME_LOWER = PRODUCT.toLowerCase();
 const PRODUCT_NAME_UPPER = PRODUCT.toUpperCase();
 const PRODUCT_LEGACY_LOWER = PRODUCT_LEGACY.toLowerCase();
@@ -54,6 +55,7 @@ const STATUS_URL = `https://status.${DOMAIN}`;
 const HELP_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const SUPPORT_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const DOCS_URL = `https://${DOCS_DOMAIN}`;
+const API_DOCS_URL = `https://basic-security-ecdocs-production.edgio.link/preview/rest_api.html`;
 const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
 const API_URL = `https://${API_DOMAIN}`;
 const IDENTITY_URL = `https://${IDENTITY_DOMAIN}`;
@@ -70,6 +72,8 @@ const STARTER_NAME = 'layer0-app';
 const EDGEJS_LABEL = 'EdgeJS';
 
 const YEAR = '2023';
+
+const BOT_MUSTACHE = `\`{{BOT_JS}}\``;
 
 const EXAMPLES_REPOS = {
   angular: 'https://github.com/edgio-docs/edgio-angular-example',
@@ -128,12 +132,12 @@ yarn global add ${PACKAGE_NAME}/cli
 </SnippetGroup>
 `;
 
-const CONTACT_SUPPORT = `Contact our [technical customer support](${ HELP_URL }).`;
+const CONTACT_SUPPORT = `Contact our [technical customer support](${HELP_URL}).`;
 
-const SECURITY_NAV = `1.  From the ${PORTAL_LINK}, select the desired team space. 
+const SECURITY_NAV = `1.  From the ${PORTAL_LINK}, select the desired organization. 
     2.  From the **Security** section, click `;
 
-const ENV_NAV = `1.  From the ${PORTAL_LINK}, select the desired private or team space.
+const ENV_NAV = `1.  From the ${PORTAL_LINK}, select the desired private space or organization.
     2.  Select the desired property.
     3.  From the left-hand pane, select the desired environment from under the **Environments** section.
     4.  From the left-hand pane, select`;
@@ -147,6 +151,7 @@ const config = {
   API_DOMAIN,
   COMPANY_NAME,
   PRODUCT,
+  PRODUCT_LOWER,
   PRODUCT_LEGACY,
   PRODUCT_APPLICATIONS,
   PRODUCT_EDGE,
@@ -172,6 +177,7 @@ const config = {
   DOCS_PAGES_REPO_URL,
   DOCS_REPO,
   DOCS_URL,
+  API_DOCS_URL,
   DOMAIN,
   DOMAIN_LEGACY,
   EDGEJS_LABEL,
@@ -185,6 +191,7 @@ const config = {
   HELP_URL,
   IDENTITY_DASHBOARD,
   IDENTITY_DOMAIN,
+  IDENTITY_TOKEN_DOMAIN,
   IDENTITY_LINK,
   IDENTITY_URL,
   LINK_DOMAIN,
@@ -207,6 +214,7 @@ const config = {
   TEAM_ID,
   CONTACT_SUPPORT,
   YEAR,
+  BOT_MUSTACHE,
   WWW_URL,
   RUM_NS,
   PACKAGE_VERSION,

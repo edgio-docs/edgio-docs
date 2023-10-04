@@ -6,10 +6,12 @@ type: object
 properties:
   '@type':
     type: string
-    description: The resource's type.
+    description: Resource type.
   '@id':
     type: string
-    description: The resource's relative path.
+    description: >-
+      Used to specify the URI for the resource. Can be used by clients to
+      navigate back to that specific resource.
   '@links':
     type: object
     properties: {}
@@ -19,15 +21,16 @@ properties:
     description: Resource unique identifier.
   organization_id:
     type: string
+    description: Organization ID
   slug:
     type: string
-    description: The property's name.
+    description: Property slug
   created_at:
     type: string
-    description: The property's creation date and time (UTC).
+    description: Created at
     format: date-time
   updated_at:
     type: string
-    description: The property's last modification date and time (UTC).
+    description: Updated at
     format: date-time
 description: Accounts_V1_Entities_Property model

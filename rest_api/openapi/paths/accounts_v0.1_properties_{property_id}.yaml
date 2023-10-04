@@ -1,8 +1,8 @@
 get:
   tags:
     - properties
-  summary: Get Property
-  description: Retrieve a property.
+  summary: Read property
+  description: Read property
   operationId: getAccountsV01PropertiesPropertyId
   parameters:
     - name: property_id
@@ -12,13 +12,13 @@ get:
         type: string
   responses:
     '200':
-      description: Retrieve a property.
+      description: Read property
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Accounts_V1_Entities_Property.yaml
     '400':
-      description: Bad Request
+      description: UserError
       content:
         application/json:
           schema:
@@ -36,13 +36,13 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: Not Found
+      description: RecordNotFound
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: Internal Server Error
+      description: ServerError
       content:
         application/json:
           schema:
@@ -50,8 +50,8 @@ get:
 delete:
   tags:
     - properties
-  summary: Delete Property
-  description: Delete a property.
+  summary: Delete property
+  description: Delete property
   operationId: deleteAccountsV01PropertiesPropertyId
   parameters:
     - name: property_id
@@ -61,13 +61,13 @@ delete:
         type: string
   responses:
     '204':
-      description: Delete a property.
+      description: Delete property
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Accounts_V1_Entities_Property.yaml
     '400':
-      description: Bad Request
+      description: UserError
       content:
         application/json:
           schema:
@@ -85,13 +85,13 @@ delete:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: Not Found
+      description: RecordNotFound
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: Internal Server Error
+      description: ServerError
       content:
         application/json:
           schema:
@@ -99,8 +99,8 @@ delete:
 patch:
   tags:
     - properties
-  summary: Update Property
-  description: Update a property.
+  summary: Update property
+  description: Update property
   operationId: patchAccountsV01PropertiesPropertyId
   parameters:
     - name: property_id
@@ -116,13 +116,13 @@ patch:
     required: true
   responses:
     '200':
-      description: Update a property.
+      description: Update property
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Accounts_V1_Entities_Property.yaml
     '400':
-      description: Bad Request
+      description: UserError
       content:
         application/json:
           schema:
@@ -140,13 +140,13 @@ patch:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: Not Found
+      description: RecordNotFound
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: Internal Server Error
+      description: ServerError
       content:
         application/json:
           schema:

@@ -34,11 +34,10 @@ traffic is blocked. [Learn more.](#browser-challenge)
 
 ### Bot Manager Advanced {/*bot-manager-advanced*/}
 
-Bot Manager Advanced inspects each request to determine whether the client:
+Bot Manager Advanced inspects each request to determine whether the request:
 
-1.  Matches a known good bot (e.g., search bot).
-2.  Is spoofing a known good bot.
-3.  Matches a rule. A rule defines the criteria that our service will use to identify a bad bot.
+1.  Matches an exception. [Exceptions](#exceptions) identify trafic that should bypass bot detection.
+2.  Matches a rule. A rule defines the criteria that our service will use to identify a bad bot.
     
     You may identify bots using:
     
@@ -55,12 +54,15 @@ Bot Manager Advanced inspects each request to determine whether the client:
 
     -   The JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic as a specific bot across various IP addresses and ports.
 
+3.  Matches a known good bot (e.g., search bot).
+4.  Is spoofing a known good bot.
+
 **Key information:**
 
 -   Your configuration determines how our service will handle the above traffic patterns.
 -   If a request satisfies multiple criteria, then the above order determines the action that will be applied to it. Specifically, the order of precedence is:
     
-    `Known Bots > Spoofed Bots > Bots Identified by a Rule`
+    `Exceptions > Bots Identified by a Rule > Known Bots > Spoofed Bots`
     
 -   Bypass the above bot detection measures by creating an exception for one or more URL(s), user agent(s), JA3 fingerprint(s), or cookie(s).
 
@@ -101,17 +103,17 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
     -   You may define a custom payload for the browser challenge by enabling the **Custom Browser Challenge Page** option and then setting the **Browser Challenge Page Template** option to a Base64-encoded HTML page that we will serve as a custom browser challenge. This HTML page must satisfy the following requirements:
 
-        -   It must contain the following mustache: \{\{BOT_JS}}
+        -   It must contain the following mustache: {{BOT_MUSTACHE}}
 
             <Callout type="tip">
 
-              Due to the speed at which our JavaScript function is executed, we recommend that you place the \{\{BOT_JS}} mustache after all rendered content (e.g., near the end of the document's body).
+              Due to the speed at which our JavaScript function is executed, we recommend that you place the {{BOT_MUSTACHE}} mustache after all rendered content (e.g., near the end of the document's body).
 
             </Callout>
 
             <Callout type="info">
 
-              We will replace the above \{\{BOT_JS}} mustache with JavaScript upon serving a browser challenge.
+              We will replace the above {{BOT_MUSTACHE}} mustache with JavaScript upon serving a browser challenge.
 
             </Callout>
 
@@ -128,7 +130,7 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
 -   **Custom Response:** Returns a custom response.
 
-    -   Response body: Define the payload that will be delivered to the client.
+    -   **Response Body:** Define the payload that will be delivered to the client.
 
         <Callout type="tip">
 

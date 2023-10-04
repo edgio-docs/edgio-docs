@@ -126,12 +126,16 @@ const nav = {
           ],
         },
         // {
-          // title: 'Static Prerendering',
-          // path: 'performance/static_prerendering',
+        // title: 'Static Prerendering',
+        // path: 'performance/static_prerendering',
         // },
         {
           title: 'Predictive Prefetch',
           path: 'performance/prefetching',
+        },
+        {
+          title: 'Experimentation',
+          path: 'performance/experiments',
         },
         {
           title: 'Traffic Splitting',
@@ -156,7 +160,7 @@ const nav = {
           ],
         },
         {
-          title: 'Serverless Compute',
+          title: 'Cloud Functions',
           path: 'performance/serverless_compute',
         },
         // {
@@ -446,10 +450,10 @@ const nav = {
               title: 'Stencil',
               path: 'sites_frameworks/getting_started/stencil',
             },
-            // {
-            //   title: 'Svelte',
-            //   path: 'sites_frameworks/getting_started/svelte',
-            // },
+            {
+              title: 'SvelteKit',
+              path: 'sites_frameworks/getting_started/sveltekit',
+            },
             // {
             //   title: 'UmiJS',
             //   path: 'sites_frameworks/getting_started/umijs',
@@ -592,61 +596,32 @@ const nav = {
           title: 'CLI',
           path: 'develop/cli',
         },
-        {
-          title: 'REST API',
-          path: 'develop/rest_api',
-          routes: [
-            {
-              title: 'Authentication',
-              path: 'develop/rest_api/authentication',
-            },
-            {
-              title: 'API Request and Response',
-              path: 'develop/rest_api/api_request_response',
-            },
-            {
-              title: '',
-              path: '',
-            },
-            {
-              title: 'Security',
-              path: 'develop/rest_api/security',
-              routes: [
-                {
-                  title: 'Security Apps',
-                  path: 'develop/rest_api/security/security_apps',
-                },
-                {
-                  title: 'Access Rules',
-                  path: 'develop/rest_api/security/access_rules',
-                },
-                {
-                  title: 'API Security',
-                  path: 'develop/rest_api/security/api_security',
-                },
-                {
-                  title: 'Rate Rules',
-                  path: 'develop/rest_api/security/rate_rules',
-                },
-                {
-                  title: 'Bot Manager',
-                  path: 'develop/rest_api/security/bot_manager',
-                },
-                {
-                  title: 'Custom Rules',
-                  path: 'develop/rest_api/security/custom_rules',
-                },
-                {
-                  title: 'Managed Rules',
-                  path: 'develop/rest_api/security/managed_rules',
-                },
-              ],			
-            },
-          ],
-        },
+        //        {
+        //          title: 'REST API',
+        //          path: 'develop/rest_api',
+        //          routes: [
+        //            {
+        //              title: 'Authentication',
+        //              path: 'develop/rest_api/authentication',
+        //            },
+        //            {
+        //              title: 'REST API Reference',
+        //              path: '/rest_api/',
+        //              external: true,
+        //            },
+        //            {
+        //              title: '',
+        //              path: '',
+        //            },
+        //            {
+        //              title: 'Legacy Purge (Clear-Cache)',
+        //              path: 'develop/rest_api/clear_cache',
+        //            },
+        //          ],
+        //        },
         {
           title: 'Purge (Clear-Cache) API',
-          path: 'develop/clear_cache',
+          path: 'develop/rest_api/cache_purge',
         },
         {
           title: 'EdgeJS API Reference',
@@ -730,8 +705,8 @@ const nav = {
           path: '',
         },
         {
-          title: 'Purge REST API',
-          path: '/guides/develop/rest_api',
+          title: 'Legacy Purge API',
+          path: '/guides/develop/rest_api/clear_cache',
         },
         {
           title: '',

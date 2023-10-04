@@ -15,3 +15,4 @@ properties:
       - member
       - admin
       - super_admin
+description: Create a new member

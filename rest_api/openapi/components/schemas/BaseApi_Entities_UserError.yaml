@@ -2,10 +2,9 @@ type: object
 properties:
   message:
     type: string
-    description: Error message.
+    description: Error Message
   details:
     type: array
-    description: Describes the error.
     items:
       $ref: ./BaseApi_Entities_UserErrorData.yaml
 description: BaseApi_Entities_UserError model

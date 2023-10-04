@@ -22,4 +22,6 @@ properties:
     
       An API schema's system-defined ID. 
     
-      Use the [Get All API Schemas operation](#tag/API-Schemas/operation/get-api-schemas) to retrieve a list of API schemas and their system-defined ID.
+      Use the [Get All API Schemas operation](#tag/API-Schemas/operation/get-api-schemas) to retrieve a list of API schemas and their system-defined IDs.
+required:
+  - schema_id

@@ -6,10 +6,12 @@ type: object
 properties:
   '@type':
     type: string
-    description: The resource's type.
+    description: Resource type.
   '@id':
     type: string
-    description: The resource's relative path.
+    description: >-
+      Used to specify the URI for the resource. Can be used by clients to
+      navigate back to that specific resource.
   '@links':
     type: object
     properties: {}
@@ -19,52 +21,37 @@ properties:
     description: Resource unique identifier.
   partner_id:
     type: string
-    description: >-
-      The system-defined ID for the partner account under which the organization
-      was created.
+    description: Partner ID
   name:
     type: string
     description: Organization name
   pci_compliance:
     type: string
-    description: >
-      The organization's PCI compliance status. This state is determined by
-      checking PCI-compliance across all environments associated with this
-      organization. Valid values are:
-
-
-      -   **pci:** All environments are PCI-compliant.
-
-      -   **non_pci:** All environments use our entire network.
-
-      -   **mixed:** Some environments are PCI-compliant.
+    description: >-
+      The overall PCI compliance based on the PCI settings of all environments
+      in scope of this organization
     enum:
       - pci
       - non_pci
       - mixed
   pci_dns_domain_name:
     type: string
-    description: >
-      The organization's PCI-compliant DNS domain.
-
-
-      Serve traffic through our PCI-compliant network by pointing your CNAMEs to
-      this domain.
+    description: >-
+      The PCI-compliant DNS domain for this organization. Configure your
+      hostname CNAMEs to point to this domain for environments configured with
+      PCI footprint enabled.
   non_pci_dns_domain_name:
     type: string
-    description: >
-      The organization's DNS domain for standard traffic. Standard traffic can
-      use our entire network.
-
-
-      Serve traffic that does not require PCI-compliance by pointing your CNAMEs
-      to this domain.
+    description: >-
+      The non PCI-compliant DNS domain for this organization. Configure your
+      hostname CNAMEs to point to this domain for environments configured with
+      PCI footprint disabled.
   created_at:
     type: string
-    description: The organization's creation date and time (UTC).
+    description: Created at
     format: date-time
   updated_at:
     type: string
-    description: The organization's last modification date and time (UTC).
+    description: Updated at
     format: date-time
 description: Accounts_V1_Entities_Organization model

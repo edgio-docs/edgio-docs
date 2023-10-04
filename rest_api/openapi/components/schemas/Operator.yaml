@@ -30,13 +30,10 @@ properties:
     type: string
     description: | 
     
-      The value that will be compared against the request’s path. Specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining this property.
+      A value that will be compared against the request’s path. Specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining this property.
       
       **Sample value:** `/marketing`
 
-  values:
-    description: Max 20 entries.
-    type: string
   is_negated:
     type: boolean
     description: |

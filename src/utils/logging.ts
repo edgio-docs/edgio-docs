@@ -40,7 +40,7 @@ logger.exceptions.handle(new winston.transports.Console());
 
 logger.exception = function (message: string) {
   logger.error(message);
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === 'development') {
     throw new Error(message);
   }
 };

@@ -6,10 +6,12 @@ type: object
 properties:
   '@type':
     type: string
-    description: The resource's type.
+    description: Resource type.
   '@id':
     type: string
-    description: The resource's relative path.
+    description: >-
+      Used to specify the URI for the resource. Can be used by clients to
+      navigate back to that specific resource.
   '@links':
     type: object
     properties: {}
@@ -19,30 +21,22 @@ properties:
     description: Resource unique identifier.
   environment_id:
     type: string
-    description: >
-      An environment's system-defined ID (e.g.,
-      12345678-1234-1234-1234-1234567890ab).
-
-
-      From the Edgio Console, navigate to the desired environment and then click
-      **Settings**. It is listed under **Environment ID**.
+    description: Environment ID
   key:
     type: string
-    description: The environment variable's name.
+    description: Environment variable key
   value:
     type: string
-    description: The environment variable's value.
+    description: Environment variable value
   secret:
     type: boolean
-    description: >
-      Determines whether the environment variable's value will be masked using
-      asterisks. Once this property has been enabled, it cannot be unset.
+    description: When true, the value cannot be read after being set
   created_at:
     type: string
-    description: The environment variable's creation date and time (UTC).
+    description: Created at
     format: date-time
   updated_at:
     type: string
-    description: The environment variable's last modification date and time (UTC).
+    description: Updated at
     format: date-time
 description: Config_V1_Entities_EnvironmentVariable model

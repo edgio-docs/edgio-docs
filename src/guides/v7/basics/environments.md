@@ -7,8 +7,9 @@ An environment defines how traffic will be served through {{ PRODUCT }}. Each en
 -   [Hostnames:](/guides/basics/hostnames_and_origins) A hostname identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
 -   [Origins:](/guides/basics/hostnames_and_origins) An origin configuration defines how our service will communicate with your web servers.
 -   [Rules:](/guides/performance/rules) A rule determines how requests for a specific environment will be processed.
+-   [Experiments:](/guides/performance/experiments) Randomized experimentation process wherein two or more versions of a variable are shown to different segments of website visitors at the same time to determine which version leaves the maximum impact and drives business metrics.
 -   [Core Web Vitals:](/guides/performance/observability/real_user_monitoring) Review and analyze performance metrics collected through the measurement of actual Chrome users. 
--   [Caching:](/guides/performance/caching) By default, deploying to an environment also clears that environment's cached content. You may manually [purge content](/guides/performance/caching) from the **Caching** page, the [{{ PRODUCT }} CLI](/guides/develop/cli#cache-clear), or our [REST API](/guides/develop/rest_api#clear-cache). 
+-   [Caching:](/guides/performance/caching) By default, deploying to an environment also clears that environment's cached content. You may manually [purge content](/guides/performance/caching) from the **Caching** page, the [{{ PRODUCT }} CLI](/guides/develop/cli#cache-clear), or our [REST API](/guides/develop/rest_api/cache_purge#clear-cache). 
 -   [Environment Variables:](#environment-variables) An environment variable is a placeholder for sensitive information (e.g., API keys and passwords) that should not be checked into source control. 
 -   **Traffic (Analytics):** Contains real-time statistics for this environment's traffic. You may also view a breakdown of traffic by specific routes.
 -   [Real-Time Log Delivery:](/guides/logs/rtld) Delivers log data in near real-time to a variety of destinations. 
@@ -42,7 +43,7 @@ Perform the following steps to create an environment:
 
 1.  Load the **Environments** page.
 
-    1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
+    1.  From the {{ PORTAL_LINK }}, select the desired private space or organization.
     2.  Select the desired property.
     3.  From the left-hand pane, click **Environments**.
 
@@ -54,7 +55,7 @@ Perform the following steps to create an environment:
 
 4.  Optional. Copy environment variables, A/B testing configuration, and notes from another environment by selecting it from the `Copy settings from environment` option.
 
-5.  Determine deployment permissions through the **Allow all team members to deploy to this environment** option. 
+5.  Determine deployment permissions through the **Allow all organization members to deploy to this environment** option. 
 
     -   Mark this option to allow all team members to deploy to this environment.
     -   Clear this option to restrict deployment to admins and the deploy token. 
@@ -140,7 +141,7 @@ You may create, modify, and delete environment variables from the {{ PORTAL }}.
 
 #### Build Time {/*build-time*/}
 
-When you deploy to an environment using a deploy token, for example by running `{{ FULL_CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the {{ PORTAL }} and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, the {{ PORTAL }}, rather than storing some in your CI system's secret manager.
+When you deploy to an environment using a deploy token, for example by running `{{ FULL_CLI_NAME }} deploy my-organization --environment=production --token=(my token)` option, all environment variables are pulled down from the {{ PORTAL }} and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, the {{ PORTAL }}, rather than storing some in your CI system's secret manager.
 
 #### Runtime {/*runtime*/}
 
@@ -183,7 +184,7 @@ Perform the following steps to permanently delete an environment:
 
 1.  Load the **Environments** page.
 
-    1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
+    1.  From the {{ PORTAL_LINK }}, select the desired private space or organization.
     2.  Select the desired property.
     3.  From the left-hand pane, select the desired environment from under the **Environments** section.
 

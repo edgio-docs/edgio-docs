@@ -310,9 +310,17 @@ Now that you're satisfied with your site in local development, it's time to depl
 
 Deploy the build to {{ PRODUCT_NAME }} by running the `{{ FULL_CLI_NAME }} deploy` command:
 
-```bash
-{{ CLI_NAME }} deploy --team=<TEAM>
-```
+<SnippetGroup>
+
+    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
+    {{ CLI_NAME }} deploy --organization=<ORGANIZATION>
+    ```
+
+    ```bash tabLabel="Version 7.2.1 or lower"
+    {{ CLI_NAME }} deploy --team=<ORGANIZATION>
+    ```
+
+</SnippetGroup>
 
 Consult the [Deployment guide](/guides/basics/deployments) for more information on the options for deploying your site.
 
@@ -363,14 +371,14 @@ const postCacheConfig = {
 };
 
 export default new Router()
-  // When the request is a GET, convert it to post using serverless compute and cache the result
+  // When the request is a GET, convert it to post using Cloud Functions and cache the result
   .get('/some-post-path', ({cache, proxy}) => {
     cache(postCacheConfig);
     proxy('origin', {
       transformRequest: transformMethod('post'),
     });
   })
-  // When the request is a POST, forward it to origin from the edge without using serverless compute
+  // When the request is a POST, forward it to origin from the edge without using Cloud Functions
   .post('/some-post-path', ({cache, proxy}) => {
     cache(postCacheConfig);
     proxy('origin');

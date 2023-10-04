@@ -2,7 +2,7 @@
 title: Purging Cached Content
 ---
 
-Purge cached content to force the CDN to request a new version of that content from an origin server or Serverless Compute. This ensures that the latest version of that content is delivered to your clients.
+Purge cached content to force the CDN to request a new version of that content from an origin server or Cloud Functions. This ensures that the latest version of that content is delivered to your clients.
 
 <Callout type="info">
 
@@ -104,13 +104,21 @@ Purge cached content through the {{ PRODUCT }} CLI by passing the [cache-clear a
 
 Run the following command to purge the `basketball` surrogate key from the `production` environment from the `my-videos` property:
 
-```bash
-{{ FULL_CLI_NAME }} cache-clear --team=my-team --property=my-videos --environment=production --surrogate-key=basketball
-```
+<SnippetGroup>
+
+    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
+    {{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my-videos --environment=production --surrogate-key=basketball
+    ```
+
+    ```bash tabLabel="Version 7.2.1 or lower"
+    {{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my-videos --environment=production --surrogate-key=basketball
+    ```
+
+</SnippetGroup>
 
 ## REST API {/*rest-api*/}
 
-Purge cached content through the {{ PRODUCT }} REST API through the [clear-cache endpoint](/guides/develop/rest_api#clear-cache). You may purge:
+Purge cached content through the {{ PRODUCT }} REST API through the [clear-cache endpoint](/guides/develop/rest_api/cache_purge#clear-cache). You may purge:
 
 -   **All content:** Exclude the `paths` and `surrogateKeys` properties.
 -   **By relative path:** Pass the `paths` array of strings. You may use an `*` to represent zero or more characters.
@@ -140,17 +148,34 @@ Here is an example script you can add to your `package.json` to handle cache cle
 
 These scripts assume that you have created environments called "production", "staging", and "development and you have created a deploy key for your site and added it as a secret in your repo called "{{ PRODUCT_NAME_LOWER }}\_deploy_token".
 
-```js
-  "scripts": {
-    ...
-    "clearcache:dev": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:stage": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=staging --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=production --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod:pdps": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    "clearcache:prod:plps": "{{ FULL_CLI_NAME }} cache-clear --team=myTeam --property=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
-    ...
-  },
-```
+
+<SnippetGroup>
+
+    ```js tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
+      "scripts": {
+        ...
+        "clearcache:dev": "{{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        "clearcache:stage": "{{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my{{ PRODUCT_NAME }}App --environment=staging --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        "clearcache:prod": "{{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my{{ PRODUCT_NAME }}App --environment=production --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        "clearcache:prod:pdps": "{{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        "clearcache:prod:plps": "{{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        ...
+      },
+    ```
+
+    ```js tabLabel="Version 7.2.1 or lower"
+      "scripts": {
+        ...
+        "clearcache:dev": "{{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        "clearcache:stage": "{{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my{{ PRODUCT_NAME }}App --environment=staging --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        "clearcache:prod": "{{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my{{ PRODUCT_NAME }}App --environment=production --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        "clearcache:prod:pdps": "{{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=pdp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        "clearcache:prod:plps": "{{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my{{ PRODUCT_NAME }}App --environment=production --surrogate-key=plp --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
+        ...
+      },
+    ```
+
+</SnippetGroup>
 
 ### GitHub Actions {/*github-actions*/}
 

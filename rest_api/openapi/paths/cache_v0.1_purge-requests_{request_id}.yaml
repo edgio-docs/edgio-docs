@@ -1,28 +1,25 @@
 get:
   tags:
     - purge requests
-  summary: Get Purge Request
-  description: Retrieves information, including status, about a purge request.
+  summary: Get Status of Cache Purge
+  description: Request status of cache purge
   operationId: getCacheV01PurgeRequestsRequestId
   parameters:
     - name: request_id
       in: path
-      description: >
-        The purge request's system-defined ID. This ID is returned by the [Purge
-        Cache
-        operation](#tag/purge-requests/operation/postCacheV01PurgeRequests).
+      description: The ID identifying the original purge request.
       required: true
       schema:
         type: string
   responses:
     '200':
-      description: Retrieves information, including status, about a purge request.
+      description: Request status of cache purge
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Cache_V1_Entities_PurgeRequest.yaml
     '400':
-      description: Bad Request
+      description: UserError
       content:
         application/json:
           schema:
@@ -40,13 +37,13 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: Not Found
+      description: RecordNotFound
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: Internal Server Error
+      description: ServerError
       content:
         application/json:
           schema:

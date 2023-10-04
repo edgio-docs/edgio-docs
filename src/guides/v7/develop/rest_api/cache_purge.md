@@ -1,5 +1,5 @@
 ---
-title: Purge (Clear-Cache) Rest API
+title: Purge (Clear-Cache) REST API
 ---
 
 Purge content through the [clear-cache endpoint](#clear-cache). 

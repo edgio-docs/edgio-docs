@@ -121,6 +121,7 @@
     "hast-util-heading-rank": "^1.0.1",
     "husky": "^7.0.4",
     "is-ci": "^3.0.1",
+    "jsurl": "^0.1.5",
     "lint-staged": ">=10",
     "lodash": "^4.17.21",
     "mdast-util-to-string": "^1.1.0",

@@ -1,4 +1,5 @@
 import {DocSearch} from '@docsearch/react';
+// @ts-ignore
 import {default as JSURL} from 'jsurl';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -16,8 +17,6 @@ import {siteConfig} from 'config/appConfig';
 import {getVersionedConfig} from 'utils/config';
 import useConditioning from 'utils/hooks/useConditioning';
 import useTheme from 'utils/hooks/useTheme';
-
-// @ts-ignore
 
 const StyledHeader = styled.header`
   position: sticky;

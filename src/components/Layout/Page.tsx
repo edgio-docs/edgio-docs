@@ -1,3 +1,4 @@
+// @ts-ignore
 import {default as JSURL} from 'jsurl';
 import debounce from 'lodash/debounce';
 import Link from 'next/link';
@@ -16,8 +17,6 @@ import {useIsMobile} from './useMediaQuery';
 
 import useConditioning from 'utils/hooks/useConditioning';
 import textCompare from 'utils/textCompare';
-
-// @ts-ignore
 
 export function Page({children}: PageProps) {
   const isMobile = useIsMobile(850);

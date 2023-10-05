@@ -46,6 +46,12 @@ If you don't have an existing Astro site, you can create one by running:
 npm create astro@latest
 ```
 
+<Callout type="important">
+
+  Recent versions of Astro require Node.js >=18.14.1. You may need to update your `{{ CONFIG_FILE }}` file to specify Node.js 18 as the [cloud runtime](/guides/performance/cdn_as_code/edgio_config#cloudruntime).
+
+</Callout>
+
 ## Initializing your Project {/* initializing-your-project */}
 
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
@@ -84,7 +90,7 @@ export default new Router().use(astroRoutes);
 After you've setup [@astrojs/node with Astro](https://docs.astro.build/en/guides/integrations-guide/node/), specify server file path in {{ CONFIG_FILE }} as below:
 
 ```js filename="{{ CONFIG_FILE }}" ins="1,4-6"
-import {join} from 'path';
+const {join} = require('path');
 
 module.exports = {
   astro: {
@@ -94,20 +100,20 @@ module.exports = {
 };
 ```
 
-If you're using custom server file for enabling server side rendering, make sure your server is listening to port via process.env['PORT'].
+If you're using custom server file for enabling server side rendering, make sure your server is listening to port via `process.env['PORT']`.
 
 ## Running Locally {/* running-locally */}
 
 To test your app locally, run:
 
 ```bash
-{{ FULL_CLI_NAME }} run
+{{ CLI_CMD(dev) }}
 ```
 
 You can do a production build of your app and test it locally using:
 
 ```bash
-{{ FULL_CLI_NAME }} build && {{ FULL_CLI_NAME }} run --production
+{{ CLI_CMD(build) }} && {{ CLI_CMD(run --production) }}
 ```
 
 Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
@@ -117,7 +123,7 @@ Setting `--production` runs your app exactly as it will be when deployed to the 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands in your project's root directory:
 
 ```bash
-{{ FULL_CLI_NAME }} deploy
+{{ CLI_CMD(deploy) }}
 ```
 
 {{ system_origins_callout.md }}

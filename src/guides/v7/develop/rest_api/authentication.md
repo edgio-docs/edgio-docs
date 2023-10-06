@@ -69,7 +69,7 @@ If you need to rotate an API client's secret key, then we recommend that you fir
 
 1.  Navigate to the **API Clients** page.
 
-    1.  From the ${PORTAL_LINK}, select either your private space or the desired organization. Your new API client will only be authorized for the properties associated with either your private space or the selected organization.
+    1.  From the {{PORTAL_LINK}}, select either your private space or the desired organization. Your new API client will only be authorized for the properties associated with either your private space or the selected organization.
     2.  Click **API Clients**.
 
 2.  In the **Name** option, assign a name to this API client. 
@@ -91,7 +91,7 @@ Upon creating an API client, a client ID and a secret will be generated. Use thi
 
 1.  Navigate to the **API Clients** page.
 
-    1.  From the ${PORTAL_LINK}, select either your private space or the desired organization.
+    1.  From the {{PORTAL_LINK}}, select either your private space or the desired organization.
     2.  Click **API Clients**.
 
 2.  Click on the desired API client. 
@@ -101,7 +101,7 @@ Upon creating an API client, a client ID and a secret will be generated. Use thi
 **To create an additional secret**
 1.  Navigate to the **API Clients** page.
 
-    1.  From the ${PORTAL_LINK}, select either your private space or the desired organization.
+    1.  From the {{PORTAL_LINK}}, select either your private space or the desired organization.
     2.  Click **API Clients**.
 
 2.  Click on the desired API client. 
@@ -118,7 +118,7 @@ Upon creating an API client, a client ID and a secret will be generated. Use thi
 
 1.  Navigate to the **API Clients** page.
 
-    1.  From the ${PORTAL_LINK}, select either your private space or the desired organization.
+    1.  From the {{PORTAL_LINK}}, select either your private space or the desired organization.
     2.  Click **API Clients**.
 
 2.  Click on the desired API client. 
@@ -127,7 +127,7 @@ Upon creating an API client, a client ID and a secret will be generated. Use thi
 **To reassign scopes**
 1.  Navigate to the **API Clients** page.
 
-    1.  From the ${PORTAL_LINK}, select either your private space or the desired organization.
+    1.  From the {{PORTAL_LINK}}, select either your private space or the desired organization.
     2.  Click **API Clients**.
 
 2.  Click on the desired API client. 
@@ -151,7 +151,7 @@ Upon creating an API client, a client ID and a secret will be generated. Use thi
 
 1.  Navigate to the **API Clients** page.
 
-    1.  From the ${PORTAL_LINK}, select either your private space or the desired organization.
+    1.  From the {{PORTAL_LINK}}, select either your private space or the desired organization.
     2.  Click **API Clients**.
 
 2.  Click the <Image inline src="/images/v7/icons/trash.png" alt="Delete" /> next to the desired API client.

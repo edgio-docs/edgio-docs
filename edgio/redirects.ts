@@ -168,4 +168,8 @@ export default [
     '/guides/v7/performance/cdn_as_code',
   ],
   ['/guides/v7/develop/rest_api', '/guides/v7/develop/rest_api/cache_purge'],
+  [
+    '/guides/v7/performance/experiments',
+    '/guides/v7/experimentation',
+  ],
 ];

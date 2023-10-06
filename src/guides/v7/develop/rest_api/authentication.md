@@ -50,20 +50,18 @@ Create an API client before interacting with our REST API services. You must ass
 
 Upon successfully registering your client application, the following information will be available for your client application:
 
--   **Client ID:** Identifies an API client by its system-defined ID. View a client's ID from the client's **Settings** tab.
--   **Secret:** A client must pass this private key for identity verification when requesting an access token. View a client's secret key(s) from the client's **Client Secrets** tab.
--   **Scopes:** View a client's scopes from the client's **APIs** tab.
+-   **Client ID:** Identifies an API client by its system-defined ID. 
+-   **Secret:** A client must pass this private key for identity verification when requesting an access token. 
+-   **Scopes:** Defines the set of operations that this API client is authorized to perform.
 
 **Key information:**
--   Do not expose the secret assigned to your account, since it may be used to impersonate your client application. For example, do not define your secret within a client-side script.
+-   Do not expose any of the secrets assigned to your API clients, since they may be used to impersonate your client application. For example, do not define your secret within a client-side script.
 -   If you suspect that a secret key has been compromised, then you should immediately create a new secret key, update your client to use the new secret key, and then delete the old secret key.
 -   A security best practice is to generate separate API clients for each unique application that will interact with our REST API service.
 
 ### Administering API Clients {/*administering-api-clients*/}
 
 You can create, modify, and delete API clients from your private space or an organization. 
-
-If you need to rotate an API client's secret key, then we recommend that you first create a secret key, update your application(s) to use the new secret key, and then delete the old secret key.
 
 **To create an API client**
 
@@ -95,8 +93,8 @@ Upon creating an API client, a client ID and a secret will be generated. Use thi
     2.  Click **API Clients**.
 
 2.  Click on the desired API client. 
-3.  Copy the API client's ID by clicking the ID appears directly to the right of its name.
-4.  Copy the API client's secret by finding the **Secrets** section and then clicking a value that appears under the **Value** column.
+3.  Copy the API client's ID by clicking the ID that appears directly to the right of its name.
+4.  Copy the API client's secret by finding the **Secrets** section and then clicking the secret listed under the **Value** column.
 
 **To create an additional secret**
 1.  Navigate to the **API Clients** page.

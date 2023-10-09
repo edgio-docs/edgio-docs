@@ -81,7 +81,7 @@ Requesting an access token requires:
     client_id=<CLIENT ID>&client_secret=<SECRET>&grant_type=client_credentials&scope=<SCOPES>
     ```
 
-    -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your REST API client.
+    -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your <a href="https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients" target="_blank">REST API client</a>.
     -   `<SECRET>`**:** Represents the secret assigned to your REST API client.
     -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. 
 

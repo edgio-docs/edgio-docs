@@ -12,7 +12,7 @@ Deploy to an environment using either of the following methods:
 
   1.  Load the desired environment.
 
-      1.  From the {{ PORTAL_LINK }}, select the desired private or organization space.
+      1.  From the {{ PORTAL_LINK }}, select your private space or the desired organization.
       2.  Select the desired property.
       3.  From the left-hand pane, select the desired environment from under the **Environments** section.
 
@@ -36,7 +36,9 @@ Deploy to an environment using either of the following methods:
 
   The CLI will automatically detect your property's framework, create an optimized production build, and upload it to {{ PRODUCT }}. This takes about a minute for most applications.
 
-  Once the deployment is complete, the CLI will output the URL for your property. The property name is automatically derived from the `name` field in `package.json`. This can be overridden by using `--property` option when running `{{ FULL_CLI_NAME }} deploy`.
+  Once the deployment is complete, the CLI will output the URL for your property. Your property's name is automatically derived from the `name` field in `package.json`. This can be overridden by using `--property` option when running `{{ FULL_CLI_NAME }} deploy`.
+
+{{ system_origins_callout.md }}
 
 ## Versioning {/* versioning */}
 
@@ -56,11 +58,11 @@ Deployments are versioned. Each deployment is assigned a unique version number. 
 
 ## Branches and Deployments {/* branches-and-deployments */}
 
-Each time you deploy your property to {{ PRODUCT }} a deployment is created and given a unique and permanent URL based on the organization name, property name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by the default. If not, you can specify the `--branch` option when running `{{ FULL_CLI_NAME }} deploy`.
+Deploying changes to {{ PRODUCT }} generates a deployment build. Upon the completion of this deployment, this build is assigned a unique and permanent URL based on the organization name, property name, branch name in source control, and an incrementing deployment number. If you use Git, the branch name is set by default. If not, you can specify the `--branch` option when running `{{ FULL_CLI_NAME }} deploy`.
 
 ![Deployments](/images/v7/basics/deployments.png?width=450)
 
-Having each deployment be simultaneously and permanently accessible makes it easy to preview other developers' work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to {{ PRODUCT }}.
+Permanently accessible deployment builds allows you to preview other developers' work before merging a pull request and enables you to "go back in time" to find where a bug or change in behavior originated. We recommend configuring your CI environment to deploy every push to {{ PRODUCT }}.
 
 ## Deploy from CI {/* deploy-from-ci */}
 
@@ -81,7 +83,7 @@ Use the `--token` option when deploying from your CI script:
 
 You should always store your deploy token using your CI environment's secrets manager. Never commit your deploy token to source control.
 
-## GitHub Actions Workflow {/* github-actions-workflow */}
+## GitHub Actions {/* github-actions */}
 
 You need to configure the following items in order to get a GitHub action set up.
 

@@ -1,0 +1,58 @@
+parameters:
+  - $ref: ../components/parameters/organization_id.yaml
+  - $ref: ../components/parameters/acl_id.yaml
+get:
+  operationId: get-acl-rule
+  tags:
+    - Access Control List (ACL)
+  summary: Get Access Rule
+  description: Retrieves an access rule that identifies threats through whitelists, accesslists, and blacklists.
+  responses:
+    '200':
+      description: OK. An access rule was retrieved.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Acl.yaml
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+put:
+  operationId: update-acl-rule
+  tags:
+    - Access Control List (ACL)
+  summary: Update Access Rule
+  description: Updates an access rule that identifies threats through whitelists, accesslists, and blacklists.
+  requestBody:
+    $ref: ../components/requestBodies/Acl.yaml
+  responses:
+    '200':
+      description: OK. An access rule was updated.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml 
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+delete:
+  operationId: delete-acl-rule
+  tags:
+    - Access Control List (ACL)
+  summary: Delete Access Rule
+  description: Deletes an access rule.
+  responses:
+    '200':
+      description: OK. An access rule was deleted. 
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

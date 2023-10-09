@@ -1,0 +1,15 @@
+title: Block Action
+type: object
+description: Blocks the request.
+properties:
+  id:
+    type: string
+    description: The enforcement action's system-defined ID.
+  name:
+    type: string
+    description: The enforcement action's name.
+  enf_type:
+    type: string
+    description: The type of enforcement action. 
+    enum:
+      - BLOCK_REQUEST

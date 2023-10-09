@@ -1,0 +1,19 @@
+title: short version object
+type: object
+properties:
+  '@id':
+    type: string
+  '@type':
+    type: string
+  version:
+    type: integer
+  config_id:
+    type: string
+  draft:
+    type: boolean
+  modified_date:
+    type: string
+  modified_by:
+    type: string
+  config_name:
+    type: string

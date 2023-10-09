@@ -1,0 +1,58 @@
+parameters:
+  - $ref: ../components/parameters/organization_id.yaml
+  - $ref: ../components/parameters/bot_id.yaml
+get:
+  operationId: get-bot-rule
+  tags:
+    - Bot Rules
+  summary: Get Bot Ruleset
+  description: Retrieves a bot ruleset. A bot ruleset defines criteria for bot identification.
+  responses:
+    '200':
+      description: OK. A bot ruleset was retrieved.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Bot.yaml
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+put:
+  operationId: update-bot-rule
+  tags:
+    - Bot Rules
+  summary: Update Bot Ruleset
+  description: Updates a bot ruleset. A bot ruleset defines criteria for bot identification.
+  requestBody:
+    $ref: ../components/requestBodies/Bot.yaml
+  responses:
+    '200':
+      description: OK. A bot ruleset was updated. 
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+delete:
+  operationId: delete-bot-rule
+  tags:
+    - Bot Rules
+  summary: Delete Bot Ruleset
+  description: Deletes a bot ruleset. A bot ruleset defines criteria for bot identification.
+  responses:
+    '200':
+      description: OK. A bot ruleset was deleted. 
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

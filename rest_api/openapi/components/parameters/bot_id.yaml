@@ -1,0 +1,10 @@
+name: bot_id
+in: path
+required: true
+description: |
+
+  A bot ruleset's system-defined ID. 
+  
+  Use the [Get All Bot Rulesets operation](#tag/Bot-Rules/operation/get-bot-rules) to retrieve a list of bot rulesets and their system-defined IDs.
+schema:
+  type: string

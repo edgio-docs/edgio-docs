@@ -1,0 +1,18 @@
+title: ACL Strings
+type: object
+properties:
+  accesslist:
+    type: array
+    description: Contains entries that identify traffic that may access your content upon passing a threat assessment. Cookie, referrer, URL, or user agent entries are regular expressions. 
+    items:
+      type: string
+  blacklist:
+    type: array
+    description: Contains entries that identify traffic that will be blocked or for which an alert will be generated. Cookie, referrer, URL, or user agent entries are regular expressions.
+    items:
+      type: string
+  whitelist:
+    type: array
+    description: Contains entries that identify traffic that may access your content without undergoing threat assessment. Cookie, referrer, URL, or user agent entries are regular expressions.
+    items:
+      type: string

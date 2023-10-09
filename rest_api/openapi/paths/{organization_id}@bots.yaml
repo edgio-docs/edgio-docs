@@ -1,0 +1,49 @@
+post:
+  operationId: create-bot-rule
+  tags:
+    - Bot Rules
+  summary: Add Bot Ruleset
+  description: Creates a bot ruleset. A bot ruleset defines criteria for bot identification.
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/Bot.yaml
+  responses:
+    '200':
+      description: OK. A bot ruleset was created.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+get:
+  operationId: get-bot-rules
+  tags:
+    - Bot Rules
+  summary: Get All Bot Rulesets
+  description: Lists all bot rulesets. 
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  responses:
+    '200':
+      description: OK. A list of bot rulesets was retrieved.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ObjShort.yaml
+          examples:
+            response:
+              value:
+                - id: e3mpHQY5
+                  name: sample_bot_config
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

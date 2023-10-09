@@ -1,0 +1,57 @@
+required:
+  - '@id'
+  - '@type'
+  - id
+type: object
+properties:
+  '@type':
+    type: string
+    description: Resource type.
+  '@id':
+    type: string
+    description: >-
+      Used to specify the URI for the resource. Can be used by clients to
+      navigate back to that specific resource.
+  '@links':
+    type: object
+    properties: {}
+    description: Links to related resources.
+  id:
+    type: string
+    description: Resource unique identifier.
+  partner_id:
+    type: string
+    description: Partner ID
+  name:
+    type: string
+    description: Organization name
+  pci_compliance:
+    type: string
+    description: >-
+      The overall PCI compliance based on the PCI settings of all environments
+      in scope of this organization
+    enum:
+      - pci
+      - non_pci
+      - mixed
+  pci_dns_domain_name:
+    type: string
+    description: >-
+      The PCI-compliant DNS domain for this organization. Configure your
+      hostname CNAMEs to point to this domain for environments configured with
+      PCI footprint enabled.
+  non_pci_dns_domain_name:
+    type: string
+    description: >-
+      The non PCI-compliant DNS domain for this organization. Configure your
+      hostname CNAMEs to point to this domain for environments configured with
+      PCI footprint disabled.
+  created_at:
+    type: string
+    description: Created at
+    format: date-time
+  updated_at:
+    type: string
+    description: Updated at
+    format: date-time
+description: Accounts_V1_Entities_Organization model

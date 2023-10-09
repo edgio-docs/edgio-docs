@@ -1,0 +1,154 @@
+get:
+  tags:
+    - environments
+  summary: Read environment
+  description: Read environment
+  operationId: getAccountsV01EnvironmentsEnvironmentId
+  parameters:
+    - name: environment_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Read environment
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Accounts_V1_Entities_Environment.yaml
+    '400':
+      description: UserError
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: RecordNotFound
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: ServerError
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+delete:
+  tags:
+    - environments
+  summary: Delete environment
+  description: Delete environment
+  operationId: deleteAccountsV01EnvironmentsEnvironmentId
+  parameters:
+    - name: environment_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: Delete environment
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Accounts_V1_Entities_Environment.yaml
+    '400':
+      description: UserError
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: RecordNotFound
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: ServerError
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+patch:
+  tags:
+    - environments
+  summary: Update environment
+  description: Update environment
+  operationId: patchAccountsV01EnvironmentsEnvironmentId
+  parameters:
+    - name: environment_id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/patchAccountsV01EnvironmentsEnvironmentId.yaml
+    required: true
+  responses:
+    '200':
+      description: Update environment
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Accounts_V1_Entities_Environment.yaml
+    '400':
+      description: UserError
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: RecordNotFound
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: ServerError
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  x-codegen-request-body-name: patchAccountsV01EnvironmentsEnvironmentId

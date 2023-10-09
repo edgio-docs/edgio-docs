@@ -1,0 +1,19 @@
+title: Policy Rule
+type: object
+properties:
+  id:
+    type: string
+    description: The rule's system-defined ID.
+  msg:
+    type: string
+    description: The rule's description.
+  targets:
+    description: The rule's targets. A target identifies the request element(s) that will be screened by this rule.
+    type: array
+    items:
+      type: string
+  tag:
+    description: The rule's tags (e.g., Common Vulnerabilities and Exposure (CVE) identifier).
+    type: array
+    items:
+      type: string

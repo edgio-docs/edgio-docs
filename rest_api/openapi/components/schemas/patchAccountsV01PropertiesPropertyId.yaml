@@ -1,0 +1,5 @@
+type: object
+properties:
+  slug:
+    type: string
+description: Update property

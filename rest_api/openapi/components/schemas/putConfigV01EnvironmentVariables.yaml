@@ -1,0 +1,15 @@
+required:
+  - environment_id
+  - key
+  - value
+type: object
+properties:
+  environment_id:
+    type: string
+  key:
+    type: string
+  value:
+    type: string
+  secret:
+    type: boolean
+description: Create or replace environment variable

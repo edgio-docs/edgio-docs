@@ -20,7 +20,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
  View the Connector Code
 </ButtonLink>
 
-{{ PREREQ }}
+{{ PREREQ.md }}
 
 ## Create your Vue 3 site {/*create-your-vue-3-site*/}
 

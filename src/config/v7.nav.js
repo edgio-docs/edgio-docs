@@ -67,6 +67,10 @@ const nav = {
               title: 'Feature Variables',
               path: 'performance/rules/feature_variables',
             },
+            {
+              title: 'Operators',
+              path: 'performance/rules/operators',
+            },
           ],
         },
         {
@@ -74,12 +78,20 @@ const nav = {
           path: 'performance/cdn_as_code',
           routes: [
             {
-              title: 'Getting Started',
-              path: 'performance/cdn_as_code/getting_started',
+              title: 'Route Criteria and Conditions',
+              path: 'performance/cdn_as_code/route_criteria',
             },
             {
-              title: 'Common Routing Patterns',
-              path: 'performance/cdn_as_code/common_routing_patterns',
+              title: 'Route Features',
+              path: 'performance/cdn_as_code/route_features',
+            },
+            {
+              title: 'Conditional Routes',
+              path: 'performance/cdn_as_code/conditional_routes',
+            },
+            {
+              title: 'Error Handling',
+              path: 'performance/cdn_as_code/error_handling',
             },
             {
               title: '',
@@ -92,17 +104,31 @@ const nav = {
           ],
         },
         {
-          title: 'Caching',
+          title: 'Cache Management',
           path: 'performance/caching',
+          routes: [
+            {
+              title: 'Purging Cached Content',
+              path: 'performance/caching/purging',
+            },
+            {
+              title: 'Cache Request Flow',
+              path: 'performance/caching/cache_request_flow',
+            },
+            {
+              title: 'Cache Hit Ratio Optimization',
+              path: 'performance/caching/cache_hit_ratio_optimization',
+            },
+            {
+              title: 'Cache Key',
+              path: 'performance/caching/cache_key',
+            },
+          ],
         },
-        {
-          title: 'Purging',
-          path: 'performance/purging',
-        },
-        {
-          title: 'Static Prerendering',
-          path: 'performance/static_prerendering',
-        },
+        // {
+        // title: 'Static Prerendering',
+        // path: 'performance/static_prerendering',
+        // },
         {
           title: 'Predictive Prefetch',
           path: 'performance/prefetching',
@@ -120,8 +146,8 @@ const nav = {
               path: 'performance/observability/edge_insights',
             },
             {
-              title: 'Core Web Vitals',
-              path: 'performance/observability/core_web_vitals',
+              title: 'Real User Monitoring (RUM)',
+              path: 'performance/observability/real_user_monitoring',
             },
             {
               title: 'Devtools',
@@ -130,13 +156,13 @@ const nav = {
           ],
         },
         {
-          title: 'Serverless Compute',
+          title: 'Cloud Functions',
           path: 'performance/serverless_compute',
         },
-        {
-          title: 'Unit Testing (EdgeJS)',
-          path: 'performance/unit_testing_edgejs',
-        },
+        // {
+        //   title: 'Unit Testing (EdgeJS)',
+        //   path: 'performance/unit_testing_edgejs',
+        // },
         {
           title: 'Image Optimization',
           path: 'performance/image_optimization',
@@ -180,6 +206,16 @@ const nav = {
       ],
     },
     {
+      title: 'Edge Functions',
+      path: 'edge-functions',
+      icon: 'edge-functions',
+    },
+    {
+      title: 'Experimentation',
+      path: 'experimentation',
+      icon: 'experimentation',
+    },
+    {
       title: 'Security',
       path: 'security',
       icon: 'shield',
@@ -205,8 +241,16 @@ const nav = {
           path: 'security/waf',
         },
         {
+          title: 'Getting Started',
+          path: 'security/getting_started',
+        },
+        {
           title: 'Access Rules',
           path: 'security/access_rules',
+        },
+        {
+          title: 'API Security',
+          path: 'security/api_security',
         },
         {
           title: 'Rate Rules',
@@ -225,7 +269,7 @@ const nav = {
           path: 'security/managed_rules',
         },
         {
-          title: 'Security Applications',
+          title: 'Security Apps',
           path: 'security/security_applications',
         },
         {
@@ -251,82 +295,86 @@ const nav = {
           title: 'Frameworks',
           path: 'sites_frameworks/getting_started',
           routes: [
-            // {
-            //   title: 'Angular',
-            //   path: 'sites_frameworks/getting_started/angular',
-            // },
-            // {
-            //   title: 'Astro',
-            //   path: 'sites_frameworks/getting_started/astro',
-            // },
-            // {
-            //   title: 'Brunch',
-            //   path: 'sites_frameworks/getting_started/brunch',
-            // },
-            // {
-            //   title: 'Docusaurus',
-            //   path: 'sites_frameworks/getting_started/docusaurus',
-            // },
-            // {
-            //   title: 'Dojo',
-            //   path: 'sites_frameworks/getting_started/dojo',
-            // },
-            // {
-            //   title: 'Eleventy',
-            //   path: 'sites_frameworks/getting_started/eleventy',
-            // },
-            // {
-            //   title: 'Ember.js',
-            //   path: 'sites_frameworks/getting_started/ember',
-            // },
-            // {
-            //   title: 'Ember Fastboot',
-            //   path: 'sites_frameworks/getting_started/ember_fastboot',
-            // },
-            // {
-            //   title: 'Express',
-            //   path: 'sites_frameworks/getting_started/express',
-            // },
-            // {
-            //   title: 'Frontity',
-            //   path: 'sites_frameworks/getting_started/frontity',
-            // },
-            // {
-            //   title: 'Gatsby',
-            //   path: 'sites_frameworks/getting_started/gatsby',
-            // },
-            // {
-            //   title: 'Gridsome',
-            //   path: 'sites_frameworks/getting_started/gridsome',
-            // },
-            // {
-            //   title: 'Hexo',
-            //   path: 'sites_frameworks/getting_started/hexo',
-            // },
-            // {
-            //   title: 'Hugo',
-            //   path: 'sites_frameworks/getting_started/hugo',
-            // },
-            // {
-            //   title: 'Ionic React',
-            //   path: 'sites_frameworks/getting_started/ionic_react',
-            // },
-            // {
-            //   title: 'Ionic Vue',
-            //   path: 'sites_frameworks/getting_started/ionic_vue',
-            // },
-            // {
-            //   title: 'Jekyll',
-            //   path: 'sites_frameworks/getting_started/jekyll',
-            // },
+            {
+              title: 'Angular',
+              path: 'sites_frameworks/getting_started/angular',
+            },
+            {
+              title: 'Astro',
+              path: 'sites_frameworks/getting_started/astro',
+            },
+            {
+              title: 'Brunch',
+              path: 'sites_frameworks/getting_started/brunch',
+            },
+            {
+              title: 'Node.js Connector',
+              path: 'sites_frameworks/getting_started/nodejs_connector',
+            },
+            {
+              title: 'Docusaurus',
+              path: 'sites_frameworks/getting_started/docusaurus',
+            },
+            {
+              title: 'Dojo',
+              path: 'sites_frameworks/getting_started/dojo',
+            },
+            {
+              title: 'Eleventy',
+              path: 'sites_frameworks/getting_started/eleventy',
+            },
+            {
+              title: 'Ember.js',
+              path: 'sites_frameworks/getting_started/ember',
+            },
+            {
+              title: 'Ember Fastboot',
+              path: 'sites_frameworks/getting_started/ember_fastboot',
+            },
+            {
+              title: 'Express',
+              path: 'sites_frameworks/getting_started/express',
+            },
+            {
+              title: 'Frontity',
+              path: 'sites_frameworks/getting_started/frontity',
+            },
+            {
+              title: 'Gatsby',
+              path: 'sites_frameworks/getting_started/gatsby',
+            },
+            {
+              title: 'Gridsome',
+              path: 'sites_frameworks/getting_started/gridsome',
+            },
+            {
+              title: 'Hexo',
+              path: 'sites_frameworks/getting_started/hexo',
+            },
+            {
+              title: 'Hugo',
+              path: 'sites_frameworks/getting_started/hugo',
+            },
+            {
+              title: 'Ionic React',
+              path: 'sites_frameworks/getting_started/ionic_react',
+            },
+            {
+              title: 'Ionic Vue',
+              path: 'sites_frameworks/getting_started/ionic_vue',
+            },
+            {
+              title: 'Jekyll',
+              path: 'sites_frameworks/getting_started/jekyll',
+            },
             // {
             //   title: 'Lit',
             //   path: 'sites_frameworks/getting_started/lit',
             // },
-            // {
-            //   title: 'MkDocs',
-            //   path: 'sites_frameworks/getting_started/mkdocs',
-            // },
+            {
+              title: 'MkDocs',
+              path: 'sites_frameworks/getting_started/mkdocs',
+            },
             {
               title: 'Next.js',
               path: 'sites_frameworks/getting_started/next',
@@ -343,22 +391,22 @@ const nav = {
               title: 'Nuxt3',
               path: 'sites_frameworks/getting_started/nuxt3',
             },
-            // {
-            //   title: 'Preact',
-            //   path: 'sites_frameworks/getting_started/preact',
-            // },
-            // {
-            //   title: 'Razzle',
-            //   path: 'sites_frameworks/getting_started/razzle',
-            // },
-            // {
-            //   title: 'React',
-            //   path: 'sites_frameworks/getting_started/react',
-            // },
-            // {
-            //   title: 'React Static',
-            //   path: 'sites_frameworks/getting_started/react_static',
-            // },
+            {
+              title: 'Preact',
+              path: 'sites_frameworks/getting_started/preact',
+            },
+            {
+              title: 'Razzle',
+              path: 'sites_frameworks/getting_started/razzle',
+            },
+            {
+              title: 'React',
+              path: 'sites_frameworks/getting_started/react',
+            },
+            {
+              title: 'React Static',
+              path: 'sites_frameworks/getting_started/react_static',
+            },
             // {
             //   title: 'React Storefront',
             //   path: 'sites_frameworks/getting_started/react-storefront',
@@ -367,18 +415,18 @@ const nav = {
             //   title: 'RedwoodJS',
             //   path: 'sites_frameworks/getting_started/redwoodjs',
             // },
-            // {
-            //   title: 'Remix',
-            //   path: 'sites_frameworks/getting_started/remix',
-            // },
-            // {
-            //   title: 'Saber',
-            //   path: 'sites_frameworks/getting_started/saber',
-            // },
-            // {
-            //   title: 'Sanity',
-            //   path: 'sites_frameworks/getting_started/sanity',
-            // },
+            {
+              title: 'Remix',
+              path: 'sites_frameworks/getting_started/remix',
+            },
+            {
+              title: 'Saber',
+              path: 'sites_frameworks/getting_started/saber',
+            },
+            {
+              title: 'Sanity',
+              path: 'sites_frameworks/getting_started/sanity',
+            },
             // {
             //   title: 'Sapper',
             //   path: 'sites_frameworks/getting_started/sapper',
@@ -387,50 +435,50 @@ const nav = {
             //   title: 'Scully',
             //   path: 'sites_frameworks/getting_started/scully',
             // },
-            // {
-            //   title: 'SolidJS',
-            //   path: 'sites_frameworks/getting_started/solid',
-            // },
+            {
+              title: 'SolidJS',
+              path: 'sites_frameworks/getting_started/solid',
+            },
             // {
             //   title: 'Spartacus',
             //   path: 'sites_frameworks/getting_started/spartacus',
             // },
-            // {
-            //   title: 'Static HTML/JS',
-            //   path: 'sites_frameworks/getting_started/static_sites',
-            // },
-            // {
-            //   title: 'Stencil',
-            //   path: 'sites_frameworks/getting_started/stencil',
-            // },
-            // {
-            //   title: 'Svelte',
-            //   path: 'sites_frameworks/getting_started/svelte',
-            // },
+            {
+              title: 'Static HTML/JS',
+              path: 'sites_frameworks/getting_started/static_sites',
+            },
+            {
+              title: 'Stencil',
+              path: 'sites_frameworks/getting_started/stencil',
+            },
+            {
+              title: 'SvelteKit',
+              path: 'sites_frameworks/getting_started/sveltekit',
+            },
             // {
             //   title: 'UmiJS',
             //   path: 'sites_frameworks/getting_started/umijs',
             // },
-            // {
-            //   title: 'VitePress',
-            //   path: 'sites_frameworks/getting_started/vitepress',
-            // },
+            {
+              title: 'VitePress',
+              path: 'sites_frameworks/getting_started/vitepress',
+            },
             // {
             //   title: 'Vue Storefront',
             //   path: 'sites_frameworks/getting_started/vsf',
             // },
-            // {
-            //   title: 'Vue.js',
-            //   path: 'sites_frameworks/getting_started/vue',
-            // },
-            // {
-            //   title: 'VuePress',
-            //   path: 'sites_frameworks/getting_started/vuepress',
-            // },
-            // {
-            //   title: 'Zola',
-            //   path: 'sites_frameworks/getting_started/zola',
-            // },
+            {
+              title: 'Vue.js',
+              path: 'sites_frameworks/getting_started/vue',
+            },
+            {
+              title: 'VuePress',
+              path: 'sites_frameworks/getting_started/vuepress',
+            },
+            {
+              title: 'Zola',
+              path: 'sites_frameworks/getting_started/zola',
+            },
           ],
         },
         {
@@ -444,33 +492,6 @@ const nav = {
         {
           title: 'Limits',
           path: 'sites_frameworks/limits',
-        },
-      ],
-    },
-    {
-      title: 'Third-Party Integrations',
-      path: 'integrations',
-      icon: 'gear',
-      routes: [
-        {
-          title: 'BigCommerce',
-          path: 'integrations/bigcommerce',
-        },
-        {
-          title: 'Bloomreach',
-          path: 'integrations/bloomreach',
-        },
-        {
-          title: 'Shopify Hydrogen',
-          path: 'integrations/shopify_hydrogen',
-        },
-        {
-          title: 'Swell',
-          path: 'integrations/swell',
-        },
-        {
-          title: 'WordPress',
-          path: 'integrations/wordpress',
         },
       ],
     },
@@ -532,6 +553,10 @@ const nav = {
               path: '',
             },
             {
+              title: 'Filtering Log Data',
+              path: 'logs/rtld/filtering_log_data',
+            },
+            {
               title: 'Log File Naming Convention',
               path: 'logs/rtld/log_file_naming_convention',
             },
@@ -548,12 +573,16 @@ const nav = {
               path: 'logs/rtld/log_fields_rtld_cdn',
             },
             {
+              title: 'Log Fields (RTLD WAF)',
+              path: 'logs/rtld/log_fields_rtld_waf',
+            },
+            {
               title: 'Log Fields (RTLD Rate Limiting',
               path: 'logs/rtld/log_fields_rtld_rate_limiting',
             },
             {
-              title: 'Log Fields (RTLD WAF)',
-              path: 'logs/rtld/log_fields_rtld_waf',
+              title: 'Log Fields (RTLD Bot)',
+              path: 'logs/rtld/log_fields_rtld_bot_manager',
             },
           ],
         },
@@ -573,21 +602,17 @@ const nav = {
           path: 'develop/rest_api',
         },
         {
-          title: 'Deploy to Edgio Button',
-          path: 'develop/deploy_to_edgio',
-        },
-        {
           title: 'EdgeJS API Reference',
           path: 'develop/packages',
           routes: [
             {
               title: '@edgio/core',
-              path: '/docs/api/core',
+              path: '/docs/v7.x/api/core/',
               external: true,
             },
             {
               title: '@edgio/prefetch',
-              path: '/docs/api/prefetch',
+              path: '/docs/v7.x/api/prefetch/',
               external: true,
             },
           ],
@@ -603,7 +628,90 @@ const nav = {
           title: 'Country Codes',
           path: 'reference/country_codes',
         },
+        {
+          title: 'HTTP Status Codes',
+          path: '/guides/performance/response#status-codes',
+        },
+        {
+          title: 'Response Headers',
+          path: '/guides/performance/response#response-headers',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'Rules - Match Conditions',
+          path: '/guides/performance/rules/conditions',
+        },
+        {
+          title: 'Rules - Features',
+          path: '/guides/performance/rules/features',
+        },
+        {
+          title: 'Rules - Feature Variables',
+          path: '/guides/performance/rules/feature_variables',
+        },
+        {
+          title: 'Rules - Operators',
+          path: '/guides/performance/rules/operators',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'edgio.config.js Configuration',
+          path: '/guides/performance/cdn_as_code/edgio_config',
+        },
+        {
+          title: '@edgio/core',
+          path: '/docs/v7.x/api/core/',
+          external: true,
+        },
+        {
+          title: '@edgio/prefetch',
+          path: '/docs/v7.x/api/prefetch/',
+          external: true,
+        },
+        {
+          title: 'CLI',
+          path: '/guides/develop/cli#commands',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'Purge REST API',
+          path: '/guides/develop/rest_api',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'RTLD CDN',
+          path: '/guides/logs/rtld/log_fields_rtld_cdn',
+        },
+        {
+          title: 'RTLD WAF',
+          path: '/guides/logs/rtld/log_fields_rtld_waf',
+        },
+        {
+          title: 'RTLD Rate Limiting',
+          path: '/guides/logs/rtld/log_fields_rtld_rate_limiting',
+        },
+        {
+          title: 'RTLD Bot',
+          path: '/guides/logs/rtld/log_fields_rtld_bot_manager',
+        },
       ],
+    },
+    {
+      title: 'Upgrading',
+      path: 'upgrading',
+      icon: 'add-circle',
     },
   ],
 };

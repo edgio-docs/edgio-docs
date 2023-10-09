@@ -1,6 +1,9 @@
+import debounce from 'lodash/debounce';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import * as React from 'react';
+// @ts-ignore
+import scrollIntoView from 'scroll-into-view';
 import styled from 'styled-components';
 
 import {PRODUCT} from '../../../constants';
@@ -9,16 +12,63 @@ import {PRODUCT_APPLICATIONS} from '../../../constants';
 import Header from './Header/Header';
 import SideNav from './Sidebar/Sidenav';
 import {useIsMobile} from './useMediaQuery';
-import {RouteItem, SidebarContext} from './useRouteMeta';
 
 import useConditioning from 'utils/hooks/useConditioning';
+import textCompare from 'utils/textCompare';
 
-interface PageProps {
-  routeTree: RouteItem;
-  children: React.ReactNode;
+export function Page({children}: PageProps) {
+  const isMobile = useIsMobile(850);
+  const [showSidebar, setShowSidebar] = React.useState(isMobile);
+  const router = useRouter();
+  const showBanner = !isMobile || (isMobile && !showSidebar);
+  const contentInnerRef = React.useRef(null);
+
+  React.useEffect(() => {
+    router.events.on('routeChangeComplete', () => setShowSidebar(false));
+  }, [router]);
+
+  React.useEffect(() => {
+    const handleHashChange = debounce(() => {
+      const hash = window.location.hash.substring(1);
+      if (!hash) {
+        return;
+      }
+
+      try {
+        const highlight = decodeURIComponent(escape(atob(hash)));
+        if (highlight.length > 0 && contentInnerRef.current) {
+          highlightElementByText(highlight as string, contentInnerRef.current);
+        }
+      } catch (e) {}
+    }, 100);
+
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange();
+    return () => {
+      window.addEventListener('hashchange', handleHashChange);
+      handleHashChange.cancel();
+    };
+  }, []);
+
+  return (
+    <StyledMainPage>
+      {showBanner && <Banner />}
+      <Header {...{showSidebar, setShowSidebar}} />
+      <main className="docs-content">
+        <div
+          className="docs-side__nav custom-scrollbar"
+          data-open={isMobile && showSidebar}>
+          <SideNav />
+        </div>
+        <div className="docs-content__inner" ref={contentInnerRef}>
+          {children}
+        </div>
+      </main>
+    </StyledMainPage>
+  );
 }
 
-interface StyledBannerxProps {
+interface StyledBannerProps {
   legacy?: boolean;
   future?: boolean;
 }
@@ -68,10 +118,23 @@ const StyledMainPage = styled.div`
         padding: 2rem 1rem;
       }
     }
+
+    @keyframes fadeHighlightShadow {
+      0% {
+        box-shadow: 0px 0px 10px 2px var(--colors-blue0);
+      }
+      100% {
+        box-shadow: none;
+      }
+    }
+
+    .highlight {
+      animation: fadeHighlightShadow 5s forwards;
+    }
   }
 `;
 
-const StyledBanner = styled.div<StyledBannerxProps>`
+const StyledBanner = styled.div<StyledBannerProps>`
   --banner-text-color: ${({legacy, future}) => (legacy ? '#000' : '#fff')};
   --banner-background-color: ${({legacy, future}) =>
     legacy ? 'var(--callout-tip)' : future ? '#812990' : 'var(--lg-primary)'};
@@ -93,6 +156,56 @@ const StyledBanner = styled.div<StyledBannerxProps>`
     }
   }
 `;
+
+function scrollToElementAndExecute(element: HTMLElement, callback: () => void) {
+  setTimeout(() => {
+    scrollIntoView(element, {align: {top: 0.1}}, (type: string) => {
+      callback();
+    });
+  });
+}
+
+/**
+ * Finds the closest parent element containing the specific text and applies a temporary highlight style.
+ * @param {string} searchText - The text to search for.
+ * @returns {HTMLElement|null} The closest parent element or null if not found.
+ */
+function highlightElementByText(searchText: string, ownerElement: HTMLElement) {
+  const escapedText = decodeURIComponent(searchText);
+
+  if (!escapedText) {
+    return;
+  }
+
+  const regex = new RegExp(escapedText, 'i');
+  const walker = document.createTreeWalker(ownerElement, NodeFilter.SHOW_TEXT, {
+    acceptNode: function (node) {
+      if (textCompare(node.parentElement?.textContent ?? '', escapedText)) {
+        return NodeFilter.FILTER_ACCEPT;
+      }
+      return NodeFilter.FILTER_SKIP;
+    },
+  });
+
+  const textNode = walker.nextNode();
+  if (textNode) {
+    const {parentElement} = textNode;
+
+    if (parentElement) {
+      scrollToElementAndExecute(parentElement, () => {
+        parentElement.classList.add('highlight');
+
+        setTimeout(() => {
+          parentElement.classList.remove('highlight');
+        }, 5000);
+      });
+
+      return parentElement;
+    }
+  }
+
+  return null;
+}
 
 function Banner() {
   const {version} = useConditioning();
@@ -133,30 +246,6 @@ function Banner() {
   );
 }
 
-export function Page({routeTree, children}: PageProps) {
-  const isMobile = useIsMobile(850);
-  const [showSidebar, setShowSidebar] = React.useState(isMobile);
-  const router = useRouter();
-  const showBanner = !isMobile || (isMobile && !showSidebar);
-
-  React.useEffect(() => {
-    router.events.on('routeChangeComplete', () => setShowSidebar(false));
-  }, [router]);
-
-  return (
-    <StyledMainPage>
-      {showBanner && <Banner />}
-      <Header {...{showSidebar, setShowSidebar}} />
-      <SidebarContext.Provider value={routeTree}>
-        <main className="docs-content">
-          <div
-            className="docs-side__nav custom-scrollbar"
-            data-open={isMobile && showSidebar}>
-            <SideNav />
-          </div>
-          <div className="docs-content__inner">{children}</div>
-        </main>
-      </SidebarContext.Provider>
-    </StyledMainPage>
-  );
+export interface PageProps {
+  children: React.ReactNode;
 }

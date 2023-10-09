@@ -38,23 +38,28 @@ function Accordion({
   depth: number;
   currentRoutePath: string;
 }) {
+  const {
+    version: {toVersionedPath, selectedVersion},
+  } = useConditioning();
+
   const {getCollapseProps, getToggleProps} = useCollapse({
-    isExpanded: isActive,
+    isExpanded: selectedVersion === '4' || isActive,
   });
 
-  const {
-    version: {toVersionedPath},
-  } = useConditioning();
   const isActiveLink = route.path.length > 0;
+  const currentPathAtCurrentDepth = currentRoutePath.split('/')[depth];
+  const routePathAtCurrentDepth = route.path.split('/')[depth];
   const childElement = (
     <a
       className="menu-toggle__wrap"
       data-is-highlighted={
-        currentRoutePath.split('/')[depth] === route.path.split('/')[depth]
+        currentPathAtCurrentDepth &&
+        currentPathAtCurrentDepth === routePathAtCurrentDepth
       }
       {...getToggleProps({
         onClick: onSelect,
-      })}>
+      })}
+      data-v4={selectedVersion === '4'}>
       {depth === 0 && (
         <div className="icons">
           <div id="dark-theme">
@@ -87,7 +92,10 @@ function Accordion({
   );
 
   return (
-    <li className="sidenav-item" data-comp="accordion" data-expanded={isActive}>
+    <li
+      className="sidenav-item"
+      data-comp="accordion"
+      data-expanded={selectedVersion === '4' || isActive}>
       <div className="sidenav-menu__container">
         {/* Toggle */}
         {route.external ? (
@@ -211,7 +219,7 @@ const StyledSideNav = styled.div`
     }
   }
 
-  [data-is-highlighted='true'] {
+  [data-is-highlighted='true'][data-v4='false'] {
     font-weight: 700 !important;
     color: var(--colors-blue0) !important;
   }

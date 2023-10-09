@@ -1,0 +1,285 @@
+➜  layer0-docs git:(COMSUP-8_remove_sidebardata_dep) ✗ node scripts/validateFileToNav.js
+[
+  '/guides/getting_started',
+  '/guides/basics',
+  '/guides/basics/properties',
+  '/guides/basics/environments',
+  '/guides/basics/hostnames_and_origins',
+  '/guides/basics/deployments',
+  '/guides/basics/collaboration',
+  '/guides/basics/alerts',
+  '/guides/basics/account_settings',
+  '/guides/performance',
+  '/guides/performance/getting_started',
+  '/guides/performance/rules',
+  '/guides/performance/rules/conditions',
+  '/guides/performance/rules/features',
+  '/guides/performance/rules/feature_variables',
+  '/guides/performance/rules/operators',
+  '/guides/performance/cdn_as_code',
+  '/guides/performance/cdn_as_code/getting_started',
+  '/guides/performance/cdn_as_code/common_routing_patterns',
+  '/guides/performance/cdn_as_code/edgio_config',
+  '/guides/performance/caching',
+  '/guides/performance/purging',
+  '/guides/performance/static_prerendering',
+  '/guides/performance/prefetching',
+  '/guides/performance/traffic_splitting',
+  '/guides/performance/observability',
+  '/guides/performance/observability/edge_insights',
+  '/guides/performance/observability/core_web_vitals',
+  '/guides/performance/observability/devtools',
+  '/guides/performance/serverless_compute',
+  '/guides/performance/unit_testing_edgejs',
+  '/guides/performance/image_optimization',
+  '/guides/performance/traditional_sites',
+  '/guides/performance/third_party_cdns',
+  '/guides/performance/compression',
+  '/guides/performance/request',
+  '/guides/performance/response',
+  '/guides/performance/troubleshooting',
+  '/guides/performance/limits',
+  '/guides/security',
+  '/guides/security/edgejs_security',
+  '/guides/security/origin_shield',
+  '/guides/security/tls_certificates',
+  '/guides/security/waf',
+  '/guides/security/access_rules',
+  '/guides/security/rate_rules',
+  '/guides/security/bot_rules',
+  '/guides/security/custom_rules',
+  '/guides/security/managed_rules',
+  '/guides/security/security_applications',
+  '/guides/security/dashboard',
+  '/guides/security/recent_event_logs',
+  '/guides/security/response_to_client',
+  '/guides/sites_frameworks',
+  '/guides/sites_frameworks/getting_started',
+  '/guides/sites_frameworks/getting_started/next',
+  '/guides/sites_frameworks/getting_started/nuxt',
+  '/guides/sites_frameworks/getting_started/nuxt3',
+  '/guides/sites_frameworks/connectors',
+  '/guides/sites_frameworks/isg',
+  '/guides/sites_frameworks/limits',
+  '/guides/integrations',
+  '/guides/integrations/bigcommerce',
+  '/guides/integrations/bloomreach',
+  '/guides/integrations/shopify_hydrogen',
+  '/guides/integrations/swell',
+  '/guides/integrations/wordpress',
+  '/guides/logs',
+  '/guides/logs/build_logs',
+  '/guides/logs/server_logs',
+  '/guides/logs/access_logs',
+  '/guides/logs/rtld',
+  '/guides/logs/rtld/aws_s3_log_delivery',
+  '/guides/logs/rtld/azure_blob_storage_log_delivery',
+  '/guides/logs/rtld/datadog_log_delivery',
+  '/guides/logs/rtld/google_cloud_storage_log_delivery',
+  '/guides/logs/rtld/splunk_enterprise_log_delivery',
+  '/guides/logs/rtld/sumo_logic_log_delivery',
+  '/guides/logs/rtld/new_relic_log_delivery',
+  '/guides/logs/rtld/web_server_log_delivery',
+  '/guides/logs/rtld/log_file_naming_convention',
+  '/guides/logs/rtld/log_data_verification',
+  '/guides/logs/rtld/log_fields_rtld_cdn',
+  '/guides/logs/rtld/log_fields_rtld_rate_limiting',
+  '/guides/logs/rtld/log_fields_rtld_waf',
+  '/guides/develop',
+  '/guides/develop/cli',
+  '/guides/develop/rest_api',
+  '/guides/develop/deploy_to_edgio',
+  '/guides/develop/packages',
+  '/guides//docs/api/core',
+  '/guides//docs/api/prefetch',
+  '/guides/reference',
+  '/guides/reference/country_codes',
+  '/guides/v7/upgrading'
+]
+The path /guides/basics/collaboration/sso does not exist for file src/guides/v7/basics/collaboration/sso.md.
+✔ The path /guides/basics/collaboration/sso does not exist for file src/guides/v7/basics/collaboration/sso.md. Do you want to remove this file? … yes
+File src/guides/v7/basics/collaboration/sso.md has been removed.
+The path /guides/basics/domains does not exist for file src/guides/v7/basics/domains.md.
+✔ The path /guides/basics/domains does not exist for file src/guides/v7/basics/domains.md. Do you want to remove this file? … yes
+File src/guides/v7/basics/domains.md has been removed.
+The path /guides/contributing does not exist for file src/guides/v7/contributing.md.
+✔ The path /guides/contributing does not exist for file src/guides/v7/contributing.md. Do you want to remove this file? … no
+File src/guides/v7/contributing.md has not been removed.
+The path /guides/develop/logs does not exist for file src/guides/v7/develop/logs.md.
+✔ The path /guides/develop/logs does not exist for file src/guides/v7/develop/logs.md. Do you want to remove this file? … yes
+File src/guides/v7/develop/logs.md has been removed.
+The path /guides/how-to does not exist for file src/guides/v7/how-to.md.
+✔ The path /guides/how-to does not exist for file src/guides/v7/how-to.md. Do you want to remove this file? … no
+File src/guides/v7/how-to.md has not been removed.
+The path /guides/index does not exist for file src/guides/v7/index.md.
+✔ The path /guides/index does not exist for file src/guides/v7/index.md. Do you want to remove this file? … no
+File src/guides/v7/index.md has not been removed.
+The path /guides/install_nodejs does not exist for file src/guides/v7/install_nodejs.md.
+✔ The path /guides/install_nodejs does not exist for file src/guides/v7/install_nodejs.md. Do you want to remove this file? … no
+File src/guides/v7/install_nodejs.md has not been removed.
+The path /guides/intro does not exist for file src/guides/v7/intro.md.
+✔ The path /guides/intro does not exist for file src/guides/v7/intro.md. Do you want to remove this file? … no
+File src/guides/v7/intro.md has not been removed.
+The path /guides/learning does not exist for file src/guides/v7/learning.md.
+✔ The path /guides/learning does not exist for file src/guides/v7/learning.md. Do you want to remove this file? … no
+File src/guides/v7/learning.md has not been removed.
+The path /guides/performance/traffic_splitting/a_b_testing does not exist for file src/guides/v7/performance/traffic_splitting/a_b_testing.md.
+✔ The path /guides/performance/traffic_splitting/a_b_testing does not exist for file src/guides/v7/performance/traffic_splitting/a_b_testing.md. Do you want to remove this file? … yes
+File src/guides/v7/performance/traffic_splitting/a_b_testing.md has been removed.
+The path /guides/release_notes does not exist for file src/guides/v7/release_notes.md.
+✔ The path /guides/release_notes does not exist for file src/guides/v7/release_notes.md. Do you want to remove this file? … no
+File src/guides/v7/release_notes.md has not been removed.
+The path /guides/security/getting_started does not exist for file src/guides/v7/security/getting_started.md.
+✔ The path /guides/security/getting_started does not exist for file src/guides/v7/security/getting_started.md. Do you want to remove this file? … yes
+File src/guides/v7/security/getting_started.md has been removed.
+The path /guides/security/introduction does not exist for file src/guides/v7/security/introduction.md.
+✔ The path /guides/security/introduction does not exist for file src/guides/v7/security/introduction.md. Do you want to remove this file? … yes
+File src/guides/v7/security/introduction.md has been removed.
+The path /guides/security/managed_rule_groups does not exist for file src/guides/v7/security/managed_rule_groups.md.
+✔ The path /guides/security/managed_rule_groups does not exist for file src/guides/v7/security/managed_rule_groups.md. Do you want to remove this file? … yes
+File src/guides/v7/security/managed_rule_groups.md has been removed.
+The path /guides/security/matched_on_variables does not exist for file src/guides/v7/security/matched_on_variables.md.
+✔ The path /guides/security/matched_on_variables does not exist for file src/guides/v7/security/matched_on_variables.md. Do you want to remove this file? … no
+File src/guides/v7/security/matched_on_variables.md has not been removed.
+The path /guides/sites_frameworks/getting_started/angular does not exist for file src/guides/v7/sites_frameworks/getting_started/angular.md.
+✔ The path /guides/sites_frameworks/getting_started/angular does not exist for file src/guides/v7/sites_frameworks/getting_started/angular.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/angular.md has not been removed.
+The path /guides/sites_frameworks/getting_started/astro does not exist for file src/guides/v7/sites_frameworks/getting_started/astro.md.
+✔ The path /guides/sites_frameworks/getting_started/astro does not exist for file src/guides/v7/sites_frameworks/getting_started/astro.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/astro.md has not been removed.
+The path /guides/sites_frameworks/getting_started/brunch does not exist for file src/guides/v7/sites_frameworks/getting_started/brunch.md.
+✔ The path /guides/sites_frameworks/getting_started/brunch does not exist for file src/guides/v7/sites_frameworks/getting_started/brunch.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/brunch.md has not been removed.
+The path /guides/sites_frameworks/getting_started/docusaurus does not exist for file src/guides/v7/sites_frameworks/getting_started/docusaurus.md.
+✔ The path /guides/sites_frameworks/getting_started/docusaurus does not exist for file src/guides/v7/sites_frameworks/getting_started/docusaurus.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/docusaurus.md has not been removed.
+The path /guides/sites_frameworks/getting_started/dojo does not exist for file src/guides/v7/sites_frameworks/getting_started/dojo.md.
+✔ The path /guides/sites_frameworks/getting_started/dojo does not exist for file src/guides/v7/sites_frameworks/getting_started/dojo.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/dojo.md has not been removed.
+The path /guides/sites_frameworks/getting_started/eleventy does not exist for file src/guides/v7/sites_frameworks/getting_started/eleventy.md.
+✔ The path /guides/sites_frameworks/getting_started/eleventy does not exist for file src/guides/v7/sites_frameworks/getting_started/eleventy.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/eleventy.md has not been removed.
+The path /guides/sites_frameworks/getting_started/ember does not exist for file src/guides/v7/sites_frameworks/getting_started/ember.md.
+✔ The path /guides/sites_frameworks/getting_started/ember does not exist for file src/guides/v7/sites_frameworks/getting_started/ember.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/ember.md has not been removed.
+The path /guides/sites_frameworks/getting_started/ember_fastboot does not exist for file src/guides/v7/sites_frameworks/getting_started/ember_fastboot.md.
+✔ The path /guides/sites_frameworks/getting_started/ember_fastboot does not exist for file src/guides/v7/sites_frameworks/getting_started/ember_fastboot.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/ember_fastboot.md has not been removed.
+The path /guides/sites_frameworks/getting_started/express does not exist for file src/guides/v7/sites_frameworks/getting_started/express.md.
+✔ The path /guides/sites_frameworks/getting_started/express does not exist for file src/guides/v7/sites_frameworks/getting_started/express.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/express.md has not been removed.
+The path /guides/sites_frameworks/getting_started/frontity does not exist for file src/guides/v7/sites_frameworks/getting_started/frontity.md.
+✔ The path /guides/sites_frameworks/getting_started/frontity does not exist for file src/guides/v7/sites_frameworks/getting_started/frontity.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/frontity.md has not been removed.
+The path /guides/sites_frameworks/getting_started/gatsby does not exist for file src/guides/v7/sites_frameworks/getting_started/gatsby.md.
+✔ The path /guides/sites_frameworks/getting_started/gatsby does not exist for file src/guides/v7/sites_frameworks/getting_started/gatsby.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/gatsby.md has not been removed.
+The path /guides/sites_frameworks/getting_started/gridsome does not exist for file src/guides/v7/sites_frameworks/getting_started/gridsome.md.
+✔ The path /guides/sites_frameworks/getting_started/gridsome does not exist for file src/guides/v7/sites_frameworks/getting_started/gridsome.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/gridsome.md has not been removed.
+The path /guides/sites_frameworks/getting_started/hexo does not exist for file src/guides/v7/sites_frameworks/getting_started/hexo.md.
+✔ The path /guides/sites_frameworks/getting_started/hexo does not exist for file src/guides/v7/sites_frameworks/getting_started/hexo.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/hexo.md has not been removed.
+The path /guides/sites_frameworks/getting_started/hugo does not exist for file src/guides/v7/sites_frameworks/getting_started/hugo.md.
+✔ The path /guides/sites_frameworks/getting_started/hugo does not exist for file src/guides/v7/sites_frameworks/getting_started/hugo.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/hugo.md has not been removed.
+The path /guides/sites_frameworks/getting_started/ionic_react does not exist for file src/guides/v7/sites_frameworks/getting_started/ionic_react.md.
+✔ The path /guides/sites_frameworks/getting_started/ionic_react does not exist for file src/guides/v7/sites_frameworks/getting_started/ionic_react.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/ionic_react.md has not been removed.
+The path /guides/sites_frameworks/getting_started/ionic_vue does not exist for file src/guides/v7/sites_frameworks/getting_started/ionic_vue.md.
+✔ The path /guides/sites_frameworks/getting_started/ionic_vue does not exist for file src/guides/v7/sites_frameworks/getting_started/ionic_vue.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/ionic_vue.md has not been removed.
+The path /guides/sites_frameworks/getting_started/jekyll does not exist for file src/guides/v7/sites_frameworks/getting_started/jekyll.md.
+✔ The path /guides/sites_frameworks/getting_started/jekyll does not exist for file src/guides/v7/sites_frameworks/getting_started/jekyll.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/jekyll.md has not been removed.
+The path /guides/sites_frameworks/getting_started/lit does not exist for file src/guides/v7/sites_frameworks/getting_started/lit.md.
+✔ The path /guides/sites_frameworks/getting_started/lit does not exist for file src/guides/v7/sites_frameworks/getting_started/lit.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/lit.md has not been removed.
+The path /guides/sites_frameworks/getting_started/mkdocs does not exist for file src/guides/v7/sites_frameworks/getting_started/mkdocs.md.
+✔ The path /guides/sites_frameworks/getting_started/mkdocs does not exist for file src/guides/v7/sites_frameworks/getting_started/mkdocs.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/mkdocs.md has not been removed.
+The path /guides/sites_frameworks/getting_started/next_commerce does not exist for file src/guides/v7/sites_frameworks/getting_started/next_commerce.md.
+✔ The path /guides/sites_frameworks/getting_started/next_commerce does not exist for file src/guides/v7/sites_frameworks/getting_started/next_commerce.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/next_commerce.md has not been removed.
+The path /guides/sites_frameworks/getting_started/preact does not exist for file src/guides/v7/sites_frameworks/getting_started/preact.md.
+✔ The path /guides/sites_frameworks/getting_started/preact does not exist for file src/guides/v7/sites_frameworks/getting_started/preact.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/preact.md has not been removed.
+The path /guides/sites_frameworks/getting_started/razzle does not exist for file src/guides/v7/sites_frameworks/getting_started/razzle.md.
+✔ The path /guides/sites_frameworks/getting_started/razzle does not exist for file src/guides/v7/sites_frameworks/getting_started/razzle.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/razzle.md has not been removed.
+The path /guides/sites_frameworks/getting_started/react-storefront does not exist for file src/guides/v7/sites_frameworks/getting_started/react-storefront.md.
+✔ The path /guides/sites_frameworks/getting_started/react-storefront does not exist for file src/guides/v7/sites_frameworks/getting_started/react-storefront.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/react-storefront.md has not been removed.
+The path /guides/sites_frameworks/getting_started/react does not exist for file src/guides/v7/sites_frameworks/getting_started/react.md.
+✔ The path /guides/sites_frameworks/getting_started/react does not exist for file src/guides/v7/sites_frameworks/getting_started/react.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/react.md has not been removed.
+The path /guides/sites_frameworks/getting_started/react_static does not exist for file src/guides/v7/sites_frameworks/getting_started/react_static.md.
+✔ The path /guides/sites_frameworks/getting_started/react_static does not exist for file src/guides/v7/sites_frameworks/getting_started/react_static.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/react_static.md has not been removed.
+The path /guides/sites_frameworks/getting_started/redwoodjs does not exist for file src/guides/v7/sites_frameworks/getting_started/redwoodjs.md.
+✔ The path /guides/sites_frameworks/getting_started/redwoodjs does not exist for file src/guides/v7/sites_frameworks/getting_started/redwoodjs.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/redwoodjs.md has not been removed.
+The path /guides/sites_frameworks/getting_started/remix does not exist for file src/guides/v7/sites_frameworks/getting_started/remix.md.
+✔ The path /guides/sites_frameworks/getting_started/remix does not exist for file src/guides/v7/sites_frameworks/getting_started/remix.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/remix.md has not been removed.
+The path /guides/sites_frameworks/getting_started/saber does not exist for file src/guides/v7/sites_frameworks/getting_started/saber.md.
+✔ The path /guides/sites_frameworks/getting_started/saber does not exist for file src/guides/v7/sites_frameworks/getting_started/saber.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/saber.md has not been removed.
+The path /guides/sites_frameworks/getting_started/sanity does not exist for file src/guides/v7/sites_frameworks/getting_started/sanity.md.
+✔ The path /guides/sites_frameworks/getting_started/sanity does not exist for file src/guides/v7/sites_frameworks/getting_started/sanity.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/sanity.md has not been removed.
+The path /guides/sites_frameworks/getting_started/sapper does not exist for file src/guides/v7/sites_frameworks/getting_started/sapper.md.
+✔ The path /guides/sites_frameworks/getting_started/sapper does not exist for file src/guides/v7/sites_frameworks/getting_started/sapper.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/sapper.md has not been removed.
+The path /guides/sites_frameworks/getting_started/scully does not exist for file src/guides/v7/sites_frameworks/getting_started/scully.md.
+✔ The path /guides/sites_frameworks/getting_started/scully does not exist for file src/guides/v7/sites_frameworks/getting_started/scully.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/scully.md has not been removed.
+The path /guides/sites_frameworks/getting_started/solid does not exist for file src/guides/v7/sites_frameworks/getting_started/solid.md.
+✔ The path /guides/sites_frameworks/getting_started/solid does not exist for file src/guides/v7/sites_frameworks/getting_started/solid.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/solid.md has not been removed.
+The path /guides/sites_frameworks/getting_started/spartacus does not exist for file src/guides/v7/sites_frameworks/getting_started/spartacus.md.
+✔ The path /guides/sites_frameworks/getting_started/spartacus does not exist for file src/guides/v7/sites_frameworks/getting_started/spartacus.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/spartacus.md has not been removed.
+The path /guides/sites_frameworks/getting_started/static_sites does not exist for file src/guides/v7/sites_frameworks/getting_started/static_sites.md.
+✔ The path /guides/sites_frameworks/getting_started/static_sites does not exist for file src/guides/v7/sites_frameworks/getting_started/static_sites.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/static_sites.md has not been removed.
+The path /guides/sites_frameworks/getting_started/stencil does not exist for file src/guides/v7/sites_frameworks/getting_started/stencil.md.
+✔ The path /guides/sites_frameworks/getting_started/stencil does not exist for file src/guides/v7/sites_frameworks/getting_started/stencil.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/stencil.md has not been removed.
+The path /guides/sites_frameworks/getting_started/svelte does not exist for file src/guides/v7/sites_frameworks/getting_started/svelte.md.
+✔ The path /guides/sites_frameworks/getting_started/svelte does not exist for file src/guides/v7/sites_frameworks/getting_started/svelte.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/svelte.md has not been removed.
+The path /guides/sites_frameworks/getting_started/umijs does not exist for file src/guides/v7/sites_frameworks/getting_started/umijs.md.
+✔ The path /guides/sites_frameworks/getting_started/umijs does not exist for file src/guides/v7/sites_frameworks/getting_started/umijs.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/umijs.md has not been removed.
+The path /guides/sites_frameworks/getting_started/vitepress does not exist for file src/guides/v7/sites_frameworks/getting_started/vitepress.md.
+✔ The path /guides/sites_frameworks/getting_started/vitepress does not exist for file src/guides/v7/sites_frameworks/getting_started/vitepress.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/vitepress.md has not been removed.
+The path /guides/sites_frameworks/getting_started/vsf does not exist for file src/guides/v7/sites_frameworks/getting_started/vsf.md.
+✔ The path /guides/sites_frameworks/getting_started/vsf does not exist for file src/guides/v7/sites_frameworks/getting_started/vsf.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/vsf.md has not been removed.
+The path /guides/sites_frameworks/getting_started/vue does not exist for file src/guides/v7/sites_frameworks/getting_started/vue.md.
+✔ The path /guides/sites_frameworks/getting_started/vue does not exist for file src/guides/v7/sites_frameworks/getting_started/vue.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/vue.md has not been removed.
+The path /guides/sites_frameworks/getting_started/vuepress does not exist for file src/guides/v7/sites_frameworks/getting_started/vuepress.md.
+✔ The path /guides/sites_frameworks/getting_started/vuepress does not exist for file src/guides/v7/sites_frameworks/getting_started/vuepress.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/vuepress.md has not been removed.
+The path /guides/sites_frameworks/getting_started/zola does not exist for file src/guides/v7/sites_frameworks/getting_started/zola.md.
+✔ The path /guides/sites_frameworks/getting_started/zola does not exist for file src/guides/v7/sites_frameworks/getting_started/zola.md. Do you want to remove this file? … no
+File src/guides/v7/sites_frameworks/getting_started/zola.md has not been removed.
+The path /guides/upgrading/layer0_migration does not exist for file src/guides/v7/upgrading/layer0_migration.md.
+✔ The path /guides/upgrading/layer0_migration does not exist for file src/guides/v7/upgrading/layer0_migration.md. Do you want to remove this file? … no
+File src/guides/v7/upgrading/layer0_migration.md has not been removed.
+The path /guides/upgrading/v5_migration does not exist for file src/guides/v7/upgrading/v5_migration.md.
+✔ The path /guides/upgrading/v5_migration does not exist for file src/guides/v7/upgrading/v5_migration.md. Do you want to remove this file? … no
+File src/guides/v7/upgrading/v5_migration.md has not been removed.
+The path /guides/upgrading/v6_migration does not exist for file src/guides/v7/upgrading/v6_migration.md.
+✔ The path /guides/upgrading/v6_migration does not exist for file src/guides/v7/upgrading/v6_migration.md. Do you want to remove this file? … no
+File src/guides/v7/upgrading/v6_migration.md has not been removed.
+The path /guides/upgrading does not exist for file src/guides/v7/upgrading.md.
+✔ The path /guides/upgrading does not exist for file src/guides/v7/upgrading.md. Do you want to remove this file? … no
+File src/guides/v7/upgrading.md has not been removed.
+The path /guides/what_is_graphql does not exist for file src/guides/v7/what_is_graphql.md.
+✔ The path /guides/what_is_graphql does not exist for file src/guides/v7/what_is_graphql.md. Do you want to remove this file? … no
+File src/guides/v7/what_is_graphql.md has not been removed.
+➜  layer0-docs git:(COMSUP-8_remove_sidebardata_dep) ✗

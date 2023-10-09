@@ -143,4 +143,29 @@ export default [
   ['/guides/cookies', '/guides/performance/traffic_splitting/a_b_testing'],
   ['/guides/overview', '/guides/performance'],
   ['/guides/regions', '/guides/sites_frameworks#regions'],
+
+  // v4
+  ['/guides/v4/v4_accounts_teams', '/guides/v4/alerts'],
+  ['/guides/v4/v4_apis', '/guides/v4/rest_api'],
+  ['/guides/v4/v4_developer_tools', '/guides/v4/cli'],
+  ['/guides/v4/v4_getting_started', '/guides/v4/webapp_cdn_getting_started'],
+  ['/guides/v4/v4_performance', '/guides/v4/routing'],
+  ['/guides/v4/v4_reference', '/guides/v4/limits'],
+  ['/guides/v4/v4_security', '/guides/v4/security'],
+  ['/guides/v4/v4_sites', '/guides/v4/connectors'],
+
+  // v7
+  [
+    '/guides/v7/performance/observability/core_web_vitals',
+    '/guides/v7/performance/observability/real_user_monitoring',
+  ],
+  [
+    '/guides/v7/performance/cdn_as_code/common_routing_patterns',
+    '/guides/v7/performance/cdn_as_code/route_features',
+  ],
+  [
+    '/guides/v7/performance/cdn_as_code/getting_started',
+    '/guides/v7/performance/cdn_as_code',
+  ],
+  ['/guides/v7/performance/experiments', '/guides/v7/experimentation'],
 ];

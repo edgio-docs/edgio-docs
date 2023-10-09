@@ -1,0 +1,4 @@
+- The `{{PACKAGE_NAME}}/cli` package - Allows you to control {{PRODUCT}} through project-local CLI.
+- The `{{PACKAGE_NAME}}/core` package - Allows you to declare routes and deploy your application to {{PRODUCT}}.
+- The `{{PACKAGE_NAME}}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed.
+- The `{{PACKAGE_NAME}}/devtools` package - Allows you to monitor the caching and prefetching functionality.

@@ -5,10 +5,12 @@ import styled from 'styled-components';
 
 import {PRODUCT} from '../../../constants';
 import {markdownToHtml} from '../../../plugins/markdownToHtml';
+import {getVersionedConfig} from '../../utils/config';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
-import JSONRoutes from 'utils/jsonRoutes';
+import Callout from 'components/MDX/Callout';
+import Link from 'components/MDX/Link';
 interface ChangelogProps {
   version: string;
   content: string;
@@ -63,9 +65,27 @@ const StyledChangelogContent = styled.div`
 `;
 
 function ChangelogPage({content, version}: {content: string; version: string}) {
+  const config = getVersionedConfig(version);
+  const isVersionFour = version === 'v4';
+
   return (
-    <Page routeTree={JSONRoutes}>
-      <MarkdownPage meta={{title: `EdgeJS ${version} API Changelog`}}>
+    <Page>
+      <MarkdownPage
+        meta={{title: `${config.PRODUCT} ${version} Packages Changelog`}}>
+        {!isVersionFour && (
+          <Callout type="info">
+            <p>
+              This page contains release notes related to the {config.PRODUCT}{' '}
+              CLI packages and connectors.
+            </p>
+
+            <p>
+              See <Link href="/guides/release_notes">Release Notes</Link> for
+              changes related to the{' '}
+              <Link href={config.APP_URL}>{config.PORTAL}</Link>
+            </p>
+          </Callout>
+        )}
         <StyledChangelogContent dangerouslySetInnerHTML={{__html: content}} />
       </MarkdownPage>
     </Page>
@@ -143,20 +163,22 @@ async function getChangelogByVersion(version: string) {
     return notes;
   }
 
-  let [releases, pullRequests] = [
-    (
-      await octokit.request(
-        'GET /repos/{owner}/{repo}/releases',
-        octokitDefaults
-      )
-    ).data.filter((v) => !v.draft),
-    (
-      await octokit.request('GET /repos/{owner}/{repo}/pulls', {
-        ...octokitDefaults,
-        state: 'closed',
-      })
-    ).data.reduce((acc, pull) => ({...acc, [pull.number]: pull}), {}),
-  ];
+  let [releases, pullRequests] = process.env.GH_API_TOKEN
+    ? [
+        (
+          await octokit.request(
+            'GET /repos/{owner}/{repo}/releases',
+            octokitDefaults
+          )
+        ).data.filter((v) => !v.draft),
+        (
+          await octokit.request('GET /repos/{owner}/{repo}/pulls', {
+            ...octokitDefaults,
+            state: 'closed',
+          })
+        ).data.reduce((acc, pull) => ({...acc, [pull.number]: pull}), {}),
+      ]
+    : [[], {}];
 
   // split the major release versions
   const [data] = splitByVersion(new RegExp(`^${version}`));

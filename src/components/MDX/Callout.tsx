@@ -4,6 +4,7 @@ import {
   FaExclamationTriangle,
   FaMinusCircle,
   FaExclamationCircle,
+  FaQuestionCircle,
 } from 'react-icons/fa';
 import styled, {css} from 'styled-components';
 
@@ -28,13 +29,16 @@ const types = {
   danger: {
     icon: FaMinusCircle,
   },
+  invalid: {
+    icon: FaQuestionCircle,
+  },
 };
 
 const StyledCallout = styled.div.attrs<IStyledCallout>((props) => ({
   type: props.type || 'info',
 }))<IStyledCallout>`
   padding: 14px 20px 20px 14px;
-  border: 1px solid #dedede;
+  border: 1px solid var(--callout-border);
   border-radius: 3px;
   margin: 0 0 7px 0;
   background-color: var(--callout-bg);
@@ -75,6 +79,12 @@ export default function Callout({
   type: 'info' | 'tip' | 'important' | 'warning' | 'danger';
   children: React.ReactNode;
 }) {
+  if (!types[type]) {
+    console.error(`Invalid callout type: ${type}`);
+    /* @ts-ignore */
+    type = 'invalid';
+  }
+
   const Icon = types[type].icon;
 
   return (

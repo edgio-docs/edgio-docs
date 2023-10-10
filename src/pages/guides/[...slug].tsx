@@ -173,8 +173,7 @@ export async function getStaticProps({params}: {params: any}) {
   }
 
   logger.dev(
-    `Using '${file}' for route '${slugAsString}'. Available files:`,
-    files
+    `Using '${file}' for route '${slugAsString}'. Available files: ${files}`
   );
 
   // update template with versioned constants

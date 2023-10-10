@@ -735,6 +735,16 @@ const nav = {
       title: 'Upgrading',
       path: 'upgrading',
       icon: 'add-circle',
+      routes: [
+        {
+          title: 'Upgrading to Version 7',
+          path: 'upgrading/upgrading',
+        },
+        {
+          title: `Updating Packages`,
+          path: 'upgrading/updating_packages',
+        },
+      ],
     },
   ],
 };

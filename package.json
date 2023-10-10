@@ -5,8 +5,8 @@
   "license": "CC",
   "scripts": {
     "edgio:dev": "edgio dev",
-    "edgio:build": "edgio build",
-    "edgio:deploy": "edgio build && yarn sitemap && edgio deploy --skip-build",
+    "edgio:build": "yarn rest-api docs:bundle && edgio build && yarn sitemap",
+    "edgio:deploy": "yarn edgio:build && edgio deploy --skip-build",
     "analyze": "ANALYZE=true next build",
     "dev": "edgio dev",
     "build": "next build",
@@ -27,7 +27,8 @@
     "clean": "rimraf node_modules && yarn",
     "update-template-tables": "python3 scripts/md-tables-to-json.py",
     "validate-links": "node scripts/validateGuideLinks.js",
-    "sitemap": "next-sitemap"
+    "sitemap": "next-sitemap",
+    "rest-api": "yarn workspace rest-api run"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
@@ -168,5 +169,8 @@
     "budget": null,
     "budgetPercentIncreaseRed": 10,
     "showDetails": true
-  }
+  },
+  "workspaces": [
+    "rest_api"
+  ]
 }

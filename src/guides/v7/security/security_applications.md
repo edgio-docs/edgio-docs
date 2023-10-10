@@ -328,7 +328,7 @@ variables that describe the event. These variables are described below.
 
 | Variable    | Description                                           |
 | ----------- | ----------- |
-| EVENT_ID    | Represents the system-defined ID assigned to the request that was identified as a threat.  Find out detailed information about the detected threat by passing this ID to the Get Event Log Entry endpoint (REST API).|
+| EVENT_ID    | Represents the system-defined ID assigned to the request that was identified as a threat. <!--Find out detailed information about the detected threat by passing this ID to the Get Event Log Entry endpoint (REST API).-->|
 | CLIENT_IP   | Represents the IP address of the device that submitted the detected threat.                        |
 | TIMESTAMP   | Represents the date and time at which the detected threat was submitted.                                 |
 | REQUEST_URL | Represents the URL for the request that was deemed a threat.                                               |
@@ -375,9 +375,9 @@ You may create, modify, and delete Security App configurations.
 -   It may take up to 2 minutes for an updated Security App configuration to be applied across our entire network.
 
 **To create a Security App configuration**
-1.  Navigate to the **Security App** page.
+1.  Navigate to the **Security Apps** page.
     {{ SECURITY_NAV }} **Security Apps**.
-2.  Click **Add New**.
+2.  Click **+ New Security App**.
 3.  In the **Name** option, type the unique name by which this Security App configuration will be identified.
 4.  Optional. Identify the set of traffic to which this security policy will be applied by defining a hostname and/or URL path through the **Hostname** and **URL path(s)** options.
 

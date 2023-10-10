@@ -1,0 +1,11 @@
+name: scope_id
+in: path
+required: true
+description: |
+
+  A Security App's system-defined ID. 
+  
+  Use the [Get All Security Apps operation](#tag/Security-Applications-(Scopes)/operation/get-security-applications) to retrieve a list of Security Apps and their system-defined IDs.
+
+schema:
+  type: string

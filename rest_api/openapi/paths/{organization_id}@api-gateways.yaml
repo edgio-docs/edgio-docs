@@ -1,0 +1,49 @@
+post:
+  operationId: create-api-gateway-rule
+  tags:
+    - API Gateways
+  summary: Add API Security Ruleset
+  description: Creates an API Security ruleset.
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/APIGateway.yaml
+  responses:
+    '200':
+      description: OK. An API Security ruleset was created.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+get:
+  operationId: get-api-gateways
+  tags:
+    - API Gateways
+  summary: Get All API Security Rulesets
+  description: Retrieves a list of API Security rulesets.
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  responses:
+    '200':
+      description: OK. A list of API Security rulesets was retrieved.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ObjShort.yaml
+          examples:
+            response:
+              value:
+                - id: e3mpHQY5
+                  name: sample_apigateway_config
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

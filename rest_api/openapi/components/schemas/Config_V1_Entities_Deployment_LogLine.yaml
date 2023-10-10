@@ -1,0 +1,12 @@
+type: object
+properties:
+  message:
+    type: string
+    description: Log message
+  level:
+    type: string
+    description: Log level
+  timestamp:
+    type: string
+    description: Log timestamp
+    format: date-time

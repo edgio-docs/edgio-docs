@@ -1,0 +1,79 @@
+title: Limit
+type: object
+properties:
+  version:
+    type: integer
+    format: uint32
+    description: Reserved for future use.
+  id:
+    type: string
+    description: The rate rule's system-defined ID.
+  name:
+    type: string
+    description: The rate rule's name.
+  customer_id:
+    type: string
+    description: |
+
+      Your organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab). 
+
+      From the Edgio Console, select your organization from the top menu and then click **Settings**. It is listed under **Organization ID**.
+
+  last_modified_date:
+    type: string
+    description: The date and time at which this configuration was last modified.
+  last_modified_by:
+    type: string
+    description: The Edgio Console user that last modified this access rule. This field does not reflect updates performed through the REST API.
+  disabled:
+    type: boolean
+    description: | 
+
+      Indicates whether this rate rule will be enforced. Valid values are:
+
+      -   **true:** Disabled. This rate limit will not be applied to traffic.
+
+      -   false:** Enabled. Traffic is restricted to this rate limit.
+
+  duration_sec:
+    description: The length, in seconds, of the rolling window that tracks the number of requests eligible for rate limiting. The `num` property determines the maximum number of requests for this time period.
+    type: integer
+    format: uint32
+    enum:
+      - 1
+      - 5
+      - 10
+      - 30
+      - 60
+      - 120
+      - 300
+  num:
+    type: integer
+    format: uint32
+    description: The number of requests that will trigger rate limiting. 
+  keys:
+    type: array
+    description: |
+    
+      The method by which requests will be grouped for the purposes of this rate rule. Valid values are:
+
+      -   **Missing / Empty Array:** If the keys property is not defined or set to an empty array, all requests will be treated as a single group for the purpose of rate limiting.
+
+      -   **IP:** Indicates that requests will be grouped by IP address. Each unique IP address is considered a separate group.
+
+      -   **USER_AGENT:** Indicates that requests will be grouped by a client's user agent. Each unique combination of IP address and user agent is considered a separate group.
+
+    items:
+      allOf:
+        - $ref: ./LimitKeyType.yaml
+  condition_groups:
+    type: array
+    description: Contains the set of condition groups associated with a rule.
+    items:
+      allOf:
+        - $ref: ./ConditionGroup.yaml
+  team_config:
+    type: boolean
+    description: This property must always be `true`. If passed in the request, set it to `true`.
+required:
+  - team_config

@@ -713,7 +713,7 @@ const nav = {
       icon: 'add-circle',
       routes: [
         {
-          title: 'Upgrading to Verison 7',
+          title: 'Upgrading to Version 7',
           path: 'upgrading/upgrading',
         },
         {

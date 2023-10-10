@@ -37,11 +37,11 @@ After updating your project, compare the dependency versions in your `package.js
 
 <Callout type="info">
 
-  The `{{ PACKAGE_NAME }}/rum` package dependency is not automatically update or synchronized with other `{{ PACKAGE_NAME }}` dependencies. If you are using this package, you must use a package manager to update this dependency manually.
+  The `{{ PACKAGE_NAME }}/rum` package dependency is not automatically updated or synchronized with other `{{ PACKAGE_NAME }}` dependencies. If you are using this package, you must use a package manager to update this dependency manually.
 
 </Callout>
 
-## Changes from v7.x to v7.2 {/* changes-from-v7-v72 */}
+## {{ PRODUCT }} v7.2 Changes {/* edgio-v72-changes */}
 
 {{ PRODUCT }} v7.2.0 introduces support for ESM-based user projects which may require some changes to your project. 
 

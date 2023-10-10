@@ -24,15 +24,15 @@ npx @edgio/cli use 7.2.0
 After updating your project, compare the dependency versions in your `package.json` file under the `@edgio` namespace. Ensure that all dependencies are using the same version. For example:
 
 ```json
-  "devDependencies": {
-    "@edgio/cli": "^7.2.5",
-    "@edgio/core": "^7.2.5",
-    "@edgio/devtools": "^7.2.5",
-    "@edgio/next": "^7.2.5",
-    "@edgio/prefetch": "^7.2.5",
-    "@edgio/react": "^7.2.5",
-    /* ... */
-  }
+"devDependencies": {
+  "@edgio/cli": "^7.2.5",
+  "@edgio/core": "^7.2.5",
+  "@edgio/devtools": "^7.2.5",
+  "@edgio/next": "^7.2.5",
+  "@edgio/prefetch": "^7.2.5",
+  "@edgio/react": "^7.2.5",
+  /* ... */
+}
 ```
 
 <Callout type="info">

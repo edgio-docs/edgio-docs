@@ -28,11 +28,11 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
 I would like to:
 
--   **Connect {{ PRODUCT }} to a site that uses Next.js, Nuxt3, Astro, Remix, Qwik, or Vue.**
+-   **Connect {{ PRODUCT }} to a project that uses a web application framework.**
 
-    Use our CLI to take a CDN-as-code approach when managing your CDN configuration. Choose from one of the following options:
+    Manage your CDN configuration alongside your code. This approach is known as CDN-as-code. Choose from one of the following options:
 
-    -   Automate branch previews and deployments whenever you commit changes by [connecting your Github repository to {{ PRODUCT }}](#creating-a-property--cli-with-automation-). 
+    -   Automate deployments and branch previews for a Next.js, Nuxt3, Astro, Remix, Qwik, or Vue project by [connecting your Github repository to {{ PRODUCT }}](#creating-a-property--cli-with-automation-). 
     -   Manually deploy changes to your CDN configuration [through our CLI](#creating-a-property--cli-without-automation-).
 
 -   **Use {{ PRODUCT }} to serve traffic for a site that is hosted on your web server(s).**
@@ -43,7 +43,7 @@ I would like to:
     
         <Callout type="tip">
 
-          This is the recommended option if you are not integrating a web application framework, such as Next.js, Nuxt3, Astro, Remix, Qwik, or Vue.
+          This is the recommended option if you do not plan on using Cloud Functions, predictive prefetching, or an integration for a web application framework, such as Next.js, Nuxt3, Astro, Remix, Qwik, or Vue.
 
         </Callout>
 
@@ -51,7 +51,7 @@ I would like to:
 
 -   **Interact with a sample Next.js, Nuxt3, Astro, Remix, Qwik, or Vue project on {{ PRODUCT }}.**
 
-    [Set up a sample project](#creating-a-property--sample-project-) by autogenerating a Github repository and connecting it to {{ PRODUCT }}. This project uses our CLI to take a CDN-as-code approach for CDN configuration management.
+    [Set up a sample project](#creating-a-property--sample-project-) by autogenerating a Github repository and connecting it to {{ PRODUCT }}. This project takes a CDN-as-code approach for CDN configuration management.
 
 ### Creating a Property ({{ PORTAL }}) {/*creating-a-property-*/}
 

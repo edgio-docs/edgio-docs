@@ -63,15 +63,15 @@ Manage and deploy changes to your CDN configuration through the {{ PORTAL }}.
 
 </Callout>
 
-1.  From the {{ PORTAL }}, click **+ New Property**.
+1.  From the {{ PORTAL }}, click **New Property**.
 
-    ![+ New Property](/images/v7/basics/property-create-1.png?width=450)
+    ![New Property](/images/v7/basics/property-create-1.png?width=450)
 
 2.  From under the **Self Host Property**, click **Create Property**. 
 3.  In the **Property Name** option, assign a name to your new property (e.g., `My Property`).
 4.  Under the **Hostnames** section, click **+ Add Hostname** and then type a domain (e.g., `www.example.com` or `cdn.example.com`) that will be served through {{ PRODUCT }}.
 
-    ![+ New Property](/images/v7/basics/property-create-2.png?width=450)
+    ![New Property](/images/v7/basics/property-create-2.png?width=450)
 
 5.  An origin configuration identifies a set of web servers that will serve as the source for the content served through {{ PRODUCT }}.
 
@@ -87,7 +87,7 @@ Manage and deploy changes to your CDN configuration through the {{ PORTAL }}.
 
         Your origin configuration should now look similar to this:
 
-        ![+ New Property](/images/v7/basics/property-create-3-a.png?width=450)
+        ![New Property](/images/v7/basics/property-create-3-a.png?width=450)
 
 6.  Click **Create Property**.
 7.  If you have defined at least one origin configuration, your property will be automatically deployed to the {{ PRODUCT }} network. [Proceed to Step 3: Test Your Property.](#test-your-property)
@@ -98,13 +98,13 @@ If your existing project is stored within a Git repository and it is powered by 
 
 <Callout type="important">
 
-  If you plan on using releases to deploy changes that affect your production traffic, then you should mark the `production` environment as the one that will serve production traffic.
+  If you plan on using releases to deploy changes that affect your production traffic, then you should [tag the production environment as the one that will serve production traffic](/guides/basics/environments#production-environment).
 
 </Callout>
 
-1.  From the {{ PORTAL }}, click **+ New Property**.
+1.  From the {{ PORTAL }}, click **New Property**.
 
-    ![+ New Property](/images/v7/basics/property-create-1.png?width=450)
+    ![New Property](/images/v7/basics/property-create-1.png?width=450)
 
 2.  From under the **Host Property on {{ PRODUCT }}**, click **Create Property**.
 3.  From the **Property Name** option, assign a name to your property. 
@@ -131,9 +131,9 @@ If your existing project is stored within a Git repository and it is powered by 
 
 Use a CDN-as-code approach to CDN configuration with any existing project.
 
-1.  From the {{ PORTAL }}, click **+ New Property**.
+1.  From the {{ PORTAL }}, click **New Property**.
 
-    ![+ New Property](/images/v7/basics/property-create-1.png?width=450)
+    ![New Property](/images/v7/basics/property-create-1.png?width=450)
 
 2.  From under the **Host Property on {{ PRODUCT }}**, click **Create Property**.
 3.  From the **Property Name** option, assign a name to your property. 
@@ -147,9 +147,9 @@ Use a CDN-as-code approach to CDN configuration with any existing project.
 
 We provide sample Next.js, Nuxt3, Astro, Remix, Qwik, and Vue projects through which you may learn how to optimize site delivery. This option requires you to connect your Github account to your {{ PRODUCT }} account. 
 
-1.  From the {{ PORTAL }}, click **+ New Property**.
+1.  From the {{ PORTAL }}, click **New Property**.
 
-    ![+ New Property](/images/v7/basics/property-create-1.png?width=450)
+    ![New Property](/images/v7/basics/property-create-1.png?width=450)
 
 2.  From under the **Host Property on {{ PRODUCT }}**, click **Create Property**.
 3.  From the **Property Name** option, assign a name to your property. 
@@ -205,8 +205,7 @@ You are now ready for:
 
     For example, you can enable Server Name Indication (SNI) on an origin configuration or shield it from requests to reduce network bandwith usage and the load on your web servers.
 
--   Set up {{ PRODUCT }} [Performance.](/guides/performance/getting_started) Learn how to:
-    -   Optimize website performance by defining a [caching policy](/guides/performance/caching), [predictive prefetching](/guides/performance/prefetching), and other edge logic through [Rules](/guides/performance/rules). 
+-   Optimize website performance by defining a [caching policy](/guides/performance/caching), [predictive prefetching](/guides/performance/prefetching), and other edge logic through [Rules](/guides/performance/rules). 
 
 -   Gain performance insights through which you can fine-tune your configuration through our [Observability](/guides/performance/observability/real_user_monitoring) solution.
 -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/guides/performance/traffic_splitting) solution.

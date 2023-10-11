@@ -65,9 +65,12 @@ Manage and deploy changes to your CDN configuration through the {{ PORTAL }}.
 
 1.  From the {{ PORTAL }}, click **New Property**.
 
-    ![New Property](/images/v7/basics/property-create-1.png?width=450)
+    ![New Property](/images/v7/basics/property-create-1.png?width=300)
 
 2.  From under the **Self Host Property**, click **Create Property**. 
+
+    ![New Property](/images/v7/basics/property-create-self-host.png?width=300)
+
 3.  In the **Property Name** option, assign a name to your new property (e.g., `My Property`).
 4.  Under the **Hostnames** section, click **+ Add Hostname** and then type a domain (e.g., `www.example.com` or `cdn.example.com`) that will be served through {{ PRODUCT }}.
 
@@ -107,6 +110,9 @@ If your existing project is stored within a Git repository and it is powered by 
     ![New Property](/images/v7/basics/property-create-1.png?width=450)
 
 2.  From under the **Host Property on {{ PRODUCT }}**, click **Create Property**.
+
+    ![New Property](/images/v7/basics/property-create-host-property-on-edgio.png?width=300)
+
 3.  From the **Property Name** option, assign a name to your property. 
 4.  Click **Import an existing project**.
 5.  Click on your project's web application framework. 
@@ -136,6 +142,9 @@ Use a CDN-as-code approach to CDN configuration with any existing project.
     ![New Property](/images/v7/basics/property-create-1.png?width=450)
 
 2.  From under the **Host Property on {{ PRODUCT }}**, click **Create Property**.
+
+    ![New Property](/images/v7/basics/property-create-host-property-on-edgio.png?width=300)
+
 3.  From the **Property Name** option, assign a name to your property. 
 4.  Verify that the **Create using CLI** option is selected.
 5.  Click **Create Property**.
@@ -152,6 +161,9 @@ We provide sample Next.js, Nuxt3, Astro, Remix, Qwik, and Vue projects through w
     ![New Property](/images/v7/basics/property-create-1.png?width=450)
 
 2.  From under the **Host Property on {{ PRODUCT }}**, click **Create Property**.
+
+    ![New Property](/images/v7/basics/property-create-host-property-on-edgio.png?width=300)
+
 3.  From the **Property Name** option, assign a name to your property. 
 4.  Click **Start from a template**.
 5.  Click on your project's web application framework. 

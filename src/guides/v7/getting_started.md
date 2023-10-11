@@ -40,7 +40,15 @@ I would like to:
     For example, you may serve traffic for content that is available through web hosting or virtual cloud services. Choose from one of the following options:
 
     -   Manage and deploy changes to your CDN configuration [through the {{ PORTAL }}](#creating-a-property-).
+    
+        <Callout type="tip">
+
+          This is the recommended option if you are not integrating a web application framework, such as Next.js, Nuxt3, Astro, Remix, Qwik, or Vue.
+
+        </Callout>
+
     -   Manage and deploy changes to your CDN configuration [through our CLI](#creating-a-property--cli-without-automation-).
+
 -   **Interact with a sample Next.js, Nuxt3, Astro, Remix, Qwik, or Vue project on {{ PRODUCT }}.**
 
     [Set up a sample project](#creating-a-property--sample-project-) by autogenerating a Github repository and connecting it to {{ PRODUCT }}. This project uses our CLI to take a CDN-as-code approach for CDN configuration management.
@@ -51,7 +59,7 @@ Manage and deploy changes to your CDN configuration through the {{ PORTAL }}.
 
 <Callout type="info">
 
-  Although we do not recommend managing your CDN configuration using both the {{ PORTAL }} and our CLI, you may switch to a CDN-as-code approach at any time. Switch to a CLI-based approach to CDN configuration by [initalizing an existing property within your project's root directory](/guides/performance/cdn_as_code#initialize-property).
+  Although we do not recommend managing your CDN configuration using both the {{ PORTAL }} and our CLI, you may switch to a CDN-as-code approach at any time. Switch to a CLI-based approach to CDN configuration by [initalizing an existing property within your project's root directory](/guides/performance/cdn_as_code#initialize-property) and then deploying the desired changes.
 
 </Callout>
 
@@ -86,7 +94,13 @@ Manage and deploy changes to your CDN configuration through the {{ PORTAL }}.
 
 ### Creating a Property (CLI with Automation) {/*creating-a-property--cli-with-automation-*/}
 
-If your existing project is stored within a Git repository and it is powered by Next.js, Nuxt3, Astro, Remix, Qwik, or Vue, then you can automate branch previews and deployments whenever you commit changes.
+If your existing project is stored within a Git repository and it is powered by Next.js, Nuxt3, Astro, Remix, Qwik, or Vue, then you can automate branch previews and deployments. Specifically, we will automatically create a `default` environment for pull requests  and a `staging` environment for [push events](https://docs.github.com/en/webhooks/webhook-events-and-payloads#push). If you [create a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository), {{ PRODUCT }} will deploy to the `production` environment. If that environment does not already exist, then it will create one.
+
+<Callout type="important">
+
+  If you plan on using releases to deploy changes that affect your production traffic, then you should mark the `production` environment as the one that will serve production traffic.
+
+</Callout>
 
 1.  From the {{ PORTAL }}, click **+ New Property**.
 
@@ -95,7 +109,10 @@ If your existing project is stored within a Git repository and it is powered by 
 2.  From under the **Host Property on {{ PRODUCT }}**, click **Create Property**.
 3.  From the **Property Name** option, assign a name to your property. 
 4.  Click **Import an existing project**.
-5.  Click on your project's web application framework. If your desired framework is not listed, then you will need to follow the **All Other Existing Projects** workflow.
+5.  Click on your project's web application framework. 
+
+    If your desired framework is not listed, then you will need to [create a property without automation](#creating-a-property--cli-without-automation-).
+    
 6.  If you have not already connected your Github account to {{ PRODUCT }}, then you will need to do so now.
 
     1.  Click **Connect to Github**. 
@@ -104,7 +121,7 @@ If your existing project is stored within a Git repository and it is powered by 
 
 7.  From the **Select a Repository** option, select your project's repository.
 8.  Click **Create Property**.
-9.  As a part of the property creation workflow, {{ PRODUCT }} Bot generates a pull request called `{{ PRODUCT }} Init` that contains changes that add our service to your project and adds a Github workflow for the automation of branch previews and deployments.
+9.  As a part of the property creation workflow, {{ PRODUCT }} Bot generates a pull request called `{{ PRODUCT }} Init` that adds both our service to your project and a Github workflow for the automation of branch previews and deployments.
 
     Review this PR and merge it into your main branch.
 
@@ -137,7 +154,10 @@ We provide sample Next.js, Nuxt3, Astro, Remix, Qwik, and Vue projects through w
 2.  From under the **Host Property on {{ PRODUCT }}**, click **Create Property**.
 3.  From the **Property Name** option, assign a name to your property. 
 4.  Click **Start from a template**.
-5.  Click on your project's web application framework. If your desired framework is not listed, then you will need to follow the **All Other Existing Projects** workflow.
+5.  Click on your project's web application framework. 
+
+    If your desired framework is not listed, then you will need to [create a property without automation](#creating-a-property--cli-without-automation-).
+
 6.  If you have not already connected your Github account to {{ PRODUCT }}, then you will need to do so now.
 
     1.  Click **Connect to Github**. 
@@ -165,17 +185,29 @@ Once your property is successfully deployed to the {{ PRODUCT }} network, a URL 
 
 Congratulations on setting up a basic property on {{ PRODUCT }}! 
 
-You are now ready to:
+You are now ready for:
 
--   Fine-tune your [origin configuration](/guides/basics/hostnames_and_origins#origin).
+-   Collaboration. If you plan on collaborating with other team members, then you should [create an organization](/guides/basics/collaboration). After which, you will need to <!--either -->create a property for that organization<!-- or [transfer the ownership of your new property](/guides/basics/properties#transfer-ownership) to that organization-->.
+
+-   [{{ PRODUCT }} Security.](/guides/security). We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your organization's web applications and APIs through our [Web Application Firewall solution](/guides/security/waf). {{ ACCOUNT_UPGRADE }}
+
+-   [Create environments](/guides/basics/environments) to match your software development workflow. Each environment provides site previews that allow QA testers, code reviewers, and other stakeholders to immediately try out newly introduced changes before they are introduced into your production environment. 
+
+    <Callout type="info">
+    
+      If you are using [our Github automation workflow](#creating-a-property--cli-with-automation-), then we will create environments for you. You do not need to create additional environments.
+
+    </Callout>
+
+-   [CDN-as-code:](/guides/performance/cdn_as_code) If your new property uses CDN-as-code, then you will need to define CDN behavior within a file ({{ ROUTES_FILE }}) stored alongside your code. Additionally, if this project uses a JavaScript framework, then you can use [{{ PRODUCT }} Sites.](/guides/sites_frameworks/getting_started) to improve your website's performance by using our cloud workers to quickly render server-side content in a scalable manner.
+
+-   **{{ PORTAL }}:** If your new property is for a site hosted on your web server(s), then you should fine-tune your [origin configuration](/guides/basics/hostnames_and_origins#origin).
 
     For example, you can enable Server Name Indication (SNI) on an origin configuration or shield it from requests to reduce network bandwith usage and the load on your web servers.
 
--   If you plan on collaborating with other team members, then you should [create an organization](/guides/basics/collaboration). After which, you will need to <!--either -->create a property for that organization<!-- or [transfer the ownership of your new property](/guides/basics/properties#transfer-ownership) to that organization-->.
--   [Create environments](/guides/basics/environments) to match your software development workflow. Each environment provides site previews that allow QA testers, code reviewers, and other stakeholders to immediately try out newly introduced changes before they are introduced into your production environment. 
 -   Set up {{ PRODUCT }} [Performance.](/guides/performance/getting_started) Learn how to:
-    -   Optimize website performance by defining a [caching policy](/guides/performance/caching), [predictive prefetching](/guides/performance/prefetching), and other edge logic through [Rules](/guides/performance/rules). Alternatively, if you prefer code to UI, then you can take advantage of our [CDN-as-code approach](/guides/performance/cdn_as_code/getting_started) to CDN configuration.
-    -   Gain performance insights through which you can fine-tune your configuration through our [Observability](/guides/performance/observability/real_user_monitoring) solution.
-    -   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/guides/performance/traffic_splitting) solution.
--   Set up {{ PRODUCT }} [Security.](/guides/security) We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your web applications and APIs through our [Web Application Firewall solution](/guides/security/waf). {{ ACCOUNT_UPGRADE }}
--   Set up {{ PRODUCT }} [Sites.](/guides/sites_frameworks/getting_started) If you are currently using a JavaScript framework, then you can improve your website's performance by using our cloud workers to quickly render server-side content in a scalable manner.
+    -   Optimize website performance by defining a [caching policy](/guides/performance/caching), [predictive prefetching](/guides/performance/prefetching), and other edge logic through [Rules](/guides/performance/rules). 
+
+-   Gain performance insights through which you can fine-tune your configuration through our [Observability](/guides/performance/observability/real_user_monitoring) solution.
+-   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/guides/performance/traffic_splitting) solution.
+

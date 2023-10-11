@@ -19,14 +19,21 @@ An environment defines how traffic will be served through {{ PRODUCT }}. Each en
 
 **Key information:**
 
--   By default, all new properties contain an environment called `production`. The `production` environment cannot be renamed or deleted.
--   You may create additional environments for your property.
+-   By default, {{ PRODUCT }} automatically creates an environment upon creating a property. The name of this environment varies according to whether the property was created for use with the {{ PORTAL }} or our CLI.
 
-    <Callout type="tip">
+    -   **{{ PORTAL }}:** `production`
+    -   **CLI:** `default`
 
-      Set up your environments to match your software development workflow.
+-   You may create additional environments for your property. 
 
-      For example, you could create a development, testing, and staging environment to allow your team members to collaborate at every stage of your software development life cycle.
+    One use for this capability is to set up your environments to match your software development workflow.
+
+    For example, you could create a development, testing, and staging environment to allow your team members to collaborate at every stage of your software development life cycle.
+
+    <Callout type="info">
+
+      If you used [our Github automation workflow](/guides/getting_started#creating-a-property--cli-with-automation-) to create a property, then we will create environments for you. You do not need to create additional environments.
+
 
     </Callout>
 
@@ -62,21 +69,8 @@ Perform the following steps to create an environment:
 
     ![limit environment](/images/v7/basics/environment-permissions.png?width=450)
 
-6.  Click **Create**.
-
-<!--
-Production Environment 
-
-To ensure that your production environment gets priority over all other environments during periods of high traffic, mark it as _production_ by selecting this option during creation:
-
-![promote](/images/environments/production.png)
-
-Or from the environments list in the site view:
-
-![promote](/images/environments/environments_table.png)
-
-Failure to do so could cause your production environment to become slow if another environment experiences an unexpected surge in traffic, for example due to an attack or load test.
--->
+6.  Determine whether this [environment will be tagged as production](#production-environment) through the **Make this my production environment** option. 
+7.  Click **Create**.
 
 ## Environment Variables {/*environment-variables*/}
 
@@ -177,6 +171,24 @@ of `{{ CONFIG_FILE }}`:
 // {{ CONFIG_FILE }}
 require('dotenv').config()
 ```
+
+## Production Environment {/*production-environment*/}
+
+By default, the first environment created for your property will be tagged as `production`. This means that the performance of this environment will be prioritized over other environments during periods of high traffic. Examples of high traffic periods are a distributed denial of service (DDOS) attack or a load test. 
+
+<Callout type="info">
+    
+  You may not delete an environment that has been assigned the `production` tag. If you would like to delete this environment, then you must tag a different environment as `production` first.
+
+</Callout>
+
+**To switch the production environment**
+
+1.  From the {{ PORTAL_LINK }}, select the desired private space or organization.
+2.  Select the desired property.
+3.  From the left-hand pane, select **Environments**.
+4.  Find the desired environment and click its <Image inline src="/images/v7/icons/menu-kebab.png" alt="Menu" /> icon. After which, click **Make this my production environment**.
+5.  **CDN-as-Code:** When prompted, confirm the redeployment of the environment that was previously marked as `production` and the newly tagged environment by clicking **Make "ENVIRONMENT NAME" my production environment**.
 
 ## Deleting an Environment {/*deleting-an-environment*/}
 

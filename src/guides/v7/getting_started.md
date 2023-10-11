@@ -140,8 +140,8 @@ Use a CDN-as-code approach to CDN configuration with any existing project.
 4.  Verify that the **Create using CLI** option is selected.
 5.  Click **Create Property**.
 6.  A quick start page will display a npx command. Initialize your property by running this command from your project's root directory. 
-                
-[Learn more about initialization.](/guides/performance/cdn_as_code#initialize-property)
+
+[Learn more about CDN-as-code and initalizing a property.](/guides/performance/cdn_as_code#initialize-property)
 
 ### Creating a Property (Sample Project) {/*creating-a-property--sample-project-*/}
 
@@ -189,7 +189,7 @@ You are now ready for:
 
 -   Collaboration. If you plan on collaborating with other team members, then you should [create an organization](/guides/basics/collaboration). After which, you will need to <!--either -->create a property for that organization<!-- or [transfer the ownership of your new property](/guides/basics/properties#transfer-ownership) to that organization-->.
 
--   [{{ PRODUCT }} Security.](/guides/security). We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your organization's web applications and APIs through our [Web Application Firewall solution](/guides/security/waf). {{ ACCOUNT_UPGRADE }}
+-   [{{ PRODUCT }} Security](/guides/security). We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your organization's web applications and APIs through our [Web Application Firewall solution](/guides/security/waf). {{ ACCOUNT_UPGRADE }}
 
 -   [Create environments](/guides/basics/environments) to match your software development workflow. Each environment provides site previews that allow QA testers, code reviewers, and other stakeholders to immediately try out newly introduced changes before they are introduced into your production environment. 
 

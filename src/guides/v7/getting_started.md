@@ -28,15 +28,24 @@ Each website that will run behind {{ PRODUCT }} requires an {{ PRODUCT }} proper
 
 I would like to:
 
--   Connect Edgio to a site that uses Next.js, Nuxt3, Astro, Remix, Qwik, or Vue. Use our CLI to take a CDN-as-code approach when managing your CDN configuration. Choose from one of the following options:
-    -   Automate branch previews and deployments whenever you commit changes by connecting your Github repository to Edgio. 
-    -   Manually deploy changes to your CDN configuration through our CLI.
--   Use Edgio to serve traffic for a site that is hosted on web server(s) that are external to our network (e.g., a web hosting service or virtual cloud services). Choose from one of the following options:
-    -   Manage and deploy changes to your CDN configuration through the {{ PORTAL }}.
-    -   Manage and deploy changes to your CDN configuration through our CLI.
--   Interact with a sample Next.js, Nuxt3, Astro, Remix, Qwik, or Vue project on {{ PRODUCT }}. Use our CLI to take a CDN-as-code approach when managing your CDN configuration. Set up this sample project by connecting an existing Github repository to Edgio.
+-   **Connect {{ PRODUCT }} to a site that uses Next.js, Nuxt3, Astro, Remix, Qwik, or Vue.**
 
-### Creating a Property ({{ PORTAL }})
+    Use our CLI to take a CDN-as-code approach when managing your CDN configuration. Choose from one of the following options:
+
+    -   Automate branch previews and deployments whenever you commit changes by [connecting your Github repository to {{ PRODUCT }}](#creating-a-property--cli-with-automation-). 
+    -   Manually deploy changes to your CDN configuration [through our CLI](#creating-a-property--cli-without-automation-).
+
+-   **Use {{ PRODUCT }} to serve traffic for a site that is hosted on your web server(s).**
+
+    For example, you may serve traffic for content that is available through web hosting or virtual cloud services. Choose from one of the following options:
+
+    -   Manage and deploy changes to your CDN configuration [through the {{ PORTAL }}](#creating-a-property-).
+    -   Manage and deploy changes to your CDN configuration [through our CLI](#creating-a-property--cli-without-automation-).
+-   **Interact with a sample Next.js, Nuxt3, Astro, Remix, Qwik, or Vue project on {{ PRODUCT }}.**
+
+    Use our CLI to take a CDN-as-code approach when managing your CDN configuration. [Set up this sample project](#creating-a-property--sample-project-) by connecting an existing Github repository to {{ PRODUCT }}.
+
+### Creating a Property ({{ PORTAL }}) {/*creating-a-property-*/}
 
 Manage and deploy changes to your CDN configuration through the {{ PORTAL }}.
 
@@ -75,7 +84,7 @@ Manage and deploy changes to your CDN configuration through the {{ PORTAL }}.
 6.  Click **Create Property**.
 7.  If you have defined at least one origin configuration, your property will be automatically deployed to the {{ PRODUCT }} network. [Proceed to Step 3: Test Your Property.](#test-your-property)
 
-### Creating a Property (CLI with Automation)
+### Creating a Property (CLI with Automation) {/*creating-a-property--cli-with-automation-*/}
 
 If your existing project is stored within a Git repository and it is powered by Next.js, Nuxt3, Astro, Remix, Qwik, or Vue, then you can automate branch previews and deployments whenever you commit changes.
 
@@ -95,13 +104,13 @@ If your existing project is stored within a Git repository and it is powered by 
 
 7.  From the **Select a Repository** option, select your project's repository.
 8.  Click **Create Property**.
-9.  As a part of the property creation workflow, Edgio Bot generates a pull request called `Edgio Init` that contains changes that add our service to your project and adds a Github workflow for the automation of branch previews and deployments.
+9.  As a part of the property creation workflow, {{ PRODUCT }} Bot generates a pull request called `{{ PRODUCT }} Init` that contains changes that add our service to your project and adds a Github workflow for the automation of branch previews and deployments.
 
     Review this PR and merge it into your main branch.
 
 [Learn more about CDN-as-code.](/guides/performance/cdn_as_code)
 
-### Creating a Property (CLI without Automation)
+### Creating a Property (CLI without Automation) {/*creating-a-property--cli-without-automation-*/}
 
 Use a CDN-as-code approach to CDN configuration with any existing project.
 
@@ -117,7 +126,7 @@ Use a CDN-as-code approach to CDN configuration with any existing project.
                 
 [Learn more about initialization.](/guides/performance/cdn_as_code#initialize-property)
 
-### Creating a Property (Sample Project)
+### Creating a Property (Sample Project) {/*creating-a-property--sample-project-*/}
 
 We provide sample Next.js, Nuxt3, Astro, Remix, Qwik, and Vue projects through which you may learn how to optimize site delivery. This option requires you to connect your Github account to your {{ PRODUCT }} account. 
 

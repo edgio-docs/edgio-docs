@@ -43,7 +43,7 @@ I would like to:
     -   Manage and deploy changes to your CDN configuration [through our CLI](#creating-a-property--cli-without-automation-).
 -   **Interact with a sample Next.js, Nuxt3, Astro, Remix, Qwik, or Vue project on {{ PRODUCT }}.**
 
-    Use our CLI to take a CDN-as-code approach when managing your CDN configuration. [Set up this sample project](#creating-a-property--sample-project-) by connecting an existing Github repository to {{ PRODUCT }}.
+    [Set up a sample project](#creating-a-property--sample-project-) by autogenerating a Github repository and connecting it to {{ PRODUCT }}. This project uses our CLI to take a CDN-as-code approach for CDN configuration management.
 
 ### Creating a Property ({{ PORTAL }}) {/*creating-a-property-*/}
 
@@ -144,7 +144,14 @@ We provide sample Next.js, Nuxt3, Astro, Remix, Qwik, and Vue projects through w
     2.  Sign in to your account using either a passkey or your user name and password.
     3.  When prompted, authorize {{ PRODUCT }} access to your Github account.
 
-7.  Click **Create Property**.
+7.  Click **Create Property**. {{ PRODUCT }} will now perform the following actions:
+
+    -   It will create a property.
+    -   It will create a Github repository for this property.
+    -   It will add all of the project's files to this Github repository.
+    -   It will deploy the sample project to {{ PRODUCT }}. Once the deployment completes, you may follow the URL displayed under the **URL** label to load the sample site.
+
+8.  Optional. Clone the Github repository to your local drive. Test different configurations by committing changes to this repository. {{ PRODUCT }} will automatically deploy those changes. 
 
 [Learn more about CDN-as-code.](/guides/performance/cdn_as_code)
 

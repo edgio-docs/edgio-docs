@@ -87,7 +87,7 @@ If your existing project is stored within a Git repository and it is powered by 
 3.  From the **Property Name** option, assign a name to your property. 
 4.  Click **Import an existing project**.
 5.  Click on your project's web application framework. If your desired framework is not listed, then you will need to follow the **All Other Existing Projects** workflow.
-6.  If you have not already connected your Github account to {{ PRODUCT }}, then you will to do so now.
+6.  If you have not already connected your Github account to {{ PRODUCT }}, then you will need to do so now.
 
     1.  Click **Connect to Github**. 
     2.  Sign in to your account using either a passkey or your user name and password.
@@ -95,9 +95,11 @@ If your existing project is stored within a Git repository and it is powered by 
 
 7.  From the **Select a Repository** option, select your project's repository.
 8.  Click **Create Property**.
-9.  A quick start page will display a npx command. Initialize your property by running this command from your project's root directory. 
+9.  As a part of the property creation workflow, Edgio Bot generates a pull request called `Edgio Init` that contains changes that add our service to your project and adds a Github workflow for the automation of branch previews and deployments.
 
-[Learn more about initialization.](/guides/performance/cdn_as_code#initialize-property)
+    Review this PR and merge it into your main branch.
+
+[Learn more about CDN-as-code.](/guides/performance/cdn_as_code)
 
 ### Creating a Property (CLI without Automation)
 
@@ -127,17 +129,15 @@ We provide sample Next.js, Nuxt3, Astro, Remix, Qwik, and Vue projects through w
 3.  From the **Property Name** option, assign a name to your property. 
 4.  Click **Start from a template**.
 5.  Click on your project's web application framework. If your desired framework is not listed, then you will need to follow the **All Other Existing Projects** workflow.
-6.  If you have not already connected your Github account to {{ PRODUCT }}, then you will to do so now.
+6.  If you have not already connected your Github account to {{ PRODUCT }}, then you will need to do so now.
 
     1.  Click **Connect to Github**. 
     2.  Sign in to your account using either a passkey or your user name and password.
     3.  When prompted, authorize {{ PRODUCT }} access to your Github account.
 
-5.  From the **Select a Repository** option, select your project's repository.
-6.  Click **Create Property**.
-7.  A quick start page will display a npx command. Initialize your property by running this command from the directory where this project will live.
+7.  Click **Create Property**.
 
-[Learn more about initialization.](/guides/performance/cdn_as_code#initialize-property)
+[Learn more about CDN-as-code.](/guides/performance/cdn_as_code)
 
 ## Step 3: Test Your Property {/*test-your-property*/}
 

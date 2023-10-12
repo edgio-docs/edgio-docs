@@ -46,7 +46,12 @@ An experiment:
 
 -   Identifies the set of traffic to which it will be applied.
 -   Contains two or more variants. Each variant identifies the percentage of traffic to which its actions (aka [features](/guides/performance/rules/features) will be applied. 
-    
+
+A single experiment with three variants is illustrated below.
+
+![Experimentation](/images/v7/experimentation-components.png?width=950)
+
+
 ### Criteria {/*criteria*/}
 
 You may define criteria that identifies the set of traffic to which an experiment will be applied. If you do not define any criteria, then the experiment is applicable to all requests. 

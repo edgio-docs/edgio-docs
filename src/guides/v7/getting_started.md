@@ -97,7 +97,7 @@ Manage and deploy changes to your CDN configuration through the {{ PORTAL }}.
 
 ### Creating a Property (CLI with Automation) {/*creating-a-property--cli-with-automation-*/}
 
-If your existing project is stored within a Git repository and it is powered by Next.js, Nuxt3, Astro, Remix, Qwik, or Vue, then you can automate branch previews and deployments. Specifically, we will automatically create a `default` environment for pull requests  and a `staging` environment for [push events](https://docs.github.com/en/webhooks/webhook-events-and-payloads#push). If you [create a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository), {{ PRODUCT }} will deploy to the `production` environment. If that environment does not already exist, then it will create one.
+If your existing project is stored within a Git repository and it is powered by Next.js, Nuxt3, Astro, Remix, Qwik, or Vue, then you can automate branch previews and deployments. Specifically, we will automatically create a `default` environment for pull requests  and a `staging` environment for [push events](https://docs.github.com/en/webhooks/webhook-events-and-payloads#push). If you [create a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository), {{ PRODUCT }} will deploy to the `production` environment. If that environment does not already exist, then {{ PRODUCT }} will automatically create one.
 
 <Callout type="important">
 

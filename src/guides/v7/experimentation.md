@@ -94,7 +94,10 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 
     {{ ENV_NAV }} **Experimentation**.
 
-2.  Click **+ Add Experiment**.
+2.  Click **+ Add Experiment**. A blank experiment configuration will appear.
+
+    ![Experimentation](/images/v7/experimentation-blank.png?width=450)
+
 3.  From the **Name** option, assign a name to the experiment. 
 
     {{ PRODUCT }} populates the `{{ HEADER_PREFIX }}-experiments-info` upstream request header with this name. 
@@ -105,6 +108,8 @@ You may create, enable, disable, and delete experiments. You may also adjust the
     2.  From the **Variable** option, select the desired [variable](/guides/performance/rules/feature_variables).
 
         For example, you may identify requests by HTTP method, path, or request headers.
+
+        ![Experimentation](/images/v7/experimentation-add-condition.png?width=350)
 
     3.  Define how a request will be compared against a value or state. In some cases, this involves selecting a [comparison operator](/guides/performance/rules/operators) and defining the value that will be compared against the request.
     4.  Click **Add Condition**.
@@ -131,6 +136,11 @@ You may create, enable, disable, and delete experiments. You may also adjust the
         5.  Optional. Add another action by repeating steps 5.iii.a - 5.iii.d. Repeat this step as needed.
 
     4.  Configure the second variant by repeating steps 5.i - 5.iii.
+    
+        Your configuration should now look similar to this one:
+        
+        ![Experimentation](/images/v7/experimentation-variants.png?width=350)
+
     5.  Optional. Add and configure another variant. Repeat this step as needed.
 
         1. Click **+ Add Variant**.

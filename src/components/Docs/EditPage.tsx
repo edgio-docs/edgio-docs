@@ -65,15 +65,21 @@ const StyledEditIcon = styled.div`
   }
 `;
 
-const baseURL = `https://github.com/${DOCS_REPO}/edit/main/src/pages`;
+const baseURL = `https://github.com/${DOCS_REPO}/edit/main/`;
 const title = 'Edit this guide on GitHub';
 const IGNORE_PAGES = ['/guides/changelog'];
 
-export default function EditPage({as = 'link'}: {as?: 'icon' | 'link'}) {
+export default function EditPage({
+  as = 'link',
+  source,
+}: {
+  as?: 'icon' | 'link';
+  source?: string;
+}) {
   const router = useRouter();
-  const editHref = `${baseURL}${router.pathname}.md`;
+  const editHref = `${baseURL}${source}`;
 
-  if (IGNORE_PAGES.includes(router.route)) {
+  if (IGNORE_PAGES.includes(router.route) || !source) {
     return null;
   }
 

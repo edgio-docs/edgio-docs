@@ -69,12 +69,12 @@ Manage and deploy changes to your CDN configuration through the {{ PORTAL }}.
 
 2.  From under the **Self Host Property**, click **Create Property**. 
 
-    ![New Property](/images/v7/basics/property-create-self-host.png?width=300)
+    ![New Property](/images/v7/basics/property-create-self-host.png?width=450)
 
 3.  In the **Property Name** option, assign a name to your new property (e.g., `My Property`).
 4.  Under the **Hostnames** section, click **+ Add Hostname** and then type a domain (e.g., `www.example.com` or `cdn.example.com`) that will be served through {{ PRODUCT }}.
 
-    ![New Property](/images/v7/basics/property-create-2.png?width=450)
+    ![New Property](/images/v7/basics/property-create-2.png?width=500)
 
 5.  An origin configuration identifies a set of web servers that will serve as the source for the content served through {{ PRODUCT }}.
 
@@ -90,7 +90,7 @@ Manage and deploy changes to your CDN configuration through the {{ PORTAL }}.
 
         Your origin configuration should now look similar to this:
 
-        ![New Property](/images/v7/basics/property-create-3-a.png?width=450)
+        ![New Property](/images/v7/basics/property-create-3-a.png?width=500)
 
 6.  Click **Create Property**.
 7.  If you have defined at least one origin configuration, your property will be automatically deployed to the {{ PRODUCT }} network. [Proceed to Step 3: Test Your Property.](#test-your-property)
@@ -107,11 +107,11 @@ If your existing project is stored within a Git repository and it is powered by 
 
 1.  From the {{ PORTAL }}, click **New Property**.
 
-    ![New Property](/images/v7/basics/property-create-1.png?width=450)
+    ![New Property](/images/v7/basics/property-create-1.png?width=300)
 
 2.  From under the **Host Property on {{ PRODUCT }}**, click **Create Property**.
 
-    ![New Property](/images/v7/basics/property-create-host-property-on-edgio.png?width=300)
+    ![New Property](/images/v7/basics/property-create-host-property-on-edgio.png?width=450)
 
 3.  From the **Property Name** option, assign a name to your property. 
 4.  Click **Import an existing project**.
@@ -139,11 +139,11 @@ Use a CDN-as-code approach to CDN configuration with any existing project.
 
 1.  From the {{ PORTAL }}, click **New Property**.
 
-    ![New Property](/images/v7/basics/property-create-1.png?width=450)
+    ![New Property](/images/v7/basics/property-create-1.png?width=300)
 
 2.  From under the **Host Property on {{ PRODUCT }}**, click **Create Property**.
 
-    ![New Property](/images/v7/basics/property-create-host-property-on-edgio.png?width=300)
+    ![New Property](/images/v7/basics/property-create-host-property-on-edgio.png?width=450)
 
 3.  From the **Property Name** option, assign a name to your property. 
 4.  Verify that the **Create using CLI** option is selected.
@@ -158,11 +158,11 @@ We provide sample Next.js, Nuxt3, Astro, Remix, Qwik, and Vue projects through w
 
 1.  From the {{ PORTAL }}, click **New Property**.
 
-    ![New Property](/images/v7/basics/property-create-1.png?width=450)
+    ![New Property](/images/v7/basics/property-create-1.png?width=300)
 
 2.  From under the **Host Property on {{ PRODUCT }}**, click **Create Property**.
 
-    ![New Property](/images/v7/basics/property-create-host-property-on-edgio.png?width=300)
+    ![New Property](/images/v7/basics/property-create-host-property-on-edgio.png?width=450)
 
 3.  From the **Property Name** option, assign a name to your property. 
 4.  Click **Start from a template**.

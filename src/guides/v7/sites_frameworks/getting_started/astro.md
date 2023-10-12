@@ -6,7 +6,7 @@ title: Astro
 
 <Callout type="warning">
 
-  This guide and the {{ PRODUCT }} platform currently supports Astro 2.x. Using Astro 3.x is not supported due to Node.js requirements and will cause runtime errors.
+  {{ PRODUCT }} only supports Astro 2.x. Astro 3.x is unsupported due to Node.js requirements and its usage will generate runtime errors.
 
 </Callout>
 

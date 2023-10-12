@@ -1,0 +1,10 @@
+name: bot_manager_id
+in: path
+required: true
+description: |
+
+  A bot manager configuration's system-defined ID.
+  
+  Use the [Get All Bot Managers operation](#tag/Bot-Managers/operation/get-bot-managers) to retrieve a list of bot manager configurations and their system-defined IDs.
+schema:
+  type: string

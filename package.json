@@ -5,8 +5,8 @@
   "license": "CC",
   "scripts": {
     "edgio:dev": "edgio dev",
-    "edgio:build": "edgio build",
-    "edgio:deploy": "edgio build && yarn sitemap && edgio deploy --skip-build",
+    "edgio:build": "yarn rest-api docs:bundle && edgio build && yarn sitemap",
+    "edgio:deploy": "yarn edgio:build && edgio deploy --skip-build",
     "analyze": "ANALYZE=true next build",
     "dev": "edgio dev",
     "build": "next build",
@@ -27,7 +27,8 @@
     "clean": "rimraf node_modules && yarn",
     "update-template-tables": "python3 scripts/md-tables-to-json.py",
     "validate-links": "node scripts/validateGuideLinks.js",
-    "sitemap": "next-sitemap"
+    "sitemap": "next-sitemap",
+    "rest-api": "yarn workspace rest-api run"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
@@ -78,12 +79,12 @@
     "winston": "^3.8.2"
   },
   "devDependencies": {
-    "@edgio/cli": "^7.0.23",
-    "@edgio/core": "^7.0.23",
-    "@edgio/devtools": "^7.0.23",
-    "@edgio/next": "^7.0.23",
-    "@edgio/prefetch": "^7.0.23",
-    "@edgio/react": "^7.0.23",
+    "@edgio/cli": "^7.2.7",
+    "@edgio/core": "^7.2.7",
+    "@edgio/devtools": "^7.2.7",
+    "@edgio/next": "^7.2.7",
+    "@edgio/prefetch": "^7.2.7",
+    "@edgio/react": "^7.2.7",
     "@mdx-js/loader": "^1.6.16",
     "@types/body-scroll-lock": "^2.6.1",
     "@types/classnames": "^2.3.1",
@@ -168,5 +169,8 @@
     "budget": null,
     "budgetPercentIncreaseRed": 10,
     "showDetails": true
-  }
+  },
+  "workspaces": [
+    "rest_api"
+  ]
 }

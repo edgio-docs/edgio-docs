@@ -134,10 +134,6 @@ const nav = {
           path: 'performance/prefetching',
         },
         {
-          title: 'Experimentation',
-          path: 'performance/experiments',
-        },
-        {
           title: 'Traffic Splitting',
           path: 'performance/traffic_splitting',
         },
@@ -213,6 +209,11 @@ const nav = {
       title: 'Edge Functions',
       path: 'edge-functions',
       icon: 'edge-functions',
+    },
+    {
+      title: 'Experimentation',
+      path: 'experimentation',
+      icon: 'experimentation',
     },
     {
       title: 'Security',
@@ -596,9 +597,32 @@ const nav = {
           title: 'CLI',
           path: 'develop/cli',
         },
+        //        {
+        //          title: 'REST API',
+        //          path: 'develop/rest_api',
+        //          routes: [
+        //            {
+        //              title: 'Authentication',
+        //              path: 'develop/rest_api/authentication',
+        //            },
+        //            {
+        //              title: 'REST API Reference',
+        //              path: '/rest_api/',
+        //              external: true,
+        //            },
+        //            {
+        //              title: '',
+        //              path: '',
+        //            },
+        //            {
+        //              title: 'Legacy Purge (Clear-Cache)',
+        //              path: 'develop/rest_api/clear_cache',
+        //            },
+        //          ],
+        //        },
         {
-          title: 'REST API',
-          path: 'develop/rest_api',
+          title: 'Purge (Clear-Cache) API',
+          path: 'develop/rest_api/cache_purge',
         },
         {
           title: 'EdgeJS API Reference',
@@ -682,8 +706,8 @@ const nav = {
           path: '',
         },
         {
-          title: 'Purge REST API',
-          path: '/guides/develop/rest_api',
+          title: 'Legacy Purge API',
+          path: '/guides/develop/rest_api/clear_cache',
         },
         {
           title: '',
@@ -711,6 +735,16 @@ const nav = {
       title: 'Upgrading',
       path: 'upgrading',
       icon: 'add-circle',
+      routes: [
+        {
+          title: 'Upgrading to Version 7',
+          path: 'upgrading/upgrading',
+        },
+        {
+          title: `Updating Packages`,
+          path: 'upgrading/updating_packages',
+        },
+      ],
     },
   ],
 };

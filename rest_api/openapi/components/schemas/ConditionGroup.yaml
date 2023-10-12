@@ -1,0 +1,14 @@
+title: ConditionGroup
+type: object
+properties:
+  id:
+    type: string
+    description: The condition group's system-defined alphanumeric ID. 
+  name:
+    type: string
+    description: The condition group's name.
+  conditions:
+    description: Contains a list of match conditions. You may define up to 5 match conditions.
+    type: array
+    items:
+      $ref: ./Condition.yaml

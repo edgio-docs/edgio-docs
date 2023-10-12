@@ -17,6 +17,7 @@ const PRODUCT_NAME_LOWER = PRODUCT.toLowerCase();
 const PRODUCT_NAME_UPPER = PRODUCT.toUpperCase();
 const PRODUCT_LEGACY_LOWER = PRODUCT_LEGACY.toLowerCase();
 const PORTAL = `${COMPANY_NAME} Console`;
+const IDENTITY_DASHBOARD = `${PRODUCT} Identity Dashboard`;
 const DOCS_NAME = `${COMPANY_NAME} Docs`;
 const CHROME_EXTENSION = `${COMPANY_NAME} Developer Tools Chrome extension`;
 
@@ -34,7 +35,10 @@ const RUM_NS = 'Edgio'; // namespace for the JS package used by RUM
 
 const DOMAIN = 'edg.io';
 const DOMAIN_LEGACY = 'layer0.co';
+const API_DOMAIN = 'edgioapis.com';
 const APP_DOMAIN = `edgio.app`;
+const IDENTITY_DOMAIN = `account.edgio.app`;
+const IDENTITY_TOKEN_DOMAIN = `id.edgio.app`;
 const LINK_DOMAIN = `edgio.link`;
 const PERMALINK_DOMAIN = `edgio-perma.link`;
 const RUM_DOMAIN = `rum.edgio.net`;
@@ -51,10 +55,17 @@ const STATUS_URL = `https://status.${DOMAIN}`;
 const HELP_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const SUPPORT_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const DOCS_URL = `https://${DOCS_DOMAIN}`;
+const API_DOCS_URL = `https://basic-security-ecdocs-production.edgio.link/preview/rest_api.html`;
 const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
+const API_URL = `https://${API_DOMAIN}`;
+const IDENTITY_URL = `https://${IDENTITY_DOMAIN}`;
+const API_SECURITY_VERSION = '0.9';
+const API_CONFIG_VERSION = '0.1';
+const SAMPLE_TEAM_ID = '12345678-1234-1234-1234-1234567890ab';
 const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
 
 const PORTAL_LINK = `[${PORTAL}](${LOGIN_URL})`;
+const IDENTITY_LINK = `[${IDENTITY_DASHBOARD}](${IDENTITY_URL})`;
 
 const NODE_VERSION = '16.x';
 const STARTER_NAME = 'layer0-app';
@@ -84,6 +95,11 @@ const EXAMPLES_REPOS = {
   'static-react': 'https://github.com/edgio-docs/edgio-static-react-example',
   'static-vue': 'https://github.com/edgio-docs/edgio-static-vuejs-example',
 };
+
+const TEAM_ID = `-   \`<TEAM ID>\`**:** Required. Replace this variable with your team's tenant ID.`;
+const API_REQUEST_HEADERS = `<h4>Request Headers</h4>
+
+Set up your API client to pass our [common request headers](/guides/develop/rest_api/api_request_response#request-headers).`;
 
 const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up*/}
 
@@ -132,6 +148,7 @@ const PARTNERS_CONTACT = `partner@llnw.com`;
 
 const config = {
   ACCOUNT_UPGRADE,
+  API_DOMAIN,
   COMPANY_NAME,
   PRODUCT,
   PRODUCT_LOWER,
@@ -146,6 +163,9 @@ const config = {
   PRODUCT_LEGACY_LOWER,
   APP_DOMAIN,
   APP_URL,
+  API_URL,
+  API_SECURITY_VERSION,
+  API_REQUEST_HEADERS,
   CHROME_EXTENSION,
   CLI_CMD,
   CLI_NAME,
@@ -157,6 +177,7 @@ const config = {
   DOCS_PAGES_REPO_URL,
   DOCS_REPO,
   DOCS_URL,
+  API_DOCS_URL,
   DOMAIN,
   DOMAIN_LEGACY,
   EDGEJS_LABEL,
@@ -168,6 +189,11 @@ const config = {
   FULL_CLI_NAME,
   HEADER_PREFIX,
   HELP_URL,
+  IDENTITY_DASHBOARD,
+  IDENTITY_DOMAIN,
+  IDENTITY_TOKEN_DOMAIN,
+  IDENTITY_LINK,
+  IDENTITY_URL,
   LINK_DOMAIN,
   PERMALINK_DOMAIN,
   RUM_DOMAIN,
@@ -184,6 +210,8 @@ const config = {
   STARTER_NAME,
   STATUS_URL,
   SUPPORT_URL,
+  SAMPLE_TEAM_ID,
+  TEAM_ID,
   CONTACT_SUPPORT,
   YEAR,
   BOT_MUSTACHE,

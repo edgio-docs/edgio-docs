@@ -1,0 +1,10 @@
+title: Condition
+type: object
+description: Contains a list of match conditions. You may define up to 5 match conditions.
+properties:
+  target:
+    description: Describes the type of match condition.
+    $ref: ./Target.yaml
+  op:
+    description: Describes the comparison that will be performed.
+    $ref: ./Op.yaml

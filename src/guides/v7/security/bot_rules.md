@@ -483,7 +483,7 @@ You may create, modify, and delete Bot Manager configurations.
 **To create a Bot Manager configuration**
 1.  Navigate to the **Bot Rules** page.
     {{ SECURITY_NAV }} **Bot Rules**.
-2.  Click **Add Bot Rule**.
+2.  Click **+ New Bot Manager**.
 3.  In the **Name** option, type the unique name by which this Bot Manager configuration will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application Manager configuration.
 4.  Set up the desired enforcement action(s). 
 

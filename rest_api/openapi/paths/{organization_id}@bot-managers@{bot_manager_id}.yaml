@@ -1,0 +1,58 @@
+parameters:
+  - $ref: ../components/parameters/organization_id.yaml
+  - $ref: ../components/parameters/bot_manager_id.yaml
+get:
+  operationId: get-bot-manager
+  tags:
+    - Bot Managers
+  summary: Get Bot Manager Configuration
+  description: Retrieves a bot manager configuration. 
+  responses:
+    '200':
+      description: OK. A bot manager configuration was retrieved.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BotManager.yaml
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+put:
+  operationId: update-bot-manager
+  tags:
+    - Bot Managers
+  summary: Update Bot Manager Configuration
+  description: Updates a bot manager configuration. 
+  requestBody:
+    $ref: ../components/requestBodies/BotManager.yaml
+  responses:
+    '200':
+      description: OK. A bot manager configuration was updated.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+delete:
+  operationId: delete-bot-manager
+  tags:
+    - Bot Managers
+  summary: Delete Bot Manager Configuration
+  description: Deletes a bot manager configuration.
+  responses:
+    '200':
+      description: OK. A bot manager configuration was deleted.
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

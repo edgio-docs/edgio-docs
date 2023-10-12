@@ -100,16 +100,14 @@ router.get('/some/path', {
   caching: {
     max_age: '1d',
     cache_key: {
-      cache_key: {
-        // query string options are mutually exclusive; only one can be used for the cache key.
-        exclude_all_query_params: boolean;
-        include_all_query_params: boolean;
-        include_all_query_params_except: ["session_id", "utm_source"];
-        include_query_params: ["page", "filters"],
+      // query string options are mutually exclusive; only one can be used for the cache key.
+      exclude_all_query_params: boolean,
+      include_all_query_params: boolean,
+      include_all_query_params_except: ['session_id', 'utm_source'],
+      include_query_params: ['page', 'filters'],
 
-        include_headers: ["x-my-header"],
-        include_cookies: ["x-my-cookie", "language", "currency"],
-      },
+      include_headers: ['x-my-header'],
+      include_cookies: ['x-my-cookie', 'language', 'currency'],
     },
   },
 });

@@ -3358,7 +3358,7 @@
           },
           "intermediate_cert": {
             "type": "string",
-            "description": "The intermediate certificates (IC) used by the CA, including the CAâ€™s signing certificate."
+            "description": "The intermediate certificates (IC) used by the CA, including the CA’s signing certificate."
           },
           "private_key": {
             "type": "string",
@@ -5783,15 +5783,15 @@
               "ENDSWITH",
               "IPMATCH"
             ],
-            "description": "\nIndicates how Edgio will interpret the comparison between the requestâ€™s path and the `value` property. Valid values are:\n\n-   **RX:** Indicates that the request's path must satisfy the regular expression defined in the `value` property.\n\n-   **STREQ:**Â Indicates that the request's path must be an exact match to the `value` property.\n\n-   **CONTAINS:**Â Indicates that the `value` property must contain the request's path.\n\n-   **BEGINSWITH:**Â Indicates that the `value` property must start with the request's path.\n\n-   **ENDSWITH:**Â Indicates that the `value` property must end with the request's path.\n"
+            "description": "\nIndicates how Edgio will interpret the comparison between the request’s path and the `value` property. Valid values are:\n\n-   **RX:** Indicates that the request's path must satisfy the regular expression defined in the `value` property.\n\n-   **STREQ:** Indicates that the request's path must be an exact match to the `value` property.\n\n-   **CONTAINS:** Indicates that the `value` property must contain the request's path.\n\n-   **BEGINSWITH:** Indicates that the `value` property must start with the request's path.\n\n-   **ENDSWITH:** Indicates that the `value` property must end with the request's path.\n"
           },
           "value": {
             "type": "string",
-            "description": "\nA value that will be compared against the requestâ€™s path. Specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining this property.\n\n**Sample value:** `/marketing`\n"
+            "description": "\nA value that will be compared against the request’s path. Specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining this property.\n\n**Sample value:** `/marketing`\n"
           },
           "is_negated": {
             "type": "boolean",
-            "description": "\nDetermines whether this condition is satisfied when the requestâ€™s path matches the pattern defined in the `value` property. Valid values are:\n\n-   **True:** Does not match\n\n-   **False:** Matches\n"
+            "description": "\nDetermines whether this condition is satisfied when the request’s path matches the pattern defined in the `value` property. Valid values are:\n\n-   **True:** Does not match\n\n-   **False:** Matches\n"
           }
         },
         "required": [

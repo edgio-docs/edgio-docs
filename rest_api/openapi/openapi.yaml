@@ -6,6 +6,7 @@ info:
     url: 'https://docs.edg.io/_next/static/media/edgio-dark.ea0d686f.webp'
     backgroundColor: '#FFFFFF'
     altText: 'Logo'
+    href: 'https://docs.edg.io'
   description:
     $ref: description.md
 tags:
@@ -83,51 +84,51 @@ tags:
 
       An Edgio ruleset contains a set of managed security policies that identifies threats and provides generic protection against a variety of unknown vulnerabilities. Edgio rulesets are versioned. A new version is released whenever an Edgio ruleset is updated.
 
-  - name: Bot Rules
-    x-displayName: Bot Ruleset
-    description: |
-    
-      A bot ruleset contains one or more rule(s) for determining how bots will be identified. 
-            
-      <a href="https://docs.edg.io/guides/security/bot_rules#bot-manager-configuration" target="_blank">Learn more about bot rulesets.</a>
-
-  - name: Bot Managers
-    x-displayName: Bot Manager Configuration
-    description: |
-    
-      A bot manager configuration:
-
-        -   Identifies a bot ruleset.
-        
-        -   The enforcement action that will be applied to traffic identified as a bot.
-        
-        -   Determines whether known bots will be automatically detected and the enforcement action that will be applied to that traffic.
-        
-        -   Traffic that will be exempt from bot detection.
-      
-      <a href="https://docs.edg.io/guides/security/bot_rules" target="_blank">Learn more about bot manager.</a>
-
-  - name: Known Bots
-    x-displayName: Known Bots
-    description: Lists all known bots.
-
-  - name: API Gateways
-    x-displayName: API Security Ruleset
-    description: |
-    
-      An API Security ruleset contains one or more API Security rule(s). Each of these rules identifies an API schema and the conditions under which it will be enforced.
-      
-      By default, Edgio validates all `POST`, `PUT`, and `PATCH` requests that satisfy your security app’s hostname and URL path requirements. If your website uses those HTTP methods for non-API requests, then it is strongly recommended to define one or more URL path(s) within your API Security rule.
-      
-      <a href="https://docs.edg.io/guides/security/api_security#api-security-rule" target="_blank">Learn more about API Security rules.</a>
-      
-  - name: API Schemas
-    x-displayName: API Schemas
-    description: |
-    
-      An API schema is a JSON schema that describes the structure for a valid API payload.
-      
-      <a href="https://docs.edg.io/guides/security/api_security#json-schema-syntax" target="_blank">Learn more about supported JSON schema syntax.</a>
+#  - name: Bot Rules
+#    x-displayName: Bot Ruleset
+#    description: |
+#    
+#      A bot ruleset contains one or more rule(s) for determining how bots will be identified. 
+#            
+#      <a href="https://docs.edg.io/guides/security/bot_rules#bot-manager-configuration" target="_blank">Learn more about bot rulesets.</a>
+#
+#  - name: Bot Managers
+#    x-displayName: Bot Manager Configuration
+#    description: |
+#    
+#      A bot manager configuration:
+#
+#        -   Identifies a bot ruleset.
+#        
+#        -   The enforcement action that will be applied to traffic identified as a bot.
+#        
+#        -   Determines whether known bots will be automatically detected and the enforcement action that will be applied to that traffic.
+#        
+#        -   Traffic that will be exempt from bot detection.
+#      
+#      <a href="https://docs.edg.io/guides/security/bot_rules" target="_blank">Learn more about bot manager.</a>
+#
+#  - name: Known Bots
+#    x-displayName: Known Bots
+#    description: Lists all known bots.
+#
+#  - name: API Gateways
+#    x-displayName: API Security Ruleset
+#    description: |
+#    
+#      An API Security ruleset contains one or more API Security rule(s). Each of these rules identifies an API schema and the conditions under which it will be enforced.
+#      
+#      By default, Edgio validates all `POST`, `PUT`, and `PATCH` requests that satisfy your security app’s hostname and URL path requirements. If your website uses those HTTP methods for non-API requests, then it is strongly recommended to define one or more URL path(s) within your API Security rule.
+#      
+#      <a href="https://docs.edg.io/guides/security/api_security#api-security-rule" target="_blank">Learn more about API Security rules.</a>
+#      
+#  - name: API Schemas
+#    x-displayName: API Schemas
+#    description: |
+#   
+#      An API schema is a JSON schema that describes the structure for a valid API payload.
+#      
+#      <a href="https://docs.edg.io/guides/security/api_security#json-schema-syntax" target="_blank">Learn more about supported JSON schema syntax.</a>
 paths:
   /config/v0.1/tls-certs/{cert_id}:
     $ref: paths/config_v0.1_tls-certs_{cert_id}.yaml
@@ -203,12 +204,6 @@ paths:
       - oAuthCC: [app.app.accounts]
   /accounts/v0.1/organizations/{organization_id}:
     $ref: paths/accounts_v0.1_organizations_{organization_id}.yaml
-    servers:
-      - url: 'https://edgioapis.com'
-    security:
-      - oAuthCC: [app.app.accounts]
-  /accounts/v0.1/organizations:
-    $ref: paths/accounts_v0.1_organizations.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
@@ -346,24 +341,24 @@ paths:
 #    security:
 #      - oAuthCC: [app.app.waf]
     
-  '/{organization_id}/api-gateways':
-    $ref: 'paths/{organization_id}@api-gateways.yaml'
-    servers:
-      - url: 'https://edgioapis.com/api-security/v0.9'
-    security:
-      - oAuthCC: [app.app.api_security]
-  '/{organization_id}/api-gateways/{api_gateway_id}':
-    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}.yaml'
-    servers:
-      - url: 'https://edgioapis.com/api-security/v0.9'
-    security:
-      - oAuthCC: [app.app.api_security]
-  '/{organization_id}/api-gateways/{api_gateway_id}/schemas':
-    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@schemas.yaml'
-    servers:
-      - url: 'https://edgioapis.com/api-security/v0.9'
-    security:
-      - oAuthCC: [app.app.api_security]
+#  '/{organization_id}/api-gateways':
+#    $ref: 'paths/{organization_id}@api-gateways.yaml'
+#    servers:
+#      - url: 'https://edgioapis.com/api-security/v0.9'
+#    security:
+#      - oAuthCC: [app.app.api_security]
+#  '/{organization_id}/api-gateways/{api_gateway_id}':
+#    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}.yaml'
+#    servers:
+#      - url: 'https://edgioapis.com/api-security/v0.9'
+#    security:
+#      - oAuthCC: [app.app.api_security]
+#  '/{organization_id}/api-gateways/{api_gateway_id}/schemas':
+#    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@schemas.yaml'
+#    servers:
+#      - url: 'https://edgioapis.com/api-security/v0.9'
+#    security:
+#      - oAuthCC: [app.app.api_security]
 #  '/{organization_id}/api-gateways/{api_gateway_id}/versions':
 #    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@versions.yaml'
 #    servers:
@@ -376,18 +371,18 @@ paths:
 #      - url: 'https://edgioapis.com/api-security/v0.9'
 #    security:
 #      - oAuthCC: [app.app.api_security]
-  '/{organization_id}/api-schemas':
-    $ref: 'paths/{organization_id}@api-schemas.yaml'
-    servers:
-      - url: 'https://edgioapis.com/api-security/v0.9'
-    security:
-      - oAuthCC: [app.app.api_security]
-  '/{organization_id}/api-schemas/{api_schema_id}':
-    $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}.yaml'
-    servers:
-      - url: 'https://edgioapis.com/api-security/v0.9'
-    security:
-      - oAuthCC: [app.app.api_security]
+#  '/{organization_id}/api-schemas':
+#    $ref: 'paths/{organization_id}@api-schemas.yaml'
+#    servers:
+#      - url: 'https://edgioapis.com/api-security/v0.9'
+#    security:
+#      - oAuthCC: [app.app.api_security]
+#  '/{organization_id}/api-schemas/{api_schema_id}':
+#    $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}.yaml'
+#    servers:
+#      - url: 'https://edgioapis.com/api-security/v0.9'
+#    security:
+#      - oAuthCC: [app.app.api_security]
 #  '/{organization_id}/api-schemas/{api_schema_id}/versions':
 #    $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}@versions.yaml'
 #    servers:
@@ -400,18 +395,18 @@ paths:
 #      - url: 'https://edgioapis.com/api-security/v0.9'
 #    security:
 #      - oAuthCC: [app.app.api_security]
-  '/{organization_id}/bots':
-    $ref: 'paths/{organization_id}@bots.yaml'
-    servers:
-      - url: 'https://edgioapis.com/bot-security/v0.9'
-    security:
-      - oAuthCC: [app.app.bot_security]
-  '/{organization_id}/bots/{bot_id}':
-    $ref: 'paths/{organization_id}@bots@{bot_id}.yaml'
-    servers:
-      - url: 'https://edgioapis.com/bot-security/v0.9'
-    security:
-      - oAuthCC: [app.app.bot_security]
+#  '/{organization_id}/bots':
+#    $ref: 'paths/{organization_id}@bots.yaml'
+#    servers:
+#      - url: 'https://edgioapis.com/bot-security/v0.9'
+#    security:
+#      - oAuthCC: [app.app.bot_security]
+#  '/{organization_id}/bots/{bot_id}':
+#    $ref: 'paths/{organization_id}@bots@{bot_id}.yaml'
+#    servers:
+#      - url: 'https://edgioapis.com/bot-security/v0.9'
+#    security:
+#      - oAuthCC: [app.app.bot_security]
 #  '/{organization_id}/bots/{bot_id}/versions':
 #    $ref: 'paths/{organization_id}@bots@{bot_id}@versions.yaml'
 #    servers:
@@ -424,18 +419,18 @@ paths:
 #      - url: 'https://edgioapis.com/bot-security/v0.9'
 #    security:
 #      - oAuthCC: [app.app.bot_security]
-  '/{organization_id}/bot-managers':
-    $ref: 'paths/{organization_id}@bot-managers.yaml'
-    servers:
-      - url: 'https://edgioapis.com/bot-security/v0.9'
-    security:
-      - oAuthCC: [app.app.bot_security]
-  '/{organization_id}/bot-managers/{bot_manager_id}':
-    $ref: 'paths/{organization_id}@bot-managers@{bot_manager_id}.yaml'
-    servers:
-      - url: 'https://edgioapis.com/bot-security/v0.9'
-    security:
-      - oAuthCC: [app.app.bot_security]
+#  '/{organization_id}/bot-managers':
+#    $ref: 'paths/{organization_id}@bot-managers.yaml'
+#    servers:
+#      - url: 'https://edgioapis.com/bot-security/v0.9'
+#    security:
+#      - oAuthCC: [app.app.bot_security]
+#  '/{organization_id}/bot-managers/{bot_manager_id}':
+#    $ref: 'paths/{organization_id}@bot-managers@{bot_manager_id}.yaml'
+#    servers:
+#      - url: 'https://edgioapis.com/bot-security/v0.9'
+#    security:
+#      - oAuthCC: [app.app.bot_security]
 #  '/{organization_id}/bot-managers/{bot_manager_id}/versions':
 #    $ref: 'paths/{organization_id}@bot-managers@{bot_manager_id}@versions.yaml'
 #    servers:
@@ -448,12 +443,12 @@ paths:
 #      - url: 'https://edgioapis.com/bot-security/v0.9'
 #    security:
 #      - oAuthCC: [app.app.bot_security]
-  /known-bots/companies:
-    $ref: paths/known-bots@companies.yaml
-    servers:
-      - url: 'https://edgioapis.com/bot-security/v0.9'
-    security:
-      - oAuthCC: {}
+#  /known-bots/companies:
+#    $ref: paths/known-bots@companies.yaml
+#    servers:
+#      - url: 'https://edgioapis.com/bot-security/v0.9'
+#    security:
+#      - oAuthCC: {}
 components:
   securitySchemes:
     oAuthCC:
@@ -483,12 +478,12 @@ x-tagGroups:
   - name: WAF (Security)
     tags:
       - Access Control List (ACL)
-      - API Gateways
-      - API Schemas
+#      - API Gateways
+#      - API Schemas
       - Rate Rules (Limits)
-      - Bot Managers
-      - Bot Rules
-      - Known Bots
+#      - Bot Managers
+#      - Bot Rules
+#      - Known Bots
       - Custom Rules
       - Managed Rules (Profiles)
       - Edgio Rulesets

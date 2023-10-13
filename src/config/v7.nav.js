@@ -597,32 +597,28 @@ const nav = {
           title: 'CLI',
           path: 'develop/cli',
         },
-        //        {
-        //          title: 'REST API',
-        //          path: 'develop/rest_api',
-        //          routes: [
-        //            {
-        //              title: 'Authentication',
-        //              path: 'develop/rest_api/authentication',
-        //            },
-        //            {
-        //              title: 'REST API Reference',
-        //              path: '/rest_api/',
-        //              external: true,
-        //            },
-        //            {
-        //              title: '',
-        //              path: '',
-        //            },
-        //            {
-        //              title: 'Legacy Purge (Clear-Cache)',
-        //              path: 'develop/rest_api/clear_cache',
-        //            },
-        //          ],
-        //        },
         {
-          title: 'Purge (Clear-Cache) API',
-          path: 'develop/rest_api/cache_purge',
+          title: 'REST API',
+          path: 'develop/rest_api',
+          routes: [
+            {
+              title: 'Authentication',
+              path: 'develop/rest_api/authentication',
+            },
+            {
+              title: 'REST API Reference',
+              path: '/rest_api/',
+              external: true,
+            },
+            {
+              title: '',
+              path: '',
+            },
+            {
+              title: 'Legacy Purge (Clear-Cache)',
+              path: 'develop/rest_api/clear_cache',
+            },
+          ],
         },
         {
           title: 'EdgeJS API Reference',
@@ -704,6 +700,11 @@ const nav = {
         {
           title: '',
           path: '',
+        },
+        {
+          title: 'REST API Reference',
+          path: '/rest_api/',
+          external: true,
         },
         {
           title: 'Legacy Purge API',

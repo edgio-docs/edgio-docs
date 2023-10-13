@@ -6,40 +6,30 @@ type: object
 properties:
   environment_id:
     type: string
+    description: >
+      An environment's system-defined ID (e.g.,
+      12345678-1234-1234-1234-1234567890ab).
+
+
+      From the Edgio Console, navigate to the desired environment and then click
+      **Settings**. It is listed under **Environment ID**.
   origins:
-    type: array
-    description: List of origins for the configuration.
-    example:
-      - name: Edgio
-        hosts:
-          - location:
-              - hostname: https://test-origin.edgio.net
-    items:
-      type: string
+    $ref: >-
+      https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/origins
   hostnames:
-    type: array
-    description: List of hostnames for the configuration.
-    example:
-      - hostname: test-origin.edgio.net
-    items:
-      type: string
+    $ref: >-
+      https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/hostnames
   rules:
-    type: array
-    description: List of rules for the configuration.
-    example:
-      - if:
-          - '==':
-              - request: path
-              - /api/:path
-          - caching:
-              bypass_cache: true
-    items:
-      type: string
+    $ref: >-
+      https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/rules
   experiments:
     type: array
-    description: List of experiments for the configuration.
+    description: List of experiments.
     example:
       - {}
     items:
       type: string
-description: Replace and deploy a complete edge configuration for the given environment
+description: >
+  Deploys your configuration to a specific environment. This deployment
+  overwrites any existing origin configurations, hostnames, rules, and
+  experiments.

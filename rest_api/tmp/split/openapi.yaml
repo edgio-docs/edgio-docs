@@ -68,8 +68,6 @@ paths:
     $ref: paths/accounts_v0.1_properties.yaml
   /accounts/v0.1/organizations/{organization_id}:
     $ref: paths/accounts_v0.1_organizations_{organization_id}.yaml
-  /accounts/v0.1/organizations:
-    $ref: paths/accounts_v0.1_organizations.yaml
   /bff/ids/teams/{team_id}/feature-scopes:
     $ref: paths/bff_ids_teams_{team_id}_feature-scopes.yaml
   /bff/ids/teams/{team_id}/clients/{client_id}/secrets/{secret_id}:

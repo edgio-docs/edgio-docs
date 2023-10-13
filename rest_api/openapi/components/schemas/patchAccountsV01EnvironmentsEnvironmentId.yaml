@@ -2,8 +2,23 @@ type: object
 properties:
   name:
     type: string
+    description: >
+      The environment's name. This name may only consist of lowercase
+      characters, numbers, dashes, and underscores.
   can_members_deploy:
     type: boolean
+    description: >
+      Determines whether all organization memmbers may deploy to this
+      environment. Disabling this option restricts deployments to admin users
+      and the deploy token.
   http_request_logging:
     type: boolean
-description: Update environment
+    description: >-
+      Determines whether deep-request inspection for serverless logs will be
+      enabled.
+  preserve_cache:
+    type: boolean
+    description: >
+      Determines whether deploying a new build to this environment will use the
+      same cache as the previous deployment.
+description: Updates an environment.

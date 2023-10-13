@@ -1,8 +1,11 @@
 get:
   tags:
     - environments
-  summary: Read environment
-  description: Read environment
+  summary: Get Environment
+  description: >
+    Retrieves an environment's settings and metadata. The system-defined ID for
+    the environment's active configuration is returned by the
+    `@links.active_config.id` property."
   operationId: getAccountsV01EnvironmentsEnvironmentId
   parameters:
     - name: environment_id
@@ -12,13 +15,16 @@ get:
         type: string
   responses:
     '200':
-      description: Read environment
+      description: >
+        Retrieves an environment's settings and metadata. The system-defined ID
+        for the environment's active configuration is returned by the
+        `@links.active_config.id` property."
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Accounts_V1_Entities_Environment.yaml
     '400':
-      description: UserError
+      description: Bad Request
       content:
         application/json:
           schema:
@@ -36,13 +42,13 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: RecordNotFound
+      description: Not Found
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: ServerError
+      description: Internal Server Error
       content:
         application/json:
           schema:
@@ -50,8 +56,8 @@ get:
 delete:
   tags:
     - environments
-  summary: Delete environment
-  description: Delete environment
+  summary: Delete Environment
+  description: Deletes an environment.
   operationId: deleteAccountsV01EnvironmentsEnvironmentId
   parameters:
     - name: environment_id
@@ -61,13 +67,13 @@ delete:
         type: string
   responses:
     '204':
-      description: Delete environment
+      description: Deletes an environment.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Accounts_V1_Entities_Environment.yaml
     '400':
-      description: UserError
+      description: Bad Request
       content:
         application/json:
           schema:
@@ -85,13 +91,13 @@ delete:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: RecordNotFound
+      description: Not Found
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: ServerError
+      description: Internal Server Error
       content:
         application/json:
           schema:
@@ -99,8 +105,8 @@ delete:
 patch:
   tags:
     - environments
-  summary: Update environment
-  description: Update environment
+  summary: Update Environment
+  description: Updates an environment.
   operationId: patchAccountsV01EnvironmentsEnvironmentId
   parameters:
     - name: environment_id
@@ -116,13 +122,13 @@ patch:
     required: true
   responses:
     '200':
-      description: Update environment
+      description: Updates an environment.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Accounts_V1_Entities_Environment.yaml
     '400':
-      description: UserError
+      description: Bad Request
       content:
         application/json:
           schema:
@@ -140,13 +146,13 @@ patch:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: RecordNotFound
+      description: Not Found
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: ServerError
+      description: Internal Server Error
       content:
         application/json:
           schema:

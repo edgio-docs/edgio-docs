@@ -6,10 +6,24 @@ type: object
 properties:
   environment_id:
     type: string
+    description: >
+      An environment's system-defined ID (e.g.,
+      12345678-1234-1234-1234-1234567890ab).
+
+
+      From the Edgio Console, navigate to the desired environment and then click
+      **Settings**. It is listed under **Environment ID**.
   primary_cert:
     type: string
+    description: >-
+      Your TLS certificate. We require this certificate to be issued by a
+      Certificate Authority.
   intermediate_cert:
     type: string
+    description: >-
+      The intermediate certificates (IC) used by the CA, including the CA’s
+      signing certificate.
   private_key:
     type: string
-description: Upload and activate a new TLS certificate for an environment
+    description: The private key that was generated with the CSR.
+description: Upload your TLS certificate to activate it within a specific environment.

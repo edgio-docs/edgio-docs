@@ -1,4 +1,6 @@
 import {DocSearch} from '@docsearch/react';
+// @ts-ignore
+import {default as JSURL} from 'jsurl';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -212,7 +214,7 @@ function transformItems(items: any) {
     }
 
     if (matchedText) {
-      url.hash = btoa(unescape(encodeURIComponent(matchedText)));
+      url.hash = JSURL.stringify({q: matchedText});
     }
 
     return {

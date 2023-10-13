@@ -440,7 +440,12 @@ It's worth noting that not all implementations will be able to accept polyfills,
 
 ## Edge Function Examples {/* examples */}
 
-Below are some examples of how to use Edge Functions by {{ PRODUCT }}. We also maintain a [GitHub repository](https://github.com/Edgio/Edge-Functions-Examples) with more detailed examples of real-world use cases.
+<ExampleButtons
+  title="Edge Functions"
+  siteUrl="https://edgio-community-examples-v7-edge-functions-live.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-edge-functions-example" />
+
+See additional examples of how to use Edge Functions by {{ PRODUCT }}:
 
 ```js filename="./routes.js"
 // Example router assigning edge functions to different routes.
@@ -448,7 +453,7 @@ new Router()
   .get('/', {
     edge_function: './edge-functions/home-page.js',
   })
-  .get('/products:id', {
+  .get('/products/:id', {
     edge_function: './edge-functions/product.js',
   })
   .get('/contacts', {

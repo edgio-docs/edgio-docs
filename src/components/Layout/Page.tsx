@@ -1,3 +1,5 @@
+// @ts-ignore
+import {default as JSURL} from 'jsurl';
 import debounce from 'lodash/debounce';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
@@ -35,9 +37,12 @@ export function Page({children}: PageProps) {
       }
 
       try {
-        const highlight = decodeURIComponent(escape(atob(hash)));
-        if (highlight.length > 0 && contentInnerRef.current) {
-          highlightElementByText(highlight as string, contentInnerRef.current);
+        const highlight = JSURL.parse(hash);
+        if (highlight?.q?.length > 0 && contentInnerRef.current) {
+          highlightElementByText(
+            highlight.q as string,
+            contentInnerRef.current
+          );
         }
       } catch (e) {}
     }, 100);

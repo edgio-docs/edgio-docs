@@ -72,7 +72,8 @@ tags:
     x-displayName: Managed Rules (Profiles)
     description: | 
     
-      A managed rule identifies threats through predefined rules and prevents false positives.
+      A managed rule identifies threats through predefined security policies. You may fine-tune these security policies to prevent false positives. 
+
       
       <a href="https://docs.edg.io/guides/security/managed_rules" target="_blank">Learn more about managed rules.</a>
 

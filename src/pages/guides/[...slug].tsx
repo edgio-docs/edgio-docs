@@ -22,16 +22,20 @@ const pagesPath = 'src/pages';
 
 export default function VersionedGuide({
   source,
+  sourceFile,
   headings,
   version,
 }: {
   source: any;
+  sourceFile: string;
   headings: MDHeadingsList;
   version: string;
 }) {
   return (
     <Page>
-      <MarkdownPage meta={{...source.frontmatter, version}} headings={headings}>
+      <MarkdownPage
+        meta={{...source.frontmatter, sourceFile, version}}
+        headings={headings}>
         <MDXRemote {...source} components={MDXComponents} />
       </MarkdownPage>
     </Page>
@@ -197,5 +201,12 @@ export async function getStaticProps({params}: {params: any}) {
     },
   });
 
-  return {props: {source: mdxSource, headings, version}};
+  return {
+    props: {
+      source: mdxSource,
+      sourceFile: file,
+      headings,
+      version,
+    },
+  };
 }

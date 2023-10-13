@@ -13,7 +13,7 @@
   },
   "servers": [
     {
-      "url": "//localhost:3000/api"
+      "url": "//edgioapis.com/"
     }
   ],
   "security": [
@@ -3009,10 +3009,10 @@
             "schema": {
               "type": "string",
               "enum": [
-                "paths",
-                "origins-paths",
                 "origins-countries",
-                "origins-overtime"
+                "origins-overtime",
+                "data-usage-overtime",
+                "routes"
               ]
             }
           }

@@ -27,8 +27,8 @@
       "Bearer": []
     }
   ],
-  "host": "localhost:3000",
-  "basePath": "/api",
+  "host": "edgioapis.com",
+  "basePath": "/",
   "tags": [
     {
       "name": "environment-variables",
@@ -2314,10 +2314,10 @@
             "name": "query_name",
             "type": "string",
             "enum": [
-              "paths",
-              "origins-paths",
               "origins-countries",
-              "origins-overtime"
+              "origins-overtime",
+              "data-usage-overtime",
+              "routes"
             ],
             "required": true
           }

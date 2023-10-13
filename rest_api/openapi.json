@@ -8,7 +8,7 @@
       "backgroundColor": "#FFFFFF",
       "altText": "Logo"
     },
-    "description": "Our REST-compliant web services facilitate the integration of our services into your workflow(s), applications, or interfaces.\n\n## Introduction\n\nKey information about our REST API services:\n\n-   **Protocol:** HTTPS\n    \n    Communication (i.e., request-response) with our web services is only permitted through HTTPS. This ensures the privacy and integrity of your data.\n\n-   **Authentication/Authorization:** `Authorization` Header\n    \n    Authenticate and authorize your requests by generating a token and then passing it through the `Authorization` header:\n       \n    ```\n    Authorization: Bearer <OAUTH 2.0 TOKEN>\n    ```\n    \n    [Get started.](#section/Quick-Start)\n\n-   **Request-Response (Accept and Content-Type):** JSON\n    \n    We expect the request body to use JavaScript Object Notation (JSON) format. Inform our web servers that the expected format for the request-response will be JSON through the `Accept` and `Content-Type` request headers.\n    \n-   **Programming Language:** Agnostic\n    \n    Our REST API services are designed to be programming language-agnostic. Feel free to use your preferred programming language (e.g., JavaScript, Python, C#, etc.).\n\n-   **Services:** Our REST API consists of the following services:\n\n    | Service      | Functionality                                                                                                               |\n    | ------------ | --------------------------------------------------------------------------------------------------------------------------- |\n    | cache        | Purge cached content and find out purge status.                                                                             |\n    | config       | Deploy CDN configurations, retrieve deployment information and log data, and manage environment variables.                  |\n    | accounts     | Retrieve and manage organizations, properties, and environments.                                                            |\n    | waf          | Retrieve and manage the following configurations: security apps, access rules, rate rules, custom rules, and managed rules. |\n    | bot-security | Retrieve and manage bot manager configurations.                                                                             |\n    | api-security | Retrieve and manage API security configurations.                                                                            |\n\n## Quick Start\n\nGet started with our latest APIs by performing the following steps:\n\n1. <a href=\"https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients\" target=\"_blank\">Create an API client</a> for either your private space or the desired organization. Grant the set of scope(s) required by the endpoint(s) with which it will interact. Administer API clients from the <a href=\"https://edgio.app\" target=\"_blank\">Edgio Console's</a> **API Clients** page. \n2. Use this client's ID, secret key, and scopes to [generate a temporary access token](#section/Access-Tokens).\n3. Authorize your API requests by passing the temporary access token generated in the previous step through the `Authorization` request header.\n\n```\ncurl --request GET \\\n     --url https://edgioapis.com/waf/v0.9/12345678-1234-1234-1234-1234567890ab/scopes \\\n     --header 'Authorization: Bearer  A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ'\n```\n\n## Scopes\n\nA scope authorizes an API client to perform specific actions (e.g., create and retrieve configurations). One or more scope(s) must also be defined when requesting an access token. You may only specify a scope that has been explicitly granted or inherited from a broader scope. Common scopes are listed below.\n\n| Scope            | Description                                                                                                                                  |\n| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |\n| app.cache        | Authorizes full access for purging cached content and retrieve purge status information.                                                     |\n| app.config       | Authorizes full access for deploying CDN configurations, retrieving deployment information and log data, and managing environment variables. |\n| app.accounts     | Authorizes full access to manage organizations, properties, and environments.                                                                |\n| app.waf          | Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules.                                          |\n| app.bot_security | Authorizes full access to Bot Manager.                                                                                                       |\n| app.api_security | Authorizes full access to API Security.                                                                                                      |\n\n## Access Tokens \n\nEach request to a REST API service must be authorized by passing an access token to the `Authorization` request header. Access tokens provide temporary authorization (e.g., 1 minute) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.\n\nRequesting an access token requires:\n\n-   Submitting a `POST` request to the following URL:\n\n    `https://id.edgio.app/connect/token`\n\n-   A `Content-Type` header set to `application/x-www-form-urlencoded`.\n-   A request body set to:\n\n    ```\n    client_id=<CLIENT ID>&client_secret=<SECRET>&grant_type=client_credentials&scope=<SCOPES>\n    ```\n\n    -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your REST API client.\n    -   `<SECRET>`**:** Represents the secret assigned to your REST API client.\n    -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. \n\n**Sample access token request:**\n\n``` curl\ncurl --request POST \\\n  --url https://id.edgio.app/connect/token \\\n  --header 'content-type: application/x-www-form-urlencoded' \\\n  --data 'client_id=J23d...B2Cd&client_secret=Fdad...DF3v&grant_type=client_credentials&scope=app.waf'\n```\n\n**Sample response:**\n\n```\n{\n    \"access_token\": \"A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ\",\n    \"expires_in\": 300,\n    \"token_type\": \"Bearer\",\n    \"scope\": \"app.waf\"\n}\n```\n\n### Authorizing Requests\n\nPass an access token through the `Authorization` header when requesting the desired API operation.\n\n**Sample API request:**\n\n```\ncurl --request GET \\\n     --url https://edgioapis.com/waf/v0.9/12345678-1234-1234-1234-1234567890ab/scopes \\\n     --header 'Authorization: Bearer  A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ'\n```\n\n## HTTP Methods\n\nHTTP method is a critical component of a request to our REST API service as it determines the type of action being requested.\n\n-   **DELETE:** Deletes a resource (e.g., custom rule or managed rule configuration).\n-   **GET:** Retrieves all or a specific resource.\n-   **PATCH:** Partially updates a resource (e.g., environment).\n-   **POST:** Creates a resource (e.g., custom rule or managed rule configuration).\n-   **PUT:** Updates a resource (e.g., custom rule or managed rule configuration).\n\nOur REST API service may return a `405 Method Not Allowed` response for requests submitted with an unsupported HTTP method.\n  \n## Request URL\n\nThe base URL for our REST API follows this basic pattern:\n\n`https://edgioapis.com/<SERVICE>/<VERSION>/`\n\n-   `<SERVICE>`**:** Identifies the REST API web service (e.g., cache, waf, and bot-security) designed to manage requests for a specific set of resources.\n-   `<VERSION>`**:** Identifies the version of the REST API service that will be called.\n\n**Sample Request URL:** \n\n```\nhttps://edgioapis.com/cache/v0.1/purge-requests\n```\n\n## Request Headers\n\nRequest headers provide information about your request to a REST API service. This information allows our server to authenticate your request and provides information that allows it to receive and translate the request body.\n\n**Key information:**\n-   The use of a Byte Order Mark (BOM) in a request to the REST API is not supported. Some user agents are configured to automatically include a BOM. Please either configure the user agent to exclude the BOM or use a different user agent.\n-   Request header values are case-insensitive.\n\n| Request Header | Description                                                                                                                                                                                                         |\n| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| Authorization  | Authorize requests through the `Authorization` request header. <a href=\"https://docs.edg.io/guides/develop/rest_api/authorization#authorizing-requests\" target=\"_blank\">Learn more about authorization.</a>                                                       |\n| Accept         | This header should indicate the format in which the response will be returned. If you pass this header, set it to: `application/json`.                                                                |\n| Content-Type   | This header should indicate the format of the request body. If you pass this header, set it to: `application/json`. <br />You may omit this header when an endpoint does not have request properties. |\n| Host           | This header, which is set by the user agent, indicates the host name corresponding to the requested endpoint (i.e., edgioapis.com or id.edgio.app).                                                                               |\n| Content-Length | This header, which is set by the user agent, indicates the number of bytes contained in the request body.                                                                                                           |\n\n## Request Body\n\n`POST`, `PUT`, and `PATCH` requests typically require request body properties that describe the action that will take place. These request body properties are case-sensitive.\n\n## Response Headers\n\nResponse headers provide information about the response to your request to the REST API service. A brief description is provided for the response headers that are returned by most endpoints. Standard HTTP response headers are typically returned along with these common response headers.\n\n| Response Header | Description                                                                          |\n| --------------- | ------------------------------------------------------------------------------------ |\n| Cache-Control   | Indicates the cache-control policy for the response body.                            |\n| Content-Length  | Indicates the number of bytes in the response body.                                  |\n| Content-Type    | Indicates the format of the response body (e.g., `application/json; charset=utf-8`). |\n| I_am            | This header is reserved for internal use.                                            |\n| Date            | Identifies the date and time (UTC) at which your request was processed.              |\n\nIn addition to the above headers, the response may also include the following headers:\n\n`x-amz-apigw-id | x-amzn-Remapped-Date | x-amzn-Remapped-Server | x-amzn-RequestId | X-AspNet-Version | X-Location`\n\nThese headers are reserved for future use."
+    "description": "Our REST-compliant web services facilitate the integration of our services into your workflow(s), applications, or interfaces.\n\n## Introduction\n\nKey information about our REST API services:\n\n-   **Protocol:** HTTPS\n    \n    Communication (i.e., request-response) with our web services is only permitted through HTTPS. This ensures the privacy and integrity of your data.\n\n-   **Authentication/Authorization:** `Authorization` Header\n    \n    Authenticate and authorize your requests by generating a token and then passing it through the `Authorization` header:\n       \n    ```\n    Authorization: Bearer <OAUTH 2.0 TOKEN>\n    ```\n    \n    [Get started.](#section/Quick-Start)\n\n-   **Request-Response (Accept and Content-Type):** JSON\n    \n    We expect the request body to use JavaScript Object Notation (JSON) format. Inform our web servers that the expected format for the request-response will be JSON through the `Accept` and `Content-Type` request headers.\n    \n-   **Programming Language:** Agnostic\n    \n    Our REST API services are designed to be programming language-agnostic. Feel free to use your preferred programming language (e.g., JavaScript, Python, C#, etc.).\n\n-   **Services:** Our REST API consists of the following services:\n\n    | Service      | Functionality                                                                                                               |\n    | ------------ | --------------------------------------------------------------------------------------------------------------------------- |\n    | cache        | Purge cached content and find out purge status.                                                                             |\n    | config       | Deploy CDN configurations, retrieve deployment information and log data, and manage environment variables.                  |\n    | accounts     | Retrieve and manage organizations, properties, and environments.                                                            |\n    | waf          | Retrieve and manage the following configurations: security apps, access rules, rate rules, custom rules, and managed rules. |\n    | bot-security | Retrieve and manage bot manager configurations.                                                                             |\n    | api-security | Retrieve and manage API security configurations.                                                                            |\n\n## Quick Start\n\nGet started with our latest APIs by performing the following steps:\n\n1. <a href=\"https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients\" target=\"_blank\">Create an API client</a> for either your private space or the desired organization. Grant the set of scope(s) required by the endpoint(s) with which it will interact. Administer API clients from the <a href=\"https://edgio.app\" target=\"_blank\">Edgio Console's</a> **API Clients** page. \n2. Use this client's ID, secret key, and scopes to [generate a temporary access token](#section/Access-Tokens).\n3. Authorize your API requests by passing the temporary access token generated in the previous step through the `Authorization` request header.\n\n```\ncurl --request GET \\\n     --url https://edgioapis.com/waf/v0.9/12345678-1234-1234-1234-1234567890ab/scopes \\\n     --header 'Authorization: Bearer  A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ'\n```\n\n## Scopes\n\nA scope authorizes an API client to perform specific actions (e.g., create and retrieve configurations). One or more scope(s) must also be defined when requesting an access token. You may only specify a scope that has been explicitly granted or inherited from a broader scope. Common scopes are listed below.\n\n| Scope            | Description                                                                                                                                  |\n| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |\n| app.cache        | Authorizes full access for purging cached content and retrieve purge status information.                                                     |\n| app.config       | Authorizes full access for deploying CDN configurations, retrieving deployment information and log data, and managing environment variables. |\n| app.accounts     | Authorizes full access to manage organizations, properties, and environments.                                                                |\n| app.waf          | Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules.                                          |\n| app.bot_security | Authorizes full access to Bot Manager.                                                                                                       |\n| app.api_security | Authorizes full access to API Security.                                                                                                      |\n\n## Access Tokens \n\nEach request to a REST API service must be authorized by passing an access token to the `Authorization` request header. Access tokens provide temporary authorization (e.g., 1 minute) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.\n\nRequesting an access token requires:\n\n-   Submitting a `POST` request to the following URL:\n\n    `https://id.edgio.app/connect/token`\n\n-   A `Content-Type` header set to `application/x-www-form-urlencoded`.\n-   A request body set to:\n\n    ```\n    client_id=<CLIENT ID>&client_secret=<SECRET>&grant_type=client_credentials&scope=<SCOPES>\n    ```\n\n    -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your <a href=\"https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients\" target=\"_blank\">REST API client</a>.\n    -   `<SECRET>`**:** Represents the secret assigned to your REST API client.\n    -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. \n\n**Sample access token request:**\n\n``` curl\ncurl --request POST \\\n  --url https://id.edgio.app/connect/token \\\n  --header 'content-type: application/x-www-form-urlencoded' \\\n  --data 'client_id=J23d...B2Cd&client_secret=Fdad...DF3v&grant_type=client_credentials&scope=app.waf'\n```\n\n**Sample response:**\n\n```\n{\n    \"access_token\": \"A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ\",\n    \"expires_in\": 300,\n    \"token_type\": \"Bearer\",\n    \"scope\": \"app.waf\"\n}\n```\n\n### Authorizing Requests\n\nPass an access token through the `Authorization` header when requesting the desired API operation.\n\n**Sample API request:**\n\n```\ncurl --request GET \\\n     --url https://edgioapis.com/waf/v0.9/12345678-1234-1234-1234-1234567890ab/scopes \\\n     --header 'Authorization: Bearer  A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ'\n```\n\n## HTTP Methods\n\nHTTP method is a critical component of a request to our REST API service as it determines the type of action being requested.\n\n-   **DELETE:** Deletes a resource (e.g., custom rule or managed rule configuration).\n-   **GET:** Retrieves all or a specific resource.\n-   **PATCH:** Partially updates a resource (e.g., environment).\n-   **POST:** Creates a resource (e.g., custom rule or managed rule configuration).\n-   **PUT:** Updates a resource (e.g., custom rule or managed rule configuration).\n\nOur REST API service may return a `405 Method Not Allowed` response for requests submitted with an unsupported HTTP method.\n  \n## Request URL\n\nThe base URL for our REST API follows this basic pattern:\n\n`https://edgioapis.com/<SERVICE>/<VERSION>/`\n\n-   `<SERVICE>`**:** Identifies the REST API web service (e.g., cache, waf, and bot-security) designed to manage requests for a specific set of resources.\n-   `<VERSION>`**:** Identifies the version of the REST API service that will be called.\n\n**Sample Request URL:** \n\n```\nhttps://edgioapis.com/cache/v0.1/purge-requests\n```\n\n## Request Headers\n\nRequest headers provide information about your request to a REST API service. This information allows our server to authenticate your request and provides information that allows it to receive and translate the request body.\n\n**Key information:**\n-   The use of a Byte Order Mark (BOM) in a request to the REST API is not supported. Some user agents are configured to automatically include a BOM. Please either configure the user agent to exclude the BOM or use a different user agent.\n-   Request header values are case-insensitive.\n\n| Request Header | Description                                                                                                                                                                                                         |\n| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| Authorization  | Authorize requests through the `Authorization` request header. <a href=\"https://docs.edg.io/guides/develop/rest_api/authorization#authorizing-requests\" target=\"_blank\">Learn more about authorization.</a>                                                       |\n| Accept         | This header should indicate the format in which the response will be returned. If you pass this header, set it to: `application/json`.                                                                |\n| Content-Type   | This header should indicate the format of the request body. If you pass this header, set it to: `application/json`. <br />You may omit this header when an endpoint does not have request properties. |\n| Host           | This header, which is set by the user agent, indicates the host name corresponding to the requested endpoint (i.e., edgioapis.com or id.edgio.app).                                                                               |\n| Content-Length | This header, which is set by the user agent, indicates the number of bytes contained in the request body.                                                                                                           |\n\n## Request Body\n\n`POST`, `PUT`, and `PATCH` requests typically require request body properties that describe the action that will take place. These request body properties are case-sensitive.\n\n## Response Headers\n\nResponse headers provide information about the response to your request to the REST API service. A brief description is provided for the response headers that are returned by most endpoints. Standard HTTP response headers are typically returned along with these common response headers.\n\n| Response Header | Description                                                                          |\n| --------------- | ------------------------------------------------------------------------------------ |\n| Cache-Control   | Indicates the cache-control policy for the response body.                            |\n| Content-Length  | Indicates the number of bytes in the response body.                                  |\n| Content-Type    | Indicates the format of the response body (e.g., `application/json; charset=utf-8`). |\n| I_am            | This header is reserved for internal use.                                            |\n| Date            | Identifies the date and time (UTC) at which your request was processed.              |\n\nIn addition to the above headers, the response may also include the following headers:\n\n`x-amz-apigw-id | x-amzn-Remapped-Date | x-amzn-Remapped-Server | x-amzn-RequestId | X-AspNet-Version | X-Location`\n\nThese headers are reserved for future use."
   },
   "tags": [
     {
@@ -69,7 +69,7 @@
     {
       "name": "Managed Rules (Profiles)",
       "x-displayName": "Managed Rules (Profiles)",
-      "description": "\nA managed rule identifies threats through predefined rules and prevents false positives.\n\n<a href=\"https://docs.edg.io/guides/security/managed_rules\" target=\"_blank\">Learn more about managed rules.</a>\n"
+      "description": "\nA managed rule identifies threats through predefined security policies. You may fine-tune these security policies to prevent false positives. \n\n\n<a href=\"https://docs.edg.io/guides/security/managed_rules\" target=\"_blank\">Learn more about managed rules.</a>\n"
     },
     {
       "name": "Edgio Rulesets",
@@ -120,13 +120,14 @@
         "tags": [
           "tls-certs"
         ],
-        "summary": "Read tls cert",
-        "description": "Read tls cert",
+        "summary": "Get TLS Certificate",
+        "description": "Returns a TLS certificate.",
         "operationId": "getConfigV01TlsCertsCertId",
         "parameters": [
           {
             "name": "cert_id",
             "in": "path",
+            "description": "The TLS certificate's system-defined ID. Use the [Get All Certificates operation](#tag/tls-certs/operation/getConfigV01TlsCerts) to retrieve a list of TLS certificates and their system-defined IDs.\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -135,7 +136,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Read tls cert",
+            "description": "Returns a TLS certificate.",
             "content": {
               "application/json": {
                 "schema": {
@@ -145,7 +146,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -175,7 +176,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -185,7 +186,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -214,14 +215,14 @@
         "tags": [
           "tls-certs"
         ],
-        "summary": "List tls certs",
-        "description": "List historical TLS certificates for an environment",
+        "summary": "Get All TLS Certificates",
+        "description": "Returns all TLS certificates associated with an environment.",
         "operationId": "getConfigV01TlsCerts",
         "parameters": [
           {
             "name": "page",
             "in": "query",
-            "description": "Page number starting from 0",
+            "description": "0-based page number.",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -231,7 +232,7 @@
           {
             "name": "page_size",
             "in": "query",
-            "description": "Number of results per page. Accepted value from 1-100. Default: 20",
+            "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -241,6 +242,7 @@
           {
             "name": "environment_id",
             "in": "query",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -249,7 +251,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List historical TLS certificates for an environment",
+            "description": "Returns all TLS certificates associated with an environment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -259,7 +261,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -289,7 +291,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -299,7 +301,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -314,8 +316,8 @@
         "tags": [
           "tls-certs"
         ],
-        "summary": "Create a new tls cert",
-        "description": "Upload and activate a new TLS certificate for an environment",
+        "summary": "Upload TLS Certificate",
+        "description": "Upload your TLS certificate to activate it within a specific environment.",
         "operationId": "postConfigV01TlsCerts",
         "requestBody": {
           "content": {
@@ -329,7 +331,7 @@
         },
         "responses": {
           "201": {
-            "description": "Upload and activate a new TLS certificate for an environment",
+            "description": "Upload your TLS certificate to activate it within a specific environment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -339,7 +341,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -369,7 +371,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -379,7 +381,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -409,13 +411,14 @@
         "tags": [
           "deployments"
         ],
-        "summary": "Get the logs for a specific deployment",
-        "description": "Get the logs for a specific deployment",
+        "summary": "Get Deployment Logs",
+        "description": "Retrieve log data for a specific deployment.",
         "operationId": "getConfigV01DeploymentsDeploymentIdLogs",
         "parameters": [
           {
             "name": "deployment_id",
             "in": "path",
+            "description": "The deployment's system-defined ID. This ID is returned by the [Deploy CDN Configuration operation's](#tag/configs/operation/postConfigV01Configs) `id` property.\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -424,7 +427,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Get the logs for a specific deployment",
+            "description": "Retrieve log data for a specific deployment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -434,7 +437,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -464,7 +467,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -474,7 +477,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -503,13 +506,14 @@
         "tags": [
           "deployments"
         ],
-        "summary": "Read deployment",
-        "description": "Read deployment",
+        "summary": "Get Deployment",
+        "description": "Retrieve information about a specific deployment.",
         "operationId": "getConfigV01DeploymentsDeploymentId",
         "parameters": [
           {
             "name": "deployment_id",
             "in": "path",
+            "description": "The deployment's system-defined ID. This ID is returned by the [Deploy CDN Configuration operation's](#tag/configs/operation/postConfigV01Configs) `id` property.\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -518,7 +522,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Read deployment",
+            "description": "Retrieve information about a specific deployment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -528,7 +532,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -558,7 +562,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -568,7 +572,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -597,8 +601,8 @@
         "tags": [
           "configs"
         ],
-        "summary": "Retrieve an Edge Configuration",
-        "description": "Get a specific Edge Configuration",
+        "summary": "Get CDN Configuration",
+        "description": "Retrieve an environment's origin configurations, hostnames, rules, and experiments.\n\nUse the [Get Environment operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId) to retrieve the system-defined ID (`@links.active_config.id`) for an environment's active configuration\n",
         "operationId": "getConfigV01ConfigsConfigId",
         "parameters": [
           {
@@ -612,7 +616,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Get a specific Edge Configuration",
+            "description": "Retrieve an environment's origin configurations, hostnames, rules, and experiments.\n\nUse the [Get Environment operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId) to retrieve the system-defined ID (`@links.active_config.id`) for an environment's active configuration\n",
             "content": {
               "application/json": {
                 "schema": {
@@ -622,7 +626,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -652,7 +656,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -662,7 +666,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -691,8 +695,8 @@
         "tags": [
           "configs"
         ],
-        "summary": "Deploy Edge Configuration on environment",
-        "description": "Replace and deploy a complete edge configuration for the given environment",
+        "summary": "Deploy CDN Configuration",
+        "description": "Deploys your configuration to a specific environment. This deployment overwrites any existing origin configurations, hostnames, rules, and experiments.\n",
         "operationId": "postConfigV01Configs",
         "requestBody": {
           "content": {
@@ -706,7 +710,7 @@
         },
         "responses": {
           "202": {
-            "description": "Replace and deploy a complete edge configuration for the given environment",
+            "description": "Deploys your configuration to a specific environment. This deployment overwrites any existing origin configurations, hostnames, rules, and experiments.\n",
             "content": {
               "application/json": {
                 "schema": {
@@ -716,7 +720,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -746,7 +750,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -756,7 +760,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -786,14 +790,14 @@
         "tags": [
           "purge requests"
         ],
-        "summary": "Get Status of Cache Purge",
-        "description": "Request status of cache purge",
+        "summary": "Get Purge Request",
+        "description": "Retrieves information, including status, about a purge request.",
         "operationId": "getCacheV01PurgeRequestsRequestId",
         "parameters": [
           {
             "name": "request_id",
             "in": "path",
-            "description": "The ID identifying the original purge request.",
+            "description": "The purge request's system-defined ID. This ID is returned by the [Purge Cache operation](#tag/purge-requests/operation/postCacheV01PurgeRequests).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -802,7 +806,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Request status of cache purge",
+            "description": "Retrieves information, including status, about a purge request.",
             "content": {
               "application/json": {
                 "schema": {
@@ -812,7 +816,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -842,7 +846,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -852,7 +856,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -881,8 +885,8 @@
         "tags": [
           "purge requests"
         ],
-        "summary": "Purge Cache of Environment",
-        "description": "Request cache purge of environment",
+        "summary": "Purge Cache",
+        "description": "Submits a request to purge cached content from a specific environment. Purging content invalidates the cached version of an asset from our edge servers. You may submit up to 50 concurrent purge requests. For the purpose of concurrency, each value defined within the `values` property is considered a separate purge request. Find out the current status of your purge request by passing the purge request ID, which is returned by the `id` property, to the [Get Purge Request operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).\n",
         "operationId": "postCacheV01PurgeRequests",
         "requestBody": {
           "content": {
@@ -896,7 +900,7 @@
         },
         "responses": {
           "202": {
-            "description": "Request cache purge of environment",
+            "description": "Submits a request to purge cached content from a specific environment. Purging content invalidates the cached version of an asset from our edge servers. You may submit up to 50 concurrent purge requests. For the purpose of concurrency, each value defined within the `values` property is considered a separate purge request. Find out the current status of your purge request by passing the purge request ID, which is returned by the `id` property, to the [Get Purge Request operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).\n",
             "content": {
               "application/json": {
                 "schema": {
@@ -906,7 +910,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -936,7 +940,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -946,7 +950,7 @@
             }
           },
           "429": {
-            "description": "RateLimitReached",
+            "description": "Too Many Requests",
             "content": {
               "application/json": {
                 "schema": {
@@ -956,7 +960,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -986,8 +990,8 @@
         "tags": [
           "environments"
         ],
-        "summary": "Read environment",
-        "description": "Read environment",
+        "summary": "Get Environment",
+        "description": "Retrieves an environment's settings and metadata. The system-defined ID for the environment's active configuration is returned by the `@links.active_config.id` property.\"\n",
         "operationId": "getAccountsV01EnvironmentsEnvironmentId",
         "parameters": [
           {
@@ -1001,7 +1005,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Read environment",
+            "description": "Retrieves an environment's settings and metadata. The system-defined ID for the environment's active configuration is returned by the `@links.active_config.id` property.\"\n",
             "content": {
               "application/json": {
                 "schema": {
@@ -1011,7 +1015,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1041,7 +1045,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1051,7 +1055,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1066,8 +1070,8 @@
         "tags": [
           "environments"
         ],
-        "summary": "Delete environment",
-        "description": "Delete environment",
+        "summary": "Delete Environment",
+        "description": "Deletes an environment.",
         "operationId": "deleteAccountsV01EnvironmentsEnvironmentId",
         "parameters": [
           {
@@ -1081,7 +1085,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Delete environment",
+            "description": "Deletes an environment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1091,7 +1095,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1121,7 +1125,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1131,7 +1135,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1146,8 +1150,8 @@
         "tags": [
           "environments"
         ],
-        "summary": "Update environment",
-        "description": "Update environment",
+        "summary": "Update Environment",
+        "description": "Updates an environment.",
         "operationId": "patchAccountsV01EnvironmentsEnvironmentId",
         "parameters": [
           {
@@ -1171,7 +1175,7 @@
         },
         "responses": {
           "200": {
-            "description": "Update environment",
+            "description": "Updates an environment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1181,7 +1185,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1211,7 +1215,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1221,7 +1225,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1251,14 +1255,14 @@
         "tags": [
           "environments"
         ],
-        "summary": "List environments",
-        "description": "List environments",
+        "summary": "Get All Environments",
+        "description": "Returns all environments that belong to the specified property.",
         "operationId": "getAccountsV01Environments",
         "parameters": [
           {
             "name": "page",
             "in": "query",
-            "description": "Page number starting from 0",
+            "description": "0-based page number.",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -1268,7 +1272,7 @@
           {
             "name": "page_size",
             "in": "query",
-            "description": "Number of results per page. Accepted value from 1-100. Default: 20",
+            "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -1278,6 +1282,7 @@
           {
             "name": "property_id",
             "in": "query",
+            "description": "The property's system-defined ID.",
             "required": true,
             "schema": {
               "type": "string"
@@ -1286,7 +1291,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List environments",
+            "description": "Returns all environments that belong to the specified property.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1296,7 +1301,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1326,7 +1331,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1336,7 +1341,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1351,8 +1356,8 @@
         "tags": [
           "environments"
         ],
-        "summary": "Create a new environment",
-        "description": "Create a new environment",
+        "summary": "Add Environment",
+        "description": "Creates an environment.",
         "operationId": "postAccountsV01Environments",
         "requestBody": {
           "content": {
@@ -1366,7 +1371,7 @@
         },
         "responses": {
           "201": {
-            "description": "Create a new environment",
+            "description": "Creates an environment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1376,7 +1381,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1406,7 +1411,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1416,7 +1421,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1446,8 +1451,8 @@
         "tags": [
           "properties"
         ],
-        "summary": "Read property",
-        "description": "Read property",
+        "summary": "Get Property",
+        "description": "Retrieve a property.",
         "operationId": "getAccountsV01PropertiesPropertyId",
         "parameters": [
           {
@@ -1461,7 +1466,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Read property",
+            "description": "Retrieve a property.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1471,7 +1476,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1501,7 +1506,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1511,7 +1516,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1526,8 +1531,8 @@
         "tags": [
           "properties"
         ],
-        "summary": "Delete property",
-        "description": "Delete property",
+        "summary": "Delete Property",
+        "description": "Delete a property.",
         "operationId": "deleteAccountsV01PropertiesPropertyId",
         "parameters": [
           {
@@ -1541,7 +1546,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Delete property",
+            "description": "Delete a property.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1551,7 +1556,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1581,7 +1586,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1591,7 +1596,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1606,8 +1611,8 @@
         "tags": [
           "properties"
         ],
-        "summary": "Update property",
-        "description": "Update property",
+        "summary": "Update Property",
+        "description": "Update a property.",
         "operationId": "patchAccountsV01PropertiesPropertyId",
         "parameters": [
           {
@@ -1631,7 +1636,7 @@
         },
         "responses": {
           "200": {
-            "description": "Update property",
+            "description": "Update a property.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1641,7 +1646,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1671,7 +1676,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1681,7 +1686,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1711,14 +1716,14 @@
         "tags": [
           "properties"
         ],
-        "summary": "List properties",
-        "description": "List properties",
+        "summary": "Get All Properties",
+        "description": "Returns all properties.",
         "operationId": "getAccountsV01Properties",
         "parameters": [
           {
             "name": "page",
             "in": "query",
-            "description": "Page number starting from 0",
+            "description": "0-based page number.",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -1728,7 +1733,7 @@
           {
             "name": "page_size",
             "in": "query",
-            "description": "Number of results per page. Accepted value from 1-100. Default: 20",
+            "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -1738,6 +1743,7 @@
           {
             "name": "organization_id",
             "in": "query",
+            "description": "An organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -1746,7 +1752,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List properties",
+            "description": "Returns all properties.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1756,7 +1762,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1786,7 +1792,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1796,7 +1802,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1811,8 +1817,8 @@
         "tags": [
           "properties"
         ],
-        "summary": "Create a new property",
-        "description": "Create a new property",
+        "summary": "Create Property",
+        "description": "Create a property.",
         "operationId": "postAccountsV01Properties",
         "requestBody": {
           "content": {
@@ -1826,7 +1832,7 @@
         },
         "responses": {
           "201": {
-            "description": "Create a new property",
+            "description": "Create a property.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1836,7 +1842,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1866,7 +1872,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1876,7 +1882,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1906,8 +1912,8 @@
         "tags": [
           "organizations"
         ],
-        "summary": "Read organization",
-        "description": "Read organization",
+        "summary": "Get Organization",
+        "description": "Retrieves information about an organization.",
         "operationId": "getAccountsV01OrganizationsOrganizationId",
         "parameters": [
           {
@@ -1921,7 +1927,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Read organization",
+            "description": "Retrieves information about an organization.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1931,7 +1937,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1961,7 +1967,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1971,7 +1977,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -1986,8 +1992,8 @@
         "tags": [
           "organizations"
         ],
-        "summary": "Delete organization",
-        "description": "Delete organization",
+        "summary": "Delete Organization",
+        "description": "Deletes an organization.",
         "operationId": "deleteAccountsV01OrganizationsOrganizationId",
         "parameters": [
           {
@@ -2001,7 +2007,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Delete organization",
+            "description": "Deletes an organization.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2011,7 +2017,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -2041,7 +2047,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -2051,7 +2057,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -2066,8 +2072,8 @@
         "tags": [
           "organizations"
         ],
-        "summary": "Update organization",
-        "description": "Update organization",
+        "summary": "Update Organization",
+        "description": "Updates an organization.",
         "operationId": "patchAccountsV01OrganizationsOrganizationId",
         "parameters": [
           {
@@ -2091,7 +2097,7 @@
         },
         "responses": {
           "200": {
-            "description": "Update organization",
+            "description": "Updates an organization.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2101,7 +2107,7 @@
             }
           },
           "400": {
-            "description": "UserError",
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -2131,7 +2137,7 @@
             }
           },
           "404": {
-            "description": "RecordNotFound",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
@@ -2141,7 +2147,7 @@
             }
           },
           "500": {
-            "description": "ServerError",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
@@ -4301,11 +4307,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -4318,7 +4324,7 @@
           },
           "environment_id": {
             "type": "string",
-            "description": "Environment ID"
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
           },
           "primary_cert": {
             "type": "string",
@@ -4330,44 +4336,44 @@
           },
           "expiration": {
             "type": "string",
-            "description": "Expiration date",
+            "description": "The TLS certificate's expiration date and time (UTC).",
             "format": "date-time"
           },
           "status": {
             "type": "string",
-            "description": "Status"
+            "description": "The TLS certificate's status. Returns one of the following states:\n\n-  `created`: The TLS certificate has been created, but it has not yet been activated.\n-  `activating:` Edgio is in the process of activating the TLS certificate.\n-  `activated:` The TLS certificate is currently active.\n-  `failed:` The activation of the TLS certificate failed.\n-  `expired:` The TLS certificate has expired.\n"
           },
           "generated": {
             "type": "boolean",
-            "description": "Generated"
+            "description": "Returns `true` for TLS certificates generated by Edgio. Returns `false` for existing TLS certificates that were uploaded to Edgio.\n"
           },
           "serial": {
             "type": "string",
-            "description": "Serial"
+            "description": "The TLS certificate's serial number."
           },
           "common_name": {
             "type": "string",
-            "description": "Common name"
+            "description": "The TLS certificate's common name (CN)."
           },
           "alternative_names": {
             "type": "array",
-            "description": "Alternative names",
+            "description": "The TLS certificate's Subject Alternative Names (SAN).",
             "items": {
               "type": "string"
             }
           },
           "activation_error": {
             "type": "string",
-            "description": "Activation error"
+            "description": "Contains an error message if the TLS certificate could not be activated. "
           },
           "created_at": {
             "type": "string",
-            "description": "Created at",
+            "description": "The TLS certificate's creation date and time (UTC).",
             "format": "date-time"
           },
           "updated_at": {
             "type": "string",
-            "description": "Updated at",
+            "description": "The TLS certificate's last modification date and time (UTC).",
             "format": "date-time"
           }
         },
@@ -4377,10 +4383,12 @@
         "type": "object",
         "properties": {
           "path": {
-            "type": "string"
+            "type": "string",
+            "description": "The requested endpoint's path."
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "description": "A brief description of the error."
           }
         }
       },
@@ -4389,10 +4397,11 @@
         "properties": {
           "message": {
             "type": "string",
-            "description": "Error Message"
+            "description": "Error message."
           },
           "details": {
             "type": "array",
+            "description": "Describes the error.",
             "items": {
               "$ref": "#/components/schemas/BaseApi_Entities_UserErrorData"
             }
@@ -4450,11 +4459,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "$ref": "#/components/schemas/BaseApi_Entities_HyperionNavigationLinks"
@@ -4466,7 +4475,7 @@
           },
           "items": {
             "type": "array",
-            "description": "Array of items.",
+            "description": "List of TLS certificates associated with the specified environment.",
             "items": {
               "$ref": "#/components/schemas/Config_V1_Entities_TlsCert"
             }
@@ -4483,34 +4492,38 @@
         "type": "object",
         "properties": {
           "environment_id": {
-            "type": "string"
+            "type": "string",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
           },
           "primary_cert": {
-            "type": "string"
+            "type": "string",
+            "description": "Your TLS certificate. We require this certificate to be issued by a Certificate Authority."
           },
           "intermediate_cert": {
-            "type": "string"
+            "type": "string",
+            "description": "The intermediate certificates (IC) used by the CA, including the CA’s signing certificate."
           },
           "private_key": {
-            "type": "string"
+            "type": "string",
+            "description": "The private key that was generated with the CSR."
           }
         },
-        "description": "Upload and activate a new TLS certificate for an environment"
+        "description": "Upload your TLS certificate to activate it within a specific environment."
       },
       "Config_V1_Entities_Deployment_LogLine": {
         "type": "object",
         "properties": {
           "message": {
             "type": "string",
-            "description": "Log message"
+            "description": "Log message."
           },
           "level": {
             "type": "string",
-            "description": "Log level"
+            "description": "Log level."
           },
           "timestamp": {
             "type": "string",
-            "description": "Log timestamp",
+            "description": "The date and time (UTC) at which the message was logged.",
             "format": "date-time"
           }
         }
@@ -4524,11 +4537,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -4537,7 +4550,7 @@
           },
           "logs": {
             "type": "array",
-            "description": "Array of logs",
+            "description": "The deployment's log messages.",
             "items": {
               "$ref": "#/components/schemas/Config_V1_Entities_Deployment_LogLine"
             }
@@ -4555,11 +4568,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -4572,20 +4585,1161 @@
           },
           "status": {
             "type": "string",
-            "description": "Indicates the status for the deployment.\nValid values are:\n  - `created`: Initial state.\n  - `uploading`: Waiting for CLI to upload the build. Only applicable for EdgeJS deployments.\n  - `provisioning`: Waiting for the CDN to provision the environment.\n  - `deploying`: Deploying the build to cloud & edge.\n  - `waiting`: Waiting for the edge propagation to complete.\n  - `completed`: Indicates that the deployment has been completed.\n  - `canceled`: Indicates that the deployment has been canceled.\n  - `failed`: Indicates that the deployment has failed.\n"
+            "description": "Indicates the deployment's status. Valid values are:\n  - `created`: The deployment has been created but has not yet been deployed.\n  - `uploading`: The CLI is uploading the build. This state is only applicable for EdgeJS deployments.\n  - `provisioning`: The CDN is provisioning the environment.\n  - `deploying`: The build is being deployed to our network.\n  - `waiting`: The build is being propagated throughout our network.\n  - `completed`: The build was deployed successfully to our network.\n  - `canceled`: The deployment was canceled.\n  - `failed`: The deployment has failed.\n"
           },
           "created_at": {
             "type": "string",
-            "description": "Indicates the date and time (UTC) at which the deployment was submitted.",
+            "description": "The date and time (UTC) at which the deployment was submitted.",
             "format": "date-time"
           },
           "completed_at": {
             "type": "string",
-            "description": "Indicates the date and time (UTC) at which the deployment was completed.",
+            "description": "The date and time (UTC) at which the deployment was completed.",
             "format": "date-time"
           }
         },
         "description": "Config_V1_Entities_Deployment model"
+      },
+      "hostname": {
+        "type": "string",
+        "pattern": "^(((?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9])|(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|\\[((?:[a-fA-F\\d]{1,4}:){7}(?:[a-fA-F\\d]{1,4}|:)|(?:[a-fA-F\\d]{1,4}:){6}(?:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|:[a-fA-F\\d]{1,4}|:)|(?:[a-fA-F\\d]{1,4}:){5}(?::(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,2}|:)|(?:[a-fA-F\\d]{1,4}:){4}(?:(:[a-fA-F\\d]{1,4}){0,1}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,3}|:)|(?:[a-fA-F\\d]{1,4}:){3}(?:(:[a-fA-F\\d]{1,4}){0,2}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,4}|:)|(?:[a-fA-F\\d]{1,4}:){2}(?:(:[a-fA-F\\d]{1,4}){0,3}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,5}|:)|(?:[a-fA-F\\d]{1,4}:){1}(?:(:[a-fA-F\\d]{1,4}){0,4}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,6}|:)|(?::((?::[a-fA-F\\d]{1,4}){0,5}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(?::[a-fA-F\\d]{1,4}){1,7}|:)))(%[0-9a-zA-Z]{1,})?\\])$"
+      },
+      "origin_backends": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "location"
+        ],
+        "properties": {
+          "weight": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "dns_max_ttl": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "dns_preference": {
+            "type": "string",
+            "enum": [
+              "prefv4",
+              "prefv6",
+              "onlyv4",
+              "onlyv6"
+            ]
+          },
+          "max_hard_pool": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 65535
+          },
+          "dns_min_ttl": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "location": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "hostname"
+                  ],
+                  "properties": {
+                    "port": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 65535
+                    },
+                    "hostname": {
+                      "$ref": "#/components/schemas/hostname"
+                    }
+                  }
+                },
+                "maxItems": 10
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/hostname"
+                },
+                "maxItems": 10
+              },
+              {
+                "$ref": "#/components/schemas/hostname",
+                "$comment": "this is the super abbreviated case, where only a single hostname is specified"
+              }
+            ]
+          },
+          "max_pool": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 65535
+          },
+          "balancer": {
+            "type": "string",
+            "enum": [
+              "carp",
+              "sqf",
+              "primary_failover",
+              "round_robin"
+            ]
+          },
+          "scheme": {
+            "type": "string",
+            "$comment": "'match' is default, and means put the same thing in http-backends and https-backends with 80/443 port respectively",
+            "enum": [
+              "http",
+              "https",
+              "match"
+            ]
+          }
+        }
+      },
+      "origins": {
+        "$comment": "this object translates to a few blocks of sf config, proxy-core.balancer and proxy-core.{http-,https-,}backends",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_.-]*$"
+          },
+          "type": {
+            "$comment": "'customer_origin' is default, and means that the origin is a customer origin, 'cdn_storage' on the contrary means that the content is hosted in house.",
+            "type": "string",
+            "enum": [
+              "customer_origin",
+              "cdn_storage"
+            ],
+            "default": "customer_origin"
+          },
+          "hosts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/origin_backends"
+            }
+          },
+          "balancer": {
+            "$comment": "this comes from http://sailfish.edgecast.com/ecdoc/mod-proxy-core.html#proxy-core-balancer",
+            "type": "string",
+            "enum": [
+              "primary_failover",
+              "round_robin",
+              "carp",
+              "carp64",
+              "static_with_tags",
+              "static_weighted",
+              "static_nocache_bypass",
+              "sqf"
+            ]
+          },
+          "override_host_header": {
+            "type": "string",
+            "pattern": "^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]$"
+          },
+          "shields": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "global": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "apac": {
+                "type": "string",
+                "pattern": "^([A-Z]{3}|bypass)$"
+              },
+              "emea": {
+                "type": "string",
+                "pattern": "^([A-Z]{3}|bypass)$"
+              },
+              "us_west": {
+                "type": "string",
+                "pattern": "^([A-Z]{3}|bypass)$"
+              },
+              "us_east": {
+                "type": "string",
+                "pattern": "^([A-Z]{3}|bypass)$"
+              }
+            },
+            "minProperties": 1
+          },
+          "pci_certified_shields": {
+            "type": "boolean"
+          },
+          "tls_verify": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "use_sni": {
+                "type": "boolean"
+              },
+              "sni_hint_and_strict_san_check": {
+                "$ref": "#/components/schemas/hostname"
+              },
+              "allow_self_signed_certs": {
+                "type": "boolean"
+              },
+              "pinned_certs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 40,
+                  "maxLength": 40,
+                  "pattern": "^[0-9a-fA-F]+$"
+                },
+                "maxItems": 5
+              }
+            }
+          }
+        }
+      },
+      "properties-origins": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/origins"
+        },
+        "minItems": 1,
+        "maxItems": 100
+      },
+      "hostnames": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "hostname"
+        ],
+        "properties": {
+          "hostname": {
+            "$ref": "#/components/schemas/hostname"
+          },
+          "default_origin_name": {
+            "type": "string"
+          },
+          "report_code": {
+            "type": "number"
+          },
+          "tls": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "npn": {
+                "type": "boolean"
+              },
+              "alpn": {
+                "type": "boolean"
+              },
+              "protocols": {
+                "type": "string"
+              },
+              "use_sigalgs": {
+                "type": "boolean"
+              },
+              "sni": {
+                "type": "boolean"
+              },
+              "sni_strict": {
+                "type": "boolean"
+              },
+              "sni_host_match": {
+                "type": "boolean"
+              },
+              "client_renegotiation": {
+                "type": "boolean"
+              },
+              "options": {
+                "type": "string"
+              },
+              "cipher_list": {
+                "type": "string"
+              },
+              "named_curve": {
+                "type": "string"
+              },
+              "oscp": {
+                "type": "boolean"
+              },
+              "pem": {
+                "type": "string"
+              },
+              "ca": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "properties-hostnames": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/hostnames"
+        },
+        "minItems": 1
+      },
+      "matches": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "if": {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$comment": "nested matches",
+                  "$ref": "#/components/schemas/matches"
+                },
+                {
+                  "$ref": "#/components/schemas/boolean"
+                },
+                {
+                  "$comment": "this is the first/odd elements that define a conditional statement",
+                  "$ref": "#/components/schemas/conditionals"
+                },
+                {
+                  "$comment": "these are the actual features be enabled",
+                  "$ref": "#/components/schemas/features"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$comment": "these are the actual features be enabled",
+                        "$ref": "#/components/schemas/features"
+                      },
+                      {
+                        "$comment": "nested matches",
+                        "$ref": "#/components/schemas/matches"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "minItems": 2,
+            "$comment": "2 arguments is if-then.  3 is if-then-else.  anything more takes if-then elseif-then"
+          },
+          "comment": {
+            "$ref": "#/components/schemas/comment"
+          }
+        }
+      },
+      "boolean": {
+        "type": "object",
+        "$comment": "this is all based on jsonlogic: http://jsonlogic.com/operations.html#logic-and-boolean-operations, and is separated from 'rules' so we can exclude features here, so you can't say 'if feature'",
+        "additionalProperties": false,
+        "patternProperties": {
+          "^(or|and)$": {
+            "type": "array",
+            "items": {
+              "$comment": "this is the list of what we need to give a logic comparison, needs to support both variables and static values",
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/boolean"
+                },
+                {
+                  "$comment": "this is the first/odd elements that define a conditional statement",
+                  "$ref": "#/definitions/conditionals"
+                }
+              ]
+            },
+            "minItems": 2
+          }
+        }
+      },
+      "conditionals": {
+        "type": "object",
+        "$comment": "this is all based on jsonlogic: http://jsonlogic.com/operations.html#logic-and-boolean-operations, and is separated from 'rules' so we can exclude features here, so you can't say 'if feature'",
+        "additionalProperties": false,
+        "patternProperties": {
+          "^(==|!=|===|!==)$": {
+            "type": "array",
+            "items": {
+              "$comment": "this is the list of what we need to give a logic comparison, needs to support both variables and static values",
+              "anyOf": [
+                {
+                  "type": [
+                    "integer",
+                    "string",
+                    "number",
+                    "boolean"
+                  ],
+                  "$comment": "static values to compare with things"
+                },
+                {
+                  "$ref": "#/definitions/rules_variables"
+                }
+              ]
+            },
+            "minItems": 2,
+            "maxItems": 2,
+            "$comment": "only ever two operands for a logical condition"
+          },
+          "^(<|<=)$": {
+            "$comment": "numeric operations that can double as 'between' operations. 2 values is simple, 3 is 'between' like 1, 2, 3 -> true;  1, 4, 3 -> false;",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/rules_variables"
+                },
+                {
+                  "type": [
+                    "number",
+                    "integer"
+                  ]
+                }
+              ]
+            },
+            "minItems": 2,
+            "maxItems": 3
+          },
+          "^(>|>=)$": {
+            "$comment": "numeric operations",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/rules_variables"
+                },
+                {
+                  "type": [
+                    "number",
+                    "integer"
+                  ]
+                }
+              ]
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "^(in|not_in)$": {
+            "$comment": "numeric operations",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/rules_variables"
+                },
+                {
+                  "type": [
+                    "string",
+                    "array"
+                  ]
+                }
+              ]
+            },
+            "minItems": 2
+          },
+          "^(=~|!~)$": {
+            "$comment": "regex string match and not match",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/rules_variables"
+                },
+                {
+                  "type": [
+                    "string",
+                    "integer"
+                  ]
+                }
+              ]
+            },
+            "minItems": 2
+          }
+        }
+      },
+      "edge_function": {
+        "type": "string"
+      },
+      "comment": {
+        "type": "string",
+        "maxLength": 2000
+      },
+      "http_status_code": {
+        "type": "integer",
+        "enum": [
+          200,
+          201,
+          202,
+          203,
+          204,
+          205,
+          206,
+          207,
+          208,
+          226,
+          300,
+          301,
+          302,
+          304,
+          305,
+          306,
+          307,
+          308,
+          400,
+          401,
+          402,
+          403,
+          404,
+          405,
+          406,
+          407,
+          408,
+          409,
+          410,
+          411,
+          412,
+          413,
+          414,
+          415,
+          416,
+          417,
+          418,
+          421,
+          422,
+          423,
+          424,
+          425,
+          426,
+          428,
+          429,
+          431,
+          440,
+          444,
+          451,
+          499,
+          500,
+          501,
+          502,
+          503,
+          504,
+          505,
+          506,
+          507,
+          508,
+          509,
+          510,
+          511,
+          530,
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          888,
+          893
+        ]
+      },
+      "http_response_header": {
+        "type": "object",
+        "$comment": "key is the header name, + means append.  second pattern is to ensure that certain ones are never provided with a value",
+        "additionalProperties": false,
+        "patternProperties": {
+          "^[+]?[-_a-zA-Z0-9 .]+$": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/single_line_string",
+                "$comment": "most commonly just a flat string"
+              },
+              {
+                "$ref": "#/definitions/rules_variables",
+                "$comment": "can also be a variable from another place"
+              }
+            ]
+          },
+          "^(Accept-Ranges|Age|Connection|Content-Encoding|Content-Length|Content-Range|Date|Server|Trailer|Transfer-Encoding|Upgrade|Vary|Via|Warning|X-EC.*)$": {
+            "type": "null"
+          }
+        }
+      },
+      "http_response_no_body": {
+        "type": "object",
+        "$comment": "represent a simple response with code and header but no body",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/http_status_code"
+          },
+          "headers": {
+            "$ref": "#/components/schemas/http_response_header"
+          }
+        }
+      },
+      "access": {
+        "type": "object",
+        "properties": {
+          "deny_access": {
+            "type": "boolean"
+          },
+          "token_auth_denial_code": {
+            "$ref": "#/components/schemas/http_response_no_body"
+          },
+          "token_auth_ignore_url_case": {
+            "type": "boolean"
+          },
+          "token_auth": {
+            "type": "boolean"
+          }
+        }
+      },
+      "header_treatment": {
+        "type": "string",
+        "enum": [
+          "pass",
+          "overwrite",
+          "if_missing",
+          "remove"
+        ]
+      },
+      "time_interval": {
+        "type": "string",
+        "$comment": "this captures the acceptable format: https://gitlab.edgecastcdn.net/edgecast/http-dev/sailfish/-/blob/master/src/core/utils/conversions.cc#L46",
+        "pattern": "^[0-9]+(s|m|h|d|w|y)$"
+      },
+      "regex_rewrite": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "destination": {
+            "type": "string"
+          }
+        }
+      },
+      "header_name": {
+        "type": "string",
+        "pattern": "^[+]?[-_a-zA-Z0-9 .]+$"
+      },
+      "single_line_string": {
+        "type": "string",
+        "pattern": "^[a-zA-Z0-9_ :;.,\\\\'/\"?!()[\\]{}@<>=+#$&`|~^%*-]*$"
+      },
+      "generic_field": {
+        "type": "string",
+        "pattern": "[-_\\.a-zA-Z0-9]+"
+      },
+      "bytes": {
+        "type": "string",
+        "$comment": "captures acceptable formats for bytes: https://git.edgecastcdn.net/EdgeCast/sailfish-src/blob/master/src/conversions.cc#L81",
+        "pattern": "^[0-9]+(k|M|G|T|ki|Mi|Gi|Ti)?B$"
+      },
+      "caching": {
+        "type": "object",
+        "properties": {
+          "bandwidth_throttling": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "kbytes_per_sec": {
+                "type": "integer"
+              },
+              "prebuf_seconds": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "kbytes_per_sec"
+            ]
+          },
+          "bypass_cache": {
+            "type": "boolean"
+          },
+          "cache_control_header_treatment": {
+            "$ref": "#/components/schemas/header_treatment"
+          },
+          "expires_header_treatment": {
+            "$ref": "#/components/schemas/header_treatment"
+          },
+          "client_max_age": {
+            "$ref": "#/components/schemas/time_interval"
+          },
+          "cache_key_query_string": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "include_all": {
+                "type": "boolean"
+              },
+              "exclude_all": {
+                "type": "boolean"
+              },
+              "include": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "include_all_except": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "cache_key_rewrite": {
+            "$ref": "#/components/schemas/regex_rewrite"
+          },
+          "cache_key": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "include_all_query_params": {
+                "type": "boolean"
+              },
+              "exclude_all_query_params": {
+                "type": "boolean"
+              },
+              "include_query_params": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "include_all_query_params_except": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "include_headers": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/components/schemas/header_name"
+                }
+              },
+              "include_cookies": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/components/schemas/header_name"
+                }
+              },
+              "include_expressions": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/components/schemas/single_line_string"
+                }
+              }
+            }
+          },
+          "max_age": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/time_interval",
+                "$comment": "when just an interval, is for 200 status code"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^[1-5][0-9][0-9]$": {
+                    "$ref": "#/definitions/time_interval"
+                  }
+                }
+              }
+            ]
+          },
+          "h264_support": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "(\\.[^. ]+\\s*)+"
+            }
+          },
+          "h264_support_video_seek_params": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "seek_start": {
+                "$ref": "#/components/schemas/generic_field"
+              },
+              "seek_end": {
+                "$ref": "#/components/schemas/generic_field"
+              }
+            },
+            "required": [
+              "seek_start"
+            ]
+          },
+          "honor_no_cache_request_header": {
+            "type": "boolean"
+          },
+          "ignore_origin_no_cache": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/http_status_code"
+            }
+          },
+          "ignore_unsatisfiable_ranges": {
+            "type": "boolean"
+          },
+          "revalidate_after_origin_unavailable": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/time_interval",
+                "$comment": "when just an interval, is for 200 status code"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^[1-5][0-9][0-9]$": {
+                    "$ref": "#/definitions/time_interval"
+                  }
+                }
+              }
+            ]
+          },
+          "partial_cache_sharing_min_hit_size": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "prevalidate_cached_content": {
+            "$ref": "#/components/schemas/time_interval"
+          },
+          "refresh_zero_byte_cache_files": {
+            "type": "boolean"
+          },
+          "cacheable_status_codes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/http_status_code"
+            }
+          },
+          "stale_on_error": {
+            "type": "boolean"
+          },
+          "stale_while_revalidate": {
+            "$ref": "#/components/schemas/time_interval"
+          },
+          "enable_caching_for_methods": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "GET",
+                "POST",
+                "PUT"
+              ]
+            }
+          },
+          "cacheable_request_body_size": {
+            "$ref": "#/components/schemas/bytes"
+          },
+          "revalidate_while_stale_timer": {
+            "type": "integer"
+          },
+          "bypass_client_cache": {
+            "type": "boolean"
+          },
+          "service_worker_max_age": {
+            "$ref": "#/components/schemas/time_interval"
+          },
+          "allow_empty_query_in_cache_key": {
+            "type": "boolean"
+          },
+          "first_hit_caching": {
+            "type": "boolean"
+          }
+        }
+      },
+      "response": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "set_status_code": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/http_status_code"
+              },
+              {
+                "$ref": "#/components/schemas/single_line_string",
+                "$comment": "most commonly just a flat string"
+              }
+            ]
+          },
+          "set_done": {
+            "type": "boolean"
+          },
+          "set_response_body": {
+            "type": "string",
+            "$comment": "sets the response body to the base64 encoded string provided by the user"
+          },
+          "allow_prefetching_uncached_content": {
+            "type": "boolean"
+          },
+          "compress_content_types": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "[-\\+a-zA-Z0-9]+/[-\\+\\.a-zA-Z0-9]+"
+            }
+          },
+          "optimize_images": {
+            "type": "boolean"
+          },
+          "retry_from_hostname": {
+            "type": "string",
+            "$comment": "sets the hostname dynamically"
+          }
+        }
+      },
+      "http_request_header": {
+        "type": "object",
+        "$comment": "key is the header name, + means append.  second pattern is to ensure that certain ones are never provided with a value",
+        "additionalProperties": false,
+        "patternProperties": {
+          "^[+]?[-_a-zA-Z0-9 .]+$": {
+            "$ref": "#/definitions/single_line_string"
+          },
+          "^(Forwarded-For|Host|Vary|Via|Warning|X-Forwarded-For|X-EC.*)$": {
+            "type": "null"
+          }
+        }
+      },
+      "headers": {
+        "type": "object",
+        "properties": {
+          "debug_header": {
+            "type": "boolean"
+          },
+          "set_request_headers": {
+            "$ref": "#/components/schemas/http_request_header"
+          },
+          "set_response_headers": {
+            "$ref": "#/components/schemas/http_response_header"
+          },
+          "add_response_headers": {
+            "$ref": "#/components/schemas/http_response_header"
+          },
+          "set_client_ip_custom_header": {
+            "$ref": "#/components/schemas/generic_field"
+          },
+          "remove_response_headers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "remove_origin_response_headers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "server_timing_header": {
+            "type": "boolean"
+          },
+          "set_origin_response_headers": {
+            "$ref": "#/components/schemas/http_response_header"
+          }
+        }
+      },
+      "logs": {
+        "type": "object",
+        "properties": {
+          "custom_log_field_format": {
+            "type": "string"
+          },
+          "log_query_string": {
+            "type": "boolean"
+          },
+          "mask_client_subnet": {
+            "type": "boolean"
+          }
+        }
+      },
+      "origin": {
+        "type": "object",
+        "properties": {
+          "max_keep_alive_requests": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "proxy_special_headers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/generic_field"
+            }
+          },
+          "set_origin": {
+            "type": "string"
+          }
+        }
+      },
+      "url": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "follow_redirects": {
+            "type": "boolean"
+          },
+          "url_rewrite": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "destination": {
+                  "type": "string"
+                },
+                "syntax": {
+                  "type": "string",
+                  "enum": [
+                    "regexp",
+                    "path-to-regexp"
+                  ]
+                }
+              }
+            }
+          },
+          "url_redirect": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "$ref": "#/components/schemas/http_status_code"
+              },
+              "source": {
+                "type": "string"
+              },
+              "destination": {
+                "type": "string"
+              },
+              "syntax": {
+                "type": "string",
+                "enum": [
+                  "regexp",
+                  "path-to-regexp"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "client": {
+        "type": "object",
+        "properties": {
+          "quic": {
+            "type": "boolean"
+          }
+        }
+      },
+      "set_variables": {
+        "type": "object",
+        "patternProperties": {
+          "^[-_a-zA-Z0-9]+$": {
+            "$ref": "#/definitions/single_line_string",
+            "$comment": "most commonly just a flat string"
+          }
+        }
+      },
+      "features": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "edge_function": {
+            "$ref": "#/components/schemas/edge_function"
+          },
+          "comment": {
+            "$ref": "#/components/schemas/comment"
+          },
+          "access": {
+            "unevaluatedProperties": false,
+            "$ref": "#/components/schemas/access"
+          },
+          "caching": {
+            "unevaluatedProperties": false,
+            "$ref": "#/components/schemas/caching"
+          },
+          "response": {
+            "unevaluatedProperties": false,
+            "$ref": "#/components/schemas/response"
+          },
+          "headers": {
+            "unevaluatedProperties": false,
+            "$ref": "#/components/schemas/headers"
+          },
+          "logs": {
+            "unevaluatedProperties": false,
+            "$ref": "#/components/schemas/logs"
+          },
+          "origin": {
+            "unevaluatedProperties": false,
+            "$ref": "#/components/schemas/origin"
+          },
+          "url": {
+            "unevaluatedProperties": false,
+            "$ref": "#/components/schemas/url"
+          },
+          "client": {
+            "unevaluatedProperties": false,
+            "$ref": "#/components/schemas/client"
+          },
+          "set_variables": {
+            "unevaluatedProperties": false,
+            "$ref": "#/components/schemas/set_variables"
+          }
+        }
+      },
+      "rules": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/matches"
+          },
+          {
+            "$comment": "we need to be able to drop all features in here too, to cover 'always' conditions natively",
+            "$ref": "#/components/schemas/features"
+          },
+          {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/features"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "properties-rules": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/rules"
+        }
       },
       "Config_V1_Entities_Config": {
         "required": [
@@ -4597,11 +5751,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -4613,23 +5767,17 @@
             "description": "Resource unique identifier."
           },
           "origins": {
-            "type": "string",
-            "description": "List of origins for the configuration.",
-            "example": ""
+            "$ref": "#/components/schemas/properties-origins"
           },
           "hostnames": {
-            "type": "string",
-            "description": "List of hostnames for the configuration.",
-            "example": ""
+            "$ref": "#/components/schemas/properties-hostnames"
           },
           "rules": {
-            "type": "string",
-            "description": "List of rules for the configuration.",
-            "example": ""
+            "$ref": "#/components/schemas/properties-rules"
           },
           "experiments": {
             "type": "string",
-            "description": "List of experiments for the configuration.",
+            "description": "List of experiments.",
             "example": ""
           }
         },
@@ -4644,70 +5792,21 @@
         "type": "object",
         "properties": {
           "environment_id": {
-            "type": "string"
+            "type": "string",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
           },
           "origins": {
-            "type": "array",
-            "description": "List of origins for the configuration.",
-            "example": [
-              {
-                "name": "Edgio",
-                "hosts": [
-                  {
-                    "location": [
-                      {
-                        "hostname": "https://test-origin.edgio.net"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "items": {
-              "type": "string"
-            }
+            "$ref": "#/components/schemas/properties-origins"
           },
           "hostnames": {
-            "type": "array",
-            "description": "List of hostnames for the configuration.",
-            "example": [
-              {
-                "hostname": "test-origin.edgio.net"
-              }
-            ],
-            "items": {
-              "type": "string"
-            }
+            "$ref": "#/components/schemas/properties-hostnames"
           },
           "rules": {
-            "type": "array",
-            "description": "List of rules for the configuration.",
-            "example": [
-              {
-                "if": [
-                  {
-                    "==": [
-                      {
-                        "request": "path"
-                      },
-                      "/api/:path"
-                    ]
-                  },
-                  {
-                    "caching": {
-                      "bypass_cache": true
-                    }
-                  }
-                ]
-              }
-            ],
-            "items": {
-              "type": "string"
-            }
+            "$ref": "#/components/schemas/properties-rules"
           },
           "experiments": {
             "type": "array",
-            "description": "List of experiments for the configuration.",
+            "description": "List of experiments.",
             "example": [
               {}
             ],
@@ -4716,7 +5815,7 @@
             }
           }
         },
-        "description": "Replace and deploy a complete edge configuration for the given environment"
+        "description": "Deploys your configuration to a specific environment. This deployment overwrites any existing origin configurations, hostnames, rules, and experiments.\n"
       },
       "Cache_V1_Entities_PurgeRequest": {
         "required": [
@@ -4728,11 +5827,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -4741,25 +5840,25 @@
           },
           "id": {
             "type": "string",
-            "description": "Identifies a purge request by its unique ID and allows further tracking"
+            "description": "The purge request's system-defined ID."
           },
           "status": {
             "type": "string",
-            "description": "Indicates the status for the purge requests defined in the bulk purge request.\nValid values are:\n  - `in_progress`: Indicates that the purge request has not yet been completed.\n  - `done`: Indicates that the purge request has been completed.\n"
+            "description": "The purge request's status. Valid values are:\n  - `in_progress`: Edgio is still purging content.\n  - `done`: Edgio has purged the requested content.\n"
           },
           "created_at": {
             "type": "string",
-            "description": "Indicates the date and time (UTC) at which the purge request was submitted.",
+            "description": "The date and time (UTC) at which the purge request was submitted.",
             "format": "date-time"
           },
           "completed_at": {
             "type": "string",
-            "description": "Indicates the date and time (UTC) at which the purge request was completed.",
+            "description": "The date and time (UTC) at which the purge request was completed.",
             "format": "date-time"
           },
           "progress_percentage": {
             "type": "number",
-            "description": "Identifies the percentage of purge request completion.",
+            "description": "The purge request's completion percentage.",
             "format": "float"
           }
         },
@@ -4774,11 +5873,11 @@
         "properties": {
           "environment_id": {
             "type": "string",
-            "description": "The ID of the environment you wish to purge cache for, also known as environment tenant ID."
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
           },
           "purge_type": {
             "type": "string",
-            "description": "- `all_entries`: Purges all cache\n- `path`: Purges paths from cache further specified via `values`\n- `surrogate_key`: Purges surrogate keys specified via `values`\n",
+            "description": "- `all_entries`: Purge all cached content.\n- `path`: Purge one or more relative path(s) defined within the `values` property.\n- `surrogate_key`: Purge one or more surrogate key(s) defined within the `values` property.\n",
             "enum": [
               "all_entries",
               "path",
@@ -4787,13 +5886,13 @@
           },
           "values": {
             "type": "array",
-            "description": "Depending on `purge_type` this parameter is used to specify further options:\n  - Leave empty if `purge_type` is `all_entries`.\n  - If `purge_type` is `path`, `values` specifies all the paths subject to purging.\n  - If `purge_type` is `surrogate_key`, `values` specifies all the surrogate keys subject to purging.\n",
+            "description": "Defines the set of content to be purged. The `purge_type` property's value determines what should be passed.\n  - `all_entries`: Omit this property or pass an empty array.\n  - `path`: Pass one or more relative path(s). This relative path starts directly after the hostname. Use an `*` to represent zero or more characters.\n  - `surrogate_key`: Pass one or more surrogate key(s) (aka cache tags).\n",
             "items": {
               "type": "string"
             }
           }
         },
-        "description": "Request cache purge of environment"
+        "description": "Submits a request to purge cached content from a specific environment. Purging content invalidates the cached version of an asset from our edge servers. You may submit up to 50 concurrent purge requests. For the purpose of concurrency, each value defined within the `values` property is considered a separate purge request. Find out the current status of your purge request by passing the purge request ID, which is returned by the `id` property, to the [Get Purge Request operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).\n"
       },
       "Accounts_V1_Entities_Environment": {
         "required": [
@@ -4805,11 +5904,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -4826,36 +5925,36 @@
           },
           "name": {
             "type": "string",
-            "description": "Environment name"
+            "description": "The environment's name."
           },
           "can_members_deploy": {
             "type": "boolean",
-            "description": "Allow non-admin members to deploy to this environment"
+            "description": "Determines whether all organization members may deploy to this environment. Disabling this option restricts deployments to admin users and the deploy token."
           },
           "http_request_logging": {
             "type": "boolean",
-            "description": "Enable deep-request inspection for serverless logs"
+            "description": "Determines whether deep-request inspection for serverless logs will be enabled."
           },
           "default_domain_name": {
             "type": "string",
-            "description": "Default hostname where the CDN serves the traffic, in addition to custom hostnames"
+            "description": "The default hostname through which traffic for this environment is served."
           },
           "pci_compliance": {
             "type": "boolean",
-            "description": "When true the environment is setup for the PCI network footprint."
+            "description": "Determines whether this environment's traffic will be restricted to our PCI-compliant network or served through our entire network."
           },
           "dns_domain_name": {
             "type": "string",
-            "description": "Configure your hostname CNAMEs to point to this domain"
+            "description": "Serve traffic for this environment by pointing your CNAMEs to this domain."
           },
           "created_at": {
             "type": "string",
-            "description": "Created at",
+            "description": "The environment's creation date and time (UTC).",
             "format": "date-time"
           },
           "updated_at": {
             "type": "string",
-            "description": "Updated at",
+            "description": "The environment's last modification date and time (UTC).",
             "format": "date-time"
           }
         },
@@ -4865,16 +5964,23 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "The environment's name. This name may only consist of lowercase characters, numbers, dashes, and underscores.\n"
           },
           "can_members_deploy": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether all organization memmbers may deploy to this environment. Disabling this option restricts deployments to admin users and the deploy token.\n"
           },
           "http_request_logging": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether deep-request inspection for serverless logs will be enabled."
+          },
+          "preserve_cache": {
+            "type": "boolean",
+            "description": "Determines whether deploying a new build to this environment will use the same cache as the previous deployment.\n"
           }
         },
-        "description": "Update environment"
+        "description": "Updates an environment."
       },
       "Accounts_V1_Entities_Environment_Collection": {
         "required": [
@@ -4885,11 +5991,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "$ref": "#/components/schemas/BaseApi_Entities_HyperionNavigationLinks"
@@ -4901,7 +6007,7 @@
           },
           "items": {
             "type": "array",
-            "description": "Array of items.",
+            "description": "List of environments.",
             "items": {
               "$ref": "#/components/schemas/Accounts_V1_Entities_Environment"
             }
@@ -4917,19 +6023,23 @@
         "type": "object",
         "properties": {
           "property_id": {
-            "type": "string"
+            "type": "string",
+            "description": "The property's system-defined ID."
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "The environment's name. This name may only consist of lowercase characters, numbers, dashes, and underscores.\n"
           },
           "can_members_deploy": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether all organization memmbers may deploy to this environment. Disabling this option restricts deployments to admin users and the deploy token.\"\n"
           },
           "http_request_logging": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether deep-request inspection for serverless logs will be enabled."
           }
         },
-        "description": "Create a new environment"
+        "description": "Creates an environment."
       },
       "Accounts_V1_Entities_Property": {
         "required": [
@@ -4941,11 +6051,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -4957,21 +6067,20 @@
             "description": "Resource unique identifier."
           },
           "organization_id": {
-            "type": "string",
-            "description": "Organization ID"
+            "type": "string"
           },
           "slug": {
             "type": "string",
-            "description": "Property slug"
+            "description": "The property's name."
           },
           "created_at": {
             "type": "string",
-            "description": "Created at",
+            "description": "The property's creation date and time (UTC).",
             "format": "date-time"
           },
           "updated_at": {
             "type": "string",
-            "description": "Updated at",
+            "description": "The property's last modification date and time (UTC).",
             "format": "date-time"
           }
         },
@@ -4981,10 +6090,11 @@
         "type": "object",
         "properties": {
           "slug": {
-            "type": "string"
+            "type": "string",
+            "description": "The property's name. Space characters are converted to dashes."
           }
         },
-        "description": "Update property"
+        "description": "Update a property."
       },
       "Accounts_V1_Entities_Property_Collection": {
         "required": [
@@ -4995,11 +6105,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "$ref": "#/components/schemas/BaseApi_Entities_HyperionNavigationLinks"
@@ -5011,7 +6121,7 @@
           },
           "items": {
             "type": "array",
-            "description": "Array of items.",
+            "description": "List of properties.",
             "items": {
               "$ref": "#/components/schemas/Accounts_V1_Entities_Property"
             }
@@ -5027,13 +6137,15 @@
         "type": "object",
         "properties": {
           "slug": {
-            "type": "string"
+            "type": "string",
+            "description": "The property's name. Space characters are converted to dashes."
           },
           "organization_id": {
-            "type": "string"
+            "type": "string",
+            "description": "The system-defined ID for the organization under which this property will be created."
           }
         },
-        "description": "Create a new property"
+        "description": "Create a property."
       },
       "Accounts_V1_Entities_Organization": {
         "required": [
@@ -5045,11 +6157,11 @@
         "properties": {
           "@type": {
             "type": "string",
-            "description": "Resource type."
+            "description": "The resource's type."
           },
           "@id": {
             "type": "string",
-            "description": "Used to specify the URI for the resource. Can be used by clients to navigate back to that specific resource."
+            "description": "The resource's relative path."
           },
           "@links": {
             "type": "object",
@@ -5062,7 +6174,7 @@
           },
           "partner_id": {
             "type": "string",
-            "description": "Partner ID"
+            "description": "The system-defined ID for the partner account under which the organization was created."
           },
           "name": {
             "type": "string",
@@ -5070,7 +6182,7 @@
           },
           "pci_compliance": {
             "type": "string",
-            "description": "The overall PCI compliance based on the PCI settings of all environments in scope of this organization",
+            "description": "The organization's PCI compliance status. This state is determined by checking PCI-compliance across all environments associated with this organization. Valid values are:\n\n-   **pci:** All environments are PCI-compliant.\n-   **non_pci:** All environments use our entire network.\n-   **mixed:** Some environments are PCI-compliant.\n",
             "enum": [
               "pci",
               "non_pci",
@@ -5079,20 +6191,20 @@
           },
           "pci_dns_domain_name": {
             "type": "string",
-            "description": "The PCI-compliant DNS domain for this organization. Configure your hostname CNAMEs to point to this domain for environments configured with PCI footprint enabled."
+            "description": "The organization's PCI-compliant DNS domain.\n\nServe traffic through our PCI-compliant network by pointing your CNAMEs to this domain.\n"
           },
           "non_pci_dns_domain_name": {
             "type": "string",
-            "description": "The non PCI-compliant DNS domain for this organization. Configure your hostname CNAMEs to point to this domain for environments configured with PCI footprint disabled."
+            "description": "The organization's DNS domain for standard traffic. Standard traffic can use our entire network.\n\nServe traffic that does not require PCI-compliance by pointing your CNAMEs to this domain.\n"
           },
           "created_at": {
             "type": "string",
-            "description": "Created at",
+            "description": "The organization's creation date and time (UTC).",
             "format": "date-time"
           },
           "updated_at": {
             "type": "string",
-            "description": "Updated at",
+            "description": "The organization's last modification date and time (UTC).",
             "format": "date-time"
           }
         },
@@ -5102,10 +6214,11 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "The organization's name."
           }
         },
-        "description": "Update organization"
+        "description": "Updates an organization."
       },
       "Accounts_V1_Entities_Organization_Collection": {
         "required": [

@@ -15,7 +15,7 @@
     "console:generate-spec": "npm run console-api:pull && npm run console-api:convert && npm run console-api:fix-external-schema-refs && npm run console-api:split && npm run console-api:integrate && npm run docs:generate-without-examples",
     "docs:bundle-spec": "placeholder",
     "docs:generate-examples": "./node_modules/.bin/snippet-enricher-cli --targets=\"node_request,javascript_xhr,shell_curl,python_python3\" --input=openapi.json > openapi-with-examples.json",
-    "docs:generate": "redocly build-docs openapi.json --output 'dist/rest_api.html'",
+    "docs:generate": "redocly build-docs openapi-with-examples.json --output 'dist/rest_api.html'",
     "docs:bundle": "npm run docs:generate-examples && npm run docs:generate && python3 scripts/css.py && python3 scripts/far.py && cp -r assets/* dist"
   },
   "devDependencies": {

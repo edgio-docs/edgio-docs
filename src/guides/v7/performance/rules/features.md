@@ -672,28 +672,23 @@ export default new Router()
 
 **Default Behavior:** Overwrite
 
-<!--
 #### Enable H264 encoding {/*enable-h264-encoding*/}
 
-Determines the types of H.264 file formats that may be used when streaming content through HTTP Progressive Download.
+Define the set of H.264 file formats for which we will enable support for seeking when streaming a video over HTTP.
 
-<Callout type="tip">
+**Key information:**
 
-  Maintain MP4 and F4V support by including those file extensions when setting this feature.
+-   **Syntax:** `.<FILE EXTENSION>`
 
-</Callout>
+    **Example:** `.mp4` `.f4v`
 
-**Syntax:** `.<FILE EXTENSION>`
-
-**Example:** `.mp4 .f4v`
+-   Seeking within an H.264 encoded (e.g., MP4) asset requires the edge server fulfilling the request to have the entire asset in cache.
+-   Query string caching is strongly discouraged for seek requests. If caching has been enabled, use the [Cache Key feature](/guides/performance/rules/features#cache-key) to exclude seeking parameters (i.e., `ec_seek` and `ec_end`) from the cache key. 
+-   Manually issue seek commands through the following parameters:
+    -   **ec_seek:** Defines the point in time in the video at which playback should start. Audio/video prior to this point in time will not be served to the viewer.
+    -   **ec_end:** Defines the point in time in the video at which playback should end. Audio/video after this point in time will not be served to the viewer. This parameter requires the `ec_seek` parameter.
 
 <edgejs>
-<Callout type="tip">
-
-  Maintain MP4 and F4V support by including those file extensions when setting this feature.
-
-</Callout>
-
 **Syntax:** `.<FILE EXTENSION>`
 
 **Example:**
@@ -708,8 +703,7 @@ export default new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, HTTP Progressive Download supports MP4 and F4V file extensions.
--->
+**Default Behavior:** By default, you may only seek within MP4 and F4V videos.
 
 #### Honor No Cache Request Header {/*honor-no-cache-request-header*/}
 

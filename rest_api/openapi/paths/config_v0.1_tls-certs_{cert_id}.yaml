@@ -1,24 +1,28 @@
 get:
   tags:
     - tls-certs
-  summary: Read tls cert
-  description: Read tls cert
+  summary: Get TLS Certificate
+  description: Returns a TLS certificate.
   operationId: getConfigV01TlsCertsCertId
   parameters:
     - name: cert_id
       in: path
+      description: >
+        The TLS certificate's system-defined ID. Use the [Get All Certificates
+        operation](#tag/tls-certs/operation/getConfigV01TlsCerts) to retrieve a
+        list of TLS certificates and their system-defined IDs.
       required: true
       schema:
         type: string
   responses:
     '200':
-      description: Read tls cert
+      description: Returns a TLS certificate.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Config_V1_Entities_TlsCert.yaml
     '400':
-      description: UserError
+      description: Bad Request
       content:
         application/json:
           schema:
@@ -36,13 +40,13 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: RecordNotFound
+      description: Not Found
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: ServerError
+      description: Internal Server Error
       content:
         application/json:
           schema:

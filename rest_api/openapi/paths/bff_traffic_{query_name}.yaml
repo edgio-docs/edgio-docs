@@ -9,10 +9,10 @@ post:
       schema:
         type: string
         enum:
-          - paths
-          - origins-paths
           - origins-countries
           - origins-overtime
+          - data-usage-overtime
+          - routes
   responses:
     '201':
       description: created Traffic

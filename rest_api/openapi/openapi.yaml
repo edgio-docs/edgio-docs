@@ -19,12 +19,20 @@ tags:
   - name: configs
     x-displayName: CDN Configuration
     description: Deploy or retrieve a CDN configuration.
+  - name: environment-variables
+    x-displayName: Environment Variables
+    description: Automate environment variable management.
   - name: purge requests
     x-displayName: Purge
     description: Purge cached content and retrieve information about previously submitted purge requests.
   - name: environments
     x-displayName: Environments
-    description: Automate environment management.
+    description: |
+
+      Automate environment management.
+
+      You may also [manage environment variables](#tag/environment-variables) through our REST API.
+
   - name: properties
     x-displayName: Properties
     description: Automate property management.
@@ -162,6 +170,18 @@ paths:
       - oAuthCC: [app.app.config]
   /config/v0.1/configs:
     $ref: paths/config_v0.1_configs.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+    security:
+      - oAuthCC: [app.app.config]
+  /config/v0.1/environment-variables/{environment_variable_id}:
+    $ref: paths/config_v0.1_environment-variables_{environment_variable_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+    security:
+      - oAuthCC: [app.app.config]
+  /config/v0.1/environment-variables:
+    $ref: paths/config_v0.1_environment-variables.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
@@ -471,6 +491,7 @@ x-tagGroups:
   - name: Deployments
     tags:
       - configs
+      - environment-variables
       - deployments      
   - name: TLS Certificates
     tags:

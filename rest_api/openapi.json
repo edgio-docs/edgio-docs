@@ -28,6 +28,11 @@
       "description": "Deploy or retrieve a CDN configuration."
     },
     {
+      "name": "environment-variables",
+      "x-displayName": "Environment Variables",
+      "description": "Automate environment variable management."
+    },
+    {
       "name": "purge requests",
       "x-displayName": "Purge",
       "description": "Purge cached content and retrieve information about previously submitted purge requests."
@@ -35,7 +40,7 @@
     {
       "name": "environments",
       "x-displayName": "Environments",
-      "description": "Automate environment management."
+      "description": "\nAutomate environment management.\n\nYou may also [manage environment variables](#tag/environment-variables) through our REST API.\n"
     },
     {
       "name": "properties",
@@ -747,6 +752,384 @@
           }
         },
         "x-codegen-request-body-name": "postConfigV01Configs"
+      }
+    },
+    "/config/v0.1/environment-variables/{environment_variable_id}": {
+      "servers": [
+        {
+          "url": "https://edgioapis.com"
+        }
+      ],
+      "security": [
+        {
+          "oAuthCC": [
+            "app.app.config"
+          ]
+        }
+      ],
+      "get": {
+        "tags": [
+          "environment-variables"
+        ],
+        "summary": "Get Environment Variable",
+        "description": "Returns an environment variable.",
+        "operationId": "getConfigV01EnvironmentVariablesEnvironmentVariableId",
+        "parameters": [
+          {
+            "name": "environment_variable_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns an environment variable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_EnvironmentVariable"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "environment-variables"
+        ],
+        "summary": "Delete Environment Variable",
+        "description": "Deletes an environment variable.",
+        "operationId": "deleteConfigV01EnvironmentVariablesEnvironmentVariableId",
+        "parameters": [
+          {
+            "name": "environment_variable_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deletes an environment variable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_EnvironmentVariable"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/config/v0.1/environment-variables": {
+      "servers": [
+        {
+          "url": "https://edgioapis.com"
+        }
+      ],
+      "security": [
+        {
+          "oAuthCC": [
+            "app.app.config"
+          ]
+        }
+      ],
+      "get": {
+        "tags": [
+          "environment-variables"
+        ],
+        "summary": "Get All Environment Variables",
+        "description": "Returns all environment variables associated with an environment.",
+        "operationId": "getConfigV01EnvironmentVariables",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "0-based page number.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "description": "Find an environment variable by its key.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "environment_id",
+            "in": "query",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns all environment variables associated with an environment.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_EnvironmentVariable_Collection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "environment-variables"
+        ],
+        "summary": "Set Environment Variable",
+        "description": "Creates or updates an environment variable.",
+        "operationId": "putConfigV01EnvironmentVariables",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/putConfigV01EnvironmentVariables"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Creates or updates an environment variable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_EnvironmentVariable"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "putConfigV01EnvironmentVariables"
       }
     },
     "/cache/v0.1/purge-requests/{request_id}": {
@@ -3358,7 +3741,7 @@
           },
           "intermediate_cert": {
             "type": "string",
-            "description": "The intermediate certificates (IC) used by the CA, including the CAâ€™s signing certificate."
+            "description": "The intermediate certificates (IC) used by the CA, including the CA’s signing certificate."
           },
           "private_key": {
             "type": "string",
@@ -4674,6 +5057,120 @@
         },
         "description": "Deploys your configuration to a specific environment. This deployment overwrites any existing origin configurations, hostnames, rules, and experiments.\n"
       },
+      "Config_V1_Entities_EnvironmentVariable": {
+        "required": [
+          "@id",
+          "@type",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "type": "object",
+            "properties": {},
+            "description": "Links to related resources."
+          },
+          "id": {
+            "type": "string",
+            "description": "Resource unique identifier."
+          },
+          "environment_id": {
+            "type": "string",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
+          },
+          "key": {
+            "type": "string",
+            "description": "The environment variable's name."
+          },
+          "value": {
+            "type": "string",
+            "description": "The environment variable's value."
+          },
+          "secret": {
+            "type": "boolean",
+            "description": "Determines whether the environment variable's value will be masked using asterisks. Once this property has been enabled, it cannot be unset.\n"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The environment variable's creation date and time (UTC).",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The environment variable's last modification date and time (UTC).",
+            "format": "date-time"
+          }
+        },
+        "description": "Config_V1_Entities_EnvironmentVariable model"
+      },
+      "Config_V1_Entities_EnvironmentVariable_Collection": {
+        "required": [
+          "@id",
+          "@type"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "$ref": "#/components/schemas/BaseApi_Entities_HyperionNavigationLinks"
+          },
+          "total_items": {
+            "type": "integer",
+            "description": "Total number of items.",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "description": "List of environment variables.",
+            "items": {
+              "$ref": "#/components/schemas/Config_V1_Entities_EnvironmentVariable"
+            }
+          }
+        },
+        "description": "Config_V1_Entities_EnvironmentVariable_Collection model"
+      },
+      "putConfigV01EnvironmentVariables": {
+        "required": [
+          "environment_id",
+          "key",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "environment_id": {
+            "type": "string",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
+          },
+          "key": {
+            "type": "string",
+            "description": "The environment variable's name."
+          },
+          "value": {
+            "type": "string",
+            "description": "The environment variable's value."
+          },
+          "secret": {
+            "type": "boolean",
+            "description": "Determines whether the environment variable's value will be masked using asterisks. Once this property has been enabled, it cannot be unset.\n"
+          }
+        },
+        "description": "Creates or updates an environment variable."
+      },
       "Cache_V1_Entities_PurgeRequest": {
         "required": [
           "@id",
@@ -5783,15 +6280,15 @@
               "ENDSWITH",
               "IPMATCH"
             ],
-            "description": "\nIndicates how Edgio will interpret the comparison between the requestâ€™s path and the `value` property. Valid values are:\n\n-   **RX:** Indicates that the request's path must satisfy the regular expression defined in the `value` property.\n\n-   **STREQ:**Â Indicates that the request's path must be an exact match to the `value` property.\n\n-   **CONTAINS:**Â Indicates that the `value` property must contain the request's path.\n\n-   **BEGINSWITH:**Â Indicates that the `value` property must start with the request's path.\n\n-   **ENDSWITH:**Â Indicates that the `value` property must end with the request's path.\n"
+            "description": "\nIndicates how Edgio will interpret the comparison between the request’s path and the `value` property. Valid values are:\n\n-   **RX:** Indicates that the request's path must satisfy the regular expression defined in the `value` property.\n\n-   **STREQ:** Indicates that the request's path must be an exact match to the `value` property.\n\n-   **CONTAINS:** Indicates that the `value` property must contain the request's path.\n\n-   **BEGINSWITH:** Indicates that the `value` property must start with the request's path.\n\n-   **ENDSWITH:** Indicates that the `value` property must end with the request's path.\n"
           },
           "value": {
             "type": "string",
-            "description": "\nA value that will be compared against the requestâ€™s path. Specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining this property.\n\n**Sample value:** `/marketing`\n"
+            "description": "\nA value that will be compared against the request’s path. Specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining this property.\n\n**Sample value:** `/marketing`\n"
           },
           "is_negated": {
             "type": "boolean",
-            "description": "\nDetermines whether this condition is satisfied when the requestâ€™s path matches the pattern defined in the `value` property. Valid values are:\n\n-   **True:** Does not match\n\n-   **False:** Matches\n"
+            "description": "\nDetermines whether this condition is satisfied when the request’s path matches the pattern defined in the `value` property. Valid values are:\n\n-   **True:** Does not match\n\n-   **False:** Matches\n"
           }
         },
         "required": [
@@ -6605,6 +7102,7 @@
       "name": "Deployments",
       "tags": [
         "configs",
+        "environment-variables",
         "deployments"
       ]
     },

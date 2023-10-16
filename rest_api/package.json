@@ -12,11 +12,11 @@
     "console-api:split": "rm -r tmp/split && mkdir -p tmp/split && openapi split tmp/console_oapi3.json --outDir tmp/split",
     "console-api:integrate": "mkdir -p openapi/paths/ && cp tmp/split/components/schemas/*.yaml openapi/components/schemas/ && cp tmp/split/paths/*.yaml openapi/paths/",
     "docs:generate-without-examples": "redocly build-docs -o dist/rest_api.html",
-    "console:generate-spec": "npm run console-api:pull && npm run console-api:convert && npm run console-api:fix-external-schema-refs && npm run console-api:split && npm run console-api:integrate && npm run docs:generate-without-examples",
+    "console:generate-spec": "yarn console-api:pull && yarn console-api:convert && yarn console-api:fix-external-schema-refs && yarn console-api:split && yarn console-api:integrate && yarn docs:generate-without-examples",
     "docs:bundle-spec": "redocly bundle -o openapi.json",
     "docs:generate-examples": "./node_modules/.bin/snippet-enricher-cli --targets=\"node_request,javascript_xhr,shell_curl,python_python3\" --input=openapi.json > openapi-with-examples.json",
     "docs:generate": "redocly build-docs openapi-with-examples.json --output 'dist/rest_api.html'",
-    "docs:bundle": "npm run console:generate-spec && npm run docs:bundle-spec && npm run docs:generate-examples && npm run docs:generate && python3 scripts/css.py && python3 scripts/far.py && cp -r assets/* dist"
+    "docs:bundle": "yarn console:generate-spec && yarn docs:bundle-spec && yarn docs:generate-examples && yarn docs:generate && python3 scripts/css.py && python3 scripts/far.py && cp -r assets/* dist"
   },
   "devDependencies": {
     "@redocly/cli": "1.0.2",

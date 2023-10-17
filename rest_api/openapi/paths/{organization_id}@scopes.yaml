@@ -15,6 +15,8 @@ post:
         application/json:
           schema:
             $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':
@@ -34,6 +36,109 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/Scopes.yaml
+          example:
+            {
+                "account_type": "E",
+                "bot_tier": "B",
+                "customer_id": "12345678-1234-1234-1234-1234567890ab",
+                "id": "aZC7ehsy",
+                "last_modified_by": "jsmith@example.com via Edgio AppOps Console",
+                "last_modified_date": "2023-09-29T19:47:25.334678Z",
+                "name": "New Name",
+                "scopes": [{
+                        "acl_audit_id": "6ZLms6Dh",
+                        "acl_prod_action": {
+                            "enf_type": "BLOCK_REQUEST",
+                            "id": "4dXToEHF",
+                            "name": "acl action"
+                        },
+                        "acl_prod_id": "xMKolMmb",
+                        "bot_manager_config_id": "Ei2Zd66e",
+                        "host": {
+                            "is_case_insensitive": true,
+                            "is_negated": false,
+                            "type": "EM",
+                            "values": ["cdn.example.com"]
+                        },
+                        "id": "94kExYyx",
+                        "limits": [{
+                                "action": {
+                                    "duration_sec": 300,
+                                    "enf_type": "CUSTOM_RESPONSE",
+                                    "id": "moHGmang",
+                                    "name": "limit action",
+                                    "response_body_base64": "Ym9keWJvZHlib2R5",
+                                    "status": 404
+                                },
+                                "id": "F60gu16u"
+                            }
+                        ],
+                        "name": "Security App for cdn.example.com",
+                        "path": {
+                            "is_negated": false,
+                            "type": "GLOB",
+                            "value": "*"
+                        },
+                        "profile_audit_action": null,
+                        "profile_audit_id": "YHtiNvh5",
+                        "profile_prod_action": {
+                            "enf_type": "BLOCK_REQUEST",
+                            "id": "uohNJAQ6",
+                            "name": "profile action"
+                        },
+                        "profile_prod_id": "YHtiNvh5"
+                    }, {
+                        "acl_audit_action": null,
+                        "acl_audit_id": "VzhYZAMT",
+                        "acl_prod_action": {
+                            "enf_type": "BLOCK_REQUEST",
+                            "id": "PHHBIEig",
+                            "name": "acl action"
+                        },
+                        "acl_prod_id": "xMKolMmb",
+                        "bot_manager_config_id": "Ei2Zd66e",
+                        "host": {
+                            "is_negated": false,
+                            "type": "GLOB",
+                            "value": "*"
+                        },
+                        "id": "Zcvn7YUS",
+                        "limits": [{
+                                "action": {
+                                    "duration_sec": 300,
+                                    "enf_type": "REDIRECT_302",
+                                    "id": "1mJ8Sp9v",
+                                    "name": "limit action",
+                                    "url": "https://cdn2.example.com/waiting_room/"
+                                },
+                                "id": "F60gu16u"
+                            }
+                        ],
+                        "name": "Security App for Resources",
+                        "path": {
+                            "is_negated": false,
+                            "type": "GLOB",
+                            "value": "/resources/*"
+                        },
+                        "profile_audit_action": null,
+                        "profile_audit_id": "YHtiNvh5",
+                        "profile_prod_action": {
+                            "enf_type": "BLOCK_REQUEST",
+                            "id": "8QZINnSu",
+                            "name": "profile action"
+                        },
+                        "profile_prod_id": "IBXcaxuR",
+                        "recaptcha_action_name": null,
+                        "recaptcha_secret_key": null,
+                        "recaptcha_site_key": null,
+                        "rules_audit_action": null,
+                        "rules_audit_id": null,
+                        "rules_prod_action": null,
+                        "rules_prod_id": null
+                    }
+                ],
+                "team_config": true
+            }
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':
@@ -45,7 +150,7 @@ put:
   summary: Manage All Security Apps
   description: |
   
-    Creates, updates, and deletes one or more Security Apps. Each Security App:
+    Creates, updates, and deletes one or more Security App(s). Each Security App:
 
     -   Identifies the set of traffic to which it applies by hostname, a URL path, or both.
 
@@ -57,13 +162,13 @@ put:
 
     **Key information:**
 
-    -   This operation allows you to quickly create, update, or delete one or more Security Apps. These actions cannot be undone.
+    -   This operation allows you to quickly create, update, or delete one or more Security App(s). These actions cannot be undone.
 
-    -   Create a Security App by adding a scope object in the request.
+    -   Create a Security App by adding a `scope` object to the request.
 
-    -   Update a Security App by modifying an existing scope object in the request. The id property identifies the Security App that will be updated.
+    -   Update a Security App by modifying the corresponding `scope` object in the request. The `id` property identifies the Security App that will be updated.
 
-    -   Delete a Security App by excluding a scope object from the request.
+    -   Delete a Security App by excluding the corresponding `scope` object from the request.
 
         All Security Apps that are not explicitly defined within the request will be deleted.
 
@@ -73,7 +178,7 @@ put:
 
         2.  Retrieve your current set of Security Apps through the [Get All Security Apps operation](#tag/Security-Applications-(Scopes)/operation/get-security-applications).
 
-        3.  Add, modify, or remove Security Apps from the response as needed.
+        3.  Add, modify, or remove Security App(s) from the response as needed.
 
         4.  Pass the updated payload to this operation.
 
@@ -88,6 +193,8 @@ put:
         application/json:
           schema:
             $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':
@@ -104,6 +211,10 @@ put:
 #   responses:
 #     '200':
 #       description: OK. A Security App was deleted.
+#       content:
+#         application/json:
+#           schema:
+#             $ref: ../components/schemas/ResponseObj.yaml
 #     '429':
 #       $ref: ../components/responses/error_429.yaml
 #     '500':

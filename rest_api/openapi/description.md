@@ -175,9 +175,3 @@ Response headers provide information about the response to your request to the R
 | Content-Type    | Indicates the format of the response body (e.g., `application/json; charset=utf-8`). |
 | I_am            | This header is reserved for internal use.                                            |
 | Date            | Identifies the date and time (UTC) at which your request was processed.              |
-
-In addition to the above headers, the response may also include the following headers:
-
-`x-amz-apigw-id | x-amzn-Remapped-Date | x-amzn-Remapped-Server | x-amzn-RequestId | X-AspNet-Version | X-Location`
-
-These headers are reserved for future use.

@@ -28,10 +28,22 @@ jobs:
           echo "skip_deploy=$(echo $COMMIT_MSG | grep -iq 'skip-deploy' && echo true || echo false)" >> $GITHUB_OUTPUT
         continue-on-error: true
 
-      - uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
         if: steps.check_commit_message.outputs.skip_deploy != 'true'
         with:
           node-version: 16
+      
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        if: steps.check_commit_message.outputs.skip_deploy != 'true'
+        with:
+          ruby-version: 2.7
+
+      - name: Ruby dependencies
+        if: steps.check_commit_message.outputs.skip_deploy != 'true'
+        run: |
+          gem install pry json
 
       - name: Cache node modules
         if: steps.check_commit_message.outputs.skip_deploy != 'true'

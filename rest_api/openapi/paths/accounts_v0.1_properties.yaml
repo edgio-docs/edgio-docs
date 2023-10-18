@@ -1,0 +1,123 @@
+get:
+  tags:
+    - properties
+  summary: Get All Properties
+  description: Returns all properties.
+  operationId: getAccountsV01Properties
+  parameters:
+    - name: page
+      in: query
+      description: 0-based page number.
+      schema:
+        type: integer
+        format: int32
+        default: 0
+    - name: page_size
+      in: query
+      description: >-
+        Number of results per page. Valid values are: 1 - 100. **Default
+        value:** 20
+      schema:
+        type: integer
+        format: int32
+        default: 20
+    - name: organization_id
+      in: query
+      description: >
+        An organization's system-defined ID (e.g.,
+        12345678-1234-1234-1234-1234567890ab).
+
+
+        From the Edgio Console, navigate to the desired organization and then
+        click **Settings**. It is listed under **Organization ID**.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Returns all properties.
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/Accounts_V1_Entities_Property_Collection.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+post:
+  tags:
+    - properties
+  summary: Create Property
+  description: Create a property.
+  operationId: postAccountsV01Properties
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/postAccountsV01Properties.yaml
+    required: true
+  responses:
+    '201':
+      description: Create a property.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Accounts_V1_Entities_Property.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  x-codegen-request-body-name: postAccountsV01Properties

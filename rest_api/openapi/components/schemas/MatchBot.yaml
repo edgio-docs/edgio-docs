@@ -1,0 +1,32 @@
+title: Match
+type: object
+description: Contains comparison settings for the request element identified by the `type` property. You may define up to 20 entries.
+properties:
+  value:
+    type: string
+    description: 
+  is_negated:
+    type: boolean
+    description: |
+    
+      Determines whether this condition is satisfied when the request element identified by the `variable` object is found or not found.
+    
+      -   **true:** Not found
+
+          If this property has been enabled, then the match array should contain an initial object that sets both the `is_negated` and `is_regex` properties to `false`.
+          
+          ```
+              ...
+              [{
+              		"is_negated": false,
+              		"is_regex": false
+              	}, {
+              		"is_negated": true,
+              		...	
+          ```
+
+      -   **false:** Found
+
+  is_regex:
+    type: boolean
+    description: 

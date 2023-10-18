@@ -1,0 +1,21 @@
+title: Policy
+type: object
+properties:
+  index:
+    type: string
+    description: The policy's index number.
+  name:
+    type: string
+    description: The policy's name.
+  id:
+    type: string
+    description: The policy's system-defined ID.
+  rules:
+    type: array
+    description: List of the rules associated with the policy. 
+    items:
+      allOf:
+        - $ref: ./PolicyRule.yaml
+  counts:
+    type: string
+    description: The number of rules associated with the policy.

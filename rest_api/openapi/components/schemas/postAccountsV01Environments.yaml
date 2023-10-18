@@ -1,0 +1,25 @@
+required:
+  - name
+  - property_id
+type: object
+properties:
+  property_id:
+    type: string
+    description: The property's system-defined ID.
+  name:
+    type: string
+    description: >
+      The environment's name. This name may only consist of lowercase
+      characters, numbers, dashes, and underscores.
+  can_members_deploy:
+    type: boolean
+    description: >
+      Determines whether all organization memmbers may deploy to this
+      environment. Disabling this option restricts deployments to admin users
+      and the deploy token."
+  http_request_logging:
+    type: boolean
+    description: >-
+      Determines whether deep-request inspection for serverless logs will be
+      enabled.
+description: Creates an environment.

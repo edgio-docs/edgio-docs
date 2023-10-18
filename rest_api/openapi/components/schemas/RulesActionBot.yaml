@@ -1,0 +1,41 @@
+title: Action Object
+type: object
+properties:
+  id:
+    type: string
+    description: |
+    
+      Determines the custom ID that will be assigned to this bot rule. This custom ID is exposed through the Security dashboard. Valid values fall within this range: 77000000-77999999. This property is only applicable for the `action` object that resides in the root of the `sec_rule` object. 
+      
+      **Default Value:** Random number
+  msg:
+    type: string
+    description: |
+    
+      Determines the rule message that will be assigned to this bot rule. This message is exposed through the Security dashboard. This field is only applicable for the `action` object that resides in the root of the `sec_rule` object.
+
+      **Default Value:** Blank
+
+  t:
+    type: array
+    items:
+      type: string
+      description: |
+      
+        Determines the set of transformations that will be applied to the value derived from the request element identified in a variable object (i.e., source value). Transformations are always applied to the source value, regardless of the number of transformations that have been defined. Valid values are:
+
+        -   **NONE:** Indicates that the source value should not be modified.
+
+        -   **LOWERCASE:** Indicates that the source value should be converted to lowercase characters.
+
+        -   **URLDECODE:** Indicates that the source value should be URL decoded. This transformation is useful when the source value has been URL encoded twice.
+
+        -   **REMOVENULLS:** Indicates that null values should be removed from the source value.
+
+        A criterion is satisfied if the source value or any of the modified string values meet the conditions defined by the `operator` object.
+
+      enum:
+        - NONE
+        - LOWERCASE
+        - URLDECODE
+        - REMOVENULLS

@@ -434,7 +434,7 @@ You may create, modify, and delete rate rules.
 
 1.  Navigate to the **Rate Rules** page.
     {{ SECURITY_NAV }} **Rate Rules**.
-2.  Click **Add Rate Rule**.
+2.  Click **+ New Rate Ruleset**.
 3.  In the **Name** option, type the unique name by which
     this rate rule will be identified. This name should be sufficiently
     descriptive to identify it when setting up a Security Application

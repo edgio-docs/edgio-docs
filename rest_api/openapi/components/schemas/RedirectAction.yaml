@@ -1,0 +1,18 @@
+title: Redirect Action
+type: object
+description: Redirects the request.
+properties:
+  id:
+    type: string
+    description: The enforcement action's system-defined ID.
+  name:
+    type: string
+    description: The enforcement action's name.
+  enf_type:
+    type: string
+    description: The type of enforcement action. 
+    enum:
+      - REDIRECT_302
+  url:
+    type: string
+    description: The URL to which requests will be redirected.

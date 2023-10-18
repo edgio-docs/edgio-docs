@@ -143,337 +143,337 @@ paths:
     servers:
       - url: 'https://edgioapis.com'
     security:
-      - oAuthCC: [app.app.config]
+      - oAuthClientCredentials: [app.config]
   /config/v0.1/tls-certs:
     $ref: paths/config_v0.1_tls-certs.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
-      - oAuthCC: [app.app.config]
+      - oAuthClientCredentials: [app.config]
   /config/v0.1/deployments/{deployment_id}/logs:
     $ref: paths/config_v0.1_deployments_{deployment_id}_logs.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
-      - oAuthCC: [app.app.config]
+      - oAuthClientCredentials: [app.config]
   /config/v0.1/deployments/{deployment_id}:
     $ref: paths/config_v0.1_deployments_{deployment_id}.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
-      - oAuthCC: [app.app.config]
+      - oAuthClientCredentials: [app.config]
   /config/v0.1/configs/{config_id}:
     $ref: paths/config_v0.1_configs_{config_id}.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
-      - oAuthCC: [app.app.config]
+      - oAuthClientCredentials: [app.config]
   /config/v0.1/configs:
     $ref: paths/config_v0.1_configs.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
-      - oAuthCC: [app.app.config]
+      - oAuthClientCredentials: [app.config]
   /config/v0.1/environment-variables/{environment_variable_id}:
     $ref: paths/config_v0.1_environment-variables_{environment_variable_id}.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
-      - oAuthCC: [app.app.config]
+      - oAuthClientCredentials: [app.config]
   /config/v0.1/environment-variables:
     $ref: paths/config_v0.1_environment-variables.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
-      - oAuthCC: [app.app.config]
+      - oAuthClientCredentials: [app.config]
   /cache/v0.1/purge-requests/{request_id}:
     $ref: paths/cache_v0.1_purge-requests_{request_id}.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
-      - oAuthCC: [app.app.cache]
+      - oAuthClientCredentials: [app.cache]
   /cache/v0.1/purge-requests:
     $ref: paths/cache_v0.1_purge-requests.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
-      - oAuthCC: [app.app.config]
+      - oAuthClientCredentials: [app.config]
   /accounts/v0.1/environments/{environment_id}:
     $ref: paths/accounts_v0.1_environments_{environment_id}.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
-      - oAuthCC: [app.app.accounts]
+      - oAuthClientCredentials: [app.accounts]
   /accounts/v0.1/environments:
     $ref: paths/accounts_v0.1_environments.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
-      - oAuthCC: [app.app.accounts]
+      - oAuthClientCredentials: [app.accounts]
   /accounts/v0.1/properties/{property_id}:
     $ref: paths/accounts_v0.1_properties_{property_id}.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
-      - oAuthCC: [app.app.accounts]
+      - oAuthClientCredentials: [app.accounts]
   /accounts/v0.1/properties:
     $ref: paths/accounts_v0.1_properties.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
-      - oAuthCC: [app.app.accounts]
+      - oAuthClientCredentials: [app.accounts]
   /accounts/v0.1/organizations/{organization_id}:
     $ref: paths/accounts_v0.1_organizations_{organization_id}.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
-      - oAuthCC: [app.app.accounts]
+      - oAuthClientCredentials: [app.accounts]
   '/{organization_id}/scopes':
     $ref: 'paths/{organization_id}@scopes.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
-      - oAuthCC: [app.app.waf]
+      - oAuthClientCredentials: [app.waf]
 #  '/{organization_id}/scopes/{scope_id}/versions':
 #    $ref: 'paths/{organization_id}@scopes@{scope_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9'
 #    security:
-#      - oAuthCC: [app.app.waf]
+#      - oAuthClientCredentials: [app.waf]
 #  '/{organization_id}/scopes/{scope_id}/versions/{version_id}':
 #    $ref: 'paths/{organization_id}@scopes@{scope_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9'
 #    security:
-#      - oAuthCC: [app.app.waf]
+#      - oAuthClientCredentials: [app.waf]
   '/{organization_id}/acls':
     $ref: 'paths/{organization_id}@acls.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
-      - oAuthCC: [app.app.waf]
+      - oAuthClientCredentials: [app.waf]
   '/{organization_id}/acls/{acl_id}':
     $ref: 'paths/{organization_id}@acls@{acl_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
-      - oAuthCC: [app.app.waf]
+      - oAuthClientCredentials: [app.waf]
 #  '/{organization_id}/acl/{acl_id}/versions':
 #    $ref: 'paths/{organization_id}@acl@{acl_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9'
 #    security:
-#      - oAuthCC: [app.app.waf]
+#      - oAuthClientCredentials: [app.waf]
 #  '/{organization_id}/acl/{acl_id}/versions/{version_id}':
 #    $ref: 'paths/{organization_id}@acl@{acl_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9'
 #    security:
-#      - oAuthCC: [app.app.waf]
+#      - oAuthClientCredentials: [app.waf]
   '/{organization_id}/rules':
     $ref: 'paths/{organization_id}@rules.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
-      - oAuthCC: [app.app.waf]
+      - oAuthClientCredentials: [app.waf]
   '/{organization_id}/rules/{rule_id}':
     $ref: 'paths/{organization_id}@rules@{rule_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
-      - oAuthCC: [app.app.waf]
+      - oAuthClientCredentials: [app.waf]
 #  '/{organization_id}/rules/{rule_id}/versions':
 #    $ref: 'paths/{organization_id}@rules@{rule_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9'
 #    security:
-#      - oAuthCC: [app.app.waf]
+#      - oAuthClientCredentials: [app.waf]
 #  '/{organization_id}/rules/{rule_id}/versions/{version_id}':
 #    $ref: 'paths/{organization_id}@rules@{rule_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9'
 #    security:
-#      - oAuthCC: [app.app.waf]
+#      - oAuthClientCredentials: [app.waf]
   '/{organization_id}/limits':
     $ref: 'paths/{organization_id}@limits.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
-      - oAuthCC: [app.app.waf]
+      - oAuthClientCredentials: [app.waf]
   '/{organization_id}/limits/{limit_id}':
     $ref: 'paths/{organization_id}@limits@{limit_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
-      - oAuthCC: [app.app.waf]
+      - oAuthClientCredentials: [app.waf]
 #  '/{organization_id}/limits/{limit_id}/versions':
 #    $ref: 'paths/{organization_id}@limits@{limit_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9'
 #    security:
-#      - oAuthCC: [app.app.waf]
+#      - oAuthClientCredentials: [app.waf]
 #  '/{organization_id}/limits/{limit_id}/versions/{version_id}':
 #    $ref: 'paths/{organization_id}@limits@{limit_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9'
 #    security:
-#      - oAuthCC: [app.app.waf]
+#      - oAuthClientCredentials: [app.waf]
   '/{organization_id}/profiles':
     $ref: 'paths/{organization_id}@profiles.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
-      - oAuthCC: [app.app.waf]
+      - oAuthClientCredentials: [app.waf]
   '/{organization_id}/profiles/{profile_id}':
     $ref: 'paths/{organization_id}@profiles@{profile_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
-      - oAuthCC: [app.app.waf]
+      - oAuthClientCredentials: [app.waf]
 #  '/{organization_id}/profiles/{profile_id}/versions':
 #    $ref: 'paths/{organization_id}@profiles@{profile_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9'
 #    security:
-#      - oAuthCC: [app.app.waf]
+#      - oAuthClientCredentials: [app.waf]
 #  '/{organization_id}/profiles/{profile_id}/versions/{version_id}':
 #    $ref: 'paths/{organization_id}@profiles@{profile_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9'
 #    security:
-#      - oAuthCC: [app.app.waf]
+#      - oAuthClientCredentials: [app.waf]
   '/rulesets':
     $ref: 'paths/rulesets.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
-      - oAuthCC: [app.app.waf]
+      - oAuthClientCredentials: [app.waf]
   '/rulesets/{ruleset_id}':
     $ref: 'paths/rulesets@{ruleset_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
-      - oAuthCC: [app.app.waf]
+      - oAuthClientCredentials: [app.waf]
 #  '/rulesets/{ruleset_id}/version/{version_id}':
 #    $ref: 'paths/rulesets@{ruleset_id}@version@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/waf/v0.9'
 #    security:
-#      - oAuthCC: [app.app.waf]
+#      - oAuthClientCredentials: [app.waf]
     
   '/{organization_id}/api-gateways':
     $ref: 'paths/{organization_id}@api-gateways.yaml'
     servers:
       - url: 'https://edgioapis.com/api-security/v0.9'
     security:
-      - oAuthCC: [app.app.api_security]
+      - oAuthClientCredentials: [app.api_security]
   '/{organization_id}/api-gateways/{api_gateway_id}':
     $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/api-security/v0.9'
     security:
-      - oAuthCC: [app.app.api_security]
+      - oAuthClientCredentials: [app.api_security]
   '/{organization_id}/api-gateways/{api_gateway_id}/schemas':
     $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@schemas.yaml'
     servers:
       - url: 'https://edgioapis.com/api-security/v0.9'
     security:
-      - oAuthCC: [app.app.api_security]
+      - oAuthClientCredentials: [app.api_security]
 #  '/{organization_id}/api-gateways/{api_gateway_id}/versions':
 #    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/api-security/v0.9'
 #    security:
-#      - oAuthCC: [app.app.api_security]
+#      - oAuthClientCredentials: [app.api_security]
 #  '/{organization_id}/api-gateways/{api_gateway_id}/versions/{version_id}':
 #    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/api-security/v0.9'
 #    security:
-#      - oAuthCC: [app.app.api_security]
+#      - oAuthClientCredentials: [app.api_security]
   '/{organization_id}/api-schemas':
     $ref: 'paths/{organization_id}@api-schemas.yaml'
     servers:
       - url: 'https://edgioapis.com/api-security/v0.9'
     security:
-      - oAuthCC: [app.app.api_security]
+      - oAuthClientCredentials: [app.api_security]
   '/{organization_id}/api-schemas/{api_schema_id}':
     $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/api-security/v0.9'
     security:
-      - oAuthCC: [app.app.api_security]
+      - oAuthClientCredentials: [app.api_security]
 #  '/{organization_id}/api-schemas/{api_schema_id}/versions':
 #    $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/api-security/v0.9'
 #    security:
-#      - oAuthCC: [app.app.api_security]
+#      - oAuthClientCredentials: [app.api_security]
 #  '/{organization_id}/api-schemas/{api_schema_id}/versions/{version_id}':
 #    $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/api-security/v0.9'
 #    security:
-#      - oAuthCC: [app.app.api_security]
+#      - oAuthClientCredentials: [app.api_security]
   '/{organization_id}/bots':
     $ref: 'paths/{organization_id}@bots.yaml'
     servers:
       - url: 'https://edgioapis.com/bot-security/v0.9'
     security:
-      - oAuthCC: [app.app.bot_security]
+      - oAuthClientCredentials: [app.bot_security]
   '/{organization_id}/bots/{bot_id}':
     $ref: 'paths/{organization_id}@bots@{bot_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/bot-security/v0.9'
     security:
-      - oAuthCC: [app.app.bot_security]
+      - oAuthClientCredentials: [app.bot_security]
 #  '/{organization_id}/bots/{bot_id}/versions':
 #    $ref: 'paths/{organization_id}@bots@{bot_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/bot-security/v0.9'
 #    security:
-#      - oAuthCC: [app.app.bot_security]
+#      - oAuthClientCredentials: [app.bot_security]
 #  '/{organization_id}/bots/{bot_id}/versions/{version_id}':
 #    $ref: 'paths/{organization_id}@bots@{bot_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/bot-security/v0.9'
 #    security:
-#      - oAuthCC: [app.app.bot_security]
+#      - oAuthClientCredentials: [app.bot_security]
   '/{organization_id}/bot-managers':
     $ref: 'paths/{organization_id}@bot-managers.yaml'
     servers:
       - url: 'https://edgioapis.com/bot-security/v0.9'
     security:
-      - oAuthCC: [app.app.bot_security]
+      - oAuthClientCredentials: [app.bot_security]
   '/{organization_id}/bot-managers/{bot_manager_id}':
     $ref: 'paths/{organization_id}@bot-managers@{bot_manager_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/bot-security/v0.9'
     security:
-      - oAuthCC: [app.app.bot_security]
+      - oAuthClientCredentials: [app.bot_security]
 #  '/{organization_id}/bot-managers/{bot_manager_id}/versions':
 #    $ref: 'paths/{organization_id}@bot-managers@{bot_manager_id}@versions.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/bot-security/v0.9'
 #    security:
-#      - oAuthCC: [app.app.bot_security]
+#      - oAuthClientCredentials: [app.bot_security]
 #  '/{organization_id}/bot-manager/{bot_manager_id}/versions/{version_id}':
 #    $ref: 'paths/{organization_id}@bot-manager@{bot_manager_id}@versions@{version_id}.yaml'
 #    servers:
 #      - url: 'https://edgioapis.com/bot-security/v0.9'
 #    security:
-#      - oAuthCC: [app.app.bot_security]
+#      - oAuthClientCredentials: [app.bot_security]
   /known-bots/companies:
     $ref: paths/known-bots@companies.yaml
     servers:
       - url: 'https://edgioapis.com/bot-security/v0.9'
     security:
-      - oAuthCC: {}
+      - oAuthClientCredentials: {}
 components:
   securitySchemes:
-    oAuthCC:
+    oAuthClientCredentials:
       type: oauth2
-      description: This API uses OAuth 2 with the client credentials grant flow. [Learn more.](#section/Access-Tokens)
+      description: [Learn how to generate and pass a token.](#section/Access-Tokens)
       flows:
         clientCredentials:
           tokenUrl: https://id.edgio.app/connect/token

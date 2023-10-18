@@ -1,0 +1,23 @@
+required:
+  - '@id'
+  - '@type'
+type: object
+properties:
+  '@type':
+    type: string
+    description: The resource's type.
+  '@id':
+    type: string
+    description: The resource's relative path.
+  '@links':
+    $ref: ./BaseApi_Entities_HyperionNavigationLinks.yaml
+  total_items:
+    type: integer
+    description: Total number of items.
+    format: int32
+  items:
+    type: array
+    description: List of users.
+    items:
+      $ref: ./Accounts_V1_Entities_Member.yaml
+description: Accounts_V1_Entities_Member_Collection model

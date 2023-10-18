@@ -191,6 +191,16 @@ router.match(`/docs/v:version.x/:path*`, ({compute}) => {
   });
 });
 
+// -- REST API --
+router
+  .match('/rest_api/:path*', ({serveStatic}) => {
+    serveStatic('rest_api/dist/:path*');
+  })
+  .match(/^\/rest_api\/$/, ({serveStatic}) => {
+    serveStatic('rest_api/dist/rest_api.html');
+  })
+  .match(/^\/rest_api$/, ({redirect}) => redirect('/rest_api/'));
+
 // redirects
 redirects.forEach(([from, to, statusCode]) => {
   router.match(from, ({redirect}) =>

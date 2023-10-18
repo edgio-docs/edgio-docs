@@ -1,0 +1,14 @@
+required:
+  - organization_id
+  - slug
+type: object
+properties:
+  slug:
+    type: string
+    description: The property's name. Space characters are converted to dashes.
+  organization_id:
+    type: string
+    description: >-
+      The system-defined ID for the organization under which this property will
+      be created.
+description: Create a property.

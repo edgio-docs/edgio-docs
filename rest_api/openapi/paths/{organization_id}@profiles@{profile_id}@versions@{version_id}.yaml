@@ -1,0 +1,19 @@
+parameters:
+  - $ref: ../components/parameters/organization_id.yaml
+  - $ref: ../components/parameters/profile_id.yaml
+  - $ref: ../components/parameters/version_id.yaml
+get:
+  operationId: get-profile-version
+  tags:
+    - Managed Rules (Profiles)
+  summary: GET specific version of profile object identified by version id
+  description: Get get specific version of profile object.
+  responses:
+    '200':
+      description: Version for that profile object.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/version_long.yaml
+    '404':
+      description: version not found

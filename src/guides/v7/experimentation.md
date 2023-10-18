@@ -34,13 +34,24 @@ A client is eligible to participate in an experiment if the request satisfies th
 
 </Callout>
 
+<Callout type="info">
+
+  {{ PRODUCT }} uses a different formula to calculate the cache key for requests that satisfy at least one experiment. [View the cache key syntax.](/guides/performance/caching/cache_key#cache-key-reference)
+
+</Callout>
+
 ## Experiments {/*experiments*/}
 
 An experiment:
 
 -   Identifies the set of traffic to which it will be applied.
 -   Contains two or more variants. Each variant identifies the percentage of traffic to which its actions (aka [features](/guides/performance/rules/features) will be applied. 
-    
+
+A single experiment with three variants is illustrated below.
+
+![Experimentation](/images/v7/experimentation-components.png?width=950)
+
+
 ### Criteria {/*criteria*/}
 
 You may define criteria that identifies the set of traffic to which an experiment will be applied. If you do not define any criteria, then the experiment is applicable to all requests. 
@@ -83,10 +94,13 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 
     {{ ENV_NAV }} **Experimentation**.
 
-2.  Click **+ Add Experiment**.
+2.  Click **+ Add Experiment**. A blank experiment configuration will appear.
+
+    ![Experimentation](/images/v7/experimentation-blank.png?width=450)
+
 3.  From the **Name** option, assign a name to the experiment. 
 
-    {{ PRODUCT }} populates the `{{ HEADER_PREFIX }}-experiments-info` cookie with this name. 
+    {{ PRODUCT }} populates the `{{ HEADER_PREFIX }}-experiments-info` upstream request header with this name. 
 
 4.  Optional. Restrict this experiment to a subset of your website traffic by defining one or more criterion.
 
@@ -95,13 +109,15 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 
         For example, you may identify requests by HTTP method, path, or request headers.
 
+        ![Experimentation](/images/v7/experimentation-add-condition.png?width=350)
+
     3.  Define how a request will be compared against a value or state. In some cases, this involves selecting a [comparison operator](/guides/performance/rules/operators) and defining the value that will be compared against the request.
     4.  Click **Add Condition**.
     5.  Optional. Add another match criterion by repeating steps 4.i - 4.iv. Repeat this step as needed.
 5.  Define two or more variants.
     1.  From the **Name** option, assign a name to this variant. 
 
-        {{ PRODUCT }} populates the `{{ HEADER_PREFIX }}-experiments-info` cookie with this name. 
+        {{ PRODUCT }} populates the `{{ HEADER_PREFIX }}-experiments-info` upstream request header with this name. 
 
     2.  Set the **Percentage** option to the percentage of this experiment's traffic to which this variant will be applied.
     
@@ -120,6 +136,11 @@ You may create, enable, disable, and delete experiments. You may also adjust the
         5.  Optional. Add another action by repeating steps 5.iii.a - 5.iii.d. Repeat this step as needed.
 
     4.  Configure the second variant by repeating steps 5.i - 5.iii.
+    
+        Your configuration should now look similar to this one:
+        
+        ![Experimentation](/images/v7/experimentation-variants.png?width=350)
+
     5.  Optional. Add and configure another variant. Repeat this step as needed.
 
         1. Click **+ Add Variant**.
@@ -175,7 +196,10 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 
 ## Experimentation Metadata {/*experimentation-metadata*/}
 
-Experimentation assigns the `{{ HEADER_PREFIX }}-experiments` cookie to each client. If a client qualifies for one or more experiment(s), we will also provide experimentation information through a `{{ HEADER_PREFIX }}-experiments-info` upstream request header and the `server-timing` response header.
+{{ PRODUCT }} provides experimentation metadata to the client and origin server.
+
+-   **Client:** {{ PRODUCT }} sets the `{{ HEADER_PREFIX }}-experiments` cookie and the `server-timing` response header.
+-   **Origin:** {{ PRODUCT }} sets the `{{ HEADER_PREFIX }}-experiments-info` header for requests proxied from our network to the origin.
 
 #### {{ HEADER_PREFIX }}-experiments Cookie {/*-experiments-cookie*/}
 
@@ -187,7 +211,15 @@ This cookie assigns a value from 0 - 99 to a client. Once a client has been assi
 
 #### {{ HEADER_PREFIX }}-experiments-info Upstream Request Header {/*-experiments-info-upstream-request-header*/}
 
-The `{{ HEADER_PREFIX }}-experiments-info` request header tracks the variants assigned to a client. Once a client has been assigned at least one variant, {{ PRODUCT }} add this header to the request sent to the origin. It contains the following syntax for each variant that has been assigned to a client:
+The `{{ HEADER_PREFIX }}-experiments-info` request header tracks the variants assigned to a client. {{ PRODUCT }} adds this header to requests proxied through our network to the origin or the {{ PRODUCT }} Cloud. 
+
+<Callout type="important">
+
+  {{ PRODUCT }} does not currently add this header to requests processed by Edge Functions. However, we plan on adding this header to requests forwarded to Edge Functions in the future. 
+
+</Callout>
+
+It contains the following syntax for each variant that has been assigned to a client:
 
 `%22<EXPERIMENT>_<BUCKET>%22%3A%22<VARIANT>_<VARIANT ID>%22`
 

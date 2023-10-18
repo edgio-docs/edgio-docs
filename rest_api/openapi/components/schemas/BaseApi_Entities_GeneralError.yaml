@@ -1,0 +1,6 @@
+type: object
+properties:
+  message:
+    type: string
+    description: Error Message
+description: BaseApi_Entities_GeneralError model

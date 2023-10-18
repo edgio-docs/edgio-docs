@@ -1,0 +1,38 @@
+required:
+  - '@id'
+  - '@type'
+  - id
+type: object
+properties:
+  '@type':
+    type: string
+    description: The resource's type.
+  '@id':
+    type: string
+    description: The resource's relative path.
+  '@links':
+    type: object
+    properties: {}
+    description: Links to related resources.
+  id:
+    type: string
+    description: The purge request's system-defined ID.
+  status:
+    type: string
+    description: |
+      The purge request's status. Valid values are:
+        - `in_progress`: Edgio is still purging content.
+        - `done`: Edgio has purged the requested content.
+  created_at:
+    type: string
+    description: The date and time (UTC) at which the purge request was submitted.
+    format: date-time
+  completed_at:
+    type: string
+    description: The date and time (UTC) at which the purge request was completed.
+    format: date-time
+  progress_percentage:
+    type: number
+    description: The purge request's completion percentage.
+    format: float
+description: Cache_V1_Entities_PurgeRequest model

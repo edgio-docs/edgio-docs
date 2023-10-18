@@ -1,0 +1,45 @@
+title: Waf Production Action
+type: object
+properties:
+  id:
+    type: string
+    description: The enforcement action configuration's system-defined ID.
+  name:
+    type: string
+    description:  The enforcement action configuration's name.
+  url:
+    type: string
+    description: |
+
+      `REDIRECT_302`: The URL to which requests identified as threats will be redirected.
+
+  status:
+    type: integer
+    format: uint32
+    description: |
+
+      `CUSTOM_RESPONSE`: The HTTP status code (e.g., `404`) for the custom response that will be sent to requests identified as threats.
+
+  response_body_base64:
+    type: string
+    description: |
+
+      `CUSTOM_RESPONSE`: The Base64 encoded response body that will be sent to requests identified as threats.
+
+  enf_type:
+    type: string
+    description: The enforcement action that will be applied to requests identified as threats.
+    enum:
+      - REDIRECT_302
+      - CUSTOM_RESPONSE
+      - BLOCK_REQUEST
+      - ALERT
+  response_headers:
+    type: array
+    description: |
+
+      `CUSTOM_RESPONSE`: The set of response headers that will be sent to requests identified as threats. Each response header is specified as a name/value pair. 
+
+    items:
+      allOf:
+        - $ref: ./ResponseHeader.yaml

@@ -4,13 +4,18 @@ title: Remix
 
 This guide shows you how to deploy a [Remix](https://remix.run/) application to {{ PRODUCT }}.
 
-<!-- ## Example {/*example*/}
+<Callout type="warning">
+
+  {{ PRODUCT }} only supports Remix 1.x. Remix 2.x is unsupported due to Node.js requirements and its usage will generate runtime errors.
+
+</Callout>
+
+## Example {/*example*/}
 
 <ExampleButtons
   title="Remix Express"
-  siteUrl="https://layer0-docs-layer0-remix-express-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/edgio-docs/edgio-remix-express-example" 
-  deployFromRepo /> -->
+  siteUrl="https://edgio-community-examples-v7-remix-live.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-remix-example" />
 
 {{ PREREQ.md }}
 
@@ -24,7 +29,7 @@ npx create-remix@latest
 
 To ensure your Remix app works with {{ PRODUCT }}, make the following selections when prompted:
 
-```plaintext diff highlight="2,8"
+```plaintext diff highlight="2,7"
 ? What type of app do you want to create? (Use arrow keys)
 ❯ Just the basics
   A pre-configured stack ready for production

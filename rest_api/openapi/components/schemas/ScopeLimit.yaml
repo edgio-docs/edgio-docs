@@ -1,0 +1,9 @@
+title: ScopeLimit
+type: object
+properties:
+  id:
+    type: string
+    description: The system-defined ID for the rate rule that will be applied to this Security App.
+  action:
+    description: Describes the action that will take place when the rate rule identified by the id property is enforced.
+    $ref: ./LimitsAction.yaml

@@ -1,0 +1,17 @@
+title: Ruleset
+type: object
+properties:
+  id:
+    type: string
+    description: The Edgio ruleset's system-defined ID.
+  description:
+    type: string
+    description: The Edgio ruleset's description.
+  versions:
+    type: array
+    description: The Edgio ruleset's available versions.
+    items:
+      type: string
+  display:
+    type: string
+    description: The Edgio ruleset's name.

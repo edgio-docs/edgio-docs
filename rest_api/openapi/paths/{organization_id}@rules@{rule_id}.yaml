@@ -1,0 +1,58 @@
+parameters:
+  - $ref: ../components/parameters/organization_id.yaml
+  - $ref: ../components/parameters/rule_id.yaml
+get:
+  operationId: get-custom-rule
+  tags:
+    - Custom Rules
+  summary: Get Custom Rule
+  description: Retrieves a custom rule. Use a custom rule to define custom threat assessment criteria.
+  responses:
+    '200':
+      description: OK. A custom rule was retrieved.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Rule.yaml
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+put:
+  operationId: update-custom-rule
+  tags:
+    - Custom Rules
+  summary: Update Custom Rule
+  description: Updates a custom rule that defines custom threat assessment criteria.
+  requestBody:
+    $ref: ../components/requestBodies/Rule.yaml
+  responses:
+    '200':
+      description: OK. A custom rule was updated.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+delete:
+  operationId: delete-custom-rule
+  tags:
+    - Custom Rules
+  summary: Delete Custom Rule
+  description: Deletes a custom rule.
+  responses:
+    '200':
+      description: OK. A custom rule was deleted.
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

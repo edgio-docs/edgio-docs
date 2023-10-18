@@ -1,0 +1,155 @@
+get:
+  tags:
+    - organizations
+  summary: Get Organization
+  description: Retrieves information about an organization.
+  operationId: getAccountsV01OrganizationsOrganizationId
+  parameters:
+    - name: organization_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Retrieves information about an organization.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Accounts_V1_Entities_Organization.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+delete:
+  tags:
+    - organizations
+  summary: Delete Organization
+  description: Deletes an organization.
+  operationId: deleteAccountsV01OrganizationsOrganizationId
+  parameters:
+    - name: organization_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: Deletes an organization.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Accounts_V1_Entities_Organization.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+patch:
+  tags:
+    - organizations
+  summary: Update Organization
+  description: Updates an organization.
+  operationId: patchAccountsV01OrganizationsOrganizationId
+  parameters:
+    - name: organization_id
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: >-
+            ../components/schemas/patchAccountsV01OrganizationsOrganizationId.yaml
+    required: true
+  responses:
+    '200':
+      description: Updates an organization.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Accounts_V1_Entities_Organization.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  x-codegen-request-body-name: patchAccountsV01OrganizationsOrganizationId

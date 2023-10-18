@@ -1,0 +1,6 @@
+type: object
+properties:
+  name:
+    type: string
+    description: The organization's name.
+description: Updates an organization.

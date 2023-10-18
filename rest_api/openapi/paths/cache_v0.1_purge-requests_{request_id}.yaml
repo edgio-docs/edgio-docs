@@ -1,0 +1,53 @@
+get:
+  tags:
+    - purge requests
+  summary: Get Purge Request
+  description: Retrieves information, including status, about a purge request.
+  operationId: getCacheV01PurgeRequestsRequestId
+  parameters:
+    - name: request_id
+      in: path
+      description: >
+        The purge request's system-defined ID. This ID is returned by the [Purge
+        Cache
+        operation](#tag/purge-requests/operation/postCacheV01PurgeRequests).
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Retrieves information, including status, about a purge request.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Cache_V1_Entities_PurgeRequest.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml

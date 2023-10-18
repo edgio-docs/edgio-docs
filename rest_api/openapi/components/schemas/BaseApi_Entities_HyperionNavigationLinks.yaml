@@ -1,0 +1,10 @@
+type: object
+properties:
+  first:
+    $ref: ./BaseApi_Entities_HyperionLink.yaml
+  next:
+    $ref: ./BaseApi_Entities_HyperionLink.yaml
+  previous:
+    $ref: ./BaseApi_Entities_HyperionLink.yaml
+  last:
+    $ref: ./BaseApi_Entities_HyperionLink.yaml

@@ -649,7 +649,7 @@ router.get('/some-path', {
 
 <Callout type="important">
 
-When using `response.set_response_body` to send a response, or to stop processing a request from potentially matching subsequent routes, you must also set `response.set_done` to `true`.
+When using `response.set_response_body` to send a response, you must also set `response.set_done` to `true`. This will allow the request to continue matching any subsequent rules, but will prevent the request from being forwarded to the origin.
 
 </Callout>
 

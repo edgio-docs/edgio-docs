@@ -15,6 +15,8 @@ post:
         application/json:
           schema:
             $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':
@@ -36,14 +38,23 @@ get:
             type: array
             items:
               $ref: ../components/schemas/ObjShort.yaml
-          examples:
-            response:
-              value:
-                - id: e3mpHQY5
-                  name: sample_acl_config
+          example:
+            [{
+                    "id": "fMKolMmb",
+                    "name": "My First Access Rule",
+                    "super_capacity": false,
+                    "last_modified_date": "2023-08-16T19:00:05.443647Z"
+                }, {
+                    "id": "N2A2zH3K",
+                    "name": "My Second Access Rule",
+                    "super_capacity": false,
+                    "last_modified_date": "2023-08-16T18:56:37.532190Z"
+                }
+            ]
     '404':      
       $ref: ../components/responses/error_404.yaml
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':
       $ref: ../components/responses/error_500.yaml
+

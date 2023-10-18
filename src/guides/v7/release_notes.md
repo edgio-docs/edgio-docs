@@ -23,8 +23,9 @@ See [NPM Packages Changelog](/guides/changelog) for release notes related to the
 
 | Date  | Description                                                                                                                            |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| 9/27/2023 | **Experimentation**: Introduced [Experimentation](/guides/experimentation). This capability allows you to serve different website experiences to your clients. Typically, it is used for canary releases, trunk-based development, dark releases, feature releases, and segmented releases.|
+| 9/27/2023 | **{{ PRODUCT }} {{ PRODUCT_EDGE }}**: Introduced [Experimentation](/guides/experimentation). This capability allows you to serve different website experiences to your clients. Typically, it is used for canary releases, trunk-based development, dark releases, feature releases, and segmented releases.|
 | 9/15/2023 | **{{ PRODUCT_SECURITY }}:** The [order in which Bot Manager detects bot traffic](/guides/security/bot_rules#bot-manager-advanced) has changed. It now checks whether traffic matches your rules before checking for known or spoofed bots.   |
+| 9/7/2023| **{{ PRODUCT }} {{ PRODUCT_EDGE }}**: Brotli [compression](/guides/performance/compression) is now supported by default. |
 
 ## August 2023 {/*august-2023*/}
 

@@ -473,7 +473,7 @@ components:
   securitySchemes:
     oAuthCacheScope:
       type: oauth2
-      description: [Learn how to generate and pass a token.](#section/Access-Tokens)
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
       flows:
         clientCredentials:
           tokenUrl: https://id.edgio.app/connect/token
@@ -481,7 +481,7 @@ components:
             app.cache: Authorizes full access for purging cached content and retrieve purge status information.
     oAuthConfigScope:
       type: oauth2
-      description: [Learn how to generate and pass a token.](#section/Access-Tokens)
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
       flows:
         clientCredentials:
           tokenUrl: https://id.edgio.app/connect/token
@@ -489,7 +489,7 @@ components:
             app.config: Authorizes full access for deploying CDN configurations, retrieving deployment information and log data, and managing environment variables.
     oAuthAccountsScope:
       type: oauth2
-      description: [Learn how to generate and pass a token.](#section/Access-Tokens)
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
       flows:
         clientCredentials:
           tokenUrl: https://id.edgio.app/connect/token
@@ -497,7 +497,7 @@ components:
             app.accounts: Authorizes full access to manage organizations, properties, and environments.
     oAuthSecurityScopes:
       type: oauth2
-      description: [Learn how to generate and pass a token.](#section/Access-Tokens)
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
       flows:
         clientCredentials:
           tokenUrl: https://id.edgio.app/connect/token

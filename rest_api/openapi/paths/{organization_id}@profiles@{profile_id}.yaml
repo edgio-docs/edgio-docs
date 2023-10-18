@@ -1,0 +1,58 @@
+parameters:
+  - $ref: ../components/parameters/organization_id.yaml
+  - $ref: ../components/parameters/profile_id.yaml
+get:
+  operationId: get-managed-rule
+  tags:
+    - Managed Rules (Profiles)
+  summary: Get Managed Rule
+  description: Retrieves a managed rule that identifies a ruleset configuration and describes a valid request.
+  responses:
+    '200':
+      description: OK. A managed rule was retrieved.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Profile.yaml
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+put:
+  operationId: update-managed-rule
+  tags:
+    - Managed Rules (Profiles)
+  summary: Update Managed Rule
+  description: Updates a managed rule that identifies a ruleset configuration and describes a valid request.
+  requestBody:
+    $ref: ../components/requestBodies/Profile.yaml
+  responses:
+    '200':
+      description: OK. A managed rule was updated.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+delete:
+  operationId: delete-managed-rule
+  tags:
+    - Managed Rules (Profiles)
+  summary: Delete Managed Rule
+  description: Deletes a managed rule.
+  responses:
+    '200':
+      description: OK. A managed rule was deleted.
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

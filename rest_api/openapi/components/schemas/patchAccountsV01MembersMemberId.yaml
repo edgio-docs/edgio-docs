@@ -1,0 +1,10 @@
+type: object
+properties:
+  role:
+    type: string
+    enum:
+      - read_only
+      - purger
+      - member
+      - admin
+      - super_admin

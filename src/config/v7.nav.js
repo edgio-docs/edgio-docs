@@ -211,6 +211,11 @@ const nav = {
       icon: 'edge-functions',
     },
     {
+      title: 'Experimentation',
+      path: 'experimentation',
+      icon: 'experimentation',
+    },
+    {
       title: 'Security',
       path: 'security',
       icon: 'shield',
@@ -595,6 +600,25 @@ const nav = {
         {
           title: 'REST API',
           path: 'develop/rest_api',
+          routes: [
+            {
+              title: 'Authentication',
+              path: 'develop/rest_api/authentication',
+            },
+            {
+              title: 'REST API Reference',
+              path: '/rest_api/',
+              external: true,
+            },
+            {
+              title: '',
+              path: '',
+            },
+            {
+              title: 'Legacy Purge (Clear-Cache)',
+              path: 'develop/rest_api/clear_cache',
+            },
+          ],
         },
         {
           title: 'EdgeJS API Reference',
@@ -678,8 +702,13 @@ const nav = {
           path: '',
         },
         {
-          title: 'Purge REST API',
-          path: '/guides/develop/rest_api',
+          title: 'REST API Reference',
+          path: '/rest_api/',
+          external: true,
+        },
+        {
+          title: 'Legacy Purge API',
+          path: '/guides/develop/rest_api/clear_cache',
         },
         {
           title: '',
@@ -707,6 +736,16 @@ const nav = {
       title: 'Upgrading',
       path: 'upgrading',
       icon: 'add-circle',
+      routes: [
+        {
+          title: 'Upgrading to Version 7',
+          path: 'upgrading/upgrading',
+        },
+        {
+          title: `Updating Packages`,
+          path: 'upgrading/updating_packages',
+        },
+      ],
     },
   ],
 };

@@ -1,0 +1,14 @@
+title: Waf Audit Action
+type: object
+properties:
+  id:
+    type: string
+    description: The enforcement action configuration's system-defined ID. 
+  name:
+    type: string
+    description: The enforcement action configuration's name.
+  enf_type:
+    description: This property must be set to `ALERT`.
+    type: string
+    enum:
+      - ALERT

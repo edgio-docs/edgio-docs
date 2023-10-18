@@ -36,7 +36,7 @@ Set up an API Security configuration by performing the following steps:
 	
 </Callout>
 
-### API Security Rule {/*api-security rule*/}
+### API Security Rule {/*api-security-rule*/}
 
 An API Security rule identifies an API schema and the set of requests that must conform to that JSON schema. By default, your API Security rule validates all `POST`, `PUT`, and `PATCH` requests against an API schema. However, you may restrict inspection by:
 
@@ -154,7 +154,7 @@ An API schema is a JSON schema that describes the structure for a valid API payl
 
 <Callout type="tip">
 
-  Use the `Derive Schema from Example` option to autogenerate a JSON schema from a sample JSON payload. You may then either build upon this base JSON schema to define a stricter set of requirements or save it without further modifications. 
+  Define an API schema from within the **Schemas** tab of an API Security ruleset configuration. Use the **Derive Schema from Example** option to autogenerate a JSON schema from a sample JSON payload. You may then either build upon this base JSON schema to define a stricter set of requirements or save it without further modifications. 
 
 </Callout>
 

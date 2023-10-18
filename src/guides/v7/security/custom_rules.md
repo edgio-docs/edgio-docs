@@ -436,7 +436,7 @@ You may create, modify, and delete custom rule sets.
     custom rule set will be identified. This name should be sufficiently
     descriptive to identify it when setting up a Security Application
     configuration.
-4.  By default, a blank rule is associated with each new custom rule. Under the **Rules** section, find the rule's **Rule message** option and set it to a brief description that identifies the purpose of this rule.
+4.  By default, a blank rule is associated with each new custom rule. Find the rule's **Rule message** option and set it to a brief description that identifies the purpose of this rule.
 5.  In the **Rule ID** option, specify a number between 66,000,000 and 66,999,999.
 6.  The default rule contains a default condition. Modify this condition to determine how {{ PRODUCT_SECURITY }} will identify threats.
     1.  From the condition's **Variable** option, select the request element through which {{ PRODUCT_SECURITY }} will identify threats.
@@ -479,7 +479,7 @@ You may create, modify, and delete custom rule sets.
 
         [Learn more.](#match-transformations)
 
-    8.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the value defined in step 6.6.
+    8.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the value defined in step 6.vi.
 7.  Optional. Click **+ Add Condition** to add another condition that must be met prior to threat identification. Repeat step 6 for this new condition.
 8.  Optional. Click **+ Add Rule** to add another rule through which {{ PRODUCT_SECURITY }} may identify threats. Repeat steps 6 and 7.
 9. Click **Save**.

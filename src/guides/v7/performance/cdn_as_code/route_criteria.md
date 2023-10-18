@@ -6,6 +6,25 @@ Route conditions allow you to match requests based on the request path, method, 
 
 As outlined in the [Route Criteria](/guides/performance/cdn_as_code#route-criteria) section of the CDN-as-Code guide, route criteria are defined as the first argument to the `Router` method being called in the `routes.js` file, such as `.match()`, `.get()`, `.post()`, etc.
 
+## Matching All Requests {/* matching-all-requests */}
+
+Match all requests through either of the following methods:
+
+- [`.match`](/docs/api/core/classes/router_Router.default.html#match) with an empty criteria object
+
+  ```js
+  router.match({}, {
+    /* ... */
+  });
+  ```
+
+- [`always`](/docs/api/core/classes/router_Router.default.html#always) (requires {{ PRODUCT }} v7.2.0 or later)
+
+  ```js
+  router.always({
+    /* ... */
+  });
+  ```
 ## Simple Path Matching {/* simple-path-matching */}
 
 The syntax for route paths utilizing simple matching is provided by [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp), which is the same library used by [Express](https://expressjs.com/).

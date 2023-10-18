@@ -1,0 +1,10 @@
+type: string
+description: Determines how requests will be identified. 
+enum:
+  - FILE_EXT
+  - REMOTE_ADDR
+  - REMOTE_ASN
+  - GEO
+  - REQUEST_HEADERS
+  - REQUEST_METHOD
+  - REQUEST_URI

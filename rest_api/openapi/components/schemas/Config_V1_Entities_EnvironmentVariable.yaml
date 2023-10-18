@@ -1,0 +1,48 @@
+required:
+  - '@id'
+  - '@type'
+  - id
+type: object
+properties:
+  '@type':
+    type: string
+    description: The resource's type.
+  '@id':
+    type: string
+    description: The resource's relative path.
+  '@links':
+    type: object
+    properties: {}
+    description: Links to related resources.
+  id:
+    type: string
+    description: Resource unique identifier.
+  environment_id:
+    type: string
+    description: >
+      An environment's system-defined ID (e.g.,
+      12345678-1234-1234-1234-1234567890ab).
+
+
+      From the Edgio Console, navigate to the desired environment and then click
+      **Settings**. It is listed under **Environment ID**.
+  key:
+    type: string
+    description: The environment variable's name.
+  value:
+    type: string
+    description: The environment variable's value.
+  secret:
+    type: boolean
+    description: >
+      Determines whether the environment variable's value will be masked using
+      asterisks. Once this property has been enabled, it cannot be unset.
+  created_at:
+    type: string
+    description: The environment variable's creation date and time (UTC).
+    format: date-time
+  updated_at:
+    type: string
+    description: The environment variable's last modification date and time (UTC).
+    format: date-time
+description: Config_V1_Entities_EnvironmentVariable model

@@ -1,0 +1,35 @@
+required:
+  - environment_id
+  - hostnames
+  - origins
+type: object
+properties:
+  environment_id:
+    type: string
+    description: >
+      An environment's system-defined ID (e.g.,
+      12345678-1234-1234-1234-1234567890ab).
+
+
+      From the Edgio Console, navigate to the desired environment and then click
+      **Settings**. It is listed under **Environment ID**.
+  origins:
+    $ref: >-
+      https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/origins
+  hostnames:
+    $ref: >-
+      https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/hostnames
+  rules:
+    $ref: >-
+      https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/rules
+  experiments:
+    type: array
+    description: List of experiments.
+    example:
+      - {}
+    items:
+      type: string
+description: >
+  Deploys your configuration to a specific environment. This deployment
+  overwrites any existing origin configurations, hostnames, rules, and
+  experiments.

@@ -2,8 +2,8 @@ get:
   operationId: get-bots-policies
   tags:
     - Bot Policies
-  summary: GET Bot Policies
-  description: GET list of policies you can apply in bot rule directive.
+  summary: Get Available Bot Policies
+  description: INTERNAL - GET list of policies you can apply in bot rule directive.
   responses:
     '200':
       description: List of policies

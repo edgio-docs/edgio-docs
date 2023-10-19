@@ -28,14 +28,16 @@ Key information about our REST API services:
 
 -   **Services:** Our REST API consists of the following services:
 
-    | Service      | Functionality                                                                                                               |
-    | ------------ | --------------------------------------------------------------------------------------------------------------------------- |
-    | cache        | Purge cached content and find out purge status.                                                                             |
-    | config       | Deploy CDN configurations, retrieve deployment information and log data, and manage environment variables.                  |
-    | accounts     | Retrieve and manage organizations, properties, and environments.                                                            |
-    | waf          | Retrieve and manage the following configurations: security apps, access rules, rate rules, custom rules, and managed rules. |
-    | bot-security | Retrieve and manage bot manager configurations.                                                                             |
-    | api-security | Retrieve and manage API security configurations.                                                                            |
+    | Service      | Version | Functionality                                                                                                               |
+    | ------------ |-------- | --------------------------------------------------------------------------------------------------------------------------- |
+    | cache        | 0.1     | Purge cached content and find out purge status.                                                                             |
+    | config       | 0.1     | Deploy CDN configurations, retrieve deployment information and log data, and manage environment variables.                  |
+    | accounts     | 0.1     | Retrieve and manage organizations, properties, and environments.                                                            |
+    | waf          | 0.9     | Retrieve and manage the following configurations: security apps, access rules, rate rules, custom rules, and managed rules. |
+    | bot-security | 0.9     | Retrieve and manage bot manager configurations.                                                                             |
+    | api-security | 0.9     | Retrieve and manage API security configurations.                                                                            |
+
+    Each service is versioned independently. This allows us to apply major enhancements to a service without impacting other services.
 
 ## Quick Start
 

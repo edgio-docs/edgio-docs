@@ -4,6 +4,8 @@ post:
     - Bot Rules
   summary: Add Bot Ruleset
   description: Creates a bot ruleset. A bot ruleset defines criteria for bot identification.
+  security:
+    - bot_securityScope: [app.bot_security]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   requestBody:
@@ -27,6 +29,8 @@ get:
     - Bot Rules
   summary: Get All Bot Rulesets
   description: Lists all bot rulesets. 
+  security:
+    - bot_securityScope: [app.bot_security]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   responses:

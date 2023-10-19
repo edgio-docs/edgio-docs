@@ -8,6 +8,8 @@ get:
     - Rate Rules (Limits)
   summary: GET specific version of limit object identified by version id
   description: Get get specific version of limit object.
+  security:
+    - wafScope: [app.waf]
   responses:
     '200':
       description: Version for that limit object.

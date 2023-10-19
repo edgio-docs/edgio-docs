@@ -7,6 +7,8 @@ get:
     - Rate Rules (Limits)
   summary: Get Rate Rule
   description: Retrieves a rate rule. A rate rule determines the maximum number of requests that will be allowed within a given time period.
+  security:
+    - wafScope: [app.waf]
   responses:
     '200':
       description: OK. A rate rule was retrieved.

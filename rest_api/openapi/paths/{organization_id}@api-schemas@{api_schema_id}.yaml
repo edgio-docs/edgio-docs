@@ -7,6 +7,8 @@ get:
     - API Schemas
   summary: Get API Schema
   description: Retrieves an API schema. An API schema contains a JSON schema (draft 4) that may be used to screen API requests. 
+  security:
+    - api_securityScope: [app.api_security]
   responses:
     '200':
       description: OK. An API schema was retrieved.
@@ -97,6 +99,8 @@ put:
 
     [View key configuration information.](https://docs.edg.io/guides/security/api_security#api-schema)
 
+  security:
+    - api_securityScope: [app.api_security]
   requestBody:
     $ref: ../components/requestBodies/APISchema.yaml
   responses:
@@ -120,6 +124,8 @@ delete:
     - API Schemas
   summary: Delete API Schema
   description: Deletes an API schema.
+  security:
+    - api_securityScope: [app.api_security]
   responses:
     '200':
       description: OK. An API Schema was deleted.

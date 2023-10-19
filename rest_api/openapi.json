@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Edgio REST API",
-    "version": "0.0.1",
+    "version": "0.0.4",
     "x-logo": {
       "url": "https://docs.edg.io/_next/static/media/edgio-dark.ea0d686f.webp",
       "backgroundColor": "#FFFFFF",
@@ -2552,7 +2552,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "wafScope": [
             "app.waf"
           ]
         }
@@ -2564,6 +2564,13 @@
         ],
         "summary": "Initialize Security App",
         "description": "Initializes Security App by creating your first Security App configuration. If one or more Security App(s) exist, you may only use the [Manage All Security Apps operation](#tag/Security-Applications-(Scopes)/operation/update-security-applications) to add, update, or delete Security Apps.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -2603,6 +2610,13 @@
         ],
         "summary": "Get All Security Apps",
         "description": "Retrieves a list of Security Apps.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -2742,6 +2756,13 @@
         ],
         "summary": "Manage All Security Apps",
         "description": "\nCreates, updates, and deletes one or more Security App(s). Each Security App:\n\n-   Identifies the set of traffic to which it applies by hostname, a URL path, or both.\n\n-   Defines how threats will be detected through access rules, custom rules, managed rules, and rate rules.\n\n    If one or more condition group(s) have been defined within a rate rule, then traffic will only be rate limited when it also satisfies at least one of those condition groups.\n\n-   Defines how threats will be handled through a production enforcement action, audit enforcement action, or both.\n\n**Key information:**\n\n-   This operation allows you to quickly create, update, or delete one or more Security App(s). These actions cannot be undone.\n\n-   Create a Security App by adding a `scope` object to the request.\n\n-   Update a Security App by modifying the corresponding `scope` object in the request. The `id` property identifies the Security App that will be updated.\n\n-   Delete a Security App by excluding the corresponding `scope` object from the request.\n\n    All Security Apps that are not explicitly defined within the request will be deleted.\n\n-   The recommended method for updating your Security Apps is to perform the following steps:\n\n    1.  If you have not created at least one Security App, then you should do so either through the Edgio Console or through the [Initialize Security Apps operation](#tag/Security-Applications-(Scopes)/operation/create-security-applications).\n\n    2.  Retrieve your current set of Security Apps through the [Get All Security Apps operation](#tag/Security-Applications-(Scopes)/operation/get-security-applications).\n\n    3.  Add, modify, or remove Security App(s) from the response as needed.\n\n    4.  Pass the updated payload to this operation.\n",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -2783,7 +2804,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "wafScope": [
             "app.waf"
           ]
         }
@@ -2795,6 +2816,13 @@
         ],
         "summary": "Add Access Rule",
         "description": "Creates an access rule that identifies threats through whitelists, accesslists, and blacklists.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -2834,6 +2862,13 @@
         ],
         "summary": "Get All Access Rules",
         "description": "Retrieves a list of access rules. An access rule identifies whether a request is a threat through whitelists, accesslists, and blacklists.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -2887,7 +2922,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "wafScope": [
             "app.waf"
           ]
         }
@@ -2907,6 +2942,13 @@
         ],
         "summary": "Get Access Rule",
         "description": "Retrieves an access rule that identifies threats through whitelists, accesslists, and blacklists.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. An access rule was retrieved.",
@@ -3057,6 +3099,13 @@
         ],
         "summary": "Update Access Rule",
         "description": "Updates an access rule that identifies threats through whitelists, accesslists, and blacklists.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/Acl"
         },
@@ -3094,6 +3143,13 @@
         ],
         "summary": "Delete Access Rule",
         "description": "Deletes an access rule.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. An access rule was deleted.",
@@ -3130,7 +3186,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "wafScope": [
             "app.waf"
           ]
         }
@@ -3142,6 +3198,13 @@
         ],
         "summary": "Add Custom Rule",
         "description": "Creates a custom rule that defines custom threat assessment criteria.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -3181,6 +3244,13 @@
         ],
         "summary": "Get All Custom Rules",
         "description": "Retrieves a list of custom rules. A custom rule allows you to define custom threat assessment criterion.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -3231,7 +3301,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "wafScope": [
             "app.waf"
           ]
         }
@@ -3251,6 +3321,13 @@
         ],
         "summary": "Get Custom Rule",
         "description": "Retrieves a custom rule. Use a custom rule to define custom threat assessment criteria.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. A custom rule was retrieved.",
@@ -3323,6 +3400,13 @@
         ],
         "summary": "Update Custom Rule",
         "description": "Updates a custom rule that defines custom threat assessment criteria.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/Rule"
         },
@@ -3360,6 +3444,13 @@
         ],
         "summary": "Delete Custom Rule",
         "description": "Deletes a custom rule.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. A custom rule was deleted.",
@@ -3396,7 +3487,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "wafScope": [
             "app.waf"
           ]
         }
@@ -3408,6 +3499,13 @@
         ],
         "summary": "Add Rate Rule",
         "description": "Creates a rate rule that determines the maximum number of requests that will be allowed within a given time period.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -3453,6 +3551,13 @@
         ],
         "summary": "Get All Rate Rules",
         "description": "Retrieves a list of rate rules. A rate rule determines the maximum number of requests that will be allowed within a given time period.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -3501,7 +3606,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "wafScope": [
             "app.waf"
           ]
         }
@@ -3521,6 +3626,13 @@
         ],
         "summary": "Get Rate Rule",
         "description": "Retrieves a rate rule. A rate rule determines the maximum number of requests that will be allowed within a given time period.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. A rate rule was retrieved.",
@@ -3662,7 +3774,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "wafScope": [
             "app.waf"
           ]
         }
@@ -3674,6 +3786,13 @@
         ],
         "summary": "Add Managed Rule",
         "description": "Creates a managed rule that identifies a ruleset configuration and describes a valid request.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -3713,6 +3832,13 @@
         ],
         "summary": "Get All Managed Rules",
         "description": "Retrieves a list of managed rules. A managed rule identifies a ruleset configuration and describes a valid request.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -3765,7 +3891,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "wafScope": [
             "app.waf"
           ]
         }
@@ -3785,6 +3911,13 @@
         ],
         "summary": "Get Managed Rule",
         "description": "Retrieves a managed rule that identifies a ruleset configuration and describes a valid request.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. A managed rule was retrieved.",
@@ -3867,6 +4000,13 @@
         ],
         "summary": "Update Managed Rule",
         "description": "Updates a managed rule that identifies a ruleset configuration and describes a valid request.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/Profile"
         },
@@ -3904,6 +4044,13 @@
         ],
         "summary": "Delete Managed Rule",
         "description": "Deletes a managed rule.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. A managed rule was deleted.",
@@ -3940,7 +4087,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "wafScope": [
             "app.waf"
           ]
         }
@@ -3952,6 +4099,13 @@
         ],
         "summary": "Get Edgio Rulesets",
         "description": "Retrieve a list of available Edgio rulesets.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. A list of Edgio rulesets was retrieved.",
@@ -4037,7 +4191,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "wafScope": [
             "app.waf"
           ]
         }
@@ -4049,6 +4203,13 @@
         ],
         "summary": "Get Edgio Ruleset Versions",
         "description": "Retrieve a list of the available versions for a specific Edgio ruleset.",
+        "security": [
+          {
+            "wafScope": [
+              "app.waf"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. A list of the available versions for a specific Edgio ruleset was retrieved.",
@@ -4081,7 +4242,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "api_securityScope": [
             "app.api_security"
           ]
         }
@@ -4093,6 +4254,13 @@
         ],
         "summary": "Add API Security Ruleset",
         "description": "Creates an API Security ruleset.",
+        "security": [
+          {
+            "api_securityScope": [
+              "app.api_security"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -4132,6 +4300,13 @@
         ],
         "summary": "Get All API Security Rulesets",
         "description": "Retrieves a list of API Security rulesets.",
+        "security": [
+          {
+            "api_securityScope": [
+              "app.api_security"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -4182,7 +4357,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "api_securityScope": [
             "app.api_security"
           ]
         }
@@ -4202,6 +4377,13 @@
         ],
         "summary": "Get API Security Ruleset",
         "description": "Retrieves an API Security ruleset.",
+        "security": [
+          {
+            "api_securityScope": [
+              "app.api_security"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. An API Security ruleset was retrieved.",
@@ -4254,6 +4436,13 @@
         ],
         "summary": "Update API Security Ruleset",
         "description": "Updates an API Security ruleset.",
+        "security": [
+          {
+            "api_securityScope": [
+              "app.api_security"
+            ]
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/APIGateway"
         },
@@ -4291,6 +4480,13 @@
         ],
         "summary": "Delete API Security Ruleset",
         "description": "Deletes an API Security ruleset.",
+        "security": [
+          {
+            "api_securityScope": [
+              "app.api_security"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. An API Security ruleset was deleted.",
@@ -4327,7 +4523,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "api_securityScope": [
             "app.api_security"
           ]
         }
@@ -4347,6 +4543,13 @@
         ],
         "summary": "Get API Security Ruleset's API Schemas",
         "description": "Retrieves a list of API schemas associated with an API Security ruleset.",
+        "security": [
+          {
+            "api_securityScope": [
+              "app.api_security"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. A list of API schemas was retrieved.",
@@ -4496,7 +4699,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "api_securityScope": [
             "app.api_security"
           ]
         }
@@ -4508,6 +4711,13 @@
         ],
         "summary": "Add API Schema",
         "description": "\nCreates an API schema. An API schema contains a JSON schema (draft 4) that may be used to screen API requests. \n\n[View key configuration information.](https://docs.edg.io/guides/security/api_security#api-schema)\n",
+        "security": [
+          {
+            "api_securityScope": [
+              "app.api_security"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -4547,6 +4757,13 @@
         ],
         "summary": "Get All API Schemas",
         "description": "Retrieves a list of API schemas.",
+        "security": [
+          {
+            "api_securityScope": [
+              "app.api_security"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -4597,7 +4814,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "api_securityScope": [
             "app.api_security"
           ]
         }
@@ -4617,6 +4834,13 @@
         ],
         "summary": "Get API Schema",
         "description": "Retrieves an API schema. An API schema contains a JSON schema (draft 4) that may be used to screen API requests.",
+        "security": [
+          {
+            "api_securityScope": [
+              "app.api_security"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. An API schema was retrieved.",
@@ -4711,6 +4935,13 @@
         ],
         "summary": "Update API Schema",
         "description": "\nUpdates an API schema. An API schema contains a JSON schema (draft 4) that may be used to screen API requests. \n\n[View key configuration information.](https://docs.edg.io/guides/security/api_security#api-schema)\n",
+        "security": [
+          {
+            "api_securityScope": [
+              "app.api_security"
+            ]
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/APISchema"
         },
@@ -4748,6 +4979,13 @@
         ],
         "summary": "Delete API Schema",
         "description": "Deletes an API schema.",
+        "security": [
+          {
+            "api_securityScope": [
+              "app.api_security"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. An API Schema was deleted.",
@@ -4784,7 +5022,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "bot_securityScope": [
             "app.bot_security"
           ]
         }
@@ -4796,6 +5034,13 @@
         ],
         "summary": "Add Bot Ruleset",
         "description": "Creates a bot ruleset. A bot ruleset defines criteria for bot identification.",
+        "security": [
+          {
+            "bot_securityScope": [
+              "app.bot_security"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -4835,6 +5080,13 @@
         ],
         "summary": "Get All Bot Rulesets",
         "description": "Lists all bot rulesets.",
+        "security": [
+          {
+            "bot_securityScope": [
+              "app.bot_security"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -4885,7 +5137,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "bot_securityScope": [
             "app.bot_security"
           ]
         }
@@ -4905,6 +5157,13 @@
         ],
         "summary": "Get Bot Ruleset",
         "description": "Retrieves a bot ruleset. A bot ruleset defines criteria for bot identification.",
+        "security": [
+          {
+            "bot_securityScope": [
+              "app.bot_security"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. A bot ruleset was retrieved.",
@@ -4971,6 +5230,13 @@
         ],
         "summary": "Update Bot Ruleset",
         "description": "Updates a bot ruleset. A bot ruleset defines criteria for bot identification.",
+        "security": [
+          {
+            "bot_securityScope": [
+              "app.bot_security"
+            ]
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/Bot"
         },
@@ -5008,6 +5274,13 @@
         ],
         "summary": "Delete Bot Ruleset",
         "description": "Deletes a bot ruleset. A bot ruleset defines criteria for bot identification.",
+        "security": [
+          {
+            "bot_securityScope": [
+              "app.bot_security"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. A bot ruleset was deleted.",
@@ -5044,7 +5317,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "bot_securityScope": [
             "app.bot_security"
           ]
         }
@@ -5056,6 +5329,13 @@
         ],
         "summary": "Add Bot Manager Configuration",
         "description": "Creates a bot manager configuration.",
+        "security": [
+          {
+            "bot_securityScope": [
+              "app.bot_security"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -5095,6 +5375,13 @@
         ],
         "summary": "Get All Bot Manager Configurations",
         "description": "Retrieves a list of bot manager configurations. A bot manager configuration can detect and mitigate undesired bot traffic.",
+        "security": [
+          {
+            "bot_securityScope": [
+              "app.bot_security"
+            ]
+          }
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/organization_id"
@@ -5145,7 +5432,7 @@
       ],
       "security": [
         {
-          "securityScopes": [
+          "bot_securityScope": [
             "app.bot_security"
           ]
         }
@@ -5165,6 +5452,13 @@
         ],
         "summary": "Get Bot Manager Configuration",
         "description": "Retrieves a bot manager configuration.",
+        "security": [
+          {
+            "bot_securityScope": [
+              "app.bot_security"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. A bot manager configuration was retrieved.",
@@ -5223,6 +5517,13 @@
         ],
         "summary": "Update Bot Manager Configuration",
         "description": "Updates a bot manager configuration.",
+        "security": [
+          {
+            "bot_securityScope": [
+              "app.bot_security"
+            ]
+          }
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/BotManager"
         },
@@ -5260,6 +5561,13 @@
         ],
         "summary": "Delete Bot Manager Configuration",
         "description": "Deletes a bot manager configuration.",
+        "security": [
+          {
+            "bot_securityScope": [
+              "app.bot_security"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. A bot manager configuration was deleted.",
@@ -5296,7 +5604,7 @@
       ],
       "security": [
         {
-          "securityScopes": {}
+          "securityScope": {}
         }
       ],
       "get": {
@@ -5306,6 +5614,13 @@
         ],
         "summary": "Get Available Known Bots",
         "description": "Retrieves a list of all known bots. Each known bot is identified by a token (e.g., `google` and `yahoo`).",
+        "security": [
+          {
+            "bot_securityScope": [
+              "app.bot_security"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK. A list of known bots was retrieved.",
@@ -5382,16 +5697,38 @@
           }
         }
       },
-      "securityScopes": {
+      "wafScope": {
         "type": "oauth2",
         "description": "Learn how to [generate and pass a token.](#section/Access-Tokens)",
         "flows": {
           "clientCredentials": {
             "tokenUrl": "https://id.edgio.app/connect/token",
             "scopes": {
-              "app.waf": "Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules.",
-              "app.bot_security": "Authorizes full access to Bot Manager.",
+              "app.waf": "Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules."
+            }
+          }
+        }
+      },
+      "api_securityScope": {
+        "type": "oauth2",
+        "description": "Learn how to [generate and pass a token.](#section/Access-Tokens)",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://id.edgio.app/connect/token",
+            "scopes": {
               "app.api_security": "Authorizes full access to API Security."
+            }
+          }
+        }
+      },
+      "bot_securityScope": {
+        "type": "oauth2",
+        "description": "Learn how to [generate and pass a token.](#section/Access-Tokens)",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://id.edgio.app/connect/token",
+            "scopes": {
+              "app.bot_security": "Authorizes full access to Bot Manager."
             }
           }
         }

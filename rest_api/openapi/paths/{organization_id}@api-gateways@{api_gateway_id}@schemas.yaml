@@ -7,6 +7,8 @@ get:
     - API Gateways
   summary: Get API Security Ruleset's API Schemas
   description: Retrieves a list of API schemas associated with an API Security ruleset. 
+  security:
+    - api_securityScope: [app.api_security]
   responses:
     '200':
       description: OK. A list of API schemas was retrieved.

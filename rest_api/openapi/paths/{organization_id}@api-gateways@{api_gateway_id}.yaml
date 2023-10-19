@@ -7,6 +7,8 @@ get:
     - API Gateways
   summary: Get API Security Ruleset
   description: Retrieves an API Security ruleset.
+  security:
+    - api_securityScope: [app.api_security]
   responses:
     '200':
       description: OK. An API Security ruleset was retrieved.
@@ -49,6 +51,8 @@ put:
     - API Gateways
   summary: Update API Security Ruleset
   description: Updates an API Security ruleset.
+  security:
+    - api_securityScope: [app.api_security]
   requestBody:
     $ref: ../components/requestBodies/APIGateway.yaml
   responses:
@@ -72,6 +76,8 @@ delete:
     - API Gateways
   summary: Delete API Security Ruleset
   description: Deletes an API Security ruleset.
+  security:
+    - api_securityScope: [app.api_security]
   responses:
     '200':
       description: OK. An API Security ruleset was deleted.

@@ -4,6 +4,8 @@ post:
     - Rate Rules (Limits)
   summary: Add Rate Rule
   description: Creates a rate rule that determines the maximum number of requests that will be allowed within a given time period.
+  security:
+    - wafScope: [app.waf]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   requestBody:
@@ -31,6 +33,8 @@ get:
     - Rate Rules (Limits)
   summary: Get All Rate Rules
   description: Retrieves a list of rate rules. A rate rule determines the maximum number of requests that will be allowed within a given time period.
+  security:
+    - wafScope: [app.waf]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   responses:

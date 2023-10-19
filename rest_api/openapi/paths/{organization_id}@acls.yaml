@@ -4,6 +4,8 @@ post:
     - Access Control List (ACL)
   summary: Add Access Rule
   description: Creates an access rule that identifies threats through whitelists, accesslists, and blacklists.
+  security:
+    - wafScope: [app.waf]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   requestBody:
@@ -27,6 +29,8 @@ get:
     - Access Control List (ACL)
   summary: Get All Access Rules
   description: Retrieves a list of access rules. An access rule identifies whether a request is a threat through whitelists, accesslists, and blacklists.
+  security:
+    - wafScope: [app.waf]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   responses:

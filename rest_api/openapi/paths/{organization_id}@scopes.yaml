@@ -4,6 +4,8 @@ post:
     - Security Applications (Scopes)
   summary: Initialize Security App
   description: Initializes Security App by creating your first Security App configuration. If one or more Security App(s) exist, you may only use the [Manage All Security Apps operation](#tag/Security-Applications-(Scopes)/operation/update-security-applications) to add, update, or delete Security Apps.
+  security:
+    - wafScope: [app.waf]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   requestBody:
@@ -27,6 +29,8 @@ get:
     - Security Applications (Scopes)
   summary: Get All Security Apps
   description: Retrieves a list of Security Apps.
+  security:
+    - wafScope: [app.waf]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   responses:
@@ -182,6 +186,8 @@ put:
 
         4.  Pass the updated payload to this operation.
 
+  security:
+    - wafScope: [app.waf]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   requestBody:
@@ -206,6 +212,8 @@ put:
 #     - Security Applications (Scopes)
 #   summary: Delete Security App
 #   description: Deletes a Security App.
+#   security:
+#     - wafScope: [app.waf]
 #   parameters:
 #     - $ref: ../components/parameters/organization_id.yaml
 #   responses:

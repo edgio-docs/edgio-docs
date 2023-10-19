@@ -18,4 +18,6 @@ export const siteConfig = {
   analytics: {
     gtmId: 'GTM-5WCD2BK',
   },
+  sentryDSN:
+    'https://d8acf889ce6f76303aca7c2c8b977761@o4506077343252480.ingest.sentry.io/4506077345939456',
 };

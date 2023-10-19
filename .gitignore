@@ -50,3 +50,6 @@ rest_api/dist
 .fleet
 .idea
 .vscode/
+
+# Sentry Config File
+.sentryclirc

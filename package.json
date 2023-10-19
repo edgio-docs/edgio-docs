@@ -54,6 +54,7 @@
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.13",
     "@octokit/core": "^4.2.4",
+    "@sentry/nextjs": "^7.74.1",
     "cheerio": "^1.0.0-rc.12",
     "classnames": "^2.2.6",
     "fast-levenshtein": "^3.0.0",

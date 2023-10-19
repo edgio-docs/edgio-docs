@@ -42,7 +42,7 @@ properties:
     type: string
     description: The system-defined ID for the custom rule that will audit your traffic.
   rules_audit_action:
-    description: Identifies the type of action that will take place when the access rule defined within the `rules_audit_id` property is violated.
+    description: The type of action that will take place when the access rule defined within the `rules_audit_id` property is violated.
     allOf:
       - $ref: ./WafAuditAction.yaml
   rules_prod_id:

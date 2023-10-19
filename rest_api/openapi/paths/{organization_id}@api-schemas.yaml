@@ -1,16 +1,21 @@
 post:
-  operationId: create-custom-rule
+  operationId: create-api-schema
   tags:
-    - Custom Rules
-  summary: Add Custom Rule
-  description: Creates a custom rule that defines custom threat assessment criteria.
+    - API Schemas
+  summary: Add API Schema
+  description: |
+
+    Creates an API schema. An API schema contains a JSON schema (draft 4) that may be used to screen API requests. 
+
+    [View key configuration information.](https://docs.edg.io/guides/security/api_security#api-schema)
+
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   requestBody:
-    $ref: ../components/requestBodies/Rule.yaml
+    $ref: ../components/requestBodies/APISchema.yaml
   responses:
     '200':
-      description: OK. A custom rule was created.
+      description: OK. An API schema was created.
       content:
         application/json:
           schema:
@@ -22,16 +27,16 @@ post:
     '500':
       $ref: ../components/responses/error_500.yaml
 get:
-  operationId: get-custom-rules
+  operationId: get-api-schemas
   tags:
-    - Custom Rules
-  summary: Get All Custom Rules
-  description: Retrieves a list of custom rules. A custom rule allows you to define custom threat assessment criterion.
+    - API Schemas
+  summary: Get All API Schemas
+  description: Retrieves a list of API schemas.
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   responses:
     '200':
-      description: OK. A list of custom rules was retrieved.
+      description: OK. A list of API schemas was retrieved.
       content:
         application/json:
           schema:
@@ -42,9 +47,8 @@ get:
             response:
               value:
                 - id: e3mpHQY5
-                  name: sample_rule_config
-                  last_modified_date: 2023-09-29T22:28:09.790308Z
-
+                  name: sample_api_schema_config
+                  last_modified_date: 2023-09-29T23:31:41.193941Z
     '404':
       $ref: ../components/responses/error_404.yaml
     '429':

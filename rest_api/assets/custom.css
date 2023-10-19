@@ -6,6 +6,11 @@ body {margin: 0;padding: 0;}
     text-align: left;
 }
 
+/* hide version  */
+h1 span {
+  display: none;
+}
+
 /* search */
 .wfptf,
 .bzckyT,

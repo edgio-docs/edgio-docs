@@ -117,8 +117,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.config"
+          "oAuthConfigScope": [
+            "app.config"
           ]
         }
       ],
@@ -212,8 +212,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.config"
+          "oAuthConfigScope": [
+            "app.config"
           ]
         }
       ],
@@ -408,8 +408,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.config"
+          "oAuthConfigScope": [
+            "app.config"
           ]
         }
       ],
@@ -503,8 +503,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.config"
+          "oAuthConfigScope": [
+            "app.config"
           ]
         }
       ],
@@ -598,8 +598,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.config"
+          "oAuthConfigScope": [
+            "app.config"
           ]
         }
       ],
@@ -692,8 +692,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.config"
+          "oAuthConfigScope": [
+            "app.config"
           ]
         }
       ],
@@ -787,8 +787,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.config"
+          "oAuthConfigScope": [
+            "app.config"
           ]
         }
       ],
@@ -961,8 +961,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.config"
+          "oAuthConfigScope": [
+            "app.config"
           ]
         }
       ],
@@ -1165,8 +1165,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.cache"
+          "oAuthCacheScope": [
+            "app.cache"
           ]
         }
       ],
@@ -1260,8 +1260,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.config"
+          "oAuthConfigScope": [
+            "app.config"
           ]
         }
       ],
@@ -1365,8 +1365,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.accounts"
+          "oAuthAccountsScope": [
+            "app.accounts"
           ]
         }
       ],
@@ -1630,8 +1630,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.accounts"
+          "oAuthAccountsScope": [
+            "app.accounts"
           ]
         }
       ],
@@ -1826,8 +1826,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.accounts"
+          "oAuthAccountsScope": [
+            "app.accounts"
           ]
         }
       ],
@@ -2091,8 +2091,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.accounts"
+          "oAuthAccountsScope": [
+            "app.accounts"
           ]
         }
       ],
@@ -2287,8 +2287,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.accounts"
+          "oAuthAccountsScope": [
+            "app.accounts"
           ]
         }
       ],
@@ -2552,8 +2552,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.waf"
+          "oAuthSecurityScopes": [
+            "app.waf"
           ]
         }
       ],
@@ -2783,8 +2783,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.waf"
+          "oAuthSecurityScopes": [
+            "app.waf"
           ]
         }
       ],
@@ -2887,8 +2887,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.waf"
+          "oAuthSecurityScopes": [
+            "app.waf"
           ]
         }
       ],
@@ -3130,8 +3130,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.waf"
+          "oAuthSecurityScopes": [
+            "app.waf"
           ]
         }
       ],
@@ -3231,8 +3231,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.waf"
+          "oAuthSecurityScopes": [
+            "app.waf"
           ]
         }
       ],
@@ -3396,8 +3396,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.waf"
+          "oAuthSecurityScopes": [
+            "app.waf"
           ]
         }
       ],
@@ -3501,8 +3501,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.waf"
+          "oAuthSecurityScopes": [
+            "app.waf"
           ]
         }
       ],
@@ -3662,8 +3662,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.waf"
+          "oAuthSecurityScopes": [
+            "app.waf"
           ]
         }
       ],
@@ -3765,8 +3765,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.waf"
+          "oAuthSecurityScopes": [
+            "app.waf"
           ]
         }
       ],
@@ -3940,8 +3940,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.waf"
+          "oAuthSecurityScopes": [
+            "app.waf"
           ]
         }
       ],
@@ -4037,8 +4037,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.waf"
+          "oAuthSecurityScopes": [
+            "app.waf"
           ]
         }
       ],
@@ -4081,8 +4081,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.api_security"
+          "oAuthSecurityScopes": [
+            "app.api_security"
           ]
         }
       ],
@@ -4182,8 +4182,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.api_security"
+          "oAuthSecurityScopes": [
+            "app.api_security"
           ]
         }
       ],
@@ -4327,8 +4327,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.api_security"
+          "oAuthSecurityScopes": [
+            "app.api_security"
           ]
         }
       ],
@@ -4496,8 +4496,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.api_security"
+          "oAuthSecurityScopes": [
+            "app.api_security"
           ]
         }
       ],
@@ -4597,8 +4597,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.api_security"
+          "oAuthSecurityScopes": [
+            "app.api_security"
           ]
         }
       ],
@@ -4784,8 +4784,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.bot_security"
+          "oAuthSecurityScopes": [
+            "app.bot_security"
           ]
         }
       ],
@@ -4885,8 +4885,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.bot_security"
+          "oAuthSecurityScopes": [
+            "app.bot_security"
           ]
         }
       ],
@@ -5044,8 +5044,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.bot_security"
+          "oAuthSecurityScopes": [
+            "app.bot_security"
           ]
         }
       ],
@@ -5145,8 +5145,8 @@
       ],
       "security": [
         {
-          "oAuthCC": [
-            "app.app.bot_security"
+          "oAuthSecurityScopes": [
+            "app.bot_security"
           ]
         }
       ],
@@ -5296,7 +5296,7 @@
       ],
       "security": [
         {
-          "oAuthCC": {}
+          "oAuthSecurityScopes": {}
         }
       ],
       "get": {
@@ -5346,16 +5346,49 @@
   },
   "components": {
     "securitySchemes": {
-      "oAuthCC": {
+      "oAuthCacheScope": {
         "type": "oauth2",
-        "description": "This API uses OAuth 2 with the client credentials grant flow. [Learn more.](#section/Access-Tokens)",
+        "description": "Learn how to [generate and pass a token.](#section/Access-Tokens)",
         "flows": {
           "clientCredentials": {
             "tokenUrl": "https://id.edgio.app/connect/token",
             "scopes": {
-              "app.cache": "Authorizes full access for purging cached content and retrieve purge status information.",
-              "app.config": "Authorizes full access for deploying CDN configurations, retrieving deployment information and log data, and managing environment variables.",
-              "app.accounts": "Authorizes full access to manage organizations, properties, and environments.",
+              "app.cache": "Authorizes full access for purging cached content and retrieve purge status information."
+            }
+          }
+        }
+      },
+      "oAuthConfigScope": {
+        "type": "oauth2",
+        "description": "Learn how to [generate and pass a token.](#section/Access-Tokens)",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://id.edgio.app/connect/token",
+            "scopes": {
+              "app.config": "Authorizes full access for deploying CDN configurations, retrieving deployment information and log data, and managing environment variables."
+            }
+          }
+        }
+      },
+      "oAuthAccountsScope": {
+        "type": "oauth2",
+        "description": "Learn how to [generate and pass a token.](#section/Access-Tokens)",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://id.edgio.app/connect/token",
+            "scopes": {
+              "app.accounts": "Authorizes full access to manage organizations, properties, and environments."
+            }
+          }
+        }
+      },
+      "oAuthSecurityScopes": {
+        "type": "oauth2",
+        "description": "Learn how to [generate and pass a token.](#section/Access-Tokens)",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://id.edgio.app/connect/token",
+            "scopes": {
               "app.waf": "Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules.",
               "app.bot_security": "Authorizes full access to Bot Manager.",
               "app.api_security": "Authorizes full access to API Security."

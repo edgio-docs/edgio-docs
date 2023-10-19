@@ -3,7 +3,9 @@ get:
   tags:
     - Edgio Rulesets
   summary: Get Edgio Ruleset Versions
-  description: Retrieve a list of the available versions for a specific Edgio ruleset. You may assign an Edgio ruleset to a managed rule to determine the set of policies and rules through traffic can be screened.
+  description: Retrieve a list of the available versions for a specific Edgio ruleset. 
+  security:
+    - wafScope: [app.waf]
   responses:
     '200':
       description: OK. A list of the available versions for a specific Edgio ruleset was retrieved.
@@ -13,3 +15,11 @@ get:
             type: array
             items:
               type: string
+          example:
+            [
+                "2023-07-15",
+                "latest",
+                "2023-04-15",
+                "2022-11-04",
+                "2022-12-14"
+            ]

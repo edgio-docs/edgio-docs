@@ -14,14 +14,18 @@ See [NPM Packages Changelog](/guides/changelog) for release notes related to the
 
 | Date  | Description                                                                                                                            |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| 10/18/2023 | **REST API:** Introduced [Bot Security](/rest_api#tag/Bot-Managers) and [API Security](/rest_api#tag/API-Gateways) management.
+| 10/17/2023 | **Reports:** An environment's **Traffic** report now:<ul><li>Breaks down the following statistics by country: bytes transferred, requests, errors, origin time to first byte (TTFB), response time, and cache hit rate.</li><li>Provides  origin TTFB and response time for different average latency levels (i.e., P75, P95, and P99) on a per rule or country basis. These statistics provide insight into latency experienced by the average user (P75), the slowest 5% (P95), and the slowest 1% (P99). </li><li>Provides average throughput statistics (Mbps or Kbps) for origin to edge (Throughput In) and edge to client (Throughput Out) traffic.</li></ul> |
+| 10/16/2023 | **REST API:** Introduced [environment variable management](/rest_api#tag/environment-variables). |
 | 10/13/2023 | **REST API:** Introduced a new set of REST API services that use [OAuth 2.0 authentication](/guides/develop/rest_api/authentication#oauth20-authorization-flow). <br /><br />What can I do with this REST API? <ul><li>[Purge cache.](/rest_api#tag/purge-requests)</li><li>[Deploy CDN configurations.](/rest_api#tag/configs)</li><li>[Retrieve and upload TLS certificates.](/rest_api#tag/tls-certs)</li><li>[Manage Security Applications, access rules, rate rules, custom rules, and managed rules.](/rest_api#tag/Access-Control-List-(ACL))</li><li>[Retrieve, update, or delete your organization.](/rest_api#tag/organizations)</li><li>[Manage properties.](/rest_api#tag/properties)</li><li>[Manage environments.](/rest_api#tag/environments)</li></ul> |
-| 10/16/2023 | **REST API:** Introduced [environment variable management](/rest_api#tag/environment-variables).
 
 ## September 2023 {/*september-2023*/}
 
 | Date  | Description                                                                                                                            |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| 9/27/2023 | **{{ PRODUCT }} {{ PRODUCT_EDGE }}**: Introduced [Experimentation](/guides/experimentation). This capability allows you to serve different website experiences to your clients. Typically, it is used for canary releases, trunk-based development, dark releases, feature releases, and segmented releases.|
 | 9/15/2023 | **{{ PRODUCT_SECURITY }}:** The [order in which Bot Manager detects bot traffic](/guides/security/bot_rules#bot-manager-advanced) has changed. It now checks whether traffic matches your rules before checking for known or spoofed bots.   |
+| 9/7/2023| **{{ PRODUCT }} {{ PRODUCT_EDGE }}**: Brotli [compression](/guides/performance/compression) is now supported by default. |
 
 ## August 2023 {/*august-2023*/}
 

@@ -8,6 +8,8 @@ get:
     - Security Applications (Scopes)
   summary: GET specific version of scope object identified by version id
   description: Get get specific version of scope object.
+  security:
+    - wafScope: [app.waf]
   responses:
     '200':
       description: Version for that scope object.

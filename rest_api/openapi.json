@@ -117,7 +117,7 @@
       ],
       "security": [
         {
-          "oAuthConfigScope": [
+          "configScope": [
             "app.config"
           ]
         }
@@ -212,7 +212,7 @@
       ],
       "security": [
         {
-          "oAuthConfigScope": [
+          "configScope": [
             "app.config"
           ]
         }
@@ -408,7 +408,7 @@
       ],
       "security": [
         {
-          "oAuthConfigScope": [
+          "configScope": [
             "app.config"
           ]
         }
@@ -503,7 +503,7 @@
       ],
       "security": [
         {
-          "oAuthConfigScope": [
+          "configScope": [
             "app.config"
           ]
         }
@@ -598,7 +598,7 @@
       ],
       "security": [
         {
-          "oAuthConfigScope": [
+          "configScope": [
             "app.config"
           ]
         }
@@ -692,7 +692,7 @@
       ],
       "security": [
         {
-          "oAuthConfigScope": [
+          "configScope": [
             "app.config"
           ]
         }
@@ -787,7 +787,7 @@
       ],
       "security": [
         {
-          "oAuthConfigScope": [
+          "configScope": [
             "app.config"
           ]
         }
@@ -961,7 +961,7 @@
       ],
       "security": [
         {
-          "oAuthConfigScope": [
+          "configScope": [
             "app.config"
           ]
         }
@@ -1260,7 +1260,7 @@
       ],
       "security": [
         {
-          "oAuthConfigScope": [
+          "configScope": [
             "app.config"
           ]
         }
@@ -1365,7 +1365,7 @@
       ],
       "security": [
         {
-          "oAuthAccountsScope": [
+          "accountsScope": [
             "app.accounts"
           ]
         }
@@ -1630,7 +1630,7 @@
       ],
       "security": [
         {
-          "oAuthAccountsScope": [
+          "accountsScope": [
             "app.accounts"
           ]
         }
@@ -1826,7 +1826,7 @@
       ],
       "security": [
         {
-          "oAuthAccountsScope": [
+          "accountsScope": [
             "app.accounts"
           ]
         }
@@ -2091,7 +2091,7 @@
       ],
       "security": [
         {
-          "oAuthAccountsScope": [
+          "accountsScope": [
             "app.accounts"
           ]
         }
@@ -2287,7 +2287,7 @@
       ],
       "security": [
         {
-          "oAuthAccountsScope": [
+          "accountsScope": [
             "app.accounts"
           ]
         }
@@ -2552,7 +2552,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.waf"
           ]
         }
@@ -2783,7 +2783,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.waf"
           ]
         }
@@ -2887,7 +2887,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.waf"
           ]
         }
@@ -3130,7 +3130,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.waf"
           ]
         }
@@ -3231,7 +3231,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.waf"
           ]
         }
@@ -3396,7 +3396,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.waf"
           ]
         }
@@ -3501,7 +3501,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.waf"
           ]
         }
@@ -3662,7 +3662,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.waf"
           ]
         }
@@ -3765,7 +3765,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.waf"
           ]
         }
@@ -3940,7 +3940,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.waf"
           ]
         }
@@ -4037,7 +4037,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.waf"
           ]
         }
@@ -4081,7 +4081,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.api_security"
           ]
         }
@@ -4182,7 +4182,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.api_security"
           ]
         }
@@ -4327,7 +4327,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.api_security"
           ]
         }
@@ -4496,7 +4496,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.api_security"
           ]
         }
@@ -4597,7 +4597,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.api_security"
           ]
         }
@@ -4784,7 +4784,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.bot_security"
           ]
         }
@@ -4885,7 +4885,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.bot_security"
           ]
         }
@@ -5044,7 +5044,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.bot_security"
           ]
         }
@@ -5145,7 +5145,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": [
+          "securityScopes": [
             "app.bot_security"
           ]
         }
@@ -5296,7 +5296,7 @@
       ],
       "security": [
         {
-          "oAuthSecurityScopes": {}
+          "securityScopes": {}
         }
       ],
       "get": {
@@ -5346,7 +5346,7 @@
   },
   "components": {
     "securitySchemes": {
-      "oAuthCacheScope": {
+      "cacheScope": {
         "type": "oauth2",
         "description": "Learn how to [generate and pass a token.](#section/Access-Tokens)",
         "flows": {
@@ -5358,7 +5358,7 @@
           }
         }
       },
-      "oAuthConfigScope": {
+      "configScope": {
         "type": "oauth2",
         "description": "Learn how to [generate and pass a token.](#section/Access-Tokens)",
         "flows": {
@@ -5370,7 +5370,7 @@
           }
         }
       },
-      "oAuthAccountsScope": {
+      "accountsScope": {
         "type": "oauth2",
         "description": "Learn how to [generate and pass a token.](#section/Access-Tokens)",
         "flows": {
@@ -5382,7 +5382,7 @@
           }
         }
       },
-      "oAuthSecurityScopes": {
+      "securityScopes": {
         "type": "oauth2",
         "description": "Learn how to [generate and pass a token.](#section/Access-Tokens)",
         "flows": {

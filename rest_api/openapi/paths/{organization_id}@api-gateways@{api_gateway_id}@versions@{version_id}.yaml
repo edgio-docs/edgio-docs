@@ -8,6 +8,8 @@ get:
     - API Gateways
   summary: GET specific version of API gateway object identified by version id
   description: Get get specific version of API gateway object.
+  security:
+    - api_securityScope: [app.api_security]
   responses:
     '200':
       description: Version for that API gateway object.

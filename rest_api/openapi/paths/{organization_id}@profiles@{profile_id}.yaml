@@ -7,6 +7,8 @@ get:
     - Managed Rules (Profiles)
   summary: Get Managed Rule
   description: Retrieves a managed rule that identifies a ruleset configuration and describes a valid request.
+  security:
+    - wafScope: [app.waf]
   responses:
     '200':
       description: OK. A managed rule was retrieved.
@@ -80,6 +82,8 @@ put:
     - Managed Rules (Profiles)
   summary: Update Managed Rule
   description: Updates a managed rule that identifies a ruleset configuration and describes a valid request.
+  security:
+    - wafScope: [app.waf]
   requestBody:
     $ref: ../components/requestBodies/Profile.yaml
   responses:
@@ -103,6 +107,8 @@ delete:
     - Managed Rules (Profiles)
   summary: Delete Managed Rule
   description: Deletes a managed rule.
+  security:
+    - wafScope: [app.waf]
   responses:
     '200':
       description: OK. A managed rule was deleted.

@@ -9,6 +9,8 @@ post:
 
     [View key configuration information.](https://docs.edg.io/guides/security/api_security#api-schema)
 
+  security:
+    - api_securityScope: [app.api_security]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   requestBody:
@@ -32,6 +34,8 @@ get:
     - API Schemas
   summary: Get All API Schemas
   description: Retrieves a list of API schemas.
+  security:
+    - api_securityScope: [app.api_security]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   responses:

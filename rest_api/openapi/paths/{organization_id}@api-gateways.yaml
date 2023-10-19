@@ -4,6 +4,8 @@ post:
     - API Gateways
   summary: Add API Security Ruleset
   description: Creates an API Security ruleset.
+  security:
+    - api_securityScope: [app.api_security]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   requestBody:
@@ -27,6 +29,8 @@ get:
     - API Gateways
   summary: Get All API Security Rulesets
   description: Retrieves a list of API Security rulesets.
+  security:
+    - api_securityScope: [app.api_security]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   responses:

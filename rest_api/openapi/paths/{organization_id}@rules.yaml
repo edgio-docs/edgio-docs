@@ -4,6 +4,8 @@ post:
     - Custom Rules
   summary: Add Custom Rule
   description: Creates a custom rule that defines custom threat assessment criteria.
+  security:
+    - wafScope: [app.waf]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   requestBody:
@@ -27,6 +29,8 @@ get:
     - Custom Rules
   summary: Get All Custom Rules
   description: Retrieves a list of custom rules. A custom rule allows you to define custom threat assessment criterion.
+  security:
+    - wafScope: [app.waf]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   responses:

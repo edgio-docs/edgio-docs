@@ -8,6 +8,8 @@ get:
     - API Schemas
   summary: GET specific version of API schema object identified by version id
   description: Get get specific version of API Schema object.
+  security:
+    - api_securityScope: [app.api_security]
   responses:
     '200':
       description: Version for that api schema object.

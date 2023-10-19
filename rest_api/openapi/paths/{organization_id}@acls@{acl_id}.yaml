@@ -7,6 +7,8 @@ get:
     - Access Control List (ACL)
   summary: Get Access Rule
   description: Retrieves an access rule that identifies threats through whitelists, accesslists, and blacklists.
+  security:
+    - wafScope: [app.waf]
   responses:
     '200':
       description: OK. An access rule was retrieved.
@@ -84,6 +86,8 @@ put:
     - Access Control List (ACL)
   summary: Update Access Rule
   description: Updates an access rule that identifies threats through whitelists, accesslists, and blacklists.
+  security:
+    - wafScope: [app.waf]
   requestBody:
     $ref: ../components/requestBodies/Acl.yaml
   responses:
@@ -107,6 +111,8 @@ delete:
     - Access Control List (ACL)
   summary: Delete Access Rule
   description: Deletes an access rule.
+  security:
+    - wafScope: [app.waf]
   responses:
     '200':
       description: OK. An access rule was deleted.

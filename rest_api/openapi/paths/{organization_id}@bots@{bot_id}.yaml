@@ -7,6 +7,8 @@ get:
     - Bot Rules
   summary: Get Bot Ruleset
   description: Retrieves a bot ruleset. A bot ruleset defines criteria for bot identification.
+  security:
+    - bot_securityScope: [app.bot_security]
   responses:
     '200':
       description: OK. A bot ruleset was retrieved.
@@ -62,6 +64,8 @@ put:
     - Bot Rules
   summary: Update Bot Ruleset
   description: Updates a bot ruleset. A bot ruleset defines criteria for bot identification.
+  security:
+    - bot_securityScope: [app.bot_security]
   requestBody:
     $ref: ../components/requestBodies/Bot.yaml
   responses:
@@ -85,6 +89,8 @@ delete:
     - Bot Rules
   summary: Delete Bot Ruleset
   description: Deletes a bot ruleset. A bot ruleset defines criteria for bot identification.
+  security:
+    - bot_securityScope: [app.bot_security]
   responses:
     '200':
       description: OK. A bot ruleset was deleted.

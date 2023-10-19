@@ -7,6 +7,8 @@ get:
     - Custom Rules
   summary: Get Custom Rule
   description: Retrieves a custom rule. Use a custom rule to define custom threat assessment criteria.
+  security:
+    - wafScope: [app.waf]
   responses:
     '200':
       description: OK. A custom rule was retrieved.
@@ -65,6 +67,8 @@ put:
     - Custom Rules
   summary: Update Custom Rule
   description: Updates a custom rule that defines custom threat assessment criteria.
+  security:
+    - wafScope: [app.waf]
   requestBody:
     $ref: ../components/requestBodies/Rule.yaml
   responses:
@@ -88,6 +92,8 @@ delete:
     - Custom Rules
   summary: Delete Custom Rule
   description: Deletes a custom rule.
+  security:
+    - wafScope: [app.waf]
   responses:
     '200':
       description: OK. A custom rule was deleted.

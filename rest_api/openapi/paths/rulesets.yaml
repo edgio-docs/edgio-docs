@@ -4,6 +4,8 @@ get:
     - Edgio Rulesets
   summary: Get Edgio Rulesets
   description: Retrieve a list of available Edgio rulesets. 
+  security:
+    - wafScope: [app.waf]
   responses:
     '200':
       description: OK. A list of Edgio rulesets was retrieved.

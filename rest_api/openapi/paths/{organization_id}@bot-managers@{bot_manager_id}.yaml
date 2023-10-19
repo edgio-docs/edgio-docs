@@ -7,6 +7,8 @@ get:
     - Bot Managers
   summary: Get Bot Manager Configuration
   description: Retrieves a bot manager configuration. 
+  security:
+    - bot_securityScope: [app.bot_security]
   responses:
     '200':
       description: OK. A bot manager configuration was retrieved.
@@ -56,6 +58,8 @@ put:
     - Bot Managers
   summary: Update Bot Manager Configuration
   description: Updates a bot manager configuration. 
+  security:
+    - bot_securityScope: [app.bot_security]
   requestBody:
     $ref: ../components/requestBodies/BotManager.yaml
   responses:
@@ -79,6 +83,8 @@ delete:
     - Bot Managers
   summary: Delete Bot Manager Configuration
   description: Deletes a bot manager configuration.
+  security:
+    - bot_securityScope: [app.bot_security]
   responses:
     '200':
       description: OK. A bot manager configuration was deleted.

@@ -9,9 +9,7 @@ info:
     email: info@edg.io
   version: 1.0.0-beta
 servers:
-  - url: //edgioapis.com/
-security:
-  - Bearer: []
+  - url: //localhost:3000/api
 tags:
   - name: environment-variables
     description: Operations about environment-variables
@@ -82,11 +80,24 @@ paths:
     $ref: paths/bff_traffic_{query_name}.yaml
 components:
   securitySchemes:
-    Bearer:
-      type: apiKey
-      description: |+
-        Enter the JWT token with the `Bearer` prefix, e.g. `Bearer abcdef`.
-        The token will need the following scopes:
-
-      name: Authorization
-      in: header
+    configScope:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://swagger.io/api/oauth/dialog
+          scopes:
+            app.config: app.config
+    cacheScope:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://swagger.io/api/oauth/dialog
+          scopes:
+            app.cache.purge: app.cache.purge
+    accountsScope:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://swagger.io/api/oauth/dialog
+          scopes:
+            app.accounts: app.accounts

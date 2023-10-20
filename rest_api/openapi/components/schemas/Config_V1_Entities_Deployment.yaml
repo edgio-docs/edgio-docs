@@ -16,7 +16,7 @@ properties:
     description: Links to related resources.
   id:
     type: string
-    description: Resource unique identifier.
+    description: The resource's system-defined ID.
   status:
     type: string
     description: |

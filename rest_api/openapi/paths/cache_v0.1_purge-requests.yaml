@@ -69,4 +69,7 @@ post:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - cacheScope:
+        - app.cache.purge
   x-codegen-request-body-name: postCacheV01PurgeRequests

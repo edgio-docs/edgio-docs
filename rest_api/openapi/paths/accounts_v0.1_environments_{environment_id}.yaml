@@ -3,22 +3,28 @@ get:
     - environments
   summary: Get Environment
   description: >
-    Retrieves an environment's settings and metadata. The system-defined ID for
-    the environment's active configuration is returned by the
-    `@links.active_config.id` property."
+    Retrieves an environment's settings and metadata.
+
+
+    The system-defined ID for the environment's active configuration is returned
+    by the `@links.active_config.id` property.
   operationId: getAccountsV01EnvironmentsEnvironmentId
   parameters:
     - name: environment_id
       in: path
+      description: >
+        The environment's system-defined ID.
+
+
+        Retrieve a list of environments and their system-defined IDs through the
+        [Get All Environments
+        operation](#tag/environments/operation/getAccountsV01Environments).
       required: true
       schema:
         type: string
   responses:
     '200':
-      description: >
-        Retrieves an environment's settings and metadata. The system-defined ID
-        for the environment's active configuration is returned by the
-        `@links.active_config.id` property."
+      description: OK
       content:
         application/json:
           schema:
@@ -53,6 +59,9 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - accountsScope:
+        - app.accounts
 delete:
   tags:
     - environments
@@ -62,12 +71,19 @@ delete:
   parameters:
     - name: environment_id
       in: path
+      description: >
+        The environment's system-defined ID.
+
+
+        Retrieve a list of environments and their system-defined IDs through the
+        [Get All Environments
+        operation](#tag/environments/operation/getAccountsV01Environments).
       required: true
       schema:
         type: string
   responses:
     '204':
-      description: Deletes an environment.
+      description: OK
       content:
         application/json:
           schema:
@@ -102,6 +118,9 @@ delete:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - accountsScope:
+        - app.accounts
 patch:
   tags:
     - environments
@@ -111,6 +130,13 @@ patch:
   parameters:
     - name: environment_id
       in: path
+      description: >
+        The environment's system-defined ID.
+
+
+        Retrieve a list of environments and their system-defined IDs through the
+        [Get All Environments
+        operation](#tag/environments/operation/getAccountsV01Environments).
       required: true
       schema:
         type: string
@@ -122,7 +148,7 @@ patch:
     required: true
   responses:
     '200':
-      description: Updates an environment.
+      description: OK
       content:
         application/json:
           schema:
@@ -157,4 +183,7 @@ patch:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - accountsScope:
+        - app.accounts
   x-codegen-request-body-name: patchAccountsV01EnvironmentsEnvironmentId

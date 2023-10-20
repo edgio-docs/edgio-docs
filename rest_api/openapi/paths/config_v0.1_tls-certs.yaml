@@ -35,7 +35,7 @@ get:
         type: string
   responses:
     '200':
-      description: Returns all TLS certificates associated with an environment.
+      description: OK
       content:
         application/json:
           schema:
@@ -70,6 +70,9 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - configScope:
+        - app.config
 post:
   tags:
     - tls-certs
@@ -84,9 +87,7 @@ post:
     required: true
   responses:
     '201':
-      description: >-
-        Upload your TLS certificate to activate it within a specific
-        environment.
+      description: OK
       content:
         application/json:
           schema:
@@ -121,4 +122,7 @@ post:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - configScope:
+        - app.config
   x-codegen-request-body-name: postConfigV01TlsCerts

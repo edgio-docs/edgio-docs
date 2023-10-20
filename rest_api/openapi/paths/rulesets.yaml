@@ -3,7 +3,9 @@ get:
   tags:
     - Edgio Rulesets
   summary: Get Edgio Rulesets
-  description: Retrieve a list of available Edgio rulesets. You may assign an Edgio ruleset to a managed rule to determine the set of policies and rules through traffic can be screened.
+  description: Retrieve a list of available Edgio rulesets. 
+  security:
+    - wafScope: [app.waf]
   responses:
     '200':
       description: OK. A list of Edgio rulesets was retrieved.
@@ -13,3 +15,62 @@ get:
             type: array
             items:
               $ref: ../components/schemas/Ruleset.yaml
+          example:
+            [{
+                    "id": "ECRS",
+                    "description": "NA",
+                    "versions": [
+                        "2018-09-14",
+                        "2019-02-11",
+                        "2019-08-07",
+                        "2019-09-05",
+                        "2019-10-01",
+                        "2019-11-01",
+                        "2020-01-09",
+                        "2020-02-04",
+                        "2020-03-06",
+                        "2020-04-03",
+                        "2020-05-01",
+                        "2020-06-08",
+                        "2020-08-01",
+                        "2020-09-01",
+                        "2020-10-05",
+                        "2020-11-02",
+                        "2020-12-04",
+                        "2021-01-04",
+                        "2021-02-05",
+                        "2021-03-01",
+                        "2021-03-09",
+                        "2021-04-02",
+                        "2021-05-03",
+                        "2021-06-01",
+                        "2021-07-01",
+                        "2021-08-03",
+                        "2021-09-07",
+                        "2021-10-04",
+                        "2021-11-04",
+                        "2021-12-10",
+                        "2021-12-13",
+                        "2022-02-09",
+                        "2022-03-08",
+                        "2022-05-25",
+                        "2022-06-03",
+                        "2022-08-10",
+                        "2022-11-04",
+                        "2022-12-14",
+                        "latest"
+                    ],
+                    "display": "ECRS"
+                }, {
+                    "id": "ERS",
+                    "description": "NA",
+                    "versions": [
+                        "2022-11-04",
+                        "2022-12-14",
+                        "2023-04-15",
+                        "2023-07-15",
+                        "latest"
+                    ],
+                    "display": "ERS"
+                }
+            ]

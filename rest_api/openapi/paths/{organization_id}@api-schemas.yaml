@@ -1,0 +1,61 @@
+post:
+  operationId: create-api-schema
+  tags:
+    - API Schemas
+  summary: Add API Schema
+  description: |
+
+    Creates an API schema. An API schema contains a JSON schema (draft 4) that may be used to screen API requests. 
+
+    [View key configuration information.](https://docs.edg.io/guides/security/api_security#api-schema)
+
+  security:
+    - api_securityScope: [app.api_security]
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/APISchema.yaml
+  responses:
+    '200':
+      description: OK. An API schema was created.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+get:
+  operationId: get-api-schemas
+  tags:
+    - API Schemas
+  summary: Get All API Schemas
+  description: Retrieves a list of API schemas.
+  security:
+    - api_securityScope: [app.api_security]
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  responses:
+    '200':
+      description: OK. A list of API schemas was retrieved.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ObjShort.yaml
+          examples:
+            response:
+              value:
+                - id: e3mpHQY5
+                  name: sample_api_schema_config
+                  last_modified_date: 2023-09-29T23:31:41.193941Z
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

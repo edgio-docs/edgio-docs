@@ -1,0 +1,29 @@
+parameters:
+  - $ref: ../components/parameters/organization_id.yaml
+  - $ref: ../components/parameters/bot_manager_id.yaml
+get:
+  operationId: get-bot-manager-versions
+  tags:
+    - Bot Managers
+  summary: GET versions of a bot manager object
+  description: Get existing versions of bot manager id.
+  security:
+    - bot_securityScope: [app.bot_security]
+  responses:
+    '200':
+      description: A list of versions for that bot manager id.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              '@id':
+                type: string
+              '@type':
+                type: string
+              items:
+                type: array
+                items:
+                  $ref: ../components/schemas/version_short.yaml
+    '404':
+      description: bot manager not found

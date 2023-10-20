@@ -1,0 +1,94 @@
+body {margin: 0;padding: 0;}
+
+/* logo */
+.kRlpsI{margin: 11px 0 10px 24px;}/*!sc*/
+.gQDlaK {
+    text-align: left;
+}
+
+/* hide version  */
+h1 span {
+  display: none;
+}
+
+/* search */
+.wfptf,
+.bzckyT,
+.eQaxld,
+.search-input,
+.eLSrIr,
+.dwkgVY
+{font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:15px;}
+
+/* sidebar */
+.fflgmh {padding: 6px 20px;font-size:15px;}
+.imtPVL {padding: 6px 20px !important;font-size: 0.95em;}
+.hXkyPY {line-height: 1.3em; !important}
+.hIIBnc > li > label > span {font-size: 15px !important;line-height: 1.3em !important;}
+
+.bQgPnO {
+  width: 9ex;
+  display: inline-block;
+  height: 19px;
+  line-height: 20px;
+  border-radius: 3px;
+  background-repeat: no-repeat;
+  background-position: 6px 4px;
+  font-size: 11px;
+  margin-right: 6px;
+  margin-top: 2px;
+}
+
+.fMGaMX,
+.cbMzQY,
+.ebVNuM,
+.sc-kOHTFB,
+.IVbWU,
+.sc-bpUBKd,
+.bpycMf,
+.bpycMf,
+.sc-eyvILC,
+.fbjDYy,
+.sc-eHEENL,
+.fCKvxf,
+.-depth1,
+.active,
+.jSTdPd
+{line-height: 1.3em !important;font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:15px;}
+
+.-depth2{font-size: 15px;}
+
+/* property name */
+.property-name {
+  font-family: Menlo,Bitstream Vera Sans Mono,DejaVu Sans Mono,Monaco,Consolas,monospace;
+  font-size: 14px;
+}
+
+/* property description  */
+.gSsNFi,
+.bGFHdb {font-size: 14px !important;}
+
+/* response headers  */
+.kXqjkR,
+.iakUBL {font-size: 15px !important;}
+
+/* code buttons  */
+.jKcRvt > button,
+.gqCEQu > button{border: 1px solid cornflowerblue !important; background-color:cornflowerblue !important;border-radius:5px;margin:0 5px;color:inherit;padding:4px 10px;font-family:Roboto,sans-serif;font-size:13px;line-height:1.5em;cursor:pointer;outline:0;}/*!sc*/
+
+.heQAwu > ul{list-style:none;padding:0;margin: 0 -5px -5px 0;}/*!sc*/
+.heQAwu > ul > li{padding:5px 10px;display:inline-block;background-color:#11171a;border-bottom:1px solid rgba(0,0,0,0.5);cursor:pointer;text-align:center;outline:none;color:#ccc;margin: 0 1px;border:1px solid #07090b;border-radius:5px;min-width:60px;font-size:0.9em;font-weight:bold;}/*!sc*/
+.heQAwu > ul > li.react-tabs__tab--selected{color:#333333;background:lightsteelblue;}/*!sc*/
+
+/* hide headers in code  */
+.kBZUOG,
+.eJDRKz {display: none;}
+
+/* get request samples  */
+.fzwHpM {
+  font-family: Menlo,Bitstream Vera Sans Mono,DejaVu Sans Mono,Monaco,Consolas,monospace;
+  font-size: 13px;
+  overflow-x: auto;
+  margin: 0;
+  white-space: pre;
+}

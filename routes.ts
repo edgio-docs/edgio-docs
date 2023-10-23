@@ -32,25 +32,25 @@ const router = new Router()
     ...defaultFeatures,
     headers: !isLocal()
       ? {
-          set_response_headers: {
-            'Strict-Transport-Security':
-              'max-age=31536000; includeSubDomains; preload',
-            'Content-Security-Policy': [
-              `default-src 'self'`,
-              `style-src 'unsafe-inline' 'self' ${styleSrcDomains.join(' ')}`,
-              `font-src ${fontSrcDomains.join(' ')}`,
-              `img-src 'self' ${imgSrcDomains.join(' ')}`,
-              `frame-src ${frameSrcDomains.join(' ')}`,
-              `script-src 'unsafe-inline' 'self' 'unsafe-eval' ${scriptSrcDomains.join(
-                ' '
-              )}`,
-              `base-uri 'self'`,
-              `frame-ancestors 'self'`,
-              `media-src ${mediaSrcDomains.join(' ')}`,
-              `connect-src ${connectSrcDomains.join(' ')}`,
-            ].join('; '),
-            'X-XSS-Protection': '1; mode=block',
-          },
+          // set_response_headers: {
+          //   'Strict-Transport-Security':
+          //     'max-age=31536000; includeSubDomains; preload',
+          //   'Content-Security-Policy': [
+          //     `default-src 'self'`,
+          //     `style-src 'unsafe-inline' 'self' ${styleSrcDomains.join(' ')}`,
+          //     `font-src ${fontSrcDomains.join(' ')}`,
+          //     `img-src 'self' ${imgSrcDomains.join(' ')}`,
+          //     `frame-src ${frameSrcDomains.join(' ')}`,
+          //     `script-src 'unsafe-inline' 'self' 'unsafe-eval' ${scriptSrcDomains.join(
+          //       ' '
+          //     )}`,
+          //     `base-uri 'self'`,
+          //     `frame-ancestors 'self'`,
+          //     `media-src ${mediaSrcDomains.join(' ')}`,
+          //     `connect-src ${connectSrcDomains.join(' ')}`,
+          //   ].join('; '),
+          //   'X-XSS-Protection': '1; mode=block',
+          // },
           remove_origin_response_headers: ['cache-control'],
         }
       : {},

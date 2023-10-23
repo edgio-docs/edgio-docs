@@ -20,6 +20,7 @@ export const connectSrcDomains = [
   '*.clarity.ms',
   '*.ecdns.net',
   '*.doubleclick.net',
+  '*.sentry.io',
 ].sort();
 
 export const fontSrcDomains = ['fonts.gstatic.com'];
@@ -70,6 +71,7 @@ export const scriptSrcDomains = [
   '*.edgio-perma.link',
   '*.edg.io',
   'blob:',
+  '*.sentry.io',
 ].sort();
 
 export const styleSrcDomains = [

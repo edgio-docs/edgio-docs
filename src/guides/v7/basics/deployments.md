@@ -105,36 +105,24 @@ Read the comments at the top to understand how this action is configured.
 ### Template {/*template*/}
 
 ```yml
-# Add this file to your project at .github/workflows/edgio.yml
-#
-# This GitHub action deploys your site on {{ PRODUCT }}.
-#
-# The site is deployed each time commits are pushed. The environment to which the changes are deployed
-# is based on the following rules:
-#
-# 1.) When pushing to master or main, changes will be deployed to the "default" environment. This environment exists
-#     by default. Additional environments must be created at {{ APP_URL }}.
-#
-# 2.) When pushing to any other branch, changes are deployed to a staging environment when a pull request is opened.
-#     A unique URL is created based on the branch and deployment number. This environment does not exist by default,
-#     you must create it using {{ APP_URL }}.
-#
-# 3.) When you publish a release in GitHub, the associated tag will be deployed to the production
-#     environment. You can push to production by creating a GitHub release, or by using the "Promote to Environment"
-#     menu when viewing a deployment in {{ APP_URL }}. This environment does not exist by default,
-#     you must create it using {{ APP_URL }}.
-#
-# ** In order for this action to deploy your site, you must create a deploy token from the site settings page
-# ** In order for this action to deploy your site, you must create a `deploy` command in your package.json scripts (an example is at https://github.com/layer0-docs/layer0-docs/blob/master/package.json#L11).
-# ** Additionally, you will need to generate a deploy token from your site settings in {{ APP_URL }} and configure it as a secret called "EDGIO_DEPLOY_TOKEN" in your repo on GitHub.
-#
-# ** Depending on your use of NPM or YARN, adjust the "Install packages" step
+# File: .github/workflows/edgio.yml
+# Purpose: Deploy to {{ PRODUCT }} upon specific GitHub events.
+
+# Deployment Rules:
+# - "main" branch -> Default Environment
+# - Feature branch -> Staging (on PR)
+# - GitHub Release -> Production
+
+# Prerequisites:
+# - Set "EDGIO_DEPLOY_TOKEN" secret, generated from {{ APP_URL }}
+# - Add `edgio:deploy` in package.json (Example: https://github.com/edgio-docs/edgio-docs/blob/main/package.json#L9)
+# - Create additional staging and production environments in {{ APP_URL }}
 
 name: Deploy branch to {{ PRODUCT }}
 
 on:
   push:
-    branches: [master, main]
+    branches: [main]
   pull_request:
   release:
     types: [published]
@@ -142,46 +130,50 @@ on:
 jobs:
   deploy-to-edgio:
     name: Deploy to Edgio
-    # cancels the deployment for the automatic merge push created when tagging a release
+    # Skip for auto-merge push on release tagging
     if: contains(github.ref, 'refs/tags') == false || github.event_name == 'release'
     runs-on: ubuntu-latest
     env:
-      deploy_token: ${{secrets.EDGIO_DEPLOY_TOKEN}}
+      deploy_token: ${{ secrets.EDGIO_DEPLOY_TOKEN }}
+      
     steps:
-      - name: Check for {{ PRODUCT }} deploy token secret
+      # Validate presence of deploy token
+      - name: Validate Deploy Token
         if: env.deploy_token == ''
-        run: |
-          echo You must define the "EDGIO_DEPLOY_TOKEN" secret in GitHub project settings
-          exit 1
-      - name: Extract branch name
+        run: echo "EDGIO_DEPLOY_TOKEN missing" && exit 1
+
+      # Extract and sanitize branch name
+      - name: Extract Branch Name
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
+
+      # Checkout code and set up Node.js
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
-      - name: Cache node modules
+          node-version: 16
+
+      # Cache node modules
+      - name: Cache Node Modules
         uses: actions/cache@v1
-        env:
-          cache-name: cache-node-modules
         with:
-          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - name: Install packages
-        run: npm ci # if using npm for your project
-        #  run: rm -rf node_modules && yarn install --frozen-lockfile # if using yarn for your project
+
+      # Install packages (Adjust based on package manager)
+      - name: Install Packages
+        run: npm ci
+
+      # Deploy
       - name: Deploy to {{ PRODUCT }}
-        run: |
-          npm run deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$deploy_token  \
-          ${{github.event_name == 'push' && '--environment=default' || ''}} \
-          ${{github.event_name == 'pull_request' && '--environment=staging' || ''}} \
-          ${{github.event_name == 'release' && '--environment=production' || ''}}
-        env:
-          deploy_token: ${{secrets.EDGIO_DEPLOY_TOKEN}}
+        run: npm run edgio:deploy -- --branch=$BRANCH_NAME --token=$deploy_token \
+          ${{ github.event_name == 'push' && '--environment=default' || '' }} \
+          ${{ github.event_name == 'pull_request' && '--environment=staging' || '' }} \
+          ${{ github.event_name == 'release' && '--environment=production' || '' }}
 ```
 
 ### Screencast Tutorial {/*screencast-tutorial*/}

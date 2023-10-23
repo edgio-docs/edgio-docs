@@ -304,14 +304,23 @@ Note that Edge Functions must be enabled for your {{ PORTAL }} team in order to 
 
 ## Limitations {/* limitations */}
 
-Edge functions are limited to 2MB of memory at runtime. This includes the compiled JavaScript byte code, variables, requests, context object, and responses. All functions are compiled into a single bundle to deploy to our edge servers. If the total size of all compiled functions exceeds 2MB, the deployment will fail with a 400 error.
+Edge Function Limitations:
+
+- Wall-time Timeout: 60s
+- CPU Time Limit: 50ms
+- Runtime Memory Limit: 4MB
+- Code Package Size Limit: 512KB
+
+The code package size refers to the compiled JavaScript bytecode. All edge functions are bundled into a single package for deployment to our edge servers. If the total compiled size exceeds 512KB, the deployment will fail and return a 400 error:
 
 ```plaintext
-2023-08-14T17:37:04Z - error - external - Schema validation error: properties.0.edge_functions.quickjs_bytecode_base64 exceeds maximum size. Max: 204800, got: 417309
+2023-08-14T17:37:04Z - error - external - Schema validation error: properties.0.edge_functions.quickjs_bytecode_base64 exceeds maximum size. Max: 512000, got: 1514469
 2023-08-14T17:37:04Z - error - external - Error: the server responded with status 400
 ```
 
-Edge functions are limited to 50ms of CPU time and 60 seconds of total execution time. The time your edge function spends waiting for a response from an origin server does not count against the 50ms CPU limit.
+Runtime memory encompasses all variables, HTTP requests and responses, as well as the context object. This total must not exceed 4MB.
+
+Edge functions are confined to 50ms of CPU time and a maximum of 60s for overall execution. Time spent waiting for a response from an origin server is not counted against the 50ms CPU time limit.
 
 ## Polyfills and Helpers {/* polyfills-and-helpers */}
 

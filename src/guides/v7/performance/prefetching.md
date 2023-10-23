@@ -2,74 +2,104 @@
 title: Predictive Prefetch
 ---
 
-{{ PRODUCT_NAME }} allows you to speed up the user's browsing experience by prefetching pages and API calls that they are likely to need.
+Improve performance by prefetching popular pages and API calls. By default, prefetching only serves requests that are cached on the edge of our network. This ensures that your infrastructure does not experience additional load due to prefetching. 
 
-## Traffic Shielding {/* traffic-shielding */}
+<Callout type="important">
 
-You might think that prefetching will put significant additional load on the infrastructure hosting your APIs. That's actually not the case! {{ PRODUCT_NAME }} only serves prefetch requests from the edge cache. It will never make a request to the origin if a prefetch request cannot be served from the edge cache, so your servers will never see an increased load.
+  Due to security requirements, prefetching requires the HTTPS protocol. An exception to this requirement occurs when using localhost.
 
-## Prefetching with a traditional site {/* traditional-site */}
-To integrate prefetching into your existing site without needing to build a custom service-worker file, you can use our pre-built SW from  `@edgio/prefetch`.
-This solution is suitable for most of the sites that are not using any JS front-end framework or can't be hosted on Edgio Sites for any other reason.
-If your site is based on JS front-end framework and you're looking for deeper integration of prefetching into it, please see the [Prefetching with Edgio Sites](#edgio-sites) section.
+</Callout>
 
-### Registering the Service Worker {/* registering-the-service-worker-with-pre-built-package */}
-To register the pre-built service worker and enable prefetching, you simply need to add the following script tag to your existing site's HTML:
+Set up varies according to whether you are using {{ PRODUCT }} {{ PLATFORM }}. Learn how to set up prefetching for a:
 
-```html filename="index.html"
+-   [Traditional website.](#prefetching-with-a-traditional-website)
+-   [Website powered by {{ PRODUCT }} {{ PLATFORM }}]().
+
+## Prefetching with a Traditional Website {/*prefetching-with-a-traditional-website*/}
+
+If your website does not use {{ PRODUCT }} {{ PLATFORM }}, perform the following steps:
+
+1.  [Register the service worker](#registering-the-service-worker-traditional-website) by adding a prefetching script tag to your web pages.
+2.  [Enable prefetching](#automatic-prefetching-traditional-website) for the desired requests by adding the following features within one or more rules:
+    
+    -   [Set Max Age (max_age)](/guides/performance/rules/features#set-max-age)
+    -   [Set Service Worker Max Age (service_worker_max_age)](/performance/rules/features#set-service-worker-max-age) 
+
+    Alternatively, you may [manually enable prefetching](#manual-prefetching-with-pre-built-package) for specific requests.
+
+### Registering the Service Worker {/*registering-the-service-worker-traditional-website*/}
+
+Prefetching requires a pre-built service worker. Add this service worker by including the following script tag to your existing site's HTML:
+
+```html
 <script src="/__edgio__/prefetch/install.js"></script>
 ```
-This script tag will always install the latest version of pre-built [`@edgio/prefetch`](https://www.npmjs.com/package/@edgio/prefetch?activeTab=versions) package. 
-If you wish to install specific version of this package, you can do so by adding the version to the script tag like this:
-```html filename="index.html" 
+
+This script tag installs the latest version of the [`{{ PACKAGE_NAME }}/prefetch`](https://www.npmjs.com/package/@edgio/prefetch?activeTab=versions) package.
+
+Alternatively, you may install a specific version of this package by adding the version to the script tag as shown below.
+
+```html
 <script src="/__edgio__/prefetch/v7.2.5/install.js"></script>
 ```
 
-Usage example:
-```html diff filename="index.html"
+**Example:**
+
+```html diff
 <html>
 <head>
     <title>My awesome site</title>
 </head>
 <body>
     <h1>My awesome page</h1>
-    <p>This site uses pre-built @edgio/prefetch from the CDN</p>
+    <p>This site uses the {{ PACKAGE_NAME }}/prefetch package.</p>
     
 +   <script src="/__edgio__/prefetch/install.js"></script>
 </body>
 </html> 
 ```
 
-The following additional config attributes are available:
+This package supports the following attributes:
 
-| Option                       | Description                                                                                                                                                                  | Default |
-| ---------------------------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ------- |
-| `data-include-cache-misses`  | Set this option to true to send all requests to the origin even when they are not yet in the Edge cache.                                                                     | `false` |
-| `data-force-prefetch-ratio`  | This option allows to set probability that a prefetch request will be relayed to the origin even if a response is not in the cache. This should be a number between 0 and 1. | `0`     |
+| Attribute                   | Description                                                                                                                                                                                                                                   | Default |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `data-include-cache-misses` | Set to `true` to send all requests to the origin regardless of whether a cached response exists.                                                                                                                                              | `false` |
+| `data-force-prefetch-ratio` | Sets the probability at which a prefetch request will be proxied to the orgin regardless of whether a cached response exists. Valid values are: `0 - 1`. <br /> For example, set it to `0.5` to enable this behavior for 50% of the requests. | `0`     |
 
-Usage example:
-```html filename="index.html"
+**Example:**
+```html
 <script src="/__edgio__/prefetch/install.js" data-include-cache-misses="true" data-force-prefetch-ratio="0.5"></script>
 ```
+### Automatic Prefetching {/*automatic-prefetching-traditional-website*/}
+
+{{ PRODUCT }} will attempt to prefetch links that meet all of the following conditions:
+
+-   [The `{{ PACKAGE_NAME }}/prefetch` script has been included on a page.](#registering-the-service-worker-traditional-website)
+-   The link is displayed in the viewport (i.e., the area of the web page that is currently visible to the user).
+-   The link matches at least one rule that contains both of the following features:
+    -   [Set Max Age (max_age)](/guides/performance/rules/features#set-max-age)
+    -   [Set Service Worker Max Age (service_worker_max_age)](/performance/rules/features#set-service-worker-max-age) 
 
 <Callout type="info">
-Note that prefetching will not work on sites served through plain HTTP protocol. This is because service workers are restricted to running across HTTPS for security reasons. The only exception is localhost.
+
+  Prefetch requests are given the lowest priority. This ensures that they do not block more critical requests like API calls, images, scripts, and navigation.
+
 </Callout>
 
-### Automatic Prefetching {/* automatic-prefetching-with-pre-built-package */}
-When the pre-built `@edgio/prefetch` is installed on your site, it will automatically prefetch all links on your site that are in the screen viewport and match any of the configured [Rules](/guides/performance/rules#rules) that sets [`caching.max_age`](https://docs.edg.io/guides/performance/rules/features#set-max-age) and [`caching.service_worker_max_age`](/guides/performance/rules/features#set-service-worker-max-age) features.
-The resource is then cached in the browser for given amount of time which is defined by the `caching.service_worker_max_age` feature.
-The prefetch requests will succeed only in case the resource is already in the edge cache by default to not overload your origin servers.
+By default, the response varies according to whether the requested content has been cached within the POP closest to the user. 
+-   If a cached response is found, then {{ PRODUCT }} will serve this cached content to the browser. The browser will then cache it locally for the duration defined by the Set Service Worker Max Age (service_worker_max_age) feature. 
+-   If a cached response is not found, then {{ PRODUCT }} will return a `412 Precondition Failed` response.
 
-Let's start with following example:
-```html filename="index.html"
+**Example:**
+
+```html
 <html>
 <head>
     <title>My awesome site</title>
 </head>
 <body>
     <h1>My awesome page</h1>
-    <p>This site uses pre-built @edgio/prefetch from the CDN</p>
+    <p>This site uses the {{ PACKAGE_NAME }}/prefetch package.</p>
     <nav>
         <a href="/pages/1">Page 1</a>
         <a href="/pages/2">Page 2</a>
@@ -80,38 +110,46 @@ Let's start with following example:
 </body>
 </html> 
 ```
-To cache and prefetch all navigation links automatically in upper example, we simply need to add the following rule in EdgeJS or Console UI:
-```js filename="routes.js"
-import { Router } from '@edgio/core/router'
 
-export default new Router()
-    //  This rule's path matches the navigation links href attribute
-    .match("/pages/:id", {
-        caching: {
-            max_age: "1h", // Caches the response on the edge for 1 hour
-            service_worker_max_age: "1h" // Enables automatic prefetching and caches the response in the browser SW cache for 1 hour
-        }
-    })
-```
-![Prefetch rule](/images/v7/performance/prefetch_rule.png)
+Add the following rule to cache and prefetch all navigation links in the above example:
 
-When you now visit the page and open the Network tab in your browser's developer tools (F12), you should see that the links are automatically prefetched and cached in the browser SW cache:
+-   **Rules:**
 
-![Prefetch requests on the Network tab of browser's developer tools](/images/v7/performance/prefetch_network_tab.png)
+    ![Prefetch rule](/images/v7/performance/prefetch_rule.png)
 
-### Manual Prefetching {/* manual-prefetching-with-pre-built-package */}
+-   **CDN-as-Code:**
 
-If you wish to prefetch some resources manually or do prefetching based on complex conditions, you can do so by calling `Edgio.prefetch()` function from your code.
+    ```js filename="routes.js"
+    import { Router } from '{{ PACKAGE_NAME }}/core/router'
 
-Example:
-```html filename="index.html"
+    export default new Router()
+        //  This rule's path matches the navigation links href attribute
+        .match("/pages/:id", {
+            caching: {
+                max_age: "1h", // Caches the response on the edge for 1 hour
+                service_worker_max_age: "1h" // Enables automatic prefetching and caches the response in the browser SW cache for 1 hour
+            }
+        })
+    ```
+
+Verify that links are automatically prefetched and cached locally by opening the **Network** tab of your browser's developer tools (F12). 
+
+![Prefetch requests on the Network tab of a browser's developer tools](/images/v7/performance/prefetch_network_tab.png)
+
+### Manual Prefetching {/*manual-prefetching-traditional-website*/}
+
+Call the [`Edgio.prefetch()` function](/docs/api/prefetch/functions/window_prefetch.prefetch.html) from your code to manually prefetch resources.
+
+**Example:**
+
+```html
 <html>
 <head>
     <title>My awesome site</title>
 </head>
 <body>
     <h1>My awesome page</h1>
-    <p>This site uses pre-built @edgio/prefetch from the CDN</p>
+    <p>This site uses the {{ PACKAGE_NAME }}/prefetch package.</p>
     <nav>
         <a href="/pages/1">Page 1</a>
         <a href="/pages/2">Page 2</a>
@@ -132,18 +170,36 @@ Example:
 </body>
 </html> 
 ```
-See the `prefetch()` function  [docs](/docs/api/prefetch/functions/window_prefetch.prefetch.html) for all config options.
 
+## Prefetching with {{ PRODUCT }} {{ PLATFORM }} {/*prefetching-with-edgio-sites*/}
 
-## Prefetching with Edgio Sites {/* edgio-sites */}
-If your site is hosted on Edgio Sites or based on the JS front-end framework, you can install the `@edgio/prefetch` package directly and take advantage of all the features that this package offers and deeper integration with your site.
+If your website uses {{ PRODUCT }} {{ PLATFORM }} or is based on a JS front-end framework, then you can install the `{{ PACKAGE_NAME }}/prefetch` package directly, take advantage of additional package features, and achieve deeper integration with your site.
 
-### Configuring the Service Worker {/* configuring-the-service-worker */}
+Perform the following steps:
 
-To integrate prefetching into your site using the `@edgio/prefetch` package, you need to build service-worker with `Prefetcher` class. 
-If your site doesn't currently have a service worker, one can easily be created using Google's [Workbox](https://developers.google.com/web/tools/workbox).
+1.  [Build the service worker with the Prefetcher class.](#building-the-service-worker)
+2.  [Serve the service worker](#serving-the-service-worker) through a rule.
+3.  [Register the service worker.](#registering-the-service-worker)
+4.  [Enable prefetching](#defining-a-prefetching-caching-policy) for the desired requests by adding the following features within one or more rules:
 
-Here's a sample service worker based on Workbox using the `Prefetcher` class from `{{ PACKAGE_NAME }}/prefetch`:
+    -   [Set Max Age (max_age)](/guides/performance/rules/features#set-max-age)
+    -   [Set Service Worker Max Age (service_worker_max_age)](/performance/rules/features#set-service-worker-max-age) 
+
+    Alternatively, you may [manually enable prefetching](#manual-prefetching) for specific requests.
+
+### Building the Service Worker {/*building-the-service-worker*/}
+
+Integrating prefetching into your site requires building the service worker with the `Prefetcher` class.
+
+<Callout type="info">
+
+  One method for adding a service worker to your site is to use [Google's Workbox](https://developers.google.com/web/tools/workbox).
+
+</Callout>
+
+**Sample Service Worker:**
+
+The following sample service worker is based on Workbox using the `Prefetcher` class from `{{ PACKAGE_NAME }}/prefetch`:
 
 ```js filename="service-worker.js"
 import {skipWaiting, clientsClaim} from 'workbox-core';
@@ -157,9 +213,13 @@ precacheAndRoute(self.__WB_MANIFEST || []);
 new Prefetcher().route();
 ```
 
-### Serving the Service Worker {/* serving-the-service-worker */}
+### Serving the Service Worker {/*serving-the-service-worker*/}
 
-After you have created a service worker, your router will need to be configued to serve the file. The following code will vary depending on the location of your service worker file. In this example, we will define a route that serves requests for `/service-worker.js`:
+After you have created a service worker, your router will need to be configued to serve the file. If you are using one of our [connectors](/guides/sites_frameworks/getting_started), then it should be automatically configured for you. 
+
+**Example:**
+
+The following example defines a route that serves requests for `/service-worker.js`. However, your code will vary according to the location of your service worker file. 
 
 ```js filename="routes.js"
 import {Router} from '{{ PACKAGE_NAME }}/core';
@@ -178,15 +238,14 @@ export default new Router()
     serviceWorker('dist/service-worker.js');
   });
 ```
-NOTE: If you're using one of our Edgio Site's [connectors](/guides/sites_frameworks/getting_started), you most likely don't need to configure the route for the service worker in this step. It will be automatically configured for you.
 
-### Registering the Service Worker {/* registering-the-service-worker */}
+### Registering the Service Worker {/*registering-the-service-worker*/}
 
-Once you've created and defined a route to serve the service worker, code running in the browser window needs to register the service worker before prefetching can begin.
+After you have created and served the service worker, the service worker needs to be registered. If you are using a front-end framework that does not automatically register service workers, then you should invoke the `install` function from the `{{ PACKAGE_NAME }}/prefetch` to install the service worker within your client-side code. See [InstallOptions](/docs/api/prefetch/interfaces/window_InstallOptions.default.html) for additional options when installing the service worker.
 
-If you're not using a front-end framework that already registers the service worker, you can invoke the `install` function from `{{ PACKAGE_NAME }}/prefetch` to install the service worker within your client-side code. As an example, if your client-side code is in `app.js`, you can install the service worker by adding the following code to `app.js`:
+<a id="sample-install-prefetch-code" />**Example:**
 
-<a id="sample-install-prefetch-code" />
+Assuming that your client-side code is in `app.js`, you can install the service worker by adding the following code to `app.js`:
 
 ```js filename="app.js"
 import { install , prefetch } from '{{ PACKAGE_NAME }}/prefetch/window';
@@ -205,15 +264,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 Now when your client-side code runs, the service worker will be installed and ready to prefetch URLs.
 
-<Callout type="info">
-Note that prefetching will not work on sites served through plain HTTP protocol. This is because service workers are restricted to running across HTTPS for security reasons. The only exception is localhost.
-</Callout>
+### Defining a Prefetching Caching Policy {/*defining-a-prefetching-caching-policy*/}
 
-See [InstallOptions](/docs/api/prefetch/interfaces/window_InstallOptions.default.html) for additional configuration when installing the service worker.
+From within your router, configure a route that caches responses at the edge and in the service worker. Optionally, set a longer cache time for greater performance. 
 
-### Defining a Prefetching Caching Policy {/* defining-a-prefetching-caching-policy */}
+**Example:**
 
-To ensure that excessive prefetch traffic isn't passed on to your origin, {{ PRODUCT_NAME }} will serve prefetch requests when a cached response is available at the edge. You may configure a route that caches responses at the edge and in the service worker within your router, optionally giving it longer cache time for greater performance. In this example we define a route that caches product API calls for one hour:
+The following example defines a route that caches product API calls for one hour:
 
 ```js diff filename="routes.js"
 import {Router} from '{{ PACKAGE_NAME }}/core';
@@ -242,17 +299,36 @@ export default new Router()
 +  });
 ```
 
-Note that if you prefetch a URL without setting `caching.service_worker_max_age` as shown above, you can still prefetch those URLs manually and they will be cached by the service worker for a short TTL (2 minutes by default). You can change the default TTL by setting [`defaultMaxAgeSeconds`](/docs/api/prefetch/interfaces/sw_Prefetcher.PrefetcherConfig.html#defaultMaxAgeSeconds) when initializing the `Prefetcher` instance in your service worker. For example, to set the default TTL to 10 minutes, you would initialize the `Prefetcher` instance as follows:
+If you prefetch a URL without setting `caching.service_worker_max_age` as shown above, you can still prefetch those URLs manually and they will be cached by the service worker for a short TTL (2 minutes by default). You can change the default TTL by setting [`defaultMaxAgeSeconds`](/docs/api/prefetch/interfaces/sw_Prefetcher.PrefetcherConfig.html#defaultMaxAgeSeconds) when initializing the `Prefetcher` instance in your service worker. For example, to set the default TTL to 10 minutes, you would initialize the `Prefetcher` instance as follows:
 
 ```js filename="service-worker.js"
 const prefetcher = new Prefetcher({defaultMaxAgeSeconds: 60 * 10}); // set the local cache TTL to 10 minutes
 ```
 
-### Automatic Prefetching {/* automatic-prefetching */}
-With the service worker installed and a cache policy configured, you can now begin prefetching URLs. Prefetch requests are given the lowest priority. This ensures that they do not block more critical requests like API calls, images, scripts, and navigation.
-The `@edgio/prefetch` will automatically prefetch all links on your site that are in the screen viewport and match any of the configured [Rules](/guides/performance/rules#rules) that sets [`caching.max_age`](/guides/performance/rules/features#set-max-age) and [`caching.service_worker_max_age`](/guides/performance/rules/features#set-service-worker-max-age) features.
+### Automatic Prefetching {/*automatic-prefetching*/}
 
-Let's start with following example from Next.js framework. This example will generate HTML page with list of all pages and links to them:
+{{ PRODUCT }} will attempt to prefetch links that meet all of the following conditions:
+
+-   You have [built](#building-the-service-worker), [served](#serving-the-service-worker), and [registered](#registering-the-service-worker) the service worker. 
+-   The link is displayed in the viewport (i.e., the area of the web page that is currently visible to the user).
+-   The link matches at least one rule that contains both of the following features:
+    -   [Set Max Age (max_age)](/guides/performance/rules/features#set-max-age)
+    -   [Set Service Worker Max Age (service_worker_max_age)](/performance/rules/features#set-service-worker-max-age) 
+
+<Callout type="info">
+
+  Prefetch requests are given the lowest priority. This ensures that they do not block more critical requests like API calls, images, scripts, and navigation.
+
+</Callout>
+
+By default, the response varies according to whether the requested content has been cached within the POP closest to the user. 
+-   If a cached response is found, then {{ PRODUCT }} will serve this cached content to the browser. The browser will then cache it locally for the duration defined by the Set Service Worker Max Age (service_worker_max_age) feature. 
+-   If a cached response is not found, then {{ PRODUCT }} will return a `412 Precondition Failed` response.
+
+**Next.js Framework Example:**
+
+This example generates an HTML page with a list of links:
+
 ```js filename="app/pages/page.jsx"
 import Link from 'next/link'
 
@@ -270,9 +346,11 @@ function Pages({ pages }) {
 
 export default Pages
 ```
-To cache and prefetch all links automatically in upper example, we simply need to add the following rule in EdgeJS or Console UI:
+
+Add the following rule to automatically cache and prefetch all navigation links in the above example:
+
 ```js filename="routes.js"
-import { Router } from '@edgio/core/router'
+import { Router } from '{{ PACKAGE_NAME }}/core/router'
 
 export default new Router()
     //  This rule's path matches the links href attribute
@@ -283,19 +361,18 @@ export default new Router()
         }
     })
 ```
-![Prefetch rule](/images/v7/performance/prefetch_rule.png)
 
-
-### Manual Prefetching {/* manual-prefetching */}
+### Manual Prefetching {/*manual-prefetching*/}
 
 Manual prefetching utilizes the same `prefetch` function as automatic prefetching, but is called manually from your client-side code. This could be useful if you want to prefetch URLs based on user interaction or other events.
 The [`prefetch`](/docs/api/prefetch/functions/window_prefetch.prefetch.html) function accepts a URL and an optional `config` object with properties defined in the [`PrefetchConfiguration`](/docs/api/prefetch/types/window_prefetch.PrefetchConfiguration.html) interface. This function may be called at any time after the service worker is installed.
 
 The following sections describe various ways to implement manual prefetching using the `prefetch` function.
 
-#### Prefetching triggered by hover {/* prefetching-triggered-by-hover */}
+#### Prefetching on Hover {/*prefetching-on-hover*/}
 
-This example shows how you can prefetch URL of links with an `href` attribute when the user hovers over them:
+This example shows how you can prefetch links with an `href` attribute when the user hovers over them:
+
 ```js filename="app.js"
 import { install, prefetch } from '{{ PACKAGE_NAME }}/prefetch/window';
 
@@ -317,9 +394,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-#### Prefetching based on element visibility {/* prefetching-based-on-element-visibility */}
+#### Prefetching Based on Element Visibility {/*prefetching-based-on-element-visibility*/}
 
-To prefetch URLs based on element visibility, you can use the [`watch`](/docs/api/prefetch/interfaces/window_InstallOptions.default.html#watch) option when installing the service worker. The `watch` option accepts an array of objects with `selector` and `callback` properties. The `selector` property is a CSS selector that matches elements to watch for visibility. The `callback` property is a function that is called when an element matching the selector becomes visible. The callback function is passed the element as an argument. The following example will prefetch URLs for all links with an `href` attribute that are visible on the page:
+To prefetch URLs based on element visibility, you can use the [`watch`](/docs/api/prefetch/interfaces/window_InstallOptions.default.html#watch) option when installing the service worker. The `watch` option accepts an array of objects with `selector` and `callback` properties. The `selector` property is a CSS selector that matches elements to watch for visibility. The `callback` property is a function that is called when an element matching the selector becomes visible. The callback function is passed the element as an argument. 
+
+The following example will prefetch all links with an `href` attribute that are visible on the page:
 
 ```js filename="app.js"
 import { install, prefetch } from '{{ PACKAGE_NAME }}/prefetch/window';
@@ -357,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
   - [React](#react)
   - [Vue.js](#vuejs)
 
-These components allow for easier prefetch integration with your existing framework code without need to directly call the `prefetch` function.
+These components allow for easier prefetch integration with your existing framework code without having to call the `prefetch` function directly.
 
 ### React {/* react */}
 
@@ -375,11 +454,11 @@ function ProductLink({product}) {
 }
 ```
 
-By default, `Prefetch` will fetch and cache the URL in the link's `href` attribute. If you have a single page app, you most likely want to prefetch the corresponding API call for the page rather than the page's HTML. The example above shows you how to set the `url` property to control which URL is prefetched.
+By default, `Prefetch` will fetch and cache the URL in the link's `href` attribute. If you have a single page app, you should typically prefetch the corresponding API call for the page rather than the page's HTML. The above example shows how to set the `url` property to control which URL is prefetched.
 
 ### Next.js {/* nextjs */}
 
-If you're using Next.js with `getServerSideProps`, use `createNextDataURL` from `{{ PACKAGE_NAME }}/next/client` to prefetch the data for the linked page.
+If you are using Next.js with `getServerSideProps`, use `createNextDataURL` from `{{ PACKAGE_NAME }}/next/client` to prefetch the data for the linked page.
 
 ```js
 import {Prefetch} from '{{ PACKAGE_NAME }}/react';
@@ -450,11 +529,11 @@ The `{{ PACKAGE_NAME }}/vue` package provides a `Prefetch` component that you ca
 </script>
 ```
 
-By default `Prefetch` will fetch and cache the URL in the link's `to` attribute (for both `router-link` and `nuxt-link`). If you have a single page app, you most likely want to prefetch an API call for the page rather than the page's HTML. The example above shows you how to set the `url` property to control which URL is prefetched.
+By default `Prefetch` will fetch and cache the URL in the link's `to` attribute (for both `router-link` and `nuxt-link`). If you have a single page app, you should typically prefetch an API call for the page rather than the page's HTML. The above example shows how to set the `url` property to control which URL is prefetched.
 
 ## Deep Fetching {/* deep-fetching */}
 
-By default, prefetching only fetches the JSON API data or HTML document for a prefetched page. In order to achieve truly instant page transitions, all of the page's assets above the fold need to be prefetched as well. These typically include images, CSS, and JavaScript. This is where "deep fetching" comes in. Deep fetching parses the prefetched page and then fetches the important assets of the prefetched page that you specify.
+By default, prefetching only fetches the JSON API data or HTML document for a prefetched page. In order to achieve truly instant page transitions, all of the page's assets above the fold need to be prefetched as well. This typically includes images, CSS, and JavaScript. This is where "deep fetching" comes in. Deep fetching parses the prefetched page and then fetches important assets from the prefetched page.
 
 To add deep fetching to your project, add the [DeepFetchPlugin](/docs/api/prefetch/classes/sw_DeepFetchPlugin.default.html) to your service worker. The `DeepFetchPlugin` is then configured with an array of selectors that describe which assets need to be prefetched:
 
@@ -473,11 +552,11 @@ new Prefetcher({
 });
 ```
 
-The `DeepFetchPlugin` can parse both HTML and JSON documents to extract the page assets that must be deep fetched. For {{ PRODUCT_NAME }} projects that are headless (i.e. the front end communicates with the backend through an API), you'll typically use the JSON option. However if the backend and front-end endpoints are communicating using HTML responses then you'll want to use the HTML option. Note that you can mix both HTML and JSON configuration objects in the an array passed to the `DeepFetchPlugin`.
+The `DeepFetchPlugin` can parse both HTML and JSON documents to extract the page assets that must be deep fetched. For {{ PRODUCT }} projects that are headless (i.e., the front-end communicates with the backend through an API), you should typically use the JSON option. However, if the backend and front-end endpoints are communicating using HTML responses, then you should use the HTML option. You can mix both HTML and JSON configuration objects in the array passed to the `DeepFetchPlugin`.
 
 ### Deep Fetching Urls in JSON Responses {/* deep-fetching-urls-in-json-responses */}
 
-For JSON responses, you'll pass the `DeepFetchPlugin` an array of [DeepFetchJsonConfig interface](/docs/api/prefetch/classes/sw_DeepFetchPlugin.default.html#jsonConfigs) objects. These `DeepFetchJsonConfig` objects describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
+For JSON responses, you should pass the `DeepFetchPlugin`, which is an array of [DeepFetchJsonConfig interface](/docs/api/prefetch/classes/sw_DeepFetchPlugin.default.html#jsonConfigs) objects. These `DeepFetchJsonConfig` objects describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
 
 ```js filename="service-worker.js"
 new DeepFetchPlugin([
@@ -562,9 +641,11 @@ function deepFetchResponsiveImages({$el, el, $}: DeepFetchCallbackParam) {
 
 ## Reducing 412s {/* reducing-412s */}
 
-By default, {{ PRODUCT_NAME }} will only serve prefetch requests from the edge cache. If a request cannot be served from the cache, a 412 status is returned. This protects your origin servers from additional traffic associated with prefetching. If you're seeing a surprisingly high number of 412s in your logs:
+By default, {{ PRODUCT }} will only serve prefetch requests from the edge cache. If a request cannot be served from the cache, a `412 Precondition Failed` status is returned. This protects your origin servers from additional traffic associated with prefetching. 
 
-1. Ensure that the URLs you're prefetching match exactly those that are fetched during page navigation. Prefetch URLs will have `?{{ COOKIE_PREFIX }}_prefetch=1` whereas the URLs associated with page navigation won't. That's okay. The `{{ COOKIE_PREFIX }}_*` query parameters are automatically excluded from the cache key. Just ensure that there are no other differences.
+Troubleshooting excessive `412 Precondition Failed` responses:
+
+1. Ensure that the URLs being prefetched are an exact match to those fetched during page navigation. Prefetch URLs will have `?{{ COOKIE_PREFIX }}_prefetch=1` whereas the URLs associated with page navigation won't. That's okay. The `{{ COOKIE_PREFIX }}_*` query parameters are automatically excluded from the cache key. Just ensure that there are no other differences.
 2. Ensure that `caching` settings have stale-while-revalidate enabled. For example:
 
 ```js filename="routes.js"
@@ -595,16 +676,15 @@ install({includeCacheMisses: true});
 
 ## The cache-manifest.js File {/* the-cache-manifestjs-file */}
 
-This file is generated during deployment and is used by the `{{ PACKAGE_NAME }}/prefetch` to automatically prefetch all links on site based on configured Rules.
-The file is publicly available on `/__edgio__/cache-manifest.js` path.
+This file, which is generated during deployment, is used by the `{{ PACKAGE_NAME }}/prefetch` to automatically prefetch all links based on configured rules. This file is publicly available from the `/__edgio__/cache-manifest.js` path.
 
-It exposes the Rules with following Features:
+It exposes rules with the following features:
 - [`caching.max_age`](/guides/performance/rules/features#set-max-age)
 - [`caching.service_worker_max_age`](/guides/performance/rules/features#set-service-worker-max-age)
 - [`caching.bypass_cache`](/guides/performance/rules/features#bypass-cache)
 - [`caching.bypass_client_cache`](/guides/performance/rules/features#bypass-client-cache)
 
-and Conditions:
+and conditions:
 - [`request.path`](/guides/performance/rules/conditions#path)
 - [`request.method`](/guides/performance/rules/conditions#method)
 - [`request.scheme`](/guides/performance/rules/conditions#scheme)
@@ -618,7 +698,7 @@ All other features and conditions are unsupported and will be ignored. If you do
 
 Example:
 ```js filename="routes.js"
-import { Router } from '@edgio/core/router'
+import { Router } from '{{ PACKAGE_NAME }}/core/router'
 
 export default new Router()
     // This rule will not be listed in the cache-manifest.js file

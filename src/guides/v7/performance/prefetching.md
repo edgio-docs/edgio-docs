@@ -25,7 +25,7 @@ If your website does not use {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, perform the f
     -   [Set Max Age (max_age)](/guides/performance/rules/features#set-max-age)
     -   [Set Service Worker Max Age (service_worker_max_age)](/performance/rules/features#set-service-worker-max-age) 
 
-    Alternatively, you may [manually enable prefetching](#manual-prefetching-with-pre-built-package) for specific requests.
+    Alternatively, you may [manually enable prefetching](#manual-prefetching-traditional-website) for specific requests.
 
 ### Registering the Service Worker {/*registering-the-service-worker-traditional-website*/}
 
@@ -63,8 +63,8 @@ This package supports the following attributes:
 
 | Attribute                   | Description                                                                                                                                                                                                                                   | Default |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `data-include-cache-misses` | Set to `true` to send all requests to the origin regardless of whether a cached response exists.                                                                                                                                              | `false` |
-| `data-force-prefetch-ratio` | Sets the probability at which a prefetch request will be proxied to the orgin regardless of whether a cached response exists. Valid values are: `0 - 1`. <br /> For example, set it to `0.5` to enable this behavior for 50% of the requests. | `0`     |
+| `data-include-cache-misses` | Set to `true` to enable prefetching from the origin when a cached response is not found.                                                                                                                                               | `false` |
+| `data-force-prefetch-ratio` | Determines the probability that a request will be prefetched from the origin when a cached response is not found. This attribute is ignored when the `data-include-cache-misses` attribute has been enabled. Valid values are: `0 - 1`. <br /><br />For example, set it to `0.5` to enable this behavior for 50% of the requests. | `0`     |
 
 **Example:**
 ```html
@@ -89,6 +89,12 @@ This package supports the following attributes:
 By default, the response varies according to whether the requested content has been cached within the POP closest to the user. 
 -   If a cached response is found, then {{ PRODUCT }} will serve this cached content to the browser. The browser will then cache it locally for the duration defined by the Set Service Worker Max Age (service_worker_max_age) feature. 
 -   If a cached response is not found, then {{ PRODUCT }} will return a `412 Precondition Failed` response.
+
+    <Callout type="info">
+
+      Override this behavior by enabling the `data-include-cache-misses` attribute.
+
+    </Callout>
 
 **Example:**
 
@@ -138,7 +144,7 @@ Verify that links are automatically prefetched and cached locally by opening the
 
 ### Manual Prefetching {/*manual-prefetching-traditional-website*/}
 
-Call the [`Edgio.prefetch()` function](/docs/api/prefetch/functions/window_prefetch.prefetch.html) from your code to manually prefetch resources.
+Call the [Edgio.prefetch() function](/docs/api/prefetch/functions/window_prefetch.prefetch.html) from your code to manually prefetch resources.
 
 **Example:**
 
@@ -241,7 +247,7 @@ export default new Router()
 
 ### Registering the Service Worker {/*registering-the-service-worker*/}
 
-After you have created and served the service worker, the service worker needs to be registered. If you are using a front-end framework that does not automatically register service workers, then you should invoke the `install` function from the `{{ PACKAGE_NAME }}/prefetch` to install the service worker within your client-side code. See [InstallOptions](/docs/api/prefetch/interfaces/window_InstallOptions.default.html) for additional options when installing the service worker.
+After you have created and served the service worker, it needs to be registered. If you are using a front-end framework that does not automatically register service workers, then you should invoke the `install` function from the `{{ PACKAGE_NAME }}/prefetch` to install the service worker within your client-side code. See [InstallOptions](/docs/api/prefetch/interfaces/window_InstallOptions.default.html) for additional options when installing the service worker.
 
 <a id="sample-install-prefetch-code" />**Example:**
 
@@ -266,7 +272,7 @@ Now when your client-side code runs, the service worker will be installed and re
 
 ### Defining a Prefetching Caching Policy {/*defining-a-prefetching-caching-policy*/}
 
-From within your router, configure a route that caches responses at the edge and in the service worker. Optionally, set a longer cache time for greater performance. 
+Automatic prefetching requires an edge and service worker caching policy. From within your router, define a route that caches responses at the edge and in the service worker. Optionally, set a longer cache time for greater performance. 
 
 **Example:**
 
@@ -299,7 +305,13 @@ export default new Router()
 +  });
 ```
 
-If you prefetch a URL without setting `caching.service_worker_max_age` as shown above, you can still prefetch those URLs manually and they will be cached by the service worker for a short TTL (2 minutes by default). You can change the default TTL by setting [`defaultMaxAgeSeconds`](/docs/api/prefetch/interfaces/sw_Prefetcher.PrefetcherConfig.html#defaultMaxAgeSeconds) when initializing the `Prefetcher` instance in your service worker. For example, to set the default TTL to 10 minutes, you would initialize the `Prefetcher` instance as follows:
+#### Default Caching Policy for Manually Prefetching {/*default-caching-policy-for-manually-prefetching*/}
+
+If the `caching.service_worker_max_age` feature has not been defined, you may still [manually prefetch content](#manual-prefetching). By default, manually prefetched content will be cached by the service worker for 2 minutes. Change the default time to live (TTL) by setting [`defaultMaxAgeSeconds`](/docs/api/prefetch/interfaces/sw_Prefetcher.PrefetcherConfig.html#defaultMaxAgeSeconds) when initializing the `Prefetcher` instance in your service worker. 
+
+**Example:**
+
+Set a default TTL of 10 minutes by initializing the `Prefetcher` instance as shown below:
 
 ```js filename="service-worker.js"
 const prefetcher = new Prefetcher({defaultMaxAgeSeconds: 60 * 10}); // set the local cache TTL to 10 minutes
@@ -324,6 +336,12 @@ const prefetcher = new Prefetcher({defaultMaxAgeSeconds: 60 * 10}); // set the l
 By default, the response varies according to whether the requested content has been cached within the POP closest to the user. 
 -   If a cached response is found, then {{ PRODUCT }} will serve this cached content to the browser. The browser will then cache it locally for the duration defined by the Set Service Worker Max Age (service_worker_max_age) feature. 
 -   If a cached response is not found, then {{ PRODUCT }} will return a `412 Precondition Failed` response.
+
+    <Callout type="info">
+
+      Override this behavior by enabling the `data-include-cache-misses` attribute.
+
+    </Callout>
 
 **Next.js Framework Example:**
 
@@ -364,8 +382,7 @@ export default new Router()
 
 ### Manual Prefetching {/*manual-prefetching*/}
 
-Manual prefetching utilizes the same `prefetch` function as automatic prefetching, but is called manually from your client-side code. This could be useful if you want to prefetch URLs based on user interaction or other events.
-The [`prefetch`](/docs/api/prefetch/functions/window_prefetch.prefetch.html) function accepts a URL and an optional `config` object with properties defined in the [`PrefetchConfiguration`](/docs/api/prefetch/types/window_prefetch.PrefetchConfiguration.html) interface. This function may be called at any time after the service worker is installed.
+Manual prefetching also uses `prefetch` function, but it is manually called from your client-side code. This is especially useful when prefetching based on user interactions or other events. The [`prefetch`](/docs/api/prefetch/functions/window_prefetch.prefetch.html) function accepts a URL and an optional `config` object with properties defined in the [`PrefetchConfiguration`](/docs/api/prefetch/types/window_prefetch.PrefetchConfiguration.html) interface. This function may be called at any time after the service worker is installed.
 
 The following sections describe various ways to implement manual prefetching using the `prefetch` function.
 
@@ -396,7 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 #### Prefetching Based on Element Visibility {/*prefetching-based-on-element-visibility*/}
 
-To prefetch URLs based on element visibility, you can use the [`watch`](/docs/api/prefetch/interfaces/window_InstallOptions.default.html#watch) option when installing the service worker. The `watch` option accepts an array of objects with `selector` and `callback` properties. The `selector` property is a CSS selector that matches elements to watch for visibility. The `callback` property is a function that is called when an element matching the selector becomes visible. The callback function is passed the element as an argument. 
+To prefetch URLs based on element visibility, you can use the [`watch`](/docs/api/prefetch/interfaces/window_InstallOptions.default.html#watch) option when installing the service worker. The `watch` option accepts an array of objects with `selector` and `callback` properties. The `selector` property is a CSS selector that matches elements to watch for visibility. The `callback` property is a function that is called when an element matching the selector becomes visible. This element is passed to the callback function as an argument. 
 
 The following example will prefetch all links with an `href` attribute that are visible on the page:
 
@@ -430,7 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ## Framework Prefetch Components {/* framework-prefetch-components */}
 
-{{ PRODUCT }} provides prefetch component integration for a few of the following front-end frameworks:
+{{ PRODUCT }} provides prefetch component integration for the following front-end frameworks:
 
   - [Next.js](#nextjs)
   - [React](#react)
@@ -529,11 +546,11 @@ The `{{ PACKAGE_NAME }}/vue` package provides a `Prefetch` component that you ca
 </script>
 ```
 
-By default `Prefetch` will fetch and cache the URL in the link's `to` attribute (for both `router-link` and `nuxt-link`). If you have a single page app, you should typically prefetch an API call for the page rather than the page's HTML. The above example shows how to set the `url` property to control which URL is prefetched.
+By default, the `Prefetch` component will fetch and cache the URL in the link's `to` attribute (for both `router-link` and `nuxt-link`). If you have a single page app, you should typically prefetch an API call for the page rather than the page's HTML. The above example shows how to set the `url` property to control which URL is prefetched.
 
 ## Deep Fetching {/* deep-fetching */}
 
-By default, prefetching only fetches the JSON API data or HTML document for a prefetched page. In order to achieve truly instant page transitions, all of the page's assets above the fold need to be prefetched as well. This typically includes images, CSS, and JavaScript. This is where "deep fetching" comes in. Deep fetching parses the prefetched page and then fetches important assets from the prefetched page.
+By default, prefetching only fetches the JSON API data or HTML document for a prefetched page. In order to achieve truly instant page transitions, all of the page's assets above the fold need to be prefetched as well. This typically includes images, CSS, and JavaScript. This is where deep fetching comes in. Deep fetching parses the prefetched page and then fetches important assets from the prefetched page.
 
 To add deep fetching to your project, add the [DeepFetchPlugin](/docs/api/prefetch/classes/sw_DeepFetchPlugin.default.html) to your service worker. The `DeepFetchPlugin` is then configured with an array of selectors that describe which assets need to be prefetched:
 
@@ -639,40 +656,42 @@ function deepFetchResponsiveImages({$el, el, $}: DeepFetchCallbackParam) {
 }
 ```
 
-## Reducing 412s {/* reducing-412s */}
+## Reducing 412 Precondition Failed Responses {/* reducing-412s */}
 
 By default, {{ PRODUCT }} will only serve prefetch requests from the edge cache. If a request cannot be served from the cache, a `412 Precondition Failed` status is returned. This protects your origin servers from additional traffic associated with prefetching. 
 
 Troubleshooting excessive `412 Precondition Failed` responses:
 
-1. Ensure that the URLs being prefetched are an exact match to those fetched during page navigation. Prefetch URLs will have `?{{ COOKIE_PREFIX }}_prefetch=1` whereas the URLs associated with page navigation won't. That's okay. The `{{ COOKIE_PREFIX }}_*` query parameters are automatically excluded from the cache key. Just ensure that there are no other differences.
-2. Ensure that `caching` settings have stale-while-revalidate enabled. For example:
+1.  Ensure that the URLs being prefetched are an exact match to those fetched during page navigation. Prefetch URLs will have `?{{ COOKIE_PREFIX }}_prefetch=1` whereas the URLs associated with page navigation won't. That's okay. The `{{ COOKIE_PREFIX }}_*` query parameters are automatically excluded from the cache key. Just ensure that there are no other differences.
+2.  Ensure that `caching` settings have stale-while-revalidate enabled. 
 
-```js filename="routes.js"
-router.get('/p/:productId', {
-  caching: {
-    max_age: '1h',
-    service_worker_max_age: '1h',
-    stale_while_revalidate: '1d', // this way stale items can still be prefetched
-  },
-  headers: {
-    set_response_headers: {
-      'x-sw-cache-control': 'max-age=3600',
-    },
-  },
-});
-```
+    **Example:**
+
+    ```js filename="routes.js"
+    router.get('/p/:productId', {
+      caching: {
+        max_age: '1h',
+        service_worker_max_age: '1h',
+        stale_while_revalidate: '1d', // this way stale items can still be prefetched
+      },
+      headers: {
+        set_response_headers: {
+          'x-sw-cache-control': 'max-age=3600',
+        },
+      },
+    });
+    ```
 
 3. Consider increasing `caching.max_age`. The shorter the cache time to live is, the more prefetches will fail.
 4. Set the `includeCacheMisses` install option to `true`. This should be used with caution and is not recommended for use in production because it will significantly increase the traffic to your origin or API servers.
 
-```js filename="app.js"
-import install from '{{ PACKAGE_NAME }}/prefetch/window/install';
-
-// Call the following once when the page loads to allow prefetch requests to be served when responses
-// aren't available in the edge cache:
-install({includeCacheMisses: true});
-```
+    ```js filename="app.js"
+    import install from '{{ PACKAGE_NAME }}/prefetch/window/install';
+    
+    // Call the following once when the page loads to allow prefetch requests to be served when responses
+    // aren't available in the edge cache:
+    install({includeCacheMisses: true});
+    ```
 
 ## The cache-manifest.js File {/* the-cache-manifestjs-file */}
 
@@ -696,7 +715,8 @@ and conditions:
 
 All other features and conditions are unsupported and will be ignored. If you don't want to expose the rule publicly in this file for any reason, you can explicitly exclude it by adding `cache-manifest-ignore` comment to it.
 
-Example:
+**Example:**
+
 ```js filename="routes.js"
 import { Router } from '{{ PACKAGE_NAME }}/core/router'
 

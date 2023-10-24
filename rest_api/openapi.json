@@ -33,7 +33,7 @@
       "description": "Automate environment variable management."
     },
     {
-      "name": "purge requests",
+      "name": "purge-requests",
       "x-displayName": "Purge",
       "description": "Purge cached content and retrieve information about previously submitted purge requests."
     },

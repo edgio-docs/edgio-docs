@@ -1,6 +1,6 @@
 post:
   tags:
-    - purge requests
+    - purge-requests
   summary: Purge Cache
   description: >
     Submits a request to purge cached content from a specific environment.
@@ -20,15 +20,7 @@ post:
     required: true
   responses:
     '202':
-      description: >
-        Submits a request to purge cached content from a specific environment.
-        Purging content invalidates the cached version of an asset from our edge
-        servers. You may submit up to 50 concurrent purge requests. For the
-        purpose of concurrency, each value defined within the `values` property
-        is considered a separate purge request. Find out the current status of
-        your purge request by passing the purge request ID, which is returned by
-        the `id` property, to the [Get Purge Request
-        operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).
+      description: OK
       content:
         application/json:
           schema:

@@ -19,16 +19,8 @@ get:
       schema:
         type: string
   responses:
-    '200':
-      description: >
-        Retrieve an environment's origin configurations, hostnames, rules, and
-        experiments.
-
-
-        Use the [Get Environment
-        operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId)
-        to retrieve the system-defined ID (`@links.active_config.id`) for an
-        environment's active configuration
+    '201':
+      description: OK
       content:
         application/json:
           schema:

@@ -19,8 +19,8 @@ tags:
     description: Operations about deployments
   - name: configs
     description: Operations about configs
-  - name: purge requests
-    description: Operations about purge requests
+  - name: purge-requests
+    description: Operations about purge-requests
   - name: members
     description: Operations about members
   - name: environments

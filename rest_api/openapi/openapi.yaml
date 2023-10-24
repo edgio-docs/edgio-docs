@@ -22,7 +22,7 @@ tags:
   - name: environment-variables
     x-displayName: Environment Variables
     description: Automate environment variable management.
-  - name: purge requests
+  - name: purge-requests
     x-displayName: Purge
     description: Purge cached content and retrieve information about previously submitted purge requests.
   - name: environments
@@ -523,7 +523,7 @@ components:
 x-tagGroups:
   - name: Cache
     tags:
-      - purge requests
+      - purge-requests
   - name: Deployments
     tags:
       - configs

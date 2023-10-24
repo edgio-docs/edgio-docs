@@ -16,7 +16,7 @@ get:
         type: string
   responses:
     '200':
-      description: Retrieve log data for a specific deployment.
+      description: OK
       content:
         application/json:
           schema:

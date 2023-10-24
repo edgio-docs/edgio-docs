@@ -34,8 +34,8 @@
       "description": "Operations about configs"
     },
     {
-      "name": "purge requests",
-      "description": "Operations about purge requests"
+      "name": "purge-requests",
+      "description": "Operations about purge-requests"
     },
     {
       "name": "members",
@@ -750,7 +750,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieve log data for a specific deployment.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -928,8 +928,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Retrieve an environment's origin configurations, hostnames, rules, and experiments.\n\nUse the [Get Environment operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId) to retrieve the system-defined ID (`@links.active_config.id`) for an environment's active configuration\n",
+          "201": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1091,7 +1091,7 @@
     "/cache/v0.1/purge-requests/{request_id}": {
       "get": {
         "tags": [
-          "purge requests"
+          "purge-requests"
         ],
         "summary": "Get Purge Request",
         "description": "Retrieves information, including status, about a purge request.",
@@ -1109,7 +1109,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieves information, including status, about a purge request.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1181,7 +1181,7 @@
     "/cache/v0.1/purge-requests": {
       "post": {
         "tags": [
-          "purge requests"
+          "purge-requests"
         ],
         "summary": "Purge Cache",
         "description": "Submits a request to purge cached content from a specific environment. Purging content invalidates the cached version of an asset from our edge servers. You may submit up to 50 concurrent purge requests. For the purpose of concurrency, each value defined within the `values` property is considered a separate purge request. Find out the current status of your purge request by passing the purge request ID, which is returned by the `id` property, to the [Get Purge Request operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).\n",
@@ -1198,7 +1198,7 @@
         },
         "responses": {
           "202": {
-            "description": "Submits a request to purge cached content from a specific environment. Purging content invalidates the cached version of an asset from our edge servers. You may submit up to 50 concurrent purge requests. For the purpose of concurrency, each value defined within the `values` property is considered a separate purge request. Find out the current status of your purge request by passing the purge request ID, which is returned by the `id` property, to the [Get Purge Request operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).\n",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {

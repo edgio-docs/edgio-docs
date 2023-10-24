@@ -1,6 +1,6 @@
 get:
   tags:
-    - purge requests
+    - purge-requests
   summary: Get Purge Request
   description: Retrieves information, including status, about a purge request.
   operationId: getCacheV01PurgeRequestsRequestId
@@ -16,7 +16,7 @@ get:
         type: string
   responses:
     '200':
-      description: Retrieves information, including status, about a purge request.
+      description: OK
       content:
         application/json:
           schema:

@@ -10,14 +10,14 @@ Improve performance by prefetching popular pages and API calls. By default, pref
 
 </Callout>
 
-Set up varies according to whether you are using {{ PRODUCT }} {{ PLATFORM }}. Learn how to set up prefetching for a:
+Set up varies according to whether you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }}. Learn how to set up prefetching for a:
 
 -   [Traditional website.](#prefetching-with-a-traditional-website)
--   [Website powered by {{ PRODUCT }} {{ PLATFORM }}]().
+-   [Website powered by {{ PRODUCT }} {{ PRODUCT_PLATFORM }}](#prefetching-with-edgio-sites).
 
 ## Prefetching with a Traditional Website {/*prefetching-with-a-traditional-website*/}
 
-If your website does not use {{ PRODUCT }} {{ PLATFORM }}, perform the following steps:
+If your website does not use {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, perform the following steps:
 
 1.  [Register the service worker](#registering-the-service-worker-traditional-website) by adding a prefetching script tag to your web pages.
 2.  [Enable prefetching](#automatic-prefetching-traditional-website) for the desired requests by adding the following features within one or more rules:
@@ -171,9 +171,9 @@ Call the [`Edgio.prefetch()` function](/docs/api/prefetch/functions/window_prefe
 </html> 
 ```
 
-## Prefetching with {{ PRODUCT }} {{ PLATFORM }} {/*prefetching-with-edgio-sites*/}
+## Prefetching with {{ PRODUCT }} {{ PRODUCT_PLATFORM }} {/*prefetching-with-edgio-sites*/}
 
-If your website uses {{ PRODUCT }} {{ PLATFORM }} or is based on a JS front-end framework, then you can install the `{{ PACKAGE_NAME }}/prefetch` package directly, take advantage of additional package features, and achieve deeper integration with your site.
+If your website uses {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or is based on a JS front-end framework, then you can install the `{{ PACKAGE_NAME }}/prefetch` package directly, take advantage of additional package features, and achieve deeper integration with your site.
 
 Perform the following steps:
 

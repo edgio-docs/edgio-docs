@@ -562,7 +562,7 @@ router
 
 ## Routing to Cloud Functions {/* routing-to-cloud-functions */}
 
-If your request needs to be run on the {{ PRODUCT }} cloud, you can use the `renderWithApp` method to render your result using your application. Use this method to respond with an SSR or API result from your application.
+Render the result of a Cloud Function within your application by using the `renderWithApp` method. Use this method to respond with an SSR or API result from your application.
 
 {{ routehelper_usage.md }}
 

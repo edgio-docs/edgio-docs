@@ -1409,12 +1409,13 @@ export default new Router()
 
 #### Remove Origin Response Headers {/*remove-origin-response-headers*/}
 
-Deletes one or more header(s) from the response provided by an origin server.
+Deletes one or more custom header(s) from the response provided by an origin server.
 
 **Key information:**
 
 -   Set each string value to the exact name of the header that will be removed from the response provided by an origin server. Case is not taken into account for the purpose of identifying a header. 
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
+-   This feature only removes custom response headers (e.g., Partner-ID). You may not remove standard headers (e.g., Cache-Control and Date) from the origin's response.
 -   Our service adds a set of reserved headers to each response. Although this feature removes a header from the response provided by the origin server, it does not affect whether our service will add a reserved header to the response. 
 
 <edgejs>

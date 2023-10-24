@@ -91,16 +91,12 @@ You need to configure the following items in order to get a GitHub action set up
 2. Save the deploy token inside GitHub ([more info](https://docs.github.com/en/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow)). Go to your `GitHub project > Settings > Secrets > New repository secret`. Save the item as `EDGIO_DEPLOY_TOKEN`.
 3. Inside your development project, create a top level folder titled `.github`. Inside that create a `workflows` folder. From there create a `edgio.yml` file and use the example below for its content.
 
-This is an example GitHub action that will deploy your site to {{ PRODUCT }}.
+This sample GitHub action deploys your site to {{ PRODUCT }}. It requires:
 
-For this action to work
-
-- By default, new {{ PRODUCT }} sites are created with a `default` environment. The action below will create a new build for every push on the default environment.
-- To leverage the GitHub release workflow part of the action below, you need to **create an environment** `production`.
-- You need to have created a deploy key for your site (see above) and added it as a secret in your repo called "edgio_deploy_token". Read more on [accessing environment variables](/guides/basics/environments#accessing-environment-variables) which might be essential for your app during the build time and for server-side requests (including SSG/SSR).
-- Depending on your use of NPM or YARN, adjust the "Install packages" step
-
-Read the comments at the top to understand how this action is configured.
+- A `default` environment. By default, new properties created through our CLI include a `default` environment. This Github action creates a new build for every push to the `default` environment.
+- A `production` environment. If you have not already created a `production` environment, then you should do so now.
+- A deploy token. Add this deploy token as a secret in your repository called `edgio_deploy_token`. Learn more on [accessing environment variables](/guides/basics/environments#accessing-environment-variables) which might be essential for your app during the build time and for server-side requests (including SSG/SSR).
+- Depending on your use of npm or Yarn, adjust the `Install packages` step.
 
 ### Template {/*template*/}
 

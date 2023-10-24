@@ -44,7 +44,7 @@ If a client requests an invalid protocol or version, then {{ PRODUCT }} will ret
 | 547 {{ PRODUCT }} Origin Shield POP No HTTP Response          | {{ PRODUCT }} did not receive an HTTP response from the Origin Shield POP.  {{ CONTACT_SUPPORT }} |
 | 548 {{ PRODUCT }} Origin Shield POP DNS Resolution Error      | {{ PRODUCT }} failed to resolve the Origin Shield POP's host name through DNS.  {{ CONTACT_SUPPORT }} |
 <!--
-| 549{{ PRODUCT }} Captcha Served | Indicates that {{ PRODUCT_SECURITY_ADVANCED_BOT }} flagged a request as potential bot traffic. As a result, {{ PRODUCT }} served a CAPTCHA challenge instead of your site. Only visitors that can solve this challenge will be allowed to proceed to your site. |
+| 549{{ PRODUCT }} Captcha Served | Indicates that PRODUCT_SECURITY_ADVANCED_BOT flagged a request as potential bot traffic. As a result, {{ PRODUCT }} served a CAPTCHA challenge instead of your site. Only visitors that can solve this challenge will be allowed to proceed to your site. |
 -->
 
 ## Response Headers {/*response-headers*/}

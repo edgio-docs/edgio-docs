@@ -567,8 +567,6 @@ Render the result of a Cloud Function within your application by using the [`ren
 {{ routehelper_usage.md }}
 
 ```js
-import {SERVERLESS_ORIGIN_NAME} from '@edgio/core/origins';
-
 router.get('/some/:path*', ({addFeatures, renderWithApp}) => {
   addFeatures({
     caching: {

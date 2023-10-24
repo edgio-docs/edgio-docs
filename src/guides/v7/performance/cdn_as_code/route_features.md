@@ -562,7 +562,7 @@ router
 
 ## Routing to Cloud Functions {/* routing-to-cloud-functions */}
 
-Render the result of a Cloud Function within your application by using the `renderWithApp` method. Use this method to respond with an SSR or API result from your application.
+Render the result of a Cloud Function within your application by using the [`renderWithApp`](/docs/api/core/classes/router_RouteHelper.default.html#renderWithApp) method. Use this method to respond with an SSR or API result from your application.
 
 {{ routehelper_usage.md }}
 

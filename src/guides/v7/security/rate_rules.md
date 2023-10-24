@@ -105,6 +105,13 @@ to** option. The available modes are described below.
     </Callout>
 
 -   **IP address:** Indicates that the requests from each unique client, as determined by its IP address, will be tracked. The specified rate limit will only be enforced on the clients that exceed it.
+
+    <Callout type="info">
+
+      Certain services and applications, such as VPNs, mask a client's IP address. Specifically, they will report an IP address of their choosing instead of the client's real IP address. As a result, multiple devices and perhaps even users may end up sharing the same IP address. 
+
+    </Callout>
+
 -   **IP address and user agent:** Indicates that the requests from each unique client, as determined by each unique combination of IP address and user agent (e.g., web browser), will be tracked. The specified rate limit will only be enforced on the clients that exceed it.
 
     <Callout type="info">

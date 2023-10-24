@@ -2,18 +2,18 @@
 title: Predictive Prefetch
 ---
 
-Improve performance by prefetching popular pages and API calls. By default, prefetching only serves requests that are cached on the edge of our network. This ensures that your infrastructure does not experience additional load due to prefetching. 
+Improve performance by instructing web browsers to request popular pages and API calls before they are needed. This process, which is known as predictive prefetching, improves performance since it allows content to potentially already be cached locally when a user requests it. This means that the requested content may be rendered immediately instead of having to wait for a response from the origin.
 
-<Callout type="important">
+**Key information:**
 
-  Due to security requirements, prefetching requires the HTTPS protocol. An exception to this requirement occurs when using localhost.
+-   By default, only content that has already been cached on the POP closest to the user may be prefetched. {{ PRODUCT }} returns a `412 Precondition Failed` response for prefetch requests that result in cache misses. This ensures that your infrastructure does not experience additional load due to prefetching. 
 
-</Callout>
+-   Due to security requirements, prefetching requires the HTTPS protocol. An exception to this requirement occurs when using localhost.
 
-Set up varies according to whether you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }}. Learn how to set up prefetching for a:
+-   Set up varies according to whether you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }}. Learn how to set up prefetching for a:
 
--   [Traditional website.](#prefetching-with-a-traditional-website)
--   [Website powered by {{ PRODUCT }} {{ PRODUCT_PLATFORM }}](#prefetching-with-edgio-sites).
+    -   [Traditional website.](#prefetching-with-a-traditional-website)
+    -   [Website powered by {{ PRODUCT }} {{ PRODUCT_PLATFORM }}](#prefetching-with-edgio-sites).
 
 ## Prefetching with a Traditional Website {/*prefetching-with-a-traditional-website*/}
 

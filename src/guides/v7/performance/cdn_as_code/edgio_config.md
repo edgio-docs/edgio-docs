@@ -30,6 +30,7 @@ The `origins` key is an array of objects whose properties are:
 | `hosts[].location`                         | Object   | Contains properties that define the location to which {{ PRODUCT }} will proxy requests for this origin configuration.                                                                                                                                                                                                                                                                                                                                                                                             |
 | `hosts[].location.hostname`                | String   | (Required) The domain name or IP address of the origin server                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | `hosts[].location.port`                    | Number   | The port on which the backend receives https requests. Defaults to 443 but you can specify any other acceptable port value. Note that specifying `80` has no special meaning as {{ PRODUCT_NAME }} will never send secured requests to unsecured backends. To [enable HTTP traffic](/guides/security/edgejs_security#ssl) on a backend you must have a route matching `http` protocol in your router and serve content from that route. All HTTP traffic assumes port `80` on the backend.                         |
+| `scheme`                                   | String   | The scheme to use when connecting to the origin. Possible values are `https`, `http`, and `match`. Defaults to `match`, using the same scheme as the incoming request.                                                                                                                                                                                                                                                                                                                                             |
 | `shields`                                  | Object   | Defines how {{ PRODUCT }} will shield your origin configuration.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | `shields.apac`                             | String   | The POP code for the Asia Pacific shield.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `shields.emea`                             | String   | The POP code for the Europe, Middle East, and Africa shield.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -161,23 +162,29 @@ Setting these properties can replicate the behavior of the production environmen
 
 <a id="example-config"></a>
 
-## Example {{ CONFIG_FILE }} {/* example */}
+## Default {{ CONFIG_FILE }} {/* example */}
+
+The following is the default {{ CONFIG_FILE }} file created by `{{ CLI_CMD(init) }}`. Contents of this file may differ if a Sites Framework is detected during initialization.
 
 See the full API specification for the {{ CONFIG_FILE }} file [here](/docs/api/core/interfaces/config.default.html).
 
 ```js
 // This file was automatically added by edgio init.
 // You should commit this file to source control.
-// Learn more about this file at {{ DOCS_URL }}/guides/performance/cdn_as_code/edgio_config
+// Learn more about this file at https://docs.edg.io/guides/edgio_config
 module.exports = {
   // The name of the site in Edgio to which this app should be deployed.
   // name: 'my-site-name',
 
   // The name of the organization in Edgio to which this app should be deployed.
-  // team: 'my-organization-name',
+  // organization: 'my-organization-name',
 
   // Overrides the default path to the routes file. The path should be relative to the root of your app.
   // routes: 'routes.js',
+
+  // When set to true or omitted entirely, Edgio includes the deployment number in the cache key,
+  // effectively purging the cache each time you deploy.
+  // purgeCacheOnDeploy: false,
 
   origins: [
     {
@@ -185,19 +192,19 @@ module.exports = {
       name: 'origin',
 
       // Use the following to override the host header sent from the browser when connecting to the origin
-      override_host_header: 'origin.my-site.com',
+      override_host_header: 'test-origin.edgio.net',
 
       // The list of origin hosts to which to connect
       hosts: [
         {
           // The domain name or IP address of the origin server
-          location: 'origin.my-site.com',
+          location: 'test-origin.edgio.net',
         },
       ],
 
       tls_verify: {
         use_sni: true,
-        sni_hint_and_strict_san_check: 'origin.my-site.com',
+        sni_hint_and_strict_san_check: 'test-origin.edgio.net',
       },
 
       // Uncomment the following to configure a shield
@@ -227,7 +234,7 @@ module.exports = {
   //   },
   // },
 
-  // Options for hosting Cloud Functions on Edgio
+  // Options for hosting serverless functions on Edgio
   // serverless: {
   //   // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
   //   // This option generally isn't needed as Edgio automatically includes all modules imported by your code in the bundle that
@@ -250,5 +257,5 @@ module.exports = {
   //   '**/*', // include all files
   //   '!(**/secrets/**/*)', // except everything in the secrets directory
   // ],
-};
+}
 ```

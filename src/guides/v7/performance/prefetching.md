@@ -68,7 +68,7 @@ This package supports the following attributes:
 
 **Example:**
 ```html
-<script src="/__edgio__/prefetch/install.js" data-include-cache-misses="true" data-force-prefetch-ratio="0.5"></script>
+<script src="/__edgio__/prefetch/install.js" data-include-cache-misses="true"></script>
 ```
 ### Automatic Prefetching {/*automatic-prefetching-traditional-website*/}
 

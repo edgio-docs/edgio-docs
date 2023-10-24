@@ -164,7 +164,7 @@ Setting these properties can replicate the behavior of the production environmen
 
 ## Default {{ CONFIG_FILE }} {/* default-config */}
 
-The following is the default {{ CONFIG_FILE }} file created by `{{ CLI_CMD(init) }}`. Contents of this file may differ if a Sites Framework is detected during initialization.
+By default, the following {{ CONFIG_FILE }} file is created by `{{ CLI_CMD(init) }}`. The contents of this file may differ when a framework supported by {{ PRODUCT }} {{ PRODUCT_PLATFORM }} is detected during initialization.
 
 See the full API specification for the {{ CONFIG_FILE }} file [here](/docs/api/core/interfaces/config.default.html).
 

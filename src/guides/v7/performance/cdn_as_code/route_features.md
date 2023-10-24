@@ -16,6 +16,7 @@ See [Features Reference](/guides/performance/rules/features) for a complete list
 ## Defining Route Features {/* defining-route-features */}
 
 As outlined in the [Route Features](/guides/performance/cdn_as_code#route-features) section of the CDN-as-Code guide:
+
 - Route features are defined as the second argument to the `Router` method being called in the `routes.js` file, such as `.match()`, `.get()`, `.post()`, etc.
 - May also be defined in [conditional routes](/guides/performance/cdn_as_code/route_criteria#conditional-routes) such as `.if()`, `.elseif()`, etc.
 
@@ -47,7 +48,7 @@ router
       max_age: '1h',
     },
   })
-  
+
   // Serve a static file using a RouteHelper method
   .get('/some-path', ({serveStatic}) => {
     serveStatic('public/some-path.html');
@@ -112,7 +113,6 @@ router.get('/some/path', {
   },
 });
 ```
-
 
 ## Debug Cache Headers {/* debug-cache-headers */}
 
@@ -562,19 +562,20 @@ router
 
 ## Routing to Cloud Functions {/* routing-to-cloud-functions */}
 
-If your request needs to be run on the {{ PRODUCT }} cloud, you can use the `SERVERLESS_ORIGIN_NAME` origin to render your result using your application. Use this method to respond with an SSR or API result from your application:
+Render the result of a Cloud Function within your application by using the [`renderWithApp`](/docs/api/core/classes/router_RouteHelper.default.html#renderWithApp) method. Use this method to respond with an SSR or API result from your application.
+
+{{ routehelper_usage.md }}
 
 ```js
-import {SERVERLESS_ORIGIN_NAME} from '@edgio/core/origins';
+router.get('/some/:path*', ({addFeatures, renderWithApp}) => {
+  addFeatures({
+    caching: {
+      max_age: '1d',
+      bypass_client_cache: true,
+    },
+  });
 
-router.get('/some/:path*', {
-  caching: {
-    max_age: '1d',
-    bypass_client_cache: true,
-  },
-  origin: {
-    set_origin: SERVERLESS_ORIGIN_NAME,
-  },
+  renderWithApp();
 });
 ```
 
@@ -750,37 +751,39 @@ If you need to block all traffic from a specific country or set of countries, yo
 ```js
 import {or} from '@edgio/core';
 
-router.if(or(
-  { 
-    edgeControlCriteria: {
-      '===': [
-        {
-          location: 'country',
-        },
-        'XX',
-      ]
+router.if(
+  or(
+    {
+      edgeControlCriteria: {
+        '===': [
+          {
+            location: 'country',
+          },
+          'XX',
+        ],
+      },
+    },
+    {
+      edgeControlCriteria: {
+        '===': [
+          {
+            location: 'country',
+          },
+          'XY',
+        ],
+      },
+    },
+    {
+      edgeControlCriteria: {
+        '===': [
+          {
+            location: 'country',
+          },
+          'XZ',
+        ],
+      },
     }
-  },
-  { 
-    edgeControlCriteria: {
-      '===': [
-        {
-          location: 'country',
-        },
-        'XY',
-      ]
-    }
-  },
-  { 
-    edgeControlCriteria: {
-      '===': [
-        {
-          location: 'country',
-        },
-        'XZ',
-      ]
-    }
-  }),
+  ),
   {
     access: {
       deny_access: true,

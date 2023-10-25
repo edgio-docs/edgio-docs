@@ -167,3 +167,8 @@ body {
   color: var(--text-primary);
   background-color: var(--bg-primary);
 }
+
+summary {
+  color: var(--colors-blue0);
+  cursor: pointer;
+}

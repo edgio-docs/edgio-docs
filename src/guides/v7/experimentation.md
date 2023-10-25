@@ -201,6 +201,12 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 -   **Client:** {{ PRODUCT }} sets the `{{ HEADER_PREFIX }}-experiments` cookie and the `server-timing` response header.
 -   **Origin:** {{ PRODUCT }} sets the `{{ HEADER_PREFIX }}-experiments-info` header for requests proxied from our network to the origin.
 
+<Callout type="tip">
+
+  The [{{ PRODUCT }} Experimentation repository (https://github.com/Edgio/Experimentation)](https://github.com/Edgio/Experimentation) contains utilities to facilitate the extraction of experiment and variant metadata.
+
+</Callout>
+
 #### {{ HEADER_PREFIX }}-experiments Cookie {/*-experiments-cookie*/}
 
 This cookie assigns a value from 0 - 99 to a client. Once a client has been assigned a number, it will persist until the client clears their cookies. This ensures a consistent experience across multiple browsing sessions. 

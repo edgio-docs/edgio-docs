@@ -11,7 +11,7 @@ The following features support variables:
 -   [Set Request Headers (set_request_headers)](/guides/performance/rules/features#set-request-headers)
 -   [Set Response Headers (set_response_headers)](/guides/performance/rules/features#set-response-headers)
 -   [URL Redirect (url_redirect)](/guides/performance/rules/features#url-redirect)
--   [URL Rewrite (url_rewrite)](/guides/performance/rules/features#url-rewrite)
+-   [URL Rewrite (url_rewrite)](/guides/performance/rules/features#rewrite-url)
 
 ## Definitions {/*definitions*/}
 

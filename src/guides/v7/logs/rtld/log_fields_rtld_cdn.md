@@ -167,7 +167,7 @@ The `logs` array contains an object for each log entry associated with the curre
 
     What is the difference between `path` and `rewritten_path`?
 
-    The `path` field always reports the requested URL's relative path, while `rewritten_path` reports the relative path after the [URL has been rewritten](/guides/performance/rules/features#url-rewrite).
+    The `path` field always reports the requested URL's relative path, while `rewritten_path` reports the relative path after the [URL has been rewritten](/guides/performance/rules/features#rewrite-url).
 
 -   **platform (*String*):** Platform. (Category: Network) Returns `wpc`.
 -   **pop (*String*):** POP. (Category: Network) Identifies the POP that handled the client's request by its three-letter abbreviation.
@@ -225,7 +225,7 @@ The `logs` array contains an object for each log entry associated with the curre
 
     What is the difference between `path` and `rewritten_path`?
 
-    The `path` field always reports the requested URL's relative path, while `rewritten_path` reports the relative path after the [URL has been rewritten](/guides/performance/rules/features#url-rewrite).
+    The `path` field always reports the requested URL's relative path, while `rewritten_path` reports the relative path after the [URL has been rewritten](/guides/performance/rules/features#rewrite-url).
 
 -   **scheme (*String*):** Scheme. (Category: Request) Indicates the request's scheme. Valid values are: `http | https`
 -   **server_ip (*String*):** Edge Server IP Address. (Category: Network) Indicates the IP address for the edge server that processed the request.

@@ -32,15 +32,16 @@ If your website does not use {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, perform the f
 Prefetching requires a pre-built service worker. Add this service worker by including the following script tag to your existing site's HTML:
 
 ```html
-<script src="/__edgio__/prefetch/install.js"></script>
+<script src="/__edgio__/prefetch/install.js" defer></script>
 ```
 
 This script tag installs the latest version of the [`{{ PACKAGE_NAME }}/prefetch`](https://www.npmjs.com/package/@edgio/prefetch?activeTab=versions) package.
 
 Alternatively, you may install a specific version of this package by adding the version to the script tag as shown below.
+The lowest supported version is `v7.3.1`.
 
 ```html
-<script src="/__edgio__/prefetch/v7.2.5/install.js"></script>
+<script src="/__edgio__/prefetch/v7.3.1/install.js" defer></script>
 ```
 
 **Example:**
@@ -54,7 +55,7 @@ Alternatively, you may install a specific version of this package by adding the 
     <h1>My awesome page</h1>
     <p>This site uses the {{ PACKAGE_NAME }}/prefetch package.</p>
     
-+   <script src="/__edgio__/prefetch/install.js"></script>
++   <script src="/__edgio__/prefetch/install.js" defer></script>
 </body>
 </html> 
 ```
@@ -68,7 +69,7 @@ This package supports the following attributes:
 
 **Example:**
 ```html
-<script src="/__edgio__/prefetch/install.js" data-include-cache-misses="true"></script>
+<script src="/__edgio__/prefetch/install.js" data-include-cache-misses="true" defer></script>
 ```
 ### Automatic Prefetching {/*automatic-prefetching-traditional-website*/}
 
@@ -112,7 +113,7 @@ By default, the response varies according to whether the requested content has b
         <a href="/pages/3">Page 3</a>
     </nav>
     
-    <script src="/__edgio__/prefetch/install.js"></script>
+    <script src="/__edgio__/prefetch/install.js" defer></script>
 </body>
 </html> 
 ```
@@ -162,7 +163,7 @@ Call the [Edgio.prefetch() function](/docs/api/prefetch/functions/window_prefetc
         <a href="/pages/3">Page 3</a>
     </nav>
     
-    <script src="/__edgio__/prefetch/install.js"></script>
+    <script src="/__edgio__/prefetch/install.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const { prefetch } = Edgio;

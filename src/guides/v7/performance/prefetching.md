@@ -79,7 +79,7 @@ This package supports the following attributes:
 -   The link is displayed in the viewport (i.e., the area of the web page that is currently visible to the user).
 -   The link matches at least one rule that contains both of the following features:
     -   [Set Max Age (max_age)](/guides/performance/rules/features#set-max-age)
-    -   [Set Service Worker Max Age (service_worker_max_age)](/performance/rules/features#set-service-worker-max-age) 
+    -   [Set Service Worker Max Age (service_worker_max_age)](/guides/performance/rules/features#set-service-worker-max-age) 
 
 <Callout type="info">
 

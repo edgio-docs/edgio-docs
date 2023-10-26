@@ -8,6 +8,8 @@ get:
     - Access Control List (ACL)
   summary: GET specific version of acl object identified by version id
   description: Get get specific version of acl object.
+  security:
+    - wafScope: [app.waf]
   responses:
     '200':
       description: Version for that acl object.

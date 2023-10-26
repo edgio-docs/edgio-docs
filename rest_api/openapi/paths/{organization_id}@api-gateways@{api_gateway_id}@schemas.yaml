@@ -1,0 +1,141 @@
+parameters:
+  - $ref: ../components/parameters/organization_id.yaml
+  - $ref: ../components/parameters/api_gateway_id.yaml
+get:
+  operationId: get-api-gateway-rule-schemas
+  tags:
+    - API Gateways
+  summary: Get API Security Ruleset's API Schemas
+  description: Retrieves a list of API schemas associated with an API Security ruleset. 
+  security:
+    - api_securityScope: [app.api_security]
+  responses:
+    '200':
+      description: OK. A list of API schemas was retrieved.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ApiSchema.yaml
+            example:
+              [{
+                      "name": "Access Rules",
+                      "schema": {
+                          "type": "object",
+                          "properties": {
+                              "customer_id": {
+                                  "type": "string"
+                              },
+                              "directive": {
+                                  "type": "array",
+                                  "items": {
+                                      "type": "object",
+                                      "properties": {
+                                          "sec_rule": {
+                                              "type": "object",
+                                              "properties": {
+                                                  "action": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                          "id": {
+                                                              "type": "string"
+                                                          },
+                                                          "msg": {
+                                                              "type": "string"
+                                                          },
+                                                          "t": {
+                                                              "type": "array",
+                                                              "items": {
+                                                                  "type": "string"
+                                                              }
+                                                          }
+                                                      }
+                                                  },
+                                                  "chained_rule": {
+                                                      "type": "array"
+                                                  },
+                                                  "id": {
+                                                      "type": "string"
+                                                  },
+                                                  "name": {
+                                                      "type": "string"
+                                                  },
+                                                  "operator": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                          "is_negated": {
+                                                              "type": "boolean"
+                                                          },
+                                                          "is_regex": {
+                                                              "type": "boolean"
+                                                          },
+                                                          "type": {
+                                                              "type": "string"
+                                                          },
+                                                          "value": {
+                                                              "type": "string"
+                                                          }
+                                                      }
+                                                  },
+                                                  "variable": {
+                                                      "type": "array",
+                                                      "items": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                              "is_count": {
+                                                                  "type": "boolean"
+                                                              },
+                                                              "match": {
+                                                                  "type": "array",
+                                                                  "items": {
+                                                                      "type": "object",
+                                                                      "properties": {
+                                                                          "is_negated": {
+                                                                              "type": "boolean"
+                                                                          },
+                                                                          "is_regex": {
+                                                                              "type": "boolean"
+                                                                          },
+                                                                          "value": {
+                                                                              "type": "string"
+                                                                          }
+                                                                      }
+                                                                  }
+                                                              },
+                                                              "type": {
+                                                                  "type": "string"
+                                                              }
+                                                          }
+                                                      }
+                                                  }
+                                              }
+                                          }
+                                      }
+                                  }
+                              },
+                              "id": {
+                                  "type": "string"
+                              },
+                              "name": {
+                                  "type": "string"
+                              },
+                              "team_config": {
+                                  "type": "boolean"
+                              }
+                          }
+                      },
+                      "api_gw_id": "TGnXjOIc",
+                      "team_config": true,
+                      "last_modified_by": "jsmith@example.com via Edgio AppOps Console",
+                      "customer_id": "12345678-1234-1234-1234-1234567890ab",
+                      "last_modified_date": "2023-09-29T23:31:41.193941Z",
+                      "id": "OTZ3opxX"
+                  }
+              ]
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

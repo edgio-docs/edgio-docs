@@ -25,7 +25,7 @@ if start_head != -1 and end_head != -1:
     cleaned_head = remove_style_tags(head_content)
 
     # Insert the <link> tag into the <head> section
-    link_tag = '<meta charset="utf-8" /><link rel="stylesheet" href="api.css">'
+    link_tag = '<meta charset="utf-8" /><link rel="stylesheet" href="redoc.css"><link rel="stylesheet" href="custom.css">'
     cleaned_head_with_link = cleaned_head + '\n' + link_tag
     
     # Update JS reference

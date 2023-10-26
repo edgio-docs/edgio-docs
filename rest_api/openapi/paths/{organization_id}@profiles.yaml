@@ -4,6 +4,8 @@ post:
     - Managed Rules (Profiles)
   summary: Add Managed Rule
   description: Creates a managed rule that identifies a ruleset configuration and describes a valid request.
+  security:
+    - wafScope: [app.waf]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   requestBody:
@@ -15,6 +17,8 @@ post:
         application/json:
           schema:
             $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':
@@ -25,6 +29,8 @@ get:
     - Managed Rules (Profiles)
   summary: Get All Managed Rules
   description: Retrieves a list of managed rules. A managed rule identifies a ruleset configuration and describes a valid request.
+  security:
+    - wafScope: [app.waf]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   responses:

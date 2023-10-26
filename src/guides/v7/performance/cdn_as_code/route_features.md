@@ -623,6 +623,98 @@ router.get('/products/:id', ({ serveStatic, cache }) => {
 })
 ``` -->
 
+## Image Optimization {/* image-optimization */}
+
+{{ PRODUCT_NAME }} can dynamically transform your images to tailor your site's design, experience, and performance needs. [Image optimization](/guides/performance/image_optimization) can be enabled using the [`response.optimize_images`](/docs/api/core/interfaces/types.Response.html#optimize_images) feature on your route(s).
+
+<ExampleButtons
+  title="Image Optimization"
+  siteUrl="https://edgio-community-examples-v7-image-optimization-live.glb.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-image-optimization-example/"
+/>
+
+### Optimizing Local Images {/* optimizing-local-images */}
+
+Images local to your project, such as those in your `public` directory, can be both served as static assets and processed by the image optimizer.
+
+{{ routehelper_usage.md }}
+
+```js
+// match all /images/* requests
+router.match(/\/images\/(.*)/, ({addFeatures, serveStatic}) => {
+  // serve the image as a static asset, referencing the capture group from the match
+  serveStatic('public/images/$1');
+
+  // add the image optimization and caching feature
+  addFeatures({
+    caching: {
+      max_age: '1d',
+    },
+    response: {
+      optimize_images: true,
+    },
+  });
+});
+```
+
+This example:
+
+- Matches all `/images/*` requests
+- Proxies the request to the static asset origin where the asset is hosted
+- Enables the image optimization feature
+- Caches the response for 1 day
+
+Example request: `https://example.com/images/my-image.jpg?width=200&height=200`
+
+<Callout type="important">
+
+Rules should match using a regular expression that captures the image path and query string parameters containing the image optimization options. This is necessary to ensure optimization options are captured and passed to the image optimizer. Using [simple path matching](/guides/performance/cdn_as_code/route_criteria#simple-path-matching) (e.g. `/images/:path*`) will not capture the query string parameters and optimizations will not be applied.
+
+</Callout>
+
+### Optimizing Remote Images {/* optimizing-remote-images */}
+
+Images hosted on a remote server can be optimized by proxying the request to the origin and adding the image optimization feature.
+
+{{ routehelper_usage.md }}
+
+```js
+router.match(/\/images\/(.*)/, {
+  caching: {
+    max_age: '1d',
+  },
+  origin: {
+    set_origin: 'media',
+  },
+  url: {
+    url_rewrite: [
+      {
+        source: '/images/(.*)',
+        syntax: 'regexp',
+        destination: '/assets/images/$1',
+      },
+    ],
+  },
+  response: {
+    optimize_images: true,
+  },
+});
+```
+
+This example:
+
+- Matches all `/images/*` requests
+- Proxies the request to the `media` origin where the asset is hosted
+- Rewrites the request path to `/assets/images/*` to match the path on the origin
+- Enables the image optimization feature
+- Caches the response for 1 day
+
+<Callout type="important">
+
+Rules should match using a regular expression that captures the image path and query string parameters containing the image optimization options. This is necessary to ensure optimization options are captured and passed to the image optimizer. Using [simple path matching](/guides/performance/cdn_as_code/route_criteria#simple-path-matching) (e.g. `/images/:path*`) will not capture the query string parameters and optimizations will not be applied.
+
+</Callout>
+
 ## Responding with a String Response Body {/* responding-with-a-string-response-body */}
 
 To respond with a simple, constant string as the response body use the `response.set_response_body` and `response.set_done` features:

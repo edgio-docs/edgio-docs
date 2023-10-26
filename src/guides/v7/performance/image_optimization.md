@@ -2,7 +2,7 @@
 title: Image Optimization
 ---
 
-{{ PRODUCT }} can dynamically transforms your images to tailor them to your site's:
+{{ PRODUCT }} can dynamically transform your images to tailor them to your site's:
 
 -   Design. You can apply multiple transformations (e.g., resize, blur, crop, and rotate) to a single source image according to how it should be displayed within your site's design.
 -   Experience. For example, if your site has a paywall, you can effortlessly apply a blur effect to requests for images once a site visitor has met or exceeded their allotment of free access.

@@ -23,7 +23,7 @@ If your website does not use {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, perform the f
 2.  [Enable prefetching](#automatic-prefetching-traditional-website) for the desired requests by adding the following features within one or more rules:
     
     -   [Set Max Age (max_age)](/guides/performance/rules/features#set-max-age)
-    -   [Set Service Worker Max Age (service_worker_max_age)](/performance/rules/features#set-service-worker-max-age) 
+    -   [Set Service Worker Max Age (service_worker_max_age)](/guides/performance/rules/features#set-service-worker-max-age) 
 
     Alternatively, you may [manually enable prefetching](#manual-prefetching-traditional-website) for specific requests.
 
@@ -222,7 +222,7 @@ new Prefetcher().route();
 
 ### Serving the Service Worker {/*serving-the-service-worker*/}
 
-After you have created a service worker, your router will need to be configued to serve the file. If you are using one of our [connectors](/guides/sites_frameworks/getting_started), then it should be automatically configured for you. 
+After you have created a service worker, your router needs to be configured to serve the file. If you are using one of our [connectors](/guides/sites_frameworks/getting_started), then it should be automatically configured for you. 
 
 **Example:**
 

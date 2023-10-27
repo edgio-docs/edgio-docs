@@ -35,6 +35,11 @@ For example, the {{ CHROME_EXTENSION }}'s **Environment** column should report `
 Verify that the desired set of rules are being applied to the request by performing the following steps:
 
 1.  Find out the set of rules that were applied to the request by checking the **Matched Rules** column within the {{ CHROME_EXTENSION }}. 
+
+    For example, the following illustration indicates that rules 0, 2, 3, and 13 were applied to a request:
+
+    ![Matched rules](/images/v7/performance/developer-tools-matched-rules.png)
+
 2.  Look up those rules from within the **Rules** page  of the {{ PORTAL }}. Click on the `Show Rule Numbers` link to display rule numbers next to each rule.
     
     ![Rules page showing rule numbers](/images/v7/performance/rules-rule-numbers.png?width=600)

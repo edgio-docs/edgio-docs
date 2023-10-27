@@ -676,7 +676,28 @@ Rules should match using a regular expression that captures the image path and q
 
 Images hosted on a remote server can be optimized by proxying the request to the origin and adding the image optimization feature.
 
-{{ routehelper_usage.md }}
+```js
+router.match('/images/:path*', {
+  caching: {
+    max_age: '1d',
+  },
+  origin: {
+    set_origin: 'origin',
+  },
+  response: {
+    optimize_images: true,
+  },
+});
+```
+
+This example:
+
+- Matches all `/images/*` requests
+- Proxies the request to the `origin` origin where the asset is hosted
+- Enables the image optimization feature
+- Caches the response for 1 day
+
+If you need to modify the request path before proxying to the origin, you can use the `url.url_rewrite` feature.
 
 ```js
 router.match(/\/images\/(.*)/, {
@@ -708,12 +729,6 @@ This example:
 - Rewrites the request path to `/assets/images/*` to match the path on the origin
 - Enables the image optimization feature
 - Caches the response for 1 day
-
-<Callout type="important">
-
-Rules should match using a regular expression that captures the image path and query string parameters containing the image optimization options. This is necessary to ensure optimization options are captured and passed to the image optimizer. Using [simple path matching](/guides/performance/cdn_as_code/route_criteria#simple-path-matching) (e.g. `/images/:path*`) will not capture the query string parameters and optimizations will not be applied.
-
-</Callout>
 
 ## Responding with a String Response Body {/* responding-with-a-string-response-body */}
 

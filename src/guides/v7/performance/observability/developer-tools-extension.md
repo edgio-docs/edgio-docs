@@ -4,12 +4,14 @@ title: Edgio Developer Tools Chrome Extension
 
 The [{{ CHROME_EXTENSION }}](https://chrome.google.com/webstore/detail/edgio-developer-tools/ieehikdcdpeailgpfdbafhnbfhpdgefm) provides insight into how your site interacts with {{ PRODUCT }}. Specifically, it provides detailed information for the current page and all of the requests spawned from it. Spawned requests include everything from static assets to prefetch requests.
 
+![{{ CHROME_EXTENSION }}](/images/v7/performance/edgio-developer-tools-chrome-extension-overview.png?width=700)
+
 **Common use cases:**
 
--   Troubleshoot caching by viewing a request's cache status, whether it was cacheable, and its cache key.
--   Troubleshoot behavior by viewing the environment version and the deployment build through which the request was served and the rules applied to a request.
+-   [Troubleshoot caching](/guides/performance/troubleshooting#caching) by viewing a request's cache status and whether it was cacheable. If you have defined a custom cache key policy, then you should also review its cache key.
+-   Troubleshoot behavior by [viewing the environment version](/guides/performance/troubleshooting#general-troubleshooting-procedures) through which the request was served and the [rules applied to a request](/guides/performance/troubleshooting#applied-rules).
 -   Verify prefetching behavior by analyzing spawned requests.
--   Troubleshoot performance by reviewing key analytics, such as time to first byte (TTFB) and total time.
+-   [Troubleshoot performance](/guides/performance/troubleshooting#performance) by reviewing key analytics, such as time to first byte (TTFB) and total time.
 
 ## Prerequisite {/*prerequisite*/}
 
@@ -42,11 +44,12 @@ Load the {{ CHROME_EXTENSION }} by navigating to the **Edgio** tab within [Chrom
 
 -   The **Edgio** tab is only available when a request has been issued to our network through the Chrome tab from which DevTools was launched. 
 -   The **Edgio** tab will only display requests issued after it has been loaded. This means that it may initally display a blank page or a partial list of requests. Refresh the page to analyze the current request and all requests spawned from it.
+-   If a request contains empty cells for various columns (e.g., Cache Status, Cacheable, and Matched Rules), then the request was either not served through {{ PRODUCT }} or it was served through a different property or environment on which the Debug Header feature has not been enabled. 
 -   Click on a request to view more detailed information about that request. 
 
    ![{{ CHROME_EXTENSION }} shown with request details](/images/v7/performance/developer-tools-request-details.png?width=550)
 
--   View the following site performance statistics at the bottom of Chrome's DevTools:
+-   Located at the bottom of Chrome's DevTools are the following performance statistics for the current set of requests in {{ CHROME_EXTENSION }}:
 
     -   **TTFB:** [Time to First Byte](https://web.dev/articles/ttfb). 
     -   **LCP:** [Large Contentful Paint](https://web.dev/articles/lcp)
@@ -59,9 +62,3 @@ Load the {{ CHROME_EXTENSION }} by navigating to the **Edgio** tab within [Chrom
     These statistics are highlighted in the following image:
 
    ![{{ CHROME_EXTENSION }} with highlighted statistics](/images/v7/performance/developer-tools-performance-statistics.png?width=550)
-
--   
--   
-
-
-

@@ -15,8 +15,8 @@ Troubleshoot:
 
 -   **Latest Environment Version:** Delays in configuration propagation may cause {{ PRODUCT }} to serve some requests using an older configuration. Upon detecting unexpected behavior, it is important to verify that all requests are using the latest environment version.
 
-    1.  Find the environment version through which a request was served by checking the **Environment** column from within the [{{ CHROME_EXTENSION }}](#developer-tools-chrome-extension).
-    2.  Find the latest environment version from within the {{ PORTAL }} by navigating to the desired environment, clicking **Deployments**, and then checking the **Environments** column. 
+    1.  Find the environment version through which a request was served by checking the **Environment** column from within the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer-tools-extension).
+    2.  Find the latest environment version from within the {{ PORTAL }} by navigating to the desired environment, clicking **Deployments**, and then checking the **Environment** column. 
     
     For example, the {{ CHROME_EXTENSION }}'s **Environment** column should report `v3` for requests to a website powered by the following production environment:
     
@@ -32,7 +32,9 @@ Troubleshoot:
     **Key information:**
     
     -   Rules use zero-based numbering.
-    -   Use the above procedure even if you are using CDN-as-code. {{ PRODUCT }} automatically adds system-defined rules when you deploy your CDN-as-code configuration. As a result, counting rules within your {{ ROUTES_FILE }} will be inaccurate.
+    -   Use the above procedure even if you are using CDN-as-code. 
+    
+        {{ PRODUCT }} automatically adds system-defined rules when you deploy your CDN-as-code configuration. As a result, counting rules within your {{ ROUTES_FILE }} will be inaccurate.
     
 -   **Testing Without Caching:** Use a permalink to ensure that {{ PRODUCT }} does not serve cached content when testing your website. A permalink forces {{ PRODUCT }} to proxy your request to either the {{ PRODUCT }} cloud or your origin. Although this may degrade performance, it is useful when verifying functionality. 
 
@@ -40,50 +42,84 @@ Troubleshoot:
 
 ## Caching {/*caching*/}
 
-Check whether a request was served from cache through the **Cache Status** column from within the [{{ CHROME_EXTENSION }}](#developer-tools-chrome-extension). 
+Use the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer-tools-extension) to troubleshoot caching behavior. 
 
--   **Hit:** Indicates that the request was served from cache. 
--   **Miss:** Indicates that {{ PRODUCT }} could not find a cached version of the requested content with a valid time-to-live (TTL) on that edge server. 
--   **No-Cache:** Indicates that the request is uncacheable. 
+#### Overall Cache Performance {/*overall-cache-performance*/}
 
-    Find out why a custom cache policy is not being applied to this request by [reviewing the rules applied to this request](#applied-rules). 
+View overall cache performance by checking the **Edge Hits** statistic at the bottom of the {{ CHROME_EXTENSION }}.
 
--   **Blank:** A blank value indicates that the request was not served through {{ PRODUCT }}.
+![Edge Hits](/images/v7/performance/developer-tools-edge-hits.png?width=600)
 
-[View our default caching policy.](/guides/performance/caching#default-caching-policy)
+#### Cache Responses {/*cache-responses*/}
+
+Check whether a request was served from cache through the **Cache Status** column. Look for one of the following values:
+
+    -   **Hit (`COMPONENT`):** Indicates that the request was served from cache from either our network (Edge) or a service worker's local cache (Service Worker). 
+
+    -   **Miss (`COMPONENT`):** Indicates that {{ PRODUCT }} could not find a cached version of the requested content     with a valid time-to-live (TTL) from either our network (Edge) or a service worker's local cache (Service Worker). 
+
+    -   **No-Cache (Edge):** Indicates that a cache content freshness check was not performed. This check is skipped when an HTTP request method is used that bypasses cache (e.g., `PUT`, `DELETE`, etc).
+
+    -   **Disabled (Edge):** Indicates that caching was disabled through the [Bypass Cache feature](/guides/performance/rules/features#bypass-cache). 
+    
+        If this behavior is undesired, [review the rules applied to this request](#applied-rules).
+
+    -   **Blank:** A blank value indicates that the request was either not served through {{ PRODUCT }} or it was served through a different property or environment on which the Debug Header feature has not been enabled. 
+
+#### Cache Miss {/*cache-miss*/}
+
+Review the following items to find out why a request resulted in a cache miss. 
+
+-   By default, content is only cached when the response from the origin includes a caching policy. Additionally, some content types may require 2 requests before they are eligible to be cached.
+    
+    [View our default caching policy.](/guides/performance/caching#default-caching-policy)
+
+-    If you have defined a custom cache policy through a rule, then you should [review the rules applied to this request](#applied-rules). 
+
+-   If your origin defines a custom cache policy through headers, then you should click on the desired request and then check the **Response Headers** section for [cache directives](/guides/performance/caching#cache-directives)
 
 ## Performance {/*performance*/}
 
-From within the [{{ CHROME_EXTENSION }}](#developer-tools-chrome-extension), check:
+Use the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer-tools-extension) to troubleshoot performance.
 
+#### Overall Performance {/*overall-performance*/}
+
+View overall performance statistics at the bottom of the {{ CHROME_EXTENSION }}.
+-   **TTFB:** [Time to First Byte](https://web.dev/articles/ttfb). 
+-   **LCP:** [Large Contentful Paint](https://web.dev/articles/lcp)
+-   **INP:** [Interaction to Next Paint](https://web.dev/articles/inp)
+-   **CLS:** [Cumulative Layout Shift](https://web.dev/articles/cls)
+-   **FID:** [First Input Delay](https://web.dev/articles/fid)
+-   **Edge Hits:** Indicates the number of requests served from cache and the total number of requests issued for the current page that were captured by {{ CHROME_EXTENSION }}. As noted above, it will only capture requests issued while the **Edgio** tab is active.
+-   **Prefetches:** Indicates the number of successful prefetch requests and the total number of prefetch requests issued for the current page that were captured by {{ CHROME_EXTENSION }}. As noted above, it will only capture requests issued while the **Edgio** tab is active.
+
+#### Request-Specific Performance {/*request-specific-performance*/}
+
+View request-specific performance statistics by checking:
 -   The **TTFB** column for a high value. This column measures time to first byte. This metric is indicative of responsiveness.
 -   The **Total Time** column for a high value. This column measures the total amount of time it took to serve a response to the client. 
+
+#### Predictive Prefetching {/*predictive-prefetching*/}
+
+View prefetching activity by checking the **Prefetches** statistic at the bottom of the {{ CHROME_EXTENSION }}. 
+
+![Prefetches](/images/v7/performance/developer-tools-prefetches.png?width=600)
+
+By default, you may only prefetch content that is cached on the POP closest to the user and that still has a valid TTL. {{ PRODUCT }} responds with a `412 Precondition Failed` for all other requests.
 
 ## Troubleshooting Tools {/*troubleshooting-tools*/}
 
 Troubleshoot delivery and performance issues using the following tools:
 
-| Tool  | Description  |
-|----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [{{ CHROME_EXTENSION }}](#developer-tools-chrome-extension)          | This Chrome extension describes each request associated with the current page. Use this information to gain insight into delivery issues, caching, and performance. |
-| [Edge Insights](#edge-insights)                                      | Review detailed information about each request to your website in near real-time. |
-| [Visual Studio Code](#visual-studio-code)                            | This tool allows you to add breakpoints within your code to troubleshoot delivery issues. |
-| [Server Logs](#server-logs)                                          | Review messages from your application. |
-| [Access Logs](access-logs)                                           | Review historical information for requests to your website. |
-| [curl](#curl)                                                        | Issue requests to your website using curl. This tool allows you to eliminate browser-specific behavior when troubleshooting issues. |
-| [Source Maps](#source-maps)                                          | Review our source map to investigate runtime errors that occur during routing. Additionally, if you are using the Next or Nuxt framework, then you can enable a source map for your application code. |
-
-## {{ CHROME_EXTENSION }} {/*developer-tools-chrome-extension*/}
-
-The [{{ CHROME_EXTENSION }}](https://chrome.google.com/webstore/detail/edgio-developer-tools/ieehikdcdpeailgpfdbafhnbfhpdgefm) provides detailed information for the current page and all of the requests spawned from it. Spawned requests include everything from static assets to prefetch requests.
-
-![{{ CHROME_EXTENSION }}](/images/v7/performance/edgio-developer-tools-chrome-extension-overview.png?width=700)
-
-<Callout type="important">
-
-  You must enable the [Debug Headers](/guides/performance/rules/features#debug-header) [(debug_header)](/guides/performance/cdn_as_code/route_features#debug-cache-headers) feature to unlock the power of the {{ CHROME_EXTENSION }}.
-
-</Callout>
+| Tool                                                                                  | Description                                                                                                                                                                                           |
+| ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer-tools-extension) | This Chrome extension describes each request associated with the current page. Use this information to gain insight into delivery issues, caching, and performance.                                   |
+| [Edge Insights](#edge-insights)                                                       | Review detailed information about each request to your website in near real-time.                                                                                                                     |
+| [Visual Studio Code](#visual-studio-code)                                             | This tool allows you to add breakpoints within your code to troubleshoot delivery issues.                                                                                                             |
+| [Server Logs](#server-logs)                                                           | Review messages from your application.                                                                                                                                                                |
+| [Access Logs](access-logs)                                                            | Review historical information for requests to your website.                                                                                                                                           |
+| [curl](#curl)                                                                         | Issue requests to your website using curl. This tool allows you to eliminate browser-specific behavior when troubleshooting issues.                                                                   |
+| [Source Maps](#source-maps)                                                           | Review our source map to investigate runtime errors that occur during routing. Additionally, if you are using the Next or Nuxt framework, then you can enable a source map for your application code. |
 
 ## Edge Insights {/*edge-insights*/}
 

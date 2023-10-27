@@ -23,13 +23,6 @@ new Router().get('/', {
 
 Each edge function is stored in a separate file and assigned to a specific route in your `routes.js` file. 
 
-<Callout type="important">
-
-<!-- TODO: expand on this with an example -->
-Rules defined after an edge function will not be processed.
-
-</Callout>
-
 An edge function file must export the following entry point:
 
 ```js

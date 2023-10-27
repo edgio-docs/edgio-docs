@@ -13,36 +13,48 @@ Troubleshoot:
 
 ## General Troubleshooting Procedures {/*general-troubleshooting-procedures*/}
 
--   **Latest Environment Version:** Delays in configuration propagation may cause {{ PRODUCT }} to serve some requests using an older configuration. Upon detecting unexpected behavior, it is important to verify that all requests are using the latest environment version.
+If you encounter unexpected behavior or an issue, you should:
 
-    1.  Find the environment version through which a request was served by checking the **Environment** column from within the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer-tools-extension).
-    2.  Find the latest environment version from within the {{ PORTAL }} by navigating to the desired environment, clicking **Deployments**, and then checking the **Environment** column. 
-    
-    For example, the {{ CHROME_EXTENSION }}'s **Environment** column should report `v3` for requests to a website powered by the following production environment:
-    
-    ![Sample deployments](/images/v7/basics/deployments.png?width=600)
-    
--   <a id="applied-rules" />**Applied Rules:** Verify that the desired set of rules are being applied to the request by performing the following steps:
+1.  Verify that all of your traffic is being served through the [most recently deployed environment](#environment-version). 
+2.  Verify that the only [desired set of rules are being applied](#applied-rules) to the request experiencing unexpected behavior.
+3.  [Test your site using a permalink.](#test-without-cached-content) This ensures that the unexpected behavior is not due to cached content. 
 
-    1.  Find out the set of rules that were applied to the request by checking the **Matched Rules** column within the {{ CHROME_EXTENSION }}. 
-    2.  Look up those rules from within the **Rules** page  of the {{ PORTAL }}. Click on the `Show Rule Numbers` link to display rule numbers next to each rule.
-    
-        ![Rules page showing rule numbers](/images/v7/performance/rules-rule-numbers.png?width=600)
-    
-    **Key information:**
-    
-    -   Rules use zero-based numbering.
-    -   Use the above procedure even if you are using CDN-as-code. 
-    
-        {{ PRODUCT }} automatically adds system-defined rules when you deploy your CDN-as-code configuration. As a result, counting rules within your {{ ROUTES_FILE }} will be inaccurate.
-    
--   **Testing Without Caching:** Use a permalink to ensure that {{ PRODUCT }} does not serve cached content when testing your website. A permalink forces {{ PRODUCT }} to proxy your request to either the {{ PRODUCT }} cloud or your origin. Although this may degrade performance, it is useful when verifying functionality. 
+#### Environment Version {/*environment-version*/}
 
-    A permalink is assigned to each deployment. View a deployment's permalink by navigating to the **Deployments** page for the desired environment and then clicking on the desired deployment version. 
+Delays in configuration propagation may cause {{ PRODUCT }} to serve some requests using an older configuration. Upon detecting unexpected behavior, it is important to verify that all requests are using the latest environment version.
+
+1.  Find the environment version through which a request was served by checking the **Environment** column from within the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer-tools-chrome-extension).
+2.  Find the latest environment version from within the {{ PORTAL }} by navigating to the desired environment, clicking **Deployments**, and then checking the **Environment** column. 
+    
+For example, the {{ CHROME_EXTENSION }}'s **Environment** column should report `v3` for requests to a website powered by the following production environment:
+    
+![Sample deployments](/images/v7/basics/deployments.png?width=600)
+
+#### Applied Rules {/*applied-rules*/}
+
+Verify that the desired set of rules are being applied to the request by performing the following steps:
+
+1.  Find out the set of rules that were applied to the request by checking the **Matched Rules** column within the {{ CHROME_EXTENSION }}. 
+2.  Look up those rules from within the **Rules** page  of the {{ PORTAL }}. Click on the `Show Rule Numbers` link to display rule numbers next to each rule.
+    
+    ![Rules page showing rule numbers](/images/v7/performance/rules-rule-numbers.png?width=600)
+    
+**Key information:**
+    
+-   Rules use zero-based numbering.
+-   Use the above procedure even if you are using CDN-as-code. 
+    
+    {{ PRODUCT }} automatically adds system-defined rules when you deploy your CDN-as-code configuration. As a result, counting rules within your {{ ROUTES_FILE }} will be inaccurate.
+
+#### Test Without Cached Content {/*test-without-cached-content*/}
+
+Use a permalink to ensure that {{ PRODUCT }} does not serve cached content when testing your website. A permalink forces {{ PRODUCT }} to proxy your request to either the {{ PRODUCT }} cloud or your origin. Although this may degrade performance, it is useful when verifying functionality. 
+
+A permalink is assigned to each deployment. View a deployment's permalink by navigating to the **Deployments** page for the desired environment and then clicking on the desired deployment version. 
 
 ## Caching {/*caching*/}
 
-Use the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer-tools-extension) to troubleshoot caching behavior. 
+Use the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer-tools-chrome-extension) to troubleshoot caching behavior. 
 
 #### Overall Cache Performance {/*overall-cache-performance*/}
 
@@ -80,7 +92,7 @@ Review the following items to find out why a request resulted in a cache miss.
 
 ## Performance {/*performance*/}
 
-Use the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer-tools-extension) to troubleshoot performance.
+Use the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer-tools-chrome-extension) to troubleshoot performance.
 
 #### Overall Performance {/*overall-performance*/}
 
@@ -113,7 +125,7 @@ Troubleshoot delivery and performance issues using the following tools:
 
 | Tool                                                                                  | Description                                                                                                                                                                                           |
 | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer-tools-extension) | This Chrome extension describes each request associated with the current page. Use this information to gain insight into delivery issues, caching, and performance.                                   |
+| [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer-tools-chrome-extension) | This Chrome extension describes each request associated with the current page. Use this information to gain insight into delivery issues, caching, and performance.                                   |
 | [Edge Insights](#edge-insights)                                                       | Review detailed information about each request to your website in near real-time.                                                                                                                     |
 | [Visual Studio Code](#visual-studio-code)                                             | This tool allows you to add breakpoints within your code to troubleshoot delivery issues.                                                                                                             |
 | [Server Logs](#server-logs)                                                           | Review messages from your application.                                                                                                                                                                |

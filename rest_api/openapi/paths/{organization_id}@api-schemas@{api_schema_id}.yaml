@@ -7,6 +7,8 @@ get:
     - API Schemas
   summary: Get API Schema
   description: Retrieves an API schema. An API schema contains a JSON schema (draft 4) that may be used to screen API requests. 
+  security:
+    - api_securityScope: [app.api_security]
   responses:
     '200':
       description: OK. An API schema was retrieved.
@@ -14,6 +16,72 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/ApiSchema.yaml
+          example:
+              {
+                  "api_gw_id": "VzhYZAMT",
+                  "customer_id": "12345678-1234-1234-1234-1234567890ab",
+                  "id": "OTZ3opxX",
+                  "last_modified_by": "jsmith@example.com via Edgio AppOps Console",
+                  "last_modified_date": "2023-09-29T23:31:41.193941Z",
+                  "name": "Access Rules",
+                  "schema": {
+                      "properties": {
+                          "customer_id": {
+                              "type": "string"
+                          },
+                          "directive": {
+                              "items": {
+                                  "properties": {
+                                      "sec_rule": {
+                                          "properties": {
+                                              "action": {
+                                                  "properties": {
+                                                      "id": {
+                                                          "type": "string"
+                                                      },
+                                                      "msg": {
+                                                          "type": "string"
+                                                      },
+                                                      "t": {
+                                                          "items": {
+                                                              "type": "string"
+                                                          },
+                                                          "type": "array"
+                                                      }
+                                                  },
+                                                  "type": "object"
+                                              },
+                                              "chained_rule": {
+                                                  "type": "array"
+                                              },
+                                              "id": {
+                                                  "type": "string"
+                                              },
+                                              "name": {
+                                                  "type": "string"
+                                              },
+                                          },
+                                          "type": "object"
+                                      }
+                                  },
+                                  "type": "object"
+                              },
+                              "type": "array"
+                          },
+                          "id": {
+                              "type": "string"
+                          },
+                          "name": {
+                              "type": "string"
+                          },
+                          "team_config": {
+                              "type": "boolean"
+                          }
+                      },
+                      "type": "object"
+                  },
+                  "team_config": true
+              }
     '404':
       $ref: ../components/responses/error_404.yaml
     '429':
@@ -31,6 +99,8 @@ put:
 
     [View key configuration information.](https://docs.edg.io/guides/security/api_security#api-schema)
 
+  security:
+    - api_securityScope: [app.api_security]
   requestBody:
     $ref: ../components/requestBodies/APISchema.yaml
   responses:
@@ -40,6 +110,8 @@ put:
         application/json:
           schema:
             $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
     '404':
       $ref: ../components/responses/error_404.yaml
     '429':
@@ -52,6 +124,8 @@ delete:
     - API Schemas
   summary: Delete API Schema
   description: Deletes an API schema.
+  security:
+    - api_securityScope: [app.api_security]
   responses:
     '200':
       description: OK. An API Schema was deleted.
@@ -59,6 +133,8 @@ delete:
         application/json:
           schema:
             $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
     '404':
       $ref: ../components/responses/error_404.yaml
     '429':

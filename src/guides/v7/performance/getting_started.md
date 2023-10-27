@@ -12,7 +12,7 @@ Get started with {{ PRODUCT_EDGE }} by performing these steps:
 
     <Callout type="info">
 
-      If you prefer code to UI, then try our [CDN-as-code approach](/guides/performance/cdn_as_code/getting_started) to configuration instead. 
+      If you prefer code to UI, then try our [CDN-as-code approach](/guides/performance/cdn_as_code) to configuration instead. 
 
     </Callout>
 

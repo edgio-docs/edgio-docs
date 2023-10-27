@@ -1,11 +1,10 @@
-import {DocSearch} from '@docsearch/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
 import EdgioDark from '../../../../public/images/home/edgio-dark.webp';
-import NoSSRWrapper from '../NoSSRWrapper';
 
+import AlgoliaSearch from './AlgoliaSearch';
 import VersionChooser from './VersionChooser';
 
 import {ExternalLink} from 'components/ExternalLink';
@@ -181,47 +180,6 @@ const darkSwitchIcon = (
   </svg>
 );
 
-const {
-  appId: algoliaAppId,
-  apiKey: algoliaApiKey,
-  indexName,
-} = siteConfig.algolia;
-
-function transformItems(items: any) {
-  const hierarchyOrder = ['lvl4', 'lvl3', 'lvl2', 'lvl1', 'lvl0'];
-
-  // append the search content to the url for highlighting
-  return items.map((item: any) => {
-    const {hierarchy, content} = item;
-    const url = new URL(item.url);
-
-    // set the hostname to the current hostname
-    url.protocol = window.location.protocol;
-    url.host = window.location.host;
-
-    // set the content to highlight
-    let matchedText = content;
-
-    if (!matchedText) {
-      for (const key of hierarchyOrder) {
-        if (hierarchy[key]) {
-          matchedText = hierarchy[key];
-          break;
-        }
-      }
-    }
-
-    if (matchedText) {
-      url.hash = btoa(unescape(encodeURIComponent(matchedText)));
-    }
-
-    return {
-      ...item,
-      url,
-    };
-  });
-}
-
 export default function Header({
   showSidebar,
   setShowSidebar,
@@ -232,21 +190,6 @@ export default function Header({
   const {version} = useConditioning();
   const {APP_DOMAIN} = getVersionedConfig(version.selectedVersion);
 
-  const searchParameters = {
-    facetFilters: [['version:all', `version:${version.selectedVersionText}`]],
-  };
-
-  const SearchField = () => (
-    <NoSSRWrapper>
-      <DocSearch
-        appId={algoliaAppId}
-        indexName={indexName}
-        apiKey={algoliaApiKey}
-        transformItems={transformItems}
-        searchParameters={searchParameters}
-      />
-    </NoSSRWrapper>
-  );
   return (
     <StyledHeader className="docs-header">
       <div className="col-1">
@@ -291,7 +234,7 @@ export default function Header({
       <div className="col-2">
         <div id="desktop" className="desktop">
           <div className="search-form__box">
-            <SearchField />
+            <AlgoliaSearch />
           </div>
           <ToggleTheme />
           <ExternalLink
@@ -305,7 +248,7 @@ export default function Header({
         </div>
         <div id="mobile">
           <div className="search-form__box">
-            <SearchField />
+            <AlgoliaSearch />
           </div>
           <ToggleTheme />
           <button

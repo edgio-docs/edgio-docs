@@ -1,8 +1,16 @@
 post:
   tags:
     - purge requests
-  summary: Purge Cache of Environment
-  description: Request cache purge of environment
+  summary: Purge Cache
+  description: >
+    Submits a request to purge cached content from a specific environment.
+    Purging content invalidates the cached version of an asset from our edge
+    servers. You may submit up to 50 concurrent purge requests. For the purpose
+    of concurrency, each value defined within the `values` property is
+    considered a separate purge request. Find out the current status of your
+    purge request by passing the purge request ID, which is returned by the `id`
+    property, to the [Get Purge Request
+    operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).
   operationId: postCacheV01PurgeRequests
   requestBody:
     content:
@@ -12,13 +20,21 @@ post:
     required: true
   responses:
     '202':
-      description: Request cache purge of environment
+      description: >
+        Submits a request to purge cached content from a specific environment.
+        Purging content invalidates the cached version of an asset from our edge
+        servers. You may submit up to 50 concurrent purge requests. For the
+        purpose of concurrency, each value defined within the `values` property
+        is considered a separate purge request. Find out the current status of
+        your purge request by passing the purge request ID, which is returned by
+        the `id` property, to the [Get Purge Request
+        operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Cache_V1_Entities_PurgeRequest.yaml
     '400':
-      description: UserError
+      description: Bad Request
       content:
         application/json:
           schema:
@@ -36,19 +52,19 @@ post:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: RecordNotFound
+      description: Not Found
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '429':
-      description: RateLimitReached
+      description: Too Many Requests
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: ServerError
+      description: Internal Server Error
       content:
         application/json:
           schema:

@@ -7,6 +7,8 @@ get:
     - Bot Rules
   summary: Get Bot Ruleset
   description: Retrieves a bot ruleset. A bot ruleset defines criteria for bot identification.
+  security:
+    - bot_securityScope: [app.bot_security]
   responses:
     '200':
       description: OK. A bot ruleset was retrieved.
@@ -14,6 +16,42 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/Bot.yaml
+          example:
+            {
+                "customer_id": "ae2b89dc-b7a5-45bb-98af-5039ac0fe989",
+                "directive": [{
+                        "sec_rule": {
+                            "action": {
+                                "bot_action": "BLOCK_REQUEST",
+                                "id": "77777777",
+                                "msg": "Blocked",
+                                "t": [
+                                    "NONE"
+                                ]
+                            },
+                            "chained_rule": [],
+                            "id": "Db0z7Gh5",
+                            "name": "My second bot rule",
+                            "operator": {
+                                "is_negated": false,
+                                "is_regex": false,
+                                "type": "STREQ",
+                                "value": "faux"
+                            },
+                            "variable": [{
+                                    "is_count": false,
+                                    "match": [],
+                                    "type": "REQUEST_COOKIES"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "id": "vipDxgOV",
+                "last_modified_date": "2023-10-13T23:36:11.333280Z",
+                "name": "My first bot ruleset",
+                "team_config": true
+            }
     '404':
       $ref: ../components/responses/error_404.yaml
     '429':
@@ -26,6 +64,8 @@ put:
     - Bot Rules
   summary: Update Bot Ruleset
   description: Updates a bot ruleset. A bot ruleset defines criteria for bot identification.
+  security:
+    - bot_securityScope: [app.bot_security]
   requestBody:
     $ref: ../components/requestBodies/Bot.yaml
   responses:
@@ -35,6 +75,8 @@ put:
         application/json:
           schema:
             $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
     '404':
       $ref: ../components/responses/error_404.yaml
     '429':
@@ -47,9 +89,17 @@ delete:
     - Bot Rules
   summary: Delete Bot Ruleset
   description: Deletes a bot ruleset. A bot ruleset defines criteria for bot identification.
+  security:
+    - bot_securityScope: [app.bot_security]
   responses:
     '200':
-      description: OK. A bot ruleset was deleted. 
+      description: OK. A bot ruleset was deleted.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
     '404':
       $ref: ../components/responses/error_404.yaml
     '429':

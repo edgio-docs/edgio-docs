@@ -7,6 +7,8 @@ get:
     - API Gateways
   summary: Get API Security Ruleset
   description: Retrieves an API Security ruleset.
+  security:
+    - api_securityScope: [app.api_security]
   responses:
     '200':
       description: OK. An API Security ruleset was retrieved.
@@ -14,6 +16,29 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/ApiGateway.yaml
+          example:
+            {
+                "customer_id": "12345678-1234-1234-1234-1234567890ab",
+                "id": "VzhYZAMT",
+                "last_modified_by": "jsmith@example.com via Edgio AppOps Console",
+                "last_modified_date": "2023-09-29T23:34:42.193976Z",
+                "name": "My API Security Ruleset",
+                "rules": [{
+                        "id": "uDS9SUgt",
+                        "methods": [
+                            "PUT",
+                            "POST"
+                        ],
+                        "name": "API Security Rule 1",
+                        "path": {
+                            "type": "GLOB",
+                            "value": "*"
+                        },
+                        "schema_id": "OTZ3opxX"
+                    }
+                ],
+                "team_config": true
+            }
     '404':
       $ref: ../components/responses/error_404.yaml
     '429':
@@ -26,6 +51,8 @@ put:
     - API Gateways
   summary: Update API Security Ruleset
   description: Updates an API Security ruleset.
+  security:
+    - api_securityScope: [app.api_security]
   requestBody:
     $ref: ../components/requestBodies/APIGateway.yaml
   responses:
@@ -35,6 +62,8 @@ put:
         application/json:
           schema:
             $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
     '404':
       $ref: ../components/responses/error_404.yaml
     '429':
@@ -47,6 +76,8 @@ delete:
     - API Gateways
   summary: Delete API Security Ruleset
   description: Deletes an API Security ruleset.
+  security:
+    - api_securityScope: [app.api_security]
   responses:
     '200':
       description: OK. An API Security ruleset was deleted.
@@ -54,6 +85,8 @@ delete:
         application/json:
           schema:
             $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
     '404':
       $ref: ../components/responses/error_404.yaml
     '429':

@@ -1,24 +1,28 @@
 get:
   tags:
     - deployments
-  summary: Read deployment
-  description: Read deployment
+  summary: Get Deployment
+  description: Retrieve information about a specific deployment.
   operationId: getConfigV01DeploymentsDeploymentId
   parameters:
     - name: deployment_id
       in: path
+      description: >
+        The deployment's system-defined ID. This ID is returned by the [Deploy
+        CDN Configuration
+        operation's](#tag/configs/operation/postConfigV01Configs) `id` property.
       required: true
       schema:
         type: string
   responses:
     '200':
-      description: Read deployment
+      description: Retrieve information about a specific deployment.
       content:
         application/json:
           schema:
             $ref: ../components/schemas/Config_V1_Entities_Deployment.yaml
     '400':
-      description: UserError
+      description: Bad Request
       content:
         application/json:
           schema:
@@ -36,13 +40,13 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '404':
-      description: RecordNotFound
+      description: Not Found
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
-      description: ServerError
+      description: Internal Server Error
       content:
         application/json:
           schema:

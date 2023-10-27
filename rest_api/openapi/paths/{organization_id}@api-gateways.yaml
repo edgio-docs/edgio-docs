@@ -4,6 +4,8 @@ post:
     - API Gateways
   summary: Add API Security Ruleset
   description: Creates an API Security ruleset.
+  security:
+    - api_securityScope: [app.api_security]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   requestBody:
@@ -15,6 +17,8 @@ post:
         application/json:
           schema:
             $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
     '429':
       $ref: ../components/responses/error_429.yaml
     '500':
@@ -25,6 +29,8 @@ get:
     - API Gateways
   summary: Get All API Security Rulesets
   description: Retrieves a list of API Security rulesets.
+  security:
+    - api_securityScope: [app.api_security]
   parameters:
     - $ref: ../components/parameters/organization_id.yaml
   responses:
@@ -39,8 +45,9 @@ get:
           examples:
             response:
               value:
-                - id: e3mpHQY5
-                  name: sample_apigateway_config
+                - id: TGnXjOIc
+                  name: My API Security Ruleset
+                  last_modified_date: 2023-09-29T23:31:39.402145Z
     '404':
       $ref: ../components/responses/error_404.yaml
     '429':

@@ -6,12 +6,10 @@ type: object
 properties:
   '@type':
     type: string
-    description: Resource type.
+    description: The resource's type.
   '@id':
     type: string
-    description: >-
-      Used to specify the URI for the resource. Can be used by clients to
-      navigate back to that specific resource.
+    description: The resource's relative path.
   '@links':
     type: object
     properties: {}
@@ -20,16 +18,16 @@ properties:
     type: string
   role:
     type: string
-    description: Role name
+    description: The user's role.
   created_at:
     type: string
-    description: Created at
+    description: The user's creation date and time (UTC).
     format: date-time
   updated_at:
     type: string
-    description: Updated at
+    description: The user's last modification date and time (UTC).
     format: date-time
   user_email:
     type: string
-    description: Associated user's email
+    description: The user's email.
 description: Accounts_V1_Entities_Member model

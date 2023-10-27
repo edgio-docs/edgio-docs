@@ -7,6 +7,8 @@ get:
     - Managed Rules (Profiles)
   summary: Get Managed Rule
   description: Retrieves a managed rule that identifies a ruleset configuration and describes a valid request.
+  security:
+    - wafScope: [app.waf]
   responses:
     '200':
       description: OK. A managed rule was retrieved.
@@ -14,6 +16,60 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/Profile.yaml
+          example:
+            {
+                "created_date": "09/27/2023 05:16:28 PM",
+                "customer_id": "12345678-1234-1234-1234-1234567890ab",
+                "general_settings": {
+                    "anomaly_threshold": 4,
+                    "arg_length": 8000,
+                    "arg_name_length": 1024,
+                    "ignore_cookie": [],
+                    "ignore_header": [],
+                    "ignore_query_args": [],
+                    "json_parser": true,
+                    "max_num_args": 512,
+                    "paranoia_level": 1,
+                    "process_request_body": true,
+                    "process_response_body": false,
+                    "response_header_name": "X-E-Security-Audit",
+                    "total_arg_length": 64000,
+                    "validate_utf8_encoding": true,
+                    "xml_parser": true
+                },
+                "id": "VzhYZAMT",
+                "last_modified_date": "2023-09-27T17:16:28.114124Z",
+                "name": "My Managed Rule",
+                "policies": [
+                    "r2000_ec_custom_rule.conf.json",
+                    "r4000_tw_ip_reputation.conf.json",
+                    "r4030_tw_iis.conf.json",
+                    "r4080_tw_vbulletin.conf.json",
+                    "r4120_tw_apache.conf.json",
+                    "r4130_tw_java_spring.conf.json",
+                    "r4140_tw_confluence.conf.json",
+                    "r5010_scanner_detection.conf.json",
+                    "r5020_http_protocol_violation.conf.json",
+                    "r5021_http_attack.conf.json",
+                    "r5030_local_file_inclusion.conf.json",
+                    "r5031_remote_file_inclusion.conf.json",
+                    "r5032_remote_code_execution.conf.json",
+                    "r5033_php_injection.conf.json",
+                    "r5034_generic_attack.conf.json",
+                    "r5040_cross_site_scripting.conf.json",
+                    "r5041_sql_injection.conf.json",
+                    "r5042_session_fixation.conf.json",
+                    "r5043_java_attack.conf.json",
+                    "r9055_web_shells.conf.json",
+                    "modsecurity_crs_23_request_limits.conf",
+                    "modsecurity_crs_49_inbound_blocking.conf"
+                ],
+                "rule_target_updates": [],
+                "ruleset_id": "ERS",
+                "ruleset_version": "latest",
+                "team_config": true,
+                "version": null
+            }
     '404':
       $ref: ../components/responses/error_404.yaml
     '429':
@@ -26,6 +82,8 @@ put:
     - Managed Rules (Profiles)
   summary: Update Managed Rule
   description: Updates a managed rule that identifies a ruleset configuration and describes a valid request.
+  security:
+    - wafScope: [app.waf]
   requestBody:
     $ref: ../components/requestBodies/Profile.yaml
   responses:
@@ -35,6 +93,8 @@ put:
         application/json:
           schema:
             $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
     '404':
       $ref: ../components/responses/error_404.yaml
     '429':
@@ -47,9 +107,17 @@ delete:
     - Managed Rules (Profiles)
   summary: Delete Managed Rule
   description: Deletes a managed rule.
+  security:
+    - wafScope: [app.waf]
   responses:
     '200':
       description: OK. A managed rule was deleted.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
     '404':
       $ref: ../components/responses/error_404.yaml
     '429':

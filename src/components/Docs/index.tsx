@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {Toc} from '../Layout/Toc';
 
 // import DiscourseDiscuss from './DiscourseDiscuss';
-// import EditPage from './EditPage';
+import EditPage from './EditPage';
 
 import {siteConfig} from 'config/appConfig';
 
@@ -216,10 +216,12 @@ export default function Docs({
   title,
   children,
   tocHeadings,
+  source,
 }: {
   title: string;
   children: React.ReactNode;
   tocHeadings: {url: string; depth: number; text: string}[];
+  source?: string;
 }) {
   return (
     <StyledDocs className="docs-body">
@@ -235,10 +237,9 @@ export default function Docs({
                 aria-hidden="true"></a>
             </h1>
 
-            {/* <div className="docs-article__header-icons">
-              <EditPage as="icon" />
-              <DiscourseDiscuss as="icon" />
-            </div> */}
+            <div className="docs-article__header-icons">
+              <EditPage as="icon" source={source} />
+            </div>
           </header>
           <div className="docs-article__body">{children}</div>
         </article>

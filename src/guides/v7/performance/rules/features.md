@@ -1409,12 +1409,13 @@ export default new Router()
 
 #### Remove Origin Response Headers {/*remove-origin-response-headers*/}
 
-Deletes one or more header(s) from the response provided by an origin server.
+Deletes one or more custom header(s) from the response provided by an origin server.
 
 **Key information:**
 
 -   Set each string value to the exact name of the header that will be removed from the response provided by an origin server. Case is not taken into account for the purpose of identifying a header. 
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
+-   This feature only removes custom response headers (e.g., Partner-ID). You may not remove standard headers (e.g., Cache-Control and Date) from the origin's response.
 -   Our service adds a set of reserved headers to each response. Although this feature removes a header from the response provided by the origin server, it does not affect whether our service will add a reserved header to the response. 
 
 <edgejs>
@@ -2195,6 +2196,7 @@ export default new Router()
   })
 ```
 </edgejs>
+<a id="url-rewrite" />
 
 #### Rewrite URL {/*rewrite-url*/}
 
@@ -2210,33 +2212,19 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 
 -   **Source Path:** Define a relative path that identifies the requests that will be rewritten. This relative path starts directly after the hostname.
 
-    <Callout type="important">
-
-      Verify that the specified pattern does not conflict with this route's path.
-
-    </Callout>
-
-    <Callout type="tip">
-
-      Use the **Match Style** option to determine whether this option is a relative path that supports named parameters (e.g., `:productId`) or a regular expression.
-
-    </Callout>
+    **Key information:**
+    
+    -   Verify that the specified pattern does not conflict with this route's path.
+    -   Use the **Match Style** option to determine whether this option is a relative path that supports named parameters (e.g., `:productId`) or a regular expression.
 
 -   **Destination Path:** Define a replacement pattern that sets a new relative path. This relative path starts directly after the hostname. 
 
-    <Callout type="info">
+    **Key information:**
+    
+    -   You may use up to 9 numbered backreferences for text captured within the `source` property. 
 
-      You may use up to 9 numbered backreferences for text captured within the `source` property. 
-
-      For example, if the **Source Path** option contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the **Destination Path** option (e.g., `/$1/$2`). 
-
-    </Callout>
-
-    <Callout type="info">
-
-      Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct the above paths. However, you may not use response metadata.
-
-    </Callout>
+        For example, if the **Source Path** option contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the **Destination Path** option (e.g., `/$1/$2`). 
+    -   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct the above paths. However, you may not use response metadata.
 
 <edgejs>
 This feature allows our edge servers to rewrite the URL without performing a traditional redirect. This means that the requester will receive the same response code as if the rewritten URL had been requested.
@@ -2326,17 +2314,10 @@ Redirects requests according to the `Location` header. Pass the following proper
 
 -   **Destination:** Define a replacement pattern for the URL to which the requests identified in the **Source** option will be redirected.
 
-    <Callout type="info">
-
-      Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct the above paths. However, you may not use response metadata.
-
-    </Callout>
-
-    <Callout type="info">
-
-      Redirecting requests to a relative path may result in an invalid URL when fielding requests from various hostnames. Use an absolute URL to ensure that requests are properly redirected.
-
-    </Callout>
+    **Key information:**
+    
+    -   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct the above paths. However, you may not use response metadata.
+    -   Redirecting requests to a relative path may result in an invalid URL when fielding requests from various hostnames. Use an absolute URL to ensure that requests are properly redirected.
 
 <edgejs>
 Pass the following properties:

@@ -20,7 +20,7 @@ You must enable the [Debug Headers](/guides/performance/rules/features#debug-hea
 The recommended configuration is to enable this feature on all requests.
 -   **Rules:** Add a catch-all rule that enables the Debug Headers feature and place it at the top. This rule should not contain any match conditions.
 
-   ![Rule with the Debug Header feature](/images/v7/performance/debug-header-rule.png?width=550)
+    ![Rule with the Debug Header feature](/images/v7/performance/debug-header-rule.png?width=550)
 
 -   **CDN-as-Code:** Create a [match all rule](/guides/performance/cdn_as_code/route_criteria#matching-all-requests) that enables the Debug Headers feature. 
 
@@ -47,7 +47,7 @@ Load the {{ CHROME_EXTENSION }} by navigating to the **Edgio** tab within [Chrom
 -   If a request contains empty cells for various columns (e.g., Cache Status, Cacheable, and Matched Rules), then the request was either not served through {{ PRODUCT }} or it was served through a different property or environment on which the Debug Header feature has not been enabled. 
 -   Click on a request to view more detailed information about that request. 
 
-   ![{{ CHROME_EXTENSION }} shown with request details](/images/v7/performance/developer-tools-request-details.png?width=550)
+    ![{{ CHROME_EXTENSION }} shown with request details](/images/v7/performance/developer-tools-request-details.png?width=550)
 
 -   Located at the bottom of Chrome's DevTools are the following performance statistics for the current set of requests in {{ CHROME_EXTENSION }}:
 
@@ -61,4 +61,4 @@ Load the {{ CHROME_EXTENSION }} by navigating to the **Edgio** tab within [Chrom
 
     These statistics are highlighted in the following image:
 
-   ![{{ CHROME_EXTENSION }} with highlighted statistics](/images/v7/performance/developer-tools-performance-statistics.png?width=550)
+    ![{{ CHROME_EXTENSION }} with highlighted statistics](/images/v7/performance/developer-tools-performance-statistics.png?width=550)

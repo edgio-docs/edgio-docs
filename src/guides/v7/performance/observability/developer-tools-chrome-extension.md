@@ -9,8 +9,8 @@ The [{{ CHROME_EXTENSION }}](https://chrome.google.com/webstore/detail/edgio-dev
 **Common use cases:**
 
 -   [Troubleshoot caching](/guides/performance/troubleshooting#caching) by viewing a request's cache status and whether it was cacheable. If you have defined a custom cache key policy, then you should also review its cache key.
--   Troubleshoot behavior by [viewing the environment version](/guides/performance/troubleshooting#general-troubleshooting-procedures) through which the request was served and the [rules applied to a request](/guides/performance/troubleshooting#applied-rules).
--   Verify prefetching behavior by analyzing spawned requests.
+-   Troubleshoot behavior by [viewing the environment version](/guides/performance/troubleshooting#environment-version) through which the request was served and the [rules applied to a request](/guides/performance/troubleshooting#applied-rules).
+-   Verify [prefetching behavior](/guides/performance/troubleshooting#predictive-prefetching) by analyzing spawned requests.
 -   [Troubleshoot performance](/guides/performance/troubleshooting#performance) by reviewing key analytics, such as time to first byte (TTFB) and total time.
 
 ## Prerequisite {/*prerequisite*/}

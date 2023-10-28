@@ -118,11 +118,15 @@ View request-specific performance statistics by checking:
 
 #### Predictive Prefetching {/*predictive-prefetching*/}
 
-View prefetching activity by checking the **Prefetches** statistic at the bottom of the {{ CHROME_EXTENSION }}. 
+Assess overall prefetching performance by checking the **Prefetches** statistic at the bottom of the {{ CHROME_EXTENSION }}. 
 
 ![Prefetches](/images/v7/performance/developer-tools-prefetches.png?width=600)
 
-By default, you may only prefetch content that is cached on the POP closest to the user and that still has a valid TTL. {{ PRODUCT }} responds with a `412 Precondition Failed` for all other requests.
+By default, you may only prefetch content that is cached on the POP closest to the user and that still has a valid TTL. {{ PRODUCT }} responds with a `412 Precondition Failed` for prefetch requests that result in a cache miss.
+
+Identify prefetch requests through the following query string parameter: `edgio_prefetch=1`.
+
+**Example:** `https://cdn.example.com/css/styles.css?edgio_dt_pf=1&edgio_prefetch=1`
 
 ## Troubleshooting Tools {/*troubleshooting-tools*/}
 

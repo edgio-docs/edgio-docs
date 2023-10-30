@@ -16,7 +16,7 @@ get:
         type: string
   responses:
     '200':
-      description: Retrieve information about a specific deployment.
+      description: OK
       content:
         application/json:
           schema:
@@ -51,3 +51,6 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - configScope:
+        - app.config

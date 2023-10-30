@@ -7,12 +7,19 @@ get:
   parameters:
     - name: property_id
       in: path
+      description: >
+        The property's system-defined ID.
+
+
+        Retrieve a list of properties and their system-defined IDs through the
+        [Get All Properties
+        operation](#tag/properties/operation/getAccountsV01Properties).
       required: true
       schema:
         type: string
   responses:
     '200':
-      description: Retrieve a property.
+      description: OK
       content:
         application/json:
           schema:
@@ -47,6 +54,9 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - accountsScope:
+        - app.accounts
 delete:
   tags:
     - properties
@@ -56,12 +66,19 @@ delete:
   parameters:
     - name: property_id
       in: path
+      description: >
+        The property's system-defined ID.
+
+
+        Retrieve a list of properties and their system-defined IDs through the
+        [Get All Properties
+        operation](#tag/properties/operation/getAccountsV01Properties).
       required: true
       schema:
         type: string
   responses:
     '204':
-      description: Delete a property.
+      description: OK
       content:
         application/json:
           schema:
@@ -96,6 +113,9 @@ delete:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - accountsScope:
+        - app.accounts
 patch:
   tags:
     - properties
@@ -105,6 +125,13 @@ patch:
   parameters:
     - name: property_id
       in: path
+      description: >
+        The property's system-defined ID.
+
+
+        Retrieve a list of properties and their system-defined IDs through the
+        [Get All Properties
+        operation](#tag/properties/operation/getAccountsV01Properties).
       required: true
       schema:
         type: string
@@ -116,7 +143,7 @@ patch:
     required: true
   responses:
     '200':
-      description: Update a property.
+      description: OK
       content:
         application/json:
           schema:
@@ -151,4 +178,7 @@ patch:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - accountsScope:
+        - app.accounts
   x-codegen-request-body-name: patchAccountsV01PropertiesPropertyId

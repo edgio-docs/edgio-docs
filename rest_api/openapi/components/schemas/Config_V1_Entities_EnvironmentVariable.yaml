@@ -16,7 +16,7 @@ properties:
     description: Links to related resources.
   id:
     type: string
-    description: Resource unique identifier.
+    description: The resource's system-defined ID.
   environment_id:
     type: string
     description: >
@@ -35,8 +35,8 @@ properties:
   secret:
     type: boolean
     description: >
-      Determines whether the environment variable's value will be masked using
-      asterisks. Once this property has been enabled, it cannot be unset.
+      Determines whether the environment variable's value will be partially
+      masked using asterisks.
   created_at:
     type: string
     description: The environment variable's creation date and time (UTC).

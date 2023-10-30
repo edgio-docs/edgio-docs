@@ -151,7 +151,7 @@ const nav = {
             },
             {
               title: 'Edgio Developer Tools Chrome Extension',
-              path: 'performance/observability/developer-tools-chrome-extension',
+              path: 'performance/observability/developer_tools_chrome_extension',
             },
             {
               title: 'Devtools',

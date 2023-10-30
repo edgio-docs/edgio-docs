@@ -7,7 +7,7 @@ Troubleshoot:
 -   [General issues](#general-troubleshooting-procedures)
 -   [Caching](#caching)
 -   [Performance](#performance)
--   [Status codes](status-codes)
+-   [Status codes](#status-codes)
 
 [Learn more about our troubleshooting tools.](#troubleshooting-tools)
 

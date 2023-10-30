@@ -1085,7 +1085,7 @@ Enabling this feature will generate `Cache-Control:max-age` and `Expires` header
 
 **Key information:**
 
--   This action does not affect edge server to origin server cache revalidations. These types of revalidations are determined by the `Cache-Control` / `Expires` headers received from the origin server, and can be customized with the [Max Age feature](#max-age).
+-   This action does not affect edge server to origin server cache revalidations. These types of revalidations are determined by the `Cache-Control` / `Expires` headers received from the origin server, and can be customized with the [Max Age feature](#set-max-age).
 -   Setting this feature to a negative value causes our edge servers to send a `Cache-Control:no-cache` and an `Expires` time that is set in the past with each response to the browser. Although an HTTP client will not cache the response, this setting will not affect our edge servers' ability to cache the response from the origin server.
 
 <edgejs>

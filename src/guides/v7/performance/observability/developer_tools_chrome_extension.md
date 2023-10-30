@@ -4,7 +4,7 @@ title: Edgio Developer Tools Chrome Extension
 
 The [{{ CHROME_EXTENSION }}](https://chrome.google.com/webstore/detail/edgio-developer-tools/ieehikdcdpeailgpfdbafhnbfhpdgefm) provides insight into how your site interacts with {{ PRODUCT }}. Specifically, it provides detailed information for the current page and all of the requests spawned from it. Spawned requests include everything from static assets to prefetch requests.
 
-![{{ CHROME_EXTENSION }}](/images/v7/performance/edgio-developer-tools-chrome-extension-overview.png?width=700)
+![{{ CHROME_EXTENSION }}](/images/v7/performance/edgio-developer-tools-chrome-extension-overview.png)
 
 **Common use cases:**
 
@@ -47,7 +47,7 @@ Load the {{ CHROME_EXTENSION }} by navigating to the **Edgio** tab within [Chrom
 -   If a request contains empty cells for various columns (e.g., Cache Status, Cacheable, and Matched Rules), then the request was either not served through {{ PRODUCT }} or it was served through a different property or environment on which the Debug Header feature has not been enabled. 
 -   Click on a request to view more detailed information about that request. 
 
-    ![{{ CHROME_EXTENSION }} shown with request details](/images/v7/performance/developer-tools-request-details.png?width=550)
+    ![{{ CHROME_EXTENSION }} shown with request details](/images/v7/performance/developer-tools-request-details.png)
 
 -   Located at the bottom of Chrome's DevTools are the following performance statistics for the current set of requests in {{ CHROME_EXTENSION }}:
 
@@ -61,4 +61,4 @@ Load the {{ CHROME_EXTENSION }} by navigating to the **Edgio** tab within [Chrom
 
     These statistics are highlighted in the following image:
 
-    ![{{ CHROME_EXTENSION }} with highlighted statistics](/images/v7/performance/developer-tools-performance-statistics.png?width=550)
+    ![{{ CHROME_EXTENSION }} with highlighted statistics](/images/v7/performance/developer-tools-performance-statistics.png)

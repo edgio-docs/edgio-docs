@@ -19,11 +19,12 @@ Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} to version 7 involves the 
 7.  [Upgrade the {{ PRODUCT }} CLI.](#upgrade-the-cli)
 8.  [Upgrade {{ PRODUCT }} packages.](#upgrade-packages)
 9.  [Update your CDN-as-code configuration](#update-your-cdn-as-code-configuration) to reflect changes introduced in version 7.
-10. [Real User Monitoring (RUM) Token](#real-user-monitoring-rum-token)
-11. [Build your {{ PRODUCT }} properties.](#build-your-properties)
-12. [Deploy to {{ PRODUCT }}](#deploy-to)
-13. [Configure your Firewall](#configure-your-firewall)
-14. [Update your DNS](#update-your-dns)
+10. [Image Optimization](#image-optimization)
+11. [Real User Monitoring (RUM) Token](#real-user-monitoring-rum-token)
+12. [Build your {{ PRODUCT }} properties.](#build-your-properties)
+13. [Deploy to {{ PRODUCT }}](#deploy-to)
+14. [Configure your Firewall](#configure-your-firewall)
+15. [Update your DNS](#update-your-dns)
 
 ## Step 1: Rename layer0 Components {/* rename-layer0-components */}
 
@@ -692,7 +693,25 @@ new Router().match('/:path', {
 
     [Learn more.](/guides/performance/response#requesting-debug-cache-information)
 
-## Step 10: Real User Monitoring (RUM) Token {/* real-user-monitoring-rum-token */}
+## Step 10: Image Optimization {/*image-optimization*/}
+
+If you are optimizing images through `opt.moovweb.net`, then you should perform the following steps to update to our latest version of Image Optimization. 
+
+1.  [Enable the Optimize Images feature (optimize_images)](https://docs.edg.io/guides/v7/performance/image_optimization#enabling-image-optimization) 
+for the desired set of images. 
+
+2.  Update your image URLs to point directly to the image. Apply the same set of image optimization query string parameters, with the exception of `img`, to each new URL.
+
+    **Example:** Convert the following sample URL from:    
+    `https://opt.moovweb.net?quality=30&width=100&img=https://edgio-community-examples-v7-image-optimization-live.glb.edgio.link/images/demo.jpg`
+    
+    To this:
+    
+    `https://edgio-community-examples-v7-image-optimization-live.glb.edgio.link/images/demo.jpg?quality=30&width=100`
+
+[View image requirements and limitations.](/guides/performance/image_optimization#image-requirements)
+
+## Step 11: Real User Monitoring (RUM) Token {/* real-user-monitoring-rum-token */}
 
 If you are tracking Core Web Vitals through RUM, then you will need to update the `initEdgioRum` script to use your version 7 token. Your version 7 token is provided on the **Core Web Vitals** page.
 
@@ -710,7 +729,7 @@ If you are tracking Core Web Vitals through RUM, then you will need to update th
   onload="initEdgioRum()"></script>
 ```
 
-## Step 11: Build your {{ PRODUCT }} Properties {/* build-your-properties */}
+## Step 12: Build your {{ PRODUCT }} Properties {/* build-your-properties */}
 
 Build each of your {{ PRODUCT }} properties by running the following command in its root directory:
 
@@ -746,7 +765,7 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 
     Run `{{ FULL_CLI_NAME }} build` to rebuild your {{ PRODUCT }} property.
 
-## Step 12: Deploy to {{ PRODUCT }} {/* deploy-to- */}
+## Step 13: Deploy to {{ PRODUCT }} {/* deploy-to- */}
 
 Once you have successfully built your property, run the following command to deploy your property to {{ PRODUCT }}:
 
@@ -783,7 +802,7 @@ Once you have successfully built your property, run the following command to dep
 
 - The above syntax is only required for your first deployment. After which, you may deploy by running: `{{ FULL_CLI_NAME }} deploy`
 
-## Step 13: Configure your Firewall {/* configure-your-firewall */}
+## Step 14: Configure your Firewall {/* configure-your-firewall */}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 uses a different set of IP blocks than previous versions. This means that you need to update your firewall to allow:
 
@@ -794,7 +813,7 @@ View our IP blocks by clicking **Instructions** from the **Origins** page.
 
 [Learn more.](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses)
 
-## Step 14: Update your DNS {/* update-your-dns */}
+## Step 15: Update your DNS {/* update-your-dns */}
 
 <Callout type="important">
 

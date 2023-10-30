@@ -695,12 +695,12 @@ new Router().match('/:path', {
 
 ## Step 10: Image Optimization {/*image-optimization*/}
 
-If you are optimizing images through `opt.moovweb.net`, then you should perform the following steps to update to our latest version of Image Optimization. 
+If you currently optimize images through `opt.moovweb.net`, then you should perform the following steps to update to the latest version:
 
 1.  [Enable the Optimize Images feature (optimize_images)](https://docs.edg.io/guides/v7/performance/image_optimization#enabling-image-optimization) 
 for the desired set of images. 
 
-2.  Update your image URLs to point directly to the image. Apply the same set of image optimization query string parameters, with the exception of `img`, to each new URL.
+2.  Update all `opt.moovweb.net` URLs to point directly to the image. Apply the same set of query string parameters, with the exception of `img`, to each new URL.
 
     **Example:** Convert the following sample URL from:    
     `https://opt.moovweb.net?quality=30&width=100&img=https://edgio-community-examples-v7-image-optimization-live.glb.edgio.link/images/demo.jpg`
@@ -709,7 +709,10 @@ for the desired set of images.
     
     `https://edgio-community-examples-v7-image-optimization-live.glb.edgio.link/images/demo.jpg?quality=30&width=100`
 
-[View image requirements and limitations.](/guides/performance/image_optimization#image-requirements)
+View:
+
+-   [Image requirements and limitations.](/guides/performance/image_optimization#image-requirements)
+-   [Supported query string parameters.](/guides/performance/image_optimization#query-string-parameters)
 
 ## Step 11: Real User Monitoring (RUM) Token {/* real-user-monitoring-rum-token */}
 

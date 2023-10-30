@@ -21,7 +21,7 @@ new Router().get('/', {
 });
 ```
 
-Each edge function is stored in a separate file and assigned to a specific route in your `routes.js` file. 
+Each edge function is stored in a separate file and assigned to a specific route in your `routes.js` file.
 
 An edge function file must export the following entry point:
 
@@ -133,7 +133,7 @@ The following properties and methods from the standard [`Request`](https://devel
 
 <Callout type="info">
 
-  Using an unsupported method or property will throw an error.
+Using an unsupported method or property will throw an error.
 
 </Callout>
 
@@ -157,11 +157,13 @@ Origin fetch requests and edge functions return a `Response` instance representi
 - **Status**: `response.status` to get the HTTP status code of the response. `response.statusText` provides the corresponding status text.
 - **URL**: `response.url` provides the URL of the response.
 - **Redirected**: `response.redirected` is a property that indicates whether the response is a result of a redirection.
+
     <Callout type="info">
 
       You may redirect a response up to 5 times before an exception is thrown.
 
     </Callout>
+
 - **Redirection**: Create a redirected response using `Response.redirect(url, status)`.
 - **Cloning**: To clone a response without its body, use `response.cloneWithoutBody()`.
 
@@ -183,7 +185,12 @@ Edge functions must respond to the client by returning a `Response` object or a 
 ```js filename="./edge-functions/example.js"
 export async function handleHttpRequest(request, context) {
   const defaultResponse = new Response('Hello World!');
-  const response = await fetch('https://your-server.com' /* origin options */);
+  const response = await fetch('https://your-server.com', {
+    edgio: {
+      // an origin name must be specified in the request
+      origin: 'web',
+    },
+  });
 
   if (!response.ok) {
     return defaultResponse;
@@ -283,6 +290,14 @@ export async function handleHttpRequest(request, context) {
   // return the response to the client
   return resp;
 }
+```
+
+## Caching Responses {/* caching-responses */}
+
+Edge functions can be used to set cache directives on responses. This is useful for overriding cache directives sent by the origin server or for caching responses conditionally.
+
+```js filename="./edge-functions/example.js"
+
 ```
 
 ## Testing Locally {/* testing-locally */}
@@ -454,7 +469,8 @@ It's worth noting that not all implementations will be able to accept polyfills,
 <ExampleButtons
   title="Edge Functions"
   siteUrl="https://edgio-community-examples-v7-edge-functions-live.edgio.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-v7-edge-functions-example" />
+  repoUrl="https://github.com/edgio-docs/edgio-v7-edge-functions-example"
+/>
 
 See additional examples of how to use Edge Functions by {{ PRODUCT }}:
 

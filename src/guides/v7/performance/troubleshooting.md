@@ -28,7 +28,7 @@ Delays in configuration propagation may cause {{ PRODUCT }} to serve some reques
     
 For example, the {{ CHROME_EXTENSION }}'s **Environment** column should report `v3` for requests to a website powered by the following production environment:
     
-![Sample deployments](/images/v7/basics/deployments-cropped.png)
+![Sample deployments](/images/v7/performance/deployments-cropped.png)
 
 #### Applied Rules {/*applied-rules*/}
 
@@ -42,7 +42,7 @@ Verify that the desired set of rules are being applied to the request by perform
 
 2.  Look up those rules from within the **Rules** page  of the {{ PORTAL }}. 
 
-    ![Rules page showing rule numbers](/images/v7/performance/rules-rule-numbers.png?width=600)
+    ![Rules page showing rule numbers](/images/v7/performance/rules-rule-numbers.png)
     
 **Key information:**
 
@@ -66,7 +66,7 @@ Use the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer_too
 
 View overall cache performance by checking the **Edge Hits** statistic at the bottom of the {{ CHROME_EXTENSION }}.
 
-![Edge Hits](/images/v7/performance/developer-tools-edge-hits.png?width=600)
+![Edge Hits](/images/v7/performance/developer-tools-edge-hits.png)
 
 #### Cache Responses {/*cache-responses*/}
 
@@ -121,7 +121,7 @@ View request-specific performance statistics by checking:
 
 Assess overall prefetching performance by checking the **Prefetches** statistic at the bottom of the {{ CHROME_EXTENSION }}. 
 
-![Prefetches](/images/v7/performance/developer-tools-prefetches.png?width=600)
+![Prefetches](/images/v7/performance/developer-tools-prefetches.png)
 
 By default, you may only prefetch content that is cached on the POP closest to the user and that still has a valid TTL. {{ PRODUCT }} responds with a `412 Precondition Failed` for prefetch requests that result in a cache miss.
 
@@ -164,7 +164,7 @@ Troubleshoot the following common status codes:
 Troubleshoot this status code by performing the following steps:
 
 -   Use Edge Insights, [as described above](#status-codes), to identify the URL and the referrer from which the request originated. Check the `url` and the `referer` field, respectively.
--   If the resource exists and you are using CDN-as-code, use the [{{ CHROME_EXTENSION }}](developer_tools_chrome_extension) to check whether the [request matches a rule](#applied-rules) in your {{ ROUTES_FILE }}.
+-   If the resource exists and you are using CDN-as-code, use the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer_tools_chrome_extension) to check whether the [request matches a rule](#applied-rules) in your {{ ROUTES_FILE }}.
 
 ### 502 Bad Gateway Status Code {/*502-bad-gateway-status-code*/}
 

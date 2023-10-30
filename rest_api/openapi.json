@@ -33,7 +33,7 @@
       "description": "Automate environment variable management."
     },
     {
-      "name": "purge requests",
+      "name": "purge-requests",
       "x-displayName": "Purge",
       "description": "Purge cached content and retrieve information about previously submitted purge requests."
     },
@@ -142,7 +142,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns a TLS certificate.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -201,7 +201,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ]
       }
     },
     "/config/v0.1/tls-certs": {
@@ -257,7 +264,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns all TLS certificates associated with an environment.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -316,7 +323,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -337,7 +351,7 @@
         },
         "responses": {
           "201": {
-            "description": "Upload your TLS certificate to activate it within a specific environment.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -397,6 +411,13 @@
             }
           }
         },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ],
         "x-codegen-request-body-name": "postConfigV01TlsCerts"
       }
     },
@@ -433,7 +454,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieve log data for a specific deployment.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -492,7 +513,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ]
       }
     },
     "/config/v0.1/deployments/{deployment_id}": {
@@ -528,7 +556,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieve information about a specific deployment.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -587,7 +615,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ]
       }
     },
     "/config/v0.1/configs/{config_id}": {
@@ -621,8 +656,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Retrieve an environment's origin configurations, hostnames, rules, and experiments.\n\nUse the [Get Environment operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId) to retrieve the system-defined ID (`@links.active_config.id`) for an environment's active configuration\n",
+          "201": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -681,7 +716,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ]
       }
     },
     "/config/v0.1/configs": {
@@ -716,7 +758,7 @@
         },
         "responses": {
           "202": {
-            "description": "Deploys your configuration to a specific environment. This deployment overwrites any existing origin configurations, hostnames, rules, and experiments.\n",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -776,6 +818,13 @@
             }
           }
         },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ],
         "x-codegen-request-body-name": "postConfigV01Configs"
       }
     },
@@ -811,7 +860,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns an environment variable.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -870,7 +919,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -891,7 +947,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Deletes an environment variable.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -950,7 +1006,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ]
       }
     },
     "/config/v0.1/environment-variables": {
@@ -997,7 +1060,7 @@
           {
             "name": "key",
             "in": "query",
-            "description": "Find an environment variable by its key.",
+            "description": "Find an environment variable by its name.",
             "schema": {
               "type": "string"
             }
@@ -1014,7 +1077,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns all environment variables associated with an environment.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1073,7 +1136,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -1094,7 +1164,7 @@
         },
         "responses": {
           "200": {
-            "description": "Creates or updates an environment variable.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1154,6 +1224,13 @@
             }
           }
         },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ],
         "x-codegen-request-body-name": "putConfigV01EnvironmentVariables"
       }
     },
@@ -1172,7 +1249,7 @@
       ],
       "get": {
         "tags": [
-          "purge requests"
+          "purge-requests"
         ],
         "summary": "Get Purge Request",
         "description": "Retrieves information, including status, about a purge request.",
@@ -1190,7 +1267,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieves information, including status, about a purge request.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1249,7 +1326,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "cacheScope": [
+              "app.cache.purge"
+            ]
+          }
+        ]
       }
     },
     "/cache/v0.1/purge-requests": {
@@ -1267,7 +1351,7 @@
       ],
       "post": {
         "tags": [
-          "purge requests"
+          "purge-requests"
         ],
         "summary": "Purge Cache",
         "description": "Submits a request to purge cached content from a specific environment. Purging content invalidates the cached version of an asset from our edge servers. You may submit up to 50 concurrent purge requests. For the purpose of concurrency, each value defined within the `values` property is considered a separate purge request. Find out the current status of your purge request by passing the purge request ID, which is returned by the `id` property, to the [Get Purge Request operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).\n",
@@ -1284,7 +1368,7 @@
         },
         "responses": {
           "202": {
-            "description": "Submits a request to purge cached content from a specific environment. Purging content invalidates the cached version of an asset from our edge servers. You may submit up to 50 concurrent purge requests. For the purpose of concurrency, each value defined within the `values` property is considered a separate purge request. Find out the current status of your purge request by passing the purge request ID, which is returned by the `id` property, to the [Get Purge Request operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).\n",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1354,6 +1438,13 @@
             }
           }
         },
+        "security": [
+          {
+            "cacheScope": [
+              "app.cache.purge"
+            ]
+          }
+        ],
         "x-codegen-request-body-name": "postCacheV01PurgeRequests"
       }
     },
@@ -1375,12 +1466,13 @@
           "environments"
         ],
         "summary": "Get Environment",
-        "description": "Retrieves an environment's settings and metadata. The system-defined ID for the environment's active configuration is returned by the `@links.active_config.id` property.\"\n",
+        "description": "Retrieves an environment's settings and metadata.\n\nThe system-defined ID for the environment's active configuration is returned by the `@links.active_config.id` property.\n",
         "operationId": "getAccountsV01EnvironmentsEnvironmentId",
         "parameters": [
           {
             "name": "environment_id",
             "in": "path",
+            "description": "The environment's system-defined ID.\n\nRetrieve a list of environments and their system-defined IDs through the [Get All Environments operation](#tag/environments/operation/getAccountsV01Environments).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -1389,7 +1481,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieves an environment's settings and metadata. The system-defined ID for the environment's active configuration is returned by the `@links.active_config.id` property.\"\n",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1448,7 +1540,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -1461,6 +1560,7 @@
           {
             "name": "environment_id",
             "in": "path",
+            "description": "The environment's system-defined ID.\n\nRetrieve a list of environments and their system-defined IDs through the [Get All Environments operation](#tag/environments/operation/getAccountsV01Environments).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -1469,7 +1569,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Deletes an environment.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1528,7 +1628,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -1541,6 +1648,7 @@
           {
             "name": "environment_id",
             "in": "path",
+            "description": "The environment's system-defined ID.\n\nRetrieve a list of environments and their system-defined IDs through the [Get All Environments operation](#tag/environments/operation/getAccountsV01Environments).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -1559,7 +1667,7 @@
         },
         "responses": {
           "200": {
-            "description": "Updates an environment.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1619,6 +1727,13 @@
             }
           }
         },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
         "x-codegen-request-body-name": "patchAccountsV01EnvironmentsEnvironmentId"
       }
     },
@@ -1675,7 +1790,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns all environments that belong to the specified property.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1734,7 +1849,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -1755,7 +1877,7 @@
         },
         "responses": {
           "201": {
-            "description": "Creates an environment.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1815,6 +1937,13 @@
             }
           }
         },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
         "x-codegen-request-body-name": "postAccountsV01Environments"
       }
     },
@@ -1842,6 +1971,7 @@
           {
             "name": "property_id",
             "in": "path",
+            "description": "The property's system-defined ID.\n\nRetrieve a list of properties and their system-defined IDs through the [Get All Properties operation](#tag/properties/operation/getAccountsV01Properties).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -1850,7 +1980,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieve a property.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1909,7 +2039,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -1922,6 +2059,7 @@
           {
             "name": "property_id",
             "in": "path",
+            "description": "The property's system-defined ID.\n\nRetrieve a list of properties and their system-defined IDs through the [Get All Properties operation](#tag/properties/operation/getAccountsV01Properties).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -1930,7 +2068,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Delete a property.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1989,7 +2127,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -2002,6 +2147,7 @@
           {
             "name": "property_id",
             "in": "path",
+            "description": "The property's system-defined ID.\n\nRetrieve a list of properties and their system-defined IDs through the [Get All Properties operation](#tag/properties/operation/getAccountsV01Properties).\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -2020,7 +2166,7 @@
         },
         "responses": {
           "200": {
-            "description": "Update a property.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -2080,6 +2226,13 @@
             }
           }
         },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
         "x-codegen-request-body-name": "patchAccountsV01PropertiesPropertyId"
       }
     },
@@ -2136,7 +2289,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns all properties.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -2195,7 +2348,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -2216,7 +2376,7 @@
         },
         "responses": {
           "201": {
-            "description": "Create a property.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -2276,6 +2436,13 @@
             }
           }
         },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
         "x-codegen-request-body-name": "postAccountsV01Properties"
       }
     },
@@ -2303,6 +2470,7 @@
           {
             "name": "organization_id",
             "in": "path",
+            "description": "The organization's system-defined ID.\n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -2311,7 +2479,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieves information about an organization.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -2370,7 +2538,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -2383,6 +2558,7 @@
           {
             "name": "organization_id",
             "in": "path",
+            "description": "The organization's system-defined ID.\n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -2391,7 +2567,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Deletes an organization.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -2450,7 +2626,14 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -2463,6 +2646,7 @@
           {
             "name": "organization_id",
             "in": "path",
+            "description": "The organization's system-defined ID.\n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n",
             "required": true,
             "schema": {
               "type": "string"
@@ -2481,7 +2665,7 @@
         },
         "responses": {
           "200": {
-            "description": "Updates an organization.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -2541,6 +2725,13 @@
             }
           }
         },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
         "x-codegen-request-body-name": "patchAccountsV01OrganizationsOrganizationId"
       }
     },
@@ -5758,7 +5949,7 @@
           },
           "id": {
             "type": "string",
-            "description": "Resource unique identifier."
+            "description": "The resource's system-defined ID."
           },
           "environment_id": {
             "type": "string",
@@ -6019,7 +6210,7 @@
           },
           "id": {
             "type": "string",
-            "description": "Resource unique identifier."
+            "description": "The resource's system-defined ID."
           },
           "status": {
             "type": "string",
@@ -7202,7 +7393,7 @@
           },
           "id": {
             "type": "string",
-            "description": "Resource unique identifier."
+            "description": "The resource's system-defined ID."
           },
           "origins": {
             "$ref": "#/components/schemas/properties-origins"
@@ -7278,7 +7469,7 @@
           },
           "id": {
             "type": "string",
-            "description": "Resource unique identifier."
+            "description": "The resource's system-defined ID."
           },
           "environment_id": {
             "type": "string",
@@ -7294,7 +7485,7 @@
           },
           "secret": {
             "type": "boolean",
-            "description": "Determines whether the environment variable's value will be masked using asterisks. Once this property has been enabled, it cannot be unset.\n"
+            "description": "Determines whether the environment variable's value will be partially masked using asterisks.\n"
           },
           "created_at": {
             "type": "string",
@@ -7364,7 +7555,7 @@
           },
           "secret": {
             "type": "boolean",
-            "description": "Determines whether the environment variable's value will be masked using asterisks. Once this property has been enabled, it cannot be unset.\n"
+            "description": "Determines whether the environment variable's value will be partially masked using asterisks.\n"
           }
         },
         "description": "Creates or updates an environment variable."
@@ -7469,11 +7660,11 @@
           },
           "id": {
             "type": "string",
-            "description": "Resource unique identifier."
+            "description": "The resource's system-defined ID."
           },
           "property_id": {
             "type": "string",
-            "description": "Property ID"
+            "description": "The system-defined ID for the property associated with this environment."
           },
           "name": {
             "type": "string",
@@ -7616,7 +7807,7 @@
           },
           "id": {
             "type": "string",
-            "description": "Resource unique identifier."
+            "description": "The resource's system-defined ID."
           },
           "organization_id": {
             "type": "string"
@@ -7722,7 +7913,7 @@
           },
           "id": {
             "type": "string",
-            "description": "Resource unique identifier."
+            "description": "The resource's system-defined ID."
           },
           "partner_id": {
             "type": "string",
@@ -7730,7 +7921,7 @@
           },
           "name": {
             "type": "string",
-            "description": "Organization name"
+            "description": "The organization's name"
           },
           "pci_compliance": {
             "type": "string",
@@ -10044,7 +10235,7 @@
     {
       "name": "Cache",
       "tags": [
-        "purge requests"
+        "purge-requests"
       ]
     },
     {

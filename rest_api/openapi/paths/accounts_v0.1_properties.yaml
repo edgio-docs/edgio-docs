@@ -35,7 +35,7 @@ get:
         type: string
   responses:
     '200':
-      description: Returns all properties.
+      description: OK
       content:
         application/json:
           schema:
@@ -71,6 +71,9 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - accountsScope:
+        - app.accounts
 post:
   tags:
     - properties
@@ -85,7 +88,7 @@ post:
     required: true
   responses:
     '201':
-      description: Create a property.
+      description: OK
       content:
         application/json:
           schema:
@@ -120,4 +123,7 @@ post:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - accountsScope:
+        - app.accounts
   x-codegen-request-body-name: postAccountsV01Properties

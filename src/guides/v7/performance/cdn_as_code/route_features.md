@@ -664,7 +664,7 @@ This example:
 - Enables the image optimization feature
 - Caches the response for 1 day
 
-Example request: `https://example.com/images/my-image.jpg?width=200&height=200`
+**Sample request:** `https://example.com/images/my-image.jpg?width=200&height=200`
 
 <Callout type="important">
 

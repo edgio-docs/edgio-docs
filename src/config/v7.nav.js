@@ -620,7 +620,7 @@ const nav = {
             },
             {
               title: 'Legacy Purge (Clear-Cache)',
-              path: 'develop/rest_api/clear_cache',
+              path: 'develop/rest_api/cache_purge',
             },
           ],
         },

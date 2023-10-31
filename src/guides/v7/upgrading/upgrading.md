@@ -697,7 +697,7 @@ new Router().match('/:path', {
 
 If you currently optimize images through `opt.moovweb.net`, then you should perform the following steps to update to the latest version:
 
-1.  [Enable the Optimize Images feature (optimize_images)](https://docs.edg.io/guides/v7/performance/image_optimization#enabling-image-optimization) 
+1.  [Enable the Optimize Images feature (optimize_images)](/guides/performance/image_optimization#enabling-image-optimization) 
 for the desired set of images. 
 
 2.  Update all `opt.moovweb.net` URLs to point directly to the image. Apply the same set of query string parameters, with the exception of `img`, to each new URL.

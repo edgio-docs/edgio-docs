@@ -164,8 +164,30 @@ Setting these properties can replicate the behavior of the production environmen
 
 The `cloudRuntime` key is string that specifies the Node.js version to use when running your app on {{ PRODUCT_NAME }}. The following values are supported:
 
-- `nodejs16.x` (default)
+- `nodejs16.x`
 - `nodejs18.x`
+
+If the `cloudRuntime` key is omitted, the runtime will be determined by the Node.js process version that executes `{{ CLI_CMD(deploy) }}`. If the Node.js process version is not in the range of supported versions, `nodejs18.x` will be used. For example:
+
+```bash
+# The cloud runtime will be nodejs16.x
+$ node --version
+v16.19.1
+$ {{ CLI_CMD(deploy) }} 
+
+...
+
+# The cloud runtime will be nodejs18.x and warn of the unsupported version
+$ node --version
+v20.0.0
+$ {{ CLI_CMD(deploy) }} 
+```
+
+<Callout type="important">
+
+Unexpected behavior may occur if the cloud runtime is set to a version different than the Node.js version your project is built with. For example, if `cloudRuntime` is set to `nodejs16.x` but the project is bundled with Node.js 18, the project will be built with Node.js 18, but executed in a Node.js 16 environment. To avoid this, set `cloudRuntime` to the same version as the Node.js version your project is built with.
+
+</Callout>
 
 <a id="example-config"></a>
 

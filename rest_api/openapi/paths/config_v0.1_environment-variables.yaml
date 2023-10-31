@@ -23,7 +23,7 @@ get:
         default: 20
     - name: key
       in: query
-      description: Find an environment variable by its key.
+      description: Find an environment variable by its name.
       schema:
         type: string
     - name: environment_id
@@ -40,7 +40,7 @@ get:
         type: string
   responses:
     '200':
-      description: Returns all environment variables associated with an environment.
+      description: OK
       content:
         application/json:
           schema:
@@ -76,6 +76,9 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - configScope:
+        - app.config
 put:
   tags:
     - environment-variables
@@ -90,7 +93,7 @@ put:
     required: true
   responses:
     '200':
-      description: Creates or updates an environment variable.
+      description: OK
       content:
         application/json:
           schema:
@@ -125,4 +128,7 @@ put:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - configScope:
+        - app.config
   x-codegen-request-body-name: putConfigV01EnvironmentVariables

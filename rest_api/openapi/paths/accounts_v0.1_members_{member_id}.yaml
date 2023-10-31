@@ -10,7 +10,7 @@ get:
         type: string
   responses:
     '200':
-      description: get Member(s)
+      description: OK
       content:
         application/json:
           schema:
@@ -45,6 +45,9 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - accountsScope:
+        - app.accounts
 delete:
   tags:
     - members
@@ -57,7 +60,7 @@ delete:
         type: string
   responses:
     '204':
-      description: deleted Member
+      description: OK
       content:
         application/json:
           schema:
@@ -92,6 +95,9 @@ delete:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - accountsScope:
+        - app.accounts
 patch:
   tags:
     - members
@@ -110,7 +116,7 @@ patch:
     required: true
   responses:
     '200':
-      description: patched Member
+      description: OK
       content:
         application/json:
           schema:
@@ -145,4 +151,7 @@ patch:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - accountsScope:
+        - app.accounts
   x-codegen-request-body-name: patchAccountsV01MembersMemberId

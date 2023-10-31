@@ -22,6 +22,6 @@ properties:
   secret:
     type: boolean
     description: >
-      Determines whether the environment variable's value will be masked using
-      asterisks. Once this property has been enabled, it cannot be unset.
+      Determines whether the environment variable's value will be partially
+      masked using asterisks.
 description: Creates or updates an environment variable.

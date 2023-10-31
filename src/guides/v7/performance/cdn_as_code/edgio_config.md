@@ -160,7 +160,7 @@ interpolationValues.virt_dst_country: 'US'
 
 Setting these properties can replicate the behavior of the production environment within your local development workspace.
 
-### cloudRuntime Configuration
+## cloudRuntime Configuration
 
 The `cloudRuntime` key is a string that denotes the Node.js version for running your app on {{ PRODUCT_NAME }}. Supported values are:
 

@@ -16,7 +16,8 @@ Optimize images through the following steps:
 
 1.  Analyze your site to identify the images that require optimization.
 2.  [Enable the Optimize Images feature (optimize_images)](#enabling-image-optimization) for all of the images identified in the previous step.
-3.  Define the set of optimizations that will be applied to your images by:
+3.  Disable query string caching through the Cache Key feature to maintain performance by preventing cache key fragmentation.
+4.  Define the set of optimizations that will be applied to your images by:
     
     -   Including [query string parameters](#query-string-parameters) within the request URL.
 
@@ -118,7 +119,7 @@ An optimized image must comply with the following limits:
     **Key information:**
 
     -   If you must add query string parameters to the cache key, we recommend that you restrict it to the parameters that are critical to your business needs. This recommendation ensures optimal performance by allowing our CDN to serve more requests from cache. Additionally, it reduces or eliminates unnecessary image processing due to a cache miss.
-    -   Check your query string caching configuration by reviewing your rules for [features that modify the cache key](/guides/performance/caching/cache_key#customizing-the-cache-key).
+    -   If you are unsure as to whether you have already defined a custom cache key, then you should review your rules for [features that modify the cache key](/guides/performance/caching/cache_key#customizing-the-cache-key).
     
 2.  Enable the [Optimize Images feature (optimize_images)](/guides/performance/rules/features#optimize-images) for the desired images.
 

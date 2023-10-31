@@ -1,0 +1,38 @@
+get:
+  operationId: get-known-companies
+  tags:
+    - Known Bots
+  summary: Get Available Known Bots
+  description: Retrieves a list of all known bots. Each known bot is identified by a token (e.g., `google` and `yahoo`). 
+  security:
+    - bot_securityScope: [app.bot_security]
+  responses:
+    '200':
+      description: OK. A list of known bots was retrieved. 
+      content:
+        application/json:
+          schema:
+            type: array
+            description: Contains a list of known bots.
+            items:
+              type: string
+          example:
+            [
+                "ahrefs",
+                "apple",
+                "aspiegel",
+                "baidu",
+                "datadog",
+                "line",
+                "msn",
+                "neeva",
+                "pingdom",
+                "semrush",
+                "uptimerobot",
+                "yahoo",
+                "yandex",
+                "google",
+                "facebook",
+                "twitter",
+                "other"
+            ]

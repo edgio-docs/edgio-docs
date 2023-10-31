@@ -72,7 +72,7 @@ The `logs` array contains an object for each log entry associated with the curre
 -   **host (*String*):** Host. (Category: Request Header) Indicates the `Host` header value sent in the client's request to the CDN.
 -   **referer (*String*):** Referer. (Category: Request Header) Indicates the `Referer` header value sent in the client's request to the CDN. This header reports the URL of the site from which the request originated.
 -   **rule_message (*String*):** Rule Message. (Category: Event) Provides a description of the rule that the request violated.
--   **rule_tags (*Array of string values*):** Rule Tags. (Category: Event) Indicates the tags associated with the rule that the request violated. These tags may be used to determine whether a rule, access control, or global setting was violated.
+-   **rule_tags (*Array of strings*):** Rule Tags. (Category: Event) Indicates the tags associated with the rule that the request violated. These tags may be used to determine whether a rule, access control, or global setting was violated.
 -   **server_port (*Integer*):** Server Port. (Category: Network) Indicates the port number on an edge server to which the client directed a request. Valid values are:
 
     -   **80:** HTTP request

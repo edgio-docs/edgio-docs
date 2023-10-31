@@ -105,6 +105,13 @@ to** option. The available modes are described below.
     </Callout>
 
 -   **IP address:** Indicates that the requests from each unique client, as determined by its IP address, will be tracked. The specified rate limit will only be enforced on the clients that exceed it.
+
+    <Callout type="info">
+
+      Certain services and applications, such as VPNs, mask a client's IP address. Specifically, they will report an IP address of their choosing instead of the client's real IP address. As a result, multiple devices and perhaps even users may end up sharing the same IP address. 
+
+    </Callout>
+
 -   **IP address and user agent:** Indicates that the requests from each unique client, as determined by each unique combination of IP address and user agent (e.g., web browser), will be tracked. The specified rate limit will only be enforced on the clients that exceed it.
 
     <Callout type="info">
@@ -434,7 +441,7 @@ You may create, modify, and delete rate rules.
 
 1.  Navigate to the **Rate Rules** page.
     {{ SECURITY_NAV }} **Rate Rules**.
-2.  Click **Add Rate Rule**.
+2.  Click **+ New Rate Ruleset**.
 3.  In the **Name** option, type the unique name by which
     this rate rule will be identified. This name should be sufficiently
     descriptive to identify it when setting up a Security Application

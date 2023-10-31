@@ -1,0 +1,17 @@
+get:
+  operationId: get-ruleset-version-policies
+  tags:
+    - Edgio Rulesets
+  summary: Get Policies (Edgio Ruleset)
+  description: Retrieve a list of policies associated with an Edgio ruleset. 
+  security:
+    - wafScope: [app.waf]
+  responses:
+    '200':
+      description: OK. A list of policies was retrieved.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Policy.yaml

@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 package-lock.json
+rest_api/node_modules
+rest_api/package-lock.json
 
 # testing
 /coverage
@@ -37,6 +39,12 @@ yarn-error.log*
 
 # Edgio generated build directory
 .edgio
+
+# Console API temporary files
+
+rest_api/tmp/split/components
+rest_api/tmp/split/paths
+rest_api/dist
 
 # IDE
 .fleet

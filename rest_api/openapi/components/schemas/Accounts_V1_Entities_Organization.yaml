@@ -1,0 +1,70 @@
+required:
+  - '@id'
+  - '@type'
+  - id
+type: object
+properties:
+  '@type':
+    type: string
+    description: The resource's type.
+  '@id':
+    type: string
+    description: The resource's relative path.
+  '@links':
+    type: object
+    properties: {}
+    description: Links to related resources.
+  id:
+    type: string
+    description: The resource's system-defined ID.
+  partner_id:
+    type: string
+    description: >-
+      The system-defined ID for the partner account under which the organization
+      was created.
+  name:
+    type: string
+    description: The organization's name
+  pci_compliance:
+    type: string
+    description: >
+      The organization's PCI compliance status. This state is determined by
+      checking PCI-compliance across all environments associated with this
+      organization. Valid values are:
+
+
+      -   **pci:** All environments are PCI-compliant.
+
+      -   **non_pci:** All environments use our entire network.
+
+      -   **mixed:** Some environments are PCI-compliant.
+    enum:
+      - pci
+      - non_pci
+      - mixed
+  pci_dns_domain_name:
+    type: string
+    description: >
+      The organization's PCI-compliant DNS domain.
+
+
+      Serve traffic through our PCI-compliant network by pointing your CNAMEs to
+      this domain.
+  non_pci_dns_domain_name:
+    type: string
+    description: >
+      The organization's DNS domain for standard traffic. Standard traffic can
+      use our entire network.
+
+
+      Serve traffic that does not require PCI-compliance by pointing your CNAMEs
+      to this domain.
+  created_at:
+    type: string
+    description: The organization's creation date and time (UTC).
+    format: date-time
+  updated_at:
+    type: string
+    description: The organization's last modification date and time (UTC).
+    format: date-time
+description: Accounts_V1_Entities_Organization model

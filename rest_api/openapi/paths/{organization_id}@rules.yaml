@@ -1,0 +1,57 @@
+post:
+  operationId: create-custom-rule
+  tags:
+    - Custom Rules
+  summary: Add Custom Rule
+  description: Creates a custom rule that defines custom threat assessment criteria.
+  security:
+    - wafScope: [app.waf]
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/Rule.yaml
+  responses:
+    '200':
+      description: OK. A custom rule was created.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+get:
+  operationId: get-custom-rules
+  tags:
+    - Custom Rules
+  summary: Get All Custom Rules
+  description: Retrieves a list of custom rules. A custom rule allows you to define custom threat assessment criterion.
+  security:
+    - wafScope: [app.waf]
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  responses:
+    '200':
+      description: OK. A list of custom rules was retrieved.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ObjShort.yaml
+          examples:
+            response:
+              value:
+                - id: e3mpHQY5
+                  name: sample_rule_config
+                  last_modified_date: 2023-09-29T22:28:09.790308Z
+
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

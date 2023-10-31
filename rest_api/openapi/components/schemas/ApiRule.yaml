@@ -1,0 +1,27 @@
+title: API Rule Object
+type: object
+properties:
+  name:
+    type: string
+    description: The rule's name.
+  id:
+    type: string
+    description: The rule's system-defined ID.
+  methods:
+    type: array
+    description: | 
+    
+      Identifies the set of API requests that will be screened by one or more HTTP method(s). Valid values are: `GET | DELETE | PATCH | POST | PUT`
+    items:
+      type: string
+  path:
+    $ref: ./Operator.yaml
+  schema_id:
+    type: string
+    description: |
+    
+      An API schema's system-defined ID. 
+    
+      Use the [Get All API Schemas operation](#tag/API-Schemas/operation/get-api-schemas) to retrieve a list of API schemas and their system-defined IDs.
+required:
+  - schema_id

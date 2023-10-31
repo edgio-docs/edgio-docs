@@ -1,0 +1,16 @@
+title: Object Short
+type: object
+properties:
+  id:
+    type: string
+    description: The resource's system-defined ID.
+  name:
+    type: string
+    description: The name of the resource.
+  last_modified_date:
+    type: string
+    description: The date and time at which the resource was last modified.
+required:
+  - id
+  - name
+  - last_modified_date

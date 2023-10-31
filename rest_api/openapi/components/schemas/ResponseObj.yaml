@@ -1,0 +1,12 @@
+title: Response Object
+type: object
+properties:
+  id:
+    type: string
+    description: The resource's system-defined ID.
+  status:
+    type: string
+    description: Returns `success`.
+  success:
+    type: boolean
+    description: Returns `true`.

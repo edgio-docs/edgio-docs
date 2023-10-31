@@ -13,9 +13,10 @@ Route features identify actions that will be applied to a request. Popular featu
 
 See [Features Reference](/guides/performance/rules/features) for a complete list of features and their behavior.
 
-## Defining Route Features
+## Defining Route Features {/* defining-route-features */}
 
 As outlined in the [Route Features](/guides/performance/cdn_as_code#route-features) section of the CDN-as-Code guide:
+
 - Route features are defined as the second argument to the `Router` method being called in the `routes.js` file, such as `.match()`, `.get()`, `.post()`, etc.
 - May also be defined in [conditional routes](/guides/performance/cdn_as_code/route_criteria#conditional-routes) such as `.if()`, `.elseif()`, etc.
 
@@ -47,7 +48,7 @@ router
       max_age: '1h',
     },
   })
-  
+
   // Serve a static file using a RouteHelper method
   .get('/some-path', ({serveStatic}) => {
     serveStatic('public/some-path.html');
@@ -71,9 +72,47 @@ router.get('/some-path', ({addFeatures, serveStatic}) => {
 
 While both of these examples are functionally equivalent, the second example is more flexible because it allows you to define a single route using both notation styles for different features.
 
-## Common Routing Features
+## Caching {/* caching */}
 
-The following sections describe common routing features and how to use them.
+Add caching to a route using the [`caching`](/docs/api/core/interfaces/types.Caching.html) feature:
+
+```js
+router.get('/some/path', {
+  caching: {
+    max_age: '1d',
+    stale_while_revalidate: '',
+    service_worker_max_age: '1h',
+    bypass_client_cache: true,
+  },
+  headers: {
+    set_response_headers: {
+      'x-sw-cache-control': 'max-age=3600',
+    },
+  },
+});
+```
+
+### Customizing the Cache Key {/* customizing-the-cache-key */}
+
+A [cache key](/guides/performance/caching/cache_key) is automatically generated for each request, but if your web application relies on query string parameter(s), request header(s), or cookie(s) when generating a response, then you should customize the cache key to include those elements. You can customize the cache key using the [`cache_key`](docs/api/core/interfaces/types.Caching.html#cache_key) feature:
+
+```js
+router.get('/some/path', {
+  caching: {
+    max_age: '1d',
+    cache_key: {
+      // query string options are mutually exclusive; only one can be used for the cache key.
+      exclude_all_query_params: boolean,
+      include_all_query_params: boolean,
+      include_all_query_params_except: ['session_id', 'utm_source'],
+      include_query_params: ['page', 'filters'],
+
+      include_headers: ['x-my-header'],
+      include_cookies: ['x-my-cookie', 'language', 'currency'],
+    },
+  },
+});
+```
 
 ## Debug Cache Headers {/* debug-cache-headers */}
 
@@ -523,19 +562,20 @@ router
 
 ## Routing to Cloud Functions {/* routing-to-cloud-functions */}
 
-If your request needs to be run on the {{ PRODUCT }} cloud, you can use the `SERVERLESS_ORIGIN_NAME` origin to render your result using your application. Use this method to respond with an SSR or API result from your application:
+Render the result of a Cloud Function within your application by using the [`renderWithApp`](/docs/api/core/classes/router_RouteHelper.default.html#renderWithApp) method. Use this method to respond with an SSR or API result from your application.
+
+{{ routehelper_usage.md }}
 
 ```js
-import {SERVERLESS_ORIGIN_NAME} from '@edgio/core/origins';
+router.get('/some/:path*', ({addFeatures, renderWithApp}) => {
+  addFeatures({
+    caching: {
+      max_age: '1d',
+      bypass_client_cache: true,
+    },
+  });
 
-router.get('/some/:path*', {
-  caching: {
-    max_age: '1d',
-    bypass_client_cache: true,
-  },
-  origin: {
-    set_origin: SERVERLESS_ORIGIN_NAME,
-  },
+  renderWithApp();
 });
 ```
 
@@ -610,7 +650,7 @@ router.get('/some-path', {
 
 <Callout type="important">
 
-When using `response.set_response_body` to send a response, or to stop processing a request from potentially matching subsequent routes, you must also set `response.set_done` to `true`.
+When using `response.set_response_body` to send a response, you must also set `response.set_done` to `true`. This will allow the request to continue matching any subsequent rules, but will prevent the request from being forwarded to the origin.
 
 </Callout>
 
@@ -711,37 +751,39 @@ If you need to block all traffic from a specific country or set of countries, yo
 ```js
 import {or} from '@edgio/core';
 
-router.if(or(
-  { 
-    edgeControlCriteria: {
-      '===': [
-        {
-          location: 'country',
-        },
-        'XX',
-      ]
+router.if(
+  or(
+    {
+      edgeControlCriteria: {
+        '===': [
+          {
+            location: 'country',
+          },
+          'XX',
+        ],
+      },
+    },
+    {
+      edgeControlCriteria: {
+        '===': [
+          {
+            location: 'country',
+          },
+          'XY',
+        ],
+      },
+    },
+    {
+      edgeControlCriteria: {
+        '===': [
+          {
+            location: 'country',
+          },
+          'XZ',
+        ],
+      },
     }
-  },
-  { 
-    edgeControlCriteria: {
-      '===': [
-        {
-          location: 'country',
-        },
-        'XY',
-      ]
-    }
-  },
-  { 
-    edgeControlCriteria: {
-      '===': [
-        {
-          location: 'country',
-        },
-        'XZ',
-      ]
-    }
-  }),
+  ),
   {
     access: {
       deny_access: true,

@@ -1,0 +1,56 @@
+get:
+  tags:
+    - deployments
+  summary: Get Deployment Logs
+  description: Retrieve log data for a specific deployment.
+  operationId: getConfigV01DeploymentsDeploymentIdLogs
+  parameters:
+    - name: deployment_id
+      in: path
+      description: >
+        The deployment's system-defined ID. This ID is returned by the [Deploy
+        CDN Configuration
+        operation's](#tag/configs/operation/postConfigV01Configs) `id` property.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Config_V1_Entities_Deployment_Logs.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - configScope:
+        - app.config

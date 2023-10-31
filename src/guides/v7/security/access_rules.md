@@ -74,23 +74,27 @@ blacklists for the following categories:
 
     <a id="ip-address"></a>
 
--   **IP Address:** Identifies requests by the requester's IPv4 and/or IPv6 address. Specify each desired IP address using standard IPv4/IPv6 and CIDR notation.  
+-   **IP Address:** Identifies requests by the requester's IPv4 and/or IPv6 address. 
 
-    <Callout type="info">
+    **Key information:**
 
-      Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., 11.22.33.0/22).
+    -   Specify each desired IP address using standard IPv4/IPv6 and CIDR notation.  
 
-    </Callout>
+        <Callout type="info">
 
-    **Limit:**
+          Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., 11.22.33.0/22).
 
-    You may specify up to 1,000 IP addresses or IP blocks per access rule. Whitelist, accesslist, and blacklist entries count towards this limit.
+        </Callout>
 
-    <Callout type="tip">
+    -   **Limit:** You may specify up to 1,000 IP addresses or IP blocks per access rule. Whitelist, accesslist, and blacklist entries count towards this limit.
 
-      {{ PRODUCT_SECURITY }} Premier and Standard customers are allowed to create up to 2 access rules that may contain up to 10,000 IP addresses or IP blocks. Use the **High-Capacity** option to identify these two access rules. All other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. You may reassign high-capacity status to another access rule by first clearing the **High-Capacity** option from an existing high-capacity access rule.
+        <Callout type="tip">
 
-    </Callout>
+          {{ PRODUCT_SECURITY }} Premier and Standard customers are allowed to create up to 2 access rules that may contain up to 10,000 IP addresses or IP blocks. Use the **High-Capacity** option to identify these two access rules. All other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. You may reassign high-capacity status to another access rule by first clearing the **High-Capacity** option from an existing high-capacity access rule.
+
+        </Callout>
+
+    -   Certain services and applications, such as VPNs, mask a client's IP address. Specifically, they will report an IP address of their choosing instead of the client's real IP address. As a result, multiple devices and perhaps even users may end up sharing the same IP address. 
 
     <a id="referrer"></a>
 
@@ -244,6 +248,10 @@ Define the set of valid and invalid HTTP request methods through the
 
     `GET | POST | OPTIONS | HEAD | PUT | DELETE`
 
+### Anonmymous Proxy {/*anonymous-proxy*/}
+
+Determine whether we will detect requests that use an anonymizer or anonymous proxy tool through the **Detect Anon Proxy** option.
+
 ### Media Types (aka Content Types) {/*media-types-aka-content-types-*/}
 
 Define the set of valid media types (aka content types or MIME types)
@@ -388,7 +396,7 @@ You may create, modify, and delete access rules.
 
 1.  Navigate to the **Access Rules** page.
     {{ SECURITY_NAV }} **Access Rules**.
-2.  Click **Add Access Rule**.
+2.  Click **+ New Access Ruleset**.
 3.  In the **Name of Rule** option, type the unique name by which this
     access rule will be identified. This name should be sufficiently
     descriptive to identify it when setting up a Security Application

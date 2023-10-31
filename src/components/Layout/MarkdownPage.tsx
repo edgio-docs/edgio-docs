@@ -12,10 +12,16 @@ import useConditioning from 'utils/hooks/useConditioning';
 import {MDHeading, MDHeadingsList} from 'utils/Types';
 
 export function MarkdownPage<
-  T extends {title: string; status?: string; version?: string} = {
+  T extends {
     title: string;
     status?: string;
     version?: string;
+    sourceFile?: string;
+  } = {
+    title: string;
+    status?: string;
+    version?: string;
+    sourceFile?: string;
   }
 >({children, meta, headings}: MarkdownProps<T>) {
   const {route, query} = useRouter();
@@ -61,7 +67,7 @@ export function MarkdownPage<
       {isHomePage ? (
         children
       ) : (
-        <Docs title={title} tocHeadings={tocHeadings}>
+        <Docs title={title} tocHeadings={tocHeadings} source={meta.sourceFile}>
           {children}
         </Docs>
       )}

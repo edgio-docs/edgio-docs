@@ -1,0 +1,29 @@
+# See https://redoc.ly/docs/cli/configuration/ for more information.
+extends:
+  - recommended
+
+apis:
+  main:
+    root: openapi/openapi.yaml
+    rules:
+      no-unused-components: warn
+theme:
+  openapi:
+    htmlTemplate: ./docs/index.html
+    theme:
+      colors:
+        primary:
+          main: "#32329f"
+      typography:
+        fontSize: '16px'
+        lineHeight: '1.5em'
+        fontFamily: 'Roboto, sans-serif'
+        headings:
+          fontFamily: '"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif' 
+        code:
+          fontFamily: 'Menlo,Bitstream Vera Sans Mono,DejaVu Sans Mono,Monaco,Consolas,monospace'
+          fontSize: '13px'
+      logo:
+        maxHeight: '26px'
+        maxWidth: '66px'
+        gutter: '0'

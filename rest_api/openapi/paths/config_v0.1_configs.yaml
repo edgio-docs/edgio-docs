@@ -1,0 +1,56 @@
+post:
+  tags:
+    - configs
+  summary: Deploy CDN Configuration
+  description: >
+    Deploys your configuration to a specific environment. This deployment
+    overwrites any existing origin configurations, hostnames, rules, and
+    experiments.
+  operationId: postConfigV01Configs
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/postConfigV01Configs.yaml
+    required: true
+  responses:
+    '202':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Config_V1_Entities_Config.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - configScope:
+        - app.config
+  x-codegen-request-body-name: postConfigV01Configs

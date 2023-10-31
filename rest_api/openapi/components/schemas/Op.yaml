@@ -1,0 +1,48 @@
+type: object
+description: Describes the comparison that will be performed.
+properties:
+  type:
+    description: |
+    
+      Indicates how the system will interpret the comparison between the request and the `values` property.
+      
+      Valid values are:
+
+      -   **EM:** Requires that the request's attribute be set to one of the value(s) defined in the `values` property.
+
+      -   **IPMATCH:** Requires that the request's IP address either be contained by an IP block or be an exact match to an IP address defined in the `values` property.
+
+          Only use `IPMATCH` with the `REMOTE_ADDR` match condition.
+
+      -   **RX:** Requires that the request's attribute be an exact match to the regular expression defined in the `value` property.
+
+    allOf:
+      - $ref: ./OpType.yaml
+  value:
+    description: Required for `RX` type. Identifies a regular expression used to identify requests that are eligible for rate limiting.
+    type: string
+  is_regex:
+    type: boolean
+  values:
+    description: Required for `IPMATCH` and `EM` type. Identifies one or more values used to identify requests that are eligible for rate limiting. You may define up to 200 entries for `IPMATCH` or 100 entries for `EM`.
+    type: array
+    items:
+      type: string
+  is_negated:
+    type: boolean
+    description: |
+    
+      Indicates whether this match condition will be satisfied when the request matches or does not match the value defined by the `values` property. Valid values are:
+
+      -   **true:** Does not match
+
+      -   **false:** Matches
+
+  is_case_insensitive:
+    type: boolean
+    description: | 
+
+      Indicates whether the comparison between the request and the `values` property is case-sensitive. Valid values are:
+
+      -   **true:** Case-insensitive
+      -   **false:** Case-sensitive

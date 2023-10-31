@@ -287,7 +287,74 @@ The available enforcement actions are described below.
         }
         ```
 
-    -   **HTTP Status Code:** Defines the HTTP status code that will be sent to the client.  
+    -   **HTTP Status Code:** Defines the HTTP status code that will be sent to the client.
+
+        <details>
+          <summary>View valid status codes.</summary>
+
+          -   100
+          -   101
+          -   102
+          -   200
+          -   201
+          -   202
+          -   203
+          -   204
+          -   205
+          -   206
+          -   207
+          -   208
+          -   226
+          -   300
+          -   301
+          -   302
+          -   303
+          -   304
+          -   305
+          -   306
+          -   307
+          -   308
+          -   400
+          -   401
+          -   402
+          -   403
+          -   404
+          -   405
+          -   406
+          -   407
+          -   408
+          -   409
+          -   410
+          -   411
+          -   412
+          -   413
+          -   414
+          -   415
+          -   416
+          -   417
+          -   421
+          -   422
+          -   423
+          -   424
+          -   426
+          -   428
+          -   429
+          -   431
+          -   451
+          -   500
+          -   501
+          -   502
+          -   503
+          -   504
+          -   505
+          -   507
+          -   508
+          -   509
+          -   510
+          -   511
+
+        </details>
+
     -   **Custom Response Headers:** Defines one or more response headers that will be sent to the client. Add a custom response header by clicking **+ Add Response Header**, setting the **Name** option to the name of the response header, and then setting the **Value** option to the response header value.
 
         <Callout type="tip">
@@ -328,7 +395,7 @@ variables that describe the event. These variables are described below.
 
 | Variable    | Description                                           |
 | ----------- | ----------- |
-| EVENT_ID    | Represents the system-defined ID assigned to the request that was identified as a threat.  Find out detailed information about the detected threat by passing this ID to the Get Event Log Entry endpoint (REST API).|
+| EVENT_ID    | Represents the system-defined ID assigned to the request that was identified as a threat. <!--Find out detailed information about the detected threat by passing this ID to the Get Event Log Entry endpoint (REST API).-->|
 | CLIENT_IP   | Represents the IP address of the device that submitted the detected threat.                        |
 | TIMESTAMP   | Represents the date and time at which the detected threat was submitted.                                 |
 | REQUEST_URL | Represents the URL for the request that was deemed a threat.                                               |
@@ -375,9 +442,9 @@ You may create, modify, and delete Security App configurations.
 -   It may take up to 2 minutes for an updated Security App configuration to be applied across our entire network.
 
 **To create a Security App configuration**
-1.  Navigate to the **Security App** page.
+1.  Navigate to the **Security Apps** page.
     {{ SECURITY_NAV }} **Security Apps**.
-2.  Click **Add New**.
+2.  Click **+ New Security App**.
 3.  In the **Name** option, type the unique name by which this Security App configuration will be identified.
 4.  Optional. Identify the set of traffic to which this security policy will be applied by defining a hostname and/or URL path through the **Hostname** and **URL path(s)** options.
 

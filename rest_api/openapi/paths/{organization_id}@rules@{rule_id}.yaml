@@ -1,0 +1,111 @@
+parameters:
+  - $ref: ../components/parameters/organization_id.yaml
+  - $ref: ../components/parameters/rule_id.yaml
+get:
+  operationId: get-custom-rule
+  tags:
+    - Custom Rules
+  summary: Get Custom Rule
+  description: Retrieves a custom rule. Use a custom rule to define custom threat assessment criteria.
+  security:
+    - wafScope: [app.waf]
+  responses:
+    '200':
+      description: OK. A custom rule was retrieved.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Rule.yaml
+          example:
+            {
+                "customer_id": "ae2b89dc-b7a5-45bb-98af-5039ac0fe989",
+                "directive": [{
+                        "sec_rule": {
+                            "action": {
+                                "id": "66000001",
+                                "msg": "Outside of North America",
+                                "t": ["NONE"]
+                            },
+                            "chained_rule": [],
+                            "id": "R20zyMd4",
+                            "name": "new custom rules 01",
+                            "operator": {
+                                "is_negated": true,
+                                "is_regex": false,
+                                "type": "EQ",
+                                "value": "US, CA, MX"
+                            },
+                            "variable": [{
+                                    "is_count": false,
+                                    "match": [{
+                                            "is_negated": false,
+                                            "is_regex": false,
+                                            "value": "COUNTRY_CODE"
+                                        }
+                                    ],
+                                    "type": "GEO"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "id": "9kaZvYXo",
+                "last_modified_by": "jsmith@example.com via Edgio AppOps Console",
+                "last_modified_date": "2023-09-29T22:28:09.790308Z",
+                "name": "My Custom Rule",
+                "team_config": true
+            }
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+put:
+  operationId: update-custom-rule
+  tags:
+    - Custom Rules
+  summary: Update Custom Rule
+  description: Updates a custom rule that defines custom threat assessment criteria.
+  security:
+    - wafScope: [app.waf]
+  requestBody:
+    $ref: ../components/requestBodies/Rule.yaml
+  responses:
+    '200':
+      description: OK. A custom rule was updated.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+delete:
+  operationId: delete-custom-rule
+  tags:
+    - Custom Rules
+  summary: Delete Custom Rule
+  description: Deletes a custom rule.
+  security:
+    - wafScope: [app.waf]
+  responses:
+    '200':
+      description: OK. A custom rule was deleted.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

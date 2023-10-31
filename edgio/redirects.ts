@@ -23,7 +23,6 @@ export default [
   ['/guides/deploy_to_edgio', '/guides/develop/deploy_to_edgio'],
   ['/guides/logs', '/guides/develop/logs'],
   ['/guides/packages', '/guides/develop/packages'],
-  ['/guides/rest_api', '/guides/develop/rest_api'],
   ['/guides/bigcommerce', '/guides/integrations/bigcommerce'],
   ['/guides/bloomreach', '/guides/integrations/bloomreach'],
   ['/guides/shopify_hydrogen', '/guides/integrations/shopify_hydrogen'],
@@ -167,8 +166,5 @@ export default [
     '/guides/v7/performance/cdn_as_code/getting_started',
     '/guides/v7/performance/cdn_as_code',
   ],
-  [
-    '/guides/v7/performance/experiments',
-    '/guides/v7/experimentation',
-  ],
+  ['/guides/v7/performance/experiments', '/guides/v7/experimentation'],
 ];

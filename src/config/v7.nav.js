@@ -712,7 +712,7 @@ const nav = {
         },
         {
           title: 'Legacy Purge API',
-          path: '/guides/develop/rest_api/clear_cache',
+          path: '/guides/develop/rest_api/cache_purge',
         },
         {
           title: '',

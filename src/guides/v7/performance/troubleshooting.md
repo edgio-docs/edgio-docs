@@ -114,7 +114,7 @@ Review the following items to find out why a request resulted in a cache miss.
 
     **Key information:**
 
-    -   If you must add query string parameters to the cache key, we recommend that you restrict it to the parameters that are critical to your business needs. This recommendation ensures optimal performance by allowing our CDN to serve more requests from cache. Additionally, it reduces or eliminates unnecessary image processing due to a cache miss.
+    -   If you must add query string parameters to the cache key, we recommend that you restrict it to the parameters that are critical to your business needs. This recommendation ensures optimal performance by allowing our CDN to serve more requests from cache. 
     -   If you are unsure as to whether you have already defined a custom cache key, then you should review your rules for [features that modify the cache key](/guides/performance/caching/cache_key#customizing-the-cache-key).
 
 ## Performance {/*performance*/}

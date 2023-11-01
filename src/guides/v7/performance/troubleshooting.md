@@ -74,7 +74,7 @@ Check whether a request was served from cache through the **Cache Status** colum
 
     -   **Hit (`COMPONENT`):** Indicates that the request was served from cache from either our network (Edge) or a service worker's local cache (Service Worker). 
 
-    -   **Miss (`COMPONENT`):** Indicates that {{ PRODUCT }} [could not find a cached version](#cache-miss) of the requested content     with a valid time-to-live (TTL) from either our network (Edge) or a service worker's local cache (Service Worker). 
+    -   **Miss (`COMPONENT`):** Indicates that {{ PRODUCT }} [could not find a cached version](#cache-miss) of the requested content with a valid time-to-live (TTL) from either our network (Edge) or a service worker's local cache (Service Worker). 
 
     -   **No-Cache (Edge):** Indicates that a cache content freshness check was not performed. This check is skipped when an HTTP request method is used that bypasses cache (e.g., `PUT`, `DELETE`, etc).
 

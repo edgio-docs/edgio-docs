@@ -26,6 +26,12 @@ Once you have deployed at least one experiment, then each client will be assigne
 
 A client is eligible to participate in an experiment if the request satisfies the experiment's criteria. {{ PRODUCT }} processes the request with the set of actions associated with each variant assigned to the client. 
 
+<Callout type="info">
+
+  {{ PRODUCT }} checks an experiment's criteria after it has processed the request through Rules. 
+
+</Callout>
+
 {{ PRODUCT }} adds [experimentation metadata](#experimentation-metadata) to each experiment-eligible request. Specifically, it adds a header to the request sent from {{ PRODUCT }} to the origin and it adds metadata to the response sent from {{ PRODUCT }} to the client. This allows you to use variant information within your application(s). 
 
 <Callout type="tip">

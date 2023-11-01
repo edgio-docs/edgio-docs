@@ -11,7 +11,7 @@ Troubleshoot:
 
 [Learn more about our troubleshooting tools.](#troubleshooting-tools)
 
-## General Troubleshooting Procedures {/*general-troubleshooting-procedures*/}
+## General Troubleshooting {/*general-troubleshooting-procedures*/}
 
 If you encounter unexpected behavior or an issue, you should:
 
@@ -74,7 +74,7 @@ Check whether a request was served from cache through the **Cache Status** colum
 
     -   **Hit (`COMPONENT`):** Indicates that the request was served from cache from either our network (Edge) or a service worker's local cache (Service Worker). 
 
-    -   **Miss (`COMPONENT`):** Indicates that {{ PRODUCT }} could not find a cached version of the requested content     with a valid time-to-live (TTL) from either our network (Edge) or a service worker's local cache (Service Worker). 
+    -   **Miss (`COMPONENT`):** Indicates that {{ PRODUCT }} [could not find a cached version](#cache-miss) of the requested content with a valid time-to-live (TTL) from either our network (Edge) or a service worker's local cache (Service Worker). 
 
     -   **No-Cache (Edge):** Indicates that a cache content freshness check was not performed. This check is skipped when an HTTP request method is used that bypasses cache (e.g., `PUT`, `DELETE`, etc).
 
@@ -95,6 +95,27 @@ Review the following items to find out why a request resulted in a cache miss.
 -    If you have defined a custom cache policy through a rule, then you should [review the rules applied to this request](#applied-rules). 
 
 -   If your origin defines a custom cache policy through headers, then you should click on the desired request and then check the **Response Headers** section for [cache directives](/guides/performance/caching#cache-directives)
+
+-   {{ PRODUCT }} associates each request with a cache key. {{ PRODUCT }} then uses this cache key to identify whether content has been cached for this request. By default, this cache key includes the query string. This configuration is ideal for a website that uses the query string to determine the content that will be served. For other sites, this can lead to cache fragmentation and a higher rate of cache misses.
+
+    Customize the cache key to exclude query string parameters:
+
+    -   **Rules:** Create or modify a rule that includes the  [Cache Key](/guides/performance/rules/features#cache-key) feature. Configure this feature's **Query Parameters** option to either exclude all query string parameters or to only include specific parameters.
+    
+        ![Cache Key feature set to exclude all query string parameters](/images/v7/performance/cache-key-exclude-all-qs.png)
+
+    -   **CDN-as-Code:**
+
+        ```js filename="./routes.js"
+        export default new Router().always({
+          caching: { cache_key: { exclude_all_query_params: true } },
+        });
+        ```
+
+    **Key information:**
+
+    -   If you must add query string parameters to the cache key, we recommend that you restrict it to the parameters that are critical to your business needs. This recommendation ensures optimal performance by allowing our CDN to serve more requests from cache. 
+    -   If you are unsure as to whether you have already defined a custom cache key, then you should review your rules for [features that modify the cache key](/guides/performance/caching/cache_key#customizing-the-cache-key).
 
 ## Performance {/*performance*/}
 
@@ -123,7 +144,7 @@ Assess overall prefetching performance by checking the **Prefetches** statistic 
 
 ![Prefetches](/images/v7/performance/developer-tools-prefetches.png)
 
-By default, you may only prefetch content that is cached on the POP closest to the user and that still has a valid TTL. {{ PRODUCT }} responds with a `412 Precondition Failed` for prefetch requests that result in a cache miss.
+By default, you may only prefetch content that is cached on the POP closest to the user and that still has a valid TTL. By default, {{ PRODUCT }} responds with a `412 Precondition Failed` for prefetch requests that result in a cache miss. This default configuration ensures that your origin servers do not experience additional load due to predictive prefetching. 
 
 Identify prefetch requests through the following query string parameter: `edgio_prefetch=1`.
 
@@ -168,7 +189,13 @@ Troubleshoot this status code by performing the following steps:
 
 ### 502 Bad Gateway Status Code {/*502-bad-gateway-status-code*/}
 
-Troubleshoot this status code by identifying the origin configuration that is experiencing an issue and then performing the following steps:
+Troubleshoot this status code by performing the following steps:
+
+-   Identify the origin configuration that is returning a `502 Bad Gateway`. Request the origin directly to verify that it is available. 
+
+    **Example:** If your origin configuration points to `origin-1.example.com`, then you could potentially verify that this origin is available by submitting the following request: 
+    
+    `https://origin-1.example.com/`
 
 -   Use Edge Insights to check whether you need to update your origin configuration's SNI settings.
 

@@ -193,11 +193,11 @@ Mismatch between the cloud runtime and the Node.js version used for bundling you
 
 ## Default {{ CONFIG_FILE }} {/* default-config */}
 
-By default, the following {{ CONFIG_FILE }} file is created by `{{ CLI_CMD(init) }}`. The contents of this file may differ when a framework supported by {{ PRODUCT }} {{ PRODUCT_PLATFORM }} is detected during initialization.
+By default, the following `{{ CONFIG_FILE }}` file is created by `{{ CLI_CMD(init) }}`. The contents of this file may differ when a framework supported by {{ PRODUCT }} {{ PRODUCT_PLATFORM }} is detected during initialization.
 
-See the full API specification for the {{ CONFIG_FILE }} file [here](/docs/api/core/interfaces/config.default.html).
+See the full API specification for the `{{ CONFIG_FILE }}` file [here](/docs/api/core/interfaces/config.default.html).
 
-```js
+```js filename="{{CONFIG_FILE}}"
 // This file was automatically added by edgio init.
 // You should commit this file to source control.
 // Learn more about this file at https://docs.edg.io/guides/edgio_config

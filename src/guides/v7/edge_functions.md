@@ -229,7 +229,7 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-You can also use the [`createFetchForOrigin()`](#createFetchForOrigin) function to create a modified `fetch()` function that includes the origin server. See the [Polyfills](#polyfills) section for more information.
+You may define a utility function such as [`createFetchForOrigin()`](#createFetchForOrigin) to create a reusable `fetch()` function that includes the origin server. See the [Polyfills](#polyfills) section for more information.
 
 ```js
 export async function handleHttpRequest(request, context) {
@@ -292,13 +292,36 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-## Caching Responses {/* caching-responses */}
+### Caching fetch() Requests {/* caching-fetch-requests */}
 
-Edge functions can be used to set cache directives on responses. This is useful for overriding cache directives sent by the origin server or for caching responses conditionally.
+Caching fetch requests within your edge function can reduce the load on your origins and deliver content faster to your users. It's important to be aware of [time limitations](#limitations) of edge function which can also be mitigated with caching.
 
-```js filename="./edge-functions/example.js"
+In this section, we'll cover how to use the caching options as part of the `fetch()` method. These options are specified per fetch request and are completely separate from the caching options specified in {{ROUTES_FILE}}.
 
+The following sample code shows how to define caching options inside the `edgio` object:
+
+```js
+const resp = await fetch('https://your-server.com/some-path', {
+  edgio: {
+    origin: 'web',
+    caching: {
+      max_age: '1d',
+      stale_while_revalidate: '1h',
+      tags: 'apple banana',
+      bypass_cache: false,
+    },
+  },
+});
 ```
+
+#### Caching Options {/* caching-options */}
+
+- `max_age`: Specifies the maximum amount of time that a fetched response is considered fresh. This value is set as a duration string, which is a number followed by a time unit character. Supported time unit characters are `d` for days, `h` for hours, `m` for minutes, and `s` for seconds. For example, `"1h"` represents 1 hour. This setting overrides the `max-age` directive in the `Cache-Control` header of the origin response if present.
+- `stale_while_revalidate`: Specifies the amount of time a stale response is served while a revalidation request is made in the background. This value is also set as a duration string similar to `max_age`. This setting overrides the `stale-while-revalidate` directive in the `Cache-Control` header of the origin response if present.
+- `tags`: Allows you to specify a space-separated list of tags for the cached object, which can later be used for cache purging as [surrrogate keys](/guides/performance/caching/purging#surrogate-key). Each tag should be a string without spaces.
+- `bypass_cache`: A boolean value that, when set to `true`, bypasses the cache for the fetch request, ensuring the request is sent directly to the origin and the response is not stored in the cache.
+
+These caching options provide you with granular control over how your fetch requests are cached and served, allowing you to optimize the performance of your edge function.
 
 ## Testing Locally {/* testing-locally */}
 

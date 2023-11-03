@@ -12,7 +12,7 @@ get:
         type: string
   responses:
     '200':
-      description: Returns an environment variable.
+      description: OK
       content:
         application/json:
           schema:
@@ -47,6 +47,9 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - configScope:
+        - app.config
 delete:
   tags:
     - environment-variables
@@ -61,7 +64,7 @@ delete:
         type: string
   responses:
     '204':
-      description: Deletes an environment variable.
+      description: OK
       content:
         application/json:
           schema:
@@ -96,3 +99,6 @@ delete:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - configScope:
+        - app.config

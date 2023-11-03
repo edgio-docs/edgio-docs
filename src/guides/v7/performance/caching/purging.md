@@ -12,7 +12,7 @@ Purge cached content to force the CDN to request a new version of that content f
 
 Purge by relative path, surrogate key, or all cached content using the:
 
--   [{{ PORTAL }}](#developer-console)
+-   [{{ PORTAL }}](#console)
 -   [{{ PRODUCT }} CLI](#cli)
 -   [{{ PRODUCT }} REST API (clear-cache)](#rest-api)
 

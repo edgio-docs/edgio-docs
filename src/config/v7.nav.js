@@ -150,6 +150,10 @@ const nav = {
               path: 'performance/observability/real_user_monitoring',
             },
             {
+              title: 'Edgio Developer Tools Chrome Extension',
+              path: 'performance/observability/developer_tools_chrome_extension',
+            },
+            {
               title: 'Devtools',
               path: 'performance/observability/devtools',
             },
@@ -616,7 +620,7 @@ const nav = {
             },
             {
               title: 'Legacy Purge (Clear-Cache)',
-              path: 'develop/rest_api/clear_cache',
+              path: 'develop/rest_api/cache_purge',
             },
           ],
         },
@@ -708,7 +712,7 @@ const nav = {
         },
         {
           title: 'Legacy Purge API',
-          path: '/guides/develop/rest_api/clear_cache',
+          path: '/guides/develop/rest_api/cache_purge',
         },
         {
           title: '',

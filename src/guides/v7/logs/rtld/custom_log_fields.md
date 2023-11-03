@@ -12,7 +12,7 @@ RTLD CDN supports logging request headers, response headers, and cookies. Settin
 
     <Callout type="important">
 
-      Although other settings take effect quickly, it may take up to 90 minutes to log data for custom request/response headers and cookies. 
+      Although RTLD profile settings take effect quickly, it may take up to 90 minutes before {{ PRODUCT }} starts logging newly registered headers and cookies.
 
     </Callout>
 
@@ -23,7 +23,6 @@ RTLD CDN supports logging request headers, response headers, and cookies. Settin
         -   Click on the list to add additional headers or cookies. 
         -   You may either select the name of the desired header or cookie, or type its name and then press `ENTER`. 
         -   Remove a header or cookie by clicking on its `x`.
-        -   
 
     3.  Click **Apply Changes**.
 
@@ -35,9 +34,9 @@ RTLD CDN supports logging request headers, response headers, and cookies. Settin
 
     4.  Repeat steps 1 - 3  as needed.
 
-## Blank Custom Log Fields {*blank-custom-log-fields*}
+## Blank Custom Log Fields {/*blank-custom-log-fields*/}
 
-RTLD returns a blank custom log field when either of the following conditions are true:
+RTLD returns a blank custom log field when any of the following conditions are true:
 -   The header or cookie was missing.
 -   The header or cookie was set to blank.
 -   The header or cookie was not defined on the **Realtime Log Delivery** page. 

@@ -2,7 +2,7 @@
 title: Image Optimization
 ---
 
-{{ PRODUCT }} can dynamically transforms your images to tailor them to your site's:
+{{ PRODUCT }} can dynamically transform your images to tailor them to your site's:
 
 -   Design. You can apply multiple transformations (e.g., resize, blur, crop, and rotate) to a single source image according to how it should be displayed within your site's design.
 -   Experience. For example, if your site has a paywall, you can effortlessly apply a blur effect to requests for images once a site visitor has met or exceeded their allotment of free access.
@@ -16,7 +16,8 @@ Optimize images through the following steps:
 
 1.  Analyze your site to identify the images that require optimization.
 2.  [Enable the Optimize Images feature (optimize_images)](#enabling-image-optimization) for all of the images identified in the previous step.
-3.  Define the set of optimizations that will be applied to your images by:
+3.  Disable query string caching through the Cache Key feature to maintain performance by preventing cache key fragmentation.
+4.  Define the set of optimizations that will be applied to your images by:
     
     -   Including [query string parameters](#query-string-parameters) within the request URL.
 
@@ -96,22 +97,31 @@ An optimized image must comply with the following limits:
 
 **To enable image optimization**
 
-1.  **Query String Caching:** Verify that the cache key for images that will be processed by {{ PRODUCT }} excludes image optimization query string parameters. By default, {{ PRODUCT }} excludes query string parameters from the cache key.
+1.  Customize the cache key to exclude image optimization query string parameters for images that will be processed by {{ PRODUCT }}.
 
-    <Callout type="tip">
-
-      If you must add query string parameters to the cache key, we recommend that you restrict it to the parameters that are critical to your business needs. This recommendation ensures optimal performance by allowing our CDN to serve more requests from cache. Additionally, it reduces or eliminates unnecessary image processing due to a cache miss.
-      
-    </Callout>
-
-    **How do I check my query string caching configuration?**
+    -   **Rules:** Create or modify a rule that includes the  [Cache Key](/guides/performance/rules/features#cache-key) feature. Configure this feature's **Query Parameters** option to either exclude all query string parameters or to only include specific parameters.
     
-    Check your query string caching configuration by reviewing your rules to check whether the:
+        ![Cache Key feature set to exclude all query string parameters](/images/v7/performance/cache-key-exclude-all-qs.png)
 
-    -   [Cache Key Query String feature (cache_key_query_string)](/guides/performance/rules/features#cache-key-query-string) has been defined. It should not include [image optimization query string parameter(s)](#query-string-parameters) or be set to `Exclude All`. 
-    -   [Rewrite Cache Key feature (cache_key_rewrite)](/guides/performance/rules/features#rewrite-cache-key) has been defined. The destination for this feature should not include image optimization query string parameter(s).
+    -   **CDN-as-Code:**
+
+        ```js filename="./routes.js"
+        export default new Router().if(
+          {
+            edgeControlCriteria: {
+              in: [{ "request.path": "extension" }, ["jpg", "jpeg", "png", "webp"]],
+            },
+          },
+          { caching: { cache_key: { exclude_all_query_params: true } } }
+        );
+        ```
+
+    **Key information:**
+
+    -   If you must add query string parameters to the cache key, we recommend that you restrict it to the parameters that are critical to your business needs. This recommendation ensures optimal performance by allowing our CDN to serve more requests from cache. Additionally, it reduces or eliminates unnecessary image processing due to a cache miss.
+    -   If you are unsure as to whether you have already defined a custom cache key, then you should review your rules for [features that modify the cache key](/guides/performance/caching/cache_key#customizing-the-cache-key).
     
-2.  Create or modify a rule that enables the [Optimize Images feature (optimize_images)](/guides/performance/rules/features#optimize-images) for the desired images.
+2.  Enable the [Optimize Images feature (optimize_images)](/guides/performance/rules/features#optimize-images) for the desired images.
 
     <Callout type="info">
 	
@@ -119,18 +129,26 @@ An optimized image must comply with the following limits:
 	  
     </Callout>
 
-    <Callout type="info">
+    -   **Rules:** For example, you can create a rule that targets images through the [Extension match condition (extension)](/guides/performance/rules/conditions#extension).
+    
+        ![Image Optimization enablement](/images/v7/performance/image-optimization-extension-and-enable.png)
+    
+    -   **CDN-as-Code:**
 
-      Create a rule through either [Rules](/guides/v7/performance/rules) or a [CDN-as-code configuration](/guides/v7/performance/cdn_as_code).
-    
-    </Callout>
+        ```js filename="./routes.js"
+        export default new Router().if(
+          {
+            edgeControlCriteria: {
+              in: [{ "request.path": "extension" }, ["jpg", "jpeg", "png", "webp"]],
+            },
+          },
+          {
+            caching: { cache_key: { exclude_all_query_params: true } },
+            response: { optimize_images: true },
+          }
+        );
+        ```
 
-    **Example:**
-    
-    You can create a rule that targets images through the [Extension match condition (extension)](/guides/performance/rules/conditions#extension).
-    
-    ![Extension match condition](/images/v7/performance/image-optimization-extension-match-condition.png)
-	
     <Callout type="tip">
 
       If your images do not have file extensions, then consider using the [Request Header match condition (request.header)](/guides/performance/rules/conditions#request-header) to target images through the [Content-Type header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#image_types).

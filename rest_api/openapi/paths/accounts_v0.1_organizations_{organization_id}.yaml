@@ -7,12 +7,18 @@ get:
   parameters:
     - name: organization_id
       in: path
+      description: >
+        The organization's system-defined ID.
+
+
+        From the Edgio Console, navigate to the desired organization and then
+        click **Settings**. It is listed under **Organization ID**.
       required: true
       schema:
         type: string
   responses:
     '200':
-      description: Retrieves information about an organization.
+      description: OK
       content:
         application/json:
           schema:
@@ -47,6 +53,9 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - accountsScope:
+        - app.accounts
 delete:
   tags:
     - organizations
@@ -56,12 +65,18 @@ delete:
   parameters:
     - name: organization_id
       in: path
+      description: >
+        The organization's system-defined ID.
+
+
+        From the Edgio Console, navigate to the desired organization and then
+        click **Settings**. It is listed under **Organization ID**.
       required: true
       schema:
         type: string
   responses:
     '204':
-      description: Deletes an organization.
+      description: OK
       content:
         application/json:
           schema:
@@ -96,6 +111,9 @@ delete:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - accountsScope:
+        - app.accounts
 patch:
   tags:
     - organizations
@@ -105,6 +123,12 @@ patch:
   parameters:
     - name: organization_id
       in: path
+      description: >
+        The organization's system-defined ID.
+
+
+        From the Edgio Console, navigate to the desired organization and then
+        click **Settings**. It is listed under **Organization ID**.
       required: true
       schema:
         type: string
@@ -117,7 +141,7 @@ patch:
     required: true
   responses:
     '200':
-      description: Updates an organization.
+      description: OK
       content:
         application/json:
           schema:
@@ -152,4 +176,7 @@ patch:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - accountsScope:
+        - app.accounts
   x-codegen-request-body-name: patchAccountsV01OrganizationsOrganizationId

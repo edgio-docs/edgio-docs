@@ -15,10 +15,7 @@ post:
     required: true
   responses:
     '202':
-      description: >
-        Deploys your configuration to a specific environment. This deployment
-        overwrites any existing origin configurations, hostnames, rules, and
-        experiments.
+      description: OK
       content:
         application/json:
           schema:
@@ -53,4 +50,7 @@ post:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - configScope:
+        - app.config
   x-codegen-request-body-name: postConfigV01Configs

@@ -16,10 +16,10 @@ properties:
     description: Links to related resources.
   id:
     type: string
-    description: Resource unique identifier.
+    description: The resource's system-defined ID.
   property_id:
     type: string
-    description: Property ID
+    description: The system-defined ID for the property associated with this environment.
   name:
     type: string
     description: The environment's name.

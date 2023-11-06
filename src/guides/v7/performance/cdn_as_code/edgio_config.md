@@ -162,12 +162,12 @@ Setting these properties can replicate the behavior of the production environmen
 
 ## cloudRuntime {/* cloudruntime */}
 
-The `cloudRuntime` key (string) determines which version of Node.js will run your app on our network. Supported values are:
+The `cloudRuntime` key (string) determines which version of Node.js will run your app on our platform. Supported values are:
 
 - `nodejs16.x`
 - `nodejs18.x`
 
-If the `cloudRuntime` key is not defined, then {{ PRODUCT }} will use the Node.js version of the process executing `{{ CLI_CMD(deploy) }}`. If an unsupported version is detected, then it will set your version to `nodejs18.x`. For instance:
+If the `cloudRuntime` key is not defined, then {{ PRODUCT }} will detect your project's Node.js version upon running `{{ CLI_CMD(deploy) }}`. If an unsupported version is detected, then it will set your version to `nodejs18.x`. For instance:
 
 ```bash
 # Here, the cloud runtime is set to nodejs16.x
@@ -185,7 +185,7 @@ $ {{ CLI_CMD(deploy) }}
 
 <Callout type="important">
 
-Unexpected behavior may occur when there is a mismatch between your project's Node.js version and the one that runs your app on our network. For example, if the `cloudRuntime` key is set to `nodejs16.x` while the project is bundled with Node.js 18, the project will build with Node.js 18 but run in a Node.js 16 environment. Ensure the `cloudRuntime` key aligns with your project's Node.js version to prevent these types of issues.
+Unexpected behavior may occur when there is a mismatch between your project's Node.js version and the one that runs your app on our platform. For example, if the `cloudRuntime` key is set to `nodejs16.x` while the project is bundled with Node.js 18, the project will build with Node.js 18 but run in a Node.js 16 environment. Ensure the `cloudRuntime` key aligns with your project's Node.js version to prevent these types of issues.
 
 </Callout>
 

@@ -4,9 +4,11 @@ title: Astro
 
 [Astro](https://astro.build/) is a modern static site builder. This guide walks you through deploying Astro sites to {{ PRODUCT }}.
 
-<Callout type="warning">
+<Callout type="important">
 
-  {{ PRODUCT }} only supports Astro 2.x. Astro 3.x is unsupported due to Node.js requirements and its usage will generate runtime errors.
+  Astro 2.x is supported in all versions of {{ PRODUCT }} v7. 
+
+  Astro 3.x requires {{ PRODUCT }} v7.4.0 or later which introduces Node.js 18 support.
 
 </Callout>
 

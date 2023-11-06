@@ -187,7 +187,7 @@ $ {{ CLI_CMD(deploy) }}
 
 <Callout type="important">
  
-  **Requires {{ PRODUCT }} v7.4.0 or later.** Unexpected behavior may occur when there is a mismatch between your project's Node.js version and the one that runs your app on our platform. For example, if the `cloudRuntime` key is set to `nodejs16.x` while the project is bundled with Node.js 18, the project will build with Node.js 18 but run in a Node.js 16 environment. Ensure the `cloudRuntime` key aligns with your project's Node.js version to prevent these types of issues.
+  Unexpected behavior may occur when there is a mismatch between your project's Node.js version and the one that runs your app on our platform. For example, if the `cloudRuntime` key is set to `nodejs16.x` while the project is bundled with Node.js 18, the project will build with Node.js 18 but run in a Node.js 16 environment. Ensure the `cloudRuntime` key aligns with your project's Node.js version to prevent these types of issues.
 
 </Callout>
 

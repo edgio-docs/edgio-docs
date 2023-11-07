@@ -17,6 +17,7 @@ export const StyledCodeWrap = styled.code`
   margin: 0;
   text-align: left;
   box-decoration-break: clone;
+  word-break: break-word;
 
   &.link {
     color: #2993e0;

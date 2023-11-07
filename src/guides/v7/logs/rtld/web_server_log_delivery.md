@@ -6,6 +6,7 @@ RTLD may automatically deliver compressed log data to a web server by submitting
 
 **Key information:**
 
+-   You may deliver logs to a web server that does not require authorization or that authorizes requests through the `Authorization` header. We support standard HTTP basic authentication or passing a custom token to this header.
 -   RTLD applies gzip compression to log data. Each HTTPS `POST` request includes a `Content-Encoding` header set to `gzip`.
 -   Log fields vary by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager)
 

@@ -346,15 +346,15 @@ Contact your operations team and ask them to add the IP addresses in [_Allowlist
 
 Troubleshoot delivery and performance issues using the following tools:
 
-| Tool                                                                                  | Description                                                                                                                                                                                           |
-| ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tool                                                                                         | Description                                                                                                                                                                                           |
+| -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer_tools_chrome_extension) | This Chrome extension describes each request associated with the current page. Use this information to gain insight into delivery issues, caching, and performance.                                   |
-| [Edge Insights](/guides/performance/observability/edge_insights)                                                       | Review detailed information about each request to your website in near real-time.                                                                                                                     |
-| [Visual Studio Code](#visual-studio-code)                                             | This tool allows you to add breakpoints within your code to troubleshoot delivery issues.                                                                                                             |
-| [Server Logs](#server-logs)                                                           | Review messages from your application.                                                                                                                                                                |
-| [Access Logs](access-logs)                                                            | Review historical information for requests to your website.                                                                                                                                           |
-| [curl](#curl)                                                                         | Issue requests to your website using curl. This tool allows you to eliminate browser-specific behavior when troubleshooting issues.                                                                   |
-| [Source Maps](#source-maps)                                                           | Review our source map to investigate runtime errors that occur during routing. Additionally, if you are using the Next or Nuxt framework, then you can enable a source map for your application code. |
+| [Edge Insights](/guides/performance/observability/edge_insights)                             | Review detailed information about each request to your website in near real-time.                                                                                                                     |
+| [Visual Studio Code](#visual-studio-code)                                                    | This tool allows you to add breakpoints within your code to troubleshoot delivery issues.                                                                                                             |
+| [Server Logs](#server-logs)                                                                  | Review messages from your application.                                                                                                                                                                |
+| [RTLD CDN](#rtld-cdn-log-data)                                                               | Review historical information for requests to your website.                                                                                                                                           |
+| [curl](#curl)                                                                                | Issue requests to your website using curl. This tool allows you to eliminate browser-specific behavior when troubleshooting issues.                                                                   |
+| [Source Maps](#source-maps)                                                                  | Review our source map to investigate runtime errors that occur during routing. Additionally, if you are using the Next or Nuxt framework, then you can enable a source map for your application code. |
 
 ## Visual Studio Code {/* visual-studio-code */}
 
@@ -411,11 +411,11 @@ We strongly recommend to proxy traffic from the edge whenever possible, as that 
 
 [Learn more about server logs.](/guides/logs/server_logs)
 
-## Access Logs {/* access-logs */}
+## RTLD CDN Log Data {/* rtld-cdn-log-data */}
 
-Access logs contain information about all requests, even those that never reach your application code (e.g. cache hits, static assets, requests routed to custom backends, edge redirects, and so on).
+RTLD CDN logs contain information about all requests, even those that never reach your application code (e.g. cache hits, static assets, requests routed to custom backends, edge redirects, and so on).
 
-[Learn more about access logs.](/guides/logs/access_logs)
+[Learn more about RTLD CDN.](/guides/logs/rtld)
 
 ## curl {/* confirming-behavior-with-curl */}
 

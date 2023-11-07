@@ -52,9 +52,11 @@ The following headers are served for use by {{ PRODUCT }}. You may not modify th
 -   warning 
 -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
-### Access Logs {/*access-logs*/}
+### RTLD Log Data {/*rtld-log-data*/}
 
-| Value | Limit     | Description                                                                                         |
-| ----- | --------- | --------------------------------------------------------------------------------------------------- |
-| Size  | Unlimited | All access logs will always be [logged](/guides/logs/access_logs).                          |
-| Time  | 2 hours   | The minimum time that {{ PRODUCT }} guarantees that access logs will be available for reading. |
+[RTLD](/guides/logs/rtld) limitations are described below.
+
+| Value | Limit     | Description                                                                                                                                                                                                       |
+| ----- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Time  | 3 days    | If our service is unable to deliver log data, then we will store it for up to 3 days and deliver it when communication resumes. If we cannot deliver log data within 3 days, then it will be permanently deleted. |
+| Size  | Unlimited |                                                                                                                                                                                                                   |

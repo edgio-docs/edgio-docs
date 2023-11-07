@@ -17,10 +17,14 @@ export const StyledCodeWrap = styled.code`
   margin: 0;
   text-align: left;
   box-decoration-break: clone;
-  word-break: break-word;
+  word-break: normal;
 
   &.link {
     color: #2993e0;
+  }
+  
+  @media only screen and (max-width: 625px)
+    word-break: break-word;
   }
 `;
 

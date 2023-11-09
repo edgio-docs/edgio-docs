@@ -304,13 +304,13 @@ Perform the following common tasks from within the **Filters** section in the le
 
 ## Log Data {/*log-data*/}
 
-Log data provides contextual information about a request that allows you to gain deeper behavioral insight into threat detection and CDN usage. View the log data associated with the current report from within the Logs section.
+Log data, which is reported within the **Logs** section, provides contextual information about a request that allows you to gain deeper behavioral insight into threat detection and CDN usage. 
 
 **Key information:**
 
--   Log entries are returned as paginated results. By default, we provide 10 log entries per page. You may increase this value up to 1,000 through the Logs per page option.
+-   Log entries are returned as paginated results. By default, we provide 10 log entries per page. You may increase this value up to 1,000 through the **Logs per page** option.
 -   View a specific log entry by clicking on it.
--   View log data for the current page by clicking on the <Image inline src="/images/v7/icons/json.png" alt="JSON icon" /> icon. Upon clicking this icon, Edge Insights displays the current page's log data in JSON format within a new tab.
+-   View the current page's log data by clicking on the <Image inline src="/images/v7/icons/json.png" alt="JSON icon" /> icon. Upon clicking this icon, Edge Insights opens a new tab that contains a JSON object that represents the current page's log data.
 -   Edge Insights restricts log retrieval to 10,000 log entries. If the current report consists of more log entries, then you may only retrieve log data for 10,000 of the most recent requests. This limit solely applies to log retrieval. Your report's time chart and **Top Results** charts display all available data without regard to this limit.
 
     <Callout type="info">

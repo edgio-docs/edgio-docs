@@ -21,6 +21,7 @@
 |Customer config version <a id="access-logs-customer-config-version" />|Identifies the version of the CDN configuration that was in effect when this request was processed. Updating your CDN configuration increments your CDN configuration version.|
 |Direct Response <a id="access-logs-direct-response" />|Reserved for future use.|
 |EC Tag <a id="access-logs-ec-tag" />|Reserved for future use.|
+|Edge Function Customer Metric #| Indicates the value associated with a metric measured within an edge function by [context.metrics](/guides/edge-functions#metrics-functions). |
 |Epoch Time <a id="access-logs-epoch-time" />|Indicates the timestamp, in Unix time (seconds), at which our CDN received the request.|
 |Event ID <a id="access-logs-event-id" />|Indicates the unique ID assigned to this request.|
 |File extension <a id="access-logs-file-extension" />|Indicates the request's file extension. <br /><br />**Example:** `.js`|

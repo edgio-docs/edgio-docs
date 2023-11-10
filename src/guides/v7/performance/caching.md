@@ -16,7 +16,7 @@ Caching creates a copy of the requested content within our edge and Origin Shiel
 
 ## Environments and Caching {/* environments-and-caching */}
 
-Each environment provides a separate edge cache for the most recent deployment. Although older deployments do not support edge caching, you may re-enable it by [rolling back to that version](/guides/basics/deployments#versioning).
+Each environment has a separate edge cache. The **Caching** page's **Preserve cache between deployments** option determines whether this edge cache persists between deployments. 
 
 ## Edge and Origin Shield Caching {/*edge-and-shield-caching*/}
 

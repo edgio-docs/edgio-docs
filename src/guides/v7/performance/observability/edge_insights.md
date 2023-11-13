@@ -265,6 +265,7 @@ Filtering is critical for gaining deeper insights into your data.
 
     ![Filters](/images/v7/performance/edge-insights-filters.png)
 
+#### Common Filtering Tasks {/*common-filtering-tasks*/}
 
 Perform the following common tasks from within the **Filters** section in the left-hand pane:
 
@@ -272,7 +273,7 @@ Perform the following common tasks from within the **Filters** section in the le
 
     ![Disabled filter](/images/v7/performance/edge-insights-disabled-filter.png)
 
--   Modify a filter by clicking the <Image inline src="/images/v7/icons/pencil.png" alt="Edit icon" /> icon next to it.
+-   Modify a filter by clicking the <Image inline src="/images/v7/icons/pencil.png" alt="Edit icon" /> icon next to it. <a id="manual-filtering" />
 -   Manually add a filter by performing the following steps:
     
     1.  Click on **+ Add Filter**.

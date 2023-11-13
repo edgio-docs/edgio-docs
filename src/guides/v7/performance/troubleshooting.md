@@ -79,7 +79,7 @@ Edge Insights provides near real-time data for an environment's traffic over the
     -   Review Edge Function performance and custom metrics defined through `context.metrics`. 
 -   Review log data to troubleshoot an issue. 
 
-    For example, if you are able to reproduce an issue on your local machine and require more information than is available through {{ CHROME_EXTENSION }}, then you may view log data for these requests from within Edge Insights. One method for analyzing these requests is to: 
+    For example, if you are able to reproduce an issue on your local machine and require more information than is available through the {{ CHROME_EXTENSION }}, then you may view log data for these requests from within Edge Insights. One method for analyzing these requests is to: 
 
     1.   Configure a catch-all rule to set a response header to the request's ID through the `%{http_x_ec_uuid}` feature variable. 
          ![Add Response Header feature](/images/v7/performance/rules-add-response-header-x-request-id.png)
@@ -88,6 +88,8 @@ Edge Insights provides near real-time data for an environment's traffic over the
          ![Chrome Developer Tools - Headers](/images/v7/performance/chrome-dev-tools-x-request-id.png)
     4.   [Filter Edge Insights](/guides/performance/observability/edge_insights#manual-filtering) by that ID (i.e., `Event ID = <EVENT ID>`). 
          ![Filtering by Event ID](/images/v7/performance/edge-insights-filters-event-id.png)
+    5.   From the **Logs** section, click on the log entry.
+         ![Log entry](/images/v7/performance/edge-insights-logs.png)
 
 ## Caching {/*caching*/}
 

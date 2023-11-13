@@ -155,9 +155,11 @@ Common response headers are described below.
     [Learn more.](/guides/performance/caching#why-is-my-response-not-being-cached)
 -->
 -   **{{ HEADER_PREFIX }}-components:** Contains {{ PRODUCT }} cloud information that is primarily meant for internal use when troubleshooting issues.
--   **{{ HEADER_PREFIX }}-hit-request-id:** For responses served from cache, this header indicates the unique ID of the request that was cached on our CDN.
     <a id="-mr" />
-	
+<!--
+-   **{{ HEADER_PREFIX }}-hit-request-id:** For responses served from cache, this header indicates the unique ID of the request that was cached on our CDN.
+-->
+
 -   **{{ HEADER_PREFIX }}-mr:** Identifies each rule that was applied to a request. 
 
     **Syntax:** `{{ HEADER_PREFIX }}-mr: <ENVIRONMENT #>:<RULE #>[;<ENVIRONMENT #>:<RULE #>;<ENVIRONMENT #>:<RULE #>]`
@@ -186,13 +188,15 @@ Common response headers are described below.
     **Example:** `{{ HEADER_PREFIX }}-p: 1`
 
 -   **{{ HEADER_PREFIX }}-platform-aws-account:** Identifies the AWS account corresponding to the cloud worker that processed a request.
+<!--
 -   **{{ HEADER_PREFIX }}-request-id:** Indicates the request's unique ID.
--   **{{ HEADER_PREFIX }}-status]:** Contains a comma-delimited list of HTTP status codes for each cloud component that processed the request.
+-->
+-   **{{ HEADER_PREFIX }}-status:** Contains a comma-delimited list of HTTP status codes for each cloud component that processed the request.
     -   **p**: Cloud load balancer
     -   **w**: Cloud worker
 
     **Example:** `{{ HEADER_PREFIX }}-status: p=200,w=200`
-	
+
 -   **{{ HEADER_PREFIX }}-surrogate-key:** Contains a space-delimited list of surrogate keys (cache tags). <!-- surrogate keys can be injected when needed into your backend responses -->
 
     [Learn more.](/guides/performance/caching/purging#surrogate-keys-cache-tags)
@@ -234,12 +238,12 @@ The debug cache response headers provide additional information about the cache 
     -   **x-ec-check-cacheable:** [Cacheable](#cacheable-response-header)
     -   **x-ec-cache-key:** [Cache key](#cache-key-response-header)
     -   **x-ec-cache-state:** [Cache state](#cache-state-response-header)
-	
+
     <Callout type="tip">
 
       Once you have enabled the `Debug Header` feature,  use the [Edgio Developer Tools Chrome extension](https://chrome.google.com/webstore/detail/edgio-developer-tools/ieehikdcdpeailgpfdbafhnbfhpdgefm) to automatically add all debug cache response headers to traffic served by {{ PRODUCT }}. View these response headers by inspecting network activity through [Chrome DevTools](https://developer.chrome.com/docs/devtools/).
-	  
-	  Alternatively, if you are using the latest version of the {{ PRODUCT }} CLI (v7.0.22+), then [{{ FULL_CLI_NAME }} curl](/guides/develop/cli#curl) will also automatically add all debug cache headers to the response.
+
+      Alternatively, if you are using the latest version of the {{ PRODUCT }} CLI (v7.0.22+), then [{{ FULL_CLI_NAME }} curl](/guides/develop/cli#curl) will also automatically add all debug cache headers to the response.
 
     </Callout>
 

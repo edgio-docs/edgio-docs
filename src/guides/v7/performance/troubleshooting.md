@@ -76,7 +76,6 @@ Edge Insights provides near real-time data for an environment's traffic over the
     -   Identify caching trends.
         1.  From the **Top Results** section, verify that `Cache Status` has been selected for one of the pie charts. 
         2.  From the **Timelines** section, click the **Cache Status** source.
-    -   Review Edge Function performance and custom metrics defined through `context.metrics`. 
 -   Review log data to troubleshoot an issue. 
 
     For example, if you are able to reproduce an issue on your local machine and require more information than is available through the {{ CHROME_EXTENSION }}, then you may view log data for these requests from within Edge Insights. One method for analyzing these requests is to: 
@@ -288,7 +287,7 @@ To prevent this scenario, you must configure your server with allowlisted {{ PR
 
 [Learn more.](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses)
 
-### Procedure {/* procedure */}
+#### Procedure {/* procedure */}
 
 When you are testing a web page, you might encounter 539 status code errors. You might also see the errors in logs.
 
@@ -376,6 +375,17 @@ Troubleshoot your code to find and fix the error.
 
 If the command succeeds and finishes quickly, it is probably an allowlist error.
 Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses) to your server's IP allowlist.
+
+## Edge Functions {/*edge-functions*/}
+
+Analyze the performance of your edge function by reviewing performance and custom metrics from within Edge Insights. 
+
+1.  [Load the desired environment-specific Edge Insights page.](/guides/performance/observability/edge_insights#basic-usage)
+2.  Verify that the **Data Source** option is set to `Access Logs`.
+3.  Scroll down to the **Top Results** section.
+4.  Set one of the pie charts to the desired Edge Functions metric. These metrics start with `Edge Function`. 
+5.  From the **Timelines** section, click the source corresponding to the metric selected in the previous step.
+6.  Analyze trends.
 
 ## Troubleshooting Tools {/*troubleshooting-tools*/}
 

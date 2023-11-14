@@ -237,7 +237,7 @@ Troubleshoot this status code by performing the following steps:
     2.  Scroll down to the **Logs** section and view a request. 
     3.  Check whether the request contains `proxy_hard_error` set to `HARD_ERR_502_SSL_CONNECT_ERROR`. 
     
-    If you see this error, then you need to update the SNI hint to a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN).
+    If you see this error, then you need to enable your origin configuration's **Use SNI** option and set the SNI hint to a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN).
 
 -   If the client's `Host` header does not match a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN), then you will need to update the **Override Host Header** option.
 -   If you are using a self-signed certificate, then you must enable the **Allow Self-Signed Certs** option on the desired origin configuration.

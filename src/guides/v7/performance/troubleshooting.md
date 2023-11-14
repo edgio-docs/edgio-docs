@@ -47,7 +47,7 @@ Verify that the desired set of rules are being applied to the request by perform
     
 **Key information:**
 
--   Click on the `Show Rule Numbers` link to display rule numbers next to each rule.    
+-   Click on the `Show Rule Numbers` link to display rule numbers next to each rule.
 -   Rules use zero-based numbering.
 -   Use the above procedure even if you are using CDN-as-code. 
     
@@ -69,27 +69,29 @@ Edge Insights provides near real-time data for an environment's traffic over the
         Once you have identified a questionable traffic spike, determine whether it is legitimate traffic by reviewing key metrics, such as the country of origin, URL path, and query strings.
 
     -   Identify sudden spikes in 4xx and 5xx traffic. 
-        1.   From the **Top Results** section, verify that `HTTP Status Code` has been selected for one of the pie charts. 
-        2.   From the **Timelines** section, click the **HTTP Status Code** source.
-             ![Timelines - HTTP Status Code source](/images/v7/performance/edge-insights-source-http-status-code.png)
-        3.   Once you have identified a spike, [analyze the corresponding log data](#status-codes) to gain insight into a specific status code.
+        1.  From the **Top Results** section, verify that `HTTP Status Code` has been selected for one of the pie charts. 
+        2.  From the **Timelines** section, click the **HTTP Status Code** source.
+            ![Timelines - HTTP Status Code source](/images/v7/performance/edge-insights-source-http-status-code.png)
+        3.  Once you have identified a spike, [analyze the corresponding log data](#status-codes) to gain insight into a specific status code.
     -   Identify caching trends.
-        1.   From the **Top Results** section, verify that `Cache Status` has been selected for one of the pie charts. 
-        2.   From the **Timelines** section, click the **Cache Status** source.
+        1.  From the **Top Results** section, verify that `Cache Status` has been selected for one of the pie charts. 
+        2.  From the **Timelines** section, click the **Cache Status** source.
     -   Review Edge Function performance and custom metrics defined through `context.metrics`. 
 -   Review log data to troubleshoot an issue. 
 
     For example, if you are able to reproduce an issue on your local machine and require more information than is available through the {{ CHROME_EXTENSION }}, then you may view log data for these requests from within Edge Insights. One method for analyzing these requests is to: 
 
-    1.   Configure a catch-all rule to set a response header to the request's ID through the `%{http_x_ec_uuid}` feature variable. 
-         ![Add Response Header feature](/images/v7/performance/rules-add-response-header-x-request-id.png)
-    2.   Open your browser's developer tools and then issue a request.
-    3.   Inspect the request to find out the request's ID.
-         ![Chrome Developer Tools - Headers](/images/v7/performance/chrome-dev-tools-x-request-id.png)
-    4.   [Filter Edge Insights](/guides/performance/observability/edge_insights#manual-filtering) by that ID (i.e., `Event ID = <EVENT ID>`). 
-         ![Filtering by Event ID](/images/v7/performance/edge-insights-filters-event-id.png)
-    5.   From the **Logs** section, click on the log entry.
-         ![Log entry](/images/v7/performance/edge-insights-logs.png)
+    1.  Configure a catch-all rule to set a response header to the request's ID through the `%{http_x_ec_uuid}` feature variable. 
+        ![Add Response Header feature](/images/v7/performance/rules-add-response-header-x-request-id.png)
+    2.  Find out the ID corresponding to a request issued from your local machine. 
+        1.  From the desired browser, open developer tools. 
+        2.  From the browser, issue a request.
+        3.  From within developer tools, inspect the request to find out the request's ID.
+            ![Chrome Developer Tools - Headers](/images/v7/performance/chrome-dev-tools-x-request-id.png)
+    3.  [Filter Edge Insights](/guides/performance/observability/edge_insights#manual-filtering) by that ID (i.e., `Event ID = <EVENT ID>`). 
+        ![Filtering by Event ID](/images/v7/performance/edge-insights-filters-event-id.png)
+    5.  From the **Logs** section, click on the log entry to view the log fields associated with the request.
+        ![Log entry](/images/v7/performance/edge-insights-logs.png)
 
 ## Caching {/*caching*/}
 

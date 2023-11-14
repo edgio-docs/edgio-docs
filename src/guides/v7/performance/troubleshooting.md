@@ -378,14 +378,16 @@ Contact your operations team and ask them to add the IP addresses in [_Allowlist
 
 ## Edge Functions {/*edge-functions*/}
 
-Analyze the performance of your edge function by reviewing performance and custom metrics from within Edge Insights. 
+Analyze the performance of your edge function(s) by reviewing performance and custom metrics from within Edge Insights. 
 
 1.  [Load the desired environment-specific Edge Insights page.](/guides/performance/observability/edge_insights#basic-usage)
 2.  Verify that the **Data Source** option is set to `Access Logs`.
 3.  Scroll down to the **Top Results** section.
 4.  Set one of the pie charts to the desired Edge Functions metric. These metrics start with `Edge Function`. 
 5.  From the **Timelines** section, click the source corresponding to the metric selected in the previous step.
-6.  Analyze trends.
+6.  Optional. Filter the report to a specific edge function (i.e., `Edge Function Name = <edge_function PROPERTY>`).
+    ![Filtering by edge function](/images/v7/performance/edge-insights-filters-event-id.png)
+7.  Analyze trends.
 
 ## Troubleshooting Tools {/*troubleshooting-tools*/}
 

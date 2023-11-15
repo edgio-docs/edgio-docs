@@ -110,7 +110,7 @@ Common response headers are described below.
 
     Definitions for the above terms are provided below.
 
-    -   **CACHE STATUS CODE:** Indicates the cache status code for the response served to the client.
+    -   **CACHE STATUS CODE:** Indicates the [cache status code](/guides/performance/caching/cache_status_codes) for the response served to the client.
     -   **POP:** Indicates the POP that served the response.
     -   **COUNTRY:** Indicates the two-letter code for the POP's country.
 
@@ -265,14 +265,7 @@ The following response headers identify a server and how it handled the response
 
 The terms used in the above response header syntax are defined below:
 
--   **CACHE STATUS CODE:** Indicates how the requested content was handled by the CDN. This is represented through a cache status code.
-
-    <Callout type="info">
-
-      The `TCP_DENIED` status code may be reported instead of `NONE` when an unauthorized request is denied due to Token-Based Authentication. However, the `NONE` status code will continue to be used when viewing reports or raw log data.
-
-    </Callout>
-
+-   **CACHE STATUS CODE:** Indicates how the requested content was handled by the CDN. This is represented through a [cache status code](/guides/performance/caching/cache_status_codes).
 -   **POP:** Indicates the three-letter abbreviation for the POP that handled the request.
     
 #### Cacheable Response Header {/*cacheable-response-header*/}

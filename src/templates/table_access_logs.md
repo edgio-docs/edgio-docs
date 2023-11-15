@@ -28,9 +28,7 @@
 |Client Region Name <a id="access-logs-client-region-name" />                          |Indicates the name of the region from which the request originated. <br /><br />**Example:** `Sao Paulo`|
 |Client SSL Ciphers <a id="access-logs-client-ssl-ciphers" />                          |Indicates the set of cipher suites supported by the client that submitted the request.|
 |Client VIP <a id="access-logs-client-vip" />                                          |Reserved for future use.|
-<!--|Common Header <a id="access-logs-common-header" />                                |Reserved for future use.|-->
 |Connection ID <a id="access-logs-connection-id" />                                    |Reserved for future use.|
-<!--|Content Range <a id="access-logs-content-range" />                                |Indicates the location of a ranged request's payload within the full message. This information is defined within the `Content-Range` header. <br /><br />**Example:** `bytes 0-4095/8388608`|-->
 |Country Name <a id="access-logs-country-name" />                                      |Identifies the country from which the request originated by its name.|
 |Crypt Id                                                                              |Reserved for future use.|
 |Customer config version <a id="access-logs-customer-config-version" />                |Identifies the version of the CDN configuration that was in effect when this request was processed. Updating your CDN configuration increments your CDN configuration version.|
@@ -65,7 +63,6 @@
 |JA3 MD5 Hash                                                                          |Indicates the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request.|
 |LC <a id="access-logs-lc" />                                                          |Reserved for future use.|
 |Origin Name                                                                           |Indicates the name of the origin configuration that corresponds to this request. |
-<!--|Origin URL <a id="access-logs-origin-url" />                                      |Indicates the request's URL path and query string. This URL path starts directly after the content access point. It excludes the protocol, hostname, and content access point. <br /><br />**Example:** `/resources/script.js`|-->
 |Partner ID                                                                            |Indicates the system-defined ID of the partner that owns this account. |
 |Pipeline Time <a id="access-logs-pipeline-time" />                                    |Indicates the number of seconds between when the request was received by our network and ingestion.|
 |Platform <a id="access-logs-platform" />                                              |Returns `cache`.|
@@ -78,7 +75,6 @@
 |Proxy Timing Finished To End                                                          |Reserved for future use. |
 |Proxy Type                                                                            | Indicates whether the request was proxied to an `ORIGIN` or `MIDGRESS` (e.g., Origin Shield). Returns `NONE` if the request was not proxied.|
 |Query String <a id="access-logs-query-string" />                                      |Indicates the request's query string.|
-<!--|QUIC version <a id="access-logs-quic-version" />                                  |Indicates the request's QUIC version.|-->
 |Range <a id="access-logs-range" />                                                    |Indicates the requested range of bytes as defined by the `Range` request header. <br /><br />**Example:** `bytes=0-12022`|
 |Real Remote Host                                                                      |Reserved for future use.|
 |Receiving Host <a id="access-logs-receiving-host" />                                  |Identifies the host that received the request.|
@@ -87,11 +83,9 @@
 |Response Body Bytes Out <a id="access-logs-bytes-out-without-header" />               |Indicates the number of bytes in the payload sent from the edge server to the client. Returns `0` for blocked requests. See [Bytes Out](#access-logs-bytes-out) to find out the size of the entire response. |
 |Rewritten URL Path                                                                    |Indicates the request's URL as submitted by the client. |
 |Server Name <a id="access-logs-server-name" />                                        |Indicates the name of the edge server that processed the request.|
-<!--|Server Port <a id="access-logs-server-port" />                                    |Indicates the port number on an edge server to which the client directed a request. Valid values are: <ul><li>**80:** HTTP request</li><li>**443:** HTTPS request</li></ul>|-->
 |Session ID                                                                            |Reserved for future use. See the [Event ID](#access-logs-event-id) log field to find out a request's ID. |
 |Site ID                                                                               |Indicates system-defined ID for the property associated with this request. |
 |SSL Cipher Name <a id="access-logs-ssl-cipher-name" />                                |Indicates the cipher suite used in the handshake between the client that submitted the request and one of our servers. <br /><br />**Example:** `TLS_AES_256_GCM_SHA384`|
-<!--|SSL Client Cipher Name <a id="access-logs-ssl-client-cipher-name" />              |Reserved for future use.|-->
 |SSL Client Signature Algorithms <a id="access-logs-ssl-client-signature-algorithms" />|Indicates the set of TLS signature algorithms supported by the client that submitted the request.|
 |SSL Protocol <a id="access-logs-ssl-protocol" />                                      |Indicates the TLS protocol version used for the communication between the client and our network. <br /><br />**Example:** `TLSv1.3`|
 |TCP Congestion Algorithm <a id="access-logs-tcp-congestion-algorithm" />              |Indicates the network congestion avoidance algorithm for TCP used to process the request. <br /><br />**Example:** `cubic`|
@@ -107,3 +101,11 @@
 |Write Time <a id="access-logs-write-time-used" />                                     |Indicates the length of time, in seconds, that it took an edge server to write the response. This metric measures the duration between when an edge server starts writing the response and when it finishes sending the response to the client. Our servers forward data as it is read. This means that the `read_time` and `write_time` reported for an asset spans over an overlapping time period. This field does not take into account network time. <br /><br />**Example:** `2.9999e-05`|
 |X Midgress <a id="access-logs-x-midgress" />                                          |Indicates whether the request was proxied through an additional CDN server (e.g., edge server to Origin Shield server). This field reports `__na__` for requests that did not have midgress traffic.|
 |X-Forwarded-For <a id="access-logs-forwarded-for-ip" />                               |Indicates the client's IP address as determined by the `X-Forwarded-For` request header.|
+<!--
+|Common Header <a id="access-logs-common-header" />                                |Reserved for future use.|
+|Content Range <a id="access-logs-content-range" />                                |Indicates the location of a ranged request's payload within the full message. This information is defined within the `Content-Range` header. <br /><br />**Example:** `bytes 0-4095/8388608`|
+|Origin URL <a id="access-logs-origin-url" />                                      |Indicates the request's URL path and query string. This URL path starts directly after the content access point. It excludes the protocol, hostname, and content access point. <br /><br />**Example:** `/resources/script.js`|
+|QUIC version <a id="access-logs-quic-version" />                                  |Indicates the request's QUIC version.|
+|Server Port <a id="access-logs-server-port" />                                    |Indicates the port number on an edge server to which the client directed a request. Valid values are: <ul><li>**80:** HTTP request</li><li>**443:** HTTPS request</li></ul>|
+|SSL Client Cipher Name <a id="access-logs-ssl-client-cipher-name" />              |Reserved for future use.|
+-->

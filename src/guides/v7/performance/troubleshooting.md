@@ -29,7 +29,7 @@ Delays in configuration propagation may cause {{ PRODUCT }} to serve some reques
     
 For example, the {{ CHROME_EXTENSION }}'s **Environment** column should report `v3` for requests to a website powered by the following production environment:
     
-![Sample deployments](/images/v7/performance/deployments-cropped.png)
+![Sample deployments](/images/v7/performance/deployments-cropped.png?width=450)
 
 #### Applied Rules {/*applied-rules*/}
 
@@ -81,7 +81,7 @@ Edge Insights provides near real-time data for an environment's traffic over the
     For example, if you are able to reproduce an issue on your local machine and require more information than is available through the {{ CHROME_EXTENSION }}, then you may view log data for these requests from within Edge Insights. One method for analyzing these requests is to: 
 
     1.  Configure a catch-all rule to set a response header to the request's ID through the `%{http_x_ec_uuid}` feature variable. 
-        ![Add Response Header feature](/images/v7/performance/rules-add-response-header-x-request-id.png)
+        ![Add Response Header feature](/images/v7/performance/rules-add-response-header-x-request-id.png?width=450)
     2.  Find out the ID corresponding to a request issued from your local machine. 
         1.  From the desired browser, open developer tools. 
         2.  From the browser, issue a request.
@@ -136,7 +136,7 @@ Review the following items to find out why a request resulted in a cache miss.
 
     -   **Rules:** Create or modify a rule that includes the  [Cache Key](/guides/performance/rules/features#cache-key) feature. Configure this feature's **Query Parameters** option to either exclude all query string parameters or to only include specific parameters.
     
-        ![Cache Key feature set to exclude all query string parameters](/images/v7/performance/cache-key-exclude-all-qs.png)
+        ![Cache Key feature set to exclude all query string parameters](/images/v7/performance/cache-key-exclude-all-qs.png?width=450)
 
     -   **CDN-as-Code:**
 
@@ -386,7 +386,7 @@ Analyze the performance of your edge function(s) by reviewing performance and cu
 4.  Set one of the pie charts to the desired Edge Functions metric. These metrics start with `Edge Function`. 
 5.  From the **Timelines** section, click the source corresponding to the metric selected in the previous step.
 6.  Optional. Filter the report to a specific edge function (i.e., `Edge Function Name = <edge_function PROPERTY>`).
-    ![Filtering by edge function](/images/v7/performance/edge-insights-filters-event-id.png)
+    ![Filtering by edge function](/images/v7/performance/edge-insights-filters-ef.png)
 7.  Analyze trends.
 
 ## Troubleshooting Tools {/*troubleshooting-tools*/}

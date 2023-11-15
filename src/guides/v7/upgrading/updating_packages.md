@@ -27,7 +27,6 @@ After updating your project, compare the dependency versions in your `package.js
 "devDependencies": {
   "@edgio/cli": "^7.2.5",
   "@edgio/core": "^7.2.5",
-  "@edgio/devtools": "^7.2.5",
   "@edgio/next": "^7.2.5",
   "@edgio/prefetch": "^7.2.5",
   "@edgio/react": "^7.2.5",

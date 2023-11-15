@@ -2,6 +2,13 @@
 title: Devtools
 ---
 
+<Callout type="warning">
+
+Package `@edgio/devtools` will be removed in the next major {{ PRODUCT }} version.
+Please use [Google Chrome extension](/guides/performance/observability/developer_tools_chrome_extension) as an alternative.
+
+</Callout>
+
 {{ PRODUCT }} Devtools is a widget that helps developers understand how their site interacts with {{ PRODUCT }}, including:
 
 - Edge and browser caching

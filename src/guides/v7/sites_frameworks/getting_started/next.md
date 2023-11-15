@@ -121,6 +121,14 @@ const MyApp = ({Component, pageProps}) => {
 };
 ```
 
+<Callout type="warning">
+
+Package `@edgio/devtools` will be removed in the next major {{ PRODUCT }} version.
+Please use [Google Chrome extension](/guides/performance/observability/developer_tools_chrome_extension) as an alternative.
+
+</Callout>
+
+
 ## Running Locally {/* running-locally */}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:

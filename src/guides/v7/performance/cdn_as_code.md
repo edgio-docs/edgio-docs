@@ -59,7 +59,7 @@ Use the {{ PRODUCT }} CLI to initialize your property. If you have already perfo
       ✔ What is the hostname or IP address of the origin site that you will host on Edgio? … my-custom-property.com
       ✔ Should we create a new directory for your Edgio app or use the current directory? › Create a new directory
       ✔ Which package manager would you like to use? › npm
-      ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch, @edgio/devtools... done.
+      ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch... done.
       > edgio.config.js not found, creating...
       > routes.js not found, creating...
       🔑 You are not logged in.
@@ -93,7 +93,7 @@ Use the {{ PRODUCT }} CLI to initialize your property. If you have already perfo
       ✔ What is the hostname or IP address of the origin site that you will host on Edgio? … my-custom-property.com
       ✔ Should we create a new directory for your Edgio app or use the current directory? › Create a new directory
       ✔ Which package manager would you like to use? › npm
-      ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch, @edgio/devtools... done.
+      ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch... done.
       > edgio.config.js not found, creating...
       > routes.js not found, creating...
       🔑 You are not logged in.
@@ -516,7 +516,7 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
 - Transforming the response through [Cloud Functions](/guides/performance/serverless_compute)
 - [Removing response headers](/guides/performance/cdn_as_code/route_features#altering-the-response)
 - [Normalizing the cache key](/guides/performance/caching#customizing-the-cache-key)
-- Generating performance insights through [DevTools](/guides/performance/observability/devtools)
+- Generating performance insights through [DevTools](/guides/performance/observability/developer_tools_chrome_extension)
 - Tracking [Core Web Vitals](/guides/performance/observability/real_user_monitoring) through real user monitoring (RUM).
 
 <ExampleButtons

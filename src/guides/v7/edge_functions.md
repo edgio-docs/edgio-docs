@@ -292,7 +292,7 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-### Caching fetch() Requests {/* caching-fetch-requests */}
+## Caching fetch() Requests {/* caching-fetch-requests */}
 
 Caching fetch requests within your edge function can reduce the load on your origins and deliver content faster to your users. It may also mitigate timeout issues due to an edge function exceeding the [walltime limit](#limitations).
 
@@ -314,7 +314,7 @@ const resp = await fetch('https://your-server.com/some-path', {
 });
 ```
 
-#### Caching Options {/* caching-options */}
+### Caching Options {/* caching-options */}
 
 - `max_age`: Specifies the maximum amount of time that a fetched response is considered fresh. This value is set as a duration string, which is a number followed by a time unit character. Supported time unit characters are `d` for days, `h` for hours, `m` for minutes, and `s` for seconds. For example, `"1h"` represents 1 hour. This setting overrides the `max-age` directive in the `Cache-Control` header of the origin response if present.
 - `stale_while_revalidate`: Specifies the amount of time a stale response is served while a revalidation request is made in the background. This value is also set as a duration string similar to `max_age`. This setting overrides the `stale-while-revalidate` directive in the `Cache-Control` header of the origin response if present.
@@ -322,6 +322,19 @@ const resp = await fetch('https://your-server.com/some-path', {
 - `bypass_cache`: A boolean value that, when set to `true`, bypasses the cache for the fetch request, ensuring the request is sent directly to the origin and the response is not stored in the cache.
 
 These caching options provide you with granular control over how your fetch requests are cached and served, allowing you to optimize the performance of your edge function.
+
+### Cache Behavior
+
+Edge function subrequests are cached at the edge for 5 minutes by default. This means that if you make a fetch request to the same URL within 5 minutes, the response will be served from the cache instead of going to the origin. This behavior can be overridden by specifying the `bypass_cache` option. Cache directives from the origin response will also be respected as follows:
+
+- If the origin responds with a `Cache-Control` HTTP header containing valid directives, these directives will be respected. For example:
+  - With `Cache-Control: max-age=60, s-maxage=900`, the fetch request will be cached for 15 minutes, considering `s-maxage=900`.
+  - With `Cache-Control: max-age=600`, the response will be cached for 10 minutes, considering `max-age=600`.
+  - With `Cache-Control: no-store, no-cache`, the response will not be cached.
+- If no `Cache-Control` header is present, the CDN will look at other headers and information to determine if the request should be cached. These parameters include the HTTP method, response status code, `Date` header, `Last-Modified` header, etc.
+- If the CDN determines that the response can be cached, it will be cached for 5 minutes on the edge.
+- If the response is cached based on the above logic, subsequent fetch requests will fetch from the cache, and only go to the origin if the response has expired or doesn't exist in the cache.
+
 
 ## Testing Locally {/* testing-locally */}
 

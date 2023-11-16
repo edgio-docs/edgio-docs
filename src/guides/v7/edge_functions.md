@@ -294,7 +294,7 @@ export async function handleHttpRequest(request, context) {
 
 ### Caching fetch() Requests {/* caching-fetch-requests */}
 
-Caching fetch requests within your edge function can reduce the load on your origins and deliver content faster to your users. It's important to be aware of [time limitations](#limitations) of edge function which can also be mitigated with caching.
+Caching fetch requests within your edge function can reduce the load on your origins and deliver content faster to your users. It may also mitigate timeout issues due to an edge function exceeding the [walltime limit](#limitations).
 
 In this section, we'll cover how to use the caching options as part of the `fetch()` method. These options are specified per fetch request and are completely separate from the caching options specified in {{ROUTES_FILE}}.
 

@@ -4,12 +4,6 @@ title: Install Node.js and npm
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} supports Node.js 16 and 18 runtime versions.
 
-<Callout type="important">
-
-{{ PRODUCT }} v7.4.0 or later is required to support Node.js 18.
-
-</Callout>
-
 Although you may use a higher version of Node.js, your app will run using the appropriate version of Node.js when deployed to {{ PRODUCT }}.
 
 - {{ PRODUCT }} v7.4.0 or later is compatible with Node.js 16 and 18.

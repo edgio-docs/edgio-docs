@@ -41,7 +41,7 @@
 |Edge Function Name                                                                    |Identifies the edge function by value assigned to the `edge_function` property. |
 |Edge Function Sync Time                                                               |Indicates the edge function's CPU time in microseconds.|
 |Edge Function Total Time                                                              |Indicates the total time, in microseconds, that this edge function ran.  |
-|Edge Function Wait Time                                                               |Indicates the amount of time, in microseconds, that this edge function waited for a response from an origin. |
+|Edge Function Wait Time                                                               |Indicates the amount of time, in microseconds, that this edge function waited for asynchronous events (e.g., waiting for a response).|
 |Edge Server IP Address <a id="access-logs-server-address" />                          |Indicates the IP address for the edge server that processed the request.|
 |Edge Server Port                                                                      |Identifies the port on the edge server that received the request.|
 |Environment ID                                                                        |Identifies the environment through which this request was served through its system-defined ID.  |

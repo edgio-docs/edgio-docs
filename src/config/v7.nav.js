@@ -123,6 +123,14 @@ const nav = {
               title: 'Cache Key',
               path: 'performance/caching/cache_key',
             },
+            {
+              title: '',
+              path: '',
+            },
+            {
+              title: 'Cache Status Codes',
+              path: 'performance/caching/cache_status_codes',
+            },
           ],
         },
         // {

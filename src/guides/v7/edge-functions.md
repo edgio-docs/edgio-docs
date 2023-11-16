@@ -131,7 +131,7 @@ The following properties and methods from the standard [`Request`](https://devel
 
 <Callout type="info">
 
-  Using an unsupported method or property will throw an error.
+Using an unsupported method or property will throw an error.
 
 </Callout>
 
@@ -155,11 +155,13 @@ Origin fetch requests and edge functions return a `Response` instance representi
 - **Status**: `response.status` to get the HTTP status code of the response. `response.statusText` provides the corresponding status text.
 - **URL**: `response.url` provides the URL of the response.
 - **Redirected**: `response.redirected` is a property that indicates whether the response is a result of a redirection.
+
     <Callout type="info">
 
       You may redirect a response up to 5 times before an exception is thrown.
 
     </Callout>
+
 - **Redirection**: Create a redirected response using `Response.redirect(url, status)`.
 - **Cloning**: To clone a response without its body, use `response.cloneWithoutBody()`.
 
@@ -282,6 +284,79 @@ export async function handleHttpRequest(request, context) {
   return resp;
 }
 ```
+
+## Fetching from Cloud Functions {/* fetching-from-cloud-functions */}
+
+<Callout type="important">
+  Fetching from Cloud Functions requires {{PRODUCT}} version 7.4.1 or later.
+</Callout>
+
+Fetching from a cloud function is akin to fetching from an origin server. You can send requests to your [cloud function](/guides/performance/serverless_compute) using `fetch()`. For example, when using a framework compatible with {{ PRODUCT_PLATFORM }} like Next.js, you can direct the incoming request to your JavaScript backend. This allows you to process and modify the response at the edge before sending it back to the client, enabling personalization and other adjustments.
+
+To fetch from a cloud function, you must meet the following requirements:
+
+- {{ PRODUCT }} version 7.4.1 or later.
+- A defined route in your `{{ ROUTES_FILE }}`. This can be set up via a connector or by using `compute` or `proxy` along with the `transformResponse` option.
+- The origin `edgio_serverless` must be specified in the request (see [System-Defined Origins](/guides/basics/hostnames_and_origins#system-defined-origins)).
+- Forwarding of the original request headers.
+
+Below is an example demonstrating how to fetch from a Cloud Function:
+
+```js filename="{{ ROUTES_FILE }}"
+// This file was automatically added by edgio init.
+// You should commit this file to source control.
+import {Router} from '@edgio/core/router';
+import {nextRoutes} from '@edgio/next';
+
+export default new Router()
+  // NextRoutes automatically adds routes for all Next.js pages and their assets
+  .use(nextRoutes)
+
+  // `/` is handled by Next.js, but we can also add an edge function to it
+  .match('/', {
+    edge_function: 'edge-functions/index.js',
+  });
+```
+
+```js filename="./edge-functions/index.js"
+export async function handleHttpRequest(request) {
+  // Check the request method and get the request body as an ArrayBuffer if it's not a GET or HEAD request.
+  const requestBody = !['GET', 'HEAD'].includes(request.method)
+    ? await request.arrayBuffer()
+    : undefined;
+
+  // Perform a fetch request to the original request URL with the same method, headers, and body.
+  // Specify 'edgio_serverless' as the origin to fetch the original Cloud Functions response.
+  const cloudFunctionsResponse = await fetch(request.url, {
+    edgio: {origin: 'edgio_serverless'},
+    method: request.method,
+    headers: request.headers,
+    body: requestBody,
+  });
+
+  // Convert the response to text format.
+  let responseText = await cloudFunctionsResponse.text();
+
+  // Manipulate the response to apply personalizations or modifications.
+  responseText = responseText.replace(
+    /<title>Next\.js<\/title>/,
+    '<title>Next.js | {{ PRODUCT }}</title>'
+  );
+
+  // Return a new response with the modified text and original response status, status text, and headers.
+  return new Response(responseText, {
+    status: cloudFunctionsResponse.status,
+    statusText: cloudFunctionsResponse.statusText,
+    headers: cloudFunctionsResponse.headers,
+  });
+}
+```
+
+<ExampleButtons
+  title="Fetching from Cloud Functions"
+  siteUrl="https://tristan-lee-edgio-v7-ef-cloud-fetch-example-default.glb.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-ef-cloud-fetch-example"
+/>
 
 ## Testing Locally {/* testing-locally */}
 
@@ -452,7 +527,8 @@ It's worth noting that not all implementations will be able to accept polyfills,
 <ExampleButtons
   title="Edge Functions"
   siteUrl="https://edgio-community-examples-v7-edge-functions-live.edgio.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-v7-edge-functions-example" />
+  repoUrl="https://github.com/edgio-docs/edgio-v7-edge-functions-example"
+/>
 
 See additional examples of how to use Edge Functions by {{ PRODUCT }}:
 

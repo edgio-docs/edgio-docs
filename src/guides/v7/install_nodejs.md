@@ -10,7 +10,7 @@ title: Install Node.js and npm
 
 </Callout>
 
-Although you may use a higher version of Node.js, your app will run using the appropriate version of Node.js when deployed to {{ PRODUCT }}.
+Although you may develop your app with any version of Node.js, it will run using a supported version of the Node.js runtime when deployed to {{ PRODUCT }}.
 
 - {{ PRODUCT }} v7.4.0 or later is compatible with Node.js 16 and 18.
 - {{ PRODUCT }} v7.3.1 or earlier is compatible with Node.js 16 only.

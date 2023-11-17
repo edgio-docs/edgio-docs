@@ -4,7 +4,7 @@ title: Deployments
 
 A deployment is required to apply changes to your code or configuration to an environment. 
 
-## Deploying 
+## Deploying {/*deploying*/}
 
 Deploy to an environment using either of the following methods:
 
@@ -37,8 +37,28 @@ Deploy to an environment using either of the following methods:
 
     Once the deployment is complete, the CLI will output the URL for your site. Your property's name is automatically derived from the `name` field in `package.json`. This can be overridden by using `--property` option when running `{{ FULL_CLI_NAME }} deploy`.
 
-{{ system_origins_callout.md }}
+    {{ system_origins_callout.md }}
 
+Upon deploying a build, view a page that describes the deployment by clicking the deployment's version number from the **Deployments** page. This page provides information about the deployment, such as:
+
+-   How and when it was deployed.
+-   Current status. 
+-   The **URL** section provides URL(s) through which you can serve traffic for your website.
+-   If you are using CDN-as-code, then we also provide:
+    -   A permalink for testing your site. This type of link bypasses the edge of our network and serves traffic directly from the {{ PRODUCT }} cloud.
+    -   [Server logs](/guides/logs/server_logs) through which you can view console messages defined within your application.
+
+## Deployment Status {/*deployment-status*/}
+
+Each environment may have up to:
+-   1 active deployment. Your most recent deployment is considered the currently active deployment. This deployment allows you to:
+    -   Serve traffic for your website through the URL(s) defined under the **URL** section.
+    -   If you are using CDN-as-code, then you may also use a permalink to test your site. This type of link bypasses the edge of our network and serves traffic directly from the {{ PRODUCT }} cloud.
+-   4 additional online deployments. An online deployment allows you to test your CDN-as-code setup through permalinks.
+
+Although older deployments are considered retired, you may revive a deployment by visiting its permalink. Once the deployment has been revived, the permalink will once again load your site. Additionally, we will retire the next oldest online deployment. 
+
+View status for all deployments from the **Deployments** page. Online deployments are indicated by <Image inline src="/images/v7/icons/deployment-online.png" alt="Solid green circle" />, while retired deployments are indicated by <Image inline src="/images/v7/icons/deployment-retired.png" alt="Faint green circle" />.
 
 ## Versioning {/*versioning*/}
 

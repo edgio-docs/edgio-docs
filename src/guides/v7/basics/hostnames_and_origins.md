@@ -7,7 +7,7 @@ Setting up the delivery of your website through {{ PRODUCT }} requires the follo
 -   **Hostname:** A hostname identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
 -   **Source:** Define the source from which {{ PRODUCT }} will retrieve content. You may retrieve content from any combination of the following sources:
     -   **Origin:** An origin configuration defines how our service will communicate with your web servers.
-    -   **{{ PRODUCT }} cloud:** The {{ PRODUCT }} cloud, which powers [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) and [Cloud Functions](/guides/performance/serverless_compute), allows you to run serverless code.
+    -   **{{ PRODUCT }} Cloud:** The {{ PRODUCT }} cloud, which powers [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) and [Cloud Functions](/guides/performance/serverless_compute), allows you to run serverless code.
     
 Control how {{ PRODUCT }} communicates with your web servers or our cloud by mapping hostnames to origin configurations.
 

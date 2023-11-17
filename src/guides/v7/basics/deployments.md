@@ -42,7 +42,12 @@ Deploy to an environment using either of the following methods:
 
 ## Versioning {/*versioning*/}
 
-Deployments are versioned. Each deployment is assigned a unique version number. This allows you to quickly roll back to a previous version when a breaking change is introduced into an environment. 
+Upon deploying changes, {{ PRODUCT }} assigns a unique version number to the deployment. This allows you to track the changes deployed to this environment. 
+
+**Key information:**
+-   {{ PRODUCT }} increments this version number by 1 for each new deployment.
+-   You can quickly roll back to any previous version. For example, you may wish to roll back to a previous deployment when a breaking change is introduced into an environment.  
+-   Each deployment is also assigned an environment version number. Deploying new changes increments both the deployment and the environment version number. However, rolling back to a previous environment version will only increment the deployment version number. The environment version number, on the other hand, will be set to the number for the environment version to which you rolled back.
 
 **To roll back to a previous version**
 

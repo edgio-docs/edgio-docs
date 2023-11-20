@@ -99,7 +99,7 @@ An optimized image must comply with the following limits:
 
     -   **Rules:** Create or modify a rule that includes the  [Cache Key](/guides/performance/rules/features#cache-key) feature. Configure this feature's **Query Parameters** option to either exclude all query string parameters or to only include specific parameters.
     
-        ![Cache Key feature set to exclude all query string parameters](/images/v7/performance/cache-key-exclude-all-qs.png)
+        ![Cache Key feature set to exclude all query string parameters](/images/v7/performance/cache-key-exclude-all-qs.png?width=350)
 
     -   **CDN-as-Code:**
 

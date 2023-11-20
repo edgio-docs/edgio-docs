@@ -28,6 +28,7 @@ export const frameSrcDomains = [
   'www.youtube.com',
   'youtu.be',
   'player.vimeo.com',
+  '*.fireaw.ai',
 ];
 
 export const imgSrcDomains = [
@@ -43,6 +44,7 @@ export const imgSrcDomains = [
   'edgeio.whitecdn.com',
   '*.edgio-perma.link',
   '*.edg.io',
+  '*.fireaw.ai',
 ];
 
 export const mediaSrcDomains = ['www.youtube.com'];

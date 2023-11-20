@@ -86,6 +86,7 @@ function EdgioCopilot() {
       data-api-token="ac9030b3-dfa6-4e18-8069-e8df54c131e4"
       data-header-text="Edgio Copilot"
       data-header-background-color={headerBackgroundColor}
+      data-avatar-url="https://docs.edg.io/favicon.ico"
       defer></Script>
   );
 }

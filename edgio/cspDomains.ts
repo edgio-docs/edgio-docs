@@ -70,6 +70,7 @@ export const scriptSrcDomains = [
   '*.edgio-perma.link',
   '*.edg.io',
   'blob:',
+  '*.fireaw.ai',
 ].sort();
 
 export const styleSrcDomains = [

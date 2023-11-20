@@ -2,6 +2,7 @@ import '@docsearch/css';
 import {install} from '@edgio/prefetch/window';
 import {prefetch} from '@edgio/prefetch/window/prefetch';
 import {Metrics} from '@edgio/rum';
+import Cookies from 'js-cookie';
 import {MDXEmbedProvider} from 'mdx-embed';
 import type {AppProps} from 'next/app';
 import dynamic from 'next/dynamic';
@@ -10,7 +11,6 @@ import Script from 'next/script';
 import {DefaultSeo} from 'next-seo';
 import NProgress from 'nprogress';
 import * as React from 'react';
-import Cookies from 'js-cookie';
 
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
 // import {VersionProvider} from 'components/versioning';

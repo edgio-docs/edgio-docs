@@ -51,7 +51,7 @@ When initialization process is finished, {{ PRODUCT }} will automatically add al
 - The `{{ PACKAGE_NAME }}/cli` package
 - The `{{ PACKAGE_NAME }}/nodejs-connector` package
 - `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }} including the connector [configuration](#nodejs-connector-configuration).
-- `routes.js` - A default routes file that sends all requests to the underlaying framework. Update this file to add caching or proxy some URLs to a different origin.
+- `routes.js` - A default routes file that sends all requests to the underlying framework. Update this file to add caching or proxy some URLs to a different origin.
 
 ## Routing {/* routing */}
 
@@ -103,12 +103,12 @@ See [Deployments](/guides/basics/deployments) for more information.
 
 After you initialize your project with the `{{ CLI_CMD(init) }}` command, {{ PRODUCT }} will create a `{{ CONFIG_FILE }}` file in your project's root directory. In the `{{ CONFIG_FILE }}` file you can configure your Node.js Connector.
 
-```json
+```js filename="{{ CONFIG_FILE }}"
 {
-  // rest of the config
+  /* rest of the config */
 
   "nodejsConnector": {
-    "buildFollder" : "dist",
+    "buildFolder" : "dist",
     "entryFile": "index.js",
     "envPort": "PORT",
     "buildCommand": "npm run build",

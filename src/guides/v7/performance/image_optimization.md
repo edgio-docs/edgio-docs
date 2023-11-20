@@ -21,13 +21,11 @@ Optimize images through the following steps:
     
     -   Including [query string parameters](#query-string-parameters) within the request URL.
 
-        <Callout type="tip">
+        **Rule-Based Optimizations:**  One method for dynamically determining the set of optimizations that will be applied to an image is through a rule.
 
-          One method for dynamically determining the set of optimizations that will be applied to an image is through a rule.
+        For example, you may create a rule that resizes all JPG images whose URL path contains `/images/`.
 
-          For example, you may create a rule that resizes all PNG images whose URL path contains `/thumbnails/`.
-
-        </Callout>
+        ![Sample rule that resizes images](/images/v7/performance/image-optimization-sample-rule.png?width=450)
 
     -   Requesting data from the client through [client hints](#client-hints).
 

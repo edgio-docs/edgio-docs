@@ -25,6 +25,7 @@
   --docsearch-spacing: 6px;
   --header-height: 48px;
   --image-icon-fill: #eeeeee;
+  --banner-header-color: var(--colors-purple0);
 
   --select-bg: #0f1216;
   --select-border-color: #0094d6;

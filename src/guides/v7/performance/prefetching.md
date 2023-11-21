@@ -6,7 +6,7 @@ Improve performance by instructing web browsers to request popular pages and API
 
 ## Quick Start {/*quick-start*/}
 
-The quickest way to get started is to 
+The quickest way to get started is by performing the following steps:
 
 1.  Add the following script tag to each of your pages:
 
@@ -30,7 +30,7 @@ The quickest way to get started is to
 
 Upon loading a page on which automatic predictive prefetching has been enabled, the browser will request all links that meet the following conditions:
 -   The link is currently visible to the user.
--   The Set Max Age and the Set Servic Worker Max Age features have been enabled on it. 
+-   The Set Max Age and the Set Service Worker Max Age features have been enabled on the above link.
 
 These requests will be submitted with the following query string parameters: `{{ PRODUCT_NAME_LOWER }}_dt_pf=1&{{ PRODUCT_NAME_LOWER }}_prefetch=1`
 

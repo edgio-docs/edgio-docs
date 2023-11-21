@@ -13,7 +13,7 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 
 ## Defining Edge Functions {/* defining-edge-functions */}
 
-Define an edge function within your {{ ROUTES_FILE }} file by adding the `edge_function` property to a route. The `edge_function` property accepts a string representing the path to the edge function file.
+Define an edge function rule within your {{ ROUTES_FILE }} file by adding the `edge_function` property to a route. The `edge_function` property accepts a string representing the path to the edge function file.
 
 ```js filename="./routes.js"
 new Router()
@@ -21,11 +21,11 @@ new Router()
     edge_function: './edge-functions/index.js',
   })
   .match('/api/*', {
-    edge_function: './edge-functions/api.js',
+    edge_function: './edge-functions/api.ts',
   });
 ```
 
-Each edge function is stored in a separate file and assigned to a specific route in your `routes.js` file.
+Each edge function is stored in a separate file and assigned to a specific route in your `routes.js` file. Edge functions support both JavaScript and TypeScript files.
 
 An edge function file must export the following entry point:
 

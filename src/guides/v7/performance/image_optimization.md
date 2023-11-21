@@ -213,8 +213,6 @@ Use a comma to separate multiple values.
   
 **Example:** `?auto=webp,smallest`
 
-![](/images/demo.jpg?auto=webp,smallest)
-
 [Try now.](/images/demo.jpg?auto=webp,smallest)
 
 ### Bg-color {/*bg-color*/}

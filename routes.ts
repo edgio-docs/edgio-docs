@@ -101,14 +101,6 @@ router
     )
   )
 
-  // does not work
-  .match('/images/:path*', {
-    response: {
-      optimize_images: true,
-    },
-  })
-
-  // works
   .match(/\/images\/(.*)/, ({serveStatic, addFeatures}) => {
     serveStatic('public/images/$1', {});
     addFeatures({

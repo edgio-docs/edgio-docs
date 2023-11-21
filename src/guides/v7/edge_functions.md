@@ -393,7 +393,13 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 
 Note that Edge Functions must be enabled for your {{ PORTAL }} team in order to deploy your property. [Contact support]({{ HELP_URL }}) to enable this feature.
 
-## Limitations {/* limitations */}
+## Limitations of Edge Functions {/* limitations */}
+
+Edge functions are designed to operate only on edge links and will not work with permalinks. Permalinks bypass the edge network and directly serve the content from the origin, hence any edge function logic will not be applied (or may operate in a degraded capacity).
+
+When deploying your project, it's important to distinguish between the edge link and the permalink for proper testing and functionality verification. The following screenshot indicates where you can find the permalink and edge link for your project in the {{ PORTAL }}.
+
+![Permalink and Edge Link in {{ PORTAL }}](/images/deploying/deploy_links.png?width=800)
 
 Edge Function Limitations:
 

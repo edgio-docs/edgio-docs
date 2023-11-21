@@ -38,7 +38,7 @@ You may view these console messages in real time<!-- or as log data-->. From wit
 </Callout>
 
 Use DRI to view the headers and body for:
--   Every request served through {{ PRODUCT }} cloud Functions.
+-   Every request served through {{ PRODUCT }} Cloud Functions.
 -   Each upstream API request made by your application.
 
 <Callout type="warning">

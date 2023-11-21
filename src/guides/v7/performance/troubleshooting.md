@@ -178,9 +178,9 @@ Assess overall prefetching performance by checking the **Prefetches** statistic 
 
 ![Prefetches](/images/v7/performance/developer-tools-prefetches.png)
 
-By default, you may only prefetch content that is cached on the POP closest to the user and that still has a valid TTL. By default, {{ PRODUCT }} responds with a `412 Precondition Failed` for prefetch requests that result in a cache miss. This default configuration ensures that your origin servers do not experience additional load due to predictive prefetching. 
+By default, you may only prefetch content that is cached on the POP closest to the user and that still has a valid TTL. By default, {{ PRODUCT }} responds with a [412 Precondition Failed status code](#412-precondition-failed-status-code) for prefetch requests that result in a cache miss. This default configuration ensures that your origin servers do not experience additional load due to predictive prefetching. 
 
-Identify prefetch requests through the following query string parameter: `edgio_prefetch=1`.
+Identify prefetch requests through the following query string parameter: `{{ PRODUCT_NAME_LOWER }}_dt_pf=1&{{ PRODUCT_NAME_LOWER }}_prefetch=1`.
 
 **Example:** `https://cdn.example.com/css/styles.css?edgio_dt_pf=1&edgio_prefetch=1`
 
@@ -208,6 +208,7 @@ Gain insight into why {{ PRODUCT }} returned a specific status code by filtering
 Troubleshoot the following common status codes:
 
 -   [404 Not Found](#404-not-found-status-code)
+-   [412 Precondition Failed](#412-precondition-failed-status-code)
 -   [502 Bad Gateway](#502-bad-gateway-status-code)
 -   [531 Project Upstream Connection Error](#531-project-upstream-connection-error-status-code)
 -   [539 Project Timeout](#troubleshooting-539-status-codes)
@@ -220,6 +221,59 @@ Troubleshoot this status code by performing the following steps:
 
 -   Use Edge Insights, [as described above](#status-codes), to identify the URL and the referrer from which the request originated. Check the `url` and the `referer` field, respectively.
 -   If the resource exists and you are using CDN-as-code, use the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer_tools_chrome_extension) to check whether the [request matches a rule](#applied-rules) in your {{ ROUTES_FILE }}.
+
+### 412 Precondition Failed Status Code {/*412-precondition-failed-status-code*/}
+
+By default, {{ PRODUCT }} will only serve prefetch requests from the edge cache. If a request cannot be served from the cache, a `412 Precondition Failed` status code is returned. This protects your origin servers from additional traffic associated with prefetching. 
+
+Perform the following steps to reduce excessive `412 Precondition Failed` responses:
+
+1.  Ensure that the URLs being prefetched are similar to those fetched during page navigation. 
+
+    Prefetch URLs contain the following query string parameters: `{{ PRODUCT_NAME_LOWER }}_dt_pf=1&{{ PRODUCT_NAME_LOWER }}_prefetch=1`. These parameters are automatically excluded from the cache key. Verify that this is the only difference between URLs that are prefetched and those that are requested through standard page navigation.
+    
+2.  Apply the [Stale While Revalidate (stale_while_revalidate) feature](/guides/performance/rules/features#stale-while-revalidate) to URLs that will be prefetched. 
+
+    -   **Rules Example:**
+
+        ![Sample rule with the Stale While Revalidate feature](/images/v7/performance/troubleshooting-412-stale-while-revalidate.png?width=450)
+
+    -   **CDN-as-Code Example:**
+
+        ```js filename="routes.js"
+        router.get('/p/:productId', {
+          caching: {
+            max_age: '1h',
+            service_worker_max_age: '1h',
+            stale_while_revalidate: '1d', // this way stale items can still be prefetched
+          }
+        });
+        ```
+
+3. Consider increasing the [Set Max Age (max_age) feature](/guides/performance/rules/features#set-max-age). Short time to live (TTL) intervals generate more prefetch failures.
+4.  Prefetch cache misses. 
+
+    <Callout type="warning">
+
+      Use this capability with caution since it may significantly increase the traffic to your origin or API servers.
+
+    </Callout>
+
+    -   **HTML Script Tag Example:** 
+
+        ```html
+        <script src="/__edgio__/prefetch/install.js" data-include-cache-misses="true" defer></script>
+        ```
+
+    -   **{{ PRODUCT }} {{ PRODUCT_PLATFORM }} Example:** 
+
+        ```js filename="app.js"
+        import install from '{{ PACKAGE_NAME }}/prefetch/window/install';
+        
+        // Call the following once when the page loads to allow prefetch requests to be served when responses
+        // aren't available in the edge cache:
+        install({includeCacheMisses: true});
+        ```
 
 ### 502 Bad Gateway Status Code {/*502-bad-gateway-status-code*/}
 

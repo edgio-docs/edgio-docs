@@ -41,4 +41,5 @@ module.exports = {
   serverless: {
     include: ['src/guides/**/*'],
   },
+  cloudRuntime: 'nodejs18.x',
 };

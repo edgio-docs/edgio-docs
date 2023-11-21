@@ -123,6 +123,14 @@ const nav = {
               title: 'Cache Key',
               path: 'performance/caching/cache_key',
             },
+            {
+              title: '',
+              path: '',
+            },
+            {
+              title: 'Cache Status Codes',
+              path: 'performance/caching/cache_status_codes',
+            },
           ],
         },
         // {
@@ -513,10 +521,6 @@ const nav = {
           path: 'logs/server_logs',
         },
         {
-          title: 'Access Logs',
-          path: 'logs/access_logs',
-        },
-        {
           title: 'Real-Time Log Delivery',
           path: 'logs/rtld',
           routes: [
@@ -559,6 +563,10 @@ const nav = {
             {
               title: 'Filtering Log Data',
               path: 'logs/rtld/filtering_log_data',
+            },
+            {
+              title: 'Custom Log Fields (RTLD CDN)',
+              path: 'logs/rtld/custom_log_fields',
             },
             {
               title: 'Log File Naming Convention',

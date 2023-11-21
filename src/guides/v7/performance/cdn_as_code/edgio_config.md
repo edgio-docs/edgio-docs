@@ -160,15 +160,46 @@ interpolationValues.virt_dst_country: 'US'
 
 Setting these properties can replicate the behavior of the production environment within your local development workspace.
 
+## cloudRuntime {/* cloudruntime */}
+
+*Requires {{ PRODUCT }} v7.4.0 or later.*
+
+The `cloudRuntime` key (string) determines which version of Node.js will run your app on our platform. Supported values are:
+
+- `nodejs16.x`
+- `nodejs18.x`
+
+If the `cloudRuntime` key is not defined, then {{ PRODUCT }} will detect your project's Node.js version upon running `{{ CLI_CMD(deploy) }}`. If an unsupported version is detected, then it will set your version to `nodejs18.x`. For instance:
+
+```bash
+# Here, the cloud runtime is set to nodejs16.x
+$ node --version
+v16.19.1
+$ {{ CLI_CMD(deploy) }}
+
+...
+
+# Here, due to an unsupported version, the cloud runtime defaults to nodejs18.x with a warning
+$ node --version
+v20.0.0
+$ {{ CLI_CMD(deploy) }}
+```
+
+<Callout type="important">
+ 
+  Unexpected behavior may occur when there is a mismatch between your project's Node.js version and the one that runs your app on our platform. For example, if the `cloudRuntime` key is set to `nodejs16.x` while the project is bundled with Node.js 18, the project will build with Node.js 18 but run in a Node.js 16 environment. Ensure the `cloudRuntime` key aligns with your project's Node.js version to prevent these types of issues.
+
+</Callout>
+
 <a id="example-config"></a>
 
 ## Default {{ CONFIG_FILE }} {/* default-config */}
 
-By default, the following {{ CONFIG_FILE }} file is created by `{{ CLI_CMD(init) }}`. The contents of this file may differ when a framework supported by {{ PRODUCT }} {{ PRODUCT_PLATFORM }} is detected during initialization.
+By default, the following `{{ CONFIG_FILE }}` file is created by `{{ CLI_CMD(init) }}`. The contents of this file may differ when a framework supported by {{ PRODUCT }} {{ PRODUCT_PLATFORM }} is detected during initialization.
 
-See the full API specification for the {{ CONFIG_FILE }} file [here](/docs/api/core/interfaces/config.default.html).
+See the full API specification for the `{{ CONFIG_FILE }}` file [here](/docs/api/core/interfaces/config.default.html).
 
-```js
+```js filename="{{CONFIG_FILE}}"
 // This file was automatically added by edgio init.
 // You should commit this file to source control.
 // Learn more about this file at https://docs.edg.io/guides/edgio_config

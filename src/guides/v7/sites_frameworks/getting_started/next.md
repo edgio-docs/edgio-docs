@@ -28,7 +28,12 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
 
 ## Supported Versions {/* supported-versions */}
 
-{{ PRODUCT_NAME }} supports Next.js version 9 through 13.
+{{ PRODUCT_NAME }} supports the following versions of Next.js:
+
+| Next.js Version | Node.js Version | {{ PRODUCT }} Version |
+| --------------- | --------------- | --------------------- |
+| 9.x - 13.x      | 16.x            | 7.x                   |
+| 14.x            | 18.x            | 7.4.0+                |
 
 ## Supported Features {/* supported-features */}
 
@@ -426,7 +431,7 @@ module.exports = {
 
 <Callout type="info">
 
-Note that Next.js apps built in {{ PRODUCT }} cloud mode don't include a Next.js image optimizer. Disabling our image optimizer without providing an alternative may cause them to fail.
+Note that Next.js apps prior to 12.x built with the `serverless` target ([see Next.js 12.x deprecation notes](https://nextjs.org/docs/pages/building-your-application/upgrading/version-12#target-option-deprecated)) don't include a Next.js image optimizer. Disabling our image optimizer without providing an alternative may cause them to fail.
 
 </Callout>
 

@@ -306,7 +306,7 @@ To test the caching behavior locally, run your project with the [local cache opt
 
 ### Running on {{ PRODUCT_NAME }} {/* running-on */}
 
-Now that you're satisfied with your site in local development, it's time to deploy it to {{ PRODUCT_NAME }} Cloud. Once your code is deployed to {{ PRODUCT_NAME }} Cloud, you can formally evaluate site performance and QA functionality.
+Now that you're satisfied with your site in local development, it's time to deploy it to the {{ PRODUCT_NAME }} cloud. Once your code is deployed to the {{ PRODUCT_NAME }} cloud, you can formally evaluate site performance and QA functionality.
 
 Deploy the build to {{ PRODUCT_NAME }} by running the `{{ FULL_CLI_NAME }} deploy` command:
 

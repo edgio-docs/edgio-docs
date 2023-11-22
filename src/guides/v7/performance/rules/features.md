@@ -2225,6 +2225,9 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 
         For example, if the **Source Path** option contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the **Destination Path** option (e.g., `/$1/$2`). 
     -   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct the above paths. However, you may not use response metadata.
+    -   This feature is currently incompatible with the [Extension (extension) match condition](/guides/performance/rules/conditions#extension). However, you may define a regular expression pattern for the desired file extensions within the **Source Path** option. 
+
+        **Example:** `/marketing/(.*)\.(jpg|jpeg|png)`
 
 <edgejs>
 This feature allows our edge servers to rewrite the URL without performing a traditional redirect. This means that the requester will receive the same response code as if the rewritten URL had been requested.

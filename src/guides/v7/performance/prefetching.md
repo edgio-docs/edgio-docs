@@ -4,10 +4,10 @@ title: Predictive Prefetch
 
 Predictive prefetching improves performance by allowing web browsers to request popular content before it is needed. This allows pages to be rendered immediately instead of having to wait for a response from the origin.
 
-A sample prefetching implementation is described below.
+A sample interaction with a predictive prefetching-enabled website is described below. 
 
-1.  A user visits a page on your website where predictive prefetching has been enabled.
-2.  The user's web browser requests popular pages and API calls and stores this content locally. 
+1.  A user visits a page on which predictive prefetching has been enabled.
+2.  The user's web browser requests popular pages, resources, and API calls. It then stores this content locally. 
 3.  The user navigates to a different page. It is rendered immediately since that content was prefetched by the browser.
 
 ## Quick Start {/*quick-start*/}

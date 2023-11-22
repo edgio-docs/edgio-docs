@@ -2,7 +2,7 @@
 title: Prefetching with {{ PRODUCT }} {{ PRODUCT_PLATFORM }}
 ---
 
-If your website uses {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or is based on a JS front-end framework, then you can install the `{{ PACKAGE_NAME }}/prefetch` package directly, take advantage of additional package features, and achieve deeper integration with your site.
+If your website uses {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or is based on a JavaScript front-end framework, then you can install the `{{ PACKAGE_NAME }}/prefetch` package directly, take advantage of additional package features, and achieve deeper integration with your site.
 
 **Key information:**
 

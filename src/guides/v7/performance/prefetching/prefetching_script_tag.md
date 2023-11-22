@@ -10,11 +10,11 @@ Set up predictive prefetching by adding a script tag to all of your pages.
 
 -   Due to security requirements, prefetching requires the HTTPS protocol. An exception to this requirement occurs when using localhost.
 
--   If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, you can achieve deeper prefetch integration and custom behavior by installing the `{{ PACKAGE_NAME }}/prefetch` package.  [Learn more.](#prefetching-with-edgio-sites)
+-   If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or a JavaScript front-end framework, you can achieve deeper prefetch integration and custom behavior by installing the `{{ PACKAGE_NAME }}/prefetch` package.  [Learn more.](#prefetching-with-edgio-sites)
 
 ## Setup {/*setup*/}
 
-If your website does not use {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, perform the following steps:
+Perform the following steps:
 
 1.  [Register the service worker](#registering-the-service-worker-traditional-website) by adding a prefetching script tag to your web pages.
 2.  [Enable prefetching](#automatic-prefetching-traditional-website) for the desired requests by adding the following features within one or more rules:
@@ -87,7 +87,7 @@ This package supports the following attributes:
 
 By default, the response varies according to whether the requested content has been cached within the POP closest to the user. 
 -   If a cached response is found, then {{ PRODUCT }} will serve this cached content to the browser. The browser will then cache it locally for the duration defined by the Set Service Worker Max Age (service_worker_max_age) feature. 
--   If a cached response is not found, then {{ PRODUCT }} will return a `412 Precondition Failed` response.
+-   If a cached response is not found, then {{ PRODUCT }} will return a [412 Precondition Failed response](/guides/performance/troubleshooting#412-precondition-failed-status-code).
 
     <Callout type="info">
 

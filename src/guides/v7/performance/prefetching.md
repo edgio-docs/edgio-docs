@@ -6,9 +6,9 @@ Improve performance by instructing web browsers to request popular pages and API
 
 ## Quick Start {/*quick-start*/}
 
-The quickest way to get started is by performing the following steps:
+The quickest way to get started is to perform the following steps:
 
-1.  Add the following script tag to each of your pages:
+1.  Add the following tag to each of your pages:
 
     ```html
     <script src="/__edgio__/prefetch/install.js" defer></script>
@@ -18,11 +18,15 @@ The quickest way to get started is by performing the following steps:
     -   [Set Max Age (max_age)](/guides/performance/rules/features#set-max-age)
     -   [Set Service Worker Max Age (service_worker_max_age)](/guides/performance/rules/features#set-service-worker-max-age) 
 
-[Learn more on how to set up predictive prefetching through a script tag.](/guides/performance/prefetching/script_tag)
+    **Sample Configuration:**
+
+    ![Prefetch rule](/images/v7/performance/prefetch_rule.png)
+
+[Learn more about setting up predictive prefetching through a script tag.](/guides/performance/prefetching/script_tag)
 
 <Callout type="tip">
 
-  If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, then you may either perform the above steps or install the `{{ PACKAGE_NAME }}/prefetch` package directly. Installing this package allows you to take advantage of additional package features, and achieve deeper prefetch integration with your site. [Learn more.](/guides/performance/prefetching/sites)
+  If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or a JavaScript front-end framework, then you may either perform the above steps or install the `{{ PACKAGE_NAME }}/prefetch` package directly. Installing this package allows you to take advantage of additional package features, and achieve deeper prefetch integration with your site. [Learn how to install and use this package](/guides/performance/prefetching/sites).
 
 </Callout>
 

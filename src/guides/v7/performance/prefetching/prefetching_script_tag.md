@@ -10,7 +10,7 @@ Set up predictive prefetching by adding a script tag to all of your pages.
 
 -   Due to security requirements, prefetching requires the HTTPS protocol. An exception to this requirement occurs when using localhost.
 
--   If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or a JavaScript front-end framework, you can achieve deeper prefetch integration and custom behavior by installing the `{{ PACKAGE_NAME }}/prefetch` package.  [Learn more.](#prefetching-with-edgio-sites)
+-   If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or a JavaScript front-end framework, you can achieve deeper prefetch integration and custom behavior by installing the `{{ PACKAGE_NAME }}/prefetch` package.  [Learn how to install and use this package](/guides/performance/prefetching/prefetching_edgio_sites).
 
 ## Setup {/*setup*/}
 

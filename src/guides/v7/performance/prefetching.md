@@ -22,11 +22,11 @@ The quickest way to get started is to perform the following steps:
 
     ![Prefetch rule](/images/v7/performance/prefetch_rule.png)
 
-[Learn more about setting up predictive prefetching through a script tag.](/guides/performance/prefetching/script_tag)
+[Learn more about setting up predictive prefetching through a script tag.](/guides/performance/prefetching/prefetching_script_tag)
 
 <Callout type="tip">
 
-  If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or a JavaScript front-end framework, then you may either perform the above steps or install the `{{ PACKAGE_NAME }}/prefetch` package directly. Installing this package allows you to take advantage of additional package features, and achieve deeper prefetch integration with your site. [Learn how to install and use this package](/guides/performance/prefetching/sites).
+  If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or a JavaScript front-end framework, then you may either perform the above steps or install the `{{ PACKAGE_NAME }}/prefetch` package directly. Installing this package allows you to take advantage of additional package features, and achieve deeper prefetch integration with your site. [Learn how to install and use this package](/guides/performance/prefetching/prefetching_edgio_sites).
 
 </Callout>
 

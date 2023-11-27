@@ -638,11 +638,11 @@ You may create, modify, and delete Bot Manager configurations.
 
 7.  Create rules for identifying bots from the **Bot Rules** tab. 
 
-    1.  Click **+ Create New Rule**. A rule is satisfied when a match is found for each of its conditions.
+    1.  Click **+ New Rule**. A rule is satisfied when a match is found for each of its conditions.
     2.  In the **Rule message** option, type a brief description for this rule.
     3.  In the **Rule Action** option, choose how this rule will be enforced.
     4.  In the **Rule ID** option, specify a number between 77,000,000 and 77,999,999.
-    5.  A custom matches rule automatically includes a default condition. Modify this condition to determine how WAF will identify requests. From the condition's **Variable** option, select the request element through which WAF will identify requests.
+    5.  Modify the default condition to determine how WAF will identify requests. From the condition's **Variable** option, select the request element through which WAF will identify requests.
         
         [Learn more about variables.](#variables)
         

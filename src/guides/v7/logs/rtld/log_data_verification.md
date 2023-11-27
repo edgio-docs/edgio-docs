@@ -7,22 +7,24 @@ Check for missing log data by either:
 -   Reviewing recent log performance statistics.
 -   Looking for gaps in the sequential number reported by each Real-Time Log Delivery software agent.
 
-<!--
-
 ## Log Performance Statistics {/*log-performance-statistics*/}
 
-The Log Performance page provides a summary view and a breakdown of log delivery failures for up to the last 30 days.
+The **Log Delivery Performance** page indicates the total number of log delivery attempts. It also provides a donut graph for successful and failed log delivery attempts for up to the last 30 days.
 
 Find out which log files are missing by manually checking for gaps in the sequence number reported by each Real-Time Log Delivery software agent.  
 [Learn more.](#checking-for-sequence-number-gaps)
 
-Key information:
+**To view log delivery statistics**
 
--   Navigate to the Log Performance page by performing the following steps:
-    
-    2.  Select the desired profile.
-    3.  Click the Analytics tab from the upper-right hand corner of the page.
--   Choose the time period for which log performance statistics will be reported from the upper-right hand corner of the page.
+1.  Navigate to the **Realtime Log Delivery** page.
+
+    {{ ENV_NAV }} **Realtime Log Delivery**.
+
+2.  Find the desired profile and then click on the <Image inline src="/images/v7/icons/analytics.png" alt="Analytics" /> (delete) icon.
+3.  Choose the time period for which log performance statistics will be reported from the upper-right hand corner of the page.
+
+
+<!--
 -   Log delivery failures are graphed according to the following categories:
     
      

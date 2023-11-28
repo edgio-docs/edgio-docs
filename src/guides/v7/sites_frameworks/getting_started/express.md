@@ -13,14 +13,14 @@ title: Express
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ FULL_CLI_NAME }} init --connector={{ PACKAGE_NAME }}/express {{ INIT_ARG_EDGIO_VERSION }}
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
 
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- The `{{ PACKAGE_NAME }}/express` package
+- The `{{ PACKAGE_NAME }}/connectors` package
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Ember.js.
 
@@ -31,15 +31,10 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 ```js
 // This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
-import { Router } from '@edgio/core'
+import { Router, edgioRoutes } from '@edgio/core'
 
 export default new Router()
-  .match('/:path*', {
-    origin: {
-      set_origin: 'edgio_serverless',
-    },
-  })
-  .static('public')
+  .use(edgioRoutes)
 ```
 
 ## Running your app locally {/* running-your-app-locally */}
@@ -94,20 +89,15 @@ The file you specify in `appPath` should export an instance of an express app us
 If your express app serves any static assets, you'll need to add routes to your {{ PRODUCT }} router configuration to serve them from the edge. For example, to serve all paths under `/assets` from `dist/client/assets`:
 
 ```js filename="routes.js" ins="14-16"
-import {Router} from '{{ PACKAGE_NAME }}/core';
+import { Router, edgioRoutes } from '@edgio/core'
 
 export default new Router()
   // serve all unmatched URLs from express
-  .match('/:path*', {
-    origin: {
-      set_origin: 'edgio_serverless',
-    },
-  })
-  .static('public')
+  .use(edgioRoutes)
   // Create serveStatic route for each file in the folder build
   // dist/client/assets with a cache-control header of 's-maxage=315360000'
   // and serve them under the /assets route
-  .match('/assets/:path*', ({cache, serveStatic}) => {
+  .match('/assets/:path*', ({ cache, serveStatic }) => {
     serveStatic('dist/client/assets/:path*');
   })
 ```

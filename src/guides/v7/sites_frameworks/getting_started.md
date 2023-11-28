@@ -8,8 +8,6 @@ title: Web Application Frameworks
 
 Learn how to get started with these popular web application frameworks:
 
-<PopularFrameworks />
-
-Are you looking for a different web application framework? We have you covered. Learn how to get started with any of our supported web application frameworks.
-
 <Frameworks />
+
+If your framework is missing, you can use configurable [Node.js connector](/guides/v7/sites_frameworks/getting_started/nodejs_connector).

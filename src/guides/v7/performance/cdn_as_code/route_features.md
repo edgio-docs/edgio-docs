@@ -397,7 +397,7 @@ import $ from 'cheerio';
 router.get('/products/:productId', ({proxy}) => {
   proxy('origin', {
     transformResponse: (response) => {
-      const body = responseBodyToString(response.body);
+      const body = responseBodyToString(response);
       const $body = $(body).append(
         '<script src="https://example.com/script.js"></script>'
       );

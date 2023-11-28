@@ -7,7 +7,7 @@ Setting up the delivery of your website through {{ PRODUCT }} requires the follo
 -   **Hostname:** A hostname identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
 -   **Source:** Define the source from which {{ PRODUCT }} will retrieve content. You may retrieve content from any combination of the following sources:
     -   **Origin:** An origin configuration defines how our service will communicate with your web servers.
-    -   **{{ PRODUCT }} cloud:** The {{ PRODUCT }} cloud, which powers [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) and [Cloud Functions](/guides/performance/serverless_compute), allows you to run serverless code.
+    -   **{{ PRODUCT }} Cloud:** The {{ PRODUCT }} cloud, which powers [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) and [Cloud Functions](/guides/performance/serverless_compute), allows you to run serverless code.
     
 Control how {{ PRODUCT }} communicates with your web servers or our cloud by mapping hostnames to origin configurations.
 
@@ -114,8 +114,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 **Key information:**
 
--   Each origin configuration identifies a set of web server(s) by hostname or IP address.  
--   An origin configuration may identify up to 4 hostnames or IP addresses. 
+-   Each origin configuration identifies a set of web server(s) by hostname or IP address. You may specify up to 4 hostnames or IP addresses. 
 -   [Load balance](#load-balancing) requests to the web servers associated with an origin configuration using either primary/failover or round-robin mode.
 -   The maximum number of origin configurations per environment is 100. <a id="override-host-header" />
 -   By default, our CDN forwards the `Host` header provided by the client when proxying requests to your origin server(s). You may override the client's `Host` header by setting the **Override Host Header** option to the desired hostname. This forces our CDN to set the `Host` header to the specified hostname whenever it proxies traffic to the origin server(s) associated with this origin configuration.
@@ -129,18 +128,13 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     </Callout>
  
 -   You may configure an origin configuration to always serve traffic to your hosts over HTTP, HTTPS, or to match the client's scheme. Matching a client's scheme means that our network will serve HTTP traffic to your web servers over port 80, while HTTPS traffic will be served over port 443. <a id="sni" />
--   By default, {{ PRODUCT }} does not provide a Server Name Indication (SNI) hint to your origin server. This allows your origin server to determine the TLS certificate that will be returned. Enable the **Use SNI** option on an origin configuration to allow {{ PRODUCT }} to:
+-   An origin configuration's **Use SNI** option determines whether {{ PRODUCT }} will provide a Server Name Indication (SNI) hint to your origin server during the TLS handshake. 
 
-    -   Provide a SNI hint during the TLS handshake. 
-    -   Compare the hostname defined within the SNI hint to the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake. If the hostname does not match, then we will respond with a `502 Bad Gateway` response.
+    -   A SNI-enabled web server uses a SNI hint to determine the TLS certificate that will be returned. 
+    -   If the **Use SNI** option has been enabled, {{ PRODUCT }} compares the hostname defined within the SNI hint to the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake. If the hostname does not match, then we will respond with a `502 Bad Gateway` response.
+    -   If your origin server requires SNI, then you must provide a SNI hint. Otherwise, your web server will reject the request and our edge servers will respond with a `502 Bad Gateway` response. <a id="self-signed-certificates" />
 
-    <Callout type="important">
-	
-	  If your origin server requires SNI, then you must enable the **Use SNI** option and define a SNI hint. Otherwise, your web server will reject the request and our edge servers will respond with a `502 Bad Gateway` response. <a id="self-signed-certificates" />
-	
-	</Callout>
-
--   By default, our network disables delivery when we detect a self-signed certificate from the origin server during the TLS handshake. Specifically, our edge servers respond with a `502 Bad Gateway` response upon detecting a self-signed certificate from the origin server during the TLS handshake. Allow {{ PRODUCT }} to serve traffic when it detects a self-signed certificate by enabling the **Allow Self-Signed Certs** option. <a id="certificate-pinning" />
+-   By default, our network disables delivery and responds with a `502 Bad Gateway` when we detect an origin server using a self-signed certificate during the TLS handshake. Allow {{ PRODUCT }} to serve traffic when it detects a self-signed certificate by enabling the **Allow Self-Signed Certs** option. <a id="certificate-pinning" />
 -   Register the SHA-256 digest for the public key of your end-entity (i.e., leaf) certificate within the **Pinned Cert(s)** option. After which, our edge servers will respond with a `502 Bad Gateway` response when the SHA-256 digest for the public key detected from the origin server does not match one of the pinned certificates.
 -   Malicious actors may bypass the security provided by our service by directly targeting your origin server(s). We strongly recommend that you set up your firewall to only allow traffic from trusted sources (e.g., our network) and to obfuscate your origin.
 
@@ -172,15 +166,20 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     4.  Optional. [Override the client's Host header](#override-host-header) by setting the **Override Host Header** option to the desired hostname. 
     5.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.1 - 4.4. 
 	6.  Optional. Set the **Balancer type** option to the desired load balancing mode for requests proxied to your web servers. 
-5.  Optional. Define TLS settings for this origin configuration. Click on the **Origin TLS Settings** section to expand it.
+5.  Define TLS settings for this origin configuration through the **Origin TLS Settings** section.
 
-    1.  Enable SNI by toggling the **Use SNI** option to the on position (<Image inline src="/images/v7/icons/toggle-on.png" alt="Toggle on" />) and then defining the hostname that will be sent as a SNI hint during the TLS handshake. 
+    1.  Most web servers require a SNI hint during the TLS handshake. Define this SNI hint through the **Use SNI** option. By default, this option is set to the value assigned to the **Override Host Header** option. 
 
-    <Callout type="info">
+        Perform either of the following steps:
 
-      Upon enabling SNI, our service will perform a strict check using this hostname against the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake.
+        -   If your web server requires a SNI hint, verify or set the SNI hint through the **Use SNI** option.
+        -   If your web server does not use SNI, then you should disable the **Use SNI** option. 
 
-    </Callout>
+        <Callout type="info">
+
+          Upon enabling SNI, our service will perform a strict check using this hostname against the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake.
+
+        </Callout>
 
     2.  If your origin servers use a self-signed certificate, then you should toggle the **Allow Self Signed Certs** option to the on position (<Image inline src="/images/v7/icons/toggle-on.png" alt="Toggle on" />).
     3.  Set up [certificate pinning](#certificate-pinning) by adding one or more public keys.

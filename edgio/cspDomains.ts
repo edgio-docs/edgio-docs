@@ -42,6 +42,7 @@ export const imgSrcDomains = [
   'data:',
   '*.moovweb.net',
   'edgeio.whitecdn.com',
+  'edgio-community-examples-v7-image-optimization-live.glb.edgio.link',
   '*.edgio-perma.link',
   '*.edg.io',
   '*.fireaw.ai',

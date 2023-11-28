@@ -15,7 +15,7 @@ A {{ PRODUCT_NAME }} connector consists of four entry points:
 - `init.js` - Called when the user runs `{{ FULL_CLI_NAME }} init`, adding resources to the project necessary for deploying on {{ PRODUCT_NAME }}. May also modify existing files with the project.
 - `dev.js` - Called when the user runs `{{ FULL_CLI_NAME }} dev` to run their app in development mode.
 - `build.js` - Called when the user runs `{{ FULL_CLI_NAME }} build` or `{{ FULL_CLI_NAME }} deploy`. Builds the application, copying resources into the `.{{ PRODUCT_NAME_LOWER }}` directory, which is ultimately zipped and uploaded to {{ PRODUCT_NAME }}.
-- `prod.js` - Starts the application server in the {{ PRODUCT_NAME }} Cloud.
+- `prod.js` - Starts the application server in the {{ PRODUCT_NAME }} cloud.
 
 These files should be placed in the root directory of your connector package.
 

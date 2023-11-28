@@ -51,13 +51,12 @@ Our CDN accepts `POST` requests regardless of whether they contain a payload.
 
 ## Request Protocol Version {/*request-protocol-version*/}
 
-The CDN service communicates using the HTTP protocol version (i.e., HTTP/1.0 or HTTP/1.1) defined in the request. The HTTP/2.0 protocol version is only used for the communication between the client and the edge of our network.
+Protocol version support varies according to whether the CDN is communicating with your origin or the client.
 
-<Callout type="info">
+-   **Client**:  Our CDN supports HTTP/1.0, HTTP/1.1, HTTP/2, and HTTP/3 for the communication between clients and the edge of our network. 
 
-  {{ PRODUCT }} also supports HTTP/3 for the communication between the client and the edge of our network, but it requires enablement. Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to enable it on your account.
-
-</Callout>
+    HTTP/3 support requires the `alt-svc` response header. [Learn more.](/guides/performance/FINDME!!!!!!!!!!!!!!!!!!!)
+-   **Origin Server**:  Our CDN communicates with your origin using either HTTP/1.0 or HTTP/1.1.
 
 ## Request URL {/*request-url*/}
 

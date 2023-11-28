@@ -62,7 +62,7 @@ function GAnalytics() {
   );
 }
 
-function EdgioCopilot() {
+function ChatBot() {
   const router = useRouter();
   const [headerBackgroundColor, setHeaderBackgroundColor] = React.useState('');
 
@@ -84,7 +84,7 @@ function EdgioCopilot() {
       src="https://www.fireaw.ai/widget/main.js"
       data-chatbot-id="f98fb410-2056-447e-984f-753cbbe5d513"
       data-api-token="ac9030b3-dfa6-4e18-8069-e8df54c131e4"
-      data-header-text="Edgio Copilot"
+      data-header-text="Edgio Answers"
       data-header-background-color={headerBackgroundColor}
       data-button-background-color={headerBackgroundColor}
       data-avatar-url="https://docs.edg.io/favicon.ico"
@@ -96,7 +96,7 @@ export default function MyApp({Component, pageProps}: AppProps) {
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
   const [changingTo, setChangingTo] = React.useState('');
-  const [useCopilot, setUseCopilot] = React.useState(false);
+  const [useChatBot, setUseChatBot] = React.useState(false);
 
   React.useEffect(() => {
     // Install service worker
@@ -114,13 +114,13 @@ export default function MyApp({Component, pageProps}: AppProps) {
       });
     }
 
-    const enableCopilot =
-      router.query.preview === '1' || Cookies.get('edgio_copilot') === 'true';
+    const enableChatBot =
+      router.query.chatbot === '1' || Cookies.get('edgio_chatbot') === 'true';
 
-    if (enableCopilot) {
-      Cookies.set('edgio_copilot', 'true');
-      setUseCopilot(true);
-      if (router.query.preview) {
+    if (enableChatBot) {
+      Cookies.set('edgio_chatbot', 'true');
+      setUseChatBot(true);
+      if (router.query.chatbot) {
         router.replace(router.pathname, undefined, {shallow: true});
       }
     }
@@ -169,7 +169,7 @@ export default function MyApp({Component, pageProps}: AppProps) {
     fallbackMap[changingTo]
   ) : (
     <AppShell>
-      {useCopilot && <EdgioCopilot />}
+      {useChatBot && <ChatBot />}
       <GAnalytics />
       <DefaultSeo canonical={canonicalUrl} />
       <MDXEmbedProvider>

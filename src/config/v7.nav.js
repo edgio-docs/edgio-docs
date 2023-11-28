@@ -221,6 +221,16 @@ const nav = {
       title: 'Edge Functions',
       path: 'edge-functions',
       icon: 'edge-functions',
+      routes: [
+        {
+          title: 'Migrating from Cloudflare Workers',
+          path: 'edge-functions/migrating_cloudflare_workers',
+        },
+        {
+          title: 'Migrating from CloudFront Functions',
+          path: 'edge-functions/migrating_cloudfront_functions',
+        },
+      ],
     },
     {
       title: 'Experimentation',

@@ -20,7 +20,7 @@ Find out which log files are missing by manually checking for gaps in the sequen
 
     {{ ENV_NAV }} **Realtime Log Delivery**.
 
-2.  Find the desired profile and then click on the <Image inline src="/images/v7/icons/analytics.png" alt="Analytics" /> (delete) icon.
+2.  Find the desired profile and then click on its <Image inline src="/images/v7/icons/analytics.png" alt="Analytics" /> (analytics) icon.
 3.  Choose the time period for which log performance statistics will be reported from the upper-right hand corner of the page.
 
 

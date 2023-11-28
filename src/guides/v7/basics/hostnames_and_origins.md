@@ -166,9 +166,9 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     4.  Optional. [Override the client's Host header](#override-host-header) by setting the **Override Host Header** option to the desired hostname. 
     5.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.1 - 4.4. 
 	6.  Optional. Set the **Balancer type** option to the desired load balancing mode for requests proxied to your web servers. 
-5.  Optional. Define TLS settings for this origin configuration through the **Origin TLS Settings** section.
+5.  Define TLS settings for this origin configuration through the **Origin TLS Settings** section.
 
-    1.  Most web servers require a SNI hint during the TLS handshake. This SNI hint is defined through the **Use SNI** option. By default, this option is set to the value assigned to the **Override Host Header** option. 
+    1.  Most web servers require a SNI hint during the TLS handshake. Define this SNI hint through the **Use SNI** option. By default, this option is set to the value assigned to the **Override Host Header** option. 
 
         Perform either of the following steps:
 

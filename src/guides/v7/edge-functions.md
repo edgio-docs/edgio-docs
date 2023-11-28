@@ -222,7 +222,7 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-You can also use the [`createFetchForOrigin()`](#createFetchForOrigin) function to create a modified `fetch()` function that includes the origin server. See the [Polyfills](#polyfills) section for more information.
+You can also use the [`createFetchForOrigin()`](#createFetchForOrigin) function to create a modified `fetch()` function that includes the origin server. See the [Polyfills](#polyfills-and-helpers) section for more information.
 
 ```js
 export async function handleHttpRequest(request, context) {

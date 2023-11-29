@@ -187,6 +187,10 @@ export async function getStaticProps({params}: {params: any}) {
 
   // remove any html comments (<!-- -->) as these will not parse correctly
   content = content.replace(/<!--([\s\S]*?)-->/g, '');
+  // In some special cases, like code blocks, we do allow HTML comments.
+  // They indicate this by using &lt;!-- instead of <!-- so we need to
+  // covert them back to HTML comments after removing all HTML comments.
+  content = content.replace(/\&lt;!-- /g, '<!-- ');
 
   // <edgejs> tags are used for external documentation and should be removed
   content = content.replace(/<edgejs([\s\S]*?)edgejs>/g, '');

@@ -55,7 +55,12 @@ Protocol version support varies according to whether the CDN is communicating wi
 
 -   **Client**:  Our CDN supports HTTP/1.0, HTTP/1.1, HTTP/2, and HTTP/3 for the communication between clients and the edge of our network. 
 
-    HTTP/3 support requires the `alt-svc` response header. [Learn more.](/guides/performance/FINDME!!!!!!!!!!!!!!!!!!!)
+    <Callout type="info">
+
+      HTTP/3 support requires the `alt-svc` response header. [Learn more.](/guides/basics/hostnames_and_origins#http-3)
+
+    </Callout>
+
 -   **Origin Server**:  Our CDN communicates with your origin using either HTTP/1.0 or HTTP/1.1.
 
 ## Request URL {/*request-url*/}

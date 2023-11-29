@@ -165,7 +165,7 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     3.  Set the **Scheme** option to always serve traffic to your hosts over HTTPS, HTTP, or to match the client's scheme.
     4.  Optional. [Override the client's Host header](#override-host-header) by setting the **Override Host Header** option to the desired hostname. 
     5.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.1 - 4.4. 
-	6.  Optional. Set the **Balancer type** option to the desired load balancing mode for requests proxied to your web servers. 
+    6.  Optional. Set the **Balancer type** option to the desired load balancing mode for requests proxied to your web servers. 
 5.  Define TLS settings for this origin configuration through the **Origin TLS Settings** section.
 
     1.  Most web servers require a SNI hint during the TLS handshake. Define this SNI hint through the **Use SNI** option. By default, this option is set to the value assigned to the **Override Host Header** option. 
@@ -226,6 +226,31 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 - **`{{ PRODUCT_LOWER }}_serverless`**: Used for serving requests through the {{ PRODUCT }} cloud.
 - **`{{ PRODUCT_LOWER }}_static`**: Used for serving [static assets](/guides/performance/cdn_as_code/edgio_config#staticassets).
 
+### HTTP/3 {/*http-3*/}
+
+Enable HTTP/3 and QUIC by including the `alt-svc` header in the response sent to the client. This response header informs the client that it may communicate with the CDN through QUIC, the set of supported QUIC versions, and the length of time that this data should be cached by the client.
+
+**Key information:**
+
+-   Once a QUIC-compatible user agent discovers that a server supports QUIC, it will attempt to leverage QUIC for all subsequent requests to the same domain until the connection ends. 
+-   By default, QUIC is supported on the latest versions of Google Chrome, Chromium, and Opera. However, it may require enablement. If a user agent doesn't support QUIC, then it will communicate with the CDN using HTTP/2 over TCP.
+-   Our QUIC implementation supports the Bottleneck Bandwidth and Round-trip propagation time (BBR) congestion control algorithm without requiring additional CDN setup. However, BBR will only be used when a QUIC-enabled client (e.g., Google Chrome) requests it. 
+-   The `alt-svc` header contains a `v` (version) parameter that identifies the supported QUIC versions. We strongly recommend that you define this response header through the [Set Response Headers (set_response_headers) feature](/guides/performance/rules/features#set-response-headers) and set the `v` parameter to the `%{quic_altsvc_versions}` variable. This variable returns the QUIC versions supported by our service. 
+
+    <Callout type="important">
+    
+      We may add or drop support for QUIC versions at any time. Ensure that you only advertise supported versions by setting the `v` parameter to the `%{quic_altsvc_versions}` variable
+
+    </Callout>
+
+-   **Sample alt-svc header name/value:**
+    `alt-svc: quic=":443"; ma=2592000; v="49,48,46,43",h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000`
+
+    The above sample response header indicates to the client that:
+
+    -   QUIC is only supported for traffic over port 443 as defined by the `quic` parameter.
+    -   The user agent should treat the connection as fresh for 259,200 seconds (i.e., 3 days) as determined by the `ma` (max-age) parameter.
+    -   The `v` (version) parameter informs the client as to the supported QUIC versions.
 
 ### Load Balancing {/*load-balancing*/}
 

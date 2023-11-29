@@ -235,7 +235,7 @@ Enable HTTP/3 and QUIC by including the `alt-svc` header in the response sent to
 -   Once a QUIC-compatible user agent discovers that a server supports QUIC, it will attempt to leverage QUIC for all subsequent requests to the same domain until the connection ends. 
 -   By default, QUIC is supported on the latest versions of Google Chrome, Chromium, and Opera. However, it may require enablement. If a user agent doesn't support QUIC, then it will communicate with the CDN using HTTP/2 over TCP.
 -   Our QUIC implementation supports the Bottleneck Bandwidth and Round-trip propagation time (BBR) congestion control algorithm without requiring additional CDN setup. However, BBR will only be used when a QUIC-enabled client (e.g., Google Chrome) requests it. 
--   The `alt-svc` header contains a `v` (version) parameter that identifies the supported QUIC versions. We strongly recommend that you define this response header within a rule and set this parameter to the `%{quic_altsvc_versions}` variable. This variable returns the QUIC versions supported by our service. 
+-   The `alt-svc` header contains a `v` (version) parameter that identifies the supported QUIC versions. We strongly recommend that you define this response header through the [Set Response Headers (set_response_headers) feature](/guides/performance/rules/features#set-response-headers) and set the `v` parameter to the `%{quic_altsvc_versions}` variable. This variable returns the QUIC versions supported by our service. 
 
     <Callout type="important">
     

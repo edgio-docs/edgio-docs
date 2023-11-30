@@ -16,7 +16,9 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 Define an edge function within your {{ ROUTES_FILE }} file by adding the `edge_function` property to a route. The `edge_function` property accepts a string representing the path to the edge function file.
 
 ```js filename="./routes.js"
-new Router().get('/', {
+import {Router} from '@edgio/core/router';
+
+export default new Router().get('/', {
   edge_function: './path/to/function.js',
 });
 ```
@@ -298,15 +300,13 @@ Fetching from a cloud function is akin to fetching from an origin server. You ca
 To fetch from a cloud function, you must meet the following requirements:
 
 - {{ PRODUCT }} version 7.4.1 or later.
-- A defined route in your `{{ ROUTES_FILE }}`. This can be set up via a connector or by using `compute` or `proxy` along with the `transformResponse` option.
+- A defined route in your `{{ ROUTES_FILE }}`. This can be a route defined via a connector or by using `compute` or `proxy` along with the `transformResponse` option.
 - The origin `edgio_serverless` must be specified in the request (see [System-Defined Origins](/guides/basics/hostnames_and_origins#system-defined-origins)).
 - Forwarding of the original request headers.
 
 Below is an example demonstrating how to fetch from a Cloud Function:
 
-```js filename="{{ ROUTES_FILE }}"
-// This file was automatically added by edgio init.
-// You should commit this file to source control.
+```js filename="./routes.js"
 import {Router} from '@edgio/core/router';
 import {nextRoutes} from '@edgio/next';
 
@@ -314,9 +314,8 @@ export default new Router()
   // NextRoutes automatically adds routes for all Next.js pages and their assets
   .use(nextRoutes)
 
-  // `/` is handled by Next.js, but we can also add an edge function to it
   .match('/', {
-    edge_function: 'edge-functions/index.js',
+    edge_function: './edge-functions/index.js',
   });
 ```
 

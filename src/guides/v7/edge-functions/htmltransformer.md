@@ -306,7 +306,7 @@ The HtmlTransformer supports the following selector types: (ref: [lol_html::Sele
 |`E:first-of-type`|an `E` element, first sibling of its type|
 |`E:not(s)`|an `E` element that does not match either compound selector `s`|
 |`E.warning`|an `E` element belonging to the class warning|
-|`E#myid`|an 1 element with ID equal to `myid`|
+|`E#myid`|an `E` element with ID equal to `myid`|
 |`E[foo]`|an `E` element with a `foo` attribute|
 |`E[foo="bar"]`|an `E` element whose `foo` attribute value is exactly equal to `bar`|
 |`E[foo="bar" i]`|an `E` element whose `foo` attribute value is exactly equal to any (ASCII-range) case-permutation of `bar`|

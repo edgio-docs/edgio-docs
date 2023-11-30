@@ -279,7 +279,7 @@ Flushes the transformer and completes the transformation. This function must be 
 
 ## Definitions {/* definitions */}
 
-The HtmlTransformer definitions are an array of objects that define the transformations performed on the HTML stream. These definition objects can contain one selected and one asynchronous callback:
+The HtmlTransformer definitions are an array of objects that define the transformations performed on the HTML stream. These definition objects can contain one selector and one asynchronous callback:
 * `selector:` - A string defining the HTML selector to match. (See [Selectors](#selectors))
 * `comment:` - The `async (Comment) => { }` function called when an HTML [comment](#comment) is found matching the selector.
 * `element:` - The `async (Element) => { }` function called when an HTML [element](#element) is found matching the selector.

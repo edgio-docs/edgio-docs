@@ -277,17 +277,17 @@ Flushes the transformer and completes the transformation. This function must be 
 
 ## Definitions {/* definitions */}
 
-The HtmlTransformer definitions are an array of objects that define the transformations performed on the HTML stream. These definition objects can contain one selected and one callback:
+The HtmlTransformer definitions are an array of objects that define the transformations performed on the HTML stream. These definition objects can contain one selected and one asynchronous callback:
 * `selector:` - A string defining the HTML selector to match. (See [Selectors](#selectors))
-* `comment:` - The `(Comment) => { }` function called when an HTML [comment](#comment) is found matching the selector.
-* `element:` - The `(Element) => { }` function called when an HTML [element](#element) is found matching the selector.
-* `text:` - The `(Text) => { }` function called when [text](#text) is found matching the selector.
+* `comment:` - The `async (Comment) => { }` function called when an HTML [comment](#comment) is found matching the selector.
+* `element:` - The `async (Element) => { }` function called when an HTML [element](#element) is found matching the selector.
+* `text:` - The `async (Text) => { }` function called when [text](#text) is found matching the selector.
 
 These definition objects contain one callback that is not associated with a selector:
-* `doc_comment:` - The `(Comment) => { }` function called when an HTML [comment](#comment) is found in the document.
-* `doc_text:` - The `(Text) => { }` function called when [text](#text) is found in the document.
-* `doc_type:` - The `(Doctype) => { }` function called when the HTML [document type](#doctype) is found in the document.
-* `doc_end:`- The `(DocEnd) => { }` function called when the [end](#doc_end) of the HTML document is reached.
+* `doc_comment:` - The `async (Comment) => { }` function called when an HTML [comment](#comment) is found in the document.
+* `doc_text:` - The `async (Text) => { }` function called when [text](#text) is found in the document.
+* `doc_type:` - The `async (Doctype) => { }` function called when the HTML [document type](#doctype) is found in the document.
+* `doc_end:`- The `async (DocEnd) => { }` function called when the [end](#doc_end) of the HTML document is reached.
 
 
 ### Selectors {/* selectors */}

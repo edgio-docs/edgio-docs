@@ -237,6 +237,10 @@ export async function handleHttpRequest(request, context) {
           return pump()
           function pump() {
             return originResponseReader.read().then(({ done, value }) => {
+              if (value && value.length) {
+                // Decode and enqueue the next chunk from the origin stream to the html transformer stream
+                htmlTransformer.write(textDecoder.decode(value))
+              }
               if (done) {
                 // When originResponseReader reaches the end of the stream,
                 // flush the htmlTransformer stream and the originResponseController.
@@ -244,8 +248,6 @@ export async function handleHttpRequest(request, context) {
                 originResponseController.close()
                 return
               }
-              // Decode and enqueue the next chunk from the origin stream to the html transformer stream
-              htmlTransformer.write(textDecoder.decode(value))
               return pump()
             })
           }

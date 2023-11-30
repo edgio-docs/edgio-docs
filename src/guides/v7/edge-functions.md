@@ -360,7 +360,7 @@ export async function handleHttpRequest(request) {
 
 <ExampleButtons
   title="Fetching from Cloud Functions"
-  siteUrl="https://tristan-lee-edgio-v7-ef-cloud-fetch-example-default.glb.edgio.link/"
+  siteUrl="https://edgio-community-examples-v7-ef-cloud-fetch-live.glb.edgio.link/"
   repoUrl="https://github.com/edgio-docs/edgio-v7-ef-cloud-fetch-example"
 />
 

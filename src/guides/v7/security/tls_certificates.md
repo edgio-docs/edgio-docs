@@ -26,12 +26,7 @@ title: TLS Certificates
 -   [Hostnames:](/guides/basics/hostnames_and_origins#hostnames) Register the hostnames that will serve traffic for each environment.
 -   [Certificate Authority Authorization:](#certificate-authority-authorization) The Let's Encrypt certificate authority (CA) must be allowed to issue certificates for each registered hostname. 
 -   [Domain Control Validation:](#domain-control-validation) Prove your control over that domain by adding an `_acme-challenge` CNAME record to it.
-
-<Callout type="info">
-
-  Enable TLS 1.3 (recommended) or 1.2 encryption on your web server(s). 
-
-</Callout>
+-   **Web Server(s):** Enable or verify that your web servers support TLS 1.3 (recommended) or 1.2 encryption. 
 
 #### Certificate Authority Authorization {/*certificate-authority-authorization*/}
 

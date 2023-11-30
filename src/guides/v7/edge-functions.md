@@ -99,7 +99,7 @@ Edge Functions global namespace provide access to the following:
 
 <Callout type="info">
 
-Edge functions use a modified version of the standard [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) API. See the [Unsupported Methods and Properties](#request-unsupported-methods-and-properties) section for more information.
+  Edge functions use a modified version of the standard [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) API. See the [Unsupported Methods and Properties](#request-unsupported-methods-and-properties) section for more information.
 
 </Callout>
 
@@ -135,7 +135,7 @@ The following properties and methods from the standard [`Request`](https://devel
 
 <Callout type="info">
 
-Using an unsupported method or property will throw an error.
+  Using an unsupported method or property will throw an error.
 
 </Callout>
 
@@ -143,7 +143,7 @@ Using an unsupported method or property will throw an error.
 
 <Callout type="info">
 
-Edge functions use a modified version of the standard [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) API. See the [Unsupported Methods and Properties](#response-unsupported-methods-and-properties) section for more information.
+  Edge functions use a modified version of the standard [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) API. See the [Unsupported Methods and Properties](#response-unsupported-methods-and-properties) section for more information.
 
 </Callout>
 
@@ -199,7 +199,7 @@ export async function handleHttpRequest(request, context) {
 
 <Callout type="important">
  
-As of v7.2.3, the `context.respondWith()` function is deprecated. You must return a `Response` object or a `Promise` that resolves to a `Response` object to respond to the client.
+  As of v7.2.3, the `context.respondWith()` function is deprecated. You must return a `Response` object or a `Promise` that resolves to a `Response` object to respond to the client.
 
 </Callout>
 
@@ -295,14 +295,18 @@ export async function handleHttpRequest(request, context) {
   Fetching from Cloud Functions requires {{PRODUCT}} version 7.4.1 or later.
 </Callout>
 
-Fetching from a cloud function is akin to fetching from an origin server. You can send requests to your [cloud function](/guides/performance/serverless_compute) using `fetch()`. For example, when using a framework compatible with {{ PRODUCT_PLATFORM }} like Next.js, you can direct the incoming request to your JavaScript backend. This allows you to process and modify the response at the edge before sending it back to the client, enabling personalization and other adjustments.
+Fetching from a cloud function is similar to fetching from an origin server. The key difference is that you must specify the `edgio_serverless` origin in the request.
+This instructs the request to the cloud function origin where it is then handled by your JavaScript backend.
+
+For example, when using a framework compatible with {{ PRODUCT_PLATFORM }} like Next.js, you can direct the incoming request to the Next.js server.
+This allows you to process and modify the response that Next.js provides at the edge before sending it back to the client, enabling personalization and other adjustments.
 
 To fetch from a cloud function, you must meet the following requirements:
 
 - {{ PRODUCT }} version 7.4.1 or later.
-- A defined route in your `{{ ROUTES_FILE }}`. This can be a route defined via a connector or by using `compute` or `proxy` along with the `transformResponse` option.
+- A route in your `{{ ROUTES_FILE }}` that is defined as a cloud function. This can be a route via a connector such as `NextRoutes` or by using `compute` or `proxy` along with the `transformResponse` option.
 - The origin `edgio_serverless` must be specified in the request (see [System-Defined Origins](/guides/basics/hostnames_and_origins#system-defined-origins)).
-- Forwarding of the original request headers.
+- Forwarding of the original request parameters including the method, headers, and body.
 
 Below is an example demonstrating how to fetch from a Cloud Function:
 
@@ -314,6 +318,7 @@ export default new Router()
   // NextRoutes automatically adds routes for all Next.js pages and their assets
   .use(nextRoutes)
 
+  // '/' is a route defined by NextRoutes but overridden here to be handled by the edge function
   .match('/', {
     edge_function: './edge-functions/index.js',
   });

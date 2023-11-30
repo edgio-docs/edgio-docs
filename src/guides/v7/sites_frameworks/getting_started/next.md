@@ -26,15 +26,6 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
 
 -->
 
-## Supported Versions {/* supported-versions */}
-
-{{ PRODUCT_NAME }} supports the following versions of Next.js and Node.js:
-
-| Next.js Version | Node.js Version                                  | {{ PRODUCT }} Version |
-| --------------- | ------------------------------------------------ | --------------------- |
-| 9.x - 13.x      | [16.x](/guides/install_nodejs)                   | 7.x                   |
-| 14.x            | [18.x](/guides/install_nodejs#nodejs-18-support) | 7.4.0+                |
-
 ## Supported Features {/* supported-features */}
 
 {{ PRODUCT_NAME }} supports all of the most powerful features of Next.js, including:
@@ -49,7 +40,7 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
 - [`getServerSideProps`](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
 - [`getInitialProps`](https://nextjs.org/docs/api-reference/data-fetching/get-initial-props)
 
-{{ PREREQ.md }}
+{{ NEXTJS_PREREQ.md }}
 
 ## Getting Started {/* getting-started */}
 

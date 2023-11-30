@@ -9,6 +9,12 @@ title: TLS Certificates
     -   Allow {{ PRODUCT }} to [autogenerate a TLS certificate for each of your hostnames.](#autogenerating-tls-certificates)
     -   [Upload your own TLS certificate.](#uploading-your-certificate)
 
+    <Callout type="info">
+
+      It may take up to 6 hours to install a new TLS certificate across our entire network.
+
+    </Callout>
+
 -   **{{ PRODUCT }} Domains:** {{ PRODUCT }} provides a wildcard TLS certificate for the domains that we automatically generate when you deploy to your property. This certificate is managed by {{ PRODUCT }} and it does not require configuration.
 
     **Sample domain:** `my-organization-my-property-feature-a-1234.{{ LINK_DOMAIN }}`
@@ -20,6 +26,7 @@ title: TLS Certificates
 -   [Hostnames:](/guides/basics/hostnames_and_origins#hostnames) Register the hostnames that will serve traffic for each environment.
 -   [Certificate Authority Authorization:](#certificate-authority-authorization) The Let's Encrypt certificate authority (CA) must be allowed to issue certificates for each registered hostname. 
 -   [Domain Control Validation:](#domain-control-validation) Prove your control over that domain by adding an `_acme-challenge` CNAME record to it.
+-   **Web Server(s):** Enable or verify that your web servers support TLS 1.3 (recommended) or 1.2 encryption. 
 
 #### Certificate Authority Authorization {/*certificate-authority-authorization*/}
 
@@ -168,6 +175,12 @@ Once the above requirements are met, you should verify that a TLS certificate fo
 3.  If a TLS certificate has not yet been generated, you may manually generate it by clicking <Image inline src="/images/v7/icons/recheck-validation.png" alt="Recheck Validation icon" /> under the **ACME Challenge Record** column.
 
     {{ PRODUCT }} will generate a TLS certificate for that hostname within a few minutes.
+
+    <Callout type="info">
+
+      It may take up to 6 hours to install a new TLS certificate across our entire network.
+
+    </Callout>
 
 4.  Wait a few minutes and then verify that a certificate was created for that hostname.
 

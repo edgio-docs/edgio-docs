@@ -123,6 +123,14 @@ const nav = {
               title: 'Cache Key',
               path: 'performance/caching/cache_key',
             },
+            {
+              title: '',
+              path: '',
+            },
+            {
+              title: 'Cache Status Codes',
+              path: 'performance/caching/cache_status_codes',
+            },
           ],
         },
         // {
@@ -132,6 +140,16 @@ const nav = {
         {
           title: 'Predictive Prefetch',
           path: 'performance/prefetching',
+          routes: [
+            {
+              title: 'Prefetching with a Script Tag',
+              path: 'performance/prefetching/prefetching_script_tag',
+            },
+            {
+              title: 'Prefetching with Edgio Sites',
+              path: 'performance/prefetching/prefetching_edgio_sites',
+            },
+          ],
         },
         {
           title: 'Traffic Splitting',

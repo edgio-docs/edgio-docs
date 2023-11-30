@@ -4,7 +4,7 @@ title: Deployments
 
 A deployment is required to apply changes to your code or configuration to an environment. 
 
-## Deploying 
+## Deploying {/*deploying*/}
 
 Deploy to an environment using either of the following methods:
 
@@ -39,10 +39,35 @@ Deploy to an environment using either of the following methods:
 
 {{ system_origins_callout.md }}
 
+Upon deploying a build, view deployment information from within the {{ PORTAL }} by navigating to the desired environment, clicking on **Deployments**, and then clicking the deployment's version number. 
+
+![Deployment version number](/images/v7/basics/deployments-version-number.png?width=450)
+
+This deployment-specific page provides information about the deployment, such as:
+
+-   How and when it was deployed.
+-   Current status. 
+-   URL(s) through which you can serve traffic for your website. These URL(s) are listed under the **URL** section.
+-   If you are using CDN-as-code, then we also provide:
+    -   A permalink for testing your site. This type of link bypasses the edge of our network and serves traffic directly from the {{ PRODUCT }} cloud.
+    -   [Server logs](/guides/logs/server_logs) through which you can view console messages defined within your application.
+
+## Deployment Status {/*deployment-status*/}
+
+View status information for all deployments from the **Deployments** page. Online deployments are indicated by <Image inline src="/images/v7/icons/deployment-online.png" alt="Solid green circle" />, while retired deployments are indicated by <Image inline src="/images/v7/icons/deployment-retired.png" alt="Faint green circle" />.
+
+Each environment may have up to 5 online deployments. If you are using CDN-as-code, then you may use the permalink associated with any online deployment to test your site. 
+
+Although older deployments are considered retired, you may revive a deployment by visiting its permalink. Once the deployment has been revived, the permalink will once again load your site. Additionally, we will retire the next oldest online deployment. 
 
 ## Versioning {/*versioning*/}
 
-Deployments are versioned. Each deployment is assigned a unique version number. This allows you to quickly roll back to a previous version when a breaking change is introduced into an environment. 
+Upon deploying changes, {{ PRODUCT }} assigns a unique version number to the deployment. This allows you to track the changes deployed to this environment. 
+
+**Key information:**
+-   {{ PRODUCT }} increments this version number by 1 for each new deployment.
+-   You can quickly roll back to any previous version. For example, you may wish to roll back to a previous deployment when a breaking change is introduced into an environment.  
+-   Each deployment is also assigned an environment version number. Deploying new changes increments both the deployment and the environment version number. However, rolling back to a previous environment version will only increment the deployment version number. The environment version number, on the other hand, will be set to the environment version to which you rolled back.
 
 **To roll back to a previous version**
 

@@ -354,6 +354,10 @@ export async function handleHttpRequest(request) {
     method: request.method,
     headers: request.headers,
   });
+
+  // handle the response as needed
+
+  return response;
 };
 ```
 

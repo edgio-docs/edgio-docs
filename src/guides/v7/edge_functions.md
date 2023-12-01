@@ -105,8 +105,8 @@ Edge Functions global namespace provide access to the following:
 
 <Callout type="info">
 
-Edge functions use a modified version of the standard [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) API. See the [Unsupported Methods and Properties](#request-unsupported-methods-and-properties) section for more information.
-
+  Edge functions use a modified version of the standard [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) API. See the [Unsupported Methods and Properties](#request-unsupported-methods-and-properties) section for more information.
+  
 </Callout>
 
 Edge functions are passed a `Request` instance representing the incoming request. This object provides methods and properties for accessing the request's headers, body, URL, and more.
@@ -141,7 +141,7 @@ The following properties and methods from the standard [`Request`](https://devel
 
 <Callout type="info">
 
-Using an unsupported method or property will throw an error.
+  Using an unsupported method or property will throw an error.
 
 </Callout>
 
@@ -149,8 +149,8 @@ Using an unsupported method or property will throw an error.
 
 <Callout type="info">
 
-Edge functions use a modified version of the standard [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) API. See the [Unsupported Methods and Properties](#response-unsupported-methods-and-properties) section for more information.
-
+  Edge functions use a modified version of the standard [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) API. See the [Unsupported Methods and Properties](#response-unsupported-methods-and-properties) section for more information.
+  
 </Callout>
 
 Origin fetch requests and edge functions return a `Response` instance representing the response. This object provides methods and properties for accessing and setting the response's headers, body, status code, and more. Create a response through the `Response` class or by calling the `fetch()` function. See the [Edge Function Namespace](#edge-function-namespace) section for more information.
@@ -378,7 +378,9 @@ This means that if you make a fetch request to the same URL within 5 minutes, th
 ## Fetching from Cloud Functions {/* fetching-from-cloud-functions */}
 
 <Callout type="important">
+
   Fetching from Cloud Functions requires {{PRODUCT}} version 7.4.1 or later.
+
 </Callout>
 
 Fetching from a [cloud function](/guides/performance/serverless_compute) is similar to fetching from an origin server. The key difference is that you must specify the `edgio_serverless` origin in the request.

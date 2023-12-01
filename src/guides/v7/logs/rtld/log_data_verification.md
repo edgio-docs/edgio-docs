@@ -7,9 +7,18 @@ Check for missing log data by either:
 -   Reviewing recent log performance statistics.
 -   Looking for gaps in the sequential number reported by each Real-Time Log Delivery software agent.
 
+<Callout type="info">
+
+  If our service is unable to deliver log data, then we will store it for up to 3 days and deliver it when communication resumes. If we cannot deliver log data within 3 days, then it will be permanently deleted.
+
+</Callout>
+
 ## Log Performance Statistics {/*log-performance-statistics*/}
 
 The **Log Delivery Performance** page indicates the total number of log delivery attempts. It also provides a donut graph for successful and failed log delivery attempts for up to the last 30 days.
+
+
+
 
 <Callout type="info">
 

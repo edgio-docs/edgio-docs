@@ -194,10 +194,6 @@ const nav = {
           path: 'performance/traditional_sites',
         },
         {
-          title: 'Third-Party CDNs',
-          path: 'performance/third_party_cdns',
-        },
-        {
           title: '',
           path: '',
         },

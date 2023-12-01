@@ -328,6 +328,35 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
+### Subrequest Limitations {/* subrequest-limitations */}
+
+Response status codes of subrequests must be must be >= 200 and <= 599, and not 204 or 304. If the response status code is not within this range, the edge function will throw an error.
+
+If you are forwarding the original request to your origin and encounter this error, it may be necessary to remove specific cache directives from the request before sending it to the origin.
+
+The following sample code strips the headers from the request before sending it to the origin:
+
+```js filename="./edge-functions/example.js"
+export async function handleHttpRequest(request) {
+  /* ... */
+
+  // Remove headers that could cause the a response status of 204/304 to be returned.
+  const headersToRemove = [
+    'etag',
+    'if-modified-since',
+    'if-none-match',
+    'last-modified',
+  ];
+  headersToRemove.forEach((header) => request.headers.delete(header));
+
+  const response = await fetch(request.url, {
+    edgio: { origin: 'web' },
+    method: request.method,
+    headers: request.headers,
+  });
+};
+```
+
 <!-- ## Caching fetch() Requests {/* caching-fetch-requests */}
 
 Caching fetch requests within your edge function can reduce the load on your origins and deliver content faster to your users. It may also mitigate timeout issues due to an edge function exceeding the [walltime limit](#limitations).

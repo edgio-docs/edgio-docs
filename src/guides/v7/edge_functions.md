@@ -23,11 +23,11 @@ export default new Router()
     edge_function: './edge-functions/index.js',
   })
   .match('/api/*', {
-    edge_function: './edge-functions/api.ts',
+    edge_function: './edge-functions/api.js',
   });
 ```
 
-Each edge function is stored in a separate file and assigned to a specific route in your `routes.js` file. Edge functions support both JavaScript and TypeScript files.
+Each edge function is stored in a separate file and assigned to a specific route in your `routes.js` file. Edge functions support only JavaScript (`.js`) files.
 
 An edge function file must export the following entry point:
 

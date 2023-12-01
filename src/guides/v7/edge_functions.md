@@ -13,7 +13,7 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 
 ## Defining Edge Functions {/* defining-edge-functions */}
 
-Define an edge function rule within your {{ ROUTES_FILE }} file by adding the `edge_function` property to a route. The `edge_function` property accepts a string representing the path to the edge function file.
+Define an edge function within your {{ ROUTES_FILE }} file by adding the `edge_function` property to a route. The `edge_function` property accepts a string representing the path to the edge function file.
 
 ```js filename="./routes.js"
 new Router()
@@ -214,7 +214,7 @@ As of v7.2.3, the `context.respondWith()` function is deprecated. You must retur
 
 ## Origin Requests Using fetch() {/* origin-requests-using-fetch */}
 
-Before making a fetch request (also referred to as a _subrequest_), you need to define the origin in the `{{ CONFIG_FILE }}` file:
+Before issuing a fetch request (also known as a subrequest) to an origin, you must define an origin configuration within the `{{ CONFIG_FILE }}` file:
 
 ```js filename="{{ CONFIG_FILE }}"
 module.exports = {
@@ -244,7 +244,7 @@ module.exports = {
 
 Learn more about origin configuration in our [CDN-as-Code](/guides/performance/cdn_as_code#config-file) guide.
 
-To request a resource from an origin server using the `fetch()` function, specify the URL or a `Request` object as the first argument. The second argument is also required and is where you specify the name of the origin, plus any additional options compatible with the `fetch()` function.
+Request a resource from an origin by passing two required arguments to the `fetch()` function. Set the first argument to a URL or a `Request` object. Set the second argument to the name of the origin and any additional options compatible with the `fetch()` function.
 
 ```js filename="./edge-functions/example.js"
 export async function handleHttpRequest(request, context) {
@@ -263,7 +263,7 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-You may define a utility function such as [`createFetchForOrigin()`](#createFetchForOrigin) to create a reusable `fetch()` function that includes the origin server. See the [Polyfills](#polyfills) section for more information.
+Create a reusable `fetch()` function by defining a utility function such as [`createFetchForOrigin()`](#createFetchForOrigin). See the [Polyfills](#polyfills) section for more information.
 
 ```js filename="./edge-functions/example.js"
 export async function handleHttpRequest(request, context) {
@@ -361,7 +361,7 @@ These caching options provide you with granular control over how your fetch requ
 
 Edge function subrequests are cached at the edge for 5 minutes under the following conditions:
 
-- The origin does not offer a `Cache-Control` header in the response.
+- The response from the origin does not include a `Cache-Control` header.
 - The response is deemed cacheable based on our [default caching policy](/guides/performance/caching#default-caching-policy).
 
 This means that if you make a fetch request to the same URL within 5 minutes, the response will be served from the cache instead of going to the origin. <!-- This behavior can be overridden by specifying the `bypass_cache` option. --> Cache directives from the origin response will also be respected as follows:
@@ -370,9 +370,9 @@ This means that if you make a fetch request to the same URL within 5 minutes, th
   - With `Cache-Control: max-age=60, s-maxage=900`, the fetch request will be cached for 15 minutes, considering `s-maxage=900`.
   - With `Cache-Control: max-age=600`, the response will be cached for 10 minutes, considering `max-age=600`.
   - With `Cache-Control: no-store, no-cache`, the response will not be cached.
-- If no `Cache-Control` header is present, the CDN will look at other headers and information to determine if the request should be cached. These parameters include the HTTP method, response status code, `Date` header, `Last-Modified` header, etc.
+- If the `Cache-Control` header is not present for a cache-eligible response, the CDN will check for the `Expires` header.
 - If the CDN determines that the response can be cached, it will be cached for 5 minutes on the edge.
-- If the response is cached based on the above logic, subsequent fetch requests will fetch from the cache, and only go to the origin if the response has expired or doesn't exist in the cache.
+- If the response is cached based on the above logic, subsequent fetch requests will be served from cache until the cached response has expired or been purged. At which point, the fetch request will go to the origin.
 
 ## Testing Locally {/* testing-locally */}
 
@@ -395,7 +395,7 @@ Note that Edge Functions must be enabled for your {{ PORTAL }} team in order to 
 
 ## Limitations of Edge Functions {/* limitations */}
 
-Edge functions are designed to operate only on edge links and will not work with permalinks. Permalinks bypass the edge network and directly serve the content from the origin, hence any edge function logic will not be applied (or may operate in a degraded capacity).
+Edge functions are only compatible with edge links. Permalinks are unsupported since they bypass the edge network and serve content directly from the origin. This behavior causes either degraded functionality or prevents edge function logic from being applied.
 
 When deploying your project, it's important to distinguish between the edge link and the permalink for proper testing and functionality verification. The following screenshot indicates where you can find the permalink and edge link for your project in the {{ PORTAL }}.
 

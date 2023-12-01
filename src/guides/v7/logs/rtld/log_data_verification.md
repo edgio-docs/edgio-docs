@@ -17,12 +17,9 @@ Check for missing log data by either:
 
 The **Log Delivery Performance** page indicates the total number of log delivery attempts. It also provides a donut graph for successful and failed log delivery attempts for up to the last 30 days.
 
-
-
-
 <Callout type="info">
 
-  RTLD automatically retries log delivery after a failed attempt. As a result, failed log delivery attempts does not necessarily mean that the corresponding log data was not eventually delivered. Find out if there are missing log files by [manually checking for gaps in the sequence number](#checking-for-sequence-number-gaps) reported by each Real-Time Log Delivery software agent. 
+  RTLD automatically retries log delivery after a failed attempt. As a result, failed log delivery attempts do not necessarily mean that a RTLD software agent was unable to eventually deliver the corresponding log data. Find out if there are missing log files by [manually checking for gaps in the sequence number](#checking-for-sequence-number-gaps) reported by each RTLD software agent. 
 
 </Callout>
 

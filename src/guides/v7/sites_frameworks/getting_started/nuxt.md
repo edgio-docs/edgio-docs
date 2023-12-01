@@ -352,22 +352,13 @@ Within the {{ PRODUCT }} router, add the following:
 ```js filename="routes.js"
 import {Router} from '{{ PACKAGE_NAME }}/core/router';
 import {nuxtRoutes} from '{{ PACKAGE_NAME }}/nuxt';
-import { EDGIO_SERVERLESS_HINT_HEADER, EDGIO_SERVERLESS_HINTS } from '@edgio/core/constants'
-import { SERVERLESS_ORIGIN_NAME } from '@edgio/core/origins'
 
 export default new Router()
   .use(nuxtRoutes)
 
   // Instruct {{ PRODUCT }} to send traffic for /sitemap.xml to Nuxt middleware
-  .match('/sitemap.xml', {
-    headers: {
-      set_request_headers: {
-        `+${EDGIO_SERVERLESS_HINT_HEADER}`: EDGIO_SERVERLESS_HINTS.app,
-      },
-    },
-    origin: {
-      set_origin: SERVERLESS_ORIGIN_NAME,
-    },
+  .match('/sitemap.xml', ({ renderWithApp}) => {
+    renderWithApp();
   })
 ```
 

@@ -223,7 +223,7 @@ This cookie assigns a value from 0 - 99 to a client. Once a client has been assi
 
 #### {{ HEADER_PREFIX }}-experiments-info Upstream Request Header {/*-experiments-info-upstream-request-header*/}
 
-The `{{ HEADER_PREFIX }}-experiments-info` request header tracks the variants assigned to a client. {{ PRODUCT }} adds this header to requests proxied through our network to the origin or the {{ PRODUCT }} Cloud. 
+The `{{ HEADER_PREFIX }}-experiments-info` request header tracks the variants assigned to a client. {{ PRODUCT }} adds this header to requests proxied through our network to the origin or the {{ PRODUCT }} cloud. 
 
 <Callout type="important">
 

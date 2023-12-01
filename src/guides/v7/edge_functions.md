@@ -371,7 +371,6 @@ This means that if you make a fetch request to the same URL within 5 minutes, th
   - With `Cache-Control: max-age=600`, the response will be cached for 10 minutes, considering `max-age=600`.
   - With `Cache-Control: no-store, no-cache`, the response will not be cached.
 - If the `Cache-Control` header is not present for a cache-eligible response, the CDN will check for the `Expires` header.
-- If the CDN determines that the response can be cached, it will be cached for 5 minutes on the edge.
 - If the response is cached based on the above logic, subsequent fetch requests will be served from cache until the cached response has expired or been purged. At which point, the fetch request will go to the origin.
 
 ## Testing Locally {/* testing-locally */}

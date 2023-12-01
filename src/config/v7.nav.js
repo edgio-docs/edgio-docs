@@ -225,7 +225,7 @@ const nav = {
     },
     {
       title: 'Edge Functions',
-      path: 'edge-functions',
+      path: 'edge_functions',
       icon: 'edge-functions',
     },
     {

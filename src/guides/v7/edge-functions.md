@@ -99,7 +99,7 @@ Edge Functions global namespace provide access to the following:
 
 <Callout type="info">
 
-  Edge functions use a modified version of the standard [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) API. See the [Unsupported Methods and Properties](#request-unsupported-methods-and-properties) section for more information.
+Edge functions use a modified version of the standard [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) API. See the [Unsupported Methods and Properties](#request-unsupported-methods-and-properties) section for more information.
 
 </Callout>
 
@@ -135,7 +135,7 @@ The following properties and methods from the standard [`Request`](https://devel
 
 <Callout type="info">
 
-  Using an unsupported method or property will throw an error.
+Using an unsupported method or property will throw an error.
 
 </Callout>
 
@@ -143,7 +143,7 @@ The following properties and methods from the standard [`Request`](https://devel
 
 <Callout type="info">
 
-  Edge functions use a modified version of the standard [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) API. See the [Unsupported Methods and Properties](#response-unsupported-methods-and-properties) section for more information.
+Edge functions use a modified version of the standard [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) API. See the [Unsupported Methods and Properties](#response-unsupported-methods-and-properties) section for more information.
 
 </Callout>
 
@@ -295,20 +295,69 @@ export async function handleHttpRequest(request, context) {
   Fetching from Cloud Functions requires {{PRODUCT}} version 7.4.1 or later.
 </Callout>
 
-Fetching from a cloud function is similar to fetching from an origin server. The key difference is that you must specify the `edgio_serverless` origin in the request.
+Fetching from a [cloud function](/guides/performance/serverless_compute) is similar to fetching from an origin server. The key difference is that you must specify the `edgio_serverless` origin in the request.
 This instructs the request to the cloud function origin where it is then handled by your JavaScript backend.
 
-For example, when using a framework compatible with {{ PRODUCT_PLATFORM }} like Next.js, you can direct the incoming request to the Next.js server.
+The following sample code shows different ways a cloud function might be defined:
+
+```js filename="./routes.js"
+import {Router} from '@edgio/core/router';
+import {nextRoutes} from '@edgio/next';
+
+export default new Router()
+  ///////////////////////////////////////////
+  // Cloud function defined by a connector //
+  ///////////////////////////////////////////
+  .use(nextRoutes) // defines /cart route based on Next.js App/Pages router  (eg. ./src/app/cart/page.tsx)
+  .match('/cart', { // edge function to handle /cart route
+    edge_function: './edge-functions/cart.js',
+  })
+
+  ///////////////////////////////////////
+  // Cloud function defined by compute //
+  ///////////////////////////////////////
+  .match('/session', ({compute}) => { // defines /session route as a cloud function
+    compute(async (req, res) => {
+      // complex logic not suitable for an edge function
+      /* ... */
+
+      res.body = JSON.stringify(/* ... */);
+    });
+  })
+  .match('/session', { // edge function to handle /session route
+    edge_function: './edge-functions/session.js',
+  })
+
+  ///////////////////////////////////////
+  // Cloud function defined by proxy   //
+  ///////////////////////////////////////
+  .match('/api', ({proxy}) => { // defines /api route as a cloud function
+    proxy('api', {
+      transformResponse: async (res) => {
+        // complex logic not suitable for an edge function
+        /* ... */
+
+        res.body = JSON.stringify(/* ... */);
+      },
+    });
+  })
+  .match('/api', { // edge function to handle /api route
+    edge_function: './edge-functions/api.js',
+  });
+```
+
+For example, when using a framework compatible with {{ PRODUCT_PLATFORM }} like Next.js, you can forward the incoming request to the Next.js server.
 This allows you to process and modify the response that Next.js provides at the edge before sending it back to the client, enabling personalization and other adjustments.
 
 To fetch from a cloud function, you must meet the following requirements:
 
 - {{ PRODUCT }} version 7.4.1 or later.
-- A route in your `{{ ROUTES_FILE }}` that is defined as a cloud function. This can be a route via a connector such as `NextRoutes` or by using `compute` or `proxy` along with the `transformResponse` option.
+- A route that is defined as a cloud function. This can be a route via a connector such as `NextRoutes` or by using `compute` or `proxy` along with the `transformResponse` option.
+- A route that uses an edge function. This must match path as the cloud function and be defined **after** the cloud function route (see sample code above).
 - The origin `edgio_serverless` must be specified in the request (see [System-Defined Origins](/guides/basics/hostnames_and_origins#system-defined-origins)).
 - Forwarding of the original request parameters including the method, headers, and body.
 
-Below is an example demonstrating how to fetch from a Cloud Function:
+The following sample code demonstrates how to fetch and manipulate cloud function response within an edge function:
 
 ```js filename="./routes.js"
 import {Router} from '@edgio/core/router';
@@ -318,13 +367,13 @@ export default new Router()
   // NextRoutes automatically adds routes for all Next.js pages and their assets
   .use(nextRoutes)
 
-  // '/' is a route defined by NextRoutes but overridden here to be handled by the edge function
-  .match('/', {
-    edge_function: './edge-functions/index.js',
+  // '/cart' is a route defined by NextRoutes (eg. ./src/app/cart/page.tsx) but overridden here to be handled by the edge function
+  .match('/cart', {
+    edge_function: './edge-functions/cart.js',
   });
 ```
 
-```js filename="./edge-functions/index.js"
+```js filename="./edge-functions/cart.js"
 export async function handleHttpRequest(request) {
   // Check the request method and get the request body as an ArrayBuffer if it's not a GET or HEAD request.
   const requestBody = !['GET', 'HEAD'].includes(request.method)
@@ -344,10 +393,7 @@ export async function handleHttpRequest(request) {
   let responseText = await cloudFunctionsResponse.text();
 
   // Manipulate the response to apply personalizations or modifications.
-  responseText = responseText.replace(
-    /<title>Next\.js<\/title>/,
-    '<title>Next.js | {{ PRODUCT }}</title>'
-  );
+  responseText = responseText.replace(/* ... */);
 
   // Return a new response with the modified text and original response status, status text, and headers.
   return new Response(responseText, {

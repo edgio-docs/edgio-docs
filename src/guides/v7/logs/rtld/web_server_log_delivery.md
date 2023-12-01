@@ -31,7 +31,7 @@ RTLD may automatically deliver compressed log data to a web server by submitting
 
         </Callout>
         
-2.  Configure your firewall to allow `POST` requests from the following IP blocks:
+2.  Configure your firewall to allow `POST` requests from this IP block: `198.7.21.0/24`
     
 3.  Set up a workflow for handling or processing the log data that will be posted to your web server(s).
     

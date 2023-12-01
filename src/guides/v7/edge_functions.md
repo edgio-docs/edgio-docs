@@ -393,20 +393,23 @@ import {Router} from '@edgio/core/router';
 import {nextRoutes} from '@edgio/next';
 
 export default new Router()
-  ///////////////////////////////////////////
-  // Cloud function defined by a connector //
-  ///////////////////////////////////////////
-  .use(nextRoutes) // defines /cart route based on Next.js App/Pages router  (eg. ./src/app/cart/page.tsx)
+  // -------------------------------------
+  // Cloud function defined by a connector
+  // -------------------------------------
+
+  // defines /cart route based on Next.js App/Pages router  (eg. ./src/app/cart/page.tsx)
+  .use(nextRoutes)
+  // edge function to handle /cart route
   .match('/cart', {
-    // edge function to handle /cart route
     edge_function: './edge-functions/cart.js',
   })
 
-  ///////////////////////////////////////
-  // Cloud function defined by compute //
-  ///////////////////////////////////////
+  // -----------------------------------
+  // Cloud function defined by compute()
+  // -----------------------------------
+
+  // defines /session route as a cloud function
   .match('/session', ({compute}) => {
-    // defines /session route as a cloud function
     compute(async (req, res) => {
       // complex logic not suitable for an edge function
       /* ... */
@@ -414,16 +417,17 @@ export default new Router()
       res.body = JSON.stringify(/* ... */);
     });
   })
+  // edge function to handle /session route
   .match('/session', {
-    // edge function to handle /session route
     edge_function: './edge-functions/session.js',
   })
 
-  ///////////////////////////////////////
-  // Cloud function defined by proxy   //
-  ///////////////////////////////////////
+  // ---------------------------------
+  // Cloud function defined by proxy()
+  // ---------------------------------
+
+  // defines /api route as a cloud function
   .match('/api', ({proxy}) => {
-    // defines /api route as a cloud function
     proxy('api', {
       transformResponse: async (res) => {
         // complex logic not suitable for an edge function
@@ -433,8 +437,8 @@ export default new Router()
       },
     });
   })
+  // edge function to handle /api route
   .match('/api', {
-    // edge function to handle /api route
     edge_function: './edge-functions/api.js',
   });
 ```

@@ -105,8 +105,8 @@ Edge Functions global namespace provide access to the following:
 
 <Callout type="info">
 
-  Edge functions use a modified version of the standard [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) API. See the [Unsupported Methods and Properties](#request-unsupported-methods-and-properties) section for more information.
-  
+Edge functions use a modified version of the standard [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) API. See the [Unsupported Methods and Properties](#request-unsupported-methods-and-properties) section for more information.
+
 </Callout>
 
 Edge functions are passed a `Request` instance representing the incoming request. This object provides methods and properties for accessing the request's headers, body, URL, and more.
@@ -141,7 +141,7 @@ The following properties and methods from the standard [`Request`](https://devel
 
 <Callout type="info">
 
-  Using an unsupported method or property will throw an error.
+Using an unsupported method or property will throw an error.
 
 </Callout>
 
@@ -149,8 +149,8 @@ The following properties and methods from the standard [`Request`](https://devel
 
 <Callout type="info">
 
-  Edge functions use a modified version of the standard [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) API. See the [Unsupported Methods and Properties](#response-unsupported-methods-and-properties) section for more information.
-  
+Edge functions use a modified version of the standard [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) API. See the [Unsupported Methods and Properties](#response-unsupported-methods-and-properties) section for more information.
+
 </Callout>
 
 Origin fetch requests and edge functions return a `Response` instance representing the response. This object provides methods and properties for accessing and setting the response's headers, body, status code, and more. Create a response through the `Response` class or by calling the `fetch()` function. See the [Edge Function Namespace](#edge-function-namespace) section for more information.
@@ -328,39 +328,6 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-### Subrequest Limitations {/* subrequest-limitations */}
-
-Response status codes of subrequests must be must be >= 200 and <= 599, and not 204 or 304. If the response status code is not within this range, the edge function will throw an error.
-
-If you are forwarding the original request to your origin and encounter this error, it may be necessary to remove specific cache directives from the request before sending it to the origin.
-
-The following sample code strips the headers from the request before sending it to the origin:
-
-```js filename="./edge-functions/example.js"
-export async function handleHttpRequest(request) {
-  /* ... */
-
-  // Remove headers that could cause the a response status of 204/304 to be returned.
-  const headersToRemove = [
-    'etag',
-    'if-modified-since',
-    'if-none-match',
-    'last-modified',
-  ];
-  headersToRemove.forEach((header) => request.headers.delete(header));
-
-  const response = await fetch(request.url, {
-    edgio: { origin: 'web' },
-    method: request.method,
-    headers: request.headers,
-  });
-
-  // handle the response as needed
-
-  return response;
-};
-```
-
 <!-- ## Caching fetch() Requests {/* caching-fetch-requests */}
 
 Caching fetch requests within your edge function can reduce the load on your origins and deliver content faster to your users. It may also mitigate timeout issues due to an edge function exceeding the [walltime limit](#limitations).
@@ -408,137 +375,44 @@ This means that if you make a fetch request to the same URL within 5 minutes, th
 - If the `Cache-Control` header is not present for a cache-eligible response, the CDN will check for the `Expires` header.
 - If the response is cached based on the above logic, subsequent fetch requests will be served from cache until the cached response has expired or been purged. At which point, the fetch request will go to the origin.
 
-## Fetching from Cloud Functions {/* fetching-from-cloud-functions */}
+### Subrequest Limitations {/* subrequest-limitations */}
 
-<Callout type="important">
+Response status codes of subrequests must:
 
-  Fetching from Cloud Functions requires {{PRODUCT}} version 7.4.1 or later.
+- Be greater than or equal to 200.
+- Be less than or equal to 599.
+- Not be 204 or 304.
 
-</Callout>
+If the response status code does not meet these criteria, the edge function will throw an error. It may be necessary to remove specific cache directives from the request before sending it to the origin.
 
-Fetching from a [cloud function](/guides/performance/serverless_compute) is similar to fetching from an origin server. The key difference is that you must specify the `edgio_serverless` origin in the request.
-This instructs the request to the cloud function origin where it is then handled by your JavaScript backend.
+The following sample code strips the cache directive headers from the request before sending it to the origin:
 
-The following sample code shows different ways a cloud function might be defined:
-
-```js filename="./routes.js"
-import {Router} from '@edgio/core/router';
-import {nextRoutes} from '@edgio/next';
-
-export default new Router()
-  // -------------------------------------
-  // Cloud function defined by a connector
-  // -------------------------------------
-
-  // defines /cart route based on Next.js App/Pages router  (eg. ./src/app/cart/page.tsx)
-  .use(nextRoutes)
-  // edge function to handle /cart route
-  .match('/cart', {
-    edge_function: './edge-functions/cart.js',
-  })
-
-  // -----------------------------------
-  // Cloud function defined by compute()
-  // -----------------------------------
-
-  // defines /session route as a cloud function
-  .match('/session', ({compute}) => {
-    compute(async (req, res) => {
-      // complex logic not suitable for an edge function
-      /* ... */
-
-      res.body = JSON.stringify(/* ... */);
-    });
-  })
-  // edge function to handle /session route
-  .match('/session', {
-    edge_function: './edge-functions/session.js',
-  })
-
-  // ---------------------------------
-  // Cloud function defined by proxy()
-  // ---------------------------------
-
-  // defines /api route as a cloud function
-  .match('/api', ({proxy}) => {
-    proxy('api', {
-      transformResponse: async (res) => {
-        // complex logic not suitable for an edge function
-        /* ... */
-
-        res.body = JSON.stringify(/* ... */);
-      },
-    });
-  })
-  // edge function to handle /api route
-  .match('/api', {
-    edge_function: './edge-functions/api.js',
-  });
-```
-
-For example, when using a framework compatible with {{ PRODUCT_PLATFORM }} like Next.js, you can forward the incoming request to the Next.js server.
-This allows you to process and modify the response that Next.js provides at the edge before sending it back to the client, enabling personalization and other adjustments.
-
-To fetch from a cloud function, you must meet the following requirements:
-
-- {{ PRODUCT }} version 7.4.1 or later.
-- A route that is defined as a cloud function. This can be a route via a connector such as `NextRoutes` or by using `compute` or `proxy` along with the `transformResponse` option.
-- A route that uses an edge function. This must match path as the cloud function and be defined **after** the cloud function route (see sample code above).
-- The origin `edgio_serverless` must be specified in the request (see [System-Defined Origins](/guides/basics/hostnames_and_origins#system-defined-origins)).
-- Forwarding of the original request parameters including the method, headers, and body.
-
-The following sample code demonstrates how to fetch and manipulate cloud function response within an edge function:
-
-```js filename="./routes.js"
-import {Router} from '@edgio/core/router';
-import {nextRoutes} from '@edgio/next';
-
-export default new Router()
-  // NextRoutes automatically adds routes for all Next.js pages and their assets
-  .use(nextRoutes)
-
-  // '/cart' is a route defined by NextRoutes (eg. ./src/app/cart/page.tsx) but overridden here to be handled by the edge function
-  .match('/cart', {
-    edge_function: './edge-functions/cart.js',
-  });
-```
-
-```js filename="./edge-functions/cart.js"
+```js filename="./edge-functions/example.js"
 export async function handleHttpRequest(request) {
-  // Check the request method and get the request body as an ArrayBuffer if it's not a GET or HEAD request.
-  const requestBody = !['GET', 'HEAD'].includes(request.method)
-    ? await request.arrayBuffer()
-    : undefined;
+  /* ... */
 
-  // Perform a fetch request to the original request URL with the same method, headers, and body.
-  // Specify 'edgio_serverless' as the origin to fetch the original Cloud Functions response.
-  const cloudFunctionsResponse = await fetch(request.url, {
-    edgio: {origin: 'edgio_serverless'},
+  // Remove headers that could cause the a response status of 204/304 to be returned.
+  const headersToRemove = [
+    'etag',
+    'if-modified-since',
+    'if-none-match',
+    'last-modified',
+  ];
+  headersToRemove.forEach((header) => request.headers.delete(header));
+
+  const response = await fetch(request.url, {
+    edgio: {
+      origin: 'web',
+    },
     method: request.method,
     headers: request.headers,
-    body: requestBody,
   });
 
-  // Convert the response to text format.
-  let responseText = await cloudFunctionsResponse.text();
+  // handle the response as needed
 
-  // Manipulate the response to apply personalizations or modifications.
-  responseText = responseText.replace(/* ... */);
-
-  // Return a new response with the modified text and original response status, status text, and headers.
-  return new Response(responseText, {
-    status: cloudFunctionsResponse.status,
-    statusText: cloudFunctionsResponse.statusText,
-    headers: cloudFunctionsResponse.headers,
-  });
+  return response;
 }
 ```
-
-<ExampleButtons
-  title="Fetching from Cloud Functions"
-  siteUrl="https://edgio-community-examples-v7-ef-cloud-fetch-live.glb.edgio.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-v7-ef-cloud-fetch-example"
-/>
 
 ## Testing Locally {/* testing-locally */}
 

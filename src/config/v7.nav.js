@@ -227,6 +227,12 @@ const nav = {
       title: 'Edge Functions',
       path: 'edge_functions',
       icon: 'edge-functions',
+      routes: [
+        {
+          title: 'Fetching from Cloud Functions',
+          path: 'edge_functions/fetch_cloud_functions',
+        },
+      ],
     },
     {
       title: 'Experimentation',

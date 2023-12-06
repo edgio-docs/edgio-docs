@@ -194,10 +194,6 @@ const nav = {
           path: 'performance/traditional_sites',
         },
         {
-          title: 'Third-Party CDNs',
-          path: 'performance/third_party_cdns',
-        },
-        {
           title: '',
           path: '',
         },
@@ -229,7 +225,7 @@ const nav = {
     },
     {
       title: 'Edge Functions',
-      path: 'edge-functions',
+      path: 'edge_functions',
       icon: 'edge-functions',
     },
     {

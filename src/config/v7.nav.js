@@ -219,16 +219,16 @@ const nav = {
     },
     {
       title: 'Edge Functions',
-      path: 'edge-functions',
+      path: 'edge_functions',
       icon: 'edge-functions',
       routes: [
         {
           title: 'Migrating from Cloudflare Workers',
-          path: 'edge-functions/migrating_cloudflare_workers',
+          path: 'edge_functions/migrating_cloudflare_workers',
         },
         {
           title: 'Migrating from CloudFront Functions',
-          path: 'edge-functions/migrating_cloudfront_functions',
+          path: 'edge_functions/migrating_cloudfront_functions',
         },
       ],
     },

@@ -17,7 +17,7 @@ This guide covers migrating from Cloudflare Workers to {{ PRODUCT }} Edge Functi
    - Specify the origin in `edgio.config.js` and include it in the `fetch()` call in the edge function.
 
 4. **Response Handling**
-   - Similar to Cloudflare Workers, {{ PRODUCT }} allows modifying response properties with some differences in the approach.
+   - Similar to Cloudflare Workers, {{ PRODUCT }} allows modifying response properties prior to returning the response.
 
 5. **Headers and Status**
    - Both platforms allow setting and modifying response headers and status.
@@ -25,11 +25,11 @@ This guide covers migrating from Cloudflare Workers to {{ PRODUCT }} Edge Functi
 6. **JSON Handling**
    - Ensure proper content-type handling and parsing for JSON responses in both platforms.
 
-# Examples {/* examples */}
+## Examples {/* examples */}
 
-## Basic HTML Response {/* basic-html-response */}
+### Basic HTML Response {/* basic-html-response */}
 
-### Cloudflare Worker Snippet {/* basic-html-response-cloudflare-worker */}
+#### Cloudflare Worker Snippet {/* basic-html-response-cloudflare-worker */}
 
 [Original Cloudflare Worker code for returning HTML](https://developers.cloudflare.com/workers/examples/return-html/)
 
@@ -51,7 +51,7 @@ export default {
 };
 ```
 
-### Edge Function Equivalent {/* basic-html-response-edge-function */}
+#### Edge Function Equivalent {/* basic-html-response-edge-function */}
 
 ```js
 export async function handleHttpRequest(request, context) {
@@ -69,9 +69,9 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-## Fetching JSON {/* fetching-json */}
+### Fetching JSON {/* fetching-json */}
 
-### Cloudflare Worker Snippet {/* fetching-json-cloudflare-worker */}
+#### Cloudflare Worker Snippet {/* fetching-json-cloudflare-worker */}
 
 [Original Cloudflare Worker code for fetching JSON](https://developers.cloudflare.com/workers/examples/fetch-json/)
 
@@ -114,7 +114,7 @@ export default {
 };
 ```
 
-### Edge Function Equivalent {/* fetching-json-edge-function */}
+#### Edge Function Equivalent {/* fetching-json-edge-function */}
 
 ```js
 export async function handleHttpRequest(request, context) {
@@ -147,9 +147,9 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-## Modify an Origin Response {/* modify-origin-response */}
+### Modify an Origin Response {/* modify-origin-response */}
 
-### Cloudflare Worker Snippet {/* modify-origin-response-cloudflare-worker */}
+#### Cloudflare Worker Snippet {/* modify-origin-response-cloudflare-worker */}
 
 [Original Cloudflare Worker code for modifying a response](https://developers.cloudflare.com/workers/examples/modify-response/)
 
@@ -201,7 +201,7 @@ export default {
 };
 ```
 
-### Edge Function Equivalent {/* modify-origin-response-edge-function */}
+#### Edge Function Equivalent {/* modify-origin-response-edge-function */}
 
 ```js
 export async function handleHttpRequest(request, context) {

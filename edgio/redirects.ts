@@ -167,4 +167,5 @@ export default [
     '/guides/v7/performance/cdn_as_code',
   ],
   ['/guides/v7/performance/experiments', '/guides/v7/experimentation'],
+  ['/guides/v7/edge-functions', '/guides/v7/edge_functions'],
 ];

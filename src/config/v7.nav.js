@@ -140,6 +140,16 @@ const nav = {
         {
           title: 'Predictive Prefetch',
           path: 'performance/prefetching',
+          routes: [
+            {
+              title: 'Prefetching with a Script Tag',
+              path: 'performance/prefetching/prefetching_script_tag',
+            },
+            {
+              title: 'Prefetching with Edgio Sites',
+              path: 'performance/prefetching/prefetching_edgio_sites',
+            },
+          ],
         },
         {
           title: 'Traffic Splitting',
@@ -182,10 +192,6 @@ const nav = {
         {
           title: 'Traditional Sites',
           path: 'performance/traditional_sites',
-        },
-        {
-          title: 'Third-Party CDNs',
-          path: 'performance/third_party_cdns',
         },
         {
           title: '',

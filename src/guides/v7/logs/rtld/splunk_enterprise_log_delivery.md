@@ -47,7 +47,7 @@ The format for log data delivered to Splunk Enterprise is JSON Lines. This log f
 
 2.  Perform the following steps if you have hosted Splunk Enterprise within your network:
     
-    1.  Configure your firewall to allow `POST` requests from the following IP blocks:
+    1.  Configure your firewall to allow `POST` requests from this IP block: `198.7.21.0/24`
         
     2.  Set up support for the HTTPS protocol.
         

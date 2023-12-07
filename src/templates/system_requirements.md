@@ -1,3 +1,3 @@
 ## System Requirements {/*system-requirements*/}
 
-- [Install Node.js](/guides/install_nodejs)
+[Install Node.js](/guides/install_nodejs)

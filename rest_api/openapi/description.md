@@ -177,3 +177,20 @@ Response headers provide information about the response to your request to the R
 | Content-Type    | Indicates the format of the response body (e.g., `application/json; charset=utf-8`). |
 | I_am            | This header is reserved for internal use.                                            |
 | Date            | Identifies the date and time (UTC) at which your request was processed.              |
+
+## Rate Limit
+
+The rate limit for our APIs varies by service and HTTP method. 
+
+| Service      | HTTP Method                  | Rate Limit                                                |
+| ------------ | ---------------------------- | --------------------------------------------------------- |
+| cache        | ALL                          | 2,000 requests per 5 minutes                              |
+| config       | GET                          | 2,000 requests per 5 minutes                              |
+| config       | POST, PUT, PATCH, and DELETE | 600 requests per 5 minutes                                |
+| accounts     | GET                          | 2,000 requests per 5 minutes                              |
+| accounts     | POST, PUT, PATCH, and DELETE | 600 requests per 5 minutes                                |
+| waf          | ALL                          | 300 requests per hour <br /><br /> 1,000 requests per day |
+| bot-security | ALL                          | 300 requests per hour <br /><br /> 1,000 requests per day |
+| api-security | ALL                          | 300 requests per hour <br /><br /> 1,000 requests per day |
+
+Our API service returns a `429 Too Many Requests` response when a client exceeds one of the above rate limits.

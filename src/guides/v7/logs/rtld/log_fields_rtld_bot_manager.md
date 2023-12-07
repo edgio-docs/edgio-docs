@@ -41,7 +41,7 @@ Log data is reported as a JSON document. Log format determines whether log data 
 
 Top-level name/value pairs are described below.
   
--   **account_number (*String*):** Customer AN. (Category: General) Identifies an environment by its system-defined ID. 
+-   **account_number (*String*):** Customer AN. Identifies an environment by its system-defined ID. 
 -   **agent_id (*String*):** Agent ID. Indicates the unique ID that identifies the Real-Time Log Delivery software agent that generated the log data.
 -   **datestamp (*String*):** Date Stamp. Indicates the date on which the log data was generated.
 
@@ -96,14 +96,14 @@ The `logs` array contains an object for each log entry associated with the curre
 -   **client_city (*String*):** City Name. (Category: Client Geography) Indicates the city from which the request originated.
 -   **client_country_code (*String*):** Country Code. (Category: Client Geography) Indicates the [two-character ISO 3166-1 code for the country](/guides/reference/country_codes) from which the request originated.
 -   **client_country (*String*):** Country Name. (Category: Client Geography) Indicates the country from which the request originated.
--   **client_ip (*String*):** IP Address. (Category: Client Network) Indicates the IP address for the computer that submitted the request to our CDN.
+-   **client_ip (*String*):** Client IP. (Category: Client Network) Indicates the IP address for the device that submitted the request to our CDN.
 -   **client_tls_ja3_md5 (*String*):** IP Address. (Category: Request) Indicates the JA3 fingerprint assigned to the request.
 -   **host (*String*):** Host. (Category: Request Header) Indicates the `Host` header value sent in the client's request to the CDN.
 -   **matched_on (*String*):** Matched On. (Category: Event) Indicates the variable that identifies where the violation was found.
 -   **matched_value (*String*):** Matched Value. (Category: Event) Indicates the value of the variable defined in the matched_on field.
 -   **method (*String*):** Request Method. (Category: Request) Indicates the request's HTTP method (e.g., `GET`, `HEAD`, and `POST`).
 -   **referer (*String*):** Referer. (Category: Request Header) Indicates the `Referer` header value sent in the client's request to the CDN. This header reports the URL of the site from which the request originated.
--   **rule_id (*Integer*):** Rule ID. Indicates the ID for the rule that the request violated.
+-   **rule_id (*Integer*):** Rule ID. (Category: Event) Indicates the ID for the rule that the request violated.
 -   **rule_message (*String*):** Rule Message. (Category: Event) Provides a description of the rule that the request violated.
 -   **sam_id (*String*):** SAM ID. (Category: General) Indicates the system-defined ID of the Security App configuration that the request violated. 
 -   **sam_name (*String*):** SAM Name. (Category: General) Indicates the name of the Security App configuration that the request violated. 

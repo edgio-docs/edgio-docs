@@ -208,7 +208,7 @@ export default new Router()
 
 Determines whether our CDN will instruct the client to bypass cache.
 
--   **Bypass the cache:** Sets the `cache-control` response header to: `cache-control: private, no-cache, no-store, must-revalidate`
+-   **Bypass the cache:** Sets the `cache-control` response header to: `cache-control: private, no-cache, no-store, must-revalidate`.
 -   **Do not bypass the cache:** No effect.
 
 <Callout type="info">

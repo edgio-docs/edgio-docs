@@ -100,3 +100,37 @@ Each member of an organization must be assigned one of the following roles:
 2.  Click the <Image inline src="/images/icons/delete.png" alt="Delete" /> icon next to the member that will be removed.
 
 3.  When prompted, click **Remove** to confirm that the user will be removed from the organization.
+
+## Single Sign-On (SSO) {/*single-sign-on--sso-*/}
+
+{{ PRODUCT }} offers single sign-on (SSO) integration for SAML 2.0 identity providers. This type of integration allows {{ PRODUCT }} to delegate authentication to your identity provider. A high-level overview of how SSO users may authenticate to the {{ PORTAL }} is illustrated below.
+
+![High-level SSO workflow](/images/v7/basics/sso-workflow.png)
+
+### Getting Started {/*getting-started*/}
+
+Establishing a SSO workflow requires a custom integration between our identity service and your identity provider. 
+
+**To request SSO integration with a SAML 2.0 identity provider**
+
+1.  Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to get started. Be prepared to provide the following information:
+
+    -   **Certificate:** An X.509 certificate, in PEM format, for the domain on which your identity provider is hosted.
+    -   **Login URL:** {{ PRODUCT }} redirects users to this URL to perform an authentication challenge. 
+    -   **Logout URL:** {{ PRODUCT }} requests a single or global logout through this URL.
+    -   **RelayState:** {{ PRODUCT }} redirects users to this URL upon authentication. This URL should be {{ APP_URL }}.
+    -   SAML 2.0 metadata in XML format. 
+
+
+2.  Use the following information to configure your identity provider:
+    -   **Entity ID:** `id.vdms.io`
+    -   **Assertion URL:** `https://id.vdms.io/saml/assert`
+    -   **Login URL:** `https://id.vdms.io/saml/login`
+    -   **Logout URL:** `https://id.vdms.io/saml/logout`
+    -   **Digest:** `sha256 | sha512`
+    -   **Signature:** `sha256 | sha512`
+    -   **Sign Request:** `TRUE | FALSE`
+    -   **Sign Response:** `TRUE | FALSE`
+    -   **Encrypt Assertion:** `TRUE | FALSE`
+
+3.  Set up an additional SAML token claim to provide email addresses to {{ PRODUCT }}.

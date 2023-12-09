@@ -2169,35 +2169,13 @@ Determines whether {{ PRODUCT }} will follow a redirect defined within the `Loca
 **Key information:**
 
 -   All requests, regardless of HTTP method (e.g., `POST` and `PUT`), are redirected as `GET` requests.
--   {{ PRODUCT }} will only follow redirects to a [hostname](/guides/basics/hostnames_and_origins#hostnames) configured within {{ PRODUCT }}. {{ PRODUCT }} returns a `404 Not Found` response for hostnames that are not served by {{ PRODUCT }}.
--   {{ PRODUCT }} will not follow a redirect if the `Location` header is set to a domain without a trailing slash. 
-
-    **Example:** {{ PRODUCT }} will not redirect a request when the `Location` header is set to this value:
-
-    `https://cdn.example.com`
-
-    However, if you add a trailing slash, then it will redirect.
-
-    `https://cdn.example.com/`
-
--   Allow a client to follow redirects by not applying this feature to the request. 
+-   {{ PRODUCT }} will only follow redirects to a registered [hostname](/guides/basics/hostnames_and_origins#hostnames). {{ PRODUCT }} returns a `404 Not Found` response for hostnames whose traffic cannot be served by {{ PRODUCT }}.
 
 <edgejs>
 **Key information:**
 
 -   All requests, regardless of HTTP method (e.g., `POST` and `PUT`), are redirected as `GET` requests.
--   {{ PRODUCT }} will only follow redirects to a [hostname](/guides/basics/hostnames_and_origins#hostnames) configured within {{ PRODUCT }}. {{ PRODUCT }} returns a `404 Not Found` response for hostnames that are not served by {{ PRODUCT }}.
--   {{ PRODUCT }} will not follow a redirect if the `Location` header is set to a domain without a trailing slash. 
-
-    **Example:** {{ PRODUCT }} will not redirect a request when the `Location` header is set to this value:
-
-    `https://cdn.example.com`
-
-    However, if you add a trailing slash, then it will redirect.
-
-    `https://cdn.example.com/`
-
--   Allow a client to follow redirects by not applying this feature to the request. 
+-   {{ PRODUCT }} will only follow redirects to a registered [hostname](/guides/basics/hostnames_and_origins#hostnames). {{ PRODUCT }} returns a `404 Not Found` response for hostnames whose traffic cannot be served by {{ PRODUCT }}.
 
 **Example:**
 
@@ -2211,7 +2189,7 @@ export default new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, our edge servers will not follow the redirect defined in the `Location` response header returned by an origin server.
+**Default Behavior:** By default, our edge servers will not follow the redirect defined in the `Location` response header returned by an origin server. This allows a client (e.g., a web browser) to determine whether to follow the redirect. 
 
 <a id="url-rewrite" />
 

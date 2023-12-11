@@ -4,31 +4,10 @@ title: Migrating from CloudFront Functions to Edge Functions
 
 This guide covers migrating from CloudFront Functions to {{ PRODUCT }} Edge Functions. It will cover key differences, practical steps for migration, and provide reference examples to convert common CloudFront Functions snippets into their Edge Function equivalents.
 
-## Migrating from CloudFront Functions to Edge Functions {/* migrating-from-cloudfront-functions-to-edge-functions */}
-
-### Function Structure {/* function-structure */}
+## Function Structure {/* function-structure */}
 
 - CloudFront: `async function handler(event) { ... }`
 - {{ PRODUCT }}: `export async function handleHttpRequest(request, context) { ... }`
-
-2. **Handling Requests**
-
-   - In {{ PRODUCT }}, process incoming requests and generate responses using the `handleHttpRequest` function.
-
-3. **Origin Requests**
-
-   - Specify the origin in `edgio.config.js` and include it in the `fetch()` call in the edge function.
-
-4. **Response Handling**
-
-   - Similar to CloudFront Functions, {{ PRODUCT }} allows modifying response properties with some differences in the approach.
-
-5. **Headers and Status**
-
-   - Both platforms allow setting and modifying response headers and status.
-
-6. **JSON Handling**
-   - Ensure proper content-type handling and parsing for JSON responses in both platforms.
 
 ## Examples {/* examples */}
 

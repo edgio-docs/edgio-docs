@@ -115,7 +115,7 @@ Establishing a SSO workflow requires a custom integration between our identity s
 
 1.  Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to get started. Be prepared to provide the following information:
 
-    -   **Certificate:** An X.509 certificate, in PEM format, for the domain on which your identity provider is hosted.
+    -   **SAML Request Signing Certificate:** An X.509 certificate in PEM format. {{ PRODUCT }} uses this certificate to sign the SAML request sent to your identity provider. 
     -   **Login URL:** {{ PRODUCT }} redirects users to this URL to perform an authentication challenge. 
     -   **Logout URL:** {{ PRODUCT }} requests a single or global logout through this URL.
     -   **RelayState:** {{ PRODUCT }} redirects users to this URL upon authentication. This URL should be {{ APP_URL }}.
@@ -134,3 +134,7 @@ Establishing a SSO workflow requires a custom integration between our identity s
     -   **Encrypt Assertion:** `TRUE | FALSE`
 
 3.  Set up an additional SAML token claim to provide email addresses to {{ PRODUCT }}.
+
+### SAML Request Signing Certificate Renewal {/*saml-request-signing-certificate-renewal*/}
+
+Maintain SSO operability by renewing your SAML request signing certificate prior to expiration. Certificate renewal requires providing a new SAML signing certificate in PEM format to either your account manager or [technical customer support]({{ SUPPORT_URL }}). 

@@ -15,22 +15,43 @@ h1 span {
 .wfptf,
 .bzckyT,
 .eQaxld,
+.dteJDQ
 .search-input,
 .eLSrIr,
 .dwkgVY
-{font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:15px;}
+{font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:14px;}
+
+.search-input{
+  font-weight: normal;
+}
+
+.dteJDQ {
+  max-height: 500px !important;
+  padding: 5px 0px 8px 0px !important;
+  border-bottom: 2px solid rgb(225, 225, 225) !important;
+  margin-bottom: 20px !important;
+  background-color: transparent !important;
+}
+
+.dteJDQ::before {
+  content: "Search results: ";
+  font-weight: bold;
+  padding-left: 8px;
+  font-size: 0.9em;
+}
 
 /* sidebar */
-.fflgmh {padding: 6px 20px;font-size:15px;}
+.gFuFKv {width: 300px;}
+.fflgmh {padding: 6px 20px;font-size:14px;}
 .imtPVL {padding: 6px 20px !important;font-size: 0.95em;}
 .hXkyPY {line-height: 1.3em; !important}
-.hIIBnc > li > label > span {font-size: 15px !important;line-height: 1.3em !important;}
+.hIIBnc > li > label > span {font-size: 14px !important;line-height: 1.3em !important;}
 
 .bQgPnO {
   width: 9ex;
   display: inline-block;
   height: 19px;
-  line-height: 20px;
+  line-height: 19px;
   border-radius: 3px;
   background-repeat: no-repeat;
   background-position: 6px 4px;
@@ -54,9 +75,9 @@ h1 span {
 .-depth1,
 .active,
 .jSTdPd
-{line-height: 1.3em !important;font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:15px;}
+{line-height: 1.3em !important;font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:14px !important;}
 
-.-depth2{font-size: 15px;}
+.-depth2{font-size: 14px;}
 
 /* property name */
 .property-name {
@@ -70,7 +91,7 @@ h1 span {
 
 /* response headers  */
 .kXqjkR,
-.iakUBL {font-size: 15px !important;}
+.iakUBL {font-size: 14px !important;}
 
 /* code buttons  */
 .jKcRvt > button,

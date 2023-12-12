@@ -16,31 +16,27 @@ The following features support variables:
 
 ## Definitions {/*definitions*/}
 
-Feature variables are described below.
+Feature variables are categorized as follows:
 
-<Callout type="info">
+-   [Client Device](#client-device)
+-   [Client Geography](#client-geography)
+-   [Client Network](#client-network)
+-   [General](#general)
+-   [Request](#request)
+-   [Response](#response)
 
-  A blank value is returned when GEO metadata (e.g., postal code) is unavailable for a particular request.
+### Client Device {/*client-device*/}
 
-</Callout>
+This category contains feature variables that describe the client's device or browser.
 
 | Type | Variable  | Description  |
 |---|---|---|
-|ASN (Client)|`%{geo_asnum}` |  Indicates the client's AS number.<br />**Sample Value:** `AS15133`|
 |Brand Name|`%{wurfl_cap_brand_name}`| Indicates the brand name of the device.<br />**Sample Value:** `Samsung`|
-|City (Client)|`%{geo_city}` |  Indicates the client's city.<br />**Sample Value:** `Los Angeles`|
-|Continent (Client)|`%{geo_continent}` |  Indicates the client's continent through its abbreviation. Valid values are:<ul><li>**AF:** Africa</li><li>**AS:** Asia</li><li>**EU:** Europe</li><li>**NA:** North America</li><li>**OC:** Oceania</li><li>**SA:** South America</li></ul><br />**Sample Value:** `NA`|
-|Cookie Value|`%{cookie_<COOKIE>}` |  Returns the value corresponding to the cookie identified by the `<COOKIE>` term. Replace dashes in the cookie name with underscores (e.g., change `preferences-cookie` to `preferences_cookie`).<br />**Sample Usage:** `%{cookie__utma}`<br />**Sample Value:** `111662281.2.10.1222100123`|
-|Country (Client)|`%{geo_country}` |  Indicates the country from which the requested originated through its country code.<br />**Sample Value:** `US`|
-|Designated Market Area (Client) |`%{geo_dma_code}` |  Indicates the client's media market by its region code. This field is only applicable to requests that originate from the United States.<br />**Sample Value:** `745`|
 |Device OS|`%{wurfl_cap_device_os}`| Indicates the operating system installed on the device.<br />**Sample Value:** `IOS`|
 |Device OS Version|`%{wurfl_cap_device_os_version}`| Indicates the version number of the OS installed on the device.<br />**Sample Value:** `1.0.1`|
 |Dual Orientation|`%{wurfl_cap_dual_orientation}`| Indicates whether the device supports dual orientation.<br />**Sample Value:** `true`|
-|HTTP Method|`%{request_method}` |  Indicates the HTTP request method.<br />**Sample Value:** `GET`|
 |HTML Preferred DTD|`%{wurfl_cap_html_preferred_dtd}`| Indicates the mobile device's preferred document type definition (DTD) for HTML content. <br />**Sample Value:** `html5` |
-|HTTP Status Code|`%{status}` |  Indicates the HTTP status code for the response.<br />**Sample Value:** `200`|
 |Image Inlining|`%{wurfl_cap_image_inlining}`| Indicates whether the device supports Base64-encoded images.<br />**Sample Value:** `false`|
-|IP Address (Client)|`%{virt_dst_addr}` |  Indicates the client's IP address.<br />**Sample Value:** `192.168.1.1`|
 |Is Android|`%{wurfl_vcap_is_android}`| Indicates whether the device uses the Android OS.<br />**Sample Value:** `true`|
 |Is App|`%{wurfl_vcap_is_app}`|  Indicates whether a native application requested content.<br />**Sample Value:** `true`|
 |Is Full Desktop|`%{wurfl_vcap_is_full_desktop}`| Indicates whether the device provides a full desktop experience.<br />**Sample Value:** `true`|
@@ -52,30 +48,73 @@ Feature variables are described below.
 |Is Touchscreen|`%{wurfl_vcap_is_touchscreen}`| Indicates whether the device's primary pointing device is a touchscreen.<br />**Sample Value:** `true`|
 |Is Windows Phone|`%{wurfl_vcap_is_windows_phone}`| Indicates whether the device is a a Windows Mobile 6.5/Windows Phone 7 or higher.<br />**Sample Value:** `true`|
 |Is Wireless Device|`%{wurfl_cap_is_wireless_device}`| Indicates whether the device is considered a wireless device For the purposes of this capability, PCs and laptops are not considered to be mobile devices.<br />**Sample Value:** `true`|
-|Latitude (Client)|`%{geo_latitude}` |  Indicates the client's latitude.<br />**Sample Value:** `34.0995`|
-|Longitude (Client)|`%{geo_longitude}` |  Indicates the client's longitude.<br />**Sample Value:** `-118.4143`|
 |Marketing Name|`%{wurfl_cap_marketing_name}`| Indicates the device's marketing name.<br />**Sample Value:** `BlackBerry 8100 Pearl`|
-|Metropolitan Statistical Area (Client)|`%{geo_metro_code}` |  Indicates the client's metropolitan area. This field is only applicable to requests that originate from the United States.<br />**Sample Value:** `745`|
 |Mobile Browser|`%{wurfl_cap_mobile_browser}`| Indicates the browser used to request content from the device.<br />**Sample Value:** `Chrome`|
 |Mobile Browser Version|`%{wurfl_cap_mobile_browser_version}`| Indicates the version of the browser used to request content from the device.<br />**Sample Value:** `31`|
 |Model Name|`%{wurfl_cap_model_name}`| Indicates the device's model name.<br />**Sample Value:** `s10`|
-|Normalized Path|`%{normalized_path}` |  Indicates the normalized relative path for the request submitted to the CDN. <br />**Key information:**<ul><li>This relative path excludes the query string.</li><li>This relative path corresponds to the request submitted to the CDN and it does not reflect URL rewrites.</li><li>URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value.</li></ul>**Sample Value:** `/marketing/images/bunny.png`|
-|Normalized Query String|`%{normalized_query}` |  Indicates the normalized query string defined in the request URL. URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value. <br />**Original Query String:** `"client=/123?"`<br />**Sample Value:** `%22client=/123?%22`|
-|Normalized URI|`%{normalized_uri}` |  Indicates the normalized relative path and query string for the request submitted to the CDN. <br />**Key information:**<ul><li>This relative path corresponds to the  request submitted to the CDN and it does not reflect URL rewrites.</li><li>URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value.</li></ul>**Sample Value:** `/dir/foo.js?%22client=/123?%22`|
-|Path|`%{path}` |  Indicates the relative path to the requested content. <br />**Key information:**<ul><li>This relative path excludes the query string.</li><li>This relative path reflects URL rewrites due to `url_rewrite`.</li></ul><br />**Sample Value:** `/rewrittendir/foo.js`|
-|Port (Client)|`%{virt_dst_port}` |  Indicates the client's ephemeral port. <br />**Sample Value:** `55885`|
-|Postal Code (Client)|`%{geo_postal_code}` |  Indicates the client's postal code. We only return the first 3 characters for Canadian postal codes and the first 2 - 4 characters for United Kingdom postal codes.<br />**Sample Value:** `90210`|
 |Progressive Download|`%{wurfl_cap_progressive_download}`| Indicates whether the device supports the playback of audio/video while it is still being downloaded.<br />**Sample Value:** `true`|
 |Release Date|`%{wurfl_cap_release_date}`| Indicates the year and month on which the device was added to the WURFL database. <br />**Format:** `yyyy_mm` <br />**Sample Value:** `2022_december`|
 |Resolution Height|`%{wurfl_cap_resolution_height}`| Indicates the device's height in pixels.<br />**Sample Value:** `768`|
 |Resolution Width|`%{wurfl_cap_resolution_width}`| Indicates the device's width in pixels.<br />**Sample Value:** `1024`|
+
+### Client Geography {/*client-geography*/}
+
+This category contains feature variables that describe the client's geography.
+
+<Callout type="info">
+
+  A blank value is returned when GEO metadata is unavailable for a particular request.
+
+</Callout>
+
+| Type | Variable  | Description  |
+|---|---|---|
+|City (Client)|`%{geo_city}` |  Indicates the client's city.<br />**Sample Value:** `Los Angeles`|
+|Continent (Client)|`%{geo_continent}` |  Indicates the client's continent through its abbreviation. Valid values are:<ul><li>**AF:** Africa</li><li>**AS:** Asia</li><li>**EU:** Europe</li><li>**NA:** North America</li><li>**OC:** Oceania</li><li>**SA:** South America</li></ul><br />**Sample Value:** `NA`|
+|Country (Client)|`%{geo_country}` |  Indicates the country from which the requested originated through its country code.<br />**Sample Value:** `US`|
+|Designated Market Area (Client) |`%{geo_dma_code}` |  Indicates the client's media market by its region code. This field is only applicable to requests that originate from the United States.<br />**Sample Value:** `745`|
+|Latitude (Client)|`%{geo_latitude}` |  Indicates the client's latitude.<br />**Sample Value:** `34.0995`|
+|Longitude (Client)|`%{geo_longitude}` |  Indicates the client's longitude.<br />**Sample Value:** `-118.4143`|
+|Metropolitan Statistical Area (Client)|`%{geo_metro_code}` |  Indicates the client's metropolitan area. This field is only applicable to requests that originate from the United States.<br />**Sample Value:** `745`|
+|Postal Code (Client)|`%{geo_postal_code}` |  Indicates the client's postal code. We only return the first 3 characters for Canadian postal codes and the first 2 - 4 characters for United Kingdom postal codes.<br />**Sample Value:** `90210`|
+|Region (Client)|`%{geo_region}` |  Indicates the client's region (e.g., state or province) through its alphanumeric abbreviation. <br />**Sample Value:** `CA`|
+
+### Client Network {/*client-network*/}
+
+This category contains feature variables that describe the client's network.
+
+| Type | Variable  | Description  |
+|---|---|---|
+|ASN (Client)|`%{geo_asnum}` |  Indicates the client's AS number.<br />**Sample Value:** `AS15133`|
+|IP Address (Client)|`%{virt_dst_addr}` |  Indicates the client's IP address.<br />**Sample Value:** `192.168.1.1`|
+|Port (Client)|`%{virt_dst_port}` |  Indicates the client's ephemeral port. <br />**Sample Value:** `55885`|
+
+### General {/*general*/}
+
+This category contains the QUIC Versions feature variable.
+
+| Type | Variable  | Description  |
+|---|---|---|
+|QUIC Versions|`%{quic_altsvc_versions}` |  Indicates the set of QUIC versions supported by our CDN service. This variable identifies QUIC versions using Google's latest specification.<br />**Sample Value:** `h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000`|
+
+### Request {/*request*/}
+
+This category contains feature variables that describe the request.
+
+| Type | Variable  | Description  |
+|---|---|---|
+|Cookie Value|`%{cookie_<COOKIE>}` |  Returns the value corresponding to the cookie identified by the `<COOKIE>` term. Replace dashes in the cookie name with underscores (e.g., change `preferences-cookie` to `preferences_cookie`).<br />**Sample Usage:** `%{cookie__utma}`<br />**Sample Value:** `111662281.2.10.1222100123`|
+|HTTP Method|`%{request_method}` |  Indicates the HTTP request method.<br />**Sample Value:** `GET`|
+|JA3 MD5 Hash |`%{virt_ssl_client_ja3_md5}`| Indicates the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic across various IP addresses and ports.|
+|Normalized Path|`%{normalized_path}` |  Indicates the normalized relative path for the request submitted to the CDN. <br />**Key information:**<ul><li>This relative path excludes the query string.</li><li>This relative path corresponds to the request submitted to the CDN and it does not reflect URL rewrites.</li><li>URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value.</li></ul>**Sample Value:** `/marketing/images/bunny.png`|
+|Normalized Query String|`%{normalized_query}` |  Indicates the normalized query string defined in the request URL. URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value. <br />**Original Query String:** `"client=/123?"`<br />**Sample Value:** `%22client=/123?%22`|
+|Normalized URI|`%{normalized_uri}` |  Indicates the normalized relative path and query string for the request submitted to the CDN. <br />**Key information:**<ul><li>This relative path corresponds to the  request submitted to the CDN and it does not reflect URL rewrites.</li><li>URL normalization, as defined in [RFC 3986](https://tools.ietf.org/html/rfc3986#page-38), was applied to this value.</li></ul>**Sample Value:** `/dir/foo.js?%22client=/123?%22`|
+|Path|`%{path}` |  Indicates the relative path to the requested content. <br />**Key information:**<ul><li>This relative path excludes the query string.</li><li>This relative path reflects URL rewrites due to `url_rewrite`.</li></ul><br />**Sample Value:** `/rewrittendir/foo.js`|
 |Query String Found |`%{is_args}` |  The value for this variable varies according to whether the request contains a query string.<ul><li>**Query String Found:** ?</li><li>**No Query String:** NULL</li></ul>**Sample Value:** `?`|
 |Query String Parameter Found|`%{is_amp}` |  The value for this variable varies according to whether the request contains at least one query string parameter.<ul><li>**Parameter Found:** &</li><li>**No Parameters:** NULL</li></ul>**Sample Value:** `&`|
 |Query String Parameter Value|`%{arg_<QUERY STRING PARAMETER>}` |  Returns the value corresponding to the query string parameter identified by the `<QUERY STRING PARAMETER>` term. <br />**Sample Usage:** `%{arg_language} `<br />**Sample Query String Parameter:** `language=en`<br />**Sample Value:** `en`|
 |Query String Value|`%{query_string}` |  Indicates the entire query string value defined in the request URL.<br />**Sample Value:** `key1=val1&key2=val2&key3=val3`|
-|QUIC Versions|`%{quic_altsvc_versions}` |  Indicates the set of QUIC versions supported by our CDN service. This variable identifies QUIC versions using Google's latest specification.<br />**Sample Value:** `h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000`|
 |Referrer Domain|`%{referring_domain}` |  Indicates the domain defined in the `Referer` request header. <br />**Sample Value:** `www.google.com`|
-|Region (Client)|`%{geo_region}` |  Indicates the client's region (e.g., state or province) through its alphanumeric abbreviation. <br />**Sample Value:** `CA`|
 |Request Header Value|`%{http_<REQUEST HEADER>}` |   Returns the value corresponding to the request header identified by the `<REQUEST HEADER>` term. Replace dashes in the request header name with underscores (e.g., change `User-Agent` to `User_Agent`).<br />**Sample Usage:** `%{http_Connection} `<br />**Sample Value:** `Keep-Alive`|
 |Request Host|`%{host}` |  Indicates the host defined in the request URL. <br />**Sample Value:** `www.example.com`|
 |Request ID|`%{http_x_ec_uuid}` |  Indicates a request's unique system-defined ID.  A new ID is generated whenever a client (i.e., user agent) submits a request.<br />**Sample Value:** `12345678901234567890123456789012345678`|
@@ -84,10 +123,18 @@ Feature variables are described below.
 |Request Scheme|`%{scheme}` |  Indicates the request scheme.<br />**Sample Value:** `http`|
 |Request URI|`%{request}` |  Describes the request. <br />**Syntax:** `<HTTP METHOD> <RELATIVE PATH> <PROTOCOL>` <ul><li>`<HTTP METHOD>`**:** Indicates the HTTP method that was requested. </li><li>`RELATIVE PATH>`**:** Indicates the relative path, including query string parameters, defined in the request URI.</li><li>`<PROTOCOL>`**:** Indicates the HTTP protocol and version that was requested. </li></ul> **Sample Value:** `GET /marketing/foo.js?loggedin=true HTTP/1.1`|
 |Request URI (Relative)|`%{request_uri}` |  Indicates the relative path, including the query string, defined in the request URI.<br />**Sample Value:** `/marketing/foo.js?loggedin=true`|
-|Response Header Value|`%{resp_<RESPONSE HEADER>}` |   Returns the value corresponding to the response header identified by the `<RESPONSE HEADER>` term. Replace dashes in the response header name with underscores (e.g., change `User-Agent` to `User_Agent`). <Callout type="info">  Requests cannot be defined using variables associated with response metadata. For example, this variable cannot be used to define a request header through the `set_request_headers` feature.</Callout>**Sample Usage:** `%{resp_Content_Length}`<br />**Sample Value:** `100`|
 |Session ID|`%{http_x_ec_session_id}` |  Indicates a unique system-defined ID for the request's connection to our servers. <Callout type="tip">  Multiple rapid requests by a single client may result in a single session ID when the connection is reused for those requests. Use `%{http_x_ec_uuid}` if you require a unique ID for each request.</Callout><br />**Sample Value:** `12345678901234567890123456789012345678`|
 |TLS Cipher Suite|`%{virt_ssl_cipher}` |  Indicates the name of the cipher suite used to secure a HTTPS connection.<br />**Sample Value:** `ECDHE-RSA-AES256-SHA`|
 |TLS Protocol|`%{virt_ssl_protocol}` |  Indicates the SSL/TLS protocol used to secure a HTTPS connection. <br />**Sample Value:** `TLSv1.2`|
+
+### Response {/*response*/}
+
+This category contains feature variables that describe the response sent to the client.
+
+| Type | Variable  | Description  |
+|---|---|---|
+|HTTP Status Code|`%{status}` |  Indicates the HTTP status code for the response.<br />**Sample Value:** `200`|
+|Response Header Value|`%{resp_<RESPONSE HEADER>}` |   Returns the value corresponding to the response header identified by the `<RESPONSE HEADER>` term. Replace dashes in the response header name with underscores (e.g., change `User-Agent` to `User_Agent`). <Callout type="info">  Requests cannot be defined using variables associated with response metadata. For example, this variable cannot be used to define a request header through the `set_request_headers` feature.</Callout>**Sample Usage:** `%{resp_Content_Length}`<br />**Sample Value:** `100`|
 
 ## Usage {/*usage*/}
 

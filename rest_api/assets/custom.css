@@ -36,7 +36,8 @@ h1 span {
 .dteJDQ::before {
   content: "Search results: ";
   font-weight: bold;
-  padding-left: 8px;  
+  padding-left: 8px;
+  font-size: 0.9em;
 }
 
 /* sidebar */

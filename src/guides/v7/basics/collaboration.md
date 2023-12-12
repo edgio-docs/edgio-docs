@@ -118,11 +118,15 @@ Establishing a SSO workflow requires a custom integration between our identity s
     -   **SAML Request Signing Certificate:** An X.509 certificate in PEM format. {{ PRODUCT }} uses this certificate to sign the SAML request sent to your identity provider. 
     -   **Login URL:** {{ PRODUCT }} redirects users to this URL to perform an authentication challenge. 
     -   **Logout URL:** {{ PRODUCT }} requests a single or global logout through this URL.
-    -   **RelayState:** {{ PRODUCT }} redirects users to this URL upon authentication. This URL should be {{ APP_URL }}.
+    -   **RelayState:** {{ PRODUCT }} redirects users to this URL upon authentication. This URL should be:
+
+        `{{ APP_URL }}`
+
     -   SAML 2.0 metadata in XML format. 
 
+2.  Add the desired users to the {{ PORTAL }}. Make sure that the email addresses defined within the {{ PORTAL }} match those defined within your identity provider. 
 
-2.  Use the following information to configure your identity provider:
+3.  Use the following information to configure your identity provider:
     -   **Entity ID:** `id.vdms.io`
     -   **Assertion URL:** `https://id.vdms.io/saml/assert`
     -   **Login URL:** `https://id.vdms.io/saml/login`
@@ -133,8 +137,10 @@ Establishing a SSO workflow requires a custom integration between our identity s
     -   **Sign Response:** `TRUE | FALSE`
     -   **Encrypt Assertion:** `TRUE | FALSE`
 
-3.  Set up an additional SAML token claim to provide email addresses to {{ PRODUCT }}.
+4.  Set up an additional SAML token claim to provide email addresses to {{ PRODUCT }}. Use the following schema namespace:
 
+    `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/email`
+    
 ### SAML Request Signing Certificate Renewal {/*saml-request-signing-certificate-renewal*/}
 
-Maintain SSO operability by renewing your SAML request signing certificate prior to expiration. Certificate renewal requires providing a new SAML signing certificate in PEM format to either your account manager or [technical customer support]({{ SUPPORT_URL }}). 
+Maintain SSO operability by renewing your SAML request signing certificate prior to expiration. Certificate renewal requires providing a new SAML request signing certificate in PEM format to either your account manager or [technical customer support]({{ SUPPORT_URL }}). 

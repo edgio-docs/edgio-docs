@@ -100,10 +100,10 @@ When this edge function is run and the origin returns the following HTML:
 <body>
   <h1>Script Example</h1>
   <p>Script example.
-    &lt;!-- This is a <p> comment --&gt;
+    &lt;!-- This is a <p> comment -->
   </p>
   <a href="http://edg.io/">Edgio Homepage</a>
-  &lt;!-- This is a <body> comment --&gt;
+  &lt;!-- This is a <body> comment -->
 </body>
 </html>
 ```
@@ -126,7 +126,7 @@ The transformed HTML has:
     <a href="https://edg.io/">Edgio Homepage</a>
   </body>
 </html>
-&lt;!-- Transformed at 2023-11-29T00:52:09.942Z by Edg.io --&gt;
+&lt;!-- Transformed at 2023-11-29T00:52:09.942Z by Edg.io -->
 ```
 
 ### Example 2: Using fetch() {/* example2 */}

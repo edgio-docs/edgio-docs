@@ -126,7 +126,7 @@ Establishing a SSO workflow requires a custom integration between our identity s
 
 2.  Add the desired users to the {{ PORTAL }}. Make sure that the email addresses defined within the {{ PORTAL }} match those defined within your identity provider. 
 
-3.  Use the following information to configure your identity provider:
+3.  From within your identity provider, use the following information to configure {{ PRODUCT }} as a service provider:
     -   **Entity ID:** `id.vdms.io`
     -   **Assertion URL:** `https://id.vdms.io/saml/assert`
     -   **Login URL:** `https://id.vdms.io/saml/login`

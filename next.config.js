@@ -1,5 +1,5 @@
 const {join} = require('path');
-const globby = require('globby').sync;
+const {sync: globby} = require('globby');
 const {withEdgio} = require('@edgio/next/config');
 
 function getLatestVersion() {
@@ -15,43 +15,33 @@ function getLatestVersion() {
   return Math.max(...versions).toString();
 }
 
-const _preEdgioExport = {
-  images: {
-    domains: ['opt.moovweb.net'],
-  },
-  experimental: {
-    scrollRestoration: true,
-  },
-  compiler: {
-    // ssr and displayName are configured by default
-    styledComponents: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx', 'md'],
-  webpack: (config, {dev, isServer, ...options}) => {
-    // IMPORTANT: https://www.npmjs.com/package/webpack-bundle-analyzer
-    if (process.env.ANALYZE) {
-      const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
-      config.plugins.push(
-        new BundleAnalyzerPlugin({
-          analyzerMode: 'static',
-          reportFilename: options.isServer
-            ? '../analyze/server.html'
-            : './analyze/client.html',
-        })
-      );
-    }
-
-    return config;
-  },
-};
-
 module.exports = (phase, config) => {
   process.env.NEXT_PUBLIC_LATEST_VERSION = getLatestVersion();
 
   return withEdgio({
-    ..._preEdgioExport,
+    experimental: {
+      scrollRestoration: true,
+    },
+    compiler: {
+      styledComponents: true, // ssr and displayName are configured by default
+    },
+    typescript: {
+      ignoreBuildErrors: true,
+    },
+    pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx', 'md'],
+    webpack: (config, {isServer, ...options}) => {
+      if (process.env.ANALYZE) {
+        const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
+        config.plugins.push(
+          new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            reportFilename: isServer
+              ? '../analyze/server.html'
+              : './analyze/client.html',
+          })
+        );
+      }
+      return config;
+    },
   });
 };

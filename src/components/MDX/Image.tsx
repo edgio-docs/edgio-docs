@@ -42,9 +42,6 @@ export default function Image({
             src,
             alt,
             loading: 'lazy',
-            ...(width && {
-              width,
-            }),
           }}
         />
       </StyledComp>
@@ -59,9 +56,6 @@ export default function Image({
               src,
               alt,
               loading: 'lazy',
-              ...(width && {
-                width,
-              }),
             }}
           />
         </a>

@@ -41,7 +41,7 @@ Log data is reported as a JSON document. Log format determines whether log data 
 
 Top-level name/value pairs are described below.
   
--   **account_number (*String*):** Customer AN. (Category: General) Identifies an environment by its system-defined ID. 
+-   **account_number (*String*):** Customer AN. Identifies an environment by its system-defined ID. 
 -   **agent_id (*String*):** Agent ID. Indicates the unique ID that identifies the Real-Time Log Delivery software agent that generated the log data.
 -   **datestamp (*String*):** Date Stamp. Indicates the date on which the log data was generated.
 
@@ -59,10 +59,11 @@ Top-level name/value pairs are described below.
 The `logs` array contains an object for each log entry associated with the current JSON document. Each log entry describes a request to our CDN via the following fields:
 
 -   **account_number (*String*):** Customer AN. (Category: General) Identifies an environment by its system-defined ID. 
--   **client_city (*String*):** City. (Category: Client Geography) Indicates the city from which the request originated.
+-   **client_city (*String*):** City Name. (Category: Client Geography) Indicates the city from which the request originated.
 -   **client_country_code (*String*):** Country Code. (Category: Client Geography) Indicates the [two-character ISO 3166-1 code for the country](/guides/reference/country_codes) from which the request originated.
 -   **client_country (*String*):** Country Name. (Category: Client Geography) Indicates the country from which the request originated.
--   **client_ip (*String*):** Client IP. (Category: Client Network) Indicates the IP address for the computer that submitted the request to our CDN.
+-   **client_ip (*String*):** Client IP. (Category: Client Network) Indicates the IP address for the device that submitted the request to our CDN.
+-   **client_tls_ja3_md5 (*String*):** JA3 MD5 Hash. (Category: Request) Indicates the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic across various IP addresses and ports.
 -   **host (*String*):** Hostname. (Category: Request Header) Indicates the `Host` header value sent in the client's request to the CDN.
 -   **limit_action_duration (*Integer*):** Rate Limiting Action Duration. (Category: Security Configuration) Indicates the minimum length of time, in seconds, that eligible requests were rate limited when the event took place.
 -   **limit_action_percentage (*Decimal*):** Rate Limiting Action Percentage. (Category: Security Configuration) Indicates the percentage of eligible requests that were rate limited when the event took place.
@@ -73,8 +74,9 @@ The `logs` array contains an object for each log entry associated with the curre
     -   **DROP_REQUEST:** Drop Request (503 Service Unavailable response with a retry-after of 10 seconds)
 
 -   **limit_id (*String*):** Rate Limiting Action Limit ID. (Category: Security Configuration) Indicates the system-defined ID of the rate rule whose rate limit was exceeded by the request.
+-   **limit_name (*String*):** Limit Name. (Category: Security Configuration) Indicates the name of the rate rule whose rate limit was exceeded by the request.
 -   **limit_start_timestamp (*Integer*):** Rate Limiting Action Start Epoch. (Category: Security Configuration) Indicates the timestamp, in Unix time (milliseconds), at which the enforcement of the rate limit started.
--   **method (*String*):** Request Method. (Category: Security Configuration) Indicates the request's HTTP method (e.g., `GET`).
+-   **method (*String*):** Request Method. (Category: Request) Indicates the request's HTTP method (e.g., `GET`).
 -   **referer (*String*):** Referer. (Category: Request Header) Indicates the `Referer` header value sent in the client's request to the CDN. This header reports the URL of the site from which the request originated.
 -   **scope_id (*String*):** Scope ID. (Category: Security Configuration) Indicates the system-defined ID of the Security Application Manager configuration that enforced the rate limit.
 -   **scope_name (*String*):** Scope Name. (Category: Security Configuration) Indicates the name of the Security Application Manager configuration that enforced the rate limit.
@@ -84,6 +86,7 @@ The `logs` array contains an object for each log entry associated with the curre
 
 -   **url (*String*):** URL. (Category: Request) Indicates the URL that was requested.
 -   **user_agent (*String*):** User Agent. (Category: Request Header) Indicates the user agent that submitted the HTTP request to our CDN.
+-   **uuid (*String*):** Event ID. (Category: Request) Indicates the unique ID assigned to the event.
 
 ## Sample Log Data {/*sample-log-data*/}
 

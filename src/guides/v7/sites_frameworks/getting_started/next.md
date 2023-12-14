@@ -26,10 +26,6 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
 
 -->
 
-## Supported Versions {/* supported-versions */}
-
-{{ PRODUCT_NAME }} supports Next.js version 9 through 13.
-
 ## Supported Features {/* supported-features */}
 
 {{ PRODUCT_NAME }} supports all of the most powerful features of Next.js, including:
@@ -44,7 +40,7 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
 - [`getServerSideProps`](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
 - [`getInitialProps`](https://nextjs.org/docs/api-reference/data-fetching/get-initial-props)
 
-{{ PREREQ.md }}
+{{ NEXTJS_PREREQ.md }}
 
 ## Getting Started {/* getting-started */}
 
@@ -77,16 +73,16 @@ This will automatically add all of the required dependencies and files to your p
 
 In the generated `{{ CONFIG_FILE }}` file, you can customize how {{ PRODUCT }} builds and runs your Next.js application. Using the `next` key, you can configure the following options:
 
-| Option                       | Description                                                                                                                                                                                                               | Default |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `generateSourceMaps`         | Output sourcemaps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PORTAL }}.                                                                                         | `true`  |
-| `disableImageOptimizer`      | Disables the {{ PRODUCT }} image optimizer and allows to use the Next's built in image optimizer. <a id="disableImageOptimizer"></a>                                                                                      | `false` |
-| `disableDevtools`            | Disables the {{ PRODUCT }} development tools widget on the site. <a id="disableDevtools"></a>                                                                                                                             | `false` |
-| `disableServiceWorker`       | Disables the build of the service worker.                                                                                                                                                                                 | `false` |
-| `forceServerBuild`           | Forces the `{{ PACKAGE_NAME }}/next` connector to use the server build. This config option replaces the NEXT_FORCE_SERVER_BUILD env variable.                                                                             | `false` |
+| Option                       | Description                                                                                                                                                                                                                            | Default |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `generateSourceMaps`         | Output sourcemaps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PORTAL }}.                                                                                                      | `true`  |
+| `disableImageOptimizer`      | Disables the {{ PRODUCT }} image optimizer and allows to use the Next's built in image optimizer. <a id="disableImageOptimizer"></a>                                                                                                   | `false` |
+| `disableDevtools`            | Disables the {{ PRODUCT }} development tools widget on the site. <a id="disableDevtools"></a>                                                                                                                                          | `false` |
+| `disableServiceWorker`       | Disables the build of the service worker.                                                                                                                                                                                              | `false` |
+| `forceServerBuild`           | Forces the `{{ PACKAGE_NAME }}/next` connector to use the server build. This config option replaces the NEXT_FORCE_SERVER_BUILD env variable.                                                                                          | `false` |
 | `optimizeServerBuild`        | Optimizes the server build by bundling all server assets and decreasing the overall startup time. This option has no effect on apps with the {{ PRODUCT }} cloud build. This option is set to `false` for Next 13.x apps.              | `true`  |
 | `proxyToServerlessByDefault` | Reduces the number of generated rules by adding the default catch-all rule that proxies all requests to Next.js to the {{ PRODUCT }} cloud. Set this option to `false` if you want to proxy all unmatched pages to a different origin. | `true`  |
-| `enforceTrailingSlash`       | Adds rules with Next's internal redirects that either add or remove a trailing slash. When set to `false`, the redirect is performed only by the Next.js server itself and doesn't affect other origins.                  | `true`  |
+| `enforceTrailingSlash`       | Adds rules with Next's internal redirects that either add or remove a trailing slash. When set to `false`, the redirect is performed only by the Next.js server itself and doesn't affect other origins.                               | `true`  |
 
 ## {{ PRODUCT }} Next.js Plugin {/* next-plugin */}
 
@@ -426,7 +422,7 @@ module.exports = {
 
 <Callout type="info">
 
-Note that Next.js apps built in {{ PRODUCT }} cloud mode don't include a Next.js image optimizer. Disabling our image optimizer without providing an alternative may cause them to fail.
+Note that Next.js apps prior to 12.x built with the `serverless` target ([see Next.js 12.x deprecation notes](https://nextjs.org/docs/pages/building-your-application/upgrading/version-12#target-option-deprecated)) don't include a Next.js image optimizer. Disabling our image optimizer without providing an alternative may cause them to fail.
 
 </Callout>
 

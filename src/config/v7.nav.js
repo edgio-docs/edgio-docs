@@ -227,6 +227,12 @@ const nav = {
       title: 'Edge Functions',
       path: 'edge_functions',
       icon: 'edge-functions',
+      routes: [
+        {
+          title: 'HtmlTransformer',
+          path: 'edge-functions/htmltransformer',
+        },
+      ],
     },
     {
       title: 'Experimentation',

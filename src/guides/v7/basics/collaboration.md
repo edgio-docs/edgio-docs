@@ -48,17 +48,19 @@ Team management consists of:
 
     </Callout>
 
-### Managing Team Members {/*managing-team-members*/}
+### Managing Organization Members {/*managing-team-members*/}
 
 <a id="roles" />
 
-Each team member must be assigned one of the following roles:
+Each organization member must be assigned one of the following roles. Note that some roles can also be assigned specifically at the property or environment level.
 
--   **Read only:** This type of user may only view this team space's configuration and all of the properties that it contains.
--   **Purger:** This type of user has the same permissions as the *Read only* role. Additionally, this role allows a user to purge cached content for any property within this team space.
--   **Member:** This type of user has the same permissions as the *Purger* role. Additionally, this role allows a user to submit deployments to any environment. However, it does not allow configuration changes to this team or any of its properties.
--   **Admin:** This type of user is authorized to manage the entire team space. However, this role does not allow a user to add, remove, promote, or demote *Admin* or *Super Admin* users.
--   **Super Admin:** This type of user has full control over the entire team space.
+-   **Viewer:** This type of user may only view this organization space's configuration and all of the properties that it contains.
+-   **Purger:** This type of user has the same permissions as the *Viewer* role. Additionally, this role allows a user to purge cached content for any property within this organization space.
+-   **Security Manager:** This type of user has the same permissions as the *Viewer* role and has the extra ability to view and modify all security related features.
+-   **Editor:** This type of user can view and modify every property and environment in the organization, except the environments configured to only allow maintainers to deploy.
+-   **Maintainer:** This type of user has the same permission as *Editor* but can also create and delete properties and environments. It can configure the environments where only maintainers are allowed to deploy.
+-   **Admin:** This type of user has a complete access on the organization. It can manage members.
+
 
 **To add team members**
 

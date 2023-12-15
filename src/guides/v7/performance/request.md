@@ -15,7 +15,7 @@ A request commonly contains the following components:
 -   By default, our edge servers will typically forward the entire request to your origin configuration. However, a rule or your CDN-as-code configuration can override the default CDN behavior.
 -   Our CDN only accepts requests that comply with the HTTP specification (e.g., HTTP/1.1). We return a `400 Bad Request` for non-compliant requests.
 
-## Order of Operations
+## Order of Operations {/*order-of-operations*/}
 
 {{ PRODUCT }} processes each request in the following order:
 
@@ -51,7 +51,17 @@ Our CDN accepts `POST` requests regardless of whether they contain a payload.
 
 ## Request Protocol Version {/*request-protocol-version*/}
 
-The CDN service communicates using the HTTP protocol version (i.e., HTTP/1.0 or HTTP/1.1) defined in the request. The HTTP/2.0 protocol version is only used for the communication between the client and the edge of our network.
+Protocol version support varies according to whether the CDN is communicating with your origin or the client.
+
+-   **Client**:  Our CDN supports HTTP/1.0, HTTP/1.1, HTTP/2, and HTTP/3 for the communication between clients and the edge of our network. 
+
+    <Callout type="info">
+
+      HTTP/3 support requires the `alt-svc` response header. [Learn more.](/guides/basics/hostnames_and_origins#http-3)
+
+    </Callout>
+
+-   **Origin Server**:  Our CDN communicates with your origin using either HTTP/1.0 or HTTP/1.1.
 
 ## Request URL {/*request-url*/}
 
@@ -78,7 +88,7 @@ Our edge servers may also add or overwrite the following reserved request header
 ### General headers {/*general-headers*/}
 
 - `x-request-id`: unique request ID on {{ PRODUCT_NAME }} which may optionally be provided by you when issuing the requests to {{ PRODUCT_NAME }}
-- `{{ HEADER_PREFIX }}-client-ip`: the client IP address from which the request to {{ PRODUCT_NAME }} edge components originated; cannot be used for user agent IP identification when [{{ PRODUCT_NAME }} is behind another CDN](/guides/performance/third_party_cdns)).
+- `{{ HEADER_PREFIX }}-client-ip`: the client IP address from which the request to {{ PRODUCT_NAME }} edge components originated.
 - `{{ HEADER_PREFIX }}-destination`: the routing destination as determined by traffic splitting rules if any; the name of the destinations are taken from {{ PRODUCT_NAME }} router code and if not specified then default is `default`
 - `{{ HEADER_PREFIX }}-original-qs`: contains the original query string if [custom caching](/guides/performance/caching#customizing-the-cache-key) rules exclude query strings for the matching route; otherwise not set
 - `{{ HEADER_PREFIX }}-protocol`: the protocol on which the connection to your site has been established; it can either be `https` or `http`; 
@@ -108,13 +118,13 @@ Geolocation headers contain the geographical information about the provenance of
 - `{{ HEADER_PREFIX }}-geo-longitude`: the geographical longitude from which the request originated
 - `{{ HEADER_PREFIX }}-geo-asn`: the autonomous system number of the network operator from which the request originated
 
-These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee the accuracy of geolocation based on the client's IP address. See also [geolocation](/guides/third_party_cdns#client-ips) behind [third-party CDNs](/guides/third_party_cdns).
+These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee the accuracy of geolocation based on the client's IP address. 
 -->
 
-### Static prerendering headers {/*static-prerendering-headers*/}
+<!--### Static prerendering headers {/*static-prerendering-headers*/}
 
 - `{{ HEADER_PREFIX }}-preload`: Will be "1" if the request originated from [Static Prerendering](/guides/performance/static_prerendering). Otherwise this header will not be present.
-
+-->
 ## Request Body {/*request-body*/}
 
 Requests that are proxied through our network to an origin server will include a request body except if either of the following conditions are true:

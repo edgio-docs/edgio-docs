@@ -68,7 +68,7 @@ BIGCOMMERCE_STORE_API_STORE_HASH=${STORE_HASH}
 - `STORE_HASH`: You can retrieve it from your BigCommerce store control panel URL in the format of `https://store-${STORE_HASH}.mybigcommerce.com/manage/dashboard`
 - `STORE_TOKEN|STORE_CLIENT`: For instructions on generating Store API credentials, visit [Obtaining Store API Credentials](https://developer.bigcommerce.com/api-docs/getting-started/authentication/rest-api-authentication#obtaining-store-api-credentials)
 - `STOREFRONT_API_TOKEN`: For instructions on generating the Storefront API token, visit [Create a Token](https://developer.bigcommerce.com/api-reference/store-management/tokens/api-token/createtoken).
-- `CHANNEL_ID`: Visit [Building Channels](https://developer.bigcommerce.com/docs/ZG9jOjE5NjMyODU-building-channels-quick-start) to learn how to create a channel for use in your application.
+- `CHANNEL_ID`: Visit [Building Channels](https://developer.bigcommerce.com/api-docs/channels/quick-start) to learn how to create a channel for use in your application.
 
 4. Deploy to {{ PRODUCT }}.
 
@@ -100,10 +100,11 @@ Or from within `site` directory
 
 </Callout>
 
-## Connector {/*connector*/}
+<!--## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-next-connector">
   View the Connector Code
 </ButtonLink>
+-->

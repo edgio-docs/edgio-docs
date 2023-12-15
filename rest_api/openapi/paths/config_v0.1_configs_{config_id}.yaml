@@ -1,0 +1,60 @@
+get:
+  tags:
+    - configs
+  summary: Get CDN Configuration
+  description: >
+    Retrieve an environment's origin configurations, hostnames, rules, and
+    experiments.
+
+
+    Use the [Get Environment
+    operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId)
+    to retrieve the system-defined ID (`@links.active_config.id`) for an
+    environment's active configuration
+  operationId: getConfigV01ConfigsConfigId
+  parameters:
+    - name: config_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '201':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Config_V1_Entities_Config.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - configScope:
+        - app.config

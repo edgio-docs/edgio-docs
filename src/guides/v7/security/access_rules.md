@@ -9,6 +9,7 @@ An access rule identifies legitimate traffic and threats by:
 -   [Country](#country)
 -   [Country Subdivision](#country-subdivision--iso3166-2-)
 -   [IP address](#ip-address)
+-   [JA3](#ja3)
 -   [Referrer](#referrer)
 -   [URL](#url)
 -   [User agent](#user-agent)
@@ -39,7 +40,7 @@ blacklists for the following categories:
 
     <a id="country"></a>
 
--   **Country:** Identifies requests by the country from which the request originated. Specify each desired country using a [country code](/reference/country_codes).  
+-   **Country:** Identifies requests by the country from which the request originated. Specify each desired country using a [country code](/guides/reference/country_codes).  
 
     <Callout type="info">
 
@@ -72,25 +73,32 @@ blacklists for the following categories:
 
     The following value identifies requests from California:  `US-CA`
 
+    <a id="ja3"></a>
+-   **JA3:**  Premier only. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic across various IP addresses and ports.
+
     <a id="ip-address"></a>
 
--   **IP Address:** Identifies requests by the requester's IPv4 and/or IPv6 address. Specify each desired IP address using standard IPv4/IPv6 and CIDR notation.  
+-   **IP Address:** Identifies requests by the requester's IPv4 and/or IPv6 address. 
 
-    <Callout type="info">
+    **Key information:**
 
-      Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., 11.22.33.0/22).
+    -   Specify each desired IP address using standard IPv4/IPv6 and CIDR notation.  
 
-    </Callout>
+        <Callout type="info">
 
-    **Limit:**
+          Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., 11.22.33.0/22).
 
-    You may specify up to 1,000 IP addresses or IP blocks per access rule. Whitelist, accesslist, and blacklist entries count towards this limit.
+        </Callout>
 
-    <Callout type="tip">
+    -   **Limit:** You may specify up to 1,000 IP addresses or IP blocks per access rule. Whitelist, accesslist, and blacklist entries count towards this limit.
 
-      {{ PRODUCT_SECURITY }} Premier and Standard customers are allowed to create up to 2 access rules that may contain up to 10,000 IP addresses or IP blocks. Use the **High-Capacity** option to identify these two access rules. All other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. You may reassign high-capacity status to another access rule by first clearing the **High-Capacity** option from an existing high-capacity access rule.
+        <Callout type="tip">
 
-    </Callout>
+          {{ PRODUCT_SECURITY }} Premier and Standard customers are allowed to create up to 2 access rules that may contain up to 10,000 IP addresses or IP blocks. Use the **High-Capacity** option to identify these two access rules. All other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. You may reassign high-capacity status to another access rule by first clearing the **High-Capacity** option from an existing high-capacity access rule.
+
+        </Callout>
+
+    -   Certain services and applications, such as VPNs, mask a client's IP address. Specifically, they will report an IP address of their choosing instead of the client's real IP address. As a result, multiple devices and perhaps even users may end up sharing the same IP address. 
 
     <a id="referrer"></a>
 
@@ -244,10 +252,14 @@ Define the set of valid and invalid HTTP request methods through the
 
     `GET | POST | OPTIONS | HEAD | PUT | DELETE`
 
+### Anonmymous Proxy {/*anonymous-proxy*/}
+
+Determine whether we will detect requests that use an anonymizer or anonymous proxy tool through the **Detect Anon Proxy** option.
+
 ### Media Types (aka Content Types) {/*media-types-aka-content-types-*/}
 
 Define the set of valid media types (aka content types or MIME types)
-via the **Allowed Request Content Types** option.
+through the **Allowed Request Content Types** option.
 
 **Key information:**
 
@@ -294,7 +306,7 @@ via the **Allowed Request Content Types** option.
             violation of this access rule and enforce the security
             policy (e.g., alert or block) defined within your [security application 
             configuration](/guides/security/security_applications#enforcement-mode).
--   List each desired media type on a separate line.
+-   Add a media type by typing it and then pressing `ENTER`.
 -   Media types are case-insensitive.
 
 -   **Sample media types:**
@@ -321,7 +333,7 @@ Blacklist** option.
 -   {{ PRODUCT_SECURITY }} flags a request as a threat when its file extension matches one
     defined by this option.
 -   File extensions are case-insensitive.
--   List each desired file extension on a separate line.
+-   Add a file extension by typing it and then pressing `ENTER`.
 -   **Syntax:** 
 
     `.<File Extension>`
@@ -365,7 +377,7 @@ Blacklist** option.
 -   {{ PRODUCT_SECURITY }} flags a request as a threat when it contains a header whose name
     matches one defined by this option.
 -   Header names are case-insensitive.
--   List each desired request header on a separate line.
+-   Add a request header by typing it and then pressing `ENTER`.
 
 ## Access Rule Administration {/*access-rule-administration*/}
 
@@ -388,7 +400,7 @@ You may create, modify, and delete access rules.
 
 1.  Navigate to the **Access Rules** page.
     {{ SECURITY_NAV }} **Access Rules**.
-2.  Click **Add Access Rule**.
+2.  Click **+ New Access Ruleset**.
 3.  In the **Name of Rule** option, type the unique name by which this
     access rule will be identified. This name should be sufficiently
     descriptive to identify it when setting up a Security Application
@@ -473,7 +485,7 @@ You may create, modify, and delete access rules.
 
         </Callout>
 
-6.  Click **Submit**.
+6.  Click **Save**.
 
 **To modify an access rule**
 
@@ -481,7 +493,7 @@ You may create, modify, and delete access rules.
     {{ SECURITY_NAV }} **Access Rules**.
 2.  Click on the desired access rule.
 3.  Make the desired changes.
-4.  Click **Submit**.
+4.  Click **Save**.
 
 **To delete an access rule**
 

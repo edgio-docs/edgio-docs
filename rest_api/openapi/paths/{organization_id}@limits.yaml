@@ -1,0 +1,63 @@
+post:
+  operationId: create-rate-rule
+  tags:
+    - Rate Rules (Limits)
+  summary: Add Rate Rule
+  description: Creates a rate rule that determines the maximum number of requests that will be allowed within a given time period.
+  security:
+    - wafScope: [app.waf]
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/Limit.yaml
+  responses:
+    '200':
+      description: OK. A rate rule was created. 
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
+    '400':
+      $ref: ../components/responses/error_400.yaml
+    '403':
+      $ref: ../components/responses/error_403.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+get:
+  operationId: get-rate-rules
+  tags:
+    - Rate Rules (Limits)
+  summary: Get All Rate Rules
+  description: Retrieves a list of rate rules. A rate rule determines the maximum number of requests that will be allowed within a given time period.
+  security:
+    - wafScope: [app.waf]
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  responses:
+    '200':
+      description: OK. A list of rate rules was retrieved. 
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ObjShort.yaml
+          example:
+            [{
+                    "id": "VzhYZAMT",
+                    "name": "My Rate Rule",
+                    "last_modified_date": "2023-09-28T00:16:18.589777Z"
+                }, {
+                    "id": "F60gu16u",
+                    "name": "CC Transactions",
+                    "last_modified_date": "2023-09-27T00:16:12.389364Z"
+                }
+            ]
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

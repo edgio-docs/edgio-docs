@@ -16,9 +16,17 @@ jobs:
         with:
           access_token: ${{ github.token }}
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+      - name: Ruby dependencies
+        run: |
+          gem install pry json
       - name: Cache node modules
         uses: actions/cache@v3
         env:
@@ -34,12 +42,12 @@ jobs:
       - name: Deploy to docs.edg.io (stage)
         id: deploy
         run: |
-          DEPLOY=$(yarn edgio:deploy --branch=$BRANCH_NAME --token=${{secrets.layer0_prod_deploy_token}} --environment=default 2>&1) || true
+          DEPLOY=$(yarn edgio:deploy --branch=$BRANCH_NAME --token=${{secrets.edgio_prod_deploy_token}} --environment=default 2>&1) || true
           echo "$DEPLOY"
 
           # Get the build link from the output of the command
           echo "$DEPLOY" |
-            sed -n 's/.*\(https:\/\/app\.layer0\.co\/[^ ]*\).*/\1/p' |
+            sed -n 's/.*\(https:\/\/edgio\.app\/[^ ]*\).*/\1/p' |
             {
               read buildlink || buildlink=""
               if [[ -n $buildlink ]]; then
@@ -87,6 +95,3 @@ jobs:
             ##### Deployment: ${{ steps.deploy.outputs.status }}
             - Permalink: ${{ steps.deploy.outputs.permalink }}
             - Edge: ${{ steps.deploy.outputs.edge }}
-      - name: Validate Guide Example Links
-        shell: bash
-        run: node ./scripts/validateExampleLinks.js

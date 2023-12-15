@@ -2,9 +2,7 @@
 title: Develop
 ---
 
-Use the following resources to 
+Use the following resources when developing your {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} implementation:
 -   [{{ PRODUCT }} CLI.](/guides/develop/cli) Our command-line interface allows you to quickly configure, test, and deploy changes to your site. 
--   [REST API.](/guides/develop/rest_api) Use our REST API within your scripts to purge cached content. 
--   [Log data.](/guides/develop/logs) Analyze log data to gain insights into traffic patterns and performance.
--   [Deploy to Edgio.](/guides/develop/deploy_to_edgio) Our `Deploy to {{ PRODUCT }}` button, which clones and deploys a sample site to {{ PRODUCT }}, allows for quick experimentation with a sample site. 
+-   [REST API.](/guides/develop/rest_api) Use our REST API to facilitate the integration of Edgio into your workflow(s), applications, or interfaces. [View our REST API reference.](/rest_api)
 -   [{{ PRODUCT }} packages.](/guides/develop/packages) Use our {{ PRODUCT }} packages to define logic, routing, and prefetching behavior. 

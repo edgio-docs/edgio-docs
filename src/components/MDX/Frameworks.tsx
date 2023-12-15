@@ -501,12 +501,6 @@ const items = {
       iconDark: <IconNextJSDark />,
     },
     {
-      title: 'Next.js Commerce',
-      path: '/guides/sites_frameworks/getting_started/next_commerce',
-      icon: <IconNextJSCommerce />,
-      iconDark: <IconNextJSCommerceDark />,
-    },
-    {
       title: 'Nuxt.js',
       path: '/guides/sites_frameworks/getting_started/nuxt',
       icon: <IconNuxt />,
@@ -571,6 +565,12 @@ const items = {
       path: '/guides/sites_frameworks/getting_started/stencil',
       icon: <IconStencil />,
       iconDark: <IconStencilDark />,
+    },
+    {
+      title: 'SvelteKit',
+      path: '/guides/sites_frameworks/getting_started/sveltekit',
+      icon: <IconSvelte />,
+      iconDark: <IconSvelte />,
     },
     {
       title: 'VitePress',

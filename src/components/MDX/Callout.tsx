@@ -38,7 +38,7 @@ const StyledCallout = styled.div.attrs<IStyledCallout>((props) => ({
   type: props.type || 'info',
 }))<IStyledCallout>`
   padding: 14px 20px 20px 14px;
-  border: 1px solid #dedede;
+  border: 1px solid var(--callout-border);
   border-radius: 3px;
   margin: 0 0 7px 0;
   background-color: var(--callout-bg);

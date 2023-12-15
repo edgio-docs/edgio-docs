@@ -12,14 +12,14 @@ This guide shows you how to deploy a [Razzle](https://razzlejs.org/) application
   repoUrl="https://github.com/layer0-docs/layer0-razzle-example"
   deployFromRepo />
 
-## Connector {/*connector*/}
+<!--## Connector {/*connector*/}
 
 This framework has a connector developed for {{ PRODUCT }}. See [Connectors](connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/layer0-docs/layer0-connectors/tree/main/layer0-razzle-connector">
   View the Connector Code
 </ButtonLink>
-
+-->
 {{ PREREQ.md }}
 
 ## Getting Started {/*getting-started*/}

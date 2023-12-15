@@ -13,28 +13,108 @@ Route features identify actions that will be applied to a request. Popular featu
 
 See [Features Reference](/guides/performance/rules/features) for a complete list of features and their behavior.
 
-## Defining Route Features
+## Defining Route Features {/* defining-route-features */}
 
-As outlined in the [Route Features](/guides/performance/cdn_as_code#route-features) section of the CDN-as-Code guide, route features are defined as the second argument to the `Router` method being called in the `routes.js` file, such as `.match()`, `.get()`, `.post()`, etc.
+As outlined in the [Route Features](/guides/performance/cdn_as_code#route-features) section of the CDN-as-Code guide:
 
-The argument is an Object that supports features outlined in the [Features Reference](/guides/performance/rules/features). The following example shows how to define a route feature that proxies a request, sending it to the origin host and caching it for 1 hour:
+- Route features are defined as the second argument to the `Router` method being called in the `routes.js` file, such as `.match()`, `.get()`, `.post()`, etc.
+- May also be defined in [conditional routes](/guides/performance/cdn_as_code/route_criteria#conditional-routes) such as `.if()`, `.elseif()`, etc.
+
+The argument is an object that supports features outlined in the [Features Reference](/guides/performance/rules/features). The following example shows how to define a route feature that proxies a request to the origin host and caches it for 1 hour:
 
 ```js
- router.match('/:path*', {
-   caching: {
-     max_age: "1h"
-   },
-   origin: {
-     set_origin: "origin"
-   }
- })
+router.match('/:path*', {
+  caching: {
+    max_age: '1h',
+  },
+  origin: {
+    set_origin: 'origin',
+  },
+});
 ```
 
-## Common Routing Features
+Route features are often defined using object notation, but in some cases, it may be necessary to use [RouteHelper](/docs/api/core/classes/router_RouteHelper.default.html) methods to define features. Some functionality such as [transforming requests/responses](#transforming-requests-responses) or [serving static files](#serving-a-static-file) requires the use of `RouteHelper` methods.
 
-The following sections describe common routing features and how to use them.
+{{ routehelper_usage.md }}
 
-## Debug Mode {/* debug-mode */}
+When you're mixing usage of object notation and `RouteHelper` methods, the `addFeatures()` function allows you to seamlessly integrate features defined in object notation directly within `RouteHelper` instance. The examples below illustrate the two notation styles, and then show how to combine them:
+
+```js
+// Using different notation styles
+router
+  // Define caching using object notation
+  .get('/some-path', {
+    caching: {
+      max_age: '1h',
+    },
+  })
+
+  // Serve a static file using a RouteHelper method
+  .get('/some-path', ({serveStatic}) => {
+    serveStatic('public/some-path.html');
+  });
+
+/* or */
+
+// Combining notation styles
+router.get('/some-path', ({addFeatures, serveStatic}) => {
+  // Use `addFeatures` RouteHelper method to define caching using object notation
+  addFeatures({
+    caching: {
+      max_age: '1h',
+    },
+  });
+
+  // Use `serveStatic` RouteHelper method to serve a static file
+  serveStatic('public/some-path.html');
+});
+```
+
+While both of these examples are functionally equivalent, the second example is more flexible because it allows you to define a single route using both notation styles for different features.
+
+## Caching {/* caching */}
+
+Add caching to a route using the [`caching`](/docs/api/core/interfaces/types.Caching.html) feature:
+
+```js
+router.get('/some/path', {
+  caching: {
+    max_age: '1d',
+    stale_while_revalidate: '',
+    service_worker_max_age: '1h',
+    bypass_client_cache: true,
+  },
+  headers: {
+    set_response_headers: {
+      'x-sw-cache-control': 'max-age=3600',
+    },
+  },
+});
+```
+
+### Customizing the Cache Key {/* customizing-the-cache-key */}
+
+A [cache key](/guides/performance/caching/cache_key) is automatically generated for each request, but if your web application relies on query string parameter(s), request header(s), or cookie(s) when generating a response, then you should customize the cache key to include those elements. You can customize the cache key using the [`cache_key`](docs/api/core/interfaces/types.Caching.html#cache_key) feature:
+
+```js
+router.get('/some/path', {
+  caching: {
+    max_age: '1d',
+    cache_key: {
+      // query string options are mutually exclusive; only one can be used for the cache key.
+      exclude_all_query_params: boolean,
+      include_all_query_params: boolean,
+      include_all_query_params_except: ['session_id', 'utm_source'],
+      include_query_params: ['page', 'filters'],
+
+      include_headers: ['x-my-header'],
+      include_cookies: ['x-my-cookie', 'language', 'currency'],
+    },
+  },
+});
+```
+
+## Debug Cache Headers {/* debug-cache-headers */}
 
 The debug cache response headers provide additional information about the cache policy applied to the requested asset. [Learn more.](/guides/performance/response#requesting-debug-cache-information)
 
@@ -260,7 +340,7 @@ Additional information on the `headers` feature can be found in the [Features](/
 
 You can also write catch-all routes that will alter all responses. One example where this is useful is injecting [Content Security Policy](/guides/security/edgejs_security#content-security-policy-csp) headers.
 
-Another example is adding response headers for debugging, which is often useful if {{ PRODUCT_NAME }} is behind another CDN or if you are troubleshooting your router rules. For example, you could respond with the value of request `x-forwarded-for` into `x-debug-xff` to see the value that {{ PRODUCT_NAME }} is receiving from the CDN:
+Another example is adding response headers for debugging, which is often useful if {{ PRODUCT_NAME }} is behind another CDN or if you are troubleshooting your router rules. For example, you could respond with the value of request `%{http_x_forwarded_for}` into `x-debug-xff` to see the value that {{ PRODUCT_NAME }} is receiving from the CDN:
 
 ```js
 router.match(
@@ -281,7 +361,51 @@ router.match(
 ```
 
 The rules for interpolating the values of request and response objects can be found in the [routing](/guides/performance/cdn_as_code#embedded-values) guide.
-Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/routing#route-execution) for more information on route execution order and sending responses.
+Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/performance/cdn_as_code#route-execution) for more information on route execution order and sending responses.
+
+### Transforming Requests / Responses {/* transforming-requests-responses */}
+
+If you need to modify a request before going to an origin, or modify the response from an origin, you may use `transformRequest` and `transformResponse` functions on the `proxy` handler. Transform functions will be executed within the {{ PRODUCT }} cloud, and will not be executed on the edge. See [Cloud Functions](/guides/performance/serverless_compute) for more information.
+
+{{ routehelper_usage.md }}
+
+#### transformRequest Function {/* transformRequest-function */}
+
+You can modify the request before it is sent to the origin using the `transformRequest` function. This example shows how you could add a `foo` property to the request body before sending it to the origin:
+
+```js
+router.get('/products/:productId', ({proxy}) => {
+  proxy('origin', {
+    transformRequest: (request) => {
+      request.body = JSON.stringify({
+        ...JSON.parse(request.body),
+        foo: 'bar',
+      });
+    },
+  });
+});
+```
+
+#### transformResponse Function{/* transformResponse-function */}
+
+Similarly, you can modify the response from the origin before it is sent to the client using the `transformResponse` function. This example shows how you could add an HTML `script` tag to the response body before sending it to the client:
+
+```js
+import responseBodyToString from '@edgio/core/utils/responseBodyToString';
+import $ from 'cheerio';
+/* ... */
+router.get('/products/:productId', ({proxy}) => {
+  proxy('origin', {
+    transformResponse: (response) => {
+      const body = responseBodyToString(response);
+      const $body = $(body).append(
+        '<script src="https://example.com/script.js"></script>'
+      );
+      response.body = $body.html();
+    },
+  });
+});
+```
 
 ## Manipulating Cookies {/* manipulating-cookies */}
 
@@ -376,94 +500,82 @@ router
 
 ## Serving a Static File {/* serving-a-static-file */}
 
-To serve a specific file use the `origin.set_origin` feature with the `edgio_static` value:
+To serve a specific file, use the [`serveStatic`](/docs/api/core/classes/router_RouteHelper.default.html#serveStatic) method.
+
+{{ routehelper_usage.md }}
 
 ```js
-router.get('/favicon.ico', {
-  caching: {
-    max_age: '1d',
-    client_max_age: '1h',
-  },
-  origin: {
-    set_origin: 'edgio_static',
-  },
-  url: {
-    url_rewrite: [
-      {
-        source: '/favicon.ico',
-        syntax: 'path-to-regexp',
-        destination: '/assets/favicon.ico',
-      },
-    ],
-  },
-});
+router
+  // cache the favicon for 1 day
+  .get('/favicon.ico', {
+    caching: {
+      max_age: '1d',
+      client_max_age: '1h',
+    },
+  })
+
+  // serve the favicon from the `public` directory
+  .get('/favicon.ico', ({serveStatic}) => serveStatic('public/favicon.ico'));
 ```
 
 ## Serving Static Files From a Directory {/* serving-static-files-from-a-directory */}
 
-Here's an example that serves all requests by sending the corresponding file in the `public` directory
+To serve a files from a directory, use the [`serveStatic`](/docs/api/core/classes/router_RouteHelper.default.html#serveStatic) method.
+
+{{ routehelper_usage.md }}
 
 ```js
-router.get('/:path*', {
-  caching: {
-    max_age: '1d',
-    bypass_client_cache: true,
-  },
-  origin: {
-    set_origin: 'edgio_static',
-  },
-  url: {
-    url_rewrite: [
-      {
-        source: '/:path*',
-        syntax: 'path-to-regexp',
-        destination: '/public/:path*',
-      },
-    ],
-  },
-});
+router
+  // cache the static assets for 1 day
+  .get('/assets/:path*', {
+    caching: {
+      max_age: '1d',
+      client_max_age: '1h',
+    },
+  })
+
+  // serve the assets from the `public` directory
+  .get('/assets/:path*', ({serveStatic}) => serveStatic('public/:path*'));
 ```
 
 ## Serving the Service Worker {/* serving-the-service-worker */}
 
-Similar to the above example, you can serve the service worker from its directory (e.g. `/dist/service-worker.js`):
+Similar to the above example, you can serve the service worker from its directory (e.g. `/dist/service-worker.js`).
+
+{{ routehelper_usage.md }}
 
 ```js
-router.match('/service-worker.js', {
-  caching: {
-    max_age: '1d',
-    bypass_client_cache: true,
-  },
-  origin: {
-    set_origin: 'edgio_static',
-  },
-  url: {
-    url_rewrite: [
-      {
-        source: '/service-worker.js',
-        syntax: 'path-to-regexp',
-        destination: '/dist/service-worker.js',
-      },
-    ],
-  },
-});
+router
+  // cache the service worker for 1 day
+  .get('/service-worker.js', {
+    caching: {
+      max_age: '1d',
+      client_max_age: '1h',
+    },
+  })
+
+  // serve the service worker from the `dist` directory
+  .get('/service-worker.js', ({serveStatic}) =>
+    serveStatic('dist/service-worker.js')
+  );
 ```
 
-## Routing to Serverless {/* routing-to-serverless */}
+## Routing to Cloud Functions {/* routing-to-cloud-functions */}
 
-If your request needs to be run on the serverless tier, you can use the `SERVERLESS_ORIGIN_NAME` origin to render your result using your application. Use this method to respond with an SSR or API result from your application:
+Render the result of a Cloud Function within your application by using the [`renderWithApp`](/docs/api/core/classes/router_RouteHelper.default.html#renderWithApp) method. Use this method to respond with an SSR or API result from your application.
+
+{{ routehelper_usage.md }}
 
 ```js
-import {SERVERLESS_ORIGIN_NAME} from '@edgio/core/origins';
+router.get('/some/:path*', ({addFeatures, renderWithApp}) => {
+  addFeatures({
+    caching: {
+      max_age: '1d',
+      bypass_client_cache: true,
+    },
+  });
 
-router.get('/some/:path*', {
-  caching: {
-    max_age: '1d',
-    bypass_client_cache: true,
-  },
-  origin: {
-    set_origin: SERVERLESS_ORIGIN_NAME,
-  },
+  renderWithApp();
 });
 ```
 
@@ -511,6 +623,113 @@ router.get('/products/:id', ({ serveStatic, cache }) => {
 })
 ``` -->
 
+## Image Optimization {/* image-optimization */}
+
+{{ PRODUCT_NAME }} can dynamically transform your images to tailor your site's design, experience, and performance needs. [Image optimization](/guides/performance/image_optimization) can be enabled using the [`response.optimize_images`](/docs/api/core/interfaces/types.Response.html#optimize_images) feature on your route(s).
+
+<ExampleButtons
+  title="Image Optimization"
+  siteUrl="https://edgio-community-examples-v7-image-optimization-live.glb.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-image-optimization-example/"
+/>
+
+### Optimizing Local Images {/* optimizing-local-images */}
+
+Images local to your project, such as those in your `public` directory, can be both served as static assets and processed by the image optimizer.
+
+{{ routehelper_usage.md }}
+
+```js
+// match all /images/* requests
+router.match(/\/images\/(.*)/, ({addFeatures, serveStatic}) => {
+  // serve the image as a static asset, referencing the capture group from the match
+  serveStatic('public/images/$1');
+
+  // add the image optimization and caching feature
+  addFeatures({
+    caching: {
+      max_age: '1d',
+    },
+    response: {
+      optimize_images: true,
+    },
+  });
+});
+```
+
+This example:
+
+- Matches all `/images/*` requests
+- Proxies the request to the static asset origin where the asset is hosted
+- Enables the image optimization feature
+- Caches the response for 1 day
+
+**Sample request:** `https://example.com/images/my-image.jpg?width=200&height=200`
+
+<Callout type="important">
+
+Rules should match using a regular expression that captures the image path and query string parameters containing the image optimization options. This is necessary to ensure optimization options are captured and passed to the image optimizer. Using [simple path matching](/guides/performance/cdn_as_code/route_criteria#simple-path-matching) (e.g. `/images/:path*`) will not capture the query string parameters and optimizations will not be applied.
+
+</Callout>
+
+### Optimizing Remote Images {/* optimizing-remote-images */}
+
+Images hosted on a remote server can be optimized by proxying the request to the origin and adding the image optimization feature.
+
+```js
+router.match('/images/:path*', {
+  caching: {
+    max_age: '1d',
+  },
+  origin: {
+    set_origin: 'origin',
+  },
+  response: {
+    optimize_images: true,
+  },
+});
+```
+
+This example:
+
+- Matches all `/images/*` requests
+- Proxies the request to the `origin` origin where the asset is hosted
+- Enables the image optimization feature
+- Caches the response for 1 day
+
+If you need to modify the request path before proxying to the origin, you can use the `url.url_rewrite` feature.
+
+```js
+router.match(/\/images\/(.*)/, {
+  caching: {
+    max_age: '1d',
+  },
+  origin: {
+    set_origin: 'media',
+  },
+  url: {
+    url_rewrite: [
+      {
+        source: '/images/(.*)',
+        syntax: 'regexp',
+        destination: '/assets/images/$1',
+      },
+    ],
+  },
+  response: {
+    optimize_images: true,
+  },
+});
+```
+
+This example:
+
+- Matches all `/images/*` requests
+- Proxies the request to the `media` origin where the asset is hosted
+- Rewrites the request path to `/assets/images/*` to match the path on the origin
+- Enables the image optimization feature
+- Caches the response for 1 day
+
 ## Responding with a String Response Body {/* responding-with-a-string-response-body */}
 
 To respond with a simple, constant string as the response body use the `response.set_response_body` and `response.set_done` features:
@@ -538,13 +757,13 @@ router.get('/some-path', {
 
 <Callout type="important">
 
-When using `response.set_response_body` to send a response, or to stop processing a request from potentially matching subsequent routes, you must also set `response.set_done` to `true`.
+When using `response.set_response_body` to send a response, you must also set `response.set_done` to `true`. This will allow the request to continue matching any subsequent rules, but will prevent the request from being forwarded to the origin.
 
 </Callout>
 
-To compute a dynamic response, use the [`compute`](/docs/api/core/classes/router.RouteHelper.html#compute) method.
+To compute a dynamic response, use the [`compute`](/docs/api/core/classes/router_RouteHelper.default.html#compute) method.
 
-{{ routehelper_usage.md}}
+{{ routehelper_usage.md }}
 
 ```js
 router.get('/hello/:name', ({cache, setResponseHeader, compute, send}) => {
@@ -582,9 +801,9 @@ router.get('/p/:productId', {
 });
 ```
 
-To compute the destination URL, use the [`compute`](/docs/api/core/classes/router.RouteHelper.html#compute) method.
+To compute the destination URL, use the [`compute`](/docs/api/core/classes/router_RouteHelper.default.html#compute) method.
 
-{{ routehelper_usage.md}}
+{{ routehelper_usage.md }}
 
 ```js
 router.get('/p/:productId', ({redirect, compute, cache}) => {
@@ -637,50 +856,50 @@ router.match(
 If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [country code](/guides/reference/country_codes) using the `location.country` match condition:
 
 ```js
-router.conditional({
-  if: [
+import {or} from '@edgio/core';
+
+router.if(
+  or(
     {
-      or: [
-        {
-          '===': [
-            {
-              location: 'country',
-            },
-            'XX',
-          ],
-        },
-        {
-          or: [
-            {
-              '===': [
-                {
-                  location: 'country',
-                },
-                'XY',
-              ],
-            },
-            {
-              '===': [
-                {
-                  location: 'country',
-                },
-                'XZ',
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      access: {
-        deny_access: true,
+      edgeControlCriteria: {
+        '===': [
+          {
+            location: 'country',
+          },
+          'XX',
+        ],
       },
     },
-  ],
-});
+    {
+      edgeControlCriteria: {
+        '===': [
+          {
+            location: 'country',
+          },
+          'XY',
+        ],
+      },
+    },
+    {
+      edgeControlCriteria: {
+        '===': [
+          {
+            location: 'country',
+          },
+          'XZ',
+        ],
+      },
+    }
+  ),
+  {
+    access: {
+      deny_access: true,
+    },
+  }
+);
 ```
 
-You can find more about geolocation headers [here](/guides/performance/request#request-headers).
+Learn more about geolocation headers in the [Request guide](/guides/performance/request#request-headers). For detailed information on complex rules, see [Conditional Routes](/guides/performance/cdn_as_code/conditional_routes).
 
 <!-- TODO need support for regex client IP matching
 ### Allowing Specific IPs {/*allowing-specific-ips*/}

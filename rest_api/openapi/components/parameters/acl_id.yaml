@@ -1,0 +1,10 @@
+name: acl_id
+in: path
+required: true
+description: |
+
+  An access rule's system-defined ID. 
+  
+  Use the [Get All Access Rules operation](#tag/Access-Control-List-(ACL)/operation/get-acl-rules) to retrieve a list of access rules and their system-defined IDs.
+schema:
+  type: string

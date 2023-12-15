@@ -12,26 +12,29 @@ You can easily add CSP headers to your site via a catch-all route near the top o
 
 **To enforce a content security policy:**
 
-```js
-new Router().match('/:path*', ({ setResponseHeader }) => {
-  setResponseHeader(
-    'Content-Security-Policy',
-    "default-src 'self'; report-uri http://reportcollector.example.com/collector.cgi",
-  )
-})
-// The rest of your router...
+```js filename="./routes.js"
+export default new Router().match({}, {
+    headers: {
+        set_response_headers: {
+            "Content-Security-Policy":
+            "default-src 'self'; report-uri http://reportcollector.example.com/collector.cgi",
+        },
+    },
+});
 ```
 
 **To enable a content security policy in report-only mode:**
 
-```js
-new Router().match('/:path*', ({ setResponseHeader }) => {
-  setResponseHeader('Content-Security-Policy-Report-Only', "default-src 'self'")
-})
-// The rest of your router...
+```js filename="./routes.js"
+export default new Router().match({}, {
+    headers: {
+        set_response_headers: {
+            "Content-Security-Policy-Report-Only": "default-src 'self'",
+        },
+    },
+});
 ```
-
-## Basic Authentication {/*basic-authentication*/}
+<!--## Basic Authentication {/*basic-authentication*/}
 
 You can add basic authentication to your site using the `requireBasicAuth` router method. For example, add the following to the top of your router:
 
@@ -72,26 +75,54 @@ If you want the route to match both `http` and `https` protocols you can match o
 
 Additionally:
 
-- A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](/guides/performance/request#request-headers) request header or the [`request.secure`](/docs/api/core/interfaces/_router_request_.request.html#secure) property.
+- A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](/guides/performance/request#request-headers) request header.
 - During local development all requests will appear secure by default. To test your router for `http` protocol matching you must either set the `local_{{ COOKIE_PREFIX }}_emulate_http_protocol` cookie to `true` (if using a browser) or send an `{{ HEADER_PREFIX }}-protocol` request header set to `http`.
+-->
 
-**What is the minimum level of encryption?** 
+## TLS Version {/*tls-version*/}
 
-{{ PRODUCT_NAME }} enforces a minimum version of TLS 1.2 or higher.
+We recommend that you enable TLS 1.3, 1.2, or both on your web server(s). 
+
+**Key information:**
+-   A recommended best practice is to disable support for SSL/TLS versions 1.1 or older.
+-   TLS 1.3 improves security and performance of internet communications. Specifically, it eliminates known TLS 1.2 security vulnerabilities and prevents snooping and man-in-the-middle attacks.
 
 ## HTTP/1/2 Version {/*http12-version*/}
 
-The incoming HTTP version is independent of the upstream HTTP version. We support HTTP/1 or HTTP/2 on ingress requests. We prioritize HTTP/2 to origin servers. If the origin server does not support the incoming HTTP version (say version HTTP/2 came in but origin only supports HTTP/1), we will downgrade to successfully complete the request, but the outgoing response will return to HTTP/2.
+We support the following HTTP protocol versions for client requests to our network:
+-   **HTTP/1:** {{ PRODUCT }} uses the HTTP protocol version defined in the request when proxying requests to an origin and in the response provided to the client.
+-   **HTTP/2:** {{ PRODUCT }} uses the the HTTP/1.1 protocol when proxying requests to an origin and the HTTP/2 protocol for the response provided to the client.
+
+<Callout type="info">
+
+  {{ PRODUCT }} also supports HTTP/3 for the communication between the client and the edge of our network, but it requires enablement. Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to enable it on your account.
+
+</Callout>
 
 ## Secrets {/*secrets*/}
 
 Rather than putting secret values such as API keys in your code and checking them into source control, you can securely
-store them in environment variables, then access them in your code from `process.env`. To configure environment variables,
-navigate to your environment, click _EDIT_, then under Environment Variables, click _ADD VARIABLE_.
+store them in environment variables, then access them in your code from `process.env`. 
 
-![networking](/images/security/environment-variables.png?width=700)
+**To configure environment variables**
 
-As of {{ PRODUCT_NAME }} CLI version 2.19.0, when you deploy to an environment using a deploy token, for example by running `{{ CLI_NAME }} deploy my-team --environment=production --token=(my token)` option, all environment variables are pulled down from the {{ PORTAL }} and applied to `process.env` so they can be accessed at build time. This allows you to store all of your build and runtime secrets in a single place, {{ PORTAL }}, rather than storing some in your CI system's secret manager.
+1.  Navigate to the **Environment Variables** page.
+    {{ ENV_NAV }} **Environment Variables**.
+2.  Click **+ Add Environment Variable**.
+3.  Set the **Key** option to the name of the desired environment variable. Use this name to reference the environment variable in your code.
+4.  Set the **Value** option to the value that will replace references to this environment variable.
+5.  If this environment variable contains sensitive information, mark the **Keep this value a secret** option.
+6.  Click **Add variable**.
+
+    Your new environment variable should now be listed.
+
+    ![networking](/images/security/environment-variables.png?width=700)
+
+Deploying to an environment using a deploy token pulls all environment variables and applies them to `process.env`. This allows these variables to be accessed at build time. 
+
+**Deploying with a deploy token example:** `{{ FULL_CLI_NAME }} deploy my-organization --environment=production --token=(my token)`
+
+Use environment variables to store all of your build and runtime secrets in a single place, {{ PORTAL }}, rather than storing some in your CI system's secret manager.
 
 ## Cache Poisoning {/*cache-poisoning*/}
 
@@ -99,21 +130,21 @@ As of {{ PRODUCT_NAME }} CLI version 2.19.0, when you deploy to an environment u
 
 > The impact of a maliciously constructed response can be magnified if it is cached either by a web cache used by multiple users or even the browser cache of a single user. If a response is cached in a shared web cache, such as those commonly found in proxy servers, then all users of that cache will continue to receive the malicious content until the cache entry is purged.
 
-To guard against this attack you must ensure that all the request parameters that influence the rendering of the content are part of your [custom cache key](/guides/performance/caching#section_customizing_the_cache_key). {{ PRODUCT_NAME }} will [automatically include](/guides/performance/caching#section_cache_key) the `host` header and URL. Including other request headers and cookies are your responsibility.
+Guard against this type of attack by ensuring that all request parameters that influence content rendering are included within your [cache key](/guides/performance/caching/cache_key). 
 
 For example, if you are rendering content based on a custom language cookie, then you must include it in your custom cache key:
 
-```js
-import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'
-
-router.get('/some/path/depending/on/language/cookie', ({ cache }) => {
-  cache({
-    key: new CustomCacheKey().addCookie('language'),
-    // Other options...
-  })
-})
+```js filename="./routes.js"
+export default new Router().match("/language/specific/:path", {
+    caching: {
+        cache_key_rewrite: {
+            source: "/language/specific/(.*)",
+            destination: "/language/specific/$1-%{cookie_language}",
+        },
+    },
+});
 ```
-
+<!--
 ## Bot Detection {/*bot-detection*/}
 
 {{ PRODUCT_NAME }} examines the `user-agent` header in an incoming request to determine if it includes a string that indicates if it is a bot, and if so, injects `1` in the `{{ HEADER_PREFIX }}-device-is-bot` request header, which will be visible to your server code. If the `user-agent` header does not include any of the strings indicating a bot, a `0` value is injected.
@@ -146,7 +177,7 @@ The following table list the user agents that {{ PRODUCT_NAME }} examines and de
 | xing-contenttabreceiver | Xing social network crawler bot that indexes content for the Xing social network.                                                                                                                                                               |
 | yahoo                   | Another Yahoo Search robot for crawling and indexing web page information.                                                                                                                                                                      |
 
-If the set of bots detected by {{ PRODUCT_NAME }} is not sufficient for your needs, you can easily add your own bot detection through [EdgeJS](/guides/performance/cdn_as_code) and its [`match`](/docs/api/core/classes/_router_router_.router.html#match) and [`setRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader) APIs:
+If the set of bots detected by {{ PRODUCT_NAME }} is not sufficient for your needs, you can easily add your own bot detection through [EdgeJS](/guides/performance/cdn_as_code) and its [`match`](/docs/api/core/classes/router_Router.default.html#match) and [`setRequestHeader`](/docs/api/core/classes/router_RouteHelper.default.html#setRequestHeader) APIs:
 
 ```js
 router.match(
@@ -163,3 +194,4 @@ router.match(
 ```
 
 The above code will match all the routes that even have a `user-agent` header and then inject the `my-bot-detection-is-bot` when the value of the user agent header matches the given regex. Once the header has been injected, the later routes can test for it and implement bot handling. Or, you could just let the header be sent upstream for your backend to handle it.
+-->

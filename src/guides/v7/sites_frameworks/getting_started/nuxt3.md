@@ -26,7 +26,7 @@ To create a new Nuxt3 application, run:
 npx nuxi init <app-name>
 ```
 
-Learn more about [npx](https://nodejs.dev/learn/the-npx-nodejs-package-runner) and [Creating a new Nuxt3 project](https://v3.nuxtjs.org/getting-started/installation#new-project).
+Learn more about [npx](https://docs.npmjs.com/cli/v9/commands/npx) and [Creating a new Nuxt3 project](https://v3.nuxtjs.org/getting-started/installation#new-project).
 
 After the installation is complete, change directory to the new project:
 
@@ -73,6 +73,8 @@ Deploy your app to {{ PRODUCT }} by running the following command in your projec
 ```bash
 {{ FULL_CLI_NAME }} deploy
 ```
+
+{{ system_origins_callout.md }}
 
 See [Deployments](/guides/basics/deployments) for more information.
 

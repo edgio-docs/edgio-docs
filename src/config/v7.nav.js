@@ -85,10 +85,10 @@ const nav = {
               title: 'Route Features',
               path: 'performance/cdn_as_code/route_features',
             },
-            // {
-            //   title: 'Edge Functions',
-            //   path: 'performance/cdn_as_code/edge_functions',
-            // },
+            {
+              title: 'Conditional Routes',
+              path: 'performance/cdn_as_code/conditional_routes',
+            },
             {
               title: 'Error Handling',
               path: 'performance/cdn_as_code/error_handling',
@@ -104,20 +104,52 @@ const nav = {
           ],
         },
         {
-          title: 'Caching',
+          title: 'Cache Management',
           path: 'performance/caching',
+          routes: [
+            {
+              title: 'Purging Cached Content',
+              path: 'performance/caching/purging',
+            },
+            {
+              title: 'Cache Request Flow',
+              path: 'performance/caching/cache_request_flow',
+            },
+            {
+              title: 'Cache Hit Ratio Optimization',
+              path: 'performance/caching/cache_hit_ratio_optimization',
+            },
+            {
+              title: 'Cache Key',
+              path: 'performance/caching/cache_key',
+            },
+            {
+              title: '',
+              path: '',
+            },
+            {
+              title: 'Cache Status Codes',
+              path: 'performance/caching/cache_status_codes',
+            },
+          ],
         },
-        {
-          title: 'Purging',
-          path: 'performance/purging',
-        },
-        {
-          title: 'Static Prerendering',
-          path: 'performance/static_prerendering',
-        },
+        // {
+        // title: 'Static Prerendering',
+        // path: 'performance/static_prerendering',
+        // },
         {
           title: 'Predictive Prefetch',
           path: 'performance/prefetching',
+          routes: [
+            {
+              title: 'Prefetching with a Script Tag',
+              path: 'performance/prefetching/prefetching_script_tag',
+            },
+            {
+              title: 'Prefetching with Edgio Sites',
+              path: 'performance/prefetching/prefetching_edgio_sites',
+            },
+          ],
         },
         {
           title: 'Traffic Splitting',
@@ -136,19 +168,23 @@ const nav = {
               path: 'performance/observability/real_user_monitoring',
             },
             {
+              title: 'Edgio Developer Tools Chrome Extension',
+              path: 'performance/observability/developer_tools_chrome_extension',
+            },
+            {
               title: 'Devtools',
               path: 'performance/observability/devtools',
             },
           ],
         },
         {
-          title: 'Serverless Compute',
+          title: 'Cloud Functions',
           path: 'performance/serverless_compute',
         },
-        {
-          title: 'Unit Testing (EdgeJS)',
-          path: 'performance/unit_testing_edgejs',
-        },
+        // {
+        //   title: 'Unit Testing (EdgeJS)',
+        //   path: 'performance/unit_testing_edgejs',
+        // },
         {
           title: 'Image Optimization',
           path: 'performance/image_optimization',
@@ -156,10 +192,6 @@ const nav = {
         {
           title: 'Traditional Sites',
           path: 'performance/traditional_sites',
-        },
-        {
-          title: 'Third-Party CDNs',
-          path: 'performance/third_party_cdns',
         },
         {
           title: '',
@@ -192,6 +224,22 @@ const nav = {
       ],
     },
     {
+      title: 'Edge Functions',
+      path: 'edge_functions',
+      icon: 'edge-functions',
+      routes: [
+        {
+          title: 'HtmlTransformer',
+          path: 'edge_functions/htmltransformer',
+        },
+      ],
+    },
+    {
+      title: 'Experimentation',
+      path: 'experimentation',
+      icon: 'experimentation',
+    },
+    {
       title: 'Security',
       path: 'security',
       icon: 'shield',
@@ -217,8 +265,16 @@ const nav = {
           path: 'security/waf',
         },
         {
+          title: 'Getting Started',
+          path: 'security/getting_started',
+        },
+        {
           title: 'Access Rules',
           path: 'security/access_rules',
+        },
+        {
+          title: 'API Security',
+          path: 'security/api_security',
         },
         {
           title: 'Rate Rules',
@@ -237,7 +293,7 @@ const nav = {
           path: 'security/managed_rules',
         },
         {
-          title: 'Security Applications',
+          title: 'Security Apps',
           path: 'security/security_applications',
         },
         {
@@ -274,6 +330,10 @@ const nav = {
             {
               title: 'Brunch',
               path: 'sites_frameworks/getting_started/brunch',
+            },
+            {
+              title: 'Node.js Connector',
+              path: 'sites_frameworks/getting_started/nodejs_connector',
             },
             {
               title: 'Docusaurus',
@@ -415,10 +475,10 @@ const nav = {
               title: 'Stencil',
               path: 'sites_frameworks/getting_started/stencil',
             },
-            // {
-            //   title: 'Svelte',
-            //   path: 'sites_frameworks/getting_started/svelte',
-            // },
+            {
+              title: 'SvelteKit',
+              path: 'sites_frameworks/getting_started/sveltekit',
+            },
             // {
             //   title: 'UmiJS',
             //   path: 'sites_frameworks/getting_started/umijs',
@@ -460,33 +520,6 @@ const nav = {
       ],
     },
     {
-      title: 'Third-Party Integrations',
-      path: 'integrations',
-      icon: 'gear',
-      routes: [
-        {
-          title: 'BigCommerce',
-          path: 'integrations/bigcommerce',
-        },
-        {
-          title: 'Bloomreach',
-          path: 'integrations/bloomreach',
-        },
-        {
-          title: 'Shopify Hydrogen',
-          path: 'integrations/shopify_hydrogen',
-        },
-        {
-          title: 'Swell',
-          path: 'integrations/swell',
-        },
-        {
-          title: 'WordPress',
-          path: 'integrations/wordpress',
-        },
-      ],
-    },
-    {
       title: 'Logs',
       path: 'logs',
       icon: 'data-plain',
@@ -498,10 +531,6 @@ const nav = {
         {
           title: 'Server Logs',
           path: 'logs/server_logs',
-        },
-        {
-          title: 'Access Logs',
-          path: 'logs/access_logs',
         },
         {
           title: 'Real-Time Log Delivery',
@@ -544,6 +573,14 @@ const nav = {
               path: '',
             },
             {
+              title: 'Filtering Log Data',
+              path: 'logs/rtld/filtering_log_data',
+            },
+            {
+              title: 'Custom Log Fields (RTLD CDN)',
+              path: 'logs/rtld/custom_log_fields',
+            },
+            {
               title: 'Log File Naming Convention',
               path: 'logs/rtld/log_file_naming_convention',
             },
@@ -560,12 +597,16 @@ const nav = {
               path: 'logs/rtld/log_fields_rtld_cdn',
             },
             {
+              title: 'Log Fields (RTLD WAF)',
+              path: 'logs/rtld/log_fields_rtld_waf',
+            },
+            {
               title: 'Log Fields (RTLD Rate Limiting',
               path: 'logs/rtld/log_fields_rtld_rate_limiting',
             },
             {
-              title: 'Log Fields (RTLD WAF)',
-              path: 'logs/rtld/log_fields_rtld_waf',
+              title: 'Log Fields (RTLD Bot)',
+              path: 'logs/rtld/log_fields_rtld_bot_manager',
             },
           ],
         },
@@ -583,10 +624,25 @@ const nav = {
         {
           title: 'REST API',
           path: 'develop/rest_api',
-        },
-        {
-          title: 'Deploy to Edgio Button',
-          path: 'develop/deploy_to_edgio',
+          routes: [
+            {
+              title: 'Authentication',
+              path: 'develop/rest_api/authentication',
+            },
+            {
+              title: 'REST API Reference',
+              path: '/rest_api/',
+              external: true,
+            },
+            {
+              title: '',
+              path: '',
+            },
+            {
+              title: 'Legacy Purge (Clear-Cache)',
+              path: 'develop/rest_api/cache_purge',
+            },
+          ],
         },
         {
           title: 'EdgeJS API Reference',
@@ -615,12 +671,105 @@ const nav = {
           title: 'Country Codes',
           path: 'reference/country_codes',
         },
+        {
+          title: 'HTTP Status Codes',
+          path: '/guides/performance/response#status-codes',
+        },
+        {
+          title: 'Response Headers',
+          path: '/guides/performance/response#response-headers',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'Rules - Match Conditions',
+          path: '/guides/performance/rules/conditions',
+        },
+        {
+          title: 'Rules - Features',
+          path: '/guides/performance/rules/features',
+        },
+        {
+          title: 'Rules - Feature Variables',
+          path: '/guides/performance/rules/feature_variables',
+        },
+        {
+          title: 'Rules - Operators',
+          path: '/guides/performance/rules/operators',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'edgio.config.js Configuration',
+          path: '/guides/performance/cdn_as_code/edgio_config',
+        },
+        {
+          title: '@edgio/core',
+          path: '/docs/v7.x/api/core/',
+          external: true,
+        },
+        {
+          title: '@edgio/prefetch',
+          path: '/docs/v7.x/api/prefetch/',
+          external: true,
+        },
+        {
+          title: 'CLI',
+          path: '/guides/develop/cli#commands',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'REST API Reference',
+          path: '/rest_api/',
+          external: true,
+        },
+        {
+          title: 'Legacy Purge API',
+          path: '/guides/develop/rest_api/cache_purge',
+        },
+        {
+          title: '',
+          path: '',
+        },
+        {
+          title: 'RTLD CDN',
+          path: '/guides/logs/rtld/log_fields_rtld_cdn',
+        },
+        {
+          title: 'RTLD WAF',
+          path: '/guides/logs/rtld/log_fields_rtld_waf',
+        },
+        {
+          title: 'RTLD Rate Limiting',
+          path: '/guides/logs/rtld/log_fields_rtld_rate_limiting',
+        },
+        {
+          title: 'RTLD Bot',
+          path: '/guides/logs/rtld/log_fields_rtld_bot_manager',
+        },
       ],
     },
     {
       title: 'Upgrading',
       path: 'upgrading',
       icon: 'add-circle',
+      routes: [
+        {
+          title: 'Upgrading to Version 7',
+          path: 'upgrading/upgrading',
+        },
+        {
+          title: `Updating Packages`,
+          path: 'upgrading/updating_packages',
+        },
+      ],
     },
   ],
 };

@@ -2,18 +2,26 @@
 title: Hostnames and Origins
 ---
 
-Setting up the delivery of your site through {{ PRODUCT }} requires the following configuration for each desired [environment](/guides/basics/environments):
+Setting up the delivery of your website through {{ PRODUCT }} requires the following configuration for each desired [environment](/guides/basics/environments):
 
--   **Hostname:** Identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
--   **Origin:** Defines how our service will communicate with your web servers.
+-   **Hostname:** A hostname identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
+-   **Source:** Define the source from which {{ PRODUCT }} will retrieve content. You may retrieve content from any combination of the following sources:
+    -   **Origin:** An origin configuration defines how our service will communicate with your web servers.
+    -   **{{ PRODUCT }} Cloud:** The {{ PRODUCT }} cloud, which powers [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) and [Cloud Functions](/guides/performance/serverless_compute), allows you to run serverless code.
+    
+Control how {{ PRODUCT }} communicates with your web servers or our cloud by mapping hostnames to origin configurations.
 
-Control how {{ PRODUCT }} communicates with your web servers by mapping hostnames to origin configurations.
+<Callout type="info">
+
+  {{ PRODUCT }} cloud requires a CDN-as-code configuration. We automatically create system-defined origin configurations for our cloud infrastructure as part of your initial CDN-as-code deployment. 
+  
+</Callout>
 
 ![Hostname and Origin Workflow](/images/v7/basics/hostnames-origins.png?width=781)
 
-You may also serve your site through [Serverless Compute](/guides/performance/serverless_compute). You may serve all of your site traffic through Serverless Compute, your origin server(s), or any combination of both.
+You may serve your site through our cloud, your origin server(s), or any combination of both. 
 
-![Hostname, Origin, and Serverless Compute Workflow](/images/v7/basics/hostnames-origins-serverless-compute.png)
+![Hostname, Origin, and Cloud Workflow](/images/v7/basics/hostnames-origins-cloud.png)
 
 ## Quick Start {/*quick-start*/}
 
@@ -106,9 +114,8 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
 **Key information:**
 
--   Each origin configuration identifies a set of web server(s) by hostname or IP address.  
--   An origin configuration may identify up to 4 hostnames or IP addresses. 
--   {{ PRODUCT }} applies [primary/failover load balancing](#primary-failover-load-balancing) for traffic directed to an origin configuration that contains multiple origin hostnames. 
+-   Each origin configuration identifies a set of web server(s) by hostname or IP address. You may specify up to 4 hostnames or IP addresses. 
+-   [Load balance](#load-balancing) requests to the web servers associated with an origin configuration using either primary/failover or round-robin mode.
 -   The maximum number of origin configurations per environment is 100. <a id="override-host-header" />
 -   By default, our CDN forwards the `Host` header provided by the client when proxying requests to your origin server(s). You may override the client's `Host` header by setting the **Override Host Header** option to the desired hostname. This forces our CDN to set the `Host` header to the specified hostname whenever it proxies traffic to the origin server(s) associated with this origin configuration.
 
@@ -121,18 +128,13 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     </Callout>
  
 -   You may configure an origin configuration to always serve traffic to your hosts over HTTP, HTTPS, or to match the client's scheme. Matching a client's scheme means that our network will serve HTTP traffic to your web servers over port 80, while HTTPS traffic will be served over port 443. <a id="sni" />
--   By default, {{ PRODUCT }} does not provide a Server Name Indication (SNI) hint to your origin server. This allows your origin server to determine the TLS certificate that will be returned. Enable the **Use SNI** option on an origin configuration to allow {{ PRODUCT }} to:
+-   An origin configuration's **Use SNI** option determines whether {{ PRODUCT }} will provide a Server Name Indication (SNI) hint to your origin server during the TLS handshake. 
 
-    -   Provide a SNI hint during the TLS handshake. 
-    -   Compare the hostname defined within the SNI hint to the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake. If the hostname does not match, then we will respond with a `502 Bad Gateway` response.
+    -   A SNI-enabled web server uses a SNI hint to determine the TLS certificate that will be returned. 
+    -   If the **Use SNI** option has been enabled, {{ PRODUCT }} compares the hostname defined within the SNI hint to the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake. If the hostname does not match, then we will respond with a `502 Bad Gateway` response.
+    -   If your origin server requires SNI, then you must provide a SNI hint. Otherwise, your web server will reject the request and our edge servers will respond with a `502 Bad Gateway` response. <a id="self-signed-certificates" />
 
-    <Callout type="important">
-	
-	  If your origin server requires SNI, then you must enable the **Use SNI** option and define a SNI hint. Otherwise, your web server will reject the request and our edge servers will respond with a `502 Bad Gateway` response. <a id="self-signed-certificates" />
-	
-	</Callout>
-
--   By default, our network disables delivery when we detect a self-signed certificate from the origin server during the TLS handshake. Specifically, our edge servers respond with a `502 Bad Gateway` response upon detecting a self-signed certificate from the origin server during the TLS handshake. Allow {{ PRODUCT }} to serve traffic when it detects a self-signed certificate by enabling the **Allow Self-Signed Certs** option. <a id="certificate-pinning" />
+-   By default, our network disables delivery and responds with a `502 Bad Gateway` when we detect an origin server using a self-signed certificate during the TLS handshake. Allow {{ PRODUCT }} to serve traffic when it detects a self-signed certificate by enabling the **Allow Self-Signed Certs** option. <a id="certificate-pinning" />
 -   Register the SHA-256 digest for the public key of your end-entity (i.e., leaf) certificate within the **Pinned Cert(s)** option. After which, our edge servers will respond with a `502 Bad Gateway` response when the SHA-256 digest for the public key detected from the origin server does not match one of the pinned certificates.
 -   Malicious actors may bypass the security provided by our service by directly targeting your origin server(s). We strongly recommend that you set up your firewall to only allow traffic from trusted sources (e.g., our network) and to obfuscate your origin.
 
@@ -163,15 +165,21 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     3.  Set the **Scheme** option to always serve traffic to your hosts over HTTPS, HTTP, or to match the client's scheme.
     4.  Optional. [Override the client's Host header](#override-host-header) by setting the **Override Host Header** option to the desired hostname. 
     5.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.1 - 4.4. 
-5.  Optional. Define TLS settings for this origin configuration. Click on the **Origin TLS Settings** section to expand it.
+    6.  Optional. Set the **Balancer type** option to the desired load balancing mode for requests proxied to your web servers. 
+5.  Define TLS settings for this origin configuration through the **Origin TLS Settings** section.
 
-    1.  Enable SNI by toggling the **Use SNI** option to the on position (<Image inline src="/images/v7/icons/toggle-on.png" alt="Toggle on" />) and then defining the hostname that will be sent as a SNI hint during the TLS handshake. 
+    1.  Most web servers require a SNI hint during the TLS handshake. Define this SNI hint through the **Use SNI** option. By default, this option is set to the value assigned to the **Override Host Header** option. 
 
-    <Callout type="info">
+        Perform either of the following steps:
 
-      Upon enabling SNI, our service will perform a strict check using this hostname against the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake.
+        -   If your web server requires a SNI hint, verify or set the SNI hint through the **Use SNI** option.
+        -   If your web server does not use SNI, then you should disable the **Use SNI** option. 
 
-    </Callout>
+        <Callout type="info">
+
+          Upon enabling SNI, our service will perform a strict check using this hostname against the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake.
+
+        </Callout>
 
     2.  If your origin servers use a self-signed certificate, then you should toggle the **Allow Self Signed Certs** option to the on position (<Image inline src="/images/v7/icons/toggle-on.png" alt="Toggle on" />).
     3.  Set up [certificate pinning](#certificate-pinning) by adding one or more public keys.
@@ -201,13 +209,69 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     4.  Optional. Configure cache misses from a specific region to always be proxied to your origin by selecting `Bypass`.
 
 7. If you are finished making changes to this environment, click **Deploy Changes**.
+<a id="primary-failover-load-balancing" />
 
-### Primary/Failover Load Balancing {/*primary-failover-load-balancing*/}
+### System-Defined Origins {/*system-defined-origins*/}
 
-{{ PRODUCT }} determines how to load balance traffic directed at your origin configuration as follows:
+{{ PRODUCT }} will add the following origin configurations for properties deployed using our [CDN-as-code (EdgeJS)](/guides/performance/cdn_as_code) approach:
 
-    1.  All requests that {{ PRODUCT }} proxies to this origin configuration will be directed to the first origin hostname listed within your origin configuration.
-    2.  If a server corresponding to that origin hostname is unavailable, then the request will be sent to the next origin configuration on the list. This step is repeated until a server is able to honor the request. 
+<Callout type="important">
+
+  These system-defined origins should not be modified or deleted.
+
+</Callout>
+
+- **`{{ PRODUCT_LOWER }}_image_optimizer`**: Used for serving images through the [image optimization](/guides/performance/image_optimization) feature.
+- **`{{ PRODUCT_LOWER }}_permanent_static`**: Used for serving [static assets](/guides/performance/cdn_as_code/edgio_config#staticassets) configured to persist across deployments.
+- **`{{ PRODUCT_LOWER }}_serverless`**: Used for serving requests through the {{ PRODUCT }} cloud.
+- **`{{ PRODUCT_LOWER }}_static`**: Used for serving [static assets](/guides/performance/cdn_as_code/edgio_config#staticassets).
+
+### HTTP/3 {/*http-3*/}
+
+Enable HTTP/3 and QUIC by including the `alt-svc` header in the response sent to the client. This response header informs the client that it may communicate with the CDN through QUIC, the set of supported QUIC versions, and the length of time that this data should be cached by the client.
+
+**Key information:**
+
+-   Once a QUIC-compatible user agent discovers that a server supports QUIC, it will attempt to leverage QUIC for all subsequent requests to the same domain until the connection ends. 
+-   By default, QUIC is supported on the latest versions of Google Chrome, Chromium, and Opera. However, it may require enablement. If a user agent doesn't support QUIC, then it will communicate with the CDN using HTTP/2 over TCP.
+-   Our QUIC implementation supports the Bottleneck Bandwidth and Round-trip propagation time (BBR) congestion control algorithm without requiring additional CDN setup. However, BBR will only be used when a QUIC-enabled client (e.g., Google Chrome) requests it. 
+-   The `alt-svc` header contains a `v` (version) parameter that identifies the supported QUIC versions. We strongly recommend that you define this response header through the [Set Response Headers (set_response_headers) feature](/guides/performance/rules/features#set-response-headers) and set the `v` parameter to the `%{quic_altsvc_versions}` variable. This variable returns the QUIC versions supported by our service. 
+
+    <Callout type="important">
+    
+      We may add or drop support for QUIC versions at any time. Ensure that you only advertise supported versions by setting the `v` parameter to the `%{quic_altsvc_versions}` variable
+
+    </Callout>
+
+-   **Sample alt-svc header name/value:**
+    `alt-svc: quic=":443"; ma=2592000; v="49,48,46,43",h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000`
+
+    The above sample response header indicates to the client that:
+
+    -   QUIC is only supported for traffic over port 443 as defined by the `quic` parameter.
+    -   The user agent should treat the connection as fresh for 259,200 seconds (i.e., 3 days) as determined by the `ma` (max-age) parameter.
+    -   The `v` (version) parameter informs the client as to the supported QUIC versions.
+
+### Load Balancing {/*load-balancing*/}
+
+{{ PRODUCT }} load balances traffic proxied from our network to the web servers associated with an origin configuration using either primary/failover or round-robin mode. 
+
+**Key information:**
+
+-   {{ PRODUCT }} generates a list of IP addresses by resolving the hostnames associated with an origin configuration. These IP addresses are listed according to the order in which the corresponding hosts are listed within your origin configuration.
+-   If an origin configuration allows {{ PRODUCT }} to proxy requests using both HTTP and HTTPS, then {{ PRODUCT }} will generate an ordered list of IP addresses for each HTTP scheme.
+-   The available load balancing options are:
+    -   **Primary/Failover:** This load balancing mode requires {{ PRODUCT }} to:
+	
+	    1.  Proxy all traffic to the first IP address in the list. 
+	    2.  If the current server is [unavailable](#unavailable-servers), then {{ PRODUCT }} will issue another request to the next IP address on the list. This step is repeated until a server is able to honor the request. 
+	
+	    Set up primary/failover load balancing by selecting `Primary failover` from the **Balancer type** option. 
+		
+    -   **Round-robin:** This mode distributes requests evenly across all IP addresses. If a server is [unavailable](#unavailable-servers), then the request will be sent to the next IP address on the list. 
+	
+	    Set up round-robin load balancing by selecting `Round robin` from the **Balancer type** option. 
+-   The above load-balancing options are completely independent from any load balancing configuration that may already distribute traffic to your web servers. For instance, traffic for a single IP address might be load balanced across several physical servers.
 
 #### Unavailable Servers {/*unavailable-servers*/}
 
@@ -229,7 +293,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
 <Callout type="important">
 
-  IP blocks may vary by team. 
+  IP blocks may vary by organization. 
 
 </Callout>
 
@@ -249,7 +313,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
     ![Firewall instructions](/images/v7/basics/origins-instructions.png)
 
-    The **Allowlisting** window will display a list of IPv4 and IPv6 blocks for standard traffic, a list of IP blocks for Serverless Compute, and the domain to which the {{ PRODUCT }} CLI connects when deploying to a development or CI/CD environment.
+    The **Allowlisting** window will display a list of IPv4 and IPv6 blocks for standard traffic, Perimeter 81 for network security, AWS NAT gateway for the {{ PRODUCT }} cloud, and the domain to which the {{ PRODUCT }} CLI connects when deploying to a development or CI/CD environment.
 
     <Callout type="important">
 
@@ -286,18 +350,18 @@ From your DNS service provider, point your hostname(s) to a service domain that 
 {{ PRODUCT }} assigns a different service domain to:
 
 -   Your private space.
--   Each team space to which you belong. 
+-   Each organization to which you belong. 
 
-You may point any hostname defined within a space to its service domain. 
+You may point any hostname defined within a private space or organization to its service domain. 
 
-**To view the service domain assigned to a space**
+**To view the service domain**
 
 1.  Load the space's **Settings** page.
 
-    1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
+    1.  From the {{ PORTAL_LINK }}, select the desired private space or organization.
     2.  Click **Settings**.
 
-2.  From the **Team DNS Configuration** section, click <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
+2.  From the **Organization DNS Configuration** section, click <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
 
 ### DNS Verification {/*dns-verification*/}
 

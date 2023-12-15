@@ -34,11 +34,10 @@ traffic is blocked. [Learn more.](#browser-challenge)
 
 ### Bot Manager Advanced {/*bot-manager-advanced*/}
 
-Bot Manager Advanced inspects each request to determine whether the client:
+Bot Manager Advanced inspects each request to determine whether the request:
 
-1.  Matches a known good bot (e.g., search bot).
-2.  Is spoofing a known good bot.
-3.  Matches a rule. A rule defines the criteria that our service will use to identify a bad bot.
+1.  Matches an exception. [Exceptions](#exceptions) identify trafic that should bypass bot detection.
+2.  Matches a rule. A rule defines the criteria that our service will use to identify a bad bot.
     
     You may identify bots using:
     
@@ -55,12 +54,15 @@ Bot Manager Advanced inspects each request to determine whether the client:
 
     -   The JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic as a specific bot across various IP addresses and ports.
 
+3.  Matches a known good bot (e.g., search bot).
+4.  Is spoofing a known good bot.
+
 **Key information:**
 
 -   Your configuration determines how our service will handle the above traffic patterns.
 -   If a request satisfies multiple criteria, then the above order determines the action that will be applied to it. Specifically, the order of precedence is:
     
-    `Known Bots > Spoofed Bots > Bots Identified by a Rule`
+    `Exceptions > Bots Identified by a Rule > Known Bots > Spoofed Bots`
     
 -   Bypass the above bot detection measures by creating an exception for one or more URL(s), user agent(s), JA3 fingerprint(s), or cookie(s).
 
@@ -101,17 +103,17 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
     -   You may define a custom payload for the browser challenge by enabling the **Custom Browser Challenge Page** option and then setting the **Browser Challenge Page Template** option to a Base64-encoded HTML page that we will serve as a custom browser challenge. This HTML page must satisfy the following requirements:
 
-        -   It must contain the following mustache: `{{BOT_JS}}`
+        -   It must contain the following mustache: {{BOT_MUSTACHE}}
 
             <Callout type="tip">
 
-              Due to the speed at which our JavaScript function is executed, we recommend that you place the `{{BOT_JS}}` mustache after all rendered content (e.g., near the end of the document's body).
+              Due to the speed at which our JavaScript function is executed, we recommend that you place the {{BOT_MUSTACHE}} mustache after all rendered content (e.g., near the end of the document's body).
 
             </Callout>
 
             <Callout type="info">
 
-              We will replace the above `{{BOT_JS}}` mustache with JavaScript upon serving a browser challenge.
+              We will replace the above {{BOT_MUSTACHE}} mustache with JavaScript upon serving a browser challenge.
 
             </Callout>
 
@@ -128,7 +130,7 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
 -   **Custom Response:** Returns a custom response.
 
-    -   Response body: Define the payload that will be delivered to the client.
+    -   **Response Body:** Define the payload that will be delivered to the client.
 
         <Callout type="tip">
 
@@ -149,6 +151,72 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
         ```
     
     -   **HTTP Status Code:** Defines the HTTP status code that will be sent to the client.
+    
+        <details>
+          <summary>View valid status codes.</summary>
+
+          -   100
+          -   101
+          -   102
+          -   200
+          -   201
+          -   202
+          -   203
+          -   204
+          -   205
+          -   206
+          -   207
+          -   208
+          -   226
+          -   300
+          -   301
+          -   302
+          -   303
+          -   304
+          -   305
+          -   306
+          -   307
+          -   308
+          -   400
+          -   401
+          -   402
+          -   403
+          -   404
+          -   405
+          -   406
+          -   407
+          -   408
+          -   409
+          -   410
+          -   411
+          -   412
+          -   413
+          -   414
+          -   415
+          -   416
+          -   417
+          -   421
+          -   422
+          -   423
+          -   424
+          -   426
+          -   428
+          -   429
+          -   431
+          -   451
+          -   500
+          -   501
+          -   502
+          -   503
+          -   504
+          -   505
+          -   507
+          -   508
+          -   509
+          -   510
+          -   511
+
+        </details>
     
     -   **Custom Response Headers:** Defines one or more response headers that will be sent to the client. Define each custom response header on a separate line.
     
@@ -243,19 +311,21 @@ Each rule within a Bot Manager configuration identifies bot traffic. Each rule c
 
 ### Custom Bot Detection {/*custom-bot-detection*/}
 
-A request must satisfy at least one rule before WAF will consider it bot traffic. There are two types of rules, which are:
-
--   **Custom Matches:** This type of rule is satisfied when a match is found for each of its conditions. A condition defines what will be matched (i.e., variable), how it will be matched (i.e., operator), and a match value.
+A request must satisfy at least one rule before WAF will consider it bot traffic. A rule is satisfied when a match is found for each of its conditions. A condition defines what will be matched (i.e., variable), how it will be matched (i.e., operator), and a match value.
     
-    <Callout type="info">
+<Callout type="info">
 
-      Certain variables match on key-value pairs. If you match on multiple keys within a single variable, {{ PRODUCT }} {{ PRODUCT_SECURITY }} will only need to find one of those matches to satisfy that variable.
-    
-      For example, if you set up a request header variable to match for `Authorization` and `Content-Type`, then requests that contain either or both of those headers will satisfy that variable.
+  Certain variables match on key-value pairs. If you match on multiple keys within a single variable, {{ PRODUCT }} {{ PRODUCT_SECURITY }} will only need to find one of those matches to satisfy that variable.
 
-    </Callout>
-    
--   **Edgecast Reputation DB:** This type of rule is satisfied when the client's IP address matches an IP address defined within our reputation database. Our reputation database contains a list of IP addresses known to be used by bots.
+  For example, if you set up a request header variable to match for `Authorization` and `Content-Type`, then requests that contain either or both of those headers will satisfy that variable.
+
+</Callout>
+
+<Callout type="info">
+
+  Bot detection through a {{ PRODUCT }} Reputation DB rule has been deprecated. Although existing rules may contine to use this database, you may not assign it to a new rule. 
+
+</Callout>
 
 **Example #1:**
 
@@ -278,7 +348,7 @@ This example assumes that your Bot Manager configuration contains the following 
 | Rule | Type                   | Description                                                                                                |
 |------|------------------------|------------------------------------------------------------------------------------------------------------|
 | 1    | Custom matches         | This rule contains two conditions.                                                                         |
-| 2    | Edgecast Reputation DB | This rule is satisfied when the client's IP address matches an IP address within our reputation database. |
+| 2    | {{ PRODUCT }}  Reputation DB | This rule is satisfied when the client's IP address matches an IP address within our reputation database. |
 
 Assuming the above configuration, {{ PRODUCT }} {{ PRODUCT_SECURITY }} applies bot rules protection under either of the following circumstances:
 
@@ -479,9 +549,9 @@ You may create, modify, and delete Bot Manager configurations.
 -   It typically takes less than a minute to apply Bot Manager configuration changes across our entire network.
 
 **To create a Bot Manager configuration**
-1.  Navigate to the **Bot Rules** page.
-    {{ SECURITY_NAV }} **Bot Rules**.
-2.  Click **Add Bot Rule**.
+1.  Navigate to the **Bot Manager** page.
+    {{ SECURITY_NAV }} **Bot Manager**.
+2.  Click **+ New Bot Manager**.
 3.  In the **Name** option, type the unique name by which this Bot Manager configuration will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application Manager configuration.
 4.  Set up the desired enforcement action(s). 
 
@@ -568,42 +638,36 @@ You may create, modify, and delete Bot Manager configurations.
 
 7.  Create rules for identifying bots from the **Bot Rules** tab. 
 
-    1.  Click **+ Create New Rule**.
-    2.  In the **Rule type** option, select the type of rule that will be created.
+    1.  Click **+ New Rule**. A rule is satisfied when a match is found for each of its conditions.
+    2.  In the **Rule message** option, type a brief description for this rule.
+    3.  In the **Rule Action** option, choose how this rule will be enforced.
+    4.  In the **Rule ID** option, specify a number between 77,000,000 and 77,999,999.
+    5.  Modify the default condition to determine how WAF will identify requests. From the condition's **Variable** option, select the request element through which WAF will identify requests.
         
-        -   **Custom Matches:** This type of rule is satisfied when a match is found for each of its conditions.
+        [Learn more about variables.](#variables)
+        
+    6.  Certain variables (e.g., request cookies and request header) match on name and value. If you have selected this type of variable, then perform the following steps:
+        
+        1.  Click **+ Add Match**.
+        2.  From the **Name** option, type the desired name.
             
-            1.  Optional. In the **Name of Rule** option, type a name that identifies the purpose of this rule.
-            2.  In the **Rule ID** option, specify a number between 77,000,000 and 77,999,999.
-            3.  In the **Rule message** option, type a brief description for this rule.
-            4.  A custom matches rule automatically includes a default condition. Modify this condition to determine how WAF will identify requests. From the condition's **Variable** option, select the request element through which WAF will identify requests.
-                
-                [Learn more about variables.](#variables)
-                
-            5.  Certain variables (e.g., request cookies and request header) match on name and value. If you have selected this type of variable, then perform the following steps:
-                
-                1.  Click **+ Add Match**.
-                2.  From the **Name** option, type the desired name.
-                    
-                    For example, match for requests that contain an `Authorization` header by setting this option to `Authorization`.
-                    
-                3.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the name defined in the previous step.
-                4.  If you specified a regular expression in the **Name** option, then you should mark the **Regex Match** option.
-                5.  Optional. Add another match through which this variable can be satisfied by repeating the above steps.
-            6.  Optional. Mark the **Count** option to match by the number of instances that a match is found instead of by inspecting that request element.
-                
-                [Learn more.](#count)
-                
-            7.  From the **Operator** option, select an operator that determines how WAF will compare the match value to the request element identified by the above variable.
-                
-                [Learn more.](#operators)
-                
-            8.  In the **Match value** option, type the value that will be compared against the request element identified by the above variable.
-            9.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the value defined in the previous step.
-            10.  Optional. Click **+ Add Condition** to add another condition that must be met prior to request identification. 
-        -   **Edgecast Reputation DB:** This type of rule is satisfied when the client's IP address matches an IP address within our reputation database. Proceed to the next step.
+            For example, match for requests that contain an `Authorization` header by setting this option to `Authorization`.
+            
+        3.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the name defined in the previous step.
+        4.  If you specified a regular expression in the **Name** option, then you should mark the **Regex Match** option.
+        5.  Optional. Add another match through which this variable can be satisfied by repeating the above steps.
+    7.  Optional. Mark the **Count** option to match by the number of instances that a match is found instead of by inspecting that request element.
+        
+        [Learn more.](#count)
+        
+    8.  From the **Operator** option, select an operator that determines how WAF will compare the match value to the request element identified by the above variable.
+        
+        [Learn more.](#operators)
+        
+    9.  In the **Match value** option, type the value that will be compared against the request element identified by the above variable.
+    10.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the value defined in the previous step.
+    11.  Optional. Click **+ Add Condition** to add another condition that must be met prior to request identification. 
 
-    3.   Click the **Save** button that appears directly below your rule.
 8.  Optional. Add another rule by repeating step 7.
 9.  Optional. Bot Manager Advanced only. Identify traffic that will bypass bot detection.
 
@@ -612,7 +676,7 @@ You may create, modify, and delete Bot Manager configurations.
 
         <Callout type="info">
 
-          Place each entry on a separate line.
+          Add an entry by typing it and then pressing `ENTER`.
 
         </Callout>
 

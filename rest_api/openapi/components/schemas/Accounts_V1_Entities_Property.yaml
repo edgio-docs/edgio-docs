@@ -1,0 +1,33 @@
+required:
+  - '@id'
+  - '@type'
+  - id
+type: object
+properties:
+  '@type':
+    type: string
+    description: The resource's type.
+  '@id':
+    type: string
+    description: The resource's relative path.
+  '@links':
+    type: object
+    properties: {}
+    description: Links to related resources.
+  id:
+    type: string
+    description: The resource's system-defined ID.
+  organization_id:
+    type: string
+  slug:
+    type: string
+    description: The property's name.
+  created_at:
+    type: string
+    description: The property's creation date and time (UTC).
+    format: date-time
+  updated_at:
+    type: string
+    description: The property's last modification date and time (UTC).
+    format: date-time
+description: Accounts_V1_Entities_Property model

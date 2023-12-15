@@ -1,0 +1,4303 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Edgio Edgio APIs",
+    "description": "API spec for Edgio APIs",
+    "termsOfService": "https://edg.io/legal/terms-of-service/",
+    "contact": {
+      "name": "info@edg.io",
+      "url": "https://edg.io/contact-support/",
+      "email": "info@edg.io"
+    },
+    "version": "1.0.0-beta"
+  },
+  "servers": [
+    {
+      "url": "//edgioapis.com/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "environment-variables",
+      "description": "Operations about environment-variables"
+    },
+    {
+      "name": "tls-certs",
+      "description": "Operations about tls-certs"
+    },
+    {
+      "name": "deployments",
+      "description": "Operations about deployments"
+    },
+    {
+      "name": "configs",
+      "description": "Operations about configs"
+    },
+    {
+      "name": "purge-requests",
+      "description": "Operations about purge-requests"
+    },
+    {
+      "name": "members",
+      "description": "Operations about members"
+    },
+    {
+      "name": "environments",
+      "description": "Operations about environments"
+    },
+    {
+      "name": "properties",
+      "description": "Operations about properties"
+    },
+    {
+      "name": "organizations",
+      "description": "Operations about organizations"
+    },
+    {
+      "name": "bff",
+      "description": "Operations about bffs"
+    }
+  ],
+  "paths": {
+    "/config/v0.1/environment-variables/{environment_variable_id}": {
+      "get": {
+        "tags": [
+          "environment-variables"
+        ],
+        "summary": "Get Environment Variable",
+        "description": "Returns an environment variable.",
+        "operationId": "getConfigV01EnvironmentVariablesEnvironmentVariableId",
+        "parameters": [
+          {
+            "name": "environment_variable_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_EnvironmentVariable"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "environment-variables"
+        ],
+        "summary": "Delete Environment Variable",
+        "description": "Deletes an environment variable.",
+        "operationId": "deleteConfigV01EnvironmentVariablesEnvironmentVariableId",
+        "parameters": [
+          {
+            "name": "environment_variable_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_EnvironmentVariable"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ]
+      }
+    },
+    "/config/v0.1/environment-variables": {
+      "get": {
+        "tags": [
+          "environment-variables"
+        ],
+        "summary": "Get All Environment Variables",
+        "description": "Returns all environment variables associated with an environment.",
+        "operationId": "getConfigV01EnvironmentVariables",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "0-based page number.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "description": "Find an environment variable by its name.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "environment_id",
+            "in": "query",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_EnvironmentVariable_Collection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "environment-variables"
+        ],
+        "summary": "Set Environment Variable",
+        "description": "Creates or updates an environment variable.",
+        "operationId": "putConfigV01EnvironmentVariables",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/putConfigV01EnvironmentVariables"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_EnvironmentVariable"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ],
+        "x-codegen-request-body-name": "putConfigV01EnvironmentVariables"
+      }
+    },
+    "/config/v0.1/tls-certs/{cert_id}": {
+      "get": {
+        "tags": [
+          "tls-certs"
+        ],
+        "summary": "Get TLS Certificate",
+        "description": "Returns a TLS certificate.",
+        "operationId": "getConfigV01TlsCertsCertId",
+        "parameters": [
+          {
+            "name": "cert_id",
+            "in": "path",
+            "description": "The TLS certificate's system-defined ID. Use the [Get All Certificates operation](#tag/tls-certs/operation/getConfigV01TlsCerts) to retrieve a list of TLS certificates and their system-defined IDs.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_TlsCert"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ]
+      }
+    },
+    "/config/v0.1/tls-certs": {
+      "get": {
+        "tags": [
+          "tls-certs"
+        ],
+        "summary": "Get All TLS Certificates",
+        "description": "Returns all TLS certificates associated with an environment.",
+        "operationId": "getConfigV01TlsCerts",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "0-based page number.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          },
+          {
+            "name": "environment_id",
+            "in": "query",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_TlsCert_Collection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "tls-certs"
+        ],
+        "summary": "Upload TLS Certificate",
+        "description": "Upload your TLS certificate to activate it within a specific environment.",
+        "operationId": "postConfigV01TlsCerts",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postConfigV01TlsCerts"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_TlsCert"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ],
+        "x-codegen-request-body-name": "postConfigV01TlsCerts"
+      }
+    },
+    "/config/v0.1/deployments/{deployment_id}/logs": {
+      "get": {
+        "tags": [
+          "deployments"
+        ],
+        "summary": "Get Deployment Logs",
+        "description": "Retrieve log data for a specific deployment.",
+        "operationId": "getConfigV01DeploymentsDeploymentIdLogs",
+        "parameters": [
+          {
+            "name": "deployment_id",
+            "in": "path",
+            "description": "The deployment's system-defined ID. This ID is returned by the [Deploy CDN Configuration operation's](#tag/configs/operation/postConfigV01Configs) `id` property.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_Deployment_Logs"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ]
+      }
+    },
+    "/config/v0.1/deployments/{deployment_id}": {
+      "get": {
+        "tags": [
+          "deployments"
+        ],
+        "summary": "Get Deployment",
+        "description": "Retrieve information about a specific deployment.",
+        "operationId": "getConfigV01DeploymentsDeploymentId",
+        "parameters": [
+          {
+            "name": "deployment_id",
+            "in": "path",
+            "description": "The deployment's system-defined ID. This ID is returned by the [Deploy CDN Configuration operation's](#tag/configs/operation/postConfigV01Configs) `id` property.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_Deployment"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ]
+      }
+    },
+    "/config/v0.1/configs/{config_id}": {
+      "get": {
+        "tags": [
+          "configs"
+        ],
+        "summary": "Get CDN Configuration",
+        "description": "Retrieve an environment's origin configurations, hostnames, rules, and experiments.\n\nUse the [Get Environment operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId) to retrieve the system-defined ID (`@links.active_config.id`) for an environment's active configuration\n",
+        "operationId": "getConfigV01ConfigsConfigId",
+        "parameters": [
+          {
+            "name": "config_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_Config"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ]
+      }
+    },
+    "/config/v0.1/configs": {
+      "post": {
+        "tags": [
+          "configs"
+        ],
+        "summary": "Deploy CDN Configuration",
+        "description": "Deploys your configuration to a specific environment. This deployment overwrites any existing origin configurations, hostnames, rules, and experiments.\n",
+        "operationId": "postConfigV01Configs",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postConfigV01Configs"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_Config"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ],
+        "x-codegen-request-body-name": "postConfigV01Configs"
+      }
+    },
+    "/cache/v0.1/purge-requests/{request_id}": {
+      "get": {
+        "tags": [
+          "purge-requests"
+        ],
+        "summary": "Get Purge Request",
+        "description": "Retrieves information, including status, about a purge request.",
+        "operationId": "getCacheV01PurgeRequestsRequestId",
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "description": "The purge request's system-defined ID. This ID is returned by the [Purge Cache operation](#tag/purge-requests/operation/postCacheV01PurgeRequests).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cache_V1_Entities_PurgeRequest"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cacheScope": [
+              "app.cache.purge"
+            ]
+          }
+        ]
+      }
+    },
+    "/cache/v0.1/purge-requests": {
+      "post": {
+        "tags": [
+          "purge-requests"
+        ],
+        "summary": "Purge Cache",
+        "description": "Submits a request to purge cached content from a specific environment. Purging content invalidates the cached version of an asset from our edge servers. You may submit up to 50 concurrent purge requests. For the purpose of concurrency, each value defined within the `values` property is considered a separate purge request. Find out the current status of your purge request by passing the purge request ID, which is returned by the `id` property, to the [Get Purge Request operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).\n",
+        "operationId": "postCacheV01PurgeRequests",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postCacheV01PurgeRequests"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cache_V1_Entities_PurgeRequest"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "cacheScope": [
+              "app.cache.purge"
+            ]
+          }
+        ],
+        "x-codegen-request-body-name": "postCacheV01PurgeRequests"
+      }
+    },
+    "/accounts/v0.1/members/{member_id}": {
+      "get": {
+        "tags": [
+          "members"
+        ],
+        "operationId": "getAccountsV01MembersMemberId",
+        "parameters": [
+          {
+            "name": "member_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Member"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "members"
+        ],
+        "operationId": "deleteAccountsV01MembersMemberId",
+        "parameters": [
+          {
+            "name": "member_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Member"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "members"
+        ],
+        "operationId": "patchAccountsV01MembersMemberId",
+        "parameters": [
+          {
+            "name": "member_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/patchAccountsV01MembersMemberId"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Member"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
+        "x-codegen-request-body-name": "patchAccountsV01MembersMemberId"
+      }
+    },
+    "/accounts/v0.1/members": {
+      "get": {
+        "tags": [
+          "members"
+        ],
+        "summary": " members",
+        "description": " members",
+        "operationId": "getAccountsV01Members",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "0-based page number.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          },
+          {
+            "name": "organization_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Member_Collection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "members"
+        ],
+        "operationId": "postAccountsV01Members",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postAccountsV01Members"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Member"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
+        "x-codegen-request-body-name": "postAccountsV01Members"
+      }
+    },
+    "/accounts/v0.1/environments/{environment_id}": {
+      "get": {
+        "tags": [
+          "environments"
+        ],
+        "summary": "Get Environment",
+        "description": "Retrieves an environment's settings and metadata.\n\nThe system-defined ID for the environment's active configuration is returned by the `@links.active_config.id` property.\n",
+        "operationId": "getAccountsV01EnvironmentsEnvironmentId",
+        "parameters": [
+          {
+            "name": "environment_id",
+            "in": "path",
+            "description": "The environment's system-defined ID.\n\nRetrieve a list of environments and their system-defined IDs through the [Get All Environments operation](#tag/environments/operation/getAccountsV01Environments).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Environment"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "environments"
+        ],
+        "summary": "Delete Environment",
+        "description": "Deletes an environment.",
+        "operationId": "deleteAccountsV01EnvironmentsEnvironmentId",
+        "parameters": [
+          {
+            "name": "environment_id",
+            "in": "path",
+            "description": "The environment's system-defined ID.\n\nRetrieve a list of environments and their system-defined IDs through the [Get All Environments operation](#tag/environments/operation/getAccountsV01Environments).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Environment"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "environments"
+        ],
+        "summary": "Update Environment",
+        "description": "Updates an environment.",
+        "operationId": "patchAccountsV01EnvironmentsEnvironmentId",
+        "parameters": [
+          {
+            "name": "environment_id",
+            "in": "path",
+            "description": "The environment's system-defined ID.\n\nRetrieve a list of environments and their system-defined IDs through the [Get All Environments operation](#tag/environments/operation/getAccountsV01Environments).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/patchAccountsV01EnvironmentsEnvironmentId"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Environment"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
+        "x-codegen-request-body-name": "patchAccountsV01EnvironmentsEnvironmentId"
+      }
+    },
+    "/accounts/v0.1/environments": {
+      "get": {
+        "tags": [
+          "environments"
+        ],
+        "summary": "Get All Environments",
+        "description": "Returns all environments that belong to the specified property.",
+        "operationId": "getAccountsV01Environments",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "0-based page number.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          },
+          {
+            "name": "property_id",
+            "in": "query",
+            "description": "The property's system-defined ID.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Environment_Collection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "environments"
+        ],
+        "summary": "Add Environment",
+        "description": "Creates an environment.",
+        "operationId": "postAccountsV01Environments",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postAccountsV01Environments"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Environment"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
+        "x-codegen-request-body-name": "postAccountsV01Environments"
+      }
+    },
+    "/accounts/v0.1/properties/{property_id}": {
+      "get": {
+        "tags": [
+          "properties"
+        ],
+        "summary": "Get Property",
+        "description": "Retrieve a property.",
+        "operationId": "getAccountsV01PropertiesPropertyId",
+        "parameters": [
+          {
+            "name": "property_id",
+            "in": "path",
+            "description": "The property's system-defined ID.\n\nRetrieve a list of properties and their system-defined IDs through the [Get All Properties operation](#tag/properties/operation/getAccountsV01Properties).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Property"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "properties"
+        ],
+        "summary": "Delete Property",
+        "description": "Delete a property.",
+        "operationId": "deleteAccountsV01PropertiesPropertyId",
+        "parameters": [
+          {
+            "name": "property_id",
+            "in": "path",
+            "description": "The property's system-defined ID.\n\nRetrieve a list of properties and their system-defined IDs through the [Get All Properties operation](#tag/properties/operation/getAccountsV01Properties).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Property"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "properties"
+        ],
+        "summary": "Update Property",
+        "description": "Update a property.",
+        "operationId": "patchAccountsV01PropertiesPropertyId",
+        "parameters": [
+          {
+            "name": "property_id",
+            "in": "path",
+            "description": "The property's system-defined ID.\n\nRetrieve a list of properties and their system-defined IDs through the [Get All Properties operation](#tag/properties/operation/getAccountsV01Properties).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/patchAccountsV01PropertiesPropertyId"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Property"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
+        "x-codegen-request-body-name": "patchAccountsV01PropertiesPropertyId"
+      }
+    },
+    "/accounts/v0.1/properties": {
+      "get": {
+        "tags": [
+          "properties"
+        ],
+        "summary": "Get All Properties",
+        "description": "Returns all properties.",
+        "operationId": "getAccountsV01Properties",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "0-based page number.",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          },
+          {
+            "name": "organization_id",
+            "in": "query",
+            "description": "An organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Property_Collection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "properties"
+        ],
+        "summary": "Create Property",
+        "description": "Create a property.",
+        "operationId": "postAccountsV01Properties",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postAccountsV01Properties"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Property"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
+        "x-codegen-request-body-name": "postAccountsV01Properties"
+      }
+    },
+    "/accounts/v0.1/organizations/{organization_id}": {
+      "get": {
+        "tags": [
+          "organizations"
+        ],
+        "summary": "Get Organization",
+        "description": "Retrieves information about an organization.",
+        "operationId": "getAccountsV01OrganizationsOrganizationId",
+        "parameters": [
+          {
+            "name": "organization_id",
+            "in": "path",
+            "description": "The organization's system-defined ID.\n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Organization"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "organizations"
+        ],
+        "summary": "Delete Organization",
+        "description": "Deletes an organization.",
+        "operationId": "deleteAccountsV01OrganizationsOrganizationId",
+        "parameters": [
+          {
+            "name": "organization_id",
+            "in": "path",
+            "description": "The organization's system-defined ID.\n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Organization"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "organizations"
+        ],
+        "summary": "Update Organization",
+        "description": "Updates an organization.",
+        "operationId": "patchAccountsV01OrganizationsOrganizationId",
+        "parameters": [
+          {
+            "name": "organization_id",
+            "in": "path",
+            "description": "The organization's system-defined ID.\n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/patchAccountsV01OrganizationsOrganizationId"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Organization"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
+        "x-codegen-request-body-name": "patchAccountsV01OrganizationsOrganizationId"
+      }
+    },
+    "/bff/ids/teams/{team_id}/feature-scopes": {
+      "get": {
+        "tags": [
+          "bff"
+        ],
+        "operationId": "getBffIdsTeamsTeamIdFeatureScopes",
+        "parameters": [
+          {
+            "name": "team_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get FeatureScope(s)",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/bff/ids/teams/{team_id}/clients/{client_id}/secrets/{secret_id}": {
+      "delete": {
+        "tags": [
+          "bff"
+        ],
+        "operationId": "deleteBffIdsTeamsTeamIdClientsClientIdSecretsSecretId",
+        "parameters": [
+          {
+            "name": "team_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "client_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "secret_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "deleted Secret",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/bff/ids/teams/{team_id}/clients/{client_id}/secrets": {
+      "get": {
+        "tags": [
+          "bff"
+        ],
+        "operationId": "getBffIdsTeamsTeamIdClientsClientIdSecrets",
+        "parameters": [
+          {
+            "name": "team_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "client_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get Secret(s)",
+            "content": {}
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "bff"
+        ],
+        "operationId": "postBffIdsTeamsTeamIdClientsClientIdSecrets",
+        "parameters": [
+          {
+            "name": "team_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "client_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "created Secret",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/bff/ids/teams/{team_id}/clients/{client_id}": {
+      "delete": {
+        "tags": [
+          "bff"
+        ],
+        "operationId": "deleteBffIdsTeamsTeamIdClientsClientId",
+        "parameters": [
+          {
+            "name": "team_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "client_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "deleted Client",
+            "content": {}
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "bff"
+        ],
+        "operationId": "patchBffIdsTeamsTeamIdClientsClientId",
+        "parameters": [
+          {
+            "name": "team_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "client_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "patched Client",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/bff/ids/teams/{team_id}/clients": {
+      "get": {
+        "tags": [
+          "bff"
+        ],
+        "operationId": "getBffIdsTeamsTeamIdClients",
+        "parameters": [
+          {
+            "name": "team_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get Client(s)",
+            "content": {}
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "bff"
+        ],
+        "operationId": "postBffIdsTeamsTeamIdClients",
+        "parameters": [
+          {
+            "name": "team_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "created Client",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/bff/traffic/{query_name}": {
+      "post": {
+        "tags": [
+          "bff"
+        ],
+        "operationId": "postBffTrafficQueryName",
+        "parameters": [
+          {
+            "name": "query_name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "origins-countries",
+                "origins-overtime",
+                "data-usage-overtime",
+                "routes"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "created Traffic",
+            "content": {}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Config_V1_Entities_EnvironmentVariable": {
+        "required": [
+          "@id",
+          "@type",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "type": "object",
+            "properties": {},
+            "description": "Links to related resources."
+          },
+          "id": {
+            "type": "string",
+            "description": "The resource's system-defined ID."
+          },
+          "environment_id": {
+            "type": "string",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
+          },
+          "key": {
+            "type": "string",
+            "description": "The environment variable's name."
+          },
+          "value": {
+            "type": "string",
+            "description": "The environment variable's value."
+          },
+          "secret": {
+            "type": "boolean",
+            "description": "Determines whether the environment variable's value will be partially masked using asterisks.\n"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The environment variable's creation date and time (UTC).",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The environment variable's last modification date and time (UTC).",
+            "format": "date-time"
+          }
+        },
+        "description": "Config_V1_Entities_EnvironmentVariable model"
+      },
+      "BaseApi_Entities_UserError": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Error message."
+          },
+          "details": {
+            "type": "array",
+            "description": "Describes the error.",
+            "items": {
+              "$ref": "#/components/schemas/BaseApi_Entities_UserErrorData"
+            }
+          }
+        },
+        "description": "BaseApi_Entities_UserError model"
+      },
+      "BaseApi_Entities_UserErrorData": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "The requested endpoint's path."
+          },
+          "message": {
+            "type": "string",
+            "description": "A brief description of the error."
+          }
+        }
+      },
+      "BaseApi_Entities_GeneralError": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Error Message"
+          }
+        },
+        "description": "BaseApi_Entities_GeneralError model"
+      },
+      "putConfigV01EnvironmentVariables": {
+        "required": [
+          "environment_id",
+          "key",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "environment_id": {
+            "type": "string",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
+          },
+          "key": {
+            "type": "string",
+            "description": "The environment variable's name."
+          },
+          "value": {
+            "type": "string",
+            "description": "The environment variable's value."
+          },
+          "secret": {
+            "type": "boolean",
+            "description": "Determines whether the environment variable's value will be partially masked using asterisks.\n"
+          }
+        },
+        "description": "Creates or updates an environment variable."
+      },
+      "Config_V1_Entities_EnvironmentVariable_Collection": {
+        "required": [
+          "@id",
+          "@type"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "$ref": "#/components/schemas/BaseApi_Entities_HyperionNavigationLinks"
+          },
+          "total_items": {
+            "type": "integer",
+            "description": "Total number of items.",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "description": "List of environment variables.",
+            "items": {
+              "$ref": "#/components/schemas/Config_V1_Entities_EnvironmentVariable"
+            }
+          }
+        },
+        "description": "Config_V1_Entities_EnvironmentVariable_Collection model"
+      },
+      "BaseApi_Entities_HyperionNavigationLinks": {
+        "type": "object",
+        "properties": {
+          "first": {
+            "$ref": "#/components/schemas/BaseApi_Entities_HyperionLink"
+          },
+          "next": {
+            "$ref": "#/components/schemas/BaseApi_Entities_HyperionLink"
+          },
+          "previous": {
+            "$ref": "#/components/schemas/BaseApi_Entities_HyperionLink"
+          },
+          "last": {
+            "$ref": "#/components/schemas/BaseApi_Entities_HyperionLink"
+          }
+        }
+      },
+      "BaseApi_Entities_HyperionLink": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "base_path": {
+            "type": "string"
+          }
+        }
+      },
+      "Config_V1_Entities_TlsCert": {
+        "required": [
+          "@id",
+          "@type",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "type": "object",
+            "properties": {},
+            "description": "Links to related resources."
+          },
+          "id": {
+            "type": "string",
+            "description": "The resource's system-defined ID."
+          },
+          "environment_id": {
+            "type": "string",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
+          },
+          "primary_cert": {
+            "type": "string",
+            "description": "Primary certificate. Not returned for records in collection."
+          },
+          "intermediate_cert": {
+            "type": "string",
+            "description": "Intermediate certificate. Not returned for records in collection"
+          },
+          "expiration": {
+            "type": "string",
+            "description": "The TLS certificate's expiration date and time (UTC).",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "description": "The TLS certificate's status. Returns one of the following states:\n\n-  `created`: The TLS certificate has been created, but it has not yet been activated.\n-  `activating:` Edgio is in the process of activating the TLS certificate.\n-  `activated:` The TLS certificate is currently active.\n-  `failed:` The activation of the TLS certificate failed.\n-  `expired:` The TLS certificate has expired.\n"
+          },
+          "generated": {
+            "type": "boolean",
+            "description": "Returns `true` for TLS certificates generated by Edgio. Returns `false` for existing TLS certificates that were uploaded to Edgio.\n"
+          },
+          "serial": {
+            "type": "string",
+            "description": "The TLS certificate's serial number."
+          },
+          "common_name": {
+            "type": "string",
+            "description": "The TLS certificate's common name (CN)."
+          },
+          "alternative_names": {
+            "type": "array",
+            "description": "The TLS certificate's Subject Alternative Names (SAN).",
+            "items": {
+              "type": "string"
+            }
+          },
+          "activation_error": {
+            "type": "string",
+            "description": "Contains an error message if the TLS certificate could not be activated. "
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The TLS certificate's creation date and time (UTC).",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The TLS certificate's last modification date and time (UTC).",
+            "format": "date-time"
+          }
+        },
+        "description": "Config_V1_Entities_TlsCert model"
+      },
+      "postConfigV01TlsCerts": {
+        "required": [
+          "environment_id",
+          "intermediate_cert",
+          "primary_cert"
+        ],
+        "type": "object",
+        "properties": {
+          "environment_id": {
+            "type": "string",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
+          },
+          "primary_cert": {
+            "type": "string",
+            "description": "Your TLS certificate. We require this certificate to be issued by a Certificate Authority."
+          },
+          "intermediate_cert": {
+            "type": "string",
+            "description": "The intermediate certificates (IC) used by the CA, including the CA’s signing certificate."
+          },
+          "private_key": {
+            "type": "string",
+            "description": "The private key that was generated with the CSR."
+          }
+        },
+        "description": "Upload your TLS certificate to activate it within a specific environment."
+      },
+      "Config_V1_Entities_TlsCert_Collection": {
+        "required": [
+          "@id",
+          "@type"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "$ref": "#/components/schemas/BaseApi_Entities_HyperionNavigationLinks"
+          },
+          "total_items": {
+            "type": "integer",
+            "description": "Total number of items.",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "description": "List of TLS certificates associated with the specified environment.",
+            "items": {
+              "$ref": "#/components/schemas/Config_V1_Entities_TlsCert"
+            }
+          }
+        },
+        "description": "Config_V1_Entities_TlsCert_Collection model"
+      },
+      "Config_V1_Entities_Deployment_Logs": {
+        "required": [
+          "@id",
+          "@type"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "type": "object",
+            "properties": {},
+            "description": "Links to related resources."
+          },
+          "logs": {
+            "type": "array",
+            "description": "The deployment's log messages.",
+            "items": {
+              "$ref": "#/components/schemas/Config_V1_Entities_Deployment_LogLine"
+            }
+          }
+        },
+        "description": "Config_V1_Entities_Deployment_Logs model"
+      },
+      "Config_V1_Entities_Deployment_LogLine": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Log message."
+          },
+          "level": {
+            "type": "string",
+            "description": "Log level."
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "The date and time (UTC) at which the message was logged.",
+            "format": "date-time"
+          }
+        }
+      },
+      "Config_V1_Entities_Deployment": {
+        "required": [
+          "@id",
+          "@type",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "type": "object",
+            "properties": {},
+            "description": "Links to related resources."
+          },
+          "id": {
+            "type": "string",
+            "description": "The resource's system-defined ID."
+          },
+          "status": {
+            "type": "string",
+            "description": "Indicates the deployment's status. Valid values are:\n  - `created`: The deployment has been created but has not yet been deployed.\n  - `uploading`: The CLI is uploading the build. This state is only applicable for EdgeJS deployments.\n  - `provisioning`: The CDN is provisioning the environment.\n  - `deploying`: The build is being deployed to our network.\n  - `waiting`: The build is being propagated throughout our network.\n  - `completed`: The build was deployed successfully to our network.\n  - `canceled`: The deployment was canceled.\n  - `failed`: The deployment has failed.\n"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date and time (UTC) at which the deployment was submitted.",
+            "format": "date-time"
+          },
+          "completed_at": {
+            "type": "string",
+            "description": "The date and time (UTC) at which the deployment was completed.",
+            "format": "date-time"
+          }
+        },
+        "description": "Config_V1_Entities_Deployment model"
+      },
+      "Config_V1_Entities_Config": {
+        "required": [
+          "@id",
+          "@type",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "type": "object",
+            "properties": {},
+            "description": "Links to related resources."
+          },
+          "id": {
+            "type": "string",
+            "description": "The resource's system-defined ID."
+          },
+          "origins": {
+            "$ref": "https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/origins"
+          },
+          "hostnames": {
+            "$ref": "https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/hostnames"
+          },
+          "rules": {
+            "$ref": "https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/rules"
+          },
+          "experiments": {
+            "type": "string",
+            "description": "List of experiments.",
+            "example": ""
+          }
+        },
+        "description": "Config_V1_Entities_Config model"
+      },
+      "postConfigV01Configs": {
+        "required": [
+          "environment_id",
+          "hostnames",
+          "origins"
+        ],
+        "type": "object",
+        "properties": {
+          "environment_id": {
+            "type": "string",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
+          },
+          "origins": {
+            "$ref": "https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/origins"
+          },
+          "hostnames": {
+            "$ref": "https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/hostnames"
+          },
+          "rules": {
+            "$ref": "https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/rules"
+          },
+          "experiments": {
+            "type": "array",
+            "description": "List of experiments.",
+            "example": [
+              {}
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "Deploys your configuration to a specific environment. This deployment overwrites any existing origin configurations, hostnames, rules, and experiments.\n"
+      },
+      "Cache_V1_Entities_PurgeRequest": {
+        "required": [
+          "@id",
+          "@type",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "type": "object",
+            "properties": {},
+            "description": "Links to related resources."
+          },
+          "id": {
+            "type": "string",
+            "description": "The purge request's system-defined ID."
+          },
+          "status": {
+            "type": "string",
+            "description": "The purge request's status. Valid values are:\n  - `in_progress`: Edgio is still purging content.\n  - `done`: Edgio has purged the requested content.\n"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date and time (UTC) at which the purge request was submitted.",
+            "format": "date-time"
+          },
+          "completed_at": {
+            "type": "string",
+            "description": "The date and time (UTC) at which the purge request was completed.",
+            "format": "date-time"
+          },
+          "progress_percentage": {
+            "type": "number",
+            "description": "The purge request's completion percentage.",
+            "format": "float"
+          }
+        },
+        "description": "Cache_V1_Entities_PurgeRequest model"
+      },
+      "postCacheV01PurgeRequests": {
+        "required": [
+          "environment_id",
+          "purge_type"
+        ],
+        "type": "object",
+        "properties": {
+          "environment_id": {
+            "type": "string",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
+          },
+          "purge_type": {
+            "type": "string",
+            "description": "- `all_entries`: Purge all cached content.\n- `path`: Purge one or more relative path(s) defined within the `values` property.\n- `surrogate_key`: Purge one or more surrogate key(s) defined within the `values` property.\n",
+            "enum": [
+              "all_entries",
+              "path",
+              "surrogate_key"
+            ]
+          },
+          "values": {
+            "type": "array",
+            "description": "Defines the set of content to be purged. The `purge_type` property's value determines what should be passed.\n  - `all_entries`: Omit this property or pass an empty array.\n  - `path`: Pass one or more relative path(s). This relative path starts directly after the hostname. Use an `*` to represent zero or more characters.\n  - `surrogate_key`: Pass one or more surrogate key(s) (aka cache tags).\n",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "Submits a request to purge cached content from a specific environment. Purging content invalidates the cached version of an asset from our edge servers. You may submit up to 50 concurrent purge requests. For the purpose of concurrency, each value defined within the `values` property is considered a separate purge request. Find out the current status of your purge request by passing the purge request ID, which is returned by the `id` property, to the [Get Purge Request operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).\n"
+      },
+      "Accounts_V1_Entities_Member": {
+        "required": [
+          "@id",
+          "@type",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "type": "object",
+            "properties": {},
+            "description": "Links to related resources."
+          },
+          "id": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "description": "The user's role."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The user's creation date and time (UTC).",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The user's last modification date and time (UTC).",
+            "format": "date-time"
+          },
+          "user_email": {
+            "type": "string",
+            "description": "The user's email."
+          }
+        },
+        "description": "Accounts_V1_Entities_Member model"
+      },
+      "patchAccountsV01MembersMemberId": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": [
+              "read_only",
+              "purger",
+              "member",
+              "admin",
+              "super_admin"
+            ]
+          }
+        }
+      },
+      "postAccountsV01Members": {
+        "required": [
+          "organization_id",
+          "user_email"
+        ],
+        "type": "object",
+        "properties": {
+          "user_email": {
+            "type": "string"
+          },
+          "organization_id": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "read_only",
+              "purger",
+              "member",
+              "admin",
+              "super_admin"
+            ]
+          }
+        }
+      },
+      "Accounts_V1_Entities_Member_Collection": {
+        "required": [
+          "@id",
+          "@type"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "$ref": "#/components/schemas/BaseApi_Entities_HyperionNavigationLinks"
+          },
+          "total_items": {
+            "type": "integer",
+            "description": "Total number of items.",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "description": "List of users.",
+            "items": {
+              "$ref": "#/components/schemas/Accounts_V1_Entities_Member"
+            }
+          }
+        },
+        "description": "Accounts_V1_Entities_Member_Collection model"
+      },
+      "Accounts_V1_Entities_Environment": {
+        "required": [
+          "@id",
+          "@type",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "type": "object",
+            "properties": {},
+            "description": "Links to related resources."
+          },
+          "id": {
+            "type": "string",
+            "description": "The resource's system-defined ID."
+          },
+          "property_id": {
+            "type": "string",
+            "description": "The system-defined ID for the property associated with this environment."
+          },
+          "name": {
+            "type": "string",
+            "description": "The environment's name."
+          },
+          "can_members_deploy": {
+            "type": "boolean",
+            "description": "Determines whether all organization members may deploy to this environment. Disabling this option restricts deployments to admin users and the deploy token."
+          },
+          "http_request_logging": {
+            "type": "boolean",
+            "description": "Determines whether deep-request inspection for serverless logs will be enabled."
+          },
+          "default_domain_name": {
+            "type": "string",
+            "description": "The default hostname through which traffic for this environment is served."
+          },
+          "pci_compliance": {
+            "type": "boolean",
+            "description": "Determines whether this environment's traffic will be restricted to our PCI-compliant network or served through our entire network."
+          },
+          "dns_domain_name": {
+            "type": "string",
+            "description": "Serve traffic for this environment by pointing your CNAMEs to this domain."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The environment's creation date and time (UTC).",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The environment's last modification date and time (UTC).",
+            "format": "date-time"
+          }
+        },
+        "description": "Accounts_V1_Entities_Environment model"
+      },
+      "patchAccountsV01EnvironmentsEnvironmentId": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The environment's name. This name may only consist of lowercase characters, numbers, dashes, and underscores.\n"
+          },
+          "can_members_deploy": {
+            "type": "boolean",
+            "description": "Determines whether all organization memmbers may deploy to this environment. Disabling this option restricts deployments to admin users and the deploy token.\n"
+          },
+          "http_request_logging": {
+            "type": "boolean",
+            "description": "Determines whether deep-request inspection for serverless logs will be enabled."
+          },
+          "preserve_cache": {
+            "type": "boolean",
+            "description": "Determines whether deploying a new build to this environment will use the same cache as the previous deployment.\n"
+          }
+        },
+        "description": "Updates an environment."
+      },
+      "postAccountsV01Environments": {
+        "required": [
+          "name",
+          "property_id"
+        ],
+        "type": "object",
+        "properties": {
+          "property_id": {
+            "type": "string",
+            "description": "The property's system-defined ID."
+          },
+          "name": {
+            "type": "string",
+            "description": "The environment's name. This name may only consist of lowercase characters, numbers, dashes, and underscores.\n"
+          },
+          "can_members_deploy": {
+            "type": "boolean",
+            "description": "Determines whether all organization memmbers may deploy to this environment. Disabling this option restricts deployments to admin users and the deploy token.\"\n"
+          },
+          "http_request_logging": {
+            "type": "boolean",
+            "description": "Determines whether deep-request inspection for serverless logs will be enabled."
+          }
+        },
+        "description": "Creates an environment."
+      },
+      "Accounts_V1_Entities_Environment_Collection": {
+        "required": [
+          "@id",
+          "@type"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "$ref": "#/components/schemas/BaseApi_Entities_HyperionNavigationLinks"
+          },
+          "total_items": {
+            "type": "integer",
+            "description": "Total number of items.",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "description": "List of environments.",
+            "items": {
+              "$ref": "#/components/schemas/Accounts_V1_Entities_Environment"
+            }
+          }
+        },
+        "description": "Accounts_V1_Entities_Environment_Collection model"
+      },
+      "Accounts_V1_Entities_Property": {
+        "required": [
+          "@id",
+          "@type",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "type": "object",
+            "properties": {},
+            "description": "Links to related resources."
+          },
+          "id": {
+            "type": "string",
+            "description": "The resource's system-defined ID."
+          },
+          "organization_id": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string",
+            "description": "The property's name."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The property's creation date and time (UTC).",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The property's last modification date and time (UTC).",
+            "format": "date-time"
+          }
+        },
+        "description": "Accounts_V1_Entities_Property model"
+      },
+      "patchAccountsV01PropertiesPropertyId": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "description": "The property's name. Space characters are converted to dashes."
+          }
+        },
+        "description": "Update a property."
+      },
+      "postAccountsV01Properties": {
+        "required": [
+          "organization_id",
+          "slug"
+        ],
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string",
+            "description": "The property's name. Space characters are converted to dashes."
+          },
+          "organization_id": {
+            "type": "string",
+            "description": "The system-defined ID for the organization under which this property will be created."
+          }
+        },
+        "description": "Create a property."
+      },
+      "Accounts_V1_Entities_Property_Collection": {
+        "required": [
+          "@id",
+          "@type"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "$ref": "#/components/schemas/BaseApi_Entities_HyperionNavigationLinks"
+          },
+          "total_items": {
+            "type": "integer",
+            "description": "Total number of items.",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "description": "List of properties.",
+            "items": {
+              "$ref": "#/components/schemas/Accounts_V1_Entities_Property"
+            }
+          }
+        },
+        "description": "Accounts_V1_Entities_Property_Collection model"
+      },
+      "Accounts_V1_Entities_Organization": {
+        "required": [
+          "@id",
+          "@type",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The resource's type."
+          },
+          "@id": {
+            "type": "string",
+            "description": "The resource's relative path."
+          },
+          "@links": {
+            "type": "object",
+            "properties": {},
+            "description": "Links to related resources."
+          },
+          "id": {
+            "type": "string",
+            "description": "The resource's system-defined ID."
+          },
+          "partner_id": {
+            "type": "string",
+            "description": "The system-defined ID for the partner account under which the organization was created."
+          },
+          "name": {
+            "type": "string",
+            "description": "The organization's name"
+          },
+          "pci_compliance": {
+            "type": "string",
+            "description": "The organization's PCI compliance status. This state is determined by checking PCI-compliance across all environments associated with this organization. Valid values are:\n\n-   **pci:** All environments are PCI-compliant.\n-   **non_pci:** All environments use our entire network.\n-   **mixed:** Some environments are PCI-compliant.\n",
+            "enum": [
+              "pci",
+              "non_pci",
+              "mixed"
+            ]
+          },
+          "pci_dns_domain_name": {
+            "type": "string",
+            "description": "The organization's PCI-compliant DNS domain.\n\nServe traffic through our PCI-compliant network by pointing your CNAMEs to this domain.\n"
+          },
+          "non_pci_dns_domain_name": {
+            "type": "string",
+            "description": "The organization's DNS domain for standard traffic. Standard traffic can use our entire network.\n\nServe traffic that does not require PCI-compliance by pointing your CNAMEs to this domain.\n"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The organization's creation date and time (UTC).",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The organization's last modification date and time (UTC).",
+            "format": "date-time"
+          }
+        },
+        "description": "Accounts_V1_Entities_Organization model"
+      },
+      "patchAccountsV01OrganizationsOrganizationId": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The organization's name."
+          }
+        },
+        "description": "Updates an organization."
+      }
+    },
+    "securitySchemes": {
+      "configScope": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "http://swagger.io/api/oauth/dialog",
+            "scopes": {
+              "app.config": "app.config"
+            }
+          }
+        }
+      },
+      "cacheScope": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "http://swagger.io/api/oauth/dialog",
+            "scopes": {
+              "app.cache.purge": "app.cache.purge"
+            }
+          }
+        }
+      },
+      "accountsScope": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "http://swagger.io/api/oauth/dialog",
+            "scopes": {
+              "app.accounts": "app.accounts"
+            }
+          }
+        }
+      }
+    }
+  }
+}

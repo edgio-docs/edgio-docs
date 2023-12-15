@@ -105,6 +105,13 @@ to** option. The available modes are described below.
     </Callout>
 
 -   **IP address:** Indicates that the requests from each unique client, as determined by its IP address, will be tracked. The specified rate limit will only be enforced on the clients that exceed it.
+
+    <Callout type="info">
+
+      Certain services and applications, such as VPNs, mask a client's IP address. Specifically, they will report an IP address of their choosing instead of the client's real IP address. As a result, multiple devices and perhaps even users may end up sharing the same IP address. 
+
+    </Callout>
+
 -   **IP address and user agent:** Indicates that the requests from each unique client, as determined by each unique combination of IP address and user agent (e.g., web browser), will be tracked. The specified rate limit will only be enforced on the clients that exceed it.
 
     <Callout type="info">
@@ -194,7 +201,7 @@ The types of prerequisites that may be defined are described below.
 
     <a id="country"></a>
 
--   **Country:** A request will count towards the rate limit when it originates from a country whose [code](/reference/country_codes) matches a value defined in the **Value(s)** option.
+-   **Country:** A request will count towards the rate limit when it originates from a country whose [code](/guides/reference/country_codes) matches a value defined in the **Value(s)** option.
 
     <a id="file-extension"></a>
 
@@ -434,7 +441,7 @@ You may create, modify, and delete rate rules.
 
 1.  Navigate to the **Rate Rules** page.
     {{ SECURITY_NAV }} **Rate Rules**.
-2.  Click **Add Rate Rule**.
+2.  Click **+ New Rate Ruleset**.
 3.  In the **Name** option, type the unique name by which
     this rate rule will be identified. This name should be sufficiently
     descriptive to identify it when setting up a Security Application
@@ -449,8 +456,7 @@ You may create, modify, and delete rate rules.
 6.  Optional. Create a condition group to identify
     the types of requests that qualify for rate limiting.
     1.  Click the **+ New Condition Group** label.
-    2.  Optional. Click on its label (e.g., Condition group 1) and then
-        type a brief name that describes the purpose of the condition
+    2.  Optional. Rename `Condition Group 1` to a brief name that describes the purpose of the condition
         group.    
     3.  In the **Matched by** option, select the method by which
         requests will be identified.
@@ -458,27 +464,24 @@ You may create, modify, and delete rate rules.
         If you set this option to **Request header**, then you
         should also select the desired request header from the **Request
         header name** option.
-    4.  Skip this step if you are matching by IP address. Otherwise, in
-        the **Match type** option, determine whether the
+    4.  If the **Match type** option is available, determine whether the
         **Value(s)** option will contain one or more exact
-        value(s) or a regular expression.
+        value(s) (`Multiple exact match`) or a regular expression (`Regex`).
+		
     5.  Perform either of the following steps:
-        -   **Multiple Exact Match:** In the **Value(s)**
+        -   **Values:** In the **Values**
             option, type the value that must be satisfied before a
-            request will count towards the rate rule. Repeat this step
-            as needed. Place each desired value on a separate line.
+            request will count towards the rate rule and then press `ENTER`. Repeat this step
+            as needed. 
 
             <Callout type="tip">
 
-              Use the **Case sensitive** option to determine
-              whether a case-sensitive comparison will be performed.
+              If the **Case sensitive** option is available, use it to determine whether a case-sensitive comparison will be performed.
 
             </Callout>
 
-        -   **Regex:** In the **Value(s)** option, type the
-            desired regular expression pattern.
-    6.  Choose whether this condition will be satisfied when a request
-        matches or does not match a value defined in the
+        -   **Value:** In the **Value** option, type the desired regular expression pattern.
+    6.  Choose whether this condition will be satisfied when a request matches or does not match a value defined in the
          **Value(s)** option.
          -   **Matches:** Clear the **Negative match**
              option.
@@ -486,7 +489,7 @@ You may create, modify, and delete rate rules.
              option.
     7.  Optional. Add another condition to the current condition group
           by clicking **+ New condition** and then repeating steps
-          6.4 - 6.7.
+          6.3 - 6.6.
 
         <Callout type="info">
 
@@ -506,7 +509,7 @@ You may create, modify, and delete rate rules.
         </Callout>
 
 7.  Optional. Enable a rule by toggling the `Rule Status` option to `On`.
-8.  Click **Submit**.
+8.  Click **Save**.
 
 **To modify a rate rule**
 
@@ -514,7 +517,7 @@ You may create, modify, and delete rate rules.
     {{ SECURITY_NAV }} **Rate Rules**.
 2.  Click on the desired rate rule.
 3.  Make the desired changes.
-4.  Click **Submit**.
+4.  Click **Save**.
 
 **To delete a rate rule**
 

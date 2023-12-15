@@ -70,11 +70,11 @@ module.exports = {
 
 Options:
 
-- `{{ FULL_CLI_NAME }}SourceMaps: true|false`: when true, the serverless build includes sourcemap files which make debugging easier when tailing the server logs in the {{ PORTAL }}. It also increases the serverless bundle size, which may push your deployments over the 50MB (compressed) limit.
+- `{{ FULL_CLI_NAME }}SourceMaps: true|false`: when true, the {{ PRODUCT }} cloud build includes sourcemap files which make debugging easier when tailing the server logs in the {{ PORTAL }}. It also increases the {{ PRODUCT }} cloud bundle size, which may push your deployments over the 50MB (compressed) limit.
 
 <Callout type="warning">
 
-We noticed some performance issues related to sourcemaps being loaded in our Serverless infrastructure, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
+We noticed some performance issues related to sourcemaps being loaded in the {{ PRODUCT }} cloud, which may result in 539 project timeout errors. In case you encounter such errors, please try again with sourcemaps disabled. This document will be updated once the problem is fully resolved.
 
 </Callout>
 
@@ -352,22 +352,13 @@ Within the {{ PRODUCT }} router, add the following:
 ```js filename="routes.js"
 import {Router} from '{{ PACKAGE_NAME }}/core/router';
 import {nuxtRoutes} from '{{ PACKAGE_NAME }}/nuxt';
-import { EDGIO_SERVERLESS_HINT_HEADER, EDGIO_SERVERLESS_HINTS } from '@edgio/core/constants'
-import { SERVERLESS_ORIGIN_NAME } from '@edgio/core/origins'
 
 export default new Router()
   .use(nuxtRoutes)
 
   // Instruct {{ PRODUCT }} to send traffic for /sitemap.xml to Nuxt middleware
-  .match('/sitemap.xml', {
-    headers: {
-      set_request_headers: {
-        `+${EDGIO_SERVERLESS_HINT_HEADER}`: EDGIO_SERVERLESS_HINTS.app,
-      },
-    },
-    origin: {
-      set_origin: SERVERLESS_ORIGIN_NAME,
-    },
+  .match('/sitemap.xml', ({ renderWithApp}) => {
+    renderWithApp();
   })
 ```
 
@@ -501,6 +492,8 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
+{{ system_origins_callout.md }}
+
 See [Deployments](/guides/basics/deployments) for more information.
 
 {{ related_resources.md }}
@@ -564,7 +557,7 @@ npm update -g {{ PACKAGE_NAME }}/cli
 
 ### Error on deploy: `{{ PRODUCT_NAME_LOWER }}-deploy-lambda: Unzipped size must be smaller than...` {/* error-on-deploy-deploy-lambda-unzipped-size-must-be-smaller-than */}
 
-As the error states, there is an upper limit on how big a package can be when deployed to our serverless infrastructure. Some common strategies for solving:
+As the error states, there is an upper limit on how big a package can be when deployed to the {{ PRODUCT }} cloud. Some common strategies for solving:
 
 - You may need to move some dependencies as [described here](#modules-vs-buildmodules). Only dependencies are copied up to the lambda.
 - Make sure you are using imports in a smart way. A common example is changing: `import { get } from lodash` to `import get from lodash/get` to avoid unnecessary bloat in your modules

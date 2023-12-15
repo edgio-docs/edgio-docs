@@ -1,0 +1,64 @@
+post:
+  operationId: create-acl-rule
+  tags:
+    - Access Control List (ACL)
+  summary: Add Access Rule
+  description: Creates an access rule that identifies threats through whitelists, accesslists, and blacklists.
+  security:
+    - wafScope: [app.waf]
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/Acl.yaml
+  responses:
+    '200':
+      description: OK. An access rule was created.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+get:
+  operationId: get-acl-rules
+  tags:
+    - Access Control List (ACL)
+  summary: Get All Access Rules
+  description: Retrieves a list of access rules. An access rule identifies whether a request is a threat through whitelists, accesslists, and blacklists.
+  security:
+    - wafScope: [app.waf]
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  responses:
+    '200':
+      description: OK. A list of access rules was retrieved. 
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ObjShort.yaml
+          example:
+            [{
+                    "id": "fMKolMmb",
+                    "name": "My First Access Rule",
+                    "super_capacity": false,
+                    "last_modified_date": "2023-08-16T19:00:05.443647Z"
+                }, {
+                    "id": "N2A2zH3K",
+                    "name": "My Second Access Rule",
+                    "super_capacity": false,
+                    "last_modified_date": "2023-08-16T18:56:37.532190Z"
+                }
+            ]
+    '404':      
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+

@@ -1,0 +1,60 @@
+title: Operator Object
+type: object
+description: The comparison that will be performed against the request element(s) identified within a `variable` object.
+properties:
+  type:
+    type: string
+    enum:
+      - RX
+      - STREQ
+      - EQ
+      - CONTAINS
+      - BEGINSWITH
+      - ENDSWITH
+      - IPMATCH
+    description: |
+
+      Indicates how the system will interpret the comparison between the `value` property and the value derived from the request element defined within a `variable` object. Valid values are:
+      
+      -   **RX:** The request's path must satisfy the regular expression defined in the `value` property.
+
+      -   **STREQ:** The request's path must be an exact match to the `value` property.
+
+      -   **CONTAINS:** The `value` property must contain the request's path.
+
+      -   **BEGINSWITH:** The `value` property must start with the request's path.
+
+      -   **ENDSWITH:** The `value` property must end with the request's path.
+
+      -   **EQ:** The number derived from the `variable` object must be an exact match to the `value` property.
+
+          You should only use `EQ` when the `is_count` property has been enabled.
+
+      -   **IPMATCH:** The request's IP address must either be contained by an IP block or be an exact match to an IP address defined in the `value` property. Only use `IPMATCH` with the `REMOTE_ADDR` variable. 
+
+  value:
+    type: string
+    description: | 
+    
+      A value that will be compared against the string or number value derived from the request element defined within `variable.type`.
+
+      If you are identifying traffic by URL path (`REQUEST_URI`), then you should specify a URL path pattern that starts directly after the hostname. Exclude a protocol or a hostname when defining this property.
+
+      **Example:** `/marketing`
+
+      If you are identifying traffic by IP address (`REMOTE_ADDR`), then you should use a comma-delimited list to specify multiple IP blocks and IP addresses.
+
+      **Example:** `192.0.2.20,203.0.113.0/24,2001:DB8::/32`
+
+  is_negated:
+    type: boolean
+    description: |
+    
+      Determines whether this condition is satisfied when the value derived from the request element defined within a `variable` object matches or does not match the `value` property. Valid values are:
+      
+      -   **True:** Does not match
+
+      -   **False:** Matches
+
+required:
+  - type

@@ -28,10 +28,22 @@ jobs:
           echo "skip_deploy=$(echo $COMMIT_MSG | grep -iq 'skip-deploy' && echo true || echo false)" >> $GITHUB_OUTPUT
         continue-on-error: true
 
-      - uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
         if: steps.check_commit_message.outputs.skip_deploy != 'true'
         with:
-          node-version: 16
+          node-version: 18
+      
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        if: steps.check_commit_message.outputs.skip_deploy != 'true'
+        with:
+          ruby-version: 2.7
+
+      - name: Ruby dependencies
+        if: steps.check_commit_message.outputs.skip_deploy != 'true'
+        run: |
+          gem install pry json
 
       - name: Cache node modules
         if: steps.check_commit_message.outputs.skip_deploy != 'true'
@@ -52,6 +64,6 @@ jobs:
 
       - name: Deploy to docs.edg.io (prod)
         if: steps.check_commit_message.outputs.skip_deploy != 'true'
-        run: yarn edgio:deploy --branch=$BRANCH_NAME --token=${{ secrets.layer0_prod_deploy_token }} --environment=production
+        run: yarn edgio:deploy --branch=$BRANCH_NAME --token=${{ secrets.edgio_prod_deploy_token }} --environment=production
         env:
           GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}

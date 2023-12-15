@@ -1,11 +1,10 @@
-import {DocSearch} from '@docsearch/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
 import EdgioDark from '../../../../public/images/home/edgio-dark.webp';
-import NoSSRWrapper from '../NoSSRWrapper';
 
+import AlgoliaSearch from './AlgoliaSearch';
 import VersionChooser from './VersionChooser';
 
 import {ExternalLink} from 'components/ExternalLink';
@@ -181,17 +180,6 @@ const darkSwitchIcon = (
   </svg>
 );
 
-const {
-  appId: algoliaAppId,
-  apiKey: algoliaApiKey,
-  indexName,
-} = siteConfig.algolia;
-
-function transformItems(items: any) {
-  // do transformation here...
-  return items;
-}
-
 export default function Header({
   showSidebar,
   setShowSidebar,
@@ -202,21 +190,6 @@ export default function Header({
   const {version} = useConditioning();
   const {APP_DOMAIN} = getVersionedConfig(version.selectedVersion);
 
-  const searchParameters = {
-    facetFilters: [['version:all', `version:${version.selectedVersionText}`]],
-  };
-
-  const SearchField = () => (
-    <NoSSRWrapper>
-      <DocSearch
-        appId={algoliaAppId}
-        indexName={indexName}
-        apiKey={algoliaApiKey}
-        transformItems={transformItems}
-        searchParameters={searchParameters}
-      />
-    </NoSSRWrapper>
-  );
   return (
     <StyledHeader className="docs-header">
       <div className="col-1">
@@ -261,7 +234,7 @@ export default function Header({
       <div className="col-2">
         <div id="desktop" className="desktop">
           <div className="search-form__box">
-            <SearchField />
+            <AlgoliaSearch />
           </div>
           <ToggleTheme />
           <ExternalLink
@@ -275,7 +248,7 @@ export default function Header({
         </div>
         <div id="mobile">
           <div className="search-form__box">
-            <SearchField />
+            <AlgoliaSearch />
           </div>
           <ToggleTheme />
           <button

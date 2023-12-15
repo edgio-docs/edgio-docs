@@ -1,0 +1,33 @@
+required:
+  - '@id'
+  - '@type'
+  - id
+type: object
+properties:
+  '@type':
+    type: string
+    description: The resource's type.
+  '@id':
+    type: string
+    description: The resource's relative path.
+  '@links':
+    type: object
+    properties: {}
+    description: Links to related resources.
+  id:
+    type: string
+    description: The resource's system-defined ID.
+  origins:
+    $ref: >-
+      https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/origins
+  hostnames:
+    $ref: >-
+      https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/hostnames
+  rules:
+    $ref: >-
+      https://api.vdms.io/cdn/edge-control/v1/configuration/schema#/definitions/property/properties/rules
+  experiments:
+    type: string
+    description: List of experiments.
+    example: ''
+description: Config_V1_Entities_Config model

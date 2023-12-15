@@ -1,0 +1,21 @@
+title: ACL ASNs
+type: object
+properties:
+  accesslist:
+    type: array
+    description: Contains ASN entries that identify traffic that may access your content upon passing a threat assessment.
+    items:
+      type: integer
+      format: uint32
+  blacklist:
+    type: array
+    description: Contains ASN entries that identify traffic that will be blocked or for which an alert will be generated.
+    items:
+      type: integer
+      format: uint32
+  whitelist:
+    type: array
+    description: Contains ASN entries that identify traffic that may access your content without undergoing threat assessment.
+    items:
+      type: integer
+      format: uint32

@@ -1,0 +1,28 @@
+title: Profile Short
+type: object
+properties:
+  id:
+    type: string
+    description: The managed rule's system-defined ID.
+  name:
+    type: string
+    description: The managed rule's name.
+  created_date:
+    type: string
+    description: The date and time at which the managed rule was created.
+  last_modified_date:
+    type: string
+    description: The date and time at which the managed rule was last modified.
+  ruleset_id:
+    type: string
+    description: The ID for the ruleset associated with this managed rule. 
+  ruleset_version:
+    type: string
+    description: The version of the ruleset associated with this managed rule.
+required:
+  - id
+  - name
+  - created_date
+  - last_modified_date
+  - ruleset_id
+  - ruleset_version

@@ -2,7 +2,11 @@
 title: Connectors
 ---
 
-Connector packages help build and run your app within {{ PRODUCT_NAME }}. When you run `{{ FULL_CLI_NAME }} init`, {{ PRODUCT_NAME }} CLI detects the framework used by your app and installs the corresponding connector package. For example, if you use Next.js, `{{ PACKAGE_NAME }}/next` will be installed. If no connector package exists for the framework that you use, you can still deploy to {{ PRODUCT_NAME }} by implementing the connector interface directly in your app.
+Connector packages help build and run your app within {{ PRODUCT_NAME }}. When you run `{{ FULL_CLI_NAME }} init`, {{ PRODUCT_NAME }} CLI detects the framework used by your app and installs the corresponding connector package. For example, if you use Next.js, `{{ PACKAGE_NAME }}/next` will be installed. If no connector package exists for the framework that you use, you can still deploy to {{ PRODUCT_NAME }} by using the [Node.js Connector](/guides/sites_frameworks/getting_started/nodejs_connector) (recommended) or implementing the connector interface directly in your app as defined below.
+
+<PopularFrameworks />
+
+{{ PRODUCT }} supports a number of frameworks out of the box. If you use one of these popular frameworks, you can skip this guide and go directly to [Getting Started](/guides/sites_frameworks/getting_started).
 
 ## Writing a connector {/*writing-a-connector*/}
 
@@ -11,7 +15,7 @@ A {{ PRODUCT_NAME }} connector consists of four entry points:
 - `init.js` - Called when the user runs `{{ FULL_CLI_NAME }} init`, adding resources to the project necessary for deploying on {{ PRODUCT_NAME }}. May also modify existing files with the project.
 - `dev.js` - Called when the user runs `{{ FULL_CLI_NAME }} dev` to run their app in development mode.
 - `build.js` - Called when the user runs `{{ FULL_CLI_NAME }} build` or `{{ FULL_CLI_NAME }} deploy`. Builds the application, copying resources into the `.{{ PRODUCT_NAME_LOWER }}` directory, which is ultimately zipped and uploaded to {{ PRODUCT_NAME }}.
-- `prod.js` - Starts the application server in {{ PRODUCT_NAME }} cloud's serverless environment.
+- `prod.js` - Starts the application server in the {{ PRODUCT_NAME }} cloud.
 
 These files should be placed in the root directory of your connector package.
 
@@ -124,9 +128,9 @@ export default async function build({ skipFramework }) {
 
 ## prod.js {/*prodjs*/}
 
-{{ PRODUCT_NAME }} runs your application in its serverless cloud by proxying requests to your framework's application server, which it expects to be running on a specific port. The prod.js entry point exports a function that is called when a new serverless function is provisioned. It is responsible for starting your app on the provided port so that it can receive requests from {{ PRODUCT_NAME }}.
+{{ PRODUCT_NAME }} runs your application in the {{ PRODUCT }} cloud by proxying requests to your framework's application server, which it expects to be running on a specific port. The prod.js entry point exports a function that is called when a new Cloud Function is provisioned. It is responsible for starting your app on the provided port so that it can receive requests from {{ PRODUCT_NAME }}.
 
-_Optional. This entry point is only needed if your app uses server-side rendering or calls the_ [renderWithApp](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#renderwithapp) _method on ResponseWriter._
+_Optional. This entry point is only needed if your app uses server-side rendering or calls the_ [renderWithApp](/docs/api/core/classes/router_RouteHelper.default.html#renderWithApp) _method on RouteHelper._
 
 For example:
 

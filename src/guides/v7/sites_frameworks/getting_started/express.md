@@ -2,7 +2,7 @@
 title: Express
 ---
 
-[Express](https://expressjs.com) is a fast, unopinionated, minimalist web framework for Node.js. The {{ PRODUCT_PLATFORM }}'s serverless environment makes it easy to run apps without managing Node.js servers.
+[Express](https://expressjs.com) is a fast, unopinionated, minimalist web framework for Node.js. The {{ PRODUCT }} {{ PRODUCT_PLATFORM }}'s cloud environment makes it easy to run apps without managing Node.js servers.
 
 <!-- <Video src="https://youtu.be/HnDR07NCVoI" /> -->
 
@@ -58,9 +58,11 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
+{{ system_origins_callout.md }}
+
 ## Overriding the default app location {/* overriding-the-default-app-location */}
 
-When you deploy your Express app to the {{ PRODUCT_PLATFORM }}, the {{ PRODUCT }} CLI bundles your app as a single javascript file so that it can be run as a serverless function. By default, {{ COMPANY_NAME }} looks for your app in the following common locations:
+When you deploy your Express app to the {{ PRODUCT_PLATFORM }}, the {{ PRODUCT }} CLI bundles your app as a single javascript file so that it can be run as a Cloud Function. By default, {{ COMPANY_NAME }} looks for your app in the following common locations:
 
 - src/server.ts
 - src/server.js
@@ -112,13 +114,13 @@ export default new Router()
 
 ## Adding Additional Files Needed during SSR {/* adding-additional-files-needed-during-ssr */}
 
-If your express app expects to be able to read files from the filesystem at runtime, for example an index.html template, you can ensure they are included in the app bundle that is deployed to {{ PRODUCT_PLATFORM }}'s serverless workers by adding the following to {{ CONFIG_FILE }}
+If your express app expects to be able to read files from the filesystem at runtime, for example an index.html template, you can ensure they are included in the app bundle that is deployed to {{ PRODUCT_PLATFORM }}'s cloud workers by adding the following to {{ CONFIG_FILE }}
 
 ```js filename='{{ CONFIG_FILE }}' ins="4-7"
 module.exports = {
   connector: '{{ PACKAGE_NAME }}/express',
   // Rest of the config
-  // Include index.html in the serverless bundle
+  // Include index.html in the cloud bundle
   serverless: {
     include: ['dist/client/index.html'],
   },
@@ -132,7 +134,7 @@ source files are compiled, you can transpile your app on your own and point your
 
 ## Bundling Options {/* bundling-options */}
 
-By default, {{ PRODUCT }} uses ESBuild to transpile and bundle your application code. If you're having difficulty fitting your app within the limit for serverless bundles, you can try bundling with [ncc](https://github.com/vercel/ncc), which should produce smaller bundles, by adding the following to {{ CONFIG_FILE }}:
+By default, {{ PRODUCT }} uses ESBuild to transpile and bundle your application code. If you're having difficulty fitting your app within the limit for cloud bundles, you can try bundling with [ncc](https://github.com/vercel/ncc), which should produce smaller bundles, by adding the following to {{ CONFIG_FILE }}:
 
 ```js filename='{{ CONFIG_FILE }}' highlight="3"
 module.exports = {

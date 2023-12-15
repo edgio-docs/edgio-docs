@@ -1,10 +1,14 @@
 {
+  "name": "docs",
+  "version": "2.0.0",
+  "private": true,
+  "license": "CC",
   "scripts": {
     "edgio:dev": "edgio dev",
-    "edgio:build": "edgio build",
-    "edgio:deploy": "edgio build && edgio deploy --skip-build",
+    "edgio:build": "yarn rest-api docs:bundle && edgio build && yarn sitemap",
+    "edgio:deploy": "yarn edgio:build && edgio deploy --skip-build",
     "analyze": "ANALYZE=true next build",
-    "dev": "edgio dev",
+    "dev": "next dev",
     "build": "next build",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
@@ -13,7 +17,7 @@
     "prettier": "yarn format:source",
     "prettier:diff": "yarn nit:source",
     "lint-heading-ids": "node scripts/headingIdLinter.js",
-    "fix-headings": "node scripts/headingIdLinter.js --fix",
+    "_fix-headings": "node scripts/headingIdLinter.js --fix",
     "fix-callouts": "node scripts/headingCalloutLinter.js --fix",
     "ci-check": "npm-run-all prettier:diff --parallel lint tsc lint-heading-ids",
     "tsc": "tsc --noEmit",
@@ -21,16 +25,27 @@
     "postinstall": "is-ci || (husky install .husky)",
     "check-all": "npm-run-all prettier lint:fix tsc",
     "clean": "rimraf node_modules && yarn",
-    "update-template-tables": "python3 scripts/md-tables-to-json.py"
+    "update-template-tables": "python3 scripts/md-tables-to-json.py",
+    "validate-links": "node scripts/validateGuideLinks.js",
+    "sitemap": "next-sitemap",
+    "rest-api": "yarn workspace rest-api run"
   },
-  "name": "docs",
-  "version": "2.0.0",
-  "private": true,
-  "license": "CC",
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "eslint --fix --cache --cache-location .next/cache/eslint/",
+      "yarn prettier"
+    ],
+    "src/templates/table_*.md": [
+      "yarn update-template-tables"
+    ]
+  },
+  "resolutions": {
+    "@types/react": "18.0.1"
+  },
   "dependencies": {
     "@docsearch/css": "3.0.0-alpha.41",
     "@docsearch/react": "3.0.0-alpha.41",
-    "@edgio/rum": "^6.0.0",
+    "@edgio/rum": "^7.0.0",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@headlessui/react": "^1.7.7",
@@ -38,9 +53,10 @@
     "@mdx-js/react": "^1.6.16",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.13",
-    "@octokit/core": "^4.0.5",
+    "@octokit/core": "^4.2.4",
     "cheerio": "^1.0.0-rc.12",
     "classnames": "^2.2.6",
+    "fast-levenshtein": "^3.0.0",
     "github-download-directory": "^3.0.0",
     "github-slugger": "^1.3.0",
     "html-entities": "^2.3.3",
@@ -55,6 +71,7 @@
     "react-dom": "^18.0.0",
     "react-icons": "^4.4.0",
     "react-player": "^2.10.0",
+    "scroll-into-view": "^1.16.2",
     "semver": "^7.3.7",
     "styled-button-component": "^4.0.0",
     "styled-components": "^5.3.3",
@@ -62,12 +79,12 @@
     "winston": "^3.8.2"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.0.5",
-    "@edgio/core": "^6.0.5",
-    "@edgio/devtools": "^6.0.5",
-    "@edgio/next": "^6.0.5",
-    "@edgio/prefetch": "^6.0.5",
-    "@edgio/react": "^6.0.5",
+    "@edgio/cli": "^7.4.0",
+    "@edgio/core": "^7.4.0",
+    "@edgio/devtools": "^7.4.0",
+    "@edgio/next": "^7.4.0",
+    "@edgio/prefetch": "^7.4.0",
+    "@edgio/react": "^7.4.0",
     "@mdx-js/loader": "^1.6.16",
     "@types/body-scroll-lock": "^2.6.1",
     "@types/classnames": "^2.3.1",
@@ -105,11 +122,13 @@
     "hast-util-heading-rank": "^1.0.1",
     "husky": "^7.0.4",
     "is-ci": "^3.0.1",
+    "jsurl": "^0.1.5",
     "lint-staged": ">=10",
     "lodash": "^4.17.21",
     "mdast-util-to-string": "^1.1.0",
     "next-mdx-remote": "^4.3.0",
     "next-seo": "^5.13.0",
+    "next-sitemap": "^4.1.8",
     "npm-run-all": "^4.1.5",
     "patch-package": "^6.2.2",
     "postcss": "^8.3.6",
@@ -132,30 +151,27 @@
     "string-replace-loader": "^3.1.0",
     "string-similarity": "^4.0.4",
     "tailwindcss": "^2.2.7",
+    "title": "^3.5.3",
     "typescript": "^4.0.2",
     "unist-util-visit": "^2.0.3",
-    "webpack-bundle-analyzer": "^4.5.0"
-  },
-  "resolutions": {
-    "@types/react": "18.0.1"
+    "webpack-bundle-analyzer": "^4.5.0",
+    "xregexp": "~2.0.0"
   },
   "engines": {
-    "node": "16.x",
+    "node": "18.x",
     "npm": "please-use-yarn",
     "yarn": ">= 1.19.1"
   },
+  "titles": [
+    "JSON",
+    "Vue.js"
+  ],
   "nextBundleAnalysis": {
     "budget": null,
     "budgetPercentIncreaseRed": 10,
     "showDetails": true
   },
-  "lint-staged": {
-    "*.{js,ts,jsx,tsx}": [
-      "eslint --fix --cache --cache-location .next/cache/eslint/",
-      "yarn prettier"
-    ],
-    "src/templates/table_*.md": [
-      "yarn update-template-tables"
-    ]
-  }
+  "workspaces": [
+    "rest_api"
+  ]
 }

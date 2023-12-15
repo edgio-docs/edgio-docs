@@ -1,0 +1,39 @@
+title: Match
+type: object
+description: Determines the comparison conditions for the request element identified by the `type` property.
+properties:
+  value:
+    type: string
+    description: |
+    
+      Restricts the match condition defined by the `type` property to the specified value. 
+      
+      **Example:**
+
+      If the `type` property is set to `REQUEST_HEADERS` and this property is set to `User-Agent`, then this match condition is restricted to the `User-Agent` request header. If the `value` property is omitted, then this match condition applies to all request headers.
+
+  is_negated:
+    type: boolean
+    description: |
+    
+      Determines whether this condition is satisfied when the request element identified by the `variable` object is found or not found.
+
+      -   **True:** Not found. Enabling this property requires an initial object that sets both the `is_negated` and `is_regex` properties to `False`.
+
+          ```
+          ...
+          [{
+          		"is_negated": false,
+        	  	"is_regex": false
+        	  }, {
+        		"is_negated": true,
+        		...	
+          ```
+
+          Omitting this initial object results in an invalid configuration.
+
+      -   **False:** Found.
+
+  is_regex:
+    type: boolean
+    description: Determines whether the `value` property will be interpreted as a regular expression or as a literal value.

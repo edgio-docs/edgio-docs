@@ -29,7 +29,7 @@ There are two workflows for defining your CDN configuration:
 -   Generate and deploy rules through the {{ PORTAL_LINK }}.
 -   Define a [CDN-as-Code configuration](/guides/performance/cdn_as_code) and then deploy it through the {{ PRODUCT }} CLI. 
 
-![Rules and CDN-as-Code](/images/v7/performance/rules-cdn-as-code.png)
+![Rules and CDN-as-Code](/images/v7/performance/rules-cdn-as-code.png?width=700)
 
 Deploying to an environment always overrides the previous configuration. However, if you use a different workflow, you may not be aware of how a deployment will override your current configuration. 
 
@@ -49,17 +49,63 @@ For example, if you deploy rules to an environment and a teammate deploys a CDN-
 
 ## Rules {/*rules*/}
 
-A rule:
+A rule consists of a set of IF, ELSE, and ELSE IF statements that define the logic through which requests are identified and processed.
 
--   Identifies a set of requests through conditions. 
+Each statement may contain:
+-   A set of match conditions that define the criteria used to identify requests. 
 
-    A rule is only applicable to requests that satisfy all of its conditions. By default, a new rule applies to all requests since it does not contain conditions.
+    For example, you may identify requests by URL path, request headers, or geolocation.
+	
+-   A set of features that define how the CDN will process requests identified by its conditional expression.
 
--   Defines how requests will be processed through features. A feature identifies an action and how it will be applied to requests.
+    For example, you may define a caching policy, set response headers, or redirect requests.
+
+Each of these components are identified in the following illustration.
+
+![Rule components](/images/v7/performance/rule-components.gif)
 
 For example, the following rule applies a caching policy to all `GET` requests whose relative path starts with `/marketing/`.
 
 ![Rule Example](/images/v7/performance/rule-condition-feature-example.png)
+
+### Statements {/*statements*/}
+
+There are three types of statement:
+
+-   **IF:** By default, adding a match condition or feature creates an IF statement and places the new entry within it. You may then add additional match conditions and features. 
+-   **ELSE:** Adding `Else` to a rule adds an ELSE statement. This type of statement determines how {{ PRODUCT }} will process all requests that do not satisfy at least one IF or ELSE IF statement defined within the same rule.
+-   **ELSE IF:** Adding a match condition to an ELSE statement converts it into an ELSE IF statement. This type of statement determines how {{ PRODUCT }} will process requests that meet the following requirements:
+    -   The request does not satisfy the IF statement or any ELSE IF statements above this statement.
+    -   The request must satisfy all of the match condition(s) defined within this ELSE IF statement.
+
+<Callout type="info">
+
+  By default, an IF or ELSE IF statement requires requests to satisfy all match condition(s) defined within that statement.   
+  
+  [Learn how to toggle this behavior.](#multiple-conditions)
+
+</Callout>
+
+### Nested Rules {/*nested-rules*/}
+
+A nested rule is a rule that is added to another rule's IF, ELSE IF, or ELSE statement. {{ PRODUCT }} will only check a nested rule's logic when the following prerequisites are satisfied:
+
+1.  The request satisfies the rule's logic to reach the statement where the rule was nested.
+
+    For example, if a rule is nested under the second ELSE IF statement, then it must not satisfy the match condition(s) defined under the IF statement or the ELSE IF statement that is listed above this one.
+	
+	Alternatively, if a rule is nested under an ELSE statement, then a request cannot satisfy any other IF or ELSE IF statement in that rule.
+
+2.  The request satisfies all of the match condition(s) associated with the IF or ELSE IF statement where the rule was nested. This prerequisite is automatically satisfied for ELSE statements, since they do not have match conditions. 
+
+For example, the following illustration demonstrates a nested rule whose logic will only be applied for specific types of images:
+
+![Nested rule](/images/v7/performance/rules-nested-rule.png?width=700)
+
+**Key information:**
+
+-   You may nest a rule under any statement. 
+-   Add a nested rule by finding the desired statement, clicking `+ Add`, and then selecting `Add Nested Rule`.
 
 ### Conditions {/*conditions*/}
 
@@ -82,16 +128,16 @@ Learn more about [types of conditions](/guides/performance/rules/conditions) and
 
 #### Multiple Conditions {/*multiple-conditions*/}
 
-You may add multiple conditions to a rule. By default, a request must satisfy each condition defined within a rule. This is indicated by an `and` label. However, you may configure your rule to only require a single condition by toggling the `and` label to `or`.
+By default, an IF or ELSE IF statement requires requests to satisfy all match condition(s) defined within that statement. This is indicated by an `and` label. However, you may modify an IF or ELSE IF statement to only require a single condition by toggling the `and` label to `or`.
 
-**To match requests using a single condition**
+**To toggle matching logic**
 
 1.  Create a rule with multiple condition(s).
-2.  Click on the `and` label.
+2.  From the desired IF or ELSE IF statement, click on the `and` label that appears directly to left of a match condition.
 
     ![Toggle condition logic](/images/v7/performance/rules-change-condition-logic.png)
 
-3.  When prompted, click **Change operators** to only require a single condition before matching a request to this rule.
+3.  When prompted, click **Change operators** to only require a single condition before matching a request for this IF or ELSE IF statement.
 
 <Callout type="info">
 
@@ -190,7 +236,7 @@ You may create, modify, and delete rules.
 
 **Key information:**
 
--   You may make changes without affecting an environment's traffic. This allows you to collaborate with other team members when setting up rules and to stage changes until they are needed. 
+-   You may make changes without affecting an environment's traffic. This allows you to collaborate with other teammates when setting up rules and to stage changes until they are needed. 
 
     For example, a sales event may require URL redirects or a different caching policy than standard site traffic. You can stage these changes until they are needed for the sales event.
 
@@ -212,19 +258,30 @@ You may create, modify, and delete rules.
     3.  From the left-hand pane, select **Rules**. 
 2.  Add a rule by clicking **+ Add Rule**.
 3.  Add a condition that defines the set of requests for which this rule will be applied. Repeat this step as needed.
-    1.  Click **+ Add Condition**.
+    1.  Click **+ Add** and then select **Add Condition**.
     2.  From the **Variable** option, select the method by which requests will be identified. 
     3.  From the **Operator** option, define the relationship between the variable selected in the previous step and the value that will be defined in the next step.
-    4.  In the **Match Value** option, define a value that will be compared against for each request. 
+    4.  In the **Value** option, define a value that will be compared against for each request. 
     5.  Click **Add Condition**.
 4.  Add a feature that determines how the requests defined in the previous step will be processed. Repeat this step as needed.
-    1.  Click **+ Add Feature**.
-    2.  From the **Feature Type** option, select the category that best corresponds to the desired feature.
-    3.  From the **Feature** option, select the desired feature.
-    4.  Configure the selected feature.
-    5.  Click **Add Feature**.
-5.  Add more rules as needed by repeating steps 2 - 4.
-6.  Review your rules to verify how requests will be handled and the order in which rules will be applied to requests. 
+    1.  Click **+ Add** and then select **Add Feature**.
+    2.  From the **Feature** option, select the desired feature.
+
+	    <Callout type="tip">
+		
+		  Features are listed by category. If you already know the name of the desired feature, type any part of its name to filter the list. 		  
+		
+		</Callout>
+
+    3.  Configure the selected feature.
+    4.  Click **Add Feature**.
+5.  Optional. Add an [ELSE or ELSE IF statement](#statements) to define an alternate set of logic for identifying and processing requests.
+
+    1.  Click **+ Add** and then select **Add Else**. An ELSE statement will appear.
+    2.  Convert this ELSE statement to an ELSE IF statement by adding one or more match condition(s). 
+
+6.  Add more rules as needed by repeating steps 2 - 5.
+7.  Review your rules to verify how requests will be handled and the order in which rules will be applied to requests. 
 
     <Callout type="tip">
 
@@ -232,7 +289,7 @@ You may create, modify, and delete rules.
 
     </Callout>
 
-7.  Click **Deploy Changes**.
+8.  Click **Deploy Changes**.
 
 **To delete a rule**
 

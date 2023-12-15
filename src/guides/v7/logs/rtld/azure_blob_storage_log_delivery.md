@@ -6,7 +6,7 @@ RTLD may automatically deliver compressed log data to an Azure Blob Storage cont
 
 **Key information:**
 
--   The set of available log fields varies by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf)
+-   The set of available log fields varies by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager)
 -   RTLD applies gzip compression to log data. Azure Blob Storage stores compressed log data as an object with a `gz` file extension.
     
     [Learn more.](/guides/logs/rtld/log_file_naming_convention)
@@ -69,7 +69,7 @@ RTLD may automatically deliver compressed log data to an Azure Blob Storage cont
 
 3.  Upon completing the above steps, you should create a log delivery profile for Azure Blob Storage.
 
-{{ RTLD_PROFILE_SETUP_1 }} `Azure Blob Storage`.
+{{ RTLD_PROFILE_SETUP_1.md }} `Azure Blob Storage`.
 
 4.  Define how RTLD will communicate with Azure Blob Storage.
 
@@ -77,10 +77,10 @@ RTLD may automatically deliver compressed log data to an Azure Blob Storage cont
     
     2.  Optional. Set the **Prefix** option to a value that defines a virtual log file storage location and/or a prefix that will be added to each log file added to your container.
 
-        [Learn more.](#log-file-prefix)
+        [Learn more about prefixes.](#log-file-prefix)
     
     3.  From the **Access Type** option, select whether log data uploads will be authorized via a SAS token or an access key and then paste it in the field below it.
     
         If you plan on providing a SAS token, make sure that the token has permission to write to the blob/container. Additionally, it should start with `sv=` and it should not include a `?`.
 
-{{ RTLD_PROFILE_SETUP_2 }}
+{{ RTLD_PROFILE_SETUP_2.md }}

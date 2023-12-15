@@ -9,9 +9,15 @@ title: TLS Certificates
     -   Allow {{ PRODUCT }} to [autogenerate a TLS certificate for each of your hostnames.](#autogenerating-tls-certificates)
     -   [Upload your own TLS certificate.](#uploading-your-certificate)
 
+    <Callout type="info">
+
+      It may take up to 6 hours to install a new TLS certificate across our entire network.
+
+    </Callout>
+
 -   **{{ PRODUCT }} Domains:** {{ PRODUCT }} provides a wildcard TLS certificate for the domains that we automatically generate when you deploy to your property. This certificate is managed by {{ PRODUCT }} and it does not require configuration.
 
-    **Sample domain:** `my-team-my-site-feature-a-1234.{{ LINK_DOMAIN }}`
+    **Sample domain:** `my-organization-my-property-feature-a-1234.{{ LINK_DOMAIN }}`
 
 ### Autogenerating TLS Certificates {/*autogenerating-tls-certificates*/}
 
@@ -20,6 +26,7 @@ title: TLS Certificates
 -   [Hostnames:](/guides/basics/hostnames_and_origins#hostnames) Register the hostnames that will serve traffic for each environment.
 -   [Certificate Authority Authorization:](#certificate-authority-authorization) The Let's Encrypt certificate authority (CA) must be allowed to issue certificates for each registered hostname. 
 -   [Domain Control Validation:](#domain-control-validation) Prove your control over that domain by adding an `_acme-challenge` CNAME record to it.
+-   **Web Server(s):** Enable or verify that your web servers support TLS 1.3 (recommended) or 1.2 encryption. 
 
 #### Certificate Authority Authorization {/*certificate-authority-authorization*/}
 
@@ -169,6 +176,12 @@ Once the above requirements are met, you should verify that a TLS certificate fo
 
     {{ PRODUCT }} will generate a TLS certificate for that hostname within a few minutes.
 
+    <Callout type="info">
+
+      It may take up to 6 hours to install a new TLS certificate across our entire network.
+
+    </Callout>
+
 4.  Wait a few minutes and then verify that a certificate was created for that hostname.
 
 ### Manually Creating a TLS Certificate {/*creating-a-certificate-manually*/}
@@ -256,7 +269,7 @@ The following procedure indicates how to create a CSR and a private key with Ope
 
 Uploading a TLS certificate requires:
 
--   The `Admin` role within your team.
+-   The `Admin` role within your organization.
 -   A certificate issued by a CA.
 -   The intermediate certificates (IC) used by the CA, including the CA's signing certificate.
 -   The private key that was generated with the CSR.

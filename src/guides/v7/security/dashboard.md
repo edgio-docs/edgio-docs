@@ -18,12 +18,12 @@ The {{ PRODUCT_SECURITY }} dashboard provides the means through which you may pe
 **To view the dashboard**
 1.  Navigate to the {{ PRODUCT_SECURITY }} dashboard.
 
-    1.  From the {{ PORTAL_LINK }}, select the desired team space.    
+    1.  From the {{ PORTAL_LINK }}, select the desired organization.    
     2.  Click **Security**.
     
-    By default, the dashboard displays recent [threats](#threats) (i.e., access rule, custom rule, and managed rule violations).
+    By default, the dashboard displays recent [threats](#threats-view) (i.e., access rule, custom rule, and managed rule violations).
 
-2.  Optional. Click on the [Browser Challenges](#bot), [Rates](#rate-limit), or [Rate Enforcement](#rate-enforcement) tab to view bot traffic or rate limiting trends.
+2.  Optional. Click on the [Bot Events](#bot), [Rates](#rate-limit), or [Rate Enforcement](#rate-enforcement) tab to view bot traffic or rate limiting trends.
 
 <Callout type="tip">
 
@@ -43,7 +43,7 @@ A threat event occurs when an access rule, custom rule, or managed rule is viola
 
 [View field definitions.](/guides/security/recent_event_logs#threat-log-fields)
 
-## Browser Challenges View {/*bot-view*/}
+## Bot Events View {/*bot-events-view*/}
 
 A bot event occurs when a bot manager rule is violated. Analyze recently detected bot traffic to 
 -   Visualize peak bot traffic time periods and the amount of bot traffic directed at your web application and APIs.

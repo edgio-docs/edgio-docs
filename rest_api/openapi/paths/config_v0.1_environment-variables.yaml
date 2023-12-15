@@ -1,0 +1,134 @@
+get:
+  tags:
+    - environment-variables
+  summary: Get All Environment Variables
+  description: Returns all environment variables associated with an environment.
+  operationId: getConfigV01EnvironmentVariables
+  parameters:
+    - name: page
+      in: query
+      description: 0-based page number.
+      schema:
+        type: integer
+        format: int32
+        default: 0
+    - name: page_size
+      in: query
+      description: >-
+        Number of results per page. Valid values are: 1 - 100. **Default
+        value:** 20
+      schema:
+        type: integer
+        format: int32
+        default: 20
+    - name: key
+      in: query
+      description: Find an environment variable by its name.
+      schema:
+        type: string
+    - name: environment_id
+      in: query
+      description: >
+        An environment's system-defined ID (e.g.,
+        12345678-1234-1234-1234-1234567890ab).
+
+
+        From the Edgio Console, navigate to the desired environment and then
+        click **Settings**. It is listed under **Environment ID**.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/Config_V1_Entities_EnvironmentVariable_Collection.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - configScope:
+        - app.config
+put:
+  tags:
+    - environment-variables
+  summary: Set Environment Variable
+  description: Creates or updates an environment variable.
+  operationId: putConfigV01EnvironmentVariables
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/putConfigV01EnvironmentVariables.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Config_V1_Entities_EnvironmentVariable.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  security:
+    - configScope:
+        - app.config
+  x-codegen-request-body-name: putConfigV01EnvironmentVariables

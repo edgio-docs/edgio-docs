@@ -1,10 +1,10 @@
 ---
-title: Serverless Compute
+title: Cloud Functions
 ---
 
 {{ROUTEHELPER.md}}
 
-{{ PRODUCT }} makes it easy to develop, test, and deploy serverless functions without a JavaScript framework. Simply declare your routes and use the `compute`, or `proxy` with the `transformResponse` option, methods to compute responses based on your own custom logic.
+{{ PRODUCT }} makes it easy to develop, test, and deploy Cloud Functions without a JavaScript framework. Simply declare your routes and use the `compute`, or `proxy` with the `transformResponse` option, methods to compute responses based on your own custom logic.
 
 ## Availability {/* availability */}
 
@@ -26,13 +26,13 @@ Enterprise customers may choose the region where their workloads will run. Alter
 - Running your code within two separate data centers.
 - Setting up automatic DNS failover between those data centers.
 - Load balancing computing requests between redundant processes.
-- Applying an Origin Shield to our Serverless Compute workers. If your compute requests are cacheable, then this allows more requests to be served from cache.
+- Applying an Origin Shield to our Cloud Functions workers. If your compute requests are cacheable, then this allows more requests to be served from cache.
 
 {{ PREREQ.md }}
 
 ## Getting Started {/* getting-started */}
 
-To create a new {{ PRODUCT }} project using serverless functions, run:
+Run the following command to create an  {{ PRODUCT }} project that supports Cloud Functions:
 
 ```bash
 npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
@@ -40,7 +40,7 @@ npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
 ```
 
 <!--
-Or you can clone this example repo: [layer0-serverless-example](https://github.com/edgio-docs/edgio-serverless-example), which has some more complex examples of how to use serverless functions:
+Or you can clone this example repo: [layer0-serverless-example](https://github.com/edgio-docs/edgio-serverless-example), which has some more complex examples of how to use Cloud Functions:
 
 ```bash
 npx degit https://github.com/edgio-docs/edgio-serverless-example my-serverless-functions
@@ -49,7 +49,7 @@ npx degit https://github.com/edgio-docs/edgio-serverless-example my-serverless-f
 
 ## Responding to requests {/* responding-to-requests */}
 
-Use the [compute](/docs/api/core/classes/router.RouteHelper.html#compute) method to generate a synthetic response:
+Use the [compute](/docs/api/core/classes/router_RouteHelper.default.html#compute) method to generate a synthetic response:
 
 ```js
 // routes.js
@@ -100,11 +100,11 @@ export default new Router().get('/some-route/:someParam', ({compute}) => {
 });
 ```
 
-See [RouteHelper](/docs/api/core/classes/router.RouteHelper.html) for all of the methods that you can call when responding to a request.
+See [RouteHelper](/docs/api/core/classes/router_RouteHelper.default.html) for all of the methods that you can call when responding to a request.
 
 ## Modifying a response from the origin {/* modifying-a-response-from-the-origin */}
 
-Serverless functions can be used to modify responses from the origin by using the `proxy` method with the `transformResponse` option. First, configure an origin in the `{{ CONFIG_FILE }}` located in the root of your project:
+Cloud Functions can be used to modify responses from the origin by using the `proxy` method with the `transformResponse` option. First, configure an origin in the `{{ CONFIG_FILE }}` located in the root of your project:
 
 ```js
 // {{ CONFIG_FILE }}
@@ -136,7 +136,7 @@ module.exports = {
 
 See [`origins`](/guides/performance/cdn_as_code/edgio_config#origins) for more configuration options.
 
-To forward a request to the origin and modify the response using a serverless function:
+To forward a request to the origin and modify the response using a Cloud Function:
 
 ```js
 // routes.js
@@ -200,7 +200,7 @@ You can also access any of the request fields documented in [Responding to reque
 
 ## Caching Responses {/* caching-responses */}
 
-To improve performance and minimize cost, cache the responses returned by your serverless functions whenever possible:
+To improve performance and minimize cost, cache the responses returned by your Cloud Functions whenever possible:
 
 ```js
 // routes.js
@@ -220,7 +220,7 @@ export default new Router().get('/', ({cache, compute}) => {
 });
 ```
 
-See the [cache](/docs/api/core/classes/router.RouteHelper.html#cache) method for more options.
+See the [cache](/docs/api/core/classes/router_RouteHelper.default.html#cache) method for more options.
 
 ## Running your project locally {/* running-your-project-locally */}
 
@@ -240,11 +240,13 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
+{{ system_origins_callout.md }}
+
 ## Limits {/* limits */}
 
-{{ PRODUCT }} Serverless Compute limits are listed below.
+{{ PRODUCT }} Cloud Functions limits are listed below.
 
-- Our serverless functions have a maximum runtime of 20 seconds per request. The response for a function that exceeds this limit is a [539 Project Timeout](/guides/performance/response#exclusive-status-codes).
-- Our Serverless Compute workers are allowed to generate a response body with a maximum file size of 6 MB.
+- Our Cloud Functions have a maximum runtime of 20 seconds per request. The response for a function that exceeds this limit is a [539 Project Timeout](/guides/performance/response#exclusive-status-codes).
+- Our Cloud Functions workers are allowed to generate a response body with a maximum file size of 6 MB.
 - Your project must comply with all applicable [{{ PRODUCT }} {{ PRODUCT_EDGE }} limitations.](/guides/performance/limits)
 - Your project must comply with [{{ PRODUCT }} {{ PRODUCT_PLATFORM }} limitations.](/guides/sites_frameworks/limits)

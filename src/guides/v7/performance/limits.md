@@ -21,7 +21,7 @@ Data storage units are defined below.
 | Response time from origin server                      | 60 seconds            | The maximum number of seconds that {{ PRODUCT }} will wait for a response from an origin server (e.g., your web server). The response for a request that exceeds this limit is a [536 Project HTTP Response Timeout](/guides/performance/response#status-codes#536). |
 | Response body size from static                        | 2Gb                   | The maximum size of a response body of {{ PRODUCT }} static assets.                                                                                                              |
 | Response body size from custom origin                 | 2Gb                   | The maximum size of a response body from a custom origin.                                                                                                                             |
-| Response body size from {{ PRODUCT }} serverless | 6Mb                   | The maximum size of a response body from {{ PRODUCT }} serverless.                                                                                                               |
+| Response body size from {{ PRODUCT }} cloud           | 6Mb                   | The maximum size of a response body from the {{ PRODUCT }} cloud.                                                                                                   |
 | Path and query string size                            | 8Kb                   | The maximum bytes (not characters) that {{ PRODUCT }} will accept in path and query string.                                                                                      |
 | Cookie size                                           | 32Kb                  | The maximum bytes that {{ PRODUCT }} will accept in request or response cookies.                                                                                                 |
 | HTTP header size                                      | 64Kb                  | The maximum bytes that {{ PRODUCT }} will accept in request or response HTTP headers.                                                                                            |
@@ -52,9 +52,11 @@ The following headers are served for use by {{ PRODUCT }}. You may not modify th
 -   warning 
 -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
-### Access Logs {/*access-logs*/}
+### RTLD Log Data {/*rtld-log-data*/}
 
-| Value | Limit     | Description                                                                                         |
-| ----- | --------- | --------------------------------------------------------------------------------------------------- |
-| Size  | Unlimited | All access logs will always be [logged](/guides/logs/access_logs).                          |
-| Time  | 2 hours   | The minimum time that {{ PRODUCT }} guarantees that access logs will be available for reading. |
+[RTLD](/guides/logs/rtld) limitations are described below.
+
+| Value | Limit     | Description                                                                                                                                                                                                       |
+| ----- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Time  | 3 days    | If our service is unable to deliver log data, then we will store it for up to 3 days and deliver it when communication resumes. If we cannot deliver log data within 3 days, then it will be permanently deleted. |
+| Size  | Unlimited |                                                                                                                                                                                                                   |

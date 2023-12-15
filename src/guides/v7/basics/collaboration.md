@@ -106,11 +106,12 @@ Each member of an organization must be assigned one of the following roles:
 {{ PRODUCT }} offers single sign-on (SSO) integration for SAML 2.0 identity providers. This type of integration allows {{ PRODUCT }} to delegate authentication to your identity provider. We support the following workflows:
 
 -   **Edgio-Initiated Workflow:** This common SSO workflow requires users to browse to the {{ PORTAL }}. After which, {{ PRODUCT }} will authenticate the user's identity with your identity provider. A high-level overview of this workflow is illustrated below.
-    ![High-level SP-initiated SSO workflow](/images/v7/basics/edgio-initiated-sso-workflow.png)
+
+    ![High-level SP-initiated SSO workflow](/images/v7/basics/edgio-initiated-sso-workflow.png?width=650)
 
 -   **Identity Provider-Initiated Workflow:** This SSO workflow requires users to load the {{ PORTAL }} through your identity provider. A high-level overview of this workflow is illustrated below.
 
-    ![High-level IdP-initiated SSO workflow](/images/v7/basics/idp-initiated-sso-workflow.png)
+    ![High-level IdP-initiated SSO workflow](/images/v7/basics/idp-initiated-sso-workflow.png?width=650)
 
 ### Getting Started {/*getting-started*/}
 
@@ -146,7 +147,7 @@ Establishing a SSO workflow requires a custom integration between our identity s
 
     `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/email`
 
-5.   Optional. Set up custom attribute statements for the user's name. Use the following schema namespaces:
+5.  Optional. Set up custom attribute statements for the user's name. Use the following schema namespaces:
 
     **User's First Name:**
 

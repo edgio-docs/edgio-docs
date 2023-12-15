@@ -56,6 +56,12 @@ The recommended method for installing Node.js is through a version manager like 
 
 Node.js 18 and 20 are supported by {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} starting from version 7.4.0 and 7.5.0, respectively. {{ PRODUCT }} will detect your project's Node.js version during deployment and use the appropriate runtime version. Optionally, you can set the [`cloudRuntime`](/guides/performance/cdn_as_code/edgio_config#cloudruntime) property in the `{{ CONFIG_FILE }}` file to target a specific Node.js version.
 
+<Callout type="important">
+
+  If you're using an earlier version of {{ PRODUCT }} that doesn't support Node.js 18 or 20, your application will use Node.js 16 runtime when deployed to {{ PRODUCT }}.  
+
+</Callout>
+
 Upgrade your project by running the commands corresponding to the desired Node.js version:
 
 <SnippetGroup>
@@ -79,5 +85,3 @@ Upgrade your project by running the commands corresponding to the desired Node.j
 </SnippetGroup>
 
 Build your project and ensure that it works as expected.
-
-If you're using an earlier version of {{ PRODUCT }} that doesn't support Node.js 18 or 20, your application will use Node.js 16 runtime when deployed to {{ PRODUCT }}.

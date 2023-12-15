@@ -2,9 +2,7 @@
 title: Install Node.js and npm
 ---
 
-{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} supports Node.js 16, 18, and 20 runtime versions.
-
-Although you may develop your app with any version of Node.js, it will run using a supported version of the Node.js runtime when deployed to {{ PRODUCT }}.
+Although you may develop your app with any version of Node.js, {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} runs your projects within a Node.js 16, 18, or 20 runtime environment. {{ PRODUCT }} determines the available set of runtime environments according to the version of the {{ PRODUCT }} CLI through which your project was deployed. 
 
 - {{ PRODUCT }} v7.5.0 or later is compatible with Node.js 18 and 20.
 - {{ PRODUCT }} v7.4.0 through v7.4.4 is compatible with Node.js 16 and 18.

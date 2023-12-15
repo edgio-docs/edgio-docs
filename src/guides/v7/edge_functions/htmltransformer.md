@@ -78,10 +78,9 @@ export async function handleHttpRequest(request, context) {
 
   // Get the HTML from the origin server
   const response = await fetch(request.url, {edgio: {origin: 'api_backend'}});
-  const html = await response.text();
 
-  // Write the HTML to the transformer
-  await htmlTransformer.write(html);
+  // Pass the HTML response to the transformer.
+  await htmlTransformer.write(response);
 
   // Flush the HTML transformer
   await htmlTransformer.end();
@@ -168,10 +167,9 @@ export async function handleHttpRequest(request, context) {
 
   // Get the HTML from the origin server
   const response = await fetch(request.url, {edgio: {origin: 'api_backend'}});
-  const html = await response.text();
-
-  // Write the HTML to the transformer
-  await htmlTransformer.write(html);
+  
+  // Pass the HTML response to the transformer.
+  await htmlTransformer.write(response);
 
   // Flush the HTML transformer
   await htmlTransformer.end();
@@ -214,95 +212,70 @@ This edge function transforms the above HTML to replace `<esi:include ... />` wi
 </html>
 ```
 
-### Example 3: Add Body Streaming {/* example3 */}
-
-This example extends the previous example with response body streaming. Streaming is necessary when the whole response body is too large to fit into the edge function memory.
-
-```js
-export async function handleHttpRequest(request, context) {
-  // HtmlTransformer definition to replace esi:include tags with the content of the src attributes
-  const transformerDefinitions = [
-    {
-      selector: 'esi\\:include[src]',
-      element: async (el) => {
-        const url = el.getAttribute('src');
-        const esiResponse = await fetch(url, {
-          edgio: {origin: 'origin_server'},
-        });
-        if (esiResponse.status == 200) {
-          const body = await esiResponse.text();
-          el.replace(body, 'html');
-        } else {
-          el.replace(
-            `<a>We encountered an error ${esiResponse.status}, please try again later.</a>`,
-            'html'
-          );
-        }
-        el.replace(body);
-      },
-    },
-  ];
-
-  // Fetch the originResponse and wrap its body stream in an html transformer stream.
-  const transformerStream = fetch(request.url, {
-    edgio: {origin: 'origin_server'},
-  }).then((originResponse) => {
-    const originResponseReader = originResponse.body.getReader();
-    return new ReadableStream({
-      start(originResponseController) {
-        const textDecoder = new TextDecoder();
-        const htmlTransformer = new HtmlTransformer(
-          transformerDefinitions,
-          (chunk) => {
-            // Enqueue each transformed chunk to the transformer stream
-            originResponseController.enqueue(chunk);
-          }
-        );
-        return pump();
-        function pump() {
-          return originResponseReader.read().then(({done, value}) => {
-            if (value && value.length) {
-              // Decode and enqueue the next chunk from the origin stream to the html transformer stream
-              htmlTransformer.write(textDecoder.decode(value));
-            }
-            if (done) {
-              // When originResponseReader reaches the end of the stream,
-              // flush the htmlTransformer stream and the originResponseController.
-              htmlTransformer.end();
-              originResponseController.close();
-              return;
-            }
-            return pump();
-          });
-        }
-      },
-    });
-  });
-
-  // Return the transformed HTML body as a stream
-  return new Response(await transformerStream);
-}
-```
-
 ## HtmlTransformer Class {/* class */}
 
 ### new {/* new */}
 
-`const htmlTransformer = new HtmlTransformer(transformerDefinitions, callback)`
+```js
+const htmlTransformer = new HtmlTransformer(transformerDefinitions, callback)
+```
 
 Creates a new HtmlTransformer instance. The `transformerDefinitions` is an array of [transformer definitions](#definitions). The `callback` is the function `(chunk) => { ... }` that receives the transformed HTML data chunks.
 
-### write(chunk) {/* write */}
+### async write(string) {/* write-string */}
 
-`htmlTransformer.write(chunk)`
+```js
+await htmlTransformer.write('<html><body><h1>Hello World</h1>')
+await htmlTransformer.write('<a href="https://edg.io/">Edgio Homepage</a>')
+await htmlTransformer.write('</body></html>')
+await htmlTransformer.end()
+```
 
-Writes the HTML chunk to the transformer stream. This function can be called multiple times.
+Writes the string to the transformer stream. This function can be called multiple times.
 
-### end() {/* end */}
+### async write(Promise&lt;Response>) {/* write-promise */}
 
-`htmlTransformer.end()`
+```js
+const responsePromise = fetch(request.url, {edgio: {origin: 'api_backend'}});
+await htmlTransformer.write(responsePromise)
+await htmlTransformer.end()
+```
 
-Flushes the transformer and completes the transformation. This function must be called after the last call to `htmlTransformer.write()`.
+Pass the Response's Promise to the transformer stream. This writes the entire response to the transformer as a stream.
+
+### async write(Response) {/* write-response */}
+
+```js
+  const response = await fetch(request.url, {edgio: {origin: 'api_backend'}});
+  if (response.status == 200) {
+    await htmlTransformer.write(response)
+    await htmlTransformer.end()
+  }
+```
+
+Pass the Response Object to the transformer stream. This writes the entire response to the transformer as a stream.
+
+### async write(readableStream) {/* write-readable-stream */}
+
+```js
+const response = await fetch(request.url, {edgio: {origin: 'api_backend'}});
+if (response.status == 200) {
+  if (response.headers.get('content-type') == 'text/html') {
+    const reableStream = response.body
+    await htmlTransformer.write(reableStream)
+    await htmlTransformer.end()
+  }
+}
+```
+
+Pass the ReadbleStream to the transformer stream. This writes the entire response to the transformer as a stream.
+### async end() {/* end */}
+
+```js
+await htmlTransformer.end()
+```
+
+Flushes the transformer and completes the transformation. This function must be called after the last call to `await htmlTransformer.write()`.
 
 ## Definitions {/* definitions */}
 

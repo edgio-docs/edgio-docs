@@ -107,7 +107,7 @@ Each member of an organization must be assigned one of the following roles:
 
 -   **Edgio-Initiated Workflow:** This common SSO workflow requires users to browse to the {{ PORTAL }}. After which, {{ PRODUCT }} will authenticate the user's identity with your identity provider. A high-level overview of this workflow is illustrated below.
 
-    ![High-level SP-initiated SSO workflow](/images/v7/basics/edgio-initiated-sso-workflow.png?width=650)
+    ![High-level {{ PRODUCT }}-initiated SSO workflow](/images/v7/basics/edgio-initiated-sso-workflow.png?width=650)
 
 -   **Identity Provider-Initiated Workflow:** This SSO workflow requires users to load the {{ PORTAL }} through your identity provider. A high-level overview of this workflow is illustrated below.
 

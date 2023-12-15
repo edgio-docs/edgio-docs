@@ -74,17 +74,17 @@ Upon creating a user, you must assign a role that will be applied at the organiz
 
 3.  From the **User Email** option, type the user's email address.
 
-4.  Assign a [role](#roles) at the organization level. 
+4.  From within the `ORGANIZATION` section, select the [role](#roles) that will be assigned to the user.
 
     <Callout type="info">
 
-      A role must be assigned at the organization level. By default, the organization's properties and environments will inherit this role. Customize the user's access by assigning a role at the property or environment level. Properties are listed below the `ORGANIZATION` section. 
+      By default, the organization's properties and environments will inherit the role assigned to the user at the organization level.  
 
     </Callout>
 
 5.  Customize a user's access to a property by assigning a different role for the desired property.
 
-    1.  Expand the desired property.
+    1.  Below the `ORGANIZATION` section, find and expand the desired property.
     
         <Callout type="tip">
         
@@ -124,8 +124,8 @@ Upon creating a user, you must assign a role that will be applied at the organiz
 
 2.  Find the user and click its <Image inline src="/images/v7/icons/pencil-2.png" alt="Edit" /> icon.
 3.  Optional. Assign a different role at the organization level.
-4.  Customize a user's access to a property by assigning a different role for the desired property.
-5.  Customize a user's access to an environment by assigning a different role for the desired environment.
+4.  Optional. Customize a user's access to a property by assigning a different role for the desired property.
+5.  Optional. Customize a user's access to an environment by assigning a different role for the desired environment.
 6.  Click **Save**.
 
 **To remove a member**

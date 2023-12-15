@@ -9,14 +9,14 @@ To use the HtmlTransformer, create an instance of the class with `new HtmlTransf
 There are two types of rewriter callback definitions that can be passed into the HtmlTransformer:
 
 - Transformations that match an HTML selector and trigger a callback function when the selector is found.
-  - `comment` - Operates on any HTML comments matching the specified selector
-  - `element` - Operates on the HTML element and its attributes matching the specified selector
-  - `text` - Operates on any text matching the specified selector
-- Transformations that trigger the callback function when the HTML document is found (these do not require an HTML selector.)
-  - `doc_comment` - Operates on any HTML comments in the document
-  - `doc_text` - Operates on any text in the document
-  - `doc_type` - Provides read-only information on the HTML document type
-  - `doc_end` - Triggered when the end of HTML document is reached
+  - `comment`**:** Operates on any HTML comment matching the specified selector.
+  - `element`**:** Operates on the HTML element matching the specified selector and the element's attributes.
+  - `text`**:** Operates on any text matching the specified selector.
+- Transformations that trigger the callback function when the HTML document is found. This type of transformation does not require an HTML selector.
+  - `doc_comment`**:** Operates on any HTML comment in the document.
+  - `doc_text`**:** Operates on any text in the document.
+  - `doc_type`**:** Provides read-only information on the HTML document type.
+  - `doc_end`**:** Triggered when the end of the HTML document is reached.
 
 ## Quick Start Examples {/* quickstart */}
 
@@ -24,9 +24,9 @@ There are two types of rewriter callback definitions that can be passed into the
 
 Here is an edge function that uses HtmlTransform to:
 
-- ensure all `<a href="...">` links are HTTPS
-- remove all HTML comments
-- append a transformation timestamp to the end of the document as a comment
+- Ensure all `<a href="...">` links are HTTPS.
+- Remove all HTML comments.
+- Append a comment for the transformation timestamp to the end of the document.
 
 ```js
 export async function handleHttpRequest(request, context) {
@@ -91,7 +91,7 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-When this edge function is run and the origin returns the following HTML:
+We will now examine how this edge function will transform the following HTML response provided by an origin server:
 
 ```html
 <!DOCTYPE html>
@@ -108,11 +108,7 @@ When this edge function is run and the origin returns the following HTML:
 </html>
 ```
 
-The transformed HTML has:
-
-- the `http` replaced with `https` in the `<a href="...">` element
-- the comments removed from the body
-- the timestamp comment appended to the end of the document
+This edge function transforms the above HTML to ensure HTTPS links, remove HTML comments, and append a transformation timestamp. The transformed HTML is shown below.
 
 ```html
 <!DOCTYPE html>
@@ -131,7 +127,7 @@ The transformed HTML has:
 
 ### Example 2: Using fetch() {/* example2 */}
 
-Here is an edge function that uses HtmlTransform to replace all `<esi:include src="..."/>` elements with the content of the specified URL.
+This sample edge function uses HtmlTransform to replace all `<esi:include src="..."/>` elements with the content of the specified URL.
 
 ```js
 export async function handleHttpRequest(request, context) {
@@ -185,7 +181,7 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-When this edge function is run and the origin returns the following HTML:
+We will now examine how this edge function will transform the following HTML response provided by an origin server:
 
 ```html
 <!DOCTYPE html>
@@ -200,7 +196,7 @@ When this edge function is run and the origin returns the following HTML:
 </html>
 ```
 
-The transformed HTML has the `<esi:include ... />` replaced with results of the fetch
+This edge function transforms the above HTML to replace `<esi:include ... />` with the results of the fetch. The transformed HTML is shown below.
 
 ```html
 <!DOCTYPE html>
@@ -220,7 +216,7 @@ The transformed HTML has the `<esi:include ... />` replaced with results of the 
 
 ### Example 3: Add Body Streaming {/* example3 */}
 
-This example extends the example above with response body streaming. Streaming is necessary when the whole response body is too large to fit into the edge function memory.
+This example extends the previous example with response body streaming. Streaming is necessary when the whole response body is too large to fit into the edge function memory.
 
 ```js
 export async function handleHttpRequest(request, context) {
@@ -351,7 +347,11 @@ The HtmlTransformer supports the following selector types: (ref: [lol_html::Sele
 | `E F`              | an `F` element descendant of an `E` element                                                                                 |
 | `E > F`            | an `F` element child of an `E` element                                                                                      |
 
-**Note:** If the E selector has special characters in it, they can be escaped with a double backslash. For example, to match `<esi:include src="...">` use the selector `esi\\:include[src]`.
+<Callout type="info">
+
+  Use a double backslash to escape special characters within an `E` selector. For example, use the selector `esi\\:include[src]` to match `<esi:include src="...">`.
+
+</Callout>
 
 ## Classes {/* classes */}
 

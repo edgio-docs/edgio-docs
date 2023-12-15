@@ -173,14 +173,14 @@ The `cloudRuntime` key (string) determines which version of Node.js will run you
 If the `cloudRuntime` key is not defined, then {{ PRODUCT }} will detect your project's Node.js version upon running `{{ CLI_CMD(deploy) }}`. If an unsupported version is detected, then it will set your version to `nodejs18.x`. For instance:
 
 ```bash
-# Valid Node.js 16 runtime for {{ PRODUCT }} v7.4.0 through v7.4.4
+# The Node.js 16 runtime is valid for {{ PRODUCT }} v7.4.4 or earlier
 $ node --version
 v16.19.1
 $ {{ CLI_CMD(deploy) }}
 
 ...
 
-# Unsupported Node.js 21 runtime, defaults to Node.js 18 with a warning
+# Unsupported Node.js 21 runtime; defaults to Node.js 18 with a warning for {{ PRODUCT }} v7.4.0 or later
 $ node --version
 v21.0.0
 $ {{ CLI_CMD(deploy) }}

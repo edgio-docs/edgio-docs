@@ -48,17 +48,20 @@ Organization management consists of:
 
     </Callout>
 
-### Managing Membership {/*managing-team-members*/}
+### Managing Organization Members {/*managing-team-members*/}
 
 <a id="roles" />
 
-Each member of an organization must be assigned one of the following roles:
+Upon creating a user, you must assign a role that will be applied at the organization level. By default, this role is applied across all of the organization's properties and environments. However, you may customize a member's access by granting one of the following roles to a specific property or environment: Viewer, Purger, Editor, or Maintainer.
 
--   **Read only:** This type of user may only view this organization's configuration and all of the properties that it contains.
--   **Purger:** This type of user has the same permissions as the *Read only* role. Additionally, this role allows a user to purge cached content for any property associated with this organization.
--   **Member:** This type of user has the same permissions as the *Purger* role. Additionally, this role allows a user to submit deployments to any environment. However, it does not allow configuration changes to this organization or any of its properties.
--   **Admin:** This type of user is authorized to manage the organization. However, this role does not allow a user to add, remove, promote, or demote *Admin* or *Super Admin* users.
--   **Super Admin:** This type of user has full control over the entire organization.
+| Role             | Description                                                                                                                                                                                                                                             |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Viewer           | This role grants read-only access. <br /><br />If applied at the organization level, then the user will have read-only access to the organization's settings, properties, and environments.                                                             |
+| Purger           | This role grants the Viewer role along with the ability to purge content. <br /><br />If applied at the organization level, then the user may purge content for any of the organization's properties.                                                   |
+| Security Manager | This role grants the Viewer role along with the ability to manage all security settings.                                                                                                                                                                |
+| Editor           | This role grants the capability to configure properties and to configure, deploy, and purge  environments. However, this role does not grant the ability to configure, deploy, or purge an environment that has been restricted to the Maintainer role. |
+| Maintainer       | This role grants the Editor role along with the ability to create and delete properties and environments.                                                                                                                                               |
+| Admin            | This role grants full access to the entire organization including the ability to manage members.                                                                                                                                                        |
 
 **To add members**
 
@@ -67,19 +70,50 @@ Each member of an organization must be assigned one of the following roles:
     1.  From the {{ PORTAL_LINK }}, select the desired organization. 
     2.  From the left-hand pane, click **Members**.
 
-2.  Click **Add Members**.
+2.  Click **Add Member**.
 
-3.  From the **Add Members** dialog box, type the prospective member's email address and then assign that user a [role](#roles). 
+3.  From the **User Email** option, type the user's email address.
 
-4.  Optional. Invite another member by clicking **+** and then repeating step 3.
+4.  From within the `ORGANIZATION` section, select the [role](#roles) that will be assigned to the user.
 
-5.  Click **Invite Members** to send an email invitation to each prospective member.
+    <Callout type="info">
 
-    Each prospective member will receive an email welcoming them to {{ PRODUCT }}. They must confirm their account by:
+      By default, the organization's properties and environments will inherit the role assigned to the user at the organization level.  
+
+    </Callout>
+
+5.  Customize a user's access to a property by assigning a different role for the desired property.
+
+    1.  Below the `ORGANIZATION` section, find and expand the desired property.
+    
+        <Callout type="tip">
+        
+          Filter your properties by typing the desired name within the **Search Properties** option.
+        
+        </Callout>
+
+    2.  Select the desired role.
+    3.  Repeat these steps as needed.
+
+6.  Customize a user's access to an environment by assigning a different role for the desired environment.
+
+    1.  Expand the desired property. All of the property's environments are listed directly below the list of available roles.
+    2.  Find the desired environment and select the desired role. 
+    3.  Repeat these steps as needed.
+
+5.  Click **Invite** to send a welcome email. 
+
+    A new user must confirm their account by performing the following steps:
 
     1.  Clicking **CONFIRM MY ACCOUNT** from the welcome email.
     2.  Clicking **Accept** to accept our terms of service and privacy policy.
     3.  Set their password or link their account to Github or Google.
+
+    <Callout type="info">
+
+      Existing {{ PRODUCT }} users do not need to confirm their account and will not receive a welcome email.
+
+    </Callout>
 
 **To change a user's role**
 
@@ -88,7 +122,11 @@ Each member of an organization must be assigned one of the following roles:
     1.  From the {{ PORTAL_LINK }}, select the desired organization. 
     2.  From the left-hand pane, click **Members**.
 
-2.  Find the user and select the desired role. 
+2.  Find the user and click its <Image inline src="/images/v7/icons/pencil-2.png" alt="Edit" /> icon.
+3.  Optional. Assign a different role at the organization level.
+4.  Optional. Customize a user's access to a property by assigning a different role for the desired property.
+5.  Optional. Customize a user's access to an environment by assigning a different role for the desired environment.
+6.  Click **Save**.
 
 **To remove a member**
 
@@ -97,9 +135,8 @@ Each member of an organization must be assigned one of the following roles:
     1.  From the {{ PORTAL_LINK }}, select the desired organization. 
     2.  From the left-hand pane, click **Members**.
 
-2.  Click the <Image inline src="/images/icons/delete.png" alt="Delete" /> icon next to the member that will be removed.
-
-3.  When prompted, click **Remove** to confirm that the user will be removed from the organization.
+2.  Click the <Image inline src="/images/v7/icons/delete.png" alt="Delete" /> icon next to the member that will be removed.
+3.  When prompted, click **Delete** to confirm that the user will be removed from the organization.
 
 ## Single Sign-On (SSO) {/*single-sign-on--sso-*/}
 

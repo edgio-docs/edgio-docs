@@ -34,127 +34,127 @@ Create a property. If you have already performed this step, proceed to the next 
 
 Use the {{ PRODUCT }} CLI to initialize your property. If you have already performed this step, proceed to the next step.
 
-    <Callout type="info">
+<Callout type="info">
 
-    This step requires [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs).
+This step requires [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs).
 
-    </Callout>
+</Callout>
 
-    Install the {{ PRODUCT }} CLI, initialize your property, and then deploy it by running the following command from the root directory of your web application or website:
+Install the {{ PRODUCT }} CLI, initialize your property, and then deploy it by running the following command from the root directory of your web application or website:
 
-    ```bash
-    npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
-      {{ INIT_ARG_EDGIO_VERSION }} \
-      --name <PROPERTY> \
-      --deploy
-    ```
+```bash
+npx {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }} init \
+  {{ INIT_ARG_EDGIO_VERSION }} \
+  --name <PROPERTY> \
+  --deploy
+```
 
-    Replace `<PROPERTY>` with the name of the property defined in step 1. You should only use lower-case characters and replace spaces with dashes (e.g., `my-property`).
+Replace `<PROPERTY>` with the name of the property defined in step 1. You should only use lower-case characters and replace spaces with dashes (e.g., `my-property`).
 
-    When you run the above command, the CLI will prompt you with the following questions to set up your property:
+When you run the above command, the CLI will prompt you with the following questions to set up your property:
 
-    ```text
-      🚀 Let's get started with Edgio!
+```text
+  🚀 Let's get started with Edgio!
 
-      ✔ What is the hostname or IP address of the origin site that you will host on Edgio? … my-custom-property.com
-      ✔ Should we create a new directory for your Edgio app or use the current directory? › Create a new directory
-      ✔ Which package manager would you like to use? › npm
-      ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch, @edgio/devtools... done.
-      > edgio.config.js not found, creating...
-      > routes.js not found, creating...
-      🔑 You are not logged in.
+  ✔ What is the hostname or IP address of the origin site that you will host on Edgio? … my-custom-property.com
+  ✔ Should we create a new directory for your Edgio app or use the current directory? › Create a new directory
+  ✔ Which package manager would you like to use? › npm
+  ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch, @edgio/devtools... done.
+  > edgio.config.js not found, creating...
+  > routes.js not found, creating...
+  🔑 You are not logged in.
 
-      ? To log you in we're going to open your browser and visit Edgio Developer Console. › - Use arrow-keys. Return to submit.
-      ❯   Continue
-          Cancel
-    ```
+  ? To log you in we're going to open your browser and visit Edgio Developer Console. › - Use arrow-keys. Return to submit.
+  ❯   Continue
+      Cancel
+```
 
-    First, you will be prompted to enter the hostname or IP address of the origin site that you will host on {{ PRODUCT }}. This is the site that {{ PRODUCT }} will fetch content from. For example, if you are using {{ PRODUCT }} to improve the performance of `my-custom-property.com`, then you would enter `my-custom-property.com` here.
+First, you will be prompted to enter the hostname or IP address of the origin site that you will host on {{ PRODUCT }}. This is the site that {{ PRODUCT }} will fetch content from. For example, if you are using {{ PRODUCT }} to improve the performance of `my-custom-property.com`, then you would enter `my-custom-property.com` here.
 
-    Next, you will be prompted to choose whether to create a new directory for your {{ PRODUCT }} property or use the current directory. If you are currently in the root directory of your project code, then choose `Use the current directory`.
+Next, you will be prompted to choose whether to create a new directory for your {{ PRODUCT }} property or use the current directory. If you are currently in the root directory of your project code, then choose `Use the current directory`.
 
-    Finally, you will be prompted to choose which package manager to use, either `npm` or `yarn`.
+Finally, you will be prompted to choose which package manager to use, either `npm` or `yarn`.
 
-    If this is your first time using the {{ PRODUCT }} CLI to deploy, then you will be prompted to log in to the {{ PORTAL_LINK }}. To log in, select `Continue`. This will open a browser window where you may log in by creating a new account, or authenticating with a third-party provider such as Google or GitHub. Once you log in, you'll be prompted to authorize creating a local access token:
+If this is your first time using the {{ PRODUCT }} CLI to deploy, then you will be prompted to log in to the {{ PORTAL_LINK }}. To log in, select `Continue`. This will open a browser window where you may log in by creating a new account, or authenticating with a third-party provider such as Google or GitHub. Once you log in, you'll be prompted to authorize creating a local access token:
 
-    ![Local Access Token](/images/v7/performance/cli-auth-token.png?width=500)
+![Local Access Token](/images/v7/performance/cli-auth-token.png?width=500)
 
-    After clicking **Create access token**, you may return back to the CLI and continue with the deployment.
+After clicking **Create access token**, you may return back to the CLI and continue with the deployment.
 
-    <Callout type="important">
-      This step is necessary to deploy your property to {{ PRODUCT }}, but not necessary to run and build your property locally. It is recommended you authenticate during this step otherwise your first deployment will fail.
-    </Callout>
+<Callout type="important">
+  This step is necessary to deploy your property to {{ PRODUCT }}, but not necessary to run and build your property locally. It is recommended you authenticate during this step otherwise your first deployment will fail.
+</Callout>
 
-    Once your deployment completes, you should see an output similar to the following:
+Once your deployment completes, you should see an output similar to the following:
 
-    ```text
-      🚀 Let's get started with Edgio!
+```text
+  🚀 Let's get started with Edgio!
 
-      ✔ What is the hostname or IP address of the origin site that you will host on Edgio? … my-custom-property.com
-      ✔ Should we create a new directory for your Edgio app or use the current directory? › Create a new directory
-      ✔ Which package manager would you like to use? › npm
-      ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch, @edgio/devtools... done.
-      > edgio.config.js not found, creating...
-      > routes.js not found, creating...
-      🔑 You are not logged in.
+  ✔ What is the hostname or IP address of the origin site that you will host on Edgio? … my-custom-property.com
+  ✔ Should we create a new directory for your Edgio app or use the current directory? › Create a new directory
+  ✔ Which package manager would you like to use? › npm
+  ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch, @edgio/devtools... done.
+  > edgio.config.js not found, creating...
+  > routes.js not found, creating...
+  🔑 You are not logged in.
 
-      ✔ To log you in we're going to open your browser and visit Edgio Developer Console. › Continue
-      Authenticating user!
-      Please visit this URL from any device and click on "Create access token" to authorize this device:
-      https://api.edgio.app/account/cli?name=CLI+Api+Key&sid=<ID>&action=deploy
+  ✔ To log you in we're going to open your browser and visit Edgio Developer Console. › Continue
+  Authenticating user!
+  Please visit this URL from any device and click on "Create access token" to authorize this device:
+  https://api.edgio.app/account/cli?name=CLI+Api+Key&sid=<ID>&action=deploy
 
-      Waiting for authentication...
-      🔑 You are now logged in as "xxx@yyy.zzz"
+  Waiting for authentication...
+  🔑 You are now logged in as "xxx@yyy.zzz"
 
-      📋 Deploying to:
-      > Team: Private space
-      > Site: my-custom-property.com
-      > Environment: default
-      > Edgio version: 7.0.12
-      > Deployment #1
+  📋 Deploying to:
+  > Team: Private space
+  > Site: my-custom-property.com
+  > Environment: default
+  > Edgio version: 7.0.12
+  > Deployment #1
 
-      🛠️  Building your app for deployment on Edgio
-      > Bundling router... done.
-      > Bundling edge functions... done.
-      > Writing static asset aliases... done.
-      done 277ms
+  🛠️  Building your app for deployment on Edgio
+  > Bundling router... done.
+  > Bundling edge functions... done.
+  > Writing static asset aliases... done.
+  done 277ms
 
-      📦 Packaging...
-      > Zipping project folder
-      > Size: 674.22 KB
-      done 177ms
+  📦 Packaging...
+  > Zipping project folder
+  > Size: 674.22 KB
+  done 177ms
 
-      📡️ Uploading...
-      done 1s
+  📡️ Uploading...
+  done 1s
 
-      ⌛ Deploying...
-      done 56s
+  ⌛ Deploying...
+  done 56s
 
-      ***** Deployment Complete *****************************************************
-      *                                                                             *
-      *  🖥  Edgio Developer Console:                                                *
-      *  https://edgio.app/<YOUR-ORGANIZATION>/my-custom-property.com/env/default/builds/1  *
-      *                                                                             *
-      *  🔗 Permalink:                                                              *
-      *  https://<YOUR-ORGANIZATION>-my-custom-property-com-1.free.edgio-perma.link         *
-      *                                                                             *
-      *  🌎 Edge:                                                                   *
-      *  https://<YOUR-ORGANIZATION>-my-custom-property-com-default.edgio.link              *
-      *                                                                             *
-      *******************************************************************************
+  ***** Deployment Complete *****************************************************
+  *                                                                             *
+  *  🖥  Edgio Developer Console:                                                *
+  *  https://edgio.app/<YOUR-ORGANIZATION>/my-custom-property.com/env/default/builds/1  *
+  *                                                                             *
+  *  🔗 Permalink:                                                              *
+  *  https://<YOUR-ORGANIZATION>-my-custom-property-com-1.free.edgio-perma.link         *
+  *                                                                             *
+  *  🌎 Edge:                                                                   *
+  *  https://<YOUR-ORGANIZATION>-my-custom-property-com-default.edgio.link              *
+  *                                                                             *
+  *******************************************************************************
 
-      To change directories to your new Edgio app:
+  To change directories to your new Edgio app:
 
-          cd my-custom-property.com
+      cd my-custom-property.com
 
-      To run your app locally:
+  To run your app locally:
 
-          edg dev
+      edg dev
 
-      To redeploy your app:
+  To redeploy your app:
 
-          edg deploy
-    ```
+      edg deploy
+```
 
 ### {{ PRODUCT }} Files {/* product-files */}
 
@@ -429,10 +429,12 @@ Learn more advanced syntax with [Route Features](/guides/performance/cdn_as_code
 Routes are defined by calling a method on the `Router` class. While most methods correspond to HTTP methods, others allow for more flexible request matching.
 
 #### General Matching Methods:
+
 - `always` (matches all requests; requires {{ PRODUCT }} v7.2.0 or later)
 - `match` (matches on criteria including path, method, headers, cookies, and query string parameters)
 
 #### Standard HTTP Methods:
+
 - `get`
 - `post`
 - `put`

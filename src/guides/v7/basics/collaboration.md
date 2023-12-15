@@ -103,9 +103,14 @@ Each member of an organization must be assigned one of the following roles:
 
 ## Single Sign-On (SSO) {/*single-sign-on--sso-*/}
 
-{{ PRODUCT }} offers single sign-on (SSO) integration for SAML 2.0 identity providers. This type of integration allows {{ PRODUCT }} to delegate authentication to your identity provider. A high-level overview of how SSO users may authenticate to the {{ PORTAL }} is illustrated below.
+{{ PRODUCT }} offers single sign-on (SSO) integration for SAML 2.0 identity providers. This type of integration allows {{ PRODUCT }} to delegate authentication to your identity provider. We support the following workflows:
 
-![High-level SSO workflow](/images/v7/basics/sso-workflow.png)
+-   **Edgio-Initiated Workflow:** This common SSO workflow requires users to browse to the {{ PORTAL }}. After which, {{ PRODUCT }} will authenticate the user's identity with your identity provider. A high-level overview of this workflow is illustrated below.
+    ![High-level SP-initiated SSO workflow](/images/v7/basics/edgio-initiated-sso-workflow.png)
+
+-   **Identity Provider-Initiated Workflow:** This SSO workflow requires users to load the {{ PORTAL }} through your identity provider. A high-level overview of this workflow is illustrated below.
+
+    ![High-level IdP-initiated SSO workflow](/images/v7/basics/idp-initiated-sso-workflow.png)
 
 ### Getting Started {/*getting-started*/}
 
@@ -140,7 +145,17 @@ Establishing a SSO workflow requires a custom integration between our identity s
 4.  Set up an additional SAML token claim to provide email addresses to {{ PRODUCT }}. Use the following schema namespace:
 
     `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/email`
-    
+
+5.   Optional. Set up custom attribute statements for the user's name. Use the following schema namespaces:
+
+    **User's First Name:**
+
+    `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+
+    **User's Last Name:**
+
+    `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/familyName`
+
 ### SAML Request Signing Certificate Renewal {/*saml-request-signing-certificate-renewal*/}
 
 Maintain SSO operability by renewing your SAML request signing certificate prior to expiration. Certificate renewal requires providing a new SAML request signing certificate in PEM format to either your account manager or [technical customer support]({{ SUPPORT_URL }}). 

@@ -230,7 +230,7 @@ const nav = {
       routes: [
         {
           title: 'HtmlTransformer',
-          path: 'edge-functions/htmltransformer',
+          path: 'edge_functions/htmltransformer',
         },
       ],
     },

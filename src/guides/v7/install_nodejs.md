@@ -2,12 +2,13 @@
 title: Install Node.js and npm
 ---
 
-{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} supports Node.js 16 and 18 runtime versions.
+Although you may develop your app with any version of Node.js, {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} runs your projects within a Node.js 16, 18, or 20 runtime environment. {{ PRODUCT }} determines the available set of runtime environments according to the version of the {{ PRODUCT }} CLI through which your project was deployed. 
 
-Although you may develop your app with any version of Node.js, it will run using a supported version of the Node.js runtime when deployed to {{ PRODUCT }}.
-
-- {{ PRODUCT }} v7.4.0 or later is compatible with Node.js 16 and 18.
-- {{ PRODUCT }} v7.3.1 or earlier is compatible with Node.js 16 only.
+| Node.js Version | Requires                        |
+| --------------- | ------------------------------- |
+| 20              | {{ PRODUCT }} v7.5.0 or later   |
+| 18              | {{ PRODUCT }} v7.4.0 or later   |
+| 16              | {{ PRODUCT }} v7.4.4 or earlier |
 
 ## Node.js Installation {/* node-installation */}
 
@@ -31,6 +32,8 @@ The recommended method for installing Node.js is through a version manager like 
     nvm install 16
     # or
     nvm install 18
+    # or
+    nvm install 20
     ```
 
 4.  Instruct nvm to use the version of Node.js installed in the previous step by running the following command:
@@ -39,6 +42,8 @@ The recommended method for installing Node.js is through a version manager like 
     nvm use 16
     # or
     nvm use 18
+    # or
+    nvm use 20
     ```
 
 ## Package managers {/* package-managers */}
@@ -47,24 +52,36 @@ The recommended method for installing Node.js is through a version manager like 
 
 [yarn](https://classic.yarnpkg.com/en/docs/cli/) is another very popular package manager.
 
-## Node.js 18 Support {/* nodejs-18-support */}
+## Node.js 18 and 20 Support {/* nodejs-18-20-support */}
 
-Node.js 18 is now supported by {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} starting from version 7.4.0. {{ PRODUCT }} will detect your project's Node.js version during deployment and use the appropriate runtime version. Optionally, you can set the [`cloudRuntime`](/guides/performance/cdn_as_code/edgio_config#cloudruntime) property in the `{{ CONFIG_FILE }}` file to target a specific Node.js version.
+Node.js 18 and 20 are supported by {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} starting from version 7.4.0 and 7.5.0, respectively. {{ PRODUCT }} will detect your project's Node.js version during deployment and use the appropriate runtime version. Optionally, you can set the [`cloudRuntime`](/guides/performance/cdn_as_code/edgio_config#cloudruntime) property in the `{{ CONFIG_FILE }}` file to target a specific Node.js version.
 
-To upgrade your project to use {{ PRODUCT }} v7.4.0 or later, perform the following steps:
+<Callout type="important">
 
-1. Update the global {{ PRODUCT }} CLI:
-  
-   ```bash
-   npm i -g {{ PACKAGE_NAME }}/cli^7.4.0
-   ```
+  If you're using an earlier version of {{ PRODUCT }} that doesn't support Node.js 18 or 20, your application will use Node.js 16 runtime when deployed to {{ PRODUCT }}.  
 
-2. Update the {{ PRODUCT }} dependencies in your project:
+</Callout>
 
-   ```bash
-   {{ CLI_CMD(use ^7.4.0) }}
-   ```
+Upgrade your project by running the commands corresponding to the desired Node.js version:
 
-3. Build your project and ensure that it works as expected.
+<SnippetGroup>
 
-If you're using an earlier version of {{ PRODUCT }} that doesn't support Node.js 18, your application will use Node.js 16 runtime when deployed to {{ PRODUCT }}.
+  ```bash tabLabel="Node.js 18"
+  # Update the global {{ PRODUCT }} CLI to version 7.4.0
+  npm i -g {{ PACKAGE_NAME }}/cli~7.4.0
+
+  # Update the {{ PRODUCT }} dependencies in your project
+  {{ CLI_CMD(use ~7.4.0) }}
+  ```
+
+  ```bash tabLabel="Node.js 20"
+  # Update the global {{ PRODUCT }} CLI to version 7.5.0
+  npm i -g {{ PACKAGE_NAME }}/cli~7.5.0
+
+  # Update the {{ PRODUCT }} dependencies in your project
+  {{ CLI_CMD(use ~7.5.0) }}
+  ```
+
+</SnippetGroup>
+
+Build your project and ensure that it works as expected.

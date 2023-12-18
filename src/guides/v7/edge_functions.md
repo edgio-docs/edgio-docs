@@ -375,9 +375,9 @@ This means that if you make a fetch request to the same URL within 5 minutes, th
 - If the `Cache-Control` header is not present for a cache-eligible response, the CDN will check for the `Expires` header.
 - If the response is cached based on the above logic, subsequent fetch requests will be served from cache until the cached response has expired or been purged. At which point, the fetch request will go to the origin.
 
-### Subrequest Limitations {/* subrequest-limitations */}
+### Fetch Limitations {/* fetch-limitations */}
 
-Response status codes of subrequests must:
+Response status codes of `fetch()` requests must:
 
 - Be greater than or equal to 200.
 - Be less than or equal to 599.

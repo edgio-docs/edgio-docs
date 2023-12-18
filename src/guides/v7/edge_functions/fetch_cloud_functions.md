@@ -130,4 +130,4 @@ export async function handleHttpRequest(request) {
 
 ## Limitations {/* limitations */}
 
-Fetching from a cloud function is considered an origin subrequest and therefore has the same limitations. See [Subrequest Limitations](/guides/edge_functions#subrequest-limitations) for more information. 
+Fetching from a cloud function is considered an origin subrequest and therefore has the same limitations. See [Fetch Limitations](/guides/edge_functions#fetch-limitations) for more information. 

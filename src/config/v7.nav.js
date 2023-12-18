@@ -352,12 +352,124 @@ const nav = {
               path: 'sites_frameworks/getting_started/react',
             },
             {
+              title: '',
+              path: '',
+            },
+            {
+              title: 'Brunch',
+              path: 'sites_frameworks/getting_started/brunch',
+            },
+            {
+              title: 'Docusaurus',
+              path: 'sites_frameworks/getting_started/docusaurus',
+            },
+            {
+              title: 'Dojo',
+              path: 'sites_frameworks/getting_started/dojo',
+            },
+            {
+              title: 'Eleventy',
+              path: 'sites_frameworks/getting_started/eleventy',
+            },
+            {
+              title: 'Ember.js',
+              path: 'sites_frameworks/getting_started/ember',
+            },
+            {
+              title: 'Ember Fastboot',
+              path: 'sites_frameworks/getting_started/ember_fastboot',
+            },
+            {
+              title: 'Frontity',
+              path: 'sites_frameworks/getting_started/frontity',
+            },
+            {
+              title: 'Gatsby',
+              path: 'sites_frameworks/getting_started/gatsby',
+            },
+            {
+              title: 'Gridsome',
+              path: 'sites_frameworks/getting_started/gridsome',
+            },
+            {
+              title: 'Hexo',
+              path: 'sites_frameworks/getting_started/hexo',
+            },
+            {
+              title: 'Hugo',
+              path: 'sites_frameworks/getting_started/hugo',
+            },
+            {
+              title: 'Ionic React',
+              path: 'sites_frameworks/getting_started/ionic_react',
+            },
+            {
+              title: 'Ionic Vue',
+              path: 'sites_frameworks/getting_started/ionic_vue',
+            },
+            {
+              title: 'Jekyll',
+              path: 'sites_frameworks/getting_started/jekyll',
+            },
+            {
+              title: 'MkDocs',
+              path: 'sites_frameworks/getting_started/mkdocs',
+            },
+            {
+              title: 'Preact',
+              path: 'sites_frameworks/getting_started/preact',
+            },
+            {
+              title: 'Razzle',
+              path: 'sites_frameworks/getting_started/razzle',
+            },
+            {
+              title: 'React Static',
+              path: 'sites_frameworks/getting_started/react_static',
+            },
+            {
+              title: 'Remix',
+              path: 'sites_frameworks/getting_started/remix',
+            },
+            {
+              title: 'Saber',
+              path: 'sites_frameworks/getting_started/saber',
+            },
+            {
+              title: 'Sanity',
+              path: 'sites_frameworks/getting_started/sanity',
+            },
+            {
+              title: 'SolidJS',
+              path: 'sites_frameworks/getting_started/solid',
+            },
+            {
+              title: 'Static HTML/JS',
+              path: 'sites_frameworks/getting_started/static_sites',
+            },
+            {
+              title: 'Stencil',
+              path: 'sites_frameworks/getting_started/stencil',
+            },
+            {
               title: 'SvelteKit',
               path: 'sites_frameworks/getting_started/sveltekit',
             },
             {
+              title: 'VitePress',
+              path: 'sites_frameworks/getting_started/vitepress',
+            },
+            {
               title: 'Vue.js',
               path: 'sites_frameworks/getting_started/vue',
+            },
+            {
+              title: 'VuePress',
+              path: 'sites_frameworks/getting_started/vuepress',
+            },
+            {
+              title: 'Zola',
+              path: 'sites_frameworks/getting_started/zola',
             },
           ],
         },

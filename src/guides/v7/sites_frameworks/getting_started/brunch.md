@@ -2,6 +2,8 @@
 title: Brunch
 ---
 
+{{ sites_connector_deprecated.md }}
+
 This guide shows you how to deploy a [Brunch](https://brunch.io/) application to {{ PRODUCT }}.
 
 <!-- ## Example {/*example*/}
@@ -36,7 +38,7 @@ npm run start
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
+{{ FULL_CLI_NAME }} init 7.5.0
 ```
 
 This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:

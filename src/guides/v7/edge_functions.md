@@ -265,7 +265,7 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-Create a reusable `fetch()` function by defining a utility function such as [`createFetchForOrigin()`](#createFetchForOrigin). See the [Polyfills](#polyfills) section for more information.
+Create a reusable `fetch()` function by defining a utility function such as [`createFetchForOrigin()`](#createFetchForOrigin). See the [Polyfills and Helpers](#polyfills-and-helpers) section for more information.
 
 ```js filename="./edge-functions/example.js"
 export async function handleHttpRequest(request, context) {

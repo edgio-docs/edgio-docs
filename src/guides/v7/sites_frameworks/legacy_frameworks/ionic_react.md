@@ -1,26 +1,28 @@
 ---
-title: Ionic Vue
+title: Ionic React
 ---
 
-This guide shows you how to deploy a [Ionic Vue](https://ionicframework.com/docs/vue/overview) application to {{ PRODUCT }}.
+{{ sites_connector_deprecated.md }}
+
+This guide shows you how to deploy a [Ionic React](https://ionicframework.com/docs/react/overview) application to {{ PRODUCT }}.
 
 <!-- ## Example {/*example*/}
 
 <ExampleButtons
-  title="Ionic Vue"
-  siteUrl="https://edgio-community-examples-ionic-vue-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-ionic-vue-example" 
+  title="Ionic React"
+  siteUrl="https://edgio-community-examples-ionic-react-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-ionic-react-example" 
   deployFromRepo /> -->
 
 {{ PREREQ.md }}
 
-## Create a new Ionic Vue app {/*create-a-new-ionic-vue-app*/}
+## Create a new Ionic React app {/*create-a-new-ionic-react-app*/}
 
-If you don't already have a Ionic Vue app, create one by running the following:
+If you don't already have a Ionic React app, create one by running the following:
 
 ```bash
 npm install -g @ionic/cli
-ionic start myApp tabs --type vue
+ionic start myApp tabs --type react
 cd myApp
 ```
 
@@ -30,14 +32,14 @@ You can verify your app works by running it locally with:
 npm run start
 ```
 
-## Configuring your Ionic Vue app for {{ PRODUCT }} {/*configuring-your-ionic-vue-app-for*/}
+## Configuring your Ionic React app for {{ PRODUCT }} {/*configuring-your-ionic-react-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
+{{ FULL_CLI_NAME }} init {{ LEGACY_FW_INIT_ARG_EDGIO_VERSION }}
 ```
 
 This will automatically update your `package.json` and add all of the required {{ PRODUCT_NAME }} dependencies and files to your project. These include:
@@ -45,7 +47,7 @@ This will automatically update your `package.json` and add all of the required {
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
-- `routes.js` - A default routes file that sends all requests to Ionic Vue.
+- `routes.js` - A default routes file that sends all requests to Ionic React.
 
 ### Configure the routes {/*configure-the-routes*/}
 
@@ -55,19 +57,19 @@ Update `routes.js` at the root of your project to the following:
 // This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
-import { Router } from "{{ PACKAGE_NAME }}/core/router";
+import { Router } from '{{ PACKAGE_NAME }}/core/router'
 
 export default new Router()
+  // Create serveStatic route for each file in the folder build with a cache-control header of 's-maxage=315360000'
   .match('/:path*', ({ serveStatic }) => {
-    serveStatic("dist/index.html")
+    serveStatic('build/index.html')
   })
-  // Create serveStatic route for each file in the folder dist with a cache-control header of 's-maxage=315360000'
-  .static('dist')
+  .static('build')
 ```
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Ionic Vue app locally on {{ PRODUCT }} {/*run-the-ionic-vue-app-locally-on*/}
+### Run the Ionic React app locally on {{ PRODUCT }} {/*run-the-ionic-react-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

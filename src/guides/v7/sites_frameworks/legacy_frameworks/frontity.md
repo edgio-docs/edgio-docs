@@ -2,6 +2,8 @@
 title: Frontity
 ---
 
+{{ sites_connector_deprecated.md }}
+
 This guide shows you how to deploy a [Frontity](https://frontity.org/) application to {{ PRODUCT }}.
 
 <!-- ## Example {/*example*/}
@@ -33,7 +35,7 @@ npx frontity create my-app
 To prepare your Frontity app for deployment on {{ PRODUCT_NAME }}, run the following in the root folder of your project:
 
 ```bash
-{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
+{{ FULL_CLI_NAME }} init {{ LEGACY_FW_INIT_ARG_EDGIO_VERSION }}
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:

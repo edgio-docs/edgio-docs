@@ -2,6 +2,8 @@
 title: Fastboot
 ---
 
+{{ sites_connector_deprecated.md }}
+
 This guide shows you how to deploy an [Ember Fastboot](https://ember-fastboot.com/) application to {{ PRODUCT }}.
 
 <!-- ## Example {/* example */}
@@ -32,7 +34,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
 To prepare your Fastboot app for deployment on the {{ PRODUCT }}, run the following command in the root folder of your project:
 
 ```bash
-{{ FULL_CLI_NAME }} init --connector={{ PACKAGE_NAME }}/fastboot {{ INIT_ARG_EDGIO_VERSION }}
+{{ FULL_CLI_NAME }} init --connector={{ PACKAGE_NAME }}/fastboot {{ LEGACY_FW_INIT_ARG_EDGIO_VERSION }}
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:

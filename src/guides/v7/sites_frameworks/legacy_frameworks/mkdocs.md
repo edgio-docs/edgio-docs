@@ -2,6 +2,8 @@
 title: MkDocs
 ---
 
+{{ sites_connector_deprecated.md }}
+
 [MkDocs](https://www.mkdocs.org/) is a fast, simple and downright gorgeous static site generator that's geared towards building project documentation. Follow the steps below to deploy your MkDocs site to {{ PRODUCT }}.
 
 <!-- ## Example {/*example*/}
@@ -39,7 +41,7 @@ cd my-mkdocs-app
 Then, in the root folder of your project, run:
 
 ```bash
-{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }} --connector={{ PACKAGE_NAME }}/mkdocs
+{{ FULL_CLI_NAME }} init {{ LEGACY_FW_INIT_ARG_EDGIO_VERSION }} --connector={{ PACKAGE_NAME }}/mkdocs
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:

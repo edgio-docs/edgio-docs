@@ -1,48 +1,45 @@
 ---
-title: Stencil
+title: SolidJS
 ---
 
-This guide shows you how to deploy a [Stencil](https://stenciljs.com/) application to {{ PRODUCT }}.
+{{ sites_connector_deprecated.md }}
+
+This guide shows you how to deploy a [SolidJS](https://solidjs.com) application to {{ PRODUCT }}.
 
 <!-- ## Example {/*example*/}
 
 <ExampleButtons
-  title="Stencil"
-  siteUrl="https://edgio-community-examples-stencil-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-stencil-example" 
+  title="SolidJS"
+  siteUrl="https://edgio-community-examples-solidjs-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-solidjs-example" 
   deployFromRepo /> -->
 
 {{ PREREQ.md }}
 
-## Create a new Stencil app {/*create-a-new-stencil-app*/}
+## Create a new SolidJS app {/*create-a-new-solidjs-app*/}
 
-If you don't already have a Stencil app, create one by running the following:
-
-```bash
-npm init stencil
-```
+If you don't already have a SolidJS app, create one by running the following:
 
 ```bash
-? Pick a starter › - Use arrow-keys. Return to submit.
-
-   component     Collection of web components that can be used anywhere
- ❯ app           Minimal starter for building a Stencil app or website
+npx degit solidjs/templates/js my-app
+cd my-app
+npm i # or yarn or pnpm
 ```
 
 You can verify your app works by running it locally with:
 
 ```bash
-npm install && npm run start
+npm run dev
 ```
 
-## Configuring your Stencil app for {{ PRODUCT }} {/*configuring-your-stencil-app-for*/}
+## Configuring your SolidJS app for {{ PRODUCT }} {/*configuring-your-solidjs-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
+{{ FULL_CLI_NAME }} init {{ LEGACY_FW_INIT_ARG_EDGIO_VERSION }}
 ```
 
 This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
@@ -50,7 +47,7 @@ This will automatically update your `package.json` and add all of the required {
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
-- `routes.js` - A default routes file that sends all requests to Stencil.
+- `routes.js` - A default routes file that sends all requests to SolidJS.
 
 ### Configure the routes {/*configure-the-routes*/}
 
@@ -64,15 +61,15 @@ import { Router } from '{{ PACKAGE_NAME }}/core/router'
 
 export default new Router()
   .match('/:path*', ({ serveStatic }) => {
-    serveStatic('www/index.html')
+    serveStatic('dist/index.html')
   })
-  // Create serveStatic route for each file in the folder www with a cache-control header of 's-maxage=315360000'
-  .static('www')
+  // Create serveStatic route for each file in the folder dist with a cache-control header of 's-maxage=315360000'
+  .static('dist')
 ```
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Stencil app locally on {{ PRODUCT }} {/*run-the-stencil-app-locally-on*/}
+### Run the SolidJS app locally on {{ PRODUCT }} {/*run-the-solidjs-app-locally-on*/}
 
 Create a production build of your app by running the following in your project's root directory:
 
@@ -83,7 +80,7 @@ npm run build
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
 ```bash
-{{ FULL_CLI_NAME }} dev
+{{ FULL_CLI_NAME }} build && {{ FULL_CLI_NAME }} run --production
 ```
 
 Load the site http://127.0.0.1:3000

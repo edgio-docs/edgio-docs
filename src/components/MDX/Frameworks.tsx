@@ -61,6 +61,7 @@ import {
 } from 'components/Icon';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
+import {ItemsByVersion} from 'utils/Types';
 
 const StyledFrameworks = styled.div`
   .framework-lists {
@@ -97,7 +98,7 @@ const StyledFrameworks = styled.div`
   }
 `;
 
-const items = {
+const items: ItemsByVersion = {
   '4': [
     {
       title: 'Connectors',
@@ -441,6 +442,164 @@ const items = {
       iconDark: <IconVue />,
     },
   ],
+  '7_legacy': [
+    {
+      title: 'Brunch',
+      path: '/guides/sites_frameworks/legacy_frameworks/brunch',
+      icon: <IconBrunch />,
+      iconDark: <IconBrunch />,
+    },
+    {
+      title: 'Docusaurus',
+      path: '/guides/sites_frameworks/legacy_frameworks/docusaurus',
+      icon: <IconDocusaurus />,
+      iconDark: <IconDocusaurus />,
+    },
+    {
+      title: 'Dojo',
+      path: '/guides/sites_frameworks/legacy_frameworks/dojo',
+      icon: <IconDojo />,
+      iconDark: <IconDojo />,
+    },
+    {
+      title: 'Eleventy',
+      path: '/guides/sites_frameworks/legacy_frameworks/eleventy',
+      icon: <IconEleventy />,
+      iconDark: <IconEleventyDark />,
+    },
+    {
+      title: 'Ember.js',
+      path: '/guides/sites_frameworks/legacy_frameworks/ember',
+      icon: <IconEmberJS />,
+      iconDark: <IconEmberJS />,
+    },
+    {
+      title: 'Ember Fastboot',
+      path: '/guides/sites_frameworks/legacy_frameworks/ember_fastboot',
+      icon: <IconEmberFastboot />,
+      iconDark: <IconEmberFastbootDark />,
+    },
+    {
+      title: 'Frontity',
+      path: '/guides/sites_frameworks/legacy_frameworks/frontity',
+      icon: <IconFrontity />,
+      iconDark: <IconFrontity />,
+    },
+    {
+      title: 'Gatsby',
+      path: '/guides/sites_frameworks/legacy_frameworks/gatsby',
+      icon: <IconGatsby />,
+      iconDark: <IconGatsby />,
+    },
+    {
+      title: 'Gridsome',
+      path: '/guides/sites_frameworks/legacy_frameworks/gridsome',
+      icon: <IconGridsome />,
+      iconDark: <IconGridsomeDark />,
+    },
+    {
+      title: 'Hexo',
+      path: '/guides/sites_frameworks/legacy_frameworks/hexo',
+      icon: <IconHexo />,
+      iconDark: <IconHexo />,
+    },
+    {
+      title: 'Hugo',
+      path: '/guides/sites_frameworks/legacy_frameworks/hugo',
+      icon: <IconHugo />,
+      iconDark: <IconHugo />,
+    },
+    {
+      title: 'Ionic React',
+      path: '/guides/sites_frameworks/legacy_frameworks/ionic_react',
+      icon: <IconIonicX />,
+      iconDark: <IconIonicX />,
+    },
+    {
+      title: 'Ionic Vue',
+      path: '/guides/sites_frameworks/legacy_frameworks/ionic_vue',
+      icon: <IconIonicX />,
+      iconDark: <IconIonicX />,
+    },
+    {
+      title: 'Jekyll',
+      path: '/guides/sites_frameworks/legacy_frameworks/jekyll',
+      icon: <IconJekyll />,
+      iconDark: <IconJekyllDark />,
+    },
+    {
+      title: 'MkDocs',
+      path: '/guides/sites_frameworks/legacy_frameworks/mkdocs',
+      icon: <IconMKDocs />,
+      iconDark: <IconMKDocsDark />,
+    },
+    {
+      title: 'Preact',
+      path: '/guides/sites_frameworks/legacy_frameworks/preact',
+      icon: <IconPreact />,
+      iconDark: <IconPreact />,
+    },
+    {
+      title: 'Razzle',
+      path: '/guides/sites_frameworks/legacy_frameworks/razzle',
+      icon: <IconRazzle />,
+      iconDark: <IconRazzle />,
+    },
+    {
+      title: 'React Static',
+      path: '/guides/sites_frameworks/legacy_frameworks/react_static',
+      icon: <IconReactStatic />,
+      iconDark: <IconReactStatic />,
+    },
+    {
+      title: 'Remix',
+      path: '/guides/sites_frameworks/legacy_frameworks/remix',
+      icon: <IconRemix />,
+      iconDark: <IconRemixDark />,
+    },
+    {
+      title: 'Saber',
+      path: '/guides/sites_frameworks/legacy_frameworks/saber',
+      icon: <IconSaber />,
+      iconDark: <IconSaber />,
+    },
+    {
+      title: 'Sanity',
+      path: '/guides/sites_frameworks/legacy_frameworks/sanity',
+      icon: <IconSanity />,
+      iconDark: <IconSanity />,
+    },
+    {
+      title: 'SolidJS',
+      path: '/guides/sites_frameworks/legacy_frameworks/solid',
+      icon: <IconSolidJS />,
+      iconDark: <IconSolidJS />,
+    },
+    {
+      title: 'Stencil',
+      path: '/guides/sites_frameworks/legacy_frameworks/stencil',
+      icon: <IconStencil />,
+      iconDark: <IconStencilDark />,
+    },
+    {
+      title: 'VitePress',
+      path: '/guides/sites_frameworks/legacy_frameworks/vitepress',
+      icon: <IconVitePress />,
+      iconDark: <IconVitePress />,
+    },
+    {
+      title: 'VuePress',
+      path: '/guides/sites_frameworks/legacy_frameworks/vuepress',
+      icon: <IconVitePress />,
+      iconDark: <IconVitePress />,
+    },
+    {
+      title: 'Zola',
+      path: '/guides/sites_frameworks/legacy_frameworks/zola',
+      icon: <IconZola />,
+      iconDark: <IconZolaDark />,
+    },
+  ],
   default: [
     {
       title: 'Angular',
@@ -715,20 +874,20 @@ const items = {
   ],
 };
 
-export default function Frameworks() {
+export default function Frameworks({frameworks = items}) {
   const {
     version,
     version: {toVersionedPath},
   } = useConditioning();
 
-  const routesByColumns = itemsByColumn(items, version, 'title').flat();
+  const routesByColumns = itemsByColumn(frameworks, version, 'title').flat();
 
   return (
     <StyledFrameworks>
       <ul className="framework-lists">
         {routesByColumns.map((route) => (
           <li key={route.path} className="framework-list__item">
-            <Link href={version.toVersionedPath(route.path)} passHref>
+            <Link href={toVersionedPath(route.path)} passHref>
               <a className="framework-link">
                 <div className="icon" id="light-theme">
                   {/* @ts-ignore */}
@@ -746,4 +905,12 @@ export default function Frameworks() {
       </ul>
     </StyledFrameworks>
   );
+}
+
+export function V7LegacyFrameworks() {
+  const legacyFrameworks = {
+    default: items['7_legacy'],
+  };
+
+  return <Frameworks frameworks={legacyFrameworks} />;
 }

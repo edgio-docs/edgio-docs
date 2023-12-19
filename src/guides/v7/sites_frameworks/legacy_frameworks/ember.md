@@ -1,43 +1,45 @@
 ---
-title: Dojo
+title: Ember.js
 ---
 
-This guide shows you how to deploy a [Dojo](https://dojo.io/) application to {{ PRODUCT }}.
+{{ sites_connector_deprecated.md }}
+
+This guide shows you how to deploy an [Ember.js](https://emberjs.com/) application to {{ PRODUCT }}.
 
 <!-- ## Example {/*example*/}
 
 <ExampleButtons
-  title="Dojo"
-  siteUrl="https://edgio-community-examples-dojo-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-dojo-example" 
+  title="Ember.js"
+  siteUrl="https://edgio-community-examples-emberjs-live.layer0-limelight.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-emberjs-example" 
   deployFromRepo /> -->
 
 {{ PREREQ.md }}
 
-## Create a new Dojo app {/*create-a-new-dojo-app*/}
+## Create a new Ember.js app {/*create-a-new-emberjs-app*/}
 
-If you don't already have a Dojo app, create one by running the following:
+If you don't already have an Ember.js app, create one by running the following:
 
 ```bash
-npm i @dojo/cli @dojo/cli-create-app -g
-dojo create app --name hello-world
-cd hello-world
+npm install -g ember-cli
+ember new ember-quickstart --lang en
+cd ember-quickstart
 ```
 
 You can verify your app works by running it locally with:
 
 ```bash
-npm run dev
+ember serve
 ```
 
-## Configuring your Dojo app for {{ PRODUCT }} {/*configuring-your-dojo-app-for*/}
+## Configuring your Ember.js app for {{ PRODUCT }} {/*configuring-your-emberjs-app-for*/}
 
 ### Initialize your project {/*initialize-your-project*/}
 
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
+{{ FULL_CLI_NAME }} init {{ LEGACY_FW_INIT_ARG_EDGIO_VERSION }}
 ```
 
 This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:
@@ -45,28 +47,29 @@ This will automatically update your `package.json` and add all of the required {
 - The `{{ PACKAGE_NAME }}/core` package - Allows you to declare routes and deploy your application on {{ PRODUCT }}
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
-- `routes.ts` - A default routes file that sends all requests to Dojo.
+- `routes.js` - A default routes file that sends all requests to Ember.js.
 
 ### Configure the routes {/*configure-the-routes*/}
 
-Update `routes.ts` at the root of your project to the following:
+Update `routes.js` at the root of your project to the following:
 
 ```js
 // This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
+
 import { Router } from '{{ PACKAGE_NAME }}/core/router'
 
 export default new Router()
   .match('/:path*', ({ serveStatic }) => {
-    serveStatic('output/dist/index.html')
+    serveStatic('dist/index.html')
   })
   // Create serveStatic route for each file in the folder public with a cache-control header of 's-maxage=315360000'
-  .static('output/dist')
+  .static('dist')
 ```
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Dojo app locally on {{ PRODUCT }} {/*run-the-dojo-app-locally-on*/}
+### Run the Ember.js app locally on the {{ PRODUCT_PLATFORM }} {/*run-the-emberjs-app-locally-on-the*/}
 
 Create a production build of your app by running the following in your project's root directory:
 

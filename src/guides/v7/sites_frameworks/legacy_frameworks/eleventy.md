@@ -2,6 +2,8 @@
 title: Eleventy
 ---
 
+{{ sites_connector_deprecated.md }}
+
 This guide shows you how to deploy a [Eleventy](https://www.11ty.dev/) application to {{ PRODUCT }}.
 
 <!-- ## Example {/*example*/}
@@ -52,7 +54,7 @@ Create a package.json at the root of your project with the following:
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
+{{ FULL_CLI_NAME }} init {{ LEGACY_FW_INIT_ARG_EDGIO_VERSION }}
 ```
 
 This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:

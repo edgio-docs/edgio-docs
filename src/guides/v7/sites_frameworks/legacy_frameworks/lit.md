@@ -2,6 +2,8 @@
 title: Lit
 ---
 
+{{ sites_connector_deprecated.md }}
+
 [Lit](https://lit.dev/) is a simple library for building fast, lightweight web components. This guide walks you through deploying Lit sites to {{ PRODUCT }}.
 
 <!-- ## Example {/*example*/}

@@ -10,4 +10,4 @@ Learn how to get started with these popular web application frameworks:
 
 <Frameworks />
 
-If your framework is not listed, you may configure your project with the universal [Node.js connector](/guides/v7/sites_frameworks/getting_started/nodejs_connector).
+If your framework is not listed, you may configure your project with the generic [Node.js connector](/guides/v7/sites_frameworks/getting_started/nodejs_connector).

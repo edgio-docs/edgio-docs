@@ -2,6 +2,8 @@
 title: Jekyll
 ---
 
+{{ sites_connector_deprecated.md }}
+
 [Jekyll](https://jekyllrb.com/) is a static site generator. It takes text written in your favorite markup language and uses layouts to create a static website. You can tweak the site's look and feel, URLs, the data displayed on the page, and more.
 
 {{ PREREQ.md }}
@@ -23,7 +25,7 @@ cd my-jekyll-site
 npm init
 
 # Then, add {{ PRODUCT }} to your Jekyll site:
-{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
+{{ FULL_CLI_NAME }} init {{ LEGACY_FW_INIT_ARG_EDGIO_VERSION }}
 ```
 
 ## Update your {{ PRODUCT }} Router {/*update-your-router*/}

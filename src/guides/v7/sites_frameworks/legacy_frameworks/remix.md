@@ -2,6 +2,8 @@
 title: Remix
 ---
 
+{{ sites_connector_deprecated.md }}
+
 This guide shows you how to deploy a [Remix](https://remix.run/) application to {{ PRODUCT }}.
 
 <Callout type="warning">
@@ -77,7 +79,7 @@ In most cases, a Remix app will have `"type": "module"` in the `package.json` fi
 In the root directory of your project run `{{ FULL_CLI_NAME }} init`:
 
 ```bash
-{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }} --connector @edgio/express
+{{ FULL_CLI_NAME }} init {{ LEGACY_FW_INIT_ARG_EDGIO_VERSION }} --connector @edgio/express
 ```
 
 This will automatically update your `package.json` and add all of the required {{ PRODUCT }} dependencies and files to your project. These include:

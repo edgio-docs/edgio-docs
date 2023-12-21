@@ -163,7 +163,7 @@ Establishing a SSO workflow requires a custom integration between our identity s
     -   **Logout URL:** {{ PRODUCT }} requests a single or global logout through this URL.
     -   **RelayState:** {{ PRODUCT }} redirects users to this URL upon authentication. This URL should be:
 
-        `https://api.edgio.app/users/auth/openid_connect`
+        `https://api.edgio.app/sso-redirect`
 
     -   SAML 2.0 metadata in XML format. 
 

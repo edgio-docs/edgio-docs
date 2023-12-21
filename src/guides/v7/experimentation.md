@@ -202,7 +202,15 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 
 ## Sending Traffic to a Different Environment {/*sending-traffic-to-a-different-environment*/}
 
-You may use Experimentation to send traffic to a different environment. For example, you can validate a feature release by sending some production traffic to an environment where that feature release is hosted.
+You may use Experimentation to send traffic to another environment either within the same or a different property. For example, you can validate a feature release by sending some production traffic to an environment where that feature release is hosted.
+
+<Callout type="info">
+
+    If you are using either {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or Edge Functions and you are proxying traffic to a different environment within the same property, then you may incur additional latency. A workaround for this issue is to proxy traffic between the production environments of two different properties.
+
+    {{ PRODUCT }} {{ PRODUCT_PLATFORM }} and Edge Functions may run in a different region for the production environment than other environments. If you are sending traffic between these environments, then latency is introduced due to traffic being routed between two regions. 
+
+</Callout>
 
 ### How Does Proxying Traffic Work? {/*how-does-proxying-traffic-work*/}
 
@@ -243,10 +251,10 @@ Set up this workflow by performing the following steps:
 
 3.  Identify or create an origin configuration within the target environment. Traffic proxied from the source environment will be directed to this origin.
 
-    For example, if you are setting up an A/B test, then this origin configuration could expose an alternate version of your website. 
+    For example, you could potentially expose a feature release through this origin configuration.
 4.  Deploy your changes to the target environment. 
 
-    Note the domain for this environment's edge link. This domain, which can be found on the deployment details page, is highlighted in the illustration shown below.
+    Navigate to the deployment details page to view a domain associated with an edge link. Sample domains are highlighted below.
     
     ![Edge Link's Domain](/images/v7/experimentation-cross-env-experiment-edge-link.png?width=650)
     

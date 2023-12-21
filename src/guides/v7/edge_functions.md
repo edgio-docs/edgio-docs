@@ -16,16 +16,18 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 Define an edge function within your {{ ROUTES_FILE }} file by adding the `edge_function` property to a route. The `edge_function` property accepts a string representing the path to the edge function file.
 
 ```js filename="./routes.js"
-new Router()
+import {Router} from '@edgio/core/router';
+
+export default new Router()
   .get('/', {
     edge_function: './edge-functions/index.js',
   })
   .match('/api/*', {
-    edge_function: './edge-functions/api.ts',
+    edge_function: './edge-functions/api.js',
   });
 ```
 
-Each edge function is stored in a separate file and assigned to a specific route in your `routes.js` file. Edge functions support both JavaScript and TypeScript files.
+Each edge function is stored in a separate file and assigned to a specific route in your `routes.js` file. Edge functions support only JavaScript (`.js`) files.
 
 An edge function file must export the following entry point:
 
@@ -208,7 +210,7 @@ export async function handleHttpRequest(request, context) {
 
 <Callout type="important">
  
-As of v7.2.3, the `context.respondWith()` function is deprecated. You must return a `Response` object or a `Promise` that resolves to a `Response` object to respond to the client.
+  As of v7.2.3, the `context.respondWith()` function is deprecated. You must return a `Response` object or a `Promise` that resolves to a `Response` object to respond to the client.
 
 </Callout>
 
@@ -372,6 +374,45 @@ This means that if you make a fetch request to the same URL within 5 minutes, th
   - With `Cache-Control: no-store, no-cache`, the response will not be cached.
 - If the `Cache-Control` header is not present for a cache-eligible response, the CDN will check for the `Expires` header.
 - If the response is cached based on the above logic, subsequent fetch requests will be served from cache until the cached response has expired or been purged. At which point, the fetch request will go to the origin.
+
+### Fetch Limitations {/* fetch-limitations */}
+
+Response status codes of `fetch()` requests must:
+
+- Be greater than or equal to 200.
+- Be less than or equal to 599.
+- Not be 204 or 304.
+
+If the response status code does not meet these criteria, the edge function will throw an error. It may be necessary to remove specific cache directives from the request before sending it to the origin.
+
+The following sample code strips the cache directive headers from the request before sending it to the origin:
+
+```js filename="./edge-functions/example.js"
+export async function handleHttpRequest(request) {
+  /* ... */
+
+  // Remove headers that could cause the a response status of 204/304 to be returned.
+  const headersToRemove = [
+    'etag',
+    'if-modified-since',
+    'if-none-match',
+    'last-modified',
+  ];
+  headersToRemove.forEach((header) => request.headers.delete(header));
+
+  const response = await fetch(request.url, {
+    edgio: {
+      origin: 'web',
+    },
+    method: request.method,
+    headers: request.headers,
+  });
+
+  // handle the response as needed
+
+  return response;
+}
+```
 
 ## Testing Locally {/* testing-locally */}
 

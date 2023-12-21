@@ -163,14 +163,14 @@ Establishing a SSO workflow requires a custom integration between our identity s
     -   **Logout URL:** {{ PRODUCT }} requests a single or global logout through this URL.
     -   **RelayState:** {{ PRODUCT }} redirects users to this URL upon authentication. This URL should be:
 
-        `{{ APP_URL }}`
+        `https://api.edgio.app/users/auth/openid_connect`
 
     -   SAML 2.0 metadata in XML format. 
 
 2.  Add the desired users to the {{ PORTAL }}. Make sure that the email addresses defined within the {{ PORTAL }} match those defined within your identity provider. 
 
 3.  From within your identity provider, use the following information to configure {{ PRODUCT }} as a service provider:
-    -   **Entity ID:** `id.vdms.io`
+    -   **Entity ID:** `https://id.vdms.io`
     -   **Assertion URL:** `https://id.vdms.io/saml/assert`
     -   **Login URL:** `https://id.vdms.io/saml/login`
     -   **Logout URL:** `https://id.vdms.io/saml/logout`

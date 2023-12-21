@@ -202,7 +202,7 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 
 ## Sending Traffic to a Different Environment {/*sending-traffic-to-a-different-environment*/}
 
-You may use Experimentation to send traffic to a different environment. For example, you can validate a BETA release by sending some production traffic to the BETA release's environment.
+You may use Experimentation to send traffic to a different environment. For example, you can validate a feature release by sending some production traffic to an environment where that feature release is hosted.
 
 ### How Does Proxying Traffic Work? {/*how-does-proxying-traffic-work*/}
 

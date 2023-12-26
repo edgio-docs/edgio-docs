@@ -114,46 +114,6 @@ The process through which requested content is compressed is outlined below.
 
 3.  The request will be forwarded to either an origin server or the {{ PRODUCT }} cloud. Either entity will provide a compressed or uncompressed response according to whether it can apply compression. {{ PRODUCT }} will serve the response to the client. Your caching policy dictates whether the response will be cached.
 
-## Applying Brotli Compression through the {{ PRODUCT }} Cloud {/*applying-brotli-compression-through-the-cloud*/}
-
-The {{ PRODUCT }} cloud supports Brotli encoding if the web browser accepts Brotli and the response is considered [eligible for compression](#compressible-types). Apply Brotli compression under these conditions through `brotliCompressSync`.
-
-```js
-import { brotliCompressSync } from 'zlib'
-
-const BROTLI_ENCODING_REGEX = /\bbr\b/
-
-// This function will respond with Brotli encoded body if the user agent
-// accepts Brotli.
-// Prior to invoking this function, evaluate all the custom criteria that you want to apply
-// (e.g. content type, caching, size of the response, etc). If all those are satisfied then
-// invoke this function which will then check if the downstream is Brotli compatible and
-// if so compress the body and respond with it, returning true, otherwise returning false.
-// You can of course optimize this to first check the downstream compatibility
-// before even considering other criteria.
-const sendBrotliEncoded = (req, res, body) => {
-  const acceptEncoding = req.getHeader('Accept-Encoding')
-  const acceptBrotliEncoding = BROTLI_ENCODING_REGEX.test(acceptEncoding)
-  if (!acceptBrotliEncoding) {
-    return false
-  }
-
-  const encodedBody = brotliCompressSync(Buffer.from(body))
-  res.setHeader('content-length', Buffer.byteLength(encodedBody))
-  res.setHeader('content-encoding', 'br')
-  res.send(encodedBody)
-  return true
-}
-```
-
-You would need to invoke the above just prior to sending back the response, similar to this:
-
-```js
-  const useBrotliEncoding = /* Evaluate all the custom criteria that you would like to apply */;
-  if (!useBrotliEncoding || !sendBrotliEncoded(req, res, body)) {
-    res.send(body)
-  }
-```
 
 ## Compressible Types {/*compressible-types*/}
 
@@ -191,3 +151,47 @@ The {{ PRODUCT }} cloud considers a response eligible for compression when eithe
     -   `.ttf`
     -   `.json`
     -   `.svg`
+
+
+## Applying Brotli Compression through the {{ PRODUCT }} Cloud {/*applying-brotli-compression-through-the-cloud*/}
+
+The {{ PRODUCT }} cloud [supports](#origin-server-compression) Brotli encoding if the web browser accepts Brotli and the response is considered [eligible for compression](#compressible-types). 
+
+Additionally, it is possible to apply Brotli compression under these conditions through `brotliCompressSync`.
+
+```js
+import { brotliCompressSync } from 'zlib'
+
+const BROTLI_ENCODING_REGEX = /\bbr\b/
+
+// This function will respond with Brotli encoded body if the user agent
+// accepts Brotli.
+// Prior to invoking this function, evaluate all the custom criteria that you want to apply
+// (e.g. content type, caching, size of the response, etc). If all those are satisfied then
+// invoke this function which will then check if the downstream is Brotli compatible and
+// if so compress the body and respond with it, returning true, otherwise returning false.
+// You can of course optimize this to first check the downstream compatibility
+// before even considering other criteria.
+const sendBrotliEncoded = (req, res, body) => {
+  const acceptEncoding = req.getHeader('Accept-Encoding')
+  const acceptBrotliEncoding = BROTLI_ENCODING_REGEX.test(acceptEncoding)
+  if (!acceptBrotliEncoding) {
+    return false
+  }
+
+  const encodedBody = brotliCompressSync(Buffer.from(body))
+  res.setHeader('content-length', Buffer.byteLength(encodedBody))
+  res.setHeader('content-encoding', 'br')
+  res.send(encodedBody)
+  return true
+}
+```
+
+You would need to invoke the above just prior to sending back the response, similar to this:
+
+```js
+  const useBrotliEncoding = /* Evaluate all the custom criteria that you would like to apply */;
+  if (!useBrotliEncoding || !sendBrotliEncoded(req, res, body)) {
+    res.send(body)
+  }
+```

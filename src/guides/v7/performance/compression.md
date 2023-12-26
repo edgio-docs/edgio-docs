@@ -155,7 +155,7 @@ You would need to invoke the above just prior to sending back the response, simi
   }
 ```
 
-### Compressible Types {/*compressible-types*/}
+## Compressible Types {/*compressible-types*/}
 
 The {{ PRODUCT }} cloud considers a response eligible for compression when either of the following conditions are satisfied:
 

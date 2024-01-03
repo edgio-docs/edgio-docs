@@ -34,17 +34,16 @@ export default new Router()
   // -----------------------------------
 
   // defines /session route as a cloud function
-  .match('/session', ({compute}) => {
+  .match('/session', ({compute, addFeatures}) => {
     compute(async (req, res) => {
       // complex logic not suitable for an edge function
       /* ... */
 
       res.body = JSON.stringify(/* ... */);
     });
-  })
-  // edge function to handle /session route
-  .match('/session', {
-    edge_function: './edge-functions/session.js',
+
+    // edge function to handle /session route
+    addFeatures({ edge_function: './edge-functions/session.js' })
   })
 
   // ---------------------------------
@@ -52,7 +51,7 @@ export default new Router()
   // ---------------------------------
 
   // defines /api route as a cloud function
-  .match('/api', ({proxy}) => {
+  .match('/api', ({proxy, addFeatures}) => {
     proxy('api', {
       transformResponse: async (res) => {
         // complex logic not suitable for an edge function
@@ -61,11 +60,10 @@ export default new Router()
         res.body = JSON.stringify(/* ... */);
       },
     });
+
+    // edge function to handle /api route
+    addFeatures({ edge_function: './edge-functions/api.js' })
   })
-  // edge function to handle /api route
-  .match('/api', {
-    edge_function: './edge-functions/api.js',
-  });
 ```
 
 For example, when using a framework compatible with {{ PRODUCT_PLATFORM }} like Next.js, you can forward the incoming request to the Next.js server.
@@ -130,4 +128,4 @@ export async function handleHttpRequest(request) {
 
 ## Limitations {/* limitations */}
 
-Fetching from a cloud function is considered an origin subrequest and therefore has the same limitations. See [Fetch Limitations](/guides/edge_functions#fetch-limitations) for more information. 
+Fetching from a Cloud Function is considered an origin subrequest and therefore has the same limitations. See [Fetch Limitations](/guides/edge_functions#fetch-limitations) for more information. 

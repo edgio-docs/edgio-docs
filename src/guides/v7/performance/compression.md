@@ -115,7 +115,9 @@ The process through which requested content is compressed is outlined below.
 3.  The request will be forwarded to either an origin server or the {{ PRODUCT }} cloud. Either entity will provide a compressed or uncompressed response according to whether it can apply compression. {{ PRODUCT }} will serve the response to the client. Your caching policy dictates whether the response will be cached.
 
 
-## Compressible Types {/*compressible-types*/}
+## Applying Compression through the {{ PRODUCT }} Cloud {/*applying-compression-through-the-cloud*/}
+
+### Compressible Types {/*compressible-types*/}
 
 The {{ PRODUCT }} cloud considers a response eligible for compression when either of the following conditions are satisfied:
 
@@ -153,7 +155,7 @@ The {{ PRODUCT }} cloud considers a response eligible for compression when eithe
     -   `.svg`
 
 
-## Applying Brotli Compression through the {{ PRODUCT }} Cloud {/*applying-brotli-compression-through-the-cloud*/}
+## Applying Brotli Compression {/*applying-brotli-compression*/}
 
 The {{ PRODUCT }} cloud [supports](#origin-server-compression) Brotli encoding if the web browser accepts Brotli and the response is considered [eligible for compression](#compressible-types). 
 

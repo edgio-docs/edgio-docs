@@ -12,7 +12,7 @@ Request signing can be used in various scenarios, such as API authentication, se
 
 ## Configuration {/* configuration */}
 
-In the {{ PRODUCT }} router, you can use the `edge_function` option to specify the path to the edge function that will handle the request signing and verification. Because this edge function is designed to handle both signing and verification, we'll match any request beginning with `/sign/` or `/verify/`, and capture the remaining path for use in the edge function.
+In the {{ PRODUCT }} router, you can use the `edge_function` property to specify the path to the edge function that will handle the request signing and verification. Because this edge function is designed to handle both signing and verification, we'll match any request beginning with `/sign/` or `/verify/`, and capture the remaining path for use in the edge function.
 
 ```js filename="routes.js"
 import {Router, edgioRoutes} from '@edgio/core';
@@ -25,19 +25,26 @@ export default new Router()
   })
 ```
 
+The edge function will be responsible for generating a signed URL for the given request, or verifying the signature of a request and forwarding it to the origin. The edge function will be invoked for any request that matches the route above, so we'll need to check the request path to determine whether we are signing or verifying the request.
+
+In either case, we'll need to generate a signature using a secret key and the request path. The secret key should be defined as an environment variable in the {{ PORTAL }}, and should never be shared publicly. The secret key is used to generate a signature for the request, which can then be verified by the recipient. , 
+
+
 ```js filename="edge-functions/signed-request.js"
 import { URL } from 'whatwg-url';
 import HmacSHA1 from 'crypto-js/hmac-sha1';
 import Base64 from 'crypto-js/enc-base64';
 
 export async function handleHttpRequest(request, context) {
-  
-
   // ** IMPORTANT **
   // Secret key should be defined as an environment variable in the Edgio console
   const secretKey = '$0m3th!ngS3cr3t'; // context.environmentVars.REQ_SIGNING_SECRET_KEY;
 
-  return generateSignedUrl(new URL(request.url), secretKey);
+  if (request.url.startsWith('/sign/')) {
+    return generateSignedUrl(request, secretKey);
+  }
+
+  return verifyAndFetch(request, secretKey);
 }
 
 /**
@@ -58,7 +65,9 @@ async function generateSignedUrl(url, key) {
 
   url.searchParams.set('mac', base64Mac);
   url.searchParams.set('expiry', expiry.toString());
-  
+
+  // respond with the signed URL that can be used to verify the request
+  return new Response(url.toString());  
 }
 
 /** 

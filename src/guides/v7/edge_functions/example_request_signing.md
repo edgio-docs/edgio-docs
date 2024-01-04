@@ -6,13 +6,9 @@ Request signing is a technique used to verify the authenticity and integrity of 
 
 Request signing can be used in various scenarios, such as API authentication, secure communication between services, and preventing replay attacks. By including a signature with each request, both the sender and receiver can have confidence in the integrity and authenticity of the data being exchanged.
 
-## Usage {/* usage */}
+## Router Configuration {/* router-configuration */}
 
-
-
-## Configuration {/* configuration */}
-
-In the {{ PRODUCT }} router, you can use the `edge_function` property to specify the path to the edge function that will handle the request signing and verification. Because this edge function is designed to handle both signing and verification, we'll match any request beginning with `/sign/` or `/verify/`, and capture the remaining path for use in the edge function.
+In the {{ PRODUCT }} router, you can use the `edge_function` feature to specify the path to the edge function that will handle the request signing and verification. Because this edge function is designed to handle both signing and verification, we'll match any request beginning with `/sign/` or `/verify/`, and capture the remaining path for use in the edge function.
 
 ```js filename="routes.js"
 import {Router, edgioRoutes} from '@edgio/core';
@@ -21,16 +17,23 @@ export default new Router()
   .use(edgioRoutes)
 
   .match(/\/(sign|verify)\/(.*)/, {
-    edge_function: './edge-functions/signed-request.js',
+    edge_function: './edge-functions/main.js',
   })
 ```
 
+## Edge Function {/* edge-function */}
+
 The edge function will be responsible for generating a signed URL for the given request, or verifying the signature of a request and forwarding it to the origin. The edge function will be invoked for any request that matches the route above, so we'll need to check the request path to determine whether we are signing or verifying the request.
 
-In either case, we'll need to generate a signature using a secret key and the request path. The secret key should be defined as an environment variable in the {{ PORTAL }}, and should never be shared publicly. The secret key is used to generate a signature for the request, which can then be verified by the recipient. , 
+In either case, we'll need to generate a signature using a cryptographic hash function. In this example, we'll use the [HMAC-SHA1](https://en.wikipedia.org/wiki/HMAC) algorithm, which is a widely used cryptographic hash function. The signature will be generated using a secret key, which should be defined as an environment variable in the {{ PORTAL }}. The secret key should never be shared publicly, and should be kept private to ensure that the signature cannot be forged.
 
+<Callout type="important">
 
-```js filename="edge-functions/signed-request.js"
+  Edge function runtime does not currently support a native crypto library, so we'll need to use a third-party library to generate the signature. In this example, we'll use the [crypto-js](https://github.com/brix/crypto-js).
+
+</Callout>
+
+```js filename="edge-functions/main.js"
 import { URL } from 'whatwg-url';
 import HmacSHA1 from 'crypto-js/hmac-sha1';
 import Base64 from 'crypto-js/enc-base64';
@@ -105,3 +108,5 @@ async function verifyAndFetch(url, key) {
   return fetch(url.toString());
 }
 ```
+
+## Example {/* example */}

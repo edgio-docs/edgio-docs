@@ -231,6 +231,14 @@ const nav = {
         },
         separator,
         {
+          title: 'Content Stitching',
+          path: 'edge_functions/example_content_stitching',
+        },
+        {
+          title: 'Header Manipulation',
+          path: 'edge_functions/example_header_manipulation',
+        },
+        {
           title: 'Request Signing',
           path: 'edge_functions/example_request_signing',
         },

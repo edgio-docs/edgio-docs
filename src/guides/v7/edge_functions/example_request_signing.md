@@ -29,7 +29,7 @@ In either case, we'll need to generate a signature using a cryptographic hash fu
 
 <Callout type="important">
 
-  Edge function runtime does not currently support a native crypto library, so we'll need to use a third-party library to generate the signature. In this example, we'll use the [crypto-js](https://github.com/brix/crypto-js).
+  Edge function runtime does not currently support a native crypto library, so a third-party library to generate the signature is needed. In this example, we'll use the [crypto-js](https://github.com/brix/crypto-js).
 
 </Callout>
 
@@ -108,5 +108,3 @@ async function verifyAndFetch(url, key) {
   return fetch(url.toString());
 }
 ```
-
-## Example {/* example */}

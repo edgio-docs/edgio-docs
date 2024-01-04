@@ -10,7 +10,7 @@ The response body from the origin can be accessed and modified using the `Respon
 
 ### Router Configuration {/* router-configuration-basic-content-manipulation */}
 
-```js filename="routes.js"
+````js filename="routes.js"
 
 ```js filename="routes.js"
 import {Router, edgioRoutes} from '@edgio/core';
@@ -21,7 +21,7 @@ export default new Router()
   .match('/some/path', {
     edge_function: './edge-functions/main.js',
   })
-```
+````
 
 ### Edge Function {/* edge-function-basic-content-manipulation */}
 
@@ -57,13 +57,13 @@ export default new Router()
 
   .match('/some/path', {
     edge_function: './edge-functions/main.js',
-  })
+  });
 ```
 
 ### Edge Function {/* edge-function-manifest-manipulation */}
 
 ```js filename="edge-functions/main.js"
-import { URL } from 'whatwg-url';
+import {URL} from 'whatwg-url';
 
 export async function handleHttpRequest(request, context) {
   // Get the manifest from the upstream server
@@ -85,7 +85,7 @@ export async function handleHttpRequest(request, context) {
 
   // Return the modified manifest
   const modifiedResponse = new Response(lines.join('\n'), {
-    headers: { 'content-type': upstreamResponse.headers.get('content-type') },
+    headers: {'content-type': upstreamResponse.headers.get('content-type')},
   });
 
   return modifiedResponse;
@@ -106,22 +106,27 @@ export default new Router()
 
   .match('/some/path', {
     edge_function: './edge-functions/main.js',
-  })
+  });
 ```
 
 ### Edge Function {/* edge-function-content-stitching */}
 
 ```js filename="edge-functions/main.js"
-import { URL } from 'whatwg-url';
+import {URL} from 'whatwg-url';
 
 export async function handleHttpRequest(request, context) {
   const url = new URL(request.url);
+  const originConfig = {
+    edgio: {
+      origin: 'web',
+    },
+  };
 
   // Get the list of phone contacts
-  const phonePromise = fetch(new Request(`${url.origin}/phone`));
+  const phonePromise = fetch(new Request(`${url.origin}/phone`), originConfig);
 
   // In Parallel, get the list of e-mail contacts
-  const emailPromise = fetch(new Request(`${url.origin}/email`));
+  const emailPromise = fetch(new Request(`${url.origin}/email`), originConfig);
 
   // Wait for both requests to complete.
   const [phoneResponse, emailResponse] = await Promise.all([

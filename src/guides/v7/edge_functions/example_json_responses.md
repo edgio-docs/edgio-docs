@@ -1,0 +1,46 @@
+---
+title: JSON Responses
+---
+
+Edge functions can be used to generate JSON responses for a request. This can be useful for generating dynamic content, such as a list of products or a user profile.
+
+## Geo Location Data {/* geo-location-data */}
+
+### Router Configuration {/* router-configuration-geo-location-data */}
+
+```js filename="routes.js"
+import {Router, edgioRoutes} from '@edgio/core';
+
+export default new Router()
+  .use(edgioRoutes)
+
+  .match('/some/path', {
+    edge_function: './edge-functions/main.js',
+  })
+```
+
+### Edge Function 
+
+```js filename="edge-functions/main.js"
+export async function handleHttpRequest(request, context) {
+  // Forward the incoming request to the defined origin server.
+  const response = await fetch(request.url, {
+    edgio: {
+      origin: 'web',
+    },
+  });
+
+  // Parse the response body as JSON
+  const body = await response.json();
+
+  // Add the customer's postal_code to the json response
+  body.postal_code = context.geo.postal_code;
+
+  // Return the response and end the edge function.
+  // Note: Since the original response body is read-only,
+  // we must create a new response with the updated body.
+  const jsonBody = JSON.stringify(body);
+
+  return new Response(jsonBody, response);
+}
+```

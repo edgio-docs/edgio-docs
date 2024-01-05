@@ -632,57 +632,5 @@ import createFetchForOrigin from './polyfills/createFetchForOrigin';
 const fetch = createFetchForOrigin('json_api_server');
 
 // Example edge function that modifies a response from the origin server
-export async function handleHttpRequest(request, context) {
-  // Forward the incoming request to the defined origin server.
-  const response = await fetch(request);
 
-  // Parse the response body as JSON
-  const body = await response.json();
-
-  // Add the customer's postal_code to the json response
-  body.postal_code = context.geo.postal_code;
-
-  // Return the response and end the edge function.
-  // Note: Since the original response body is read-only,
-  // we must create a new response with the updated body.
-  const jsonBody = JSON.stringify(body);
-
-  return new Response(jsonBody, response);
-}
-```
-
-```js filename="./edge-functions/contacts.js"
-import createFetchForOrigin from './polyfills/createFetchForOrigin';
-
-const fetch = createFetchForOrigin('json_api_server');
-
-// Example edge function makes multiple fetches
-export async function handleHttpRequest(request, context) {
-  const myBackend = 'http://api.backend-example.com';
-
-  // Get the list of phone contacts
-  const phonePromise = fetch(new Request(`${myBackend}/phone`));
-
-  // In Parallel, get the list of e-mail contacts
-  const emailPromise = fetch(new Request(`${myBackend}/email`));
-
-  // Wait for both requests to complete.
-  const [phoneResponse, emailResponse] = await Promise.all([
-    phonePromise,
-    emailPromise,
-  ]);
-
-  // Combine the two response bodies into a single response
-  const body = {
-    phone: await phoneResponse.json(),
-    email: await emailResponse.json(),
-  };
-
-  // Return the response and end the edge function as JSON
-  const jsonBody = JSON.stringify(body);
-
-  return new Response(jsonBody, 200, {
-    headers: {'Content-Type': 'application/json'},
-  });
-}
 ```

@@ -309,6 +309,10 @@ const nav = {
           path: 'security/recent_event_logs',
         },
         {
+          title: 'Matched On Variables',
+          path: 'security/matched_on_variables',
+        },
+        {
           title: 'Response to Client',
           path: 'security/response_to_client',
         },

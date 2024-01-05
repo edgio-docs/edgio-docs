@@ -243,6 +243,10 @@ const nav = {
           path: 'edge_functions/example_header_manipulation',
         },
         {
+          title: 'Redirects',
+          path: 'edge_functions/example_redirects',
+        },
+        {
           title: 'Request Signing',
           path: 'edge_functions/example_request_signing',
         },

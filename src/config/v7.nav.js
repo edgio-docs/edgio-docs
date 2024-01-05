@@ -231,6 +231,10 @@ const nav = {
         },
         separator,
         {
+          title: 'JSON Responses',
+          path: 'edge_functions/example_json_responses',
+        },
+        {
           title: 'Content Stitching',
           path: 'edge_functions/example_content_stitching',
         },

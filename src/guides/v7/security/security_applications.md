@@ -190,7 +190,7 @@ You may apply an access, custom, or managed rule in one of the following modes:
 
 ### Client IP Address
 
-{{ PRODUCT }} uses a client's IP address in various ways, such as identifying the client's geolocation for use with access control lists and rate limiting. By default, {{ PRODUCT }} identifies a client's IP address from the request submitted to our network. However, you may wish to override this behavior under certain circumstances, such as testing or if {{ PRODUCT }} is behind another CDN. For these cases, you can instruct {{ PRODUCT }} to look up a client's IP address through a request header by setting a Security Application's **Use Header for Client IP** option to the desired request header.
+{{ PRODUCT }} uses a client's IP address in various ways, such as identifying the client's geolocation for use with access control lists and rate limiting. By default, {{ PRODUCT }} gets a client's IP address from the request submitted to our network. However, you may wish to override this behavior under certain circumstances, such as testing or if {{ PRODUCT }} is behind another CDN. For these cases, you can instruct {{ PRODUCT }} to look up a client's IP address through a request header by setting a Security Application's **Use Header for Client IP** option to the desired request header.
 
 <Callout type="important">
 

@@ -8,7 +8,7 @@ In this section, we'll cover how to use the caching properties as part of the `f
 
 ## Order of Operations {/* order-of-operations */}
 
-When a fetch request is made, the CDN will first check the cache for a cached response. If a cached response is found, it will be served from the cache. Otherwise, the request will be sent to the origin and the response will be cached based on one of the following scenarios:
+When a fetch request is made, the CDN will first check for a cached response. If found, it will be served from the cache. Otherwise, the request will be sent to the origin. {{ PRODUCT }} will cache the response when any of the following conditions are met:
 
 - The [custom caching properties](#custom-caching-properties) specified in the `edgio` object.
 - The `Cache-Control` header of the origin response.

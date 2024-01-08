@@ -216,7 +216,7 @@ export async function handleHttpRequest(request, context) {
 
 ## Origin Requests Using fetch() {/* origin-requests-using-fetch */}
 
-Before issuing a fetch request (also known as a subrequest) to an origin, you must define an origin configuration within the `{{ CONFIG_FILE }}` file:
+Before issuing a fetch request to an origin, you must define an origin configuration within the `{{ CONFIG_FILE }}` file:
 
 ```js filename="{{ CONFIG_FILE }}"
 module.exports = {

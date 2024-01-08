@@ -10,8 +10,6 @@ The response body from the origin can be accessed and modified using the `Respon
 
 ### Router Configuration {/* router-configuration-basic-content-manipulation */}
 
-````js filename="routes.js"
-
 ```js filename="routes.js"
 import {Router, edgioRoutes} from '@edgio/core';
 
@@ -21,7 +19,7 @@ export default new Router()
   .match('/some/path', {
     edge_function: './edge-functions/main.js',
   })
-````
+```
 
 ### Edge Function {/* edge-function-basic-content-manipulation */}
 

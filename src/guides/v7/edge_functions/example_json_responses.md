@@ -45,7 +45,9 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-## Geo Location Data {/* geo-location-data */}
+## Geolocation Data {/* geolocation-data */}
+
+Edgio Functions provides geolocation data for each request. This data can be used to customize the response based on the client's location.
 
 ### Router Configuration {/* router-configuration-geo-location-data */}
 

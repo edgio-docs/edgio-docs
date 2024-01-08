@@ -34,11 +34,11 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-## Geo Location Redirect {/* geo-location-redirect */}
+## Geolocation Redirect {/* geolocation-redirect */}
 
-Redirects can be performed based on the client's geo location. This can be useful for redirecting users to a different page based on their country or region.
+Redirects can be performed based on the client's geolocation. This can be useful for redirecting users to a different page based on their country or region.
 
-### Router Configuration {/* router-configuration-geo-location-redirect */}
+### Router Configuration {/* router-configuration-geolocation-redirect */}
 
 ```js filename="routes.js"
 import {Router, edgioRoutes} from '@edgio/core';
@@ -51,7 +51,7 @@ export default new Router()
   });
 ```
 
-### Edge Function {/* edge-function-geo-location-redirect */}
+### Edge Function {/* edge-function-geolocation-redirect */}
 
 ```js filename="edge-functions/main.js"
 export async function handleHttpRequest(request, context) {

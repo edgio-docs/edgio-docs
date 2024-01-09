@@ -18,7 +18,7 @@ export default new Router()
 
   .match(/\/(sign|verify)\/(.*)/, {
     edge_function: './edge-functions/main.js',
-  })
+  });
 ```
 
 ## Edge Function {/* edge-function */}
@@ -29,12 +29,12 @@ In either case, we'll need to generate a signature using a cryptographic hash fu
 
 <Callout type="important">
 
-  The Edge Function runtime does not currently support a native crypto library, so a third-party library to generate the signature is needed. In this example, we'll use the [crypto-js](https://github.com/brix/crypto-js) library.
+The Edge Function runtime does not currently support a native crypto library, so a third-party library to generate the signature is needed. In this example, we'll use the [crypto-js](https://github.com/brix/crypto-js) library.
 
 </Callout>
 
 ```js filename="edge-functions/main.js"
-import { URL } from 'whatwg-url';
+import {URL} from 'whatwg-url';
 import HmacSHA1 from 'crypto-js/hmac-sha1';
 import Base64 from 'crypto-js/enc-base64';
 
@@ -43,7 +43,7 @@ export async function handleHttpRequest(request, context) {
   // Secret key should be defined as an environment variable in the Edgio console
   const secretKey = '$0m3th!ngS3cr3t'; // context.environmentVars.REQ_SIGNING_SECRET_KEY;
 
-  if (request.url.startsWith('/sign/')) {
+  if (request.url.includes('/sign/')) {
     return generateSignedUrl(request, secretKey);
   }
 
@@ -53,9 +53,11 @@ export async function handleHttpRequest(request, context) {
 /**
  * Generates a signed URL for the given URL and secret key
  * @param {URL} url
- * @param {string} secretKey
+ * @param {string} key
  */
-async function generateSignedUrl(url, key) {
+async function generateSignedUrl(request, key) {
+  const url = new URL(request.url);
+
   // Replace /sign/ with /verify/ in the URL since we are generating a signed URL for verification
   url.pathname = url.pathname.replace('/sign/', '/verify/');
 
@@ -63,24 +65,26 @@ async function generateSignedUrl(url, key) {
   const expiry = Date.now() + expirationMs;
   const dataToAuthenticate = url.pathname + expiry;
 
-  const hash = HmacSHA1(dataToAuthenticate, secretKey);
+  const hash = HmacSHA1(dataToAuthenticate, key);
   const base64Mac = Base64.stringify(hash);
 
   url.searchParams.set('mac', base64Mac);
   url.searchParams.set('expiry', expiry.toString());
 
   // respond with the signed URL that can be used to verify the request
-  return new Response(url.toString());  
+  return new Response(url.toString());
 }
 
-/** 
+/**
  * Verifies the MAC and expiry of the given URL. If the URL is valid, the request is forwarded to the origin.
  */
-async function verifyAndFetch(url, key) {
-  const invalidResponse = new Response('Invalid request', { status: 403 });
+async function verifyAndFetch(request, key) {
+  const invalidResponse = (reason) =>
+    new Response(`Invalid request - ${reason}`, {status: 403});
+  const url = new URL(request.url);
 
   if (!url.searchParams.has('mac') || !url.searchParams.has('expiry')) {
-    return invalidResponse;
+    return invalidResponse('Missing MAC or expiry');
   }
 
   const expiry = Number(url.searchParams.get('expiry'));
@@ -89,22 +93,24 @@ async function verifyAndFetch(url, key) {
   const receivedMacBase64 = url.searchParams.get('mac');
   const receivedMac = Base64.parse(receivedMacBase64);
 
-  const hash = HmacSHA1(dataToAuthenticate, secretKey);
+  const hash = HmacSHA1(dataToAuthenticate, key);
   const hashInBase64 = Base64.stringify(hash);
 
   // Ensure that the MAC is valid
   if (hashInBase64 !== receivedMacBase64) {
-    return invalidResponse;
+    return invalidResponse('Invalid MAC');
   }
 
   // Ensure that the URL has not expired
   if (Date.now() > expiry) {
-    return invalidResponse;
+    return invalidResponse('URL has expired');
   }
 
   // Forward the remaining request path after **/verify/* to the origin
   url.pathname = url.pathname.split('/verify/')[1];
 
-  return fetch(url.toString());
+  return fetch(url.toString(), {
+    edgio: {origin: 'web'},
+  });
 }
 ```

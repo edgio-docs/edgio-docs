@@ -3,7 +3,7 @@ title: Security App
 ---
 
 A Security App configuration:
--   [Identifies the set of traffic](#traffic-identification) to which it applies by hostname, a URL path, or both.
+-   [Identifies the set of traffic](#identifying-traffic-for-inspection) to which it applies by hostname, a URL path, or both.
 -   Defines how [threats will be detected](#threat-detection) through:
     -   **Access Rules:** An access rule identifies legitimate traffic and threats through access control lists.
     -   **API Security Ruleset:** An API Security rule validates the payload for `POST`, `PUT`, and `PATCH` requests against a JSON schema.
@@ -12,33 +12,25 @@ A Security App configuration:
     -   **Custom Rules:** A custom rule identifies threats using custom criteria that takes into account your site's traffic profile to avoid false positives.
     -   **Managed Rules:** A managed rule identifies threats through threat detection policies.
 -   Identifies how the above [rules are enforced](#enforcement) on rate limited requests or threats .
+-   Allows you to audit new access rules, API Security rules, custom rules, and managed rules without impacting production traffic while keeping your applications secure with known configurations.
+
+    Use the **Threats** tab of the **Security** dashboard to isolate and analyze threats detected as a result of an audit of new access rules,  API Security rules, custom rules, and managed rules.
 
     <Callout type="info">
 
-      Each detected threat is logged regardless of enforcement action (i.e., block, custom response, redirect, or alert). View logged threats from the **Threats**, **Bots**, **Rates**, or **Rate Enforcement** tabs of the **Security** dashboard.
+      The ability to secure and audit your production traffic using separate configurations requires {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ ACCOUNT_UPGRADE }}
 
     </Callout>
 
-    <Callout type="info">
+<a id="traffic-identification"></a>
 
-      Standard security practices dictate that measures should be taken to prevent sensitive data (e.g., credit card information or passwords) from being passed as clear text from the client to your origin server. Another incentive for encrypting sensitive data is that it will be logged by our system when an alert is triggered as a result of this data. If sensitive data cannot be encrypted or obfuscated, then it is strongly recommended to contact our technical customer support to disable logging for the **Matched Value** field.
-
-    </Callout>
--   Allows you to keep your applications secure with known configurations and audit new access rules, API Security rules, custom rules, and managed rules without impacting production traffic. Use the **Threats** tab of the **Security** dashboard to isolate and analyze threats detected as a result of an audit of new access rules,  API Security rules, custom rules, and managed rules.
-
-    <Callout type="info">
-
-      The ability to secure and audit your production traffic using eparate configurations requires {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ ACCOUNT_UPGRADE }}
-
-    </Callout>
-
-## Traffic Identification {/*traffic-identification*/}
+## Identifying Traffic for Inspection {/*identifying-traffic-for-inspection*/}
 
 Identify the set of traffic to which a Security App configuration's rules will be applied by host, URL path, or both.
 
 ### Host {/*host*/}
 
-By default, a Security App configuration applies to all hosts. However, you may limit a Security App configuration to one or more hosts. {{ PRODUCT_SECURITY }} compares the entire `Host` header value against the specified value.
+By default, a Security App configuration applies to all hosts. However, you may limit a Security App configuration to one or more hosts. {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares the entire `Host` header value against the specified value.
 
 **Key information:**
 -   The `Host` header identifies either a hostname or IP address using the following syntax: 
@@ -47,17 +39,16 @@ By default, a Security App configuration applies to all hosts. However, you may 
 
     `<Host>:<Port>`
 
--   The CDN only accepts HTTP/HTTPS requests on standard ports (i.e., 80 and 443). Typically, a `Host` request header does not include port information for standard ports. However, the requesting user agent defines the `Host` request header submitted to
-    the CDN.
+-   The CDN only accepts HTTP/HTTPS requests on standard ports (i.e., 80 and 443). Typically, a `Host` request header does not include port information for standard ports. However, the requesting user agent defines the `Host` request header submitted to the CDN.
 -   For the purpose of this comparison, the hostname defined by this match condition will not be resolved to an IP address.
--   For the purpose of this comparison, a customer origin's **HTTP Host Header** option is irrelevant.
--   {{ PRODUCT_SECURITY }} supports various comparison modes (i.e., exact match, wildcard, and regular expression).
+-   For the purpose of this comparison, an origin configuration's **Override Host Header** option is irrelevant.
+-   {{ PRODUCT }} {{ PRODUCT_SECURITY }} supports various comparison modes (i.e., exact match, wildcard, and regular expression).
 
     [Learn more.](#match-comparison-modes)
 
 ### URL Path {/*url-path*/}
 
-By default, a Security App configuration applies to all URL paths. However, you may limit a Security App configuration to one or more URL paths. {{ PRODUCT_SECURITY }} compares the entire URL path against the specified value.
+By default, a Security App configuration applies to all URL paths. However, you may limit a Security App configuration to one or more URL paths. {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares the entire URL path against the specified value.
 
 **Key information:**
 -   URL path comparisons start directly after the hostname.
@@ -76,52 +67,33 @@ By default, a Security App configuration applies to all URL paths. However, you 
 
     `http://cdn.example.com/marketing/brochures/widget.html`
 
--   {{ PRODUCT_SECURITY }} supports various comparison modes (i.e., exact match, wildcard, and regular expression).
+-   {{ PRODUCT }} {{ PRODUCT_SECURITY }} supports various comparison modes (i.e., exact match, wildcard, and regular expression).
 
     [Learn more.](#match-comparison-modes)
 
 ### Match Comparison Modes {/*match-comparison-modes*/}
 
-Your Security App configuration determines how {{ PRODUCT_SECURITY }} compares a request's host or URL path against the specified value. The available modes are listed below.
--   **Default:** {{ PRODUCT_SECURITY }} will not perform a comparison. It will apply the current Security App configuration to all hosts or URL paths.
+Your Security App configuration determines how {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares a request's host or URL path against the specified value. The available modes are listed below.
+-   **Default:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} will not perform a comparison. It will apply the current Security App configuration to all hosts or URL paths.
 -   [Exact match (multiple entries):](#exact-match-multiple-entries) Use this mode to specify each desired value.
 -   [Wildcard match:](#wildcard-match) Use this mode to specify a wildcard pattern.
 -   [Regex match:](#regex-match) Use this mode to specify a regular expression.
 
 <Callout type="info">
 
-  Wildcard and regular expression match comparison modes require {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ ACCOUNT_UPGRADE }}
+  Wildcard and regular expression match comparison modes require {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ ACCOUNT_UPGRADE }}
 
 </Callout>
 
 #### Exact Match (Multiple Entries) {/*exact-match-multiple-entries*/}
 
-{{ PRODUCT_SECURITY }} compares the specified value(s) against the entire host or URL path.
+{{ PRODUCT }} {{ PRODUCT_SECURITY }} compares the specified value(s) against the entire host or URL path.
 It will only apply this Security App configuration to a request when one of the specified value(s) is an exact match. This comparison is case-sensitive.
 
-**Sample Configuration:**
-
-`cat`
-
-`bat`
-
-**Matches:**
-
-`cat`
-
-`bat`
-
-**Does Not Match:**
-
-`Cat`
-
-`Bat`
-
-`Category`
-
-`Moscato`
-
-`Batch`
+| Sample Configuration | Matches  | Does Not Match  |
+|---|---|---|
+| cat | cat | Cat <br /> Category <br /> Moscato |
+| bat | bat | Bat <br /> Batch |
 
 #### Wildcard Match {/*wildcard-match*/}
 
@@ -161,7 +133,7 @@ The following sample request will match the above pattern:
 
 #### Regex Match {/*regex-match*/}
 
-{{ PRODUCT_SECURITY }} checks whether the entire host or URL path is a match for the pattern defined in a regular expression.
+{{ PRODUCT }} {{ PRODUCT_SECURITY }} checks whether the entire host or URL path is a match for the pattern defined in a regular expression.
 
 <Callout type="info">
 
@@ -169,43 +141,21 @@ The following sample request will match the above pattern:
 
 </Callout>
 
-**Sample Configuration:**
+**Example:** `^[a-zA-Z0-9]*$`
 
-`^[a-zA-Z0-9]*$`
+**Matches:** `cat` | `CAT7` | `Category`
 
-**Matches:**
-
-`cat`
-
-`CAT7`
-
-`Category`
-
-**Does Not Match:**
-
-`Category 7`
-
-`Cat#7`
+**Does Not Match:** `Category 7` | `Cat#7`
 
 ## Threat Detection {/*threat-detection*/}
 
 Identify threats by adding the following rule(s) to your Security App configuration:
 -   **Access Rules:** An [access rule](/guides/security/access_rules) identifies legitimate traffic and threats through access control lists.
 -   **API Security Ruleset:** An [API Security rule](/guides/security/api_security) identifies threats by validating the payload of `POST`, `PUT`, and `PATCH` requests against a JSON schema.
--   **Rate Rules:** A [rate rule](/guides/security/rate_rules) identifies malicious or unnecessary traffic through traffic patterns.
+-   **Rate Rules:** A [rate rule](/guides/security/rate_rules) defines a limit for the rate at which your content may be requested.
 
-    <Callout type="info">
+    Requests that originate from rate limited clients will not count towards the rate limit. Upon the expiration of the time period defined in the **Time period** option, we will resume counting these requests. If the client exceeds the rate limit again, then this action will be reapplied to it for the duration defined by this option. A "client" is defined by each rate rule's **Apply rate limit to** option. [Learn how rate limits are applied to clients.](/guides/security/rate_rules#how-does-it-work)
 
-      Requests that originate from rate limited clients will not count towards the rate limit. Upon the expiration of the time period defined in the **Time period** option, we will resume counting these requests. If the client exceeds the rate limit
-      again, then this action will be reapplied to it for the duration defined by this option.
-
-    </Callout>
-
-    <Callout type="info">
-
-      A "client" is defined by each rule according to the rate rule's **Apply rate limit to** option. For example, configuring that option to **Any request** will apply the selected action to all requests regardless of the number of requests generated by each device. Alternatively, identifying clients by **IP address** will only apply the selected action to requests that originate from each IP address that violates the specified rate limit.
-
-    </Callout>
 -   **Bot Manager:** A [bot manager configuration](/guides/security/bot_rules) determines how bot traffic will be detected and the enforcement action that will be applied to bot traffic.
 
     <Callout type="info">
@@ -218,6 +168,8 @@ Identify threats by adding the following rule(s) to your Security App configurat
 -   **Managed Rules:** A [managed rule](/guides/security/managed_rules) identifies threats through threat detection policies.
 
 <a id="enforcement-mode"></a>
+
+### Threat Detection Mode {/*threat-detection-mode*/}
 
 You may apply an access, custom, or managed rule in one of the following modes:
 -   **Production:** This mode secures your application by allowing you to choose from a variety of actions through which your security policy will be [enforced](#enforcement).
@@ -232,7 +184,17 @@ You may apply an access, custom, or managed rule in one of the following modes:
 
 <Callout type="info">
 
-  Auditing a profile that is already being applied to production traffic will cause the same threat to be logged twice.
+  Although you may audit a security policy that has been applied to production traffic (i.e., production mode), this will cause the same threat to be logged twice.
+
+</Callout>
+
+### Client IP Address
+
+{{ PRODUCT }} uses a client's IP address in various ways, such as identifying the client's geolocation for use with access control lists and rate limiting. By default, {{ PRODUCT }} gets a client's IP address from the request submitted to our network. However, you may wish to override this behavior under certain circumstances, such as testing or if {{ PRODUCT }} is behind another CDN. For these cases, you can instruct {{ PRODUCT }} to look up a client's IP address through a request header by setting a Security Application's **Use Header for Client IP** option to the desired request header.
+
+<Callout type="important">
+
+  Enabling this advanced setting has the potential to negatively impact {{ PRODUCT }} {{ PRODUCT_SECURITY }}'s ability to secure or rate limit your traffic. {{ PRODUCT }} does not validate the request header defined within the **Use Header for Client IP** option. We strongly recommend that you verify the spelling of the request header's name. You should also verify that the request header will be populated with the desired IP address(es). 
 
 </Callout>
 
@@ -244,7 +206,7 @@ You may customize how rules that run in [production mode](#enforcement-mode) wil
 
 <Callout type="info">
 
-  {{ PRODUCT }} {{ PRODUCT_SECURITY }} will only generate alerts for rules that run in audit mode. This enforcement action cannot be customized.
+  Rules that run in audit mode are restricted to alerting. This enforcement action cannot be customized.
 
 </Callout>
 
@@ -265,7 +227,7 @@ The available enforcement actions are described below.
 
     <Callout type="info">
 
-      {{ PRODUCT_SECURITY }} applies a single enforcement action per mode (i.e., [production or audit](#enforcement-mode)). Once enforcement is triggered for that mode, {{ PRODUCT_SECURITY }} does not perform further [evaluation of that request](/guides/security/waf#threat-detection). If you are setting up a rule in production mode, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.  
+      {{ PRODUCT }} {{ PRODUCT_SECURITY }} applies a single enforcement action per mode (i.e., [production or audit](#enforcement-mode)). Once enforcement is triggered for that mode, {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further [evaluation of that request](/guides/security/waf#threat-detection). If you are setting up a rule in production mode, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.  
 
     </Callout>
 -   **Block Request:** Detected threats will be dropped and the client will receive a `403 Forbidden` response.
@@ -406,9 +368,17 @@ Add an event variable to a custom response header value or a custom response bod
 
 `{{EVENT_ID}}`
 
+### Event Logging {/*event-logging*/}
+
+Each detected threat is logged regardless of enforcement action (i.e., block, custom response, redirect, or alert). View logged threats from the **Threats**, **Bots**, **Rates**, or **Rate Enforcement** tabs of the **Security** dashboard.
+
+Sensitive data  (e.g., credit card information or passwords) can be redacted from our event logs. 
+
+[Learn how to redact sensitive data.](/guides/security/managed_rules#redacting-sensitive-data)
+
 ## Order of Precedence {/*order-of-precedence*/}
 
-The recommended practice is to create a Security App configuration that is tuned for each of your applications. This allows you to apply a restrictive security policy with minimal false positives. Each Security App configuration's host and URL path conditions determine the set of traffic to which it may be applied. If a request is eligible to be screened by multiple Security App configurations, then {{ PRODUCT_SECURITY }} will screen it using the first eligible configuration in the list.
+The recommended practice is to create a Security App configuration that is tuned for each of your applications. This allows you to apply a restrictive security policy with minimal false positives. Each Security App configuration's host and URL path conditions determine the set of traffic to which it may be applied. If a request is eligible to be screened by multiple Security App configurations, then {{ PRODUCT }} {{ PRODUCT_SECURITY }} will screen it using the first eligible configuration in the list.
 
 <Callout type="tip">
 
@@ -534,7 +504,7 @@ You may create, modify, and delete Security App configurations.
 
         <Callout type="important">
 
-          {{ PRODUCT_SECURITY }} does not perform further [evaluation of a request](/guides/security/waf#threat-detection) once enforcement is triggered. For this reason, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.
+          {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further [evaluation of a request](/guides/security/waf#threat-detection) once enforcement is triggered. For this reason, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.
 
         </Callout>
 

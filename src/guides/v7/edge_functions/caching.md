@@ -118,3 +118,19 @@ This means that if you make a fetch request to the same URL within 5 minutes, th
   - With `Cache-Control: no-store, no-cache`, the response will not be cached.
 - If the `Cache-Control` header is not present for a cache-eligible response, the CDN will check for the `Expires` header.
 - If the response is cached based on the above logic, subsequent fetch requests will be served from cache until the cached response has expired or been purged. At which point, the fetch request will go to the origin.
+
+## Automatic Cache Tagging
+### System-defined Defaults
+All edge functions responses are automatically tagged with a default set of system-defined [surrogate keys](/guides/performance/caching/purging#surrogate-key). These keys are combined with (and do not replace) any user-provided surrogate keys specified in the `Surrogate-Key` response header.
+
+Automatically applied tags:
+* `EF:edge-function`
+* `EF:<relative script path>`
+    - Where `<relative script path>` is the relative path specified in your router for the edge function.
+
+Additionally, these tags are also applied to any cached response of a fetch made by an edge function.
+
+### User-defined Defaults
+In addition to the system-defined tags, any user-defined tags supplied in the caching options of a fetch are automatically applied to the final response of the edge function (if cached).
+
+This is done to ensure that purging a tag specified on a fetch also purges any cached edge function response associated with it, as the response may have been formed based on the fetch result.

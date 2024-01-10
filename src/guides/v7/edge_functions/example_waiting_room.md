@@ -33,7 +33,7 @@ The edge function will be responsible for determining whether the request should
 
 <Callout type="info">
 
-The following sample code contains references to imports not documented in the guide. You can find the full source code for these functions in the [example repository](https://github.com/edgio-docs/edgio-examples/tree/main/examples/v7-edge-functions).
+The following sample code contains `import` declarations that are not documented in this guide. View the full source code for these functions from within the [edgio-examples repository](https://github.com/edgio-docs/edgio-examples/tree/main/examples/v7-edge-functions).
 
 </Callout>
 

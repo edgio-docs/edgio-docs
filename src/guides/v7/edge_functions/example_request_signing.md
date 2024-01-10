@@ -6,6 +6,12 @@ Request signing is a technique used to verify the authenticity and integrity of 
 
 Request signing can be used in various scenarios, such as API authentication, secure communication between services, and preventing replay attacks. By including a signature with each request, both the sender and receiver can have confidence in the integrity and authenticity of the data being exchanged.
 
+<ExampleButtons
+  title="Request Signing"
+  siteUrl="https://edgio-community-examples-v7-edge-functions-live.edgio.link/example/signed-request/sign/foo/bar"
+  repoUrl="https://github.com/edgio-docs/edgio-examples/tree/main/examples/v7-edge-functions"
+/>
+
 ## Router Configuration {/* router-configuration */}
 
 In the {{ PRODUCT }} router, you can use the `edge_function` feature to specify the path to the edge function that will handle the request signing and verification. Because this edge function is designed to handle both signing and verification, we'll match any request beginning with `/sign/` or `/verify/`, and capture the remaining path for use in the edge function.

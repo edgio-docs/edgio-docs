@@ -254,6 +254,10 @@ const nav = {
           title: 'Request Signing',
           path: 'edge_functions/example_request_signing',
         },
+        {
+          title: 'Waiting Room',
+          path: 'edge_functions/example_waiting_room',
+        },
       ],
     },
     {

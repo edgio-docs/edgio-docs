@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import styled from 'styled-components';
 
 interface StyledCompProps {
@@ -9,14 +10,8 @@ const StyledComp = styled.figure<StyledCompProps>`
     display: flex;
     max-width: calc(min(var(--docs-area-width), 98%));
   }
-
   ${({inline}) =>
-    inline
-      ? `
-    display: inline-flex;
-    vertical-align: middle;
-  `
-      : ''}
+    inline ? 'display: inline-flex; vertical-align: middle;' : ''}
 `;
 
 export default function Image({
@@ -28,38 +23,18 @@ export default function Image({
   alt: string;
   inline?: boolean;
 }) {
-  const srcArray = src.split('?');
-  const srcSearchParams = srcArray[1] || '';
-  const url = new URLSearchParams(srcSearchParams);
-  const width = url.get('width');
+  const urlSplit = src.split('?');
+  const url = urlSplit[0] ? urlSplit[0] : src;
 
-  if (props.inline) {
-    return (
-      <StyledComp {...{...props}}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          {...{
-            src,
-            alt,
-            loading: 'lazy',
-          }}
-        />
-      </StyledComp>
-    );
-  } else {
-    return (
-      <StyledComp {...{...props}}>
-        <a href={src} target="_blank" rel="noopener noreferrer">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            {...{
-              src,
-              alt,
-              loading: 'lazy',
-            }}
-          />
-        </a>
-      </StyledComp>
-    );
-  }
+  return props.inline ? (
+    <StyledComp {...props}>
+      <img src={url} alt={alt} loading="lazy" />
+    </StyledComp>
+  ) : (
+    <StyledComp {...props}>
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        <img src={src} alt={alt} loading="lazy" />
+      </a>
+    </StyledComp>
+  );
 }

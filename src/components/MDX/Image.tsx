@@ -32,7 +32,7 @@ export default function Image({
     </StyledComp>
   ) : (
     <StyledComp {...props}>
-      <a href={url} target="_blank" rel="noopener noreferrer" data-test="test3">
+      <a href={url} target="_blank" rel="noopener noreferrer">
         <img src={src} alt={alt} loading="lazy" />
       </a>
     </StyledComp>

@@ -2,7 +2,7 @@
 title: Alerts
 ---
 
-There are two types of alerts:
+Use one of the following alerts to receive email notifications on a regular cadence or when {{ PRODUCT }} detects an  unusual traffic pattern: 
 
 -   [Real-Time Alerts](#real-time-alerts)**:** Receive notifications when unusual traffic patterns are detected and resolved. Use these notifications to investigate and remediate abnormal traffic patterns as they occur.
 -   [Daily or Weekly Alerts](#daily-and-weekly-alerts)**:** Receive notifications for performance-related statistics and events that typically do not require immediate attention. 
@@ -18,10 +18,10 @@ A condition consists of the following components:
     -   **Status Code Ratio:** Tracks a specific status code or class of status codes as a percentage of total traffic.
     -   **Bandwidth:** Tracks the amount of traffic flowing through our network. 
 -   <a id="operator" />**Operator:** Establishes the relationship between the metric and the value assigned to it. 
-    -   **<:** Less than. This condition is satisfied when the metric's current value is less than the value specified within the **Value** option.
-    -   **>:** Greater than. This condition is satisfied when the metric's current value is greater than the value specified within the **Value** option.
-    -   **<=:** Less then or equal to. This condition is satisfied when the metric's current value is less than or equal to the value specified within the **Value** option.
-    -   **>=:** Greater than or equal to. This condition is satisfied when the metric's current value is greater than or equal to the value specified within the **Value** option.
+    -   **\<:** Less than. This condition is satisfied when the metric's current value is less than the threshold value.
+    -   **>:** Greater than. This condition is satisfied when the metric's current value is greater than the threshold value.
+    -   **\<=:** Less then or equal to. This condition is satisfied when the metric's current value is less than or equal to the threshold value.
+    -   **>=:** Greater than or equal to. This condition is satisfied when the metric's current value is greater than or equal to the threshold value.
 -   **Threshold**:** Define the threshold for the selected metric.
 -   **Duration:** Defines the length of time that one or more condition(s) associated with this real-time alert must be satisfied before a notification may be sent.
 
@@ -75,7 +75,7 @@ You may create, modify, and delete real-time alerts.
 **To delete a real-time alert**
 1.  Navigate to the desired environment's **Realtime Alerts** page.
     {{ ENV_NAV }} **Realtime Alerts**.
-2.  Find the desired real-time alert and click its ![Delete](/images/v7/basics/delete.png) icon.
+2.  Find the desired real-time alert and click its <Image inline src="/images/v7/icons/delete.png" alt="Remove" /> icon.
 3.  When prompted, click **Delete** to confirm the deletion.
 
 ## Daily and Weekly Alerts {/*daily-and-weekly-alerts*/}

@@ -22,7 +22,7 @@ A condition consists of the following components:
     -   **>:** Greater than. This condition is satisfied when the metric's current value is greater than the threshold value.
     -   **\<=:** Less then or equal to. This condition is satisfied when the metric's current value is less than or equal to the threshold value.
     -   **>=:** Greater than or equal to. This condition is satisfied when the metric's current value is greater than or equal to the threshold value.
--   **Threshold**:** Define the threshold for the selected metric.
+-   **Threshold:** Define the threshold for the selected metric.
 -   **Duration:** Defines the length of time that one or more condition(s) associated with this real-time alert must be satisfied before a notification may be sent.
 
     For example, if you set a 1 minute duration for status code frequency, then the rate for that status code must match or exceed the specified value for an entire minute before a notification is sent. 
@@ -54,7 +54,7 @@ You may create, modify, and delete real-time alerts.
         -   **Status Code Ratio:** This metric monitors status code responses as a percentage of total traffic. Set the **Ratio (%)** option to the desired threshold percentage. 
         -   **Bandwidth:** Set the **Amount** option to a threshold value for the desired bandwidth and then set the **Unit** option to the desired units for the specified threshold.
 
-    6.  Repeat steps i - v as needed.
+    6.  Optional. Add another condition that must also be satisfied before a notification is triggered by repeating steps i - v.
 6.  In the **Emails** option, type an email address to which notifications will be sent and then press ENTER. Repeat this step as needed.
 7.  Click **Create**.
 

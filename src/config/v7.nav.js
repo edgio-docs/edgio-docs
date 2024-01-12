@@ -1,3 +1,8 @@
+const separator = {
+  title: '',
+  path: '',
+};
+
 const nav = {
   title: 'guides',
   path: '/guides',
@@ -93,10 +98,7 @@ const nav = {
               title: 'Error Handling',
               path: 'performance/cdn_as_code/error_handling',
             },
-            {
-              title: '',
-              path: '',
-            },
+            separator,
             {
               title: 'edgio.config.js Configuration',
               path: 'performance/cdn_as_code/edgio_config',
@@ -123,10 +125,7 @@ const nav = {
               title: 'Cache Key',
               path: 'performance/caching/cache_key',
             },
-            {
-              title: '',
-              path: '',
-            },
+            separator,
             {
               title: 'Cache Status Codes',
               path: 'performance/caching/cache_status_codes',
@@ -193,10 +192,7 @@ const nav = {
           title: 'Traditional Sites',
           path: 'performance/traditional_sites',
         },
-        {
-          title: '',
-          path: '',
-        },
+        separator,
         {
           title: 'Compression',
           path: 'performance/compression',
@@ -209,10 +205,7 @@ const nav = {
           title: 'Response',
           path: 'performance/response',
         },
-        {
-          title: '',
-          path: '',
-        },
+        separator,
         {
           title: 'Troubleshooting',
           path: 'performance/troubleshooting',
@@ -229,8 +222,41 @@ const nav = {
       icon: 'edge-functions',
       routes: [
         {
+          title: 'Caching',
+          path: 'edge_functions/caching',
+        },
+        {
+          title: 'Fetching from Cloud Functions',
+          path: 'edge_functions/fetch_cloud_functions',
+        },
+        {
           title: 'HtmlTransformer',
           path: 'edge_functions/htmltransformer',
+        },
+        separator,
+        {
+          title: 'JSON Responses',
+          path: 'edge_functions/example_json_responses',
+        },
+        {
+          title: 'Content Stitching',
+          path: 'edge_functions/example_content_stitching',
+        },
+        {
+          title: 'Header Manipulation',
+          path: 'edge_functions/example_header_manipulation',
+        },
+        {
+          title: 'Redirects',
+          path: 'edge_functions/example_redirects',
+        },
+        {
+          title: 'Request Signing',
+          path: 'edge_functions/example_request_signing',
+        },
+        {
+          title: 'Waiting Room',
+          path: 'edge_functions/example_waiting_room',
         },
       ],
     },
@@ -256,10 +282,7 @@ const nav = {
           title: 'TLS Certificates',
           path: 'security/tls_certificates',
         },
-        {
-          title: '',
-          path: '',
-        },
+        separator,
         {
           title: 'Web Application Firewall (WAF)',
           path: 'security/waf',
@@ -303,6 +326,10 @@ const nav = {
         {
           title: 'Recent Event Logs',
           path: 'security/recent_event_logs',
+        },
+        {
+          title: 'Matched On Variables',
+          path: 'security/matched_on_variables',
         },
         {
           title: 'Response to Client',
@@ -538,10 +565,7 @@ const nav = {
               title: 'Web Server Log Delivery',
               path: 'logs/rtld/web_server_log_delivery',
             },
-            {
-              title: '',
-              path: '',
-            },
+            separator,
             {
               title: 'Filtering Log Data',
               path: 'logs/rtld/filtering_log_data',
@@ -558,10 +582,7 @@ const nav = {
               title: 'Log Data Verification',
               path: 'logs/rtld/log_data_verification',
             },
-            {
-              title: '',
-              path: '',
-            },
+            separator,
             {
               title: 'Log Fields (RTLD CDN)',
               path: 'logs/rtld/log_fields_rtld_cdn',
@@ -604,10 +625,7 @@ const nav = {
               path: '/rest_api/',
               external: true,
             },
-            {
-              title: '',
-              path: '',
-            },
+            separator,
             {
               title: 'Legacy Purge (Clear-Cache)',
               path: 'develop/rest_api/cache_purge',
@@ -649,10 +667,7 @@ const nav = {
           title: 'Response Headers',
           path: '/guides/performance/response#response-headers',
         },
-        {
-          title: '',
-          path: '',
-        },
+        separator,
         {
           title: 'Rules - Match Conditions',
           path: '/guides/performance/rules/conditions',
@@ -669,10 +684,7 @@ const nav = {
           title: 'Rules - Operators',
           path: '/guides/performance/rules/operators',
         },
-        {
-          title: '',
-          path: '',
-        },
+        separator,
         {
           title: 'edgio.config.js Configuration',
           path: '/guides/performance/cdn_as_code/edgio_config',
@@ -691,10 +703,7 @@ const nav = {
           title: 'CLI',
           path: '/guides/develop/cli#commands',
         },
-        {
-          title: '',
-          path: '',
-        },
+        separator,
         {
           title: 'REST API Reference',
           path: '/rest_api/',
@@ -704,10 +713,7 @@ const nav = {
           title: 'Legacy Purge API',
           path: '/guides/develop/rest_api/cache_purge',
         },
-        {
-          title: '',
-          path: '',
-        },
+        separator,
         {
           title: 'RTLD CDN',
           path: '/guides/logs/rtld/log_fields_rtld_cdn',

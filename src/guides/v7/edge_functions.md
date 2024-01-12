@@ -16,16 +16,18 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 Define an edge function within your {{ ROUTES_FILE }} file by adding the `edge_function` property to a route. The `edge_function` property accepts a string representing the path to the edge function file.
 
 ```js filename="./routes.js"
-new Router()
+import {Router} from '@edgio/core/router';
+
+export default new Router()
   .get('/', {
     edge_function: './edge-functions/index.js',
   })
   .match('/api/*', {
-    edge_function: './edge-functions/api.ts',
+    edge_function: './edge-functions/api.js',
   });
 ```
 
-Each edge function is stored in a separate file and assigned to a specific route in your `routes.js` file. Edge functions support both JavaScript and TypeScript files.
+Each edge function is stored in a separate file and assigned to a specific route in your `routes.js` file. Edge functions support only JavaScript (`.js`) files.
 
 An edge function file must export the following entry point:
 
@@ -208,13 +210,13 @@ export async function handleHttpRequest(request, context) {
 
 <Callout type="important">
  
-As of v7.2.3, the `context.respondWith()` function is deprecated. You must return a `Response` object or a `Promise` that resolves to a `Response` object to respond to the client.
+  As of v7.2.3, the `context.respondWith()` function is deprecated. You must return a `Response` object or a `Promise` that resolves to a `Response` object to respond to the client.
 
 </Callout>
 
 ## Origin Requests Using fetch() {/* origin-requests-using-fetch */}
 
-Before issuing a fetch request (also known as a subrequest) to an origin, you must define an origin configuration within the `{{ CONFIG_FILE }}` file:
+Before issuing a fetch request to an origin, you must define an origin configuration within the `{{ CONFIG_FILE }}` file:
 
 ```js filename="{{ CONFIG_FILE }}"
 module.exports = {
@@ -326,52 +328,48 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-<!-- ## Caching fetch() Requests {/* caching-fetch-requests */}
+### Caching fetch() Requests {/* caching-fetch-requests */}
 
-Caching fetch requests within your edge function can reduce the load on your origins and deliver content faster to your users. It may also mitigate timeout issues due to an edge function exceeding the [walltime limit](#limitations).
+See the [Edge Function Caching](/guides/edge_functions/caching) guide for more information on caching origin fetch requests.
 
-In this section, we'll cover how to use the caching options as part of the `fetch()` method. These options are specified per fetch request and are completely separate from the caching options specified in {{ROUTES_FILE}}.
+### Fetch Limitations {/* fetch-limitations */}
 
-The following sample code shows how to define caching options inside the `edgio` object:
+Response status codes of `fetch()` requests must:
 
-```js
-const resp = await fetch('https://your-server.com/some-path', {
-  edgio: {
-    origin: 'web',
-    caching: {
-      max_age: '1d',
-      stale_while_revalidate: '1h',
-      tags: 'apple banana',
-      bypass_cache: false,
+- Be greater than or equal to 200.
+- Be less than or equal to 599.
+- Not be 204 or 304.
+
+If the response status code does not meet these criteria, the edge function will throw an error. It may be necessary to remove specific cache directives from the request before sending it to the origin.
+
+The following sample code strips the cache directive headers from the request before sending it to the origin:
+
+```js filename="./edge-functions/example.js"
+export async function handleHttpRequest(request) {
+  /* ... */
+
+  // Remove headers that could cause the a response status of 204/304 to be returned.
+  const headersToRemove = [
+    'etag',
+    'if-modified-since',
+    'if-none-match',
+    'last-modified',
+  ];
+  headersToRemove.forEach((header) => request.headers.delete(header));
+
+  const response = await fetch(request.url, {
+    edgio: {
+      origin: 'web',
     },
-  },
-});
-``` -->
+    method: request.method,
+    headers: request.headers,
+  });
 
-<!-- ### Caching Options {/* caching-options */}
+  // handle the response as needed
 
-- `max_age`: Specifies the maximum amount of time that a fetched response is considered fresh. This value is set as a duration string, which is a number followed by a time unit character. Supported time unit characters are `d` for days, `h` for hours, `m` for minutes, and `s` for seconds. For example, `"1h"` represents 1 hour. This setting overrides the `max-age` directive in the `Cache-Control` header of the origin response if present.
-- `stale_while_revalidate`: Specifies the amount of time a stale response is served while a revalidation request is made in the background. This value is also set as a duration string similar to `max_age`. This setting overrides the `stale-while-revalidate` directive in the `Cache-Control` header of the origin response if present.
-- `tags`: Allows you to specify a space-separated list of tags for the cached object, which can later be used for cache purging as [surrrogate keys](/guides/performance/caching/purging#surrogate-key). Each tag should be a string without spaces.
-- `bypass_cache`: A boolean value that, when set to `true`, bypasses the cache for the fetch request, ensuring the request is sent directly to the origin and the response is not stored in the cache.
-
-These caching options provide you with granular control over how your fetch requests are cached and served, allowing you to optimize the performance of your edge function. -->
-
-### Cache Behavior of Subrequests {/* cache-behavior-of-subrequests */}
-
-Edge function subrequests are cached at the edge for 5 minutes under the following conditions:
-
-- The response from the origin does not include a `Cache-Control` header.
-- The response is deemed cacheable based on our [default caching policy](/guides/performance/caching#default-caching-policy).
-
-This means that if you make a fetch request to the same URL within 5 minutes, the response will be served from the cache instead of going to the origin. <!-- This behavior can be overridden by specifying the `bypass_cache` option. --> Cache directives from the origin response will also be respected as follows:
-
-- If the origin responds with a `Cache-Control` HTTP header containing valid directives, these directives will be respected. For example:
-  - With `Cache-Control: max-age=60, s-maxage=900`, the fetch request will be cached for 15 minutes, considering `s-maxage=900`.
-  - With `Cache-Control: max-age=600`, the response will be cached for 10 minutes, considering `max-age=600`.
-  - With `Cache-Control: no-store, no-cache`, the response will not be cached.
-- If the `Cache-Control` header is not present for a cache-eligible response, the CDN will check for the `Expires` header.
-- If the response is cached based on the above logic, subsequent fetch requests will be served from cache until the cached response has expired or been purged. At which point, the fetch request will go to the origin.
+  return response;
+}
+```
 
 ## Testing Locally {/* testing-locally */}
 
@@ -550,98 +548,3 @@ It's worth noting that not all implementations will be able to accept polyfills,
   siteUrl="https://edgio-community-examples-v7-edge-functions-live.edgio.link/"
   repoUrl="https://github.com/edgio-docs/edgio-v7-edge-functions-example"
 />
-
-See additional examples of how to use Edge Functions by {{ PRODUCT }}:
-
-```js filename="./routes.js"
-// Example router assigning edge functions to different routes.
-new Router()
-  .get('/', {
-    edge_function: './edge-functions/home-page.js',
-  })
-  .get('/products/:id', {
-    edge_function: './edge-functions/product.js',
-  })
-  .get('/contacts', {
-    edge_function: './edge-functions/contacts.js',
-  });
-```
-
-```js filename="./edge-functions/home-page.js"
-import createFetchForOrigin from './polyfills/createFetchForOrigin';
-
-const fetch = createFetchForOrigin('legacy_server');
-
-// Example edge function that injects a header into the response
-export async function handleHttpRequest(request, context) {
-  // Forward the incoming request to the defined origin server.
-  const response = await fetch(request);
-
-  // Add a header to the response from the origin server.
-  response.headers.set('X-Edge-Function', 'home-page.js');
-
-  // Return the response and end the edge function.
-  return resp;
-}
-```
-
-```js filename="./edge-functions/product.js"
-import createFetchForOrigin from './polyfills/createFetchForOrigin';
-
-const fetch = createFetchForOrigin('json_api_server');
-
-// Example edge function that modifies a response from the origin server
-export async function handleHttpRequest(request, context) {
-  // Forward the incoming request to the defined origin server.
-  const response = await fetch(request);
-
-  // Parse the response body as JSON
-  const body = await response.json();
-
-  // Add the customer's postal_code to the json response
-  body.postal_code = context.geo.postal_code;
-
-  // Return the response and end the edge function.
-  // Note: Since the original response body is read-only,
-  // we must create a new response with the updated body.
-  const jsonBody = JSON.stringify(body);
-
-  return new Response(jsonBody, response);
-}
-```
-
-```js filename="./edge-functions/contacts.js"
-import createFetchForOrigin from './polyfills/createFetchForOrigin';
-
-const fetch = createFetchForOrigin('json_api_server');
-
-// Example edge function makes multiple fetches
-export async function handleHttpRequest(request, context) {
-  const myBackend = 'http://api.backend-example.com';
-
-  // Get the list of phone contacts
-  const phonePromise = fetch(new Request(`${myBackend}/phone`));
-
-  // In Parallel, get the list of e-mail contacts
-  const emailPromise = fetch(new Request(`${myBackend}/email`));
-
-  // Wait for both requests to complete.
-  const [phoneResponse, emailResponse] = await Promise.all([
-    phonePromise,
-    emailPromise,
-  ]);
-
-  // Combine the two response bodies into a single response
-  const body = {
-    phone: await phoneResponse.json(),
-    email: await emailResponse.json(),
-  };
-
-  // Return the response and end the edge function as JSON
-  const jsonBody = JSON.stringify(body);
-
-  return new Response(jsonBody, 200, {
-    headers: {'Content-Type': 'application/json'},
-  });
-}
-```

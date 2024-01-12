@@ -741,3 +741,5 @@ This sample scenario examines how four clients will be affected by rate rules.
           Notice that a different rate rule is applied to these requests, even though they originate from the same client.
 
         </Callout>
+
+{{ security_version_control.md }}

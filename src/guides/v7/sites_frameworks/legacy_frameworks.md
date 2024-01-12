@@ -2,12 +2,14 @@
 title: Legacy Framework Support
 ---
 
-As of v7.6.0, {{ PRODUCT }} has dropped the previously-supported frameworks listed below. For current framework support, refer to the [supported frameworks guide](/guides/sites_frameworks/getting_started).
+{{ PRODUCT }} v7.5.0 and below integrates the frameworks listed below through framework-specific connectors. These connectors are unsupported for use with {{ PRODUCT }} v7.6.0.
 
-## Legacy Frameworks {/*legacy-frameworks*/}
+<Callout type="important">
 
-The following frameworks are supported by {{ PRODUCT }} v7.5.0 and earlier:
+  If your project uses one of these frameworks, then we recommend integrating it through our generic [Node.js connector](/guides/sites_frameworks/getting_started/nodejs_connector) instead.
+
+</Callout>
 
 <V7LegacyFrameworks />
 
-If you wish to use a later version of {{ PRODUCT }} or your framework is not listed, we recommend implementing the generic [Node.js connector](/guides/sites_frameworks/getting_started/nodejs_connector), which enables integration with {{ PRODUCT }} for various frameworks, irrespective of the version.
+[View additional frameworks.](/guides/sites_frameworks/getting_started)

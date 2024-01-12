@@ -9,7 +9,7 @@ There are two types of alerts:
 
 ## Real-Time Alerts {/*real-time-alerts*/}
 
-Receive email notifications when one or more condition(s) for a specific environment are met. For example, you can receive a notification when the number of `404 Not Found` responses exceeds 10 per second or when your bandwidth is less than 100 Megabits per second.
+Receive email notifications when the condition(s) defined for a specific environment are met. For example, you can receive a notification when the number of `404 Not Found` responses exceeds 10 per second or when your bandwidth is less than 100 Megabits per second.
 
 A condition consists of the following components:
 
@@ -17,15 +17,21 @@ A condition consists of the following components:
     -   **Status Code Frequency:** Tracks the number of times that a specific status code or class of status codes (e.g., 4xx or 5xx) occurs per second.
     -   **Status Code Ratio:** Tracks a specific status code or class of status codes as a percentage of total traffic.
     -   **Bandwidth:** Tracks the amount of traffic flowing through our network. 
--   **Operator:** Establishes the relationship between the metric and the value assigned to it. 
+-   <a id="operator" />**Operator:** Establishes the relationship between the metric and the value assigned to it. 
     -   **<:** Less than. This condition is satisfied when the metric's current value is less than the value specified within the **Value** option.
     -   **>:** Greater than. This condition is satisfied when the metric's current value is greater than the value specified within the **Value** option.
     -   **<=:** Less then or equal to. This condition is satisfied when the metric's current value is less than or equal to the value specified within the **Value** option.
     -   **>=:** Greater than or equal to. This condition is satisfied when the metric's current value is greater than or equal to the value specified within the **Value** option.
--   **Value:** Sets the threshold for the selected metric.
+-   **Threshold**:** Define the threshold for the selected metric.
 -   **Duration:** Defines the length of time that one or more condition(s) associated with this real-time alert must be satisfied before a notification may be sent.
 
     For example, if you set a 1 minute duration for status code frequency, then the rate for that status code must match or exceed the specified value for an entire minute before a notification is sent. 
+
+<Callout type="info">
+
+  You may create multiple alerts per environment and each alert may contain multiple conditions. A notification will not be triggered until all of its conditions have been satisfied. 
+
+</Callout>
 
 ### Managing Real-Time Alerts {/*managing-real-time-alerts*/}
 
@@ -42,8 +48,12 @@ You may create, modify, and delete real-time alerts.
     1.  Click **+ Add**.
     2.  Select the desired metric. 
     3.  If you selected a status code metric, then set the **Status code** option to the desired status code or status code class (e.g., 4xx).
-    4.  From the **Operator** option, select the mathematical operator that establishes the relationship between the selected metric and a threshold value.
-    5.  In the **Value** option, specify the threshold value that must be met.
+    4.  From the **Operator** option, select the [mathematical operator](#operator) that establishes the relationship between the selected metric and a threshold value.
+    5.  Specify the threshold value that must be met.
+        -   **Status Code Frequency:** Set the **Frequency (per sec)** option to a threshold value for the number of responses that result in the specified status code or status class per second. 
+        -   **Status Code Ratio:** This metric monitors status code responses as a percentage of total traffic. Set the **Ratio (%)** option to the desired threshold percentage. 
+        -   **Bandwidth:** Set the **Amount** option to a threshold value for the desired bandwidth and then set the **Unit** option to the desired units for the specified threshold.
+
     6.  Repeat steps i - v as needed.
 6.  In the **Emails** option, type an email address to which notifications will be sent and then press ENTER. Repeat this step as needed.
 7.  Click **Create**.

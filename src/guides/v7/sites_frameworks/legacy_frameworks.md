@@ -2,19 +2,17 @@
 title: Legacy Connectors
 ---
 
-As of v7.6.0, {{ PRODUCT }} has discontinued connector support for the following frameworks. You may continue to deploy your framework by either:
+{{ PRODUCT }} v7.5.0 and below integrates the frameworks listed below through framework-specific connectors. These connectors are unsupported for use with {{ PRODUCT }} v7.6.0.
 
-- [Pinning your {{ PRODUCT }} version](#pinning-your-version) to v7.5.0 or earlier. 
-- Implementing the generic [Node.js connector](/guides/sites_frameworks/getting_started/nodejs_connector).
+<Callout type="important">
 
-If you wish to use a later version of {{ PRODUCT }} or your framework is not listed, we recommend implementing the generic [Node.js connector](/guides/sites_frameworks/getting_started/nodejs_connector), which enables integration with {{ PRODUCT }} for various frameworks, irrespective of the version.
+  If your project uses one of these frameworks, then we recommend integrating it through our generic [Node.js connector](/guides/sites_frameworks/getting_started/nodejs_connector) instead.
 
-## Legacy Connectors {/*legacy-connectors*/}
-
-The following frameworks are supported by {{ PRODUCT }} v7.5.0 and earlier:
+</Callout>
 
 <V7LegacyFrameworks />
 
+[View additional frameworks.](/guides/sites_frameworks/getting_started)
 
 ## Pinning Your {{ PRODUCT }} Version {/*pinning-your-version*/}
 

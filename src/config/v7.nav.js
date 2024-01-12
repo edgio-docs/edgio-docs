@@ -316,7 +316,7 @@ const nav = {
       icon: 'book-plain',
       routes: [
         {
-          title: 'Supported Frameworks',
+          title: 'Frameworks',
           path: 'sites_frameworks/getting_started',
           routes: [
             {

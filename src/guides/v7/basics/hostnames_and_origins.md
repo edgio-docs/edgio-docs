@@ -162,8 +162,8 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
 
     1.  In the **Origin Hostname** option, type a hostname or IP address that points to your web server(s).
     2.  Optional. Set the **Port** option to the port over which our network will serve traffic to the above hostname or IP address.    
-    3.  Set the **Scheme** option to always serve traffic to your hosts over HTTPS, HTTP, or to match the client's scheme.
-    4.  Optional. Set the **IP Version Preference** option to define a preference on how {{ PRODUCT }} will [resolve a hostname](#origin-hostname-resolution*/) defined within the **Origin Hostname** option.
+    3.  Optional. Set the **IP Version Preference** option to define a preference on how {{ PRODUCT }} will [resolve a hostname](#origin-hostname-resolution) defined within the **Origin Hostname** option.
+    4.  Set the **Scheme** option to always serve traffic to your hosts over HTTPS, HTTP, or to match the client's scheme.
     5.  Optional. [Override the client's Host header](#override-host-header) by setting the **Override Host Header** option to the desired hostname. 
     6.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.i - 4.v. 
     7.  Optional. Set the **Balancer type** option to the desired load balancing mode for requests proxied to your web servers. 
@@ -290,7 +290,7 @@ The manner in which an unavailable server affects load balancing is described be
 
 ### Origin Hostname Resolution {/*origin-hostname-resolution*/}
 
-Before {{ PRODUCT }} may proxy requests to your origin, it must resolve each hostname set within an origin configuration's **Origin Hostname** option. The **IP Version Preference** option determines whether our servers will prefer to resolve a hostname to an IPv4 or IPv6 address. 
+Before {{ PRODUCT }} can proxy requests to your origin, it must resolve each hostname set within an origin configuration's **Origin Hostname** option. The **IP Version Preference** option determines whether our servers will prefer to resolve a hostname to an IPv4 or IPv6 address. 
 
 | Configuration  | Description  |
 |---|---|

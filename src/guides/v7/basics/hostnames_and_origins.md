@@ -174,14 +174,14 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
         Perform either of the following steps:
 
         -   If your web server requires a SNI hint, verify or set the SNI hint through the **Use SNI** option.
-        -   If your web server does not use SNI, then you should disable the **Use SNI** option. 
 
-        <Callout type="info">
+            <Callout type="info">
 
-          Upon enabling SNI, our service will perform a strict check using this hostname against the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake.
+              Upon enabling SNI, our service will perform a strict check using this hostname against the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake.
 
-        </Callout>
+            </Callout>
 
+        -   If your web server does not use SNI, then you should disable the **Use SNI** option. You should also verify that the **Use the following SNI hint and enforce origin SAN/CN checking** option is set to a blank value.
     2.  If your origin servers use a self-signed certificate, then you should toggle the **Allow Self Signed Certs** option to the on position (<Image inline src="/images/v7/icons/toggle-on.png" alt="Toggle on" />).
     3.  Set up [certificate pinning](#certificate-pinning) by adding one or more public keys.
 

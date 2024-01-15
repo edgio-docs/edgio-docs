@@ -161,11 +161,12 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
     ![Define host](/images/v7/basics/origins-add-origin-2.png?width=600)
 
     1.  In the **Origin Hostname** option, type a hostname or IP address that points to your web server(s).
-    2.  Optional. Set the **Port** option to the port over which our network will serve traffic to the above hostname or IP address.
-    3.  Set the **Scheme** option to always serve traffic to your hosts over HTTPS, HTTP, or to match the client's scheme.
-    4.  Optional. [Override the client's Host header](#override-host-header) by setting the **Override Host Header** option to the desired hostname. 
-    5.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.1 - 4.4. 
-    6.  Optional. Set the **Balancer type** option to the desired load balancing mode for requests proxied to your web servers. 
+    2.  Optional. Set the **Port** option to the port over which our network will serve traffic to the above hostname or IP address.    
+    3.  Optional. Set the **IP Version Preference** option to define a preference on how {{ PRODUCT }} will [resolve a hostname](#origin-hostname-resolution) defined within the **Origin Hostname** option.
+    4.  Set the **Scheme** option to always serve traffic to your hosts over HTTPS, HTTP, or to match the client's scheme.
+    5.  Optional. [Override the client's Host header](#override-host-header) by setting the **Override Host Header** option to the desired hostname. 
+    6.  Optional. Add another host to this origin configuration by clicking **+ Add Host** and then performing steps 4.i - 4.v. 
+    7.  Optional. Set the **Balancer type** option to the desired load balancing mode for requests proxied to your web servers. 
 5.  Define TLS settings for this origin configuration through the **Origin TLS Settings** section.
 
     1.  Most web servers require a SNI hint during the TLS handshake. Define this SNI hint through the **Use SNI** option. By default, this option is set to the value assigned to the **Override Host Header** option. 
@@ -173,14 +174,14 @@ On a per environment-basis, define how {{ PRODUCT }} will communicate with your 
         Perform either of the following steps:
 
         -   If your web server requires a SNI hint, verify or set the SNI hint through the **Use SNI** option.
-        -   If your web server does not use SNI, then you should disable the **Use SNI** option. 
 
-        <Callout type="info">
+            <Callout type="info">
 
-          Upon enabling SNI, our service will perform a strict check using this hostname against the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake.
+              Upon enabling SNI, our service will perform a strict check using this hostname against the certificate's Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake.
 
-        </Callout>
+            </Callout>
 
+        -   If your web server does not use SNI, then you should disable the **Use SNI** option. You should also verify that the **Use the following SNI hint and enforce origin SAN/CN checking** option is set to a blank value.
     2.  If your origin servers use a self-signed certificate, then you should toggle the **Allow Self Signed Certs** option to the on position (<Image inline src="/images/v7/icons/toggle-on.png" alt="Toggle on" />).
     3.  Set up [certificate pinning](#certificate-pinning) by adding one or more public keys.
 
@@ -286,6 +287,17 @@ The manner in which an unavailable server affects load balancing is described be
 2.  Upon the expiration of this time period, CDN traffic may once again flow through the corresponding hostname or IP address according to its position within your origin configuration. 
 3.  If the server is still unavailable, then CDN traffic will not be load balanced to the corresponding hostname or IP address for a brief, but slightly longer time period.
 4.  Steps 2 and 3 repeat until the server becomes available.
+
+### Origin Hostname Resolution {/*origin-hostname-resolution*/}
+
+Before {{ PRODUCT }} can proxy requests to your origin, it must resolve each hostname set within an origin configuration's **Origin Hostname** option. The **IP Version Preference** option determines whether our servers will prefer to resolve a hostname to an IPv4 or IPv6 address. 
+
+| Configuration  | Description  |
+|---|---|
+| IPv4 Preferred  | Indicates that our edge servers will resolve hostnames to IPv4 addresses whenever possible. If an IPv4 address for that hostname does not exist, then the hostname will be resolved to an IPv6 address.  |
+| IPv6 Preferred  | Indicates that our edge servers will resolve hostnames to IPv6 addresses whenever possible. If an IPv6 address for that hostname does not exist, then the hostname will be resolved to an IPv4 address.  |
+| IPv4 Only  | Indicates that hostnames will only be resolved to IPv4 addresses.   |
+| IPv6 Only  | Indicates that hostnames will only be resolved to IPv6 addresses.    |
 
 ## Firewall - Allowing {{ PRODUCT }} IP Addresses {/*firewall-allowing-ip-addresses*/}
 

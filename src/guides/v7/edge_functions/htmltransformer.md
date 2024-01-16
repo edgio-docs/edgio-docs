@@ -167,7 +167,7 @@ export async function handleHttpRequest(request, context) {
 
   // Get the HTML from the origin server
   const response = await fetch(request.url, {edgio: {origin: 'api_backend'}});
-  
+
   // Pass the HTML response to the transformer.
   await htmlTransformer.write(response);
 
@@ -217,7 +217,7 @@ This edge function transforms the above HTML to replace `<esi:include ... />` wi
 ### new {/* new */}
 
 ```js
-const htmlTransformer = new HtmlTransformer(transformerDefinitions, callback)
+const htmlTransformer = new HtmlTransformer(transformerDefinitions, callback);
 ```
 
 Creates a new HtmlTransformer instance. The `transformerDefinitions` is an array of [transformer definitions](#definitions). The `callback` is the function `(chunk) => { ... }` that receives the transformed HTML data chunks.
@@ -225,10 +225,10 @@ Creates a new HtmlTransformer instance. The `transformerDefinitions` is an array
 ### async write(string) {/* write-string */}
 
 ```js
-await htmlTransformer.write('<html><body><h1>Hello World</h1>')
-await htmlTransformer.write('<a href="https://edg.io/">Edgio Homepage</a>')
-await htmlTransformer.write('</body></html>')
-await htmlTransformer.end()
+await htmlTransformer.write('<html><body><h1>Hello World</h1>');
+await htmlTransformer.write('<a href="https://edg.io/">Edgio Homepage</a>');
+await htmlTransformer.write('</body></html>');
+await htmlTransformer.end();
 ```
 
 Writes the string to the transformer stream. This function can be called multiple times.
@@ -237,8 +237,8 @@ Writes the string to the transformer stream. This function can be called multipl
 
 ```js
 const responsePromise = fetch(request.url, {edgio: {origin: 'api_backend'}});
-await htmlTransformer.write(responsePromise)
-await htmlTransformer.end()
+await htmlTransformer.write(responsePromise);
+await htmlTransformer.end();
 ```
 
 Pass the Response's Promise to the transformer stream. This writes the entire response to the transformer as a stream.
@@ -246,11 +246,11 @@ Pass the Response's Promise to the transformer stream. This writes the entire re
 ### async write(Response) {/* write-response */}
 
 ```js
-  const response = await fetch(request.url, {edgio: {origin: 'api_backend'}});
-  if (response.status == 200) {
-    await htmlTransformer.write(response)
-    await htmlTransformer.end()
-  }
+const response = await fetch(request.url, {edgio: {origin: 'api_backend'}});
+if (response.status == 200) {
+  await htmlTransformer.write(response);
+  await htmlTransformer.end();
+}
 ```
 
 Pass the Response Object to the transformer stream. This writes the entire response to the transformer as a stream.
@@ -261,18 +261,19 @@ Pass the Response Object to the transformer stream. This writes the entire respo
 const response = await fetch(request.url, {edgio: {origin: 'api_backend'}});
 if (response.status == 200) {
   if (response.headers.get('content-type') == 'text/html') {
-    const reableStream = response.body
-    await htmlTransformer.write(reableStream)
-    await htmlTransformer.end()
+    const reableStream = response.body;
+    await htmlTransformer.write(reableStream);
+    await htmlTransformer.end();
   }
 }
 ```
 
 Pass the ReadbleStream to the transformer stream. This writes the entire response to the transformer as a stream.
+
 ### async end() {/* end */}
 
 ```js
-await htmlTransformer.end()
+await htmlTransformer.end();
 ```
 
 Flushes the transformer and completes the transformation. This function must be called after the last call to `await htmlTransformer.write()`.
@@ -322,7 +323,7 @@ The HtmlTransformer supports the following selector types: (ref: [lol_html::Sele
 
 <Callout type="info">
 
-  Use a double backslash to escape special characters within an `E` selector. For example, use the selector `esi\\:include[src]` to match `<esi:include src="...">`.
+Use a double backslash to escape special characters within an `E` selector. For example, use the selector `esi\\:include[src]` to match `<esi:include src="...">`.
 
 </Callout>
 
@@ -337,7 +338,7 @@ The Comment class has the following methods:
 | Method                                        | Description                                                                             |
 | --------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `text(): string`                              | Returns the comment text                                                                |
-| `set_text(text: string)`                      | Sets the comment text                                                                   |
+| `set_str(text: string)`                       | Sets the comment text                                                                   |
 | `before(text: string, content_type: string)`  | Inserts the text before the comment. Content type is ['html' or 'text'](#content_types) |
 | `after(text: string, content_type: string)`   | Inserts the text after the comment. Content type is ['html' or 'text'](#content_types)  |
 | `replace(text: string, content_type: string)` | Replaces the comment with the text. Content type is ['html' or 'text'](#content_types)  |
@@ -384,7 +385,7 @@ The Text class has the following methods:
 | Method                                        | Description                                                                                |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | `as_str(): string`                            | Returns the text                                                                           |
-| `set_text(text: string)`                      | Sets the text                                                                              |
+| `set_str(text: string)`                       | Sets the text                                                                              |
 | `text_type(): string`                         | Returns the text type.                                                                     |
 | `last_text_in_node(): boolean`                | Returns true if the chunk is last in a HTML text node.                                     |
 | `before(text: string, content_type: string)`  | Inserts the text before the text chunk. Content type is ['html' or 'text'](#content_types) |

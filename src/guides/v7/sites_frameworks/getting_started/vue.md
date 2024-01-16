@@ -44,7 +44,7 @@ This will automatically add all of the required dependencies and files to your p
 
 {{ INIT_DEFAULT_PACKAGES.md }}
 - The `{{ PACKAGE_NAME }}/vue` package - Provides a `Prefetch` component for prefetching pages.
-- The `{{ PACKAGE_NAME }}/vue-cva` package - Provides build and routing mechanisms for Vue projects.
+- The `{{ PACKAGE_NAME }}/connectors` package - Provides build and routing mechanisms for Vue projects.
 {{ INIT_DEFAULT_FILES.md }}
 
 ## Routing {/*routing*/}
@@ -56,9 +56,9 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 // You should commit this file to source control.
 
 import { Router } from '@edgio/core'
-import { vueRoutes } from '@edgio/vue-cva'
+import { connectorRoutes } from '@edgio/connectors'
 
-export default new Router().use(vueRoutes)
+export default new Router().use(connectorRoutes)
 ```
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.

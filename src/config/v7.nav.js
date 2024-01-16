@@ -391,6 +391,36 @@ const nav = {
         {
           title: 'Legacy Connectors',
           path: 'sites_frameworks/legacy_connectors',
+          routes: [
+            {
+              title: 'Ember Fastboot',
+              path: 'sites_frameworks/legacy_connectors/ember_fastboot',
+            },
+            {
+              title: 'Frontity',
+              path: 'sites_frameworks/legacy_connectors/frontity',
+            },
+            {
+              title: 'Gatsby',
+              path: 'sites_frameworks/legacy_connectors/gatsby',
+            },
+            {
+              title: 'Hexo',
+              path: 'sites_frameworks/legacy_connectors/hexo',
+            },
+            {
+              title: 'Mkdocs',
+              path: 'sites_frameworks/legacy_connectors/mkdocs',
+            },
+            {
+              title: 'Razzle',
+              path: 'sites_frameworks/legacy_connectors/razzle',
+            },
+            {
+              title: 'Sanity',
+              path: 'sites_frameworks/legacy_connectors/sanity',
+            },
+          ],
         },
         {
           title: 'Connectors',

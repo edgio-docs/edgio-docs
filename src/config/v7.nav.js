@@ -378,129 +378,19 @@ const nav = {
               title: 'React',
               path: 'sites_frameworks/getting_started/react',
             },
-          ],
-        },
-        {
-          title: 'Legacy Framework Support',
-          path: 'sites_frameworks/legacy_frameworks',
-          routes: [
-            {
-              title: 'Brunch',
-              path: 'sites_frameworks/legacy_frameworks/brunch',
-            },
-            {
-              title: 'Docusaurus',
-              path: 'sites_frameworks/legacy_frameworks/docusaurus',
-            },
-            {
-              title: 'Dojo',
-              path: 'sites_frameworks/legacy_frameworks/dojo',
-            },
-            {
-              title: 'Eleventy',
-              path: 'sites_frameworks/legacy_frameworks/eleventy',
-            },
-            {
-              title: 'Ember.js',
-              path: 'sites_frameworks/legacy_frameworks/ember',
-            },
-            {
-              title: 'Ember Fastboot',
-              path: 'sites_frameworks/legacy_frameworks/ember_fastboot',
-            },
-            {
-              title: 'Frontity',
-              path: 'sites_frameworks/legacy_frameworks/frontity',
-            },
-            {
-              title: 'Gatsby',
-              path: 'sites_frameworks/legacy_frameworks/gatsby',
-            },
-            {
-              title: 'Gridsome',
-              path: 'sites_frameworks/legacy_frameworks/gridsome',
-            },
-            {
-              title: 'Hexo',
-              path: 'sites_frameworks/legacy_frameworks/hexo',
-            },
-            {
-              title: 'Hugo',
-              path: 'sites_frameworks/legacy_frameworks/hugo',
-            },
-            {
-              title: 'Ionic React',
-              path: 'sites_frameworks/legacy_frameworks/ionic_react',
-            },
-            {
-              title: 'Ionic Vue',
-              path: 'sites_frameworks/legacy_frameworks/ionic_vue',
-            },
-            {
-              title: 'Jekyll',
-              path: 'sites_frameworks/legacy_frameworks/jekyll',
-            },
-            {
-              title: 'MkDocs',
-              path: 'sites_frameworks/legacy_frameworks/mkdocs',
-            },
-            {
-              title: 'Preact',
-              path: 'sites_frameworks/legacy_frameworks/preact',
-            },
-            {
-              title: 'Razzle',
-              path: 'sites_frameworks/legacy_frameworks/razzle',
-            },
-            {
-              title: 'React Static',
-              path: 'sites_frameworks/legacy_frameworks/react_static',
-            },
-            {
-              title: 'Remix',
-              path: 'sites_frameworks/legacy_frameworks/remix',
-            },
-            {
-              title: 'Saber',
-              path: 'sites_frameworks/legacy_frameworks/saber',
-            },
-            {
-              title: 'Sanity',
-              path: 'sites_frameworks/legacy_frameworks/sanity',
-            },
-            {
-              title: 'SolidJS',
-              path: 'sites_frameworks/legacy_frameworks/solid',
-            },
-            {
-              title: 'Static HTML/JS',
-              path: 'sites_frameworks/legacy_frameworks/static_sites',
-            },
-            {
-              title: 'Stencil',
-              path: 'sites_frameworks/legacy_frameworks/stencil',
-            },
             {
               title: 'SvelteKit',
-              path: 'sites_frameworks/legacy_frameworks/sveltekit',
-            },
-            {
-              title: 'VitePress',
-              path: 'sites_frameworks/legacy_frameworks/vitepress',
+              path: 'sites_frameworks/getting_started/sveltekit',
             },
             {
               title: 'Vue.js',
-              path: 'sites_frameworks/legacy_frameworks/vue',
-            },
-            {
-              title: 'VuePress',
-              path: 'sites_frameworks/legacy_frameworks/vuepress',
-            },
-            {
-              title: 'Zola',
-              path: 'sites_frameworks/legacy_frameworks/zola',
+              path: 'sites_frameworks/getting_started/vue',
             },
           ],
+        },
+        {
+          title: 'Legacy Connectors',
+          path: 'sites_frameworks/legacy_connectors',
         },
         {
           title: 'Connectors',

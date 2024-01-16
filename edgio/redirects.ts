@@ -170,8 +170,4 @@ export default <Array<Redirect>>[
   ],
   ['/guides/v7/performance/experiments', '/guides/v7/experimentation'],
   ['/guides/v7/edge-functions', '/guides/v7/edge_functions'],
-  [
-    /\/guides\/v7\/sites_frameworks\/getting_started\/(brunch|docusaurus|dojo|eleventy|ember|ember_fastboot|frontity|gatsby|gridsome|hexo|hugo|ionic_react|ionic_vue|jekyll|lit|mkdocs|preact|razzle|react_static|redwoodjs|remix|saber|sanity|solid|static_sites|stencil|vitepress|vuepress|zola)/,
-    '/guides/v7/sites_frameworks/legacy_frameworks/$1',
-  ],
 ];

@@ -2,7 +2,7 @@
 title: Hexo
 ---
 
-{{ sites_connector_deprecated.md }}
+{{ sites_connector_eol.md }}
 
 This guide shows you how to deploy a [Hexo](https://hexo.io/) application to {{ PRODUCT }}.
 

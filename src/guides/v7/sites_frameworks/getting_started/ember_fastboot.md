@@ -2,7 +2,7 @@
 title: Fastboot
 ---
 
-{{ sites_connector_deprecated.md }}
+{{ sites_connector_eol.md }}
 
 This guide shows you how to deploy an [Ember Fastboot](https://ember-fastboot.com/) application to {{ PRODUCT }}.
 

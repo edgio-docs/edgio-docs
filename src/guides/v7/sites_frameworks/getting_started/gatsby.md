@@ -2,7 +2,7 @@
 title: Gatsby
 ---
 
-{{ sites_connector_deprecated.md }}
+{{ sites_connector_eol.md }}
 
 This guide shows you how to deploy an [Gatsby](https://www.gatsbyjs.com/) application to {{ PRODUCT }}.
 

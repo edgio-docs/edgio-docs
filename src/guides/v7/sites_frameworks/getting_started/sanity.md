@@ -2,7 +2,7 @@
 title: Sanity Studio
 ---
 
-{{ sites_connector_deprecated.md }}
+{{ sites_connector_eol.md }}
 
 This guide shows you how to deploy a [Sanity Studio](https://www.sanity.io/docs/sanity-studio) application to {{ PRODUCT }}.
 

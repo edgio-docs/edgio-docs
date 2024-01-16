@@ -2,7 +2,7 @@
 title: Razzle
 ---
 
-{{ sites_connector_deprecated.md }}
+{{ sites_connector_eol.md }}
 
 This guide shows you how to deploy a [Razzle](https://razzlejs.org/) application to {{ PRODUCT }}.
 

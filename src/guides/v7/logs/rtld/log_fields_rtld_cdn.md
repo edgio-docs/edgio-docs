@@ -54,7 +54,7 @@ Log data is reported as a JSON document. Log format determines whether log data 
 
 Top-level name/value pairs are described below.
 
--   **account_number (*String*):** Customer AN. (Category: General) Identifies an environment by its system-defined ID. 
+-   **account_number (*String*):** Customer AN. Identifies an environment by its system-defined ID. 
 -   **agent_id (*String*):** Agent ID. Indicates the unique ID that identifies the Real-Time Log Delivery software agent that generated the log data.
 -   **datestamp (*String*):** Date Stamp. Indicates the date on which the log data was generated.
 
@@ -78,7 +78,7 @@ The `logs` array contains an object for each log entry associated with the curre
 
     The following value will be reported for this field: `joe`
 
--   **background_fill_wait_time(*Decimal*):** Background Fill Wait Time. (Category: Network) Indicates the amount of time, in seconds, that it took for a sub-request to receive the first byte of the response.
+-   **background_fill_wait_time(*Decimal*):** Background Fill Wait Time. (Category: Performance) Indicates the amount of time, in seconds, that it took for a sub-request to receive the first byte of the response.
 
     **Syntax:** `<SECONDS>.<MICROSECONDS>`
 
@@ -119,9 +119,9 @@ The `logs` array contains an object for each log entry associated with the curre
     -   **INET:** IPv4
     -   **INET6:** IPv6
 
--   **client_ip (*String*):** IP Address. (Category: Client Network) Indicates the IP address for the computer that submitted the request to our CDN.
+-   **client_ip (*String*):** IP Address. (Category: Client Network) Indicates the IP address for the device that submitted the request to our CDN.
 -   **client_isp (*String*):** ISP. (Category: Client Network) Indicates the Internet Service Provider (ISP) associated with the client's IP address.
--   **client_port (*Integer*):** Port. (Category: Client Network) Indicates the port number on the client's computer to which the HTTP response was directed.
+-   **client_port (*Integer*):** Port. (Category: Client Network) Indicates the port number on the client's device to which the HTTP response was directed.
 -   **client_protocol (*String*):** Protocol. (Category: Request) Indicates the HTTP protocol and version defined within the client's request. Valid values are:
 
     `HTTP_1_0 | HTTP_1_1 | HTTP_2_0`
@@ -131,6 +131,7 @@ The `logs` array contains an object for each log entry associated with the curre
 
     **Example:** `TLS_AES_256_GCM_SHA384`
 
+-   **client_tls_ja3_md5 (*String*):** JA3 MD5 Hash. (Category: Request) Indicates the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic across various IP addresses and ports.
 -   **client_tls_version (*String*):** TLS Version. (Category: Request) Indicates the TLS protocol version used for the communication between the client and our network.
 
     **Example:** `TLSv1.3`
@@ -227,6 +228,7 @@ The `logs` array contains an object for each log entry associated with the curre
 
     The `path` field always reports the requested URL's relative path, while `rewritten_path` reports the relative path after the [URL has been rewritten](/guides/performance/rules/features#rewrite-url).
 
+-   **rl_alert (*Integer*):** RL Alert. (Category: Response) Returns `1` for a request that violated a rate rule whose enforcement action is `Alert only`. Otherwise, returns `0`.
 -   **scheme (*String*):** Scheme. (Category: Request) Indicates the request's scheme. Valid values are: `http | https`
 -   **server_ip (*String*):** Edge Server IP Address. (Category: Network) Indicates the IP address for the edge server that processed the request.
 -   **server_port (*Integer*):** Edge Server Port. (Category: Network) Indicates the port number on an edge server to which the client directed a request. Valid values are:
@@ -265,8 +267,8 @@ The `logs` array contains an object for each log entry associated with the curre
 
     </Callout>
 
--   **waf_audit_alert (*Boolean*):** WAF Audit Alert. (Category: Response) Indicates whether this request violated a WAF rule set (e.g., access rule, custom rule, or managed rule) running in audit mode.
--   **waf_prod_action (*Boolean*):** WAF Production Action. (Category: Response) Indicates whether this request triggered a non-alert enforcement action for a WAF rule set (e.g., access rule, custom rule, or managed rule) running in production mode.
+-   **waf_audit_alert (*Integer*):** WAF Audit Alert. (Category: Response) Returns `1` for a request that violated a WAF rule set (e.g., access rule, custom rule, or managed rule) running in audit mode. Otherwise, returns `0`.
+-   **waf_prod_action (*Integer*):** WAF Production Action. (Category: Response) Returns `1` for a request that triggered a non-alert enforcement action for a WAF rule set (e.g., access rule, custom rule, or managed rule) running in production mode. Otherwise, returns `0`.
 
     <Callout type="info">
 
@@ -274,13 +276,13 @@ The `logs` array contains an object for each log entry associated with the curre
 
     </Callout>
 
--   **waf_prod_alert (*Boolean*):** WAF Production Alert. (Category: Response) Indicates whether this request triggered an alert for a WAF rule set (e.g., access rule, custom rule, or managed rule) running in production mode.
+-   **waf_prod_alert (*Integer*):** WAF Production Alert. (Category: Response) Returns `1` for a request that triggered an alert for a WAF rule set (e.g., access rule, custom rule, or managed rule) running in production mode. Otherwise, returns `0`.
 
 -   **write_time (*Decimal*):** Write Time. (Category: Performance) Indicates the length of time, in seconds, that it took an edge server to write the response. This metric measures the duration between when an edge server starts writing the response and when it finishes sending the response to the client.
 
     <Callout type="info">
 
-      Our servers forward data as it is read. This means that the read_time and write_time reported for an asset spans over an overlapping time period.
+      Our servers forward data as it is read. This means that the `read_time` and `write_time` reported for an asset spans over an overlapping time period.
 
     </Callout>
 

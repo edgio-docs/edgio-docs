@@ -61,6 +61,7 @@ import {
 } from 'components/Icon';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
+import {ItemsByVersion} from 'utils/Types';
 
 const StyledFrameworks = styled.div`
   .framework-lists {
@@ -97,7 +98,7 @@ const StyledFrameworks = styled.div`
   }
 `;
 
-const items = {
+const items: ItemsByVersion = {
   '4': [
     {
       title: 'Connectors',
@@ -399,100 +400,10 @@ const items = {
       iconDark: <IconAstroDark />,
     },
     {
-      title: 'Brunch',
-      path: '/guides/sites_frameworks/getting_started/brunch',
-      icon: <IconBrunch />,
-      iconDark: <IconBrunch />,
-    },
-    {
-      title: 'Docusaurus',
-      path: '/guides/sites_frameworks/getting_started/docusaurus',
-      icon: <IconDocusaurus />,
-      iconDark: <IconDocusaurus />,
-    },
-    {
-      title: 'Dojo',
-      path: '/guides/sites_frameworks/getting_started/dojo',
-      icon: <IconDojo />,
-      iconDark: <IconDojo />,
-    },
-    {
-      title: 'Eleventy',
-      path: '/guides/sites_frameworks/getting_started/eleventy',
-      icon: <IconEleventy />,
-      iconDark: <IconEleventyDark />,
-    },
-    {
-      title: 'Ember.js',
-      path: '/guides/sites_frameworks/getting_started/ember',
-      icon: <IconEmberJS />,
-      iconDark: <IconEmberJS />,
-    },
-    {
-      title: 'Ember Fastboot',
-      path: '/guides/sites_frameworks/getting_started/ember_fastboot',
-      icon: <IconEmberFastboot />,
-      iconDark: <IconEmberFastbootDark />,
-    },
-    {
       title: 'Express',
       path: '/guides/sites_frameworks/getting_started/express',
       icon: <IconExpress />,
       iconDark: <IconExpressDark />,
-    },
-    {
-      title: 'Frontity',
-      path: '/guides/sites_frameworks/getting_started/frontity',
-      icon: <IconFrontity />,
-      iconDark: <IconFrontity />,
-    },
-    {
-      title: 'Gatsby',
-      path: '/guides/sites_frameworks/getting_started/gatsby',
-      icon: <IconGatsby />,
-      iconDark: <IconGatsby />,
-    },
-    {
-      title: 'Gridsome',
-      path: '/guides/sites_frameworks/getting_started/gridsome',
-      icon: <IconGridsome />,
-      iconDark: <IconGridsomeDark />,
-    },
-    {
-      title: 'Hexo',
-      path: '/guides/sites_frameworks/getting_started/hexo',
-      icon: <IconHexo />,
-      iconDark: <IconHexo />,
-    },
-    {
-      title: 'Hugo',
-      path: '/guides/sites_frameworks/getting_started/hugo',
-      icon: <IconHugo />,
-      iconDark: <IconHugo />,
-    },
-    {
-      title: 'Ionic React',
-      path: '/guides/sites_frameworks/getting_started/ionic_react',
-      icon: <IconIonicX />,
-      iconDark: <IconIonicX />,
-    },
-    {
-      title: 'Ionic Vue',
-      path: '/guides/sites_frameworks/getting_started/ionic_vue',
-      icon: <IconIonicX />,
-      iconDark: <IconIonicX />,
-    },
-    {
-      title: 'Jekyll',
-      path: '/guides/sites_frameworks/getting_started/jekyll',
-      icon: <IconJekyll />,
-      iconDark: <IconJekyllDark />,
-    },
-    {
-      title: 'MkDocs',
-      path: '/guides/sites_frameworks/getting_started/mkdocs',
-      icon: <IconMKDocs />,
-      iconDark: <IconMKDocsDark />,
     },
     {
       title: 'Next.js',
@@ -513,58 +424,10 @@ const items = {
       iconDark: <IconNuxt />,
     },
     {
-      title: 'Preact',
-      path: '/guides/sites_frameworks/getting_started/preact',
-      icon: <IconPreact />,
-      iconDark: <IconPreact />,
-    },
-    {
-      title: 'Razzle',
-      path: '/guides/sites_frameworks/getting_started/razzle',
-      icon: <IconRazzle />,
-      iconDark: <IconRazzle />,
-    },
-    {
       title: 'React',
       path: '/guides/sites_frameworks/getting_started/react',
       icon: <IconReact />,
       iconDark: <IconReact />,
-    },
-    {
-      title: 'React Static',
-      path: '/guides/sites_frameworks/getting_started/react_static',
-      icon: <IconReactStatic />,
-      iconDark: <IconReactStatic />,
-    },
-    {
-      title: 'Remix',
-      path: '/guides/sites_frameworks/getting_started/remix',
-      icon: <IconRemix />,
-      iconDark: <IconRemixDark />,
-    },
-    {
-      title: 'Saber',
-      path: '/guides/sites_frameworks/getting_started/saber',
-      icon: <IconSaber />,
-      iconDark: <IconSaber />,
-    },
-    {
-      title: 'Sanity',
-      path: '/guides/sites_frameworks/getting_started/sanity',
-      icon: <IconSanity />,
-      iconDark: <IconSanity />,
-    },
-    {
-      title: 'SolidJS',
-      path: '/guides/sites_frameworks/getting_started/solid',
-      icon: <IconSolidJS />,
-      iconDark: <IconSolidJS />,
-    },
-    {
-      title: 'Stencil',
-      path: '/guides/sites_frameworks/getting_started/stencil',
-      icon: <IconStencil />,
-      iconDark: <IconStencilDark />,
     },
     {
       title: 'SvelteKit',
@@ -573,28 +436,54 @@ const items = {
       iconDark: <IconSvelte />,
     },
     {
-      title: 'VitePress',
-      path: '/guides/sites_frameworks/getting_started/vitepress',
-      icon: <IconVitePress />,
-      iconDark: <IconVitePress />,
-    },
-    {
       title: 'Vue.js',
       path: '/guides/sites_frameworks/getting_started/vue',
       icon: <IconVue />,
       iconDark: <IconVue />,
     },
+  ],
+  '7_legacy': [
     {
-      title: 'VuePress',
-      path: '/guides/sites_frameworks/getting_started/vuepress',
-      icon: <IconVitePress />,
-      iconDark: <IconVitePress />,
+      title: 'Ember Fastboot',
+      path: '/guides/sites_frameworks/legacy_connectors/ember_fastboot',
+      icon: <IconEmberFastboot />,
+      iconDark: <IconEmberFastbootDark />,
     },
     {
-      title: 'Zola',
-      path: '/guides/sites_frameworks/getting_started/zola',
-      icon: <IconZola />,
-      iconDark: <IconZolaDark />,
+      title: 'Frontity',
+      path: '/guides/sites_frameworks/legacy_connectors/frontity',
+      icon: <IconFrontity />,
+      iconDark: <IconFrontity />,
+    },
+    {
+      title: 'Gatsby',
+      path: '/guides/sites_frameworks/legacy_connectors/gatsby',
+      icon: <IconGatsby />,
+      iconDark: <IconGatsby />,
+    },
+    {
+      title: 'Hexo',
+      path: '/guides/sites_frameworks/legacy_connectors/hexo',
+      icon: <IconHexo />,
+      iconDark: <IconHexo />,
+    },
+    {
+      title: 'MkDocs',
+      path: '/guides/sites_frameworks/legacy_connectors/mkdocs',
+      icon: <IconMKDocs />,
+      iconDark: <IconMKDocsDark />,
+    },
+    {
+      title: 'Razzle',
+      path: '/guides/sites_frameworks/legacy_connectors/razzle',
+      icon: <IconRazzle />,
+      iconDark: <IconRazzle />,
+    },
+    {
+      title: 'Sanity',
+      path: '/guides/sites_frameworks/legacy_connectors/sanity',
+      icon: <IconSanity />,
+      iconDark: <IconSanity />,
     },
   ],
   default: [
@@ -871,20 +760,20 @@ const items = {
   ],
 };
 
-export default function Frameworks() {
+export default function Frameworks({frameworks = items}) {
   const {
     version,
     version: {toVersionedPath},
   } = useConditioning();
 
-  const routesByColumns = itemsByColumn(items, version, 'title').flat();
+  const routesByColumns = itemsByColumn(frameworks, version, 'title').flat();
 
   return (
     <StyledFrameworks>
       <ul className="framework-lists">
         {routesByColumns.map((route) => (
           <li key={route.path} className="framework-list__item">
-            <Link href={version.toVersionedPath(route.path)} passHref>
+            <Link href={toVersionedPath(route.path)} passHref>
               <a className="framework-link">
                 <div className="icon" id="light-theme">
                   {/* @ts-ignore */}
@@ -902,4 +791,12 @@ export default function Frameworks() {
       </ul>
     </StyledFrameworks>
   );
+}
+
+export function V7LegacyFrameworks() {
+  const legacyFrameworks = {
+    default: items['7_legacy'],
+  };
+
+  return <Frameworks frameworks={legacyFrameworks} />;
 }

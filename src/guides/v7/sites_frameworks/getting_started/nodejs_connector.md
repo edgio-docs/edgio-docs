@@ -49,7 +49,7 @@ When initialization process is finished, {{ PRODUCT }} will automatically add al
 
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/cli` package
-- The `{{ PACKAGE_NAME }}/nodejs-connector` package
+- The `{{ PACKAGE_NAME }}/connectors` package
 - `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }} including the connector [configuration](#nodejs-connector-configuration).
 - `routes.js` - A default routes file that sends all requests to the underlying framework. Update this file to add caching or proxy some URLs to a different origin.
 
@@ -61,12 +61,12 @@ The default `routes.js` file created by `{{ CLI_CMD(init) }}` sends all requests
 // This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
-const {Router} = require('{{ PACKAGE_NAME }}/core/router');
-const {nodejsRoutes} = require('{{ PACKAGE_NAME }}/nodejs-connector');
+const { Router } = require('{{ PACKAGE_NAME }}/core/router');
+const { connectorRoutes } = require('{{ PACKAGE_NAME }}/connectors');
 
 export default new Router()
   // automatically adds all routes from the Node.js connector
-  .use(nodejsRoutes)
+  .use(connectorRoutes)
 ```
 
 See [Routes](/guides/performance/cdn_as_code#routes) for information on defining routes, caching, and more.

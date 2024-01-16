@@ -282,7 +282,7 @@ Troubleshoot this status code by performing the following steps:
     
     `https://origin-1.example.com/`
 
--   Check whether your site requires SNI through your server's configuration or server logs. 
+-   Check whether your site requires SNI by reviewing your server's configuration or log data. 
 
     Alternatively, there are online tools (e.g., [Qualys SSL Labs](https://www.ssllabs.com/ssltest/)) that allow you to check whether your site requires SNI. Submit your origin's hostname to start the test. Once the test is complete, check whether your server requires SNI. For example, SSL Labs returns the following message within the summary section: `This site works only in browsers with SNI support.`
 

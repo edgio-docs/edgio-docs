@@ -196,9 +196,6 @@ Gain insight into why {{ PRODUCT }} returned a specific status code by filtering
 6.  Scroll down to the **Logs** section.
 7.  Inspect each request to gain insight into why this status code is occurring.
 
-    -   `404 Not Found`: Check the `url` and the `referer` field to identify the problematic URL and the URL from which the request originated.
-    -   `502 Bad Gateway`: Check whether the request contains `proxy_hard_error` set to `HARD_ERR_502_SSL_CONNECT_ERROR` to identify a [SNI issue](#502-bad-gateway-status-code). 
-
     <Callout type="tip">
 
       Filter for a specific field by typing the desired name in the upper-right hand search bar.
@@ -220,7 +217,7 @@ Troubleshoot the following common status codes:
 Troubleshoot this status code by performing the following steps:
 
 -   Use Edge Insights, [as described above](#status-codes), to identify the URL and the referrer from which the request originated. Check the `url` and the `referer` field, respectively.
--   If the resource exists and you are using CDN-as-code, use the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer_tools_chrome_extension) to check whether the [request matches a rule](#applied-rules) in your {{ ROUTES_FILE }}.
+-   If the resource exists, use the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer_tools_chrome_extension) to find out which [rules were applied to the request](#applied-rules). Review those rules to identify how the request is being manipulated. 
 
 ### 412 Precondition Failed Status Code {/*412-precondition-failed-status-code*/}
 
@@ -285,13 +282,21 @@ Troubleshoot this status code by performing the following steps:
     
     `https://origin-1.example.com/`
 
--   Use Edge Insights to check whether you need to update your origin configuration's SNI settings.
+-   Check whether your site requires SNI by reviewing your server's configuration or log data. 
 
-    1.  Filter Edge Insights, [as described above](#status-codes) by the `502 Bad Gateway` status code. 
-    2.  Scroll down to the **Logs** section and view a request. 
-    3.  Check whether the request contains `proxy_hard_error` set to `HARD_ERR_502_SSL_CONNECT_ERROR`. 
+    Alternatively, there are online tools (e.g., [Qualys SSL Labs](https://www.ssllabs.com/ssltest/)) that allow you to check whether your site requires SNI. Submit your origin's hostname to start the test. Once the test is complete, check whether your server requires SNI. For example, SSL Labs returns the following message within the summary section: `This site works only in browsers with SNI support.`
+
+    Your origin configuration setup varies according to whether your site requires SNI.
+
+    -   **SNI:** If your site requires SNI, then you should enable your origin configuration's **Use SNI** option and verify that the SNI hint is set to a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN).
     
-    If you see this error, then you need to enable your origin configuration's **Use SNI** option and set the SNI hint to a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN).
+    <Callout type="info">
+    
+      If your site requires SNI and your origin configuration is misconfigured, then Edge Insights will return a `proxy_hard_error` field set to `HARD_ERR_502_SSL_CONNECT_ERROR`. A quick way of checking for this condition is to [filter Edge Insights](#status-codes) by the `502 Bad Gateway` status code and then viewing a request from within the **Logs** section.
+    
+    </Callout>
+    
+    -   **No SNI:** If your site does not require SNI, then you should disable your origin configuration's **Use SNI** option and remove the SNI hint.
 
 -   If the client's `Host` header does not match a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN), then you will need to update the **Override Host Header** option.
 -   If you are using a self-signed certificate, then you must enable the **Allow Self-Signed Certs** option on the desired origin configuration.

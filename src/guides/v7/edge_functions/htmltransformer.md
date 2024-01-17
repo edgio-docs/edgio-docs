@@ -338,7 +338,7 @@ The Comment class has the following methods:
 | Method                                        | Description                                                                             |
 | --------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `text(): string`                              | Returns the comment text                                                                |
-| `set_str(text: string)`                       | Sets the comment text                                                                   |
+| `set_text(text: string)`                      | Sets the comment text                                                                   |
 | `before(text: string, content_type: string)`  | Inserts the text before the comment. Content type is ['html' or 'text'](#content_types) |
 | `after(text: string, content_type: string)`   | Inserts the text after the comment. Content type is ['html' or 'text'](#content_types)  |
 | `replace(text: string, content_type: string)` | Replaces the comment with the text. Content type is ['html' or 'text'](#content_types)  |

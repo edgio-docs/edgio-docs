@@ -2,27 +2,33 @@
 title: Migrating from Cloudflare Workers to Edge Functions
 ---
 
-This guide covers migrating from Cloudflare Workers to {{ PRODUCT }} Edge Functions. It will cover key differences, practical steps for migration, and provide reference examples to convert common Cloudflare Worker snippets into their Edge Function equivalents.
+This guide offers a high-level overview and illustrative examples for migrating from Cloudflare Workers to {{ PRODUCT }} Edge Functions. It is intended to assist developers who are familiar with Cloudflare Workers in understanding how similar functionalities can be achieved in Edge Functions. This guide does not delve into detailed differences between the two platforms or provide a step-by-step migration process. Instead, it focuses on presenting key aspects and code snippets to demonstrate the transition.
 
-## Migrating from Cloudflare Workers to Edge Functions {/* migrating-from-cloudflare-workers-to-edge-functions */}
+## Key Information {/* key-information */}
 
-### Function Structure {/* function-structure */}
+1. **Function Structure**
+
    - Cloudflare: `export default { async fetch(request) { ... } }`
    - {{ PRODUCT }}: `export async function handleHttpRequest(request, context) { ... }`
 
 2. **Handling Requests**
+
    - In {{ PRODUCT }}, process incoming requests and generate responses using the `handleHttpRequest` function.
 
 3. **Origin Requests**
+
    - Specify the origin in `edgio.config.js` and include it in the `fetch()` call in the edge function.
 
 4. **Response Handling**
+
    - Similar to Cloudflare Workers, {{ PRODUCT }} allows modifying response properties prior to returning the response.
 
 5. **Headers and Status**
+
    - Both platforms allow setting and modifying response headers and status.
 
 6. **JSON Handling**
+
    - Ensure proper content-type handling and parsing for JSON responses in both platforms.
 
 ## Examples {/* examples */}

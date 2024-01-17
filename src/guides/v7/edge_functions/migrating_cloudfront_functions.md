@@ -2,12 +2,36 @@
 title: Migrating from CloudFront Functions to Edge Functions
 ---
 
-This guide covers migrating from CloudFront Functions to {{ PRODUCT }} Edge Functions. It will cover key differences, practical steps for migration, and provide reference examples to convert common CloudFront Functions snippets into their Edge Function equivalents.
+## Overview of Migrating from CloudFront Functions to Edge Functions
 
-## Function Structure {/* function-structure */}
+This guide offers a high-level overview and illustrative examples for migrating from CloudFront Functions to {{ PRODUCT }} Edge Functions. It is designed to help developers familiar with CloudFront Functions understand the transition to Edge Functions. Rather than providing a detailed comparison or a comprehensive migration pathway, this guide focuses on highlighting key aspects and offering example code snippets for a general understanding of the migration process.
 
-- CloudFront: `async function handler(event) { ... }`
-- {{ PRODUCT }}: `export async function handleHttpRequest(request, context) { ... }`
+### Key Information {/* key-information */}
+
+1. **Function Structure**
+
+   - CloudFront: `async function handler(event) { ... }`
+   - {{ PRODUCT }}: `export async function handleHttpRequest(request, context) { ... }`
+
+2. **Handling Requests**
+
+   - In {{ PRODUCT }}, process incoming requests and generate responses using the `handleHttpRequest` function.
+
+3. **Origin Requests**
+
+   - Specify the origin in `edgio.config.js` and include it in the `fetch()` call in the edge function.
+
+4. **Response Handling**
+
+   - Similar to CloudFront Function, {{ PRODUCT }} allows modifying response properties prior to returning the response.
+
+5. **Headers and Status**
+
+   - Both platforms allow setting and modifying response headers and status.
+
+6. **JSON Handling**
+
+   - Ensure proper content-type handling and parsing for JSON responses in both platforms.
 
 ## Examples {/* examples */}
 
@@ -100,7 +124,7 @@ export async function handleHttpRequest(request, context) {
 
   // Continue with the modified request
   return fetch(newRequest, {
-    edgio: { origin: 'echo' },
+    edgio: {origin: 'echo'},
   });
 }
 ```

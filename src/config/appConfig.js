@@ -19,3 +19,8 @@ export const siteConfig = {
     gtmId: 'GTM-5WCD2BK',
   },
 };
+
+export const APPLICATIONS_SRC_PATH = 'guides/applications';
+export const APPLICATIONS_PATH_PREFIX = 'applications';
+export const UPLYNK_SRC_PATH = 'guides/uplynk';
+export const UPLYNK_PATH_PREFIX = 'uplynk';

@@ -1,3 +1,5 @@
+import {APPLICATIONS_PATH_PREFIX} from './appConfig';
+
 const separator = {
   title: '',
   path: '',
@@ -5,7 +7,7 @@ const separator = {
 
 const nav = {
   title: 'guides',
-  path: '/guides',
+  path: `/${APPLICATIONS_PATH_PREFIX}`,
   routes: [
     {
       title: 'Getting Started',

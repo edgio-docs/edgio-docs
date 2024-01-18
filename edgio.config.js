@@ -39,7 +39,7 @@ module.exports = {
   ],
 
   serverless: {
-    include: ['src/guides/**/*'],
+    include: ['guides/**/*'],
   },
   cloudRuntime: 'nodejs18.x',
 };

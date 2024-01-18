@@ -1,10 +1,9 @@
-import {readFile} from 'fs/promises';
 import {join} from 'path';
 
-import {isEdgioRunDev, isProductionBuild} from '@edgio/core/environment';
 import globby from 'globby';
 import {MDXRemote} from 'next-mdx-remote';
 import {serialize} from 'next-mdx-remote/serialize';
+import {isEdgioRunDev, isProductionBuild} from '@edgio/core/environment';
 
 import {remarkPlugins} from '../../../plugins/markdownToHtml';
 import rehypeExtractHeadings from '../../../plugins/rehype-extract-headings';
@@ -16,11 +15,12 @@ import {Page} from 'components/Layout/Page';
 import logger from 'utils/logging';
 import templateReplace from 'utils/templateReplace';
 import {MDHeadingsList} from 'utils/Types';
+import {APPLICATIONS_SRC_PATH} from 'config/appConfig';
 
-const guidesPath = 'src/guides';
-const pagesPath = 'src/pages';
+const guidesPath = APPLICATIONS_SRC_PATH;
+const urlStartPath = __dirname.split('/pages').reverse()[0];
 
-export default function VersionedGuide({
+export default function Guide({
   source,
   sourceFile,
   headings,
@@ -46,31 +46,13 @@ export const getStaticPaths = async () => {
   const routes = [];
   const paths = [];
 
-  // determine available versions from config files
-  // const versions = (
-  //   await globby('config/v*.config.js', {
-  //     cwd: join(process.cwd(), 'src'),
-  //   })
-  // ).map(async (file: string) => {
-  //   const v = (file.match(/v(\d+)\.config\.js/) || [])[1];
-
-  //   return {
-  //     version: v,
-  //   };
-  // });
-
-  // const versionObjects = await Promise.all(versions);
-
   // determine available guides from filesystem
   const allGuides = (
-    await globby(['guides/**/*.{md,mdx}'], {
-      cwd: join(process.cwd(), 'src'),
+    await globby(['**/*.{md,mdx}'], {
+      cwd: join(process.cwd(), guidesPath),
     })
   ).map(
-    (path: string) =>
-      path
-        .replace('guides/', '') // remove guides/ prefix
-        .replace(/.mdx?/, '') // remove extension
+    (path: string) => path.replace(/.mdx?/, '') // remove extension
   );
 
   // guides without version-specific override
@@ -78,12 +60,9 @@ export const getStaticPaths = async () => {
 
   // Across the different versions and different guides, we need routes
   // in the following formats:
-  // /guides/[guide] => guide for the latest version
-  // /guides/[version] => homepage for the version
-  // /guides/[version]/[guide] => guide for the version
-
-  // guides for the latest version
-  // paths.push(...baseGuides);
+  // /{PREFIX}/[guide] => guide for the latest version
+  // /{PREFIX}/[version] => homepage for the version
+  // /{PREFIX}/[version]/[guide] => guide for the version
 
   // in dev mode, don't prerender any pages and fallback to SSR for
   // faster page loads
@@ -93,14 +72,6 @@ export const getStaticPaths = async () => {
       fallback: 'blocking',
     };
   }
-
-  // Prerendered page logic below. However, because some of the guides define
-  // redirects, redirects cannot be prerendered and must be handled by SSR.
-  // Therefore, we disable prerendering for now and fallback to SSR for all.
-  // return {
-  //   paths: [],
-  //   fallback: 'blocking',
-  // };
 
   // prerender guides for the latest version only; previous versions will
   // fallback to SSR
@@ -122,8 +93,8 @@ export const getStaticPaths = async () => {
     logger.prod(JSON.stringify(paths));
   }
 
-  // in the end, only routes matching `/guides/v7/*` will be prerendered
-  // and the rest (eg. /guides/v6/*) will fallback to SSR
+  // in the end, only routes matching `/{PREFIX}/v7/*` will be prerendered
+  // and the rest (eg. /{PREFIX}/v6/*) will fallback to SSR
   return {
     paths: routes,
     fallback: 'blocking',
@@ -142,12 +113,12 @@ export async function getStaticProps({params}: {params: any}) {
     // no version specified in the path, so redirect to the latest version path
     return {
       redirect: {
-        destination: `/guides/v${latestVersion}/${slug.join('/')}`,
+        destination: `${urlStartPath}/v${latestVersion}/${slug.join('/')}`,
         permanent: true,
       },
     };
   } else if (!guide || !guide.length) {
-    // version with no remaining guide path so use as homepage
+    // version with no remainig guide path so use as homepage
     isHomepage = true;
     guide = ['index'];
   }
@@ -177,7 +148,8 @@ export async function getStaticProps({params}: {params: any}) {
   }
 
   logger.dev(
-    `Using '${file}' for route '${slugAsString}'. Available files: ${files}`
+    `Using '${file}' for route '${slugAsString}'. Available files:`,
+    files
   );
 
   // update template with versioned constants

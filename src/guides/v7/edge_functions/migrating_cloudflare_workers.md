@@ -2,38 +2,29 @@
 title: Migrating from Cloudflare Workers to Edge Functions
 ---
 
-This guide offers a high-level overview and illustrative examples for migrating from Cloudflare Workers to {{ PRODUCT }} Edge Functions. It is intended to assist developers who are familiar with Cloudflare Workers in understanding how similar functionalities can be achieved in Edge Functions. This guide does not delve into detailed differences between the two platforms or provide a step-by-step migration process. Instead, it focuses on presenting key aspects and code snippets to demonstrate the transition.
+This guide offers a high-level overview and illustrative examples for migrating from Cloudflare Workers to {{ PRODUCT }} Edge Functions. It is designed to help developers familiar with Cloudflare Workers understand the transition to Edge Functions by offering sample code for a general understanding of the migration process.
 
-## Key Information {/* key-information */}
+## Function Signature {/* function-signature */}
 
-1. **Function Structure**
+- Cloudflare Worker: `export default { async fetch(request) { ... } }`
+- {{ PRODUCT }}: `export async function handleHttpRequest(request, context) { ... }`
 
-   - Cloudflare: `export default { async fetch(request) { ... } }`
-   - {{ PRODUCT }}: `export async function handleHttpRequest(request, context) { ... }`
+To convert from a Cloudflare Worker to an {{ PRODUCT }} Edge function, you need to make the following changes:
 
-2. **Handling Requests**
+- Rename the function from `fetch` to `handleHttpRequest` and export it.
+- Include both `request` and `context` as arguments to the function.
+- Adjust any references to specific Cloudflare Worker properties or methods to their equivalent {{ PRODUCT }} counterparts. See [Edge Function parameters](/guides/edge_functions#edge-function-parameters).
+- Return a `Response` or `Promise<Response>` instance.
 
-   - In {{ PRODUCT }}, process incoming requests and generate responses using the `handleHttpRequest` function.
+## Origin Configuration {/* origin-configuration */}
 
-3. **Origin Requests**
-
-   - Specify the origin in `edgio.config.js` and include it in the `fetch()` call in the edge function.
-
-4. **Response Handling**
-
-   - Similar to Cloudflare Workers, {{ PRODUCT }} allows modifying response properties prior to returning the response.
-
-5. **Headers and Status**
-
-   - Both platforms allow setting and modifying response headers and status.
-
-6. **JSON Handling**
-
-   - Ensure proper content-type handling and parsing for JSON responses in both platforms.
+In order to fetch content from an origin, you need to specify the origin in `edgio.config.js` and include it in the `fetch()` call in the edge function. See [origin requests using `fetch()`](/guides/v7/edge_functions#origin-requests-using-fetch) for configuration requirements.
 
 ## Examples {/* examples */}
 
 ### Basic HTML Response {/* basic-html-response */}
+
+The following example shows how to return a basic HTML response with the appropriate `Content-Type` header.
 
 #### Cloudflare Worker Snippet {/* basic-html-response-cloudflare-worker */}
 
@@ -76,6 +67,8 @@ export async function handleHttpRequest(request, context) {
 ```
 
 ### Fetching JSON {/* fetching-json */}
+
+The following example shows how to fetch JSON from an origin and return it as a response.
 
 #### Cloudflare Worker Snippet {/* fetching-json-cloudflare-worker */}
 
@@ -154,6 +147,8 @@ export async function handleHttpRequest(request, context) {
 ```
 
 ### Modify an Origin Response {/* modify-origin-response */}
+
+The following example shows how to modify an origin response before returning it to the client, including changing the status code, adding a header, and modifying the response body.
 
 #### Cloudflare Worker Snippet {/* modify-origin-response-cloudflare-worker */}
 

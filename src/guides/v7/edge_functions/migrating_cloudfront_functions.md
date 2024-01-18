@@ -1,41 +1,30 @@
 ---
-title: Migrating from CloudFront Functions to Edge Functions
+title: Migrating from Amazon CloudFront Functions to Edge Functions
 ---
 
-## Overview of Migrating from CloudFront Functions to Edge Functions
+This guide offers a high-level overview and illustrative examples for migrating from Amazon CloudFront Functions to {{ PRODUCT }} Edge Functions. It is designed to help developers familiar with Amazon CloudFront Functions understand the transition to Edge Functions by offering sample code for a general understanding of the migration process.
 
-This guide offers a high-level overview and illustrative examples for migrating from CloudFront Functions to {{ PRODUCT }} Edge Functions. It is designed to help developers familiar with CloudFront Functions understand the transition to Edge Functions. Rather than providing a detailed comparison or a comprehensive migration pathway, this guide focuses on highlighting key aspects and offering example code snippets for a general understanding of the migration process.
+## Function Signature {/* function-signature */}
 
-### Key Information {/* key-information */}
+- Amazon CloudFront: `async function handler(event) { ... }`
+- {{ PRODUCT }}: `export async function handleHttpRequest(request, context) { ... }`
 
-1. **Function Structure**
+To convert from a CloudFront function to an {{ PRODUCT }} Edge function, you need to make the following changes:
 
-   - CloudFront: `async function handler(event) { ... }`
-   - {{ PRODUCT }}: `export async function handleHttpRequest(request, context) { ... }`
+- Rename the function from `handler` to `handleHttpRequest` and export it.
+- Change the function arguments from `event` to `request` and `context`.
+- Adjust any references to specific CloudFront properties or methods to their equivalent {{ PRODUCT }} counterparts. See [Edge Function parameters](/guides/edge_functions#edge-function-parameters).
+- Return a `Response|Promise<Response>` instance instead of a CloudFront-to-viewer HTTP response object.
 
-2. **Handling Requests**
+## Origin Configuration {/* origin-configuration */}
 
-   - In {{ PRODUCT }}, process incoming requests and generate responses using the `handleHttpRequest` function.
-
-3. **Origin Requests**
-
-   - Specify the origin in `edgio.config.js` and include it in the `fetch()` call in the edge function.
-
-4. **Response Handling**
-
-   - Similar to CloudFront Function, {{ PRODUCT }} allows modifying response properties prior to returning the response.
-
-5. **Headers and Status**
-
-   - Both platforms allow setting and modifying response headers and status.
-
-6. **JSON Handling**
-
-   - Ensure proper content-type handling and parsing for JSON responses in both platforms.
+In order to fetch content from an origin, you need to specify the origin in `edgio.config.js` and include it in the `fetch()` call in the edge function. See [origin requests using `fetch()`](/guides/v7/edge_functions#origin-requests-using-fetch) for configuration requirements.
 
 ## Examples {/* examples */}
 
 ### URL Redirect Based on Country {/* url-redirect-based-on-country */}
+
+The following example shows how to redirect users from a specific country to a different URL. The client's geolocation information is made available in the `context.geo` object.
 
 #### CloudFront Function Snippet {/* url-redirect-based-on-country-cloudfront-function */}
 
@@ -91,6 +80,8 @@ export async function handleHttpRequest(request, context) {
 
 ### Add Client IP to Request {/* add-client-ip-to-request */}
 
+The following example shows how to add the client's IP address to the request headers. The client's IP address is made available in the `context.client` object.
+
 #### CloudFront Function Snippet {/* add-client-ip-to-request-cloudfront-function */}
 
 [Original CloudFront Function code](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/example-function-add-true-client-ip-header.html)
@@ -130,6 +121,8 @@ export async function handleHttpRequest(request, context) {
 ```
 
 ### Add Security Headers to Response {/* add-security-headers-to-response */}
+
+Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. The following example shows how to add CSP headers to the response.
 
 #### CloudFront Function Snippet {/* add-security-headers-to-response-cloudfront-function */}
 

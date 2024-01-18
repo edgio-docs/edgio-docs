@@ -40,13 +40,13 @@ You should now have a working starter app. Run `ng serve` to see the application
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
-{{ FULL_CLI_NAME }} init --connector={{ PACKAGE_NAME }}/angular {{ INIT_ARG_EDGIO_VERSION }}
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
 - The `{{ PACKAGE_NAME }}/core` package
-- The `{{ PACKAGE_NAME }}/angular` package
+- The `{{ PACKAGE_NAME }}/connectors` package
 - The `{{ PACKAGE_NAME }}/cli` package
 - `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to the Angular Universal server. Update this file to add caching or proxy some URLs to a different origin.
@@ -64,9 +64,9 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 // You should commit this file to source control.
 
 const { Router } = require('@edgio/core/router')
-const { angularRoutes } = require('@edgio/angular')
+const { connectorRoutes } = require('@edgio/connectors')
 
-module.exports = new Router().use(angularRoutes)
+module.exports = new Router().use(connectorRoutes)
 ```
 
 ## Running Locally {/*running-locally*/}

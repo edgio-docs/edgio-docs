@@ -1,4 +1,6 @@
-export default [
+type Redirect = [string | RegExp, string, number?];
+
+export default <Array<Redirect>>[
   // existing redirects
   ['/guides/starter', '/guides/performance/traditional_sites'],
   ['/guides/debugging', '/guides/performance/troubleshooting'],
@@ -168,4 +170,8 @@ export default [
   ],
   ['/guides/v7/performance/experiments', '/guides/v7/experimentation'],
   ['/guides/v7/edge-functions', '/guides/v7/edge_functions'],
+  [
+    /\/guides\/v7\/sites_frameworks\/getting_started\/(ember_fastboot|frontity|gatsby|hexo|mkdocs|razzle|sanity)/,
+    '/guides/v7/sites_frameworks/legacy_connectors/$1',
+  ],
 ];

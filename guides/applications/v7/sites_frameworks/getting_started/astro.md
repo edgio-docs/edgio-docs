@@ -65,15 +65,14 @@ npm create astro@latest
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
-{{ FULL_CLI_NAME }} init --connector={{ PACKAGE_NAME }}/astro {{ INIT_ARG_EDGIO_VERSION }}
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
 - The `{{ PACKAGE_NAME }}/core` package
-- The `{{ PACKAGE_NAME }}/angular` package
 - The `{{ PACKAGE_NAME }}/cli` package
-- The `{{ PACKAGE_NAME }}/astro` package
+- The `{{ PACKAGE_NAME }}/connectors` package
 - `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to the Astro. Update this file to add caching or proxy some URLs to a different origin.
 
@@ -85,10 +84,10 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 // This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
-const {Router} = require('{{ PACKAGE_NAME }}/core/router');
-const {astroRoutes} = require('{{ PACKAGE_NAME }}/astro');
+const { Router } = require('{{ PACKAGE_NAME }}/core/router');
+const { connectorRoutes } = require('{{ PACKAGE_NAME }}/connectors');
 
-export default new Router().use(astroRoutes);
+export default new Router().use(connectorRoutes);
 ```
 
 ## Enable Server Side Rendering {/* enable-server-side-rendering */}

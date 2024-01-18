@@ -2,6 +2,8 @@
 title: Sanity Studio
 ---
 
+{{ sites_connector_eol.md }}
+
 This guide shows you how to deploy a [Sanity Studio](https://www.sanity.io/docs/sanity-studio) application to {{ PRODUCT }}.
 
 Sanity Studio is a single page app (SPA) written in React, where you can configure the document types and input fields, with simple JavaScript objects. This guide will walk you through how to deploy Sanity Studio with {{ PRODUCT }}.

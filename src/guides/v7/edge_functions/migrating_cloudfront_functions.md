@@ -18,7 +18,7 @@ To convert from a CloudFront function to an {{ PRODUCT }} Edge function, you nee
 
 ## Origin Configuration {/* origin-configuration */}
 
-In order to fetch content from an origin, you need to specify the origin in `edgio.config.js` and include it in the `fetch()` call in the edge function. See [origin requests using `fetch()`](/guides/v7/edge_functions#origin-requests-using-fetch) for configuration requirements.
+In order to fetch content from an origin, you need to specify the origin in `edgio.config.js` and include it in the `fetch()` call in the edge function. See [origin requests using fetch()](/guides/v7/edge_functions#origin-requests-using-fetch) for configuration requirements.
 
 ## Examples {/* examples */}
 

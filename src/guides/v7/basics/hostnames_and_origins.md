@@ -71,7 +71,7 @@ On a per environment-basis, define each hostname that will be served through {{ 
       Alternatively, you may [upload your own TLS certificate](/guides/security/tls_certificates#uploading-your-certificate).
 
     </Callout>
-
+-   Apply additional security to your site by requiring clients to provide a certificate during the TLS handshake. This configuration is known as [mutual TLS (mTLS)](/guides/security/tls_certificates#mtls). 
 -   Once you are ready to serve traffic through {{ PRODUCT }}, update the hostname's [DNS configuration](#serving-traffic-through) to point to our service.
 
 **To add, modify, or delete hostnames from an environment** <a id="add-modify-delete-hostname"></a>

@@ -2,7 +2,7 @@
 title: Experimentation
 ---
 
-Experimentation allows you to serve different website experiences to your clients. Typically, it is used for canary releases, trunk-based development, dark releases, feature releases, and segmented releases. 
+Experimentation allows you to serve different website experiences to your clients. Typically, it is used for A/B testing, canary releases, trunk-based development, dark releases, feature releases, and segmented releases. 
 
 **Sample Use Cases:**
 

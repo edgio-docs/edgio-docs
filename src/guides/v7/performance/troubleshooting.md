@@ -299,7 +299,9 @@ Troubleshoot this status code by performing the following steps:
     -   **No SNI:** If your site does not require SNI, then you should disable your origin configuration's **Use SNI** option and remove the SNI hint.
 
 -   If the client's `Host` header does not match a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN), then you will need to update the **Override Host Header** option.
--   If you are using a self-signed certificate, then you must enable the **Allow Self-Signed Certs** option on the desired origin configuration.
+-   Is your server using a self-signed certificate?
+    -   **Yes:** You must enable the **Allow Self-Signed Certs** option on the desired origin configuration.
+    -   **No:** {{ PRODUCT }} requires a full chain certificate. Your certificate’s chain of trust must start with the server's certificate and terminate with the root certificate.
 -   If you have pinned a certificate to the desired origin configuration, then you may need to pin an additional certificate.
 
 ### 531 Project Upstream Connection Error Status Code {/*531-project-upstream-connection-error-status-code*/}

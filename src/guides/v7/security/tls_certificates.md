@@ -309,7 +309,7 @@ TLS requires a server to authenticate to the client before a connection can be e
 
 Our mTLS implementation provides flexibility when determining when and how a client will authenticate to the server. 
 -   By default, mTLS is disabled. Enable it by setting the **Client Certificate Validation** option to a value other than `Disabled`. 
--   Once mTLS has been enabled, the default behavior is to request a client certificate for all requests. However, you may restrict {{ PRODUCT }} to only request a client certificate for specific hostname(s) through the **Request Client Certificates for Hostnames** option. Regardless of this option, the **Client Certificate Validation** option determines [client certificate validation](#client-certificate-validation) for all requests. 
+-   Once mTLS has been enabled, the default behavior is to request a client certificate for all requests. However, you may instruct {{ PRODUCT }} to only request a client certificate for specific hostname(s) through the **Request Client Certificates for Hostnames** option. Regardless of this option, the **Client Certificate Validation** option determines [how a client certificate will be validated](#client-certificate-validation) for all requests. 
 -   <a id="chain-of-trust-depth" />If you have configured the **Client Certificate Validation** option to either `Required` or `Optional`, then the **Chain of Trust Depth Validation** option determines the maximum depth for certificate validation. 
     -   **0:** Restricts validation to self-signed certificates.
     -   **1 or more:** Allows levels 0 (i.e., self-signed certificates) through the specified number. The specified number determines the maximum depth to which {{ PRODUCT }} will validate a client certificate. 
@@ -326,9 +326,9 @@ Our mTLS implementation provides flexibility when determining when and how a cli
     </Callout>
 
 -   Send [headers to your origin](#origin-request-headers) containing mTLS metadata by enabling the **Send Client Certificate Detail to Origin** option. 
--   Client certificate validation failures for all modes except Permissive result in a TLS handshake failure. 
+-   The TLS handshake fails when {{ PRODUCT }} cannot validate a client certificate. 
 
-    By default, Permissive mode allows traffic that fails client certificate validation. However, you may override this behavior for Permissive mode and return a `403 Forbidden` response by enabling the **Return Status Code 403 for Validation Failures** option.
+    Permissive mode is an exception to this behavior. By default, Permissive mode allows traffic regardless of whether client certificate validation fails. However, you may override this behavior for Permissive mode and return a `403 Forbidden` response by enabling the **Return Status Code 403 for Validation Failures** option.
 
 **To set up mTLS**
 1.  Navigate to the **TLS Certificate** page.
@@ -337,8 +337,8 @@ Our mTLS implementation provides flexibility when determining when and how a cli
     -   **Required:** Set this option to `Required` to require the client to provide a certificate issued by a certificate authority (CA) within your custom chain of trust.
     -   **Optional:** If you choose to make client certificates optional, then you must define how {{ PRODUCT }} will validate a certificate when provided by a client. Set this option to one of the following modes: 
         -   **Optional:** The client certificate must be issued by a CA within your custom chain of trust.
-        -   **Optional without CA validation:** The client certificate must be valid.
-        -   **Permissive:** The client certificate will not be validated.
+        -   **Optional without CA validation:** The client must provide a valid X.509 certificate that is either self-signed or signed by a CA.
+        -   **Permissive:** By default, this mode instructs {{ PRODUCT }} to allow traffic regardless of whether the client provides a valid certificate. If provided, {{ PRODUCT }} will still process the client certificate. You may choose to send this metadata to the origin server. 
 3.  From the **Request Client Certificates for Hostnames** option, determine whether {{ PRODUCT }} will request a certificate for all requests or solely for specific hostnames. 
     -   **All Requests:** Verify that this option is set to blank. 
     -   **Specific Hostnames:** Select each desired hostname from this option. 

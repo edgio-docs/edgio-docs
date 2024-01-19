@@ -151,6 +151,10 @@ const nav = {
           ],
         },
         {
+          title: 'Redirects',
+          path: 'performance/redirects',
+        },
+        {
           title: 'Traffic Splitting',
           path: 'performance/traffic_splitting',
         },

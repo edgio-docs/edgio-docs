@@ -38,6 +38,15 @@ Manage a list of URL redirects for a specific environment through the **Redirect
     -   **status:** Determines the `3xx` status code for the response sent to the client. Valid values are: `301 | 302 | 307 | 308`
     -   **forwardQueryString:** A Boolean value that determines whether the `Location` response header will include the request's query string. Valid values are: `true | false`
 
+    **Sample CSV:**
+    
+    ```csv filename="routes.js"
+    from,to,status,forwardQueryString
+    /widgets-conference,https://cdn.example.com/conferences/widgets-conference,302,false
+    https://cdn.example.com/bicycles,/transportation/bicycles,,true
+    https://cdn.example.com/images,https://cdn.example.com/resources/images,,
+    ```
+
 -   Upon importing a CSV file, you may choose whether to replace or append to your existing redirect configuration. 
 -   You may define up to 10,000 redirects per environment.
 -   <a id="deploy" />Changes to your redirect configuration will not take effect until the next deployment. You can redeploy to an environment by navigating to the **Deployments** page, clicking the <Image inline src="/images/v7/icons/menu-kebab.png" alt="Menu" /> icon next to the latest deployment, and then clicking **Reploy this version**.

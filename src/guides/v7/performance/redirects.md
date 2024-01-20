@@ -40,7 +40,7 @@ Manage a list of URL redirects for a specific environment through the **Redirect
 
     **Sample CSV:**
     
-    ```csv filename="routes.js"
+    ```csv filename="default-redirects.csv"
     from,to,status,forwardQueryString
     /widgets-conference,https://cdn.example.com/conferences/widgets-conference,302,false
     https://cdn.example.com/bicycles,/transportation/bicycles,,true

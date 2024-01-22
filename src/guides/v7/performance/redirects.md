@@ -15,7 +15,11 @@ Manage a list of URL redirects for a specific environment through the **Redirect
 
 **Key information:**
 -   If the requested URL matches the source URL defined within a redirect configuration, we will return a `3xx` response with a `Location` header set to the destination URL. It is up to the client (e.g., web browser) to follow this redirect. 
--   For each redirect, you must define a source and a destination. Specify either of the following types of URLs when defining the source and destination:
+-   For each redirect, you must define a source and a destination. 
+
+    ![Add a redirect - Source and Destination](/images/v7/performance/redirects-source-destination.png?width=600)
+
+    Specify either of the following types of URLs when defining the source and destination:
     -   **Absolute:** Specify the protocol, hostname, and relative path.
 
         **Example:** `https://cdn.example.com/conferences/2023`

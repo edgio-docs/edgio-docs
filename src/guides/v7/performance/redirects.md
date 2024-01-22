@@ -65,6 +65,11 @@ Manage a list of URL redirects for a specific environment through the **Redirect
 4.  From the **To** option, type the URL to which the `Location` response header will be set.
 5.  Optional. From the **Response status** option, select the `3xx` status code for the response sent to the client.
 6.  Optional. Mark the **Forward query string to redirect location** option to allow the request's query string to be included with the destination URL defined within the `Location` response header.
+
+    Your redirect configuration should now look similar to the following illustration:
+    
+    ![Add a redirect](/images/v7/performance/redirects-add-a-redirect.png?width=600)
+
 7.  Click **Add a redirect**.
 8.  Repeat steps 2 - 7 as needed.
 9.  If you are finished making changes, [deploy your changes to this environment.](#deploy)

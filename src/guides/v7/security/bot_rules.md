@@ -712,5 +712,3 @@ You may create, modify, and delete Bot Manager configurations.
 2.  Click on the desired Bot Manager configuration.
 3.  Click **Delete**.
 6.  When prompted, confirm the deletion by clicking **Confirm**.
-
-{{ security_version_control.md }}

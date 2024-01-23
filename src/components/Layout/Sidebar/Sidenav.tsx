@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import React, {Fragment, useEffect, useState} from 'react';
+import React, {Fragment, useContext, useEffect, useState} from 'react';
 import useCollapse from 'react-collapsed';
 import {CgExternal} from 'react-icons/cg';
 import {GoChevronRight} from 'react-icons/go';
@@ -9,8 +9,8 @@ import styled from 'styled-components';
 
 import {FIDDLE_URL} from '../../../../constants';
 
+import AppContext from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
-import {getVersionedNavigation} from 'utils/navigation';
 
 interface IRoute {
   title: string | null;
@@ -332,13 +332,22 @@ const links = [
 ];
 
 export default function SideNav() {
-  const {version} = useConditioning();
-  const navItems = getVersionedNavigation(version.selectedVersion);
+  const {navMenuItems, config, version} = useContext(AppContext);
+
+  if (!navMenuItems.routes) {
+    console.log('no routes in sidenav');
+    return null;
+  }
+
+  // console.log('context props in sidenav', navMenuItems, config, version);
 
   return (
     <StyledSideNav>
       <ul className="sidenav-sublist" data-nav-depth="0">
-        <AccordionParent routes={(navItems as IRoutes).routes} depth={0} />
+        <AccordionParent
+          routes={(navMenuItems as unknown as IRoutes).routes}
+          depth={0}
+        />
       </ul>
       <hr />
       <ul className="sidenav-sublist" data-nav-depth="0">
@@ -356,8 +365,8 @@ export default function SideNav() {
                       <Image
                         src={`/icons/${link.icon}.svg`}
                         alt={link.icon}
-                        width="16px"
-                        height="16px"
+                        width={16}
+                        height={16}
                         priority
                       />
                     </div>
@@ -365,8 +374,8 @@ export default function SideNav() {
                       <Image
                         src={`/icons/${link.icon}-dark.svg`}
                         alt={link.icon}
-                        width="16px"
-                        height="16px"
+                        width={16}
+                        height={16}
                         priority
                       />
                     </div>

@@ -27,7 +27,6 @@ export const AppProvider: React.FC<AppProviderProps> = ({
   navMenuItems,
   version,
 }) => {
-  console.log('provider props', config, navMenuItems, version);
   return (
     <AppContext.Provider value={{config, navMenuItems, version}}>
       {children}

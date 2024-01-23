@@ -1,21 +1,23 @@
 import {join} from 'path';
 
+import {isEdgioRunDev, isProductionBuild} from '@edgio/core/environment';
 import globby from 'globby';
 import {MDXRemote} from 'next-mdx-remote';
 import {serialize} from 'next-mdx-remote/serialize';
-import {isEdgioRunDev, isProductionBuild} from '@edgio/core/environment';
 
 import {remarkPlugins} from '../../../plugins/markdownToHtml';
 import rehypeExtractHeadings from '../../../plugins/rehype-extract-headings';
 import {MDXComponents} from '../../components/MDX/MDXComponents';
-import {getVersionedConfig} from '../../utils/config';
+import {getVersionedConfig, serializeConfig} from '../../utils/config';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
-import logger from 'utils/logging';
-import templateReplace from 'utils/templateReplace';
-import {MDHeadingsList} from 'utils/Types';
 import {APPLICATIONS_SRC_PATH} from 'config/appConfig';
+import {AppProvider} from 'contexts/AppContext';
+import logger from 'utils/logging';
+import {getVersionedNavigation} from 'utils/navigation';
+import templateReplace from 'utils/templateReplace';
+import {MDHeadingsList, Route, StringMap} from 'utils/Types';
 
 const guidesPath = APPLICATIONS_SRC_PATH;
 const urlStartPath = __dirname.split('/pages').reverse()[0];
@@ -25,20 +27,26 @@ export default function Guide({
   sourceFile,
   headings,
   version,
+  config,
+  navItems,
 }: {
   source: any;
   sourceFile: string;
   headings: MDHeadingsList;
   version: string;
+  config: StringMap;
+  navItems: Route;
 }) {
   return (
-    <Page>
-      <MarkdownPage
-        meta={{...source.frontmatter, sourceFile, version}}
-        headings={headings}>
-        <MDXRemote {...source} components={MDXComponents} />
-      </MarkdownPage>
-    </Page>
+    <AppProvider config={config} navMenuItems={navItems} version={version}>
+      <Page>
+        <MarkdownPage
+          meta={{...source.frontmatter, sourceFile, version}}
+          headings={headings}>
+          <MDXRemote {...source} components={MDXComponents} />
+        </MarkdownPage>
+      </Page>
+    </AppProvider>
   );
 }
 
@@ -152,9 +160,12 @@ export async function getStaticProps({params}: {params: any}) {
     files
   );
 
+  const config = await getVersionedConfig(version);
+  const navItems = await getVersionedNavigation(version);
+
   // update template with versioned constants
   let content =
-    templateReplace(join(process.cwd(), file), getVersionedConfig(version)) ??
+    templateReplace(join(process.cwd(), file), config) ??
     `Invalid template file: ${file}`;
 
   // remove any html comments (<!-- -->) as these will not parse correctly
@@ -183,6 +194,8 @@ export async function getStaticProps({params}: {params: any}) {
       sourceFile: file,
       headings,
       version,
+      config: serializeConfig(config),
+      navItems,
     },
   };
 }

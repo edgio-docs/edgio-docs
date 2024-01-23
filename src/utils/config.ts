@@ -1,23 +1,10 @@
 import baseConfig from '../config/base.config';
-import v4 from '../config/v4.config';
-import v5 from '../config/v5.config';
-import v6 from '../config/v6.config';
-import v7 from '../config/v7.config';
-
-import {StringMap} from './Types';
-
-const configs: StringMap = {
-  v4,
-  v5,
-  v6,
-  v7,
-};
 
 export function getBaseConfig() {
   return baseConfig;
 }
 
-export function getVersionedConfig(
+export async function getVersionedConfig(
   version?: string,
   mergeWithBase: boolean = true
 ) {
@@ -28,7 +15,7 @@ export function getVersionedConfig(
   // clean up version string so it's just the numeric value
   version = version.replace('v', '');
 
-  const versioned = configs[`v${version}`];
+  const versioned = await import(`../config/v${version}.config`);
 
   if (!mergeWithBase) {
     return versioned;
@@ -38,8 +25,29 @@ export function getVersionedConfig(
 }
 
 export function getVersionedConfigs() {
-  return Object.keys(configs).reduce((acc, key) => {
-    acc[key] = {...baseConfig, ...configs[key]};
-    return acc;
-  }, {} as StringMap);
+  // TODO: make this dynamic
+  return {
+    v4: require('../config/v4.config'),
+    v5: require('../config/v5.config'),
+    v6: require('../config/v6.config'),
+    v7: require('../config/v7.config'),
+  };
+}
+
+/**
+ * Serialize config to JSON string, removing anything that can't be serialized
+ */
+export function serializeConfig(config: any) {
+  return JSON.stringify(config, (key, value) => {
+    if (typeof value === 'function') {
+      return value.toString();
+    }
+    if (typeof value === 'symbol') {
+      return value.toString();
+    }
+    if (value instanceof RegExp) {
+      return value.toString();
+    }
+    return value;
+  });
 }

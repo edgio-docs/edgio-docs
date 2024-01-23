@@ -12,10 +12,10 @@ import uplynkConfig from '../../config/uplynk.config';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
+import {UPLYNK_SRC_PATH} from 'config/appConfig';
 import logger from 'utils/logging';
 import templateReplace from 'utils/templateReplace';
 import {MDHeadingsList} from 'utils/Types';
-import {UPLYNK_SRC_PATH} from 'config/appConfig';
 
 const guidesPath = UPLYNK_SRC_PATH;
 const urlStartPath = __dirname.split('/pages').reverse()[0];

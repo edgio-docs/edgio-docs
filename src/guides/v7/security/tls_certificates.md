@@ -330,7 +330,7 @@ Our mTLS implementation provides flexibility when determining when and how a cli
 
         Notice that the last scenario exceeds the specified depth by 2. In that scenario, {{ PRODUCT }} will validate the client certificate and check the first 2 intermediate CA certificates. If those certificates are valid, then it will consider the client certificate valid and ignore the third intermediate CA certificate and the root certificate.
 
--   <a id="chain-of-trust" />Set up a chain of trust by uploading a PEM file that contains an ordered list of intermediate and root certificates for each desired hostname. Use a line break to separate each certificate as shown below.
+-   <a id="chain-of-trust" />Set up a chain of trust by uploading a PEM file that contains an ordered list of intermediate and root certificates for the desired hostname. Use a line break to separate each certificate as shown below.
 
     ```pem
     -----END CERTIFICATE-----

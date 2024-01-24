@@ -330,7 +330,12 @@ Our mTLS implementation provides flexibility when determining when and how a cli
 
         Notice that the last scenario exceeds the specified depth by 2. In that scenario, {{ PRODUCT }} will validate the client certificate and check the first 2 intermediate CA certificates. If those certificates are valid, then it will consider the client certificate valid and ignore the third intermediate CA certificate and the root certificate.
 
--   Set up a chain of trust by uploading a PEM file that contains an ordered list of intermediate and root certificates for your hostname. 
+-   <a id="chain-of-trust" />Set up a chain of trust by uploading a PEM file that contains an ordered list of intermediate and root certificates for each desired hostname. Use a line break to separate each certificate as shown below.
+
+    ```pem
+    -----END CERTIFICATE-----
+    -----BEGIN CERTIFICATE-----
+    ```
 
     <Callout type="important">
 
@@ -356,7 +361,7 @@ Our mTLS implementation provides flexibility when determining when and how a cli
     -   **All Requests:** Verify that this option is set to blank. 
     -   **Specific Hostnames:** Select each desired hostname from this option. 
 4.  From the **Chain of Trust Depth Validation** option, select the [depth to which {{ PRODUCT }} will validate a client certificate](#chain-of-trust-depth) with the chain of trust defined in the **Certificate Chains** section. 
-5.  <a id="chain-of-trust" />If you set the **Chain of Trust Depth Validation** option to a value of `1` or higher, then you should add a PEM file that contains a chain of trust for each unique client certificate. Perform the following steps to add a PEM file:
+5.  <a id="upload-pem" />If you set the **Chain of Trust Depth Validation** option to a value of `1` or higher, then you should add a [PEM file that contains a chain of trust](#chain-of-trust) for each desired hostname. Perform the following steps to add a PEM file:
     1.  Click **+ Add Certificate Chain**.
     2.  Paste the PEM file for the desired X.509 certificate(s).
     3.  Click **Add Chain**.
@@ -370,7 +375,7 @@ Our mTLS implementation provides flexibility when determining when and how a cli
 2.  Update the desired setting(s). Common tasks are listed below.
 
     -   Update your chain of trust by:
-        -   [Uploading one or more PEM file(s)](#chain-of-trust) for your hostnames. Make sure to upload renewed certificate(s) before the existing certificate(s) expire.
+        -   [Uploading a PEM file](#upload-pem) for each desired hostname. Make sure to upload renewed certificate(s) before the existing certificate(s) expire.
         -   Deleting the PEM file for expired certificate(s). From the **Certificate Chains** section, click the <Image inline src="/images/v7/icons/delete.png" alt="Delete" /> icon corresponding to the chain that will be deleted. 
     -   Disable mTLS by settting the **Client Certificate Validation** option to `Disabled`. 
 

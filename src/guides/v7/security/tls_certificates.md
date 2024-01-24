@@ -312,12 +312,25 @@ Our mTLS implementation provides flexibility when determining when and how a cli
 -   Once mTLS has been enabled, the default behavior is to request a client certificate for all requests. However, you may instruct {{ PRODUCT }} to only request a client certificate for specific hostname(s) through the **Request Client Certificates for Hostnames** option. Regardless of this option, the **Client Certificate Validation** option determines [how a client certificate will be validated](#client-certificate-validation) for all requests. 
 -   <a id="chain-of-trust-depth" />If you have configured the **Client Certificate Validation** option to either `Required` or `Optional`, then the **Chain of Trust Depth Validation** option determines the maximum depth for certificate validation. 
     -   **0:** Restricts validation to self-signed certificates.
-    -   **1 or more:** Allows levels 0 (i.e., self-signed certificates) through the specified number. The specified number determines the maximum depth to which {{ PRODUCT }} will validate a client certificate. 
+    -   **1:** Restricts validation to self-signed certificates or a certificate signed by a CA in the chain of trust defined under the **Certificate Chains** section.
+    -   **2 or more:** Allows levels 0 (i.e., self-signed certificates) through the specified number. The specified number determines the maximum depth to which {{ PRODUCT }} will validate a client certificate. For example, setting it to 2 allows a client certificate that satisfies level 0, 1, or 2.
 
-        This validation process consists of checking whether the client certificate is backed by a certificate signed by a CA in the chain of trust defined under the **Certificate Chains** section. {{ PRODUCT }} will validate up to the specified number of CA certificates. If the client certificate is backed by fewer CA certificates, then {{ PRODUCT }} will validate all of those CA certificates. If the client certificate is backed by additional CA certificates, then {{ PRODUCT }} will ignore the CA certificates that exceed the specified depth. 
-        
-        For example, if you set the depth to 4, then {{ PRODUCT }} will validate self-signed certificates or it will check up to 4 CA certificates that back the client certificate. If the client certificate is only backed by an intermediate and root certificate, then {{ PRODUCT }} will consider the client certificate valid if it is able to validate the client certificate, the intermediate certificate, and the root certificate. 
--   Set up a chain of trust by uploading one or more PEM file(s) containing the desired intermediate and root certificates for your hostname. 
+        {{ PRODUCT }} will validate up to the specified number of CA certificates. 
+
+        -   If the client certificate is backed by fewer CA certificates, then {{ PRODUCT }} will validate all of those CA certificates.
+        -   If the client certificate is backed by additional CA certificates, then {{ PRODUCT }} will ignore the CA certificates that exceed the specified depth. 
+
+        **Example:** If you set the depth to 2, then {{ PRODUCT }} will validate self-signed certificates or it will check up to 2 CA certificates (e.g., an intermediate and a root certificate) that back the client certificate. As noted below, if {{ PRODUCT }} is able to validate the client certificate, the intermediate certificate(s), and the root certificate, then it will consider the client certificate valid.
+
+        | Intermediate Certificate(s) | Root Certificate(s) | Total CA Certificate(s) | Valid |
+        | --------------------------- | ------------------- | ----------------------- | ----- |
+        | 0                           | 0                   | 0                       | Yes   |
+        | 1                           | 1                   | 2                       | Yes   |
+        | 3                           | 1                   | 4                       | Yes   |
+
+        Notice that the last scenario exceeds the specified depth by 2. In that scenario, {{ PRODUCT }} will validate the client certificate and check the first 2 intermediate CA certificates. If those certificates are valid, then it will consider the client certificate valid and ignore the third intermediate CA certificate and the root certificate.
+
+-   Set up a chain of trust by uploading a PEM file that contains an ordered list of intermediate and root certificates for your hostname. 
 
     <Callout type="important">
 

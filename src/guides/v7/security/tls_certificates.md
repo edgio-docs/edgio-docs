@@ -339,9 +339,11 @@ Our mTLS implementation provides flexibility when determining when and how a cli
 
     <Callout type="important">
 
-      Prior to the expiration of the certificates in your chain of trust, you must upload PEM file(s) for your renewed certificates. Once your certificates have expired, you may delete the corresponding PEM file(s) from the **Certificate Chains** section.
+      Prior to the expiration of the certificates in your chain of trust, you must upload a PEM file that contains renewed certificates. 
 
     </Callout>
+    
+    If a PEM file should no longer be used (e.g., it contains expired certificates), then you should delete it from the **Certificate Chains** section.
 
 -   Send [headers to your origin](#origin-request-headers) containing mTLS metadata by enabling the **Send Client Certificate Detail to Origin** option. 
 -   The TLS handshake fails when {{ PRODUCT }} cannot validate a client certificate. 

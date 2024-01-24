@@ -320,13 +320,13 @@ Our mTLS implementation provides flexibility when determining when and how a cli
         -   If the client certificate is backed by fewer CA certificates, then {{ PRODUCT }} will validate all of those CA certificates.
         -   If the client certificate is backed by additional CA certificates, then {{ PRODUCT }} will ignore the CA certificates that exceed the specified depth. 
 
-        **Example:** If you set the depth to 2, then {{ PRODUCT }} will validate self-signed certificates or it will check up to 2 CA certificates (e.g., an intermediate and a root certificate) that back the client certificate. As noted below, if {{ PRODUCT }} is able to validate the client certificate, the intermediate certificate(s), and the root certificate, then it will consider the client certificate valid.
-
-        | Intermediate Certificate(s) | Root Certificate(s) | Total CA Certificate(s) | Valid |
-        | --------------------------- | ------------------- | ----------------------- | ----- |
-        | 0                           | 0                   | 0                       | Yes   |
-        | 1                           | 1                   | 2                       | Yes   |
-        | 3                           | 1                   | 4                       | Yes   |
+        **Example:** If you set the depth to 2, then {{ PRODUCT }} will validate self-signed certificates or it will check up to 2 CA certificates that back the client certificate.  
+        
+        | Intermediate Certificate(s) | Root Certificate(s) | Total CA Certificate(s) | Valid Client Certificate |
+        | --------------------------- | ------------------- | ----------------------- | ------------------------ |
+        | 0                           | 0                   | 0                       | Yes                      |
+        | 1                           | 1                   | 2                       | Yes                      |
+        | 3                           | 1                   | 4                       | Yes                      |
 
         Notice that the last scenario exceeds the specified depth by 2. In that scenario, {{ PRODUCT }} will validate the client certificate and check the first 2 intermediate CA certificates. If those certificates are valid, then it will consider the client certificate valid and ignore the third intermediate CA certificate and the root certificate.
 
@@ -356,7 +356,7 @@ Our mTLS implementation provides flexibility when determining when and how a cli
     -   **All Requests:** Verify that this option is set to blank. 
     -   **Specific Hostnames:** Select each desired hostname from this option. 
 4.  From the **Chain of Trust Depth Validation** option, select the [depth to which {{ PRODUCT }} will validate a client certificate](#chain-of-trust-depth) with the chain of trust defined in the **Certificate Chains** section. 
-5.  <a id="chain-of-trust" />If you set the **Chain of Trust Depth Validation** option to a value of `1` or higher, then you should add a PEM file for each X.509 certificate up to the desired depth. Perform the following steps to add a PEM file:
+5.  <a id="chain-of-trust" />If you set the **Chain of Trust Depth Validation** option to a value of `1` or higher, then you should add a PEM file that contains a chain of trust for each unique client certificate. Perform the following steps to add a PEM file:
     1.  Click **+ Add Certificate Chain**.
     2.  Paste the PEM file for the desired X.509 certificate(s).
     3.  Click **Add Chain**.

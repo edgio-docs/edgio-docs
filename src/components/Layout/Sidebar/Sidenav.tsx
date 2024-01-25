@@ -335,11 +335,8 @@ export default function SideNav() {
   const {navMenuItems, config, version} = useContext(AppContext);
 
   if (!navMenuItems.routes) {
-    console.log('no routes in sidenav');
     return null;
   }
-
-  // console.log('context props in sidenav', navMenuItems, config, version);
 
   return (
     <StyledSideNav>

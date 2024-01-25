@@ -39,22 +39,11 @@ This capability allows you to define a list of URLs for which we will return a `
 
 -   If the requested URL matches the source URL defined within a redirect configuration, we will return a `3xx` response with a `Location` header set to the destination URL. It is up to the client (e.g., web browser) to follow this redirect. 
 
--   The source URL must be unique, since we can only redirect a URL to a single location. However, since we support query strings and relative URLs, the requested URL could still potentially match against multiple source URLs. For this reason, {{ PRODUCT }} matches against the source URL in the following order:
+-   The source URL must be unique, since we can only redirect a URL to a single location. However, since we support query strings and relative URLs, the requested URL could still potentially match against multiple source URLs. For this reason, {{ PRODUCT }} prefers precise source URLs according to the following order:
     -   Absolute URL with query string
-
-        **Example:** `https://cdn.example.com/resources/images/rabbit.png?type=image&background=brown`
-
     -   Absolute URL without query string
-
-        **Example:** `https://cdn.example.com/resources/images/rabbit.png`
-
     -   Relative URL with query string
-
-        **Example:** `/resources/images/rabbit.png?type=image&background=brown`
-
     -   Relative URL without query string
-
-        **Example:** `/resources/images/rabbit.png`
 
     {{ PRODUCT }} will not perform further comparisons once a match is found. This ensures that the request is redirected according to the configuration that is the most precise match. 
 
@@ -74,8 +63,8 @@ This CSV file must contain the following header row:
 
 These columns are defined below.
 
--   **from:** Required. Identifies the source URL. Specify either an absolute or relative URL.
--   **to:** Required. Identifies the destination URL. Specify either an absolute or relative URL.
+-   **from:** Required. Identifies a URL that will be redirected. Specify either an absolute or relative URL.
+-   **to:** Required. Identifies the URL to which clients will be redirected. Specify either an absolute or relative URL.
 -   **status:** Determines the `3xx` status code for the response sent to the client. Valid values are: `301 | 302 | 307 | 308`
 -   **forwardQueryString:** A Boolean value that determines whether the `Location` response header will include the request's query string. Valid values are: `true | false`
 
@@ -116,7 +105,7 @@ Upon importing a CSV file, you may choose whether to replace or append to your e
 
 ### Redirect Configuration Administration {/*redirect-configuration-administration*/}
 
-You may add, modify, and delete redirect configurations regardless of whether they were added manually or by [importing them from a CSV file](#csv-files).
+You may add, modify, and delete redirect configurations regardless of whether they were added manually or [imported from a CSV file](#csv-files).
 
 **To add a redirect**
 

@@ -255,12 +255,22 @@ const nav = {
           path: 'edge_functions/example_redirects',
         },
         {
-          title: 'Request Signing',
-          path: 'edge_functions/example_request_signing',
-        },
-        {
-          title: 'Waiting Room',
-          path: 'edge_functions/example_waiting_room',
+          title: 'Solutions',
+          path: 'edge_functions/solutions',
+          routes: [
+            {
+              title: 'Basic Request Signing',
+              path: 'edge_functions/solutions/basic_request_signing',
+            },
+            {
+              title: 'AWS Request Signing',
+              path: 'edge_functions/solutions/aws_request_signing',
+            },
+            {
+              title: 'Waiting Room',
+              path: 'edge_functions/solutions/waiting_room',
+            },
+          ],
         },
         separator,
         {

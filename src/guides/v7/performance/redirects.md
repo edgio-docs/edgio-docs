@@ -41,38 +41,82 @@ This capability allows you to define a list of URLs for which we will return a `
 
 -   The source URL must be unique, since we can only redirect a URL to a single location. However, since we support query strings and relative URLs, the requested URL could still potentially match against multiple source URLs. For this reason, {{ PRODUCT }} matches against the source URL in the following order:
     -   Absolute URL with query string
+
+        **Example:** `https://cdn.example.com/resources/images/rabbit.png?type=image&background=brown`
+
     -   Absolute URL without query string
+
+        **Example:** `https://cdn.example.com/resources/images/rabbit.png`
+
     -   Relative URL with query string
+
+        **Example:** `/resources/images/rabbit.png?type=image&background=brown`
+
     -   Relative URL without query string
+
+        **Example:** `/resources/images/rabbit.png`
 
     {{ PRODUCT }} will not perform further comparisons once a match is found. This ensures that the request is redirected according to the configuration that is the most precise match. 
 
 -   Redirecting requests to a relative path may result in an invalid URL when fielding requests from various hostnames. Use an absolute URL to ensure that requests are properly redirected.
 -   Define a `3xx` status code for the redirect through the **Response status** option. By default, we return a `301 Moved Permanently` response.
--   Your redirect configuration determines whether the `Location` header will include or exclude the request's query string. 
--   You may import or export a comma-separated values (CSV) file containing a list of redirect configurations. This CSV file must contain the following header row:
-
-    `from,to,status,forwardQueryString`
-
-    These columns are defined below.
-
-    -   **from:** Required. Identifies the source URL. Specify either an absolute or relative URL.
-    -   **to:** Required. Identifies the destination URL. Specify either an absolute or relative URL.
-    -   **status:** Determines the `3xx` status code for the response sent to the client. Valid values are: `301 | 302 | 307 | 308`
-    -   **forwardQueryString:** A Boolean value that determines whether the `Location` response header will include the request's query string. Valid values are: `true | false`
-
-    **Sample CSV:**
-    
-    ```csv filename="default-redirects.csv"
-    from,to,status,forwardQueryString
-    /widgets-conference,https://cdn.example.com/conferences/widgets-conference,302,false
-    https://cdn.example.com/bicycles,/transportation/bicycles,,true
-    https://cdn.example.com/images,https://cdn.example.com/resources/images,,
-    ```
-
--   Upon importing a CSV file, you may choose whether to replace or append to your existing redirect configuration. 
+-   The **Forward query string to redirect location** option determines whether the `Location` header will include or exclude the request's query string. 
 -   You may define up to 10,000 redirects per environment.
 -   <a id="deploy" />Changes to your redirect configuration will not take effect until the next deployment. You can redeploy to an environment by navigating to the **Deployments** page, clicking the <Image inline src="/images/v7/icons/menu-kebab.png" alt="Menu" /> icon next to the latest deployment, and then clicking **Reploy this version**.
+
+### CSV Files {/*csv-files*/}
+
+You may import or export a comma-separated values (CSV) file containing a list of redirect configurations. 
+
+This CSV file must contain the following header row:
+
+`from,to,status,forwardQueryString`
+
+These columns are defined below.
+
+-   **from:** Required. Identifies the source URL. Specify either an absolute or relative URL.
+-   **to:** Required. Identifies the destination URL. Specify either an absolute or relative URL.
+-   **status:** Determines the `3xx` status code for the response sent to the client. Valid values are: `301 | 302 | 307 | 308`
+-   **forwardQueryString:** A Boolean value that determines whether the `Location` response header will include the request's query string. Valid values are: `true | false`
+
+**Sample CSV:**
+
+```csv filename="default-redirects.csv"
+from,to,status,forwardQueryString
+/widgets-conference,https://cdn.example.com/conferences/widgets-conference,302,false
+https://cdn.example.com/bicycles,/transportation/bicycles,,true
+https://cdn.example.com/images,https://cdn.example.com/resources/images,,
+```
+
+Upon importing a CSV file, you may choose whether to replace or append to your existing redirect configuration. 
+
+**To import redirect configurations (CSV)**
+1.  Navigate to the **Redirects** page.
+
+    {{ ENV_NAV }} **Redirects**.
+2.  Click **Import**.
+3.  Select a CSV file by clicking **Browse**, navigating to the desired CSV file, selecting it, and then clicking **Open**.
+4.  Determine whether you will replace or append to your existing redirect configurations.
+    -   **Replace:** Select **Override existing list with file content**.
+    -   **Append:** Select **Append file content to existing redirects list**.
+    
+        <Callout type="info">
+        
+          The source URL (`from`) must be unique across all redirect configurations. You will not be allowed to append a CSV file to your existing configuration if doing so will create a redirect configuration with a duplicate source URL. 
+        
+        </Callout>
+5.  Click **Upload redirects**.
+6.  If you are finished making changes, [deploy your changes to this environment.](#deploy)
+
+**<a id="export" />To export redirect configurations (CSV)**
+1.  Navigate to the **Redirects** page.
+
+    {{ ENV_NAV }} **Redirects**.
+2.  Click **Export** to download a CSV file called `default-redirects.csv`.
+
+### Redirect Configuration Administration {/*redirect-configuration-administration*/}
+
+You may add, modify, and delete redirect configurations regardless of whether they were added manually or by [importing them from a CSV file](#csv-files).
 
 **To add a redirect**
 
@@ -117,27 +161,3 @@ This capability allows you to define a list of URLs for which we will return a `
 2.  Mark each desired redirect. 
 3.  Click **Remove selected redirect(s)**.
 4.  If you are finished making changes, [deploy your changes to this environment.](#deploy)
-
-**To import redirect configurations (CSV)**
-1.  Navigate to the **Redirects** page.
-
-    {{ ENV_NAV }} **Redirects**.
-2.  Click **Import**.
-3.  Select a CSV file by clicking **Browse**, navigating to the desired CSV file, selecting it, and then clicking **Open**.
-4.  Determine whether you will replace or append to your existing redirect configurations.
-    -   **Replace:** Select **Override existing list with file content**.
-    -   **Append:** Select **Append file content to existing redirects list**.
-    
-        <Callout type="info">
-        
-          The source URL (`from`) must be unique across all redirect configurations. You will not be allowed to append a CSV file to your existing configuration if doing so will create a redirect configuration with a duplicate source URL. 
-        
-        </Callout>
-5.  Click **Upload redirects**.
-6.  If you are finished making changes, [deploy your changes to this environment.](#deploy)
-
-**<a id="export" />To export redirect configurations (CSV)**
-1.  Navigate to the **Redirects** page.
-
-    {{ ENV_NAV }} **Redirects**.
-2.  Click **Export** to download a CSV file called `default-redirects.csv`.

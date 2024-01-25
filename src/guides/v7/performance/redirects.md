@@ -11,23 +11,42 @@ Redirect URLs through one of the following methods:
 
 ## Bulk Redirects {/*bulk-redirects*/}
 
-Manage a list of URL redirects for a specific environment through the **Redirects** page. 
+This capability allows you to define a list of URLs for which we will return a `3xx` response with a `Location` header set to the desired URL. Manage this environment-specific list through the **Redirects** page. 
 
 **Key information:**
--   If the requested URL matches the source URL defined within a redirect configuration, we will return a `3xx` response with a `Location` header set to the destination URL. It is up to the client (e.g., web browser) to follow this redirect. 
+-   Your redirect configuration is excluded from versioning. This allows you to roll back an environment to a previous version without affecting your URL redirects. 
+
+    <Callout type="tip">
+
+      We strongly recommend that you [back up your redirect configuration as a CSV file](#export) and place it under source control. 
+
+    </Callout>
+
+-   Requests are redirected before being processed by rules. Additionally, once a request is redirected, only features that affect the response can be applied.  For example, you may set headers for the `3xx` response sent to the client.
+
 -   For each redirect, you must define a source and a destination. 
 
     ![Add a redirect - Source and Destination](/images/v7/performance/redirects-source-destination.png?width=600)
 
     Specify either of the following types of URLs when defining the source and destination:
-    -   **Absolute:** Specify the protocol, hostname, and relative path.
+    -   **Absolute:** Specify the protocol, hostname, and relative path. You may also include a query string.
 
         **Example:** `https://cdn.example.com/conferences/2023`
 
-    -   **Relative:** Specify a relative path that starts directly after the hostname. 
+    -   **Relative:** Specify a relative path that starts directly after the hostname. You may also include a query string.
 
         **Example:** `/conferences/2023`
--   The source URL must be unique, since we can only redirect a URL to a single location. 
+
+-   If the requested URL matches the source URL defined within a redirect configuration, we will return a `3xx` response with a `Location` header set to the destination URL. It is up to the client (e.g., web browser) to follow this redirect. 
+
+-   The source URL must be unique, since we can only redirect a URL to a single location. However, since we support query strings and relative URLs, the requested URL could still potentially match against multiple source URLs. For this reason, {{ PRODUCT }} matches against the source URL in the following order:
+    -   Absolute URL with query string
+    -   Absolute URL without query string
+    -   Relative URL with query string
+    -   Relative URL without query string
+
+    {{ PRODUCT }} will not perform further comparisons once a match is found. This ensures that the request is redirected according to the configuration that is the most precise match. 
+
 -   Redirecting requests to a relative path may result in an invalid URL when fielding requests from various hostnames. Use an absolute URL to ensure that requests are properly redirected.
 -   Define a `3xx` status code for the redirect through the **Response status** option. By default, we return a `301 Moved Permanently` response.
 -   Your redirect configuration determines whether the `Location` header will include or exclude the request's query string. 
@@ -117,7 +136,7 @@ Manage a list of URL redirects for a specific environment through the **Redirect
 5.  Click **Upload redirects**.
 6.  If you are finished making changes, [deploy your changes to this environment.](#deploy)
 
-**To export redirect configurations (CSV)**
+**<a id="export" />To export redirect configurations (CSV)**
 1.  Navigate to the **Redirects** page.
 
     {{ ENV_NAV }} **Redirects**.

@@ -92,7 +92,7 @@ for valid requests.
 
 ## Managed Rule Set {/*managed-rule-set*/}
 
-The ERS, which is primarily based off of OWASP CRS 3.x rules,
+The ERS, which is primarily based off of OWASP CRS 4.x rules,
 identifies malicious traffic and provides generic protection against a
 variety of unknown vulnerabilities. This rule set does not solely rely
 on signatures to check for known vulnerabilities. Rather, it analyzes

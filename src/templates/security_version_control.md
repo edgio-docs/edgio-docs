@@ -9,7 +9,7 @@ An advantage of using version control is that it allows you to quickly roll back
 
 **To view, compare, and reactivate a previous configuration**
 
-1.  Load the desired access rule, rate rule, custom rule, or managed rule. 
+1.  Load the desired access rule, API security rule, rate rule, bot manager configuration, custom rule, or managed rule. 
 2.  Click **Versions**.
 
     ![Versions button](/images/v7/security/version-control-versions.png?width=750)

@@ -11,7 +11,7 @@ Redirect URLs through one of the following methods:
 
 ## Bulk Redirects {/*bulk-redirects*/}
 
-This capability allows you to define a list of URLs for which we will return a `3xx` response with a `Location` header set to the desired URL. Manage this environment-specific list through the **Redirects** page by either manually adding redirect configurations or by importing a CSV file. 
+This capability allows you to define a list of URLs for which we will return a `3xx` response with a `Location` header set to the desired URL. Manage URL redirects on a per environment basis by either manually adding redirect configurations or by importing a CSV file. 
 
 **Key information:**
 -   Your redirect configuration is excluded from versioning. This allows you to roll back an environment to a previous version without affecting your URL redirects. 

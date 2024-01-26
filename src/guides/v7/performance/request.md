@@ -25,6 +25,7 @@ Learn how:
 
 -   [Requests flow through WAF.](/guides/security/waf#threat-detection)
 -   [Content is cached on our network.](/guides/performance/caching#default-caching-policy)
+-   [Edge Functions can issue subrequests to the caching layer.](/guides/edge_functions/caching#order-of-operations)
 
 ## Request Method {/*request-method*/}
 

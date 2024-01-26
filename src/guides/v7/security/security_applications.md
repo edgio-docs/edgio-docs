@@ -645,9 +645,9 @@ An advantage of using version control is that it allows you to quickly roll back
 1.  Navigate to the **Security App** page.
     {{ SECURITY_NAV }} **Security Apps**.
 2.  Click **Versions**.
-3.  Optional. View the differences between the current version and a previous one by clicking the <Image inline src="/images/v7/icons/diff.png" alt="Diff" /> icon. A comparison between those two versions will be displayed in a new tab.
-3.  Click on the desired version to view it. 
+3.  Optional. Compare the current version with a previous one by clicking the <Image inline src="/images/v7/icons/diff.png" alt="Diff" /> icon next to the desired previous version. Differences between those two versions are highlighted in green (new or updated lines) and red (modified or deleted lines).
+4.  Click on the desired version to view it. 
 
     ![Version selection](/images/v7/security/version-control-version-selection-sa.png?width=750)
 
-4.  Optional. Reactivate the version selected in step 3 by clicking **Reactivate**. Click **Reactivate this version** to confirm that it will be reactivated. 
+4.  Optional. Reactivate the version selected in the previous step by clicking **Reactivate**. Click **Reactivate this version** to confirm that it will be reactivated. 

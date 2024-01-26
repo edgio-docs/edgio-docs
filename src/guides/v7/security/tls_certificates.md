@@ -322,15 +322,15 @@ Determine whether and how {{ PRODUCT }} will validate certificates through the *
     -   **Required:** Set this option to `Required` to require the client to provide a certificate issued by a certificate authority (CA) within your custom chain of trust.
     -   **Optional:** If you choose to make client certificates optional, then you must define how {{ PRODUCT }} will validate a certificate when provided by a client. Set this option to one of the following modes: 
         -   **Permissive:** Recommended. By default, this mode instructs {{ PRODUCT }} to allow traffic regardless of whether the client provides a valid certificate. If provided, {{ PRODUCT }} will still process the client certificate. You may choose to send this metadata to the origin server. 
-        
-        <Callout type="tip">
-        
-          Permissive is the recommended validation mode for your initial setup, since it allows you to verify your configuration through mTLS metadata sent to the origin. Once you have verified your configuration, you may block unverified traffic by enabling the **Return Status Code 403 for Validation Failures** option.
-        
-        </Callout>
 
-        -   **Optional:** The client certificate must be issued by a CA within your custom chain of trust.
-        -   **Optional without CA validation:** The client must provide a valid X.509 certificate that is either self-signed or signed by a CA.
+            <Callout type="tip">
+
+              Permissive is the recommended validation mode for your initial setup, since it allows you to verify your configuration through mTLS metadata sent to the origin. Once you have verified your configuration, you may block unverified traffic by enabling the **Return Status Code 403 for Validation Failures** option.
+
+            </Callout>
+
+        -   **Optional without CA validation:** If the client provides a certificate, it must be a valid X.509 certificate that is either self-signed or signed by a CA.
+        -   **Optional:** If the client provides a certificate, it must be issued by a CA within your custom chain of trust.
     -   **Disabled:** Disables mTLS.
 
 ### mTLS Depth of Validation {/*mtls-depth-of-validation*/}

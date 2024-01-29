@@ -151,6 +151,10 @@ const nav = {
           ],
         },
         {
+          title: 'Redirects',
+          path: 'performance/redirects',
+        },
+        {
           title: 'Traffic Splitting',
           path: 'performance/traffic_splitting',
         },
@@ -257,6 +261,15 @@ const nav = {
         {
           title: 'Waiting Room',
           path: 'edge_functions/example_waiting_room',
+        },
+        separator,
+        {
+          title: 'Migrating from Cloudflare Workers',
+          path: 'edge_functions/migrating_cloudflare_workers',
+        },
+        {
+          title: 'Migrating from CloudFront Functions',
+          path: 'edge_functions/migrating_cloudfront_functions',
         },
       ],
     },

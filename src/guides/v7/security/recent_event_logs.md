@@ -140,12 +140,9 @@ The **Bot** tab contains log events for recent requests that were flagged as bot
 
 `Enforced Rule: <Rule>  <Elapsed Time>  <Time>`
 
--   `<Rule>`**:** Identifies the rate rule that was violated by its
-    name.
--   `<Elapsed Time>`**:** Indicates the amount of time that has passed since
-    the request was screened.
--   `<Time>`**:** Indicates the time (UTC) at which the
-    request was screened.
+-   `<Rule>`**:** Identifies the bot rule that was violated by its name.
+-   `<Elapsed Time>`**:** Indicates the amount of time that has passed since the request was screened.
+-   `<Time>`**:** Indicates the time (UTC) at which the request was screened.
 
 A sample rule violation is provided below.
 

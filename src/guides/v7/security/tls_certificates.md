@@ -307,6 +307,8 @@ Uploading a TLS certificate requires:
 
 TLS requires a server to authenticate to the client before a connection can be established. Mutual TLS (mTLS) builds upon TLS by also requiring the client to provide a X.509 certificate to the server for the purpose of authentication. 
 
+![mTLS Handshake](/images/v7/security/mtls.png?height=650)
+
 Our mTLS implementation provides flexibility when determining when and how a client will authenticate to the server. 
 -   By default, mTLS is disabled. Enable it by [defining how certificates will be validated](#mtls-validation). 
 -   Once mTLS has been enabled, the default behavior is to request a client certificate for all requests. However, you may instruct {{ PRODUCT }} to only request a client certificate for specific hostname(s) through the **Request Client Certificates for Hostnames** option. Regardless of this option, the **Client Certificate Validation** option determines [how a client certificate will be validated](#mtls-validation) for all requests. 

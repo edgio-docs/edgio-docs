@@ -46,7 +46,7 @@ You may create, modify, and delete real-time alerts.
 
     <Callout type="tip">
 
-      The subject line for each email notification identifies the real-time alert that was triggered or resolved by name. As a result, we recommend that you define a name that identifies the type of alert and the organization, property, and environment to which it applies. Using this naming convention will provide you with immediate context when an alert is triggered. 
+      The subject line for each email notification identifies the real-time alert that was triggered or resolved by name. As a result, we recommend that you define a name that identifies the type of alert and the organization, property, and environment to which it applies. This naming convention provides you with immediate context when an alert is triggered. 
       
       **Example:** `5xx Alerts for My Organization - My Property - Production`
 

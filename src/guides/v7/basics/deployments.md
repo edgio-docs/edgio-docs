@@ -39,7 +39,7 @@ Deploy to an environment using either of the following methods:
 
 {{ system_origins_callout.md }}
 
-Upon deploying a build, view deployment information from within the {{ PORTAL }} by navigating to the desired environment, clicking on **Deployments**, and then clicking the deployment's version number. 
+<a id="deployment-specific-page" />Upon deploying a build, view deployment information from within the {{ PORTAL }} by navigating to the desired environment, clicking on **Deployments**, and then clicking the deployment's version number. 
 
 ![Deployment version number](/images/v7/basics/deployments-version-number.png?width=450)
 

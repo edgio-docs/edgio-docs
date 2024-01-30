@@ -72,8 +72,6 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-When a request is received for a route that has an edge function assigned to it, the edge function is invoked.
-
 ### Edge Function Initialization Script (Optional) {/* edge-function-initialization-script */}
 
 An edge function initialization script is a JavaScript file executed once before any edge function in a project is invoked. This script is particularly beneficial for projects with two or more edge functions, allowing for the setup of global variables, initialization of third-party libraries, and defining utility functions used across multiple edge functions. It reduces duplicate code setup and is specified within the `{{ ROUTES_FILE }}` file. The script must adhere to specific execution and memory constraints, similar to the edge functions themselves.

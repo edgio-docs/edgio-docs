@@ -238,37 +238,38 @@ const nav = {
           path: 'edge_functions/htmltransformer',
         },
         separator,
+
         {
-          title: 'JSON Responses',
-          path: 'edge_functions/example_json_responses',
-        },
-        {
-          title: 'Content Stitching',
-          path: 'edge_functions/example_content_stitching',
-        },
-        {
-          title: 'Header Manipulation',
-          path: 'edge_functions/example_header_manipulation',
-        },
-        {
-          title: 'Redirects',
-          path: 'edge_functions/example_redirects',
-        },
-        {
-          title: 'Solutions',
-          path: 'edge_functions/solutions',
+          title: 'Examples',
+          path: 'edge_functions/examples',
           routes: [
             {
+              title: 'JSON Responses',
+              path: 'edge_functions/examples/json_responses',
+            },
+            {
+              title: 'Content Stitching',
+              path: 'edge_functions/examples/content_stitching',
+            },
+            {
+              title: 'Header Manipulation',
+              path: 'edge_functions/examples/header_manipulation',
+            },
+            {
+              title: 'Redirects',
+              path: 'edge_functions/examples/redirects',
+            },
+            {
               title: 'Basic Request Signing',
-              path: 'edge_functions/solutions/basic_request_signing',
+              path: 'edge_functions/examples/basic_request_signing',
             },
             {
               title: 'AWS Request Signing',
-              path: 'edge_functions/solutions/aws_request_signing',
+              path: 'edge_functions/examples/aws_request_signing',
             },
             {
               title: 'Waiting Room',
-              path: 'edge_functions/solutions/waiting_room',
+              path: 'edge_functions/examples/waiting_room',
             },
           ],
         },

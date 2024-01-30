@@ -30,22 +30,6 @@ Define an edge function by:
       });
     ```
 
-Specify an edge function within your `{{ ROUTES_FILE }}` file by adding the `edge_function` property to a route. The `edge_function` property accepts a string representing the path to the edge function file.
-
-```js filename="./routes.js"
-import {Router} from '@edgio/core/router';
-
-export default new Router()
-  .get('/', {
-    edge_function: './edge-functions/index.js',
-  })
-  .match('/api/*', {
-    edge_function: './edge-functions/api.js',
-  });
-```
-
-Each edge function is stored in a separate file and assigned to a specific route in your `routes.js` file. Edge functions support only JavaScript (`.js`) files.
-
 An edge function file must export the following entry point:
 
 ```js

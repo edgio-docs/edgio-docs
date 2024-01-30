@@ -100,8 +100,6 @@ export async function handleHttpInit(context) {
 
 - _Use Cases_: Ideal for computationally expensive operations like compiling regex, which is beneficial to perform once rather than in every edge function execution. However, operations like fetch are not recommended in this phase due to potential persistence of fetched data beyond desired periods.
 
-- _Context Object_: The `context` object provided to `handleHttpInit` is the same as that passed to `handleHttpRequest`, but with the caveat that request-specific data might not be relevant or correctly populated during initialization.
-
 - _Consideration for Global State_: Developers should be cautious when using the `context` to set up specific code or save data in the `global` scope during initialization, as it may persist and potentially lead to incorrect behavior across different requests.
 
 The following sample code demonstrates how to set up a global variable within an edge function initialization script and access it within an edge function.

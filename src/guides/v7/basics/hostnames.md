@@ -36,30 +36,11 @@ On a per environment-basis, define each hostname that will be served through {{ 
     For example, if you have defined `www.example.com` within the `production` environment, then you cannot define it within any other environment until you delete it from the `production` environment.
 
 -   Each hostname is mapped to an origin configuration. By default, {{ PRODUCT }} proxies cache misses for that hostname to that origin configuration. You may override this mapping through either the [Set Origin feature](/guides/performance/rules/features#set-origin) or your [CDN-as-code configuration (set_origin)](/guides/performance/cdn_as_code).
--   Each hostname requires the installation of a [TLS certificate](/guides/security/tls_certificates) on our network. {{ PRODUCT }} can automatically generate and install this TLS certificate when both of the following requirements are met:
 
-    -   **Certificate Authority Authorization:** The Let's Encrypt certificate authority (CA) must be allowed to issue certificates for that hostname. It is allowed to issue certificates when either of the following conditions are true:
-
-        -   A CAA record has not been issued for that hostname or a parent hostname. This DNS configuration means that any CA is allowed to generate certificates for that hostname.
-        -   A CAA record explicitly allows the Let's Encrypt CA to generate certificates for that hostname. 
-
-        This sample CAA record indicates that the Let's Encrypt CA is allowed to issue certificates for `cdn.example.com`:
-
-        `cdn.example.com.   CAA 0 issue "letsencrypt.org"`
-
-    -   **Domain Control Validation:** Prove your control over that domain by adding an `_acme-challenge` CNAME record to it.
-
-        **Example:** `_acme-challenge.cdn.example.com. CNAME _acme-challenge.xdn-validation.com.`
-
-    <Callout type="info">
-
-      Alternatively, you may [upload your own TLS certificate](/guides/security/tls_certificates#uploading-your-certificate).
-
-    </Callout>
-
+-   Set up support for [HTTPS delivery](#https-traffic) for each of your hostnames.
 -   Once you are ready to serve traffic through {{ PRODUCT }}, update the hostname's [DNS configuration](#serving-traffic-through) to point to our service.
 
-**To add, modify, or delete hostnames from an environment** <a id="add-modify-delete-hostname"></a>
+**To add, modify, or delete hostnames from an environment through the {{ PORTAL }}** <a id="add-modify-delete-hostname"></a>
 
 1.  Load the **Hostnames** page.
 
@@ -92,3 +73,39 @@ On a per environment-basis, define each hostname that will be served through {{ 
 
 3.  Repeat step 2 as needed.
 4.  If you are finished making changes to this environment, click **Deploy Changes**.
+
+**To add, modify, or delete hostnames within your CDN-as-code configuration**
+
+Define the desired hostnames within the `<ENV_NAME>.hostnames` key. 
+
+```js filename="{{ CONFIG_FILE }}"
+module.exports = {
+  /* ... */
+  environments: {
+    production: {
+      hostnames: [{hostname: 'cdn.example.com'},{hostname: 'resources.example.com'}],
+    },
+  /* ... */
+};
+```
+
+## HTTPS Traffic {/*https-traffic*/}
+
+Each hostname requires the installation of a [TLS certificate](/guides/security/tls_certificates) on our network. Set up TLS support through either of the following methods:
+
+-   **Automatic Installation:** {{ PRODUCT }} can automatically generate and install this TLS certificate when both of the following requirements are met:
+
+    -   **Certificate Authority Authorization:** The Let's Encrypt certificate authority (CA) must be allowed to issue certificates for that hostname. It is allowed to issue certificates when either of the following conditions are true:
+
+        -   A CAA record has not been issued for that hostname or a parent hostname. This DNS configuration means that any CA is allowed to generate certificates for that hostname.
+        -   A CAA record explicitly allows the Let's Encrypt CA to generate certificates for that hostname. 
+
+        This sample CAA record indicates that the Let's Encrypt CA is allowed to issue certificates for `cdn.example.com`:
+
+        `cdn.example.com.   CAA 0 issue "letsencrypt.org"`
+
+    -   **Domain Control Validation:** Prove your control over that domain by adding an `_acme-challenge` CNAME record to it.
+
+        **Example:** `_acme-challenge.cdn.example.com. CNAME _acme-challenge.xdn-validation.com.`
+
+-   **Bring Your Own Certificate (BYOC):** [Upload your own TLS certificate](/guides/security/tls_certificates#uploading-your-certificate).

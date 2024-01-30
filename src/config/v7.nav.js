@@ -38,7 +38,7 @@ const nav = {
           path: 'basics/deployments',
         },
         {
-          title: 'Serving Traffic through {{ PRODUCT }}',
+          title: 'Serving Traffic through Our Network',
           path: 'basics/serving_traffic',
         },
         {

@@ -1,5 +1,5 @@
 ---
-title: Serving Traffic through {{ PRODUCT }}
+title: Serving Traffic through Our Network
 ---
 
 Once you have verified your configuration, you can serve traffic through {{ PRODUCT }} by [updating the DNS records for each hostname registered with {{ PRODUCT }}](#dns). 

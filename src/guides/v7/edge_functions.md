@@ -13,7 +13,22 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 
 ## Defining Edge Functions {/* defining-edge-functions */}
 
-Edge functions are defined in their respective files and assigned to specific routes within your `{{ ROUTES_FILE }}` file. An edge function is invoked when an incoming request matches a route that has an edge function assigned to it. Only a single edge function can be assigned to a route. If multiple routes match an incoming request, the edge function assigned to the last matching route is invoked.
+An edge function is invoked when an incoming request matches a route that has an edge function assigned to it. Only a single edge function can be assigned to a route. If multiple routes match an incoming request, the edge function assigned to the last matching route is invoked.
+
+Define an edge function by:
+-   Storing your standalone JavaScript code as a file with a `js` file extension.
+-   Setting an `edge_function` property within your {{ ROUTES_FILE }}. Set this string property to the relative path to your edge function. 
+
+    ```js filename="./routes.js"
+    import {Router} from '@edgio/core/router';
+    export default new Router()
+      .get('/', {
+        edge_function: './edge-functions/index.js',
+      })
+      .match('/api/*', {
+        edge_function: './edge-functions/api.js',
+      });
+    ```
 
 Specify an edge function within your `{{ ROUTES_FILE }}` file by adding the `edge_function` property to a route. The `edge_function` property accepts a string representing the path to the edge function file.
 
@@ -59,7 +74,7 @@ export async function handleHttpRequest(request, context) {
 
 When a request is received for a route that has an edge function assigned to it, the edge function is invoked.
 
-### Edge Function Initialization Script (_Optional_) {/* edge-function-initialization-script */}
+### Edge Function Initialization Script (Optional) {/* edge-function-initialization-script */}
 
 An edge function initialization script is a JavaScript file executed once before any edge function in a project is invoked. This script is particularly beneficial for projects with two or more edge functions, allowing for the setup of global variables, initialization of third-party libraries, and defining utility functions used across multiple edge functions. It reduces duplicate code setup and is specified within the `{{ ROUTES_FILE }}` file. The script must adhere to specific execution and memory constraints, similar to the edge functions themselves.
 
@@ -92,15 +107,15 @@ export async function handleHttpInit(context) {
 
 **Key information:**
 
-- _Execution Context_: It's important to note that certain parts of the `context`, like `geo`, `client`, and `device`, may not be relevant or populated during initialization as they are request-specific. The most relevant part of the context for initialization is `context.environmentVars`.
+- **Execution Context:** It's important to note that certain parts of the `context`, like `geo`, `client`, and `device`, may not be relevant or populated during initialization as they are request-specific. The most relevant part of the context for initialization is `context.environmentVars`.
 
-- _Execution Frequency and State Preservation_: The initialization code runs upon the first request received for any edge function within the project/bundle. After execution, the state is saved as a memory snapshot for subsequent executions of the project's edge functions. These snapshots are specific to each backend cache server and will be periodically evicted based on internal criteria. Upon eviction, `handleHttpInit` will execute again for the next request.
+- **Execution Frequency and State Preservation:** The initialization code runs upon the first request received for any edge function within the project/bundle. After execution, the state is saved as a memory snapshot for subsequent executions of the project's edge functions. These snapshots are specific to each backend cache server and will be periodically evicted based on internal criteria. Upon eviction, `handleHttpInit` will execute again for the next request.
 
-- _CPU/Memory Limitations_: The initialization script shares the same [CPU and memory limitations](#limitations) as the edge functions. This includes the execution time constraint (e.g., 50ms).
+- **CPU/Memory Limitations:** The initialization script shares the same [CPU and memory limitations](#limitations) as the edge functions. This includes the execution time constraint (e.g., 50ms).
 
-- _Use Cases_: Ideal for computationally expensive operations like compiling regex, which is beneficial to perform once rather than in every edge function execution. However, operations like fetch are not recommended in this phase due to potential persistence of fetched data beyond desired periods.
+- **Use Cases:** An initialization script is ideal for computationally expensive operations like compiling regex, which is beneficial to perform once rather than in every edge function execution. However, operations like fetch are not recommended in this phase due to potential persistence of fetched data beyond desired periods.
 
-- _Consideration for Global State_: Developers should be cautious when using the `context` to set up specific code or save data in the `global` scope during initialization, as it may persist and potentially lead to incorrect behavior across different requests.
+- **Consideration for Global State:** Developers should be cautious when using the `context` to set up specific code or save data in the `global` scope during initialization, as it may persist and potentially lead to incorrect behavior across different requests.
 
 The following sample code demonstrates how to set up a global variable within an edge function initialization script and access it within an edge function.
 

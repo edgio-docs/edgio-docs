@@ -122,7 +122,7 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-### Edge Function Parameters {/* edge-function-parameters */}
+## Edge Function Parameters {/* edge-function-parameters */}
 
 The edge function is passed two parameters: `request` and `context`.
 

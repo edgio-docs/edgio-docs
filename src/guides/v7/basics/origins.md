@@ -2,14 +2,11 @@
 title: Origins
 ---
 
-An origin configuration defines how {{ PRODUCT }} communicates with:
--   Your web server(s).
--   {{ PRODUCT }} {{ PRODUCT_PLATFORM }} and Cloud Functions
--   {{ PRODUCT }} Edge Functions
+An origin configuration defines how {{ PRODUCT }} communicates with your web server(s). 
 
-<Callout type="important">
+<Callout type="info">
 
-  Do not modify [system-defined origin configurations](#system-defined-origins).
+  **CDN-as-Code Only:** If you are using CDN-as-code, then an origin configuration also defines how {{ PRODUCT }} communicates with [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks), [Cloud Functions](/guides/performance/serverless_compute), and [{{ PRODUCT }} Edge Functions](/guides/edge_functions). {{ PRODUCT }} automatically creates [system-defined origin configurations](#system-defined-origins) for our cloud infrastructure as part of your initial CDN-as-code deployment. Do not modify system-defined origin configurations.
 
 </Callout>
 

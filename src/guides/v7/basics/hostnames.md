@@ -2,17 +2,17 @@
 title: Hostnames
 ---
 
-You must register each hostname (e.g., `cdn.example.com`) that will be served through the {{ PRODUCT }} network. Each hostname must map to an origin configuration. An origin configuration defines how our service will communicate with your web servers. 
+You must register each hostname (e.g., `cdn.example.com`) that will be served through the {{ PRODUCT }} network. Each hostname is mapped to an origin configuration. An origin configuration defines how our service will communicate with your web servers. 
 
 <Callout type="info">
 
-  **CDN-as-Code Only:** If you are using CDN-as-code, then you should [define your hostnames within your {{ CONFIG_FILE }}](#cdn-as-code). Your routes determine the source from which data will be retrieved. You may retrieve content from [your web servers](/guides/performance/cdn_as_code#defining-origins), the {{ PRODUCT }} cloud, which powers [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) and [Cloud Functions](/guides/performance/serverless_compute), or [{{ PRODUCT }} Edge Functions](/guides/edge_functions). We automatically create system-defined origin configurations for our cloud infrastructure as part of your initial CDN-as-code deployment. 
+  **CDN-as-Code Only:** If you are using CDN-as-code, then you should [define your hostnames within your {{ CONFIG_FILE }}](#cdn-as-code). Your routes determine the source from which data will be retrieved. You may retrieve content from [your web servers](/guides/performance/cdn_as_code#defining-origins), the {{ PRODUCT }} cloud, which powers [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) and [Cloud Functions](/guides/performance/serverless_compute), or [{{ PRODUCT }} Edge Functions](/guides/edge_functions). 
 
 </Callout>
 
 ![Hostname and Origin Workflow](/images/v7/basics/hostnames-origins.png?width=781)
 
-You may serve your site through our cloud, your origin server(s), or any combination of both. 
+If you are using CDN-as-code, then you may serve your site through any combination of your web server(s), the {{ PRODUCT }} cloud, or {{ PRODUCT }} Edge Functions. 
 
 ![Hostname, Origin, and Cloud Workflow](/images/v7/basics/hostnames-origins-cloud.png)
 
@@ -85,7 +85,7 @@ module.exports = {
 
 Each hostname requires the installation of a [TLS certificate](/guides/security/tls_certificates) on our network. Set up TLS support through either of the following methods:
 
--   **Automatic Installation:** {{ PRODUCT }} can automatically generate and install this TLS certificate when both of the following requirements are met:
+-   **Automatic Installation:** {{ PRODUCT }} can automatically generate and install a TLS certificate when both of the following requirements are met:
 
     -   **Certificate Authority Authorization:** The Let's Encrypt certificate authority (CA) must be allowed to issue certificates for that hostname. It is allowed to issue certificates when either of the following conditions are true:
 

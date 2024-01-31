@@ -27,7 +27,13 @@ On a per environment-basis, define each hostname that will be served through {{ 
 
     For example, if you have defined `www.example.com` within the `production` environment, then you cannot define it within any other environment until you delete it from the `production` environment.
 
--   Each hostname is mapped to an origin configuration. By default, {{ PRODUCT }} proxies cache misses for that hostname to that origin configuration. You may override this mapping through either the [Set Origin feature](/guides/performance/rules/features#set-origin) or your [CDN-as-code configuration (set_origin)](/guides/performance/cdn_as_code/route_features#proxying-an-origin).
+-   Each hostname is mapped to an origin configuration. By default, {{ PRODUCT }} proxies cache misses for that hostname to that origin configuration. Override this mapping through the [Set Origin feature](/guides/performance/rules/features#set-origin).
+
+<Callout type="info">
+
+  **CDN-as-Code Only:** If you are using CDN-as-code, then your routes determine the source from which data will be retrieved. Define an origin configuration as a source through the [set_origin feature](/guides/performance/cdn_as_code/route_features#proxying-an-origin).
+
+</Callout>
 
 -   Set up support for [HTTPS delivery](#https-traffic) for each of your hostnames.
 -   Once you are ready to serve traffic through {{ PRODUCT }}, update the hostname's [DNS configuration](#serving-traffic-through) to point to our service.

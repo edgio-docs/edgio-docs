@@ -2,20 +2,12 @@
 title: Hostnames
 ---
 
-Setting up the delivery of your website through {{ PRODUCT }} requires the following configuration for each desired [environment](/guides/basics/environments):
-
--   **Hostname:** A hostname identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
--   **Source:** Define the source from which {{ PRODUCT }} will retrieve content. You may retrieve content from any combination of the following sources:
-    -   **Origin:** An origin configuration defines how our service will communicate with your web servers.
-    -   **{{ PRODUCT }} Cloud:** The {{ PRODUCT }} cloud, which powers [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) and [Cloud Functions](/guides/performance/serverless_compute), allows you to run serverless code.
-    -   **{{ PRODUCT }} Edge Functions:** Run standalone JavaScript code on our edge servers.
-    
-Control how {{ PRODUCT }} communicates with your web servers or our cloud by mapping hostnames to origin configurations.
+You must register each hostname (e.g., `cdn.example.com`) that will be served through the {{ PRODUCT }} network. Each hostname must map to an origin configuration. An origin configuration defines how our service will communicate with your web servers. 
 
 <Callout type="info">
 
-  {{ PRODUCT }} cloud requires a CDN-as-code configuration. We automatically create system-defined origin configurations for our cloud infrastructure as part of your initial CDN-as-code deployment. 
-  
+  **CDN-as-Code Only:** If you are using CDN-as-code, then you should [define your hostnames within your {{ CONFIG_FILE }}](#cdn-as-code). Your routes determine the source from which data will be retrieved. You may retrieve content from [your web servers](/guides/performance/cdn_as_code#defining-origins), the {{ PRODUCT }} cloud, which powers [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) and [Cloud Functions](/guides/performance/serverless_compute), or [{{ PRODUCT }} Edge Functions](/guides/edge_functions). We automatically create system-defined origin configurations for our cloud infrastructure as part of your initial CDN-as-code deployment. 
+
 </Callout>
 
 ![Hostname and Origin Workflow](/images/v7/basics/hostnames-origins.png?width=781)
@@ -74,7 +66,7 @@ On a per environment-basis, define each hostname that will be served through {{ 
 3.  Repeat step 2 as needed.
 4.  If you are finished making changes to this environment, click **Deploy Changes**.
 
-**To add, modify, or delete hostnames within your CDN-as-code configuration**
+**<a id="cdn-as-code" />To add, modify, or delete hostnames within your CDN-as-code configuration**
 
 Define the desired hostnames within the `<ENV_NAME>.hostnames` key. 
 

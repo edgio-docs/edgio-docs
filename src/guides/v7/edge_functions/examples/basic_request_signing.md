@@ -1,5 +1,5 @@
 ---
-title: Request Signing
+title: Basic Request Signing
 ---
 
 Request signing is a technique used to verify the authenticity and integrity of a request. It involves adding a signature to the request, which is generated using a secret key and specific request parameters. This signature can then be verified by the recipient to ensure that the request has not been tampered with and originated from a trusted source.

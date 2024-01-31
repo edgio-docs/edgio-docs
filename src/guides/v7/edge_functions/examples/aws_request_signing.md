@@ -18,16 +18,6 @@ import {Router, edgioRoutes} from '@edgio/core';
 export default new Router()
   .use(edgioRoutes)
 
-  // Here is an example where we cache api/* at the edge but prevent caching in the browser
-  // .match('/api/:path*', {
-  //   caching: {
-  //     max_age: '1d',
-  //     stale_while_revalidate: '1h',
-  //     bypass_client_cache: true,
-  //     service_worker_max_age: '1d',
-  //   },
-  // })
-
   // Match any GET request to the /assets/* path and handle it with the edge function
   .get('/assets/:path*', {
     edge_function: './edge-functions/main.js',
@@ -56,18 +46,7 @@ Define your S3 origin configuration in the `{{ CONFIG_FILE }}` file:
 require('dotenv').config();
 
 module.exports = {
-  // The name of the site in Edgio to which this app should be deployed.
-  // name: 'my-site-name',
-
-  // The name of the organization in Edgio to which this app should be deployed.
-  // organization: 'my-organization-name',
-
-  // Overrides the default path to the routes file. The path should be relative to the root of your app.
-  // routes: 'routes.js',
-
-  // When set to true or omitted entirely, Edgio includes the deployment number in the cache key,
-  // effectively purging the cache each time you deploy.
-  // purgeCacheOnDeploy: false,
+  // ... other configuration options ...
 
   origins: [
     {
@@ -94,52 +73,6 @@ module.exports = {
       // shields: { us_east: 'DCD' },
     },
   ],
-
-  // Uncomment the following to specify environment specific configs
-  // environments: {
-  //   production: {
-  //     hostnames: [{ hostname: 'www.mysite.com' }],
-  //   },
-  //   staging: {
-  //     hostnames: [{ hostname: 'staging.mysite.com' }],
-  //     origins: [
-  //       {
-  //         name: 'origin',
-  //         hosts: [{ location: 'staging-origin.mysite.com' }],
-  //         override_host_header: 'staging-origin.mysite.com',
-  //         tls_verify: {
-  //           use_sni: true,
-  //           sni_hint_and_strict_san_check: 'staging-origin.mysite.com',
-  //         },
-  //         shields: { us_east: 'DCD' },
-  //       },
-  //     ],
-  //   },
-  // },
-
-  // Options for hosting serverless functions on Edgio
-  // serverless: {
-  //   // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
-  //   // This option generally isn't needed as Edgio automatically includes all modules imported by your code in the bundle that
-  //   // is uploaded during deployment
-  //   includeNodeModules: true,
-  //
-  //   // Include additional paths that are dynamically loaded by your app at runtime here when building the serverless bundle.
-  //   include: ['views/**/*'],
-  // },
-
-  // The maximum number of URLs that will be concurrently prerendered during deployment when static prerendering is enabled.
-  // Defaults to 200, which is the maximum allowed value.
-  // prerenderConcurrency: 200,
-
-  // A list of glob patterns identifying which source files should be uploaded when running edgio deploy --includeSources.
-  // This option is primarily used to share source code with Edgio support personnel for the purpose of debugging. If omitted,
-  // edgio deploy --includeSources will result in all files which are not gitignored being uploaded to Edgio.
-  //
-  // sources : [
-  //   '**/*', // include all files
-  //   '!(**/secrets/**/*)', // except everything in the secrets directory
-  // ],
 };
 ```
 

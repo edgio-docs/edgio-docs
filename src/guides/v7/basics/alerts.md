@@ -43,6 +43,15 @@ You may create, modify, and delete real-time alerts.
     {{ ENV_NAV }} **Realtime Alerts**.
 2.  Click **+ New Alert**.
 3.  In the **Alert Name** option, assign a name to this configuration.
+
+    <Callout type="tip">
+
+      The subject line for each email notification identifies the real-time alert that was triggered or resolved by name. As a result, we recommend that you define a name that identifies the type of alert and the organization, property, and environment to which it applies. This naming convention provides you with immediate context when an alert is triggered. 
+      
+      **Example:** `5xx Alerts for My Organization - My Property - Production`
+
+    </Callout>
+
 4.  From the **Duration** option, select the amount of time that the condition(s) associated with this real-time alert must be met before a notification may be sent.
 5.  <a id="add-condition" />Add one or more condition(s) that must be satisfied before a notification is sent.
     1.  Click **+ Add**.

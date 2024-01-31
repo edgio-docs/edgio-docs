@@ -84,7 +84,7 @@ Manage and deploy changes to your CDN configuration through the {{ PORTAL }}.
 
         <Callout type="info">
 
-          You may safely ignore the other origin settings until you are ready to fine-tune your setup. [Learn more about origins.](/guides/basics/hostnames_and_origins#origin)
+          You may safely ignore the other origin settings until you are ready to fine-tune your setup. [Learn more about origins.](/guides/basics/origins)
 
         </Callout>
 
@@ -213,7 +213,7 @@ You are now ready for:
 
 -   [CDN-as-code:](/guides/performance/cdn_as_code) If your new property uses CDN-as-code, then you will need to define CDN behavior within a file ({{ ROUTES_FILE }}) stored alongside your code. Additionally, if this project uses a JavaScript framework, then you can use [{{ PRODUCT }} Sites.](/guides/sites_frameworks/getting_started) to improve your website's performance by using our cloud workers to quickly render server-side content in a scalable manner.
 
--   **{{ PORTAL }}:** If your new property is for a site hosted on your web server(s), then you should fine-tune your [origin configuration](/guides/basics/hostnames_and_origins#origin).
+-   **{{ PORTAL }}:** If your new property is for a site hosted on your web server(s), then you should fine-tune your [origin configuration](/guides/basics/origins).
 
     For example, you can enable Server Name Indication (SNI) on an origin configuration or shield it from requests to reduce network bandwith usage and the load on your web servers.
 

@@ -238,7 +238,6 @@ const nav = {
           path: 'edge_functions/htmltransformer',
         },
         separator,
-
         {
           title: 'Examples',
           path: 'edge_functions/examples',

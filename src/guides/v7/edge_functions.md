@@ -93,7 +93,7 @@ export async function handleHttpInit(context) {
 
 - **Execution Frequency and State Preservation:** The initialization code runs upon the first request received for any edge function within the project/bundle. After execution, the state is saved as a memory snapshot for subsequent executions of the project's edge functions. These snapshots are specific to each backend cache server and will be periodically evicted based on internal criteria. Upon eviction, `handleHttpInit` will execute again for the next request.
 
-- **CPU/Memory Limitations:** The initialization script shares the same [CPU and memory limitations](#limitations) as the edge functions. This includes the execution time constraint (e.g., 50ms).
+- **CPU/Memory Limitations:** The initialization script shares the same [CPU and memory limitations](#limitations) as the edge functions. This includes the execution time constraint (i.e., 50ms).
 
 - **Use Cases:** An initialization script is ideal for computationally expensive operations like compiling regex, which is beneficial to perform once rather than in every edge function execution. However, operations like fetch are not recommended in this phase due to potential persistence of fetched data beyond desired periods.
 

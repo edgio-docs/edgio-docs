@@ -244,8 +244,12 @@ const nav = {
           path: 'edge_functions/examples',
           routes: [
             {
-              title: 'JSON Responses',
-              path: 'edge_functions/examples/json_responses',
+              title: 'AWS Request Signing',
+              path: 'edge_functions/examples/aws_request_signing',
+            },
+            {
+              title: 'Basic Request Signing',
+              path: 'edge_functions/examples/basic_request_signing',
             },
             {
               title: 'Content Stitching',
@@ -256,16 +260,12 @@ const nav = {
               path: 'edge_functions/examples/header_manipulation',
             },
             {
+              title: 'JSON Responses',
+              path: 'edge_functions/examples/json_responses',
+            },
+            {
               title: 'Redirects',
               path: 'edge_functions/examples/redirects',
-            },
-            {
-              title: 'Basic Request Signing',
-              path: 'edge_functions/examples/basic_request_signing',
-            },
-            {
-              title: 'AWS Request Signing',
-              path: 'edge_functions/examples/aws_request_signing',
             },
             {
               title: 'Waiting Room',

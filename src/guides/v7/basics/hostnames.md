@@ -6,7 +6,9 @@ You must register each hostname (e.g., `cdn.example.com`) that will be served th
 
 <Callout type="info">
 
-  **CDN-as-Code Only:** If you are using CDN-as-code, then you should [define your hostnames within your {{ CONFIG_FILE }}](#cdn-as-code). Your routes determine the source from which data will be retrieved. You may retrieve content from [your web servers](/guides/performance/cdn_as_code#defining-origins), the {{ PRODUCT }} cloud, which powers [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) and [Cloud Functions](/guides/performance/serverless_compute), or [{{ PRODUCT }} Edge Functions](/guides/edge_functions). 
+  **CDN-as-Code Only:** If you are using CDN-as-code, then you should [manage your hostnames within your {{ CONFIG_FILE }}](#cdn-as-code). Deploying your CDN-as-code configuration will update the set of hostnames listed on the **Hostnames** page. 
+  
+  Your routes determine the source from which data will be retrieved. You may retrieve content from [your web servers](/guides/performance/cdn_as_code#defining-origins), the {{ PRODUCT }} cloud, which powers [{{ PRODUCT }} {{ PRODUCT_PLATFORM }}](/guides/sites_frameworks) and [Cloud Functions](/guides/performance/serverless_compute), or [{{ PRODUCT }} Edge Functions](/guides/edge_functions). 
 
 </Callout>
 

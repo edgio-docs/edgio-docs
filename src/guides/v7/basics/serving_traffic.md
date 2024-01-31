@@ -17,18 +17,7 @@ Verify that you have performed the following tasks:
     Learn more: [{{ PORTAL }}](/guides/basics/origins#add-an-origin-configuration) | [CDN-as-code](/guides/performance/cdn_as_code#defining-origins)
 
 -   If you have defined one or more origin configuration(s), then you must [configure your firewall](#firewall-allowing-ip-addresses)  to accept traffic from our network.
--   Set up HTTPS support by hosting a TLS certificate on our network. 
-
-    You may either:
-    
-    -   [Upload your own TLS certificate](/guides/security/tls_certificates#uploading-your-certificate)
-    -   Allow {{ PRODUCT }} to autogenerate it for each hostname defined in step 1 by performing the following steps:
-
-        1.  Verify that the Let's Encrypt certificate authority is allowed to issue certificates for the desired hostname by checking for CAA records.
-        2.  [Add an _acme-challenge CNAME record](/guides/security/tls_certificates#domain-control-validation) that proves your control over that hostname. 
-
-            **Example:** `_acme-challenge.cdn.example.com. CNAME _acme-challenge.xdn-validation.com.`
-
+-   Enabled [HTTPS support for each registered hostname](/guides/basics/hostnames#https-traffic) by either autogenerating or uploading a TLS certificate to our network. 
 -   [Deployed the above configurations](/guides/basics/deployments) to {{ PRODUCT }}.
 -   Tested your site by loading it through a [deployment-specific link](/guides/basics/deployments#deployment-specific-page).
 

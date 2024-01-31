@@ -10,11 +10,11 @@ Verify that you have performed the following tasks:
 
 -   Defined each hostname through which your site's content will be delivered. 
 
-    [{{ PORTAL }}](#add-modify-delete-hostname) | [CDN-as-code](/guides/performance/cdn_as_code/edgio_config#environments)
+    [{{ PORTAL }}](/guides/basics/hostnames#add-modify-delete-hostname) | [CDN-as-code](/guides/performance/cdn_as_code/edgio_config#environments)
 
 -   Created one or more origin configuration(s) that defines how {{ PRODUCT }} communicates with your web server(s). If you are using CDN-as-code and do not plan on retrieving data from your web server(s), then you do not need to create an origin configuration.
 
-    [{{ PORTAL }}](#add-an-origin-configuration) | [CDN-as-code](/guides/performance/cdn_as_code#defining-origins)
+    [{{ PORTAL }}](/guides/basics/origins#add-an-origin-configuration) | [CDN-as-code](/guides/performance/cdn_as_code#defining-origins)
 
 -   If you have defined one or more origin configuration(s), then you must [configure your firewall](#firewall-allowing-ip-addresses)  to accept traffic from our network.
 -   Set up HTTPS support by hosting a TLS certificate on our network. 

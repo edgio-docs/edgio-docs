@@ -4,8 +4,8 @@ title: Environments
 
 An environment defines how traffic will be served through {{ PRODUCT }}. Each environment consists of:
 
--   [Hostnames:](/guides/basics/hostnames_and_origins) A hostname identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
--   [Origins:](/guides/basics/hostnames_and_origins) An origin configuration defines how our service will communicate with your web servers.
+-   [Hostnames:](/guides/basics/hostnames) A hostname identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
+-   [Origins:](/guides/basics/origins) An origin configuration defines how our service will communicate with your web servers.
 -   [Rules:](/guides/performance/rules) A rule determines how requests for a specific environment will be processed.
 -   [Experiments:](/guides/performance/experiments) Randomized experimentation process wherein two or more versions of a variable are shown to different segments of website visitors at the same time to determine which version leaves the maximum impact and drives business metrics.
 -   [Core Web Vitals:](/guides/performance/observability/real_user_monitoring) Review and analyze performance metrics collected through the measurement of actual Chrome users. 

@@ -74,7 +74,7 @@ To fetch from a cloud function, you must meet the following requirements:
 - {{ PRODUCT }} version 7.4.1 or later.
 - A route that is defined as a cloud function. This can be a route via a connector such as `NextRoutes` or by using `compute` or `proxy` along with the `transformResponse` option.
 - A route that uses an edge function. This must match the path as the cloud function and be defined **after** the cloud function route (see sample code above).
-- The origin `edgio_serverless` must be specified in the request (see [System-Defined Origins](/guides/basics/hostnames_and_origins#system-defined-origins)).
+- The origin `edgio_serverless` must be specified in the request (see [System-Defined Origins](/guides/basics/origins#system-defined-origins)).
 - Forwarding of the original request parameters including the method, headers, and body.
 
 The following sample code demonstrates how to fetch and manipulate cloud function response within an edge function:

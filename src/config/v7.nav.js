@@ -26,12 +26,20 @@ const nav = {
           path: 'basics/environments',
         },
         {
-          title: 'Hostnames and Origins',
-          path: 'basics/hostnames_and_origins',
+          title: 'Hostnames',
+          path: 'basics/hostnames',
+        },
+        {
+          title: 'Origin Configurations',
+          path: 'basics/origins',
         },
         {
           title: 'Deployments',
           path: 'basics/deployments',
+        },
+        {
+          title: 'Serving Traffic through Our Network',
+          path: 'basics/serving_traffic',
         },
         {
           title: 'Collaboration',

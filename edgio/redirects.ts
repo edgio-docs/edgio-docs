@@ -174,4 +174,5 @@ export default <Array<Redirect>>[
     /\/guides\/v7\/sites_frameworks\/getting_started\/(ember_fastboot|frontity|gatsby|hexo|mkdocs|razzle|sanity)/,
     '/guides/v7/sites_frameworks/legacy_connectors/$1',
   ],
+  ['/guides/v7/basics/hostnames_and_origins', '/guides/v7/basics/hostnames'],  
 ];

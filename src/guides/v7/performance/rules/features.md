@@ -1901,7 +1901,7 @@ export default new Router()
 
 #### Set Origin {/*set-origin*/}
 
-Defines the [origin configuration](/guides/basics/hostnames_and_origins#origin) to which requests will be forwarded when they cannot be served from cache.
+Defines the [origin configuration](/guides/basics/origins) to which requests will be forwarded when they cannot be served from cache.
 
 <edgejs>
 **Example:**
@@ -2169,13 +2169,13 @@ Determines whether {{ PRODUCT }} will follow a redirect defined within the `Loca
 **Key information:**
 
 -   All requests, regardless of HTTP method (e.g., `POST` and `PUT`), are redirected as `GET` requests.
--   {{ PRODUCT }} will only follow redirects to a registered [hostname](/guides/basics/hostnames_and_origins#hostnames). {{ PRODUCT }} returns a `404 Not Found` response for hostnames whose traffic cannot be served by {{ PRODUCT }}.
+-   {{ PRODUCT }} will only follow redirects to a registered [hostname](/guides/basics/hostnames). {{ PRODUCT }} returns a `404 Not Found` response for hostnames whose traffic cannot be served by {{ PRODUCT }}.
 
 <edgejs>
 **Key information:**
 
 -   All requests, regardless of HTTP method (e.g., `POST` and `PUT`), are redirected as `GET` requests.
--   {{ PRODUCT }} will only follow redirects to a registered [hostname](/guides/basics/hostnames_and_origins#hostnames). {{ PRODUCT }} returns a `404 Not Found` response for hostnames whose traffic cannot be served by {{ PRODUCT }}.
+-   {{ PRODUCT }} will only follow redirects to a registered [hostname](/guides/basics/hostnames). {{ PRODUCT }} returns a `404 Not Found` response for hostnames whose traffic cannot be served by {{ PRODUCT }}.
 
 **Example:**
 

@@ -8,18 +8,14 @@ Once you have verified your configuration, you can serve traffic through {{ PROD
 
 Verify that you have performed the following tasks:
 
--   Defined each hostname through which your site's content will be delivered. 
-
-    Learn more: [{{ PORTAL }}](/guides/basics/hostnames#add-modify-delete-hostname) | [CDN-as-code](/guides/performance/cdn_as_code/edgio_config#environments)
-
--   Created one or more origin configuration(s) that defines how {{ PRODUCT }} communicates with your web server(s). If you are using CDN-as-code and do not plan on retrieving data from your web server(s), then you do not need to create an origin configuration.
-
-    Learn more: [{{ PORTAL }}](/guides/basics/origins#add-an-origin-configuration) | [CDN-as-code](/guides/performance/cdn_as_code#defining-origins)
-
--   If you have defined one or more origin configuration(s), then you must [configure your firewall](#firewall-allowing-ip-addresses)  to accept traffic from our network.
--   Enabled [HTTPS support for each registered hostname](/guides/basics/hostnames#https-traffic) by either autogenerating or uploading a TLS certificate to our network. 
--   [Deployed the above configurations](/guides/basics/deployments) to {{ PRODUCT }}.
--   Tested your site by loading it through a [deployment-specific link](/guides/basics/deployments#deployment-specific-page).
+| Task                                                                                                                                                                               | Description                                                                                                                                                                                                                                                                   |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Created hostname(s) through the [{{ PORTAL }}](/guides/basics/hostnames#add-modify-delete-hostname) or  [CDN-as-code](/guides/performance/cdn_as_code/edgio_config#environments).           | Defined each hostname through which your site's content will be delivered.                                                                                                                                                                                                    |
+| Created origin configuration(s) through the [{{ PORTAL }}](/guides/basics/origins#add-an-origin-configuration) or  [CDN-as-code](/guides/performance/cdn_as_code#defining-origins). | Created one or more origin configuration(s) that defines how {{ PRODUCT }} communicates with your web server(s). <br /><br />If you are using CDN-as-code and do not plan on retrieving data from your web server(s), then you do not need to create an origin configuration. |
+| [Configured your firewall.](#firewall-allowing-ip-addresses)                                                                                                                        | If you have defined one or more origin configuration(s), then you must configure your firewall to accept traffic from our network.                                                                                                                                            |
+| [Enabled HTTPS support.](/guides/basics/hostnames#https-traffic)                                                                                                                    | Enabled HTTPS support for each registered hostname by either autogenerating or uploading a TLS certificate to our network.                                                                                                                                                    |
+| [Deployed your configuration.](/guides/basics/deployments)                                                                                                                         | Deployed the above configurations to {{ PRODUCT }}.                                                                                                                                                                                                                           |
+| QA                                                                                                                                                                                 | Tested your site by loading it through a [deployment-specific link](/guides/basics/deployments#deployment-specific-page).                                                                                                                                                     |
 
 Once you are ready to serve traffic on our CDN, use your DNS service provider to [update the DNS record for each hostname registered within {{ PRODUCT }}](#dns) to point to our service. 
 

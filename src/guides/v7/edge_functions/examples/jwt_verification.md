@@ -27,9 +27,7 @@ export default new Router()
 
 ## Edge Function {/* edge-function */}
 
-The edge function will be responsible for generating a signed URL for the given request, or verifying the signature of a request and forwarding it to the origin. The edge function will be invoked for any request that matches the route above, so we'll need to check the request path to determine whether we are signing or verifying the request.
-
-In either case, we'll need to generate a signature using a cryptographic hash function. In this example, we'll use the [HMAC-SHA1](https://en.wikipedia.org/wiki/HMAC) algorithm, which is a widely used cryptographic hash function. The signature will be generated using a secret key, which should be defined as an environment variable in the {{ PORTAL }}. The secret key should never be shared publicly, and should be kept private to ensure that the signature cannot be forged.
+The edge function will be responsible for validating the JWT token sent by the client. The token will be extracted from the request body, and the secret key used to sign the token will be retrieved from the environment variables. The token will then be validated using the secret key, and the result will be returned in the response.
 
 <Callout type="important">
 

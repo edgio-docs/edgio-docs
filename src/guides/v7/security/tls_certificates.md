@@ -397,7 +397,7 @@ Set up mTLS by defining how {{ PRODUCT }} will validate certificates.
     1.  Click **+ Add Certificate Chain**.
     2.  Paste the PEM file for the desired X.509 certificate(s).
     3.  Click **Add Chain**.
-6.  Optional. Toggle the **Send Client Certificate Detail to Origin** option to send headers containing client certificate metadata and validation status to your origin servers.
+6.  Optional. Toggle the **Send Client Certificate Detail to Origin** option to [send headers](#origin-request-headers) containing client certificate metadata and validation status to your origin servers.
 7.  Optional. If you are using Permissive mode, then you can override the default behavior and return a `403 Forbidden` response for client certificate validation failures by enabling the **Return Status Code 403 for Validation Failures** option.
 
     <Callout type="tip">

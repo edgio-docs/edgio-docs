@@ -27,7 +27,7 @@ export default new Router()
 
 ## Edge Function {/* edge-function */}
 
-The edge function will be responsible for validating the JWT token sent by the client. The token will be extracted from the request body, and the secret key used to sign the token will be retrieved from the environment variables. The token will then be validated using the secret key, and the result will be returned in the response.
+The edge function will be responsible for validating the JWT token sent by the client. The token will be extracted from the request body, and the secret key used to sign the token will be retrieved from the environment variables. The token will then be validated using the secret key, and the result will be returned in the response. This example supports the HS256, HS384, and HS512 algorithms.
 
 <Callout type="important">
 

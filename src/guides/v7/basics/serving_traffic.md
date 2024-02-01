@@ -2,11 +2,11 @@
 title: Serving Traffic through Our Network
 ---
 
-Once you have verified your configuration, you can serve traffic through {{ PRODUCT }} by [updating the DNS records for each hostname registered with {{ PRODUCT }}](#dns). 
+Serve traffic through {{ PRODUCT }} by [updating the DNS records for each hostname registered with {{ PRODUCT }}](#dns). 
 
-## Quick Start {/*quick-start*/}
+## Checklist {/*checklist*/}
 
-Verify that you have performed the following tasks:
+Before updating your DNS to point to our service, verify that you have performed the following tasks:
 
 | Task                                                                                                                                                                               | Description                                                                                                                                                                                                                                                                   |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16,8 +16,6 @@ Verify that you have performed the following tasks:
 | [Enabled HTTPS support.](/guides/basics/hostnames#https-traffic)                                                                                                                    | Enabled HTTPS support for each registered hostname by either autogenerating or uploading a TLS certificate to our network.                                                                                                                                                    |
 | [Deployed your configuration.](/guides/basics/deployments)                                                                                                                         | Deployed the above configurations to {{ PRODUCT }}.                                                                                                                                                                                                                           |
 | QA                                                                                                                                                                                 | Tested your site by loading it through a [deployment-specific link](/guides/basics/deployments#deployment-specific-page).                                                                                                                                                     |
-
-Once you are ready to serve traffic on our CDN, use your DNS service provider to [update the DNS record for each hostname registered within {{ PRODUCT }}](#dns) to point to our service. 
 
 ## Firewall - Allowing {{ PRODUCT }} IP Addresses {/*firewall-allowing-ip-addresses*/}
 

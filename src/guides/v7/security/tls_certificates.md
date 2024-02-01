@@ -430,7 +430,12 @@ Set up mTLS by defining how {{ PRODUCT }} will validate certificates.
 
 ### Origin Request Headers {/*origin-request-headers*/}
 
-{{ PRODUCT }} sends the following request headers to the origin when the **Send Client Certificate Detail to Origin** option is enabled:
+{{ PRODUCT }} can send request headers containing mTLS metadata to the origin when the **Send Client Certificate Detail to Origin** option is enabled. The selected client certificate validation mode determines when these request headers are sent. 
+
+-   **Permissive Mode:** These headers are sent for all requests, including requests that result in a failed TLS handshake or a `403 Forbidden` response. This behavior allows you to use those headers to troubleshoot client authentication issues.
+-   **All Other Modes:** These headers are only sent to your origin for requests for which we were able to establish a secure connection. {{ PRODUCT }} will not provide these headers when the request results in a failed TLS handshake.
+
+Mutual TLS request headers are described below:
 
 | Header                | Type                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | --------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

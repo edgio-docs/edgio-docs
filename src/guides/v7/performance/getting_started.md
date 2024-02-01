@@ -157,4 +157,4 @@ You are now ready to:
 -   Fine-tune your configuration by adding rules and then redeploying your property. 
 -   Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
 
-    [Learn more.](/guides/basics/hostnames_and_origins#serving-traffic-through)
+    [Learn more.](/guides/basics/serving_traffic)

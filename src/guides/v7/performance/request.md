@@ -58,7 +58,7 @@ Protocol version support varies according to whether the CDN is communicating wi
 
     <Callout type="info">
 
-      HTTP/3 support requires the `alt-svc` response header. [Learn more.](/guides/basics/hostnames_and_origins#http-3)
+      HTTP/3 support requires the `alt-svc` response header. [Learn more.](/guides/basics/origins#http-3)
 
     </Callout>
 

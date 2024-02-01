@@ -55,7 +55,7 @@ Upon creating a property, it will contain a `production` environment with the fo
     5.  Optional. By default, the request determines the value assigned to the `Host` request header. You may override the value assigned to this request header through the **Override Host Header** option.
     6.  Optional. Define the TLS requirements when communicating with your web servers through the **Origin TLS Settings** section. 
 
-        [Learn more.](/guides/basics/hostnames_and_origins#origin)
+        [Learn more.](/guides/basics/origins#origin_tls_settings)
     7.  Add more origin configurations as needed by clicking **+ Add Origin** and then repeating the above steps.
 
 6.  Click **Create Property**.

@@ -311,7 +311,7 @@ Common causes are:
 -   The upstream host you specified in your project is incorrect.
 -   The DNS entry you defined points to the wrong server.
 -   Your servers are not responding.
--   You need to add the {{ PRODUCT }} IP addresses to your allowlist. Contact your operations team and ask them to add [our IP addresses](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses) to your firewall's IP allowlist.
+-   You need to add the {{ PRODUCT }} IP addresses to your allowlist. Contact your operations team and ask them to add [our IP addresses](/guides/basics/serving_traffic#firewall-allowing-ip-addresses) to your firewall's IP allowlist.
 
 ### 539 Project Timeout Status Code {/* troubleshooting-539-status-codes */}
 
@@ -346,7 +346,7 @@ A typical pattern is that your site works fine for a few days after deploying to
 
 To prevent this scenario, you must configure your server with allowlisted {{ PRODUCT_NAME }} IP addresses.
 
-[Learn more.](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses)
+[Learn more.](/guides/basics/serving_traffic#firewall-allowing-ip-addresses)
 
 #### Procedure {/* procedure */}
 
@@ -435,7 +435,7 @@ Troubleshoot your code to find and fix the error.
 #### Allowlist Error {/* allowlist-error */}
 
 If the command succeeds and finishes quickly, it is probably an allowlist error.
-Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses) to your server's IP allowlist.
+Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/serving_traffic#firewall-allowing-ip-addresses) to your server's IP allowlist.
 
 ## Edge Functions {/*edge-functions*/}
 

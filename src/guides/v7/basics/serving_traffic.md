@@ -2,11 +2,11 @@
 title: Serving Traffic through Our Network
 ---
 
-Serve traffic through {{ PRODUCT }} by [updating the DNS records for each hostname registered with {{ PRODUCT }}](#dns). 
+Serve traffic through {{ PRODUCT }} by [updating the DNS records for each hostname registered with {{ PRODUCT }}](#dns) to point to our service. 
 
 ## Checklist {/*checklist*/}
 
-Before updating your DNS to point to our service, verify that you have performed the following tasks:
+Before updating your DNS records, verify that you have performed the following tasks:
 
 | Task                                                                                                                                                                               | Description                                                                                                                                                                                                                                                                   |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

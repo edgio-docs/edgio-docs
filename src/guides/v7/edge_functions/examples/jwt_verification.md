@@ -6,7 +6,7 @@ Edge functions can be used to verify the authenticity of a JSON Web Token (JWT) 
 
 <ExampleButtons
   title="JWT Verification"
-  siteUrl="https://edgio-community-examples-v7-jwt-verification-test.glb.edgio.link/"
+  siteUrl="https://edgio-community-examples-v7-jwt-verification-live.glb.edgio.link/"
   repoUrl="https://github.com/edgio-docs/edgio-v7-jwt-verification-example"
 />
 

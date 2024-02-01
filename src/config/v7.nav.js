@@ -369,6 +369,25 @@ const nav = {
       ],
     },
     {
+      title: 'AI',
+      path: 'ai',
+      // icon: 'NEEDS_ICON',
+      routes: [
+        {
+          title: 'LangChain',
+          path: 'ai/langchain',
+        },
+        {
+          title: 'LlamaIndex',
+          path: 'ai/llamaindex',
+        },
+        {
+          title: 'Mistral',
+          path: 'ai/mistral',
+        },
+      ],
+    },
+    {
       title: 'Sites',
       path: 'sites_frameworks',
       icon: 'book-plain',

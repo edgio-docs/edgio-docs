@@ -6,9 +6,9 @@ title: Astro
 
 <Callout type="important">
 
-Astro 2.x is supported in all versions of {{ PRODUCT }} v7.
+  Astro 2.x is supported in all versions of {{ PRODUCT }} v7.
 
-Astro 3.x requires {{ PRODUCT }} v7.4.0 or later which introduces Node.js 18 support.
+  Astro 3.x requires {{ PRODUCT }} v7.4.0 or later which introduces Node.js 18 support.
 
 </Callout>
 
@@ -34,7 +34,7 @@ npx astro build
 
 <Callout type="important">
 
-Recent versions of Astro require Node.js >=18.14.1. You may need to update your `{{ CONFIG_FILE }}` file to specify Node.js 18 as the [cloud runtime](/guides/performance/cdn_as_code/edgio_config#cloudruntime).
+  Recent versions of Astro require Node.js >=18.14.1. You may need to update your `{{ CONFIG_FILE }}` file to specify Node.js 18 as the [cloud runtime](/guides/performance/cdn_as_code/edgio_config#cloudruntime).
 
 </Callout>
 

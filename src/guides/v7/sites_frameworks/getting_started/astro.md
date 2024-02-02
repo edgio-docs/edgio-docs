@@ -6,11 +6,21 @@ title: Astro
 
 <Callout type="important">
 
-  Astro 2.x is supported in all versions of {{ PRODUCT }} v7. 
+Astro 2.x is supported in all versions of {{ PRODUCT }} v7.
 
-  Astro 3.x requires {{ PRODUCT }} v7.4.0 or later which introduces Node.js 18 support.
+Astro 3.x requires {{ PRODUCT }} v7.4.0 or later which introduces Node.js 18 support.
 
 </Callout>
+
+## Example SSR Site {/* example-ssr-site */}
+
+This Astro example app uses server-side rendering.
+
+<ExampleButtons
+  title="Astro SSR"
+  siteUrl="https://edgio-community-examples-v7-astro-live.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-astro-example"
+/>
 
 {{ PREREQ.md }}
 
@@ -24,7 +34,7 @@ npx astro build
 
 <Callout type="important">
 
-  Recent versions of Astro require Node.js >=18.14.1. You may need to update your `{{ CONFIG_FILE }}` file to specify Node.js 18 as the [cloud runtime](/guides/performance/cdn_as_code/edgio_config#cloudruntime).
+Recent versions of Astro require Node.js >=18.14.1. You may need to update your `{{ CONFIG_FILE }}` file to specify Node.js 18 as the [cloud runtime](/guides/performance/cdn_as_code/edgio_config#cloudruntime).
 
 </Callout>
 
@@ -52,8 +62,8 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 // This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
-const { Router } = require('{{ PACKAGE_NAME }}/core/router');
-const { connectorRoutes } = require('{{ PACKAGE_NAME }}/connectors');
+const {Router} = require('{{ PACKAGE_NAME }}/core/router');
+const {connectorRoutes} = require('{{ PACKAGE_NAME }}/connectors');
 
 export default new Router().use(connectorRoutes);
 ```

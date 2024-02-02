@@ -12,7 +12,7 @@ title: Astro
 
 </Callout>
 
-<!-- ## Example SSR Site {/* example-ssr-site */}
+## Example SSR Site {/* example-ssr-site */}
 
 This Astro example app uses server-side rendering.
 
@@ -20,7 +20,7 @@ This Astro example app uses server-side rendering.
   title="Astro SSR"
   siteUrl="https://edgio-community-examples-v7-astro-live.edgio.link/"
   repoUrl="https://github.com/edgio-docs/edgio-v7-astro-example"
-/> -->
+/>
 
 {{ PREREQ.md }}
 
@@ -70,6 +70,11 @@ export default new Router().use(connectorRoutes);
 
 ## Enable Server Side Rendering {/* enable-server-side-rendering */}
 
+To enable server side rendering, the following steps are required:
+
+- Specify `appPath` inside `{{ CONFIG_FILE }}`.
+- Configure `server.host` inside `astro.config.mjs`.
+
 ### Specify appPath inside {{ CONFIG_FILE }} {/* specify-apppath-inside */}
 
 After you've setup [@astrojs/node with Astro](https://docs.astro.build/en/guides/integrations-guide/node/), specify server file path in {{ CONFIG_FILE }} as below:
@@ -83,6 +88,33 @@ module.exports = {
   },
   // Rest of the config
 };
+```
+
+### Configure server.host inside astro.config.mjs {/* configure-server-host-inside-astro-config-mjs */}
+
+Update `astro.config.mjs` to configure server host as below:
+
+```js filename="astro.config.mjs" ins="11-13"
+import { defineConfig } from 'astro/config';
+
+import node from "@astrojs/node";
+
+// https://astro.build/config
+export default defineConfig({
+  output: 'server',
+  adapter: node({
+    mode: 'standalone',
+  }),
+  server: {
+    host: '0.0.0.0',
+  },
+});
+```
+
+This allows the server to listen on all network IP addresses. See [`server.host` in Astro documentation](https://docs.astro.build/en/reference/configuration-reference/#serverhost) for more information. If the host is not properly configured, your applications may not be accessible indicated by `ECONNREFUSED` error:
+
+```bash
+"error":"Error: connect ECONNREFUSED 127.0.0.1:3001"
 ```
 
 If you're using custom server file for enabling server side rendering, make sure your server is listening to port via `process.env['PORT']`.

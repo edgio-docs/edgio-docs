@@ -12,38 +12,6 @@ title: Astro
 
 </Callout>
 
-<!-- ## Example {/* example */}
-
-<ExampleButtons
-  title="Astro"
-  siteUrl="https://edgio-community-examples-astro-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-astro-example"
-  deployFromRepo
-/> -->
-
-<!-- ## Example SSR Site {/* example-ssr-site */}
-
-This Astro example app uses server-side rendering.
-
-<ExampleButtons
-  title="Astro SSR"
-  siteUrl="https://edgio-community-examples-astro-ssr-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-astro-ssr-example"
-  deployFromRepo
-/> -->
-
-## Connector {/* connector */}
-
-This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
-
-<ButtonLink
-  variant="stroke"
-  type="code"
-  withIcon={true}
-  href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-astro-connector">
-  View the Connector Code
-</ButtonLink>
-
 {{ PREREQ.md }}
 
 ## Create your Astro site {/* create-your-astro-site */}
@@ -51,7 +19,7 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/gu
 If you don't have an existing Astro site, you can create one by running:
 
 ```bash
-npm create astro@latest
+npx astro build
 ```
 
 <Callout type="important">

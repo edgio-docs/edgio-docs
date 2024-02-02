@@ -12,7 +12,7 @@ title: Astro
 
 </Callout>
 
-## Example SSR Site {/* example-ssr-site */}
+<!-- ## Example SSR Site {/* example-ssr-site */}
 
 This Astro example app uses server-side rendering.
 
@@ -20,7 +20,7 @@ This Astro example app uses server-side rendering.
   title="Astro SSR"
   siteUrl="https://edgio-community-examples-v7-astro-live.edgio.link/"
   repoUrl="https://github.com/edgio-docs/edgio-v7-astro-example"
-/>
+/> -->
 
 {{ PREREQ.md }}
 

@@ -77,7 +77,7 @@ To enable server side rendering, the following steps are required:
 
 ### Specify appPath inside {{ CONFIG_FILE }} {/* specify-apppath-inside */}
 
-After you've setup [@astrojs/node with Astro](https://docs.astro.build/en/guides/integrations-guide/node/), specify server file path in {{ CONFIG_FILE }} as below:
+After you've setup [@astrojs/node with Astro](https://docs.astro.build/en/guides/integrations-guide/node/), specify the server file path in `{{ CONFIG_FILE }}` as below:
 
 ```js filename="{{ CONFIG_FILE }}" ins="1,4-6"
 const {join} = require('path');

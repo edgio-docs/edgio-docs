@@ -271,6 +271,10 @@ const nav = {
               path: 'edge_functions/examples/json_responses',
             },
             {
+              title: 'JWT Verification',
+              path: 'edge_functions/examples/jwt_verification',
+            },
+            {
               title: 'Redirects',
               path: 'edge_functions/examples/redirects',
             },

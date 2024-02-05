@@ -392,6 +392,34 @@ export async function handleHttpRequest(request, context) {
 
 See the [Edge Function Caching](/guides/edge_functions/caching) guide for more information on caching origin fetch requests.
 
+### Compressed Responses {/* compressed-responses */}
+
+Edge functions do not automatically decompress responses from the origin server, specifically when those responses are encoded with compression methods like `gzip` or `br`. This characteristic becomes relevant if you need to manipulate the response body before sending it to the client, as decompression would be a necessary step in processing the data. Responses that are merely passed through from the origin to the client without modification are not impacted by this behavior.
+
+If your edge function manipulates the response body of a fetch request, we recommend that you disable compression by setting the `Accept-Encoding` request header. This ensures the response from the origin is not compressed, making it directly accessible for manipulation. The following sample code demonstrates how to disable compression on a fetch request:
+
+```js filename="./edge-functions/example.js"
+async function handleRequest(request) {
+  // Modify the request to disallow compressed responses
+  const modifiedRequest = new Request(request, {
+    headers: new Headers({
+      ...request.headers,
+      'Accept-Encoding': 'identity' // Disallow compression methods like gzip or br
+    })
+  });
+
+  // Fetch the response from the origin server
+  const response = await fetch(modifiedRequest);
+
+  // Assuming the response needs to be manipulated
+  let responseBody = await response.text(); // Get the response body as text
+  responseBody = responseBody.replace('foo', 'bar'); // Manipulate the response body
+
+  // Return the manipulated response to the client
+  return new Response(responseBody, response);
+}
+```
+
 ### Fetch Limitations {/* fetch-limitations */}
 
 Response status codes of `fetch()` requests must:

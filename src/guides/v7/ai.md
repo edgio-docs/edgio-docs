@@ -2,10 +2,10 @@
 title: AI
 ---
 
-Discover our curated selection of AI/LLM project examples provided by {{ PRODUCT }}. Each example is meticulously designed to showcase effective deployment of AI and LLM technologies within your applications. Through these examples, gain insights into harnessing the power of AI to elevate your projects, whether for enhancing user experiences, streamlining operations, or unlocking new capabilities.
+Discover our curated selection of AI/LLM project examples provided by {{ PRODUCT }}. Each example is meticulously designed to showcase effective deployment of AI and large language model technologies within your applications. Through these examples, gain insights into harnessing the power of AI to elevate your projects, whether for enhancing user experiences, streamlining operations, or unlocking new capabilities.
 
-- [LangChain](/guides/ai/examples/langchain): Jumpstart your project with the LangChain.js + Next.js starter app template. This example demonstrates the versatility of LangChain modules, offering insights into various use cases ranging from natural language understanding to automated content generation. Perfect for developers looking to integrate advanced language capabilities into their applications.
+- [LangChain](/guides/ai/examples/langchain): A practical scaffold for integrating AI into web apps, featuring a LangChain.js + Next.js template. It showcases conversational AI, structured outputs, and dynamic content retrieval, simplifying the creation of sophisticated, AI-driven web experiences. Ideal for developers eager to explore language model applications.
 
-- [LlamaIndex](/guides/ai/examples/llamaindex): Begin your journey into efficient information retrieval with the LlamaIndex project. Bootstrapped with create-llama and built on Next.js, this example showcases how to leverage the LlamaIndex for building scalable, AI-driven search functionalities. Ideal for applications requiring fast, accurate access to large datasets.
+- [LlamaIndex](/guides/ai/examples/llamaindex): Utilize `create-llama` for a fast setup of your LlamaIndex application, offering a Next.js front-end designed as a chat interface for querying data. Ideal for developers seeking to rapidly deploy AI-powered search and conversational interfaces within their applications.
 
-- [Mistral](/guides/ai/examples/mistral): Explore the integration of AI in user interfaces with this Mistral project, using React. This example highlights the use of Mistral for creating dynamic, intelligent UIs that respond to user inputs in real-time. Suitable for developers aiming to deliver personalized, engaging user experiences through AI.
+- [Mistral](/guides/ai/examples/mistral): Elevate your React applications with Mistral AI which offers pay-as-you-go and open-source solutions. Their client packages and API cater to various use-cases including chat generation, specialized endpoints, and detailed performance insights for crafting bespoke AI experiences.

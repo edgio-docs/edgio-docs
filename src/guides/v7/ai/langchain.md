@@ -4,16 +4,18 @@ title: LangChain
 
 This template scaffolds a LangChain.js + Next.js starter app and showcases several use cases for different LangChain modules.
 
-## Getting Started
+{{ prereq.md }}
 
-Clone the `edgio-ai` repo and change to the `langchain` directory. 
+## Getting Started {/* getting-started */}
+
+Clone the `edgio-ai` repo and change to the `langchain` directory.
 
 ```bash
-git clone https://github.com/edgio-docs/edgio-ai
+git clone git@github.com:edgio/edgio-ai.git
 cd langchain
 ```
 
-### Chat
+### Chat {/* chat */}
 
 Set up environment variables in a `.env.local` file by copying the `.env.example` file to `.env.local`.
 
@@ -37,23 +39,25 @@ npm run dev
 Open [localhost:3000](http://localhost:3000) with your browser and ask the bot something. You'll see a streamed response:
 
 <p align="center">
-  <img width="480px" src="https://github.com/Edgio/edgio-ai/blob/main/langchain/public/agent-convo.gif?raw=true" alt="A streaming conversation between the user and the AI" />
+  <img
+    width="480px"
+    src="https://github.com/Edgio/edgio-ai/blob/main/langchain/public/agent-convo.gif?raw=true"
+    alt="A streaming conversation between the user and the AI"
+  />
 </p>
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 Backend logic lives in `app/api/chat/route.ts`. From here, you can change the prompt and model, or add other modules and logic.
 
-```ts
-// app/api/chat/route.ts
+```ts filename="app/api/chat/route.ts"
+import {NextRequest, NextResponse} from 'next/server';
+import {Message as VercelChatMessage, StreamingTextResponse} from 'ai';
+import {ChatOpenAI} from '@langchain/openai';
+import {PromptTemplate} from '@langchain/core/prompts';
+import {HttpResponseOutputParser} from 'langchain/output_parsers';
 
-import { NextRequest, NextResponse } from "next/server";
-import { Message as VercelChatMessage, StreamingTextResponse } from "ai";
-import { ChatOpenAI } from "@langchain/openai";
-import { PromptTemplate } from "@langchain/core/prompts";
-import { HttpResponseOutputParser } from "langchain/output_parsers";
-
-export const runtime = "edge";
+export const runtime = 'edge';
 
 const formatMessage = (message: VercelChatMessage) => {
   return `${message.role}: ${message.content}`;
@@ -77,7 +81,7 @@ export async function POST(req: NextRequest) {
 
     const model = new ChatOpenAI({
       temperature: 0.8,
-      modelName: "gpt-3.5-turbo-1106",
+      modelName: 'gpt-3.5-turbo-1106',
     });
 
     const outputParser = new HttpResponseOutputParser();
@@ -85,13 +89,13 @@ export async function POST(req: NextRequest) {
     const chain = prompt.pipe(model).pipe(outputParser);
 
     const stream = await chain.stream({
-      chat_history: formattedPreviousMessages.join("\n"),
+      chat_history: formattedPreviousMessages.join('\n'),
       input: currentMessageContent,
     });
 
     return new StreamingTextResponse(stream);
   } catch (e: any) {
-    return NextResponse.json({ error: e.message }, { status: 500 });
+    return NextResponse.json({error: e.message}, {status: 500});
   }
 }
 ```
@@ -101,22 +105,22 @@ export async function POST(req: NextRequest) {
 - To select a different model, the client would be initialized like so (see a [full list of supported models here](https://js.langchain.com/docs/modules/model_io/models/)):
 
 ```ts
-import { ChatAnthropic } from "langchain/chat_models/anthropic";
+import {ChatAnthropic} from 'langchain/chat_models/anthropic';
 const model = new ChatAnthropic({});
 ```
 
 - Instead of using `prompt.pipe()`, you can initialize `chain` like so:
 
 ```ts
-import { RunnableSequence } from "langchain/schema/runnable";
+import {RunnableSequence} from 'langchain/schema/runnable';
 const chain = RunnableSequence.from([prompt, model, outputParser]);
 ```
 
-### Agents and Retrieval
+### Agents and Retrieval {/* agents-and-retrieval */}
 
 To try out the Agent or Retrieval examples, follow the instructions in the [Edgio AI repository](https://github.com/Edgio/edgio-ai).
 
-## Deployment
+## Deployment {/* deployment */}
 
 [Install the Edgio CLI](https://docs.edg.io/guides/v7/develop/cli) if you haven't already. Run your development server with `edg dev`:
 

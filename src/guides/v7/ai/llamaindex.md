@@ -4,12 +4,14 @@ title: LlamaIndex
 
 This is a [LlamaIndex](https://www.llamaindex.ai/) project using [Next.js](https://nextjs.org/) bootstrapped with [`create-llama`](https://github.com/run-llama/LlamaIndexTS/tree/main/packages/create-llama).
 
-## Getting Started
+{{ prereq.md }}
 
-Clone this repo and change to the `llamaindex` directory. 
+## Getting Started {/* getting-started */}
+
+Clone this repo and change to the `llamaindex` directory.
 
 ```bash
-git clone https://github.com/edgio-docs/edgio-ai
+git clone https://github.com/Edgio/edgio-ai
 cd llamaindex
 ```
 
@@ -28,7 +30,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Deployment
+## Deployment {/* deployment */}
 
 [Install the Edgio CLI](https://docs.edg.io/guides/v7/develop/cli) if you haven't already. Run your development server with `edg dev`:
 

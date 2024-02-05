@@ -4,12 +4,14 @@ title: Mistral
 
 This is a [Mistral](https://mistral.ai/) project using React.
 
-## Getting Started
+{{ prereq.md }}
 
-Clone this repo and change to the `mistral` directory. 
+## Getting Started {/* getting-started */}
+
+Clone this repo and change to the `mistral` directory.
 
 ```bash
-git clone https://github.com/edgio-docs/edgio-ai
+git clone https://github.com/Edgio/edgio-ai
 cd mistral
 ```
 
@@ -25,7 +27,7 @@ Install the dependencies.
 npm i
 ```
 
-## Deployment
+## Deployment {/* deployment */}
 
 [Install the Edgio CLI](https://docs.edg.io/guides/v7/develop/cli) if you haven't already. Run your development server with `edg dev`:
 

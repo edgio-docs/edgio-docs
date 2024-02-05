@@ -77,7 +77,7 @@ To enable server side rendering, the following steps are required:
 
 ### Specify appPath inside {{ CONFIG_FILE }} {/* specify-apppath-inside */}
 
-After you've setup [@astrojs/node with Astro](https://docs.astro.build/en/guides/integrations-guide/node/), specify the server file path in `{{ CONFIG_FILE }}` as below:
+After you've setup [@astrojs/node with Astro](https://docs.astro.build/en/guides/integrations-guide/node/), specify the server file path in `{{ CONFIG_FILE }}` as shown below:
 
 ```js filename="{{ CONFIG_FILE }}" ins="1,4-6"
 const {join} = require('path');
@@ -92,7 +92,7 @@ module.exports = {
 
 ### Configure server.host inside astro.config.mjs {/* configure-server-host-inside-astro-config-mjs */}
 
-Update `astro.config.mjs` to configure server host as below:
+Update `astro.config.mjs` to configure `server.host` as shown below:
 
 ```js filename="astro.config.mjs" ins="11-13"
 import { defineConfig } from 'astro/config';
@@ -111,7 +111,7 @@ export default defineConfig({
 });
 ```
 
-This allows the server to listen on all network IP addresses. See [`server.host` in Astro documentation](https://docs.astro.build/en/reference/configuration-reference/#serverhost) for more information. If the host is not properly configured, your applications may not be accessible indicated by `ECONNREFUSED` error:
+This allows the server to listen on all network IP addresses. See [`server.host` in Astro documentation](https://docs.astro.build/en/reference/configuration-reference/#serverhost) for more information. If the host is not properly configured, your applications may not be accessible as indicated by an `ECONNREFUSED` error:
 
 ```bash
 "error":"Error: connect ECONNREFUSED 127.0.0.1:3001"

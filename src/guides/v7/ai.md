@@ -1,5 +1,6 @@
 ---
 title: AI
+description: Discover our curated selection of AI example projects meticulously designed to showcase effective deployment of AI and large language model technologies within your applications.
 ---
 
 Discover our curated selection of AI/LLM project examples provided by {{ PRODUCT }}. Each example is meticulously designed to showcase effective deployment of AI and large language model technologies within your applications. Through these examples, gain insights into harnessing the power of AI to elevate your projects, whether for enhancing user experiences, streamlining operations, or unlocking new capabilities.

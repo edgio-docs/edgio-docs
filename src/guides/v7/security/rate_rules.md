@@ -80,7 +80,7 @@ Setting up a rate rule involves defining a rate limit and determining how that r
     -   Indiscriminately across all requests.
     -   To each unique client that exceeds the defined rate limit.
 
-        Identify a unique client may be identified by its user agent, IP address, or both. {{ PRODUCT_SECURITY }} Premier customers may identify clients using up to two of the following criteria: IP address, user agent, ASN, JA3, cookie, query string parameters, and request headers. 
+        Identify a unique client by its user agent, IP address, or both. {{ PRODUCT_SECURITY }} Premier customers may identify clients using up to two of the following criteria: IP address, user agent, ASN, JA3, cookie, query string parameters, and request headers. 
 
 
 -   **[Condition Group:](#condition-group)** A request counts towards a rate limit when it satisfies all of the following criteria:
@@ -126,6 +126,8 @@ to** option. The available modes are described below.
 -   **Cookie:** {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified cookie will be tracked. 
 -   **ARGS:** {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified query string parameter will be tracked. 
 -   **Header:** {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified request header will be tracked. 
+
+{{ PRODUCT_SECURITY }} Premier allows you to combine up to two of the above sources when defining unique clients.
 
 ### Rate Limit {/*rate-limit*/}
 
@@ -314,7 +316,7 @@ The types of prerequisites that may be defined are described below.
     -   Regular expressions or wildcards may not be used to identify requests.
     -   Blank values are not allowed.
     -   Add a value by typing it and then pressing 'ENTER'.
--   Ensure that your rate limiting configuration complies the following limits:
+-   Ensure that your rate limiting configuration complies with the following limits:
     -   **Condition groups per rate rule:** 5
     -   **Conditions per condition group:** 5
     -   **# of values per condition:**
@@ -396,7 +398,7 @@ You may create, modify, and delete rate rules.
     {{ SECURITY_NAV }} **Rate Rules**.
 2.  Click **+ New Rate Ruleset**.
 3.  In the **Name** option, type the unique name by which this rate rule will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
-4.  In the **Apply rate limit to** option, indicate whether the rate limit should be applied across all requests or to each unique client.
+4.  In the **Apply rate limit to** option, indicate whether the rate limit should be applied across all requests or to [each unique client](#source).
     **{{ PRODUCT_SECURITY }} Premier Only:** You may select up to two sources when defining a unique client. For example, you may select `User agent` and `Cookie` to identify each combination of a specific cookie and user agent as a unique client.
 
 5.  In the **Rate limit** option, define the maximum rate at which requests may flow to your origin server(s). Define this rate by indicating the maximum number of requests for the selected time interval (e.g., 1 second, 30 seconds, 1 minute, etc.).

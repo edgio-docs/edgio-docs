@@ -70,11 +70,11 @@ const nav = {
           routes: [
             {
               title: 'Request Matching Scenarios',
-              path: 'performance/rules/request-matching-scenarios',
+              path: 'performance/rules/request_matching_scenarios',
             },
             {
               title: 'Feature Scenarios',
-              path: 'performance/rules/feature-scenarios',
+              path: 'performance/rules/feature_scenarios',
             },
             separator,
             {

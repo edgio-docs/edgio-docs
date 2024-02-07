@@ -68,7 +68,7 @@ For example, the following response header applies three surrogate keys to the c
 
 `Surrogate-Key: sports basketball march-tournament`
 
-[View a sample configuration.](/guides/performance/rules/feature-scenarios#tagging-requests-for-purging)
+[View a sample configuration.](/guides/performance/rules/feature_scenarios#tagging-requests-for-purging)
 
 ## {{ PORTAL }} {/*console*/}
 

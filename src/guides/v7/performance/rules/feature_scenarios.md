@@ -85,7 +85,7 @@ Your rule should now look similar to the following illustration:
 
 `%{geo_country} %{path//.*\./}`
 
-Both values are feature variables. The first value (i.e., `%{geo_country}`) identifies the country (e.g., `US`, `MX`, or `FR`) from which the request originated. The second value (i.e., `%{path//.*\./}``) performs a find and replace on the `%{path}` feature variable. This pattern replaces the request's relative path with the file extension without the period (e.g., `htm`, `css`, and `png`). A sample configuration is shown below.
+Both values are feature variables. The first value (i.e., `%{geo_country}`) identifies the country (e.g., `US`, `MX`, or `FR`) from which the request originated. The second value (i.e., `%{path//.*\./}`) performs a find and replace on the `%{path}` feature variable. This pattern replaces the request's relative path with the file extension without the period (e.g., `htm`, `css`, and `png`). A sample configuration is shown below.
 
 ![Surrogate Key](/images/v7/performance/rules-use-case-surrogate-key.png?width=700)
 

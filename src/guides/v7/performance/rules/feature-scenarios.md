@@ -10,7 +10,7 @@ title: Feature Scenarios
 -   [Adding cache metadata to the response.](#cache-metadata)
 -   [Sending a custom response for a specific status code.](#custom-response-for-specific-status-codes)
 -   [Tagging requests for purging.](#tagging-requests-for-purging)
-
+-   [Redirecting HTTP requests to HTTPS.](#http-to-https-redirects)
 
 ### Disable Caching {/*disable-caching*/}
 
@@ -85,3 +85,15 @@ Your rule should now look similar to the following illustration:
 
 ![Surrogate Key](/images/v7/performance/rules-use-case-surrogate-key.png?width=700)
 
+### HTTP to HTTPS Redirects {/*http-to-https-redirects*/}
+
+Automatically redirect all HTTP requests to HTTPS.
+
+1.  Add the [Scheme match condition](/guides/performance/rules/conditions#scheme) and set it to `HTTP`.
+2.  Add the [URL Redirect feature](/guides/performance/rules/features#url-redirect). Set the **Source** option to `(.*)`. Set the **Destination** option to `https://<HOST>/$1`. The `$1` represents the relative path for the request submitted by the client.
+
+    ![URL Redirect](/images/v7/performance/rules-use-case-url-redirect.png?width=700)
+    
+Your rule should now look like similar to this:
+
+![HTTP to HTTPS redirect](/images/v7/performance/rules-use-case-http-to-https-redirect.png?width=700)

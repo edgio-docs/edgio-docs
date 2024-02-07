@@ -371,7 +371,7 @@ const nav = {
     {
       title: 'AI',
       path: 'ai',
-      // icon: 'NEEDS_ICON',
+      icon: 'ai',
       routes: [
         {
           title: 'LangChain',

@@ -4,13 +4,13 @@ title: Request Matching Scenarios
 
 Before adding [features](/guides/performance/rules/features) that customize how your traffic is processed, you must first decide the set of requests to which they will be applied. You may either apply them to all requests or use match condition(s) to only apply them to specific requests. Common request matching scenarios are listed below.
 
--   All requests
--   Request URL
--   HTTP method
--   Cookies
--   Headers
+-   [All requests](#all-requests)
+-   [Request URL](#request-url)
+-   [HTTP method](#http-method)
+-   [Cookies](#cookies)
+-   [Headers](#headers)
 
-In addition to these common scenarios, Rules can match requests using a [variety of criteria](/guides/performance/rules/conditions). Additionally, you can combine match conditions to selectively apply features when multiple conditions have been met. The power and flexiblity of Rules allows you to use basic configurations or build upon them to create a configuration that addresses your complex business needs.
+In addition to these common scenarios, [there are many other ways](/guides/performance/rules/conditions) through which Rules can match requests. Additionally, you can combine match conditions to selectively apply features when multiple conditions have been met. You may also use [Else or `Else If statements](/guides/performance/rules#statements) to apply features when specific criteria has not been met. The power and flexiblity of Rules allows you to use basic configurations or build upon them to create a configuration that addresses your complex business needs.
 
 ### All Requests {/*all-requests*/}
 
@@ -37,11 +37,14 @@ Use the [Path match condition](/guides/performance/rules/conditions#path) to mat
 ![Path match condition](/images/v7/performance/rules-use-case-path.png?width=700)
 
 The above match configuration matches all requests whose relative path starts with: `/marketing/conferences/`. For example, it matches all of the following request URLs:
-`https://cdn.example.com/marketing/conferences/widgets/index.html`
-`https://cdn-2.example.com/marketing/conferences/widgets/resources/stylesheets/styles.css`
-`https://images.example.com/marketing/conferences/widgets/features.png`
 
-Restrict the above rule to images whose relative path starts with: `/marketing/conferences/` by adding the [Extension match condition](/guides/performance/rules/conditions#extension). Set up this match condition by selecting the `is one of` operator and then defining the desired file extensions (e.g., png,jpg, and jpeg).
+```
+https://cdn.example.com/marketing/conferences/widgets/index.html
+https://cdn-2.example.com/marketing/conferences/widgets/resources/stylesheets/styles.css`
+https://images.example.com/marketing/conferences/widgets/features.png
+```
+
+Restrict the above rule to images whose relative path starts with: `/marketing/conferences/` by adding the [Extension match condition](/guides/performance/rules/conditions#extension). Set up this match condition by selecting the `is one of` operator and then defining the desired file extensions (e.g., png, jpg, and jpeg).
 
 ![Path match condition](/images/v7/performance/rules-use-case-path-extension.png?width=700)
 

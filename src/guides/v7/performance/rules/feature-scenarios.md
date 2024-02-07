@@ -69,7 +69,7 @@ A common task is to provide a custom response for a specific status code.
 
     ![Set Response Body feature](/images/v7/performance/rules-use-case-set-done.png?width=700)
 
-Alternatively, you can instruct the client to redirect to a different URL.
+Alternatively, you can instruct the client to redirect to a different URL, such as a dedicated page for `4xx` responses.
 
 1.  Add a Response Status Code match condition as indicated above.
 2.  Add the [Set Status Code feature](/guides/performance/rules/features#set-status-code) and set it to return the `302` status code.
@@ -81,16 +81,26 @@ Your rule should now look similar to the following illustration:
 
 ### Tagging Requests for Purging {/*tagging-requests-for-purging*/}
 
-[Tag requests for purging](/guides/performance/caching/purging#surrogate-key) by setting the `Surrogate-Key` response header to the desired labels. If you use the [Set Response Headers feature](/guides/performance/rules/features#set-response-headers) to set this header, then you can take advantage of [feature variables](/guides/performance/rules/feature_variables) when defining labels. This allows you to dynamically assign one or more label(s). For example, you can label requests by country and file extension by setting this header to this value: `%{geo_country} %{path//.*\./}`. The second value replaces the request's relative path with requested file extension without the period (e.g., `htm`, `css`, and `png`). A sample configuration is shown below.
+[Tag requests for purging](/guides/performance/caching/purging#surrogate-key) by setting the `Surrogate-Key` response header to the desired labels. If you use the [Set Response Headers feature](/guides/performance/rules/features#set-response-headers) to set this header, then you can take advantage of [feature variables](/guides/performance/rules/feature_variables) when defining labels. This allows you to dynamically assign one or more label(s). For example, you can tag requests by country and file extension by setting this header to this value: 
+
+`%{geo_country} %{path//.*\./}`
+
+Both values are feature variables. The first value (i.e., `%{geo_country}`) identifies the country (e.g., `US`, `MX`, or `FR`) from which the request originated. The second value (i.e., `%{path//.*\./}``) performs a find and replace on the `%{path}` feature variable. This pattern replaces the request's relative path with the file extension without the period (e.g., `htm`, `css`, and `png`). A sample configuration is shown below.
 
 ![Surrogate Key](/images/v7/performance/rules-use-case-surrogate-key.png?width=700)
+
+Purge this request by country of origin, file extension, or both as shown below.
+
+![Purge by surrogate key](/images/v7/performance/rules-use-case-purge-cache.png?width=700)
 
 ### HTTP to HTTPS Redirects {/*http-to-https-redirects*/}
 
 Automatically redirect all HTTP requests to HTTPS.
 
-1.  Add the [Scheme match condition](/guides/performance/rules/conditions#scheme) and set it to `HTTP`.
-2.  Add the [URL Redirect feature](/guides/performance/rules/features#url-redirect). Set the **Source** option to `(.*)`. Set the **Destination** option to `https://<HOST>/$1`. The `$1` represents the relative path for the request submitted by the client.
+1.  Identity all HTTP requests by adding the [Scheme match condition](/guides/performance/rules/conditions#scheme) and setting it to `HTTP`.
+2.  Redirect HTTP requests to a HTTPS URL through the [URL Redirect feature](/guides/performance/rules/features#url-redirect). 
+    1.  Set the **Source** option to `(.*)`. 
+    2.  Set the **Destination** option to `https://<HOST>/$1`. The `$1` represents the relative path for the request submitted by the client.
 
     ![URL Redirect](/images/v7/performance/rules-use-case-url-redirect.png?width=700)
     

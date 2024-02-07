@@ -373,21 +373,21 @@ const nav = {
       ],
     },
     {
-      title: 'AI',
-      path: 'ai',
-      icon: 'ai',
+      title: 'AI Integrations',
+      path: 'ai_integrations',
+      icon: 'ai-integrations',
       routes: [
         {
           title: 'LangChain',
-          path: 'ai/langchain',
+          path: 'ai_integrations/langchain',
         },
         {
           title: 'LlamaIndex',
-          path: 'ai/llamaindex',
+          path: 'ai_integrations/llamaindex',
         },
         {
           title: 'Mistral',
-          path: 'ai/mistral',
+          path: 'ai_integrations/mistral',
         },
       ],
     },

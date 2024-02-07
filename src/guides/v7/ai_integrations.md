@@ -1,5 +1,5 @@
 ---
-title: AI
+title: AI Integrations
 description: Discover our curated selection of AI example projects meticulously designed to showcase effective deployment of AI and large language model technologies within your applications.
 ---
 

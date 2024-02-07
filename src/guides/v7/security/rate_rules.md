@@ -26,6 +26,9 @@ honored.
     unique user agents.
 
     ![](/images/v7/security/rate_rules_source_scope.png)
+    
+    {{ PRODUCT_SECURITY }} Premier allows customers to apply a rate rule to unique clients, user agents, ASNs, JA3, cookies, query string parameters, and request headers. Additionally, you can combine up to two items. For example, you can apply a rate rule to unique user agents on a per ASN basis. 
+
 -   A [Security Application](/guides/security/security_applications) configuration determines
     the set of requests to which this rate rule will be applied. Use
     condition groups to define one or more additional prerequisites
@@ -44,7 +47,7 @@ honored.
     directly from our network.
 -   A rate rule always runs in [production
     mode](/guides/security/security_applications#enforcement-mode). Although you may not run it in audit mode, you may configure your security application configuration to only generate alerts when a rate limit is exceeded.
--   A rate rule is enforced by each edge server according to the
+-   A rate rule is enforced by each POP according to the
     approximate number of requests that it receives over the specified
     time interval (e.g., 1 second, 10 seconds, or 1 minute).
 
@@ -77,23 +80,19 @@ Setting up a rate rule involves defining a rate limit and determining how that r
     -   Indiscriminately across all requests.
     -   To each unique client that exceeds the defined rate limit.
 
-        <Callout type="info">
+        Identify a unique client may be identified by its user agent, IP address, or both. {{ PRODUCT_SECURITY }} Premier customers may identify clients using up to two of the following criteria: IP address, user agent, ASN, JA3, cookie, query string parameters, and request headers. 
 
-          A unique client may be identified by its user agent, IP address, or both.
-
-        </Callout>
 
 -   **[Condition Group:](#condition-group)** A request counts towards a rate limit when it satisfies all of the following criteria:
     -   A [Security Application configuration's](/guides/security/security_applications#traffic-identification) hostname and URL path match conditions. 
     -   If one or more condition group(s) have been defined, then the request must also satisfy all of the conditions defined within at least one condition group.  
 
-    Each condition identifies the type of requests that are eligible for rate limiting by URL path, request headers, IP address, file extension, and/or request method.
+    Each condition identifies the type of requests that are eligible for rate limiting by URL path, request headers, IP address, file extension, and request method. {{ PRODUCT_SECURITY }} Premier customers may also identify requests by ASN, country, request header, request URL path, JA3, query string parameter, and cookie.
 -   **Action:** A [Security Application configuration](/guides/security/security_applications#enforcement) determines the type of action that will be applied to requests that exceed the above rate limit.
 
 ### Source {/*source*/}
 
-Apply a rate limit across all requests or to each unique
-client. Define this behavior from within the **Apply rate limit
+Apply a rate limit across all requests or to each unique client. Define this behavior from within the **Apply rate limit
 to** option. The available modes are described below.
 
 -   **Any request:** Indicates that all requests will count towards the rate limit. Once the specified rate limit is exceeded, it will be enforced without taking into consideration which client submitted the request.  
@@ -112,13 +111,21 @@ to** option. The available modes are described below.
 
     </Callout>
 
--   **IP address and user agent:** Indicates that the requests from each unique client, as determined by each unique combination of IP address and user agent (e.g., web browser), will be tracked. The specified rate limit will only be enforced on the clients that exceed it.
+-   **IP address and user agent:** {{ PRODUCT_SECURITY }} Business and below. Indicates that the requests from each unique client, as determined by each unique combination of IP address and user agent (e.g., web browser), will be tracked. The specified rate limit will only be enforced on the clients that exceed it.
 
     <Callout type="info">
 
       All requests from a specific IP address that contain a blank or missing `User-Agent` header will be treated as a single client.
 
     </Callout>
+    
+-   **User agent:** {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests from each unique user agent (e.g., web browser) will be tracked. 
+
+-   **ASN:** {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests from each unique autonomous system number (ASN) will be tracked. 
+-   **JA3:** {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique JA3 signature will be tracked. 
+-   **Cookie:** {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified cookie will be tracked. 
+-   **ARGS:** {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified query string parameter will be tracked. 
+-   **Header:** {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified request header will be tracked. 
 
 ### Rate Limit {/*rate-limit*/}
 
@@ -141,38 +148,8 @@ limit** option.
 
     </Callout>
 
--   The specified rate limit is enforced on each edge server based on
+-   The specified rate limit is enforced on each POP based on
     the number of requests that it receives.
-    -   Typically, a single edge server will handle all requests
-        directed to a POP for a specific URL.
-
-        <Callout type="info">
-
-          If the volume of requests to the above edge server exceeds
-          capacity, then requests will be load balanced to an additional
-          edge server.
-
-        </Callout>
-
-        **Example:**
-
-        All requests within the Los Angeles area for the following image
-        will be handled by a single edge server in a Los Angeles POP
-        (e.g., OXR):
-
-        `https://cdn.example.com/marketing/logo.png`
-
-    -   If rate limiting is being applied to unique clients, then it is
-        important to note that requests from a single client may be load
-        balanced to different edge servers based on the requested URL.
-
-        **Example:**
-
-        A request for a web page may result in 50 subsequent requests
-        for its supporting files (e.g., CSS, JS, and images). Although a
-        single client is requesting all 50 of these assets, these
-        requests may be load balanced across anywhere from 1 to 50
-        different edge servers in a single POP.
 
 ### Condition Group {/*condition-group*/}
 
@@ -318,6 +295,10 @@ The types of prerequisites that may be defined are described below.
 
     </Callout>
 
+-   **JA3:** {{ PRODUCT_SECURITY }} Premier only. A request will count towards the rate limit when its JA3 signature matches the specified signature.
+-   **Request query:** {{ PRODUCT_SECURITY }} Premier only. A request will count towards the rate limit when its query string matches the specified value or pattern.
+-   **Request cookie:** {{ PRODUCT_SECURITY }} Premier only. A request will count towards the rate limit when it contains the specified cookie with the specified value.
+
 **Key information:**
 
 -   A single condition group may contain multiple conditions.
@@ -326,20 +307,14 @@ The types of prerequisites that may be defined are described below.
 
     <a id="match-conditions"></a>
 
--   A request will count towards the rate limit when
-    it satisfies both of the following conditions:
+-   A request will count towards the rate limit when it satisfies both of the following conditions:
     -   A Security Application configuration's hostname and URL path conditions.
-    -   If one or more condition group(s)
-        have been defined, then the request must also satisfy all of the
-        conditions defined within at least one condition group.
--   Each condition must contain a value through which requests will be
-    identified.
-    -   Regular expressions or wildcards may not be used to identify
-        requests.
+    -   If one or more condition group(s) have been defined, then the request must also satisfy all of the conditions defined within at least one condition group.
+-   Each condition must contain a value through which requests will be identified.
+    -   Regular expressions or wildcards may not be used to identify requests.
     -   Blank values are not allowed.
     -   Add a value by typing it and then pressing 'ENTER'.
--   Ensure that your rate limiting configuration complies the following
-    limits:
+-   Ensure that your rate limiting configuration complies the following limits:
     -   **Condition groups per rate rule:** 5
     -   **Conditions per condition group:** 5
     -   **# of values per condition:**
@@ -354,9 +329,7 @@ The types of prerequisites that may be defined are described below.
 
 ## Multiple Rate Rules {/*multiple-rate-rules*/}
 
-You may define multiple rate rules within a [Security Application
-configuration](/guides/security/security_applications). This type of setup provides greater
-control when determining how requests will be rate limited.
+You may define multiple rate rules within a [Security Application configuration](/guides/security/security_applications). This type of setup provides greater control when determining how requests will be rate limited.
 
 Common use cases for multiple rules:
 
@@ -366,30 +339,22 @@ Common use cases for multiple rules:
 
 ### Rule Order {/*rule-order*/}
 
-The order in which rules are listed is critical, since it determines
-which rule will be applied to a request.
+The order in which rules are listed is critical, since it determines which rule will be applied to a request.
 
 <Callout type="tip">
 
-  It is recommended to order rules according to how they identify
-  requests. Stricter rules that identify requests using multiple
-  conditions should be placed closer to the top of the list, while
-  catch-all rules should be placed closer to the bottom. This ensures that
-  rules are applied to requests as intended.
+  It is recommended to order rules according to how they identify requests. Stricter rules that identify requests using multiple conditions should be placed closer to the top of the list, while catch-all rules should be placed closer to the bottom. This ensures that rules are applied to requests as intended.
 
 </Callout>
 
 **Key information:**
 
--   Rules are processed in the order in which they are listed (i.e., top
-    to bottom) within a Security Application configuration.
--   Only the first rate rule that a [request
-    satisfies](#match-conditions) will be applied to it.
+-   Rules are processed in the order in which they are listed (i.e., top to bottom) within a Security Application configuration.
+-   Only the first rate rule that a [request satisfies](#match-conditions) will be applied to it.
 
     <Callout type="info">
 
-      Once a request satisfies a rate rule, all subsequent rate rules will
-      be skipped.
+      Once a request satisfies a rate rule, all subsequent rate rules will be skipped.
 
     </Callout>
 
@@ -402,23 +367,15 @@ You may create, modify, and delete rate rules.
 **Key information:**
 
 -   Administer rate rules from the **Rate Rules** page.
--   Apply a rate rule to production traffic by adding it to a [Security
-    Application configuration](/guides/security/security_applications) and then determining how
-    it will be enforced. Multiple Security Application
-    configurations may use the same rate rule. Leverage this capability
-    to tailor security screening by application or traffic profile.
+-   Apply a rate rule to production traffic by adding it to a [Security Application configuration](/guides/security/security_applications) and then determining how it will be enforced. Multiple Security Application configurations may use the same rate rule. Leverage this capability to tailor security screening by application or traffic profile.
 
     <Callout type="info">
 
-      Before adding a rate rule to a Security Application
-      configuration, verify that the Security Application
-      configuration's hostname and URL path conditions do not conflict
-      with your rate rule's conditions.
+      Before adding a rate rule to a Security Application configuration, verify that the Security Application configuration's hostname and URL path conditions do not conflict with your rate rule's conditions.
 
     </Callout>
 
--   This service inspects all traffic, regardless of platform, to
-    determine whether it should be rate limited.
+-   This service inspects all traffic, regardless of platform, to determine whether it should be rate limited.
 -   Requests to each delivery platform are counted separately.
 
     **Sample scenario:**
@@ -427,52 +384,34 @@ You may create, modify, and delete rate rules.
 
     -   Identify unique clients by IP address.
     -   A rate limit of 8 requests per second.
-    -   A Security Application configuration that matches all
-        hostnames and URL paths.
+    -   A Security Application configuration that matches all hostnames and URL paths.
     -   No condition groups.
 
-    If a client makes 10 requests per second, then it will be rate limited to 8
-    requests per second. If another client makes 5 requests 
-    per second, then the second client will not be rate limited.
--   It may take up to 2 minutes for an updated rate rule to be applied
-    across our entire network.
+    If a client makes 10 requests per second, then it will be rate limited to 8 requests per second. If another client makes 5 requests per second, then the second client will not be rate limited.
+-   It may take up to 2 minutes for an updated rate rule to be applied across our entire network.
 
 **To create a rate rule**
 
 1.  Navigate to the **Rate Rules** page.
     {{ SECURITY_NAV }} **Rate Rules**.
 2.  Click **+ New Rate Ruleset**.
-3.  In the **Name** option, type the unique name by which
-    this rate rule will be identified. This name should be sufficiently
-    descriptive to identify it when setting up a Security Application
-    configuration.
-4.  In the **Apply rate limit to** option, indicate whether the
-    rate limit should be applied across all requests or to each unique
-    client.
-5.  In the **Rate limit** option, define the maximum rate at
-    which requests may flow to your origin server(s). Define this rate
-    by indicating the maximum number of requests for the selected time
-    interval (e.g., 1 second, 30 seconds, 1 minute, etc.).
-6.  Optional. Create a condition group to identify
-    the types of requests that qualify for rate limiting.
-    1.  Click the **+ New Condition Group** label.
-    2.  Optional. Rename `Condition Group 1` to a brief name that describes the purpose of the condition
-        group.    
-    3.  In the **Matched by** option, select the method by which
-        requests will be identified.
+3.  In the **Name** option, type the unique name by which this rate rule will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
+4.  In the **Apply rate limit to** option, indicate whether the rate limit should be applied across all requests or to each unique client.
+    **{{ PRODUCT_SECURITY }} Premier Only:** You may select up to two sources when defining a unique client. For example, you may select `User agent` and `Cookie` to identify each combination of a specific cookie and user agent as a unique client.
 
-        If you set this option to **Request header**, then you
-        should also select the desired request header from the **Request
-        header name** option.
-    4.  If the **Match type** option is available, determine whether the
-        **Value(s)** option will contain one or more exact
+5.  In the **Rate limit** option, define the maximum rate at which requests may flow to your origin server(s). Define this rate by indicating the maximum number of requests for the selected time interval (e.g., 1 second, 30 seconds, 1 minute, etc.).
+6.  Optional. Create a condition group to identify the types of requests that qualify for rate limiting.
+    1.  Click the **+ New Condition Group** label.
+    2.  Optional. Rename `Condition Group 1` to a brief name that describes the purpose of the condition group.
+    3.  In the **Matched by** option, select the method by which requests will be identified.
+
+        If you set this option to `Request header` or `Cookie`, then you should also define the desired request header or cookie from the **Request header name** or **Request cookie name** option.
+    4.  If the **Match type** option is available, determine whether the **Value(s)** option will contain one or more exact
         value(s) (`Multiple exact match`) or a regular expression (`Regex`).
 		
     5.  Perform either of the following steps:
-        -   **Values:** In the **Values**
-            option, type the value that must be satisfied before a
-            request will count towards the rate rule and then press `ENTER`. Repeat this step
-            as needed. 
+        -   **Values:** In the **Values** option, type the value that must be satisfied before a
+            request will count towards the rate rule and then press `ENTER`. Repeat this step as needed. 
 
             <Callout type="tip">
 
@@ -481,21 +420,14 @@ You may create, modify, and delete rate rules.
             </Callout>
 
         -   **Value:** In the **Value** option, type the desired regular expression pattern.
-    6.  Choose whether this condition will be satisfied when a request matches or does not match a value defined in the
-         **Value(s)** option.
-         -   **Matches:** Clear the **Negative match**
-             option.
-         -   **Does Not Match:** Mark the **Negative match**
-             option.
-    7.  Optional. Add another condition to the current condition group
-          by clicking **+ New condition** and then repeating steps
-          6.3 - 6.6.
+    6.  Choose whether this condition will be satisfied when a request matches or does not match a value defined in the **Value(s)** option.
+         -   **Matches:** Clear the **Negative match** option.
+         -   **Does Not Match:** Mark the **Negative match** option.
+    7.  Optional. Add another condition to the current condition group by clicking **+ New condition** and then repeating steps 6.3 - 6.6.
 
         <Callout type="info">
 
-          If a condition group has been defined, then a request must
-          satisfy all of the conditions within at least one condition
-          group in order to be eligible for rate limiting.
+          If a condition group has been defined, then a request must satisfy all of the conditions within at least one condition group in order to be eligible for rate limiting.
 
         </Callout>
 
@@ -503,8 +435,7 @@ You may create, modify, and delete rate rules.
 
         <Callout type="tip">
 
-          Multiple condition groups provide the means for identifying
-          different types of requests for the purpose of rate limiting.
+          Multiple condition groups provide the means for identifying different types of requests for the purpose of rate limiting.
 
         </Callout>
 
@@ -540,18 +471,6 @@ delete that Security Application configuration.
 
 ## Sample Scenario 1: Rate Limiting All Requests {/*scenario-1-rate-limiting-all-requests*/}
 
-This scenario assumes that a different edge server is handling each
-unique request URL. 
-
-<Callout type="info">
-
-  A single edge server could potentially
-  handle multiple unique request URLs that are eligible for rate rules. In
-  which case, the rate limit would be applied to the aggregate traffic for
-  that content.
-
-</Callout>
-
 Requests will be rate limited according to this configuration:
 
 | Type                 | Setting             | Value                |
@@ -580,9 +499,7 @@ The CDN handled the above requests in the following manner:
     **More information:**
 
     A rate limit of 300 requests per minute is being enforced on a per
-    edge server basis. Since a different edge server handled each unique
-    URL, the maximum number of requests that could have been honored for
-    each of these assets is 300. Only 200 requests were honored for
+    POP basis. Only 200 requests were honored for
     Logo.png, since it was only requested 200 times within that minute.
 -   Our CDN service applied a predefined rate limiting action (e.g., URL
     redirection) to the following 400 requests:
@@ -599,18 +516,6 @@ The CDN handled the above requests in the following manner:
         honored, since it did not exceed the rate rule.
 
 ## Sample Scenario 2: Rate Limiting Unique Clients {/*scenario-2-rate-limiting-unique-clients*/}
-
-This scenario assumes that a different edge server is handling each
-unique request URL. 
-
-<Callout type="info">
-
-  A single edge server could potentially
-  handle multiple unique request URLs that are eligible for rate rules. In
-  which case, the rate limit would be applied to the aggregate traffic for
-  that content.
-
-</Callout>
 
 Requests will be rate limited according to this configuration:
 
@@ -643,9 +548,6 @@ limit (i.e., 50 requests per minute).
 </Callout>
 
 ## Sample Scenario 3: Multiple Rate Rules {/*scenario-3-multiple-rate-rules*/}
-
-This scenario assumes that a single edge server is handling all of these
-requests.
 
 A Security Application configuration may contain multiple rate
 rules that define a custom rate limit for different types of requests.

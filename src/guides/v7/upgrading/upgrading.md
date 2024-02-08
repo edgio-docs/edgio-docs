@@ -63,7 +63,7 @@ Perform the following steps for each of your properties:
       ...
       ```
 
-      You should update all of these references as shown below.
+      You should update all of these references as shown below. Note that `@layer0/devtools` package has been replaced by a [Google Chrome extension](/guides/performance/observability/developer_tools_chrome_extension).
 
       ```json filename="package.json version 7"
       ...
@@ -72,8 +72,7 @@ Perform the following steps for each of your properties:
         },
         "devDependencies": {
           "{{ PACKAGE_NAME }}/cli": "^7.0.0",
-          "{{ PACKAGE_NAME }}/core": "^7.0.0",
-          "{{ PACKAGE_NAME }}/devtools": "^7.0.0",
+          "{{ PACKAGE_NAME }}/core": "^7.0.0"
       ...
       ```
 

@@ -518,3 +518,5 @@ You may create, modify, and delete custom rule sets.
 3.  Click on the desired custom rule set.
 3.  Click **Delete**.
 4.  Click **Confirm**.
+
+{{ security_version_control.md }}

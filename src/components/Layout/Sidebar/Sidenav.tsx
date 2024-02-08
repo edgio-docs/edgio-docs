@@ -139,11 +139,9 @@ function getCurrentRouteIndex(
   depth: number,
   currentRoutePath: string
 ) {
-  //console.log('routes', routes);
   return routes.findIndex((route) => {
     const _route = route.path.split('/')[route.path.split('/').length - 1];
     const _crp = currentRoutePath.split('/')[depth];
-    // if (_route == _crp) console.log(route.path, currentRoutePath, depth);
     return _route == _crp;
   });
 }

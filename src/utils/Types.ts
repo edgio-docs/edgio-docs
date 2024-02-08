@@ -1,5 +1,5 @@
 export type ItemsByVersion = {
-  [key: string]: SimpleRouteItem[];
+  [key: string]: SimpleRouteItem[] | undefined;
 } & {
   default?: SimpleRouteItem[];
 };

@@ -208,7 +208,7 @@ export default new Router()
 
 Determines whether our CDN will instruct the client to bypass cache.
 
--   **Bypass the cache:** Sets the `cache-control` response header to: `cache-control: private, no-cache, no-store, must-revalidate`
+-   **Bypass the cache:** Sets the `cache-control` response header to: `cache-control: private, no-cache, no-store, must-revalidate`.
 -   **Do not bypass the cache:** No effect.
 
 <Callout type="info">
@@ -460,7 +460,6 @@ Include or exclude all query string parameters through the `include_all` propert
 
 **Default Behavior:** By default, {{ PRODUCT }} includes all query string parameters when constructing the cache key.
 
-<!--
 #### Cacheable Request Body Size {/*cacheable-request-body-size*/}
 
 Restricts caching to requests whose body does not exceed the specified file size.
@@ -468,19 +467,18 @@ Restricts caching to requests whose body does not exceed the specified file size
 **Key information:**
 
 -   **Syntax:** `<FILE SIZE>[B|kB|MB|GB|TB|kiB|MiB|GiB|TiB]`
+-   **Example:** Both of the following sample values restrict caching to payloads that are 14 kilobytes or smaller:
 
-    <Callout type="tip">
+    `14000B` or `14kB`
 
-      Specify this file size in bytes (e.g., `8500B`) or kilobytes (`12kB`).
-
-    </Callout>
-
+-   Units are case-sensitive.
 -   This feature is only applicable when `POST` or `PUT` responses are eligible for caching. Use the `Enable Caching for Methods` feature to enable `POST` / `PUT` request caching.
--   The request body is taken into consideration for:
+<!--
+-   The request body is taken into consideration for 
 
     -   `x-www-form-urlencoded` values
     -   Ensuring a unique cache key
-
+-->
 -   Defining a large maximum request body size may impact data delivery performance.
 
     -   **Recommended Value:** `14kB`
@@ -490,19 +488,18 @@ Restricts caching to requests whose body does not exceed the specified file size
 **Key information:**
 
 -   **Syntax:** `<FILE SIZE>[B|kB|MB|GB|TB|kiB|MiB|GiB|TiB]`
+-   **Example:** Both of the following sample values restrict caching to payloads that are 12 kilobytes or smaller:
 
-    <Callout type="tip">
+    `12000B` or `12kB`
 
-      Specify this file size in bytes (e.g., `8500B`) or kilobytes (`12kB`).
-
-    </Callout>
-
+-   Units are case-sensitive.
 -   This feature is only applicable when `POST` or `PUT` responses are eligible for caching. Use the `enable_caching_for_methods` feature to enable `POST` / `PUT` request caching.
+<!--
 -   The request body is taken into consideration for:
 
     -   `x-www-form-urlencoded` values
     -   Ensuring a unique cache key
-
+-->
 -   Defining a large maximum request body size may impact data delivery performance.
 
     -   **Recommended Value:** `14kB`
@@ -521,7 +518,6 @@ export default new Router()
 </edgejs>
 
 **Default Behavior:** `14kB`
--->
 
 #### Cacheable Status Codes {/*cacheable-status-codes*/}
 
@@ -1905,7 +1901,7 @@ export default new Router()
 
 #### Set Origin {/*set-origin*/}
 
-Defines the [origin configuration](/guides/basics/hostnames_and_origins#origin) to which requests will be forwarded when they cannot be served from cache.
+Defines the [origin configuration](/guides/basics/origins) to which requests will be forwarded when they cannot be served from cache.
 
 <edgejs>
 **Example:**
@@ -2168,22 +2164,18 @@ URL features redirect or rewrite requests to a different URL.
 
 #### Follow Redirects {/*follow-redirects*/}
 
-Determines whether requests may be redirected to the hostname defined in the `Location` header returned by an origin server.
+Determines whether {{ PRODUCT }} will follow a redirect defined within the `Location` header returned by an origin server.
 
-<Callout type="important">
+**Key information:**
 
-  All requests, regardless of HTTP method (e.g., `POST` and `PUT`), are redirected as `GET` requests.
-
-</Callout>
-
-**Default Behavior:** By default, our edge servers will not follow the redirect defined in the `Location` response header returned by an origin server.
+-   All requests, regardless of HTTP method (e.g., `POST` and `PUT`), are redirected as `GET` requests.
+-   {{ PRODUCT }} will only follow redirects to a registered [hostname](/guides/basics/hostnames). {{ PRODUCT }} returns a `404 Not Found` response for hostnames whose traffic cannot be served by {{ PRODUCT }}.
 
 <edgejs>
-<Callout type="important">
+**Key information:**
 
-  All requests, regardless of HTTP method (e.g., `POST` and `PUT`), are redirected as `GET` requests.
-
-</Callout>
+-   All requests, regardless of HTTP method (e.g., `POST` and `PUT`), are redirected as `GET` requests.
+-   {{ PRODUCT }} will only follow redirects to a registered [hostname](/guides/basics/hostnames). {{ PRODUCT }} returns a `404 Not Found` response for hostnames whose traffic cannot be served by {{ PRODUCT }}.
 
 **Example:**
 
@@ -2196,6 +2188,9 @@ export default new Router()
   })
 ```
 </edgejs>
+
+**Default Behavior:** By default, our edge servers will not follow the redirect defined in the `Location` response header returned by an origin server. This allows a client (e.g., a web browser) to determine whether to follow the redirect. 
+
 <a id="url-rewrite" />
 
 #### Rewrite URL {/*rewrite-url*/}

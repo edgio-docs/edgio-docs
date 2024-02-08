@@ -57,7 +57,7 @@ npm install
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
 ```bash
-{{ FULL_CLI_NAME }} init --connector={{ PACKAGE_NAME }}/sveltekit {{ INIT_ARG_EDGIO_VERSION }}
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
@@ -65,7 +65,7 @@ This will automatically add all of the required dependencies and files to your p
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/cli` package
 - The `{{ PACKAGE_NAME }}/prefetch` package - Allows you to configure a service worker to prefetch and cache pages to improve browsing speed
-- The `{{ PACKAGE_NAME }}/sveltekit` package
+- The `{{ PACKAGE_NAME }}/connectors` package
 - `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }}.
 - `routes.js` - A default routes file that adds routes for pre-rendered pages, assets and sends all unmatched requests to the SvelteKit server. Update this file to add caching or proxy some URLs to a different origin.
 
@@ -77,10 +77,10 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 // This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
-const {Router} = require('{{ PACKAGE_NAME }}/core/router');
-const {svelteKitRoutes} = require('{{ PACKAGE_NAME }}/sveltekit');
+const { Router } = require('{{ PACKAGE_NAME }}/core/router');
+const { connectorRoutes } = require('{{ PACKAGE_NAME }}/connectors');
 
-export default new Router().use(svelteKitRoutes);
+export default new Router().use(connectorRoutes);
 ```
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.

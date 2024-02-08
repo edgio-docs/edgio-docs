@@ -10,7 +10,7 @@ Before adding [features](/guides/performance/rules/features) that customize how 
 -   [Cookies](#cookies)
 -   [Headers](#headers)
 
-In addition to these common scenarios, [there are many other ways](/guides/performance/rules/conditions) through which Rules can match requests. Additionally, you can combine match conditions to selectively apply features when multiple conditions have been met. You may also use [Else or `Else If statements](/guides/performance/rules#statements) to apply features when specific criteria has not been met. The power and flexiblity of Rules allows you to use basic configurations or build upon them to create a configuration that addresses your complex business needs.
+In addition to these common scenarios, [there are many other ways](/guides/performance/rules/conditions) through which Rules can match requests. Additionally, you can combine match conditions to selectively apply features when multiple conditions have been met. You may also use [Else or Else If statements](/guides/performance/rules#statements) to apply features when specific criteria has not been met. The power and flexiblity of Rules allows you to use basic configurations or build upon them to create a configuration that addresses your complex business needs.
 
 ### All Requests {/*all-requests*/}
 
@@ -50,7 +50,7 @@ Restrict the above rule to images whose relative path starts with: `/marketing/c
 
 #### Query String {/*query-string*/}
 
-Use the [Query Parameter match condition](/guides/performance/rules/conditions#query-parameter) to find requests that contain a query string parameter set to a specific value. The following configuration finds all requests whose query string contain `session=active`.
+Use the [Query Parameter match condition](/guides/performance/rules/conditions#query-parameter) to find requests that contain a query string parameter set to a specific value. The following configuration matches all requests whose query string contain `session=active`.
 
 ![Query Parameter match condition](/images/v7/performance/rules-use-case-query-parameter.png)
 
@@ -66,7 +66,7 @@ Use the [Method match condition](/guides/performance/rules/conditions#method) to
 
 ### Cookies {/*cookies*/}
 
-Use the [Cookie match condition](/guides/performance/rules/conditions#cookie) to find requests that contain a cookie set to a specific value. The following configuration finds all requests that contain this cookie: `type=oatmeal`.
+Use the [Cookie match condition](/guides/performance/rules/conditions#cookie) to find requests that contain a cookie set to a specific value. The following configuration matches all requests that contain this cookie: `type=oatmeal`.
 
 ![Cookie match condition](/images/v7/performance/rules-use-case-cookie.png?width=700)
 
@@ -76,6 +76,6 @@ For example, the above configuration matches against a request that contains the
 
 ### Headers {/*headers*/}
 
-Use the [Request Header match condition](/guides/performance/rules/conditions#request-header) to find requests that contain a header set to a specific value. The following configuration finds all requests whose `Accept-Language` header contains `en-US`.
+Use the [Request Header match condition](/guides/performance/rules/conditions#request-header) to find requests that contain a header set to a specific value. The following configuration matches all requests whose `Accept-Language` header contains `en-US`.
 
 ![Request Header match condition](/images/v7/performance/rules-use-case-request-header.png)

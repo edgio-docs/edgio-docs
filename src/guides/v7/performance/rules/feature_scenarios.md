@@ -14,21 +14,21 @@ title: Feature Scenarios
 
 ### Disable Caching {/*disable-caching*/}
 
-By default, [{{ PRODUCT }} will only cache content](/guides/performance/caching#default-caching-policy) when it receives cache directives from your origin (e.g., your web servers). Prevent {{ PRODUCT }} from caching content even when cache directives are present by disabling caching for the desired requests through the [Bypass Cache feature](/guides/performance/features#bypass-cache).
+By default, [{{ PRODUCT }} will only cache content](/guides/performance/caching#default-caching-policy) when it receives cache directives from your origin (e.g., your web servers). Prevent {{ PRODUCT }} from caching content even when cache directives are present by disabling caching for the desired requests through the [Bypass Cache feature](/guides/performance/rules/features#bypass-cache).
 
 ![Bypass Cache feature](/images/v7/performance/rules-use-case-bypass-cache.png?width=700)
 
-Add the [Bypass Client Cache feature](/guides/performance/features#bypass-client-cache) to instruct the client that it should not cache the response.
+Add the [Bypass Client Cache feature](/guides/performance/rules/features#bypass-client-cache) to instruct the client that it should not cache the response.
 
 ![Bypass Cache and Bypass Client Cache features](/images/v7/performance/rules-use-case-bypass-client-cache.png?width=700)
 
 ### Custom Cache Policy {/*custom-cache-policy*/}
 
-Customize how long {{ PRODUCT }} will cache your content on our network by adding the [Set Max Age feature](/guides/performance/features#set-max-age). Define a max-age interval for each desired status code.
+Customize how long {{ PRODUCT }} will cache your content on our network by adding the [Set Max Age feature](/guides/performance/rules/features#set-max-age). Define a max-age interval for each desired status code.
 
 ![Set Max Age feature](/images/v7/performance/rules-use-case-set-max-age.png?width=700)
 
-Add the [Stale While Revalidate feature](/guides/performance/features#stale-while-revalidate) to allow {{ PRODUCT }} to serve a cached response during cache revalidation. In the following illustration, both of these features have been added within an ELSE statement. This means that these features are applied when a request does not satisfy the match conditions in the IF statement. In this case, it means that these features are only applied when either of the following conditions are true:
+Add the [Stale While Revalidate feature](/guides/performance/rules/features#stale-while-revalidate) to allow {{ PRODUCT }} to serve a cached response during cache revalidation. In the following illustration, both of these features have been added within an ELSE statement. This means that these features are applied when a request does not satisfy the match conditions in the IF statement. In this case, it means that these features are only applied when either of the following conditions are true:
 -   The request's relative path does not start with the `/marketing` directory.
 -   The request's file extension matches one defined within the Extension match condition.
 
@@ -41,7 +41,7 @@ Add the [Stale While Revalidate feature](/guides/performance/features#stale-whil
 -   The response body varies according to a subset of query string parameters.
 -   The response body varies according to another factor (e.g., request header or device type).
 
-Use the [Cache Key feature](/guides/performance/features#cache-key) to tailor the cache key according to how unique responses are generated. For example, you can exclude the query string from the cache key or only include specific query string parameters. You may also add headers, cookies, and feature variables to the cache key. The following sample configuration includes the `category` and `country` query string parameters and the `device` header within the query string:
+Use the [Cache Key feature](/guides/performance/rules/features#cache-key) to tailor the cache key according to how unique responses are generated. For example, you can exclude the query string from the cache key or only include specific query string parameters. You may also add headers, cookies, and feature variables to the cache key. The following sample configuration includes the `category` and `country` query string parameters and the `device` header within the query string:
 
 ![Cache Key feature](/images/v7/performance/rules-use-case-cache-key.png?width=700)
 
@@ -89,9 +89,19 @@ Both values are feature variables. The first value (i.e., `%{geo_country}`) iden
 
 ![Surrogate Key](/images/v7/performance/rules-use-case-surrogate-key.png?width=700)
 
-Purge this request by country of origin, file extension, or both as shown below.
+Purge requests by country of origin, file extension, or both as shown below.
 
 ![Purge by surrogate key](/images/v7/performance/rules-use-case-purge-cache.png?width=700)
+
+The above purge request will purge all requests that were tagged with `US`, `png`, or both values. 
+
+An alternative approach is to combine multiple conditions within a single tag. For example, tag content using a single tag that combines country and file extension by setting the `Surrogate-Key` response header to the following value:
+
+`%{geo_country}-%{path//.*\./}`
+
+Purge all requests that originate from within the US for PNG images by submitting the following surrogate key purge: 
+
+`US-png`
 
 ### HTTP to HTTPS Redirects {/*http-to-https-redirects*/}
 

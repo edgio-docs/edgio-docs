@@ -69,6 +69,15 @@ const nav = {
           path: 'performance/rules',
           routes: [
             {
+              title: 'Request Matching Scenarios',
+              path: 'performance/rules/request_matching_scenarios',
+            },
+            {
+              title: 'Feature Scenarios',
+              path: 'performance/rules/feature_scenarios',
+            },
+            separator,
+            {
               title: 'Conditions',
               path: 'performance/rules/conditions',
             },

@@ -10,10 +10,10 @@ By leveraging Edgio, you'll ensure optimal performance, faster loading times, an
 
 ## Getting Started {/* getting-started */}
 
-Clone this repo and change to the `llamaindex` directory.
+Clone the `edgio-v7-ai-example` repo and change to the `llamaindex` directory.
 
 ```bash
-git clone https://github.com/Edgio/edgio-ai
+git clone https://github.com/edgio-docs/edgio-v7-ai-example.git
 cd llamaindex
 ```
 

@@ -10,10 +10,10 @@ Ensuring that AI-driven features are seamlessly and efficiently deployed across 
 
 ## Getting Started {/* getting-started */}
 
-Clone this repo and change to the `mistral` directory.
+Clone the `edgio-v7-ai-example` repo and change to the `mistral` directory.
 
 ```bash
-git clone https://github.com/Edgio/edgio-ai
+git clone https://github.com/edgio-docs/edgio-v7-ai-example.git
 cd mistral
 ```
 

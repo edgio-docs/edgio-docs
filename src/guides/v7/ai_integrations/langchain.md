@@ -10,10 +10,10 @@ With Edgio, the app benefits from faster load times, improved user experience, a
 
 ## Getting Started {/* getting-started */}
 
-Clone the `edgio-ai` repo and change to the `langchain` directory.
+Clone the `edgio-v7-ai-example` repo and change to the `langchain` directory.
 
 ```bash
-git clone git@github.com:edgio/edgio-ai.git
+git clone https://github.com/edgio-docs/edgio-v7-ai-example.git
 cd langchain
 ```
 
@@ -38,19 +38,18 @@ npm i
 npm run dev
 ```
 
-Open [localhost:3000](http://localhost:3000) with your browser and ask the bot something. You'll see a streamed response:
+Open [localhost:3000](http://localhost:3000) with your browser to ask the bot something and you'll see a streamed response. You can visit `app/page.tsx` if you would like to start customizing your chat interface.
 
 <p align="center">
   <img
-    width="480px"
-    src="https://github.com/Edgio/edgio-ai/blob/main/langchain/public/agent-convo.gif?raw=true"
+    width="680px"
+    src="https://github.com/langchain-ai/langchain-nextjs-template/blob/main/public/images/chat-conversation.png?raw=true"
     alt="A streaming conversation between the user and the AI"
+    loading="lazy"
   />
 </p>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-Backend logic lives in `app/api/chat/route.ts`. From here, you can change the prompt and model, or add other modules and logic.
+The backend logic can be found in `app/api/chat/route.ts`. From here, you can change the prompt which is set to the `TEMPLATE` variable and the model that is initialized with the `modelName` variable passed to the `ChatOpenAI` client.
 
 ```ts filename="app/api/chat/route.ts"
 import {NextRequest, NextResponse} from 'next/server';

@@ -2,7 +2,7 @@
 title: Feature Scenarios
 ---
 
-[Features](/guides/performance/rules/features) customizes how {{ PRODUCT }} processes your traffic. Common customizations  are listed below.
+[Features](/guides/performance/rules/features) customizes how {{ PRODUCT }} processes your traffic. Common customizations are listed below.
 
 -   [Disabling caching.](#disable-caching)
 -   [Defining a custom caching policy.](#custom-cache-policy)

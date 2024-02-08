@@ -110,7 +110,7 @@ Automatically redirect all HTTP requests to HTTPS.
 1.  Identity all HTTP requests by adding the [Scheme match condition](/guides/performance/rules/conditions#scheme) and setting it to `HTTP`.
 2.  Redirect HTTP requests to a HTTPS URL through the [URL Redirect feature](/guides/performance/rules/features#url-redirect). 
     1.  Set the **Source** option to `(.*)`. 
-    2.  Set the **Destination** option to `https://<HOST>/$1`. The `$1` represents the relative path for the request submitted by the client.
+    2.  Set the **Destination** option to `https://%{host}$1`. The `%{host}` is a feature variable that is replaced by the host defined in the request URL. The `$1` represents the relative path for the request submitted by the client.
 
     ![URL Redirect](/images/v7/performance/rules-use-case-url-redirect.png)
     

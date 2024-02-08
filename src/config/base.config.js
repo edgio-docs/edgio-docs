@@ -27,6 +27,7 @@ const CLI_CMD = (cmd) => `${FULL_CLI_NAME} ${cmd}`;
 const PACKAGE_NAME = '@edgio';
 const PACKAGE_VERSION = 'latest';
 const INIT_ARG_EDGIO_VERSION = `--edgioVersion ${PACKAGE_VERSION}`;
+const LEGACY_FW_INIT_ARG_EDGIO_VERSION = `--edgioVersion 7.5.0`;
 const CONFIG_FILE = 'edgio.config.js';
 const ROUTES_FILE = `\`routes.[js|ts]\``;
 const HEADER_PREFIX = 'x-edg';
@@ -67,7 +68,7 @@ const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
 const PORTAL_LINK = `[${PORTAL}](${LOGIN_URL})`;
 const IDENTITY_LINK = `[${IDENTITY_DASHBOARD}](${IDENTITY_URL})`;
 
-const NODE_VERSION = '16.x';
+const NODE_VERSION = '18.x';
 const STARTER_NAME = 'layer0-app';
 const EDGEJS_LABEL = 'EdgeJS';
 
@@ -219,6 +220,7 @@ const config = {
   RUM_NS,
   PACKAGE_VERSION,
   INIT_ARG_EDGIO_VERSION,
+  LEGACY_FW_INIT_ARG_EDGIO_VERSION,
   DOCS_NAME,
 };
 

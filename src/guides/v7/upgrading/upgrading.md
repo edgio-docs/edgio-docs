@@ -484,7 +484,7 @@ In order to ease the transition to version 7, we provide limited support for leg
 
   <Callout type="tip">
 
-  Deploying to {{ PRODUCT }} automatically generates origin configurations from those defined within the {{ CONFIG_FILE }} file. For this reason, we recommend that you map your hostnames to origins once you have deployed your property to {{ PRODUCT }}. [Learn more.](/guides/basics/hostnames_and_origins#add-modify-delete-hostname)
+  Deploying to {{ PRODUCT }} automatically generates origin configurations from those defined within the {{ CONFIG_FILE }} file. For this reason, we recommend that you map your hostnames to origins once you have deployed your property to {{ PRODUCT }}. [Learn more.](/guides/basics/hostnames#add-modify-delete-hostname)
 
   </Callout>
 
@@ -813,7 +813,7 @@ Once you have successfully built your property, run the following command to dep
 
 View our IP blocks by clicking **Instructions** from the **Origins** page.
 
-[Learn more.](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses)
+[Learn more.](/guides/basics/serving_traffic#firewall-allowing-ip-addresses)
 
 ## Step 15: Update your DNS {/* update-your-dns */}
 
@@ -825,8 +825,8 @@ View our IP blocks by clicking **Instructions** from the **Origins** page.
 
 Once you are ready to serve traffic through {{ PRODUCT }}, you will need to update the DNS for each of your hostname(s). Specifically, version 7 requires a CNAME record that points to a service domain that is either specific to your property’s:
 
-- [Environment](/guides/basics/hostnames_and_origins#environment-specific-service-domain)
-- [Organization](/guides/basics/hostnames_and_origins#space-specific-service-domain).
+- [Environment](/guides/basics/serving_traffic#environment-specific-service-domain)
+- [Organization](/guides/basics/serving_traffic#space-specific-service-domain).
 
 <Callout type="info">
 
@@ -950,7 +950,7 @@ Review your code to see whether it generates duplicate query string parameters. 
 | sec                     |                           | Manage threat log data for v7 Security through RTLD WAF, RTLD Rate Limiting, and RTLD Bot.                                                                                                                                                                                                                                                                                                                       |
 | sh                      |                           | The `proxy_type` log field returns `MIDGRESS` whenever we proxy requests within our network. In addition to Origin Shield requests, this may include peering requests.                                                                                                                                                                                                                                           |
 | ssl                     | scheme                    | Valid values are: `http` and `https`                                                                                                                                                                                                                                                                                                                                                                                                            |
-| stl                     | cache_status              | The `cache_status` log field indicates cache status. The cache status codes that correspond to stale responses are `TCP_EXPIRED_HIT` and `TCP_EXPIRED_MISS`.                                                                                                                                                                                                                                                     |
+| stl                     | cache_status              | The `cache_status` log field indicates cache status. The [cache status codes](/guides/performance/caching/cache_status_codes) that correspond to stale responses are `TCP_EXPIRED_HIT` and `TCP_EXPIRED_MISS`.                                                                                                                                                                                                                                                     |
 | t                       |                           | Version 7 reports time measurements through a variety of log fields (i.e., `background_fill_wait_time`, `read_time`, `prewrite_time`, `write_time`, and `total_time`) and the `x-edg-t` response header.                                                                                                                                                                                                         |
 | timestamp               | timestamp                 |                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | ua                      | user_agent                |                                                                                                                                                                                                                                                                                                                                                                                                                  |

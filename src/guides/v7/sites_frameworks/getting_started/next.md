@@ -26,10 +26,6 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
 
 -->
 
-## Supported Versions {/* supported-versions */}
-
-{{ PRODUCT_NAME }} supports Next.js version 9 through 13.
-
 ## Supported Features {/* supported-features */}
 
 {{ PRODUCT_NAME }} supports all of the most powerful features of Next.js, including:
@@ -44,7 +40,7 @@ For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to 
 - [`getServerSideProps`](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props)
 - [`getInitialProps`](https://nextjs.org/docs/api-reference/data-fetching/get-initial-props)
 
-{{ PREREQ.md }}
+{{ NEXTJS_PREREQ.md }}
 
 ## Getting Started {/* getting-started */}
 
@@ -77,16 +73,16 @@ This will automatically add all of the required dependencies and files to your p
 
 In the generated `{{ CONFIG_FILE }}` file, you can customize how {{ PRODUCT }} builds and runs your Next.js application. Using the `next` key, you can configure the following options:
 
-| Option                       | Description                                                                                                                                                                                                               | Default |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `generateSourceMaps`         | Output sourcemaps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PORTAL }}.                                                                                         | `true`  |
-| `disableImageOptimizer`      | Disables the {{ PRODUCT }} image optimizer and allows to use the Next's built in image optimizer. <a id="disableImageOptimizer"></a>                                                                                      | `false` |
-| `disableDevtools`            | Disables the {{ PRODUCT }} development tools widget on the site. <a id="disableDevtools"></a>                                                                                                                             | `false` |
-| `disableServiceWorker`       | Disables the build of the service worker.                                                                                                                                                                                 | `false` |
-| `forceServerBuild`           | Forces the `{{ PACKAGE_NAME }}/next` connector to use the server build. This config option replaces the NEXT_FORCE_SERVER_BUILD env variable.                                                                             | `false` |
+| Option                       | Description                                                                                                                                                                                                                            | Default |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `generateSourceMaps`         | Output sourcemaps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PORTAL }}.                                                                                                      | `true`  |
+| `disableImageOptimizer`      | Disables the {{ PRODUCT }} image optimizer and allows to use the Next's built in image optimizer. <a id="disableImageOptimizer"></a>                                                                                                   | `false` |
+| `disableDevtools`            | Disables the {{ PRODUCT }} development tools widget on the site. <a id="disableDevtools"></a>                                                                                                                                          | `false` |
+| `disableServiceWorker`       | Disables the build of the service worker.                                                                                                                                                                                              | `false` |
+| `forceServerBuild`           | Forces the `{{ PACKAGE_NAME }}/next` connector to use the server build. This config option replaces the NEXT_FORCE_SERVER_BUILD env variable.                                                                                          | `false` |
 | `optimizeServerBuild`        | Optimizes the server build by bundling all server assets and decreasing the overall startup time. This option has no effect on apps with the {{ PRODUCT }} cloud build. This option is set to `false` for Next 13.x apps.              | `true`  |
 | `proxyToServerlessByDefault` | Reduces the number of generated rules by adding the default catch-all rule that proxies all requests to Next.js to the {{ PRODUCT }} cloud. Set this option to `false` if you want to proxy all unmatched pages to a different origin. | `true`  |
-| `enforceTrailingSlash`       | Adds rules with Next's internal redirects that either add or remove a trailing slash. When set to `false`, the redirect is performed only by the Next.js server itself and doesn't affect other origins.                  | `true`  |
+| `enforceTrailingSlash`       | Adds rules with Next's internal redirects that either add or remove a trailing slash. When set to `false`, the redirect is performed only by the Next.js server itself and doesn't affect other origins.                               | `true`  |
 
 ## {{ PRODUCT }} Next.js Plugin {/* next-plugin */}
 
@@ -113,7 +109,7 @@ module.exports = with{{ PRODUCT }}({
 To understand better the caching mechanism, you can add {{ PRODUCT }} Devtools to see the caching metrics. Add the following code to your `_app.tsx` file:
 
 ```js filename='_app.tsx'
-import {useDevtools} from '@edgio/react';
+import { useDevtools } from '@edgio/react';
 
 const MyApp = ({Component, pageProps}) => {
   useDevtools();
@@ -156,10 +152,10 @@ See [Deployments](/guides/basics/deployments) for more information.
 The above code allows you to prefetch pages from {{ PRODUCT }}'s edge cache to significantly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next.js `Link` element. The following example shows you how to prefetch JSON data from `getServerSideProps` or `getStaticProps` using the `createNextDataUrl` function from `{{ PACKAGE_NAME }}/next/client`.
 
 ```js ins="4,14-23,27"
-import {Prefetch} from '{{ PACKAGE_NAME }}/react';
+import { Prefetch } from '{{ PACKAGE_NAME }}/react';
 import Link from 'next/link';
-import {useRouter} from 'next/router';
-import {createNextDataURL} from '{{ PACKAGE_NAME }}/next/client';
+import { useRouter } from 'next/router';
+import { createNextDataURL } from '{{ PACKAGE_NAME }}/next/client';
 
 export default function ProductListing({products}) {
   const {locale} = useRouter(); // you can omit this if you're not using localization
@@ -210,7 +206,7 @@ The `Prefetch` component fetches data for the linked page from {{ PRODUCT }}'s e
 To enable prefetching, you need to register the service worker in your app. You can skip this step if your app is already using a service worker. If not, add the following code to your `pages/_app.js` file:
 
 ```js filename='_app.js'
-import {useServiceWorker} from '@edgio/react';
+import { useServiceWorker } from '@edgio/react';
 const MyApp = ({Component, pageProps}) => {
   useServiceWorker({
     // set to `true` to install the service worker in development mode
@@ -231,8 +227,8 @@ Starting with Next.js 13, when the `app` directory is used, adding `useServiceWo
 {{ PRODUCT }} supports Next.js's built-in routing scheme. The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Next.js:
 
 ```js filename='routes.js'
-import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
-import {Router} from '{{ PACKAGE_NAME }}/core/router';
+import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
+import { Router } from '{{ PACKAGE_NAME }}/core/router';
 
 export default new Router()
   // By default send all requests to the Next.js app
@@ -283,8 +279,8 @@ export default new Router()
 To be able to use [Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode) while being able to cache the respective pages, update your routes to match the requests that contain the two cookies `__prerender_bypass` & `__next_preview_data`, and send those to the {{ PRODUCT }} cloud for rendering.
 
 ```js filename="routes.js" ins="8-21"
-import {Router} from '{{ PACKAGE_NAME }}/core/router';
-import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
+import { Router } from '{{ PACKAGE_NAME }}/core/router';
+import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
 
 export default new Router()
   // By default send all requests to the Next.js app
@@ -434,7 +430,7 @@ module.exports = {
 
 <Callout type="info">
 
-Note that Next.js apps built in {{ PRODUCT }} cloud mode don't include a Next.js image optimizer. Disabling our image optimizer without providing an alternative may cause them to fail.
+Note that Next.js apps prior to 12.x built with the `serverless` target ([see Next.js 12.x deprecation notes](https://nextjs.org/docs/pages/building-your-application/upgrading/version-12#target-option-deprecated)) don't include a Next.js image optimizer. Disabling our image optimizer without providing an alternative may cause them to fail.
 
 </Callout>
 

@@ -9,6 +9,7 @@ An access rule identifies legitimate traffic and threats by:
 -   [Country](#country)
 -   [Country Subdivision](#country-subdivision--iso3166-2-)
 -   [IP address](#ip-address)
+-   [JA3](#ja3)
 -   [Referrer](#referrer)
 -   [URL](#url)
 -   [User agent](#user-agent)
@@ -71,6 +72,9 @@ blacklists for the following categories:
     **Example:** 
 
     The following value identifies requests from California:  `US-CA`
+
+    <a id="ja3"></a>
+-   **JA3:**  Premier only. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic across various IP addresses and ports.
 
     <a id="ip-address"></a>
 
@@ -509,3 +513,5 @@ You may create, modify, and delete access rules.
 3.  Click on the desired access rule set.
 4.  Click **Delete**.
 5.  Click **Confirm**.
+
+{{ security_version_control.md }}

@@ -21,12 +21,12 @@ If a client requests an invalid protocol or version, then {{ PRODUCT }} will ret
 | Status Code                                                                                                        | Description                                                                                                                                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 400 Bad Request                                                                                                    | The URL is too long or the request headers are too large. [View request limits.](/guides/performance/limits#request-and-response-limits)                                                                                     |
-| [404 Not Found](/guides/performance/troubleshooting#404-not-found)                                                 | The server could not find the requested resource.                                                                                                                                                                            |
-| 412 Precondition Failed                                                                                            | The requested content was not prefetched because it was not cached on the POP closest to the client. {{ PRODUCT }} only prefetches cached content.                                                                           |
+| [404 Not Found](/guides/performance/troubleshooting#404-not-found-status-code)                                                | The server could not find the requested resource.                                                                                                                                                                            |
+| [412 Precondition Failed](/guides/performance/troubleshooting#412-precondition-failed-status-code)                 | The requested content was not prefetched because it was not cached on the POP closest to the client. By default, {{ PRODUCT }} only prefetches cached content.                                                                           |
 | [502 Bad Gateway](/guides/performance/troubleshooting#502-bad-gateway-status-code)                                 | {{ PRODUCT }} could not establish a connection to an origin server.                                                                                                                                                          |  |
 | 505 HTTP Version Not Supported                                                                                     | An invalid HTTP protocol or version was requested.                                                                                                                                                                           |
 | 530 Internal {{ PRODUCT }} Error                                                                                   | Unexpected error. {{ CONTACT_SUPPORT }}                                                                                                                                                                                      |
-| [531 Project Upstream Connection Error](/guides/performance/troubleshooting#531-project-upstream-connection-error) | {{ PRODUCT }} could not establish a connection to your origin.                                                                                                                                                               |
+| [531 Project Upstream Connection Error](/guides/performance/troubleshooting#531-project-upstream-connection-error-status-code) | {{ PRODUCT }} could not establish a connection to your origin.                                                                                                                                                               |
 | 532 Project Response Too Large                                                                                     | The response from the {{ PRODUCT }} cloud exceeded the [maximum response body limit](/guides/performance/limits#request-and-response-limits).                                                                                |
 | 533 Project Upstream TLS Error                                                                                     | There was an error negotiating a secure TLS connection with the origin. Check whether the upstream TLS certificate has expired and whether the provided host name matches the upstream TLS certificate.                      |
 | 534 Project Error                                                                                                  | Your project's serverless code has failed unexpectedly or has issued a malformed response. Use [server logs](/guides/logs/server_logs) to debug.                                                                             |
@@ -110,7 +110,7 @@ Common response headers are described below.
 
     Definitions for the above terms are provided below.
 
-    -   **CACHE STATUS CODE:** Indicates the cache status code for the response served to the client.
+    -   **CACHE STATUS CODE:** Indicates the [cache status code](/guides/performance/caching/cache_status_codes) for the response served to the client.
     -   **POP:** Indicates the POP that served the response.
     -   **COUNTRY:** Indicates the two-letter code for the POP's country.
 
@@ -155,9 +155,11 @@ Common response headers are described below.
     [Learn more.](/guides/performance/caching#why-is-my-response-not-being-cached)
 -->
 -   **{{ HEADER_PREFIX }}-components:** Contains {{ PRODUCT }} cloud information that is primarily meant for internal use when troubleshooting issues.
--   **{{ HEADER_PREFIX }}-hit-request-id:** For responses served from cache, this header indicates the unique ID of the request that was cached on our CDN.
     <a id="-mr" />
-	
+<!--
+-   **{{ HEADER_PREFIX }}-hit-request-id:** For responses served from cache, this header indicates the unique ID of the request that was cached on our CDN.
+-->
+
 -   **{{ HEADER_PREFIX }}-mr:** Identifies each rule that was applied to a request. 
 
     **Syntax:** `{{ HEADER_PREFIX }}-mr: <ENVIRONMENT #>:<RULE #>[;<ENVIRONMENT #>:<RULE #>;<ENVIRONMENT #>:<RULE #>]`
@@ -186,13 +188,15 @@ Common response headers are described below.
     **Example:** `{{ HEADER_PREFIX }}-p: 1`
 
 -   **{{ HEADER_PREFIX }}-platform-aws-account:** Identifies the AWS account corresponding to the cloud worker that processed a request.
+<!--
 -   **{{ HEADER_PREFIX }}-request-id:** Indicates the request's unique ID.
--   **{{ HEADER_PREFIX }}-status]:** Contains a comma-delimited list of HTTP status codes for each cloud component that processed the request.
+-->
+-   **{{ HEADER_PREFIX }}-status:** Contains a comma-delimited list of HTTP status codes for each cloud component that processed the request.
     -   **p**: Cloud load balancer
     -   **w**: Cloud worker
 
     **Example:** `{{ HEADER_PREFIX }}-status: p=200,w=200`
-	
+
 -   **{{ HEADER_PREFIX }}-surrogate-key:** Contains a space-delimited list of surrogate keys (cache tags). <!-- surrogate keys can be injected when needed into your backend responses -->
 
     [Learn more.](/guides/performance/caching/purging#surrogate-keys-cache-tags)
@@ -234,12 +238,12 @@ The debug cache response headers provide additional information about the cache 
     -   **x-ec-check-cacheable:** [Cacheable](#cacheable-response-header)
     -   **x-ec-cache-key:** [Cache key](#cache-key-response-header)
     -   **x-ec-cache-state:** [Cache state](#cache-state-response-header)
-	
+
     <Callout type="tip">
 
       Once you have enabled the `Debug Header` feature,  use the [Edgio Developer Tools Chrome extension](https://chrome.google.com/webstore/detail/edgio-developer-tools/ieehikdcdpeailgpfdbafhnbfhpdgefm) to automatically add all debug cache response headers to traffic served by {{ PRODUCT }}. View these response headers by inspecting network activity through [Chrome DevTools](https://developer.chrome.com/docs/devtools/).
-	  
-	  Alternatively, if you are using the latest version of the {{ PRODUCT }} CLI (v7.0.22+), then [{{ FULL_CLI_NAME }} curl](/guides/develop/cli#curl) will also automatically add all debug cache headers to the response.
+
+      Alternatively, if you are using the latest version of the {{ PRODUCT }} CLI (v7.0.22+), then [{{ FULL_CLI_NAME }} curl](/guides/develop/cli#curl) will also automatically add all debug cache headers to the response.
 
     </Callout>
 
@@ -261,14 +265,7 @@ The following response headers identify a server and how it handled the response
 
 The terms used in the above response header syntax are defined below:
 
--   **CACHE STATUS CODE:** Indicates how the requested content was handled by the CDN. This is represented through a cache status code.
-
-    <Callout type="info">
-
-      The `TCP_DENIED` status code may be reported instead of `NONE` when an unauthorized request is denied due to Token-Based Authentication. However, the `NONE` status code will continue to be used when viewing reports or raw log data.
-
-    </Callout>
-
+-   **CACHE STATUS CODE:** Indicates how the requested content was handled by the CDN. This is represented through a [cache status code](/guides/performance/caching/cache_status_codes).
 -   **POP:** Indicates the three-letter abbreviation for the POP that handled the request.
     
 #### Cacheable Response Header {/*cacheable-response-header*/}

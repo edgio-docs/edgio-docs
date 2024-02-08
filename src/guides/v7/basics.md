@@ -15,9 +15,9 @@ Before you can take advantage of {{ PRODUCT_EDGE }}, {{ PRODUCT_SECURITY }}, and
 -   [An {{ PRODUCT }} organization.](/guides/basics/collaboration) By default, your account will only have a private space that may only be accessed through your user account. Create an organization if you plan on collaborating with other teammates.
 -   [An {{ PRODUCT }} property.](/guides/getting_started#create-property) A property instructs {{ PRODUCT }} how to process requests to your website.
 -   [An environment.](/guides/basics/environments) An environment allows you to serve your site on different domains. For example, you can create environments for development, staging, and production to which you can deploy builds as they progress through your release workflow.
--   [A hostname](/guides/basics/hostnames_and_origins#hostnames) that identifies the domains through which traffic will be served. You must also authorize {{ PRODUCT }} to generate a TLS certificate for this hostname.
--   [An origin configuration](/guides/basics/hostnames_and_origins#origin) that identifies your web servers.
--   Once you are ready to [serve traffic through {{ PRODUCT }}](/guides/basics/hostnames_and_origins#serving-traffic-through), you should update your DNS configuration to point your website's domain to our service. 
+-   [A hostname](/guides/basics/hostnames) that identifies the domains through which traffic will be served. You must also authorize {{ PRODUCT }} to generate a TLS certificate for this hostname.
+-   [An origin configuration](/guides/basics/origins) that identifies your web servers.
+-   Once you are ready to [serve traffic through {{ PRODUCT }}](/guides/basics/serving_traffic), you should update your DNS configuration to point your website's domain to our service. 
 
 ![setup](/images/v7/basics/setup-overview.png)
 

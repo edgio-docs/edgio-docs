@@ -2,7 +2,7 @@
 title: Experimentation
 ---
 
-Experimentation allows you to serve different website experiences to your clients. Typically, it is used for canary releases, trunk-based development, dark releases, feature releases, and segmented releases. 
+Experimentation allows you to serve different website experiences to your clients. Typically, it is used for A/B testing, canary releases, trunk-based development, dark releases, feature releases, and segmented releases. 
 
 **Sample Use Cases:**
 
@@ -200,6 +200,95 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 3.  When prompted, confirm the deletion by clicking **Delete experiment**.
 4.  Click  **Deploy Changes**.
 
+## Sending Traffic to a Different Environment {/*sending-traffic-to-a-different-environment*/}
+
+You may use Experimentation to send traffic to another environment either within the same or a different property. For example, you can validate a feature release by sending some production traffic to an environment where that feature release is hosted.
+
+<Callout type="info">
+
+    If you are using either {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or Edge Functions and you are proxying traffic to a different environment within the same property, then you may incur additional latency. A workaround for this issue is to proxy traffic between the production environments of two different properties.
+
+    {{ PRODUCT }} {{ PRODUCT_PLATFORM }} and Edge Functions may run in a different region for the production environment than other environments. If you are sending traffic between these environments, then latency is introduced due to traffic being routed between two regions. 
+
+</Callout>
+
+### How Does Proxying Traffic Work? {/*how-does-proxying-traffic-work*/}
+
+{{ PRODUCT }} processes all requests using our [standard order of operations](/guides/v7/performance/request#order-of-operations). However, traffic that is sent to another environment will be processed by the rules for both environments as indicated below. 
+
+-   **Source Environment:** {{ PRODUCT }} will apply the source environment's rules to the request. 
+-   **Target Environment:** {{ PRODUCT }} will only apply features that affect the response sent to the client. These features take precedence over the ones defined within the source environment's rules.
+
+In addition to rule processing, you may choose to add custom logic to your origin server that alters the behavior based off of the host requested by the client.
+
+### Cross-Environment Prerequisite {/*cross-environment-prerequisite*/}
+
+A prerequisite for this use case is that both environments must use our Payment Card Industry (PCI) compliant network. 
+
+**To check whether an environment is PCI-compliant**
+
+    {{ ENV_NAV }} **Settings**.
+
+    5.  Check the **PCI Status** section. 
+
+        <Callout type="tip">
+
+          Contact our [technical customer support]({{ HELP_URL }}) to switch your environments to our PCI-compliant network.
+
+        </Callout>
+
+### Setting Up Cross-Environment Traffic {/*setting-up-cross-environment-traffic*/}
+
+Set up this workflow by performing the following steps:
+
+1.  Identify the environment from which traffic will originate. We will refer to this environment as the source environment. 
+
+    For example, you could potentially designate your `production` or `default` environment as the source environment.
+
+2.  Identify the environment to which traffic will be proxied. We will refer to this environment as the target environment. 
+
+    For example, you could potentially designate a "staging" environment as the target environment.
+
+3.  Identify or create an origin configuration within the target environment. Traffic proxied from the source environment will be directed to this origin.
+
+    For example, you could potentially expose a feature release through this origin configuration.
+4.  Deploy your changes to the target environment. 
+
+    Navigate to the deployment details page to view a domain associated with an edge link. Sample domains are highlighted below.
+    
+    ![Edge Link's Domain](/images/v7/experimentation-cross-env-experiment-edge-link.png?width=650)
+    
+5.  Create an origin configuration within the source environment. Set the **Origin Hostname** and **Override Host Header** options to the domain identified in the previous step. 
+
+    Verify that the **Use the following SNI hint and enforce origin SAN/CN checking** option was autopopulated with the same domain.
+
+    Your origin configuration should look similar to the following illustration:
+
+    ![Source Environment's Origin Configuration](/images/v7/experimentation-cross-env-experiment-origin-configuration.png?width=650)
+
+6.  Create an experiment within the source environment. 
+
+    Configure one of the variants to set the origin to the one created in the previous step.
+    
+    ![Set Origin Feature](/images/v7/experimentation-cross-env-experiment-set-origin.png)
+
+    Your experiment should look similar to the following illustration:
+    
+    ![Cross-Environment Experiment](/images/v7/experimentation-cross-env-experiment.png?width=650)
+
+7.  Optional. Create a rule that sets the host requested by the client (`%{http_host}`) within the `x-forwarded-host` request header. You should then define custom logic within your origin server to handle requests that originate from the source environment.
+
+    ![Set Request Headers Feature](/images/v7/experimentation-cross-env-experiment-host.png)
+
+8.  Deploy your changes to the source environment. Wait until the deployment completes.
+9.  Request the source environment's edge link, which can be found on the deployment details page, to verify that traffic is proxied to your target environment.
+
+    <Callout type="info">
+    
+      The variant assigned to a client persists until cookies are cleared. This means that testing this experiment may require clearing your cookies various times or initiating various distinct private browsing sessions. 
+    
+    </Callout>
+
 ## Experimentation Metadata {/*experimentation-metadata*/}
 
 {{ PRODUCT }} provides experimentation metadata to the client and origin server.
@@ -223,7 +312,7 @@ This cookie assigns a value from 0 - 99 to a client. Once a client has been assi
 
 #### {{ HEADER_PREFIX }}-experiments-info Upstream Request Header {/*-experiments-info-upstream-request-header*/}
 
-The `{{ HEADER_PREFIX }}-experiments-info` request header tracks the variants assigned to a client. {{ PRODUCT }} adds this header to requests proxied through our network to the origin or the {{ PRODUCT }} Cloud. 
+The `{{ HEADER_PREFIX }}-experiments-info` request header tracks the variants assigned to a client. {{ PRODUCT }} adds this header to requests proxied through our network to the origin or the {{ PRODUCT }} cloud. 
 
 <Callout type="important">
 

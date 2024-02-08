@@ -99,7 +99,17 @@ router
         }
       }
     )
-  );
+  )
+
+  .match(/\/images\/(.*)/, ({serveStatic, addFeatures}) => {
+    serveStatic('public/images/$1', {});
+    addFeatures({
+      caching: {cache_key: {exclude_all_query_params: true}},
+      response: {
+        optimize_images: true,
+      },
+    });
+  });
 
 //  -- API docs --
 // proxy /docs/versions to the version list
@@ -207,20 +217,5 @@ redirects.forEach(([from, to, statusCode]) => {
     redirect(to, {statusCode: Number(statusCode || 301)})
   );
 });
-
-// error handling
-// router.catch(/^4.*/, {
-//   response: {
-//     set_status_code: 302,
-//   },
-//   headers: {
-//     set_response_headers: {
-//       location: '%{scheme}://%{host}/',
-//     },
-//   },
-//   url: {
-//     follow_redirects: true,
-//   },
-// });
 
 export default router;

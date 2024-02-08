@@ -306,7 +306,7 @@ To test the caching behavior locally, run your project with the [local cache opt
 
 ### Running on {{ PRODUCT_NAME }} {/* running-on */}
 
-Now that you're satisfied with your site in local development, it's time to deploy it to {{ PRODUCT_NAME }} Cloud. Once your code is deployed to {{ PRODUCT_NAME }} Cloud, you can formally evaluate site performance and QA functionality.
+Now that you're satisfied with your site in local development, it's time to deploy it to the {{ PRODUCT_NAME }} cloud. Once your code is deployed to the {{ PRODUCT_NAME }} cloud, you can formally evaluate site performance and QA functionality.
 
 Deploy the build to {{ PRODUCT_NAME }} by running the `{{ FULL_CLI_NAME }} deploy` command:
 
@@ -338,7 +338,7 @@ The third step (configuring your DNS) will be the crucial step that effectively 
 
 </Callout>
 
-[Learn more.](/guides/basics/hostnames_and_origins)
+[Learn more.](/guides/basics/serving_traffic)
 
 Before going live, you should use the [{{ PRODUCT_NAME }} Onboarding Discovery Worksheet](https://docs.google.com/spreadsheets/d/11T-Dqcv5a_bS6mVj-t9-qrTn5o-Qdn9CjXO3yEHS4zY/) to help you think through common use cases and concerns and ensure a smooth launch.
 

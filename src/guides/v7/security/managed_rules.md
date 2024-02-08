@@ -3,39 +3,42 @@ title: Managed Rules
 ---
 
 Use managed rules to:
--   Identify malicious traffic via predefined rules. A collection of
-    policies and rules is known as a [managed rule set](#managed-rule-set).
+-   Identify malicious traffic via predefined rules. A collection of policies and rules is known as a [managed rule set](#managed-rule-set).
 -   Prevent false positives by:
-    -   Defining cookies, request headers, and query string arguments
-        that should be ignored when performing a threat assessment. This
-        type of configuration is known as an [ignore list](#preventing-false-positives-ignore-list).
-    -   Identifying requests for which specific predefined rules will
-        not be applied. This type of configuration is known as a [rule
-        exception](#rule-exceptions).
+    -   Defining cookies, request headers, and query string arguments that should be ignored when performing a threat assessment. This type of configuration is known as an [ignore list](#preventing-false-positives-ignore-list).
+    -   Identifying requests for which specific predefined rules will not be applied. This type of configuration is known as a [rule exception](#rule-exceptions).
 
 ## Preventing False Positives (Ignore List) {/*preventing-false-positives-ignore-list*/}
 
-The characteristics of certain cookies, headers, and query string
-arguments may resemble malicious traffic. This may result in {{ PRODUCT_SECURITY }}
-incorrectly identifying a request as a threat. Avoid this situation by
-identifying the cookies, headers, and query string arguments that should
-be ignored when {{ PRODUCT_SECURITY }} performs threat assessment.
+The characteristics of certain cookies, headers, and query string arguments may resemble malicious traffic. This may result in {{ PRODUCT_SECURITY }} incorrectly identifying a request as a threat. Avoid this situation by identifying the cookies, headers, and query string arguments that should be ignored when {{ PRODUCT_SECURITY }} performs threat assessment.
 
 **Key information:**
 
--   An ignore list does not behave like a whitelist, accesslist, or
-    blacklist. Rather, it simply allows the system to ignore specific
-    cookies when assessing whether a request is malicious traffic.
+-   An ignore list does not behave like a whitelist, accesslist, or blacklist. Rather, it simply allows the system to ignore specific cookies when assessing whether a request is malicious traffic.
 -   Specify each unique cookie, header, or query string argument by typing it and then pressing 'ENTER'.
 -   Each value defines a regular expression.
 
     <Callout type="info">
 
-      By default, a regular expression defines a case-sensitive match. Use
-      syntax (e.g., `[a-zA-Z]`) to make it case-insensitive.
+      By default, a regular expression defines a case-sensitive match. Use syntax (e.g., `[a-zA-Z]`) to make it case-insensitive.
 
     </Callout>
 -   A maximum of 100 entries may be defined within a single ignore list.
+
+## Redacting Sensitive Data {/*redacting-sensitive-data*/}
+
+Standard security practices dictate that measures should be taken to prevent sensitive data (e.g., credit card information or passwords) from being passed as clear text from the client to your origin server. If this type of data is left unencrypted, then it will be logged by our system when an alert is triggered as a result of this data. If sensitive data cannot be encrypted or obfuscated, then you should disable logging for the desired [matched on variable](/guides/security/matched_on_variables).
+
+**To disable variable logging**
+
+1.  Navigate to the **Managed Rules** page.
+    {{ SECURITY_NAV }} **Managed Rules**.
+2.  Click on the desired managed rule.
+3.  From the **Settings** tab, click **+ Add New Redacted Variable**.
+4.  From the **Match On** option, type either the exact name or a regular expression for the [matched on variable](/guides/security/matched_on_variables) that will be redacted. Use a regular expression if you would like to match against multiple variables. 
+5.  Optional. From the **Replacement Name** option, assign a new name to the variable(s) identified in the previous step.
+6.  From the **Replacement Value** option, type the value that will be logged for the variable(s) identified in the previous step.
+7.  Click **Save**.
 
 ## File Size and Query String Limits (Advanced) {/*file-size-and-query-string-limits-advanced*/}
 
@@ -89,7 +92,7 @@ for valid requests.
 
 ## Managed Rule Set {/*managed-rule-set*/}
 
-The ECRS rule set, which is primarily based off of OWASP CRS 3.x rules,
+The ERS, which is primarily based off of OWASP CRS 4.x rules,
 identifies malicious traffic and provides generic protection against a
 variety of unknown vulnerabilities. This rule set does not solely rely
 on signatures to check for known vulnerabilities. Rather, it analyzes
@@ -123,7 +126,7 @@ below.
 
   Automatically verify that your web applications are compatible with our
   latest threat detection policies by enabling the **Automatically opt-in
-  to the latest ECRS ruleset** option. This mode is only
+  to the latest ERS ruleset** option. This mode is only
   recommended for auditing new rule sets. You should set your Security
   Application configuration's **Audit Managed Rule**
   option to a managed rule that has opted-in to automatic updates to the
@@ -133,7 +136,7 @@ below.
 
 </Callout>
 
-The ECRS rule set consists of a set of threat detection policies. Each
+The ERS rule set consists of a set of threat detection policies. Each
 threat detection policy contains a set of rules that define how threats
 to site traffic will be detected.
 
@@ -180,7 +183,7 @@ Identify a rule set's version by the date on which it was released.
 
 **Example:** 
 
-`ECRS **2022-12-14**`
+`ERS **2023-12-10**`
 
 <a id="rule-set-updates"></a>
 
@@ -215,15 +218,7 @@ provided below.
 
 </Callout>
 
-<Callout type="info">
-
-  The ability to monitor outbound traffic is currently unsupported.
-  Therefore, none of the following policies are applicable to outbound
-  traffic.
-
-</Callout>
-
-#### ECRS Policies {/*ecrs-policies*/}
+#### ERS Policies {/*ers-policies*/}
 
 <Callout type="info">
 
@@ -234,6 +229,8 @@ being categorized as a threat. Anomaly mode means that a threshold must
 be met before a request will be considered a threat.
 
 </Callout>
+
+Inbound policies:
 
 -   **Adv CPanel:** Detects attacks that target sites that leverage cPanel.
 -   **Adv Drupal:** Detects attacks that target Drupal CMS installations.
@@ -255,6 +252,18 @@ be met before a request will be considered a threat.
 -   **Session Fixation:** Detects session fixation attack by referrer and cookie values.
 -   **SQL Injection (SQLi):** Detects a variety of different methods for initiating a SQL injection (SQLi) attack.
 -   **TW IP Reputation:** Detects requests that originate from blacklisted IP addresses.
+
+Outbound policies:
+-   **Response Data Leakages:** Detects general data leakage.
+-   **Response Data Leakages - SQL:** Detects leakage from responses that contain data from a database that leverages SQL.
+-   **Response Data Leakages - PHP:** Detects leakage from responses generated from PHP.
+-   **Response Data Leakages - IIS:** Detects leakage from responses served by an IIS server.
+
+<Callout type="info">
+
+  The ability to monitor outbound traffic requires {{ PRODUCT_SECURITY }} Premier.
+  
+</Callout>
 
 ### Rule Exceptions {/*rule-exceptions*/}
 
@@ -307,107 +316,72 @@ You may create, modify, and delete managed rules.
 1.  Navigate to the **Managed Rules** page.
     {{ SECURITY_NAV }} **Managed Rules**.
 2.  Click **+ New Managed Ruleset**.
-3.  In the **Name** option, type the unique name by which this
-    managed rule will be identified. This name should be sufficiently
-    descriptive to identify it when setting up a Security Application
-    configuration.
-4.  In the **Response Header Name** option, verify the name of
-    the response header that will be included with blocked requests.
-    This name may only consist of alphanumeric characters and dashes.
-5.  Determine whether {{ PRODUCT_SECURITY }} will [ignore specific cookies, request
-    headers, or query string arguments](#preventing-false-positives-ignore-list) when assessing
-    whether a request is a threat.
-    1.  From the **Ignore List** section, choose to ignore
-        specific cookies, request headers, or query string arguments.
+3.  In the **Name** option, type the unique name by which this managed rule will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
+4.  In the **Response Header Name** option, verify the name of the response header that will be included with blocked requests. This name may only consist of alphanumeric characters and dashes.
+5.  Determine whether {{ PRODUCT_SECURITY }} will [ignore specific cookies, request headers, or query string arguments](#preventing-false-positives-ignore-list) when assessing whether a request is a threat.
+    1.  From the **Ignore List** section, choose to ignore specific cookies, request headers, or query string arguments.
     2.  Add a cookie, request header, or query string argument that should be ignored by typing it and then pressing 'ENTER'.
     3.  Repeat the above steps if you need to create additional ignore lists.
 6.  **Advanced Users Only**
 
-    Customize [file size and query string
-    limits](#file-size-and-query-string-limits-advanced) by expanding **More
-    Details** and then making the necessary adjustments.
-7.  Enable the desired threat detection rules and define the threat
-    identification threshold.
-    1.  Click the **Policies** tab. In the **Ruleset ERS**
-        option, select the type and date for the rule set that may be
-        used to monitor traffic for threats. The list of policies shown below this section will be automatically refreshed to reflect the selected rule set.
+    Customize [file size and query string limits](#file-size-and-query-string-limits-advanced) by expanding **More Details** and then making the necessary adjustments.
+7.  Enable the desired threat detection rules and define the threat identification threshold.
+    1.  Click the **Inbound Policies** tab. In the **Ruleset ERS** option, select the type and date for the rule set that may be used to monitor traffic for threats. The list of policies shown below this section will be automatically refreshed to reflect the selected rule set.
 
         <Callout type="tip">
 
-          Automatically verify that your web applications are compatible
-          with our latest threat detection policies by enabling the
-          **Automatically opt-in to the latest ECRS ruleset**
-          option. This mode is only recommended for auditing new rule
-          sets. You should set your Security Application
-          configuration's **Audit Managed Rule** option to a
-          managed rule that has opted-in to automatic updates to the
-          latest rule set. This type of setup provides you with the
-          opportunity to minimize false positives before enforcing our
-          latest threat detection policies on your production traffic.
+          Automatically verify that your web applications are compatible with our latest threat detection policies by enabling the **Automatically opt-in to the latest ruleset** option. This mode is only recommended for auditing new rule sets. You should set your Security Application configuration's **Audit Managed Rule** option to a managed rule that has opted-in to automatic updates to the latest rule set. This type of setup provides you with the opportunity to minimize false positives before enforcing our latest threat detection policies on your production traffic.
 
         </Callout>
 
-    2.  Set the **Threshold** option to a level (e.g., 5) that
-        balances security with risk tolerance. Requests that are scored
-        at or higher than the specified value will be identified as
-        malicious traffic.
+    2.  Set the **Threshold** option to a level (e.g., 5) that balances security with risk tolerance. Requests that are scored at or higher than the specified value will be identified as malicious traffic.
 
         [Learn more.](/guides/security/waf#managed-rule-violations)
 
         <Callout type="info">
 
-          This option only applies to policies other than Custom EC Rules
-          and policies that start with **Adv**.
+          This option only applies to policies other than Custom EC Rules and policies that start with **Adv**.
 
         </Callout>
 
-    3.  Set the **Paranoia Level** option to a level (e.g., `1`)
-        that balances security with risk tolerance.
+    3.  Set the **Paranoia Level** option to a level (e.g., `1`) that balances security with risk tolerance.
 
         <Callout type="tip">
 
-          This is an advanced setting. The recommended paranoia level
-          is 1. Setting this option to a higher value will increase the
-          number of false positives.
+          This is an advanced setting. The recommended paranoia level is 1. Setting this option to a higher value will increase the number of false positives.
 
         </Callout>
 
          [Learn more.](/guides/security/waf#managed-rule-violations)
-    4.  Review all enabled policies and rules to ensure that the
-        legitimate traffic is not targeted by mistake.
+    4.  Review all enabled policies and rules to ensure that the legitimate traffic is not targeted by mistake.
 
     <a id="create-rule-exception"></a>
 
-8.  Optional. Add one or more rule exceptions.
+8.  {{ PRODUCT_SECURITY }} Premier only. Optional. Prevent data leakage in the response sent to the client by clicking the **Outbound Policies** tab and then enabling the desired outbound rules.
+9.  Optional. Add one or more rule exceptions.
     1.  Click the **Exceptions** tab.
     2.  Click **+ Add New Condition**.
-    3.  From the **Parameter** option, select whether requests
-        will be identified by argument (i.e., query string argument or
-        request body parameter), cookie, or request header.
-    4.  From the **Argument | Cookie | Header Name** option,
-        type one of the following values:
-        -   The exact name of the query string argument / request body
-            parameter, cookie, or request header by which requests will
-            be identified.
-        -   A regular expression pattern for the query string argument /
-            request body parameter, cookie, or request header by which
-            requests will be identified. Mark the **Regex?**
-            option to indicate that the specified value should be
-            interpreted as a regular expression.
-    5.  In the **Applied Rule ID's** option, type the ID for
-        a rule that will be ignored when processing the requests
+    3.  From the **Parameter** option, select whether requests will be identified by argument (i.e., query string argument or request body parameter), cookie, or request header.
+    4.  From the **Argument | Cookie | Header Name** option, type one of the following values:
+        -   The exact name of the query string argument / request body parameter, cookie, or request header by which requests will be identified.
+        -   A regular expression pattern for the query string argument / request body parameter, cookie, or request header by which requests will be identified. Mark the **Regex?** option to indicate that the specified value should be interpreted as a regular expression.
+    5.  In the **Applied Rule ID's** option, type the ID for a rule that will be ignored when processing the requests
         identified in steps 8.3 and 8.4 and then press 'ENTER'. Repeat this step as needed.
-9.  Click **Save**.
+10.  Click **Save**.
+
+<Callout type="important">
+
+  If sensitive data is passed as clear text and cannot be encrypted, then you should redact the matched on variables that may potentially match on it.
+  
+  [Learn how to redact variables.](#redacting-sensitive-data)
+
+</Callout>
 
 **To modify a managed rule**
 
 <Callout type="tip">
 
-  A common reason for updating a managed rule is to reduce false positives
-  by [adding a rule exception](#create-rule-exception). A rule exception identifies one
-  or more rules that should be ignored for a specific set of requests.
-  Typically, the criteria for a rule exception are identified through analysis within the
-  **Threats** tab of the **Security** dashboard.
+  A common reason for updating a managed rule is to reduce false positives by [adding a rule exception](#create-rule-exception). A rule exception identifies one or more rules that should be ignored for a specific set of requests. Typically, the criteria for a rule exception are identified through analysis within the **Threats** tab of the **Security** dashboard.
 
 </Callout>
 
@@ -421,17 +395,15 @@ You may create, modify, and delete managed rules.
 
 <Callout type="important">
 
-  You cannot delete a managed rule that is associated with a Security
-  Application configuration. Please either modify the Security
-  Application configuration to point to a different managed rule or
-  delete that Security Application configuration.
+  You cannot delete a managed rule that is associated with a Security Application configuration. Please either modify the Security Application configuration to point to a different managed rule or delete that Security Application configuration.
 
 </Callout>
 
-1.  Check your Security Application configurations to verify
-    that the desired managed rule is not in use.
+1.  Check your Security Application configurations to verify that the desired managed rule is not in use.
 2.  Navigate to the **Managed Rules** page.
     {{ SECURITY_NAV }} **Managed Rules**.
 3.  Click on the desired managed rule set.
 4.  Click **Delete**.
 5.  Click **Confirm**.
+
+{{ security_version_control.md }}

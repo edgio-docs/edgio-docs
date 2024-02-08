@@ -29,14 +29,14 @@ npx create-react-app my-app
 Then, in the root folder of your project, run:
 
 ```bash
-{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }} --connector={{ PACKAGE_NAME }}/react-cra
+{{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
 ```
 
 This will automatically add all of the required dependencies and files to your project. These include:
 
 - The `{{ PACKAGE_NAME }}/core` package
 - The `{{ PACKAGE_NAME }}/cli` package
-- The `{{ PACKAGE_NAME }}/react-cra` package
+- The `{{ PACKAGE_NAME }}/connectors` package
 - `{{ CONFIG_FILE }}` - Contains various configuration options for {{ PRODUCT }}.
 - `routes.js` - A default routes file that sends all requests to the React. Update this file to add caching or proxy some URLs to a different origin.
 
@@ -48,9 +48,9 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 // This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 import { Router } from '@edgio/core'
-import { reactCRARoutes } from '@edgio/react-cra'
+import { connectorRoutes } from '@edgio/connectors'
 
-export default new Router().use(reactCRARoutes)
+export default new Router().use(connectorRoutes)
 ```
 
 ## Running Locally {/*running-locally*/}

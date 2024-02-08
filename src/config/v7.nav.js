@@ -1,3 +1,8 @@
+const separator = {
+  title: '',
+  path: '',
+};
+
 const nav = {
   title: 'guides',
   path: '/guides',
@@ -21,12 +26,20 @@ const nav = {
           path: 'basics/environments',
         },
         {
-          title: 'Hostnames and Origins',
-          path: 'basics/hostnames_and_origins',
+          title: 'Hostnames',
+          path: 'basics/hostnames',
+        },
+        {
+          title: 'Origin Configurations',
+          path: 'basics/origins',
         },
         {
           title: 'Deployments',
           path: 'basics/deployments',
+        },
+        {
+          title: 'Serving Traffic through Our Network',
+          path: 'basics/serving_traffic',
         },
         {
           title: 'Collaboration',
@@ -55,6 +68,15 @@ const nav = {
           title: 'Rules',
           path: 'performance/rules',
           routes: [
+            {
+              title: 'Request Matching Scenarios',
+              path: 'performance/rules/request_matching_scenarios',
+            },
+            {
+              title: 'Feature Scenarios',
+              path: 'performance/rules/feature_scenarios',
+            },
+            separator,
             {
               title: 'Conditions',
               path: 'performance/rules/conditions',
@@ -93,10 +115,7 @@ const nav = {
               title: 'Error Handling',
               path: 'performance/cdn_as_code/error_handling',
             },
-            {
-              title: '',
-              path: '',
-            },
+            separator,
             {
               title: 'edgio.config.js Configuration',
               path: 'performance/cdn_as_code/edgio_config',
@@ -123,6 +142,11 @@ const nav = {
               title: 'Cache Key',
               path: 'performance/caching/cache_key',
             },
+            separator,
+            {
+              title: 'Cache Status Codes',
+              path: 'performance/caching/cache_status_codes',
+            },
           ],
         },
         // {
@@ -132,6 +156,20 @@ const nav = {
         {
           title: 'Predictive Prefetch',
           path: 'performance/prefetching',
+          routes: [
+            {
+              title: 'Prefetching with a Script Tag',
+              path: 'performance/prefetching/prefetching_script_tag',
+            },
+            {
+              title: 'Prefetching with Edgio Sites',
+              path: 'performance/prefetching/prefetching_edgio_sites',
+            },
+          ],
+        },
+        {
+          title: 'Redirects',
+          path: 'performance/redirects',
         },
         {
           title: 'Traffic Splitting',
@@ -175,14 +213,7 @@ const nav = {
           title: 'Traditional Sites',
           path: 'performance/traditional_sites',
         },
-        {
-          title: 'Third-Party CDNs',
-          path: 'performance/third_party_cdns',
-        },
-        {
-          title: '',
-          path: '',
-        },
+        separator,
         {
           title: 'Compression',
           path: 'performance/compression',
@@ -195,10 +226,7 @@ const nav = {
           title: 'Response',
           path: 'performance/response',
         },
-        {
-          title: '',
-          path: '',
-        },
+        separator,
         {
           title: 'Troubleshooting',
           path: 'performance/troubleshooting',
@@ -211,8 +239,70 @@ const nav = {
     },
     {
       title: 'Edge Functions',
-      path: 'edge-functions',
+      path: 'edge_functions',
       icon: 'edge-functions',
+      routes: [
+        {
+          title: 'Caching',
+          path: 'edge_functions/caching',
+        },
+        {
+          title: 'Fetching from Cloud Functions',
+          path: 'edge_functions/fetch_cloud_functions',
+        },
+        {
+          title: 'HtmlTransformer',
+          path: 'edge_functions/htmltransformer',
+        },
+        separator,
+        {
+          title: 'Examples',
+          path: 'edge_functions/examples',
+          routes: [
+            {
+              title: 'AWS Request Signing',
+              path: 'edge_functions/examples/aws_request_signing',
+            },
+            {
+              title: 'Basic Request Signing',
+              path: 'edge_functions/examples/basic_request_signing',
+            },
+            {
+              title: 'Content Stitching',
+              path: 'edge_functions/examples/content_stitching',
+            },
+            {
+              title: 'Header Manipulation',
+              path: 'edge_functions/examples/header_manipulation',
+            },
+            {
+              title: 'JSON Responses',
+              path: 'edge_functions/examples/json_responses',
+            },
+            {
+              title: 'JWT Verification',
+              path: 'edge_functions/examples/jwt_verification',
+            },
+            {
+              title: 'Redirects',
+              path: 'edge_functions/examples/redirects',
+            },
+            {
+              title: 'Waiting Room',
+              path: 'edge_functions/examples/waiting_room',
+            },
+          ],
+        },
+        separator,
+        {
+          title: 'Migrating from Cloudflare Workers',
+          path: 'edge_functions/migrating_cloudflare_workers',
+        },
+        {
+          title: 'Migrating from CloudFront Functions',
+          path: 'edge_functions/migrating_cloudfront_functions',
+        },
+      ],
     },
     {
       title: 'Experimentation',
@@ -236,10 +326,7 @@ const nav = {
           title: 'TLS Certificates',
           path: 'security/tls_certificates',
         },
-        {
-          title: '',
-          path: '',
-        },
+        separator,
         {
           title: 'Web Application Firewall (WAF)',
           path: 'security/waf',
@@ -285,6 +372,10 @@ const nav = {
           path: 'security/recent_event_logs',
         },
         {
+          title: 'Matched On Variables',
+          path: 'security/matched_on_variables',
+        },
+        {
           title: 'Response to Client',
           path: 'security/response_to_client',
         },
@@ -308,85 +399,17 @@ const nav = {
               path: 'sites_frameworks/getting_started/astro',
             },
             {
-              title: 'Brunch',
-              path: 'sites_frameworks/getting_started/brunch',
-            },
-            {
               title: 'Node.js Connector',
               path: 'sites_frameworks/getting_started/nodejs_connector',
-            },
-            {
-              title: 'Docusaurus',
-              path: 'sites_frameworks/getting_started/docusaurus',
-            },
-            {
-              title: 'Dojo',
-              path: 'sites_frameworks/getting_started/dojo',
-            },
-            {
-              title: 'Eleventy',
-              path: 'sites_frameworks/getting_started/eleventy',
-            },
-            {
-              title: 'Ember.js',
-              path: 'sites_frameworks/getting_started/ember',
-            },
-            {
-              title: 'Ember Fastboot',
-              path: 'sites_frameworks/getting_started/ember_fastboot',
             },
             {
               title: 'Express',
               path: 'sites_frameworks/getting_started/express',
             },
             {
-              title: 'Frontity',
-              path: 'sites_frameworks/getting_started/frontity',
-            },
-            {
-              title: 'Gatsby',
-              path: 'sites_frameworks/getting_started/gatsby',
-            },
-            {
-              title: 'Gridsome',
-              path: 'sites_frameworks/getting_started/gridsome',
-            },
-            {
-              title: 'Hexo',
-              path: 'sites_frameworks/getting_started/hexo',
-            },
-            {
-              title: 'Hugo',
-              path: 'sites_frameworks/getting_started/hugo',
-            },
-            {
-              title: 'Ionic React',
-              path: 'sites_frameworks/getting_started/ionic_react',
-            },
-            {
-              title: 'Ionic Vue',
-              path: 'sites_frameworks/getting_started/ionic_vue',
-            },
-            {
-              title: 'Jekyll',
-              path: 'sites_frameworks/getting_started/jekyll',
-            },
-            // {
-            //   title: 'Lit',
-            //   path: 'sites_frameworks/getting_started/lit',
-            // },
-            {
-              title: 'MkDocs',
-              path: 'sites_frameworks/getting_started/mkdocs',
-            },
-            {
               title: 'Next.js',
               path: 'sites_frameworks/getting_started/next',
             },
-            // {
-            //   title: 'Next.js Commerce',
-            //   path: 'sites_frameworks/getting_started/next_commerce',
-            // },
             {
               title: 'Nuxt.js',
               path: 'sites_frameworks/getting_started/nuxt',
@@ -396,92 +419,50 @@ const nav = {
               path: 'sites_frameworks/getting_started/nuxt3',
             },
             {
-              title: 'Preact',
-              path: 'sites_frameworks/getting_started/preact',
-            },
-            {
-              title: 'Razzle',
-              path: 'sites_frameworks/getting_started/razzle',
-            },
-            {
               title: 'React',
               path: 'sites_frameworks/getting_started/react',
-            },
-            {
-              title: 'React Static',
-              path: 'sites_frameworks/getting_started/react_static',
-            },
-            // {
-            //   title: 'React Storefront',
-            //   path: 'sites_frameworks/getting_started/react-storefront',
-            // },
-            // {
-            //   title: 'RedwoodJS',
-            //   path: 'sites_frameworks/getting_started/redwoodjs',
-            // },
-            {
-              title: 'Remix',
-              path: 'sites_frameworks/getting_started/remix',
-            },
-            {
-              title: 'Saber',
-              path: 'sites_frameworks/getting_started/saber',
-            },
-            {
-              title: 'Sanity',
-              path: 'sites_frameworks/getting_started/sanity',
-            },
-            // {
-            //   title: 'Sapper',
-            //   path: 'sites_frameworks/getting_started/sapper',
-            // },
-            // {
-            //   title: 'Scully',
-            //   path: 'sites_frameworks/getting_started/scully',
-            // },
-            {
-              title: 'SolidJS',
-              path: 'sites_frameworks/getting_started/solid',
-            },
-            // {
-            //   title: 'Spartacus',
-            //   path: 'sites_frameworks/getting_started/spartacus',
-            // },
-            {
-              title: 'Static HTML/JS',
-              path: 'sites_frameworks/getting_started/static_sites',
-            },
-            {
-              title: 'Stencil',
-              path: 'sites_frameworks/getting_started/stencil',
             },
             {
               title: 'SvelteKit',
               path: 'sites_frameworks/getting_started/sveltekit',
             },
-            // {
-            //   title: 'UmiJS',
-            //   path: 'sites_frameworks/getting_started/umijs',
-            // },
-            {
-              title: 'VitePress',
-              path: 'sites_frameworks/getting_started/vitepress',
-            },
-            // {
-            //   title: 'Vue Storefront',
-            //   path: 'sites_frameworks/getting_started/vsf',
-            // },
             {
               title: 'Vue.js',
               path: 'sites_frameworks/getting_started/vue',
             },
+          ],
+        },
+        {
+          title: 'Legacy Connectors',
+          path: 'sites_frameworks/legacy_connectors',
+          routes: [
             {
-              title: 'VuePress',
-              path: 'sites_frameworks/getting_started/vuepress',
+              title: 'Ember Fastboot',
+              path: 'sites_frameworks/legacy_connectors/ember_fastboot',
             },
             {
-              title: 'Zola',
-              path: 'sites_frameworks/getting_started/zola',
+              title: 'Frontity',
+              path: 'sites_frameworks/legacy_connectors/frontity',
+            },
+            {
+              title: 'Gatsby',
+              path: 'sites_frameworks/legacy_connectors/gatsby',
+            },
+            {
+              title: 'Hexo',
+              path: 'sites_frameworks/legacy_connectors/hexo',
+            },
+            {
+              title: 'Mkdocs',
+              path: 'sites_frameworks/legacy_connectors/mkdocs',
+            },
+            {
+              title: 'Razzle',
+              path: 'sites_frameworks/legacy_connectors/razzle',
+            },
+            {
+              title: 'Sanity',
+              path: 'sites_frameworks/legacy_connectors/sanity',
             },
           ],
         },
@@ -548,10 +529,7 @@ const nav = {
               title: 'Web Server Log Delivery',
               path: 'logs/rtld/web_server_log_delivery',
             },
-            {
-              title: '',
-              path: '',
-            },
+            separator,
             {
               title: 'Filtering Log Data',
               path: 'logs/rtld/filtering_log_data',
@@ -568,10 +546,7 @@ const nav = {
               title: 'Log Data Verification',
               path: 'logs/rtld/log_data_verification',
             },
-            {
-              title: '',
-              path: '',
-            },
+            separator,
             {
               title: 'Log Fields (RTLD CDN)',
               path: 'logs/rtld/log_fields_rtld_cdn',
@@ -614,10 +589,7 @@ const nav = {
               path: '/rest_api/',
               external: true,
             },
-            {
-              title: '',
-              path: '',
-            },
+            separator,
             {
               title: 'Legacy Purge (Clear-Cache)',
               path: 'develop/rest_api/cache_purge',
@@ -659,10 +631,7 @@ const nav = {
           title: 'Response Headers',
           path: '/guides/performance/response#response-headers',
         },
-        {
-          title: '',
-          path: '',
-        },
+        separator,
         {
           title: 'Rules - Match Conditions',
           path: '/guides/performance/rules/conditions',
@@ -679,10 +648,7 @@ const nav = {
           title: 'Rules - Operators',
           path: '/guides/performance/rules/operators',
         },
-        {
-          title: '',
-          path: '',
-        },
+        separator,
         {
           title: 'edgio.config.js Configuration',
           path: '/guides/performance/cdn_as_code/edgio_config',
@@ -701,10 +667,7 @@ const nav = {
           title: 'CLI',
           path: '/guides/develop/cli#commands',
         },
-        {
-          title: '',
-          path: '',
-        },
+        separator,
         {
           title: 'REST API Reference',
           path: '/rest_api/',
@@ -714,10 +677,7 @@ const nav = {
           title: 'Legacy Purge API',
           path: '/guides/develop/rest_api/cache_purge',
         },
-        {
-          title: '',
-          path: '',
-        },
+        separator,
         {
           title: 'RTLD CDN',
           path: '/guides/logs/rtld/log_fields_rtld_cdn',

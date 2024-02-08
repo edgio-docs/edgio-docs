@@ -15,6 +15,9 @@ properties:
       - 10
       - 60
       - 300
+      - 600
+      - 900
+      - 1800
   url:
     type: string
     description: |

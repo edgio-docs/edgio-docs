@@ -18,6 +18,7 @@ If you encounter unexpected behavior or an issue, you should:
 1.  Verify that all of your traffic is being served through the [most recently deployed environment](#environment-version). 
 2.  Verify that the only [desired set of rules are being applied](#applied-rules) to the request experiencing unexpected behavior.
 3.  [Test your site using a permalink.](#test-without-cached-content) This ensures that the unexpected behavior is not due to cached content. 
+4.  [Review Edge Insights data.](#review-edge-insights-data) 
 
 #### Environment Version {/*environment-version*/}
 
@@ -28,7 +29,7 @@ Delays in configuration propagation may cause {{ PRODUCT }} to serve some reques
     
 For example, the {{ CHROME_EXTENSION }}'s **Environment** column should report `v3` for requests to a website powered by the following production environment:
     
-![Sample deployments](/images/v7/performance/deployments-cropped.png)
+![Sample deployments](/images/v7/performance/deployments-cropped.png?width=450)
 
 #### Applied Rules {/*applied-rules*/}
 
@@ -46,7 +47,7 @@ Verify that the desired set of rules are being applied to the request by perform
     
 **Key information:**
 
--   Click on the `Show Rule Numbers` link to display rule numbers next to each rule.    
+-   Click on the `Show Rule Numbers` link to display rule numbers next to each rule.
 -   Rules use zero-based numbering.
 -   Use the above procedure even if you are using CDN-as-code. 
     
@@ -57,6 +58,39 @@ Verify that the desired set of rules are being applied to the request by perform
 Use a permalink to ensure that {{ PRODUCT }} does not serve cached content when testing your website. A permalink forces {{ PRODUCT }} to proxy your request to either the {{ PRODUCT }} cloud or your origin. Although this may degrade performance, it is useful when verifying functionality. 
 
 A permalink is assigned to each deployment. View a deployment's permalink by navigating to the **Deployments** page for the desired environment and then clicking on the desired deployment version. 
+
+#### Review Edge Insights Data {/*review-edge-insights-data*/}
+
+Edge Insights provides near real-time data for an environment's traffic over the last 6 hours through the Access Logs data source. 
+
+-   Review the timeline graph to identify issues and analyze performance. Sample use cases are provided below.
+    -   Identify sudden spikes or drops in traffic. 
+
+        Once you have identified a questionable traffic spike, determine whether it is legitimate traffic by reviewing key metrics, such as the country of origin, URL path, and query strings.
+
+    -   Identify sudden spikes in 4xx and 5xx traffic. 
+        1.  From the **Top Results** section, verify that `HTTP Status Code` has been selected for one of the pie charts. 
+        2.  From the **Timelines** section, click the **HTTP Status Code** source.
+            ![Timelines - HTTP Status Code source](/images/v7/performance/edge-insights-source-http-status-code.png)
+        3.  Once you have identified a spike, [analyze the corresponding log data](#status-codes) to gain insight into a specific status code.
+    -   Identify caching trends.
+        1.  From the **Top Results** section, verify that `Cache Status` has been selected for one of the pie charts. 
+        2.  From the **Timelines** section, click the **Cache Status** source.
+-   Review log data to troubleshoot an issue. 
+
+    For example, if you are able to reproduce an issue on your local machine and require more information than is available through the {{ CHROME_EXTENSION }}, then you may view log data for these requests from within Edge Insights. One method for analyzing these requests is to: 
+
+    1.  Configure a catch-all rule to set a response header to the request's ID through the `%{http_x_ec_uuid}` feature variable. 
+        ![Add Response Header feature](/images/v7/performance/rules-add-response-header-x-request-id.png?width=450)
+    2.  Find out the ID corresponding to a request issued from your local machine. 
+        1.  From the desired browser, open developer tools. 
+        2.  From the browser, issue a request.
+        3.  From within developer tools, inspect the request to find out the request's ID.
+            ![Chrome Developer Tools - Headers](/images/v7/performance/chrome-dev-tools-x-request-id.png)
+    3.  [Filter Edge Insights](/guides/performance/observability/edge_insights#manual-filtering) by that ID (i.e., `Event ID = <EVENT ID>`). 
+        ![Filtering by Event ID](/images/v7/performance/edge-insights-filters-event-id.png)
+    5.  From the **Logs** section, click on the log entry to view the log fields associated with the request.
+        ![Log entry](/images/v7/performance/edge-insights-logs.png)
 
 ## Caching {/*caching*/}
 
@@ -102,7 +136,7 @@ Review the following items to find out why a request resulted in a cache miss.
 
     -   **Rules:** Create or modify a rule that includes the  [Cache Key](/guides/performance/rules/features#cache-key) feature. Configure this feature's **Query Parameters** option to either exclude all query string parameters or to only include specific parameters.
     
-        ![Cache Key feature set to exclude all query string parameters](/images/v7/performance/cache-key-exclude-all-qs.png)
+        ![Cache Key feature set to exclude all query string parameters](/images/v7/performance/cache-key-exclude-all-qs.png?width=450)
 
     -   **CDN-as-Code:**
 
@@ -144,9 +178,9 @@ Assess overall prefetching performance by checking the **Prefetches** statistic 
 
 ![Prefetches](/images/v7/performance/developer-tools-prefetches.png)
 
-By default, you may only prefetch content that is cached on the POP closest to the user and that still has a valid TTL. By default, {{ PRODUCT }} responds with a `412 Precondition Failed` for prefetch requests that result in a cache miss. This default configuration ensures that your origin servers do not experience additional load due to predictive prefetching. 
+By default, you may only prefetch content that is cached on the POP closest to the user and that still has a valid TTL. By default, {{ PRODUCT }} responds with a [412 Precondition Failed status code](#412-precondition-failed-status-code) for prefetch requests that result in a cache miss. This default configuration ensures that your origin servers do not experience additional load due to predictive prefetching. 
 
-Identify prefetch requests through the following query string parameter: `edgio_prefetch=1`.
+Identify prefetch requests through the following query string parameter: `{{ PRODUCT_NAME_LOWER }}_dt_pf=1&{{ PRODUCT_NAME_LOWER }}_prefetch=1`.
 
 **Example:** `https://cdn.example.com/css/styles.css?edgio_dt_pf=1&edgio_prefetch=1`
 
@@ -162,9 +196,6 @@ Gain insight into why {{ PRODUCT }} returned a specific status code by filtering
 6.  Scroll down to the **Logs** section.
 7.  Inspect each request to gain insight into why this status code is occurring.
 
-    -   `404 Not Found`: Check the `url` and the `referer` field to identify the problematic URL and the URL from which the request originated.
-    -   `502 Bad Gateway`: Check whether the request contains `proxy_hard_error` set to `HARD_ERR_502_SSL_CONNECT_ERROR` to identify a [SNI issue](#502-bad-gateway-status-code). 
-
     <Callout type="tip">
 
       Filter for a specific field by typing the desired name in the upper-right hand search bar.
@@ -174,6 +205,7 @@ Gain insight into why {{ PRODUCT }} returned a specific status code by filtering
 Troubleshoot the following common status codes:
 
 -   [404 Not Found](#404-not-found-status-code)
+-   [412 Precondition Failed](#412-precondition-failed-status-code)
 -   [502 Bad Gateway](#502-bad-gateway-status-code)
 -   [531 Project Upstream Connection Error](#531-project-upstream-connection-error-status-code)
 -   [539 Project Timeout](#troubleshooting-539-status-codes)
@@ -185,7 +217,60 @@ Troubleshoot the following common status codes:
 Troubleshoot this status code by performing the following steps:
 
 -   Use Edge Insights, [as described above](#status-codes), to identify the URL and the referrer from which the request originated. Check the `url` and the `referer` field, respectively.
--   If the resource exists and you are using CDN-as-code, use the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer_tools_chrome_extension) to check whether the [request matches a rule](#applied-rules) in your {{ ROUTES_FILE }}.
+-   If the resource exists, use the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer_tools_chrome_extension) to find out which [rules were applied to the request](#applied-rules). Review those rules to identify how the request is being manipulated. 
+
+### 412 Precondition Failed Status Code {/*412-precondition-failed-status-code*/}
+
+By default, {{ PRODUCT }} will only serve prefetch requests from the edge cache. If a request cannot be served from the cache, a `412 Precondition Failed` status code is returned. This protects your origin servers from additional traffic associated with prefetching. 
+
+Perform the following steps to reduce excessive `412 Precondition Failed` responses:
+
+1.  Ensure that the URLs being prefetched are similar to those fetched during page navigation. 
+
+    Prefetch URLs contain the following query string parameters: `{{ PRODUCT_NAME_LOWER }}_dt_pf=1&{{ PRODUCT_NAME_LOWER }}_prefetch=1`. These parameters are automatically excluded from the cache key. Verify that this is the only difference between URLs that are prefetched and those that are requested through standard page navigation.
+    
+2.  Apply the [Stale While Revalidate (stale_while_revalidate) feature](/guides/performance/rules/features#stale-while-revalidate) to URLs that will be prefetched. 
+
+    -   **Rules Example:**
+
+        ![Sample rule with the Stale While Revalidate feature](/images/v7/performance/troubleshooting-412-stale-while-revalidate.png?width=450)
+
+    -   **CDN-as-Code Example:**
+
+        ```js filename="routes.js"
+        router.get('/p/:productId', {
+          caching: {
+            max_age: '1h',
+            service_worker_max_age: '1h',
+            stale_while_revalidate: '1d', // this way stale items can still be prefetched
+          }
+        });
+        ```
+
+3. Consider increasing the [Set Max Age (max_age) feature](/guides/performance/rules/features#set-max-age). Short time to live (TTL) intervals generate more prefetch failures.
+4.  Prefetch cache misses. 
+
+    <Callout type="warning">
+
+      Use this capability with caution since it may significantly increase the traffic to your origin or API servers.
+
+    </Callout>
+
+    -   **HTML Script Tag Example:** 
+
+        ```html
+        <script src="/__edgio__/prefetch/install.js" data-include-cache-misses="true" defer></script>
+        ```
+
+    -   **{{ PRODUCT }} {{ PRODUCT_PLATFORM }} Example:** 
+
+        ```js filename="app.js"
+        import install from '{{ PACKAGE_NAME }}/prefetch/window/install';
+        
+        // Call the following once when the page loads to allow prefetch requests to be served when responses
+        // aren't available in the edge cache:
+        install({includeCacheMisses: true});
+        ```
 
 ### 502 Bad Gateway Status Code {/*502-bad-gateway-status-code*/}
 
@@ -197,16 +282,26 @@ Troubleshoot this status code by performing the following steps:
     
     `https://origin-1.example.com/`
 
--   Use Edge Insights to check whether you need to update your origin configuration's SNI settings.
+-   Check whether your site requires SNI by reviewing your server's configuration or log data. 
 
-    1.  Filter Edge Insights, [as described above](#status-codes) by the `502 Bad Gateway` status code. 
-    2.  Scroll down to the **Logs** section and view a request. 
-    3.  Check whether the request contains `proxy_hard_error` set to `HARD_ERR_502_SSL_CONNECT_ERROR`. 
+    Alternatively, there are online tools (e.g., [Qualys SSL Labs](https://www.ssllabs.com/ssltest/)) that allow you to check whether your site requires SNI. Submit your origin's hostname to start the test. Once the test is complete, check whether your server requires SNI. For example, SSL Labs returns the following message within the summary section: `This site works only in browsers with SNI support.`
+
+    Your origin configuration setup varies according to whether your site requires SNI.
+
+    -   **SNI:** If your site requires SNI, then you should enable your origin configuration's **Use SNI** option and verify that the SNI hint is set to a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN).
     
-    If you see this error, then you need to enable your origin configuration's **Use SNI** option and set the SNI hint to a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN).
+    <Callout type="info">
+    
+      If your site requires SNI and your origin configuration is misconfigured, then Edge Insights will return a `proxy_hard_error` field set to `HARD_ERR_502_SSL_CONNECT_ERROR`. A quick way of checking for this condition is to [filter Edge Insights](#status-codes) by the `502 Bad Gateway` status code and then viewing a request from within the **Logs** section.
+    
+    </Callout>
+    
+    -   **No SNI:** If your site does not require SNI, then you should disable your origin configuration's **Use SNI** option and remove the SNI hint.
 
 -   If the client's `Host` header does not match a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN), then you will need to update the **Override Host Header** option.
--   If you are using a self-signed certificate, then you must enable the **Allow Self-Signed Certs** option on the desired origin configuration.
+-   Is your server using a self-signed certificate?
+    -   **Yes:** You must enable the **Allow Self-Signed Certs** option on the desired origin configuration.
+    -   **No:** {{ PRODUCT }} requires a full chain certificate. Your certificate’s chain of trust must start with the server's certificate and terminate with the root certificate.
 -   If you have pinned a certificate to the desired origin configuration, then you may need to pin an additional certificate.
 
 ### 531 Project Upstream Connection Error Status Code {/*531-project-upstream-connection-error-status-code*/}
@@ -216,7 +311,7 @@ Common causes are:
 -   The upstream host you specified in your project is incorrect.
 -   The DNS entry you defined points to the wrong server.
 -   Your servers are not responding.
--   You need to add the {{ PRODUCT }} IP addresses to your allowlist. Contact your operations team and ask them to add [our IP addresses](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses) to your firewall's IP allowlist.
+-   You need to add the {{ PRODUCT }} IP addresses to your allowlist. Contact your operations team and ask them to add [our IP addresses](/guides/basics/serving_traffic#firewall-allowing-ip-addresses) to your firewall's IP allowlist.
 
 ### 539 Project Timeout Status Code {/* troubleshooting-539-status-codes */}
 
@@ -251,9 +346,9 @@ A typical pattern is that your site works fine for a few days after deploying to
 
 To prevent this scenario, you must configure your server with allowlisted {{ PRODUCT_NAME }} IP addresses.
 
-[Learn more.](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses)
+[Learn more.](/guides/basics/serving_traffic#firewall-allowing-ip-addresses)
 
-### Procedure {/* procedure */}
+#### Procedure {/* procedure */}
 
 When you are testing a web page, you might encounter 539 status code errors. You might also see the errors in logs.
 
@@ -340,7 +435,20 @@ Troubleshoot your code to find and fix the error.
 #### Allowlist Error {/* allowlist-error */}
 
 If the command succeeds and finishes quickly, it is probably an allowlist error.
-Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/hostnames_and_origins#firewall-allowing-ip-addresses) to your server's IP allowlist.
+Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/serving_traffic#firewall-allowing-ip-addresses) to your server's IP allowlist.
+
+## Edge Functions {/*edge-functions*/}
+
+Analyze the performance of your edge function(s) by reviewing performance and custom metrics from within Edge Insights. 
+
+1.  [Load the desired environment-specific Edge Insights page.](/guides/performance/observability/edge_insights#basic-usage)
+2.  Verify that the **Data Source** option is set to `Access Logs`.
+3.  Scroll down to the **Top Results** section.
+4.  Set one of the pie charts to the desired Edge Functions metric. These metrics start with `Edge Function`. 
+5.  From the **Timelines** section, click the source corresponding to the metric selected in the previous step.
+6.  Optional. Filter the report to a specific edge function (i.e., `Edge Function Name = <edge_function PROPERTY>`).
+    ![Filtering by edge function](/images/v7/performance/edge-insights-filters-ef.png)
+7.  Analyze trends.
 
 ## Troubleshooting Tools {/*troubleshooting-tools*/}
 
@@ -350,9 +458,9 @@ Troubleshoot delivery and performance issues using the following tools:
 | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer_tools_chrome_extension) | This Chrome extension describes each request associated with the current page. Use this information to gain insight into delivery issues, caching, and performance.                                   |
 | [Edge Insights](/guides/performance/observability/edge_insights)                             | Review detailed information about each request to your website in near real-time.                                                                                                                     |
+| [RTLD CDN](/guides/logs/rtld)                                                                | Review historical information for all requests, even those that never reach your application code (e.g., cache hits, static assets, requests routed to custom backends, edge redirects, etc.).        |
 | [Visual Studio Code](#visual-studio-code)                                                    | This tool allows you to add breakpoints within your code to troubleshoot delivery issues.                                                                                                             |
 | [Server Logs](#server-logs)                                                                  | Review messages from your application.                                                                                                                                                                |
-| [RTLD CDN](#rtld-cdn-log-data)                                                               | Review historical information for requests to your website.                                                                                                                                           |
 | [curl](#curl)                                                                                | Issue requests to your website using curl. This tool allows you to eliminate browser-specific behavior when troubleshooting issues.                                                                   |
 | [Source Maps](#source-maps)                                                                  | Review our source map to investigate runtime errors that occur during routing. Additionally, if you are using the Next or Nuxt framework, then you can enable a source map for your application code. |
 
@@ -410,12 +518,6 @@ Once it has been deployed, you can observe the output in your [server logs](/gui
 We strongly recommend to proxy traffic from the edge whenever possible, as that is more performant and avoids {{ PRODUCT }} cloud surcharges. The above solution should only be used as a temporary measure while addressing issues.
 
 [Learn more about server logs.](/guides/logs/server_logs)
-
-## RTLD CDN Log Data {/* rtld-cdn-log-data */}
-
-RTLD CDN logs contain information about all requests, even those that never reach your application code (e.g. cache hits, static assets, requests routed to custom backends, edge redirects, and so on).
-
-[Learn more about RTLD CDN.](/guides/logs/rtld)
 
 ## curl {/* confirming-behavior-with-curl */}
 

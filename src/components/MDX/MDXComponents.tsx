@@ -6,7 +6,7 @@ import Callout from './Callout';
 import Condition from './Condition';
 import CustomPre from './CustomPre';
 import ExampleButtons from './ExampleButtons';
-import Frameworks from './Frameworks';
+import Frameworks, {V7LegacyFrameworks} from './Frameworks';
 import {H1, H2, H3, H4} from './Heading';
 import HomepageFeatures from './HomepageFeatures';
 import HomepageHero from './HomepageHero';
@@ -73,6 +73,7 @@ export const MDXComponents = {
   HomepageHero,
   HomepageFeatures,
   Frameworks,
+  V7LegacyFrameworks,
   PopularFrameworks,
   Callout,
   ButtonLinksGroup,

@@ -30,7 +30,7 @@ The `origins` key is an array of objects whose properties are:
 | `hosts[].location`                         | `string` \| `Array<string>` \| `Array<{ hostname: string; port?: number; }>` | Contains properties that define the location to which {{ PRODUCT }} will proxy requests for this origin configuration.                                                                                                                                                                                                                                                                                                                                                                                             |
 | `hosts[].location[].hostname`              | `string`                                                                     | (Required) The domain name or IP address of the origin server.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | `hosts[].location[].port`                  | `number`                                                                     | The port on which the backend receives https requests. Defaults to 443 but you can specify any other acceptable port value. Note that specifying `80` has no special meaning as {{ PRODUCT_NAME }} will never send secured requests to unsecured backends. To [enable HTTP traffic](/guides/security/edgejs_security#ssl) on a backend you must have a route matching `http` protocol in your router and serve content from that route. All HTTP traffic assumes port `80` on the backend.                         |
-| `scheme`                                   | `string`                                                                     | The scheme to use when connecting to the origin. Possible values are `https`, `http`, and `match`. Defaults to `match`, using the same scheme as the incoming request.                                                                                                                                                                                                                                                                                                                                             |
+| `hosts[].scheme`                           | `string`                                                                     | The scheme to use when connecting to the origin. Possible values are `https`, `http`, and `match`. Defaults to `match`, using the same scheme as the incoming request. Required when `hosts[].location[].port` is defined.                                                                                                                                                                                                                                                                                         |
 | `shields`                                  | `Object`                                                                     | Defines how {{ PRODUCT }} will shield your origin configuration.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | `shields.apac`                             | `string`                                                                     | The POP code for the Asia Pacific shield.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `shields.emea`                             | `string`                                                                     | The POP code for the Europe, Middle East, and Africa shield.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -162,26 +162,27 @@ Setting these properties can replicate the behavior of the production environmen
 
 ## cloudRuntime {/* cloudruntime */}
 
-*Requires {{ PRODUCT }} v7.4.0 or later.*
+_Requires {{ PRODUCT }} v7.4.0 or later._
 
 The `cloudRuntime` key (string) determines which version of Node.js will run your app on our platform. Supported values are:
 
-- `nodejs16.x`
-- `nodejs18.x`
+- `nodejs16.x` (v7.4.0 through v7.4.4)
+- `nodejs18.x` (v7.4.0 or later)
+- `nodejs20.x` (v7.5.0 or later)
 
-If the `cloudRuntime` key is not defined, then {{ PRODUCT }} will detect your project's Node.js version upon running `{{ CLI_CMD(deploy) }}`. If an unsupported version is detected, then it will set your version to `nodejs18.x`. For instance:
+If the `cloudRuntime` key is not defined, then {{ PRODUCT }} will detect your project's Node.js version upon running `{{ CLI_CMD(deploy) }}`. If an unsupported version is detected when using {{ PRODUCT }} v7.4.0 or later, then it will set your version to `nodejs18.x`. For instance:
 
 ```bash
-# Here, the cloud runtime is set to nodejs16.x
+# The Node.js 16 runtime is valid for {{ PRODUCT }} v7.4.4 or earlier
 $ node --version
 v16.19.1
 $ {{ CLI_CMD(deploy) }}
 
 ...
 
-# Here, due to an unsupported version, the cloud runtime defaults to nodejs18.x with a warning
+# Unsupported Node.js 21 runtime; defaults to Node.js 18 with a warning for {{ PRODUCT }} v7.4.0 or later
 $ node --version
-v20.0.0
+v21.0.0
 $ {{ CLI_CMD(deploy) }}
 ```
 

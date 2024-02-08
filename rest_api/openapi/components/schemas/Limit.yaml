@@ -47,6 +47,9 @@ properties:
       - 60
       - 120
       - 300
+      - 600
+      - 900
+      - 1800
   num:
     type: integer
     format: uint32
@@ -61,7 +64,17 @@ properties:
 
       -   **IP:** Indicates that requests will be grouped by IP address. Each unique IP address is considered a separate group.
 
-      -   **USER_AGENT:** Indicates that requests will be grouped by a client's user agent. Each unique combination of IP address and user agent is considered a separate group.
+      -   **USER_AGENT:** Indicates that requests will be grouped by a client's user agent. Each unique user agent is considered a separate group.
+
+      -   **ASN:** Indicates that requests will be grouped by a client's ASN. Each unique ASN is considered a separate group.
+
+      -   **JA3:** Indicates that requests will be grouped by a client's JA3. Each unique JA3 is considered a separate group.
+
+      -   **HEADER:{name}:** Indicates that requests will be grouped by the value assigned to the request header defined by the `{name}` placeholder. Each unique value for the specified header is considered a separate group. A request is excluded from this rate limit when the specified header is not present. 
+
+      -   **COOKIE:{name}:** Indicates that requests will be grouped by the value assigned to the cookie defined by the `{name}` placeholder. Each unique value for the specified cookie is considered a separate group. A request is excluded from this rate limit when the specified cookie is not present.
+
+      -   **ARGS:{name}:** Indicates that requests will be grouped by the value assigned to the query string parameter defined by the `{name}` placeholder. Each unique value for the specified parameter is considered a separate group. A request is excluded from this rate limit when the specified parameter is not present.
 
     items:
       allOf:

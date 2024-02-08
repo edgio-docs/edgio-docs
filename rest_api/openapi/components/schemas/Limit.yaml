@@ -70,11 +70,11 @@ properties:
 
       -   **JA3:** Indicates that requests will be grouped by a client's JA3. Each unique JA3 is considered a separate group.
 
-      -   **HEADER:<name>:** Indicates that requests will be grouped by the value assigned to the request header defined by the `<name>` placeholder. Each unique value for the specified header is considered a separate group. A request is excluded from this rate limit when the specified header is not present. 
+      -   **HEADER:{name}:** Indicates that requests will be grouped by the value assigned to the request header defined by the `{name}` placeholder. Each unique value for the specified header is considered a separate group. A request is excluded from this rate limit when the specified header is not present. 
 
-      -   **COOKIE:<name>:** Indicates that requests will be grouped by the value assigned to the cookie defined by the `<name>` placeholder. Each unique value for the specified cookie is considered a separate group. A request is excluded from this rate limit when the specified cookie is not present.
+      -   **COOKIE:{name}:** Indicates that requests will be grouped by the value assigned to the cookie defined by the `{name}` placeholder. Each unique value for the specified cookie is considered a separate group. A request is excluded from this rate limit when the specified cookie is not present.
 
-      -   **ARGS:<name>:** Indicates that requests will be grouped by the value assigned to the query string parameter defined by the `<name>` placeholder. Each unique value for the specified parameter is considered a separate group. A request is excluded from this rate limit when the specified parameter is not present.
+      -   **ARGS:{name}:** Indicates that requests will be grouped by the value assigned to the query string parameter defined by the `{name}` placeholder. Each unique value for the specified parameter is considered a separate group. A request is excluded from this rate limit when the specified parameter is not present.
 
     items:
       allOf:

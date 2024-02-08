@@ -56,13 +56,13 @@ When you run the above command, the CLI will prompt you with the following quest
 ```text
   🚀 Let's get started with Edgio!
 
-      ✔ What is the hostname or IP address of the origin site that you will host on Edgio? … my-custom-property.com
-      ✔ Should we create a new directory for your Edgio app or use the current directory? › Create a new directory
-      ✔ Which package manager would you like to use? › npm
-      ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch... done.
-      > edgio.config.js not found, creating...
-      > routes.js not found, creating...
-      🔑 You are not logged in.
+  ✔ What is the hostname or IP address of the origin site that you will host on Edgio? … my-custom-property.com
+  ✔ Should we create a new directory for your Edgio app or use the current directory? › Create a new directory
+  ✔ Which package manager would you like to use? › npm
+  ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch... done.
+  > edgio.config.js not found, creating...
+  > routes.js not found, creating...
+  🔑 You are not logged in.
 
   ? To log you in we're going to open your browser and visit Edgio Developer Console. › - Use arrow-keys. Return to submit.
   ❯   Continue
@@ -90,13 +90,13 @@ Once your deployment completes, you should see an output similar to the followin
 ```text
   🚀 Let's get started with Edgio!
 
-      ✔ What is the hostname or IP address of the origin site that you will host on Edgio? … my-custom-property.com
-      ✔ Should we create a new directory for your Edgio app or use the current directory? › Create a new directory
-      ✔ Which package manager would you like to use? › npm
-      ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch... done.
-      > edgio.config.js not found, creating...
-      > routes.js not found, creating...
-      🔑 You are not logged in.
+  ✔ What is the hostname or IP address of the origin site that you will host on Edgio? … my-custom-property.com
+  ✔ Should we create a new directory for your Edgio app or use the current directory? › Create a new directory
+  ✔ Which package manager would you like to use? › npm
+  ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch... done.
+  > edgio.config.js not found, creating...
+  > routes.js not found, creating...
+  🔑 You are not logged in.
 
   ✔ To log you in we're going to open your browser and visit Edgio Developer Console. › Continue
   Authenticating user!

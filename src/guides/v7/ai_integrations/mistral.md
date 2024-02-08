@@ -2,7 +2,9 @@
 title: Mistral
 ---
 
-This is a [Mistral](https://mistral.ai/) project using React.
+This project is built on [Mistral](https://mistral.ai/), a platform designed for simplifying the integration of open source AI and machine learning models into applications. The example utilizes React for its user interface and Edgio's global network for accelerating content delivery and optimized performance.
+
+Ensuring that AI-driven features are seamlessly and efficiently deployed across global scales, Edgio's edge computing features further reduce latency, improve scalability, and enhance user experiences, making it an ideal complement to Mistral's developer-centric approach.
 
 {{ prereq.md }}
 

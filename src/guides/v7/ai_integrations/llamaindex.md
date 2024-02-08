@@ -2,7 +2,9 @@
 title: LlamaIndex
 ---
 
-This is a [LlamaIndex](https://www.llamaindex.ai/) project using [Next.js](https://nextjs.org/) bootstrapped with [`create-llama`](https://github.com/run-llama/LlamaIndexTS/tree/main/packages/create-llama).
+This project is powered by [LlamaIndex](https://www.llamaindex.ai/), a flexible data framework for connecting custom data sources to large language models. Bootstrapped with [`create-llama`](https://github.com/run-llama/LlamaIndexTS/tree/main/packages/create-llama) and utilizes [Next.js](https://nextjs.org/), it is enhanced by Edgio's robust delivery network for accelerating the deployment and global distribution of your application.
+
+By leveraging Edgio, you'll ensure optimal performance, faster loading times, and enhanced user experiences across the globe. This LlamaIndex project benefits from cutting-edge web optimization and edge computing capabilities, making it more scalable, reliable, and accessible to users everywhere.
 
 {{ prereq.md }}
 

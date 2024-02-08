@@ -26,7 +26,7 @@ Add the [Bypass Client Cache feature](/guides/performance/rules/features#bypass-
 
 Customize how long {{ PRODUCT }} will cache your content on our network by adding the [Set Max Age feature](/guides/performance/rules/features#set-max-age). Define a max-age interval for each desired status code.
 
-![Set Max Age feature](/images/v7/performance/rules-use-case-set-max-age.png?width=700)
+![Set Max Age feature](/images/v7/performance/rules-use-case-set-max-age.png)
 
 Add the [Stale While Revalidate feature](/guides/performance/rules/features#stale-while-revalidate) to allow {{ PRODUCT }} to serve a cached response during cache revalidation. In the following illustration, both of these features have been added within an ELSE statement. This means that these features are applied when a request does not satisfy the match conditions in the IF statement. In this case, it means that these features are only applied when either of the following conditions are true:
 -   The request's relative path does not start with the `/marketing` directory.
@@ -43,7 +43,7 @@ Add the [Stale While Revalidate feature](/guides/performance/rules/features#stal
 
 Use the [Cache Key feature](/guides/performance/rules/features#cache-key) to tailor the cache key according to how unique responses are generated. For example, you can exclude the query string from the cache key or only include specific query string parameters. You may also add headers, cookies, and feature variables to the cache key. The following sample configuration includes the `category` and `country` query string parameters and the `device` header within the query string:
 
-![Cache Key feature](/images/v7/performance/rules-use-case-cache-key.png?width=700)
+![Cache Key feature](/images/v7/performance/rules-use-case-cache-key.png)
 
 ### Cache Metadata {/*cache-metadata*/}
 
@@ -59,11 +59,11 @@ A common task is to provide a custom response for a specific status code.
 
 1.  Add a [Response Status Code match condition](/guides/performance/rules/conditions#response-status-code) and set it to the desired status code(s). For example, match on common `4xx` status codes by selecting the `is one of` operator and then adding `400`, `403`, and `404` to the **Value(s)** option. 
 
-    ![Response Status Code match condition](/images/v7/performance/rules-use-case-response-status-code.png?width=700)
+    ![Response Status Code match condition](/images/v7/performance/rules-use-case-response-status-code.png)
 
 2.  Define a custom response by setting the [Set Response Body feature](/guides/performance/rules/features#set-response-body) to the desired content. 
 
-    ![Set Response Body feature](/images/v7/performance/rules-use-case-set-response-body.png?width=700)
+    ![Set Response Body feature](/images/v7/performance/rules-use-case-set-response-body.png)
 
 3.  Enable the [Set Done feature](/guides/performance/rules/features#set-done) to prevent cache misses from being forwarded to your origin. Your rule should now look similar to this illustration:
 
@@ -87,11 +87,11 @@ Your rule should now look similar to the following illustration:
 
 Both values are feature variables. The first value (i.e., `%{geo_country}`) identifies the country (e.g., `US`, `MX`, or `FR`) from which the request originated. The second value (i.e., `%{path//.*\./}`) performs a find and replace on the `%{path}` feature variable. This pattern replaces the request's relative path with the file extension without the period (e.g., `htm`, `css`, and `png`). A sample configuration is shown below.
 
-![Surrogate Key](/images/v7/performance/rules-use-case-surrogate-key.png?width=700)
+![Surrogate Key](/images/v7/performance/rules-use-case-surrogate-key.png)
 
 Purge requests by country of origin, file extension, or both as shown below.
 
-![Purge by surrogate key](/images/v7/performance/rules-use-case-purge-cache.png?width=700)
+![Purge by surrogate key](/images/v7/performance/rules-use-case-purge-cache.png)
 
 The above purge request will purge all requests that were tagged with `US`, `png`, or both values. 
 
@@ -112,7 +112,7 @@ Automatically redirect all HTTP requests to HTTPS.
     1.  Set the **Source** option to `(.*)`. 
     2.  Set the **Destination** option to `https://<HOST>/$1`. The `$1` represents the relative path for the request submitted by the client.
 
-    ![URL Redirect](/images/v7/performance/rules-use-case-url-redirect.png?width=700)
+    ![URL Redirect](/images/v7/performance/rules-use-case-url-redirect.png)
     
 Your rule should now look like similar to this:
 

@@ -34,7 +34,7 @@ Apply a set of features to:
 
 Use the [Path match condition](/guides/performance/rules/conditions#path) to match requests by path. The most common configuration is to apply a rule across all requests whose relative URL starts with a specific value. Set up this match condition by selecting the `matches regular expression` operator and then appending `.*` to the desired relative path. 
 
-![Path match condition](/images/v7/performance/rules-use-case-path.png?width=700)
+![Path match condition](/images/v7/performance/rules-use-case-path.png)
 
 The above match configuration matches all requests whose relative path starts with: `/marketing/conferences/`. For example, it matches all of the following request URLs:
 
@@ -52,7 +52,7 @@ Restrict the above rule to images whose relative path starts with: `/marketing/c
 
 Use the [Query Parameter match condition](/guides/performance/rules/conditions#query-parameter) to find requests that contain a query string parameter set to a specific value. The following configuration finds all requests whose query string contain `session=active`.
 
-![Query Parameter match condition](/images/v7/performance/rules-use-case-query-parameter.png?width=700)
+![Query Parameter match condition](/images/v7/performance/rules-use-case-query-parameter.png)
 
 For example, the above configuration matches against the following request:
 
@@ -78,4 +78,4 @@ For example, the above configuration matches against a request that contains the
 
 Use the [Request Header match condition](/guides/performance/rules/conditions#request-header) to find requests that contain a header set to a specific value. The following configuration finds all requests whose `Accept-Language` header contains `en-US`.
 
-![Request Header match condition](/images/v7/performance/rules-use-case-request-header.png?width=700)
+![Request Header match condition](/images/v7/performance/rules-use-case-request-header.png)

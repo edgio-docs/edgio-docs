@@ -2,7 +2,9 @@
 title: LangChain
 ---
 
-This template scaffolds a LangChain.js + Next.js starter app and showcases several use cases for different LangChain modules.
+This template leverages Edgio's cutting-edge delivery network to scaffold a LangChain.js + Next.js starter app, enhancing its performance and scalability while showcasing several use cases for different LangChain modules.
+
+With Edgio, the app benefits from faster load times, improved user experience, and seamless global deployment capabilities, making it an ideal platform for developing and deploying AI-powered applications efficiently at scale.
 
 {{ prereq.md }}
 

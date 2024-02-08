@@ -1,9 +1,11 @@
 ---
 title: AI Integrations
-description: Discover our curated selection of AI example projects meticulously designed to showcase effective deployment of AI and large language model technologies within your applications.
+description: Discover our curated selection of AI example projects, enhanced by Edgio's advanced computing solutions, demonstrating the seamless integration of AI and large language model technologies within your production applications.
 ---
 
-Discover our curated selection of AI/LLM project examples provided by {{ PRODUCT }}. Each example is meticulously designed to showcase effective deployment of AI and large language model technologies within your applications. Through these examples, gain insights into harnessing the power of AI to elevate your projects, whether for enhancing user experiences, streamlining operations, or unlocking new capabilities.
+Discover our curated selection of AI/LLM project examples, powered by {{ PRODUCT }}. Each example showcases the effective deployment of AI and large language model technologies along with Edgio's innovative edge computing framework. Through Edgio, experience optimized performance, reduced latency, and enhanced scalability in your AI projects.
+
+Whether you aim to enhance user experiences, streamline operations, or unlock new capabilities, Edgio provides the robust infrastructure and advanced features necessary to harness the full power of AI technologies efficiently and effectively.
 
 - [LangChain](/guides/ai/examples/langchain): A practical scaffold for integrating AI into web apps, featuring a LangChain.js + Next.js template. It showcases conversational AI, structured outputs, and dynamic content retrieval, simplifying the creation of sophisticated, AI-driven web experiences. Ideal for developers eager to explore language model applications.
 

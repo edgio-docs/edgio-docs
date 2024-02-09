@@ -54,19 +54,19 @@ module.exports = {
       name: 's3',
 
       // Use the following to override the host header sent from the browser when connecting to the origin
-      override_host_header: process.env.S3_HOSTNAME,
+      override_host_header: process.env.AWS_HOSTNAME,
 
       // The list of origin hosts to which to connect
       hosts: [
         {
           // The domain name or IP address of the origin server
-          location: process.env.S3_HOSTNAME,
+          location: process.env.AWS_HOSTNAME,
         },
       ],
 
       tls_verify: {
         use_sni: true,
-        sni_hint_and_strict_san_check: process.env.S3_HOSTNAME,
+        sni_hint_and_strict_san_check: process.env.AWS_HOSTNAME,
       },
 
       // Uncomment the following to configure a shield
@@ -88,7 +88,7 @@ The Edge Function runtime does not currently support a native crypto library, so
 
 ```js filename="edge-functions/main.js"
 import {AwsV4Signer} from './awsv4';
-import {URL} from 'whatwg-url';
+import URL from 'url-parse';
 
 global.URL = URL;
 

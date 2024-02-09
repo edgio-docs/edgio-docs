@@ -194,17 +194,20 @@ function CPre({
       theme={undefined}
       code={children}
       language="javascript">
+      {/* @ts-ignore */}
       {({className, style, tokens, getLineProps, getTokenProps}) => {
         return (
           <pre
             className={cn('code-block', 'custom-scrollbar', className)}
             style={style}>
+            {/* @ts-ignore */}
             {tokens.map((line, i) => {
               const lineNum = i + 1;
               return (
                 <Line key={i} {...getLineProps({line, key: i})}>
                   <LineNo className="line-num">{lineNum}</LineNo>
                   <LineContent className={cn(linesToHighlight[lineNum])}>
+                    {/* @ts-ignore */}
                     {line.map((token, key) => (
                       <span key={key} {...getTokenProps({token, key})} />
                     ))}

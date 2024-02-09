@@ -382,6 +382,25 @@ const nav = {
       ],
     },
     {
+      title: 'AI Integrations',
+      path: 'ai_integrations',
+      icon: 'ai-integrations',
+      routes: [
+        {
+          title: 'LangChain',
+          path: 'ai_integrations/langchain',
+        },
+        {
+          title: 'LlamaIndex',
+          path: 'ai_integrations/llamaindex',
+        },
+        {
+          title: 'Mistral',
+          path: 'ai_integrations/mistral',
+        },
+      ],
+    },
+    {
       title: 'Sites',
       path: 'sites_frameworks',
       icon: 'book-plain',

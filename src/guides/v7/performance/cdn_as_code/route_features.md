@@ -784,7 +784,7 @@ router.get('/hello/:name', ({cache, setResponseHeader, compute, send}) => {
 });
 ```
 
-### Redirecting {/* redirecting */}
+## Redirecting {/* redirecting */}
 
 To redirect the browser to a different URL, use the `url.url_redirect` feature, optionally specifying the HTTP status code:
 
@@ -843,6 +843,25 @@ router.match(
       url_redirect: {
         code: 302,
         destination: 'https://domain.com%{request_uri}',
+      },
+    },
+  }
+);
+```
+
+### Redirecting HTTP to HTTPS {/* redirecting-http-to-https */}
+
+To redirect all HTTP traffic to HTTPS, use the `url.url_redirect` feature. Matching the `source` with `(.*)` will capture the entire path and query string that is then appended to the `destination`. Referencing `%{host}` in the `destination` will ensure that the request is redirected to the current host. See [Feature Variables](/guides/performance/rules/feature_variables) for more information.
+
+```js
+router.match(
+  {scheme: 'HTTP'},
+  {
+    url: {
+      url_redirect: {
+        code: 302,
+        source: '(.*)',
+        destination: 'https://%{host}$1',
       },
     },
   }

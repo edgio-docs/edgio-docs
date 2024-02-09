@@ -75,7 +75,7 @@ The following common use cases are provided to demonstrate various ways in which
         
         **Recursive Example:** The following value filters for all requests with the same base URL:
         
-        `regex:/downloads/.\*`
+        `regex:/downloads/.*`
         
     4.  Click **Save**.
 4.  From the **Top Results** section, select the `Country Name` field.

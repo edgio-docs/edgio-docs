@@ -51,7 +51,7 @@ This capability allows you to define a list of URLs for which we will return a `
 -   Define a `3xx` status code for the redirect through the **Response status** option. By default, we return a `301 Moved Permanently` response.
 -   The **Forward query string to redirect location** option determines whether the `Location` header will include or exclude the request's query string. 
 -   You may define up to 10,000 redirects per environment.
--   <a id="deploy" />Changes to your redirect configuration will not take effect until the next deployment. You can redeploy to an environment by navigating to the **Deployments** page, clicking the <Image inline src="/images/v7/icons/menu-kebab.png" alt="Menu" /> icon next to the latest deployment, and then clicking **Reploy this version**.
+-   Changes to your redirect configuration will not take effect until the next deployment. 
 
 ### CSV Files {/*csv-files*/}
 
@@ -95,7 +95,7 @@ Upon importing a CSV file, you may choose whether to replace or append to your e
         
         </Callout>
 5.  Click **Upload redirects**.
-6.  If you are finished making changes, [deploy your changes to this environment.](#deploy)
+6.  If you are finished making changes, click **Deploy Now** to deploy your changes to this environment.
 
 **<a id="export" />To export redirect configurations (CSV)**
 1.  Navigate to the **Redirects** page.
@@ -124,7 +124,7 @@ You may add, modify, and delete redirect configurations regardless of whether th
 
 7.  Click **Add a redirect**.
 8.  Repeat steps 2 - 7 as needed.
-9.  If you are finished making changes, [deploy your changes to this environment.](#deploy)
+9.  If you are finished making changes, click **Deploy Now** to deploy your changes to this environment.
 
 **To modify a redirect**
 1.  Navigate to the **Redirects** page.
@@ -141,7 +141,7 @@ You may add, modify, and delete redirect configurations regardless of whether th
 3.  Make the desired changes.
 4.  Click **Save redirect**.
 5.  Repeat steps 2 - 4 as needed.
-6.  If you are finished making changes, [deploy your changes to this environment.](#deploy)
+6.  If you are finished making changes, click **Deploy Now** to deploy your changes to this environment.
 
 **To delete a redirect**
 1.  Navigate to the **Redirects** page.
@@ -149,4 +149,4 @@ You may add, modify, and delete redirect configurations regardless of whether th
     {{ ENV_NAV }} **Redirects**.
 2.  Mark each desired redirect. 
 3.  Click **Remove selected redirect(s)**.
-4.  If you are finished making changes, [deploy your changes to this environment.](#deploy)
+4.  If you are finished making changes, click **Deploy Now** to deploy your changes to this environment.

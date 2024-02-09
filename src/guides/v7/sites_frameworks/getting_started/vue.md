@@ -6,18 +6,17 @@ title: Vue.js
 
 Edgio supports both Vue 2 and Vue 3, using both CLIs - `@vue/cli` and `vite`.
 
-
-<!-- ## Example {/*example*/}
+## Example {/* example */}
 
 <ExampleButtons
   title="Vue.js"
-  siteUrl="https://edgio-community-examples-vue3-live.layer0-limelight.link"
-  repoUrl="https://github.com/edgio-docs/edgio-vue3-example" 
-  deployFromRepo /> -->
+  siteUrl="https://edgio-community-examples-v7-vuejs-live.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-vuejs-example"
+/>
 
 {{ PREREQ.md }}
 
-## Create your Vue site {/*create-your-vue-site*/}
+## Create your Vue site {/* create-your-vue-site */}
 
 If you don't have an existing Vue 3 site, you can create one by running:
 
@@ -25,14 +24,13 @@ If you don't have an existing Vue 3 site, you can create one by running:
 npm init vue@latest
 ```
 
-This command will create a project based on `vite`. 
+This command will create a project based on `vite`.
 
 If you need help with Vue initialization, please follow the [create-vue project's readme](https://github.com/vuejs/create-vue).
 
 {{ PRODUCT }} also supports the older, Webpack-based `@vue/cli` - more on that in the [Vue CLI documentation](https://cli.vuejs.org).
 
-
-## Initializing your Project {/*initializing-your-project*/}
+## Initializing your Project {/* initializing-your-project */}
 
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:
 
@@ -43,11 +41,12 @@ Initialize your project for use with {{ PRODUCT }} by running the following comm
 This will automatically add all of the required dependencies and files to your project. These include:
 
 {{ INIT_DEFAULT_PACKAGES.md }}
+
 - The `{{ PACKAGE_NAME }}/vue` package - Provides a `Prefetch` component for prefetching pages.
 - The `{{ PACKAGE_NAME }}/connectors` package - Provides build and routing mechanisms for Vue projects.
-{{ INIT_DEFAULT_FILES.md }}
+  {{ INIT_DEFAULT_FILES.md }}
 
-## Routing {/*routing*/}
+## Routing {/* routing */}
 
 The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Vue server via a fallback route.
 
@@ -55,15 +54,15 @@ The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all req
 // This file was added by {{ FULL_CLI_NAME }} init.
 // You should commit this file to source control.
 
-import { Router } from '@edgio/core'
-import { connectorRoutes } from '@edgio/connectors'
+import {Router} from '@edgio/core';
+import {connectorRoutes} from '@edgio/connectors';
 
-export default new Router().use(connectorRoutes)
+export default new Router().use(connectorRoutes);
 ```
 
 Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-## Running Locally {/*running-locally*/}
+## Running Locally {/* running-locally */}
 
 To test your app locally, run:
 
@@ -79,7 +78,7 @@ You can do a production build of your app and test it locally using:
 
 Setting `--production` runs your app exactly as it will be when deployed to the {{ PRODUCT }} cloud.
 
-## Deploy to {{ PRODUCT }} {/*deploy-to*/}
+## Deploy to {{ PRODUCT }} {/* deploy-to */}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 
@@ -91,18 +90,18 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
 
-## Prefetching {/*prefetching*/}
+## Prefetching {/* prefetching */}
 
 {{ PREFETCH_TIER1_INTRO }}
 
 In order to initialize it, call the `install` function from `{{ PACKAGE_NAME }}/prefetch/window` when the app first loads:
 
 ```js
-import { isProductionBuild } from '{{ PACKAGE_NAME }}/core/environment';
-import { install } from '{{ PACKAGE_NAME }}/prefetch/window'
+import {isProductionBuild} from '{{ PACKAGE_NAME }}/core/environment';
+import {install} from '{{ PACKAGE_NAME }}/prefetch/window';
 
 if (isProductionBuild()) {
-  install()
+  install();
 }
 ```
 
@@ -126,13 +125,13 @@ The `Prefetch` component fetches data for the linked page from {{ PRODUCT }}'s e
 By default, `Prefetch` waits until the link appears in the viewport before prefetching. You can prefetch immediately by setting the `immediately` prop:
 
 ```js
-<Prefetch url='/api/products/1.json' immediately>
-  <a href='/api/products/1.json'>Product 1</a>
+<Prefetch url="/api/products/1.json" immediately>
+  <a href="/api/products/1.json">Product 1</a>
 </Prefetch>
 ```
 
 Refer to the [Predictive Prefetch](/guides/performance/prefetching) for more examples of prefetch functionality.
 
-## Server Side Rendering {/*server-side-rendering*/}
+## Server Side Rendering {/* server-side-rendering */}
 
 For server side rendered Vue.js apps we recommend using the Nuxt.js framework which is supported on {{ PRODUCT }}. Refer to the [Nuxt](/guides/sites_frameworks/getting_started/nuxt) guide for more information.

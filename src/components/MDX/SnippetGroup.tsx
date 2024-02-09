@@ -92,7 +92,7 @@ export function SnippetGroup({children}: SnippetGroupProps) {
                 {getDescriptiveLanguage(language)}
               </span>
               {filename && (
-                <span className="code-block__filename">🗄️ {filename}</span>
+                <span className="code-block__filename">{filename}</span>
               )}
             </div>
             <div className="header-end">

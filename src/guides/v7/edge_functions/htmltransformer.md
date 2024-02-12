@@ -212,6 +212,110 @@ This edge function transforms the above HTML to replace `<esi:include ... />` wi
 </html>
 ```
 
+### Example 3: Using fetch() with HtmlTransformer.stream() helper function {/* example3 */}
+
+This example is a modified version of [Example 2](edge_functions/htmltransformer#example2) which incorporates streaming the response body. This technique saves memory by streaming the response body during transformation rather than reading the whole body into memory before transforming it.
+
+```js
+export async function handleHttpRequest(request, context) {
+  // This definition replaces <esi:include src="..." /> the response from the src
+  const transformerDefinitions = [
+    {
+      // This selector will match all <esi:include /> elements which have a src attribute.
+      // We escape the : character with 2 backslashes to indicate it is part of the tag name
+      // and not an attribute of the selector.
+      selector: 'esi\\:include[src]',
+      element: async (el) => {
+        const url = el.get_attribute('src');
+        const response = await fetch(url, {edgio: {origin: 'api_backend'}});
+        if (response.status == 200) {
+          const body = await response.text();
+          el.replace(body, 'html');
+        } else {
+          el.replace(
+            '<a>We encountered an error, please try again later.</a>',
+            'html'
+          );
+        }
+      },
+    },
+  ];
+
+  // Get the HTML from the origin server and stream the response body through the
+  // HtmlTransformer to the Response object
+  const response = fetch(request.url, {edgio: {origin: 'api_backend'}})
+    .then(HtmlTransformer.stream(transformerDefinitions))
+    .then((stream) => new Response(stream))
+  return response
+}
+```
+
+### Example 4: Using fetch() with response streaming {/* example4 */}
+
+This example is a modified version of [Example 3](edge_functions/htmltransformer#example3) without the HtmlTransformer.stream() helper function
+
+```js
+export async function handleHttpRequest(request, context) {
+  // This definition replaces <esi:include src="..." /> the response from the src
+  const transformerDefinitions = [
+    {
+      // This selector will match all <esi:include /> elements which have a src attribute.
+      // We escape the : character with 2 backslashes to indicate it is part of the tag name
+      // and not an attribute of the selector.
+      selector: 'esi\\:include[src]',
+      element: async (el) => {
+        const url = el.get_attribute('src');
+        const response = await fetch(url, {edgio: {origin: 'api_backend'}});
+        if (response.status == 200) {
+          const body = await response.text();
+          el.replace(body, 'html');
+        } else {
+          el.replace(
+            '<a>We encountered an error, please try again later.</a>',
+            'html'
+          );
+        }
+      },
+    },
+  ];
+  const textDecoder = new TextDecoder()
+
+  // Get the HTML from the origin server and stream the response body through the
+  // HtmlTransformer to the Response object
+  const response = fetch(request.url, {edgio: {origin: 'api_backend'}})
+    // Retrieve its body as ReadableStream
+    .then(async (response) => {
+      const reader = response.body.getReader()
+      return new ReadableStream({
+        start(controller) {
+          const htmlTransformer = new HtmlTransformer(definitions, (chunk) => {
+            controller.enqueue(chunk)
+          })
+          return pump()
+          function pump() {
+            return reader.read().then(async ({ done, value }) => {
+              if (value) {
+                await htmlTransformer.write(textDecoder.decode(value))
+              }
+              // When no more data needs to be consumed, close the stream
+              if (done) {
+                await htmlTransformer.end()
+                controller.close()
+                return
+              }
+              // Send the html to the HtmlTransformer.
+              return pump()
+            })
+          }
+        },
+      })
+    })
+    // Create a new response out of the stream
+    .then((stream) => new Response(stream))
+
+  return response
+}
+```
 ## HtmlTransformer Class {/* class */}
 
 ### new {/* new */}

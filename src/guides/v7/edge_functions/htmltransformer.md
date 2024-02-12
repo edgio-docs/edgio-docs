@@ -382,6 +382,17 @@ await htmlTransformer.end();
 
 Flushes the transformer and completes the transformation. This function must be called after the last call to `await htmlTransformer.write()`.
 
+### static async stream() {/* stream */}
+
+```js
+  const response = fetch(request.url, {edgio: {origin: 'api_backend'}})
+    .then(HtmlTransformer.stream(transformerDefinitions))
+    .then((stream) => new Response(stream))
+  return response
+```
+
+Static helper function to easily stream fetch() responses through the HtmlTransformer.
+
 ## Definitions {/* definitions */}
 
 The HtmlTransformer definitions are an array of objects that define the transformations performed on the HTML stream. These definition objects can contain one selector and one asynchronous callback:

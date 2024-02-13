@@ -12,7 +12,7 @@ Before adding [features](/guides/performance/rules/features) that customize how 
 
 In addition to these common scenarios, [there are many other ways](/guides/performance/rules/conditions) through which Rules can match requests. Additionally, you can combine match conditions to selectively apply features when multiple conditions have been met. You may also use [Else or Else If statements](/guides/performance/rules#statements) to apply features when specific criteria has not been met. The power and flexiblity of Rules allows you to use basic configurations or build upon them to create a configuration that addresses your complex business needs.
 
-### All Requests {/*all-requests*/}
+## All Requests {/*all-requests*/}
 
 Create a rule without match conditions to apply a set of features to all requests. The recommended position for this rule is the top of the list. This allows rules positioned below it to override this configuration for specific use cases. 
 
@@ -24,13 +24,13 @@ Create a rule without match conditions to apply a set of features to all request
 
 ![Rule that applies to all requests.](/images/v7/performance/rules-use-case-all-requests.png?width=700)
 
-### Request URL {/*request-url*/}
+## Request URL {/*request-url*/}
 
 Apply a set of features to:
 -   A specific path through the Path match condition. 
 -   A query parameter through the Query Parameter match condition.
 
-#### Path {/*path*/}
+### Path {/*path*/}
 
 Use the [Path match condition](/guides/performance/rules/conditions#path) to match requests by path. The most common configuration is to apply a rule across all requests whose relative URL starts with a specific value. Set up this match condition by selecting the `matches regular expression` operator and then appending `.*` to the desired relative path. 
 
@@ -48,7 +48,7 @@ Restrict the above rule to images whose relative path starts with: `/marketing/c
 
 ![Path match condition](/images/v7/performance/rules-use-case-path-extension.png?width=700)
 
-#### Query String {/*query-string*/}
+### Query String {/*query-string*/}
 
 Use the [Query Parameter match condition](/guides/performance/rules/conditions#query-parameter) to find requests that contain a query string parameter set to a specific value. The following configuration matches all requests whose query string contain `session=active`.
 
@@ -58,13 +58,13 @@ For example, the above configuration matches against the following request:
 
 `https://cdn.example.com/marketing/experience.png?session-id=12345&session=active&width=300`
 
-### HTTP Method {/*http-method*/}
+## HTTP Method {/*http-method*/}
 
 Use the [Method match condition](/guides/performance/rules/conditions#method) to find requests submitted with the desired HTTP method (e.g., `POST`, `PUT`, or `GET`).
 
 ![Method match condition](/images/v7/performance/rules-use-case-method.png?width=700)
 
-### Cookies {/*cookies*/}
+## Cookies {/*cookies*/}
 
 Use the [Cookie match condition](/guides/performance/rules/conditions#cookie) to find requests that contain a cookie set to a specific value. The following configuration matches all requests that contain this cookie: `type=oatmeal`.
 
@@ -74,7 +74,7 @@ For example, the above configuration matches against a request that contains the
 
 `sessionid=12345; type=oatmeal; token=1fj4f3nfy4f7s`
 
-### Headers {/*headers*/}
+## Headers {/*headers*/}
 
 Use the [Request Header match condition](/guides/performance/rules/conditions#request-header) to find requests that contain a header set to a specific value. The following configuration matches all requests whose `Accept-Language` header contains `en-US`.
 

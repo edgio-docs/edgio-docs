@@ -1234,7 +1234,7 @@ The following formula indicates the length of time during which stale content ma
 
 <Callout type="info">
 
-  Each stale response includes a `Warning` response header.
+  Each stale response includes a [Warning response header](/guides/performance/response#warning).
 
 </Callout>
 

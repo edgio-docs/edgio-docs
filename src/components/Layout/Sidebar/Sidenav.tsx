@@ -8,21 +8,15 @@ import {GoChevronRight} from 'react-icons/go';
 import styled from 'styled-components';
 
 import {FIDDLE_URL} from '../../../../constants';
+import type {Route} from 'utils/Types';
 
 import AppContext from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 
-interface IRoute {
-  title: string | null;
-  path: string;
-  icon: string;
-  routes?: IRoute[];
-  external?: boolean;
-}
 interface IRoutes {
   title: string;
   path: string;
-  routes: IRoute[];
+  routes: Route[];
 }
 
 function Accordion({
@@ -32,7 +26,7 @@ function Accordion({
   depth,
   currentRoutePath,
 }: {
-  route: IRoute;
+  route: Route;
   isActive: boolean;
   onSelect: () => void;
   depth: number;
@@ -45,6 +39,8 @@ function Accordion({
   const {getCollapseProps, getToggleProps} = useCollapse({
     isExpanded: selectedVersion === '4' || isActive,
   });
+
+  if (!route.path) return null;
 
   const isActiveLink = route.path.length > 0;
   const currentPathAtCurrentDepth = currentRoutePath.split('/')[depth];
@@ -135,15 +131,13 @@ function Accordion({
 }
 
 function getCurrentRouteIndex(
-  routes: IRoute[],
+  routes: Route[],
   depth: number,
   currentRoutePath: string
 ) {
-  //console.log('routes', routes);
   return routes.findIndex((route) => {
     const _route = route.path.split('/')[route.path.split('/').length - 1];
     const _crp = currentRoutePath.split('/')[depth];
-    // if (_route == _crp) console.log(route.path, currentRoutePath, depth);
     return _route == _crp;
   });
 }
@@ -151,7 +145,7 @@ function getCurrentRouteIndex(
 //click on the Link:
 //  1. Open or close if it has children
 //  2. Navigate
-function AccordionParent({routes, depth}: {routes: IRoute[]; depth: number}) {
+function AccordionParent({routes, depth}: {routes: Route[]; depth: number}) {
   const router = useRouter();
   const {version} = useConditioning();
   const slug = (router.query?.slug as string[]) ?? [];
@@ -160,9 +154,6 @@ function AccordionParent({routes, depth}: {routes: IRoute[]; depth: number}) {
     '/'
   );
 
-  // if (version.selectedVersion === '4') {
-  //   depth = 0;
-  // }
   const [activeIndex, setActiveIndex] = useState<number | null>(() =>
     getCurrentRouteIndex(routes, depth, currentRoutePath)
   );

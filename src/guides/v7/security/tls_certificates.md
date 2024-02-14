@@ -305,11 +305,11 @@ Uploading a TLS certificate requires:
 
 ## mTLS {/*mtls*/}
 
-TLS requires a server to authenticate to the client before a connection can be established. Mutual TLS (mTLS) builds upon TLS by also requiring the client to provide a X.509 certificate to the server for the purpose of authentication. 
+TLS requires a server to authenticate to the client before a connection can be established. Mutual TLS (mTLS) builds upon TLS by also requiring the client to provide a X.509 certificate to the server for the purpose of authentication. The following diagram provides a high-level overview of how a client can establish a secure connection to an edge server through mTLS.
 
 ![mTLS Handshake](/images/v7/security/mtls.png?height=650)
 
-Our mTLS implementation provides flexibility when determining when and how a client will authenticate to the server. 
+Our mTLS implementation provides flexibility when determining when and how a client will authenticate to an edge server. 
 -   By default, mTLS is disabled. Enable it by [defining how certificates will be validated](#mtls-validation). 
 -   Once mTLS has been enabled, the default behavior is to request a client certificate for all requests. However, you may instruct {{ PRODUCT }} to only request a client certificate for specific hostname(s) through the **Request Client Certificates for Hostnames** option. Regardless of this option, the **Client Certificate Validation** option determines [how a client certificate will be validated](#mtls-validation) for all requests. 
 -   Send [headers to your origin](#origin-request-headers) containing mTLS metadata by enabling the **Send Client Certificate Detail to Origin** option. 
@@ -347,7 +347,7 @@ If you have configured the **Client Certificate Validation** option to either `R
     -   If the client certificate is backed by fewer CA certificates, then {{ PRODUCT }} will validate all of those CA certificates.
     -   If the client certificate is backed by additional CA certificates, then {{ PRODUCT }} will ignore the CA certificates that exceed the specified depth. 
 
-    **Example:** If you set the depth to 2, then {{ PRODUCT }} will validate self-signed certificates or it will check up to 2 CA certificates that back the client certificate.  
+    **Example:** If you set the depth to 2, then {{ PRODUCT }} will validate self-signed certificates or it will check up to 2 CA certificates that back the client certificate. {{ PRODUCT }} can validate a client certificate for all three of the following scenarios:
     
     | Intermediate Certificate(s) | Root Certificate(s) | Total CA Certificate(s) | Valid Client Certificate |
     | --------------------------- | ------------------- | ----------------------- | ------------------------ |

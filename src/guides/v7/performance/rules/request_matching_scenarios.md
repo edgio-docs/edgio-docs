@@ -10,7 +10,7 @@ Before adding [features](/guides/performance/rules/features) that customize how 
 -   [Cookies](#cookies)
 -   [Headers](#headers)
 
-In addition to these common scenarios, [there are many other ways](/guides/performance/rules/conditions) through which Rules can match requests. Additionally, you can combine match conditions to selectively apply features when multiple conditions have been met. You may also use [Else or Else If statements](/guides/performance/rules#statements) to apply features when specific criteria has not been met. The power and flexiblity of Rules allows you to use basic configurations or build upon them to create a configuration that addresses your complex business needs.
+In addition to these common scenarios, [there are many other ways](/guides/performance/rules/conditions) through which Rules can match requests. Additionally, you can combine match conditions to selectively apply features when multiple conditions have been met. You may also use [Else or Else If statements](#matching-with-conditional-logic) to apply features when specific criteria has not been met. The power and flexiblity of Rules allows you to use basic configurations or build upon them to create a configuration that addresses your complex business needs.
 
 ## All Requests {/*all-requests*/}
 
@@ -79,3 +79,61 @@ For example, the above configuration matches against a request that contains the
 Use the [Request Header match condition](/guides/performance/rules/conditions#request-header) to find requests that contain a header set to a specific value. The following configuration matches all requests whose `Accept-Language` header contains `en-US`.
 
 ![Request Header match condition](/images/v7/performance/rules-use-case-request-header.png)
+
+## Country {/*country*/}
+
+Use the [Country match condition](/guides/performance/rules/conditions#country) to find requests from one or more countries. The following configuration matches all requests from the US, Canada, and Mexico.
+
+![Country match condition](/images/v7/performance/rules-use-case-country.png)
+
+[View additional geolocation match conditions.](/guides/performance/rules/conditions)
+
+## Matching with Conditional Logic {/*matching-with-conditional-logic*/}
+
+Match requests when they satisfy:
+
+-   A single match condition. The majority of the above examples demonstrate how to match by a single match condition. 
+-   Multiple match conditions.
+-   Any match condition defined within a statement.
+-   Any statement.
+-   None of the match conditions defined within a rule.
+
+### Multiple Match Conditions {/*multiple-match-conditions*/}
+
+You can add multiple match conditions to a single statement. By default, a request must satisfy all of these conditions before a set of features will be applied to it. 
+
+The following sample configuration redirects traffic that meets both of the following conditions:
+-   Matches a specific relative path.
+-   Originates outside of North America.
+
+![Multiple match conditions](/images/v7/performance/rules-use-case-multiple-match-conditions.png)
+
+The `and` label, which appears next to the Country match condition, indicates that a request must satisfy both match conditions before it will be redirected.
+
+### Any Match Condition in a Statement {/*any-match-condition-in-a-statement*/}
+
+Apply a set of features to requests that match any match condition in a [statement](/guides/performance/rules#statements) by toggling the `and` labels to `or` labels. 
+
+The following sample configuration redirects traffic when it meets any of the following conditions:
+
+-   The request's relative path starts with: `/shopping/`
+-   The request originated from a country other than the United States, Mexico, or Canada.
+-   The request contained a session cookie set to `active`.
+
+![Any match conditions](/images/v7/performance/rules-use-case-any-match-condition-statement.png)
+
+### Any Statement {/*any-statement*/}
+
+Add at least one match condition to an [Else statement](/guides/performance/rules#statements) to allow requests to match against any of a rule's statements. 
+
+In the following sample rule, {{ PRODUCT }} will first check whether the request's relative path starts with `/shopping/`. If the request starts with a different relative path, it will then check whether the request originated from the United States, Canada, or Mexico. If the request starts with a different relative path and does not originate from those countries, then it will check whether the `session` cookie has been set to set `active`. 
+
+![Any statement](/images/v7/performance/rules-use-case-any-statement.png)
+
+### No Match Conditions {/*no-match-conditions*/}
+
+Add an Else statement without any match conditions to match requests that do not satisfy any of the preceding statements.
+
+In the following sample rule, a default caching policy is applied to requests whose relative path does not start with `/shopping/` or originate from the United States, Canada, or Mexico.
+
+![Else statement](/images/v7/performance/rules-use-case-else-statement.png)

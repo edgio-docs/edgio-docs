@@ -9,6 +9,8 @@ Before adding [features](/guides/performance/rules/features) that customize how 
 -   [HTTP method](#http-method)
 -   [Cookies](#cookies)
 -   [Headers](#headers)
+-   [Country](#country)
+-   [Status Code](/guides/performance/rules/feature_scenarios#custom-response-for-specific-status-codes)
 
 In addition to these common scenarios, [there are many other ways](/guides/performance/rules/conditions) through which Rules can match requests. Additionally, you can combine match conditions to selectively apply features when multiple conditions have been met. You may also use [Else or Else If statements](#matching-with-conditional-logic) to apply features when specific criteria has not been met. The power and flexiblity of Rules allows you to use basic configurations or build upon them to create a configuration that addresses your complex business needs.
 
@@ -93,10 +95,10 @@ Use the [Country match condition](/guides/performance/rules/conditions#country) 
 Match requests when they satisfy:
 
 -   A single match condition. The majority of the above examples demonstrate how to match by a single match condition. 
--   Multiple match conditions.
--   Any match condition defined within a statement.
--   Any statement.
--   None of the match conditions defined within a rule.
+-   [Multiple match conditions.](#multiple-match-conditions)
+-   [Any match condition](#any-match-condition-in-a-statement) defined within a statement.
+-   [Any statement.](#any-statement)
+-   [None of the match conditions](#no-match-conditions) defined within a rule.
 
 ### Multiple Match Conditions {/*multiple-match-conditions*/}
 
@@ -130,7 +132,7 @@ In the following sample rule, {{ PRODUCT }} will first check whether the request
 
 ![Any statement](/images/v7/performance/rules-use-case-any-statement.png)
 
-### No Match Conditions {/*no-match-conditions*/}
+### Fallback Matching {/*fallback-matching*/}
 
 Add an Else statement without any match conditions to match requests that do not satisfy any of the preceding statements.
 

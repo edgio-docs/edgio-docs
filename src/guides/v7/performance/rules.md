@@ -214,9 +214,9 @@ You can now use this information to adjust your rules. For example, you may adju
 
 <Video src="https://www.youtube.com/watch?v=oQ5EMbxvprM" />
 
-## Sample Scenario {/*sample-scenario*/}
+### Rule Precedence Scenario {/*rule-precedence-scenario*/}
 
-In this sample scenario, create the following rules:
+This scenario assumes that the following three rules have been created: 
 
 | Order | Purpose                                                   | Description                              |
 |-------|-----------------------------------------------------------|------------------------------------------|

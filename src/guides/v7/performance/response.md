@@ -122,7 +122,7 @@ Common response headers are described below.
     -   By default, our edge servers only return this header when the requested content was previously cached.
     -   The `Accept-Encoding` request header identifies the type of compression requested by the client. An edge server may deliver the requested content immediately if the cached asset matches the requested compression method.
 
--   **Warning:** This response header is only returned when a stale response is served to the client. A stale response is typically served under the following conditions:
+-   <a id="warning" />**Warning:** This response header is only returned when a stale response is served to the client. A stale response is typically served under the following conditions:
 
     -   The [Stale While Revalidate feature](/guides/performance/rules/features#stale-while-revalidate) was applied to the request.
     

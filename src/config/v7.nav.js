@@ -69,6 +69,15 @@ const nav = {
           path: 'performance/rules',
           routes: [
             {
+              title: 'Request Matching Scenarios',
+              path: 'performance/rules/request_matching_scenarios',
+            },
+            {
+              title: 'Feature Scenarios',
+              path: 'performance/rules/feature_scenarios',
+            },
+            separator,
+            {
               title: 'Conditions',
               path: 'performance/rules/conditions',
             },
@@ -271,6 +280,10 @@ const nav = {
               path: 'edge_functions/examples/json_responses',
             },
             {
+              title: 'JWT Verification',
+              path: 'edge_functions/examples/jwt_verification',
+            },
+            {
               title: 'Redirects',
               path: 'edge_functions/examples/redirects',
             },
@@ -365,6 +378,25 @@ const nav = {
         {
           title: 'Response to Client',
           path: 'security/response_to_client',
+        },
+      ],
+    },
+    {
+      title: 'AI Integrations',
+      path: 'ai_integrations',
+      icon: 'ai-integrations',
+      routes: [
+        {
+          title: 'LangChain',
+          path: 'ai_integrations/langchain',
+        },
+        {
+          title: 'LlamaIndex',
+          path: 'ai_integrations/llamaindex',
+        },
+        {
+          title: 'Mistral',
+          path: 'ai_integrations/mistral',
         },
       ],
     },

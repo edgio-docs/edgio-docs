@@ -36,7 +36,13 @@ properties:
       -   false:** Enabled. Traffic is restricted to this rate limit.
 
   duration_sec:
-    description: The length, in seconds, of the rolling window that tracks the number of requests eligible for rate limiting. The `num` property determines the maximum number of requests for this time period.
+    description: |
+    
+      The duration, in seconds, of the window that tracks the number of requests eligible for rate limiting. 
+      
+      Edgio Security Premier customers may define a maximum duration of 1,800 seconds when grouping requests by IP address (i.e., the `keys` array only contains `IP`). All other configurations, including when the `keys` array contains an additional entry, restrict this duration to 300 seconds. 
+
+      The `num` property determines the maximum number of requests for the time period configured by this property.
     type: integer
     format: uint32
     enum:
@@ -47,6 +53,9 @@ properties:
       - 60
       - 120
       - 300
+      - 600
+      - 900
+      - 1800
   num:
     type: integer
     format: uint32
@@ -55,13 +64,23 @@ properties:
     type: array
     description: |
     
-      The method by which requests will be grouped for the purposes of this rate rule. Valid values are:
+      The method by which requests will be grouped for the purposes of this rate rule. Select up to two methods (e.g., `IP` and `USER_AGENT`). Valid values are:
 
       -   **Missing / Empty Array:** If the keys property is not defined or set to an empty array, all requests will be treated as a single group for the purpose of rate limiting.
 
       -   **IP:** Indicates that requests will be grouped by IP address. Each unique IP address is considered a separate group.
 
-      -   **USER_AGENT:** Indicates that requests will be grouped by a client's user agent. Each unique combination of IP address and user agent is considered a separate group.
+      -   **USER_AGENT:** Indicates that requests will be grouped by a client's user agent. Each unique user agent is considered a separate group.
+
+      -   **ASN:** Edgio Security Premier only. Indicates that requests will be grouped by a client's ASN. Each unique ASN is considered a separate group.
+
+      -   **JA3:** Edgio Security Premier only. Indicates that requests will be grouped by a client's JA3. Each unique JA3 is considered a separate group.
+
+      -   **HEADER:{Name}:** Edgio Security Premier only. Indicates that requests will be grouped by the value assigned to the request header defined by the `{Name}` placeholder. Each unique value for the specified header is considered a separate group. A request is excluded from this rate limit when the specified header is not present. 
+
+      -   **COOKIE:{Name}:** Edgio Security Premier only. Indicates that requests will be grouped by the value assigned to the cookie defined by the `{Name}` placeholder. Each unique value for the specified cookie is considered a separate group. A request is excluded from this rate limit when the specified cookie is not present.
+
+      -   **ARGS:{Name}:** Edgio Security Premier only. Indicates that requests will be grouped by the value assigned to the query string parameter defined by the `{Name}` placeholder. Each unique value for the specified parameter is considered a separate group. A request is excluded from this rate limit when the specified parameter is not present.
 
     items:
       allOf:

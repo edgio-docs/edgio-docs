@@ -4,7 +4,7 @@ title: AWS Request Signing
 
 [AWS Request Signing](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) uses the AWS Signature Version 4 algorithm to sign requests to AWS services.
 
- This process involves calculating a signature using the request's elements and your AWS access keys. The signature ensures that AWS can verify the request as being sent by an authenticated source, enhancing security when accessing AWS services like S3. Integrating this with Edge Functions allows for efficient and secure fetching of assets from S3 buckets.
+This process involves calculating a signature using the request's elements and your AWS access keys. The signature ensures that AWS can verify the request as being sent by an authenticated source, enhancing security when accessing AWS services like S3. Integrating this with Edge Functions allows for efficient and secure fetching of assets from S3 buckets.
 
 ## Router Configuration {/* router-configuration */}
 
@@ -54,19 +54,19 @@ module.exports = {
       name: 's3',
 
       // Use the following to override the host header sent from the browser when connecting to the origin
-      override_host_header: process.env.S3_HOSTNAME,
+      override_host_header: process.env.AWS_HOSTNAME,
 
       // The list of origin hosts to which to connect
       hosts: [
         {
           // The domain name or IP address of the origin server
-          location: process.env.S3_HOSTNAME,
+          location: process.env.AWS_HOSTNAME,
         },
       ],
 
       tls_verify: {
         use_sni: true,
-        sni_hint_and_strict_san_check: process.env.S3_HOSTNAME,
+        sni_hint_and_strict_san_check: process.env.AWS_HOSTNAME,
       },
 
       // Uncomment the following to configure a shield
@@ -88,7 +88,7 @@ The Edge Function runtime does not currently support a native crypto library, so
 
 ```js filename="edge-functions/main.js"
 import {AwsV4Signer} from './awsv4';
-import {URL} from 'whatwg-url';
+import URL from 'url-parse';
 
 global.URL = URL;
 
@@ -124,7 +124,6 @@ export async function handleHttpRequest(request, context) {
   });
 }
 ```
-
 
 ```js filename="edge-functions/awsv4.js"
 // @ts-check

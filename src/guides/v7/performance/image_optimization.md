@@ -91,8 +91,6 @@ An optimized image must comply with the following limits:
     -   [Query string parameters](#query-string-parameters).
     -   [Client hints (request headers)](#client-driven-image-optimizations-client-hints)
 
-{{ system_origins_callout.md }}
-
 **To enable image optimization**
 
 1.  Customize the cache key to exclude image optimization query string parameters for images that will be processed by {{ PRODUCT }}.

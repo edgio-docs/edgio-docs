@@ -98,7 +98,7 @@ Match requests when they satisfy:
 -   [Multiple match conditions.](#multiple-match-conditions)
 -   [Any match condition](#any-match-condition-in-a-statement) defined within a statement.
 -   [Any statement.](#any-statement)
--   [None of the match conditions](#no-match-conditions) defined within a rule.
+-   [None of the match conditions](#fallback-matching) defined within a rule.
 
 ### Multiple Match Conditions {/*multiple-match-conditions*/}
 
@@ -136,6 +136,6 @@ In the following sample rule, {{ PRODUCT }} will first check whether the request
 
 Add an Else statement without any match conditions to match requests that do not satisfy any of the preceding statements.
 
-In the following sample rule, a default caching policy is applied to requests whose relative path does not start with `/shopping/` or originate from the United States, Canada, or Mexico.
+In the following sample rule, a default caching policy is applied to requests when their relative path does not start with `/shopping/` or if they were not issued from the United States, Canada, or Mexico.
 
 ![Else statement](/images/v7/performance/rules-use-case-else-statement.png)

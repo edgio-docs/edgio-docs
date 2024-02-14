@@ -16,19 +16,20 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 An edge function is invoked when an incoming request matches a route that has an edge function assigned to it. Only a single edge function can be assigned to a route. If multiple routes match an incoming request, the edge function assigned to the last matching route is invoked.
 
 Define an edge function by:
--   Storing your standalone JavaScript code as a file with a `js` file extension.
--   Setting an `edge_function` property within your {{ ROUTES_FILE }}. Set this string property to the relative path to your edge function. 
 
-    ```js filename="./routes.js"
-    import {Router} from '@edgio/core/router';
-    export default new Router()
-      .get('/', {
-        edge_function: './edge-functions/index.js',
-      })
-      .match('/api/*', {
-        edge_function: './edge-functions/api.js',
-      });
-    ```
+- Storing your standalone JavaScript code as a file with a `js` file extension.
+- Setting an `edge_function` property within your {{ ROUTES_FILE }}. Set this string property to the relative path to your edge function.
+
+  ```js filename="./routes.js"
+  import {Router} from '@edgio/core/router';
+  export default new Router()
+    .get('/', {
+      edge_function: './edge-functions/index.js',
+    })
+    .match('/api/*', {
+      edge_function: './edge-functions/api.js',
+    });
+  ```
 
 An edge function file must export the following entry point:
 
@@ -68,10 +69,9 @@ import {Router} from '@edgio/core/router';
 export default new Router({
   // Specify an edge function initialization script
   edge_function_init_script: './edge-functions/init.js',
-})
-  .get('/', {
-    edge_function: './edge-functions/main.js',
-  });
+}).get('/', {
+  edge_function: './edge-functions/main.js',
+});
 ```
 
 The initialization script must export the following entry point:
@@ -132,7 +132,7 @@ The edge function is passed two parameters: `request` and `context`.
 | `context.environmentVars`           | Key-value store | Environment variables as defined in the {{ PORTAL }} (_Property_ -> _Environment_ --> **Environment Variables**)                                                                                                                                                | [Environment Variables](/guides/basics/environments#environment-variables)                               |
 | `context.geo`                       | Key-value store | The client's geo location                                                                                                                                                                                                                                       | `geo_` variables in [Feature Variables](/guides/performance/rules/feature_variables)                     |
 | `context.metrics`                   | Object          | Provides functions for injecting [metrics](#metrics-functions) into your edge function                                                                                                                                                                          | [Edge Insights - Access Logs](/guides/performance/observability/edge_insights)                           |
-| `context.origins`                   | Key-value store | Origin servers as defined in the {{ PORTAL }} (_Property_ -> _Environment_ -> **Origins**) or the `{{ CONFIG_FILE }}` file                                                                                                                                      | [Origin Configuration](/guides/basics/origins)                                      |
+| `context.origins`                   | Key-value store | Origin servers as defined in the {{ PORTAL }} (_Property_ -> _Environment_ -> **Origins**) or the `{{ CONFIG_FILE }}` file                                                                                                                                      | [Origin Configuration](/guides/basics/origins)                                                           |
 | `context.requestVars`               | Key-value store | Information about this property including values set using Set Variables                                                                                                                                                                                        | [Set Variables](/guides/performance/rules/features#set-variables)                                        |
 | ~~`context.respondWith(response)`~~ | Function        | <ul><li>**{{ PRODUCT }} v7.2.3 or higher:** Deprecated. See [Responding to the Client](#responding-to-the-client).</li><li>**{{ PRODUCT }} v7.2.2 or lower:** Must be called to return the response from your edge function to the downstream client.</li></ul> | [context.respondWith(response)](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith) |
 | `context.waitUntil(promise)`        | Function        | Waits until the given promise is fulfilled                                                                                                                                                                                                                      | [context.waitUntil(promise)](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil) |
@@ -404,8 +404,8 @@ async function handleRequest(request) {
   const modifiedRequest = new Request(request, {
     headers: new Headers({
       ...request.headers,
-      'Accept-Encoding': 'identity' // Disallow compression methods like gzip or br
-    })
+      'Accept-Encoding': 'identity', // Disallow compression methods like gzip or br
+    }),
   });
 
   // Fetch the response from the origin server
@@ -508,10 +508,27 @@ Edge functions are confined to 50ms of CPU time and a maximum of 60s for overall
 
 It's important to note that edge functions are not Node.js functions. Your code or third-party libraries may not work as expected if they are referencing Node.js specific APIs (e.g. `URL`, `Buffer`, etc). Because of this, we recommend using polyfills when needed. Below are some examples of polyfills you can use in your edge functions. Add these files to your project and import them into your edge function files as needed.
 
+Install the following packages to use the polyfills:
+
+<PackageCommand>
+
+```
+npm install url-parse // Recommended for the URL API
+// or
+npm install whatwg-url
+---
+yarn add url-parse // Recommended for the URL API
+// or
+yarn add whatwg-url
+```
+
+</PackageCommand>
+
+Once installed, you can use the following polyfills:
+
 - `url-parse` for the `URL` API
 
   ```js filename="./polyfills/url-parse.js"
-  // npm install url-parse
   import URL from 'url-parse';
 
   global.URL = URL;
@@ -520,7 +537,6 @@ It's important to note that edge functions are not Node.js functions. Your code 
 - `whatwg-url` for the `URL` and `URLSearchParams` APIs
 
   ```js filename="./polyfills/whatwg-url.js"
-  // npm install whatwg-url
   import {URL, URLSearchParams} from 'whatwg-url';
 
   global.URL = URL;

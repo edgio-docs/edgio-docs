@@ -14,6 +14,7 @@ import Image from './Image';
 import InlineCode from './InlineCode';
 import Integrations from './Integrations';
 import Link from './Link';
+import PackageCommand from './PackageCommand';
 import PopularFrameworks from './PopularFrameworks';
 import RawEdgeJS from './RawEdgeJS';
 import {SnippetGroup} from './SnippetGroup';
@@ -87,4 +88,5 @@ export const MDXComponents = {
   SnippetGroup,
   Condition,
   RawEdgeJS,
+  PackageCommand,
 };

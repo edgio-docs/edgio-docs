@@ -6,6 +6,20 @@ title: AWS Request Signing
 
 This process involves calculating a signature using the request's elements and your AWS access keys. The signature ensures that AWS can verify the request as being sent by an authenticated source, enhancing security when accessing AWS services like S3. Integrating this with Edge Functions allows for efficient and secure fetching of assets from S3 buckets.
 
+## Dependencies {/* dependencies */}
+
+This guides references the following dependencies that will need to be installed in your project:
+
+<PackageCommand>
+
+```
+npm install crypto-js whatwg-url
+---
+yarn add crypto-js whatwg-url
+```
+
+</PackageCommand>
+
 ## Router Configuration {/* router-configuration */}
 
 In the {{ PRODUCT }} router, you can use the `edge_function` feature to specify the path to the edge function that will handle requests to assets in the S3 bucket.
@@ -79,12 +93,6 @@ module.exports = {
 ## Edge Function {/* edge-function */}
 
 The edge function will sign the incoming request using the `AwsV4Signer` class, and then forward the request to the S3 bucket. The `AwsV4Signer` class is a third-party library that handles the signing process, and is included in the `edge-functions` directory of this example.
-
-<Callout type="important">
-
-The Edge Function runtime does not currently support a native crypto library, so a third-party library to generate the signature is needed. In this example, we'll use the [crypto-js](https://github.com/brix/crypto-js) library.
-
-</Callout>
 
 ```js filename="edge-functions/main.js"
 import {AwsV4Signer} from './awsv4';

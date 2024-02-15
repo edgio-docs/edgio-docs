@@ -88,7 +88,7 @@ The Edge Function runtime does not currently support a native crypto library, so
 
 ```js filename="edge-functions/main.js"
 import {AwsV4Signer} from './awsv4';
-import URL from 'url-parse';
+import {URL} from 'whatwg-url';
 
 global.URL = URL;
 

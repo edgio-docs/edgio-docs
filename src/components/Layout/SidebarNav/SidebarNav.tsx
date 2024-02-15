@@ -2,12 +2,13 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
+import cn from 'classnames';
 import {Suspense} from 'react';
 import * as React from 'react';
-import cn from 'classnames';
+
 import {Feedback} from '../Feedback';
-import {SidebarRouteTree} from '../Sidebar/SidebarRouteTree';
 import type {RouteItem} from '../getRouteMeta';
+import {SidebarRouteTree} from '../Sidebar/SidebarRouteTree';
 
 declare global {
   interface Window {

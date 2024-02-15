@@ -2,6 +2,11 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
+import {disableBodyScroll, enableBodyScroll} from 'body-scroll-lock';
+import cn from 'classnames';
+import {Search} from 'components/Search';
+import NextLink from 'next/link';
+import {useRouter} from 'next/router';
 import {
   useState,
   useRef,
@@ -11,19 +16,15 @@ import {
   Suspense,
 } from 'react';
 import * as React from 'react';
-import cn from 'classnames';
-import NextLink from 'next/link';
-import {useRouter} from 'next/router';
-import {disableBodyScroll, enableBodyScroll} from 'body-scroll-lock';
+
+import {Logo} from '../../Logo';
+import {Feedback} from '../Feedback';
+import type {RouteItem} from '../getRouteMeta';
+import {SidebarRouteTree} from '../Sidebar';
 
 import {IconClose} from 'components/Icon/IconClose';
 import {IconHamburger} from 'components/Icon/IconHamburger';
 import {IconSearch} from 'components/Icon/IconSearch';
-import {Search} from 'components/Search';
-import {Logo} from '../../Logo';
-import {Feedback} from '../Feedback';
-import {SidebarRouteTree} from '../Sidebar';
-import type {RouteItem} from '../getRouteMeta';
 
 declare global {
   interface Window {

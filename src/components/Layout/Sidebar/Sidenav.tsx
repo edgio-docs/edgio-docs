@@ -8,121 +8,65 @@ import {GoChevronRight} from 'react-icons/go';
 import styled from 'styled-components';
 
 import {FIDDLE_URL} from '../../../../constants';
-import type {Route} from 'utils/Types';
 
 import AppContext from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
+import type {Route} from 'utils/Types';
 
-interface IRoutes {
-  title: string;
-  path: string;
-  routes: Route[];
-}
-
+// Simplified and reorganized Accordion component
 function Accordion({
   route,
   isActive,
-  onSelect,
+  onToggle,
   depth,
-  currentRoutePath,
 }: {
   route: Route;
   isActive: boolean;
-  onSelect: () => void;
+  onToggle: () => void;
   depth: number;
-  currentRoutePath: string;
 }) {
   const {
     version: {toVersionedPath, selectedVersion},
   } = useConditioning();
-
   const {getCollapseProps, getToggleProps} = useCollapse({
-    isExpanded: selectedVersion === '4' || isActive,
+    isExpanded: isActive,
   });
 
-  if (!route.path) return null;
+  // Directly return null to avoid rendering if no path is provided
+  if (!route.path) {
+    return null;
+  }
 
-  const isActiveLink = route.path.length > 0;
-  const currentPathAtCurrentDepth = currentRoutePath.split('/')[depth];
-  const routePathAtCurrentDepth = route.path.split('/')[depth];
-  const childElement = (
-    <a
-      className="menu-toggle__wrap"
-      data-is-highlighted={
-        currentPathAtCurrentDepth &&
-        currentPathAtCurrentDepth === routePathAtCurrentDepth
-      }
-      {...getToggleProps({
-        onClick: onSelect,
-      })}
-      data-v4={selectedVersion === '4'}>
-      {depth === 0 && (
-        <div className="icons">
-          <div id="dark-theme">
-            <Image
-              src={`/icons/${route.icon}.svg`}
-              alt={route.icon}
-              width="16px"
-              height="16px"
-              priority
-            />
-          </div>
-          <div id="light-theme">
-            <Image
-              src={`/icons/${route.icon}-dark.svg`}
-              alt={route.icon}
-              width="16px"
-              height="16px"
-              priority
-            />
-          </div>
-        </div>
-      )}
-      <span>{route.title}</span>
-      {route.routes && (
-        <div className="icon-chevron">
-          <GoChevronRight />
-        </div>
-      )}
-    </a>
-  );
-
+  // Render the accordion item
   return (
-    <li
-      className="sidenav-item"
-      data-comp="accordion"
-      data-expanded={selectedVersion === '4' || isActive}>
+    <li className="sidenav-item" data-comp="accordion" data-expanded={isActive}>
       <div className="sidenav-menu__container">
-        {/* Toggle */}
-        {route.external ? (
-          <a
-            href={route.path}
-            className="sidenav-link menu-toggle__wrap"
-            target="_blank"
-            rel="noopener noreferrer">
-            <span> {route.title}</span>
-            <div className="icon-chevron">
-              <CgExternal />
-            </div>
-          </a>
-        ) : (
-          route.title &&
-          isActiveLink && (
-            <Link
-              href={toVersionedPath(route.path)}
-              className="sidenav-link"
-              data-depth={depth}>
-              {childElement}
-            </Link>
-          )
-        )}
-        {/* Collapse */}
+        {/* Render external link or internal navigation link */}
+        <span className="sidenav-item-link">
+          {route.external ? (
+            <ExternalLink route={route} />
+          ) : (
+            <InternalLink
+              route={route}
+              depth={depth}
+              onToggle={onToggle}
+              toVersionedPath={toVersionedPath}
+              getToggleProps={getToggleProps}
+            />
+          )}
+        </span>
+        {/* Conditional rendering of sub-menu items */}
         {route.routes && (
-          // ?? can this be a single component that returns its children?
-          <ul
-            className="sidenav-sublist"
-            {...{'data-nav-depth': depth + 1, ...getCollapseProps()}}>
-            <AccordionParent {...{routes: route.routes, depth: depth + 1}} />
+          <ul className="sidenav-sublist" {...getCollapseProps()}>
+            {route.routes.map((subRoute, index) => (
+              <Accordion
+                key={index}
+                route={subRoute}
+                isActive={isActive}
+                onToggle={() => {}}
+                depth={depth + 1}
+              />
+            ))}
           </ul>
         )}
       </div>
@@ -130,69 +74,118 @@ function Accordion({
   );
 }
 
-function getCurrentRouteIndex(
-  routes: Route[],
-  depth: number,
-  currentRoutePath: string
-) {
-  return routes.findIndex((route) => {
-    const _route = route.path.split('/')[route.path.split('/').length - 1];
-    const _crp = currentRoutePath.split('/')[depth];
-    return _route == _crp;
-  });
+// Renders an external link
+function ExternalLink({route}: {route: Route}) {
+  return (
+    <a
+      href={route.path}
+      className="sidenav-link menu-toggle__wrap"
+      target="_blank"
+      rel="noopener noreferrer">
+      <span>{route.title}</span>
+      <CgExternal className="icon-chevron" />
+    </a>
+  );
 }
 
-//click on the Link:
-//  1. Open or close if it has children
-//  2. Navigate
-function AccordionParent({routes, depth}: {routes: Route[]; depth: number}) {
-  const router = useRouter();
-  const {version} = useConditioning();
-  const slug = (router.query?.slug as string[]) ?? [];
-  const index = slug.indexOf(version.pathPrefix);
-  const currentRoutePath = (index === -1 ? slug : slug.slice(index + 1)).join(
-    '/'
-  );
-
-  const [activeIndex, setActiveIndex] = useState<number | null>(() =>
-    getCurrentRouteIndex(routes, depth, currentRoutePath)
-  );
-
-  useEffect(() => {
-    setActiveIndex(getCurrentRouteIndex(routes, depth, currentRoutePath));
-  }, [currentRoutePath, depth, routes]);
+// Renders an internal link with optional toggle for sub-menus
+function InternalLink({
+  route,
+  depth,
+  onToggle,
+  toVersionedPath,
+  getToggleProps,
+}: {
+  route: Route;
+  depth: number;
+  onToggle: () => void;
+  toVersionedPath: (path: string) => string;
+  getToggleProps: () => any;
+}) {
+  const preventDefaultAndToggle = (e: React.MouseEvent<SVGElement>) => {
+    e.preventDefault();
+    onToggle();
+  };
 
   return (
-    <>
-      {routes.map((route, index) => {
-        return (
-          <Fragment key={index}>
-            <Accordion
-              {...{
-                route,
-                currentRoutePath,
-                isActive: activeIndex === index,
-                onSelect: () =>
-                  setActiveIndex(activeIndex === index ? null : index),
-                depth,
-              }}
-            />
-          </Fragment>
-        );
-      })}
-    </>
+    <Fragment>
+      {route.icon && depth === 0 && <RouteIcon icon={route.icon} />}
+      <Link
+        href={toVersionedPath(route.path!)}
+        className="sidenav-link"
+        data-depth={depth}>
+        <a {...getToggleProps()} className="menu-toggle__wrap">
+          <span>{route.title}</span>
+
+          {route.routes && (
+            <span className="icon-chevron" onClick={preventDefaultAndToggle}>
+              <GoChevronRight />
+            </span>
+          )}
+        </a>
+      </Link>
+    </Fragment>
+  );
+}
+
+// Utility component to render route icons
+function RouteIcon({icon}: {icon: string}) {
+  return (
+    <div className="icons">
+      <ImageWrapper icon={icon} theme="dark" />
+      <ImageWrapper icon={icon} theme="light" />
+    </div>
+  );
+}
+
+// Utility component for Image tags to reduce repetition
+function ImageWrapper({icon, theme}: {icon: string; theme: string}) {
+  return (
+    <div id={`${theme}-theme`}>
+      <Image
+        src={`/icons/${icon}${theme === 'light' ? '-dark' : ''}.svg`}
+        alt={icon}
+        width="16px"
+        height="16px"
+        priority
+      />
+    </div>
+  );
+}
+
+// Main SideNav component that handles rendering of top-level AccordionParent
+export default function SideNav() {
+  const {navMenuItems} = useContext(AppContext);
+
+  if (!navMenuItems.routes) {
+    return null;
+  }
+
+  return (
+    <StyledSideNav>
+      <ul className="sidenav-sublist" data-nav-depth="0">
+        {navMenuItems.routes.map((route, index) => (
+          <Accordion
+            key={index}
+            route={route}
+            isActive={index === 1} // Initial state can be dynamic based on the route or context
+            onToggle={() => {}} // Implement toggle functionality if needed
+            depth={0}
+          />
+        ))}
+      </ul>
+    </StyledSideNav>
   );
 }
 
 const StyledSideNav = styled.div`
   display: flex;
-  row-gap: 2rem;
   flex-direction: column;
   height: 100%;
 
+  /* Styles for nested lists */
   ul:not([data-nav-depth='0']) {
-    position: absolute;
-
+    position: relative; /* Adjusted to ensure proper alignment and visibility */
     ::before {
       content: '';
       position: absolute;
@@ -204,93 +197,79 @@ const StyledSideNav = styled.div`
     }
   }
 
-  [aria-expanded='true'] {
-    .icon-chevron {
-      transform: translateX(-20px) rotate(90deg);
-    }
+  /* Rotate chevron icon when expanded */
+  [aria-expanded='true'] .icon-chevron {
+    transform: rotate(90deg);
   }
 
+  /* Highlight styling */
   [data-is-highlighted='true'][data-v4='false'] {
     font-weight: 700 !important;
     color: var(--colors-blue0) !important;
   }
 
-  .sidenav-sublist {
-    list-style: none;
-    padding: 0px;
-
-    :first-of-type {
-      flex: 1 1 0%;
-      overflow-y: auto;
-
-      + hr {
-        height: 1px;
-        border: none;
-        background: var(--border-primary);
-      }
-    }
-  }
-
-  .sidenav-sublist [data-nav-depth='1'] {
-    margin-left: calc(16px + 20px);
-  }
-
-  .sidenav-sublist [data-nav-depth='2'] {
-    margin-left: calc(16px);
+  .sidenav-menu__container {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically in the center */
+    flex-wrap: nowrap; /* Ensure items do not wrap */
+    flex-direction: row; /* Stack items horizontally */
   }
 
   .menu-toggle__wrap {
-    display: grid;
+    display: flex;
     align-items: center;
-    background: transparent;
-    border: medium none;
     width: 100%;
+    padding: 5px 0;
+    background: transparent;
+    border: none;
     text-decoration: none;
-    text-align: left;
-    padding: 5px 16px;
-    column-gap: 10px;
-    position: relative;
     cursor: pointer;
-    border-radius: 2px;
     color: var(--sidebar-link-primary);
-    grid-template-columns: auto 1fr auto;
     font-size: 14px;
     font-weight: 400;
+    flex-wrap: nowrap;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      font-size: 16px; /* Makes text slightly larger */
+      color: var(--colors-blue0);
+    }
   }
 
-  .menu-toggle__wrap:hover {
-    color: var(--colors-blue0);
+  span.icon-chevron {
+    margin-left: auto;
+    margin-right: 20px;
+    transition: color 100ms ease-in-out, transform 100ms ease-in-out;
+    flex-shrink: 0;
+
+    &:hover {
+      font-size: 16px; /* Makes text slightly larger */
+      box-shadow: 0 0 0 1px var(--sidebar-link-primary);
+    }
   }
 
-  .menu-toggle__wrap + .sidenav-sublist {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .sidenav-menu__container:empty {
-    height: 1px;
-    width: calc(100% - 32px);
-    background: var(--hr-primary);
-    transform: translateX(16px);
-    opacity: 0.6;
-    padding: 0;
-    margin: 2px 0;
-  }
-
-  .icon-box {
-    display: flex;
-    justify-content: center;
-    width: 16px;
-    height: 16px;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .icon-chevron {
+  /* Ensure the hover effect on chevron does not affect the alignment */
+  .icons {
+    margin-right: 10px;
     transition: 100ms ease-in-out;
-    position: absolute;
-    right: 0;
-    transform: translateX(-20px);
+    flex-shrink: 0;
+  }
+
+  /* Additional styles for .icon-chevron and other elements... */
+
+  /* Adjustments for nested sublist indentation and styling */
+  .sidenav-sublist {
+    list-style: none; /* Remove bullet points */
+    padding-left: 0; /* Remove padding */
+    margin-left: 16px; /* Indent nested lists */
+    display: flex; /* Use flex layout for sublists */
+    flex-direction: column; /* Stack items vertically */
+  }
+
+  /* Style adjustments for deeper nesting or specific cases */
+  .sidenav-sublist [data-nav-depth='1'],
+  .sidenav-sublist [data-nav-depth='2'] {
+    margin-left: calc(16px + 20px); /* Adjust margins for nested items */
   }
 `;
 
@@ -321,63 +300,3 @@ const links = [
     icon: 'edgio',
   },
 ];
-
-export default function SideNav() {
-  const {navMenuItems, config, version} = useContext(AppContext);
-
-  if (!navMenuItems.routes) {
-    return null;
-  }
-
-  return (
-    <StyledSideNav>
-      <ul className="sidenav-sublist" data-nav-depth="0">
-        <AccordionParent
-          routes={(navMenuItems as unknown as IRoutes).routes}
-          depth={0}
-        />
-      </ul>
-      <hr />
-      <ul className="sidenav-sublist" data-nav-depth="0">
-        {links.map((link) => {
-          return (
-            <li key={link.path} className="sidenav-item">
-              <div className="sidenav-menu__container">
-                <a
-                  href={link.path}
-                  className="sidenav-link menu-toggle__wrap"
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  <div className="icons">
-                    <div id="dark-theme">
-                      <Image
-                        src={`/icons/${link.icon}.svg`}
-                        alt={link.icon}
-                        width={16}
-                        height={16}
-                        priority
-                      />
-                    </div>
-                    <div id="light-theme">
-                      <Image
-                        src={`/icons/${link.icon}-dark.svg`}
-                        alt={link.icon}
-                        width={16}
-                        height={16}
-                        priority
-                      />
-                    </div>
-                  </div>
-                  <span>{link.title}</span>
-                  <div className="icon-chevron">
-                    <CgExternal />
-                  </div>
-                </a>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-    </StyledSideNav>
-  );
-}

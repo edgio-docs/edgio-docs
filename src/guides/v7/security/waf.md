@@ -35,7 +35,7 @@ Use our WAF to:
 
     <Callout type="info">
 
-      Use a whitelist, blacklist, or accesslist to restrict traffic by ASN, country, IP address, referrer, URL, user agent, HTTP method, media type, and/or file extension.
+      Use a whitelist, blacklist, or accesslist to restrict traffic by ASN, country, IP address, referrer, URL, user agent, HTTP method, media type, and file extension.
 
     </Callout>
 
@@ -98,7 +98,7 @@ Each request undergoes the following security workflow:
     
     <Callout type="info">
 
-      A whitelist identifies traffic that should always be considered safe. Traffic may be whitelisted by ASN, country, IP address, referrer, URL, user agent, HTTP method, media type, and/or file extension.
+      A whitelist identifies traffic that should always be considered safe. Traffic may be whitelisted by ASN, country, IP address, referrer, URL, user agent, HTTP method, media type, and file extension.
 
     </Callout>
 
@@ -108,7 +108,7 @@ Each request undergoes the following security workflow:
 
     <Callout type="info">
 
-      An accesslist identifies traffic that may access your content upon passing a threat assessment. Traffic may be accesslisted by ASN, country, IP address, referrer, URL, user agent, HTTP method, media type, and/or file extension.
+      An accesslist identifies traffic that may access your content upon passing a threat assessment. Traffic may be accesslisted by ASN, country, IP address, referrer, URL, user agent, HTTP method, media type, and file extension.
 
     </Callout>
 
@@ -116,7 +116,7 @@ Each request undergoes the following security workflow:
 
     <Callout type="info">
 
-      A blacklist identifies traffic that should always be considered malicious. Traffic may be blacklisted by ASN, country, IP address, referrer, URL, user agent, HTTP method, media type, and/or file extension.
+      A blacklist identifies traffic that should always be considered malicious. Traffic may be blacklisted by ASN, country, IP address, referrer, URL, user agent, HTTP method, media type, and file extension.
 
     </Callout>
 

@@ -12,7 +12,7 @@ title: Feature Scenarios
 -   [Tagging requests for purging.](#tagging-requests-for-purging)
 -   [Redirecting HTTP requests to HTTPS.](#http-to-https-redirects)
 
-### Disable Caching {/*disable-caching*/}
+## Disable Caching {/*disable-caching*/}
 
 By default, [{{ PRODUCT }} will only cache content](/guides/performance/caching#default-caching-policy) when it receives cache directives from your origin (e.g., your web servers). Prevent {{ PRODUCT }} from caching content even when cache directives are present by disabling caching for the desired requests through the [Bypass Cache feature](/guides/performance/rules/features#bypass-cache).
 
@@ -22,7 +22,7 @@ Add the [Bypass Client Cache feature](/guides/performance/rules/features#bypass-
 
 ![Bypass Cache and Bypass Client Cache features](/images/v7/performance/rules-use-case-bypass-client-cache.png?width=700)
 
-### Custom Cache Policy {/*custom-cache-policy*/}
+## Custom Cache Policy {/*custom-cache-policy*/}
 
 Customize how long {{ PRODUCT }} will cache your content on our network by adding the [Set Max Age feature](/guides/performance/rules/features#set-max-age). Define a max-age interval for each desired status code.
 
@@ -34,7 +34,7 @@ Add the [Stale While Revalidate feature](/guides/performance/rules/features#stal
 
 ![Bypass Cache and Stale While Revalidate features](/images/v7/performance/rules-use-case-stale-while-revalidate.png?width=700)
 
-### Custom Cache Key {/*custom-cache-key*/}
+## Custom Cache Key {/*custom-cache-key*/}
 
 {{ PRODUCT }} uses a [cache key](/guides/performance/caching/cache_key) to look up whether the requested content has been previously cached. By default, this cache key is determined by a variety of factors, including the requested URL and query string. This default configuration can lead to an optimal cache hit ratio when {{ PRODUCT }} serves different content for each unique query string. However, the cache hit ratio may be suboptimal when any of the following conditions are true:
 -   The response body does not vary by query string. 
@@ -45,7 +45,7 @@ Use the [Cache Key feature](/guides/performance/rules/features#cache-key) to tai
 
 ![Cache Key feature](/images/v7/performance/rules-use-case-cache-key.png)
 
-### Cache Metadata {/*cache-metadata*/}
+## Cache Metadata {/*cache-metadata*/}
 
 Troubleshoot cache-related issues by including cache metadata within the response sent to the client. This requires enabling the [Debug Header feature](/guides/performance/rules/features/debug-header). We recommend that you enable it within a rule that applies to all requests as illustrated below.
 
@@ -53,7 +53,7 @@ Troubleshoot cache-related issues by including cache metadata within the respons
 
 Once you have enabled this feature, cache metadata will be included in the response when you use the [Edgio Developer Tools Chrome extension](https://chrome.google.com/webstore/detail/edgio-developer-tools/ieehikdcdpeailgpfdbafhnbfhpdgefm) or by [manually requesting it through headers](/guides/performance/response#requesting-debug-cache-information).
 
-### Custom Response for Specific Status Codes {/*custom-response-for-specific-status-codes*/}
+## Custom Response for Specific Status Codes {/*custom-response-for-specific-status-codes*/}
 
 A common task is to provide a custom response for a specific status code.
 
@@ -79,7 +79,7 @@ Your rule should now look similar to the following illustration:
 
 ![Set Status Code feature](/images/v7/performance/rules-use-case-set-status-code.png?width=700)
 
-### Tagging Requests for Purging {/*tagging-requests-for-purging*/}
+## Tagging Requests for Purging {/*tagging-requests-for-purging*/}
 
 [Tag requests for purging](/guides/performance/caching/purging#surrogate-key) by setting the `Surrogate-Key` response header to the desired labels. If you use the [Set Response Headers feature](/guides/performance/rules/features#set-response-headers) to set this header, then you can take advantage of [feature variables](/guides/performance/rules/feature_variables) when defining labels. This allows you to dynamically assign one or more label(s). For example, you can tag requests by country and file extension by setting this header to this value: 
 
@@ -103,7 +103,7 @@ Purge all requests that originate from within the US for PNG images by submittin
 
 `US-png`
 
-### HTTP to HTTPS Redirects {/*http-to-https-redirects*/}
+## HTTP to HTTPS Redirects {/*http-to-https-redirects*/}
 
 Automatically redirect all HTTP requests to HTTPS.
 

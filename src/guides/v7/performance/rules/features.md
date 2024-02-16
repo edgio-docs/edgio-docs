@@ -1063,8 +1063,8 @@ export default new Router()
   .get('/', {
     caching: {
       "cache_key_rewrite": {
-		"source": "/conferences/marketing/(.*)",
-		"destination": "/conferences/marketing/$1-%{http_Session_Type}"
+        "source": "/conferences/marketing/(.*)",
+        "destination": "/conferences/marketing/$1-%{http_Session_Type}"
       }
     }
   })

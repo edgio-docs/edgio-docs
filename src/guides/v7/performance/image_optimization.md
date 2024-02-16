@@ -29,6 +29,8 @@ Optimize images through the following steps:
 
     -   Requesting data from the client through [client hints](#client-hints).
 
+[View a sample implementation.](/guides/performance/rules/feature_scenarios#default-image-optimizations)
+
 ## How Does It Work? {/*how-does-it-work-*/}
 
 A client's request URL determines the set of transformations that will be applied to an image. For example, the following request URL will resize the source image to 500 x 500 and then apply a blur effect to the resized image:

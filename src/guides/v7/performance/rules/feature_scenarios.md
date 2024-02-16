@@ -107,7 +107,7 @@ Purge all requests that originate from within the US for PNG images by submittin
 
 Automatically redirect all HTTP requests to HTTPS.
 
-1.  Identity all HTTP requests by adding the [Scheme match condition](/guides/performance/rules/conditions#scheme) and setting it to `HTTP`.
+1.  Identify all HTTP requests by adding the [Scheme match condition](/guides/performance/rules/conditions#scheme) and setting it to `HTTP`.
 2.  Redirect HTTP requests to a HTTPS URL through the [URL Redirect feature](/guides/performance/rules/features#url-redirect). 
     1.  Set the **Source** option to `(.*)`. 
     2.  Set the **Destination** option to `https://%{host}$1`. The `%{host}` is a feature variable that is replaced by the host defined in the request URL. The `$1` represents the relative path for the request submitted by the client.
@@ -117,3 +117,30 @@ Automatically redirect all HTTP requests to HTTPS.
 Your rule should now look like similar to this:
 
 ![HTTP to HTTPS redirect](/images/v7/performance/rules-use-case-http-to-https-redirect.png?width=700)
+
+## Default Image Optimizations {/*default-image-optimizations*/}
+
+Automatically apply one or more image optimizations to all images.
+
+1.  Identify all images by adding the [Path match condition](/guides/performance/rules/conditions#path). Use the `matches (simple)` operator and set the **Match Value** option to:
+
+    `/:path*/:file.:ext(jpg|jpeg|png|gif)`
+    
+    The above value matches all requests whose file extension is either jpg, jpeg, png, or gif.
+
+2.  Enable Image Optimization by adding the [Optimize Images feature](/guides/performance/features#optimize-images).
+3.  Apply a default set of image optimizations by rewriting the URL. Add the [Rewrite URL feature](/guides/performance/rules/features#rewrite-url).
+
+    1.  Set the **Source Path (Optional)** option to: `/.+`
+    2.  Set the **Match Style** option to `regexp`.
+    3.  Set the **Destination Path** option to:
+
+        `%{path}?%{query_string/(.+)/$1&}$1&<Default Optimizations>`
+
+        **Example:**
+
+        For example, the following configuration automatically generates a WebP image and strips metadata from the image:
+
+        `%{path}?%{query_string/(.+)/$1&}$1&auto=webp&strip=1`
+
+{{ PRODUCT }} will always apply the defined set of optimizations to your images. It will also apply any additional optimizations defined within the request, as long as those optimizations do not conflict with your default image optimization configuration.

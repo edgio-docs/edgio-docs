@@ -58,9 +58,9 @@ Additional information on each of the above steps is provided below.
     - Bot detection
     - Custom threat detection rules. 
     - Threat detection policies.
--   **Step 2 - Create a Security App Configuration:** Create a Security App Configuration that identifies the type of traffic to which your security rules will be applied and how threats will be handled. 
-
-    Test new security configurations through an audit mode that generates alerts on flagged traffic.
+-   **Step 2 - Create a Security App Configuration:** Create a Security App Configuration that identifies the type of traffic for which:
+    -   New security rules will be tested. This is known as Audit mode.
+    -   Security rules will be enforced. This is known as Production mode.
 
 -   **Step 3 - Monitor Threats:** Use the dashboard to:  
     - Visualize threat frequency and timing.  
@@ -72,7 +72,7 @@ Additional information on each of the above steps is provided below.
 
 </Callout>
 
-## Audit Traffic {/*audit-traffic*/}
+## Audit Security Rules {/*audit-security-rules*/}
 
 Apply a security rule within a Security App configuration in one of the following modes:
 
@@ -94,7 +94,7 @@ Each request undergoes the following security workflow:
 1.  {{ PRODUCT }} will first screen the request against your Audit configuration. Proceed to the next step once either of the following conditions are met:
     -   An alert is triggered. {{ PRODUCT }} will skip all remaining Audit configurations.
     -   {{ PRODUCT }} has finished screened the request against your Audit configurations.
-2.  Does the request meet a whitelist criterion? If so, it is considered legitimate and no further checks will be performed.
+2.  Does the request meet a whitelist criterion defined within an access rule? If so, it is considered legitimate and no further checks will be performed.
     
     <Callout type="info">
 
@@ -112,7 +112,7 @@ Each request undergoes the following security workflow:
 
     </Callout>
 
-4.  Does the request meet a blacklist criterion? If so, it is identified as a threat and no further checks will be performed.
+4.  Does the request meet a blacklist criterion defined within an access rule? If so, it is identified as a threat and no further checks will be performed.
 
     <Callout type="info">
 

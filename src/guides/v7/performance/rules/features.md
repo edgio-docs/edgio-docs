@@ -1063,8 +1063,8 @@ export default new Router()
   .get('/', {
     caching: {
       "cache_key_rewrite": {
-		"source": "/conferences/marketing/(.*)",
-		"destination": "/conferences/marketing/$1-%{http_Session_Type}"
+        "source": "/conferences/marketing/(.*)",
+        "destination": "/conferences/marketing/$1-%{http_Session_Type}"
       }
     }
   })
@@ -1077,18 +1077,16 @@ export default new Router()
 
 Determines the `max-age` interval for browser to edge server cache revalidation. In other words, the amount of time that will pass before a browser can check for a new version of an asset from an edge server.
 
-Enabling this feature will generate `Cache-Control:max-age` and `Expires` headers from our edge servers and send them to the HTTP client. By default, these headers will overwrite those created by the origin server. However, the [Cache Control Header Treatment](#cache-control-header-treatment) and the [Expires Header Treatment](#expires-header-treatment) features may be used to alter this behavior.
-
 **Key information:**
 
--   This action does not affect edge server to origin server cache revalidations. These types of revalidations are determined by the `Cache-Control` / `Expires` headers received from the origin server, and can be customized with the [Max Age feature](#set-max-age).
+-   This feature adds `Cache-Control:max-age` and `Expires` headers to the response. By default, these headers overwrite those created by the origin server. However, the [Cache Control Header Treatment](#cache-control-header-treatment) and the [Expires Header Treatment](#expires-header-treatment) features may be used to alter this behavior.
+-   This action does not affect edge server to origin server cache revalidations. These types of revalidations are determined by the `Cache-Control` / `Expires` headers received from the origin server, and can be customized with the [Set Max Age feature](#set-max-age).
 -   Setting this feature to a negative value causes our edge servers to send a `Cache-Control:no-cache` and an `Expires` time that is set in the past with each response to the browser. Although an HTTP client will not cache the response, this setting will not affect our edge servers' ability to cache the response from the origin server.
 
 <edgejs>
-Enabling this feature will generate `Cache-Control:max-age` and `Expires` headers from our edge servers and send them to the HTTP client. By default, these headers will overwrite those created by the origin server. However, the `cache_control_header_treatment` and the `expires_header_treatment` features may be used to alter this behavior.
-
 **Key information:**
 
+-   This feature adds `Cache-Control:max-age` and `Expires` headers to the response. By default, these headers overwrite those created by the origin server. However, the [Cache Control Header Treatment](#cache-control-header-treatment) and the [Expires Header Treatment](#expires-header-treatment) features may be used to alter this behavior.
 -   **Syntax:** `<TIME>[s|m|h|d|w|y]`
 -   This action does not affect edge server to origin server cache revalidations. These types of revalidations are determined by the `Cache-Control` / `Expires` headers received from the origin server, and can be customized with the `max_age` feature.
 -   Setting this feature to a negative value causes our edge servers to send a `Cache-Control:no-cache` and an `Expires` time that is set in the past with each response to the browser. Although an HTTP client will not cache the response, this setting will not affect our edge servers' ability to cache the response from the origin server.
@@ -1109,10 +1107,11 @@ export default new Router()
 
 #### Set Max Age{/*set-max-age*/}
 
-Defines a `max-age` interval for edge server to origin server cache revalidation that overrides the one defined in `Cache-Control` or `Expires` headers generated from an origin server.  This interval defines the amount of time that will pass before an edge server can check whether a cached asset matches the asset stored on the origin server.
+Defines a `max-age` interval for edge server to origin server cache revalidation. In other words, the amount of time that will pass before an edge server will check whether a cached asset matches the asset stored on the origin server.
 
 **Key information:**
 
+-   This feature overrides the max-age interval defined in `Cache-Control` or `Expires` headers generated from an origin server. However, it will not override `private`, `no-store`, or `no-cache` directives when present in the origin server's response. Override these cache directives by enabling the [Ignore Origin No Cache feature](performance/rules/features#ignore-origin-no-cache).
 -   Define a `max-age` interval for each desired HTTP status code. This caching policy will only be applied when the status code for the cached response matches the specified HTTP status code. 
 -   This feature does not affect browser to edge server cache revalidations. These types of revalidations are determined by the `Cache-Control` or `Expires` headers sent to the browser.
 -   This feature does not have an observable effect on the response sent to a user. However, it may have an effect on the amount of revalidation traffic sent from our edge servers to the origin server.
@@ -1154,6 +1153,7 @@ Defines a `max-age` interval for edge server to origin server cache revalidation
       })
     ```
 
+-   This feature overrides the max-age interval defined in `Cache-Control` or `Expires` headers generated from an origin server. However, it will not override `private`, `no-store`, or `no-cache` directives when present in the origin server's response. Override these cache directives by enabling the [Ignore Origin No Cache feature](performance/rules/features#ignore-origin-no-cache).
 -   This feature does not affect browser to edge server cache revalidations. These types of revalidations are determined by the `Cache-Control` or `Expires` headers sent to the browser.
 -   This feature does not have an observable effect on the response sent to a user. However, it may have an effect on the amount of revalidation traffic sent from our edge servers to the origin server.
 

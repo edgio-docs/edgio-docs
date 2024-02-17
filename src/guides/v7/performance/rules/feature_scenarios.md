@@ -120,16 +120,20 @@ Your rule should now look like similar to this:
 
 ## Default Image Optimizations {/*default-image-optimizations*/}
 
-Automatically apply one or more image optimizations to all images.
+Automatically apply one or more image optimizations to all images. Once you have applied the following configuration, {{ PRODUCT }} will apply:
+-   Your default optimizations to all images.
+-   Any additional optimizations defined within the request, as long as those optimizations do not conflict with your default optimizations.
 
 1.  Identify all images by adding the [Path match condition](/guides/performance/rules/conditions#path). Use the `matches (simple)` operator and set the **Match Value** option to:
 
     `/:path*/:file.:ext(jpg|jpeg|png|gif)`
-    
+
     The above value matches all requests whose file extension is either jpg, jpeg, png, or gif.
 
+    ![Matching images by file extension](/images/v7/performance/rules-use-case-default-image-optimizations-path.png)
+
 2.  Enable Image Optimization by adding the [Optimize Images feature](/guides/performance/features#optimize-images).
-3.  Apply a default set of image optimizations by rewriting the URL. Add the [Rewrite URL feature](/guides/performance/rules/features#rewrite-url).
+3.  Apply a default set of image optimizations by rewriting the URL. Add the [Rewrite URL feature](/guides/performance/rules/features#rewrite-url). Configure it as directed below.
 
     1.  Set the **Source Path (Optional)** option to: `/.+`
     2.  Set the **Match Style** option to `regexp`.
@@ -142,5 +146,9 @@ Automatically apply one or more image optimizations to all images.
         For example, the following configuration automatically generates a WebP image and strips metadata from the image:
 
         `%{path}?%{query_string/(.+)/$1&}$1&auto=webp&strip=1`
+        
+        Your rule should now look like similar to this:
 
-{{ PRODUCT }} will always apply the defined set of optimizations to your images. It will also apply any additional optimizations defined within the request, as long as those optimizations do not conflict with your default image optimization configuration.
+        ![Default image optimizations](/images/v7/performance/rules-use-case-default-image-optimizations.png?width=700)
+
+

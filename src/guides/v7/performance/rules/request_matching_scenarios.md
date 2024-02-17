@@ -12,7 +12,6 @@ Before adding [features](/guides/performance/rules/features) that customize how 
 -   [Country](#country)
 -   [Status Code](/guides/performance/rules/feature_scenarios#custom-response-for-specific-status-codes)
 
-
 In addition to these common scenarios, [there are many other ways](/guides/performance/rules/conditions) through which Rules can match requests. Additionally, you can combine match conditions to selectively apply features when multiple conditions have been met. You may also use [Else or Else If statements](#matching-with-conditional-logic) to apply features when specific criteria has not been met. The power and flexiblity of Rules allows you to use basic configurations or build upon them to create a configuration that addresses your complex business needs.
 
 ## All Requests {/*all-requests*/}

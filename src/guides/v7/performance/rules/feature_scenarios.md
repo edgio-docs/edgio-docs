@@ -132,8 +132,8 @@ Automatically apply one or more image optimizations to all images. Once you have
 
     ![Matching images by file extension](/images/v7/performance/rules-use-case-default-image-optimizations-path.png)
 
-2.  Enable Image Optimization by adding the [Optimize Images feature](/guides/performance/features#optimize-images).
-3.  Apply a default set of image optimizations by rewriting the URL. Add the [Rewrite URL feature](/guides/performance/rules/features#rewrite-url). Configure it as directed below.
+2.  Enable Image Optimization by adding the [Optimize Images feature](/guides/performance/rules/features#optimize-images).
+3.  Apply a default set of image optimizations by rewriting the URL through the [Rewrite URL feature](/guides/performance/rules/features#rewrite-url). Configure it as directed below.
 
     1.  Set the **Source Path (Optional)** option to: `/.+`
     2.  Set the **Match Style** option to `regexp`.

@@ -32,6 +32,7 @@ Create a rule without match conditions to apply a set of features to all request
 ## Request URL {/*request-url*/}
 
 Apply a set of features to:
+-   A specific hostname through the Request Header match condition.
 -   A specific path through the Path match condition. 
 -   A query parameter through the Query Parameter match condition.
 
@@ -46,6 +47,10 @@ Use the [Request Header match condition](/guides/performance/rules/conditions#re
 The following configuration matches all requests whose `Host` header is set to `cdn.example.com`.
 
 ![Request Header match condition](/images/v7/performance/rules-use-case-hostname.png)
+
+Match all requests for multiple hostnames through a regular expression. The following configuration matches all requests whose `Host` header is set to `cdn.example.com`, `www.example.com`, or `images.example.com`.
+
+![Multiple hostnames - Request Header match condition](/images/v7/performance/rules-use-case-hostname-multiple.png)
 
 ### Path {/*path*/}
 

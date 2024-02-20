@@ -9,6 +9,7 @@ Before adding [features](/guides/performance/rules/features) that customize how 
 -   [HTTP method](#http-method)
 -   [Cookies](#cookies)
 -   [Headers](#headers)
+-   [Hostname](#hostname)
 -   [Country](#country)
 -   [Status Code](/guides/performance/rules/feature_scenarios#custom-response-for-specific-status-codes)
 
@@ -89,6 +90,22 @@ For example, the above configuration matches against a request that contains the
 Use the [Request Header match condition](/guides/performance/rules/conditions#request-header) to find requests that contain a header set to a specific value. The following configuration matches all requests whose `Accept-Language` header contains `en-US`.
 
 ![Request Header match condition](/images/v7/performance/rules-use-case-request-header.png)
+
+## Hostname {/*hostname*/}
+
+Use the [Request Header match condition](/guides/performance/rules/conditions#request-header) to find requests by hostname. 
+
+1.  Set the **Header Name** option to `Host`.
+2.  Set the **Operator** option to `matches regular expression`.
+3.  Set the **Match Value** option to the following pattern:
+
+    `<Host>(.*)`
+    
+    The `(.*)` pattern appended to the hostname accounts for clients that include the port in the `Port` request header. 
+
+The following configuration matches all requests whose `Host` header contains `cdn.example.com`.
+
+![Request Header match condition](/images/v7/performance/rules-use-case-hostname.png)
 
 ## Country {/*country*/}
 

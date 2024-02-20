@@ -50,6 +50,14 @@ Restrict the above rule to images whose relative path starts with: `/marketing/c
 
 ![Path match condition](/images/v7/performance/rules-use-case-path-extension.png?width=700)
 
+<Callout type="info">
+
+  The [Rewrite URL match condition](/guides/performance/rules/features#rewrite-url) is incompatible with the Extension match condition. Use the [Path match condition](/guides/performance/rules/conditions#path) instead.
+
+  [View a sample configuration.](/guides/performance/rules/feature_scenarios#default-image-optimizations)
+
+</Callout>
+
 ### Query String {/*query-string*/}
 
 Use the [Query Parameter match condition](/guides/performance/rules/conditions#query-parameter) to find requests that contain a query string parameter set to a specific value. The following configuration matches all requests whose query string contain `session=active`.

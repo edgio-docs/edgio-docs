@@ -6,9 +6,9 @@ Serve traffic through {{ PRODUCT }} by [updating the DNS records for each hostna
 
 <Callout type="important">
 
-  Before serving traffic through our network, please reacquaint yourself with our Acceptable Use Policy.
+  Before serving traffic through our network, please review our Acceptable Use Policy.
   
-  [Learn more.](#acceptable-use-policy)
+  [Learn more.](#acceptable-use)
 
 </Callout>
 
@@ -116,7 +116,7 @@ Once you have updated your DNS configuration, run the following command to verif
 cdn.example.com.   599    IN    CNAME    2af36ae6-2146-4b73-a5e7-f86c4a93bc06.edgio.link
 ```
 
-## Acceptable Use Policy {/*acceptable-use-policy*/}
+## Acceptable Use {/*acceptable-use*/}
 
 Unless otherwise agreed in writing by {{ PRODUCT }}, Application Services are solely intended for rendering the functional attributes of a website e.g., HTML, JavaScript, CSS, and APIs (subject to the restrictions herein), and are not to be used for video or audio streaming or for delivery of other large file types, including but not limited to images and software downloads or updates ("Unauthorized Traffic") which require the purchase of other {{ PRODUCT }} Services. {{ PRODUCT }} may monitor, terminate, suspend, and/or restrict the use of the Application Services when it determines in its sole discretion that Unauthorized Traffic is being delivered.
 

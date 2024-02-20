@@ -6,10 +6,12 @@ Before adding [features](/guides/performance/rules/features) that customize how 
 
 -   [All requests](#all-requests)
 -   [Request URL](#request-url)
+    -   [Hostname](#hostname)
+    -   [Path](#path)
+    -   [Query string](#query-string)
 -   [HTTP method](#http-method)
 -   [Cookies](#cookies)
 -   [Headers](#headers)
--   [Hostname](#hostname)
 -   [Country](#country)
 -   [Status Code](/guides/performance/rules/feature_scenarios#custom-response-for-specific-status-codes)
 
@@ -32,6 +34,18 @@ Create a rule without match conditions to apply a set of features to all request
 Apply a set of features to:
 -   A specific path through the Path match condition. 
 -   A query parameter through the Query Parameter match condition.
+
+### Hostname {/*hostname*/}
+
+Use the [Request Header match condition](/guides/performance/rules/conditions#request-header) to find requests by hostname. 
+
+1.  Set the **Header Name** option to `Host`.
+2.  Verify that the **Operator** option is set to `equals`.
+3.  Set the **Value** option to the desired hostname. 
+
+The following configuration matches all requests whose `Host` header is set to `cdn.example.com`.
+
+![Request Header match condition](/images/v7/performance/rules-use-case-hostname.png)
 
 ### Path {/*path*/}
 
@@ -90,18 +104,6 @@ For example, the above configuration matches against a request that contains the
 Use the [Request Header match condition](/guides/performance/rules/conditions#request-header) to find requests that contain a header set to a specific value. The following configuration matches all requests whose `Accept-Language` header contains `en-US`.
 
 ![Request Header match condition](/images/v7/performance/rules-use-case-request-header.png)
-
-## Hostname {/*hostname*/}
-
-Use the [Request Header match condition](/guides/performance/rules/conditions#request-header) to find requests by hostname. 
-
-1.  Set the **Header Name** option to `Host`.
-2.  Verify that the **Operator** option is set to `equals`.
-3.  Set the **Value** option to the desired hostname. 
-
-The following configuration matches all requests whose `Host` header is set to `cdn.example.com`.
-
-![Request Header match condition](/images/v7/performance/rules-use-case-hostname.png)
 
 ## Country {/*country*/}
 

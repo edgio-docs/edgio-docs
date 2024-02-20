@@ -97,7 +97,7 @@ Use the [Request Header match condition](/guides/performance/rules/conditions#re
 
 1.  Set the **Header Name** option to `Host`.
 2.  Verify that the **Operator** option is set to `equals`.
-3.  Set the **Match Value** option to the desired hostname. 
+3.  Set the **Value** option to the desired hostname. 
 
 The following configuration matches all requests whose `Host` header is set to `cdn.example.com`.
 

@@ -28,6 +28,7 @@ export const frameSrcDomains = [
   'www.youtube.com',
   'youtu.be',
   'player.vimeo.com',
+  '*.fireaw.ai',
 ];
 
 export const imgSrcDomains = [
@@ -44,6 +45,7 @@ export const imgSrcDomains = [
   'edgio-community-examples-v7-image-optimization-live.glb.edgio.link',
   '*.edgio-perma.link',
   '*.edg.io',
+  '*.fireaw.ai',
 ];
 
 export const mediaSrcDomains = ['www.youtube.com'];
@@ -71,6 +73,7 @@ export const scriptSrcDomains = [
   '*.edgio-perma.link',
   '*.edg.io',
   'blob:',
+  '*.fireaw.ai',
 ].sort();
 
 export const styleSrcDomains = [

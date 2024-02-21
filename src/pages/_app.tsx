@@ -2,6 +2,7 @@ import '@docsearch/css';
 import {install} from '@edgio/prefetch/window';
 import {prefetch} from '@edgio/prefetch/window/prefetch';
 import {Metrics} from '@edgio/rum';
+import Cookies from 'js-cookie';
 import {MDXEmbedProvider} from 'mdx-embed';
 import type {AppProps} from 'next/app';
 import dynamic from 'next/dynamic';
@@ -61,10 +62,42 @@ function GAnalytics() {
   );
 }
 
+function ChatBot() {
+  const router = useRouter();
+  const [headerBackgroundColor, setHeaderBackgroundColor] = React.useState('');
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const style = getComputedStyle(document.documentElement);
+      const bgColor = style.getPropertyValue('--colors-purple0');
+      setHeaderBackgroundColor(bgColor);
+    }
+  }, [router]);
+
+  if (!headerBackgroundColor) {
+    return null;
+  }
+
+  return (
+    <Script
+      strategy="afterInteractive"
+      src="https://www.fireaw.ai/widget/main.js"
+      data-chatbot-id="f98fb410-2056-447e-984f-753cbbe5d513"
+      data-api-token="ac9030b3-dfa6-4e18-8069-e8df54c131e4"
+      data-header-text="Edgio Answers"
+      data-header-background-color={headerBackgroundColor}
+      data-button-background-color={headerBackgroundColor}
+      data-avatar-url="https://docs.edg.io/favicon.ico"
+      defer></Script>
+  );
+}
+
 export default function MyApp({Component, pageProps}: AppProps) {
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
   const [changingTo, setChangingTo] = React.useState('');
+  const [useChatBot, setUseChatBot] = React.useState(false);
+
   React.useEffect(() => {
     // Install service worker
     if ('serviceWorker' in navigator) {
@@ -80,6 +113,18 @@ export default function MyApp({Component, pageProps}: AppProps) {
         ],
       });
     }
+
+    const enableChatBot =
+      router.query.chatbot === '1' || Cookies.get('edgio_chatbot') === 'true';
+
+    if (enableChatBot) {
+      Cookies.set('edgio_chatbot', 'true');
+      setUseChatBot(true);
+      if (router.query.chatbot) {
+        router.replace(router.pathname, undefined, {shallow: true});
+      }
+    }
+
     // All of this should execute if JS is available after (if) mounted
     const handleRouteChange = (url: string, {shallow}: {shallow: any}) => {
       // Start the spinner
@@ -106,8 +151,7 @@ export default function MyApp({Component, pageProps}: AppProps) {
       router.events.off('routeChangeComplete', handleRouteComplete);
       router.events.off('routeChangeError', () => handleRouteComplete);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [router]);
 
   let AppShell = (Component as any).appShell || EmptyAppShell;
 
@@ -125,6 +169,7 @@ export default function MyApp({Component, pageProps}: AppProps) {
     fallbackMap[changingTo]
   ) : (
     <AppShell>
+      {useChatBot && <ChatBot />}
       <GAnalytics />
       <DefaultSeo canonical={canonicalUrl} />
       <MDXEmbedProvider>

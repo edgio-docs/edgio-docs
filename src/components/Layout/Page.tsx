@@ -142,7 +142,11 @@ const StyledMainPage = styled.div`
 const StyledBanner = styled.div<StyledBannerProps>`
   --banner-text-color: ${({legacy, future}) => (legacy ? '#000' : '#fff')};
   --banner-background-color: ${({legacy, future}) =>
-    legacy ? 'var(--callout-tip)' : future ? '#812990' : 'var(--lg-primary)'};
+    legacy
+      ? 'var(--callout-tip)'
+      : future
+      ? 'var(--banner-header-color)'
+      : 'var(--lg-primary)'};
 
   display: block;
   text-align: center;

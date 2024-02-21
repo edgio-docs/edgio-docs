@@ -3,8 +3,8 @@ import React, {createContext, ReactNode} from 'react';
 import {Route, StringMap} from 'utils/Types';
 interface AppContextProps {
   config: StringMap;
-  navMenuItems: Route;
-  version: string | null;
+  navMenuItems?: Route;
+  version?: string | null;
 }
 
 // Create the context with default values
@@ -17,8 +17,8 @@ const AppContext = createContext<AppContextProps>({
 interface AppProviderProps {
   children: ReactNode;
   config: StringMap;
-  navMenuItems: Route;
-  version: string | null;
+  navMenuItems?: Route;
+  version?: string | null;
 }
 
 export const AppProvider: React.FC<AppProviderProps> = ({

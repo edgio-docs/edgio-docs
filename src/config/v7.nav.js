@@ -583,33 +583,33 @@ const nav = {
         },
         {
           title: 'HTTP Status Codes',
-          path: '/guides/performance/response#status-codes',
+          path: 'performance/response#status-codes',
         },
         {
           title: 'Response Headers',
-          path: '/guides/performance/response#response-headers',
+          path: 'performance/response#response-headers',
         },
         separator,
         {
           title: 'Rules - Match Conditions',
-          path: '/guides/performance/rules/conditions',
+          path: 'performance/rules/conditions',
         },
         {
           title: 'Rules - Features',
-          path: '/guides/performance/rules/features',
+          path: 'performance/rules/features',
         },
         {
           title: 'Rules - Feature Variables',
-          path: '/guides/performance/rules/feature_variables',
+          path: 'performance/rules/feature_variables',
         },
         {
           title: 'Rules - Operators',
-          path: '/guides/performance/rules/operators',
+          path: 'performance/rules/operators',
         },
         separator,
         {
           title: 'edgio.config.js Configuration',
-          path: '/guides/performance/cdn_as_code/edgio_config',
+          path: 'performance/cdn_as_code/edgio_config',
         },
         {
           title: '@edgio/core',
@@ -623,7 +623,7 @@ const nav = {
         },
         {
           title: 'CLI',
-          path: '/guides/develop/cli#commands',
+          path: 'develop/cli#commands',
         },
         separator,
         {
@@ -633,24 +633,24 @@ const nav = {
         },
         {
           title: 'Legacy Purge API',
-          path: '/guides/develop/rest_api/cache_purge',
+          path: 'develop/rest_api/cache_purge',
         },
         separator,
         {
           title: 'RTLD CDN',
-          path: '/guides/logs/rtld/log_fields_rtld_cdn',
+          path: 'logs/rtld/log_fields_rtld_cdn',
         },
         {
           title: 'RTLD WAF',
-          path: '/guides/logs/rtld/log_fields_rtld_waf',
+          path: 'logs/rtld/log_fields_rtld_waf',
         },
         {
           title: 'RTLD Rate Limiting',
-          path: '/guides/logs/rtld/log_fields_rtld_rate_limiting',
+          path: 'logs/rtld/log_fields_rtld_rate_limiting',
         },
         {
           title: 'RTLD Bot',
-          path: '/guides/logs/rtld/log_fields_rtld_bot_manager',
+          path: 'logs/rtld/log_fields_rtld_bot_manager',
         },
       ],
     },

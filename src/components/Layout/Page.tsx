@@ -12,18 +12,24 @@ import {PRODUCT} from '../../../constants';
 import {PRODUCT_APPLICATIONS} from '../../../constants';
 
 import Header from './Header/Header';
-import SideNav from './Sidebar/Sidenav';
+import {SidebarNav} from './SidebarNav';
 import {useIsMobile} from './useMediaQuery';
 
+import AppContext from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import textCompare from 'utils/textCompare';
 
-export function Page({children}: PageProps) {
+export function Page({
+  showNav = true,
+  showBanner = false,
+  children,
+}: PageProps) {
   const isMobile = useIsMobile(850);
   const [showSidebar, setShowSidebar] = React.useState(isMobile);
   const router = useRouter();
-  const showBanner = !isMobile || (isMobile && !showSidebar);
+  //const showBanner = !isMobile || (isMobile && !showSidebar);
   const contentInnerRef = React.useRef(null);
+  const {navMenuItems} = React.useContext(AppContext);
 
   React.useEffect(() => {
     router.events.on('routeChangeComplete', () => setShowSidebar(false));
@@ -60,11 +66,13 @@ export function Page({children}: PageProps) {
       {showBanner && <Banner />}
       <Header {...{showSidebar, setShowSidebar}} />
       <main className="docs-content">
-        <div
-          className="docs-side__nav custom-scrollbar"
-          data-open={isMobile && showSidebar}>
-          <SideNav />
-        </div>
+        {showNav && (
+          <div
+            className="docs-side__nav custom-scrollbar"
+            data-open={isMobile && showSidebar}>
+            <SidebarNav />
+          </div>
+        )}
         <div className="docs-content__inner" ref={contentInnerRef}>
           {children}
         </div>
@@ -252,5 +260,7 @@ function Banner() {
 }
 
 export interface PageProps {
+  showNav?: boolean;
+  showBanner?: boolean;
   children: React.ReactNode;
 }

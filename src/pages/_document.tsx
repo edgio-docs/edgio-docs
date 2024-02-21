@@ -47,10 +47,13 @@ class MyDocument extends Document {
             href="https://fonts.gstatic.com"
             crossOrigin="true"
           />
-          {/* <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;1,500&family=Inter:wght@400;500;600;700&display=swap"
-            rel="stylesheet"
-          /> */}
+          <link rel="preconnect" href="https://db.onlinewebfonts.com" />
+          <link
+            href="https://db.onlinewebfonts.com/c/c0bb155fab1810bd95608da325cfae77?family=Mark+Bold"
+            rel="stylesheet"></link>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+            rel="stylesheet"></link>
         </Head>
         <body>
           <script

@@ -30,6 +30,9 @@
   --select-border-color: #0094d6;
   --select-item-selected-bg: #0e2430;
   --select-item-hover-bg: #0f1e27;
+
+  --search-input-bg: #101820;
+  --search-input-icon: #8b9197;
 }
 
 :root.light {
@@ -50,7 +53,7 @@
   --copy-code-primary: var(--colors-white0);
   --docs-footer-bg: #f6f6f6;
   --docs-footer-color: var(--colors-black0);
-  --homepagehero-bg-image: url('/images/home/LightHeroImg.svg'),
+  --homepagehero-bg-image: url('/images/home/hero/home-light.png'),
     linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fafdff 97.42%);
   --scrollbar-bg: #353535;
   --get-started-card-bg: #fff;
@@ -79,6 +82,9 @@
   --select-border-color: #0094d6;
   --select-item-selected-bg: #e5f4fb;
   --select-item-hover-bg: #f2fafd;
+
+  --search-input-bg: #fafbfb;
+  --search-input-icon: #8B9197;
 
   /* Light's on... */
   --dark-theme-display: none;
@@ -116,7 +122,7 @@
   --copy-code-primary: var(--colors-white0);
   --docs-footer-bg: #070a03;
   --docs-footer-color: var(--colors-white0);
-  --homepagehero-bg-image: url('/images/home/DarkHeroImg.svg'), #000000;
+  --homepagehero-bg-image: url('/images/home/hero/home-dark.png'), #000000;
   --scrollbar-bg: #353535;
   --get-started-card-bg: #000000;
   --sidebar-link-primary: var(--colors-white0);

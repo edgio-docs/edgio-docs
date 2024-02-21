@@ -20,7 +20,7 @@ import * as React from 'react';
 import {Logo} from '../../Logo';
 import {Feedback} from '../Feedback';
 import type {RouteItem} from '../getRouteMeta';
-import {SidebarRouteTree} from '../Sidebar';
+import {SidebarRouteTree} from '../SidebarNav';
 
 import {IconClose} from 'components/Icon/IconClose';
 import {IconHamburger} from 'components/Icon/IconHamburger';

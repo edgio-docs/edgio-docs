@@ -9,6 +9,8 @@ import {
 import Link from 'components/MDX/Link';
 
 const StyledDocsFooter = styled.footer`
+  padding-top: 20px;
+
   @media (max-width: 585px) {
     justify-content: center;
   }
@@ -34,8 +36,8 @@ const StyledDocsFooter = styled.footer`
   }
 
   color: var(--docs-footer-color);
-  bottom: 0;
-  position: absolute;
+  // bottom: 0;
+  // position: absolute;
   width: 100%;
 
   .footer-start {

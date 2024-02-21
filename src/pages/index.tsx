@@ -10,15 +10,11 @@ import {Page} from 'components/Layout/Page';
 import {AppProvider} from 'contexts/AppContext';
 import {serializeConfig} from 'utils/config';
 import {getBaseConfig} from 'utils/config';
-import {Route} from 'utils/Types';
 
-// The home page will be specific to v7, so we can hardcode the version here
-const version = '7';
-const config = Object.assign({}, getBaseConfig(), v7Config);
+const config = Object.assign({}, getBaseConfig());
 
 interface HomePageProps {
   config: any;
-  v7Nav: Route;
   version: string;
 }
 
@@ -26,13 +22,11 @@ export const getStaticProps = async () => {
   return {
     props: {
       config: serializeConfig(config),
-      v7Nav,
-      version,
     },
   };
 };
 
-const HomePage: NextPage<HomePageProps> = ({config, v7Nav, version}) => {
+const HomePage: NextPage<HomePageProps> = ({config}) => {
   const meta = {
     id: 'home',
     title: `${config.PRODUCT} Documentation`,
@@ -40,9 +34,9 @@ const HomePage: NextPage<HomePageProps> = ({config, v7Nav, version}) => {
   };
 
   return (
-    <AppProvider config={config} navMenuItems={v7Nav} version={version}>
-      <Page>
-        <MarkdownPage meta={{...meta, version}}>
+    <AppProvider config={config}>
+      <Page showNav={false}>
+        <MarkdownPage meta={{...meta}}>
           <HomepageHero />
           <HomepageFeatures />
         </MarkdownPage>

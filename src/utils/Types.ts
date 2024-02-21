@@ -1,3 +1,13 @@
+export type HomepageConfig = {
+  sections: HomepageSectionGroup[];
+}
+
+export type HomepageSectionGroup = {
+  heading: string;
+  subheading: string;
+  sections: HomepageSection[];
+};
+
 export type ItemsByVersion = {
   [key: string]: SimpleRouteItem[] | undefined;
 } & {
@@ -19,6 +29,19 @@ export interface Route {
   external?: boolean;
   routes?: Route[];
 }
+
+// Homepage sections
+type HomepageSectionItem = {
+  title: string;
+  link: string;
+};
+
+type HomepageSection = {
+  title: string;
+  description?: string;
+  link?: string;
+  items: HomepageSectionItem[];
+};
 
 export type SimpleRouteItem = StringMap & {
   title: string;

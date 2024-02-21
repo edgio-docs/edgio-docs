@@ -6,9 +6,7 @@ Serve traffic through {{ PRODUCT }} by [updating the DNS records for each hostna
 
 <Callout type="important">
 
-  Before serving traffic through our network, please review our Acceptable Use Policy.
-  
-  [Learn more.](#acceptable-use)
+  Before serving traffic through our network, please review our Acceptable Use Policy. [Learn more.](#acceptable-use)
 
 </Callout>
 

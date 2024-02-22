@@ -11,27 +11,23 @@ The {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} platform consists of the following 
 Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} to version 7 involves the following steps:
 
 1.  **{{ PRODUCT_LEGACY }} (Version 4 and Earlier):** [Rename layer0.config.js and {{ PRODUCT }} packages.](#rename-layer0-components)
-2.  **Version 5 and Earlier:** [Upgrade Node.js](#upgrade-to-node-js-16-x) to version 16.x and update your application to be compatible with Node.js 16.x.
+2.  [Upgrade Node.js](#upgrade-to-node-js) to version 18.x or 20.x and update your application to be compatible with Node.js 18.x or 20.x.
 3.  [Create an {{ PRODUCT }} account.](#create-account)
 4.  [Create an organization.](#create-an-organization)
 5.  [Create a property.](#create-property)
 6.  [Define environments.](#define-environments)
-7.  [Upgrade the {{ PRODUCT }} CLI.](#upgrade-the-cli)
-8.  [Upgrade {{ PRODUCT }} packages.](#upgrade-packages)
-9.  [Update your CDN-as-code configuration](#update-your-cdn-as-code-configuration) to reflect changes introduced in version 7.
-10. [Image Optimization](#image-optimization)
-11. [Real User Monitoring (RUM) Token](#real-user-monitoring-rum-token)
-12. [Build your {{ PRODUCT }} properties.](#build-your-properties)
-13. [Deploy to {{ PRODUCT }}](#deploy-to)
-14. [Configure your Firewall](#configure-your-firewall)
-15. [Update your DNS](#update-your-dns)
+7.  [Upgrade {{ PRODUCT }} packages.](#upgrade-packages)
+8.  [Update your CDN-as-code configuration](#update-your-cdn-as-code-configuration) to reflect changes introduced in version 7.
+9. [Image Optimization](#image-optimization)
+10. [Real User Monitoring (RUM) Token](#real-user-monitoring-rum-token)
+11. [Build your {{ PRODUCT }} properties.](#build-your-properties)
+12. [Deploy to {{ PRODUCT }}](#deploy-to)
+13. [Configure your Firewall](#configure-your-firewall)
+14. [Update your DNS](#update-your-dns)
 
 ## Step 1: Rename layer0 Components {/* rename-layer0-components */}
 
-This section only applies to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} 4 and earlier. Skip this step if you are using a later version.
-
-- **Version 5.x:** Proceed to the [Upgrade to Node.js 16.x step](#upgrade-to-node-js-16-x).
-- **Version 6.x:** Proceed to the [Create an {{ PRODUCT }} account step](#create-account).
+This section only applies to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} 4 and earlier. Proceed to the [Upgrade Node.js step](#upgrade-node-js) if you are using a later version.
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} now uses {{ PRODUCT }} branding for our CLI, packages, and a configuration file. Additionally, our service will no longer modify duplicate query string parameters.
 
@@ -164,25 +160,19 @@ Perform the following steps for each of your properties:
 
     <!-- List additional 4.x considerations here and link them to more info -->
 
-## Step 2: Upgrade to Node.js 16.x {/* upgrade-to-node-js-16-x */}
+## Step 2: Upgrade Node.js {/* upgrade-node-js */}
 
-<Callout type="info">
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6+ runs your apps in Node.js v18 or v20. Therefore, we strongly recommend that you use Node.js v18.x or 20.x when developing your web application.
 
-This section only applies to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5.x and earlier. If you are using version 6.x, proceed to the [Create an {{ PRODUCT }} account step](#create-account).
+[Learn how to use nvm to install Node.js.](/guides/install_nodejs)
 
-</Callout>
-
-{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6+ runs your apps in Node.js v16. Therefore, we strongly recommend that you use Node.js v16.x when developing your web application.
-
-[Learn how to use nvm to install Node.js v16.x.](/guides/install_nodejs)
-
-Once you are using Node.js v16, update your application code to be compatible with Node.js v16.
+Once you are using Node.js v18 or v20, update your application code to be compatible with Node.js v18 or v20.
 
 <Callout type="important">
 
-If `package.json` or `.npmrc` explicitly sets the Node.js engine version to `14.x`, then you will need to update it to `16.x`.
+If `package.json` or `.npmrc` explicitly sets the Node.js engine version to `14.x`, then you will need to update it to `18.x` or `20.x`.
 
-Additionally, check your CI/CD environment for Node.js version settings. If your workflow targets Node.js 14.x, then you will need to update your files and settings to target Node.js 16.x.
+Additionally, check your CI/CD environment for Node.js version settings. If your workflow targets Node.js 14.x, then you will need to update your files and settings to target Node.js 18.x or 20.x.
 
 </Callout>
 
@@ -212,7 +202,7 @@ If the property being migrated belongs to a {{ PRODUCT_LEGACY }} team space, the
 
 ## Step 5: Create a Property {/* create-property */}
 
-You now need to create your property within the {{ PORTAL }}.
+Create and then initialize your property.
 
 1.  From the {{ PORTAL_LINK }}, determine where you will create a property.
 
@@ -221,70 +211,37 @@ You now need to create your property within the {{ PORTAL }}.
 
       ![Organization Selection](/images/v7/basics/team-selection.png)
 
-2.  Click **+ New Property**.
-3.  In the **Property Name** option, assign a unique name to this property.
-4.  Add the hostname(s) (aka custom domains) through which your site will be delivered. These hostnames will be added to the `production` environment.
-
-    1.  From the **Hostnames** section, click **+ Add Hostname**.
-    2.  Type the desired hostname (e.g., `www.example.com`).
-    3.  Repeat steps 1 and 2 as needed.
-
-5.  Delete the default origin configuration (aka backend) by clicking the <Image inline src="/images/v7/icons/delete-2.png" alt="Delete" /> icon that appears on the right-hand side of the `Origin: web` bar.
-
-    <Callout type="info">
-
-    Since you are taking advantage of CDN-as-code, you should define your origin configuration(s) within the {{ CONFIG_FILE }} file instead of the {{ PORTAL }}. Information on how to define origin configurations is provided within the **Update your CDN-as-code configuration** step.
-
-    </Callout>
-
+2.  Click **New Property**.
+3.  From under the **Host Property on {{ PRODUCT }}**, click **Create Property**.
+4.  In the **Property Name** option, assign a unique name to this property.
+5.  Verify that the **Create using CLI** option is selected.
 6.  Click **Create Property**.
+7.  A quick start page will display a npx command that:
+
+    -   Installs the latest version of the {{ PRODUCT }} CLI.
+
+        <Callout type="info">
+
+          By default, {{ PRODUCT }} CLI v5.1+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/guides/develop/cli#disable-analytics).
+
+        </Callout>
+
+    -   Initializes your property.
+
+    Run this command from your project's root directory. Upon running the above command:
+
+    1.  The {{ PRODUCT }} CLI will require that you log in to the {{ PRODUCT }} if it does not detect an active {{ PRODUCT }} session.
+    2.  You will need to authorize the CLI by granting it a token through which it may deploy your property to {{ PRODUCT }}.
+
+    The CLI should automatically configure your property according to the detected framework. It will create a `default` and a `production` environment. Although production traffic can be served through either environment, we recommend that you use the `production` environment to serve production traffic. [Cloud Function](/guides/performance/serverless_compute) requests to the production environment are prioritized over other environments when heavy traffic is experienced.
+
+    If you are not using a supported framework, then you will be prompted to provide additional information. [Learn more.](/guides/performance/cdn_as_code#initialize-property)
 
 ## Step 6: Define Environments {/* define-environments */}
 
-If the property being migrated uses multiple environments in version 6, then you should recreate those environments within your new property.
+As mentioned in the previous step, {{ PRODUCT }} automatically creates a `default` and a `production` environment upon initializing a property. If you require additional environment(s), then you should create them now. 
 
-1.  Load the **Environments** page.
-
-    1.  From the {{ PORTAL_LINK }}, select the desired private space or organization.
-    2.  Select the desired property.
-    3.  From the left-hand pane, click **Environments**.
-
-2.  Click **+ New Environment**.
-
-    ![environments](/images/v7/basics/environments.png)
-
-3.  In the **Name** option, specify a name for this environment. This name may consist of lowercase characters, numbers, dashes (`-`), and underscores (`_`).
-
-4.  Determine deployment permissions through the **Allow all organization members to deploy to this environment** option.
-
-    - Mark this option to allow all members of this organization to deploy to this environment.
-    - Clear this option to restrict deployment to admins and the deploy token.
-
-    ![limit environment](/images/v7/basics/environment-permissions.png?width=450)
-
-5.  Click **Create**.
-
-## Step 7: Upgrade the {{ PRODUCT }} CLI {/* upgrade-the-cli */}
-
-Install the latest version of our CLI.
-
-<Callout type="info">
-
-By default, {{ PRODUCT }} CLI v5.1+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/guides/develop/cli#disable-analytics).
-
-</Callout>
-
-<SnippetGroup>
-
-```bash tabLabel="npm"
-npm install -g @{{ FULL_CLI_NAME }}/cli
-```
-
-```bash tabLabel="Yarn 1 (Classic)"
-yarn global add @{{ FULL_CLI_NAME }}/cli
-```
-
-</SnippetGroup>
+[Learn how to create an environment.](/guides/basics/environments#creating-an-environment)
 
 ## Step 8: Upgrade {{ PRODUCT }} Packages {/* upgrade-packages */}
 
@@ -317,87 +274,92 @@ Updating your CDN-as-code configuration to be compatible with version 7 involves
 
 Update each property's {{ CONFIG_FILE }} as indicated below.
 
-- **backends:** The `backends` property has been replaced with the `origins` property.
+-   **backends:** The `backends` property has been replaced with the `origins` property. We recommend that you define them on a per environment basis through the `environments` property.
 
-  For example, we will assume that your `backends` property is configured as follows:
+    For example, we will assume that your `backends` property is configured as follows:
 
-  ```js filename="{{ CONFIG_FILE }} version 6 and earlier"
-  backends: {
-    origin: {
-      // The domain name or IP address of the origin server
-      domainOrIp: "origin.mysite.com",
+    ```js filename="{{ CONFIG_FILE }} version 6 and earlier"
+    backends: {
+      origin: {
+        // The domain name or IP address of the origin server
+        domainOrIp: "origin.mysite.com",
 
-      // When provided, the following value will be sent as the host header when connecting to the origin.
-      // If omitted, the host header from the browser will be forwarded to the origin.
-      hostHeader: "www.mysite.com",
+        // When provided, the following value will be sent as the host header when connecting to the origin.
+        // If omitted, the host header from the browser will be forwarded to the origin.
+        hostHeader: "www.mysite.com",
 
-      // Uncomment the following line if TLS is not set up properly on the origin domain and you want to ignore TLS errors
-      // disableCheckCert: true,
+        // Uncomment the following line if TLS is not set up properly on the origin domain and you want to ignore TLS errors
+        // disableCheckCert: true,
 
-      // Overrides the default ports (80 for http and 443 for https) and instead use a specific port
-      // when connecting to the origin
-      // port: 1337,
-    },
-  }
-  ```
-
-  The equivalent configuration in version 7 is shown below.
-
-  ```js filename="{{ CONFIG_FILE }} version 7"
-  origins: [
-    {
-      // the key in backends
-      name: 'origin',
-
-      // from hostHeader
-      override_host_header: 'www.mysite.com',
-
-      // Version 7 introduces the ability to load balance across multiple origin hosts.
-      // Previous versions only supported a single host per origin.
-      hosts: [
-        {
-          scheme: 'https',
-          location: [
-            {
-              // from domainOrIp
-              hostname: 'origin.mysite.com',
-
-              // from port
-              port: 443,
-            },
-          ],
-        },
-      ],
-
-      // In version 7, you may enable Server Name Indication (SNI) and define a SNI hint.
-      // This configuration is essential when using multiple domains, since it allows us to
-      // present to the browser a certificate with the correct name during the TLS handshake.
-
-      tls_verify: {
-        use_sni: true,
-        sni_hint_and_strict_san_check: 'www.mysite.com',
+        // Overrides the default ports (80 for http and 443 for https) and instead use a specific port
+        // when connecting to the origin
+        // port: 1337,
       },
+    }
+    ```
 
-      // In version 7, the location of the shield (formerly referred to as the “global” PoP) is
-      // configured in {{ CONFIG_FILE }} instead of the {{ PORTAL }}
-      // Previous versions only supported a single shield in a single region.
+    The equivalent configuration in version 7 is shown below.
 
-      // If your {{ PRODUCT }} cloud region is US East, use:
-      shields: {us_east: 'DCD'},
+    ```js filename="{{ CONFIG_FILE }} version 7"
+    ...
+    environments: {
+      // Serve production traffic through the production environment.
+      production: {
+        origins: [
+          {
+            // the key in backends
+            name: 'origin',
 
-      // If your {{ PRODUCT }} cloud region is US West, instead use:
-      // shields: { us_west: 'SAC'},
+            // from hostHeader
+            override_host_header: 'www.mysite.com',
 
-      // Uncomment the following lines to define a configuration equivalent to disableCheckCert: true
-      // tls_verify: {
-      //   allow_self_signed_certs: true,
-      // },
+            // Version 7 introduces the ability to load balance across multiple origin hosts.
+            // Previous versions only supported a single host per origin.
+            hosts: [
+              {
+                scheme: 'https',
+                location: [
+                  {
+                    // from domainOrIp
+                    hostname: 'origin.mysite.com',
+
+                    // from port
+                    port: 443,
+                  },
+                ],
+              },
+            ],
+
+            // In version 7, you may enable Server Name Indication (SNI) and define a SNI hint.
+            // This configuration is essential when using multiple domains, since it allows us to
+            // present to the browser a certificate with the correct name during the TLS handshake.
+
+            tls_verify: {
+              use_sni: true,
+              sni_hint_and_strict_san_check: 'www.mysite.com',
+            },
+
+            // In version 7, the location of the shield (formerly referred to as the “global” PoP) is
+            // configured in {{ CONFIG_FILE }} instead of the {{ PORTAL }}
+            // Previous versions only supported a single shield in a single region.
+
+            // If your {{ PRODUCT }} cloud region is US East, use:
+            shields: {us_east: 'DCD'},
+
+            // If your {{ PRODUCT }} cloud region is US West, instead use:
+            // shields: { us_west: 'SAC'},
+
+            // Uncomment the following lines to define a configuration equivalent to disableCheckCert: true
+            // tls_verify: {
+            //   allow_self_signed_certs: true,
+            // },
+          },
+        ],
+      },
     },
-  ];
-  ```
+    ```
 
-<!--
--   **Hostnames:** In {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and earlier, custom domains are defined on a per environment basis within the {{ PORTAL }}. In version 7, if you are using CDN-as-code, we recommend that you define them through the `environments` property.
+-   **Hostnames:** In {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and earlier, custom domains are defined on a per environment basis within the {{ PORTAL }}. In version 7, if you are using CDN-as-code, we recommend that you define them on a per environment basis through the `environments` property. The following excerpt of a sample configuration demonstrates how to define hostnames for both the `production` and the `default` environment.
 
     ```js filename="{{ CONFIG_FILE }} version 7"
     environments: {
@@ -411,8 +373,16 @@ Update each property's {{ CONFIG_FILE }} as indicated below.
             hostname: "eu.mysite.com",
           },
         ],
+        // Origin configurations can also be defined within an environment-specific configuration.
+        origins: [
+          {
+            // the key in backends
+            name: 'legacy',
+            ...
+          }
+        ],
       },
-      staging: {
+      default: {
         hostnames: [
           {
             hostname: "staging.www.mysite.com",
@@ -424,7 +394,6 @@ Update each property's {{ CONFIG_FILE }} as indicated below.
       },
     },
     ```
--->
 
 - **includeNodeModules:** If you previously set `includeNodeModules: true`, then you should define it within a `serverless` property:
 
@@ -481,35 +450,70 @@ new Router().get('/', ({cache}) => {
 
 In order to ease the transition to version 7, we provide limited support for legacy syntax. However, the following syntax is unsupported:
 
-- **fallback():** The `fallback()` method, which is unsupported in version 7, executes when no other route is matched. If you are trying to proxy a request to a legacy origin, then you may do so by mapping the desired hostname to an origin configuration from within the {{ PORTAL }}.
+-   **fallback():** The `fallback()` method, which is unsupported in version 7, executes when no other route is matched. If you are trying to proxy a request to a legacy origin, then you may do so by mapping the desired hostname to an origin configuration.
 
-  <Callout type="tip">
-
-  Deploying to {{ PRODUCT }} automatically generates origin configurations from those defined within the {{ CONFIG_FILE }} file. For this reason, we recommend that you map your hostnames to origins once you have deployed your property to {{ PRODUCT }}. [Learn more.](/guides/basics/hostnames#add-modify-delete-hostname)
-
-  </Callout>
-
-  You may also manually assign an origin configuration within a route through `set_origin`. If you want this route to act as a catch-all, then we recommend that you position it above your other routes.
-
-  ```js
-  router.get('/', {
-    origin: {
-      set_origin: 'myorigin',
+    ```js filename="{{ CONFIG_FILE }} version 7"
+    environments: {
+      // Each key is the name of an environment in the {{ PORTAL }}
+      production: {
+        hostnames: [
+          {
+            hostname: "www.mysite.com",
+          },
+          {
+            hostname: "random.mysite.com",
+            default_origin_name: "legacy",
+          },
+        ],
+        // Origin configurations can also be defined within an environment-specific configuration.
+        origins: [
+          {
+            name: 'legacy',
+            ...
+          }
+        ],
+      },
+      default: {
+        hostnames: [
+          {
+            hostname: "staging.www.mysite.com",
+          },
+          {
+            hostname: "staging.eu.mysite.com",
+            default_origin_name: "legacy",
+          },
+        ],
+        origins: [
+          {
+            name: 'legacy',
+            ...
+          }
+        ],
+      },
     },
-  });
-  ```
+    ```
 
-- **catch():** The `catch()` method is used to handle errors, usually by displaying a static error page, redirecting the client to a different page, or retrying the request from a different origin. Each of these scenarios are handled differently in v7. See the [Error Handling](/guides/performance/cdn_as_code/error_handling) guide for more information.
-- **destination():** The `destination()` method is unsupported in version 7 at this time. However, you may assign an origin to requests through `set_origin` and redirect requests through `url_redirect`. A future release will provide a streamlined version of traffic splitting through the {{ PORTAL }}.
+    You may also manually assign an origin configuration within a route through `set_origin`. If you want this route to act as a catch-all, then we recommend that you position it above your other routes.
 
-- **ResponseWriter Methods:** The following `ResponseWriter` methods are not fully supported in version 7:
+    ```js
+    router.get('/', {
+      origin: {
+        set_origin: 'myorigin',
+      },
+    });
+    ```
 
-  - updateResponseCookie
-  - removeResponseCookie
-  - addUpstreamResponseCookie
-  - removeUpstreamResponseCookie
-  - setUpstreamResponseHeader
-  - updateUpstreamResponseHeader
+-   **catch():** The `catch()` method is used to handle errors, usually by displaying a static error page, redirecting the client to a different page, or retrying the request from a different origin. Each of these scenarios are handled differently in v7. See the [Error Handling](/guides/performance/cdn_as_code/error_handling) guide for more information.
+-   **destination():** The `destination()` method is unsupported in version 7 at this time. However, you may assign an origin to requests through `set_origin` and redirect requests through `url_redirect`. Additionally, you may use [Experimentation](/guides/experimentation) to distribute traffic to different destinations. 
+
+-   **ResponseWriter Methods:** The following `ResponseWriter` methods are not fully supported in version 7:
+
+    -   updateResponseCookie
+    -   removeResponseCookie
+    -   addUpstreamResponseCookie
+    -   removeUpstreamResponseCookie
+    -   setUpstreamResponseHeader
+    -   updateUpstreamResponseHeader
 
 <!--
 However, there are workarounds for the above behavior.
@@ -531,7 +535,9 @@ The limitation is you can only do one of these per request
 
 ### Cache Key Customization {/* cache-key-customization */}
 
-Customize the cache key through `cache_key_rewrite` instead of `CustomCacheKey`. Additionally, there are some subtle differences in our device classification implementation.
+[Customize the cache key](/guides/performance/cdn_as_code/route_features#customizing-the-cache-key) through `cache_key` instead of `CustomCacheKey`. However, if you require additional flexiblity when defining the cache key, then you may use `cache_key_rewrite` instead. 
+
+There are some subtle differences in our device classification implementation.
 
 | Method (Version 6 and Earlier) | Variable (Version 7)                                                                                                                               |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -580,29 +586,7 @@ new Router()
 
 ### Redirects {/* redirects */}
 
-{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 and earlier allows you to set redirects by uploading a CSV file within the {{ PORTAL }}. This capability is unsupported in version 7. However, you may define redirects within your routes through the `url_redirect` feature.
-
-```js filename="routes.js"
-new Router()
-  .get('/home', {
-    // simple example with a static URL
-    url: {
-      url_redirect: {
-        destination: '/',
-      },
-    },
-  })
-  .get('/products/:id', {
-    // example with a path variable
-    url: {
-      url_redirect: {
-        syntax: 'path-to-regexp',
-        source: '/products/:id',
-        destination: '/p/:id',
-      },
-    },
-  });
-```
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} allows you to set redirects by uploading a CSV file within the {{ PORTAL }}. The format for this CSV file has not changed. This means that you may safely [import CSV files](/guides/performance/redirects#csv-files) exported from a previous version of {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }}.
 
 ### Geolocation {/* geolocation */}
 
@@ -672,8 +656,8 @@ new Router().match('/:path', {
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | x-0-caching-status             | View additional information about the cache policy applied to the requested content through debug cache response headers. Information on how to enable debug cache response headers is provided below. |
 | x-0-components                 | No equivalent header.                                                                                                                                                                                  |
-| x-0-status                     | No equivalent header.                                                                                                                                                                                  |
-| x-0-t                          | No equivalent header.                                                                                                                                                                                  |
+| x-0-status                     | x-edg-status                                                                                                                                                                                  |
+| x-0-t                          | x-edg-t                                                                                                                                                                                  |
 | x-0-version                    | x-edg-version                                                                                                                                                                                          |
 
 **To enable debug cache response headers**
@@ -713,6 +697,7 @@ View:
 
 -   [Image requirements and limitations.](/guides/performance/image_optimization#image-requirements)
 -   [Supported query string parameters.](/guides/performance/image_optimization#query-string-parameters)
+-   [Sample default optimization implementation.](/guides/performance/rules/features_scenarios#default-image-optimizations)
 
 ## Step 11: Real User Monitoring (RUM) Token {/* real-user-monitoring-rum-token */}
 
@@ -770,40 +755,20 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 
 ## Step 13: Deploy to {{ PRODUCT }} {/* deploy-to- */}
 
-Once you have successfully built your property, run the following command to deploy your property to {{ PRODUCT }}:
+Once you have successfully built your property, run the following command to deploy your configuration to the `production` environment:
 
-<SnippetGroup>
+```bash
+{{ FULL_CLI_NAME }} deploy --environment=production
+```
 
-    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
-    {{ FULL_CLI_NAME }} deploy --property=<PROPERTY> --organization=<ORGANIZATION>
-    ```
+Once it has successfully deployed, deploy your configuration the `default` environment:
 
-    ```bash tabLabel="Version 7.2.1 or lower"
-    {{ FULL_CLI_NAME }} deploy --property=<PROPERTY> --team=<ORGANIZATION>
-    ```
+```bash
+{{ FULL_CLI_NAME }} deploy
 
-</SnippetGroup>
-
-**Key information:**
-
-- Replace the following placeholders:
-
-  - `<PROPERTY>`: Replace this placeholder with the name of the property created in step 5.
-  - `<ORGANIZATION>`: Replace this placeholder with the name of the organization created in step 4. If you are deploying to a property in a private space, then you should omit this option (i.e., `--organization` or `--team`) from this command.
-
-- Upon running the above command:
-
-  1.  The {{ PRODUCT }} CLI will require that you log in to the {{ PRODUCT }} if it does not detect an active {{ PRODUCT }} session.
-  2.  You will then need to authorize the CLI by granting it a token through which it may deploy your property to {{ PRODUCT }}.
-  3.  The CLI will warn that you are overwriting a configuration defined within the {{ PORTAL }}. This is the expected behavior and you should press `y` to continue.
-
-      <Callout type="info">
-
-      Deploying a CDN-as-code configuration overwrites rules and origin configurations defined within the {{ PORTAL }}. In this case, the CLI detected changes that are not present in your {{ CONFIG_FILE }}. Specifically, it detected new hostnames (aka custom domains). In the near future, you will be allowed to define those hostnames within your {{ CONFIG_FILE }}. In the meantime, this error will only occur whenever the CLI detects new changes performed within the {{ PORTAL }}. Future deployments should not trigger this warning unless you make additional configuration changes within the {{ PORTAL }}.
-
-      </Callout>
-
-- The above syntax is only required for your first deployment. After which, you may deploy by running: `{{ FULL_CLI_NAME }} deploy`
+// Alternatively, you may explicitly specify the default environment.
+// {{ FULL_CLI_NAME }} deploy --environment=default
+```
 
 ## Step 14: Configure your Firewall {/* configure-your-firewall */}
 

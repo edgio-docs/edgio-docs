@@ -233,7 +233,7 @@ Create and then initialize your property.
     1.  The {{ PRODUCT }} CLI will require that you log in to the {{ PRODUCT }} if it does not detect an active {{ PRODUCT }} session.
     2.  You will need to authorize the CLI by granting it a token through which it may deploy your property to {{ PRODUCT }}.
 
-    The CLI should automatically configure your property according to the detected framework. It will create a `default` and a `production` environment. Although production traffic can be served through either environment, we recommend that you use the `production` environment to serve production traffic. [Cloud Function](/guides/performance/serverless_compute) requests to the production environment are prioritized over other environments when heavy traffic is experienced.
+    The CLI should automatically configure your property according to the detected framework. It will create a `default` and a `production` environment. Although production traffic can be served through either environment, we recommend that you use the `production` environment to serve production traffic. [Cloud Function](/guides/performance/serverless_compute) requests to the `production` environment are prioritized over other environments when heavy traffic is experienced.
 
     If you are not using a supported framework, then you will be prompted to provide additional information. [Learn more.](/guides/performance/cdn_as_code#initialize-property)
 
@@ -243,7 +243,7 @@ As mentioned in the previous step, {{ PRODUCT }} automatically creates a `defaul
 
 [Learn how to create an environment.](/guides/basics/environments#creating-an-environment)
 
-## Step 8: Upgrade {{ PRODUCT }} Packages {/* upgrade-packages */}
+## Step 7: Upgrade {{ PRODUCT }} Packages {/* upgrade-packages */}
 
 Update all {{ PRODUCT }} packages to version 7 using the CLI.
 
@@ -257,7 +257,7 @@ If you are upgrading from version 4 and earlier, then you should have already up
 
 </Callout>
 
-## Step 9: Update your CDN-as-Code Configuration {/* update-your-cdn-as-code-configuration */}
+## Step 8: Update your CDN-as-Code Configuration {/* update-your-cdn-as-code-configuration */}
 
 Updating your CDN-as-code configuration to be compatible with version 7 involves:
 
@@ -376,8 +376,6 @@ Update each property's {{ CONFIG_FILE }} as indicated below.
         // Origin configurations can also be defined within an environment-specific configuration.
         origins: [
           {
-            // the key in backends
-            name: 'legacy',
             ...
           }
         ],
@@ -586,7 +584,7 @@ new Router()
 
 ### Redirects {/* redirects */}
 
-There are a [variety of methods through which you may set up redirects](/guides/performance/redirects). One method involves uploading CSV file(s) from within the {{ PORTAL }}. The format for this CSV file has not changed. This means that you may safely [import CSV files](/guides/performance/redirects#csv-files) exported from a previous version of {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }}.
+There are a [variety of methods through which you may set up redirects](/guides/performance/redirects). One method involves uploading CSV file(s) from within the {{ PORTAL }}. The format for this CSV file does not vary by version of {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }}. This means that you may safely [import CSV files](/guides/performance/redirects#csv-files) exported from a previous version of {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }}.
 
 ### Geolocation {/* geolocation */}
 
@@ -677,7 +675,7 @@ new Router().match('/:path', {
 
     [Learn more.](/guides/performance/response#requesting-debug-cache-information)
 
-## Step 10: Image Optimization {/*image-optimization*/}
+## Step 9: Image Optimization {/*image-optimization*/}
 
 If you currently optimize images through `opt.moovweb.net`, then you should perform the following steps to update to the latest version:
 
@@ -697,9 +695,9 @@ View:
 
 -   [Image requirements and limitations.](/guides/performance/image_optimization#image-requirements)
 -   [Supported query string parameters.](/guides/performance/image_optimization#query-string-parameters)
--   [Sample default optimization implementation.](/guides/performance/rules/features_scenarios#default-image-optimizations)
+-   [Sample default optimization implementation.](/guides/performance/rules/feature_scenarios#default-image-optimizations)
 
-## Step 11: Real User Monitoring (RUM) Token {/* real-user-monitoring-rum-token */}
+## Step 10: Real User Monitoring (RUM) Token {/* real-user-monitoring-rum-token */}
 
 If you are tracking Core Web Vitals through RUM, then you will need to update the `initEdgioRum` script to use your version 7 token. Your version 7 token is provided on the **Core Web Vitals** page.
 
@@ -717,7 +715,7 @@ If you are tracking Core Web Vitals through RUM, then you will need to update th
   onload="initEdgioRum()"></script>
 ```
 
-## Step 12: Build your {{ PRODUCT }} Properties {/* build-your-properties */}
+## Step 11: Build your {{ PRODUCT }} Properties {/* build-your-properties */}
 
 Build each of your {{ PRODUCT }} properties by running the following command in its root directory:
 
@@ -753,15 +751,9 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 
     Run `{{ FULL_CLI_NAME }} build` to rebuild your {{ PRODUCT }} property.
 
-## Step 13: Deploy to {{ PRODUCT }} {/* deploy-to- */}
+## Step 12: Deploy to {{ PRODUCT }} {/* deploy-to- */}
 
-Once you have successfully built your property, run the following command to deploy your configuration to the `production` environment:
-
-```bash
-{{ FULL_CLI_NAME }} deploy --environment=production
-```
-
-Once it has successfully deployed, run the following command to deploy your configuration to the `default` environment:
+Once you have successfully built your property, run the following command to deploy your configuration to the `default` environment:
 
 ```bash
 {{ FULL_CLI_NAME }} deploy
@@ -770,7 +762,13 @@ Once it has successfully deployed, run the following command to deploy your conf
 // {{ FULL_CLI_NAME }} deploy --environment=default
 ```
 
-## Step 14: Configure your Firewall {/* configure-your-firewall */}
+Once it has successfully deployed, run the following command to deploy your configuration to the `production` environment:
+
+```bash
+{{ FULL_CLI_NAME }} deploy --environment=production
+```
+
+## Step 13: Configure your Firewall {/* configure-your-firewall */}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 uses a different set of IP blocks than previous versions. This means that you need to update your firewall to allow:
 
@@ -779,9 +777,9 @@ Once it has successfully deployed, run the following command to deploy your conf
 
 View our IP blocks by clicking **Instructions** from the **Origins** page.
 
-[Learn more.](/guides/basics/serving_traffic#firewall-allowing-ip-addresses)
+[Learn more about firewall setup.](/guides/basics/serving_traffic#firewall-allowing-ip-addresses)
 
-## Step 15: Update your DNS {/* update-your-dns */}
+## Step 14: Update your DNS {/* update-your-dns */}
 
 <Callout type="important">
 

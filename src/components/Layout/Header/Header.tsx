@@ -2,19 +2,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import edgioAppsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-apps.png';
+import edgioDocsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-docs.png';
+import edgioUplynkDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-uplynk.png';
+import edgioAppsLightLogo from '../../../../public/images/home/header/logo/light/edgio-apps.png';
+import edgioDocsLightLogo from '../../../../public/images/home/header/logo/light/edgio-docs.png';
+import edgioUplynkLightLogo from '../../../../public/images/home/header/logo/light/edgio-uplynk.png';
+
 import AlgoliaSearch from './AlgoliaSearch';
 
 import {ExternalLink} from 'components/ExternalLink';
 import {IconHamburger} from 'components/Icon/IconHamburger';
 import {IconLightMobileLogo} from 'components/Icon/IconMobileLogo';
 import useTheme from 'utils/hooks/useTheme';
-
-import edgioDocsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-docs.png';
-import edgioDocsLightLogo from '../../../../public/images/home/header/logo/light/edgio-docs.png';
-import edgioAppsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-apps.png';
-import edgioAppsLightLogo from '../../../../public/images/home/header/logo/light/edgio-apps.png';
-import edgioUplynkDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-uplynk.png';
-import edgioUplynkLightLogo from '../../../../public/images/home/header/logo/light/edgio-uplynk.png';
 
 // TODO - replace with actual domain
 const APP_DOMAIN = 'app.edg.io';

@@ -29,7 +29,7 @@ Deploy to an environment using either of the following methods:
 
     <Callout type="info">
 
-      If you omit the `environment` argument, then the deployment will be applied to the `production` environment.
+      If you omit the `environment` argument, then the deployment will be applied to the `default` environment.
 
     </Callout>
 

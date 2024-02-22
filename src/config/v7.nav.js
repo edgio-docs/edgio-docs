@@ -28,12 +28,20 @@ const nav = {
           path: 'basics/environments',
         },
         {
-          title: 'Hostnames and Origins',
-          path: 'basics/hostnames_and_origins',
+          title: 'Hostnames',
+          path: 'basics/hostnames',
+        },
+        {
+          title: 'Origin Configurations',
+          path: 'basics/origins',
         },
         {
           title: 'Deployments',
           path: 'basics/deployments',
+        },
+        {
+          title: 'Serving Traffic through Our Network',
+          path: 'basics/serving_traffic',
         },
         {
           title: 'Collaboration',
@@ -62,6 +70,15 @@ const nav = {
           title: 'Rules',
           path: 'performance/rules',
           routes: [
+            {
+              title: 'Request Matching Scenarios',
+              path: 'performance/rules/request_matching_scenarios',
+            },
+            {
+              title: 'Feature Scenarios',
+              path: 'performance/rules/feature_scenarios',
+            },
+            separator,
             {
               title: 'Conditions',
               path: 'performance/rules/conditions',
@@ -153,6 +170,10 @@ const nav = {
           ],
         },
         {
+          title: 'Redirects',
+          path: 'performance/redirects',
+        },
+        {
           title: 'Traffic Splitting',
           path: 'performance/traffic_splitting',
         },
@@ -237,28 +258,51 @@ const nav = {
         },
         separator,
         {
-          title: 'JSON Responses',
-          path: 'edge_functions/example_json_responses',
+          title: 'Examples',
+          path: 'edge_functions/examples',
+          routes: [
+            {
+              title: 'AWS Request Signing',
+              path: 'edge_functions/examples/aws_request_signing',
+            },
+            {
+              title: 'Basic Request Signing',
+              path: 'edge_functions/examples/basic_request_signing',
+            },
+            {
+              title: 'Content Stitching',
+              path: 'edge_functions/examples/content_stitching',
+            },
+            {
+              title: 'Header Manipulation',
+              path: 'edge_functions/examples/header_manipulation',
+            },
+            {
+              title: 'JSON Responses',
+              path: 'edge_functions/examples/json_responses',
+            },
+            {
+              title: 'JWT Verification',
+              path: 'edge_functions/examples/jwt_verification',
+            },
+            {
+              title: 'Redirects',
+              path: 'edge_functions/examples/redirects',
+            },
+            {
+              title: 'Waiting Room',
+              path: 'edge_functions/examples/waiting_room',
+            },
+          ],
+        },
+        separator,
+        {
+          title: 'Migrating from Cloudflare Workers',
+          path: 'edge_functions/migrating_cloudflare_workers',
         },
         {
-          title: 'Content Stitching',
-          path: 'edge_functions/example_content_stitching',
-        },
-        {
-          title: 'Header Manipulation',
-          path: 'edge_functions/example_header_manipulation',
-        },
-        {
-          title: 'Redirects',
-          path: 'edge_functions/example_redirects',
-        },
-        {
-          title: 'Request Signing',
-          path: 'edge_functions/example_request_signing',
-        },
-        {
-          title: 'Waiting Room',
-          path: 'edge_functions/example_waiting_room',
+          title: 'Migrating from CloudFront Functions',
+          path: 'edge_functions/migrating_cloudfront_functions',
         },
       ],
     },
@@ -336,6 +380,25 @@ const nav = {
         {
           title: 'Response to Client',
           path: 'security/response_to_client',
+        },
+      ],
+    },
+    {
+      title: 'AI Integrations',
+      path: 'ai_integrations',
+      icon: 'ai-integrations',
+      routes: [
+        {
+          title: 'LangChain',
+          path: 'ai_integrations/langchain',
+        },
+        {
+          title: 'LlamaIndex',
+          path: 'ai_integrations/llamaindex',
+        },
+        {
+          title: 'Mistral',
+          path: 'ai_integrations/mistral',
         },
       ],
     },

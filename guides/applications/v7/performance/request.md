@@ -25,6 +25,7 @@ Learn how:
 
 -   [Requests flow through WAF.](/guides/security/waf#threat-detection)
 -   [Content is cached on our network.](/guides/performance/caching#default-caching-policy)
+-   [Edge Functions can issue subrequests to the caching layer.](/guides/edge_functions/caching#order-of-operations)
 
 ## Request Method {/*request-method*/}
 
@@ -57,7 +58,7 @@ Protocol version support varies according to whether the CDN is communicating wi
 
     <Callout type="info">
 
-      HTTP/3 support requires the `alt-svc` response header. [Learn more.](/guides/basics/hostnames_and_origins#http-3)
+      HTTP/3 support requires the `alt-svc` response header. [Learn more.](/guides/basics/origins#http-3)
 
     </Callout>
 

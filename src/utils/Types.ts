@@ -1,6 +1,6 @@
 export type HomepageConfig = {
   sections: HomepageSectionGroup[];
-}
+};
 
 export type HomepageSectionGroup = {
   heading: string;

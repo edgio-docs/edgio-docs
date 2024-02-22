@@ -25,9 +25,11 @@ Optimize images through the following steps:
 
         For example, you may create a rule that resizes all JPG images whose URL path contains `/images/`.
 
-        ![Sample rule that resizes images](/images/v7/performance/image-optimization-sample-rule.png?width=650)
+        ![Sample rule that resizes images](/images/v7/performance/rules-use-case-default-image-optimizations.png?width=650)
 
     -   Requesting data from the client through [client hints](#client-hints).
+
+[View a sample implementation.](/guides/performance/rules/feature_scenarios#default-image-optimizations)
 
 ## How Does It Work? {/*how-does-it-work-*/}
 
@@ -90,8 +92,6 @@ An optimized image must comply with the following limits:
     
     -   [Query string parameters](#query-string-parameters).
     -   [Client hints (request headers)](#client-driven-image-optimizations-client-hints)
-
-{{ system_origins_callout.md }}
 
 **To enable image optimization**
 

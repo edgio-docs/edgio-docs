@@ -8,13 +8,21 @@ properties:
     type: string
     description: The rate rule's name.
   duration_sec:
-    description: The length of time, in seconds, that the action defined within this object will be applied to a client that violates the rate rule identified by the `id` property. 
+    description: |
+    
+      The length of time, in seconds, that the action defined within this object will be applied to a client that violates the rate rule identified by the `id` property. 
+      
+      Edgio Security Premier customers can enforce a rate rule violation for up to 1,800 seconds, while all other customers are restricted to a maximum of 300 seconds.
+
     type: integer
     format: uint32
     enum:
       - 10
       - 60
       - 300
+      - 600
+      - 900
+      - 1800
   url:
     type: string
     description: |

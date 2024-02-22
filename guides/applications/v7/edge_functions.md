@@ -13,21 +13,23 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 
 ## Defining Edge Functions {/* defining-edge-functions */}
 
-Define an edge function within your {{ ROUTES_FILE }} file by adding the `edge_function` property to a route. The `edge_function` property accepts a string representing the path to the edge function file.
+An edge function is invoked when an incoming request matches a route that has an edge function assigned to it. Only a single edge function can be assigned to a route. If multiple routes match an incoming request, the edge function assigned to the last matching route is invoked.
 
-```js filename="./routes.js"
-import {Router} from '@edgio/core/router';
+Define an edge function by:
 
-export default new Router()
-  .get('/', {
-    edge_function: './edge-functions/index.js',
-  })
-  .match('/api/*', {
-    edge_function: './edge-functions/api.js',
-  });
-```
+- Storing your standalone JavaScript code as a file with a `js` file extension.
+- Setting an `edge_function` property within your {{ ROUTES_FILE }}. Set this string property to the relative path to your edge function.
 
-Each edge function is stored in a separate file and assigned to a specific route in your `routes.js` file. Edge functions support only JavaScript (`.js`) files.
+  ```js filename="./routes.js"
+  import {Router} from '@edgio/core/router';
+  export default new Router()
+    .get('/', {
+      edge_function: './edge-functions/index.js',
+    })
+    .match('/api/*', {
+      edge_function: './edge-functions/api.js',
+    });
+  ```
 
 An edge function file must export the following entry point:
 
@@ -55,7 +57,65 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-When a request is received for a route that has an edge function assigned to it, the edge function is invoked.
+### Edge Function Initialization Script (Optional) {/* edge-function-initialization-script */}
+
+An edge function initialization script is a JavaScript file executed once before any edge function in a project is invoked. This script is particularly beneficial for projects with two or more edge functions, allowing for the setup of global variables, initialization of third-party libraries, and defining utility functions used across multiple edge functions. It reduces duplicate code setup and is specified within the `{{ ROUTES_FILE }}` file. The script must adhere to specific execution and memory constraints, similar to the edge functions themselves.
+
+To specify an edge function initialization script, add the `edge_function_init_script` property to the `Router(...)` constructor. The `edge_function_init_script` property accepts a string representing the path to the script.
+
+```js filename="./routes.js"
+import {Router} from '@edgio/core/router';
+
+export default new Router({
+  // Specify an edge function initialization script
+  edge_function_init_script: './edge-functions/init.js',
+}).get('/', {
+  edge_function: './edge-functions/main.js',
+});
+```
+
+The initialization script must export the following entry point:
+
+```js filename="./edge-functions/init.js"
+/**
+ * @async
+ * @param {Object} context - Provides additional information about the request and environment.
+ * @returns {void}
+ */
+export async function handleHttpInit(context) {
+  // ... function code ...
+}
+```
+
+**Key information:**
+
+- **Execution Context:** It's important to note that certain parts of the `context`, like `geo`, `client`, and `device`, may not be relevant or populated during initialization as they are request-specific. The most relevant part of the context for initialization is `context.environmentVars`.
+
+- **Execution Frequency and State Preservation:** The initialization code runs upon the first request received for any edge function within the project/bundle. After execution, the state is saved as a memory snapshot for subsequent executions of the project's edge functions. These snapshots are specific to each backend cache server and will be periodically evicted based on internal criteria. Upon eviction, `handleHttpInit` will execute again for the next request.
+
+- **CPU/Memory Limitations:** The initialization script shares the same [CPU and memory limitations](#limitations) as the edge functions. This includes the execution time constraint (i.e., 50ms).
+
+- **Use Cases:** An initialization script is ideal for computationally expensive operations like compiling regex, which is beneficial to perform once rather than in every edge function execution. However, operations like fetch are not recommended in this phase due to potential persistence of fetched data beyond desired periods.
+
+- **Consideration for Global State:** Developers should be cautious when using the `context` to set up specific code or save data in the `global` scope during initialization, as it may persist and potentially lead to incorrect behavior across different requests.
+
+The following sample code demonstrates how to set up a global variable within an edge function initialization script and access it within an edge function.
+
+```js filename="./edge-functions/init.js"
+export async function handleHttpInit(context) {
+  // Set up a global regular expression for matching URLs
+  global.urlRegex = new RegExp('https://example.com');
+}
+```
+
+```js filename="./edge-functions/main.js"
+export async function handleHttpRequest(request, context) {
+  // Access the global variable
+  if (global.urlRegex.test(request.url)) {
+    // ... function code ...
+  }
+}
+```
 
 ## Edge Function Parameters {/* edge-function-parameters */}
 
@@ -72,7 +132,7 @@ The edge function is passed two parameters: `request` and `context`.
 | `context.environmentVars`           | Key-value store | Environment variables as defined in the {{ PORTAL }} (_Property_ -> _Environment_ --> **Environment Variables**)                                                                                                                                                | [Environment Variables](/guides/basics/environments#environment-variables)                               |
 | `context.geo`                       | Key-value store | The client's geo location                                                                                                                                                                                                                                       | `geo_` variables in [Feature Variables](/guides/performance/rules/feature_variables)                     |
 | `context.metrics`                   | Object          | Provides functions for injecting [metrics](#metrics-functions) into your edge function                                                                                                                                                                          | [Edge Insights - Access Logs](/guides/performance/observability/edge_insights)                           |
-| `context.origins`                   | Key-value store | Origin servers as defined in the {{ PORTAL }} (_Property_ -> _Environment_ -> **Origins**) or the `{{ CONFIG_FILE }}` file                                                                                                                                      | [Origin Configuration](/guides/basics/hostnames_and_origins#origin)                                      |
+| `context.origins`                   | Key-value store | Origin servers as defined in the {{ PORTAL }} (_Property_ -> _Environment_ -> **Origins**) or the `{{ CONFIG_FILE }}` file                                                                                                                                      | [Origin Configuration](/guides/basics/origins)                                                           |
 | `context.requestVars`               | Key-value store | Information about this property including values set using Set Variables                                                                                                                                                                                        | [Set Variables](/guides/performance/rules/features#set-variables)                                        |
 | ~~`context.respondWith(response)`~~ | Function        | <ul><li>**{{ PRODUCT }} v7.2.3 or higher:** Deprecated. See [Responding to the Client](#responding-to-the-client).</li><li>**{{ PRODUCT }} v7.2.2 or lower:** Must be called to return the response from your edge function to the downstream client.</li></ul> | [context.respondWith(response)](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith) |
 | `context.waitUntil(promise)`        | Function        | Waits until the given promise is fulfilled                                                                                                                                                                                                                      | [context.waitUntil(promise)](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil) |
@@ -332,6 +392,34 @@ export async function handleHttpRequest(request, context) {
 
 See the [Edge Function Caching](/guides/edge_functions/caching) guide for more information on caching origin fetch requests.
 
+### Compressed Responses {/* compressed-responses */}
+
+Edge functions do not automatically decompress responses from the origin server, specifically when those responses are encoded with compression methods like `gzip` or `br`. This characteristic becomes relevant if you need to manipulate the response body before sending it to the client, as decompression would be a necessary step in processing the data. Responses that are merely passed through from the origin to the client without modification are not impacted by this behavior.
+
+If your edge function manipulates the response body of a fetch request, we recommend that you disable compression by setting the `Accept-Encoding` request header. This ensures the response from the origin is not compressed, making it directly accessible for manipulation. The following sample code demonstrates how to disable compression on a fetch request:
+
+```js filename="./edge-functions/example.js"
+async function handleRequest(request) {
+  // Modify the request to disallow compressed responses
+  const modifiedRequest = new Request(request, {
+    headers: new Headers({
+      ...request.headers,
+      'Accept-Encoding': 'identity', // Disallow compression methods like gzip or br
+    }),
+  });
+
+  // Fetch the response from the origin server
+  const response = await fetch(modifiedRequest);
+
+  // Assuming the response needs to be manipulated
+  let responseBody = await response.text(); // Get the response body as text
+  responseBody = responseBody.replace('foo', 'bar'); // Manipulate the response body
+
+  // Return the manipulated response to the client
+  return new Response(responseBody, response);
+}
+```
+
 ### Fetch Limitations {/* fetch-limitations */}
 
 Response status codes of `fetch()` requests must:
@@ -420,10 +508,27 @@ Edge functions are confined to 50ms of CPU time and a maximum of 60s for overall
 
 It's important to note that edge functions are not Node.js functions. Your code or third-party libraries may not work as expected if they are referencing Node.js specific APIs (e.g. `URL`, `Buffer`, etc). Because of this, we recommend using polyfills when needed. Below are some examples of polyfills you can use in your edge functions. Add these files to your project and import them into your edge function files as needed.
 
+Install the following packages to use the polyfills:
+
+<PackageCommand>
+
+```
+npm install url-parse // Recommended for the URL API
+// or
+npm install whatwg-url
+---
+yarn add url-parse // Recommended for the URL API
+// or
+yarn add whatwg-url
+```
+
+</PackageCommand>
+
+Once installed, you can use the following polyfills:
+
 - `url-parse` for the `URL` API
 
   ```js filename="./polyfills/url-parse.js"
-  // npm install url-parse
   import URL from 'url-parse';
 
   global.URL = URL;
@@ -432,7 +537,6 @@ It's important to note that edge functions are not Node.js functions. Your code 
 - `whatwg-url` for the `URL` and `URLSearchParams` APIs
 
   ```js filename="./polyfills/whatwg-url.js"
-  // npm install whatwg-url
   import {URL, URLSearchParams} from 'whatwg-url';
 
   global.URL = URL;

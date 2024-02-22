@@ -35,7 +35,7 @@ Use our WAF to:
 
     <Callout type="info">
 
-      Use a whitelist, blacklist, or accesslist to restrict traffic by ASN, country, IP address, referrer, URL, user agent, HTTP method, media type, and/or file extension.
+      Use a whitelist, blacklist, or accesslist to restrict traffic by ASN, country, IP address, referrer, URL, user agent, HTTP method, media type, and file extension.
 
     </Callout>
 
@@ -58,7 +58,10 @@ Additional information on each of the above steps is provided below.
     - Bot detection
     - Custom threat detection rules. 
     - Threat detection policies.
--   **Step 2 - Create a Security App Configuration:** Create a Security App Configuration that identifies the type of traffic to which your security rules will be applied and how threats will be handled. You may also use it to test new security rules through an audit mode that generates alerts on flagged traffic.
+-   **Step 2 - Create a Security App Configuration:** Create a Security App Configuration that identifies the type of traffic for which:
+    -   New security rules will be tested. This is known as Audit mode.
+    -   Security rules will be enforced. This is known as Production mode.
+
 -   **Step 3 - Monitor Threats:** Use the dashboard to:  
     - Visualize threat frequency and timing.  
     - Analyze threats and ensure that legitimate traffic is not impacted.
@@ -69,6 +72,17 @@ Additional information on each of the above steps is provided below.
 
 </Callout>
 
+## Audit Security Rules {/*audit-security-rules*/}
+
+Apply a security rule within a Security App configuration in one of the following modes:
+
+-   **Audit:** Test new security configurations by screening traffic in Audit mode. 
+-   **Production:** Use this mode to enforce your security policy.
+
+Screening traffic in Audit mode generates an alert when a request violates a security rule. If an alert is triggered, {{ PRODUCT }} will immediately stop checking your Audit configuration and start screening your Production configuration. For example, if a request triggers an access rule, then {{ PRODUCT }} will skip Audit configurations for API Security, Custom Rules, or Managed Rules and proceed to screen that request against your Production configuration.
+
+![Screening requests in Audit mode](/images/v7/security/request_screening_overview_audit.png)
+
 ## Threat Detection {/*threat-detection*/}
 
 A Security App configuration contains security rules that define the criteria that determine whether traffic is legitimate or a threat. {{ PRODUCT_SECURITY }} leverages this security configuration and performs a sequential check for each criterion. An overview of this security check is illustrated below.
@@ -77,43 +91,46 @@ A Security App configuration contains security rules that define the criteria th
 
 Each request undergoes the following security workflow:
 
-1.  Does the request meet a whitelist criterion? If so, it is considered legitimate and no further checks will be performed.
+1.  {{ PRODUCT }} will first screen the request against your Audit configuration. Proceed to the next step once either of the following conditions are met:
+    -   An alert is triggered. {{ PRODUCT }} will skip all remaining Audit configurations.
+    -   {{ PRODUCT }} has finished screened the request against your Audit configurations.
+2.  Does the request meet a whitelist criterion defined within an access rule? If so, it is considered legitimate and no further checks will be performed.
     
     <Callout type="info">
 
-      A whitelist identifies traffic that should always be considered safe. Traffic may be whitelisted by ASN, country, IP address, referrer, URL, user agent, HTTP method, media type, and/or file extension.
+      A whitelist identifies traffic that should always be considered safe. Traffic may be whitelisted by ASN, country, IP address, referrer, URL, user agent, HTTP method, media type, and file extension.
 
     </Callout>
 
-2.  Proceed to the next step if the access rule does not contain at least one acceslist.
+3.  Proceed to the next step if the access rule does not contain at least one acceslist.
 
     Does the request satisfy at least one criterion in each defined accesslist? If not, then the request is identified as a threat and no further checks will be performed.
 
     <Callout type="info">
 
-      An accesslist identifies traffic that may access your content upon passing a threat assessment. Traffic may be accesslisted by ASN, country, IP address, referrer, URL, user agent, HTTP method, media type, and/or file extension.
+      An accesslist identifies traffic that may access your content upon passing a threat assessment. Traffic may be accesslisted by ASN, country, IP address, referrer, URL, user agent, HTTP method, media type, and file extension.
 
     </Callout>
 
-3.  Does the request meet a blacklist criterion? If so, it is identified as a threat and no further checks will be performed.
+4.  Does the request meet a blacklist criterion defined within an access rule? If so, it is identified as a threat and no further checks will be performed.
 
     <Callout type="info">
 
-      A blacklist identifies traffic that should always be considered malicious. Traffic may be blacklisted by ASN, country, IP address, referrer, URL, user agent, HTTP method, media type, and/or file extension.
+      A blacklist identifies traffic that should always be considered malicious. Traffic may be blacklisted by ASN, country, IP address, referrer, URL, user agent, HTTP method, media type, and file extension.
 
     </Callout>
 
-4.  The payload for `POST`, `PUT`, and `PATCH` requests will undergo additional threat detection analysis if the Security App configuration has been assigned an API Security ruleset. Does the request's payload violate an API schema? If so, then the request is identified as a threat and no further checks will be performed.
+5.  The payload for `POST`, `PUT`, and `PATCH` requests will undergo additional threat detection analysis if the Security App configuration has been assigned an API Security ruleset. Does the request's payload violate an API schema? If so, then the request is identified as a threat and no further checks will be performed.
 
-5.  Has the rate limit been exceeded? If so, then the request is identified as a threat and no further checks will be performed.
+6.  Has the rate limit been exceeded? If so, then the request is identified as a threat and no further checks will be performed.
 
-6.  Was the client identified as a bot? If so, then the request is identified as a threat and no further checks will be performed.
+7.  Was the client identified as a bot? If so, then the request is identified as a threat and no further checks will be performed.
 
-7.  The request will undergo threat detection analysis if the Security App configuration has been assigned a custom rule set. Was a rule in the custom rule set satisfied? If so, then the request is identified as a threat and no further checks will be performed.
+8.  The request will undergo threat detection analysis if the Security App configuration has been assigned a custom rule set. Was a rule in the custom rule set satisfied? If so, then the request is identified as a threat and no further checks will be performed.
 
-8.  Will the request be served from cache instead of being forwarded to an origin server? If so, it is considered legitimate and no further checks will be performed.
+9.  Will the request be served from cache instead of being forwarded to an origin server? If so, it is considered legitimate and no further checks will be performed.
 
-9.  The request will undergo additional threat detection analysis if the Security App configuration has been assigned a managed rule set. A request will be classified as a threat when the severity and frequency of rule violations exceeds the configured threshold.
+10.  The request will undergo additional threat detection analysis if the Security App configuration has been assigned a managed rule set. A request will be classified as a threat when the severity and frequency of rule violations exceeds the configured threshold.
 
 The above threat detection workflow is illustrated below.
 

@@ -162,7 +162,7 @@ Perform the following steps for each of your properties:
 
 ## Step 2: Upgrade Node.js {/* upgrade-node-js */}
 
-{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6+ runs your apps in Node.js v18 or v20. Therefore, we strongly recommend that you use Node.js v18.x or 20.x when developing your web application.
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7.4.0+ runs your apps in Node.js v18 or v20. Therefore, we strongly recommend that you use Node.js v18.x or 20.x when developing your web application.
 
 [Learn how to use nvm to install Node.js.](/guides/install_nodejs)
 
@@ -450,7 +450,7 @@ new Router().get('/', ({cache}) => {
 
 In order to ease the transition to version 7, we provide limited support for legacy syntax. However, the following syntax is unsupported:
 
--   **fallback():** The `fallback()` method, which is unsupported in version 7, executes when no other route is matched. If you are trying to proxy a request to a legacy origin, then you may do so by mapping the desired hostname to an origin configuration.
+-   **fallback():** The `fallback()` method, which is unsupported in version 7, executes when no other route is matched. If you are trying to proxy a request to a legacy origin, then you may do so by mapping the desired hostname to an origin configuration through the `default_origin_name` property.
 
     ```js filename="{{ CONFIG_FILE }} version 7"
     environments: {
@@ -586,7 +586,7 @@ new Router()
 
 ### Redirects {/* redirects */}
 
-{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} allows you to set redirects by uploading a CSV file within the {{ PORTAL }}. The format for this CSV file has not changed. This means that you may safely [import CSV files](/guides/performance/redirects#csv-files) exported from a previous version of {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }}.
+There are a [variety of methods through which you may set up redirects](/guides/performance/redirects). One method involves uploading CSV file(s) from within the {{ PORTAL }}. The format for this CSV file has not changed. This means that you may safely [import CSV files](/guides/performance/redirects#csv-files) exported from a previous version of {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }}.
 
 ### Geolocation {/* geolocation */}
 
@@ -761,7 +761,7 @@ Once you have successfully built your property, run the following command to dep
 {{ FULL_CLI_NAME }} deploy --environment=production
 ```
 
-Once it has successfully deployed, deploy your configuration the `default` environment:
+Once it has successfully deployed, run the following command to deploy your configuration to the `default` environment:
 
 ```bash
 {{ FULL_CLI_NAME }} deploy

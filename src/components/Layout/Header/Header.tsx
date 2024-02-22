@@ -2,18 +2,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import EdgioDark from '../../../../public/images/home/edgio-dark.webp';
-
 import AlgoliaSearch from './AlgoliaSearch';
-import VersionChooser from './VersionChooser';
 
 import {ExternalLink} from 'components/ExternalLink';
 import {IconHamburger} from 'components/Icon/IconHamburger';
 import {IconLightMobileLogo} from 'components/Icon/IconMobileLogo';
-import {siteConfig} from 'config/appConfig';
-import {getVersionedConfig} from 'utils/config';
-import useConditioning from 'utils/hooks/useConditioning';
 import useTheme from 'utils/hooks/useTheme';
+
+import edgioDocsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-docs.png';
+import edgioDocsLightLogo from '../../../../public/images/home/header/logo/light/edgio-docs.png';
+import edgioAppsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-apps.png';
+import edgioAppsLightLogo from '../../../../public/images/home/header/logo/light/edgio-apps.png';
+import edgioUplynkDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-uplynk.png';
+import edgioUplynkLightLogo from '../../../../public/images/home/header/logo/light/edgio-uplynk.png';
+
+// TODO - replace with actual domain
+const APP_DOMAIN = 'app.edg.io';
 
 const StyledHeader = styled.header`
   position: sticky;
@@ -187,20 +191,15 @@ export default function Header({
   showSidebar: boolean;
   setShowSidebar: (showSidebar: boolean) => void;
 }) {
-  const {version} = useConditioning();
-  const {APP_DOMAIN} = getVersionedConfig(version.selectedVersion);
-
   return (
     <StyledHeader className="docs-header">
       <div className="col-1">
         <div id="desktop">
           <Link href="/" passHref>
-            <a aria-label="go to the hompage">
+            <a aria-label="go to homepage">
               <div className="logo-box" id="light-theme">
                 <Image
-                  src={EdgioDark}
-                  width="66"
-                  height="26"
+                  src={edgioDocsDarkLogo}
                   alt="Edgio"
                   unoptimized
                   priority
@@ -208,9 +207,7 @@ export default function Header({
               </div>
               <div className="logo-box" id="dark-theme">
                 <Image
-                  src={EdgioDark}
-                  width="66"
-                  height="26"
+                  src={edgioDocsLightLogo}
                   alt="Edgio"
                   unoptimized
                   priority
@@ -228,8 +225,6 @@ export default function Header({
             </a>
           </Link>
         </div>
-
-        <VersionChooser />
       </div>
       <div className="col-2">
         <div id="desktop" className="desktop">

@@ -29,7 +29,7 @@ const SearchContainer = styled.div`
   .search-button {
     background: transparent;
     border: none;
-    color: #fff;
+    color: var(--text-primary);
     cursor: pointer;
     font-size: 16px;
     padding: 5px 10px;

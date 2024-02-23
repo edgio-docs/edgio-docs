@@ -284,6 +284,8 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
     
         **Example:** `http://cdn.mydomain.com/marketing/busy.html`
 
+-   **Silent Close:** Drops the request without providing a response to the client. 
+
 ## Bot Manager Configuration {/*bot-manager-configuration*/}
 
 Each rule within a Bot Manager configuration identifies bot traffic. Each rule contains:

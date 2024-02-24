@@ -33,12 +33,10 @@ The {{ PRODUCT_SECURITY }} dashboard provides the means through which you may pe
 
 3.  Optional. Define the dashboard's time period by performing either of the following steps:
 
-    -   Select a predefined time range (e.g., Last hour, Last 2 days, or Last 7 days).
     -   Select `Custom time range` and then define a start and end date / time.
+    -   Select a predefined time range (e.g., Last hour, Last 2 days, or Last 7 days).
 
-    ![](/images/v7/security/dashboard_time_range.png)
-
-Click on the [WAF Events](#threats-view), [Bot Events](#bot), [Rates](#rate-limit), or [Rate Enforcement](#rate-enforcement) tab to view bot traffic or rate limiting trends.
+        ![](/images/v7/security/dashboard_time_range.png?height=250)
 
 <Callout type="tip">
 
@@ -80,7 +78,7 @@ The Rate Events view contains the following tabs:
 -   **Rate Limiting:** Contains statistics for requests that exceed a rate limit.
 -   **Rate Enforcer:** Contains statistics for groupings of rate limited requests. 
 
-### Rate Limiting View {/*rate-limiting-view*/}
+### Rate Limiting Tab {/*rate-limiting-view*/}
 
 A rate limit event occurs when a request exceeds a rate limit. Analyze recently rate limited requests to:
 -   Understand the severity of rate limited requests.
@@ -96,7 +94,7 @@ Logging for rate limited requests is downsampled to 10% due to the volume of req
 
 [View field definitions.](/guides/security/recent_event_logs#rate-limit-log-fields)
 
-### Rate Enforcer View {/*rate-enforcement-view*/}
+### Rate Enforcer Tab {/*rate-enforcement-view*/}
 
 A rate limit enforcement event identifies when a set of requests were rate limited. Analyze rate limit enforcement events to:
 
@@ -107,9 +105,9 @@ A rate limit enforcement event identifies when a set of requests were rate limit
 
 #### Rate Enforcement Example {/*rate-enforcement-example*/}
 
-The Rate Enforcement dashboard will log a single event whenever your rate limit threshold is exceeded. This occurs regardless of the number of requests that end up being rate limited as a result of this enforcement.
+The **Rate Enforcer** tab will log a single event whenever your rate limit threshold is exceeded. This occurs regardless of the number of requests that end up being rate limited as a result of this enforcement.
 
-In this example, you have configured a rate limit of 300 requests per minute with an enforcement duration of 1 minute. Assuming the traffic pattern described below, the Rate Enforcement dashboard will indicate that 4 events took place.
+In this example, you have configured a rate limit of 300 requests per minute with an enforcement duration of 1 minute. Assuming the traffic pattern described below, the **Rate Enforcer** tab will indicate that 4 events took place.
 
 | Time  | # of Requests |
 |-------|----------------|
@@ -125,6 +123,8 @@ The {{ PRODUCT_SECURITY }} dashboard contains the following components:
 
 -   **Line Graph:** A line graph displays the number of events detected over a given time period.
 
+    ![](/images/v7/security/dashboard_line_graph.png)
+
     Each line on the graph represents a category of events. Change the category used to graph lines by selecting it from the option that appears directly to the left of the graph. A line will be drawn on the chart for each unique value. For example, if you select **Top Profile Type** and requests were screened by production and audit rules, then the graph will contain a line for audit and another one for production.  
 
     <Callout type="info">
@@ -133,9 +133,17 @@ The {{ PRODUCT_SECURITY }} dashboard contains the following components:
 
     </Callout>
 
--   **Donut Charts:** Two donut charts are displayed directly below the line graph. These charts break down events by category. Select a category for each donut chart to view statistics for it.
+-   **Donut Charts / Bar Graphs:** Two donut charts are displayed directly below the line graph. These charts break down events by category. Select a category for each donut chart to view statistics for it.
+
+    ![Donut chart](/images/v7/security/dashboard_donut_chart.png)
+
+    If you prefer to view this data as bar graphs, then click the bar graph icon in the upper-right hand corner of the desired donut chart.
+
+    ![Toggle from donut chart to bar graph](/images/v7/security/dashboard_donut_bar_icons.png)
 
 -   **Statistics:** Statistics on the events detected over a given time period are displayed directly below the donut charts. Select a category to view statistics for it. 
+
+    ![Statistics](/images/v7/security/dashboard_statistics.png?width=450)
 
     [View category definitions.](#field-definitions)
 
@@ -202,7 +210,9 @@ Filter the {{ PRODUCT_SECURITY }} dashboard by clicking on a top entry for a par
     
 **To view, modify, enable, disable, or remove active filters**
 
-1.  Click **Edit/Add Filters** from the upper-right hand corner of the dashboard.
+1.  Perform either of the following steps:
+    -   Click the desired filter from the top of the dashboard.
+    -   Click **Edit/Add Filters** from the upper-right hand corner of the dashboard.
 2.  Perform one of the following steps:
     -   **Modify:** Click the <Image inline src="/images/v7/icons/pencil-3.png" alt="Edit" /> (Edit) icon next to the desired filter. Make the desired changes and then click **Save**.
     -   **Disable:** Click the <Image inline src="/images/v7/icons/toggle-off-2.png" alt="Disable" /> (Disable) icon next to the desired filter.

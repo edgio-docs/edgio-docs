@@ -1,4 +1,5 @@
 import React, {createContext, useContext, useState, useEffect} from 'react';
+
 import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
 
 const ThemeContext = createContext({
@@ -12,34 +13,55 @@ const ThemeContext = createContext({
 
 export const ThemeProvider = ({children}: {children: React.ReactNode}) => {
   const isLoaded = useHydrationIsLoaded();
+
+  // Initial state is 'light' as a default
   const [theme, setTheme] = useState('light');
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const savedTheme =
-        localStorage.getItem('theme') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light');
-      setTheme(savedTheme);
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+        .matches
+        ? 'dark'
+        : 'light';
+      let savedTheme = systemTheme; // Use system theme as a default
+
+      try {
+        // Attempt to override with saved theme, if it exists
+        const localStorageTheme = localStorage.getItem('theme');
+        if (localStorageTheme) {
+          savedTheme = localStorageTheme;
+        }
+      } catch (err) {
+        console.error('LocalStorage access is restricted:', err);
+        // If localStorage is not accessible, we stick with the system theme
+      }
+
+      setTheme(savedTheme); // Apply the determined theme
     }
   }, [isLoaded]);
 
   useEffect(() => {
-    if (!isLoaded) return;
+    if (!isLoaded) {
+      return;
+    }
 
-    // Apply the theme class to document element and save to localStorage
-    document.documentElement.classList.remove('light', 'dark');
-    document.documentElement.classList.add(theme);
-    localStorage.setItem('theme', theme);
+    // Apply the theme class to document element
+    if (typeof window !== 'undefined') {
+      document.documentElement.classList.remove('light', 'dark');
+      document.documentElement.classList.add(theme);
+      try {
+        localStorage.setItem('theme', theme);
+      } catch (err) {
+        console.error('LocalStorage access is restricted:', err);
+        // If localStorage is not accessible, we silently fail or handle accordingly
+      }
+    }
   }, [theme, isLoaded]);
 
   const toggleTheme = () => {
-    console.log('toggling theme');
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
-  // Function to return a value based on the current theme
   const themedValue = (lightValue: any, darkValue: any) => {
     return theme === 'light' ? lightValue : darkValue;
   };

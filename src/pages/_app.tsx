@@ -14,9 +14,7 @@ import * as React from 'react';
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
 // import {VersionProvider} from 'components/versioning';
 import {siteConfig} from 'config/appConfig';
-
 // Universal loading page (used in dynamically imported components) which contains the wrapper of each page
-
 import '../styles/code.css';
 import '../styles/algolia.css';
 import '../styles/custom-props.css';
@@ -26,7 +24,9 @@ import '../styles/reset.css';
 import '../styles/scrollbar.css';
 import {ThemeProvider} from 'contexts/ThemeContext';
 
-const EmptyAppShell: React.FC = ({children}) => <>{children}</>;
+const EmptyAppShell: React.FC<{children: React.ReactNode}> = ({children}) => (
+  <>{children}</>
+);
 
 // CWV for Edgio
 new Metrics({token: 'a5c2ebb3-dd43-4c36-b082-fb499a7bcd8d'}).collect();

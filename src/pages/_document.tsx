@@ -48,9 +48,10 @@ class MyDocument extends Document {
             crossOrigin="true"
           />
           <link rel="preconnect" href="https://db.onlinewebfonts.com" />
-          <link
+          {/* TODO bring this font locally */}
+          {/* <link
             href="https://db.onlinewebfonts.com/c/c0bb155fab1810bd95608da325cfae77?family=Mark+Bold"
-            rel="stylesheet"></link>
+            rel="stylesheet"></link> */}
           <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
             rel="stylesheet"></link>
@@ -59,48 +60,28 @@ class MyDocument extends Document {
           <script
             dangerouslySetInnerHTML={{
               __html: `
-                (function () {
-	                function setTheme(newTheme) {
-	                	window.__theme = newTheme;
-	                	if (newTheme === 'dark') {
-	                		document.documentElement.classList.remove('light');
-	                		document.documentElement.classList.add('dark');
-	                	} else {
-	                		document.documentElement.classList.remove('dark');
-	                		document.documentElement.classList.add('light');
-	                	}
-	                }
+                // Initial theme reading and setting to prevent flash of light theme on page load
+                (function() {
+                  function setTheme(newTheme) {
+                    window.__theme = newTheme;
+                    document.documentElement.classList.remove('light', 'dark'); // Remove both classes
+                    document.documentElement.classList.add(newTheme); // Add the new theme class
+                  }
 
-	                var preferredTheme;
-	                try {
-	                	preferredTheme = localStorage.getItem('theme');
-	                } catch (err) { }
+                  function getPreferredTheme() {
+                    try {
+                      const preferredTheme = localStorage.getItem('theme');
+                      return preferredTheme ? preferredTheme : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                    } catch (err) {
+                      // Fallback if localStorage is not accessible
+                      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                    }
+                  }
 
-	                // This function is attached to the window object so you can use it from anywhere
-	                // in the application.
-	                window.__setPreferredTheme = function (newTheme) {
-	                	preferredTheme = newTheme;
-	                	setTheme(newTheme);
-	                	try {
-	                		localStorage.setItem('theme', newTheme);
-	                	} catch (err) { }
-	                };
-
-
-	                var initialTheme = preferredTheme;
-
-	                var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-	                if (!initialTheme) {
-	                	initialTheme = darkQuery.matches ? "dark" : "light";
-	                }
-	                setTheme(initialTheme);
-
-	                darkQuery.addEventListener('change', function (e) {
-	                	setTheme(e.matches ? "dark" : "light");
-	                	window.__setPreferredTheme(e.matches ? "dark" : "light");
-	                });
+                  const initialTheme = getPreferredTheme();
+                  setTheme(initialTheme);
                 })();
+
 
                 // Clarity tracking code
                 (function(c, l, a, r, i, t, y) {

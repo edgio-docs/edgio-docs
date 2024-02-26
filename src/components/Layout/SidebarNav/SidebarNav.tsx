@@ -8,8 +8,8 @@ import {GoChevronRight} from 'react-icons/go';
 import styled from 'styled-components';
 
 import AppContext from 'contexts/AppContext';
-import useConditioning from 'utils/hooks/useConditioning';
 import {useTheme} from 'contexts/ThemeContext';
+import useConditioning from 'utils/hooks/useConditioning';
 
 interface Route {
   title: string | null;
@@ -36,12 +36,14 @@ function Accordion({
     version: {toVersionedPath, selectedVersion},
   } = useConditioning();
 
+  const {themedValue} = useTheme();
+
   const {getCollapseProps, getToggleProps} = useCollapse({
     isExpanded: selectedVersion === '4' || isActive,
   });
 
-  const onExapandIconClick = (e: MouseEvent) => {
-    e.preventDefault();
+  const onExapandIconClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
     onSelect();
   };
 
@@ -51,10 +53,7 @@ function Accordion({
   let iconSrc = null;
 
   if (route.icon) {
-    const {themedValue} = useTheme();
     iconSrc = `/icons/${route.icon}${themedValue('-dark', '')}.svg`;
-
-    console.log('iconSrc', iconSrc);
   }
 
   const childElement = (
@@ -293,9 +292,6 @@ const StyledSideNav = styled.div`
 
 export default function SideNav() {
   const {navMenuItems} = useContext(AppContext);
-  const {theme} = useTheme();
-
-  console.log('theme in SideNav', theme);
 
   if (navMenuItems?.routes) {
     return (

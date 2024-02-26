@@ -1,9 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
+
+import edgioAppsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-apps.png';
 import edgioDocsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-docs.png';
+import edgioUplynkDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-uplynk.png';
+import edgioAppsLightLogo from '../../../../public/images/home/header/logo/light/edgio-apps.png';
 import edgioDocsLightLogo from '../../../../public/images/home/header/logo/light/edgio-docs.png';
+import edgioUplynkLightLogo from '../../../../public/images/home/header/logo/light/edgio-uplynk.png';
+
 import ThemeSwitcher from './ThemeSwitcher';
+
 import {useTheme} from 'contexts/ThemeContext';
 
 const HeaderContainer = styled.header`

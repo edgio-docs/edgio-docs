@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import {FiSun, FiMoon} from 'react-icons/fi';
+import styled from 'styled-components';
 
 import {useTheme} from 'contexts/ThemeContext';
 

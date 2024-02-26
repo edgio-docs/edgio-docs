@@ -8,9 +8,9 @@ import v7Nav from '../config/v7.nav';
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import {AppProvider} from 'contexts/AppContext';
+import {ThemeProvider} from 'contexts/ThemeContext';
 import {serializeConfig} from 'utils/config';
 import {getBaseConfig} from 'utils/config';
-import {ThemeProvider} from 'contexts/ThemeContext';
 
 const config = Object.assign({}, getBaseConfig());
 

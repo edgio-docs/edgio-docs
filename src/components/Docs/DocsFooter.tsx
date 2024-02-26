@@ -7,6 +7,7 @@ import {
   IconEdgioSquareLogoDark,
 } from 'components/Icon/IconEdgioSquareLogo';
 import Link from 'components/MDX/Link';
+import {useTheme} from 'contexts/ThemeContext';
 
 const StyledDocsFooter = styled.footer`
   padding-top: 20px;
@@ -257,16 +258,17 @@ const pryFooterLinks = {
 };
 
 export default function DocsFooter() {
+  const {theme, themedValue} = useTheme();
   return (
     <StyledDocsFooter>
       <div className="footer-start">
         <nav className="footer-start__nav">
           <div className="logo-wrap">
-            <div className="logo" id="light-theme">
-              <IconEdgioSquareLogo />
-            </div>
-            <div className="logo" id="dark-theme">
-              <IconEdgioSquareLogoDark />
+            <div className="logo">
+              {themedValue(
+                <IconEdgioSquareLogo />,
+                <IconEdgioSquareLogoDark />
+              )}
             </div>
           </div>
           <FooterNavItem title="Products" items={pryFooterLinks.products} />

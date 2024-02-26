@@ -9,6 +9,7 @@ import styled from 'styled-components';
 
 import AppContext from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
+import {useTheme} from 'contexts/ThemeContext';
 
 interface Route {
   title: string | null;
@@ -47,6 +48,14 @@ function Accordion({
   const isActiveLink = route.path.length > 0;
   const currentPathAtCurrentDepth = currentRoutePath.split('/')[depth];
   const routePathAtCurrentDepth = route.path.split('/')[depth];
+  let iconSrc = null;
+
+  if (route.icon) {
+    const {themedValue} = useTheme();
+    iconSrc = `/icons/${route.icon}${themedValue('-dark', '')}.svg`;
+
+    console.log('iconSrc', iconSrc);
+  }
 
   const childElement = (
     <a
@@ -58,26 +67,16 @@ function Accordion({
         onClick: onSelect,
       })}
       data-v4={selectedVersion === '4'}>
-      {depth === 0 && (
+      {depth === 0 && iconSrc && (
         <div className="icons">
-          <div id="dark-theme">
-            <Image
-              src={`/icons/${route.icon}.svg`}
-              alt={route.icon}
-              width="16px"
-              height="16px"
-              priority
-            />
-          </div>
-          <div id="light-theme">
-            <Image
-              src={`/icons/${route.icon}-dark.svg`}
-              alt={route.icon}
-              width="16px"
-              height="16px"
-              priority
-            />
-          </div>
+          <Image
+            key={iconSrc}
+            src={iconSrc}
+            alt={route.icon}
+            width="16px"
+            height="16px"
+            priority
+          />
         </div>
       )}
       <span>{route.title}</span>
@@ -294,6 +293,9 @@ const StyledSideNav = styled.div`
 
 export default function SideNav() {
   const {navMenuItems} = useContext(AppContext);
+  const {theme} = useTheme();
+
+  console.log('theme in SideNav', theme);
 
   if (navMenuItems?.routes) {
     return (

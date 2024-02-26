@@ -55,11 +55,11 @@ h6 {
   isolation: isolate;
 }
 
-#dark-theme {
+.dark-theme {
   display: var(--dark-theme-display) !important;
 }
 
-#light-theme {
+.light-theme {
   display: var(--light-theme-display) !important;
 }
 

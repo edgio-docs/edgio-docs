@@ -24,6 +24,7 @@ import '../styles/nprogress.css';
 import '../styles/prism.css';
 import '../styles/reset.css';
 import '../styles/scrollbar.css';
+import {ThemeProvider} from 'contexts/ThemeContext';
 
 const EmptyAppShell: React.FC = ({children}) => <>{children}</>;
 
@@ -127,9 +128,12 @@ export default function MyApp({Component, pageProps}: AppProps) {
     <AppShell>
       <GAnalytics />
       <DefaultSeo canonical={canonicalUrl} />
-      <MDXEmbedProvider>
-        <Component {...pageProps} />
-      </MDXEmbedProvider>
+
+      <ThemeProvider>
+        <MDXEmbedProvider>
+          <Component {...pageProps} />
+        </MDXEmbedProvider>
+      </ThemeProvider>
     </AppShell>
   );
 }

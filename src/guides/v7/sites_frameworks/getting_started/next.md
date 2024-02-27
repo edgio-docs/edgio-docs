@@ -20,12 +20,6 @@ Next.js offers two different file-based routing schemes you can use to build you
   repoUrl="https://github.com/edgio-docs/edgio-v7-nextjs-app-router-example"
 />
 
-<!-- ## Next.js Commerce {/* nextjs-commerce */}
-
-For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to our [Next.js Commerce Guide](/guides/sites_frameworks/getting_started/next_commerce).
-
--->
-
 ## Supported Features {/* supported-features */}
 
 {{ PRODUCT_NAME }} supports all of the most powerful features of Next.js, including:
@@ -104,19 +98,6 @@ module.exports = with{{ PRODUCT }}({
 })
 ```
 
-## {{ PRODUCT_NAME }} Devtools {/* devtools */}
-
-To understand better the caching mechanism, you can add {{ PRODUCT }} Devtools to see the caching metrics. Add the following code to your `_app.tsx` file:
-
-```js filename='_app.tsx'
-import { useDevtools } from '@edgio/react';
-
-const MyApp = ({Component, pageProps}) => {
-  useDevtools();
-  // ... rest of your _app.tsx code
-};
-```
-
 ## Running Locally {/* running-locally */}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
@@ -144,10 +125,10 @@ See [Deployments](/guides/basics/deployments) for more information.
 The above code allows you to prefetch pages from {{ PRODUCT }}'s edge cache to significantly improve browsing speed. To prefetch a page, add the `Prefetch` component from `{{ PACKAGE_NAME }}/react` to any Next.js `Link` element. The following example shows you how to prefetch JSON data from `getServerSideProps` or `getStaticProps` using the `createNextDataUrl` function from `{{ PACKAGE_NAME }}/next/client`.
 
 ```js ins="4,14-23,27"
-import { Prefetch } from '{{ PACKAGE_NAME }}/react';
+import {Prefetch} from '{{ PACKAGE_NAME }}/react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { createNextDataURL } from '{{ PACKAGE_NAME }}/next/client';
+import {useRouter} from 'next/router';
+import {createNextDataURL} from '{{ PACKAGE_NAME }}/next/client';
 
 export default function ProductListing({products}) {
   const {locale} = useRouter(); // you can omit this if you're not using localization
@@ -198,7 +179,7 @@ The `Prefetch` component fetches data for the linked page from {{ PRODUCT }}'s e
 To enable prefetching, you need to register the service worker in your app. You can skip this step if your app is already using a service worker. If not, add the following code to your `pages/_app.js` file:
 
 ```js filename='_app.js'
-import { useServiceWorker } from '@edgio/react';
+import {useServiceWorker} from '@edgio/react';
 const MyApp = ({Component, pageProps}) => {
   useServiceWorker({
     // set to `true` to install the service worker in development mode
@@ -219,8 +200,8 @@ Starting with Next.js 13, when the `app` directory is used, adding `useServiceWo
 {{ PRODUCT }} supports Next.js's built-in routing scheme. The default `routes.js` file created by `{{ FULL_CLI_NAME }} init` sends all requests to Next.js:
 
 ```js filename='routes.js'
-import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
-import { Router } from '{{ PACKAGE_NAME }}/core/router';
+import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
+import {Router} from '{{ PACKAGE_NAME }}/core/router';
 
 export default new Router()
   // By default send all requests to the Next.js app
@@ -271,8 +252,8 @@ export default new Router()
 To be able to use [Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode) while being able to cache the respective pages, update your routes to match the requests that contain the two cookies `__prerender_bypass` & `__next_preview_data`, and send those to the {{ PRODUCT }} cloud for rendering.
 
 ```js filename="routes.js" ins="8-21"
-import { Router } from '{{ PACKAGE_NAME }}/core/router';
-import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
+import {Router} from '{{ PACKAGE_NAME }}/core/router';
+import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
 
 export default new Router()
   // By default send all requests to the Next.js app
@@ -425,6 +406,26 @@ module.exports = {
 Note that Next.js apps prior to 12.x built with the `serverless` target ([see Next.js 12.x deprecation notes](https://nextjs.org/docs/pages/building-your-application/upgrading/version-12#target-option-deprecated)) don't include a Next.js image optimizer. Disabling our image optimizer without providing an alternative may cause them to fail.
 
 </Callout>
+
+## Incremental Static Regeneration (ISR) {/* incremental-static-regeneration-isr */}
+
+Incremental Static Regeneration (ISR) is a feature of Next.js that allows you to update static pages without rebuilding the entire site. To use ISR with {{ PRODUCT }}, you need to set the `revalidate` option in `getStaticProps` to the desired number of seconds.
+
+```js filename="pages/posts/[id].js" ins="9"
+export async function getStaticProps({params}) {
+  const res = await fetch(`https://.../posts/${params.id}`);
+  const post = await res.json();
+
+  return {
+    props: {
+      post,
+    },
+    revalidate: 60, // In seconds
+  };
+}
+```
+
+{{ PRODUCT }} will automatically revalidate the page after the specified time has passed, and if the page is requested before the revalidation time has passed, the stale page will be served while the new page is being generated.
 
 ## Cloud Bundling {/* serverless-bundling */}
 

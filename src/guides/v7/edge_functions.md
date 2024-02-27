@@ -160,6 +160,9 @@ Edge Functions global namespace provide access to the following:
 | `fetch(request)`    | A [modified fetch() function](#origin-requests-using-fetch) used to makes requests to the origin server.                | [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)     |
 | `TextDecoder`       | Polyfill class to manage decoding text.                                                                                 | [TextDecoder](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder) |
 | `TextEncoder`       | Polyfill class to manage encoding text.                                                                                 | [TextEncoder](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder) |
+| `URL`               | Polyfill class to manage URLs.                                                                                          | [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL) |
+| `URLSearchParams`   | Polyfill class to manage URL search parameters.                                                                         | [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) |
+| `parseURL`          | Function to parse URLs.                                                                                                 | [parseURL](#parseURL) |
 
 ### Request Class {/* request-class */}
 
@@ -506,64 +509,30 @@ Edge functions are confined to 50ms of CPU time and a maximum of 60s for overall
 
 ## Polyfills and Helpers {/* polyfills-and-helpers */}
 
-It's important to note that edge functions are not Node.js functions. Your code or third-party libraries may not work as expected if they are referencing Node.js specific APIs (e.g. `URL`, `Buffer`, etc). Because of this, we recommend using polyfills when needed. Below are some examples of polyfills you can use in your edge functions. Add these files to your project and import them into your edge function files as needed.
-
-Install the following packages to use the polyfills:
-
-<PackageCommand>
-
-```
-npm install url-parse // Recommended for the URL API
-// or
-npm install whatwg-url
----
-yarn add url-parse // Recommended for the URL API
-// or
-yarn add whatwg-url
-```
-
-</PackageCommand>
-
-Once installed, you can use the following polyfills:
-
-- `url-parse` for the `URL` API
-
-  ```js filename="./polyfills/url-parse.js"
-  import URL from 'url-parse';
-
-  global.URL = URL;
-  ```
-
-- `whatwg-url` for the `URL` and `URLSearchParams` APIs
-
-  ```js filename="./polyfills/whatwg-url.js"
-  import {URL, URLSearchParams} from 'whatwg-url';
-
-  global.URL = URL;
-  global.URLSearchParams = URLSearchParams;
-  ```
+It's important to note that edge functions are not Node.js functions. Your code or third-party libraries may not work as expected if they are referencing Node.js specific APIs (e.g. `Buffer`, `process`, etc). Because of this, we recommend using polyfills when needed. Below are some examples of polyfills you can use in your edge functions.
 
 - `Buffer` API
 
-  ```js filename="./polyfills/buffer.js"
-  global.Buffer = require('buffer').Buffer;
+  ```js
+  // 'buffer' polyfill is provided by {{ CLI_CMD(dev) }}
+  global.Buffer = require('buffer').Buffer
 
   global.btoa = function (str) {
-    return Buffer.from(str, 'binary').toString('base64');
-  };
+    return Buffer.from(str, 'binary').toString('base64')
+  }
 
   global.atob = function (b64Encoded) {
-    return Buffer.from(b64Encoded, 'base64').toString('binary');
-  };
+    return Buffer.from(b64Encoded, 'base64').toString('binary')
+  }
   ```
 
 - `process.env` Namespace
 
-  This namespace is not globally available in edge functions. You can use the following polyfill to set environment variables from the context object.
+  This namespace is not globally available in edge functions. You can define the following polyfill to set environment variables from the context object.
 
-  ```js filename="./polyfills/process-env.js"
+  ```js
   /**
-   * Polyfill for process.env.
+   * Deine a polyfill for 'process'
    */
   global.process = global.process || {env: {}};
 
@@ -574,11 +543,36 @@ Once installed, you can use the following polyfills:
    * @param {Object} context.environmentVars - Key-value pairs of environment variables.
    */
   export function setEnvFromContext({environmentVars}) {
-    Object.assign(process.env, environmentVars);
+    Object.assign(process.env, environmentVars)
   }
   ```
 
-### Helper Functions {/* helper-functions */}
+- `URL` Class
+
+  This class, provided by {{ CLI_CMD(dev) }}, is compatible withe the standard [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL) class.
+
+  ```js
+    let url = new URL('https://www.url.com/path')
+    url.port = 8080
+    let newUrl = url.toSrring() // newUrl will equal 'https://www.url.com:8080/path'
+  ```
+
+- `URLSearchParams` Class
+
+  This class, provided by {{ CLI_CMD(dev) }}, is compatible with the standard [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) class.
+
+  ```js
+      let url = new URL('https://www.url.com/path?a=b')
+      let params = url.searchParams
+      params.set('c', 'one')
+      let newUrl = url.toString() // newUrl will equal 'https://www.url.com/path?a=b&c=one'
+  ```
+
+### Polyfill Limitations {/* polyfill-limitations */}
+
+It's worth noting that not all implementations will be able to accept polyfills, either due to the number of dependencies affected or the compiled size of the polyfill exceeding the [Limitations](#limitations) of Edge Functions.
+
+## Helper Functions {/* helper-functions */}
 
 - `createFetchForOrigin` for the `fetch()` API <a id="createFetchForOrigin"></a>
 
@@ -590,7 +584,7 @@ Once installed, you can use the following polyfills:
 
     </Callout>
 
-  ```js filename="./polyfills/createFetchForOrigin.js"
+  ```js
   /**
    * Creates a fetch function with an additional 'edgio' option to specify the origin. Example usage:
    *
@@ -624,26 +618,44 @@ Once installed, you can use the following polyfills:
   }
   ```
 
-### Usage {/* usage */}
+- parseURL()
 
-You can import these polyfills into your edge function file and use them as needed. For example, if you need to use the `URL` and `Buffer` APIs, you can import the files directly.
+  The parseURL(url: string) function takes a URL string, parses it, and returns a dictionary.
 
-```js filename="./edge-functions/example.js"
-import './polyfills/url-parse.js';
-import './polyfills/buffer.js';
-import createFetchForOrigin from './polyfills/createFetchForOrigin';
+  ```js
+  // Show all the possible values
+  parseURL('http://user:password@www.url.com:8080/one/two?a=b#hash')
+  {
+    fragment: 'hash',
+    host: 'www.url.com',
+    password: 'password',
+    path: [ 'one', 'two' ],
+    port: 8080,
+    query: 'a=b',
+    scheme: 'http',
+    username: 'user'
+  }
 
-const fetch = createFetchForOrigin('web');
+  // Show the minimum required values
+  parseURL('https://url.com/')
+  {
+    fragment: null,
+    host: 'url.com',
+    password: '',
+    path: [ '' ],
+    port: null,
+    query: null,
+    scheme: 'https',
+    username: ''
+  }
 
-export async function handleHttpRequest(request, context) {
-  const response = await fetch(/* ... */);
-  /* ... */
-}
-```
+  // Returns null on empty string or string with bad url
+  parseURL('url.com')
+  null
 
-### Polyfill Limitations {/* polyfill-limitations */}
-
-It's worth noting that not all implementations will be able to accept polyfills, either due to the number of dependencies affected or the compiled size of the polyfill exceeding the [Limitations](#limitations) of Edge Functions.
+  // Throws on non-string arguement
+  parseURL() // will throw
+  ```
 
 ## Edge Function Examples {/* examples */}
 

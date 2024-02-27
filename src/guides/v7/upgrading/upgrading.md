@@ -812,6 +812,7 @@ Review the following changes and revise your configuration as needed:
 - [GraphQL Caching End-of-Life](#graphql-caching-eol)
 - [Duplicate Query String Parameters](#duplicate-query-string-parameters)
 - [Log Data](#log-data)
+- [Incremental Static (Re)generation (ISR/ISG)](#incremental-static-regeneration-isr)
 
 ### Cache-manifest.js File {/* cache-manifest-js-file */}
 
@@ -930,3 +931,7 @@ Review your code to see whether it generates duplicate query string parameters. 
 | xmt                     | resp_x_edg_t              | [Log the x-edg-t response header.](/guides/logs/rtld/custom_log_fields)                                                                                                                                                                                                                                                                                                                                          |
 | xut                     |                           | Version 7 does not support the `x-0-user-t` response header.                                                                                                                                                                                                                                                                                                                                                     |
 | zip                     |                           | Version 7 does not indicate whether the response was compressed. However, you may log the `Content-Encoding` response header. This header indicates the type of compression applied to the response payload. [Learn how to log headers and cookies.](/guides/logs/rtld/custom_log_fields)                                                                                                                        |
+
+### Incremental Static (Re)generation (ISR/ISG) {/*incremental-static-regeneration-isr*/}
+
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 no longer supports generic Incremental Static (Re)generation (ISR/ISG) through the means of the `serveStatic(...)` router method. If you are using ISR/ISG with a Next.js or Nuxt application, your application will continue to work as expected. 

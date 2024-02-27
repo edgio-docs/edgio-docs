@@ -2,6 +2,12 @@
 title: Devtools
 ---
 
+<Callout type="important">
+
+  {{ PRODUCT }} Devtools has been deprecated and will be removed in the next major version of the {{ PRODUCT }} CLI. We recommend using the [{{ PRODUCT }} Chrome Extension](/guides/performance/observability/developer_tools_chrome_extension) for a more comprehensive view of your site's performance and cache behavior.
+
+</Callout>
+
 {{ PRODUCT }} Devtools is a widget that helps developers understand how their site interacts with {{ PRODUCT }}, including:
 
 - Edge and browser caching
@@ -10,7 +16,7 @@ title: Devtools
 
 ![devtools](/images/devtools/devtools.png?width=300)
 
-[Live demo of {{ PRODUCT }} Devtools running on a React Storefront site](https://demo.reactstorefront.io/__edgio__/devtools/enable)
+<!-- [Live demo of {{ PRODUCT }} Devtools running on a React Storefront site](https://demo.reactstorefront.io/__edgio__/devtools/enable) -->
 
 <Video src="https://player.vimeo.com/video/691580899" />
 

@@ -11,8 +11,8 @@ const ThemeSwitcherButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: inherit; // You can set the color to match your theme or leave it to inherit from the parent
-  font-size: 1.5em; // Adjust the size as needed
+  color: inherit;
+  font-size: 1em;
 `;
 
 export default function ThemeSwitcher() {

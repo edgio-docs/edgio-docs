@@ -5,11 +5,11 @@ const columnCount = 3;
 const SectionContainer = styled.div`
   width: 100%;
   padding: 40px;
-  background: #0c1117;
+  background: var(--bg-primary);
   box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   overflow: hidden;
-  border: 1px solid #17232e;
+  border: 1px solid var(--border-primary);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -45,13 +45,13 @@ const TitleIconInner = styled.div`
 `;
 
 const Title = styled.div`
-  color: #f6f6f7;
+  color: var(--text-primary);
   font-size: 24px;
   font-weight: 600;
 `;
 
 const Subtitle = styled.div`
-  color: #f6f6f7;
+  color: var(--text-primary);
   font-size: 14px;
   line-height: 18px;
 `;
@@ -72,7 +72,7 @@ const Section = styled.div`
 `;
 
 const SectionTitle = styled.div`
-  color: #f6f6f7;
+  color: var(--text-primary);
   font-size: 18px;
   font-weight: 600;
 `;
@@ -93,12 +93,12 @@ const Item = styled.div`
 const ItemDot = styled.div`
   width: 8px;
   height: 8px;
-  background: #00a2e2;
+  background: var(--colors-blue0);
   border-radius: 1px;
 `;
 
 const ItemText = styled.div`
-  color: #f6f6f7;
+  color: var(--text-primary);
   font-size: 14px;
 `;
 
@@ -106,7 +106,7 @@ const ViewMoreContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 7px;
-  color: white;
+  color: var(--text-primary);
   font-size: 14px;
   font-weight: 500;
 `;

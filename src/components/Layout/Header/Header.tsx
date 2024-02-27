@@ -2,13 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import edgioAppsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-apps.png';
 import edgioDocsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-docs.png';
-import edgioUplynkDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-uplynk.png';
-import edgioAppsLightLogo from '../../../../public/images/home/header/logo/light/edgio-apps.png';
 import edgioDocsLightLogo from '../../../../public/images/home/header/logo/light/edgio-docs.png';
-import edgioUplynkLightLogo from '../../../../public/images/home/header/logo/light/edgio-uplynk.png';
 
+import HeaderNav from './HeaderNav';
 import ThemeSwitcher from './ThemeSwitcher';
 
 import {useTheme} from 'contexts/ThemeContext';
@@ -61,21 +58,8 @@ const Button = styled.div<{gradient: string}>`
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--colors-white0);
   background: ${(props) => props.gradient};
-`;
-
-const MenuItem = styled.div`
-  padding: 6px 8px;
-  border-radius: 3px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--text-primary);
 `;
 
 const Header = () => {
@@ -90,12 +74,9 @@ const Header = () => {
           priority
         />
       </LogoArea>
-      <ThemeSwitcher />
       <NavigationArea>
-        <MenuItem>Product {/* Icon here */}</MenuItem>
-        <MenuItem>API Reference {/* Icon here */}</MenuItem>
-        <MenuItem>Support {/* Icon here */}</MenuItem>
-        <MenuItem>Fiddle {/* No icon */}</MenuItem>
+        <ThemeSwitcher />
+        <HeaderNav />
       </NavigationArea>
       <ButtonGroup>
         <Button gradient="linear-gradient(90deg, #00BDA6 0%, #00A2E2 100%)">

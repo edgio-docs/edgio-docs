@@ -245,7 +245,7 @@ Select the [WAF Events view](#waf-events-view) to filter the **Log Events** sect
 View the following detailed information on an event (i.e., rule violation) by clicking on it:
 
 -   **Common Headers:** Provides key request header data.
--   **Sub Events:** Describes a rule violation. [View log fields.](#sub-events)
+-   **Sub Events:** Describes a rule violation. [View log fields.](#sub-event-fields)
 -   **Other Data:** Describes the request, the security configuration that was violated, and the edge server on which it was processed.
 
 ### Bot Events {/*bot-events*/}
@@ -261,7 +261,7 @@ Select the [Bot Events view](#bot-events-view) to filter the **Log Events** sect
 View the following detailed information on an event (i.e., request flagged as bot traffic) by clicking on it:
 
 -   **Common Headers:** Provides key request header data.
--   **Sub Events:** Describes why the request was flagged as bot traffic. [View log fields.](#sub-events)
+-   **Sub Events:** Describes why the request was flagged as bot traffic. [View log fields.](#sub-event-fields)
 -   **Other Data:** Describes the request, the security configuration that was violated, and the edge server on which it was processed. Key fields when analyzing bot traffic identified through a browser challenge are described below.
 
     -   **Browser Challenge Status (challengeStatus):** Indicates the reason why a browser challenge was served. Valid values are:  
@@ -296,61 +296,11 @@ View the following detailed information on an event (i.e., rule violation) by cl
 -   **Common Headers:** Provides key request header data.
 -   **Other Data:** Describes the request, the security configuration that was violated, and the edge server on which it was processed.
 
-## Rate Limit Enforcement Log Data {/*rate-limit-enforcement-log-data*/}
+#### Rate Limit Enforcement Log Data {/*rate-limit-enforcement-log-data*/}
 
-The **Rate Enforcement** tab contains log events for recent rate limit enforcement events. Each enforcement event is described as follows:
+The **Rate Enforcement** tab contains log events for recent rate limit enforcement events. An event occurs when the  enforcement of a rate limit is triggered. Log data for this type of event describes the enforcement of the rate limit. For example, it indicates the type of enforcement action (i.e., `enforcementEnfType`) that was applied to the rate limited requests and the time period (i.e.,. `enforcementStartTimeMs` and `enforcementDurationSec`) during which it was applied.
 
-`Enforced Rule: <Rule>  <Elapsed Time> <Time>`
-
-`Action Type: <Action Type>`
-
-The above terms are defined as follows:
--   `<Rule>`**:** Identifies the rate rule that was violated by its name.
--   `<Elapsed Time>`**:** Indicates the amount of time that has passed since the request was screened. 
--   `<Time>`**:** Indicates the time (UTC) at which the request was screened.
--   `<Action Type>`**:** Represents the type of action that was applied to the rate limited request. This action is determined by the rate rule
-that it violated.
-
-A sample rule violation is provided below.
-
-`Enforced Rule: Drop Traffic [10s ago 12:00:00.00 UTC]`
-
-`Action Type: drop-request`
-
-
-
-
-
-
-### Rate Limit Enforcement Log Fields {/*rate-limit-enforcement-log-fields*/}
-
-A brief description for each field used to describe/categorize rate
-limiting enforcement is provided below.
-
--   **Action Name:** Indicates the name of the action that was applied to rate limited requests as a result of this enforcement event. 
-
-<!--
-    <Callout type="tip">
-
-      Assign names to actions by defining your rate rule through our REST API.
-
-    </Callout>
--->
-
--   **Action Type:** Indicates the type of action (e.g., `custom-response`) that was applied to rate limited requests as a result of this enforcement event.
--   **Rule Name:** Indicates the name of the rule whose threshold was exceeded.
--   **Timestamp:** Indicates the date and time (UTC) at which rate limiting enforcement was initiated.
-
-    <Callout type="info">
-
-      This field is only available from within the Event Log view. Requests may not be filtered by this field. Filter by time through the **Time Range** option that appears on the left-hand side of the dashboard.         
-
-    </Callout>
-    
-    
-    
-    
-#### Sub Event Fields {/*sub-events*/}
+### Sub Event Fields {/*sub-event-fields*/}
 
 Each sub event contains the following fields:
 

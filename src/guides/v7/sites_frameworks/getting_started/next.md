@@ -411,7 +411,7 @@ Note that Next.js apps prior to 12.x built with the `serverless` target ([see Ne
 
 Incremental Static Regeneration (ISR) is a feature of Next.js that allows you to update static pages without rebuilding the entire site. To use ISR with {{ PRODUCT }}, you need to set the `revalidate` option in `getStaticProps` to the desired number of seconds.
 
-```js filename="pages/posts/[id].js" ins="5-9"
+```js filename="pages/posts/[id].js" ins="9"
 export async function getStaticProps({params}) {
   const res = await fetch(`https://.../posts/${params.id}`);
   const post = await res.json();

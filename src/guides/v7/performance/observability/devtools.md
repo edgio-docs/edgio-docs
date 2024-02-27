@@ -4,7 +4,7 @@ title: Devtools
 
 <Callout type="important">
 
-  {{ PRODUCT }} Devtools has been deprecated and will be removed in the next major version of the {{ PRODUCT }} CLI. We recommend using the [{{ PRODUCT }} Chrome Extension](/guides/performance/observability/developer_tools_chrome_extension) for a more comprehensive view of your site's performance and cache behavior.
+  {{ PRODUCT }} Devtools has been deprecated and will be removed in the next major version of the {{ PRODUCT }} CLI. We recommend using the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer_tools_chrome_extension) for a more comprehensive view of your site's performance and cache behavior.
 
 </Callout>
 

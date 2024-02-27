@@ -60,7 +60,7 @@ A WAF event occurs when an access rule, custom rule, or managed rule is violated
 -   Identify key individual offenders by their IP address.
 -   Learn detailed information on the types of attack being mounted against your site.
 
-[View field definitions.](/guides/security/recent_event_logs#threat-log-fields)
+[Learn about WAF log events.](#waf-events)
 
 ## Bot Events View {/*bot-events-view*/}
 
@@ -69,7 +69,7 @@ A bot event occurs when a bot manager rule is violated. Analyze recently detecte
 -   Identify the countries from which bot traffic originates.
 -   Identify key individual offenders by their IP address.
 
-[View field definitions.](/guides/security/recent_event_logs#bot-log-fields)
+[Learn about Bot log events.](#bot-events)
 
 ## Rate Events View {/*rates-view*/}
 
@@ -92,7 +92,7 @@ Logging for rate limited requests is downsampled to 10% due to the volume of req
 
 </Callout>
 
-[View field definitions.](/guides/security/recent_event_logs#rate-limit-log-fields)
+[Learn about Rate Limit log events.](#rate-limit-events)
 
 ### Rate Enforcer Tab {/*rate-enforcement-view*/}
 
@@ -101,7 +101,7 @@ A rate limit enforcement event identifies when a set of requests were rate limit
 -   Visualize the time periods during which a high volume of requests resulted in the enforcement of a rate rule.
 -   Understand the frequency of rate limited requests.
 
-[View field definitions.](/guides/security/recent_event_logs#rate-limit-enforcement-log-fields)
+[Learn about Rate Limit log events.](#rate-limit-events)
 
 #### Rate Enforcement Example {/*rate-enforcement-example*/}
 

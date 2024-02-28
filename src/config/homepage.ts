@@ -7,50 +7,51 @@ export const sections: HomepageSectionGroup[] = [
     subheading: 'Build lightning fast, secured web and app experiences.',
     className: 'applications',
     icon: IconEdgioApplications,
+    path: '/applications',
     sections: [
       {
         title: 'Security',
-        link: '/security',
+        path: '/security',
         items: [
           {
             title: 'Security',
-            link: '/security',
+            path: '/security',
           },
           {
             title: 'Getting Started',
-            link: '/security/getting-started',
+            path: '/security/getting-started',
           },
           {
             title: 'Dual WAF',
-            link: '/security/dual-waf',
+            path: '/security/dual-waf',
           },
           {
             title: 'Security Dashboard',
-            link: '/security/security-dashboard',
+            path: '/security/security-dashboard',
           },
           {
             title: 'Bot Management',
-            link: '/security/bot-management',
+            path: '/security/bot-management',
           },
           {
             title: 'API Security',
-            link: '/security/api-security',
+            path: '/security/api-security',
           },
           {
             title: 'Access Rules',
-            link: '/security/access-rules',
+            path: '/security/access-rules',
           },
           {
             title: 'Rate Limiting',
-            link: '/security/rate-limiting',
+            path: '/security/rate-limiting',
           },
           {
             title: 'EdgeJS',
-            link: '/security/edgejs',
+            path: '/security/edgejs',
           },
           {
             title: 'Managed Rules',
-            link: '/security/managed-rules',
+            path: '/security/managed-rules',
           },
         ],
       },
@@ -58,43 +59,43 @@ export const sections: HomepageSectionGroup[] = [
         title: 'Performance',
         description:
           'Optimize your application performance and user experience.',
-        link: '/performance',
+        path: '/performance',
         items: [
           {
             title: 'Getting Started',
-            link: '/performance/getting-started',
+            path: '/performance/getting-started',
           },
           {
             title: 'Observability',
-            link: '/performance/observability',
+            path: '/performance/observability',
           },
           {
             title: 'Cloud Functions',
-            link: '/performance/cloud-functions',
+            path: '/performance/cloud-functions',
           },
           {
             title: 'CDN-as-Code',
-            link: '/performance/cdn-as-code',
+            path: '/performance/cdn-as-code',
           },
           {
             title: 'Predictive Prefetch',
-            link: '/performance/predictive-prefetch',
+            path: '/performance/predictive-prefetch',
           },
           {
             title: 'Redirects',
-            link: '/performance/redirects',
+            path: '/performance/redirects',
           },
           {
             title: 'Traffic Splitting',
-            link: '/performance/traffic-splitting',
+            path: '/performance/traffic-splitting',
           },
           {
             title: 'Image Optimization',
-            link: '/performance/image-optimization',
+            path: '/performance/image-optimization',
           },
           {
             title: 'Cache Management',
-            link: '/performance/cache-management',
+            path: '/performance/cache-management',
           },
         ],
       },
@@ -104,15 +105,15 @@ export const sections: HomepageSectionGroup[] = [
         items: [
           {
             title: 'Frameworks',
-            link: '/sites/frameworks',
+            path: '/sites/frameworks',
           },
           {
             title: 'Connectors',
-            link: '/sites/connectors',
+            path: '/sites/connectors',
           },
           {
             title: 'Incremental Static Regeneration',
-            link: '/sites/incremental-static-regeneration',
+            path: '/sites/incremental-static-regeneration',
           },
         ],
       },
@@ -126,135 +127,135 @@ export const sections: HomepageSectionGroup[] = [
     sections: [
       {
         title: 'Uplynk',
-        link: '/media/uplynk',
+        path: '/media/uplynk',
         items: [
           {
             title: 'Getting Started',
-            link: '/media/uplynk/getting-started',
+            path: '/media/uplynk/getting-started',
           },
           {
             title: 'Security',
-            link: '/media/uplynk/security',
+            path: '/media/uplynk/security',
           },
           {
             title: 'Ads',
-            link: '/media/uplynk/ads',
+            path: '/media/uplynk/ads',
           },
           {
             title: 'Live Streaming',
-            link: '/media/uplynk/live-streaming',
+            path: '/media/uplynk/live-streaming',
           },
           {
             title: 'Clipping Video',
-            link: '/media/uplynk/clipping-video',
+            path: '/media/uplynk/clipping-video',
           },
           {
             title: 'Content Management',
-            link: '/media/uplynk/content-management',
+            path: '/media/uplynk/content-management',
           },
           {
             title: 'Cloud Packaging',
-            link: '/media/uplynk/cloud-packaging',
+            path: '/media/uplynk/cloud-packaging',
           },
           {
             title: 'Log File Delivery',
-            link: '/media/uplynk/log-file-delivery',
+            path: '/media/uplynk/log-file-delivery',
           },
           {
             title: 'Cloud Slicer Live',
-            link: '/media/uplynk/cloud-slicer-live',
+            path: '/media/uplynk/cloud-slicer-live',
           },
         ],
       },
       {
         title: 'Delivery',
-        link: '/media/delivery',
+        path: '/media/delivery',
         items: [
           {
             title: 'Getting Started',
-            link: '/media/delivery/getting-started',
+            path: '/media/delivery/getting-started',
           },
           {
             title: 'Security',
-            link: '/media/delivery/security',
+            path: '/media/delivery/security',
           },
           {
             title: 'Large File Delivery',
-            link: '/media/delivery/large-file-delivery',
+            path: '/media/delivery/large-file-delivery',
           },
           {
             title: 'Managed CDN',
-            link: '/media/delivery/managed-cdn',
+            path: '/media/delivery/managed-cdn',
           },
           {
             title: 'WAF',
-            link: '/media/delivery/waf',
+            path: '/media/delivery/waf',
           },
           {
             title: 'Content Management',
-            link: '/media/delivery/content-management',
+            path: '/media/delivery/content-management',
           },
           {
             title: 'Real-Time Log Delivery',
-            link: '/media/delivery/real-time-log-delivery',
+            path: '/media/delivery/real-time-log-delivery',
           },
           {
             title: 'Geoblocking',
-            link: '/media/delivery/geoblocking',
+            path: '/media/delivery/geoblocking',
           },
           {
             title: 'Cloud Slicer Live',
-            link: '/media/delivery/cloud-slicer-live',
+            path: '/media/delivery/cloud-slicer-live',
           },
         ],
       },
       {
         title: 'Open Edge',
-        link: '/media/open-edge',
+        path: '/media/open-edge',
         items: [
           {
             title: 'Getting Started',
-            link: '/media/open-edge/getting-started',
+            path: '/media/open-edge/getting-started',
           },
           {
             title: 'ISP & MSP',
-            link: '/media/open-edge/isp-msp',
+            path: '/media/open-edge/isp-msp',
           },
           {
             title: 'Edge Cache Servers',
-            link: '/media/open-edge/edge-cache-servers',
+            path: '/media/open-edge/edge-cache-servers',
           },
           {
             title: 'Managed CDN',
-            link: '/media/open-edge/managed-cdn',
+            path: '/media/open-edge/managed-cdn',
           },
           {
             title: 'Clipping Video',
-            link: '/media/open-edge/clipping-video',
+            path: '/media/open-edge/clipping-video',
           },
           {
             title: 'Content Management',
-            link: '/media/open-edge/content-management',
+            path: '/media/open-edge/content-management',
           },
           {
             title: 'View Media Documentation',
-            link: '/media/open-edge/view-media-documentation',
+            path: '/media/open-edge/view-media-documentation',
           },
           {
             title: 'Dynamic Cloud',
-            link: '/media/open-edge/dynamic-cloud',
+            path: '/media/open-edge/dynamic-cloud',
           },
           {
             title: 'Packaging',
-            link: '/media/open-edge/packaging',
+            path: '/media/open-edge/packaging',
           },
           {
             title: 'Log File Delivery',
-            link: '/media/open-edge/log-file-delivery',
+            path: '/media/open-edge/log-file-delivery',
           },
           {
             title: 'Cloud Slicer Live',
-            link: '/media/open-edge/cloud-slicer-live',
+            path: '/media/open-edge/cloud-slicer-live',
           },
         ],
       },

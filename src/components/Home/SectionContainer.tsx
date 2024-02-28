@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import Link from 'next/link';
 import {NamedExoticComponent} from 'react';
 import styled from 'styled-components';
 
@@ -16,6 +17,11 @@ const SectionContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
+
+  a {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
 `;
 
 const SectionHeader = styled.div`
@@ -124,6 +130,7 @@ interface SectionBoxProps {
   subtitle: string;
   className?: string;
   icon?: NamedExoticComponent<JSX.IntrinsicElements['svg']>;
+  href?: string;
   sections: {
     title: string;
     items: any[];
@@ -136,6 +143,7 @@ const SectionBox = ({
   subtitle,
   className,
   icon,
+  href,
   sections,
   viewMoreText,
 }: SectionBoxProps) => {
@@ -148,7 +156,15 @@ const SectionBox = ({
           <TitleIcon>
             <TitleIconInner>{Icon && <Icon />}</TitleIconInner>
           </TitleIcon>
-          <Title>{title}</Title>
+          {href ? (
+            <Link href={href} passHref>
+              <a>
+                <Title>{title}</Title>
+              </a>
+            </Link>
+          ) : (
+            <Title>{title}</Title>
+          )}
         </TitleContainer>
         <Subtitle>{subtitle}</Subtitle>
       </SectionHeader>

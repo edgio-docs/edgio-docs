@@ -30,6 +30,7 @@ export default function HomepageFeatures() {
               icon={section.icon}
               title={section.heading}
               subtitle={section.subheading}
+              href={section.path}
               sections={section.sections}
               viewMoreText={'View more'}
             />

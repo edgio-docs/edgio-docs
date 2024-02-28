@@ -7,15 +7,16 @@ import SearchComponent from 'components/Home/SearchComponent';
 
 const HeroContainer = styled.div`
   background: var(--homepagehero-bg-image);
-  min-height: 501px;
+  height: 370px;
   line-height: 1.3;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: top center;
   background-size: cover;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 30px;
 
   .content {
     display: flex;

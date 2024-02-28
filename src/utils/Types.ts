@@ -13,6 +13,7 @@ export type HomepageSectionGroup = {
   subheading: string;
   className?: string;
   icon?: NamedExoticComponent<JSX.IntrinsicElements['svg']>;
+  path?: string;
   sections: HomepageSection[];
 };
 
@@ -33,13 +34,13 @@ export type MDHeadingsList = MDHeading[];
 // Homepage sections
 type HomepageSectionItem = {
   title: string;
-  link: string;
+  path: string;
 };
 
 type HomepageSection = {
   title: string;
   description?: string;
-  link?: string;
+  path?: string;
   items: HomepageSectionItem[];
 };
 

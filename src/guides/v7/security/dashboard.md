@@ -27,7 +27,7 @@ The {{ PRODUCT_SECURITY }} dashboard provides the means through which you may pe
     -   [Total Events:](#total-events-view) View consolidated statistics across your entire security configuration.
     -   [WAF Events:](#waf-events-view) View statistics for requests that violate an access rule, custom rule, or managed rule.
     -   [Bot Events:](#bot-events-view) View statistics for requests identified as bot traffic.
-    -   [Rate Events:](#rates-view) View statistics for rate limited requests and enforcement events. 
+    -   [Rate Events:](#rate-events-view) View statistics for rate limited requests and enforcement events. 
 
     ![](/images/v7/security/dashboard_event_type_selection.png)
 
@@ -60,7 +60,7 @@ A WAF event occurs when an access rule, custom rule, or managed rule is violated
 -   Identify key individual offenders by their IP address.
 -   Learn detailed information on the types of attack being mounted against your site.
 
-[Learn about WAF log events.](#waf-events)
+[Learn about WAF log events.](#waf-log-events)
 
 ## Bot Events View {/*bot-events-view*/}
 
@@ -69,9 +69,9 @@ A bot event occurs when a bot manager rule is violated. Analyze recently detecte
 -   Identify the countries from which bot traffic originates.
 -   Identify key individual offenders by their IP address.
 
-[Learn about Bot log events.](#bot-events)
+[Learn about Bot log events.](#bot-log-events)
 
-## Rate Events View {/*rates-view*/}
+## Rate Events View {/*rate-events-view*/}
 
 The Rate Events view contains the following tabs:
 
@@ -92,7 +92,7 @@ Logging for rate limited requests is downsampled to 10% due to the volume of req
 
 </Callout>
 
-[Learn about Rate Limit log events.](#rate-limit-events)
+[Learn about Rate Limit log events.](#rate-limit-log-events)
 
 ### Rate Enforcer Tab {/*rate-enforcement-view*/}
 
@@ -101,7 +101,7 @@ A rate limit enforcement event identifies when a set of requests were rate limit
 -   Visualize the time periods during which a high volume of requests resulted in the enforcement of a rate rule.
 -   Understand the frequency of rate limited requests.
 
-[Learn about Rate Limit log events.](#rate-limit-events)
+[Learn about Rate Limit log events.](#rate-limit-log-events)
 
 #### Rate Enforcement Example {/*rate-enforcement-example*/}
 
@@ -117,7 +117,7 @@ In this example, you have configured a rate limit of 300 requests per minute wit
 | 12:07 | 400,000        |
 
 
-## Usage {/*usage*/}
+## Dashboard Usage {/*usage*/}
 
 The {{ PRODUCT_SECURITY }} dashboard contains the following components:
 
@@ -125,13 +125,17 @@ The {{ PRODUCT_SECURITY }} dashboard contains the following components:
 
     ![](/images/v7/security/dashboard_line_graph.png)
 
-    Each line on the graph represents a category of events. Change the category used to graph lines by selecting it from the option that appears directly to the left of the graph. A line will be drawn on the chart for each unique value. For example, if you select **Top Profile Type** and requests were screened by production and audit rules, then the graph will contain a line for audit and another one for production.  
+    **Key information:**
 
+    -   Each line on the graph represents a category of events. 
+    -   Change the category used to graph lines by selecting it from the option that appears directly to the left of the graph. A line will be drawn on the chart for each unique value. 
+
+        For example, if you select **Top Profile Type** and requests were screened by production and audit rules, then the graph will contain a line for audit and another one for production.  
+
+    -   By default, graphing events by type will include up to the 10 most popular entries. <!--Customize this limit through the **Max Top Number** option. This option also affects the maximum number of unique entries that may be listed for each type of statistic listed under the graph.-->
+
+    -   Hovering over the line graph will indicate the exact number of violations that took place during that time slot.
     <Callout type="info">
-
-      By default, graphing events by type will include up to the 10 most popular entries. <!--Customize this limit through the **Max Top Number** option. This option also affects the maximum number of unique entries that may be listed for each type of statistic listed under the graph.-->
-
-    </Callout>
 
 -   **Donut Charts / Bar Graphs:** Two donut charts are displayed directly below the line graph. These charts break down events by category. Select a category for each donut chart to view statistics for it.
 
@@ -145,11 +149,9 @@ The {{ PRODUCT_SECURITY }} dashboard contains the following components:
 
     ![Statistics](/images/v7/security/dashboard_statistics.png?width=450)
 
-    [View category definitions.](#field-definitions)
-
     <Callout type="info">
 
-      By default, statistics for up to the 10 most popular entries may be displayed for each category. <!--Customize this limit through the **Max Top Number** option. This option also affects the maximum number of lines that may be graphed.-->
+      Statistics for up to the 10 most popular entries may be displayed for each category. <!--Customize this limit through the **Max Top Number** option. This option also affects the maximum number of lines that may be graphed.-->
 
     </Callout>
 
@@ -172,17 +174,9 @@ The {{ PRODUCT_SECURITY }} dashboard contains the following components:
 
 -   **Log Data:** Paginated log data for the current time period is displayed within the **Log Events** section at the bottom of the dashboard. Click on a log entry to view detailed information about that event.
 
-**Key information:**
--   By default, the dashboard includes all rule violations within the last two days.
-    -   The dashboard may be filtered by the criteria listed directly below it. <!--Additional filters are available when viewing an individual alert from the event log.-->
--   Hovering over the line graph will indicate the exact number of violations that took place during that time slot.
-
 ### Filters {/*filters*/}
 
-Filter the {{ PRODUCT_SECURITY }} dashboard by clicking on a top entry for a particular category or by setting up an advanced filter. 
-
-**Key information:**
--   The **Filters** section, which appears on the right-hand side of the dashboard, displays a list of active filters. It also allows a filter to be cleared by clicking on the `x` (remove) icon displayed next to it.
+Filter the {{ PRODUCT_SECURITY }} dashboard by clicking on a top entry for a particular category or by setting up an advanced filter. The **Filters** section, which appears on the right-hand side of the dashboard, displays a list of active filters. It also allows a filter to be cleared by clicking on the `x` (remove) icon displayed next to it.
 
 **To apply a filter from the line graph**
 
@@ -220,25 +214,29 @@ Filter the {{ PRODUCT_SECURITY }} dashboard by clicking on a top entry for a par
     -   **Delete:** Click `x` next to the desired filter.
 3.  Click **Apply**.
 
-## Log Events
+## Log Events {/*log-events*/}
 
 {{ PRODUCT }} provides log data for recent events within the {{ PORTAL }}. Use this log data to analyze specific requests that were flagged as violations of your security policy, exceeded your rate limit, or were classified as bot traffic.
 
 **To view recent event logs**
 1.  Navigate to the **Dashboard** page.
     {{ SECURITY_NAV }} **Dashboard**.
-    
-    By default, the dashboard displays recent log events for [threats identified by WAF](#threat-log-data) (i.e., access rule, custom rule, and managed rule violations).
 
-2.  Optional. Click on the [Bot](#bot-log-data), [Rates](#rate-limit-log-data), or [Rate Enforcement](#rate-limit-enforcement-log-data) tab to view recent log events for bot traffic or rate limiting.
+    The dashboard displays recent log events for the currently selected view (e.g., Total Events, WAF Events, and Bot Events).
 
-### <a id="threat-log-data" />WAF Events {/*waf-events*/}
+2.  Click on the desired view. 
 
-Select the [WAF Events view](#waf-events-view) to filter the **Log Events** section to only display WAF log events. WAF  log events consist of recent access rule, custom rule, or managed rule violations. The following summary is provided for each entry:
--   **Timestamp**:** Indicates the date and time (UTC) at which the request was screened.
+    ![Types of events](/images/v7/security/dashboard_event_type_selection.png?width=500)
+
+3.  Scroll down to the **Log Events** section.
+
+### <a id="threat-log-data" />WAF Log Events {/*waf-log-events*/}
+
+Select the [WAF Events view](#waf-events-view) to filter the **Log Events** section to only display log events for recent access rule, custom rule, or managed rule violations. The following summary is provided for each entry:
+-   **Timestamp:** Indicates the date and time (UTC) at which the request was screened.
 -   **Host:** Identifies the hostname requested by the client.
 -   **Profile Type:** Indicates whether the request triggered a rule in [Production or Audit mode](/guides/security/waf#audit-security-rules).
--   `<Rule Message>`**:** Identifies the rule that was violated.
+-   **Rule Msg:** Identifies the rule that was violated.
 
 #### <a id="threat-log-fields" />WAF Log Fields {/*waf-log-fields*/}
 
@@ -248,13 +246,13 @@ View the following detailed information on an event (i.e., rule violation) by cl
 -   **Sub Events:** Describes a rule violation. [View log fields.](#sub-event-fields)
 -   **Other Data:** Describes the request, the security configuration that was violated, and the edge server on which it was processed.
 
-### Bot Events {/*bot-events*/}
+### Bot Log Events {/*bot-log-events*/}
 
-Select the [Bot Events view](#bot-events-view) to filter the **Log Events** section to only display Bot log events. These events are for requests that were flagged as bot traffic. The following summary is provided for each entry:
--   **Timestamp**:** Indicates the date and time (UTC) at which the request was screened.
+Select the [Bot Events view](#bot-events-view) to filter the **Log Events** section to only display log events for requests that were flagged as bot traffic. The following summary is provided for each entry:
+-   **Timestamp:** Indicates the date and time (UTC) at which the request was screened.
 -   **Host:** Identifies the hostname requested by the client.
 -   **Action Type:** Indicates the [enforcement action](/guides/security/bot_rules#actions) that was applied to the request. 
--   `<Rule Message>`**:** Identifies the rule that was violated.
+-   **Rule Msg:** Identifies the rule that was violated.
 
 #### Bot Log Data {/*bot-log-data*/}
 
@@ -281,10 +279,10 @@ View the following detailed information on an event (i.e., request flagged as bo
         -   **CHAL_STATUS_WRONG_ANSWER:** Indicates that a browser challenge was served because the user was unable to solve the previous browser challenge. This status may also be reported when the user agent (e.g., web browser) submits a tampered token.
     -   **Token Validity Duration (tokenDurationSec):** Indicates the number of minutes for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge.
 
-### Rate Limit Events {/*rate-limit-events*/}
+### Rate Limit Log Events {/*rate-limit-log-events*/}
 
 Select the [Rate Limit Events view](#waf-events-view) and then verify that the **Rate Limiting** tab is selected to filter the **Log Events** section to only display log events for rate limited requests. The following summary is provided for each entry:
--   **Timestamp**:** Indicates the date and time (UTC) at which the request was screened.
+-   **Timestamp:** Indicates the date and time (UTC) at which the request was screened.
 -   **Host:** Identifies the hostname requested by the client.
 -   **Action Type:** Indicates the [enforcement action](/guides/security/security_applications#enforcement) that was applied to the request. 
 -   `<Rule Message>`**:** Identifies the rule that was violated.
@@ -302,7 +300,7 @@ The **Rate Enforcement** tab contains log events for recent rate limit enforceme
 
 ### Sub Event Fields {/*sub-event-fields*/}
 
-Each sub event contains the following fields:
+A sub event identifies a rule violation. Each sub event contains the following fields:
 
 -   **Matched On:** Indicates a [variable](/guides/security/matched_on_variables) that identifies where the violation was found.
 -   **Matched Value:** Indicates the value of the variable defined by the **Matched On** field.  

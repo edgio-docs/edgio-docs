@@ -121,7 +121,7 @@ export default function HeaderNav() {
             {hasItems && (
               <StyledMenuList>
                 {navItem.items.map((item, index) => {
-                  const isDivider = Object.keys(item).length === 0;
+                  const isDivider = item === null;
 
                   if (isDivider) {
                     return <StyledMenuDivider key={index} />;

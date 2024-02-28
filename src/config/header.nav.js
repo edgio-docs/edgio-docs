@@ -1,10 +1,17 @@
+import {
+  FIDDLE_URL,
+  FORUM_URL,
+  STATUS_URL,
+  SUPPORT_URL,
+} from 'config/base.config';
+
 const headerNav = [
   {
     title: 'Product',
     items: [
       {
         name: 'Applications v7',
-        url: '/applications',
+        url: '/applications/v7',
       },
       {
         name: 'Uplynk',
@@ -18,9 +25,8 @@ const headerNav = [
         name: 'Delivery',
         url: '',
       },
-      {
-        /* divider */
-      },
+      /* divider */
+      null,
       {
         name: 'Edgecast CDN',
         url: '',
@@ -48,7 +54,7 @@ const headerNav = [
       },
       {
         name: 'Applications EdgeJS API',
-        url: '',
+        url: '/docs/v7.x/api/core/',
       },
       {
         name: 'Uplynk',
@@ -69,21 +75,21 @@ const headerNav = [
       },
       {
         name: 'Status Page',
-        url: '',
+        url: STATUS_URL,
       },
       {
         name: 'Forum',
-        url: 'https://forum.edg.io',
+        url: FORUM_URL,
       },
       {
         name: 'Contact Us',
-        url: '',
+        url: SUPPORT_URL,
       },
     ],
   },
   {
     title: 'Fiddle',
-    url: 'https://fiddle.edg.io',
+    url: FIDDLE_URL,
   },
 ];
 

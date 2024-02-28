@@ -48,11 +48,11 @@ const DOCS_PAGES_DOMAIN = 'layer0-docs.s3.amazonaws.com';
 const DOCS_REPO = 'edgio-docs/edgio-docs';
 const EXAMPLES_REPO = 'edgio-docs/edgio-examples';
 
-const WWW_URL = `https://www.${DOMAIN}`;
-const APP_URL = `https://${APP_DOMAIN}`;
-const FORUM_URL = `https://forum.${DOMAIN}`;
-const FIDDLE_URL = `https://fiddle.${DOMAIN}`;
-const STATUS_URL = `https://status.${DOMAIN}`;
+const WWW_URL = `https://www.${DOMAIN}/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
+const APP_URL = `https://${APP_DOMAIN}/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
+const FORUM_URL = `https://forum.${DOMAIN}/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
+const FIDDLE_URL = `https://fiddle.${DOMAIN}/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
+const STATUS_URL = `https://status.${DOMAIN}/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const HELP_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const SUPPORT_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const DOCS_URL = `https://${DOCS_DOMAIN}`;

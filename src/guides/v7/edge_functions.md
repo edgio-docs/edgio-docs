@@ -151,18 +151,18 @@ Inject up to 10 metrics into your edge function through `context.metrics`. Metri
 
 Edge Functions global namespace provide access to the following:
 
-| Global Object/Class | Description                                                                                                             | Reference                                                                   |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `console` object    | The standard console object used to log messages to the console.                                                        | [Console Object](https://developer.mozilla.org/en-US/docs/Web/API/console)  |
-| `Headers` Class     | The standard Headers class used to manipulate headers on requests and responses.                                        | [Headers Class](https://developer.mozilla.org/en-US/docs/Web/API/Headers)   |
-| `Request` Class     | The standard Request class used access the initial request on this route and to make new requests to the origin server. | [Request Class](#request-class)                                             |
-| `Response` Class    | The standard Response class used to access responses from the origin server and to create new downstream responses      | [Response Class](#response-class)                                           |
-| `fetch(request)`    | A [modified fetch() function](#origin-requests-using-fetch) used to makes requests to the origin server.                | [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)     |
-| `TextDecoder`       | Polyfill class to manage decoding text.                                                                                 | [TextDecoder](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder) |
-| `TextEncoder`       | Polyfill class to manage encoding text.                                                                                 | [TextEncoder](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder) |
-| `URL`               | Polyfill class to manage URLs.                                                                                          | [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL) |
+| Global Object/Class | Description                                                                                                             | Reference                                                                           |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `console` object    | The standard console object used to log messages to the console.                                                        | [Console Object](https://developer.mozilla.org/en-US/docs/Web/API/console)          |
+| `Headers` Class     | The standard Headers class used to manipulate headers on requests and responses.                                        | [Headers Class](https://developer.mozilla.org/en-US/docs/Web/API/Headers)           |
+| `Request` Class     | The standard Request class used access the initial request on this route and to make new requests to the origin server. | [Request Class](#request-class)                                                     |
+| `Response` Class    | The standard Response class used to access responses from the origin server and to create new downstream responses      | [Response Class](#response-class)                                                   |
+| `fetch(request)`    | A [modified fetch() function](#origin-requests-using-fetch) used to makes requests to the origin server.                | [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)             |
+| `TextDecoder`       | Polyfill class to manage decoding text.                                                                                 | [TextDecoder](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder)         |
+| `TextEncoder`       | Polyfill class to manage encoding text.                                                                                 | [TextEncoder](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder)         |
+| `URL`               | Polyfill class to manage URLs.                                                                                          | [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL)                         |
 | `URLSearchParams`   | Polyfill class to manage URL search parameters.                                                                         | [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) |
-| `parseURL`          | Function to parse URLs.                                                                                                 | [parseURL](#parseURL) |
+| `parseURL`          | Function to parse URLs.                                                                                                 | [parseURL](#parseURL)                                                               |
 
 ### Request Class {/* request-class */}
 
@@ -514,16 +514,16 @@ It's important to note that edge functions are not Node.js functions. Your code 
 - `Buffer` API
 
   ```js
-  // 'buffer' polyfill is provided by {{ CLI_CMD(dev) }}
-  global.Buffer = require('buffer').Buffer
+  // 'buffer' polyfill is provided by the {{ PRODUCT }} CLI
+  global.Buffer = require('buffer').Buffer;
 
   global.btoa = function (str) {
-    return Buffer.from(str, 'binary').toString('base64')
-  }
+    return Buffer.from(str, 'binary').toString('base64');
+  };
 
   global.atob = function (b64Encoded) {
-    return Buffer.from(b64Encoded, 'base64').toString('binary')
-  }
+    return Buffer.from(b64Encoded, 'base64').toString('binary');
+  };
   ```
 
 - `process.env` Namespace
@@ -532,7 +532,7 @@ It's important to note that edge functions are not Node.js functions. Your code 
 
   ```js
   /**
-   * Deine a polyfill for 'process'
+   * Define a polyfill for 'process'
    */
   global.process = global.process || {env: {}};
 
@@ -543,29 +543,29 @@ It's important to note that edge functions are not Node.js functions. Your code 
    * @param {Object} context.environmentVars - Key-value pairs of environment variables.
    */
   export function setEnvFromContext({environmentVars}) {
-    Object.assign(process.env, environmentVars)
+    Object.assign(process.env, environmentVars);
   }
   ```
 
 - `URL` Class
 
-  This class, provided by {{ CLI_CMD(dev) }}, is compatible withe the standard [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL) class.
+  This class, provided by the {{ PRODUCT }} CLI, is compatible with the standard [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL) class.
 
   ```js
-    let url = new URL('https://www.url.com/path')
-    url.port = 8080
-    let newUrl = url.toSrring() // newUrl will equal 'https://www.url.com:8080/path'
+  let url = new URL('https://www.url.com/path');
+  url.port = 8080;
+  let newUrl = url.toString(); // newUrl will equal 'https://www.url.com:8080/path'
   ```
 
 - `URLSearchParams` Class
 
-  This class, provided by {{ CLI_CMD(dev) }}, is compatible with the standard [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) class.
+  This class, provided by the {{ PRODUCT }} CLI, is compatible with the standard [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) class.
 
   ```js
-      let url = new URL('https://www.url.com/path?a=b')
-      let params = url.searchParams
-      params.set('c', 'one')
-      let newUrl = url.toString() // newUrl will equal 'https://www.url.com/path?a=b&c=one'
+  let url = new URL('https://www.url.com/path?a=b');
+  let params = url.searchParams;
+  params.set('c', 'one');
+  let newUrl = url.toString(); // newUrl will equal 'https://www.url.com/path?a=b&c=one'
   ```
 
 ### Polyfill Limitations {/* polyfill-limitations */}
@@ -618,9 +618,9 @@ It's worth noting that not all implementations will be able to accept polyfills,
   }
   ```
 
-- parseURL()
+- `parseURL(url: string)` <a id="parseURL"></a>
 
-  The parseURL(url: string) function takes a URL string, parses it, and returns a dictionary.
+  This function parses a URL string and returns an object containing the URL's components.
 
   ```js
   // Show all the possible values
@@ -653,7 +653,7 @@ It's worth noting that not all implementations will be able to accept polyfills,
   parseURL('url.com')
   null
 
-  // Throws on non-string arguement
+  // Throws on non-string argument
   parseURL() // will throw
   ```
 

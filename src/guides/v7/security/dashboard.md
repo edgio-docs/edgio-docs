@@ -284,7 +284,7 @@ Select the [Rate Limit Events view](#waf-events-view) and then verify that the *
 -   **Timestamp:** Indicates the date and time (UTC) at which the request was screened.
 -   **Host:** Identifies the hostname requested by the client.
 -   **Action Type:** Indicates the [enforcement action](/guides/security/security_applications#enforcement) that was applied to the request. 
--   `<Rule Message>`**:** Identifies the rule that was violated.
+-   **Limit Name:** Identifies the rate rule that was violated.
 
 #### Rate Limit Log Data {/*rate-limit-log-data*/}
 
@@ -293,9 +293,15 @@ View the following detailed information on an event (i.e., rule violation) by cl
 -   **Common Headers:** Provides key request header data.
 -   **Other Data:** Describes the request, the security configuration that was violated, and the edge server on which it was processed.
 
+### Rate Limit Enforcement Log Events {/*rate-limit-enforcement-log-events*/}
+
+Select the [Rate Limit Events view](#waf-events-view) and then select the **Rate Enforcer** tab to filter the **Log Events** section to only display log events for rate limit enforcement events. The following summary is provided for each entry:
+-   **Timestamp:** Indicates the date and time (UTC) at which your rate limiting policy was enforced.
+-   **Limit Name:** Identifies the rate rule that was violated.
+
 #### Rate Limit Enforcement Log Data {/*rate-limit-enforcement-log-data*/}
 
-The **Rate Enforcement** tab contains log events for recent rate limit enforcement events. An event occurs when the  enforcement of a rate limit is triggered. Log data for this type of event describes the enforcement of the rate limit. For example, it indicates the type of enforcement action (i.e., `enforcementEnfType`) that was applied to the rate limited requests and the time period (i.e.,. `enforcementStartTimeMs` and `enforcementDurationSec`) during which it was applied.
+View information on a rate limit enforcement event by clicking on it. For example, view the type of enforcement action (i.e., `enforcementEnfType`) that was applied to the rate limited requests and the time period (i.e.,. `enforcementStartTimeMs` and `enforcementDurationSec`) during which it was applied.
 
 ### Sub Event Fields {/*sub-event-fields*/}
 

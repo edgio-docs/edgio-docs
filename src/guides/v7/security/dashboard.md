@@ -101,7 +101,7 @@ A rate limit enforcement event identifies when a set of requests were rate limit
 -   Visualize the time periods during which a high volume of requests resulted in the enforcement of a rate rule.
 -   Understand the frequency of rate limited requests.
 
-[Learn about Rate Limit log events.](#rate-limit-log-events)
+[Learn about Rate Limit Enforcement log events.](#rate-limit-enforcement-log-events)
 
 #### Rate Enforcement Example {/*rate-enforcement-example*/}
 
@@ -280,7 +280,7 @@ View the following detailed information on an event (i.e., request flagged as bo
 
 ### Rate Limit Log Events {/*rate-limit-log-events*/}
 
-Select the [Rate Limit Events view](#rate-events-view) and then verify that the **Rate Limiting** tab is selected to filter the **Log Events** section to only display log events for rate limited requests. The following summary is provided for each entry:
+Select the [Rate Events view](#rate-events-view) and then verify that the **Rate Limiting** tab is selected to filter the **Log Events** section to only display log events for rate limited requests. The following summary is provided for each entry:
 -   **Timestamp:** Indicates the date and time (UTC) at which the request was screened.
 -   **Host:** Identifies the hostname requested by the client.
 -   **Action Type:** Indicates the [enforcement action](/guides/security/security_applications#enforcement) that was applied to the request. 
@@ -295,7 +295,7 @@ View the following detailed information on an event (i.e., rule violation) by cl
 
 ### Rate Limit Enforcement Log Events {/*rate-limit-enforcement-log-events*/}
 
-Select the [Rate Limit Events view](#rate-events-view) and then select the **Rate Enforcer** tab to filter the **Log Events** section to only display log events for rate limit enforcement events. The following summary is provided for each entry:
+Select the [Rate Events view](#rate-events-view) and then select the **Rate Enforcer** tab to filter the **Log Events** section to only display log events for rate limit enforcement events. The following summary is provided for each entry:
 -   **Timestamp:** Indicates the date and time (UTC) at which your rate limiting policy was enforced.
 -   **Limit Name:** Identifies the rate rule that was violated.
 

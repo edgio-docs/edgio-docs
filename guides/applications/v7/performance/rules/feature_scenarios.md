@@ -2,7 +2,7 @@
 title: Feature Scenarios
 ---
 
-[Features](/guides/performance/rules/features) customizes how {{ PRODUCT }} processes your traffic. Common customizations are listed below.
+[Features](/guides/performance/rules/features) customize how {{ PRODUCT }} processes your traffic. Common customizations are listed below.
 
 -   [Disabling caching.](#disable-caching)
 -   [Defining a custom caching policy.](#custom-cache-policy)
@@ -81,7 +81,23 @@ Your rule should now look similar to the following illustration:
 
 ## Tagging Requests for Purging {/*tagging-requests-for-purging*/}
 
-[Tag requests for purging](/guides/performance/caching/purging#surrogate-key) by setting the `Surrogate-Key` response header to the desired labels. If you use the [Set Response Headers feature](/guides/performance/rules/features#set-response-headers) to set this header, then you can take advantage of [feature variables](/guides/performance/rules/feature_variables) when defining labels. This allows you to dynamically assign one or more label(s). For example, you can tag requests by country and file extension by setting this header to this value: 
+[Tag requests for purging](/guides/performance/caching/purging#surrogate-key) by setting the `Surrogate-Key` response header to the desired labels. If you use the [Set Response Headers feature](/guides/performance/rules/features#set-response-headers) to set this header, then you can take advantage of [feature variables](/guides/performance/rules/feature_variables) when defining labels. This allows you to dynamically assign one or more label(s). 
+
+### Tagging by Hostname {/*tagging-by-hostname*/}
+
+Tag requests by hostname by setting the `Surrogate-Key` response header to: `%{host}`
+
+![Surrogate Key](/images/v7/performance/rules-use-case-surrogate-key-hostname.png)
+
+After which, you may purge requests by hostname as shown below.
+
+![Purge by surrogate key](/images/v7/performance/rules-use-case-purge-cache-hostname.png)
+
+The above purge request will purge all requests that were tagged with either `cdn.example.com` or `www.example.com`.
+
+### Tagging by Country and File Extension {/*tagging-by-country-and-file-extension*/}
+
+Tag requests by country and file extension by setting the `Surrogate-Key` response header to this value: 
 
 `%{geo_country} %{path//.*\./}`
 
@@ -94,6 +110,8 @@ Purge requests by country of origin, file extension, or both as shown below.
 ![Purge by surrogate key](/images/v7/performance/rules-use-case-purge-cache.png)
 
 The above purge request will purge all requests that were tagged with `US`, `png`, or both values. 
+
+### Single Tag with Multiple Conditions Example {/*single-tag-with-multiple-conditions-example*/}
 
 An alternative approach is to combine multiple conditions within a single tag. For example, tag content using a single tag that combines country and file extension by setting the `Surrogate-Key` response header to the following value:
 

@@ -1,9 +1,6 @@
-import {
-  FIDDLE_URL,
-  FORUM_URL,
-  STATUS_URL,
-  SUPPORT_URL,
-} from 'config/base.config';
+import config from 'config/base.config';
+
+const {STATUS_URL, SUPPORT_URL, FORUM_URL, FIDDLE_URL} = config;
 
 const headerNav = [
   {

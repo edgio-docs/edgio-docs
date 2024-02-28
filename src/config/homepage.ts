@@ -1,7 +1,12 @@
-export const sections = [
+import {IconEdgioApplications, IconEdgioMedia} from 'components/Icon';
+import {HomepageSectionGroup} from 'utils/Types';
+
+export const sections: HomepageSectionGroup[] = [
   {
     heading: 'Applications',
     subheading: 'Build lightning fast, secured web and app experiences.',
+    className: 'applications',
+    icon: IconEdgioApplications,
     sections: [
       {
         title: 'Security',
@@ -116,6 +121,8 @@ export const sections = [
   {
     heading: 'Media',
     subheading: 'Accelerate and protect your streaming media business.',
+    className: 'media',
+    icon: IconEdgioMedia,
     sections: [
       {
         title: 'Uplynk',

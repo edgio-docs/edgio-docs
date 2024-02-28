@@ -26,6 +26,8 @@ export default function HomepageFeatures() {
           {(sections as HomepageSectionGroup[]).map((section) => (
             <SectionContainer
               key={section.heading}
+              className={section.className}
+              icon={section.icon}
               title={section.heading}
               subtitle={section.subheading}
               sections={section.sections}

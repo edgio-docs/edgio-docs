@@ -1,3 +1,5 @@
+import {NamedExoticComponent} from 'react';
+
 export interface HeaderNavConfig {
   [index: number]: NavSection;
 }
@@ -9,6 +11,8 @@ export type HomepageConfig = {
 export type HomepageSectionGroup = {
   heading: string;
   subheading: string;
+  className?: string;
+  icon?: NamedExoticComponent<JSX.IntrinsicElements['svg']>;
   sections: HomepageSection[];
 };
 

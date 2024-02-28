@@ -94,5 +94,7 @@ export * from './IconVue';
 export * from './IconVueStorefront';
 export * from './IconWebAppCDN';
 export * from './IconZola';
+export * from './IconEdgioApplication';
+export * from './IconEdgioMedia';
 
 export {FaWordpress as IconWordPress} from 'react-icons/fa';

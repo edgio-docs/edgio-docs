@@ -40,7 +40,7 @@ const StyledSectionheader = styled.header`
       width: var(--size);
       height: var(--size);
       position: relative;
-      color: #606060;
+      color: var(--text-primary);
       background-color: var(--colors-gray1);
       display: flex;
       justify-content: center;

@@ -25,14 +25,13 @@
   --docsearch-spacing: 6px;
   --header-height: 48px;
   --image-icon-fill: #eeeeee;
-
   --select-bg: #0f1216;
   --select-border-color: #0094d6;
   --select-item-selected-bg: #0e2430;
   --select-item-hover-bg: #0f1e27;
-
   --search-input-bg: #101820;
   --search-input-icon: #8b9197;
+  --theme-primary: var(--colors-blue0);
 }
 
 :root.light {
@@ -167,6 +166,14 @@
   --docsearch-modal-background: var(--bg-primary);
   --docsearch-hit-background: #262626;
   --docsearch-hit-color: #cbcbcb;
+}
+
+:root .theme.applications {
+  --theme-primary: var(--colors-blue0);
+}
+
+:root .theme.media {
+  --theme-primary: var(--colors-green0);
 }
 
 body {

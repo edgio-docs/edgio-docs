@@ -1,3 +1,5 @@
+import cn from 'classnames';
+import {NamedExoticComponent} from 'react';
 import styled from 'styled-components';
 
 const columnCount = 3;
@@ -38,11 +40,7 @@ const TitleIcon = styled.div`
   align-items: center;
 `;
 
-const TitleIconInner = styled.div`
-  width: 25.04px;
-  height: 25.04px;
-  background: #00a2e2;
-`;
+const TitleIconInner = styled.div``;
 
 const Title = styled.div`
   color: var(--text-primary);
@@ -93,7 +91,7 @@ const Item = styled.div`
 const ItemDot = styled.div`
   width: 8px;
   height: 8px;
-  background: var(--colors-blue0);
+  background: var(--theme-primary);
   border-radius: 1px;
 `;
 
@@ -124,6 +122,8 @@ const ViewMoreIcon = styled.div`
 interface SectionBoxProps {
   title: string;
   subtitle: string;
+  className?: string;
+  icon?: NamedExoticComponent<JSX.IntrinsicElements['svg']>;
   sections: {
     title: string;
     items: any[];
@@ -134,15 +134,19 @@ interface SectionBoxProps {
 const SectionBox = ({
   title,
   subtitle,
+  className,
+  icon,
   sections,
   viewMoreText,
 }: SectionBoxProps) => {
+  const Icon = icon;
+
   return (
-    <SectionContainer>
+    <SectionContainer className={cn('theme', className)}>
       <SectionHeader>
         <TitleContainer>
           <TitleIcon>
-            <TitleIconInner />
+            <TitleIconInner>{Icon && <Icon />}</TitleIconInner>
           </TitleIcon>
           <Title>{title}</Title>
         </TitleContainer>

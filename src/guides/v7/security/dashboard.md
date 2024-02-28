@@ -135,7 +135,6 @@ The {{ PRODUCT_SECURITY }} dashboard contains the following components:
     -   By default, graphing events by type will include up to the 10 most popular entries. <!--Customize this limit through the **Max Top Number** option. This option also affects the maximum number of unique entries that may be listed for each type of statistic listed under the graph.-->
 
     -   Hovering over the line graph will indicate the exact number of violations that took place during that time slot.
-    <Callout type="info">
 
 -   **Donut Charts / Bar Graphs:** Two donut charts are displayed directly below the line graph. These charts break down events by category. Select a category for each donut chart to view statistics for it.
 

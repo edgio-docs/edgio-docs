@@ -1,7 +1,6 @@
-import Image from 'next/image';
 import styled from 'styled-components';
 
-import Container from '../Layout/Container';
+import Container from '../../Layout/Container';
 
 import SearchComponent from 'components/Home/SearchComponent';
 
@@ -54,7 +53,7 @@ const HeroContainer = styled.div`
   }
 `;
 
-function HomepageHero() {
+function HomeHero() {
   return (
     <HeroContainer>
       <Container>
@@ -68,4 +67,4 @@ function HomepageHero() {
   );
 }
 
-export default HomepageHero;
+export default HomeHero;

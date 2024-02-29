@@ -27,6 +27,7 @@ import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
 
 import {IconArrow} from 'components/Icon/IconArrow';
+import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 
@@ -383,6 +384,7 @@ export default function FrameworkGuides() {
     version,
     version: {toVersionedPath, isVersion},
   } = useConditioning();
+  const {themedValue} = useTheme();
 
   const isV7 = isVersion(7);
   const isV4 = isVersion(4);
@@ -414,11 +416,8 @@ export default function FrameworkGuides() {
                 <li className="route-list__item" key={title}>
                   {icon ? (
                     <>
-                      <div id="dark-theme" className="icon">
-                        {icon.dark}
-                      </div>
-                      <div id="light-theme" className="icon">
-                        {icon.light}
+                      <div className="icon">
+                        {themedValue(icon.light, icon.dark)}
                       </div>
                     </>
                   ) : (

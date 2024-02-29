@@ -1,5 +1,7 @@
 import {useRouter} from 'next/router';
 
+import {APPLICATIONS_PATH_PREFIX} from 'config/appConfig';
+
 const latestVersion = process.env.NEXT_PUBLIC_LATEST_VERSION as string;
 interface RouterQuery {
   version?: string | string[];
@@ -38,7 +40,7 @@ interface IVersion {
   isVersion: (version: string | number) => boolean;
 }
 
-function useConditioning(): IConditioning {
+function useConditioning() {
   const router = useRouter();
   const {slug, version: paramVersion} = router.query as RouterQuery;
 
@@ -70,6 +72,11 @@ function useConditioning(): IConditioning {
 
     packageVersion: `^${cleanedVersion}.0.0`,
     toVersionedPath: (path: string): string => {
+      const escapedPrefix = APPLICATIONS_PATH_PREFIX.replace(
+        /[-\/\\^$*+?.()|[\]{}]/g,
+        '\\$&'
+      );
+
       const versionedPaths: Array<[RegExp, () => string]> = [
         // matches anything starting with http, https, mailto, or tel, and returns the path as-is
         [/^(https?:\/\/|mailto:|tel:)/, () => path],
@@ -89,14 +96,15 @@ function useConditioning(): IConditioning {
               .join('/'),
         ],
         [
-          // matches anything starting with /guides or a guide name w/o the preceding /
-          /^(\/guides|\w+)/,
+          // matches anything starting with the path prefix (or legacy /guides or a guide name w/o the preceding /)
+          new RegExp(`^(${escapedPrefix}|/guides|\\w+)`),
           () =>
             [
-              '/guides', // forcing all urls to start with /guides
+              APPLICATIONS_PATH_PREFIX, // forcing all urls to start with the prefix
               versionConfig.pathPrefix,
               ...path
-                .replace('/guides/', '/')
+                .replace('/guides/', '/') //legacy
+                .replace(APPLICATIONS_PATH_PREFIX, '/')
                 .replace(`/${versionConfig.pathPrefix}/`, '/')
                 .split('/'),
             ]

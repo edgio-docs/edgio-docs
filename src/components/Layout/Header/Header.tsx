@@ -2,13 +2,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import applicationsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-apps.svg';
 import edgioDocsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-docs.svg';
+import uplynkDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-uplynk.svg';
+import applicationsLightLogo from '../../../../public/images/home/header/logo/light/edgio-apps.svg';
 import edgioDocsLightLogo from '../../../../public/images/home/header/logo/light/edgio-docs.svg';
+import uplynkLightLogo from '../../../../public/images/home/header/logo/light/edgio-uplynk.svg';
 
 import HeaderNav from './HeaderNav';
 import ThemeSwitcher from './ThemeSwitcher';
 
-import {useAppContext} from 'contexts/AppContext';
+import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 
 const HeaderContainer = styled.header`
@@ -80,9 +84,23 @@ const Button = styled.div<{gradient: string}>`
 `;
 
 const Header = () => {
-  const {config} = useAppContext();
+  const {config, context} = useAppContext();
   const {APP_URL} = config;
   const {themedValue} = useTheme();
+
+  let darkLogo = edgioDocsDarkLogo,
+    lightLogo = edgioDocsLightLogo;
+
+  switch (context) {
+    case ContextType.APPLICATIONS:
+      darkLogo = applicationsDarkLogo;
+      lightLogo = applicationsLightLogo;
+      break;
+    case ContextType.UPLYNK:
+      darkLogo = uplynkDarkLogo;
+      lightLogo = uplynkLightLogo;
+      break;
+  }
 
   return (
     <HeaderContainer>
@@ -90,7 +108,7 @@ const Header = () => {
         <Link href="/">
           <a>
             <Image
-              src={themedValue(edgioDocsDarkLogo, edgioDocsLightLogo)}
+              src={themedValue(darkLogo, lightLogo)}
               alt="Edgio"
               unoptimized
               priority
@@ -104,16 +122,20 @@ const Header = () => {
         <HeaderNav />
       </NavigationArea>
       <ButtonGroup>
-        <Link href={APP_URL} passHref>
-          <a>
-            <Button gradient="linear-gradient(90deg, #00BDA6 0%, #00A2E2 100%)">
-              Edgio Console
-            </Button>
-          </a>
-        </Link>
-        <Button gradient="linear-gradient(90deg, #6F1480 0%, #345FB4 53%, #003FE2 100%)">
-          Uplynk CMS
-        </Button>
+        {(!context || context === ContextType.APPLICATIONS) && (
+          <Link href={APP_URL} passHref>
+            <a>
+              <Button gradient="linear-gradient(90deg, #00BDA6 0%, #00A2E2 100%)">
+                Edgio Console
+              </Button>
+            </a>
+          </Link>
+        )}
+        {(!context || context === ContextType.UPLYNK) && (
+          <Button gradient="linear-gradient(90deg, #6F1480 0%, #345FB4 53%, #003FE2 100%)">
+            Uplynk CMS
+          </Button>
+        )}
       </ButtonGroup>
       <HorizontalLine />
     </HeaderContainer>

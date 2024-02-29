@@ -1,7 +1,7 @@
 import {NextPage} from 'next';
 
-import HomepageFeatures from '../components/MDX/HomepageFeatures';
-import HomepageHero from '../components/MDX/HomepageHero';
+import HomeFeatures from '../components/MDX/Home/Features';
+import HomeHero from '../components/MDX/Home/Hero';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
@@ -29,8 +29,8 @@ const HomePage: NextPage<HomePageProps> = ({}) => {
   return (
     <Page showNav={false}>
       <MarkdownPage meta={{...meta}}>
-        <HomepageHero />
-        <HomepageFeatures />
+        <HomeHero />
+        <HomeFeatures />
       </MarkdownPage>
     </Page>
   );

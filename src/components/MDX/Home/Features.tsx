@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-import Container from '../Layout/Container';
+import Container from '../../Layout/Container';
 
 import SectionContainer from 'components/Home/SectionContainer';
 import {sections} from 'config/homepage';
 import {HomepageSectionGroup} from 'utils/Types';
 
-const StyledHomepageFeatures = styled.div`
+const StyledFeatures = styled.div`
   .grouped-sections {
     display: flex;
     gap: 2%;
@@ -18,9 +18,9 @@ const StyledHomepageFeatures = styled.div`
   }
 `;
 
-export default function HomepageFeatures() {
+export default function HomeFeatures() {
   return (
-    <StyledHomepageFeatures>
+    <StyledFeatures>
       <Container>
         <div className="grouped-sections">
           {(sections as HomepageSectionGroup[]).map((section) => (
@@ -37,6 +37,6 @@ export default function HomepageFeatures() {
           ))}
         </div>
       </Container>
-    </StyledHomepageFeatures>
+    </StyledFeatures>
   );
 }

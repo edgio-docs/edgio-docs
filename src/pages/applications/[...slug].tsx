@@ -14,7 +14,7 @@ import {getVersionedConfig, serializeConfig} from '../../utils/config';
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import {APPLICATIONS_SRC_PATH} from 'config/appConfig';
-import {AppProvider, ContextType, useAppContext} from 'contexts/AppContext';
+import {ContextType, useAppContext} from 'contexts/AppContext';
 import logger from 'utils/logging';
 import {getVersionedNavigation} from 'utils/navigation';
 import templateReplace from 'utils/templateReplace';
@@ -46,7 +46,7 @@ export default function Guide({
       navMenuItems: navItems,
       version,
     });
-  });
+  }, [navItems, updateContext, config, version]);
 
   return (
     <Page>

@@ -7,7 +7,7 @@ const separator = {
 
 const nav = {
   title: 'guides',
-  path: `/${APPLICATIONS_PATH_PREFIX}`,
+  path: APPLICATIONS_PATH_PREFIX,
   routes: [
     {
       title: 'Getting Started',

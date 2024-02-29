@@ -1,10 +1,10 @@
 import {PRODUCT} from '../../constants';
 
-export const APPLICATIONS_PATH_PREFIX = 'applications';
-
+export const APPLICATIONS_PATH_PREFIX = '/applications';
 export const APPLICATIONS_SRC_PATH = 'guides/applications';
-export const UPLYNK_PATH_PREFIX = 'uplynk';
+export const UPLYNK_PATH_PREFIX = '/uplynk';
 export const UPLYNK_SRC_PATH = 'guides/uplynk';
+
 export const siteConfig = {
   editUrl: 'https://github.com/edgio-docs/edgio-docs/edit/src/pages',
   copyright: `Copyright © ${new Date().getFullYear()} ${PRODUCT}. All Rights Reserved.`,

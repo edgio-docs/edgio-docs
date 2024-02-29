@@ -7,7 +7,7 @@ const separator = {
 
 const nav = {
   title: 'guides',
-  path: `/${UPLYNK_PATH_PREFIX}`,
+  path: UPLYNK_PATH_PREFIX,
   routes: [
     {
       title: 'Getting Started',

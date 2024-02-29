@@ -38,7 +38,7 @@ export default function Guide({
       config: uplynkConfig,
       navMenuItems: uplynkNav,
     });
-  });
+  }, [updateContext]);
 
   return (
     <Page>

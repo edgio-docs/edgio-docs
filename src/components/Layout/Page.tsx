@@ -228,14 +228,21 @@ function Banner() {
   if (!version.isLatest) {
     return (
       <StyledBanner legacy>
-        You are reading {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
-        {version.selectedVersionText} docs.&nbsp;
-        <Link href="/" passHref>
+        You are viewing docs for {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
+        {version.selectedVersionText} (deprecated). Read the 
+        <Link href="https://edg.io/blogs/layer0-end-of-life-announcement/">
           <a>
-            Check out our latest docs for {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
-            {version.latestVersionText}.
+            end-of-life announcement
           </a>
         </Link>
+        &nbsp; or browse 
+        <Link href="/" passHref>
+          <a>
+            {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
+            {version.latestVersionText} docs
+          </a>
+        </Link>
+        .
       </StyledBanner>
     );
   }

@@ -54,9 +54,9 @@
   --docs-footer-color: var(--colors-black0);
   --homepagehero-bg-image: url('/images/home/hero/home-light.png'),
     linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fafdff 97.42%);
-  --applicationshero-bg-image: url('/images/applications/hero/applications-light.png'),
+  --applicationshero-bg-image: url('/images/home/hero/applications-light.png'),
     linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fafdff 97.42%);
-  --mediahero-bg-image: url('/images/media/hero/media-light.png'),
+  --mediahero-bg-image: url('/images/home/hero/media-light.png'),
     linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fafdff 97.42%);
   --scrollbar-bg: #353535;
   --get-started-card-bg: #fff;

@@ -30,6 +30,7 @@ export default function Guide({
   version,
   config,
   navItems,
+  isHomepage,
 }: {
   source: any;
   sourceFile: string;
@@ -37,6 +38,7 @@ export default function Guide({
   version: string;
   config: StringMap;
   navItems: Route;
+  isHomepage: boolean;
 }) {
   const {updateContext} = useAppContext();
   useEffect(() => {
@@ -48,11 +50,13 @@ export default function Guide({
     });
   }, [navItems, updateContext, config, version]);
 
+  // TODO - isHomepage needs to be set in the context
   return (
     <Page>
       <MarkdownPage
         meta={{...source.frontmatter, sourceFile, version}}
-        headings={headings}>
+        headings={headings}
+        isHomepage={isHomepage}>
         <MDXRemote {...source} components={MDXComponents} />
       </MarkdownPage>
     </Page>
@@ -134,8 +138,8 @@ export async function getStaticProps({params}: {params: any}) {
         permanent: true,
       },
     };
-  } else if (!guide || !guide.length) {
-    // version with no remainig guide path so use as homepage
+  } else if (!guide || !guide.length || guide[guide.length - 1] === 'index') {
+    // version with no remaining guide path so use as homepage
     isHomepage = true;
     guide = ['index'];
   }
@@ -205,6 +209,7 @@ export async function getStaticProps({params}: {params: any}) {
       version,
       config: serializeConfig(config),
       navItems,
+      isHomepage,
     },
   };
 }

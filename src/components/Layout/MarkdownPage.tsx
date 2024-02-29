@@ -30,7 +30,7 @@ export function MarkdownPage<
     version?: string;
     sourceFile?: string;
   }
->({children, meta, headings}: MarkdownProps<T>) {
+>({children, meta, headings, isHomepage}: MarkdownProps<T>) {
   const {route, query} = useRouter();
   const {slug} = query;
   const {
@@ -43,10 +43,6 @@ export function MarkdownPage<
   if (!route) {
     console.error('This page was not added to one of the sidebar JSON files.');
   }
-
-  const isHomePage =
-    route === '/' ||
-    !!(slug && slug.length === 1 && slug[0].match(/^v\d+$/) !== null);
 
   const tocHeadings = [];
 
@@ -70,11 +66,9 @@ export function MarkdownPage<
 
   return (
     <PageLayout>
-      {' '}
-      {/* Use the flex container */}
       <MDXProvider components={MDXComponents}>
-        <Seo {...{isHomePage, title, description, version}} />
-        {isHomePage ? (
+        <Seo {...{isHomepage, title, description, version}} />
+        {isHomepage ? (
           children
         ) : (
           <Docs
@@ -94,4 +88,5 @@ export interface MarkdownProps<Frontmatter> {
   meta: Frontmatter & {description?: string};
   children?: React.ReactNode;
   headings?: MDHeadingsList;
+  isHomepage?: boolean;
 }

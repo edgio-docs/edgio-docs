@@ -7,7 +7,6 @@ import {PRODUCT} from '../../constants';
 import {siteConfig} from 'config/appConfig';
 
 export interface SeoProps {
-  isHomePage: boolean;
   title: string;
   description?: string;
   image?: string;
@@ -19,7 +18,7 @@ export interface SeoProps {
 
 const Seo = withRouter(
   ({
-    isHomePage,
+    isHomepage,
     title,
     description = '',
     image = 'https://docs.edg.io/images/seo/docs.ogimage.png',
@@ -34,7 +33,7 @@ const Seo = withRouter(
       {/* TITLE */}
       {title != null && (
         <title key="title">
-          {isHomePage
+          {isHomepage
             ? `${PRODUCT} Documentation`
             : `${title} | ${PRODUCT} Documentation`}
         </title>

@@ -38,7 +38,7 @@ const HomePage: NextPage<HomePageProps> = ({}) => {
 
   return (
     <Page showNav={false}>
-      <MarkdownPage meta={{...meta}}>
+      <MarkdownPage meta={{...meta}} isHomepage>
         <HomeHero />
         <HomeFeatures />
       </MarkdownPage>

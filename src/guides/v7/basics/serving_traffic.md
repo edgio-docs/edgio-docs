@@ -61,6 +61,12 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
 Once you are ready to serve traffic through {{ PRODUCT }}, you will need to configure DNS for each hostname. DNS configuration consists of defining a CNAME record that points your hostname to our service. 
 
+<Callout type="info">
+
+  If your hostname is at the zone apex (e.g., example.com), then you will need a DNS service provider that supports defining a CNAME record at the zone apex. Learn how to set this up through Route.](#serving-traffic-at-the-zone-apex)
+
+</Callout>
+
 From your DNS service provider, point your hostname(s) to a service domain that is either specific to your property's environment or space.
 
 **Sample Service Domain:** `2af36ae6-2146-4b73-a5e7-f86c4a93bc06.edgio.link`
@@ -98,6 +104,35 @@ You may point any hostname defined within a private space or organization to its
     2.  Click **Settings**.
 
 2.  From the **Organization DNS Configuration** section, click <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
+
+### Serving Traffic at the Zone Apex {/*serving-traffic-at-the-zone-apex*/}
+
+{{ PRODUCT }} requires a CNAME record to serve your site's traffic. Some DNS service providers do not support defining a CNAME record for the zone apex (e.g., example.com). In order to serve traffic for a zone apex, you will need to use a DNS service provider that supports CNAME records at the zone apex. Instructions on how to use {{ PRODUCT }} Route to set up a CNAME record at the zone apex is provided below.
+
+<Callout type="info">
+
+  The zone apex is the point in your zone that contains your SOA and NS records.
+
+</Callout>
+
+**To add a CNAME record at the zone apex through Route**
+
+<Callout type="info">
+
+  {{ PRODUCT }} Route requires activation. Additionally, you will need to delegate your primary zone to {{ PRODUCT }} Route. {{ ACCOUNT_UPGRADE }}
+
+</Callout>
+
+1.  Navigate to the [Route (DNS) page](https://my.edgecast.com/dns/default.aspx).
+2.  Click on the desired zone.
+3.  Click **Add Record**.
+4.  In the **Type** option, select `CNAME`.
+5.  Create the following CNAME record:
+    -   **Name:** `@`
+    -   **TTL:** Set the TTL to the length of time (in seconds) that a DNS server should cache the record.
+    -   **Value:** Set this value to a [space-specific service domain](#space-specific-service-domain).
+6.  Click **Add**.
+7.  Click **Submit Group** to save the zone.
 
 ### DNS Verification {/*dns-verification*/}
 

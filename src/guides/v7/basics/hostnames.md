@@ -38,7 +38,9 @@ On a per environment-basis, define each hostname that will be served through {{ 
 </Callout>
 
 -   Set up support for [HTTPS delivery](#https-traffic) for each of your hostnames.
--   Once you are ready to serve traffic through {{ PRODUCT }}, update the hostname's [DNS configuration](#serving-traffic-through) to point to our service.
+-   Once you are ready to serve traffic through {{ PRODUCT }}, update the hostname's [DNS configuration](/guides/basics/serving_traffic) to point to our service.
+
+    If your hostname is at the zone apex (e.g., example.com), then you will need a DNS service provider that supports defining a CNAME record at the zone apex. [Learn how to set this up through Route.](/guides/basics/serving_traffic#serving-traffic-at-the-zone-apex)
 
 **To add, modify, or delete hostnames from an environment through the {{ PORTAL }}** <a id="add-modify-delete-hostname"></a>
 

@@ -154,7 +154,7 @@ const StyledBanner = styled.div<StyledBannerProps>`
   font-weight: 500;
 
   a {
-    color: var(--banner-text-color);
+    color: var(--colors-blue0);
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -229,13 +229,13 @@ function Banner() {
     return (
       <StyledBanner legacy>
         You are viewing docs for {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
-        {version.selectedVersionText} (deprecated). Read the 
+        {version.selectedVersionText} (deprecated). Read the &nbsp;
         <Link href="https://edg.io/blogs/layer0-end-of-life-announcement/">
           <a>
             end-of-life announcement
           </a>
         </Link>
-        &nbsp; or browse 
+        &nbsp; or browse &nbsp;
         <Link href="/" passHref>
           <a>
             {PRODUCT} {PRODUCT_APPLICATIONS}{' '}

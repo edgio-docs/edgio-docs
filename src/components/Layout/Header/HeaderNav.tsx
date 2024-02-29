@@ -1,8 +1,8 @@
 import {Menu, MenuList, MenuButton, MenuLink} from '@reach/menu-button';
+import Link from 'next/link';
 import {FaAngleDown} from 'react-icons/fa';
 import styled from 'styled-components';
 
-import Link from 'next/link';
 import '@reach/menu-button/styles.css';
 import headerNavConfig from 'config/header.nav';
 

@@ -9,12 +9,12 @@ import applicationsLightLogo from '../../../../public/images/home/header/logo/li
 import edgioDocsLightLogo from '../../../../public/images/home/header/logo/light/edgio-docs.svg';
 import uplynkLightLogo from '../../../../public/images/home/header/logo/light/edgio-uplynk.svg';
 
+import AlgoliaSearch from './AlgoliaSearch';
 import HeaderNav from './HeaderNav';
 import ThemeSwitcher from './ThemeSwitcher';
 
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
-import AlgoliaSearch from './AlgoliaSearch';
 
 const HeaderContainer = styled.header`
   position: sticky;

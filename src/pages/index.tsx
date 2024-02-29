@@ -1,4 +1,5 @@
 import {NextPage} from 'next';
+import {useEffect} from 'react';
 
 import HomeFeatures from '../components/MDX/Home/Features';
 import HomeHero from '../components/MDX/Home/Hero';
@@ -6,7 +7,6 @@ import HomeHero from '../components/MDX/Home/Hero';
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import {ContextType, useAppContext} from 'contexts/AppContext';
-import {useEffect} from 'react';
 
 interface HomePageProps {
   config: any;

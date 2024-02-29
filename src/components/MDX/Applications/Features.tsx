@@ -15,7 +15,7 @@ import DocsResources from 'components/Home/DocsResources';
 import Security from 'components/Home/Security';
 
 const StyledHomepageFeatures = styled.div`
-  padding-bottom: 500px;
+  // padding-bottom: 500px;
 
   .section-container {
     > * {

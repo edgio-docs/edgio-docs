@@ -102,17 +102,27 @@ const Header = () => {
   const {APP_URL} = config;
   const {themedValue} = useTheme();
 
-  let darkLogo = edgioDocsDarkLogo,
-    lightLogo = edgioDocsLightLogo;
+  let darkLogo,
+    lightLogo,
+    showConsoleButton = false,
+    showUplynkButton = false;
 
   switch (context) {
+    case ContextType.HOME:
+      darkLogo = edgioDocsDarkLogo;
+      lightLogo = edgioDocsLightLogo;
+      showConsoleButton = true;
+      showUplynkButton = true;
+      break;
     case ContextType.APPLICATIONS:
       darkLogo = applicationsDarkLogo;
       lightLogo = applicationsLightLogo;
+      showConsoleButton = true;
       break;
     case ContextType.UPLYNK:
       darkLogo = uplynkDarkLogo;
       lightLogo = uplynkLightLogo;
+      showUplynkButton = true;
       break;
   }
 
@@ -139,7 +149,7 @@ const Header = () => {
         <HeaderNav />
       </NavigationArea>
       <ButtonGroup>
-        {(!context || context === ContextType.APPLICATIONS) && (
+        {showConsoleButton && (
           <Link href={APP_URL} passHref>
             <a>
               <Button gradient="linear-gradient(90deg, #00BDA6 0%, #00A2E2 100%)">
@@ -148,7 +158,7 @@ const Header = () => {
             </a>
           </Link>
         )}
-        {(!context || context === ContextType.UPLYNK) && (
+        {showUplynkButton && (
           <Button gradient="linear-gradient(90deg, #6F1480 0%, #345FB4 53%, #003FE2 100%)">
             Uplynk CMS
           </Button>

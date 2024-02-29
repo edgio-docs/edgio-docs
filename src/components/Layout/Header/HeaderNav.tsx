@@ -2,7 +2,7 @@ import {Menu, MenuList, MenuButton, MenuLink} from '@reach/menu-button';
 import {FaAngleDown} from 'react-icons/fa';
 import styled from 'styled-components';
 
-import Link from 'components/MDX/Link';
+import Link from 'next/link';
 import '@reach/menu-button/styles.css';
 import headerNavConfig from 'config/header.nav';
 
@@ -110,7 +110,9 @@ export default function HeaderNav() {
           <Menu key={index}>
             <StyledMenuButton>
               {isLink ? (
-                <Link href={navItem.url}>{navItem.title}</Link>
+                <Link href={navItem.url} passHref>
+                  <a>{navItem.title}</a>
+                </Link>
               ) : (
                 <>
                   <span>{navItem.title}</span>

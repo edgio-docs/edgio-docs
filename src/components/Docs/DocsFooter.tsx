@@ -37,8 +37,8 @@ const StyledDocsFooter = styled.footer`
   }
 
   color: var(--docs-footer-color);
-  bottom: 0;
-  position: absolute;
+  // bottom: 0;
+  // position: absolute;
   width: 100%;
 
   .footer-start {

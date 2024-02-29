@@ -17,8 +17,8 @@ export const AppProvider: React.FC<{children: ReactNode}> = ({children}) => {
   const updateContext = useCallback(
     (updates: Partial<Omit<AppContextProps, 'hasNavigationMenu'>>) => {
       setContextState((currentContext) => {
-        const newNavMenuItems =
-          updates.navMenuItems ?? currentContext.navMenuItems;
+        let newNavMenuItems = updates.navMenuItems;
+
         const hasNavigationMenu = get(newNavMenuItems, 'routes.length', 0) > 0;
 
         return {
@@ -40,7 +40,7 @@ export const AppProvider: React.FC<{children: ReactNode}> = ({children}) => {
 
 interface AppContextProps {
   config: StringMap;
-  navMenuItems?: Route;
+  navMenuItems?: Route | null;
   version?: string | null;
   context?: ContextType | null;
   updateContext: (
@@ -60,6 +60,7 @@ const defaultContextValues: AppContextProps = {
 const AppContext = createContext<AppContextProps>(defaultContextValues);
 
 export enum ContextType {
+  HOME = 'HOME',
   APPLICATIONS = 'APPLICATIONS',
   UPLYNK = 'UPLYNK',
 }

@@ -1,6 +1,7 @@
 import {MDXProvider} from '@mdx-js/react';
 import {useRouter} from 'next/router';
 import * as React from 'react';
+import styled from 'styled-components';
 
 import {MDXComponents} from '../../components/MDX/MDXComponents';
 import {siteConfig} from '../../config/appConfig';
@@ -10,6 +11,12 @@ import Seo from '../Seo';
 
 import useConditioning from 'utils/hooks/useConditioning';
 import {MDHeading, MDHeadingsList} from 'utils/Types';
+
+const PageLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
 
 export function MarkdownPage<
   T extends {
@@ -62,17 +69,24 @@ export function MarkdownPage<
   }
 
   return (
-    <MDXProvider components={MDXComponents}>
-      <Seo {...{isHomePage, title, description, version}} />
-      {isHomePage ? (
-        children
-      ) : (
-        <Docs title={title} tocHeadings={tocHeadings} source={meta.sourceFile}>
-          {children}
-        </Docs>
-      )}
+    <PageLayout>
+      {' '}
+      {/* Use the flex container */}
+      <MDXProvider components={MDXComponents}>
+        <Seo {...{isHomePage, title, description, version}} />
+        {isHomePage ? (
+          children
+        ) : (
+          <Docs
+            title={title}
+            tocHeadings={tocHeadings}
+            source={meta.sourceFile}>
+            {children}
+          </Docs>
+        )}
+      </MDXProvider>
       <DocsFooter />
-    </MDXProvider>
+    </PageLayout>
   );
 }
 

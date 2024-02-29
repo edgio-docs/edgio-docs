@@ -5,7 +5,8 @@ import HomeHero from '../components/MDX/Home/Hero';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
-import {useAppContext} from 'contexts/AppContext';
+import {ContextType, useAppContext} from 'contexts/AppContext';
+import {useEffect} from 'react';
 
 interface HomePageProps {
   config: any;
@@ -19,12 +20,21 @@ export const getStaticProps = async () => {
 };
 
 const HomePage: NextPage<HomePageProps> = ({}) => {
-  const {config} = useAppContext();
+  const {config, updateContext} = useAppContext();
   const meta = {
     id: 'home',
     title: `${config.PRODUCT} Documentation`,
     permalink: 'index.html',
   };
+
+  useEffect(() => {
+    updateContext({
+      context: ContextType.HOME,
+      config,
+      navMenuItems: null,
+      version: null,
+    });
+  }, [updateContext, config]);
 
   return (
     <Page showNav={false}>

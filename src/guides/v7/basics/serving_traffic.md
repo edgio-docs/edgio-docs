@@ -107,7 +107,7 @@ You may point any hostname defined within a private space or organization to its
 
 ### Serving Traffic at the Zone Apex {/*serving-traffic-at-the-zone-apex*/}
 
-{{ PRODUCT }} requires a CNAME record to serve your site's traffic. Some DNS service providers do not support defining a CNAME record for the zone apex (e.g., example.com). In order to serve traffic for a zone apex, you will need to use a DNS service provider that supports CNAME records at the zone apex. Instructions on how to use {{ PRODUCT }} Route to set up a CNAME record at the zone apex is provided below.
+{{ PRODUCT }} requires a CNAME record to serve your site's traffic. Some DNS service providers do not support defining a CNAME record for the zone apex (e.g., example.com). In order to serve traffic for a zone apex, you will need to use a DNS service provider that supports CNAME records at the zone apex. Instructions on how to use [{{ PRODUCT }} Route](https://docs.edgecast.com/dns/#Route/Administration/DNS_Zone_Management.htm) to set up a CNAME record at the zone apex is provided below.
 
 <Callout type="info">
 
@@ -119,7 +119,7 @@ You may point any hostname defined within a private space or organization to its
 
 <Callout type="info">
 
-  {{ PRODUCT }} Route requires activation. Additionally, you will need to delegate your primary zone to {{ PRODUCT }} Route. {{ ACCOUNT_UPGRADE }}
+  {{ PRODUCT }} Route requires activation. Additionally, you will need to [delegate your primary zone](https://docs.edgecast.com/dns/#Route/Administration/Switching_DNS_Provider.htm) to {{ PRODUCT }} Route. {{ ACCOUNT_UPGRADE }}
 
 </Callout>
 

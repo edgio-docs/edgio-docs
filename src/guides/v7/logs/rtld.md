@@ -51,6 +51,12 @@ Setting up log delivery consists of the following steps:
 2.  If required, gather authentication information for the above destination.
 3.  Create a log delivery profile for the above destination.
 
+<Callout type="info">
+
+  Configure RTLD from within the {{ PORTAL }}. Log data will be delivered regardless of whether you are using Rules or CDN-as-code.
+
+</Callout>
+
 ## Log Delivery Profiles {/*log-delivery-profiles*/}
 
 A log delivery profile identifies:

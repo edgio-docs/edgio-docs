@@ -69,6 +69,20 @@ properties:
   bot_manager_config_id:
     type: string
     description: The system-defined ID for the bot manager configuration that will be applied to your traffic.
+  api_gw_audit_id:
+    type: string
+    description: The system-defined ID for the API Security ruleset that will audit your traffic.
+  api_gw_audit_action:
+    description: The type of action that will take place when a rule defined within the API Security ruleset identified by the `api_gw_audit_id` property is violated.
+    allOf:
+      - $ref: ./WafAuditAction.yaml
+  api_gw_prod_id:
+    type: string
+    description: The system-defined ID for the API Security ruleset that will be applied to your traffic.
+  api_gw_prod_action:
+    description: The type of action that will take place when a rule defined within the API Security ruleset identified by the `api_gw_prod_id` property is violated.
+    allOf:
+      - $ref: ./WafProdAction.yaml
   limits:
     type: array
     description: The set of rate rules that will be enforced for this Security App and the enforcement action that will be applied to rate limited requests.

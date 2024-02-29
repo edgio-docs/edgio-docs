@@ -54,6 +54,10 @@
   --docs-footer-color: var(--colors-black0);
   --homepagehero-bg-image: url('/images/home/hero/home-light.png'),
     linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fafdff 97.42%);
+  --applicationshero-bg-image: url('/images/applications/hero/applications-light.png'),
+    linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fafdff 97.42%);
+  --mediahero-bg-image: url('/images/media/hero/media-light.png'),
+    linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fafdff 97.42%);
   --scrollbar-bg: #353535;
   --get-started-card-bg: #fff;
   --sidebar-link-primary: #353535;
@@ -122,6 +126,9 @@
   --docs-footer-bg: #070a03;
   --docs-footer-color: var(--colors-white0);
   --homepagehero-bg-image: url('/images/home/hero/home-dark.png'), #000000;
+  --applicationshero-bg-image: url('/images/home/hero/applications-dark.png'),
+    #000000;
+  --mediahero-bg-image: url('/images/home/hero/media-dark.png'), #000000;
   --scrollbar-bg: #353535;
   --get-started-card-bg: #000000;
   --sidebar-link-primary: var(--colors-white0);

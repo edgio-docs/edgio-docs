@@ -6,7 +6,7 @@ import Container, {StyledContainer} from '../../Layout/Container';
 import Link from '../Link';
 
 const StyledHero = styled.div`
-  background: var(--homepagehero-bg-image);
+  background: var(--mediahero-bg-image);
   min-height: 501px;
   line-height: 1.3;
   background-repeat: no-repeat;

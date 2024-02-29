@@ -16,6 +16,9 @@ import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 
 const HeaderContainer = styled.header`
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   background: var(--nav-header-bg);
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
   display: grid;

@@ -34,6 +34,7 @@ properties:
       - CUSTOM_RESPONSE
       - BLOCK_REQUEST
       - ALERT
+      - SILENT_CLOSE
   response_headers:
     type: array
     description: |

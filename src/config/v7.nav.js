@@ -370,10 +370,6 @@ const nav = {
           path: 'security/dashboard',
         },
         {
-          title: 'Recent Event Logs',
-          path: 'security/recent_event_logs',
-        },
-        {
           title: 'Matched On Variables',
           path: 'security/matched_on_variables',
         },

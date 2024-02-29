@@ -14,3 +14,5 @@ properties:
     $ref: ./BrowserChallengeAction.yaml
   RECAPTCHA:
     $ref: ./RecaptchaAction.yaml
+  SILENT_CLOSE:
+    $ref: ./SilentClose.yaml

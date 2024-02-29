@@ -202,10 +202,6 @@ const pryFooterLinks = {
       title: 'JavaScript Jam',
       href: 'https://javascriptjam.com',
     },
-    {
-      title: 'Learning resources',
-      href: '/guides/learning',
-    },
     // {
     //   title: 'Glossary',
     //   href: '/guides/glossary',

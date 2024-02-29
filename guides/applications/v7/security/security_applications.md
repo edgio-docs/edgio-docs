@@ -350,6 +350,8 @@ The available enforcement actions are described below.
 
         **Example:** `http://cdn.mydomain.com/marketing/busy.html`
 
+-   **Silent Close:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Drops the request without providing a response to the client. 
+
 ### Event Variables {/*event-variables*/}
 
 A custom response header value or a custom response body may include

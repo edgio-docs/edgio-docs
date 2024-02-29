@@ -14,6 +14,7 @@ import ThemeSwitcher from './ThemeSwitcher';
 
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
+import AlgoliaSearch from './AlgoliaSearch';
 
 const HeaderContainer = styled.header`
   position: sticky;
@@ -35,8 +36,8 @@ const LogoArea = styled.div`
   grid-column: 1;
   display: flex;
   align-items: center;
-  height: 100%; /* Ensure the logo area occupies the full height of the header */
-  padding: 0 16px; /* Add padding to match the button group */
+  height: 100%;
+  padding: 0;
 
   img {
     height: 48px;
@@ -57,6 +58,16 @@ const NavigationArea = styled.nav`
   justify-content: flex-end;
   gap: 8px;
   margin-right: 16px;
+
+  .search-form__box {
+    --dimension: 32px;
+    width: var(--dimension);
+    height: var(--dimension);
+
+    .DocSearch-Button-Placeholder {
+      display: none;
+    }
+  }
 `;
 
 const ButtonGroup = styled.div`
@@ -121,6 +132,9 @@ const Header = () => {
         </Link>
       </LogoArea>
       <NavigationArea>
+        <div className="search-form__box">
+          <AlgoliaSearch />
+        </div>
         <ThemeSwitcher />
         <HeaderNav />
       </NavigationArea>

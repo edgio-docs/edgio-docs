@@ -4,10 +4,13 @@ import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
 
 const ThemeContext = createContext({
   theme: 'light',
-  toggleTheme: () => {
-    console.log('initial toggle');
-  },
+  toggleTheme: () => {},
   themedValue: (lightValue: any, darkValue: any) => lightValue,
+  renderThemedElement: (
+    lightElement: React.ReactElement,
+    darkElement: React.ReactElement
+  ) => <></>,
+
   isClient: false,
 });
 
@@ -66,9 +69,27 @@ export const ThemeProvider = ({children}: {children: React.ReactNode}) => {
     return theme === 'light' ? lightValue : darkValue;
   };
 
+  const renderThemedElement = (
+    lightElement: React.ReactElement,
+    darkElement: React.ReactElement
+  ) => {
+    return (
+      <>
+        <div hidden={theme !== 'light'}>{lightElement}</div>
+        <div hidden={theme !== 'dark'}>{darkElement}</div>
+      </>
+    );
+  };
+
   return (
     <ThemeContext.Provider
-      value={{theme, toggleTheme, themedValue, isClient: isLoaded}}>
+      value={{
+        theme,
+        toggleTheme,
+        themedValue,
+        renderThemedElement,
+        isClient: isLoaded,
+      }}>
       {children}
     </ThemeContext.Provider>
   );

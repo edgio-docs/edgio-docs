@@ -88,3 +88,7 @@ button,
 :focus-visible {
   outline: none;
 }
+
+[hidden] {
+  display: none !important;
+}

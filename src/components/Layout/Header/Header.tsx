@@ -100,7 +100,7 @@ const Button = styled.div<{gradient: string}>`
 const Header = () => {
   const {config, context} = useAppContext();
   const {APP_URL} = config;
-  const {themedValue} = useTheme();
+  const {renderThemedElement} = useTheme();
 
   let darkLogo,
     lightLogo,
@@ -131,13 +131,10 @@ const Header = () => {
       <LogoArea>
         <Link href="/">
           <a>
-            <Image
-              src={themedValue(darkLogo, lightLogo)}
-              alt="Edgio"
-              unoptimized
-              priority
-              height={48}
-            />
+            {renderThemedElement(
+              <Image src={darkLogo} alt="Edgio" priority height={48} />,
+              <Image src={lightLogo} alt="Edgio" priority height={48} />
+            )}
           </a>
         </Link>
       </LogoArea>

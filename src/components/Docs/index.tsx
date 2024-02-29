@@ -9,7 +9,7 @@ import {siteConfig} from 'config/appConfig';
 
 const StyledDocs = styled.div`
   max-width: var(--docs-area-width);
-  margin: 0 auto 600px auto;
+  margin: 0 auto 50px auto;
   display: grid;
   grid-template-columns: 75% 1fr;
 

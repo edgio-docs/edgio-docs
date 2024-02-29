@@ -194,6 +194,10 @@ const StyledSideNav = styled.div`
       background-color: var(--hr-primary);
       left: 8px;
     }
+
+    .menu-toggle__wrap {
+      font-size: 14px;
+    }
   }
 
   [aria-expanded='true'] {

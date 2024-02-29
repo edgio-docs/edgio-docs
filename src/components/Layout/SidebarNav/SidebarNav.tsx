@@ -7,7 +7,7 @@ import {CgExternal} from 'react-icons/cg';
 import {GoChevronRight} from 'react-icons/go';
 import styled from 'styled-components';
 
-import {useAppContext} from 'contexts/AppContext';
+import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 
@@ -32,11 +32,14 @@ function Accordion({
   depth: number;
   currentRoutePath: string;
 }) {
+  const {context} = useAppContext();
   const {
     version: {toVersionedPath, selectedVersion},
   } = useConditioning();
-
   const {themedValue} = useTheme();
+
+  const isApplications = context === ContextType.APPLICATIONS;
+  const isApplicationsV4 = isApplications && selectedVersion === '4';
 
   const {getCollapseProps, getToggleProps} = useCollapse({
     isExpanded: selectedVersion === '4' || isActive,

@@ -100,6 +100,7 @@ const StyledMenuDivider = styled.div`
 `;
 
 export default function HeaderNav() {
+  // TODO - handle external links
   return (
     <>
       {headerNavConfig.map((navItem, index) => {

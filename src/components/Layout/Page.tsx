@@ -15,21 +15,17 @@ import Header from './Header/Header';
 import {SidebarNav} from './SidebarNav';
 import {useIsMobile} from './useMediaQuery';
 
-import AppContext from 'contexts/AppContext';
+import {useAppContext} from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import textCompare from 'utils/textCompare';
 
-export function Page({
-  showNav = true,
-  showBanner = false,
-  children,
-}: PageProps) {
+export function Page({showBanner = false, children}: PageProps) {
   const isMobile = useIsMobile(850);
   const [showSidebar, setShowSidebar] = React.useState(isMobile);
   const router = useRouter();
   //const showBanner = !isMobile || (isMobile && !showSidebar);
   const contentInnerRef = React.useRef(null);
-  const {navMenuItems} = React.useContext(AppContext);
+  const {hasNavigationMenu} = useAppContext();
 
   React.useEffect(() => {
     router.events.on('routeChangeComplete', () => setShowSidebar(false));
@@ -66,7 +62,7 @@ export function Page({
       {showBanner && <Banner />}
       <Header {...{showSidebar, setShowSidebar}} />
       <main className="docs-content">
-        {showNav && (
+        {hasNavigationMenu && (
           <div
             className="docs-side__nav custom-scrollbar"
             data-open={isMobile && showSidebar}>

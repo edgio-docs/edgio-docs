@@ -4,6 +4,7 @@ import {isEdgioRunDev, isProductionBuild} from '@edgio/core/environment';
 import globby from 'globby';
 import {MDXRemote} from 'next-mdx-remote';
 import {serialize} from 'next-mdx-remote/serialize';
+import {useEffect} from 'react';
 
 import {remarkPlugins} from '../../../plugins/markdownToHtml';
 import rehypeExtractHeadings from '../../../plugins/rehype-extract-headings';
@@ -13,7 +14,7 @@ import {getVersionedConfig, serializeConfig} from '../../utils/config';
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import {APPLICATIONS_SRC_PATH} from 'config/appConfig';
-import {AppProvider} from 'contexts/AppContext';
+import {AppProvider, ContextType, useAppContext} from 'contexts/AppContext';
 import logger from 'utils/logging';
 import {getVersionedNavigation} from 'utils/navigation';
 import templateReplace from 'utils/templateReplace';
@@ -37,16 +38,24 @@ export default function Guide({
   config: StringMap;
   navItems: Route;
 }) {
+  const {updateContext} = useAppContext();
+  useEffect(() => {
+    updateContext({
+      context: ContextType.APPLICATIONS,
+      config,
+      navMenuItems: navItems,
+      version,
+    });
+  });
+
   return (
-    <AppProvider config={config} navMenuItems={navItems} version={version}>
-      <Page>
-        <MarkdownPage
-          meta={{...source.frontmatter, sourceFile, version}}
-          headings={headings}>
-          <MDXRemote {...source} components={MDXComponents} />
-        </MarkdownPage>
-      </Page>
-    </AppProvider>
+    <Page>
+      <MarkdownPage
+        meta={{...source.frontmatter, sourceFile, version}}
+        headings={headings}>
+        <MDXRemote {...source} components={MDXComponents} />
+      </MarkdownPage>
+    </Page>
   );
 }
 

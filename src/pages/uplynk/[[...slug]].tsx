@@ -1,18 +1,20 @@
 import {join} from 'path';
 
-import {isEdgioRunDev} from '@edgio/core/environment';
 import globby from 'globby';
 import {MDXRemote} from 'next-mdx-remote';
 import {serialize} from 'next-mdx-remote/serialize';
+import {useEffect} from 'react';
 
 import {remarkPlugins} from '../../../plugins/markdownToHtml';
 import rehypeExtractHeadings from '../../../plugins/rehype-extract-headings';
 import {MDXComponents} from '../../components/MDX/MDXComponents';
 import uplynkConfig from '../../config/uplynk.config';
+import uplynkNav from '../../config/uplynk.nav';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import {UPLYNK_SRC_PATH} from 'config/appConfig';
+import {ContextType, useAppContext} from 'contexts/AppContext';
 import logger from 'utils/logging';
 import templateReplace from 'utils/templateReplace';
 import {MDHeadingsList} from 'utils/Types';
@@ -29,6 +31,15 @@ export default function Guide({
   headings: MDHeadingsList;
   version: string;
 }) {
+  const {updateContext} = useAppContext();
+  useEffect(() => {
+    updateContext({
+      context: ContextType.UPLYNK,
+      config: uplynkConfig,
+      navMenuItems: uplynkNav,
+    });
+  });
+
   return (
     <Page>
       <MarkdownPage meta={{...source.frontmatter, version}} headings={headings}>

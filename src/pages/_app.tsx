@@ -22,6 +22,7 @@ import '../styles/nprogress.css';
 import '../styles/prism.css';
 import '../styles/reset.css';
 import '../styles/scrollbar.css';
+import {AppProvider} from 'contexts/AppContext';
 import {ThemeProvider} from 'contexts/ThemeContext';
 
 const EmptyAppShell: React.FC<{children: React.ReactNode}> = ({children}) => (
@@ -126,14 +127,16 @@ export default function MyApp({Component, pageProps}: AppProps) {
     fallbackMap[changingTo]
   ) : (
     <AppShell>
-      <GAnalytics />
-      <DefaultSeo canonical={canonicalUrl} />
+      <AppProvider>
+        <GAnalytics />
+        <DefaultSeo canonical={canonicalUrl} />
 
-      <ThemeProvider>
-        <MDXEmbedProvider>
-          <Component {...pageProps} />
-        </MDXEmbedProvider>
-      </ThemeProvider>
+        <ThemeProvider>
+          <MDXEmbedProvider>
+            <Component {...pageProps} />
+          </MDXEmbedProvider>
+        </ThemeProvider>
+      </AppProvider>
     </AppShell>
   );
 }

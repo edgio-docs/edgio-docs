@@ -2,17 +2,10 @@ import {NextPage} from 'next';
 
 import HomepageFeatures from '../components/MDX/HomepageFeatures';
 import HomepageHero from '../components/MDX/HomepageHero';
-import v7Config from '../config/v7.config';
-import v7Nav from '../config/v7.nav';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
-import {AppProvider} from 'contexts/AppContext';
-import {ThemeProvider} from 'contexts/ThemeContext';
-import {serializeConfig} from 'utils/config';
-import {getBaseConfig} from 'utils/config';
-
-const config = Object.assign({}, getBaseConfig());
+import {useAppContext} from 'contexts/AppContext';
 
 interface HomePageProps {
   config: any;
@@ -21,13 +14,12 @@ interface HomePageProps {
 
 export const getStaticProps = async () => {
   return {
-    props: {
-      config: serializeConfig(config),
-    },
+    props: {},
   };
 };
 
-const HomePage: NextPage<HomePageProps> = ({config}) => {
+const HomePage: NextPage<HomePageProps> = ({}) => {
+  const {config} = useAppContext();
   const meta = {
     id: 'home',
     title: `${config.PRODUCT} Documentation`,
@@ -35,14 +27,12 @@ const HomePage: NextPage<HomePageProps> = ({config}) => {
   };
 
   return (
-    <AppProvider config={config}>
-      <Page showNav={false}>
-        <MarkdownPage meta={{...meta}}>
-          <HomepageHero />
-          <HomepageFeatures />
-        </MarkdownPage>
-      </Page>
-    </AppProvider>
+    <Page showNav={false}>
+      <MarkdownPage meta={{...meta}}>
+        <HomepageHero />
+        <HomepageFeatures />
+      </MarkdownPage>
+    </Page>
   );
 };
 

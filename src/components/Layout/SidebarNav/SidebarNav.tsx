@@ -7,7 +7,7 @@ import {CgExternal} from 'react-icons/cg';
 import {GoChevronRight} from 'react-icons/go';
 import styled from 'styled-components';
 
-import AppContext from 'contexts/AppContext';
+import {useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 
@@ -291,9 +291,9 @@ const StyledSideNav = styled.div`
 `;
 
 export default function SideNav() {
-  const {navMenuItems} = useContext(AppContext);
+  const {navMenuItems, hasNavigationMenu} = useAppContext();
 
-  if (navMenuItems?.routes) {
+  if (hasNavigationMenu) {
     return (
       <StyledSideNav>
         <ul className="sidenav-sublist" data-nav-depth="0">

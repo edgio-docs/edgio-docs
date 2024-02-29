@@ -1,10 +1,17 @@
+import {UPLYNK_PATH_PREFIX} from './appConfig';
+
+const separator = {
+  title: '',
+  path: '',
+};
+
 const nav = {
-  title: null,
-  path: '/uplynk',
+  title: 'guides',
+  path: `/${UPLYNK_PATH_PREFIX}`,
   routes: [
     {
-      title: 'Uplynk',
-      path: 'home',
+      title: 'Getting Started',
+      path: 'getting_started',
       icon: 'spark',
     },
   ],

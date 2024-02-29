@@ -1,5 +1,4 @@
 import {NextPage} from 'next';
-import Head from 'next/head';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';

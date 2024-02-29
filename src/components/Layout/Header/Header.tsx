@@ -1,15 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import {useContext} from 'react';
 import styled from 'styled-components';
 
 import edgioDocsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-docs.svg';
 import edgioDocsLightLogo from '../../../../public/images/home/header/logo/light/edgio-docs.svg';
 
-import AppContext from 'contexts/AppContext';
 import HeaderNav from './HeaderNav';
 import ThemeSwitcher from './ThemeSwitcher';
 
+import {useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 
 const HeaderContainer = styled.header`
@@ -81,7 +80,7 @@ const Button = styled.div<{gradient: string}>`
 `;
 
 const Header = () => {
-  const {config} = useContext(AppContext);
+  const {config} = useAppContext();
   const {APP_URL} = config;
   const {themedValue} = useTheme();
 
@@ -89,13 +88,15 @@ const Header = () => {
     <HeaderContainer>
       <LogoArea>
         <Link href="/">
-          <Image
-            src={themedValue(edgioDocsDarkLogo, edgioDocsLightLogo)}
-            alt="Edgio"
-            unoptimized
-            priority
-            height={48}
-          />
+          <a>
+            <Image
+              src={themedValue(edgioDocsDarkLogo, edgioDocsLightLogo)}
+              alt="Edgio"
+              unoptimized
+              priority
+              height={48}
+            />
+          </a>
         </Link>
       </LogoArea>
       <NavigationArea>
@@ -103,10 +104,12 @@ const Header = () => {
         <HeaderNav />
       </NavigationArea>
       <ButtonGroup>
-        <Link href={APP_URL}>
-          <Button gradient="linear-gradient(90deg, #00BDA6 0%, #00A2E2 100%)">
-            Edgio Console
-          </Button>
+        <Link href={APP_URL} passHref>
+          <a>
+            <Button gradient="linear-gradient(90deg, #00BDA6 0%, #00A2E2 100%)">
+              Edgio Console
+            </Button>
+          </a>
         </Link>
         <Button gradient="linear-gradient(90deg, #6F1480 0%, #345FB4 53%, #003FE2 100%)">
           Uplynk CMS

@@ -36,13 +36,13 @@ function Accordion({
   const {
     version: {toVersionedPath, selectedVersion},
   } = useConditioning();
-  const {themedValue} = useTheme();
+  const {renderThemedImage} = useTheme();
 
   const isApplications = context === ContextType.APPLICATIONS;
   const isApplicationsV4 = isApplications && selectedVersion === '4';
 
   const {getCollapseProps, getToggleProps} = useCollapse({
-    isExpanded: selectedVersion === '4' || isActive,
+    isExpanded: isActive || isApplicationsV4, // Always expanded for v4
   });
 
   const onExapandIconClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -53,11 +53,7 @@ function Accordion({
   const isActiveLink = route.path.length > 0;
   const currentPathAtCurrentDepth = currentRoutePath.split('/')[depth];
   const routePathAtCurrentDepth = route.path.split('/')[depth];
-  let iconSrc = null;
-
-  if (route.icon) {
-    iconSrc = `/icons/${route.icon}${themedValue('-dark', '')}.svg`;
-  }
+  const hasIcon = route.icon?.length > 0 && depth === 0;
 
   const childElement = (
     <a
@@ -68,17 +64,20 @@ function Accordion({
       {...getToggleProps({
         onClick: onSelect,
       })}
-      data-v4={selectedVersion === '4'}>
-      {depth === 0 && iconSrc && (
+      data-v4={isApplicationsV4}>
+      {hasIcon && (
         <div className="icons">
-          <Image
-            key={iconSrc}
-            src={iconSrc}
-            alt={route.icon}
-            width="16px"
-            height="16px"
-            priority
-          />
+          {renderThemedImage(
+            <Image
+              src={'foo'}
+              alt={route.icon}
+              width="16px"
+              height="16px"
+              priority
+            />,
+            `/icons/${route.icon}-dark.svg`,
+            `/icons/${route.icon}.svg`
+          )}
         </div>
       )}
       <span>{route.title}</span>
@@ -92,7 +91,7 @@ function Accordion({
 
   const isExternalLink = route.external;
   const isInternalLink = route.title && isActiveLink;
-  const isExpanded = selectedVersion === '4' || isActive;
+  const isExpanded = isActive || isApplicationsV4;
 
   return (
     <li

@@ -59,7 +59,6 @@ function ApplicationsHero() {
       <Container>
         <div className="content">
           <h1>Faster Performance. Smarter Security. Happier Teams.</h1>
-          <h2>Applications Technical Documentation</h2>
         </div>
         <SearchComponent />
       </Container>

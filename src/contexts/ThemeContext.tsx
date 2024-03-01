@@ -10,6 +10,11 @@ const ThemeContext = createContext({
     lightElement: React.ReactElement,
     darkElement: React.ReactElement
   ) => <></>,
+  renderThemedImage: (
+    image: React.ReactElement,
+    lightSource: string,
+    darkSource: string
+  ) => <></>,
 
   isClient: false,
 });
@@ -81,6 +86,27 @@ export const ThemeProvider = ({children}: {children: React.ReactNode}) => {
     );
   };
 
+  const renderThemedImage = (
+    image: React.ReactElement,
+    lightSource: string,
+    darkSource: string
+  ) => {
+    return (
+      <>
+        <div hidden={theme !== 'light'}>
+          {React.cloneElement(image, {
+            src: lightSource,
+          })}
+        </div>
+        <div hidden={theme !== 'dark'}>
+          {React.cloneElement(image, {
+            src: darkSource,
+          })}
+        </div>
+      </>
+    );
+  };
+
   return (
     <ThemeContext.Provider
       value={{
@@ -88,6 +114,7 @@ export const ThemeProvider = ({children}: {children: React.ReactNode}) => {
         toggleTheme,
         themedValue,
         renderThemedElement,
+        renderThemedImage,
         isClient: isLoaded,
       }}>
       {children}

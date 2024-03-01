@@ -10,12 +10,12 @@ const HeroContainer = styled.div`
   line-height: 1.3;
   background-repeat: no-repeat;
   background-position: top center;
-  background-size: cover;
+  background-size: 100% 100%;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 30px;
+  margin-bottom: 20px;
 
   .content {
     display: flex;
@@ -59,7 +59,6 @@ function HomeHero() {
       <Container>
         <div className="content">
           <h1>Speed, Security, and Simplicity at the Edge</h1>
-          <h2>Technical Documentation</h2>
         </div>
         <SearchComponent />
       </Container>

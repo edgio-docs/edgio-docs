@@ -11,7 +11,7 @@ The {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} platform consists of the following 
 Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} to version 7 involves the following steps:
 
 1.  **{{ PRODUCT_LEGACY }} (Version 4 and Earlier):** [Rename layer0.config.js and {{ PRODUCT }} packages.](#rename-layer0-components)
-2.  [Upgrade Node.js](#upgrade-to-node-js) to version 18.x or 20.x and update your application to be compatible with Node.js 18.x or 20.x.
+2.  [Upgrade Node.js](#upgrade-to-node-js) to version 18.x or 20.x and update your application accordingly. 
 3.  [Create an {{ PRODUCT }} account.](#create-account)
 4.  [Create an organization.](#create-an-organization)
 5.  [Create a property.](#create-property)
@@ -166,7 +166,7 @@ Perform the following steps for each of your properties:
 
 [Learn how to use nvm to install Node.js.](/guides/install_nodejs)
 
-Once you are using Node.js v18 or v20, update your application code to be compatible with Node.js v18 or v20.
+Once you are using Node.js v18 or v20, update your application code to be compatible with your updated version of Node.js.
 
 <Callout type="important">
 

@@ -41,20 +41,10 @@ Learn about the benefits of upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }
           })
         ```
     -   Version 7 provides [limited support for legacy syntax](/guides/upgrading/upgrading#legacy-syntax). 
-    -   All routes that match a request are executed. In previous versions, the following methods return a response and prevent additional routes from being matched:
-        -   proxy
-        -   renderWithApp
-        -   serveStatic
-        -   dir
-        -   static
-        -   send
-        -   compute
-        -   redirect
-        -   appShell
-        -   serviceWorker
-        -   render
-    
+    -   All routes that match a request are executed. In previous versions, [various methods](/guides/upgrading/upgrading#matching-behavior) return a response and prevent additional routes from being matched.
     -   We have introduced a new method called `conditional` to Router that uses a new JSON syntax and supports conditional logic.
+
+[View additional changes introduced by version 7.](/guides/release_notes)
 
 ## Try It Out  {/*try-it-out*/}
 

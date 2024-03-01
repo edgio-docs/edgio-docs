@@ -40,13 +40,7 @@ Learn about the benefits of upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }
             }
           })
         ```
-    -   Version 7 provides limited support for legacy syntax. It does not support the `fallback()`, `catch()`, and `destination()` methods. It also does not provide full support for the following `ResponseWriter` methods: 
-        -   updateResponseCookie
-        -   removeResponseCookie
-        -   addUpstreamResponseCookie
-        -   removeUpstreamResponseCookie
-        -   setUpstreamResponseHeader
-        -   updateUpstreamResponseCookie
+    -   Version 7 provides [limited support for legacy syntax](/guides/upgrading/upgrading#legacy-syntax). 
     -   All routes that match a request are executed. In previous versions, the following methods return a response and prevent additional routes from being matched:
         -   proxy
         -   renderWithApp

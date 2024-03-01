@@ -446,7 +446,7 @@ new Router().get('/', ({cache}) => {
 });
 ```
 
-In order to ease the transition to version 7, we provide limited support for legacy syntax. However, the following syntax is unsupported:
+<a id="legacy-syntax" />In order to ease the transition to version 7, we provide limited support for legacy syntax. However, the following syntax is unsupported:
 
 -   **fallback():** The `fallback()` method, which is unsupported in version 7, executes when no other route is matched. If you are trying to proxy a request to a legacy origin, then you may do so by mapping the desired hostname to an origin configuration through the `default_origin_name` property.
 
@@ -501,8 +501,7 @@ In order to ease the transition to version 7, we provide limited support for leg
     });
     ```
 
--   **catch():** The `catch()` method is used to handle errors, usually by displaying a static error page, redirecting the client to a different page, or retrying the request from a different origin. Each of these scenarios are handled differently in v7. See the [Error Handling](/guides/performance/cdn_as_code/error_handling) guide for more information.
--   **destination():** The `destination()` method is unsupported in version 7 at this time. However, you may assign an origin to requests through `set_origin` and redirect requests through `url_redirect`. Additionally, you may use [Experimentation](/guides/experimentation) to distribute traffic to different destinations. 
+-   **destination():** The `destination()` method is unsupported in version 7. However, you may assign an origin to requests through `set_origin` and redirect requests through `url_redirect`. Additionally, you may use [Experimentation](/guides/experimentation) to distribute traffic to different destinations. 
 
 -   **ResponseWriter Methods:** The following `ResponseWriter` methods are not fully supported in version 7:
 

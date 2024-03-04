@@ -306,9 +306,7 @@ Troubleshoot this status code by performing the following steps:
 
 ### 504 Gateway Timeout Status Code {/*504-gateway-timeout-status-code*/}
 
-Server error response code indicates that the server, while acting as a gateway or proxy, did not get a response in time from the upstream server that it needed in order to complete the request.
-
-Troubleshoot the status code with similar steps as error code 502. Usually an indication that SSL is not setup correctly yet. 
+Troubleshoot this status code in the same manner as a [502 Bad Gateway status code](#502-bad-gateway-status-code).
 
 ### 531 Project Upstream Connection Error Status Code {/*531-project-upstream-connection-error-status-code*/}
 

@@ -298,6 +298,6 @@ Uploading a TLS certificate requires:
     </Callout>
 
 
-### Troubleshooting 
+### Troubleshooting {/*troubleshooting*/}
 
-If errors are encountered during setup, like HTTP 502 or 504 errors, visit the [Troubleshooting](/guides/performance/troubleshooting#502-bad-gateway-status-code) page for steps to follow. 
+If you experience either a `502 Bad Gateway` or a `504 Gateway Timeout` after completing TLS setup, then your origin may be improperly configured. [View troubleshooting steps.](/guides/performance/troubleshooting#502-bad-gateway-status-code) 

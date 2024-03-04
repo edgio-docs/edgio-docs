@@ -187,6 +187,11 @@ The types of prerequisites that may be defined are described below.
 
     `.htm`
 
+    <Callout type="info">
+    
+      A request's file extension is determined by the request's relative path. If the query string determines the file extension for the response, then you should use [request query](#request-query) instead. Create a regular expression that matches for the desired file extension(s) within the query string.
+    
+    </Callout>
     <a id="ip-address"></a>
 
 -   **IP address:** A request will count towards the rate limit when its IP address matches a value defined in the **Value(s)** option.  
@@ -291,7 +296,7 @@ The types of prerequisites that may be defined are described below.
     </Callout>
 
 -   **JA3:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. A request will count towards the rate limit when its JA3 signature matches the specified signature.
--   **Request query:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. A request will count towards the rate limit when its query string matches the specified value or pattern.
+-   <a id="request-query" />**Request query:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. A request will count towards the rate limit when its query string matches the specified value or pattern.
 -   **Request cookie:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. A request will count towards the rate limit when it contains the specified cookie with the specified value.
 
 **Key information:**

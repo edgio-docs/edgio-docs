@@ -296,3 +296,8 @@ Uploading a TLS certificate requires:
       Contact technical customer support if the status does not become *Active* within an hour.
 
     </Callout>
+
+
+### Troubleshooting 
+
+If errors are encountered during setup, like HTTP 502 or 504 errors, visit the [Troubleshooting](/guides/performance/troubleshooting#502-bad-gateway-status-code) page for steps to follow. 

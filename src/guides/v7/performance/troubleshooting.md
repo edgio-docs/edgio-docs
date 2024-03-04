@@ -304,6 +304,12 @@ Troubleshoot this status code by performing the following steps:
     -   **No:** {{ PRODUCT }} requires a full chain certificate. Your certificate’s chain of trust must start with the server's certificate and terminate with the root certificate.
 -   If you have pinned a certificate to the desired origin configuration, then you may need to pin an additional certificate.
 
+### 504 Gateway Timeout Status Code {/*504-gateway-timeout-status-code*/}
+
+Server error response code indicates that the server, while acting as a gateway or proxy, did not get a response in time from the upstream server that it needed in order to complete the request.
+
+Troubleshoot the status code with similar steps as error code 502. Usually an indication that SSL is not setup correctly yet. 
+
 ### 531 Project Upstream Connection Error Status Code {/*531-project-upstream-connection-error-status-code*/}
 
 Common causes are:  

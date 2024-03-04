@@ -119,7 +119,7 @@ An origin configuration's TLS settings determine how {{ PRODUCT }} will communic
 
 -   By default, our network disables delivery and responds with a `502 Bad Gateway` when we detect an origin server using a self-signed certificate during the TLS handshake. Allow {{ PRODUCT }} to serve traffic when it detects a self-signed certificate by enabling the **Allow Self-Signed Certs** option. <a id="certificate-pinning" />
 -   Register the SHA-256 digest for the public key of your end-entity (i.e., leaf) certificate within the **Pinned Cert(s)** option. After which, our edge servers will respond with a `502 Bad Gateway` response when the SHA-256 digest for the public key detected from the origin server does not match one of the pinned certificates.
--   An invalid origin configuration, as described above, may also return a `504 Gateway Timeout` response instead of a `502 Bad Gateway`. You may [troubleshoot both status codes](/guides/performance/troubleshooting#502-bad-gateway-status-code) using the same steps.
+-   An invalid TLS configuration, as described above, may result in a `504 Gateway Timeout` response instead of a `502 Bad Gateway`. You may [troubleshoot both status codes](/guides/performance/troubleshooting#502-bad-gateway-status-code) using the same steps.
 
 ## System-Defined Origins {/*system-defined-origins*/}
 

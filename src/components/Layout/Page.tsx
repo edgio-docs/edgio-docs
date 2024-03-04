@@ -143,12 +143,14 @@ const StyledBanner = styled.div<StyledBannerProps>`
   --banner-text-color: ${({legacy, future}) => (legacy ? '#000' : '#fff')};
   --banner-background-color: ${({legacy, future}) =>
     legacy ? 'var(--callout-tip)' : future ? '#812990' : 'var(--lg-primary)'};
+  --banner-font-size: ${({legacy, future}) =>
+    legacy ? '18px' : 'calc(1rem - 2px);'};
 
   display: block;
   text-align: center;
   color: var(--banner-text-color);
   background: var(--banner-background-color);
-  font-size: calc(1rem - 2px);
+  font-size: var(--banner-font-size);
   padding: 1em;
   text-decoration: none;
   font-weight: 500;
@@ -231,15 +233,12 @@ function Banner() {
         You are viewing docs for {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
         {version.selectedVersionText} (deprecated). Read the&nbsp;
         <Link href="https://edg.io/blogs/layer0-end-of-life-announcement/">
-          <a target="_blank">
-            end-of-life announcement
-          </a>
+          <a target="_blank">end-of-life announcement</a>
         </Link>
         &nbsp; or browse&nbsp;
         <Link href="/" passHref>
           <a>
-            {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
-            {version.latestVersionText} docs
+            {PRODUCT} {PRODUCT_APPLICATIONS} {version.latestVersionText} docs
           </a>
         </Link>
         .

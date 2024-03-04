@@ -158,7 +158,7 @@ const StyledBanner = styled.div<StyledBannerProps>`
   font-weight: 500;
 
   a {
-    color: var(--banner-text-color);
+    color: var(--colors-blue0);
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -232,14 +232,21 @@ function Banner() {
   if (!version.isLatest) {
     return (
       <StyledBanner legacy>
-        You are reading {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
-        {version.selectedVersionText} docs.&nbsp;
-        <Link href="/" passHref>
-          <a>
-            Check out our latest docs for {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
-            {version.latestVersionText}.
+        You are viewing docs for {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
+        {version.selectedVersionText} (deprecated). Read the&nbsp;
+        <Link href="https://edg.io/blogs/layer0-end-of-life-announcement/">
+          <a target="_blank">
+            end-of-life announcement
           </a>
         </Link>
+        &nbsp; or browse&nbsp;
+        <Link href="/" passHref>
+          <a>
+            {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
+            {version.latestVersionText} docs
+          </a>
+        </Link>
+        .
       </StyledBanner>
     );
   }

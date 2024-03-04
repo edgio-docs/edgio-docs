@@ -51,6 +51,7 @@ This capability allows you to define a list of URLs for which we will return a `
 -   Define a `3xx` status code for the redirect through the **Response status** option. By default, we return a `301 Moved Permanently` response.
 -   The **Forward query string to redirect location** option determines whether the `Location` header will include or exclude the request's query string. 
 -   You may define up to 10,000 redirects per environment.
+-   Once an environment contains 200 or more redirects, you may only manage them by importing CSV file(s).
 -   Changes to your redirect configuration will not take effect until the next deployment. 
 
 ### CSV Files {/*csv-files*/}

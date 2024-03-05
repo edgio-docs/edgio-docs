@@ -18,6 +18,7 @@ import {siteConfig} from 'config/appConfig';
 import '../styles/code.css';
 import '../styles/algolia.css';
 import '../styles/custom-props.css';
+import '../styles/fonts.css';
 import '../styles/nprogress.css';
 import '../styles/prism.css';
 import '../styles/reset.css';

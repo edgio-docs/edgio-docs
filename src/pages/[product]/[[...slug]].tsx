@@ -9,7 +9,7 @@ import {useEffect} from 'react';
 import {remarkPlugins} from '../../../plugins/markdownToHtml';
 import rehypeExtractHeadings from '../../../plugins/rehype-extract-headings';
 import {MDXComponents} from '../../components/MDX/MDXComponents';
-import {serializeConfig} from '../../utils/config';
+import {getBaseConfig, serializeConfig} from '../../utils/config';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
@@ -44,7 +44,7 @@ export default function Guide({
       navMenuItems: navItems,
       version,
     });
-  }, [navItems, updateContext, config, version]);
+  }, [navItems, updateContext, config, product, version]);
 
   // TODO - isHomepage needs to be set in the context
   return (
@@ -128,8 +128,7 @@ export async function getStaticProps({
   const versionRE = /^v(\d+)$/;
   const hasVersionInSlug = versionRE.test(version);
 
-  console.log('slug', slug);
-
+  // Configurations for the matched product
   const productConfig = productsConfig[product];
 
   if (!productConfig) {
@@ -153,8 +152,9 @@ export async function getStaticProps({
     guidesPath = versionguidesPath;
     navigationPath = versionNavigationPath;
   } else {
-    // Reset the guide to the version if no version is specified
-    guide = [version, ...guide];
+    // Reset the guide to the slug if no version is specified
+    version = 'default';
+    guide = slug;
   }
 
   if (!configPath || !navigationPath) {
@@ -183,7 +183,7 @@ export async function getStaticProps({
       },
     };
   } else if (!guide || !guide.length || guide[guide.length - 1] === 'index') {
-    // version with no remaining guide path so use as homepage
+    // No guide determined in path so assume homepage
     isHomepage = true;
     guide = ['index'];
   }
@@ -192,22 +192,17 @@ export async function getStaticProps({
   const slugAsString = guide.join('/');
 
   // Glob for matching the guide files
-  const guideGlobs = ['md', 'mdx'].flatMap((ext) => [
-    `${guidesPath}/${version}/${slugAsString}.${ext}`,
-    `${guidesPath}/${slugAsString}.${ext}`,
-  ]);
+  const guideGlobs = Array.from(
+    new Set(
+      ['md', 'mdx'].flatMap((ext) => [
+        join(guidesPath, version || '', `${slugAsString}.${ext}`),
+        join(guidesPath, `${slugAsString}.${ext}`),
+      ])
+    )
+  );
 
-  const files = (await globby(guideGlobs)).sort((a, b) => {
-    // prioritize versioned files over non-versioned files
-    if (a.match(versionRE) && !b.match(versionRE)) {
-      return -1;
-    }
-    if (!a.match(versionRE) && b.match(versionRE)) {
-      return 1;
-    }
-    return 0;
-  });
-
+  // Find the first matching file
+  const files = await globby(guideGlobs);
   const [file] = files;
   if (!file) {
     logger.warn(`No matching files for route '${slugAsString}'`);
@@ -215,14 +210,13 @@ export async function getStaticProps({
   }
 
   logger.dev(
-    `Using '${file}' for route '${slugAsString}'. Available files:`,
-    files
+    `Using '${file}' for route '${slugAsString}'. Available files: ${files}`
   );
 
-  const config = (await configPath()).default;
+  const config = Object.assign(getBaseConfig(), (await configPath()).default);
   const navItems = (await navigationPath()).default;
 
-  // update template with versioned constants
+  // Update template with versioned constants
   let content =
     templateReplace(join(process.cwd(), file), config) ??
     `Invalid template file: ${file}`;

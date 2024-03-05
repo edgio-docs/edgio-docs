@@ -1,6 +1,7 @@
-import {useAppContext} from 'contexts/AppContext';
 import {useRouter} from 'next/router';
+
 import {productsConfig} from 'config/appConfig';
+import {useAppContext} from 'contexts/AppContext';
 
 const latestVersion = process.env.NEXT_PUBLIC_LATEST_VERSION as string;
 interface RouterQuery {

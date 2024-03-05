@@ -60,6 +60,7 @@ const defaultContextValues: AppContextProps = {
 const AppContext = createContext<AppContextProps>(defaultContextValues);
 
 export enum ContextType {
+  HOME = 'home',
   APPLICATIONS = 'applications',
   UPLYNK = 'uplynk',
   DELIVERY = 'delivery',

@@ -28,15 +28,15 @@ const StyledMenuButton = styled(MenuButton)`
       color: inherit;
     }
   }
+`;
 
-  & > a {
-    color: inherit;
+const StyledMenuLink = styled.a`
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--colors-blue0);
     text-decoration: none;
-
-    &:hover {
-      color: inherit;
-      text-decoration: none;
-    }
   }
 `;
 
@@ -45,7 +45,7 @@ const StyledMenuList = styled(MenuList)`
   height: 100%;
   padding-top: 4px;
   padding-bottom: 4px;
-  background: #17232e;
+  background: var(--bg-secondary);
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
   border-radius: 2px;
   overflow: hidden;
@@ -76,7 +76,7 @@ const StyledMenuList = styled(MenuList)`
     padding-bottom: 8px;
     padding-left: 13px;
     padding-right: 13px;
-    color: white;
+    color: var(--text-primary);
     font-size: 12px;
     font-family: Inter, sans-serif;
     font-weight: 500;
@@ -87,7 +87,7 @@ const StyledMenuList = styled(MenuList)`
   }
 
   > [data-reach-menu-item][data-selected] {
-    background: #515a62;
+    background: var(--bg-secondary);
     color: white;
   }
 `;
@@ -95,7 +95,7 @@ const StyledMenuList = styled(MenuList)`
 const StyledMenuDivider = styled.div`
   width: 100%;
   height: 1px;
-  background: #515a62;
+  background: var(--bg-secondary);
   margin: 8px 0;
 `;
 
@@ -112,7 +112,7 @@ export default function HeaderNav() {
             <StyledMenuButton>
               {isLink ? (
                 <Link href={navItem.url} passHref>
-                  <a>{navItem.title}</a>
+                  <StyledMenuLink>{navItem.title}</StyledMenuLink>
                 </Link>
               ) : (
                 <>
@@ -130,8 +130,10 @@ export default function HeaderNav() {
                     return <StyledMenuDivider key={index} />;
                   }
                   return (
-                    <MenuLink key={index} as={'a'} href={item.url}>
-                      {item.name}
+                    <MenuLink key={index} as="span">
+                      <Link href={item.url} passHref>
+                        <StyledMenuLink>{item.name}</StyledMenuLink>
+                      </Link>
                     </MenuLink>
                   );
                 })}

@@ -17,26 +17,6 @@ type ProductsConfig = {
   [product: string]: ProductConfig;
 };
 
-export const siteConfig = {
-  editUrl: 'https://github.com/edgio-docs/edgio-docs/edit/src/pages',
-  copyright: `Copyright © ${new Date().getFullYear()} Edgio. All Rights Reserved.`,
-  repoUrl: 'https://github.com/edgio-docs/edgio-docs',
-  twitterUrl: 'https://twitter.com/edgioinc',
-  algolia: {
-    appId: 'NUB3ND0MNC',
-    apiKey: '102f7bfdfa7c14ea4e20577bfdd73c5d',
-    indexName: 'layer0',
-  },
-  headerIdConfig: {
-    className: `anchor`,
-  },
-  tagline: `Explore the Edgio guides and examples on how to integrate edge logic into your application code & extend the edge to the browser.`,
-  twitterHandle: 'edgioinc',
-  analytics: {
-    gtmId: 'GTM-5WCD2BK',
-  },
-};
-
 export const productsConfig: ProductsConfig = {
   applications: {
     pathPrefix: '/applications',
@@ -92,6 +72,26 @@ export const productsConfig: ProductsConfig = {
         navigationPath: () => import('config/open_edge/nav'),
       },
     },
+  },
+};
+
+export const siteConfig = {
+  editUrl: 'https://github.com/edgio-docs/edgio-docs/edit/src/pages',
+  copyright: `Copyright © ${new Date().getFullYear()} Edgio. All Rights Reserved.`,
+  repoUrl: 'https://github.com/edgio-docs/edgio-docs',
+  twitterUrl: 'https://twitter.com/edgioinc',
+  algolia: {
+    appId: 'NUB3ND0MNC',
+    apiKey: '102f7bfdfa7c14ea4e20577bfdd73c5d',
+    indexName: 'layer0',
+  },
+  headerIdConfig: {
+    className: `anchor`,
+  },
+  tagline: `Explore the Edgio guides and examples on how to integrate edge logic into your application code & extend the edge to the browser.`,
+  twitterHandle: 'edgioinc',
+  analytics: {
+    gtmId: 'GTM-5WCD2BK',
   },
 };
 productsConfig.applications.versions.default =

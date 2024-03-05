@@ -104,6 +104,11 @@ const ItemDot = styled.div`
 const ItemText = styled.div`
   color: var(--text-primary);
   font-size: 14px;
+
+  a:hover {
+    color: var(--colors-blue0);
+    text-decoration: none;
+  }
 `;
 
 const ViewMoreContainer = styled.div`
@@ -115,7 +120,7 @@ const ViewMoreContainer = styled.div`
   font-weight: 500;
 `;
 
-const ViewMoreText = styled.div``;
+const ViewMoreText = styled(ItemText)``;
 
 const ViewMoreIcon = styled.div`
   width: 19px;
@@ -176,17 +181,27 @@ const SectionBox = ({
               {section.items.map((item) => (
                 <Item key={item.title}>
                   <ItemDot />
-                  <ItemText>{item.title}</ItemText>
+                  <ItemText>
+                    <Link href={item.path} passHref>
+                      <a>{item.title}</a>
+                    </Link>
+                  </ItemText>
                 </Item>
               ))}
             </ItemsGrid>
           </Section>
         ))}
       </ItemsContainer>
-      <ViewMoreContainer>
-        <ViewMoreText>View {title} Documentation</ViewMoreText>
-        <ViewMoreIcon>--&gt;</ViewMoreIcon>
-      </ViewMoreContainer>
+      {href && (
+        <ViewMoreContainer>
+          <ViewMoreText>
+            <Link href={href} passHref>
+              <a>View {title} Documentation</a>
+            </Link>{' '}
+          </ViewMoreText>
+          <ViewMoreIcon>--&gt;</ViewMoreIcon>
+        </ViewMoreContainer>
+      )}
     </SectionContainer>
   );
 };

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Container from '../../Layout/Container';
 
 import SectionContainer from 'components/Home/SectionContainer';
-import {sections} from 'config/homepage';
+import {sections} from 'config/home/config';
 import {HomepageSectionGroup} from 'utils/Types';
 
 const StyledFeatures = styled.div`

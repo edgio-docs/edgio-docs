@@ -4,7 +4,7 @@ import {default as JSURL} from 'jsurl';
 
 import NoSSRWrapper from '../NoSSRWrapper';
 
-import {APPLICATIONS_PATH_PREFIX, siteConfig} from 'config/appConfig';
+import {siteConfig} from 'config/appConfig';
 import useConditioning from 'utils/hooks/useConditioning';
 
 const {
@@ -33,7 +33,7 @@ function transformItems(items: any) {
     }
 
     // only urls to `/applications/*` support the hash change
-    if (matchedText && url.pathname.startsWith(APPLICATIONS_PATH_PREFIX)) {
+    if (matchedText && url.pathname.startsWith('/applications')) {
       url.hash = JSURL.stringify({q: matchedText});
     }
 

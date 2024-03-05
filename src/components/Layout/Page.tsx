@@ -219,7 +219,7 @@ function Banner() {
   if (version.selectedVersion === '7') {
     return (
       <StyledBanner future>
-        CDN-as-code (EdgeJS) support for Node.js 16 is undergoing end-of-life.&nbsp;
+        CDN-as-code support for Node.js 16 is undergoing end-of-life.&nbsp;
         <Link href="/guides/v7/install_nodejs" passHref>
           <a>View end-of-life plan.</a>
         </Link>

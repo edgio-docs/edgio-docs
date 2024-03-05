@@ -2,6 +2,12 @@
 title: Install Node.js and npm
 ---
 
+<Callout type="info">
+
+  Node.js is only required for [CDN-as-code (EdgeJS)](/guides/performance/cdn_as_code). The following information is inapplicable to your setup if you only deploy from the {{ PORTAL }}.
+
+</Callout>
+
 Although you may develop your app with any version of Node.js, {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} runs your projects within a Node.js 16, 18, or 20 runtime environment. {{ PRODUCT }} determines the available set of runtime environments according to the version of the {{ PRODUCT }} CLI through which your project was deployed. 
 
 | Node.js Version | Requires                        |
@@ -10,23 +16,7 @@ Although you may develop your app with any version of Node.js, {{ PRODUCT }} {{ 
 | 18              | {{ PRODUCT }} v7.4.0 or later   |
 | 16 (deprecated) | {{ PRODUCT }} v7.4.4 or earlier |
 
-
-## End-of-Life for Node.js 16 Support {/*end-of-life-for-node-js-16-support*/}
-
-{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }}'s support for Node.js version 16 is undergoing end-of-life. 
-
-[View the official OpenJS Foundation announcement.](https://nodejs.org/en/blog/announcements/nodejs16-eol)
-
-Key dates are listed below.
-
-| Date      | Description                                                    |
-| --------- | -------------------------------------------------------------- |
-| 7/15/2024 | Block deployments for new properties that use Node.js 16.      |
-| 8/15/2024 | Block deployments for existing properties that use Node.js 16. |
-
-If you are currently using Node.js version 16, then you must perform the following steps:
-1.  Upgrade your application to use Node.js version 18 or 20. 
-2.  Upgrade the {{ PRODUCT }} CLI and {{ PRODUCT }} dependencies in your project to v7.4.0 or later. We strongly recommend upgrading it to the latest version.
+{{ node_16_eol.md }}
 
 ## Node.js Installation {/* node-installation */}
 

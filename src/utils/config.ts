@@ -27,10 +27,10 @@ export async function getVersionedConfig(
 export function getVersionedConfigs() {
   // TODO: make this dynamic
   return {
-    v4: require('../config/v4.config'),
-    v5: require('../config/v5.config'),
-    v6: require('../config/v6.config'),
-    v7: require('../config/v7.config'),
+    // v4: require('../config/v4.config'),
+    // v5: require('../config/v5.config'),
+    // v6: require('../config/v6.config'),
+    // v7: require('../config/v7.config'),
   };
 }
 

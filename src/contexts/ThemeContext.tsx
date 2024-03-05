@@ -79,10 +79,10 @@ export const ThemeProvider = ({children}: {children: React.ReactNode}) => {
     darkElement: React.ReactElement
   ) => {
     return (
-      <>
+      <div className="themed-element">
         <div hidden={theme !== 'light'}>{lightElement}</div>
         <div hidden={theme !== 'dark'}>{darkElement}</div>
-      </>
+      </div>
     );
   };
 
@@ -92,7 +92,7 @@ export const ThemeProvider = ({children}: {children: React.ReactNode}) => {
     darkSource: string
   ) => {
     return (
-      <>
+      <div className="themed-image">
         <div hidden={theme !== 'light'}>
           {React.cloneElement(image, {
             src: lightSource,
@@ -103,7 +103,7 @@ export const ThemeProvider = ({children}: {children: React.ReactNode}) => {
             src: darkSource,
           })}
         </div>
-      </>
+      </div>
     );
   };
 

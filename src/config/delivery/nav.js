@@ -1,4 +1,4 @@
-import {UPLYNK_PATH_PREFIX} from './appConfig';
+import {productsConfig} from '../appConfig';
 
 const separator = {
   title: '',
@@ -7,7 +7,7 @@ const separator = {
 
 const nav = {
   title: 'guides',
-  path: UPLYNK_PATH_PREFIX,
+  path: productsConfig['delivery'].pathPrefix,
   routes: [
     {
       title: 'Getting Started',

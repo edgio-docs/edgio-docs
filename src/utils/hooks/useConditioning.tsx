@@ -1,6 +1,6 @@
+import {useAppContext} from 'contexts/AppContext';
 import {useRouter} from 'next/router';
-
-import {APPLICATIONS_PATH_PREFIX} from 'config/appConfig';
+import {productsConfig} from 'config/appConfig';
 
 const latestVersion = process.env.NEXT_PUBLIC_LATEST_VERSION as string;
 interface RouterQuery {
@@ -42,6 +42,7 @@ interface IVersion {
 
 function useConditioning() {
   const router = useRouter();
+  const {context} = useAppContext();
   const {slug, version: paramVersion} = router.query as RouterQuery;
 
   // `slug` is defined from the `src/pages/[...slug].tsx` route, or it could be
@@ -72,7 +73,8 @@ function useConditioning() {
 
     packageVersion: `^${cleanedVersion}.0.0`,
     toVersionedPath: (path: string): string => {
-      const escapedPrefix = APPLICATIONS_PATH_PREFIX.replace(
+      const pathPrefix = productsConfig['applications'].pathPrefix;
+      const escapedPrefix = pathPrefix.replace(
         /[-\/\\^$*+?.()|[\]{}]/g,
         '\\$&'
       );
@@ -100,11 +102,11 @@ function useConditioning() {
           new RegExp(`^(${escapedPrefix}|/guides|\\w+)`),
           () =>
             [
-              APPLICATIONS_PATH_PREFIX, // forcing all urls to start with the prefix
+              pathPrefix, // forcing all urls to start with the prefix
               versionConfig.pathPrefix,
               ...path
                 .replace('/guides/', '/') //legacy
-                .replace(APPLICATIONS_PATH_PREFIX, '/')
+                .replace(pathPrefix, '/')
                 .replace(`/${versionConfig.pathPrefix}/`, '/')
                 .split('/'),
             ]

@@ -9,41 +9,37 @@ import {useEffect} from 'react';
 import {remarkPlugins} from '../../../plugins/markdownToHtml';
 import rehypeExtractHeadings from '../../../plugins/rehype-extract-headings';
 import {MDXComponents} from '../../components/MDX/MDXComponents';
-import {getVersionedConfig, serializeConfig} from '../../utils/config';
+import {serializeConfig} from '../../utils/config';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
-import {APPLICATIONS_SRC_PATH} from 'config/appConfig';
+import {productsConfig} from 'config/appConfig';
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import logger from 'utils/logging';
-import {getVersionedNavigation} from 'utils/navigation';
 import templateReplace from 'utils/templateReplace';
 import {MDHeadingsList, Route, StringMap} from 'utils/Types';
 
-const guidesPath = APPLICATIONS_SRC_PATH;
-const urlStartPath = __dirname.split('/pages').reverse()[0];
+const guidesPath = join(process.cwd(), 'guides');
 
 export default function Guide({
   source,
   sourceFile,
   headings,
-  version,
-  config,
-  navItems,
+  productContext,
   isHomepage,
 }: {
   source: any;
   sourceFile: string;
   headings: MDHeadingsList;
-  version: string;
-  config: StringMap;
-  navItems: Route;
+  productContext: ProductContextType;
   isHomepage: boolean;
 }) {
+  const {config, navItems, product, version} = productContext;
+
   const {updateContext} = useAppContext();
   useEffect(() => {
     updateContext({
-      context: ContextType.APPLICATIONS,
+      context: ContextType[product.toUpperCase() as keyof typeof ContextType],
       config,
       navMenuItems: navItems,
       version,
@@ -70,22 +66,19 @@ export const getStaticPaths = async () => {
   // determine available guides from filesystem
   const allGuides = (
     await globby(['**/*.{md,mdx}'], {
-      cwd: join(process.cwd(), guidesPath),
+      cwd: guidesPath,
     })
   ).map(
     (path: string) => path.replace(/.mdx?/, '') // remove extension
   );
 
-  // guides without version-specific override
-  const baseGuides = allGuides.filter((path: string) => !path.match(/^v\d+/));
+  // First part of the path will be the "product" (eg. 'applications', 'uplynk', etc.)
+  // Some products will have a version in the path (eg. 'applications/v7') and will have the following structure:
+  // /{PREFIX}/[guide] => guide for the non-versioned product
+  // /{PREFIX}/[version] => homepage for the version product
+  // /{PREFIX}/[version]/[guide] => guide for the versioned product
 
-  // Across the different versions and different guides, we need routes
-  // in the following formats:
-  // /{PREFIX}/[guide] => guide for the latest version
-  // /{PREFIX}/[version] => homepage for the version
-  // /{PREFIX}/[version]/[guide] => guide for the version
-
-  // in dev mode, don't prerender any pages and fallback to SSR for
+  // In dev mode, don't prerender any pages and fallback to SSR for
   // faster page loads
   if (isEdgioRunDev()) {
     return {
@@ -94,47 +87,98 @@ export const getStaticPaths = async () => {
     };
   }
 
-  // prerender guides for the latest version only; previous versions will
-  // fallback to SSR
-  const version = `v${process.env.NEXT_PUBLIC_LATEST_VERSION}`;
-  paths.push(
-    ...[
-      version, // version homepage
-      ...baseGuides.map((path) => join(version, path)), // versioned base guides
-      ...allGuides.filter((path) => path.startsWith(version)), // versioned overrides
-    ]
-  );
+  paths.push(...allGuides);
 
-  // convert paths to routes
+  // Convert file paths to routes. The first part of the path will be the [product] and the rest will be the [slug]
   routes.push(
-    ...[...new Set(paths)].map((path) => ({params: {slug: path.split('/')}}))
+    ...[...new Set(paths)].map((path) => {
+      const [product, ...slug] = path.split('/');
+      return {
+        params: {
+          product,
+          slug,
+        },
+      };
+    })
   );
 
   if (isProductionBuild()) {
-    logger.prod(JSON.stringify(paths));
+    logger.prod(
+      'Generating the following paths:',
+      JSON.stringify(routes, null, 2)
+    );
   }
 
-  // in the end, only routes matching `/{PREFIX}/v7/*` will be prerendered
-  // and the rest (eg. /{PREFIX}/v6/*) will fallback to SSR
+  // Prerender all available guides that are determined to not be legacy (eg. Applications <= 6).
+  // Legacy guides will fallback to SSR.
+  // TODO exclude legacy guides from the list of routes
   return {
     paths: routes,
     fallback: 'blocking',
   };
 };
 
-export async function getStaticProps({params}: {params: any}) {
-  const {slug}: {slug: string[]} = params;
-  const latestVersion = process.env.NEXT_PUBLIC_LATEST_VERSION as string; // defined in next.config.js
+export async function getStaticProps({
+  params,
+}: {
+  params: {product: string; slug: string[]};
+}) {
+  let {product, slug} = params;
+  let [version, ...guide] = (slug = slug || []);
   const versionRE = /^v(\d+)$/;
-  let [version, ...guide] = slug;
-  let isHomepage = false;
-  const isVersionSpecifiedInSlug = versionRE.test(version);
+  const hasVersionInSlug = versionRE.test(version);
 
-  if (!isVersionSpecifiedInSlug) {
-    // no version specified in the path, so redirect to the latest version path
+  console.log('slug', slug);
+
+  const productConfig = productsConfig[product];
+
+  if (!productConfig) {
+    logger.warn(`No product configuration found for '${product}'`);
+    return {notFound: true};
+  }
+
+  // Define the default version configuration
+  const {pathPrefix} = productConfig;
+  let {configPath, guidesPath, navigationPath} =
+    productConfig.versions.default!;
+
+  // If a version is specified, use the version configuration
+  if (hasVersionInSlug) {
+    const {
+      configPath: versionConfigPath,
+      guidesPath: versionguidesPath,
+      navigationPath: versionNavigationPath,
+    } = productConfig.versions[version];
+    configPath = versionConfigPath;
+    guidesPath = versionguidesPath;
+    navigationPath = versionNavigationPath;
+  } else {
+    // Reset the guide to the version if no version is specified
+    guide = [version, ...guide];
+  }
+
+  if (!configPath || !navigationPath) {
+    logger.warn(`No version configuration found for '${product}.${version}'`);
+    return {notFound: true};
+  }
+
+  let isHomepage = false;
+
+  // Redirect to the latest version if no version is specified and the product contains multiple versions matching the regex
+  const versions = Object.keys(productConfig.versions).filter((v) =>
+    v.match(versionRE)
+  );
+
+  if (!hasVersionInSlug && versions.length > 1) {
+    const latestVersion = versions.sort().reverse()[0].replace('v', '');
+    logger.warn(
+      `No version specified for '${product}'. Redirecting to latest version: '${pathPrefix}/v${latestVersion}/${slug.join(
+        '/'
+      )}'`
+    );
     return {
       redirect: {
-        destination: `${urlStartPath}/v${latestVersion}/${slug.join('/')}`,
+        destination: `${pathPrefix}/v${latestVersion}/${slug.join('/')}`,
         permanent: true,
       },
     };
@@ -144,8 +188,10 @@ export async function getStaticProps({params}: {params: any}) {
     guide = ['index'];
   }
 
+  // Remaining guide path after version and product
   const slugAsString = guide.join('/');
 
+  // Glob for matching the guide files
   const guideGlobs = ['md', 'mdx'].flatMap((ext) => [
     `${guidesPath}/${version}/${slugAsString}.${ext}`,
     `${guidesPath}/${slugAsString}.${ext}`,
@@ -173,8 +219,8 @@ export async function getStaticProps({params}: {params: any}) {
     files
   );
 
-  const config = await getVersionedConfig(version);
-  const navItems = await getVersionedNavigation(version);
+  const config = (await configPath()).default;
+  const navItems = (await navigationPath()).default;
 
   // update template with versioned constants
   let content =
@@ -201,15 +247,27 @@ export async function getStaticProps({params}: {params: any}) {
     },
   });
 
+  const productContext = {
+    product,
+    version,
+    config: serializeConfig(config),
+    navItems,
+  };
+
   return {
     props: {
       source: mdxSource,
       sourceFile: file,
       headings,
-      version,
-      config: serializeConfig(config),
-      navItems,
+      productContext,
       isHomepage,
     },
   };
 }
+
+type ProductContextType = {
+  product: string;
+  version: string;
+  config: StringMap;
+  navItems: Route;
+};

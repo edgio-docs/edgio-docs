@@ -38,10 +38,16 @@ const LogoArea = styled.div`
   align-items: center;
   height: 100%;
   padding: 0;
+  justify-content: center;
 
-  img {
-    height: 48px;
-    max-height: 100%; /* Ensure the image does not exceed the height of its container */
+  .themed-element div {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 48px;
+      max-height: 100%;
+    }
   }
 `;
 
@@ -131,10 +137,11 @@ const Header = () => {
       <LogoArea>
         <Link href="/">
           <a>
-            {renderThemedElement(
-              <Image src={darkLogo} alt="Edgio" priority height={48} />,
-              <Image src={lightLogo} alt="Edgio" priority height={48} />
-            )}
+            {context &&
+              renderThemedElement(
+                <Image src={darkLogo} alt="Edgio" priority height={48} />,
+                <Image src={lightLogo} alt="Edgio" priority height={48} />
+              )}
           </a>
         </Link>
       </LogoArea>

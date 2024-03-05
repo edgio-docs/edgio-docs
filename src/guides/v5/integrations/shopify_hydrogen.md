@@ -26,7 +26,7 @@ You’ve installed the following dependencies:
 
 </Callout>
 
-{{ node_16_eol.md }}
+{{ node_16_eol_callout.md }}
 
 {{ SIGN_UP }}
 

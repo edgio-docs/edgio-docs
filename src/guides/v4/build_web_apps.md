@@ -8,7 +8,7 @@ The easiest way to get started is by using one of our "Deploy to {{ PRODUCT }}" 
 
 {{ PRODUCT_NAME }} version 4.20.0 supports Node.js version 16. 
 
-{{ node_16_eol.md }}
+{{ node_16_eol_callout.md }}
 
 ### Nuxt.js {/*nuxtjs*/}
 

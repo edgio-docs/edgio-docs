@@ -14,7 +14,7 @@ title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 6 Migration Guide
 
 *   Node.js version 16
 
-    {{ node_16_eol.md }}
+    {{ node_16_eol_callout.md }}
 
 *   Updating your application(s) to be compatible with Node.js version 16. 
 

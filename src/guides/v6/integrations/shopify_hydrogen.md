@@ -20,7 +20,7 @@ You’ve installed the following dependencies:
 
 [Node.js](https://nodejs.org/en/) version 16.5.0 or higher
 
-{{ node_16_eol.md }}
+{{ node_16_eol_callout.md }}
 
 {{ SIGN_UP }}
 

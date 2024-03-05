@@ -58,7 +58,7 @@ jobs:
           EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_DEPLOY_TOKEN}}
 ```
 
-{{ node_16_eol.md }}
+{{ node_16_eol_callout.md }}
 
 `secrets.EDGIO_DEPLOY_TOKEN` is automatically injected into your cloned repository during the deploy process. Do not change the name of this variable or the deploy process will fail.
 

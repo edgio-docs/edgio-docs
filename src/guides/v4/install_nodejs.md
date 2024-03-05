@@ -4,6 +4,8 @@ title: Install Node.js and npm
 
 {{ PRODUCT_NAME }} version 4.20.0 supports Node.js version 16. 
 
+Although you may use a higher version of Node.js, your app will run using the above version when deployed to {{ PRODUCT }}. Therefore, we strongly recommend that you use the Node.js version that corresponds to your {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version when developing your web application.
+
 {{ node_16_eol.md }}
 
 ## Node version managers {/*node-version-managers*/}

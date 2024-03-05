@@ -19,7 +19,7 @@ Install the Vue Storefront application using this guide: https://docs.vuestorefr
 nvm use 16
 ```
 
-{{ node_16_eol.md }}
+{{ node_16_eol_callout.md }}
 
 ## 2. Prepare VSF files for {{ PRODUCT_NAME }} {/*2-prepare-vsf-files-for-layer0*/}
 

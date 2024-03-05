@@ -105,7 +105,7 @@ module.exports = {
 {{ PRODUCT }} will automatically transpile JavaScript and TypeScript source code for running on Node.js version 16. If you want to control how
 source files are compiled, you can transpile your app on your own and point your `appPath` config to the transpiled version of your app's main entry point.
 
-{{ node_16_eol.md }}
+{{ node_16_eol_callout.md }}
 
 ## Bundling Options {/*bundling-options*/}
 

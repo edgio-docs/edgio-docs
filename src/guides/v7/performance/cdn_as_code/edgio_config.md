@@ -170,7 +170,7 @@ The `cloudRuntime` key (string) determines which version of Node.js will run you
 - `nodejs18.x` (v7.4.0 or later)
 - `nodejs20.x` (v7.5.0 or later)
 
-{{ node_16_eol.md }}
+{{ node_16_eol_callout.md }}
 
 If the `cloudRuntime` key is not defined, then {{ PRODUCT }} will detect your project's Node.js version upon running `{{ CLI_CMD(deploy) }}`. If an unsupported version is detected when using {{ PRODUCT }} v7.4.0 or later, then it will set your version to `nodejs18.x`. For instance:
 

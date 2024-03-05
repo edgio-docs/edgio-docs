@@ -8,7 +8,7 @@ This guide describes what you need to know when migrating from {{ PRODUCT }} ver
 
 With {{ PRODUCT }} v4, your app will run in Node v16 when deployed to the {{ PRODUCT_NAME }} cloud. 
 
-{{ node_16_eol.md }}
+{{ node_16_eol_callout.md }}
 
 ## Upgrading Packages {/*upgrading-packages*/}
 

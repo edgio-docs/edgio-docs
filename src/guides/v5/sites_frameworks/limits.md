@@ -2,7 +2,7 @@
 title: Limits
 ---
 
-{{ node_16_eol.md }}
+{{ node_16_eol_callout.md }}
 
 {{ PRODUCT }} {{ PRODUCT_PLATFORM }}'s limits and caveats are listed below.
 

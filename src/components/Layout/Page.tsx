@@ -144,7 +144,7 @@ const StyledBanner = styled.div<StyledBannerProps>`
   --banner-background-color: ${({legacy, future}) =>
     legacy ? 'var(--callout-tip)' : future ? '#812990' : 'var(--lg-primary)'};
   --banner-font-size: ${({legacy, future}) =>
-    legacy ? '18px' : 'calc(1rem - 2px);'};
+    legacy ? '18px' : '1rem'};
 
   display: block;
   text-align: center;
@@ -219,10 +219,9 @@ function Banner() {
   if (version.selectedVersion === '7') {
     return (
       <StyledBanner future>
-        Introducing {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
-        {version.selectedVersionText}.&nbsp;
-        <Link href="/guides/v7/intro" passHref>
-          <a>Find out what&apos;s new.</a>
+        Support for Node.js 16 is undergoing end-of-life. 
+        <Link href="/guides/v7/install_nodejs" passHref>
+          <a>View end-of-life plan.</a>
         </Link>
       </StyledBanner>
     );

@@ -8,7 +8,25 @@ Although you may develop your app with any version of Node.js, {{ PRODUCT }} {{ 
 | --------------- | ------------------------------- |
 | 20              | {{ PRODUCT }} v7.5.0 or later   |
 | 18              | {{ PRODUCT }} v7.4.0 or later   |
-| 16              | {{ PRODUCT }} v7.4.4 or earlier |
+| 16 (deprecated) | {{ PRODUCT }} v7.4.4 or earlier |
+
+
+## End-of-Life for Node.js 16 Support {/*end-of-life-for-node-js-16-support*/}
+
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }}'s support for Node.js version 16 is undergoing end-of-life. 
+
+[View the official OpenJS Foundation announcement.](https://nodejs.org/en/blog/announcements/nodejs16-eol)
+
+Key dates are listed below.
+
+| Date      | Description                                                    |
+| --------- | -------------------------------------------------------------- |
+| 7/15/2024 | Block deployments for new properties that use Node.js 16.      |
+| 8/15/2024 | Block deployments for existing properties that use Node.js 16. |
+
+If you are currently using Node.js version 16, then you must perform the following steps:
+1.  Upgrade your application to use Node.js version 18 or 20. 
+2.  Upgrade the {{ PRODUCT }} CLI and {{ PRODUCT }} dependencies in your project to v7.4.0 or later. We strongly recommend upgrading it to the latest version.
 
 ## Node.js Installation {/* node-installation */}
 
@@ -29,8 +47,6 @@ The recommended method for installing Node.js is through a version manager like 
 3.  Once you have successfully installed nvm, install Node.js by running one of the following commands:
 
     ```bash
-    nvm install 16
-    # or
     nvm install 18
     # or
     nvm install 20
@@ -39,8 +55,6 @@ The recommended method for installing Node.js is through a version manager like 
 4.  Instruct nvm to use the version of Node.js installed in the previous step by running the following command:
 
     ```bash
-    nvm use 16
-    # or
     nvm use 18
     # or
     nvm use 20
@@ -55,12 +69,6 @@ The recommended method for installing Node.js is through a version manager like 
 ## Node.js 18 and 20 Support {/* nodejs-18-20-support */}
 
 Node.js 18 and 20 are supported by {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} starting from version 7.4.0 and 7.5.0, respectively. {{ PRODUCT }} will detect your project's Node.js version during deployment and use the appropriate runtime version. Optionally, you can set the [`cloudRuntime`](/guides/performance/cdn_as_code/edgio_config#cloudruntime) property in the `{{ CONFIG_FILE }}` file to target a specific Node.js version.
-
-<Callout type="important">
-
-  If you're using an earlier version of {{ PRODUCT }} that doesn't support Node.js 18 or 20, your application will use Node.js 16 runtime when deployed to {{ PRODUCT }}.  
-
-</Callout>
 
 Upgrade your project by running the commands corresponding to the desired Node.js version:
 

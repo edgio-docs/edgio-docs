@@ -2,6 +2,8 @@
 title: Limits
 ---
 
+{{ node_16_eol.md }}
+
 {{ PRODUCT }} {{ PRODUCT_PLATFORM }}'s limits and caveats are listed below.
 
 - You may need to [manually include NodeJS addons (aka native extensions).](#nodejs-native-extensions)

@@ -14,11 +14,7 @@ title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 6 Migration Guide
 
 *   Node.js version 16
 
-    <Callout type="important">
-
-      {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 runs your apps in Node.js v16. Therefore, we strongly recommend that you use Node.js v16.x when developing your web application.
-
-    </Callout>
+    {{ node_16_eol.md }}
 
 *   Updating your application(s) to be compatible with Node.js version 16. 
 

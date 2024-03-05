@@ -19,6 +19,8 @@ If you already have [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs) and an
 - Create an {{ PRODUCT }} property for your website.
 - Deploy a property to {{ PRODUCT }}.
 
+{{ node_16_eol.md }}
+
 <Callout type="tip">
 
 An alternative approach is to perform each of the above tasks individually.

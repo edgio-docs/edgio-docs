@@ -4,10 +4,12 @@ title: Install Node.js and npm
 
 {{ PRODUCT }} support for Node.js runtimes varies according to the version of your `{{ PACKAGE_NAME }}` packages.
 
-- **{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 5:** Node.js version 14.19.0
-- **{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 6:** Node.js version 16.18.0
+- **{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 6.1.8 or later:** Node.js version 18
+- **{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 6.1.7 or earlier:** Node.js version 16.18.0
 
 Although you may use a higher version of Node.js, your app will run using the above version when deployed to {{ PRODUCT }}. Therefore, we strongly recommend that you use the Node.js version that corresponds to your {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version when developing your web application.
+
+{{ node_16_eol.md }}
 
 ## Node.js Installation {/* node-installation */}
 
@@ -27,28 +29,14 @@ The recommended method for installing Node.js is through a version manager like 
 
 3.  Once you have successfully installed nvm, install Node.js by running one of the following commands:
 
-  <SnippetGroup>
-
-    ```bash tabLabel="{{ PRODUCT }} Version 5"
-    nvm install 14
+    ```bash
+    nvm install 18
     ```
-
-    ```bash tabLabel="{{ PRODUCT }} Version 6"
-    nvm install 16
-    ```
-
-  </SnippetGroup>
 
 4.  Instruct nvm to use the version of Node.js installed in the previous step by running the following command:
 
-  <SnippetGroup>
-
-    ```bash tabLabel="{{ PRODUCT }} Version 5"
-    nvm use 14
-    ```
-
-    ```bash tabLabel="{{ PRODUCT }} Version 6"
-    nvm use 16
+    ```bash
+    nvm use 18
     ```
 
   </SnippetGroup>

@@ -170,12 +170,14 @@ The `cloudRuntime` key (string) determines which version of Node.js will run you
 - `nodejs18.x` (v7.4.0 or later)
 - `nodejs20.x` (v7.5.0 or later)
 
+{{ node_16_eol.md }}
+
 If the `cloudRuntime` key is not defined, then {{ PRODUCT }} will detect your project's Node.js version upon running `{{ CLI_CMD(deploy) }}`. If an unsupported version is detected when using {{ PRODUCT }} v7.4.0 or later, then it will set your version to `nodejs18.x`. For instance:
 
 ```bash
-# The Node.js 16 runtime is valid for {{ PRODUCT }} v7.4.4 or earlier
+# The Node.js 18 runtime is valid for {{ PRODUCT }} v7.4.0 or later
 $ node --version
-v16.19.1
+v18.18.2
 $ {{ CLI_CMD(deploy) }}
 
 ...
@@ -188,7 +190,7 @@ $ {{ CLI_CMD(deploy) }}
 
 <Callout type="important">
  
-  Unexpected behavior may occur when there is a mismatch between your project's Node.js version and the one that runs your app on our platform. For example, if the `cloudRuntime` key is set to `nodejs16.x` while the project is bundled with Node.js 18, the project will build with Node.js 18 but run in a Node.js 16 environment. Ensure the `cloudRuntime` key aligns with your project's Node.js version to prevent these types of issues.
+  Unexpected behavior may occur when there is a mismatch between your project's Node.js version and the one that runs your app on our platform. For example, if the `cloudRuntime` key is set to `nodejs18.x` while the project is bundled with Node.js 20, the project will build with Node.js 20 but run in a Node.js 18 environment. Ensure the `cloudRuntime` key aligns with your project's Node.js version to prevent these types of issues.
 
 </Callout>
 

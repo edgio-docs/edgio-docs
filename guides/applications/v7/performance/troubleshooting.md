@@ -304,6 +304,10 @@ Troubleshoot this status code by performing the following steps:
     -   **No:** {{ PRODUCT }} requires a full chain certificate. Your certificate’s chain of trust must start with the server's certificate and terminate with the root certificate.
 -   If you have pinned a certificate to the desired origin configuration, then you may need to pin an additional certificate.
 
+### 504 Gateway Timeout Status Code {/*504-gateway-timeout-status-code*/}
+
+Troubleshoot this status code in the same manner as a [502 Bad Gateway status code](#502-bad-gateway-status-code).
+
 ### 531 Project Upstream Connection Error Status Code {/*531-project-upstream-connection-error-status-code*/}
 
 Common causes are:  

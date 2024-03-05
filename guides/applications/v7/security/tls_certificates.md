@@ -296,3 +296,8 @@ Uploading a TLS certificate requires:
       Contact technical customer support if the status does not become *Active* within an hour.
 
     </Callout>
+
+
+### Troubleshooting {/*troubleshooting*/}
+
+If your origin returns a `502 Bad Gateway` or a `504 Gateway Timeout` response when served through {{ PRODUCT }}, then your origin configuration's TLS settings may be improperly configured. [View troubleshooting steps.](/guides/performance/troubleshooting#502-bad-gateway-status-code) 

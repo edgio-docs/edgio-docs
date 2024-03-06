@@ -143,8 +143,7 @@ export default <Array<Redirect>>[
   ['/guides/build_web_apps', '/guides/getting_started'],
   ['/guides/cookies', '/guides/performance/traffic_splitting/a_b_testing'],
   ['/guides/overview', '/guides/performance'],
-  ['/guides/regions', '/guides/sites_frameworks#regions'],
-  ['/guides/upgrading/upgrading', '/guides/v7/upgrading/upgrading'],
+  ['/guides/regions', '/guides/sites_frameworks#regions'],  
 
   // v4
   ['/guides/v4/v4_accounts_teams', '/guides/v4/alerts'],

@@ -66,27 +66,9 @@ const StyledChangelogContent = styled.div`
   }
 `;
 
-function ChangelogPage({
-  content,
-  version,
-  context,
-}: {
-  content: string;
-  version: string;
-  context: any;
-}) {
+function ChangelogPage({content, version}: {content: string; version: string}) {
   const isVersionFour = version === 'v4';
-  const {config, navItems} = context;
-
-  const {updateContext} = useAppContext();
-  useEffect(() => {
-    updateContext({
-      context: ContextType.APPLICATIONS,
-      config,
-      navMenuItems: navItems,
-      version,
-    });
-  }, [navItems, updateContext, config, version]);
+  const {config} = useAppContext();
 
   return (
     <Page>
@@ -214,20 +196,22 @@ export const getStaticProps: GetStaticProps<
   {version?: string}
 > = async ({params}) => {
   const version = params?.version ?? `v7`;
-  const productConfig = productsConfig.applications.versions[version];
-  const config = serializeConfig((await productConfig.configPath()).default);
-  const navItems = (await productConfig.navigationPath()).default;
+  const contextType = ContextType.APPLICATIONS;
+  const productConfig = productsConfig[contextType].versions[version];
 
-  const context = {
-    config,
-    navItems,
-  };
+  if (!productConfig) {
+    return {notFound: true};
+  }
 
   return {
     props: {
-      content: await getChangelogByVersion(version),
+      // _app props
+      initialContextType: contextType,
+      initialVersion: version,
+
+      // component props
       version,
-      context,
+      content: await getChangelogByVersion(version),
     },
     revalidate: 60 * 60 * 24, // 1 day
   };

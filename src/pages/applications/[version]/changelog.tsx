@@ -11,14 +11,14 @@ export const getStaticPaths = async () => {
 
   console.log('versions', versions);
 
-    return {
-      paths: versions.map((version) => ({
-        params: {
-          version,
-        },
-      })),
-      fallback: 'blocking',
-    };
+  return {
+    paths: versions.map((version) => ({
+      params: {
+        version,
+      },
+    })),
+    fallback: 'blocking',
+  };
 };
 
 export default ChangelogPage;

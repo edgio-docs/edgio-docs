@@ -9,12 +9,16 @@ import {useEffect} from 'react';
 import {remarkPlugins} from '../../../plugins/markdownToHtml';
 import rehypeExtractHeadings from '../../../plugins/rehype-extract-headings';
 import {MDXComponents} from '../../components/MDX/MDXComponents';
-import {getBaseConfig, serializeConfig} from '../../utils/config';
+import {getConfigByContext} from '../../utils/config';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import {productsConfig} from 'config/appConfig';
-import {ContextType, useAppContext} from 'contexts/AppContext';
+import {
+  ContextType,
+  getContextTypeByName,
+  useAppContext,
+} from 'contexts/AppContext';
 import logger from 'utils/logging';
 import templateReplace from 'utils/templateReplace';
 import {MDHeadingsList, Route, StringMap} from 'utils/Types';
@@ -25,32 +29,18 @@ export default function Guide({
   source,
   sourceFile,
   headings,
-  productContext,
   isHomepage,
 }: {
   source: any;
   sourceFile: string;
   headings: MDHeadingsList;
-  productContext: ProductContextType;
   isHomepage: boolean;
 }) {
-  const {config, navItems, product, version} = productContext;
-
-  const {updateContext} = useAppContext();
-  useEffect(() => {
-    updateContext({
-      context: ContextType[product.toUpperCase() as keyof typeof ContextType],
-      config,
-      navMenuItems: navItems,
-      version,
-    });
-  }, [navItems, updateContext, config, product, version]);
-
   // TODO - isHomepage needs to be set in the context
   return (
     <Page>
       <MarkdownPage
-        meta={{...source.frontmatter, sourceFile, version}}
+        meta={{...source.frontmatter, sourceFile}}
         headings={headings}
         isHomepage={isHomepage}>
         <MDXRemote {...source} components={MDXComponents} />
@@ -109,12 +99,9 @@ export const getStaticPaths = async () => {
     );
   }
 
-  // Prerender all available guides that are determined to not be legacy (eg. Applications <= 6).
-  // Legacy guides will fallback to SSR.
-  // TODO exclude legacy guides from the list of routes
   return {
     paths: routes,
-    fallback: 'blocking',
+    fallback: 'none',
   };
 };
 
@@ -127,8 +114,10 @@ export async function getStaticProps({
   let [version, ...guide] = (slug = slug || []);
   const versionRE = /^v(\d+)$/;
   const hasVersionInSlug = versionRE.test(version);
+  let isHomepage = false;
 
   // Configurations for the matched product
+  const initialContextType = getContextTypeByName(product);
   const productConfig = productsConfig[product];
 
   if (!productConfig) {
@@ -138,31 +127,16 @@ export async function getStaticProps({
 
   // Define the default version configuration
   const {pathPrefix} = productConfig;
-  let {configPath, guidesPath, navigationPath} =
-    productConfig.versions.default!;
+  let {guidesPath} = productConfig.versions.default!;
 
   // If a version is specified, use the version configuration
   if (hasVersionInSlug) {
-    const {
-      configPath: versionConfigPath,
-      guidesPath: versionguidesPath,
-      navigationPath: versionNavigationPath,
-    } = productConfig.versions[version];
-    configPath = versionConfigPath;
-    guidesPath = versionguidesPath;
-    navigationPath = versionNavigationPath;
+    guidesPath = productConfig.versions[version].guidesPath;
   } else {
     // Reset the guide to the slug if no version is specified
     version = 'default';
     guide = slug;
   }
-
-  if (!configPath || !navigationPath) {
-    logger.warn(`No version configuration found for '${product}.${version}'`);
-    return {notFound: true};
-  }
-
-  let isHomepage = false;
 
   // Redirect to the latest version if no version is specified and the product contains multiple versions matching the regex
   const versions = Object.keys(productConfig.versions).filter((v) =>
@@ -170,15 +144,15 @@ export async function getStaticProps({
   );
 
   if (!hasVersionInSlug && versions.length > 1) {
-    const latestVersion = versions.sort().reverse()[0].replace('v', '');
+    const latestVersion = versions.sort().reverse()[0];
     logger.warn(
-      `No version specified for '${product}'. Redirecting to latest version: '${pathPrefix}/v${latestVersion}/${slug.join(
+      `No version specified for '${product}'. Redirecting to latest version: '${pathPrefix}/${latestVersion}/${slug.join(
         '/'
       )}'`
     );
     return {
       redirect: {
-        destination: `${pathPrefix}/v${latestVersion}/${slug.join('/')}`,
+        destination: `${pathPrefix}/${latestVersion}/${slug.join('/')}`,
         permanent: true,
       },
     };
@@ -213,8 +187,10 @@ export async function getStaticProps({
     `Using '${file}' for route '${slugAsString}'. Available files: ${files}`
   );
 
-  const config = {...getBaseConfig(), ...(await configPath()).default};
-  const navItems = (await navigationPath()).default;
+  const config = await getConfigByContext(
+    getContextTypeByName(product),
+    version
+  );
 
   // Update template with versioned constants
   let content =
@@ -241,27 +217,17 @@ export async function getStaticProps({
     },
   });
 
-  const productContext = {
-    product,
-    version,
-    config: serializeConfig(config),
-    navItems,
-  };
-
   return {
     props: {
+      // _app.tsx props
+      initialContextType,
+      initialVersion: version,
+
+      // component props
       source: mdxSource,
       sourceFile: file,
       headings,
-      productContext,
       isHomepage,
     },
   };
 }
-
-type ProductContextType = {
-  product: string;
-  version: string;
-  config: StringMap;
-  navItems: Route;
-};

@@ -12,7 +12,6 @@ import NProgress from 'nprogress';
 import * as React from 'react';
 
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
-// import {VersionProvider} from 'components/versioning';
 import {siteConfig} from 'config/appConfig';
 // Universal loading page (used in dynamically imported components) which contains the wrapper of each page
 import '../styles/code.css';
@@ -23,12 +22,19 @@ import '../styles/nprogress.css';
 import '../styles/prism.css';
 import '../styles/reset.css';
 import '../styles/scrollbar.css';
-import {AppProvider} from 'contexts/AppContext';
+import {AppProvider, ContextType} from 'contexts/AppContext';
 import {ThemeProvider} from 'contexts/ThemeContext';
 
 const EmptyAppShell: React.FC<{children: React.ReactNode}> = ({children}) => (
   <>{children}</>
 );
+
+interface DocsAppProps extends AppProps {
+  pageProps: {
+    initialContextType?: ContextType;
+    version?: string;
+  };
+}
 
 // CWV for Edgio
 new Metrics({token: 'a5c2ebb3-dd43-4c36-b082-fb499a7bcd8d'}).collect();
@@ -64,7 +70,7 @@ function GAnalytics() {
   );
 }
 
-export default function MyApp({Component, pageProps}: AppProps) {
+export default function MyApp({Component, pageProps}: DocsAppProps) {
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
   const [changingTo, setChangingTo] = React.useState('');
@@ -128,7 +134,7 @@ export default function MyApp({Component, pageProps}: AppProps) {
     fallbackMap[changingTo]
   ) : (
     <AppShell>
-      <AppProvider>
+      <AppProvider {...pageProps}>
         <GAnalytics />
         <DefaultSeo canonical={canonicalUrl} />
 

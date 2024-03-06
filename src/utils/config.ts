@@ -1,12 +1,23 @@
 import baseConfig from '../config/base.config';
 
-export async function getAppsVersionedConfig(version: string) {
-  const versionedConfig = await import(`config/applications/${version}.config`);
-  return {...getBaseConfig(), ...versionedConfig.default};
-}
+import {productsConfig} from 'config/appConfig';
+import {ContextType} from 'contexts/AppContext';
 
 export function getBaseConfig() {
   return baseConfig;
+}
+
+export async function getConfigByContext(
+  context: ContextType,
+  version: string = 'default'
+) {
+  const productConfig = productsConfig[context]?.versions[version];
+
+  if (!productConfig) {
+    throw new Error(`No config found for '${context}' v${version}`);
+  }
+
+  return {...baseConfig, ...(await productConfig.configImport()).default};
 }
 
 /**

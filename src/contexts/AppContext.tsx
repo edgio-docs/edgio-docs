@@ -4,23 +4,55 @@ import React, {
   useContext,
   useState,
   ReactNode,
+  useEffect,
   useCallback,
 } from 'react';
 
-import {getBaseConfig} from 'utils/config';
+import {productsConfig} from 'config/appConfig';
+import {getBaseConfig, getConfigByContext} from 'utils/config';
 import {StringMap, Route} from 'utils/Types';
 
-export const AppProvider: React.FC<{children: ReactNode}> = ({children}) => {
+export const AppProvider: React.FC<{
+  children: ReactNode;
+  initialContextType?: ContextType;
+  initialVersion?: string;
+}> = ({children, initialContextType, initialVersion = 'default'}) => {
   const [contextState, setContextState] =
     useState<AppContextProps>(defaultContextValues);
+
+  // Dynamically load config based on contextType and version
+  const loadConfig = async (contextType: ContextType, version: string) => {
+    let config = getBaseConfig();
+    let navMenuItems = {};
+
+    // Config and navigation import is handle from the appConfig.ts file
+    const contextConfig = productsConfig[contextType];
+
+    if (!contextConfig) {
+      console.error(`No config found for contextType: ${contextType}`);
+      return {config, navMenuItems};
+    }
+
+    const {navigationImport} = contextConfig.versions[version];
+
+    try {
+      config = await getConfigByContext(contextType, version);
+      navMenuItems = (await navigationImport()).default;
+    } catch (error) {
+      console.error(
+        `Failed to load config for ${contextType} (${version}):`,
+        error
+      );
+    }
+
+    return {config, navMenuItems};
+  };
 
   const updateContext = useCallback(
     (updates: Partial<Omit<AppContextProps, 'hasNavigationMenu'>>) => {
       setContextState((currentContext) => {
         let newNavMenuItems = updates.navMenuItems;
-
         const hasNavigationMenu = get(newNavMenuItems, 'routes.length', 0) > 0;
-
         return {
           ...currentContext,
           ...updates,
@@ -30,6 +62,21 @@ export const AppProvider: React.FC<{children: ReactNode}> = ({children}) => {
     },
     []
   );
+
+  useEffect(() => {
+    if (initialContextType) {
+      loadConfig(initialContextType, initialVersion).then(
+        ({config, navMenuItems}) => {
+          updateContext({
+            context: initialContextType,
+            config,
+            navMenuItems,
+            version: initialVersion,
+          });
+        }
+      );
+    }
+  }, [initialContextType, initialVersion, updateContext]);
 
   return (
     <AppContext.Provider value={{...contextState, updateContext}}>
@@ -66,5 +113,16 @@ export enum ContextType {
   DELIVERY = 'delivery',
   OPEN_EDGE = 'open_edge',
 }
+
+export const getContextTypeByName = (name: string): ContextType => {
+  const contextTypeKey = Object.keys(ContextType).find(
+    (key) =>
+      ContextType[key as keyof typeof ContextType].toLowerCase() ===
+      name.toLowerCase()
+  );
+  return contextTypeKey
+    ? ContextType[contextTypeKey as keyof typeof ContextType]
+    : ContextType.HOME;
+};
 
 export const useAppContext = () => useContext(AppContext);

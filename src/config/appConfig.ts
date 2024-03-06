@@ -1,9 +1,9 @@
 type DynamicImport<T = any> = () => Promise<{default: T}>;
 
 type ProductVersionConfig = {
-  configPath: DynamicImport;
+  configImport: DynamicImport;
   guidesPath: string;
-  navigationPath: DynamicImport;
+  navigationImport: DynamicImport;
 };
 
 type ProductConfig = {
@@ -22,24 +22,24 @@ export const productsConfig: ProductsConfig = {
     pathPrefix: '/applications',
     versions: {
       v4: {
-        configPath: () => import('config/applications/v4.config'),
+        configImport: () => import('config/applications/v4.config'),
         guidesPath: 'guides/applications/v4',
-        navigationPath: () => import('config/applications/v4.nav'),
+        navigationImport: () => import('config/applications/v4.nav'),
       },
       v5: {
-        configPath: () => import('config/applications/v5.config'),
+        configImport: () => import('config/applications/v5.config'),
         guidesPath: 'guides/applications/v5',
-        navigationPath: () => import('config/applications/v5.nav'),
+        navigationImport: () => import('config/applications/v5.nav'),
       },
       v6: {
-        configPath: () => import('config/applications/v6.config'),
+        configImport: () => import('config/applications/v6.config'),
         guidesPath: 'guides/applications/v6',
-        navigationPath: () => import('config/applications/v6.nav'),
+        navigationImport: () => import('config/applications/v6.nav'),
       },
       v7: {
-        configPath: () => import('config/applications/v7.config'),
+        configImport: () => import('config/applications/v7.config'),
         guidesPath: 'guides/applications/v7',
-        navigationPath: () => import('config/applications/v7.nav'),
+        navigationImport: () => import('config/applications/v7.nav'),
       },
     },
   },
@@ -47,9 +47,9 @@ export const productsConfig: ProductsConfig = {
     pathPrefix: '/uplynk',
     versions: {
       default: {
-        configPath: () => import('config/uplynk/config'),
+        configImport: () => import('config/uplynk/config'),
         guidesPath: 'guides/uplynk',
-        navigationPath: () => import('config/uplynk/nav'),
+        navigationImport: () => import('config/uplynk/nav'),
       },
     },
   },
@@ -57,9 +57,9 @@ export const productsConfig: ProductsConfig = {
     pathPrefix: '/delivery',
     versions: {
       default: {
-        configPath: () => import('config/delivery/config'),
+        configImport: () => import('config/delivery/config'),
         guidesPath: 'guides/delivery',
-        navigationPath: () => import('config/delivery/nav'),
+        navigationImport: () => import('config/delivery/nav'),
       },
     },
   },
@@ -67,9 +67,9 @@ export const productsConfig: ProductsConfig = {
     pathPrefix: '/open_edge',
     versions: {
       default: {
-        configPath: () => import('config/open_edge/config'),
+        configImport: () => import('config/open_edge/config'),
         guidesPath: 'guides/open_edge',
-        navigationPath: () => import('config/open_edge/nav'),
+        navigationImport: () => import('config/open_edge/nav'),
       },
     },
   },

@@ -235,15 +235,12 @@ function Banner() {
         You are viewing docs for {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
         {version.selectedVersionText} (deprecated). Read the&nbsp;
         <Link href="https://edg.io/blogs/layer0-end-of-life-announcement/">
-          <a target="_blank">
-            end-of-life announcement
-          </a>
+          <a target="_blank">end-of-life announcement</a>
         </Link>
         &nbsp; or browse&nbsp;
         <Link href="/" passHref>
           <a>
-            {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
-            {version.latestVersionText} docs
+            {PRODUCT} {PRODUCT_APPLICATIONS} {version.latestVersionText} docs
           </a>
         </Link>
         .

@@ -9,7 +9,7 @@ If you are currently using Node.js 16, then we strongly recommend that you perfo
 <Condition version="<=6">
   <Callout type="info">
   
-    Although an upcoming release of {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} v6 will include support for Node.js 18, we strongly recommend upgrading to version 7 to take advantage of new functionality, such as [real-time analytics (Edge Insights)](/guides/performance/observability/edge_insights), our new flexible [log delivery solution (RTLD)](/guides/logs/rtld), [enhanced traffic splitting (Experimentation)](/guides/experimentation), [Edge Functions](/guides/edge_functions), and our latest [{{ PRODUCT_SECURITY }} offerings](/guides/security/waf). 
+    Although an upcoming release of {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} v6 will include support for Node.js 18, we strongly recommend upgrading to version 7 to take advantage of new functionality, such as [real-time analytics (Edge Insights)](https://docs.edg.io/guides/v7/performance/observability/edge_insights), our new flexible [log delivery solution (RTLD)](https://docs.edg.io/guides/v7/logs/rtld), [enhanced traffic splitting (Experimentation)](https://docs.edg.io/guides/v7/experimentation), [Edge Functions](https://docs.edg.io/guides/v7/edge_functions), and our latest [{{ PRODUCT_SECURITY }} offerings](https://docs.edg.io/guides/v7/security/waf). 
   
   </Callout>
 

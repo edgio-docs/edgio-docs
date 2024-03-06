@@ -4,7 +4,6 @@ import {isEdgioRunDev, isProductionBuild} from '@edgio/core/environment';
 import globby from 'globby';
 import {MDXRemote} from 'next-mdx-remote';
 import {serialize} from 'next-mdx-remote/serialize';
-import {useEffect} from 'react';
 
 import {remarkPlugins} from '../../../plugins/markdownToHtml';
 import rehypeExtractHeadings from '../../../plugins/rehype-extract-headings';
@@ -14,14 +13,10 @@ import {getConfigByContext} from '../../utils/config';
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import {productsConfig} from 'config/appConfig';
-import {
-  ContextType,
-  getContextTypeByName,
-  useAppContext,
-} from 'contexts/AppContext';
+import {getContextTypeByName} from 'contexts/AppContext';
 import logger from 'utils/logging';
 import templateReplace from 'utils/templateReplace';
-import {MDHeadingsList, Route, StringMap} from 'utils/Types';
+import {MDHeadingsList} from 'utils/Types';
 
 const guidesPath = join(process.cwd(), 'guides');
 
@@ -101,7 +96,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths: routes,
-    fallback: 'none',
+    fallback: false,
   };
 };
 

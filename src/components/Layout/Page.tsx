@@ -1,7 +1,6 @@
 // @ts-ignore
 import {default as JSURL} from 'jsurl';
 import debounce from 'lodash/debounce';
-import Link from 'next/link';
 import {useRouter} from 'next/router';
 import * as React from 'react';
 // @ts-ignore
@@ -16,6 +15,7 @@ import Header from './Header/Header';
 import SideNav from './Sidebar/Sidenav';
 import {useIsMobile} from './useMediaQuery';
 
+import Link from 'components/MDX/Link';
 import useConditioning from 'utils/hooks/useConditioning';
 import textCompare from 'utils/textCompare';
 
@@ -144,8 +144,7 @@ const StyledBanner = styled.div<StyledBannerProps>`
   --banner-text-color: ${({legacy, future}) => (legacy ? '#000' : '#fff')};
   --banner-background-color: ${({legacy, future}) =>
     legacy ? 'var(--callout-tip)' : future ? '#812990' : 'var(--lg-primary)'};
-  --banner-font-size: ${({legacy, future}) =>
-    legacy ? '18px' : '1rem'};
+  --banner-font-size: ${({legacy, future}) => (legacy ? '18px' : '1rem')};
 
   display: block;
   text-align: center;
@@ -221,29 +220,23 @@ function Banner() {
     return (
       <StyledBanner future>
         CDN-as-code support for Node.js 16 is undergoing end-of-life.&nbsp;
-        <Link href="/guides/install_nodejs" passHref>
-          <a>View end-of-life plan.</a>
-        </Link>
+        <Link href="/guides/install_nodejs">View end-of-life plan.</Link>
       </StyledBanner>
     );
   }
   if (!version.isLatest) {
     return (
       <StyledBanner legacy>
-        {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
-        {version.selectedVersionText} and support for Node.js 16 are undergoing end-of-life (EOL). Read the&nbsp;
+        {PRODUCT} {PRODUCT_APPLICATIONS} {version.selectedVersionText} and
+        support for Node.js 16 are undergoing end-of-life (EOL). Read the&nbsp;
         <Link href="https://edg.io/blogs/layer0-end-of-life-announcement/">
-          <a target="_blank">{PRODUCT_LEGACY} EOL announcement</a>
+          {PRODUCT_LEGACY} EOL announcement
         </Link>
         , the&nbsp;
-        <Link href="/guides/install_nodejs">
-          <a>Node.js 16 EOL plan</a>
-        </Link>
+        <Link href="/guides/install_nodejs">Node.js 16 EOL plan</Link>
         &nbsp; or browse&nbsp;
-        <Link href="/" passHref>
-          <a>
-            {PRODUCT} {PRODUCT_APPLICATIONS} {version.latestVersionText} docs
-          </a>
+        <Link href="/">
+          {PRODUCT} {PRODUCT_APPLICATIONS} {version.latestVersionText} docs
         </Link>
         .
       </StyledBanner>
@@ -253,9 +246,7 @@ function Banner() {
     <StyledBanner>
       🎉 Introducing {PRODUCT} {PRODUCT_APPLICATIONS} v6 which supports Node.js
       v16.{' '}
-      <Link href="/guides/reference/v6_migration" passHref>
-        <a>Learn how to upgrade.</a>
-      </Link>{' '}
+      <Link href="/guides/reference/v6_migration">Learn how to upgrade.</Link>{' '}
       🎉
     </StyledBanner>
   );

@@ -67,7 +67,7 @@ properties:
     type: string
     description: |
 
-      The enforcement action that will be applied to traffic spoofing a known bot defined within the `known_bots` array. 
+      The default enforcement action that will be applied to traffic spoofing a known bot defined within the `known_bots` array. This enforcement action is only applied when an explicit enforcement action has not been applied to a known bot through the `known_bots.spoof_action_type` property.
 
       <a href="https://docs.edg.io/guides/security/bot_rules#actions" target="_blank">Learn more about enforcement actions.</a>
 

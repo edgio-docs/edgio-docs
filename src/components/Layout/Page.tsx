@@ -10,6 +10,7 @@ import styled from 'styled-components';
 
 import {PRODUCT} from '../../../constants';
 import {PRODUCT_APPLICATIONS} from '../../../constants';
+import {PRODUCT_LEGACY} from '../../../constants';
 
 import Header from './Header/Header';
 import SideNav from './Sidebar/Sidenav';
@@ -232,7 +233,7 @@ function Banner() {
         {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
         {version.selectedVersionText} and support for Node.js 16 is undergoing end-of-life. Read the&nbsp;
         <Link href="https://edg.io/blogs/layer0-end-of-life-announcement/">
-          <a target="_blank">{{ PRODUCT_LEGACY }} end-of-life (EOL) announcement</a>
+          <a target="_blank">{PRODUCT_LEGACY} end-of-life (EOL) announcement</a>
         </Link>
         , the&nbsp;
         <Link href="/guides/install_nodejs">

@@ -17,9 +17,33 @@ properties:
       - BROWSER_CHALLENGE
       - REDIRECT_302
       - RECAPTCHA
+      - SILENT_CLOSE
+
+  spoof_action_type:
+    type: string
+    description: |
+
+      The type of enforcement action that will be applied when a attempt to spoof this bot type is found.
+
+      <a href="https://docs.edg.io/guides/security/bot_rules#actions" target="_blank">Learn more about enforcement actions.</a>
+
+    enum:
+      - ALERT
+      - BLOCK_REQUEST
+      - CUSTOM_RESPONSE
+      - BROWSER_CHALLENGE
+      - REDIRECT_302
+      - RECAPTCHA
+      - SILENT_CLOSE
+
   bot_token:
     description: A token that identifies a known bot.
     type: string
+
+  strict_match:
+    description: Determines whether an additional check is required to categorize traffic as spoofed. If disabled, requests that originate from the known bot's ASN will not be considered to be spoofed traffic.
+    type: boolean
+
 required:
   - action_type
   - bot_token

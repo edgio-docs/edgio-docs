@@ -220,7 +220,7 @@ function Banner() {
     return (
       <StyledBanner future>
         CDN-as-code support for Node.js 16 is undergoing end-of-life.&nbsp;
-        <Link href="/guides/v7/install_nodejs" passHref>
+        <Link href="/guides/install_nodejs" passHref>
           <a>View end-of-life plan.</a>
         </Link>
       </StyledBanner>
@@ -229,10 +229,14 @@ function Banner() {
   if (!version.isLatest) {
     return (
       <StyledBanner legacy>
-        You are viewing docs for {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
-        {version.selectedVersionText} (deprecated). Read the&nbsp;
+        {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
+        {version.selectedVersionText} and support for Node.js 16 is undergoing end-of-life. Read the&nbsp;
         <Link href="https://edg.io/blogs/layer0-end-of-life-announcement/">
-          <a target="_blank">end-of-life announcement</a>
+          <a target="_blank">{{ PRODUCT_LEGACY }} end-of-life (EOL) announcement</a>
+        </Link>
+        , the&nbsp;
+        <Link href="/guides/install_nodejs">
+          <a>Node.js 16 EOL announcement</a>
         </Link>
         &nbsp; or browse&nbsp;
         <Link href="/" passHref>

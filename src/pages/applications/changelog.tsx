@@ -1,16 +1,18 @@
 import {Octokit} from '@octokit/core';
 import _get from 'lodash/get';
-import {GetStaticProps, InferGetStaticPropsType} from 'next';
+import {GetStaticProps} from 'next';
+import {useEffect} from 'react';
 import styled from 'styled-components';
 
-import {PRODUCT} from '../../../constants';
 import {markdownToHtml} from '../../../plugins/markdownToHtml';
-import {getVersionedConfig} from '../../utils/config';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import Callout from 'components/MDX/Callout';
 import Link from 'components/MDX/Link';
+import {productsConfig} from 'config/appConfig';
+import {useAppContext, ContextType} from 'contexts/AppContext';
+import {serializeConfig} from 'utils/config';
 interface ChangelogProps {
   version: string;
   content: string;
@@ -64,9 +66,27 @@ const StyledChangelogContent = styled.div`
   }
 `;
 
-function ChangelogPage({content, version}: {content: string; version: string}) {
-  const config = getVersionedConfig(version);
+function ChangelogPage({
+  content,
+  version,
+  context,
+}: {
+  content: string;
+  version: string;
+  context: any;
+}) {
   const isVersionFour = version === 'v4';
+  const {config, navItems} = context;
+
+  const {updateContext} = useAppContext();
+  useEffect(() => {
+    updateContext({
+      context: ContextType.APPLICATIONS,
+      config,
+      navMenuItems: navItems,
+      version,
+    });
+  }, [navItems, updateContext, config, version]);
 
   return (
     <Page>
@@ -114,7 +134,7 @@ async function getChangelogByVersion(version: string) {
       ret[i] = releases
         .filter((release: {tag_name: string}) => release.tag_name.match(v))
         .map((release) => {
-          const title = `**${PRODUCT} Packages** - `;
+          const title = `**Edgio Packages** - `;
           const {tag_name, body, published_at} = release as any;
 
           return [
@@ -193,13 +213,21 @@ export const getStaticProps: GetStaticProps<
   ChangelogProps,
   {version?: string}
 > = async ({params}) => {
-  const latestVersion = process.env.NEXT_PUBLIC_LATEST_VERSION as string; // defined in next.config.js
-  const version = params?.version ?? `v${latestVersion}`;
+  const version = params?.version ?? `v7`;
+  const productConfig = productsConfig.applications.versions[version];
+  const config = serializeConfig((await productConfig.configPath()).default);
+  const navItems = (await productConfig.navigationPath()).default;
+
+  const context = {
+    config,
+    navItems,
+  };
 
   return {
     props: {
       content: await getChangelogByVersion(version),
       version,
+      context,
     },
     revalidate: 60 * 60 * 24, // 1 day
   };

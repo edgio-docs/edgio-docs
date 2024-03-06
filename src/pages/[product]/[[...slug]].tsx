@@ -87,7 +87,7 @@ export const getStaticPaths = async () => {
     };
   }
 
-  paths.push(...allGuides);
+  paths.push(...allGuides.sort());
 
   // Convert file paths to routes. The first part of the path will be the [product] and the rest will be the [slug]
   routes.push(
@@ -104,8 +104,8 @@ export const getStaticPaths = async () => {
 
   if (isProductionBuild()) {
     logger.prod(
-      'Generating the following paths:',
-      JSON.stringify(routes, null, 2)
+      'Generating the following paths: \n',
+      JSON.stringify(paths, null, 2)
     );
   }
 
@@ -213,7 +213,7 @@ export async function getStaticProps({
     `Using '${file}' for route '${slugAsString}'. Available files: ${files}`
   );
 
-  const config = Object.assign(getBaseConfig(), (await configPath()).default);
+  const config = {...getBaseConfig(), ...(await configPath()).default};
   const navItems = (await navigationPath()).default;
 
   // Update template with versioned constants

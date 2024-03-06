@@ -1,5 +1,10 @@
 import baseConfig from '../config/base.config';
 
+export async function getAppsVersionedConfig(version: string) {
+  const versionedConfig = await import(`config/applications/${version}.config`);
+  return {...getBaseConfig(), ...versionedConfig.default};
+}
+
 export function getBaseConfig() {
   return baseConfig;
 }

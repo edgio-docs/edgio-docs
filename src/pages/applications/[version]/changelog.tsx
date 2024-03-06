@@ -1,33 +1,24 @@
-import {join} from 'path';
-
-import globby from 'globby';
-
 import ChangelogPage, {getStaticProps} from '../changelog';
+
+import {productsConfig} from 'config/appConfig';
 
 export const getStaticPaths = async () => {
   // determine available versions from config files
-  const versions = (
-    await globby('config/v*.config.js', {
-      cwd: join(process.cwd(), 'src'),
-    })
-  ).map(async (file: string) => {
-    const v = (file.match(/v(\d+)\.config\.js/) || [])[1];
+  const versions = Object.keys(productsConfig.applications.versions)
+    .filter((v) => v !== 'default')
+    .sort()
+    .reverse();
+
+  console.log('versions', versions);
 
     return {
-      version: v,
+      paths: versions.map((version) => ({
+        params: {
+          version,
+        },
+      })),
+      fallback: 'blocking',
     };
-  });
-
-  const versionObjects = await Promise.all(versions);
-
-  return {
-    paths: versionObjects.map(({version}) => ({
-      params: {
-        version: `v${version}`,
-      },
-    })),
-    fallback: 'blocking',
-  };
 };
 
 export default ChangelogPage;

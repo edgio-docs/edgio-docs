@@ -144,6 +144,7 @@ export default <Array<Redirect>>[
   ['/guides/cookies', '/guides/performance/traffic_splitting/a_b_testing'],
   ['/guides/overview', '/guides/performance'],
   ['/guides/regions', '/guides/sites_frameworks#regions'],
+  ['/guides/upgrading/upgrading', '/guides/v7/upgrading/upgrading'],
 
   // v4
   ['/guides/v4/v4_accounts_teams', '/guides/v4/alerts'],
@@ -174,5 +175,5 @@ export default <Array<Redirect>>[
     /\/guides\/v7\/sites_frameworks\/getting_started\/(ember_fastboot|frontity|gatsby|hexo|mkdocs|razzle|sanity)/,
     '/guides/v7/sites_frameworks/legacy_connectors/$1',
   ],
-  ['/guides/v7/basics/hostnames_and_origins', '/guides/v7/basics/hostnames'],  
+  ['/guides/v7/basics/hostnames_and_origins', '/guides/v7/basics/hostnames'],
 ];

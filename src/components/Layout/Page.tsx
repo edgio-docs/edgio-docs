@@ -231,13 +231,13 @@ function Banner() {
     return (
       <StyledBanner legacy>
         {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
-        {version.selectedVersionText} and support for Node.js 16 is undergoing end-of-life. Read the&nbsp;
+        {version.selectedVersionText} and support for Node.js 16 are undergoing end-of-life (EOL). Read the&nbsp;
         <Link href="https://edg.io/blogs/layer0-end-of-life-announcement/">
-          <a target="_blank">{PRODUCT_LEGACY} end-of-life (EOL) announcement</a>
+          <a target="_blank">{PRODUCT_LEGACY} EOL announcement</a>
         </Link>
         , the&nbsp;
         <Link href="/guides/install_nodejs">
-          <a>Node.js 16 EOL announcement</a>
+          <a>Node.js 16 EOL plan</a>
         </Link>
         &nbsp; or browse&nbsp;
         <Link href="/" passHref>

@@ -240,7 +240,8 @@ const Message = styled.div<{isUser: boolean}>`
   margin: 10px 0;
   padding: 10px;
   padding-top: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid
+    ${({isUser}) => (isUser ? 'var(--text-primary)' : 'var(--colors-blue0)')};
   border-radius: ${({isUser}) =>
     isUser ? '10px 10px 0 10px' : '0 10px 10px 10px'};
   background-color: ${({isUser}) =>

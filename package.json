@@ -73,6 +73,7 @@
     "react-dom": "^18.0.0",
     "react-icons": "^4.4.0",
     "react-markdown": "^9.0.1",
+    "react-modal": "^3.16.1",
     "react-player": "^2.10.0",
     "scroll-into-view": "^1.16.2",
     "semver": "^7.3.7",

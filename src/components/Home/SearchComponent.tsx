@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import EdgioAnswers from 'components/EdgioAnswers';
 import AlgoliaSearch from 'components/Layout/Header/AlgoliaSearch';
+import NoSSRWrapper from 'components/Layout/NoSSRWrapper';
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 
@@ -19,7 +20,7 @@ const searchButtons = [
   },
 ];
 
-const SearchContainer = styled.div`
+const SearchContainer = styled.div<{active: string}>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,18 +74,14 @@ const SearchContainer = styled.div`
       outline: none;
       padding-left: 10px;
       font-size: 16px;
+
       width: 100%;
+      height: auto;
+      opacity: ${({active}) => (active === 'applications' ? '0' : '1')};
+      cursor: ${({active}) => (active === 'applications' ? 'pointer' : 'auto')};
 
-      button,
-      span {
+      .DocSearch-Button {
         width: 100%;
-
-        &:hover {
-          background: var(--search-input-bg);
-          color: var(--search-input-bg);
-          border: none;
-          transition: none;
-        }
       }
     }
 
@@ -161,6 +158,16 @@ const NewIconWithSparkle: React.FC<{children: React.ReactNode}> = ({
   </NewIcon>
 );
 
+const UplynkSearch = styled.input`
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 16px;
+  outline: none;
+`;
+
 export default function SearchComponent() {
   const [active, setActive] = useState('applications');
   const {context} = useAppContext();
@@ -169,8 +176,8 @@ export default function SearchComponent() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   return (
-    <>
-      <SearchContainer>
+    <NoSSRWrapper>
+      <SearchContainer active={active}>
         <div className="search-buttons">
           {context === ContextType.HOME ? (
             searchButtons.map((button) => (
@@ -200,7 +207,8 @@ export default function SearchComponent() {
         <div className="search-box">
           <FiSearch className="search-icon" />
           <div className="search-input">
-            <AlgoliaSearch />
+            {active === 'applications' && <AlgoliaSearch />}
+            {active === 'uplynk' && <UplynkSearch />}
           </div>
           <KeyboardButton>
             {isClient && navigator.platform.includes('Mac')
@@ -213,6 +221,6 @@ export default function SearchComponent() {
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
       />
-    </>
+    </NoSSRWrapper>
   );
 }

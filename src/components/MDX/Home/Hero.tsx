@@ -53,7 +53,7 @@ const HeroContainer = styled.div`
   }
 `;
 
-function HomeHero() {
+export default function HomeHero() {
   return (
     <HeroContainer>
       <Container>
@@ -65,5 +65,3 @@ function HomeHero() {
     </HeroContainer>
   );
 }
-
-export default HomeHero;

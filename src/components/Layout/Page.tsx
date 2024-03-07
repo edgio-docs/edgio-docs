@@ -1,7 +1,6 @@
 // @ts-ignore
 import {default as JSURL} from 'jsurl';
 import debounce from 'lodash/debounce';
-import Link from 'next/link';
 import {useRouter} from 'next/router';
 import * as React from 'react';
 // @ts-ignore
@@ -15,6 +14,7 @@ import Header from './Header/Header';
 import {SidebarNav} from './SidebarNav';
 import {useIsMobile} from './useMediaQuery';
 
+import Link from 'components/MDX/Link';
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import textCompare from 'utils/textCompare';
@@ -225,8 +225,8 @@ function Banner() {
       <StyledBanner future>
         Introducing {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
         {version.selectedVersionText}.&nbsp;
-        <Link href="/guides/v7/intro" passHref>
-          <a>Find out what&apos;s new.</a>
+        <Link href="/applications/v7/intro" versioned={false}>
+          Find out what&apos;s new.
         </Link>
       </StyledBanner>
     );

@@ -54,7 +54,10 @@ export const getStaticPaths = async () => {
       cwd: guidesPath,
     })
   ).map(
-    (path: string) => path.replace(/.mdx?/, '') // remove extension
+    (path: string) =>
+      path
+        .replace(/.mdx?/, '') // remove extension
+        .replace(/\/index$/, '') // remove index
   );
 
   // First part of the path will be the "product" (eg. 'applications', 'uplynk', etc.)
@@ -65,12 +68,12 @@ export const getStaticPaths = async () => {
 
   // In dev mode, don't prerender any pages and fallback to SSR for
   // faster page loads
-  if (isEdgioRunDev()) {
-    return {
-      paths: [],
-      fallback: 'blocking',
-    };
-  }
+  // if (isEdgioRunDev()) {
+  //   return {
+  //     paths: [],
+  //     fallback: 'blocking',
+  //   };
+  // }
 
   paths.push(...allGuides.sort());
 
@@ -88,15 +91,14 @@ export const getStaticPaths = async () => {
   );
 
   if (isProductionBuild()) {
-    logger.prod(
-      'Generating the following paths: \n',
-      JSON.stringify(paths, null, 2)
+    logger.debug(
+      `Generating the following paths: \n${JSON.stringify(paths, null, 2)}`
     );
   }
 
   return {
     paths: routes,
-    fallback: false,
+    fallback: 'blocking',
   };
 };
 

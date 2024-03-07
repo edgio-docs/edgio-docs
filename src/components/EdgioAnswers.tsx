@@ -1,7 +1,7 @@
 import {ChatChannel} from '@fireaw.ai/sdk';
 import {is} from 'cheerio/lib/api/traversing';
 import React, {useState, useEffect} from 'react';
-import {FiXCircle} from 'react-icons/fi';
+import {FiXCircle, FiSend} from 'react-icons/fi';
 import ReactMarkdown from 'react-markdown';
 import Modal from 'react-modal';
 import styled from 'styled-components';
@@ -45,6 +45,13 @@ const ChatActions = styled.div`
   align-items: center;
   width: 100%;
   padding: 10px;
+`;
+
+const ChatInputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 1;
 `;
 
 const ChatInput = styled.input`
@@ -284,6 +291,17 @@ const QuestionButton = styled.button`
   }
 `;
 
+const SendIcon = styled(FiSend)`
+  position: absolute;
+  right: 20px;
+  opacity: 0.5;
+
+  &.enabled {
+    opacity: 1;
+    cursor: pointer;
+  }
+`;
+
 const MessageContent = styled.div`
   .article-text {
     margin: 10px auto;
@@ -435,19 +453,24 @@ const EdgioAnswers: React.FC<{
           ))}
         </QuestionButtons>
         <ChatActions>
-          <ChatInput
-            type="text"
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-            placeholder={
-              isAwaitingResponse
-                ? 'Waiting for response...'
-                : 'Ask something...'
-            }
-            disabled={isAwaitingResponse}
-          />
-          {isAwaitingResponse && <StopButtonIcon onClick={stopAndReconnect} />}
+          <ChatInputContainer>
+            <ChatInput
+              type="text"
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+              placeholder={
+                isAwaitingResponse
+                  ? 'Waiting for response...'
+                  : 'Ask something...'
+              }
+              disabled={isAwaitingResponse}
+            />
+            <SendIcon className={inputText.trim() ? 'enabled' : ''} />
+            {isAwaitingResponse && (
+              <StopButtonIcon onClick={stopAndReconnect} />
+            )}
+          </ChatInputContainer>
         </ChatActions>
       </Modal>
     </NoSSRWrapper>

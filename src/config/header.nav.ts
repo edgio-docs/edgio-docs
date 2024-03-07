@@ -12,7 +12,7 @@ const headerNav = [
       },
       {
         name: 'Uplynk',
-        url: '',
+        url: 'https://docs.edgecast.com/video/index.html',
       },
       {
         name: 'Open Edge',
@@ -20,13 +20,13 @@ const headerNav = [
       },
       {
         name: 'Delivery',
-        url: '',
+        url: 'https://docs.edgecast.com/cdn/index.html#Getting_Started/GS-All.htm',
       },
       /* divider */
       null,
       {
         name: 'Edgecast CDN',
-        url: '',
+        url: 'https://docs.edgecast.com/cdn/index.html#Getting_Started/GS-All.htm',
       },
       {
         name: 'Applications v6',
@@ -55,21 +55,21 @@ const headerNav = [
       },
       {
         name: 'Uplynk',
-        url: '',
+        url: 'https://docs.edgecast.com/video/index.html',
       },
       {
         name: 'Delivery',
-        url: '',
+        url: 'https://docs.edgecast.com/cdn/index.html#Getting_Started/GS-All.htm',
       },
     ],
   },
   {
     title: 'Support',
     items: [
-      {
-        name: 'Edgio Answers',
-        url: '',
-      },
+      // {
+      //   name: 'Edgio Answers',
+      //   url: '',
+      // },
       {
         name: 'Status Page',
         url: STATUS_URL,

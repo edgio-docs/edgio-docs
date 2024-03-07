@@ -146,9 +146,12 @@ const Header = () => {
         </Link>
       </LogoArea>
       <NavigationArea>
-        <div className="search-form__box">
-          <AlgoliaSearch />
-        </div>
+        {/* Only show the search form on the applications page */}
+        {context === ContextType.APPLICATIONS && (
+          <div className="search-form__box">
+            <AlgoliaSearch />
+          </div>
+        )}
         <ThemeSwitcher />
         <HeaderNav />
       </NavigationArea>

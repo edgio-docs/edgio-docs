@@ -1,13 +1,9 @@
-import {useRouter} from 'next/router';
-
 import {productsConfig} from 'config/appConfig';
-import {useAppContext} from 'contexts/AppContext';
-
-const latestVersion = process.env.NEXT_PUBLIC_LATEST_VERSION as string;
-interface RouterQuery {
-  version?: string | string[];
-  [key: string]: any;
-}
+import {
+  ContextType,
+  getLatestVersion,
+  useAppContext,
+} from 'contexts/AppContext';
 
 interface IVersion {
   /**
@@ -42,29 +38,25 @@ interface IVersion {
 }
 
 function useConditioning() {
-  const router = useRouter();
-  const {context} = useAppContext();
-  const {slug, version: paramVersion} = router.query as RouterQuery;
+  const {context, version} = useAppContext();
+  let latestVersion = '';
 
-  // `slug` is defined from the `src/pages/[...slug].tsx` route, or it could be
-  // `version` if coming in from a different route, such as changelog
-  let version = slug || paramVersion || [];
-  if (Array.isArray(version)) {
-    version = version[0];
+  if (context === ContextType.APPLICATIONS) {
+    latestVersion = getLatestVersion(context) ?? '';
   }
 
   // clean version from query
   const cleanedVersion =
     version && typeof version === 'string' && version.match(/^v\d+$/)
       ? version.replace(/v/, '')
-      : latestVersion;
+      : latestVersion.replace(/v/, '');
 
   const isLatest = cleanedVersion === latestVersion;
   const versionConfig: IVersion = {
     selectedVersion: cleanedVersion,
     selectedVersionText: `v${cleanedVersion}`,
     latestVersion: latestVersion,
-    latestVersionText: `v${latestVersion}`,
+    latestVersionText: `v${latestVersion.replace(/v/, '')}`,
     isLatest,
     // doesn't include version in the path for the latest guides
     // pathPrefix: !isLatest ? `v${cleanedVersion}` : '',
@@ -74,6 +66,11 @@ function useConditioning() {
 
     packageVersion: `^${cleanedVersion}.0.0`,
     toVersionedPath: (path: string): string => {
+      // Versioning only applies to the applications context
+      if (context !== ContextType.APPLICATIONS) {
+        return path;
+      }
+
       const pathPrefix = productsConfig['applications'].pathPrefix;
       const escapedPrefix = pathPrefix.replace(
         /[-\/\\^$*+?.()|[\]{}]/g,

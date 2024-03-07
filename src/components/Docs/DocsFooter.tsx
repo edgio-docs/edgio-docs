@@ -161,7 +161,7 @@ const pryFooterLinks = {
   resources: [
     {
       title: 'Video Tutorials',
-      href: 'https://vimeo.com/user/776463/folder/9270726',
+      href: 'https://www.youtube.com/@Edgio/videos',
     },
     {
       title: 'Fiddle',
@@ -176,16 +176,12 @@ const pryFooterLinks = {
       href: 'https://edg.io/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
-      title: 'How-to guides',
-      href: '/guides/how-to',
-    },
-    {
-      title: 'Release Notes',
+      title: 'Applications Release Notes',
       href: '/guides/release_notes',
       versioned: false,
     },
     {
-      title: 'NPM Package Changelog',
+      title: 'Applications NPM Package Changelog',
       href: '/guides/changelog',
     },
   ],

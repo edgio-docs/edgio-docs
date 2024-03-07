@@ -15,15 +15,17 @@ import Header from './Header/Header';
 import {SidebarNav} from './SidebarNav';
 import {useIsMobile} from './useMediaQuery';
 
-import {useAppContext} from 'contexts/AppContext';
+import {ContextType, useAppContext} from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import textCompare from 'utils/textCompare';
 
-export function Page({showBanner = false, children}: PageProps) {
+export function Page({children}: PageProps) {
   const isMobile = useIsMobile(850);
   const [showSidebar, setShowSidebar] = React.useState(isMobile);
   const router = useRouter();
-  //const showBanner = !isMobile || (isMobile && !showSidebar);
+  const {context} = useAppContext();
+  const showBanner = context === ContextType.APPLICATIONS && !isMobile;
+  console.log('context', context, showBanner);
   const contentInnerRef = React.useRef(null);
   const {hasNavigationMenu} = useAppContext();
 
@@ -60,7 +62,7 @@ export function Page({showBanner = false, children}: PageProps) {
   return (
     <StyledMainPage>
       {showBanner && <Banner />}
-      <Header {...{showSidebar, setShowSidebar}} />
+      <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <main className="docs-content">
         {hasNavigationMenu && (
           <div

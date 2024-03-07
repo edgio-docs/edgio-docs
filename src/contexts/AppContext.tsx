@@ -125,4 +125,26 @@ export const getContextTypeByName = (name: string): ContextType => {
     : ContextType.HOME;
 };
 
+export function getLatestVersion(contextType: ContextType) {
+  const contextConfig = productsConfig[contextType];
+  const defVal = null;
+
+  if (!contextConfig) {
+    console.log(`No config found for contextType: ${contextType}`);
+    return defVal;
+  }
+
+  const versions = contextConfig.versions;
+  const versionKeys = Object.keys(versions).filter((key) => key !== 'default');
+
+  if (versionKeys.length === 0) {
+    return defVal;
+  } else {
+    const latestVersion = versionKeys.reduce((prev, curr) => {
+      return prev > curr ? prev : curr;
+    });
+    return latestVersion;
+  }
+}
+
 export const useAppContext = () => useContext(AppContext);

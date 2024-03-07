@@ -1,7 +1,8 @@
 import cn from 'classnames';
-import Link from 'next/link';
 import {NamedExoticComponent} from 'react';
 import styled from 'styled-components';
+
+import Link from 'components/MDX/Link';
 
 const columnCount = 3;
 
@@ -162,10 +163,8 @@ const SectionBox = ({
             <TitleIconInner>{Icon && <Icon />}</TitleIconInner>
           </TitleIcon>
           {href ? (
-            <Link href={href} passHref>
-              <a>
-                <Title>{title}</Title>
-              </a>
+            <Link href={href}>
+              <Title>{title}</Title>
             </Link>
           ) : (
             <Title>{title}</Title>
@@ -182,9 +181,7 @@ const SectionBox = ({
                 <Item key={item.title}>
                   <ItemDot />
                   <ItemText>
-                    <Link href={item.path} passHref>
-                      <a>{item.title}</a>
-                    </Link>
+                    <Link href={item.path}>{item.title}</Link>
                   </ItemText>
                 </Item>
               ))}
@@ -195,9 +192,7 @@ const SectionBox = ({
       {href && (
         <ViewMoreContainer>
           <ViewMoreText>
-            <Link href={href} passHref>
-              <a>View {title} Documentation</a>
-            </Link>{' '}
+            <Link href={href}>View {title} Documentation</Link>{' '}
           </ViewMoreText>
           <ViewMoreIcon>--&gt;</ViewMoreIcon>
         </ViewMoreContainer>

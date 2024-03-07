@@ -1,8 +1,8 @@
 import {Menu, MenuList, MenuButton, MenuLink} from '@reach/menu-button';
-import Link from 'next/link';
 import {FaAngleDown} from 'react-icons/fa';
 import styled from 'styled-components';
 
+import Link from 'components/MDX/Link';
 import '@reach/menu-button/styles.css';
 import headerNavConfig from 'config/header.nav';
 
@@ -30,13 +30,15 @@ const StyledMenuButton = styled(MenuButton)`
   }
 `;
 
-const StyledMenuLink = styled.a`
-  color: inherit;
-  text-decoration: none;
-
-  &:hover {
-    color: var(--colors-blue0);
+const StyledMenuLink = styled.div`
+  a {
+    color: inherit;
     text-decoration: none;
+
+    &:hover {
+      color: var(--colors-blue0);
+      text-decoration: none;
+    }
   }
 `;
 
@@ -88,7 +90,7 @@ const StyledMenuList = styled(MenuList)`
 
   > [data-reach-menu-item][data-selected] {
     background: var(--bg-secondary);
-    color: white;
+    color: var(--text-primary);
   }
 `;
 
@@ -100,7 +102,6 @@ const StyledMenuDivider = styled.div`
 `;
 
 export default function HeaderNav() {
-  // TODO - handle external links
   return (
     <>
       {headerNavConfig.map((navItem, index) => {
@@ -111,9 +112,12 @@ export default function HeaderNav() {
           <Menu key={index}>
             <StyledMenuButton>
               {isLink ? (
-                <Link href={navItem.url} passHref>
-                  <StyledMenuLink>{navItem.title}</StyledMenuLink>
-                </Link>
+                <StyledMenuLink>
+                  {' '}
+                  <Link href={navItem.url} versioned={false}>
+                    {navItem.title}
+                  </Link>
+                </StyledMenuLink>
               ) : (
                 <>
                   <span>{navItem.title}</span>
@@ -131,9 +135,11 @@ export default function HeaderNav() {
                   }
                   return (
                     <MenuLink key={index} as="span">
-                      <Link href={item.url} passHref>
-                        <StyledMenuLink>{item.name}</StyledMenuLink>
-                      </Link>
+                      <StyledMenuLink>
+                        <Link href={item.url} versioned={false}>
+                          {item.name}
+                        </Link>
+                      </StyledMenuLink>
                     </MenuLink>
                   );
                 })}

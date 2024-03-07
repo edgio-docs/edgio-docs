@@ -93,6 +93,10 @@ export const siteConfig = {
   analytics: {
     gtmId: 'GTM-5WCD2BK',
   },
+  fireawai: {
+    chatbotId: 'f98fb410-2056-447e-984f-753cbbe5d513',
+    apiToken: 'ac9030b3-dfa6-4e18-8069-e8df54c131e4',
+  },
 };
 productsConfig.applications.versions.default =
   productsConfig.applications.versions.v7;

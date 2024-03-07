@@ -1,6 +1,20 @@
 import {IconEdgioApplications, IconEdgioMedia} from 'components/Icon';
 import {HomepageSectionGroup} from 'utils/Types';
 
+// Uplynk
+// 	Live Linear
+// 	Live Events
+// 	Live Slicer
+// 	Cloud Slicer Live
+// 	On-Demand Content
+// 	Playback URLs
+// 	Captions and Subtitles
+// 	Syndication Publishing
+// 	Blackout
+// 	Geoblocking
+// 	Studio DRM
+// 	Ads
+
 export const sections: HomepageSectionGroup[] = [
   {
     heading: 'Applications',
@@ -10,110 +24,142 @@ export const sections: HomepageSectionGroup[] = [
     path: '/applications',
     sections: [
       {
-        title: 'Security',
-        path: '/security',
+        title: 'Basics',
+        path: 'basics',
         items: [
           {
-            title: 'Security',
-            path: '/security',
-          },
-          {
             title: 'Getting Started',
-            path: '/security/getting-started',
+            path: '',
           },
           {
-            title: 'Dual WAF',
-            path: '/security/dual-waf',
+            title: 'Properties',
+            path: 'properties',
           },
           {
-            title: 'Security Dashboard',
-            path: '/security/security-dashboard',
+            title: 'Environments',
+            path: 'environments',
           },
           {
-            title: 'Bot Management',
-            path: '/security/bot-management',
+            title: 'Hostnames',
+            path: 'hostnames',
           },
           {
-            title: 'API Security',
-            path: '/security/api-security',
+            title: 'Origin Configurations',
+            path: 'origins',
           },
           {
-            title: 'Access Rules',
-            path: '/security/access-rules',
+            title: 'Deployments',
+            path: 'deployments',
           },
           {
-            title: 'Rate Limiting',
-            path: '/security/rate-limiting',
+            title: 'Serving Traffic',
+            path: 'serving_traffic',
           },
           {
-            title: 'EdgeJS',
-            path: '/security/edgejs',
-          },
-          {
-            title: 'Managed Rules',
-            path: '/security/managed-rules',
+            title: 'Collaboration',
+            path: 'collaboration',
           },
         ],
       },
       {
         title: 'Performance',
-        description:
-          'Optimize your application performance and user experience.',
-        path: '/performance',
+        path: 'performance',
         items: [
           {
             title: 'Getting Started',
-            path: '/performance/getting-started',
+            path: 'getting_started',
           },
           {
-            title: 'Observability',
-            path: '/performance/observability',
+            title: 'Rules',
+            path: 'rules',
           },
           {
-            title: 'Cloud Functions',
-            path: '/performance/cloud-functions',
+            title: 'CDN-as-Code (EdgeJS)',
+            path: 'cdn_as_code',
           },
           {
-            title: 'CDN-as-Code',
-            path: '/performance/cdn-as-code',
+            title: 'Experimentation',
+            path: 'experimentation',
           },
           {
-            title: 'Predictive Prefetch',
-            path: '/performance/predictive-prefetch',
+            title: 'Edge Functions',
+            path: 'edge_functions',
           },
           {
             title: 'Redirects',
-            path: '/performance/redirects',
+            path: 'redirects',
           },
           {
-            title: 'Traffic Splitting',
-            path: '/performance/traffic-splitting',
+            title: 'Predictive Prefetching',
+            path: 'prefetching',
+          },
+          {
+            title: 'Edge Insights',
+            path: 'observability/edge_insights',
+          },
+          {
+            title: 'Cloud Functions',
+            path: 'serverless_compute',
           },
           {
             title: 'Image Optimization',
-            path: '/performance/image-optimization',
+            path: 'image_optimization',
           },
           {
             title: 'Cache Management',
-            path: '/performance/cache-management',
+            path: 'caching',
+          },
+        ],
+      },
+      {
+        title: 'Security',
+        path: 'security',
+        items: [
+          {
+            title: 'Getting Started',
+            path: 'getting_started',
+          },
+          {
+            title: 'Access Rules',
+            path: 'access_rules',
+          },
+          {
+            title: 'API Security',
+            path: 'api_security',
+          },
+          {
+            title: 'Rate Rules',
+            path: 'rate_rules',
+          },
+          {
+            title: 'Bot Manager',
+            path: 'bot_rules',
+          },
+          {
+            title: 'Custom Rules',
+            path: 'custom_rules',
+          },
+          {
+            title: 'Managed Rules',
+            path: 'managed_rules',
+          },
+          {
+            title: 'Security Apps',
+            path: 'security_applications',
+          },
+          {
+            title: 'Dashboard',
+            path: 'dashboard',
           },
         ],
       },
       {
         title: 'Sites',
-        description: 'Build and deploy websites with ease.',
+        path: 'sites',
         items: [
           {
             title: 'Frameworks',
-            path: '/sites/frameworks',
-          },
-          {
-            title: 'Connectors',
-            path: '/sites/connectors',
-          },
-          {
-            title: 'Incremental Static Regeneration',
-            path: '/sites/incremental-static-regeneration',
+            path: 'getting_started',
           },
         ],
       },
@@ -127,138 +173,82 @@ export const sections: HomepageSectionGroup[] = [
     sections: [
       {
         title: 'Uplynk',
-        path: '/media/uplynk',
+        path: 'https://docs.edgecast.com/video/index.html',
         items: [
           {
             title: 'Getting Started',
-            path: '/media/uplynk/getting-started',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Setup-Overview.htm%3FTocPath%3DBasic%2520Setup%7C_____0',
           },
           {
-            title: 'Security',
-            path: '/media/uplynk/security',
+            title: 'Live Linear',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Live-Linear.htm%3FTocPath%3DBasic%2520Setup%7CLive%2520Linear%7C_____0',
           },
           {
-            title: 'Ads',
-            path: '/media/uplynk/ads',
+            title: 'Live Events',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Live-Events-2.htm%3FTocPath%3DBasic%2520Setup%7CLive%2520Events%7C_____0',
           },
           {
-            title: 'Live Streaming',
-            path: '/media/uplynk/live-streaming',
-          },
-          {
-            title: 'Clipping Video',
-            path: '/media/uplynk/clipping-video',
-          },
-          {
-            title: 'Content Management',
-            path: '/media/uplynk/content-management',
-          },
-          {
-            title: 'Cloud Packaging',
-            path: '/media/uplynk/cloud-packaging',
-          },
-          {
-            title: 'Log File Delivery',
-            path: '/media/uplynk/log-file-delivery',
+            title: 'Live Slicer',
+            path: 'https://docs.edgecast.com/video/index.html#Slicer/Live-Slicer-Setup.htm%3FTocPath%3DBasic%2520Setup%7CLive%2520Slicer%7C_____0',
           },
           {
             title: 'Cloud Slicer Live',
-            path: '/media/uplynk/cloud-slicer-live',
+            path: 'https://docs.edgecast.com/video/index.html#Slicer/Cloud-Slicer-Live.htm%3FTocPath%3DBasic%2520Setup%7C_____4',
+          },
+          {
+            title: 'On-Demand Content',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/On-Demand-Content.htm%3FTocPath%3DBasic%2520Setup%7COn-Demand%2520Content%7C_____0',
+          },
+          {
+            title: 'Playback URLs',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Playback-URLs.htm%3FTocPath%3DBasic%2520Setup%7CPlayback%2520URLs%7C_____0',
+          },
+          {
+            title: 'Captions and Subtitles',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Captions-Subtitles.htm%3FTocPath%3DBasic%2520Setup%7CCaptions%2520and%2520Subtitles%7C_____0',
+          },
+          {
+            title: 'Syndication Publishing',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Syndication-Publishing.htm%3FTocPath%3DBasic%2520Setup%7C_____10',
+          },
+          {
+            title: 'Blackout',
+            path: 'https://docs.edgecast.com/video/index.html#Security/Blackout.htm%3FTocPath%3DSecurity%7CBlackout%7C_____0',
+          },
+          {
+            title: 'Geoblocking',
+            path: 'https://docs.edgecast.com/video/index.html#Security/Geoblocking.htm%3FTocPath%3DSecurity%7C_____3',
+          },
+          {
+            title: 'Studio DRM',
+            path: 'https://docs.edgecast.com/video/index.html#Security/Studio-DRM.htm%3FTocPath%3DSecurity%7CStudio%2520Digital%2520Rights%2520Management%2520(DRM)%7C_____0',
+          },
+          {
+            title: 'Ads',
+            path: 'https://docs.edgecast.com/video/index.html#AdIntegration/Ad-Server-Integration.htm%3FTocPath%3DAds%7C_____0',
           },
         ],
       },
       {
         title: 'Delivery',
-        path: '/media/delivery',
-        items: [
-          {
-            title: 'Getting Started',
-            path: '/media/delivery/getting-started',
-          },
-          {
-            title: 'Security',
-            path: '/media/delivery/security',
-          },
-          {
-            title: 'Large File Delivery',
-            path: '/media/delivery/large-file-delivery',
-          },
-          {
-            title: 'Managed CDN',
-            path: '/media/delivery/managed-cdn',
-          },
-          {
-            title: 'WAF',
-            path: '/media/delivery/waf',
-          },
-          {
-            title: 'Content Management',
-            path: '/media/delivery/content-management',
-          },
-          {
-            title: 'Real-Time Log Delivery',
-            path: '/media/delivery/real-time-log-delivery',
-          },
-          {
-            title: 'Geoblocking',
-            path: '/media/delivery/geoblocking',
-          },
-          {
-            title: 'Cloud Slicer Live',
-            path: '/media/delivery/cloud-slicer-live',
-          },
-        ],
+        path: 'https://docs.edgecast.com/cdn/index.html#Getting_Started/GS-All.htm',
+        items: [],
       },
       {
         title: 'Open Edge',
         path: '/media/open-edge',
-        items: [
-          {
-            title: 'Getting Started',
-            path: '/media/open-edge/getting-started',
-          },
-          {
-            title: 'ISP & MSP',
-            path: '/media/open-edge/isp-msp',
-          },
-          {
-            title: 'Edge Cache Servers',
-            path: '/media/open-edge/edge-cache-servers',
-          },
-          {
-            title: 'Managed CDN',
-            path: '/media/open-edge/managed-cdn',
-          },
-          {
-            title: 'Clipping Video',
-            path: '/media/open-edge/clipping-video',
-          },
-          {
-            title: 'Content Management',
-            path: '/media/open-edge/content-management',
-          },
-          {
-            title: 'View Media Documentation',
-            path: '/media/open-edge/view-media-documentation',
-          },
-          {
-            title: 'Dynamic Cloud',
-            path: '/media/open-edge/dynamic-cloud',
-          },
-          {
-            title: 'Packaging',
-            path: '/media/open-edge/packaging',
-          },
-          {
-            title: 'Log File Delivery',
-            path: '/media/open-edge/log-file-delivery',
-          },
-          {
-            title: 'Cloud Slicer Live',
-            path: '/media/open-edge/cloud-slicer-live',
-          },
-        ],
+        items: [],
       },
     ],
   },
 ];
+
+sections.forEach((section) => {
+  section.sections.forEach((subsection) => {
+    subsection.items.forEach((item) => {
+      if (!item.path.startsWith('http') && !item.path.startsWith('/')) {
+        item.path = `${section.path}/${subsection.path}/${item.path}`;
+      }
+    });
+  });
+});

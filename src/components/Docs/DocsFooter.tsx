@@ -177,12 +177,12 @@ const pryFooterLinks = {
     },
     {
       title: 'Applications Release Notes',
-      href: '/guides/release_notes',
+      href: '/applications/v7/release_notes',
       versioned: false,
     },
     {
       title: 'Applications NPM Package Changelog',
-      href: '/guides/changelog',
+      href: '/applications/v7/changelog',
     },
   ],
   community: [

@@ -7,7 +7,7 @@ import Link from '../Link';
 
 const StyledHero = styled.div`
   background: var(--mediahero-bg-image);
-  min-height: 501px;
+  height: 250px;
   line-height: 1.3;
   background-repeat: no-repeat;
   background-position: bottom right;

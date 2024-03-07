@@ -6,7 +6,7 @@ import SearchComponent from 'components/Home/SearchComponent';
 
 const HeroContainer = styled.div`
   background: var(--applicationshero-bg-image);
-  height: 370px;
+  height: 250px;
   line-height: 1.3;
   background-repeat: no-repeat;
   background-position: top center;

@@ -5,6 +5,11 @@ import {default as JSURL} from 'jsurl';
 import NoSSRWrapper from '../NoSSRWrapper';
 
 import {siteConfig} from 'config/appConfig';
+import {
+  ContextType,
+  getLatestVersion,
+  useAppContext,
+} from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 
 const {
@@ -45,10 +50,17 @@ function transformItems(items: any) {
 }
 
 const AlgoliaSearch = () => {
-  const {version} = useConditioning();
+  const {context, version} = useAppContext();
+
+  const facetFilters = ['version:all'];
+
+  if (context === ContextType.HOME) {
+    const latestAppsVersion = getLatestVersion(ContextType.APPLICATIONS);
+    facetFilters.push(`version:${latestAppsVersion}`);
+  }
 
   const searchParameters = {
-    facetFilters: [['version:all', `version:${version.selectedVersionText}`]],
+    facetFilters: [facetFilters],
   };
 
   return (

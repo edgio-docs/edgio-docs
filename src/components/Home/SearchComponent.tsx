@@ -174,6 +174,8 @@ export default function SearchComponent() {
   const {isClient} = useTheme();
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const isApplicationsActive = active === 'applications';
+  const isUplynkActive = active === 'uplynk';
 
   return (
     <NoSSRWrapper>
@@ -207,14 +209,24 @@ export default function SearchComponent() {
         <div className="search-box">
           <FiSearch className="search-icon" />
           <div className="search-input">
-            {active === 'applications' && <AlgoliaSearch />}
-            {active === 'uplynk' && <UplynkSearch />}
+            {isApplicationsActive && <AlgoliaSearch />}
+            {isUplynkActive && (
+              <UplynkSearch
+                onKeyPress={(event) => {
+                  if (event.key === 'Enter') {
+                    handleUplynkSearch(event.currentTarget.value);
+                  }
+                }}
+              />
+            )}
           </div>
-          <KeyboardButton>
-            {isClient && navigator.platform.includes('Mac')
-              ? '⌘ K'
-              : 'Ctrl + K'}
-          </KeyboardButton>
+          {isApplicationsActive && (
+            <KeyboardButton>
+              {isClient && navigator.platform.includes('Mac')
+                ? '⌘ K'
+                : 'Ctrl + K'}
+            </KeyboardButton>
+          )}
         </div>
       </SearchContainer>
       <EdgioAnswers
@@ -223,4 +235,10 @@ export default function SearchComponent() {
       />
     </NoSSRWrapper>
   );
+}
+
+function handleUplynkSearch(inputValue: string) {
+  const encodedQuery = encodeURIComponent(inputValue);
+  const searchUrl = `https://docs.edgecast.com/video/index.html#search-${encodedQuery}`;
+  window.open(searchUrl, '_blank');
 }

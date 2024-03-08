@@ -5,11 +5,6 @@ import globby from 'globby';
 import {MDXRemote} from 'next-mdx-remote';
 import {serialize} from 'next-mdx-remote/serialize';
 
-import {remarkPlugins} from '../../../plugins/markdownToHtml';
-import rehypeExtractHeadings from '../../../plugins/rehype-extract-headings';
-import {MDXComponents} from '../../components/MDX/MDXComponents';
-import {getConfigByContext} from '../../utils/config';
-
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import {productsConfig} from 'config/appConfig';
@@ -17,6 +12,11 @@ import {getContextTypeByName} from 'contexts/AppContext';
 import logger from 'utils/logging';
 import templateReplace from 'utils/templateReplace';
 import {MDHeadingsList} from 'utils/Types';
+
+import {remarkPlugins} from '../../../plugins/markdownToHtml';
+import rehypeExtractHeadings from '../../../plugins/rehype-extract-headings';
+import {MDXComponents} from '../../components/MDX/MDXComponents';
+import {getConfigByContext} from '../../utils/config';
 
 const guidesPath = join(process.cwd(), 'guides');
 

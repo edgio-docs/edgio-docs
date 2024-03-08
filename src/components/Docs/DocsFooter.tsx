@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-import {PRODUCT, FIDDLE_URL} from '../../../constants';
-
 import {
   IconEdgioSquareLogo,
   IconEdgioSquareLogoDark,
 } from 'components/Icon/IconEdgioSquareLogo';
 import Link from 'components/MDX/Link';
 import {useTheme} from 'contexts/ThemeContext';
+
+import {PRODUCT, FIDDLE_URL} from '../../../constants';
 
 const StyledDocsFooter = styled.footer`
   padding-top: 20px;

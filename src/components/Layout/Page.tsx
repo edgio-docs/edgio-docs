@@ -1,11 +1,17 @@
 // @ts-ignore
+import * as React from 'react';
+
 import {default as JSURL} from 'jsurl';
 import debounce from 'lodash/debounce';
 import {useRouter} from 'next/router';
-import * as React from 'react';
 // @ts-ignore
 import scrollIntoView from 'scroll-into-view';
 import styled from 'styled-components';
+
+import Link from 'components/MDX/Link';
+import {ContextType, useAppContext} from 'contexts/AppContext';
+import useConditioning from 'utils/hooks/useConditioning';
+import textCompare from 'utils/textCompare';
 
 import {PRODUCT} from '../../../constants';
 import {PRODUCT_APPLICATIONS} from '../../../constants';
@@ -13,11 +19,6 @@ import {PRODUCT_APPLICATIONS} from '../../../constants';
 import Header from './Header/Header';
 import {SidebarNav} from './SidebarNav';
 import {useIsMobile} from './useMediaQuery';
-
-import Link from 'components/MDX/Link';
-import {ContextType, useAppContext} from 'contexts/AppContext';
-import useConditioning from 'utils/hooks/useConditioning';
-import textCompare from 'utils/textCompare';
 
 export function Page({children}: PageProps) {
   const isMobile = useIsMobile(850);
@@ -61,7 +62,7 @@ export function Page({children}: PageProps) {
 
   return (
     <StyledMainPage>
-      {showBanner && <Banner />}
+      {/* {showBanner && <Banner />} */}
       <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <main className="docs-content">
         {hasNavigationMenu && (

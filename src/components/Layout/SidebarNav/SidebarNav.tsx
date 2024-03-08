@@ -1,7 +1,8 @@
+import React, {Fragment, useContext, useEffect, useState} from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import React, {Fragment, useContext, useEffect, useState} from 'react';
 import useCollapse from 'react-collapsed';
 import {CgExternal} from 'react-icons/cg';
 import {GoChevronRight} from 'react-icons/go';

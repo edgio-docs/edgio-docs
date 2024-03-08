@@ -1,8 +1,12 @@
+import React, {useState} from 'react';
+
 import {Tab} from '@headlessui/react';
 import cn from 'classnames';
 import Highlight, {defaultProps} from 'prism-react-renderer';
-import React, {useState} from 'react';
 import styled from 'styled-components';
+
+import getDescriptiveLanguage from 'components/getLanguage';
+import {StringMap} from 'utils/Types';
 
 import {
   clsByOperator,
@@ -12,9 +16,6 @@ import {
   LineNo,
 } from './CodeBlock';
 import {CopyCode, StyledCustomPre} from './CustomPre';
-
-import getDescriptiveLanguage from 'components/getLanguage';
-import {StringMap} from 'utils/Types';
 
 interface TabItemProps {
   children: string;

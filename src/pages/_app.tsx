@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import '@docsearch/css';
 import {install} from '@edgio/prefetch/window';
 import {prefetch} from '@edgio/prefetch/window/prefetch';
@@ -9,21 +11,20 @@ import {useRouter} from 'next/router';
 import Script from 'next/script';
 import {DefaultSeo} from 'next-seo';
 import NProgress from 'nprogress';
-import * as React from 'react';
 
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
 import {siteConfig} from 'config/appConfig';
 // Universal loading page (used in dynamically imported components) which contains the wrapper of each page
-import '../styles/code.css';
+import {AppProvider, ContextType} from 'contexts/AppContext';
+import {ThemeProvider} from 'contexts/ThemeContext';
 import '../styles/algolia.css';
+import '../styles/code.css';
 import '../styles/custom-props.css';
 import '../styles/fonts.css';
 import '../styles/nprogress.css';
 import '../styles/prism.css';
 import '../styles/reset.css';
 import '../styles/scrollbar.css';
-import {AppProvider, ContextType} from 'contexts/AppContext';
-import {ThemeProvider} from 'contexts/ThemeContext';
 
 const EmptyAppShell: React.FC<{children: React.ReactNode}> = ({children}) => (
   <>{children}</>
@@ -137,7 +138,6 @@ export default function MyApp({Component, pageProps}: DocsAppProps) {
       <AppProvider {...pageProps}>
         <GAnalytics />
         <DefaultSeo canonical={canonicalUrl} />
-
         <ThemeProvider>
           <MDXEmbedProvider>
             <Component {...pageProps} />

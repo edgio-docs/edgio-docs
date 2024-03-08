@@ -2,8 +2,6 @@ import {DocSearch} from '@docsearch/react';
 // @ts-ignore
 import {default as JSURL} from 'jsurl';
 
-import NoSSRWrapper from '../NoSSRWrapper';
-
 import {siteConfig} from 'config/appConfig';
 import {
   ContextType,
@@ -11,6 +9,8 @@ import {
   useAppContext,
 } from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
+
+import NoSSRWrapper from '../NoSSRWrapper';
 
 const {
   appId: algoliaAppId,

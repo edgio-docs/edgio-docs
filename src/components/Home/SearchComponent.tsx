@@ -1,5 +1,6 @@
-import {useDocSearchKeyboardEvents} from '@docsearch/react';
 import {useState} from 'react';
+
+import {useDocSearchKeyboardEvents} from '@docsearch/react';
 import {FiSearch} from 'react-icons/fi'; // Make sure to install react-icons using `npm install react-icons`
 import styled from 'styled-components';
 

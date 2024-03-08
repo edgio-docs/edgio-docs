@@ -1,6 +1,6 @@
-import ChangelogPage, {getStaticProps} from '../changelog';
-
 import {productsConfig} from 'config/appConfig';
+
+import ChangelogPage, {getStaticProps} from '../changelog';
 
 export const getStaticPaths = async () => {
   // determine available versions from config files

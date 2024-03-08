@@ -2,11 +2,11 @@ import {Octokit} from '@octokit/core';
 import _get from 'lodash/get';
 import styled from 'styled-components';
 
-import {PRODUCT} from '../../../constants';
-import {markdownToHtml} from '../../../plugins/markdownToHtml';
-
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
+
+import {PRODUCT} from '../../../constants';
+import {markdownToHtml} from '../../../plugins/markdownToHtml';
 
 const SKIP_LABEL = 'skip-notes';
 const PR_RE = /\(#(\d+)\)/;

@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
+import {siteConfig} from 'config/appConfig';
+
 import {Toc} from '../Layout/Toc';
 
 // import DiscourseDiscuss from './DiscourseDiscuss';
 import EditPage from './EditPage';
-
-import {siteConfig} from 'config/appConfig';
 
 const StyledDocs = styled.div`
   max-width: var(--docs-area-width);

@@ -1,10 +1,11 @@
-import Head from 'next/head';
-import {withRouter, Router} from 'next/router';
 import React from 'react';
 
-import {PRODUCT} from '../../constants';
+import Head from 'next/head';
+import {withRouter, Router} from 'next/router';
 
 import {siteConfig} from 'config/appConfig';
+
+import {PRODUCT} from '../../constants';
 
 export interface SeoProps {
   title: string;

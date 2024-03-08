@@ -1,16 +1,17 @@
+import React, {useState, useEffect} from 'react';
+
 import {ChatChannel} from '@fireaw.ai/sdk';
 import {is} from 'cheerio/lib/api/traversing';
-import React, {useState, useEffect} from 'react';
 import {FiXCircle, FiSend} from 'react-icons/fi';
 import ReactMarkdown from 'react-markdown';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 
-import NoSSRWrapper from './Layout/NoSSRWrapper';
-
 import {MDXComponents} from 'components/MDX/MDXComponents';
 import {siteConfig} from 'config/appConfig';
 import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
+
+import NoSSRWrapper from './Layout/NoSSRWrapper';
 
 interface Message {
   id: string;

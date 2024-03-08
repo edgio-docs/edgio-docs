@@ -1,9 +1,9 @@
 import {useRouter} from 'next/router';
 import styled from 'styled-components';
 
-import {DOCS_REPO} from '../../../constants';
-
 import {IconExternalLink, IconGitHub} from 'components/Icon';
+
+import {DOCS_REPO} from '../../../constants';
 
 const StyledEditLink = styled.div`
   margin-top: 50px;

@@ -2,13 +2,13 @@ import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import useConditioning from 'utils/hooks/useConditioning';
+import itemsByColumn from 'utils/itemsByColumn';
+
 import {IconUser} from '../Icon/IconUser';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
-
-import useConditioning from 'utils/hooks/useConditioning';
-import itemsByColumn from 'utils/itemsByColumn';
 
 const StyledComp = styled(StyledFeatureSection)``;
 

@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {IconArrow} from 'components/Icon/IconArrow';
+import useConditioning from 'utils/hooks/useConditioning';
+
 import {
   PRODUCT,
   PRODUCT_EDGE,
@@ -10,9 +13,6 @@ import {
 import {IconJamstack} from '../Icon/IconJamstack';
 import {IconSecurity} from '../Icon/IconSecurity';
 import {IconWebAppCDN} from '../Icon/IconWebAppCDN';
-
-import {IconArrow} from 'components/Icon/IconArrow';
-import useConditioning from 'utils/hooks/useConditioning';
 
 const NextLink = Link;
 

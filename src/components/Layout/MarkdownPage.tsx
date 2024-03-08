@@ -1,16 +1,17 @@
+import * as React from 'react';
+
 import {MDXProvider} from '@mdx-js/react';
 import {useRouter} from 'next/router';
-import * as React from 'react';
 import styled from 'styled-components';
+
+import useConditioning from 'utils/hooks/useConditioning';
+import {MDHeading, MDHeadingsList} from 'utils/Types';
 
 import {MDXComponents} from '../../components/MDX/MDXComponents';
 import {siteConfig} from '../../config/appConfig';
 import Docs from '../Docs';
 import DocsFooter from '../Docs/DocsFooter';
 import Seo from '../Seo';
-
-import useConditioning from 'utils/hooks/useConditioning';
-import {MDHeading, MDHeadingsList} from 'utils/Types';
 
 const PageLayout = styled.div`
   display: flex;

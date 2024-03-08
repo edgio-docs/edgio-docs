@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-import Container from '../../Layout/Container';
-
 import SectionContainer from 'components/Home/SectionContainer';
 import {sections} from 'config/home/config';
 import {HomepageSectionGroup} from 'utils/Types';
+
+import Container from '../../Layout/Container';
 
 const StyledFeatures = styled.div`
   .grouped-sections {

@@ -1,7 +1,7 @@
-import baseConfig from '../config/base.config';
-
 import {productsConfig} from 'config/appConfig';
 import {ContextType} from 'contexts/AppContext';
+
+import baseConfig from '../config/base.config';
 
 export function getBaseConfig() {
   return baseConfig;

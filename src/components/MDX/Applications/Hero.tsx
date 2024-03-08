@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import Container from '../../Layout/Container';
-
 import SearchComponent from 'components/Home/SearchComponent';
+
+import Container from '../../Layout/Container';
 
 const HeroContainer = styled.div`
   background: var(--applicationshero-bg-image);
@@ -58,7 +58,7 @@ function ApplicationsHero() {
     <HeroContainer>
       <Container>
         <div className="content">
-          <h1>Faster Performance. Smarter Security. Happier Teams.</h1>
+          <h1>Modern CDN for Applications</h1>
         </div>
         <SearchComponent />
       </Container>

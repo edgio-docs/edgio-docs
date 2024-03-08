@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import Container from '../../Layout/Container';
-
 import SearchComponent from 'components/Home/SearchComponent';
+
+import Container from '../../Layout/Container';
 
 const HeroContainer = styled.div`
   background: var(--homepagehero-bg-image);

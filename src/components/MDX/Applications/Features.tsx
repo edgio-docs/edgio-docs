@@ -1,6 +1,9 @@
 import {BiBook} from 'react-icons/bi';
 import styled from 'styled-components';
 
+import DocsResources from 'components/Home/DocsResources';
+import Security from 'components/Home/Security';
+
 import AccountsandTeams from '../../Home/AccountsandTeams';
 import Cdn from '../../Home/Cdn';
 import DeveloperTools from '../../Home/DeveloperTools';
@@ -10,9 +13,6 @@ import Reference from '../../Home/Reference';
 import SectionHeader from '../../Home/SectionHeader';
 import {IconSpark} from '../../Icon/IconSpark';
 import Container from '../../Layout/Container';
-
-import DocsResources from 'components/Home/DocsResources';
-import Security from 'components/Home/Security';
 
 const StyledHomepageFeatures = styled.div`
   // padding-bottom: 500px;

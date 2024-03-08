@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import useConditioning from 'utils/hooks/useConditioning';
+import itemsByColumn from 'utils/itemsByColumn';
+
 import {PRODUCT} from '../../../constants';
 import {IconCode} from '../Icon/IconCode';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
-
-import useConditioning from 'utils/hooks/useConditioning';
-import itemsByColumn from 'utils/itemsByColumn';
 
 const StyledComp = styled(StyledFeatureSection)``;
 const items = {

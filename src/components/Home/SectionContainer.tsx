@@ -1,5 +1,6 @@
-import cn from 'classnames';
 import {NamedExoticComponent} from 'react';
+
+import cn from 'classnames';
 import styled from 'styled-components';
 
 import Link from 'components/MDX/Link';

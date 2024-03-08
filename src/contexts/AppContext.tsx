@@ -1,4 +1,3 @@
-import get from 'lodash/get';
 import React, {
   createContext,
   useContext,
@@ -8,9 +7,13 @@ import React, {
   useCallback,
 } from 'react';
 
-import {productsConfig} from 'config/appConfig';
+import get from 'lodash/get';
+
+import {productsConfig, ProductVersionConfig} from 'config/appConfig';
 import {getBaseConfig, getConfigByContext} from 'utils/config';
 import {StringMap, Route} from 'utils/Types';
+
+import {COMPANY_NAME} from '../../constants';
 
 export const AppProvider: React.FC<{
   children: ReactNode;
@@ -37,7 +40,9 @@ export const AppProvider: React.FC<{
 
     try {
       config = await getConfigByContext(contextType, version);
-      navMenuItems = (await navigationImport()).default;
+      navMenuItems =
+        (navigationImport && (await navigationImport()).default) ||
+        navMenuItems;
     } catch (error) {
       console.error(
         `Failed to load config for ${contextType} (${version}):`,
@@ -51,13 +56,20 @@ export const AppProvider: React.FC<{
   const updateContext = useCallback(
     (updates: Partial<Omit<AppContextProps, 'hasNavigationMenu'>>) => {
       setContextState((currentContext) => {
-        let newNavMenuItems = updates.navMenuItems;
-        const hasNavigationMenu = get(newNavMenuItems, 'routes.length', 0) > 0;
-        return {
+        const newContextState = {
           ...currentContext,
           ...updates,
-          hasNavigationMenu,
+          hasNavigationMenu: get(updates.navMenuItems, 'routes.length', 0) > 0,
         };
+
+        console.log('newContextState', newContextState);
+        newContextState.appConfig =
+          productsConfig[newContextState.context || ContextType.HOME]?.versions[
+            newContextState.version || 'default'
+          ];
+
+        console.log('newContextState', newContextState);
+        return newContextState;
       });
     },
     []
@@ -86,13 +98,15 @@ export const AppProvider: React.FC<{
 };
 
 interface AppContextProps {
-  config: StringMap;
+  config: StringMap; // constants
+  appConfig?: ProductVersionConfig | null;
   navMenuItems?: Route | null;
   version?: string | null;
   context?: ContextType | null;
   updateContext: (
     updates: Partial<Omit<AppContextProps, 'updateContext'>>
   ) => void;
+
   hasNavigationMenu: boolean;
 }
 
@@ -100,6 +114,7 @@ const noop = () => {};
 
 const defaultContextValues: AppContextProps = {
   config: getBaseConfig(),
+  appConfig: null,
   updateContext: noop,
   hasNavigationMenu: false,
 };
@@ -114,6 +129,9 @@ export enum ContextType {
   OPEN_EDGE = 'open_edge',
 }
 
+/**
+ * Get the context type by name
+ */
 export const getContextTypeByName = (name: string): ContextType => {
   const contextTypeKey = Object.keys(ContextType).find(
     (key) =>
@@ -125,7 +143,10 @@ export const getContextTypeByName = (name: string): ContextType => {
     : ContextType.HOME;
 };
 
-export function getLatestVersion(contextType: ContextType) {
+/**
+ * Gets the latest version for a given context type
+ */
+export function getLatestVersion(contextType: ContextType): string | null {
   const contextConfig = productsConfig[contextType];
   const defVal = null;
 

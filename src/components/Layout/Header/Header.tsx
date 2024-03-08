@@ -2,6 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import Toast from 'components/Toast';
+import {ContextType, useAppContext} from 'contexts/AppContext';
+import {useTheme} from 'contexts/ThemeContext';
+
 import applicationsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-apps.svg';
 import edgioDocsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-docs.svg';
 import uplynkDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-uplynk.svg';
@@ -12,9 +16,6 @@ import uplynkLightLogo from '../../../../public/images/home/header/logo/light/ed
 import AlgoliaSearch from './AlgoliaSearch';
 import HeaderNav from './HeaderNav';
 import ThemeSwitcher from './ThemeSwitcher';
-
-import {ContextType, useAppContext} from 'contexts/AppContext';
-import {useTheme} from 'contexts/ThemeContext';
 
 const HeaderContainer = styled.header`
   position: sticky;
@@ -170,6 +171,7 @@ const Header = () => {
         )}
       </ButtonGroup>
       <HorizontalLine />
+      <Toast />
     </HeaderContainer>
   );
 };

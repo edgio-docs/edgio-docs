@@ -2,9 +2,9 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import {PRODUCT_NAME} from '../../../constants';
-
 import useConditioning from 'utils/hooks/useConditioning';
+
+import {PRODUCT_NAME} from '../../../constants';
 
 const StyledIntegrations = styled.div`
   .integrations {

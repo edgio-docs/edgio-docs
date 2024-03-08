@@ -1,6 +1,11 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {IconArrow} from 'components/Icon/IconArrow';
+import {useTheme} from 'contexts/ThemeContext';
+import useConditioning from 'utils/hooks/useConditioning';
+import itemsByColumn from 'utils/itemsByColumn';
+
 import {PRODUCT_PLATFORM} from '../../../constants';
 import {IconAngular} from '../Icon/IconAngular';
 import {IconAstro, IconAstroDark} from '../Icon/IconAstro';
@@ -25,11 +30,6 @@ import {IconVue} from '../Icon/IconVue';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
-
-import {IconArrow} from 'components/Icon/IconArrow';
-import {useTheme} from 'contexts/ThemeContext';
-import useConditioning from 'utils/hooks/useConditioning';
-import itemsByColumn from 'utils/itemsByColumn';
 
 const items = {
   '4': [

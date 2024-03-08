@@ -1,10 +1,9 @@
+import {useEffect} from 'react';
+
 import {Octokit} from '@octokit/core';
 import _get from 'lodash/get';
 import {GetStaticProps} from 'next';
-import {useEffect} from 'react';
 import styled from 'styled-components';
-
-import {markdownToHtml} from '../../../plugins/markdownToHtml';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
@@ -13,6 +12,8 @@ import Link from 'components/MDX/Link';
 import {productsConfig} from 'config/appConfig';
 import {useAppContext, ContextType} from 'contexts/AppContext';
 import {serializeConfig} from 'utils/config';
+
+import {markdownToHtml} from '../../../plugins/markdownToHtml';
 interface ChangelogProps {
   version: string;
   content: string;

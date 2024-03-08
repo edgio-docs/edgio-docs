@@ -20,10 +20,10 @@ export const connectSrcDomains = [
   '*.clarity.ms',
   '*.ecdns.net',
   '*.doubleclick.net',
-  'www..fireaw.ai',
+  '*.fireaw.ai',
 ].sort();
 
-export const fontSrcDomains = ['fonts.gstatic.com'];
+export const fontSrcDomains = ['fonts.gstatic.com', '*.edgio-perma.link'];
 
 export const frameSrcDomains = [
   'www.youtube.com',
@@ -72,7 +72,7 @@ export const scriptSrcDomains = [
   '*.edgio-perma.link',
   '*.edg.io',
   'blob:',
-  'www..fireaw.ai',
+  '*.fireaw.ai',
 ].sort();
 
 export const styleSrcDomains = [

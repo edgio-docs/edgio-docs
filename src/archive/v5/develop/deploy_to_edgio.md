@@ -58,6 +58,8 @@ jobs:
           EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_DEPLOY_TOKEN}}
 ```
 
+{{ node_16_eol_callout.md }}
+
 `secrets.EDGIO_DEPLOY_TOKEN` is automatically injected into your cloned repository during the deploy process. Do not change the name of this variable or the deploy process will fail.
 
 Once everything is setup, you can test your deploy button by appending your GitHub repository full URL to `{{ APP_URL }}/deploy?repo=`.

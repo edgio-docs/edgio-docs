@@ -8,16 +8,7 @@ title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 5 Migration Guide
 
 </Callout>
 
-<Callout type="tip">
-
-  Consider upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6. It introduces support for running your app in the cloud using Node.js version 16. {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 requires:
-  *   {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5
-  *   Node.js version 16
-  *   Updating your application(s) to be compatible with Node.js version 16. 
-
-We recommend that you perform the seamless {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5 migration now. Once you are ready to update your application to be compatible with Node.js version 16, you should migrate to version 6.
-
-</Callout>
+{{ node_16_eol_callout.md }}
 
 <Callout type="info">
 
@@ -224,4 +215,4 @@ new Router({ indexPermalink: true })
 
 ## Migration Complete {/*migration-complete*/}
 
-Congratulations on successfully migrating {{ PRODUCT }} to version 5! Once you are ready to make your application compatible with Node.js version 16, you should migrate to [{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6](/guides/upgrading/v6_migration).
+Congratulations on successfully migrating {{ PRODUCT }} to version 5! Once you are ready to make your application compatible with Node.js version 18 or 20, you should migrate to [{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7](/guides/upgrading/upgrading).

@@ -100,6 +100,8 @@ module.exports = {
 {{ PRODUCT }} will automatically transpile JavaScript and TypeScript source code for running on Node.js version 14. If you want to control how
 source files are compiled, you can transpile your app on your own and point your `appPath` config to the transpiled version of your app's main entry point.
 
+{{ node_16_eol_callout.md }}
+
 ## Bundling Options {/* bundling-options */}
 
 By default, {{ PRODUCT }} uses ESBuild to transpile and bundle your application code. If you're having difficulty fitting your app within the limit for serverless bundles, you can try bundling with [ncc](https://github.com/vercel/ncc), which should produce smaller bundles, by adding the following to {{ CONFIG_FILE }}:

@@ -2,9 +2,12 @@
 title: Install Node.js and npm
 ---
 
-{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 supports Node.js version 16.18.0.
+Although you may develop your app with any version of Node.js, {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} runs your projects within a Node.js 16 or 18 runtime environment. {{ PRODUCT }} determines the available set of runtime environments according to the version of the {{ PRODUCT }} CLI through which your project was deployed.
 
-Although you may use a higher version of Node.js, your app will run using the above version when deployed to {{ PRODUCT }}. Therefore, we strongly recommend that you use the Node.js version that corresponds to your {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version when developing your web application.
+-   **{{ PRODUCT }} v6.1.8 or earlier:** Node.js version 16.18.0
+-   **{{ PRODUCT }} v6.2.0:** Node.js version 18
+
+We strongly recommend that you use the Node.js version that corresponds to your {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version when developing your web application.
 
 {{ node_16_eol.md }}
 

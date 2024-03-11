@@ -11,7 +11,7 @@ const APP_URL = `https://${APP_DOMAIN}`;
 const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
 
 const PORTAL_LINK = `[${PORTAL}](${LOGIN_URL})`;
-const NODE_VERSION = '16.x';
+const NODE_VERSION = '18.x';
 
 const config = {
   COMPANY_NAME,

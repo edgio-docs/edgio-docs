@@ -80,6 +80,8 @@ You are now ready to optimize and secure the delivery of your website.
 - {{ PRODUCT }} CLI
 - {{ PRODUCT }} account
 
+{{ node_16_eol_callout.md }}
+
 ### {{ PRODUCT }} CLI Installation {/* cli-installation */}
 
 Use the [{{ PRODUCT }} CLI](/guides/develop/cli) to build, test, and deploy your website to {{ PRODUCT }}. Install it through either npm or yarn.

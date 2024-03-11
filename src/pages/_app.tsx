@@ -15,7 +15,7 @@ import NProgress from 'nprogress';
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
 import {siteConfig} from 'config/appConfig';
 // Universal loading page (used in dynamically imported components) which contains the wrapper of each page
-import {AppProvider, ContextType} from 'contexts/AppContext';
+import {AppProvider, AppProviderProps} from 'contexts/AppContext';
 import {ThemeProvider} from 'contexts/ThemeContext';
 import '../styles/algolia.css';
 import '../styles/code.css';
@@ -31,10 +31,7 @@ const EmptyAppShell: React.FC<{children: React.ReactNode}> = ({children}) => (
 );
 
 interface DocsAppProps extends AppProps {
-  pageProps: {
-    initialContextType?: ContextType;
-    version?: string;
-  };
+  pageProps: AppProviderProps & {};
 }
 
 // CWV for Edgio
@@ -75,6 +72,7 @@ export default function MyApp({Component, pageProps}: DocsAppProps) {
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
   const [changingTo, setChangingTo] = React.useState('');
+
   React.useEffect(() => {
     // Install service worker
     if ('serviceWorker' in navigator) {
@@ -131,6 +129,7 @@ export default function MyApp({Component, pageProps}: DocsAppProps) {
     `https://docs.edg.io` + (router.asPath === '/' ? '' : router.asPath)
   ).split('?')[0];
 
+  console.log('page props', pageProps);
   return loading && fallbackMap.hasOwnProperty(changingTo) ? (
     fallbackMap[changingTo]
   ) : (

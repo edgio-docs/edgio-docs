@@ -1,6 +1,8 @@
 import {join} from 'path';
 
-import {isEdgioRunDev, isProductionBuild} from '@edgio/core/environment';
+import {useEffect} from 'react';
+
+import {isProductionBuild} from '@edgio/core/environment';
 import globby from 'globby';
 import {MDXRemote} from 'next-mdx-remote';
 import {serialize} from 'next-mdx-remote/serialize';
@@ -8,7 +10,11 @@ import {serialize} from 'next-mdx-remote/serialize';
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import {productsConfig} from 'config/appConfig';
-import {getContextTypeByName} from 'contexts/AppContext';
+import {
+  AppProviderProps,
+  getInitialContextProps,
+  useAppContext,
+} from 'contexts/AppContext';
 import logger from 'utils/logging';
 import templateReplace from 'utils/templateReplace';
 import {MDHeadingsList} from 'utils/Types';
@@ -16,22 +22,32 @@ import {MDHeadingsList} from 'utils/Types';
 import {remarkPlugins} from '../../../plugins/markdownToHtml';
 import rehypeExtractHeadings from '../../../plugins/rehype-extract-headings';
 import {MDXComponents} from '../../components/MDX/MDXComponents';
-import {getConfigByContext} from '../../utils/config';
 
 const guidesPath = join(process.cwd(), 'guides');
+
+interface GuideProps extends AppProviderProps {
+  source: any;
+  sourceFile: string;
+  headings: MDHeadingsList;
+  isHomepage: boolean;
+}
 
 export default function Guide({
   source,
   sourceFile,
   headings,
   isHomepage,
-}: {
-  source: any;
-  sourceFile: string;
-  headings: MDHeadingsList;
-  isHomepage: boolean;
-}) {
-  // TODO - isHomepage needs to be set in the context
+  initialContextType,
+  initialVersion,
+}: GuideProps) {
+  const {updateContext} = useAppContext();
+  useEffect(() => {
+    updateContext({
+      context: initialContextType,
+      version: initialVersion,
+    });
+  }, [initialContextType, initialVersion, updateContext]);
+
   return (
     <Page>
       <MarkdownPage
@@ -114,7 +130,6 @@ export async function getStaticProps({
   let isHomepage = false;
 
   // Configurations for the matched product
-  const initialContextType = getContextTypeByName(product);
   const productConfig = productsConfig[product];
 
   if (!productConfig) {
@@ -184,15 +199,14 @@ export async function getStaticProps({
     `Using '${file}' for route '${slugAsString}'. Available files: ${files}`
   );
 
-  const config = await getConfigByContext(
-    getContextTypeByName(product),
-    version
-  );
+  const initialContextProps = await getInitialContextProps(product, version);
 
   // Update template with versioned constants
   let content =
-    templateReplace(join(process.cwd(), file), config) ??
-    `Invalid template file: ${file}`;
+    templateReplace(
+      join(process.cwd(), file),
+      initialContextProps.initialConfig
+    ) ?? `Invalid template file: ${file}`;
 
   // remove any html comments (<!-- -->) as these will not parse correctly
   content = content.replace(/<!--([\s\S]*?)-->/g, '');
@@ -217,8 +231,7 @@ export async function getStaticProps({
   return {
     props: {
       // _app.tsx props
-      initialContextType,
-      initialVersion: version,
+      ...initialContextProps,
 
       // component props
       source: mdxSource,

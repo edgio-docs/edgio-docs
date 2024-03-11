@@ -4,23 +4,32 @@ import {NextPage} from 'next';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
-import {ContextType, useAppContext} from 'contexts/AppContext';
+import {
+  AppProviderProps,
+  ContextType,
+  getInitialContextProps,
+  useAppContext,
+} from 'contexts/AppContext';
 
 import HomeFeatures from '../components/MDX/Home/Features';
 import HomeHero from '../components/MDX/Home/Hero';
 
-interface HomePageProps {
-  config: any;
-  version: string;
-}
+interface HomePageProps extends AppProviderProps {}
 
 export const getStaticProps = async () => {
+  const initialContextProps = await getInitialContextProps(ContextType.HOME);
+
   return {
-    props: {},
+    props: {
+      ...initialContextProps,
+    },
   };
 };
 
-const HomePage: NextPage<HomePageProps> = ({}) => {
+const HomePage: NextPage<HomePageProps> = ({
+  initialContextType,
+  initialVersion,
+}) => {
   const {config, updateContext} = useAppContext();
   const meta = {
     id: 'home',
@@ -30,12 +39,10 @@ const HomePage: NextPage<HomePageProps> = ({}) => {
 
   useEffect(() => {
     updateContext({
-      context: ContextType.HOME,
-      config,
-      navMenuItems: null,
-      version: null,
+      context: initialContextType,
+      version: initialVersion,
     });
-  }, [updateContext, config]);
+  }, [initialContextType, initialVersion, updateContext]);
 
   return (
     <Page showNav={false}>

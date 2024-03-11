@@ -13,8 +13,7 @@ import {ContextType, useAppContext} from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import textCompare from 'utils/textCompare';
 
-import {PRODUCT} from '../../../constants';
-import {PRODUCT_APPLICATIONS} from '../../../constants';
+import {PRODUCT, PRODUCT_APPLICATIONS} from '../../../constants';
 
 import Header from './Header/Header';
 import {SidebarNav} from './SidebarNav';
@@ -24,11 +23,9 @@ export function Page({children}: PageProps) {
   const isMobile = useIsMobile(850);
   const [showSidebar, setShowSidebar] = React.useState(isMobile);
   const router = useRouter();
-  const {context} = useAppContext();
+  const {context, hasNavigationMenu} = useAppContext();
   const showBanner = context === ContextType.APPLICATIONS && !isMobile;
-  console.log('context', context, showBanner);
   const contentInnerRef = React.useRef(null);
-  const {hasNavigationMenu} = useAppContext();
 
   React.useEffect(() => {
     router.events.on('routeChangeComplete', () => setShowSidebar(false));
@@ -59,6 +56,8 @@ export function Page({children}: PageProps) {
       handleHashChange.cancel();
     };
   }, []);
+
+  console.log('page context', context, hasNavigationMenu);
 
   return (
     <StyledMainPage>

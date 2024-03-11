@@ -12,4 +12,6 @@ Integration with Next requires:
     | 14.x            | [20.x](/guides/install_nodejs#nodejs-18-20-support) | 7.5.0+                |
 -   {{ PRODUCT }} CLI.
 
+{{ node_16_eol_callout.md }}
+
 {{INSTALL_CLI.md}}

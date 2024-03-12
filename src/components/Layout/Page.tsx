@@ -10,15 +10,12 @@ import styled from 'styled-components';
 
 import Link from 'components/MDX/Link';
 import {ContextType, useAppContext} from 'contexts/AppContext';
-import {getBaseConfig} from 'utils/config';
 import useConditioning from 'utils/hooks/useConditioning';
 import textCompare from 'utils/textCompare';
 
 import Header from './Header/Header';
 import {SidebarNav} from './SidebarNav';
 import {useIsMobile} from './useMediaQuery';
-
-const {PRODUCT, PRODUCT_APPLICATIONS} = getBaseConfig();
 
 export function Page({children}: PageProps) {
   const isMobile = useIsMobile(850);
@@ -60,7 +57,7 @@ export function Page({children}: PageProps) {
 
   return (
     <StyledMainPage>
-      {/* {showBanner && <Banner />} */}
+      {showBanner && <Banner />}
       <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <main className="docs-content">
         {hasNavigationMenu && (
@@ -220,6 +217,8 @@ function highlightElementByText(searchText: string, ownerElement: HTMLElement) {
 
 function Banner() {
   const {version} = useConditioning();
+  const {config} = useAppContext();
+  const {PRODUCT, PRODUCT_APPLICATIONS, PRODUCT_LEGACY} = config;
   if (version.selectedVersion === '7') {
     return (
       <StyledBanner future>

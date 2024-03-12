@@ -47,11 +47,6 @@ export const productsConfig: ProductsConfig = {
                     .`,
         },
       },
-      v5: {
-        configImport: () => import('config/applications/v5.config'),
-        guidesPath: 'guides/applications/v5',
-        navigationImport: () => import('config/applications/v5.nav'),
-      },
       v6: {
         configImport: () => import('config/applications/v6.config'),
         guidesPath: 'guides/applications/v6',

@@ -52,7 +52,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 16
           registry-url: https://npm-proxy.fury.io/moovweb/
       - run: npm ci
       - run: npm run deploy -- --token=$LAYER0_DEPLOY_TOKEN

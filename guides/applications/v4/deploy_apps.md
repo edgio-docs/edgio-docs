@@ -113,7 +113,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 16
       - name: Cache node modules
         uses: actions/cache@v1
         env:
@@ -174,7 +174,7 @@ This guide assumes:
 pipeline {
   agent {
     docker {
-      image "node:14-alpine"
+      image "node:16-alpine"
     }
   }
   environment {
@@ -248,7 +248,7 @@ This guide assumes:
 # in https://app.layer0.co and configure it as a variable called "LAYER0_DEPLOY_TOKEN" in your GitLab
 # project's settings page. You should mask this variable to prevent it from appearing in logs.
 
-image: node:14
+image: node:16
 
 stages:
   - deploy

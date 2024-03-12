@@ -19,6 +19,8 @@ If you already have [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs) and an
 - Create an {{ PRODUCT }} property for your website.
 - Deploy a property to {{ PRODUCT }}.
 
+{{ node_16_eol_callout.md }}
+
 <Callout type="tip">
 
 An alternative approach is to perform each of the above tasks individually.
@@ -77,6 +79,8 @@ You are now ready to optimize and secure the delivery of your website.
 
 - {{ PRODUCT }} CLI
 - {{ PRODUCT }} account
+
+{{ node_16_eol_callout.md }}
 
 ### {{ PRODUCT }} CLI Installation {/* cli-installation */}
 

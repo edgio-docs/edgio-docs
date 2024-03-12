@@ -148,12 +148,13 @@ const StyledBanner = styled.div<StyledBannerProps>`
   --banner-text-color: ${({legacy, future}) => (legacy ? '#000' : '#fff')};
   --banner-background-color: ${({legacy, future}) =>
     legacy ? 'var(--callout-tip)' : future ? '#812990' : 'var(--lg-primary)'};
+  --banner-font-size: ${({legacy, future}) => (legacy ? '18px' : '1rem')};
 
   display: block;
   text-align: center;
   color: var(--banner-text-color);
   background: var(--banner-background-color);
-  font-size: calc(1rem - 2px);
+  font-size: var(--banner-font-size);
   padding: 1em;
   text-decoration: none;
   font-weight: 500;
@@ -222,22 +223,21 @@ function Banner() {
   if (version.selectedVersion === '7') {
     return (
       <StyledBanner future>
-        Introducing {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
-        {version.selectedVersionText}.&nbsp;
-        <Link href="/applications/v7/intro" versioned={false}>
-          Find out what&apos;s new.
-        </Link>
+        CDN-as-code support for Node.js 16 is undergoing end-of-life.&nbsp;
+        <Link href="/guides/install_nodejs">View end-of-life plan.</Link>
       </StyledBanner>
     );
   }
   if (!version.isLatest) {
     return (
       <StyledBanner legacy>
-        You are viewing docs for {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
-        {version.selectedVersionText} (deprecated). Read the&nbsp;
+        {PRODUCT} {PRODUCT_APPLICATIONS} {version.selectedVersionText} and
+        support for Node.js 16 are undergoing end-of-life (EOL). Read the&nbsp;
         <Link href="https://edg.io/blogs/layer0-end-of-life-announcement/">
-          <a target="_blank">end-of-life announcement</a>
+          {PRODUCT_LEGACY} EOL announcement
         </Link>
+        , the&nbsp;
+        <Link href="/guides/install_nodejs">Node.js 16 EOL plan</Link>
         &nbsp; or browse&nbsp;
         <Link href="/">
           {PRODUCT} {PRODUCT_APPLICATIONS} {version.latestVersionText} docs

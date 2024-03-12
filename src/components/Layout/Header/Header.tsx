@@ -1,7 +1,9 @@
+import {useState} from 'react';
+
 import Image from 'next/image';
-import Link from 'next/link';
 import styled from 'styled-components';
 
+import Link from 'components/MDX/Link';
 import Toast from 'components/Toast';
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
@@ -36,6 +38,7 @@ const LogoArea = styled.div`
   grid-row: 1;
   grid-column: 1;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   height: 100%;
   padding: 0;
@@ -44,11 +47,6 @@ const LogoArea = styled.div`
   .themed-element div {
     display: flex;
     align-items: center;
-
-    img {
-      height: 48px;
-      max-height: 100%;
-    }
   }
 `;
 
@@ -65,6 +63,9 @@ const NavigationArea = styled.nav`
   justify-content: flex-end;
   gap: 8px;
   margin-right: 16px;
+  min-width: 0;
+  overflow: hidden;
+  align-items: center;
 
   .search-form__box {
     --dimension: 32px;
@@ -83,7 +84,7 @@ const ButtonGroup = styled.div`
   display: flex;
   gap: 16px;
   justify-self: end;
-  height: 33px;
+  height: 32px;
   line-height: 1em;
 
   a {
@@ -106,8 +107,12 @@ const Button = styled.div<{gradient: string}>`
 
 const Header = () => {
   const {config, context} = useAppContext();
-  const {APP_URL} = config;
+  const {APP_URL, UPLYNK_CMS_URL} = config;
   const {renderThemedElement} = useTheme();
+  const [imageWidth, setImageWidth] = useState(0);
+
+  const logoWidth = imageWidth;
+  const logoHeight = 36;
 
   let darkLogo,
     lightLogo,
@@ -140,8 +145,26 @@ const Header = () => {
           <a>
             {context &&
               renderThemedElement(
-                <Image src={darkLogo} alt="Edgio" priority height={48} />,
-                <Image src={lightLogo} alt="Edgio" priority height={48} />
+                <Image
+                  src={darkLogo}
+                  alt="Edgio"
+                  priority
+                  height={logoHeight}
+                  width={logoWidth}
+                  onLoadingComplete={({naturalWidth, naturalHeight}) => {
+                    // Set the width of the image based on the ratio of the natural width and height
+                    // and the specified height
+                    const ratio = naturalWidth / naturalHeight;
+                    setImageWidth(logoHeight * ratio);
+                  }}
+                />,
+                <Image
+                  src={lightLogo}
+                  alt="Edgio"
+                  priority
+                  height={logoHeight}
+                  width={logoWidth}
+                />
               )}
           </a>
         </Link>
@@ -156,18 +179,18 @@ const Header = () => {
       </NavigationArea>
       <ButtonGroup>
         {showConsoleButton && (
-          <Link href={APP_URL} passHref>
-            <a>
-              <Button gradient="linear-gradient(90deg, #00BDA6 0%, #00A2E2 100%)">
-                Edgio Console
-              </Button>
-            </a>
+          <Link href={APP_URL}>
+            <Button gradient="linear-gradient(90deg, #00BDA6 0%, #00A2E2 100%)">
+              Edgio Console
+            </Button>
           </Link>
         )}
         {showUplynkButton && (
-          <Button gradient="linear-gradient(90deg, #6F1480 0%, #345FB4 53%, #003FE2 100%)">
-            Uplynk CMS
-          </Button>
+          <Link href={UPLYNK_CMS_URL}>
+            <Button gradient="linear-gradient(90deg, #6F1480 0%, #345FB4 53%, #003FE2 100%)">
+              Uplynk CMS
+            </Button>
+          </Link>
         )}
       </ButtonGroup>
       <HorizontalLine />

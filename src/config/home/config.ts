@@ -1,20 +1,6 @@
 import {IconEdgioApplications, IconEdgioMedia} from 'components/Icon';
 import {HomepageSectionGroup} from 'utils/Types';
 
-// Uplynk
-// 	Live Linear
-// 	Live Events
-// 	Live Slicer
-// 	Cloud Slicer Live
-// 	On-Demand Content
-// 	Playback URLs
-// 	Captions and Subtitles
-// 	Syndication Publishing
-// 	Blackout
-// 	Geoblocking
-// 	Studio DRM
-// 	Ads
-
 export const sections: HomepageSectionGroup[] = [
   {
     heading: 'Applications',

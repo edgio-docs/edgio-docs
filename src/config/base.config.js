@@ -63,6 +63,7 @@ const API_SECURITY_VERSION = '0.9';
 const API_CONFIG_VERSION = '0.1';
 const SAMPLE_TEAM_ID = '12345678-1234-1234-1234-1234567890ab';
 const LOGIN_URL = APP_URL;
+const UPLYNK_CMS_URL = `https://cms.uplynk.com/`;
 
 const PORTAL_LINK = `[${PORTAL}](${LOGIN_URL})`;
 const IDENTITY_LINK = `[${IDENTITY_DASHBOARD}](${IDENTITY_URL})`;
@@ -220,6 +221,7 @@ const config = {
   INIT_ARG_EDGIO_VERSION,
   LEGACY_FW_INIT_ARG_EDGIO_VERSION,
   DOCS_NAME,
+  UPLYNK_CMS_URL,
 };
 
 export default config;

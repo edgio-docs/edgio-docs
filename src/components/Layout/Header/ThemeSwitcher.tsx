@@ -18,7 +18,6 @@ const ThemeSwitcherButton = styled.button`
 
 export default function ThemeSwitcher() {
   const {toggleTheme, themedValue} = useTheme();
-  const Icon = themedValue(FiMoon, FiSun);
 
   return (
     <ThemeSwitcherButton

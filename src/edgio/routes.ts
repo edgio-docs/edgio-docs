@@ -3,21 +3,23 @@ import {Router} from '@edgio/core/router';
 import {Features} from '@edgio/core/types';
 import {nextRoutes} from '@edgio/next';
 import {load} from 'cheerio';
+// @ts-ignore
 import {Downloader as GithubDownloader} from 'github-download-directory';
 import semverMaxSatisfying from 'semver/ranges/max-satisfying';
 
-import {DOCS_PAGES_DOMAIN} from './constants';
+import config from '../config/base.config';
+
 import {
-  scriptSrcDomains,
   connectSrcDomains,
-  imgSrcDomains,
-  frameSrcDomains,
-  styleSrcDomains,
   fontSrcDomains,
+  frameSrcDomains,
+  imgSrcDomains,
   mediaSrcDomains,
-} from './edgio/cspDomains';
-import {archiveRoutes} from './edgio/plugins/ArchiveRoutes';
-import redirects from './edgio/redirects';
+  scriptSrcDomains,
+  styleSrcDomains,
+} from './cspDomains';
+import {archiveRoutes} from './plugins/ArchiveRoutes';
+import redirects from './redirects';
 
 const defaultFeatures: Features = {
   caching: {
@@ -159,7 +161,7 @@ router.match(`/docs/v:version.x/:path*`, ({compute}) => {
     }
 
     const upstreamRes = await fetch(
-      `https://${DOCS_PAGES_DOMAIN}${targetPath}`
+      `https://${config.DOCS_PAGES_DOMAIN}${targetPath}`
     );
     const upstreamResBody = await upstreamRes.text();
     res.setHeader('content-type', upstreamRes.headers.get('content-type'));

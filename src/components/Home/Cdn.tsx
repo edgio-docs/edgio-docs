@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {useAppContext} from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 
-import {PRODUCT, PRODUCT_EDGE} from '../../../constants';
 import {IconServer} from '../Icon/IconServer';
 
 import {StyledFeatureSection} from './FeatureSection';
@@ -124,10 +124,6 @@ const items = {
       title: 'Purging',
       path: '/guides/performance/caching/purging',
     },
-    //    {
-    //      title: 'Static Prerendering',
-    //      path: '/guides/performance/static_prerendering',
-    //    },
     {
       title: 'Predictive Prefetch',
       path: '/guides/performance/prefetching',
@@ -262,6 +258,7 @@ export default function Cdn() {
     version,
     version: {toVersionedPath},
   } = useConditioning();
+  const {config} = useAppContext();
 
   const routesByColumns = itemsByColumn(items, version, 'title', 8);
 
@@ -270,7 +267,7 @@ export default function Cdn() {
       <SectionHeader
         Icon={IconServer}
         title="Performance"
-        subtitle={`Accelerate your web application through ${PRODUCT} ${PRODUCT_EDGE}.`}
+        subtitle={`Accelerate your web application through ${config.PRODUCT} ${config.PRODUCT_EDGE}.`}
       />
 
       <div className="route-items">

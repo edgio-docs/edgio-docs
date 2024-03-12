@@ -129,7 +129,6 @@ export default function MyApp({Component, pageProps}: DocsAppProps) {
     `https://docs.edg.io` + (router.asPath === '/' ? '' : router.asPath)
   ).split('?')[0];
 
-  console.log('page props', pageProps);
   return loading && fallbackMap.hasOwnProperty(changingTo) ? (
     fallbackMap[changingTo]
   ) : (

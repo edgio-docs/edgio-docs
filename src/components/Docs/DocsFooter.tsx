@@ -5,9 +5,9 @@ import {
   IconEdgioSquareLogoDark,
 } from 'components/Icon/IconEdgioSquareLogo';
 import Link from 'components/MDX/Link';
+import {useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
-
-import {PRODUCT, FIDDLE_URL} from '../../../constants';
+import {StringMap} from 'utils/Types';
 
 const StyledDocsFooter = styled.footer`
   padding-top: 20px;
@@ -157,7 +157,7 @@ const secFooterLinks = [
   },
 ];
 
-const pryFooterLinks = {
+const pryFooterLinks = ({FIDDLE_URL}: StringMap) => ({
   resources: [
     {
       title: 'Video Tutorials',
@@ -198,10 +198,6 @@ const pryFooterLinks = {
       title: 'JavaScript Jam',
       href: 'https://javascriptjam.com',
     },
-    // {
-    //   title: 'Glossary',
-    //   href: '/guides/glossary',
-    // },
     {
       title: 'Contributing',
       href: '/guides/contributing',
@@ -247,10 +243,14 @@ const pryFooterLinks = {
       href: 'https://edg.io/app/sites/',
     },
   ],
-};
+});
 
 export default function DocsFooter() {
   const {theme, themedValue} = useTheme();
+  const {config} = useAppContext();
+  const {PRODUCT} = config;
+
+  const footerLinks = pryFooterLinks(config);
   return (
     <StyledDocsFooter>
       <div className="footer-start">
@@ -263,10 +263,10 @@ export default function DocsFooter() {
               )}
             </div>
           </div>
-          <FooterNavItem title="Products" items={pryFooterLinks.products} />
-          <FooterNavItem title="Resources" items={pryFooterLinks.resources} />
-          <FooterNavItem title="Community" items={pryFooterLinks.community} />
-          <FooterNavItem title="Social" items={pryFooterLinks.social} />
+          <FooterNavItem title="Products" items={footerLinks.products} />
+          <FooterNavItem title="Resources" items={footerLinks.resources} />
+          <FooterNavItem title="Community" items={footerLinks.community} />
+          <FooterNavItem title="Social" items={footerLinks.social} />
         </nav>
       </div>
       <div className="footer-end">

@@ -1,9 +1,4 @@
-import {useRouter} from 'next/router';
 import styled from 'styled-components';
-
-import {IconForum} from 'components/Icon';
-
-import {FORUM_URL, DOCS_URL} from '../../../constants';
 
 const StyledLink = styled.div`
   margin-top: 50px;

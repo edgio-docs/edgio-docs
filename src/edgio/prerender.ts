@@ -2,8 +2,6 @@ import {join} from 'path';
 
 import {existsSync, readFileSync, readJsonSync} from 'fs-extra';
 
-import routes from '../src/data/nav.json';
-
 const buildIdPath = join(process.cwd(), '.next', 'BUILD_ID');
 const nextRoutesManifestPath = join(
   process.cwd(),

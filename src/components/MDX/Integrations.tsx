@@ -2,9 +2,9 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {useAppContext} from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
-
-import {PRODUCT_NAME} from '../../../constants';
+import {StringMap} from 'utils/Types';
 
 const StyledIntegrations = styled.div`
   .integrations {
@@ -69,7 +69,7 @@ const StyledIntegrations = styled.div`
   }
 `;
 
-const integrations: Object[] = [
+const integrations = ({PRODUCT_NAME}: StringMap) => [
   {
     title: 'BigCommerce',
     path: '/guides/integrations/bigcommerce',
@@ -112,11 +112,12 @@ export default function Integrations() {
   const {
     version: {toVersionedPath},
   } = useConditioning();
+  const {config} = useAppContext();
 
   return (
     <StyledIntegrations>
       <ul className="integrations">
-        {integrations.map((route: any) => (
+        {integrations(config).map((route: any) => (
           <li key={route.path} className="integration-list__item">
             <Link href={toVersionedPath(route.path)} passHref>
               <a className="integration-link">

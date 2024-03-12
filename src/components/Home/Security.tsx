@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {useAppContext} from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
-
-import {PRODUCT, PRODUCT_SECURITY} from '../../../constants';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
@@ -95,6 +94,8 @@ export default function Security() {
     version,
     version: {toVersionedPath},
   } = useConditioning();
+  const {config} = useAppContext();
+  const {PRODUCT, PRODUCT_SECURITY} = config;
 
   const routesByColumns = [...itemsByColumn(items, version, 'title', 8), []];
 

@@ -2,14 +2,9 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 import {IconArrow} from 'components/Icon/IconArrow';
+import {useAppContext} from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 
-import {
-  PRODUCT,
-  PRODUCT_EDGE,
-  PRODUCT_PLATFORM,
-  PRODUCT_SECURITY,
-} from '../../../constants';
 import {IconJamstack} from '../Icon/IconJamstack';
 import {IconSecurity} from '../Icon/IconSecurity';
 import {IconWebAppCDN} from '../Icon/IconWebAppCDN';
@@ -116,6 +111,7 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
   const {
     version: {toVersionedPath, selectedVersion},
   } = useConditioning();
+  const {config} = useAppContext();
 
   let performanceGettingStarted;
   let sitesGettingStarted;
@@ -135,22 +131,22 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
       <div className="cards">
         <GetStartedCard
           icon={IconWebAppCDN}
-          title={PRODUCT_EDGE}
-          subtitle={`Deploy your web application and start seeing the performance benefits with the ${PRODUCT} ${PRODUCT_EDGE} network.`}
+          title={config.PRODUCT_EDGE}
+          subtitle={`Deploy your web application and start seeing the performance benefits with the ${config.PRODUCT} ${config.PRODUCT_EDGE} network.`}
           href={toVersionedPath(`${performanceGettingStarted}`)}
           hrefText="Deploy now"
         />
         <GetStartedCard
           icon={IconJamstack}
-          title={PRODUCT_PLATFORM}
-          subtitle={`Deploy static and dynamic Jamstack sites that run on ${PRODUCT}'s serverless functions.`}
+          title={config.PRODUCT_PLATFORM}
+          subtitle={`Deploy static and dynamic Jamstack sites that run on ${config.PRODUCT}'s serverless functions.`}
           href={toVersionedPath(`${sitesGettingStarted}`)}
           hrefText="View Supported Frameworks"
         />
         <GetStartedCard
           icon={IconSecurity}
-          title={PRODUCT_SECURITY}
-          subtitle={`${PRODUCT} ${PRODUCT_SECURITY} keeps your apps protected without sacrificing performance.`}
+          title={config.PRODUCT_SECURITY}
+          subtitle={`${config.PRODUCT} ${config.PRODUCT_SECURITY} keeps your apps protected without sacrificing performance.`}
           href={toVersionedPath('security')}
           hrefText="Learn More"
         />

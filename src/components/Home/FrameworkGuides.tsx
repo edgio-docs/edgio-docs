@@ -2,11 +2,11 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 import {IconArrow} from 'components/Icon/IconArrow';
+import {useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 
-import {PRODUCT_PLATFORM} from '../../../constants';
 import {IconAngular} from '../Icon/IconAngular';
 import {IconAstro, IconAstroDark} from '../Icon/IconAstro';
 import {IconBook} from '../Icon/IconBook';
@@ -385,6 +385,7 @@ export default function FrameworkGuides() {
     version: {toVersionedPath, isVersion},
   } = useConditioning();
   const {themedValue} = useTheme();
+  const {config} = useAppContext();
 
   const isV7 = isVersion(7);
   const isV4 = isVersion(4);
@@ -405,7 +406,7 @@ export default function FrameworkGuides() {
       <SectionHeader
         Icon={IconBook}
         title="Sites"
-        subtitle={`Accelerate your dynamic and static Jamstack sites through ${PRODUCT_PLATFORM}.`}
+        subtitle={`Accelerate your dynamic and static Jamstack sites through ${config.PRODUCT_PLATFORM}.`}
       />
 
       <div className="route-items">

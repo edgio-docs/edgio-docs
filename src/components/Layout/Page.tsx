@@ -10,14 +10,15 @@ import styled from 'styled-components';
 
 import Link from 'components/MDX/Link';
 import {ContextType, useAppContext} from 'contexts/AppContext';
+import {getBaseConfig} from 'utils/config';
 import useConditioning from 'utils/hooks/useConditioning';
 import textCompare from 'utils/textCompare';
-
-import {PRODUCT, PRODUCT_APPLICATIONS} from '../../../constants';
 
 import Header from './Header/Header';
 import {SidebarNav} from './SidebarNav';
 import {useIsMobile} from './useMediaQuery';
+
+const {PRODUCT, PRODUCT_APPLICATIONS} = getBaseConfig();
 
 export function Page({children}: PageProps) {
   const isMobile = useIsMobile(850);
@@ -56,8 +57,6 @@ export function Page({children}: PageProps) {
       handleHashChange.cancel();
     };
   }, []);
-
-  console.log('page context', context, hasNavigationMenu);
 
   return (
     <StyledMainPage>
@@ -240,10 +239,8 @@ function Banner() {
           <a target="_blank">end-of-life announcement</a>
         </Link>
         &nbsp; or browse&nbsp;
-        <Link href="/" passHref>
-          <a>
-            {PRODUCT} {PRODUCT_APPLICATIONS} {version.latestVersionText} docs
-          </a>
+        <Link href="/">
+          {PRODUCT} {PRODUCT_APPLICATIONS} {version.latestVersionText} docs
         </Link>
         .
       </StyledBanner>
@@ -253,9 +250,7 @@ function Banner() {
     <StyledBanner>
       🎉 Introducing {PRODUCT} {PRODUCT_APPLICATIONS} v6 which supports Node.js
       v16.{' '}
-      <Link href="/guides/reference/v6_migration" passHref>
-        <a>Learn how to upgrade.</a>
-      </Link>{' '}
+      <Link href="/guides/reference/v6_migration">Learn how to upgrade.</Link>{' '}
       🎉
     </StyledBanner>
   );

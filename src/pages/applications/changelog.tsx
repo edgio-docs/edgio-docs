@@ -1,5 +1,3 @@
-import {useEffect} from 'react';
-
 import {Octokit} from '@octokit/core';
 import _get from 'lodash/get';
 import {GetStaticProps} from 'next';
@@ -10,8 +8,11 @@ import {Page} from 'components/Layout/Page';
 import Callout from 'components/MDX/Callout';
 import Link from 'components/MDX/Link';
 import {productsConfig} from 'config/appConfig';
-import {useAppContext, ContextType} from 'contexts/AppContext';
-import {serializeConfig} from 'utils/config';
+import {
+  ContextType,
+  getInitialContextProps,
+  useAppContext,
+} from 'contexts/AppContext';
 
 import {markdownToHtml} from '../../../plugins/markdownToHtml';
 interface ChangelogProps {
@@ -199,6 +200,9 @@ export const getStaticProps: GetStaticProps<
   const version = params?.version ?? `v7`;
   const contextType = ContextType.APPLICATIONS;
   const productConfig = productsConfig[contextType].versions[version];
+  const initialContextProps = await getInitialContextProps(
+    ContextType.APPLICATIONS
+  );
 
   if (!productConfig) {
     return {notFound: true};
@@ -207,8 +211,7 @@ export const getStaticProps: GetStaticProps<
   return {
     props: {
       // _app props
-      initialContextType: contextType,
-      initialVersion: version,
+      ...initialContextProps,
 
       // component props
       version,

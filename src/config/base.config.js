@@ -23,7 +23,6 @@ const CHROME_EXTENSION = `${COMPANY_NAME} Developer Tools Chrome extension`;
 
 const CLI_NAME = 'edg';
 const FULL_CLI_NAME = 'edgio';
-const CLI_CMD = (cmd) => `${FULL_CLI_NAME} ${cmd}`;
 const PACKAGE_NAME = '@edgio';
 const PACKAGE_VERSION = 'latest';
 const INIT_ARG_EDGIO_VERSION = `--edgioVersion ${PACKAGE_VERSION}`;
@@ -107,7 +106,7 @@ const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up*/}
 Deploying requires an account on ${PRODUCT}. [Sign up here for free.](${APP_URL}/signup)`;
 
 const PREFETCH_TIER1_INTRO = `
-The \`${FULL_CLI_NAME} init\` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at \`sw/service-worker.js\`. 
+The \`${FULL_CLI_NAME} init\` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at \`sw/service-worker.js\`.
 If you have an existing service worker that uses workbox, you can copy its contents into \`sw/service-worker.js\` and simply add the following to your service worker:
 
 \`\`\`js filename="sw/service-worker.js"
@@ -135,7 +134,7 @@ yarn global add ${PACKAGE_NAME}/cli
 
 const CONTACT_SUPPORT = `Contact our [technical customer support](${HELP_URL}).`;
 
-const SECURITY_NAV = `1.  From the ${PORTAL_LINK}, select the desired organization. 
+const SECURITY_NAV = `1.  From the ${PORTAL_LINK}, select the desired organization.
     2.  From the **Security** section, click `;
 
 const ENV_NAV = `1.  From the ${PORTAL_LINK}, select the desired private space or organization.
@@ -168,7 +167,6 @@ const config = {
   API_SECURITY_VERSION,
   API_REQUEST_HEADERS,
   CHROME_EXTENSION,
-  CLI_CMD,
   CLI_NAME,
   CONFIG_FILE,
   ROUTES_FILE,
@@ -225,3 +223,8 @@ const config = {
 };
 
 export default config;
+
+// Helper functions that are used in the templates, but not serialized in the config
+export const configHelpers = {
+  CLI_CMD: (cmd) => `${FULL_CLI_NAME} ${cmd}`,
+};

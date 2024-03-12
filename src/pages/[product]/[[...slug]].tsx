@@ -10,6 +10,7 @@ import {serialize} from 'next-mdx-remote/serialize';
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
 import {productsConfig} from 'config/appConfig';
+import {configHelpers} from 'config/base.config';
 import {
   AppProviderProps,
   getInitialContextProps,
@@ -203,10 +204,10 @@ export async function getStaticProps({
 
   // Update template with versioned constants
   let content =
-    templateReplace(
-      join(process.cwd(), file),
-      initialContextProps.initialConfig
-    ) ?? `Invalid template file: ${file}`;
+    templateReplace(join(process.cwd(), file), {
+      ...initialContextProps.initialConfig,
+      ...configHelpers,
+    }) ?? `Invalid template file: ${file}`;
 
   // remove any html comments (<!-- -->) as these will not parse correctly
   content = content.replace(/<!--([\s\S]*?)-->/g, '');

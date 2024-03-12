@@ -2,6 +2,7 @@ import {NextPage} from 'next';
 
 import {MarkdownPage} from 'components/Layout/MarkdownPage';
 import {Page} from 'components/Layout/Page';
+import {ContextType, getInitialContextProps} from 'contexts/AppContext';
 
 const Custom404: NextPage = () => {
   const meta = {
@@ -17,3 +18,12 @@ const Custom404: NextPage = () => {
 };
 
 export default Custom404;
+
+export async function getStaticProps() {
+  const initialContextProps = await getInitialContextProps(ContextType.HOME);
+  return {
+    props: {
+      ...initialContextProps,
+    },
+  };
+}

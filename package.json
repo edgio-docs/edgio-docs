@@ -45,7 +45,7 @@
   "dependencies": {
     "@docsearch/css": "3.0.0-alpha.41",
     "@docsearch/react": "3.0.0-alpha.41",
-    "@edgio/rum": "^7.0.0",
+    "@edgio/rum": "^7.0.13",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@fireaw.ai/sdk": "^0.4.0",
@@ -83,12 +83,12 @@
     "winston": "^3.8.2"
   },
   "devDependencies": {
-    "@edgio/cli": "^7.7.3",
-    "@edgio/core": "^7.7.3",
-    "@edgio/devtools": "^7.7.3",
-    "@edgio/next": "^7.7.3",
-    "@edgio/prefetch": "^7.7.3",
-    "@edgio/react": "^7.7.3",
+    "@edgio/cli": "^7.10.0",
+    "@edgio/core": "^7.10.0",
+    "@edgio/devtools": "^7.10.0",
+    "@edgio/next": "^7.10.0",
+    "@edgio/prefetch": "^7.10.0",
+    "@edgio/react": "^7.10.0",
     "@mdx-js/loader": "^1.6.16",
     "@types/body-scroll-lock": "^2.6.1",
     "@types/classnames": "^2.3.1",

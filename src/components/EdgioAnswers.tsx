@@ -44,9 +44,9 @@ const customStyles: Modal.Styles = {
   },
 };
 
+const ModalWrapper = styled.div``;
+
 const ChatActions = styled.div`
-  display: flex;
-  align-items: center;
   width: 100%;
   padding: 10px;
 `;
@@ -54,16 +54,27 @@ const ChatActions = styled.div`
 const ChatInputContainer = styled.div`
   display: flex;
   align-items: center;
-  position: relative;
   flex: 1;
+  gap: 4px;
 `;
 
-const ChatInput = styled.input`
+const ChatInput = styled.input<{hasContent: boolean}>`
+  ${({hasContent}) =>
+    hasContent
+      ? `
+  background: var(--ea-input-field-active-bg);
+  color: var(--text-primary);
+  `
+      : `
+  background: var(--ea-input-field-bg);
+  color: var(--ea-input-placeholder-color);
+  `}
+
   flex-grow: 1;
-  padding: 10px;
-  margin-right: 10px;
+  padding: 8px;
   border: 1px solid var(--border-primary);
   border-radius: 4px;
+  height: 40px;
 `;
 
 const ChatContainer = styled.div`
@@ -73,9 +84,6 @@ const ChatContainer = styled.div`
   flex-direction: column-reverse;
 
   color: var(--docs-text-primary);
-
-  // display: grid;
-  // gap: 16px 0;
 
   .article-heading {
     display: flex;
@@ -239,16 +247,9 @@ const ChatContainer = styled.div`
   }
 `;
 
-const StopButtonIcon = styled(FiXCircle)`
-  cursor: pointer;
-  width: 24px;
-  height: 24px;
-  color: var(--colors-purple0);
-`;
-
 const ModalHeader = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--border-primary);
@@ -257,46 +258,42 @@ const ModalHeader = styled.div`
 
 const CloseIcon = styled(FiXCircle)`
   cursor: pointer;
-  font-size: 24px; // Adjust the size as needed
+  font-size: 24px;
 `;
 
-const SendIcon = styled(FiSend)`
-  cursor: pointer;
-  opacity: 0.5;
-  &:hover {
-    opacity: 1;
-  }
-  // Position adjustments as necessary
+const MessageWrapper = styled.div<{isUser: boolean}>`
+  padding: 0;
+  border-radius: 5px;
+  background: ${({isUser}) =>
+    isUser
+      ? 'var(--text-primary)'
+      : 'linear-gradient(to right, #812991, #00A2E2, #01B18D)'};
+  background-clip: padding-box;
+  margin: 10px;
 `;
-
 const Message = styled.div<{isUser: boolean}>`
   position: relative;
-  margin: 10px 0;
+  margin: 1px;
   padding: 10px;
   padding-top: 20px;
-  border: 1px solid
-    ${({isUser}) => (isUser ? 'var(--text-primary)' : 'var(--colors-blue0)')};
-  border-radius: ${({isUser}) =>
-    isUser ? '10px 10px 0 10px' : '0 10px 10px 10px'};
-  background-color: ${({isUser}) =>
-    isUser ? 'var(--bg-secondary)' : 'var(--bg-primary)'};
+  background-color: var(--bg-primary);
   color: var(--text-primary);
   text-align: ${({isUser}) => (isUser ? 'right' : 'left')};
+  border-radius: 5px;
 
   &::before {
     content: ${({isUser}) => (isUser ? "'You'" : "'Edgio Answers'")};
     position: absolute;
-    top: ${({isUser}) => (isUser ? 'auto' : '-10px')};
-    right: ${({isUser}) => (isUser ? '10px' : 'auto')};
-    bottom: ${({isUser}) => (isUser ? '-10px' : 'auto')};
-    left: ${({isUser}) => (isUser ? 'auto' : '10px')};
+    top: -10px; // Adjust position as needed
+    ${({isUser}) => (isUser ? 'right: 10px;' : 'left: 10px;')}
     background-color: ${({isUser}) =>
       isUser ? 'var(--bg-secondary)' : 'var(--bg-primary)'};
     color: ${({isUser}) =>
-      isUser ? 'var(--text-primary)' : 'var(--colors-blue0)'};
+      isUser ? 'var(--text-primary)' : 'var(--text-primary)'};
     font-size: 0.75em;
     font-weight: bold;
     padding: 0 5px;
+    border-radius: 5px;
   }
 `;
 
@@ -306,7 +303,8 @@ const QuestionButtons = styled.div`
   align-items: center;
   justify-content: center;
   gap: 5px;
-  margin-bottom: 10px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border-primary);
 `;
 
 const QuestionButton = styled.button`
@@ -323,14 +321,55 @@ const QuestionButton = styled.button`
 `;
 
 const MessageContent = styled.div`
+  font-size: 14px;
+  font-weight: normal;
   .article-text {
     margin: 10px auto;
-
     .text-link {
-      display: block;
+      display: inline-block;
     }
   }
 `;
+
+const ActionButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 5px;
+  height: 40px;
+  width: 56px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    color: var(--text-primary);
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+const SendButton = styled(ActionButton)<{
+  hasContent: boolean;
+  awaitingResponse: boolean;
+}>`
+  display: ${({awaitingResponse}) => (awaitingResponse ? 'none' : 'flex')};
+  background: ${({hasContent}) =>
+    hasContent ? 'var(--lg-primary)' : 'var(--ea-input-field-bg)'};
+
+  svg {
+    color: ${({hasContent}) =>
+      hasContent
+        ? 'var(--ea-action-icon-active-color)'
+        : 'var(--ea-action-icon-color)'};
+  }
+`;
+
+const StopButton = styled(ActionButton)``;
 
 const ChatMessage = ({content}: {content: string}) => {
   return (
@@ -351,6 +390,10 @@ const EdgioAnswers = () => {
   const [isAwaitingResponse, setIsAwaitingResponse] = useState<boolean>(false);
   const [starterQuestions, setStarterQuestions] = useState<string[]>([]);
   const isLoaded = useHydrationIsLoaded();
+  const hasContent = inputText.trim().length > 0;
+  const placeholder = isAwaitingResponse
+    ? 'Waiting for response...'
+    : 'Ask something...';
 
   useEffect(() => {
     const checkHash = () => {
@@ -409,7 +452,6 @@ const EdgioAnswers = () => {
           }
 
           if (message.finished) {
-            console.log(message);
             setIsAwaitingResponse(false);
             setInputText('');
           }
@@ -443,7 +485,7 @@ const EdgioAnswers = () => {
   const sendMessage = () => {
     if (inputText.trim() && channel && !isAwaitingResponse) {
       channel.send(inputText);
-      setIsAwaitingResponse(true);
+      setIsAwaitingResponse(false);
       setInputText('');
     }
   };
@@ -467,58 +509,70 @@ const EdgioAnswers = () => {
 
   return (
     <NoSSRWrapper>
-      <Modal
-        isOpen={isModalOpen}
-        onAfterOpen={onOpenModal}
-        onRequestClose={onCloseModal}
-        style={customStyles}>
-        <ModalHeader>
-          <CloseIcon onClick={onCloseModal} />
-        </ModalHeader>
-        <ChatContainer>
-          {messages
-            .slice()
-            .reverse()
-            .map((message, index) => (
-              <Message key={index} isUser={message.role === 'user'}>
-                <ChatMessage content={message.content} />
-              </Message>
+      <ModalWrapper>
+        <Modal
+          isOpen={isModalOpen}
+          onAfterOpen={onOpenModal}
+          onRequestClose={onCloseModal}
+          style={customStyles}>
+          <ModalHeader>
+            <CloseIcon onClick={onCloseModal} />
+          </ModalHeader>
+          <ChatContainer>
+            {messages
+              .slice()
+              .reverse()
+              .map((message, index) => {
+                const isUser = message.role === 'user';
+                return (
+                  <MessageWrapper key={index} isUser={isUser}>
+                    <Message isUser={isUser}>
+                      <ChatMessage content={message.content} />
+                    </Message>
+                  </MessageWrapper>
+                );
+              })}
+          </ChatContainer>
+          <QuestionButtons>
+            {starterQuestions.map((question, index) => (
+              <QuestionButton
+                key={index}
+                onClick={() => {
+                  setInputText(question);
+                  setIsAwaitingResponse(true);
+                  channel?.send(question);
+                }}>
+                {question}
+              </QuestionButton>
             ))}
-        </ChatContainer>
-        <QuestionButtons>
-          {starterQuestions.map((question, index) => (
-            <QuestionButton
-              key={index}
-              onClick={() => {
-                setInputText(question);
-                setIsAwaitingResponse(true);
-                channel?.send(question);
-              }}>
-              {question}
-            </QuestionButton>
-          ))}
-        </QuestionButtons>
-        <ChatActions>
-          <ChatInputContainer>
-            <ChatInput
-              type="text"
-              value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-              placeholder={
-                isAwaitingResponse
-                  ? 'Waiting for response...'
-                  : 'Ask something...'
-              }
-              disabled={isAwaitingResponse}
-            />
-            <SendIcon className={inputText.trim() ? 'enabled' : ''} />
-            {isAwaitingResponse && (
-              <StopButtonIcon onClick={stopAndReconnect} />
-            )}
-          </ChatInputContainer>
-        </ChatActions>
-      </Modal>
+          </QuestionButtons>
+          <ChatActions>
+            <ChatInputContainer>
+              <ChatInput
+                type="text"
+                value={inputText}
+                hasContent={hasContent}
+                onChange={(e) => setInputText(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+                placeholder={placeholder}
+                disabled={isAwaitingResponse}
+              />
+              {!isAwaitingResponse ? (
+                <SendButton
+                  hasContent={hasContent}
+                  awaitingResponse={isAwaitingResponse}
+                  onClick={sendMessage}>
+                  <FiSend />
+                </SendButton>
+              ) : (
+                <StopButton onClick={stopAndReconnect}>
+                  <FiXCircle />
+                </StopButton>
+              )}
+            </ChatInputContainer>
+          </ChatActions>
+        </Modal>
+      </ModalWrapper>
     </NoSSRWrapper>
   );
 };

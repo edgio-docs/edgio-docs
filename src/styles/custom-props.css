@@ -32,6 +32,10 @@
   --search-input-bg: #101820;
   --search-input-icon: #8b9197;
   --theme-primary: var(--colors-blue0);
+  --ea-input-field-bg: var(--bg-primary);
+  --ea-input-field-active-bg: var(--bg-secondary);
+  --ea-action-icon-color: var(--text-primary);
+  --ea-action-icon-active-color: var(--text-primary);
 }
 
 :root.light {
@@ -105,6 +109,12 @@
   --docsearch-modal-background: var(--bg-primary);
   --docsearch-hit-background: #e7e7e7;
   --docsearch-hit-color: var(--colors-black0);
+
+  /* Edgio Answers */
+  --ea-input-field-bg: var(--bg-primary);
+  --ea-input-field-active-bg: var(--bg-secondary);
+  --ea-action-icon-color: var(--text-primary);
+  --ea-action-icon-active-color: #ffffff;
 }
 
 :root.dark {
@@ -173,6 +183,11 @@
   --docsearch-modal-background: var(--bg-primary);
   --docsearch-hit-background: #262626;
   --docsearch-hit-color: #cbcbcb;
+
+  /* Edgio Answers */
+  --ea-input-field-bg: #3a444d;
+  --ea-input-field-active-bg: #101820;
+  --ea-input-placeholder-color: #8b9197;
 }
 
 :root .theme.applications {

@@ -215,16 +215,16 @@ export const sections: HomepageSectionGroup[] = [
           },
         ],
       },
-      {
-        title: 'Delivery',
-        path: 'https://docs.edgecast.com/cdn/index.html#Getting_Started/GS-All.htm',
-        items: [],
-      },
-      {
-        title: 'Open Edge',
-        path: '/media/open-edge',
-        items: [],
-      },
+      // {
+      //   title: 'Delivery',
+      //   path: 'https://docs.edgecast.com/cdn/index.html#Getting_Started/GS-All.htm',
+      //   items: [],
+      // },
+      // {
+      //   title: 'Open Edge',
+      //   path: '/media/open-edge',
+      //   items: [],
+      // },
     ],
   },
 ];

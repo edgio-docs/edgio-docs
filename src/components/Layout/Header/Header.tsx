@@ -142,31 +142,29 @@ const Header = () => {
     <HeaderContainer>
       <LogoArea>
         <Link href="/">
-          <a>
-            {context &&
-              renderThemedElement(
-                <Image
-                  src={darkLogo}
-                  alt="Edgio"
-                  priority
-                  height={logoHeight}
-                  width={logoWidth}
-                  onLoadingComplete={({naturalWidth, naturalHeight}) => {
-                    // Set the width of the image based on the ratio of the natural width and height
-                    // and the specified height
-                    const ratio = naturalWidth / naturalHeight;
-                    setImageWidth(logoHeight * ratio);
-                  }}
-                />,
-                <Image
-                  src={lightLogo}
-                  alt="Edgio"
-                  priority
-                  height={logoHeight}
-                  width={logoWidth}
-                />
-              )}
-          </a>
+          {context &&
+            renderThemedElement(
+              <Image
+                src={darkLogo}
+                alt="Edgio"
+                priority
+                height={logoHeight}
+                width={logoWidth}
+                onLoadingComplete={({naturalWidth, naturalHeight}) => {
+                  // Set the width of the image based on the ratio of the natural width and height
+                  // and the specified height
+                  const ratio = naturalWidth / naturalHeight;
+                  setImageWidth(logoHeight * ratio);
+                }}
+              />,
+              <Image
+                src={lightLogo}
+                alt="Edgio"
+                priority
+                height={logoHeight}
+                width={logoWidth}
+              />
+            )}
         </Link>
       </LogoArea>
       <NavigationArea>

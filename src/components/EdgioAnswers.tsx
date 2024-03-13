@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import {useEffect, useState} from 'react';
 
 import {ChatChannel} from '@fireaw.ai/sdk';
-import {is} from 'cheerio/lib/api/traversing';
-import {FiXCircle, FiSend} from 'react-icons/fi';
+import {useRouter} from 'next/router';
+import {FiSend, FiXCircle} from 'react-icons/fi';
 import ReactMarkdown from 'react-markdown';
 import Modal from 'react-modal';
 import styled from 'styled-components';
@@ -12,6 +12,9 @@ import {siteConfig} from 'config/appConfig';
 import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
 
 import NoSSRWrapper from './Layout/NoSSRWrapper';
+
+const RESET_ON_CLOSE = true;
+const ROUTE_HASH = '#edgio-answers';
 
 interface Message {
   id: string;
@@ -243,6 +246,29 @@ const StopButtonIcon = styled(FiXCircle)`
   color: var(--colors-purple0);
 `;
 
+const ModalHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-primary);
+  margin-bottom: 20px;
+`;
+
+const CloseIcon = styled(FiXCircle)`
+  cursor: pointer;
+  font-size: 24px; // Adjust the size as needed
+`;
+
+const SendIcon = styled(FiSend)`
+  cursor: pointer;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
+  // Position adjustments as necessary
+`;
+
 const Message = styled.div<{isUser: boolean}>`
   position: relative;
   margin: 10px 0;
@@ -254,7 +280,8 @@ const Message = styled.div<{isUser: boolean}>`
     isUser ? '10px 10px 0 10px' : '0 10px 10px 10px'};
   background-color: ${({isUser}) =>
     isUser ? 'var(--bg-secondary)' : 'var(--bg-primary)'};
-  color: white;
+  color: var(--text-primary);
+  text-align: ${({isUser}) => (isUser ? 'right' : 'left')};
 
   &::before {
     content: ${({isUser}) => (isUser ? "'You'" : "'Edgio Answers'")};
@@ -265,11 +292,14 @@ const Message = styled.div<{isUser: boolean}>`
     left: ${({isUser}) => (isUser ? 'auto' : '10px')};
     background-color: ${({isUser}) =>
       isUser ? 'var(--bg-secondary)' : 'var(--bg-primary)'};
-    color: white;
+    color: ${({isUser}) =>
+      isUser ? 'var(--text-primary)' : 'var(--colors-blue0)'};
     font-size: 0.75em;
+    font-weight: bold;
     padding: 0 5px;
   }
 `;
+
 const QuestionButtons = styled.div`
   display: flex;
   flex-direction: row;
@@ -292,17 +322,6 @@ const QuestionButton = styled.button`
   }
 `;
 
-const SendIcon = styled(FiSend)`
-  position: absolute;
-  right: 20px;
-  opacity: 0.5;
-
-  &.enabled {
-    opacity: 1;
-    cursor: pointer;
-  }
-`;
-
 const MessageContent = styled.div`
   .article-text {
     margin: 10px auto;
@@ -316,15 +335,15 @@ const MessageContent = styled.div`
 const ChatMessage = ({content}: {content: string}) => {
   return (
     <MessageContent>
+      {/* @ts-ignore */}
       <ReactMarkdown components={MDXComponents}>{content}</ReactMarkdown>
     </MessageContent>
   );
 };
 
-const EdgioAnswers: React.FC<{
-  isOpen: boolean;
-  onRequestClose: () => void;
-}> = ({isOpen, onRequestClose}) => {
+const EdgioAnswers = () => {
+  const router = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [inputText, setInputText] = useState<string>('');
   const {chatbotId, apiToken} = siteConfig.fireawai;
   const [channel, setChannel] = useState<ChatChannel | null>(null);
@@ -332,6 +351,26 @@ const EdgioAnswers: React.FC<{
   const [isAwaitingResponse, setIsAwaitingResponse] = useState<boolean>(false);
   const [starterQuestions, setStarterQuestions] = useState<string[]>([]);
   const isLoaded = useHydrationIsLoaded();
+
+  useEffect(() => {
+    const checkHash = () => {
+      const hash = window.location.hash;
+      setIsModalOpen(hash === ROUTE_HASH);
+    };
+
+    checkHash();
+
+    const handleRouteChange = (url: string) => {
+      const hash = new URL(url, window.location.href).hash;
+      setIsModalOpen(hash === ROUTE_HASH);
+    };
+
+    router.events.on('hashChangeComplete', handleRouteChange);
+
+    return () => {
+      router.events.off('hashChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
 
   if (isLoaded) {
     Modal.setAppElement('#__next');
@@ -388,10 +427,10 @@ const EdgioAnswers: React.FC<{
 
   // Initialize the chat channel on mount
   useEffect(() => {
-    if (!channel && isOpen) {
+    if (!channel && isModalOpen) {
       initializeChannel();
     }
-  }, [apiToken, chatbotId, isOpen]);
+  }, [apiToken, chatbotId, isModalOpen]);
 
   // Stop the current channel and reconnect
   const stopAndReconnect = () => {
@@ -414,22 +453,28 @@ const EdgioAnswers: React.FC<{
   };
 
   const onCloseModal = () => {
-    if (channel) {
+    if (RESET_ON_CLOSE && channel) {
       channel.disconnect();
       setChannel(null);
     }
     setMessages([]);
     document.body.classList.remove('ReactModal__Body--open');
-    onRequestClose();
+    setIsModalOpen(false);
+    // Use Next.js router to remove the hash without affecting the history
+    const path = window.location.pathname;
+    router.push(path, path, {shallow: true});
   };
 
   return (
     <NoSSRWrapper>
       <Modal
-        isOpen={isOpen}
+        isOpen={isModalOpen}
         onAfterOpen={onOpenModal}
         onRequestClose={onCloseModal}
         style={customStyles}>
+        <ModalHeader>
+          <CloseIcon onClick={onCloseModal} />
+        </ModalHeader>
         <ChatContainer>
           {messages
             .slice()
@@ -479,3 +524,4 @@ const EdgioAnswers: React.FC<{
 };
 
 export default EdgioAnswers;
+export const edgioAnswersUrl = ROUTE_HASH;

@@ -1,3 +1,4 @@
+import {edgioAnswersUrl} from 'components/EdgioAnswers';
 import config from 'config/base.config';
 
 const {STATUS_URL, SUPPORT_URL, FORUM_URL, FIDDLE_URL} = config;
@@ -47,7 +48,7 @@ const headerNav = [
     items: [
       {
         name: 'Applications REST API',
-        url: '/rest-api',
+        url: '/rest_api',
       },
       {
         name: 'Applications EdgeJS API',
@@ -66,10 +67,10 @@ const headerNav = [
   {
     title: 'Support',
     items: [
-      // {
-      //   name: 'Edgio Answers',
-      //   url: '',
-      // },
+      {
+        name: 'Edgio Answers',
+        url: edgioAnswersUrl,
+      },
       {
         name: 'Status Page',
         url: STATUS_URL,

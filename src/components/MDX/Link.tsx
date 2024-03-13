@@ -67,11 +67,12 @@ function Link({
         </ExternalLink>
       );
     case 'anchor':
-      // eslint-disable-next-line jsx-a11y/anchor-has-content
       return (
-        <a className={cn(classes, className)} href={href} {...props}>
-          {modifiedChildren}
-        </a>
+        <NextLink href={href}>
+          <a className={cn(classes, className)} {...props}>
+            {modifiedChildren}
+          </a>
+        </NextLink>
       );
   }
 

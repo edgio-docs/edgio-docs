@@ -1,12 +1,12 @@
 import {useState} from 'react';
 
-import {useDocSearchKeyboardEvents} from '@docsearch/react';
 import {FiSearch} from 'react-icons/fi'; // Make sure to install react-icons using `npm install react-icons`
 import styled from 'styled-components';
 
-import EdgioAnswers from 'components/EdgioAnswers';
+import {edgioAnswersUrl} from 'components/EdgioAnswers';
 import AlgoliaSearch from 'components/Layout/Header/AlgoliaSearch';
 import NoSSRWrapper from 'components/Layout/NoSSRWrapper';
+import Link from 'components/MDX/Link';
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 
@@ -35,21 +35,29 @@ const SearchContainer = styled.div<{active: string}>`
   }
 
   .search-button {
-    background: transparent;
     border: none;
     color: var(--text-primary);
     cursor: pointer;
     font-size: 16px;
     padding: 5px 10px;
-    transition: color 0.2s ease-out, border-bottom 0.2s ease-out;
+    position: relative;
+    text-decoration: none;
 
-    &:hover,
-    &.active {
-      color: var(--colors-blue0);
-      border-bottom: 2px solid var(--colors-blue0);
+    ::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      height: 2px;
+      left: 0;
+      background: #2993e0;
+      width: 0;
+      transform: translateY(2px);
+      transition: width 0.2s ease-in-out;
     }
-    &.active {
-      transition: color 0.2s ease-in, border-bottom 0.2s ease-in;
+
+    &:hover::after,
+    &.active::after {
+      width: 100%;
     }
   }
 
@@ -119,8 +127,8 @@ const SparkleSvg = styled.svg`
   margin-left: 4px;
 `;
 
-const KeywordSearchButton = styled.button``;
-const EdgioAnswersButton = styled.button`
+const KeywordSearchButton = styled.div``;
+const EdgioAnswersButton = styled(Link)`;
   display: flex;
   gap; 4px
 `;
@@ -174,7 +182,6 @@ export default function SearchComponent() {
   const {context} = useAppContext();
   const {isClient} = useTheme();
 
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const isApplicationsActive = active === 'applications';
   const isUplynkActive = active === 'uplynk';
 
@@ -200,7 +207,7 @@ export default function SearchComponent() {
               </KeywordSearchButton>
               <EdgioAnswersButton
                 className="search-button"
-                onClick={() => setIsModalOpen(true)}>
+                href={edgioAnswersUrl}>
                 Edgio Answers <NewIconWithSparkle>New</NewIconWithSparkle>
               </EdgioAnswersButton>
             </>
@@ -230,10 +237,6 @@ export default function SearchComponent() {
           )}
         </div>
       </SearchContainer>
-      <EdgioAnswers
-        isOpen={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
-      />
     </NoSSRWrapper>
   );
 }

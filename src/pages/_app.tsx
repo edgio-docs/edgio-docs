@@ -12,9 +12,10 @@ import Script from 'next/script';
 import {DefaultSeo} from 'next-seo';
 import NProgress from 'nprogress';
 
+// Universal loading page (used in dynamically imported components) which contains the wrapper of each page
+import EdgioAnswers from 'components/EdgioAnswers';
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
 import {siteConfig} from 'config/appConfig';
-// Universal loading page (used in dynamically imported components) which contains the wrapper of each page
 import {AppProvider, AppProviderProps} from 'contexts/AppContext';
 import {ThemeProvider} from 'contexts/ThemeContext';
 import '../styles/algolia.css';
@@ -140,6 +141,7 @@ export default function MyApp({Component, pageProps}: DocsAppProps) {
           <MDXEmbedProvider>
             <Component {...pageProps} />
           </MDXEmbedProvider>
+          <EdgioAnswers />
         </ThemeProvider>
       </AppProvider>
     </AppShell>

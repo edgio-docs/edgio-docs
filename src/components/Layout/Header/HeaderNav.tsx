@@ -1,9 +1,9 @@
-import {Menu, MenuList, MenuButton, MenuLink} from '@reach/menu-button';
+import {Menu, MenuButton, MenuLink, MenuList} from '@reach/menu-button';
 import {FaAngleDown} from 'react-icons/fa';
 import styled from 'styled-components';
 
-import Link from 'components/MDX/Link';
 import '@reach/menu-button/styles.css';
+import Link from 'components/MDX/Link';
 import headerNavConfig from 'config/header.nav';
 
 const StyledMenuButton = styled(MenuButton)`
@@ -30,15 +30,13 @@ const StyledMenuButton = styled(MenuButton)`
   }
 `;
 
-const StyledMenuLink = styled.div`
-  a {
-    color: inherit;
-    text-decoration: none;
+const StyledMenuLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
 
-    &:hover {
-      color: var(--colors-blue0);
-      text-decoration: none;
-    }
+  &:hover {
+    color: var(--colors-blue0);
+    text-decoration: none;
   }
 `;
 
@@ -112,11 +110,8 @@ export default function HeaderNav() {
           <Menu key={index}>
             <StyledMenuButton>
               {isLink ? (
-                <StyledMenuLink>
-                  {' '}
-                  <Link href={navItem.url} versioned={false}>
-                    {navItem.title}
-                  </Link>
+                <StyledMenuLink href={navItem.url} versioned={false}>
+                  {navItem.title}
                 </StyledMenuLink>
               ) : (
                 <>
@@ -135,10 +130,8 @@ export default function HeaderNav() {
                   }
                   return (
                     <MenuLink key={index} as="span">
-                      <StyledMenuLink>
-                        <Link href={item.url} versioned={false}>
-                          {item.name}
-                        </Link>
+                      <StyledMenuLink href={item.url} versioned={false}>
+                        {item.name}
                       </StyledMenuLink>
                     </MenuLink>
                   );

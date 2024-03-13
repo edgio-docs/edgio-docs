@@ -13,7 +13,7 @@ import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
 
 import NoSSRWrapper from './Layout/NoSSRWrapper';
 
-const RESET_ON_CLOSE = true;
+const RESET_ON_CLOSE = false;
 const ROUTE_HASH = '#edgio-answers';
 
 interface Message {
@@ -498,8 +498,8 @@ const EdgioAnswers = () => {
     if (RESET_ON_CLOSE && channel) {
       channel.disconnect();
       setChannel(null);
+      setMessages([]);
     }
-    setMessages([]);
     document.body.classList.remove('ReactModal__Body--open');
     setIsModalOpen(false);
     // Use Next.js router to remove the hash without affecting the history

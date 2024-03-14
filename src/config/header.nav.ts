@@ -3,7 +3,20 @@ import config from 'config/base.config';
 
 const {STATUS_URL, SUPPORT_URL, FORUM_URL, FIDDLE_URL} = config;
 
-const headerNav = [
+type HeaderNavItemOrDivider = HeaderNavItem | null;
+interface HeaderNavItem {
+  name: string;
+  url: string;
+  useNextLink?: boolean;
+}
+
+interface HeaderNavGroup {
+  title: string;
+  items?: HeaderNavItemOrDivider[];
+  url?: string;
+}
+
+const headerNav: HeaderNavGroup[] = [
   {
     title: 'Product',
     items: [
@@ -45,6 +58,7 @@ const headerNav = [
       {
         name: 'Applications REST API',
         url: '/rest_api',
+        useNextLink: false,
       },
       {
         name: 'Applications EdgeJS API',

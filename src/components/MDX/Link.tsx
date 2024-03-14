@@ -10,6 +10,7 @@ type AProps = JSX.IntrinsicElements['a'];
 
 interface LinkProps extends AProps {
   versioned?: boolean;
+  useNextLink?: boolean;
 }
 
 function Link({
@@ -17,6 +18,7 @@ function Link({
   className,
   children,
   versioned = true,
+  useNextLink = true,
   ...props
 }: LinkProps) {
   const {version} = useConditioning();
@@ -76,13 +78,17 @@ function Link({
       );
   }
 
-  return (
+  return useNextLink ? (
     <NextLink href={href}>
       {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
       <a className={cn(classes, className)} {...props}>
         {modifiedChildren}
       </a>
     </NextLink>
+  ) : (
+    <a href={href} className={cn(classes, className)} {...props}>
+      {modifiedChildren}
+    </a>
   );
 }
 

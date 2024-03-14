@@ -122,16 +122,21 @@ export default function HeaderNav() {
             </StyledMenuButton>
             {hasItems && (
               <StyledMenuList>
-                {navItem.items.map((item, index) => {
+                {navItem.items?.map((item, index) => {
                   const isDivider = item === null;
 
                   if (isDivider) {
                     return <StyledMenuDivider key={index} />;
                   }
+
+                  const {name, url, useNextLink} = item;
                   return (
                     <MenuLink key={index} as="span">
-                      <StyledMenuLink href={item.url} versioned={false}>
-                        {item.name}
+                      <StyledMenuLink
+                        href={url}
+                        versioned={false}
+                        useNextLink={useNextLink}>
+                        {name}
                       </StyledMenuLink>
                     </MenuLink>
                   );

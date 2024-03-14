@@ -385,14 +385,13 @@ const EdgioAnswers = () => {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const chatInputRef = useRef<HTMLInputElement>(null);
-  const [inputText, setInputText] = useState<string>('');
   const {chatbotId, apiToken} = siteConfig.fireawai;
   const [channel, setChannel] = useState<ChatChannel | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [isAwaitingResponse, setIsAwaitingResponse] = useState<boolean>(false);
-  const {starterQuestions, setStarterQuestions} = useEdgioAnswersContext();
+  const {starterQuestions, setStarterQuestions, query, setQuery} =
+    useEdgioAnswersContext();
   const isLoaded = useHydrationIsLoaded();
-  const hasContent = inputText.trim().length > 0;
   const placeholder = isAwaitingResponse
     ? 'Waiting for response...'
     : 'Ask something...';
@@ -419,6 +418,10 @@ const EdgioAnswers = () => {
 
   if (isLoaded) {
     Modal.setAppElement('#__next');
+  }
+
+  function hasContent() {
+    return query.trim().length > 0;
   }
 
   const initializeChannel = () => {
@@ -455,7 +458,7 @@ const EdgioAnswers = () => {
 
           if (message.finished) {
             setIsAwaitingResponse(false);
-            setInputText('');
+            setQuery('');
           }
         },
       });
@@ -465,7 +468,7 @@ const EdgioAnswers = () => {
         }
       });
       setChannel(newChannel);
-      setInputText('');
+      setQuery('');
     }
   };
 
@@ -485,10 +488,10 @@ const EdgioAnswers = () => {
   };
 
   const sendMessage = () => {
-    if (inputText.trim() && channel && !isAwaitingResponse) {
-      channel.send(inputText);
+    if (query.trim() && channel && !isAwaitingResponse) {
+      channel.send(query);
       setIsAwaitingResponse(false);
-      setInputText('');
+      setQuery('');
     }
   };
 
@@ -496,6 +499,10 @@ const EdgioAnswers = () => {
     document.body.classList.add('ReactModal__Body--open');
     if (chatInputRef.current) {
       chatInputRef.current.focus();
+    }
+
+    if (hasContent()) {
+      sendMessage();
     }
   };
 
@@ -543,7 +550,7 @@ const EdgioAnswers = () => {
               <QuestionButton
                 key={index}
                 onClick={() => {
-                  setInputText(question);
+                  setQuery(question);
                   setIsAwaitingResponse(true);
                   channel?.send(question);
                 }}>
@@ -556,16 +563,16 @@ const EdgioAnswers = () => {
               <ChatInput
                 ref={chatInputRef}
                 type="text"
-                value={inputText}
-                hasContent={hasContent}
-                onChange={(e) => setInputText(e.target.value)}
+                value={query}
+                hasContent={hasContent()}
+                onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                 placeholder={placeholder}
                 disabled={isAwaitingResponse}
               />
               {!isAwaitingResponse ? (
                 <SendButton
-                  hasContent={hasContent}
+                  hasContent={hasContent()}
                   awaitingResponse={isAwaitingResponse}
                   onClick={sendMessage}>
                   <FiSend />
@@ -589,17 +596,19 @@ export const EdgioAnswersInput = ({duration = 1000}) => {
   const [index, setIndex] = useState(0);
   const [placeholder, setPlaceholder] = useState('');
   const inputRef = useRef(null);
-  const {starterQuestions: presets} = useEdgioAnswersContext();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const {starterQuestions: presets, query, setQuery} = useEdgioAnswersContext();
+  const router = useRouter();
 
-  // Function to type out messages
   const typeMessage = (message: string, index: number) => {
     let i = 0;
-    const interval = setInterval(() => {
+    intervalRef.current = setInterval(() => {
+      // Assign to intervalRef.current
       if (i <= message.length) {
         setPlaceholder(message.substring(0, i));
         i++;
       } else {
-        clearInterval(interval);
+        clearInterval(intervalRef.current as NodeJS.Timeout);
         setTimeout(() => {
           if (index < presets.length - 1) {
             setIndex((prevIndex) => prevIndex + 1);
@@ -619,15 +628,43 @@ export const EdgioAnswersInput = ({duration = 1000}) => {
         typeMessage(presets[index], index);
       }
     }
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, [index, presets]);
+
+  function onFocus() {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      setPlaceholder(defaultPlaceholder);
+    }
+  }
+
+  function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Enter') {
+      setQuery(e.currentTarget.value);
+      router.push(edgioAnswersUrl);
+    }
+  }
+
+  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setQuery(e.target.value);
+  }
 
   return (
     <NoSSRWrapper>
       <ChatInput
         ref={inputRef}
         type="text"
-        hasContent={false}
+        value={query}
+        hasContent={query.trim().length > 0}
         placeholder={placeholder}
+        onChange={onChange}
+        onFocus={onFocus}
+        onClick={onFocus}
+        onKeyDown={onKeyDown}
       />
     </NoSSRWrapper>
   );

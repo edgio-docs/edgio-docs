@@ -179,6 +179,7 @@ const UplynkSearch = styled.input`
 
 const StyledEdgioAnswersInput = styled.div`
   input {
+    color: var(--text-primary);
     width: 100%;
     border: none;
     background: transparent;

@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 
 import {ChatChannel} from '@fireaw.ai/sdk';
 import {useRouter} from 'next/router';
@@ -9,6 +9,7 @@ import styled from 'styled-components';
 
 import {MDXComponents} from 'components/MDX/MDXComponents';
 import {siteConfig} from 'config/appConfig';
+import {useEdgioAnswersContext} from 'contexts/EdgioAnswersContext';
 import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
 
 import NoSSRWrapper from './Layout/NoSSRWrapper';
@@ -383,12 +384,13 @@ const ChatMessage = ({content}: {content: string}) => {
 const EdgioAnswers = () => {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const chatInputRef = useRef<HTMLInputElement>(null);
   const [inputText, setInputText] = useState<string>('');
   const {chatbotId, apiToken} = siteConfig.fireawai;
   const [channel, setChannel] = useState<ChatChannel | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [isAwaitingResponse, setIsAwaitingResponse] = useState<boolean>(false);
-  const [starterQuestions, setStarterQuestions] = useState<string[]>([]);
+  const {starterQuestions, setStarterQuestions} = useEdgioAnswersContext();
   const isLoaded = useHydrationIsLoaded();
   const hasContent = inputText.trim().length > 0;
   const placeholder = isAwaitingResponse
@@ -469,10 +471,10 @@ const EdgioAnswers = () => {
 
   // Initialize the chat channel on mount
   useEffect(() => {
-    if (!channel && isModalOpen) {
+    if (!channel) {
       initializeChannel();
     }
-  }, [apiToken, chatbotId, isModalOpen]);
+  }, [apiToken, chatbotId]);
 
   // Stop the current channel and reconnect
   const stopAndReconnect = () => {
@@ -492,6 +494,9 @@ const EdgioAnswers = () => {
 
   const onOpenModal = () => {
     document.body.classList.add('ReactModal__Body--open');
+    if (chatInputRef.current) {
+      chatInputRef.current.focus();
+    }
   };
 
   const onCloseModal = () => {
@@ -502,7 +507,7 @@ const EdgioAnswers = () => {
     }
     document.body.classList.remove('ReactModal__Body--open');
     setIsModalOpen(false);
-    // Use Next.js router to remove the hash without affecting the history
+
     const path = window.location.pathname;
     router.push(path, path, {shallow: true});
   };
@@ -549,6 +554,7 @@ const EdgioAnswers = () => {
           <ChatActions>
             <ChatInputContainer>
               <ChatInput
+                ref={chatInputRef}
                 type="text"
                 value={inputText}
                 hasContent={hasContent}
@@ -573,6 +579,56 @@ const EdgioAnswers = () => {
           </ChatActions>
         </Modal>
       </ModalWrapper>
+    </NoSSRWrapper>
+  );
+};
+
+const defaultPlaceholder = 'Ask a question...';
+
+export const EdgioAnswersInput = ({duration = 1000}) => {
+  const [index, setIndex] = useState(0);
+  const [placeholder, setPlaceholder] = useState('');
+  const inputRef = useRef(null);
+  const {starterQuestions: presets} = useEdgioAnswersContext();
+
+  // Function to type out messages
+  const typeMessage = (message: string, index: number) => {
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i <= message.length) {
+        setPlaceholder(message.substring(0, i));
+        i++;
+      } else {
+        clearInterval(interval);
+        setTimeout(() => {
+          if (index < presets.length - 1) {
+            setIndex((prevIndex) => prevIndex + 1);
+          } else {
+            setPlaceholder(defaultPlaceholder);
+          }
+        }, duration);
+      }
+    }, 50);
+  };
+
+  useEffect(() => {
+    if (presets.length) {
+      if (index === presets.length) {
+        setPlaceholder(defaultPlaceholder);
+      } else {
+        typeMessage(presets[index], index);
+      }
+    }
+  }, [index, presets]);
+
+  return (
+    <NoSSRWrapper>
+      <ChatInput
+        ref={inputRef}
+        type="text"
+        hasContent={false}
+        placeholder={placeholder}
+      />
     </NoSSRWrapper>
   );
 };

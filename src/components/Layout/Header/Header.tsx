@@ -30,7 +30,7 @@ const HeaderContainer = styled.header`
   grid-template-rows: auto 2px;
   align-items: center;
   gap: 0px;
-  padding: 0 32px;
+  padding: 16px 32px;
   border-bottom: 1px solid var(--border-primary);
 `;
 

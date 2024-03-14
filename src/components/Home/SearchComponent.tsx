@@ -3,7 +3,7 @@ import {useState} from 'react';
 import {FiSearch} from 'react-icons/fi'; // Make sure to install react-icons using `npm install react-icons`
 import styled from 'styled-components';
 
-import {edgioAnswersUrl} from 'components/EdgioAnswers';
+import {EdgioAnswersInput, edgioAnswersUrl} from 'components/EdgioAnswers';
 import AlgoliaSearch from 'components/Layout/Header/AlgoliaSearch';
 import NoSSRWrapper from 'components/Layout/NoSSRWrapper';
 import Link from 'components/MDX/Link';
@@ -21,7 +21,7 @@ const searchButtons = [
   },
 ];
 
-const SearchContainer = styled.div<{active: string}>`
+const SearchContainer = styled.div<{active?: string}>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -177,66 +177,102 @@ const UplynkSearch = styled.input`
   outline: none;
 `;
 
-export default function SearchComponent() {
+const StyledEdgioAnswersInput = styled.div`
+  input {
+    width: 100%;
+    border: none;
+    background: transparent;
+  }
+`;
+
+function HomeSearchComponent() {
   const [active, setActive] = useState('applications');
-  const {context} = useAppContext();
   const {isClient} = useTheme();
 
   const isApplicationsActive = active === 'applications';
   const isUplynkActive = active === 'uplynk';
 
   return (
-    <NoSSRWrapper>
-      <SearchContainer active={active}>
-        <div className="search-buttons">
-          {context === ContextType.HOME ? (
-            searchButtons.map((button) => (
-              <button
-                key={button.id}
-                className={`search-button ${
-                  active === button.id ? 'active' : ''
-                }`}
-                onClick={() => setActive(button.id)}>
-                {button.label}
-              </button>
-            ))
-          ) : (
-            <>
+    <SearchContainer active={active}>
+      <div className="search-buttons">
+        {searchButtons.map((button) => (
+          <button
+            key={button.id}
+            className={`search-button ${active === button.id ? 'active' : ''}`}
+            onClick={() => setActive(button.id)}>
+            {button.label}
+          </button>
+        ))}
+      </div>
+      <div className="separator"></div>
+      <div className="search-box">
+        <FiSearch className="search-icon" />
+        <div className="search-input">
+          {isApplicationsActive && <AlgoliaSearch />}
+          {isUplynkActive && (
+            <UplynkSearch
+              onKeyPress={(event) => {
+                if (event.key === 'Enter') {
+                  handleUplynkSearch(event.currentTarget.value);
+                }
+              }}
+            />
+          )}
+        </div>
+        {isApplicationsActive && (
+          <KeyboardButton>
+            {isClient && navigator.platform.includes('Mac')
+              ? '⌘ K'
+              : 'Ctrl + K'}
+          </KeyboardButton>
+        )}
+      </div>
+    </SearchContainer>
+  );
+}
+
+function ProductSearchComponent() {
+  return (
+    <SearchContainer>
+      <div className="search-buttons">
+        {
+          <>
+            {/*
               <KeywordSearchButton className="search-button active">
                 Keyword Search
               </KeywordSearchButton>
-              <EdgioAnswersButton
-                className="search-button"
-                href={edgioAnswersUrl}>
-                Edgio Answers <NewIconWithSparkle>New</NewIconWithSparkle>
-              </EdgioAnswersButton>
-            </>
-          )}
+              */}
+            <EdgioAnswersButton
+              className="search-button active"
+              href={edgioAnswersUrl}>
+              Edgio Answers <NewIconWithSparkle>New</NewIconWithSparkle>
+            </EdgioAnswersButton>
+          </>
+        }
+      </div>
+      <div className="separator"></div>
+      <div className="search-box">
+        <FiSearch className="search-icon" />
+        <div className="search-input">
+          <StyledEdgioAnswersInput>
+            <EdgioAnswersInput />
+          </StyledEdgioAnswersInput>
         </div>
-        <div className="separator"></div>
-        <div className="search-box">
-          <FiSearch className="search-icon" />
-          <div className="search-input">
-            {isApplicationsActive && <AlgoliaSearch />}
-            {isUplynkActive && (
-              <UplynkSearch
-                onKeyPress={(event) => {
-                  if (event.key === 'Enter') {
-                    handleUplynkSearch(event.currentTarget.value);
-                  }
-                }}
-              />
-            )}
-          </div>
-          {isApplicationsActive && (
-            <KeyboardButton>
-              {isClient && navigator.platform.includes('Mac')
-                ? '⌘ K'
-                : 'Ctrl + K'}
-            </KeyboardButton>
-          )}
-        </div>
-      </SearchContainer>
+      </div>
+    </SearchContainer>
+  );
+}
+
+export default function SearchComponent() {
+  const {context} = useAppContext();
+
+  return (
+    <NoSSRWrapper>
+      {context === ContextType.HOME ? (
+        <HomeSearchComponent />
+      ) : (
+        <ProductSearchComponent />
+      )}
     </NoSSRWrapper>
   );
 }

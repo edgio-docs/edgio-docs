@@ -10,11 +10,12 @@ const columnCount = 3;
 const SectionContainer = styled.div`
   width: 100%;
   padding: 40px;
-  background: var(--bg-primary);
+  background: var(--home-card-bg);
   box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   overflow: hidden;
   border: 1px solid var(--border-primary);
+  border-radius: 3px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

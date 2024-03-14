@@ -17,6 +17,7 @@ import EdgioAnswers from 'components/EdgioAnswers';
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
 import {siteConfig} from 'config/appConfig';
 import {AppProvider, AppProviderProps} from 'contexts/AppContext';
+import {EdgioAnswersProvider} from 'contexts/EdgioAnswersContext';
 import {ThemeProvider} from 'contexts/ThemeContext';
 import '../styles/algolia.css';
 import '../styles/code.css';
@@ -137,12 +138,14 @@ export default function MyApp({Component, pageProps}: DocsAppProps) {
       <AppProvider {...pageProps}>
         <GAnalytics />
         <DefaultSeo canonical={canonicalUrl} />
-        <ThemeProvider>
-          <MDXEmbedProvider>
-            <Component {...pageProps} />
-          </MDXEmbedProvider>
-          <EdgioAnswers />
-        </ThemeProvider>
+        <EdgioAnswersProvider>
+          <ThemeProvider>
+            <MDXEmbedProvider>
+              <Component {...pageProps} />
+            </MDXEmbedProvider>
+            <EdgioAnswers />
+          </ThemeProvider>
+        </EdgioAnswersProvider>
       </AppProvider>
     </AppShell>
   );

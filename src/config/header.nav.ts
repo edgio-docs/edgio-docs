@@ -34,10 +34,6 @@ const headerNav = [
         url: '/applications/v6',
       },
       {
-        name: 'Applications v5',
-        url: '/applications/v5',
-      },
-      {
         name: 'Applications v4',
         url: '/applications/v4',
       },

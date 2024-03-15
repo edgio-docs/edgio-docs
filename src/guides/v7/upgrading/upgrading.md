@@ -11,7 +11,7 @@ The {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} platform consists of the following 
 Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} to version 7 involves the following steps:
 
 1.  **{{ PRODUCT_LEGACY }} (Version 4 and Earlier):** [Rename layer0.config.js and {{ PRODUCT }} packages.](#rename-layer0-components)
-2.  [Upgrade Node.js](#upgrade-to-node-js) to version 18.x or 20.x and update your application to be compatible with Node.js 18.x or 20.x.
+2.  [Upgrade Node.js](#upgrade-to-node-js) to version 18.x or 20.x and update your application accordingly. 
 3.  [Create an {{ PRODUCT }} account.](#create-account)
 4.  [Create an organization.](#create-an-organization)
 5.  [Create a property.](#create-property)
@@ -166,7 +166,7 @@ Perform the following steps for each of your properties:
 
 [Learn how to use nvm to install Node.js.](/guides/install_nodejs)
 
-Once you are using Node.js v18 or v20, update your application code to be compatible with Node.js v18 or v20.
+Once you are using Node.js v18 or v20, update your application code to be compatible with your updated version of Node.js.
 
 <Callout type="important">
 
@@ -446,7 +446,7 @@ new Router().get('/', ({cache}) => {
 });
 ```
 
-In order to ease the transition to version 7, we provide limited support for legacy syntax. However, the following syntax is unsupported:
+<a id="legacy-syntax" />In order to ease the transition to version 7, we provide limited support for legacy syntax. However, the following syntax is unsupported:
 
 -   **fallback():** The `fallback()` method, which is unsupported in version 7, executes when no other route is matched. If you are trying to proxy a request to a legacy origin, then you may do so by mapping the desired hostname to an origin configuration through the `default_origin_name` property.
 
@@ -501,8 +501,7 @@ In order to ease the transition to version 7, we provide limited support for leg
     });
     ```
 
--   **catch():** The `catch()` method is used to handle errors, usually by displaying a static error page, redirecting the client to a different page, or retrying the request from a different origin. Each of these scenarios are handled differently in v7. See the [Error Handling](/guides/performance/cdn_as_code/error_handling) guide for more information.
--   **destination():** The `destination()` method is unsupported in version 7 at this time. However, you may assign an origin to requests through `set_origin` and redirect requests through `url_redirect`. Additionally, you may use [Experimentation](/guides/experimentation) to distribute traffic to different destinations. 
+-   **destination():** The `destination()` method is unsupported in version 7. However, you may assign an origin to requests through `set_origin` and redirect requests through `url_redirect`. Additionally, you may use [Experimentation](/guides/experimentation) to distribute traffic to different destinations. 
 
 -   **ResponseWriter Methods:** The following `ResponseWriter` methods are not fully supported in version 7:
 
@@ -812,6 +811,7 @@ Review the following changes and revise your configuration as needed:
 - [GraphQL Caching End-of-Life](#graphql-caching-eol)
 - [Duplicate Query String Parameters](#duplicate-query-string-parameters)
 - [Log Data](#log-data)
+- [Incremental Static Regeneration (ISR)](#incremental-static-regeneration-isr)
 
 ### Cache-manifest.js File {/* cache-manifest-js-file */}
 
@@ -930,3 +930,7 @@ Review your code to see whether it generates duplicate query string parameters. 
 | xmt                     | resp_x_edg_t              | [Log the x-edg-t response header.](/guides/logs/rtld/custom_log_fields)                                                                                                                                                                                                                                                                                                                                          |
 | xut                     |                           | Version 7 does not support the `x-0-user-t` response header.                                                                                                                                                                                                                                                                                                                                                     |
 | zip                     |                           | Version 7 does not indicate whether the response was compressed. However, you may log the `Content-Encoding` response header. This header indicates the type of compression applied to the response payload. [Learn how to log headers and cookies.](/guides/logs/rtld/custom_log_fields)                                                                                                                        |
+
+### Incremental Static Regeneration (ISR) {/*incremental-static-regeneration-isr*/}
+
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 no longer supports generic Incremental Static Regeneration (ISR) through the means of the `serveStatic(...)` router method. If you are using ISR with a Next.js or Nuxt application, your application will continue to work as expected. 

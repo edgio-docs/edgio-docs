@@ -368,10 +368,6 @@ const nav = {
           path: 'security/dashboard',
         },
         {
-          title: 'Recent Event Logs',
-          path: 'security/recent_event_logs',
-        },
-        {
           title: 'Matched On Variables',
           path: 'security/matched_on_variables',
         },
@@ -488,10 +484,6 @@ const nav = {
         {
           title: 'Connectors',
           path: 'sites_frameworks/connectors',
-        },
-        {
-          title: 'Incremental Static Regeneration',
-          path: 'sites_frameworks/isg',
         },
         {
           title: 'Limits',

@@ -50,6 +50,7 @@ properties:
       - CUSTOM_RESPONSE
       - DROP_REQUEST
       - ALERT
+      - SILENT_CLOSE
   response_headers:
     type: array
     description: |

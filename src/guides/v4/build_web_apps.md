@@ -6,7 +6,9 @@ The easiest way to get started is by using one of our "Deploy to {{ PRODUCT }}" 
 
 {{ PRODUCT }} supports many frameworks out of the box. Choose from two of the most popular frameworks below, or expand the menu item for Frameworks and choose your preferred framework to view the specific guide.
 
-**{{ PRODUCT_NAME }} only supports Node.js version 14**
+{{ PRODUCT_NAME }} version 4.20.0 supports Node.js version 16. 
+
+{{ node_16_eol_callout.md }}
 
 ### Nuxt.js {/*nuxtjs*/}
 

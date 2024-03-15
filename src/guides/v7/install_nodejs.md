@@ -4,7 +4,7 @@ title: Install Node.js and npm
 
 <Callout type="info">
 
-  Node.js is only required for [CDN-as-code (EdgeJS)](/guides/performance/cdn_as_code). The following information is inapplicable to your setup if you only deploy from the {{ PORTAL }}.
+  Node.js is only required for [Cloud Functions](/guides/performance/serverless_compute). The following information is inapplicable to your setup if you only deploy from the {{ PORTAL }}.
 
 </Callout>
 

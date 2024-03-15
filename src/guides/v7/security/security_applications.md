@@ -473,7 +473,7 @@ You may create, modify, and delete Security App configurations.
 
 8.  Optional. [Audit production traffic](#threat-detection) using a new API Security ruleset.
 
-    1.  From the **Rules** section, click **API Security Rule**.
+    1.  From the **Rules** section, click **API Security**.
     2.  From the **Audit API Security Rule** option, select the desired API Security ruleset.
 
     <Callout type="info">
@@ -490,7 +490,7 @@ You may create, modify, and delete Security App configurations.
 
 9.  Optional. Select a [rate rule](/guides/security/rate_rules#rate-rule-administration) through which production traffic will be rate limited.
 
-    1.  From the **Rules** section, click **Rate Rules**.
+    1.  From the **Rules** section, click **Rate Rule**.
     2.  From the **Add Rate Rule** option, select the desired rate rule.
 
         <Callout type="info">

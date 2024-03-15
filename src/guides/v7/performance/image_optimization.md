@@ -67,11 +67,6 @@ Images that meet the following requirements are eligible for processing:
 -   **Maximum File Size:** 10 MB
 -   **Maximum Resolution:** 4096 x 4096
 -   **Color Space:** RGB
--   **Content-Type Response Header:** The response must include a `Content-Type` header that specifies an image media type. 
-
-    **Example:** Optimizing a webp image requires the following `Content-Type` response header:
-    
-    ```Content-Type: image/webp```
 
 <Callout type="info">
 
@@ -87,6 +82,14 @@ An optimized image must comply with the following limits:
 -   **Maximum Resolution:** 8192 x 8192
 
 {{ PRODUCT }} [returns an error](#response) when an attempting to generate an image that exceeds the above limits.
+
+## Response Header Requirement {/*response-header-requirement*/}
+
+The response must include a `Content-Type` header that specifies an image media type. 
+
+**Example:** Optimizing a webp image requires the following `Content-Type` response header:
+
+```Content-Type: image/webp```
 
 ## Enabling Image Optimization {/*enabling-image-optimization*/}
 

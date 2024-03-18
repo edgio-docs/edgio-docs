@@ -2,11 +2,15 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 import {useAppContext} from 'contexts/AppContext';
+import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 import {StringMap} from 'utils/Types';
 
-import {IconCode} from '../Icon/IconCode';
+import {
+  IconAppsDevelopers,
+  IconAppsDevelopersDark,
+} from '../Icon/IconAppsDevelopers';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
@@ -61,13 +65,14 @@ export default function DeveloperTools() {
     version: {toVersionedPath},
   } = useConditioning();
   const {config} = useAppContext();
+  const {themedValue} = useTheme();
 
   const routesByColumns = itemsByColumn(items(config), version, 'title', 5);
 
   return (
     <StyledComp>
       <SectionHeader
-        Icon={IconCode}
+        Icon={themedValue(IconAppsDevelopers, IconAppsDevelopersDark)}
         title="Developer Tools"
         subtitle={`Use these tools to interact with ${config.PRODUCT} and gain insight into how it is accelerating your site.`}
       />

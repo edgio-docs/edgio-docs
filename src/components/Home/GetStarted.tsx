@@ -2,12 +2,11 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 import {IconPerformance} from 'components/Icon/IconAppPerformance';
+import {IconSecurity} from 'components/Icon/IconAppSecurity';
 import {IconSites} from 'components/Icon/IconAppSites';
 import {IconArrow} from 'components/Icon/IconArrow';
 import {useAppContext} from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
-
-import {IconSecurity} from '../Icon/IconAppSecurity';
 
 const NextLink = Link;
 

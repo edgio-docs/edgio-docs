@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {
+  IconAppsPerformance,
+  IconAppsPerformanceDark,
+} from 'components/Icon/IconAppsPerformance';
 import {useAppContext} from 'contexts/AppContext';
+import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
-
-import {IconServer} from '../Icon/IconServer';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
@@ -259,13 +262,14 @@ export default function Cdn() {
     version: {toVersionedPath},
   } = useConditioning();
   const {config} = useAppContext();
+  const {themedValue} = useTheme();
 
   const routesByColumns = itemsByColumn(items, version, 'title', 8);
 
   return (
     <StyledComp>
       <SectionHeader
-        Icon={IconServer}
+        Icon={themedValue(IconAppsPerformance, IconAppsPerformanceDark)}
         title="Performance"
         subtitle={`Accelerate your web application through ${config.PRODUCT} ${config.PRODUCT_EDGE}.`}
       />

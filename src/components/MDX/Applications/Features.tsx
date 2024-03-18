@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import Security from 'components/Home/Security';
+import {useTheme} from 'contexts/ThemeContext';
 
 import AccountsandTeams from '../../Home/AccountsandTeams';
 import Cdn from '../../Home/Cdn';
@@ -9,7 +10,10 @@ import FrameworkGuides from '../../Home/FrameworkGuides';
 import GetStarted from '../../Home/GetStarted';
 import Reference from '../../Home/Reference';
 import SectionHeader from '../../Home/SectionHeader';
-import {IconSpark} from '../../Icon/IconSpark';
+import {
+  IconAppsGetStarted,
+  IconAppsGetStartedDark,
+} from '../../Icon/IconAppsGetStarted';
 import Container from '../../Layout/Container';
 
 const StyledHomepageFeatures = styled.div`
@@ -52,12 +56,13 @@ const StyledHomepageFeatures = styled.div`
 `;
 
 export default function ApplicationsFeatures() {
+  const {themedValue} = useTheme();
   return (
     <StyledHomepageFeatures>
       <Container>
         <GetStarted>
           <SectionHeader
-            Icon={IconSpark}
+            Icon={themedValue(IconAppsGetStarted, IconAppsGetStartedDark)}
             title="Get Started with Applications"
           />
         </GetStarted>

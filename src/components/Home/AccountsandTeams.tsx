@@ -2,10 +2,11 @@ import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 
-import {IconUser} from '../Icon/IconUser';
+import {IconAppsTeams, IconAppsTeamsDark} from '../Icon/IconAppsTeams';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
@@ -44,13 +45,14 @@ export default function AccountsandTeams() {
     version,
     version: {toVersionedPath},
   } = useConditioning();
+  const {themedValue} = useTheme();
 
   const routesByColumns = itemsByColumn(items, version, 'title', 5);
 
   return (
     <StyledComp>
       <SectionHeader
-        Icon={IconUser}
+        Icon={themedValue(IconAppsTeams, IconAppsTeamsDark)}
         title="Accounts &amp; Teams"
         subtitle="Create production, staging, and other environments and share your project."
       />

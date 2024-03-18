@@ -8,8 +8,8 @@ import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 
 import {IconAngular} from '../Icon/IconAngular';
+import {IconAppsSites, IconAppsSitesDark} from '../Icon/IconAppsSites';
 import {IconAstro, IconAstroDark} from '../Icon/IconAstro';
-import {IconBook} from '../Icon/IconBook';
 import {IconEmberJS} from '../Icon/IconEmberJS';
 import {IconGatsby} from '../Icon/IconGatsby';
 import {IconNextJS, IconNextJSDark} from '../Icon/IconNextJS';
@@ -404,7 +404,7 @@ export default function FrameworkGuides() {
   return (
     <StyledComp>
       <SectionHeader
-        Icon={IconBook}
+        Icon={themedValue(IconAppsSites, IconAppsSitesDark)}
         title="Sites"
         subtitle={`Accelerate your dynamic and static Jamstack sites through ${config.PRODUCT_PLATFORM}.`}
       />

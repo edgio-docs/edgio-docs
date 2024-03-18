@@ -2,11 +2,15 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 import {useAppContext} from 'contexts/AppContext';
+import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 import {StringMap} from 'utils/Types';
 
-import {IconStacks} from '../Icon/IconStacks';
+import {
+  IconAppsReference,
+  IconAppsReferenceDark,
+} from '../Icon/IconAppsReference';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
@@ -59,13 +63,14 @@ export default function Reference() {
     version: {toVersionedPath},
   } = useConditioning();
   const {config} = useAppContext();
+  const {themedValue} = useTheme();
 
   const routesByColumns = itemsByColumn(items(config), version, 'title', 6);
 
   return (
     <StyledComp>
       <SectionHeader
-        Icon={IconStacks}
+        Icon={themedValue(IconAppsReference, IconAppsReferenceDark)}
         title="Reference"
         subtitle={`Additional helpful information in regards to getting the most out of ${config.PRODUCT}.`}
       />

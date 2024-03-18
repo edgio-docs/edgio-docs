@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import {IconType} from 'react-icons';
 import styled from 'styled-components';
 

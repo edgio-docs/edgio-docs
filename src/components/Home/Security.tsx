@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {
+  IconAppsSecurity,
+  IconAppsSecurityDark,
+} from 'components/Icon/IconAppsSecurity';
 import {useAppContext} from 'contexts/AppContext';
+import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 
@@ -95,6 +100,8 @@ export default function Security() {
     version: {toVersionedPath},
   } = useConditioning();
   const {config} = useAppContext();
+  const {themedValue} = useTheme();
+
   const {PRODUCT, PRODUCT_SECURITY} = config;
 
   const routesByColumns = [...itemsByColumn(items, version, 'title', 8), []];
@@ -102,7 +109,7 @@ export default function Security() {
   return (
     <StyledComp>
       <SectionHeader
-        Icon="shield-dark"
+        Icon={themedValue(IconAppsSecurity, IconAppsSecurityDark)}
         title="Security"
         subtitle={`Protect your web applications without sacrificing performance through ${PRODUCT} ${PRODUCT_SECURITY}.`}
       />

@@ -479,26 +479,18 @@ paths:
     $ref: paths/cdn_profiles.yaml
     servers:
       - url: 'https://edgioapis.com/rtld/v1'
-    security:
-      - rtld_securityScope: [app.rtld]
   /cdn/profiles/{id}:
     $ref: paths/cdn_profiles_{id}.yaml
     servers:
       - url: 'https://edgioapis.com/rtld/v1'
-    security:
-      - rtld_securityScope: [app.rtld]
   /cdn/fields:
     $ref: paths/cdn_fields.yaml
     servers:
       - url: 'https://edgioapis.com/rtld/v1'
-    security:
-      - rtld_securityScope: [app.rtld]
   /aws-regions:
     $ref: paths/aws-regions.yaml
     servers:
       - url: 'https://edgioapis.com/rtld/v1'
-    security:
-      - rtld_securityScope: [app.rtld]
 components:
   securitySchemes:
     cacheScope:
@@ -549,7 +541,7 @@ components:
           tokenUrl: https://id.edgio.app/connect/token
           scopes:
             app.bot_security: Authorizes full access to Bot Manager.
-    rtld_securityScope:
+    rtldBearerAuth:
       type: oauth2
       description: Learn how to [generate and pass a token.](#section/Access-Tokens)
       flows:

@@ -22,7 +22,8 @@ const HeroContainer = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    padding: 40px 20px;
+    padding: 0 20px;
+    padding-top: 40px;
 
     h1,
     h2 {
@@ -32,7 +33,7 @@ const HeroContainer = styled.div`
 
     h1 {
       color: var(--text-primary);
-      font-family: 'Mark Bold';
+      font-family: 'Inter';
       font-weight: 700;
       font-size: 24px;
       line-height: 29px;

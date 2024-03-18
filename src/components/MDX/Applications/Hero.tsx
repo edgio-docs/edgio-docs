@@ -32,7 +32,7 @@ const HeroContainer = styled.div`
 
     h1 {
       color: var(--text-primary);
-      font-family: 'Mark Bold';
+      font-family: 'Inter';
       font-weight: 700;
       font-size: 24px;
       line-height: 29px;

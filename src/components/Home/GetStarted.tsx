@@ -1,18 +1,18 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {IconPerformance} from 'components/Icon/IconAppPerformance';
+import {IconSites} from 'components/Icon/IconAppSites';
 import {IconArrow} from 'components/Icon/IconArrow';
 import {useAppContext} from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 
-import {IconJamstack} from '../Icon/IconJamstack';
-import {IconSecurity} from '../Icon/IconSecurity';
-import {IconWebAppCDN} from '../Icon/IconWebAppCDN';
+import {IconSecurity} from '../Icon/IconAppSecurity';
 
 const NextLink = Link;
 
 interface IGetStartedCardProps {
-  icon: React.NamedExoticComponent<React.SVGProps<SVGSVGElement>>;
+  icon: any; //React.NamedExoticComponent<React.SVGProps<SVGSVGElement>>;
   title: string;
   subtitle: string;
   href: string;
@@ -130,14 +130,14 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
 
       <div className="cards">
         <GetStartedCard
-          icon={IconWebAppCDN}
+          icon={IconPerformance}
           title={config.PRODUCT_EDGE}
           subtitle={`Deploy your web application and start seeing the performance benefits with the ${config.PRODUCT} ${config.PRODUCT_EDGE} network.`}
           href={toVersionedPath(`${performanceGettingStarted}`)}
           hrefText="Deploy now"
         />
         <GetStartedCard
-          icon={IconJamstack}
+          icon={IconSites}
           title={config.PRODUCT_PLATFORM}
           subtitle={`Deploy static and dynamic Jamstack sites that run on ${config.PRODUCT}'s serverless functions.`}
           href={toVersionedPath(`${sitesGettingStarted}`)}

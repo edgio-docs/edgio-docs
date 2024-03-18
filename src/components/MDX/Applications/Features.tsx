@@ -1,7 +1,5 @@
-import {BiBook} from 'react-icons/bi';
 import styled from 'styled-components';
 
-import DocsResources from 'components/Home/DocsResources';
 import Security from 'components/Home/Security';
 
 import AccountsandTeams from '../../Home/AccountsandTeams';

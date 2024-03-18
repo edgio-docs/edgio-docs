@@ -6,11 +6,9 @@ This guide describes what you need to know when migrating from {{ PRODUCT }} {{ 
 
 ## Node Version {/*node-version*/}
 
-With {{ PRODUCT }} v4, your app will run in Node.js version 14.x when deployed to the {{ PRODUCT }} cloud. Therefore we highly suggest using Node.js version 14.x for all development. All previous versions of Node are not supported and may cause instability in your application.
+With {{ PRODUCT }} v4, your app will run in Node.js version 14.x when deployed to the {{ PRODUCT }} cloud. 
 
-If you do not have Node.js installed on your system, download and install it from the official [Node.js v14.x downloads](https://nodejs.org/dist/latest-v14.x/) page. Select the download that matches your operating system and run the installer. Note that the installer for Node.js will also install npm.
-
-If you are currently on a version of Node < v14.x, we recommend using `nvm` ([Node Version Manager](https://github.com/nvm-sh/nvm)) to switch between your current version and our supported version. This will help test and resolve any issues you may face during migration before deploying your site live on {{ PRODUCT }}.
+{{ node_16_eol_callout.md }}
 
 ## Upgrading Packages {/*upgrading-packages*/}
 

@@ -25,9 +25,11 @@ Optimize images through the following steps:
 
         For example, you may create a rule that resizes all JPG images whose URL path contains `/images/`.
 
-        ![Sample rule that resizes images](/images/v7/performance/image-optimization-sample-rule.png?width=650)
+        ![Sample rule that resizes images](/images/v7/performance/rules-use-case-default-image-optimizations.png?width=650)
 
     -   Requesting data from the client through [client hints](#client-hints).
+
+[View a sample implementation.](/guides/performance/rules/feature_scenarios#default-image-optimizations)
 
 ## How Does It Work? {/*how-does-it-work-*/}
 
@@ -80,6 +82,14 @@ An optimized image must comply with the following limits:
 -   **Maximum Resolution:** 8192 x 8192
 
 {{ PRODUCT }} [returns an error](#response) when an attempting to generate an image that exceeds the above limits.
+
+## Response Header Requirement {/*response-header-requirement*/}
+
+The response must include a `Content-Type` header that specifies an image media type. 
+
+**Example:** Optimizing a webp image requires the following `Content-Type` response header:
+
+```Content-Type: image/webp```
 
 ## Enabling Image Optimization {/*enabling-image-optimization*/}
 

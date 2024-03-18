@@ -325,12 +325,12 @@ through the **Allowed Request Content Types** option.
 
 ### File Extensions {/*file-extensions*/}
 
-Define the set of invalid file extensions via the **Extension
+Define the set of invalid file extensions through the **Extension
 Blacklist** option.
 
 **Key information:**
 
--   {{ PRODUCT_SECURITY }} flags a request as a threat when its file extension matches one
+-   {{ PRODUCT_SECURITY }} flags a request as a threat when its file extension, as determined by the request's relative path, matches one
     defined by this option.
 -   File extensions are case-insensitive.
 -   Add a file extension by typing it and then pressing `ENTER`.
@@ -469,8 +469,7 @@ You may create, modify, and delete access rules.
 
         <Callout type="info">
 
-          A request is blocked when its file extension matches a
-          value defined within this option.
+          A request is blocked when its file extension, as determined by the request's relative path, matches a value defined within this option.
 
         </Callout>
 

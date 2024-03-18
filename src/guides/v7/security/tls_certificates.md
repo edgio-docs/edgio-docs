@@ -25,7 +25,7 @@ title: TLS Certificates
 
 </Callout>
 
-### Autogenerating TLS Certificates {/*autogenerating-tls-certificates*/}
+## Autogenerating TLS Certificates {/*autogenerating-tls-certificates*/}
 
 {{ PRODUCT_NAME }} can automatically generate TLS Certificates on your behalf using [Let's Encrypt](https://letsencrypt.org/). These certificates are free, valid for 3 months, and automatically renewed as long as the following technical requirements remain met:
 
@@ -34,7 +34,7 @@ title: TLS Certificates
 -   [Domain Control Validation:](#domain-control-validation) Prove your control over that domain by adding an `_acme-challenge` CNAME record to it.
 -   **Web Server(s):** Enable or verify that your web servers support TLS 1.3 (recommended) or 1.2 encryption. 
 
-#### Certificate Authority Authorization {/*certificate-authority-authorization*/}
+### Certificate Authority Authorization {/*certificate-authority-authorization*/}
 
 The Let's Encrypt certificate authority (CA) must be allowed to issue certificates for each registered hostname. It is allowed to issue certificates when either of the following conditions are true:
 
@@ -113,7 +113,7 @@ The Let's Encrypt certificate authority (CA) must be allowed to issue certificat
 
     </Callout>
 
-#### Domain Control Validation {/*domain-control-validation*/}
+### Domain Control Validation {/*domain-control-validation*/}
 
 Before {{ PRODUCT }} may issue a certificate request on your behalf, we require that you validate your control over each of your hostnames by adding a CNAME record.  From your DNS service provider, add the following CNAME DNS entry for each desired hostname:
 
@@ -164,7 +164,7 @@ If you have previously used Let's Encrypt to generate certificates for your host
 
 [Learn more about DNS TXT domain control.](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge)
 
-#### TLS Certificate Verification {/*tls-certificate-verification*/}
+### TLS Certificate Verification {/*tls-certificate-verification*/}
 
 Once the above requirements are met, you should verify that a TLS certificate for each of your hostnames has been generated.
 
@@ -190,7 +190,7 @@ Once the above requirements are met, you should verify that a TLS certificate fo
 
 4.  Wait a few minutes and then verify that a certificate was created for that hostname.
 
-### Manually Creating a TLS Certificate {/*creating-a-certificate-manually*/}
+## Manually Creating a TLS Certificate {/*creating-a-certificate-manually*/}
 
 <Callout type="info">
 
@@ -271,7 +271,7 @@ The following procedure indicates how to create a CSR and a private key with Ope
 
 5.  Read the CSR (e.g., `cat {{ PRODUCT_NAME_LOWER }}.csr`) or copy it to your clipboard (on OSX, `cat {{ PRODUCT_NAME_LOWER }}.csr | pbcopy`) and send it to your CA for certification.
 
-### Uploading Your Certificate {/*uploading-your-certificate*/}
+## Uploading Your Certificate {/*uploading-your-certificate*/}
 
 Uploading a TLS certificate requires:
 
@@ -450,3 +450,7 @@ Mutual TLS request headers are described below:
 | x-ssl-client-v-start  | Client Certificate's Issued Date        | Indicates the date and time (GMT) at which the client certificate was issued. <br />**Example:** `Aug 10 18:54:27 2023 GMT`                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 [View the corresponding feature variables.](/guides/performance/rules/feature_variables#mtls)
+
+## Troubleshooting TLS {/*troubleshooting*/}
+
+If your origin returns a `502 Bad Gateway` or a `504 Gateway Timeout` response when served through {{ PRODUCT }}, then your origin configuration's TLS settings may be improperly configured. [View troubleshooting steps.](/guides/performance/troubleshooting#502-bad-gateway-status-code)

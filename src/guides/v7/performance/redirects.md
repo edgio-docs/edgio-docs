@@ -5,7 +5,7 @@ title: Redirects
 Redirect URLs through one of the following methods:
 -   **Rules:** Rules allow you to define how a URL will be redirected through the [URL Redirect feature](/guides/performance/rules/features#url-redirect). This feature is especially useful when URL redirects should only occur under specific conditions. 
 -   **CDN-as-Code:** If you are using CDN-as-code, then you may define URL redirects through the [url.url_redirect feature](/guides/performance/cdn_as_code/route_features#redirecting).
--   **Edge Functions:** Edge Functions allow you to [intelligently redirect URLS](/guides/edge_functions/example_redirects). 
+-   **Edge Functions:** Edge Functions allow you to [intelligently redirect URLS](/guides/edge_functions/examples/redirects). 
 -   **Location Header:** Include the `Location` response header within a `3xx` response to instruct clients to redirect to a different URL. Alternatively, you can instruct {{ PRODUCT }} to follow a redirect defined within a `Location` header provided by the origin through the [Follow Redirects feature](/guides/performance/rules/features#follow-redirects) ([follow_redirects](/docs/api/core/interfaces/types.Url.html#follow_redirects)).
 -   **Bulk Redirects:** Use this capability to define a list of URLs for which we will return a `3xx` response with a `Location` header set to the desired URL. In addition to managing URL redirects on an individual basis, you may import and export a list of URL redirects.
 
@@ -51,6 +51,7 @@ This capability allows you to define a list of URLs for which we will return a `
 -   Define a `3xx` status code for the redirect through the **Response status** option. By default, we return a `301 Moved Permanently` response.
 -   The **Forward query string to redirect location** option determines whether the `Location` header will include or exclude the request's query string. 
 -   You may define up to 10,000 redirects per environment.
+-   Once an environment contains 200 or more redirects, you may only manage them by importing CSV file(s).
 -   Changes to your redirect configuration will not take effect until the next deployment. 
 
 ### CSV Files {/*csv-files*/}

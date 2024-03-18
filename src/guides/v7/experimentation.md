@@ -51,7 +51,7 @@ A client is eligible to participate in an experiment if the request satisfies th
 An experiment:
 
 -   Identifies the set of traffic to which it will be applied.
--   Contains two or more variants. Each variant identifies the percentage of traffic to which its actions (aka [features](/guides/performance/rules/features) will be applied. 
+-   Contains two or more variants. Each variant identifies the percentage of traffic to which its actions (aka [features](/guides/performance/rules/features)) will be applied. 
 
 A single experiment with three variants is illustrated below.
 

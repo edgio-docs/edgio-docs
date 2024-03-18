@@ -2,7 +2,7 @@
 title: Feature Scenarios
 ---
 
-[Features](/guides/performance/rules/features) customizes how {{ PRODUCT }} processes your traffic. Common customizations are listed below.
+[Features](/guides/performance/rules/features) customize how {{ PRODUCT }} processes your traffic. Common customizations are listed below.
 
 -   [Disabling caching.](#disable-caching)
 -   [Defining a custom caching policy.](#custom-cache-policy)
@@ -12,7 +12,7 @@ title: Feature Scenarios
 -   [Tagging requests for purging.](#tagging-requests-for-purging)
 -   [Redirecting HTTP requests to HTTPS.](#http-to-https-redirects)
 
-### Disable Caching {/*disable-caching*/}
+## Disable Caching {/*disable-caching*/}
 
 By default, [{{ PRODUCT }} will only cache content](/guides/performance/caching#default-caching-policy) when it receives cache directives from your origin (e.g., your web servers). Prevent {{ PRODUCT }} from caching content even when cache directives are present by disabling caching for the desired requests through the [Bypass Cache feature](/guides/performance/rules/features#bypass-cache).
 
@@ -22,7 +22,7 @@ Add the [Bypass Client Cache feature](/guides/performance/rules/features#bypass-
 
 ![Bypass Cache and Bypass Client Cache features](/images/v7/performance/rules-use-case-bypass-client-cache.png?width=700)
 
-### Custom Cache Policy {/*custom-cache-policy*/}
+## Custom Cache Policy {/*custom-cache-policy*/}
 
 Customize how long {{ PRODUCT }} will cache your content on our network by adding the [Set Max Age feature](/guides/performance/rules/features#set-max-age). Define a max-age interval for each desired status code.
 
@@ -34,7 +34,7 @@ Add the [Stale While Revalidate feature](/guides/performance/rules/features#stal
 
 ![Bypass Cache and Stale While Revalidate features](/images/v7/performance/rules-use-case-stale-while-revalidate.png?width=700)
 
-### Custom Cache Key {/*custom-cache-key*/}
+## Custom Cache Key {/*custom-cache-key*/}
 
 {{ PRODUCT }} uses a [cache key](/guides/performance/caching/cache_key) to look up whether the requested content has been previously cached. By default, this cache key is determined by a variety of factors, including the requested URL and query string. This default configuration can lead to an optimal cache hit ratio when {{ PRODUCT }} serves different content for each unique query string. However, the cache hit ratio may be suboptimal when any of the following conditions are true:
 -   The response body does not vary by query string. 
@@ -45,7 +45,7 @@ Use the [Cache Key feature](/guides/performance/rules/features#cache-key) to tai
 
 ![Cache Key feature](/images/v7/performance/rules-use-case-cache-key.png)
 
-### Cache Metadata {/*cache-metadata*/}
+## Cache Metadata {/*cache-metadata*/}
 
 Troubleshoot cache-related issues by including cache metadata within the response sent to the client. This requires enabling the [Debug Header feature](/guides/performance/rules/features/debug-header). We recommend that you enable it within a rule that applies to all requests as illustrated below.
 
@@ -53,7 +53,7 @@ Troubleshoot cache-related issues by including cache metadata within the respons
 
 Once you have enabled this feature, cache metadata will be included in the response when you use the [Edgio Developer Tools Chrome extension](https://chrome.google.com/webstore/detail/edgio-developer-tools/ieehikdcdpeailgpfdbafhnbfhpdgefm) or by [manually requesting it through headers](/guides/performance/response#requesting-debug-cache-information).
 
-### Custom Response for Specific Status Codes {/*custom-response-for-specific-status-codes*/}
+## Custom Response for Specific Status Codes {/*custom-response-for-specific-status-codes*/}
 
 A common task is to provide a custom response for a specific status code.
 
@@ -79,9 +79,25 @@ Your rule should now look similar to the following illustration:
 
 ![Set Status Code feature](/images/v7/performance/rules-use-case-set-status-code.png?width=700)
 
-### Tagging Requests for Purging {/*tagging-requests-for-purging*/}
+## Tagging Requests for Purging {/*tagging-requests-for-purging*/}
 
-[Tag requests for purging](/guides/performance/caching/purging#surrogate-key) by setting the `Surrogate-Key` response header to the desired labels. If you use the [Set Response Headers feature](/guides/performance/rules/features#set-response-headers) to set this header, then you can take advantage of [feature variables](/guides/performance/rules/feature_variables) when defining labels. This allows you to dynamically assign one or more label(s). For example, you can tag requests by country and file extension by setting this header to this value: 
+[Tag requests for purging](/guides/performance/caching/purging#surrogate-key) by setting the `Surrogate-Key` response header to the desired labels. If you use the [Set Response Headers feature](/guides/performance/rules/features#set-response-headers) to set this header, then you can take advantage of [feature variables](/guides/performance/rules/feature_variables) when defining labels. This allows you to dynamically assign one or more label(s). 
+
+### Tagging by Hostname {/*tagging-by-hostname*/}
+
+Tag requests by hostname by setting the `Surrogate-Key` response header to: `%{host}`
+
+![Surrogate Key](/images/v7/performance/rules-use-case-surrogate-key-hostname.png)
+
+After which, you may purge requests by hostname as shown below.
+
+![Purge by surrogate key](/images/v7/performance/rules-use-case-purge-cache-hostname.png)
+
+The above purge request will purge all requests that were tagged with either `cdn.example.com` or `www.example.com`.
+
+### Tagging by Country and File Extension {/*tagging-by-country-and-file-extension*/}
+
+Tag requests by country and file extension by setting the `Surrogate-Key` response header to this value: 
 
 `%{geo_country} %{path//.*\./}`
 
@@ -95,6 +111,8 @@ Purge requests by country of origin, file extension, or both as shown below.
 
 The above purge request will purge all requests that were tagged with `US`, `png`, or both values. 
 
+### Single Tag with Multiple Conditions Example {/*single-tag-with-multiple-conditions-example*/}
+
 An alternative approach is to combine multiple conditions within a single tag. For example, tag content using a single tag that combines country and file extension by setting the `Surrogate-Key` response header to the following value:
 
 `%{geo_country}-%{path//.*\./}`
@@ -103,11 +121,11 @@ Purge all requests that originate from within the US for PNG images by submittin
 
 `US-png`
 
-### HTTP to HTTPS Redirects {/*http-to-https-redirects*/}
+## HTTP to HTTPS Redirects {/*http-to-https-redirects*/}
 
 Automatically redirect all HTTP requests to HTTPS.
 
-1.  Identity all HTTP requests by adding the [Scheme match condition](/guides/performance/rules/conditions#scheme) and setting it to `HTTP`.
+1.  Identify all HTTP requests by adding the [Scheme match condition](/guides/performance/rules/conditions#scheme) and setting it to `HTTP`.
 2.  Redirect HTTP requests to a HTTPS URL through the [URL Redirect feature](/guides/performance/rules/features#url-redirect). 
     1.  Set the **Source** option to `(.*)`. 
     2.  Set the **Destination** option to `https://%{host}$1`. The `%{host}` is a feature variable that is replaced by the host defined in the request URL. The `$1` represents the relative path for the request submitted by the client.
@@ -117,3 +135,39 @@ Automatically redirect all HTTP requests to HTTPS.
 Your rule should now look like similar to this:
 
 ![HTTP to HTTPS redirect](/images/v7/performance/rules-use-case-http-to-https-redirect.png?width=700)
+
+## Default Image Optimizations {/*default-image-optimizations*/}
+
+Automatically apply one or more image optimizations to all images. Once you have applied the following configuration, {{ PRODUCT }} will apply:
+-   Your default optimizations to all images.
+-   Any additional optimizations defined within the request, as long as those optimizations do not conflict with your default optimizations.
+
+1.  Identify all images by adding the [Path match condition](/guides/performance/rules/conditions#path). Use the `matches (simple)` operator and set the **Match Value** option to:
+
+    `/:path*/:file.:ext(jpg|jpeg|png|gif)`
+
+    The above value matches all requests whose file extension is either jpg, jpeg, png, or gif.
+
+    ![Matching images by file extension](/images/v7/performance/rules-use-case-default-image-optimizations-path.png)
+
+2.  Enable Image Optimization by adding the [Optimize Images feature](/guides/performance/rules/features#optimize-images).
+3.  Improve cache efficiency by adding the [Cache Key feature](/guides/performance/rules/features#cache-key). Set the **Query Parameters** option to `Exclude All`. 
+4.  Apply a default set of image optimizations by rewriting the URL through the [Rewrite URL feature](/guides/performance/rules/features#rewrite-url). Configure it as directed below.
+
+    1.  Set the **Source Path (Optional)** option to: `/.+`
+    2.  Set the **Match Style** option to `regexp`.
+    3.  Set the **Destination Path** option to:
+
+        `%{path}?%{query_string/(.+)/$1&}$1&<Default Optimizations>`
+
+        **Example:**
+
+        For example, the following configuration automatically generates a WebP image and strips metadata from the image:
+
+        `%{path}?%{query_string/(.+)/$1&}$1&auto=webp&strip=1`
+        
+        Your rule should now look like similar to this:
+
+        ![Default image optimizations](/images/v7/performance/rules-use-case-default-image-optimizations.png?width=700)
+
+

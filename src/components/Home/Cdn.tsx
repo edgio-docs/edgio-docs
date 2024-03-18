@@ -124,10 +124,10 @@ const items = {
       title: 'Purging',
       path: '/guides/performance/caching/purging',
     },
-    {
-      title: 'Static Prerendering',
-      path: '/guides/performance/static_prerendering',
-    },
+    //    {
+    //      title: 'Static Prerendering',
+    //      path: '/guides/performance/static_prerendering',
+    //    },
     {
       title: 'Predictive Prefetch',
       path: '/guides/performance/prefetching',

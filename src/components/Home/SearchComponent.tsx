@@ -25,7 +25,6 @@ const SearchContainer = styled.div<{active?: string}>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10px;
 
   .search-buttons {
     display: flex;
@@ -39,7 +38,7 @@ const SearchContainer = styled.div<{active?: string}>`
     color: var(--text-primary);
     cursor: pointer;
     font-size: 16px;
-    padding: 5px 10px;
+    padding: 0 10px 5px 10px;
     position: relative;
     text-decoration: none;
 

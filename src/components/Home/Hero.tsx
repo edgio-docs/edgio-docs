@@ -48,13 +48,16 @@ export const HeroContainer = styled.div<{backgroundImage: string}>`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   margin-bottom: 20px;
 `;
 
-export const StyledContainer = styled(Container)`
+export const StyledContainer = styled.div`
+  max-width: 80%;
+  padding: var(--container-padding);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 20px;
+  gap: 30px;
 `;

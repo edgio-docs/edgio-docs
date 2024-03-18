@@ -271,12 +271,10 @@ An effective strategy for reducing false positives (i.e., a legitimate request t
 exceptions. A rule exception identifies one or more rules that will be
 ignored for a set of requests. Identify requests using any of the
 following criteria:
--   **Argument:** Identifies all requests with a query string
-    parameter or body parameter whose name matches the specified value.
--   **Cookies:** Identifies all requests with a cookie whose name
-    matches the specified value.
--   **Header:** Identifies all requests with a request header whose
-    name matches the specified value.
+-   **Argument Name:** Identifies all requests with a query string parameter or body parameter whose name matches the specified value.
+-   **Argument Value:** Identifies all requests with a query string parameter or body parameter with the specified value.
+-   **Cookies:** Identifies all requests with a cookie whose name matches the specified value.
+-   **Header:** Identifies all requests with a request header whose name matches the specified value.
 
 <Callout type="tip">
 

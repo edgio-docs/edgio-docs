@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Edgio REST API
-  version: 0.0.4
+  version: 0.1.0
   x-logo:
     url: 'https://docs.edg.io/_next/static/media/edgio-dark.ea0d686f.webp'
     backgroundColor: '#FFFFFF'
@@ -137,6 +137,12 @@ tags:
       An API schema is a JSON schema that describes the structure for a valid API payload.
       
       <a href="https://docs.edg.io/guides/security/api_security#json-schema-syntax" target="_blank">Learn more about supported JSON schema syntax.</a>
+  - name: RTLD CDN Profile
+    description: Automate RTLD CDN profile management.
+  - name: Log Fields
+    description: Retrieve log fields associated with a RTLD module.
+  - name: AWS Regions
+    description: Retrieve the available set of AWS regions.
 paths:
   /config/v0.1/tls-certs/{cert_id}:
     $ref: paths/config_v0.1_tls-certs_{cert_id}.yaml
@@ -469,6 +475,30 @@ paths:
       - url: 'https://edgioapis.com/bot-security/v0.9'
     security:
       - securityScope: {}
+  /cdn/profiles:
+    $ref: paths/cdn_profiles.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
+    security:
+      - rtld_securityScope: [app.rtld]
+  /cdn/profiles/{id}:
+    $ref: paths/cdn_profiles_{id}.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
+    security:
+      - rtld_securityScope: [app.rtld]
+  /cdn/fields:
+    $ref: paths/cdn_fields.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
+    security:
+      - rtld_securityScope: [app.rtld]
+  /aws-regions:
+    $ref: paths/aws-regions.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
+    security:
+      - rtld_securityScope: [app.rtld]
 components:
   securitySchemes:
     cacheScope:
@@ -519,7 +549,14 @@ components:
           tokenUrl: https://id.edgio.app/connect/token
           scopes:
             app.bot_security: Authorizes full access to Bot Manager.
-
+    rtld_securityScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.rtld: Authorizes full access to RTLD.
 x-tagGroups:
   - name: Cache
     tags:
@@ -552,3 +589,8 @@ x-tagGroups:
     tags:
       - properties
       - environments
+  - name: RTLD
+    tags:
+      - RTLD CDN Profile
+      - Log Fields
+      - AWS Regions

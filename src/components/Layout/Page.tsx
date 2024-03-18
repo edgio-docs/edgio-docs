@@ -222,7 +222,7 @@ function Banner() {
   if (version.selectedVersion === '7') {
     return (
       <StyledBanner future>
-        CDN-as-code support for Node.js 16 is undergoing end-of-life.&nbsp;
+        Cloud Functions support for Node.js 16 is undergoing end-of-life.&nbsp;
         <Link href="/guides/install_nodejs">View end-of-life plan.</Link>
       </StyledBanner>
     );

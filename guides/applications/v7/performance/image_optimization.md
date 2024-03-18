@@ -83,6 +83,14 @@ An optimized image must comply with the following limits:
 
 {{ PRODUCT }} [returns an error](#response) when an attempting to generate an image that exceeds the above limits.
 
+## Response Header Requirement {/*response-header-requirement*/}
+
+The response must include a `Content-Type` header that specifies an image media type. 
+
+**Example:** Optimizing a webp image requires the following `Content-Type` response header:
+
+```Content-Type: image/webp```
+
 ## Enabling Image Optimization {/*enabling-image-optimization*/}
 
 {{ PRODUCT }} transforms images when the following conditions are met:

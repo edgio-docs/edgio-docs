@@ -32,6 +32,7 @@
   --search-input-bg: #101820;
   --search-input-icon: #8b9197;
   --theme-primary: var(--colors-blue0);
+  --ea-header-bg: var(--bg-secondary);
   --ea-input-field-bg: var(--bg-primary);
   --ea-input-field-active-bg: var(--bg-secondary);
   --ea-action-icon-color: var(--text-primary);
@@ -185,6 +186,7 @@
   --docsearch-hit-color: #cbcbcb;
 
   /* Edgio Answers */
+  --ea-header-bg: #101820;
   --ea-input-field-bg: #3a444d;
   --ea-input-field-active-bg: #101820;
   --ea-input-placeholder-color: #8b9197;

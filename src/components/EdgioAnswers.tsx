@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from 'react';
 
 import {ChatChannel} from '@fireaw.ai/sdk';
 import {useRouter} from 'next/router';
-import {FiSend, FiXCircle} from 'react-icons/fi';
+import {FiSend, FiX} from 'react-icons/fi';
 import ReactMarkdown from 'react-markdown';
 import Modal from 'react-modal';
 import styled from 'styled-components';
@@ -10,9 +10,12 @@ import styled from 'styled-components';
 import {MDXComponents} from 'components/MDX/MDXComponents';
 import {siteConfig} from 'config/appConfig';
 import {useEdgioAnswersContext} from 'contexts/EdgioAnswersContext';
+import {useTheme} from 'contexts/ThemeContext';
 import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
 
+import {IconEdgioAnswers, IconEdgioAnswersDark} from './Icon/IconEdgioAnswers';
 import NoSSRWrapper from './Layout/NoSSRWrapper';
+import Link from './MDX/Link';
 
 const RESET_ON_CLOSE = false;
 const ROUTE_HASH = '#edgio-answers';
@@ -34,7 +37,7 @@ const customStyles: Modal.Styles = {
     backgroundColor: 'var(--bg-primary)',
     border: '1px solid var(--border-primary)',
     borderRadius: '4px',
-    padding: '20px',
+    padding: '0',
     display: 'flex',
     flexDirection: 'column',
     gap: '10px',
@@ -85,6 +88,26 @@ const ChatContainer = styled.div`
   flex-direction: column-reverse;
 
   color: var(--docs-text-primary);
+`;
+
+const ModalHeader = styled.div`
+  background: var(--ea-header-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-primary);
+  margin-bottom: 20px;
+  padding: 0 20px;
+  height: 54px;
+`;
+
+const ModalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 0 20px 10px 20px;
+  overflow: hidden;
 
   .article-heading {
     display: flex;
@@ -248,16 +271,16 @@ const ChatContainer = styled.div`
   }
 `;
 
-const ModalHeader = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border-primary);
-  margin-bottom: 20px;
+const StyledEdgioIcon = styled.div`
+  svg {
+    height: 31px;
+    path {
+      fill: var(--text-primary);
+    }
+  }
 `;
 
-const CloseIcon = styled(FiXCircle)`
+const StyledCloseIcon = styled(FiX)`
   cursor: pointer;
   font-size: 24px;
 `;
@@ -267,25 +290,27 @@ const MessageWrapper = styled.div<{isUser: boolean}>`
   border-radius: 5px;
   background: ${({isUser}) =>
     isUser
-      ? 'var(--text-primary)'
+      ? 'var(--text-secondary)'
       : 'linear-gradient(to right, #812991, #00A2E2, #01B18D)'};
   background-clip: padding-box;
   margin: 10px;
 `;
+
 const Message = styled.div<{isUser: boolean}>`
   position: relative;
   margin: 1px;
   padding: 10px;
   padding-top: 20px;
   background-color: var(--bg-primary);
-  color: var(--text-primary);
+  color: ${({isUser}) =>
+    isUser ? 'var(--text-secondary)' : 'var(--text-primary)'};
   text-align: ${({isUser}) => (isUser ? 'right' : 'left')};
   border-radius: 5px;
 
   &::before {
     content: ${({isUser}) => (isUser ? "'You'" : "'Edgio Answers'")};
     position: absolute;
-    top: -10px; // Adjust position as needed
+    top: -10px;
     ${({isUser}) => (isUser ? 'right: 10px;' : 'left: 10px;')}
     background-color: ${({isUser}) =>
       isUser ? 'var(--bg-secondary)' : 'var(--bg-primary)'};
@@ -325,6 +350,7 @@ const MessageContent = styled.div`
   font-size: 14px;
   font-weight: normal;
   .article-text {
+    font-size: 14px;
     margin: 10px auto;
     .text-link {
       display: inline-block;
@@ -372,6 +398,59 @@ const SendButton = styled(ActionButton)<{
 
 const StopButton = styled(ActionButton)``;
 
+const DisclaimerContainer = styled.div`
+  font-size: 12px;
+  color: var(--ea-input-placeholder-color);
+  padding: 10px;
+
+  a {
+    display: inline-block;
+  }
+
+  p {
+    color: var(--text-primary);
+    margin-top: 10px;
+    padding: 8px 16px;
+    border: 1px solid var(--border-primary);
+    background: var(--bg-secondary);
+  }
+`;
+
+const ShowMoreLink = styled.a`
+  color: var(--text-link);
+  cursor: pointer;
+  margin-left: 5px;
+`;
+
+function Disclaimer() {
+  const [showFullDisclaimer, setShowFullDisclaimer] = useState(false);
+
+  const toggleDisclaimer = () => {
+    setShowFullDisclaimer(!showFullDisclaimer);
+  };
+
+  return (
+    <DisclaimerContainer>
+      <>
+        By submitting, you consent to sharing this text with Fireaw.ai for
+        processing.
+      </>
+      <ShowMoreLink className="text-link" onClick={toggleDisclaimer}>
+        <div>{showFullDisclaimer ? 'Show less...' : 'Show more...'}</div>
+      </ShowMoreLink>
+      {showFullDisclaimer && (
+        <p>
+          Edgio uses a third party,{' '}
+          <Link href="https://fireaw.ai">Fireaw.ai</Link>, to process the text
+          you enter in this prompt. Only the text you enter here will be sent to
+          Fireaw.ai for processing.{' '}
+          <>By submitting, you consent to sharing this text with Fireaw.ai.</>
+        </p>
+      )}
+    </DisclaimerContainer>
+  );
+}
+
 const ChatMessage = ({content}: {content: string}) => {
   return (
     <MessageContent>
@@ -383,6 +462,7 @@ const ChatMessage = ({content}: {content: string}) => {
 
 const EdgioAnswers = () => {
   const router = useRouter();
+  const {themedValue} = useTheme();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const chatInputRef = useRef<HTMLInputElement>(null);
   const {chatbotId, apiToken} = siteConfig.fireawai;
@@ -528,62 +608,68 @@ const EdgioAnswers = () => {
           onRequestClose={onCloseModal}
           style={customStyles}>
           <ModalHeader>
-            <CloseIcon onClick={onCloseModal} />
+            <StyledEdgioIcon>
+              {themedValue(<IconEdgioAnswers />, <IconEdgioAnswersDark />)}
+            </StyledEdgioIcon>
+            <StyledCloseIcon onClick={onCloseModal} />
           </ModalHeader>
-          <ChatContainer>
-            {messages
-              .slice()
-              .reverse()
-              .map((message, index) => {
-                const isUser = message.role === 'user';
-                return (
-                  <MessageWrapper key={index} isUser={isUser}>
-                    <Message isUser={isUser}>
-                      <ChatMessage content={message.content} />
-                    </Message>
-                  </MessageWrapper>
-                );
-              })}
-          </ChatContainer>
-          <QuestionButtons>
-            {starterQuestions.map((question, index) => (
-              <QuestionButton
-                key={index}
-                onClick={() => {
-                  setQuery(question);
-                  setIsAwaitingResponse(true);
-                  channel?.send(question);
-                }}>
-                {question}
-              </QuestionButton>
-            ))}
-          </QuestionButtons>
-          <ChatActions>
-            <ChatInputContainer>
-              <ChatInput
-                ref={chatInputRef}
-                type="text"
-                value={query}
-                hasContent={hasContent()}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-                placeholder={placeholder}
-                disabled={isAwaitingResponse}
-              />
-              {!isAwaitingResponse ? (
-                <SendButton
+          <ModalContainer>
+            <ChatContainer>
+              {messages
+                .slice()
+                .reverse()
+                .map((message, index) => {
+                  const isUser = message.role === 'user';
+                  return (
+                    <MessageWrapper key={index} isUser={isUser}>
+                      <Message isUser={isUser}>
+                        <ChatMessage content={message.content} />
+                      </Message>
+                    </MessageWrapper>
+                  );
+                })}
+            </ChatContainer>
+            <QuestionButtons>
+              {starterQuestions.map((question, index) => (
+                <QuestionButton
+                  key={index}
+                  onClick={() => {
+                    setQuery(question);
+                    setIsAwaitingResponse(true);
+                    channel?.send(question);
+                  }}>
+                  {question}
+                </QuestionButton>
+              ))}
+            </QuestionButtons>
+            <ChatActions>
+              <ChatInputContainer>
+                <ChatInput
+                  ref={chatInputRef}
+                  type="text"
+                  value={query}
                   hasContent={hasContent()}
-                  awaitingResponse={isAwaitingResponse}
-                  onClick={sendMessage}>
-                  <FiSend />
-                </SendButton>
-              ) : (
-                <StopButton onClick={stopAndReconnect}>
-                  <FiXCircle />
-                </StopButton>
-              )}
-            </ChatInputContainer>
-          </ChatActions>
+                  onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+                  placeholder={placeholder}
+                  disabled={isAwaitingResponse}
+                />
+                {!isAwaitingResponse ? (
+                  <SendButton
+                    hasContent={hasContent()}
+                    awaitingResponse={isAwaitingResponse}
+                    onClick={sendMessage}>
+                    <FiSend />
+                  </SendButton>
+                ) : (
+                  <StopButton onClick={stopAndReconnect}>
+                    <FiX />
+                  </StopButton>
+                )}
+              </ChatInputContainer>
+            </ChatActions>
+            <Disclaimer />
+          </ModalContainer>
         </Modal>
       </ModalWrapper>
     </NoSSRWrapper>

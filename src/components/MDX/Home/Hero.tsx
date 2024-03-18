@@ -13,56 +13,63 @@ const HeroContainer = styled.div`
   background-size: 100% 100%;
   border-radius: 4px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end; /* Align items to the bottom */
   margin-bottom: 20px;
+  padding-bottom: 20px; /* Space from bottom to SearchComponent */
+`;
 
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 0 20px;
-    padding-top: 40px;
+const StyledContainer = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 20px; /* Space between .content and SearchComponent */
+`;
 
-    h1,
-    h2 {
-      text-align: center;
-      margin: 0;
-    }
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 0 20px;
 
-    h1 {
-      color: var(--text-primary);
-      font-family: 'Inter';
-      font-weight: 700;
-      font-size: 24px;
-      line-height: 29px;
-    }
+  h1,
+  h2 {
+    text-align: center;
+    margin: 0;
+  }
 
-    h2 {
-      color: var(--text-secondary);
-      font-family: 'Inter';
-      font-weight: 400;
-      font-size: 20px;
-      line-height: 24px;
-    }
+  h1 {
+    color: var(--text-primary);
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+  }
 
-    a {
-      color: var(--colors-blue0);
-      text-decoration: none;
-    }
+  h2 {
+    color: var(--text-secondary);
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  a {
+    color: var(--colors-blue0);
+    text-decoration: none;
   }
 `;
 
 export default function HomeHero() {
   return (
     <HeroContainer>
-      <Container>
-        <div className="content">
+      <StyledContainer>
+        <Content className="content">
           <h1>Speed, Security, and Simplicity at the Edge</h1>
-        </div>
+        </Content>
         <SearchComponent />
-      </Container>
+      </StyledContainer>
     </HeroContainer>
   );
 }

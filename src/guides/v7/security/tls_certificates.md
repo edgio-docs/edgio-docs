@@ -305,6 +305,12 @@ Uploading a TLS certificate requires:
 
 ## mTLS {/*mtls*/}
 
+<Callout type="info">
+
+  Th Mutual TLS feature requires {{ PRODUCT }} Premier. {{ ACCOUNT_UPGRADE }}
+
+</Callout>
+
 TLS requires a server to authenticate to the client before a connection can be established. Mutual TLS (mTLS) builds upon TLS by also requiring the client to provide a X.509 certificate to the server for the purpose of authentication. The following diagram provides a high-level overview of how a client can establish a secure connection to an edge server through mTLS.
 
 ![mTLS Handshake](/images/v7/security/mtls.png?height=650)

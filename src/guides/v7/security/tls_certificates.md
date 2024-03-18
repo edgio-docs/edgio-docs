@@ -307,7 +307,7 @@ Uploading a TLS certificate requires:
 
 <Callout type="info">
 
-  Th Mutual TLS feature requires {{ PRODUCT }} Premier. {{ ACCOUNT_UPGRADE }}
+  The Mutual TLS feature requires {{ PRODUCT }} Premier. {{ ACCOUNT_UPGRADE }}
 
 </Callout>
 

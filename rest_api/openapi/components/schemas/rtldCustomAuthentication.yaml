@@ -1,0 +1,16 @@
+title: CustomAuthentication Object
+description: Custom Authentication for HTTP POST
+allOf:
+  - $ref: ./rtldAuthentication.yaml
+  - type: object
+    required:
+      - token
+    properties:
+      token:
+        type: string
+        minLength: 1
+        maxLength: 1024
+        description: >-
+          Defines the token value that will be passed through the
+          `Authorization` request header whenever log data is delivered to your
+          web servers.

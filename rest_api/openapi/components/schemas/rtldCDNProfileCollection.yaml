@@ -1,0 +1,14 @@
+title: A collection of profiles
+description: Contains a collection of your RTLD CDN profiles.
+allOf:
+  - $ref: >-
+      https://raw.githubusercontent.com/Edgio/hyperion/v2.0.0/schema/collection.json
+  - type: object
+    properties:
+      items:
+        type: array
+        items:
+          allOf:
+            - $ref: >-
+                https://raw.githubusercontent.com/Edgio/hyperion/v2.0.0/schema/node.json
+            - $ref: ./rtldCDNProfile.yaml

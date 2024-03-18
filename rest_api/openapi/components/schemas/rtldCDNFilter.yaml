@@ -1,0 +1,33 @@
+title: CDN Filter Object
+description: Contains your log filtering configuration.
+type: object
+properties:
+  host_names:
+    $ref: ./rtldHostNameFilter.yaml
+  status_codes:
+    type: array
+    items:
+      type: string
+      enum:
+        - 1xx
+        - 2xx
+        - 3xx
+        - 4xx
+        - 5xx
+    uniqueItems: true
+    description: >-
+      Specify a string value for each HTTP status code class for which log data
+      will be delivered. Omit this parameter or define an empty array if log
+      data should not be filtered by HTTP status code classes.
+  user_agent_regexp:
+    type: string
+    description: >-
+      Defines a RE2-compatible regular expression pattern that identifies the
+      set of user agents by which log data will be filtered. A null value
+      indicates that log data will not be filtered by a user agent.
+  url_path_regexp:
+    type: string
+    description: >-
+      Defines a RE2-compatible regular expression pattern that identifies the
+      URL path by which log data will be filtered. A null value indicates that
+      log data will not be filtered by a URL path.

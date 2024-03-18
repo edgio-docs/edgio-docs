@@ -1,0 +1,43 @@
+post:
+  tags:
+    - RTLD CDN Profile
+  summary: Add RTLD CDN Profile
+  description: 'Creates a RTLD CDN profile. '
+  operationId: CreateCDNProfile
+  security:
+    - rtldBearerAuth:
+        - app.rtld
+  parameters:
+    - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
+  requestBody:
+    $ref: ../components/requestBodies/rtldCDNProfileRequest.yaml
+  responses:
+    '201':
+      $ref: ../components/responses/rtldSingleCDNProfile.yaml
+    '400':
+      $ref: ../components/responses/rtldBadRequest.yaml
+    '401':
+      $ref: ../components/responses/rtldUnauthorized.yaml
+    '500':
+      $ref: ../components/responses/rtldInternalServerError.yaml
+  x-codegen-request-body-name: Body
+get:
+  tags:
+    - RTLD CDN Profile
+  summary: Get All RTLD CDN Profiles
+  description: Returns all RTLD CDN profiles associated with an environment.
+  operationId: GetAllCDNProfiles
+  security:
+    - rtldBearerAuth:
+        - app.rtld:read
+  parameters:
+    - $ref: ../components/parameters/rtldLimitParam.yaml
+    - $ref: ../components/parameters/rtldOffsetParam.yaml
+    - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/rtldCDNProfileCollection.yaml
+    '401':
+      $ref: ../components/responses/rtldUnauthorized.yaml
+    '500':
+      $ref: ../components/responses/rtldInternalServerError.yaml

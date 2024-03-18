@@ -1,0 +1,13 @@
+title: AccessKeyAuthentication Object
+description: Access Key Authentication for Azure
+allOf:
+  - $ref: ./rtldAzureAuthentication.yaml
+  - type: object
+    required:
+      - access_key
+    properties:
+      access_key:
+        type: string
+        description: >-
+          Determines the access key through which log data uploads will be
+          authorized.

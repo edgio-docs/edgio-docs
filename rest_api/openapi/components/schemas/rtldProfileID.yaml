@@ -1,0 +1,9 @@
+title: RTLD CDN profile ID
+description: The RTLD CDN profile's system-defined ID.
+type: object
+required:
+  - id
+properties:
+  id:
+    type: integer
+    description: The RTLD CDN profile's system-defined ID.

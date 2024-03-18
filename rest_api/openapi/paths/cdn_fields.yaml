@@ -1,0 +1,19 @@
+get:
+  tags:
+    - Log Fields
+  summary: Get Log Fields (RTLD CDN)
+  description: Retrieves the available set of log fields for RTLD CDN.
+  operationId: GetAllCDNFields
+  security:
+    - rtldBearerAuth:
+        - app.rtld:read
+  parameters:
+    - $ref: ../components/parameters/rtldLimitParam.yaml
+    - $ref: ../components/parameters/rtldOffsetParam.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/rtldCodeNameCollection.yaml
+    '401':
+      $ref: ../components/responses/rtldUnauthorized.yaml
+    '500':
+      $ref: ../components/responses/rtldInternalServerError.yaml

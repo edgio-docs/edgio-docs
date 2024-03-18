@@ -1,0 +1,32 @@
+title: New Relic Object
+description: Contains the configuration for the New Relic log delivery method.
+allOf:
+  - $ref: ./rtldDeliveryMethod.yaml
+  - type: object
+    required:
+      - account_id
+      - event_type
+      - insert_key
+    properties:
+      account_id:
+        type: integer
+        minimum: 1
+        description: >-
+          Identifies the system-defined ID for the New Relic account to which
+          log data will be uploaded.
+      event_type:
+        type: string
+        minLength: 1
+        maxLength: 4096
+        pattern: ^[A-Za-z0-9_:]+$
+        description: >-
+          Defines the label that identifies log data delivered to New Relic as a
+          result of this profile. Specify a label that solely consists of
+          alphanumeric characters, underscores, and colons.
+      insert_key:
+        type: string
+        minLength: 1
+        maxLength: 4096
+        description: >-
+          Defines the Inserts insight API key through which log data uploads
+          will be authorized.

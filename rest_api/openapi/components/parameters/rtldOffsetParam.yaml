@@ -1,0 +1,11 @@
+name: offset
+in: query
+description: >-
+  Indicates the starting position from which items should be retrieved. Useful
+  in combination with `limit` for pagination.
+schema:
+  type: integer
+  format: int32
+  minimum: 0
+  default: 0
+  example: 10

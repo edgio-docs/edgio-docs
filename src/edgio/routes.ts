@@ -29,7 +29,7 @@ const defaultFeatures: Features = {
   },
 };
 
-const router = new Router()
+const router = new Router({indexPermalink: true})
   .match('/(.*)', {
     ...defaultFeatures,
     headers: !isLocal()

@@ -15,6 +15,7 @@ import NProgress from 'nprogress';
 // Universal loading page (used in dynamically imported components) which contains the wrapper of each page
 import EdgioAnswers from 'components/EdgioAnswers';
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
+import Toast from 'components/Toast';
 import {siteConfig} from 'config/appConfig';
 import {AppProvider, AppProviderProps} from 'contexts/AppContext';
 import {EdgioAnswersProvider} from 'contexts/EdgioAnswersContext';
@@ -142,6 +143,8 @@ export default function MyApp({Component, pageProps}: DocsAppProps) {
           <ThemeProvider>
             <MDXEmbedProvider>
               <Component {...pageProps} />
+
+              <Toast />
             </MDXEmbedProvider>
             <EdgioAnswers />
           </ThemeProvider>

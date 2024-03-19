@@ -1,3 +1,23 @@
+import React from 'react';
+
+// Automatically import all announcements from the src/templates/announcements directory
+const announcementFiles = require.context(
+  'templates/announcements',
+  true,
+  /\.md$/
+);
+
+const importAnnouncements = () => {
+  const announcements: {[key: string]: string} = {};
+  announcementFiles.keys().forEach((filename: string) => {
+    const resourceName = filename.replace('./', '').replace('.md', '');
+    announcements[resourceName] = announcementFiles(filename).default as string;
+  });
+  return announcements;
+};
+
+const announcements = importAnnouncements();
+
 type DynamicImport<T = any> = () => Promise<{default: T}>;
 
 export type ProductConfig = {
@@ -12,10 +32,11 @@ export type ProductVersionConfig = {
   guidesPath: string;
   navigationImport: DynamicImport | null;
   announcement?: {
-    styles?: React.CSSProperties;
+    styles?: React.CSSProperties | {[key: string]: React.CSSProperties};
     id: string;
     title?: string;
     message: string;
+    type?: 'info' | 'important' | 'critical';
   };
 };
 
@@ -33,24 +54,19 @@ export const productsConfig: ProductsConfig = {
         navigationImport: () => import('config/applications/v4.nav'),
         announcement: {
           id: 'v4-announcement',
-          message: `Edgio Applications v4 and
-                    support for Node.js 16 are undergoing end-of-life (EOL). Read the&nbsp;
-                    <a href="https://edg.io/blogs/layer0-end-of-life-announcement/" target="_blank">
-                      Layer0 EOL announcement
-                    </a>
-                    , the&nbsp;
-                    <a href="/applications/v4/install_nodejs">Node.js 16 EOL plan</a>
-                    &nbsp; or browse&nbsp;
-                    <a href="/">
-                      Edgio Applications v7 docs
-                    </a>
-                    .`,
+          message: announcements['apps_v4_announcement'],
+          type: 'critical',
         },
       },
       v6: {
         configImport: () => import('config/applications/v6.config'),
         guidesPath: 'guides/applications/v6',
         navigationImport: () => import('config/applications/v6.nav'),
+        announcement: {
+          id: 'v6-announcement',
+          message: announcements['apps_v6_announcement'],
+          type: 'critical',
+        },
       },
       v7: {
         configImport: () => import('config/applications/v7.config'),
@@ -58,11 +74,8 @@ export const productsConfig: ProductsConfig = {
         navigationImport: () => import('config/applications/v7.nav'),
         announcement: {
           id: 'v7-announcement',
-          message: `Introducing Edgio Applications v7.&nbsp;
-                    <a href="/applications/v7/intro">
-                      Find out what&apos;s new.
-                    </a>`,
-          styles: {},
+          message: announcements['apps_v7_announcement'],
+          type: 'important',
         },
       },
     },
@@ -132,5 +145,6 @@ export const siteConfig = {
     apiToken: 'ac9030b3-dfa6-4e18-8069-e8df54c131e4',
   },
 };
+
 productsConfig.applications.versions.default =
   productsConfig.applications.versions.v7;

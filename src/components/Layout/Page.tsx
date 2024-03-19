@@ -57,7 +57,7 @@ export function Page({children}: PageProps) {
 
   return (
     <StyledMainPage>
-      {showBanner && <Banner />}
+      {/* {showBanner && <Banner />} */}
       <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <main className="docs-content">
         {hasNavigationMenu && (

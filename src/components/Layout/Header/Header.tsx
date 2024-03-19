@@ -4,7 +4,6 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 import Link from 'components/MDX/Link';
-import Toast from 'components/Toast';
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 
@@ -192,7 +191,6 @@ const Header = () => {
         )}
       </ButtonGroup>
       <HorizontalLine />
-      <Toast />
     </HeaderContainer>
   );
 };

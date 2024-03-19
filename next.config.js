@@ -1,3 +1,4 @@
+const path = require('path');
 const {withEdgio} = require('@edgio/next/config');
 
 module.exports = (phase, config) => {
@@ -24,6 +25,13 @@ module.exports = (phase, config) => {
           })
         );
       }
+
+      config.module.rules.push({
+        test: /\.md$/,
+        use: 'raw-loader',
+        include: [path.resolve(__dirname, 'src/templates/announcements')],
+      });
+
       return config;
     },
   });

@@ -50,6 +50,7 @@ export const HeroContainer = styled.div<{backgroundImage: string}>`
   justify-content: flex-end;
   padding-bottom: 30px;
   margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-primary);
 `;
 
 export const StyledContainer = styled.div`

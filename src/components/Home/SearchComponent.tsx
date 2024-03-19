@@ -74,10 +74,10 @@ const SearchContainer = styled.div<{active?: string}>`
     padding: 10px;
     width: 640px;
     height: 40px;
+    border: 1px solid var(--border-primary);
 
     .search-input {
       background: var(--search-input-bg);
-      border: none;
       color: var(--text-primary);
       outline: none;
       padding-left: 10px;

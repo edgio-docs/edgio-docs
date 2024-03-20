@@ -3,7 +3,7 @@ title: Matched On Variables
 ---
 
 A short description of the information contained for each variable referenced in the **Matched On** field is provided below.
--   **ARGS:** Contains:
+-   **ARGS:** Contains the names for:
     -   All query string parameters
     -   All parameters in the `POST` request body
 -   **ARGS_COMBINED_SIZE:** Describes the combined size for:
@@ -11,9 +11,7 @@ A short description of the information contained for each variable referenced in
     -   All parameters in the `POST` request body
 -   **ARGS_GET:** Contains all query string parameters.
 -   **ARGS_GET_NAMES:** Contains the names of all query string parameters.
--   **ARGS_NAMES:** Contains the names for:
-    -   All query string parameters
-    -   All parameters in the `POST` request body
+-   **ARGS_NAMES:** Contains the names for all request parameters. 
 -   **ARGS_POST:** Contains all key-value pairs within a `POST` request.
 -   **ARGS_POST_NAMES:** Contains the names of all parameters in the `POST` request body.
 -   **AUTH_TYPE:** Describes the built-in HTTP authentication method (e.g., Basic) used to validate a user.

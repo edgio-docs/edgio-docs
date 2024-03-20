@@ -52,10 +52,6 @@ const items = (config: StringMap) => ({
       title: 'EdgeJS Unit Testing',
       path: '/guides/performance/unit_testing_edgejs',
     },
-    {
-      title: `Deploy to ${config.PRODUCT} Button`,
-      path: '/guides/develop/deploy_to_edgio',
-    },
   ],
 });
 

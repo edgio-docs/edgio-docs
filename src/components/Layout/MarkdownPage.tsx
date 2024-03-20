@@ -42,7 +42,9 @@ export function MarkdownPage<
   const version = meta.version || latestVersion;
 
   if (!route) {
-    console.error('This page was not added to one of the sidebar JSON files.');
+    console.error(
+      'This page was not added to the corresponding *.nav.js file.'
+    );
   }
 
   const tocHeadings = [];

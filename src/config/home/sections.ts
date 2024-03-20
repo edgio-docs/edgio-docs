@@ -65,11 +65,11 @@ export const sections: HomepageSectionGroup[] = [
           },
           {
             title: 'Experimentation',
-            path: 'experimentation',
+            path: '../experimentation',
           },
           {
             title: 'Edge Functions',
-            path: 'edge_functions',
+            path: '../edge_functions',
           },
           {
             title: 'Redirects',
@@ -141,7 +141,7 @@ export const sections: HomepageSectionGroup[] = [
       },
       {
         title: 'Sites',
-        path: 'sites',
+        path: 'sites_frameworks',
         items: [
           {
             title: 'Frameworks',

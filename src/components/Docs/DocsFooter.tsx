@@ -176,13 +176,14 @@ const pryFooterLinks = ({FIDDLE_URL}: StringMap) => ({
       href: 'https://edg.io/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
-      title: 'Applications Release Notes',
+      title: 'Applications v7 Release Notes',
       href: '/applications/v7/release_notes',
       versioned: false,
     },
     {
-      title: 'Applications NPM Package Changelog',
+      title: 'Applications v7 NPM Package Changelog',
       href: '/applications/v7/changelog',
+      versioned: false,
     },
   ],
   community: [

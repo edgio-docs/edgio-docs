@@ -75,17 +75,13 @@ const items = {
       path: '/guides/security/dashboard',
     },
     {
-      title: 'Logs',
-      path: '/guides/security/recent_event_logs',
-    },
-    {
       title: 'Response to Client',
       path: '/guides/security/response_to_client',
       separator: true,
     },
     {
       title: 'Country Codes',
-      path: '/reference/country_codes',
+      path: '/guides/reference/country_codes',
     },
     {
       title: 'Matched On Variables',

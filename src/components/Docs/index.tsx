@@ -7,11 +7,11 @@ import {Toc} from '../Layout/Toc';
 // import DiscourseDiscuss from './DiscourseDiscuss';
 import EditPage from './EditPage';
 
-const StyledDocs = styled.div`
+const StyledDocs = styled.div<{hasToc: boolean}>`
   max-width: var(--docs-area-width);
   margin: 0 auto 50px auto;
   display: grid;
-  grid-template-columns: 75% 1fr;
+  grid-template-columns: ${(props) => (props.hasToc ? '75% 1fr' : '1fr')};
 
   .docs-article__section {
     padding: 0 20px 20px 20px;
@@ -223,8 +223,10 @@ export default function Docs({
   tocHeadings: {url: string; depth: number; text: string}[];
   source?: string;
 }) {
+  const hasToc = tocHeadings.length > 0;
+
   return (
-    <StyledDocs className="docs-body">
+    <StyledDocs className="docs-body" hasToc={hasToc}>
       <div className="docs-article__section">
         <article className="docs-article">
           <header className="docs-article__header">
@@ -245,7 +247,7 @@ export default function Docs({
         </article>
         {/* <EditPage /> */}
       </div>
-      <Toc headings={tocHeadings} />
+      {hasToc && <Toc headings={tocHeadings} />}
     </StyledDocs>
   );
 }

@@ -156,10 +156,6 @@ const items = {
       path: '/guides/performance/traditional_sites',
     },
     {
-      title: 'Third-Party CDNs',
-      path: '/guides/performance/third_party_cdns',
-    },
-    {
       title: 'Compression',
       path: '/guides/performance/compression',
     },

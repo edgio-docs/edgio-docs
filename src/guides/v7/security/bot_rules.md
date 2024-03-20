@@ -120,12 +120,6 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
         -   It must check whether the user agent allows JavaScript using a `<noscript>` tag. Your custom HTML must display an error message if it has been disabled.
         -   If your scripts sets third-party cookies, then your custom HTML must display an error message if they have been disabled.
 
-        <Callout type="info">
-
-          A custom browser challenge will not be served if your custom HTML does not satisfy the above requirements.
-
-        </Callout>
-
     <a id="custom-response" />
 
 -   **Custom Response:** Returns a custom response.

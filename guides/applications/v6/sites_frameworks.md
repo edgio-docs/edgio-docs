@@ -9,7 +9,6 @@ Build upon these performance improvements through Server-Side Rendering (SSR). {
 We also support static page generation:
 
 - At build time through Static Site Generation (SSG).
-- After your site has been built through [Incremental Static Regeneration (ISR)](/guides/sites_frameworks/isg).
 
 ## Getting Started {/* getting-started */}
 

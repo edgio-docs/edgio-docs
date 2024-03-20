@@ -19,7 +19,13 @@ title: TLS Certificates
 
     **Sample domain:** `my-organization-my-property-feature-a-1234.{{ LINK_DOMAIN }}`
 
-### Autogenerating TLS Certificates {/*autogenerating-tls-certificates*/}
+<Callout type="tip">
+
+  Apply additional security to your encrypted traffic by [enabling mTLS](#mtls).
+
+</Callout>
+
+## Autogenerating TLS Certificates {/*autogenerating-tls-certificates*/}
 
 {{ PRODUCT_NAME }} can automatically generate TLS Certificates on your behalf using [Let's Encrypt](https://letsencrypt.org/). These certificates are free, valid for 3 months, and automatically renewed as long as the following technical requirements remain met:
 
@@ -28,7 +34,7 @@ title: TLS Certificates
 -   [Domain Control Validation:](#domain-control-validation) Prove your control over that domain by adding an `_acme-challenge` CNAME record to it.
 -   **Web Server(s):** Enable or verify that your web servers support TLS 1.3 (recommended) or 1.2 encryption. 
 
-#### Certificate Authority Authorization {/*certificate-authority-authorization*/}
+### Certificate Authority Authorization {/*certificate-authority-authorization*/}
 
 The Let's Encrypt certificate authority (CA) must be allowed to issue certificates for each registered hostname. It is allowed to issue certificates when either of the following conditions are true:
 
@@ -107,7 +113,7 @@ The Let's Encrypt certificate authority (CA) must be allowed to issue certificat
 
     </Callout>
 
-#### Domain Control Validation {/*domain-control-validation*/}
+### Domain Control Validation {/*domain-control-validation*/}
 
 Before {{ PRODUCT }} may issue a certificate request on your behalf, we require that you validate your control over each of your hostnames by adding a CNAME record.  From your DNS service provider, add the following CNAME DNS entry for each desired hostname:
 
@@ -158,7 +164,7 @@ If you have previously used Let's Encrypt to generate certificates for your host
 
 [Learn more about DNS TXT domain control.](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge)
 
-#### TLS Certificate Verification {/*tls-certificate-verification*/}
+### TLS Certificate Verification {/*tls-certificate-verification*/}
 
 Once the above requirements are met, you should verify that a TLS certificate for each of your hostnames has been generated.
 
@@ -184,7 +190,7 @@ Once the above requirements are met, you should verify that a TLS certificate fo
 
 4.  Wait a few minutes and then verify that a certificate was created for that hostname.
 
-### Manually Creating a TLS Certificate {/*creating-a-certificate-manually*/}
+## Manually Creating a TLS Certificate {/*creating-a-certificate-manually*/}
 
 <Callout type="info">
 
@@ -265,7 +271,7 @@ The following procedure indicates how to create a CSR and a private key with Ope
 
 5.  Read the CSR (e.g., `cat {{ PRODUCT_NAME_LOWER }}.csr`) or copy it to your clipboard (on OSX, `cat {{ PRODUCT_NAME_LOWER }}.csr | pbcopy`) and send it to your CA for certification.
 
-### Uploading Your Certificate {/*uploading-your-certificate*/}
+## Uploading Your Certificate {/*uploading-your-certificate*/}
 
 Uploading a TLS certificate requires:
 
@@ -297,7 +303,160 @@ Uploading a TLS certificate requires:
 
     </Callout>
 
+## mTLS {/*mtls*/}
 
-### Troubleshooting {/*troubleshooting*/}
+<Callout type="info">
 
-If your origin returns a `502 Bad Gateway` or a `504 Gateway Timeout` response when served through {{ PRODUCT }}, then your origin configuration's TLS settings may be improperly configured. [View troubleshooting steps.](/guides/performance/troubleshooting#502-bad-gateway-status-code) 
+  The Mutual TLS feature requires {{ PRODUCT }} Premier. {{ ACCOUNT_UPGRADE }}
+
+</Callout>
+
+TLS requires a server to authenticate to the client before a connection can be established. Mutual TLS (mTLS) builds upon TLS by also requiring the client to provide a X.509 certificate to the server for the purpose of authentication. The following diagram provides a high-level overview of how a client can establish a secure connection to an edge server through mTLS.
+
+![mTLS Handshake](/images/v7/security/mtls.png?height=650)
+
+Our mTLS implementation provides flexibility when determining when and how a client will authenticate to an edge server. 
+-   By default, mTLS is disabled. Enable it by [defining how certificates will be validated](#mtls-validation). 
+-   Once mTLS has been enabled, the default behavior is to request a client certificate for all requests. However, you may instruct {{ PRODUCT }} to only request a client certificate for specific hostname(s) through the **Request Client Certificates for Hostnames** option. Regardless of this option, the **Client Certificate Validation** option determines [how a client certificate will be validated](#mtls-validation) for all requests. 
+-   Send [headers to your origin](#origin-request-headers) containing mTLS metadata by enabling the **Send Client Certificate Detail to Origin** option. 
+-   The TLS handshake fails when {{ PRODUCT }} cannot validate a client certificate. 
+
+    Permissive mode is an exception to this behavior. By default, Permissive mode allows traffic regardless of whether client certificate validation fails. However, you may override this behavior for Permissive mode and return a `403 Forbidden` response by enabling the **Return Status Code 403 for Validation Failures** option.
+
+### mTLS Validation {/*mtls-validation*/}
+
+Determine whether and how {{ PRODUCT }} will validate certificates through the **Client Certificate Validation** option. The available validation modes are described below.
+
+    -   **Required:** Set this option to `Required` to require the client to provide a certificate issued by a certificate authority (CA) within your custom chain of trust.
+    -   **Optional:** If you choose to make client certificates optional, then you must define how {{ PRODUCT }} will validate a certificate when provided by a client. Set this option to one of the following modes: 
+        -   **Permissive:** Recommended. By default, this mode instructs {{ PRODUCT }} to allow traffic regardless of whether the client provides a valid certificate. If provided, {{ PRODUCT }} will still process the client certificate. You may choose to send this metadata to the origin server. 
+
+            <Callout type="tip">
+
+              Permissive is the recommended validation mode for your initial setup, since it allows you to verify your configuration through mTLS metadata sent to the origin. Once you have verified your configuration, you may block unverified traffic by enabling the **Return Status Code 403 for Validation Failures** option.
+
+            </Callout>
+
+        -   **Optional without CA validation:** If the client provides a certificate, it must be a valid X.509 certificate that is either self-signed or signed by a CA.
+        -   **Optional:** If the client provides a certificate, it must be issued by a CA within your custom chain of trust.
+    -   **Disabled:** Disables mTLS.
+
+### mTLS Depth of Validation {/*mtls-depth-of-validation*/}
+
+If you have configured the **Client Certificate Validation** option to either `Required`, `Optional`, or `Permissive`, then the **Chain of Trust Depth Validation** option determines the maximum depth for certificate validation. 
+-   **0:** Restricts validation to self-signed certificates.
+-   **1:** Restricts validation to self-signed certificates or a certificate signed by a CA in the chain of trust defined under the **Certificate Chains** section.
+-   **2 or more:** Allows levels 0 (i.e., self-signed certificates) through the specified number. The specified number determines the maximum depth to which {{ PRODUCT }} will validate a client certificate. For example, setting it to 2 allows a client certificate that satisfies level 0, 1, or 2.
+
+    {{ PRODUCT }} will validate up to the specified number of CA certificates. 
+
+    -   If the client certificate is backed by fewer CA certificates, then {{ PRODUCT }} will validate all of those CA certificates.
+    -   If the client certificate is backed by additional CA certificates, then {{ PRODUCT }} will ignore the CA certificates that exceed the specified depth. 
+
+    **Example:** If you set the depth to 2, then {{ PRODUCT }} will validate self-signed certificates or it will check up to 2 CA certificates that back the client certificate. {{ PRODUCT }} can validate a client certificate for all three of the following scenarios:
+    
+    | Intermediate Certificate(s) | Root Certificate(s) | Total CA Certificate(s) | Valid Client Certificate |
+    | --------------------------- | ------------------- | ----------------------- | ------------------------ |
+    | 0                           | 0                   | 0                       | Yes                      |
+    | 1                           | 1                   | 2                       | Yes                      |
+    | 3                           | 1                   | 4                       | Yes                      |
+
+    Notice that the last scenario exceeds the specified depth by 2. In that scenario, {{ PRODUCT }} will validate the client certificate and check the first 2 intermediate CA certificates. If those certificates are valid, then it will consider the client certificate valid and ignore the third intermediate CA certificate and the root certificate.
+
+### Chain of Trust {/*chain-of-trust*/}
+
+Set up a chain of trust by uploading a PEM file that contains an ordered list of intermediate and root certificates for the desired hostname. Use a line break to separate each certificate as shown below.
+
+```pem
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+```
+
+<Callout type="important">
+
+  Prior to the expiration of the certificates in your chain of trust, you must upload a PEM file that contains renewed certificates. 
+
+</Callout>
+
+If a PEM file should no longer be used (e.g., it contains expired certificates), then you should delete it from the **Certificate Chains** section.
+
+### mTLS Setup {/*mtls-setup*/}
+
+Set up mTLS by defining how {{ PRODUCT }} will validate certificates.
+
+**To set up mTLS**
+1.  Navigate to the **TLS Certificate** page.
+    {{ ENV_NAV }} **TLS Certificate**.
+2.  From the **Client Certificate Validation** option, select how {{ PRODUCT }} will [validate certificates](#mtls-validation) that will be performed. 
+
+    <Callout type="tip">
+
+      We strongly recommend that you set this option to `Permissive` for your initial setup. This mode allows unverified traffic while you fine-tune your mTLS configuration.
+
+    </Callout>
+
+3.  From the **Request Client Certificates for Hostnames** option, determine whether {{ PRODUCT }} will request a certificate for all requests or solely for specific hostnames. 
+    -   **All Requests:** Verify that this option is set to blank. 
+    -   **Specific Hostnames:** Select each desired hostname from this option. 
+4.  From the **Chain of Trust Depth Validation** option, select the [depth to which {{ PRODUCT }} will validate a client certificate](#mtls-depth-of-validation) with the chain of trust defined in the **Certificate Chains** section. 
+5.  <a id="upload-pem" />If you set the **Chain of Trust Depth Validation** option to a value of `1` or higher, then you should add a [PEM file that contains a chain of trust](#chain-of-trust) for each desired hostname. Perform the following steps to add a PEM file:
+    1.  Click **+ Add Certificate Chain**.
+    2.  Paste the PEM file for the desired X.509 certificate(s).
+    3.  Click **Add Chain**.
+6.  Optional. Toggle the **Send Client Certificate Detail to Origin** option to [send headers](#origin-request-headers) containing client certificate metadata and validation status to your origin servers.
+7.  Optional. If you are using Permissive mode, then you can override the default behavior and return a `403 Forbidden` response for client certificate validation failures by enabling the **Return Status Code 403 for Validation Failures** option.
+
+    <Callout type="tip">
+    
+      We recommend that you leave this option disabled until you have verified that your mTLS configuration will not block legitimate traffic.
+
+      </Callout>
+
+8.  Click **Save** to apply your changes.
+
+**To update your mTLS configuration**
+1.  Navigate to the **TLS Certificate** page.
+    {{ ENV_NAV }} **TLS Certificate**.
+2.  Update the desired setting(s). Common tasks are listed below.
+
+    -   Update your chain of trust by:
+        -   [Uploading a PEM file](#upload-pem) for each desired hostname. Make sure to upload renewed certificate(s) before the existing certificate(s) expire.
+        -   Deleting the PEM file for expired certificate(s). From the **Certificate Chains** section, click the <Image inline src="/images/v7/icons/delete.png" alt="Delete" /> icon corresponding to the chain that will be deleted. 
+
+3.  Click **Save**.
+
+**To disable mTLS**
+1.  Navigate to the **TLS Certificate** page.
+    {{ ENV_NAV }} **TLS Certificate**.
+2.  Set the **Client Certificate Validation** option to `Disabled`. 
+
+    This configuration disables client certificate validation for all requests to this environment. If a client provides a certificate, {{ PRODUCT }} will not validate it.
+
+3.  Click **Save**.
+
+### Origin Request Headers {/*origin-request-headers*/}
+
+{{ PRODUCT }} can send request headers containing mTLS metadata to the origin when the **Send Client Certificate Detail to Origin** option is enabled. The selected client certificate validation mode determines when these request headers are sent. 
+
+-   **Permissive Mode:** These headers are sent for all requests, including requests that result in a failed TLS handshake or a `403 Forbidden` response. This behavior allows you to use those headers to troubleshoot client authentication issues.
+-   **All Other Modes:** These headers are only sent to your origin for requests for which we were able to establish a secure connection. {{ PRODUCT }} will not provide these headers when the request results in a failed TLS handshake.
+
+Mutual TLS request headers are described below:
+
+| Header                | Type                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| --------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| x-ssl-client-cert     | Client Certificate                      | Contains the client certificate in PEM format. <br />**Example:** `-----BEGIN%20CERTIFICATE----- ... %0A-----END%20CERTIFICATE-----%0A`                                                                                                                                                                                                                                                                                                                                                                                                          |
+| x-ssl-client-i-dn     | Distinguished Name - Issuer             | Identifies the [Distinguished Name (DN)](https://knowledge.digicert.com/general-information/what-is-a-distinguished-name) for the client certificate's issuer. <br />**Example:** `CN=ACME INTERMEDIATE CLIENT CA,OU=Security,O=ACME Inc.,L=Los Angeles,ST=California,C=US`                                                                                                                                                                                                                                                                      |
+| x-ssl-client-s-dn     | Distinguished Name - Subject            | Identifies the [Distinguished Name (DN)](https://knowledge.digicert.com/general-information/what-is-a-distinguished-name) for the client certificate's subject. <br />**Example:** `CN=www.example.com,OU=Security,O=ACME Inc.,L=Los Angeles,ST=California,C=US`                                                                                                                                                                                                                                                                                 |
+| x-ssl-client-serial   | Client Certificate's Serial Number      | Indicates the client certificate's serial number. <br />**Example:** `655603895D3E8ECC4DF507FB33A1171A53F37CAF`                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| x-ssl-client-sha1     | Client Certificate's Fingerprint        | Contains the client certificate's SHA1 fingerprint. <br />**Example:** `7C2E166156E2D165AD7468B0E0145411B655F041`                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| x-ssl-client-v-end    | Client Certificate's Expiration Date    | Indicates the date and time (GMT) at which the client certificate will expire.<br />**Example:** `Aug 7 18:54:27 2033 GMT`                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| x-ssl-client-verify   | Client Certificate's Validation Status  | Indicates the result for the validation of the client certificate. Valid values are: <ul><li>**SUCCESS:** Certificate validation is required and the client provided a valid certificate. </li><li>**LENIENT:** Certificate validation is not required, but the client provided a valid certificate. </li><li>**FAILED** `<REASON>`**:** The client did not provide a valid certificate. Check the reason to find out more information. </li><li>**NONE:** Certificate validation is not required and the client did not provide one. </li></ul> |
+| x-ssl-client-v-remain | Client Certificate's Days to Expiration | Indicates the number of days until the client certificate will expire. <br />**Example:** `123`                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| x-ssl-client-v-start  | Client Certificate's Issued Date        | Indicates the date and time (GMT) at which the client certificate was issued. <br />**Example:** `Aug 10 18:54:27 2023 GMT`                                                                                                                                                                                                                                                                                                                                                                                                                      |
+
+[View the corresponding feature variables.](/guides/performance/rules/feature_variables#mtls)
+
+## Troubleshooting TLS {/*troubleshooting*/}
+
+If your origin returns a `502 Bad Gateway` or a `504 Gateway Timeout` response when served through {{ PRODUCT }}, then your origin configuration's TLS settings may be improperly configured. [View troubleshooting steps.](/guides/performance/troubleshooting#502-bad-gateway-status-code)

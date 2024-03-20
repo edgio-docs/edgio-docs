@@ -541,7 +541,7 @@ components:
           tokenUrl: https://id.edgio.app/connect/token
           scopes:
             app.bot_security: Authorizes full access to Bot Manager.
-    rtldBearerAuth:
+    rtldScope:
       type: oauth2
       description: Learn how to [generate and pass a token.](#section/Access-Tokens)
       flows:

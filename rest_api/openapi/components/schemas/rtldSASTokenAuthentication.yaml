@@ -8,6 +8,7 @@ allOf:
     properties:
       token:
         type: string
+        writeOnly: true
         description: >-
           Defines the SAS token through which log data uploads will be
           authorized.

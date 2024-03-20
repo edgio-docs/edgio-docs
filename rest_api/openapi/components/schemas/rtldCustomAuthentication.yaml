@@ -8,6 +8,7 @@ allOf:
     properties:
       token:
         type: string
+        writeOnly: true
         minLength: 1
         maxLength: 1024
         description: >-

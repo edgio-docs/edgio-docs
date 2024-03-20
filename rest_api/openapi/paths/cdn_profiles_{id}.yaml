@@ -5,7 +5,7 @@ get:
   description: Retrieves a RTLD CDN profile by its system-defined ID.
   operationId: GetCDNProfileById
   security:
-    - rtldBearerAuth:
+    - rtldScope:
         - app.rtld:read
   parameters:
     - $ref: ../components/parameters/rtldProfileIDParam.yaml
@@ -28,7 +28,7 @@ put:
   description: Updates a RTLD CDN profile.
   operationId: ReplaceCDNProfileById
   security:
-    - rtldBearerAuth:
+    - rtldScope:
         - app.rtld
   parameters:
     - $ref: ../components/parameters/rtldProfileIDParam.yaml
@@ -36,8 +36,8 @@ put:
   requestBody:
     $ref: ../components/requestBodies/rtldCDNProfileRequest.yaml
   responses:
-    '204':
-      $ref: ../components/responses/rtldNoContent.yaml
+    '200':
+      $ref: ../components/responses/rtldSingleCDNProfile.yaml
     '400':
       $ref: ../components/responses/rtldBadRequest.yaml
     '401':
@@ -56,7 +56,7 @@ delete:
   description: Permanently deletes a RTLD CDN profile.
   operationId: DeleteCDNProfileById
   security:
-    - rtldBearerAuth:
+    - rtldScope:
         - app.rtld
   parameters:
     - $ref: ../components/parameters/rtldProfileIDParam.yaml

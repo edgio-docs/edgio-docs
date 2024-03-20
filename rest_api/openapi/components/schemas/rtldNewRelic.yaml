@@ -25,6 +25,7 @@ allOf:
           alphanumeric characters, underscores, and colons.
       insert_key:
         type: string
+        writeOnly: true
         minLength: 1
         maxLength: 4096
         description: >-

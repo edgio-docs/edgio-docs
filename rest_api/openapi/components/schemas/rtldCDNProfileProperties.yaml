@@ -38,7 +38,14 @@ properties:
     maxItems: 250
     uniqueItems: true
     pattern: ^((?=.*[^\u0021-\u007E])|(?=.*[\(\)\[\]\{\}\?\\<>@,;:""=/]))
-    description: Defines each cookie that will be logged for each request.
+    description: >
+      Defines each cookie that will be logged for each request.
+
+
+      Each cookie defined within this property must also be defined within the
+      **Realtime Log Delivery** page for the environment corresponding to this
+      profile. [Learn
+      more.](https://docs.edg.io/guides/v7/logs/rtld/custom_log_fields)
   custom_request_headers:
     type: array
     items:
@@ -47,7 +54,14 @@ properties:
     maxItems: 250
     uniqueItems: true
     pattern: ^[a-zA-Z0-9-]+$
-    description: Defines each request header that will be logged for each request.
+    description: >
+      Defines each request header that will be logged for each request.
+
+
+      Each request header defined within this property must also be defined
+      within the **Realtime Log Delivery** page for the environment
+      corresponding to this profile. [Learn
+      more.](https://docs.edg.io/guides/v7/logs/rtld/custom_log_fields)
   custom_response_headers:
     type: array
     items:
@@ -56,7 +70,14 @@ properties:
     maxItems: 250
     uniqueItems: true
     pattern: ^[a-zA-Z0-9-]+$
-    description: Defines each response header that will be logged for each request.
+    description: >
+      Defines each response header that will be logged for each request.
+
+
+      Each response header defined within this property must also be defined
+      within the **Realtime Log Delivery** page for the environment
+      corresponding to this profile. [Learn
+      more.](https://docs.edg.io/guides/v7/logs/rtld/custom_log_fields)
   description:
     type: string
     minLength: 1

@@ -10,6 +10,7 @@ allOf:
     properties:
       api_key:
         type: string
+        writeOnly: true
         minLength: 1
         maxLength: 2000
         description: Defines the API key through which log data uploads will be authorized.

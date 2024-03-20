@@ -9,6 +9,7 @@ allOf:
     properties:
       token:
         type: string
+        writeOnly: true
         description: >-
           Defines the token for the HTTP Event Collector configuration
           associated with the URL corresponding to the `url` parameter.

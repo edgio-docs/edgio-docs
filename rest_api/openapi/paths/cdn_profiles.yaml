@@ -5,7 +5,7 @@ post:
   description: 'Creates a RTLD CDN profile. '
   operationId: CreateCDNProfile
   security:
-    - rtldBearerAuth:
+    - rtldScope:
         - app.rtld
   parameters:
     - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
@@ -28,7 +28,7 @@ get:
   description: Returns all RTLD CDN profiles associated with an environment.
   operationId: GetAllCDNProfiles
   security:
-    - rtldBearerAuth:
+    - rtldScope:
         - app.rtld:read
   parameters:
     - $ref: ../components/parameters/rtldLimitParam.yaml

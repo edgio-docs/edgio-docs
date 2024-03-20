@@ -1,0 +1,22 @@
+value:
+  '@id': /rtld/v1/cdn/fields
+  '@type': Collection
+  items:
+    - code: user_agent
+      name: User Agent
+    - code: rewritten_path
+      name: Rewritten URL Path
+    - code: path
+      name: URL Path
+    - code: timestamp
+      name: Timestamp
+    - code: client_ip
+      name: IP Address
+    - code: client_port
+      name: Port
+  total_items: 6
+  '@links':
+    first:
+      href: /rtld/v1/cdn/fields?limit=10&offset=0
+    last:
+      href: /rtld/v1/cdn/fields?limit=10&offset=0

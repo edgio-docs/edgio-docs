@@ -9,6 +9,7 @@ allOf:
     properties:
       password:
         type: string
+        writeOnly: true
         format: password
         minLength: 1
         maxLength: 1024

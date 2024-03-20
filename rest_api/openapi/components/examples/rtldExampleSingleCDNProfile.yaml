@@ -1,6 +1,6 @@
 value:
-  '@type': CDNProfile
   '@id': /rtld/v1/cdn/profiles/10027
+  '@type': CDNProfile
   id: 10027
   environment_id: c9980249-2fb6-4699-a68e-271383815700
   enabled: false
@@ -38,6 +38,5 @@ value:
     authentication:
       type: http_basic
       username: myuser
-      password: mypassword
     log_format: json
   profile_name: myprofile

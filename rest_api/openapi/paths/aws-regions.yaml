@@ -5,14 +5,14 @@ get:
   description: Retrieves a list of AWS regions to which log data may be delivered.
   operationId: GetAllAWSRegions
   security:
-    - rtldBearerAuth:
+    - rtldScope:
         - app.rtld:read
   parameters:
     - $ref: ../components/parameters/rtldLimitParam.yaml
     - $ref: ../components/parameters/rtldOffsetParam.yaml
   responses:
     '200':
-      $ref: ../components/responses/rtldCodeNameCollection.yaml
+      $ref: ../components/responses/rtldAWSRegionsCollection.yaml
     '401':
       $ref: ../components/responses/rtldUnauthorized.yaml
     '500':

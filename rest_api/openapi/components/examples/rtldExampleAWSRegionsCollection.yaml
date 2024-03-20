@@ -1,0 +1,24 @@
+value:
+  '@id': /rtld/v1/aws-regions
+  '@type': Collection
+  items:
+    - code: af-south-1
+      name: Africa (Cape Town)
+    - code: ap-east-1
+      name: Asia Pacific (Hong Kong)
+    - code: ap-south-2
+      name: Asia Pacific (Hyderabad)
+    - code: ap-southeast-3
+      name: Asia Pacific (Jakarta)
+    - code: ap-southeast-4
+      name: Asia Pacific (Melbourne)
+    - code: ap-south-1
+      name: Asia Pacific (Mumbai)
+    - code: ap-northeast-3
+      name: Asia Pacific (Osaka)
+  total_items: 7
+  '@links':
+    first:
+      href: /rtld/v1/aws-regions?limit=10&offset=0
+    last:
+      href: /rtld/v1/aws-regions?limit=10&offset=0

@@ -8,6 +8,7 @@ allOf:
     properties:
       access_key:
         type: string
+        writeOnly: true
         description: >-
           Determines the access key through which log data uploads will be
           authorized.

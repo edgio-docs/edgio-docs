@@ -1,5 +1,5 @@
 title: Hostname Filter Object
-description: Hostname Filter object describes log filtering by hostnames
+description: Log filtering by hostname.
 type: object
 required:
   - names

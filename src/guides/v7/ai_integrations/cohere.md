@@ -29,18 +29,18 @@ Install the necessary dependencies.
 npm i
 ```
 
-If you haven't already, [install the Edgio CLI](https://docs.edg.io/guides/v7/develop/cli). Use `edg dev` to start your development server:
+If you haven't already, [install the Edgio CLI](https://docs.edg.io/guides/v7/develop/cli). Use `edgio dev` to start your development server:
 
 ```bash
-edg dev
+edgio dev
 ```
 
 You can preview your application at [http://localhost:3000](http://localhost:3000).
 
 ## Deployment {/* deployment */}
 
-Deploy your project with the `edg deploy` command:
+Deploy your project with the `edgio deploy` command:
 
 ```bash
-edg deploy
+edgio deploy
 ```

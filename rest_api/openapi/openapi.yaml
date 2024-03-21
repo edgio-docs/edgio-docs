@@ -137,10 +137,10 @@ tags:
       An API schema is a JSON schema that describes the structure for a valid API payload.
       
       <a href="https://docs.edg.io/guides/security/api_security#json-schema-syntax" target="_blank">Learn more about supported JSON schema syntax.</a>
-  - name: RTLD CDN Profile
-    description: Automate RTLD CDN profile management.
+  - name: RTLD Access Logs Profile
+    description: Automate RTLD Access Logs profile management.
   - name: Log Fields
-    description: Retrieve log fields associated with a RTLD module.
+    description: Retrieve log fields associated with a Real-Time Log Delivery (RTLD) module.
   - name: AWS Regions
     description: Retrieve the available set of AWS regions.
 paths:
@@ -548,7 +548,7 @@ components:
         clientCredentials:
           tokenUrl: https://id.edgio.app/connect/token
           scopes:
-            app.rtld: Authorizes full access to RTLD.
+            app.rtld: Authorizes full access to Real-Time Log Delivery.
 x-tagGroups:
   - name: Cache
     tags:
@@ -581,8 +581,8 @@ x-tagGroups:
     tags:
       - properties
       - environments
-  - name: RTLD
+  - name: Real-Time Log Delivery
     tags:
-      - RTLD CDN Profile
+      - RTLD Access Logs Profile
       - Log Fields
       - AWS Regions

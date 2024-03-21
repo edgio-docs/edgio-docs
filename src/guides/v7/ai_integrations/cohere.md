@@ -17,7 +17,7 @@ git clone https://github.com/edgio-docs/edgio-v7-ai-example.git
 cd cohere
 ```
 
-Prepare your environment variables in a `.env.local` file by duplicating the `.env.example` file to `.env.local` and inserting your [Cohere API key](https://docs.cohere.ai/).
+Prepare your environment variables in a `.env` file by duplicating the `.env.example` file to `.env` and inserting your [Cohere API key](https://docs.cohere.ai/).
 
 ```bash
 cp .env.example .env
@@ -35,14 +35,7 @@ If you haven't already, [install the Edgio CLI](https://docs.edg.io/guides/v7/de
 edg dev
 ```
 
-You can test the server functionality using a `curl` command after the server is running:
-
-```bash
-curl \
-  -X POST localhost:3000/summarize \
-  -H "Content-Type: application/json" \
-  -d '{"text":"Text to summarize..."}'
-```
+You can preview your application at [http://localhost:3000](http://localhost:3000).
 
 ## Deployment {/* deployment */}
 

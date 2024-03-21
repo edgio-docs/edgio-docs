@@ -52,7 +52,7 @@ export default function Guide({
   return (
     <Page>
       <MarkdownPage
-        meta={{...source.frontmatter, sourceFile}}
+        meta={{...source.frontmatter, sourceFile, version: initialVersion}}
         headings={headings}
         isHomepage={isHomepage}>
         <MDXRemote {...source} components={MDXComponents} />
@@ -239,6 +239,7 @@ export async function getStaticProps({
       sourceFile: file,
       headings,
       isHomepage,
+      version,
     },
   };
 }

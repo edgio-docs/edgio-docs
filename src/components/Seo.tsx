@@ -61,7 +61,7 @@ const Seo = withRouter(
         <meta
           property="og:url"
           key="og:url"
-          content={`https://docs.edg.io/guides${router.pathname}`}
+          content={`https://docs.edg.io${router.asPath}`}
         />
         {title != null && (
           <meta property="og:title" content={title} key="og:title" />

@@ -1,8 +1,9 @@
 import {useRouter} from 'next/router';
 import styled from 'styled-components';
 
-import {IconExternalLink, IconGitHub} from 'components/Icon';
+import {IconExternalLink, IconGitHub, IconGitHubDark} from 'components/Icon';
 import {useAppContext} from 'contexts/AppContext';
+import {useTheme} from 'contexts/ThemeContext';
 
 const StyledEditLink = styled.div`
   margin-top: 50px;
@@ -73,6 +74,7 @@ export default function EditPage({
 }) {
   const router = useRouter();
   const {config} = useAppContext();
+  const {themedValue} = useTheme();
 
   const {DOCS_REPO} = config;
   const baseURL = `https://github.com/${DOCS_REPO}/edit/main/`;
@@ -88,7 +90,7 @@ export default function EditPage({
     return (
       <StyledEditIcon>
         <a target="_blank" href={editHref} rel="noreferrer" title={title}>
-          <IconGitHub />
+          {themedValue(<IconGitHub />, <IconGitHubDark />)}
         </a>
       </StyledEditIcon>
     );

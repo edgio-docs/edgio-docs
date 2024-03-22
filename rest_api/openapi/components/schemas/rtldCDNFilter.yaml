@@ -1,4 +1,4 @@
-title: CDN Filter Object
+title: Log Filtering Object
 description: Contains your log filtering configuration.
 type: object
 properties:

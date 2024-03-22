@@ -1,11 +1,13 @@
 value:
-  '@id': /rtld/v1/cdn/profiles
+  '@id': /rtld/v1/cdn/profiles?limit=1
   '@type': Collection
   '@links':
     first:
-      href: /rtld/v1/cdn/profiles?limit=10&offset=0
+      href: /rtld/v1/cdn/profiles?limit=1&offset=0
+    next:
+      href: /rtld/v1/cdn/profiles?limit=1&offset=1
     last:
-      href: /rtld/v1/cdn/profiles?limit=10&offset=0
+      href: /rtld/v1/cdn/profiles?limit=1&offset=4
   items:
     - '@id': /rtld/v1/cdn/profiles/10027
       '@type': CDNProfile
@@ -48,4 +50,4 @@ value:
           username: myuser
         log_format: json
       profile_name: myprofile
-  total_items: 1
+  total_items: 5

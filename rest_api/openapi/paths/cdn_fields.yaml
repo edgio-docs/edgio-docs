@@ -1,8 +1,8 @@
 get:
   tags:
     - Log Fields
-  summary: Get Log Fields (RTLD CDN)
-  description: Retrieves the available set of log fields for RTLD CDN.
+  summary: Get Log Fields (RTLD Access Logs)
+  description: Retrieves the available set of log fields for RTLD Access Logs.
   operationId: GetAllCDNFields
   security:
     - rtldScope:

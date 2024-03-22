@@ -1,5 +1,5 @@
-title: RTLD CDN Profile properties
-description: A RTLD CDN profile's configuration excluding its system-defined ID.
+title: RTLD Access Logs Profile properties
+description: A RTLD Access Logs profile's configuration excluding its system-defined ID.
 type: object
 required:
   - profile_name
@@ -109,7 +109,7 @@ properties:
       Defines the set of log fields that will be delivered.
 
 
-      Use the [Get Log Fields (RTLD CDN)
+      Use the [Get Log Fields (RTLD Access Logs)
       endpoint](#tag/Log-Fields/operation/GetAllCDNFields) to retrieve the set
       of valid values for this property.
   profile_name:

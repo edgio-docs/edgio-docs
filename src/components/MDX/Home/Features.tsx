@@ -9,8 +9,20 @@ import Container from '../../Layout/Container';
 const StyledFeatures = styled.div`
   .grouped-sections {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 20px;
+
+    /* Start with 1 column layout */
+    grid-template-columns: 1fr;
+
+    /* At widths where 2 columns of minimum 500px can fit, use 2 columns */
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(2, minmax(500px, 1fr));
+    }
+
+    /* At widths where 4 columns of minimum 500px can fit, use 4 columns */
+    @media (min-width: 2048px) {
+      grid-template-columns: repeat(4, minmax(500px, 1fr));
+    }
   }
 `;
 

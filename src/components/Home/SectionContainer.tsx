@@ -86,8 +86,9 @@ const SectionTitle = styled.div`
 
 const ItemsGrid = styled.div<{columns: number}>`
   display: grid;
-  gap: 16px;
-  width: 100%;
+  grid-gap: 16px;
+  width: calc(100% - 40px);
+  box-sizing: border-box;
 
   grid-template-columns: repeat(${({columns}) => columns}, 1fr);
 
@@ -117,7 +118,6 @@ const ItemText = styled.div`
   color: var(--text-primary);
   font-size: 14px;
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
 
   a:hover {
@@ -187,8 +187,8 @@ const SectionBox = ({
         <Subtitle>{subtitle}</Subtitle>
       </SectionHeader>
       <ItemsContainer>
-        {sections.map((section) => (
-          <Section key={section.title}>
+        {sections.map((section, i) => (
+          <Section key={i}>
             {section.title && <SectionTitle>{section.title}</SectionTitle>}
             <ItemsGrid columns={columnCount}>
               {section.items.map((item) => (

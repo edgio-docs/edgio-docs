@@ -85,8 +85,9 @@ const SearchContainer = styled.div<{active?: string}>`
 
       width: 100%;
       height: auto;
-      opacity: ${({active}) => (active === 'applications' ? '0' : '1')};
-      cursor: ${({active}) => (active === 'applications' ? 'pointer' : 'auto')};
+      //opacity: ${({active}) => (active === 'applications' ? '0' : '1')};
+      //cursor: ${({active}) =>
+        active === 'applications' ? 'pointer' : 'auto'};
 
       .DocSearch-Button {
         width: 100%;
@@ -208,7 +209,7 @@ function HomeSearchComponent() {
       <div className="search-box">
         <FiSearch className="search-icon" />
         <div className="search-input">
-          {isApplicationsActive && <AlgoliaSearch />}
+          {isApplicationsActive && <EdgioAnswersContainer />}
           {isUplynkActive && (
             <UplynkSearch
               onKeyPress={(event) => {
@@ -219,13 +220,6 @@ function HomeSearchComponent() {
             />
           )}
         </div>
-        {isApplicationsActive && (
-          <KeyboardButton>
-            {isClient && navigator.platform.includes('Mac')
-              ? '⌘ K'
-              : 'Ctrl + K'}
-          </KeyboardButton>
-        )}
       </div>
     </SearchContainer>
   );
@@ -237,11 +231,6 @@ function ProductSearchComponent() {
       <div className="search-buttons">
         {
           <>
-            {/*
-              <KeywordSearchButton className="search-button active">
-                Keyword Search
-              </KeywordSearchButton>
-              */}
             <EdgioAnswersButton
               className="search-button active"
               href={edgioAnswersUrl}>
@@ -254,12 +243,18 @@ function ProductSearchComponent() {
       <div className="search-box">
         <FiSearch className="search-icon" />
         <div className="search-input">
-          <StyledEdgioAnswersInput>
-            <EdgioAnswersInput />
-          </StyledEdgioAnswersInput>
+          <EdgioAnswersContainer />
         </div>
       </div>
     </SearchContainer>
+  );
+}
+
+function EdgioAnswersContainer() {
+  return (
+    <StyledEdgioAnswersInput>
+      <EdgioAnswersInput />
+    </StyledEdgioAnswersInput>
   );
 }
 

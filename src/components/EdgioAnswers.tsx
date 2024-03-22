@@ -297,6 +297,8 @@ const ChatMessage = ({content}: {content: string}) => {
   );
 };
 
+const defaultPlaceholder = 'Ask Edgio Answers...';
+
 const EdgioAnswers = () => {
   const router = useRouter();
   const {themedValue} = useTheme();
@@ -311,7 +313,7 @@ const EdgioAnswers = () => {
   const isLoaded = useHydrationIsLoaded();
   const placeholder = isAwaitingResponse
     ? 'Waiting for response...'
-    : 'Ask something...';
+    : defaultPlaceholder;
 
   useEffect(() => {
     const checkHash = () => {
@@ -513,8 +515,6 @@ const EdgioAnswers = () => {
   );
 };
 
-const defaultPlaceholder = 'Ask a question...';
-
 export const EdgioAnswersInput = ({duration = 1000}) => {
   const [index, setIndex] = useState(0);
   const [placeholder, setPlaceholder] = useState('');
@@ -540,7 +540,7 @@ export const EdgioAnswersInput = ({duration = 1000}) => {
           }
         }, duration);
       }
-    }, 50);
+    }, 25);
   };
 
   useEffect(() => {

@@ -4,7 +4,7 @@ title: Install Node.js and npm
 
 <Callout type="info">
 
-  The Node.js 16 end-of-life (EOL) is only relevant if your configuration uses [Cloud Functions](/guides/performance/serverless_compute). The following information is inapplicable to your setup if you only deploy from the {{ PORTAL }}.
+  The Node.js 16 end-of-life (EOL) is only relevant if your configuration uses {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or [Cloud Functions](/guides/performance/serverless_compute). This article is inapplicable for all other cases (e.g., if you only deploy from the {{ PORTAL }}). 
 
 </Callout>
 

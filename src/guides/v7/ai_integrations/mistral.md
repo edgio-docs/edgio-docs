@@ -31,16 +31,16 @@ npm i
 
 ## Deployment {/* deployment */}
 
-[Install the Edgio CLI](https://docs.edg.io/guides/v7/develop/cli) if you haven't already. Run your development server with `edg dev`:
+[Install the Edgio CLI](https://docs.edg.io/guides/v7/develop/cli) if you haven't already. Run your development server with `edgio dev`:
 
 ```bash
-edg dev
+edgio dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Deploy your project with `edg deploy`:
+Deploy your project with `edgio deploy`:
 
 ```bash
-edg deploy
+edgio deploy
 ```

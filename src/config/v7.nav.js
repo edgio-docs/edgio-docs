@@ -308,6 +308,12 @@ const nav = {
       title: 'Experimentation',
       path: 'experimentation',
       icon: 'experimentation',
+      routes: [
+        {
+          title: 'Cross-Environment Traffic Splitting',
+          path: 'security/cross_environment_traffic_splitting',
+        },
+      ],
     },
     {
       title: 'Security',

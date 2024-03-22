@@ -12,3 +12,5 @@ Whether you aim to enhance user experiences, streamline operations, or unlock ne
 - [LlamaIndex](/guides/ai_integrations/llamaindex): Utilize `create-llama` for a fast setup of your LlamaIndex application, offering a Next.js front-end designed as a chat interface for querying data. Ideal for developers seeking to rapidly deploy AI-powered search and conversational interfaces within their applications.
 
 - [Mistral](/guides/ai_integrations/mistral): Elevate your React applications with Mistral AI which offers pay-as-you-go and open-source solutions. Their client packages and API cater to various use-cases including chat generation, specialized endpoints, and detailed performance insights for crafting bespoke AI experiences.
+
+- [Cohere](/guides/ai_integrations/cohere): Incorporate Cohere's cutting-edge NLP capabilities into your applications using an Express.js server setup. This example connects to Cohere's custom API endpoints, facilitated by Edgio's global network to ensure low-latency, scalable, and efficient text processing. Ideal for developers aiming to integrate advanced text analysis features.

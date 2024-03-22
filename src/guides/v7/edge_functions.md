@@ -557,6 +557,11 @@ It's important to note that edge functions are not Node.js functions. Your code 
   let newUrl = url.toString(); // newUrl will equal 'https://www.url.com:8080/path'
   ```
 
+  ```js
+  let url = new URL('/patha/pathb', 'https://www.url.com/');
+  let newUrl = url.toString(); // newUrl will equal 'https://www.url.com/patha/pathb'
+  ```
+
 - `URLSearchParams` Class
 
   This class, provided by the {{ PRODUCT }} CLI, is compatible with the standard [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) class.

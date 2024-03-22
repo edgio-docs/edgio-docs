@@ -36,6 +36,22 @@ module.exports = {
       //   allow_self_signed_certs: true,
       // },
     },
+    {
+      name: 'preview',
+      override_host_header:
+        'edgio-community-docs-edg-io-preview.glb.edgio.link',
+      hosts: [
+        {
+          scheme: 'https',
+          location: [
+            {
+              hostname: 'edgio-community-docs-edg-io-preview.glb.edgio.link',
+              port: 443,
+            },
+          ],
+        },
+      ],
+    },
   ],
 
   serverless: {

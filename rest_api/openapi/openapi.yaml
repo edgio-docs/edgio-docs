@@ -152,7 +152,7 @@ tags:
   - name: RTLD Access Logs Profile
     description: |
     
-      Automate RTLD Access Logs profile management. A RTLD Access Logs profile defines a set of access log data and where it will be delivered. 
+      Automate RTLD Access Logs profile management. A RTLD Access Logs profile defines the condition(s) under which access log data will be delivered to the desired destination (e.g., your web server or AWS S3). 
       
       <a href="https://docs.edg.io/guides/v7/logs/rtld" target="_blank">Learn more about Real-Time Log Delivery.</a>
   - name: Log Fields

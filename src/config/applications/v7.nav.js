@@ -396,6 +396,10 @@ const nav = {
           title: 'Mistral',
           path: 'ai_integrations/mistral',
         },
+        {
+          title: 'Cohere',
+          path: 'ai_integrations/cohere',
+        },
       ],
     },
     {

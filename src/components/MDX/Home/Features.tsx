@@ -8,13 +8,9 @@ import Container from '../../Layout/Container';
 
 const StyledFeatures = styled.div`
   .grouped-sections {
-    display: flex;
-    gap: 2%;
-    align-items: stretch;
-
-    @media (max-width: 1086px) {
-      flex-direction: column;
-    }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 20px;
   }
 `;
 

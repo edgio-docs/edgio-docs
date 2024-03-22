@@ -152,9 +152,9 @@ export const sections: HomepageSectionGroup[] = [
     ],
   },
   {
-    heading: 'Media',
+    heading: 'Uplynk',
     subheading: 'Accelerate and protect your streaming media business.',
-    className: 'media',
+    className: 'uplynk',
     icon: IconEdgioMedia,
     sections: [
       {
@@ -215,16 +215,78 @@ export const sections: HomepageSectionGroup[] = [
           },
         ],
       },
-      // {
-      //   title: 'Delivery',
-      //   path: 'https://docs.edgecast.com/cdn/index.html#Getting_Started/GS-All.htm',
-      //   items: [],
-      // },
-      // {
-      //   title: 'Open Edge',
-      //   path: '/media/open-edge',
-      //   items: [],
-      // },
+    ],
+  },
+  {
+    heading: 'Delivery',
+    subheading: 'Something Delivery',
+    className: 'delivery',
+    icon: IconEdgioMedia,
+    sections: [
+      {
+        title: 'Uplynk',
+        path: 'https://docs.edgecast.com/video/index.html',
+        items: [
+          {
+            title: 'Getting Started',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Setup-Overview.htm%3FTocPath%3DBasic%2520Setup%7C_____0',
+          },
+          {
+            title: 'Live Linear',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Live-Linear.htm%3FTocPath%3DBasic%2520Setup%7CLive%2520Linear%7C_____0',
+          },
+          {
+            title: 'Live Events',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Live-Events-2.htm%3FTocPath%3DBasic%2520Setup%7CLive%2520Events%7C_____0',
+          },
+          {
+            title: 'Live Slicer',
+            path: 'https://docs.edgecast.com/video/index.html#Slicer/Live-Slicer-Setup.htm%3FTocPath%3DBasic%2520Setup%7CLive%2520Slicer%7C_____0',
+          },
+          {
+            title: 'Cloud Slicer Live',
+            path: 'https://docs.edgecast.com/video/index.html#Slicer/Cloud-Slicer-Live.htm%3FTocPath%3DBasic%2520Setup%7C_____4',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    heading: 'Open Edge',
+    subheading: 'Something Open Edge',
+    className: 'open-edge',
+    icon: IconEdgioMedia,
+    sections: [
+      {
+        title: 'Uplynk',
+        path: 'https://docs.edgecast.com/video/index.html',
+        items: [
+          {
+            title: 'Getting Started',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Setup-Overview.htm%3FTocPath%3DBasic%2520Setup%7C_____0',
+          },
+          {
+            title: 'Live Linear',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Live-Linear.htm%3FTocPath%3DBasic%2520Setup%7CLive%2520Linear%7C_____0',
+          },
+          {
+            title: 'Live Events',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Live-Events-2.htm%3FTocPath%3DBasic%2520Setup%7CLive%2520Events%7C_____0',
+          },
+          {
+            title: 'Live Slicer',
+            path: 'https://docs.edgecast.com/video/index.html#Slicer/Live-Slicer-Setup.htm%3FTocPath%3DBasic%2520Setup%7CLive%2520Slicer%7C_____0',
+          },
+          {
+            title: 'Cloud Slicer Live',
+            path: 'https://docs.edgecast.com/video/index.html#Slicer/Cloud-Slicer-Live.htm%3FTocPath%3DBasic%2520Setup%7C_____4',
+          },
+          {
+            title: 'On-Demand Content',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/On-Demand-Content.htm%3FTocPath%3DBasic%2520Setup%7COn-Demand%2520Content%7C_____0',
+          },
+        ],
+      },
     ],
   },
 ];

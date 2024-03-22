@@ -1,8 +1,8 @@
 get:
   tags:
-    - RTLD CDN Profile
-  summary: Get RTLD CDN Profile
-  description: Retrieves a RTLD CDN profile by its system-defined ID.
+    - RTLD Access Logs Profile
+  summary: Get RTLD Access Logs Profile
+  description: Retrieves a RTLD Access Logs profile by its system-defined ID.
   operationId: GetCDNProfileById
   security:
     - rtldScope:
@@ -23,9 +23,9 @@ get:
       $ref: ../components/responses/rtldInternalServerError.yaml
 put:
   tags:
-    - RTLD CDN Profile
-  summary: Update RTLD CDN Profile
-  description: Updates a RTLD CDN profile.
+    - RTLD Access Logs Profile
+  summary: Update RTLD Access Logs Profile
+  description: Updates a RTLD Access Logs profile.
   operationId: ReplaceCDNProfileById
   security:
     - rtldScope:
@@ -51,9 +51,9 @@ put:
   x-codegen-request-body-name: Body
 delete:
   tags:
-    - RTLD CDN Profile
-  summary: Delete RTLD CDN Profile
-  description: Permanently deletes a RTLD CDN profile.
+    - RTLD Access Logs Profile
+  summary: Delete RTLD Access Logs Profile
+  description: Permanently deletes a RTLD Access Logs profile.
   operationId: DeleteCDNProfileById
   security:
     - rtldScope:

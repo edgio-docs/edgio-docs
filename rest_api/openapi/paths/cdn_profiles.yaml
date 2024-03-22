@@ -1,8 +1,8 @@
 post:
   tags:
-    - RTLD CDN Profile
-  summary: Add RTLD CDN Profile
-  description: 'Creates a RTLD CDN profile. '
+    - RTLD Access Logs Profile
+  summary: Add RTLD Access Logs Profile
+  description: 'Creates a RTLD Access Logs profile. '
   operationId: CreateCDNProfile
   security:
     - rtldScope:
@@ -23,9 +23,9 @@ post:
   x-codegen-request-body-name: Body
 get:
   tags:
-    - RTLD CDN Profile
-  summary: Get All RTLD CDN Profiles
-  description: Returns all RTLD CDN profiles associated with an environment.
+    - RTLD Access Logs Profile
+  summary: Get All RTLD Access Logs Profiles
+  description: Returns all RTLD Access Logs profiles associated with an environment.
   operationId: GetAllCDNProfiles
   security:
     - rtldScope:

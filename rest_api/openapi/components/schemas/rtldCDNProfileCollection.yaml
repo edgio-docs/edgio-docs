@@ -1,5 +1,5 @@
 title: A collection of profiles
-description: Contains a collection of your RTLD CDN profiles.
+description: Contains a collection of your RTLD Access Logs profiles.
 allOf:
   - $ref: >-
       https://raw.githubusercontent.com/Edgio/hyperion/v2.0.0/schema/collection.json

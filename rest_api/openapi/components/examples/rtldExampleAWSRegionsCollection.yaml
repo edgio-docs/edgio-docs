@@ -1,6 +1,13 @@
 value:
-  '@id': /rtld/v1/aws-regions
+  '@id': /rtld/v1/aws-regions?limit=5
   '@type': Collection
+  '@links':
+    first:
+      href: /rtld/v1/aws-regions?limit=5&offset=0
+    next:
+      href: /rtld/v1/aws-regions?limit=5&offset=5
+    last:
+      href: /rtld/v1/aws-regions?limit=5&offset=25
   items:
     - code: af-south-1
       name: Africa (Cape Town)
@@ -16,9 +23,4 @@ value:
       name: Asia Pacific (Mumbai)
     - code: ap-northeast-3
       name: Asia Pacific (Osaka)
-  total_items: 7
-  '@links':
-    first:
-      href: /rtld/v1/aws-regions?limit=10&offset=0
-    last:
-      href: /rtld/v1/aws-regions?limit=10&offset=0
+  total_items: 29

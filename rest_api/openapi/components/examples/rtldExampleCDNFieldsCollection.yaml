@@ -1,6 +1,13 @@
 value:
-  '@id': /rtld/v1/cdn/fields
+  '@id': /rtld/v1/cdn/fields?limit=6
   '@type': Collection
+  '@links':
+    first:
+      href: /rtld/v1/cdn/fields?limit=6&offset=0
+    next:
+      href: /rtld/v1/cdn/fields?limit=6&offset=6
+    last:
+      href: /rtld/v1/cdn/fields?limit=6&offset=48
   items:
     - code: user_agent
       name: User Agent
@@ -14,9 +21,4 @@ value:
       name: IP Address
     - code: client_port
       name: Port
-  total_items: 6
-  '@links':
-    first:
-      href: /rtld/v1/cdn/fields?limit=10&offset=0
-    last:
-      href: /rtld/v1/cdn/fields?limit=10&offset=0
+  total_items: 54

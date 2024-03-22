@@ -38,7 +38,7 @@ type HomepageSectionItem = {
 };
 
 type HomepageSection = {
-  title: string;
+  title?: string;
   description?: string;
   path?: string;
   items: HomepageSectionItem[];

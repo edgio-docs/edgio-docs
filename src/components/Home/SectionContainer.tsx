@@ -189,7 +189,7 @@ const SectionBox = ({
       <ItemsContainer>
         {sections.map((section) => (
           <Section key={section.title}>
-            <SectionTitle>{section.title}</SectionTitle>
+            {section.title && <SectionTitle>{section.title}</SectionTitle>}
             <ItemsGrid columns={columnCount}>
               {section.items.map((item) => (
                 <Item key={item.title}>

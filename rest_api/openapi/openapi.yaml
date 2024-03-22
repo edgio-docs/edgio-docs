@@ -12,16 +12,28 @@ info:
 tags:
   - name: tls-certs
     x-displayName: TLS Certificates
-    description: Automate TLS certificate management.
+    description: |
+    
+      Retrieve TLS certificates or upload your own TLS certificate to a specific environment. 
+      
+      <a href="https://docs.edg.io/guides/v7/security/tls_certificates" target="_blank">Learn more about hosting TLS certificates on our network.</a>
   - name: deployments
     x-displayName: Deployment Info
-    description: Retrieve information and log data for a previous deployment.
+    description: |
+    
+      Retrieve information and log data for a previous deployment. 
+      
+      <a href="https://docs.edg.io/guides/v7/basics/deployments" target="_blank">Learn more about deployments.</a>
   - name: configs
     x-displayName: CDN Configuration
-    description: Deploy or retrieve a CDN configuration.
+    description: Deploy or retrieve a CDN configuration. This type of configuration consists of origin configurations, hostnames, rules, and experiments.
   - name: environment-variables
     x-displayName: Environment Variables
-    description: Automate environment variable management.
+    description: |
+    
+      Automate environment variable management. 
+      
+      <a href="https://docs.edg.io/guides/v7/basics/environments#environment-variables" target="_blank">Learn more about environment variables.</a>
   - name: purge-requests
     x-displayName: Purge
     description: Purge cached content and retrieve information about previously submitted purge requests.
@@ -138,7 +150,11 @@ tags:
       
       <a href="https://docs.edg.io/guides/security/api_security#json-schema-syntax" target="_blank">Learn more about supported JSON schema syntax.</a>
   - name: RTLD Access Logs Profile
-    description: Automate RTLD Access Logs profile management.
+    description: |
+    
+      Automate RTLD Access Logs profile management. A RTLD Access Logs profile defines a set of access log data and where it will be delivered. 
+      
+      <a href="https://docs.edg.io/guides/v7/logs/rtld" target="_blank">Learn more about Real-Time Log Delivery.</a>
   - name: Log Fields
     description: Retrieve log fields associated with a Real-Time Log Delivery (RTLD) module.
   - name: AWS Regions
@@ -581,7 +597,7 @@ x-tagGroups:
     tags:
       - properties
       - environments
-  - name: Real-Time Log Delivery
+  - name: Real-Time Log Delivery (RTLD)
     tags:
       - RTLD Access Logs Profile
       - Log Fields

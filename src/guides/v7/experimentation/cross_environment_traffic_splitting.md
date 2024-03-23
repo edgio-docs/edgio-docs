@@ -8,14 +8,6 @@ One use for this capability is to migrate iteratively from a legacy to a new sit
 
 [View iterative migration example.](/guides/experimentation/iterative_migration)
 
-<Callout type="info">
-
-    If you are using either {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or Edge Functions and you are proxying traffic to a different environment within the same property, then you may incur additional latency. A workaround for this issue is to proxy traffic between the production environments of two different properties.
-
-    {{ PRODUCT }} {{ PRODUCT_PLATFORM }} and Edge Functions may run in a different region for the production environment than other environments. If you are sending traffic between these environments, then latency is introduced due to traffic being routed between two regions. 
-
-</Callout>
-
 ## How Does Proxying Traffic Work? {/*how-does-proxying-traffic-work*/}
 
 {{ PRODUCT }} processes all requests using our [standard order of operations](/guides/v7/performance/request#order-of-operations). However, traffic that is sent to another environment will be processed by the rules for both environments as indicated below. 
@@ -23,7 +15,7 @@ One use for this capability is to migrate iteratively from a legacy to a new sit
 -   **Source Environment:** {{ PRODUCT }} will apply the source environment's rules to the request. 
 -   **Target Environment:** {{ PRODUCT }} will only apply features that affect the response sent to the client. These features take precedence over the ones defined within the source environment's rules.
 
-In addition to rule processing, you may choose to add custom logic to your origin server that alters the behavior based off of the host requested by the client.
+In addition to rule processing, you may choose to add custom logic to your origin server that alters the behavior based off of the host requested by the client. This type of setup requires [logging the Host header](#host-header-logging) within the source environment.
 
 ## Setup {/*setting-up-cross-environment-traffic*/}
 
@@ -37,7 +29,15 @@ The two basic methods for routing traffic to multiple environments are:
 
 [Learn how to set up environments through the iterative migration example.](/guides/experimentation/iterative_migration)
 
-### Target Environment Setup
+<Callout type="important">
+
+    If are you using {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, Edge Functions, or Cloud Functions and you are proxying traffic to a different environment within the same property, then you may incur additional latency. A workaround for this issue is to proxy traffic between the production environments of two different properties.
+
+    {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, Edge Functions, and Cloud Functions may run in a different region for the production environment than other environments. If you are sending traffic between these environments, then latency is introduced due to traffic being routed between two regions. 
+
+</Callout>
+
+### Target Environment Setup {/*target-environment-setup*/}
 
 Once you have decided whether you want to use a dedicated or shared environment, you will need to deploy a configuration to each environment to which traffic will be routed. These environments are known as your target environments. For example, you can deploy the configuration for your legacy site to one environment and the configuration for your new site to a different environment. 
 
@@ -53,7 +53,7 @@ Source environment setup consists of performing the following steps:
 2.  Optional. Log the `Host` header to identify traffic routed through the source environment.
 3.  Set up an experiment with variants that route traffic to the desired target environment(s).
 
-#### Origin Configuration
+#### Origin Configuration {/*origin-configuration*/}
 
 Create an origin configuration within the source environment. 
 
@@ -64,7 +64,7 @@ Your origin configuration should look similar to the following illustration:
 
 ![Source Environment's Origin Configuration](/images/v7/experimentation-cross-env-experiment-origin-configuration.png?width=650)
 
-#### Host Header Logging
+#### Host Header Logging {/*host-header-logging*/}
 
 Set up custom logic when traffic is routed from the source environment by creating a rule that sets the host requested by the client (`%{http_host}`) within the `x-forwarded-host` request header.
 
@@ -72,7 +72,7 @@ Set up custom logic when traffic is routed from the source environment by creati
 
 After which, you should define custom logic within your code to handle requests that originate from the source environment.
 
-#### Experimentation Setup
+#### Experimentation Setup {/*experimentation-setup*/}
 
 Create an experiment within the source environment. Configure each desired variant to point to an origin configuration that points to the desired environment. 
 
@@ -89,3 +89,14 @@ Deploy your changes to the source environment.
   The variant assigned to a client persists until cookies are cleared. This means that testing this experiment may require clearing your cookies various times or initiating various distinct private browsing sessions. 
 
 </Callout>
+
+## End Experiment {/*end-experiment*/}
+
+Perform the following steps to end an experiment:
+
+1.  **Dedicated Routing Environment:** If you have a dedicated environment for routing traffic, then you should deploy the configuration from the desired target environment to the source environment. 
+
+2.  Perform either of the following steps from the source environment:
+
+    -   Disable the experiment by toggling its **Active** option to the off position (<Image inline src="/images/v7/icons/toggle-off-large.png" alt="Toggle off" />).
+    -   Delete the experiment by clicking the <Image inline src="/images/v7/icons/delete-5.png" alt="Delete" /> icon next to the desired experiment.

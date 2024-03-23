@@ -311,7 +311,7 @@ const nav = {
       routes: [
         {
           title: 'Cross-Environment Traffic Splitting',
-          path: 'security/cross_environment_traffic_splitting',
+          path: 'experimentation/cross_environment_traffic_splitting',
         },
       ],
     },

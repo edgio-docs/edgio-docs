@@ -87,6 +87,8 @@ Create an origin configuration within the source environment.
 
 -   Verify that the **Use the following SNI hint and enforce origin SAN/CN checking** option was autopopulated with the same domain.
 
+[View the corresponding configuration properties for a CDN-as-code setup.](/guides/performance/cdn_as_code/edgio_config#origins)
+
 Your origin configuration should look similar to the following illustration:
 
 ![Source Environment's Origin Configuration](/images/v7/experimentation-cross-env-experiment-origin-configuration.png?width=650)
@@ -117,11 +119,92 @@ Deploy your changes to the source environment.
 
 </Callout>
 
-## End Experiment {/*end-experiment*/}
+## Experiment Conclusion {/*experiment-conclusion*/}
 
 Perform the following steps to end an experiment:
 
 1.  **Dedicated Routing Environment:** If you have a dedicated environment for routing traffic, then you should deploy the configuration from the desired target environment to the source environment. 
+
+    -   **{{ PORTAL }}:** If you use the {{ PORTAL }} to deploy, perform the following steps:
+    
+        1.  Recreate the target environment's origin configuration within the source environment.
+        
+            The recommended method for recreating origin configurations is described below.
+            
+            1.  From the target environment, navigate to the **Origins** page.
+            2.  Click **JSON Editor**.
+            3.  Copy all of your origin configurations by selecting all of the text and then pressing `CTRL+C`.
+            4.  Navigate to the source environment's **Origins** page. It should already display the JSON editor.
+            5.  Perform either of the following steps:
+            
+                -   Replace the source environment's origin configurations by selecting all of the text and the pressing `CTRL+V`. 
+            
+                -   If you need to keep one or more origin configurations, then you should paste the target environment's origin configurations at the end of the configuration. 
+                
+                    After which, find the point at which you pasted your configuration. It should look similar to this:
+                
+                    ```
+                    ...
+                      }
+                    ][
+                      {
+                    ...
+                    ```
+                    
+                    Replace those brackets with a comma as shown below.
+                    
+                    ```
+                    ...
+                      },
+                      {
+                    ...
+                    ```
+            6.  Click **Origins Editor**. Verify that target environment's origin configurations were successfully moved over. 
+        2.  Recreate the target environment's rules within the source environment.
+        
+            The recommended method for recreating rules is described below.
+            
+            
+            1.  From the target environment, navigate to the **Rules** page.
+            2.  Click **JSON Editor**.
+            3.  Copy all of your rules by selecting all of the text and then pressing `CTRL+C`.
+            4.  Navigate to the source environment's **Rules** page. It should already display the JSON editor.
+            5.  Replace the source environment's rules by selecting all of the text and the pressing `CTRL+V`. 
+            6.  Click **Rules Editor**. Verify that target environment's rules were successfully moved over. 
+            
+        3.  Deploy your changes by clicking **Deploy Changes**.
+
+    -   **CDN-as-Code:** If you use the {{ PRODUCT }} CLI to deploy, perform the following steps:
+
+        1.  If your target environment uses origin configurations, merge them into the source environment's configuration.
+
+            From the {{ CONFIG_FILE }}, find the `environments` key and then merge the configuration for your target's environment within the source environment. 
+            
+            In the following code excerpt, an origin configuration was moved from the `staging` environment to the `production` environment:
+            
+            ```js filename="routes.js"
+              ...
+              // environments: {
+                 production: {
+                   hostnames: [{ hostname: 'www.mysite.com' }],
+                   origins: [
+                     {
+                       name: 'origin',
+                       hosts: [{ location: 'staging-origin.mysite.com' }],
+                       override_host_header: 'staging-origin.mysite.com',
+                     },
+                   ],
+                 },
+                 staging: {
+                   hostnames: [{ hostname: 'staging.mysite.com' }],
+                 },
+               },
+               ...
+            ```
+        2.  Review and revise your {{ ROUTES_FILE }} file for code that is specific to your target environment or the test being performed. 
+        3.  Deploy your updated configuration to the source environment.
+        
+            `{{ FULL_CLI_NAME }} deploy --environment=<SOURCE_ENVIRONMENT>`
 
 2.  Perform either of the following steps from the source environment:
 

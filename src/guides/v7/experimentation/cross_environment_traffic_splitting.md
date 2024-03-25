@@ -23,9 +23,11 @@ The two basic methods for routing traffic to multiple environments are:
 
 -   **Dedicated Routing Environment:** Use the environment that contains your hostnames to route traffic. The rules defined within this environment should be applicable to all traffic. Set up an experiment on this environment to route traffic to multiple environments. For example, you can route traffic to an environment that contains your current site and another environment that contains your new site.
 
-    ![Dedicated Routing Environment](/images/v7/experimentation-routing-environment.png)
+    ![Dedicated Routing Environment](/images/v7/experimentation-routing-dedicated-environment.png)
 
 -   **Shared Environment:** Use the environment that contains your hostnames and your site's configuration to route traffic. Set up an experiment on that environment to route traffic to another environment. For example, you can route traffic to another environment for the purpose of A/B testing a new feature.
+
+    ![Shared Environment](/images/v7/experimentation-routing-shared-environment.png)
 
 [Learn how to set up environments through the iterative migration example.](/guides/experimentation/iterative_migration)
 
@@ -39,7 +41,7 @@ The two basic methods for routing traffic to multiple environments are:
 
 ### Target Environment Setup {/*target-environment-setup*/}
 
-Once you have decided whether you want to use a dedicated or shared environment, you will need to deploy a configuration to each environment to which traffic will be routed. These environments are known as your target environments. For example, you can deploy the configuration for your legacy site to one environment and the configuration for your new site to a different environment. 
+Before setting up an experiment, you will need to deploy a configuration to each environment to which traffic will be routed. These environments are known as your target environments. For example, you can deploy the configuration for your legacy site to one environment and the configuration for your new site to a different environment. 
 
 After which, you should note the domain associated with each deployment's edge link. Sample domains are highlighted below.
 
@@ -58,6 +60,15 @@ Source environment setup consists of performing the following steps:
 Create an origin configuration within the source environment. 
 
 -   Set the **Origin Hostname** and **Override Host Header** options to a target environment's domain.
+
+    <Callout type="important">
+
+    If the target environment's domain contains `.glb`, then you should remove it. 
+    
+    For example, you should update `my-org-my-property-production.glb.edgio.link` to `my-org-my-property-production.edgio.link`.
+
+    </Callout>
+
 -   Verify that the **Use the following SNI hint and enforce origin SAN/CN checking** option was autopopulated with the same domain.
 
 Your origin configuration should look similar to the following illustration:
@@ -66,7 +77,7 @@ Your origin configuration should look similar to the following illustration:
 
 #### Host Header Logging {/*host-header-logging*/}
 
-Set up custom logic when traffic is routed from the source environment by creating a rule that sets the host requested by the client (`%{http_host}`) within the `x-forwarded-host` request header.
+If you plan on setting up custom logic for traffic routed from the source environment, then you should create a rule that sets the host requested by the client (`%{http_host}`) within the `x-forwarded-host` request header.
 
 ![Set Request Headers Feature](/images/v7/experimentation-cross-env-experiment-host.png)
 

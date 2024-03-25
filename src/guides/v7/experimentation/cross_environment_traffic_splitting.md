@@ -21,11 +21,21 @@ In addition to rule processing, you may choose to add custom logic to your origi
 
 The two basic methods for routing traffic to multiple environments are:
 
--   **Dedicated Routing Environment:** Use the environment that contains your hostnames to route traffic. The rules defined within this environment should be applicable to all traffic. Set up an experiment on this environment to route traffic to multiple environments. For example, you can route traffic to an environment that contains your current site and another environment that contains your new site.
+-   **Dedicated Routing Environment:** Use the environment that contains your hostnames to route traffic. The rules defined within this environment should be applicable to all traffic. Set up an experiment on this environment to route traffic to multiple environments. 
+
+    For example, you can route traffic to an environment that contains the configuration for your current site and another environment that contains your new site.
 
     ![Dedicated Routing Environment](/images/v7/experimentation-routing-dedicated-environment.png)
 
--   **Shared Environment:** Use the environment that contains your hostnames and your site's configuration to route traffic. Set up an experiment on that environment to route traffic to another environment. For example, you can route traffic to another environment for the purpose of A/B testing a new feature.
+-   **Shared Environment:** Use the environment that contains your hostnames and your site's configuration to route traffic. Set up an experiment on that environment to route traffic to another environment. 
+
+    <Callout type="info">
+    
+      Traffic will be routed to another environment after it has been processed by the source environment's rules. If this behavior impacts the results of your experiment, then you should use a dedicated routing environment that only contains rules that are applicable for all traffic. 
+    
+    </Callout>
+
+    For example, you can route traffic to another environment for the purpose of A/B testing a new feature.
 
     ![Shared Environment](/images/v7/experimentation-routing-shared-environment.png)
 
@@ -41,7 +51,13 @@ The two basic methods for routing traffic to multiple environments are:
 
 ### Target Environment Setup {/*target-environment-setup*/}
 
-Before setting up an experiment, you will need to deploy a configuration to each environment to which traffic will be routed. These environments are known as your target environments. For example, you can deploy the configuration for your legacy site to one environment and the configuration for your new site to a different environment. 
+Before setting up an experiment, you will need to set up each environment to which traffic will be routed. These environments are known as your target environments. Once you have created the desired environments, you will need to define origin configurations, rules, or both using either through the {{ PORTAL }} or the {{ PRODUCT }} CLI if you are using CDN-as-code.
+
+<Callout type="info">
+
+  The recommended setup is to deploy the configuration for your current site to one environment and the configuration for your new site to a different environment. This setup ensures that the rules for your current site do not affect the new site's behavior.
+
+</Callout>
 
 After which, you should note the domain associated with each deployment's edge link. Sample domains are highlighted below.
 

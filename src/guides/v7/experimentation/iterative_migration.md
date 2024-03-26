@@ -49,7 +49,7 @@ This tutorial requires an environment dedicated to routing traffic to other envi
 
 Create an environment for the current version of your website. Replicate the rules and origin configurations defined within the routing environment within this new environment. Deploy your changes. Test your configuration.
 
-<TODO - Specific instructions>
+<!--TODO - Specific instructions-->
 
 Create an origin configuration within the target environment. Traffic proxied from the source environment will be directed to this origin.
 
@@ -57,7 +57,7 @@ Create an origin configuration within the target environment. Traffic proxied fr
 
 Create an environment for the new version of your website. Define rules, origin configurations, or both. Deploy your changes. Test your configuration.
 
-<TODO - Specific instructions>
+<!--TODO - Specific instructions-->
 
 Create an origin configuration within the target environment. Traffic proxied from the source environment will be directed to this origin.
 

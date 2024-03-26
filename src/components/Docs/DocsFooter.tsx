@@ -273,8 +273,8 @@ export default function DocsFooter() {
       <div className="footer-end">
         <nav className="footer-end__nav">
           <p className="copy">
-            Copyright &copy; {new Date().getFullYear()} {PRODUCT} Inc. All
-            rights reserved.
+            Copyright &copy; {new Date().getFullYear()} {PRODUCT}. All rights
+            reserved.
           </p>
           <ul className="links">
             {secFooterLinks.map(({name, href}) => (

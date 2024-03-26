@@ -212,6 +212,7 @@ function HomeSearchComponent() {
           {isApplicationsActive && <EdgioAnswersContainer />}
           {isUplynkActive && (
             <UplynkSearch
+              placeholder="Search Uplynk documentation..."
               onKeyPress={(event) => {
                 if (event.key === 'Enter') {
                   handleUplynkSearch(event.currentTarget.value);

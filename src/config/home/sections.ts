@@ -157,7 +157,8 @@ export const sections: HomepageSectionGroup[] = [
 
   {
     heading: 'Delivery',
-    subheading: 'Something Delivery',
+    subheading:
+      'Designed for high-quality, reliable streaming, and large-scale downloads.',
     className: 'delivery',
     icon: IconDelivery,
     sections: [
@@ -170,7 +171,7 @@ export const sections: HomepageSectionGroup[] = [
             path: 'https://support.limelight.com/public/en/Content/Delivery/Content%20Delivery%20-%20User%20Guide/Getting%20Started%20with%20Content.htm',
           },
           {
-            title: 'Delivery',
+            title: 'Delivery Guide',
             path: 'https://support.limelight.com/public/en/Content/Delivery/Content%20Delivery%20-%20User%20Guide/Delivery.htm',
           },
           {
@@ -247,7 +248,7 @@ export const sections: HomepageSectionGroup[] = [
   },
   {
     heading: 'Uplynk',
-    subheading: 'Accelerate and protect your streaming media business.',
+    subheading: 'Facilitates effortless and versatile content streaming.',
     className: 'uplynk',
     icon: IconUplynk,
     sections: [
@@ -317,7 +318,7 @@ export const sections: HomepageSectionGroup[] = [
   },
   {
     heading: 'Open Edge',
-    subheading: 'Something Open Edge',
+    subheading: 'Embedded capacity to enhance on-network delivery.',
     className: 'open-edge',
     icon: IconOpenEdge,
     sections: [

@@ -87,10 +87,10 @@ const SectionTitle = styled.div`
 const ItemsGrid = styled.div<{columns: number}>`
   display: grid;
   grid-gap: 16px;
-  width: calc(100% - 40px);
+  width: 100%;
   box-sizing: border-box;
 
-  grid-template-columns: repeat(${({columns}) => columns}, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr); // 2 columns for medium screens
@@ -108,7 +108,9 @@ const Item = styled.div`
 `;
 
 const ItemDot = styled.div`
+  min-width: 8px;
   width: 8px;
+  min-height: 8px;
   height: 8px;
   background: var(--theme-primary);
   border-radius: 1px;
@@ -118,7 +120,6 @@ const ItemText = styled.div`
   color: var(--text-primary);
   font-size: 14px;
   white-space: nowrap;
-  text-overflow: ellipsis;
 
   a:hover {
     color: var(--colors-blue0);
@@ -170,7 +171,7 @@ const SectionBox = ({
   const Icon = icon;
 
   return (
-    <SectionContainer className={cn('theme', className)}>
+    <SectionContainer className={cn(className)}>
       <SectionHeader>
         <TitleContainer>
           <TitleIcon>

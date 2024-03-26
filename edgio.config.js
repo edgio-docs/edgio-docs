@@ -33,14 +33,13 @@ module.exports = {
     },
     {
       name: 'preview',
-      override_host_header:
-        'edgio-community-docs-edg-io-preview.glb.edgio.link',
+      override_host_header: 'edgio-community-docs-edg-io-preview.edgio.link',
       hosts: [
         {
           scheme: 'https',
           location: [
             {
-              hostname: 'edgio-community-docs-edg-io-preview.glb.edgio.link',
+              hostname: 'edgio-community-docs-edg-io-preview.edgio.link',
               port: 443,
             },
           ],

@@ -38,7 +38,7 @@ This tutorial assumes:
         -   Deploying through the {{ PORTAL }}.
     -   **CDN-as-Code:** If you deploy changes through the {{ PRODUCT }} CLI, then you should be familiar with the:
     -   {{ CONFIG_FILE }} file
-    -   {{ RULES_FILE }} file
+    -   {{ ROUTE_FILE }} file
     -   Deploying through the {{ PRODUCT }} CLI. 
 
 ## Identifying the Routing Environment

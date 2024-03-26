@@ -18,11 +18,6 @@ const StyledFeatures = styled.div`
     @media (min-width: 1024px) {
       grid-template-columns: repeat(2, minmax(500px, 1fr));
     }
-
-    /* At widths where 4 columns of minimum 500px can fit, use 4 columns */
-    @media (min-width: 2048px) {
-      grid-template-columns: repeat(4, minmax(500px, 1fr));
-    }
   }
 `;
 

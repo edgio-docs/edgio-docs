@@ -492,15 +492,15 @@ paths:
     security:
       - securityScope: {}
   /cdn/profiles:
-    $ref: paths/cdn_profiles.yaml
+    $ref: paths/accesslogs_profiles.yaml
     servers:
       - url: 'https://edgioapis.com/rtld/v1'
   /cdn/profiles/{id}:
-    $ref: paths/cdn_profiles_{id}.yaml
+    $ref: paths/accesslogs_profiles_{id}.yaml
     servers:
       - url: 'https://edgioapis.com/rtld/v1'
   /cdn/fields:
-    $ref: paths/cdn_fields.yaml
+    $ref: paths/accesslogs_fields.yaml
     servers:
       - url: 'https://edgioapis.com/rtld/v1'
   /aws-regions:

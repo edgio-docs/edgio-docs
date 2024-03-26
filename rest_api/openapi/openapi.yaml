@@ -491,15 +491,15 @@ paths:
       - url: 'https://edgioapis.com/bot-security/v0.9'
     security:
       - securityScope: {}
-  /cdn/profiles:
+  /accesslogs/profiles:
     $ref: paths/accesslogs_profiles.yaml
     servers:
       - url: 'https://edgioapis.com/rtld/v1'
-  /cdn/profiles/{id}:
+  /accesslogs/profiles/{id}:
     $ref: paths/accesslogs_profiles_{id}.yaml
     servers:
       - url: 'https://edgioapis.com/rtld/v1'
-  /cdn/fields:
+  /accesslogs/fields:
     $ref: paths/accesslogs_fields.yaml
     servers:
       - url: 'https://edgioapis.com/rtld/v1'

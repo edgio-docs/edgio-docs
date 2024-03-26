@@ -223,7 +223,7 @@ function Banner() {
     return (
       <StyledBanner future>
         Cloud Functions support for Node.js 16 is undergoing end-of-life.&nbsp;
-        <Link href="/guides/install_nodejs">View end-of-life plan.</Link>
+        <Link href="/guides/install_nodejs">View the end-of-life plan.</Link>
       </StyledBanner>
     );
   }

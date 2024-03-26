@@ -3,17 +3,17 @@ post:
     - RTLD Access Logs Profile
   summary: Add RTLD Access Logs Profile
   description: 'Creates a RTLD Access Logs profile. '
-  operationId: CreateCDNProfile
+  operationId: CreateALProfile
   security:
     - rtldScope:
         - app.rtld
   parameters:
     - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
   requestBody:
-    $ref: ../components/requestBodies/rtldCDNProfileRequest.yaml
+    $ref: ../components/requestBodies/rtldALProfileRequest.yaml
   responses:
     '201':
-      $ref: ../components/responses/rtldSingleCDNProfile.yaml
+      $ref: ../components/responses/rtldSingleALProfile.yaml
     '400':
       $ref: ../components/responses/rtldBadRequest.yaml
     '401':
@@ -26,7 +26,7 @@ get:
     - RTLD Access Logs Profile
   summary: Get All RTLD Access Logs Profiles
   description: Returns all RTLD Access Logs profiles associated with an environment.
-  operationId: GetAllCDNProfiles
+  operationId: GetAllALProfiles
   security:
     - rtldScope:
         - app.rtld:read
@@ -36,7 +36,7 @@ get:
     - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
   responses:
     '200':
-      $ref: ../components/responses/rtldCDNProfileCollection.yaml
+      $ref: ../components/responses/rtldALProfileCollection.yaml
     '401':
       $ref: ../components/responses/rtldUnauthorized.yaml
     '500':

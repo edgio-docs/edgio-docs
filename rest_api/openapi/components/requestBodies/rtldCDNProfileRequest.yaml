@@ -1,8 +1,0 @@
-required: true
-content:
-  application/json:
-    schema:
-      $ref: ../schemas/rtldCDNProfileProperties.yaml
-    examples:
-      reference:
-        $ref: ../examples/rtldExampleCDNProfileBody.yaml

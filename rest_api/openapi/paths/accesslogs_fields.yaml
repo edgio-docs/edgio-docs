@@ -3,7 +3,7 @@ get:
     - Log Fields
   summary: Get Log Fields (RTLD Access Logs)
   description: Retrieves the available set of log fields for RTLD Access Logs.
-  operationId: GetAllCDNFields
+  operationId: GetAllALFields
   security:
     - rtldScope:
         - app.rtld:read
@@ -12,7 +12,7 @@ get:
     - $ref: ../components/parameters/rtldOffsetParam.yaml
   responses:
     '200':
-      $ref: ../components/responses/rtldCDNFieldsCollection.yaml
+      $ref: ../components/responses/rtldALFieldsCollection.yaml
     '401':
       $ref: ../components/responses/rtldUnauthorized.yaml
     '500':

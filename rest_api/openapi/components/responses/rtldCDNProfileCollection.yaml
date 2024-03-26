@@ -1,8 +1,0 @@
-description: OK
-content:
-  application/json:
-    schema:
-      $ref: ../schemas/rtldCDNProfileCollection.yaml
-    examples:
-      reference:
-        $ref: ../examples/rtldExampleCDNProfileCollection.yaml

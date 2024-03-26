@@ -11,4 +11,4 @@ allOf:
           allOf:
             - $ref: >-
                 https://raw.githubusercontent.com/Edgio/hyperion/v2.0.0/schema/node.json
-            - $ref: ./rtldCDNProfile.yaml
+            - $ref: ./rtldALProfile.yaml

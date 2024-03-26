@@ -1,6 +1,6 @@
 value:
-  '@id': /rtld/v1/cdn/profiles/10027
-  '@type': CDNProfile
+  '@id': /rtld/v1/accesslogs/profiles/10027
+  '@type': AccessLogsProfile
   id: 10027
   environment_id: c9980249-2fb6-4699-a68e-271383815700
   enabled: false

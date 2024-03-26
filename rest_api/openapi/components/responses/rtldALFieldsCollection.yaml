@@ -5,4 +5,4 @@ content:
       $ref: ../schemas/rtldCodeNameCollection.yaml
     examples:
       reference:
-        $ref: ../examples/rtldExampleCDNFieldsCollection.yaml
+        $ref: ../examples/rtldExampleALFieldsCollection.yaml

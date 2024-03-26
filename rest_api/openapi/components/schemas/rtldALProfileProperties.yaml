@@ -110,8 +110,8 @@ properties:
 
 
       Use the [Get Log Fields (RTLD Access Logs)
-      endpoint](#tag/Log-Fields/operation/GetAllCDNFields) to retrieve the set
-      of valid values for this property.
+      endpoint](#tag/Log-Fields/operation/GetAllALFields) to retrieve the set of
+      valid values for this property.
   profile_name:
     type: string
     maxLength: 36
@@ -119,4 +119,4 @@ properties:
       Determines the log delivery profile's name. Limit this unique name to 36
       characters.
   filters:
-    $ref: ./rtldCDNFilter.yaml
+    $ref: ./rtldALFilter.yaml

@@ -1,13 +1,13 @@
 value:
-  '@id': /rtld/v1/cdn/fields?limit=6
+  '@id': /rtld/v1/accesslogs/fields?limit=6
   '@type': Collection
   '@links':
     first:
-      href: /rtld/v1/cdn/fields?limit=6&offset=0
+      href: /rtld/v1/accesslogs/fields?limit=6&offset=0
     next:
-      href: /rtld/v1/cdn/fields?limit=6&offset=6
+      href: /rtld/v1/accesslogs/fields?limit=6&offset=6
     last:
-      href: /rtld/v1/cdn/fields?limit=6&offset=48
+      href: /rtld/v1/accesslogs/fields?limit=6&offset=48
   items:
     - code: user_agent
       name: User Agent

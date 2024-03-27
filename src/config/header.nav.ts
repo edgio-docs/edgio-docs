@@ -30,11 +30,11 @@ const headerNav: HeaderNavGroup[] = [
       },
       {
         name: 'Open Edge',
-        url: '',
+        url: 'https://support.limelight.com/public/en/Default.htm#Control/Open_Edge/Open_Edge.htm',
       },
       {
         name: 'Delivery',
-        url: 'https://docs.edgecast.com/cdn/index.html#Getting_Started/GS-All.htm',
+        url: 'https://support.limelight.com/public/en/Default.htm#Delivery/Delivery_Public.htm',
       },
       /* divider */
       null,
@@ -66,11 +66,11 @@ const headerNav: HeaderNavGroup[] = [
       },
       {
         name: 'Uplynk',
-        url: 'https://docs.edgecast.com/video/index.html',
+        url: 'https://docs.edgecast.com/video/index.html#Develop/Develop.htm',
       },
       {
         name: 'Delivery',
-        url: 'https://docs.edgecast.com/cdn/index.html#Getting_Started/GS-All.htm',
+        url: 'https://support.limelight.com/public/en/Default.htm#API/API%20Index.htm',
       },
     ],
   },

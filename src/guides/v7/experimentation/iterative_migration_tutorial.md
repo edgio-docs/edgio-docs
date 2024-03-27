@@ -11,18 +11,18 @@ There are two basic approaches to the iterative migration of a website:
 
 This tutorial demonstrates how to gradually roll out new features when migrating a website. This migration involves the following environments:
 
--   A source environment through which traffic will be routed.
--   A target environment to which traffic for the current website will be routed.
--   A target environment to which traffic for the new website will be routed.
+-   An entry environment through which traffic will be routed.
+-   A destination environment to which traffic for the current website will be routed.
+-   A destination environment to which traffic for the new website will be routed.
 
 ![Dedicated Routing Environment](/images/v7/experimentation-routing-dedicated-environment.png)
 
 Migrate a website by performing the following steps:
 
-1.  Set up a target environment for the current website.
-2.  Set up a target environment for the new website.
-3.  Set up a source environment.
-4.  Create an origin configuration for each target environment.
+1.  Set up a destination environment for the current website.
+2.  Set up a destination environment for the new website.
+3.  Set up an entry environment.
+4.  Create an origin configuration for each destination environment.
 4.  Create an experiment.
 5.  Adjust traffic splitting.
 6.  Conclude the experiment
@@ -44,7 +44,13 @@ This tutorial assumes:
 
 ## Identifying the Routing Environment
 
-This tutorial requires an environment dedicated to routing traffic to other environments. Use the environment that contains the hostnames for the traffic that will be split. 
+This tutorial requires an environment through which traffic for other environments will be routed. Our recommendation is to use the environment that contains the hostnames for the traffic that will be split. If traffic splitting will be performed for a domain that has not been previously registered, then you should [create an environment](/guides/basics/environments#creating-an-environment), [register the desired hostname(s)](/guides/basics/hostnames#setup), and then [set up TLS for each registered hostname](/guides/basics/hostnames#https-traffic).
+
+<Callout type="info">
+
+  Reusing an environment that contains your hostnames allows for a seamless transition to traffic splitting and simplifies setup.
+
+</Callout>
 
 ## Setting Up the Current Website's Environment
 
@@ -61,9 +67,9 @@ Create an environment for the new version of your website. Define rules, origin 
 
 ## Setting Up Origin Configurations
 
-Create an origin configuration for the environment corresponding to the current version of the website. Traffic proxied from the source environment will be directed to this origin.
+Create an origin configuration for the environment corresponding to the current version of the website. Traffic proxied from the entry environment will be directed to this origin.
 
-Create an origin configuration for the environment corresponding to the new version of the website. Traffic proxied from the source environment will be directed to this origin.
+Create an origin configuration for the environment corresponding to the new version of the website. Traffic proxied from the entry environment will be directed to this origin.
 
 
 ## Setting Up an Experiment

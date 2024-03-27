@@ -22,6 +22,7 @@ Migrate a website by performing the following steps:
 1.  Set up a target environment for the current website.
 2.  Set up a target environment for the new website.
 3.  Set up a source environment.
+4.  Create an origin configuration for each target environment.
 4.  Create an experiment.
 5.  Adjust traffic splitting.
 6.  Conclude the experiment
@@ -51,7 +52,6 @@ Create an environment for the current version of your website. Replicate the rul
 
 <!--TODO - Specific instructions-->
 
-Create an origin configuration within the target environment. Traffic proxied from the source environment will be directed to this origin.
 
 ## Setting Up the New Website's Environment
 
@@ -59,64 +59,32 @@ Create an environment for the new version of your website. Define rules, origin 
 
 <!--TODO - Specific instructions-->
 
-Create an origin configuration within the target environment. Traffic proxied from the source environment will be directed to this origin.
+## Setting Up Origin Configurations
+
+Create an origin configuration for the environment corresponding to the current version of the website. Traffic proxied from the source environment will be directed to this origin.
+
+Create an origin configuration for the environment corresponding to the new version of the website. Traffic proxied from the source environment will be directed to this origin.
+
 
 ## Setting Up an Experiment
 
+Create an experiment.
 
-    Configure one of the variants to set the origin to the one created in the previous step.
+Configure the first variant to set the origin to `current-website`.
+
+![Set Origin Feature](/images/v7/experimentation-cross-env-experiment-set-origin.png)
+
+Configure the second variant to set the origin to `new-website`.
+
+![Set Origin Feature](/images/v7/experimentation-cross-env-experiment-set-origin.png)
+
+Your experiment should look similar to the following illustration:
     
-    ![Set Origin Feature](/images/v7/experimentation-cross-env-experiment-set-origin.png)
+![Cross-Environment Experiment](/images/v7/experimentation-cross-env-experiment.png?width=650)
 
-    Your experiment should look similar to the following illustration:
-    
-    ![Cross-Environment Experiment](/images/v7/experimentation-cross-env-experiment.png?width=650)
+## Adjusting Traffic Ratio
 
 
 
 
-
-1.  Identify the origin configuration that serves traffic for the legacy site. We will refer to this origin configuration as the source origin configuration. 
-2.  Identify the environment that serves traffic for your new site. We will refer to this environment as the target environment. 
-    For example, you could potentially designate a "newsite" environment as the target environment.
-3.  Identify or create an origin configuration within the target environment. Traffic proxied from the source environment will be directed to this origin.
-
-    For example, you could potentially expose a feature release through this origin configuration.
-4.  Deploy your changes to the target environment. 
-
-    Navigate to the deployment details page to view a domain associated with an edge link. Sample domains are highlighted below.
-    
-    ![Edge Link's Domain](/images/v7/experimentation-cross-env-experiment-edge-link.png?width=650)
-    
-5.  Create an origin configuration within the source environment. Set the **Origin Hostname** and **Override Host Header** options to the domain identified in the previous step. 
-
-    Verify that the **Use the following SNI hint and enforce origin SAN/CN checking** option was autopopulated with the same domain.
-
-    Your origin configuration should look similar to the following illustration:
-
-    ![Source Environment's Origin Configuration](/images/v7/experimentation-cross-env-experiment-origin-configuration.png?width=650)
-
-6.  Create an experiment within the source environment. 
-
-    Configure one of the variants to set the origin to the one created in the previous step.
-    
-    ![Set Origin Feature](/images/v7/experimentation-cross-env-experiment-set-origin.png)
-
-    Your experiment should look similar to the following illustration:
-    
-    ![Cross-Environment Experiment](/images/v7/experimentation-cross-env-experiment.png?width=650)
-
-7.  Optional. Create a rule that sets the host requested by the client (`%{http_host}`) within the `x-forwarded-host` request header. You should then define custom logic within your origin server to handle requests that originate from the source environment.
-
-    ![Set Request Headers Feature](/images/v7/experimentation-cross-env-experiment-host.png)
-
-8.  Deploy your changes to the source environment. Wait until the deployment completes.
-9.  Request the source environment's edge link, which can be found on the deployment details page, to verify that traffic is proxied to your target environment.
-
-    <Callout type="info">
-    
-      The variant assigned to a client persists until cookies are cleared. This means that testing this experiment may require clearing your cookies various times or initiating various distinct private browsing sessions. 
-    
-    </Callout>
-
-
+## Concluding the Experiment

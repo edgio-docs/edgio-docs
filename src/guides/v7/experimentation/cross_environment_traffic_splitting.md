@@ -21,7 +21,7 @@ In addition to rule processing, you may choose to add custom logic to your origi
 
 The two basic methods for routing traffic to multiple environments are:
 
--   **Dedicated Routing Environment:** Use the environment that contains your hostnames to route traffic. The rules defined within this environment should be applicable to all traffic. Set up an experiment on this environment to route traffic to multiple environments. 
+-   **Dedicated Routing Environment:** Recommended. Use the environment that contains your hostnames to route traffic. The rules defined within this environment should be applicable to all traffic. Set up an experiment on this environment to route traffic to multiple environments. 
 
     For example, you can route traffic to an environment that contains the configuration for your current site and another environment that contains your new site.
 
@@ -32,6 +32,8 @@ The two basic methods for routing traffic to multiple environments are:
     <Callout type="info">
     
       Traffic will be routed to another environment after it has been processed by the source environment's rules. If this behavior impacts the results of your experiment, then you should use a dedicated routing environment that only contains rules that are applicable for all traffic. 
+      
+      If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, Edge Functions, or Cloud Functions, then you may only use a dedicated routing environment instead of a shared environment. Using a shared environment with these capabilities may result in `404 Not Found` responses.
     
     </Callout>
 

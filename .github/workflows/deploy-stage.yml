@@ -63,11 +63,14 @@ jobs:
           # Generate branchUrl by removing the -${number} part from the permalink
           branchUrl=$(echo $permalink | sed "s/-${number}//")
 
+          deployDate=$(date +"%Y-%m-%d %H:%M:%S")
+
           # Set output variables
           echo "consoleUrl=${consoleUrl}" >> $GITHUB_OUTPUT
           echo "buildUrl=${buildUrl}" >> $GITHUB_OUTPUT
           echo "branchUrl=${branchUrl}" >> $GITHUB_OUTPUT
           echo "edgeUrl=${edgeUrl}" >> $GITHUB_OUTPUT
+          echo "deployDate=${deployDate}" >> $GITHUB_OUTPUT
         shell: bash
 
       - uses: jwalton/gh-find-current-pr@v1
@@ -78,7 +81,7 @@ jobs:
           number: ${{ steps.finder.outputs.pr }}
           header: preview
           message: |
-            ##### Last deployment ($(date +"%Y-%m-%d %H:%M:%S")) 🚀
+            ##### Last deployment (${{ steps.deploy.outputs.deployDate }}) 🚀
             - Console Build: ${{ steps.deploy.outputs.consoleUrl }}
             - Permalink Preview: ${{ steps.deploy.outputs.buildUrl }}
             - Branch Preview: ${{ steps.deploy.outputs.branchUrl }}

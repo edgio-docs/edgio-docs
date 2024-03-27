@@ -1,13 +1,17 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import {PRODUCT, PRODUCT_SECURITY} from '../../../constants';
+import {
+  IconAppsSecurity,
+  IconAppsSecurityDark,
+} from 'components/Icon/IconAppsSecurity';
+import {useAppContext} from 'contexts/AppContext';
+import {useTheme} from 'contexts/ThemeContext';
+import useConditioning from 'utils/hooks/useConditioning';
+import itemsByColumn from 'utils/itemsByColumn';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
-
-import useConditioning from 'utils/hooks/useConditioning';
-import itemsByColumn from 'utils/itemsByColumn';
 
 const StyledComp = styled(StyledFeatureSection)``;
 const items = {
@@ -71,17 +75,13 @@ const items = {
       path: '/guides/security/dashboard',
     },
     {
-      title: 'Logs',
-      path: '/guides/security/recent_event_logs',
-    },
-    {
       title: 'Response to Client',
       path: '/guides/security/response_to_client',
       separator: true,
     },
     {
       title: 'Country Codes',
-      path: '/reference/country_codes',
+      path: '/guides/reference/country_codes',
     },
     {
       title: 'Matched On Variables',
@@ -95,13 +95,17 @@ export default function Security() {
     version,
     version: {toVersionedPath},
   } = useConditioning();
+  const {config} = useAppContext();
+  const {themedValue} = useTheme();
+
+  const {PRODUCT, PRODUCT_SECURITY} = config;
 
   const routesByColumns = [...itemsByColumn(items, version, 'title', 8), []];
 
   return (
     <StyledComp>
       <SectionHeader
-        Icon="shield-dark"
+        Icon={themedValue(IconAppsSecurity, IconAppsSecurityDark)}
         title="Security"
         subtitle={`Protect your web applications without sacrificing performance through ${PRODUCT} ${PRODUCT_SECURITY}.`}
       />

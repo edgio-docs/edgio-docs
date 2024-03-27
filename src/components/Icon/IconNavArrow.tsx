@@ -2,8 +2,9 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import cn from 'classnames';
 import * as React from 'react';
+
+import cn from 'classnames';
 
 export const IconNavArrow = React.memo<
   JSX.IntrinsicElements['svg'] & {

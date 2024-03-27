@@ -1,6 +1,11 @@
+import * as React from 'react';
+
 import {MDXProvider} from '@mdx-js/react';
 import {useRouter} from 'next/router';
-import * as React from 'react';
+import styled from 'styled-components';
+
+import useConditioning from 'utils/hooks/useConditioning';
+import {MDHeading, MDHeadingsList} from 'utils/Types';
 
 import {MDXComponents} from '../../components/MDX/MDXComponents';
 import {siteConfig} from '../../config/appConfig';
@@ -8,8 +13,11 @@ import Docs from '../Docs';
 import DocsFooter from '../Docs/DocsFooter';
 import Seo from '../Seo';
 
-import useConditioning from 'utils/hooks/useConditioning';
-import {MDHeading, MDHeadingsList} from 'utils/Types';
+const PageLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
 
 export function MarkdownPage<
   T extends {
@@ -23,7 +31,7 @@ export function MarkdownPage<
     version?: string;
     sourceFile?: string;
   }
->({children, meta, headings}: MarkdownProps<T>) {
+>({children, meta, headings, isHomepage}: MarkdownProps<T>) {
   const {route, query} = useRouter();
   const {slug} = query;
   const {
@@ -34,12 +42,10 @@ export function MarkdownPage<
   const version = meta.version || latestVersion;
 
   if (!route) {
-    console.error('This page was not added to one of the sidebar JSON files.');
+    console.error(
+      'This page was not added to the corresponding *.nav.js file.'
+    );
   }
-
-  const isHomePage =
-    route === '/' ||
-    !!(slug && slug.length === 1 && slug[0].match(/^v\d+$/) !== null);
 
   const tocHeadings = [];
 
@@ -62,17 +68,22 @@ export function MarkdownPage<
   }
 
   return (
-    <MDXProvider components={MDXComponents}>
-      <Seo {...{isHomePage, title, description, version}} />
-      {isHomePage ? (
-        children
-      ) : (
-        <Docs title={title} tocHeadings={tocHeadings} source={meta.sourceFile}>
-          {children}
-        </Docs>
-      )}
+    <PageLayout>
+      <MDXProvider components={MDXComponents}>
+        <Seo {...{isHomepage, title, description, version}} />
+        {isHomepage ? (
+          children
+        ) : (
+          <Docs
+            title={title}
+            tocHeadings={tocHeadings}
+            source={meta.sourceFile}>
+            {children}
+          </Docs>
+        )}
+      </MDXProvider>
       <DocsFooter />
-    </MDXProvider>
+    </PageLayout>
   );
 }
 
@@ -80,4 +91,5 @@ export interface MarkdownProps<Frontmatter> {
   meta: Frontmatter & {description?: string};
   children?: React.ReactNode;
   headings?: MDHeadingsList;
+  isHomepage?: boolean;
 }

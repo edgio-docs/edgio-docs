@@ -15,3 +15,7 @@
   border-radius: 10px;
   background-clip: content-box;
 }
+
+.ReactModal__Body--open {
+  overflow: hidden;
+}

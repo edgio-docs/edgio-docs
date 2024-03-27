@@ -1,29 +1,28 @@
 // @ts-ignore
+import * as React from 'react';
+
 import {default as JSURL} from 'jsurl';
 import debounce from 'lodash/debounce';
 import {useRouter} from 'next/router';
-import * as React from 'react';
 // @ts-ignore
 import scrollIntoView from 'scroll-into-view';
 import styled from 'styled-components';
 
-import {PRODUCT} from '../../../constants';
-import {PRODUCT_APPLICATIONS} from '../../../constants';
-import {PRODUCT_LEGACY} from '../../../constants';
-
-import Header from './Header/Header';
-import SideNav from './Sidebar/Sidenav';
-import {useIsMobile} from './useMediaQuery';
-
 import Link from 'components/MDX/Link';
+import {ContextType, useAppContext} from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import textCompare from 'utils/textCompare';
+
+import Header from './Header/Header';
+import {SidebarNav} from './SidebarNav';
+import {useIsMobile} from './useMediaQuery';
 
 export function Page({children}: PageProps) {
   const isMobile = useIsMobile(850);
   const [showSidebar, setShowSidebar] = React.useState(isMobile);
   const router = useRouter();
-  const showBanner = !isMobile || (isMobile && !showSidebar);
+  const {context, hasNavigationMenu} = useAppContext();
+  const showBanner = context === ContextType.APPLICATIONS && !isMobile;
   const contentInnerRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -58,14 +57,16 @@ export function Page({children}: PageProps) {
 
   return (
     <StyledMainPage>
-      {showBanner && <Banner />}
-      <Header {...{showSidebar, setShowSidebar}} />
+      {/* {showBanner && <Banner />} */}
+      <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       <main className="docs-content">
-        <div
-          className="docs-side__nav custom-scrollbar"
-          data-open={isMobile && showSidebar}>
-          <SideNav />
-        </div>
+        {hasNavigationMenu && (
+          <div
+            className="docs-side__nav custom-scrollbar"
+            data-open={isMobile && showSidebar}>
+            <SidebarNav />
+          </div>
+        )}
         <div className="docs-content__inner" ref={contentInnerRef}>
           {children}
         </div>
@@ -80,7 +81,7 @@ interface StyledBannerProps {
 }
 
 const StyledMainPage = styled.div`
-  --sidebar-width: 280px;
+  --sidebar-width: 224px;
 
   .docs-content {
     width: 100%;
@@ -216,6 +217,8 @@ function highlightElementByText(searchText: string, ownerElement: HTMLElement) {
 
 function Banner() {
   const {version} = useConditioning();
+  const {config} = useAppContext();
+  const {PRODUCT, PRODUCT_APPLICATIONS, PRODUCT_LEGACY} = config;
   if (version.selectedVersion === '7') {
     return (
       <StyledBanner future>
@@ -253,5 +256,7 @@ function Banner() {
 }
 
 export interface PageProps {
+  showNav?: boolean;
+  showBanner?: boolean;
   children: React.ReactNode;
 }

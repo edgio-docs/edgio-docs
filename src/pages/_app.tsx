@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import '@docsearch/css';
 import {install} from '@edgio/prefetch/window';
 import {prefetch} from '@edgio/prefetch/window/prefetch';
@@ -9,23 +11,31 @@ import {useRouter} from 'next/router';
 import Script from 'next/script';
 import {DefaultSeo} from 'next-seo';
 import NProgress from 'nprogress';
-import * as React from 'react';
-
-import LoadingFallBackPage from 'components/Fallbacks/Loading';
-// import {VersionProvider} from 'components/versioning';
-import {siteConfig} from 'config/appConfig';
 
 // Universal loading page (used in dynamically imported components) which contains the wrapper of each page
-
-import '../styles/code.css';
+import EdgioAnswers from 'components/EdgioAnswers';
+import LoadingFallBackPage from 'components/Fallbacks/Loading';
+import Toast from 'components/Toast';
+import {siteConfig} from 'config/appConfig';
+import {AppProvider, AppProviderProps} from 'contexts/AppContext';
+import {EdgioAnswersProvider} from 'contexts/EdgioAnswersContext';
+import {ThemeProvider} from 'contexts/ThemeContext';
 import '../styles/algolia.css';
+import '../styles/code.css';
 import '../styles/custom-props.css';
+import '../styles/fonts.css';
 import '../styles/nprogress.css';
 import '../styles/prism.css';
 import '../styles/reset.css';
 import '../styles/scrollbar.css';
 
-const EmptyAppShell: React.FC = ({children}) => <>{children}</>;
+const EmptyAppShell: React.FC<{children: React.ReactNode}> = ({children}) => (
+  <>{children}</>
+);
+
+interface DocsAppProps extends AppProps {
+  pageProps: AppProviderProps & {};
+}
 
 // CWV for Edgio
 new Metrics({token: 'a5c2ebb3-dd43-4c36-b082-fb499a7bcd8d'}).collect();
@@ -61,10 +71,11 @@ function GAnalytics() {
   );
 }
 
-export default function MyApp({Component, pageProps}: AppProps) {
+export default function MyApp({Component, pageProps}: DocsAppProps) {
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
   const [changingTo, setChangingTo] = React.useState('');
+
   React.useEffect(() => {
     // Install service worker
     if ('serviceWorker' in navigator) {
@@ -125,11 +136,20 @@ export default function MyApp({Component, pageProps}: AppProps) {
     fallbackMap[changingTo]
   ) : (
     <AppShell>
-      <GAnalytics />
-      <DefaultSeo canonical={canonicalUrl} />
-      <MDXEmbedProvider>
-        <Component {...pageProps} />
-      </MDXEmbedProvider>
+      <AppProvider {...pageProps}>
+        <GAnalytics />
+        <DefaultSeo canonical={canonicalUrl} />
+        <EdgioAnswersProvider>
+          <ThemeProvider>
+            <MDXEmbedProvider>
+              <Component {...pageProps} />
+
+              <Toast />
+            </MDXEmbedProvider>
+            <EdgioAnswers />
+          </ThemeProvider>
+        </EdgioAnswersProvider>
+      </AppProvider>
     </AppShell>
   );
 }

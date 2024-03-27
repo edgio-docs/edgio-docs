@@ -17,6 +17,8 @@ export * from './IconDeepDive';
 export * from './IconDeploy';
 export * from './IconDocusaurus';
 export * from './IconDojo';
+export * from './IconEdgioApplication';
+export * from './IconEdgioMedia';
 export * from './IconEdgioSquareLogo';
 export * from './IconEleventy';
 export * from './IconEmberFastboot';

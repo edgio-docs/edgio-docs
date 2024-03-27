@@ -48,7 +48,7 @@ jobs:
       - name: Process Deployment Manifest and Set Output
         run: |
           # Read deployment manifest and parse JSON content
-          content=$(cat .edgio/deployment_manifest.json)
+          content=$(cat .edgio/deployment-manifest.json)
           number=$(echo $content | jq -r .number)
           permalink=$(echo $content | jq -r .url)
           edgeUrl=$(echo $content | jq -r .environment.url)
@@ -78,6 +78,6 @@ jobs:
           header: preview
           message: |
             ##### Deployment: ${{ steps.deploy.outputs.status }}
-            - Console: ${{ steps.deploy.outputs.consoleUrl }}
-            - Permalink: ${{ steps.deploy.outputs.buildUrl }}
-            - Edge: ${{ steps.deploy.outputs.edgeUrl }}
+            - Console Build: ${{ steps.deploy.outputs.consoleUrl }}
+            - Permalink Preview: ${{ steps.deploy.outputs.buildUrl }}
+            - Branch Preview: ${{ steps.deploy.outputs.edgeUrl }}

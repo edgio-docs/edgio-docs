@@ -77,7 +77,7 @@ jobs:
           number: ${{ steps.finder.outputs.pr }}
           header: preview
           message: |
-            ##### Deployment: ${{ steps.deploy.outputs.status }}
+            ##### Deployment successful! 🚀
             - Console Build: ${{ steps.deploy.outputs.consoleUrl }}
             - Permalink Preview: ${{ steps.deploy.outputs.buildUrl }}
-            - Branch Preview: ${{ steps.deploy.outputs.edgeUrl }}
+            - Branch Preview: ${{ steps.deploy.outputs.branchUrl }}

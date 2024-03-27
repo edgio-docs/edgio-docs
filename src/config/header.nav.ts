@@ -40,7 +40,7 @@ const headerNav: HeaderNavGroup[] = [
       null,
       {
         name: 'Edgecast CDN',
-        url: 'https://docs.edgecast.com/cdn/index.html#Getting_Started/GS-All.htm',
+        url: 'https://docs.edgecast.com/cdn/index.html#Welcome_to_the_Help_Center.htm',
       },
       {
         name: 'Applications v6',

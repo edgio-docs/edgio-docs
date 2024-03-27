@@ -105,7 +105,6 @@ const SEOLinksContainer = styled.div`
 `;
 
 export default function HeaderNav() {
-  console.log('headerNavConfig');
   return (
     <>
       {headerNavConfig.map((navItem, index) => {

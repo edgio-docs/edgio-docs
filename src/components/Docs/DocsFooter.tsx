@@ -164,10 +164,6 @@ const pryFooterLinks = ({FIDDLE_URL}: StringMap) => ({
       href: 'https://www.youtube.com/@Edgio/videos',
     },
     {
-      title: 'Fiddle',
-      href: `${FIDDLE_URL}/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`,
-    },
-    {
       title: 'Status',
       href: 'https://status.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },

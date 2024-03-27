@@ -67,6 +67,7 @@ jobs:
           echo "consoleUrl=${consoleUrl}" >> $GITHUB_OUTPUT
           echo "buildUrl=${buildUrl}" >> $GITHUB_OUTPUT
           echo "branchUrl=${branchUrl}" >> $GITHUB_OUTPUT
+          echo "edgeUrl=${edgeUrl}" >> $GITHUB_OUTPUT
         shell: bash
 
       - uses: jwalton/gh-find-current-pr@v1
@@ -81,3 +82,4 @@ jobs:
             - Console Build: ${{ steps.deploy.outputs.consoleUrl }}
             - Permalink Preview: ${{ steps.deploy.outputs.buildUrl }}
             - Branch Preview: ${{ steps.deploy.outputs.branchUrl }}
+            - Edge URL: ${{ steps.deploy.outputs.edgeUrl }}

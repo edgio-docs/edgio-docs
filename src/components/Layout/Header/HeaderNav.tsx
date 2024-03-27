@@ -99,7 +99,13 @@ const StyledMenuDivider = styled.div`
   margin: 8px 0;
 `;
 
+// Style for SEO friendly links (hidden from users but visible to search engines)
+const SEOLinksContainer = styled.div`
+  display: none;
+`;
+
 export default function HeaderNav() {
+  console.log('headerNavConfig');
   return (
     <>
       {headerNavConfig.map((navItem, index) => {
@@ -107,43 +113,62 @@ export default function HeaderNav() {
         const hasItems = !!navItem.items;
 
         return (
-          <Menu key={index}>
-            <StyledMenuButton>
-              {isLink ? (
-                <StyledMenuLink href={navItem.url} versioned={false}>
-                  {navItem.title}
-                </StyledMenuLink>
-              ) : (
-                <>
-                  <span>{navItem.title}</span>
-                  <FaAngleDown />
-                </>
+          <div key={index}>
+            <Menu>
+              <StyledMenuButton>
+                {isLink ? (
+                  <StyledMenuLink href={navItem.url} versioned={false}>
+                    {navItem.title}
+                  </StyledMenuLink>
+                ) : (
+                  <>
+                    <span>{navItem.title}</span>
+                    <FaAngleDown />
+                  </>
+                )}
+              </StyledMenuButton>
+              {hasItems && (
+                <StyledMenuList>
+                  {navItem.items?.map((item, index) => {
+                    const isDivider = item === null;
+
+                    if (isDivider) {
+                      return <StyledMenuDivider key={index} />;
+                    }
+
+                    const {name, url, useNextLink} = item;
+                    return (
+                      <MenuLink key={index} as="span">
+                        <StyledMenuLink
+                          href={url}
+                          versioned={false}
+                          useNextLink={useNextLink}>
+                          {name}
+                        </StyledMenuLink>
+                      </MenuLink>
+                    );
+                  })}
+                </StyledMenuList>
               )}
-            </StyledMenuButton>
-            {hasItems && (
-              <StyledMenuList>
-                {navItem.items?.map((item, index) => {
-                  const isDivider = item === null;
-
-                  if (isDivider) {
-                    return <StyledMenuDivider key={index} />;
+            </Menu>
+            {/* SEO friendly links */}
+            <SEOLinksContainer>
+              {hasItems &&
+                navItem.items?.map((item, seoIndex) => {
+                  if (item) {
+                    return (
+                      <a
+                        key={seoIndex}
+                        href={item.url}
+                        style={{display: 'none'}}>
+                        {item.name}
+                      </a>
+                    );
                   }
-
-                  const {name, url, useNextLink} = item;
-                  return (
-                    <MenuLink key={index} as="span">
-                      <StyledMenuLink
-                        href={url}
-                        versioned={false}
-                        useNextLink={useNextLink}>
-                        {name}
-                      </StyledMenuLink>
-                    </MenuLink>
-                  );
+                  return null;
                 })}
-              </StyledMenuList>
-            )}
-          </Menu>
+            </SEOLinksContainer>
+          </div>
         );
       })}
     </>

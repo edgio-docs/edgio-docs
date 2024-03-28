@@ -113,7 +113,9 @@ Your experiment should look similar to the following illustration:
 
 ![Cross-Environment Experiment](/images/v7/experimentation-cross-env-experiment.png?width=650)
 
-Deploy your changes to the entry environment.
+Deploy your changes to the entry environment. We recommend adding a note indicating the start of this experiment.
+
+![Deploy Changes with note](/images/v7/experimentation-deploy-changes.png)
 
 <Callout type="info">
 
@@ -123,92 +125,117 @@ Deploy your changes to the entry environment.
 
 ## Experiment Conclusion {/*experiment-conclusion*/}
 
+Once an experiment has served its purpose, you should perform one of the following actions:
+
+-   Shift 100% of the traffic to the desired environment.
+-   If you prefer to serve traffic directly from the entry environment, then you should perform either of the following steps:
+    -   **New Website:** Apply the new website's environment configuration to the entry environment and then disable the experiment.
+    -   **Legacy Website:** Revert the entry environment's configuration and then disable the experiment.
+
+
+
+
+
 Perform the following steps to end an experiment:
 
-1.  **Dedicated Routing Environment:** If you have a dedicated environment for routing traffic, then you should deploy the configuration from the desired destination environment to the entry environment. 
+1.  **Dedicated Routing Environment:** If you have a dedicated environment for routing traffic, then you should [roll back your configuration](/guides/basics/deployments#versioning) to the state prior to this experiment. 
 
-    -   **{{ PORTAL }}:** If you use the {{ PORTAL }} to deploy, perform the following steps:
-    
-        1.  Recreate the destination environment's origin configuration within the entry environment.
-        
-            The recommended method for recreating origin configurations is described below.
-            
-            1.  From the destination environment, navigate to the **Origins** page.
-            2.  Click **JSON Editor**.
-            3.  Copy all of your origin configurations by selecting all of the text and then pressing `CTRL+C`.
-            4.  Navigate to the entry environment's **Origins** page. It should already display the JSON editor.
-            5.  Perform either of the following steps:
-            
-                -   Replace the entry environment's origin configurations by selecting all of the text and the pressing `CTRL+V`. 
-            
-                -   If you need to keep one or more origin configurations, then you should paste the destination environment's origin configurations at the end of the configuration. 
-                
-                    After which, find the point at which you pasted your configuration. It should look similar to this:
-                
-                    ```
-                    ...
-                      }
-                    ][
-                      {
-                    ...
-                    ```
-                    
-                    Replace those brackets with a comma as shown below.
-                    
-                    ```
-                    ...
-                      },
-                      {
-                    ...
-                    ```
-            6.  Click **Origins Editor**. Verify that destination environment's origin configurations were successfully moved over. 
-        2.  Recreate the destination environment's rules within the entry environment.
-        
-            The recommended method for recreating rules is described below.
-            
-            
-            1.  From the destination environment, navigate to the **Rules** page.
-            2.  Click **JSON Editor**.
-            3.  Copy all of your rules by selecting all of the text and then pressing `CTRL+C`.
-            4.  Navigate to the entry environment's **Rules** page. It should already display the JSON editor.
-            5.  Replace the entry environment's rules by selecting all of the text and the pressing `CTRL+V`. 
-            6.  Click **Rules Editor**. Verify that destination environment's rules were successfully moved over. 
-            
-        3.  Deploy your changes by clicking **Deploy Changes**.
+    ![Rollback Deployment](/images/v7/basics/deployments-rollback.png?width=450)
 
-    -   **CDN-as-Code:** If you use the {{ PRODUCT }} CLI to deploy, perform the following steps:
-
-        1.  If your destination environment uses origin configurations, merge them into the entry environment's configuration.
-
-            From the {{ CONFIG_FILE }}, find the `environments` key and then merge the configuration for your destination's environment within the entry environment. 
-            
-            In the following code excerpt, an origin configuration was moved from the `staging` environment to the `production` environment:
-            
-            ```js filename="routes.js"
-              ...
-              // environments: {
-                 production: {
-                   hostnames: [{ hostname: 'www.mysite.com' }],
-                   origins: [
-                     {
-                       name: 'origin',
-                       hosts: [{ location: 'staging-origin.mysite.com' }],
-                       override_host_header: 'staging-origin.mysite.com',
-                     },
-                   ],
-                 },
-                 staging: {
-                   hostnames: [{ hostname: 'staging.mysite.com' }],
-                 },
-               },
-               ...
-            ```
-        2.  Review and revise your {{ ROUTES_FILE }} file for code that is specific to your destination environment or the test being performed. 
-        3.  Deploy your updated configuration to the entry environment.
-        
-            `{{ FULL_CLI_NAME }} deploy --environment=<ENTRY_ENVIRONMENT>`
+    Alternatively, if you have made changes to your configuration since the start of this experiment, then you can [manually deploy the desired destination environment's configuration to the entry environment](#manual-cross-environment-deployment). 
 
 2.  Perform either of the following steps from the entry environment:
 
     -   Disable the experiment by toggling its **Active** option to the off position (<Image inline src="/images/v7/icons/toggle-off-large.png" alt="Toggle off" />).
     -   Delete the experiment by clicking the <Image inline src="/images/v7/icons/delete-5.png" alt="Delete" /> icon next to the desired experiment.
+
+<a id="manual-cross-environment-deployment" />
+**To manually deploy another environment's configuration**
+
+If you have modified your configuration  starting the experiment Manually deploy the destination environment's configuration to the entry environment . 
+
+<Callout type="important">
+
+  If you have already successfully rolled back your configuration, then you do not need to perform this procedure.
+
+</Callout>
+
+**{{ PORTAL }}:** If you use the {{ PORTAL }} to deploy, perform the following steps:
+
+1.  Recreate the destination environment's origin configuration within the entry environment.
+
+    The recommended method for recreating origin configurations is described below.
+    
+    1.  From the destination environment, navigate to the **Origins** page.
+    2.  Click **JSON Editor**.
+    3.  Copy all of your origin configurations by selecting all of the text and then pressing `CTRL+C`.
+    4.  Navigate to the entry environment's **Origins** page. It should already display the JSON editor.
+    5.  Perform either of the following steps:
+    
+        -   Replace the entry environment's origin configurations by selecting all of the text and the pressing `CTRL+V`. 
+    
+        -   If you need to keep one or more origin configurations, then you should paste the destination environment's origin configurations at the end of the configuration. 
+
+            After which, find the point at which you pasted your configuration. It should look similar to this:
+
+            ```
+            ...
+              }
+            ][
+              {
+            ...
+            ```
+
+            Replace those brackets with a comma as shown below.
+
+            ```
+            ...
+              },
+              {
+            ...
+            ```
+    6.  Click **Origins Editor**. Verify that destination environment's origin configurations were successfully moved over. 
+2.  Recreate the destination environment's rules within the entry environment.
+
+    The recommended method for recreating rules is described below.
+
+    1.  From the destination environment, navigate to the **Rules** page.
+    2.  Click **JSON Editor**.
+    3.  Copy all of your rules by selecting all of the text and then pressing `CTRL+C`.
+    4.  Navigate to the entry environment's **Rules** page. It should already display the JSON editor.
+    5.  Replace the entry environment's rules by selecting all of the text and the pressing `CTRL+V`. 
+    6.  Click **Rules Editor**. Verify that destination environment's rules were successfully moved over. 
+
+3.  Deploy your changes by clicking **Deploy Changes**.
+
+**CDN-as-Code:** If you use the {{ PRODUCT }} CLI to deploy, perform the following steps:
+
+1.  If your destination environment uses origin configurations, merge them into the entry environment's configuration.
+
+    From the {{ CONFIG_FILE }}, find the `environments` key and then merge the configuration for your destination's environment within the entry environment. 
+
+    In the following code excerpt, an origin configuration was moved from the `staging` environment to the `production` environment:
+    
+    ```js filename="routes.js"
+      ...
+      // environments: {
+         production: {
+           hostnames: [{ hostname: 'www.mysite.com' }],
+           origins: [
+             {
+               name: 'origin',
+               hosts: [{ location: 'staging-origin.mysite.com' }],
+               override_host_header: 'staging-origin.mysite.com',
+             },
+           ],
+         },
+         staging: {
+           hostnames: [{ hostname: 'staging.mysite.com' }],
+         },
+       },
+       ...
+    ```
+2.  Review and revise your {{ ROUTES_FILE }} file for code that is specific to your destination environment or the test being performed. 
+3.  Deploy your updated configuration to the entry environment.
+
+    `{{ FULL_CLI_NAME }} deploy --environment=<ENTRY_ENVIRONMENT>`

@@ -313,6 +313,10 @@ const nav = {
           title: 'Cross-Environment Traffic Splitting',
           path: 'experimentation/cross_environment_traffic_splitting',
         },
+        {
+          title: 'Iterative Migration Tutorial',
+          path: 'experimentation/iterative_migration_tutorial',
+        },
       ],
     },
     {

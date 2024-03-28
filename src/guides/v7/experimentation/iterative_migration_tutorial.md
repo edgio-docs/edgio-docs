@@ -19,38 +19,44 @@ This tutorial demonstrates how to gradually roll out new features when migrating
 
 Migrate a website by performing the following steps:
 
-1.  Set up a destination environment for the current website.
-2.  Set up a destination environment for the new website.
-3.  Set up an entry environment.
-4.  Create an origin configuration for each destination environment.
-4.  Create an experiment.
-5.  Adjust traffic splitting.
-6.  Conclude the experiment
+1.  Set up an environment for the current website.
+2.  Set up an environment for the new website.
+3.  Set up an environment that will split traffic between the above environments.
+    1.  Remove all rules.
+    2.  Create an origin configuration for each environment to which traffic will be split.
+    3.  Create an experiment.
+4.  Adjust traffic splitting.
+5.  Conclude the experiment
 
 ## Assumptions
 
 This tutorial assumes:
 
--   Your website is already hosted on {{ PRODUCT }}. All configurations will be performed from within the {{ PRODUCT }} property on which your website is hosted.
+-   Your website is already hosted on {{ PRODUCT }}. 
 -   You are familiar with the following concepts:
     -   **{{ PORTAL }}:** If you deploy changes through the {{ PORTAL }}, then you should be familiar with the following concepts:
-        -   Properties and environments.
-        -   Setting up origin configurations.
-        -   Deploying through the {{ PORTAL }}.
+        -   [Properties](/guides/basics/properties) and [environments](/guides/basics/environments).
+        -   Setting up [origin configurations](/guides/basics/origins).
+        -   [Deploying](/guides/basics/deployments) through the {{ PORTAL }}.
     -   **CDN-as-Code:** If you deploy changes through the {{ PRODUCT }} CLI, then you should be familiar with the:
-    -   {{ CONFIG_FILE }} file
-    -   {{ ROUTES_FILE }} file
-    -   Deploying through the {{ PRODUCT }} CLI. 
+    -   [{{ CONFIG_FILE }} file](/guides/performance/cdn_as_code/edgio_config)
+    -   [{{ ROUTES_FILE }} file](/guides/develop/cli)
+    -   [Deploying](/guides/basics/deployments) through the {{ PRODUCT }} CLI. 
 
-## Identifying the Routing Environment
+## Identifying the Entry Environment
 
-This tutorial requires an environment through which traffic for other environments will be routed. Our recommendation is to use the environment that contains the hostnames for the traffic that will be split. If traffic splitting will be performed for a domain that has not been previously registered, then you should [create an environment](/guides/basics/environments#creating-an-environment), [register the desired hostname(s)](/guides/basics/hostnames#setup), and then [set up TLS for each registered hostname](/guides/basics/hostnames#https-traffic).
+This tutorial requires an environment through which traffic for other environments will be routed. Our recommendation is to use the environment that contains the hostnames for the traffic that will be split. 
 
 <Callout type="info">
 
   Reusing an environment that contains your hostnames allows for a seamless transition to traffic splitting and simplifies setup.
 
 </Callout>
+
+If traffic splitting will be performed for a domain that has not been previously registered, then you should perform the following steps:
+1.  [Create](/guides/basics/environments#creating-an-environment) or identify the entry environment.
+2.  [Register the desired hostname(s)](/guides/basics/hostnames#setup).
+3.  [Set up TLS for each registered hostname](/guides/basics/hostnames#https-traffic).
 
 ## Setting Up the Current Website's Environment
 

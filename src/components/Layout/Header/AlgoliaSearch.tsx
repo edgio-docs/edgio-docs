@@ -8,7 +8,6 @@ import {
   getLatestVersion,
   useAppContext,
 } from 'contexts/AppContext';
-import useConditioning from 'utils/hooks/useConditioning';
 
 import NoSSRWrapper from '../NoSSRWrapper';
 
@@ -57,6 +56,8 @@ const AlgoliaSearch = () => {
   if (context === ContextType.HOME) {
     const latestAppsVersion = getLatestVersion(ContextType.APPLICATIONS);
     facetFilters.push(`version:${latestAppsVersion}`);
+  } else {
+    facetFilters.push(`version:${version}`);
   }
 
   const searchParameters = {

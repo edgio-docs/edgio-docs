@@ -42,9 +42,41 @@ The `origins` key is an array of objects whose properties are:
 | `tls_verify.allow_self_signed_certs`       | `boolean`                                                                    | Whether to allow self-signed certificates. Defaults to `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | `tls_verify.pinned_certs`                  | `Array<string>`                                                              | An array of SHA256 hashes of pinned certificates.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
+**Sample Configuration**
+
+```js
+/* ... */
+origins: [
+  {
+    // The name of the backend origin
+    name: 'origin',
+
+    // Use the following to override the host header sent from the browser when connecting to the origin
+    override_host_header: 'test-origin.edgio.net',
+
+    // The list of origin hosts to which to connect
+    hosts: [
+      {
+        // The domain name or IP address of the origin server
+        location: 'test-origin.edgio.net',
+      },
+    ],
+
+    tls_verify: {
+      use_sni: true,
+      sni_hint_and_strict_san_check: 'test-origin.edgio.net',
+    },
+
+    // Uncomment the following to configure a shield
+    // shields: { us_east: 'DCD' },
+  },
+],
+/* ... */
+```
+
 ## environments {/* environments */}
 
-This configuration allows you to define different deployment environments and hostnames for your app. This is useful for deploying to staging or production environments.
+This configuration allows you to define different deployment environments, hostnames, and origin configurations for your property. This is useful for deploying to staging or production environments.
 
 The `environments` key is an object whose properties define the name of the environment and whose values are objects with the following properties:
 
@@ -56,7 +88,32 @@ The `environments` key is an object whose properties define the name of the envi
 | `<ENV_NAME>.hostnames[].default_origin_name` | String   | Optional default origin this hostname should use                                 |
 | `<ENV_NAME>.hostnames[].tls`                 | Object   | Optional [TLS configuration](/docs/api/core/interfaces/types.Hostnames.html#tls) |
 
-<!--| `<ENV_NAME>.hostnames[].report_code` | Number | (unknown use) | -->
+**Sample Configuration**
+
+```js
+/* ... */
+environments: {
+  production: {
+    hostnames: [{ hostname: 'www.mysite.com' }],
+  },
+  staging: {
+    hostnames: [{ hostname: 'staging.mysite.com' }],
+    origins: [
+      {
+        name: 'origin',
+        hosts: [{ location: 'staging-origin.mysite.com' }],
+        override_host_header: 'staging-origin.mysite.com',
+        tls_verify: {
+          use_sni: true,
+          sni_hint_and_strict_san_check: 'staging-origin.mysite.com',
+        },
+        shields: { us_east: 'DCD' },
+      },
+    ],
+  },
+},
+/* ... */
+```
 
 ## connector {/* connector */}
 
@@ -189,8 +246,8 @@ $ {{ CLI_CMD(deploy) }}
 ```
 
 <Callout type="important">
- 
-  Unexpected behavior may occur when there is a mismatch between your project's Node.js version and the one that runs your app on our platform. For example, if the `cloudRuntime` key is set to `nodejs18.x` while the project is bundled with Node.js 20, the project will build with Node.js 20 but run in a Node.js 18 environment. Ensure the `cloudRuntime` key aligns with your project's Node.js version to prevent these types of issues.
+
+Unexpected behavior may occur when there is a mismatch between your project's Node.js version and the one that runs your app on our platform. For example, if the `cloudRuntime` key is set to `nodejs18.x` while the project is bundled with Node.js 20, the project will build with Node.js 20 but run in a Node.js 18 environment. Ensure the `cloudRuntime` key aligns with your project's Node.js version to prevent these types of issues.
 
 </Callout>
 

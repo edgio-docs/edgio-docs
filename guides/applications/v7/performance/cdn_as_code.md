@@ -82,7 +82,9 @@ If this is your first time using the {{ PRODUCT }} CLI to deploy, then you will 
 After clicking **Create access token**, you may return back to the CLI and continue with the deployment.
 
 <Callout type="important">
-  This step is necessary to deploy your property to {{ PRODUCT }}, but not necessary to run and build your property locally. It is recommended you authenticate during this step otherwise your first deployment will fail.
+  This step is necessary to deploy your property to {{PRODUCT}}, but not
+  necessary to run and build your property locally. It is recommended you
+  authenticate during this step otherwise your first deployment will fail.
 </Callout>
 
 Once your deployment completes, you should see an output similar to the following:
@@ -485,6 +487,42 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 Assess performance and caching behavior from the {{ PORTAL_LINK }}. Fine-tune your configuration by adding routes and then redeploying your property. Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
 
 [Learn more.](/guides/basics/serving_traffic)
+
+## Environments {/* environments */}
+
+The first time you deploy your property from the CLI, {{ PRODUCT }} will create a `default` environment which will serve as the production environment for your property. You can create additional environments to test changes before deploying them to production.
+
+<Callout type="info">
+
+If you first create your property using the {{ PRODUCT_LINK }} and then deploy using the CLI, you will have both a `default` and a `production` environment. The `production` environment will be the [production environment](/applications/basics/environments#production-environment) for your property.
+
+</Callout>
+
+### Creating a New Environment {/* create-environment */}
+
+To create a new environment, re-deploy your property with the `-e, --environment` flag followed by the name of the new environment. For example, to create a new environment named `staging`, run the following command:
+
+```bash
+{{ CLI_CMD(deploy) }} --environment staging
+```
+
+Continue creating new environments as needed. It is recommended to create `staging` and `production` environments. You may also manage environments from the {{ PORTAL }}. [Learn more.](/applications/basics/environments)
+
+### Setting the Production Environment {/* set-production-environment */}
+
+Designating an environment as the production environment must be managed from the {{ PORTAL }}. See [Production Environment](/applications/basics/environments#production-environment) for more information.
+
+### Deploying to a Specific Environment {/* deploy-to-environment */}
+
+To deploy to a specific environment, use the `-e, --environment <NAME>` flag where `<NAME>` is the name of the target deployment environment. For example, to deploy to the `production` environment, run the following command:
+
+```bash
+{{ CLI_CMD(deploy) }} --environment production
+```
+
+### Configuring Environments {/* configure-environments */}
+
+The `{{ CONFIG_FILE }}` file contains an `environments` property that allows you to configure your environments, including options like hostnames, origins, and other settings. [Learn more](/applications/performance/cdn_as_code/edgio_config#environments).
 
 ## Examples {/* examples */}
 

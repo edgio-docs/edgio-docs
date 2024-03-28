@@ -1,0 +1,11 @@
+title: A collection of Codes and Names
+description: Comprehensive model representing a Codes and Names.
+allOf:
+  - $ref: >-
+      https://raw.githubusercontent.com/Edgio/hyperion/v2.0.0/schema/collection.json
+  - type: object
+    properties:
+      items:
+        type: array
+        items:
+          $ref: ./rtldCodeName.yaml

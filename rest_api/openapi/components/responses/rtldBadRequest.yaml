@@ -1,0 +1,10 @@
+description: >-
+  Bad Request. One or more required fields were missing, blank, or did not meet
+  validation requirements.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/rtldError.yaml
+    examples:
+      bad-request:
+        $ref: ../examples/rtldExampleBadRequest.yaml

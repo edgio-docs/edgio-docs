@@ -1,0 +1,14 @@
+title: SASTokenAuthentication Object
+description: SAS Token  Authentication for Azure
+allOf:
+  - $ref: ./rtldAzureAuthentication.yaml
+  - type: object
+    required:
+      - token
+    properties:
+      token:
+        type: string
+        writeOnly: true
+        description: >-
+          Defines the SAS token through which log data uploads will be
+          authorized.

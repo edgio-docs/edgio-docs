@@ -1,0 +1,29 @@
+title: DataDog Object
+description: Contains the configuration for the Datadog log delivery method.
+allOf:
+  - $ref: ./rtldDeliveryMethod.yaml
+  - type: object
+    required:
+      - api_key
+      - service_attribute_value
+      - site
+    properties:
+      api_key:
+        type: string
+        writeOnly: true
+        minLength: 1
+        maxLength: 2000
+        description: Defines the API key through which log data uploads will be authorized.
+      service_attribute_value:
+        type: string
+        minLength: 1
+        maxLength: 1024
+        description: >-
+          Defines a value through which uploaded log data will be identified
+          within the Datadog environment.
+      site:
+        type: string
+        enum:
+          - us
+          - eu
+        description: Determines the Datadog site to which log data will be delivered.

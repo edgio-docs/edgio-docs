@@ -1,0 +1,13 @@
+in: query
+name: environment_id
+schema:
+  type: string
+  format: uuid
+required: true
+description: |
+  An environment's system-defined ID (e.g.,
+  12345678-1234-1234-1234-1234567890ab).
+
+
+  From the Edgio Console, navigate to the desired environment and then
+  click **Settings**. It is listed under **Environment ID**.

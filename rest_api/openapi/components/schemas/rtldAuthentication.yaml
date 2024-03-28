@@ -1,0 +1,8 @@
+title: Authentication Object
+description: Authentication for HTTP POST
+type: object
+required:
+  - type
+properties:
+  type:
+    type: string

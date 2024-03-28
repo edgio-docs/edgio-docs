@@ -1,0 +1,6 @@
+value:
+  '@type': Error
+  code: internal_error
+  status_code: 500
+  title: An unexpected error occurred on the server.
+  description: 'Error correlation: 6a7ce351-38e3-4e40-9160-47e05dc11a04'

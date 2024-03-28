@@ -1,0 +1,10 @@
+title: Delivery Method
+description: >-
+  Determines the destination (e.g., `aws_s3` or `azure_blob_storage`) to which
+  log data will be delivered.
+type: object
+required:
+  - type
+properties:
+  type:
+    type: string

@@ -1,0 +1,10 @@
+value:
+  '@type': Error
+  code: forbidden
+  status_code: 403
+  title: Forbidden
+  description: Server refuses to authorize it.
+  details:
+    - '@type': ErrorDetail
+      source: /name
+      description: the server understands the request but refuses to authorize it.

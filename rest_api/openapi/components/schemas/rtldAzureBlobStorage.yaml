@@ -1,0 +1,39 @@
+title: Azure Blob Storage Object
+description: Contains the configuration for the Azure Blob Storage log delivery method.
+allOf:
+  - $ref: ./rtldDeliveryMethod.yaml
+  - type: object
+    required:
+      - url
+      - log_format
+      - authentication
+    properties:
+      url:
+        type: string
+        format: uri
+        pattern: >-
+          ^https:\/\/[a-z0-9]{3,24}\.blob\.core\.windows\.net\/[a-z0-9][a-z0-9-]*[a-z0-9]\/?
+        maxLength: 1024
+        description: >-
+          Defines a URL that points to the Blob container to which log data will
+          be posted. [Learn
+          more.](https://docs.edg.io/guides/v7/logs/rtld/azure_blob_storage_log_delivery)
+      prefix:
+        type: string
+        minLength: 1
+        maxLength: 1024
+        description: >-
+          Defines a virtual log file storage location and/or a prefix that will
+          be added to each log file added to your container. [Learn more about
+          prefixes.](https://docs.edg.io/guides/v7/logs/rtld/azure_blob_storage_log_delivery#log-file-prefix)
+      authentication:
+        oneOf:
+          - $ref: ./rtldAccessKeyAuthentication.yaml
+          - $ref: ./rtldSASTokenAuthentication.yaml
+        discriminator:
+          propertyName: type
+          mapping:
+            access_key: ./rtldAccessKeyAuthentication.yaml
+            sas_token: ./rtldSASTokenAuthentication.yaml
+      log_format:
+        $ref: ./rtldLogFormat.yaml

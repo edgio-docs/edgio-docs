@@ -1,0 +1,8 @@
+description: Internal Server Error
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/rtldError.yaml
+    examples:
+      internal-error:
+        $ref: ../examples/rtldExampleInternalServerError.yaml

@@ -1,0 +1,8 @@
+description: Unauthorized
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/rtldError.yaml
+    examples:
+      bad-request:
+        $ref: ../examples/rtldExampleUnauthorized.yaml

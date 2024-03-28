@@ -1,0 +1,10 @@
+title: Code Name pairs
+description: Code Name pairs
+type: object
+properties:
+  code:
+    type: string
+    description: The resource's code name.
+  name:
+    type: string
+    description: The resource's name.

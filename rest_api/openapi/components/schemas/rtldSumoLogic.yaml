@@ -1,0 +1,17 @@
+title: Sumo Logic Object
+description: Contains the configuration for the Sumo Logic log delivery method.
+allOf:
+  - $ref: ./rtldDeliveryMethod.yaml
+  - type: object
+    required:
+      - url
+    properties:
+      url:
+        type: string
+        writeOnly: true
+        format: uri
+        pattern: ^https:\/\/.
+        maxLength: 1024
+        description: >-
+          Defines a URL that points to the HTTP source defined within Sumo
+          Logic.

@@ -1,0 +1,29 @@
+title: Splunk Enterprise Object
+description: Contains the configuration for the Splunk Enterprise log delivery method.
+allOf:
+  - $ref: ./rtldDeliveryMethod.yaml
+  - type: object
+    required:
+      - token
+      - url
+    properties:
+      token:
+        type: string
+        writeOnly: true
+        description: >-
+          Defines the token for the HTTP Event Collector configuration
+          associated with the URL corresponding to the `url` parameter.
+      url:
+        type: string
+        format: uri
+        pattern: ^https:\/\/.
+        maxLength: 1024
+        description: >
+          Defines a URL that points to your Splunk Enterprise's HTTP Event
+          Collector configuration.  
+
+
+          **Default URL syntax:**
+
+
+          ```https://{Splunk-Enterprise-Hostname}:{port}/services/collector/raw```

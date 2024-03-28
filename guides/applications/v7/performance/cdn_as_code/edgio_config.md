@@ -18,7 +18,7 @@ The `routes` key is the path to your routes file relative to the root of your pr
 
 ## origins {/* origins */}
 
-Origns are the backends that {{ PRODUCT_NAME }} will proxy requests to, and define how {{ PRODUCT_NAME }} will communicate with your web server(s).
+Origins are the backends that {{ PRODUCT_NAME }} will proxy requests to, and define how {{ PRODUCT_NAME }} will communicate with your web server(s). Origins defined here will be available across all environments and can be overridden on a per-environment basis.
 
 The `origins` key is an array of objects whose properties are:
 
@@ -76,31 +76,69 @@ origins: [
 
 ## environments {/* environments */}
 
-This configuration allows you to define different deployment environments, hostnames, and origin configurations for your property. This is useful for deploying to staging or production environments.
+This configuration allows you to define different deployment environments, hostnames, and override origin configurations on a per-environment basis.
 
 The `environments` key is an object whose properties define the name of the environment and whose values are objects with the following properties:
 
-| Property                                     | Type     | Description                                                                      |
-| -------------------------------------------- | -------- | -------------------------------------------------------------------------------- |
-| `<ENV_NAME>`                                 | String   | (Required) The name of the environment.                                          |
-| `<ENV_NAME>.hostnames`                       | Object[] | A list of hostnames specific to the environment.                                 |
-| `<ENV_NAME>.hostnames[].hostname`            | String   | (Required) The hostname for the environment.                                     |
-| `<ENV_NAME>.hostnames[].default_origin_name` | String   | Optional default origin this hostname should use                                 |
-| `<ENV_NAME>.hostnames[].tls`                 | Object   | Optional [TLS configuration](/docs/api/core/interfaces/types.Hostnames.html#tls) |
+| Property                                     | Type     | Description                                                                         |
+| -------------------------------------------- | -------- | ----------------------------------------------------------------------------------- |
+| `<ENV_NAME>`                                 | String   | (Required) The name of the environment.                                             |
+| `<ENV_NAME>.hostnames`                       | Object[] | A list of hostnames specific to the environment.                                    |
+| `<ENV_NAME>.hostnames[].hostname`            | String   | (Required) The hostname for the environment.                                        |
+| `<ENV_NAME>.hostnames[].default_origin_name` | String   | Optional default origin this hostname should use                                    |
+| `<ENV_NAME>.hostnames[].tls`                 | Object   | Optional [TLS configuration](/docs/api/core/interfaces/types.Hostnames.html#tls)    |
+| `<ENV_NAME>.origins`                         | Object[] | A list of [origin configurations](#origins) to override on a per-environment basis. |
+
+<Callout type="important">
+
+Origins defined in the `environments.<ENV_NAME>.origins` array must have a corresponding configuration under the [origins](#origins) key. These origins will override the default origin configuration for the environment.
+
+</Callout>
 
 **Sample Configuration**
 
 ```js
 /* ... */
+
+// Global origins configuration
+origins: [
+  {
+    // The name of the backend origin
+    name: 'web',
+
+    // Use the following to override the host header sent from the browser when connecting to the origin
+    override_host_header: 'test-origin.edgio.net',
+
+    // The list of origin hosts to which to connect
+    hosts: [
+      {
+        // The domain name or IP address of the origin server
+        location: 'test-origin.edgio.net',
+      },
+    ],
+
+    tls_verify: {
+      use_sni: true,
+      sni_hint_and_strict_san_check: 'test-origin.edgio.net',
+    },
+
+    // Uncomment the following to configure a shield
+    // shields: { us_east: 'DCD' },
+  },
+],
+
+// Environment-specific configuration
 environments: {
   production: {
     hostnames: [{ hostname: 'www.mysite.com' }],
   },
   staging: {
     hostnames: [{ hostname: 'staging.mysite.com' }],
+
+    // Override the `web` origin configuration for the staging environment
     origins: [
       {
-        name: 'origin',
+        name: 'web',
         hosts: [{ location: 'staging-origin.mysite.com' }],
         override_host_header: 'staging-origin.mysite.com',
         tls_verify: {
@@ -112,6 +150,7 @@ environments: {
     ],
   },
 },
+
 /* ... */
 ```
 

@@ -494,7 +494,7 @@ The first time you deploy your property from the CLI, {{ PRODUCT }} will create 
 
 <Callout type="info">
 
-If you first create your property using the {{ PRODUCT_LINK }} and then deploy using the CLI, you will have both a `default` and a `production` environment. The `production` environment will be the [production environment](/applications/basics/environments#production-environment) for your property.
+If you first create your property using the {{ PORTAL_LINK }} and then deploy using the CLI, you will have both a `default` and a `production` environment. The `production` environment will be the [production environment](/applications/basics/environments#production-environment) for your property.
 
 </Callout>
 
@@ -510,6 +510,8 @@ Continue creating new environments as needed. It is recommended to create `stagi
 
 ### Setting the Production Environment {/* set-production-environment */}
 
+By default, the first environment created for your property will be tagged as "production". This means that the performance of this environment will be prioritized over other environments during periods of high traffic. Examples of high traffic periods are a distributed denial of service (DDOS) attack or a load test.
+
 Designating an environment as the production environment must be managed from the {{ PORTAL }}. See [Production Environment](/applications/basics/environments#production-environment) for more information.
 
 ### Deploying to a Specific Environment {/* deploy-to-environment */}
@@ -522,7 +524,7 @@ To deploy to a specific environment, use the `-e, --environment <NAME>` flag whe
 
 ### Configuring Environments {/* configure-environments */}
 
-The `{{ CONFIG_FILE }}` file contains an `environments` property that allows you to configure your environments, including options like hostnames, origins, and other settings. [Learn more](/applications/performance/cdn_as_code/edgio_config#environments).
+The `{{ CONFIG_FILE }}` file contains an `environments` property that allows you to configure your environments, including options like hostnames and origin overrides on a per-environment basis. [Learn more](/applications/performance/cdn_as_code/edgio_config#environments).
 
 ## Examples {/* examples */}
 

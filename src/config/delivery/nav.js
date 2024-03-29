@@ -1,4 +1,4 @@
-import {productsConfig} from '../appConfig';
+import { productsConfig } from '../appConfig';
 
 const separator = {
   title: '',
@@ -10,8 +10,27 @@ const nav = {
   path: productsConfig['delivery'].pathPrefix,
   routes: [
     {
-      title: 'Getting Started',
-      path: 'getting_started',
+      title: 'Control',
+      path: 'control',
+      icon: 'spark',
+      routes: [
+        {
+          title: 'Getting Started',
+          path: 'control/apis',
+          icon: 'spark',
+          routes: [
+            {
+              title: 'Billing',
+              path: 'control/apis/billing',
+              icon: 'spark',
+            },
+          ]
+        },
+      ]
+    },
+    {
+      title: 'Delivery',
+      path: 'delivery',
       icon: 'spark',
     },
   ],

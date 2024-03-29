@@ -164,7 +164,6 @@ export const sections: HomepageSectionGroup[] = [
     sections: [
       {
         title: 'CDN',
-        // path: 'https://docs.edgecast.com/video/index.html',
         items: [
           {
             title: 'Getting Started',
@@ -190,7 +189,6 @@ export const sections: HomepageSectionGroup[] = [
       },
       {
         title: 'APIs',
-        // path: 'https://docs.edgecast.com/video/index.html',
         items: [
           {
             title: 'Getting Started',
@@ -216,7 +214,6 @@ export const sections: HomepageSectionGroup[] = [
       },
       {
         title: 'Control Portal',
-        // path: 'https://docs.edgecast.com/video/index.html',
         items: [
           {
             title: 'Billing Report',
@@ -253,32 +250,31 @@ export const sections: HomepageSectionGroup[] = [
     icon: IconUplynk,
     sections: [
       {
-        //title: 'Uplynk',
         path: 'https://docs.edgecast.com/video/index.html',
         items: [
           {
             title: 'Getting Started',
-            path: 'https://docs.edgecast.com/video/index.html#Setup/Setup-Overview.htm%3FTocPath%3DBasic%2520Setup%7C_____0',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Setup-Overview.htm',
           },
           {
             title: 'Live Linear',
-            path: 'https://docs.edgecast.com/video/index.html#Setup/Live-Linear.htm%3FTocPath%3DBasic%2520Setup%7CLive%2520Linear%7C_____0',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Live-Linear.htm',
           },
           {
             title: 'Live Events',
-            path: 'https://docs.edgecast.com/video/index.html#Setup/Live-Events-2.htm%3FTocPath%3DBasic%2520Setup%7CLive%2520Events%7C_____0',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Live-Events-2.htm',
           },
           {
             title: 'Live Slicer',
-            path: 'https://docs.edgecast.com/video/index.html#Slicer/Live-Slicer-Setup.htm%3FTocPath%3DBasic%2520Setup%7CLive%2520Slicer%7C_____0',
+            path: 'https://docs.edgecast.com/video/index.html#Slicer/Live-Slicer-Setup.htm',
           },
           {
             title: 'Cloud Slicer Live',
-            path: 'https://docs.edgecast.com/video/index.html#Slicer/Cloud-Slicer-Live.htm%3FTocPath%3DBasic%2520Setup%7C_____4',
+            path: 'https://docs.edgecast.com/video/index.html#Slicer/Cloud-Slicer-Live.htm',
           },
           {
             title: 'On-Demand Content',
-            path: 'https://docs.edgecast.com/video/index.html#Setup/On-Demand-Content.htm%3FTocPath%3DBasic%2520Setup%7COn-Demand%2520Content%7C_____0',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/On-Demand-Content.htm',
           },
           {
             title: 'Channel Scheduler',
@@ -286,31 +282,31 @@ export const sections: HomepageSectionGroup[] = [
           },
           {
             title: 'Playback URLs',
-            path: 'https://docs.edgecast.com/video/index.html#Setup/Playback-URLs.htm%3FTocPath%3DBasic%2520Setup%7CPlayback%2520URLs%7C_____0',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Playback-URLs.htm',
           },
           {
             title: 'Captions and Subtitles',
-            path: 'https://docs.edgecast.com/video/index.html#Setup/Captions-Subtitles.htm%3FTocPath%3DBasic%2520Setup%7CCaptions%2520and%2520Subtitles%7C_____0',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Captions-Subtitles.htm',
           },
           {
             title: 'Syndication Publishing',
-            path: 'https://docs.edgecast.com/video/index.html#Setup/Syndication-Publishing.htm%3FTocPath%3DBasic%2520Setup%7C_____10',
+            path: 'https://docs.edgecast.com/video/index.html#Setup/Syndication-Publishing.htm',
           },
           {
             title: 'Blackout',
-            path: 'https://docs.edgecast.com/video/index.html#Security/Blackout.htm%3FTocPath%3DSecurity%7CBlackout%7C_____0',
+            path: 'https://docs.edgecast.com/video/index.html#Security/Blackout.htm',
           },
           {
             title: 'Geoblocking',
-            path: 'https://docs.edgecast.com/video/index.html#Security/Geoblocking.htm%3FTocPath%3DSecurity%7C_____3',
+            path: 'https://docs.edgecast.com/video/index.html#Security/Geoblocking.htm',
           },
           {
             title: 'Studio DRM',
-            path: 'https://docs.edgecast.com/video/index.html#Security/Studio-DRM.htm%3FTocPath%3DSecurity%7CStudio%2520Digital%2520Rights%2520Management%2520(DRM)%7C_____0',
+            path: 'https://docs.edgecast.com/video/index.html#Security/Studio-DRM.htm',
           },
           {
             title: 'Ads',
-            path: 'https://docs.edgecast.com/video/index.html#AdIntegration/Ad-Server-Integration.htm%3FTocPath%3DAds%7C_____0',
+            path: 'https://docs.edgecast.com/video/index.html#AdIntegration/Ad-Server-Integration.htm',
           },
         ],
       },
@@ -323,8 +319,6 @@ export const sections: HomepageSectionGroup[] = [
     icon: IconOpenEdge,
     sections: [
       {
-        //title: 'Open Edge',
-        // path: 'https://docs.edgecast.com/video/index.html',
         items: [
           {
             title: 'rDNS Requirements',

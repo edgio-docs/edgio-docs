@@ -59,6 +59,7 @@ import {
   IconZola,
   IconZolaDark,
 } from 'components/Icon';
+import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 import {ItemsByVersion} from 'utils/Types';
@@ -765,6 +766,7 @@ export default function Frameworks({frameworks = items}) {
     version,
     version: {toVersionedPath},
   } = useConditioning();
+  const {renderThemedElement} = useTheme();
 
   const routesByColumns = itemsByColumn(frameworks, version, 'title').flat();
 
@@ -775,13 +777,8 @@ export default function Frameworks({frameworks = items}) {
           <li key={route.path} className="framework-list__item">
             <Link href={toVersionedPath(route.path)} passHref>
               <a className="framework-link">
-                <div className="icon" id="light-theme">
-                  {/* @ts-ignore */}
-                  {route.icon ? route.icon : null}
-                </div>
-                <div className="icon" id="dark-theme">
-                  {/* @ts-ignore */}
-                  {route.iconDark ? route.iconDark : null}
+                <div className="icon">
+                  {renderThemedElement(route.icon, route.iconDark)}
                 </div>
                 <span className="link-text">{route.title}</span>
               </a>

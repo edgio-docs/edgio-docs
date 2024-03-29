@@ -1,11 +1,12 @@
+import * as React from 'react';
+
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import * as React from 'react';
 import styled from 'styled-components';
 
-import {useTocHighlight} from './useTocHighlight';
-
 import useConditioning from 'utils/hooks/useConditioning';
+
+import {useTocHighlight} from './useTocHighlight';
 
 const StyledToc = styled.div`
   padding: 0 20px;

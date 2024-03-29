@@ -1,7 +1,7 @@
 import {Vimeo} from 'mdx-embed';
 import styled from 'styled-components';
 
-import {PRODUCT} from '../../../constants';
+import {useAppContext} from 'contexts/AppContext';
 
 import SectionHeader from './SectionHeader';
 
@@ -60,6 +60,8 @@ const StyledComp = styled.div`
 `;
 
 export default function VideosandTutorials() {
+  const {config} = useAppContext();
+  const {PRODUCT} = config;
   const categorisedVidoes = [
     {
       title: 'CDN',

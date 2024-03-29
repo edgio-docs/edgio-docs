@@ -1,9 +1,8 @@
-const {DOCS_PAGES_DOMAIN} = require('./constants');
-
 module.exports = {
   team: 'edgio-community',
   name: 'docs.edg.io',
   connector: '@edgio/next',
+  routes: 'src/edgio/routes.ts',
   next: {
     enforceTrailingSlash: false,
   },
@@ -15,13 +14,13 @@ module.exports = {
   origins: [
     {
       name: 'api',
-      override_host_header: DOCS_PAGES_DOMAIN,
+      override_host_header: 'layer0-docs.s3.amazonaws.com',
       hosts: [
         {
           scheme: 'https',
           location: [
             {
-              hostname: DOCS_PAGES_DOMAIN,
+              hostname: 'layer0-docs.s3.amazonaws.com',
               port: 443,
             },
           ],
@@ -29,17 +28,28 @@ module.exports = {
       ],
       tls_verify: {
         use_sni: true,
-        sni_hint_and_strict_san_check: DOCS_PAGES_DOMAIN,
+        sni_hint_and_strict_san_check: 'layer0-docs.s3.amazonaws.com',
       },
-      //shields: {us_east: 'DCD'},
-      // tls_verify: {
-      //   allow_self_signed_certs: true,
-      // },
+    },
+    {
+      name: 'preview',
+      override_host_header: 'edgio-community-docs-edg-io-preview.edgio.link',
+      hosts: [
+        {
+          scheme: 'https',
+          location: [
+            {
+              hostname: 'edgio-community-docs-edg-io-preview.edgio.link',
+              port: 443,
+            },
+          ],
+        },
+      ],
     },
   ],
 
   serverless: {
-    include: ['src/guides/**/*'],
+    include: ['guides/**/*'],
   },
   cloudRuntime: 'nodejs18.x',
 };

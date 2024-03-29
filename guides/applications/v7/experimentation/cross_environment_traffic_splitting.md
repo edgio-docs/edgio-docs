@@ -127,27 +127,25 @@ Deploy your changes to the entry environment. We recommend adding a note indicat
 
 Once an experiment has served its purpose, you should perform one of the following actions:
 
--   Shift 100% of the traffic to the desired environment.
--   If you prefer to serve traffic directly from the entry environment, then you should perform either of the following steps:
-    -   **New Website:** Apply the new website's environment configuration to the entry environment and then disable the experiment.
-    -   **Legacy Website:** Revert the entry environment's configuration and then disable the experiment.
+-   [Shift 100% of the traffic](/applications/experimentation#modify-experiment-traffic-distribution) to the desired environment.
+-   If you prefer to serve traffic directly from the entry environment, then you should:
 
+    1.  Perform either of the following steps:
+        -   **New Website:** [Apply the new website's environment configuration to the entry environment](#manual-cross-environment-deployment).
+        -   **Legacy Website:** [Roll back your configuration](/guides/basics/deployments#versioning) to the state prior to this experiment.
 
+            ![Rollback Deployment](/images/v7/basics/deployments-rollback.png?width=450)
+            
+            <Callout type="info">
+            
+              If you have made changes to your configuration since the start of this experiment, then you should [manually deploy the desired destination environment's configuration to the entry environment](#manual-cross-environment-deployment). 
+            
+            </Callout>
 
+    2.  Perform either of the following steps from the entry environment:
 
-
-Perform the following steps to end an experiment:
-
-1.  **Dedicated Routing Environment:** If you have a dedicated environment for routing traffic, then you should [roll back your configuration](/guides/basics/deployments#versioning) to the state prior to this experiment. 
-
-    ![Rollback Deployment](/images/v7/basics/deployments-rollback.png?width=450)
-
-    Alternatively, if you have made changes to your configuration since the start of this experiment, then you can [manually deploy the desired destination environment's configuration to the entry environment](#manual-cross-environment-deployment). 
-
-2.  Perform either of the following steps from the entry environment:
-
-    -   Disable the experiment by toggling its **Active** option to the off position (<Image inline src="/images/v7/icons/toggle-off-large.png" alt="Toggle off" />).
-    -   Delete the experiment by clicking the <Image inline src="/images/v7/icons/delete-5.png" alt="Delete" /> icon next to the desired experiment.
+        -   Disable the experiment by toggling its **Active** option to the off position (<Image inline src="/images/v7/icons/toggle-off-large.png" alt="Toggle off" />).
+        -   Delete the experiment by clicking the <Image inline src="/images/v7/icons/delete-5.png" alt="Delete" /> icon next to the desired experiment.
 
 <a id="manual-cross-environment-deployment" />
 **To manually deploy another environment's configuration**

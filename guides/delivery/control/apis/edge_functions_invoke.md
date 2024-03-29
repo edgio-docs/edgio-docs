@@ -1,3 +1,3 @@
 ---
-title: Edge Functions: Invoke
+title: Edge Functions - Invoke
 ---

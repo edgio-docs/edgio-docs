@@ -1,3 +1,3 @@
 ---
-title: Edge Functions: Manage
+title: Edge Functions - Manage
 ---

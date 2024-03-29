@@ -1,5 +1,6 @@
-import {Language} from 'prism-react-renderer';
 import React, {useEffect} from 'react';
+
+import {Language} from 'prism-react-renderer';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import styled from 'styled-components';
 

@@ -1,9 +1,9 @@
 import {useRouter} from 'next/router';
 import styled from 'styled-components';
 
-import {DOCS_REPO} from '../../../constants';
-
-import {IconExternalLink, IconGitHub} from 'components/Icon';
+import {IconExternalLink, IconGitHub, IconGitHubDark} from 'components/Icon';
+import {useAppContext} from 'contexts/AppContext';
+import {useTheme} from 'contexts/ThemeContext';
 
 const StyledEditLink = styled.div`
   margin-top: 50px;
@@ -65,10 +65,6 @@ const StyledEditIcon = styled.div`
   }
 `;
 
-const baseURL = `https://github.com/${DOCS_REPO}/edit/main/`;
-const title = 'Edit this guide on GitHub';
-const IGNORE_PAGES = ['/guides/changelog'];
-
 export default function EditPage({
   as = 'link',
   source,
@@ -77,6 +73,13 @@ export default function EditPage({
   source?: string;
 }) {
   const router = useRouter();
+  const {config} = useAppContext();
+  const {themedValue} = useTheme();
+
+  const {DOCS_REPO} = config;
+  const baseURL = `https://github.com/${DOCS_REPO}/edit/main/`;
+  const title = 'Edit this guide on GitHub';
+  const IGNORE_PAGES = ['/guides/changelog'];
   const editHref = `${baseURL}${source}`;
 
   if (IGNORE_PAGES.includes(router.route) || !source) {
@@ -87,7 +90,7 @@ export default function EditPage({
     return (
       <StyledEditIcon>
         <a target="_blank" href={editHref} rel="noreferrer" title={title}>
-          <IconGitHub />
+          {themedValue(<IconGitHub />, <IconGitHubDark />)}
         </a>
       </StyledEditIcon>
     );

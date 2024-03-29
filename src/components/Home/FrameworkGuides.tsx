@@ -1,10 +1,15 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import {PRODUCT_PLATFORM} from '../../../constants';
+import {IconArrow} from 'components/Icon/IconArrow';
+import {useAppContext} from 'contexts/AppContext';
+import {useTheme} from 'contexts/ThemeContext';
+import useConditioning from 'utils/hooks/useConditioning';
+import itemsByColumn from 'utils/itemsByColumn';
+
 import {IconAngular} from '../Icon/IconAngular';
+import {IconAppsSites, IconAppsSitesDark} from '../Icon/IconAppsSites';
 import {IconAstro, IconAstroDark} from '../Icon/IconAstro';
-import {IconBook} from '../Icon/IconBook';
 import {IconEmberJS} from '../Icon/IconEmberJS';
 import {IconGatsby} from '../Icon/IconGatsby';
 import {IconNextJS, IconNextJSDark} from '../Icon/IconNextJS';
@@ -25,10 +30,6 @@ import {IconVue} from '../Icon/IconVue';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
-
-import {IconArrow} from 'components/Icon/IconArrow';
-import useConditioning from 'utils/hooks/useConditioning';
-import itemsByColumn from 'utils/itemsByColumn';
 
 const items = {
   '4': [
@@ -383,6 +384,8 @@ export default function FrameworkGuides() {
     version,
     version: {toVersionedPath, isVersion},
   } = useConditioning();
+  const {themedValue} = useTheme();
+  const {config} = useAppContext();
 
   const isV7 = isVersion(7);
   const isV4 = isVersion(4);
@@ -401,9 +404,9 @@ export default function FrameworkGuides() {
   return (
     <StyledComp>
       <SectionHeader
-        Icon={IconBook}
+        Icon={themedValue(IconAppsSites, IconAppsSitesDark)}
         title="Sites"
-        subtitle={`Accelerate your dynamic and static Jamstack sites through ${PRODUCT_PLATFORM}.`}
+        subtitle={`Accelerate your dynamic and static Jamstack sites through ${config.PRODUCT_PLATFORM}.`}
       />
 
       <div className="route-items">
@@ -414,11 +417,8 @@ export default function FrameworkGuides() {
                 <li className="route-list__item" key={title}>
                   {icon ? (
                     <>
-                      <div id="dark-theme" className="icon">
-                        {icon.dark}
-                      </div>
-                      <div id="light-theme" className="icon">
-                        {icon.light}
+                      <div className="icon">
+                        {themedValue(icon.light, icon.dark)}
                       </div>
                     </>
                   ) : (

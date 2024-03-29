@@ -1,5 +1,6 @@
-import {Vimeo} from 'mdx-embed';
 import React from 'react';
+
+import {Vimeo} from 'mdx-embed';
 import ReactPlayer from 'react-player/lazy';
 import styled from 'styled-components';
 

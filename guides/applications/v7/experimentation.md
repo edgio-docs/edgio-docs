@@ -178,6 +178,7 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 
 3.  Apply your changes by clicking **Deploy Changes**.
 
+<a id="enable-disable" />
 **To enable or disable an experiment's status**
 
 1.  Load the **Experimentation** page.
@@ -191,6 +192,7 @@ You may create, enable, disable, and delete experiments. You may also adjust the
     
 3.  Click  **Deploy Changes**.
 
+<a id="delete" />
 **To delete an experiment**
 
 1.  Load the **Experimentation** page.

@@ -40,7 +40,6 @@ The Edge Function runtime does not currently support a native crypto library, so
 </Callout>
 
 ```js filename="edge-functions/main.js"
-import {URL} from 'whatwg-url';
 import HmacSHA1 from 'crypto-js/hmac-sha1';
 import Base64 from 'crypto-js/enc-base64';
 

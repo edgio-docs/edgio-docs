@@ -13,9 +13,9 @@ This guides references the following dependencies that will need to be installed
 <PackageCommand>
 
 ```
-npm install crypto-js whatwg-url
+npm install crypto-js
 ---
-yarn add crypto-js whatwg-url
+yarn add crypto-js
 ```
 
 </PackageCommand>
@@ -96,9 +96,6 @@ The edge function will sign the incoming request using the `AwsV4Signer` class, 
 
 ```js filename="edge-functions/main.js"
 import {AwsV4Signer} from './awsv4';
-import {URL} from 'whatwg-url';
-
-global.URL = URL;
 
 /**
  * An example edge function which forwards the request to the origin.

@@ -135,6 +135,9 @@ const Header = () => {
       lightLogo = uplynkLightLogo;
       showUplynkButton = true;
       break;
+    default:
+      darkLogo = edgioDocsDarkLogo;
+      lightLogo = edgioDocsLightLogo;
   }
 
   return (

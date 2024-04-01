@@ -24,9 +24,9 @@ const nav = {
               path: 'control/apis/billing',
               icon: 'spark',
             },
-          ]
+          ],
         },
-      ]
+      ],
     },
     {
       title: 'Delivery',

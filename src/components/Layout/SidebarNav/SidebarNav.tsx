@@ -8,6 +8,7 @@ import {CgExternal} from 'react-icons/cg';
 import {GoChevronRight} from 'react-icons/go';
 import styled from 'styled-components';
 
+import {useNormalizedPath} from 'components/MDX/Link';
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
@@ -35,7 +36,7 @@ function Accordion({
 }) {
   const {context} = useAppContext();
   const {
-    version: {toVersionedPath, selectedVersion},
+    version: {selectedVersion},
   } = useConditioning();
   const {renderThemedImage} = useTheme();
 
@@ -94,6 +95,12 @@ function Accordion({
   const isInternalLink = route.title && isActiveLink;
   const isExpanded = isActive || isApplicationsV4;
 
+  let href = useNormalizedPath(route.path);
+
+  if (!isInternalLink) {
+    href = route.path;
+  }
+
   return (
     <li
       className="sidenav-item"
@@ -103,8 +110,8 @@ function Accordion({
         {/* Toggle */}
         {isExternalLink ? (
           <a
-            href={route.path}
-            className="sidenav-link menu-toggle__wrap"
+            href={href}
+            className="sidenav-link menu-toggle__wrap external-link"
             target="_blank"
             rel="noopener noreferrer">
             <span> {route.title}</span>
@@ -115,8 +122,8 @@ function Accordion({
         ) : (
           isInternalLink && (
             <Link
-              href={toVersionedPath(route.path)}
-              className="sidenav-link"
+              href={href}
+              className="sidenav-link internal-link"
               data-depth={depth}>
               {childElement}
             </Link>

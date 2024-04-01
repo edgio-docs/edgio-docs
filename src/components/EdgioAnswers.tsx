@@ -396,7 +396,7 @@ const EdgioAnswers = () => {
     if (!channel) {
       initializeChannel();
     }
-  }, [apiToken, chatbotId]);
+  }, [apiToken, chatbotId, channel]);
 
   // Stop the current channel and reconnect
   const stopAndReconnect = () => {

@@ -6,7 +6,7 @@ You may use Experimentation to send traffic to another environment either within
 
 One use for this capability is to migrate iteratively from a legacy to a new site. Validate a new feature by sending some production traffic to an environment where that new feature is hosted. 
 
-[View iterative migration example.](/guides/experimentation/iterative_migration)
+[View iterative migration tutorial.](/guides/experimentation/iterative_migration_tutorial)
 
 ## How Does Proxying Traffic Work? {/*how-does-proxying-traffic-work*/}
 
@@ -40,8 +40,6 @@ The two basic methods for routing traffic to multiple environments are:
     For example, you can route traffic to another environment for the purpose of A/B testing a new feature.
 
     ![Shared Environment](/images/v7/experimentation-routing-shared-environment.png)
-
-[Learn how to set up environments through the iterative migration example.](/guides/experimentation/iterative_migration)
 
 <Callout type="important">
 

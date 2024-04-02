@@ -82,9 +82,9 @@ If this is your first time using the {{ PRODUCT }} CLI to deploy, then you will 
 After clicking **Create access token**, you may return back to the CLI and continue with the deployment.
 
 <Callout type="important">
-  This step is necessary to deploy your property to {{PRODUCT}}, but not
-  necessary to run and build your property locally. It is recommended you
-  authenticate during this step otherwise your first deployment will fail.
+  Although authentication is unnecessary for local builds and previews, we
+  strongly recommend that you authenticate now to avoid the failure of your
+  first deployment.
 </Callout>
 
 Once your deployment completes, you should see an output similar to the following:
@@ -490,23 +490,25 @@ Assess performance and caching behavior from the {{ PORTAL_LINK }}. Fine-tune yo
 
 ## Environments {/* environments */}
 
+An environment is automatically created when you deploy your property for the first time. The initial environment that is created will differ based on how your property was created.
+
+If you first create your property using the {{ PORTAL_LINK }}, the first environment will be named `production` and will serve as the [production environment](/applications/basics/environments#production-environment) for your property. If you first deploy your property using the CLI, the first environment will be named `default` and will serve as the production environment for your property.
+
 The first time you deploy your property from the CLI, {{ PRODUCT }} will create a `default` environment which will serve as the production environment for your property. You can create additional environments to test changes before deploying them to production.
-
-<Callout type="info">
-
-If you first create your property using the {{ PORTAL_LINK }} and then deploy using the CLI, you will have both a `default` and a `production` environment. The `production` environment will be the [production environment](/applications/basics/environments#production-environment) for your property.
-
-</Callout>
 
 ### Creating a New Environment {/* create-environment */}
 
-To create a new environment, re-deploy your property with the `-e, --environment` flag followed by the name of the new environment. For example, to create a new environment named `staging`, run the following command:
+To create a new environment, deploy your property with the `-e, --environment` flag followed by the name of the new environment. For example, to create a new environment named `staging`, run the following command:
 
 ```bash
 {{ CLI_CMD(deploy) }} --environment staging
 ```
 
-Continue creating new environments as needed. It is recommended to create `staging` and `production` environments. You may also manage environments from the {{ PORTAL }}. [Learn more.](/applications/basics/environments)
+<Callout type="tip">
+  Create additional environments to match your software development workflow.
+  You may also manage environments from the {{PORTAL}}. [Learn
+  more.](/applications/basics/environments)
+</Callout>
 
 ### Setting the Production Environment {/* set-production-environment */}
 

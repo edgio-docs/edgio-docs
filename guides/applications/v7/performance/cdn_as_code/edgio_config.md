@@ -18,7 +18,7 @@ The `routes` key is the path to your routes file relative to the root of your pr
 
 ## origins {/* origins */}
 
-Origins are the backends that {{ PRODUCT_NAME }} will proxy requests to, and define how {{ PRODUCT_NAME }} will communicate with your web server(s). Origins defined here will be available across all environments and can be overridden on a per-environment basis.
+Origins are the backends that {{ PRODUCT_NAME }} will proxy requests to, and define how {{ PRODUCT_NAME }} will communicate with your web server(s). Origins defined here will be available across all environments and can be overridden on a [per-environment basis](#environments).
 
 The `origins` key is an array of objects whose properties are:
 
@@ -80,20 +80,14 @@ This configuration allows you to define different deployment environments, hostn
 
 The `environments` key is an object whose properties define the name of the environment and whose values are objects with the following properties:
 
-| Property                                     | Type     | Description                                                                         |
-| -------------------------------------------- | -------- | ----------------------------------------------------------------------------------- |
-| `<ENV_NAME>`                                 | String   | (Required) The name of the environment.                                             |
-| `<ENV_NAME>.hostnames`                       | Object[] | A list of hostnames specific to the environment.                                    |
-| `<ENV_NAME>.hostnames[].hostname`            | String   | (Required) The hostname for the environment.                                        |
-| `<ENV_NAME>.hostnames[].default_origin_name` | String   | Optional default origin this hostname should use                                    |
-| `<ENV_NAME>.hostnames[].tls`                 | Object   | Optional [TLS configuration](/docs/api/core/interfaces/types.Hostnames.html#tls)    |
-| `<ENV_NAME>.origins`                         | Object[] | A list of [origin configurations](#origins) to override on a per-environment basis. |
-
-<Callout type="important">
-
-Origins defined in the `environments.<ENV_NAME>.origins` array must have a corresponding configuration under the [origins](#origins) key. These origins will override the default origin configuration for the environment.
-
-</Callout>
+| Property                                     | Type     | Description                                                                                                                                                                                                                                      |
+| -------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `<ENV_NAME>`                                 | String   | (Required) The name of the environment.                                                                                                                                                                                                          |
+| `<ENV_NAME>.hostnames`                       | Object[] | A list of hostnames specific to the environment.                                                                                                                                                                                                 |
+| `<ENV_NAME>.hostnames[].hostname`            | String   | (Required) The hostname for the environment.                                                                                                                                                                                                     |
+| `<ENV_NAME>.hostnames[].default_origin_name` | String   | Optional default origin this hostname should use                                                                                                                                                                                                 |
+| `<ENV_NAME>.hostnames[].tls`                 | Object   | Optional [TLS configuration](/docs/api/core/interfaces/types.Hostnames.html#tls)                                                                                                                                                                 |
+| `<ENV_NAME>.origins`                         | Object[] | A list of origin configurations that override those defined within the [origins property](#origins). <Important> An origin configuration defined within this property is ignored when a corresponding one is not found at the root. </Important> |
 
 **Sample Configuration**
 

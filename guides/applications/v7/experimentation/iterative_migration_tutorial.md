@@ -21,12 +21,16 @@ Migrate a website by performing the following steps:
 
 1.  Set up an environment for the current website.
 2.  Set up an environment for the new website.
+
+    If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, Cloud Functions, or Edge Functions, then you should set up this environment within a different property's production environment.
+
 3.  Set up an environment that will split traffic between the above environments.
     1.  Remove all rules.
     2.  Create an origin configuration for each environment to which traffic will be split.
     3.  Create an experiment.
-4.  Adjust traffic splitting.
-5.  Conclude the experiment
+4.  If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, Cloud Functions, or Edge Functions, then you should set the environment defined in step 1 as the production environment. 
+5.  Adjust traffic splitting.
+6.  Conclude the experiment
 
 ## Assumptions
 
@@ -45,7 +49,7 @@ This tutorial assumes:
 
 ## Identifying the Entry Environment
 
-This tutorial requires an environment through which traffic for other environments will be routed. Our recommendation is to use your production environment. This environment contains the hostnames for the traffic that will be split. 
+This tutorial requires an environment through which traffic for other environments will be routed. We will refer to this environment as the entry environment. We recommend using the environment that contains the hostnames whose traffic will be split. 
 
 <Callout type="info">
 
@@ -91,8 +95,8 @@ Set up an environment for your current website.
         2.  Click **JSON Editor**.
         3.  Copy all of your origin configurations by selecting all of the text and then pressing `CTRL+C`.
     2.  Paste your origin configuration(s) within the `current-site` environment.
-        1.  Navigate to the entry environment's **Origins** page. It should already display the JSON editor.
-        2.  Replace the entry environment's origin configurations by selecting all of the text and the pressing `CTRL+V`. 
+        1.  Navigate to the `current-site` environment's **Origins** page. It should already display the JSON editor.
+        2.  Replace the existing configuration by selecting all of the text and the pressing `CTRL+V`. 
         3.  Click **Origins Editor**. Verify that your production origin configurations were successfully moved over. 
  
 4.  Deploy your changes. 
@@ -114,16 +118,42 @@ Set up an environment for your current website.
 
 Set up an environment for your new website by performing the following steps:
 
+<Callout type="important">
+
+  If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, Cloud Functions, or Edge Functions, then you should set up this environment within a different property's production environment.
+
+</Callout>
+
 1.  Create an environment called `new-site`.
 
-    1.  Navigate to the **Environments** page and click **+ New Environment**.
-    2.  Set the **Name** option to `current-site`. 
+    1.  Navigate to the **Environments** page and then click **+ New Environment**.
+    2.  Set the **Name** option to `new-site`. 
     3.  Click **Create**.
     
-    ![Current Site Environment](/images/v7/experimentation-iterative-migration-current-site.png)
+2.  Replicate the rules defined within your production environment.
 
+    1.  Copy the rules from your production environment.
+        1.  From your production environment, navigate to the **Rules** page.
+        2.  Click **JSON Editor**.
+        3.  Copy all of your rules by selecting all of the text and then pressing `CTRL+C`.
+    2.  Paste the rules within the `new-site` environment. 
+        1.  Navigate to the entry environment's **Rules** page. It should already display the JSON editor.
+        2.  Replace the entry environment's rules by selecting all of the text and the pressing `CTRL+V`. 
+        3.  Click **Rules Editor**. Verify that your production rules were successfully moved over. 
+    3.  Update your rules as needed.
 
-2.  Define the desired rules and origin configurations within this new environment. 
+3.  Replicate the origin configuration(s) defined within your production environment.
+
+    1.  Copy the origin configuration(s) from your production environment.
+        1.  From your production environment, navigate to the **Origins** page.
+        2.  Click **JSON Editor**.
+        3.  Copy all of your origin configurations by selecting all of the text and then pressing `CTRL+C`.
+    2.  Paste your origin configuration(s) within the `new-site` environment.
+        1.  Navigate to the `new-site` environment's **Origins** page. It should already display the JSON editor.
+        2.  Replace the existing configuration by selecting all of the text and the pressing `CTRL+V`. 
+        3.  Click **Origins Editor**. Verify that your production origin configurations were successfully moved over. 
+    3.  Update your origin configuration(s) as needed.
+
 3.  Deploy your changes. 
 4.  Test your new website using a URL generated by the deployment.
 
@@ -133,9 +163,36 @@ Set up your production  environment to distribute traffic by performing the foll
 
 1.  Identify your [production environment](/guides/basics/environments#production-environment). 
 
-2.  Create an origin configuration called `current-site`. Point this origin configuration to the `current-site` environment. 
+2.  Create an origin configuration that points to the `current-site` environment. 
+
+    1.  Navigate to the `current-site` environment's **Deployments** page. 
+    2.  Load the most recent deployment.
+    3.  Copy a domain from the **URL** section.
+    
+        ![Latest Deployment](/images/v7/experimentation-latest-deployment.png)
+    
+    4.  From the entry environment's **Origins** page, create an origin configuration. Set the 
+    
+        1.  Click **+ Add Origin**.
+        2.  Set the **Name** option to `current-site`.
+        3.  Disable the **Use SNI** option.
+        4.  Paste the domain, which was copied in the previous step, within the **Override Host Header** option.
+        5.  Paste the domain, which was copied in the previous step, within the **Origin Hostname** option.
+        6.  If the domain contains `.glb`, remove it from both options.
 
 3.  Create an origin configuration called `new-site`. Point this origin configuration to the `new-site` environment. 
+
+    1.  Navigate to the `new-site` environment's **Deployments** page. 
+    2.  Load the most recent deployment.
+    3.  Copy a domain from the **URL** section.
+    4.  From the entry environment's **Origins** page, create an origin configuration. Set the 
+    
+        1.  Click **+ Add Origin**.
+        2.  Set the **Name** option to `new-site`.
+        3.  Disable the **Use SNI** option.
+        4.  Paste the domain, which was copied in the previous step, within the **Override Host Header** option.
+        5.  Paste the domain, which was copied in the previous step, within the **Origin Hostname** option.
+        6.  If the domain contains `.glb`, remove it from both options.
 
 4.  Create an experiment.
 
@@ -153,17 +210,11 @@ Set up your production  environment to distribute traffic by performing the foll
 
 5.  Deploy your changes.
 
+## Production Environment
 
+If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, Cloud Functions, or Edge Functions, then you should set the `current-site` environment as the production environment. 
 
-Traffic proxied from the entry environment will be directed to this origin.
-
-Create an origin configuration for the environment corresponding to the new version of the website. Traffic proxied from the entry environment will be directed to this origin.
-
-
-
-
-
-
+[Learn how to set the production environment.](/guides/basics/environments#production-environment)
 
 ## Adjusting Traffic Ratio
 

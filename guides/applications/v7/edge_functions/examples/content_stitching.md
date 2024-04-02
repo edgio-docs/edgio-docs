@@ -18,7 +18,7 @@ export default new Router()
 
   .match('/some/path', {
     edge_function: './edge-functions/main.js',
-  })
+  });
 ```
 
 ### Edge Function {/* edge-function-basic-content-manipulation */}
@@ -61,8 +61,6 @@ export default new Router()
 ### Edge Function {/* edge-function-manifest-manipulation */}
 
 ```js filename="edge-functions/main.js"
-import {URL} from 'whatwg-url';
-
 export async function handleHttpRequest(request, context) {
   // Get the manifest from the upstream server
   const url = new URL(request.url);
@@ -110,8 +108,6 @@ export default new Router()
 ### Edge Function {/* edge-function-content-stitching */}
 
 ```js filename="edge-functions/main.js"
-import {URL} from 'whatwg-url';
-
 export async function handleHttpRequest(request, context) {
   const url = new URL(request.url);
   const originConfig = {

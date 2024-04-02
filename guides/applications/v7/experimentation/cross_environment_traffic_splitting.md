@@ -13,7 +13,7 @@ One use for this capability is to migrate iteratively from a legacy to a new sit
 {{ PRODUCT }} processes all requests using our [standard order of operations](/guides/v7/performance/request#order-of-operations). However, traffic that is sent to another environment will be processed by the rules for both environments as indicated below. 
 
 -   **Entry Environment:** {{ PRODUCT }} will apply the entry environment's rules to the request. 
--   **Destination Environment:** {{ PRODUCT }} will only apply features that affect the response sent to the client. These features take precedence over the ones defined within the entry environment's rules.
+-   **Destination Environment:** {{ PRODUCT }} will then apply the destination environment's rules to the request. These features take precedence over the ones defined within the entry environment's rules.
 
 In addition to rule processing, you may choose to add custom logic to your origin server that alters the behavior based off of the host requested by the client. This type of setup requires [logging the Host header](#host-header-logging) within the entry environment.
 
@@ -45,6 +45,7 @@ The two basic methods for routing traffic to multiple environments are:
 
     If are you using {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, Edge Functions, or Cloud Functions and you are proxying traffic to a different environment within the same property, then you may incur additional latency. A workaround for this issue is to proxy traffic between the production environments of two different properties.
 
+
     {{ PRODUCT }} {{ PRODUCT_PLATFORM }}, Edge Functions, and Cloud Functions may run in a different region for the production environment than other environments. If you are sending traffic between these environments, then latency is introduced due to traffic being routed between two regions. 
 
 </Callout>
@@ -53,9 +54,15 @@ The two basic methods for routing traffic to multiple environments are:
 
 Before setting up an experiment, you will need to set up each environment to which traffic will be routed. These environments are known as your destination environments. Once you have created the desired environments, you will need to define origin configurations, rules, or both using either through the {{ PORTAL }} or the {{ PRODUCT }} CLI if you are using CDN-as-code.
 
+<Callout type="tip">
+
+  The quickest way to replicate rules and origin configuration(s) is by marking the **Copy settings from environment** option when creating an environment. After which, you may adjust your rules and origin configuration(s) as needed.
+
+</Callout>
+
 <Callout type="info">
 
-  The recommended setup is to deploy the configuration for your current site to one environment and the configuration for your new site to a different environment. This setup ensures that the rules for your current site do not affect the new site's behavior.
+  The recommended setup is to create an environment for each version of your site. This setup ensures that the rules for your current site do not affect the new site's behavior.
 
 </Callout>
 

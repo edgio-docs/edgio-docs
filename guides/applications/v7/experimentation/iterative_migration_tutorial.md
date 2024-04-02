@@ -185,13 +185,13 @@ Set up your entry environment to distribute traffic by performing the following 
         -   Receive 90% of the site's traffic. 
         -   Set the origin to `current-site`.
 
-            ![Set Origin Feature](/images/v7/experimentation-iterative-migration-experiment-set-origin-current.png)
+            ![Set Origin Feature](/images/v7/experimentation-iterative-migration-experiment-set-origin-current.png?height=357)
 
     2.  Configure the second variant to:
-        -   Receive 90% of the site's traffic. 
+        -   Receive 10% of the site's traffic. 
         -   Set the origin to `new-site`.
 
-            ![Set Origin Feature](/images/v7/experimentation-iterative-migration-experiment-set-origin-new.png)
+            ![Set Origin Feature](/images/v7/experimentation-iterative-migration-experiment-set-origin-new.png?height=357)
 
         Your experiment should look similar to the following illustration:
     

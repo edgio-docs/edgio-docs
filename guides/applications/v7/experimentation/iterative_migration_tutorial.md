@@ -158,6 +158,11 @@ Set up your entry environment to distribute traffic by performing the following 
         4.  Paste the domain, which was copied in the previous step, within the **Override Host Header** option.
         5.  Paste the domain, which was copied in the previous step, within the **Origin Hostname** option.
         6.  If the domain contains `.glb`, remove it from both options.
+        7.  Verify that the **Use the following SNI hint and enforce origin SAN/CN checking** option is set to a blank value.
+
+        Your origin configuration should should look similar to the following illustration:
+
+        ![current-site Origin Configuration](/images/v7/experimentation-iterative-migration-origin-current-site.png)
 
 3.  Create an origin configuration called `new-site`. Point this origin configuration to the `new-site` environment. 
 
@@ -172,6 +177,7 @@ Set up your entry environment to distribute traffic by performing the following 
         4.  Paste the domain, which was copied in the previous step, within the **Override Host Header** option.
         5.  Paste the domain, which was copied in the previous step, within the **Origin Hostname** option.
         6.  If the domain contains `.glb`, remove it from both options.
+        7.  Verify that the **Use the following SNI hint and enforce origin SAN/CN checking** option is set to a blank value.
 
 4.  Create an experiment.
 

@@ -52,13 +52,14 @@ The two basic methods for routing traffic to multiple environments are:
 
 ### Destination Environment Setup {/*destination-environment-setup*/}
 
-Before setting up an experiment, you will need to set up each environment to which traffic will be routed. These environments are known as your destination environments. Once you have created the desired environments, you will need to define origin configurations, rules, or both using either through the {{ PORTAL }} or the {{ PRODUCT }} CLI if you are using CDN-as-code.
+Before setting up an experiment, you will need to set up each environment to which traffic will be routed. These environments are known as your destination environments. Once you have created the desired environments, define origin configurations, rules, or both.
 
-<Callout type="tip">
+-   **{{ PORTAL }}:** The quickest way to replicate rules and origin configuration(s) is by marking the **Copy settings from environment** option when creating an environment. After which, you may adjust your rules and origin configuration(s) as needed.
+-   **{{ PRODUCT }} CLI:** Deploy your production configuration through the `--environment` option.
 
-  The quickest way to replicate rules and origin configuration(s) is by marking the **Copy settings from environment** option when creating an environment. After which, you may adjust your rules and origin configuration(s) as needed.
-
-</Callout>
+    ```bash
+    {{ CLI_CMD(deploy) }} --environment my-new-environment
+    ```
 
 <Callout type="info">
 
@@ -220,31 +221,14 @@ Conclude an experiment by either promoting the new feature or website or reverti
 
 **CDN-as-Code:** If you use the {{ PRODUCT }} CLI to deploy, perform the following steps:
 
-1.  If your destination environment uses origin configurations, merge them into the entry environment's configuration.
+1.  Review the origin configurations defined witin the {{ CONFIG_FILE }}. Revise as needed.
 
-    From the {{ CONFIG_FILE }}, find the `environments` key and then merge the configuration for your destination's environment within the entry environment. 
-
-    In the following code excerpt, an origin configuration was moved from the `staging` environment to the `production` environment:
+    <Callout type="info">
     
-    ```js filename="routes.js"
-      ...
-      // environments: {
-         production: {
-           hostnames: [{ hostname: 'www.mysite.com' }],
-           origins: [
-             {
-               name: 'origin',
-               hosts: [{ location: 'staging-origin.mysite.com' }],
-               override_host_header: 'staging-origin.mysite.com',
-             },
-           ],
-         },
-         staging: {
-           hostnames: [{ hostname: 'staging.mysite.com' }],
-         },
-       },
-       ...
-    ```
+      By default, the origin configurations defined at the root of the {{ CONFIG_FILE }} are applied to the environment being deployed. You may override a specific origin configuration by defining it within the [environments key](/guides/performance/cdn_as_code/edgio_config#environments).
+    
+    </Callout>
+
 2.  Review and revise your {{ ROUTES_FILE }} file for code that is specific to your destination environment or the test being performed. 
 3.  Deploy your updated configuration to the entry environment.
 

@@ -154,11 +154,10 @@ Set up your entry environment to distribute traffic by performing the following 
     
         1.  Click **+ Add Origin**.
         2.  Set the **Name** option to `current-site`.
-        3.  Disable the **Use SNI** option.
-        4.  Paste the domain, which was copied in the previous step, within the **Override Host Header** option.
-        5.  Paste the domain, which was copied in the previous step, within the **Origin Hostname** option.
-        6.  If the domain contains `.glb`, remove it from both options.
-        7.  Verify that the **Use the following SNI hint and enforce origin SAN/CN checking** option is set to a blank value.
+        3.  Paste the domain, which was copied in the previous step, within the **Override Host Header** option.
+        4.  Paste the domain, which was copied in the previous step, within the **Origin Hostname** option.
+        5.  If the domain contains `.glb`, remove it from both options.
+        6.  Verify that the **Use the following SNI hint and enforce origin SAN/CN checking** option was autopopulated with the same domain.
 
         Your origin configuration should should look similar to the following illustration:
 
@@ -173,11 +172,10 @@ Set up your entry environment to distribute traffic by performing the following 
     
         1.  Click **+ Add Origin**.
         2.  Set the **Name** option to `new-site`.
-        3.  Disable the **Use SNI** option.
-        4.  Paste the domain, which was copied in the previous step, within the **Override Host Header** option.
-        5.  Paste the domain, which was copied in the previous step, within the **Origin Hostname** option.
-        6.  If the domain contains `.glb`, remove it from both options.
-        7.  Verify that the **Use the following SNI hint and enforce origin SAN/CN checking** option is set to a blank value.
+        3.  Paste the domain, which was copied in the previous step, within the **Override Host Header** option.
+        4.  Paste the domain, which was copied in the previous step, within the **Origin Hostname** option.
+        5.  If the domain contains `.glb`, remove it from both options.
+        6.  Verify that the **Use the following SNI hint and enforce origin SAN/CN checking** option was autopopulated with the same domain.
 
 4.  Create an experiment.
 

@@ -113,7 +113,7 @@ const imagePaths = {
 
 const Header = () => {
   const {config, context} = useAppContext();
-  const {APP_URL, UPLYNK_CMS_URL} = config;
+  const {APP_URL, UPLYNK_CMS_URL, DELIVERY_PORTAL_URL} = config;
   const {renderThemedElement} = useTheme();
 
   // all header images must be 298x48
@@ -123,7 +123,8 @@ const Header = () => {
   let darkLogo,
     lightLogo,
     showConsoleButton = false,
-    showUplynkButton = false;
+    showUplynkButton = false,
+    showDeliveryButton = false;
 
   switch (context) {
     case ContextType.APPLICATIONS:
@@ -139,13 +140,14 @@ const Header = () => {
     case ContextType.DELIVERY:
       darkLogo = imagePaths.dark.delivery;
       lightLogo = imagePaths.light.delivery;
-      showConsoleButton = true;
+      showDeliveryButton = true;
       break;
     default:
       darkLogo = imagePaths.dark.edgioDocs;
       lightLogo = imagePaths.light.edgioDocs;
       showConsoleButton = true;
       showUplynkButton = true;
+      showDeliveryButton = true;
       break;
   }
 
@@ -192,6 +194,13 @@ const Header = () => {
           <Link href={UPLYNK_CMS_URL}>
             <Button gradient="linear-gradient(90deg, #6F1480 0%, #345FB4 53%, #003FE2 100%)">
               Uplynk CMS
+            </Button>
+          </Link>
+        )}
+        {showDeliveryButton && (
+          <Link href={DELIVERY_PORTAL_URL}>
+            <Button gradient="linear-gradient(90deg, #FF8C00 0%, #FF4E00 100%)">
+              Delivery Portal
             </Button>
           </Link>
         )}

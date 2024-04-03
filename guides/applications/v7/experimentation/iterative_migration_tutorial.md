@@ -136,7 +136,7 @@ Set up your entry environment to distribute traffic by performing the following 
 
 <Callout type="info">
 
-  You may use the following procedure regardless of whether you are using the {{ PRODUCT }} CLI. However, if you define this environment from within the {{ PORTAL }}, you should not deploy to it from the CLI. You may still deploy to other environments using the {{ PRODUCT }} CLI.
+  You may use the following procedure regardless of whether you are using the {{ PRODUCT }} CLI to deploy to other environments. However, if you define this environment from within the {{ PORTAL }}, you should not deploy to it from the CLI. You may still deploy to other environments using the {{ PRODUCT }} CLI.
 
 </Callout>
 
@@ -234,6 +234,8 @@ Monitor the traffic for both the current and the new site by using two instances
 ## Adjusting Traffic Ratio
 
 Adjust the traffic ratio between the two variants according to your confidence with the new version of your website. Each traffic ratio adjustment requires a new deployment.
+
+![Experiment](/images/v7/experimentation-iterative-migration-experiment-2.png?width=650)
 
 ## Concluding the Experiment
 

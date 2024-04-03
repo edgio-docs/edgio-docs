@@ -332,10 +332,6 @@ export const sections: HomepageSectionGroup[] = [
             title: 'FAQs',
             path: 'https://support.limelight.com/public/en/Content/Open_Edge/Open_Edge_FAQs.htm',
           },
-          {
-            title: 'rDNS Requirements',
-            path: 'https://support.limelight.com/public/en/Content/Resources/PDF/Open_Edge_rDNS_2024.pdf',
-          },
         ],
       },
     ],

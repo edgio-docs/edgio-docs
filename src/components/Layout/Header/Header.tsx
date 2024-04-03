@@ -17,10 +17,10 @@ const HeaderContainer = styled.header`
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
   display: grid;
   grid-template-columns: auto 1fr auto;
-  grid-template-rows: auto 2px;
+  grid-template-rows: auto;
   align-items: center;
   gap: 0px;
-  padding: 16px 32px;
+  padding: 12px 32px;
   border-bottom: 1px solid var(--border-primary);
   height: 72px;
 `;
@@ -199,7 +199,7 @@ const Header = () => {
         )}
         {showDeliveryButton && (
           <Link href={DELIVERY_PORTAL_URL}>
-            <Button gradient="linear-gradient(90deg, #FF8C00 0%, #FF4E00 100%)">
+            <Button gradient="linear-gradient(90deg, #019F7F 0%, #5ACCB5 100%)">
               Delivery Portal
             </Button>
           </Link>

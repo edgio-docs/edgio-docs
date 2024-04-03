@@ -71,7 +71,7 @@ After which, you should note the domain associated with each deployment's edge l
 
 ![Edge Link's Domain](/images/v7/experimentation-cross-env-experiment-edge-link.png?width=650)
 
-### Entry Environment Setup
+### Entry Environment Setup {/*entry-environment-setup*/}
 
 Entry environment setup consists of performing the following steps:
 

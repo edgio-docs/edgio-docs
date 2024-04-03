@@ -1,18 +1,9 @@
-import {useState} from 'react';
-
 import Image from 'next/image';
 import styled from 'styled-components';
 
 import Link from 'components/MDX/Link';
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
-
-import applicationsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-apps.svg';
-import edgioDocsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-docs.svg';
-import uplynkDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-uplynk.svg';
-import applicationsLightLogo from '../../../../public/images/home/header/logo/light/edgio-apps.svg';
-import edgioDocsLightLogo from '../../../../public/images/home/header/logo/light/edgio-docs.svg';
-import uplynkLightLogo from '../../../../public/images/home/header/logo/light/edgio-uplynk.svg';
 
 import AlgoliaSearch from './AlgoliaSearch';
 import HeaderNav from './HeaderNav';
@@ -31,6 +22,7 @@ const HeaderContainer = styled.header`
   gap: 0px;
   padding: 16px 32px;
   border-bottom: 1px solid var(--border-primary);
+  height: 72px;
 `;
 
 const LogoArea = styled.div`
@@ -104,14 +96,29 @@ const Button = styled.div<{gradient: string}>`
   background: ${(props) => props.gradient};
 `;
 
+const imagePaths = {
+  dark: {
+    applications: '/images/home/header/logo/dark/edgio-apps.png',
+    delivery: '/images/home/header/logo/dark/edgio-delivery.png',
+    edgioDocs: '/images/home/header/logo/dark/edgio-docs.png',
+    uplynk: '/images/home/header/logo/dark/edgio-uplynk.png',
+  },
+  light: {
+    applications: '/images/home/header/logo/light/edgio-apps.png',
+    delivery: '/images/home/header/logo/light/edgio-delivery.png',
+    edgioDocs: '/images/home/header/logo/light/edgio-docs.png',
+    uplynk: '/images/home/header/logo/light/edgio-uplynk.png',
+  },
+};
+
 const Header = () => {
   const {config, context} = useAppContext();
   const {APP_URL, UPLYNK_CMS_URL} = config;
   const {renderThemedElement} = useTheme();
-  const [imageWidth, setImageWidth] = useState(0);
 
-  const logoWidth = imageWidth;
-  const logoHeight = 36;
+  // all header images must be 298x48
+  const logoWidth = 298;
+  const logoHeight = 48;
 
   let darkLogo,
     lightLogo,
@@ -119,20 +126,25 @@ const Header = () => {
     showUplynkButton = false;
 
   switch (context) {
-    case ContextType.HOME:
-      darkLogo = edgioDocsDarkLogo;
-      lightLogo = edgioDocsLightLogo;
-      showConsoleButton = true;
-      showUplynkButton = true;
-      break;
     case ContextType.APPLICATIONS:
-      darkLogo = applicationsDarkLogo;
-      lightLogo = applicationsLightLogo;
+      darkLogo = imagePaths.dark.applications;
+      lightLogo = imagePaths.light.applications;
       showConsoleButton = true;
       break;
     case ContextType.UPLYNK:
-      darkLogo = uplynkDarkLogo;
-      lightLogo = uplynkLightLogo;
+      darkLogo = imagePaths.dark.uplynk;
+      lightLogo = imagePaths.light.uplynk;
+      showUplynkButton = true;
+      break;
+    case ContextType.DELIVERY:
+      darkLogo = imagePaths.dark.delivery;
+      lightLogo = imagePaths.light.delivery;
+      showConsoleButton = true;
+      break;
+    default:
+      darkLogo = imagePaths.dark.edgioDocs;
+      lightLogo = imagePaths.light.edgioDocs;
+      showConsoleButton = true;
       showUplynkButton = true;
       break;
   }
@@ -149,12 +161,6 @@ const Header = () => {
                 priority
                 height={logoHeight}
                 width={logoWidth}
-                onLoadingComplete={({naturalWidth, naturalHeight}) => {
-                  // Set the width of the image based on the ratio of the natural width and height
-                  // and the specified height
-                  const ratio = naturalWidth / naturalHeight;
-                  setImageWidth(logoHeight * ratio);
-                }}
               />,
               <Image
                 src={lightLogo}

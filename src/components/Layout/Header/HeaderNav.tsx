@@ -31,6 +31,7 @@ const StyledMenuButton = styled(MenuButton)`
 `;
 
 const StyledMenuLink = styled(Link)`
+  font-size: 14px;
   color: inherit;
   text-decoration: none;
 

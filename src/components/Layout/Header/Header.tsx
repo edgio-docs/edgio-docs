@@ -214,7 +214,7 @@ const Header = () => {
         {showDeliveryButton && (
           <Link href={DELIVERY_PORTAL_URL}>
             <Button gradient="linear-gradient(90deg, #019F7F 0%, #5ACCB5 100%)">
-              Delivery Portal
+              Control Portal
             </Button>
           </Link>
         )}

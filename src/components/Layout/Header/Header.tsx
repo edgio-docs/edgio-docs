@@ -99,12 +99,18 @@ const Button = styled.div<{gradient: string}>`
 const imagePaths = {
   dark: {
     applications: '/images/home/header/logo/dark/edgio-apps.png',
+    applications_v4: '/images/home/header/logo/dark/edgio-apps-v4.png',
+    applications_v6: '/images/home/header/logo/dark/edgio-apps-v6.png',
+    applications_v7: '/images/home/header/logo/dark/edgio-apps-v7.png',
     delivery: '/images/home/header/logo/dark/edgio-delivery.png',
     edgioDocs: '/images/home/header/logo/dark/edgio-docs.png',
     uplynk: '/images/home/header/logo/dark/edgio-uplynk.png',
   },
   light: {
     applications: '/images/home/header/logo/light/edgio-apps.png',
+    applications_v4: '/images/home/header/logo/light/edgio-apps-v4.png',
+    applications_v6: '/images/home/header/logo/light/edgio-apps-v6.png',
+    applications_v7: '/images/home/header/logo/light/edgio-apps-v7.png',
     delivery: '/images/home/header/logo/light/edgio-delivery.png',
     edgioDocs: '/images/home/header/logo/light/edgio-docs.png',
     uplynk: '/images/home/header/logo/light/edgio-uplynk.png',
@@ -112,12 +118,12 @@ const imagePaths = {
 };
 
 const Header = () => {
-  const {config, context} = useAppContext();
+  const {config, context, version} = useAppContext();
   const {APP_URL, UPLYNK_CMS_URL, DELIVERY_PORTAL_URL} = config;
   const {renderThemedElement} = useTheme();
 
-  // all header images must be 298x48
-  const logoWidth = 298;
+  // all header images must be the same size
+  const logoWidth = 337;
   const logoHeight = 48;
 
   let darkLogo,
@@ -128,8 +134,14 @@ const Header = () => {
 
   switch (context) {
     case ContextType.APPLICATIONS:
-      darkLogo = imagePaths.dark.applications;
-      lightLogo = imagePaths.light.applications;
+      darkLogo =
+        imagePaths.dark[
+          `applications_${version}` as keyof typeof imagePaths.dark
+        ];
+      lightLogo =
+        imagePaths.light[
+          `applications_${version}` as keyof typeof imagePaths.light
+        ];
       showConsoleButton = true;
       break;
     case ContextType.UPLYNK:
@@ -163,6 +175,7 @@ const Header = () => {
                 priority
                 height={logoHeight}
                 width={logoWidth}
+                unoptimized
               />,
               <Image
                 src={lightLogo}
@@ -170,6 +183,7 @@ const Header = () => {
                 priority
                 height={logoHeight}
                 width={logoWidth}
+                unoptimized
               />
             )}
         </Link>

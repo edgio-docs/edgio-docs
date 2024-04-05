@@ -31,21 +31,6 @@ module.exports = {
         sni_hint_and_strict_san_check: 'layer0-docs.s3.amazonaws.com',
       },
     },
-    {
-      name: 'preview',
-      override_host_header: 'edgio-community-docs-edg-io-preview.edgio.link',
-      hosts: [
-        {
-          scheme: 'https',
-          location: [
-            {
-              hostname: 'edgio-community-docs-edg-io-preview.edgio.link',
-              port: 443,
-            },
-          ],
-        },
-      ],
-    },
   ],
 
   serverless: {

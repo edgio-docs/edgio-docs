@@ -55,9 +55,10 @@ Organization management consists of:
 Upon creating a user, you must assign a role that will be applied at the organization level. By default, this role is applied across all of the organization's properties and environments. However, you may customize a member's access by granting one of the following roles to a specific property or environment: Viewer, Purger, Editor, or Maintainer.
 
 | Role             | Description                                                                                                                                                                                                                                             |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Viewer           | This role grants read-only access. <br /><br />If applied at the organization level, then the user will have read-only access to the organization's settings, properties, and environments.                                                             |
 | Purger           | This role grants the Viewer role along with the ability to purge content. <br /><br />If applied at the organization level, then the user may purge content for any of the organization's properties.                                                   |
+| Security Auditor | This role grants the Viewer role along with the ability to view all security-related features.                                                                                                                                              |
 | Security Manager | This role grants the Viewer role along with the ability to manage all security settings.                                                                                                                                                                |
 | Editor           | This role grants the capability to configure properties and to configure, deploy, and purge  environments. However, this role does not grant the ability to configure, deploy, or purge an environment that has been restricted to the Maintainer role. |
 | Maintainer       | This role grants the Editor role along with the ability to create and delete properties and environments.                                                                                                                                               |
@@ -163,17 +164,17 @@ Establishing a SSO workflow requires a custom integration between our identity s
     -   **Logout URL:** {{ PRODUCT }} requests a single or global logout through this URL.
     -   **RelayState:** {{ PRODUCT }} redirects users to this URL upon authentication. This URL should be:
 
-        `https://api.edgio.app/sso-redirect`
+        `https://api.edgio.app/initiate-sso`
 
     -   SAML 2.0 metadata in XML format. 
 
 2.  Add the desired users to the {{ PORTAL }}. Make sure that the email addresses defined within the {{ PORTAL }} match those defined within your identity provider. 
 
 3.  From within your identity provider, use the following information to configure {{ PRODUCT }} as a service provider:
-    -   **Entity ID:** `https://id.vdms.io`
-    -   **Assertion URL:** `https://id.vdms.io/saml/assert`
-    -   **Login URL:** `https://id.vdms.io/saml/login`
-    -   **Logout URL:** `https://id.vdms.io/saml/logout`
+    -   **Entity ID:** `https://id.edgio.app`
+    -   **Assertion URL:** `https://id.edgio.app/saml/assert`
+    -   **Login URL:** `https://id.edgio.app/saml/login`
+    -   **Logout URL:** `https://id.edgio.app/saml/logout`
     -   **Digest:** `sha256 | sha512`
     -   **Signature:** `sha256 | sha512`
     -   **Sign Request:** `TRUE | FALSE`

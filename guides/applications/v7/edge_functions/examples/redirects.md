@@ -24,8 +24,6 @@ export default new Router()
 ### Edge Function {/* edge-function-basic-redirect */}
 
 ```js filename="edge-functions/main.js"
-import {URL} from 'whatwg-url';
-
 export async function handleHttpRequest(request, context) {
   const url = new URL(request.url);
   url.pathname = '/some/other/path';
@@ -120,7 +118,6 @@ export default new Router()
 #### Edge Function {/* edge-function-bulk-redirects */}
 
 ```js filename="edge-functions/main.js"
-import {URL} from 'whatwg-url';
 import {redirects} from '../redirects';
 
 const NOT_FOUND = new Response('Not Found', {status: 404});

@@ -8,6 +8,7 @@ import {
   IconReact,
   IconVue,
 } from 'components/Icon';
+import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 
@@ -86,6 +87,7 @@ export default function PopularFrameworks() {
     version,
     version: {toVersionedPath},
   } = useConditioning();
+  const {renderThemedElement} = useTheme();
 
   const routesByColumns = itemsByColumn(items, version, 'title').flat();
 
@@ -96,13 +98,8 @@ export default function PopularFrameworks() {
           <li key={route.path} className="framework-list__item">
             <Link href={version.toVersionedPath(route.path)} passHref>
               <a className="framework-link">
-                <div className="icon" id="light-theme">
-                  {/* @ts-ignore */}
-                  {route.icon ? route.icon : null}
-                </div>
-                <div className="icon" id="dark-theme">
-                  {/* @ts-ignore */}
-                  {route.iconDark ? route.iconDark : null}
+                <div className="icon">
+                  {renderThemedElement(route.icon, route.iconDark)}
                 </div>
                 <span className="link-text">{route.title}</span>
               </a>

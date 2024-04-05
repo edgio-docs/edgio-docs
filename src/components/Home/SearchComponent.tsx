@@ -4,7 +4,6 @@ import {FiSearch} from 'react-icons/fi'; // Make sure to install react-icons usi
 import styled from 'styled-components';
 
 import {EdgioAnswersInput, edgioAnswersUrl} from 'components/EdgioAnswers';
-import AlgoliaSearch from 'components/Layout/Header/AlgoliaSearch';
 import NoSSRWrapper from 'components/Layout/NoSSRWrapper';
 import Link from 'components/MDX/Link';
 import {ContextType, useAppContext} from 'contexts/AppContext';
@@ -18,6 +17,10 @@ const searchButtons = [
   {
     id: 'uplynk',
     label: 'Uplynk',
+  },
+  {
+    id: 'delivery',
+    label: 'Delivery',
   },
 ];
 
@@ -77,7 +80,6 @@ const SearchContainer = styled.div<{active?: string}>`
     border: 1px solid var(--border-primary);
 
     .search-input {
-      background: var(--search-input-bg);
       color: var(--text-primary);
       outline: none;
       padding-left: 10px;
@@ -167,7 +169,7 @@ const NewIconWithSparkle: React.FC<{children: React.ReactNode}> = ({
   </NewIcon>
 );
 
-const UplynkSearch = styled.input`
+const StandardSearch = styled.input`
   width: 100%;
   height: 100%;
   border: none;
@@ -192,6 +194,7 @@ function HomeSearchComponent() {
 
   const isApplicationsActive = active === 'applications';
   const isUplynkActive = active === 'uplynk';
+  const isDeliveryActive = active === 'delivery';
 
   return (
     <SearchContainer active={active}>
@@ -211,11 +214,21 @@ function HomeSearchComponent() {
         <div className="search-input">
           {isApplicationsActive && <EdgioAnswersContainer />}
           {isUplynkActive && (
-            <UplynkSearch
+            <StandardSearch
               placeholder="Search Uplynk documentation..."
-              onKeyPress={(event) => {
+              onKeyUp={(event) => {
                 if (event.key === 'Enter') {
                   handleUplynkSearch(event.currentTarget.value);
+                }
+              }}
+            />
+          )}
+          {isDeliveryActive && (
+            <StandardSearch
+              placeholder="Search Delivery documentation..."
+              onKeyUp={(event) => {
+                if (event.key === 'Enter') {
+                  handleDeliverySearch(event.currentTarget.value);
                 }
               }}
             />
@@ -276,5 +289,11 @@ export default function SearchComponent() {
 function handleUplynkSearch(inputValue: string) {
   const encodedQuery = encodeURIComponent(inputValue);
   const searchUrl = `https://docs.edgecast.com/video/index.html#search-${encodedQuery}`;
+  window.open(searchUrl, '_blank');
+}
+
+function handleDeliverySearch(inputValue: string) {
+  const encodedQuery = encodeURIComponent(inputValue);
+  const searchUrl = `https://support.limelight.com/public/en/Default.htm#search-${encodedQuery}`;
   window.open(searchUrl, '_blank');
 }

@@ -255,6 +255,14 @@ const StyledSideNav = styled.div`
     grid-template-columns: auto 1fr auto;
     font-size: 14px;
     font-weight: 400;
+
+    .icons div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+    }
   }
 
   .menu-toggle__wrap:hover {

@@ -67,7 +67,7 @@ export async function handleHttpRequest(request) {
     edgio: {
       origin: 'web',
       caching: {
-        max_age: 600
+        max_age: '10m'
       }
     }
   });

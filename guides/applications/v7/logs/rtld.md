@@ -10,7 +10,7 @@ Real-Time Log Delivery (RTLD) delivers log data in near real-time to a variety o
 | RTLD WAF             | Delivers log data that describes requests identified as threats by [Web Application Firewall (WAF)](/guides/security/waf). <br />It excludes log data for threats identified by Rate Rules or Bot Manager. | {{ PRODUCT_SECURITY }} Premier, Standard, or Essentials |
 | RTLD Rate Limiting   | Delivers log data that describes requests for which {{ PRODUCT }} enforced a rate limit as defined through a [rate rule](/guides/security/rate_rules).                                                     | {{ PRODUCT_SECURITY }} Premier, Standard, or Essentials |
 | RTLD Bot             | Delivers log data that describes requests for which [Bot Manager](/guides/security/bot_rules) identified as bot traffic.                                                                                   | Bot Manager                                             |
-| RTLD Cloud Functions | Delivers log data that describes [{{ PRODUCT }} {{PRODUCT_PLATFORM}}](/guides/sites_frameworks) or [Cloud Functions](/guides/performance/serverless_compute) requests.                                     | Cloud Functions                                         |
+| RTLD Cloud Functions | Delivers log data that describes requests processed by [Cloud Functions](/guides/performance/serverless_compute). This includes [{{ PRODUCT }} {{PRODUCT_PLATFORM}}](/guides/sites_frameworks) requests.   | Cloud Functions                                         |
 
 <Callout type="info">
 
@@ -37,7 +37,7 @@ Log data consists a set of log entries. Each entry describes either:
 -   **RTLD WAF:** A HTTP/HTTPS request that was identified as a threat by WAF and information on why it was deemed a threat.
 -   **RTLD Rate Limiting:** A HTTP/HTTPS request that exceeded a rate limit enforced by a Security App configuration.
 -   **RTLD Bot:** A HTTP/HTTPS request that was identified as originating from a bot. 
--   **RTLD Cloud Functions:** A HTTP/HTTPS request that was processed by {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or Cloud Functions.
+-   **RTLD Cloud Functions:** A HTTP/HTTPS request that was processed by Cloud Functions.
 
 <Callout type="info">
 

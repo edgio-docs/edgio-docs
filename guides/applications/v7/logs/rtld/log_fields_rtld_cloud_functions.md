@@ -70,7 +70,7 @@ Top-level name/value pairs are described below.
 
 ### logs Array {/*logs-array*/}
 
-The `logs` array contains an object for each log entry associated with the current JSON document. Each log entry describes each {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or Cloud Functions request through the following fields:
+The `logs` array contains an object for each log entry associated with the current JSON document. Each log entry describes each request processed by Cloud Functions, including {{ PRODUCT }} {{ PRODUCT_PLATFORM }} requests, through the following fields:
 
 -   **client_ip (*String*):** Client IP. (Category: Client Network) Indicates the IP address for the device that submitted the request.
 -   **request_id (*String*):** Request ID. (Category: Request) Indicates the unique ID assigned to the request.
@@ -269,7 +269,7 @@ Sample log data that contains two log entries is provided below for all four log
         }
     }
 ]
-`` `
+```
 
 <a id="json-lines" />
 

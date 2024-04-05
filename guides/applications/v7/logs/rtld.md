@@ -4,12 +4,13 @@ title: Real-Time Log Delivery (RTLD)
 
 Real-Time Log Delivery (RTLD) delivers log data in near real-time to a variety of destinations. It consists of the following modules, which are:
 
-| Module             | Description                                                                                                                                                                                                | Requirements                                            |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| RTLD CDN           | Delivers log data that describes requests submitted to our CDN service.                                                                                                                                    | Purchased Separately                                    |
-| RTLD WAF           | Delivers log data that describes requests identified as threats by [Web Application Firewall (WAF)](/guides/security/waf). <br />It excludes log data for threats identified by Rate Rules or Bot Manager. | {{ PRODUCT_SECURITY }} Premier, Standard, or Essentials |
-| RTLD Rate Limiting | Delivers log data that describes requests for which {{ PRODUCT }} enforced a rate limit as defined through a [rate rule](/guides/security/rate_rules).                                                     | {{ PRODUCT_SECURITY }} Premier, Standard, or Essentials |
-| RTLD Bot           | Delivers log data that describes requests for which [Bot Manager](/guides/security/bot_rules) identified as bot traffic.                                                                                   | Bot Manager                                             |
+| Module               | Description                                                                                                                                                                                                | Requirements                                            |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| RTLD CDN             | Delivers log data that describes requests submitted to the {{ PRODUCT }} network.                                                                                                                          | Purchased Separately                                    |
+| RTLD WAF             | Delivers log data that describes requests identified as threats by [Web Application Firewall (WAF)](/guides/security/waf). <br />It excludes log data for threats identified by Rate Rules or Bot Manager. | {{ PRODUCT_SECURITY }} Premier, Standard, or Essentials |
+| RTLD Rate Limiting   | Delivers log data that describes requests for which {{ PRODUCT }} enforced a rate limit as defined through a [rate rule](/guides/security/rate_rules).                                                     | {{ PRODUCT_SECURITY }} Premier, Standard, or Essentials |
+| RTLD Bot             | Delivers log data that describes requests for which [Bot Manager](/guides/security/bot_rules) identified as bot traffic.                                                                                   | Bot Manager                                             |
+| RTLD Cloud Functions | Delivers log data that describes [{{ PRODUCT }} {{PRODUCT_PLATFORM}}](/guides/sites_frameworks) or [Cloud Functions](/guides/performance/serverless_compute) requests.                                     | Cloud Functions                                         |
 
 <Callout type="info">
 
@@ -32,10 +33,11 @@ RTLD delivers compressed log data to one or more of the following destination(s)
 
 Log data consists a set of log entries. Each entry describes either:
 
--   **RTLD CDN:** A HTTP/HTTPS request that was directed to our CDN service.
+-   **RTLD CDN:** A HTTP/HTTPS request that was directed to the {{ PRODUCT }} network.
 -   **RTLD WAF:** A HTTP/HTTPS request that was identified as a threat by WAF and information on why it was deemed a threat.
 -   **RTLD Rate Limiting:** A HTTP/HTTPS request that exceeded a rate limit enforced by a Security App configuration.
 -   **RTLD Bot:** A HTTP/HTTPS request that was identified as originating from a bot. 
+-   **RTLD Cloud Functions:** A HTTP/HTTPS request that was processed by {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or Cloud Functions.
 
 <Callout type="info">
 
@@ -80,7 +82,7 @@ You may create multiple profiles. This allows you to:
     
 -   Log fields vary by RTLD module.
     
-    Learn more about log fields: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager)
+    Learn more about log fields: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager) | [RTLD Cloud Functions](/guides/logs/rtld/log_fields_rtld_cloud_functions)
     
 -   Log data will only be delivered when a profile's status is enabled.
 -   The procedure for creating and modifying profiles varies by the destination to which log files will be delivered. Learn more about delivering to:

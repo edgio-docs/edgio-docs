@@ -81,7 +81,7 @@ interface StyledBannerProps {
 }
 
 const StyledMainPage = styled.div`
-  --sidebar-width: 340px;
+  --sidebar-width: 320px;
 
   .docs-content {
     width: 100%;

@@ -55,7 +55,7 @@ Filter log data by:
 
     Filter the list by typing the entire or partial hostname. For example, typing `co` will filter the list to include all hostnames that contain `co` (e.g., cdn.example.com and corp.example.org).
 
--   **Log Level:**<a id="log-level" /> Set the **Log Level** option to one or more log level(s) by selecting or typing their names.
+-   **Log Level:**<a id="log-level" /> Set the **Log Level** option to one or more [log level(s)](/applications/logs/rtld/log_fields_rtld_cloud_functions#log-level) by selecting or typing their names.
 
 -   **Managed Rule:**<a id="managed-rule" /> Set the **Managed Rule** option to one or more managed rule(s) by selecting or typing their names.
 
@@ -65,7 +65,7 @@ Filter log data by:
 
 -   **Security App Configuration:**<a id="security-app-configuration" /> Set the **Security Application Manager** or the **Scope Name** option to one or more Security App configuration(s). 
 
--   **Source:**<a id="source" /> Set the **Source** option by selecting one or more source(s).
+-   **Source:**<a id="source" /> Set the **Source** option by selecting a source. This source identifies whether a log entry was generated due to a console message in the application or Deep Request Inspection.
 
 -   **Status Code:**<a id="status-code" /> Set the **Filter by Status Code** option by selecting each status code class (e.g., `2xx` or `3xx`) for which log data will be delivered.  
 

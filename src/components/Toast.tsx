@@ -80,9 +80,6 @@ const ToastContainer = styled.div<{
           color: var(--text-primary) !important;
           a {
             color: var(--colors-blue0) !important;
-            &:hover {
-              text-decoration: underline !important;
-            }
           }
         `;
       case 'important':
@@ -91,9 +88,6 @@ const ToastContainer = styled.div<{
           color: var(--colors-white0) !important;
           a {
             color: var(--colors-blue0) !important;
-            &:hover {
-              text-decoration: underline !important;
-            }
           }
         `;
       case 'critical':
@@ -102,9 +96,7 @@ const ToastContainer = styled.div<{
           color: var(--colors-black0) !important;
           a {
             color: var(--colors-blue0) !important;
-            &:hover {
-              text-decoration: underline !important;
-            }
+          }
         `;
       default:
         return css``;

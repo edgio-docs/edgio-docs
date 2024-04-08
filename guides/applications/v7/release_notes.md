@@ -15,6 +15,8 @@ See [NPM Packages Changelog](/guides/changelog) for release notes related to the
 | Date     | Description                                                                                                                                                                                                                            |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 3/18/2024  | **{{ PRODUCT }} {{ PRODUCT_EDGE }}:** Introduced [mTLS](/guides/security/tls_certificates#mtls) support for the connection between a client and the edge of our network. |
+| 3/28/2024  | **Analytics:** Added the [RTLD Cloud Functions feature](/guides/logs/rtld). RTLD Cloud Functions delivers log data for requests processed by Cloud Functions. This includes {{ PRODUCT }} {{ PRODUCT_PLATFORM }} requests.
+
 
 ## February 2024 {/* february-2024 */}
 

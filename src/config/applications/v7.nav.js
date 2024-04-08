@@ -590,6 +590,10 @@ const nav = {
               title: 'Log Fields (RTLD Bot)',
               path: 'logs/rtld/log_fields_rtld_bot_manager',
             },
+            {
+              title: 'Log Fields (RTLD Cloud Functions)',
+              path: 'logs/rtld/log_fields_rtld_cloud_functions',
+            },
           ],
         },
       ],

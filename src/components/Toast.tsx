@@ -79,11 +79,7 @@ const ToastContainer = styled.div<{
           background-color: var(--colors-info) !important;
           color: var(--text-primary) !important;
           a {
-            color: var(--text-primary) !important;
-            text-decoration: underline !important;
-            &:hover {
-              text-decoration-color: var(--colors-blue0) !important;
-            }
+            color: var(--colors-blue0) !important;
           }
         `;
       case 'important':
@@ -91,11 +87,7 @@ const ToastContainer = styled.div<{
           background-color: var(--colors-important) !important;
           color: var(--colors-white0) !important;
           a {
-            color: var(--text-primary) !important;
-            text-decoration: underline !important;
-            &:hover {
-              text-decoration-color: var(--colors-blue0) !important;
-            }
+            color: var(--colors-blue0) !important;
           }
         `;
       case 'critical':
@@ -103,7 +95,7 @@ const ToastContainer = styled.div<{
           background-color: var(--colors-critical) !important;
           color: var(--colors-black0) !important;
           a {
-            text-decoration: underline !important;
+            color: var(--colors-blue0) !important;
           }
         `;
       default:

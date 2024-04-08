@@ -1,6 +1,6 @@
 5.  From the **Log Format** option, select whether to format log data using our standard JSON format, as a JSON array, as JSON lines, or as a CSV (RTLD CDN only).
     
-    Learn more about these formats: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager)
+    Learn more about these formats: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager) | [RTLD Cloud Functions](/guides/logs/rtld/log_fields_rtld_cloud_functions)
 
     <a id="downsampling" />
 
@@ -29,6 +29,6 @@
 
     -   **RTLD CDN Only:** You may also [log request headers, response headers, and cookies](/guides/logs/rtld/custom_log_fields).
 
-    -   View log field definitions: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn#logs-array) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf#logs-array) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting#logs-array) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager#logs-array)
+    -   View log field definitions: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn#logs-array) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf#logs-array) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting#logs-array) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager#logs-array) | [RTLD Cloud Functions](/guides/logs/rtld/log_fields_rtld_cloud_functions#logs-array)
 
 9.  Click **Create Log Delivery Profile**.

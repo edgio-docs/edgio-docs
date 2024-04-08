@@ -13,12 +13,12 @@ This guide shows you how to deploy an [Gatsby](https://www.gatsbyjs.com/) applic
 <ExampleButtons
   title="Gatsby SSG"
   siteUrl="https://edgio-community-examples-gatsby-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-gatsby-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-gatsby-example"
   deployFromRepo /> -->
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/applications/sites_frameworks/connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-gatsby-connector">
   View the Connector Code
@@ -69,7 +69,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 {{ system_origins_callout.md }}
 
-See [Deployments](/guides/basics/deployments) guide for more information.
+See [Deployments](/applications/basics/deployments) guide for more information.
 
 ## Routing {/*routing*/}
 
@@ -138,4 +138,4 @@ module.exports = new Router()
   })
 ```
 
-Check [CDN-as-code](/guides/performance/cdn_as_code) and [Caching](/guides/performance/caching) guides for more information.
+Check [CDN-as-code](/applications/performance/cdn_as_code) and [Caching](/applications/performance/caching) guides for more information.

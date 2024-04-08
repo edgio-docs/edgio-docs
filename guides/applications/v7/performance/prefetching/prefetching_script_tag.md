@@ -6,11 +6,11 @@ Set up predictive prefetching by adding a script tag to all of your pages.
 
 **Key information:**
 
--   By default, only content that has already been cached on the POP closest to the user may be prefetched. {{ PRODUCT }} returns a [412 Precondition Failed response](/guides/performance/troubleshooting#412-precondition-failed-status-code) for prefetch requests that result in cache misses. This ensures that your infrastructure does not experience additional load due to prefetching. 
+-   By default, only content that has already been cached on the POP closest to the user may be prefetched. {{ PRODUCT }} returns a [412 Precondition Failed response](/applications/performance/troubleshooting#412-precondition-failed-status-code) for prefetch requests that result in cache misses. This ensures that your infrastructure does not experience additional load due to prefetching.
 
 -   Due to security requirements, prefetching requires the HTTPS protocol. An exception to this requirement occurs when using localhost.
 
--   If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or a JavaScript front-end framework, you can achieve deeper prefetch integration and custom behavior by installing the `{{ PACKAGE_NAME }}/prefetch` package.  [Learn how to install and use this package](/guides/performance/prefetching/prefetching_edgio_sites).
+-   If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or a JavaScript front-end framework, you can achieve deeper prefetch integration and custom behavior by installing the `{{ PACKAGE_NAME }}/prefetch` package.  [Learn how to install and use this package](/applications/performance/prefetching/prefetching_edgio_sites).
 
 ## Setup {/*setup*/}
 
@@ -18,9 +18,9 @@ Perform the following steps:
 
 1.  [Register the service worker](#registering-the-service-worker-traditional-website) by adding a prefetching script tag to your web pages.
 2.  [Enable prefetching](#automatic-prefetching-traditional-website) for the desired requests by adding the following features within one or more rules:
-    
-    -   [Set Max Age (max_age)](/guides/performance/rules/features#set-max-age)
-    -   [Set Service Worker Max Age (service_worker_max_age)](/guides/performance/rules/features#set-service-worker-max-age) 
+
+    -   [Set Max Age (max_age)](/applications/performance/rules/features#set-max-age)
+    -   [Set Service Worker Max Age (service_worker_max_age)](/applications/performance/rules/features#set-service-worker-max-age)
 
     Alternatively, you may [manually enable prefetching](#manual-prefetching-traditional-website) for specific requests.
 
@@ -51,10 +51,10 @@ The lowest supported version is `v7.3.1`.
 <body>
     <h1>My awesome page</h1>
     <p>This site uses the {{ PACKAGE_NAME }}/prefetch package.</p>
-    
+
 +   <script src="/__edgio__/prefetch/install.js" defer></script>
 </body>
-</html> 
+</html>
 ```
 
 This package supports the following attributes:
@@ -76,8 +76,8 @@ This package supports the following attributes:
 -   [The `{{ PACKAGE_NAME }}/prefetch` script has been included on a page.](#registering-the-service-worker-traditional-website)
 -   The link is displayed in the viewport (i.e., the area of the web page that is currently visible to the user).
 -   The link matches at least one rule that contains both of the following features:
-    -   [Set Max Age (max_age)](/guides/performance/rules/features#set-max-age)
-    -   [Set Service Worker Max Age (service_worker_max_age)](/guides/performance/rules/features#set-service-worker-max-age) 
+    -   [Set Max Age (max_age)](/applications/performance/rules/features#set-max-age)
+    -   [Set Service Worker Max Age (service_worker_max_age)](/applications/performance/rules/features#set-service-worker-max-age)
 
 <Callout type="info">
 
@@ -85,9 +85,9 @@ This package supports the following attributes:
 
 </Callout>
 
-By default, the response varies according to whether the requested content has been cached within the POP closest to the user. 
--   If a cached response is found, then {{ PRODUCT }} will serve this cached content to the browser. The browser will then cache it locally for the duration defined by the Set Service Worker Max Age (service_worker_max_age) feature. 
--   If a cached response is not found, then {{ PRODUCT }} will return a [412 Precondition Failed response](/guides/performance/troubleshooting#412-precondition-failed-status-code).
+By default, the response varies according to whether the requested content has been cached within the POP closest to the user.
+-   If a cached response is found, then {{ PRODUCT }} will serve this cached content to the browser. The browser will then cache it locally for the duration defined by the Set Service Worker Max Age (service_worker_max_age) feature.
+-   If a cached response is not found, then {{ PRODUCT }} will return a [412 Precondition Failed response](/applications/performance/troubleshooting#412-precondition-failed-status-code).
 
     <Callout type="info">
 
@@ -110,10 +110,10 @@ By default, the response varies according to whether the requested content has b
         <a href="/pages/2">Page 2</a>
         <a href="/pages/3">Page 3</a>
     </nav>
-    
+
     <script src="/__edgio__/prefetch/install.js" defer></script>
 </body>
-</html> 
+</html>
 ```
 
 Add the following rule to cache and prefetch all navigation links in the above example:
@@ -137,7 +137,7 @@ Add the following rule to cache and prefetch all navigation links in the above e
         })
     ```
 
-Verify that links are automatically prefetched and cached locally by opening the **Network** tab of your browser's developer tools (F12). 
+Verify that links are automatically prefetched and cached locally by opening the **Network** tab of your browser's developer tools (F12).
 
 ![Prefetch requests on the Network tab of a browser's developer tools](/images/v7/performance/prefetch_network_tab.png)
 
@@ -160,7 +160,7 @@ Call the [Edgio.prefetch() function](/docs/api/prefetch/functions/window_prefetc
         <a href="/pages/2">Page 2</a>
         <a href="/pages/3">Page 3</a>
     </nav>
-    
+
     <script src="/__edgio__/prefetch/install.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -173,5 +173,5 @@ Call the [Edgio.prefetch() function](/docs/api/prefetch/functions/window_prefetc
         });
     </script>
 </body>
-</html> 
+</html>
 ```

@@ -4,7 +4,7 @@ title: Devtools
 
 <Callout type="important">
 
-  {{ PRODUCT }} Devtools has been deprecated and will be removed in the next major version of the {{ PRODUCT }} CLI. We recommend using the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer_tools_chrome_extension) for a more comprehensive view of your site's performance and cache behavior.
+  {{ PRODUCT }} Devtools has been deprecated and will be removed in the next major version of the {{ PRODUCT }} CLI. We recommend using the [{{ CHROME_EXTENSION }}](/applications/performance/observability/developer_tools_chrome_extension) for a more comprehensive view of your site's performance and cache behavior.
 
 </Callout>
 
@@ -64,7 +64,7 @@ Alternatively, you can add the following `script` tag to your app's HTML:
 
 ### Service Worker {/* service-worker */}
 
-Then, if you haven't already, enable `{{ PACKAGE_NAME }}/prefetch` in your service worker. See [Prefetching](/guides/performance/prefetching) for more information on enabling `{{ PACKAGE_NAME }}/prefetch`.
+Then, if you haven't already, enable `{{ PACKAGE_NAME }}/prefetch` in your service worker. See [Prefetching](/applications/performance/prefetching) for more information on enabling `{{ PACKAGE_NAME }}/prefetch`.
 
 ## Enabling or Disabling the Devtools {/* enabling-or-disabling-the-devtools */}
 

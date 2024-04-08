@@ -60,7 +60,7 @@ import {connectorRoutes} from '@edgio/connectors';
 export default new Router().use(connectorRoutes);
 ```
 
-Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
+Refer to the [CDN-as-code](/applications/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
 ## Running Locally {/* running-locally */}
 
@@ -88,7 +88,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 {{ system_origins_callout.md }}
 
-Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
+Refer to the [Deployments](/applications/basics/deployments) guide for more information on the `deploy` command and its options.
 
 ## Prefetching {/* prefetching */}
 
@@ -130,8 +130,8 @@ By default, `Prefetch` waits until the link appears in the viewport before prefe
 </Prefetch>
 ```
 
-Refer to the [Predictive Prefetch](/guides/performance/prefetching) for more examples of prefetch functionality.
+Refer to the [Predictive Prefetch](/applications/performance/prefetching) for more examples of prefetch functionality.
 
 ## Server Side Rendering {/* server-side-rendering */}
 
-For server side rendered Vue.js apps we recommend using the Nuxt.js framework which is supported on {{ PRODUCT }}. Refer to the [Nuxt](/guides/sites_frameworks/getting_started/nuxt) guide for more information.
+For server side rendered Vue.js apps we recommend using the Nuxt.js framework which is supported on {{ PRODUCT }}. Refer to the [Nuxt](/applications/sites_frameworks/getting_started/nuxt) guide for more information.

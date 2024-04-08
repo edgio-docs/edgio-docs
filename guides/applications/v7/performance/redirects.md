@@ -3,28 +3,28 @@ title: Redirects
 ---
 
 Redirect URLs through one of the following methods:
--   **Rules:** Rules allow you to define how a URL will be redirected through the [URL Redirect feature](/guides/performance/rules/features#url-redirect). This feature is especially useful when URL redirects should only occur under specific conditions. 
--   **CDN-as-Code:** If you are using CDN-as-code, then you may define URL redirects through the [url.url_redirect feature](/guides/performance/cdn_as_code/route_features#redirecting).
--   **Edge Functions:** Edge Functions allow you to [intelligently redirect URLS](/guides/edge_functions/examples/redirects). 
--   **Location Header:** Include the `Location` response header within a `3xx` response to instruct clients to redirect to a different URL. Alternatively, you can instruct {{ PRODUCT }} to follow a redirect defined within a `Location` header provided by the origin through the [Follow Redirects feature](/guides/performance/rules/features#follow-redirects) ([follow_redirects](/docs/api/core/interfaces/types.Url.html#follow_redirects)).
+-   **Rules:** Rules allow you to define how a URL will be redirected through the [URL Redirect feature](/applications/performance/rules/features#url-redirect). This feature is especially useful when URL redirects should only occur under specific conditions.
+-   **CDN-as-Code:** If you are using CDN-as-code, then you may define URL redirects through the [url.url_redirect feature](/applications/performance/cdn_as_code/route_features#redirecting).
+-   **Edge Functions:** Edge Functions allow you to [intelligently redirect URLS](/applications/edge_functions/examples/redirects).
+-   **Location Header:** Include the `Location` response header within a `3xx` response to instruct clients to redirect to a different URL. Alternatively, you can instruct {{ PRODUCT }} to follow a redirect defined within a `Location` header provided by the origin through the [Follow Redirects feature](/applications/performance/rules/features#follow-redirects) ([follow_redirects](/docs/api/core/interfaces/types.Url.html#follow_redirects)).
 -   **Bulk Redirects:** Use this capability to define a list of URLs for which we will return a `3xx` response with a `Location` header set to the desired URL. In addition to managing URL redirects on an individual basis, you may import and export a list of URL redirects.
 
 ## Bulk Redirects {/*bulk-redirects*/}
 
-This capability allows you to define a list of URLs for which we will return a `3xx` response with a `Location` header set to the desired URL. Manage URL redirects on a per environment basis by either manually adding redirect configurations or by importing a CSV file. 
+This capability allows you to define a list of URLs for which we will return a `3xx` response with a `Location` header set to the desired URL. Manage URL redirects on a per environment basis by either manually adding redirect configurations or by importing a CSV file.
 
 **Key information:**
--   Your redirect configuration is excluded from versioning. This allows you to roll back an environment to a previous version without affecting your URL redirects. 
+-   Your redirect configuration is excluded from versioning. This allows you to roll back an environment to a previous version without affecting your URL redirects.
 
     <Callout type="tip">
 
-      We strongly recommend that you [back up your redirect configuration as a CSV file](#export) and place it under source control. 
+      We strongly recommend that you [back up your redirect configuration as a CSV file](#export) and place it under source control.
 
     </Callout>
 
 -   Requests are redirected before being processed by rules. Additionally, once a request is redirected, only features that affect the response can be applied.  For example, you may set headers for the `3xx` response sent to the client.
 
--   For each redirect, you must define a source and a destination. 
+-   For each redirect, you must define a source and a destination.
 
     ![Add a redirect - Source and Destination](/images/v7/performance/redirects-source-destination.png?width=600)
 
@@ -37,7 +37,7 @@ This capability allows you to define a list of URLs for which we will return a `
 
         **Example:** `/conferences/2023`
 
--   If the requested URL matches the source URL defined within a redirect configuration, we will return a `3xx` response with a `Location` header set to the destination URL. It is up to the client (e.g., web browser) to follow this redirect. 
+-   If the requested URL matches the source URL defined within a redirect configuration, we will return a `3xx` response with a `Location` header set to the destination URL. It is up to the client (e.g., web browser) to follow this redirect.
 
 -   The source URL must be unique, since we can only redirect a URL to a single location. However, since we support query strings and relative URLs, the requested URL could still potentially match against multiple source URLs. For this reason, {{ PRODUCT }} prefers precise source URLs according to the following order:
     -   Absolute URL with query string
@@ -45,18 +45,18 @@ This capability allows you to define a list of URLs for which we will return a `
     -   Relative URL with query string
     -   Relative URL without query string
 
-    {{ PRODUCT }} will not perform further comparisons once a match is found. This ensures that the request is redirected according to the configuration that is the most precise match. 
+    {{ PRODUCT }} will not perform further comparisons once a match is found. This ensures that the request is redirected according to the configuration that is the most precise match.
 
 -   Redirecting requests to a relative path may result in an invalid URL when fielding requests from various hostnames. Use an absolute URL to ensure that requests are properly redirected.
 -   Define a `3xx` status code for the redirect through the **Response status** option. By default, we return a `301 Moved Permanently` response.
--   The **Forward query string to redirect location** option determines whether the `Location` header will include or exclude the request's query string. 
+-   The **Forward query string to redirect location** option determines whether the `Location` header will include or exclude the request's query string.
 -   You may define up to 10,000 redirects per environment.
 -   Once an environment contains 200 or more redirects, you may only manage them by importing CSV file(s).
--   Changes to your redirect configuration will not take effect until the next deployment. 
+-   Changes to your redirect configuration will not take effect until the next deployment.
 
 ### CSV Files {/*csv-files*/}
 
-You may import or export a comma-separated values (CSV) file containing a list of redirect configurations. 
+You may import or export a comma-separated values (CSV) file containing a list of redirect configurations.
 
 This CSV file must contain the following header row:
 
@@ -78,7 +78,7 @@ https://cdn.example.com/bicycles,/transportation/bicycles,,true
 https://cdn.example.com/images,https://cdn.example.com/resources/images,,
 ```
 
-Upon importing a CSV file, you may choose whether to replace or append to your existing redirect configuration. 
+Upon importing a CSV file, you may choose whether to replace or append to your existing redirect configuration.
 
 **To import redirect configurations (CSV)**
 1.  Navigate to the **Redirects** page.
@@ -89,11 +89,11 @@ Upon importing a CSV file, you may choose whether to replace or append to your e
 4.  Determine whether you will replace or append to your existing redirect configurations.
     -   **Replace:** Select **Override existing list with file content**.
     -   **Append:** Select **Append file content to existing redirects list**.
-    
+
         <Callout type="info">
-        
-          The source URL (`from`) must be unique across all redirect configurations. You will not be allowed to append a CSV file to your existing configuration if doing so will create a redirect configuration with a duplicate source URL. 
-        
+
+          The source URL (`from`) must be unique across all redirect configurations. You will not be allowed to append a CSV file to your existing configuration if doing so will create a redirect configuration with a duplicate source URL.
+
         </Callout>
 5.  Click **Upload redirects**.
 6.  If you are finished making changes, click **Deploy Now** to deploy your changes to this environment.
@@ -120,7 +120,7 @@ You may add, modify, and delete redirect configurations regardless of whether th
 6.  Optional. Mark the **Forward query string to redirect location** option to allow the request's query string to be included with the destination URL defined within the `Location` response header.
 
     Your redirect configuration should now look similar to the following illustration:
-    
+
     ![Add a redirect](/images/v7/performance/redirects-add-a-redirect.png?width=600)
 
 7.  Click **Add a redirect**.
@@ -134,9 +134,9 @@ You may add, modify, and delete redirect configurations regardless of whether th
 2.  Find the desired redirect configuration and then click on it.
 
     <Callout type="tip">
-    
-      Use the search field to filter the list to redirect configurations whose source or destination URL matches the specified value. 
-    
+
+      Use the search field to filter the list to redirect configurations whose source or destination URL matches the specified value.
+
     </Callout>
 
 3.  Make the desired changes.
@@ -148,6 +148,6 @@ You may add, modify, and delete redirect configurations regardless of whether th
 1.  Navigate to the **Redirects** page.
 
     {{ ENV_NAV }} **Redirects**.
-2.  Mark each desired redirect. 
+2.  Mark each desired redirect.
 3.  Click **Remove selected redirect(s)**.
 4.  If you are finished making changes, click **Deploy Now** to deploy your changes to this environment.

@@ -2,7 +2,7 @@
 title: Node.js Connector
 ---
 
-Node.js Connector lets you build and deploy your project to {{ PRODUCT }} for any framework that is not listed under our directly [supported frameworks](/guides/sites_frameworks/getting_started#supported-frameworks).
+Node.js Connector lets you build and deploy your project to {{ PRODUCT }} for any framework that is not listed under our directly [supported frameworks](/applications/sites_frameworks/getting_started#supported-frameworks).
 
 {{ PREREQ.md }}
 
@@ -14,7 +14,7 @@ To use the Node.js Connector with your project, you'll first need to initialize 
 {{ CLI_CMD(init) }}
 ```
 
-By default {{ PRODUCT }} will try to recognize the underlying framework when you run the `{{ CLI_CMD(init) }}` command. However, if the framework you are using does not fall within the list of [supported frameworks](/guides/sites_frameworks/getting_started#supported-frameworks), you will be prompted to select the type of project you want to set up:
+By default {{ PRODUCT }} will try to recognize the underlying framework when you run the `{{ CLI_CMD(init) }}` command. However, if the framework you are using does not fall within the list of [supported frameworks](/applications/sites_frameworks/getting_started#supported-frameworks), you will be prompted to select the type of project you want to set up:
 
 ```bash
 WARNING: No framework detected. You can still use Edgio; however, we need more information about your project.
@@ -69,7 +69,7 @@ export default new Router()
   .use(connectorRoutes)
 ```
 
-See [Routes](/guides/performance/cdn_as_code#routes) for information on defining routes, caching, and more.
+See [Routes](/applications/performance/cdn_as_code#routes) for information on defining routes, caching, and more.
 
 ## Running Locally {/* running-locally */}
 
@@ -97,7 +97,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands 
 
 {{ system_origins_callout.md }}
 
-See [Deployments](/guides/basics/deployments) for more information.
+See [Deployments](/applications/basics/deployments) for more information.
 
 ## Node.js Connector Configuration {/* nodejs-connector-configuration */}
 
@@ -130,7 +130,7 @@ In the `nodejsConnector` object you can configure the following options:
 
 ## Connector {/* connector */}
 
-This connector is not built for a specific framework. It is used as a fallback for frameworks that are not directly supported by {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
+This connector is not built for a specific framework. It is used as a fallback for frameworks that are not directly supported by {{ PRODUCT }}. See [Connectors](/applications/sites_frameworks/connectors) for more information.
 
 <ButtonLink
   variant="stroke"

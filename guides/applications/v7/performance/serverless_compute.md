@@ -134,7 +134,7 @@ module.exports = {
 };
 ```
 
-See [`origins`](/guides/performance/cdn_as_code/edgio_config#origins) for more configuration options.
+See [`origins`](/applications/performance/cdn_as_code/edgio_config#origins) for more configuration options.
 
 To forward a request to the origin and modify the response using a Cloud Function:
 
@@ -246,7 +246,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 {{ PRODUCT }} Cloud Functions limits are listed below.
 
-- Our Cloud Functions have a maximum runtime of 20 seconds per request. The response for a function that exceeds this limit is a [539 Project Timeout](/guides/performance/response#exclusive-status-codes).
+- Our Cloud Functions have a maximum runtime of 20 seconds per request. The response for a function that exceeds this limit is a [539 Project Timeout](/applications/performance/response#exclusive-status-codes).
 - Our Cloud Functions workers are allowed to generate a response body with a maximum file size of 6 MB.
-- Your project must comply with all applicable [{{ PRODUCT }} {{ PRODUCT_EDGE }} limitations.](/guides/performance/limits)
-- Your project must comply with [{{ PRODUCT }} {{ PRODUCT_PLATFORM }} limitations.](/guides/sites_frameworks/limits)
+- Your project must comply with all applicable [{{ PRODUCT }} {{ PRODUCT_EDGE }} limitations.](/applications/performance/limits)
+- Your project must comply with [{{ PRODUCT }} {{ PRODUCT_PLATFORM }} limitations.](/applications/sites_frameworks/limits)

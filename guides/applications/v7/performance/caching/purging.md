@@ -44,35 +44,35 @@ Purge the above URL by specifying the following relative path:
 
 Alternatively, you can use an `*` to recursively purge a directory. The following relative path pattern recursively purges all content from the `/sports` directory including `marchtournament.html`:
 
-`/sports/*` 
+`/sports/*`
 
 ## Surrogate Key {/*surrogate-key*/}
 
-You  may purge cached content by surrogate key (aka cache tag). A surrogate key is a label that you may apply to cached responses. Purging by surrogate key allows you to purge related content across your entire site. 
+You  may purge cached content by surrogate key (aka cache tag). A surrogate key is a label that you may apply to cached responses. Purging by surrogate key allows you to purge related content across your entire site.
 
 <Callout type="tip">
 
-  Improve performance and reduce the load on your web servers by only purging targetted content through the use of surrogate keys. 
+  Improve performance and reduce the load on your web servers by only purging targetted content through the use of surrogate keys.
 
 </Callout>
 
 #### Tagging Cached Content {/*tagging-cached-content*/}
 
-Apply a surrogate key by setting the `Surrogate-Key` response header. 
+Apply a surrogate key by setting the `Surrogate-Key` response header.
 
 **Syntax:** `Surrogate-Key: <TAG1> <TAG2> <TAG3>`
 
-**Example:** 
+**Example:**
 
 For example, the following response header applies three surrogate keys to the cached response. Purging any of those three surrogate keys will purge all cached responses tagged with that surrogate key.
 
 `Surrogate-Key: sports basketball march-tournament`
 
-[View a sample configuration.](/guides/performance/rules/feature_scenarios#tagging-requests-for-purging)
+[View a sample configuration.](/applications/performance/rules/feature_scenarios#tagging-requests-for-purging)
 
 ## {{ PORTAL }} {/*console*/}
 
-Use the {{ PORTAL }} to purge cached content within a specific environment. 
+Use the {{ PORTAL }} to purge cached content within a specific environment.
 
 **To purge content**
 
@@ -96,7 +96,7 @@ Use the {{ PORTAL }} to purge cached content within a specific environment.
 
 ## {{ PRODUCT }} CLI {/*cli*/}
 
-Purge cached content through the {{ PRODUCT }} CLI by passing the [cache-clear argument](/guides/develop/cli#cache-clear). You may purge:
+Purge cached content through the {{ PRODUCT }} CLI by passing the [cache-clear argument](/applications/develop/cli#cache-clear). You may purge:
 
 -   **All content:** Exclude the `--path` and `--surrogate-key` options.
 -   **By relative path:** Pass the `--path` option. You may use an `*` to represent zero or more characters.
@@ -138,7 +138,7 @@ By default, cached content is preserved when you deploy a new version of your si
 <!--
 ## Static prerendering after clearing the cache {/*static-prerendering-after-clearing-the-cache*/}
 
-If you have enabled [static prerendering](/guides/performance/static_prerendering), the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PORTAL }} or run `{{ FULL_CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.-->
+If you have enabled [static prerendering](/applications/performance/static_prerendering), the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PORTAL }} or run `{{ FULL_CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.-->
 
 ## Automated Purging {/*automated-purging*/}
 

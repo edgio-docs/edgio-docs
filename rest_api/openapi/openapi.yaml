@@ -53,68 +53,68 @@ tags:
 
       -   Defines the production and audit enforcement action that will be applied to the requests identified as threats by access rules, API security ruleset, rate rules, custom ruleset, and managed rules.
 
-      <a href="https://docs.edg.io/applications/security/security_applications" target="_blank">Learn more about Security Apps.</a>
+      <a href="https://docs.edg.io/guides/security/security_applications" target="_blank">Learn more about Security Apps.</a>
   - name: Access Control List (ACL)
     x-displayName: Access Rules
-    description: |
-
+    description: | 
+    
       An access rule identifies legitimate traffic and threats through access controls.
-
-      <a href="https://docs.edg.io/applications/security/access_rules" target="_blank">Learn more about access rules.</a>
+      
+      <a href="https://docs.edg.io/guides/security/access_rules" target="_blank">Learn more about access rules.</a>
   - name: Custom Rules
     x-displayName: Custom Rules
-    description: |
-
+    description: | 
+    
       A custom rule tailors how Edgio Security identifies a threat.
-
-      <a href="https://docs.edg.io/applications/security/custom_rules" target="_blank">Learn more about custom rules.</a>
-
+      
+      <a href="https://docs.edg.io/guides/security/custom_rules" target="_blank">Learn more about custom rules.</a>
+    
   - name: Rate Rules (Limits)
-    x-displayName: Rate Rules
-    description: |
+    x-displayName: Rate Rules 
+    description: | 
 
       A rate rule restricts the flow of site traffic.
 
-      <a href="https://docs.edg.io/applications/security/rate_rules" target="_blank">Learn more about rate rules.</a>
+      <a href="https://docs.edg.io/guides/security/rate_rules" target="_blank">Learn more about rate rules.</a>
 
   - name: Managed Rules (Profiles)
     x-displayName: Managed Rules (Profiles)
-    description: |
+    description: | 
+    
+      A managed rule identifies threats through predefined security policies. You may fine-tune these security policies to prevent false positives. 
 
-      A managed rule identifies threats through predefined security policies. You may fine-tune these security policies to prevent false positives.
-
-
-      <a href="https://docs.edg.io/applications/security/managed_rules" target="_blank">Learn more about managed rules.</a>
+      
+      <a href="https://docs.edg.io/guides/security/managed_rules" target="_blank">Learn more about managed rules.</a>
 
   - name: Edgio Rulesets
     x-displayName: Edgio Rulesets
-    description: |
+    description: | 
 
       An Edgio ruleset contains a set of managed security policies that identifies threats and provides generic protection against a variety of unknown vulnerabilities. Edgio rulesets are versioned. A new version is released whenever an Edgio ruleset is updated.
 
   - name: Bot Rules
     x-displayName: Bot Ruleset
     description: |
-
-      A bot ruleset contains one or more rule(s) for determining how bots will be identified.
-
-      <a href="https://docs.edg.io/applications/security/bot_rules#bot-manager-configuration" target="_blank">Learn more about bot rulesets.</a>
+    
+      A bot ruleset contains one or more rule(s) for determining how bots will be identified. 
+            
+      <a href="https://docs.edg.io/guides/security/bot_rules#bot-manager-configuration" target="_blank">Learn more about bot rulesets.</a>
 
   - name: Bot Managers
     x-displayName: Bot Manager Configuration
     description: |
-
+    
       A bot manager configuration:
 
         -   Identifies a bot ruleset.
-
+        
         -   The enforcement action that will be applied to traffic identified as a bot.
-
+        
         -   Determines whether known bots will be automatically detected and the enforcement action that will be applied to that traffic.
-
+        
         -   Traffic that will be exempt from bot detection.
-
-      <a href="https://docs.edg.io/applications/security/bot_rules" target="_blank">Learn more about bot manager.</a>
+      
+      <a href="https://docs.edg.io/guides/security/bot_rules" target="_blank">Learn more about bot manager.</a>
 
   - name: Known Bots
     x-displayName: Known Bots
@@ -123,20 +123,20 @@ tags:
   - name: API Gateways
     x-displayName: API Security Ruleset
     description: |
-
+    
       An API Security ruleset contains one or more API Security rule(s). Each of these rules identifies an API schema and the conditions under which it will be enforced.
-
+      
       By default, Edgio validates all `POST`, `PUT`, and `PATCH` requests that satisfy your security app’s hostname and URL path requirements. If your website uses those HTTP methods for non-API requests, then it is strongly recommended to define one or more URL path(s) within your API Security rule.
-
-      <a href="https://docs.edg.io/applications/security/api_security#api-security-rule" target="_blank">Learn more about API Security rules.</a>
-
+      
+      <a href="https://docs.edg.io/guides/security/api_security#api-security-rule" target="_blank">Learn more about API Security rules.</a>
+      
   - name: API Schemas
     x-displayName: API Schemas
     description: |
-
+   
       An API schema is a JSON schema that describes the structure for a valid API payload.
-
-      <a href="https://docs.edg.io/applications/security/api_security#json-schema-syntax" target="_blank">Learn more about supported JSON schema syntax.</a>
+      
+      <a href="https://docs.edg.io/guides/security/api_security#json-schema-syntax" target="_blank">Learn more about supported JSON schema syntax.</a>
 paths:
   /config/v0.1/tls-certs/{cert_id}:
     $ref: paths/config_v0.1_tls-certs_{cert_id}.yaml
@@ -360,7 +360,7 @@ paths:
 #      - url: 'https://edgioapis.com/waf/v0.9'
 #    security:
 #      - wafScope: [app.waf]
-
+    
   '/{organization_id}/api-gateways':
     $ref: 'paths/{organization_id}@api-gateways.yaml'
     servers:
@@ -528,7 +528,7 @@ x-tagGroups:
     tags:
       - configs
       - environment-variables
-      - deployments
+      - deployments      
   - name: TLS Certificates
     tags:
       - tls-certs

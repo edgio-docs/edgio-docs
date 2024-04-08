@@ -1,19 +1,19 @@
 type: string
 description:  |
 
-  Determines when a request will count towards the rate limit.
+  Determines when a request will count towards the rate limit. 
 
-  -   **FILE_EXT:** File extension (e.g., `.htm`, `.png`, or `.js`).
+  -   **FILE_EXT:** File extension (e.g., `.htm`, `.png`, or `.js`). 
 
   -   **REMOTE_ADDR:** IP address. Use standard IPv4 and CIDR notation. Specify a subnet by appending a slash (`/`) and the desired bit-length of the prefix (e.g., `11.22.33.0/22`).
 
   -   **REMOTE_ASN:** Autonomous system number (ASN) - (e.g., `15133`).
 
-  -   **GEO:** <a href="https://docs.edg.io/applications/v7/reference/country_codes" target="_blank">Country code.</a>
+  -   **GEO:** <a href="https://docs.edg.io/guides/v7/reference/country_codes" target="_blank">Country code.</a>
 
   -   **REQUEST_HEADERS:** Request header value. Identify requests by the `Host`, `User-Agent`, or `Referer` request header by setting the `target.value` property to the desired request header.
 
-  -   **REQUEST_METHOD:** Request method. Match for `GET | POST | PUT | HEAD | DELETE | OPTIONS` requests.
+  -   **REQUEST_METHOD:** Request method. Match for `GET | POST | PUT | HEAD | DELETE | OPTIONS` requests. 
 
   -   **REQUEST_URI:** Request URL path. This path starts directly after the hostname.
 

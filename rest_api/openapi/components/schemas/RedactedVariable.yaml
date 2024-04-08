@@ -3,7 +3,7 @@ type: object
 properties:
   match_on:
     type: string
-    description:  A regular expression that identifies the <a href="https://docs.edg.io/applications/security/matched_on_variables" target="_blank">Matched On variable</a> whose value will be redacted.
+    description:  A regular expression that identifies the <a href="https://docs.edg.io/guides/security/matched_on_variables" target="_blank">Matched On variable</a> whose value will be redacted.
   replacement_name:
     type: string
     description: The new name for the variable identified by the `match_on` property.

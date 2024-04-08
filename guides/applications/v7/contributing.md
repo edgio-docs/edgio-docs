@@ -21,25 +21,25 @@ Run our documentation site on your local machine through the following steps:
     yarn install
     ```
 
-3.  Start the Next.js dev server locally:
+3.  Start the Edgio dev server locally:
 
     ```bash
-    yarn dev
+    edgio dev
     ```
 
 Once you have performed the above steps, you will be able to view a local instance of the documentation site in your browser at http://127.0.0.1:3000.
 
 ## Architecture {/* architecture */}
 
-{{ PRODUCT_NAME }} documentation is a Next.js application running on {{ PRODUCT_NAME }}. Each article is a Markdown file located in the [guides folder](https://github.com/{{ DOCS_REPO }}/tree/main/src/pages/guides).
+{{ PRODUCT_NAME }} documentation is a Next.js application running on {{ PRODUCT_NAME }}. Each article is a Markdown file located in the [guides folder](https://github.com/{{ DOCS_REPO }}/tree/main/guides). Guides are organized by product and version (if applicable).
 
 ## How to Contribute {/* how-to-contribute */}
 
 You may contribute to our documentation by either:
 
-- Modifying an existing article. You should edit the Markdown file in the `src/guides` directory.
+- Modifying an existing article. You should edit the Markdown file in the `./guides` directory.
 
-- Creating an article to explain a new concept. You should create a Markdown file in the `src/guides` directory.
+- Creating an article to explain a new concept. You should create a Markdown file in the `./guides` directory.
 
 We recommend the following process for submitting a change:
 
@@ -305,57 +305,37 @@ Renders:
   />
 </ButtonLinksGroup>
 
-## Versioning {/*versioning*/}
+## Templates {/* templates */}
 
-All documentation guides are based on the content files within `src/applications/`. All paths under this directory, with the exception of `src/applications/v*/`, are assumed to represent the most current {{ PRODUCT }} version.
+Templates are shared content that can be reused across multiple guides. They are located in the `src/templates` directory. You can include a template in a guide by using the mustache syntax `{{ template_name }}`, where `template_name` is the name of the template file without the `.md` extension.
 
-Assume the current version of {{ PRODUCT }} is `v6`, the guide `src/applications/nextjs.md`
-
-If you need to create a new version of a guide, you can create a new directory under `src/applications/` with the version number as the directory name. For example, if you wanted to create a version of the `src/applications/getting_started.md` guide, you would create a new directory `src/applications/v6/getting_started.md` and copy the `nextjs.md` file into that directory. The new version of the guide would be available at `/applications/v6/getting_started`.
-
-This approach allows us to maintain multiple versions of a guide that may differ significantly from a previous version, while still maintaining a single source of truth for the most current version of the guide.
-
-If a guide has minor changes between versions, you can conditionally render content based on the current version of the documentation being browsed. For example, if you wanted to render a different message for the `v6` version of the guide, you could use the `<Condition version="..." />` component:
-
-```md filename="src/applications/contributing.md"
----
-title: Contributing
----
-
-<Condition version="5">
-  This will only show for requests to `/applications/v5/contributing`.
-</Condition>
-
-<Condition version="6">
-  This will only show for requests to `/applications/v6/contributing` or `/applications/contributing`.
-</Condition>
-
-<Condition version=">=5">
-  This will only show for requests to:
-    - `/applications/contributing` (current v6 version)
-    - `/applications/v5/contributing`
-    - `/applications/v6/contributing`
-</Condition>
+```md filename="src/templates/sample_template.md"
+Content in this template can be shared across multiple guides.
 ```
 
-Try it out:
+```md filename="guides/applications/v7/sample_guide.md"
+This guide includes a shared template.
 
-<a href="/applications/contributing">/applications/contributing</a> |<a href="/applications/v5/contributing">
-  /applications/v5/contributing
-</a> |<a href="/applications/v6/contributing">/applications/v6/contributing</a>
+{{ sample_template }}
 
-<Condition version="5">
-  This will only show for requests to `/applications/v5/contributing`.
+```
+
+## Versioning {/*versioning*/}
+
+_This section is only applicable to the {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} documentation._
+
+All {{ PRODUCT_APPLICATIONS }} guides are based on the content files within `./guides/applications` directory. Guides are organized by version. For example, the `getting_started.md` guide for the `v7` version of the {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} documentation would be located at `./guides/applications/v7/getting_started.md`.
+
+If a guide has minor changes between versions, you can conditionally render content based on the current version of the documentation being browsed. For example, if you wanted to render a different message for the `v6` version of the guide, you could use the `<Condition version="..." />` component. This is most common used with shared templates (`src/templates`).
+
+```md filename="src/templates/sample_template.md"
+Content in this template will be shared across multiple versions of the documentation.
+
+<Condition version="7">
+  Content in this block will only be shown for the v7 version of the guide.
 </Condition>
 
-<Condition version="6">
-  This will only show for requests to `/applications/v6/contributing` or
-  `/applications/contributing`.
+<Condition version="<=6">
+  Content in this block will be shown for the v6 and earlier versions of the guide.
 </Condition>
-
-<Condition version=">=5">
-  This will only show for requests to: <br />
-  - `/applications/contributing` (current v6 version) <br />
-  - `/applications/v5/contributing` <br />
-  - `/applications/v6/contributing` <br />
-</Condition>
+```

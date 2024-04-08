@@ -17,11 +17,11 @@ This guide shows you how to deploy a [Next.js](https://nextjs.org/) application 
 
 ## Next.js Commerce {/* nextjs-commerce */}
 
-For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to our [Next.js Commerce Guide](/guides/sites_frameworks/getting_started/next_commerce).
+For details on using the Next.js Commerce template with {{ PRODUCT }}, refer to our [Next.js Commerce Guide](/applications/sites_frameworks/getting_started/next_commerce).
 
 ## Connector {/* connector */}
 
-{{ PRODUCT }} provides a connector for this framework. [Learn more.](/guides/sites_frameworks/connectors)
+{{ PRODUCT }} provides a connector for this framework. [Learn more.](/applications/sites_frameworks/connectors)
 
 <ButtonLink
   variant="stroke"
@@ -126,7 +126,7 @@ The `withServiceWorker` plugin builds a service worker from `sw/service-worker.j
 
 ## {{ PRODUCT_NAME }} Devtools {/* devtools */}
 
-By default, [Devtools](/guides/performance/observability/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, add the `disableEdgioDevTools` flag:
+By default, [Devtools](/applications/performance/observability/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, add the `disableEdgioDevTools` flag:
 
 ```js filename='next.config.js' highlight="10"
 const { with{{ PRODUCT }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
@@ -137,7 +137,7 @@ module.exports = with{{ PRODUCT }}(
     // the logs in the {{ PORTAL }}.
     {{ FULL_CLI_NAME }}SourceMaps: true,
     // Don't include {{ PRODUCT_NAME }} Devtools in production
-    // More on {{ PRODUCT_NAME }} Devtools at {{ DOCS_URL }}/guides/performance/observability/devtools
+    // More on {{ PRODUCT_NAME }} Devtools at {{ DOCS_URL }}/applications/performance/observability/devtools
     disableEdgioDevTools: true,
   })
 )
@@ -159,7 +159,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-See [Deployments](/guides/basics/deployments) for more information.
+See [Deployments](/applications/basics/deployments) for more information.
 
 ## Prefetching {/* prefetching */}
 
@@ -401,7 +401,7 @@ module.exports = with{{ PRODUCT }}(
 )
 ```
 
-Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/guides/basics/edgio_config#includefiles) where the locale files are stored. Example using the default of `/public`:
+Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/applications/basics/edgio_config#includefiles) where the locale files are stored. Example using the default of `/public`:
 
 ```js filename='{{ CONFIG_FILE }}' ins="3-5"
 module.exports = {
@@ -458,7 +458,7 @@ When using Next.js middleware it should be noted that the middleware functions a
 
 <Callout type="info">
 
-Next.js Runtime Configuration requires {{ PRODUCT }} 6.0.5+. See <a href="/guides/develop/cli#upgrade-project-to-latest-version">Upgrading</a>.
+Next.js Runtime Configuration requires {{ PRODUCT }} 6.0.5+. See <a href="/applications/develop/cli#upgrade-project-to-latest-version">Upgrading</a>.
 
 </Callout>
 

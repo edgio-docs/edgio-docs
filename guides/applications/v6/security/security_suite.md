@@ -36,7 +36,7 @@ The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be
 
 </Callout>
 
-[{{ PRODUCT }} Managed Rule Group Descriptions](/guides/security/managed_rule_groups)
+[{{ PRODUCT }} Managed Rule Group Descriptions](/applications/security/managed_rule_groups)
 
 ---
 
@@ -44,7 +44,7 @@ The WAF includes Managed Rule Groups, managed by {{ PRODUCT_NAME }}, that can be
 
 The Admin protection rule group contains rules that allow you to block external access to exposed administrative pages. This might be useful if you run third-party software or want to reduce the risk of a malicious actor gaining administrative access to your application.
 
-[Admin Page Protection Rule Description](/guides/security/managed_rule_groups#admin-page-protection-rule)
+[Admin Page Protection Rule Description](/applications/security/managed_rule_groups#admin-page-protection-rule)
 
 ---
 
@@ -59,7 +59,7 @@ The Bad Input rule group contains rules to block request patterns that are known
 
 </Callout>
 
-[Bad Input Rule Descriptions](/guides/security/managed_rule_groups#bad-input-rules)
+[Bad Input Rule Descriptions](/applications/security/managed_rule_groups#bad-input-rules)
 
 ---
 
@@ -67,7 +67,7 @@ The Bad Input rule group contains rules to block request patterns that are known
 
 The PHP application rule group contains rules that block request patterns associated with the exploitation of vulnerabilities specific to the use of the PHP programming language. This includes the injection of unsafe PHP functions into requests.
 
-[PHP Application Rule Descriptions](/guides/security/managed_rule_groups#php-application-rules)
+[PHP Application Rule Descriptions](/applications/security/managed_rule_groups#php-application-rules)
 
 ---
 
@@ -75,7 +75,7 @@ The PHP application rule group contains rules that block request patterns associ
 
 The SQL database rule group contains rules to block request patterns associated with exploitation of SQL databases, like SQL injection attacks. This can help prevent remote injection of unauthorized queries. Evaluate this rule group for use if your application interfaces with an SQL database.
 
-[SQL Database Rule Descriptions](/guides/security/managed_rule_groups#sql-database-rules)
+[SQL Database Rule Descriptions](/applications/security/managed_rule_groups#sql-database-rules)
 
 ---
 
@@ -150,7 +150,7 @@ The Bot Control product applies labels to a set of verifiable bots that are comm
 
 You can monitor the impact of your bots by flagging each bot type of request gaining insights into SEO bots, scraping bots, advertising bots, malicious user agent bots, and several other categories of bots.
 
-[Bot Control Rule Descriptions](/guides/security/managed_rule_groups#bot-control-rules)
+[Bot Control Rule Descriptions](/applications/security/managed_rule_groups#bot-control-rules)
 
 ### Detect Bots with EdgeJS {/*detect-bots-with-edgejs*/}
 
@@ -186,7 +186,7 @@ The following table list the user agents that {{ PRODUCT_NAME }} examines and de
 | xing-contenttabreceiver | Xing social network crawler bot that indexes content for the Xing social network.                                                                                                                                                               |
 | yahoo                   | Another Yahoo Search robot for crawling and indexing web page information.                                                                                                                                                                      |
 
-If the set of bots detected by {{ PRODUCT_NAME }} is not sufficient for your needs, you can easily add your own bot detection through [EdgeJS](/guides/performance/cdn_as_code) and its [`match`](/docs/api/core/classes/_router_router_.router.html#match) and [`setRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader) APIs:
+If the set of bots detected by {{ PRODUCT_NAME }} is not sufficient for your needs, you can easily add your own bot detection through [EdgeJS](/applications/performance/cdn_as_code) and its [`match`](/docs/api/core/classes/_router_router_.router.html#match) and [`setRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader) APIs:
 
 ```js
 router.match(
@@ -251,14 +251,14 @@ Here is a sample log file highlighting the WAF data ("waf":"botLib,flagged","waf
 
 ## Access Control by IP Address {/*access-control-by-ip-address*/}
 
-Restrict access to your website on a per environment basis through an IP address access control list. This type of access control list determines the set of traffic that will either be automatically allowed or blocked based off the client's IPv4 address. 
+Restrict access to your website on a per environment basis through an IP address access control list. This type of access control list determines the set of traffic that will either be automatically allowed or blocked based off the client's IPv4 address.
 
 **Key information:**
 
 -   This type of access control list only controls access to your site within the current environment. You must define rules for each environment that you would like to secure by IP address.
 -   Add a rule for each desired IP address or IP block. Specify each desired IP address using standard IPv4 and CIDR notation.
 -   Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., 11.22.33.0/22).
--   Adding a rule to the **Allowed IPs** section means that traffic from that IP address or IP block will always be allowed. 
+-   Adding a rule to the **Allowed IPs** section means that traffic from that IP address or IP block will always be allowed.
 
     <Callout type="tip">
 
@@ -266,7 +266,7 @@ Restrict access to your website on a per environment basis through an IP address
 
     </Callout>
 
--   Adding a rule to the **Blocked IPs** means that traffic from that IP address or IP block will always be blocked. 
+-   Adding a rule to the **Blocked IPs** means that traffic from that IP address or IP block will always be blocked.
 
 **To manage an IP address access control list**
 
@@ -275,12 +275,12 @@ Restrict access to your website on a per environment basis through an IP address
 3.  From within the **Configuration** tab, find the **Access Control List** section and then click **Edit ACL**.
 4.  Perform one or more of the following actions:
 
-    -   **Add Allowed IP(s):** 
-        1.  From the **Allowed IPs** section, click **Add rule**. 
+    -   **Add Allowed IP(s):**
+        1.  From the **Allowed IPs** section, click **Add rule**.
         2.  In the **IP/CIDR** option, type the IPv4 address or IP block that will be allowed access within this environment.
         3.  Optional. In the **Description** option, provide a reason for why this IPv4 address or IP block should always be allowed access.
     -   **Add Blocked IP(s):**
-        1.  From the **Blocked IPs** section, click **Add rule**. 
+        1.  From the **Blocked IPs** section, click **Add rule**.
         2.  In the **IP/CIDR** option, type the IPv4 address or IP block that will be always be blocked within this environment.
         3.  Optional. In the **Description** option, provide a reason for why this IPv4 address or IP block should always be blocked.
     -   **Delete Rule:** Click <Image inline src="/images/icons/delete.png" alt="Delete icon" /> next to the rule that should be deleted.
@@ -289,7 +289,7 @@ Restrict access to your website on a per environment basis through an IP address
 
 ## Geoblocking {/*geoblocking*/}
 
-Restrict access to your website on a per environment basis through a country access control list. This type of access control list restricts traffic to the set of allowed countries. 
+Restrict access to your website on a per environment basis through a country access control list. This type of access control list restricts traffic to the set of allowed countries.
 
 <Callout type="info">
 
@@ -379,7 +379,7 @@ If you want the route to match both `http` and `https` protocols you can match o
 
 Additionally:
 
-- A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](/guides/performance/request#general-headers) request header or the [`request.secure`](/docs/api/core/interfaces/_router_request_.request.html#secure) property.
+- A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](/applications/performance/request#general-headers) request header or the [`request.secure`](/docs/api/core/interfaces/_router_request_.request.html#secure) property.
 - During local development all requests will appear secure by default. To test your router for `http` protocol matching you must either set the `local_{{ COOKIE_PREFIX }}_emulate_http_protocol` cookie to `true` (if using a browser) or send an `{{ HEADER_PREFIX }}-protocol` request header set to `http`.
 
 ### HTTP/1/2 Version {/*http12-version*/}
@@ -402,7 +402,7 @@ As of {{ PRODUCT_NAME }} CLI version 2.19.0, when you deploy to an environment u
 
 > The impact of a maliciously constructed response can be magnified if it is cached either by a web cache used by multiple users or even the browser cache of a single user. If a response is cached in a shared web cache, such as those commonly found in proxy servers, then all users of that cache will continue to receive the malicious content until the cache entry is purged.
 
-To guard against this attack you must ensure that all the request parameters that influence the rendering of the content are part of your [custom cache key](/guides/performance/caching#customizing-the-cache-key). {{ PRODUCT_NAME }} will [automatically include](/guides/performance/caching#cache-key) the `host` header and URL. Including other request headers and cookies are your responsibility.
+To guard against this attack you must ensure that all the request parameters that influence the rendering of the content are part of your [custom cache key](/applications/performance/caching#customizing-the-cache-key). {{ PRODUCT_NAME }} will [automatically include](/applications/performance/caching#cache-key) the `host` header and URL. Including other request headers and cookies are your responsibility.
 
 For example, if you are rendering content based on a custom language cookie, then you must include it in your custom cache key:
 

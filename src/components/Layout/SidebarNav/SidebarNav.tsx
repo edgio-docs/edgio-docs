@@ -194,7 +194,7 @@ const StyledSideNav = styled.div`
       height: calc(100% - 10px);
       top: 5px;
       width: 1px;
-      background-color: var(--hr-primary);
+      background-color: var(--sidebar-line);
       left: 8px;
     }
 
@@ -277,7 +277,7 @@ const StyledSideNav = styled.div`
   .sidenav-menu__container:empty {
     height: 1px;
     width: calc(100% - 32px);
-    background: var(--hr-primary);
+    background: var(--sidebar-line);
     transform: translateX(16px);
     opacity: 0.6;
     padding: 0;

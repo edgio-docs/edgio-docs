@@ -81,7 +81,7 @@ export default new Router().use(astroRoutes);
 
 ### Specify appPath inside {{ CONFIG_FILE }} {/* specify-apppath-inside */}
 
-After you've setup [@astrojs/node with Astro](https://docs.astro.build/en/applications/integrations-guide/node/), specify server file path in {{ CONFIG_FILE }} as below:
+After you've setup [@astrojs/node with Astro](https://docs.astro.build/en/guides/integrations-guide/node/), specify server file path in {{ CONFIG_FILE }} as below:
 
 ```js filename="{{ CONFIG_FILE }}" ins="1,4-6"
 import {join} from 'path';

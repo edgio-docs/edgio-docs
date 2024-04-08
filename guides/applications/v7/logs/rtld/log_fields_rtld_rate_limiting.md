@@ -41,7 +41,7 @@ Log data is reported as a JSON document. Log format determines whether log data 
 
 Top-level name/value pairs are described below.
   
--   **account_number (*String*):** Customer AN. Identifies an environment by its system-defined ID. 
+-   **account_number (*String*):** Customer AN. Identifies an environment by its legacy system-defined ID. 
 -   **agent_id (*String*):** Agent ID. Indicates the unique ID that identifies the Real-Time Log Delivery software agent that generated the log data.
 -   **datestamp (*String*):** Date Stamp. Indicates the date on which the log data was generated.
 

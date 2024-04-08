@@ -6,7 +6,7 @@ RTLD may automatically deliver compressed log data to an Azure Blob Storage cont
 
 **Key information:**
 
--   The set of available log fields varies by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager)
+-   The set of available log fields varies by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager) | [RTLD Cloud Functions](/guides/logs/rtld/log_fields_rtld_cloud_functions)
 -   RTLD applies gzip compression to log data. Azure Blob Storage stores compressed log data as an object with a `gz` file extension.
     
     [Learn more.](/guides/logs/rtld/log_file_naming_convention)

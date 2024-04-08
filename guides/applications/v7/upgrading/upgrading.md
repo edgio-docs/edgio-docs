@@ -860,10 +860,11 @@ Review your code to see whether it generates duplicate query string parameters. 
 
 ### Log Data {/*log-data*/}
 
-{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 introduces [Real-Time Log Delivery (RTLD)](/guides/logs/rtld). RTLD allows you to define the set of data that will be logged and where log data will be sent (e.g., your web server, AWS S3, or Azure Block Blob). It consists of various modules that allow you to deliver log data for CDN, WAF, Rate Limiting, and Bot Manager. RTLD CDN is the module that replaces access logs (version 6). Access logs are mapped to RTLD CDN log fields below. 
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 introduces [Real-Time Log Delivery (RTLD)](/guides/logs/rtld). RTLD allows you to define the set of data that will be logged and where log data will be sent (e.g., your web server, AWS S3, or Azure Block Blob). It consists of various modules that allow you to deliver log data for CDN, WAF, Rate Limiting, Bot Manager, and Cloud Functions. 
 
 **Key information:**
-
+-   RTLD CDN is the module that replaces access logs (version 6). Access logs are mapped to RTLD CDN log fields below.
+-   RTLD Cloud Functions logs requests processed by Cloud Functions. This includes {{ PRODUCT }} {{ PRODUCT_PLATFORM }} requests. Use this module to deliver Server Logs, including Deep Request Inspection, to the desired destination.
 -   RTLD CDN allows you to [log request headers, response headers, and cookies.](/guides/logs/rtld/custom_log_fields) This makes it very flexible with regards to the set of data that can be logged. 
 -   A blank **RTLD CDN (Version 7)** cell indicates that, by default, the corresponding access log cannot be mapped to a RTLD CDN log field, a request header, a response header, or a cookie. However, you may still be able to log that data by setting a response header within your code and then logging that response header.
 

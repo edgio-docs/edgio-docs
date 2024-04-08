@@ -127,11 +127,11 @@ The `with{{ PRODUCT_LEGACY }}` plugin optimizes the Next.js build for running on
 
 ### withServiceWorker {/*withserviceworker*/}
 
-The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT }}'s [prefetching](/guides/next#section_prefetching) functionality.
+The `withServiceWorker` plugin builds a service worker from `sw/service-worker.js` that prefetches and caches all static JS assets and enables {{ PRODUCT }}'s [prefetching](/applications/next#section_prefetching) functionality.
 
 ## {{ PRODUCT_NAME }} Devtools {/*edgio-devtools*/}
 
-By default, [Devtools](/guides/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, add the `disableLayer0DevTools` flag:
+By default, [Devtools](/applications/devtools) are enabled on production builds of Next.js with {{ PRODUCT }}. To disable devtools in production, add the `disableLayer0DevTools` flag:
 
 ```js
 const { with{{ PRODUCT_LEGACY }}, withServiceWorker } = require('{{ PACKAGE_NAME }}/next/config')
@@ -142,7 +142,7 @@ module.exports = with{{ PRODUCT_LEGACY }}(
     // the logs in the {{ PRODUCT_NAME }} developer console.
     {{ FULL_CLI_NAME }}SourceMaps: true,
     // Don't include {{ PRODUCT_NAME }} Devtools in production
-    // More on {{ PRODUCT_NAME }} Devtools at https://docs.layer0.co/guides/devtools
+    // More on {{ PRODUCT_NAME }} Devtools at https://docs.layer0.co/applications/devtools
     disableLayer0DevTools: true,
   })
 )
@@ -257,7 +257,7 @@ import { nextRoutes } from '{{ PACKAGE_NAME }}/next';
 
 export default new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: https://docs.layer0.co/applications/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .get('/service-worker.js', ({cache, serveStatic}) => {
     cache({
@@ -317,7 +317,7 @@ imagine you have `/pages/p/[productId].js`. Here's how you can SSR responses as 
 ```js
 new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: https://docs.layer0.co/applications/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   // Products - SSR
   .get('/p/:productId', ({cache}) => {
@@ -409,7 +409,7 @@ module.exports = with{{ PRODUCT_LEGACY }}(
 )
 ```
 
-Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/guides/layer0_config#section_includefiles) where the locale files are stored. Example using the default of `/public`:
+Finally, you will need to update your `{{ CONFIG_FILE }}` to [includeFiles](/applications/layer0_config#section_includefiles) where the locale files are stored. Example using the default of `/public`:
 
 ```js
 module.exports = {

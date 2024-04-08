@@ -11,7 +11,7 @@ Because every Nx project can be different, there are a couple ways to implement 
 1. Implement the connector at the root level of the Nx repo and specify in the connector which projects to configure.
 2. Implement within the specific project folder inside your Nx repo. Specify commands at the root level Nx repo for interacting.
 
-To learn more about what goes into making a connector, view this [connector guide](/guides/connectors).
+To learn more about what goes into making a connector, view this [connector guide](/applications/connectors).
 
 ## Example App {/*example-app*/}
 
@@ -20,7 +20,7 @@ Here we use [Next.js](https://nextjs.org/) for the example Nx project.
 <ExampleButtons
   title="Nx"
   siteUrl="https://layer0-docs-layer0-nx-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-nx-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-nx-example"
   deployFromRepo />
 
 {{ PREREQ.md }}
@@ -85,7 +85,7 @@ import { nextRoutes } from '@{{ PRODUCT_NAME_LOWER }}/next';
 
 export default new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: https://docs.layer0.co/applications/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .match('/service-worker.js', ({ serviceWorker }) => {
     return serviceWorker('.next/static/service-worker.js');

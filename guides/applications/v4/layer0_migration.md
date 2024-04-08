@@ -6,7 +6,7 @@ This guide describes what you need to know when migrating from {{ PRODUCT }} ver
 
 ## Node Version {/*node-version*/}
 
-With {{ PRODUCT }} v4, your app will run in Node v16 when deployed to the {{ PRODUCT_NAME }} cloud. 
+With {{ PRODUCT }} v4, your app will run in Node v16 when deployed to the {{ PRODUCT_NAME }} cloud.
 
 {{ node_16_eol_callout.md }}
 
@@ -55,7 +55,7 @@ app.layer0.co
 
 ### Access Logs {/*access-logs*/}
 
-The `xdn` field in the access logs has been renamed to `layer0`: https://docs.layer0.co/guides/logs#section_access_logs
+The `xdn` field in the access logs has been renamed to `layer0`: https://docs.layer0.co/applications/logs#section_access_logs
 
 ### Response Headers {/*response-headers*/}
 

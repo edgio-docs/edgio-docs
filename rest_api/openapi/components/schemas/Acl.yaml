@@ -14,7 +14,7 @@ properties:
     type: string
     description: |
 
-      Your organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab). 
+      Your organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).
 
       From the Edgio Console, select your organization from the top menu and then click **Settings**. It is listed under **Organization ID**.
 
@@ -25,7 +25,7 @@ properties:
     type: string
     description: The Edgio Console user that last modified this access rule. This field does not reflect updates performed through the REST API.
   country:
-    description: Contains access controls for countries. Each country is identified by its <a href="https://docs.edg.io/guides/reference/country_codes" target="_blank">country code</a>.
+    description: Contains access controls for countries. Each country is identified by its <a href="https://docs.edg.io/applications/reference/country_codes" target="_blank">country code</a>.
     allOf:
       - $ref: ./AclStrings.yaml
   sd_iso:

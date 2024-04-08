@@ -5,9 +5,9 @@ post:
   summary: Add API Schema
   description: |
 
-    Creates an API schema. An API schema contains a JSON schema (draft 4) that may be used to screen API requests. 
+    Creates an API schema. An API schema contains a JSON schema (draft 4) that may be used to screen API requests.
 
-    [View key configuration information.](https://docs.edg.io/guides/security/api_security#api-schema)
+    [View key configuration information.](https://docs.edg.io/applications/security/api_security#api-schema)
 
   security:
     - api_securityScope: [app.api_security]

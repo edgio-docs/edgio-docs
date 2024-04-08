@@ -5,25 +5,25 @@ Our REST-compliant web services facilitate the integration of our services into 
 Key information about our REST API services:
 
 -   **Protocol:** HTTPS
-    
+
     Communication (i.e., request-response) with our web services is only permitted through HTTPS. This ensures the privacy and integrity of your data.
 
 -   **Authentication/Authorization:** `Authorization` Header
-    
+
     Authenticate and authorize your requests by generating a token and then passing it through the `Authorization` header:
-       
+
     ```
     Authorization: Bearer <OAUTH 2.0 TOKEN>
     ```
-    
+
     [Get started.](#section/Quick-Start)
 
 -   **Request-Response (Accept and Content-Type):** JSON
-    
+
     We expect the request body to use JavaScript Object Notation (JSON) format. Inform our web servers that the expected format for the request-response will be JSON through the `Accept` and `Content-Type` request headers.
-    
+
 -   **Programming Language:** Agnostic
-    
+
     Our REST API services are designed to be programming language-agnostic. Feel free to use your preferred programming language (e.g., JavaScript, Python, C#, etc.).
 
 -   **Services:** Our REST API consists of the following services:
@@ -43,7 +43,7 @@ Key information about our REST API services:
 
 Get started with our latest APIs by performing the following steps:
 
-1. <a href="https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients" target="_blank">Create an API client</a> for either your private space or the desired organization. Grant the set of scope(s) required by the endpoint(s) with which it will interact. Administer API clients from the <a href="https://edgio.app" target="_blank">Edgio Console's</a> **API Clients** page. 
+1. <a href="https://docs.edg.io/applications/develop/rest_api/authentication#administering-api-clients" target="_blank">Create an API client</a> for either your private space or the desired organization. Grant the set of scope(s) required by the endpoint(s) with which it will interact. Administer API clients from the <a href="https://edgio.app" target="_blank">Edgio Console's</a> **API Clients** page.
 2. Use this client's ID, secret key, and scopes to [generate a temporary access token](#section/Access-Tokens).
 3. Authorize your API requests by passing the temporary access token generated in the previous step through the `Authorization` request header.
 
@@ -66,7 +66,7 @@ A scope authorizes an API client to perform specific actions (e.g., create and r
 | app.bot_security | Authorizes full access to Bot Manager.                                                                                                       |
 | app.api_security | Authorizes full access to API Security.                                                                                                      |
 
-## Access Tokens 
+## Access Tokens
 
 Each request to a REST API service must be authorized by passing an access token to the `Authorization` request header. Access tokens provide temporary authorization (e.g., 1 minute) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
 
@@ -83,9 +83,9 @@ Requesting an access token requires:
     client_id=<CLIENT ID>&client_secret=<SECRET>&grant_type=client_credentials&scope=<SCOPES>
     ```
 
-    -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your <a href="https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients" target="_blank">REST API client</a>.
+    -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your <a href="https://docs.edg.io/applications/develop/rest_api/authentication#administering-api-clients" target="_blank">REST API client</a>.
     -   `<SECRET>`**:** Represents the secret assigned to your REST API client.
-    -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. 
+    -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope.
 
 **Sample access token request:**
 
@@ -130,7 +130,7 @@ HTTP method is a critical component of a request to our REST API service as it d
 -   **PUT:** Updates a resource (e.g., custom rule or managed rule configuration).
 
 Our REST API service may return a `405 Method Not Allowed` response for requests submitted with an unsupported HTTP method.
-  
+
 ## Request URL
 
 The base URL for our REST API follows this basic pattern:
@@ -140,7 +140,7 @@ The base URL for our REST API follows this basic pattern:
 -   `<SERVICE>`**:** Identifies the REST API web service (e.g., cache, waf, and bot-security) designed to manage requests for a specific set of resources.
 -   `<VERSION>`**:** Identifies the version of the REST API service that will be called.
 
-**Sample Request URL:** 
+**Sample Request URL:**
 
 ```
 https://edgioapis.com/cache/v0.1/purge-requests
@@ -156,7 +156,7 @@ Request headers provide information about your request to a REST API service. Th
 
 | Request Header | Description                                                                                                                                                                                                         |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Authorization  | Authorize requests through the `Authorization` request header. <a href="https://docs.edg.io/guides/develop/rest_api/authentication#authorizing-requests" target="_blank">Learn more about authorization.</a>                                                       |
+| Authorization  | Authorize requests through the `Authorization` request header. <a href="https://docs.edg.io/applications/develop/rest_api/authentication#authorizing-requests" target="_blank">Learn more about authorization.</a>                                                       |
 | Accept         | This header should indicate the format in which the response will be returned. If you pass this header, set it to: `application/json`.                                                                |
 | Content-Type   | This header should indicate the format of the request body. If you pass this header, set it to: `application/json`. <br />You may omit this header when an endpoint does not have request properties. |
 | Host           | This header, which is set by the user agent, indicates the host name corresponding to the requested endpoint (i.e., edgioapis.com or id.edgio.app).                                                                               |
@@ -180,7 +180,7 @@ Response headers provide information about the response to your request to the R
 
 ## Rate Limit
 
-The rate limit for our APIs varies by service and HTTP method. 
+The rate limit for our APIs varies by service and HTTP method.
 
 | Service      | HTTP Method                  | Rate Limit                                                |
 | ------------ | ---------------------------- | --------------------------------------------------------- |

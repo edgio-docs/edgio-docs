@@ -6,18 +6,18 @@ properties:
   bots_prod_id:
     type: string
     description: |
-    
-      The system-defined ID for the bot ruleset that will be applied to production traffic when this bot manager configuration is applied to a Security App. 
-      
+
+      The system-defined ID for the bot ruleset that will be applied to production traffic when this bot manager configuration is applied to a Security App.
+
       Use the [Get All Bot Rulesets operation](#tag/Bot-Rules/operation/get-bot-rules) to retrieve a list of bot rulesets and their system-defined IDs.
 
   exception_cookie:
     type: array
     description: |
 
-      Identifies traffic that will be exempt from bot detection by cookie. 
+      Identifies traffic that will be exempt from bot detection by cookie.
 
-      **Cookie syntax:** `<COOKIE NAME>:<COOKIE VALUE>`. 
+      **Cookie syntax:** `<COOKIE NAME>:<COOKIE VALUE>`.
 
       Edgio treats the cookie’s value as a regular expression.
 
@@ -30,12 +30,12 @@ properties:
       type: string
   exception_url:
     type: array
-    description: A regular expression that identifies traffic that will be exempt from bot detection by URL. 
+    description: A regular expression that identifies traffic that will be exempt from bot detection by URL.
     items:
       type: string
   exception_user_agent:
     type: array
-    description: A regular expression that identifies traffic that will be exempt from bot detection by user agent. 
+    description: A regular expression that identifies traffic that will be exempt from bot detection by user agent.
     items:
       type: string
   inspect_known_bots:
@@ -50,8 +50,8 @@ properties:
     type: string
     description: |
 
-      Your organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab). 
-  
+      Your organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).
+
       From the Edgio Console, select your organization from the top menu and then click **Settings**. It is listed under **Organization ID**.
 
   last_modified_date:
@@ -69,7 +69,7 @@ properties:
 
       The default enforcement action that will be applied to traffic spoofing a known bot defined within the `known_bots` array. This enforcement action is only applied when an explicit enforcement action has not been applied to a known bot through the `known_bots.spoof_action_type` property.
 
-      <a href="https://docs.edg.io/guides/security/bot_rules#actions" target="_blank">Learn more about enforcement actions.</a>
+      <a href="https://docs.edg.io/applications/security/bot_rules#actions" target="_blank">Learn more about enforcement actions.</a>
 
     enum:
       - ALERT
@@ -79,7 +79,7 @@ properties:
       - REDIRECT_302
       - RECAPTCHA
       - SILENT_CLOSE
-      
+
   team_config:
     type: boolean
     description: This property must always be `true`. If passed in the request, set it to `true`.

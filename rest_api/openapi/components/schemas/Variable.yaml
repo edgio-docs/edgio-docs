@@ -17,23 +17,23 @@ properties:
       - REMOTE_ASN
       - REQUEST_FILENAME
     description: |
-    
-      A variable that determines the type of request element that will be assessed. 
 
-      -   If a request element consists of one or more key-value pairs, then you may identify a key through a `match` object. 
+      A variable that determines the type of request element that will be assessed.
 
-      -   If `is_count` has been disabled, then you may identify a specific value through the `operator` object. 
+      -   If a request element consists of one or more key-value pairs, then you may identify a key through a `match` object.
 
-      <a href="https://docs.edg.io/guides/v7/security/matched_on_variables" target="_blank">Learn more about matched on variables.</a>
+      -   If `is_count` has been disabled, then you may identify a specific value through the `operator` object.
+
+      <a href="https://docs.edg.io/applications/v7/security/matched_on_variables" target="_blank">Learn more about matched on variables.</a>
 
   match:
-    description: Contains comparison conditions for the request element identified by the `type` property. You may define up to 20 conditions. 
+    description: Contains comparison conditions for the request element identified by the `type` property. You may define up to 20 conditions.
     type: array
     items:
       allOf:
         - $ref: ./Match.yaml
   is_count:
-    description: | 
+    description: |
 
       Determines whether a comparison will be performed between the `operator` object and either a string value or the number of matches found. Valid values are:
 

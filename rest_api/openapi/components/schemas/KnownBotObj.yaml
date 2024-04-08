@@ -6,9 +6,9 @@ properties:
     type: string
     description: |
 
-      The type of enforcement action that will be applied to a known bot. 
+      The type of enforcement action that will be applied to a known bot.
 
-      <a href="https://docs.edg.io/guides/security/bot_rules#actions" target="_blank">Learn more about enforcement actions.</a>
+      <a href="https://docs.edg.io/applications/security/bot_rules#actions" target="_blank">Learn more about enforcement actions.</a>
 
     enum:
       - ALERT
@@ -25,7 +25,7 @@ properties:
 
       The type of enforcement action that will be applied when a attempt to spoof this bot type is found.
 
-      <a href="https://docs.edg.io/guides/security/bot_rules#actions" target="_blank">Learn more about enforcement actions.</a>
+      <a href="https://docs.edg.io/applications/security/bot_rules#actions" target="_blank">Learn more about enforcement actions.</a>
 
     enum:
       - ALERT

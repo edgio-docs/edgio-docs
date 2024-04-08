@@ -18,9 +18,13 @@ The JSON document contained within an object follows this naming convention:
 
 **Sample file name (RTLD CDN - JSON log format):** `wpc_0001_123_20220111_50550000F98AB95B_1.json`
 
+**Sample file name (RTLD WAF - JSON log format):** `waf_0001_123_20220111_50550000F98AB95B_1.json`
+
 **Sample file name (RTLD Rate Limiting - JSON log format):** `rl_0001_123_20220111_50550000F98AB95B_1.json`
 
-**Sample file name (RTLD WAF - JSON log format):** `waf_0001_123_20220111_50550000F98AB95B_1.json`
+**Sample file name (RTLD Bot - JSON log format):** `bot_0001_123_20220111_50550000F98AB95B_1.json`
+
+**Sample file name (RTLD Cloud Functions - JSON log format):** `serverless_0001_123_20220111_50550000F98AB95B_1.json`
 
 Each of the above variables are described below.
 
@@ -41,8 +45,10 @@ Each of the above variables are described below.
 -   `<LOG TYPE>`**:** Represents the type of log data.
 
     -   **RTLD CDN:** This variable is always set to `wpc`.
-    -   **RTLD Rate Limiting:** This variable is always set to `rl`.
     -   **RTLD WAF:** This variable is always set to `waf`.
+    -   **RTLD Rate Limiting:** This variable is always set to `rl`.
+    -   **RTLD Bot:** This variable is always set to `bot`.
+    -   **RTLD Cloud Functions:** This variable is always set to `serverless`.
 
 -   `<AN>`**:** Represents your CDN account number (e.g., 0001).
 -   `<PROFILE ID>`**:** Represents the system-defined ID for your Real-Time Log Delivery configuration.

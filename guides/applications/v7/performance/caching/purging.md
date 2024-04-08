@@ -14,7 +14,7 @@ Purge by relative path, surrogate key, or all cached content using the:
 
 -   [{{ PORTAL }}](#console)
 -   [{{ PRODUCT }} CLI](#cli)
--   [{{ PRODUCT }} REST API (clear-cache)](#rest-api)
+-   [{{ PRODUCT }} REST API (Purge Cache)](#rest-api)
 
 <Callout type="info">
 
@@ -120,11 +120,11 @@ Run the following command to purge the `basketball` surrogate key from the `prod
 
 ## REST API {/*rest-api*/}
 
-Purge cached content through the {{ PRODUCT }} REST API through the [clear-cache endpoint](/guides/develop/rest_api/cache_purge#clear-cache). You may purge:
+Purge cached content through the {{ PRODUCT }} REST API through the [Purge Cache endpoint](https://docs.edg.io/rest_api/#tag/purge-requests/operation/postCacheV01PurgeRequests). You may purge:
 
--   **All content:** Exclude the `paths` and `surrogateKeys` properties.
--   **By relative path:** Pass the `paths` array of strings. You may use an `*` to represent zero or more characters.
--   **By surrogate key:** Pass the `surrogateKeys` array of strings. [Learn more about surrogate keys.](#surrogate-key)
+-   **All content:** Set the `purge_type` property to `all_entries`.
+-   **By relative path:**  Set the `purge_type` property to `path`. Pass the desired relative paths through the `values` array of strings. You may use an `*` to represent zero or more characters.
+-   **By surrogate key:**  Set the `purge_type` property to `surrogate_key`. Pass the desired surrogate keys through the `values` array of strings. [Learn more about surrogate keys.](#surrogate-key)
 
 ## Deployments {/*deployments*/}
 

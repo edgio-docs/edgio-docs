@@ -307,55 +307,55 @@ Renders:
 
 ## Versioning {/*versioning*/}
 
-All documentation guides are based on the content files within `src/guides/`. All paths under this directory, with the exception of `src/guides/v*/`, are assumed to represent the most current {{ PRODUCT }} version.
+All documentation guides are based on the content files within `src/applications/`. All paths under this directory, with the exception of `src/applications/v*/`, are assumed to represent the most current {{ PRODUCT }} version.
 
-Assume the current version of {{ PRODUCT }} is `v6`, the guide `src/guides/nextjs.md`
+Assume the current version of {{ PRODUCT }} is `v6`, the guide `src/applications/nextjs.md`
 
-If you need to create a new version of a guide, you can create a new directory under `src/guides/` with the version number as the directory name. For example, if you wanted to create a version of the `src/guides/getting_started.md` guide, you would create a new directory `src/guides/v6/getting_started.md` and copy the `nextjs.md` file into that directory. The new version of the guide would be available at `/guides/v6/getting_started`.
+If you need to create a new version of a guide, you can create a new directory under `src/applications/` with the version number as the directory name. For example, if you wanted to create a version of the `src/applications/getting_started.md` guide, you would create a new directory `src/applications/v6/getting_started.md` and copy the `nextjs.md` file into that directory. The new version of the guide would be available at `/applications/v6/getting_started`.
 
 This approach allows us to maintain multiple versions of a guide that may differ significantly from a previous version, while still maintaining a single source of truth for the most current version of the guide.
 
 If a guide has minor changes between versions, you can conditionally render content based on the current version of the documentation being browsed. For example, if you wanted to render a different message for the `v6` version of the guide, you could use the `<Condition version="..." />` component:
 
-```md filename="src/guides/contributing.md"
+```md filename="src/applications/contributing.md"
 ---
 title: Contributing
 ---
 
 <Condition version="5">
-  This will only show for requests to `/guides/v5/contributing`.
+  This will only show for requests to `/applications/v5/contributing`.
 </Condition>
 
 <Condition version="6">
-  This will only show for requests to `/guides/v6/contributing` or `/guides/contributing`.
+  This will only show for requests to `/applications/v6/contributing` or `/applications/contributing`.
 </Condition>
 
 <Condition version=">=5">
   This will only show for requests to:
-    - `/guides/contributing` (current v6 version)
-    - `/guides/v5/contributing`
-    - `/guides/v6/contributing`
+    - `/applications/contributing` (current v6 version)
+    - `/applications/v5/contributing`
+    - `/applications/v6/contributing`
 </Condition>
 ```
 
 Try it out:
 
-<a href="/guides/contributing">/guides/contributing</a> |<a href="/guides/v5/contributing">
-  /guides/v5/contributing
-</a> |<a href="/guides/v6/contributing">/guides/v6/contributing</a>
+<a href="/applications/contributing">/applications/contributing</a> |<a href="/applications/v5/contributing">
+  /applications/v5/contributing
+</a> |<a href="/applications/v6/contributing">/applications/v6/contributing</a>
 
 <Condition version="5">
-  This will only show for requests to `/guides/v5/contributing`.
+  This will only show for requests to `/applications/v5/contributing`.
 </Condition>
 
 <Condition version="6">
-  This will only show for requests to `/guides/v6/contributing` or
-  `/guides/contributing`.
+  This will only show for requests to `/applications/v6/contributing` or
+  `/applications/contributing`.
 </Condition>
 
 <Condition version=">=5">
   This will only show for requests to: <br />
-  - `/guides/contributing` (current v6 version) <br />
-  - `/guides/v5/contributing` <br />
-  - `/guides/v6/contributing` <br />
+  - `/applications/contributing` (current v6 version) <br />
+  - `/applications/v5/contributing` <br />
+  - `/applications/v6/contributing` <br />
 </Condition>

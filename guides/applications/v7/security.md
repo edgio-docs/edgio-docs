@@ -1,5 +1,5 @@
 ---
-title: Introduction to Security 
+title: Introduction to Security
 ---
 
 Many web sites, web applications, and web servers receive and process
@@ -22,9 +22,9 @@ Protect your external web infrastructure against these threats through the follo
     Monitor, detect, and prevent application layer attacks through our Web Application Firewall (WAF). Our WAF:
 
     -   Inspects inbound HTTP/HTTPS traffic against reactive and proactive security policies.
-    -   Identifies undesired traffic through HTTP request delivery profiles. 
+    -   Identifies undesired traffic through HTTP request delivery profiles.
     -   Identifies undesired traffic through custom critieria that matches your business needs.
-    -   Responds to malicious or suspicious activity in-band and on a real-time basis. 
+    -   Responds to malicious or suspicious activity in-band and on a real-time basis.
     -   Restricts the flow of site traffic (aka rate limiting) with the intention of:
         -   Diverting malicious or inadvertent DDoS traffic.
         -   Preventing your web servers from being overloaded.
@@ -44,4 +44,4 @@ Protect your external web infrastructure against these threats through the follo
 
 ![Traffic workflow](/images/v7/security/traffic-order-of-operations.png)
 
-[Learn how requests flow through WAF.](/guides/v7/security/waf#threat-detection)
+[Learn how requests flow through WAF.](/applications/v7/security/waf#threat-detection)

@@ -71,7 +71,7 @@ Top-level name/value pairs are described below.
 
 The `logs` array contains an object for each log entry associated with the current JSON document. Each log entry describes a request to our CDN via the following fields:
 
--   **account_number (*String*):** Customer AN. (Category: General) Identifies an environment by its system-defined ID.
+-   **account_number (*String*):** Customer AN. (Category: General) Identifies an environment by its legacy system-defined ID.
 -   **auth_user (*String*):** User (Basic Authentication). (Category: Request) Indicates the user name passed in the request URL for the purpose of HTTP basic authentication.
 
     **Sample request:** `http://joe:mypassword@cdn.mydomain.com/index.html`

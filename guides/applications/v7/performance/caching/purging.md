@@ -10,7 +10,7 @@ Purge cached content to force the CDN to request a new version of that content f
 
 </Callout>
 
-Purge by relative path, surrogate key, or all cached content using the:
+Purge by hostname, relative path, surrogate key, or all cached content using the:
 
 -   [{{ PORTAL }}](#console)
 -   [{{ PRODUCT }} CLI](#cli)
@@ -22,9 +22,21 @@ Purge by relative path, surrogate key, or all cached content using the:
 
 </Callout>
 
+## Hostname {/*hostname*/}
+
+You may purge cached content by the request URL's hostname. Choose between purging:
+
+-   All cached content for that hostname. Verify that the **Purge all entries** option is selected and then select the desired hostname from the **Hostname** option.
+
+    ![Purge by hostname](/images/v7/performance/caching-hostname.png)
+
+-   Requests for that hostname and a specific relative path. Select the **Purge by path** option and then select the desired hostname from the **Hostname** option.
+
+    ![Purge by hostname and relative path](/images/v7/performance/caching-hostname-relative-path.png)
+
 ## Relative Path {/*relative-path*/}
 
-You may specify a relative path that identifies the set of cached respones that will be purged. This relative path starts directly after the hostname.
+You may specify a relative path that identifies the set of cached responses that will be purged. This relative path starts directly after the hostname.
 
 <Callout type="tip">
 
@@ -48,7 +60,7 @@ Alternatively, you can use an `*` to recursively purge a directory. The followin
 
 ## Surrogate Key {/*surrogate-key*/}
 
-You  may purge cached content by surrogate key (aka cache tag). A surrogate key is a label that you may apply to cached responses. Purging by surrogate key allows you to purge related content across your entire site.
+You may purge cached content by surrogate key (aka cache tag). A surrogate key is a label that you may apply to cached responses. Purging by surrogate key allows you to purge related content across your entire site.
 
 <Callout type="tip">
 
@@ -125,6 +137,7 @@ Purge cached content through the {{ PRODUCT }} REST API through the [Purge Cache
 -   **All content:** Set the `purge_type` property to `all_entries`.
 -   **By relative path:**  Set the `purge_type` property to `path`. Pass the desired relative paths through the `values` array of strings. You may use an `*` to represent zero or more characters.
 -   **By surrogate key:**  Set the `purge_type` property to `surrogate_key`. Pass the desired surrogate keys through the `values` array of strings. [Learn more about surrogate keys.](#surrogate-key)
+-   **By hostname:** Set the `hostname` property to the desired hostname. Purging by hostname is compatible with the `purge_type` property set to either `all_entries` or `path`.
 
 ## Deployments {/*deployments*/}
 

@@ -7,35 +7,35 @@ RTLD may automatically deliver compressed log data to Sumo Logic by submitting H
 **Key information:**
 
 -   The format for log data delivered to Sumo Logic is JSON Lines. This log format does not provide information that uniquely identifies a set of log data. As a result, there is no way to check for gaps in sequence numbers when attempting to identify missing log data.
--   The set of available log fields varies by RTLD module: [RTLD CDN](/guides/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/guides/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/guides/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot](/guides/logs/rtld/log_fields_rtld_bot_manager) | [RTLD Cloud Functions](/guides/logs/rtld/log_fields_rtld_cloud_functions)
+-   The set of available log fields varies by RTLD module: [RTLD CDN](/applications/logs/rtld/log_fields_rtld_cdn) | [RTLD WAF](/applications/logs/rtld/log_fields_rtld_waf) | [RTLD Rate Limiting](/applications/logs/rtld/log_fields_rtld_rate_limiting) | [RTLD Bot](/applications/logs/rtld/log_fields_rtld_bot_manager) | [RTLD Cloud Functions](/applications/logs/rtld/log_fields_rtld_cloud_functions)
 
 **To set up Sumo Logic log delivery**
 
 1.  Set up Sumo Logic to listen for CDN log data in JSON format.
-    
+
     1.  Log in to Sumo Logic.
     2.  Click **Setup Wizard**.
-        
+
         ![](/images/v7/logs/sumo-logic-1.png)
-        
+
     3.  Click **Set Up Streaming Data**.
-        
+
         ![](/images/v7/logs/sumo-logic-2.png?width=500)
-        
+
     4.  Click **Your Custom App**.
-        
+
         ![](/images/v7/logs/sumo-logic-3.png)
 
         <a id="http-source" />
 
     5.  Click **HTTP Source**.
-        
+
         ![](/images/v7/logs/sumo-logic-4.png?width=500)
-        
+
     6.  In the **Source Category** option, type the name of the tag that will be applied to CDN log data. This tag may be used to search for CDN log data within Sumo Logic.
-        
+
         ![](/images/v7/logs/sumo-logic-5.png)
-        
+
     7.  Click **Continue**. An HTTP Source for CDN log data will be created.
     8.  Copy the URL associated with this HTTP Source.
 

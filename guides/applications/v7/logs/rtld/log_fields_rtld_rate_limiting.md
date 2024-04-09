@@ -8,20 +8,20 @@ Log data is reported as a JSON document. Log format determines whether log data 
 
     -   Top-level name/value pairs that uniquely identify the set of log entries reported in the JSON document.
     -   An object for each log entry associated with the current JSON document.
-    
+
     [View a sample log file.](#json)
-    
+
 -   **JSON Array:** This format generates a JSON document that contains an [array of objects](#logs-array). Each object is a log entry associated with the current JSON document.
-    
+
     [View a sample log file.](#json-array)
-    
+
 -   **JSON Lines:** This format generates an invalid JSON document that contains an object on each line. Each object is a log entry associated with the current JSON document. This object is an exact match for an object contained by the [Logs array](#logs-array).
-    
+
     [View a sample log file.](#json-lines)
-    
+
 <Callout type="important">
 
-  If log data uses either the JSON Array or JSON Lines log format, then it will not contain information that uniquely identifies a set of log data. If log data using one of these formats is delivered to a destination other than AWS S3, Azure Blob Storage, or Google Cloud Storage, then there is no way to check for gaps in sequence numbers when attempting to [identify missing log data](/guides/logs/rtld/log_data_verification#checking-for-sequence-number-gaps).
+  If log data uses either the JSON Array or JSON Lines log format, then it will not contain information that uniquely identifies a set of log data. If log data using one of these formats is delivered to a destination other than AWS S3, Azure Blob Storage, or Google Cloud Storage, then there is no way to check for gaps in sequence numbers when attempting to [identify missing log data](/applications/logs/rtld/log_data_verification#checking-for-sequence-number-gaps).
 
 </Callout>
 
@@ -40,8 +40,8 @@ Log data is reported as a JSON document. Log format determines whether log data 
 </Callout>
 
 Top-level name/value pairs are described below.
-  
--   **account_number (*String*):** Customer AN. Identifies an environment by its legacy system-defined ID. 
+
+-   **account_number (*String*):** Customer AN. Identifies an environment by its legacy system-defined ID.
 -   **agent_id (*String*):** Agent ID. Indicates the unique ID that identifies the Real-Time Log Delivery software agent that generated the log data.
 -   **datestamp (*String*):** Date Stamp. Indicates the date on which the log data was generated.
 
@@ -58,9 +58,9 @@ Top-level name/value pairs are described below.
 
 The `logs` array contains an object for each log entry associated with the current JSON document. Each log entry describes a request to our CDN via the following fields:
 
--   **account_number (*String*):** Customer AN. (Category: General) Identifies an environment by its system-defined ID. 
+-   **account_number (*String*):** Customer AN. (Category: General) Identifies an environment by its system-defined ID.
 -   **client_city (*String*):** City Name. (Category: Client Geography) Indicates the city from which the request originated.
--   **client_country_code (*String*):** Country Code. (Category: Client Geography) Indicates the [two-character ISO 3166-1 code for the country](/guides/reference/country_codes) from which the request originated.
+-   **client_country_code (*String*):** Country Code. (Category: Client Geography) Indicates the [two-character ISO 3166-1 code for the country](/applications/reference/country_codes) from which the request originated.
 -   **client_country (*String*):** Country Name. (Category: Client Geography) Indicates the country from which the request originated.
 -   **client_ip (*String*):** Client IP. (Category: Client Network) Indicates the IP address for the device that submitted the request to our CDN.
 -   **client_tls_ja3_md5 (*String*):** JA3 MD5 Hash. (Category: Request) Indicates the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic across various IP addresses and ports.
@@ -187,7 +187,7 @@ Sample log data that contains two log entries is provided below for all three lo
 		"scope_id": "dJR9RX4S",
 		"scope_name": "SAM"
 	}
-]		
+]
 ```
 <a id="json-lines" />
 

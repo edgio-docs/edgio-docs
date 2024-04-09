@@ -49,7 +49,7 @@ cd site
 
 <Callout type="info">
 
-  For more details on how to set up your BigCommerce store, view the <a href="/guides/bigcommerce">BigCommerce guide</a>
+  For more details on how to set up your BigCommerce store, view the <a href="/applications/bigcommerce">BigCommerce guide</a>
 
 </Callout>
 
@@ -90,19 +90,19 @@ Or from within `site` directory
 
 <Callout type="info">
 
-  For more details on using Next.js on {{ PRODUCT }} refer to the <a href="/guides/sites_frameworks/getting_started/next">Next.js guide</a>.
+  For more details on using Next.js on {{ PRODUCT }} refer to the <a href="/applications/sites_frameworks/getting_started/next">Next.js guide</a>.
 
 </Callout>
 
 <Callout type="info">
 
-  For more details on how to set up your BigCommerce store, view the <a href="/guides/bigcommerce">BigCommerce guide</a>.
+  For more details on how to set up your BigCommerce store, view the <a href="/applications/bigcommerce">BigCommerce guide</a>.
 
 </Callout>
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/applications/sites_frameworks/connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-next-connector">
   View the Connector Code

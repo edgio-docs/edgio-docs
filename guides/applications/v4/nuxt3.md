@@ -11,7 +11,7 @@ Note: Nuxt3 is still in beta and is not recommended for production.
 <ExampleButtons
   title="Nuxt3"
   siteUrl="https://edgio-community-layer0-nuxt3-example-default.layer0-limelight.link/"
-  repoUrl="https://github.com/layer0-docs/layer0-nuxt3-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-nuxt3-example"
   deployFromRepo />
 
 <!--## Connector {/*connector*/}
@@ -89,8 +89,8 @@ Deploy your app to {{ PRODUCT }} by running the following command in your projec
 See [deploying](deploy_apps) for more information.
 
 ### Resources {/*resources*/}
-1. [Routing with EdgeJS](https://docs.layer0.co/guides/routing)
-2. [Prefetching with EdgeJS](https://docs.layer0.co/guides/prefetching)
+1. [Routing with EdgeJS](https://docs.layer0.co/applications/routing)
+2. [Prefetching with EdgeJS](https://docs.layer0.co/applications/prefetching)
 
 ## Troubleshoot {/*troubleshoot*/}
 

@@ -11,7 +11,7 @@ A short description of the information contained for each variable referenced in
     -   All parameters in the `POST` request body
 -   **ARGS_GET:** Contains all query string parameters.
 -   **ARGS_GET_NAMES:** Contains the names of all query string parameters.
--   **ARGS_NAMES:** Contains the names for all request parameters. 
+-   **ARGS_NAMES:** Contains the names for all request parameters.
 -   **ARGS_POST:** Contains all key-value pairs within a `POST` request.
 -   **ARGS_POST_NAMES:** Contains the names of all parameters in the `POST` request body.
 -   **AUTH_TYPE:** Describes the built-in HTTP authentication method (e.g., Basic) used to validate a user.
@@ -27,7 +27,7 @@ A short description of the information contained for each variable referenced in
 -   **GEO:** Contains a geographical description of the request. This variable may contain any of the following fields:
     -   **AREA_CODE:** Identifies the area code from which the request originated. This information is only gathered for requests that originate from the United States.
     -   **CITY:** Identifies the name of the city from which the request originated.
-    -   **COUNTRY_CODE:** Identifies the country from which the request originated through its two character [country code](/guides/reference/country_codes).
+    -   **COUNTRY_CODE:** Identifies the country from which the request originated through its two character [country code](/applications/reference/country_codes).
     -   **COUNTRY_CODE3:** Identifies the country from which the request originated through its country code. This code may consist of up to three characters.
     -   **COUNTRY_CONTINENT:** Identifies the continent from which the request originated by its two character continent code (e.g., EU).
     -   **COUNTRY_NAME:** Identifies the country from which the request originated by its name.

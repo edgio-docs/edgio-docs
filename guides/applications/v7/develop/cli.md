@@ -46,7 +46,7 @@ Creates a build of your app optimized for production.
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--skipFramework, -s`      | Skips the framework (Next.js, Vue, Angular, etc..) build and simply rebundles your router                                                                                                                                                                                                                                      |
 | `--disablePermanentAssets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                      |
-| `--includeSources`         | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/performance/cdn_as_code/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
+| `--includeSources`         | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/applications/performance/cdn_as_code/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
 
 #### Example {/* example */}
 
@@ -75,11 +75,11 @@ specified environment will be cleared.
 <SnippetGroup>
 
     ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
-    {{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my-property --environment=production --path=/p/*    
+    {{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my-property --environment=production --path=/p/*
     ```
 
     ```bash tabLabel="Version 7.2.1 or lower"
-    {{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my-property --environment=production --path=/p/*    
+    {{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my-property --environment=production --path=/p/*
     ```
 
 </SnippetGroup>
@@ -142,7 +142,7 @@ This command must be called with `<backend>` already existing in the `{{ CONFIG_
 
 ### curl {/* curl */}
 
-Uses `curl` to make a request to the specified URL, highlighting Edgio-specific telemetry information. See [Response](/guides/performance/response) for more information around response headers and telemetry values.
+Uses `curl` to make a request to the specified URL, highlighting Edgio-specific telemetry information. See [Response](/applications/performance/response) for more information around response headers and telemetry values.
 
 #### Options {/* options */}
 
@@ -229,7 +229,7 @@ Builds and deploys your property on {{ PRODUCT_NAME }}.
 | `--skipFramework, --sf`    | Skips running the framework build and uses the previous build instead.                                                                                                                                                                                                                                                                      |
 | `--skipBuild`              | Skips running the `{{ CLI_CMD(build) }}` command, including the framework build, and uses the previous build instead.                                                                                                                                                                                                                       |
 | `--token`                  | Authenticates using a deploy token rather than your user credentials. Use this option when deploying from CI. Alternatively, you can also specify the deploy token by setting the `EDGIO_DEPLOY_TOKEN` environment variable.                                                                                                                |
-| `--includeSources`         | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/performance/cdn_as_code/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
+| `--includeSources`         | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/applications/performance/cdn_as_code/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
 | `--disablePermanentAssets` | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                      |
 
 #### Getting Information about the Deployment {/* getting-information-about-the-deployment */}
@@ -335,13 +335,13 @@ If you are not using the latest version of {{ PRODUCT }}, then you must specify 
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--{{PRODUCT_NAME_LOWER}}Version` | The version of {{ PRODUCT_NAME }} to install. Defaults to `latest`.                                                                                                                                                                                                                                                                         |
 | `--skip{{PRODUCT_NAME}}Deps`      | Skips installing {{ PRODUCT_NAME }} packages.                                                                                                                                                                                                                                                                                               |
-| `--connector`                     | The name of a specific connector package to install, or a path to a directory that implements the [connector interface](/guides/sites_frameworks/connectors#implementing-a-connector-directly-within-your-project).                                                                                                                         |
+| `--connector`                     | The name of a specific connector package to install, or a path to a directory that implements the [connector interface](/applications/sites_frameworks/connectors#implementing-a-connector-directly-within-your-project).                                                                                                                         |
 | `--name`                          | The name of the property. Defaults to the `name` field in `package.json`.                                                                                                                                                                                                                                                                   |
 | `--team, -t`                      | The name of the organization under which the property belongs. Uses private space if omitted.                                                                                                                                                                                                                                                       |
 | `--origin`                        | The domain or IP address of the origin to use for the property.                                                                                                                                                                                                                                                                             |
 | `--deploy`                        | Deploys the property after initializing.                                                                                                                                                                                                                                                                                                    |
 | `--skipFramework, --sf`           | Skips installing the framework (Next.js, Vue, Angular, etc..) and simply rebundles your router.                                                                                                                                                                                                                                             |
-| `--includeSources`                | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/guides/performance/cdn_as_code/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
+| `--includeSources`                | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/applications/performance/cdn_as_code/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
 | `--disablePermanentAssets`        | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                      |
 | `--property`                      | The name of the property to deploy. By default the `name` field in `{{ CONFIG_FILE }}` or `package.json` is used.                                                                                                                                                                                                                           |
 | `--skip-build`                    | Skips running the `{{ CLI_CMD(build) }}` command, including the framework build, and uses the previous build instead.                                                                                                                                                                                                                       |

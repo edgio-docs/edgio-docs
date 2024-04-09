@@ -1,5 +1,5 @@
 ---
-title: Observability 
+title: Observability
 ---
 
 This guide shows you how to track your website's [Core Web Vitals](https://web.dev/vitals/) on {{ PRODUCT_NAME }} in real time using real user monitoring (RUM).
@@ -127,7 +127,7 @@ new Metrics({
 }).collect()
 ```
 
-The router supports the same pattern syntax as Express. Here's more information on [routing syntax](/guides/routing#section_route_pattern_syntax).
+The router supports the same pattern syntax as Express. Here's more information on [routing syntax](/applications/routing#section_route_pattern_syntax).
 
 For non single page applications (e.g. traditional "multi-page apps"), you can also explicitly set the page label by passing a `pageLabel` property during initialization. An example is shown below where the `pageLabel` is pulled from `document.title`:
 

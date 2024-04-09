@@ -8,7 +8,7 @@ Learn about reserved request headers and how requests are routed through our ser
 
 {{ PRODUCT }} routes requests according to traffic type.
 
--   **Standard Traffic:** By default, requests are routed to an origin server through an edge POP (L1) and a global POP (L2). This behavior maximizes cache hits and shields your origin servers by funneling all cache misses through a global POP. 
+-   **Standard Traffic:** By default, requests are routed to an origin server through an edge POP (L1) and a global POP (L2). This behavior maximizes cache hits and shields your origin servers by funneling all cache misses through a global POP.
 
     ![](/images/overview/request-flow-edge-global.png)
 
@@ -29,7 +29,7 @@ All POPs have the following components:
 
 -   **HAProxy**: This component load balances requests to Varnish.
 -   **Varnish**: This component is a web application accelerator that is responsible for cache management.
--   **Dynamic Proxy Service (DPS)**: This component forwards requests from Varnish to an origin server. 
+-   **Dynamic Proxy Service (DPS)**: This component forwards requests from Varnish to an origin server.
 
 Requests are routed through the above components in the following order:
 
@@ -40,11 +40,11 @@ If a request is routed to an origin server through both an edge and global POP, 
 ` Client -> Edge POP (HAProxy -> Varnish -> DPS) -> Global POP (HAProxy -> Varnish -> DPS) -> Origin Server`
 
 ## Reserved Request Headers {/*request-headers*/}
-{{ PRODUCT }} injects headers into requests making them visible to your server code. 
+{{ PRODUCT }} injects headers into requests making them visible to your server code.
 
 <Callout type="important">
 
-  Request headers that start with `{{ HEADER_PREFIX }}-*` are reserved for use by {{ PRODUCT }}. You may not modify these request headers. 
+  Request headers that start with `{{ HEADER_PREFIX }}-*` are reserved for use by {{ PRODUCT }}. You may not modify these request headers.
 
   [Learn more.](limits#prohibited-headers)
 
@@ -81,8 +81,8 @@ Geolocation headers contain the geographical information about the provenance of
 - `{{ HEADER_PREFIX }}-geo-longitude`: the geographical longitude from which the request originated
 - `{{ HEADER_PREFIX }}-geo-asn`: the autonomous system number of the network operator from which the request originated
 
-These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee the accuracy of geolocation based on the client's IP address. See also [geolocation](/guides/third_party_cdns#section_client_ips) behind [third-party CDNs](/guides/third_party_cdns).
+These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee the accuracy of geolocation based on the client's IP address. See also [geolocation](/applications/third_party_cdns#section_client_ips) behind [third-party CDNs](/applications/third_party_cdns).
 
 ### Static prerendering headers {/*static-prerendering-headers*/}
 
-- `{{ HEADER_PREFIX }}-preload`: Will be "1" if the request originated from [Static Prerendering](/guides/static_prerendering). Otherwise this header will not be present.
+- `{{ HEADER_PREFIX }}-preload`: Will be "1" if the request originated from [Static Prerendering](/applications/static_prerendering). Otherwise this header will not be present.

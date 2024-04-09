@@ -13,12 +13,12 @@ This guide shows you how to deploy a [Hexo](https://hexo.io/) application to {{ 
 <ExampleButtons
   title="Hexo"
   siteUrl="https://edgio-community-examples-hexo-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-hexo-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-hexo-example"
   deployFromRepo /> -->
 
 ## Connector {/*connector*/}
 
-{{ PRODUCT }} provides a connector for this framework. [Learn more.](/guides/sites_frameworks/connectors)
+{{ PRODUCT }} provides a connector for this framework. [Learn more.](/applications/sites_frameworks/connectors)
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-hexo-connector">
  View the Connector Code
@@ -101,4 +101,4 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands 
 
 {{ system_origins_callout.md }}
 
-[Learn more.](/guides/basics/deployments)
+[Learn more.](/applications/basics/deployments)

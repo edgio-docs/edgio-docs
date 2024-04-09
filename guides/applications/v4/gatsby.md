@@ -11,7 +11,7 @@ This guide shows you how to deploy an [Gatsby](https://www.gatsbyjs.com/) applic
 <ExampleButtons
   title="Gatsby SSG"
   siteUrl="https://layer0-docs-layer0-gatsby-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-gatsby-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-gatsby-example"
   deployFromRepo />
 
 <!--## Connector {/*connector*/}
@@ -80,7 +80,7 @@ const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 
 module.exports = new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: https://docs.layer0.co/applications/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .use(gatsbyRoutes)
 ```
@@ -118,7 +118,7 @@ const { gatsbyRoutes } = require('{{ PACKAGE_NAME }}/gatsby')
 
 module.exports = new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: https://docs.layer0.co/applications/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .get('/some/legacy/url/:p', ({ proxy }) => {
     proxy('legacy')

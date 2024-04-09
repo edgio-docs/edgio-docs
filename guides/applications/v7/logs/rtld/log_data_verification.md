@@ -19,7 +19,7 @@ The **Log Delivery Performance** page indicates the total number of log delivery
 
 <Callout type="info">
 
-  RTLD automatically retries log delivery after a failed attempt. As a result, failed log delivery attempts do not necessarily mean that a RTLD software agent was unable to eventually deliver the corresponding log data. Find out if there are missing log files by [manually checking for gaps in the sequence number](#checking-for-sequence-number-gaps) reported by each RTLD software agent. 
+  RTLD automatically retries log delivery after a failed attempt. As a result, failed log delivery attempts do not necessarily mean that a RTLD software agent was unable to eventually deliver the corresponding log data. Find out if there are missing log files by [manually checking for gaps in the sequence number](#checking-for-sequence-number-gaps) reported by each RTLD software agent.
 
 </Callout>
 
@@ -35,37 +35,37 @@ The **Log Delivery Performance** page indicates the total number of log delivery
 
 <!--
 -   Log delivery failures are graphed according to the following categories:
-    
-     
-    
+
+
+
     Category
-    
+
     Description
-    
+
     Bad Certificate
-    
+
     Indicates that the SSL certificate corresponding to the domain where log data is being sent is invalid. Please verify your SSL certificate and then update as needed.
-    
+
     There are online tools (e.g., [SSL Checker](https://www.sslshopper.com/ssl-checker.html)) that analyze your SSL certificate for issues.
-    
+
     Log delivery requires a certificate whose trust anchor is a publicly trusted certificate authority (CA). Additionally, the certificate must include a chain of trust for all intermediate certificate(s) and a leaf certificate.
-    
+
     Connection Time Out
-    
+
     Indicates that the destination server failed to respond in a timely fashion.
-    
+
     Failed Authentication
-    
+
     Indicates that log delivery failed due to an unauthorized request (i.e., 401 Unauthorized or 403 Forbidden).
-    
+
     Failed Connection
-    
+
     Indicates that the destination server was unavailable.
-    
+
     Failed to Deliver
-    
+
     Indicates that log delivery failed for none of the above reasons.
-    
+
 -->
 
 ## Checking for Sequence Number Gaps {/*checking-for-sequence-number-gaps*/}
@@ -74,26 +74,26 @@ The **Log Delivery Performance** page indicates the total number of log delivery
 Use the following information when assessing whether there is a gap in the sequential number reported by each Real-Time Log Delivery software agent.
 
 -   A software agent's unique ID is reported within the:
-    
-    -   [Log file name (AgentID)](/guides/logs/rtld/log_file_naming_convention) - AWS S3, Azure Blob Storage, and Google Cloud Storage only
-        
-    -   [JSON payload (agent-id)](/guides/logs/rtld/log_fields_rtld_cdn#agent-id)
+
+    -   [Log file name (AgentID)](/applications/logs/rtld/log_file_naming_convention) - AWS S3, Azure Blob Storage, and Google Cloud Storage only
+
+    -   [JSON payload (agent-id)](/applications/logs/rtld/log_fields_rtld_cdn#agent-id)
 
 -   A software agent's sequence number is reported within the:
-    
-    -   [Log file name (SequenceNumber)](/guides/logs/rtld/log_file_naming_convention) - AWS S3, Azure Blob Storage, and Google Cloud Storage only
-        
-    -   [JSON payload (seq-num)](/guides/logs/rtld/log_fields_rtld_cdn#sequence-number)
+
+    -   [Log file name (SequenceNumber)](/applications/logs/rtld/log_file_naming_convention) - AWS S3, Azure Blob Storage, and Google Cloud Storage only
+
+    -   [JSON payload (seq-num)](/applications/logs/rtld/log_fields_rtld_cdn#sequence-number)
 -   The sequential number reported for each software agent starts at 0.
 -   This sequential number resets to 0 at the start of a new day (UTC). The date on which log data was generated is reported within the:
-    
-    -   [Log file name (DateStamp)](/guides/logs/rtld/log_file_naming_convention) - AWS S3, Azure Blob Storage, and Google Cloud Storage only
-    -   [JSON payload (date-stamp)](/guides/logs/rtld/log_fields_rtld_cdn#datestamp)
+
+    -   [Log file name (DateStamp)](/applications/logs/rtld/log_file_naming_convention) - AWS S3, Azure Blob Storage, and Google Cloud Storage only
+    -   [JSON payload (date-stamp)](/applications/logs/rtld/log_fields_rtld_cdn#datestamp)
 -   If a software agent stops running, then it will be assigned a new unique ID.
 
 <Callout type="important">
 
-  If log data uses either the CSV, JSON Array, or JSON Lines log format, then it will not contain information that uniquely identifies a set of log data. If log data using one of these formats is delivered to a destination other than AWS S3, Azure Blob Storage, or Google Cloud Storage, then there is no way to check for gaps in sequence numbers when attempting to [identify missing log data](/guides/logs/rtld/log_data_verification#checking-for-sequence-number-gaps).
+  If log data uses either the CSV, JSON Array, or JSON Lines log format, then it will not contain information that uniquely identifies a set of log data. If log data using one of these formats is delivered to a destination other than AWS S3, Azure Blob Storage, or Google Cloud Storage, then there is no way to check for gaps in sequence numbers when attempting to [identify missing log data](/applications/logs/rtld/log_data_verification#checking-for-sequence-number-gaps).
 
 </Callout>
 

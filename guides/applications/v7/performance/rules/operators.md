@@ -30,7 +30,7 @@ The following request will result in a match when the `Query String` condition i
 
 ### Matches (Simple) {/*matches-simple*/}
 
-Indicates that the value derived from the request must match the pattern defined within a condition. You may define a pattern using our [route path syntax](/guides/performance/cdn_as_code#route-pattern-syntax).
+Indicates that the value derived from the request must match the pattern defined within a condition. You may define a pattern using our [route path syntax](/applications/performance/cdn_as_code#route-pattern-syntax).
 
 <Callout type="info">
 
@@ -48,7 +48,7 @@ The following request will result in a match when the `Path` condition is set to
 
 Indicates that the value derived from the request must match a [Perl-compatible regular expression](https://pcre.org/) defined within the **Match Value** option.
 
-Regular expressions define a pattern that will be searched for within a text value. Regular expression notation defines specific meanings to a variety of symbols. Information on how special characters are handled within a regular expression is provided below. This information is not meant to be a comprehensive guide on regular expression usage or syntax. 
+Regular expressions define a pattern that will be searched for within a text value. Regular expression notation defines specific meanings to a variety of symbols. Information on how special characters are handled within a regular expression is provided below. This information is not meant to be a comprehensive guide on regular expression usage or syntax.
 
 -   `/`**:** A forward slash is treated as a literal character instead of a special regular expression character. Do not escape it.
 -   `\`**:** A backslash in a regular expression typically:
@@ -80,7 +80,7 @@ The following request will result in a match when the `Path` condition is set to
 
 ### Does Not Match Regular Expression {/*does-not-match-regular-expression*/}
 
-Indicates that the value derived from the request must not match a regular expression. 
+Indicates that the value derived from the request must not match a regular expression.
 
 **Example:**
 

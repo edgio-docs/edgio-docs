@@ -8,14 +8,14 @@ Deploying your web application behind {{ PRODUCT }} is the fastest and easiest w
 - Configure edge caching using EdgeJS
 - Deploy your site
 
-If any point, you want a more [detailed guide](/guides/traditional_sites), we've got that too.
+If any point, you want a more [detailed guide](/applications/traditional_sites), we've got that too.
 
 ## Example {/*example*/}
 
 <ExampleButtons
   title="Web CDN"
   siteUrl="https://layer0-docs-cdn-starter-template-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-cdn-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-cdn-example"
   deployFromRepo />
 
 ## Network Diagram {/*network-diagram*/}
@@ -26,7 +26,7 @@ As shown below, {{ PRODUCT }} becomes the main CDN for your site:
 
 Requests for your site will now pass through {{ PRODUCT }}'s globally distributed edge network and then to your origin server.
 
-A full production deployment requires changing your site's DNS to allow requests to come to {{ PRODUCT }} first. View our [production guide](/guides/production) for that process.
+A full production deployment requires changing your site's DNS to allow requests to come to {{ PRODUCT }} first. View our [production guide](/applications/production) for that process.
 
 {{ PREREQ.md }}
 
@@ -84,8 +84,8 @@ module.exports = {
       // The domain name or IP address of the origin server
       domainOrIp: "example.com",
 
-      // When provided, the following value will be sent as the host header 
-      // when connecting to the origin. If omitted, the host header from 
+      // When provided, the following value will be sent as the host header
+      // when connecting to the origin. If omitted, the host header from
       // the browser will be forwarded to the origin.
       hostHeader: "example.com"
     },

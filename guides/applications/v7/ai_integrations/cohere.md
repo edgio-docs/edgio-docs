@@ -29,7 +29,7 @@ Install the necessary dependencies.
 npm i
 ```
 
-If you haven't already, [install the Edgio CLI](https://docs.edg.io/guides/v7/develop/cli). Use `edgio dev` to start your development server:
+If you haven't already, [install the Edgio CLI](https://docs.edg.io/applications/v7/develop/cli). Use `edgio dev` to start your development server:
 
 ```bash
 edgio dev

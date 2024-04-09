@@ -15,86 +15,86 @@ Troubleshoot:
 
 If you encounter unexpected behavior or an issue, you should:
 
-1.  Verify that all of your traffic is being served through the [most recently deployed environment](#environment-version). 
+1.  Verify that all of your traffic is being served through the [most recently deployed environment](#environment-version).
 2.  Verify that the only [desired set of rules are being applied](#applied-rules) to the request experiencing unexpected behavior.
-3.  [Test your site using a permalink.](#test-without-cached-content) This ensures that the unexpected behavior is not due to cached content. 
-4.  [Review Edge Insights data.](#review-edge-insights-data) 
+3.  [Test your site using a permalink.](#test-without-cached-content) This ensures that the unexpected behavior is not due to cached content.
+4.  [Review Edge Insights data.](#review-edge-insights-data)
 
 #### Environment Version {/*environment-version*/}
 
 Delays in configuration propagation may cause {{ PRODUCT }} to serve some requests using an older configuration. Upon detecting unexpected behavior, it is important to verify that all requests are using the latest environment version.
 
-1.  Find the environment version through which a request was served by checking the **Environment** column from within the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer_tools_chrome_extension).
-2.  Find the latest environment version from within the {{ PORTAL }} by navigating to the desired environment, clicking **Deployments**, and then checking the **Environment** column. 
-    
+1.  Find the environment version through which a request was served by checking the **Environment** column from within the [{{ CHROME_EXTENSION }}](/applications/performance/observability/developer_tools_chrome_extension).
+2.  Find the latest environment version from within the {{ PORTAL }} by navigating to the desired environment, clicking **Deployments**, and then checking the **Environment** column.
+
 For example, the {{ CHROME_EXTENSION }}'s **Environment** column should report `v3` for requests to a website powered by the following production environment:
-    
+
 ![Sample deployments](/images/v7/performance/deployments-cropped.png?width=450)
 
 #### Applied Rules {/*applied-rules*/}
 
 Verify that the desired set of rules are being applied to the request by performing the following steps:
 
-1.  Find out the set of rules that were applied to the request by checking the **Matched Rules** column within the {{ CHROME_EXTENSION }}. 
+1.  Find out the set of rules that were applied to the request by checking the **Matched Rules** column within the {{ CHROME_EXTENSION }}.
 
     For example, the following illustration indicates that rules 0, 2, 3, and 13 were applied to a request:
 
     ![Matched rules](/images/v7/performance/developer-tools-matched-rules.png)
 
-2.  Look up those rules from within the **Rules** page  of the {{ PORTAL }}. 
+2.  Look up those rules from within the **Rules** page  of the {{ PORTAL }}.
 
     ![Rules page showing rule numbers](/images/v7/performance/rules-rule-numbers.png)
-    
+
 **Key information:**
 
 -   Click on the `Show Rule Numbers` link to display rule numbers next to each rule.
 -   Rules use zero-based numbering.
--   Use the above procedure even if you are using CDN-as-code. 
-    
+-   Use the above procedure even if you are using CDN-as-code.
+
     {{ PRODUCT }} automatically adds system-defined rules when you deploy your CDN-as-code configuration. As a result, counting rules within your {{ ROUTES_FILE }} will be inaccurate.
 
 #### Test Without Cached Content {/*test-without-cached-content*/}
 
-Use a permalink to ensure that {{ PRODUCT }} does not serve cached content when testing your website. A permalink forces {{ PRODUCT }} to proxy your request to either the {{ PRODUCT }} cloud or your origin. Although this may degrade performance, it is useful when verifying functionality. 
+Use a permalink to ensure that {{ PRODUCT }} does not serve cached content when testing your website. A permalink forces {{ PRODUCT }} to proxy your request to either the {{ PRODUCT }} cloud or your origin. Although this may degrade performance, it is useful when verifying functionality.
 
-A permalink is assigned to each deployment. View a deployment's permalink by navigating to the **Deployments** page for the desired environment and then clicking on the desired deployment version. 
+A permalink is assigned to each deployment. View a deployment's permalink by navigating to the **Deployments** page for the desired environment and then clicking on the desired deployment version.
 
 #### Review Edge Insights Data {/*review-edge-insights-data*/}
 
-Edge Insights provides near real-time data for an environment's traffic over the last 6 hours through the Access Logs data source. 
+Edge Insights provides near real-time data for an environment's traffic over the last 6 hours through the Access Logs data source.
 
 -   Review the timeline graph to identify issues and analyze performance. Sample use cases are provided below.
-    -   Identify sudden spikes or drops in traffic. 
+    -   Identify sudden spikes or drops in traffic.
 
         Once you have identified a questionable traffic spike, determine whether it is legitimate traffic by reviewing key metrics, such as the country of origin, URL path, and query strings.
 
-    -   Identify sudden spikes in 4xx and 5xx traffic. 
-        1.  From the **Top Results** section, verify that `HTTP Status Code` has been selected for one of the pie charts. 
+    -   Identify sudden spikes in 4xx and 5xx traffic.
+        1.  From the **Top Results** section, verify that `HTTP Status Code` has been selected for one of the pie charts.
         2.  From the **Timelines** section, click the **HTTP Status Code** source.
             ![Timelines - HTTP Status Code source](/images/v7/performance/edge-insights-source-http-status-code.png)
         3.  Once you have identified a spike, [analyze the corresponding log data](#status-codes) to gain insight into a specific status code.
     -   Identify caching trends.
-        1.  From the **Top Results** section, verify that `Cache Status` has been selected for one of the pie charts. 
+        1.  From the **Top Results** section, verify that `Cache Status` has been selected for one of the pie charts.
         2.  From the **Timelines** section, click the **Cache Status** source.
--   Review log data to troubleshoot an issue. 
+-   Review log data to troubleshoot an issue.
 
-    For example, if you are able to reproduce an issue on your local machine and require more information than is available through the {{ CHROME_EXTENSION }}, then you may view log data for these requests from within Edge Insights. One method for analyzing these requests is to: 
+    For example, if you are able to reproduce an issue on your local machine and require more information than is available through the {{ CHROME_EXTENSION }}, then you may view log data for these requests from within Edge Insights. One method for analyzing these requests is to:
 
-    1.  Configure a catch-all rule to set a response header to the request's ID through the `%{http_x_ec_uuid}` feature variable. 
+    1.  Configure a catch-all rule to set a response header to the request's ID through the `%{http_x_ec_uuid}` feature variable.
         ![Add Response Header feature](/images/v7/performance/rules-add-response-header-x-request-id.png?width=450)
-    2.  Find out the ID corresponding to a request issued from your local machine. 
-        1.  From the desired browser, open developer tools. 
+    2.  Find out the ID corresponding to a request issued from your local machine.
+        1.  From the desired browser, open developer tools.
         2.  From the browser, issue a request.
         3.  From within developer tools, inspect the request to find out the request's ID.
             ![Chrome Developer Tools - Headers](/images/v7/performance/chrome-dev-tools-x-request-id.png)
-    3.  [Filter Edge Insights](/guides/performance/observability/edge_insights#manual-filtering) by that ID (i.e., `Event ID = <EVENT ID>`). 
+    3.  [Filter Edge Insights](/applications/performance/observability/edge_insights#manual-filtering) by that ID (i.e., `Event ID = <EVENT ID>`).
         ![Filtering by Event ID](/images/v7/performance/edge-insights-filters-event-id.png)
     5.  From the **Logs** section, click on the log entry to view the log fields associated with the request.
         ![Log entry](/images/v7/performance/edge-insights-logs.png)
 
 ## Caching {/*caching*/}
 
-Use the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer_tools_chrome_extension) to troubleshoot caching behavior. 
+Use the [{{ CHROME_EXTENSION }}](/applications/performance/observability/developer_tools_chrome_extension) to troubleshoot caching behavior.
 
 #### Overall Cache Performance {/*overall-cache-performance*/}
 
@@ -106,36 +106,36 @@ View overall cache performance by checking the **Edge Hits** statistic at the bo
 
 Check whether a request was served from cache through the **Cache Status** column. Look for one of the following values:
 
-    -   **Hit (`COMPONENT`):** Indicates that the request was served from cache from either our network (Edge) or a service worker's local cache (Service Worker). 
+    -   **Hit (`COMPONENT`):** Indicates that the request was served from cache from either our network (Edge) or a service worker's local cache (Service Worker).
 
-    -   **Miss (`COMPONENT`):** Indicates that {{ PRODUCT }} [could not find a cached version](#cache-miss) of the requested content with a valid time-to-live (TTL) from either our network (Edge) or a service worker's local cache (Service Worker). 
+    -   **Miss (`COMPONENT`):** Indicates that {{ PRODUCT }} [could not find a cached version](#cache-miss) of the requested content with a valid time-to-live (TTL) from either our network (Edge) or a service worker's local cache (Service Worker).
 
     -   **No-Cache (Edge):** Indicates that a cache content freshness check was not performed. This check is skipped when an HTTP request method is used that bypasses cache (e.g., `PUT`, `DELETE`, etc).
 
-    -   **Disabled (Edge):** Indicates that caching was disabled through the [Bypass Cache feature](/guides/performance/rules/features#bypass-cache). 
-    
+    -   **Disabled (Edge):** Indicates that caching was disabled through the [Bypass Cache feature](/applications/performance/rules/features#bypass-cache).
+
         If this behavior is undesired, [review the rules applied to this request](#applied-rules).
 
-    -   **Blank:** A blank value indicates that the request was either not served through {{ PRODUCT }} or it was served through a different property or environment on which the Debug Header feature has not been enabled. 
+    -   **Blank:** A blank value indicates that the request was either not served through {{ PRODUCT }} or it was served through a different property or environment on which the Debug Header feature has not been enabled.
 
 #### Cache Miss {/*cache-miss*/}
 
-Review the following items to find out why a request resulted in a cache miss. 
+Review the following items to find out why a request resulted in a cache miss.
 
 -   By default, content is only cached when the response from the origin includes a caching policy. Additionally, some content types may require 2 requests before they are eligible to be cached.
-    
-    [View our default caching policy.](/guides/performance/caching#default-caching-policy)
 
--    If you have defined a custom cache policy through a rule, then you should [review the rules applied to this request](#applied-rules). 
+    [View our default caching policy.](/applications/performance/caching#default-caching-policy)
 
--   If your origin defines a custom cache policy through headers, then you should click on the desired request and then check the **Response Headers** section for [cache directives](/guides/performance/caching#cache-directives)
+-    If you have defined a custom cache policy through a rule, then you should [review the rules applied to this request](#applied-rules).
+
+-   If your origin defines a custom cache policy through headers, then you should click on the desired request and then check the **Response Headers** section for [cache directives](/applications/performance/caching#cache-directives)
 
 -   {{ PRODUCT }} associates each request with a cache key. {{ PRODUCT }} then uses this cache key to identify whether content has been cached for this request. By default, this cache key includes the query string. This configuration is ideal for a website that uses the query string to determine the content that will be served. For other sites, this can lead to cache fragmentation and a higher rate of cache misses.
 
     Customize the cache key to exclude query string parameters:
 
-    -   **Rules:** Create or modify a rule that includes the  [Cache Key](/guides/performance/rules/features#cache-key) feature. Configure this feature's **Query Parameters** option to either exclude all query string parameters or to only include specific parameters.
-    
+    -   **Rules:** Create or modify a rule that includes the  [Cache Key](/applications/performance/rules/features#cache-key) feature. Configure this feature's **Query Parameters** option to either exclude all query string parameters or to only include specific parameters.
+
         ![Cache Key feature set to exclude all query string parameters](/images/v7/performance/cache-key-exclude-all-qs.png?width=450)
 
     -   **CDN-as-Code:**
@@ -148,17 +148,17 @@ Review the following items to find out why a request resulted in a cache miss.
 
     **Key information:**
 
-    -   If you must add query string parameters to the cache key, we recommend that you restrict it to the parameters that are critical to your business needs. This recommendation ensures optimal performance by allowing our CDN to serve more requests from cache. 
-    -   If you are unsure as to whether you have already defined a custom cache key, then you should review your rules for [features that modify the cache key](/guides/performance/caching/cache_key#customizing-the-cache-key).
+    -   If you must add query string parameters to the cache key, we recommend that you restrict it to the parameters that are critical to your business needs. This recommendation ensures optimal performance by allowing our CDN to serve more requests from cache.
+    -   If you are unsure as to whether you have already defined a custom cache key, then you should review your rules for [features that modify the cache key](/applications/performance/caching/cache_key#customizing-the-cache-key).
 
 ## Performance {/*performance*/}
 
-Use the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer_tools_chrome_extension) to troubleshoot performance.
+Use the [{{ CHROME_EXTENSION }}](/applications/performance/observability/developer_tools_chrome_extension) to troubleshoot performance.
 
 #### Overall Performance {/*overall-performance*/}
 
 View overall performance statistics at the bottom of the {{ CHROME_EXTENSION }}.
--   **TTFB:** [Time to First Byte](https://web.dev/articles/ttfb). 
+-   **TTFB:** [Time to First Byte](https://web.dev/articles/ttfb).
 -   **LCP:** [Large Contentful Paint](https://web.dev/articles/lcp)
 -   **INP:** [Interaction to Next Paint](https://web.dev/articles/inp)
 -   **CLS:** [Cumulative Layout Shift](https://web.dev/articles/cls)
@@ -170,15 +170,15 @@ View overall performance statistics at the bottom of the {{ CHROME_EXTENSION }}.
 
 View request-specific performance statistics by checking:
 -   The **TTFB** column for a high value. This column measures time to first byte. This metric is indicative of responsiveness.
--   The **Total Time** column for a high value. This column measures the total amount of time it took to serve a response to the client. 
+-   The **Total Time** column for a high value. This column measures the total amount of time it took to serve a response to the client.
 
 #### Predictive Prefetching {/*predictive-prefetching*/}
 
-Assess overall prefetching performance by checking the **Prefetches** statistic at the bottom of the {{ CHROME_EXTENSION }}. 
+Assess overall prefetching performance by checking the **Prefetches** statistic at the bottom of the {{ CHROME_EXTENSION }}.
 
 ![Prefetches](/images/v7/performance/developer-tools-prefetches.png)
 
-By default, you may only prefetch content that is cached on the POP closest to the user and that still has a valid TTL. By default, {{ PRODUCT }} responds with a [412 Precondition Failed status code](#412-precondition-failed-status-code) for prefetch requests that result in a cache miss. This default configuration ensures that your origin servers do not experience additional load due to predictive prefetching. 
+By default, you may only prefetch content that is cached on the POP closest to the user and that still has a valid TTL. By default, {{ PRODUCT }} responds with a [412 Precondition Failed status code](#412-precondition-failed-status-code) for prefetch requests that result in a cache miss. This default configuration ensures that your origin servers do not experience additional load due to predictive prefetching.
 
 Identify prefetch requests through the following query string parameter: `{{ PRODUCT_NAME_LOWER }}_dt_pf=1&{{ PRODUCT_NAME_LOWER }}_prefetch=1`.
 
@@ -188,11 +188,11 @@ Identify prefetch requests through the following query string parameter: `{{ PRO
 
 Gain insight into why {{ PRODUCT }} returned a specific status code by filtering Edge Insights by the desired status code and then reviewing log data.
 
-1.  [Load the desired environment-specific Edge Insights page.](/guides/performance/observability/edge_insights#basic-usage)
+1.  [Load the desired environment-specific Edge Insights page.](/applications/performance/observability/edge_insights#basic-usage)
 2.  Verify that the **Data Source** option is set to `Access Logs`.
 3.  Scroll down to the **Top Results** section.
 4.  Verify that `HTTP Status Code` has been selected for one of the pie charts.
-5.  From within the pie chart, click on the desired status code. The entire dashboard will be filtered by that status code. 
+5.  From within the pie chart, click on the desired status code. The entire dashboard will be filtered by that status code.
 6.  Scroll down to the **Logs** section.
 7.  Inspect each request to gain insight into why this status code is occurring.
 
@@ -210,26 +210,26 @@ Troubleshoot the following common status codes:
 -   [531 Project Upstream Connection Error](#531-project-upstream-connection-error-status-code)
 -   [539 Project Timeout](#troubleshooting-539-status-codes)
 
-[Learn about other status codes.](/guides/performance/response#status-codes)
+[Learn about other status codes.](/applications/performance/response#status-codes)
 
 ### 404 Not Found Status Code {/*404-not-found-status-code*/}
 
 Troubleshoot this status code by performing the following steps:
 
 -   Use Edge Insights, [as described above](#status-codes), to identify the URL and the referrer from which the request originated. Check the `url` and the `referer` field, respectively.
--   If the resource exists, use the [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer_tools_chrome_extension) to find out which [rules were applied to the request](#applied-rules). Review those rules to identify how the request is being manipulated. 
+-   If the resource exists, use the [{{ CHROME_EXTENSION }}](/applications/performance/observability/developer_tools_chrome_extension) to find out which [rules were applied to the request](#applied-rules). Review those rules to identify how the request is being manipulated.
 
 ### 412 Precondition Failed Status Code {/*412-precondition-failed-status-code*/}
 
-By default, {{ PRODUCT }} will only serve prefetch requests from the edge cache. If a request cannot be served from the cache, a `412 Precondition Failed` status code is returned. This protects your origin servers from additional traffic associated with prefetching. 
+By default, {{ PRODUCT }} will only serve prefetch requests from the edge cache. If a request cannot be served from the cache, a `412 Precondition Failed` status code is returned. This protects your origin servers from additional traffic associated with prefetching.
 
 Perform the following steps to reduce excessive `412 Precondition Failed` responses:
 
-1.  Ensure that the URLs being prefetched are similar to those fetched during page navigation. 
+1.  Ensure that the URLs being prefetched are similar to those fetched during page navigation.
 
     Prefetch URLs contain the following query string parameters: `{{ PRODUCT_NAME_LOWER }}_dt_pf=1&{{ PRODUCT_NAME_LOWER }}_prefetch=1`. These parameters are automatically excluded from the cache key. Verify that this is the only difference between URLs that are prefetched and those that are requested through standard page navigation.
-    
-2.  Apply the [Stale While Revalidate (stale_while_revalidate) feature](/guides/performance/rules/features#stale-while-revalidate) to URLs that will be prefetched. 
+
+2.  Apply the [Stale While Revalidate (stale_while_revalidate) feature](/applications/performance/rules/features#stale-while-revalidate) to URLs that will be prefetched.
 
     -   **Rules Example:**
 
@@ -247,8 +247,8 @@ Perform the following steps to reduce excessive `412 Precondition Failed` respon
         });
         ```
 
-3. Consider increasing the [Set Max Age (max_age) feature](/guides/performance/rules/features#set-max-age). Short time to live (TTL) intervals generate more prefetch failures.
-4.  Prefetch cache misses. 
+3. Consider increasing the [Set Max Age (max_age) feature](/applications/performance/rules/features#set-max-age). Short time to live (TTL) intervals generate more prefetch failures.
+4.  Prefetch cache misses.
 
     <Callout type="warning">
 
@@ -256,17 +256,17 @@ Perform the following steps to reduce excessive `412 Precondition Failed` respon
 
     </Callout>
 
-    -   **HTML Script Tag Example:** 
+    -   **HTML Script Tag Example:**
 
         ```html
         <script src="/__edgio__/prefetch/install.js" data-include-cache-misses="true" defer></script>
         ```
 
-    -   **{{ PRODUCT }} {{ PRODUCT_PLATFORM }} Example:** 
+    -   **{{ PRODUCT }} {{ PRODUCT_PLATFORM }} Example:**
 
         ```js filename="app.js"
         import install from '{{ PACKAGE_NAME }}/prefetch/window/install';
-        
+
         // Call the following once when the page loads to allow prefetch requests to be served when responses
         // aren't available in the edge cache:
         install({includeCacheMisses: true});
@@ -276,26 +276,26 @@ Perform the following steps to reduce excessive `412 Precondition Failed` respon
 
 Troubleshoot this status code by performing the following steps:
 
--   Identify the origin configuration that is returning a `502 Bad Gateway`. Request the origin directly to verify that it is available. 
+-   Identify the origin configuration that is returning a `502 Bad Gateway`. Request the origin directly to verify that it is available.
 
-    **Example:** If your origin configuration points to `origin-1.example.com`, then you could potentially verify that this origin is available by submitting the following request: 
-    
+    **Example:** If your origin configuration points to `origin-1.example.com`, then you could potentially verify that this origin is available by submitting the following request:
+
     `https://origin-1.example.com/`
 
--   Check whether your site requires SNI by reviewing your server's configuration or log data. 
+-   Check whether your site requires SNI by reviewing your server's configuration or log data.
 
     Alternatively, there are online tools (e.g., [Qualys SSL Labs](https://www.ssllabs.com/ssltest/)) that allow you to check whether your site requires SNI. Submit your origin's hostname to start the test. Once the test is complete, check whether your server requires SNI. For example, SSL Labs returns the following message within the summary section: `This site works only in browsers with SNI support.`
 
     Your origin configuration setup varies according to whether your site requires SNI.
 
     -   **SNI:** If your site requires SNI, then you should enable your origin configuration's **Use SNI** option and verify that the SNI hint is set to a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN).
-    
+
     <Callout type="info">
-    
+
       If your site requires SNI and your origin configuration is misconfigured, then Edge Insights will return a `proxy_hard_error` field set to `HARD_ERR_502_SSL_CONNECT_ERROR`. A quick way of checking for this condition is to [filter Edge Insights](#status-codes) by the `502 Bad Gateway` status code and then viewing a request from within the **Logs** section.
-    
+
     </Callout>
-    
+
     -   **No SNI:** If your site does not require SNI, then you should disable your origin configuration's **Use SNI** option and remove the SNI hint.
 
 -   If the client's `Host` header does not match a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN), then you will need to update the **Override Host Header** option.
@@ -310,12 +310,12 @@ Troubleshoot this status code in the same manner as a [502 Bad Gateway status co
 
 ### 531 Project Upstream Connection Error Status Code {/*531-project-upstream-connection-error-status-code*/}
 
-Common causes are:  
+Common causes are:
 
 -   The upstream host you specified in your project is incorrect.
 -   The DNS entry you defined points to the wrong server.
 -   Your servers are not responding.
--   You need to add the {{ PRODUCT }} IP addresses to your allowlist. Contact your operations team and ask them to add [our IP addresses](/guides/basics/serving_traffic#firewall-allowing-ip-addresses) to your firewall's IP allowlist.
+-   You need to add the {{ PRODUCT }} IP addresses to your allowlist. Contact your operations team and ask them to add [our IP addresses](/applications/basics/serving_traffic#firewall-allowing-ip-addresses) to your firewall's IP allowlist.
 
 ### 539 Project Timeout Status Code {/* troubleshooting-539-status-codes */}
 
@@ -336,11 +336,11 @@ This issue may be due to:
 
 Troubleshoot this status code by:
 
--   Viewing the timings and status codes of the components in the stack in the [{{ HEADER_PREFIX }}-t header](#-t-response-header). 
--   Analyzing [server logs](/guides/logs/server_logs).
--   Performing [performance profiling](/guides/performance/observability#tracking-your-own-timings) 
--   Detecting allowlist errors. 
--   Loading source maps within our {{ PRODUCT }} cloud infrastructure. If this occurs, try again with sourcemaps disabled. 
+-   Viewing the timings and status codes of the components in the stack in the [{{ HEADER_PREFIX }}-t header](#-t-response-header).
+-   Analyzing [server logs](/applications/logs/server_logs).
+-   Performing [performance profiling](/applications/performance/observability#tracking-your-own-timings)
+-   Detecting allowlist errors.
+-   Loading source maps within our {{ PRODUCT }} cloud infrastructure. If this occurs, try again with sourcemaps disabled.
 
 #### Allowlist {/* allowlist-overview */}
 
@@ -350,7 +350,7 @@ A typical pattern is that your site works fine for a few days after deploying to
 
 To prevent this scenario, you must configure your server with allowlisted {{ PRODUCT_NAME }} IP addresses.
 
-[Learn more.](/guides/basics/serving_traffic#firewall-allowing-ip-addresses)
+[Learn more.](/applications/basics/serving_traffic#firewall-allowing-ip-addresses)
 
 #### Procedure {/* procedure */}
 
@@ -439,16 +439,16 @@ Troubleshoot your code to find and fix the error.
 #### Allowlist Error {/* allowlist-error */}
 
 If the command succeeds and finishes quickly, it is probably an allowlist error.
-Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/guides/basics/serving_traffic#firewall-allowing-ip-addresses) to your server's IP allowlist.
+Contact your operations team and ask them to add the IP addresses in [_Allowlisting_](/applications/basics/serving_traffic#firewall-allowing-ip-addresses) to your server's IP allowlist.
 
 ## Edge Functions {/*edge-functions*/}
 
-Analyze the performance of your edge function(s) by reviewing performance and custom metrics from within Edge Insights. 
+Analyze the performance of your edge function(s) by reviewing performance and custom metrics from within Edge Insights.
 
-1.  [Load the desired environment-specific Edge Insights page.](/guides/performance/observability/edge_insights#basic-usage)
+1.  [Load the desired environment-specific Edge Insights page.](/applications/performance/observability/edge_insights#basic-usage)
 2.  Verify that the **Data Source** option is set to `Access Logs`.
 3.  Scroll down to the **Top Results** section.
-4.  Set one of the pie charts to the desired Edge Functions metric. These metrics start with `Edge Function`. 
+4.  Set one of the pie charts to the desired Edge Functions metric. These metrics start with `Edge Function`.
 5.  From the **Timelines** section, click the source corresponding to the metric selected in the previous step.
 6.  Optional. Filter the report to a specific edge function (i.e., `Edge Function Name = <edge_function PROPERTY>`).
     ![Filtering by edge function](/images/v7/performance/edge-insights-filters-ef.png)
@@ -460,9 +460,9 @@ Troubleshoot delivery and performance issues using the following tools:
 
 | Tool                                                                                         | Description                                                                                                                                                                                           |
 | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [{{ CHROME_EXTENSION }}](/guides/performance/observability/developer_tools_chrome_extension) | This Chrome extension describes each request associated with the current page. Use this information to gain insight into delivery issues, caching, and performance.                                   |
-| [Edge Insights](/guides/performance/observability/edge_insights)                             | Review detailed information about each request to your website in near real-time.                                                                                                                     |
-| [RTLD CDN](/guides/logs/rtld)                                                                | Review historical information for all requests, even those that never reach your application code (e.g., cache hits, static assets, requests routed to custom backends, edge redirects, etc.).        |
+| [{{ CHROME_EXTENSION }}](/applications/performance/observability/developer_tools_chrome_extension) | This Chrome extension describes each request associated with the current page. Use this information to gain insight into delivery issues, caching, and performance.                                   |
+| [Edge Insights](/applications/performance/observability/edge_insights)                             | Review detailed information about each request to your website in near real-time.                                                                                                                     |
+| [RTLD CDN](/applications/logs/rtld)                                                                | Review historical information for all requests, even those that never reach your application code (e.g., cache hits, static assets, requests routed to custom backends, edge redirects, etc.).        |
 | [Visual Studio Code](#visual-studio-code)                                                    | This tool allows you to add breakpoints within your code to troubleshoot delivery issues.                                                                                                             |
 | [Server Logs](#server-logs)                                                                  | Review messages from your application.                                                                                                                                                                |
 | [curl](#curl)                                                                                | Issue requests to your website using curl. This tool allows you to eliminate browser-specific behavior when troubleshooting issues.                                                                   |
@@ -470,7 +470,7 @@ Troubleshoot delivery and performance issues using the following tools:
 
 ## Visual Studio Code {/* visual-studio-code */}
 
-Set up debugging within Visual Studio Code for your CDN-as-code configuration through the following steps: 
+Set up debugging within Visual Studio Code for your CDN-as-code configuration through the following steps:
 
 1.  Open `.vscode/launch.json`.
 2.  Click **Add Configuration** and select **Node.js: Launch Program**.
@@ -497,7 +497,7 @@ This configuration allows you to set breakpoints in both your {{ PRODUCT_NAME }}
 
 By viewing the server logs in the {{ PORTAL }}, you can see all of the messages logged by your application using `console.log`, `console.warn`, etc...
 
-By enabling [Deep Request Inspection](/guides/logs/server_logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application through the {{ PRODUCT }} cloud. You can also see each upstream API request made by your application.
+By enabling [Deep Request Inspection](/applications/logs/server_logs#deep-request-inspection) in your environment, you can also see the headers and body of every request and response served by your application through the {{ PRODUCT }} cloud. You can also see each upstream API request made by your application.
 
 Debug issues related to routing to your origin by temporarily moving the proxy from the edge to the {{ PRODUCT }} cloud:
 
@@ -517,17 +517,17 @@ Debug issues related to routing to your origin by temporarily moving the proxy f
   })
 ```
 
-Once it has been deployed, you can observe the output in your [server logs](/guides/logs/server_logs).
+Once it has been deployed, you can observe the output in your [server logs](/applications/logs/server_logs).
 
 We strongly recommend to proxy traffic from the edge whenever possible, as that is more performant and avoids {{ PRODUCT }} cloud surcharges. The above solution should only be used as a temporary measure while addressing issues.
 
-[Learn more about server logs.](/guides/logs/server_logs)
+[Learn more about server logs.](/applications/logs/server_logs)
 
 ## curl {/* confirming-behavior-with-curl */}
 
 Removing the browser as a variable in your equation is a good way to confirm what the origin server is doing. Below are a few of the common CURL commands we leverage to verify behavior.
 
-Use the `-k` option to skip TLS validation if a TLS certificate has not been provisioned for the requested domain. 
+Use the `-k` option to skip TLS validation if a TLS certificate has not been provisioned for the requested domain.
 
 **View Headers Only**
 
@@ -573,12 +573,12 @@ curl -vv --silent https://www.yoursite.com/?{{ PRODUCT_NAME_LOWER }}_debug=true 
 
 ## Source Maps {/* source-maps */}
 
-If you are using CDN-as-code, then {{ PRODUCT }} automatically produces a source map for your router file. This source map contains a stacktrace that references the original source file for each runtime error that occurs during routing. If your application build produces source maps for the server bundle, these will also be used when reporting errors. 
+If you are using CDN-as-code, then {{ PRODUCT }} automatically produces a source map for your router file. This source map contains a stacktrace that references the original source file for each runtime error that occurs during routing. If your application build produces source maps for the server bundle, these will also be used when reporting errors.
 
 **Key information:**
 
 -   By default, application-level source maps are not enabled, since they may cause the {{ PRODUCT }} cloud bundle to be larger than the 50MB limit.
--   Source maps loaded within our {{ PRODUCT }} cloud infrastructure may result in `539 Project Timeout` errors due to performance issues. If this occurs, try again with sourcemaps disabled. 
+-   Source maps loaded within our {{ PRODUCT }} cloud infrastructure may result in `539 Project Timeout` errors due to performance issues. If this occurs, try again with sourcemaps disabled.
 
 {{ PRODUCT }} provides a convenient way to enable source maps when using Next and Nuxt:
 

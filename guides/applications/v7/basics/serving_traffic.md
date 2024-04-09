@@ -2,7 +2,7 @@
 title: Serving Traffic through Our Network
 ---
 
-Serve traffic through {{ PRODUCT }} by [updating the DNS records for each hostname registered with {{ PRODUCT }}](#dns) to point to our service. 
+Serve traffic through {{ PRODUCT }} by [updating the DNS records for each hostname registered with {{ PRODUCT }}](#dns) to point to our service.
 
 <Callout type="important">
 
@@ -16,12 +16,12 @@ Before updating your DNS records, verify that you have performed the following t
 
 | Task                                                                                                                                                                               | Description                                                                                                                                                                                                                                                                   |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Created hostname(s) through the [{{ PORTAL }}](/guides/basics/hostnames#add-modify-delete-hostname) or  [CDN-as-code](/guides/performance/cdn_as_code/edgio_config#environments).           | Defined each hostname through which your site's content will be delivered.                                                                                                                                                                                                    |
-| Created origin configuration(s) through the [{{ PORTAL }}](/guides/basics/origins#add-an-origin-configuration) or  [CDN-as-code](/guides/performance/cdn_as_code#defining-origins). | Created one or more origin configuration(s) that defines how {{ PRODUCT }} communicates with your web server(s). <br /><br />If you are using CDN-as-code and do not plan on retrieving data from your web server(s), then you do not need to create an origin configuration. |
+| Created hostname(s) through the [{{ PORTAL }}](/applications/basics/hostnames#add-modify-delete-hostname) or  [CDN-as-code](/applications/performance/cdn_as_code/edgio_config#environments).           | Defined each hostname through which your site's content will be delivered.                                                                                                                                                                                                    |
+| Created origin configuration(s) through the [{{ PORTAL }}](/applications/basics/origins#add-an-origin-configuration) or  [CDN-as-code](/applications/performance/cdn_as_code#defining-origins). | Created one or more origin configuration(s) that defines how {{ PRODUCT }} communicates with your web server(s). <br /><br />If you are using CDN-as-code and do not plan on retrieving data from your web server(s), then you do not need to create an origin configuration. |
 | [Configured your firewall.](#firewall-allowing-ip-addresses)                                                                                                                        | If you have defined one or more origin configuration(s), then you must configure your firewall to accept traffic from our network.                                                                                                                                            |
-| [Enabled HTTPS support.](/guides/basics/hostnames#https-traffic)                                                                                                                    | Enabled HTTPS support for each registered hostname by either autogenerating or uploading a TLS certificate to our network.                                                                                                                                                    |
-| [Deployed your configuration.](/guides/basics/deployments)                                                                                                                         | Deployed the above configurations to {{ PRODUCT }}.                                                                                                                                                                                                                           |
-| QA                                                                                                                                                                                 | Tested your site by loading it through a [deployment-specific link](/guides/basics/deployments#deployment-specific-page).                                                                                                                                                     |
+| [Enabled HTTPS support.](/applications/basics/hostnames#https-traffic)                                                                                                                    | Enabled HTTPS support for each registered hostname by either autogenerating or uploading a TLS certificate to our network.                                                                                                                                                    |
+| [Deployed your configuration.](/applications/basics/deployments)                                                                                                                         | Deployed the above configurations to {{ PRODUCT }}.                                                                                                                                                                                                                           |
+| QA                                                                                                                                                                                 | Tested your site by loading it through a [deployment-specific link](/applications/basics/deployments#deployment-specific-page).                                                                                                                                                     |
 
 ## Firewall - Allowing {{ PRODUCT }} IP Addresses {/*firewall-allowing-ip-addresses*/}
 
@@ -29,7 +29,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
 <Callout type="important">
 
-  IP blocks may vary by organization. 
+  IP blocks may vary by organization.
 
 </Callout>
 
@@ -43,7 +43,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
 1.  Load the **Origins** page.
 
-    {{ ENV_NAV }} **Origins**. 
+    {{ ENV_NAV }} **Origins**.
 
 2.  From the information bar at the top of the page, click **instructions**.
 
@@ -59,7 +59,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
 ## DNS
 
-Once you are ready to serve traffic through {{ PRODUCT }}, you will need to configure DNS for each hostname. DNS configuration consists of defining a CNAME record that points your hostname to our service. 
+Once you are ready to serve traffic through {{ PRODUCT }}, you will need to configure DNS for each hostname. DNS configuration consists of defining a CNAME record that points your hostname to our service.
 
 <Callout type="info">
 
@@ -73,28 +73,28 @@ From your DNS service provider, point your hostname(s) to a service domain that 
 
 ### Environment-Specific Service Domain {/*environment-specific-service-domain*/}
 
-{{ PRODUCT }} assigns a different service domain to each of your environments. You may point any hostname defined within a specific environment to its service domain. 
+{{ PRODUCT }} assigns a different service domain to each of your environments. You may point any hostname defined within a specific environment to its service domain.
 
 **To view the service domain assigned to a specific environment**
 
 1.  Load the **Hostnames** page.
 
-    {{ ENV_NAV }} **Hostnames**. 
+    {{ ENV_NAV }} **Hostnames**.
 
 2.  From the **DNS** column, click **Actions needed**.
 
     ![DNS - Actions needed](/images/v7/basics/hostnames-dns.png)
 
-3.  From the **DNS Configuration** pane, click <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
+3.  From the **DNS Configuration** pane, click <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain.
 
 ### Space-Specific Service Domain {/*space-specific-service-domain*/}
 
 {{ PRODUCT }} assigns a different service domain to:
 
 -   Your private space.
--   Each organization to which you belong. 
+-   Each organization to which you belong.
 
-You may point any hostname defined within a private space or organization to its service domain. 
+You may point any hostname defined within a private space or organization to its service domain.
 
 **To view the service domain**
 
@@ -103,7 +103,7 @@ You may point any hostname defined within a private space or organization to its
     1.  From the {{ PORTAL_LINK }}, select the desired private space or organization.
     2.  Click **Settings**.
 
-2.  From the **Organization DNS Configuration** section, click <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain. 
+2.  From the **Organization DNS Configuration** section, click <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain.
 
 ### Serving Traffic at the Zone Apex {/*serving-traffic-at-the-zone-apex*/}
 

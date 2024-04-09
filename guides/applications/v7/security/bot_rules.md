@@ -4,9 +4,9 @@ title: Bot Manager
 
 Bot Manager is designed to mitigate undesired bot traffic and prevent them from performing undesired or malicious activity, such as scraping your site, carding, taking over accounts through credential stuffing, spamming your forms, launching DDoS attacks, and committing ad fraud.
 
-There are two versions of Bot Manager: 
+There are two versions of Bot Manager:
 
--   **Bot Manager Standard:** This version is designed to mitigate basic bots through a browser challenge. 
+-   **Bot Manager Standard:** This version is designed to mitigate basic bots through a browser challenge.
 
     <Callout type="important">
 
@@ -38,16 +38,16 @@ Bot Manager Advanced inspects each request to determine whether the request:
 
 1.  Matches an exception. [Exceptions](#exceptions) identify trafic that should bypass bot detection.
 2.  Matches a rule. A rule defines the criteria that our service will use to identify a bad bot.
-    
+
     You may identify bots using:
-    
+
     -   Information derived from the request, such as geolocation, IP address, and the URL path.
     -   Our request and behavioral analysis that assigns a bot score to the request that defines our level of confidence that it is a bot.
 
         <Callout type="tip">
 
-          You may set actions based off of bot score thresholds.  
-          
+          You may set actions based off of bot score thresholds.
+
           For example, you may redirect requests whose bot score is between 50 and 80% and block requests whose bot score is greater than 80%.
 
         </Callout>
@@ -61,9 +61,9 @@ Bot Manager Advanced inspects each request to determine whether the request:
 
 -   Your configuration determines how our service will handle the above traffic patterns.
 -   If a request satisfies multiple criteria, then the above order determines the action that will be applied to it. Specifically, the order of precedence is:
-    
+
     `Exceptions > Bots Identified by a Rule > Known Bots > Spoofed Bots`
-    
+
 -   Bypass the above bot detection measures by creating an exception for one or more URL(s), user agent(s), JA3 fingerprint(s), or cookie(s).
 
 ## Actions {/*actions*/}
@@ -90,9 +90,9 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
     -   Solving a challenge requires a JavaScript-enabled client. Users that have disabled JavaScript on their browsing session will be unable to access content protected by browser challenges.
     -   We strongly recommend that you avoid applying browser challenges to machine-to-machine interactions.
-    
+
         For example, applying browser challenges to API traffic will disrupt your API workflow.
-    
+
     -   The **HTTP Status Code** option determines the HTTP status code for the response provided to clients that are being served the browser challenge.
 
         <Callout type="info">
@@ -128,7 +128,7 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
         <Callout type="tip">
 
-          This option supports the use of [event variables](/guides/security/security_applications#event-variables) to customize the response.
+          This option supports the use of [event variables](/applications/security/security_applications#event-variables) to customize the response.
 
         </Callout>
 
@@ -136,16 +136,16 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
         ```html
         <!DOCTYPE html><html>
-    
+
         <head><title>Page Not Found</title></head>
-    
+
         <body>Page not found.</body>
-    
+
         </html>
         ```
-    
+
     -   **HTTP Status Code:** Defines the HTTP status code that will be sent to the client.
-    
+
         <details>
           <summary>View valid status codes.</summary>
 
@@ -211,21 +211,21 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
           -   511
 
         </details>
-    
+
     -   **Custom Response Headers:** Defines one or more response headers that will be sent to the client. Define each custom response header on a separate line.
-    
+
         **Syntax:** `<HEADER>:<VALUE>`
-    
+
         **Example:** `MyCustomHeader: True`
 
         <Callout type="info">
 
-          This option supports the use of [event variables](/guides/security/security_applications#event-variables) to customize the response.
+          This option supports the use of [event variables](/applications/security/security_applications#event-variables) to customize the response.
 
         </Callout>
 
         <Callout type="info">
-    
+
           All characters, including spaces, defined before or after the colon will be treated as a part of the specified header name or value, respectively.
 
         </Callout>
@@ -250,12 +250,12 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
     -   Setting up reCAPTCHA requires:
 
-        1.  [Adding reCAPTCHA v3 to your site](https://www.google.com/recaptcha/admin/create) through Google. Upon adding reCAPTCHA to your site, Google will provide a reCAPTCHA site key and secret key. 
-        2.  Configure a reCAPTCHA action within the desired bot rule set. 
+        1.  [Adding reCAPTCHA v3 to your site](https://www.google.com/recaptcha/admin/create) through Google. Upon adding reCAPTCHA to your site, Google will provide a reCAPTCHA site key and secret key.
+        2.  Configure a reCAPTCHA action within the desired bot rule set.
         3.  From the **Bot Rules** tab, find the desired bot rule(s) and set the **Rule Action** option to `reCAPTCHA`. Save your changes.
         4.  From the desired Security Application configuration:
 
-            1.  Verify that the **Production Bot Manager** option is set to the above bot rule set. 
+            1.  Verify that the **Production Bot Manager** option is set to the above bot rule set.
             2.  Toggle the **reCAPTCHA off** option to **reCAPTCHA on**.
             3.  Set the **reCAPTCHA Site Key** option to the site key provided by Google in step 1.
             4.  Set the **reCAPTCHA Secret Key** option to the secret key provided by Google in step 1.
@@ -275,10 +275,10 @@ If you are using Bot Manager Standard, then you may only apply a browser challen
 
     -   The HTTP status code for this response will be a `302 Found`.
     -   Set the **URL** option to the full URL to which requests will be redirected.
-    
+
         **Example:** `http://cdn.mydomain.com/marketing/busy.html`
 
--   **Silent Close:** Drops the request without providing a response to the client. 
+-   **Silent Close:** Drops the request without providing a response to the client.
 
 ## Bot Manager Configuration {/*bot-manager-configuration*/}
 
@@ -286,7 +286,7 @@ Each rule within a Bot Manager configuration identifies bot traffic. Each rule c
 
 -   Up to 6 conditions that define request identification criteria.
 -   A rule ID and message that will be associated with requests identified by this rule.
-    
+
     <Callout type="tip">
 
       Assigning a unique ID and message to each rule makes it easy to identify requests detected as a result of a specific rule.
@@ -308,7 +308,7 @@ Each rule within a Bot Manager configuration identifies bot traffic. Each rule c
 ### Custom Bot Detection {/*custom-bot-detection*/}
 
 A request must satisfy at least one rule before WAF will consider it bot traffic. A rule is satisfied when a match is found for each of its conditions. A condition defines what will be matched (i.e., variable), how it will be matched (i.e., operator), and a match value.
-    
+
 <Callout type="info">
 
   Certain variables match on key-value pairs. If you match on multiple keys within a single variable, {{ PRODUCT }} {{ PRODUCT_SECURITY }} will only need to find one of those matches to satisfy that variable.
@@ -319,7 +319,7 @@ A request must satisfy at least one rule before WAF will consider it bot traffic
 
 <Callout type="info">
 
-  Bot detection through a {{ PRODUCT }} Reputation DB rule has been deprecated. Although existing rules may contine to use this database, you may not assign it to a new rule. 
+  Bot detection through a {{ PRODUCT }} Reputation DB rule has been deprecated. Although existing rules may contine to use this database, you may not assign it to a new rule.
 
 </Callout>
 
@@ -379,7 +379,7 @@ A variable identifies the request element that {{ PRODUCT }} {{ PRODUCT_SECURITY
 
     <a id="country" />
 
--   **Country:** Identifies requests by the country from which the request originated. Specify the desired country using a [country code](/guides/reference/country_codes).
+-   **Country:** Identifies requests by the country from which the request originated. Specify the desired country using a [country code](/applications/reference/country_codes).
 
     <Callout type="tip">
 
@@ -393,10 +393,10 @@ A variable identifies the request element that {{ PRODUCT }} {{ PRODUCT_SECURITY
 
     <a id="ip-address" />
 
--   **IP address:** Identify requests by the requester's IPv4 and/or IPv6 address. 
+-   **IP address:** Identify requests by the requester's IPv4 and/or IPv6 address.
 
-    -   Specify a comma-delimited list of the desired IP address(es) using standard IPv4/IPv6 and CIDR notation. 
-    -   Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., 11.22.33.0/22). 
+    -   Specify a comma-delimited list of the desired IP address(es) using standard IPv4/IPv6 and CIDR notation.
+    -   Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., 11.22.33.0/22).
     -   Do not specify more than 1,000 IP addresses or IP blocks.
 
     **Example:** `192.0.2.20,203.0.113.0/24,2001:DB8::/32`
@@ -541,7 +541,7 @@ You may create, modify, and delete Bot Manager configurations.
 
 **Key information:**
 -   Administer Bot Manager configurations from the **Bot Manager** page.
--   Apply a Bot Manager configuration to production traffic by adding it to a [Security Application configuration](/guides/security/security_applications). Multiple Security Application Manager configurations may use the same Bot Manager configuration.
+-   Apply a Bot Manager configuration to production traffic by adding it to a [Security Application configuration](/applications/security/security_applications). Multiple Security Application Manager configurations may use the same Bot Manager configuration.
 -   It typically takes less than a minute to apply Bot Manager configuration changes across our entire network.
 
 **To create a Bot Manager configuration**
@@ -549,7 +549,7 @@ You may create, modify, and delete Bot Manager configurations.
     {{ SECURITY_NAV }} **Bot Manager**.
 2.  Click **+ New Bot Manager**.
 3.  In the **Name** option, type the unique name by which this Bot Manager configuration will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application Manager configuration.
-4.  Set up the desired enforcement action(s). 
+4.  Set up the desired enforcement action(s).
 
     <Callout type="info">
 
@@ -586,7 +586,7 @@ You may create, modify, and delete Bot Manager configurations.
             2.  From the **Response Body** option, specify the body of the response that will be sent to clients.
             3.  From the **HTTP status code** option, determine the HTTP status code for the response that will be sent to clients.
             4.  From the **Response Headers** option, define each desired [custom response header](#custom-response) on a separate line.
-                
+
                 **Example:** `MyCustomHeader: True`
 
         -   **reCAPTCHA:** Perform the following steps to set up a reCAPTCHA:
@@ -611,13 +611,13 @@ You may create, modify, and delete Bot Manager configurations.
         -   **Redirect:** Set the **URL** option to the full URL to which requests will be redirected.
 
 5.  Bot Manager Advanced only. Perform the following steps to automatically detect known bots:
-    
-    1.  From the left-hand pane, verify that **Known Bots** is selected. 
+
+    1.  From the left-hand pane, verify that **Known Bots** is selected.
     2.  Select whether to apply an action to all known bots (**Toggle all**), a specific bot, or to 200+ bots (**other**).
 
         <Callout type="info">
 
-          Toggle **other** to apply an action to 200+ known good bots. This option excludes the bots listed on the **Known Bots** tab. 
+          Toggle **other** to apply an action to 200+ known good bots. This option excludes the bots listed on the **Known Bots** tab.
 
         </Callout>
 
@@ -632,37 +632,37 @@ You may create, modify, and delete Bot Manager configurations.
 
     </Callout>
 
-7.  Create rules for identifying bots from the **Bot Rules** tab. 
+7.  Create rules for identifying bots from the **Bot Rules** tab.
 
     1.  Click **+ New Rule**. A rule is satisfied when a match is found for each of its conditions.
     2.  In the **Rule message** option, type a brief description for this rule.
     3.  In the **Rule Action** option, choose how this rule will be enforced.
     4.  In the **Rule ID** option, specify a number between 77,000,000 and 77,999,999.
     5.  Modify the default condition to determine how WAF will identify requests. From the condition's **Variable** option, select the request element through which WAF will identify requests.
-        
+
         [Learn more about variables.](#variables)
-        
+
     6.  Certain variables (e.g., request cookies and request header) match on name and value. If you have selected this type of variable, then perform the following steps:
-        
+
         1.  Click **+ Add Match**.
         2.  From the **Name** option, type the desired name.
-            
+
             For example, match for requests that contain an `Authorization` header by setting this option to `Authorization`.
-            
+
         3.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the name defined in the previous step.
         4.  If you specified a regular expression in the **Name** option, then you should mark the **Regex Match** option.
         5.  Optional. Add another match through which this variable can be satisfied by repeating the above steps.
     7.  Optional. Mark the **Count** option to match by the number of instances that a match is found instead of by inspecting that request element.
-        
+
         [Learn more.](#count)
-        
+
     8.  From the **Operator** option, select an operator that determines how WAF will compare the match value to the request element identified by the above variable.
-        
+
         [Learn more.](#operators)
-        
+
     9.  In the **Match value** option, type the value that will be compared against the request element identified by the above variable.
     10.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the value defined in the previous step.
-    11.  Optional. Click **+ Add Condition** to add another condition that must be met prior to request identification. 
+    11.  Optional. Click **+ Add Condition** to add another condition that must be met prior to request identification.
 
 8.  Optional. Add another rule by repeating step 7.
 9.  Optional. Bot Manager Advanced only. Identify traffic that will bypass bot detection.

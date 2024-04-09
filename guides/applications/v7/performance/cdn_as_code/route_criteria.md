@@ -4,7 +4,7 @@ title: Route Criteria and Conditions
 
 Route conditions allow you to match requests based on the request path, method, query parameters, cookies, and request headers. You can also use route conditions to match requests based on regular expressions and negation.
 
-As outlined in the [Route Criteria](/guides/performance/cdn_as_code#route-criteria) section of the CDN-as-Code guide, route criteria are defined as the first argument to the `Router` method being called in the `routes.js` file, such as `.match()`, `.get()`, `.post()`, etc.
+As outlined in the [Route Criteria](/applications/performance/cdn_as_code#route-criteria) section of the CDN-as-Code guide, route criteria are defined as the first argument to the `Router` method being called in the `routes.js` file, such as `.match()`, `.get()`, `.post()`, etc.
 
 ## Matching All Requests {/* matching-all-requests */}
 
@@ -264,6 +264,6 @@ Regular expression matching is also available for matching query parameters, coo
 
 <Callout type="important">
 
-To learn about defining conditional logic and nested rules, refer to the [Conditional Routes](/guides/performance/cdn_as_code/conditional_routes) documentation.
+To learn about defining conditional logic and nested rules, refer to the [Conditional Routes](/applications/performance/cdn_as_code/conditional_routes) documentation.
 
 </Callout>

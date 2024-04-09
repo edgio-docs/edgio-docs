@@ -9,7 +9,7 @@ This guide shows you how to deploy a [RedwoodJS](https://redwoodjs.com/) applica
 <ExampleButtons
   title="RedwoodJS"
   siteUrl="https://edgio-community-examples-redwoodjs-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-redwoodjs-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-redwoodjs-example"
   deployFromRepo />
 
 ## Connector {/*connector*/}
@@ -83,4 +83,4 @@ You can also deploy using the {{ PRODUCT }} CLI with:
 
 The deploy command for RedwoodJS takes the same deploy arguments as using {{ PRODUCT }} to deploy. You can see all the available options using `yarn rw deploy {{ FULL_CLI_NAME }} --help`
 
-See [Deployments](/guides/basics/deployments) for more information.
+See [Deployments](/applications/basics/deployments) for more information.

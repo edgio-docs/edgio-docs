@@ -14,14 +14,14 @@ Origin server compression occurs when a web server associated with your origin c
 1.  The client's request must contain an [Accept-Encoding request header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding) set to one or more of the following values:
 
     `br | gzip | deflate | bzip2`
-	
+
 	**Example:** `Accept-Encoding: br, gzip, deflate`
 
 2.  The web server(s) associated with your origin configuration must support the compression method defined within the `Accept-Encoding` request header.
 
 <Callout type="info">
 
-  The `Accept-Encoding` header allows the user agent (e.g., a web browser) to indicate which compression methods it supports to the origin server. 
+  The `Accept-Encoding` header allows the user agent (e.g., a web browser) to indicate which compression methods it supports to the origin server.
 
 </Callout>
 
@@ -49,18 +49,18 @@ Edge server compression requires enabling compression for the desired content ty
 
 Enable compression for each desired content type through the following steps:
 
-1.  Create or modify a rule that identifies the set of requests on which compression will be enabled. 
-2.  Add the [Compress Content Types feature (compress_content_types)](/guides/performance/rules/features#compress-content-types) to it. Set it to the desired set of content types.
+1.  Create or modify a rule that identifies the set of requests on which compression will be enabled.
+2.  Add the [Compress Content Types feature (compress_content_types)](/applications/performance/rules/features#compress-content-types) to it. Set it to the desired set of content types.
 
 The following examples demonstrate how to enable edge server compression using:
 
--   [Rules:](/guides/performance/rules#managing-rules)
+-   [Rules:](/applications/performance/rules#managing-rules)
 
     The following configuration enables edge server compression for the 4 sample content types described above.
 
     ![Compress Content Types Feature](/images/v7/performance/compress-content-types.png?width=450)
 
--   [CDN-as-Code:](/guides/performance/cdn_as_code)
+-   [CDN-as-Code:](/applications/performance/cdn_as_code)
 
     The following sample rule enables edge server compression across all requests for the 4 sample content types described above.
 
@@ -82,19 +82,19 @@ The following examples demonstrate how to enable edge server compression using:
 
 <Callout type="info">
 
-  Once you have enabled edge server compression on the desired content types, {{ PRODUCT }} will compress content when all of the [required conditions](#edge-server-compression) have been met. If one or more conditions have not been met, then {{ PRODUCT }} will serve either uncompressed cached content or the response provided by the origin server or the {{ PRODUCT }} cloud. 
+  Once you have enabled edge server compression on the desired content types, {{ PRODUCT }} will compress content when all of the [required conditions](#edge-server-compression) have been met. If one or more conditions have not been met, then {{ PRODUCT }} will serve either uncompressed cached content or the response provided by the origin server or the {{ PRODUCT }} cloud.
 
 </Callout>
 
 ## Cache Implications {/*implications-on-caching*/}
 
-If your caching policy allows the requested content to be cached, then {{ PRODUCT }} can cache each version of the requested content that it serves. 
+If your caching policy allows the requested content to be cached, then {{ PRODUCT }} can cache each version of the requested content that it serves.
 
 For example, if {{ PRODUCT }} serves a Gzip, DEFLATE, and an uncompressed version of the requested content, then it can potentially cache 3 different versions of that content on our network.
 
 ## How Does Compression Work? {/*how-does-compression-work*/}
 
-The process through which requested content is compressed is outlined below. 
+The process through which requested content is compressed is outlined below.
 
 1.  Does the request contain an `Accept-Encoding` header?
 
@@ -103,7 +103,7 @@ The process through which requested content is compressed is outlined below.
         -   **No:** Our edge servers will check whether an asset compressed using that method has been cached. If this check results in a cache hit, then our edge servers will serve it immediately. Otherwise, it is a cache miss and our edge servers will retrieve it from your origin configuration or the {{ PRODUCT }} cloud. Skip to step 3.
     -   **No:** Requests that are missing the `Accept-Encoding` header are served in an uncompressed format. This response is derived from either an origin server, the {{ PRODUCT }} cloud, or cache.
 
-2.  An edge server on the POP closest to the client will check to see if the requested content has been cached and if it still has a valid TTL. 
+2.  An edge server on the POP closest to the client will check to see if the requested content has been cached and if it still has a valid TTL.
 
     -   **Cache Miss:** If a cached version of the requested content is not found, then the request will be forwarded to an origin server or the {{ PRODUCT }} cloud. Proceed to step 3.
     -   **Cache Hit & Matching Compression Method:** An edge server will immediately deliver the compressed content to the client.

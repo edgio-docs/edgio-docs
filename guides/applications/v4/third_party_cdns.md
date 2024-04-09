@@ -21,7 +21,7 @@ There are two major techniques to solve these problems:
 
 ## Split Testing {/*split-testing*/}
 
-{{ PRODUCT_NAME }} offers fully featured [split testing](/guides/split_testing). When {{ PRODUCT_NAME }} is running behind another CDN, the CDN must be configured in a very specific way in order for split testing to work:
+{{ PRODUCT_NAME }} offers fully featured [split testing](/applications/split_testing). When {{ PRODUCT_NAME }} is running behind another CDN, the CDN must be configured in a very specific way in order for split testing to work:
 
 1. Third-party CDN must be configured to not [cache](#section_caching) anything.
 2. The CDN must be configured to not affect any cookies that begin with [`{{ COOKIE_PREFIX }}_`](split_testing#section_how_requests_are_routed).
@@ -36,7 +36,7 @@ Caching and traffic metrics are another area that is affected by CDN caching or 
 
 ## Client IPs {/*client-ips*/}
 
-When behind a third-party CDN, there is no way for {{ PRODUCT_NAME }} to securely determine the IP of the user agent that originated the request, hence the `{{ HEADER_PREFIX }}-client-ip` header will contain the IP of the third-party CDN rather than the actual user agent. Relying on headers like `x-forwarded-for` to determine the IP necessarily introduces a security hole where attackers can simply spoof the IP and work around IP allow/block and geolocation blocking features of the plaform. Since {{ PRODUCT_NAME }} uses the client IP to determine the [geolocation headers](/guides/request_headers#section_geolocation_headers), this means that geolocation headers will also have incorrect values.
+When behind a third-party CDN, there is no way for {{ PRODUCT_NAME }} to securely determine the IP of the user agent that originated the request, hence the `{{ HEADER_PREFIX }}-client-ip` header will contain the IP of the third-party CDN rather than the actual user agent. Relying on headers like `x-forwarded-for` to determine the IP necessarily introduces a security hole where attackers can simply spoof the IP and work around IP allow/block and geolocation blocking features of the plaform. Since {{ PRODUCT_NAME }} uses the client IP to determine the [geolocation headers](/applications/request_headers#section_geolocation_headers), this means that geolocation headers will also have incorrect values.
 
 In this situation, it is your responsibility to correctly set the client IP header and the dependent geolocation headers and pass it that way to {{ PRODUCT_NAME }} and upstream servers.
 

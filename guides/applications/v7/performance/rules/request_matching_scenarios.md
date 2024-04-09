@@ -2,7 +2,7 @@
 title: Request Matching Scenarios
 ---
 
-Before adding [features](/guides/performance/rules/features) that customize how your traffic is processed, you must first decide the set of requests to which they will be applied. You may either apply them to all requests or use match condition(s) to only apply them to specific requests. Common request matching scenarios are listed below.
+Before adding [features](/applications/performance/rules/features) that customize how your traffic is processed, you must first decide the set of requests to which they will be applied. You may either apply them to all requests or use match condition(s) to only apply them to specific requests. Common request matching scenarios are listed below.
 
 -   [All requests](#all-requests)
 -   [Request URL](#request-url)
@@ -13,13 +13,13 @@ Before adding [features](/guides/performance/rules/features) that customize how 
 -   [Cookies](#cookies)
 -   [Headers](#headers)
 -   [Country](#country)
--   [Status Code](/guides/performance/rules/feature_scenarios#custom-response-for-specific-status-codes)
+-   [Status Code](/applications/performance/rules/feature_scenarios#custom-response-for-specific-status-codes)
 
-In addition to these common scenarios, [there are many other ways](/guides/performance/rules/conditions) through which Rules can match requests. Additionally, you can combine match conditions to selectively apply features when multiple conditions have been met. You may also use [Else or Else If statements](#matching-with-conditional-logic) to apply features when specific criteria has not been met. The power and flexiblity of Rules allows you to use basic configurations or build upon them to create a configuration that addresses your complex business needs.
+In addition to these common scenarios, [there are many other ways](/applications/performance/rules/conditions) through which Rules can match requests. Additionally, you can combine match conditions to selectively apply features when multiple conditions have been met. You may also use [Else or Else If statements](#matching-with-conditional-logic) to apply features when specific criteria has not been met. The power and flexiblity of Rules allows you to use basic configurations or build upon them to create a configuration that addresses your complex business needs.
 
 ## All Requests {/*all-requests*/}
 
-Create a rule without match conditions to apply a set of features to all requests. The recommended position for this rule is the top of the list. This allows rules positioned below it to override this configuration for specific use cases. 
+Create a rule without match conditions to apply a set of features to all requests. The recommended position for this rule is the top of the list. This allows rules positioned below it to override this configuration for specific use cases.
 
 <Callout type="tip">
 
@@ -33,16 +33,16 @@ Create a rule without match conditions to apply a set of features to all request
 
 Apply a set of features to:
 -   A specific hostname through the Request Header match condition.
--   A specific path through the Path match condition. 
+-   A specific path through the Path match condition.
 -   A query parameter through the Query Parameter match condition.
 
 ### Hostname {/*hostname*/}
 
-Use the [Request Header match condition](/guides/performance/rules/conditions#request-header) to find requests by hostname. 
+Use the [Request Header match condition](/applications/performance/rules/conditions#request-header) to find requests by hostname.
 
 1.  Set the **Header Name** option to `Host`.
 2.  Verify that the **Operator** option is set to `equals`.
-3.  Set the **Value** option to the desired hostname. 
+3.  Set the **Value** option to the desired hostname.
 
 The following configuration matches all requests whose `Host` header is set to `cdn.example.com`.
 
@@ -54,7 +54,7 @@ Match all requests for multiple hostnames through a regular expression. The foll
 
 ### Path {/*path*/}
 
-Use the [Path match condition](/guides/performance/rules/conditions#path) to match requests by path. The most common configuration is to apply a rule across all requests whose relative URL starts with a specific value. Set up this match condition by selecting the `matches regular expression` operator and then appending `.*` to the desired relative path. 
+Use the [Path match condition](/applications/performance/rules/conditions#path) to match requests by path. The most common configuration is to apply a rule across all requests whose relative URL starts with a specific value. Set up this match condition by selecting the `matches regular expression` operator and then appending `.*` to the desired relative path.
 
 ![Path match condition](/images/v7/performance/rules-use-case-path.png)
 
@@ -66,21 +66,21 @@ https://cdn-2.example.com/marketing/conferences/widgets/resources/stylesheets/st
 https://images.example.com/marketing/conferences/widgets/features.png
 ```
 
-Restrict the above rule to images whose relative path starts with: `/marketing/conferences/` by adding the [Extension match condition](/guides/performance/rules/conditions#extension). Set up this match condition by selecting the `is one of` operator and then defining the desired file extensions (e.g., png, jpg, and jpeg).
+Restrict the above rule to images whose relative path starts with: `/marketing/conferences/` by adding the [Extension match condition](/applications/performance/rules/conditions#extension). Set up this match condition by selecting the `is one of` operator and then defining the desired file extensions (e.g., png, jpg, and jpeg).
 
 ![Path match condition](/images/v7/performance/rules-use-case-path-extension.png?width=700)
 
 <Callout type="info">
 
-  The [Rewrite URL match condition](/guides/performance/rules/features#rewrite-url) is incompatible with the Extension match condition. Use the [Path match condition](/guides/performance/rules/conditions#path) instead.
+  The [Rewrite URL match condition](/applications/performance/rules/features#rewrite-url) is incompatible with the Extension match condition. Use the [Path match condition](/applications/performance/rules/conditions#path) instead.
 
-  [View a sample configuration.](/guides/performance/rules/feature_scenarios#default-image-optimizations)
+  [View a sample configuration.](/applications/performance/rules/feature_scenarios#default-image-optimizations)
 
 </Callout>
 
 ### Query String {/*query-string*/}
 
-Use the [Query Parameter match condition](/guides/performance/rules/conditions#query-parameter) to find requests that contain a query string parameter set to a specific value. The following configuration matches all requests whose query string contain `session=active`.
+Use the [Query Parameter match condition](/applications/performance/rules/conditions#query-parameter) to find requests that contain a query string parameter set to a specific value. The following configuration matches all requests whose query string contain `session=active`.
 
 ![Query Parameter match condition](/images/v7/performance/rules-use-case-query-parameter.png)
 
@@ -90,13 +90,13 @@ For example, the above configuration matches against the following request:
 
 ## HTTP Method {/*http-method*/}
 
-Use the [Method match condition](/guides/performance/rules/conditions#method) to find requests submitted with the desired HTTP method (e.g., `POST`, `PUT`, or `GET`).
+Use the [Method match condition](/applications/performance/rules/conditions#method) to find requests submitted with the desired HTTP method (e.g., `POST`, `PUT`, or `GET`).
 
 ![Method match condition](/images/v7/performance/rules-use-case-method.png?width=700)
 
 ## Cookies {/*cookies*/}
 
-Use the [Cookie match condition](/guides/performance/rules/conditions#cookie) to find requests that contain a cookie set to a specific value. The following configuration matches all requests that contain this cookie: `type=oatmeal`.
+Use the [Cookie match condition](/applications/performance/rules/conditions#cookie) to find requests that contain a cookie set to a specific value. The following configuration matches all requests that contain this cookie: `type=oatmeal`.
 
 ![Cookie match condition](/images/v7/performance/rules-use-case-cookie.png?width=700)
 
@@ -106,23 +106,23 @@ For example, the above configuration matches against a request that contains the
 
 ## Headers {/*headers*/}
 
-Use the [Request Header match condition](/guides/performance/rules/conditions#request-header) to find requests that contain a header set to a specific value. The following configuration matches all requests whose `Accept-Language` header contains `en-US`.
+Use the [Request Header match condition](/applications/performance/rules/conditions#request-header) to find requests that contain a header set to a specific value. The following configuration matches all requests whose `Accept-Language` header contains `en-US`.
 
 ![Request Header match condition](/images/v7/performance/rules-use-case-request-header.png)
 
 ## Country {/*country*/}
 
-Use the [Country match condition](/guides/performance/rules/conditions#country) to find requests from one or more countries. The following configuration matches all requests from the US, Canada, and Mexico.
+Use the [Country match condition](/applications/performance/rules/conditions#country) to find requests from one or more countries. The following configuration matches all requests from the US, Canada, and Mexico.
 
 ![Country match condition](/images/v7/performance/rules-use-case-country.png)
 
-[View additional geolocation match conditions.](/guides/performance/rules/conditions)
+[View additional geolocation match conditions.](/applications/performance/rules/conditions)
 
 ## Matching with Conditional Logic {/*matching-with-conditional-logic*/}
 
 Match requests when they satisfy:
 
--   A single match condition. The majority of the above examples demonstrate how to match by a single match condition. 
+-   A single match condition. The majority of the above examples demonstrate how to match by a single match condition.
 -   [Multiple match conditions.](#multiple-match-conditions)
 -   [Any match condition](#any-match-condition-in-a-statement) defined within a statement.
 -   [Any statement.](#any-statement)
@@ -130,7 +130,7 @@ Match requests when they satisfy:
 
 ### Multiple Match Conditions {/*multiple-match-conditions*/}
 
-You can add multiple match conditions to a single statement. By default, a request must satisfy all of these conditions before a set of features will be applied to it. 
+You can add multiple match conditions to a single statement. By default, a request must satisfy all of these conditions before a set of features will be applied to it.
 
 The following sample configuration redirects traffic that meets both of the following conditions:
 -   Matches a specific relative path.
@@ -142,7 +142,7 @@ The `and` label, which appears next to the Country match condition, indicates th
 
 ### Any Match Condition in a Statement {/*any-match-condition-in-a-statement*/}
 
-Apply a set of features to requests that match any match condition in a [statement](/guides/performance/rules#statements) by toggling the `and` labels to `or` labels. 
+Apply a set of features to requests that match any match condition in a [statement](/applications/performance/rules#statements) by toggling the `and` labels to `or` labels.
 
 The following sample configuration redirects traffic when it meets any of the following conditions:
 
@@ -154,9 +154,9 @@ The following sample configuration redirects traffic when it meets any of the fo
 
 ### Any Statement {/*any-statement*/}
 
-Add at least one match condition to an [Else statement](/guides/performance/rules#statements) to allow requests to match against any of a rule's statements. 
+Add at least one match condition to an [Else statement](/applications/performance/rules#statements) to allow requests to match against any of a rule's statements.
 
-In the following sample rule, {{ PRODUCT }} will first check whether the request's relative path starts with `/shopping/`. If the request starts with a different relative path, it will then check whether the request originated from the United States, Canada, or Mexico. If the request starts with a different relative path and does not originate from those countries, then it will check whether the `session` cookie has been set to set `active`. 
+In the following sample rule, {{ PRODUCT }} will first check whether the request's relative path starts with `/shopping/`. If the request starts with a different relative path, it will then check whether the request originated from the United States, Canada, or Mexico. If the request starts with a different relative path and does not originate from those countries, then it will check whether the `session` cookie has been set to set `active`.
 
 ![Any statement](/images/v7/performance/rules-use-case-any-statement.png)
 

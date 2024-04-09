@@ -13,12 +13,12 @@ To convert from a Cloudflare Worker to an {{ PRODUCT }} Edge function, you need 
 
 - Rename the function from `fetch` to `handleHttpRequest` and export it.
 - Include both `request` and `context` as arguments to the function.
-- Adjust any references to specific Cloudflare Worker properties or methods to their equivalent {{ PRODUCT }} counterparts. See [Edge Function parameters](/guides/edge_functions#edge-function-parameters).
+- Adjust any references to specific Cloudflare Worker properties or methods to their equivalent {{ PRODUCT }} counterparts. See [Edge Function parameters](/applications/edge_functions#edge-function-parameters).
 - Return a `Response` or `Promise<Response>` instance.
 
 ## Origin Configuration {/* origin-configuration */}
 
-In order to fetch content from an origin, you need to specify the origin in `edgio.config.js` and include it in the `fetch()` call in the edge function. See [origin requests using fetch()](/guides/v7/edge_functions#origin-requests-using-fetch) for configuration requirements.
+In order to fetch content from an origin, you need to specify the origin in `edgio.config.js` and include it in the `fetch()` call in the edge function. See [origin requests using fetch()](/applications/v7/edge_functions#origin-requests-using-fetch) for configuration requirements.
 
 ## Examples {/* examples */}
 

@@ -18,7 +18,7 @@ Sanity Studio is a single page app (SPA) written in React, where you can configu
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/applications/sites_frameworks/connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-sanity-studio-connector">
  View the Connector Code
@@ -89,7 +89,7 @@ Deploy your app to the {{ PRODUCT }} cloud by running the following command in y
 
 {{ system_origins_callout.md }}
 
-[Learn more about deployments.](/guides/basics/deployments)
+[Learn more about deployments.](/applications/basics/deployments)
 
 ## Post Deployment Whitelisting {/*post-deployment-whitelisting*/}
 

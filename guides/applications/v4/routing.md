@@ -17,7 +17,7 @@ Using the Router, you can:
 
 You define routes for {{ PRODUCT_NAME }} using the `routes.js` file.
 
-Before continuing, if you have not already initialized your project with {{ PRODUCT_NAME }}, do so using the instructions in [Web CDN](/guides/webapp_cdn_getting_started).
+Before continuing, if you have not already initialized your project with {{ PRODUCT_NAME }}, do so using the instructions in [Web CDN](/applications/webapp_cdn_getting_started).
 
 The `routes.js` file should export an instance of `{{ PACKAGE_NAME }}/core/router/Router`:
 
@@ -394,7 +394,7 @@ Note that when the `graphqlOperation` function is used, the HTTP request body wi
 
 The `graphqlOperation` function is provided to simplify matching of common GraphQL scenarios. For complex GraphQL matching (such as authenticated data), you can use the generic [_Body Matching for POST requests_](#section_body_matching_for_post_requests) feature.
 
-See the guide on [Implementing GraphQL Routing](/guides/graphql) in your project.
+See the guide on [Implementing GraphQL Routing](/applications/graphql) in your project.
 
 ## Request Handling {/*request-handling*/}
 
@@ -411,7 +411,7 @@ The second argument to routes is a function that receives a `ResponseWriter` and
 
 ## Blocking Search Engine Crawlers {/*blocking-search-engine-crawlers*/}
 
-If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag. 
+If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag.
 
 To block search engine traffic for {{ PRODUCT }} edge links and permalinks, you can use the built-in `.noIndexPermalink()` call on the router:
 
@@ -449,7 +449,7 @@ This example shows typical usage of `{{ PACKAGE_NAME }}/core`, including serving
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
-  // adds `x-robots-tag: noindex` response header to {{ PRODUCT }} 
+  // adds `x-robots-tag: noindex` response header to {{ PRODUCT }}
   // edge links and permalinks to prevent bot indexing
   .noIndexPermalink()
   .get('/service-worker.js', ({ serviceWorker }) => {

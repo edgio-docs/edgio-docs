@@ -43,11 +43,11 @@ After updating your project, compare the dependency versions in your `package.js
 
 ## {{ PRODUCT }} v7.2 Changes {/* edgio-v72-changes */}
 
-{{ PRODUCT }} v7.2.0 introduces support for ESM-based user projects which may require some changes to your project. 
+{{ PRODUCT }} v7.2.0 introduces support for ESM-based user projects which may require some changes to your project.
 
 ### External Dependencies in routes.js {/* external-dependencies-in-routesjs */}
 
-If your `routes.js` file is loading external dependencies that are copied to the `.edgio` build folder, you may need to adjust the relative paths of imported assets based on their location. 
+If your `routes.js` file is loading external dependencies that are copied to the `.edgio` build folder, you may need to adjust the relative paths of imported assets based on their location.
 
 For example:
 
@@ -90,9 +90,9 @@ If your project uses a connector in `edgio.config.js` matching `@edgio/*`, no ch
 
 ### Custom Connectors {/* custom-connectors */}
 
-If your project uses a [custom connector](/guides/sites_frameworks/connectors#writing-a-connector), the following adjustments may be necessary:
+If your project uses a [custom connector](/applications/sites_frameworks/connectors#writing-a-connector), the following adjustments may be necessary:
 
-#### build.js: 
+#### build.js:
 
 - Use `DeploymentBuilder.jsAppDir` instead of `DeploymentBuilder.jsDir`.
 - Replace the `JS_DIR` constant with `JS_APP_DIR`.
@@ -106,7 +106,7 @@ Convert relative paths to absolute paths when importing files:
 require('../server.js')
 // or
 require('server.js')
-``` 
+```
 
 Should change to:
 

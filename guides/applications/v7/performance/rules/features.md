@@ -78,13 +78,13 @@ Determines the type of response that will be returned to a user when a request i
     -   **401:** Set the `WWW-Authenticate` response header to info on how to authenticate. If the `WWW-Authenticate` header is set to `basic`, then the unauthorized user will be prompted for account credentials.
 
 <edgejs>
--   **token_auth_denial_code (*Object*):** <a id="token-auth-denial-code" /> Determines the type of response that will be returned to a user when a request is denied due to Token-Based Authentication. 
--   **code (*Integer*):** Determines the HTTP status code for the response for requests denied due to Token-Based Authentication. 
+-   **token_auth_denial_code (*Object*):** <a id="token-auth-denial-code" /> Determines the type of response that will be returned to a user when a request is denied due to Token-Based Authentication.
+-   **code (*Integer*):** Determines the HTTP status code for the response for requests denied due to Token-Based Authentication.
 
--   **headers (*Object*):** Contains a key-value pair that defines a response header that is specific to the status code set by `code`. 
--   **3xx:** Set the `Location` response header to the URL to which denied requests will be redirected. If this header is not set, then we will return a standard response page. 
+-   **headers (*Object*):** Contains a key-value pair that defines a response header that is specific to the status code set by `code`.
+-   **3xx:** Set the `Location` response header to the URL to which denied requests will be redirected. If this header is not set, then we will return a standard response page.
 
-    **Example:** 
+    **Example:**
 
     ```js filename="./routes.js"
     export default new Router()
@@ -102,7 +102,7 @@ Determines the type of response that will be returned to a user when a request i
 
 -   **401:** Set the `WWW-Authenticate` response header to info on how to authenticate. If the `WWW-Authenticate` header is set to `basic`, then the unauthorized user will be prompted for account credentials.
 
-    **Example:** 
+    **Example:**
 
     ```js filename="./routes.js"
     export default new Router()
@@ -287,7 +287,7 @@ Valid values are:
 
     <Callout type="info">
 
-      This mode may result in a response without a `Cache-Control` header when the origin server does not set it.  
+      This mode may result in a response without a `Cache-Control` header when the origin server does not set it.
 
     </Callout>
 
@@ -316,9 +316,9 @@ export default new Router()
 
 #### Cache Key {/*cache-key*/}
 
-Customizes the cache key through query string parameters, request headers, cookies, and custom metadata. 
+Customizes the cache key through query string parameters, request headers, cookies, and custom metadata.
 
-[Learn more about cache keys.](/guides/performance/caching/cache_key)
+[Learn more about cache keys.](/applications/performance/caching/cache_key)
 
 -   **Query String Parameters:** Include or exclude all query string parameters by seting the **Query Parameters** option to either `Include All` or `Exclude All`. Alternatively, include or exclude specific query string parameters through the `Include Only` or `Include All Except` modes.
 
@@ -326,30 +326,30 @@ Customizes the cache key through query string parameters, request headers, cooki
 
         <Callout type="info">
 
-          This type of configuration is not typically recommended since it may lead to a small percentage of cache hits. This will increase the load on the origin server, since it will have to serve more requests. 
+          This type of configuration is not typically recommended since it may lead to a small percentage of cache hits. This will increase the load on the origin server, since it will have to serve more requests.
 
         </Callout>
 
-    -   **Exclude All:** Indicates that all query string parameters will be excluded from the cache key. 
+    -   **Exclude All:** Indicates that all query string parameters will be excluded from the cache key.
 
     -   **Include Only:** Contains the set of parameter(s) that may be included in the cache key. A unique cache key will be generated for each request that contains a unique value for a query string parameter defined in this feature.
 
     -   **Include All Except:** Contains the set of parameter(s) will be excluded from the cache key. All other query string parameters will be included in the cache key.
 
--   **Request Headers:** Add a request header to the cache key by typing its name in the **Headers** option and then pressing `ENTER`. Repeat as needed. If the header is present in the request, then its value will be included within the cache key. 
+-   **Request Headers:** Add a request header to the cache key by typing its name in the **Headers** option and then pressing `ENTER`. Repeat as needed. If the header is present in the request, then its value will be included within the cache key.
 
 -   **Cookies:** Add a cookie to the cache key by typing its name in the **Cookies** option and then pressing `ENTER`. Repeat as needed. If the cookie is present in the request, then its value will be included within the cache key.
 
--   **Custom Metadata:** Include any combination of [feature variables](/guides/performance/rules/feature_variables) and static text through the **Expressions** option. 
+-   **Custom Metadata:** Include any combination of [feature variables](/applications/performance/rules/feature_variables) and static text through the **Expressions** option.
 
     <Callout type="tip">
-    
+
       The **Expressions** option supports autocompletion. Type `%{` to see a list of feature variable suggestions.
-    
+
     </Callout>
 
 <edgejs>
-**Example:** 
+**Example:**
 
 ```js filename="./routes.js"
 export default new Router().always({
@@ -362,13 +362,13 @@ export default new Router().always({
 });
 ```
 </edgejs>
-**Default Behavior:** The [default cache key](/guides/performance/caching/cache_key#cache-key-reference) includes all query string parameters and excludes request headers, cookies, and feature variables. 
+**Default Behavior:** The [default cache key](/applications/performance/caching/cache_key#cache-key-reference) includes all query string parameters and excludes request headers, cookies, and feature variables.
 
 #### Cache Key Query String {/*cache-key-query-string*/}
 
-Determines whether the cache key will include or exclude query string parameters associated with a request. 
+Determines whether the cache key will include or exclude query string parameters associated with a request.
 
-[Learn more about cache keys.](/guides/performance/caching/cache_key)
+[Learn more about cache keys.](/applications/performance/caching/cache_key)
 
 Include or exclude all query string parameters through the `Include All` or `Exclude All` modes. Alternatively, include or exclude specific query string parameters through the `Include` or `Include All Except` modes.
 
@@ -376,18 +376,18 @@ Include or exclude all query string parameters through the `Include All` or `Exc
 
     <Callout type="info">
 
-      This type of configuration is not typically recommended since it may lead to a small percentage of cache hits. This will increase the load on the origin server, since it will have to serve more requests. 
+      This type of configuration is not typically recommended since it may lead to a small percentage of cache hits. This will increase the load on the origin server, since it will have to serve more requests.
 
     </Callout>
 
--   **Exclude All:** Indicates that all query string parameters will be excluded from the cache key. 
+-   **Exclude All:** Indicates that all query string parameters will be excluded from the cache key.
 
 -   **Include:** Contains the set of parameter(s) that may be included in the cache key. A unique cache key will be generated for each request that contains a unique value for a query string parameter defined in this feature.
 
 -   **Include All Except:** Contains the set of parameter(s) will be excluded from the cache key. All other query string parameters will be included in the cache key.
 
 <edgejs>
-[Learn more about cache keys.](/guides/performance/caching/cache_key)
+[Learn more about cache keys.](/applications/performance/caching/cache_key)
 
 Include or exclude all query string parameters through the `include_all` property or `exclude_all` property. Alternatively, include or exclude specific query string parameters through the `include` property, `exclude` property, or both.
 
@@ -395,7 +395,7 @@ Include or exclude all query string parameters through the `include_all` propert
 
     <Callout type="info">
 
-      This type of configuration is not typically recommended since it may lead to a small percentage of cache hits. This will increase the load on the origin server, since it will have to serve more requests. 
+      This type of configuration is not typically recommended since it may lead to a small percentage of cache hits. This will increase the load on the origin server, since it will have to serve more requests.
 
     </Callout>
 
@@ -412,7 +412,7 @@ Include or exclude all query string parameters through the `include_all` propert
       })
     ```
 
--   **exclude_all (*Boolean*):** Indicates that all query string parameters will be excluded from the cache key. 
+-   **exclude_all (*Boolean*):** Indicates that all query string parameters will be excluded from the cache key.
 
     **Example:**
 
@@ -474,7 +474,7 @@ Restricts caching to requests whose body does not exceed the specified file size
 -   Units are case-sensitive.
 -   This feature is only applicable when `POST` or `PUT` responses are eligible for caching. Use the `Enable Caching for Methods` feature to enable `POST` / `PUT` request caching.
 <!--
--   The request body is taken into consideration for 
+-   The request body is taken into consideration for
 
     -   `x-www-form-urlencoded` values
     -   Ensuring a unique cache key
@@ -505,7 +505,7 @@ Restricts caching to requests whose body does not exceed the specified file size
     -   **Recommended Value:** `14kB`
     -   **Minimum Value:** `1kB`
 
-**Example:** 
+**Example:**
 
 ```js filename="./routes.js"
 export default new Router()
@@ -525,13 +525,13 @@ Defines the set of status codes that can result in cached content.
 
 **Key information:**
 
--   Caching non-`200 OK` response also requires enabling the [Ignore Origin No Cache feature](#ignore-origin-no-cache). 
+-   Caching non-`200 OK` response also requires enabling the [Ignore Origin No Cache feature](#ignore-origin-no-cache).
 -   This feature cannot be used to disable caching for responses that generate a `200 OK` status code.
 
 <edgejs>
 **Key information:**
 
--   Caching non-`200 OK` response also requires enabling the `ignore_origin_no_cache` feature. 
+-   Caching non-`200 OK` response also requires enabling the `ignore_origin_no_cache` feature.
 -   This feature cannot be used to disable caching for responses that generate a `200 OK` status code.
 
 **Example:**
@@ -613,7 +613,7 @@ Valid values are:
 
     <Callout type="info">
 
-      This mode may result in a response without an `Expires` header when the origin server does not set it.  
+      This mode may result in a response without an `Expires` header when the origin server does not set it.
 
     </Callout>
 
@@ -641,7 +641,7 @@ Valid values are:
 
     <Callout type="info">
 
-      This mode may result in a response without an `Expires` header when the origin server does not set it.  
+      This mode may result in a response without an `Expires` header when the origin server does not set it.
 
     </Callout>
 
@@ -759,7 +759,7 @@ Determines on a per HTTP status code basis whether our CDN will ignore cache dir
     -   `Cache-Control: no-store`
     -   `Cache-Control: no-cache`
     -   `Pragma: no-cache`
--   This feature supports common`2xx` - `5xx` status codes. 
+-   This feature supports common`2xx` - `5xx` status codes.
 
 <edgejs>
 -   This feature only affects these directives:
@@ -767,7 +767,7 @@ Determines on a per HTTP status code basis whether our CDN will ignore cache dir
 -   `Cache-Control: no-store`
 -   `Cache-Control: no-cache`
 -   `Pragma: no-cache`
--   This feature supports common`2xx` - `5xx` status codes. 
+-   This feature supports common`2xx` - `5xx` status codes.
 
 **Example:**
 
@@ -785,7 +785,7 @@ export default new Router()
 
 #### Ignore Unsatisfiable Ranges {/*ignore-unsatisfiable-ranges*/}
 
-Determines the response that will be returned to clients when a request generates a `416 Requested Range Not Satisfiable` status code. By default, this status code is returned when the specified byte-range request cannot be satisfied by an edge server and an `If-Range` request header field was not specified. 
+Determines the response that will be returned to clients when a request generates a `416 Requested Range Not Satisfiable` status code. By default, this status code is returned when the specified byte-range request cannot be satisfied by an edge server and an `If-Range` request header field was not specified.
 
 Enabling this feature prevents our edge servers from responding to an invalid byte-range request with a `416 Requested Range Not Satisfiable` status code. Instead our servers will deliver the requested asset and return a `200 OK` to the client.
 
@@ -808,7 +808,7 @@ export default new Router()
 
 #### Partial Cache Sharing Min Hit Size {/*partial-cache-sharing-min-hit-size*/}
 
-Defines the minimum file size (bytes) for caching partial content. 
+Defines the minimum file size (bytes) for caching partial content.
 
 <edgejs>
 **Example:**
@@ -823,7 +823,7 @@ export default new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, partial cache sharing is disabled. 
+**Default Behavior:** By default, partial cache sharing is disabled.
 
 #### Prevalidate Cached Content {/*prevalidate-cached-content*/}
 
@@ -891,7 +891,7 @@ Normally, when an asset's max-age time expires, the edge server will send a reva
 
 If the edge server is unable to establish a connection with the origin server while attempting such a revalidation, then this feature controls whether, and for how long, the edge server may continue to serve the now-stale asset.
 
-This time interval starts when the asset's `max-age` expires, not when the failed revalidation occurs. Therefore, the maximum period during which an asset can be served without successful revalidation is the amount of time specified by the combination of `max-age` plus `max-stale`. 
+This time interval starts when the asset's `max-age` expires, not when the failed revalidation occurs. Therefore, the maximum period during which an asset can be served without successful revalidation is the amount of time specified by the combination of `max-age` plus `max-stale`.
 
 For example, if an asset was cached at 9:00 with a `max-age` of 30 minutes and a `max-stale` of 15 minutes, then a failed revalidation attempt at 9:44 would result in a user receiving the stale cached asset, while a failed revalidation attempt at 9:46 would result in the user receiving a `504 Gateway Timeout`.
 
@@ -910,7 +910,7 @@ Normally, when an asset's max-age time expires, the edge server will send a reva
 
 If the edge server is unable to establish a connection with the origin server while attempting such a revalidation, then this feature controls whether, and for how long, the edge server may continue to serve the now-stale asset.
 
-This time interval starts when the asset's `max-age` expires, not when the failed revalidation occurs. Therefore, the maximum period during which an asset can be served without successful revalidation is the amount of time specified by the combination of `max-age` plus `max-stale`. 
+This time interval starts when the asset's `max-age` expires, not when the failed revalidation occurs. Therefore, the maximum period during which an asset can be served without successful revalidation is the amount of time specified by the combination of `max-age` plus `max-stale`.
 
 For example, if an asset was cached at 9:00 with a `max-age` of 30 minutes and a `max-stale` of 15 minutes, then a failed revalidation attempt at 9:44 would result in a user receiving the stale cached asset, while a failed revalidation attempt at 9:46 would result in the user receiving a `504 Gateway Timeout`.
 
@@ -918,7 +918,7 @@ Any value configured for this feature is superseded by `Cache-Control:must-reval
 
 **Key information:**
 
--   This feature may either be an object or a string value. 
+-   This feature may either be an object or a string value.
     -   **Object:** Define key-value pair(s) that identify an HTTP status code and its `max-stale` interval.
 
     **Syntax:** `"<STATUS CODE>": "<TIME>[s|m|h|d|w|y]"`
@@ -986,16 +986,16 @@ export default new Router()
 
 #### Rewrite Cache Key {/*rewrite-cache-key*/}
 
-Rewrites the [default cache key](/guides/performance/caching/cache_key#cache-key-reference) for a set of requests. 
+Rewrites the [default cache key](/applications/performance/caching/cache_key#cache-key-reference) for a set of requests.
 
 **Key information:**
 
 -   This is an advanced feature that should only be used when you require precise control over the cache key. Consider using the [Cache Key feature](#cache-key) instead.
 -   Our servers use the cache key to check for a cached version of an asset.
 -   This feature allows you to customize the default cache key for a set of requests by replacing the following elements from the cache key:
-    -   **Relative Path:** This relative URL path, which starts directly after the hostname, is derived from the request whose response is being cached. 
-    -   **Query String:** This query string is derived from the request whose response is being cached. 
--   This feature does not affect the cache key assigned to previously cached content. 
+    -   **Relative Path:** This relative URL path, which starts directly after the hostname, is derived from the request whose response is being cached.
+    -   **Query String:** This query string is derived from the request whose response is being cached.
+-   This feature does not affect the cache key assigned to previously cached content.
 -   Define the following settings:
 
     -   **Source:** Identify the set of requests that will use a different default cache key by setting this option to a relative URL path that starts directly after the hostname. This setting supports regular expression syntax.
@@ -1006,34 +1006,34 @@ Rewrites the [default cache key](/guides/performance/caching/cache_key#cache-key
 
         </Callout>
 
-    -   **Destination:** Define a replacement pattern that sets a new default cache key. 
+    -   **Destination:** Define a replacement pattern that sets a new default cache key.
 
         <Callout type="tip">
 
-          Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache key.
+          Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache key.
 
         </Callout>
 
         <Callout type="info">
 
-          You may use up to 9 numbered backreferences for text captured within the `source` property. 
+          You may use up to 9 numbered backreferences for text captured within the `source` property.
 
-          For example, if the **Source** option contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the **Destination** option (e.g., `/$1/$2`). 
+          For example, if the **Source** option contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the **Destination** option (e.g., `/$1/$2`).
 
         </Callout>
 
-View examples on how to add [cookies](/guides/performance/caching/cache_key#cookie-example) or the [client's country](/guides/performance/caching/cache_key#country-example) to the cache key.
+View examples on how to add [cookies](/applications/performance/caching/cache_key#cookie-example) or the [client's country](/applications/performance/caching/cache_key#country-example) to the cache key.
 
 <edgejs>
-[Learn more about cache keys.](/guides/performance/caching/cache_key)
+[Learn more about cache keys.](/applications/performance/caching/cache_key)
 
 **Key information:**
 
 -   Our servers use the cache key to check for a cached version of an asset.
 -   This feature allows you to customize the default cache key for a set of requests by replacing the following elements from the cache key:
-    -   **Relative Path:** This relative URL path, which starts directly after the hostname, is derived from the request whose response is being cached. 
-    -   **Query String:** This query string is derived from the request whose response is being cached. 
--   This feature does not affect the cache key assigned to previously cached content. 
+    -   **Relative Path:** This relative URL path, which starts directly after the hostname, is derived from the request whose response is being cached.
+    -   **Query String:** This query string is derived from the request whose response is being cached.
+-   This feature does not affect the cache key assigned to previously cached content.
 -   Pass the following properties:
 
     -   **source:** Identify the set of requests that will use a different default cache key by setting this option to a relative URL path that starts directly after the hostname. This property supports regular expression syntax.
@@ -1044,11 +1044,11 @@ View examples on how to add [cookies](/guides/performance/caching/cache_key#cook
 
         </Callout>
 
-    -   **destination:** Define a replacement pattern that sets a new default cache key. 
+    -   **destination:** Define a replacement pattern that sets a new default cache key.
 
         <Callout type="tip">
 
-          Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache key.
+          Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct this relative path. However, you may not use response metadata when defining a cache key.
 
         </Callout>
 
@@ -1112,14 +1112,14 @@ Defines a `max-age` interval for edge server to origin server cache revalidation
 **Key information:**
 
 -   This feature overrides the max-age interval defined in `Cache-Control` or `Expires` headers generated from an origin server. However, it will not override `private`, `no-store`, or `no-cache` directives when present in the origin server's response. Override these cache directives by enabling the [Ignore Origin No Cache feature](performance/rules/features#ignore-origin-no-cache).
--   Define a `max-age` interval for each desired HTTP status code. This caching policy will only be applied when the status code for the cached response matches the specified HTTP status code. 
+-   Define a `max-age` interval for each desired HTTP status code. This caching policy will only be applied when the status code for the cached response matches the specified HTTP status code.
 -   This feature does not affect browser to edge server cache revalidations. These types of revalidations are determined by the `Cache-Control` or `Expires` headers sent to the browser.
 -   This feature does not have an observable effect on the response sent to a user. However, it may have an effect on the amount of revalidation traffic sent from our edge servers to the origin server.
 
 <edgejs>
 **Key information:**
 
--   Define this feature either as a string value or an object. 
+-   Define this feature either as a string value or an object.
 -   **Object:** Define key-value pair(s) that identify an HTTP status code and its `max-age` interval.
 
     **Syntax:** `"<STATUS CODE>": "<TIME>[s|m|h|d|w|y]"`
@@ -1163,7 +1163,7 @@ Defines a `max-age` interval for edge server to origin server cache revalidation
 
 #### Set Service Worker Max Age {/*set-service-worker-max-age*/}
 
-Set the amount of time that must pass before a browser can check for a new version of a prefetched request. Specifically, it determines the `max-age` interval for the [Prefetch service worker](/guides/performance/prefetching) to edge server cache revalidation. 
+Set the amount of time that must pass before a browser can check for a new version of a prefetched request. Specifically, it determines the `max-age` interval for the [Prefetch service worker](/applications/performance/prefetching) to edge server cache revalidation.
 
 **Key information:**
 -   This configuration does not affect edge server to origin server cache revalidations. These types of revalidations are determined by the `Cache-Control` / `Expires` headers received from the origin server, and can be customized with <!--the Default Internal Max-Age and -->the `max_age` features.
@@ -1234,7 +1234,7 @@ The following formula indicates the length of time during which stale content ma
 
 <Callout type="info">
 
-  Each stale response includes a [Warning response header](/guides/performance/response#warning).
+  Each stale response includes a [Warning response header](/applications/performance/response#warning).
 
 </Callout>
 
@@ -1273,13 +1273,13 @@ Header features add, modify, or delete headers from the request or response.
 
 #### Add Response Headers {/*add-response-headers*/}
 
-Adds one or more header(s) to the response. 
+Adds one or more header(s) to the response.
 
 **Key information:**
 
--   Specify a header name that is an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header. 
+-   Specify a header name that is an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header.
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
--   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct header values.
+-   Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct header values.
 -   This feature requires {{ PRODUCT }} to add a response header, regardless of whether that header already exists in the response. This may cause the response to include multiple headers with the same name.
 
     <Callout type="tip">
@@ -1302,7 +1302,7 @@ Adds one or more header(s) to the response.
     -   upgrade
     -   vary
     -   via
-    -   warning 
+    -   warning
     -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 **Example:**
@@ -1320,7 +1320,7 @@ However, if the response already contains an `event-type` response header set to
 **Key information:**
 
 -   **Syntax:** `"<HEADER NAME>": "<HEADER VALUE>"`
--   `<HEADER NAME>` must be an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header. 
+-   `<HEADER NAME>` must be an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header.
 -   Make sure to only use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   Use feature variables to dynamically construct header values.
 -   The following headers are reserved and cannot be modified by this feature:
@@ -1337,7 +1337,7 @@ However, if the response already contains an `event-type` response header set to
     -   upgrade
     -   vary
     -   via
-    -   warning 
+    -   warning
     -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 **Example:**
@@ -1364,30 +1364,30 @@ Our CDN returns debug cache response headers when both of the following are true
 
 -   This feature has been enabled on the desired request.
 -   The request includes the `X-EC-Debug` request header. This request header defines the set of debug cache response headers that will be included in the response.
--   The syntax for the `X-EC-Debug` request header is: 
-    
+-   The syntax for the `X-EC-Debug` request header is:
+
     `X-EC-Debug: <DEBUG CACHE HEADER 1>[,<DEBUG CACHE HEADER 2>,<DEBUG CACHE HEADER N>]`
- 
+
     **Sample Request Header:**
 
     `X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
-    [Learn how to request debug cache information.](/guides/performance/response#requesting-debug-cache-information)
+    [Learn how to request debug cache information.](/applications/performance/response#requesting-debug-cache-information)
 
 <edgejs>
 Our CDN returns debug cache response headers when both of the following are true:
 
 -   The `debug_header` feature has been enabled on the desired request.
 -   The request includes the `X-EC-Debug` request header. This request header defines the set of debug cache response headers that will be included in the response.
--   The syntax for the `X-EC-Debug` request header is: 
+-   The syntax for the `X-EC-Debug` request header is:
 
     `X-EC-Debug: <DEBUG CACHE HEADER 1>[,<DEBUG CACHE HEADER 2>,<DEBUG CACHE HEADER N>]`
- 
+
     **Sample Request Header:**
 
     `X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state`
 
-    [Learn how to request debug cache information.](/guides/performance/response#requesting-debug-cache-information)
+    [Learn how to request debug cache information.](/applications/performance/response#requesting-debug-cache-information)
 
 **Example:**
 
@@ -1409,17 +1409,17 @@ Deletes one or more custom header(s) from the response provided by an origin ser
 
 **Key information:**
 
--   Set each string value to the exact name of the header that will be removed from the response provided by an origin server. Case is not taken into account for the purpose of identifying a header. 
+-   Set each string value to the exact name of the header that will be removed from the response provided by an origin server. Case is not taken into account for the purpose of identifying a header.
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   This feature only removes custom response headers (e.g., Partner-ID). You may not remove standard headers (e.g., Cache-Control and Date) from the origin's response.
--   Our service adds a set of reserved headers to each response. Although this feature removes a header from the response provided by the origin server, it does not affect whether our service will add a reserved header to the response. 
+-   Our service adds a set of reserved headers to each response. Although this feature removes a header from the response provided by the origin server, it does not affect whether our service will add a reserved header to the response.
 
 <edgejs>
 **Key information:**
 
--   Set each string value to the exact name of the header that will be removed from the response provided by an origin server. Case is not taken into account for the purpose of identifying a header. 
+-   Set each string value to the exact name of the header that will be removed from the response provided by an origin server. Case is not taken into account for the purpose of identifying a header.
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
--   Our service adds a set of reserved headers to each response. Although this feature removes a header from the response provided by the origin server, it does not affect whether our service will add a reserved header to the response. 
+-   Our service adds a set of reserved headers to each response. Although this feature removes a header from the response provided by the origin server, it does not affect whether our service will add a reserved header to the response.
 
 **Example:**
 
@@ -1439,7 +1439,7 @@ Deletes one or more header(s) from a response.
 
 **Key information:**
 
--   Set each string value to the exact name of the header that will be removed from the response. Case is not taken into account for the purpose of identifying a header. 
+-   Set each string value to the exact name of the header that will be removed from the response. Case is not taken into account for the purpose of identifying a header.
     -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
     -   The following headers are reserved and should not be removed by this feature:
         -   accept-ranges
@@ -1455,13 +1455,13 @@ Deletes one or more header(s) from a response.
         -   upgrade
         -   vary
         -   via
-        -   warning 
+        -   warning
         -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 <edgejs>
 **Key information:**
 
--   Set each string value to the exact name of the header that will be removed from the response. Case is not taken into account for the purpose of identifying a header. 
+-   Set each string value to the exact name of the header that will be removed from the response. Case is not taken into account for the purpose of identifying a header.
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   The following headers are reserved and should not be removed by this feature:
         -   accept-ranges
@@ -1477,7 +1477,7 @@ Deletes one or more header(s) from a response.
         -   upgrade
         -   vary
         -   via
-        -   warning 
+        -   warning
         -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 **Example:**
@@ -1494,13 +1494,13 @@ export default new Router()
 
 #### Set Client IP Custom Header {/*set-client-ip-custom-header*/}
 
-Adds a custom request header that identifies the requesting client by IP address. 
+Adds a custom request header that identifies the requesting client by IP address.
 
 Define the name of the custom request header to which the requesting client's IP address will be logged.
 
 **Key information:**
 
--   {{ PRODUCT }} includes this custom request header when proxying requests to your web servers. 
+-   {{ PRODUCT }} includes this custom request header when proxying requests to your web servers.
 -   The following headers are reserved and cannot be modified by this feature:
     -   accept-ranges
     -   age
@@ -1515,7 +1515,7 @@ Define the name of the custom request header to which the requesting client's IP
     -   upgrade
     -   vary
     -   via
-    -   warning 
+    -   warning
     -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 <edgejs>
@@ -1533,19 +1533,19 @@ export default new Router()
 
 #### Set Request Headers {/*set-request-headers*/}
 
-Set, overwrite, append, or delete one or more header(s) from the request. 
+Set, overwrite, append, or delete one or more header(s) from the request.
 
 **Key information:**
 
--   Specify a header name that is an exact match for the desired request header. However, case is not taken into account for the purpose of identifying a header. 
+-   Specify a header name that is an exact match for the desired request header. However, case is not taken into account for the purpose of identifying a header.
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   Use the following syntax to determine the action that will be applied to the request header:
-    -   **Set:** Set or overwrite a header's value by specifying a header name that does not start with a `+` symbol. 
-    -   **Append:** Add to the end of an existing request header value by prepending a `+` symbol to the header name. 
+    -   **Set:** Set or overwrite a header's value by specifying a header name that does not start with a `+` symbol.
+    -   **Append:** Add to the end of an existing request header value by prepending a `+` symbol to the header name.
 
         **Example:** Append a value to the `broadcast` request header by specifying `+broadcast`. If the request does not contain the `broadcast` header, then it will be set to the value defined in this feature (e.g., `network`). On the other hand, if it is already set to `ott`, then it will append the value defined in this feature (e.g., `broadast: ottnetwork`).
     -   **Delete:** Set the header value to a blank value. Deleting a header will prevent it from being forwarded to an origin server by our edge servers.
--   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct header values.
+-   Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct header values.
 -   The following headers are reserved and cannot be modified by this feature:
     -   forwarded-for
     -   host
@@ -1559,10 +1559,10 @@ Set, overwrite, append, or delete one or more header(s) from the request.
 **Key information:**
 
 -   **Syntax:** `"<HEADER NAME>": "<HEADER VALUE>"`
--   `<HEADER NAME>` must be an exact match for the desired request header. However, case is not taken into account for the purpose of identifying a header. 
+-   `<HEADER NAME>` must be an exact match for the desired request header. However, case is not taken into account for the purpose of identifying a header.
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   Use the following syntax to determine the action that will be applied to the request header:
-    -   **Set:** Set or overwrite a header's value by replacing `<HEADER NAME>` with a value that does not start with a `+` symbol. 
+    -   **Set:** Set or overwrite a header's value by replacing `<HEADER NAME>` with a value that does not start with a `+` symbol.
     -   **Append:** Add to the end of an existing request header value by prepending a `+` symbol to the header name.
     -   **Delete:** Set it to a blank value. Deleting a header will prevent it from being forwarded to an origin server by our edge servers.
 -   Use feature variables to dynamically construct header values.
@@ -1578,7 +1578,7 @@ Set, overwrite, append, or delete one or more header(s) from the request.
 **Example:**
 
 The following example:
--   Sets the `sports` request header to `basketball` regardless of whether it was previously set to another value. 
+-   Sets the `sports` request header to `basketball` regardless of whether it was previously set to another value.
 -   Appends ` ott` to the `broadcast` header's value. For example, if it were set to `network`, then the new value after this feature has been applied will be `network ott`.
 
 ```js filename="./routes.js"
@@ -1600,11 +1600,11 @@ Set, overwrite, append, or delete one or more header(s) from the response.
 
 **Key information:**
 
--   Specify a header name that is an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header. 
+-   Specify a header name that is an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header.
 -   Use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   Use the following syntax to determine the action that will be applied to the response header:
-    -   **Set:** Set or overwrite a header's value by specifying a header name that does not start with a `+` symbol. 
-    -   **Append:** Add to the end of an existing response header value by prepending a `+` symbol to the header name. 
+    -   **Set:** Set or overwrite a header's value by specifying a header name that does not start with a `+` symbol.
+    -   **Append:** Add to the end of an existing response header value by prepending a `+` symbol to the header name.
 
         **Example:** Append a value to the `broadcast` response header by specifying `+broadcast`. If the response does not contain the `broadcast` header, then it will be set to the value defined in this feature (e.g., `network`). On the other hand, if it is already set to `ott`, then it will append the value defined in this feature (e.g., `broadast: ottnetwork`).
     -   **Delete:** Set it to a blank value. Deleting a header will prevent it from being included in the response to the client.
@@ -1615,7 +1615,7 @@ Set, overwrite, append, or delete one or more header(s) from the response.
 
     </Callout>
 
--   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct header values.
+-   Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct header values.
 -   The following headers are reserved and cannot be modified by this feature:
     -   accept-ranges
     -   age
@@ -1630,17 +1630,17 @@ Set, overwrite, append, or delete one or more header(s) from the response.
     -   upgrade
     -   vary
     -   via
-    -   warning 
+    -   warning
     -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 <edgejs>
 **Key information:**
 
 -   **Syntax:** `"<HEADER NAME>": "<HEADER VALUE>"`
--   `<HEADER NAME>` must be an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header. 
+-   `<HEADER NAME>` must be an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header.
 -   Make sure to only use alphanumeric characters, dashes, or underscores when specifying a header name.
 -   Use the following syntax to determine the action that will be applied to the response header:
-    -   **Set:** Set or overwrite a header's value by replacing `<HEADER NAME>` with a value that does not start with a `+` symbol. 
+    -   **Set:** Set or overwrite a header's value by replacing `<HEADER NAME>` with a value that does not start with a `+` symbol.
     -   **Append:** Add to the end of an existing response header value by prepending a `+` symbol to the header name.
     -   **Delete:** Set it to a blank value. Deleting a header will prevent it from being included in the response to the client.
 
@@ -1665,13 +1665,13 @@ Set, overwrite, append, or delete one or more header(s) from the response.
     -   upgrade
     -   vary
     -   via
-    -   warning 
+    -   warning
     -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 **Example:**
 
 The following example:
--   Sets the `sports` response header to `basketball` regardless of whether it was previously set to another value. 
+-   Sets the `sports` response header to `basketball` regardless of whether it was previously set to another value.
 -   Appends ` ott` to the `broadcast` header's value. For example, if it were set to `network`, then the new value after this feature has been applied will be `network ott`.
 
 **Example:**
@@ -1695,7 +1695,7 @@ Log features customize how log data is stored.
 
 #### Custom Log Field {/*custom-log-field*/}
 
-Determines the value that will be assigned to RTLD's custom log field. 
+Determines the value that will be assigned to RTLD's custom log field.
 
 **Key information:**
 
@@ -1709,7 +1709,7 @@ Determines the value that will be assigned to RTLD's custom log field.
     **Sample Syntax:** `AE: %{Accept-Encoding}i A: %{Authorization}i CT: %{Content-Type}o`
 
 -   This feature defines the value that will be set for the custom log field. If this feature is applied multiple times to the same request, then the last instance applied to the request will overwrite all previous instances.
--   One use for this feature is to add request and response header values to your log data. 
+-   One use for this feature is to add request and response header values to your log data.
 
     -   **Request Header Syntax:** `%{<REQUEST HEADER>}i`
 
@@ -1732,7 +1732,7 @@ Determines the value that will be assigned to RTLD's custom log field.
     **Sample Syntax:** `AE: %{Accept-Encoding}i A: %{Authorization}i CT: %{Content-Type}o`
 
 -   This feature defines the value that will be set for the custom log field. If this feature is applied multiple times to the same request, then the last instance applied to the request will overwrite all previous instances.
--   One use for this feature is to add request and response header values to your log data. 
+-   One use for this feature is to add request and response header values to your log data.
 
     -   **Request Header Syntax:** `%{<REQUEST HEADER>}i`
 
@@ -1775,7 +1775,7 @@ export default new Router()
 
 **Default Behavior:** The default behavior is to ignore query strings when recording URLs in an access log.
 
-#### Mask Client Subnet {/*mask-client-subnet*/} 
+#### Mask Client Subnet {/*mask-client-subnet*/}
 
 Masks the client's subnet for logging and reporting purposes.
 
@@ -1840,7 +1840,7 @@ Origin features control how the CDN communicates with an origin server.
 
 #### Max Keep-Alive Requests {/*max-keep-alive-requests*/}
 
-Defines the maximum number of requests for a `Keep-Alive` connection before it is closed. 
+Defines the maximum number of requests for a `Keep-Alive` connection before it is closed.
 
 **Key information:**
 
@@ -1870,7 +1870,7 @@ export default new Router()
 <!--
 #### Proxy Special Headers {/*proxy-special-headers*/}
 
-Defines the set of CDN-specific request headers that will be forwarded from an edge server to an origin server. 
+Defines the set of CDN-specific request headers that will be forwarded from an edge server to an origin server.
 
 **Key information:**
 
@@ -1901,7 +1901,7 @@ export default new Router()
 
 #### Set Origin {/*set-origin*/}
 
-Defines the [origin configuration](/guides/basics/origins) to which requests will be forwarded when they cannot be served from cache.
+Defines the [origin configuration](/applications/basics/origins) to which requests will be forwarded when they cannot be served from cache.
 
 <edgejs>
 **Example:**
@@ -1916,7 +1916,7 @@ export default new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, requests that are not served from cache are served through either the {{ PRODUCT }} cloud or the origin configuration mapped to the request's hostname. 
+**Default Behavior:** By default, requests that are not served from cache are served through either the {{ PRODUCT }} cloud or the origin configuration mapped to the request's hostname.
 
 ## Response {/*response*/}
 
@@ -1945,7 +1945,7 @@ export default new Router()
 
 #### Compress Content Types {/*compress-content-types*/}
 
-Defines the set of media types (aka content type) that are eligible for edge server compression. 
+Defines the set of media types (aka content type) that are eligible for edge server compression.
 
 **Key information:**
 
@@ -1974,7 +1974,7 @@ export default new Router()
 
 #### Optimize Images {/*optimize-images*/}
 
-Determines whether {{ PRODUCT }} will be allowed to [process or generate an image](/guides/performance/image_optimization) for eligible requests. 
+Determines whether {{ PRODUCT }} will be allowed to [process or generate an image](/applications/performance/image_optimization) for eligible requests.
 
 <Callout type="important">
 
@@ -1984,7 +1984,7 @@ Determines whether {{ PRODUCT }} will be allowed to [process or generate an imag
 
 <Callout type="info">
 
-  Upon enabling this feature on the desired set of requests, {{ PRODUCT }} will look for client hints and check the query string to determine the set of optimizations that will be applied to an image. 
+  Upon enabling this feature on the desired set of requests, {{ PRODUCT }} will look for client hints and check the query string to determine the set of optimizations that will be applied to an image.
 
 </Callout>
 
@@ -1997,7 +1997,7 @@ Determines whether {{ PRODUCT }} will be allowed to [process or generate an imag
 
 <Callout type="info">
 
-  Upon enabling this feature on the desired set of requests, {{ PRODUCT }} will look for client hints and check the query string to determine the set of optimizations that will be applied to an image. 
+  Upon enabling this feature on the desired set of requests, {{ PRODUCT }} will look for client hints and check the query string to determine the set of optimizations that will be applied to an image.
 
 </Callout>
 
@@ -2019,12 +2019,12 @@ Determines whether to prevent the request from being proxied from our network to
 
 **Key information:**
 
--   Combine this feature with the `Set Status Code` and `Set Response Body` features to optimize performance for custom responses. 
+-   Combine this feature with the `Set Status Code` and `Set Response Body` features to optimize performance for custom responses.
 
 <edgejs>
 **Key information:**
 
--   Combine this feature with the `set_status_code` and `set_response_body` features to optimize performance for custom responses. 
+-   Combine this feature with the `set_status_code` and `set_response_body` features to optimize performance for custom responses.
 
 **Example:**
 
@@ -2040,7 +2040,7 @@ export default new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, cache misses are forwarded to an origin server. 
+**Default Behavior:** By default, cache misses are forwarded to an origin server.
 
 #### Set Response Body {/*set-response-body*/}
 
@@ -2048,14 +2048,14 @@ Defines a custom response body.
 
 **Key information:**
 
--   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this response body.
+-   Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct this response body.
 -   This response body is always sent instead of a cached response or the response provided by an origin server.
 -   Prevent requests from being forwarded to an origin server by also passing the `Set Done` feature.
 
 <edgejs>
 **Key information:**
 
--   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct this response body.
+-   Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct this response body.
 -   This response body is always sent instead of a cached response or the response provided by an origin server.
 -   Prevent requests from being forwarded to an origin server by also passing the `set_done` feature.
 
@@ -2090,17 +2090,17 @@ export default new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, the HTTP status code indicates how the request was handled. 
+**Default Behavior:** By default, the HTTP status code indicates how the request was handled.
 
 ## Set Variables {/*set-variables*/}
 
-This feature assigns a value to one or more user-defined variable(s) that are  passed to your bespoke traffic processing solution. Define each desired variable as a key-value pair. 
+This feature assigns a value to one or more user-defined variable(s) that are  passed to your bespoke traffic processing solution. Define each desired variable as a key-value pair.
 
 **Key information:**
 
 -   This feature is only applicable when:
     -   Custom logic that is specific to your traffic controls how requests will be processed. Our CDN service supports the capability to define customized traffic processing logic. This solution addresses specialized customer needs that cannot be implemented through standard configuration. If your CDN traffic requires a bespoke solution, then contact our Solutions Engineering team.
-    -   This bespoke solution expects a variable. 
+    -   This bespoke solution expects a variable.
 
     <Callout type="info">
 
@@ -2119,13 +2119,13 @@ This feature assigns a value to one or more user-defined variable(s) that are  p
 -   **Syntax:** `"<VARIABLE>": "<VALUE>"`
 
 <edgejs>
-The `set_variables` object assigns a value to one or more user-defined variable(s) that are  passed to your bespoke traffic processing solution. Define each desired variable as a key-value pair. 
+The `set_variables` object assigns a value to one or more user-defined variable(s) that are  passed to your bespoke traffic processing solution. Define each desired variable as a key-value pair.
 
 **Key information:**
 
 -   This feature is only applicable when:
     -   Custom logic that is specific to your traffic controls how requests will be processed. Our CDN service supports the capability to define customized traffic processing logic. This solution addresses specialized customer needs that cannot be implemented through standard configuration. If your CDN traffic requires a bespoke solution, then contact our Solutions Engineering team.
-    -   This bespoke solution expects a variable. 
+    -   This bespoke solution expects a variable.
 
     <Callout type="info">
 
@@ -2156,7 +2156,7 @@ export default new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, our CDN does not pass user variables. 
+**Default Behavior:** By default, our CDN does not pass user variables.
 
 ## URL {/*url*/}
 
@@ -2169,13 +2169,13 @@ Determines whether {{ PRODUCT }} will follow a redirect defined within the `Loca
 **Key information:**
 
 -   All requests, regardless of HTTP method (e.g., `POST` and `PUT`), are redirected as `GET` requests.
--   {{ PRODUCT }} will only follow redirects to a registered [hostname](/guides/basics/hostnames). {{ PRODUCT }} returns a `404 Not Found` response for hostnames whose traffic cannot be served by {{ PRODUCT }}.
+-   {{ PRODUCT }} will only follow redirects to a registered [hostname](/applications/basics/hostnames). {{ PRODUCT }} returns a `404 Not Found` response for hostnames whose traffic cannot be served by {{ PRODUCT }}.
 
 <edgejs>
 **Key information:**
 
 -   All requests, regardless of HTTP method (e.g., `POST` and `PUT`), are redirected as `GET` requests.
--   {{ PRODUCT }} will only follow redirects to a registered [hostname](/guides/basics/hostnames). {{ PRODUCT }} returns a `404 Not Found` response for hostnames whose traffic cannot be served by {{ PRODUCT }}.
+-   {{ PRODUCT }} will only follow redirects to a registered [hostname](/applications/basics/hostnames). {{ PRODUCT }} returns a `404 Not Found` response for hostnames whose traffic cannot be served by {{ PRODUCT }}.
 
 **Example:**
 
@@ -2189,7 +2189,7 @@ export default new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, our edge servers will not follow the redirect defined in the `Location` response header returned by an origin server. This allows a client (e.g., a web browser) to determine whether to follow the redirect. 
+**Default Behavior:** By default, our edge servers will not follow the redirect defined in the `Location` response header returned by an origin server. This allows a client (e.g., a web browser) to determine whether to follow the redirect.
 
 <a id="url-rewrite" />
 
@@ -2208,19 +2208,19 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 -   **Source Path:** Define a relative path that identifies the requests that will be rewritten. This relative path starts directly after the hostname.
 
     **Key information:**
-    
+
     -   Verify that the specified pattern does not conflict with this route's path.
     -   Use the **Match Style** option to determine whether this option is a relative path that supports named parameters (e.g., `:productId`) or a regular expression.
 
--   **Destination Path:** Define a replacement pattern that sets a new relative path. This relative path starts directly after the hostname. 
+-   **Destination Path:** Define a replacement pattern that sets a new relative path. This relative path starts directly after the hostname.
 
     **Key information:**
-    
-    -   You may use up to 9 numbered backreferences for text captured within the `source` property. 
 
-        For example, if the **Source Path** option contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the **Destination Path** option (e.g., `/$1/$2`). 
-    -   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct the above paths. However, you may not use response metadata.
-    -   This feature is currently incompatible with the [Extension (extension) match condition](/guides/performance/rules/conditions#extension). However, you may define a regular expression pattern for the desired file extensions within the **Source Path** option. 
+    -   You may use up to 9 numbered backreferences for text captured within the `source` property.
+
+        For example, if the **Source Path** option contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the **Destination Path** option (e.g., `/$1/$2`).
+    -   Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct the above paths. However, you may not use response metadata.
+    -   This feature is currently incompatible with the [Extension (extension) match condition](/applications/performance/rules/conditions#extension). However, you may define a regular expression pattern for the desired file extensions within the **Source Path** option.
 
         **Example:** `/marketing/(.*)\.(jpg|jpeg|png)`
 
@@ -2241,7 +2241,7 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 
     </Callout>
 
--   **destination (*String*):** Define a replacement pattern that sets a new relative path. This relative path starts directly after the hostname. 
+-   **destination (*String*):** Define a replacement pattern that sets a new relative path. This relative path starts directly after the hostname.
 
 -   **syntax (*String*):** Determines whether the `source` property consists of a regular expression or a path that will be converted into a regular expression. Valid values are:
 
@@ -2249,9 +2249,9 @@ This feature allows our edge servers to rewrite the URL without performing a tra
 
         <Callout type="info">
 
-          You may use up to 9 numbered backreferences for text captured within the `source` property. 
+          You may use up to 9 numbered backreferences for text captured within the `source` property.
 
-          For example, if the `source` property contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the `destination` property (e.g., `/$1/$2`). 
+          For example, if the `source` property contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the `destination` property (e.g., `/$1/$2`).
 
         </Callout>
 
@@ -2313,8 +2313,8 @@ Redirects requests according to the `Location` header. Pass the following proper
 -   **Destination:** Define a replacement pattern for the URL to which the requests identified in the **Source** option will be redirected.
 
     **Key information:**
-    
-    -   Use [feature variables](/guides/performance/rules/feature_variables) to dynamically construct the above paths. However, you may not use response metadata.
+
+    -   Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct the above paths. However, you may not use response metadata.
     -   Redirecting requests to a relative path may result in an invalid URL when fielding requests from various hostnames. Use an absolute URL to ensure that requests are properly redirected.
 
 <edgejs>
@@ -2329,16 +2329,16 @@ Pass the following properties:
 
     </Callout>
 
--   **destination (*String*):** Define a replacement pattern for the URL to which the requests identified in the `source` property will be redirected. 
+-   **destination (*String*):** Define a replacement pattern for the URL to which the requests identified in the `source` property will be redirected.
 -   **syntax (*String*):** Determines whether the `source` property consists of a regular expression or a path that will be converted into a regular expression. Valid values are:
 
     -   **regexp:** Treats the `source` property as a regular expression.
 
     <Callout type="info">
 
-      You may use up to 9 numbered backreferences for text captured within the `source` property. 
+      You may use up to 9 numbered backreferences for text captured within the `source` property.
 
-      For example, if the `source` property contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the `destination` property (e.g., `/$1/$2`). 
+      For example, if the `source` property contains two capture groups (e.g., `/(sales|marketing)/(.*)`, then you may backreference them within the `destination` property (e.g., `/$1/$2`).
 
     </Callout>
 
@@ -2383,5 +2383,5 @@ Pass the following properties:
 </Callout>
 
 </edgejs>
-    
+
 **Default Behavior:** By default, requests are not redirected.

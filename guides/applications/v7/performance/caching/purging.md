@@ -24,13 +24,13 @@ Purge by hostname, relative path, surrogate key, or all cached content using the
 
 ## Hostname {/*hostname*/}
 
-You may purge cached content by the request URL's hostname. Choose between purging:
+You may purge cached content by the request URL's hostname. Choose between either of the following options:
 
--   All cached content for that hostname. Verify that the **Purge all entries** option is selected and then select the desired hostname from the **Hostname** option.
+-   Purging all cached content for that hostname. Verify that the **Purge all entries** option is selected and then select the desired hostname from the **Hostname** option.
 
     ![Purge by hostname](/images/v7/performance/caching-hostname.png)
 
--   Requests for that hostname and a specific relative path. Select the **Purge by path** option and then select the desired hostname from the **Hostname** option.
+-   Purging requests for that hostname and a specific relative path. Select the **Purge by path** option and then select the desired hostname from the **Hostname** option.
 
     ![Purge by hostname and relative path](/images/v7/performance/caching-hostname-relative-path.png)
 
@@ -100,6 +100,8 @@ Use the {{ PORTAL }} to purge cached content within a specific environment.
 
     -   **All Cached Content:** Select **Purge all entries**.
     -   **By Path:** Select **Purge by path**. Specify each desired [relative path](#relative-path) on a separate line.
+    -   **By Hostname:** Select **Purge all entries** and then select the desired hostname from the **Hostname** option. 
+    -   **By Hostname for a Specific Path:** Select **Purge by path**, specify the desired relative path(s), and then select the desired hostname from the **Hostname** option.
     -   **By Surrogate Key:** Select **Purge by surrogate key**. Specify each desired [surrogate key](#surrogate-key) on a separate line.
 
 4.  Click **Purge Cache**.

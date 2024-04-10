@@ -22,7 +22,7 @@ After launching your site, your  private space will look similar to this example
 
 When you run `{{ CLI_NAME }} deploy` your site will be created here. Sites in your private space can only be seen by you. To collaborate with other developers, create a team.
 
-To create a team, click the diamond icon to the right of your name in the upper left of your window, then choose *Create a team* from the popup. 
+To create a team, click the diamond icon to the right of your name in the upper left of your window, then choose *Create a team* from the popup.
 
 ![create team icon](/images/teams/create-team-icon.png?width=300px)
 
@@ -30,7 +30,7 @@ Enter a name in the *Add a Team* dialog and click *CREATE A TEAM*.
 
 ![create dialog](/images/teams/create_dialog.png)
 
-The name you choose also determines the default URL from which your site will be accessible. To configure custom domains, see [Environments](./environments).
+The name you choose also determines the default URL from which your site will be accessible. To configure custom domains, see [Environments](environments).
 
 ## Adding Your Website to the Team {/*adding-your-website-to-the-team*/}
 
@@ -38,7 +38,7 @@ After you create the team, the *Get Started* dialog is displayed (see [Launching
 
 ## Adding Team Members {/*adding-team-members*/}
 
-You add members by supplying an email address and inviting them. 
+You add members by supplying an email address and inviting them.
 
 Click your team name in the page header, then click the _Team Members_ tab:
 

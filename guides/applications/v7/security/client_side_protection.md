@@ -84,7 +84,7 @@ You may create, modify, and delete Client-Side Protection policies.
 
         -   **Enabled:** Your production policy will overwrite the `Content-Security-Policy` header when present in the response provided by an origin.
 
-        If the **Enforcement** option is disabled, then {{ PRODUCT }} will not set this header. As a result, your origin will be allowed to set this header.
+            If the **Enforcement** option is disabled, then {{ PRODUCT }} will not set this header. As a result, your origin will be allowed to set this header.
 
         -   **Disabled:** If the response from your origin includes a `Content-Security-Policy` header, then it will be served. If it is missing and the **Enforcement** option is enabled, then this header will be set to your production policy.
         
@@ -113,7 +113,7 @@ You may create, modify, and delete Client-Side Protection policies.
 
 6.  Click **Save**.
 
-## CSP Directives {/*csp-directives*/}
+## Content Security Policy Directives {/*content-security-policy-directives*/}
 
 A brief description for each CSP directive is provided below.
 
@@ -150,13 +150,13 @@ You must define a source configuration for each enabled CSP directive. However, 
 
 -   **none:** Blocks all sources. 
 -   **self:** Allows content from the same domain as the current page, but disallows content from subdomains.
--   **unsafe-inline:** Allows inline scripts and styles, which are generally considered unsafe. If you site requires inline content, we recommend using `nonce` or `hash` instead.
--   **unsafe-eval:** Allows the use of `eval()` and similar methods for creating code from strings. This is generally considered unsafe.
+-   **unsafe-inline:** Allows inline scripts and styles, which are typically considered unsafe. If your site requires inline content, we recommend using `nonce` or `hash` instead.
+-   **unsafe-eval:** Allows the use of `eval()` and similar methods for creating code from strings. This is typically considered unsafe.
 -   **hash:** Allows scripts or styles whose SHA-256 hash matches one of the provided values.
 
-    To create the hash, attempt to load the file and check the browser's console error message. It will report the hash it was expecting to find which you can copy and paste here.
+    Create a hash by attempting to load the file and then checking the browser's console error message. It will report the expected hash. Set the `hash` source configuration to this hash value. 
 
--   **nonce:** A randomly generated token used to approve specific scripts or styles. This single use token should be regenerated on each page load. Include this token in the tag that you want to permit.
+-   **nonce:** A randomly generated token used to allow a specific file (e.g., script or stylesheet). Define this single use token, which should be regenerated on each page load, within each desired tag. 
 
     **Example:** `<script nonce="ABC123">...</script>`
 

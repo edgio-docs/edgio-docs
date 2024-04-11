@@ -348,6 +348,10 @@ const nav = {
           path: 'security/getting_started',
         },
         {
+          title: 'Client-Side Protection',
+          path: 'security/client_side_protection',
+        },
+        {
           title: 'Access Rules',
           path: 'security/access_rules',
         },

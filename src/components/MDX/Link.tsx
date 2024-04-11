@@ -4,6 +4,8 @@ import cn from 'classnames';
 import NextLink from 'next/link';
 
 import {ExternalLink} from 'components/ExternalLink';
+import {productsConfig} from 'config/appConfig';
+import {useAppContext} from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 
 type AProps = JSX.IntrinsicElements['a'];
@@ -21,7 +23,10 @@ function Link({
   useNextLink = true,
   ...props
 }: LinkProps) {
-  const {version} = useConditioning();
+  const hrefType = getHrefType(href);
+
+  href = useNormalizedPath(href, versioned);
+
   const classes = 'text-link';
   const modifiedChildren = React.Children.toArray(children).map(
     (child: any, idx: number) => {
@@ -48,17 +53,6 @@ function Link({
       )
   ) {
     href = `mailto:${href}`;
-  }
-
-  let hrefType = 'internal';
-  if (/^(http|mailto|tel|\/docs\/)/.test(href)) {
-    hrefType = 'external';
-  } else if (href.startsWith('#')) {
-    hrefType = 'anchor';
-  }
-
-  if (versioned) {
-    href = version.toVersionedPath(href);
   }
 
   switch (hrefType) {
@@ -95,3 +89,45 @@ function Link({
 Link.displayName = 'Link';
 
 export default Link;
+
+export function useNormalizedPath(path: string | undefined, versioned = true) {
+  const {version} = useConditioning();
+  const {context} = useAppContext();
+
+  // If the path is already a full URL or anchor, return it as-is
+  const hrefType = getHrefType(path);
+  if (hrefType === 'external' || hrefType === 'anchor' || !path) {
+    return path;
+  }
+
+  let pathPrefix = '';
+
+  if (context) {
+    pathPrefix = productsConfig[context].pathPrefix;
+  }
+
+  // Assume the path prefix needs to be prepended if the path does not start with a /
+  if (!path.startsWith('/')) {
+    path = [pathPrefix, path].filter(Boolean).join('/');
+  }
+
+  if (versioned) {
+    return version.toVersionedPath(path);
+  }
+
+  return path;
+}
+
+function getHrefType(href: string | undefined) {
+  if (!href) {
+    return 'external';
+  }
+
+  if (/^(http|mailto|tel|\/docs\/)/.test(href)) {
+    return 'external';
+  } else if (href.startsWith('#')) {
+    return 'anchor';
+  }
+
+  return 'internal';
+}

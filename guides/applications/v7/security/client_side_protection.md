@@ -4,7 +4,13 @@ title: Client-Side Protection
 
 Client-Side Protection allows you to apply a consistent Content Security Policy (CSP) across all of your pages. The purpose of a CSP is to detect and mitigate attacks, such as cross-site scripting (XSS) and code injection. It does this by defining the type of resources that can be loaded on your site and the location from which they can be loaded. Use Client-Side Protection to detect, monitor, and block CSP violations.
 
-## How Does It Work?
+<Callout type="info">
+
+  Client-Side Protection requires {{ PRODUCT }} {{ PRODUCT_SECURITY }} Standard and manual activation. {{ ACCOUNT_UPGRADE }}
+
+</Callout>
+
+## How Does It Work? {/*how-does-it-work-*/}
 
 Client-Side Protection allows you to define a production and an audit configuration within a single Client-Side Protection policy. 
 
@@ -13,18 +19,18 @@ Client-Side Protection allows you to define a production and an audit configurat
 
 Once you have applied a Client-Side Protection policy to your traffic, each CSP violation will be listed within the **Report** section of the **Client Protection** page. Review each violation to either confirm that it is malicious or to identify how your CSP should be adjusted.
 
-## Quick Start
+## Quick Start {/*quick-start*/}
 
 1.  Set up a Client-Side Protection policy by defining a production CSP, audit CSP, or both. 
 2.  Apply the Client-Side Protection policy to your traffic by selecting it from a Security Application. 
 
     <Callout type="info">
 
-      A Security Applications determines the set of requests to which your Client-Side Protection policy will be applied.
+      A Security Application configuration determines the set of requests to which your Client-Side Protection policy will be applied.
 
     </Callout>
 
-## Policy Administration
+## Policy Administration {/*policy-administration*/}
 
 You may create, modify, and delete Client-Side Protection policies. 
 
@@ -43,9 +49,9 @@ You may create, modify, and delete Client-Side Protection policies.
     1.  Click on the **Audit** tab.
     2.  From the **Origin Overwrite** option, determine whether this policy will override the policy defined within the `Content-Security-Policy-Report-Only` response header provided by your origin. 
 
-        -   **Enabled:** If the **Audit Reporting** option is also enabled, then your audit policy always sets the `Content-Security-Policy-Report-Only` header. If your origin sets this header, it will be overwritten by your audit policy.
+        -   **Enabled:** Your audit policy will overwrite the `Content-Security-Policy-Report-Only` header when present in the response provided by an origin. 
 
-        If the **Audit Reporting** option is disabled, then your origin will be allowed to set this header.
+            If the **Audit Reporting** option is disabled, then {{ PRODUCT }} will not set this header. As a result, your origin will be allowed to set this header.
 
         -   **Disabled:** If the response from your origin includes a `Content-Security-Policy-Report-Only` header, then it will be served. If it is missing and the **Audit Reporting** option is enabled, then this header will be set to your audit policy.
         
@@ -64,7 +70,7 @@ You may create, modify, and delete Client-Side Protection policies.
         -   **Rule Editor:** Use our rule editor to construct the value of the `Content-Security-Policy-Report-Only` response header.
 
             1.  Expand the desired [directive](#content-security-policy-directives).
-            2.  Configure it as desired. 
+            2.  [Configure it](#csp-source-configuration) as desired. 
             3.  Repeat steps 1 and 2 as needed.
 
         -   **Source Upload:** Manually set the value of the `Content-Security-Policy-Report-Only` response header.
@@ -76,9 +82,9 @@ You may create, modify, and delete Client-Side Protection policies.
     1.  Click on the **Production** tab.
     2.  From the **Origin Overwrite** option, determine whether this policy will override the policy defined within the `Content-Security-Policy` response header provided by your origin. 
 
-        -   **Enabled:** If the **Enforcement** option is also enabled, then your production policy always sets the `Content-Security-Policy` header. If your origin sets this header, it will be overwritten by your production policy. 
-        
-        If the **Enforcement** option is disabled, then your origin will be allowed to set this header.
+        -   **Enabled:** Your production policy will overwrite the `Content-Security-Policy` header when present in the response provided by an origin.
+
+        If the **Enforcement** option is disabled, then {{ PRODUCT }} will not set this header. As a result, your origin will be allowed to set this header.
 
         -   **Disabled:** If the response from your origin includes a `Content-Security-Policy` header, then it will be served. If it is missing and the **Enforcement** option is enabled, then this header will be set to your production policy.
         
@@ -97,19 +103,19 @@ You may create, modify, and delete Client-Side Protection policies.
         -   **Rule Editor:** Use our rule editor to construct the value of the `Content-Security-Policy` response header.
 
             1.  Expand the desired [directive](#content-security-policy-directives).
-            2.  Configure it as desired. 
+            2.  [Configure it](#csp-source-configuration) as desired. 
             3.  Repeat steps 1 and 2 as needed.
 
-        -   **Source Upload:** Manually set the value of the `Content-Security-Policy`response header.
+        -   **Source Upload:** Manually set the value of the `Content-Security-Policy` response header.
 
             1.  Click **Source Upload**.
             2.  From the **Use this Content-Security-Policy** option, set the value of the `Content-Security-Policy` response header.
 
 6.  Click **Save**.
 
-## Content Security Policy Directives
+## CSP Directives {/*csp-directives*/}
 
-A brief description for each directive is provided below.
+A brief description for each CSP directive is provided below.
 
 -   **default-src:** If set, this directive serves as the default configuration for all fetch directives. 
 
@@ -131,7 +137,7 @@ A brief description for each directive is provided below.
 -   **worker-src:** This directive defines valid sources for loading workers through Worker, SharedWorker, or ServiceWorker scripts.
 -   **form-action:** This directive defines valid URLs for form submissions.
 
-### CSP Source Configuration
+### CSP Source Configuration {/*csp-source-configuration*/}
 
 You must define a source configuration for each enabled CSP directive. However, the set of supported source configurations vary by directive. 
 
@@ -154,6 +160,6 @@ You must define a source configuration for each enabled CSP directive. However, 
 
     **Example:** `<script nonce="ABC123">...</script>`
 
-## Monitoring Violations
+## Monitoring Violations {/*monitoring-violations*/}
 
 TODO 

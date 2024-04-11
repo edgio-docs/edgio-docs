@@ -1,7 +1,6 @@
 ---
 title: Global Time Reference
 ---
-## Overview {/*overview*/}
 
 *time.llnw.com* provides a global time reference via GET requests to accommodate MPEG-DASH live streams whose devices/ players request a specific segment number based on a trusted time source.
 

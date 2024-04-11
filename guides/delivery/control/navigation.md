@@ -1,9 +1,9 @@
 ---
-title: Menus and Links
+title: Navigation
 ---
 The Control Portal layout provides an optimized user experience with easy-to-access functionality. The navigation pane is displayed on the left side of the Control Portal. Icons for making other settings are located at the top right of the Control Portal.
 
-## Navigation Pane and Icons
+## Navigation Pane and Icons {/*navigation-pane-and-icons*/}
 ![Menu Navigation](/images/delivery/control/menu-overview.png)
 
 |Item|Description|
@@ -15,12 +15,12 @@ The Control Portal layout provides an optimized user experience with easy-to-acc
 |E	|Click the moon and sun icons to toggle between light and dark themes for Control screens.|
 |F	|Context help icon. Visible on each screen in Control. Click to view documentation specific to the screen.|
 
-## Menus
+## Menus {/*menus*/}
 
 |Item|Description|More Information|
 |--|--|--|
-|Dashboard	|View summary about your account.	|[Dashboard](/delivery/dashboard.md)|
+|Dashboard	|View summary about your account.	|[Dashboard](/delivery/control/dashboard)|
 |Configure|Configure your products and services.|[Configure](/delivery/control/configure)|
-|Reports|View reports on your traffic, network efficiency, and more.|[Reports](/reports/reports.md)|
-|Manage	|Manage users, view login history, and other functionality.|[Manage](/manage/manage.md)|
-|Help Center	|View Edgio's network status, customer documentation, open a support ticket, or contact Edgio Support.|Click any of the menu items.|
+|Reports|View reports on your traffic, network efficiency, and more.|[Reports](delivery/control/reports)|
+|Manage	|Manage users, view login history, and other functionality.|[Manage](/delivery/control/manage)|
+|Help Center	|View Edgio's network status, customer documentation, open a support ticket, or contact Edgio Support.| Click any of the menu items.|

@@ -58,7 +58,7 @@ Top-level name/value pairs are described below.
 
 The `logs` array contains an object for each log entry associated with the current JSON document. Each log entry describes a threat through the following fields:
 
--   **account_number (*String*):** Customer AN. (Category: General) Identifies an environment by its system-defined ID.
+-   **account_number (*String*):** Customer AN. (Category: General) Identifies an environment by its legacy system-defined ID.
 -   **action_type (*String*):** Action Type. (Category: Event) Indicates the action that was triggered as a result of the violation. Valid values are:
     -   **BLOCK_REQUEST:** Indicates that the request that violated a rule was blocked.
     -   **NOP:** Indicates that an alert was generated in response to the rule violation.

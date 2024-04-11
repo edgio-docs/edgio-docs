@@ -58,7 +58,7 @@ Top-level name/value pairs are described below.
 
 The `logs` array contains an object for each log entry associated with the current JSON document. Each log entry describes a request to our CDN via the following fields:
 
--   **account_number (*String*):** Customer AN. (Category: General) Identifies an environment by its system-defined ID.
+-   **account_number (*String*):** Customer AN. (Category: General) Identifies an environment by its legacy system-defined ID.
 -   **client_city (*String*):** City Name. (Category: Client Geography) Indicates the city from which the request originated.
 -   **client_country_code (*String*):** Country Code. (Category: Client Geography) Indicates the [two-character ISO 3166-1 code for the country](/applications/reference/country_codes) from which the request originated.
 -   **client_country (*String*):** Country Name. (Category: Client Geography) Indicates the country from which the request originated.

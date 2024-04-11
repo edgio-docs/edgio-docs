@@ -119,7 +119,7 @@ A brief description for each directive is provided below.
 -   **img-src:** This directive defines valid sources for loading images and favicons.
 -   **font-src:** This directive defines valid sources for loading fonts through `@font-face`.
 -   **connect-src:** This directive defines valid URLs for the following script interfaces:
-    -   **<a> ping:** Allows hyperlink monitoring and tracking.
+    -   **&lt;a> ping:** Allows hyperlink monitoring and tracking.
     -   **fetch():** Enables network requests through the Fetch API.
     -   **XMLHttpRequest (XHR / AJAX):** Allows asynchronous communication with a server.
     -   **WebSocket:** Facilitates real-time communication between the client and server through a WebSocket connection.

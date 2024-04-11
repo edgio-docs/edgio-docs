@@ -17,6 +17,12 @@ Client-Side Protection allows you to define a production and an audit configurat
 -   **Production:** Your production configuration defines the CSP that clients will enforce. It sets this CSP through the `Content-Security-Policy` response header. 
 -   **Audit:** Your audit configuration allows you to test a new CSP. It sets this CSP through the `Content-Security-Policy-Report-Only` response header. 
 
+<Callout type="info">
+
+  Client-Side Protection takes precedence over Rules. Specifically, Client-Side Protection can override a CSP response header set through Rules.
+
+</Callout>
+
 Once you have applied a Client-Side Protection policy to your traffic, each CSP violation will be listed within the **Report** section of the **Client Protection** page. Review each violation to either confirm that it is malicious or to identify how your CSP should be adjusted.
 
 ## Quick Start {/*quick-start*/}
@@ -112,6 +118,22 @@ You may create, modify, and delete Client-Side Protection policies.
             2.  From the **Use this Content-Security-Policy** option, set the value of the `Content-Security-Policy` response header.
 
 6.  Click **Save**.
+
+**To modify a Client-Side Protection policy**
+
+1.  Navigate to the **Client Protection** page.
+    {{ SECURITY_NAV }} **Client Protection**.
+2.  Open the desired policy by clicking on it.
+3.  Make the desired changes.
+4.  Click **Save**.
+
+**To delete a Client-Side Protection policy**
+
+1.  Navigate to the **Client Protection** page.
+    {{ SECURITY_NAV }} **Client Protection**.
+2.  Open the desired policy by clicking on it.
+3.  Click **Delete**.
+4.  When prompted, click **Confirm** to confirm the deletion of this policy.
 
 ## Content Security Policy Directives {/*content-security-policy-directives*/}
 

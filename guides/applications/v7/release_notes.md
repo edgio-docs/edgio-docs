@@ -10,6 +10,14 @@ See [NPM Packages Changelog](/applications/changelog) for release notes related 
 
 </Callout>
 
+## April 2024 {/* april-2024 */}
+
+| Date     | Description                                                                                                                                                                                                                                       |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 4/9/2024 | **{{ PRODUCT }} {{ PRODUCT_EDGE }}:** Introduced the ability to [purge cached content by hostname](/applications/performance/caching/purging#hostname).                                                                                           |
+| 4/9/2024 | **{{ PRODUCT }} {{ PRODUCT_EDGE }}:** Updated the [cache key](/applications/performance/caching/cache_key#cache-key-reference) to include the requested hostname. {{ PRODUCT }} will only use the updated cache key syntax for new cache entries. |
+
+
 ## March 2024 {/* march-2024 */}
 
 | Date     | Description                                                                                                                                                                                                                            |

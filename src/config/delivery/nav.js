@@ -12,7 +12,6 @@ const nav = {
     {
       title: 'Overvew',
       path: 'index',
-      icon: 'spark',
     },
     {
       title: 'APIs',

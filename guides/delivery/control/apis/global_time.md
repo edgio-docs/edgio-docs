@@ -21,7 +21,7 @@ Time references provided by this service are deemed accurate for the purpose of 
 |Access URLs|http://time.llnw.com <br /> https://time.llnw.com|
 |Sample Request|```$ curl -i http://time.llnw.com```|
 |Sample Response|1596816231|<br />
-
+<br />
 |Function|Retrieve the current time on the edge server with additional granularity in UNIX format.|
 |--|--|
 |Access URLs|http://time.llnw.com/?ms <br /> https://time.llnw.com/?ms|
@@ -33,7 +33,7 @@ Time references provided by this service are deemed accurate for the purpose of 
 |Access URLs|http://time.llnw.com/?iso <br /> https://time.llnw.com/?iso|
 |Sample Request| ```$ curl -i http://time.llnw.com/?iso```|
 |Sample Response|```2020-08-07T15:57:44Z```| <br />
-
+<br />
 
 |Function|Retrieve the current time on the edge server with additional granularity in [ISO 8601]("https://www.iso.org/iso-8601-date-and-time-format.html") format (YYYY-MM-DD).  <br /> <br /><Callout type="info">The default ms value is always 500; this option enables response granularity and does not accurately represent the ms value by default</Callout> |
 |--|--|
@@ -47,7 +47,7 @@ Time references provided by this service are deemed accurate for the purpose of 
 |Access URLs|http://time.llnw.com/?xml  <br />  https://time.llnw.com/?xml|
 |Sample Request|```$ curl -i http://time.llnw.com/?xml```|
 |Sample Response|<time><utc>1596815360</utc><isostring>2020-08-07T15:49:20Z</isostring></time>| <br />
-
+<br />
 |Function|Retrieve an XML document with additional granularity of the current time on the edge server in both UNIX and [ISO 8601]("https://www.iso.org/iso-8601-date-and-time-format.html") formats.  <br /> <br /><Callout type="info">The default ms value is always 500; this option enables response granularity and does not accurately represent the ms value by default.</Callout>|
 |--|--|
 |Access URLs|http://time.llnw.com/?xml&ms  <br />  https://time.llnw.com/?xml&ms|

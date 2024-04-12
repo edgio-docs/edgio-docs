@@ -5,7 +5,7 @@ const CACHING_DELIVERY = 'Caching and Delivery';
 
 const config = {
   ...base,
-  PRODUCT,
+  DELIVERY,
   CACHING_DELIVERY,
 };
 

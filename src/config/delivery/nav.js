@@ -39,7 +39,7 @@ const nav = {
             },
             {
               separator,
-            }
+            },
             {
               title: 'IP Allow List',
               path: 'control/apis/ip_allow_list',

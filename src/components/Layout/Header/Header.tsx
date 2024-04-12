@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 import Link from 'components/MDX/Link';
+import {headerImagePaths} from 'config/appConfig';
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 
@@ -96,26 +97,7 @@ const Button = styled.div<{gradient: string}>`
   background: ${(props) => props.gradient};
 `;
 
-const imagePaths = {
-  dark: {
-    applications: '/images/home/header/logo/dark/edgio-apps.png',
-    applications_v4: '/images/home/header/logo/dark/edgio-apps-v4.png',
-    applications_v6: '/images/home/header/logo/dark/edgio-apps-v6.png',
-    applications_v7: '/images/home/header/logo/dark/edgio-apps-v7.png',
-    delivery: '/images/home/header/logo/dark/edgio-delivery.png',
-    edgioDocs: '/images/home/header/logo/dark/edgio-docs.png',
-    uplynk: '/images/home/header/logo/dark/edgio-uplynk.png',
-  },
-  light: {
-    applications: '/images/home/header/logo/light/edgio-apps.png',
-    applications_v4: '/images/home/header/logo/light/edgio-apps-v4.png',
-    applications_v6: '/images/home/header/logo/light/edgio-apps-v6.png',
-    applications_v7: '/images/home/header/logo/light/edgio-apps-v7.png',
-    delivery: '/images/home/header/logo/light/edgio-delivery.png',
-    edgioDocs: '/images/home/header/logo/light/edgio-docs.png',
-    uplynk: '/images/home/header/logo/light/edgio-uplynk.png',
-  },
-};
+const imagePaths = headerImagePaths;
 
 const Header = () => {
   const {config, context, version} = useAppContext();

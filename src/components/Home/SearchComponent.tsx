@@ -5,9 +5,11 @@ import styled from 'styled-components';
 
 import {EdgioAnswersInput, edgioAnswersUrl} from 'components/EdgioAnswers';
 import NoSSRWrapper from 'components/Layout/NoSSRWrapper';
+import {useIsMobile} from 'components/Layout/useMediaQuery';
 import Link from 'components/MDX/Link';
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
+import {mobileMinWidth} from 'styles';
 
 const searchButtons = [
   {
@@ -25,6 +27,12 @@ const searchButtons = [
 ];
 
 const SearchContainer = styled.div<{active?: string}>`
+  --container-width: 640px;
+
+  @media (max-width: ${mobileMinWidth}) {
+    --container-width: 100%;
+  }
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -66,7 +74,7 @@ const SearchContainer = styled.div<{active?: string}>`
   .separator {
     height: 1px;
     background-color: var(--border-primary);
-    width: 640px;
+    width: var(--container-width);
     margin-bottom: 10px;
   }
 
@@ -75,7 +83,7 @@ const SearchContainer = styled.div<{active?: string}>`
     align-items: center;
     background: var(--search-input-bg);
     padding: 10px;
-    width: 640px;
+    width: var(--container-width);
     height: 40px;
     border: 1px solid var(--border-primary);
 
@@ -191,13 +199,14 @@ const StyledEdgioAnswersInput = styled.div`
 function HomeSearchComponent() {
   const [active, setActive] = useState('applications');
   const {isClient} = useTheme();
+  const isMobile = useIsMobile();
 
   const isApplicationsActive = active === 'applications';
   const isUplynkActive = active === 'uplynk';
   const isDeliveryActive = active === 'delivery';
 
   return (
-    <SearchContainer active={active}>
+    <SearchContainer active={active} isMobile={isMobile}>
       <div className="search-buttons">
         {searchButtons.map((button) => (
           <button
@@ -240,8 +249,10 @@ function HomeSearchComponent() {
 }
 
 function ProductSearchComponent() {
+  const isMobile = useIsMobile();
+
   return (
-    <SearchContainer>
+    <SearchContainer isMobile={isMobile}>
       <div className="search-buttons">
         {
           <>

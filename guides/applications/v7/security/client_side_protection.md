@@ -15,7 +15,7 @@ Client-Side Protection allows you to apply a consistent Content Security Policy 
 Client-Side Protection allows you to define a production and an audit configuration within a single Client-Side Protection policy. 
 
 -   **Production:** Your production configuration defines the CSP that clients will enforce. It sets this CSP through the `Content-Security-Policy` response header. 
--   **Audit:** Your audit configuration allows you to test a new CSP. It sets this CSP through the `Content-Security-Policy-Report-Only` response header. 
+-   **Audit:** Your audit configuration allows you to test a new CSP or audit the assets being loaded by your clients. It sets a CSP through the `Content-Security-Policy-Report-Only` response header. 
 
 <Callout type="info">
 
@@ -184,4 +184,19 @@ You must define a source configuration for each enabled CSP directive. However, 
 
 ## Monitoring Violations {/*monitoring-violations*/}
 
-TODO 
+Monitor violations for all Client-Side Protection policies from the **Report** section of the **Client Protection** page. Use this report to:
+
+-   Find out the location from which resources are being loaded. 
+
+    For example, you could configure an Audit policy's `default-src` to `none`. After which, the **Audit** tab would list all resources loaded by your site and the location from which they were loaded. 
+
+-   Identify valid resources that violate your production policy. After which, you should adjust your production policy to allow those resources to be loaded.
+
+**Key information:**
+-   Violations are categorized according to whether the request violated a production or audit policy. These violations are listed on the **Production** tab and the **Audit** tab, respectively.
+-   Violations are sorted from most recent to oldest.
+-   By default, violations for the last hour are shown. However, you may view violations for up to the last 30 days. Adjust the report's time period from the time period option on the right-hand side. 
+
+    ![Client-Side Protection - Report - Time period](/images/v7/security/client-side-protection-report-time-period.png)
+
+-   View additional information about the request by clicking on the `Details` link.

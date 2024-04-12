@@ -16,12 +16,10 @@ const nav = {
     {
       title: 'APIs',
       path: 'apis',
-      icon: 'spark',
     },
     {
       title: 'Control',
       path: 'control',
-      icon: 'spark',
       routes: [
         {
           title: 'APIs',
@@ -55,17 +53,14 @@ const nav = {
     {
       title: 'Delivery',
       path: 'delivery',
-      icon: 'spark',
     },
     {
       title: 'Storage',
       path: 'storage',
-      icon: 'spark',
     },
     {
       title: 'Video',
       path: 'video',
-      icon: 'spark',
     },
   ],
 };

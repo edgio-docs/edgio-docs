@@ -12,14 +12,17 @@ const nav = {
     {
       title: 'Overvew',
       path: 'index',
+      icon: 'spark',
     },
     {
       title: 'APIs',
       path: 'apis',
+      icon: 'spark',
     },
     {
       title: 'Control',
       path: 'control',
+      icon: 'spark',
       routes: [
         {
           title: 'APIs',
@@ -37,9 +40,7 @@ const nav = {
               title: 'Realtime Reporting',
               path: 'control/apis/realtime_reporting',
             },
-            {
-              separator,
-            },
+            separator,
             {
               title: 'IP Allow List',
               path: 'control/apis/ip_allow_list',
@@ -55,14 +56,17 @@ const nav = {
     {
       title: 'Delivery',
       path: 'delivery',
+      icon: 'spark',
     },
     {
       title: 'Storage',
       path: 'storage',
+      icon: 'spark',
     },
     {
       title: 'Video',
       path: 'video',
+      icon: 'spark',
     },
   ],
 };

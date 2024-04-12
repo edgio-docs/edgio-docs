@@ -14,14 +14,6 @@ const nav = {
       path: 'index',
     },
     {
-      title: 'IP Allow List',
-      path: 'ip_allow_list',
-    },
-    {
-      title: 'Global Time',
-      path: 'global_time',
-    },
-    {
       title: 'APIs',
       path: 'apis',
     },
@@ -37,6 +29,25 @@ const nav = {
               title: 'Billing',
               path: 'control/apis/billing',
             },
+            {
+              title: 'Configuration',
+              path: 'control/apis/configuration',
+            },
+            {
+              title: 'Realtime Reporting',
+              path: 'control/apis/realtime_reporting',
+            },
+            {
+              separator,
+            }
+            {
+              title: 'IP Allow List',
+              path: 'control/apis/ip_allow_list',
+            },
+            {
+              title: 'Global Time',
+              path: 'control/apis/global_time',
+            },
           ],
         },
       ],
@@ -44,6 +55,14 @@ const nav = {
     {
       title: 'Delivery',
       path: 'delivery',
+    },
+    {
+      title: 'Storage',
+      path: 'storage',
+    },
+    {
+      title: 'Video',
+      path: 'video',
     },
   ],
 };

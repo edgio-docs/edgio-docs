@@ -5,7 +5,7 @@
 // made in the versioned config files.
 
 const CACHING_DELIVERY = 'Caching and Delivery';
-const PRODUCT = 'Delivery';
+const DELIVERY = 'Delivery';
 const COMPANY_NAME = 'Edgio';
 const PRODUCT_NAME = 'Edgio';
 const PRODUCT = 'Edgio';
@@ -226,7 +226,7 @@ const config = {
   DOCS_NAME,
   UPLYNK_CMS_URL,
   DELIVERY_PORTAL_URL,
-  PRODUCT,
+  DELIVERY,
   CACHING_DELIVERY,
 };
 

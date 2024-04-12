@@ -10,7 +10,7 @@ const nav = {
   path: productsConfig['delivery'].pathPrefix,
   routes: [
     {
-      title: 'Overvew',
+      title: 'Overview',
       path: 'index',
     },
     {

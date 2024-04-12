@@ -1,5 +1,5 @@
 ---
-title: {CACHING_DELIVERY}
+title: {{CACHING_DELIVERY}}
 ---
 ## Configuration List
 ## Filtering the List of Configurations

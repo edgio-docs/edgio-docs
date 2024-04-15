@@ -27,7 +27,7 @@ const nav = {
           routes: [
             {
               title: 'Billing',
-              path: 'control/apis/billing',
+              path: 'https://support.limelight.com/public/openapi/configuration/index.html',
             },
             {
               title: 'Configuration',

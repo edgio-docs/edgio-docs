@@ -124,7 +124,7 @@ const nav = {
               title: 'General Information',
               path: 'control/reports/general_information',
             },
-            separator
+            separator,
             {
               title: 'Billing',
               path: 'control/reports/billing',
@@ -157,7 +157,7 @@ const nav = {
               title: 'Unified Traffic',
               path: 'control/reports/unified_traffic',
             },
-            separator
+            separator,
             {
               title: 'Origin Storage',
               path: 'control/reports/origin_storage',

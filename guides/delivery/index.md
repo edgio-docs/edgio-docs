@@ -3,12 +3,12 @@ title: {{ DELIVERY }} Home
 ---
 
 Welcome to Edgio Delivery!
-
+< /br>
 Here you'll find our user and technical documentation for our Delivery product suite.
-
+< /br>
 |Topic|Details|
 |---|---|
-|**Control portal**| Manage your delivery configurations and users and customize analytics reports.|
+|**Control Portal**| Manage your delivery configurations and users and customize analytics reports.|
 |**Content Delivery**| Access user guides: Delivery, MediaVault, and SmartPurge|
 | **Storage**| Learn about APIs and best practices or see the Quick Start guide|
 |**Video**| Find user guides for APIs, MMD Live, MMD On Demand, Live Push, and LVP|

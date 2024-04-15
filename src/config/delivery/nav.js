@@ -184,6 +184,7 @@ const nav = {
               title: 'Renew SSL Certificate',
               path: 'control/support_tools/renew_ssl_certificate',
             },
+            separator,
             {
               title: 'IP Allow List',
               path: 'control/support_tools/ip_allow_list',
@@ -192,6 +193,7 @@ const nav = {
               title: 'Global Time',
               path: 'control/support_tools/global_time',
             },
+            separator,
             {
               title: 'Change Log',
               path: 'control/support_tools/change_log',

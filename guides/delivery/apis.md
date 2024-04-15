@@ -8,7 +8,7 @@ This content is also accessible in the navigation menu under the associated prod
 |Delivery|SmartPurge API|REST|
 |Storage|Quick Start|JSON-RPC, REST|
 |Video	|Content API Developers Reference <br /> Live Stream Provisioning<br /> |REST <br /> REST|
-|Control	|Billing API < /br> Configuration API <br /> Realtime Reporting API | REST <br /> REST < /br> REST <br />|
+|Control	|[Billing](https://support.limelight.com/public/openapi/billing/index.html) <br /> [Configuration](https://support.limelight.com/public/openapi/configuration/index.html) <br /> [Realtime Reporting](https://support.limelight.com/public/openapi/realtimereporting/index.html) | REST <br /> REST <br /> REST |
 
 ## API Developer Tools and References
 [API Explorer](https://support.limelight.com/public/explorer/llnw-api-explorer.html)

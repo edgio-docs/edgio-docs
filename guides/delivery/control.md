@@ -13,10 +13,10 @@ Control Portal
 <br />
 
 ## APIs {/*apis/}
-Billing [Dashboard](/delivery/control/apis/billing)
+Billing [Billing](/delivery/control/apis/billing)
 <br />
-Configuration [Dashboard](/delivery/control/apis/configuration)
+Configuration [Configuration](/delivery/control/apis/configuration)
 <br />
-Realtime Reporting [Dashboard](/delivery/control/apis/realtime_reporting)
+Realtime Reporting [Realtime Reporting](/delivery/control/apis/realtime_reporting)
 
 ## Change Log {/*change-log*/}

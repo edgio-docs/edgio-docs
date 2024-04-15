@@ -176,6 +176,28 @@ const nav = {
             },
           ],
         },
+        {
+          title: 'Support Tools',
+          path: 'control/support_tools',
+          routes: [
+            {
+              title: 'Renew SSL Certificate',
+              path: 'control/support_tools/renew_ssl_certificate',
+            },
+            {
+              title: 'IP Allow List',
+              path: 'control/support_tools/ip_allow_list',
+            },
+            {
+              title: 'Global Time',
+              path: 'control/support_tools/global_time',
+            },
+            {
+              title: 'Change Log',
+              path: 'control/support_tools/change_log',
+            },
+          ],
+        },
       ],
     },
     {

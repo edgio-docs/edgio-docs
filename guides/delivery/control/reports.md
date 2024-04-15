@@ -3,6 +3,9 @@ title: Reports
 ---
 reports overview page
 
+add reporting - overview
+add reporting - faqs
+
 Reports
 General Information
 

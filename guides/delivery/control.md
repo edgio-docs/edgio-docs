@@ -1,6 +1,7 @@
 ---
 title: Control Portal Overview
 ---
+
 Edgio's web-based customer portal, [Control](https://control.llnw.com/), provides 24x7 access to Edgio services and support. You can use the portal to order and configure many services, manage content, analyze usage, and access online support.
 
 ## Guides {/*guides*/}
@@ -12,7 +13,7 @@ Control Portal
 - [Reports](/delivery/control/reports)
 <br />
 
-## APIs {/*apis/}
+## APIs {/*apis/*}
 Billing [Billing](/delivery/control/apis/billing)
 <br />
 Configuration [Configuration](/delivery/control/apis/configuration)

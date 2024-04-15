@@ -18,4 +18,4 @@ properties:
     description: Determines whether to overwrite the response header if provided by the origin. 
   enforce:
     type: boolean
-    description: Determines whether {{ PRODUCT }} will set this header in the response.
+    description: Determines whether Edgio will set this header in the response.

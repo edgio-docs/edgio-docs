@@ -3,9 +3,9 @@ title: {{ DELIVERY }} Home
 ---
 
 Welcome to Edgio Delivery!
-< /br>
+<br />
 Here you'll find our user and technical documentation for our Delivery product suite.
-< /br>
+<br />
 |Topic|Details|
 |---|---|
 |**Control Portal**| Manage your delivery configurations and users and customize analytics reports.|

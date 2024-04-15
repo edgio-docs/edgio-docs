@@ -5,6 +5,8 @@ import {headerImagePaths as imagePaths} from 'config/appConfig';
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 
+import {NavMobile} from '../SidebarNav';
+
 const MobileHeaderContainer = styled.header`
   position: sticky;
   top: 0;
@@ -51,7 +53,7 @@ const MobileHeader = () => {
 
   return (
     <MobileHeaderContainer>
-      <Spacer /> {/* Left Spacer */}
+      <NavMobile />
       <LogoArea>
         <Link href="/">
           {context &&

@@ -6,6 +6,8 @@ import '@reach/menu-button/styles.css';
 import Link from 'components/MDX/Link';
 import headerNavConfig from 'config/header.nav';
 
+import {Route} from '../SidebarNav/SidebarNav';
+
 const StyledMenuButton = styled(MenuButton)`
   display: inline-flex;
   align-items: center;
@@ -174,4 +176,51 @@ export default function HeaderNav() {
       })}
     </>
   );
+}
+
+interface HeaderRoute extends Route {
+  icon?: React.ReactNode;
+}
+
+export function getHeaderNavAsRoutes(): HeaderRoute {
+  const nav = {
+    title: 'header-nav',
+    path: '/applications',
+    routes: headerNavConfig.map((navItem) => {
+      const isLink = !!navItem.url;
+      const hasItems = !!navItem.items;
+
+      if (isLink) {
+        return {
+          title: navItem.title,
+          path: navItem.url || 'foo',
+        };
+      }
+
+      if (hasItems) {
+        return {
+          title: navItem.title,
+          path: 'foo',
+          routes: navItem.items?.map((item) => {
+            if (item) {
+              return {
+                title: item.name,
+                path: item.url || 'bar',
+              };
+            }
+            return {
+              title: 'FooBarBaz',
+              path: 'baz',
+            };
+          }),
+        };
+      }
+
+      return null;
+    }),
+  };
+
+  console.log('nav: ', nav);
+
+  return nav;
 }

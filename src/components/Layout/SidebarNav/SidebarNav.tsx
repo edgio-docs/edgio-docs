@@ -12,7 +12,7 @@ import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 
-interface Route {
+export interface Route {
   title: string | null;
   path: string;
   icon: string;
@@ -141,6 +141,7 @@ function getCurrentRouteIndex(
   currentRoutePath: string
 ) {
   const currentRoute = currentRoutePath.split('/')[depth];
+  console.log('routes', routes);
   return routes.findIndex((route) => route.path.endsWith(currentRoute));
 }
 
@@ -305,12 +306,25 @@ const StyledSideNav = styled.div`
   }
 `;
 
-export default function SideNav() {
+interface SideNavProps extends React.HTMLAttributes<HTMLDivElement> {
+  items?: Route;
+}
+
+/**
+ * Side navigation component which renders a list of navigation items.
+ * Items are automatically determined by the current context. Optionally,
+ * you can pass a list of items to render.
+ */
+const SideNav: React.FC<SideNavProps> = ({items, ...props}) => {
   const {navMenuItems, hasNavigationMenu} = useAppContext();
+
+  if (items && navMenuItems) {
+    navMenuItems.routes!.push(...items.routes!);
+  }
 
   if (hasNavigationMenu) {
     return (
-      <StyledSideNav>
+      <StyledSideNav {...props}>
         <ul className="sidenav-sublist" data-nav-depth="0">
           <AccordionParent routes={(navMenuItems as Route).routes!} depth={0} />
         </ul>
@@ -319,4 +333,6 @@ export default function SideNav() {
   }
 
   return null;
-}
+};
+
+export default SideNav;

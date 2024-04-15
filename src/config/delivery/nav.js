@@ -40,11 +40,11 @@ const nav = {
             separator,
             {
               title: 'IP Allow List',
-              path: 'control/apis/ip_allow_list',
+              path: 'control/support_tools/ip_allow_list',
             },
             {
               title: 'Global Time',
-              path: 'control/apis/global_time',
+              path: 'control/support_tools/global_time',
             },
           ],
         },
@@ -87,6 +87,92 @@ const nav = {
             {
               title: 'Live Streaming',
               path: 'control/configure/live_streaming',
+            },
+          ],
+        },
+        {
+          title: 'Manage',
+          path: 'control/manage',
+          routes: [
+            {
+              title: 'My Account',
+              path: 'control/manage/my_account',
+            },
+            {
+              title: 'Content with SmartPurge',
+              path: 'control/manage/content_with_smartpurge',
+            },
+            {
+              title: 'Authentication',
+              path: 'control/manage/authentication',
+            },
+            {
+              title: 'Control Portal Users',
+              path: 'control/manage/control_portal_users',
+            },
+            {
+              title: 'Origin Storage Users',
+              path: 'control/manage/origin_storage_users',
+            },
+          ],
+        },
+        {
+          title: 'Reports',
+          path: 'control/reports',
+          routes: [
+            {
+              title: 'General Information',
+              path: 'control/reports/general_information',
+            },
+            separator
+            {
+              title: 'Billing',
+              path: 'control/reports/billing',
+            },
+            {
+              title: 'CMCD',
+              path: 'control/reports/cmcd',
+            },
+            {
+              title: 'DNS Overview',
+              path: 'control/reports/dns_overview',
+            },
+            {
+              title: 'LDS Overview',
+              path: 'control/reports/lds_overview',
+            },
+            {
+              title: 'Live Push',
+              path: 'control/reports/live_push',
+            },
+            {
+              title: 'Service Provider Traffic',
+              path: 'control/reports/service_provider_traffic',
+            },
+            {
+              title: 'Traffic',
+              path: 'control/reports/traffic',
+            },
+            {
+              title: 'Unified Traffic',
+              path: 'control/reports/unified_traffic',
+            },
+            separator
+            {
+              title: 'Origin Storage',
+              path: 'control/reports/origin_storage',
+            },
+            {
+              title: 'Realtime Live Event Overview',
+              path: 'control/reports/realtime_live_event_overview',
+            },
+            {
+              title: 'Status Codes',
+              path: 'control/reports/status_codes',
+            },
+            {
+              title: 'URL Prefixes',
+              path: 'control/reports/url_prefixes',
             },
           ],
         },

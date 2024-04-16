@@ -13,6 +13,7 @@ Control Portal
 - [Configure](/delivery/control/configure)
 - [Manage](/delivery/control/manage)
 - [Reports](/delivery/control/reports)
+- [Support Tools](/delivery/control/support_tools)
 
 ## APIs {/*apis*/}
 - [Billing](https://support.limelight.com/public/openapi/billing/index.html)

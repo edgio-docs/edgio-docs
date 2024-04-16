@@ -46,7 +46,7 @@ Hidden fields are masked with asterisks.
 Users can edit, clone, and revert the configuration.
 
 ## Creating a New Configuration {/*creating-a-new-configuration*/}
-To create a new configuration, click the `+new` button, and the Create configuration screen will be displayed.
+To create a new configuration, click the **+ new** button, and the Create configuration screen will be displayed.
 
 ### Service Profiles  {/*service-profiles*/}
 
@@ -56,7 +56,7 @@ The **Use Case** and **Service Profile** drop-down menus are disabled:
 - In existing configurations.
 - After you have selected a Published and Source Protocol while you are creating a new configuration.
 
-<Callout type="info">If you have not already saved the new configuration but you want to choose another Service Profile, you can do so by exiting out of the Create configuration screen and creating a new configuration by clicking the `+new` button.</Callout>
+<Callout type="info">If you have not already saved the new configuration but you want to choose another Service Profile, you can do so by exiting out of the Create configuration screen and creating a new configuration by clicking the **+ new** button.</Callout>
 
 If you wish to modify a Service Profile or migrate, add, or remove a Protocol Set for an existing configuration, contact your Account Manager.
 
@@ -72,7 +72,7 @@ After you've filled in the configuration fields in each section, click Activate 
 
 | Setting| Information Requested| Purpose| Selecting the Right Option|
 |---|---|---|---|
-| Published protocol| The level of HTTP protocol security to use when delivering your cached content to end-users| To ensure your content is delivered with the level of security you require| The Published protocol and Source protocol drop-down menus are disabled:  <br /> - In existing configurations. <br /> - After you have selected a Published and Source protocol while you are creating a new configuration. <br /> <Callout type="info">If you have not already saved the new configuration but you want to choose another Published and Source protocol, you can do so by exiting out of the Create configuration screen and creating a new configuration by clicking the `+new` button.</Callout> |
+| Published protocol| The level of HTTP protocol security to use when delivering your cached content to end-users| To ensure your content is delivered with the level of security you require| The Published protocol and Source protocol drop-down menus are disabled:  <br /> - In existing configurations. <br /> - After you have selected a Published and Source protocol while you are creating a new configuration. <br /> <Callout type="info">If you have not already saved the new configuration but you want to choose another Published and Source protocol, you can do so by exiting out of the Create configuration screen and creating a new configuration by clicking the **+ new** button.</Callout> |
 |Published hostname|The fully qualified domain name that will be used in all public links (Published URLs) to your cached content <br /> <Callout type="info">A URL that includes the Published Hostname is referred to as a Published URL.</Callout> | To direct your users to the Content Delivery service (instead of your origin) |In the Published hostname field, enter the published hostname specified in the Welcome Letter associated with your {{COMPANY_NAME}} Account or a CNAME if desired. <br /> The published hostname provided by Edgio will be in a form similar to: <br /> ```accountname.vo.llnwd.net``` <br /> If you prefer to publish under a different hostname, you can use a DNS CNAME record to alias (point) your desired name to Edgio published hostname. <br /><Callout type="info"> - IP addresses are not accepted. You must enter a fully qualified domain name. <br /> - If you can't find the Edgiopublished hostname in your Welcome Letter, please contact {{COMPANY_NAME}} Support.</Callout> <br /> If you want to use a directory name “alias” for a particular origin path, you can add the alias by entering it in the Published URL path field. <br /> If needed, you can add a regex expression to the start of the Published hostname field, but you must have permissions to do so. Without the permissions, you are restricted as follows: <br /> - When creating or cloning a configuration, you cannot add regex to the field. <br /> - If a configuration has regex in the field, you cannot clone the configuration. <br /> - When updating a configuration that has regex in the field, you cannot modify any part of the Published hostname. <br /> Please contact your account manager if you need assistance with any of these operations. |
 | Published URL path	|The path portion of a published URL|To allow your published hostname URL to be more specific and include a path.| Enter the path enclosed in forward slashes. <br /> <Callout type="info"> - This field must contain a value and defaults to / <br /> - If you have the PERMISSION_CONFIGURE_SSUI_REGEX permission, you can include regular expressions in the path.</Callout> |
 |This path ends with a filename	|Whether the last component in the path is a file| File names are not validated by extension, so when the Published URL path or Source URL path does not end with a slash, it is treated as a file name. <br /> <Callout type="info">This field and **Only publish files with these extensions** are mutually exclusive. </Callout>| Place a checkmark in the checkbox if the path ends in a file name. <br /> <Callout type="info">If you check this option, you must make entries in the **Published URL path** and **Source URL path** fields</Callout> |
@@ -219,7 +219,7 @@ Content Delivery supports "seeking" or "scrubbing" (skipping back and forth) wit
 ### {{MEDIAVAULT}}  {/*mediavault*/}
 | Setting| Information Requested| Purpose| Selecting the Right Option|
 |---|---|---|---|
-|Enable {{MEDIAVAULT}} content protection|Whether you want to use {{MEDIAVAULT}} to provide additional content security. {{MEDIAVAULT}} provides high-performance URL authentication.|{{MEDIAVAULT}} can help you prevent “deep linking” and other unauthorized viewing behavior|o enable this feature, check the **Enable {{MEDIAVAULT}} content protection** checkbox, and provide a primary and secondary “shared secret” (both used to prevent URL tampering). <br /> You can also change the HTTP Error Code returned by {{MEDIAVAULT}} from the default 400 code by entering a new value in the Deny Status Code field.|
+|Enable {{MEDIAVAULT}} content protection|Whether you want to use {{MEDIAVAULT}} to provide additional content security. {{MEDIAVAULT}} provides high-performance URL authentication.|{{MEDIAVAULT}} can help you prevent “deep linking” and other unauthorized viewing behavior|To enable this feature, check the **Enable {{MEDIAVAULT}} content protection** checkbox, and provide a primary and secondary “shared secret” (both used to prevent URL tampering). <br /> You can also change the HTTP Error Code returned by {{MEDIAVAULT}} from the default 400 code by entering a new value in the Deny Status Code field.|
 
 #### More about {{MEDIAVAULT}}
 
@@ -263,12 +263,12 @@ If a user is editing a configuration, then the field is visible and enabled depe
 
 |Field|Description|
 |---|---|
-|Cookie parameter|	Cookie name.|
-|URL query term selector	|String that identifies the query term.|
-|Expiration	|Date when the configuration expires.|
+|Cookie parameter|	Cookie name|
+|URL query term selector	|String that identifies the query term|
+|Expiration	|Date when the configuration expires|
 |Domain	|Domain to which the configuration applies|
 
-<Callout type="info">You can also use the feature to indicate when a ```Set-Cookie header``` should not be issued.</Callout>
+<Callout type="info">You can also use the feature to indicate when a ```Set-Cookie``` header should not be issued.</Callout>
 
 #### Cookie Handling Example  {/*cookie-handling-example*/}
 
@@ -313,7 +313,7 @@ The **Additional Options** section allows you to quickly configure options that 
 
 If you selected **Both HTTP and HTTPS** in the Content Location section, you could use the section to configure options for a particular protocol set.
 
-1. Begin typing an option name in the Options field. The field has auto-complete capabilities, so you do not have to type the full name. As you type, matching options display in the auto-filtered list. < br /> <Callout type="info">Available options depend on your account name and the service profile at the top of the page.</Callout>
+1. Begin typing an option name in the Options field. The field has auto-complete capabilities, so you do not have to type the full name. As you type, matching options display in the auto-filtered list. <Callout type="info">Available options depend on your account name and the service profile at the top of the page.</Callout>
 2. Select the option from the auto-filtered list.
 
 The UI adds the option to a list above the option field.

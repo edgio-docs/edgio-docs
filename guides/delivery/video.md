@@ -1,5 +1,5 @@
 ---
-title: Video Overview
+title: Video
 ---
 The Limelight Video Platform (LVP) helps customers manage all their video content. LVP lets customers upload media for publishing, add custom metadata, select thumbnails, trim video clips, add and manage closed caption files, create and schedule custom playlists, and insert advertising cue points. Customers can create custom encoding profiles that automatically convert media to multi-bitrate, multi-resolution formats including HLS, DASH, and MSS for playback on desktop browsers, Apple iOS, and Android devices. It also includes analytics that help Customers understand the consumption of their video Content.
 

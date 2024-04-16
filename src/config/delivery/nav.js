@@ -11,7 +11,7 @@ const nav = {
   routes: [
     {
       title: 'Overview',
-      path: 'overview',
+      path: 'index',
     },
     {
       title: 'APIs',
@@ -173,30 +173,6 @@ const nav = {
             {
               title: 'URL Prefixes',
               path: 'control/reports/content/url_prefixes',
-            },
-          ],
-        },
-        {
-          title: 'Support Tools',
-          path: 'control/support_tools',
-          routes: [
-            {
-              title: 'Renew SSL Certificate',
-              path: 'control/support_tools/renew_ssl_certificate',
-            },
-            separator,
-            {
-              title: 'IP Allow List',
-              path: 'control/support_tools/ip_allow_list',
-            },
-            {
-              title: 'Global Time',
-              path: 'control/support_tools/global_time',
-            },
-            separator,
-            {
-              title: 'Change Log',
-              path: 'control/support_tools/change_log',
             },
           ],
         },

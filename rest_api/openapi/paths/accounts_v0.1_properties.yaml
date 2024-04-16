@@ -1,28 +1,85 @@
-get:
+post:
+  summary: Create Property
+  description: Create a property.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/postAccountsV01Properties.yaml
+    required: true
+  security:
+    - accountsScope:
+        - app.accounts
+  responses:
+    '201':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Accounts_V1_Entities_Property.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
   tags:
     - properties
+  operationId: postAccountsV01Properties
+get:
   summary: Get All Properties
   description: Returns all properties.
-  operationId: getAccountsV01Properties
   parameters:
-    - name: page
-      in: query
+    - in: query
+      name: page
       description: 0-based page number.
+      required: false
       schema:
         type: integer
         format: int32
         default: 0
-    - name: page_size
-      in: query
+    - in: query
+      name: page_size
       description: >-
         Number of results per page. Valid values are: 1 - 100. **Default
         value:** 20
+      required: false
       schema:
         type: integer
         format: int32
         default: 20
-    - name: organization_id
-      in: query
+    - in: query
+      name: organization_id
       description: >
         An organization's system-defined ID (e.g.,
         12345678-1234-1234-1234-1234567890ab).
@@ -33,6 +90,9 @@ get:
       required: true
       schema:
         type: string
+  security:
+    - accountsScope:
+        - app.accounts
   responses:
     '200':
       description: OK
@@ -65,65 +125,18 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
       description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-  security:
-    - accountsScope:
-        - app.accounts
-post:
   tags:
     - properties
-  summary: Create Property
-  description: Create a property.
-  operationId: postAccountsV01Properties
-  requestBody:
-    content:
-      application/json:
-        schema:
-          $ref: ../components/schemas/postAccountsV01Properties.yaml
-    required: true
-  responses:
-    '201':
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Accounts_V1_Entities_Property.yaml
-    '400':
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
-    '401':
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '403':
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '404':
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '500':
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-  security:
-    - accountsScope:
-        - app.accounts
-  x-codegen-request-body-name: postAccountsV01Properties
+  operationId: getAccountsV01Properties

@@ -1,12 +1,9 @@
-get:
-  tags:
-    - organizations
-  summary: Get Organization
-  description: Retrieves information about an organization.
-  operationId: getAccountsV01OrganizationsOrganizationId
+delete:
+  summary: Delete Organization
+  description: Deletes an organization.
   parameters:
-    - name: organization_id
-      in: path
+    - in: path
+      name: organization_id
       description: >
         The organization's system-defined ID.
 
@@ -16,64 +13,9 @@ get:
       required: true
       schema:
         type: string
-  responses:
-    '200':
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Accounts_V1_Entities_Organization.yaml
-    '400':
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
-    '401':
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '403':
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '404':
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '500':
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
   security:
     - accountsScope:
         - app.accounts
-delete:
-  tags:
-    - organizations
-  summary: Delete Organization
-  description: Deletes an organization.
-  operationId: deleteAccountsV01OrganizationsOrganizationId
-  parameters:
-    - name: organization_id
-      in: path
-      description: >
-        The organization's system-defined ID.
-
-
-        From the Edgio Console, navigate to the desired organization and then
-        click **Settings**. It is listed under **Organization ID**.
-      required: true
-      schema:
-        type: string
   responses:
     '204':
       description: OK
@@ -105,24 +47,27 @@ delete:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
       description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-  security:
-    - accountsScope:
-        - app.accounts
-patch:
   tags:
     - organizations
+  operationId: deleteAccountsV01OrganizationsOrganizationId
+patch:
   summary: Update Organization
   description: Updates an organization.
-  operationId: patchAccountsV01OrganizationsOrganizationId
   parameters:
-    - name: organization_id
-      in: path
+    - in: path
+      name: organization_id
       description: >
         The organization's system-defined ID.
 
@@ -139,6 +84,9 @@ patch:
           $ref: >-
             ../components/schemas/patchAccountsV01OrganizationsOrganizationId.yaml
     required: true
+  security:
+    - accountsScope:
+        - app.accounts
   responses:
     '200':
       description: OK
@@ -170,13 +118,82 @@ patch:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
       description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  tags:
+    - organizations
+  operationId: patchAccountsV01OrganizationsOrganizationId
+get:
+  summary: Get Organization
+  description: Retrieves information about an organization.
+  parameters:
+    - in: path
+      name: organization_id
+      description: >
+        The organization's system-defined ID.
+
+
+        From the Edgio Console, navigate to the desired organization and then
+        click **Settings**. It is listed under **Organization ID**.
+      required: true
+      schema:
+        type: string
   security:
     - accountsScope:
         - app.accounts
-  x-codegen-request-body-name: patchAccountsV01OrganizationsOrganizationId
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Accounts_V1_Entities_Organization.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  tags:
+    - organizations
+  operationId: getAccountsV01OrganizationsOrganizationId

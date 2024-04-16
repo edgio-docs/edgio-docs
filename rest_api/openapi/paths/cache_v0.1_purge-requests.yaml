@@ -1,6 +1,4 @@
 post:
-  tags:
-    - purge-requests
   summary: Purge Cache
   description: >
     Submits a request to purge cached content from a specific environment.
@@ -11,13 +9,15 @@ post:
     purge request by passing the purge request ID, which is returned by the `id`
     property, to the [Get Purge Request
     operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).
-  operationId: postCacheV01PurgeRequests
   requestBody:
     content:
       application/json:
         schema:
           $ref: ../components/schemas/postCacheV01PurgeRequests.yaml
     required: true
+  security:
+    - cacheScope:
+        - app.cache.purge
   responses:
     '202':
       description: OK
@@ -61,7 +61,6 @@ post:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-  security:
-    - cacheScope:
-        - app.cache.purge
-  x-codegen-request-body-name: postCacheV01PurgeRequests
+  tags:
+    - purge-requests
+  operationId: postCacheV01PurgeRequests

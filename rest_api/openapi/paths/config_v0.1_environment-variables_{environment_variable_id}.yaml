@@ -1,67 +1,23 @@
-get:
-  tags:
-    - environment-variables
-  summary: Get Environment Variable
-  description: Returns an environment variable.
-  operationId: getConfigV01EnvironmentVariablesEnvironmentVariableId
+delete:
+  summary: Delete Environment Variable
+  description: Deletes an environment variable.
   parameters:
-    - name: environment_variable_id
-      in: path
+    - in: path
+      name: environment_variable_id
+      description: >
+        An environment variable's system-defined ID.
+
+
+        Use the [Get All Environment Variables
+        operation](#tag/environment-variables/operation/getConfigV01EnvironmentVariables)
+        to retrieve a list of environment variables and their system-defined
+        IDs.
       required: true
       schema:
         type: string
-  responses:
-    '200':
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Config_V1_Entities_EnvironmentVariable.yaml
-    '400':
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
-    '401':
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '403':
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '404':
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '500':
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
   security:
     - configScope:
         - app.config
-delete:
-  tags:
-    - environment-variables
-  summary: Delete Environment Variable
-  description: Deletes an environment variable.
-  operationId: deleteConfigV01EnvironmentVariablesEnvironmentVariableId
-  parameters:
-    - name: environment_variable_id
-      in: path
-      required: true
-      schema:
-        type: string
   responses:
     '204':
       description: OK
@@ -93,12 +49,84 @@ delete:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
       description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  tags:
+    - environment-variables
+  operationId: deleteConfigV01EnvironmentVariablesEnvironmentVariableId
+get:
+  summary: Get Environment Variable
+  description: Returns an environment variable.
+  parameters:
+    - in: path
+      name: environment_variable_id
+      description: >
+        An environment variable's system-defined ID.
+
+
+        Use the [Get All Environment Variables
+        operation](#tag/environment-variables/operation/getConfigV01EnvironmentVariables)
+        to retrieve a list of environment variables and their system-defined
+        IDs.
+      required: true
+      schema:
+        type: string
   security:
     - configScope:
         - app.config
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Config_V1_Entities_EnvironmentVariable.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  tags:
+    - environment-variables
+  operationId: getConfigV01EnvironmentVariablesEnvironmentVariableId

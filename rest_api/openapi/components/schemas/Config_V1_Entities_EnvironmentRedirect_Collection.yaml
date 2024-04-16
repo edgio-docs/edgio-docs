@@ -15,9 +15,9 @@ properties:
   items:
     type: array
     items:
-      $ref: ./Accounts_V1_Entities_Property.yaml
-    description: List of properties.
+      $ref: ./Config_V1_Entities_EnvironmentRedirect.yaml
+    description: List of environment redirects.
 required:
   - '@type'
   - '@id'
-description: Accounts_V1_Entities_Property_Collection model
+description: Config_V1_Entities_EnvironmentRedirect_Collection model

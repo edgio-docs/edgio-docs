@@ -1,6 +1,3 @@
-required:
-  - environment_id
-  - purge_type
 type: object
 properties:
   environment_id:
@@ -32,10 +29,19 @@ properties:
       Defines the set of content to be purged. The `purge_type` property's value
       determines what should be passed.
         - `all_entries`: Omit this property or pass an empty array.
-        - `path`: Pass one or more relative path(s). This relative path starts directly after the hostname. Use an `*` to represent zero or more characters.
+        - `path`: Pass one or more relative path(s). This relative path starts directly after the hostname.
         - `surrogate_key`: Pass one or more surrogate key(s) (aka cache tags).
     items:
       type: string
+  hostname:
+    type: string
+    description: |
+      If specified, cached paths will only be purged for this specific hostname.
+      If omitted, the specified paths will be purged for all hostnames.
+    default: null
+required:
+  - environment_id
+  - purge_type
 description: >
   Submits a request to purge cached content from a specific environment. Purging
   content invalidates the cached version of an asset from our edge servers. You

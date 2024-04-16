@@ -2,14 +2,14 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Edgio REST API",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "x-logo": {
       "url": "https://docs.edg.io/_next/static/media/edgio-dark.ea0d686f.webp",
       "backgroundColor": "#FFFFFF",
       "altText": "Logo",
       "href": "https://docs.edg.io"
     },
-    "description": "Our REST-compliant web services facilitate the integration of our services into your workflow(s), applications, or interfaces.\n\n## Introduction\n\nKey information about our REST API services:\n\n-   **Protocol:** HTTPS\n    \n    Communication (i.e., request-response) with our web services is only permitted through HTTPS. This ensures the privacy and integrity of your data.\n\n-   **Authentication/Authorization:** `Authorization` Header\n    \n    Authenticate and authorize your requests by generating a token and then passing it through the `Authorization` header:\n       \n    ```\n    Authorization: Bearer <OAUTH 2.0 TOKEN>\n    ```\n    \n    [Get started.](#section/Quick-Start)\n\n-   **Request-Response (Accept and Content-Type):** JSON\n    \n    We expect the request body to use JavaScript Object Notation (JSON) format. Inform our web servers that the expected format for the request-response will be JSON through the `Accept` and `Content-Type` request headers.\n    \n-   **Programming Language:** Agnostic\n    \n    Our REST API services are designed to be programming language-agnostic. Feel free to use your preferred programming language (e.g., JavaScript, Python, C#, etc.).\n\n-   **Services:** Our REST API consists of the following services:\n\n    | Service      | Version | Functionality                                                                                                               |\n    | ------------ |-------- | --------------------------------------------------------------------------------------------------------------------------- |\n    | cache        | 0.1     | Purge cached content and find out purge status.                                                                             |\n    | config       | 0.1     | Deploy CDN configurations, retrieve deployment information and log data, and manage environment variables.                  |\n    | accounts     | 0.1     | Retrieve and manage organizations, properties, and environments.                                                            |\n    | waf          | 0.9     | Retrieve and manage the following configurations: security apps, access rules, rate rules, custom rules, and managed rules. |\n    | bot-security | 0.9     | Retrieve and manage bot manager configurations.                                                                             |\n    | api-security | 0.9     | Retrieve and manage API security configurations.                                                                            |\n\n    Each service is versioned independently. This allows us to apply major enhancements to a service without impacting other services.\n\n## Quick Start\n\nGet started with our latest APIs by performing the following steps:\n\n1. <a href=\"https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients\" target=\"_blank\">Create an API client</a> for either your private space or the desired organization. Grant the set of scope(s) required by the endpoint(s) with which it will interact. Administer API clients from the <a href=\"https://edgio.app\" target=\"_blank\">Edgio Console's</a> **API Clients** page. \n2. Use this client's ID, secret key, and scopes to [generate a temporary access token](#section/Access-Tokens).\n3. Authorize your API requests by passing the temporary access token generated in the previous step through the `Authorization` request header.\n\n```\ncurl --request GET \\\n     --url https://edgioapis.com/waf/v0.9/12345678-1234-1234-1234-1234567890ab/scopes \\\n     --header 'Authorization: Bearer  A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ'\n```\n\n## Scopes\n\nA scope authorizes an API client to perform specific actions (e.g., create and retrieve configurations). One or more scope(s) must also be defined when requesting an access token. You may only specify a scope that has been explicitly granted or inherited from a broader scope. Common scopes are listed below.\n\n| Scope            | Description                                                                                                                                  |\n| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |\n| app.cache        | Authorizes full access for purging cached content and retrieve purge status information.                                                     |\n| app.config       | Authorizes full access for deploying CDN configurations, retrieving deployment information and log data, and managing environment variables. |\n| app.accounts     | Authorizes full access to manage organizations, properties, and environments.                                                                |\n| app.waf          | Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules.                                          |\n| app.bot_security | Authorizes full access to Bot Manager.                                                                                                       |\n| app.api_security | Authorizes full access to API Security.                                                                                                      |\n\n## Access Tokens \n\nEach request to a REST API service must be authorized by passing an access token to the `Authorization` request header. Access tokens provide temporary authorization (e.g., 1 minute) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.\n\nRequesting an access token requires:\n\n-   Submitting a `POST` request to the following URL:\n\n    `https://id.edgio.app/connect/token`\n\n-   A `Content-Type` header set to `application/x-www-form-urlencoded`.\n-   A request body set to:\n\n    ```\n    client_id=<CLIENT ID>&client_secret=<SECRET>&grant_type=client_credentials&scope=<SCOPES>\n    ```\n\n    -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your <a href=\"https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients\" target=\"_blank\">REST API client</a>.\n    -   `<SECRET>`**:** Represents the secret assigned to your REST API client.\n    -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. \n\n**Sample access token request:**\n\n``` curl\ncurl --request POST \\\n  --url https://id.edgio.app/connect/token \\\n  --header 'content-type: application/x-www-form-urlencoded' \\\n  --data 'client_id=J23d...B2Cd&client_secret=Fdad...DF3v&grant_type=client_credentials&scope=app.waf'\n```\n\n**Sample response:**\n\n```\n{\n    \"access_token\": \"A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ\",\n    \"expires_in\": 300,\n    \"token_type\": \"Bearer\",\n    \"scope\": \"app.waf\"\n}\n```\n\n### Authorizing Requests\n\nPass an access token through the `Authorization` header when requesting the desired API operation.\n\n**Sample API request:**\n\n```\ncurl --request GET \\\n     --url https://edgioapis.com/waf/v0.9/12345678-1234-1234-1234-1234567890ab/scopes \\\n     --header 'Authorization: Bearer  A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ'\n```\n\n## HTTP Methods\n\nHTTP method is a critical component of a request to our REST API service as it determines the type of action being requested.\n\n-   **DELETE:** Deletes a resource (e.g., custom rule or managed rule configuration).\n-   **GET:** Retrieves all or a specific resource.\n-   **PATCH:** Partially updates a resource (e.g., environment).\n-   **POST:** Creates a resource (e.g., custom rule or managed rule configuration).\n-   **PUT:** Updates a resource (e.g., custom rule or managed rule configuration).\n\nOur REST API service may return a `405 Method Not Allowed` response for requests submitted with an unsupported HTTP method.\n  \n## Request URL\n\nThe base URL for our REST API follows this basic pattern:\n\n`https://edgioapis.com/<SERVICE>/<VERSION>/`\n\n-   `<SERVICE>`**:** Identifies the REST API web service (e.g., cache, waf, and bot-security) designed to manage requests for a specific set of resources.\n-   `<VERSION>`**:** Identifies the version of the REST API service that will be called.\n\n**Sample Request URL:** \n\n```\nhttps://edgioapis.com/cache/v0.1/purge-requests\n```\n\n## Request Headers\n\nRequest headers provide information about your request to a REST API service. This information allows our server to authenticate your request and provides information that allows it to receive and translate the request body.\n\n**Key information:**\n-   The use of a Byte Order Mark (BOM) in a request to the REST API is not supported. Some user agents are configured to automatically include a BOM. Please either configure the user agent to exclude the BOM or use a different user agent.\n-   Request header values are case-insensitive.\n\n| Request Header | Description                                                                                                                                                                                                         |\n| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| Authorization  | Authorize requests through the `Authorization` request header. <a href=\"https://docs.edg.io/guides/develop/rest_api/authentication#authorizing-requests\" target=\"_blank\">Learn more about authorization.</a>                                                       |\n| Accept         | This header should indicate the format in which the response will be returned. If you pass this header, set it to: `application/json`.                                                                |\n| Content-Type   | This header should indicate the format of the request body. If you pass this header, set it to: `application/json`. <br />You may omit this header when an endpoint does not have request properties. |\n| Host           | This header, which is set by the user agent, indicates the host name corresponding to the requested endpoint (i.e., edgioapis.com or id.edgio.app).                                                                               |\n| Content-Length | This header, which is set by the user agent, indicates the number of bytes contained in the request body.                                                                                                           |\n\n## Request Body\n\n`POST`, `PUT`, and `PATCH` requests typically require request body properties that describe the action that will take place. These request body properties are case-sensitive.\n\n## Response Headers\n\nResponse headers provide information about the response to your request to the REST API service. A brief description is provided for the response headers that are returned by most endpoints. Standard HTTP response headers are typically returned along with these common response headers.\n\n| Response Header | Description                                                                          |\n| --------------- | ------------------------------------------------------------------------------------ |\n| Cache-Control   | Indicates the cache-control policy for the response body.                            |\n| Content-Length  | Indicates the number of bytes in the response body.                                  |\n| Content-Type    | Indicates the format of the response body (e.g., `application/json; charset=utf-8`). |\n| I_am            | This header is reserved for internal use.                                            |\n| Date            | Identifies the date and time (UTC) at which your request was processed.              |\n"
+    "description": "Our REST-compliant web services facilitate the integration of our services into your workflow(s), applications, or interfaces.\n\n## Introduction\n\nKey information about our REST API services:\n\n-   **Protocol:** HTTPS\n    \n    Communication (i.e., request-response) with our web services is only permitted through HTTPS. This ensures the privacy and integrity of your data.\n\n-   **Authentication/Authorization:** `Authorization` Header\n    \n    Authenticate and authorize your requests by generating a token and then passing it through the `Authorization` header:\n       \n    ```\n    Authorization: Bearer <OAUTH 2.0 TOKEN>\n    ```\n    \n    [Get started.](#section/Quick-Start)\n\n-   **Request-Response (Accept and Content-Type):** JSON\n    \n    We expect the request body to use JavaScript Object Notation (JSON) format. Inform our web servers that the expected format for the request-response will be JSON through the `Accept` and `Content-Type` request headers.\n    \n-   **Programming Language:** Agnostic\n    \n    Our REST API services are designed to be programming language-agnostic. Feel free to use your preferred programming language (e.g., JavaScript, Python, C#, etc.).\n\n-   **Services:** Our REST API consists of the following services:\n\n    | Service      | Version | Functionality                                                                                                               |\n    | ------------ |-------- | --------------------------------------------------------------------------------------------------------------------------- |\n    | cache        | 0.1     | Purge cached content and find out purge status.                                                                             |\n    | config       | 0.1     | Deploy CDN configurations, retrieve deployment information and log data, and manage environment variables.                  |\n    | accounts     | 0.1     | Retrieve and manage organizations, properties, and environments.                                                            |\n    | waf          | 0.9     | Retrieve and manage the following configurations: security apps, access rules, rate rules, custom rules, and managed rules. |\n    | bot-security | 0.9     | Retrieve and manage bot manager configurations.                                                                             |\n    | api-security | 0.9     | Retrieve and manage API security configurations.                                                                            |\n\n    Each service is versioned independently. This allows us to apply major enhancements to a service without impacting other services.\n\n## Quick Start\n\nGet started with our latest APIs by performing the following steps:\n\n1. <a href=\"https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients\" target=\"_blank\">Create an API client</a> for either your private space or the desired organization. Grant the set of scope(s) required by the endpoint(s) with which it will interact. Administer API clients from the <a href=\"https://edgio.app\" target=\"_blank\">Edgio Console's</a> **API Clients** page. \n2. Use this client's ID, secret key, and scopes to [generate a temporary access token](#section/Access-Tokens).\n3. Authorize your API requests by passing the temporary access token generated in the previous step through the `Authorization` request header.\n\n```\ncurl --request GET \\\n     --url https://edgioapis.com/waf/v0.9/12345678-1234-1234-1234-1234567890ab/scopes \\\n     --header 'Authorization: Bearer  A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ'\n```\n\n## Scopes\n\nA scope authorizes an API client to perform specific actions (e.g., create and retrieve configurations). One or more scope(s) must also be defined when requesting an access token. You may only specify a scope that has been explicitly granted or inherited from a broader scope. Common scopes are listed below.\n\n| Scope            | Description                                                                                                                                  |\n| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |\n| app.cache        | Authorizes full access for purging cached content and retrieve purge status information.                                                     |\n| app.config       | Authorizes full access for deploying CDN configurations, retrieving deployment information and log data, and managing environment variables. |\n| app.accounts     | Authorizes full access to manage organizations, properties, and environments.                                                                |\n| app.waf          | Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules.                                          |\n| app.bot_security | Authorizes full access to Bot Manager.                                                                                                       |\n| app.api_security | Authorizes full access to API Security.                                                                                                      |\n\n## Access Tokens \n\nEach request to a REST API service must be authorized by passing an access token to the `Authorization` request header. Access tokens provide temporary authorization (e.g., 1 minute) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.\n\nRequesting an access token requires:\n\n-   Submitting a `POST` request to the following URL:\n\n    `https://id.edgio.app/connect/token`\n\n-   A `Content-Type` header set to `application/x-www-form-urlencoded`.\n-   A request body set to:\n\n    ```\n    client_id=<CLIENT ID>&client_secret=<SECRET>&grant_type=client_credentials&scope=<SCOPES>\n    ```\n\n    -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your <a href=\"https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients\" target=\"_blank\">REST API client</a>.\n    -   `<SECRET>`**:** Represents the secret assigned to your REST API client.\n    -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. \n\n**Sample access token request:**\n\n``` curl\ncurl --request POST \\\n  --url https://id.edgio.app/connect/token \\\n  --header 'content-type: application/x-www-form-urlencoded' \\\n  --data 'client_id=J23d...B2Cd&client_secret=Fdad...DF3v&grant_type=client_credentials&scope=app.waf'\n```\n\n**Sample response:**\n\n```\n{\n    \"access_token\": \"A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ\",\n    \"expires_in\": 300,\n    \"token_type\": \"Bearer\",\n    \"scope\": \"app.waf\"\n}\n```\n\n### Authorizing Requests\n\nPass an access token through the `Authorization` header when requesting the desired API operation.\n\n**Sample API request:**\n\n```\ncurl --request GET \\\n     --url https://edgioapis.com/waf/v0.9/12345678-1234-1234-1234-1234567890ab/scopes \\\n     --header 'Authorization: Bearer  A1bcbGciImtpZCI6Ij13N1VGQ01z...17cRRKYQ'\n```\n\n## HTTP Methods\n\nHTTP method is a critical component of a request to our REST API service as it determines the type of action being requested.\n\n-   **DELETE:** Deletes a resource (e.g., custom rule or managed rule configuration).\n-   **GET:** Retrieves all or a specific resource.\n-   **PATCH:** Partially updates a resource (e.g., environment).\n-   **POST:** Creates a resource (e.g., custom rule or managed rule configuration).\n-   **PUT:** Updates a resource (e.g., custom rule or managed rule configuration).\n\nOur REST API service may return a `405 Method Not Allowed` response for requests submitted with an unsupported HTTP method.\n  \n## Request URL\n\nThe base URL for our REST API follows this basic pattern:\n\n`https://edgioapis.com/<SERVICE>/<VERSION>/`\n\n-   `<SERVICE>`**:** Identifies the REST API web service (e.g., cache, waf, and bot-security) designed to manage requests for a specific set of resources.\n-   `<VERSION>`**:** Identifies the version of the REST API service that will be called.\n\n**Sample Request URL:** \n\n```\nhttps://edgioapis.com/cache/v0.1/purge-requests\n```\n\n## Request Headers\n\nRequest headers provide information about your request to a REST API service. This information allows our server to authenticate your request and provides information that allows it to receive and translate the request body.\n\n**Key information:**\n-   The use of a Byte Order Mark (BOM) in a request to the REST API is not supported. Some user agents are configured to automatically include a BOM. Please either configure the user agent to exclude the BOM or use a different user agent.\n-   Request header values are case-insensitive.\n\n| Request Header | Description                                                                                                                                                                                                         |\n| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| Authorization  | Authorize requests through the `Authorization` request header. <a href=\"https://docs.edg.io/guides/develop/rest_api/authentication#authorizing-requests\" target=\"_blank\">Learn more about authorization.</a>                                                       |\n| Accept         | This header should indicate the format in which the response will be returned. If you pass this header, set it to: `application/json`.                                                                |\n| Content-Type   | This header should indicate the format of the request body. If you pass this header, set it to: `application/json`. <br />You may omit this header when an endpoint does not have request properties. |\n| Host           | This header, which is set by the user agent, indicates the host name corresponding to the requested endpoint (i.e., edgioapis.com or id.edgio.app).                                                                               |\n| Content-Length | This header, which is set by the user agent, indicates the number of bytes contained in the request body.                                                                                                           |\n\n## Request Body\n\n`POST`, `PUT`, and `PATCH` requests typically require request body properties that describe the action that will take place. These request body properties are case-sensitive.\n\n## Response Headers\n\nResponse headers provide information about the response to your request to the REST API service. A brief description is provided for the response headers that are returned by most endpoints. Standard HTTP response headers are typically returned along with these common response headers.\n\n| Response Header | Description                                                                          |\n| --------------- | ------------------------------------------------------------------------------------ |\n| Cache-Control   | Indicates the cache-control policy for the response body.                            |\n| Content-Length  | Indicates the number of bytes in the response body.                                  |\n| Content-Type    | Indicates the format of the response body (e.g., `application/json; charset=utf-8`). |\n| I_am            | This header is reserved for internal use.                                            |\n| Date            | Identifies the date and time (UTC) at which your request was processed.              |\n\n## Rate Limit\n\nThe rate limit for our APIs varies by service and HTTP method. \n\n| Service      | HTTP Method                  | Rate Limit                                                |\n| ------------ | ---------------------------- | --------------------------------------------------------- |\n| cache        | ALL                          | 2,000 requests per 5 minutes                              |\n| config       | GET                          | 2,000 requests per 5 minutes                              |\n| config       | POST, PUT, PATCH, and DELETE | 600 requests per 5 minutes                                |\n| accounts     | GET                          | 2,000 requests per 5 minutes                              |\n| accounts     | POST, PUT, PATCH, and DELETE | 600 requests per 5 minutes                                |\n| waf          | ALL                          | 300 requests per hour <br /><br /> 1,000 requests per day |\n| bot-security | ALL                          | 300 requests per hour <br /><br /> 1,000 requests per day |\n| api-security | ALL                          | 300 requests per hour <br /><br /> 1,000 requests per day |\n\nOur API service returns a `429 Too Many Requests` response when a client exceeds one of the above rate limits."
   },
   "tags": [
     {
@@ -123,21 +123,24 @@
         }
       ],
       "get": {
-        "tags": [
-          "tls-certs"
-        ],
         "summary": "Get TLS Certificate",
         "description": "Returns a TLS certificate.",
-        "operationId": "getConfigV01TlsCertsCertId",
         "parameters": [
           {
-            "name": "cert_id",
             "in": "path",
+            "name": "cert_id",
             "description": "The TLS certificate's system-defined ID. Use the [Get All Certificates operation](#tag/tls-certs/operation/getConfigV01TlsCerts) to retrieve a list of TLS certificates and their system-defined IDs.\n",
             "required": true,
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
           }
         ],
         "responses": {
@@ -191,6 +194,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -202,13 +215,10 @@
             }
           }
         },
-        "security": [
-          {
-            "configScope": [
-              "app.config"
-            ]
-          }
-        ]
+        "tags": [
+          "tls-certs"
+        ],
+        "operationId": "getConfigV01TlsCertsCertId"
       }
     },
     "/config/v0.1/tls-certs": {
@@ -224,18 +234,112 @@
           ]
         }
       ],
-      "get": {
+      "post": {
+        "summary": "Upload TLS Certificate",
+        "description": "Upload your TLS certificate to activate it within a specific environment.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postConfigV01TlsCerts"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_TlsCert"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
         "tags": [
           "tls-certs"
         ],
+        "operationId": "postConfigV01TlsCerts"
+      },
+      "get": {
         "summary": "Get All TLS Certificates",
         "description": "Returns all TLS certificates associated with an environment.",
-        "operationId": "getConfigV01TlsCerts",
         "parameters": [
           {
-            "name": "page",
             "in": "query",
+            "name": "page",
             "description": "0-based page number.",
+            "required": false,
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -243,9 +347,10 @@
             }
           },
           {
-            "name": "page_size",
             "in": "query",
+            "name": "page_size",
             "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
+            "required": false,
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -253,13 +358,20 @@
             }
           },
           {
-            "name": "environment_id",
             "in": "query",
+            "name": "environment_id",
             "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n",
             "required": true,
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
           }
         ],
         "responses": {
@@ -313,6 +425,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -324,101 +446,10 @@
             }
           }
         },
-        "security": [
-          {
-            "configScope": [
-              "app.config"
-            ]
-          }
-        ]
-      },
-      "post": {
         "tags": [
           "tls-certs"
         ],
-        "summary": "Upload TLS Certificate",
-        "description": "Upload your TLS certificate to activate it within a specific environment.",
-        "operationId": "postConfigV01TlsCerts",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/postConfigV01TlsCerts"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Config_V1_Entities_TlsCert"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "configScope": [
-              "app.config"
-            ]
-          }
-        ],
-        "x-codegen-request-body-name": "postConfigV01TlsCerts"
+        "operationId": "getConfigV01TlsCerts"
       }
     },
     "/config/v0.1/deployments/{deployment_id}/logs": {
@@ -435,21 +466,24 @@
         }
       ],
       "get": {
-        "tags": [
-          "deployments"
-        ],
         "summary": "Get Deployment Logs",
         "description": "Retrieve log data for a specific deployment.",
-        "operationId": "getConfigV01DeploymentsDeploymentIdLogs",
         "parameters": [
           {
-            "name": "deployment_id",
             "in": "path",
+            "name": "deployment_id",
             "description": "The deployment's system-defined ID. This ID is returned by the [Deploy CDN Configuration operation's](#tag/configs/operation/postConfigV01Configs) `id` property.\n",
             "required": true,
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
           }
         ],
         "responses": {
@@ -503,6 +537,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -514,13 +558,10 @@
             }
           }
         },
-        "security": [
-          {
-            "configScope": [
-              "app.config"
-            ]
-          }
-        ]
+        "tags": [
+          "deployments"
+        ],
+        "operationId": "getConfigV01DeploymentsDeploymentIdLogs"
       }
     },
     "/config/v0.1/deployments/{deployment_id}": {
@@ -537,21 +578,24 @@
         }
       ],
       "get": {
-        "tags": [
-          "deployments"
-        ],
         "summary": "Get Deployment",
         "description": "Retrieve information about a specific deployment.",
-        "operationId": "getConfigV01DeploymentsDeploymentId",
         "parameters": [
           {
-            "name": "deployment_id",
             "in": "path",
+            "name": "deployment_id",
             "description": "The deployment's system-defined ID. This ID is returned by the [Deploy CDN Configuration operation's](#tag/configs/operation/postConfigV01Configs) `id` property.\n",
             "required": true,
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
           }
         ],
         "responses": {
@@ -605,6 +649,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -616,13 +670,10 @@
             }
           }
         },
-        "security": [
-          {
-            "configScope": [
-              "app.config"
-            ]
-          }
-        ]
+        "tags": [
+          "deployments"
+        ],
+        "operationId": "getConfigV01DeploymentsDeploymentId"
       }
     },
     "/config/v0.1/configs/{config_id}": {
@@ -639,20 +690,24 @@
         }
       ],
       "get": {
-        "tags": [
-          "configs"
-        ],
         "summary": "Get CDN Configuration",
-        "description": "Retrieve an environment's origin configurations, hostnames, rules, and experiments.\n\nUse the [Get Environment operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId) to retrieve the system-defined ID (`@links.active_config.id`) for an environment's active configuration\n",
-        "operationId": "getConfigV01ConfigsConfigId",
+        "description": "Retrieve an environment's origin configurations, hostnames, rules, and experiments.\n",
         "parameters": [
           {
-            "name": "config_id",
             "in": "path",
+            "name": "config_id",
+            "description": "The system-defined ID for a configuration that was deployed to an environment.\n\nUse the [Get Environment operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId) to retrieve the system-defined ID (`@links.active_config.id`) for an environment's active configuration.\n",
             "required": true,
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
           }
         ],
         "responses": {
@@ -706,6 +761,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -717,13 +782,10 @@
             }
           }
         },
-        "security": [
-          {
-            "configScope": [
-              "app.config"
-            ]
-          }
-        ]
+        "tags": [
+          "configs"
+        ],
+        "operationId": "getConfigV01ConfigsConfigId"
       }
     },
     "/config/v0.1/configs": {
@@ -740,12 +802,8 @@
         }
       ],
       "post": {
-        "tags": [
-          "configs"
-        ],
         "summary": "Deploy CDN Configuration",
         "description": "Deploys your configuration to a specific environment. This deployment overwrites any existing origin configurations, hostnames, rules, and experiments.\n",
-        "operationId": "postConfigV01Configs",
         "requestBody": {
           "content": {
             "application/json": {
@@ -756,6 +814,13 @@
           },
           "required": true
         },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ],
         "responses": {
           "202": {
             "description": "OK",
@@ -807,6 +872,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -818,14 +893,10 @@
             }
           }
         },
-        "security": [
-          {
-            "configScope": [
-              "app.config"
-            ]
-          }
+        "tags": [
+          "configs"
         ],
-        "x-codegen-request-body-name": "postConfigV01Configs"
+        "operationId": "postConfigV01Configs"
       }
     },
     "/config/v0.1/environment-variables/{environment_variable_id}": {
@@ -841,108 +912,25 @@
           ]
         }
       ],
-      "get": {
-        "tags": [
-          "environment-variables"
-        ],
-        "summary": "Get Environment Variable",
-        "description": "Returns an environment variable.",
-        "operationId": "getConfigV01EnvironmentVariablesEnvironmentVariableId",
+      "delete": {
+        "summary": "Delete Environment Variable",
+        "description": "Deletes an environment variable.",
         "parameters": [
           {
-            "name": "environment_variable_id",
             "in": "path",
+            "name": "environment_variable_id",
+            "description": "An environment variable's system-defined ID.\n\nUse the [Get All Environment Variables operation](#tag/environment-variables/operation/getConfigV01EnvironmentVariables) to retrieve a list of environment variables and their system-defined IDs.\n",
             "required": true,
             "schema": {
               "type": "string"
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Config_V1_Entities_EnvironmentVariable"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          }
-        },
         "security": [
           {
             "configScope": [
               "app.config"
             ]
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "environment-variables"
-        ],
-        "summary": "Delete Environment Variable",
-        "description": "Deletes an environment variable.",
-        "operationId": "deleteConfigV01EnvironmentVariablesEnvironmentVariableId",
-        "parameters": [
-          {
-            "name": "environment_variable_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -996,6 +984,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -1007,13 +1005,108 @@
             }
           }
         },
+        "tags": [
+          "environment-variables"
+        ],
+        "operationId": "deleteConfigV01EnvironmentVariablesEnvironmentVariableId"
+      },
+      "get": {
+        "summary": "Get Environment Variable",
+        "description": "Returns an environment variable.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "environment_variable_id",
+            "description": "An environment variable's system-defined ID.\n\nUse the [Get All Environment Variables operation](#tag/environment-variables/operation/getConfigV01EnvironmentVariables) to retrieve a list of environment variables and their system-defined IDs.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "security": [
           {
             "configScope": [
               "app.config"
             ]
           }
-        ]
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_EnvironmentVariable"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "environment-variables"
+        ],
+        "operationId": "getConfigV01EnvironmentVariablesEnvironmentVariableId"
       }
     },
     "/config/v0.1/environment-variables": {
@@ -1029,18 +1122,112 @@
           ]
         }
       ],
-      "get": {
+      "put": {
+        "summary": "Set Environment Variable",
+        "description": "Creates or updates an environment variable.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/putConfigV01EnvironmentVariables"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config_V1_Entities_EnvironmentVariable"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
         "tags": [
           "environment-variables"
         ],
+        "operationId": "putConfigV01EnvironmentVariables"
+      },
+      "get": {
         "summary": "Get All Environment Variables",
         "description": "Returns all environment variables associated with an environment.",
-        "operationId": "getConfigV01EnvironmentVariables",
         "parameters": [
           {
-            "name": "page",
             "in": "query",
+            "name": "page",
             "description": "0-based page number.",
+            "required": false,
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -1048,9 +1235,10 @@
             }
           },
           {
-            "name": "page_size",
             "in": "query",
+            "name": "page_size",
             "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
+            "required": false,
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -1058,21 +1246,29 @@
             }
           },
           {
-            "name": "key",
             "in": "query",
+            "name": "key",
             "description": "Find an environment variable by its name.",
+            "required": false,
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "environment_id",
             "in": "query",
+            "name": "environment_id",
             "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n",
             "required": true,
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
           }
         ],
         "responses": {
@@ -1126,6 +1322,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -1137,101 +1343,10 @@
             }
           }
         },
-        "security": [
-          {
-            "configScope": [
-              "app.config"
-            ]
-          }
-        ]
-      },
-      "put": {
         "tags": [
           "environment-variables"
         ],
-        "summary": "Set Environment Variable",
-        "description": "Creates or updates an environment variable.",
-        "operationId": "putConfigV01EnvironmentVariables",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/putConfigV01EnvironmentVariables"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Config_V1_Entities_EnvironmentVariable"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "configScope": [
-              "app.config"
-            ]
-          }
-        ],
-        "x-codegen-request-body-name": "putConfigV01EnvironmentVariables"
+        "operationId": "getConfigV01EnvironmentVariables"
       }
     },
     "/cache/v0.1/purge-requests/{request_id}": {
@@ -1248,21 +1363,24 @@
         }
       ],
       "get": {
-        "tags": [
-          "purge-requests"
-        ],
         "summary": "Get Purge Request",
         "description": "Retrieves information, including status, about a purge request.",
-        "operationId": "getCacheV01PurgeRequestsRequestId",
         "parameters": [
           {
-            "name": "request_id",
             "in": "path",
+            "name": "request_id",
             "description": "The purge request's system-defined ID. This ID is returned by the [Purge Cache operation](#tag/purge-requests/operation/postCacheV01PurgeRequests).\n",
             "required": true,
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "security": [
+          {
+            "cacheScope": [
+              "app.cache.purge"
+            ]
           }
         ],
         "responses": {
@@ -1316,6 +1434,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -1327,13 +1455,10 @@
             }
           }
         },
-        "security": [
-          {
-            "cacheScope": [
-              "app.cache.purge"
-            ]
-          }
-        ]
+        "tags": [
+          "purge-requests"
+        ],
+        "operationId": "getCacheV01PurgeRequestsRequestId"
       }
     },
     "/cache/v0.1/purge-requests": {
@@ -1350,12 +1475,8 @@
         }
       ],
       "post": {
-        "tags": [
-          "purge-requests"
-        ],
         "summary": "Purge Cache",
         "description": "Submits a request to purge cached content from a specific environment. Purging content invalidates the cached version of an asset from our edge servers. You may submit up to 50 concurrent purge requests. For the purpose of concurrency, each value defined within the `values` property is considered a separate purge request. Find out the current status of your purge request by passing the purge request ID, which is returned by the `id` property, to the [Get Purge Request operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).\n",
-        "operationId": "postCacheV01PurgeRequests",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1366,6 +1487,13 @@
           },
           "required": true
         },
+        "security": [
+          {
+            "cacheScope": [
+              "app.cache.purge"
+            ]
+          }
+        ],
         "responses": {
           "202": {
             "description": "OK",
@@ -1438,14 +1566,10 @@
             }
           }
         },
-        "security": [
-          {
-            "cacheScope": [
-              "app.cache.purge"
-            ]
-          }
+        "tags": [
+          "purge-requests"
         ],
-        "x-codegen-request-body-name": "postCacheV01PurgeRequests"
+        "operationId": "postCacheV01PurgeRequests"
       }
     },
     "/accounts/v0.1/environments/{environment_id}": {
@@ -1461,17 +1585,13 @@
           ]
         }
       ],
-      "get": {
-        "tags": [
-          "environments"
-        ],
-        "summary": "Get Environment",
-        "description": "Retrieves an environment's settings and metadata.\n\nThe system-defined ID for the environment's active configuration is returned by the `@links.active_config.id` property.\n",
-        "operationId": "getAccountsV01EnvironmentsEnvironmentId",
+      "delete": {
+        "summary": "Delete Environment",
+        "description": "Deletes an environment.",
         "parameters": [
           {
-            "name": "environment_id",
             "in": "path",
+            "name": "environment_id",
             "description": "The environment's system-defined ID.\n\nRetrieve a list of environments and their system-defined IDs through the [Get All Environments operation](#tag/environments/operation/getAccountsV01Environments).\n",
             "required": true,
             "schema": {
@@ -1479,92 +1599,11 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Accounts_V1_Entities_Environment"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          }
-        },
         "security": [
           {
             "accountsScope": [
               "app.accounts"
             ]
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "environments"
-        ],
-        "summary": "Delete Environment",
-        "description": "Deletes an environment.",
-        "operationId": "deleteAccountsV01EnvironmentsEnvironmentId",
-        "parameters": [
-          {
-            "name": "environment_id",
-            "in": "path",
-            "description": "The environment's system-defined ID.\n\nRetrieve a list of environments and their system-defined IDs through the [Get All Environments operation](#tag/environments/operation/getAccountsV01Environments).\n",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -1618,6 +1657,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -1629,25 +1678,18 @@
             }
           }
         },
-        "security": [
-          {
-            "accountsScope": [
-              "app.accounts"
-            ]
-          }
-        ]
-      },
-      "patch": {
         "tags": [
           "environments"
         ],
+        "operationId": "deleteAccountsV01EnvironmentsEnvironmentId"
+      },
+      "patch": {
         "summary": "Update Environment",
         "description": "Updates an environment.",
-        "operationId": "patchAccountsV01EnvironmentsEnvironmentId",
         "parameters": [
           {
-            "name": "environment_id",
             "in": "path",
+            "name": "environment_id",
             "description": "The environment's system-defined ID.\n\nRetrieve a list of environments and their system-defined IDs through the [Get All Environments operation](#tag/environments/operation/getAccountsV01Environments).\n",
             "required": true,
             "schema": {
@@ -1665,6 +1707,13 @@
           },
           "required": true
         },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -1716,6 +1765,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -1727,6 +1786,25 @@
             }
           }
         },
+        "tags": [
+          "environments"
+        ],
+        "operationId": "patchAccountsV01EnvironmentsEnvironmentId"
+      },
+      "get": {
+        "summary": "Get Environment",
+        "description": "Retrieves an environment's settings and metadata.\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "environment_id",
+            "description": "The environment's system-defined ID.\n\nRetrieve a list of environments and their system-defined IDs through the [Get All Environments operation](#tag/environments/operation/getAccountsV01Environments).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "security": [
           {
             "accountsScope": [
@@ -1734,7 +1812,82 @@
             ]
           }
         ],
-        "x-codegen-request-body-name": "patchAccountsV01EnvironmentsEnvironmentId"
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Environment"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "environments"
+        ],
+        "operationId": "getAccountsV01EnvironmentsEnvironmentId"
       }
     },
     "/accounts/v0.1/environments": {
@@ -1750,18 +1903,112 @@
           ]
         }
       ],
-      "get": {
+      "post": {
+        "summary": "Add Environment",
+        "description": "Creates an environment.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postAccountsV01Environments"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Environment"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
         "tags": [
           "environments"
         ],
+        "operationId": "postAccountsV01Environments"
+      },
+      "get": {
         "summary": "Get All Environments",
         "description": "Returns all environments that belong to the specified property.",
-        "operationId": "getAccountsV01Environments",
         "parameters": [
           {
-            "name": "page",
             "in": "query",
+            "name": "page",
             "description": "0-based page number.",
+            "required": false,
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -1769,9 +2016,10 @@
             }
           },
           {
-            "name": "page_size",
             "in": "query",
+            "name": "page_size",
             "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
+            "required": false,
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -1779,13 +2027,20 @@
             }
           },
           {
-            "name": "property_id",
             "in": "query",
+            "name": "property_id",
             "description": "The property's system-defined ID.",
             "required": true,
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
           }
         ],
         "responses": {
@@ -1839,6 +2094,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -1850,101 +2115,10 @@
             }
           }
         },
-        "security": [
-          {
-            "accountsScope": [
-              "app.accounts"
-            ]
-          }
-        ]
-      },
-      "post": {
         "tags": [
           "environments"
         ],
-        "summary": "Add Environment",
-        "description": "Creates an environment.",
-        "operationId": "postAccountsV01Environments",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/postAccountsV01Environments"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Accounts_V1_Entities_Environment"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "accountsScope": [
-              "app.accounts"
-            ]
-          }
-        ],
-        "x-codegen-request-body-name": "postAccountsV01Environments"
+        "operationId": "getAccountsV01Environments"
       }
     },
     "/accounts/v0.1/properties/{property_id}": {
@@ -1960,17 +2134,13 @@
           ]
         }
       ],
-      "get": {
-        "tags": [
-          "properties"
-        ],
-        "summary": "Get Property",
-        "description": "Retrieve a property.",
-        "operationId": "getAccountsV01PropertiesPropertyId",
+      "delete": {
+        "summary": "Delete Property",
+        "description": "Delete a property.",
         "parameters": [
           {
-            "name": "property_id",
             "in": "path",
+            "name": "property_id",
             "description": "The property's system-defined ID.\n\nRetrieve a list of properties and their system-defined IDs through the [Get All Properties operation](#tag/properties/operation/getAccountsV01Properties).\n",
             "required": true,
             "schema": {
@@ -1978,92 +2148,11 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Accounts_V1_Entities_Property"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          }
-        },
         "security": [
           {
             "accountsScope": [
               "app.accounts"
             ]
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "properties"
-        ],
-        "summary": "Delete Property",
-        "description": "Delete a property.",
-        "operationId": "deleteAccountsV01PropertiesPropertyId",
-        "parameters": [
-          {
-            "name": "property_id",
-            "in": "path",
-            "description": "The property's system-defined ID.\n\nRetrieve a list of properties and their system-defined IDs through the [Get All Properties operation](#tag/properties/operation/getAccountsV01Properties).\n",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -2117,6 +2206,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -2128,25 +2227,18 @@
             }
           }
         },
-        "security": [
-          {
-            "accountsScope": [
-              "app.accounts"
-            ]
-          }
-        ]
-      },
-      "patch": {
         "tags": [
           "properties"
         ],
+        "operationId": "deleteAccountsV01PropertiesPropertyId"
+      },
+      "patch": {
         "summary": "Update Property",
         "description": "Update a property.",
-        "operationId": "patchAccountsV01PropertiesPropertyId",
         "parameters": [
           {
-            "name": "property_id",
             "in": "path",
+            "name": "property_id",
             "description": "The property's system-defined ID.\n\nRetrieve a list of properties and their system-defined IDs through the [Get All Properties operation](#tag/properties/operation/getAccountsV01Properties).\n",
             "required": true,
             "schema": {
@@ -2164,6 +2256,13 @@
           },
           "required": true
         },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2215,6 +2314,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -2226,6 +2335,25 @@
             }
           }
         },
+        "tags": [
+          "properties"
+        ],
+        "operationId": "patchAccountsV01PropertiesPropertyId"
+      },
+      "get": {
+        "summary": "Get Property",
+        "description": "Retrieve a property.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "property_id",
+            "description": "The property's system-defined ID.\n\nRetrieve a list of properties and their system-defined IDs through the [Get All Properties operation](#tag/properties/operation/getAccountsV01Properties).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "security": [
           {
             "accountsScope": [
@@ -2233,7 +2361,82 @@
             ]
           }
         ],
-        "x-codegen-request-body-name": "patchAccountsV01PropertiesPropertyId"
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Property"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "properties"
+        ],
+        "operationId": "getAccountsV01PropertiesPropertyId"
       }
     },
     "/accounts/v0.1/properties": {
@@ -2249,18 +2452,112 @@
           ]
         }
       ],
-      "get": {
+      "post": {
+        "summary": "Create Property",
+        "description": "Create a property.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/postAccountsV01Properties"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Property"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
         "tags": [
           "properties"
         ],
+        "operationId": "postAccountsV01Properties"
+      },
+      "get": {
         "summary": "Get All Properties",
         "description": "Returns all properties.",
-        "operationId": "getAccountsV01Properties",
         "parameters": [
           {
-            "name": "page",
             "in": "query",
+            "name": "page",
             "description": "0-based page number.",
+            "required": false,
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -2268,9 +2565,10 @@
             }
           },
           {
-            "name": "page_size",
             "in": "query",
+            "name": "page_size",
             "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
+            "required": false,
             "schema": {
               "type": "integer",
               "format": "int32",
@@ -2278,13 +2576,20 @@
             }
           },
           {
-            "name": "organization_id",
             "in": "query",
+            "name": "organization_id",
             "description": "An organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n",
             "required": true,
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
           }
         ],
         "responses": {
@@ -2338,6 +2643,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -2349,101 +2664,10 @@
             }
           }
         },
-        "security": [
-          {
-            "accountsScope": [
-              "app.accounts"
-            ]
-          }
-        ]
-      },
-      "post": {
         "tags": [
           "properties"
         ],
-        "summary": "Create Property",
-        "description": "Create a property.",
-        "operationId": "postAccountsV01Properties",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/postAccountsV01Properties"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Accounts_V1_Entities_Property"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "accountsScope": [
-              "app.accounts"
-            ]
-          }
-        ],
-        "x-codegen-request-body-name": "postAccountsV01Properties"
+        "operationId": "getAccountsV01Properties"
       }
     },
     "/accounts/v0.1/organizations/{organization_id}": {
@@ -2459,17 +2683,13 @@
           ]
         }
       ],
-      "get": {
-        "tags": [
-          "organizations"
-        ],
-        "summary": "Get Organization",
-        "description": "Retrieves information about an organization.",
-        "operationId": "getAccountsV01OrganizationsOrganizationId",
+      "delete": {
+        "summary": "Delete Organization",
+        "description": "Deletes an organization.",
         "parameters": [
           {
-            "name": "organization_id",
             "in": "path",
+            "name": "organization_id",
             "description": "The organization's system-defined ID.\n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n",
             "required": true,
             "schema": {
@@ -2477,92 +2697,11 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Accounts_V1_Entities_Organization"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
-                }
-              }
-            }
-          }
-        },
         "security": [
           {
             "accountsScope": [
               "app.accounts"
             ]
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "organizations"
-        ],
-        "summary": "Delete Organization",
-        "description": "Deletes an organization.",
-        "operationId": "deleteAccountsV01OrganizationsOrganizationId",
-        "parameters": [
-          {
-            "name": "organization_id",
-            "in": "path",
-            "description": "The organization's system-defined ID.\n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -2616,6 +2755,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -2627,25 +2776,18 @@
             }
           }
         },
-        "security": [
-          {
-            "accountsScope": [
-              "app.accounts"
-            ]
-          }
-        ]
-      },
-      "patch": {
         "tags": [
           "organizations"
         ],
+        "operationId": "deleteAccountsV01OrganizationsOrganizationId"
+      },
+      "patch": {
         "summary": "Update Organization",
         "description": "Updates an organization.",
-        "operationId": "patchAccountsV01OrganizationsOrganizationId",
         "parameters": [
           {
-            "name": "organization_id",
             "in": "path",
+            "name": "organization_id",
             "description": "The organization's system-defined ID.\n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n",
             "required": true,
             "schema": {
@@ -2663,6 +2805,13 @@
           },
           "required": true
         },
+        "security": [
+          {
+            "accountsScope": [
+              "app.accounts"
+            ]
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2714,6 +2863,16 @@
               }
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -2725,6 +2884,25 @@
             }
           }
         },
+        "tags": [
+          "organizations"
+        ],
+        "operationId": "patchAccountsV01OrganizationsOrganizationId"
+      },
+      "get": {
+        "summary": "Get Organization",
+        "description": "Retrieves information about an organization.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organization_id",
+            "description": "The organization's system-defined ID.\n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "security": [
           {
             "accountsScope": [
@@ -2732,7 +2910,82 @@
             ]
           }
         ],
-        "x-codegen-request-body-name": "patchAccountsV01OrganizationsOrganizationId"
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accounts_V1_Entities_Organization"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_UserError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApi_Entities_GeneralError"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "organizations"
+        ],
+        "operationId": "getAccountsV01OrganizationsOrganizationId"
       }
     },
     "/{organization_id}/scopes": {
@@ -5927,11 +6180,6 @@
     },
     "schemas": {
       "Config_V1_Entities_TlsCert": {
-        "required": [
-          "@id",
-          "@type",
-          "id"
-        ],
         "type": "object",
         "properties": {
           "@type": {
@@ -5944,7 +6192,6 @@
           },
           "@links": {
             "type": "object",
-            "properties": {},
             "description": "Links to related resources."
           },
           "id": {
@@ -5965,8 +6212,8 @@
           },
           "expiration": {
             "type": "string",
-            "description": "The TLS certificate's expiration date and time (UTC).",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "The TLS certificate's expiration date and time (UTC)."
           },
           "status": {
             "type": "string",
@@ -5986,10 +6233,10 @@
           },
           "alternative_names": {
             "type": "array",
-            "description": "The TLS certificate's Subject Alternative Names (SAN).",
             "items": {
               "type": "string"
-            }
+            },
+            "description": "The TLS certificate's Subject Alternative Names (SAN)."
           },
           "activation_error": {
             "type": "string",
@@ -5997,15 +6244,20 @@
           },
           "created_at": {
             "type": "string",
-            "description": "The TLS certificate's creation date and time (UTC).",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "The TLS certificate's creation date and time (UTC)."
           },
           "updated_at": {
             "type": "string",
-            "description": "The TLS certificate's last modification date and time (UTC).",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "The TLS certificate's last modification date and time (UTC)."
           }
         },
+        "required": [
+          "@type",
+          "@id",
+          "id"
+        ],
         "description": "Config_V1_Entities_TlsCert model"
       },
       "BaseApi_Entities_UserErrorData": {
@@ -6030,10 +6282,10 @@
           },
           "details": {
             "type": "array",
-            "description": "Describes the error.",
             "items": {
               "$ref": "#/components/schemas/BaseApi_Entities_UserErrorData"
-            }
+            },
+            "description": "Describes the error."
           }
         },
         "description": "BaseApi_Entities_UserError model"
@@ -6080,10 +6332,6 @@
         }
       },
       "Config_V1_Entities_TlsCert_Collection": {
-        "required": [
-          "@id",
-          "@type"
-        ],
         "type": "object",
         "properties": {
           "@type": {
@@ -6099,25 +6347,24 @@
           },
           "total_items": {
             "type": "integer",
-            "description": "Total number of items.",
-            "format": "int32"
+            "format": "int32",
+            "description": "Total number of items."
           },
           "items": {
             "type": "array",
-            "description": "List of TLS certificates associated with the specified environment.",
             "items": {
               "$ref": "#/components/schemas/Config_V1_Entities_TlsCert"
-            }
+            },
+            "description": "List of TLS certificates associated with the specified environment."
           }
         },
+        "required": [
+          "@type",
+          "@id"
+        ],
         "description": "Config_V1_Entities_TlsCert_Collection model"
       },
       "postConfigV01TlsCerts": {
-        "required": [
-          "environment_id",
-          "intermediate_cert",
-          "primary_cert"
-        ],
         "type": "object",
         "properties": {
           "environment_id": {
@@ -6137,6 +6384,11 @@
             "description": "The private key that was generated with the CSR."
           }
         },
+        "required": [
+          "environment_id",
+          "primary_cert",
+          "intermediate_cert"
+        ],
         "description": "Upload your TLS certificate to activate it within a specific environment."
       },
       "Config_V1_Entities_Deployment_LogLine": {
@@ -6152,16 +6404,12 @@
           },
           "timestamp": {
             "type": "string",
-            "description": "The date and time (UTC) at which the message was logged.",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "The date and time (UTC) at which the message was logged."
           }
         }
       },
       "Config_V1_Entities_Deployment_Logs": {
-        "required": [
-          "@id",
-          "@type"
-        ],
         "type": "object",
         "properties": {
           "@type": {
@@ -6174,25 +6422,23 @@
           },
           "@links": {
             "type": "object",
-            "properties": {},
             "description": "Links to related resources."
           },
           "logs": {
             "type": "array",
-            "description": "The deployment's log messages.",
             "items": {
               "$ref": "#/components/schemas/Config_V1_Entities_Deployment_LogLine"
-            }
+            },
+            "description": "The deployment's log messages."
           }
         },
+        "required": [
+          "@type",
+          "@id"
+        ],
         "description": "Config_V1_Entities_Deployment_Logs model"
       },
       "Config_V1_Entities_Deployment": {
-        "required": [
-          "@id",
-          "@type",
-          "id"
-        ],
         "type": "object",
         "properties": {
           "@type": {
@@ -6205,7 +6451,6 @@
           },
           "@links": {
             "type": "object",
-            "properties": {},
             "description": "Links to related resources."
           },
           "id": {
@@ -6218,40 +6463,54 @@
           },
           "created_at": {
             "type": "string",
-            "description": "The date and time (UTC) at which the deployment was submitted.",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "The date and time (UTC) at which the deployment was submitted."
           },
           "completed_at": {
             "type": "string",
-            "description": "The date and time (UTC) at which the deployment was completed.",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "The date and time (UTC) at which the deployment was completed."
           }
         },
+        "required": [
+          "@type",
+          "@id",
+          "id"
+        ],
         "description": "Config_V1_Entities_Deployment model"
       },
-      "hostname": {
+      "origin_hostname": {
         "type": "string",
+        "description": "The web server's hostname or IP address. IPv6 addresses must be enclosed with brackets.",
         "pattern": "^(((?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9])|(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|\\[((?:[a-fA-F\\d]{1,4}:){7}(?:[a-fA-F\\d]{1,4}|:)|(?:[a-fA-F\\d]{1,4}:){6}(?:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|:[a-fA-F\\d]{1,4}|:)|(?:[a-fA-F\\d]{1,4}:){5}(?::(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,2}|:)|(?:[a-fA-F\\d]{1,4}:){4}(?:(:[a-fA-F\\d]{1,4}){0,1}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,3}|:)|(?:[a-fA-F\\d]{1,4}:){3}(?:(:[a-fA-F\\d]{1,4}){0,2}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,4}|:)|(?:[a-fA-F\\d]{1,4}:){2}(?:(:[a-fA-F\\d]{1,4}){0,3}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,5}|:)|(?:[a-fA-F\\d]{1,4}:){1}(?:(:[a-fA-F\\d]{1,4}){0,4}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,6}|:)|(?::((?::[a-fA-F\\d]{1,4}){0,5}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(?::[a-fA-F\\d]{1,4}){1,7}|:)))(%[0-9a-zA-Z]{1,})?\\])$"
+      },
+      "override_host_header": {
+        "type": "string",
+        "pattern": "^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]$"
       },
       "origin_backends": {
         "additionalProperties": false,
         "type": "object",
+        "description": "A host determines how Edgio will communicate with your web server(s).",
         "required": [
           "location"
         ],
         "properties": {
           "weight": {
             "type": "number",
+            "description": "Reserved for future use.",
             "minimum": 0,
             "maximum": 100
           },
           "dns_max_ttl": {
             "type": "number",
+            "description": "Reserved for future use.",
             "minimum": 0,
             "maximum": 4294967295
           },
           "dns_preference": {
             "type": "string",
+            "description": "The method for resolving the hostname(s) associated with an origin configuration. `prefv4` and `prefv6` define an IP preference, while `onlyv4` and `onlyv6` restrict hostname resolution to a specific IP version.",
             "enum": [
               "prefv4",
               "prefv6",
@@ -6261,11 +6520,13 @@
           },
           "max_hard_pool": {
             "type": "integer",
+            "description": "Reserved for future use.",
             "minimum": 0,
             "maximum": 65535
           },
           "dns_min_ttl": {
             "type": "number",
+            "description": "Reserved for future use.",
             "minimum": 0,
             "maximum": 4294967295
           },
@@ -6273,6 +6534,7 @@
             "anyOf": [
               {
                 "type": "array",
+                "description": "The web server's IP address or hostname.",
                 "items": {
                   "type": "object",
                   "additionalProperties": false,
@@ -6282,11 +6544,12 @@
                   "properties": {
                     "port": {
                       "type": "integer",
+                      "description": "The port on which Edgio will communicate with the web server(s) defined within the `hostname` property.",
                       "minimum": 1,
                       "maximum": 65535
                     },
                     "hostname": {
-                      "$ref": "#/components/schemas/hostname"
+                      "$ref": "#/components/schemas/origin_hostname"
                     }
                   }
                 },
@@ -6295,23 +6558,25 @@
               {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/hostname"
+                  "$ref": "#/components/schemas/origin_hostname"
                 },
                 "maxItems": 10
               },
               {
-                "$ref": "#/components/schemas/hostname",
+                "$ref": "#/components/schemas/origin_hostname",
                 "$comment": "this is the super abbreviated case, where only a single hostname is specified"
               }
             ]
           },
           "max_pool": {
             "type": "integer",
+            "description": "Reserved for future use.",
             "minimum": 0,
             "maximum": 65535
           },
           "balancer": {
             "type": "string",
+            "description": "Reserved for future use.",
             "enum": [
               "carp",
               "sqf",
@@ -6321,27 +6586,35 @@
           },
           "scheme": {
             "type": "string",
+            "description": "Send traffic to your hosts over HTTPS, HTTP, or to match the client’s scheme.",
             "$comment": "'match' is default, and means put the same thing in http-backends and https-backends with 80/443 port respectively",
             "enum": [
               "http",
               "https",
               "match"
             ]
+          },
+          "override_host_header": {
+            "description": "Overrides the client's `Host` header for requests proxied to this origin backend.",
+            "$ref": "#/components/schemas/override_host_header"
           }
         }
       },
       "origins": {
         "$comment": "this object translates to a few blocks of sf config, proxy-core.balancer and proxy-core.{http-,https-,}backends",
         "type": "object",
+        "description": "A list of origin configurations. Each origin configuration defines how Edgio may communicate with your web server(s).",
         "additionalProperties": false,
         "properties": {
           "name": {
             "type": "string",
-            "pattern": "^[a-zA-Z0-9_.-]*$"
+            "pattern": "^[a-zA-Z0-9_.-]*$",
+            "description": "The origin configuration's name."
           },
           "type": {
             "$comment": "'customer_origin' is default, and means that the origin is a customer origin, 'cdn_storage' on the contrary means that the content is hosted in house.",
             "type": "string",
+            "description": "The only valid value is `customer_origin`.",
             "enum": [
               "customer_origin",
               "cdn_storage"
@@ -6350,6 +6623,7 @@
           },
           "hosts": {
             "type": "array",
+            "description": "A list of host(s). Each host determines how Edgio will communicate with your web server(s).",
             "items": {
               "$ref": "#/components/schemas/origin_backends"
             }
@@ -6357,6 +6631,7 @@
           "balancer": {
             "$comment": "this comes from http://sailfish.edgecast.com/ecdoc/mod-proxy-core.html#proxy-core-balancer",
             "type": "string",
+            "description": "The method through which Edgio load balances traffic proxied from our network to an origin configuration's hosts. Valid values are: `primary_failover` and `round_robin`.",
             "enum": [
               "primary_failover",
               "round_robin",
@@ -6369,54 +6644,65 @@
             ]
           },
           "override_host_header": {
-            "type": "string",
-            "pattern": "^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]$"
+            "description": "Overrides the client's `Host` header for requests proxied to this origin.",
+            "$ref": "#/components/schemas/override_host_header"
           },
           "shields": {
             "type": "object",
+            "description": "The origin's Origin Shield configuration. ",
             "additionalProperties": false,
             "properties": {
               "global": {
                 "type": "string",
+                "description": "Reserved for future use.",
                 "pattern": "^[A-Z]{3}$"
               },
               "apac": {
                 "type": "string",
+                "description": "The code for the Origin Shield POP that will be assigned to the Asia-Pacific (APAC) region. Omit this property or set it to blank to proxy requests to a configured region that provides the lowest round-trip time (RTT). Set to `bypass` to forward all requests from this region to the origin.",
                 "pattern": "^([A-Z]{3}|bypass)$"
               },
               "emea": {
                 "type": "string",
+                "description": "The code for the Origin Shield POP that will be assigned to the Europe, Middle East, and Africa (EMEA) region. Omit this property or set it to blank to proxy requests to a configured region that provides the lowest round-trip time (RTT). Set to `bypass` to forward all requests from this region to the origin.",
                 "pattern": "^([A-Z]{3}|bypass)$"
               },
               "us_west": {
                 "type": "string",
+                "description": "The code for the Origin Shield POP that will be assigned to the Western United States region. Omit this property or set it to blank to proxy requests to a configured region that provides the lowest round-trip time (RTT). Set to `bypass` to forward all requests from this region to the origin.",
                 "pattern": "^([A-Z]{3}|bypass)$"
               },
               "us_east": {
                 "type": "string",
+                "description": "The code for the Origin Shield POP that will be assigned to the Eastern United States region. Omit this property or set it to blank to proxy requests to a configured region that provides the lowest round-trip time (RTT). Set to `bypass` to forward all requests from this region to the origin.",
                 "pattern": "^([A-Z]{3}|bypass)$"
               }
             },
             "minProperties": 1
           },
           "pci_certified_shields": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether Origin Shield will be restricted to Payment Card Industry (PCI)-certified locations. "
           },
           "tls_verify": {
             "type": "object",
+            "description": "TLS settings.",
             "additionalProperties": false,
             "properties": {
               "use_sni": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "Determines whether Edgio will send a Server Name Indication (SNI) hint to your origin server during the TLS handshake."
               },
               "sni_hint_and_strict_san_check": {
-                "$ref": "#/components/schemas/hostname"
+                "$ref": "#/components/schemas/origin_hostname"
               },
               "allow_self_signed_certs": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "Determines whether to allow Edgio to serve traffic when it detects a self-signed certificate."
               },
               "pinned_certs": {
                 "type": "array",
+                "description": "The SHA-256 digest for the public key of your end-entity (i.e., leaf) certificate. ",
                 "items": {
                   "type": "string",
                   "minLength": 40,
@@ -6437,9 +6723,16 @@
         "minItems": 1,
         "maxItems": 100
       },
+      "hostname": {
+        "type": "string",
+        "description": "The hostname that will be served through our network.",
+        "pattern": "^((\\*\\.edge\\.edgio-perma\\.link)|(\\*\\.edge\\.edgio-dev-perma\\.link)|(\\*\\.edge\\.edgio-stage-perma\\.link)|(((?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9])|(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|\\[((?:[a-fA-F\\d]{1,4}:){7}(?:[a-fA-F\\d]{1,4}|:)|(?:[a-fA-F\\d]{1,4}:){6}(?:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|:[a-fA-F\\d]{1,4}|:)|(?:[a-fA-F\\d]{1,4}:){5}(?::(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,2}|:)|(?:[a-fA-F\\d]{1,4}:){4}(?:(:[a-fA-F\\d]{1,4}){0,1}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,3}|:)|(?:[a-fA-F\\d]{1,4}:){3}(?:(:[a-fA-F\\d]{1,4}){0,2}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,4}|:)|(?:[a-fA-F\\d]{1,4}:){2}(?:(:[a-fA-F\\d]{1,4}){0,3}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,5}|:)|(?:[a-fA-F\\d]{1,4}:){1}(?:(:[a-fA-F\\d]{1,4}){0,4}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(:[a-fA-F\\d]{1,4}){1,6}|:)|(?::((?::[a-fA-F\\d]{1,4}){0,5}:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}|(?::[a-fA-F\\d]{1,4}){1,7}|:)))(%[0-9a-zA-Z]{1,})?\\]))$",
+        "$comment": "the wild card is only allowed for edge.edgio-perma.link, edge.edgio-dev-perma.link and edge.edgio-stage-perma.link domains"
+      },
       "hostnames": {
         "additionalProperties": false,
         "type": "object",
+        "description": "A list of domains through which your site will be served.",
         "required": [
           "hostname"
         ],
@@ -6448,13 +6741,16 @@
             "$ref": "#/components/schemas/hostname"
           },
           "default_origin_name": {
-            "type": "string"
+            "type": "string",
+            "description": "The name of the origin configuration assigned to this hostname. "
           },
           "report_code": {
-            "type": "number"
+            "type": "number",
+            "description": "Reserved for future use."
           },
           "tls": {
             "type": "object",
+            "description": "Reserved for future use.",
             "additionalProperties": false,
             "properties": {
               "npn": {
@@ -6685,15 +6981,37 @@
           }
         }
       },
+      "edge_function_path": {
+        "type": "string",
+        "description": "Path to a file that contains an edge function."
+      },
+      "edge_function_object": {
+        "type": "object",
+        "properties": {
+          "js_path": {
+            "$ref": "#/components/schemas/edge_function_path",
+            "$comment": "Path to a file that contains an edge function."
+          }
+        }
+      },
       "edge_function": {
-        "type": "string"
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/edge_function_path"
+          },
+          {
+            "$ref": "#/components/schemas/edge_function_object"
+          }
+        ]
       },
       "comment": {
         "type": "string",
+        "description": "A note that may consist of up to 150 alphanumeric characters.",
         "maxLength": 2000
       },
       "http_status_code": {
         "type": "integer",
+        "description": "The response's HTTP status code.",
         "enum": [
           200,
           201,
@@ -6783,6 +7101,7 @@
       },
       "http_response_header": {
         "type": "object",
+        "description": "Response headers.",
         "$comment": "key is the header name, + means append.  second pattern is to ensure that certain ones are never provided with a value",
         "additionalProperties": false,
         "patternProperties": {
@@ -6805,6 +7124,7 @@
       },
       "http_response_no_body": {
         "type": "object",
+        "description": "A response without a body.",
         "$comment": "represent a simple response with code and header but no body",
         "additionalProperties": false,
         "properties": {
@@ -6818,23 +7138,29 @@
       },
       "access": {
         "type": "object",
+        "description": "Control access to content.",
         "properties": {
           "deny_access": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether requests are rejected with a `403 Forbidden` response."
           },
           "token_auth_denial_code": {
-            "$ref": "#/components/schemas/http_response_no_body"
+            "$ref": "#/components/schemas/http_response_no_body",
+            "description": "Determines the type of response that will be returned to a user when a request is denied access due to Token-Based Authentication. "
           },
           "token_auth_ignore_url_case": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether URL comparisons made by the following Token-Based Authentication parameters are case-sensitive: `ec_url_allow`, `ec_ref_allow`, `ec_ref_deny`."
           },
           "token_auth": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether Token-Based Authentication will be applied to a request."
           }
         }
       },
       "header_treatment": {
         "type": "string",
+        "description": "Determines how an edge server will handle either the `Cache-Control` or `Expires` response header, as determined by the feature being configured, when the `client_max_age` feature is active. `pass` passes the response header from the origin to the client, `overwrite` overwrites the origin's response header, `if_missing` adds the header when it is missing from the origin's response, and `remove` ensures that the header is excluded from the response provided to the client.",
         "enum": [
           "pass",
           "overwrite",
@@ -6849,13 +7175,16 @@
       },
       "regex_rewrite": {
         "type": "object",
+        "description": "Rewrites the default cache key for a set of requests. This is an advanced feature that should only be used when you require precise control over the cache key. Consider using the `cache_key` feature instead.",
         "additionalProperties": false,
         "properties": {
           "source": {
-            "type": "string"
+            "type": "string",
+            "description": "Identify the set of requests that will use a different default cache key by setting this option to a relative URL path that starts directly after the hostname. This setting supports regular expression syntax."
           },
           "destination": {
-            "type": "string"
+            "type": "string",
+            "description": "Define a replacement pattern that sets a new default cache key."
           }
         }
       },
@@ -6878,16 +7207,20 @@
       },
       "caching": {
         "type": "object",
+        "description": "Customize how and when content is cached. ",
         "properties": {
           "bandwidth_throttling": {
             "type": "object",
+            "description": "Throttles the bandwidth for the response provided by our edge servers.",
             "additionalProperties": false,
             "properties": {
               "kbytes_per_sec": {
-                "type": "integer"
+                "type": "integer",
+                "description": "The maximum bandwidth (Kb per second) that may be used to deliver the response."
               },
               "prebuf_seconds": {
-                "type": "number"
+                "type": "number",
+                "description": "The number of seconds that our edge servers will wait until throttling bandwidth."
               }
             },
             "required": [
@@ -6895,35 +7228,44 @@
             ]
           },
           "bypass_cache": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether our CDN will honor your caching policy when determining whether requests should be cached."
           },
           "cache_control_header_treatment": {
-            "$ref": "#/components/schemas/header_treatment"
+            "$ref": "#/components/schemas/header_treatment",
+            "description": "Controls the generation of `Cache-Control` headers by an edge server when the `client_max_age` feature is active."
           },
           "expires_header_treatment": {
-            "$ref": "#/components/schemas/header_treatment"
+            "$ref": "#/components/schemas/header_treatment",
+            "description": "Determines how an edge server will handle the `Expires` response header when the `client_max_age` feature is active. This feature overrides the `Expires` header generated by the `client_max_age` feature."
           },
           "client_max_age": {
-            "$ref": "#/components/schemas/time_interval"
+            "$ref": "#/components/schemas/time_interval",
+            "description": "Determines the max-age interval for browser to edge server cache revalidation. In other words, the amount of time that will pass before a browser can check for a new version of an asset from an edge server."
           },
           "cache_key_query_string": {
             "type": "object",
+            "description": "Determines whether the cache key will include or exclude query string parameters associated with a request.",
             "additionalProperties": false,
             "properties": {
               "include_all": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "Includes all query string parameters within the cache key. A unique cache key will be created for each request to an asset that includes a unique query string."
               },
               "exclude_all": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "Excludes all query string parameters from the cache key."
               },
               "include": {
                 "type": "array",
+                "description": "The set of query string parameter(s) that may be included in the cache key.",
                 "items": {
                   "type": "string"
                 }
               },
               "include_all_except": {
                 "type": "array",
+                "description": "The set of query string parameter(s) that will be excluded from the cache key. All other query string parameters can be included in the cache key. ",
                 "items": {
                   "type": "string"
                 }
@@ -6931,20 +7273,25 @@
             }
           },
           "cache_key_rewrite": {
-            "$ref": "#/components/schemas/regex_rewrite"
+            "$ref": "#/components/schemas/regex_rewrite",
+            "description": "Advanced. Rewrites the default cache key for a set of requests."
           },
           "cache_key": {
             "type": "object",
+            "description": "Customizes the cache key through query string parameters, request headers, cookies, and custom metadata.",
             "additionalProperties": false,
             "properties": {
               "include_all_query_params": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "A unique cache key will be created for each request to an asset that includes a unique query string."
               },
               "exclude_all_query_params": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "All query string parameters will be excluded from the cache key."
               },
               "include_query_params": {
                 "type": "array",
+                "description": "Contains the set of parameter(s) that may be included in the cache key. A unique cache key will be generated for each request that contains a unique value for a query string parameter defined in this feature.",
                 "minItems": 1,
                 "items": {
                   "type": "string"
@@ -6952,6 +7299,7 @@
               },
               "include_all_query_params_except": {
                 "type": "array",
+                "description": "Contains the set of parameter(s) will be excluded from the cache key. All other query string parameters will be included in the cache key.",
                 "minItems": 1,
                 "items": {
                   "type": "string"
@@ -6959,6 +7307,7 @@
               },
               "include_headers": {
                 "type": "array",
+                "description": "Contains the set of request header(s) that may be included in the cache key.",
                 "minItems": 1,
                 "items": {
                   "$ref": "#/components/schemas/header_name"
@@ -6966,6 +7315,7 @@
               },
               "include_cookies": {
                 "type": "array",
+                "description": "Contains the set of cookie(s) that may be included in the cache key.",
                 "minItems": 1,
                 "items": {
                   "$ref": "#/components/schemas/header_name"
@@ -6973,10 +7323,16 @@
               },
               "include_expressions": {
                 "type": "array",
+                "description": "Contains custom content that may be included in the cache key. This content may consist of static text and feature variables.",
                 "minItems": 1,
                 "items": {
                   "$ref": "#/components/schemas/single_line_string"
                 }
+              },
+              "include_hostname": {
+                "type": "boolean",
+                "description": "Determines whether the cache key will include the hostname.",
+                "const": true
               }
             }
           },
@@ -6984,10 +7340,12 @@
             "anyOf": [
               {
                 "$ref": "#/components/schemas/time_interval",
+                "description": "Defines a max-age interval for edge server to origin server cache revalidation that overrides the one defined in `Cache-Control` or `Expires` headers generated from an origin server. This interval defines the amount of time that will pass before an edge server can check whether a cached asset matches the asset stored on the origin server.",
                 "$comment": "when just an interval, is for 200 status code"
               },
               {
                 "type": "object",
+                "description": "Defines a max-age interval for edge server to origin server cache revalidation that overrides the one defined in `Cache-Control` or `Expires` headers generated from an origin server. This interval defines the amount of time that will pass before an edge server can check whether a cached asset matches the asset stored on the origin server.",
                 "additionalProperties": false,
                 "patternProperties": {
                   "^[1-5][0-9][0-9]$": {
@@ -6999,6 +7357,7 @@
           },
           "h264_support": {
             "type": "array",
+            "description": "Reserved for future use.",
             "items": {
               "type": "string",
               "pattern": "(\\.[^. ]+\\s*)+"
@@ -7006,6 +7365,7 @@
           },
           "h264_support_video_seek_params": {
             "type": "object",
+            "description": "Reserved for future use.",
             "additionalProperties": false,
             "properties": {
               "seek_start": {
@@ -7020,25 +7380,30 @@
             ]
           },
           "honor_no_cache_request_header": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether an HTTP client’s no-cache requests will be forwarded to the origin server. A no-cache request occurs when the HTTP client sends a `Cache-Control:no-cache`, `Pragma:no-cache header`, or both in the HTTP request."
           },
           "ignore_origin_no_cache": {
             "type": "array",
+            "description": "Determines on a per HTTP status code basis whether our CDN will ignore `Cache-Control: private`, `Cache-Control: no-store`, `Cache-Control: no-cache`, and `Pragma: no-cache` cache directives served from an origin server.",
             "items": {
               "$ref": "#/components/schemas/http_status_code"
             }
           },
           "ignore_unsatisfiable_ranges": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines the response that will be returned to clients when a request generates a `416 Requested Range Not Satisfiable` status code. By default, this status code is returned when the specified byte-range request cannot be satisfied by an edge server and an `If-Range` request header field was not specified."
           },
           "revalidate_after_origin_unavailable": {
             "anyOf": [
               {
                 "$ref": "#/components/schemas/time_interval",
+                "description": "Defines the length of time that Edgio will be allowed to serve an expired cached asset when an edge server is unable to revalidate that asset with the origin server.",
                 "$comment": "when just an interval, is for 200 status code"
               },
               {
                 "type": "object",
+                "description": "Defines the length of time that Edgio will be allowed to serve an expired cached asset when an edge server is unable to revalidate that asset with the origin server.",
                 "additionalProperties": false,
                 "patternProperties": {
                   "^[1-5][0-9][0-9]$": {
@@ -7050,28 +7415,35 @@
           },
           "partial_cache_sharing_min_hit_size": {
             "type": "integer",
+            "description": "Defines the minimum file size (bytes) for caching partial content.",
             "minimum": 0
           },
           "prevalidate_cached_content": {
-            "$ref": "#/components/schemas/time_interval"
+            "$ref": "#/components/schemas/time_interval",
+            "description": "Determines whether cached content will be eligible for early revalidation before its TTL expires. Define the amount of time prior to the expiration of the requested content’s TTL during which it will be eligible for early revalidation."
           },
           "refresh_zero_byte_cache_files": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines how an HTTP client’s request for a 0-byte cache asset is handled by our edge servers."
           },
           "cacheable_status_codes": {
             "type": "array",
+            "description": "Defines the set of status codes that can result in cached content.",
             "items": {
               "$ref": "#/components/schemas/http_status_code"
             }
           },
           "stale_on_error": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether expired cached content will be delivered when an error occurs during cache revalidation or when retrieving the requested content from an origin server."
           },
           "stale_while_revalidate": {
-            "$ref": "#/components/schemas/time_interval"
+            "$ref": "#/components/schemas/time_interval",
+            "description": "Improves performance by allowing our edge servers to serve stale content while revalidation takes place."
           },
           "enable_caching_for_methods": {
             "type": "array",
+            "description": "Determines whether `POST` and `PUT` requests are eligible for caching on our network.",
             "items": {
               "type": "string",
               "enum": [
@@ -7082,27 +7454,34 @@
             }
           },
           "cacheable_request_body_size": {
-            "$ref": "#/components/schemas/bytes"
+            "$ref": "#/components/schemas/bytes",
+            "description": "Restricts caching to requests whose body does not exceed the specified file size."
           },
           "revalidate_while_stale_timer": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Determines how often, in seconds, the system will attempt to connect to an unavailable origin server."
           },
           "bypass_client_cache": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether our CDN will instruct the client to bypass cache. Sets the `cache-control` response header to: `cache-control: private, no-cache, no-store, must-revalidate`."
           },
           "service_worker_max_age": {
-            "$ref": "#/components/schemas/time_interval"
+            "$ref": "#/components/schemas/time_interval",
+            "description": "Set the amount of time that must pass before a browser can check for a new version of a prefetched request. Specifically, it determines the max-age interval for the Prefetch service worker to edge server cache revalidation."
           },
           "allow_empty_query_in_cache_key": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Reserved for future use."
           },
           "first_hit_caching": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Reserved for future use."
           }
         }
       },
       "response": {
         "type": "object",
+        "description": "Contains features that manipulate the response sent to the client.",
         "additionalProperties": false,
         "properties": {
           "set_status_code": {
@@ -7117,33 +7496,40 @@
             ]
           },
           "set_done": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether to prevent the request from being proxied from our network to an origin server."
           },
           "set_response_body": {
             "type": "string",
+            "description": "A custom response body defined as a base-64 encoded string. Our servers decode this string before providing the response to the client.",
             "$comment": "sets the response body to the base64 encoded string provided by the user"
           },
           "allow_prefetching_uncached_content": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether prefetching will be allowed for cache misses."
           },
           "compress_content_types": {
             "type": "array",
+            "description": "Defines the set of media types (aka content type) that are eligible for edge server compression.",
             "items": {
               "type": "string",
               "pattern": "[-\\+a-zA-Z0-9]+/[-\\+\\.a-zA-Z0-9]+"
             }
           },
           "optimize_images": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether Image Optimizer will be allowed to process or generate an image for eligible requests."
           },
           "retry_from_hostname": {
             "type": "string",
+            "description": "Reserved for future use.",
             "$comment": "sets the hostname dynamically"
           }
         }
       },
       "http_request_header": {
         "type": "object",
+        "description": "Set, overwrite, append, or delete one or more header(s) from the request. Prepend a `+` symbol to the header name to append to the header value. Set the value to blank to delete the header.",
         "$comment": "key is the header name, + means append.  second pattern is to ensure that certain ones are never provided with a value",
         "additionalProperties": false,
         "patternProperties": {
@@ -7157,9 +7543,11 @@
       },
       "headers": {
         "type": "object",
+        "description": "Add, modify, or delete headers from the request or response.",
         "properties": {
           "debug_header": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether a response may include debug cache response headers. These response headers provide information on the cache policy for the requested asset."
           },
           "set_request_headers": {
             "$ref": "#/components/schemas/http_request_header"
@@ -7171,22 +7559,26 @@
             "$ref": "#/components/schemas/http_response_header"
           },
           "set_client_ip_custom_header": {
-            "$ref": "#/components/schemas/generic_field"
+            "$ref": "#/components/schemas/generic_field",
+            "description": "Adds a custom request header that identifies the requesting client by IP address."
           },
           "remove_response_headers": {
             "type": "array",
+            "description": "Reserved for future use.",
             "items": {
               "type": "string"
             }
           },
           "remove_origin_response_headers": {
             "type": "array",
+            "description": "Deletes one or more custom header(s) from the response provided by an origin server.",
             "items": {
               "type": "string"
             }
           },
           "server_timing_header": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Reserved for future use."
           },
           "set_origin_response_headers": {
             "$ref": "#/components/schemas/http_response_header"
@@ -7195,57 +7587,77 @@
       },
       "logs": {
         "type": "object",
+        "description": "Customize how log data is stored.",
         "properties": {
           "custom_log_field_format": {
-            "type": "string"
+            "type": "string",
+            "description": "Determines the value that will be assigned to RTLD’s custom log field. Add a request header's value using this syntax: `%{<REQUEST HEADER>}i` (e.g., `%{Accept-Encoding}i`). Add a response header's value using this syntax: `%{<RESPONSE HEADER>}o` (e.g., `%{Content-Type}o`). "
           },
           "log_query_string": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether a query string will be stored along with the URL in access logs. This feature does not apply to requests whose URL does not contain a query string."
           },
           "mask_client_subnet": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Masks the client’s subnet for logging and reporting purposes."
           }
         }
       },
       "origin": {
         "type": "object",
+        "description": "Control how the CDN communicates with an origin server.",
         "properties": {
           "max_keep_alive_requests": {
             "type": "integer",
+            "description": "Defines the maximum number of requests for a `Keep-Alive` connection before it is closed.",
             "minimum": 0
           },
           "proxy_special_headers": {
             "type": "array",
+            "description": "Reserved for future use.",
             "items": {
               "$ref": "#/components/schemas/generic_field"
             }
           },
           "set_origin": {
-            "type": "string"
+            "type": "string",
+            "description": "Defines the origin configuration to which requests will be forwarded when they cannot be served from cache."
+          },
+          "origin_failover_codes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/http_status_code"
+            }
           }
         }
       },
       "url": {
         "additionalProperties": false,
         "type": "object",
+        "description": "Redirect or rewrite requests to a different URL.",
         "properties": {
           "follow_redirects": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Determines whether requests may be redirected to the hostname defined in the `Location` header returned by an origin server."
           },
           "url_rewrite": {
             "type": "array",
+            "description": "Rewrites the request URL.",
             "items": {
               "type": "object",
               "additionalProperties": false,
               "properties": {
                 "source": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "A relative path that identifies the requests that will be rewritten. This relative path starts directly after the hostname."
                 },
                 "destination": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "A replacement pattern that sets a new relative path. This relative path starts directly after the hostname."
                 },
                 "syntax": {
                   "type": "string",
+                  "description": "Determines whether the `source` property is a relative path that supports named parameters (e.g., :productId) or a regular expression.",
                   "enum": [
                     "regexp",
                     "path-to-regexp"
@@ -7256,19 +7668,23 @@
           },
           "url_redirect": {
             "type": "object",
+            "description": "Redirects requests according to the `Location` header.",
             "additionalProperties": false,
             "properties": {
               "code": {
                 "$ref": "#/components/schemas/http_status_code"
               },
               "source": {
-                "type": "string"
+                "type": "string",
+                "description": "A regular expression that identifies the requests that will be redirected by their relative path. This relative path starts directly after the hostname."
               },
               "destination": {
-                "type": "string"
+                "type": "string",
+                "description": "A replacement pattern for the URL to which the requests identified in the `source` property will be redirected."
               },
               "syntax": {
                 "type": "string",
+                "description": "Determines whether the `source` property is a relative path that supports named parameters (e.g., :productId) or a regular expression.",
                 "enum": [
                   "regexp",
                   "path-to-regexp"
@@ -7280,18 +7696,31 @@
       },
       "client": {
         "type": "object",
+        "description": "Reserved for future use.",
         "properties": {
           "quic": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Reserved for future use."
           }
         }
       },
       "set_variables": {
         "type": "object",
+        "description": "Assigns a value to one or more user-defined variable(s) that are passed to your bespoke traffic processing solution. Define each desired variable as a key-value pair.",
         "patternProperties": {
           "^[-_a-zA-Z0-9]+$": {
             "$ref": "#/definitions/single_line_string",
             "$comment": "most commonly just a flat string"
+          }
+        }
+      },
+      "mtls": {
+        "type": "object",
+        "description": "Reserved for future use.",
+        "properties": {
+          "forward_client_certificate_to_origin": {
+            "type": "boolean",
+            "description": "Reserved for future use."
           }
         }
       },
@@ -7340,6 +7769,10 @@
           "set_variables": {
             "unevaluatedProperties": false,
             "$ref": "#/components/schemas/set_variables"
+          },
+          "mtls": {
+            "unevaluatedProperties": false,
+            "$ref": "#/components/schemas/mtls"
           }
         }
       },
@@ -7371,11 +7804,6 @@
         }
       },
       "Config_V1_Entities_Config": {
-        "required": [
-          "@id",
-          "@type",
-          "id"
-        ],
         "type": "object",
         "properties": {
           "@type": {
@@ -7388,7 +7816,6 @@
           },
           "@links": {
             "type": "object",
-            "properties": {},
             "description": "Links to related resources."
           },
           "id": {
@@ -7406,18 +7833,20 @@
           },
           "experiments": {
             "type": "string",
-            "description": "List of experiments.",
-            "example": ""
+            "example": [
+              {}
+            ],
+            "description": "List of experiments."
           }
         },
+        "required": [
+          "@type",
+          "@id",
+          "id"
+        ],
         "description": "Config_V1_Entities_Config model"
       },
       "postConfigV01Configs": {
-        "required": [
-          "environment_id",
-          "hostnames",
-          "origins"
-        ],
         "type": "object",
         "properties": {
           "environment_id": {
@@ -7436,22 +7865,27 @@
           "experiments": {
             "type": "array",
             "description": "List of experiments.",
-            "example": [
-              {}
-            ],
             "items": {
               "type": "string"
-            }
+            },
+            "example": [
+              {}
+            ]
+          },
+          "purge_cache_on_deploy": {
+            "type": "boolean",
+            "description": "Overwrite the default value, effectively allowing defining purge cache behaviour with each deployment.\n",
+            "example": true
           }
         },
+        "required": [
+          "environment_id",
+          "origins",
+          "hostnames"
+        ],
         "description": "Deploys your configuration to a specific environment. This deployment overwrites any existing origin configurations, hostnames, rules, and experiments.\n"
       },
       "Config_V1_Entities_EnvironmentVariable": {
-        "required": [
-          "@id",
-          "@type",
-          "id"
-        ],
         "type": "object",
         "properties": {
           "@type": {
@@ -7464,7 +7898,6 @@
           },
           "@links": {
             "type": "object",
-            "properties": {},
             "description": "Links to related resources."
           },
           "id": {
@@ -7489,22 +7922,23 @@
           },
           "created_at": {
             "type": "string",
-            "description": "The environment variable's creation date and time (UTC).",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "The environment variable's creation date and time (UTC)."
           },
           "updated_at": {
             "type": "string",
-            "description": "The environment variable's last modification date and time (UTC).",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "The environment variable's last modification date and time (UTC)."
           }
         },
+        "required": [
+          "@type",
+          "@id",
+          "id"
+        ],
         "description": "Config_V1_Entities_EnvironmentVariable model"
       },
       "Config_V1_Entities_EnvironmentVariable_Collection": {
-        "required": [
-          "@id",
-          "@type"
-        ],
         "type": "object",
         "properties": {
           "@type": {
@@ -7520,25 +7954,24 @@
           },
           "total_items": {
             "type": "integer",
-            "description": "Total number of items.",
-            "format": "int32"
+            "format": "int32",
+            "description": "Total number of items."
           },
           "items": {
             "type": "array",
-            "description": "List of environment variables.",
             "items": {
               "$ref": "#/components/schemas/Config_V1_Entities_EnvironmentVariable"
-            }
+            },
+            "description": "List of environment variables."
           }
         },
+        "required": [
+          "@type",
+          "@id"
+        ],
         "description": "Config_V1_Entities_EnvironmentVariable_Collection model"
       },
       "putConfigV01EnvironmentVariables": {
-        "required": [
-          "environment_id",
-          "key",
-          "value"
-        ],
         "type": "object",
         "properties": {
           "environment_id": {
@@ -7558,14 +7991,14 @@
             "description": "Determines whether the environment variable's value will be partially masked using asterisks.\n"
           }
         },
+        "required": [
+          "environment_id",
+          "key",
+          "value"
+        ],
         "description": "Creates or updates an environment variable."
       },
       "Cache_V1_Entities_PurgeRequest": {
-        "required": [
-          "@id",
-          "@type",
-          "id"
-        ],
         "type": "object",
         "properties": {
           "@type": {
@@ -7578,7 +8011,6 @@
           },
           "@links": {
             "type": "object",
-            "properties": {},
             "description": "Links to related resources."
           },
           "id": {
@@ -7591,27 +8023,28 @@
           },
           "created_at": {
             "type": "string",
-            "description": "The date and time (UTC) at which the purge request was submitted.",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "The date and time (UTC) at which the purge request was submitted."
           },
           "completed_at": {
             "type": "string",
-            "description": "The date and time (UTC) at which the purge request was completed.",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "The date and time (UTC) at which the purge request was completed."
           },
           "progress_percentage": {
             "type": "number",
-            "description": "The purge request's completion percentage.",
-            "format": "float"
+            "format": "float",
+            "description": "The purge request's completion percentage."
           }
         },
+        "required": [
+          "@type",
+          "@id",
+          "id"
+        ],
         "description": "Cache_V1_Entities_PurgeRequest model"
       },
       "postCacheV01PurgeRequests": {
-        "required": [
-          "environment_id",
-          "purge_type"
-        ],
         "type": "object",
         "properties": {
           "environment_id": {
@@ -7629,20 +8062,24 @@
           },
           "values": {
             "type": "array",
-            "description": "Defines the set of content to be purged. The `purge_type` property's value determines what should be passed.\n  - `all_entries`: Omit this property or pass an empty array.\n  - `path`: Pass one or more relative path(s). This relative path starts directly after the hostname. Use an `*` to represent zero or more characters.\n  - `surrogate_key`: Pass one or more surrogate key(s) (aka cache tags).\n",
+            "description": "Defines the set of content to be purged. The `purge_type` property's value determines what should be passed.\n  - `all_entries`: Omit this property or pass an empty array.\n  - `path`: Pass one or more relative path(s). This relative path starts directly after the hostname.\n  - `surrogate_key`: Pass one or more surrogate key(s) (aka cache tags).\n",
             "items": {
               "type": "string"
             }
+          },
+          "hostname": {
+            "type": "string",
+            "description": "If specified, cached paths will only be purged for this specific hostname.\nIf omitted, the specified paths will be purged for all hostnames.\n",
+            "default": null
           }
         },
+        "required": [
+          "environment_id",
+          "purge_type"
+        ],
         "description": "Submits a request to purge cached content from a specific environment. Purging content invalidates the cached version of an asset from our edge servers. You may submit up to 50 concurrent purge requests. For the purpose of concurrency, each value defined within the `values` property is considered a separate purge request. Find out the current status of your purge request by passing the purge request ID, which is returned by the `id` property, to the [Get Purge Request operation](#tag/purge-requests/operation/getCacheV01PurgeRequestsRequestId).\n"
       },
       "Accounts_V1_Entities_Environment": {
-        "required": [
-          "@id",
-          "@type",
-          "id"
-        ],
         "type": "object",
         "properties": {
           "@type": {
@@ -7655,7 +8092,6 @@
           },
           "@links": {
             "type": "object",
-            "properties": {},
             "description": "Links to related resources."
           },
           "id": {
@@ -7666,13 +8102,21 @@
             "type": "string",
             "description": "The system-defined ID for the property associated with this environment."
           },
+          "legacy_account_number": {
+            "type": "string",
+            "description": "The system-defined account number for this environment. Use this account number when requesting legacy APIs. This account number is unavailable immediately after an environment is created. If it is missing, try retrieving the environment again."
+          },
           "name": {
             "type": "string",
             "description": "The environment's name."
           },
           "can_members_deploy": {
             "type": "boolean",
-            "description": "Determines whether all organization members may deploy to this environment. Disabling this option restricts deployments to admin users and the deploy token."
+            "description": "DEPRECATED: this will be removed. Use only_maintainers_can_deploy field instead"
+          },
+          "only_maintainers_can_deploy": {
+            "type": "boolean",
+            "description": "Determines whether all organization editors may deploy to this environment. Enabling this option restricts deployments to maintainer users and the deploy token."
           },
           "http_request_logging": {
             "type": "boolean",
@@ -7692,15 +8136,20 @@
           },
           "created_at": {
             "type": "string",
-            "description": "The environment's creation date and time (UTC).",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "The environment's creation date and time (UTC)."
           },
           "updated_at": {
             "type": "string",
-            "description": "The environment's last modification date and time (UTC).",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "The environment's last modification date and time (UTC)."
           }
         },
+        "required": [
+          "@type",
+          "@id",
+          "id"
+        ],
         "description": "Accounts_V1_Entities_Environment model"
       },
       "patchAccountsV01EnvironmentsEnvironmentId": {
@@ -7726,10 +8175,6 @@
         "description": "Updates an environment."
       },
       "Accounts_V1_Entities_Environment_Collection": {
-        "required": [
-          "@id",
-          "@type"
-        ],
         "type": "object",
         "properties": {
           "@type": {
@@ -7745,24 +8190,24 @@
           },
           "total_items": {
             "type": "integer",
-            "description": "Total number of items.",
-            "format": "int32"
+            "format": "int32",
+            "description": "Total number of items."
           },
           "items": {
             "type": "array",
-            "description": "List of environments.",
             "items": {
               "$ref": "#/components/schemas/Accounts_V1_Entities_Environment"
-            }
+            },
+            "description": "List of environments."
           }
         },
+        "required": [
+          "@type",
+          "@id"
+        ],
         "description": "Accounts_V1_Entities_Environment_Collection model"
       },
       "postAccountsV01Environments": {
-        "required": [
-          "name",
-          "property_id"
-        ],
         "type": "object",
         "properties": {
           "property_id": {
@@ -7775,21 +8220,24 @@
           },
           "can_members_deploy": {
             "type": "boolean",
-            "description": "Determines whether all organization memmbers may deploy to this environment. Disabling this option restricts deployments to admin users and the deploy token.\"\n"
+            "description": "DEPRECATED: use only_maintainers_can_deploy instead.\"\n"
+          },
+          "only_maintainers_can_deploy": {
+            "type": "boolean",
+            "description": "Determines whether all organization editors may deploy to this environment. Enabling this option restricts deployments to Maintainers and the deploy token.\n"
           },
           "http_request_logging": {
             "type": "boolean",
             "description": "Determines whether deep-request inspection for serverless logs will be enabled."
           }
         },
+        "required": [
+          "property_id",
+          "name"
+        ],
         "description": "Creates an environment."
       },
       "Accounts_V1_Entities_Property": {
-        "required": [
-          "@id",
-          "@type",
-          "id"
-        ],
         "type": "object",
         "properties": {
           "@type": {
@@ -7802,7 +8250,6 @@
           },
           "@links": {
             "type": "object",
-            "properties": {},
             "description": "Links to related resources."
           },
           "id": {
@@ -7810,7 +8257,8 @@
             "description": "The resource's system-defined ID."
           },
           "organization_id": {
-            "type": "string"
+            "type": "string",
+            "description": "An organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n"
           },
           "slug": {
             "type": "string",
@@ -7818,15 +8266,20 @@
           },
           "created_at": {
             "type": "string",
-            "description": "The property's creation date and time (UTC).",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "The property's creation date and time (UTC)."
           },
           "updated_at": {
             "type": "string",
-            "description": "The property's last modification date and time (UTC).",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "The property's last modification date and time (UTC)."
           }
         },
+        "required": [
+          "@type",
+          "@id",
+          "id"
+        ],
         "description": "Accounts_V1_Entities_Property model"
       },
       "patchAccountsV01PropertiesPropertyId": {
@@ -7840,10 +8293,6 @@
         "description": "Update a property."
       },
       "Accounts_V1_Entities_Property_Collection": {
-        "required": [
-          "@id",
-          "@type"
-        ],
         "type": "object",
         "properties": {
           "@type": {
@@ -7859,24 +8308,24 @@
           },
           "total_items": {
             "type": "integer",
-            "description": "Total number of items.",
-            "format": "int32"
+            "format": "int32",
+            "description": "Total number of items."
           },
           "items": {
             "type": "array",
-            "description": "List of properties.",
             "items": {
               "$ref": "#/components/schemas/Accounts_V1_Entities_Property"
-            }
+            },
+            "description": "List of properties."
           }
         },
+        "required": [
+          "@type",
+          "@id"
+        ],
         "description": "Accounts_V1_Entities_Property_Collection model"
       },
       "postAccountsV01Properties": {
-        "required": [
-          "organization_id",
-          "slug"
-        ],
         "type": "object",
         "properties": {
           "slug": {
@@ -7888,14 +8337,13 @@
             "description": "The system-defined ID for the organization under which this property will be created."
           }
         },
+        "required": [
+          "slug",
+          "organization_id"
+        ],
         "description": "Create a property."
       },
       "Accounts_V1_Entities_Organization": {
-        "required": [
-          "@id",
-          "@type",
-          "id"
-        ],
         "type": "object",
         "properties": {
           "@type": {
@@ -7908,7 +8356,6 @@
           },
           "@links": {
             "type": "object",
-            "properties": {},
             "description": "Links to related resources."
           },
           "id": {
@@ -7925,12 +8372,12 @@
           },
           "pci_compliance": {
             "type": "string",
-            "description": "The organization's PCI compliance status. This state is determined by checking PCI-compliance across all environments associated with this organization. Valid values are:\n\n-   **pci:** All environments are PCI-compliant.\n-   **non_pci:** All environments use our entire network.\n-   **mixed:** Some environments are PCI-compliant.\n",
             "enum": [
               "pci",
               "non_pci",
               "mixed"
-            ]
+            ],
+            "description": "The organization's PCI compliance status. This state is determined by checking PCI-compliance across all environments associated with this organization. Valid values are:\n\n-   **pci:** All environments are PCI-compliant.\n-   **non_pci:** All environments use our entire network.\n-   **mixed:** Some environments are PCI-compliant.\n"
           },
           "pci_dns_domain_name": {
             "type": "string",
@@ -7942,15 +8389,20 @@
           },
           "created_at": {
             "type": "string",
-            "description": "The organization's creation date and time (UTC).",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "The organization's creation date and time (UTC)."
           },
           "updated_at": {
             "type": "string",
-            "description": "The organization's last modification date and time (UTC).",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "The organization's last modification date and time (UTC)."
           }
         },
+        "required": [
+          "@type",
+          "@id",
+          "id"
+        ],
         "description": "Accounts_V1_Entities_Organization model"
       },
       "patchAccountsV01OrganizationsOrganizationId": {
@@ -8058,7 +8510,8 @@
               "REDIRECT_302",
               "CUSTOM_RESPONSE",
               "BLOCK_REQUEST",
-              "ALERT"
+              "ALERT",
+              "SILENT_CLOSE"
             ]
           },
           "response_headers": {
@@ -8087,13 +8540,16 @@
             "description": "The rate rule's name."
           },
           "duration_sec": {
-            "description": "The length of time, in seconds, that the action defined within this object will be applied to a client that violates the rate rule identified by the `id` property.",
+            "description": "\nThe length of time, in seconds, that the action defined within this object will be applied to a client that violates the rate rule identified by the `id` property. \n\nEdgio Security Premier customers can enforce a rate rule violation for up to 1,800 seconds, while all other customers are restricted to a maximum of 300 seconds.\n",
             "type": "integer",
             "format": "uint32",
             "enum": [
               10,
               60,
-              300
+              300,
+              600,
+              900,
+              1800
             ]
           },
           "url": {
@@ -8116,7 +8572,8 @@
               "REDIRECT_302",
               "CUSTOM_RESPONSE",
               "DROP_REQUEST",
-              "ALERT"
+              "ALERT",
+              "SILENT_CLOSE"
             ]
           },
           "response_headers": {
@@ -8257,6 +8714,30 @@
           "bot_manager_config_id": {
             "type": "string",
             "description": "The system-defined ID for the bot manager configuration that will be applied to your traffic."
+          },
+          "api_gw_audit_id": {
+            "type": "string",
+            "description": "The system-defined ID for the API Security ruleset that will audit your traffic."
+          },
+          "api_gw_audit_action": {
+            "description": "The type of action that will take place when a rule defined within the API Security ruleset identified by the `api_gw_audit_id` property is violated.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/WafAuditAction"
+              }
+            ]
+          },
+          "api_gw_prod_id": {
+            "type": "string",
+            "description": "The system-defined ID for the API Security ruleset that will be applied to your traffic."
+          },
+          "api_gw_prod_action": {
+            "description": "The type of action that will take place when a rule defined within the API Security ruleset identified by the `api_gw_prod_id` property is violated.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/WafProdAction"
+              }
+            ]
           },
           "limits": {
             "type": "array",
@@ -8833,12 +9314,17 @@
         "type": "string",
         "enum": [
           "IP",
-          "USER_AGENT"
+          "USER_AGENT",
+          "ASN",
+          "JA3",
+          "HEADER:<name>",
+          "ARGS:<name>",
+          "COOKIE:<name>"
         ]
       },
       "TargetType": {
         "type": "string",
-        "description": "Determines how requests will be identified.",
+        "description": "\nDetermines when a request will count towards the rate limit. \n\n-   **FILE_EXT:** File extension (e.g., `.htm`, `.png`, or `.js`). \n\n-   **REMOTE_ADDR:** IP address. Use standard IPv4 and CIDR notation. Specify a subnet by appending a slash (`/`) and the desired bit-length of the prefix (e.g., `11.22.33.0/22`).\n\n-   **REMOTE_ASN:** Autonomous system number (ASN) - (e.g., `15133`).\n\n-   **GEO:** <a href=\"https://docs.edg.io/guides/v7/reference/country_codes\" target=\"_blank\">Country code.</a>\n\n-   **REQUEST_HEADERS:** Request header value. Identify requests by the `Host`, `User-Agent`, or `Referer` request header by setting the `target.value` property to the desired request header.\n\n-   **REQUEST_METHOD:** Request method. Match for `GET | POST | PUT | HEAD | DELETE | OPTIONS` requests. \n\n-   **REQUEST_URI:** Request URL path. This path starts directly after the hostname.\n\n-   **REMOTE_JA3:** Edgio Security Premier only. JA3 signature.\n\n-   **REQUEST_COOKIES:** Edgio Security Premier only. Cookie value. Set the `target.value` property to the desired cookie.\n\n-   **QUERY_ARG:** Edgio Security Premier only. Query string parameter value. Set the `target.value` property to the desired query string parameter.\n",
         "enum": [
           "FILE_EXT",
           "REMOTE_ADDR",
@@ -8846,7 +9332,10 @@
           "GEO",
           "REQUEST_HEADERS",
           "REQUEST_METHOD",
-          "REQUEST_URI"
+          "REQUEST_URI",
+          "REMOTE_JA3",
+          "REQUEST_COOKIES",
+          "QUERY_ARG"
         ]
       },
       "Target": {
@@ -8858,7 +9347,7 @@
             "$ref": "#/components/schemas/TargetType"
           },
           "value": {
-            "description": "\nRequired for `REQUEST_HEADERS` type. The name of the request header through which requests will be identified. Valid values are: \n\n```\nHost | Referer User-Agent\n```\n",
+            "description": "\nRequired for `REQUEST_HEADERS`, `REQUEST_COOKIES`, and `QUERY_ARG`. The name of the request header, cookie, or query string parameter through which requests will be identified. \n\nValid values for the `REQUEST_HEADERS` type are: \n\n```\nHost | Referer | User-Agent\n```\n",
             "type": "string"
           }
         }
@@ -8977,7 +9466,7 @@
             "description": "\nIndicates whether this rate rule will be enforced. Valid values are:\n\n-   **true:** Disabled. This rate limit will not be applied to traffic.\n\n-   false:** Enabled. Traffic is restricted to this rate limit.\n"
           },
           "duration_sec": {
-            "description": "The length, in seconds, of the rolling window that tracks the number of requests eligible for rate limiting. The `num` property determines the maximum number of requests for this time period.",
+            "description": "\nThe duration, in seconds, of the window that tracks the number of requests eligible for rate limiting. \n\nEdgio Security Premier customers may define a maximum duration of 1,800 seconds when grouping requests by IP address (i.e., the `keys` array only contains `IP`). All other configurations, including when the `keys` array contains an additional entry, restrict this duration to 300 seconds. \n\nThe `num` property determines the maximum number of requests for the time period configured by this property.\n",
             "type": "integer",
             "format": "uint32",
             "enum": [
@@ -8987,7 +9476,10 @@
               30,
               60,
               120,
-              300
+              300,
+              600,
+              900,
+              1800
             ]
           },
           "num": {
@@ -8997,7 +9489,7 @@
           },
           "keys": {
             "type": "array",
-            "description": "\nThe method by which requests will be grouped for the purposes of this rate rule. Valid values are:\n\n-   **Missing / Empty Array:** If the keys property is not defined or set to an empty array, all requests will be treated as a single group for the purpose of rate limiting.\n\n-   **IP:** Indicates that requests will be grouped by IP address. Each unique IP address is considered a separate group.\n\n-   **USER_AGENT:** Indicates that requests will be grouped by a client's user agent. Each unique combination of IP address and user agent is considered a separate group.\n",
+            "description": "\nThe method by which requests will be grouped for the purposes of this rate rule. Select up to two methods (e.g., `IP` and `USER_AGENT`). Valid values are:\n\n-   **Missing / Empty Array:** If the keys property is not defined or set to an empty array, all requests will be treated as a single group for the purpose of rate limiting.\n\n-   **IP:** Indicates that requests will be grouped by IP address. Each unique IP address is considered a separate group.\n\n-   **USER_AGENT:** Indicates that requests will be grouped by a client's user agent. Each unique user agent is considered a separate group.\n\n-   **ASN:** Edgio Security Premier only. Indicates that requests will be grouped by a client's ASN. Each unique ASN is considered a separate group.\n\n-   **JA3:** Edgio Security Premier only. Indicates that requests will be grouped by a client's JA3. Each unique JA3 is considered a separate group.\n\n-   **HEADER:{Name}:** Edgio Security Premier only. Indicates that requests will be grouped by the value assigned to the request header defined by the `{Name}` placeholder. Each unique value for the specified header is considered a separate group. A request is excluded from this rate limit when the specified header is not present. \n\n-   **COOKIE:{Name}:** Edgio Security Premier only. Indicates that requests will be grouped by the value assigned to the cookie defined by the `{Name}` placeholder. Each unique value for the specified cookie is considered a separate group. A request is excluded from this rate limit when the specified cookie is not present.\n\n-   **ARGS:{Name}:** Edgio Security Premier only. Indicates that requests will be grouped by the value assigned to the query string parameter defined by the `{Name}` placeholder. Each unique value for the specified parameter is considered a separate group. A request is excluded from this rate limit when the specified parameter is not present.\n",
             "items": {
               "allOf": [
                 {
@@ -9809,7 +10301,7 @@
           },
           "response_body_base64": {
             "type": "string",
-            "description": "The Base64 encoded payload for the custom browser challenge sent to the client."
+            "description": "The Base64 encoded payload for the custom browser challenge sent to the client.\n\nA custom browser challenge will not be served if your custom HTML does not satisfy the following requirements:\n\n-   It must contain the following mustache: `{{BOT_JS}}`\n\n    Due to the speed at which our JavaScript function is executed, we recommend that you place the `{{BOT_JS}}` mustache after all rendered content (e.g., near the end of the document's body).\n\n    We will replace the above `{{BOT_JS}}` mustache with JavaScript upon serving a browser challenge.\n\n-   It must check whether the user agent allows JavaScript using a `<noscript>` tag. Your custom HTML must display an error message if it has been disabled.\n\n-   If your scripts sets third-party cookies, then your custom HTML must display an error message if they have been disabled.\n"
           },
           "valid_for_sec": {
             "type": "integer",
@@ -9863,6 +10355,28 @@
           }
         }
       },
+      "SilentClose": {
+        "title": "Slient Close Action",
+        "type": "object",
+        "description": "Drops the request without providing a response to the client.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The enforcement action's system-defined ID."
+          },
+          "name": {
+            "type": "string",
+            "description": "The enforcement action's name."
+          },
+          "enf_type": {
+            "type": "string",
+            "description": "The type of enforcement action.",
+            "enum": [
+              "SILENT_CLOSE"
+            ]
+          }
+        }
+      },
       "ActionObj": {
         "title": "Actions",
         "type": "object",
@@ -9885,6 +10399,9 @@
           },
           "RECAPTCHA": {
             "$ref": "#/components/schemas/RecaptchaAction"
+          },
+          "SILENT_CLOSE": {
+            "$ref": "#/components/schemas/SilentClose"
           }
         }
       },
@@ -9902,12 +10419,30 @@
               "CUSTOM_RESPONSE",
               "BROWSER_CHALLENGE",
               "REDIRECT_302",
-              "RECAPTCHA"
+              "RECAPTCHA",
+              "SILENT_CLOSE"
+            ]
+          },
+          "spoof_action_type": {
+            "type": "string",
+            "description": "\nThe type of enforcement action that will be applied when a attempt to spoof this bot type is found.\n\n<a href=\"https://docs.edg.io/guides/security/bot_rules#actions\" target=\"_blank\">Learn more about enforcement actions.</a>\n",
+            "enum": [
+              "ALERT",
+              "BLOCK_REQUEST",
+              "CUSTOM_RESPONSE",
+              "BROWSER_CHALLENGE",
+              "REDIRECT_302",
+              "RECAPTCHA",
+              "SILENT_CLOSE"
             ]
           },
           "bot_token": {
             "description": "A token that identifies a known bot.",
             "type": "string"
+          },
+          "strict_match": {
+            "description": "Determines whether an additional check is required to categorize traffic as spoofed. If disabled, requests that originate from the known bot's ASN will not be considered to be spoofed traffic.",
+            "type": "boolean"
           }
         },
         "required": [
@@ -9983,14 +10518,15 @@
           },
           "spoof_bot_action_type": {
             "type": "string",
-            "description": "\nThe enforcement action that will be applied to traffic spoofing a known bot defined within the `known_bots` array. \n\n<a href=\"https://docs.edg.io/guides/security/bot_rules#actions\" target=\"_blank\">Learn more about enforcement actions.</a>\n",
+            "description": "\nThe default enforcement action that will be applied to traffic spoofing a known bot defined within the `known_bots` array. This enforcement action is only applied when an explicit enforcement action has not been applied to a known bot through the `known_bots.spoof_action_type` property.\n\n<a href=\"https://docs.edg.io/guides/security/bot_rules#actions\" target=\"_blank\">Learn more about enforcement actions.</a>\n",
             "enum": [
               "ALERT",
               "BLOCK_REQUEST",
               "CUSTOM_RESPONSE",
               "BROWSER_CHALLENGE",
               "REDIRECT_302",
-              "RECAPTCHA"
+              "RECAPTCHA",
+              "SILENT_CLOSE"
             ]
           },
           "team_config": {

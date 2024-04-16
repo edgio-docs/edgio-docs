@@ -21,27 +21,29 @@ properties:
 
       From the Edgio Console, navigate to the desired environment and then click
       **Settings**. It is listed under **Environment ID**.
-  key:
+  from:
     type: string
-    description: The environment variable's name.
-  value:
+    description: The path where to redirect from.
+  to:
     type: string
-    description: The environment variable's value.
-  secret:
+    description: The path where to redirect to.
+  status:
+    type: integer
+    format: int32
+    description: 'Redirect status code: 301, 302, 307, 308.'
+  forward_query_string:
     type: boolean
-    description: >
-      Determines whether the environment variable's value will be partially
-      masked using asterisks.
+    description: Determines whether to forward query string to redirect location.
   created_at:
     type: string
     format: date-time
-    description: The environment variable's creation date and time (UTC).
+    description: The environment redirect creation date and time (UTC).
   updated_at:
     type: string
     format: date-time
-    description: The environment variable's last modification date and time (UTC).
+    description: The environment redirect last modification date and time (UTC).
 required:
   - '@type'
   - '@id'
   - id
-description: Config_V1_Entities_EnvironmentVariable model
+description: Config_V1_Entities_EnvironmentRedirect model

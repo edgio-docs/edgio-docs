@@ -1,6 +1,3 @@
-required:
-  - name
-  - property_id
 type: object
 properties:
   property_id:
@@ -13,13 +10,20 @@ properties:
       characters, numbers, dashes, and underscores.
   can_members_deploy:
     type: boolean
+    description: |
+      DEPRECATED: use only_maintainers_can_deploy instead."
+  only_maintainers_can_deploy:
+    type: boolean
     description: >
-      Determines whether all organization memmbers may deploy to this
-      environment. Disabling this option restricts deployments to admin users
-      and the deploy token."
+      Determines whether all organization editors may deploy to this
+      environment. Enabling this option restricts deployments to Maintainers and
+      the deploy token.
   http_request_logging:
     type: boolean
     description: >-
       Determines whether deep-request inspection for serverless logs will be
       enabled.
+required:
+  - property_id
+  - name
 description: Creates an environment.

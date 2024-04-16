@@ -1,23 +1,14 @@
-get:
-  summary: Get CDN Configuration
-  description: >
-    Retrieve an environment's origin configurations, hostnames, rules, and
-    experiments.
-  parameters:
-    - in: path
-      name: config_id
-      description: >
-        The system-defined ID for a configuration that was deployed to an
-        environment.
-
-
-        Use the [Get Environment
-        operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId)
-        to retrieve the system-defined ID (`@links.active_config.id`) for an
-        environment's active configuration.
-      required: true
-      schema:
-        type: string
+post:
+  summary: Generate Let's Encrypt Certificate
+  description: >-
+    Generate Let's Encrypt certificate and activate it within a specific
+    environment.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/postConfigV01TlsCertsGenerate.yaml
+    required: true
   security:
     - configScope:
         - app.config
@@ -27,7 +18,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/Config_V1_Entities_Config.yaml
+            $ref: ../components/schemas/Config_V1_Entities_TlsCert.yaml
     '400':
       description: Bad Request
       content:
@@ -65,5 +56,5 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
   tags:
-    - configs
-  operationId: getConfigV01ConfigsConfigId
+    - tls-certs
+  operationId: postConfigV01TlsCertsGenerate

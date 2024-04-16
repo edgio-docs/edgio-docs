@@ -133,6 +133,10 @@ export const sections: HomepageSectionGroup[] = [
             path: 'managed_rules',
           },
           {
+            title: 'Client-Side Protection',
+            path: 'client_side_protection',
+          },
+          {
             title: 'Security Apps',
             path: 'security_applications',
           },

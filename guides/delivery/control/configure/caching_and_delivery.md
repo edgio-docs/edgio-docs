@@ -75,7 +75,7 @@ After you've filled in the configuration fields in each section, click Activate 
 | Published protocol| The level of HTTP protocol security to use when delivering your cached content to end-users| To ensure your content is delivered with the level of security you require| The Published protocol and Source protocol drop-down menus are disabled:  <br /> - In existing configurations. <br /> - After you have selected a Published and Source protocol while you are creating a new configuration. <br /> <Callout type="info">If you have not already saved the new configuration but you want to choose another Published and Source protocol, you can do so by exiting out of the Create configuration screen and creating a new configuration by clicking the `+new` button.</Callout> |
 |Published hostname|The fully qualified domain name that will be used in all public links (Published URLs) to your cached content <br /> <Callout type="info">A URL that includes the Published Hostname is referred to as a Published URL.</Callout> | To direct your users to the Content Delivery service (instead of your origin) |In the Published hostname field, enter the published hostname specified in the Welcome Letter associated with your {{COMPANY_NAME}} Account or a CNAME if desired. <br /> The published hostname provided by Edgio will be in a form similar to: <br /> ```accountname.vo.llnwd.net``` <br /> If you prefer to publish under a different hostname, you can use a DNS CNAME record to alias (point) your desired name to Edgio published hostname. <br /><Callout type="info"> - IP addresses are not accepted. You must enter a fully qualified domain name. <br /> - If you can't find the Edgiopublished hostname in your Welcome Letter, please contact {{COMPANY_NAME}} Support.</Callout> <br /> If you want to use a directory name “alias” for a particular origin path, you can add the alias by entering it in the Published URL path field. <br /> If needed, you can add a regex expression to the start of the Published hostname field, but you must have permissions to do so. Without the permissions, you are restricted as follows: <br /> - When creating or cloning a configuration, you cannot add regex to the field. <br /> - If a configuration has regex in the field, you cannot clone the configuration. <br /> - When updating a configuration that has regex in the field, you cannot modify any part of the Published hostname. <br /> Please contact your account manager if you need assistance with any of these operations. |
 | Published URL path	|The path portion of a published URL|To allow your published hostname URL to be more specific and include a path.| Enter the path enclosed in forward slashes. <br /> <Callout type="info"> - This field must contain a value and defaults to / <br /> - If you have the PERMISSION_CONFIGURE_SSUI_REGEX permission, you can include regular expressions in the path.</Callout> |
-|This path ends with a filename	|Whether the last component in the path is a file| File names are not validated by extension, so when the Published URL path or Source URL path does not end with a slash, it is treated as a file name. <br /> <Callout type="info">This field and **Only publish files with these extensions** are mutually exclusive. </Callout>| Place a checkmark in the checkbox if the path ends in a file name. <br /><Callout type="info">If you check this option, you must make entries in the **Published URL path** and **Source URL path** fields</Callout> |
+|This path ends with a filename	|Whether the last component in the path is a file| File names are not validated by extension, so when the Published URL path or Source URL path does not end with a slash, it is treated as a file name. <br /> <Callout type="info">This field and **Only publish files with these extensions** are mutually exclusive. </Callout>| Place a checkmark in the checkbox if the path ends in a file name. <br /> <Callout type="info">If you check this option, you must make entries in the **Published URL path** and **Source URL path** fields</Callout> |
 |Only publish files with these extensions	|File extensions to publish | Provides flexibility, allowing you to specify file extensions to publish. More flexible than using This path ends with a filename, which allows you to specify only one file. <br /> <Callout type="info">This field and **This path ends with a filename** are mutually exclusive.</Callout>	| Place a checkmark in the checkbox, then enter file extensions (excluding a leading period) in the field below the checkbox. |
 | Host Header| The value to include in the HTTP Host header when communicating with your origin server| To help prevent end-users from requesting content directly from your origin.| If you plan to block requests to your origin based on the value of the Host header, select **Published Hostname** or enter a value in the **Value** field. <br /> If you are hosting more than one origin on a single server, please see the additional information below. <br /> For more information, see [Host Header Details](#host-header-details). |
 |Source protocol|The HTTP protocol(s) to use when retrieving content from your origin (when the content is not found in the cache or has expired in cache) | To ensure your content is retrieved with the level of security you require |See Published Protocol in this table. |
@@ -153,6 +153,7 @@ Use Arc Light to customize how Content Delivery reacts to the following HTTP req
     - Any
     - Origin only
     - Client only
+
 For each of the above request and response types, you can assign one rule. Content Delivery will then execute that rule each time it receives the associated request or response type. The rule will be executed on the Edge Server that receives the request or response.
 
 To enable Arc Light for a specific request or response type, check the checkbox next to the desired type (example: **x Rules on Edge Request**). To assign a rule, click one of the rules in the list below the request/response type.
@@ -175,10 +176,10 @@ Rules are designed based on specific customer needs. If you need to use Arc Ligh
 
 #### Configuration Settings {/*configuration-settings*/}
 
-| Setting| Information Requested| Purpose| Selecting the Right Option
+| Setting|Information Requested|Purpose|Selecting the Right Option|
 |---|---|---|---|
-| Which rules do you want to enable?| 	If you want to create a new rule, the type of HTTP request or response to associate it with| 	Content Delivery can trigger rules for several types of requests and responses	| (see the options below)|
-| Rules on Any Request	| Request type| 	Content Delivery can trigger rules for several types of requests	| To trigger a rule on any request received by a EdgioEdge Server, check the **Rules on Any Request** checkbox, and select one of the predefined rules in the list|
+| Which rules do you want to enable?|If you want to create a new rule, the type of HTTP request or response to associate it with| 	Content Delivery can trigger rules for several types of requests and responses	| (see the options below)|
+| Rules on Any Request	| Request type|Content Delivery can trigger rules for several types of requests	| To trigger a rule on any request received by a EdgioEdge Server, check the **Rules on Any Request** checkbox, and select one of the predefined rules in the list|
 | Rules on Edge Request| 	Request type| 	Content Delivery can trigger rules for several types of requests	| To trigger a rule on client requests to a EdgioEdge Server, check the **Rules on Edge Request** checkbox, and select one of the predefined rules in the list|
 | Rules on Origin Request	| Request type	| Content Delivery can trigger rules for several types of requests| To trigger a rule on Edgio requests to your Origin, check the **Rules on Origin Request** checkbox, and select one of the predefined rules in the list|
 | Rules on Any Response| 	Response type	| Content Delivery can trigger rules for several types of responses	| To trigger a rule on any response received by a EdgioEdge Server, check the **Rules on Any Response** checkbox, and select one of the predefined rules in the list|
@@ -189,34 +190,34 @@ Rules are designed based on specific customer needs. If you need to use Arc Ligh
 
 Content Delivery supports "seeking" or "scrubbing" (skipping back and forth) within FLV and MP4/H.264 video files. Seeking is controlled via parameters specified in the query terms of the request URL.
 
-| Setting| Information Requested| Purpose| Selecting the Right Option
+| Setting| Information Requested| Purpose| Selecting the Right Option|
 |---|---|---|---|
 | Enable FLV Scrubbing| Whether to allow a video client to skip forward and back (seek) within FLV files based on parameters specified in the query terms of the request URL.| Custom clients may want to provide the “seek” capability (“forward” and “back” buttons)| To enable this feature, check the **Enable FLV Scrubbing** checkbox|
 | Enable MP4/H.264 Scrubbing| Whether to allow a video client to skip forward and back (seek) within MP4 files based on parameters specified in the query terms of the request URL.| Custom clients may want to provide the “seek” capability (“forward” and “back” buttons)| To enable this feature, check the **Enable MP4/H.264 Scrubbing** checkbox|
 
 ### Optimization  {/*optimization*/}
 
-| Setting| Information Requested| Purpose| Selecting the Right Option
+| Setting| Information Requested| Purpose| Selecting the Right Option|
 |---|---|---|---|
 
 ### Headers & Methods  {/*headers-and-methods*/}
 
-| Setting| Information Requested| Purpose| Selecting the Right Option
+| Setting| Information Requested| Purpose| Selecting the Right Option|
 |---|---|---|---|
 
 ### Secure Cache Diagnostics  {/*secure-cache-diagnostics*/}
 ### Failover  {/*failover*/}
 
-| Setting| Information Requested| Purpose| Selecting the Right Option
+| Setting| Information Requested| Purpose| Selecting the Right Option|
 |---|---|---|---|
 
 ### Content Security  {/*content-security*/}
 
-| Setting| Information Requested| Purpose| Selecting the Right Option
+| Setting| Information Requested| Purpose| Selecting the Right Option|
 |---|---|---|---|
 
 ### {{MEDIAVAULT}}  {/*mediavault*/}
-| Setting| Information Requested| Purpose| Selecting the Right Option
+| Setting| Information Requested| Purpose| Selecting the Right Option|
 |---|---|---|---|
 |Enable {{MEDIAVAULT}} content protection|Whether you want to use {{MEDIAVAULT}} to provide additional content security. {{MEDIAVAULT}} provides high-performance URL authentication.|{{MEDIAVAULT}} can help you prevent “deep linking” and other unauthorized viewing behavior|o enable this feature, check the **Enable {{MEDIAVAULT}} content protection** checkbox, and provide a primary and secondary “shared secret” (both used to prevent URL tampering). <br /> You can also change the HTTP Error Code returned by {{MEDIAVAULT}} from the default 400 code by entering a new value in the Deny Status Code field.|
 
@@ -251,7 +252,7 @@ If a user is editing a configuration, then the field is visible and enabled depe
 
 ### Logging  {/*logging*/}
 
-| Setting| Information Requested| Purpose| Selecting the Right Option
+| Setting| Information Requested| Purpose| Selecting the Right Option|
 |---|---|---|---|
 |Log cookies|Whether you want Content Delivery to stop saving cookie information in your log files|If you process log files and don’t need the information in the Cookie header, you may want to remove it to simplify processing and reduce log file size.|If you know you need Cookie header information in your log files, check the **Log cookies** checkbox. Otherwise, leave it unchecked. <br /> When this setting is enabled, Content Delivery logs all Cookie header information, up to a maximum of 8 KB for the entire header (regardless of the number of cookies in the header).|
 |Log request header|Whether you wantContent Delivery tostart saving specific Request Headers in your log files|If you process log files and need access to information in the Request Headers, you may want to enable this option|If you know you need Request Header information in your log files, check the **Log Request Header** checkbox and enter the names of the specific headers to log. Otherwise, leave it unchecked.
@@ -359,7 +360,7 @@ For information on the individual settings displayed, see the descriptions in [C
 
 <Image inline src="/images/delivery/control/clone-icon.png" alt="Clone" /> To clone (make a copy of) a configuration, click the "copy" icon at the configuration row's bottom right. When you have finished making changes to the settings, click **Activate** to enable the new configuration.
 
-If you want to change protocol sets, see [Changing Protocol Sets](delivery/control/configure/chunked_streaming).
+If you want to change protocol sets, see [Changing Protocol Sets](/delivery/control/configure/chunked_streaming).
 
 <Callout type="info">The ability to clone configurations is subject to conditions described in [Read-Only and Hidden Capabilities](#read-only-and-hidden-capabilities).</Callout>
 

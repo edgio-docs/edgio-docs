@@ -5,18 +5,18 @@ Caching & Delivery delivers content via HTTP and HTTPS for all file formats. Bot
 
 Navigate to Configure > Caching & Delivery (v2) in the navigation pane. The Caching & Delivery for page is displayed.
 
-## Configuration List  {/*configuration-list*/}
+## Configuration List {/*configuration-list*/}
 The Caching & Delivery page displays a list of the Caching & Delivery configurations for the currently-selected Company and Account.
 
 The following information is shown for each configuration:
 
-**Source Hostname** – The private URL prefix used by Edgio to retrieve and cache content from your origin server (not visible to end-users)
-**Source Path**- the URL path, if any, to use with the Source Hostname
-**Protocol** - The level of HTTP protocol security to use when delivering your cached content to end-users
-**Published Path** - The URL path, if any, to use with the Published Host
+- **Source Hostname** – The private URL prefix used by Edgio to retrieve and cache content from your origin server (not visible to end-users)
+- **Source Path**- the URL path, if any, to use with the Source Hostname
+- **Protocol** - The level of HTTP protocol security to use when delivering your cached content to end-users
+- **Published Path** - The URL path, if any, to use with the Published Host
 
-## Filtering the List of Configurations  {/*filtering-the-list-of-configurations*/}
-Use the `Filter by` dropdown menu and the filter text field to filter the list by specific fields:
+## Filtering the List of Configurations {/*filtering-the-list-of-configurations*/}
+Use the **Filter by** dropdown menu and the filter text field to filter the list by specific fields:
 
 To filter the list:
 1. Make a selection in the drop-down menu.
@@ -25,7 +25,7 @@ To filter the list:
 
 Display the original list by clicking the x icon in the filter text field.
 
-## Read-Only and Hidden Capabilities  {/*read-only-and-hidden-capabilities*/}
+## Read-Only and Hidden Capabilities {/*read-only-and-hidden-capabilities*/}
 For particular use cases, configurations may have certain fields presented as either read-only or hidden (masked).
 
 An entire configuration may be read-only. Or, an editable configuration may have source and/or published fields hidden or read-only.
@@ -38,8 +38,8 @@ Source and published fields are:
 
 Hidden fields are masked with asterisks.
 
-### Examples  {/*examples*/}
-## Creating a New Configuration  {/*creating-a-new-configuration*/}
+### Examples {/*examples*/}
+## Creating a New Configuration {/*creating-a-new-configuration*/}
 ### Service Profiles  {/*service-profiles*/}
 ### Page Organization  {/*page-organization*/}
 ### Content Location  {/*current-location*/}

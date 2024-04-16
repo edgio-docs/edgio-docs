@@ -11,7 +11,7 @@ const nav = {
   routes: [
     {
       title: 'Overview',
-      path: 'index',
+      path: 'overview',
     },
     {
       title: 'APIs',
@@ -31,11 +31,11 @@ const nav = {
             },
             {
               title: 'Configuration',
-              path: 'control/apis/configuration',
+              path: 'https://support.limelight.com/public/openapi/configuration/index.html',
             },
             {
               title: 'Realtime Reporting',
-              path: 'control/apis/realtime_reporting',
+              path: 'https://support.limelight.com/public/openapi/realtimereporting/index.html',
             },
             separator,
             {
@@ -127,52 +127,52 @@ const nav = {
             separator,
             {
               title: 'Billing',
-              path: 'control/reports/billing',
+              path: 'control/reports/traffic/billing',
             },
             {
               title: 'CMCD',
-              path: 'control/reports/cmcd',
+              path: 'control/reports/traffic/cmcd',
             },
             {
               title: 'DNS Overview',
-              path: 'control/reports/dns_overview',
+              path: 'control/reports/traffic/dns_overview',
             },
             {
               title: 'LDS Overview',
-              path: 'control/reports/lds_overview',
+              path: 'control/reports/traffic/lds_overview',
             },
             {
               title: 'Live Push',
-              path: 'control/reports/live_push',
+              path: 'control/reports/traffic/live_push',
             },
             {
               title: 'Service Provider Traffic',
-              path: 'control/reports/service_provider_traffic',
+              path: 'control/reports/traffic/service_provider_traffic',
             },
             {
               title: 'Traffic',
-              path: 'control/reports/traffic',
+              path: 'control/reports/traffic/traffic',
             },
             {
               title: 'Unified Traffic',
-              path: 'control/reports/unified_traffic',
+              path: 'control/reports/traffic/unified_traffic',
             },
             separator,
             {
               title: 'Origin Storage',
-              path: 'control/reports/origin_storage',
+              path: 'control/reports/content/origin_storage',
             },
             {
               title: 'Realtime Live Event Overview',
-              path: 'control/reports/realtime_live_event_overview',
+              path: 'control/reports/content/realtime_live_event_overview',
             },
             {
               title: 'Status Codes',
-              path: 'control/reports/status_codes',
+              path: 'control/reports/content/status_codes',
             },
             {
               title: 'URL Prefixes',
-              path: 'control/reports/url_prefixes',
+              path: 'control/reports/content/url_prefixes',
             },
           ],
         },

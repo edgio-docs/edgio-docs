@@ -11,6 +11,7 @@ A Security App configuration:
     -   **Bot Manager:** A bot manager configuration identifies bot traffic.
     -   **Custom Rules:** A custom rule identifies threats using custom criteria that takes into account your site's traffic profile to avoid false positives.
     -   **Managed Rules:** A managed rule identifies threats through threat detection policies.
+    -   **Client-Side Protection Policy:** A Client-Side Protection policy detects and mitigates attacks, such as cross-site scripting (XSS) and code injection, by applying a Content Security Policy to your traffic.
 -   Identifies how the above [rules are enforced](#enforcement) on rate limited requests or threats .
 -   Allows you to audit new access rules, API Security rules, custom rules, and managed rules without impacting production traffic while keeping your applications secure with known configurations.
 
@@ -447,7 +448,7 @@ You may create, modify, and delete Security App configurations.
 
         [Learn more.](#enforcement)
 
-6.  Optional. [Audit production traffic](#threat-detection) using a new access rule.
+6.  Optional. [Audit production traffic](#threat-detection) using a different access rule.
     1.  From the **Rules** section, click **Access Rule**.
     2.  From the **Audit Access Rule** option, select the desired access rule.
 
@@ -471,7 +472,7 @@ You may create, modify, and delete Security App configurations.
 
         [Learn more.](#enforcement)
 
-8.  Optional. [Audit production traffic](#threat-detection) using a new API Security ruleset.
+8.  Optional. [Audit production traffic](#threat-detection) using a different API Security ruleset.
 
     1.  From the **Rules** section, click **API Security**.
     2.  From the **Audit API Security Rule** option, select the desired API Security ruleset.
@@ -549,7 +550,7 @@ You may create, modify, and delete Security App configurations.
 
         [Learn more.](#enforcement)
 
-12. Optional. [Audit production traffic](#threat-detection) using a new custom rule.
+12. Optional. [Audit production traffic](#threat-detection) using a different custom rule.
     1.  From the **Rules** section, click **Custom Rule**.
     2.  From the **Audit Custom Rule** option, select the desired custom rule.
 
@@ -575,7 +576,7 @@ You may create, modify, and delete Security App configurations.
 
         [Learn more.](#enforcement)
 
-14. Optional. [Audit production traffic](#threat-detection) using a new managed rule.
+14. Optional. [Audit production traffic](#threat-detection) using a different managed rule.
     1.  From the **Rules** section, click **Managed Rule**.
     2. From the **Audit Managed Rule** option, select the desired managed rule.
 
@@ -592,9 +593,20 @@ You may create, modify, and delete Security App configurations.
 
     </Callout>
 
-15. Click **Save**.
-16. Click **Accept All Changes**.
-17. Click **Save Changes**.
+15. Optional. Apply a production and audit Content Security Policy to your traffic by selecting the desired Client-Side Protection policy.
+
+    1.  From the **Rules** section, click **Client Protection**.
+    2.  From the **Select Policy** option, select the desired Client-Side Protection policy.
+    
+    <Info>
+    
+    The Client-Side Protection policy's configuration determines whether its production and audit Content Security Policy will be applied to your traffic through the `Content-Security-Policy` and `Content-Security-Policy-Report-Only` response headers, respectively. 
+    
+    </Info>
+
+16. Click **Save**.
+17. Click **Accept All Changes**.
+18. Click **Save Changes**.
 
 **To reorder Security App configurations**
 1.  Navigate to the **Security App** page.

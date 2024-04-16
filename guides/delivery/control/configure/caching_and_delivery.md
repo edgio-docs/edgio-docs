@@ -130,13 +130,8 @@ If you need to override (ignore) the above behavior, you can use the **Configure
 
 You can also control whether generated responses are cached using the **Cache Generated Responses** checkbox (for the Custom option) or **Including Generated Responses** (for other values in the drop-down menu).
 
-<Callout type="info">Generated responses are HTTP responses that are generated dynamically (“dynamic content”). These responses often do not include any of the cache-control headers needed to determine TTL and are not cached by default to avoid caching personalized or user-specific responses.
-
-By default, Edgio defines a generated response as one that is missing all of the following headers:
-- Expires
-- Last-Modified
-- Cache-Control: max-age
-- Cache-Control: s-max-age</Callout>
+<Callout type="info">Generated responses are HTTP responses that are generated dynamically (“dynamic content”). These responses often do not include any of the cache-control headers needed to determine TTL and are not cached by default to avoid caching personalized or user-specific responses. <br /> <br />
+By default, Edgio defines a generated response as one that is missing all of the following headers: <br /> - Expires <br /> - Last-Modified <br /> - Cache-Control: max-age <br /> - Cache-Control: s-max-age</Callout>
 
 If you choose the **Custom** option for **Time to live (TTL)**, you can change the cache freshness algorithm's parameters using **Specify custom floor and ceiling cache values**.
 

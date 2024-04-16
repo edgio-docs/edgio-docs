@@ -2,7 +2,7 @@
 title: Delivery Overview
 
 ---
-**![{"color": "purple"}](/ 'Welcome to Edgio!')**
+**![{"color": "red"}]('Welcome to Edgio!')**
 
 ```diff
 @@ Welcome to Edgio!

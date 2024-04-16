@@ -2,11 +2,15 @@
 title: Delivery Overview
 
 ---
-Welcome to Edgio Delivery!
-<br />
+**![{"color": "purple"}](/ 'Welcome to Edgio!')**
+
+```diff
+@@ Welcome to Edgio!
+```
+
 Here you'll find our user and technical documentation for our Delivery product suite.
-<br />
-|Topic|Details|
+
+| | |
 |---|---|
 |Control Portal| Manage your delivery configurations and users and customize analytics reports.|
 |Content Delivery| Access user guides: Delivery, MediaVault, and SmartPurge|

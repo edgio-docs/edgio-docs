@@ -68,7 +68,7 @@ Initially, only the Content Location section is visible. Once you select both a 
 
 After you've filled in the configuration fields in each section, click Activate (at the bottom of the page) to enable your new configuration.
 
-### Content Location  {/*current-location*/}
+### Content Location  {/*content-location*/}
 
 | Setting| Information Requested| Purpose| Selecting the Right Option|
 |---|---|---|---|
@@ -111,7 +111,7 @@ Using the example configuration settings above, if favicon.ico is not cached for
 |---|---|---|---|
 | TTL| Whether to override the default method for determining if an object in the cache is expired.| In some cases, you may want to take explicit control over object expiration times (TTL - “Time To Live”).|  Make selections in the TTL presets field. <br /> -To allow Content Delivery to calculate TTL, select **Not selected**. <br /> - To make your TTL settings, select **Configure manually** and configure the **Minimum TTL** and **Maximum TTL** fields. When you make manual settings, you must also configure the Cache Generated Responses field. <br /> - To set TTL to a specific length of time, select one of the preset times. When you opt for preset values, you must also configure the **Include generated responses** and **Cache Generated Responses** fields. See [Caching Best Practices](#caching-best-practices) for additional information.|
 |Cache large files on first request|Whether you want any request for an object to force the full object to be cached, even if the request is canceled.	 | ||This feature is intended for large file downloads and is not recommended for caching website objects (such as image, CSS, and JavaScript files).|
-|Ignore "No cache" header|Whether Content Delivery should ignore certain ```Cache-Control``` headers when determining whether or not to cache an object retrieved from your origin||You may want to cache objects regardless of origin settings that attempt to turn off caching|If you want to ignore the followingCache-Control headers: <br /> - Cache-control: no-cache <br /> - Cache-control: no-store <br /> - Cache-control: private <br /> - Pragma: no-cache <br /> Enable this option. Otherwise, leave it disabled. |
+|Ignore "No cache" header|Whether Content Delivery should ignore certain Cache-Control headers when determining whether or not to cache an object retrieved from your origin||You may want to cache objects regardless of origin settings that attempt to turn off caching|If you want to ignore the followingCache-Control headers: <br /> - Cache-control: no-cache <br /> - Cache-control: no-store <br /> - Cache-control: private <br /> - Pragma: no-cache <br /> Enable this option. Otherwise, leave it disabled. |
 | Query String Caching| Whether to use URL query terms to determine whether or not objects are cached| 	You may want to increase cache efficiency by ensuring certain objects are not duplicated due to variations in their query terms	| Choose the option that caches the minimum number of objects necessary based on query parameters: <br /> - Strip no query terms from the cache key <br /> - Strip all query terms from the cache key <br /> - Exclude specific query terms <br /> - Keep only specific query terms <br /> <Callout type="info">For the Exclude specific query terms and Keep only specific query terms options, you must enter a comma-separated list of the query terms to be excluded or included.</Callout> |
 |Vary Headers <Callout type="info">For static content configurations only</Callout> |Which **Vary** response header fields Content Delivery should use when differentiating versions of an object in the cache |Content Delivery stores a different version of a requested object for each unique set of request header fields specified by the **Vary** header. <br /> If the Vary header specifies request header fields that change frequently, multiple copies of the same object may be stored in the cache. <br /> To control this behavior, you can configure Content Delivery to ignore all Vary headers or specific Vary headers when caching and retrieving objects. <br /> All of the Vary headers associated with the object are still maintained and passed on to the client in the response. | - If you only want to cache a single version of an object regardless of its **Vary** header fields, choose **Ignore all Vary headers** <br /> - If you want to cache a new version of an object whenever any of its **Vary** header fields changes, choose **Do not ignore Vary headers**  <br /> - If want cache a new version of an object whenever all but certain specified **Vary** header fields change, choose **Ignore specific vary headers** and select the Vary headers fields to ignore|
 |Partial Cache|Whether to use Partial Caching to improve cache performance|Partial Caching is a Content Delivery feature that caches commonly-requested portions of content requested using HTTP GET ranges. This optimization can significantly improve performance for large media files.|To enable this setting, check the **Partial Cache** checkbox, and in the associated field, enter a Regex value that matches the object URLs you want to optimize|
@@ -215,26 +215,160 @@ Content Delivery supports "seeking" or "scrubbing" (skipping back and forth) wit
 | Setting| Information Requested| Purpose| Selecting the Right Option
 |---|---|---|---|
 
-### MediaVault  {/*mediavault*/}
+### {{MEDIAVAULT}}  {/*mediavault*/}
 | Setting| Information Requested| Purpose| Selecting the Right Option
 |---|---|---|---|
+|Enable {{MEDIAVAULT}} content protection|Whether you want to use {{MEDIAVAULT}} to provide additional content security. {{MEDIAVAULT}} provides high-performance URL authentication.|{{MEDIAVAULT}} can help you prevent “deep linking” and other unauthorized viewing behavior|o enable this feature, check the **Enable {{MEDIAVAULT}} content protection** checkbox, and provide a primary and secondary “shared secret” (both used to prevent URL tampering). <br /> You can also change the HTTP Error Code returned by {{MEDIAVAULT}} from the default 400 code by entering a new value in the Deny Status Code field.|
+
+#### More about {{MEDIAVAULT}}
+
+{{MEDIAVAULT}} is a high-performance URL authentication service. {{MEDIAVAULT}}’s main purpose is to help you secure your content from unauthorized viewing.
+
+{{MEDIAVAULT}} maximizes authentication performance by using tokens to avoid three-way handshakes (common to other authentication methods) that can lead to severe connection time latency.
+
+Please note that {{MEDIAVAULT}} is not a replacement for DRM and should not be associated with user authentication.
+
+{{MEDIAVAULT}} works like this:
+
+- You enter a shared secret during the configuration process
+- You then generate a token (MD5 hash) for each published URL, based on the shared secret, and append it to the URL in a query term or provide it in a cookie.You can generate the token manually by navigating to the Configure > {{MEDIAVAULT}} in the navigation pane, or by creating server-side code on your origin.
+- {{MEDIAVAULT}} uses the same hash algorithm to create its token when a request is received, identical to the one you appended.
+- If the tokens match, {{MEDIAVAULT}} then looks for additional {{MEDIAVAULT}}-specific query terms (such as end date/time and IP address/mask) to determine whether the request is valid. If the tokens don’t match, the URL was tampered with, and the request is rejected.
+
+For more information, see the [{{MEDIAVAULT}} User Guide](delivery/delivery/mediavault).
+
+#### Amazon S3 Authorization {/*amazon-s3-authorization*/}
+
+If you store content on Amazon S3, use this option to set your S3 access key, secret, and region.
+
+#### Send SSL SNI to Origin {/*send-ssl-sni-to-origin*/}
+
+Server Name Indication (SNI) is a TLS extension that allows multi-tenancy of domains hosted on a web server. Shared cloud platforms often require SNI. The extension helps select the appropriate certificate for that domain and helps serve the appropriate content. Most modern web servers handle SNI; this option disables SNI for the minority of web servers that do not handle SNI correctly.
+
+If a user is creating a new configuration and the selected protocol sets include HTTPS, then the **Send SSL SNI to Origin** option is selected by default.
+
+If a user is editing a configuration, then the field is visible and enabled depending on the selected [Service Profile](#service-profiles).
 
 ### Logging  {/*logging*/}
 
 | Setting| Information Requested| Purpose| Selecting the Right Option
 |---|---|---|---|
+|Log cookies|Whether you want Content Delivery to stop saving cookie information in your log files|If you process log files and don’t need the information in the Cookie header, you may want to remove it to simplify processing and reduce log file size.|If you know you need Cookie header information in your log files, check the **Log cookies** checkbox. Otherwise, leave it unchecked. <br /> When this setting is enabled, Content Delivery logs all Cookie header information, up to a maximum of 8 KB for the entire header (regardless of the number of cookies in the header).|
+|Log request header|Whether you wantContent Delivery tostart saving specific Request Headers in your log files|If you process log files and need access to information in the Request Headers, you may want to enable this option|If you know you need Request Header information in your log files, check the **Log Request Header** checkbox and enter the names of the specific headers to log. Otherwise, leave it unchecked.
 
 ### Cookie Handling  {/*cookie-handling*/}
+
+{{EDGEPRISM}} issues a ```Set-Cookie``` header whenever it receives a request that has a specified query parameter. This feature provides a way for a cookie to be set with the query string sent in a request URL. You can create a configuration by entering values into the fields provided.
+
+|Field|Description|
+|---|---|
+|Cookie parameter|	Cookie name.|
+|URL query term selector	|String that identifies the query term.|
+|Expiration	|Date when the configuration expires.|
+|Domain	|Domain to which the configuration applies|
+
+<Callout type="info">You can also use the feature to indicate when a ```Set-Cookie header``` should not be issued.</Callout>
+
+#### Cookie Handling Example  {/*cookie-handling-example*/}
+
+This example instructs EdgePrism to issue a ```Set-Cookie``` header to the requesting client with the key nlpqtid, no expiration, and a Domain parameter of .ExampleDomain.com whenever EdgePrism detects ```pid=``` in the requested URL's query string.
+
+|Field|Value|
+|---|---|
+|Cookie parameter|	nlpqtid|
+|URL query term selector	|pid=|
+|Expiration	|0|
+|Domain	|.ExampleDomain.com|
+
 ### Redirect  {/*redirect*/}
+
+You can specify conditions under which a content request should be redirected.
+
+#### Redirect hostname header regex {/*redirect-hostname-header-regex*/}
+
+This option can be used to issue a redirect based on a specified header and value. You can optionally request strict header regex checking.
+
+|Field|Description/ Instructions|
+|---|---|
+|Header name|Name of the header on which the redirect is based.|
+|HTTP Code	|HTTP Status Code upon which to issue the redirect.|
+|Comma-separated key-value pairs	|Header values upon which to issue the redirect.|
+|HTTP code 301 or 302 |Status code to use for the redirect. Enter either 301 or 302. <br /> Instead of delivering content from the origin, EdgePrism can redirect the user to a particular URL.|
+
+#### Strict Header Regex Checking {/*strict-header-regex-checking*/}
+If the header values you entered in the Redirect hostname header regex are not in the specified Header name, EdgePrism will use the fields below as the conditions under which it will issue the redirect.
+
+|Field|Description/ Instructions|
+|---|---|
+|HTTP Code	|HTTP status code returned from the content request.|
+|hostname	| Hostname from which content was requested.|
+
 ### Others  {/*others*/}
+
+This section presents additional delivery options you can use in the Chunked Streaming configuration. For descriptions, hover your mouse pointer over the right side of the option name. An information icon appears along with the option description.
+
 ### Additional Options  {/*additional-options*/}
+The **Additional Options** section allows you to quickly configure options that are available elsewhere on the page. If you know the options you want, you can configure them here in one location.
+
+If you selected **Both HTTP and HTTPS** in the Content Location section, you could use the section to configure options for a particular protocol set.
+
+1. Begin typing an option name in the Options field. The field has auto-complete capabilities, so you do not have to type the full name. As you type, matching options display in the auto-filtered list. < br /> <Callout type="info">Available options depend on your account name and the service profile at the top of the page.</Callout>
+2. Select the option from the auto-filtered list.
+
+The UI adds the option to a list above the option field.
+
+#### Working with the Option/Protocol Sets List
+
+This list allows you to associate protocol sets for the option you selected and enter any required option parameters.
+
+1. If parameters are required for the option, a field is displayed to enter parameter values. A prompt describing the parameter is displayed beneath the field.
+
+2. Enter a parameter value.
+
+3. If you selected Both HTTP and HTTPS in the Content Location section, two protocol sets are displayed to the right of the list item; otherwise, only one protocol set is displayed.
+
+4. Associate an option set with the option by selecting the desired protocol sets.
+
+5. To remove an option, hover over its row in the list and click the ( x ) icon on the right side of the row.
+
 ### Notes  {/*notes*/}
+
+You can use the **Notes** field for additional information for others (why the configuration changes were made, etc.). Users can refer to the notes later when browsing historical configuration changes
+
+
 ## Editing a Configuration  {/*editing-a-configuration*/}
+
+To make configuration changes to existing Published Protocols or Source Protocols,
+
+1. Click the edit (pencil) icon on the right side of the configuration.
+2. In the CONTENT LOCATION section, select the drop-down arrow for the published or source protocol to launch the PROTOCOL SETS MIGRATION window.
+3. Choose your HTTP/HTTPS Protocol Set combinations; add one more protocol set if the configuration consists of just one protocol set; or remove one protocol set by selecting the 'Do not use' option.
+4. Click APPLY.
+
+<Callout type="info">On rare occasions, a configuration might contain unsupported protocol set configurations, and if you attempt to edit the configuration, Control prevents you from editing and displays this message: <br /> "Configuration cannot be saved. Please contact administrator to resolve the conflict between options." <br /> Unsupported protocol sets are often the byproduct of migrating a configuration from an older configuration version.</Callout>
+
+For information on the individual settings displayed, please see the descriptions in [Creating a New Configuration](#creating-a-new-configuration).
+
+<Callout type="info"> - The ability to edit configurations is subject to conditions described in [Read-Only and Hidden Capabilities](#read-only-and-hidden-capabilities). <br /> - On rare occasions, a configuration might contain unsupported protocol set configurations, and if you attempt to edit the configuration, Control prevents you from editing and displays this message: "This protocol combination is not supported in this application. You may view it here, but to make modifications, either do so via our configuration API or reach out to your account team." <br /> - Unsupported protocol sets are generally the byproduct of migrating a configuration from an older configuration version.
+</Callout>
+
 ## Previewing a Configuration  {/*previewing-a-configuration*/}
+
+<Image inline src="/images/delivery/control/preview-icon.png" alt="Preview" /> To preview the settings associated with a configuration, click the "eye" icon at the bottom right of the configuration row. For information on the individual settings displayed, please see the setting descriptions in [Creating a New Configuration](#creating-a-new-configuration).
+
 ## Cloning a Configuration  {/*cloning-a-configuration*/}
+
+<Image inline src="/images/delivery/control/clone-icon.png" alt="Clone" /> To clone (make a copy of) a configuration, click the "copy" icon at the configuration row's bottom right. When you have finished making changes to the settings, click **Activate** to enable the new configuration.
+
+If you want to change protocol sets, see [Changing Protocol Sets](delivery/control/configure/chunked_streaming).
+
+<Callout type="info">The ability to clone configurations is subject to conditions described in [Read-Only and Hidden Capabilities](#read-only-and-hidden-capabilities).</Callout>
+
+<Callout type="info">For some configurations created for you by Edgio, only the preview ("eye") icon will be visible. If this is the case, and you need to make changes, please contact your Account Manager or Solutions Engineer. Edgio can continue to manage the configuration, or it can be made available for you to edit in {{CONTROL}}.</Callout>
+
 ## Deleting a Configuration  {/*deleting-a-configuration*/}
 
-Users are not able to delete configurations. For more information, see [Read-Only and Hidden Capabilities](#filtering-the-list-of-configurations).
+Users are not able to delete configurations. For more information, see [Read-Only and Hidden Capabilities](#read-only-and-hidden-capabilities).
 
 ## Reverting to a Previous Configuration  {/*reverting-to-a-previous-configuration*/}
 

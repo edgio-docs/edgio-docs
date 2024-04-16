@@ -178,6 +178,7 @@ const nav = {
         },
         {
           title: 'Support Tools',
+          path: 'control/support_tools',
           routes: [
             {
               title: 'Renew SSL Certificate',

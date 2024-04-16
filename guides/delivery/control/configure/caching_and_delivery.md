@@ -347,10 +347,9 @@ To make configuration changes to existing Published Protocols or Source Protocol
 
 <Callout type="info">On rare occasions, a configuration might contain unsupported protocol set configurations, and if you attempt to edit the configuration, Control prevents you from editing and displays this message: <br /> "Configuration cannot be saved. Please contact administrator to resolve the conflict between options." <br /> Unsupported protocol sets are often the byproduct of migrating a configuration from an older configuration version.</Callout>
 
-For information on the individual settings displayed, please see the descriptions in [Creating a New Configuration](#creating-a-new-configuration).
+For information on the individual settings displayed, see the descriptions in [Creating a New Configuration](#creating-a-new-configuration).
 
-<Callout type="info"> - The ability to edit configurations is subject to conditions described in [Read-Only and Hidden Capabilities](#read-only-and-hidden-capabilities). <br /> - On rare occasions, a configuration might contain unsupported protocol set configurations, and if you attempt to edit the configuration, Control prevents you from editing and displays this message: "This protocol combination is not supported in this application. You may view it here, but to make modifications, either do so via our configuration API or reach out to your account team." <br /> - Unsupported protocol sets are generally the byproduct of migrating a configuration from an older configuration version.
-</Callout>
+<Callout type="info"> - The ability to edit configurations is subject to conditions described in [Read-Only and Hidden Capabilities](#read-only-and-hidden-capabilities). <br /> - On rare occasions, a configuration might contain unsupported protocol set configurations, and if you attempt to edit the configuration, Control prevents you from editing and displays this message: "This protocol combination is not supported in this application. You may view it here, but to make modifications, either do so via our configuration API or reach out to your account team." <br /> - Unsupported protocol sets are generally the byproduct of migrating a configuration from an older configuration version. </Callout>
 
 ## Previewing a Configuration  {/*previewing-a-configuration*/}
 

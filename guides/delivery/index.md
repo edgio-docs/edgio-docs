@@ -2,11 +2,11 @@
 title: {{ DELIVERY }} Home
 ---
 
-Welcome to Edgio Delivery!
-<br />
+Welcome to Edgio!
+
 Here you'll find our user and technical documentation for our Delivery product suite.
-<br />
-|Topic|Details|
+
+|   |   |
 |---|---|
 |Control Portal| Manage your delivery configurations and users and customize analytics reports.|
 |Content Delivery| Access user guides: Delivery, MediaVault, and SmartPurge|

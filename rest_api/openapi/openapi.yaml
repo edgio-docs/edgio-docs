@@ -19,6 +19,9 @@ tags:
   - name: configs
     x-displayName: CDN Configuration
     description: Deploy or retrieve a CDN configuration.
+  - name: environment-redirects
+    x-displayName: Bulk Redirects
+    description: Automate bulk redirect management.
   - name: environment-variables
     x-displayName: Environment Variables
     description: Automate environment variable management.
@@ -150,6 +153,12 @@ paths:
       - url: 'https://edgioapis.com'
     security:
       - configScope: [app.config]
+  /config/v0.1/tls-certs/generate:
+    $ref: paths/config_v0.1_tls-certs_generate.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+    security:
+      - configScope: [app.config]
   /config/v0.1/deployments/{deployment_id}/logs:
     $ref: paths/config_v0.1_deployments_{deployment_id}_logs.yaml
     servers:
@@ -170,6 +179,18 @@ paths:
       - configScope: [app.config]
   /config/v0.1/configs:
     $ref: paths/config_v0.1_configs.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+    security:
+      - configScope: [app.config]
+  /config/v0.1/environment-redirects/{environment_redirect_id}:
+    $ref: paths/config_v0.1_environment-redirects_{environment_redirect_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+    security:
+      - configScope: [app.config]
+  /config/v0.1/environment-redirects:
+    $ref: paths/config_v0.1_environment-redirects.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:

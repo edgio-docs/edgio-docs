@@ -19,7 +19,7 @@ const config = {
   CONTROL,
   EDGEPRISM,
   STORAGE,
-  MMD_Live,
+  MMD_LIVE,
   MMD_OD,
   LVP,
   LIVE_PUSH,

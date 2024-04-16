@@ -548,6 +548,7 @@ x-tagGroups:
   - name: Deployments
     tags:
       - configs
+      - environment-redirects
       - environment-variables
       - deployments      
   - name: TLS Certificates

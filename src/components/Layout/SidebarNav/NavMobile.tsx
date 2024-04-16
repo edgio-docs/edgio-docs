@@ -7,12 +7,14 @@ import {
   IconMenuCollapse,
   IconMenuCollapseDark,
 } from 'components/Icon/IconMenuCollapse';
+import headerNav from 'config/header.nav';
 import {useTheme} from 'contexts/ThemeContext';
 
 import AlgoliaSearch from '../Header/AlgoliaSearch';
 import {HeaderButtons} from '../Header/Header';
-import {getHeaderNavAsRoutes} from '../Header/HeaderNav';
 import ThemeSwitcher from '../Header/ThemeSwitcher';
+
+import SimpleAccordion from './SimpleAccordion';
 
 import {SidebarNav} from '.';
 
@@ -22,7 +24,7 @@ const StyledNavHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 0 25px;
   height: 60px;
 
   & > :first-child {
@@ -48,7 +50,17 @@ const StyledNavBody = styled.div`
 
 const StyledNavFooter = styled.div`
   border-top: 1px solid var(--sidebar-line);
-  padding: 10px;
+  padding: 24px 25px 0 25px;
+
+  ${HeaderButtons} {
+    margin-top: 24px;
+    * {
+      width: 100%;
+      padding: 8px;
+      text-align: center;
+      display: block;
+    }
+  }
 `;
 
 const StyledCollapseIcon = styled.div`
@@ -57,7 +69,9 @@ const StyledCollapseIcon = styled.div`
   cursor: pointer;
 `;
 
-const StyledSidebarWrapper = styled.div``;
+const StyledSidebarWrapper = styled.div`
+  padding: 0 25px 24px 25px;
+`;
 
 interface SidebarNavMobileProps {
   // Add any additional props you need
@@ -103,8 +117,6 @@ const NavMobile: React.FC<SidebarNavMobileProps> = (props) => {
     };
   }, [showMenu]);
 
-  console.log('footer items', getHeaderNavAsRoutes());
-
   return (
     <StyledNavWrapper ref={navMenuRef}>
       {!showMenu && <IconHamburger onClick={toggleMenu} />}
@@ -121,13 +133,10 @@ const NavMobile: React.FC<SidebarNavMobileProps> = (props) => {
             </StyledCollapseIcon>
           </StyledNavHeader>
           <StyledSidebarWrapper>
-            <SidebarNav
-              {...props}
-              className="navigation"
-              items={getHeaderNavAsRoutes()}
-            />
+            <SidebarNav {...props} className="navigation" />
           </StyledSidebarWrapper>
           <StyledNavFooter>
+            <SimpleAccordion items={headerNav} />
             <HeaderButtons />
           </StyledNavFooter>
         </StyledNavBody>

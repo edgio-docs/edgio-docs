@@ -162,7 +162,7 @@ const Header = () => {
 
 export default Header;
 
-export const HeaderButtons = () => {
+export const HeaderButtons = styled((props) => {
   const {config, context} = useAppContext();
   const {APP_URL, UPLYNK_CMS_URL, DELIVERY_PORTAL_URL} = config;
 
@@ -188,7 +188,7 @@ export const HeaderButtons = () => {
   }
 
   return (
-    <ButtonGroup>
+    <ButtonGroup {...props}>
       {showConsoleButton && (
         <Link href={APP_URL}>
           <Button gradient="linear-gradient(90deg, #00BDA6 0%, #00A2E2 100%)">
@@ -212,4 +212,4 @@ export const HeaderButtons = () => {
       )}
     </ButtonGroup>
   );
-};
+})``;

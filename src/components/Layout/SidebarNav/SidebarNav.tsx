@@ -141,7 +141,6 @@ function getCurrentRouteIndex(
   currentRoutePath: string
 ) {
   const currentRoute = currentRoutePath.split('/')[depth];
-  console.log('routes', routes);
   return routes.findIndex((route) => route.path.endsWith(currentRoute));
 }
 
@@ -310,17 +309,8 @@ interface SideNavProps extends React.HTMLAttributes<HTMLDivElement> {
   items?: Route;
 }
 
-/**
- * Side navigation component which renders a list of navigation items.
- * Items are automatically determined by the current context. Optionally,
- * you can pass a list of items to render.
- */
-const SideNav: React.FC<SideNavProps> = ({items, ...props}) => {
+const SideNav: React.FC<SideNavProps> = (props) => {
   const {navMenuItems, hasNavigationMenu} = useAppContext();
-
-  if (items && navMenuItems) {
-    navMenuItems.routes!.push(...items.routes!);
-  }
 
   if (hasNavigationMenu) {
     return (

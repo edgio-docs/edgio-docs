@@ -278,7 +278,7 @@ const WidgetContainer = styled.div`
   bottom: 20px;
   right: 20px;
   cursor: pointer;
-  z-index: 1500;
+  z-index: 100;
 `;
 
 function Disclaimer() {

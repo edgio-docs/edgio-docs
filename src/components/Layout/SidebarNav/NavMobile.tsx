@@ -150,7 +150,7 @@ const NavMobile: React.FC<SidebarNavMobileProps> = (props) => {
 
   return (
     <StyledNavWrapper ref={navMenuRef}>
-      {!showMenu && <IconHamburger onClick={toggleMenu} />}
+      <IconHamburger onClick={toggleMenu} />
       <StyledNavBody isOpen={showMenu}>
         <StyledNavHeader>
           <AlgoliaSearch />

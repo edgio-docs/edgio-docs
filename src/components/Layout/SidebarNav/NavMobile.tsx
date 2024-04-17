@@ -38,7 +38,7 @@ const StyledNavHeader = styled.div`
   }
 `;
 
-const StyledNavBody = styled.div`
+const StyledNavBody = styled.div<{isOpen: boolean}>`
   position: fixed;
   top: 0;
   left: 0;
@@ -47,6 +47,10 @@ const StyledNavBody = styled.div`
   background: var(--bg-primary);
   overflow-y: auto;
   z-index: 1000;
+
+  transition: transform 0.3s ease-in-out;
+  transform: ${(props) =>
+    props.isOpen ? 'translateX(0)' : 'translateX(-100%)'};
 `;
 
 const StyledNavFooter = styled.div<{hasNav: boolean}>`
@@ -134,29 +138,27 @@ const NavMobile: React.FC<SidebarNavMobileProps> = (props) => {
   return (
     <StyledNavWrapper ref={navMenuRef}>
       {!showMenu && <IconHamburger onClick={toggleMenu} />}
-      {showMenu && (
-        <StyledNavBody>
-          <StyledNavHeader>
-            <AlgoliaSearch />
-            <ThemeSwitcher />
-            <StyledCollapseIcon onClick={toggleMenu}>
-              {renderThemedElement(
-                <IconMenuCollapse />,
-                <IconMenuCollapseDark />
-              )}
-            </StyledCollapseIcon>
-          </StyledNavHeader>
-          {hasNavigationMenu && (
-            <StyledSidebarWrapper>
-              <SidebarNav {...props} className="navigation" />
-            </StyledSidebarWrapper>
-          )}
-          <StyledNavFooter hasNav={hasNavigationMenu}>
-            <SimpleAccordion items={headerNav} />
-            <HeaderButtons />
-          </StyledNavFooter>
-        </StyledNavBody>
-      )}
+      <StyledNavBody isOpen={showMenu}>
+        <StyledNavHeader>
+          <AlgoliaSearch />
+          <ThemeSwitcher />
+          <StyledCollapseIcon onClick={toggleMenu}>
+            {renderThemedElement(
+              <IconMenuCollapse />,
+              <IconMenuCollapseDark />
+            )}
+          </StyledCollapseIcon>
+        </StyledNavHeader>
+        {hasNavigationMenu && (
+          <StyledSidebarWrapper>
+            <SidebarNav {...props} className="navigation" />
+          </StyledSidebarWrapper>
+        )}
+        <StyledNavFooter hasNav={hasNavigationMenu}>
+          <SimpleAccordion items={headerNav} />
+          <HeaderButtons />
+        </StyledNavFooter>
+      </StyledNavBody>
     </StyledNavWrapper>
   );
 };

@@ -108,6 +108,19 @@ const NavMobile: React.FC<SidebarNavMobileProps> = (props) => {
     setShowMenu(false);
   };
 
+  const onSidebarNavClick = (event) => {
+    // traverse up to find the parent anchor tag
+    let target = event.target;
+    while (target && target.tagName !== 'A') {
+      target = target.parentElement;
+    }
+
+    // close the menu if the target doesn't have a ul sibling
+    if (target && !target.nextElementSibling) {
+      closeMenu();
+    }
+  };
+
   useEffect(() => {
     const handleOutsideClick = (event) => {
       // Check if the click is outside the nav menu
@@ -151,7 +164,11 @@ const NavMobile: React.FC<SidebarNavMobileProps> = (props) => {
         </StyledNavHeader>
         {hasNavigationMenu && (
           <StyledSidebarWrapper>
-            <SidebarNav {...props} className="navigation" />
+            <SidebarNav
+              {...props}
+              className="navigation"
+              onClick={onSidebarNavClick}
+            />
           </StyledSidebarWrapper>
         )}
         <StyledNavFooter hasNav={hasNavigationMenu}>

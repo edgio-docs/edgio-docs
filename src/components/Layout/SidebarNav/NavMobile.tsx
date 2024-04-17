@@ -15,7 +15,7 @@ import AlgoliaSearch from '../Header/AlgoliaSearch';
 import {HeaderButtons} from '../Header/Header';
 import ThemeSwitcher from '../Header/ThemeSwitcher';
 
-import SimpleAccordion from './SimpleAccordion';
+import SimpleAccordion from './Accordion';
 
 import {SidebarNav} from '.';
 

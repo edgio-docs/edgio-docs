@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import Link from 'components/MDX/Link';
 
-const Chevron = styled.div`
+const StyledChevron = styled.div`
   width: 14px;
   height: 14px;
   position: relative;
@@ -20,7 +20,7 @@ const Chevron = styled.div`
       border: 1px solid var(--colors-blue0);
 `;
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   box-sizing: border-box;
   position: relative;
   width: 100%;
@@ -32,13 +32,13 @@ const Container = styled.div`
   gap: 10px;
 
   [aria-expanded='true'] {
-    ${Chevron} {
+    ${StyledChevron} {
       transform: translateX(-4px) rotate(90deg);
     }
   }
 `;
 
-const MenuItem = styled.div`
+const StyledItem = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
   justify-items: start;
@@ -54,18 +54,18 @@ const MenuItem = styled.div`
   }
 `;
 
-const MenuText = styled.div`
+const StyledItemText = styled.div`
   font-size: 14px;
   word-wrap: break-word;
 `;
 
-const MenuDivider = styled.div`
+const StyledDivider = styled.div`
   height: 1px;
   background-color: var(--border-primary);
   width: 100%;
 `;
 
-const SubItems = styled.div`
+const StyledSubItems = styled.div`
   padding-left: 16px;
   width: 100%;
 `;
@@ -90,13 +90,13 @@ const Accordion: React.FC<AccordionProps> = ({items}) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   return (
-    <Container>
+    <StyledContainer>
       {items.map((item, index) => {
         if (item === null) {
           return (
-            <MenuItem key={index}>
-              <MenuDivider />
-            </MenuItem>
+            <StyledItem key={index}>
+              <StyledDivider />
+            </StyledItem>
           );
         }
         return (
@@ -110,7 +110,7 @@ const Accordion: React.FC<AccordionProps> = ({items}) => {
           />
         );
       })}
-    </Container>
+    </StyledContainer>
   );
 };
 
@@ -122,36 +122,36 @@ const SingleAccordion: React.FC<{
   const {getCollapseProps, getToggleProps} = useCollapse({isExpanded});
   const {url, useNextLink} = item;
 
-  let Text = <MenuText>{item.title}</MenuText>;
+  let textCmp = <StyledItemText>{item.title}</StyledItemText>;
 
   if (url) {
-    Text = (
+    textCmp = (
       <StyledLink
         href={url}
         useNextLink={useNextLink}
         versioned={false}
         className="sidenav-link">
-        {Text}
+        {textCmp}
       </StyledLink>
     );
   }
 
   return (
     <>
-      <MenuItem
+      <StyledItem
         {...getToggleProps({onClick: onToggle})}
         data-expanded={isExpanded}>
-        {Text}
+        {textCmp}
         {item.items && item.items.length > 0 && (
-          <Chevron>
+          <StyledChevron>
             <GoChevronRight />
-          </Chevron>
+          </StyledChevron>
         )}
-      </MenuItem>
+      </StyledItem>
       {item.items && (
-        <SubItems {...getCollapseProps()}>
+        <StyledSubItems {...getCollapseProps()}>
           <Accordion items={item.items} />
-        </SubItems>
+        </StyledSubItems>
       )}
     </>
   );

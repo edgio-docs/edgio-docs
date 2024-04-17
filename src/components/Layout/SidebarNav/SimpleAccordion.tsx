@@ -4,6 +4,8 @@ import useCollapse from 'react-collapsed';
 import {GoChevronRight} from 'react-icons/go';
 import styled from 'styled-components';
 
+import Link from 'components/MDX/Link';
+
 const Chevron = styled.div`
   width: 14px;
   height: 14px;
@@ -12,6 +14,7 @@ const Chevron = styled.div`
   justify-content: center;
   align-items: center;
   transition: transform 100ms ease-in-out;
+  transform: translateX(-4px);
 
   &:hover {
       border: 1px solid var(--colors-blue0);
@@ -30,7 +33,7 @@ const Container = styled.div`
 
   [aria-expanded='true'] {
     ${Chevron} {
-      transform: rotate(90deg);
+      transform: translateX(-4px) rotate(90deg);
     }
   }
 `;
@@ -43,6 +46,8 @@ const MenuItem = styled.div`
   width: 100%;
   padding: 0 16px;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
 
   &:hover {
     color: var(--colors-blue0);
@@ -50,7 +55,6 @@ const MenuItem = styled.div`
 `;
 
 const MenuText = styled.div`
-  //color: var(--text-primary);
   font-size: 14px;
   word-wrap: break-word;
 `;
@@ -66,9 +70,16 @@ const SubItems = styled.div`
   width: 100%;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: var(--sidebar-link-primary);
+`;
+
 export interface AccordionItem {
   title: string;
-  items?: AccordionItem[];
+  url?: string;
+  useNextLink?: boolean;
+  items?: (AccordionItem | null)[];
 }
 
 interface AccordionProps {
@@ -109,13 +120,28 @@ const SingleAccordion: React.FC<{
   onToggle: () => void;
 }> = ({item, isExpanded, onToggle}) => {
   const {getCollapseProps, getToggleProps} = useCollapse({isExpanded});
+  const {url, useNextLink} = item;
+
+  let Text = <MenuText>{item.title}</MenuText>;
+
+  if (url) {
+    Text = (
+      <StyledLink
+        href={url}
+        useNextLink={useNextLink}
+        versioned={false}
+        className="sidenav-link">
+        {Text}
+      </StyledLink>
+    );
+  }
 
   return (
     <>
       <MenuItem
         {...getToggleProps({onClick: onToggle})}
         data-expanded={isExpanded}>
-        <MenuText>{item.title}</MenuText>
+        {Text}
         {item.items && item.items.length > 0 && (
           <Chevron>
             <GoChevronRight />

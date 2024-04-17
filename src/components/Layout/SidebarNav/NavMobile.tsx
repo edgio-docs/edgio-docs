@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 import {IconHamburger} from 'components/Icon/IconHamburger';
 import {
@@ -8,6 +8,7 @@ import {
   IconMenuCollapseDark,
 } from 'components/Icon/IconMenuCollapse';
 import headerNav from 'config/header.nav';
+import {useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 
 import AlgoliaSearch from '../Header/AlgoliaSearch';
@@ -48,12 +49,24 @@ const StyledNavBody = styled.div`
   z-index: 1000;
 `;
 
-const StyledNavFooter = styled.div`
-  border-top: 1px solid var(--sidebar-line);
-  padding: 24px 25px 0 25px;
+const StyledNavFooter = styled.div<{hasNav: boolean}>`
+  ${(props) =>
+    props.hasNav
+      ? css`
+          border-top: 1px solid var(--sidebar-line);
+          padding: 24px 25px 0 25px;
+        `
+      : css`
+          border-top: none;
+          padding: 0 25px;
+        `}
 
   ${HeaderButtons} {
     margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
     * {
       width: 100%;
       padding: 8px;
@@ -81,6 +94,7 @@ const NavMobile: React.FC<SidebarNavMobileProps> = (props) => {
   const [showMenu, setShowMenu] = useState(false);
   const navMenuRef = useRef<HTMLDivElement>(null);
   const {renderThemedElement} = useTheme();
+  const {hasNavigationMenu} = useAppContext();
 
   function toggleMenu() {
     setShowMenu(!showMenu);
@@ -132,10 +146,12 @@ const NavMobile: React.FC<SidebarNavMobileProps> = (props) => {
               )}
             </StyledCollapseIcon>
           </StyledNavHeader>
-          <StyledSidebarWrapper>
-            <SidebarNav {...props} className="navigation" />
-          </StyledSidebarWrapper>
-          <StyledNavFooter>
+          {hasNavigationMenu && (
+            <StyledSidebarWrapper>
+              <SidebarNav {...props} className="navigation" />
+            </StyledSidebarWrapper>
+          )}
+          <StyledNavFooter hasNav={hasNavigationMenu}>
             <SimpleAccordion items={headerNav} />
             <HeaderButtons />
           </StyledNavFooter>

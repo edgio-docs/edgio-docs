@@ -6,7 +6,7 @@ const {STATUS_URL, SUPPORT_URL, FORUM_URL, FIDDLE_URL} = config;
 
 const headerNav: AccordionItem[] = [
   {
-    title: 'Product',
+    title: 'Products',
     items: [
       {
         title: 'Applications v7',

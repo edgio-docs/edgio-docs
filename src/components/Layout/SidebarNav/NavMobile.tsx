@@ -90,6 +90,17 @@ const StyledSidebarWrapper = styled.div`
   padding: 0 25px 24px 25px;
 `;
 
+const Overlay = styled.div<{isOpen: boolean}>`
+  display: ${(props) => (props.isOpen ? 'block' : 'none')};
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+`;
+
 interface SidebarNavMobileProps {
   // Add any additional props you need
 }
@@ -152,6 +163,7 @@ const NavMobile: React.FC<SidebarNavMobileProps> = (props) => {
   return (
     <StyledNavWrapper ref={navMenuRef}>
       <IconHamburger onClick={toggleMenu} />
+      <Overlay isOpen={showMenu} onClick={closeMenu} />
       <StyledNavBody isOpen={showMenu}>
         <StyledNavHeader>
           <AlgoliaSearch />

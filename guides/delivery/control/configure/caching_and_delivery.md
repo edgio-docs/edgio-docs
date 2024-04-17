@@ -199,22 +199,102 @@ Content Delivery supports "seeking" or "scrubbing" (skipping back and forth) wit
 
 | Setting| Information Requested| Purpose| Selecting the Right Option|
 |---|---|---|---|
+|Type of Compression|Whether to use Gzip compression when delivering XHTML, JavaScript, CSS, and other text files|Compressed objects are delivered more quickly, potentially improving the user experience| - If you want to provide all compressed files from your origin server, choose the **Gzip Passthrough** option <br /> - If you prefer to have the Content Delivery service compress files when the requesting client can accept them, choose **Gzip on-the-fly** <br /> - If you need to modify Gzip compression defaults, choose **Custom**, then either **Gzip on-the-fly** or **Gzip Passthrough**, and enter your Gzip modification extensions <br /> - You can also choose **No compression** if none of your files should be delivered compressed <br /> - For more information on this feature, see [Gzip Details](#gzip-details)|
+|TCP Acceleration|The “profile” to use when accelerating the transfer of IP packets by modifying default TCP parameters|In certain circumstances, you may want to change the **TCP Acceleration** profile to optimize your delivery performance|When TCP Acceleration is enabled, the XDLL profile is the most efficient in many cases. <br /> <Callout type="info">TCP Acceleration is an advanced configuration setting and should only be changed if you’re an expert user.</Callout>|
+|Enable chunked response to client <br /> <Callout type="info">for static content configurations only </Callout>| Whether the Content Delivery service can maintain open TCP connections to your origin server|If there is a cache “miss” and your origin doesn’t provide a Content-Length header, this option allows Content Delivery to serve the requested content more efficiently (in “chunks”)|We recommend you enable this option. Otherwise, new TCP sessions must be established for each new request to origin, and cache miss requests are delivered only when the entire object has been transferred from origin.|
+
+#### GZip Details  {/*gzip-details*/}
+
+When **Gzip Passthrough** is enabled, and a client indicates (via HTTP request header) that it prefers to receive compressed content, theContent Delivery service will serve a compressed version of the requested object if one is available on the origin server.
+
+<Callout type="info">Gzip Passthrough is available to all customers. If it is not enabled for you, please contact Edgio Support.</Callout>
+
+If **Gzip On-the-fly** is selected, the Content Delivery service creates, caches, and delivers Gzip-compressed content as needed.
+
+Compressible file types include: ```action, ashx, asmx, asp, aspx, axd, cfm, css, css3, csv, do, doc, docx, htm, html, js, jsf, json, jsp, php, portal, rtf, svg, svgz, tsv, txt, xhtml, xml, site root (/),``` and extensionless URLs.
 
 ### Headers & Methods  {/*headers-and-methods*/}
 
 | Setting| Information Requested| Purpose| Selecting the Right Option|
 |---|---|---|---|
+|Client Analytics|Whether you want the Content Delivery service to provide geographic user information when requesting content from your origin|You may want to capture, analyze, and report on user geographic information internally.|To use this feature, check the **Client Analytics** checkbox. <br /> The geo information is provided to your origin server via two request headers: X-IP-Geo-Country and X-IP-Geo-All. <br /> The geo fields provided are ``continent, state, city, dma_id```, and ```asn```.|
+|Add client IP address to origin request header <br /> <Callout type="info">for static content configurations only </Callout>| Whether you want the Content Delivery service to provide the requesting client’s IP address in a custom header when requesting content from your origin|You may want to capture, analyze, and report on user IP information internally.|To enable this feature, check the **Add client IP address to origin request header** checkbox, and enter the header names containing the client IP address. <br /> The default header name is ```True-Client-IP```. <br /> Note that the above headers are in addition toX-Forwarded-For, which is always provided to the origin.|
+|POST Requests|Whether you want to accept or ignore POST requests from clients|If you are using a custom client to display content, you may want to communicate analytics or other information to your origin. Alternatively, you may want to convert POST requests to GET requests or ignore them.| - To ignore all POST requests, select **Disable HTTP POST requests**. Content Delivery will respond with an ```HTTP 413 Request Entity Too Large``` status code to all POST requests. <br /> - To accept POST requests and pass them through to your origin, select Enable HTTP POST requests. If a POST request body exceeds 500 MB,Content Delivery will respond with a ```413 Request Entity Too Large``` status code. <br /> - To accept POST requests but treat them as GET requests, select **Enable HTTP POST requests**, and check the **Discard request body on POST request** checkbox. POST bodies will be discarded.|
+|Add custom request header|Whether you want to include custom headers and values wheneverContent Delivery makes a request to your origin|If you want to tag all requests from Content Delivery for later analysis|To add a custom origin request header, enter a unique header name and value and. Click the "+" button to add additional headers.|
+| Add Edgio server IP address when responding to client|Whether to provide clients with the IP address of the Content DeliveryEdge Server responding to their requests|If you are using a custom client to display content, and you are also capturing performance-related data via the client, you may want to include the Content DeliveryEdge Server IP address for later analysis and reporting. <br /> The IP address will be provided in the X-IP-Address response header.|
+| To enable this feature, check the **Add Edgio server IP address when responding to client** checkbox|
+|
+Add custom response header|Whether you want to include custom headers and values whenever Content Delivery responds to a client request|If you are using a custom client to display content, you may want to provide it with information that uniquely identifies the Content Delivery service, Limelight Account, etc.|To add a custom client response header, enter a unique header name and value and. Click the "+" button to add additional headers.|
+|Enable Custom Debug Headers|Whether you want to enable Custom Debug Headers|By making an HTTP content request with special "Custom Debug Headers," including a shared secret specific to your service, you can retrieve cache-related information about individual content objects and prevent others from accessing the information.|In the **Debug Headers** field, enter one or more "tags" to include in the Custom Debug Headers. Then in the **Secret Key To Request Debug Information** field, enter the secret key (shared secret) provided by Edgio when the Custom Debug Headers feature was enabled. <br /> For more information, see [Secure Cache Diagnostics](#secure-cache-diagnostics).|
 
 ### Secure Cache Diagnostics  {/*secure-cache-diagnostics*/}
+
+When troubleshooting caching issues, customers can directly access diagnostic information about cached content.
+
+Content Delivery customers with Configuration Self Service can request cache-related information about individual content objects and prevent others from accessing the information.
+
+To enable this feature, check the **Enable Custom Debug Headers** checkbox in the **Request and Response Headers** section of Content Delivery Configuration Self Service, and provide a comma-separated list of object properties that should be returned in the response, along with a Secret Key to authenticate the request.
+
+Diagnostic response headers can include the following information:
+
+- Whether or not a response is cacheable
+- How the cache responded to a request (hit, miss, etc.)
+- The number of seconds before the cached response will be considered stale (TTL)
+- The total number of seconds representing the freshness lifetime of the response (age + TTL) and how the value was determined (headers, overrides, adaptive TTL, etc . )
+- When the feature is activated, you will be provided with a unique shared secret.
+
+The properties that can be requested, and their associated response headers and values, are:
+
+|Request Key | Response Header | Return Values |
+|---|---|---|
+|```is-cacheable```	|```X-LLNW-Dbg-Is-Cacheable```	| ```Yes``` <br /> ```No``` <br /> ```Negative```|
+|```cache-hit-type```	|```X-LLNW-Dbg-Cache-Hit-Type```	| ```HIT``` <br /> ```MISS``` <br /> ```REFRESH_HIT``` <br /> ```REF_FAIL_HIT``` <br /> ```REFRESH_MISS``` <br /> ```CLIENT_REFRESH_MISS``` <br /> ```IMS_HIT``` <br /> ```NEGATIVE_HIT``` <br /> ```DENIED``` <br /> ```OFFLINE_HIT``` <br /> ```REDIRECT```|
+|```ttl```	|```X-LLNW-Dbg-TTL```	| ```n{...} seconds``` <br /> an integer followed by a space and the string "seconds"|
+|```fresh-life-total```	|```X-LLNW-Dbg-Fresh-Life-Total```	|```n{...} seconds``` <br /> an integer followed by a space and the string "seconds"|
+
+If the secret is invalid, the X-LLNW-Dbg-Hdrs header will be ignored, and the request will be processed without it.
+
+Request and response example:
+|Request | Response|
+|---|---|
+|```GET http://www.customer.com/object.txt HTTP/1.1...X-LLNW-Dbg-Hdrs: is-cacheable,cache-hit-typeX-LLNW-Dbg-Secret: sharedsecret```| ```HTTP/1.1 200 OK...X-LLNW-Dbg-Is-Cacheable: Yes...X-LLNW-Dbg-Cache-Hit-Type: HIT``` |
+
 ### Failover  {/*failover*/}
+
+Normally when the CDN receives a ```404 (Not Found), 503 (Service Unavailable)```, or ```504 (Gateway Timeout)``` response from your origin, the error is passed back to the requesting client. You can modify this configuration option as follows:
+
+For ```404``` errors:
+- Serve "stale" content from the CDNCache, or
+- Request content from a "backup host" (with or without a path), or
+- Redirect to a custom "Not Found" URL.
+
+For ```503``` and ```504``` errors:
+- Request content from a "backup host" or
+- Redirect to a custom "Service Unavailable URL."
+
+<Callout type="info">Failover URLs must match their configuration within the CDN <br /> For ```404``` error redirects, the original request is reissued to the fallback URL with any modifications still in place <br /> ```503``` or ```504``` errors may have been generated by the origin but could also be generated by CDN if a connection can't be made to your origin</Callout>
 
 | Setting| Information Requested| Purpose| Selecting the Right Option|
 |---|---|---|---|
+|Serve stale content instead of ```404``` error|If the requested content is cached but stale (expired), and there is an HTTP 404 status when requesting a fresh version from your origin, this field indicates whether you want to pass the ```404``` status back to the client or serve the stale content instead|If an object has expired in the cache and your origin server returns a ```404 (Page Not Found)``` error when Content Delivery attempts to get a fresh copy of the object, you may want to serve the expired object instead of allowing the client to handle ```404``` messages.|If you don't want the client to handle ```404``` messages, and it is acceptable to serve stale content instead, check the **Serve stale content instead of 404 error** checkbox. <br /> <Callout type="info">If there is no cached object, a ```404``` message will still be returned to the browser.</Callout>|
+|Request content from backup host on ```404``` error||If there is an HTTP ```404``` status when requesting fresh content from your origin, this field indicates whether to use a backup origin (hostname only) before handling the ```404``` status|If your primary origin returns a ```404``` status, and you have a backup origin, you may want Content Delivery to try the backup before handling the error.|To serve content from a backup origin if the primary origin responds with a ```404``` status, enter the fully qualified hostname of the backup origin. <br /> <Callout type="info">Specific ports are not supported. </Callout>|
+|Use custom "Not Found" page|Whether you want to pass HTTP ```404``` status messages back to the client or serve a custom error page instead|If an object has expired in the cache, and your origin server returns a ```404``` error to Content Delivery, you may want to serve a custom error page rather than allowing the client to handle the ```404``` message.|To take control over clients' content when the origin returns a ```404```, enter the fully qualified URL of the content to serve.|
+|Request content from backup origin URL on ```404``` error|If the origin responds with an HTTP 404 status upon request for fresh content, this field indicates whether the request should be sent to a backup URL path before handling the ```404``` status|If your primary origin returns a ```404``` status, and you have a backup origin, you may want Content Delivery to try the backup before handling the error.|To serve content from a backup URL path if the primary origin responds with a ```404``` status, enter the fully qualified path on the backup origin. <br /> <Callout type="info">- You can specify either the HTTP or HTTPS protocol and a port number if desired. <br /> This option is required when using the Intelligent Ingest feature of Origin Storage</Callout>|
+|Request content from backup host on 5xx error|If there is an HTTP ```5xx``` status when requesting fresh content from your origin, whether to try a backup origin before handling the ```5xx``` status|If your primary origin returns a ```5xx``` status, and you have a backup origin, you may want Content Delivery to try the backup before handling the error.|To serve content from a backup origin if the primary origin responds with a ```5xx``` status, enter the backup origin's fully qualified hostname. <br /> <Callout type="info">Specific ports are not supported.</Callout>|
+|Use custom "Service Unavailable" page|Whether you want to pass HTTP ```503``` and ```504``` status messages back to the client or serve a custom error page instead|If an object has expired in the cache, and your origin server returns a ```503 Service Unavailable``` or ```504 Gateway Timeout``` error to Content Delivery, you may want to serve a custom error page instead of allowing the client to handle the error message.|
+| If you want to take control over the content displayed by clients when there is a ```503``` or ```504``` error from the origin, enter the fully qualified URL of the content to serve.|
 
 ### Content Security  {/*content-security*/}
 
+#### IP Access Control {/*ip-access-control*/}
+
+This section allows you to allow or deny access to content based on IP addresses and geographic locations ("geo-fencing").
+
+Content Delivery Configuration Self Service provides access control using IP addresses and geographic locations ("geo-fencing"). When configuring an Account, you can associate lists of IP addresses and groups of geographic locations with the Account and specify whether to allow or deny each. When managing IP address lists, you can also view whether they are currently in use and which Accounts they are associated with (or limited to).
+
 | Setting| Information Requested| Purpose| Selecting the Right Option|
 |---|---|---|---|
+|Enable IP Access Control|Whether you want to "allow list" or "deny list" requests based on IP address lists and IP-based geographic locations	|IP Access Control allows you to exclude specific geographies or limit access to known entities| Assign access lists to the Caching & Delivery configuration using the following drop-down menus: <br /> - **By IP address list**: Select one or more existing lists, then choose either Deny or Allow to indicate the type of restriction. Click Add to add the lists to the Access control list for this configuration section. <br /> - **By geolocation**: Select one or more geographic areas (continents or countries), then choose either Deny or Allow to indicate the type of restriction. Click Add to add the lists to the "Access control list for this configuration" section. <br /> **Access control list for this configuration** Section <br /> You can select a default security setting for the configuration - either **Default Allow** or **Default Deny**. You can then add one or more IP address lists and geographic locations that modify the default setting. IP address lists and geolocations can be "mixed and matched" in any order desired. <br /> To move an item in the list, move the mouse pointer over the item and use the vertical ellipses to drag and drop the item to another location in the list. <br /> If you have the correct permissions, click **Manage IP Lists** to display a dialog that allows you to create new IP access lists. You can also view, edit, and delete existing IP address lists. <br /> To view list details, click the + icon to the left of a list. <br /> - The text "Used by configs in accounts" shows which Accounts have configurations that use the list. <br /> - The text "Limited to accounts" shows any accounts to which your Company Admin has limited the list. <br /> To create a new list, click the **new list** button at the top of the dialog, then: 1. Provide a name for the list. <br /> 2. Provide a single IP address or range of IP addresses. You can also create and upload CSV files of IP addresses. Click the link to see a sample CSV file. <br /> 3. Optionally limit the list to accounts. <br /> 4. Click the **Save** button. The new list is now available in the ***By IP address list:** drop-down menu at the top of the section. <br /> To deny access to end users attempting to access your content using an anonymous VPN from an unauthorized geolocation, select the **Deny 'Anonymized with VPN' access** option. <br /> <Callout type="info">- IP address lists and geographic locations are processed in the order they are specified (top to bottom). Once a match is found, subsequent lists and locations are ignored <br /> - Users with the Company Admin role can manage lists for all accounts. Users with the User role who have been granted the Manage Delivery Configurations permission can apply all lists in the Accounts for which they have been granted management permission. <br /> - Changes made to IP address lists are applied immediately and affect all Account configurations which use them (even legacy configurations that can't be edited in Control.) <br /> - IP address lists cannot be deleted if they are in use.</Callout>|
 
 ### {{MEDIAVAULT}}  {/*mediavault*/}
 | Setting| Information Requested| Purpose| Selecting the Right Option|

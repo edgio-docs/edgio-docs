@@ -1,5 +1,5 @@
 ---
-title: {{ DELIVERY }} Home
+title: Edgio {{ DELIVERY }} Tech Docs
 ---
 
 Here you'll find our user and technical documentation for our Delivery product suite.

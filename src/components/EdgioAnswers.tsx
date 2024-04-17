@@ -4,14 +4,19 @@ import {ChatChannel} from '@fireaw.ai/sdk';
 import {useRouter} from 'next/router';
 import {FiSend, FiX} from 'react-icons/fi';
 import Modal from 'react-modal';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 import {siteConfig} from 'config/appConfig';
 import {useEdgioAnswersContext} from 'contexts/EdgioAnswersContext';
 import {useTheme} from 'contexts/ThemeContext';
+import {mobileMinWidth} from 'styles';
 import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
 
-import {IconEdgioAnswers, IconEdgioAnswersDark} from './Icon/IconEdgioAnswers';
+import {
+  IconEdgioAnswers,
+  IconEdgioAnswersDark,
+  IconEdgioAnswersWidget,
+} from './Icon/IconEdgioAnswers';
 import NoSSRWrapper from './Layout/NoSSRWrapper';
 import Link from './MDX/Link';
 import Markdown from './MDX/Markdown';
@@ -64,16 +69,16 @@ const ChatInputContainer = styled.div`
 const ChatInput = styled.input<{hasContent: boolean}>`
   ${({hasContent}) =>
     hasContent
-      ? `
-  background: var(--ea-input-field-active-bg);
-  color: var(--text-primary);
-  `
-      : `
-  background: var(--ea-input-field-bg);
-  color: var(--ea-input-placeholder-color);
-  `}
+      ? css`
+          background: var(--ea-input-field-active-bg);
+          color: var(--text-primary);
+        `
+      : css`
+          background: var(--ea-input-field-bg);
+          color: var(--ea-input-placeholder-color);
+        `}
 
-  flex-grow: 1;
+  width: 100%;
   padding: 8px;
   border: 1px solid var(--border-primary);
   border-radius: 4px;
@@ -161,16 +166,6 @@ const Message = styled.div<{isUser: boolean}>`
   }
 `;
 
-const QuestionButtons = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  padding: 10px 0;
-  border-top: 1px solid var(--border-primary);
-`;
-
 const QuestionButton = styled.button`
   background-color: var(--bg-primary);
   color: var(--text-primary);
@@ -181,6 +176,24 @@ const QuestionButton = styled.button`
   cursor: pointer;
   &:hover {
     background-color: var(--colors-blue0);
+  }
+`;
+
+const QuestionButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border-primary);
+
+  @media (max-width: ${mobileMinWidth}) {
+    flex-direction: column;
+
+    ${QuestionButton} {
+      width: 100%;
+    }
   }
 `;
 
@@ -258,6 +271,14 @@ const ShowMoreLink = styled.a`
   color: var(--text-link);
   cursor: pointer;
   margin-left: 5px;
+`;
+
+const WidgetContainer = styled.div`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 1500;
 `;
 
 function Disclaimer() {
@@ -594,4 +615,18 @@ export const EdgioAnswersInput = ({duration = 1000}) => {
 };
 
 export default EdgioAnswers;
+export const EdgioAnswersWidget = () => {
+  const router = useRouter();
+
+  const openModal = () => {
+    router.push(`${router.asPath}${ROUTE_HASH}`, undefined, {shallow: true});
+  };
+
+  return (
+    <WidgetContainer onClick={openModal}>
+      <IconEdgioAnswersWidget />
+    </WidgetContainer>
+  );
+};
+
 export const edgioAnswersUrl = ROUTE_HASH;

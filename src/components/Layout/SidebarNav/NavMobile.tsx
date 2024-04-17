@@ -140,11 +140,12 @@ const NavMobile: React.FC<SidebarNavMobileProps> = (props) => {
 
   useEffect(() => {
     // Prevent scrolling on the body when menu is open
-    const originalStyle = window.getComputedStyle(document.body).overflow;
-    document.body.style.overflow = showMenu ? 'hidden' : originalStyle;
+    if (showMenu) {
+      document.body.classList.toggle('lock-scroll', showMenu);
+    }
 
     return () => {
-      document.body.style.overflow = originalStyle;
+      document.body.classList.remove('lock-scroll');
     };
   }, [showMenu]);
 

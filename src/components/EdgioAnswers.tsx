@@ -436,7 +436,7 @@ const EdgioAnswers = () => {
   };
 
   const onOpenModal = () => {
-    document.body.classList.add('ReactModal__Body--open');
+    document.body.classList.add('lock-scroll');
     if (chatInputRef.current) {
       chatInputRef.current.focus();
     }
@@ -452,7 +452,7 @@ const EdgioAnswers = () => {
       setChannel(null);
       setMessages([]);
     }
-    document.body.classList.remove('ReactModal__Body--open');
+    document.body.classList.remove('lock-scroll');
     setIsModalOpen(false);
 
     const path = window.location.pathname;

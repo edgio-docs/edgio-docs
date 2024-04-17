@@ -21,8 +21,8 @@ const MobileHeaderContainer = styled.header`
 `;
 
 const Spacer = styled.div`
-  width: 18px; // Assuming the size of the placeholder or menu icon
-  height: 18px; // Ensuring it takes up space but is invisible
+  width: 18px;
+  height: 18px;
 `;
 
 const LogoArea = styled.div`

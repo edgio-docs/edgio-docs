@@ -28,6 +28,10 @@ const StyledMenuButton = styled(MenuButton)`
       color: inherit;
     }
   }
+
+  a {
+    font-size: 16px;
+  }
 `;
 
 const StyledMenuLink = styled(Link)`

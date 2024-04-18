@@ -1,18 +1,9 @@
-import {useState} from 'react';
-
 import Image from 'next/image';
 import styled from 'styled-components';
 
 import Link from 'components/MDX/Link';
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
-
-import applicationsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-apps.svg';
-import edgioDocsDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-docs.svg';
-import uplynkDarkLogo from '../../../../public/images/home/header/logo/dark/edgio-uplynk.svg';
-import applicationsLightLogo from '../../../../public/images/home/header/logo/light/edgio-apps.svg';
-import edgioDocsLightLogo from '../../../../public/images/home/header/logo/light/edgio-docs.svg';
-import uplynkLightLogo from '../../../../public/images/home/header/logo/light/edgio-uplynk.svg';
 
 import AlgoliaSearch from './AlgoliaSearch';
 import HeaderNav from './HeaderNav';
@@ -26,11 +17,12 @@ const HeaderContainer = styled.header`
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
   display: grid;
   grid-template-columns: auto 1fr auto;
-  grid-template-rows: auto 2px;
+  grid-template-rows: auto;
   align-items: center;
   gap: 0px;
-  padding: 16px 32px;
+  padding: 12px 32px;
   border-bottom: 1px solid var(--border-primary);
+  height: 72px;
 `;
 
 const LogoArea = styled.div`
@@ -104,36 +96,70 @@ const Button = styled.div<{gradient: string}>`
   background: ${(props) => props.gradient};
 `;
 
-const Header = () => {
-  const {config, context} = useAppContext();
-  const {APP_URL, UPLYNK_CMS_URL} = config;
-  const {renderThemedElement} = useTheme();
-  const [imageWidth, setImageWidth] = useState(0);
+const imagePaths = {
+  dark: {
+    applications: '/images/home/header/logo/dark/edgio-apps.png',
+    applications_v4: '/images/home/header/logo/dark/edgio-apps-v4.png',
+    applications_v6: '/images/home/header/logo/dark/edgio-apps-v6.png',
+    applications_v7: '/images/home/header/logo/dark/edgio-apps-v7.png',
+    delivery: '/images/home/header/logo/dark/edgio-delivery.png',
+    edgioDocs: '/images/home/header/logo/dark/edgio-docs.png',
+    uplynk: '/images/home/header/logo/dark/edgio-uplynk.png',
+  },
+  light: {
+    applications: '/images/home/header/logo/light/edgio-apps.png',
+    applications_v4: '/images/home/header/logo/light/edgio-apps-v4.png',
+    applications_v6: '/images/home/header/logo/light/edgio-apps-v6.png',
+    applications_v7: '/images/home/header/logo/light/edgio-apps-v7.png',
+    delivery: '/images/home/header/logo/light/edgio-delivery.png',
+    edgioDocs: '/images/home/header/logo/light/edgio-docs.png',
+    uplynk: '/images/home/header/logo/light/edgio-uplynk.png',
+  },
+};
 
-  const logoWidth = imageWidth;
-  const logoHeight = 36;
+const Header = () => {
+  const {config, context, version} = useAppContext();
+  const {APP_URL, UPLYNK_CMS_URL, DELIVERY_PORTAL_URL} = config;
+  const {renderThemedElement} = useTheme();
+
+  // all header images must be the same size
+  const logoWidth = 337;
+  const logoHeight = 48;
 
   let darkLogo,
     lightLogo,
     showConsoleButton = false,
-    showUplynkButton = false;
+    showUplynkButton = false,
+    showDeliveryButton = false;
 
   switch (context) {
-    case ContextType.HOME:
-      darkLogo = edgioDocsDarkLogo;
-      lightLogo = edgioDocsLightLogo;
-      showConsoleButton = true;
-      showUplynkButton = true;
-      break;
     case ContextType.APPLICATIONS:
-      darkLogo = applicationsDarkLogo;
-      lightLogo = applicationsLightLogo;
+      darkLogo =
+        imagePaths.dark[
+          `applications_${version}` as keyof typeof imagePaths.dark
+        ];
+      lightLogo =
+        imagePaths.light[
+          `applications_${version}` as keyof typeof imagePaths.light
+        ];
       showConsoleButton = true;
       break;
     case ContextType.UPLYNK:
-      darkLogo = uplynkDarkLogo;
-      lightLogo = uplynkLightLogo;
+      darkLogo = imagePaths.dark.uplynk;
+      lightLogo = imagePaths.light.uplynk;
       showUplynkButton = true;
+      break;
+    case ContextType.DELIVERY:
+      darkLogo = imagePaths.dark.delivery;
+      lightLogo = imagePaths.light.delivery;
+      showDeliveryButton = true;
+      break;
+    default:
+      darkLogo = imagePaths.dark.edgioDocs;
+      lightLogo = imagePaths.light.edgioDocs;
+      showConsoleButton = true;
+      showUplynkButton = true;
+      showDeliveryButton = true;
       break;
   }
 
@@ -149,12 +175,7 @@ const Header = () => {
                 priority
                 height={logoHeight}
                 width={logoWidth}
-                onLoadingComplete={({naturalWidth, naturalHeight}) => {
-                  // Set the width of the image based on the ratio of the natural width and height
-                  // and the specified height
-                  const ratio = naturalWidth / naturalHeight;
-                  setImageWidth(logoHeight * ratio);
-                }}
+                unoptimized
               />,
               <Image
                 src={lightLogo}
@@ -162,6 +183,7 @@ const Header = () => {
                 priority
                 height={logoHeight}
                 width={logoWidth}
+                unoptimized
               />
             )}
         </Link>
@@ -186,6 +208,13 @@ const Header = () => {
           <Link href={UPLYNK_CMS_URL}>
             <Button gradient="linear-gradient(90deg, #6F1480 0%, #345FB4 53%, #003FE2 100%)">
               Uplynk CMS
+            </Button>
+          </Link>
+        )}
+        {showDeliveryButton && (
+          <Link href={DELIVERY_PORTAL_URL}>
+            <Button gradient="linear-gradient(90deg, #019F7F 0%, #5ACCB5 100%)">
+              Control Portal
             </Button>
           </Link>
         )}

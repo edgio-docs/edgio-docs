@@ -9,7 +9,7 @@
 
     2.  From the left pane, click on the desired environment.
     3.  From the left pane, click **Realtime Log Delivery**.
-    4.  Click **+ New Log Delivery Profile** and then select either **CDN**, **WAF**, **Rate Limiting**, or **Bot**.
+    4.  Click **+ New Log Delivery Profile** and then select either **CDN**, **WAF**, **Rate Limiting**, **Bot**, or **Cloud Functions**.
 
 2.  From the **Profile Name** option, assign a name to this log delivery profile.
 3.  From the **Log Delivery Method** option, select

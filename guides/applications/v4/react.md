@@ -2,7 +2,7 @@
 title: React
 ---
 
-This guide shows you how to serve a [React](https://reactjs.org/) application to {{ PRODUCT }}. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next).
+This guide shows you how to serve a [React](https://reactjs.org/) application to {{ PRODUCT }}. If you're using Next.js specifically, we suggest using the [Next.js guide](/applications/next).
 
 ## Example {/*example*/}
 
@@ -11,7 +11,7 @@ Here's an example React app running on {{ PRODUCT }}:
 <ExampleButtons
   title="React"
   siteUrl="https://layer0-docs-layer0-static-react-example-default.layer0-limelight.link/"
-  repoUrl="https://github.com/layer0-docs/static-react-example" 
+  repoUrl="https://github.com/layer0-docs/static-react-example"
   deployFromRepo />
 
 {{ PREREQ.md }}
@@ -214,7 +214,7 @@ If following the Create React App example, this can be done in the same location
 
 ## Server Side Rendering {/*server-side-rendering*/}
 
-React offers a great amount of flexibility in how you set up server side rendering. Frameworks like Next.js offer a standardized, built-in way of implementing SSR. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/next). We'll assume at this point that you're not using Next.js, but have an existing Node app that is doing server-side rendering.
+React offers a great amount of flexibility in how you set up server side rendering. Frameworks like Next.js offer a standardized, built-in way of implementing SSR. If you're using Next.js specifically, we suggest using the [Next.js guide](/applications/next). We'll assume at this point that you're not using Next.js, but have an existing Node app that is doing server-side rendering.
 
 In order to render on {{ PRODUCT_NAME }}, you need to provide a function that takes a Node `Request` and `Response` and sends the HTML that results from the `renderToString()` method from `react-dom/server`. Configure that function using the `server` property of `{{ CONFIG_FILE }}`. Here's an example:
 
@@ -297,4 +297,4 @@ npm run build
 {{ CLI_NAME }} deploy
 ```
 
-For more on deploying, see [Deploying](/guides/deploy_apps).
+For more on deploying, see [Deploying](/applications/deploy_apps).

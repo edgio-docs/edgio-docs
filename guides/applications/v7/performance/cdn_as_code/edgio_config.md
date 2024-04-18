@@ -18,7 +18,7 @@ The `routes` key is the path to your routes file relative to the root of your pr
 
 ## origins {/* origins */}
 
-Origns are the backends that {{ PRODUCT_NAME }} will proxy requests to, and define how {{ PRODUCT_NAME }} will communicate with your web server(s).
+Origins are the backends that {{ PRODUCT_NAME }} will proxy requests to, and define how {{ PRODUCT_NAME }} will communicate with your web server(s). Origins defined here will be available across all environments and can be overridden on a [per-environment basis](#environments).
 
 The `origins` key is an array of objects whose properties are:
 
@@ -29,7 +29,7 @@ The `origins` key is an array of objects whose properties are:
 | `hosts`                                    | `Array<Object>`                                                              | An array of objects that define how {{ PRODUCT }} will proxy requests for this origin configuration.                                                                                                                                                                                                                                                                                                                                                                                                               |
 | `hosts[].location`                         | `string` \| `Array<string>` \| `Array<{ hostname: string; port?: number; }>` | Contains properties that define the location to which {{ PRODUCT }} will proxy requests for this origin configuration.                                                                                                                                                                                                                                                                                                                                                                                             |
 | `hosts[].location[].hostname`              | `string`                                                                     | (Required) The domain name or IP address of the origin server.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| `hosts[].location[].port`                  | `number`                                                                     | The port on which the backend receives https requests. Defaults to 443 but you can specify any other acceptable port value. Note that specifying `80` has no special meaning as {{ PRODUCT_NAME }} will never send secured requests to unsecured backends. To [enable HTTP traffic](/guides/security/edgejs_security#ssl) on a backend you must have a route matching `http` protocol in your router and serve content from that route. All HTTP traffic assumes port `80` on the backend.                         |
+| `hosts[].location[].port`                  | `number`                                                                     | The port on which the backend receives https requests. Defaults to 443 but you can specify any other acceptable port value. Note that specifying `80` has no special meaning as {{ PRODUCT_NAME }} will never send secured requests to unsecured backends. To [enable HTTP traffic](/applications/security/edgejs_security#ssl) on a backend you must have a route matching `http` protocol in your router and serve content from that route. All HTTP traffic assumes port `80` on the backend.                         |
 | `hosts[].scheme`                           | `string`                                                                     | The scheme to use when connecting to the origin. Possible values are `https`, `http`, and `match`. Defaults to `match`, using the same scheme as the incoming request. Required when `hosts[].location[].port` is defined.                                                                                                                                                                                                                                                                                         |
 | `shields`                                  | `Object`                                                                     | Defines how {{ PRODUCT }} will shield your origin configuration.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | `shields.apac`                             | `string`                                                                     | The POP code for the Asia Pacific shield.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -42,25 +42,115 @@ The `origins` key is an array of objects whose properties are:
 | `tls_verify.allow_self_signed_certs`       | `boolean`                                                                    | Whether to allow self-signed certificates. Defaults to `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | `tls_verify.pinned_certs`                  | `Array<string>`                                                              | An array of SHA256 hashes of pinned certificates.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
+**Sample Configuration**
+
+```js
+/* ... */
+origins: [
+  {
+    // The name of the backend origin
+    name: 'origin',
+
+    // Use the following to override the host header sent from the browser when connecting to the origin
+    override_host_header: 'test-origin.edgio.net',
+
+    // The list of origin hosts to which to connect
+    hosts: [
+      {
+        // The domain name or IP address of the origin server
+        location: 'test-origin.edgio.net',
+      },
+    ],
+
+    tls_verify: {
+      use_sni: true,
+      sni_hint_and_strict_san_check: 'test-origin.edgio.net',
+    },
+
+    // Uncomment the following to configure a shield
+    // shields: { us_east: 'DCD' },
+  },
+],
+/* ... */
+```
+
 ## environments {/* environments */}
 
-This configuration allows you to define different deployment environments and hostnames for your app. This is useful for deploying to staging or production environments.
+This configuration allows you to define different deployment environments, hostnames, and override origin configurations on a per-environment basis.
 
 The `environments` key is an object whose properties define the name of the environment and whose values are objects with the following properties:
 
-| Property                                     | Type     | Description                                                                      |
-| -------------------------------------------- | -------- | -------------------------------------------------------------------------------- |
-| `<ENV_NAME>`                                 | String   | (Required) The name of the environment.                                          |
-| `<ENV_NAME>.hostnames`                       | Object[] | A list of hostnames specific to the environment.                                 |
-| `<ENV_NAME>.hostnames[].hostname`            | String   | (Required) The hostname for the environment.                                     |
-| `<ENV_NAME>.hostnames[].default_origin_name` | String   | Optional default origin this hostname should use                                 |
-| `<ENV_NAME>.hostnames[].tls`                 | Object   | Optional [TLS configuration](/docs/api/core/interfaces/types.Hostnames.html#tls) |
+| Property                                     | Type     | Description                                                                                                                                                                                                                                      |
+| -------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `<ENV_NAME>`                                 | String   | (Required) The name of the environment.                                                                                                                                                                                                          |
+| `<ENV_NAME>.hostnames`                       | Object[] | A list of hostnames specific to the environment.                                                                                                                                                                                                 |
+| `<ENV_NAME>.hostnames[].hostname`            | String   | (Required) The hostname for the environment.                                                                                                                                                                                                     |
+| `<ENV_NAME>.hostnames[].default_origin_name` | String   | Optional default origin this hostname should use                                                                                                                                                                                                 |
+| `<ENV_NAME>.hostnames[].tls`                 | Object   | Optional [TLS configuration](/docs/api/core/interfaces/types.Hostnames.html#tls)                                                                                                                                                                 |
+| `<ENV_NAME>.origins`                         | Object[] | A list of origin configurations that override those defined within the [origins property](#origins). <Important> An origin configuration defined within this property is ignored when a corresponding one is not found at the root. </Important> |
 
-<!--| `<ENV_NAME>.hostnames[].report_code` | Number | (unknown use) | -->
+**Sample Configuration**
+
+```js
+/* ... */
+
+// Global origins configuration
+origins: [
+  {
+    // The name of the backend origin
+    name: 'web',
+
+    // Use the following to override the host header sent from the browser when connecting to the origin
+    override_host_header: 'test-origin.edgio.net',
+
+    // The list of origin hosts to which to connect
+    hosts: [
+      {
+        // The domain name or IP address of the origin server
+        location: 'test-origin.edgio.net',
+      },
+    ],
+
+    tls_verify: {
+      use_sni: true,
+      sni_hint_and_strict_san_check: 'test-origin.edgio.net',
+    },
+
+    // Uncomment the following to configure a shield
+    // shields: { us_east: 'DCD' },
+  },
+],
+
+// Environment-specific configuration
+environments: {
+  production: {
+    hostnames: [{ hostname: 'www.mysite.com' }],
+  },
+  staging: {
+    hostnames: [{ hostname: 'staging.mysite.com' }],
+
+    // Override the `web` origin configuration for the staging environment
+    origins: [
+      {
+        name: 'web',
+        hosts: [{ location: 'staging-origin.mysite.com' }],
+        override_host_header: 'staging-origin.mysite.com',
+        tls_verify: {
+          use_sni: true,
+          sni_hint_and_strict_san_check: 'staging-origin.mysite.com',
+        },
+        shields: { us_east: 'DCD' },
+      },
+    ],
+  },
+},
+
+/* ... */
+```
 
 ## connector {/* connector */}
 
-The name of the connector package corresponding to the framework your app uses, or the path to a directory that implements the [connector interface](/guides/sites_frameworks/connectors).
+The name of the connector package corresponding to the framework your app uses, or the path to a directory that implements the [connector interface](/applications/sites_frameworks/connectors).
 
 **Example**
 
@@ -102,7 +192,7 @@ The `serverless` key is an object with the following properties:
 <!--
 ## prerenderConcurrency {/* prerenderconcurrency */}
 
-The maximum number of URLs that will be concurrently prerendered during deployment when [static prerendering](/guides/performance/static_prerendering) is enabled. Defaults to 200, which is the maximum allowed value.-->
+The maximum number of URLs that will be concurrently prerendered during deployment when [static prerendering](/applications/performance/static_prerendering) is enabled. Defaults to 200, which is the maximum allowed value.-->
 
 ## sources {/* sources */}
 
@@ -119,7 +209,7 @@ sources: [
 
 ## interpolationValues {/* interpolation-values */}
 
-The following [feature variables](/guides/performance/rules/feature_variables) are only populated in a deployed environment. You can use the `interpolationValues` key to set these values in your local development environment for testing rules. Values set in this configuration are not propagated to the deployed environment.
+The following [feature variables](/applications/performance/rules/feature_variables) are only populated in a deployed environment. You can use the `interpolationValues` key to set these values in your local development environment for testing rules. Values set in this configuration are not propagated to the deployed environment.
 
 | Property                       | Type   |
 | ------------------------------ | ------ |
@@ -189,8 +279,8 @@ $ {{ CLI_CMD(deploy) }}
 ```
 
 <Callout type="important">
- 
-  Unexpected behavior may occur when there is a mismatch between your project's Node.js version and the one that runs your app on our platform. For example, if the `cloudRuntime` key is set to `nodejs18.x` while the project is bundled with Node.js 20, the project will build with Node.js 20 but run in a Node.js 18 environment. Ensure the `cloudRuntime` key aligns with your project's Node.js version to prevent these types of issues.
+
+Unexpected behavior may occur when there is a mismatch between your project's Node.js version and the one that runs your app on our platform. For example, if the `cloudRuntime` key is set to `nodejs18.x` while the project is bundled with Node.js 20, the project will build with Node.js 20 but run in a Node.js 18 environment. Ensure the `cloudRuntime` key aligns with your project's Node.js version to prevent these types of issues.
 
 </Callout>
 
@@ -205,7 +295,7 @@ See the full API specification for the `{{ CONFIG_FILE }}` file [here](/docs/api
 ```js filename="{{CONFIG_FILE}}"
 // This file was automatically added by edgio init.
 // You should commit this file to source control.
-// Learn more about this file at https://docs.edg.io/guides/edgio_config
+// Learn more about this file at https://docs.edg.io/applications/edgio_config
 module.exports = {
   // The name of the site in Edgio to which this app should be deployed.
   // name: 'my-site-name',

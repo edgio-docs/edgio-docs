@@ -2,13 +2,13 @@
 title: Collaboration (Organizations)
 ---
 
-You may create properties within a private space or an organization. 
+You may create properties within a private space or an organization.
 
 -   **Private:** Access to properties created within a private space is restricted to your user account. You should only use this space for properties that do not require collaboration.
 
     <Callout type="info">
 
-      If you have not created an organization yet, then the {{ PORTAL }} will only display your private space. 
+      If you have not created an organization yet, then the {{ PORTAL }} will only display your private space.
 
     </Callout>
 
@@ -16,7 +16,7 @@ You may create properties within a private space or an organization.
 
 <!-- <Callout type="tip">
 
-  You may transfer ownership of any property to an organization to which you have been assigned the `Admin` role. 
+  You may transfer ownership of any property to an organization to which you have been assigned the `Admin` role.
 
 </Callout>
 -->
@@ -30,11 +30,11 @@ Organization management consists of:
 
 -   Creating an organization.
 -   [Managing membership.](#managing-team-members)
--   [Setting up security](/guides/security) for your web applications and API.
+-   [Setting up security](/applications/security) for your web applications and API.
 
 **To create an organization**
 
-1.  From the {{ PORTAL_LINK }}, click on the <Image inline src="/images/v7/icons/menu-up-down.png" alt="Menu" /> icon next to your name and then click on **Create an Organization**. 
+1.  From the {{ PORTAL_LINK }}, click on the <Image inline src="/images/v7/icons/menu-up-down.png" alt="Menu" /> icon next to your name and then click on **Create an Organization**.
 
     ![Space menu](/images/v7/basics/team-create.png)
 
@@ -55,9 +55,10 @@ Organization management consists of:
 Upon creating a user, you must assign a role that will be applied at the organization level. By default, this role is applied across all of the organization's properties and environments. However, you may customize a member's access by granting one of the following roles to a specific property or environment: Viewer, Purger, Editor, or Maintainer.
 
 | Role             | Description                                                                                                                                                                                                                                             |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Viewer           | This role grants read-only access. <br /><br />If applied at the organization level, then the user will have read-only access to the organization's settings, properties, and environments.                                                             |
 | Purger           | This role grants the Viewer role along with the ability to purge content. <br /><br />If applied at the organization level, then the user may purge content for any of the organization's properties.                                                   |
+| Security Auditor | This role grants the Viewer role along with the ability to view all security-related features.                                                                                                                                              |
 | Security Manager | This role grants the Viewer role along with the ability to manage all security settings.                                                                                                                                                                |
 | Editor           | This role grants the capability to configure properties and to configure, deploy, and purge  environments. However, this role does not grant the ability to configure, deploy, or purge an environment that has been restricted to the Maintainer role. |
 | Maintainer       | This role grants the Editor role along with the ability to create and delete properties and environments.                                                                                                                                               |
@@ -67,7 +68,7 @@ Upon creating a user, you must assign a role that will be applied at the organiz
 
 1.  Load the desired organization's **Members** page.
 
-    1.  From the {{ PORTAL_LINK }}, select the desired organization. 
+    1.  From the {{ PORTAL_LINK }}, select the desired organization.
     2.  From the left-hand pane, click **Members**.
 
 2.  Click **Add Member**.
@@ -78,18 +79,18 @@ Upon creating a user, you must assign a role that will be applied at the organiz
 
     <Callout type="info">
 
-      By default, the organization's properties and environments will inherit the role assigned to the user at the organization level.  
+      By default, the organization's properties and environments will inherit the role assigned to the user at the organization level.
 
     </Callout>
 
 5.  Customize a user's access to a property by assigning a different role for the desired property.
 
     1.  Below the `ORGANIZATION` section, find and expand the desired property.
-    
+
         <Callout type="tip">
-        
+
           Filter your properties by typing the desired name within the **Search Properties** option.
-        
+
         </Callout>
 
     2.  Select the desired role.
@@ -98,10 +99,10 @@ Upon creating a user, you must assign a role that will be applied at the organiz
 6.  Customize a user's access to an environment by assigning a different role for the desired environment.
 
     1.  Expand the desired property. All of the property's environments are listed directly below the list of available roles.
-    2.  Find the desired environment and select the desired role. 
+    2.  Find the desired environment and select the desired role.
     3.  Repeat these steps as needed.
 
-5.  Click **Invite** to send a welcome email. 
+5.  Click **Invite** to send a welcome email.
 
     A new user must confirm their account by performing the following steps:
 
@@ -119,7 +120,7 @@ Upon creating a user, you must assign a role that will be applied at the organiz
 
 1.  Load the desired organization's **Members** page.
 
-    1.  From the {{ PORTAL_LINK }}, select the desired organization. 
+    1.  From the {{ PORTAL_LINK }}, select the desired organization.
     2.  From the left-hand pane, click **Members**.
 
 2.  Find the user and click its <Image inline src="/images/v7/icons/pencil-2.png" alt="Edit" /> icon.
@@ -132,7 +133,7 @@ Upon creating a user, you must assign a role that will be applied at the organiz
 
 1.  Load the desired organization's **Members** page.
 
-    1.  From the {{ PORTAL_LINK }}, select the desired organization. 
+    1.  From the {{ PORTAL_LINK }}, select the desired organization.
     2.  From the left-hand pane, click **Members**.
 
 2.  Click the <Image inline src="/images/v7/icons/delete.png" alt="Delete" /> icon next to the member that will be removed.
@@ -152,28 +153,28 @@ Upon creating a user, you must assign a role that will be applied at the organiz
 
 ### Getting Started {/*getting-started*/}
 
-Establishing a SSO workflow requires a custom integration between our identity service and your identity provider. 
+Establishing a SSO workflow requires a custom integration between our identity service and your identity provider.
 
 **To request SSO integration with a SAML 2.0 identity provider**
 
 1.  Contact your account manager or our [sales department](https://edg.io/contact-us/) at 1 (866) 200 - 5463 to get started. Be prepared to provide the following information:
 
-    -   **SAML Request Signing Certificate:** An X.509 certificate in PEM format. {{ PRODUCT }} uses this certificate to sign the SAML request sent to your identity provider. 
-    -   **Login URL:** {{ PRODUCT }} redirects users to this URL to perform an authentication challenge. 
+    -   **SAML Request Signing Certificate:** An X.509 certificate in PEM format. {{ PRODUCT }} uses this certificate to sign the SAML request sent to your identity provider.
+    -   **Login URL:** {{ PRODUCT }} redirects users to this URL to perform an authentication challenge.
     -   **Logout URL:** {{ PRODUCT }} requests a single or global logout through this URL.
     -   **RelayState:** {{ PRODUCT }} redirects users to this URL upon authentication. This URL should be:
 
-        `https://api.edgio.app/sso-redirect`
+        `https://api.edgio.app/initiate-sso`
 
-    -   SAML 2.0 metadata in XML format. 
+    -   SAML 2.0 metadata in XML format.
 
-2.  Add the desired users to the {{ PORTAL }}. Make sure that the email addresses defined within the {{ PORTAL }} match those defined within your identity provider. 
+2.  Add the desired users to the {{ PORTAL }}. Make sure that the email addresses defined within the {{ PORTAL }} match those defined within your identity provider.
 
 3.  From within your identity provider, use the following information to configure {{ PRODUCT }} as a service provider:
-    -   **Entity ID:** `https://id.vdms.io`
-    -   **Assertion URL:** `https://id.vdms.io/saml/assert`
-    -   **Login URL:** `https://id.vdms.io/saml/login`
-    -   **Logout URL:** `https://id.vdms.io/saml/logout`
+    -   **Entity ID:** `https://id.edgio.app`
+    -   **Assertion URL:** `https://id.edgio.app/saml/assert`
+    -   **Login URL:** `https://id.edgio.app/saml/login`
+    -   **Logout URL:** `https://id.edgio.app/saml/logout`
     -   **Digest:** `sha256 | sha512`
     -   **Signature:** `sha256 | sha512`
     -   **Sign Request:** `TRUE | FALSE`
@@ -196,4 +197,4 @@ Establishing a SSO workflow requires a custom integration between our identity s
 
 ### SAML Request Signing Certificate Renewal {/*saml-request-signing-certificate-renewal*/}
 
-Maintain SSO operability by renewing your SAML request signing certificate prior to expiration. Certificate renewal requires providing a new SAML request signing certificate in PEM format to either your account manager or [technical customer support]({{ SUPPORT_URL }}). 
+Maintain SSO operability by renewing your SAML request signing certificate prior to expiration. Certificate renewal requires providing a new SAML request signing certificate in PEM format to either your account manager or [technical customer support]({{ SUPPORT_URL }}).

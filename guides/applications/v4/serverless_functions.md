@@ -95,7 +95,7 @@ module.exports = {
 }
 ```
 
-See [backends](/guides/layer0_config#section_backends) for more configuration options.
+See [backends](/applications/layer0_config#section_backends) for more configuration options.
 
 To forward a request to the origin and modify the response using a serverless function:
 
@@ -205,4 +205,4 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 {{ PRODUCT }} serverless functions have a maximum runtime of 20 seconds per request. If a function exceeds this limit, {{ PRODUCT }} will respond with a 539 status.
 
-See [Limits](/guides/limits#section_request_and_response_limits) for more information.
+See [Limits](/applications/limits#section_request_and_response_limits) for more information.

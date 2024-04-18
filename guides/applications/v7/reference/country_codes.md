@@ -4,9 +4,9 @@ title: Country Codes
 
 ISO 3166 country codes are supported by:
 
--   **Rules:** [Country match condition](/guides/performance/rules/conditions#country)
+-   **Rules:** [Country match condition](/applications/performance/rules/conditions#country)
 -   **CDN-as-code:** [location.country condition](/docs/api/core/interfaces/types.RulesVariables.html#location)
--   **Web Application Firewall:** [Access Rules](/guides/security/access_rules), [Rate Rules](/guides/security/rate_rules), [Bot Manager](/guides/security/bot_rules), [Custom Rules](/guides/security/custom_rules), and [Dashboard](/guides/security/dashboard)
+-   **Web Application Firewall:** [Access Rules](/applications/security/access_rules), [Rate Rules](/applications/security/rate_rules), [Bot Manager](/applications/security/bot_rules), [Custom Rules](/applications/security/custom_rules), and [Dashboard](/applications/security/dashboard)
 
 <Callout type="info">
 
@@ -30,7 +30,7 @@ ISO 3166 country codes are supported by:
 | AR   | Argentina                    |
 | AM   | Armenia                      |
 | AW   | Aruba                        |
-| AP   | Asia/Pacific Region <br /><br /><Callout type="info">This country code identifies a small subset of IP addresses for the Asia/Pacific region. <br />[Learn more.](#regions) </Callout>  | 
+| AP   | Asia/Pacific Region <br /><br /><Callout type="info">This country code identifies a small subset of IP addresses for the Asia/Pacific region. <br />[Learn more.](#regions) </Callout>  |
 | AU   | Australia                    |
 | AT   | Austria                      |
 | AZ   | Azerbaijan                   |

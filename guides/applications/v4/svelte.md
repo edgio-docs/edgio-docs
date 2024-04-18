@@ -9,7 +9,7 @@ This guide shows you how to deploy a [Svelte](https://svelte.dev/) application t
 <ExampleButtons
   title="Svelte"
   siteUrl="https://layer0-docs-layer0-svelte-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-svelte-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-svelte-example"
   deployFromRepo />
 
 {{ PREREQ.md }}
@@ -149,9 +149,9 @@ const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: https://docs.layer0.co/applications/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
-  
+
   // Send requests to static assets in the build output folder `public`
   .static('public')
 

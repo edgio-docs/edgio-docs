@@ -43,8 +43,7 @@ import {
   getCookiesFromRequest,
   setCookieToResponse,
 } from '../../../utils/cookies';
-import { setEnvFromContext } from '../../../utils/polyfills/process.env';
-import '../../../utils/polyfills/URL';
+import {setEnvFromContext} from '../../../utils/polyfills/process.env';
 import waitingPage from './waitingPage';
 
 // Constants
@@ -92,7 +91,7 @@ export async function handleHttpRequest(request, context) {
  * Generate a random ID
  */
 function generateId(len = 10) {
-  return Array.from({ length: len }, () =>
+  return Array.from({length: len}, () =>
     ((Math.random() * 36) | 0).toString(36)
   ).join('');
 }

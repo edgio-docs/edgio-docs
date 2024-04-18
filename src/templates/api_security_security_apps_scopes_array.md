@@ -8,7 +8,7 @@ The `scopes` array describes each Security App using the following properties:
 |acl_audit_id|String|Indicates the system-defined ID for the access rule that will audit production traffic for this Security App. Use the Get All Access Rules (ACLs) endpoint to retrieve a list of access rules and their IDs.|
 |acl_prod_action|Object|Contains properties that describe the type of action that will take place when an access rule defined within the `acl_prod_id` property is violated.|
 |acl_prod_id|String|Indicates the system-defined ID for the access rule that will be applied to production traffic for this Security App. Use the Get All Access Rules (ACLs) endpoint to retrieve a list of access rules and their IDs.|
-|bot_manager_config_id|String|Identifies a bot manager configuration by its system-defined ID. Use the [Get All Bot Manager Configurations operation](/guides/v7/develop/rest_api_security/bot_manager#get-all-bot-manager-configurations) to retrieve a list of bot manager configurations and their system-defined IDs. |
+|bot_manager_config_id|String|Identifies a bot manager configuration by its system-defined ID. Use the [Get All Bot Manager Configurations operation](/applications/v7/develop/rest_api_security/bot_manager#get-all-bot-manager-configurations) to retrieve a list of bot manager configurations and their system-defined IDs. |
 |host|Object|Contains properties that describe a hostname match condition.|
 |id|String|Identifies the current Security App by its system-defined ID.|
 |limits|Array of objects|Identifies the set of rate rules that will be enforced for this Security App and the enforcement action that will be applied to rate limited requests.|
@@ -90,6 +90,6 @@ The `path` object describes a URL path match condition using the following prope
 |value|String|`enf_type: GLOB or RX.` Identifies a value that will be used to identify requests that are eligible for this Security App.|
 |values|Array of string values|`enf_type: EM Only.` Identifies one or more values used to identify requests that are eligible for this Security App.|
 
-A URL path pattern starts directly after the hostname. Exclude a protocol or a hostname when defining `value \| values`.   
+A URL path pattern starts directly after the hostname. Exclude a protocol or a hostname when defining `value \| values`.
 
 **Sample value:** `/marketing`

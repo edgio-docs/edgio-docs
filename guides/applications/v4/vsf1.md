@@ -6,7 +6,7 @@ title: Vue Storefront 1
 
 <ExampleButtons
   title="VSF1"
-  repoUrl="https://github.com/layer0-docs/layer0-vue-storefront-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-vue-storefront-example"
   deployFromRepo />
 
 ## 1. Install Vue Storefront {/*1-install-vue-storefront*/}
@@ -306,7 +306,7 @@ const pages = [
 ]
 
 // Prevent search engine bot(s) from indexing
-// Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+// Read more on: https://docs.layer0.co/applications/cookbook#blocking-search-engine-crawlers
 router.noIndexPermalink()
 
 // static prerendering

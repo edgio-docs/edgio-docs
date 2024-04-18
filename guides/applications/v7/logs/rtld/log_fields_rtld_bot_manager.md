@@ -8,20 +8,20 @@ Log data is reported as a JSON document. Log format determines whether log data 
 
     -   Top-level name/value pairs that uniquely identify the set of log entries reported in the JSON document.
     -   An object for each log entry associated with the current JSON document.
-    
+
     [View a sample log file.](#json)
-    
+
 -   **JSON Array:** This format generates a JSON document that contains an [array of objects](#logs-array). Each object is a log entry associated with the current JSON document.
-    
+
     [View a sample log file.](#json-array)
-    
+
 -   **JSON Lines:** This format generates an invalid JSON document that contains an object on each line. Each object is a log entry associated with the current JSON document. This object is an exact match for an object contained by the [Logs array](#logs-array).
-    
+
     [View a sample log file.](#json-lines)
-    
+
 <Callout type="important">
 
-  If log data uses either the JSON Array or JSON Lines log format, then it will not contain information that uniquely identifies a set of log data. If log data using one of these formats is delivered to a destination other than AWS S3, Azure Blob Storage, or Google Cloud Storage, then there is no way to check for gaps in sequence numbers when attempting to [identify missing log data](/guides/logs/rtld/log_data_verification#checking-for-sequence-number-gaps).
+  If log data uses either the JSON Array or JSON Lines log format, then it will not contain information that uniquely identifies a set of log data. If log data using one of these formats is delivered to a destination other than AWS S3, Azure Blob Storage, or Google Cloud Storage, then there is no way to check for gaps in sequence numbers when attempting to [identify missing log data](/applications/logs/rtld/log_data_verification#checking-for-sequence-number-gaps).
 
 </Callout>
 
@@ -40,8 +40,8 @@ Log data is reported as a JSON document. Log format determines whether log data 
 </Callout>
 
 Top-level name/value pairs are described below.
-  
--   **account_number (*String*):** Customer AN. Identifies an environment by its system-defined ID. 
+
+-   **account_number (*String*):** Customer AN. Identifies an environment by its legacy system-defined ID.
 -   **agent_id (*String*):** Agent ID. Indicates the unique ID that identifies the Real-Time Log Delivery software agent that generated the log data.
 -   **datestamp (*String*):** Date Stamp. Indicates the date on which the log data was generated.
 
@@ -58,9 +58,9 @@ Top-level name/value pairs are described below.
 
 The `logs` array contains an object for each log entry associated with the current JSON document. Each log entry describes a threat through the following fields:
 
--   **account_number (*String*):** Customer AN. (Category: General) Identifies an environment by its system-defined ID. 
+-   **account_number (*String*):** Customer AN. (Category: General) Identifies an environment by its legacy system-defined ID.
 -   **action_type (*String*):** Action Type. (Category: Event) Indicates the action that was triggered as a result of the violation. Valid values are:
-    -   **ALERT:** Indicates that an alert was generated in response to the rule violation.    
+    -   **ALERT:** Indicates that an alert was generated in response to the rule violation.
     -   **BLOCK_REQUEST:** Indicates that the request that violated a rule was blocked.
     -   **REDIRECT_302:** Indicates that the request that violated a rule was redirected to a URL defined by your security policy.
     -   **CUSTOM_RESPONSE:** Indicates that a custom response was returned to the client that submitted a request that violated a rule.
@@ -69,7 +69,7 @@ The `logs` array contains an object for each log entry associated with the curre
 -   **bot_manager_name (*String*):** Bot Manager Name. (Category: General) Indicates the name of the Bot Manager configuration that the request violated.
 -   **bot_rule_config_id (*String*):** Bot Rule ID. (Category: General) Indicates the system-defined ID of the bot rule that the request violated.
 -   **bot_rule_config_name (*String*):** Bot Rule Name. (Category: General) Indicates the name of the bot rule that the request violated.
--   **bot_score (*Integer*):** Bot Score. (Category: Event) Indicates the request's bot score. This score indicates our level of confidence that the request originated from a bot. 
+-   **bot_score (*Integer*):** Bot Score. (Category: Event) Indicates the request's bot score. This score indicates our level of confidence that the request originated from a bot.
 -   **captcha_error_msg (*String*):** CAPTCHA Error Msg. (Category: Event) Indicates the reCAPTCHA error message.
 -   **captcha_score (*Decimal*):** CAPTCHA Score. (Category: Event) Indicates the request's reCAPTCHA score. Returns `0.000000` if reCAPTCHA was not applied to the request.
 -   **captcha_status (*String*):** CAPTCHA Status. (Category: Event) Indicates the result of a reCAPTCHA event. Valid values are:
@@ -81,20 +81,20 @@ The `logs` array contains an object for each log entry associated with the curre
     -   **ECTOKEN_CORRUPTED:** Indicates that a reCAPTCHA was served due to an invalid token. This status is typically reported when a user agent submits a request that includes a token that our service cannot decrypt.
     -   **ECTOKEN_IP_MISMATCH:** Indicates that a reCAPTCHA was served due to an invalid token. This status is typically reported when a token is shared or the user's IP address is modified after the initial token was generated.
     -   **ECTOKEN_UA_MISMATCH:** Indicates that a reCAPTCHA was served due to an invalid token. This status is typically reported when a token is shared with another user agent (e.g., web browser) within the same machine.
-    -   **ECTOKEN_EXPIRED:** Indicates that a reCAPTCHA was served due to an expired token. This status is typically reported when a user agent (e.g., web browser) submits a request after the expiration of the previously solved reCAPTCHA. 
+    -   **ECTOKEN_EXPIRED:** Indicates that a reCAPTCHA was served due to an expired token. This status is typically reported when a user agent (e.g., web browser) submits a request after the expiration of the previously solved reCAPTCHA.
 
 -   **challenge_status (*String*):** Challenge Status. (Category: Event) Indicates the result of a browser challenge. Valid values are:
 
     -   **NONE:** Indicates that a browser challenge was not issued.
-    -   **IP_MISMATCH:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a token is shared or the user's IP address is modified after the initial token was generated.  
-    -   **NO_TOKEN:** Indicates that a browser challenge was served for a new session.  
-    - **TOKEN_CORRUPTED:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a user agent submits a request that includes a token that our service cannot decrypt.  
-    -   **TOKEN_EXPIRED:** Indicates that a browser challenge was served due to an expired token. This status is typically reported when a user agent (e.g., web browser) submits a request after the expiration of the previously solved browser challenge. 
+    -   **IP_MISMATCH:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a token is shared or the user's IP address is modified after the initial token was generated.
+    -   **NO_TOKEN:** Indicates that a browser challenge was served for a new session.
+    - **TOKEN_CORRUPTED:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a user agent submits a request that includes a token that our service cannot decrypt.
+    -   **TOKEN_EXPIRED:** Indicates that a browser challenge was served due to an expired token. This status is typically reported when a user agent (e.g., web browser) submits a request after the expiration of the previously solved browser challenge.
     -   **UA_MISMATCH:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a token is shared with another user agent (e.g., web browser) within the same machine.
     -   **WRONG_ANSWER:** Indicates that a browser challenge was served because the user was unable to solve the previous browser challenge. This status may also be reported when the user agent (e.g., web browser) submits a tampered token.
 
 -   **client_city (*String*):** City Name. (Category: Client Geography) Indicates the city from which the request originated.
--   **client_country_code (*String*):** Country Code. (Category: Client Geography) Indicates the [two-character ISO 3166-1 code for the country](/guides/reference/country_codes) from which the request originated.
+-   **client_country_code (*String*):** Country Code. (Category: Client Geography) Indicates the [two-character ISO 3166-1 code for the country](/applications/reference/country_codes) from which the request originated.
 -   **client_country (*String*):** Country Name. (Category: Client Geography) Indicates the country from which the request originated.
 -   **client_ip (*String*):** Client IP. (Category: Client Network) Indicates the IP address for the device that submitted the request to our CDN.
 -   **client_tls_ja3_md5 (*String*):** IP Address. (Category: Request) Indicates the JA3 fingerprint assigned to the request.
@@ -105,13 +105,13 @@ The `logs` array contains an object for each log entry associated with the curre
 -   **referer (*String*):** Referer. (Category: Request Header) Indicates the `Referer` header value sent in the client's request to the CDN. This header reports the URL of the site from which the request originated.
 -   **rule_id (*Integer*):** Rule ID. (Category: Event) Indicates the ID for the rule that the request violated.
 -   **rule_message (*String*):** Rule Message. (Category: Event) Provides a description of the rule that the request violated.
--   **sam_id (*String*):** SAM ID. (Category: General) Indicates the system-defined ID of the Security App configuration that the request violated. 
--   **sam_name (*String*):** SAM Name. (Category: General) Indicates the name of the Security App configuration that the request violated. 
+-   **sam_id (*String*):** SAM ID. (Category: General) Indicates the system-defined ID of the Security App configuration that the request violated.
+-   **sam_name (*String*):** SAM Name. (Category: General) Indicates the name of the Security App configuration that the request violated.
 -   **timestamp (*Decimal*):** Epoch Time. (Category: Response) Indicates the Unix time, in seconds, at which an edge server delivered the requested content to the client.
 
     **Syntax:** `<SECONDS>.<MICROSECONDS>`
 
--   **token_validity (*Integer*):** Token Validity Duration. (Category: Event) Indicates the number of seconds that a client that solves a browser challenge or passes reCAPTCHA will be allowed to request content without having to encounter a new browser challenge or reCAPTCHA. 
+-   **token_validity (*Integer*):** Token Validity Duration. (Category: Event) Indicates the number of seconds that a client that solves a browser challenge or passes reCAPTCHA will be allowed to request content without having to encounter a new browser challenge or reCAPTCHA.
 -   **url (*String*):** URL. (Category: Request) Indicates the URL that was requested.
 -   **user_agent (*String*):** User Agent. (Category: Request Header) Indicates the user agent that submitted the HTTP request to our CDN.
 -   **uuid (*String*):** Event ID. (Category: Request) Indicates the unique ID assigned to the event.
@@ -157,7 +157,7 @@ Sample log data that contains two log entries is provided below for all three lo
             "referer": "",
             "method": "GET",
             "timestamp": 1691171341.3249193758,
-            "url": "https://docs.edg.io/guides/v6/sites_frameworks/getting_started/react",
+            "url": "https://docs.edg.io/applications/v6/sites_frameworks/getting_started/react",
             "user_agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/103.0.5060.134 Safari/537.36",
             "uuid": "92235942417369961984987122750567933450",
             "client_tls_ja3_md5": "27f25487242c869a283ccc2989f8ee79"
@@ -226,7 +226,7 @@ Sample log data that contains two log entries is provided below for all three lo
         "referer": "",
         "method": "GET",
         "timestamp": 1691171341.3249193758,
-        "url": "https://docs.edg.io/guides/v6/sites_frameworks/getting_started/react",
+        "url": "https://docs.edg.io/applications/v6/sites_frameworks/getting_started/react",
         "user_agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/103.0.5060.134 Safari/537.36",
         "uuid": "92235942417369961984987122750567933450",
         "client_tls_ja3_md5": "27f25487242c869a283ccc2989f8ee79"

@@ -310,6 +310,16 @@ const nav = {
       title: 'Experimentation',
       path: 'experimentation',
       icon: 'experimentation',
+      routes: [
+        {
+          title: 'Cross-Environment Traffic Splitting',
+          path: 'experimentation/cross_environment_traffic_splitting',
+        },
+        {
+          title: 'Iterative Migration Tutorial',
+          path: 'experimentation/iterative_migration_tutorial',
+        },
+      ],
     },
     {
       title: 'Security',
@@ -579,6 +589,10 @@ const nav = {
             {
               title: 'Log Fields (RTLD Bot)',
               path: 'logs/rtld/log_fields_rtld_bot_manager',
+            },
+            {
+              title: 'Log Fields (RTLD Cloud Functions)',
+              path: 'logs/rtld/log_fields_rtld_cloud_functions',
             },
           ],
         },

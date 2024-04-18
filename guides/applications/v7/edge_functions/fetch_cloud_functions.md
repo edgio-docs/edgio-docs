@@ -8,7 +8,7 @@ title: Fetching from Cloud Functions
   repoUrl="https://github.com/edgio-docs/edgio-v7-ef-cloud-fetch-example"
 />
 
-Fetching from a [cloud function](/guides/performance/serverless_compute) is similar to [fetching from an origin server](/guides/edge_functions#origin-requests-using-fetch). The key difference is that you must specify the `edgio_serverless` origin in the request.
+Fetching from a [cloud function](/applications/performance/serverless_compute) is similar to [fetching from an origin server](/applications/edge_functions#origin-requests-using-fetch). The key difference is that you must specify the `edgio_serverless` origin in the request.
 This instructs the request to the cloud function origin where it is then handled by your JavaScript backend.
 
 The following sample code shows different ways a cloud function might be defined:
@@ -74,7 +74,7 @@ To fetch from a cloud function, you must meet the following requirements:
 - {{ PRODUCT }} version 7.4.1 or later.
 - A route that is defined as a cloud function. This can be a route via a connector such as `NextRoutes` or by using `compute` or `proxy` along with the `transformResponse` option.
 - A route that uses an edge function. This must match the path as the cloud function and be defined **after** the cloud function route (see sample code above).
-- The origin `edgio_serverless` must be specified in the request (see [System-Defined Origins](/guides/basics/origins#system-defined-origins)).
+- The origin `edgio_serverless` must be specified in the request (see [System-Defined Origins](/applications/basics/origins#system-defined-origins)).
 - Forwarding of the original request parameters including the method, headers, and body.
 
 The following sample code demonstrates how to fetch and manipulate cloud function response within an edge function:
@@ -128,4 +128,4 @@ export async function handleHttpRequest(request) {
 
 ## Limitations {/* limitations */}
 
-Fetching from a Cloud Function is considered an origin subrequest and therefore has the same limitations. See [Fetch Limitations](/guides/edge_functions#fetch-limitations) for more information. 
+Fetching from a Cloud Function is considered an origin subrequest and therefore has the same limitations. See [Fetch Limitations](/applications/edge_functions#fetch-limitations) for more information.

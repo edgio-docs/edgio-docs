@@ -23,9 +23,9 @@ A request commonly contains the following components:
 
 Learn how:
 
--   [Requests flow through WAF.](/guides/security/waf#threat-detection)
--   [Content is cached on our network.](/guides/performance/caching#default-caching-policy)
--   [Edge Functions can issue subrequests to the caching layer.](/guides/edge_functions/caching#order-of-operations)
+-   [Requests flow through WAF.](/applications/security/waf#threat-detection)
+-   [Content is cached on our network.](/applications/performance/caching#default-caching-policy)
+-   [Edge Functions can issue subrequests to the caching layer.](/applications/edge_functions/caching#order-of-operations)
 
 ## Request Method {/*request-method*/}
 
@@ -38,10 +38,10 @@ Every HTTP request must include instructions on how the request should be handle
 
 **Key information:**
 
--   By default, only `GET` requests are eligible for caching. Use the [Enable Caching for Methods feature (enable_caching_for_methods)](/guides/performance/rules/features#enable-caching-for-methods) to allow caching for `POST` and/or `PUT` requests. Although you may enable caching for `POST` and `PUT` requests, purge is only supported for `GET` requests.
+-   By default, only `GET` requests are eligible for caching. Use the [Enable Caching for Methods feature (enable_caching_for_methods)](/applications/performance/rules/features#enable-caching-for-methods) to allow caching for `POST` and/or `PUT` requests. Although you may enable caching for `POST` and `PUT` requests, purge is only supported for `GET` requests.
 -   A request body should not be included when submitting a `GET` request.
--   The file size limit for the response provided by the CDN is determined by the client's operating system. 
--   Your CDN setup, including security measures, may place further restrictions on when content will be cached or proxied. 
+-   The file size limit for the response provided by the CDN is determined by the client's operating system.
+-   Your CDN setup, including security measures, may place further restrictions on when content will be cached or proxied.
 
 ### POST {/*post*/}
 
@@ -54,11 +54,11 @@ Our CDN accepts `POST` requests regardless of whether they contain a payload.
 
 Protocol version support varies according to whether the CDN is communicating with your origin or the client.
 
--   **Client**:  Our CDN supports HTTP/1.0, HTTP/1.1, HTTP/2, and HTTP/3 for the communication between clients and the edge of our network. 
+-   **Client**:  Our CDN supports HTTP/1.0, HTTP/1.1, HTTP/2, and HTTP/3 for the communication between clients and the edge of our network.
 
     <Callout type="info">
 
-      HTTP/3 support requires the `alt-svc` response header. [Learn more.](/guides/basics/origins#http-3)
+      HTTP/3 support requires the `alt-svc` response header. [Learn more.](/applications/basics/origins#http-3)
 
     </Callout>
 
@@ -91,10 +91,10 @@ Our edge servers may also add or overwrite the following reserved request header
 - `x-request-id`: unique request ID on {{ PRODUCT_NAME }} which may optionally be provided by you when issuing the requests to {{ PRODUCT_NAME }}
 - `{{ HEADER_PREFIX }}-client-ip`: the client IP address from which the request to {{ PRODUCT_NAME }} edge components originated.
 - `{{ HEADER_PREFIX }}-destination`: the routing destination as determined by traffic splitting rules if any; the name of the destinations are taken from {{ PRODUCT_NAME }} router code and if not specified then default is `default`
-- `{{ HEADER_PREFIX }}-original-qs`: contains the original query string if [custom caching](/guides/performance/caching#customizing-the-cache-key) rules exclude query strings for the matching route; otherwise not set
-- `{{ HEADER_PREFIX }}-protocol`: the protocol on which the connection to your site has been established; it can either be `https` or `http`; 
+- `{{ HEADER_PREFIX }}-original-qs`: contains the original query string if [custom caching](/applications/performance/caching#customizing-the-cache-key) rules exclude query strings for the matching route; otherwise not set
+- `{{ HEADER_PREFIX }}-protocol`: the protocol on which the connection to your site has been established; it can either be `https` or `http`;
 
-  [Learn more.](/guides/security/edgejs_security#ssl)
+  [Learn more.](/applications/security/edgejs_security#ssl)
 
 ### User agent headers {/*user-agent-headers*/}
 
@@ -119,12 +119,12 @@ Geolocation headers contain the geographical information about the provenance of
 - `{{ HEADER_PREFIX }}-geo-longitude`: the geographical longitude from which the request originated
 - `{{ HEADER_PREFIX }}-geo-asn`: the autonomous system number of the network operator from which the request originated
 
-These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee the accuracy of geolocation based on the client's IP address. 
+These values are provided as a best effort. {{ PRODUCT_NAME }} cannot guarantee the accuracy of geolocation based on the client's IP address.
 -->
 
 <!--### Static prerendering headers {/*static-prerendering-headers*/}
 
-- `{{ HEADER_PREFIX }}-preload`: Will be "1" if the request originated from [Static Prerendering](/guides/performance/static_prerendering). Otherwise this header will not be present.
+- `{{ HEADER_PREFIX }}-preload`: Will be "1" if the request originated from [Static Prerendering](/applications/performance/static_prerendering). Otherwise this header will not be present.
 -->
 ## Request Body {/*request-body*/}
 

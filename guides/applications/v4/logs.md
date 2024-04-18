@@ -68,7 +68,7 @@ _Available since {{ PRODUCT_NAME }} v2.9.0._
 
 ### ev (number) {/*ev*/}
 
-The active environment version number. Example 95 (number). 
+The active environment version number. Example 95 (number).
 
 ### ip (string) {/*ip*/}
 
@@ -88,11 +88,11 @@ HTTP path.
 
 ### h2 (string) {/*h2*/}
 
-Flag indicating whether downstream connection is http/2 or not. Can be '0' or '1'. 
+Flag indicating whether downstream connection is http/2 or not. Can be '0' or '1'.
 
 ### psh (number) {/*psh*/}
 
-Flag indicating whether this request is an http/2 server-side push or not. Can be 0 or 1. 
+Flag indicating whether this request is an http/2 server-side push or not. Can be 0 or 1.
 
 ### code (string) {/*code*/}
 
@@ -100,7 +100,7 @@ HTTP response status code.
 
 ### ic (integer) {/*ic*/}
 
-Flag indicating whether this request was cacheable even in theory. Can be 0 or 1. 
+Flag indicating whether this request was cacheable even in theory. Can be 0 or 1.
 
 ### cc (string) {/*cc*/}
 
@@ -128,7 +128,7 @@ Split testing bucket cookie value.
 
 ### zip (string) {/*zip*/}
 
-Flag indicating whether the response is compressed or not. Can be '0' or '1'. 
+Flag indicating whether the response is compressed or not. Can be '0' or '1'.
 
 ### rid (string) {/*rid*/}
 
@@ -141,7 +141,7 @@ if the request was blocked; wl for allow list, by for bypass if the request was 
 
 ### sh (number) {/*sh*/}
 
-Flag indicating whether the request was shielded. Can be 0 or 1. 
+Flag indicating whether the request was shielded. Can be 0 or 1.
 
 ### dv (string) {/*dv*/}
 
@@ -157,11 +157,11 @@ Browser: chrome, safari, firefox.
 
 ### bot (number) {/*bot*/}
 
-Flag indicating whether the request was made by a bot. Can be 0 or 1. 
+Flag indicating whether the request was made by a bot. Can be 0 or 1.
 
 ### er (number) {/*er*/}
 
-Flag indicating whether the request was responded from edge (not true for cache hits, just for synthetic requests). Can be 0 or 1. 
+Flag indicating whether the request was responded from edge (not true for cache hits, just for synthetic requests). Can be 0 or 1.
 
 ### clv (number) {/*clv*/}
 
@@ -173,11 +173,11 @@ Indicates if the response was stale or not. Can be 0 or 1.
 
 ### done (string) {/*done*/}
 
-Flag indicating if the response has completed (analogous to 499 in Nginx). '0' or '1'. 
+Flag indicating if the response has completed (analogous to 499 in Nginx). '0' or '1'.
 
 ### cs (string) {/*cs*/}
 
-[Caching status](/guides/caching#section_why_is_my_response_not_being_cached_) (why something was or wasn't cached).
+[Caching status](/applications/caching#section_why_is_my_response_not_being_cached_) (why something was or wasn't cached).
 
 ### ct (string) {/*ct*/}
 
@@ -197,12 +197,12 @@ User agent.
 
 ### xmt (string) {/*xmt*/}
 
-Response [{{ HEADER_PREFIX }}-t](/guides/response_headers#section_structure_of_) header with different critical path timings.
+Response [{{ HEADER_PREFIX }}-t](/applications/response_headers#section_structure_of_) header with different critical path timings.
 Example: 'eh=4,ect=2,ecc=hit'.
 
 ### xut (string) {/*xut*/}
 
-Response {{ HEADER_PREFIX }}-user-t header with different user [performance](/guides/performance) metrics.
+Response {{ HEADER_PREFIX }}-user-t header with different user [performance](/applications/performance) metrics.
 Example: fetch:/path=123
 
 ### xms (string) {/*xms*/}
@@ -272,7 +272,7 @@ Postal code per geo-location. Example: '10020'
 
 ### prl (number) {/*prl*/}
 
-Flag indicating if this was a preload request. Can be 0 or 1. 
+Flag indicating if this was a preload request. Can be 0 or 1.
 
 ### prod (number) {/*prod*/}
 
@@ -293,7 +293,7 @@ A flag that indicates whether the request was done on HTTPS protocol. Can be 0 o
 
 ### t (string) {/*t*/}
 
-Same as `xmt`. 
+Same as `xmt`.
 
 ### v (string) {/*v*/}
 

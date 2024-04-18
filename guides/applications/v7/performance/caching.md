@@ -2,21 +2,21 @@
 title: Cache Management
 ---
 
-Managing your caching policy and cached content is critical for achieving optimal website performance. 
+Managing your caching policy and cached content is critical for achieving optimal website performance.
 
 **Key concepts and procedures:**
 
 -   [Default caching policy](#default-caching-policy)
 -   [Defining a caching policy.](#caching-a-response)
--   [Caching content by query string, request headers, or additional custom criteria](/guides/performance/caching/cache_key#customizing-the-cache-key)
--   [Purging content.](/guides/performance/caching/purging)
+-   [Caching content by query string, request headers, or additional custom criteria](/applications/performance/caching/cache_key#customizing-the-cache-key)
+-   [Purging content.](/applications/performance/caching/purging)
 
 ## Caching {/*caching*/}
-Caching creates a copy of the requested content within our edge and Origin Shield POPs. This improves your site's performance by allowing clients to retrieve your content from the POP closest to them instead of your origin servers. 
+Caching creates a copy of the requested content within our edge and Origin Shield POPs. This improves your site's performance by allowing clients to retrieve your content from the POP closest to them instead of your origin servers.
 
 ## Environments and Caching {/* environments-and-caching */}
 
-Each environment has a separate edge cache. The **Caching** page's **Preserve cache between deployments** option determines whether this edge cache persists between deployments. 
+Each environment has a separate edge cache. The **Caching** page's **Preserve cache between deployments** option determines whether this edge cache persists between deployments.
 
 ## Edge and Origin Shield Caching {/*edge-and-shield-caching*/}
 
@@ -27,7 +27,7 @@ Each environment has a separate edge cache. The **Caching** page's **Preserve ca
 
 There is very little difference in time to first byte (TTFB) for responses served from an edge or Origin Shield POP. In either case, the response is served nearly instantly (typically 25-100ms). Concurrent requests for the same URL on different POPs that result in a cache miss will be coalesced at the Origin Shield POP. An Origin Shield server only submits a single request at a time to your origin servers for each cacheable URL.
 
-[Learn more about Origin Shield.](/guides/security/origin_shield)
+[Learn more about Origin Shield.](/applications/security/origin_shield)
 
 ## Default Caching Policy {/*default-caching-policy*/}
 
@@ -45,13 +45,13 @@ By default, a response is eligible for caching when it satisifes all of the foll
 
 {{ PRODUCT }} can serve cached content until its time to live (TTL) expires. After which, it will need to revalidate to find out whether the response has changed.
 
-[View the request flow for determining whether to serve a response from cache.](/guides/performance/caching/cache_request_flow)
+[View the request flow for determining whether to serve a response from cache.](/applications/performance/caching/cache_request_flow)
 
 ## Caching a Response {/* caching-a-response */}
 
 Define a caching policy through:
--   **Response headers:** Define cache directives within response headers. Set these response headers through your web server's configuration or by defining a rule with header features (e.g., [Set Response Headers feature](/guides/performance/rules/features#set-response-headers)).
--   **Rules:** Define a [rule with caching features](#rules). 
+-   **Response headers:** Define cache directives within response headers. Set these response headers through your web server's configuration or by defining a rule with header features (e.g., [Set Response Headers feature](/applications/performance/rules/features#set-response-headers)).
+-   **Rules:** Define a [rule with caching features](#rules).
 
 ### Cache Directives (Response Headers) {/* cache-directives */}
 
@@ -79,11 +79,11 @@ An origin server or the {{ PRODUCT }} cloud may include headers in the response 
 
 ### Defining a Caching Policy through Rules {/* rules */}
 
-Set or override a cache policy by creating a rule that identifies the desired set of requests and the caching policy that will be applied to them. 
+Set or override a cache policy by creating a rule that identifies the desired set of requests and the caching policy that will be applied to them.
 
 <Callout type="important">
 
-  By default, certain cache directives take precedence over a cache policy defined within a rule. Allow {{ PRODUCT }} to override those directives by also enabling the [Ignore Origin No Cache feature (ignore_origin_no_cache)](/guides/performance/rules/features#ignore-origin-no-cache) for the desired status code (e.g., `200 OK`) within that rule.
+  By default, certain cache directives take precedence over a cache policy defined within a rule. Allow {{ PRODUCT }} to override those directives by also enabling the [Ignore Origin No Cache feature (ignore_origin_no_cache)](/applications/performance/rules/features#ignore-origin-no-cache) for the desired status code (e.g., `200 OK`) within that rule.
 
 </Callout>
 
@@ -91,13 +91,13 @@ Commonly used features for defining a caching policy are listed below.
 
 | Feature                                                                                                      | Usage                                                                                                            |
 | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
-| [Bypass Cache (bypass_cache)](/guides/performance/rules/features#bypass-cache)                               | Use this feature to disable caching on our network.                                                              |
-| [Bypass Client Cache (bypass_client_cache)](/guides/performance/rules/features#bypass-client-cache)          | Use this feature to instruct the client to bypass cache.                                                         |
-| [Ignore Origin No Cache (ignore_origin_no_cache)](/guides/performance/rules/features#ignore-origin-no-cache) | Use this feature to allow {{ PRODUCT }} to override `no-cache` directives.                                       |
-| [Set Client Max-Age (client_max_age)](/guides/performance/rules/features#set-client-max-age)                 | Use this feature to define how long a client must wait before revalidating cached content with our servers.      |
-| [Set Max-Age (max_age)](/guides/performance/rules/features#set-max-age)                                      | Use this feature to define how long an edge server must wait before revalidating cached content with the origin. |
+| [Bypass Cache (bypass_cache)](/applications/performance/rules/features#bypass-cache)                               | Use this feature to disable caching on our network.                                                              |
+| [Bypass Client Cache (bypass_client_cache)](/applications/performance/rules/features#bypass-client-cache)          | Use this feature to instruct the client to bypass cache.                                                         |
+| [Ignore Origin No Cache (ignore_origin_no_cache)](/applications/performance/rules/features#ignore-origin-no-cache) | Use this feature to allow {{ PRODUCT }} to override `no-cache` directives.                                       |
+| [Set Client Max-Age (client_max_age)](/applications/performance/rules/features#set-client-max-age)                 | Use this feature to define how long a client must wait before revalidating cached content with our servers.      |
+| [Set Max-Age (max_age)](/applications/performance/rules/features#set-max-age)                                      | Use this feature to define how long an edge server must wait before revalidating cached content with the origin. |
 
-[View all caching-related features.](/guides/performance/rules/features#caching)
+[View all caching-related features.](/applications/performance/rules/features#caching)
 
 #### Defining a Caching Policy through CDN-as-Code {/* cdn-as-code */}
 
@@ -121,16 +121,16 @@ router.get('/some/path', {
 
 ### Cache Key {/* cache-key */}
 
-Our servers use cache keys to determine whether a cached response exists for a specific request. Specifically, they calculate a cache key for each request. They then use this cache key to check for a cached response. 
+Our servers use cache keys to determine whether a cached response exists for a specific request. Specifically, they calculate a cache key for each request. They then use this cache key to check for a cached response.
 
-[Learn more about cache keys.](/guides/performance/caching/cache_key)
+[Learn more about cache keys.](/applications/performance/caching/cache_key)
 
 ### Caching Responses for POST and PUT Requests {/* caching-responses-for-post-and-put-requests */}
 
 By default, {{ PRODUCT }} only caches responses for `GET` requests. Cache the response for `POST`, `PUT`, or both HTTP methods using either of the following methods:
 
--   **Rules:** Create a rule that sets the [Enable Caching for Methods feature](/guides/performance/rules/features#enable-caching-for-methods) to `POST`, `PUT`, or both HTTP methods.
--   **CDN-as-Code:** 
+-   **Rules:** Create a rule that sets the [Enable Caching for Methods feature](/applications/performance/rules/features#enable-caching-for-methods) to `POST`, `PUT`, or both HTTP methods.
+-   **CDN-as-Code:**
     ```js filename="./routes.js"
     router.match('/some/path', {
       caching: {
@@ -143,8 +143,8 @@ By default, {{ PRODUCT }} only caches responses for `GET` requests. Cache the re
 
 By default, {{ PRODUCT }} does not cache the response when it contains [certain cache directives](#response-headers) (e.g., `Cache-Control: private`). Instruct our CDN to ignore these cache directives through either of the following methods:
 
--   **Rules:** Create a rule that enables the [Ignore Origin No Cache feature](/guides/performance/rules/features#ignore-origin-no-cache).
--   **CDN-as-Code:** 
+-   **Rules:** Create a rule that enables the [Ignore Origin No Cache feature](/applications/performance/rules/features#ignore-origin-no-cache).
+-   **CDN-as-Code:**
     ```js
     router.get('/some/path', {
       caching: {
@@ -158,7 +158,7 @@ By default, {{ PRODUCT }} does not cache the response when it contains [certain 
 Content can be cached on our network or the client's machine. Define how long content is cached on a client's machine through:
 
 -   [Cache directives](#response-headers), such as `Cache-Control: max-age` and `Expires`.
--   [Set Client Max Age feature](/guides/performance/rules/features#set-client-max-age).
+-   [Set Client Max Age feature](/applications/performance/rules/features#set-client-max-age).
 
 <Callout type="info">
 
@@ -175,7 +175,7 @@ Our servers can only perform a revalidation when the following conditions are tr
 -   The requested content is stale.
 -   The cached response contains one of the following headers:
     -   `Last-Modified` (preferred)
-    -   `ETag` header 
+    -   `ETag` header
 
     <Callout type="info">
 
@@ -187,8 +187,8 @@ Our servers can only perform a revalidation when the following conditions are tr
 
 There are certain cases under which you may wish to disable caching. For example, caching should be disabled for requests that typically generate unique responses. You may disable caching for these types of requests using either of the following methods:
 
--   **Rules:** Create a rule that enables the [Bypass Cache feature](/guides/performance/rules/features#bypass-cache) for the desired set of traffic.
--   **CDN-as-Code:** 
+-   **Rules:** Create a rule that enables the [Bypass Cache feature](/applications/performance/rules/features#bypass-cache) for the desired set of traffic.
+-   **CDN-as-Code:**
     ```js filename="./routes.js"
     new Router()
       .get('/random-numbers', {
@@ -202,13 +202,13 @@ By default, {{ PRODUCT_NAME }} will cache responses that satisfy all of the foll
 
 1. The response must correspond to a `GET` or `HEAD` request. To override this, see the [_POST and other non-GET/HEAD_](#caching-responses-for-post-and-other-non-gethead-requests) section.
 2. The response status must have a status code of 1xx, 2xx or 3xx. You cannot override this.
-3. The response must not not have any `set-cookie` headers. You cannot override this, but you can [alter the response](/guides/performance/cdn_as_code/common_routing_patterns#altering-the-response) to remove `set-cookie` headers.
+3. The response must not not have any `set-cookie` headers. You cannot override this, but you can [alter the response](/applications/performance/cdn_as_code/common_routing_patterns#altering-the-response) to remove `set-cookie` headers.
 4. The response must have a valid `cache-control` header that includes a positive `max-age` or `s-maxage` and does not include a `private` clause. You can override this by using [router caching](#caching-a-response) and [forcing private responses](#caching-private-responses).
 -->
 
 ## How do I know if a response was served from the cache? {/* how-do-i-know-if-a-response-was-served-from-the-cache */}
 
-Responses served from cache contain the [x-cache: HIT](/guides/performance/response#-specific-headers) response header.
+Responses served from cache contain the [x-cache: HIT](/applications/performance/response#-specific-headers) response header.
 
 <!--
 To know if a response is being cached, examine the `{{ HEADER_PREFIX }}-t` response header. There are two components that indicate caching status:
@@ -264,7 +264,7 @@ router.get('/some/path', {
 });
 ```
 
-You can also remove the `private` value from the upstream response's `cache-control` header. See [Altering the Response](/guides/performance/cdn_as_code/common_routing_patterns#altering-the-response) for more information.
+You can also remove the `private` value from the upstream response's `cache-control` header. See [Altering the Response](/applications/performance/cdn_as_code/common_routing_patterns#altering-the-response) for more information.
 
 ### method {/* method */}
 
@@ -290,7 +290,7 @@ router.get('/some/path', {
 });
 ```
 
-See [Altering the Response](/guides/performance/cdn_as_code/common_routing_patterns#altering-the-response) for more information.
+See [Altering the Response](/applications/performance/cdn_as_code/common_routing_patterns#altering-the-response) for more information.
 
 ### deployment {/* deployment */}
 
@@ -308,7 +308,7 @@ If the "pass" is intermittent on an otherwise cacheable resource, you may want t
 
 "Hit-for-pass" can happen when system remembers for a brief time that a typically cacheable resource was not cacheable as anticipated (such as a `Set-Cookie` header, or an HTTP error response code). The system will cache, typically for a couple of minutes that the resource was not cacheable, and will not coalesce requests.
 
-Hit-for-pass disables the usual request coalescing behavior temporarily, when the resource is known not to be cacheable, clients can avoid being put in a waiting queue. Usually request coalescing (see [L2 Shield Cache](/guides/performance#l2-shield-cache)) speeds up client requests by enqueueing all but the first request, anticipating that the first request will populate the cache and allow instant delivery of the already-cached object to the waiting clients.
+Hit-for-pass disables the usual request coalescing behavior temporarily, when the resource is known not to be cacheable, clients can avoid being put in a waiting queue. Usually request coalescing (see [L2 Shield Cache](/applications/performance#l2-shield-cache)) speeds up client requests by enqueueing all but the first request, anticipating that the first request will populate the cache and allow instant delivery of the already-cached object to the waiting clients.
 
 Disabling this, such as when the upstream resource is serving errors can help alleviate pressure at all stages of the request lifecycle.
 -->

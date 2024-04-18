@@ -28,7 +28,7 @@ Get started with CDN-as-code by either experimenting with:
 
 ### Create a Property {/* create-property */}
 
-Create a property. If you have already performed this step, proceed to the next step. [Learn more.](/guides/getting_started)
+Create a property. If you have already performed this step, proceed to the next step. [Learn more.](/applications/getting_started)
 
 ### Initialize Your Property {/* initialize-property */}
 
@@ -36,7 +36,7 @@ Use the {{ PRODUCT }} CLI to initialize your property. If you have already perfo
 
 <Callout type="info">
 
-This step requires [Node.js v{{ NODE_VERSION }}](/guides/install_nodejs).
+This step requires [Node.js v{{ NODE_VERSION }}](/applications/install_nodejs).
 
 </Callout>
 
@@ -82,7 +82,9 @@ If this is your first time using the {{ PRODUCT }} CLI to deploy, then you will 
 After clicking **Create access token**, you may return back to the CLI and continue with the deployment.
 
 <Callout type="important">
-  This step is necessary to deploy your property to {{ PRODUCT }}, but not necessary to run and build your property locally. It is recommended you authenticate during this step otherwise your first deployment will fail.
+  Although authentication is unnecessary for local builds and previews, we
+  strongly recommend that you authenticate now to avoid the failure of your
+  first deployment.
 </Callout>
 
 Once your deployment completes, you should see an output similar to the following:
@@ -160,19 +162,19 @@ Once your deployment completes, you should see an output similar to the followin
 
 During the initialization process, the {{ PRODUCT }} CLI created the following files:
 
-- `{{ CONFIG_FILE }}`: This file contains the configuration for your {{ PRODUCT }} property. You can use this file to configure your property's name, environments, origins, and other settings. [Learn more](/guides/performance/cdn_as_code/edgio_config).
+- `{{ CONFIG_FILE }}`: This file contains the configuration for your {{ PRODUCT }} property. You can use this file to configure your property's name, environments, origins, and other settings. [Learn more](/applications/performance/cdn_as_code/edgio_config).
 - {{ ROUTES_FILE }}: This file contains the router rules for your {{ PRODUCT }} property. You can use this file to define how {{ PRODUCT }} will handle requests to your property.
 
 ## Config File {/* config-file */}
 
-The `{{ CONFIG_FILE }}` file contains some configurations the router may reference for handling requests along with other components such as [connectors](/guides/sites_frameworks/connectors).
+The `{{ CONFIG_FILE }}` file contains some configurations the router may reference for handling requests along with other components such as [connectors](/applications/sites_frameworks/connectors).
 
 The default `{{ CONFIG_FILE }}` file contains the following configuration based on the input from out initialization process:
 
 ```js
 // This file was automatically added by edgio init.
 // You should commit this file to source control.
-// Learn more about this file at https://docs.edg.io/guides/edgio_config
+// Learn more about this file at https://docs.edg.io/applications/edgio_config
 module.exports = {
   // The name of the property in Edgio to which this app should be deployed.
   name: 'my-custom-property.com',
@@ -267,7 +269,7 @@ origins: [
 
 The origin name set here will be referenced later when configuring the router to proxy requests.
 
-[Learn more](/guides/performance/cdn_as_code/edgio_config) about the `{{ CONFIG_FILE }}` file and all the configuration options it supports.
+[Learn more](/applications/performance/cdn_as_code/edgio_config) about the `{{ CONFIG_FILE }}` file and all the configuration options it supports.
 
 ## Routes File {/* routes-file */}
 
@@ -285,7 +287,7 @@ As mentioned above, the `{{ ROUTES_FILE }}` file is created during the initializ
 
 {{ ROUTESJS_CALLOUT.md }}
 
-The routes file contains [Rules](/guides/performance/rules) that:
+The routes file contains [Rules](/applications/performance/rules) that:
 
 - Identifies requests by HTTP method, URL path, query string parameters, cookies, and request headers.
 - Determines how our CDN will handle the above requests. For example, you may configure those requests to be cached, prefetched, passed through without modification, served as static content, and more.
@@ -324,11 +326,11 @@ The above route matches all requests that start with `/api/` and instructs {{ PR
 
 ## Routes {/* routes */}
 
-A route identifies a set of requests through any combination of URL path, HTTP method, cookies, request headers, query string parameters and more (see [Conditions](/guides/performance/rules/conditions)). The following routes show various ways for identifying requests.
+A route identifies a set of requests through any combination of URL path, HTTP method, cookies, request headers, query string parameters and more (see [Conditions](/applications/performance/rules/conditions)). The following routes show various ways for identifying requests.
 
 ### Parts of a Route {/* parts-of-a-route */}
 
-Routes define a set of [Rules](/guides/performance/rules) that determine how requests will be handed by {{ PRODUCT }}.
+Routes define a set of [Rules](/applications/performance/rules) that determine how requests will be handed by {{ PRODUCT }}.
 
 In {{ EDGEJS_LABEL }}, this is broken down into two parts when calling a router function. We'll dive deeper into the different available methods below, but for now, will use the `.match()` method as an example.
 
@@ -372,7 +374,7 @@ Below are some simple examples of how to match requests using the `.match()` met
   );
   ```
 
-Learn more advanced syntax with [Route Criteria and Conditions](/guides/performance/cdn_as_code/route_criteria).
+Learn more advanced syntax with [Route Criteria and Conditions](/applications/performance/cdn_as_code/route_criteria).
 
 ### Route Features {/* route-features */}
 
@@ -422,7 +424,7 @@ router.get('/old/path', {
 });
 ```
 
-Learn more advanced syntax with [Route Features](/guides/performance/cdn_as_code/route_features).
+Learn more advanced syntax with [Route Features](/applications/performance/cdn_as_code/route_features).
 
 ### Defining Routes {/* defining-a-route */}
 
@@ -484,7 +486,47 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 
 Assess performance and caching behavior from the {{ PORTAL_LINK }}. Fine-tune your configuration by adding routes and then redeploying your property. Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
 
-[Learn more.](/guides/basics/serving_traffic)
+[Learn more.](/applications/basics/serving_traffic)
+
+## Environments {/* environments */}
+
+An environment is automatically created when you deploy your property for the first time. The initial environment that is created will differ based on how your property was created.
+
+If you first create your property using the {{ PORTAL_LINK }}, the first environment will be named `production` and will serve as the [production environment](/applications/basics/environments#production-environment) for your property. If you first deploy your property using the CLI, the first environment will be named `default` and will serve as the production environment for your property.
+
+The first time you deploy your property from the CLI, {{ PRODUCT }} will create a `default` environment which will serve as the production environment for your property. You can create additional environments to test changes before deploying them to production.
+
+### Creating a New Environment {/* create-environment */}
+
+To create a new environment, deploy your property with the `-e, --environment` flag followed by the name of the new environment. For example, to create a new environment named `staging`, run the following command:
+
+```bash
+{{ CLI_CMD(deploy) }} --environment staging
+```
+
+<Callout type="tip">
+  Create additional environments to match your software development workflow.
+  You may also manage environments from the {{PORTAL}}. [Learn
+  more.](/applications/basics/environments)
+</Callout>
+
+### Setting the Production Environment {/* set-production-environment */}
+
+By default, the first environment created for your property will be tagged as "production". This means that the performance of this environment will be prioritized over other environments during periods of high traffic. Examples of high traffic periods are a distributed denial of service (DDOS) attack or a load test.
+
+Designating an environment as the production environment must be managed from the {{ PORTAL }}. See [Production Environment](/applications/basics/environments#production-environment) for more information.
+
+### Deploying to a Specific Environment {/* deploy-to-environment */}
+
+To deploy to a specific environment, use the `-e, --environment <NAME>` flag where `<NAME>` is the name of the target deployment environment. For example, to deploy to the `production` environment, run the following command:
+
+```bash
+{{ CLI_CMD(deploy) }} --environment production
+```
+
+### Configuring Environments {/* configure-environments */}
+
+The `{{ CONFIG_FILE }}` file contains an `environments` property that allows you to configure your environments, including options like hostnames and origin overrides on a per-environment basis. [Learn more](/applications/performance/cdn_as_code/edgio_config#environments).
 
 ## Examples {/* examples */}
 
@@ -504,9 +546,9 @@ This example demonstrates a basic {{ PRODUCT }} configuration for `publicdomainr
 
 This example demonstrates a full-featured {{ PRODUCT }} configuration that showcases the following functionality:
 
-- [Proxying multiple origins](/guides/performance/cdn_as_code/route_features#proxying-an-origin)
-- Increasing the cache buffer during revalidation through [StaleWhileRevalidate](/guides/performance/caching#cache_hit_ratio_optimization)
-- [Prefetching](/guides/performance/prefetching) and [Deepfetching](/guides/performance/prefetching#deep-fetching) cached content to improve performance.
+- [Proxying multiple origins](/applications/performance/cdn_as_code/route_features#proxying-an-origin)
+- Increasing the cache buffer during revalidation through [StaleWhileRevalidate](/applications/performance/caching#cache_hit_ratio_optimization)
+- [Prefetching](/applications/performance/prefetching) and [Deepfetching](/applications/performance/prefetching#deep-fetching) cached content to improve performance.
 
   <Callout type="info">
 
@@ -514,12 +556,12 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
 
   </Callout>
 
-- [Transforming and optimizing images](/guides/performance/image_optimization)
-- Transforming the response through [Cloud Functions](/guides/performance/serverless_compute)
-- [Removing response headers](/guides/performance/cdn_as_code/route_features#altering-the-response)
-- [Normalizing the cache key](/guides/performance/caching#customizing-the-cache-key)
-- Generating performance insights through [DevTools](/guides/performance/observability/devtools)
-- Tracking [Core Web Vitals](/guides/performance/observability/real_user_monitoring) through real user monitoring (RUM).
+- [Transforming and optimizing images](/applications/performance/image_optimization)
+- Transforming the response through [Cloud Functions](/applications/performance/serverless_compute)
+- [Removing response headers](/applications/performance/cdn_as_code/route_features#altering-the-response)
+- [Normalizing the cache key](/applications/performance/caching#customizing-the-cache-key)
+- Generating performance insights through [DevTools](/applications/performance/observability/devtools)
+- Tracking [Core Web Vitals](/applications/performance/observability/real_user_monitoring) through real user monitoring (RUM).
 
 <ExampleButtons
   title="Full-Featured"

@@ -11,7 +11,7 @@ const StyledMenuButton = styled(MenuButton)`
   align-items: center;
   justify-content: center;
   color: var(--text-primary);
-  font-size: 14px;
+  font-size: 16px;
   font-family: Inter;
   font-weight: 400;
   word-wrap: break-word;
@@ -28,9 +28,14 @@ const StyledMenuButton = styled(MenuButton)`
       color: inherit;
     }
   }
+
+  a {
+    font-size: 16px;
+  }
 `;
 
 const StyledMenuLink = styled(Link)`
+  font-size: 14px;
   color: inherit;
   text-decoration: none;
 
@@ -53,6 +58,7 @@ const StyledMenuList = styled(MenuList)`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  font-size: 14px;
 
   @keyframes slide-down {
     0% {

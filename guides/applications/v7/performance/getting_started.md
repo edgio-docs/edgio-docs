@@ -6,13 +6,13 @@ Get started with {{ PRODUCT_EDGE }} by performing these steps:
 
 1.  Create a property. If you have already performed this step, proceed to the next step.
 
-    [Learn more.](/guides/getting_started)
+    [Learn more.](/applications/getting_started)
 
 2.  Create rules that define how {{ PRODUCT }} handles your traffic.
 
     <Callout type="info">
 
-      If you prefer code to UI, then try our [CDN-as-code approach](/guides/performance/cdn_as_code) to configuration instead. 
+      If you prefer code to UI, then try our [CDN-as-code approach](/applications/performance/cdn_as_code) to configuration instead.
 
     </Callout>
 
@@ -26,7 +26,7 @@ Deploying your web application behind {{ PRODUCT }} optimizes the delivery of yo
 
 ## Creating Rules {/*creating-rules*/}
 
-Rules determine how requests to a specific environment will be processed by {{ PRODUCT }}. 
+Rules determine how requests to a specific environment will be processed by {{ PRODUCT }}.
 
 #### Rule #1: Default Caching Policy {/*default-caching-policy*/}
 
@@ -44,7 +44,7 @@ We will now create a rule that applies a default caching policy to all traffic f
 
       You may add conditions and features to a rule. A condition identifies a set of requests and a feature defines the action that will be applied to them.
 
-      We will not add a condition to this rule. A rule without a condition applies to all requests. 
+      We will not add a condition to this rule. A rule without a condition applies to all requests.
 
     </Callout>
 
@@ -60,7 +60,7 @@ We will now create a rule that applies a default caching policy to all traffic f
 
         </Callout>
 
-    3.  Set the duration to 5 minutes. 
+    3.  Set the duration to 5 minutes.
 
         ![Add Feature](/images/v7/performance/rules-add-feature.png?width=450)
 
@@ -129,7 +129,7 @@ We will now create a rule that applies a different caching policy for requests w
 
 ## Deploying Your Property {/* deploy-to */}
 
-Evaluate site performance and QA functionality by deploying your property to {{ PRODUCT }}. 
+Evaluate site performance and QA functionality by deploying your property to {{ PRODUCT }}.
 
 1.  Click **Deploy Changes** from any page within the `production` environment.
 
@@ -141,7 +141,7 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 
 3.  From the left-hand pane, select **Deployments**.
 
-4.  View the deployment by clicking on the version number (e.g., `#2`) for the latest deployment. 
+4.  View the deployment by clicking on the version number (e.g., `#2`) for the latest deployment.
 
     ![View Deployment](/images/v7/performance/deployments-version-number.png?width=450)
 
@@ -149,12 +149,12 @@ Evaluate site performance and QA functionality by deploying your property to {{ 
 
     ![Preview Site](/images/v7/performance/deployments-second-url.png?width=450)
 
-Congratulations on deploying a caching policy to {{ PRODUCT }}! 
+Congratulations on deploying a caching policy to {{ PRODUCT }}!
 
 You are now ready to:
 
--   Assess performance and caching behavior through [Edge Insights](/guides/performance/observability/edge_insights)  and [Core Web Vitals](/guides/performance/observability/real_user_monitoring). 
--   Fine-tune your configuration by adding rules and then redeploying your property. 
+-   Assess performance and caching behavior through [Edge Insights](/applications/performance/observability/edge_insights)  and [Core Web Vitals](/applications/performance/observability/real_user_monitoring).
+-   Fine-tune your configuration by adding rules and then redeploying your property.
 -   Once you are ready to serve production traffic through {{ PRODUCT }}, update your site's DNS to point to our service.
 
-    [Learn more.](/guides/basics/serving_traffic)
+    [Learn more.](/applications/basics/serving_traffic)

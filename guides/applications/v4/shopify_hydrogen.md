@@ -9,7 +9,7 @@ This guide shows you how to deploy a [Shopify Hydrogen](https://hydrogen.shopify
 <ExampleButtons
   title="Shopify Hydrogen"
   siteUrl="https://layer0-docs-layer0-shopify-hydrogen-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-shopify-hydrogen-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-shopify-hydrogen-example"
   deployFromRepo />
 
 ## Shopify Hydrogen Requirements {/*shopify-hydrogen-requirements*/}
@@ -68,12 +68,12 @@ npm run dev
 
   ```bash
   npm run build -- --target node
-  
+
   OR
-  
+
   yarn build --target node
   ```
-  
+
   The production version of your app will be running at http://localhost:3000. You can inspect and deploy the compiled version of your Node.js Hydrogen storefront from dist/node.
 
   NOTE: This step will be auto configured when building with {{ PRODUCT }} as you follow the next steps.
@@ -214,7 +214,7 @@ const { Router } = require('@layer0/core/router')
 
 module.exports = new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: https://docs.layer0.co/applications/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .match('/assets/:path*', ({ cache }) => {
     cache({

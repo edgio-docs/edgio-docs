@@ -6,10 +6,10 @@ title: Legacy Connectors
 
 <Callout type="important">
 
-  If your project uses one of these frameworks, then we recommend integrating it through our generic [Node.js connector](/guides/sites_frameworks/getting_started/nodejs_connector) instead.
+  If your project uses one of these frameworks, then we recommend integrating it through our generic [Node.js connector](/applications/sites_frameworks/getting_started/nodejs_connector) instead.
 
 </Callout>
 
 <V7LegacyFrameworks />
 
-[View additional frameworks.](/guides/sites_frameworks/getting_started)
+[View additional frameworks.](/applications/sites_frameworks/getting_started)

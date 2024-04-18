@@ -9,7 +9,7 @@ This guide shows you how to deploy a [VuePress](https://vuepress.vuejs.org/) app
 <ExampleButtons
   title="VuePress"
   siteUrl="https://layer0-docs-layer0-vuepress-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-vuepress-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-vuepress-example"
   deployFromRepo />
 
 {{ PREREQ.md }}
@@ -65,7 +65,7 @@ import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core/router'
 
 export default new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: https://docs.layer0.co/applications/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .static('public', ({ cache }) => {
     cache({

@@ -32,7 +32,7 @@ I would like to:
 
     Manage your CDN configuration alongside your code. This approach is known as CDN-as-code. Choose from one of the following options:
 
-    -   Automate deployments and branch previews for a Next.js, Nuxt3, Astro, Remix, Qwik, or Vue project by [connecting your Github repository to {{ PRODUCT }}](#creating-a-property--cli-with-automation-). 
+    -   Automate deployments and branch previews for a Next.js, Nuxt3, Astro, Remix, Qwik, or Vue project by [connecting your Github repository to {{ PRODUCT }}](#creating-a-property--cli-with-automation-).
     -   Manually deploy changes to your CDN configuration [through our CLI](#creating-a-property--cli-without-automation-).
 
 -   **Use {{ PRODUCT }} to serve traffic for a site that is hosted on your web server(s).**
@@ -40,7 +40,7 @@ I would like to:
     For example, you may serve traffic for content that is available through web hosting or virtual cloud services. Choose from one of the following options:
 
     -   Manage and deploy changes to your CDN configuration [through the {{ PORTAL }}](#creating-a-property-).
-    
+
         <Callout type="tip">
 
           This is the recommended option if you do not plan on using Cloud Functions, predictive prefetching, or an integration for a web application framework, such as Next.js, Nuxt3, Astro, Remix, Qwik, or Vue.
@@ -59,7 +59,7 @@ Manage and deploy changes to your CDN configuration through the {{ PORTAL }}.
 
 <Callout type="info">
 
-  Although we do not recommend managing your CDN configuration using both the {{ PORTAL }} and our CLI, you may switch to a CDN-as-code approach at any time. Switch to a CLI-based approach to CDN configuration by [initalizing an existing property within your project's root directory](/guides/performance/cdn_as_code#initialize-property) and then deploying the desired changes.
+  Although we do not recommend managing your CDN configuration using both the {{ PORTAL }} and our CLI, you may switch to a CDN-as-code approach at any time. Switch to a CLI-based approach to CDN configuration by [initalizing an existing property within your project's root directory](/applications/performance/cdn_as_code#initialize-property) and then deploying the desired changes.
 
 </Callout>
 
@@ -67,7 +67,7 @@ Manage and deploy changes to your CDN configuration through the {{ PORTAL }}.
 
     ![New Property](/images/v7/basics/property-create-1.png?width=300)
 
-2.  From under the **Self Host Property**, click **Create Property**. 
+2.  From under the **Self Host Property**, click **Create Property**.
 
     ![New Property](/images/v7/basics/property-create-self-host.png?width=450)
 
@@ -80,11 +80,11 @@ Manage and deploy changes to your CDN configuration through the {{ PORTAL }}.
 
     Perform one of the following steps:
 
-    -   **Origin:** Define the set of web servers that will serve as the origin for the hostname defined in step 3 by setting the **Origin Hostname** option to a domain or an IP address (e.g., `www-origin.example.com` or `192.0.2.222`) that points to them. 
+    -   **Origin:** Define the set of web servers that will serve as the origin for the hostname defined in step 3 by setting the **Origin Hostname** option to a domain or an IP address (e.g., `www-origin.example.com` or `192.0.2.222`) that points to them.
 
         <Callout type="info">
 
-          You may safely ignore the other origin settings until you are ready to fine-tune your setup. [Learn more about origins.](/guides/basics/origins)
+          You may safely ignore the other origin settings until you are ready to fine-tune your setup. [Learn more about origins.](/applications/basics/origins)
 
         </Callout>
 
@@ -101,7 +101,7 @@ If your existing project is stored within a Git repository and it is powered by 
 
 <Callout type="important">
 
-  If you plan on using releases to deploy changes that affect your production traffic, then you should [tag the production environment as the one that will serve production traffic](/guides/basics/environments#production-environment).
+  If you plan on using releases to deploy changes that affect your production traffic, then you should [tag the production environment as the one that will serve production traffic](/applications/basics/environments#production-environment).
 
 </Callout>
 
@@ -113,15 +113,15 @@ If your existing project is stored within a Git repository and it is powered by 
 
     ![New Property](/images/v7/basics/property-create-host-property-on-edgio.png?width=450)
 
-3.  From the **Property Name** option, assign a name to your property. 
+3.  From the **Property Name** option, assign a name to your property.
 4.  Click **Import an existing project**.
-5.  Click on your project's web application framework. 
+5.  Click on your project's web application framework.
 
     If your desired framework is not listed, then you will need to [create a property without automation](#creating-a-property--cli-without-automation-).
-    
+
 6.  If you have not already connected your Github account to {{ PRODUCT }}, then you will need to do so now.
 
-    1.  Click **Connect to Github**. 
+    1.  Click **Connect to Github**.
     2.  Sign in to your account using either a passkey or your user name and password.
     3.  When prompted, authorize {{ PRODUCT }} access to your Github account.
 
@@ -131,7 +131,7 @@ If your existing project is stored within a Git repository and it is powered by 
 
     Review this PR and merge it into your main branch.
 
-[Learn more about CDN-as-code.](/guides/performance/cdn_as_code)
+[Learn more about CDN-as-code.](/applications/performance/cdn_as_code)
 
 ### Creating a Property (CLI without Automation) {/*creating-a-property--cli-without-automation-*/}
 
@@ -145,16 +145,16 @@ Use a CDN-as-code approach to CDN configuration with any existing project.
 
     ![New Property](/images/v7/basics/property-create-host-property-on-edgio.png?width=450)
 
-3.  From the **Property Name** option, assign a name to your property. 
+3.  From the **Property Name** option, assign a name to your property.
 4.  Verify that the **Create using CLI** option is selected.
 5.  Click **Create Property**.
-6.  A quick start page will display a npx command. Initialize your property by running this command from your project's root directory. 
+6.  A quick start page will display a npx command. Initialize your property by running this command from your project's root directory.
 
-[Learn more about CDN-as-code and initalizing a property.](/guides/performance/cdn_as_code#initialize-property)
+[Learn more about CDN-as-code and initalizing a property.](/applications/performance/cdn_as_code#initialize-property)
 
 ### Creating a Property (Sample Project) {/*creating-a-property--sample-project-*/}
 
-We provide sample Next.js, Nuxt3, Astro, Remix, Qwik, and Vue projects through which you may learn how to optimize site delivery. This option requires you to connect your Github account to your {{ PRODUCT }} account. 
+We provide sample Next.js, Nuxt3, Astro, Remix, Qwik, and Vue projects through which you may learn how to optimize site delivery. This option requires you to connect your Github account to your {{ PRODUCT }} account.
 
 1.  From the {{ PORTAL }}, click **New Property**.
 
@@ -164,15 +164,15 @@ We provide sample Next.js, Nuxt3, Astro, Remix, Qwik, and Vue projects through w
 
     ![New Property](/images/v7/basics/property-create-host-property-on-edgio.png?width=450)
 
-3.  From the **Property Name** option, assign a name to your property. 
+3.  From the **Property Name** option, assign a name to your property.
 4.  Click **Start from a template**.
-5.  Click on your project's web application framework. 
+5.  Click on your project's web application framework.
 
     If your desired framework is not listed, then you will need to [create a property without automation](#creating-a-property--cli-without-automation-).
 
 6.  If you have not already connected your Github account to {{ PRODUCT }}, then you will need to do so now.
 
-    1.  Click **Connect to Github**. 
+    1.  Click **Connect to Github**.
     2.  Sign in to your account using either a passkey or your user name and password.
     3.  When prompted, authorize {{ PRODUCT }} access to your Github account.
 
@@ -183,9 +183,9 @@ We provide sample Next.js, Nuxt3, Astro, Remix, Qwik, and Vue projects through w
     -   It will add all of the project's files to this Github repository.
     -   It will deploy the sample project to {{ PRODUCT }}. Once the deployment completes, you may follow the URL displayed under the **URL** label to load the sample site.
 
-8.  Optional. Clone the Github repository to your local drive. Test different configurations by committing changes to this repository. {{ PRODUCT }} will automatically deploy those changes. 
+8.  Optional. Clone the Github repository to your local drive. Test different configurations by committing changes to this repository. {{ PRODUCT }} will automatically deploy those changes.
 
-[Learn more about CDN-as-code.](/guides/performance/cdn_as_code)
+[Learn more about CDN-as-code.](/applications/performance/cdn_as_code)
 
 ## Step 3: Test Your Property {/*test-your-property*/}
 
@@ -195,30 +195,29 @@ Once your property is successfully deployed to the {{ PRODUCT }} network, a URL 
 
 ## Next Steps {/*next-steps*/}
 
-Congratulations on setting up a basic property on {{ PRODUCT }}! 
+Congratulations on setting up a basic property on {{ PRODUCT }}!
 
 You are now ready for:
 
--   Collaboration. If you plan on collaborating with other team members, then you should [create an organization](/guides/basics/collaboration). After which, you will need to <!--either -->create a property for that organization<!-- or [transfer the ownership of your new property](/guides/basics/properties#transfer-ownership) to that organization-->.
+-   Collaboration. If you plan on collaborating with other team members, then you should [create an organization](/applications/basics/collaboration). After which, you will need to <!--either -->create a property for that organization<!-- or [transfer the ownership of your new property](/applications/basics/properties#transfer-ownership) to that organization-->.
 
--   [{{ PRODUCT }} Security](/guides/security). We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your organization's web applications and APIs through our [Web Application Firewall solution](/guides/security/waf). {{ ACCOUNT_UPGRADE }}
+-   [{{ PRODUCT }} Security](/applications/security). We automatically provide distributed denial-of-service (DDOS) protection to traffic that runs behind {{ PRODUCT }}. Apply additional protection to your organization's web applications and APIs through our [Web Application Firewall solution](/applications/security/waf). {{ ACCOUNT_UPGRADE }}
 
--   [Create environments](/guides/basics/environments) to match your software development workflow. Each environment provides site previews that allow QA testers, code reviewers, and other stakeholders to immediately try out newly introduced changes before they are introduced into your production environment. 
+-   [Create environments](/applications/basics/environments) to match your software development workflow. Each environment provides site previews that allow QA testers, code reviewers, and other stakeholders to immediately try out newly introduced changes before they are introduced into your production environment.
 
     <Callout type="info">
-    
+
       If you are using [our Github automation workflow](#creating-a-property--cli-with-automation-), then we will create environments for you. You do not need to create additional environments.
 
     </Callout>
 
--   [CDN-as-code:](/guides/performance/cdn_as_code) If your new property uses CDN-as-code, then you will need to define CDN behavior within a file ({{ ROUTES_FILE }}) stored alongside your code. Additionally, if this project uses a JavaScript framework, then you can use [{{ PRODUCT }} Sites.](/guides/sites_frameworks/getting_started) to improve your website's performance by using our cloud workers to quickly render server-side content in a scalable manner.
+-   [CDN-as-code:](/applications/performance/cdn_as_code) If your new property uses CDN-as-code, then you will need to define CDN behavior within a file ({{ ROUTES_FILE }}) stored alongside your code. Additionally, if this project uses a JavaScript framework, then you can use [{{ PRODUCT }} Sites.](/applications/sites_frameworks/getting_started) to improve your website's performance by using our cloud workers to quickly render server-side content in a scalable manner.
 
--   **{{ PORTAL }}:** If your new property is for a site hosted on your web server(s), then you should fine-tune your [origin configuration](/guides/basics/origins).
+-   **{{ PORTAL }}:** If your new property is for a site hosted on your web server(s), then you should fine-tune your [origin configuration](/applications/basics/origins).
 
     For example, you can enable Server Name Indication (SNI) on an origin configuration or shield it from requests to reduce network bandwith usage and the load on your web servers.
 
--   Optimize website performance by defining a [caching policy](/guides/performance/caching), [predictive prefetching](/guides/performance/prefetching), and other edge logic through [Rules](/guides/performance/rules). 
+-   Optimize website performance by defining a [caching policy](/applications/performance/caching), [predictive prefetching](/applications/performance/prefetching), and other edge logic through [Rules](/applications/performance/rules).
 
--   Gain performance insights through which you can fine-tune your configuration through our [Observability](/guides/performance/observability/real_user_monitoring) solution.
--   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/guides/performance/traffic_splitting) solution.
-
+-   Gain performance insights through which you can fine-tune your configuration through our [Observability](/applications/performance/observability/real_user_monitoring) solution.
+-   Speed up development by quickly iterating through different variations of your site through our [Traffic Splitting](/applications/performance/traffic_splitting) solution.

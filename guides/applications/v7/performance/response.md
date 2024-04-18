@@ -24,25 +24,25 @@ If there is an issue with the request, {{PRODUCT}} will either forward the error
 from the origin or respond with one of the following response codes:
 
 | Status Code                                                                                                                    | Description                                                                                                                                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
-| 400 Bad Request                                                                                                                | The URL is too long or the request headers are too large. [View request limits.](/guides/performance/limits#request-and-response-limits)                                                                                     |
-| [404 Not Found](/guides/performance/troubleshooting#404-not-found-status-code)                                                 | The server could not find the requested resource.                                                                                                                                                                            |
-| [412 Precondition Failed](/guides/performance/troubleshooting#412-precondition-failed-status-code)                             | The requested content was not prefetched because it was not cached on the POP closest to the client. By default, {{ PRODUCT }} only prefetches cached content.                                                               |
-| [502 Bad Gateway](/guides/performance/troubleshooting#502-bad-gateway-status-code)                                             | {{ PRODUCT }} could not establish a connection to an origin server.                                                                                                                                                          |     |
+| ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 400 Bad Request                                                                                                                | The URL is too long or the request headers are too large. [View request limits.](/applications/performance/limits#request-and-response-limits)                                                                                     |
+| [404 Not Found](/applications/performance/troubleshooting#404-not-found-status-code)                                                 | The server could not find the requested resource.                                                                                                                                                                            |
+| [412 Precondition Failed](/applications/performance/troubleshooting#412-precondition-failed-status-code)                             | The requested content was not prefetched because it was not cached on the POP closest to the client. By default, {{ PRODUCT }} only prefetches cached content.                                                               |
+| [502 Bad Gateway](/applications/performance/troubleshooting#502-bad-gateway-status-code)                                             | {{ PRODUCT }} could not establish a connection to an origin server.                                                                                                                                                          |
 | 505 HTTP Version Not Supported                                                                                                 | An invalid HTTP protocol or version was requested.                                                                                                                                                                           |
 | 530 Internal {{ PRODUCT }} Error                                                                                               | Unexpected error. {{ CONTACT_SUPPORT }}                                                                                                                                                                                      |
-| [531 Project Upstream Connection Error](/guides/performance/troubleshooting#531-project-upstream-connection-error-status-code) | {{ PRODUCT }} could not establish a connection to your origin.                                                                                                                                                               |
-| 532 Project Response Too Large                                                                                                 | The response from the {{ PRODUCT }} cloud exceeded the [maximum response body limit](/guides/performance/limits#request-and-response-limits).                                                                                |
+| [531 Project Upstream Connection Error](/applications/performance/troubleshooting#531-project-upstream-connection-error-status-code) | {{ PRODUCT }} could not establish a connection to your origin.                                                                                                                                                               |
+| 532 Project Response Too Large                                                                                                 | The response from the {{ PRODUCT }} cloud exceeded the [maximum response body limit](/applications/performance/limits#request-and-response-limits).                                                                                |
 | 533 Project Upstream TLS Error                                                                                                 | There was an error negotiating a secure TLS connection with the origin. Check whether the upstream TLS certificate has expired and whether the provided host name matches the upstream TLS certificate.                      |
-| 534 Project Error                                                                                                              | Your project's serverless code has failed unexpectedly or has issued a malformed response. Use [server logs](/guides/logs/server_logs) to debug.                                                                             |
+| 534 Project Error                                                                                                              | Your project's serverless code has failed unexpectedly or has issued a malformed response. Use [server logs](/applications/logs/server_logs) to debug.                                                                             |
 | 535 Unknown Project                                                                                                            | The `host` header is missing or does not match any {{ PRODUCT }} deployment. Check the request and your project configuration.                                                                                               |
 | <a id="536"></a>536 Project HTTP Response Timeout                                                                              | {{ PRODUCT }} did not receive an HTTP response from the upstream. Common causes are the upstream dropped the connection prematurely, the upstream application threw an exception, and the upstream took too long to respond. |
 | 537 Project DNS Resolution Error                                                                                               | Failed to resolve the host name through DNS, which might indicate a problem with your DNS provider or an incorrectly configured domain.                                                                                      |
 | 538 Project Request Loop                                                                                                       | The {{ PRODUCT }} project exceeded the maximum level (3) of nested {{ PRODUCT }} requests. A request is nested when the {{ PRODUCT }} property is the upstream of itself or of another {{ PRODUCT }} property.               |
-| [539 Project Timeout](/guides/performance/troubleshooting#troubleshooting-539-status-codes)                                    | This status code is primarily caused by timeouts, but can also be caused by a lack of allowlists (whitelists) configured on your web server(s).                                                                              |
-| 540 Out of Memory                                                                                                              | An {{ PRODUCT }} cloud worker ran out of memory when processing your project's serverless code. Use [server logs](/guides/logs/server_logs) to debug and lower memory usage.                                                 |
+| [539 Project Timeout](/applications/performance/troubleshooting#troubleshooting-539-status-codes)                                    | This status code is primarily caused by timeouts, but can also be caused by a lack of allowlists (whitelists) configured on your web server(s).                                                                              |
+| 540 Out of Memory                                                                                                              | An {{ PRODUCT }} cloud worker ran out of memory when processing your project's serverless code. Use [server logs](/applications/logs/server_logs) to debug and lower memory usage.                                                 |
 | 541 {{ PRODUCT }} Out of Workers                                                                                               | A request could not be scheduled for processing due to the amount of traffic on your website. {{ ACCOUNT_UPGRADE }}                                                                                                          |
-| 542 Project Header Overflow                                                                                                    | The {{ PRODUCT }} project's request or response contained too many HTTP headers. [View request limits.](/guides/performance/limits#request-and-response-limits)                                                              |
+| 542 Project Header Overflow                                                                                                    | The {{ PRODUCT }} project's request or response contained too many HTTP headers. [View request limits.](/applications/performance/limits#request-and-response-limits)                                                              |
 | 543 Global Upstream Timeout                                                                                                    | The request failed to propagate between the edge of our network and the Origin Shield POP. {{ CONTACT_SUPPORT }}                                                                                                             |
 | 544 Invalid Host Header                                                                                                        | The `host` header is set to an invalid domain.                                                                                                                                                                               |
 | 545 {{ PRODUCT }} Component Not Ready                                                                                          | An unprepared {{ PRODUCT }} component received traffic. {{ CONTACT_SUPPORT }}                                                                                                                                                |
@@ -112,7 +112,7 @@ Common response headers are described below.
 
   Definitions for the above terms are provided below.
 
-  - **CACHE STATUS CODE:** Indicates the [cache status code](/guides/performance/caching/cache_status_codes) for the response served to the client.
+  - **CACHE STATUS CODE:** Indicates the [cache status code](/applications/performance/caching/cache_status_codes) for the response served to the client.
   - **POP:** Indicates the POP that served the response.
   - **COUNTRY:** Indicates the two-letter code for the POP's country.
 
@@ -128,14 +128,14 @@ Common response headers are described below.
   **Warning:** This response header is only returned when a stale response is served
   to the client. A stale response is typically served under the following conditions:
 
-  - The [Stale While Revalidate feature](/guides/performance/rules/features#stale-while-revalidate) was applied to the request.
+  - The [Stale While Revalidate feature](/applications/performance/rules/features#stale-while-revalidate) was applied to the request.
 
     **Response header value:** `110 - "Response is stale"`
 
   - Revalidation failed and either of the following conditions is true:
 
-    - The origin server returned a `5xx` response and the [Stale on Error feature](/guides/performance/rules/features#stale-on-error) was applied to the request.
-    - The origin server is unresponsive and the stale window, as defined by the [Revalidate After Origin Unavailable feature](/guides/performance/rules/features#revalidate-after-origin-unavailable), is active.
+    - The origin server returned a `5xx` response and the [Stale on Error feature](/applications/performance/rules/features#stale-on-error) was applied to the request.
+    - The origin server is unresponsive and the stale window, as defined by the [Revalidate After Origin Unavailable feature](/applications/performance/rules/features#revalidate-after-origin-unavailable), is active.
 
     **Response header value:** `111 - "Revalidation Failed", 110 - "Response is stale"`
 
@@ -147,7 +147,7 @@ Common response headers are described below.
 
   **Example:** `x-cache: HIT`
 
-- **x-ec-debug:** Contains the requested debug cache metadata when the [Debug Header feature](/guides/performance/rules/features#debug-header) has been enabled. [Learn more.](#requesting-debug-cache-information)
+- **x-ec-debug:** Contains the requested debug cache metadata when the [Debug Header feature](/applications/performance/rules/features#debug-header) has been enabled. [Learn more.](#requesting-debug-cache-information)
 - **{{ HEADER_PREFIX }}-aws-region:** Indicates the [AWS region](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions) from which a request to the {{ PRODUCT }} cloud was served.
   <!--
 - **{{ HEADER_PREFIX }}-caching-status:** Indicates cache status information. If the response was not cached or served from cache, then it will report the reason why it was not cached.
@@ -156,7 +156,7 @@ Common response headers are described below.
 
       `{{ HEADER_PREFIX }}-caching-status: disabled`
 
-      [Learn more.](/guides/performance/caching#why-is-my-response-not-being-cached)
+      [Learn more.](/applications/performance/caching#why-is-my-response-not-being-cached)
 
   -->
 
@@ -189,7 +189,7 @@ Common response headers are described below.
 
       </Callout>
 
-- **{{ HEADER_PREFIX }}-p:** Returns `1` when the client's request includes an `edgio_prefetch` query string parameter. This parameter indicates that the client is requesting [Predictive Prefetching](/guides/performance/prefetching).
+- **{{ HEADER_PREFIX }}-p:** Returns `1` when the client's request includes an `edgio_prefetch` query string parameter. This parameter indicates that the client is requesting [Predictive Prefetching](/applications/performance/prefetching).
 
   **Example:** `{{ HEADER_PREFIX }}-p: 1`
 
@@ -206,7 +206,7 @@ Common response headers are described below.
 
 - **{{ HEADER_PREFIX }}-surrogate-key:** Contains a space-delimited list of surrogate keys (cache tags). <!-- surrogate keys can be injected when needed into your backend responses -->
 
-  [Learn more.](/guides/performance/caching/purging#surrogate-keys-cache-tags)
+  [Learn more.](/applications/performance/caching/purging#surrogate-keys-cache-tags)
 
 - [{{ HEADER_PREFIX }}-t](#-t-response-header): Contains time measurements and cache status information for {{ PRODUCT }} cloud requests ({{ PRODUCT }} {{ PRODUCT_PLATFORM }} and Cloud Functions).
 
@@ -231,7 +231,7 @@ Common response headers are described below.
 
 The debug cache response headers provide additional information about the cache policy applied to the requested asset. The response sent from our edge servers to a user will only include debug cache response headers when the following conditions are true:
 
-- The [Debug Header feature](/guides/performance/rules/features#debug-header) has been enabled on the desired request.
+- The [Debug Header feature](/applications/performance/rules/features#debug-header) has been enabled on the desired request.
 - The request sets a `x-ec-debug` header to the set of debug cache headers that will be included in the response.
 
   **Syntax:** `x-ec-debug: <DEBUG CACHE HEADER>[,<DEBUG CACHE HEADER>,<DEBUG CACHE HEADER>]`
@@ -250,7 +250,7 @@ The debug cache response headers provide additional information about the cache 
 
   Once you have enabled the `Debug Header` feature, use the [Edgio Developer Tools Chrome extension](https://chrome.google.com/webstore/detail/edgio-developer-tools/ieehikdcdpeailgpfdbafhnbfhpdgefm) to automatically add all debug cache response headers to traffic served by {{ PRODUCT }}. View these response headers by inspecting network activity through [Chrome DevTools](https://developer.chrome.com/docs/devtools/).
 
-  Alternatively, if you are using the latest version of the {{ PRODUCT }} CLI (v7.0.22+), then [{{ FULL_CLI_NAME }} curl](/guides/develop/cli#curl) will also automatically add all debug cache headers to the response.
+  Alternatively, if you are using the latest version of the {{ PRODUCT }} CLI (v7.0.22+), then [{{ FULL_CLI_NAME }} curl](/applications/develop/cli#curl) will also automatically add all debug cache headers to the response.
 
   </Callout>
 
@@ -272,7 +272,7 @@ The following response headers identify a server and how it handled the response
 
 The terms used in the above response header syntax are defined below:
 
-- **CACHE STATUS CODE:** Indicates how the requested content was handled by the CDN. This is represented through a [cache status code](/guides/performance/caching/cache_status_codes).
+- **CACHE STATUS CODE:** Indicates how the requested content was handled by the CDN. This is represented through a [cache status code](/applications/performance/caching/cache_status_codes).
 - **POP:** Indicates the three-letter abbreviation for the POP that handled the request.
 
 #### Cacheable Response Header {/* cacheable-response-header */}
@@ -303,7 +303,7 @@ The term `CACHEABLE` indicates whether the requested content could have been cac
 
 The `x-ec-cache-key` response header indicates the cache key associated with the requested content. A cache key identifies an asset for the purposes of caching. In other words, our servers will check for a cached version of an asset according to its cache key.
 
-[Learn more about cache keys.](/guides/performance/caching/cache_key)
+[Learn more about cache keys.](/applications/performance/caching/cache_key)
 
 #### Cache State Response Header {/* cache-state-response-header */}
 
@@ -393,7 +393,7 @@ We will now examine each metric defined within the above sample response header:
 
 ## Cloud - Cold Start Timing {/* serverless-cold-start-timing */}
 
-To calculate the Cloud cold start timing you must take the difference between `pf` and `wt` in the `{{ HEADER_PREFIX }}-t` header. `wt` is time taken for the Cloud worker to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. To [track timings](/guides/performance#tracking-your-own-timings) for a function, it is possible to add specific code to do that.
+To calculate the Cloud cold start timing you must take the difference between `pf` and `wt` in the `{{ HEADER_PREFIX }}-t` header. `wt` is time taken for the Cloud worker to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. To [track timings](/applications/performance#tracking-your-own-timings) for a function, it is possible to add specific code to do that.
 
 Based on the example above, that would be `809 (pf) - 722 (wt) = 87ms`.
 

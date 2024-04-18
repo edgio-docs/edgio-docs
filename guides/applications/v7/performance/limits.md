@@ -18,23 +18,23 @@ Data storage units are defined below.
 
 | Type                                                  | Limit                 | Description                                                                                                                                                                           |
 | ----------------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Response time from origin server                      | 60 seconds            | The maximum number of seconds that {{ PRODUCT }} will wait for a response from an origin server (e.g., your web server). The response for a request that exceeds this limit is a [536 Project HTTP Response Timeout](/guides/performance/response#status-codes#536). |
+| Response time from origin server                      | 60 seconds            | The maximum number of seconds that {{ PRODUCT }} will wait for a response from an origin server (e.g., your web server). The response for a request that exceeds this limit is a [536 Project HTTP Response Timeout](/applications/performance/response#status-codes#536). |
 | Response body size from static                        | 2Gb                   | The maximum size of a response body of {{ PRODUCT }} static assets.                                                                                                              |
 | Response body size from custom origin                 | 2Gb                   | The maximum size of a response body from a custom origin.                                                                                                                             |
 | Response body size from {{ PRODUCT }} cloud           | 6Mb                   | The maximum size of a response body from the {{ PRODUCT }} cloud.                                                                                                   |
 | Path and query string size                            | 8Kb                   | The maximum bytes (not characters) that {{ PRODUCT }} will accept in path and query string.                                                                                      |
 | Cookie size                                           | 32Kb                  | The maximum bytes that {{ PRODUCT }} will accept in request or response cookies.                                                                                                 |
 | HTTP header size                                      | 64Kb                  | The maximum bytes that {{ PRODUCT }} will accept in request or response HTTP headers.                                                                                            |
-| HTTP header count                                     | 70                    | The maximum number of developer-controlled headers {{ PRODUCT }} will accept in HTTP request or response. Exceeding this will result in 542 [status code](/guides/performance/response#status-codes). |
-| Scheduling timeout                                    | 60 seconds            | The number of seconds {{ PRODUCT }} will try to schedule a request processing before timing out. Exceeding this will result in 541 [status code](/guides/performance/response#status-codes).          |
-| Worker timeout                                        | 20 seconds            | The number of seconds {{ PRODUCT }} will wait for project code to process the request before timing out. Exceeding this will result in 539 [status code](/guides/performance/response#status-codes).  |
+| HTTP header count                                     | 70                    | The maximum number of developer-controlled headers {{ PRODUCT }} will accept in HTTP request or response. Exceeding this will result in 542 [status code](/applications/performance/response#status-codes). |
+| Scheduling timeout                                    | 60 seconds            | The number of seconds {{ PRODUCT }} will try to schedule a request processing before timing out. Exceeding this will result in 541 [status code](/applications/performance/response#status-codes).          |
+| Worker timeout                                        | 20 seconds            | The number of seconds {{ PRODUCT }} will wait for project code to process the request before timing out. Exceeding this will result in 539 [status code](/applications/performance/response#status-codes).  |
 | Prerender concurrency                                 | 200                   |
 | Total number of prerendered requests                  | 25,000 per deployment |
-| Maximum number of nested requests                     | 3                     | "Nested" means an {{ PRODUCT }} site is the upstream of itself or of another {{ PRODUCT }} site. Exceeding this will result in 538 [status code](/guides/performance/response#status-codes).     |
+| Maximum number of nested requests                     | 3                     | "Nested" means an {{ PRODUCT }} site is the upstream of itself or of another {{ PRODUCT }} site. Exceeding this will result in 538 [status code](/applications/performance/response#status-codes).     |
 
 #### Reserved Headers {/*prohibited-headers*/}
 
-The following headers are served for use by {{ PRODUCT }}. You may not modify these request headers. 
+The following headers are served for use by {{ PRODUCT }}. You may not modify these request headers.
 
 -   accept-ranges
 -   age
@@ -49,12 +49,12 @@ The following headers are served for use by {{ PRODUCT }}. You may not modify th
 -   upgrade
 -   vary
 -   via
--   warning 
+-   warning
 -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
 
 ### RTLD Log Data {/*rtld-log-data*/}
 
-[RTLD](/guides/logs/rtld) limitations are described below.
+[RTLD](/applications/logs/rtld) limitations are described below.
 
 | Value | Limit     | Description                                                                                                                                                                                                       |
 | ----- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

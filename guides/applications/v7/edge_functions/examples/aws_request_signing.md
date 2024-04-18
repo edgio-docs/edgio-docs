@@ -13,9 +13,9 @@ This guides references the following dependencies that will need to be installed
 <PackageCommand>
 
 ```
-npm install crypto-js whatwg-url
+npm install crypto-js
 ---
-yarn add crypto-js whatwg-url
+yarn add crypto-js
 ```
 
 </PackageCommand>
@@ -55,7 +55,7 @@ Define your S3 origin configuration in the `{{ CONFIG_FILE }}` file:
 ```js filename="{{ CONFIG_FILE }}"
 // This file was automatically added by edgio init.
 // You should commit this file to source control.
-// Learn more about this file at https://docs.edg.io/guides/edgio_config
+// Learn more about this file at https://docs.edg.io/applications/edgio_config
 
 require('dotenv').config();
 
@@ -96,9 +96,6 @@ The edge function will sign the incoming request using the `AwsV4Signer` class, 
 
 ```js filename="edge-functions/main.js"
 import {AwsV4Signer} from './awsv4';
-import {URL} from 'whatwg-url';
-
-global.URL = URL;
 
 /**
  * An example edge function which forwards the request to the origin.

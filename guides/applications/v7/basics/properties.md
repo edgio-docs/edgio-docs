@@ -5,9 +5,9 @@ title: Properties
 A property instructs {{ PRODUCT }} how to securely process requests for your website. Setting up a property typically involves:
 
 -   Determining whether it will belong to an organization that allows collaboration with other team members or a private space with access restricted to your account.
--   [Environment(s)](/guides/basics/environments). An environment allows you to serve your site on different domains.
--   [TLS certificate(s)](/guides/security/tls_certificates). Each hostname associated with an environment requires the installation of a TLS certificate on our network. Manage these TLS certificates through your property's settings. 
--   [Securing your web applications and API traffic](/guides/security/waf). Secure your web applications and APIs across all environments using a single configuration at the property level.
+-   [Environment(s)](/applications/basics/environments). An environment allows you to serve your site on different domains.
+-   [TLS certificate(s)](/applications/security/tls_certificates). Each hostname associated with an environment requires the installation of a TLS certificate on our network. Manage these TLS certificates through your property's settings.
+-   [Securing your web applications and API traffic](/applications/security/waf). Secure your web applications and APIs across all environments using a single configuration at the property level.
 
 ## Managing Properties {/*managing-properties*/}
 
@@ -15,18 +15,18 @@ You may create, rename, or delete a property. <!--You may even transfer ownershi
 
 <Callout type="important">
 
-  Managing an organization's properties requires the `Admin` role within the desired organization. 
+  Managing an organization's properties requires the `Admin` role within the desired organization.
 
 </Callout>
 
 Upon creating a property, it will contain a `production` environment with the following configuration:
 
 -   **Hostname:** Identifies a hostname through which your site will be served. Requests submitted by clients are directed to this hostname.
--   **Origin Configuration:** Defines how {{ PRODUCT }} communicates with your web server(s). 
+-   **Origin Configuration:** Defines how {{ PRODUCT }} communicates with your web server(s).
 
 <Callout type="info">
 
-  By default, hostname(s) defined during property creation are assigned to the first origin configuration. Once you have added multiple origin configurations, you may adjust this mapping as needed. 
+  By default, hostname(s) defined during property creation are assigned to the first origin configuration. Once you have added multiple origin configurations, you may adjust this mapping as needed.
 
 </Callout>
 
@@ -48,14 +48,14 @@ Upon creating a property, it will contain a `production` environment with the fo
 
     By default, a new property contains an origin configuration called `web` that requires configuration.
 
-    1.  From the **Name** option, assign it a name. 
+    1.  From the **Name** option, assign it a name.
     2.  From the **Origin Hostname** option, define a hostname or an IP address that points to your web server(s).
-    3.  Optional. If your web servers are listening on a custom port, then you will need to define it within the **Port** option. 
+    3.  Optional. If your web servers are listening on a custom port, then you will need to define it within the **Port** option.
     4.  From the **Scheme** option, determine whether {{ PRODUCT }} will communicate with your web server(s) using HTTP, HTTPS, or whether we will match the scheme used by the client.
     5.  Optional. By default, the request determines the value assigned to the `Host` request header. You may override the value assigned to this request header through the **Override Host Header** option.
-    6.  Optional. Define the TLS requirements when communicating with your web servers through the **Origin TLS Settings** section. 
+    6.  Optional. Define the TLS requirements when communicating with your web servers through the **Origin TLS Settings** section.
 
-        [Learn more.](/guides/basics/origins#origin_tls_settings)
+        [Learn more.](/applications/basics/origins#origin_tls_settings)
     7.  Add more origin configurations as needed by clicking **+ Add Origin** and then repeating the above steps.
 
 6.  Click **Create Property**.
@@ -69,7 +69,7 @@ Upon creating a property, it will contain a `production` environment with the fo
 **To delete a property**
 1.  From the {{ PORTAL_LINK }}, click on the desired property.
 2.  Click **Settings**.
-3.  From the **Delete property** section, mark the **Confirm that I want to delete the property "&lt;PROPERTY>".** option. 
+3.  From the **Delete property** section, mark the **Confirm that I want to delete the property "&lt;PROPERTY>".** option.
 4.  Click **Delete Property**.
 
 <!--

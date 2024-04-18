@@ -1,0 +1,8 @@
+description: Forbidden
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/rtldError.yaml
+    examples:
+      bad-request:
+        $ref: ../examples/rtldExampleForbidden.yaml

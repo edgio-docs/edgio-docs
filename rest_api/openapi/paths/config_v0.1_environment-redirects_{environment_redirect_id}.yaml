@@ -1,22 +1,22 @@
-put:
-  summary: Set Environment Variable
-  description: Creates or updates an environment variable.
-  requestBody:
-    content:
-      application/json:
-        schema:
-          $ref: ../components/schemas/putConfigV01EnvironmentVariables.yaml
-    required: true
+delete:
+  summary: Delete Environment Redirect
+  description: Deletes an environment redirect.
+  parameters:
+    - in: path
+      name: environment_redirect_id
+      required: true
+      schema:
+        type: string
   security:
     - configScope:
         - app.config
   responses:
-    '200':
+    '204':
       description: OK
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/Config_V1_Entities_EnvironmentVariable.yaml
+            $ref: ../components/schemas/Config_V1_Entities_EnvironmentRedirect.yaml
     '400':
       description: Bad Request
       content:
@@ -54,45 +54,14 @@ put:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
   tags:
-    - environment-variables
-  operationId: putConfigV01EnvironmentVariables
+    - environment-redirects
+  operationId: deleteConfigV01EnvironmentRedirectsEnvironmentRedirectId
 get:
-  summary: Get All Environment Variables
-  description: Returns all environment variables associated with an environment.
+  summary: Get Environment Redirect
+  description: Returns an environment redirect.
   parameters:
-    - in: query
-      name: page
-      description: 0-based page number.
-      required: false
-      schema:
-        type: integer
-        format: int32
-        default: 0
-    - in: query
-      name: page_size
-      description: >-
-        Number of results per page. Valid values are: 1 - 100. **Default
-        value:** 20
-      required: false
-      schema:
-        type: integer
-        format: int32
-        default: 20
-    - in: query
-      name: key
-      description: Find an environment variable by its name.
-      required: false
-      schema:
-        type: string
-    - in: query
-      name: environment_id
-      description: >
-        An environment's system-defined ID (e.g.,
-        12345678-1234-1234-1234-1234567890ab).
-
-
-        From the Edgio Console, navigate to the desired environment and then
-        click **Settings**. It is listed under **Environment ID**.
+    - in: path
+      name: environment_redirect_id
       required: true
       schema:
         type: string
@@ -105,8 +74,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: >-
-              ../components/schemas/Config_V1_Entities_EnvironmentVariable_Collection.yaml
+            $ref: ../components/schemas/Config_V1_Entities_EnvironmentRedirect.yaml
     '400':
       description: Bad Request
       content:
@@ -144,5 +112,5 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
   tags:
-    - environment-variables
-  operationId: getConfigV01EnvironmentVariables
+    - environment-redirects
+  operationId: getConfigV01EnvironmentRedirectsEnvironmentRedirectId

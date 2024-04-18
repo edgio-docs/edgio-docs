@@ -1,12 +1,9 @@
 get:
-  tags:
-    - deployments
   summary: Get Deployment
   description: Retrieve information about a specific deployment.
-  operationId: getConfigV01DeploymentsDeploymentId
   parameters:
-    - name: deployment_id
-      in: path
+    - in: path
+      name: deployment_id
       description: >
         The deployment's system-defined ID. This ID is returned by the [Deploy
         CDN Configuration
@@ -14,6 +11,9 @@ get:
       required: true
       schema:
         type: string
+  security:
+    - configScope:
+        - app.config
   responses:
     '200':
       description: OK
@@ -45,12 +45,18 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
       description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-  security:
-    - configScope:
-        - app.config
+  tags:
+    - deployments
+  operationId: getConfigV01DeploymentsDeploymentId

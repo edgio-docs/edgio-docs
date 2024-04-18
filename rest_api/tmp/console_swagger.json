@@ -44,6 +44,10 @@
   "basePath": "/",
   "tags": [
     {
+      "name": "environment-redirects",
+      "description": "Operations about environment-redirects"
+    },
+    {
       "name": "environment-variables",
       "description": "Operations about environment-variables"
     },
@@ -82,9 +86,357 @@
     {
       "name": "bff",
       "description": "Operations about bffs"
+    },
+    {
+      "name": "asm",
+      "description": "Operations about asms"
     }
   ],
   "paths": {
+    "/config/v0.1/environment-redirects/{environment_redirect_id}": {
+      "delete": {
+        "summary": "Delete Environment Redirect",
+        "description": "Deletes an environment redirect.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "environment_redirect_id",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Config_V1_Entities_EnvironmentRedirect"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_UserError"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          }
+        },
+        "tags": [
+          "environment-redirects"
+        ],
+        "operationId": "deleteConfigV01EnvironmentRedirectsEnvironmentRedirectId"
+      },
+      "get": {
+        "summary": "Get Environment Redirect",
+        "description": "Returns an environment redirect.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "environment_redirect_id",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Config_V1_Entities_EnvironmentRedirect"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_UserError"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          }
+        },
+        "tags": [
+          "environment-redirects"
+        ],
+        "operationId": "getConfigV01EnvironmentRedirectsEnvironmentRedirectId"
+      }
+    },
+    "/config/v0.1/environment-redirects": {
+      "put": {
+        "summary": "Set Environment Redirect",
+        "description": "Creates or updates an environment redirect.",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "String",
+            "name": "from",
+            "description": "The path where to redirect from.",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "String",
+            "name": "to",
+            "description": "The path where to redirect to.",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "Integer",
+            "name": "status",
+            "description": "Redirect status code: 301, 302, 307, 308.",
+            "type": "integer",
+            "format": "int32",
+            "required": false
+          },
+          {
+            "in": "Boolean",
+            "name": "forward_query_string",
+            "description": "Determines whether to forward query string to redirect location.",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "name": "putConfigV01EnvironmentRedirects",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/putConfigV01EnvironmentRedirects"
+            }
+          }
+        ],
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Config_V1_Entities_EnvironmentRedirect"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_UserError"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          }
+        },
+        "tags": [
+          "environment-redirects"
+        ],
+        "operationId": "putConfigV01EnvironmentRedirects"
+      },
+      "get": {
+        "summary": "Get All Environment Redirects",
+        "description": "Returns all redirects associated with an environment.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "description": "0-based page number.",
+            "type": "integer",
+            "format": "int32",
+            "default": 0,
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page_size",
+            "description": "Number of results per page. Valid values are: 1 - 100. **Default value:** 20",
+            "type": "integer",
+            "format": "int32",
+            "default": 20,
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Find an environment redirect by its from value",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "environment_id",
+            "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Config_V1_Entities_EnvironmentRedirect_Collection"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_UserError"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          }
+        },
+        "tags": [
+          "environment-redirects"
+        ],
+        "operationId": "getConfigV01EnvironmentRedirects"
+      }
+    },
     "/config/v0.1/environment-variables/{environment_variable_id}": {
       "delete": {
         "summary": "Delete Environment Variable",
@@ -96,6 +448,7 @@
           {
             "in": "path",
             "name": "environment_variable_id",
+            "description": "An environment variable's system-defined ID.\n\nUse the [Get All Environment Variables operation](#tag/environment-variables/operation/getConfigV01EnvironmentVariables) to retrieve a list of environment variables and their system-defined IDs.\n",
             "type": "string",
             "required": true
           }
@@ -138,6 +491,12 @@
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -160,6 +519,7 @@
           {
             "in": "path",
             "name": "environment_variable_id",
+            "description": "An environment variable's system-defined ID.\n\nUse the [Get All Environment Variables operation](#tag/environment-variables/operation/getConfigV01EnvironmentVariables) to retrieve a list of environment variables and their system-defined IDs.\n",
             "type": "string",
             "required": true
           }
@@ -198,6 +558,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -269,6 +635,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -363,6 +735,12 @@
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -430,6 +808,12 @@
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -441,6 +825,83 @@
           "tls-certs"
         ],
         "operationId": "getConfigV01TlsCertsCertId"
+      }
+    },
+    "/config/v0.1/tls-certs/generate": {
+      "post": {
+        "summary": "Generate Let's Encrypt Certificate",
+        "description": "Generate Let's Encrypt certificate and activate it within a specific environment.",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "postConfigV01TlsCertsGenerate",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/postConfigV01TlsCertsGenerate"
+            }
+          }
+        ],
+        "security": [
+          {
+            "configScope": [
+              "app.config"
+            ]
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Config_V1_Entities_TlsCert"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_UserError"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          }
+        },
+        "tags": [
+          "tls-certs"
+        ],
+        "operationId": "postConfigV01TlsCertsGenerate"
       }
     },
     "/config/v0.1/tls-certs": {
@@ -497,6 +958,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -584,6 +1051,12 @@
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -647,6 +1120,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -718,6 +1197,12 @@
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -734,7 +1219,7 @@
     "/config/v0.1/configs/{config_id}": {
       "get": {
         "summary": "Get CDN Configuration",
-        "description": "Retrieve an environment's origin configurations, hostnames, rules, and experiments.\n\nUse the [Get Environment operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId) to retrieve the system-defined ID (`@links.active_config.id`) for an environment's active configuration\n",
+        "description": "Retrieve an environment's origin configurations, hostnames, rules, and experiments.\n",
         "produces": [
           "application/json"
         ],
@@ -742,6 +1227,7 @@
           {
             "in": "path",
             "name": "config_id",
+            "description": "The system-defined ID for a configuration that was deployed to an environment.\n\nUse the [Get Environment operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId) to retrieve the system-defined ID (`@links.active_config.id`) for an environment's active configuration.\n",
             "type": "string",
             "required": true
           }
@@ -780,6 +1266,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -855,6 +1347,12 @@
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -918,6 +1416,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -993,14 +1497,14 @@
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
           },
-          "500": {
-            "description": "Internal Server Error",
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
           },
-          "429": {
-            "description": "Too Many Requests",
+          "500": {
+            "description": "Internal Server Error",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -1059,6 +1563,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -1136,6 +1646,12 @@
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -1194,6 +1710,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -1263,6 +1785,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -1349,6 +1877,12 @@
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -1412,6 +1946,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -1492,6 +2032,12 @@
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -1506,7 +2052,7 @@
       },
       "get": {
         "summary": "Get Environment",
-        "description": "Retrieves an environment's settings and metadata.\n\nThe system-defined ID for the environment's active configuration is returned by the `@links.active_config.id` property.\n",
+        "description": "Retrieves an environment's settings and metadata.\n",
         "produces": [
           "application/json"
         ],
@@ -1553,6 +2099,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -1624,6 +2176,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -1711,6 +2269,12 @@
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -1774,6 +2338,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -1854,6 +2424,12 @@
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -1915,6 +2491,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -1986,6 +2568,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -2073,6 +2661,12 @@
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -2136,6 +2730,12 @@
           },
           "404": {
             "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "schema": {
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
@@ -2216,6 +2816,12 @@
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -2281,6 +2887,12 @@
               "$ref": "#/definitions/BaseApi_Entities_GeneralError"
             }
           },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/BaseApi_Entities_GeneralError"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -2292,6 +2904,454 @@
           "organizations"
         ],
         "operationId": "getAccountsV01OrganizationsOrganizationId"
+      }
+    },
+    "/bff/rta/alerts/{alert_id}": {
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "alert_id",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "updated Alert"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "putBffRtaAlertsAlertId"
+      },
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "alert_id",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "deleted Alert"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "deleteBffRtaAlertsAlertId"
+      }
+    },
+    "/bff/rta/alerts": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "created Alert"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "postBffRtaAlerts"
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "get Alert(s)"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "getBffRtaAlerts"
+      }
+    },
+    "/bff/mtls/chains/{sunfish_chain_id}": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "sunfish_chain_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "deleted Chain"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "deleteBffMtlsChainsSunfishChainId"
+      },
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "sunfish_chain_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "updated Chain"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "putBffMtlsChainsSunfishChainId"
+      }
+    },
+    "/bff/mtls/chains": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "created Chain"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "postBffMtlsChains"
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "get Chain(s)"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "getBffMtlsChains"
+      }
+    },
+    "/bff/mtls/config": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "deleted Config"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "deleteBffMtlsConfig"
+      },
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "updated Config"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "putBffMtlsConfig"
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "get Config(s)"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "getBffMtlsConfig"
+      }
+    },
+    "/bff/rtld/fields": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "profile_type",
+            "type": "string",
+            "enum": [
+              "cdn",
+              "rl",
+              "waf",
+              "bot",
+              "cloud_functions"
+            ],
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get Field(s)"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "getBffRtldFields"
+      }
+    },
+    "/bff/rtld/countries": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "get Country(s)"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "getBffRtldCountries"
+      }
+    },
+    "/bff/rtld/metadata/{metadata_type}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "metadata_type",
+            "type": "string",
+            "enum": [
+              "log-formats",
+              "aws-regions",
+              "custom-items"
+            ],
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get Metadatum(s)"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "getBffRtldMetadataMetadataType"
+      }
+    },
+    "/bff/rtld/{profile_type}/profiles/{profile_id}": {
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_type",
+            "type": "string",
+            "enum": [
+              "cdn",
+              "rl",
+              "waf",
+              "bot",
+              "cloud_functions"
+            ],
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "profile_id",
+            "type": "integer",
+            "format": "int64",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "deleted Profile"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "deleteBffRtldProfileTypeProfilesProfileId"
+      },
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_type",
+            "type": "string",
+            "enum": [
+              "cdn",
+              "rl",
+              "waf",
+              "bot",
+              "cloud_functions"
+            ],
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "profile_id",
+            "type": "integer",
+            "format": "int64",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "updated Profile"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "putBffRtldProfileTypeProfilesProfileId"
+      }
+    },
+    "/bff/rtld/{profile_type}/profiles": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_type",
+            "type": "string",
+            "enum": [
+              "cdn",
+              "rl",
+              "waf",
+              "bot",
+              "cloud_functions"
+            ],
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "created Profile"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "postBffRtldProfileTypeProfiles"
+      },
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_type",
+            "type": "string",
+            "enum": [
+              "cdn",
+              "rl",
+              "waf",
+              "bot",
+              "cloud_functions"
+            ],
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get Profile(s)"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "getBffRtldProfileTypeProfiles"
+      }
+    },
+    "/bff/rtld/stats": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "created Stat"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "postBffRtldStats"
       }
     },
     "/bff/ids/teams/{team_id}/feature-scopes": {
@@ -2539,6 +3599,37 @@
         "operationId": "getBffIdsTeamsTeamIdClients"
       }
     },
+    "/bff/serverless/{query_name}": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "query_name",
+            "type": "string",
+            "enum": [
+              "routes",
+              "usage-overtime"
+            ],
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "created Serverless"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "postBffServerlessQueryName"
+      }
+    },
     "/bff/traffic/{query_name}": {
       "post": {
         "produces": [
@@ -2556,7 +3647,10 @@
               "origins-countries",
               "origins-overtime",
               "data-usage-overtime",
-              "routes"
+              "routes",
+              "traffic-overtime",
+              "errors-overtime",
+              "memory-overtime"
             ],
             "required": true
           }
@@ -2571,9 +3665,3356 @@
         ],
         "operationId": "postBffTrafficQueryName"
       }
+    },
+    "/bff/traffic/staff-top-hosts": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "created StaffTopHost"
+          }
+        },
+        "tags": [
+          "bff"
+        ],
+        "operationId": "postBffTrafficStaffTopHosts"
+      }
+    },
+    "/asm/v0.1/criterion-types": {
+      "get": {
+        "description": "Gets all criterion types with their associated operators.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets all criterion types with their associated operators."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01CriterionTypes"
+      }
+    },
+    "/asm/v0.1/context": {
+      "get": {
+        "description": "Gets all available ASM permissions for the current user.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets all available ASM permissions for the current user."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01Context"
+      }
+    },
+    "/asm/v0.1/cwes/{id}": {
+      "get": {
+        "description": "Gets a CWE",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets a CWE"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01CwesId"
+      }
+    },
+    "/asm/v0.1/cwes": {
+      "get": {
+        "description": "Gets all CWEs in our database",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "sort_field",
+            "description": "The field to sort by",
+            "type": "string",
+            "default": "created_at",
+            "enum": [
+              "created_at",
+              "updated_at",
+              "external_id"
+            ],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_direction",
+            "description": "The direction to sort by",
+            "type": "string",
+            "default": "desc",
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets all CWEs in our database"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01Cwes"
+      }
+    },
+    "/asm/v0.1/cves/{id}": {
+      "get": {
+        "description": "Gets a CVE",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets a CVE"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01CvesId"
+      }
+    },
+    "/asm/v0.1/cves": {
+      "get": {
+        "description": "Gets all CVEs in our database",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_field",
+            "description": "The field to sort by",
+            "type": "string",
+            "default": "created_at",
+            "enum": [
+              "created_at",
+              "updated_at",
+              "external_id",
+              "external_published_at",
+              "external_modified_at",
+              "severity",
+              "impact",
+              "exploitability",
+              "exposure_count"
+            ],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_direction",
+            "description": "The direction to sort by",
+            "type": "string",
+            "default": "desc",
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets all CVEs in our database"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01Cves"
+      }
+    },
+    "/asm/v0.1/cpe-matches/{id}": {
+      "get": {
+        "description": "Gets a CPE Match by ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets a CPE Match by ID"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01CpeMatchesId"
+      }
+    },
+    "/asm/v0.1/cpe-matches": {
+      "get": {
+        "description": "Gets all CPE Matches in our database",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "cpe",
+            "description": "Returns CPE Matches that match the given CPE",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_field",
+            "description": "The field to sort by",
+            "type": "string",
+            "default": "created_at",
+            "enum": [
+              "created_at",
+              "updated_at",
+              "part",
+              "vendor",
+              "product",
+              "version",
+              "version_major",
+              "version_minor",
+              "version_patch"
+            ],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_direction",
+            "description": "The direction to sort by",
+            "type": "string",
+            "default": "desc",
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets all CPE Matches in our database"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01CpeMatches"
+      }
+    },
+    "/asm/v0.1/cpes/{id}": {
+      "get": {
+        "description": "Gets a CPE",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets a CPE"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01CpesId"
+      }
+    },
+    "/asm/v0.1/cpes": {
+      "get": {
+        "description": "Gets all CPEs in our database",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "cpe",
+            "description": "The whole CPE name to search for",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "part",
+            "description": "The part of the CPE",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "vendor",
+            "description": "The vendor of the CPE",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "product",
+            "description": "The product of the CPE",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "version",
+            "description": "The version of the CPE",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "version_major",
+            "description": "The major version of the CPE",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "version_minor",
+            "description": "The minor version of the CPE",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "version_patch",
+            "description": "The patch version of the CPE",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_field",
+            "description": "The field to sort by",
+            "type": "string",
+            "default": "created_at",
+            "enum": [
+              "created_at",
+              "updated_at",
+              "part",
+              "vendor",
+              "product",
+              "version",
+              "version_major",
+              "version_minor",
+              "version_patch"
+            ],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_direction",
+            "description": "The direction to sort by",
+            "type": "string",
+            "default": "desc",
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets all CPEs in our database"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01Cpes"
+      }
+    },
+    "/asm/v0.1/rules/{id}": {
+      "patch": {
+        "description": "Updates a rule.",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "collection_filter_type",
+            "description": "The type of collection filter",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "match_all",
+            "description": "Whether all criteria must match",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "enabled",
+            "description": "Whether the rule is enabled",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "action_type",
+            "description": "The action to take on rule match",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "severity_action_type",
+            "description": "The severity action to take on rule match",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "exposure_severity",
+            "description": "The severity of the exposure",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "exposure_description",
+            "description": "A description of the exposure",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "collections",
+            "description": "The collections to apply the rule to",
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "rule_criteria",
+            "description": "The rule criteria to apply the rule to",
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "entity_filter_type",
+            "description": "The type of entity filter",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "entity_criteria",
+            "description": "The entity criteria to apply the rule to",
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "priority",
+            "description": "The priority of the rule",
+            "type": "integer",
+            "format": "int32",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "exit_on_match",
+            "description": "Whether rule processing will exit upon match",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "assigned_to_id",
+            "description": "The ID of the user the rule is assigned to",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updates a rule."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "patchAsmV01RulesId"
+      },
+      "delete": {
+        "description": "Deletes a rule.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deletes a rule."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "deleteAsmV01RulesId"
+      }
+    },
+    "/asm/v0.1/rules/reorder": {
+      "patch": {
+        "description": "Reorders rules",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "source_index",
+            "description": "The current index of the rule",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "destination_index",
+            "description": "The new index for the rule",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reorders rules"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "patchAsmV01RulesReorder"
+      }
+    },
+    "/asm/v0.1/rules/reset": {
+      "delete": {
+        "description": "Reset all rules in an organization.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Reset all rules in an organization."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "deleteAsmV01RulesReset"
+      }
+    },
+    "/asm/v0.1/rules": {
+      "post": {
+        "description": "Create a rule.",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "collection_filter_type",
+            "description": "The type of collection filter",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "match_all",
+            "description": "Whether all criteria must match",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "enabled",
+            "description": "Whether the rule is enabled",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "action_type",
+            "description": "The action to take on rule match",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "severity_action_type",
+            "description": "The severity action to take on rule match",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "exposure_severity",
+            "description": "The severity of the exposure",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "exposure_description",
+            "description": "A description of the exposure",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "collections",
+            "description": "The collections to apply the rule to",
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "rule_criteria",
+            "description": "The criteria to apply the rule to",
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "entity_filter_type",
+            "description": "The type of entity filter",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "entity_criteria",
+            "description": "The criteria to apply the rule to",
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "priority",
+            "description": "The priority of the rule",
+            "type": "integer",
+            "format": "int32",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "exit_on_match",
+            "description": "Whether rule processing will exit upon match",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "assigned_to_id",
+            "description": "The ID of the user the rule is assigned to",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Create a rule."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "postAsmV01Rules"
+      },
+      "get": {
+        "description": "Lists all rules in an organization.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lists all rules in an organization."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01Rules"
+      }
+    },
+    "/asm/v0.1/comments/{id}": {
+      "delete": {
+        "description": "Deletes a comment",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deletes a comment"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "deleteAsmV01CommentsId"
+      },
+      "patch": {
+        "description": "Updates a comment",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "value",
+            "description": "The comment text",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updates a comment"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "patchAsmV01CommentsId"
+      },
+      "get": {
+        "description": "Gets a comment",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets a comment"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01CommentsId"
+      }
+    },
+    "/asm/v0.1/comments": {
+      "post": {
+        "description": "Creates a comment for an exposure.",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "exposure_id",
+            "description": "The ID of the exposure",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "value",
+            "description": "The comment text",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Creates a comment for an exposure."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "postAsmV01Comments"
+      },
+      "get": {
+        "description": "Lists all comments for an exposure.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "exposure_id",
+            "description": "The ID of the exposure",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Page offset to fetch.",
+            "type": "integer",
+            "format": "int32",
+            "default": 1,
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "items",
+            "description": "Number of items to return per page. Maximum value: 100",
+            "type": "integer",
+            "format": "int32",
+            "default": 20,
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lists all comments for an exposure."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01Comments"
+      }
+    },
+    "/asm/v0.1/dashboard/world-map": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get WorldMap(s)"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01DashboardWorldMap"
+      }
+    },
+    "/asm/v0.1/dashboard/stats": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get Stat(s)"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01DashboardStats"
+      }
+    },
+    "/asm/v0.1/technologies/categories": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "get Category(s)"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01TechnologiesCategories"
+      }
+    },
+    "/asm/v0.1/technologies/{id}": {
+      "get": {
+        "description": "Gets a technology",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets a technology"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01TechnologiesId"
+      }
+    },
+    "/asm/v0.1/technologies/filters": {
+      "get": {
+        "description": "Returns a list of filters that can be used to filter technology versions.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a list of filters that can be used to filter technology versions."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01TechnologiesFilters"
+      }
+    },
+    "/asm/v0.1/technologies": {
+      "get": {
+        "description": "Get all matching technologies",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "scan_id",
+            "description": "If present, only technologies present in this scan will be returned",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "category_id",
+            "description": "The category ID(s) to filter by",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_field",
+            "description": "The field to sort by",
+            "type": "string",
+            "default": "name",
+            "enum": [
+              "created_at",
+              "updated_at",
+              "name",
+              "last_detected_at"
+            ],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_direction",
+            "description": "The direction to sort by",
+            "type": "string",
+            "default": "asc",
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "collection_id",
+            "description": "The collection ID(s) to filter by",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "has_number",
+            "description": "Show only technology versions that have a version number",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "cve_severity",
+            "description": "Returns only technology versions with at least one CVE of the specified severity",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "search",
+            "description": "The search term",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Page offset to fetch.",
+            "type": "integer",
+            "format": "int32",
+            "default": 1,
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "items",
+            "description": "Number of items to return per page. Maximum value: 100",
+            "type": "integer",
+            "format": "int32",
+            "default": 20,
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get all matching technologies"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01Technologies"
+      }
+    },
+    "/asm/v0.1/technology-versions/{id}": {
+      "delete": {
+        "description": "Deletes a technology version",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deletes a technology version"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "deleteAsmV01TechnologyVersionsId"
+      },
+      "get": {
+        "description": "Gets a technology version",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets a technology version"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01TechnologyVersionsId"
+      }
+    },
+    "/asm/v0.1/technology-versions/filters": {
+      "get": {
+        "description": "Returns a list of filters that can be used to filter technology versions.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a list of filters that can be used to filter technology versions."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01TechnologyVersionsFilters"
+      }
+    },
+    "/asm/v0.1/technology-versions": {
+      "get": {
+        "description": "Gets all matching technology versions",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "scan_id",
+            "description": "If present, only technologies present in this scan will be returned",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "category_id",
+            "description": "The category ID(s) to filter by",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_field",
+            "description": "The field to sort by",
+            "type": "string",
+            "default": "name",
+            "enum": [
+              "name",
+              "last_detected_at",
+              "created_at",
+              "entity_count"
+            ],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_direction",
+            "description": "The direction to sort by",
+            "type": "string",
+            "default": "asc",
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "collection_id",
+            "description": "The collection ID(s) to filter by",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "has_number",
+            "description": "Show only technology versions that have a version number",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "cve_severity",
+            "description": "Returns only technology versions with at least one CVE of the specified severity",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "search",
+            "description": "The search term",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Page offset to fetch.",
+            "type": "integer",
+            "format": "int32",
+            "default": 1,
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "items",
+            "description": "Number of items to return per page. Maximum value: 100",
+            "type": "integer",
+            "format": "int32",
+            "default": 20,
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets all matching technology versions"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01TechnologyVersions"
+      }
+    },
+    "/asm/v0.1/exposures/{id}/scan-results": {
+      "get": {
+        "description": "Returns the scan results for an exposure.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Page offset to fetch.",
+            "type": "integer",
+            "format": "int32",
+            "default": 1,
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "items",
+            "description": "Number of items to return per page. Maximum value: 100",
+            "type": "integer",
+            "format": "int32",
+            "default": 20,
+            "required": false
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the scan results for an exposure."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01ExposuresIdScanResults"
+      }
+    },
+    "/asm/v0.1/exposures/{id}/watch": {
+      "patch": {
+        "description": "Watches/unwatches an exposure.",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "watch",
+            "description": "Set to true to watch the exposure, false to unwatch it",
+            "type": "boolean",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Watches/unwatches an exposure."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "patchAsmV01ExposuresIdWatch"
+      }
+    },
+    "/asm/v0.1/exposures/{id}": {
+      "patch": {
+        "description": "Updates an exposure.",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "assigned_to_id",
+            "description": "The ID of the user to which to assign the exposure",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "status_id",
+            "description": "The ID of the status",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "severity",
+            "description": "The severity of the exposure between 0 and 10",
+            "type": "number",
+            "format": "float",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "priority",
+            "description": "The priority of the exposure between 1 and 4",
+            "type": "integer",
+            "format": "int32",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "muted_until",
+            "description": "The date to which to mute the exposure",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "comment",
+            "description": "A comment",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updates an exposure."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "patchAsmV01ExposuresId"
+      },
+      "get": {
+        "description": "Gets an exposure.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets an exposure."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01ExposuresId"
+      }
+    },
+    "/asm/v0.1/exposures/bulk-edit": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "organization_id",
+            "description": "The id of the organization that owns the exposures",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "attributes[assigned_to_id]",
+            "description": "The ID of the user to which to assign the exposure",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "attributes[status_id]",
+            "description": "The ID of the status",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "attributes[severity]",
+            "description": "The severity of the exposure between 0 and 10",
+            "type": "number",
+            "format": "float",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "attributes[priority]",
+            "description": "The priority of the exposure between 1 and 4",
+            "type": "integer",
+            "format": "int32",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "attributes[muted_until]",
+            "description": "The date to which to mute the exposure",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "attributes[comment]",
+            "description": "A comment",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "exposure_ids",
+            "description": "The IDs of the exposures to bulk edit. Either specify filters or exposure_ids.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "search_filters[search]",
+            "description": "The search term",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "search_filters[assigned_to]",
+            "description": "The ID(s) of the user to which the exposure is assigned",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "search_filters[status]",
+            "description": "The status ID(s) to filter by",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "search_filters[collection]",
+            "description": "The collection ID(s) to filter by",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "search_filters[severity]",
+            "description": "The severity to filter by",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "search_filters[priority]",
+            "description": "The priority to filter by",
+            "type": "integer",
+            "format": "int32",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "search_filters[entity_id]",
+            "description": "The ID of an entity",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "search_filters[technology_version_id]",
+            "description": "The ID of a technology version",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "search_filters[technology_id]",
+            "description": "The ID of a technology",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "created BulkEdit"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "postAsmV01ExposuresBulkEdit"
+      }
+    },
+    "/asm/v0.1/exposures/timeline": {
+      "get": {
+        "description": "Returns exposure counts for the last 7 days.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "collection_id",
+            "description": "The ID of the collection",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns exposure counts for the last 7 days."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01ExposuresTimeline"
+      }
+    },
+    "/asm/v0.1/exposures/count": {
+      "get": {
+        "description": "Returns a count of exposures by the specified field.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "count_by",
+            "description": "When specified, the result set will be a count of exposures by this field",
+            "type": "string",
+            "enum": [
+              "asm_exposure_statuses.name"
+            ],
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a count of exposures by the specified field."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01ExposuresCount"
+      }
+    },
+    "/asm/v0.1/exposures/filters": {
+      "get": {
+        "description": "Returns a list of filters that can be used to filter entities.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a list of filters that can be used to filter entities."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01ExposuresFilters"
+      }
+    },
+    "/asm/v0.1/exposures": {
+      "get": {
+        "description": "Lists all exposures matching the specified criteria.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "sort_field",
+            "description": "The field to sort by",
+            "type": "string",
+            "default": "severity",
+            "enum": [
+              "user_facing_id",
+              "summary",
+              "created_at",
+              "severity",
+              "priority",
+              "assigned_to",
+              "status",
+              "entity",
+              "collection",
+              "technology_version"
+            ],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_direction",
+            "description": "The direction to sort by",
+            "type": "string",
+            "default": "desc",
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "entity_id",
+            "description": "The ID of the entity",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "created_by_scan_id",
+            "description": "When present only new exposures found by this scan will be returned",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "found_by_scan_id",
+            "description": "When present only exposures found by this scan will be returned",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "technology_version_id",
+            "description": "The ID of the technology version",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "search",
+            "description": "The search term",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "assigned_to",
+            "description": "The ID(s) of the user to which the exposure is assigned",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "description": "The status ID(s) to filter by",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "collection",
+            "description": "The collection ID(s) to filter by",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "severity",
+            "description": "The severity to filter by",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "export",
+            "description": "Set to true to export the results as a CSV file",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Page offset to fetch.",
+            "type": "integer",
+            "format": "int32",
+            "default": 1,
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "items",
+            "description": "Number of items to return per page. Maximum value: 100",
+            "type": "integer",
+            "format": "int32",
+            "default": 20,
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lists all exposures matching the specified criteria."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01Exposures"
+      }
+    },
+    "/asm/v0.1/scans/{id}/cancel": {
+      "post": {
+        "description": "cancels a scan",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "cancels a scan"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "postAsmV01ScansIdCancel"
+      }
+    },
+    "/asm/v0.1/scans/{id}": {
+      "get": {
+        "description": "Gets a scan",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "entity_id",
+            "description": "The ID of entity for which to return scan results",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets a scan"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01ScansId"
+      }
+    },
+    "/asm/v0.1/scans": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "collection_id",
+            "description": "The ID of the collection",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "entity_id",
+            "description": "When present only scans for the entity with this ID will be returned",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_field",
+            "description": "The field to sort by",
+            "type": "string",
+            "default": "severity",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_direction",
+            "description": "The direction to sort by",
+            "type": "string",
+            "default": "desc",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Page offset to fetch.",
+            "type": "integer",
+            "format": "int32",
+            "default": 1,
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "items",
+            "description": "Number of items to return per page. Maximum value: 100",
+            "type": "integer",
+            "format": "int32",
+            "default": 20,
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get Scan(s)"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01Scans"
+      }
+    },
+    "/asm/v0.1/tasks/{id}/cancel": {
+      "post": {
+        "description": "Cancels a task",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Cancels a task"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "postAsmV01TasksIdCancel"
+      }
+    },
+    "/asm/v0.1/tasks/{id}/retry": {
+      "post": {
+        "description": "Tries to re-run a failed task",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Tries to re-run a failed task"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "postAsmV01TasksIdRetry"
+      }
+    },
+    "/asm/v0.1/tasks/{id}/raw-results": {
+      "get": {
+        "description": "Gets the results log for a task",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets the results log for a task"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01TasksIdRawResults"
+      }
+    },
+    "/asm/v0.1/tasks/{id}": {
+      "get": {
+        "description": "Gets a task",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets a task"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01TasksId"
+      }
+    },
+    "/asm/v0.1/tasks/filters": {
+      "get": {
+        "description": "Returns a list of filters that can be used to filter tasks",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a list of filters that can be used to filter tasks"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01TasksFilters"
+      }
+    },
+    "/asm/v0.1/tasks": {
+      "get": {
+        "description": "Searches for tasks",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "scan_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "description": "The the status(es) number to filter by",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "description": "The task type(s) to filter by",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "has_exposures",
+            "description": "Show only tasks with or without found exposures",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_field",
+            "description": "The field to sort by",
+            "type": "string",
+            "default": "status",
+            "enum": [
+              "status",
+              "duration",
+              "started_at",
+              "created_at",
+              "updated_at",
+              "type"
+            ],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_direction",
+            "description": "The direction to sort by",
+            "type": "string",
+            "default": "asc",
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Page offset to fetch.",
+            "type": "integer",
+            "format": "int32",
+            "default": 1,
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "items",
+            "description": "Number of items to return per page. Maximum value: 100",
+            "type": "integer",
+            "format": "int32",
+            "default": 20,
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Searches for tasks"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01Tasks"
+      }
+    },
+    "/asm/v0.1/entities/{id}/whois": {
+      "get": {
+        "description": "Gets Whois scan results for the specified entity (as a raw test).",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets Whois scan results for the specified entity (as a raw test)."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01EntitiesIdWhois"
+      }
+    },
+    "/asm/v0.1/entities/{id}/scan": {
+      "post": {
+        "description": "Scans the specified entity for issues.",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Scans the specified entity for issues."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "postAsmV01EntitiesIdScan"
+      }
+    },
+    "/asm/v0.1/entities/{id}": {
+      "delete": {
+        "description": "Deletes an entity",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deletes an entity"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "deleteAsmV01EntitiesId"
+      },
+      "patch": {
+        "description": "Updates an entity",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "priority",
+            "description": "The priority of the entity",
+            "type": "integer",
+            "format": "int32",
+            "required": false
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updates an entity"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "patchAsmV01EntitiesId"
+      },
+      "get": {
+        "description": "Gets an entity",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets an entity"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01EntitiesId"
+      }
+    },
+    "/asm/v0.1/entities/graph": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "collection_id",
+            "description": "Collection IDs to filter by",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get Graph(s)"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01EntitiesGraph"
+      }
+    },
+    "/asm/v0.1/entities/filters": {
+      "get": {
+        "description": "Returns a list of filters that can be used to filter entities.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a list of filters that can be used to filter entities."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01EntitiesFilters"
+      }
+    },
+    "/asm/v0.1/entities": {
+      "get": {
+        "description": "Lists all entities matching the specified criteria.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "sort_field",
+            "description": "The field to sort by",
+            "type": "string",
+            "default": "created_at",
+            "enum": [
+              "name",
+              "created_at",
+              "type",
+              "collection",
+              "priority"
+            ],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "sort_direction",
+            "description": "The direction to sort by",
+            "type": "string",
+            "default": "desc",
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "search",
+            "description": "The search term",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "collection",
+            "description": "The collection ID(s) to filter by",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "exposure_severity",
+            "description": "Returns only entities with at least one exposure of the specified severity",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "description": "The type of entity to filter by",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Page offset to fetch.",
+            "type": "integer",
+            "format": "int32",
+            "default": 1,
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "items",
+            "description": "Number of items to return per page. Maximum value: 100",
+            "type": "integer",
+            "format": "int32",
+            "default": 20,
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lists all entities matching the specified criteria."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01Entities"
+      }
+    },
+    "/asm/v0.1/seed-types": {
+      "get": {
+        "description": "Gets all seed types",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets all seed types"
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01SeedTypes"
+      }
+    },
+    "/asm/v0.1/seeds/{id}": {
+      "delete": {
+        "description": "Deletes an seed.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deletes an seed."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "deleteAsmV01SeedsId"
+      },
+      "patch": {
+        "description": "Updates an seed.",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "collection_id",
+            "description": "The ID of the collection",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "seed_type_id",
+            "description": "The seed type ID",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "description": "The seed value",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "seed_organization",
+            "description": "Organization of the seed",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "seed_api_token",
+            "description": "Api token of the seed",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "seed_hostnames",
+            "description": "Hostnames linked to the seed",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "seed_branches",
+            "description": "Branches linked to the seed",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updates an seed."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "patchAsmV01SeedsId"
+      }
+    },
+    "/asm/v0.1/seeds": {
+      "post": {
+        "description": "Add a seed to a collection.",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "collection_id",
+            "description": "The ID of the collection",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "seed_type_id",
+            "description": "The seed type ID",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "description": "The seed value",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "seed_organization",
+            "description": "Organization of the seed",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "seed_api_token",
+            "description": "Api token of the seed",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "seed_hostnames",
+            "description": "Hostnames linked to the seed",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "seed_branches",
+            "description": "Branches linked to the seed",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Add a seed to a collection."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "postAsmV01Seeds"
+      }
+    },
+    "/asm/v0.1/collections/{id}/reset": {
+      "post": {
+        "description": "Deletes all exposures, entities, and technology versions in a collection.",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Deletes all exposures, entities, and technology versions in a collection."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "postAsmV01CollectionsIdReset"
+      }
+    },
+    "/asm/v0.1/collections/{id}/scan": {
+      "post": {
+        "description": "Scans a collection for issues.",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Scans a collection for issues."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "postAsmV01CollectionsIdScan"
+      }
+    },
+    "/asm/v0.1/collections/{id}": {
+      "patch": {
+        "description": "Updates a collection.",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "name",
+            "description": "The name of the collection",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "priority",
+            "description": "The default priority to assign to entities in the collection. 4: Critical, 3: High, 2: Medium, 1: Low",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "scan_at_utc_hour",
+            "description": "The hour of the day to scan the collection",
+            "type": "integer",
+            "format": "int32",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "scan_days_of_week",
+            "description": "The days of the week to scan the collection",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "description",
+            "description": "A description of the collection",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "send_email_on_scan_start",
+            "description": "Whether to send an email when a scan starts",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "send_email_on_scan_finish",
+            "description": "Whether to send an email when a scan finishes",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "send_email_only_if_new_or_closed",
+            "description": "Whether to send an email only if new or closed exposures are found",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "subscribers",
+            "description": "A list of user ids",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updates a collection."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "patchAsmV01CollectionsId"
+      },
+      "delete": {
+        "description": "Deletes a collection.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deletes a collection."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "deleteAsmV01CollectionsId"
+      },
+      "get": {
+        "description": "Gets a collection.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets a collection."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01CollectionsId"
+      }
+    },
+    "/asm/v0.1/collections": {
+      "post": {
+        "description": "Create a collection.",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "description": "The name of the collection",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "priority",
+            "description": "The default priority to assign to entities in the collection. 4: Critical, 3: High, 2: Medium, 1: Low",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "scan_at_utc_hour",
+            "description": "The hour of the day to scan the collection",
+            "type": "integer",
+            "format": "int32",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "scan_days_of_week",
+            "description": "The days of the week to scan the collection",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "description",
+            "description": "A description of the collection",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "send_email_on_scan_start",
+            "description": "Whether to send an email when a scan starts",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "send_email_on_scan_finish",
+            "description": "Whether to send an email when a scan finishes",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "send_email_only_if_new_or_closed",
+            "description": "Whether to send an email only if new or closed exposures are found",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "formData",
+            "name": "subscribers",
+            "description": "A list of user ids",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Create a collection."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "postAsmV01Collections"
+      },
+      "get": {
+        "description": "Lists all collections in an organization.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "organization_id",
+            "description": "The ID of the organization",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "simple",
+            "description": "If true, returns all records in simple format - without pagination.",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Page offset to fetch.",
+            "type": "integer",
+            "format": "int32",
+            "default": 1,
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "items",
+            "description": "Number of items to return per page. Maximum value: 100",
+            "type": "integer",
+            "format": "int32",
+            "default": 20,
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lists all collections in an organization."
+          }
+        },
+        "tags": [
+          "asm"
+        ],
+        "operationId": "getAsmV01Collections"
+      }
     }
   },
   "definitions": {
+    "Config_V1_Entities_EnvironmentRedirect": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "The resource's type."
+        },
+        "@id": {
+          "type": "string",
+          "description": "The resource's relative path."
+        },
+        "@links": {
+          "type": "object",
+          "description": "Links to related resources."
+        },
+        "id": {
+          "type": "string",
+          "description": "The resource's system-defined ID."
+        },
+        "environment_id": {
+          "type": "string",
+          "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
+        },
+        "from": {
+          "type": "string",
+          "description": "The path where to redirect from."
+        },
+        "to": {
+          "type": "string",
+          "description": "The path where to redirect to."
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Redirect status code: 301, 302, 307, 308."
+        },
+        "forward_query_string": {
+          "type": "boolean",
+          "description": "Determines whether to forward query string to redirect location."
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The environment redirect creation date and time (UTC)."
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The environment redirect last modification date and time (UTC)."
+        }
+      },
+      "required": [
+        "@type",
+        "@id",
+        "id"
+      ],
+      "description": "Config_V1_Entities_EnvironmentRedirect model"
+    },
+    "BaseApi_Entities_UserError": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "Error message."
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BaseApi_Entities_UserErrorData"
+          },
+          "description": "Describes the error."
+        }
+      },
+      "description": "BaseApi_Entities_UserError model"
+    },
+    "BaseApi_Entities_UserErrorData": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "The requested endpoint's path."
+        },
+        "message": {
+          "type": "string",
+          "description": "A brief description of the error."
+        }
+      }
+    },
+    "BaseApi_Entities_GeneralError": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "Error Message"
+        }
+      },
+      "description": "BaseApi_Entities_GeneralError model"
+    },
+    "putConfigV01EnvironmentRedirects": {
+      "type": "object",
+      "properties": {
+        "environment_id": {
+          "type": "string",
+          "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
+        }
+      },
+      "required": [
+        "environment_id"
+      ],
+      "description": "Creates or updates an environment redirect."
+    },
+    "Config_V1_Entities_EnvironmentRedirect_Collection": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "The resource's type."
+        },
+        "@id": {
+          "type": "string",
+          "description": "The resource's relative path."
+        },
+        "@links": {
+          "$ref": "#/definitions/BaseApi_Entities_HyperionNavigationLinks",
+          "description": "Links to related resources."
+        },
+        "total_items": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Total number of items."
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Config_V1_Entities_EnvironmentRedirect"
+          },
+          "description": "List of environment redirects."
+        }
+      },
+      "required": [
+        "@type",
+        "@id"
+      ],
+      "description": "Config_V1_Entities_EnvironmentRedirect_Collection model"
+    },
+    "BaseApi_Entities_HyperionNavigationLinks": {
+      "type": "object",
+      "properties": {
+        "first": {
+          "$ref": "#/definitions/BaseApi_Entities_HyperionLink",
+          "description": "Link to the first page of results."
+        },
+        "next": {
+          "$ref": "#/definitions/BaseApi_Entities_HyperionLink",
+          "description": "Link to the next page of results."
+        },
+        "previous": {
+          "$ref": "#/definitions/BaseApi_Entities_HyperionLink",
+          "description": "Link to the previous page of results."
+        },
+        "last": {
+          "$ref": "#/definitions/BaseApi_Entities_HyperionLink",
+          "description": "Link to the last page of results."
+        }
+      }
+    },
+    "BaseApi_Entities_HyperionLink": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "base_path": {
+          "type": "string"
+        }
+      }
+    },
     "Config_V1_Entities_EnvironmentVariable": {
       "type": "object",
       "properties": {
@@ -2626,46 +7067,6 @@
         "id"
       ],
       "description": "Config_V1_Entities_EnvironmentVariable model"
-    },
-    "BaseApi_Entities_UserError": {
-      "type": "object",
-      "properties": {
-        "message": {
-          "type": "string",
-          "description": "Error message."
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BaseApi_Entities_UserErrorData"
-          },
-          "description": "Describes the error."
-        }
-      },
-      "description": "BaseApi_Entities_UserError model"
-    },
-    "BaseApi_Entities_UserErrorData": {
-      "type": "object",
-      "properties": {
-        "path": {
-          "type": "string",
-          "description": "The requested endpoint's path."
-        },
-        "message": {
-          "type": "string",
-          "description": "A brief description of the error."
-        }
-      }
-    },
-    "BaseApi_Entities_GeneralError": {
-      "type": "object",
-      "properties": {
-        "message": {
-          "type": "string",
-          "description": "Error Message"
-        }
-      },
-      "description": "BaseApi_Entities_GeneralError model"
     },
     "putConfigV01EnvironmentVariables": {
       "type": "object",
@@ -2727,41 +7128,6 @@
         "@id"
       ],
       "description": "Config_V1_Entities_EnvironmentVariable_Collection model"
-    },
-    "BaseApi_Entities_HyperionNavigationLinks": {
-      "type": "object",
-      "properties": {
-        "first": {
-          "$ref": "#/definitions/BaseApi_Entities_HyperionLink",
-          "description": "Link to the first page of results."
-        },
-        "next": {
-          "$ref": "#/definitions/BaseApi_Entities_HyperionLink",
-          "description": "Link to the next page of results."
-        },
-        "previous": {
-          "$ref": "#/definitions/BaseApi_Entities_HyperionLink",
-          "description": "Link to the previous page of results."
-        },
-        "last": {
-          "$ref": "#/definitions/BaseApi_Entities_HyperionLink",
-          "description": "Link to the last page of results."
-        }
-      }
-    },
-    "BaseApi_Entities_HyperionLink": {
-      "type": "object",
-      "properties": {
-        "href": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "base_path": {
-          "type": "string"
-        }
-      }
     },
     "Config_V1_Entities_TlsCert": {
       "type": "object",
@@ -2843,6 +7209,19 @@
         "id"
       ],
       "description": "Config_V1_Entities_TlsCert model"
+    },
+    "postConfigV01TlsCertsGenerate": {
+      "type": "object",
+      "properties": {
+        "environment_id": {
+          "type": "string",
+          "description": "An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.\n"
+        }
+      },
+      "required": [
+        "environment_id"
+      ],
+      "description": "Generate Let's Encrypt certificate and activate it within a specific environment."
     },
     "postConfigV01TlsCerts": {
       "type": "object",
@@ -3152,6 +7531,11 @@
           "example": [
             {}
           ]
+        },
+        "purge_cache_on_deploy": {
+          "type": "boolean",
+          "description": "Overwrite the default value, effectively allowing defining purge cache behaviour with each deployment.\n",
+          "example": true
         }
       },
       "required": [
@@ -3225,10 +7609,15 @@
         },
         "values": {
           "type": "array",
-          "description": "Defines the set of content to be purged. The `purge_type` property's value determines what should be passed.\n  - `all_entries`: Omit this property or pass an empty array.\n  - `path`: Pass one or more relative path(s). This relative path starts directly after the hostname. Use an `*` to represent zero or more characters.\n  - `surrogate_key`: Pass one or more surrogate key(s) (aka cache tags).\n",
+          "description": "Defines the set of content to be purged. The `purge_type` property's value determines what should be passed.\n  - `all_entries`: Omit this property or pass an empty array.\n  - `path`: Pass one or more relative path(s). This relative path starts directly after the hostname.\n  - `surrogate_key`: Pass one or more surrogate key(s) (aka cache tags).\n",
           "items": {
             "type": "string"
           }
+        },
+        "hostname": {
+          "type": "string",
+          "description": "If specified, cached paths will only be purged for this specific hostname.\nIf omitted, the specified paths will be purged for all hostnames.\n",
+          "default": null
         }
       },
       "required": [
@@ -3272,6 +7661,20 @@
         "user_email": {
           "type": "string",
           "description": "The user's email."
+        },
+        "environment_roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Accounts_V1_Entities_EnvironmentRole"
+          },
+          "description": "List of environment roles."
+        },
+        "property_roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Accounts_V1_Entities_PropertyRole"
+          },
+          "description": "List of property roles."
         }
       },
       "required": [
@@ -3281,18 +7684,158 @@
       ],
       "description": "Accounts_V1_Entities_Member model"
     },
+    "Accounts_V1_Entities_EnvironmentRole": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "The resource's type."
+        },
+        "@id": {
+          "type": "string",
+          "description": "The resource's relative path."
+        },
+        "@links": {
+          "type": "object",
+          "description": "Links to related resources."
+        },
+        "id": {
+          "type": "string"
+        },
+        "environment_id": {
+          "type": "string",
+          "description": "Environment ID"
+        },
+        "role": {
+          "type": "string",
+          "description": "The user's role."
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The user's creation date and time (UTC)."
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The user's last modification date and time (UTC)."
+        }
+      },
+      "required": [
+        "@type",
+        "@id",
+        "id"
+      ]
+    },
+    "Accounts_V1_Entities_PropertyRole": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "The resource's type."
+        },
+        "@id": {
+          "type": "string",
+          "description": "The resource's relative path."
+        },
+        "@links": {
+          "type": "object",
+          "description": "Links to related resources."
+        },
+        "id": {
+          "type": "string"
+        },
+        "property_id": {
+          "type": "string",
+          "description": "Property ID"
+        },
+        "role": {
+          "type": "string",
+          "description": "The user's role."
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The user's creation date and time (UTC)."
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The user's last modification date and time (UTC)."
+        }
+      },
+      "required": [
+        "@type",
+        "@id",
+        "id"
+      ]
+    },
     "patchAccountsV01MembersMemberId": {
       "type": "object",
       "properties": {
         "role": {
           "type": "string",
           "enum": [
-            "read_only",
+            "viewer",
             "purger",
-            "member",
-            "admin",
-            "super_admin"
+            "security_auditor",
+            "security_manager",
+            "editor",
+            "maintainer",
+            "admin"
           ]
+        },
+        "property_roles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "role": {
+                "type": "string",
+                "description": "User property role",
+                "enum": [
+                  "viewer",
+                  "purger",
+                  "editor",
+                  "maintainer"
+                ]
+              },
+              "property_id": {
+                "type": "string",
+                "description": "Property ID (uuid)"
+              }
+            },
+            "required": [
+              "role",
+              "property_id"
+            ]
+          }
+        },
+        "environment_roles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "role": {
+                "type": "string",
+                "description": "User environment role",
+                "enum": [
+                  "viewer",
+                  "purger",
+                  "editor",
+                  "maintainer"
+                ]
+              },
+              "environment_id": {
+                "type": "string",
+                "description": "Environment ID (uuid)"
+              }
+            },
+            "required": [
+              "role",
+              "environment_id"
+            ]
+          }
         }
       }
     },
@@ -3308,12 +7851,66 @@
         "role": {
           "type": "string",
           "enum": [
-            "read_only",
+            "viewer",
             "purger",
-            "member",
-            "admin",
-            "super_admin"
+            "security_auditor",
+            "security_manager",
+            "editor",
+            "maintainer",
+            "admin"
           ]
+        },
+        "property_roles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "role": {
+                "type": "string",
+                "description": "User property role",
+                "enum": [
+                  "viewer",
+                  "purger",
+                  "editor",
+                  "maintainer"
+                ]
+              },
+              "property_id": {
+                "type": "string",
+                "description": "Property ID (uuid)"
+              }
+            },
+            "required": [
+              "role",
+              "property_id"
+            ]
+          }
+        },
+        "environment_roles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "role": {
+                "type": "string",
+                "description": "User environment role",
+                "enum": [
+                  "viewer",
+                  "purger",
+                  "editor",
+                  "maintainer"
+                ]
+              },
+              "environment_id": {
+                "type": "string",
+                "description": "Environment ID (uuid)"
+              }
+            },
+            "required": [
+              "role",
+              "environment_id"
+            ]
+          }
         }
       },
       "required": [
@@ -3378,13 +7975,21 @@
           "type": "string",
           "description": "The system-defined ID for the property associated with this environment."
         },
+        "legacy_account_number": {
+          "type": "string",
+          "description": "The system-defined account number for this environment. Use this account number when requesting legacy APIs. This account number is unavailable immediately after an environment is created. If it is missing, try retrieving the environment again."
+        },
         "name": {
           "type": "string",
           "description": "The environment's name."
         },
         "can_members_deploy": {
           "type": "boolean",
-          "description": "Determines whether all organization members may deploy to this environment. Disabling this option restricts deployments to admin users and the deploy token."
+          "description": "DEPRECATED: this will be removed. Use only_maintainers_can_deploy field instead"
+        },
+        "only_maintainers_can_deploy": {
+          "type": "boolean",
+          "description": "Determines whether all organization editors may deploy to this environment. Enabling this option restricts deployments to maintainer users and the deploy token."
         },
         "http_request_logging": {
           "type": "boolean",
@@ -3455,7 +8060,11 @@
         },
         "can_members_deploy": {
           "type": "boolean",
-          "description": "Determines whether all organization memmbers may deploy to this environment. Disabling this option restricts deployments to admin users and the deploy token.\"\n"
+          "description": "DEPRECATED: use only_maintainers_can_deploy instead.\"\n"
+        },
+        "only_maintainers_can_deploy": {
+          "type": "boolean",
+          "description": "Determines whether all organization editors may deploy to this environment. Enabling this option restricts deployments to Maintainers and the deploy token.\n"
         },
         "http_request_logging": {
           "type": "boolean",
@@ -3522,7 +8131,8 @@
           "description": "The resource's system-defined ID."
         },
         "organization_id": {
-          "type": "string"
+          "type": "string",
+          "description": "An organization's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab).\n\nFrom the Edgio Console, navigate to the desired organization and then click **Settings**. It is listed under **Organization ID**.\n"
         },
         "slug": {
           "type": "string",

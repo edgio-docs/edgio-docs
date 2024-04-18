@@ -1,7 +1,3 @@
-required:
-  - environment_id
-  - intermediate_cert
-  - primary_cert
 type: object
 properties:
   environment_id:
@@ -26,4 +22,8 @@ properties:
   private_key:
     type: string
     description: The private key that was generated with the CSR.
+required:
+  - environment_id
+  - primary_cert
+  - intermediate_cert
 description: Upload your TLS certificate to activate it within a specific environment.

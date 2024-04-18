@@ -1,12 +1,9 @@
-get:
-  tags:
-    - properties
-  summary: Get Property
-  description: Retrieve a property.
-  operationId: getAccountsV01PropertiesPropertyId
+delete:
+  summary: Delete Property
+  description: Delete a property.
   parameters:
-    - name: property_id
-      in: path
+    - in: path
+      name: property_id
       description: >
         The property's system-defined ID.
 
@@ -17,65 +14,9 @@ get:
       required: true
       schema:
         type: string
-  responses:
-    '200':
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Accounts_V1_Entities_Property.yaml
-    '400':
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
-    '401':
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '403':
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '404':
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '500':
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
   security:
     - accountsScope:
         - app.accounts
-delete:
-  tags:
-    - properties
-  summary: Delete Property
-  description: Delete a property.
-  operationId: deleteAccountsV01PropertiesPropertyId
-  parameters:
-    - name: property_id
-      in: path
-      description: >
-        The property's system-defined ID.
-
-
-        Retrieve a list of properties and their system-defined IDs through the
-        [Get All Properties
-        operation](#tag/properties/operation/getAccountsV01Properties).
-      required: true
-      schema:
-        type: string
   responses:
     '204':
       description: OK
@@ -107,24 +48,27 @@ delete:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
       description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-  security:
-    - accountsScope:
-        - app.accounts
-patch:
   tags:
     - properties
+  operationId: deleteAccountsV01PropertiesPropertyId
+patch:
   summary: Update Property
   description: Update a property.
-  operationId: patchAccountsV01PropertiesPropertyId
   parameters:
-    - name: property_id
-      in: path
+    - in: path
+      name: property_id
       description: >
         The property's system-defined ID.
 
@@ -141,6 +85,9 @@ patch:
         schema:
           $ref: ../components/schemas/patchAccountsV01PropertiesPropertyId.yaml
     required: true
+  security:
+    - accountsScope:
+        - app.accounts
   responses:
     '200':
       description: OK
@@ -172,13 +119,83 @@ patch:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
       description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  tags:
+    - properties
+  operationId: patchAccountsV01PropertiesPropertyId
+get:
+  summary: Get Property
+  description: Retrieve a property.
+  parameters:
+    - in: path
+      name: property_id
+      description: >
+        The property's system-defined ID.
+
+
+        Retrieve a list of properties and their system-defined IDs through the
+        [Get All Properties
+        operation](#tag/properties/operation/getAccountsV01Properties).
+      required: true
+      schema:
+        type: string
   security:
     - accountsScope:
         - app.accounts
-  x-codegen-request-body-name: patchAccountsV01PropertiesPropertyId
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Accounts_V1_Entities_Property.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  tags:
+    - properties
+  operationId: getAccountsV01PropertiesPropertyId

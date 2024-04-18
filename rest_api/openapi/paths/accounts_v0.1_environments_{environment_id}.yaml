@@ -1,17 +1,9 @@
-get:
-  tags:
-    - environments
-  summary: Get Environment
-  description: >
-    Retrieves an environment's settings and metadata.
-
-
-    The system-defined ID for the environment's active configuration is returned
-    by the `@links.active_config.id` property.
-  operationId: getAccountsV01EnvironmentsEnvironmentId
+delete:
+  summary: Delete Environment
+  description: Deletes an environment.
   parameters:
-    - name: environment_id
-      in: path
+    - in: path
+      name: environment_id
       description: >
         The environment's system-defined ID.
 
@@ -22,65 +14,9 @@ get:
       required: true
       schema:
         type: string
-  responses:
-    '200':
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Accounts_V1_Entities_Environment.yaml
-    '400':
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
-    '401':
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '403':
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '404':
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '500':
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
   security:
     - accountsScope:
         - app.accounts
-delete:
-  tags:
-    - environments
-  summary: Delete Environment
-  description: Deletes an environment.
-  operationId: deleteAccountsV01EnvironmentsEnvironmentId
-  parameters:
-    - name: environment_id
-      in: path
-      description: >
-        The environment's system-defined ID.
-
-
-        Retrieve a list of environments and their system-defined IDs through the
-        [Get All Environments
-        operation](#tag/environments/operation/getAccountsV01Environments).
-      required: true
-      schema:
-        type: string
   responses:
     '204':
       description: OK
@@ -112,24 +48,27 @@ delete:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
       description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-  security:
-    - accountsScope:
-        - app.accounts
-patch:
   tags:
     - environments
+  operationId: deleteAccountsV01EnvironmentsEnvironmentId
+patch:
   summary: Update Environment
   description: Updates an environment.
-  operationId: patchAccountsV01EnvironmentsEnvironmentId
   parameters:
-    - name: environment_id
-      in: path
+    - in: path
+      name: environment_id
       description: >
         The environment's system-defined ID.
 
@@ -146,6 +85,9 @@ patch:
         schema:
           $ref: ../components/schemas/patchAccountsV01EnvironmentsEnvironmentId.yaml
     required: true
+  security:
+    - accountsScope:
+        - app.accounts
   responses:
     '200':
       description: OK
@@ -177,13 +119,84 @@ patch:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
       description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  tags:
+    - environments
+  operationId: patchAccountsV01EnvironmentsEnvironmentId
+get:
+  summary: Get Environment
+  description: |
+    Retrieves an environment's settings and metadata.
+  parameters:
+    - in: path
+      name: environment_id
+      description: >
+        The environment's system-defined ID.
+
+
+        Retrieve a list of environments and their system-defined IDs through the
+        [Get All Environments
+        operation](#tag/environments/operation/getAccountsV01Environments).
+      required: true
+      schema:
+        type: string
   security:
     - accountsScope:
         - app.accounts
-  x-codegen-request-body-name: patchAccountsV01EnvironmentsEnvironmentId
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Accounts_V1_Entities_Environment.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+  tags:
+    - environments
+  operationId: getAccountsV01EnvironmentsEnvironmentId

@@ -1,7 +1,3 @@
-required:
-  - environment_id
-  - key
-  - value
 type: object
 properties:
   environment_id:
@@ -24,4 +20,8 @@ properties:
     description: >
       Determines whether the environment variable's value will be partially
       masked using asterisks.
+required:
+  - environment_id
+  - key
+  - value
 description: Creates or updates an environment variable.

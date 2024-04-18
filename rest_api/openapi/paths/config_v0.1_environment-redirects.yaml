@@ -1,11 +1,37 @@
 put:
-  summary: Set Environment Variable
-  description: Creates or updates an environment variable.
+  summary: Set Environment Redirect
+  description: Creates or updates an environment redirect.
+  parameters:
+    - in: String
+      name: from
+      description: The path where to redirect from.
+      required: true
+      schema:
+        type: string
+    - in: String
+      name: to
+      description: The path where to redirect to.
+      required: true
+      schema:
+        type: string
+    - in: Integer
+      name: status
+      description: 'Redirect status code: 301, 302, 307, 308.'
+      required: false
+      schema:
+        type: integer
+        format: int32
+    - in: Boolean
+      name: forward_query_string
+      description: Determines whether to forward query string to redirect location.
+      required: false
+      schema:
+        type: boolean
   requestBody:
     content:
       application/json:
         schema:
-          $ref: ../components/schemas/putConfigV01EnvironmentVariables.yaml
+          $ref: ../components/schemas/putConfigV01EnvironmentRedirects.yaml
     required: true
   security:
     - configScope:
@@ -16,7 +42,7 @@ put:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/Config_V1_Entities_EnvironmentVariable.yaml
+            $ref: ../components/schemas/Config_V1_Entities_EnvironmentRedirect.yaml
     '400':
       description: Bad Request
       content:
@@ -54,11 +80,11 @@ put:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
   tags:
-    - environment-variables
-  operationId: putConfigV01EnvironmentVariables
+    - environment-redirects
+  operationId: putConfigV01EnvironmentRedirects
 get:
-  summary: Get All Environment Variables
-  description: Returns all environment variables associated with an environment.
+  summary: Get All Environment Redirects
+  description: Returns all redirects associated with an environment.
   parameters:
     - in: query
       name: page
@@ -79,8 +105,8 @@ get:
         format: int32
         default: 20
     - in: query
-      name: key
-      description: Find an environment variable by its name.
+      name: from
+      description: Find an environment redirect by its from value
       required: false
       schema:
         type: string
@@ -106,7 +132,7 @@ get:
         application/json:
           schema:
             $ref: >-
-              ../components/schemas/Config_V1_Entities_EnvironmentVariable_Collection.yaml
+              ../components/schemas/Config_V1_Entities_EnvironmentRedirect_Collection.yaml
     '400':
       description: Bad Request
       content:
@@ -144,5 +170,5 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
   tags:
-    - environment-variables
-  operationId: getConfigV01EnvironmentVariables
+    - environment-redirects
+  operationId: getConfigV01EnvironmentRedirects

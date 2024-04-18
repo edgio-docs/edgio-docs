@@ -1,18 +1,18 @@
 post:
-  tags:
-    - configs
   summary: Deploy CDN Configuration
   description: >
     Deploys your configuration to a specific environment. This deployment
     overwrites any existing origin configurations, hostnames, rules, and
     experiments.
-  operationId: postConfigV01Configs
   requestBody:
     content:
       application/json:
         schema:
           $ref: ../components/schemas/postConfigV01Configs.yaml
     required: true
+  security:
+    - configScope:
+        - app.config
   responses:
     '202':
       description: OK
@@ -44,13 +44,18 @@ post:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
       description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-  security:
-    - configScope:
-        - app.config
-  x-codegen-request-body-name: postConfigV01Configs
+  tags:
+    - configs
+  operationId: postConfigV01Configs

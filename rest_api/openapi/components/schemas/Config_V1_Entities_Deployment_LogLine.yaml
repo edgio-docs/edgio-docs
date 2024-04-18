@@ -8,5 +8,5 @@ properties:
     description: Log level.
   timestamp:
     type: string
-    description: The date and time (UTC) at which the message was logged.
     format: date-time
+    description: The date and time (UTC) at which the message was logged.

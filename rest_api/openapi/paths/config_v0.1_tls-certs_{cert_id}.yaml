@@ -1,12 +1,9 @@
 get:
-  tags:
-    - tls-certs
   summary: Get TLS Certificate
   description: Returns a TLS certificate.
-  operationId: getConfigV01TlsCertsCertId
   parameters:
-    - name: cert_id
-      in: path
+    - in: path
+      name: cert_id
       description: >
         The TLS certificate's system-defined ID. Use the [Get All Certificates
         operation](#tag/tls-certs/operation/getConfigV01TlsCerts) to retrieve a
@@ -14,6 +11,9 @@ get:
       required: true
       schema:
         type: string
+  security:
+    - configScope:
+        - app.config
   responses:
     '200':
       description: OK
@@ -45,12 +45,18 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
     '500':
       description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-  security:
-    - configScope:
-        - app.config
+  tags:
+    - tls-certs
+  operationId: getConfigV01TlsCertsCertId

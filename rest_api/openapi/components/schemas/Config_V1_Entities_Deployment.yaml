@@ -1,7 +1,3 @@
-required:
-  - '@id'
-  - '@type'
-  - id
 type: object
 properties:
   '@type':
@@ -12,7 +8,6 @@ properties:
     description: The resource's relative path.
   '@links':
     type: object
-    properties: {}
     description: Links to related resources.
   id:
     type: string
@@ -31,10 +26,14 @@ properties:
         - `failed`: The deployment has failed.
   created_at:
     type: string
-    description: The date and time (UTC) at which the deployment was submitted.
     format: date-time
+    description: The date and time (UTC) at which the deployment was submitted.
   completed_at:
     type: string
-    description: The date and time (UTC) at which the deployment was completed.
     format: date-time
+    description: The date and time (UTC) at which the deployment was completed.
+required:
+  - '@type'
+  - '@id'
+  - id
 description: Config_V1_Entities_Deployment model

@@ -1,7 +1,3 @@
-required:
-  - '@id'
-  - '@type'
-  - id
 type: object
 properties:
   '@type':
@@ -12,7 +8,6 @@ properties:
     description: The resource's relative path.
   '@links':
     type: object
-    properties: {}
     description: Links to related resources.
   id:
     type: string
@@ -20,15 +15,27 @@ properties:
   property_id:
     type: string
     description: The system-defined ID for the property associated with this environment.
+  legacy_account_number:
+    type: string
+    description: >-
+      The system-defined account number for this environment. Use this account
+      number when requesting legacy APIs. This account number is unavailable
+      immediately after an environment is created. If it is missing, try
+      retrieving the environment again.
   name:
     type: string
     description: The environment's name.
   can_members_deploy:
     type: boolean
     description: >-
-      Determines whether all organization members may deploy to this
-      environment. Disabling this option restricts deployments to admin users
-      and the deploy token.
+      DEPRECATED: this will be removed. Use only_maintainers_can_deploy field
+      instead
+  only_maintainers_can_deploy:
+    type: boolean
+    description: >-
+      Determines whether all organization editors may deploy to this
+      environment. Enabling this option restricts deployments to maintainer
+      users and the deploy token.
   http_request_logging:
     type: boolean
     description: >-
@@ -47,10 +54,14 @@ properties:
     description: Serve traffic for this environment by pointing your CNAMEs to this domain.
   created_at:
     type: string
-    description: The environment's creation date and time (UTC).
     format: date-time
+    description: The environment's creation date and time (UTC).
   updated_at:
     type: string
-    description: The environment's last modification date and time (UTC).
     format: date-time
+    description: The environment's last modification date and time (UTC).
+required:
+  - '@type'
+  - '@id'
+  - id
 description: Accounts_V1_Entities_Environment model

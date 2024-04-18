@@ -181,9 +181,9 @@ Establishing a SSO workflow requires a custom integration between our identity s
     -   **Sign Response:** `TRUE | FALSE`
     -   **Encrypt Assertion:** `TRUE | FALSE`
 
-4.  Set up an additional SAML token claim to provide email addresses to {{ PRODUCT }}. Use the following schema namespace:
-
-    `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/email`
+4.  Set up a SAML assertion subject for each email address that should have SSO access to the {{ PORTAL }}.
+ 
+    Set the Subject NameID value to the email address format. The vendor-specific attibute for the email address claim is typically either `email` or `emailaddress`. Choose the correct attribute for the NameID format.
 
 5.  Optional. Set up custom attribute statements for the user's name. Use the following schema namespaces:
 

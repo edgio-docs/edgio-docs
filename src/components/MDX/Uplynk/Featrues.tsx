@@ -47,10 +47,6 @@ const StyledHomepageFeatures = styled.div`
       }
     }
   }
-
-  @media (max-width: 630px) {
-    padding-bottom: 850px;
-  }
 `;
 
 export default function ApplicationsFeatures() {

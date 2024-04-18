@@ -12,7 +12,7 @@ import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 
-interface Route {
+export interface Route {
   title: string | null;
   path: string;
   icon: string;
@@ -305,12 +305,16 @@ const StyledSideNav = styled.div`
   }
 `;
 
-export default function SideNav() {
+interface SideNavProps extends React.HTMLAttributes<HTMLDivElement> {
+  items?: Route;
+}
+
+const SideNav: React.FC<SideNavProps> = (props) => {
   const {navMenuItems, hasNavigationMenu} = useAppContext();
 
   if (hasNavigationMenu) {
     return (
-      <StyledSideNav>
+      <StyledSideNav {...props}>
         <ul className="sidenav-sublist" data-nav-depth="0">
           <AccordionParent routes={(navMenuItems as Route).routes!} depth={0} />
         </ul>
@@ -319,4 +323,6 @@ export default function SideNav() {
   }
 
   return null;
-}
+};
+
+export default SideNav;

@@ -1,53 +1,41 @@
 import {edgioAnswersUrl} from 'components/EdgioAnswers';
+import {AccordionItem} from 'components/Layout/SidebarNav/Accordion';
 import config from 'config/base.config';
 
 const {STATUS_URL, SUPPORT_URL, FORUM_URL, FIDDLE_URL} = config;
 
-type HeaderNavItemOrDivider = HeaderNavItem | null;
-interface HeaderNavItem {
-  name: string;
-  url: string;
-  useNextLink?: boolean;
-}
-
-interface HeaderNavGroup {
-  title: string;
-  items?: HeaderNavItemOrDivider[];
-  url?: string;
-}
-
-const headerNav: HeaderNavGroup[] = [
+const headerNav: AccordionItem[] = [
   {
-    title: 'Product',
+    title: 'Products',
     items: [
       {
-        name: 'Applications v7',
+        title: 'Applications v7',
         url: '/applications/v7',
       },
       {
-        name: 'Uplynk',
+        title: 'Uplynk',
         url: 'https://docs.edgecast.com/video/index.html',
       },
       {
-        name: 'Open Edge',
+        title: 'Open Edge',
         url: 'https://support.limelight.com/public/en/Default.htm#Control/Open_Edge/Open_Edge.htm',
       },
       {
-        name: 'Delivery',
+        title: 'Delivery',
         url: 'https://support.limelight.com/public/en/Default.htm#Delivery/Delivery_Public.htm',
       },
       /* divider */
       null,
       {
-        name: 'Edgecast CDN',
+        title: 'Edgecast CDN',
         url: 'https://docs.edgecast.com/cdn/index.html#Welcome_to_the_Help_Center.htm',
       },
       {
-        name: 'Applications v6',
+        title: 'Applications v6',
         url: '/applications/v6',
       },
       {
-        name: 'Applications v4',
+        title: 'Applications v4',
         url: '/applications/v4',
       },
     ],
@@ -56,20 +44,20 @@ const headerNav: HeaderNavGroup[] = [
     title: 'API Reference',
     items: [
       {
-        name: 'Applications REST API',
+        title: 'Applications REST API',
         url: '/rest_api',
         useNextLink: false,
       },
       {
-        name: 'Applications EdgeJS API',
+        title: 'Applications EdgeJS API',
         url: '/docs/v7.x/api/core/',
       },
       {
-        name: 'Uplynk',
+        title: 'Uplynk',
         url: 'https://docs.edgecast.com/video/index.html#Develop/Develop.htm',
       },
       {
-        name: 'Delivery',
+        title: 'Delivery',
         url: 'https://support.limelight.com/public/en/Default.htm#API/API%20Index.htm',
       },
     ],
@@ -78,19 +66,19 @@ const headerNav: HeaderNavGroup[] = [
     title: 'Support',
     items: [
       {
-        name: 'Edgio Answers',
+        title: 'Edgio Answers',
         url: edgioAnswersUrl,
       },
       {
-        name: 'Status Page',
+        title: 'Status Page',
         url: STATUS_URL,
       },
       {
-        name: 'Forum',
+        title: 'Forum',
         url: FORUM_URL,
       },
       {
-        name: 'Contact Us',
+        title: 'Contact Us',
         url: SUPPORT_URL,
       },
     ],

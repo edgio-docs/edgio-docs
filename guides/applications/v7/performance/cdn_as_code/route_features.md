@@ -950,15 +950,15 @@ If you need to block all search engine bot traffic to specific environments (suc
 
 The search engine traffic is automatically blocked on {{ PRODUCT }} edge links and permalinks as of {{ PRODUCT }} v6.
 
-If you would like to enable indexing on those links, you need to pass `{ indexPermalink: true }` into the Router constructor in `routes.js` file:
+</Callout>
+
+If you would like to enable indexing on edge and permalinks, you need to pass `{ indexPermalink: true }` into the Router constructor in `routes.js` file:
 
 ```js
 new Router({indexPermalink: true});
 ```
 
 Otherwise, {{ PRODUCT }} will match requests with the `host` header matching `/{{ LINK_DOMAIN }}|{{ PERMALINK_DOMAIN }}/` and set a response header of `x-robots-tag: noindex`.
-
-</Callout>
 
 Additionally, you can customize this to block traffic to development or staging websites based on the `host` header of the request:
 

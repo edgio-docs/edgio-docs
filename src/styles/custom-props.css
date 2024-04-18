@@ -23,7 +23,7 @@
   --shadow-primary: #00000026;
   --docsearch-searchbox-height: 36px;
   --docsearch-spacing: 6px;
-  --header-height: 48px;
+  --header-height: 72px;
   --image-icon-fill: #eeeeee;
   --select-bg: #0f1216;
   --select-border-color: #0094d6;
@@ -37,6 +37,7 @@
   --ea-input-field-active-bg: var(--bg-secondary);
   --ea-action-icon-color: var(--text-primary);
   --ea-action-icon-active-color: var(--text-primary);
+  --mobile-width: 850px;
 }
 
 :root.light {

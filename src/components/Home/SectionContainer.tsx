@@ -4,6 +4,7 @@ import cn from 'classnames';
 import styled from 'styled-components';
 
 import Link from 'components/MDX/Link';
+import {mobileMinWidth} from 'styles';
 
 const columnCount = 3;
 
@@ -24,6 +25,10 @@ const SectionContainer = styled.div`
   a {
     color: var(--text-primary);
     text-decoration: none;
+  }
+
+  @media (max-width: ${mobileMinWidth}) {
+    padding: 10px;
   }
 `;
 
@@ -96,7 +101,7 @@ const ItemsGrid = styled.div<{columns: number}>`
     grid-template-columns: repeat(2, 1fr); // 2 columns for medium screens
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${mobileMinWidth}) {
     grid-template-columns: repeat(1, 1fr); // 1 column for small screens
   }
 `;

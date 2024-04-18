@@ -14,11 +14,12 @@ import useConditioning from 'utils/hooks/useConditioning';
 import textCompare from 'utils/textCompare';
 
 import Header from './Header/Header';
+import MobileHeader from './Header/MobileHeader';
 import {SidebarNav} from './SidebarNav';
 import {useIsMobile} from './useMediaQuery';
 
 export function Page({children}: PageProps) {
-  const isMobile = useIsMobile(850);
+  const isMobile = useIsMobile();
   const [showSidebar, setShowSidebar] = React.useState(isMobile);
   const router = useRouter();
   const {context, hasNavigationMenu} = useAppContext();
@@ -57,10 +58,13 @@ export function Page({children}: PageProps) {
 
   return (
     <StyledMainPage>
-      {/* {showBanner && <Banner />} */}
-      <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+      {isMobile ? (
+        <MobileHeader />
+      ) : (
+        <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+      )}
       <main className="docs-content">
-        {hasNavigationMenu && (
+        {hasNavigationMenu && !isMobile && (
           <div
             className="docs-side__nav custom-scrollbar"
             data-open={isMobile && showSidebar}>

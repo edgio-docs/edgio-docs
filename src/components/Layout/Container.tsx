@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import {mobileMinWidth} from 'styles';
+
 export const StyledContainer = styled.div`
   max-width: 80%;
   padding: var(--container-padding);

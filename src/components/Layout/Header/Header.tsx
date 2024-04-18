@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 import Link from 'components/MDX/Link';
+import {headerImagePaths} from 'config/appConfig';
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 
@@ -57,16 +58,6 @@ const NavigationArea = styled.nav`
   min-width: 0;
   overflow: hidden;
   align-items: center;
-
-  .search-form__box {
-    --dimension: 32px;
-    width: var(--dimension);
-    height: var(--dimension);
-
-    .DocSearch-Button-Placeholder {
-      display: none;
-    }
-  }
 `;
 
 const ButtonGroup = styled.div`
@@ -96,41 +87,17 @@ const Button = styled.div<{gradient: string}>`
   background: ${(props) => props.gradient};
 `;
 
-const imagePaths = {
-  dark: {
-    applications: '/images/home/header/logo/dark/edgio-apps.png',
-    applications_v4: '/images/home/header/logo/dark/edgio-apps-v4.png',
-    applications_v6: '/images/home/header/logo/dark/edgio-apps-v6.png',
-    applications_v7: '/images/home/header/logo/dark/edgio-apps-v7.png',
-    delivery: '/images/home/header/logo/dark/edgio-delivery.png',
-    edgioDocs: '/images/home/header/logo/dark/edgio-docs.png',
-    uplynk: '/images/home/header/logo/dark/edgio-uplynk.png',
-  },
-  light: {
-    applications: '/images/home/header/logo/light/edgio-apps.png',
-    applications_v4: '/images/home/header/logo/light/edgio-apps-v4.png',
-    applications_v6: '/images/home/header/logo/light/edgio-apps-v6.png',
-    applications_v7: '/images/home/header/logo/light/edgio-apps-v7.png',
-    delivery: '/images/home/header/logo/light/edgio-delivery.png',
-    edgioDocs: '/images/home/header/logo/light/edgio-docs.png',
-    uplynk: '/images/home/header/logo/light/edgio-uplynk.png',
-  },
-};
+const imagePaths = headerImagePaths;
 
 const Header = () => {
-  const {config, context, version} = useAppContext();
-  const {APP_URL, UPLYNK_CMS_URL, DELIVERY_PORTAL_URL} = config;
+  const {context, version} = useAppContext();
   const {renderThemedElement} = useTheme();
 
   // all header images must be the same size
   const logoWidth = 337;
   const logoHeight = 48;
 
-  let darkLogo,
-    lightLogo,
-    showConsoleButton = false,
-    showUplynkButton = false,
-    showDeliveryButton = false;
+  let darkLogo, lightLogo;
 
   switch (context) {
     case ContextType.APPLICATIONS:
@@ -142,24 +109,18 @@ const Header = () => {
         imagePaths.light[
           `applications_${version}` as keyof typeof imagePaths.light
         ];
-      showConsoleButton = true;
       break;
     case ContextType.UPLYNK:
       darkLogo = imagePaths.dark.uplynk;
       lightLogo = imagePaths.light.uplynk;
-      showUplynkButton = true;
       break;
     case ContextType.DELIVERY:
       darkLogo = imagePaths.dark.delivery;
       lightLogo = imagePaths.light.delivery;
-      showDeliveryButton = true;
       break;
     default:
       darkLogo = imagePaths.dark.edgioDocs;
       lightLogo = imagePaths.light.edgioDocs;
-      showConsoleButton = true;
-      showUplynkButton = true;
-      showDeliveryButton = true;
       break;
   }
 
@@ -189,39 +150,66 @@ const Header = () => {
         </Link>
       </LogoArea>
       <NavigationArea>
-        <div className="search-form__box">
-          <AlgoliaSearch />
-        </div>
-
+        <AlgoliaSearch />
         <ThemeSwitcher />
         <HeaderNav />
       </NavigationArea>
-      <ButtonGroup>
-        {showConsoleButton && (
-          <Link href={APP_URL}>
-            <Button gradient="linear-gradient(90deg, #00BDA6 0%, #00A2E2 100%)">
-              Edgio Console
-            </Button>
-          </Link>
-        )}
-        {showUplynkButton && (
-          <Link href={UPLYNK_CMS_URL}>
-            <Button gradient="linear-gradient(90deg, #6F1480 0%, #345FB4 53%, #003FE2 100%)">
-              Uplynk CMS
-            </Button>
-          </Link>
-        )}
-        {showDeliveryButton && (
-          <Link href={DELIVERY_PORTAL_URL}>
-            <Button gradient="linear-gradient(90deg, #019F7F 0%, #5ACCB5 100%)">
-              Control Portal
-            </Button>
-          </Link>
-        )}
-      </ButtonGroup>
+      <HeaderButtons />
       <HorizontalLine />
     </HeaderContainer>
   );
 };
 
 export default Header;
+
+export const HeaderButtons = styled((props) => {
+  const {config, context} = useAppContext();
+  const {APP_URL, UPLYNK_CMS_URL, DELIVERY_PORTAL_URL} = config;
+
+  let showConsoleButton = false,
+    showUplynkButton = false,
+    showDeliveryButton = false;
+
+  switch (context) {
+    case ContextType.APPLICATIONS:
+      showConsoleButton = true;
+      break;
+    case ContextType.UPLYNK:
+      showUplynkButton = true;
+      break;
+    case ContextType.DELIVERY:
+      showDeliveryButton = true;
+      break;
+    default:
+      showConsoleButton = true;
+      showUplynkButton = true;
+      showDeliveryButton = true;
+      break;
+  }
+
+  return (
+    <ButtonGroup {...props}>
+      {showConsoleButton && (
+        <Link href={APP_URL}>
+          <Button gradient="linear-gradient(90deg, #00BDA6 0%, #00A2E2 100%)">
+            Edgio Console
+          </Button>
+        </Link>
+      )}
+      {showUplynkButton && (
+        <Link href={UPLYNK_CMS_URL}>
+          <Button gradient="linear-gradient(90deg, #6F1480 0%, #345FB4 53%, #003FE2 100%)">
+            Uplynk CMS
+          </Button>
+        </Link>
+      )}
+      {showDeliveryButton && (
+        <Link href={DELIVERY_PORTAL_URL}>
+          <Button gradient="linear-gradient(90deg, #019F7F 0%, #5ACCB5 100%)">
+            Control Portal
+          </Button>
+        </Link>
+      )}
+    </ButtonGroup>
+  );
+})``;

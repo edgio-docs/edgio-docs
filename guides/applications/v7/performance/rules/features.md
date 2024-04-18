@@ -49,7 +49,7 @@ Determines whether Token-Based Authentication will be applied to a request.
 
 <Important>
 
-You may not currently set a primary and backup encryption key through the {{ PORTAL }}. Contact our [technical customer support](${HELP_URL}) to set these key(s).
+You may not currently set a primary and backup encryption key through the {{ PORTAL }}. Contact our [technical customer support]({{ HELP_URL }}) to set these key(s).
 
 </Important>
 

@@ -1523,6 +1523,9 @@ Define the name of the custom request header to which the requesting client's IP
     -   via
     -   warning
     -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
+-   Your origin may restrict the use of certain request headers when transferring a client's IP address. 
+
+    For example, Salesforce B2C Commerce prohibits the use of various request headers, including `true-client-ip`, when transferring a client's IP address.
 
 <edgejs>
 **Example:**

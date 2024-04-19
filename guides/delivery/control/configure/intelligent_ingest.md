@@ -93,7 +93,7 @@ For the remote host, under **Remote Protocol**, specify the protocol ( HTTP or H
 
 To view and confirm the final origin and remote paths, click the **Test** button and review the values in the **Path in Origin Storage** and **Matched remote path** fields.
 
-<Callout type="info"> - The **Test** button is enabled only when the **Path in Origin Storage** field is filled in. < br /> -   Testing is intended to confirm the entered paths. It does not request content or confirm its availability.</Callout>
+<Callout type="info"> - The **Test** button is enabled only when the **Path in Origin Storage** field is filled in. <br /> -   Testing is intended to confirm the entered paths. It does not request content or confirm its availability.</Callout>
 
 The **Path in Origin Storage** field should contain the full path to the Origin Storage directory from which content will be requested, and the **Matched remote path** field should contain the full path to the remote host directory from which the content will be ingested if not found in that Origin Storage directory. If either path is not what you expected, change the values entered for **Content path**, **Remote storage Host** and/or **Remote path** as needed, and repeat the test.
 
@@ -109,8 +109,8 @@ If your content is hosted on a third-party content provider, you must configure 
 
         | Type | Description / Instructions |
         | --- | --- |
-        | Amazon S3 V4 | Select this if your content is hosted on .<br><br>[See Amazon friendly name Fields](#amazon-s3-v4-fields). |
-        | Custom Header | Select this if your content is hosted elsewhere.<br><br>[See Request headers friendly name Fields](#custom-header). |
+        | Amazon S3 V4 | Select this if your content is hosted on .<br /><br />[See Amazon friendly name Fields](#amazon-s3-v4-fields). |
+        | Custom Header | Select this if your content is hosted elsewhere.<br /><br />[See Request headers friendly name Fields](#custom-header). |
 
     -  Click **Apply** to create the new rule or **Cancel** to discard your work.
 
@@ -133,7 +133,7 @@ This authentication type sends authentication information in request headers to 
 | Name | Description / Instructions |
 | --- | --- |
 | Name | Descriptive name of your choice |
-| Add custom request header | 1.  Enter a name and a value, then click the **+** icon.<br /> 2.  Repeat until you have entered all required values.<br /><br />To remove a header, click the **-** icon.<br><br>After you save the rule ([Saving the Intelligent Ingest Rule](#step-5-saving-the-intelligent-ingest-rule)), the request headers configurations are available to choose for use in future rules. |
+| Add custom request header | 1.  Enter a name and a value, then click the **+** icon.<br /> 2.  Repeat until you have entered all required values.<br /><br />To remove a header, click the **-** icon.<br /><br />After you save the rule ([Saving the Intelligent Ingest Rule](#step-5-saving-the-intelligent-ingest-rule)), the request headers configurations are available to choose for use in future rules. |
 
 ### Step 5-Saving the Intelligent Ingest Rule  {/*step-5-saving-the-intelligent-ingest-rule*/}
 
@@ -158,7 +158,7 @@ To modify an authentication:
 1.  Click the **edit** icon for the desired authentication in the dialog.
     A dialog for editing the authentication is displayed.
 
-2.  Modify the authentication using information in [Amazon S3 V4 Fields](#amazon-s3-v4-fields)) and [Custom Header Fields](#custom-header).
+2.  Modify the authentication using information in [Amazon S3 V4 Fields](#amazon-s3-v4-fields) and [Custom Header Fields](#custom-header).
 3.  Click **Apply** to save changes, or **Cancel** to discard your work.
 
 To delete an authentication:

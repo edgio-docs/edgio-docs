@@ -34,7 +34,6 @@ An environment defines how traffic will be served through {{ PRODUCT }}. Each en
 
       If you used [our Github automation workflow](/applications/getting_started#creating-a-property--cli-with-automation-) to create a property, then we will create environments for you. You do not need to create additional environments.
 
-
     </Callout>
 
 <!--
@@ -62,10 +61,10 @@ Perform the following steps to create an environment:
 
 4.  Optional. Copy environment variables, A/B testing configuration, and notes from another environment by selecting it from the `Copy settings from environment` option.
 
-5.  Determine deployment permissions through the **Allow all organization members to deploy to this environment** option.
+5.  Determine deployment permissions through the **Restrict Editors to read-only access** option.
 
-    -   Mark this option to allow all team members to deploy to this environment.
-    -   Clear this option to restrict deployment to admins and the deploy token.
+    -   Mark this option to allow Editors to configure and deploy to this environment.
+    -   Clear this option to restrict configuration and deployments to deploy tokens, Maintainers, and Admins.
 
     ![limit environment](/images/v7/basics/environment-permissions.png?width=450)
 

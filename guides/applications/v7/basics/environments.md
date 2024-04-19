@@ -66,15 +66,16 @@ Perform the following steps to create an environment:
     -   Mark this option to prevent Editors from configuring or deploying to this environment. 
     -   Clear this option to allow Editors to configure and deploy to this environment.
 
-<Info>
+    <Info>
 
-Regardless of this option, deploy tokens, Maintainers, and Admins are always allowed to configure or deploy to this environment.
+    Regardless of this option, deploy tokens, Maintainers, and Admins are always allowed to configure or deploy to this environment.
 
-</Info>
+    </Info>
+
+6.  Determine whether this [environment will be tagged as production](#production-environment) through the **Make this my production environment** option.
 
     ![limit environment](/images/v7/basics/environment-permissions.png?width=450)
 
-6.  Determine whether this [environment will be tagged as production](#production-environment) through the **Make this my production environment** option.
 7.  Click **Create**.
 
 ## Environment Variables {/*environment-variables*/}

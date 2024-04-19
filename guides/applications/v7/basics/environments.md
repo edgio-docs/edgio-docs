@@ -63,8 +63,14 @@ Perform the following steps to create an environment:
 
 5.  Determine deployment permissions through the **Restrict Editors to read-only access** option.
 
-    -   Mark this option to allow Editors to configure and deploy to this environment.
-    -   Clear this option to restrict configuration and deployments to deploy tokens, Maintainers, and Admins.
+    -   Mark this option to prevent Editors from configuring or deploying to this environment. 
+    -   Clear this option to allow Editors to configure and deploy to this environment.
+
+<Info>
+
+Regardless of this option, deploy tokens, Maintainers, and Admins are always allowed to configure or deploy to this environment.
+
+</Info>
 
     ![limit environment](/images/v7/basics/environment-permissions.png?width=450)
 

@@ -3,7 +3,7 @@ title: Performance Dashboard
 ---
 # Performance Dashboard {/*performance-dashboard*/}
 
-The Performance Dashboard provides a comprehensive snapshot of your company's performance and summarizes information in the Traffic Report and Status Codes Report. The Performance Dashboard is different from the older [Dashboard](/delivery/control/dashboard), which is also available.
+The Performance Dashboard provides a comprehensive snapshot of your company's performance and summarizes information in the Traffic Report and Status Codes Report. The Performance Dashboard is different from the older [Dashboard](/delivery/control/support_tools/dashboard), which is also available.
 
 The Performance Dashboard comprises two sections:
 

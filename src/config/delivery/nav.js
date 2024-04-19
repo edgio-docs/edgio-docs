@@ -14,6 +14,10 @@ const nav = {
       path: 'index',
     },
     {
+      title: 'Delivery',
+      path: 'delivery',
+    },
+    {
       title: 'APIs',
       path: 'apis',
     },
@@ -39,8 +43,8 @@ const nav = {
             },
             separator,
             {
-              title: 'IP Allow List',
-              path: 'control/support_tools/ip_allow_list',
+              title: 'API Explorer',
+              path: 'https://support.limelight.com/public/explorer/llnw-api-explorer.html',
             },
             {
               title: 'Global Time',
@@ -177,10 +181,6 @@ const nav = {
           ],
         },
       ],
-    },
-    {
-      title: 'Delivery',
-      path: 'delivery',
     },
     {
       title: 'Storage',

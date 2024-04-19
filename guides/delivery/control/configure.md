@@ -1,9 +1,11 @@
 ---
 title: Configure
 ---
-Use this section in {{ CONTROL }} create and manage configurations for {{ DELIVERY }} products, features, and services.
+Use this section in {{ CONTROL }} to create and manage configurations for {{ DELIVERY }} products, features, and services.
 
 <Callout type="info">You will only see configurations options for the {{ DELIVERY }} features you have enabled for your account. Contact Support or your Account Manager if you have questions about your configuration selections.</Callout>
+
+## Product Features and Services  {/*product-features-and-services*/}
 
 | Product/Feature/Service | Description |
 |---|---|

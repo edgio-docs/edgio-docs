@@ -1,5 +1,5 @@
 ---
-title: Change Log
+title: Control Change Log
 ---
 
 |Version/ Date (YY.[M]M)	|Type	|Change	|Improvement	|Details	|Category|

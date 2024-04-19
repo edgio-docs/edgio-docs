@@ -23,7 +23,7 @@ To filter the list:
 2. Enter a value in the filter text field.
 3. Press the Enter key on your keyboard. The list is reduced to include only configurations that match the filter.
 
-Display the original list by clicking the x icon in the filter text field.
+Display the original list by clicking the **x** icon in the filter text field.
 
 ## Read-Only and Hidden Capabilities {/*read-only-and-hidden-capabilities*/}
 For particular use cases, configurations may have certain fields presented as either read-only or hidden (masked).
@@ -453,4 +453,4 @@ Users are not able to delete configurations. For more information, see [Read-Onl
 To revert to a previous configuration:
 1. Click the "undo" icon at the bottom right of the configuration row. A list of previous versions is displayed in a dialog.
 2. Select the version to which you want to revert. <br /> <Callout type="info">Although you intend to revert to a previous version, the reverted version will become the current version with a new version number. The new version number is displayed at the bottom of the dialog.</Callout>
-3. Click the Activate button. <br /><Callout type="info"> The ability to revert configurations is subject to conditions described in [Read-Only and Hidden Capabilities](#filtering-the-list-of-configurations).</Callout>
+3. Click the Activate button. <br /><Callout type="info"> The ability to revert configurations is subject to conditions described in [Read-Only and Hidden Capabilities](#read-only-and-hidden-capabilities).</Callout>

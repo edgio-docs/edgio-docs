@@ -2,11 +2,11 @@
 title: Edgio {{ DELIVERY }} Tech Docs
 ---
 
-## Edgio {{ DELIVERY }} Tech Docs
+## Edgio {{ DELIVERY }} Tech Docs  {/*edgio-tech-docs*/}
 
-Here you’ll find our user and technical documentation for our Delivery product suite.
+Here you’ll find user and technical documentation for our Delivery product suite.
 
-### Products and Features
+### Products and Features  {/*products-and-features*/}
 
 | Product/Feature/Service | Description |
 |---|---|

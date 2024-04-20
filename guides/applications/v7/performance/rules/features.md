@@ -1540,6 +1540,70 @@ export default new Router()
 ```
 </edgejs>
 
+#### Set Origin Response Headers {/*set-origin-response-headers*/}
+
+Set, overwrite, append, or delete one or more header(s) from the response provided by an origin server.
+
+**Key information:**
+
+-   Specify a header name that is an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header.
+-   Use alphanumeric characters, dashes, or underscores when specifying a header name.
+-   Use the following syntax to determine the action that will be applied to the response header:
+    -   **Set:** Set or overwrite a header's value by specifying a header name that does not start with a `+` symbol.
+    -   **Append:** Add to the end of an existing response header value by prepending a `+` symbol to the header name.
+
+        **Example:** Append a value to the `broadcast` response header by specifying `+broadcast`. If the response does not contain the `broadcast` header, then it will be set to the value defined in this feature (e.g., `network`). On the other hand, if it is already set to `ott`, then it will append the value defined in this feature (e.g., `broadast: ottnetwork`).
+    -   **Delete:** Set the header value to a blank value. Deleting a header will prevent it from being forwarded to an origin server by our edge servers.
+-   Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct header values.
+-   The following headers are reserved and cannot be modified by this feature:
+    -   forwarded-for
+    -   host
+    -   vary
+    -   via
+    -   warning
+    -   x-forwarded-for
+    -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
+
+<edgejs>
+**Key information:**
+
+-   **Syntax:** `"<HEADER NAME>": "<HEADER VALUE>"`
+-   `<HEADER NAME>` must be an exact match for the desired response header. However, case is not taken into account for the purpose of identifying a header.
+-   Use the following syntax to determine the action that will be applied to the response header:
+    -   **Set:** Set or overwrite a header's value by specifying a header name that does not start with a `+` symbol.
+    -   **Append:** Add to the end of an existing response header value by prepending a `+` symbol to the header name.
+
+        **Example:** Append a value to the `broadcast` response header by specifying `+broadcast`. If the response does not contain the `broadcast` header, then it will be set to the value defined in this feature (e.g., `network`). On the other hand, if it is already set to `ott`, then it will append the value defined in this feature (e.g., `broadast: ottnetwork`).
+    -   **Delete:** Set the header value to a blank value. Deleting a header will prevent it from being forwarded to an origin server by our edge servers.
+-   Use [feature variables](/applications/performance/rules/feature_variables) to dynamically construct header values.
+-   The following headers are reserved and cannot be modified by this feature:
+    -   forwarded-for
+    -   host
+    -   vary
+    -   via
+    -   warning
+    -   x-forwarded-for
+    -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
+
+**Example:**
+
+The following example:
+-   Sets the `sports` response header to `basketball` regardless of whether it was previously set to another value.
+-   Appends ` ott` to the `broadcast` header's value. For example, if it were set to `network`, then the new value after this feature has been applied will be `network ott`.
+
+```js filename="./routes.js"
+export default new Router()
+  .get('/', {
+    headers: {
+      "set_origin_response_headers": {
+		"sports": "basketball",
+		"+broadcast": " ott"
+      },
+    }
+  })
+```
+</edgejs>
+
 #### Set Request Headers {/*set-request-headers*/}
 
 Set, overwrite, append, or delete one or more header(s) from the request.

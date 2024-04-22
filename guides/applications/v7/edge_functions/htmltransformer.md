@@ -502,7 +502,7 @@ The Text class has the following methods:
 | `as_str(): string`                            | Returns the text                                                                           |
 | `set_str(text: string)`                       | Sets the text                                                                              |
 | `text_type(): string`                         | Returns the text type.                                                                     |
-| `last_text_in_node(): boolean`                | Returns true if the chunk is last in a HTML text node.                                     |
+| `last_in_text_node(): boolean`                | Returns true if the chunk is last in a HTML text node.                                     |
 | `before(text: string, content_type: string)`  | Inserts the text before the text chunk. Content type is ['html' or 'text'](#content_types) |
 | `after(text: string, content_type: string)`   | Inserts the text after the text chunk. Content type is ['html' or 'text'](#content_types)  |
 | `replace(text: string, content_type: string)` | Replaces the text chunk with the text. Content type is ['html' or 'text'](#content_types)  |

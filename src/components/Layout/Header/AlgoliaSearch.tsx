@@ -1,5 +1,3 @@
-import {on} from 'events';
-
 import {useCallback, useRef, useState} from 'react';
 
 import {

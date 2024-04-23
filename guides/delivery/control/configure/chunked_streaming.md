@@ -21,7 +21,7 @@ The *Chunked Streaming Configurations list* provides the following information f
 -   visible to end-users).
 
 -   **protocol** – protocols in this format:
-    {source protocol} ➤ {published protocol}
+    {source protocol} > {published protocol}
     Multiple protocol combinations are allowed. An example is: HTTP ➤ HTTPS & HTTPS ➤ HTTP
 
 -   **format** - The media formats which the content is delivered in

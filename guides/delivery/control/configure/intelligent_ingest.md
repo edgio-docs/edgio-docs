@@ -2,7 +2,7 @@
 title: Intelligent Ingest
 ---
 
-If you're an Origin Storage customer, you can use Intelligent Ingest to automatically populate Origin Storage with new content as it is requested from the CDN. If a request results in a CDN Cache Miss, and the content is not found in Origin Storage, Intelligent Ingest will retrieve and ingest the content from the remote host(s) you specify. You can create any number of "rules" that pair specific Origin Storage logins and content paths with specific remote hosts and paths. These rules are also known as "rewrites."
+If you are an Origin Storage customer, you can use Intelligent Ingest to automatically populate Origin Storage with new content as it is requested from the CDN. If a request results in a CDN Cache Miss, and the content is not found in Origin Storage, Intelligent Ingest will retrieve and ingest the content from the remote host(s) you specify. You can create any number of "rules" that pair specific Origin Storage logins and content paths with specific remote hosts and paths. These rules are also known as "rewrites."
 
 ## Intelligent Ingest List Page  {/*intelligent-ingest-list-page*/}
 
@@ -10,13 +10,13 @@ The list page provides summary information at the top, including **Status** (_Ac
 
 A list of existing rules appears below the summary area. For each rule, the content paths for both Origin Storage and the remote host are shown along with the authentication type, if any.
 
-<Callout type="info"> <br /> -   By default, the configuration page is accessible only to internal users. <br /> -   By default, only the SuperAdmin, Control Admin, and ASA roles have Intelligent Ingest roles needed to access Intelligent Ingest. <br />   The data for Storage Quota, Bandwidth, and Concurrency was provided by your company when was purchased. <br />-   If the service has become inactive because the quota has been exceeded, you will see an _Inactive_ alert in the **Status** section of the overview. When the problem is resolved, the display will update to _Active_. <br /> -   If you're unable to use because the quota has been exceeded, please contact your Company Admin.</Callout>
+<Callout type="info"> -   By default, the configuration page is accessible only to internal users. <br /> -   By default, only the SuperAdmin, Control Admin, and ASA roles have Intelligent Ingest roles needed to access Intelligent Ingest. <br />   The data for Storage Quota, Bandwidth, and Concurrency was provided by your company when was purchased. <br />-   If the service has become inactive because the quota has been exceeded, you will see an _Inactive_ alert in the **Status** section of the overview. When the problem is resolved, the display will update to _Active_. <br /> -   If you're unable to use because the quota has been exceeded, please contact your Company Admin.</Callout>
 
 ## Enabling Intelligent Ingest  {/*enbabling-intelligent-ingest*/}
 
 To enable Intelligent Ingest, please contact your Account Manager. After Intelligent Ingest has been turned up for your account, "Intelligent Ingest" will appear under the Configure menu in the navigation pane.
 
-<Callout type="info"> <br /> Intelligent Ingest configuration requires at least one active Origin Storage login.</Callout>
+<Callout type="info"> Intelligent Ingest configuration requires at least one active Origin Storage login.</Callout>
 
 ## Configuration Overview  {/*configuration-overview*/}
 
@@ -104,13 +104,13 @@ If your content is hosted on a third-party content provider, you must configure 
 1.  Click the **Enable Remote Storage Host Authentication** checkbox.
 2.  Choose an existing configuration from the or create a new configuration.
 3.  To create a new configuration:
-    -  Click the \+ new button.
+    -  Click the *+* new button.
     -  Choose a configuration type in the subsequent dialog.
 
         | Type | Description / Instructions |
         | --- | --- |
-        | Amazon S3 V4 | Select this if your content is hosted on .<br /><br />[See Amazon friendly name Fields](#amazon-s3-v4-fields). |
-        | Custom Header | Select this if your content is hosted elsewhere.<br /><br />[See Request headers friendly name Fields](#custom-header). |
+        | Amazon S3 V4 | Select this if your content is hosted on.<br />[See Amazon friendly name Fields](#amazon-s3-v4-fields). |
+        | Custom Header | Select this if your content is hosted elsewhere.<br />[See Request headers friendly name Fields](#custom-header). |
 
     -  Click **Apply** to create the new rule or **Cancel** to discard your work.
 

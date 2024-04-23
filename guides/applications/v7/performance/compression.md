@@ -38,14 +38,18 @@ Edge server compression occurs when an edge server compresses cached content and
 
 ### Enabling Edge Server Compression {/*enabling-edge-server-compression*/}
 
-Edge server compression requires enabling compression for the desired content types (aka MIME type or media type). Sample content types are provided below.
+Edge server compression requires enabling compression for the desired content types (aka MIME type or media type). Common content types are provided below.
 
-| Content Type    | File Type                     |
-|-----------------|-------------------------------|
-| text/plain      | Text files                    |
-| text/html       | HTML files                    |
-| text/css        | Cascading Style Sheets (CSS)  |
-| text/javascript | JavaScript                    |
+| Content Type           | File Type                         |
+|------------------------|-----------------------------------|
+| application/javascript | JavaScript                        |
+| application/json       | JavaScript Object Notation (JSON) |
+| application/xml        | Extensible Markup Language (XML)  |
+| text/css               | Cascading Style Sheets (CSS)      |
+| text/html              | HTML files                        |
+| text/javascript        | JavaScript                        |
+| text/plain             | Text files                        |
+| text/xml               | Extensible Markup Language (XML)  |
 
 Enable compression for each desired content type through the following steps:
 
@@ -56,13 +60,13 @@ The following examples demonstrate how to enable edge server compression using:
 
 -   [Rules:](/applications/performance/rules#managing-rules)
 
-    The following configuration enables edge server compression for the 4 sample content types described above.
+    The following configuration enables edge server compression for the common content types described above.
 
     ![Compress Content Types Feature](/images/v7/performance/compress-content-types.png?width=450)
 
 -   [CDN-as-Code:](/applications/performance/cdn_as_code)
 
-    The following sample rule enables edge server compression across all requests for the 4 sample content types described above.
+    The following sample rule enables edge server compression across all requests for the common content types described above.
 
     ```js filename="./routes.js"
     export default new Router().match(
@@ -70,10 +74,14 @@ The following examples demonstrate how to enable edge server compression using:
       {
         response: {
           compress_content_types: [
-            "text/plain",
-            "text/html",
+            "application/javascript",
+            "application/json",
+            "application/xml",
             "text/css",
+            "text/html",
             "text/javascript",
+            "text/plain",
+            "text/xml ",
           ],
         },
       }

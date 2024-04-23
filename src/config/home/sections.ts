@@ -210,6 +210,10 @@ export const sections: HomepageSectionGroup[] = [
             title: 'SmartPurge',
             path: 'https://support.limelight.com/public/en/Content/Delivery/SmartPurge/Smart_Purge.htm',
           },
+          {
+            title: 'API Explorer',
+            path: 'https://developers.limelight.com/explorer/',
+          },
         ],
       },
       {

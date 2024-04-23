@@ -106,9 +106,9 @@ The dialog closes and a message is displayed stating that a job to create the He
 Click the **Refresh** button periodically to determine if the Rule has finished processing.
 
  <br /> <Callout type="info">CONTENT</Callout>
-*   After configuring a Health Check you may have to wait five or more minutes for the Resource to be created.
+-   After configuring a Health Check you may have to wait five or more minutes for the Resource to be created.
 
-*   The health will be added to the Edit resource for page only after the job is complete.
+-   The health will be added to the Edit resource for page only after the job is complete.
 
 #### Fields in the 'CREATE HEALTHCHECK' Dialog {/*fields-in-the-create-healthcheck-dialog*/}
 
@@ -186,7 +186,7 @@ Any Resources that have been configured for the Failover group are listed in the
 
 You can configure a Resource's priority and preference and add or remove a Resource.
 
-**Configure Relative Priority and Preference** {/*configure-relative-priority-and-preference*/}
+#### Configure Relative Priority and Preference {/*configure-relative-priority-and-preference*/}
 
 In addition to name, type, and target (see [Fields on the 'Create resource for' Page](#fields-on-the-create-resource-for-page)), each Resource listed has a priority and preference:
 
@@ -200,15 +200,15 @@ To configure relative priority and preference:
 
 1.  Make entries in the **Priority** and **Preference** fields for each Resource:
 
-*   Preference: Relative preference compared to other Resources.
+-   Preference: Relative preference compared to other Resources.
 
-*   Priority: Relative priority compared to other Resources.
+-   Priority: Relative priority compared to other Resources.
 
 2.  Click **Save**.
 
     A message is displayed stating that a Failover job has started, and the word "processing" is displayed on the right side of the row. Click the Refresh button periodically to determine if the Failover has finished processing.
 
-**Remove a Resource** {/*remove-a-resource*/}
+#### Remove a Resource {/*remove-a-resource*/}
 
 Removing a Resource
 
@@ -296,7 +296,7 @@ The **Director policie**s tab contains a list of configured Policies for a given
 | Canonical Host | CNAME of the host the DNAME points to.  <br /> <Callout type="info">- If the domain name does not include a terminating dot ("."), the zone name is appended to the domain name when the resource is pushed to the edge. For example, if the zone name is `lldns.net.` and the domain name is specified as `www2.lldns.net`, the name is `www2.lldns.net.lldns.net`. when pushed to the edge. < br /> - To add hostname `www3` to `zone lldns.net.` you can specify the domain name as either `www3.lldns.net.` or `www3`.<br /> Both naming methods result in the record being pushed to the edge as `www3.lldns.net.`</Callout>||
 | TTL | Time to live. Amount of time the Policy will remain in the DNS resolver's cache. |
 | Weight | Relative importance of this record compared to other records with the same **Alias Host Name** but different **Canonical Host** names. Defaults to 0 if not specified.<br />Larger integers mean the record will get served more frequently relative to the other records with the same name or smaller weight. |
-| Rule | Business Rule associated with the Policy. See [Applying Director Policy Rules](#Adding2) for instructions. If no Rule is specified, the record acts as the default response when there is no Rule match from other records. |
+| Rule | Business Rule associated with the Policy. See [Applying Director Policy Rules](#apply-director-policy-rules) for instructions. If no Rule is specified, the record acts as the default response when there is no Rule match from other records. |
 | Comments | Notes about the Policy. |
 
 ## Work with Director Policy Rules  {/*work-with-director-policy-rules*/}
@@ -367,7 +367,7 @@ To create a new Rule:
 
 2. A message is displayed stating that a job to delete the Rule has started and the word "processing" is displayed on the right side of the row. Click the **Refresh** button periodically to determine if the Rule has been deleted.
 
-**Fields in the CREATE RULES and EDIT RULE Dialogs** {/*fields-in-the-create-rules-and-edit-rule-dialog/*}
+#### Fields in the CREATE RULES and EDIT RULE Dialogs {/*fields-in-the-create-rules-and-edit-rule-dialog/*}
 
 | Field | Description/Instructions |
 | --- | --- |

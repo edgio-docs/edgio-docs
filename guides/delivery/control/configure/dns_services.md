@@ -186,7 +186,7 @@ Any Resources that have been configured for the Failover group are listed in the
 
 You can configure a Resource's priority and preference and add or remove a Resource.
 
-**Configure Relative Priority and Preference {/*configure-relative-priority-and-preference*/}**
+**Configure Relative Priority and Preference** {/*configure-relative-priority-and-preference*/}
 
 In addition to name, type, and target (see [Fields on the 'Create resource for' Page](#fields-on-the-create-resource-for-page)), each Resource listed has a priority and preference:
 
@@ -208,7 +208,7 @@ To configure relative priority and preference:
 
     A message is displayed stating that a Failover job has started, and the word "processing" is displayed on the right side of the row. Click the Refresh button periodically to determine if the Failover has finished processing.
 
-**Remove a Resource {/*remove-a-resource*/}**
+**Remove a Resource** {/*remove-a-resource*/}
 
 Removing a Resource
 
@@ -216,7 +216,7 @@ To remove a Resource, click the trash can (delete) icon on the right side of the
 
 You can also remove a Resource as described in [Adding and Removing Resources from a Failover Group](#working-with-resources).
 
-**Add and Remove Resources from a Failover Group {/*add-and-remove-resources-from-a-failover-group*/}**
+**Add and Remove Resources from a Failover Group** {/*add-and-remove-resources-from-a-failover-group*/}
 
 The RESOURCES dialog is displayed. Resources currently configured for the Failover group contain a minus (remove) icon. All other Resources contain a plus (add) icon.
 1. Click **+ Add/remove resources**.
@@ -367,7 +367,7 @@ To create a new Rule:
 
 2. A message is displayed stating that a job to delete the Rule has started and the word "processing" is displayed on the right side of the row. Click the **Refresh** button periodically to determine if the Rule has been deleted.
 
-**Fields in the CREATE RULES and EDIT RULE Dialogs {/*fields-in-the-create-rules-and-edit-rule-dialog/*}**
+**Fields in the CREATE RULES and EDIT RULE Dialogs** {/*fields-in-the-create-rules-and-edit-rule-dialog/*}
 
 | Field | Description/Instructions |
 | --- | --- |

@@ -96,6 +96,7 @@ Click the **Refresh** button periodically to determine if the Rule has finished 
 
   <Callout type="info">If the Resource already has both types of Health Checks, the **+ Add new healthcheck** button is disabled.
 </Callout>
+
     The CREATE HEALTHCHECK dialog displays.
 
 3.  Complete the fields in the dialog (see [Fields In the 'CREATE HEALTHCHECK' Page](#fields-in-the-create-healthcheck-dialog)).

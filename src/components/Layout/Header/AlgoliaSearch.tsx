@@ -154,7 +154,8 @@ const AlgoliaSearch = ({onSearchOpen, onSearchClose}: AlgoliaSearchProps) => {
             resultsFooterComponent={({state}) => {
               return (
                 <StyledFooter onClick={() => onClickEdgioAnswers(state.query)}>
-                  Not found? Try asking <strong>Edgio Answers</strong>.
+                  Looking for something else? <br />
+                  Try asking <strong>Edgio Answers</strong>.
                 </StyledFooter>
               );
             }}

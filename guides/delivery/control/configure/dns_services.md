@@ -79,7 +79,7 @@ You are returned to the *Resources* tab and a message is displayed stating that 
 
 Click the **Refresh** button periodically to determine if the Rule has finished processing.
 
- <br /> <Callout type="info">-   After configuring a Resource you may have to wait five or more minutes for the Resource to be created. <br /> -   The Resource will be added to the list only after the job is complete. <br /> -   After creating the Resource, you might want to add Health Checks to it. See [Adding Health Checks to a DNS Services Resource](#add-health-checks-to-a-dns-services-resource).</Callout>
+ <br /> <Callout type="info">- After configuring a Resource you may have to wait five or more minutes for the Resource to be created. <br /> -   The Resource will be added to the list only after the job is complete. <br /> - After creating the Resource, you might want to add Health Checks to it. See [Adding Health Checks to a DNS Services Resource](#add-health-checks-to-a-dns-services-resource).</Callout>
 
 #### Fields on the 'Create resource for' Page {/*fields-on-the-create-resource-for-page*/}
 
@@ -369,12 +369,12 @@ To create a new Rule:
 
 #### Fields in the CREATE RULES and EDIT RULE Dialogs {/*fields-in-the-create-rules-and-edit-rule-dialog/*}
 
-| Field | Description/Instructions |
+|Field | Description/Instructions |
 | --- | --- |
 | Name | Descriptive name for the Rule. |
 | Enabled | You can create a Rule but not enable it for various reasons. If a Rule is not enabled, it will not be applied.<br />Add a check mark if you want to enable the Rule. |
 | Description | Rule explanation. |
-| Match components | Rules have multiple Components and each Component can consist of one or more of the following: country, region, ASN, and CIDR. The fields in a Component appear in increasing specificity and are 'AND'ed together. The most specific Rule Component that can be matched is applied.  <br /> <Callout type="info">You can add multiple Components using the dialog. All are associated with the Rule.</Callout> <br /> 1.  Configure the following fields. <br />    - Select 'Country' and 'Region' for geographic-based routing.<br /> The 'Region' field is supported for only a subset of all countries.<br /> - You can select 'Country' without selecting 'Region' but you must select 'Country' to select 'Region'. <br /> - Enter the ASN (Autonomous System Number) to route based on Border Gateway Protocol (BPG). <br /> - Enter CIDR (Classless inter-domain routing) to route based on IP address. <br /> 2. Click the + button to the right of the Component to add the Component.<br />3. Click Apply.<br /> A message is displayed stating that a job to create or edit the Component has started.<br /> 4. Create additional Components as desired. |
+| Match components | Rules have multiple Components and each Component can consist of one or more of the following: country, region, ASN, and CIDR. The fields in a Component appear in increasing specificity and are 'AND'ed together. The most specific Rule Component that can be matched is applied.  <br /> <Callout type="info">You can add multiple Components using the dialog. All are associated with the Rule.</Callout> <br /> 1.  Configure the following fields. <br />- Select 'Country' and 'Region' for geographic-based routing.<br /> The 'Region' field is supported for only a subset of all countries.<br /> - You can select 'Country' without selecting 'Region' but you must select 'Country' to select 'Region'. <br /> - Enter the ASN (Autonomous System Number) to route based on Border Gateway Protocol (BPG). <br /> - Enter CIDR (Classless inter-domain routing) to route based on IP address. <br /> 2. Click the + button to the right of the Component to add the Component.<br />3. Click Apply.<br /> A message is displayed stating that a job to create or edit the Component has started.<br /> 4. Create additional Components as desired. |
 
 ### Edit a Director Policy  {/*edit-a-director-policy*/}
 

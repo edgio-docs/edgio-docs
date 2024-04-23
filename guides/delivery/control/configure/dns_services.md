@@ -367,7 +367,7 @@ To create a new Rule:
 
 2. A message is displayed stating that a job to delete the Rule has started and the word "processing" is displayed on the right side of the row. Click the **Refresh** button periodically to determine if the Rule has been deleted.
 
-#### Fields in the CREATE RULES and EDIT RULE Dialogs {/*fields-in-the-create-rules-and-edit-rule-dialog/*}
+#### Fields in the CREATE RULES and EDIT RULE Dialogs {/*fields-in-the-create-rules-and-edit-rule-dialog*/}
 
 |Field | Description/Instructions |
 | --- | --- |

@@ -166,7 +166,7 @@ const NavMobile: React.FC<SidebarNavMobileProps> = (props) => {
       <Overlay isOpen={showMenu} onClick={closeMenu} />
       <StyledNavBody isOpen={showMenu}>
         <StyledNavHeader>
-          <AlgoliaSearch />
+          <AlgoliaSearch onSearchOpen={closeMenu} />
           <ThemeSwitcher />
           <StyledCollapseIcon onClick={toggleMenu}>
             {renderThemedElement(

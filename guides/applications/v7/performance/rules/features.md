@@ -193,7 +193,10 @@ export default new Router()
 
 #### Bypass Cache {/*bypass-cache*/}
 
-Determines whether our CDN will honor your caching policy when determining whether requests should be cached.
+Determines whether the request may leverage our caching technology. 
+
+-   **Enabled:** It forces all requests to fall through to the origin server even if the content was previously cached on edge servers.
+-   **Disabled:** Allows edge servers to cache content according to an origin's cache instructions or a rule's caching policy. 
 
 <edgejs>
 **Example:**
@@ -208,7 +211,7 @@ export default new Router()
 ```
 </edgejs>
 
-**Default Behavior:** false
+**Default Behavior:** Disabled.
 
 #### Bypass Client Cache {/*bypass-client-cache*/}
 
@@ -1523,6 +1526,9 @@ Define the name of the custom request header to which the requesting client's IP
     -   via
     -   warning
     -   All header names that start with `{{ HEADER_PREFIX }}` and `x-ec` are reserved.
+-   Your origin may restrict the use of certain request headers when transferring a client's IP address. 
+
+    For example, Salesforce B2C Commerce prohibits the use of various request headers, including `true-client-ip`, when transferring a client's IP address.
 
 <edgejs>
 **Example:**

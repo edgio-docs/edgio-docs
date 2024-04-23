@@ -94,10 +94,9 @@ Click the **Refresh** button periodically to determine if the Rule has finished 
 1.  Locate the desired Resource on the **Resources** tab, then select the pencil (edit) icon.
 2.  Click the **+ Add new healthcheck** button.<br />
 
-  <Callout type="info">If the Resource already has both types of Health Checks, the **+ Add new healthcheck** button is disabled.
-</Callout>
+  <Callout type="info">If the Resource already has both types of Health Checks, the **+ Add new healthcheck** button is disabled.</Callout>
 
-    The CREATE HEALTHCHECK dialog displays.
+The CREATE HEALTHCHECK dialog displays.
 
 3.  Complete the fields in the dialog (see [Fields In the 'CREATE HEALTHCHECK' Page](#fields-in-the-create-healthcheck-dialog)).
 4.  Click the **Save** button.

@@ -9,7 +9,7 @@ An environment defines how traffic will be served through {{ PRODUCT }}. Each en
 -   [Rules:](/applications/performance/rules) A rule determines how requests for a specific environment will be processed.
 -   [Experiments:](/applications/performance/experiments) Randomized experimentation process wherein two or more versions of a variable are shown to different segments of website visitors at the same time to determine which version leaves the maximum impact and drives business metrics.
 -   [Core Web Vitals:](/applications/performance/observability/real_user_monitoring) Review and analyze performance metrics collected through the measurement of actual Chrome users.
--   [Caching:](/applications/performance/caching) By default, deploying to an environment also clears that environment's cached content. You may manually [purge content](/applications/performance/caching) from the **Caching** page, the [{{ PRODUCT }} CLI](/applications/develop/cli#cache-clear), or our [REST API](/applications/develop/rest_api/cache_purge#clear-cache).
+-   [Caching:](/applications/performance/caching) By default, deploying to an environment also clears that environment's cached content. You may manually [purge content](/applications/performance/caching) from the **Caching** page, the [{{ PRODUCT }} CLI](/applications/develop/cli#cache-clear), or our [REST API](https://docs.edg.io/rest_api/#tag/purge-requests/operation/postCacheV01PurgeRequests).
 -   [Environment Variables:](#environment-variables) An environment variable is a placeholder for sensitive information (e.g., API keys and passwords) that should not be checked into source control.
 -   **Traffic (Analytics):** Contains real-time statistics for this environment's traffic. You may also view a breakdown of traffic by specific routes.
 -   [Real-Time Log Delivery:](/applications/logs/rtld) Delivers log data in near real-time to a variety of destinations.
@@ -33,7 +33,6 @@ An environment defines how traffic will be served through {{ PRODUCT }}. Each en
     <Callout type="info">
 
       If you used [our Github automation workflow](/applications/getting_started#creating-a-property--cli-with-automation-) to create a property, then we will create environments for you. You do not need to create additional environments.
-
 
     </Callout>
 
@@ -62,14 +61,21 @@ Perform the following steps to create an environment:
 
 4.  Optional. Copy environment variables, A/B testing configuration, and notes from another environment by selecting it from the `Copy settings from environment` option.
 
-5.  Determine deployment permissions through the **Allow all organization members to deploy to this environment** option.
+5.  Determine deployment permissions through the **Restrict Editors to read-only access** option.
 
-    -   Mark this option to allow all team members to deploy to this environment.
-    -   Clear this option to restrict deployment to admins and the deploy token.
+    -   Mark this option to prevent Editors from configuring or deploying to this environment. 
+    -   Clear this option to allow Editors to configure and deploy to this environment.
+
+    <Info>
+
+    Regardless of this option, deploy tokens, Maintainers, and Admins are always allowed to configure or deploy to this environment.
+
+    </Info>
+
+6.  Determine whether this [environment will be tagged as production](#production-environment) through the **Make this my production environment** option.
 
     ![limit environment](/images/v7/basics/environment-permissions.png?width=450)
 
-6.  Determine whether this [environment will be tagged as production](#production-environment) through the **Make this my production environment** option.
 7.  Click **Create**.
 
 ## Environment Variables {/*environment-variables*/}

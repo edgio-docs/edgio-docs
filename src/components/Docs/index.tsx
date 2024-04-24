@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import {useIsMobile} from 'components/Layout/useMediaQuery';
 import {siteConfig} from 'config/appConfig';
 
 import {Toc} from '../Layout/Toc';
@@ -204,10 +205,6 @@ const StyledDocs = styled.div<{hasToc: boolean}>`
   @media (max-width: 1200px) {
     grid-template-columns: 1fr;
   }
-
-  @media (max-width: 630px) {
-    margin-bottom: 900px;
-  }
 `;
 
 const anchorClassName = siteConfig.headerIdConfig.className;
@@ -224,6 +221,7 @@ export default function Docs({
   source?: string;
 }) {
   const hasToc = tocHeadings.length > 0;
+  const isMobile = useIsMobile();
 
   return (
     <StyledDocs className="docs-body" hasToc={hasToc}>
@@ -239,9 +237,11 @@ export default function Docs({
                 aria-hidden="true"></a>
             </h1>
 
-            <div className="docs-article__header-icons">
-              <EditPage as="icon" source={source} />
-            </div>
+            {!isMobile && (
+              <div className="docs-article__header-icons">
+                <EditPage as="icon" source={source} />
+              </div>
+            )}
           </header>
           <div className="docs-article__body">{children}</div>
         </article>

@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Edgio REST API
-  version: 0.0.5
+  version: 0.1.0
   x-logo:
     url: 'https://docs.edg.io/_next/static/media/edgio-dark.ea0d686f.webp'
     backgroundColor: '#FFFFFF'
@@ -12,16 +12,28 @@ info:
 tags:
   - name: tls-certs
     x-displayName: TLS Certificates
-    description: Automate TLS certificate management.
+    description: |
+    
+      Retrieve TLS certificates or upload your own TLS certificate to a specific environment. 
+      
+      <a href="https://docs.edg.io/guides/v7/security/tls_certificates" target="_blank">Learn more about hosting TLS certificates on our network.</a>
   - name: deployments
     x-displayName: Deployment Info
-    description: Retrieve information and log data for a previous deployment.
+    description: |
+    
+      Retrieve information and log data for a previous deployment. 
+      
+      <a href="https://docs.edg.io/guides/v7/basics/deployments" target="_blank">Learn more about deployments.</a>
   - name: configs
     x-displayName: CDN Configuration
-    description: Deploy or retrieve a CDN configuration.
+    description: Deploy or retrieve a CDN configuration. This type of configuration consists of origin configurations, hostnames, rules, and experiments.
   - name: environment-variables
     x-displayName: Environment Variables
-    description: Automate environment variable management.
+    description: |
+    
+      Automate environment variable management. 
+      
+      <a href="https://docs.edg.io/guides/v7/basics/environments#environment-variables" target="_blank">Learn more about environment variables.</a>
   - name: purge-requests
     x-displayName: Purge
     description: Purge cached content and retrieve information about previously submitted purge requests.
@@ -146,6 +158,16 @@ tags:
       
       <a href="https://docs.edg.io/applications/security/client_side_protection" target="_blank">Learn more about Client-Side Protection policies.</a>
 
+  - name: RTLD Access Logs Profile
+    description: |
+    
+      Automate Real-Time Log Delivery (RTLD) Access Logs profile management. A RTLD Access Logs profile defines the condition(s) under which access log data will be delivered to the desired destination (e.g., your web server or AWS S3). 
+      
+      <a href="https://docs.edg.io/guides/v7/logs/rtld" target="_blank">Learn more about Real-Time Log Delivery.</a>
+  - name: Log Fields
+    description: Retrieve log fields associated with a Real-Time Log Delivery (RTLD) module.
+  - name: AWS Regions
+    description: Retrieve the available set of AWS regions.
 paths:
   /config/v0.1/tls-certs/{cert_id}:
     $ref: paths/config_v0.1_tls-certs_{cert_id}.yaml
@@ -501,7 +523,22 @@ paths:
 #      - url: 'https://edgioapis.com/client-waf/v0.9'
 #    security:
 #      - client_wafScope: [app.client_waf]
-
+  /accesslogs/profiles:
+    $ref: paths/accesslogs_profiles.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
+  /accesslogs/profiles/{id}:
+    $ref: paths/accesslogs_profiles_{id}.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
+  /accesslogs/fields:
+    $ref: paths/accesslogs_fields.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
+  /aws-regions:
+    $ref: paths/aws-regions.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
 components:
   securitySchemes:
     cacheScope:
@@ -560,7 +597,14 @@ components:
           tokenUrl: https://id.edgio.app/connect/token
           scopes:
             app.client_waf: Authorizes full access to Client-Side Protection.
-
+    rtldScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.rtld: Authorizes full access to Real-Time Log Delivery.
 x-tagGroups:
   - name: Cache
     tags:
@@ -594,3 +638,8 @@ x-tagGroups:
     tags:
       - properties
       - environments
+  - name: Real-Time Log Delivery (RTLD)
+    tags:
+      - RTLD Access Logs Profile
+      - Log Fields
+      - AWS Regions

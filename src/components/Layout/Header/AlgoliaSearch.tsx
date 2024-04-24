@@ -1,6 +1,7 @@
 import {DocSearch} from '@docsearch/react';
 // @ts-ignore
 import {default as JSURL} from 'jsurl';
+import styled from 'styled-components';
 
 import {siteConfig} from 'config/appConfig';
 import {
@@ -10,6 +11,16 @@ import {
 } from 'contexts/AppContext';
 
 import NoSSRWrapper from '../NoSSRWrapper';
+
+const StyledSearchWrapper = styled.div`
+  --dimension: 32px;
+  width: var(--dimension);
+  height: var(--dimension);
+
+  .DocSearch-Button-Placeholder {
+    display: none;
+  }
+`;
 
 const {
   appId: algoliaAppId,
@@ -65,15 +76,17 @@ const AlgoliaSearch = () => {
   };
 
   return (
-    <NoSSRWrapper>
-      <DocSearch
-        appId={algoliaAppId}
-        indexName={indexName}
-        apiKey={algoliaApiKey}
-        transformItems={transformItems}
-        searchParameters={searchParameters}
-      />
-    </NoSSRWrapper>
+    <StyledSearchWrapper>
+      <NoSSRWrapper>
+        <DocSearch
+          appId={algoliaAppId}
+          indexName={indexName}
+          apiKey={algoliaApiKey}
+          transformItems={transformItems}
+          searchParameters={searchParameters}
+        />
+      </NoSSRWrapper>
+    </StyledSearchWrapper>
   );
 };
 

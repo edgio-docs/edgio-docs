@@ -28,10 +28,14 @@ const StyledMenuButton = styled(MenuButton)`
       color: inherit;
     }
   }
+
+  a {
+    font-size: 16px;
+  }
 `;
 
 const StyledMenuLink = styled(Link)`
-  font-size: 14px;
+  font-size: 16px;
   color: inherit;
   text-decoration: none;
 
@@ -137,14 +141,14 @@ export default function HeaderNav() {
                       return <StyledMenuDivider key={index} />;
                     }
 
-                    const {name, url, useNextLink} = item;
+                    const {title, url, useNextLink} = item;
                     return (
                       <MenuLink key={index} as="span">
                         <StyledMenuLink
                           href={url}
                           versioned={false}
                           useNextLink={useNextLink}>
-                          {name}
+                          {title}
                         </StyledMenuLink>
                       </MenuLink>
                     );
@@ -162,7 +166,7 @@ export default function HeaderNav() {
                         key={seoIndex}
                         href={item.url}
                         style={{display: 'none'}}>
-                        {item.name}
+                        {item.title}
                       </a>
                     );
                   }

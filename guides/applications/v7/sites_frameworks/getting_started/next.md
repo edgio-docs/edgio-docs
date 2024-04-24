@@ -389,7 +389,7 @@ module.exports = {
 
 <!-- A working example app can be found [here](https://github.com/edgio-docs/edgio-next-i18n-example). -->
 
-## Image optimizer {/* image-optimizer */}
+## Image Optimizer {/* image-optimizer */}
 
 By default, Next.js image optimizer is replaced by our image optimizer, which is available in all build modes. You can disable it and use the built-in Next.js image optimizer instead by adding `disableImageOptimizer: true` to the `next` config in the `{{ CONFIG_FILE }}` file.
 

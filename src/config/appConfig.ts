@@ -44,6 +44,27 @@ export type ProductsConfig = {
   [product: string]: ProductConfig;
 };
 
+export const headerImagePaths = {
+  dark: {
+    applications: '/images/home/header/logo/dark/apps.png',
+    applications_v4: '/images/home/header/logo/dark/apps-v4.png',
+    applications_v6: '/images/home/header/logo/dark/apps-v6.png',
+    applications_v7: '/images/home/header/logo/dark/apps-v7.png',
+    delivery: '/images/home/header/logo/dark/delivery.png',
+    edgioDocs: '/images/home/header/logo/dark/docs.png',
+    uplynk: '/images/home/header/logo/dark/uplynk.png',
+  },
+  light: {
+    applications: '/images/home/header/logo/light/apps.png',
+    applications_v4: '/images/home/header/logo/light/apps-v4.png',
+    applications_v6: '/images/home/header/logo/light/apps-v6.png',
+    applications_v7: '/images/home/header/logo/light/apps-v7.png',
+    delivery: '/images/home/header/logo/light/delivery.png',
+    edgioDocs: '/images/home/header/logo/light/docs.png',
+    uplynk: '/images/home/header/logo/light/uplynk.png',
+  },
+};
+
 export const productsConfig: ProductsConfig = {
   applications: {
     pathPrefix: '/applications',

@@ -112,8 +112,7 @@ Static fields are user-defined fields with a value that does not change.
 
     Control deletes the configuration.
 
-<Callout type="info">It can take 15 to 40 minutes for the deletion to take effect.
-</Callout>
+<Callout type="info">It can take 15 to 40 minutes for the deletion to take effect. </Callout>
 
 ### Deactivating a Log Delivery Service Configuration  {/*deactivating-a-log-delivery-service-configuration*/}
 

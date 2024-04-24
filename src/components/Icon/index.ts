@@ -55,6 +55,7 @@ export * from './IconNote';
 export * from './IconNuxt';
 export * from './IconOutsideLink';
 export * from './IconPreact';
+export * from './IconQwik';
 export * from './IconRazzle';
 export * from './IconReact';
 export * from './IconReactStatic';

@@ -1,0 +1,31 @@
+title: Client-Side Protection object
+type: object
+properties:
+  id:
+    type: string
+    description: The Client-Side Protection policy's system-defined ID.
+  name:
+    type: string
+    description: The Client-Side Protection policy's name.
+  customer_id:
+    type: string
+    description: An internal system-defined ID.
+  last_modified_date:
+    type: string
+    description: The date and time at which this policy was last modified.
+  last_modified_by:
+    type: string
+    description: The Edgio Console user that last modified this Client-Side Protection policy. This field does not reflect updates performed through the REST API.
+  team_config:
+    type: boolean
+    description: This property must always be `true`. If passed in the request, set it to `true`.
+  headers:
+    type: array
+    description: Contains request header information to be added to edge responses.
+    items:
+      $ref: ./HeadersEntry.yaml
+  csp_script_nonce:
+    type: string
+    description: This property is reserved for internal use.
+required:
+  - team_config

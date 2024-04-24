@@ -1,0 +1,29 @@
+parameters:
+  - $ref: ../components/parameters/organization_id.yaml
+  - $ref: ../components/parameters/client_waf_id.yaml
+get:
+  operationId: get-client-waf-config-versions
+  tags:
+    - Client WAFs
+  summary: GET versions of a Client WAF configuration
+  description: Get existing versions of a Client WAF id.
+  security:
+    - client_wafScope: [app.client_waf]
+  responses:
+    '200':
+      description: A list of versions for that Client WAF id.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              '@id':
+                type: string
+              '@type':
+                type: string
+              items:
+                type: array
+                items:
+                  $ref: ../components/schemas/version_short.yaml
+    '404':
+      $ref: ../components/responses/error_404.yaml

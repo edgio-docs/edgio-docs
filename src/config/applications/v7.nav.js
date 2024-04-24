@@ -372,6 +372,10 @@ const nav = {
           path: 'security/managed_rules',
         },
         {
+          title: 'Client-Side Protection',
+          path: 'security/client_side_protection',
+        },
+        {
           title: 'Security Apps',
           path: 'security/security_applications',
         },

@@ -1,5 +1,5 @@
 ---
-title: Control
+title: Control Portal
 ---
 
 Edgio's web-based [Control portal](https://control.llnw.com/), provides 24x7 access to Edgio services and support. You can use the portal to order and configure many services, manage content, analyze usage, and access online support.
@@ -23,6 +23,6 @@ When you log in, you will see either the default [Dashboard](/delivery/control/s
 - [Realtime Reporting](https://support.limelight.com/public/openapi/realtimereporting/index.html)
 
 ## Resources {/*resources*/}
-- [**Change Log**](/delivery/control/support_tools/change_log): Recent feature updates, performance improvements, and bug fixes.
+- [**Change Log**](/delivery/control/support_tools/change_log)
 
-- [**IP Allow List**](https://control.llnw.com/aportal/support/documentation/iprssfeed/v2): Access the current list of allowed IP addresses for Edgio {{ DELIVERY }}
+- [**IP Allow List**](https://control.llnw.com/aportal/support/documentation/iprssfeed/v2)

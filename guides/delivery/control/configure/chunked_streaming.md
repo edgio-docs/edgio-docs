@@ -35,7 +35,7 @@ To filter the list:
 1. Make a selection in the drop-down menu.
 2. Enter a value in the filter text field.
 3. Press the Enter key on your keyboard. The list is reduced to include only configurations that match the filter.
-<br />
+
 Display the original list by clicking the **x** icon in the filter text field.
 
 ## Creating a New Configuration {/*creating-a-new-configuration*/}
@@ -64,17 +64,17 @@ If you wish to modify a Service Profile or migrate, add, or remove a Protocol Se
 
 Links to instructions for sections on the screen:
 
-[Content Location](#content-location)
+- [Content Location](#content-location)
 
-[Media Delivery](#media-delivery)
+- [Media Delivery](#media-delivery)
 
-[Options Applicable to Both Root and Child Instances](#chunked-streaming-options-applicalbe-to-both-root-and-child-instances)
+- [Options Applicable to Both Root and Child Instances](#chunked-streaming-options-applicalbe-to-both-root-and-child-instances)
 
-[Others](#others)
+- [Others](#others)
 
-[Additional Options](#additional-options-section)
+- [Additional Options](#additional-options)
 
-[Notes](#notes)
+- [Notes](#notes)
 
 ### Content Location {/*content-location*/}
 
@@ -109,14 +109,14 @@ You can make configurations for any supported Chunked Streaming formats (HDS, HL
 | Option | Description/Instructions |
 | --- | --- |
 | Default to Root | The TTL defaults to the root instance value, configured in the Caching Rules section immediately below this one. |
-| Configure manually | 1.  Configure values in the **Min** and **Max** fields.<br />2.  Configure a TTL for cached responses in the [Cache Generated Responses](#cache-generated-responses-field). |
+| Configure manually | 1.  Configure values in the **Min** and **Max** fields.<br />2.  Configure a TTL for cached responses in the [Cache Generated Responses field](#cache-generated-responses-field). |
 | preset value | The value you select will be the expiration time. |
 
 ##### Cache Generated Responses Field {/*cache-generated-responses-field*/}
 
 For HTTP Chunked Streaming responses generated dynamically, origins often do not supply cache-control headers (`Cache-Control`,` Expires`, or `Last-Modified`). This field directs EdgePrism to consider such responses cacheable. Configure a number and time unit (seconds, minutes, etc.) to keep the responses in the cache.
 
-#### Removing a Media Format {/*-removing-a-media-format*/}
+#### Removing a Media Format {/*removing-a-media-format*/}
 
 - If you are working with a new configuration, hover your mouse pointer over the right side of the section and click the **x** button that appears. The configuration is removed, and the removal cannot be undone.
 
@@ -126,29 +126,27 @@ For HTTP Chunked Streaming responses generated dynamically, origins often do not
 
 Although the following sections of the user interface apply to root and child Chunked Streaming instances, the fields and how you interact with them are identical to Caching & Delivery. Please refer to Caching & Delivery documentation as indicated in the following table.
 
-| Section in the User Interface | Caching & Delivery Documentation Reference |
-| --- | --- |
-| Caching Rules | [Caching Rules](/delivery/control/configure/caching_and_delivery/#caching-rules) |
-| Arc Light | [Arc Light](/delivery/control/configure/caching_and_delivery/#arc-light) |
-| Optimization | [Optimization](/delivery/control/configure/caching_and_delivery/#optimization) |
-| Headers & Methods | [Headers & Methods](/delivery/control/configure/caching_and_delivery/#headers-and-methods) |
-| Failover | [Failover](/delivery/control/configure/caching_and_delivery/#failover) |
-| Content Security | [Content Security](/delivery/control/configure/caching_and_delivery/#content-security) |
-| Logging | [Logging](/delivery/control/configure/caching_and_delivery/#logging) |
-| Cookie Handling | [Cookie Handling](/delivery/control/configure/caching_and_delivery/#cooking-handling) |
-| Redirect | [Redirect](/delivery/control/configure/caching_and_delivery/#redirect) |
+- [Caching Rules](/delivery/control/configure/caching_and_delivery/#caching-rules)
+- [Arc Light](/delivery/control/configure/caching_and_delivery/#arc-light)
+- [Optimization](/delivery/control/configure/caching_and_delivery/#optimization)
+- [Headers & Methods](/delivery/control/configure/caching_and_delivery/#headers-and-methods)
+- [Failover](/delivery/control/configure/caching_and_delivery/#failover)
+- [Content Security](/delivery/control/configure/caching_and_delivery/#content-security)
+- [Logging](/delivery/control/configure/caching_and_delivery/#logging)
+- [Cookie Handling](/delivery/control/configure/caching_and_delivery/#cooking-handling)
+- [Redirect](/delivery/control/configure/caching_and_delivery/#redirect)
 
 For information about other sections not in the preceding table, see:
 
 [Others](#others)
 
-[Additional Options](#additional-options-sectopm)
+[Additional Options](#additional-options)
 
 #### Others {/*others*/}
 
 This section presents additional delivery options you can use in the Chunked Streaming configuration. For descriptions, hover your mouse pointer over the right side of the option name. An information icon appears along with a description of the option.
 
-### Additional Options Section {/*additional-options-section*/}
+### Additional Options {/*additional-options*/}
 
 This section in the UI allows you to fine-tune options for the formats you selected in the Media Delivery section. By default, several significant options are present that you can modify or delete. You can add additional options by type all or part of an option name in the **Type option name** field, where partial matches are considered.
 
@@ -204,6 +202,6 @@ To revert to a previous configuration:
 
 2. Select the version to which you want to revert.
 
- <br /> <Callout type="info">Although you intend to revert to a previous version, the reverted version will become the current version with a new version number. The new version number is displayed at the bottom of the dialog.</Callout>
+    <Callout type="info">Although you intend to revert to a previous version, the reverted version will become the current version with a new version number. The new version number is displayed at the bottom of the dialog.</Callout>
 
 3. Click the **Activate** button.

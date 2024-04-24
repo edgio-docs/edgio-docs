@@ -10,8 +10,6 @@ The list page provides summary information at the top, including **Status** (_Ac
 
 A list of existing rules appears below the summary area. For each rule, the content paths for both Origin Storage and the remote host are shown along with the authentication type, if any.
 
-<Callout type="info"> -   By default, the configuration page is accessible only to internal users. <br /> -   By default, only the SuperAdmin, Control Admin, and ASA roles have Intelligent Ingest roles needed to access Intelligent Ingest. <br />   The data for Storage Quota, Bandwidth, and Concurrency was provided by your company when was purchased. <br />-   If the service has become inactive because the quota has been exceeded, you will see an _Inactive_ alert in the **Status** section of the overview. When the problem is resolved, the display will update to _Active_. <br /> -   If you're unable to use because the quota has been exceeded, please contact your Company Admin.</Callout>
-
 ## Enabling Intelligent Ingest  {/*enbabling-intelligent-ingest*/}
 
 To enable Intelligent Ingest, please contact your Account Manager. After Intelligent Ingest has been turned up for your account, "Intelligent Ingest" will appear under the Configure menu in the navigation pane.

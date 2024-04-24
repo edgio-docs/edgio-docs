@@ -126,10 +126,9 @@ You can deactivate a configuration for purposes such as forcing the configuratio
 
 A confirmation message is displayed at the top right of the page and the button's label changes to ACTIVATE..
 
-    The configuration's status on the Log Delivery List page changes to Deactivated.
+    The configuration's status on the Log Delivery List page changes to *Deactivated*.
 
-<Callout type="info">It can take 5 to 10 minutes for a deactivation to take effect.
-</Callout>
+<Callout type="info">It can take 5 to 10 minutes for a deactivation to take effect. </Callout>
 
 ### Activating a Log Delivery Service Configuration  {/*activating-a-log-delivery-service-configuration*/}
 
@@ -145,8 +144,7 @@ You can reactivate a deactivated configuration.
 
     The configuration's status on the Log Delivery List page changes to the state it was in before it was deactivated.
 
-<Callout type="info">It can take 5 to 10 minutes for an activation to take effect.
-</Callout>
+<Callout type="info">It can take 5 to 10 minutes for an activation to take effect. </Callout>
 
 ### Enabling Log Delivery to Amazon S3  {/*enabling-log-delivery-to-amazon-s3*/}
 

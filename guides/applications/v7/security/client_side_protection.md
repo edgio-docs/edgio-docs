@@ -53,13 +53,13 @@ You may create, modify, and delete Client-Side Protection policies.
 4.  Define an Audit policy through which you can detect attacks.
 
     1.  Click on the **Audit** tab.
-    2.  From the **Origin Overwrite** option, determine whether this policy will override the policy defined within the `Content-Security-Policy-Report-Only` response header provided by your origin. 
+    2.  From the **Overwrite Origin** option, determine whether this policy will override the policy defined within the `Content-Security-Policy-Report-Only` response header provided by your origin. 
 
         -   **Enabled:** Your audit policy will overwrite the `Content-Security-Policy-Report-Only` header when present in the response provided by an origin. 
 
-            If the **Audit Reporting** option is disabled, then {{ PRODUCT }} will not set this header. As a result, your origin will be allowed to set this header.
+            If the **Status** option is disabled, then {{ PRODUCT }} will not set this header. As a result, your origin will be allowed to set this header.
 
-        -   **Disabled:** If the response from your origin includes a `Content-Security-Policy-Report-Only` header, then it will be served. If it is missing and the **Audit Reporting** option is enabled, then this header will be set to your audit policy.
+        -   **Disabled:** If the response from your origin includes a `Content-Security-Policy-Report-Only` header, then it will be served. If it is missing and the **Status** option is enabled, then this header will be set to your audit policy.
         
             <Callout type="info">
             
@@ -67,7 +67,7 @@ You may create, modify, and delete Client-Side Protection policies.
             
             </Callout>
 
-    3.  From the **Audit Reporting** option, determine whether {{ PRODUCT }} will audit your traffic using this policy.
+    3.  From the **Status** option, determine whether {{ PRODUCT }} will audit your traffic using this policy.
 
         -   **Enabled:** Violations will be reported from within the **Client Protection** page.
         -   **Disabled:** {{ PRODUCT }} will not set the `Content-Security-Policy-Report-Only` header to your audit policy. However, this header can still be set through either Rules or by your origin.
@@ -79,20 +79,20 @@ You may create, modify, and delete Client-Side Protection policies.
             2.  [Configure it](#csp-source-configuration) as desired. 
             3.  Repeat steps 1 and 2 as needed.
 
-        -   **Source Upload:** Manually set the value of the `Content-Security-Policy-Report-Only` response header.
-            1.  Click **Source Upload**.
+        -   **Raw Editor:** Manually set the value of the `Content-Security-Policy-Report-Only` response header.
+            1.  Click the **Raw Editor** tab.
             2.  From the **Use this Content-Security-Policy-Report-Only** option, set the value of the `Content-Security-Policy-Report-Only` response header.
 
 5.  Define a Production policy through which you can block violations.
 
-    1.  Click on the **Production** tab.
-    2.  From the **Origin Overwrite** option, determine whether this policy will override the policy defined within the `Content-Security-Policy` response header provided by your origin. 
+    1.  Click the **Production** tab.
+    2.  From the **Overwrite Origin** option, determine whether this policy will override the policy defined within the `Content-Security-Policy` response header provided by your origin. 
 
         -   **Enabled:** Your production policy will overwrite the `Content-Security-Policy` header when present in the response provided by an origin.
 
-            If the **Enforcement** option is disabled, then {{ PRODUCT }} will not set this header. As a result, your origin will be allowed to set this header.
+            If the **Status** option is disabled, then {{ PRODUCT }} will not set this header. As a result, your origin will be allowed to set this header.
 
-        -   **Disabled:** If the response from your origin includes a `Content-Security-Policy` header, then it will be served. If it is missing and the **Enforcement** option is enabled, then this header will be set to your production policy.
+        -   **Disabled:** If the response from your origin includes a `Content-Security-Policy` header, then it will be served. If it is missing and the **Status** option is enabled, then this header will be set to your production policy.
         
             <Callout type="info">
             
@@ -100,7 +100,7 @@ You may create, modify, and delete Client-Side Protection policies.
             
             </Callout>
 
-    3.  From the **Enforcement** option, determine whether {{ PRODUCT }} will set the `Content-Security-Policy` response header to your production policy.
+    3.  From the **Status** option, determine whether {{ PRODUCT }} will set the `Content-Security-Policy` response header to your production policy.
 
         -   **Enabled:** Sets the `Content-Security-Policy` header to your production policy. Violations will be reported from within the **Client Protection** page.
         -   **Disabled:** {{ PRODUCT }} will not set the `Content-Security-Policy` header to your production policy. However, this header can still be set through either Rules or by your origin. 
@@ -112,9 +112,9 @@ You may create, modify, and delete Client-Side Protection policies.
             2.  [Configure it](#csp-source-configuration) as desired. 
             3.  Repeat steps 1 and 2 as needed.
 
-        -   **Source Upload:** Manually set the value of the `Content-Security-Policy` response header.
+        -   **Raw Editor:** Manually set the value of the `Content-Security-Policy` response header.
 
-            1.  Click **Source Upload**.
+            1.  Click **Raw Editor**.
             2.  From the **Use this Content-Security-Policy** option, set the value of the `Content-Security-Policy` response header.
 
 6.  Click **Save**.

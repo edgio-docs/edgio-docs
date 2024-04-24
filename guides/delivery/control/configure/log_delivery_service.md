@@ -172,7 +172,7 @@ These are visible only when you select Amazon S3 as the storage location.
 | BUCKET NAME | S3 bucket title. |
 | PATH | Path within bucket where logs are stored. <br /> <Callout type="info"> Do not add a leading slash to the path. If you do, Amazon creates an object URL with a double slash. Example: `>https:://bucket.s3.region.amazonaws.com//cdn\_logs...` </Callout> |
 | ACCESS KEY | Bucket access key provided by Amazon. |
-| SECRET KEY | Bucket secret key provided by Amazon. <br /> After you set the secret key and save the configuration, the key is not visible, but you can enter a new key if needed and save the configuration. |
+| SECRET KEY | Bucket secret key provided by Amazon. <Callout type="info">After you set the secret key and save the configuration, the key is not visible, but you can enter a new key if needed and save the configuration. </Callout>|
 
 ### Enabling Log Delivery to Google Cloud Storage  {/*enabling-log-delivery-to-google-cloud-storage*/}
 
@@ -213,7 +213,7 @@ These are visible only when you select Google Cloud Storage as the storage locat
 | CLIENT EMAIL | Value of the `client_email` field in the JSON file associated with the Google service account you created. |
 | SECRET KEY | Value of the private_key field in the JSON file associated with the Google service account you created.  <br /> <Callout type="info">After you set the secret key and save the configuration, the key is not visible, but you can enter a new key if needed and save the configuration.</Callout>|
 | BUCKET NAME | Title of the Google Cloud Storage bucket you created. |
-| PATH | Path within the bucket where logs are stored.<br /> Defaults to an empty value.  <br /> <Callout type="info">Do not add a leading slash to the path. If you do, Google Cloud Storage creates an object URL with a double slash. Example:  `gs://bucket_name//cdn_logs/...` |</Callout>
+| PATH | Path within the bucket where logs are stored.<br /> Defaults to an empty value.  <br /> <Callout type="info">Do not add a leading slash to the path. If you do, Google Cloud Storage creates an object URL with a double slash. Example:  `gs://bucket_name//cdn_logs/...` </Callout>|
 
 ### Enabling Log Delivery to Origin Storage  {/*enabling-log-delivery-to-origin-storage*/}
 

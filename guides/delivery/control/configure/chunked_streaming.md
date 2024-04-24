@@ -88,7 +88,7 @@ With two exceptions, configuring a Content Location is similar to (v2).
 
 -   **The path ends with a filename** and **Only publish files with these extensions** options are not present under the Source URL path field in the Content Location section.
 
-For additional information, see [Content Location](delivery/control/configure/caching_and_delivery#content-location) in the Caching & Delivery section.
+For additional information, see [Content Location](delivery/control/configure/caching_and_delivery/#content-location) in the Caching & Delivery section.
 
 ### Media Delivery {/*media-delivery*/}
 
@@ -133,7 +133,7 @@ Although the following sections of the user interface apply to root and child Ch
 - [Failover](/delivery/control/configure/caching_and_delivery/#failover)
 - [Content Security](/delivery/control/configure/caching_and_delivery/#content-security)
 - [Logging](/delivery/control/configure/caching_and_delivery/#logging)
-- [Cookie Handling](/delivery/control/configure/caching_and_delivery/#cooking-handling)
+- [Cookie Handling](/delivery/control/configure/caching_and_delivery/#cookie-handling)
 - [Redirect](/delivery/control/configure/caching_and_delivery/#redirect)
 
 For information about other sections not in the preceding table, see:

@@ -69,15 +69,11 @@ const nav = {
               path: 'control/configure/chunked_streaming',
             },
             {
-              title: 'MP3 Streaming',
-              path: 'control/configure/mp3_streaming',
-            },
-            {
               title: 'DNS Services',
               path: 'control/configure/dns_services',
             },
             {
-              title: 'MediaVault Hash Generator',
+              title: 'MediaVault URLs',
               path: 'control/configure/mediavault_hash_generator',
             },
             {
@@ -99,8 +95,8 @@ const nav = {
           path: 'control/manage',
           routes: [
             {
-              title: 'My Account',
-              path: 'control/manage/my_account',
+              title: 'Account',
+              path: 'control/manage/account',
             },
             {
               title: 'Content with SmartPurge',

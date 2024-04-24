@@ -2,7 +2,7 @@
 title: Control Portal
 ---
 
-Edgio's web-based [Control portal](https://control.llnw.com/), provides 24x7 access to Edgio services and support. You can use the portal to order and configure many services, manage content, analyze usage, and access online support.
+Edgio's web-based [Control portal](https://control.edg.io/acontrol/#/login), provides 24x7 access to Edgio services and support. You can use the portal to order and configure many services, manage content, analyze usage, and access online support.
 
 When you log in, you will see either the default [Dashboard](/delivery/control/support_tools/dashboard) or the [Performance Dashboard](/delivery/control/support_tools/performance_dashboard), depending on your selection in **My Account**.
 

@@ -18,7 +18,7 @@ DNS Services comprises the entities in the following table.
 | --- | --- |
 | Director | The Director is a DNS service that helps balance and manage end-user requests to origin servers and other IP Resources (including requests from more than one CDN). For example, if you have end users in diverse geographic locations, the Director provides content specific to their region with the best site performance and end-user experience. The Director can also block traffic from a country, province, or IP address.<br /><br />The Director can route traffic based on:<br /><br />-   IP address<br />-   end-user nameserver geographic location<br />-   BGP autonomous system number (ASN) of the end-user nameserver. |
 | Resources | Resources are IP addresses or hostnames that you want to manage. Resources include zero, one, or at most two [Health Checks](#add-health-checks-to-a-dns-service-resource). Resources optionally participate in [Failovers](#work-with-failovers). |
-| Failovers | If a Resource is inaccessible due to a network failure or errors in Resource configurations, you can define a Failover for the Resource in which one or more other Resources act as the "Failover" Resources.<br /><br />Each Resource in a Failover has a relative priority and preference; both are positive integers.<br /> <br /> <Callout type="info">- A value of '1' is the highest preference and subsequently greater numbers indicate decreasing preference.<br />-   Priority, used for unequal load balancing, works in reverse. Larger values mean the record will get served more frequently relative to the other records with the same preference but smaller weight.</Callout> <br /> Failovers have two modes of operation.<br />- In **single Failover** mode, records with the lowest preference values are replaced with the next available record in order of preference. (A value of '1' is the highest preference and subsequently greater numbers indicate decreasing preference.) A lower preference record will only be used if there are not enough higher preference records available to satisfy minimum response (see [Add a New Failover](#add-a-new-failover)). If there are no available records, failed records will continue to be deactivated until minimum response is reached. If all records are in a failure state, records from the highest preference set are returned until inactive records become available.<br />-   In **group Failover** mode, the active set of records is treated as a single unit. Records are deactivated on failure and not replaced with lower preference records. When the active record set is less than the minimum response, the entire active record set is deactivated. The next preference set is activated if the number of active records in that set is greater than or equal to the minimum response. This process will continue until no preference set is available for activation. The last active set will remain active until a preference set has enough available records to meet the minimum response threshold.<br />The settings determine how Failovers monitor and react to failure conditions.<br /><br />Failovers include zero, one, or at most two [Health Checks](#add-health-checks-to-a-dns-services-resource).<br /><br />Failovers include at least one [Resource](#work-with-failovers). |
+| Failovers | If a Resource is inaccessible due to a network failure or errors in Resource configurations, you can define a Failover for the Resource in which one or more other Resources act as the "Failover" Resources.<br /><br />Each Resource in a Failover has a relative priority and preference; both are positive integers.<br /> <br /> <Callout type="info">- A value of '1' is the highest preference and subsequently greater numbers indicate decreasing preference.<br />-   Priority, used for unequal load balancing, works in reverse. Larger values mean the record will get served more frequently relative to the other records with the same preference but smaller weight.</Callout> <br /> Failovers have two modes of operation.<br />- In **single Failover** mode, records with the lowest preference values are replaced with the next available record in order of preference. (A value of '1' is the highest preference and subsequently greater numbers indicate decreasing preference.) A lower preference record will only be used if there are not enough higher preference records available to satisfy minimum response (see [Add a New Failover](#add-a-new-failover)). If there are no available records, failed records will continue to be deactivated until minimum response is reached. If all records are in a failure state, records from the highest preference set are returned until inactive records become available.<br />-   In **group Failover** mode, the active set of records is treated as a single unit. Records are deactivated on failure and not replaced with lower preference records. When the active record set is less than the minimum response, the entire active record set is deactivated. The next preference set is activated if the number of active records in that set is greater than or equal to the minimum response. This process will continue until no preference set is available for activation. The last active set will remain active until a preference set has enough available records to meet the minimum response threshold.<br />The settings determine how Failovers monitor and react to failure conditions.<br /><br />Failovers include zero, one, or at most two [Health Checks](#add-health-checks-to-a-dns-service-resource).<br /><br />Failovers include at least one [Resource](#work-with-failovers). |
 | Director Policies | A Director Policy assigns a Time to Live (TTL) and weight to an alias host and canonical host, and optionally binds the Policy to a business Rule called a [Director Policy Rule](#work-with-director-policy-rules). |
 | Director Policy Rules and Match Components | Director Policy Rules have a name and description and at least one Match Component that determines the mode for routing a request: by country, region, ASN, or CIDR. |
 | Health Checks | You can add Health Checks to Failovers and Resources.<br />- Failovers<br />    Part of the Failover configuration process is adding Health Checks. Health checks let you easily add or remove a Resource from all of your Policies without going through each Policy. This may be helpful if you are adding new Resources into the rotation and do not want to activate them right away or in a case where you want to remove a Resource out of the handout rotation (due to maintenance or other factors). Health Checks also detect unavailability quickly before your users are seriously impacted.<br />    <br />- Resources <br />    Sometimes Resources become unavailable and Health Checks can detect this quickly before unavailability seriously impacts your users. |
@@ -62,7 +62,7 @@ As you type, matches are highlighted in yellow and only rows containing matching
 
 -   To view all rows, remove the search criteria from the **Search for resource** field.
 
- <Callout type="info">You can search for Resources by the following columns: <br /> -   **Name** <br /> - Destination (IP or hostname) <br /> Searches are case-insensitive.</Callout>
+ <Callout type="info">You can search for Resources by the following columns: <br /> -   **Name** <br /> - Destination (IP or hostname) <br /> <br /> Searches are case-insensitive.</Callout>
 
 ### Add a New DNS Services Resource  {/*add-a-new-dns-services-resource*/}
 
@@ -72,14 +72,14 @@ To add a new Resource:
 
 1.  Select the **Resources** tab. The *Resources* list displays.
 2.  Select the **+ New** button on the right side of the page under the tabs header, and the *Create resource for page* displays.
-3.  Complete fields on the page (see [Fields on the 'Create resource for' Page](#add-new-dns-service-resource)).
+3.  Complete fields on the page (see [Fields on the 'Create resource for' Page](#fields-on-the-create-resource-for-page)).
 4.  Click *Save*.
 
 You are returned to the *Resources* tab and a message is displayed stating that a job to create the Resource has started.
 
 Click the **Refresh** button periodically to determine if the Rule has finished processing.
 
- <br /> <Callout type="info">- After configuring a Resource you may have to wait five or more minutes for the Resource to be created. <br /> -   The Resource will be added to the list only after the job is complete. <br /> - After creating the Resource, you might want to add Health Checks to it. See [Adding Health Checks to a DNS Services Resource](#add-health-checks-to-a-dns-services-resource).</Callout>
+ <br /> <Callout type="info">- After configuring a Resource you may have to wait five or more minutes for the Resource to be created. <br /> -   The Resource will be added to the list only after the job is complete. <br /> - After creating the Resource, you might want to add Health Checks to it. See [Add Health Checks to a DNS Services Resource](#add-health-checks-to-a-dns-service-resource).</Callout>
 
 #### Fields on the 'Create resource for' Page {/*fields-on-the-create-resource-for-page*/}
 
@@ -162,7 +162,6 @@ To add a new Failover:
 
 #### Fields on the 'Create failover for' Page {/*fields-on-the-create-failover-for-page*/}
 
-
 | Field | Description/Instructions |
 | --- | --- |
 | Name | Host name for the Failover Resource. If you enter a name without a terminating dot, the zone name will be appended to the host name before the Failover is sent to the edge. <br /> <Callout type="info">- If the domain name does not include a terminating dot ("."), the zone name is appended to the domain name when the resource is pushed to the edge. For example, if the zone name is `lldns.net`. and the domain name is specified as `www2.lldns.net`, the name is `www2.lldns.net.lldns.net`. when pushed to the edge. <br /> - To add hostname `www3` to zone `lldns.net.` you can specify the domain name as either `www3.lldns.net.` or `www3`. <br /> Both naming methods result in the record being pushed to the edge as www3.lldns.net.</Callout> |
@@ -204,8 +203,6 @@ To configure relative priority and preference:
     A message is displayed stating that a Failover job has started, and the word "processing" is displayed on the right side of the row. Click the Refresh button periodically to determine if the Failover has finished processing.
 
 #### Remove a Resource {/*remove-a-resource*/}
-
-Removing a Resource
 
 To remove a Resource, click the trash can (delete) icon on the right side of the Resource's row. The resource is removed from the Resources list.
 
@@ -291,7 +288,7 @@ The **Director policie**s tab contains a list of configured Policies for a given
 | Canonical Host | CNAME of the host the DNAME points to.  <br /> <Callout type="info">- If the domain name does not include a terminating dot ("."), the zone name is appended to the domain name when the resource is pushed to the edge. For example, if the zone name is `lldns.net.` and the domain name is specified as `www2.lldns.net`, the name is `www2.lldns.net.lldns.net`. when pushed to the edge. < br /> - To add hostname `www3` to `zone lldns.net.` you can specify the domain name as either `www3.lldns.net.` or `www3`.<br /> Both naming methods result in the record being pushed to the edge as `www3.lldns.net.`</Callout>||
 | TTL | Time to live. Amount of time the Policy will remain in the DNS resolver's cache. |
 | Weight | Relative importance of this record compared to other records with the same **Alias Host Name** but different **Canonical Host** names. Defaults to 0 if not specified.<br />Larger integers mean the record will get served more frequently relative to the other records with the same name or smaller weight. |
-| Rule | Business Rule associated with the Policy. See [Applying Director Policy Rules](#apply-director-policy-rules) for instructions. If no Rule is specified, the record acts as the default response when there is no Rule match from other records. |
+| Rule | Business Rule associated with the Policy. See [Apply Director Policy Rules](#apply-a-director-policy-rule) for instructions. If no Rule is specified, the record acts as the default response when there is no Rule match from other records. |
 | Comments | Notes about the Policy. |
 
 ## Work with Director Policy Rules  {/*work-with-director-policy-rules*/}
@@ -310,7 +307,7 @@ To apply a Rule:
 
 1.  While creating or editing a Director Policy, click the **+ Apply/Remove rule** button.
 
-The *RULES* dialog displays.
+    The *RULES* dialog displays.
 
 2.  Click the **+ icon** on the right side of the Rule's row.
 

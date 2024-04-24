@@ -7,7 +7,7 @@ Use this section in {{ CONTROL }} to create and manage configurations for {{ DEL
 
 ## Product Features and Services  {/*product-features-and-services*/}
 
-| Product/Feature/Service | Description |
+| Feature/Service | Description |
 |---|---|
 | [Caching & Delivery](/delivery/delivery/caching_and_delivery) | Caching & Delivery delivers content via HTTP and HTTPS for all file formats. Both full (entire file) and progressive (range request) downloads are supported.|
 | [Intelligent Ingest](/delivery/delivery/intelligent_ingest) | If you're an Origin Storage customer, you can use Intelligent Ingest to automatically populate Origin Storage with new content as it is requested from the CDN. If a request results in a CDN Cache Miss, and the content is not found in Origin Storage, Intelligent Ingest will retrieve and ingest the content from the remote host(s) you specify. You can create any number of "rules" that pair specific Origin Storage logins and content paths with specific remote hosts and paths. These rules are also known as "rewrites."|

@@ -6,17 +6,6 @@ When requests for your content enter the CDN, the requests are logged based on c
 
 <Callout type="info">Log field names, delimiters, date and time format, file name, and directory structure adhere to W3C/ISO standards.</Callout>
 
-
-[Log Delivery List Page](#log-delivery-list-page)
-
-[Working with Configurations](#working-with-log-delivery-service-configurations)
-
-[Working with Personally Identifiable Information Agreements](#working-with-personally-identifiable-information)
-
-[Field Reference](#field-reference)
-
-[Retrieving Log Files](#retrieving-log-files-from-origin-storage)
-
 ## Log Delivery List Page  {/*log-delivery-list-page*/}
 
 Navigate to Configure > Log Delivery Service in the navigation pane. The Log Delivery Service page is displayed and initially shows configurations for the account in the drop-down menu on the right above the list.
@@ -63,7 +52,7 @@ You can create a single configuration for any combination of shortname, storage 
 
     <Callout type="info"> - Existing configurations include [Directory Layout and FileName Template Fields](#delivery-option-fields) <br /> - If your user does not have 'Manage' permissions for all fields are disabled and you cannot modify the configuration.</Callout>
 
-2.  Modify fields as needed. See [Log Delivery Configuration Fields](#log-delivery-service-configuration-fields) and [Configuring Log Fields](#Cconfiguring-log-fields) for details.
+2.  Modify fields as needed. See [Log Delivery Configuration Fields](#log-delivery-service-configuration-fields) and [Configuring Log Fields](#configuring-log-fields) for details.
 3.  Save the configuration by clicking the **Save** button.
 
 <Callout type="info"> - It can take 15 to 40 minutes for changes to take effect. <br /> -  Depending on your permissions, you may not be able to edit a configuration.</Callout>
@@ -124,7 +113,7 @@ You can deactivate a configuration for purposes such as forcing the configuratio
 
 2.  Click the **DEACTIVATE** button at the bottom of the page.
 
-A confirmation message is displayed at the top right of the page and the button's label changes to ACTIVATE..
+    A confirmation message is displayed at the top right of the page and the button's label changes to ACTIVATE..
 
     The configuration's status on the Log Delivery List page changes to *Deactivated*.
 
@@ -184,7 +173,7 @@ Before configuring Google Cloud Storage as a storage location, you must do the f
 
 1.  Create a Google Cloud Project (GCP) or use an existing project. See Google's [Google Cloud Platform - Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects) guide for instructions.
 
-2.  Set up a GCP bucket to store your logs. You can create a new bucket or use an existing one. See Google's [Create Storage Buckets Guide](https://cloud.google.com/storage/docs/creating-buckets)Create storage buckets guide for instructions..
+2.  Set up a GCP bucket to store your logs. You can create a new bucket or use an existing one. See Google's [Create Storage Buckets Guide](https://cloud.google.com/storage/docs/creating-buckets) for instructions..
 
 3.  Create a Google service account that will use to access your bucket. See Google's [Service accounts](https://cloud.google.com/iam/docs/service-accounts) guide for instructions.
 
@@ -200,7 +189,7 @@ Before configuring Google Cloud Storage as a storage location, you must do the f
 
 1.  Select **Google Cloud Storage** in the **STORAGE LOCATION** dropdoown.
 
-2.  Configure the fields described in [Configuration Fields](#onfiguration-fields-cloud-storage).
+2.  Configure the fields described in [Configuration Fields](#configuration-fields-cloud-storage).
 
 3.  Click **SAVE**.
 
@@ -229,7 +218,7 @@ must be enabled for the name selected in the SHORTNAME.
 
 1.  Select **Origin Storage** in the **STORAGE LOCATION** drop-down menu.
 
-2.  Configure the field described in [Origin Storage Configuration Field](#origin-storage-configuration-fields).
+2.  Configure the field described in [Origin Storage Configuration Fields](#origin-storage-configuration-fields).
 
 3.  Click **SAVE**.
 
@@ -400,7 +389,7 @@ You can retrieve your files from Edgio Origin Storage using Origin Storage API c
 
 ### Download Using the API  {/*download-using-the-api*/}
 
-All methods in this section are in the Origin Storage JSON-RPC API interface. We presented essential information; for detailed information about each method, see the [Origin Storage API Reference Guide](/delivery/storage/apis/apis).
+All methods in this section are in the Origin Storage JSON-RPC API interface. We presented essential information; for detailed information about each method, see the [Origin Storage API Reference Guide](/delivery/storage/apis).
 
 This section describes the methods you need to download files.
 

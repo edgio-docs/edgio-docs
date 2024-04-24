@@ -38,3 +38,15 @@ The Edit My Account page is displayed.
 *   Click the Save button.
 
     When you next log into , the Performance Dashboard is automatically displayed.
+
+## Selecting Accounts and Date Ranges {/*selecting-accounts-and-date-ranges*/}
+
+Limit Performance Dashboard data to specific accounts and date ranges by making selections in the drop-down menus at the top of the screen:
+
+![Performance Dashboard](/images/delivery/control/performance-dashboard.png)
+
+A - Account Selector
+
+B - Date Range Selector
+
+For additional information on selecting date ranges, see Selecting a Date Range.

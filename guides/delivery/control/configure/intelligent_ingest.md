@@ -23,7 +23,7 @@ To successfully configure , the following steps must be completed:
 1.  Obtain an Origin Storage account with an active login. An Origin Storage account is required for an configuration.
 2.  Enable Intelligent Ingest for that Origin Storage account (see [Enabling Intelligent Ingest](#enabling-intelligent-ingest-rules) ).
 3.  Request a Caching & Delivery configuration (or use an existing one) to enable CDN delivery of objects from the Origin Storage account.
-4.  Create one or more Intelligent Ingest rules (see [Adding Intelligent Ingest Rules](#adding-intellignt-ingest-rules)).
+4.  Create one or more Intelligent Ingest rules (see [Adding Intelligent Ingest Rules](#adding-intelligent-ingest-rules)).
 
 ## Creating or Editing a Content Delivery Configuration for Intelligent Ingest  {/*creating-or-editing-a-content-delivery-configuration-for-intelligent-ingest*/}
 
@@ -134,6 +134,8 @@ This authentication type sends authentication information in request headers to 
 | Add custom request header | 1.  Enter a name and a value, then click the **+** icon.<br /> 2.  Repeat until you have entered all required values.<br /><br />To remove a header, click the **-** icon.<br /><br />After you save the rule ([Saving the Intelligent Ingest Rule](#step-5-saving-the-intelligent-ingest-rule)), the request headers configurations are available to choose for use in future rules. |
 
 ### Step 5-Saving the Intelligent Ingest Rule  {/*step-5-saving-the-intelligent-ingest-rule*/}
+
+When you are ready, click **Save** to create the new rule or **Cancel** to discard your work.
 
 <Callout type="info">After you save a rule, you cannot modify it; you can only modify any associated authentications (see [Managing Authentications](#managing-authentications)).</Callout>
 

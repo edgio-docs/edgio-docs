@@ -170,9 +170,9 @@ These are visible only when you select Amazon S3 as the storage location.
 | --- | --- |
 | REGION | S3 bucket geographic area. |
 | BUCKET NAME | S3 bucket title. |
-| PATH | Path within bucket where logs are stored. <br /> <Callout type="info">Do not add a leading slash to the path. If you do, Amazon creates an object URL with a double slash. Example: `>https:://bucket.s3.region.amazonaws.com//cdn\_logs...` </Callout>|
+| PATH | Path within bucket where logs are stored. <br /> <Callout type="info"> Do not add a leading slash to the path. If you do, Amazon creates an object URL with a double slash. Example: `>https:://bucket.s3.region.amazonaws.com//cdn\_logs...` </Callout> |
 | ACCESS KEY | Bucket access key provided by Amazon. |
-| SECRET KEY | Bucket secret key provided by Amazon. <br /> <Callout type="info">After you set the secret key and save the configuration, the key is not visible, but you can enter a new key if needed and save the configuration.</Callout> |
+| SECRET KEY | Bucket secret key provided by Amazon. <br /> <Callout type="info"> After you set the secret key and save the configuration, the key is not visible, but you can enter a new key if needed and save the configuration. </Callout> |
 
 ### Enabling Log Delivery to Google Cloud Storage  {/*enabling-log-delivery-to-google-cloud-storage*/}
 

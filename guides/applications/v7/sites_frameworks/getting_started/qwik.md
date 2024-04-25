@@ -24,6 +24,24 @@ If you don't have an existing Qwik project, you can create one by running:
 npm create qwik@latest
 ```
 
+## Configure Express Middleware {/* configure-express-middleware */}
+
+{{ PRODUCT }} requires an Express server to run Qwik projects. This can be configured using [Qwik's Node.js middleware](https://qwik.dev/docs/deployments/node/).
+
+To add this middleware to your project, run:
+
+<PackageCommand>
+
+```bash
+npm run qwik add express
+---
+yarn qwik add express
+```
+
+</PackageCommand>
+
+Follow the instructions provided by the Qwik CLI to add the middleware to your project.
+
 ## Initializing your Project {/* initializing-your-project */}
 
 Initialize your project for use with {{ PRODUCT }} by running the following command in your project's root directory:

@@ -282,12 +282,21 @@ Country codes that identify a region are listed below.
 Country subdivision codes identify a country's subdivision (e.g., state or province). These codes are compatible with:
 
 -   **Rules:** [Region Code match condition](/applications/performance/rules/conditions#region-code)
--   **Web Application Firewall:** [Access Rules](/applications/security/access_rules#country-subdivision--iso3166-2-)and [Custom Rules](/applications/security/custom_rules#country-subdivision--iso3166-2-)
 
-**Syntax:** Specify each desired subdivision using an [ISO-3166-2 code](https://www.iso.org/obp/ui/#search/code/).
+    **Syntax:** Specify a region using the subdivision code from an [ISO-3166-2 code](https://www.iso.org/obp/ui/#search/code/).
 
-`<Country Code>`-`<Subdivision Code>`
+    `<Country Code>`-`<Subdivision Code>`
+    
+    **Example:**
 
-**Example:**
+    The ISO-3166-2 code for California is `US-CA`. Therefore, the subdivision code for California is `CA`.
 
-The following value identifies requests from California:  `US-CA`
+-   **Web Application Firewall:** [Access Rules](/applications/security/access_rules#country-subdivision--iso3166-2-) and [Custom Rules](/applications/security/custom_rules#country-subdivision--iso3166-2-)
+
+    **Syntax:** Specify each desired subdivision using an [ISO-3166-2 code](https://www.iso.org/obp/ui/#search/code/).
+
+    `<Country Code>`-`<Subdivision Code>`
+
+    **Example:**
+
+    Identify requests from California through the `US-CA` code.

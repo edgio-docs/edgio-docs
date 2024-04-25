@@ -6,6 +6,8 @@ Edgio's web-based [Control portal](https://control.edg.io/acontrol/#/login), pro
 
 When you log in, you will see either the default [Dashboard](/delivery/control/support_tools/dashboard) or the [Performance Dashboard](/delivery/control/support_tools/performance_dashboard), depending on your selection in **My Account**.
 
+See [Menus and Icons](/delivery/control/support_tools/menus_and_icons) for details on finding content via the left-side navigation and page icons.
+
 ## Guides {/*guides*/}
 
 - Control Portal

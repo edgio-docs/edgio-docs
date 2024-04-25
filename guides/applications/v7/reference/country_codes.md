@@ -264,13 +264,17 @@ ISO 3166 country codes are supported by:
 
 ## Regions {/*regions*/}
 
-ISO 3166 country codes are supported by:
-
--   **Rules:** [Region match condition](/applications/performance/rules/conditions#region-code)
--   **CDN-as-code:** [location.region_code](/docs/api/core/interfaces/types.RulesVariables.html#location)
--   **Web Application Firewall:** [Access Rules](/applications/security/access_rules), [Rate Rules](/applications/security/rate_rules), [Bot Manager](/applications/security/bot_rules), [Custom Rules](/applications/security/custom_rules), and [Dashboard](/applications/security/dashboard)
-
 {{ PRODUCT }} identifies the location from which a client requests your content through the client's IP address. However, certain IP addresses are not specific to a particular country, rather they are spread out over an entire region (i.e., Europe or Asia/Pacific). Requests that originate from these types of IP addresses are identified by a region-specific code instead of a country code. Region-specific codes identify requests for which a country of origin is unknown. Additionally, these codes represent a small subset of IP addresses in that region.
+
+Those region specific codes are referenced above in the table and reproduced below:
+
+| Code | Country |
+| A1   | Anonymous Proxy <br /><br /><Callout type="info">This country code identifies a set of IP addresses used by specific anonymizers or VPN services. These types of services may be used to circumvent IP geolocation restrictions. This country code does not provide complete coverage of all proxied traffic. Rather, it identifies traffic for specific legal anonymous proxies.</Callout> |
+| A2   | Satellite Provider <br /><br /><Callout type="info">This country code identifies a set of IP addresses used by Satellite ISPs to provide Internet service to multiple countries (e.g., Nigeria and Ghana).</Callout> |
+| AP   | Asia/Pacific Region <br /><br /><Callout type="info">This country code identifies a small subset of IP addresses for the Asia/Pacific region. <br />[Learn more.](#regions) </Callout>  |
+| EU   | Europe  <br /><br /><Callout type="info">This country code identifies a small subset of European IP addresses. <br />[Learn more.](#regions) </Callout>|
+
+## Country Subdivisions
 
 <Callout type="info">
 
@@ -280,4 +284,13 @@ ISO 3166 country codes are supported by:
 
 </Callout>
 
-To find a specific region code, search on [iso.org](https://www.iso.org/obp/ui/#search). 
+
+-   **Rules:** [Country subdivison match condition](/applications/performance/rules/conditions#region-code)
+-   **Web Application Firewall:** [Access Rules](/applications/security/access_rules#~(q~'Country*20Subdivision)), [Rate Rules](/applications/security/rate_rules), [Bot Manager](/applications/security/bot_rules), [Custom Rules](/applications/security/custom_rules), and [Dashboard](/applications/security/dashboard)
+
+
+To find a specific country subdivision code, search on [iso.org](https://www.iso.org/obp/ui/#search) or view the reference available on [Wikipedia](https://en.wikipedia.org/wiki/ISO_3166-2)
+
+**Example**
+
+The ISO 3166-2 code for California is `US-CA`. Therefore, the region code for California is CA.

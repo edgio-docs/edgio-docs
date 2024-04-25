@@ -62,20 +62,6 @@ If you wish to modify a Service Profile or migrate, add, or remove a Protocol Se
 2.  Make configurations in the sections in the subsequent Create configuration screen.
 3.  When you are finished, click the Activate button at the bottom of the page or the floating blue checkmark icon on the right side of the screen.
 
-Links to instructions for sections on the screen:
-
-- [Content Location](#content-location)
-
-- [Media Delivery](#media-delivery)
-
-- [Options Applicable to Both Root and Child Instances](#chunked-streaming-options-applicalbe-to-both-root-and-child-instances)
-
-- [Others](#others)
-
-- [Additional Options](#additional-options)
-
-- [Notes](#notes)
-
 ### Content Location {/*content-location*/}
 
 With two exceptions, configuring a Content Location is similar to (v2).
@@ -88,7 +74,7 @@ With two exceptions, configuring a Content Location is similar to (v2).
 
 -   **The path ends with a filename** and **Only publish files with these extensions** options are not present under the Source URL path field in the Content Location section.
 
-For additional information, see [Content Location](delivery/control/configure/caching_and_delivery/#content-location) in the Caching & Delivery section.
+For additional information, see [Content Location](/delivery/control/configure/caching_and_delivery/#content-location) in the Caching & Delivery section.
 
 ### Media Delivery {/*media-delivery*/}
 

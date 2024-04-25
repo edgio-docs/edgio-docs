@@ -57,8 +57,7 @@ The *Resources* list contains the columns in the following table for each Resour
 ### Search for DNS Services Resources  {/*search-for-dns-services-resources*/}
 
 -   Begin typing search criteria in the Search for resource field at the top right of the list.
-
-As you type, matches are highlighted in yellow and only rows containing matching characters are displayed.
+    As you type, matches are highlighted in yellow and only rows containing matching characters are displayed.
 
 -   To view all rows, remove the search criteria from the **Search for resource** field.
 
@@ -104,7 +103,6 @@ The CREATE HEALTHCHECK dialog displays.
 The dialog closes and a message is displayed stating that a job to create the Health Check has started.
 
 Click the **Refresh** button periodically to determine if the Rule has finished processing.
-
  <br /> <Callout type="info">- After configuring a Health Check you may have to wait five or more minutes for the Resource to be created. <br /> - The health will be added to the Edit resource for page only after the job is complete.</Callout>
 
 #### Fields in the 'CREATE HEALTHCHECK' Dialog {/*fields-in-the-create-healthcheck-dialog*/}
@@ -193,7 +191,6 @@ In addition to name, type, and target (see [Fields on the 'Create resource for' 
 To configure relative priority and preference:
 
 1.  Make entries in the **Priority** and **Preference** fields for each Resource:
-
 -   Preference: Relative preference compared to other Resources.
 
 -   Priority: Relative priority compared to other Resources.

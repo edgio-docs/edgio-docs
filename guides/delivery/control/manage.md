@@ -1,6 +1,7 @@
 ---
 title: Manage
 ---
+don't link to this page
 ## My Account
 
 ### Editing Your Profile

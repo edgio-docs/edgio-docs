@@ -1,6 +1,7 @@
 export const connectSrcDomains = [
   '*.layer0.co',
   '*.edg.io',
+  '*.edgio.net',
   '*.edgio.link',
   '*.edgio-perma.link',
   '*.segment.io',

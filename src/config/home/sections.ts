@@ -179,7 +179,7 @@ export const sections: HomepageSectionGroup[] = [
           },
           {
             title: 'MediaVault',
-            path: 'https://support.limelight.com/public/en/Content/Delivery/SmartPurge/Smart_Purge.htm',
+            path: 'https://support.limelight.com/public/en/Default.htm#Delivery/Content%20Delivery%20-%20MediaVault%20User%20Guide/MediaVault.htm',
           },
           {
             title: 'Origin Storage Quick Start',
@@ -201,10 +201,6 @@ export const sections: HomepageSectionGroup[] = [
           {
             title: 'Delivery',
             path: 'https://support.limelight.com/public/en/Content/Delivery/Content%20Delivery%20-%20User%20Guide/Delivery.htm',
-          },
-          {
-            title: 'MediaVault',
-            path: 'https://support.limelight.com/public/en/Content/Delivery/SmartPurge/Smart_Purge.htm',
           },
           {
             title: 'Origin Storage Quick Start',

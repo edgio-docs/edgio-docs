@@ -60,7 +60,7 @@ Click on a specific slot (or click the **Details** icon) to view slot details.
 
 Filtering, sorting, and sort direction controls appear above the list of slots:
 
-![Filter Slot](/images/delivery/control/filter-slot.png)
+![Filter Slot](/images/delivery/control/filter-slots.png)
 
 A - Filter by slot type
 
@@ -82,7 +82,7 @@ By default, the list is sorted by date created. The arrow in the sort direction 
 
 Choose a field to sort by and a sort direction.
 
-## Configuring a Slot   {/**/}
+## Configuring a Slot   {/*configuring-a-slot*/}
 
 Configuring a slot is a simple process.
 
@@ -91,16 +91,11 @@ Configuring a slot is a simple process.
 <Callout type="info">According to your account, the number in parentheses beside the transcode and transmux slots indicates the number of remaining slots you can create of each type.</Callout>
 
 2.  Then, fill out fields on the following sections in the page that appears:
-
-[Identifying information](#identifying-information)
-
-[Ingest details](#ingest-details)
-
-[Configuration Details](#configuration-details)
-
-[Encoding details](#encoding-details)
-
-[Content security](#content-security)
+- [Identifying Information](#identifying-information)
+- [Ingest Details](#ingest-details)
+- [Configuration Details](#configuration-details)
+- [Encoding Details](#encoding-details)
+- [Content Security](#content-security)
 
 3.  Review your configuration, making any corrections.
 4.  When finished, click the **Submit** button.
@@ -112,9 +107,9 @@ Configuring a slot is a simple process.
 | Field Name | Description | Notes / Instructions |
 | --- | --- | --- |
 | Name | Identifies your slot. | A unique slot name is required; no two slots may have the same name.<br /><br />A name can only contain letters, numbers, and hyphens (-). It cannot start or end with a hyphen.<br /><br />Spaces are not allowed. |
-| Keywords, comma-separated | Optional keywords to tag your slot. | To enter a tag, type the value then press the Enter key. The following characters are not allowed:<br /> -   period (`.`)<br />    -   apostrophe (`'`)<br />    -   slash ( `/`)<br />    -   backward slash (`\`)<br />    -   left bracket (`[`)<br />    -   right bracket (`]`) |
+| Keywords, comma-separated | Optional keywords to tag your slot. | To enter a tag, type the value then press the Enter key. The following characters are not allowed:<br /> -   period (`.`)<br />    -   apostrophe (`'`)<br />    -   slash (`/`)<br />    -   backward slash (`\`)<br />    -   left bracket (`[`)<br />    -   right bracket (`]`) |
 | Description | An optional free-form field to describe your slot. |  |
-| Callback URL | The URL to which you want to publish events. See the '[Event Callback API Developers Reference](/delivery/video/limelight_video_platform/content_api_developers_reference)' for more details. |  |
+| Callback URL | The URL to which you want to publish events. See the [Event Callback API Developers Reference](/delivery/video/limelight_video_platform/content_api_developers_reference) for more details. |  |
 
 ### Ingest details   {/*ingest-details*/}
 
@@ -195,7 +190,7 @@ Check the **Enable MediaVault content protection** checkbox, then choose the typ
 
 -   Cookie-based
 
-You can set your hash secret per slot. You can find more information in the "[MediaVault User Guide](/delivery/delivery/mediavault)" or by talking to your Representative.
+You can set your hash secret per slot. You can find more information in the [MediaVault User Guide](/delivery/delivery/mediavault) or by talking to your Representative.
 
 <Callout type="info">Enabling causes the Integrated Player Embed Code not to function.</Callout>
 
@@ -285,7 +280,8 @@ If, during playback, an IP address or Geolocation that are not in the Access con
 -   Hover the mouse over an entry and click the **remove** button to delete just that entry.
 
 ## Clone, Delete, Edit, and View Slots   {/*clone-delete-edit-and-view-slots*/}
-#### Clone a Slot   {/*clone-a-slot*/}
+
+### Clone a Slot   {/*clone-a-slot*/}
 1.  Locate the slot you want to clone and click the **Clone** icon (square on square).
 
 2.  Follow the same steps used when configuring a slot. The values are pre-populated with the same information as the original slot except for the slot name. Since the name has to be unique, you must enter a new name.
@@ -294,7 +290,7 @@ If, during playback, an IP address or Geolocation that are not in the Access con
 
 <Callout type="info">If you do not change the name or if you enter the name of an existing slot, a warning appears in the right part of the window.</Callout>
 
-#### Delete a Slot   {/*delete-a-slot*/}
+### Delete a Slot   {/*delete-a-slot*/}
 
 <Callout type="info">You cannot undo or recover a deleted slot. You cannot delete a slot that is in "Pending" state.</Callout>
 
@@ -306,7 +302,7 @@ If, during playback, an IP address or Geolocation that are not in the Access con
 
     The dialog is dismissed and a spinning circle icon is displayed. Upon deletion, the slot is removed from the list.
 
-#### Edit a Slot   {/*edit-a-slot*/}
+### Edit a Slot   {/*edit-a-slot*/}
 
 <Callout type="info">You can edit Live Push slots only.</Callout>
 
@@ -319,7 +315,7 @@ If, during playback, an IP address or Geolocation that are not in the Access con
 3.  Restrict the list to specific accounts by selecting one or more accounts in the dropdown.
 4.  Click the **Save** button.
 
-#### View Slot Details   {/*view-slot-details*/}
+### View Slot Details   {/*view-slot-details*/}
 
 <Callout type="info">For information about viewing slots details, please see the Video Guide.</Callout>
 
@@ -329,7 +325,7 @@ If, during playback, an IP address or Geolocation that are not in the Access con
 
 2.  If you chose the **Enable Subscribe Validation** option while configuring [Content Security](#content-security) for a slot, a Delivery service instance was created in which you can configure access control options. To do so, click the **Configure Validation** button in the Content Security section.
 
-The service instance opens in Caching & Delivery. See 'Content Security' in [Configuring Content Delivery](/delivery/control/configure/caching_and_delivery) for further instructions.
+    The service instance opens in Caching & Delivery. See 'Content Security' in [Configuring Content Delivery](/delivery/control/configure/caching_and_delivery) for further instructions.
 
 3.  If you choose to, you may use the SmartEmbed Player found in the section labeled “EMBED CODE.” Choose an embed code option and player type, then copy the embed code and place it on your website. The embed code will play your live stream. For more information about SmartEmbed, see the Player Embedding Guide.
 
@@ -345,7 +341,7 @@ The service instance opens in Caching & Delivery. See 'Content Security' in [Con
     -   "Error" or "Not Provisioned" means there was an error when querying the ingest for status. Please contact Customer Support.
 
 
-#### View a Slot's Live Stream   {/*view-a-slots-live-stream*/}
+### View a Slot's Live Stream   {/*view-a-slots-live-stream*/}
 
 <Callout type="info">You cannot view a Live Push slot's stream.</Callout>
 
@@ -357,7 +353,7 @@ To view a slot's live stream:
 
 <Callout type="info">The Player icon is only enabled if is not enabled for the slot. See [MediaVault](#mediavault) for additional information. <br /><br /> The embedded player look and feel is defined by the options configured for the player in the EMBED CODE section of the slot details screen. See [View Slot Details](#view-slot-details) for additional information.</Callout>
 
-#### Using Your Slot   {/*using-your-slot*/}
+## Using Your Slot   {/*using-your-slot*/}
 
 <Callout type="info">For instructions about using Live Push slots, see 'Use Your Slot' in the Video Guide.</Callout>
 
@@ -369,6 +365,6 @@ Be sure to use the specifications of your slot type when setting up your encoder
 
 Once you are streaming, use one of the playback URLs shown in the “Slot Details” screen in your video player or app. Or you can use the Edgio SmartEmbed on your website or blog, which loads a player that automatically contains your playback URL.
 
-#### Using Secure Playback URLs   {/*using-secure-playback-urls*/}
+## Using Secure Playback URLs   {/*using-secure-playback-urls*/}
 
 MMD Live and Live Push support the delivery of live streams over secure URLs. Simply change your playback protocol from `http://` to `https://` to take advantage of secure delivery.

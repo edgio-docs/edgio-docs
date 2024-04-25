@@ -5,7 +5,7 @@ title: SSL Certificates
 
 Navigate to Configure > SSL Certificates in the navigation pane. The SSL Certificates page is displayed, with a list of all certificates associated with the currently selected Account.
 
-Action icons (view, edit, etc.) are displayed on the right side of each certificate's row.ediaVault works so you can implement hashes within your own applications
+Action icons (view, edit, etc.) are displayed on the right side of each certificate's row. MediaVault works so you can implement hashes within your own applications
 
 <Callout type="info">Depending on a certificate's state, additional or fewer action icons may be present. All icons and capabilities are explained later in these instructions.</Callout>
 
@@ -35,6 +35,8 @@ Each certificate in the list provides this information:
 | Certificate state and version, date, user | To the right of the action controls on the right side of each row. Indicates the certificate version, date the certificate was created or updated, and user that created/updated the certificate |
 
 ## Working with Certificates  {/*working-with-certificates*/}
+
+You can create, view, edit, publish, withdraw, and delete your own Server Name Indication (SNI) SSL certificates in the Edgio Network.
 
 <Callout type="info">The actions allowable depend on the state of a certificate. <br /> -   If the certificate is not published, you can edit it, delete it, or publish it. <br /> -   If the certificate is published, you can withdraw it or edit it. <br /> -   If the certificate is withdrawn, you can edit it or delete it.</Callout>
 
@@ -108,7 +110,7 @@ When you withdraw a configuration it gets removed from the edge.
 
 ### Deleting a Certificate  {/*deleting-a-certificate*/}
 
-If a certificate has been published, you must withdraw it before you delete it. See [Withdrawing a Certificate](#Withdraw).
+If a certificate has been published, you must withdraw it before you delete it. See [Withdrawing a Certificate](#withdrawing-a-certificate).
 
 1.  Click the **Delete** (rubbish bin) icon for the certificate you want to delete.
 2.  In the resulting dialog, enter the certificate name as instructed, then click the **Delete** button.

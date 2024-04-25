@@ -163,11 +163,11 @@ To make configuration changes to existing Published Protocols or Source Protocol
 
 ## Viewing a Configuration {/*viewing-a-configuration*/}
 
-On the *Configurations* for page, select the desired row or select the **preview** icon on the right side of the row.
+On the *Configurations for* page, select the desired row or select the **preview** icon on the right side of the row.
 
 ## Cloning a Configuration {/*cloning-a-configuration*/}
 
-On the *Configurations* for page, select the **clone** icon on the right side of the row.
+On the *Configurations for* page, select the **clone** icon on the right side of the row.
 
 <Callout type="info">When you clone a configuration, you must, at a minimum, enter a new Published URL Path. <br /> A cloned configuration requires about 15 minutes to be published. Until then, it is in the 'Pending' state.</Callout>
 
@@ -175,7 +175,7 @@ On the *Configurations* for page, select the **clone** icon on the right side of
 
 If you just created a new configuration:
 
-1. On the Configurations for page, select the delete icon on the right side of the row.
+1. On the *Configurations for* page, select the delete icon on the right side of the row.
 2. Confirm your intention to delete in the subsequent dialog.
 
 ## Reverting to a Previous Configuration {/*reverting-to-a-previous-configuration*/}
@@ -183,7 +183,7 @@ Each time you update a configuration, a new version is assigned.
 
 To revert to a previous configuration:
 
-1. On the Configurations for page, select the revert icon on the right of the row.
+1. On the *Configurations for* page, select the revert icon on the right of the row.
     A list of previous versions is displayed in a dialog.
 
 2. Select the version to which you want to revert.

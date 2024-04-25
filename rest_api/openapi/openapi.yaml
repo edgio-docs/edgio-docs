@@ -150,13 +150,13 @@ tags:
       
       <a href="https://docs.edg.io/applications/security/api_security#json-schema-syntax" target="_blank">Learn more about supported JSON schema syntax.</a>
 
- - name: Client-Side Protection
-   x-displayName: Client-Side Protection
-   description: |
+  - name: Client-Side Protection
+    x-displayName: Client-Side Protection
+    description: |
 
-     Client-Side Protection allows you to apply a consistent Content Security Policy (CSP) across all of your pages. The purpose of a CSP is to detect and mitigate attacks, such as cross-site scripting (XSS) and code injection. 
-     
-     <a href="https://docs.edg.io/applications/security/client_side_protection" target="_blank">Learn more about Client-Side Protection policies.</a>
+      Client-Side Protection allows you to apply a consistent Content Security Policy (CSP) across all of your pages. The purpose of a CSP is to detect and mitigate attacks, such as cross-site scripting (XSS) and code injection. 
+      
+      <a href="https://docs.edg.io/applications/security/client_side_protection" target="_blank">Learn more about Client-Side Protection policies.</a>
 
   - name: RTLD Access Logs Profile
     description: |
@@ -499,18 +499,18 @@ paths:
       - url: 'https://edgioapis.com/bot-security/v0.9'
     security:
       - securityScope: {}
- '/{organization_id}/client-wafs':
-   $ref: 'paths/{organization_id}@client-wafs.yaml'
-   servers:
-     - url: 'https://edgioapis.com/client-waf/v0.9'
-   security:
-     - client_wafScope: [app.client_waf]
- '/{organization_id}/client-wafs/{client_waf_id}':
-   $ref: 'paths/{organization_id}@client-wafs@{client_waf_id}.yaml'
-   servers:
-     - url: 'https://edgioapis.com/client-waf/v0.9'
-   security:
-     - client_wafScope: [app.client_waf]
+  '/{organization_id}/client-wafs':
+    $ref: 'paths/{organization_id}@client-wafs.yaml'
+    servers:
+      - url: 'https://edgioapis.com/client-waf/v0.9'
+    security:
+      - client_wafScope: [app.client_waf]
+  '/{organization_id}/client-wafs/{client_waf_id}':
+    $ref: 'paths/{organization_id}@client-wafs@{client_waf_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/client-waf/v0.9'
+    security:
+      - client_wafScope: [app.client_waf]
 #  '/{organization_id}/client-wafs/{client_waf_id}/versions':
 #    $ref: 'paths/{organization_id}@client-wafs@{client_waf_id}@versions.yaml'
 #    servers:

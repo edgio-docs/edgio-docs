@@ -60,8 +60,8 @@ The slider maximum value is 37, the length of the **Target URL**.
 
 | Field | Description/Instructions |
 | --- | --- |
-| Target URL with Options | Informational only ^1^<br /><br />The URL without hash specified, essentially the same as Secure URL but without h (hash) parameter. |
-| Actual MD5 | Informational only1<br /><br />Shows how the hash is generated, which is then passed to h parameter. It is formed as follows: <md5secret><url><parameters>. |
-| Secure URL | The result of hashing:<br /><br />-   Shared Secret<br />    <br />-   Target URL<br />    <br />-   Start Date / Time, End Date / Time, IP Address / Mas, and Referrer URL, if provided. |
+| Target URL with Options | Informational only<sup>1</sup><br /><br />The URL without hash specified, essentially the same as Secure URL but without h (hash) parameter. |
+| Actual MD5 | Informational only1<br /><br />Shows how the hash is generated, which is then passed to h parameter. It is formed as follows: `<md5secret><url><parameters>`. |
+| Secure URL | The result of hashing:<br /><br />- Shared Secret<br />    <br />- Target URL<br />    <br />-   Start Date / Time, End Date / Time, IP Address / Mas, and Referrer URL, if provided. |
 
-^ 1^ These fields are provided in case you want to generate the secure URL yourself.
+<sup>1</sup>These fields are provided in case you want to generate the secure URL yourself.

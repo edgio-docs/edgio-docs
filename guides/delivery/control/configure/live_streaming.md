@@ -50,8 +50,8 @@ The slot state. Possible values are in the following table:
 | Status | Description |
 | --- | --- |
 | LiveEventProvisioning | The slot configuration is in the process of being set up. It can take several minutes for all the configurations to be enabled. |
-| Not_Provisioned,<br><br>Error | The configuration has not been set up on the ingest. Please contact Customer Support. |
-| Published,<br><br>Ready | The slot has been properly configured and is ready to use. |
+| Not_Provisioned,<br /><br />Error | The configuration has not been set up on the ingest. Please contact Customer Support. |
+| Published,<br /><br />Ready | The slot has been properly configured and is ready to use. |
 | Deleting | The slot is in the process of being removed. |
 
 Click on a specific slot (or click the **Details** icon) to view slot details.

@@ -59,8 +59,7 @@ You can view additional certificate details that are not displayed in the list o
 
 2.  Details are displayed on a new page.
 
-<Callout type="info">From this page, you can also take other options depending on the certificate status: <br /> -   If the certificate is not published, you can edit it, delete it, or publish it. <br /> -   If the certificate is published, you can withdraw it or edit it. <br /><br /> See the following sections for instructions: <br /> -   [Editing a Certificate](#editing-a-configuration)
--   [Publishing a Certificate](#publishing-a-certificate) <br /> -   [Deleting a Certificate](#deleting-a-certificate)</Callout>
+<Callout type="info">From this page, you can also take other options depending on the certificate status: <br /> -   If the certificate is not published, you can edit it, delete it, or publish it. <br /> -   If the certificate is published, you can withdraw it or edit it. <br /><br /> See the following sections for instructions: <br /> -   [Editing a Certificate](#editing-a-configuration) <br /> -   [Publishing a Certificate](#publishing-a-certificate) <br /> -   [Deleting a Certificate](#deleting-a-certificate)</Callout>
 
 ### Editing a Configuration  {/*editing-a-configuration*/}
 

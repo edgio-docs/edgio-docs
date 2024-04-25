@@ -43,8 +43,8 @@
     "@types/react": "18.0.1"
   },
   "dependencies": {
-    "@docsearch/css": "3.0.0-alpha.41",
-    "@docsearch/react": "3.0.0-alpha.41",
+    "@docsearch/css": "^3.6.0",
+    "@docsearch/react": "^3.6.0",
     "@edgio/rum": "^7.0.13",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",

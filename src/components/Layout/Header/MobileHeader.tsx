@@ -61,12 +61,12 @@ const MobileHeader = () => {
               <img
                 src={toMobilePath(darkLogo)}
                 alt="Edgio"
-                style={{height: '40px'}} // Ensuring logo height matches design spec
+                style={{height: '40px'}}
               />,
               <img
                 src={toMobilePath(lightLogo)}
                 alt="Edgio"
-                style={{height: '40px'}} // Ensuring logo height matches design spec
+                style={{height: '40px'}}
               />
             )}
         </Link>

@@ -73,7 +73,7 @@ In the *Throughput*, *Data Transfer*, and *Requests* tabs, a toggle on the right
 
 | Toggle | Description |
 | --- | --- |
-| IN & OUT | Data broken out by **IN** and **OUT** where:<br><br /> - **IN** is traffic coming into the CDN from customer origins.<br /> - **OUT** is traffic leaving through published hosts to the requesting client.<br /><br />Chart lines are color coded and identified by labels under the chart. |
+| IN & OUT | Data broken out by **IN** and **OUT** where:<br /><br /> - **IN** is traffic coming into the CDN from customer origins.<br /> - **OUT** is traffic leaving through published hosts to the requesting client.<br /><br />Chart lines are color coded and identified by labels under the chart. |
 | TOTAL | Sum of **IN** and **OUT** |
 
 Configure chart content by making a selection in the toggle.

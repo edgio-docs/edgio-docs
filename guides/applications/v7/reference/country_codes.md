@@ -264,4 +264,20 @@ ISO 3166 country codes are supported by:
 
 ## Regions {/*regions*/}
 
+ISO 3166 country codes are supported by:
+
+-   **Rules:** [Region match condition](/applications/performance/rules/conditions#region-code)
+-   **CDN-as-code:** [location.region_code](/docs/api/core/interfaces/types.RulesVariables.html#location)
+-   **Web Application Firewall:** [Access Rules](/applications/security/access_rules), [Rate Rules](/applications/security/rate_rules), [Bot Manager](/applications/security/bot_rules), [Custom Rules](/applications/security/custom_rules), and [Dashboard](/applications/security/dashboard)
+
 {{ PRODUCT }} identifies the location from which a client requests your content through the client's IP address. However, certain IP addresses are not specific to a particular country, rather they are spread out over an entire region (i.e., Europe or Asia/Pacific). Requests that originate from these types of IP addresses are identified by a region-specific code instead of a country code. Region-specific codes identify requests for which a country of origin is unknown. Additionally, these codes represent a small subset of IP addresses in that region.
+
+<Callout type="info">
+
+  Country access controls take precedence over country subdivision access controls.
+
+  For example, if you define US within a whitelist, then state-specific access controls will be ignored for requests that originate within the United States.
+
+</Callout>
+
+To find a specific region code, search on [iso.org](https://www.iso.org/obp/ui/#search). 

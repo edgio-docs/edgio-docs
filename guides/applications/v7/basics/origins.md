@@ -133,6 +133,7 @@ An origin configuration's TLS settings determine how {{ PRODUCT }} will communic
 - **`{{ PRODUCT_LOWER }}_image_optimizer`**: Used for serving images through the [image optimization](/applications/performance/image_optimization) feature.
 - **`{{ PRODUCT_LOWER }}_permanent_static`**: Used for serving [static assets](/applications/performance/cdn_as_code/edgio_config#staticassets) configured to persist across deployments.
 - **`{{ PRODUCT_LOWER }}_serverless`**: Used for serving requests through the {{ PRODUCT }} cloud.
+- **`{{ PRODUCT_LOWER }}_self`**: Refers to the current Environment. It can be used in [{{ PRODUCT }} Edge Functions](/applications/edge_functions) to make requests that follow Rules defined in your Environment.
 - **`{{ PRODUCT_LOWER }}_static`**: Used for serving [static assets](/applications/performance/cdn_as_code/edgio_config#staticassets).
 
 ## HTTP/3 {/*http-3*/}

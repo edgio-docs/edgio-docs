@@ -16,14 +16,14 @@ tags:
     
       Retrieve TLS certificates or upload your own TLS certificate to a specific environment. 
       
-      <a href="https://docs.edg.io/guides/v7/security/tls_certificates" target="_blank">Learn more about hosting TLS certificates on our network.</a>
+      <a href="/applications/v7/security/tls_certificates" target="_blank">Learn more about hosting TLS certificates on our network.</a>
   - name: deployments
     x-displayName: Deployment Info
     description: |
     
       Retrieve information and log data for a previous deployment. 
       
-      <a href="https://docs.edg.io/guides/v7/basics/deployments" target="_blank">Learn more about deployments.</a>
+      <a href="/applications/v7/basics/deployments" target="_blank">Learn more about deployments.</a>
   - name: configs
     x-displayName: CDN Configuration
     description: Deploy or retrieve a CDN configuration. This type of configuration consists of origin configurations, hostnames, rules, and experiments.
@@ -33,7 +33,7 @@ tags:
     
       Automate environment variable management. 
       
-      <a href="https://docs.edg.io/guides/v7/basics/environments#environment-variables" target="_blank">Learn more about environment variables.</a>
+      <a href="/applications/v7/basics/environments#environment-variables" target="_blank">Learn more about environment variables.</a>
   - name: purge-requests
     x-displayName: Purge
     description: Purge cached content and retrieve information about previously submitted purge requests.
@@ -174,14 +174,14 @@ tags:
    
     For example, the `requests_edge_total` metric reports the total number of requests made to edge server.
 
-    [Learn how to use this API.](/applications/rest_api/metrics_api)
+    <a href="/applications/rest_api/metrics_api" target="_blank">Learn how to use the Metrics API.</a>
 
   - name: RTLD Access Logs Profile
     description: |
     
       Automate Real-Time Log Delivery (RTLD) Access Logs profile management. A RTLD Access Logs profile defines the condition(s) under which access log data will be delivered to the desired destination (e.g., your web server or AWS S3). 
       
-      <a href="https://docs.edg.io/guides/v7/logs/rtld" target="_blank">Learn more about Real-Time Log Delivery.</a>
+      <a href="/applications/v7/logs/rtld" target="_blank">Learn more about Real-Time Log Delivery.</a>
   - name: Log Fields
     description: Retrieve log fields associated with a Real-Time Log Delivery (RTLD) module.
   - name: AWS Regions

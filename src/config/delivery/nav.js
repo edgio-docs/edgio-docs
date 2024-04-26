@@ -61,10 +61,6 @@ const nav = {
               path: 'control/configure/caching_and_delivery',
             },
             {
-              title: 'Intelligent Ingest',
-              path: 'control/configure/intelligent_ingest',
-            },
-            {
               title: 'Chunked Streaming',
               path: 'control/configure/chunked_streaming',
             },
@@ -73,20 +69,24 @@ const nav = {
               path: 'control/configure/dns_services',
             },
             {
-              title: 'MediaVault URLs',
-              path: 'control/configure/mediavault_hash_generator',
+              title: 'Intelligent Ingest',
+              path: 'control/configure/intelligent_ingest',
             },
             {
-              title: 'SSL Certificates',
-              path: 'control/configure/ssl_certificates',
+              title: 'Live Streaming',
+              path: 'control/configure/live_streaming',
             },
             {
               title: 'Log Delivery Service',
               path: 'control/configure/log_delivery_service',
             },
             {
-              title: 'Live Streaming',
-              path: 'control/configure/live_streaming',
+              title: 'MediaVault URLs',
+              path: 'control/configure/mediavault_hash_generator',
+            },
+            {
+              title: 'SSL Certificates',
+              path: 'control/configure/ssl_certificates',
             },
           ],
         },

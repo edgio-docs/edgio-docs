@@ -101,8 +101,7 @@ To enable configurable items:
 
     -   Click individual shortnames to enable the item for only the shortnames selected.
 
-<Callout type="info">-   Changes are saved immediately upon selection. <br />-   If the All for toggle is not present, it means does not support per-company permissions. <br /> -   If later on a new shortname is added to the company, the shortname automatically appears in the shortname grids. <br />
--   By default, all users in a company have permissions to view the company's reports.</Callout>
+<Callout type="info">-   Changes are saved immediately upon selection. <br />-   If the *All for* toggle is not present, it means does not support per-company permissions. <br /> -   If later on a new shortname is added to the company, the shortname automatically appears in the shortname grids. <br />-   By default, all users in a company have permissions to view the company's reports.</Callout>
 
 ## Cloning User Permissions  {/*cloning-user-permissions*/}
 

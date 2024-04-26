@@ -624,6 +624,10 @@ const nav = {
               path: 'develop/rest_api/authentication',
             },
             {
+              title: 'Using the Metrics REST API',
+              path: 'develop/rest_api/metrics_rest_api_usage',
+            },
+            {
               title: 'REST API Reference',
               path: '/rest_api/',
               external: true,

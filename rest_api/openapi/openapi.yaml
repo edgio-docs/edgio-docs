@@ -159,6 +159,7 @@ tags:
 #      <a href="https://docs.edg.io/applications/security/client_side_protection" target="_blank">Learn more about Client-Side Protection policies.</a>
 #
   - name: metrics
+    x-displayName: Metrics
     description: |
 
       Generate report data through which you can analyze traffic trends, such as traffic volume, cache hit ratios, response times, geographical distribution of users, and origin server performance.
@@ -174,7 +175,7 @@ tags:
 
           For example, the `requests_edge_total` metric reports the total number of requests made to edge server.
 
-      <a href="/applications/rest_api/metrics_rest_api_usage" target="_blank">Learn how to use the Metrics API.</a>
+      <a href="/applications/develop/rest_api/metrics_rest_api_usage" target="_blank">Learn how to use the Metrics API.</a>
   - name: RTLD Access Logs Profile
     description: |
     

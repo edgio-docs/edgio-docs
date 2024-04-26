@@ -1,0 +1,20 @@
+get:
+  tags:
+    - metrics
+  summary: Get Dataset
+  description: Returns a dataset. Specify the desired dataset by its name.
+  operationId: dataset
+  parameters:
+    - name: name
+      in: path
+      description: The dataset's name.
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK. A dataset was retrieved.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/MetricsDataset.yaml

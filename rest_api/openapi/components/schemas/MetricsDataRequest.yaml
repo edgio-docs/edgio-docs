@@ -1,0 +1,91 @@
+type: object
+properties:
+  date_range:
+    type: object
+    description: The query's time period.
+    required:
+      - start
+      - end
+    properties:
+      start:
+        type: string
+        format: date-time
+        description: |
+          The query's inclusive start date. 
+
+          **ISO 8601 date syntax:** `yyyy-MM-dd'T'HH:mm:ss'Z'`
+      end:
+        type: string
+        format: date-time
+        description: >
+          The query's exclusive end date. 
+
+
+          **ISO 8601 date syntax:** `yyyy-MM-dd'T'HH:mm:ss'Z'`
+
+
+          This end date must occur after the start date defined within the
+          `start` property. 
+  dimensions:
+    type: array
+    items:
+      type: string
+    description: The dimensions that will be returned.
+  metrics:
+    type: array
+    items:
+      type: string
+    minItems: 1
+    description: The metrics that will be returned. You must specify at least one metric.
+  filters:
+    type: object
+    description: >-
+      Contains the query's filters. Each filter is a key-value pair where the
+      key is the type of filter.
+    additionalProperties:
+      type: array
+      items:
+        type: string
+        maxItems: 20
+      description: >-
+        An array of up to 20 string values that define how the dataset will be
+        filtered.
+  time_granularity:
+    type: string
+    enum:
+      - FIVE_MINUTES
+      - HOUR
+      - DAY
+    description: >
+      The behavior of this property varies according to whether the response
+      includes the `time` dimension.
+
+
+      -   **Present:** Aggregates data by the specified time interval.
+
+      -   **Missing:** Calculates summaries from pre-aggregated data.
+
+
+      The query's time period determines the set of supported granularities.
+
+
+      -   **FIVE_MINUTES:** Requires a time period of 24 hours or less.
+
+      -   **HOUR:** Requires a time period of 7 days or less.
+
+      -   **DAY:** Requires a time period of 60 days or less.
+
+
+      By default, the response uses the broadest available time granularity.
+example:
+  dimensions:
+    - time
+  metrics:
+    - cache_hit_ratio
+  filters:
+    environment_id:
+      - 777af1f3-aa60-1234-b777-56772909e833
+  date_range:
+    start: '2024-04-10T00:00:00Z'
+    end: '2024-04-15T00:00:00Z'
+  time_granularity: DAY

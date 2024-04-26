@@ -1,0 +1,127 @@
+type: object
+properties:
+  '@id':
+    type: string
+    description: The dataset's relative path.
+  '@type':
+    type: string
+    description: Returns `MetricsDataset`.
+  name:
+    type: string
+    description: The dataset's unique name.
+  description:
+    type: string
+    description: A detailed summary of the dataset's contents.
+  time_granularities:
+    type: array
+    items:
+      type: string
+    description: A list of time granularities.
+  data_retention_policy:
+    type: object
+    description: Lists each time granularity and its retention period.
+    additionalProperties:
+      type: integer
+      description: A time granularity's retention period in seconds.
+      example:
+        FIVE_MINUTES: 2764800
+        HOUR: 8208000
+        DAY: 69120000
+  dimensions:
+    type: array
+    description: >-
+      Contains dimensions. A dimension describes an attribute of a request and
+      is typically used to correlate the desired set of requests with metrics.
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The dimension's name.
+        type:
+          type: string
+          description: The dimension's data type (e.g., `STRING`, `NUMBER`, `DATE`).
+        description:
+          type: string
+          description: A brief explanation of what the dimension represents.
+  metrics:
+    type: array
+    description: >-
+      Contains metrics. A metric measures the rate, an amount, or the total
+      number of times that a particular attribute occurred over a given record.
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The metric's name.
+        type:
+          type: string
+          description: The metric's data type (e.g., `NUMBER`).
+        description:
+          type: string
+          description: Describes what the metric measures.
+  filters:
+    type: array
+    description: Contains a list of filters.
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The filter's name.
+        required:
+          type: boolean
+          description: Indicates whether the filter is mandatory or optional.
+        description:
+          type: string
+          description: Explains how the filter can be used.
+example:
+  '@id': /datasets/edge_errors
+  '@type': MetricsDataset
+  name: edge_errors
+  description: >-
+    Aggregated usage metrics with breakdown time, environment ID, country code,
+    and HTTP status codes between 500 and 599.
+  time_granularities:
+    - FIVE_MINUTES
+    - HOUR
+    - DAY
+  data_retention_policy:
+    five_minutes: 2764800
+    hour: 8208000
+    day: 69120000
+  dimensions:
+    - name: time
+      type: DATE
+      description: The date when the request happened.
+    - name: environment_id
+      type: STRING
+      description: The environment's system-defined ID.
+    - name: country_code
+      type: STRING
+      description: >-
+        The user's country code. It consists of two lowercase letters, or a
+        single hyphen '-' if the country is unknown.
+    - name: http_status_code
+      type: NUMBER
+      description: HTTP status codes between 500 and 599.
+  metrics:
+    - name: requests_edge_total
+      type: NUMBER
+      description: Total number of requests.
+  filters:
+    - name: environment_id
+      type: array
+      required: true
+      description: Filters data by environment id.
+    - name: country_code
+      type: array
+      required: false
+      description: >-
+        Filters data by user's country code. Supported values: two lowercase
+        letters or '-'.
+    - name: http_status_code
+      type: array
+      required: false
+      description: Filters data by HTTP status code.

@@ -161,20 +161,20 @@ tags:
   - name: metrics
     description: |
 
-    Generate report data through which you can analyze traffic trends, such as traffic volume, cache hit ratios, response times, geographical distribution of users, and origin server performance.
+      Generate report data through which you can analyze traffic trends, such as traffic volume, cache hit ratios, response times, geographical distribution of users, and origin server performance.
 
-    **Key concepts:**
+      **Key concepts:**
    
-    -   **Dataset:** A dataset is a structured collection of data that represents a set of events. Each dataset consists of metrics and dimensions.
-    -   **Dimension:** A dimension describes an attribute of a request and is typically used to correlate the desired set of requests with metrics. 
-   
-    For example, the `country_code` dimension identifies the country from which a request originated. 
-   
-    -   **Metric:** A metric measures the rate, an amount, or the total number of times that a particular attribute occurred over a given record. 
-   
-    For example, the `requests_edge_total` metric reports the total number of requests made to edge server.
+      -   **Dataset:** A dataset is a structured collection of data that represents a set of events. Each dataset consists of metrics and dimensions.
+      -   **Dimension:** A dimension describes an attribute of a request and is typically used to correlate the desired set of requests with metrics. 
 
-    <a href="/applications/rest_api/metrics_rest_api_usage" target="_blank">Learn how to use the Metrics API.</a>
+          For example, the `country_code` dimension identifies the country from which a request originated. 
+
+      -   **Metric:** A metric measures the rate, an amount, or the total number of times that a particular attribute occurred over a given record. 
+
+          For example, the `requests_edge_total` metric reports the total number of requests made to edge server.
+
+      <a href="/applications/rest_api/metrics_rest_api_usage" target="_blank">Learn how to use the Metrics API.</a>
   - name: RTLD Access Logs Profile
     description: |
     

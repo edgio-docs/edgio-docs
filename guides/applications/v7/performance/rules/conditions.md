@@ -1712,11 +1712,9 @@ Identifies requests by the code for the region (e.g., state or province) from wh
 
 **Key information:**
 
--   Identify the desired region by its region code. A region code, which consists of 1 to 3 alphanumeric characters, identifies a subdivision of a country by the region segment of the corresponding ISO 3166-2 code.
+-   Identify the desired region by its region code. A region code consists of 1 to 3 alphanumeric characters. A region code is also known as a subdivision code. This code is the latter half of an ISO 3166-2 code.
 
-    [View ISO 3166-2 codes. (Wikipedia)](https://en.wikipedia.org/wiki/ISO_3166-2)
-
-    [View ISO 3166-2 codes. (UNECE)](http://www.unece.org/cefact/locode/subdivisions.html)
+    [Look up ISO-3166-2 codes.](https://www.iso.org/obp/ui/#search/code/)
 
     **Example:**
 
@@ -1743,11 +1741,9 @@ Identifies requests by the code for the region (e.g., state or province) from wh
 <edgejs>
 **Key information:**
 
--   Identify the desired region by its region code. A region code, which consists of 1 to 3 alphanumeric characters, identifies a subdivision of a country by the region segment of the corresponding ISO 3166-2 code.
+-   Identify the desired region by its region code. A region code consists of 1 to 3 alphanumeric characters. A region code is also known as a subdivision code. This code is the latter half of an ISO 3166-2 code.
 
-    [View ISO 3166-2 codes. (Wikipedia)](https://en.wikipedia.org/wiki/ISO_3166-2)
-
-    [View ISO 3166-2 codes. (UNECE)](http://www.unece.org/cefact/locode/subdivisions.html)
+    [Look up ISO-3166-2 codes.](https://www.iso.org/obp/ui/#search/code/)
 
     **Example:**
 

@@ -132,6 +132,18 @@ support the following request elements:
 
     </Callout>
 
+    <a id="country-subdivision--iso3166-2-"></a>
+
+-   **Country Subdivision (ISO3166-2):** Identifies requests by a country's subdivision (e.g., state or province). Specify each desired subdivision using an [ISO-3166-2 code](https://www.iso.org/obp/ui/#search/code/).
+
+    **Syntax:**
+
+    `<Country Code>`-`<Subdivision Code>`
+
+    **Example:**
+
+    The following value identifies requests from California:  `US-CA`
+
     <a id="ip-address"></a>
 
 -   **IP address:** Identify requests by the

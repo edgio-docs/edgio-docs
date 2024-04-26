@@ -541,6 +541,18 @@ paths:
 #      - url: 'https://edgioapis.com/client-waf/v0.9'
 #    security:
 #      - client_wafScope: [app.client_waf]
+  /datasets:
+    $ref: paths/datasets.yaml
+    servers:
+      - url: 'https://edgioapis.com/metrics/v1'
+  /datasets/{name}:
+    $ref: paths/datasets_{name}.yaml
+    servers:
+      - url: 'https://edgioapis.com/metrics/v1'
+  /datasets/{name}/data:
+    $ref: paths/datasets_{name}_data.yaml
+    servers:
+      - url: 'https://edgioapis.com/metrics/v1'
   /accesslogs/profiles:
     $ref: paths/accesslogs_profiles.yaml
     servers:

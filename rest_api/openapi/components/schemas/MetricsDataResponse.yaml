@@ -1,0 +1,64 @@
+type: object
+properties:
+  '@id':
+    type: string
+    description: The data's relative path.
+  '@type':
+    type: string
+    description: The type of response. Returns `MetricsDataResponse`.
+  request:
+    type: object
+    description: Echoes the body parameters defined in the request.
+  data_fields:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The field's name.
+        type:
+          type: string
+          description: The field's data type.
+    description: The dataset's fields.
+  data_rows:
+    type: array
+    items:
+      type: array
+      items:
+        type: string
+    description: >-
+      Contains the data rows returned by the query. Each inner array represents
+      a row of data, with values corresponding to the fields specified in
+      `data_fields`.
+  created_at:
+    type: string
+    format: date-time
+    description: The date and time (UTC) at which the request was submitted.
+example:
+  '@id': /datasets/edge_usage/data
+  '@type': MetricsDataResponse
+  data_fields:
+    - name: time
+      description: The date when the request happened.
+      data_type: DATE
+    - name: cache_hit_ratio
+      description: Ratio of cache hit requests to total edge requests.
+      data_type: NUMBER
+  data_rows:
+    - - '2024-04-14T00:00:00Z'
+      - 0.6799121963612469
+    - - '2024-04-12T00:00:00Z'
+      - 0.6716810029916086
+  request:
+    dimensions:
+      - time
+    metrics:
+      - cache_hit_ratio
+    filters:
+      environment_id:
+        - 777af1f3-aa60-1234-b777-56772909e833
+    time_granularity: DAY
+    date_range:
+      start: '2024-04-10T00:00:00Z'
+      end: '2024-04-15T00:00:00Z'

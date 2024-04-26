@@ -1,0 +1,26 @@
+post:
+  tags:
+    - metrics
+  summary: Query Dataset
+  description: Queries a dataset. Specify the desired dataset by its name.
+  operationId: data
+  parameters:
+    - name: name
+      in: path
+      description: The dataset's name.
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/MetricsDataRequest.yaml
+    required: true
+  responses:
+    '200':
+      description: OK. Returns the query's result.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/MetricsDataResponse.yaml

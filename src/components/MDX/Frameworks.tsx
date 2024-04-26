@@ -35,6 +35,7 @@ import {
   IconNextJSCommerceDark,
   IconNuxt,
   IconPreact,
+  IconQwik,
   IconRazzle,
   IconReact,
   IconReactStatic,
@@ -423,6 +424,12 @@ const items: ItemsByVersion = {
       path: '/guides/sites_frameworks/getting_started/nuxt3',
       icon: <IconNuxt />,
       iconDark: <IconNuxt />,
+    },
+    {
+      title: 'Qwik',
+      path: '/guides/sites_frameworks/getting_started/qwik',
+      icon: <IconQwik />,
+      iconDark: <IconQwik />,
     },
     {
       title: 'React',

@@ -454,6 +454,10 @@ const nav = {
               path: 'sites_frameworks/getting_started/nuxt3',
             },
             {
+              title: 'Qwik',
+              path: 'sites_frameworks/getting_started/qwik',
+            },
+            {
               title: 'React',
               path: 'sites_frameworks/getting_started/react',
             },

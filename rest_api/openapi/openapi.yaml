@@ -158,6 +158,24 @@ tags:
 #      
 #      <a href="https://docs.edg.io/applications/security/client_side_protection" target="_blank">Learn more about Client-Side Protection policies.</a>
 #
+  - name: metrics
+    description: |
+
+    Generate report data through which you can analyze traffic trends, such as traffic volume, cache hit ratios, response times, geographical distribution of users, and origin server performance.
+
+    **Key concepts:**
+   
+    -   **Dataset:** A dataset is a structured collection of data that represents a set of events. Each dataset consists of metrics and dimensions.
+    -   **Dimension:** A dimension describes an attribute of a request and is typically used to correlate the desired set of requests with metrics. 
+   
+    For example, the `country_code` dimension identifies the country from which a request originated. 
+   
+    -   **Metric:** A metric measures the rate, an amount, or the total number of times that a particular attribute occurred over a given record. 
+   
+    For example, the `requests_edge_total` metric reports the total number of requests made to edge server.
+
+    [Learn how to use this API.](/applications/rest_api/metrics_api)
+
   - name: RTLD Access Logs Profile
     description: |
     
@@ -597,6 +615,14 @@ components:
           tokenUrl: https://id.edgio.app/connect/token
           scopes:
             app.client_waf: Authorizes full access to Client-Side Protection.
+    metricsScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.TODO-METRICS-SCOPE: Authorizes full access to Metrics operations. 
     rtldScope:
       type: oauth2
       description: Learn how to [generate and pass a token.](#section/Access-Tokens)
@@ -638,6 +664,9 @@ x-tagGroups:
     tags:
       - properties
       - environments
+  - name: Analytics - Metrics
+    tags:
+      - metrics
   - name: Real-Time Log Delivery (RTLD)
     tags:
       - RTLD Access Logs Profile

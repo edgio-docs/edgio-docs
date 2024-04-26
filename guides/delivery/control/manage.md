@@ -1,74 +1,13 @@
 ---
 title: Manage
 ---
-don't link to this page
-## My Account
+<!-- don't link to this page. change content to overview vs markdown-->
+Use this section of Control to manage users, accounts.
 
-### Editing Your Profile
-### Managing Recurring Report Emails
-### Managing Alerts
-### My Account
-
-## Content with SmartPurge
-
-### Why Purge?
-### SmartPurge Page Overview
-#### Requests Tab
-#### Templates Tab
-### Creating a New Purge Request
-#### Creating a Purge Request from Scratch
-#### Creating a Request from a Template
-### Creating a New Template
-### Doing a Dry Run
-### Doing a Purge
-### Other Request Tasks
-#### Viewing a Request's Stats (Results)
-#### Saving a Request as a Template
-### Other Template Tasks
-#### Viewing a Template Summary
-#### Editing a Template
-#### Duplicating a Template
-#### Deleting a Template
-### Stats for request Page
-### Template Summary Page
-### Purge Notifications
-### The SmartPurge REST API
-### SmartPurge Best Practices
-
-## Authentication
-
-### Creating a Configuration
-
-#### LDAP
-
-#### SAML
-
-### Editing a Configuration
-
-### Testing a Configuration
-
-### Activating a Configuration
-
-### Deactivating a Configuration
-
-### Deleting a Configuration
-
-## Control Portal Users
-
-### Finding & Selecting Users
-### Adding New Users
-### Migrating Users to Another Company
-### Editing User Profiles
-### Editing User Permissions
-### Cloning User Permissions
-### 2FA Security
-#### User Experience
-#### Resetting Device Pairings
-#### Frequently-Asked Questions
-
-## Origin Storage Users
-### Creating a New Origin Storage User Account
-### Editing an Existing Account
-### Deleting an Account
-### Reactivating an Inactive User
-### Exporting Origin Storage User Data
+| Topic | Description|
+|---|---|
+|[My Account](/delivery/control/manage/account)| The *My Account* section of Control lets you update your contact information and password. The section also lets you manage any automatically-recurring report emails and alerts you’ve created.|
+| Content with SmartPurge| SmartPurge is Edgio's innovative system for removing content from CDN cache. This section details the page layout, managing purge requests, making templates, tesing, and purging.|
+|Authentication| Here you can configure Lightweight Directory Access Protocol (LDAP) and Security Assertion Markup Language (SAML) authentication types. This capability is intended for customers who use an SSO provider such as Okta or Ping Identity and allows customers to integrate Control authentication into their overall SSO capability.|
+|Control Portal Users| Find, add, edit, migrate, clone users, profiles, and permissions and manage 2FA. |
+|Origin Storage Users|Create, edit, delete, export users and accounts. |

@@ -71,14 +71,14 @@ To add a new Resource:
 
 1.  Select the **Resources** tab. The *Resources* list displays.
 2.  Select the **+ New** button on the right side of the page under the tabs header, and the *Create resource for page* displays.
-3.  Complete fields on the page (see [Fields on the 'Create resource for' Page](#fields-on-the-create-resource-for-page)).
-4.  Click *Save*.
+3.  Complete fields on the page (see [Fields on the *Create resource for* Page](#fields-on-the-create-resource-for-page)).
+4.  Click **Save**.
 
 You are returned to the *Resources* tab and a message is displayed stating that a job to create the Resource has started.
 
 Click the **Refresh** button periodically to determine if the Rule has finished processing.
 
- <br /> <Callout type="info">- After configuring a Resource you may have to wait five or more minutes for the Resource to be created. <br /> -   The Resource will be added to the list only after the job is complete. <br /> - After creating the Resource, you might want to add Health Checks to it. See [Add Health Checks to a DNS Services Resource](#add-health-checks-to-a-dns-service-resource).</Callout>
+<Callout type="info">- After configuring a Resource you may have to wait five or more minutes for the Resource to be created. <br /> -   The Resource will be added to the list only after the job is complete. <br /> - After creating the Resource, you might want to add Health Checks to it. See [Add Health Checks to a DNS Services Resource](#add-health-checks-to-a-dns-service-resource).</Callout>
 
 #### Fields on the *Create resource for* Page {/*fields-on-the-create-resource-for-page*/}
 

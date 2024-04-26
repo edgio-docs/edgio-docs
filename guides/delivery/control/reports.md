@@ -1,6 +1,10 @@
 ---
 title: Reports
 ---
+
+| Content | Description|
+|---|---|
+
 reports overview page
 
 add reporting - overview

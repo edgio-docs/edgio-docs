@@ -29,7 +29,7 @@ Icons at the right side of each slot row allow you to take actions on the slot.
 | Details | Lets you view a specific live slot in detail. See [View Slot Details](#view-slot-details). (You can also view slot details by clicking in the slot's row.) |
 | Clone | Makes a copy of an existing live slot configuration. See [Clone a Slot](#clone-a-slot). |
 | Record and Schedule | Specific to functionality. |
-| Player | Allows you to view the live stream. See [Viewing a Slot's Live Stream](#view-a-slots-live-stream). |
+| Player | Allows you to view the live stream. See [View a Slot's Live Stream](#view-a-slots-live-stream). |
 | Delete | Allows you to delete a live slot configuration. See [Delete a Slot](#delete-a-slot). |
 
 ### List Information   {/*list-information*/}
@@ -137,7 +137,7 @@ The Configuration Details section is visible only for Live Push slots.
 | Username | Username for slot access. | Each slot requires at least one set of authentication credentials. Multiple sets of credentials can be configured by clicking **+ add** after entering each set of credentials. |
 | Password | Password for slot user access. Click **Show** to display the password. | Passwords should be strong. |
 | Confirm Password | Confirmation of the password. | Must match the password. |
-| Publish Credentials | A list of the credentials to publish to enable access to the slot for listed users.<br /><br />To add a credential set:<br /><br />1.  Click the **add** button.<br />    <br />    The *ADD PUBLISH CREDENTIALS* dialog is displayed.<br />    <br />2.  Enter a user name and a password, then confirm the password by entering it in the **Repeat Password** field.<br />    <br />3.  Click the **Add** button.<br />    <br />    The credentials are added beneath the **add** and **clear all** buttons.<br />    <br /><br />To clear a single credential set, hover the mouse pointer over the row and click **remove**.<br /><br />To clear all credential sets, click the **clear all** button. | The listed users will have access to the slot. |
+| Publish Credentials | A list of the credentials to publish to enable access to the slot for listed users.<br /><br />To add a credential set:<br /><br />1.  Click the **add** button.<br />    <br />    The *ADD PUBLISH CREDENTIALS* dialog is displayed.<br />    <br />2.  Enter a user name and a password, then confirm the password by entering it in the **Repeat Password** field.<br />    <br />3.  Click the **Add** button.<br />    <br />    The credentials are added beneath the **add** and **clear all** buttons.<br /><br />To clear a single credential set, hover the mouse pointer over the row and click **remove**.<br /><br />To clear all credential sets, click the **clear all** button. | The listed users will have access to the slot. |
 
 ### Encoding Details   {/*encoding-details*/}
 

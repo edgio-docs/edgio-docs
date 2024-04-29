@@ -1,20 +1,35 @@
 {
   "root": true,
-  "extends": "next",
+  "extends": ["next/core-web-vitals"],
   "env": {
     "node": true,
     "commonjs": true,
     "browser": true,
     "es6": true
   },
-  "plugins": ["sort-exports"],
+  "plugins": ["import", "sort-exports"],
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
     "import/order": [
       "error",
       {
         "newlines-between": "always",
-        "pathGroupsExcludedImportTypes": ["react"],
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin"],
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true

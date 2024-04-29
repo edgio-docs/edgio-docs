@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import {IconType} from 'react-icons';
 import styled from 'styled-components';
 
@@ -40,8 +39,6 @@ const StyledSectionheader = styled.header`
       width: var(--size);
       height: var(--size);
       position: relative;
-      color: #606060;
-      background-color: var(--colors-gray1);
       display: flex;
       justify-content: center;
       align-items: center;

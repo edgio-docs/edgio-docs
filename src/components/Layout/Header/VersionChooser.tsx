@@ -4,10 +4,10 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Link from 'next/link';
 
-import {useIsMobile} from '../useMediaQuery';
-
 import {getVersionedConfigs} from 'utils/config';
 import useConditioning from 'utils/hooks/useConditioning';
+
+import {useIsMobile} from '../useMediaQuery';
 
 const linkStyles = {
   color: 'var(--text-primary)',

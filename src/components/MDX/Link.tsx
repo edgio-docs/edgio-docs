@@ -1,6 +1,7 @@
+import * as React from 'react';
+
 import cn from 'classnames';
 import NextLink from 'next/link';
-import * as React from 'react';
 
 import {ExternalLink} from 'components/ExternalLink';
 import useConditioning from 'utils/hooks/useConditioning';
@@ -9,6 +10,7 @@ type AProps = JSX.IntrinsicElements['a'];
 
 interface LinkProps extends AProps {
   versioned?: boolean;
+  useNextLink?: boolean;
 }
 
 function Link({
@@ -16,6 +18,7 @@ function Link({
   className,
   children,
   versioned = true,
+  useNextLink = true,
   ...props
 }: LinkProps) {
   const {version} = useConditioning();
@@ -66,21 +69,26 @@ function Link({
         </ExternalLink>
       );
     case 'anchor':
-      // eslint-disable-next-line jsx-a11y/anchor-has-content
       return (
-        <a className={cn(classes, className)} href={href} {...props}>
-          {modifiedChildren}
-        </a>
+        <NextLink href={href}>
+          <a className={cn(classes, className)} {...props}>
+            {modifiedChildren}
+          </a>
+        </NextLink>
       );
   }
 
-  return (
+  return useNextLink ? (
     <NextLink href={href}>
       {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
       <a className={cn(classes, className)} {...props}>
         {modifiedChildren}
       </a>
     </NextLink>
+  ) : (
+    <a href={href} className={cn(classes, className)} {...props}>
+      {modifiedChildren}
+    </a>
   );
 }
 

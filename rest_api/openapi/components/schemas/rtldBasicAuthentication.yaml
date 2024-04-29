@@ -1,0 +1,30 @@
+title: BasicAuthentication Object
+description: Basic Authentication for the HTTP `POST` log delivery method.
+allOf:
+  - $ref: ./rtldAuthentication.yaml
+  - type: object
+    required:
+      - password
+      - username
+    properties:
+      password:
+        type: string
+        writeOnly: true
+        format: password
+        minLength: 1
+        maxLength: 1024
+        description: >
+          Defines the password through which requests to your web server will be
+          authenticated. 
+
+
+          Base-64 encoding will applied to the specified credentials. After
+          which, the encoded value will be passed through the `Authorization`
+          header.
+      username:
+        type: string
+        minLength: 1
+        maxLength: 1024
+        description: >-
+          Determines the user name through which requests to your web server
+          will be authenticated.

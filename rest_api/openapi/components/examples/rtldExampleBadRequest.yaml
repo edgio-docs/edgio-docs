@@ -1,0 +1,12 @@
+value:
+  '@type': Error
+  code: invalid_input
+  status_code: 400
+  title: One or more properties were empty or invalid.
+  description: >-
+    One or more required fields were missing, blank, or did not meet validation
+    requirements.
+  details:
+    - '@type': ErrorDetail
+      source: /name
+      description: Must not be greater than 100 characters

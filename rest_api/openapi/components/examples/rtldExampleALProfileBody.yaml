@@ -1,0 +1,31 @@
+value:
+  environment_id: c9980249-2fb6-4699-a68e-271383815700
+  fields:
+    - user_agent
+    - rewritten_path
+    - path
+    - timestamp
+    - client_ip
+    - client_ip_version
+    - status_code
+    - status
+    - cache_status
+    - bytes_out
+    - write_time
+    - file_size
+    - server_ip
+    - server_port
+    - method
+    - host
+    - query
+    - auth_user
+    - read_time
+  delivery_method:
+    type: http_post
+    authentication:
+      type: http_basic
+      username: myuser
+      password: mypassword
+    destination_endpoint: https://logs.example.com/cdn/
+    log_format: json
+  profile_name: myprofile

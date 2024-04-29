@@ -1,17 +1,22 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import {CONFIG_FILE, PRODUCT} from '../../../constants';
-import {IconStacks} from '../Icon/IconStacks';
+import {useAppContext} from 'contexts/AppContext';
+import {useTheme} from 'contexts/ThemeContext';
+import useConditioning from 'utils/hooks/useConditioning';
+import itemsByColumn from 'utils/itemsByColumn';
+import {StringMap} from 'utils/Types';
+
+import {
+  IconAppsReference,
+  IconAppsReferenceDark,
+} from '../Icon/IconAppsReference';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
 
-import useConditioning from 'utils/hooks/useConditioning';
-import itemsByColumn from 'utils/itemsByColumn';
-
 const StyledComp = styled(StyledFeatureSection)``;
-const items = {
+const items = (config: StringMap) => ({
   '4': [
     {
       title: 'Limits & Caveats',
@@ -22,7 +27,7 @@ const items = {
       path: '/guides/layer0_migration',
     },
     {
-      title: CONFIG_FILE,
+      title: config.CONFIG_FILE,
       path: '/guides/layer0_config',
     },
   ],
@@ -40,7 +45,7 @@ const items = {
       path: '/guides/upgrading/layer0_migration',
     },
     {
-      title: CONFIG_FILE,
+      title: config.CONFIG_FILE,
       path: '/guides/basics/edgio_config',
     },
   ],
@@ -50,22 +55,24 @@ const items = {
       path: '/guides/reference',
     },
   ],
-};
+});
 
 export default function Reference() {
   const {
     version,
     version: {toVersionedPath},
   } = useConditioning();
+  const {config} = useAppContext();
+  const {themedValue} = useTheme();
 
-  const routesByColumns = itemsByColumn(items, version, 'title', 6);
+  const routesByColumns = itemsByColumn(items(config), version, 'title', 6);
 
   return (
     <StyledComp>
       <SectionHeader
-        Icon={IconStacks}
+        Icon={themedValue(IconAppsReference, IconAppsReferenceDark)}
         title="Reference"
-        subtitle={`Additional helpful information in regards to getting the most out of ${PRODUCT}.`}
+        subtitle={`Additional helpful information in regards to getting the most out of ${config.PRODUCT}.`}
       />
 
       <div className="route-items">

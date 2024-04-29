@@ -1,23 +1,7 @@
-const {join} = require('path');
-const {sync: globby} = require('globby');
+const path = require('path');
 const {withEdgio} = require('@edgio/next/config');
 
-function getLatestVersion() {
-  const files = globby('v*.config.js', {
-    cwd: join(process.cwd(), 'src', 'config'),
-  });
-
-  const versions = files.map((file) => {
-    const match = file.match(/v(\d+)\.config\.js/);
-    return match ? parseInt(match[1]) : 0;
-  });
-
-  return Math.max(...versions).toString();
-}
-
 module.exports = (phase, config) => {
-  process.env.NEXT_PUBLIC_LATEST_VERSION = getLatestVersion();
-
   return withEdgio({
     experimental: {
       scrollRestoration: true,
@@ -41,6 +25,13 @@ module.exports = (phase, config) => {
           })
         );
       }
+
+      config.module.rules.push({
+        test: /\.md$/,
+        use: 'raw-loader',
+        include: [path.resolve(__dirname, 'src/templates/announcements')],
+      });
+
       return config;
     },
   });

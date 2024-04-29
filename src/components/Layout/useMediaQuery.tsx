@@ -2,12 +2,12 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import {useState, useCallback, useEffect} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
 const useMediaQuery = (width: number) => {
   const [targetReached, setTargetReached] = useState(false);
 
-  const updateTarget = useCallback((e) => {
+  const updateTarget = useCallback((e: MediaQueryListEvent) => {
     if (e.matches) {
       setTargetReached(true);
     } else {
@@ -30,7 +30,7 @@ const useMediaQuery = (width: number) => {
   return targetReached;
 };
 
-const useIsMobile = (width: number) => {
+const useIsMobile = (width: number = 850) => {
   return useMediaQuery(width);
 };
 

@@ -23,9 +23,7 @@ Definitions for key concepts are provided below.
 
 ## How Does It Work? {/*how-does-it-work-*/}
 
-Attack Surface Management identifies your assets, exposures, protections, and technologies by scanning your network. The network segment that will be scannned and the what will be identified varies according to the seeds defined within the collection being scanned. View the workflow for network scanning below.
-
-![ASM Scan Workflow](/images/v7/security/asm-scan-workflow.png)
+Attack Surface Management identifies your assets, exposures, protections, and technologies by scanning your network. The network segment that will be scannned and what will be identified varies according to the seeds defined within the collection being scanned. 
 
 Once your network has been scanned, you should review and mitigate your exposures. 
 

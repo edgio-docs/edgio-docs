@@ -86,7 +86,7 @@ Make a selection.
 | --- | --- | --- |
 | Not Selected | All data for the selected metric. | Single entry: *All Data*. |
 | Account | Data for the selected account and metric. | A label for each account chosen. |
-| Stream Name,<br><br>Status Code | Data for the filtered Stream Name and Status Code. | A label for each Stream Name and Status Code you filtered. |
+| Stream Name,<br /><br />Status Code | Data for the filtered Stream Name and Status Code. | A label for each Stream Name and Status Code you filtered. |
 
 The chart reflects your selection.
 

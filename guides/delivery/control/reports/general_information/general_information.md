@@ -171,9 +171,8 @@ Select one or at most two entries in the *Filter by* dropdown menu. Each selecti
 | Selection | Additional Control / Instructions |
 | --- | --- |
 | Status codes | A field with default status codes.<br /><br />-   Delete an existing entry by clicking the entry's **x** control.<br />    <br />-  Add a single status code by typing it and pressing Enter on your keyboard.<br />    <br />-   Add a range by typing this pattern: <start code>-<end code> and pressing Enter on your keyboard. For example to configure the range from 200 to 203, enter: **200-203**. |
-| Services | Dropdowns with services, cache codes, or request/response types.<br /><br />Make a selection, then click outside the . |
-| Cache codes |
-| Request/Response types |
+| Services <br /> Cache codes <br />Request/Response types | Dropdowns with services, cache codes, or request/response types.<br /><br />Make a selection, then click outside the dropdown. |
+
 
 #### Grouping - Traffic Report {/*grouping-traffic-report*/}
 By default, the chart's data grouping is by Protocol, but you can override the default by making a selection in the *Group by* drop-down menu.

@@ -57,8 +57,7 @@ If you don't select a child company, data for the parent company is displayed.
 
 The is available only if the account has child companies.
 
-<Callout type="info">The drop-down menu is available only if the account has child companies.
-</Callout>
+<Callout type="info">The drop-down menu is available only if the account has child companies.</Callout>
 
 ### Interactions Between Grouping Controls and Report {/*interactions*/}
 

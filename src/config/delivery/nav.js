@@ -154,7 +154,7 @@ const nav = {
               path: 'control/reports/traffic/traffic',
             },
             {
-              title: 'transit',
+              title: 'Transit',
               path: 'control/reports/traffic/transit',
             },
             {

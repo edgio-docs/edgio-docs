@@ -19,7 +19,7 @@ Data is displayed in an interactive chart.
 | Dimensions | Circuit |
 | Metrics | -   Throughput in, throughput out, and throughput total (in + out).<br />-   Data transfer in, data transfer out, and data transfer total (in + out).<br /><br />See [How Metrics Are Calculated](#how-metrics-are-calculated) for details. |
 | Delivery Mechanism | Realtime Reporting API |
-| Associated API Endpoint | http://{host}/realtime-reporting-api/transit<br /><br />Returns transit data for the requested time period. |
+| Associated API Endpoint | `http://{host}/realtime-reporting-api/transit`<br /><br />Returns transit data for the requested time period. |
 
 ## Choosing Date Range and Time Zone  {/*choosing-date-range*/}
 

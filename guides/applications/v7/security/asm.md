@@ -10,7 +10,7 @@ This BETA feature requires activation. {{ ACCOUNT_UPGRADE }}
 
 {{ PRODUCT }} Attack Surface Management (ASM) allows you to monitor and secure your organization's attack surface. It provides a comprehensive inventory of your organization's internet-facing assets, technologies, and vulnerabilities. 
 
-## Core Concepts
+## Core Concepts {/*core-concepts*/}
 
 Definitions for key concepts are provided below.
 
@@ -21,7 +21,7 @@ Definitions for key concepts are provided below.
 -   **Technologies:** {{ PRODUCT }} identifies the software and services used by the assets associated with the scanned network segment.
 -   **Rules:** Determines how vulnerabilities and exposures are detected and handled. 
 
-## How Does It Work?
+## How Does It Work? {/*how-does-it-work-*/}
 
 Attack Surface Management identifies your assets, exposures, protections, and technologies by scanning your network. The network segment that will be scannned and the what will be identified varies according to the seeds defined within the collection being scanned. View the workflow for network scanning below.
 
@@ -29,17 +29,17 @@ Attack Surface Management identifies your assets, exposures, protections, and te
 
 Once your network has been scanned, you should review and mitigate your exposures. 
 
-## Getting Started
+## Getting Started {/*getting-started*/}
 
 1.  Create a collection (**Attack Surfaces** | **Collections** | **+ Create Collection**) and then add one or more seed(s) to your collection. 
 2.  Scan your network.
 3.  Review and mitigate exposures.
 
-## Collections
+## Collections {/*collections*/}
 
 A collection represents the segment of your network that will be scanned for vulnerabilities. Define this distinct network segment through seeds. A seed defines a distinct network segment through a domain, an IP address, an IP address range, or a GitHub repository. 
 
-### Managing Collections
+### Managing Collections {/*managing-collections*/}
 
 You may create, modify, and delete collections. Finally, you can reset a collection to delete all exposures, assets, and technologies associated with it.
 
@@ -59,6 +59,8 @@ You may create, modify, and delete collections. Finally, you can reset a collect
     -   **Scan Start:** Require {{ PRODUCT }} to notify you when it starts scanning your network by marking the **Send email on scan start** option. Disable this notification by clearing this option.
     -   **Scan Start:** Require {{ PRODUCT }} to notify you when it completes a network scan by marking the **Send email when a scan completes** option. Disable this notification by clearing this option.
     -   **Scan Start:** Require {{ PRODUCT }} to notify you when it detects new exposures or if existing exposures have been resolved by marking the **Only send when new exposures are found or existing exposures are resolved** option. Disable this notification by clearing this option.
+
+    If you have enabled at least one notification, then you should define the set of users that will be notified. From the **Recipients** section, click within the option and then select the desired user. Repeat as needed.
 9.  Click **Create Collection**.
 
     Once you have created a collection, you should add seeds that define the segment of your network that will be scanned.
@@ -130,7 +132,7 @@ Resetting a collection permanently deletes all exposures, assets, and technologi
 2.  Click on the desired collection.
 3.  From the **Reset Collection** section, click **Reset Collection**.
 
-## Scanning Your Network
+## Scanning Your Network {/*scanning-your-network*/}
 
 Once you have created a collection and [added at least one seed](#add-seed) to it, start scanning your network by clicking **Scan Now**. {{ PRODUCT }} will discover and scan all of the assets associated with the seeds in the collection. Monitor the progress of the scan from the **Scans** section.
 
@@ -142,7 +144,7 @@ Once you have created a collection and [added at least one seed](#add-seed) to i
 2.  Click on the desired collection.
 3.  Click **Scan Now**.
 
-## Rules
+## Rules {/*rules*/}
 
 As {{ PRODUCT }} scans your organization's entities, it will discover findings. Rules determine the types of exposures that {{ PRODUCT }} will create based on these findings. {{ PRODUCT }} provides a default ruleset that you can use as a starting point. 
 
@@ -156,7 +158,7 @@ Rules allow you to:
 
 View and edit rules by navigating to the **Rules** page under the **Attack Surfaces" section. 
 
-## Exposures
+## Exposures {/*exposures*/}
 
 Exposures represent the vulnerabilities and misconfigurations that {{ PRODUCT }} has discovered in your organization's attack surface. Exposures are automatically created and updated as {{ PRODUCT }} scans your organization's entities. 
 
@@ -186,19 +188,31 @@ An exposure's **Activity** section allows you to:
 
 View and manage exposures by navigating to the **Exposures** page under the **Attack Surfaces** section.
 
-## Assets
+## Assets {/*assets*/}
 
 {{ PRODUCT }} Attack Surface Management detects the internet-facing assets that make up your organization's attack surface. 
 
 View and manage assets by navigating to the **Assets** page under the **Attack Surfaces** section.
 
-## Technologies
+## Protections {/*protections*/}
+
+{{ PRODUCT }} identifies the security solutions that are protecting the assets associated with the scanned network segment. As part of this identification process, {{ PRODUCT }} will simulate the following attacks to determine if a security solution blocks them:
+
+-   SQL Injection
+-   Cross Site Scripting (XSS)
+-   Command Injection
+-   Local File Inclusion (LFI)
+-   XML External Entity Injection (XXE)
+
+These attacks are considered benign and will not harm your organization's entities. 
+
+## Technologies {/*technologies*/}
 
 {{ PRODUCT }} Attack Surface Management will discover and track the technologies that are associated with your organization's entities. Technologies are automatically created and updated as {{ PRODUCT }} scans your organization's entities.
 
 View the technologies used by your network by navigating to the **Technologies** page under the **Attack Surfaces** section.
 
-## Limits
+## Limits {/*limits*/}
 
 {{ PRODUCT }} limits the number of collections that can be created and the total number of assets that are eligible for scanning. Both of these limits are enforced on a per organization basis and vary according to your plan.
 

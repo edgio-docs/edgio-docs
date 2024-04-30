@@ -44,7 +44,7 @@ A collection represents the segment of your network that will be scanned for vul
 You may create, modify, and delete collections. Finally, you can reset a collection to delete all exposures, assets, and technologies associated with it.
 
 <Info>
-{{ PRODUCT }} limits the number of collections that can be created. This limit is enforced on a per organization basis. <!-- and varies according to your plan.-->
+{{ PRODUCT }} limits the number of collections that can be created. This limit is enforced on a per organization basis. 
 </Info>
 
 **To create a collection**
@@ -203,7 +203,7 @@ View and manage exposures by navigating to the **Exposures** page under the **At
 {{ PRODUCT }} Attack Surface Management detects the internet-facing assets that make up your organization's attack surface. Place an asset under management to allow {{ PRODUCT }} to scan it for exposures.
 
 <Info>
-{{ PRODUCT }} limits the total number of assets that are eligible for scanning. This limit is enforced on a per organization basis<!-- and varies according to your plan>.
+{{ PRODUCT }} limits the total number of assets that are eligible for scanning. This limit is enforced on a per organization basis.
 </Info>
 
 **To toggle an asset's management status**

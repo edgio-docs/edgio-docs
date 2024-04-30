@@ -51,7 +51,7 @@ Edgio's SAML configurations are accessed over SSL to implement a secure connecti
 | Fingerprint algorithm | Hashing algorithm that generated the fingerprint. |
 | Idp Entity id | Globally unique name for the SAML entity, either an Identity Provider (IdP) or a Service Provider (SP). |
 | Idp SSO url | Web address of the SAML IdP that handles sign-in requests. |
-| User identifier attribute name | Defines the attribute to be sent by your SSO system to Control and used by Control to log in.<br />Attributes vary depending on the SSO system, so this field allows you to define your own specific attribute name.<br />As an example, assume the user identifier attribute name is 'EmailAddress'. On login, the SSO system sends an assertion request to Control with 'EmailAddress' = 'user@mail.com'. Control will look for the 'EmailAddress' attribute in the assertion and try to authenticate the user with user@mail.com, which is the same as logging in to Control with login = user@mail.com on Control's login screen.<br />Defaults to 'UserID'. |
+| User identifier attribute name | Defines the attribute to be sent by your SSO system to Control and used by Control to log in.<br />Attributes vary depending on the SSO system, so this field allows you to define your own specific attribute name.<br /><br />As an example, assume the user identifier attribute name is 'EmailAddress'. On login, the SSO system sends an assertion request to Control with 'EmailAddress' = 'user@mail.com'. Control will look for the 'EmailAddress' attribute in the assertion and try to authenticate the user with user@mail.com, which is the same as logging in to Control with login = user@mail.com on Control's login screen.<br />Defaults to 'UserID'. |
 | Private key | The unique string specific to you that you created when you requested the certificate with a Certificate Signing Request (CSR). |
 | SSO URL (Assertion URL) | Required by some SSO Identity Providers when a configuration is being created, before the LDP SSO url has been issued. Users can copy and paste as needed into other fields such as *ldp SSO Id*. |
 | SP Entity ID | Required by some SSO Identity Providers when a configuration is being created, but before the SP Entity ID has been issued. Users can copy and paste as needed into other fields such as *ldp Entity Id*. |
@@ -93,7 +93,7 @@ Edgio's SAML configurations are accessed over SSL to implement a secure connecti
 |SAML|Results open in a new browser tab.|
 |LDAP|Results are displayed as a JSON object at the bottom of the dialog. |
 
-**Sample success LDAP Response:**
+**Sample success LDAP Response**
 ```json
 {
   "telnetSuccessful": true,

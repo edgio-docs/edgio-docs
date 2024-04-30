@@ -1,73 +1,32 @@
 ---
 title: Reports
 ---
+Reports are generated using data from EdgeQuery, Edgio’s powerful data collection engine powered by an edge-based computing platform. EdgeQuery provides near-real-time aggregated data for many of the reports in Control, and is also accessible to customers via REST API.
+
+## General Information   {/*general-information*/}
 
 | Content | Description|
 |---|---|
+|[ EdgeQuery](/delivery/control/reports/general_information/edgequery_data) | Edgio’s powerful data collection engine powered by an edge-based computing platform. EdgeQuery provides near-real-time aggregated data for many of the reports in Control, and is also accessible to customers via REST API.|
+|[Report data](/delivery/control/reports/general_information/general_information)| Learn about data consistency, collection intervals, and displayed data. |
+|[Report emails](/delivery/control/reports/general_information/general_information/#working-with-recurring-report-emails) | |
 
-reports overview page
 
-add reporting - overview
-add reporting - faqs
+## Reports
 
-Reports
-General Information
+### Traffic
+- [Billing](/delivery/control/reports/traffic/billing)
+- [CMCD](/delivery/control/reports/traffic/cmcd)
+- [DNS Overview](/delivery/control/reports/traffic/dns_overview)
+- [Live Stats](/delivery/control/reports/traffic/live_stats)
+- [LivePush Streaming Report](/delivery/control/reports/traffic/live_push)
+- [Live Stats](/delivery/control/reports/traffic/live_stats)
+- [Traffic](/delivery/control/reports/traffic/traffic)
+- [Transit](/delivery/control/reports/traffic/transit)
+- [Unified Traffic](/delivery/control/reports/traffic/unified_traffic)
 
-## Sources of Inconsistency Between Control Reports  {/**/}
-
-### Request Proration  {/*request-proration*/}
-### Filtering of Late-Arriving Data  {/**/}
-### Report Data Collection Intervals  {/**/}
-## Real-Time Delivery Reports  {/**/}
-### Other Delivery Reports  {/**/}
-### Network Transit Report  {/**/}
-## Controlling Displayed Data  {/**/}
-### electing Date Ranges and Time Zones  {/**/}
-## Viewing Data for Specific Points in a Chart  {/**/}
-## Working with Recurring Report Emails  {/**/}
-### Email Content  {/**/}
-### Creating Recurring Report Emails  {/**/}
-### Editing and Deleting Recurring Report Emails  {/**/}
-### Fields in the 'RECURRING EMAIL' Dialog  {/**/}
-### RECURRING EMAIL Dialog - Filtering and Grouping  {/**/}
-## Working with Email Alerts  {/**/}
-### Email Content  {/**/}
-### Alert Icon  {/**/}
-### Reports General Inform  {/**/}
-
-Traffic
-Introduction
-
-Billing
-
-CMCD
-
-DNS Overview
-
-LDS Overview
-
-Live Push
-
-Live Stats
-
-EdgeFunctions Live Stats
-
-EdgeFunctions Status Codes
-
-EdgeFunctions Traffic
-
-Service Provider Traffic
-
-Traffic
-
-Transit
-
-Unified Traffic
-
-Content
-Origin Storage
-
-Realtime Live Event Overview
-Status Codes
-
-URL Prefixes
+### Content
+- [Origin Storage](/delivery/control/reports/traffic/origin_storage)
+- [Realtime Live Event Overview](/delivery/control/reports/content/realtime_event_overview)
+- [Status Codes](/delivery/control/reports/content/status_codes)
+- [URL Prefixes](/delivery/control/reports/content/url_prefixes)

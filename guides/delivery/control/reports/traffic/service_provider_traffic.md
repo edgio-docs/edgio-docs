@@ -1,5 +1,5 @@
 ---
-title: Service Provider Traffic
+title: Service Provider Traffic Report
 ---
 ## Report Specifications
 

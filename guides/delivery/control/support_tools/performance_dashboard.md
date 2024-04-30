@@ -45,8 +45,6 @@ For additional information on selecting date ranges, see Selecting a Date Range.
 
 ## Key Performance Metrics Tabs {/*key-performance-metrics-tabs*/}
 
-### Overview {/*overview*/}
-
 The following table describes each tab.
 
 | Tab | Description | Additional Information |
@@ -84,14 +82,14 @@ Each Leading Metric card displays the entities with the highest metric for the m
 
 | Card | Card Content | Additional Information |
 | --- | --- | --- |
-| Top locations | Geographical locations from which requests for content originated | [Traffic Report](/delivery/control/reports/traffic/traffic/#geography-tab): Geography Tab |
+| Top locations | Geographical locations from which requests for content originated | [Traffic Report Geography Tab](/delivery/control/reports/traffic/traffic/#geography-tab)  |
 | Top URLS* | URLS (non-referrer and non-published) that received requests | [Traffic Report: Hosts & URLS tab](/delivery/control/reports/traffic/traffic/#hosts-and-urls-tab).|
 | Top URLS w/errors* | URLS (non-referrer and non published) that received requests and responded with HTTP error codes | [Status Codes Report](/delivery/control/reports/content/status_codes): Overview Tab, URLs Tab |
 | Top file types* | Sort of file (for example 'text/html', 'text/plan') requested | [Traffic Report: Hosts & URLS tab](/delivery/control/reports/traffic/traffic/#hosts-and-urls-tab) |
 | Top referred URLs* | Referrer URLs that received requests | [Traffic Report: Hosts & URLS tab](/delivery/control/reports/traffic/traffic/#hosts-and-urls-tab) |
 | Top published hosts URLs* | Published hostnames that received requests | [Traffic Report: Hosts & URLS tab](/delivery/control/reports/traffic/traffic/#hosts-and-urls-tab)|
 
-*Because this report uses data with daily granularity, date range selections of "Today" and "Last 24 hours" are not available (see [Request Proration](/delivery/control/reports)). Also, only the top 50 URLs per day data is shown. Data for those metrics is only in GMT-7.
+*Because this report uses data with daily granularity, date range selections of "Today" and "Last 24 hours" are not available (see [Request Proration](/delivery/control/reports/general_information/general_information#request-proration)). Also, only the top 50 URLs per day data is shown. Data for those metrics is only in GMT-7.
 
 ### Working with Cards {/*working-with-cards*/}
 

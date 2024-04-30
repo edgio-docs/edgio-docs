@@ -122,7 +122,7 @@ const nav = {
           routes: [
             {
               title: 'General Information',
-              path: 'control/reports/general_information',
+              path: 'control/reports/general_information/general_information',
             },
             separator,
             {

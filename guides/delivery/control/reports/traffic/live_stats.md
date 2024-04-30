@@ -1,5 +1,5 @@
 ---
-title: Live Stats
+title: Live Stats Report
 ---
 ## Report Specifications
 ## Choosing Accounts

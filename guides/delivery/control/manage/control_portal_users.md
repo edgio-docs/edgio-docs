@@ -3,7 +3,7 @@ title: Control Portal Users
 ---
 The *Users* page lets you add new users and manage existing users, providing extensive control over user permissions for portal features and report data.
 
-## Finding & Selecting Users  {/**/}
+## Finding & Selecting Users  {/*finding-and-selecting-users*/}
 
 You can find specific users in three ways:
 
@@ -15,7 +15,7 @@ You can change the number of users shown in the list, click the corresponding nu
 
 To select a user, click the corresponding row in the user list.
 
-## Adding New Users  {/**/}
+## Adding New Users  {/*adding-new-users*/}
 
 To add a new user, click the **+ new** button. The *Create User* page appears.
 
@@ -146,7 +146,7 @@ The steps are:
 
 2. **Add Account**. In the authenticator app, follow the app-specific instructions to add the Control. For example, in the Google Authenticator App, the Scan a barcode option can be used to automatically add the portal by capturing the QR code in the 2FA *Get Started* screen or manually enter the Secret Key (under the QR code) using the *Enter provided key* option.
 
-<Callout type="info">When setting up 2FA, Edgio recommends users record the Secret Key displayed by the 2FA Get Started screen. The code allows the configuration of multiple devices and browser authenticator apps so that if a user's smartphone is unavailable, they can use another paired device or app. The *Secret Key* should be kept safe, just like any other password.</Callout>
+    <Callout type="info">When setting up 2FA, Edgio recommends users record the Secret Key displayed by the 2FA Get Started screen. The code allows the configuration of multiple devices and browser authenticator apps so that if a user's smartphone is unavailable, they can use another paired device or app. The *Secret Key* should be kept safe, just like any other password.</Callout>
 
 3. **Obtain Security Code**. In the authenticator app, follow the app-specific instructions to get a new 2FA security code for Control. Once set up, the authenticator application will display a six-digit security code, which changes every 30 seconds.
 
@@ -158,7 +158,7 @@ The steps are:
 
 After a reset, the Control user must repeat steps 2 and 3 above to create a new pairing. This feature may be useful when users need immediate access, but their paired mobile device is not available.
 
-<Callout type="info">This will reset the pairing for all currently paired devices for the user</Callout>.
+<Callout type="info">This will reset the pairing for all currently paired devices for the user</Callout>
 
 *Company Admin* users cannot use Control to reset device pairings for themselves or other *Company Admin* users. Resets for *Company Admin* users must be requested directly from Edgio Customer Service.
 

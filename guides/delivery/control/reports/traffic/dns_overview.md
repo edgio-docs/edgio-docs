@@ -1,5 +1,5 @@
 ---
-title: Basics
+title: DNS Overview Report
 ---
 
 ## Report Specifications

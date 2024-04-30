@@ -20,13 +20,13 @@ Edgio's SmartPurge executes purge operations more quickly and reliably than olde
 
 You can access SmartPurge through either the Control Portal or the [SmartPurge REST API](/delivery/delivery/smartpurge/smartpurge_rest_api).
 
-<Callout type="info">Access to SmartPurge is granted by default for Company Admins but must be explicitly granted for uses with other roles. <br /> SmartPurge also purges "negatively cached" content, such as HTTP error responses (404, etc.). This lets you remove negatively cached content when the content lifetime has been extended, such as when the origin includes a Cache-Control header that has a max-age value much greater than the default. <br />Purging MMD OD assets is supported only by public manifest on the [Enter URLs Tab](/#enter-urls-tab).</Callout>
+<Callout type="info">Access to SmartPurge is granted by default for Company Admins but must be explicitly granted for uses with other roles. <br /> <br />SmartPurge also purges "negatively cached" content, such as HTTP error responses (404, etc.). This lets you remove negatively cached content when the content lifetime has been extended, such as when the origin includes a Cache-Control header that has a max-age value much greater than the default. <br />Purging MMD OD assets is supported only by public manifest on the [Enter URLs Tab](#enter-urls-tab).</Callout>
 
 ## SmartPurge Page Overview  {/*smartpurge-page-overview*/}
 
 The SmartPurge page has two tabs: [Requests](#requests-tab) and [Templates](#templates-tab).
 
-Controls at the top of the page allow you to choose an account and [create a new purge request](#creating-a-new-purge-request), [create a new template](#Creating), or [create a new request from a template](#creating-a-new-request-from-a-template).
+Controls at the top of the page allow you to choose an account and [create a new purge request](#creating-a-new-purge-request), [create a new template](#creating-a-new-template), or [create a new request from a template](#creating-a-new-request-from-a-template).
 
 From the **Requests** tab only, you can filter the list of requests by date range and do a host/account lookup.
 
@@ -80,10 +80,10 @@ You can create a purge request from an existing template or from scratch using t
 ### Creating a Purge Request from Scratch  {/*creating-a-purge-request-from-scratch*/}
 
 SmartPurge provides four tabs for specifying objects to purge. You can use all or any of the tabs for one request. Change you make in one tab are reflected in the others. The tabs are:
--   [Build Patterns](#Build)
--   [Enter URLs](#Enter)
--   [Apply tags](#Apply)
--   [Upload file](#Upload)
+-   [Build Patterns](#build-patterns-tab)
+-   [Enter URLs](#enter-urls-tab)
+-   [Apply tags](#apply-tags-tab)
+-   [Upload file](#upload-file-tab)
 
 #### Build Patterns Tab {/*build-patterns-tab*/}
 
@@ -219,13 +219,11 @@ To create a new template, click the **+ new** button and select **Template** fro
 
 See [Creating New Purge Requests](#creating-a-new-purge-request) for instructions.
 
-
-
 ## Doing a Dry Run  {/*doing-a-dry-run*/}
 | Starting Tab or Page | Instructions |
 | --- | --- |
 | [Requests Tab](#requests-tab)<br /><br />[Templates Tab](#templates-tab) | 1.  Click the request's or template's **dry run** icon.<br />2.  In the subsequent dialog, confirm that you want to run the request or template.<br />    -   Request initiated from *Requests* tab: The request is added to the top of the list in the *Requests* tab. When the request is finished, you can click the new row to view the request's [Stats for request page](#stats-for-request-page).<br />    -   Request initiated from the Templates tab: when the request is finished, the [Stats for request page](#stats-for-request-page) displays. |
-| [New purge request from template for Page](#create_req_from_templ)<br /><br />[New purge request for Page](#id.1ovp2rsdlckm)<br /><br />[Stats for request Page](#stats-for-request-page) | 1.  Click the **Dry run** button or the **dry run** icon, depending on the tab or page.<br />2.  In the subsequent dialog, confirm that you want to run the request.<br />    <br />    The request is added to the *Requests* tab.<br />    <br />3.  Click the new row to view the request's [Stats for request page](#stats-for-request-page). |
+| [New purge request from template for Page](#create_req_from_templ)<br /><br />[New purge request for Page](#id.1ovp2rsdlckm)<br /><br />[Stats for request Page](#stats-for-request-page) | 1.  Click the **Dry run** button or the **dry run** icon, depending on the tab or page.<br />2.  In the subsequent dialog, confirm that you want to run the request.The request is added to the *Requests* tab.<br />3.  Click the new row to view the request's [Stats for request page](#stats-for-request-page). |
 | [Template Summary Page](#Template2) | 1.  Click the **dry run** icon.<br />2.  In the subsequent dialog, confirm that you want to run the request.<br />    <br />    The [Stats for request dry run page](#stats-for-dry-run-page) displays. |
 
 
@@ -242,11 +240,11 @@ See [Creating New Purge Requests](#creating-a-new-purge-request) for instruction
 2.  Click the request or click the request's view stats icon.
     The [Stats for request page](#stats-for-request-page) page displays.
 
-### Saving a Request as a Template  {/*saving-a-request-as-a-template*/}|
+### Saving a Request as a Template  {/*saving-a-request-as-a-template*/}
 
 | Starting Tab or Page | Instructions |
 | --- | --- |
-| [New purge request for Page](#creating-a-new-purge-request)<br />[Requests Tab](#requests-tab)<br />[Stats for request Page](#stats-for-request-page) | 1.  Initiate the save action.<br />    -From *New purge request for* page:<br />-- Click the **Save as template** button.<br />-- Enter a name in the *SAVE AS TEMPLATE* dialog.<br />    -   From the *Requests* tab or *Stats for request page*:<br />-- Click the request's **save as template** icon.<br />-- The *Create new template for page* displays.<br />- Enter a name in the Template name field; then make any other changes following instructions in [Creating a New Template](#creating-a-new-template).<br /><br />2.  Click the **Save** button.<br />- The template is added to the Templates tab. |
+| [New purge request for Page](#creating-a-new-purge-request)<br /><br />[Requests Tab](#requests-tab)<br /><br />[Stats for request Page](#stats-for-request-page) | 1.  Initiate the save action.<br />    -From *New purge request for* page:<br />-- Click the **Save as template** button.<br />-- Enter a name in the *SAVE AS TEMPLATE* dialog.<br />    -   From the *Requests* tab or *Stats for request page*:<br />-- Click the request's **save as template** icon.<br />-- The *Create new template for page* displays.<br />- Enter a name in the Template name field; then make any other changes following instructions in [Creating a New Template](#creating-a-new-template).<br /><br />2.  Click the **Save** button.<br />- The template is added to the Templates tab. |
 
 ## Other Template Tasks  {/*other-template-tasks*/}
 ### Viewing a Template Summary  {/*viewing-template-summary*/}
@@ -259,19 +257,19 @@ Starting Tab or Page | Instructions |
 
 | Starting Tab or Page | Instructions |
 | --- | --- |
-| [Templates Tab](#templates-tab)<br />[Template Summary Page](#template-summary-page) | 1.  Click the **edit** icon.<br />- The *Edit template page* displays. All details copied from the template.<br />2.  Make desired changes following instructions in [Creating a New Template](#create-a-new-template).<br />3.  Click the **Save** button. |
+| [Templates Tab](#templates-tab)<br /><br />[Template Summary Page](#template-summary-page) | 1.  Click the **edit** icon.<br />- The *Edit template page* displays. All details copied from the template.<br />2.  Make desired changes following instructions in [Creating a New Template](#create-a-new-template).<br />3.  Click the **Save** button. |
 
 ### Duplicating a Template  {/*duplicating-a-template*/}
 
 | Starting Tab or Page | Instructions |
 | --- | --- |
-| [Templates Tab](#templates-tab)<br />[Template Summary Page](#template-summary-page) | 1.  Click the **duplicate** icon.<br />- The *Clone template for page* displays with all details except the template name cloned from the template.<br />2.  Make desired changes following instructions in [Creating a New Template](#creating-a-new-template).<br />3.  Click the **Save** button. |
+| [Templates Tab](#templates-tab)<br /><br />[Template Summary Page](#template-summary-page) | 1.  Click the **duplicate** icon.<br />- The *Clone template for page* displays with all details except the template name cloned from the template.<br />2.  Make desired changes following instructions in [Creating a New Template](#creating-a-new-template).<br />3.  Click the **Save** button. |
 
 ### Deleting a Template  {/*deleting-a-template*/}
 
 | Starting Tab or Page | Instructions |
 | --- | --- |
-| [Templates Tab](#templates-tab)<br />[Template Summary Page](#template-summary-page)| 1.  Click the **delete** icon.<br />2.  Click **Continue** in the dialog that prompts you to delete the template.<br />    - The template is removed from the Templates tab. |
+| [Templates Tab](#templates-tab)<br /><br />[Template Summary Page](#template-summary-page)| 1.  Click the **delete** icon.<br />2.  Click **Continue** in the dialog that prompts you to delete the template.<br />    - The template is removed from the Templates tab. |
 
 ## Stats for Request Page  {/*stats-for-request-page*/}
 

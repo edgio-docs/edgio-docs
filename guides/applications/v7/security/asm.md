@@ -15,7 +15,7 @@ This BETA feature requires activation. {{ ACCOUNT_UPGRADE }}
 Definitions for key concepts are provided below.
 
 -   **Collection:** A collection represents the segment of your network that will be scanned for vulnerabilities. 
--   **Assets:** {{ PRODUCT }} identifies the IP addresses and TLS certificates associated with a scanned network segment. These entries are collectively known as assets.
+-   **Assets:** {{ PRODUCT }} identifies the hostnames, IP addresses, and TLS certificates associated with a scanned network segment. These entries are collectively known as assets.
 -   **Exposures:** {{ PRODUCT }} scans your network for Common Vulnerabilities and Exposures (CVE). A CVE represents a known security vulnerability or exposure for a software package. 
 -   **Protections:** {{ PRODUCT }} identifies the security solutions that are protecting the assets associated with the scanned network segment.
 -   **Technologies:** {{ PRODUCT }} identifies the software and services used by the assets associated with the scanned network segment.
@@ -42,6 +42,10 @@ A collection represents the segment of your network that will be scanned for vul
 ### Managing Collections {/*managing-collections*/}
 
 You may create, modify, and delete collections. Finally, you can reset a collection to delete all exposures, assets, and technologies associated with it.
+
+<Info>
+{{ PRODUCT }} limits the number of collections that can be created. This limit is enforced on a per organization basis. <!-- and varies according to your plan.-->
+</Info>
 
 **To create a collection**
 
@@ -136,6 +140,12 @@ Resetting a collection permanently deletes all exposures, assets, and technologi
 
 Once you have created a collection and [added at least one seed](#add-seed) to it, start scanning your network by clicking **Scan Now**. {{ PRODUCT }} will discover and scan all of the assets associated with the seeds in the collection. Monitor the progress of the scan from the **Scans** section.
 
+<Important>
+
+{{ PRODUCT }} only scans managed assets for exposures. [Learn how to place an asset under management.](#assets)
+
+</Important>
+
 **To scan your network**
 
 1.  Load the **Collections** page.
@@ -146,7 +156,7 @@ Once you have created a collection and [added at least one seed](#add-seed) to i
 
 ## Rules {/*rules*/}
 
-As {{ PRODUCT }} scans your organization's entities, it will discover findings. Rules determine the types of exposures that {{ PRODUCT }} will create based on these findings. {{ PRODUCT }} provides a default ruleset that you can use as a starting point. 
+As {{ PRODUCT }} scans your organization's managed assets, it will discover findings. Rules determine the types of exposures that {{ PRODUCT }} will create based on these findings. {{ PRODUCT }} provides a default ruleset that you can use as a starting point. 
 
 Rules allow you to:
 
@@ -160,7 +170,7 @@ View and edit rules by navigating to the **Rules** page under the **Attack Surfa
 
 ## Exposures {/*exposures*/}
 
-Exposures represent the vulnerabilities and misconfigurations that {{ PRODUCT }} has discovered in your organization's attack surface. Exposures are automatically created and updated as {{ PRODUCT }} scans your organization's entities. 
+Exposures represent the vulnerabilities and misconfigurations that {{ PRODUCT }} has discovered in your organization's attack surface. Exposures are automatically created and updated as {{ PRODUCT }} scans your organization's managed assets. 
 
 Each exposure has the following attributes:
 
@@ -190,13 +200,25 @@ View and manage exposures by navigating to the **Exposures** page under the **At
 
 ## Assets {/*assets*/}
 
-{{ PRODUCT }} Attack Surface Management detects the internet-facing assets that make up your organization's attack surface. 
+{{ PRODUCT }} Attack Surface Management detects the internet-facing assets that make up your organization's attack surface. Place an asset under management to allow {{ PRODUCT }} to scan it for exposures.
 
-View and manage assets by navigating to the **Assets** page under the **Attack Surfaces** section.
+<Info>
+{{ PRODUCT }} limits the total number of assets that are eligible for scanning. This limit is enforced on a per organization basis<!-- and varies according to your plan>.
+</Info>
+
+**To toggle an asset's management status**
+
+1.  Load the **Assets** page.
+    {{ SECURITY_NAV }} **Attack Surface**.
+    5.  From the left-hand pane, select **Assets**.
+2.  Find the desired asset.
+3.  From the **Under Management** column, determine whether {{ PRODUCT }} may scan it for exposures.
+    -   **Enable:** Click on the icon to toggle it on. It should now look like this: <Image inline src="/images/v7/icons/toggle-on-large.png" alt="Enabled" />
+    -   **Disable:** Click on the icon to toggle it off. It should now look like this: <Image inline src="/images/v7/icons/toggle-off-large.png" alt="Enabled" />
 
 ## Protections {/*protections*/}
 
-{{ PRODUCT }} identifies the security solutions that are protecting the assets associated with the scanned network segment. As part of this identification process, {{ PRODUCT }} will simulate the following attacks to determine if a security solution blocks them:
+{{ PRODUCT }} identifies the security solutions that are protecting the assets associated with the scanned network segment. As part of this identification process, {{ PRODUCT }} will simulate the following attacks on managed assets to determine if a security solution blocks them:
 
 -   SQL Injection
 -   Cross Site Scripting (XSS)
@@ -211,10 +233,3 @@ These attacks are considered benign and will not harm your organization's entiti
 {{ PRODUCT }} Attack Surface Management will discover and track the technologies that are associated with your organization's entities. Technologies are automatically created and updated as {{ PRODUCT }} scans your organization's entities.
 
 View the technologies used by your network by navigating to the **Technologies** page under the **Attack Surfaces** section.
-
-## Limits {/*limits*/}
-
-{{ PRODUCT }} limits the number of collections that can be created and the total number of assets that are eligible for scanning. Both of these limits are enforced on a per organization basis and vary according to your plan.
-
-
-

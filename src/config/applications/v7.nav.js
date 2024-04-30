@@ -338,6 +338,10 @@ const nav = {
           title: 'TLS Certificates',
           path: 'security/tls_certificates',
         },
+        {
+          title: 'Attack Surface Management',
+          path: 'security/asm',
+        },
         separator,
         {
           title: 'Web Application Firewall (WAF)',

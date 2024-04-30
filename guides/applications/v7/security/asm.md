@@ -167,8 +167,8 @@ Each exposure has the following attributes:
     -   **Acknowledged:** The exposure has been reviewed.
     -   **Resolved:** The exposure has been addressed.
     -   **Mitigated:** The exposure still exists, but the risk has been reduced.
-    -   **Muted: The exposure has been muted, optionally until a specific date.
-    -   **Ignored: The exposure has been ignored.
+    -   **Muted:** The exposure has been muted, optionally until a specific date.
+    -   **Ignored:** The exposure has been ignored.
 -   **Technology Version:** Optional. The specific version of the technology that is associated with the exposure.
 -   **CVE:** Optional. The CVE that is associated with the exposure.
 -   **Comments:** Optional. Users can add comments to exposures to provide additional context or information.

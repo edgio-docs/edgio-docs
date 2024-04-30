@@ -339,7 +339,7 @@ const nav = {
           path: 'security/tls_certificates',
         },
         {
-          title: 'Attack Surface Management',
+          title: 'Attack Surface Management - BETA',
           path: 'security/asm',
         },
         separator,

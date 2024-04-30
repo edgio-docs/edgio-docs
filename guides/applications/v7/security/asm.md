@@ -1,8 +1,14 @@
 ---
-title: Attack Surface Management
+title: Attack Surface Management - BETA
 ---
 
-{{ PRODUCT }} Attack Surface Management allows you to monitor and secure your organization's attack surface. It provides a comprehensive inventory of your organization's internet-facing assets, technologies, and vulnerabilities. 
+<Important>
+
+This BETA feature requires activation. {{ ACCOUNT_UPGRADE }}
+
+</Important>
+
+{{ PRODUCT }} Attack Surface Management (ASM) allows you to monitor and secure your organization's attack surface. It provides a comprehensive inventory of your organization's internet-facing assets, technologies, and vulnerabilities. 
 
 ## Core Concepts
 

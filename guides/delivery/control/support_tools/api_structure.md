@@ -165,11 +165,11 @@ The *Content-Type* `HTTP Header` can specify the format of the request body. Thi
 
 The HTTP `X-LLNW-Security-Token`, `X-LLNW-Security-Principal`, `X-LLNW-Security-Timestamp` headers form the authentication envelope.
 
-    X-LLNW-Security-Token=<mac>
+    `X-LLNW-Security-Token=<mac>`
 
-    X-LLNW-Security-Principal=<username>
+    `X-LLNW-Security-Principal=<username>`
 
-    X-LLNW-Security-Timestamp=<now in milliseconds>
+    `X-LLNW-Security-Timestamp=<now in milliseconds>`
 
 ### Representation of Resource in the Body or Document {/*representation*/}
 

@@ -89,6 +89,6 @@ Segment status:
 -   ACTIVE
 -   INACTIVE
 
-## Realtime / Non Realtime Segmentss  {/*Realtime*/}
+## Realtime / Non Realtime Segments  {/*realtime*/}
 
 A Boolean value indicating whether a Data Segment is realtime (true) or standard (false). For Standard Data Segments, only *daily* report granularity is supported within queries.

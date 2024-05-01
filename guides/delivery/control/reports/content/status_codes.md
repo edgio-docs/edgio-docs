@@ -23,7 +23,7 @@ The report has these tabs:
 |Metrics - Summary Area	|Content Served, Redirect, Error, Missing File|
 |Metrics - Elsewhere|Requests (In, Out), Bytes (In, Out)|
 |Delivery Mechanism	|EdgeQuery|
-| Associated API Endpoint(s) | -   `GET /realtime-reporting-api/traffic/statuscodes` returns status code report data according to the query parameters passed<br />    <br />-   `POST /realtime-reporting-api/traffic/statuscodes` returns status code report data according to the parameters passed in the request body<br />    <br />-   `GET /realtime-reporting-api/traffic/statuscodes/cachecodes`  returns a list of cache codes<br />    <br />-   `GET /realtime-reporting-api/traffic/statuscodes/requestresponsetype` returns a list of request response types<br />    <br />-   `GET /realtime-reporting-api/traffic/statuscodes/retentions` returns a list of retentions<br />    <br />-   `GET /realtime-reporting-api/traffic/statuscodes/services` returns a list of services |
+| Associated API Endpoint(s) | -   `GET /realtime-reporting-api/traffic/statuscodes` returns status code report data according to the query parameters passed<br />    <br />-   `POST /realtime-reporting-api/traffic/statuscodes` returns status code report data according to the parameters passed in the request body<br />    <br />-   `GET /realtime-reporting-api/traffic/statuscodes/cachecodes` returns a list of cache codes<br />    <br />-   `GET /realtime-reporting-api/traffic/statuscodes/requestresponsetype` returns a list of request response types<br />    <br />-   `GET /realtime-reporting-api/traffic/statuscodes/retentions` returns a list of retentions<br />    <br />-   `GET /realtime-reporting-api/traffic/statuscodes/services` returns a list of services |
 
 ## Selecting an Account {/*selecting-account*/}
 
@@ -171,7 +171,7 @@ Any 5xx response is considered an error and appears in the report.
 The tab shows data in a table with three columns. You can sort the data by any column.
 -   URLs: File URLs
 -   Requests: Number of requests for the file that resulted in an error
--   % of Total: Percent of requests for the file out of all requests for all files. Each row has a horizontal bar chart representing the percentage.
+-   \% of Total: Percent of requests for the file out of all requests for all files. Each row has a horizontal bar chart representing the percentage.
 
 Data is aggregated by service (HTTP, HTTPS) for the specified date range.
 

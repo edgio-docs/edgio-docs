@@ -29,7 +29,7 @@ The report has these tabs:
 
 Select one or more accounts in the Status Codes for at the top of the page.
 
-<Callout type="info">-   If you don't select an account, the accounts for the default company are automatically selected, and a warning is displayed.<br />-   If you modify the selections in the *STATUS CODES FOR* dropdown , the filter selections you made are reset to defaults and the chart updates automatically to match the defaults.</Callout>
+<Callout type="info">-   If you don't select an account, the accounts for the default company are automatically selected, and a warning is displayed.<br />-   If you modify the selections in the *STATUS CODES FOR* dropdown, the filter selections you made are reset to defaults and the chart updates automatically to match the defaults.</Callout>
 
 ## Selecting a Date Range and Time Zone {/*selecting-date-range-time-zones*/}
 
@@ -77,16 +77,16 @@ Make the desired selections, then click the **Apply** button to apply your filte
 
 To reset filters to the default, click the **Reset** button.
 
-<Callout type="info">- Filter controls default to All.<br />- If you modify the selected accounts in the Status Codes for drop-down menu (see Selecting an Account), the filter selections you made are reset to defaults, and the chart is automatically updated to match the defaults.<br />- When you change the status codes filter, navigate to the Overview Tab, then navigate back to the URLs Tab, the filter selections are preserved in the URLs Tab.</Callout>
+<Callout type="info">- Filter controls default to All.<br />- If you modify the selected accounts in the Status Codes for drop-down menu (see [Selecting an Account](#selecting-an-account)), the filter selections you made are reset to defaults, and the chart is automatically updated to match the defaults.<br />- When you change the status codes filter, navigate to the Overview Tab, then navigate back to the URLs Tab, the filter selections are preserved in the URLs Tab.</Callout>
 
 *Filter by* Selections
 
 | Selection | Additional Control | Instructions |
 | --- | --- | --- |
 | Status codes | A text field to configure desired status codes. | Do any of the following:<br /><br />-   Click in the field and select pre-configured status code ranges.<br />-   Enter your own status code ranges.<br />-   Enter a single status code.<br /><Callout type="info">Duplicates status codes and ranges are not allowed.</Callout> |
-| Services | A of services. | Select one or more values from the .<br /><Callout type="info">The selections available depend on the services for which your company has signed up. </Callout>|
-| By Cache codes | A of cache codes. | Select one or more values from the :<br /><br />-   Miss - cache miss; response is delivered from customer origin<br />-   Redirect - request redirected<br />-   Hit - cache hit; response is delivered from cache<br />-   Other - not one of the above |
-| By Request/Response type | A of request and response types. | Select one or more values from the :<br /><br />-   Standard - not any of the below<br />-   If modified since - client-issued 'If-Modified-Since' requests only<br />-   Negatively cached - caching of 4xx and 5xx responses<br />-   Refresh - CDN-issued refresh checks only |
+| Services | A dropdown of services. | Select one or more values from the dropdown.<br /><Callout type="info">The selections available depend on the services for which your company has signed up. </Callout>|
+| By Cache codes | A of cache codes. | Select one or more values from the dropdown:<br /><br />-   Miss - cache miss; response is delivered from customer origin<br />-   Redirect - request redirected<br />-   Hit - cache hit; response is delivered from cache<br />-   Other - not one of the above |
+| By Request/Response type | A of request and response types. | Select one or more values from the dropdown:<br /><br />-   Standard - not any of the below<br />-   If modified since - client-issued 'If-Modified-Since' requests only<br />-   Negatively cached - caching of 4xx and 5xx responses<br />-   Refresh - CDN-issued refresh checks only |
 
 #### Selecting Chart Granularity  {/*select-chart-granularity*/}
 
@@ -186,7 +186,7 @@ Select 'Missing Files' or 'File Errors' in the dropdown under the tab header on 
     The chart shows the number of requests per time unit in the selected date range. The time unit depends on the date range you selected.
 
 2.  Move your mouse over the chart to see details for any given time unit.
-3.  Click the **-** icon to hide the chart.
+3.  Click the **\-** icon to hide the chart.
 
 ### Filtering the URL List {/*filtering-the-urls-list*/}
 
@@ -210,7 +210,7 @@ You can configure email alerts on a URL basis, per your published host domain. S
 
 ### Exporting URLs Data
 
-To export data to a Comma-Separated Values (CSV) file, click the Export drop-down menu to the right above the chart; then select CSV.
+To export data to a Comma-Separated Values (CSV) file, click the *Export* drop-down menu to the right above the chart; then select CSV.
 
 After you select CSV, Control creates and downloads the report.
 

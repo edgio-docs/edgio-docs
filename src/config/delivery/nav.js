@@ -178,10 +178,6 @@ const nav = {
               title: 'Status Codes',
               path: 'control/reports/content/status_codes',
             },
-            {
-              title: 'URL Prefixes',
-              path: 'control/reports/content/url_prefixes',
-            },
           ],
         },
       ],

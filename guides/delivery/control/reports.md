@@ -27,6 +27,4 @@ Reports are generated using data from EdgeQuery, Edgio’s powerful data collect
 
 ### Content
 - [Origin Storage](/delivery/control/reports/traffic/origin_storage)
-- [Realtime Live Event Overview](/delivery/control/reports/content/realtime_event_overview)
 - [Status Codes](/delivery/control/reports/content/status_codes)
-- [URL Prefixes](/delivery/control/reports/content/url_prefixes)

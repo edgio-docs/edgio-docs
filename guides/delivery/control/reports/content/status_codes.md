@@ -236,4 +236,4 @@ The metric from the previous period is compared to the metric from the current p
 
 The 'Up' and 'Down' presentations include a percentage.
 
-Percentage = ((newValue - oldValue) / oldValue) * HUNDRED_PERCENT
+`Percentage = ((newValue - oldValue) / oldValue) * HUNDRED_PERCENT`

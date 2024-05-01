@@ -8,7 +8,7 @@ See [REST APIs Common Structure](/delivery/control/support_tools/api_structure).
 
 ## Segment  {/*segment*/}
 
-A  Segment is identified by it's ID (long value) and also has name and filter (filtering type and filtering value). Supported filtering types are:
+A  Segment is identified by its ID (long value) and also has name and filter (filtering type and filtering value). Supported filtering types are:
 -   Published url
 -   Source url
 -   Geo entity id

@@ -171,7 +171,7 @@ Any 5xx response is considered an error and appears in the report.
 The tab shows data in a table with three columns. You can sort the data by any column.
 -   URLs: File URLs
 -   Requests: Number of requests for the file that resulted in an error
--   \% of Total: Percent of requests for the file out of all requests for all files. Each row has a horizontal bar chart representing the percentage.
+-   `%` of Total: Percent of requests for the file out of all requests for all files. Each row has a horizontal bar chart representing the percentage.
 
 Data is aggregated by service (HTTP, HTTPS) for the specified date range.
 

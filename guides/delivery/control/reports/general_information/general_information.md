@@ -245,14 +245,15 @@ Required fields are marked with an asterisk in the 'REPORT ALERT' Dialog.
 | Subject | The field is automatically populated based on the account you selected in the Status Codes report. |
 | Message |  	Email body text. <br />Enter the text for the email body.   |
 | URL | The specific URL you chose to configure an alert.<br /><br />Read-only.<br /><br />This field is only available for alerts created from the URLs tab of the Status Codes Report. |
-| Send Status Code Report when,<br /><br />Send Traffic Report when | Conditions under which you want to email to be sent.<br /><br />See [Conditions for Sending an Email](#Conditio). |
+| Send Status Code Report when,<br /><br />Send Traffic Report when | Conditions under which you want to email to be sent.<br /><br />See [Conditions for Sending an Email](#conditions-for-sending-an-email). |
 
 ##### Conditions for Sending an Email {/*conditions-for-sending-an-email*/}
 
 Use the *Send Status Codes Report when* or *Send Traffic Report when* section to define the threshold for sending an email alert.
 
-Email fields are described in the following table.
+![Emails](/images/delivery/control/emails.png)
 
+Email fields are described in the following table.
 
 | Field | Description |
 | --- | --- |

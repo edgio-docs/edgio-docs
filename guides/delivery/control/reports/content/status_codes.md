@@ -171,7 +171,7 @@ Any 5xx response is considered an error and appears in the report.
 The tab shows data in a table with three columns. You can sort the data by any column.
 -   URLs: File URLs
 -   Requests: Number of requests for the file that resulted in an error
--   `%` of Total: Percent of requests for the file out of all requests for all files. Each row has a horizontal bar chart representing the percentage.
+-   \% of Total: Percent of requests for the file out of all requests for all files. Each row has a horizontal bar chart representing the percentage.
 
 Data is aggregated by service (HTTP, HTTPS) for the specified date range.
 
@@ -181,7 +181,7 @@ Select 'Missing Files' or 'File Errors' in the dropdown under the tab header on 
 
 ### Viewing Error Details {/*viewing-error-details*/}
 
-1.  Click the **+** icon on a row to expand the row and display a chart.
+1.  Click the **\+** icon on a row to expand the row and display a chart.
 
     The chart shows the number of requests per time unit in the selected date range. The time unit depends on the date range you selected.
 

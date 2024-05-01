@@ -57,8 +57,7 @@ Colors and arrows represent changes:
 - Percentage up or down is in bold text to the right of the arrow or empty circle.
 - Information in gray text beneath the percentage up or down indicates the total date range covered minus any time remaining in the current period. For example, if you select **Last 7 days** as the reporting period and the current date is part of the past seven days, the past 13 days' information is displayed.
 
-<Callout type="info">Information in the Summary Area depends on the selected accounts, time range, and time zone.
-</Callout>
+<Callout type="info">Information in the Summary Area depends on the selected accounts, time range, and time zone.</Callout>
 
 Statistics in the Summary Area are:
 

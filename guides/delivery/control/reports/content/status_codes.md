@@ -98,7 +98,7 @@ Each value has its own retention policy.
 
 |Granularity|Data Retention Policy|
 |---|---|
-||5 min	|One week|
+|5 min	|One week|
 |Hour	|Five weeks|
 |Day	|One year|
 
@@ -181,12 +181,12 @@ Select 'Missing Files' or 'File Errors' in the dropdown under the tab header on 
 
 ### Viewing Error Details {/*viewing-error-details*/}
 
-1.  Click the **\+** icon on a row to expand the row and display a chart.
+1.  Click the **+** icon on a row to expand the row and display a chart.
 
     The chart shows the number of requests per time unit in the selected date range. The time unit depends on the date range you selected.
 
 2.  Move your mouse over the chart to see details for any given time unit.
-3.  Click the **\-** icon to hide the chart.
+3.  Click the **-** icon to hide the chart.
 
 ### Filtering the URL List {/*filtering-the-urls-list*/}
 
@@ -236,6 +236,4 @@ The metric from the previous period is compared to the metric from the current p
 
 The 'Up' and 'Down' presentations include a percentage.
 
-```
-Percentage = ((newValue - oldValue) / oldValue) * HUNDRED_PERCENT
-```
+`Percentage = ((newValue - oldValue) / oldValue) * HUNDRED_PERCENT`

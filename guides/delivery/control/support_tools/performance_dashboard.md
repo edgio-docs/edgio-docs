@@ -54,12 +54,12 @@ The following table describes each tab.
 | Requests | Average number of requests | [Traffic Report: Overview Tab ](/delivery/control/reports/traffic/traffic/#overview-tab) |
 | Requests Efficiency | How the CDN performed in terms of serving end-user requests from the cache instead of from the origin.<br />Expressed as a percentage according to the formula:<br />(*Responses Served from the Cache/All Incoming Requests* + *All Outgoing Responses) * 100%* | [Traffic Report: CDN Efficiency Tab](/delivery/control/reports/traffic/traffic/#cdn-efficiency-tab).|
 | Data Transfer Efficiency | How the CDN performed in terms of serving data from the cache instead of from the origin.<br />Expressed as a percentage according to the formula:<br />*Responses Served from the Cache/All Incoming Requests* + *All Outgoing Responses * 100%* | [Traffic Report: CDN Efficiency Tab](/delivery/control/reports/traffic/traffic/#cdn-efficiency-tab) |
-| Errors | Summary of requests for content that resulted in the following non-200 status codes:<br />206<br />400<br />403<br />404<br />503<br />Only error codes returned for the selected account and date range are displayed. | [Status Codes Report](/delivery/control/reports/content/status_codes): Overview Tab, URLs Tab |
+| Errors | Summary of requests for content that resulted in the following non-200 status codes:<br />- 206<br />- 400<br />- 403<br />- 404<br />- 503<br /><br />Only error codes returned for the selected account and date range are displayed. | [Status Codes Report](/delivery/control/reports/content/status_codes): Overview Tab, URLs Tab |
 | Services | Data transfer rate in bits per second for each service (HTTP and HTTPS) enabled for the account. | [Traffic Report](/delivery/control/reports/traffic/traffic): Overview Tab, Details Tab, Geography Tab <br /> <Callout type="info">In the Traffic Report, services are referred to as "Protocols."</Callout> |
 
 <Callout type="info">If traffic has not been generated for an account, indicators are displayed in the tab headers: <br /> - The words "Not available" are displayed for the Errors and Services tabs. <br /> - The other tabs display a zero.</Callout>
 
-#### Working with Tabs {/*working-with-tabs*/}
+### Working with Tabs {/*working-with-tabs*/}
 
 Each tab displays data for the metric displayed in the tab name.
 

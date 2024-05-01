@@ -77,8 +77,8 @@ For example, if you choose Data Transfer and Total, the chart displays total (tr
 The chart X-axis displays date/time units, which are determined by the *Granularity Controls* and the *Date Range Control*.
 
 ### Granularity Controls {/*granularity-controls*/}
-*
-Granularity Controls* are located above the chart on the left. The selection you make determines the data available in the chart.
+
+*Granularity Controls* are located above the chart on the left. The selection you make determines the data available in the chart.
 
 *   *Hour* - Display hourly data.
 *   *Day* - Display only daily data.
@@ -124,13 +124,9 @@ After you choose an option, Control creates and downloads the report.
 
 | Metric | Calculation |
 | --- | --- |
-| Data transfer in | No calculation. Data provided by |
-| Data transfer out | No calculation. Data provided by |
+| Data transfer in | No calculation. Data provided by EdgeQuery|
+| Data transfer out | No calculation. Data provided by EdgeQuery|
 | Data transfer total | Data transfer in + Data transfer out |
-| Throughput in | "Data transfer in" divided by "duration," where duration depends on the chosen granularity.<br /><br />-   Day granularity: For each day, the system divides Data transfer in by the number of seconds in the day.<br />-   Hour granularity: For each hour, the system divides Data transfer in by the number of seconds in an hour.<br /><br />Hover the mouse pointer over a day or hour to display the results of the calculation. |
+| Throughput in | "Data transfer in" divided by "duration," where duration depends on the chosen granularity.<br />-   Day granularity: For each day, the system divides Data transfer in by the number of seconds in the day.<br />-   Hour granularity: For each hour, the system divides Data transfer in by the number of seconds in an hour.<br /><br />Hover the mouse pointer over a day or hour to display the results of the calculation. |
 | Throughput out | Calculation is identical to 'Throughput in', but applied to Data transfer out. |
 | Throughput total | Throughput in + Throughput out |
-| --- | --- |
-| In  | Ingested into the CDN from the origin. |
-| Out | Bytes from the published host to the end user. |
-| Total | Sum of 'In' and 'Out'. |

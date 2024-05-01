@@ -47,6 +47,14 @@ const nav = {
               path: 'https://support.limelight.com/public/explorer/llnw-api-explorer.html',
             },
             {
+              title: 'API Structure',
+              path: 'control/support_tools/api_structure',
+            },
+            {
+              title: 'API Terminology',
+              path: 'control/support_tools/api_terminology',
+            },
+            {
               title: 'Global Time',
               path: 'control/support_tools/global_time',
             },
@@ -165,10 +173,6 @@ const nav = {
             {
               title: 'Origin Storage',
               path: 'control/reports/content/origin_storage',
-            },
-            {
-              title: 'Realtime Live Event Overview',
-              path: 'control/reports/content/realtime_live_event_overview',
             },
             {
               title: 'Status Codes',

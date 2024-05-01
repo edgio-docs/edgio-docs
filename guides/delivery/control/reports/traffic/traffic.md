@@ -44,7 +44,7 @@ You can make selections in the controls above the tab header:
 
 *   *Time zone*. The top five most commonly used timezones in are at the top of the . Scroll down for additional time zones.
 
-    <Callout type="info">Data in the *Hosts & URLs* tab is of DAY granularity and is always stored in GMT-7, so the Time zone dropdown menu is disabled when you select the tab.</Callout>
+    <Callout type="info">Data in the *Hosts & URLs* tab is of DAY granularity and is always stored in GMT-7, so the *Time zone* dropdown menu is disabled when you select the tab.</Callout>
 
 ## Filtering Report Data  {/*filtering-report-data*/}
 
@@ -62,16 +62,14 @@ Information in the *Summary Area* depends on the selected accounts, time range, 
 
 ### Summary Area  {/*summary-area*/}
 
-For various statistics, the Summary Area shows the percent change for the selected reporting date range relative to the prior time period of the same length. For example, if you select This Month, the statistics show a comparison between this month's data and the previous month's.
+For various statistics, the *Summary Area* shows the percent change for the selected reporting date range relative to the prior time period of the same length. For example, if you select **This Month**, the statistics show a comparison between this month's data and the previous month's.
 
 Colors and arrows represent changes:
 - An increase displays in green with an arrow pointing up.
 - A decrease displays in red with an arrow pointing down.
 - If there was no change from the previous period, the text is gray with an empty circle instead of an arrow.
 - Percentage up or down is in bold text to the right of the arrow or empty circle.
-- Information in gray text beneath the percentage up or down indicates the total date range covered minus any time remaining in the current period. For example, if you select Last 7 days as the reporting period and the current date is part of the past seven days, the past 13 days' information is displayed.
-
-<Callout type="info">Information in the *Summary Area* depends on the selected accounts, time range, time zone, and dimensions.</Callout>
+- Information in gray text beneath the percentage up or down indicates the total date range covered minus any time remaining in the current period. For example, if you select **Last 7 days** as the reporting period and the current date is part of the past seven days, the past 13 days' information is displayed.
 
 Statistics in the *Summary Area* are:
 

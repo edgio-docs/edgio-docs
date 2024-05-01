@@ -31,7 +31,7 @@ Also, suggests that you use private browsing mode in your browser.
 
 4.  Locate the desired certificate in the list; then click the **Update/Rollback** icon.
 
-    ![Update/ Rollback Icon](images/delivery/control/update-rollback.png)
+    ![Update Rollback Icon](/images/delivery/control/update-rollback.png)
 
     The Edit configuration for page is displayed.
 

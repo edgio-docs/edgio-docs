@@ -147,14 +147,14 @@ To edit a recurring report email:
 | Field | Description / Instructions |
 | --- | --- |
 | Filter by<br /><br />Group by | See [RECURRING EMAIL Dialog - Filtering and Grouping](#recurring-email-dialog). |
-| Recipients |     |
+| Recipients |   Primary notification recipient. <br /> Enter a single primary recipient email.  |
 | CC  | Stands for "carbon copy." Additional email recipients.<br /><br />Enter one email or multiple emails separated by commas. |
 | Subject | Email subject. Defaults to text based on the report.<br /><br />Modify as needed. |
-| Message |     |
+| Message |  Email body text. <br /> Enter the text for the email body.   |
 | Attach CSV file | The option to cause to add a CSV file of information in the report. The information is the same that you can export from the report.<br /><br />When you select this option, text indicating the maximum file size is displayed below the field. |
 | Recurrence | The frequency to send the report.<br /><br />Select a value. |
 | The time of day when you want to receive an email | Clock time to send the email.<br /><br />Use the spinner to select the hour or type a value between 0 and 23.<br /> <br /> <Callout type="info">When the dialog is opened from the Status Codes Report URLs tab and Traffic Report *Hosts & URLs* tab, this field is disabled and automatically set to 0700 GMT-7.</Callout> |
-| Timezone | Timezone of the time of day you configured in the The time of day when you want to receive an email field.<br /><br />Defaults to the selection in the timezone at the top right of the report page. You can choose a different timezone.<br /><br />Select a value.<br /> <br /> <Callout type="info">CONTENT </Callout>The timezone field is disabled:<br /><br />-   In the RECURRING EMAIL dialog for the Status Codes Report URLs tab and Traffic Report Hosts & URLs tab.<br />    <br />-   If the timezone at the top right of the report page is disabled for all other tabs in the Status Codes Report and Traffic Report. |
+| Timezone | Timezone of the time of day you configured in the The time of day when you want to receive an email field.<br /><br />Defaults to the selection in the timezone at the top right of the report page. You can choose a different timezone.<br /><br />Select a value.<br /> <br /> <Callout type="info">The timezone field is disabled:<br />-   In the RECURRING EMAIL dialog for the Status Codes Report URLs tab and Traffic Report Hosts & URLs tab.<br />-   If the timezone at the top right of the report page is disabled for all other tabs in the Status Codes Report and Traffic Report. </Callout> |
 
 ### RECURRING EMAIL Dialog - Filtering and Grouping  {/*recurring-email-dialog*/}
 
@@ -240,10 +240,10 @@ Required fields are marked with an asterisk in the 'REPORT ALERT' Dialog.
 | --- | --- |
 | Accounts | A list of all your company's accounts that have the 'Alerts' product enabled. The list contains only accounts for which your user has permissions to view the Status Codes Report. An alert will be triggered only for the selected accounts.<br /><br />Select specific accounts or use the 'Select All' option to select all accounts. |
 | Protocols | A list of all protocols that your company supports. An alert will be triggered only for the selected protocols.<br /><br />Select at least one protocol.<br /><br />This field is not available for Status Codes alerts. |
-| Recipient |     |
-| CC  |     |
+| Recipient |  	Primary notification recipient.<br /> Enter a single primary recipient email.   |
+| CC  |  Stands for "carbon copy." Additional email recipients. <br />Enter one email or multiple emails separated by commas   |
 | Subject | The field is automatically populated based on the account you selected in the Status Codes report. |
-| Message |     |
+| Message |  	Email body text. <br />Enter the text for the email body.   |
 | URL | The specific URL you chose to configure an alert.<br /><br />Read-only.<br /><br />This field is only available for alerts created from the URLs tab of the Status Codes Report. |
 | Send Status Code Report when,<br /><br />Send Traffic Report when | Conditions under which you want to email to be sent.<br /><br />See [Conditions for Sending an Email](#Conditio). |
 
@@ -269,8 +269,6 @@ Email fields are described in the following table.
 Example 1
 
 If you want to receive an alert when the number of incoming requests with a 202 or 206 status for the HLS service is 500 more from the previous day, make the following selections:
-
-![](../../../../Resources/Images/Control Portal User Guide - Reports Chapter/Status Codes Report -Alert Example.png)
 
 Example 2
 

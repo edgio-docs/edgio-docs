@@ -1,4 +1,5 @@
 import {productsConfig} from '../appConfig';
+import {PRODUCT_PLATFORM} from '../base.config';
 
 const separator = {
   title: '',
@@ -24,8 +25,8 @@ const nav = {
           path: 'basics/properties',
           routes: [
             {
-              title: 'Create from UI',
-              path: 'basics/properties/create_from_ui',
+              title: `Creating a ${PRODUCT_PLATFORM} Property`,
+              path: 'basics/properties/create_sites_property',
             },
           ],
         },

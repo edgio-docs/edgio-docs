@@ -1,5 +1,5 @@
 ---
-title: Create a New Sites Property
+title: Create a {{ PRODUCT_PLATFORM }} Property
 ---
 
 The {{ PORTAL }} presents multiple pathways for users to set up a new {{ PRODUCT_PLATFORM }} property, allowing for flexibility based on different needs and technical backgrounds. Users can choose to deploy a website using the CLI for integrating directly with their existing setup, start from a template to deploy a new website by choosing from a range of example projects like Next.js or Remix, or import an existing project from GitHub to connect with {{ PRODUCT }} for automated deployments and branch previews. This setup is designed to streamline the configuration process and enhance the user experience by providing tailored options that fit various development workflows.

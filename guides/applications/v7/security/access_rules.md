@@ -157,10 +157,10 @@ The purpose of an accesslist is to identify traffic that may access your content
 
 1.  Whitelisted traffic is automatically allowed. All other traffic proceed to the next step.
 2.  Has an accesslist been defined?
--   **Yes:** Does the request satisfy at least one criterion in any accesslist?
+    -   **Yes:** Does the request satisfy at least one criterion in any accesslist?
         -   **Yes:** {{ PRODUCT_SECURITY }} will inspect the request.
         -   **No:** {{ PRODUCT_SECURITY }} will block the request.
--   **No:** Proceed to check whether it should be blacklisted.
+    -   **No:** Proceed to check whether it should be blacklisted.
 
 ### Blacklists {/*blacklists*/}
 

@@ -25,6 +25,8 @@ Definitions for key concepts are provided below.
 
 Attack Surface Management identifies your assets, exposures, protections, and technologies by scanning your network. The network segment that will be scannned and what will be identified varies according to the seeds defined within the collection being scanned. 
 
+![ASM Scan Workflow](/images/v7/security/asm-scan-workflow.png)
+
 Once your network has been scanned, you should review and mitigate your exposures. 
 
 ## Getting Started {/*getting-started*/}
@@ -138,11 +140,11 @@ Resetting a collection permanently deletes all exposures, assets, and technologi
 
 Once you have created a collection and [added at least one seed](#add-seed) to it, start scanning your network by clicking **Scan Now**. {{ PRODUCT }} will discover and scan all of the assets associated with the seeds in the collection. Monitor the progress of the scan from the **Scans** section.
 
-<Important>
+**Key information:**
 
-{{ PRODUCT }} only scans managed assets for exposures. [Learn how to place an asset under management.](#assets)
-
-</Important>
+-   Your initial scan will detect and scan all of your assets. It will also place your assets under management until your organization's limit is reached.
+-   Subsequent scans will only scan managed assets.
+-   You may also [add or remove assets from management](#assets).
 
 **To scan your network**
 
@@ -164,7 +166,7 @@ Rules allow you to:
 
 {{ PRODUCT }} will not create an exposure unless a finding matches at least one rule that is configured to create an exposure. The default ruleset creates exposures for all findings.
 
-View and edit rules by navigating to the **Rules** page under the **Attack Surfaces" section. 
+View and edit rules by navigating to the **Rules** page under the **Attack Surfaces** section. 
 
 ## Exposures {/*exposures*/}
 
@@ -198,7 +200,7 @@ View and manage exposures by navigating to the **Exposures** page under the **At
 
 ## Assets {/*assets*/}
 
-{{ PRODUCT }} Attack Surface Management detects the internet-facing assets that make up your organization's attack surface. Place an asset under management to allow {{ PRODUCT }} to scan it for exposures.
+{{ PRODUCT }} Attack Surface Management scans your network to detect the internet-facing assets that make up your organization's attack surface. {{ PRODUCT }} places these assets under management until your organization's limit is reached. Although your intial scan detects technologies, protections, and exposures for all assets, subsequent scans are restricted to managed assets. 
 
 <Info>
 {{ PRODUCT }} limits the total number of assets that are eligible for scanning. This limit is enforced on a per organization basis.

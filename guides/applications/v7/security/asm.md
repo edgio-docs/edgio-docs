@@ -166,7 +166,7 @@ Rules allow you to:
 
 {{ PRODUCT }} will not create an exposure unless a finding matches at least one rule that is configured to create an exposure. The default ruleset creates exposures for all findings.
 
-View and edit rules by navigating to the **Rules** page under the **Attack Surfaces" section. 
+View and edit rules by navigating to the **Rules** page under the **Attack Surfaces** section. 
 
 ## Exposures {/*exposures*/}
 

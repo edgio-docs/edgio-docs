@@ -1,5 +1,4 @@
 import {productsConfig} from '../appConfig';
-import {PRODUCT_PLATFORM} from '../base.config';
 
 const separator = {
   title: '',
@@ -25,8 +24,20 @@ const nav = {
           path: 'basics/properties',
           routes: [
             {
-              title: `Creating a ${PRODUCT_PLATFORM} Property`,
-              path: 'basics/properties/create_sites_property',
+              title: 'Create Self-Hosted Property',
+              path: 'basics/properties/create_self_hosted',
+            },
+            {
+              title: `Create using CLI`,
+              path: 'basics/properties/create_using_cli',
+            },
+            {
+              title: 'Create from Template',
+              path: 'basics/properties/create_from_template',
+            },
+            {
+              title: `Create from GitHub`,
+              path: 'basics/properties/create_from_github',
             },
           ],
         },

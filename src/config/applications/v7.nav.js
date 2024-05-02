@@ -22,6 +22,12 @@ const nav = {
         {
           title: 'Properties',
           path: 'basics/properties',
+          routes: [
+            {
+              title: 'Create from UI',
+              path: 'basics/properties/create_from_ui',
+            },
+          ],
         },
         {
           title: 'Environments',

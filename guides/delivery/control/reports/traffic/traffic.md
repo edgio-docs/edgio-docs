@@ -151,7 +151,7 @@ The legend labels are toggles that you can use to display or hide the correspond
 
 ### Creating Recurring Report Emails and Email Alerts  {/*creating-recurring-report-emails*/}
 
-See [Working with Recurring Report Emails](/delivery/control/reports/general_information/#working-with-recurring-report-emails) and [Working with Email Alerts](/delivery/control/reports/general_information/#working-with-email-alerts).
+See [Working with Recurring Report Emails](/delivery/control/reports/general_information/general_information/#working-with-recurring-report-emails) and [Working with Email Alerts](/delivery/control/reports/general_information/general_information/#working-with-email-alerts).
 
 ## Details Tab  {/*details-tab*/}
 
@@ -255,7 +255,7 @@ To zoom in on the chart do either of the following:
 
 To zoom out, do either of the following:
 - Click the **-** control on the upper left of the map .
-- Click the Continent and Whole World controls on the right above the chart.
+- Click the *Continent* and *Whole World* controls on the right above the chart.
 
 ### Exporting Data  {/*exporting-data*/}
 
@@ -278,7 +278,7 @@ Values for % of Total Requests and CDN efficiency include an indicator under the
 
 ### Creating Recurring Report Emails  {/*creating-recurring-report-emails*/}
 
-See [Working with Recurring Report Emails](/delivery/control/reports/general_information/#working-with-recurring-report-emails).
+See [Working with Recurring Report Emails](/delivery/control/reports/general_information/general_information/#working-with-recurring-report-emails).
 
 ### URLs Displayed  {/*urls-displayed*/}
 

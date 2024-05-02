@@ -1,5 +1,5 @@
 ---
-title: APIs
+title: Edgio APIs
 ---
 This content is also accessible from the navigation menu under the associated products.
 

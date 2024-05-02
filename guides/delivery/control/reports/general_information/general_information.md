@@ -146,7 +146,7 @@ To edit a recurring report email:
 
 | Field | Description / Instructions |
 | --- | --- |
-| Filter by<br /><br />Group by | See [RECURRING EMAIL Dialog - Filtering and Grouping](#recurring-email-dialog). |
+| Filter by<br />Group by | See [RECURRING EMAIL Dialog - Filtering and Grouping](#recurring-email-dialog). |
 | Recipients |   Primary notification recipient. <br /> Enter a single primary recipient email.  |
 | CC  | Stands for "carbon copy." Additional email recipients.<br /><br />Enter one email or multiple emails separated by commas. |
 | Subject | Email subject. Defaults to text based on the report.<br /><br />Modify as needed. |
@@ -196,7 +196,7 @@ When the condition drops below the threshold value, Control sends a second alert
 
 ### Alert Icon  {/*alert-icon*/}
 
-![Alerts](/images/delivery/control/alerts.png)
+![Alerts](/images/delivery/control/alerts.png?width=200)
 
 A - Status Codes Report Overview Tab
 
@@ -251,7 +251,7 @@ Required fields are marked with an asterisk in the 'REPORT ALERT' Dialog.
 
 Use the *Send Status Codes Report when* or *Send Traffic Report when* section to define the threshold for sending an email alert.
 
-![Emails](/images/delivery/control/emails.png)
+![Emails](/images/delivery/control/emails.png?width=200)
 
 Email fields are described in the following table.
 
@@ -271,6 +271,10 @@ Example 1
 
 If you want to receive an alert when the number of incoming requests with a 202 or 206 status for the HLS service is 500 more from the previous day, make the following selections:
 
+![Scenario 1](/images/delivery/control/scenario1.png)
+
 Example 2
 
 If you want to receive an alert under the same conditions as Example 1, but express the change as a percentage from the previous day, make the following selections:
+
+![Scenario 2](/images/delivery/control/scenario2.png)

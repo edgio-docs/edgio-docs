@@ -122,4 +122,4 @@ The up or down change for a given metric is calculated by comparing the metric f
 
 The 'Up' and 'Down' presentations include a percentage.
 
-Percentage = ((newValue - oldValue) / oldValue) * HUNDRED_PERCENT
+`Percentage = ((newValue - oldValue) / oldValue) * HUNDRED_PERCENT`

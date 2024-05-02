@@ -16,6 +16,107 @@ const nav = {
     {
       title: 'Delivery',
       path: 'delivery',
+      routes: [
+        {
+          title: 'User Guide',
+          path: 'delivery/guide',
+          routes: [
+            {
+              title: 'Overview',
+              path: 'delivery/guide/overview',
+            },
+            {
+              title: 'General Information',
+              path: '/delivery/guide/general_information',
+            },
+            {
+              title: 'Getting Started',
+              path: 'delivery/guide/getting_started',
+            },
+            separator,
+            {
+              title: 'Key Concepts',
+              path: 'delivery/guide/key_concepts',
+            },
+            {
+              title: 'Features',
+              path: 'delivery/guide/features',
+            },
+            {
+              title: 'Options',
+              path: 'delivery/guide/options',
+            },
+            {
+              title: 'Technologies',
+              path: 'delivery/guide/technologies',
+            },
+            {
+              title: 'Implementation',
+              path: 'delivery/guide/implementation',
+            },
+            {
+              title: 'Management',
+              path: 'delivery/guide/Management',
+            },
+          ],
+        },
+        {
+          title: 'MediaVault',
+          path: 'delivery/mediavault',
+          routes: [
+            {
+              title: 'Overview',
+              path: 'delivery/mediavault/overview',
+            },
+            {
+              title: 'Parameters',
+              path: 'delivery/mediavault/mediavault_parameters',
+            },
+            {
+              title: 'Configuration',
+              path: 'delivery/mediavault/path_and_cookie_based_mediavault',
+            },
+            {
+              title: 'Security',
+              path: 'delivery/mediavault/security',
+            },
+            {
+              title: 'File Extensions',
+              path: 'delivery/mediavault/file_extensions',
+            },
+            {
+              title: 'Selective URL Handling',
+              path: 'delivery/mediavault/selective_url_handling',
+            },
+            {
+              title: 'PHP Example',
+              path: 'delivery/mediavault/php_example',
+            },
+          ],
+        },
+        {
+          title: 'SmartPurge',
+          path: 'delivery/smartpurge',
+          routes: [
+            {
+              title: 'Purge',
+              path: 'delivery/smartpurge',
+            },
+            {
+              title: 'User Guide',
+              path: 'delivery/smartpurge/user_guide',
+            },
+            {
+              title: 'Migration FAQs',
+              path: 'delivery/smartpurge/migration_FAQs',
+            },
+            {
+              title: 'REST API',
+              path: 'delivery/smartpurge/smartpurge_api',
+            },
+          ],
+        },
+      ],
     },
     {
       title: 'APIs',
@@ -107,12 +208,12 @@ const nav = {
               path: 'control/manage/account',
             },
             {
-              title: 'Content with SmartPurge',
-              path: 'control/manage/content_with_smartpurge',
-            },
-            {
               title: 'Authentication',
               path: 'control/manage/authentication',
+            },
+            {
+              title: 'Content with SmartPurge',
+              path: 'control/manage/content_with_smartpurge',
             },
             {
               title: 'Control Portal Users',
@@ -152,6 +253,10 @@ const nav = {
             {
               title: 'Live Push',
               path: 'control/reports/traffic/live_push',
+            },
+            {
+              title: 'Live Stats',
+              path: 'control/reports/traffic/live_stats',
             },
             {
               title: 'Service Provider Traffic',

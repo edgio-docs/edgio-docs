@@ -12,7 +12,7 @@ The report has these tabs:
 
 [Overview](#overview)
 
-[URLs](#urls)
+[URLs](#urls-tab)
 
 ## Report Specifications  {/*report-specifications*/}
 |Specification|Description|
@@ -45,7 +45,7 @@ The selected date range influences the values on the chart x-axis.
 
 <Callout type="info">Data in the *URLs* tab is of DAY granularity and is always stored in GMT-7, so the Time zone is disabled when you select the tab.</Callout>
 
-## Overview Tab
+## Overview Tab  {/*overview*/}
 ### Summary Area  {/*summary-area*/}
 
 For various statistics, the *Summary Area* shows the percent change for the selected reporting date range relative to the prior time period of the same length. For example, if you select **This Month**, the statistics show a comparison between this month's data and the previous month's.
@@ -76,7 +76,7 @@ Make the desired selections, then click the **Apply** button to apply your filte
 
 To reset filters to the default, click the **Reset** button.
 
-<Callout type="info">- Filter controls default to All.<br />- If you modify the selected accounts in the Status Codes for drop-down menu (see [Selecting an Account](#selecting-an-account)), the filter selections you made are reset to defaults, and the chart is automatically updated to match the defaults.<br />- When you change the status codes filter, navigate to the Overview Tab, then navigate back to the URLs Tab, the filter selections are preserved in the URLs Tab.</Callout>
+<Callout type="info">- Filter controls default to All.<br />- If you modify the selected accounts in the Status Codes for drop-down menu (see [Selecting an Account](#selecting-account)), the filter selections you made are reset to defaults, and the chart is automatically updated to match the defaults.<br />- When you change the status codes filter, navigate to the Overview Tab, then navigate back to the URLs Tab, the filter selections are preserved in the URLs Tab.</Callout>
 
 *Filter by* Selections
 
@@ -112,7 +112,7 @@ On the left above the granularity toggle is the report grouping in which you sel
 
 Make a selection. The chart content and labels beneath the chart are updated to reflect the selected option.
 
-<Callout type="info">When you select Account, the accounts displayed reflect the selected accounts in the *Status Codes for* dropdown (see [Selecting an Account](#selecting-an-account)). All other selections reflect the chart filters applied to the chart (see [Filtering Chart Data](#filtering-chart-data)).</Callout>
+<Callout type="info">When you select Account, the accounts displayed reflect the selected accounts in the *Status Codes for* dropdown (see [Selecting an Account](#selecting-account)). All other selections reflect the chart filters applied to the chart (see [Filtering Chart Data](#filtering-chart-data)).</Callout>
 
 #### Selecting Chart Metrics  {/*selecting-chart-metrics*/}
 
@@ -153,7 +153,7 @@ After you choose an option, Control creates and downloads the report.
 
 ### Creating Recurring Report Emails and Email Alerts  {/*creating-recurring-report-emails*/}
 
-See [Working with Recurring Report Emails](/delivery/control/reports/general_information/#working-with-recurring-report-emails) and [Working with Email Alerts](/delivery/control/reports/general_information/#working-with-email-alerts).
+See [Working with Recurring Report Emails](/delivery/control/reports/general_information/general_information/#working-with-recurring-report-emails) and [Working with Email Alerts](/delivery/control/reports/general_information//general_information#working-with-email-alerts).
 
 <Callout type="info">You can also create email alerts in the URLs tab. For more information, see [Configuring Email Alerts Per URL](#configuring-email).</Callout>
 
@@ -205,7 +205,7 @@ Click a column heading to sort data by that column. A bar is displayed above or 
 
 ### Configuring Email Alerts per URL {/*configuring-email*/}
 
-You can configure email alerts on a URL basis, per your published host domain. See [Working with Email Alerts](/delivery/control/reports/general_information/#working-with-email-alerts).
+You can configure email alerts on a URL basis, per your published host domain. See [Working with Email Alerts](/delivery/control/reports/general_information/general_information/#working-with-email-alerts).
 
 ### Exporting URLs Data
 

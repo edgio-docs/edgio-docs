@@ -4,7 +4,7 @@ title: Billing Report
 
 The Billing Report shows monthly traffic for your active products and services and your Edgio accounts. You can use data in the report for various reasons such as cost estimates for future Edgio invoices.
 
-<Callout type="info">Due to data filtering and proration, data in the Billing report may not align with data in other individual reports. For more information, see [Filtering of Late-Arriving DataDashboard](/delivery/reports/general_information#filtering-of-late-arriving-data).</Callout>
+<Callout type="info">Due to data filtering and proration, data in the Billing report may not align with data in other individual reports. For more information, see [Filtering of Late-Arriving Data Dashboard](/delivery/reports/general_information/general_information/#filtering-of-late-arriving-data).</Callout>
 
 ## Billing Types  {/*billing-types*/}
 The data in the report depends on the selected billing type.

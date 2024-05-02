@@ -41,8 +41,7 @@ The report has these tabs:
 |Metrics - Summary Area	|Vide0 Egress<br />Video Play time<br />Session Rebuffer %<br />Average Client Throughput<br />Average Video Bitrate<br />Slow TTFB|
 |Metrics - Elsewhere|Unique session count<br />Session rebuffer %<br />Average Client Throughput<br />Average Video Bitrate<br />Slow TTFB|
 |Delivery Mechanism	|EdgeQuery|
-|Associated API Endpoint(s)|`POST /realtime-reporting-api/cmcd`
-returns Realtime Reporting API CMCD data according to parameters passed in request body |
+|Associated API Endpoint(s)|`POST /realtime-reporting-api/cmcd` returns Realtime Reporting API CMCD data according to parameters passed in request body |
 
 ## Selecting Accounts, Date Range, and Time Zones  {/*selecting-accounts*/}
 

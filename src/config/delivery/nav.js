@@ -22,18 +22,9 @@ const nav = {
           path: 'delivery/guide',
           routes: [
             {
-              title: 'Overview',
-              path: 'delivery/guide/overview',
-            },
-            {
-              title: 'General Information',
-              path: '/delivery/guide/general_information',
-            },
-            {
               title: 'Getting Started',
               path: 'delivery/guide/getting_started',
             },
-            separator,
             {
               title: 'Key Concepts',
               path: 'delivery/guide/key_concepts',
@@ -56,7 +47,7 @@ const nav = {
             },
             {
               title: 'Management',
-              path: 'delivery/guide/Management',
+              path: 'delivery/guide/management',
             },
           ],
         },
@@ -64,10 +55,6 @@ const nav = {
           title: 'MediaVault',
           path: 'delivery/mediavault',
           routes: [
-            {
-              title: 'Overview',
-              path: 'delivery/mediavault/overview',
-            },
             {
               title: 'Parameters',
               path: 'delivery/mediavault/mediavault_parameters',
@@ -108,7 +95,7 @@ const nav = {
             },
             {
               title: 'Migration FAQs',
-              path: 'delivery/smartpurge/migration_FAQs',
+              path: 'delivery/smartpurge/migration_faqs',
             },
             {
               title: 'REST API',

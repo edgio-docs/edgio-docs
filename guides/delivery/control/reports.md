@@ -24,5 +24,7 @@ Reports are generated using data from EdgeQuery, Edgio’s powerful data collect
 - [Unified Traffic](/delivery/control/reports/traffic/unified_traffic)
 
 ### Content
-- [Origin Storage](/delivery/control/reports/content/origin_storage)
-- [Status Codes](/delivery/control/reports/content/status_codes)
+[Origin Storage](/delivery/control/reports/content/origin_storage)
+
+### Storage
+[Status Codes](/delivery/control/reports/content/status_codes)

@@ -1,3 +1,0 @@
----
-title: SmartPurge REST API
----

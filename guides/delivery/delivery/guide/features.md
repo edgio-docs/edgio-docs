@@ -269,8 +269,7 @@ Using CORS can significantly improve cache efficiency when using a single Origin
 | `Access-Control-Allow-Credentials (ACAC)` | Response | One of the following:<br />-   **Pass Through** (default). Do not add an ACAC header, but if the returns one, pass it through to the client.<br />-   **None**, Do not add an ACAC header. If an ACAC header is returned by the Origin, delete it.<br />-   **True**. Add an ACAC header with true as the value.<br /><br />If the ACAC header is set to true and the ACAO header is set to *, the ACAO header will be reset to the value in the Origin header. This complies with section 6.1 of the  specification, which states that if the ACAC header is true, the ACAO header may not be `*`. |
 | `Access-Control-Expose-Headers (ACEH)` | Response | A list of comma-separated header names, without any spaces.<br /><br />Per section 6 of the  specification, the list should **not** contain any of the following headers:<br />-   `Cache-Control`<br />-   `Content-Language`<br />-   `Content-Type`<br />-   `Expires`<br />-   `Last-Modified`<br />-   `Pragma` |
 
-<Callout type="info">ACAO, ACAC, and ACEH headers are added only for responses to clients (not to Origin). If the response comes from cache, the headers are added just before the response is sent.
-</Callout>
+<Callout type="info">ACAO, ACAC, and ACEH headers are added only for responses to clients (not to Origin). If the response comes from cache, the headers are added just before the response is sent.</Callout>
 
 ### Flexible Cache Key Management {/*flexible-cache-key-management*/}
 

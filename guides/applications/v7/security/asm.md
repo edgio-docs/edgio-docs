@@ -163,7 +163,7 @@ Rules determine the type of exposures that will be created based off of:
 -   **Findings:** {{ PRODUCT }} scans your organization's managed assets for known vulnerabilities to discover findings. Rules determine the types of exposures that {{ PRODUCT }} will create based on these findings. 
 -   **Custom Criteria:** Configure a rule to add custom checks to a scan.
 
-    For example, you can create a rule that checks a response header for a specific value. 
+    For example, a rule can create an exposure when it detects a response header with a specific value. 
 
 Rules allow you to:
 
@@ -173,9 +173,8 @@ Rules allow you to:
 
 **Key information:**
 
--   {{ PRODUCT }} provides a default ruleset that you can use as a starting point. 
 -   {{ PRODUCT }} will not create an exposure unless a finding matches at least one rule that is configured to create an exposure. 
--   The default ruleset creates exposures for all findings.
+-   {{ PRODUCT }} provides a default rule set that you can use as a starting point. This rule set creates exposures for all findings.
 -   Rules are processed in the order that they are listed. If a finding satifies multiple rules, then all of those rules are applied to it. {{ PRODUCT }} resolves conflicts by giving precedence to the rule that is closest to the bottom of the list. 
 
     For example, if both rules #4 and #6 apply to a finding, then precedence is given to rule #6.

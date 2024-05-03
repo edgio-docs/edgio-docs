@@ -151,22 +151,25 @@ The purpose of a whitelist is to identify legitimate traffic.
 
 ### Accesslists {/*accesslists*/}
 
-The purpose of an accesslist is to identify traffic that may access your
-content upon passing a threat assessment. If one or more accesslists
-have been defined, {{ PRODUCT_SECURITY }} will only inspect requests that satisfy at least
-one criterion in each defined accesslist. All other traffic, unless it
-has been whitelisted, will be blocked.
+The purpose of an accesslist is to identify traffic that may access your content upon passing a threat assessment. 
+
+{{ PRODUCT_SECURITY }} processes requests according to the following workflow:
+
+1.  Whitelisted traffic is automatically allowed. All other traffic proceed to the next step.
+2.  Has an accesslist been defined?
+    -   **Yes:** Does the request satisfy at least one criterion in any accesslist?
+        -   **Yes:** {{ PRODUCT_SECURITY }} will inspect the request.
+        -   **No:** {{ PRODUCT_SECURITY }} will block the request.
+    -   **No:** Proceed to check whether it should be blacklisted.
 
 ### Blacklists {/*blacklists*/}
 
 The purpose of a blacklist is to describe unwanted traffic.
 
--   Traffic is blacklisted when it satisfies all of the following
-    conditions:
+-   Traffic is blacklisted when it satisfies all of the following conditions:
     -   The request satisfies at least one blacklist criterion.
     -   The request does not qualify for whitelisting or accesslisting.
--   {{ PRODUCT_SECURITY }} automatically flags blacklisted requests as threats without
-    inspecting them.
+-   {{ PRODUCT_SECURITY }} automatically flags blacklisted requests as threats without inspecting them.
 
 **Key information:**
 

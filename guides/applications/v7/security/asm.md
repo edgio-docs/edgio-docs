@@ -195,9 +195,9 @@ Rules allow you to:
     
     2.  Define when that condition will be met.
     
-        -   **Attack Complexity:** Select an operator and a value that represents the threshold for attack complexity.
+        -   **Severity:** Select an operator and a number from 0 (lowest) to 10 (highest) that represents the potential impact of an exposure.
         
-            **Example:** `Attack Complexity` `is greater than` `3.7`
+            **Example:** `Severity` `is greater than` `3.7`
 
         -   **CVE ID:** Select an operator that defines the relationship with a [CVE ID](https://cve.mitre.org/cve/search_cve_list.html).
         
@@ -208,17 +208,17 @@ Rules allow you to:
             **Example:** `CWE ID` `equals` `CWE-787`
 
         -   **Response Header:** Type the name of the desired response header, select an operator, and then define the desired response header value.
-        
+
             **Example:** `Response Header` `cross-origin-opener-policy` `does not equal` `same-origin`
 
         -   **Open Port:** Define a port or a range of ports for which {{ PRODUCT }} will check to see if they are open.
-        
-        **Example:** `Open Port` `21-23`
+
+            **Example:** `Open Port` `21-23`
 
         -   **TLS Cert Is Missing:** This condition is satisfied when the asset is missing a TLS certificate.
         -   **TLS Cert Days Until Expiration:** Select an operator that defines the relationship with the number of days before the asset's TLS certificate expires.
         
-        **Example:** `TLS Cert Days Until Expiration` `is less than` `30`
+            **Example:** `TLS Cert Days Until Expiration` `is less than` `30`
 
         -   **TLS Cipher:** Select an operator that defines the relationship with a TLS cipher.
 
@@ -262,8 +262,8 @@ Rules allow you to:
 
 6.  Determine whether to stop processing a finding when this rule is satisfied.
 
-    -   Allow subsequent rules to process by setting the **Exit on match** option to off. It should now look like this: <Image inline src="/images/v7/icons/toggle-off-large.png" alt="Disabled" />
-    -   Stop processing when this rule is satisfied by setting the **Exit on match** option to on. It should now look like this: <Image inline src="/images/v7/icons/toggle-on-large.png" alt="Enabled" />
+    -   Allow subsequent rules to process by setting the **Exit on match** option to <Image inline src="/images/v7/icons/toggle-off-large.png" alt="Disabled" /> (off).
+    -   Stop processing when this rule is satisfied by setting the **Exit on match** option to <Image inline src="/images/v7/icons/toggle-on-large.png" alt="Enabled" /> (on).
 
 7.  From the **Rule description** option, type a brief description for this rule.
 8.  From the **Enabled** option, determine whether this rule will be enabled.
@@ -275,7 +275,7 @@ Rules allow you to:
     {{ SECURITY_NAV }} **Attack Surface**.
     5.  From the left-hand pane, select **Rules**.
 2.  Click on the desired rule.
-3.  From the **Enabled** option, determine whether this rule will be enabled.
+3.  From the **Enabled** option, determine whether this rule will be:
 
     -   **Enabled:** It should look like this: <Image inline src="/images/v7/icons/toggle-on-large.png" alt="Enabled" />
     -   **Disabled:** It should look like this: <Image inline src="/images/v7/icons/toggle-off-large.png" alt="Disabled" />
@@ -343,8 +343,8 @@ View and manage exposures by navigating to the **Exposures** page under the **At
     5.  From the left-hand pane, select **Assets**.
 2.  Find the desired asset.
 3.  From the **Under Management** column, determine whether {{ PRODUCT }} may scan it for exposures.
-    -   **Enable:** Click on the icon to toggle it on. It should now look like this: <Image inline src="/images/v7/icons/toggle-on-large.png" alt="Enabled" />
-    -   **Disable:** Click on the icon to toggle it off. It should now look like this: <Image inline src="/images/v7/icons/toggle-off-large.png" alt="Disabled" />
+    -   **Managed Asset:** Set this option to <Image inline src="/images/v7/icons/toggle-on-large.png" alt="Enabled" /> (on).
+    -   **Unmanaged Asset:** Set this option to <Image inline src="/images/v7/icons/toggle-off-large.png" alt="Disabled" /> (off).
 
 ## Protections {/*protections*/}
 

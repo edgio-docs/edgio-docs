@@ -265,7 +265,7 @@ Using CORS can significantly improve cache efficiency when using a single Origin
 | Header | Type | Options |
 | --- | --- | --- |
 | `Origin` | Request | The value to send in the header, in the form of an HTTP protocol and domain (such as http://www.example.com/). **Note**: This header is added only for requests sent to Origin. |
-| `Access-Control-Allow-Origin (ACAO)` | Response | One of the following:<br /><br />-   **Pass Through** (default). Do not add an ACAO header, but if the returns one, pass it through to the client.<br />-   **None**, Do not add an ACAO header. If an ACAO header is returned by the Origin , delete it.<br />-   **Wildcard**. Add an ACAO header with `*` (an asterisk) as the value.<br />-   **Origin**. Add an ACAO header with the same value as in the Origin header. |
+| `Access-Control-Allow-Origin (ACAO)` | Response | One of the following:<br />-   **Pass Through** (default). Do not add an ACAO header, but if the returns one, pass it through to the client.<br />-   **None**, Do not add an ACAO header. If an ACAO header is returned by the Origin , delete it.<br />-   **Wildcard**. Add an ACAO header with `*` (an asterisk) as the value.<br />-   **Origin**. Add an ACAO header with the same value as in the Origin header. |
 | `Access-Control-Allow-Credentials (ACAC)` | Response | One of the following:<br />-   **Pass Through** (default). Do not add an ACAC header, but if the returns one, pass it through to the client.<br />-   **None**, Do not add an ACAC header. If an ACAC header is returned by the Origin, delete it.<br />-   **True**. Add an ACAC header with true as the value.<br /><br />If the ACAC header is set to true and the ACAO header is set to *, the ACAO header will be reset to the value in the Origin header. This complies with section 6.1 of the  specification, which states that if the ACAC header is true, the ACAO header may not be `*`. |
 | `Access-Control-Expose-Headers (ACEH)` | Response | A list of comma-separated header names, without any spaces.<br /><br />Per section 6 of the  specification, the list should **not** contain any of the following headers:<br />-   `Cache-Control`<br />-   `Content-Language`<br />-   `Content-Type`<br />-   `Expires`<br />-   `Last-Modified`<br />-   `Pragma` |
 
@@ -275,7 +275,7 @@ Using CORS can significantly improve cache efficiency when using a single Origin
 
 Content Delivery uses unique “Cache Keys” to locate and return cached objects. By default, each Cache Key is based on the full origin URL of the requested object, including any query terms, and the HTTP method that caused the object to be cached.
 
-#### Query Term Customization
+#### Query Term Customization  {/*query-term-customization*/}
 You can configure Content Delivery to extensively modify query terms before they are stored in the Cache Key. Modifications may include:
 
 - Stripping (removing) all query terms.

@@ -113,7 +113,7 @@ Each entry has an **edit** and **delete** icon on the right side of its row.
 
     The REPORT ALERT dialog is displayed.
 
-2.  Make changes in the dialog. Not all fields are editable. See [Editable Fields in the REPORT ALERT Dialog](/delivery/control/reports/general_information/general_information#fields-in-the-recurring-email-dialog) for details.
+2.  Make changes in the dialog. Not all fields are editable. See [Editable Fields in the REPORT ALERT Dialog](/delivery/control/reports/general_information/general_information/#fields-in-the-report-alert-dialog) for details.
 3.  Click the **Save** button.
 
 ##### Editable Fields in the REPORT ALERT Dialog {/*editable-fields-in-the-report-alert-dialog*/}

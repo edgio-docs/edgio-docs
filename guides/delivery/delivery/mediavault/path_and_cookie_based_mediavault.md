@@ -123,7 +123,7 @@ How to generate the request URLs:
 
 3. Calculate the expiration time in seconds of epoch time.
 
-4. Create a string that has: sharedsecret + URL without /manifest + ?p=<char count>&e=<expiration in epoch time> .
+4. Create a string that has: `sharedsecret + URL without /manifest + ?p=<char count>&e=<expiration in epoch time>`.
 
 5. Use an MD5 generator on the resulting string. The same hash is to be used on the main and sub manifest requests.
 

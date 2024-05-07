@@ -29,7 +29,7 @@ where
 - p=<length> A positive integer representing a portion of the URL that will be used for computing the hash
 - r = `<domains>` a comma separated list of domains
 - ri = `<kbytes>` An initial data range that will not be rate limited by rs
-- rs = <`kbytes/sec>` The sustained rate limit to apply after ri is reached
+- rs = `<kbytes/sec>` The sustained rate limit to apply after ri is reached
 - va=`<version>` is an optional hash algorithm version number
 - h=`<hash>` is a MD5 hash of the URL
 

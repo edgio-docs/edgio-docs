@@ -147,6 +147,9 @@ Once you have created a collection and [added at least one seed](#add-seed) to i
     For example, let's assume that your organization has 100 hostnames and 600 IP addresses. If your organization's limit is 500 assets, then {{ PRODUCT }} will place 100 hostnames and 400 IP addresses under management. 
 -   Subsequent scans will only scan managed assets.
 -   You may also [add or remove assets from management](#assets).
+-   [Create or modify rules](#rules) to create custom exposure detection and to determine whether exposures are created from findings discovered from scanned assets.
+
+    For example, the default behavior is to scan ports for technologies, protections, and exposures. However, you can create a [rule that prevents exposures from being created from port scans](#scan-ports-without-exposures). 
 
 **To scan your network**
 
@@ -290,6 +293,23 @@ Rules allow you to:
 3.  Make the desired changes.
 4.  Click **Apply Changes**.
 
+**<a id="scan-ports-without-exposures" />To scan ports without creating exposures**
+
+<Info>
+
+This procedure assumes that you have not deleted or modified the `Scan common remote access ports` rule.
+
+</Info>
+
+1.  Load the **Rules** page.
+    {{ SECURITY_NAV }} **Attack Surface**.
+    5.  From the left-hand pane, select **Rules**.
+2.  Click on the `Scan common remote access ports` rule.
+3.  From the **Action** option, select `Don't create an exposure`.
+4.  Click **Apply Changes**.
+
+    Subsequent scans will continue to scan open ports for technologies and protections. However, exposures will not be generated from those scans. 
+
 **To delete a rule**
 
 1.  Load the **Rules** page.
@@ -300,7 +320,7 @@ Rules allow you to:
 
 ## Exposures {/*exposures*/}
 
-Exposures represent the vulnerabilities and misconfigurations that {{ PRODUCT }} has discovered in your organization's attack surface. Exposures are automatically created and updated as {{ PRODUCT }} scans your organization's managed assets. 
+Exposures represent the vulnerabilities and misconfigurations that {{ PRODUCT }} has discovered in your organization's attack surface. Exposures are automatically created and updated as {{ PRODUCT }} scans your organization's managed assets. However, you may [create or modify a rule](#rules) to prevent exposures from being created. [Learn how to disable exposures for port scans.](#scan-ports-without-exposures)
 
 Each exposure has the following attributes:
 

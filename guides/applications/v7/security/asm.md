@@ -348,9 +348,6 @@ An exposure's **Activity** section allows you to:
 
 View and manage exposures by navigating to the **Exposures** page under the **Attack Surfaces** section.
 
-
-
-
 ## Assets {/*assets*/}
 
 {{ PRODUCT }} Attack Surface Management scans your network to detect the internet-facing assets that make up your organization's attack surface. {{ PRODUCT }} places these assets under management until your organization's limit is reached. Although your intial scan detects technologies, protections, and exposures for all assets, subsequent scans are restricted to managed assets. 

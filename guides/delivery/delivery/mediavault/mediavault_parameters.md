@@ -26,7 +26,7 @@ where
 - s=`<start-time>` The time at which the CDN should start accepting the resulting - MediaVault-hashed URL (represented as Unix epoch seconds)
 - e=`<end-time>` he time after which the CDN should no longer accept the resulting MediaVault-hashed URL (represented as Unix epoch seconds)
 - ip=`<supported-IP-format>` A specific IP address or range of IP addresses
-- p=<length> A positive integer representing a portion of the URL that will be used for computing the hash
+- p=`<length>` A positive integer representing a portion of the URL that will be used for computing the hash
 - r = `<domains>` a comma separated list of domains
 - ri = `<kbytes>` An initial data range that will not be rate limited by rs
 - rs = `<kbytes/sec>` The sustained rate limit to apply after ri is reached

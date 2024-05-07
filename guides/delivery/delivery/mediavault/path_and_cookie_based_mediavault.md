@@ -117,7 +117,7 @@ For the special case of HLS, you can MediaVault both the main manifest URL and t
 
 How to generate the request URLs:
 
-1. Take the main manifest URL and remove the “/manifest.m3u8” string.
+1. Take the main manifest URL and remove the `/manifest.m3u8` string.
 
 2. Count the number of characters remaining in the URL.
 

@@ -64,7 +64,7 @@ MediaVault Start and End Time allow you to specify times that the URL will be va
 ```
 http://<object-url>?s=<start-time>&e=<end-time>&h=<hash>
 ```
-where `<start-time>` and `<end-time>` are the number of seconds since the Unix epoch and <hash> is an MD5 hash of the URL.
+where `<start-time>` and `<end-time>` are the number of seconds since the Unix epoch and `<hash>` is an MD5 hash of the URL.
 
 #### Time (t) ehash  {/*time-ehash*/}
 MediaVault ehash specifies the expiration time for a URL.

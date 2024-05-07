@@ -4,7 +4,7 @@ title: Metrics REST API Usage
 
 The Metrics REST API allows you to generate reports for key datasets (e.g., origin usage and edge errors). 
 
-## Getting Started
+## Getting Started {/*getting-started*/}
 
 1.  Identify the name of the dataset (e.g., `edge_errors` or `origin_usage_by_country`) for which report data will be generated.
 
@@ -41,7 +41,7 @@ The Metrics REST API allows you to generate reports for key datasets (e.g., orig
     }
     ```
 
-## Report Query
+## Report Query {/*report-query*/}
 
 A typical query contains the following information:
 
@@ -54,7 +54,7 @@ A typical query contains the following information:
 
 The [above sample request](#sample-request) generates an environment-specific report for two metrics (i.e., `requests_origin_total` and `ttfb_origin_ms_75_percentile`) grouped by the `origin_name` dimension. 
 
-## Report Data
+## Report Data {/*report-data*/}
 
 The following properties are critical for interpreting the response:
 
@@ -113,9 +113,13 @@ The `data_fields` property indicates that each row of data will report the follo
 
 The `data_rows` property contains two arrays. This indicates that it contains two rows of data. 
 
-### Time Series
+### Time Series {/*time-series*/}
 
-Generate a time series response by adding `time` to the `dimensions` array. The following sample request groups  `requests_origin_total` and `ttfb_origin_ms_75_percentile` by `time` and `origin_name`:
+Generate a time series response by adding `time` to the `dimensions` array. 
+
+**Sample request (default time intervals):**
+
+The following sample request groups `requests_origin_total` and `ttfb_origin_ms_75_percentile` by `time` and `origin_name`:
 
 ```
 POST /datasets/origin_usage_by_country/data
@@ -186,7 +190,9 @@ POST /datasets/origin_usage_by_country/data
 }
 ```
 
-By default, this endpoint groups data into daily intervals. Use the `time_granularity` parameter to select another granularity level. 
+By default, this operation uses the broadest available time granularity. The above report's date range is for multiple days. As a result, report data (`data_rows`) was grouped into daily intervals. Use the `time_granularity` parameter to select another granularity level. 
+
+**Sample request (hourly intervals):**
 
 The following sample request groups data into hourly intervals.
 
@@ -263,7 +269,7 @@ POST /datasets/origin_usage_by_country/data
 }
 ```
 
-### Filters
+### Filters {/*filters*/}
 
 Filter report data by defining the `filters` object. 
 

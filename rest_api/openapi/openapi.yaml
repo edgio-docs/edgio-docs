@@ -545,14 +545,20 @@ paths:
     $ref: paths/datasets.yaml
     servers:
       - url: 'https://edgioapis.com/metrics/v1'
+    security:
+      - metricsScope: [app.metrics]
   /datasets/{name}:
     $ref: paths/datasets_{name}.yaml
     servers:
       - url: 'https://edgioapis.com/metrics/v1'
+    security:
+      - metricsScope: [app.metrics]
   /datasets/{name}/data:
     $ref: paths/datasets_{name}_data.yaml
     servers:
       - url: 'https://edgioapis.com/metrics/v1'
+    security:
+      - metricsScope: [app.metrics]
   /accesslogs/profiles:
     $ref: paths/accesslogs_profiles.yaml
     servers:
@@ -634,7 +640,7 @@ components:
         clientCredentials:
           tokenUrl: https://id.edgio.app/connect/token
           scopes:
-            app.TODO-METRICS-SCOPE: Authorizes full access to Metrics operations. 
+            app.metrics: Authorizes full access to the Metrics API. 
     rtldScope:
       type: oauth2
       description: Learn how to [generate and pass a token.](#section/Access-Tokens)

@@ -106,16 +106,28 @@ const nav = {
           path: 'edge_functions/caching',
         },
         {
-          title: 'Fetching from Cloud Functions',
-          path: 'https://support.limelight.com/public/openapi/configuration/index.html',
-        },
-        {
           title: 'Configuration',
           path: 'https://support.limelight.com/public/openapi/configuration/index.html',
         },
         {
+          title: 'Live Stream Provisioning',
+          path: 'video/apis/live_stream_provisioning',
+        },
+        {
           title: 'Realtime Reporting',
           path: 'https://support.limelight.com/public/openapi/realtimereporting/index.html',
+        },
+        {
+          title: 'SmartPurge',
+          path: 'delivery/smartpurge/smartpurge_rest_api',
+        },
+        {
+          title: 'Storage',
+          path: 'storage/quick_start',
+        },
+        {
+          title: 'Video Content',
+          path: 'video/apis/content_developers_api_reference',
         },
         separator,
         {

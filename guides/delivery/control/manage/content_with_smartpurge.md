@@ -82,8 +82,8 @@ You can create a purge request from an existing template or from scratch using t
 SmartPurge provides four tabs for specifying objects to purge. You can use all or any of the tabs for one request. Change you make in one tab are reflected in the others. The tabs are:
 -   [Build Patterns](#build-patterns-tab)
 -   [Enter URLs](#enter-urls-tab)
--   [Apply tags](#apply-tags-tab)
--   [Upload file](#upload-file-tab)
+-   [Apply Tags](#apply-tags-tab)
+-   [Upload File](#upload-file-tab)
 
 #### Build Patterns Tab {/*build-patterns-tab*/}
 
@@ -201,7 +201,7 @@ As another example to evict objects identified by tag1, and invalidate objects i
 - `,0,1,0,tag1`
 - `,0,0,0,tag2`
 
-### Creating a Request from a Template  {/*creating-a-new-request-from-a-template*/}
+### Creating a Request from a Template  {/*creating-a-request-from-a-template*/}
 
 1.  Click the **+ new** button, then select **Request from template**.
 

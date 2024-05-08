@@ -76,6 +76,10 @@ const nav = {
               path: 'delivery/mediavault/selective_url_handling',
             },
             {
+              title: 'Hash Generator',
+              path: 'control/configure/mediavault_hash_generator',
+            },
+            {
               title: 'PHP Example',
               path: 'delivery/mediavault/php_example',
             },
@@ -103,7 +107,7 @@ const nav = {
       routes: [
         {
           title: 'Billing',
-          path: 'edge_functions/caching',
+          path: 'https://support.limelight.com/public/openapi/configuration/index.html',
         },
         {
           title: 'Configuration',
@@ -130,10 +134,6 @@ const nav = {
           path: 'video/apis/content_developers_api_reference',
         },
         separator,
-        {
-          title: 'Allow List',
-          path: 'https://control.llnw.com/aportal/support/documentation/iprssfeed/v2',
-        },
         {
           title: 'API Structure',
           path: 'control/support_tools/api_structure',
@@ -169,10 +169,6 @@ const nav = {
               path: 'https://support.limelight.com/public/openapi/realtimereporting/index.html',
             },
             separator,
-            {
-              title: 'Allow List',
-              path: 'https://control.llnw.com/aportal/support/documentation/iprssfeed/v2',
-            },
             {
               title: 'API Explorer',
               path: 'https://support.limelight.com/public/explorer/llnw-api-explorer.html',

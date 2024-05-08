@@ -44,10 +44,11 @@ jobs:
           GITLAB_ACCESS_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
         run: |
           git clone https://oauth2:$GITLAB_ACCESS_TOKEN@gitlab.com/limelight-networks/cdn-analytics/core/server/eq-metrics-public-api.git
-          mv eq-metrics-public-api/src/api/public-docs/components rest_api/openapi/components
-          mv eq-metrics-public-api/src/api/public-docs/paths rest_api/openapi/paths
+          rsync -av "eq-metrics-public-api/src/api/public-docs/components/" "rest_api/openapi/components"
+          rsync -av "eq-metrics-public-api/src/api/public-docs/paths/" "rest_api/openapi/paths"
 
           # copy files to destination
+
       - name: Deploy to docs.edg.io (stage)
         run: |
           yarn edgio:deploy --branch=$BRANCH_NAME --token=${{secrets.edgio_prod_deploy_token}} --environment=default

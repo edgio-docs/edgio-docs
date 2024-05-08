@@ -48,7 +48,7 @@ It is easy to select Origin Storage as your Content Delivery origin - a single c
 
 To order Origin Storage and for answers to additional questions about the service, please contact your Account Manager.
 
-Other Hosting Options
+### Other Hosting Options  {/*other-hosting-options*/}
 If you are happy with your current origin, you can continue using it without interruption. Content Delivery will simply fill its cache from your origin as requests are received.
 
 However, there are a few important requirements your origin must meet:
@@ -60,23 +60,23 @@ For more information on these requirements, please contact your Account Manager.
 
 To order the service, please contact your Account Manager, who is prepared to help with all pre-sales questions, quotes, and ordering issues.
 
-Preparing Your Content
-General Guidelines
-Uploading Your Content (Edgio Origin Storage Only)
+## Preparing Your Content  {/*preparing-your-content*/}
+### General Guidelines  {/*general-guidelines*/}
+### Uploading Your Content (Edgio Origin Storage Only)   {/*uploading-your-content*/}
 If you are using Origin Storage as your origin, you need to upload your content to Origin Storage and set up your replication and location policies.
 
 For detailed information on doing so, please see the links to the Origin Storage Quick Start Guide, User Guide and Best Practices Guide in the Support > Documentation page in Edgio Control.
 
-Following Content Best Practices
-Naming Files
+### Following Content Best Practices  {/*following-content-best-practices*/}
+#### Naming Files  {/*naming-files*/}
 Edgio recommends you incorporate a version number or date in your filenames. For example, the first version of your logo might be titled logo.gif. An updated version of the file might then be labeled logo2.gif.
 
 Content Delivery will then cache updated objects separately from the objects they replace, which can make it easier for you to understand the data in reports.
 
-Organizing Content
-Organizing content into logical groupings and structures helps with configuration management and reporting across all your content. It may be that you have different requirements for the caching and delivery of images and software download or video files, for example, and need to use longer TTLs for the images than you need to for other assets. Organizing your content into different folder structures and URL paths (e.g., content.mycompany.com/images/ and content.mycompany.com/assets/) enables this to be done simply using the configuration options and reports available to you in the Control .
+#### Organizing Content  {/*organizing-content*/}
+Organizing content into logical groupings and structures helps with configuration management and reporting across all your content. It may be that you have different requirements for the caching and delivery of images and software download or video files, for example, and need to use longer TTLs for the images than you need to for other assets. Organizing your content into different folder structures and URL paths (e.g., content.mycompany.com/images/ and content.mycompany.com/assets/) enables this to be done simply using the configuration options and reports available to you in the Control.
 
-Controlling Freshness Checks
+#### Controlling Freshness Checks  {/*controlling-freshness-checks*/}
 You can use HTTP response headers to control when Content Delivery performs freshness checks on your content.
 
 The two most important response headers for cache control are:

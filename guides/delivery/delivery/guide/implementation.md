@@ -38,7 +38,7 @@ If you have questions about this configuration information, or anything else in 
 <Callout type="info">If you are a new customer, you will receive a separate Welcome Letter with access information for the Control. You will also receive a separate Welcome Letter any time you order a new service or request major changes to an existing service.</Callout>
 
 ## Configuring Content Delivery  {/*configuring-content-delivery*/}
-If you need to change a Content Delivery configuration setting provided in your Welcome Letter, or you want to take advantage of a feature described in [Key Content Delivery Features](delivery/delivery/guide/features), you can:
+If you need to change a Content Delivery configuration setting provided in your Welcome Letter, or you want to take advantage of a feature described in [Key Content Delivery Features](/delivery/delivery/guide/features), you can:
 
 - Contact your Account Manager or Solutions Engineer
 - Contact Edgio Customer Service directly

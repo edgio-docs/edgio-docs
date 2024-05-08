@@ -86,20 +86,12 @@ const nav = {
           path: 'delivery/smartpurge',
           routes: [
             {
-              title: 'Purge',
-              path: 'delivery/smartpurge',
-            },
-            {
               title: 'User Guide',
               path: 'delivery/smartpurge/user_guide',
             },
             {
-              title: 'Migration FAQs',
-              path: 'delivery/smartpurge/migration_faqs',
-            },
-            {
               title: 'REST API',
-              path: 'delivery/smartpurge/smartpurge_api',
+              path: 'delivery/smartpurge/smartpurge_rest_api',
             },
           ],
         },
@@ -213,7 +205,7 @@ const nav = {
           ],
         },
         {
-          title: 'Reports',
+          title: 'Analyze',
           path: 'control/reports',
           routes: [
             {

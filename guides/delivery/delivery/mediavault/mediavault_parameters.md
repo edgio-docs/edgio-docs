@@ -44,9 +44,9 @@ With a few exceptions, parameters can be in any order. However, the order must b
 Refer to [Cookie-based Configuration](/delivery/delivery/mediavault/path_and_cookie_based_mediavault/#cookie-based-configuration) for parameter details and sample implementation.
 
 #### Start Time (s)  {/*start-time*/}
-Optional. Start Time (s) represents the time at which the CDN should start accepting the resulting MediaVault-hashed URL. Requests with MediaVault-hashed URLs before the time in the Start Time parameter will be rejected by the CDN. This can be used to set a start time for content to go live in the future – without worrying that the audience may see a video before its scheduled time.
+Optional. Start Time (s) represents the time at which the CDN should start accepting the resulting MediaVault-hashed URL. Requests with MediaVault-hashed URLs before the time in the *Start Time* parameter will be rejected by the CDN. This can be used to set a start time for content to go live in the future – without worrying that the audience may see a video before its scheduled time.
 
-<Callout type="info">-If any number in the Start Time set is changed without computing the hash again, the request is denied.<br />- All times specified in the Control UI are in Mountain Standard Time (MST/GMT-7).</Callout>
+<Callout type="info">-If any number in the *Start Time* set is changed without computing the hash again, the request is denied.<br />- All times specified in the Control UI are in Mountain Standard Time (MST/GMT-7).</Callout>
 
 #### End Time (e)  {/*end-time*/}
 End Time (e) represents the time after which the CDN should no longer accept the resulting MediaVault-hashed URL. Requests with MediaVault-hashed URLs after the time in the End Time parameter will be rejected by the CDN. By encoding the end time in a URL, you can set a time-to-live for the content, preventing indefinite access. This is optional.
@@ -61,9 +61,8 @@ MediaVault Start and End Time allow you to specify times that the URL will be va
 - *Limitations*: None
 - *MediaVault Secure URL Format*: The hash is generated using the following format:
 
-```
-http://<object-url>?s=<start-time>&e=<end-time>&h=<hash>
-```
+`http://<object-url>?s=<start-time>&e=<end-time>&h=<hash>`
+
 where `<start-time>` and `<end-time>` are the number of seconds since the Unix epoch and `<hash>` is an MD5 hash of the URL.
 
 #### Time (t) ehash  {/*time-ehash*/}
@@ -74,9 +73,8 @@ MediaVault ehash specifies the expiration time for a URL.
 - *Limitations*: Your ehash is enabled, and you will not be able to use the other options that are available for hash secret.
 - *MediaVault Secure URL Format*: The hash is generated using the following format:
 
-```
-http:// //<object-url>?t=<endtime_hash>
-```
+`http:// //<object-url>?t=<endtime_hash>`
+
 where `<endtime_hash>` is the number of seconds since the Unix epoch, followed by an underscore, followed by an MD5 hash of the URL.
 
 #### IP Address/Range Mask (ip)  {/*ip-address-range-mask*/}
@@ -97,18 +95,14 @@ The IP address allows a URL (or media file) to only be accessed by client(s) ori
 
 *Example*: This link will only be authorized if the IP the request came from is 192.169.1.25. All other requests will be denied:
 
-```
-http://test.llnwd.net/wm9/md5/file.wmv?ip=1192.169.1.25&h=d051d13c78d51a67508734cd6dc5d694
-```
+`http://test.llnwd.net/wm9/md5/file.wmv?ip=1192.169.1.25&h=d051d13c78d51a67508734cd6dc5d694`
 
 ##### IP Address Range  {/*ip-address-range*/}
 IP address range allows access from a range of logical addresses (usually within the address space assigned to the organization.) For example, the address 1.2.3.0/24 indicates a range (in the 4th octet) up to the 24th binary placeholder (00000001.00000010.00000011.00000000). This range would include addresses from 1.2.3.0 to 1.2.3.255. For assistance creating a range, connect to http://www.subnet-calculator.com and enter the IP addresses associated with the content.
 
 *Example*: This link will only be authorized if the IP the request it came from is within the 10.9.12.0/24 range. All other requests will be denied:
 
-```
-http://test.llnwd.net/wm9/md5/file.wmv?ip=192.169.1.25&h=d051d13c78d51a67508734cd6dc5d694
-```
+`http://test.llnwd.net/wm9/md5/file.wmv?ip=192.169.1.25&h=d051d13c78d51a67508734cd6dc5d694`
 
 #### Prefix Length (p)  {/*prefix-length*/}
 Prefix Length (p) specifies a limited number of characters from the URL to calculate the hash. The hash calculation is done only on the portion of the full URL that matches the number of characters specified by the length parameter. This is typically used to remove a file name from the URL before the hash calculation is made, allowing access to all files in a directory. When the prefix length parameter is used with HTTPS, the MD5 calculation is done only on the portion of the full URL that matches the actual character count specified by the length parameter.
@@ -118,9 +112,8 @@ Prefix Length (p) specifies a limited number of characters from the URL to calcu
 - *Limitations*: If the value of the "p=" argument is greater than the length of the URL then the whole path will be used.
 - *MediaVault Secure URL Format*: The hash is generated using the following format:
 
-```
-http://<object-url>?p=<P-value>&h=<hash>
-```
+`http://<object-url>?p=<P-value>&h=<hash>`
+
 where `<P-value>` is a positive integer and `<hash>` is an MD5 hash of the URL.
 
 #### Referrer (r)  {/*referrer*/}
@@ -131,9 +124,8 @@ A client may send a “Referrer:” request header when requesting a resource. T
 - *Limitations*: Some links from some browsers may not include referrer data in the HTTP Header, which is required for this feature. Most normal web page links will send the referrer data, but some helper applications will not know what the referrer is and will not send the header. Referrer data can also be spoofed fairly easily by including the header in the request; thus, it is not the most secure protection.
 - *MediaVault Secure URL Format*: The hash is generated using the following format:
 
-```
-http://<object-url>?r=<referrer>&h=<hash>
-```
+`http://<object-url>?r=<referrer>&h=<hash>`
+
 where `<referrer>` must exactly match the value of the referrer data in the HTTP header and `<hash>` is an MD5 hash of the URL.
 
 #### Rate Limit (ri, rs)  {/*rate-limit*/}
@@ -149,9 +141,7 @@ The ri parameter lets you set the initial amount of data that will not be rate l
 - *Usage*: To use this feature, add the "rs=" argument, and optionally the "ri=" argument, to the query string before the "h=" argument. If the ri parameter is not added, then requests are satisfied at full speed.
 - *MediaVault Secure URL Format*: The hash is generated using the following format:
 
-```
-http://<object-url>?ri=<unlimited Kbytes>&rs=<Rate Limit after ri is reached>&h=<hash>
-```
+`http://<object-url>?ri=<unlimited Kbytes>&rs=<Rate Limit after ri is reached>&h=<hash>`
 
 where `<hash>` is an MD5 hash of the URL.
 

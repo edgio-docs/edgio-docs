@@ -3,7 +3,7 @@ title: PHP Example
 ---
 Here is a MD5 Hash Sample:
 
-```php
+```PHP
 <?PHP
     $url = $_POST["url"];
     $secret = $_POST["md5"];

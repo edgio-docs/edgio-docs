@@ -47,7 +47,7 @@ Specifies the hostname that will be provided in the HTTP Host Header when Conten
 - HTTP method that caused the object to be cached
 - optional custom values appended to the end of the key
 
-All or part of an URL’s query terms can optionally be excluded from the key (see [Flexible Cache Key Manipulation](/delivery/delivery/guide/key_concepts/#flexible-cache-key-management)).
+All or part of an URL’s query terms can optionally be excluded from the key (see [Flexible Cache Key Manipulation](/delivery/delivery/guide/key_concepts/#flexible-cache-key-manipulation)).
 
 #### Backup Origin Support  {/*backup-origin-support*/}
 Specifies a backup origin to connect to, in the event that a request to the content origin specified by the Origin Hostname fails, with an HTTP 503 or 504 response code.

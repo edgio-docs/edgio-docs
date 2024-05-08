@@ -1,9 +1,7 @@
 ---
 title: Content {{DELIVERY}}
 ---
----
-title: Edgio Content Delivery
----
+
 Edgio Content Delivery is a Content Delivery Network (CDN) that lets you deliver your digital content to users all over the world. Using Edgio's globally distributed network of thousands of servers - interconnected with the world's leading ISPs - ensures that your content is distributed to your users securely, as fast as possible, and with high availability. You do not need to scale your own infrastructure to deliver your content to your audience, Limelight Content Delivery does it for you.
 
 Edgio is not just one of the world’s largest networks. It is the best choice for your business: an intelligent network that lets you offload all the complexity of delivering great digital experiences and still stay in control of your content. Even when the public internet is congested, your content gets delivered through our private CDN and into ISPs with over 80 terabits per second of egress capacity.
@@ -30,10 +28,10 @@ Refer to the [Change Log](/delivery/delivery/change_log) to see recent feature u
 
 ## Guides
 
-Delivery
+[Delivery](/delivery/delivery/guide)
 
-MediaVault
+[MediaVault](/delivery/delivery/mediavault)
 
-SmartPurge
+[SmartPurge](/delivery/delivery/smartpurge)
 
-SmartPurge REST API
+[SmartPurge REST API](/delivery/delivery/smartpurge/smartpurge_rest_api)

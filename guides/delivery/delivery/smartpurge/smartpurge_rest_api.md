@@ -570,7 +570,7 @@ The following errors can be returned by (description and source may vary for dif
 | Optional URI Parameters | None |
 | Description | Translates public exact URL into the corresponding origin URL |
 | Request Example | GET https://apis.llnw.com/purge/v1/account/example/translate?  <br />url=http://shortname.vo.llnwd.net/to/translate |
-| Response Example | {<br />    "translated":"http://origin.example.com/to/translate"<br />} |
+| Response Example | <br />    "translated":"http://origin.example.com/to/translate"<br /> |
 
 ## HTTP Status Codes  {/*https-status-codes*/}
 |  HTTP Status Code   | Description | Has Body? |

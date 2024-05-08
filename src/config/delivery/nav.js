@@ -100,6 +100,41 @@ const nav = {
     {
       title: 'APIs',
       path: 'apis',
+      routes: [
+        {
+          title: 'Billing',
+          path: 'edge_functions/caching',
+        },
+        {
+          title: 'Fetching from Cloud Functions',
+          path: 'https://support.limelight.com/public/openapi/configuration/index.html',
+        },
+        {
+          title: 'Configuration',
+          path: 'https://support.limelight.com/public/openapi/configuration/index.html',
+        },
+        {
+          title: 'Realtime Reporting',
+          path: 'https://support.limelight.com/public/openapi/realtimereporting/index.html',
+        },
+        separator,
+        {
+          title: 'Allow List',
+          path: 'https://control.llnw.com/aportal/support/documentation/iprssfeed/v2',
+        },
+        {
+          title: 'API Structure',
+          path: 'control/support_tools/api_structure',
+        },
+        {
+          title: 'API Terminology',
+          path: 'control/support_tools/api_terminology',
+        },
+        {
+          title: 'Global Time',
+          path: 'control/support_tools/global_time',
+        },
+      ],
     },
     {
       title: 'Control',
@@ -122,6 +157,10 @@ const nav = {
               path: 'https://support.limelight.com/public/openapi/realtimereporting/index.html',
             },
             separator,
+            {
+              title: 'Allow List',
+              path: 'https://control.llnw.com/aportal/support/documentation/iprssfeed/v2',
+            },
             {
               title: 'API Explorer',
               path: 'https://support.limelight.com/public/explorer/llnw-api-explorer.html',

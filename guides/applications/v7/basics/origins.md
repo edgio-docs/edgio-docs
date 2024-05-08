@@ -80,7 +80,7 @@ Create an origin configuration for each desired grouping of web server(s).
     3.  Set up [certificate pinning](#certificate-pinning) by adding one or more public keys.
 
         1.  Click **+ Add Pin**.
-        2.  Paste the SHA-256 digest for the public key of your leaf certificate.
+        2.  Paste the SHA-1 digest for the public key of your leaf certificate.
         3.  Repeat steps 1 and 2 as needed.
 
 6.  Optional. Protect your origin by defining one or more [shield POP(s)](/applications/security/origin_shield). Click on the **Shields** section to expand it.
@@ -118,7 +118,7 @@ An origin configuration's TLS settings determine how {{ PRODUCT }} will communic
     Enable this option and provide a SNI hint if your web servers require SNI. Otherwise, your web server will reject the request and our edge servers will respond with a `502 Bad Gateway` response. <a id="self-signed-certificates" />
 
 -   By default, our network disables delivery and responds with a `502 Bad Gateway` when we detect an origin server using a self-signed certificate during the TLS handshake. Allow {{ PRODUCT }} to serve traffic when it detects a self-signed certificate by enabling the **Allow Self-Signed Certs** option. <a id="certificate-pinning" />
--   Register the SHA-256 digest for the public key of your end-entity (i.e., leaf) certificate within the **Pinned Cert(s)** option. After which, our edge servers will respond with a `502 Bad Gateway` response when the SHA-256 digest for the public key detected from the origin server does not match one of the pinned certificates.
+-   Register the SHA-1 digest for the public key of your end-entity (i.e., leaf) certificate within the **Pinned Cert(s)** option. After which, our edge servers will respond with a `502 Bad Gateway` response when the SHA-1 digest for the public key detected from the origin server does not match one of the pinned certificates.
 
 ## System-Defined Origins {/*system-defined-origins*/}
 

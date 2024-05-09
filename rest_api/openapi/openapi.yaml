@@ -173,7 +173,7 @@ tags:
 
       -   **Metric:** A metric measures the rate, an amount, or the total number of times that a particular attribute occurred over a given record. 
 
-          For example, the `requests_edge_total` metric reports the total number of requests made to edge server.
+          For example, the `requests_edge_total` metric reports the total number of requests submitted to our network.
 
       <a href="/applications/develop/rest_api/metrics_rest_api_usage" target="_blank">Learn how to use the Metrics API.</a>
   - name: RTLD Access Logs Profile

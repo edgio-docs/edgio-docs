@@ -127,11 +127,11 @@ const nav = {
         },
         {
           title: 'Storage',
-          path: 'storage/quick_start',
+          path: 'storage/reference_materials',
         },
         {
-          title: 'Video Content',
-          path: 'video/apis/content_developers_api_reference',
+          title: 'Video',
+          path: 'video/apis/content_api_developers_api_reference',
         },
         separator,
         {
@@ -332,12 +332,42 @@ const nav = {
           ],
         },
         {
+          title: 'Console',
+          path: 'storage/console',
+          routes: [
+            {
+              title: 'Workspace',
+              path: 'storage/console/#workspace',
+            },
+            {
+              title: 'Viewing Files and Folders',
+              path: 'storage/console/#viewing',
+            },
+            {
+              title: 'Working with Files',
+              path: 'storage/console/#files',
+            },
+            {
+              title: 'Working with Folders',
+              path: 'storage/console/#folders',
+            },
+            {
+              title: 'Managing Accounts and Users',
+              path: 'storage/console/#managing-accounts-and-users',
+            },
+            {
+              title: 'Logging Out',
+              path: 'storage/console/#logging-out',
+            },
+          ],
+        },
+        {
           title: 'Best Practices',
           path: 'storage/best_practices',
           routes: [
             {
               title: 'Accounts and Users',
-              path: 'storage/best_practices/best_practices',
+              path: 'storage/best_practices/accounts_and_users',
             },
             {
               title: 'Directories and Files',
@@ -367,15 +397,15 @@ const nav = {
           routes: [
             {
               title: 'General Information',
-              path: 'storage/apis/general_information',
+              path: 'storage/general_information',
             },
             {
               title: 'API Calls',
-              path: 'storage/apis/api_calls',
+              path: 'storage/api_calls',
             },
             {
-              title: 'Reference Materials',
-              path: 'storage/apis/reference_materials',
+              title: 'API Materials',
+              path: 'storage/reference_materials',
             },
           ],
         },

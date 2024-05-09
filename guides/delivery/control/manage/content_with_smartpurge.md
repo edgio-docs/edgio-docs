@@ -230,21 +230,21 @@ See [Creating New Purge Requests](#creating-a-new-purge-request) for instruction
 ## Doing a Purge  {/*doing-a-purge*/}
 | Starting Tab or Page | Instructions |
 | --- | --- |
-| [Requests Tab](#requests-tab)<br /><br />[Templates Tab](#templates-tab) | 1.  Initiate the request.<br />    -   From the [Requests Tab](#requests-tab): click the request's **rerun** icon.<br />    -   From the [Templates Tab](#templates-tab): click the template's **purge** icon.<br />2.  In the subsequent dialog, confirm that you want to run the request or template. The request is added to the *Requests* tab.<br />3.  Click the new row to view the request's [*Stats for request* page](#stats-for-request-page). |
-| [*New purge request for* Page](#creating-a-new-purge-request)<br /><br />[New purge request from template for Page](#creating-a-request-from-a-template)<br /><br />[*Stats for request* Page](#stats-for-request-page) | 1.  Click the **Purge** button or **rerun** icon depending on the page.<br />2.  In the subsequent dialog, confirm that you want to run the request. The request is added to the *Requests* tab. <br />3.  Click the new row to view the request's [*Stats for request* page](#stats-for-request-page). |
+| [Requests Tab](#requests-tab)<br /><br />[Templates Tab](#templates-tab) | 1.  Initiate the request.<br />    -   From the [Requests Tab](#requests-tab): click the request's **rerun** icon.<br />    -   From the [Templates Tab](#templates-tab): click the template's **purge** icon.<br />2.  In the subsequent dialog, confirm that you want to run the request or template. The request is added to the *Requests* tab.<br />3.  Click the new row to view the request's [*Stats for Request* page](#stats-for-request-page). |
+| [*New Purge Request for* Page](#creating-a-new-purge-request)<br /><br />[New Purge Request from Template for Page](#creating-a-request-from-a-template)<br /><br />[*Stats for Request* Page](#stats-for-request-page) | 1.  Click the **Purge** button or **rerun** icon depending on the page.<br />2.  In the subsequent dialog, confirm that you want to run the request. The request is added to the *Requests* tab. <br />3.  Click the new row to view the request's [*Stats for Request* page](#stats-for-request-page). |
 
 ## Other Request Tasks  {/*other-request-tasks*/}
 ### Viewing a Request's Stats (Results)  {/*viewing-a-requests-stats*/}
 
 1.  Locate the desired request in the Requests tab.
 2.  Click the request or click the request's view stats icon.
-    The [Stats for request page](#stats-for-request-page) page displays.
+    The [*Stats for Request* page](#stats-for-request-page) page displays.
 
 ### Saving a Request as a Template  {/*saving-a-request-as-a-template*/}
 
 | Starting Tab or Page | Instructions |
 | --- | --- |
-| [*New purge request for* Page](#creating-a-new-purge-request)<br /><br />[Requests Tab](#requests-tab)<br /><br />[*Stats for request* Page](#stats-for-request-page) | 1.  Initiate the save action.<br />    -From *New purge request for* page:<br />-- Click the **Save as template** button.<br />-- Enter a name in the *SAVE AS TEMPLATE* dialog.<br />    -   From the *Requests* tab or *Stats for request* page:<br />-- Click the request's **save as template** icon.<br />-- The *Create new template for page* displays.<br />- Enter a name in the *Template name* field; then make any other changes following instructions in [Creating a New Template](#creating-a-new-template).<br /><br />2.  Click the **Save** button.<br />- The template is added to the *Templates* tab. |
+| [*New Purge Request for* Page](#creating-a-new-purge-request)<br /><br />[Requests Tab](#requests-tab)<br /><br />[*Stats for Request* Page](#stats-for-request-page) | 1.  Initiate the save action.<br />    -From *New purge request for* page:<br />-- Click the **Save as template** button.<br />-- Enter a name in the *SAVE AS TEMPLATE* dialog.<br />    -   From the *Requests* tab or *Stats for request* page:<br />-- Click the request's **save as template** icon.<br />-- The *Create new template for page* displays.<br />- Enter a name in the *Template name* field; then make any other changes following instructions in [Creating a New Template](#creating-a-new-template).<br /><br />2.  Click the **Save** button.<br />- The template is added to the *Templates* tab. |
 
 ## Other Template Tasks  {/*other-template-tasks*/}
 ### Viewing a Template Summary  {/*viewing-template-summary*/}
@@ -257,7 +257,7 @@ Starting Tab or Page | Instructions |
 
 | Starting Tab or Page | Instructions |
 | --- | --- |
-| [Templates Tab](#templates-tab)<br /><br />[Template Summary Page](#template-summary-page) | 1.  Click the **edit** icon.<br />- The *Edit template page* displays. All details copied from the template.<br />2.  Make desired changes following instructions in [Creating a New Template](#create-a-new-template).<br />3.  Click the **Save** button. |
+| [Templates Tab](#templates-tab)<br /><br />[Template Summary Page](#template-summary-page) | 1.  Click the **edit** icon.<br />- The *Edit template page* displays. All details copied from the template.<br />2.  Make desired changes following instructions in [Creating a New Template](#creating-a-new-template).<br />3.  Click the **Save** button. |
 
 ### Duplicating a Template  {/*duplicating-a-template*/}
 

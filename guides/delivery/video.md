@@ -10,12 +10,14 @@ MMD-OD provides on the fly packaging and delivery of Video on Demand (VOD) conte
 The Limelight Video Platform service is a powerful and modular set of live and on-demand video capabilities that seamlessly integrate with your existing infrastructure and workflows.
 
 It has easy-to-use workflow tools, automated conversion to any format, a built-in and customizable player to match any website, and powerful analytics and integration APIs.
+
 It helps you manage and personalize live and on-demand video to reach and convert audiences or maximize content revenue by delivering the right content, to the right device, at the right time.
-User Guides
-API
+
+## User Guides
+### API
 Live Stream Provisioning
 
-Multi-device Media Delivery (MMD) Streaming
+### Multi-device Media Delivery (MMD) Streaming
 Digital Rights Management Guide
 
 MMD On-Demand Streaming Guide
@@ -24,13 +26,13 @@ MMD Live Streaming Guide
 
 MMD Live API Developers Reference
 
-Other Streaming
+### Other Streaming
 Live to VoD Developers Reference
 
-Live Push
+### Live Push
 Live Push Guide
 
-Limelight Video Platform (LVP)
-User Guides
+### Limelight Video Platform (LVP)
+User Guide
 
 Content API Developers Reference

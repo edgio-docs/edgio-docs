@@ -19,9 +19,8 @@ The behavior of the CDN with MediaVault is based on the combination of parameter
 ### Format  {/*format*/}
 The hash is generated using the following MediaVault Secure URL format for the query string:
 
-```
-http://<published-url>?s=<start-time>&e=<end-time>&p=<length>&ip=<supported-IP- format>&h=<hash>
-```
+`http://<published-url>?s=<start-time>&e=<end-time>&p=<length>&ip=<supported-IP- format>&h=<hash>`
+
 where
 - s=`<start-time>` The time at which the CDN should start accepting the resulting - MediaVault-hashed URL (represented as Unix epoch seconds)
 - e=`<end-time>` he time after which the CDN should no longer accept the resulting MediaVault-hashed URL (represented as Unix epoch seconds)
@@ -61,7 +60,7 @@ MediaVault Start and End Time allow you to specify times that the URL will be va
 - *Limitations*: None
 - *MediaVault Secure URL Format*: The hash is generated using the following format:
 
-`http://<object-url>?s=<start-time>&e=<end-time>&h=<hash>`
+    `http://<object-url>?s=<start-time>&e=<end-time>&h=<hash>`
 
 where `<start-time>` and `<end-time>` are the number of seconds since the Unix epoch and `<hash>` is an MD5 hash of the URL.
 

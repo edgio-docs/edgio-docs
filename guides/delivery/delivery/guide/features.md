@@ -200,11 +200,15 @@ You can configure Content Delivery to use a fixed TTL value you select, or to us
 ### Header Manipulation  {/*header-manipulation*/}
 The SmartPurge Rest API Guide appendix includes the following:
 
-[Request Endpoint Schema](delivery/delivery/smartpurge/smartpurge_rest_api/#request-endpoint-schema)
-[Error Response Schema](delivery/delivery/smartpurge/smartpurge_rest_api/#error-response-schema)
-[Error Response Descriptions](delivery/delivery/smartpurge/smartpurge_rest_api/#error-response-descriptions)
-[HTTP Status Codes](delivery/delivery/smartpurge/smartpurge_rest_api/#https-status-codes)
-[API Client Sample Code](delivery/delivery/smartpurge/smartpurge_rest_api/#api-client-sample-code)
+[Request Endpoint Schema](/delivery/delivery/smartpurge/smartpurge_rest_api/#request-endpoint-schema)
+
+[Error Response Schema](/delivery/delivery/smartpurge/smartpurge_rest_api/#error-response-schema)
+
+[Error Response Descriptions](/delivery/delivery/smartpurge/smartpurge_rest_api/#error-response-descriptions)
+
+[HTTP Status Codes](/delivery/delivery/smartpurge/smartpurge_rest_api/#https-status-codes)
+
+[API Client Sample Code](/delivery/delivery/smartpurge/smartpurge_rest_api/#api-client-sample-code)
 
 Content Delivery lets you manipulate both HTTP request and response headers. For example, Content Delivery can pre-process HTTP request headers before they are passed to your origin. You can configure Content Delivery to analyze and manipulate existing headers, to add new “custom” headers, and to remove named headers. In addition, Content Delivery can process the response headers received from your origin to determine how to respond to the original request. Content Delivery can strip specified response headers, pass specified headers on to the client either “as is” or with modifications, and even add new headers.
 

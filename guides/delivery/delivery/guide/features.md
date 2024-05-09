@@ -1,6 +1,9 @@
 ---
 title: Key Features
 ---
+
+[Content Acquisition](#content-acquisition) `|` [Customization](#customization) `|` [Content Protection](#content-protection) `|` [Defensive Protection](#defensive-protection) `|` [Acceleration](#acceleration)
+
 The Content Delivery service provides a rich set of features (configuration options) that give you complete control over how your content is requested, cached and delivered.
 
 The most popular configuration options are categorized and described in detail in this section, with references to additional technical documentation when available. If you’re unsure whether you need certain options, or which settings to select, please contact your Account Manager or Solutions Engineer.
@@ -10,8 +13,6 @@ You can change many configuration options yourself, using the Configuration Self
 
 <Callout type="info">Some advanced options can only be configured by Edgio. If such options are configured, they will become visible in “read only” mode in Configuration Self Service.</Callout>
 For more information on individual options and settings, please see the [Configure](/delivery/control/configure) section of the [Control User Guide](/delivery/control/).
-
-
 
 ## Content Acquisition  {/*content-acquisition*/}
 ### Origin Support and Origin Error Handling  {/*origin-support*/}
@@ -271,7 +272,7 @@ Using CORS can significantly improve cache efficiency when using a single Origin
 
 <Callout type="info">ACAO, ACAC, and ACEH headers are added only for responses to clients (not to Origin). If the response comes from cache, the headers are added just before the response is sent.</Callout>
 
-### Flexible Cache Key Management {/*flexible-cache-key-management*/}
+### Flexible Cache Key Manipulation {/*flexible-cache-key-manipulation*/}
 
 Content Delivery uses unique “Cache Keys” to locate and return cached objects. By default, each Cache Key is based on the full origin URL of the requested object, including any query terms, and the HTTP method that caused the object to be cached.
 

@@ -316,10 +316,124 @@ const nav = {
     {
       title: 'Storage',
       path: 'storage',
+      routes: [
+        {
+          title: 'Quick Start',
+          path: 'storage/quick_start',
+          routes: [
+            {
+              title: 'Upload Content',
+              path: 'storage/quick_start/upload_content',
+            },
+            {
+              title: 'Retrieve and Share Content',
+              path: 'storage/quick_start/retrieve_and_share_content',
+            },
+          ],
+        },
+        {
+          title: 'Best Practices',
+          path: 'storage/best_practices',
+          routes: [
+            {
+              title: 'Accounts and Users',
+              path: 'storage/best_practices/best_practices',
+            },
+            {
+              title: 'Directories and Files',
+              path: 'storage/best_practices/directories_and_files',
+            },
+            {
+              title: 'Security',
+              path: 'storage/best_practices/security',
+            },
+            {
+              title: 'Migration',
+              path: 'storage/best_practices/migration',
+            },
+            {
+              title: 'Network',
+              path: 'storage/best_practices/network',
+            },
+            {
+              title: 'Ingest and Egress',
+              path: 'storage/best_practices/ingest_and_egress',
+            },
+          ],
+        },
+        {
+          title: 'APIs',
+          path: 'storage/apis',
+          routes: [
+            {
+              title: 'General Information',
+              path: 'storage/apis/general_information',
+            },
+            {
+              title: 'API Calls',
+              path: 'storage/apis/api_calls',
+            },
+            {
+              title: 'Reference Materials',
+              path: 'storage/apis/reference_materials',
+            },
+          ],
+        },
+      ],
     },
     {
       title: 'Video',
       path: 'video',
+      routes: [
+        {
+          title: 'Guides',
+          path: 'video/guides',
+          routes: [
+            {
+              title: 'DRM',
+              path: 'video/drm',
+            },
+            {
+              title: 'Live Push',
+              path: 'video/live_push',
+            },
+            {
+              title: 'LVP',
+              path: 'video/lvp',
+            },
+            {
+              title: 'MMD Live',
+              path: 'video/mmd_live',
+            },
+            {
+              title: 'MMD On Demand',
+              path: 'video/mmd_od',
+            },
+          ],
+        },
+        {
+          title: 'APIs',
+          path: 'video/apis',
+          routes: [
+            {
+              title: 'Live Stream Provisioning',
+              path: 'video/apis/live_stream_provisioning',
+            },
+            {
+              title: 'LVP',
+              path: 'video/apis/lvp',
+            },
+            {
+              title: 'MMD',
+              path: 'video/apis/mmd',
+            },
+          ],
+        },
+        {
+          title: 'FAQs',
+          path: 'video/faqs',
+        },
+      ],
     },
   ],
 };

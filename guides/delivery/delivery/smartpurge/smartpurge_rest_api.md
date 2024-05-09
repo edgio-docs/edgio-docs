@@ -354,6 +354,48 @@ url=http://shortname.vo.llnwd.net/to/translate`|
 ```
 
 ## Notifications  {/*notification*/}
+If a purge request contains valid email addresses in the "email" field, upon completion an email will be sent from *purge-noreply@llnw.com* to those email addresses, with the following format:
+
+```
+Content purge request 6bcf2d18450e11e49c63e2a600000503 has been completed, purging 12 objects.
+
+Thu, 25 Sep 2014 23:48:16 GMT -> request queued
+Thu, 25 Sep 2014 23:48:16 GMT -> request in-progress
+Thu, 25 Sep 2014 23:48:17 GMT -> request complete
+Thu, 25 Sep 2014 23:48:34 GMT -> request stats available
+
+Pattern Stats:
+1: http://*/0 flags: evict; purged 1 object
+2: http://*/1 flags: none; purged 1 object
+3: http://*/nonexist flags: none; purged 0 objects
+
+Tag Stats:
+1: tag123 flags: none; purged 5 objects
+2: tag456/* flags: evict; purged 5 objects
+
+Request Notes:
+This purge request was a test.
+```
+Each of the sections following the timestamps will only appear if the request contains that type of data (patterns/tags/notes). For an example of how email addresses are included in the JSON, see [Submit Purge Request](#smartpurge-methods).
+
+### Purge Request State Callbacks {/*purge-request-state-callbacks*/}
+
+If a callback URL is provided, a GET request will be made to it when the request makes specific state transitions.
+
+|State|SmartPurge Callback|SmartPurge Plus Callback|
+|---|---|---|
+|`in_progress`|no|yes|
+|`complete`|no|yes|
+|`stats_avail`|yes|yes
+
+The callback will include query parameters:
+
+- `purge_request_id` - the UUID of the purge request without dashes
+- `purge_request_state` - the new external state string as listed in the request endpoint schema
+
+For example: `http://test.example.com/my_callback.php?purge_request_id=7b4cb3865a0e11e49c63e2a600000354&purge_request_state=stats_avail`
+
+See the [Sample Code](#api-client-sample-code) for examples of how to provide the callback URL.
 
 ## API Activation  {/*api-activation*/}
 When your SmartPurge API service is ready for use, each of the Technical Contacts for your Limelight Account will receive an email Welcome Letter from the Edgio NOC (Network Operations Center) at support@edgio.com.
@@ -590,9 +632,8 @@ The following errors can be returned by (description and source may vary for dif
 | 5`03 | Service is unavailable | No  |
 
 ## API Client Sample Code  {/*api-client-sample-code*/}
-
+### Python {/*python*/}
 ```Python
-
 import time
 import hmac
 import hashlib
@@ -695,9 +736,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+```
+### Java Sample Code {/*java*/}
 
-Java Sample Code
-
+```Java
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
@@ -846,6 +888,4 @@ public class SimpleClient {
         System.out.println(sc.createPurgeRequest(requestBody));
     }
 }
-
-
 ```

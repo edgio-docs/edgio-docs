@@ -1,0 +1,11 @@
+name: client_waf_id
+in: path
+required: true
+description: |
+
+  A Client-Side Protection policy's system-defined ID. 
+  
+  Use the [Get All Client-Side Protection Policies operation](#tag/Client-Side-Protection/operation/get-all-client-side-protection-policies) to retrieve a list of Client-Side Protection policies and their system-defined IDs.
+  
+schema:
+  type: string

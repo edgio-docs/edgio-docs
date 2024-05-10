@@ -82,7 +82,7 @@ export default function MyApp({Component, pageProps}: DocsAppProps) {
       install({
         watch: [
           {
-            selector: 'a[href^="/guides"]',
+            selector: 'a[href^="/applications"]',
             callback: (el) => {
               const href = el.getAttribute('href') as string;
               prefetch(href);

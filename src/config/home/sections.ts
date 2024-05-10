@@ -133,6 +133,10 @@ export const sections: HomepageSectionGroup[] = [
             path: 'managed_rules',
           },
           {
+            title: 'Client-Side Protection',
+            path: 'client_side_protection',
+          },
+          {
             title: 'Security Apps',
             path: 'security_applications',
           },
@@ -175,7 +179,7 @@ export const sections: HomepageSectionGroup[] = [
           },
           {
             title: 'MediaVault',
-            path: 'https://support.limelight.com/public/en/Content/Delivery/SmartPurge/Smart_Purge.htm',
+            path: 'https://support.limelight.com/public/en/Default.htm#Delivery/Content%20Delivery%20-%20MediaVault%20User%20Guide/MediaVault.htm',
           },
           {
             title: 'Origin Storage Quick Start',
@@ -199,16 +203,16 @@ export const sections: HomepageSectionGroup[] = [
             path: 'https://support.limelight.com/public/en/Content/Delivery/Content%20Delivery%20-%20User%20Guide/Delivery.htm',
           },
           {
-            title: 'MediaVault',
-            path: 'https://support.limelight.com/public/en/Content/Delivery/SmartPurge/Smart_Purge.htm',
-          },
-          {
             title: 'Origin Storage Quick Start',
             path: 'https://support.limelight.com/public/en/Content/Storage/Quick%20Start%20Guide%20Combined/Quick%20Start.htm',
           },
           {
             title: 'SmartPurge',
             path: 'https://support.limelight.com/public/en/Content/Delivery/SmartPurge/Smart_Purge.htm',
+          },
+          {
+            title: 'API Explorer',
+            path: 'https://developers.limelight.com/explorer/',
           },
         ],
       },

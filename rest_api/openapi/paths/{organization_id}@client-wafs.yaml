@@ -1,0 +1,56 @@
+post:
+  operationId: create-client-side-protection-policy
+  tags:
+    - Client-Side Protection
+  summary: Add Client-Side Protection Policy
+  description: Creates a Client-Side Protection policy.
+  security:
+    - client_wafScope: [app.client_waf]
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  requestBody:
+    $ref: ../components/requestBodies/ClientWaf.yaml
+  responses:
+    '200':
+      description: OK. A Client-Side Protection policy was created.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+get:
+  operationId: get-all-client-side-protection-policies
+  tags:
+    - Client-Side Protection
+  summary: Get All Client-Side Protection Policies
+  description: Retrieves a list of Client-Side Protection policies.
+  security:
+    - client_wafScope: [app.client_waf]
+  parameters:
+    - $ref: ../components/parameters/organization_id.yaml
+  responses:
+    '200':
+      description: OK. A list of Client-Side Protection policies was retrieved.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ObjShort.yaml
+          examples:
+            response:
+              value:
+                - id: TGnXjOIc
+                  name: My Client-Side Protection policy
+                  last_modified_date: "2023-09-29T23:31:39.402145Z"
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

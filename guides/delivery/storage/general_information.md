@@ -10,13 +10,13 @@ Both JSON-RPC 1.0 and 2.0 are supported by the JSON-RPC interface. This document
 
 ## General Information  {/*general-information*/}
 ### Before you Begin  {/*before-you-begin*/}
-To use any of the Origin Storage APIs, you need an active Origin Storage account, a user ID, and a password. Your Limelight Account name is in the Welcome letter you received when you purchased Origin Storage. Please contact your Edgio representative if you have any questions.
+To use any of the Origin Storage APIs, you need an active Origin Storage account, a user ID, and a password. Your Edgio Account name is in the Welcome letter you received when you purchased Origin Storage. Please contact your Edgio representative if you have any questions.
 
-Your Edgio Account name is part of the URL to which you will direct API calls. In this documentation, the Limelight Account name and URL are represented as follows:
+Your Edgio Account name is part of the URL to which you will direct API calls. In this documentation, the Edgio Account name and URL are represented as follows:
 
-- http://{Account name}.upload.llnw.net/jsonrpc2 for calls in the JSON-RPC interface
+- `http://{Account name}.upload.llnw.net/jsonrpc2` for calls in the JSON-RPC interface
     - Example: http://supercustomer.upload.llnw.net/jsonrpc2
-- http://{Account name}.upload.llnw.net for calls in the HTTP interface
+- `http://{Account name}.upload.llnw.net` for calls in the HTTP interface
     - Example: http://supercustomer.upload.llnw.net
 
 <Callout type="info">If you are a long-standing customer and the preceding endpoints fail to resolve, you should use the following endpoints with the -l suffix after {Account name}:<br />- `http://{Account name}-l.upload.llnw.net/jsonrpc2` for calls in the JSON-RPC interface<br />- `http://{Account name}-l.upload.llnw.net` for calls in the HTTP interface</Callout>

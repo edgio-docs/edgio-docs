@@ -1,8 +1,7 @@
 ---
 title: Origin Storage Accounts and Users
 ---
-<Callout type="info">Except where noted, the procedures in this section require Company Admin privileges.
-</Callout>
+<Callout type="info">Except where noted, the procedures in this section require Company Admin privileges.</Callout>
 
 Navigate to Manage > Origin Storage Users in the navigation pane. The *Origin Storage Users* screen is displayed, with a list of all Origin Storage users associated with the currently selected Edgio Account.
 

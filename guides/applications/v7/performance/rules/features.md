@@ -1598,12 +1598,12 @@ The following example:
 export default new Router()
   .get('/', {
     headers: {
-      "set_origin_response_headers": {
-		"sports": "basketball",
-		"+broadcast": " ott"
+      set_origin_response_headers: {
+        sports: 'basketball',
+        '+broadcast': ' ott',
       },
-    }
-  })
+    },
+  });
 ```
 </edgejs>
 

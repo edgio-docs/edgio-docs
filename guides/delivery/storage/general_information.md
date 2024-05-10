@@ -19,7 +19,7 @@ Your Edgio Account name is part of the URL to which you will direct API calls. I
 - `http://{Account name}.upload.llnw.net` for calls in the HTTP interface
     - Example: http://supercustomer.upload.llnw.net
 
-<Callout type="info">If you are a long-standing customer and the preceding endpoints fail to resolve, you should use the following endpoints with the -l suffix after {Account name}:<br />- `http://{Account name}-l.upload.llnw.net/jsonrpc2` for calls in the JSON-RPC interface<br />- `http://{Account name}-l.upload.llnw.net` for calls in the HTTP interface</Callout>
+<Callout type="info">If you are a long-standing customer and the preceding endpoints fail to resolve, you should use the following endpoints with the -l suffix after `{Account name}:`<br />- `http://{Account name}-l.upload.llnw.net/jsonrpc2` for calls in the JSON-RPC interface<br />- `http://{Account name}-l.upload.llnw.net` for calls in the HTTP interface</Callout>
 
 Also note that all your content is stored in the root directory in a sub-directory named for your Edgio Account name:
 <br />`/{Account name}/EMEA/games`

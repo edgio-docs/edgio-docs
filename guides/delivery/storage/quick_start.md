@@ -178,13 +178,70 @@ If needed, you can create target directories using the Origin Storage API or the
 |/post/directory|[Working with Directories in the HTTP Interface](/delivery/storage/api_reference/#working-with-directories-http) |
 
 **Control Portal**
-See Creating Folders in the Origin Storage Console User Guide.
+See [Creating Folders](/delivery/storage/console/#creating-folders) in the [Origin Storage Console User Guide](/delivery/storage/console).
 
 
 #### Step 3: Upload Content  {/*upload-content*/}
+To upload content using the Control Portal, please see [Uploading Files](/delivery/storage/console/#uploading-files) in the Control Portal User Guide.
+
+If you would like to upload content using another method (API, FTP, etc.), see the links to the guides in [Choose an Ingest Method](#upload-content).
+
 ### Uploading Using Rsync over SSH  {/*uploading-using-rsync*/}
+Rsync is a software application for Unix-like and Windows systems which synchronizes files and directories from one location to another, while minimizing data transfer using delta encoding, when appropriate. An important feature of Rsync not found in most protocols is that mirroring takes place with only one transmission in each direction. Rsync can copy or display directory contents and copy files, optionally using compression and recursion.
+
+- Rsync over SSH is available only with pre-configured Source IP Access Control List (ACL) provisioning
+- Rsync over SSH supports both pre-configured SSH authorized keys and basic password authentication
+- Rsync options that trigger mkstemp() system calls are not supported
+- The file system path accessing Origin Storage via SCP is /content
+    -    must be specified as the prefix when using Rsync to ingest files (e.g., `Rsync filename llp:/content/path`)
+
 #### Rsync Options  {/*rsync-options*/}
+
+The following options are known to work. In some cases, the options are ignored because asset ownership and permissions are dictated by the Origin Storage configuration.
+
+<Callout type="info">The `-W`, and `–inplace` options are required.</Callout>
+
+|Usage|Abbreviated Option|Option|Description|
+|---|---|---|---|
+|required|-W|-whole-file|copy files whole (without Rsync algorithm)|
+|required||-inplace|update destination files in-place (see man page)|
+|optional|-q|-quiet|suppress non-error messages|
+|optional||-no-motd|suppress daemon-mode MOTD (see man page caveat)|
+|optional|-r|-recursive|recurse into directories|
+|optional|-u|-update|recurse into directories|
+|optional|-O|-omit-dir-times|omit directories when preserving times|
+|optional|-i|-itemize-changes|output a change-summary for all updates|
+|optional|-r|-recursive|recurse into directories|
+|optional|-t|-times|preserve times|
+|optional|-u|-update|skip files that are newer on the receiver|
+|required|-v|-verbose|increase verbosity|
+|optional||-size-only|skip files that match in size|
+|optional||-progress|show progress during transfer|
+|optional||-stats|give some file-transfer stats|
+|ignored|-g|-group|preserve group|
+|ignored|-o|-owner|preserve owner (super-user only)|
+|ignored|-p|-perms|preserve permissions|
+
 #### Upload Example  {/*upload-example*/}
+This example shows how to sync files from a local machine to Origin Storage.
+
 **Directory Structure**
+Here is a simple directory structure:
+
+![Sample directory structure](/images/delivery/storage/sample.png)
+
 **Rsync Command**
+
+Here is the command to sync the directories using Rsync over SSH:
+
+![Sample directory structure2](/images/delivery/storage/sample2.png)
+
 ## Retrieve and Share Your Content  {/*retrieve-and-share*/}
+After you upload content, you have several options for retrieving and sharing content:
+
+- Use the Control Portal:
+    - To retrieve content, please see [Downloading Files](/delivery/storage/console/#downloading-files) in the in the in the Control Portal User Guide.
+    - To share content via email, please see [Getting Direct Links to Files](/delivery/storage/console#getting-direct-links-to-files) in the in the in the Control Portal User Guide.
+- To download and share the content via a CDN, consult your CDN provider. Origin Storage can act as origin storage for any CDN. If Edgio Content Delivery is your CDN of choice, please see [Configuring Caching and Delivery](/delivery/control/configure/caching_and_delivery) in the Control Portal User Guide.
+
+<Callout type="info">Do not attempt to directly download content from Origin Storage using FTP, SFTP, FTPS, SCP, or rsync because doing so can negatively impact other system processes. To download content, use an HTTP GET request.</Callout>

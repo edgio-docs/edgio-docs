@@ -1,7 +1,7 @@
 ---
-title: LVP
+title: Limelight Video Platform (LVP)
 ---
-The Limelight Video Platform service is a powerful and modular set of live and on-demand video capabilities that seamlessly integrate with your existing infrastructure and workflows.
+The Limelight Video Platform (LVP) service is a powerful and modular set of live and on-demand video capabilities that seamlessly integrate with your existing infrastructure and workflows.
 
 It has easy-to-use workflow tools, automated conversion to any format, a built-in and customizable player to match any website, and powerful analytics and integration APIs.
 

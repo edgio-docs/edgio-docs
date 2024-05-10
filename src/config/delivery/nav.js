@@ -135,6 +135,10 @@ const nav = {
         },
         separator,
         {
+          title: 'API Explorer',
+          path: 'https://support.limelight.com/public/explorer/llnw-api-explorer.html',
+        },
+        {
           title: 'API Structure',
           path: 'control/support_tools/api_structure',
         },
@@ -318,20 +322,6 @@ const nav = {
       path: 'storage',
       routes: [
         {
-          title: 'Quick Start',
-          path: 'storage/quick_start',
-          routes: [
-            {
-              title: 'Upload Content',
-              path: 'storage/quick_start/upload_content',
-            },
-            {
-              title: 'Retrieve and Share Content',
-              path: 'storage/quick_start/retrieve_and_share_content',
-            },
-          ],
-        },
-        {
           title: 'Console',
           path: 'storage/console',
           routes: [
@@ -362,32 +352,46 @@ const nav = {
           ],
         },
         {
+          title: 'Quick Start',
+          path: 'storage/quick_start',
+          routes: [
+            {
+              title: 'Upload Content',
+              path: 'storage/quick_start/upload_content',
+            },
+            {
+              title: 'Retrieve and Share Content',
+              path: 'storage/quick_start/retrieve_and_share_content',
+            },
+          ],
+        },
+        {
           title: 'Best Practices',
           path: 'storage/best_practices',
           routes: [
             {
               title: 'Accounts and Users',
-              path: 'storage/best_practices/accounts_and_users',
+              path: 'storage/best_practices/#accounts_and_users',
             },
             {
               title: 'Directories and Files',
-              path: 'storage/best_practices/directories_and_files',
+              path: 'storage/best_practices/#directories_and_files',
             },
             {
               title: 'Security',
-              path: 'storage/best_practices/security',
+              path: 'storage/best_practices/#security',
             },
             {
               title: 'Migration',
-              path: 'storage/best_practices/migration',
+              path: 'storage/best_practices/#migration',
             },
             {
               title: 'Network',
-              path: 'storage/best_practices/network',
+              path: 'storage/best_practices/#network',
             },
             {
               title: 'Ingest and Egress',
-              path: 'storage/best_practices/ingest_and_egress',
+              path: 'storage/best_practices/#ingest_and_egress',
             },
           ],
         },

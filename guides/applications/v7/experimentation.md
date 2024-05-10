@@ -275,14 +275,19 @@ The `server-timing` response header tracks the variants assigned to a client. It
 
 `edgio_cache;desc=UNCACHEABLE,edgio_pop;desc=lac,edgio_country;desc=US,experiments;desc=%7B%22myexperiment_1695661110792%22%3A%22altlandingpage_1695661135500%22%7D`
 
-### Metadata Extraction
+### Metadata Script {/*metadata-script*/}
 
-The following sample shell script submits 10 requests to a sample Experimentation site that splits traffic between the following sites:
+The following shell script submits 10 requests to a sample Experimentation site that splits traffic between the following sites:
 
 -   80% of requests are sent to the [Full-Featured sample site](https://edgio-community-examples-v7-full-featured-perfor-f74158.edgio.link/)
 -   20% of requests are sent to the [Simple sample site](https://edgio-community-examples-v7-simple-performance-live.edgio.link/)
 
-```
+The output for this script includes:
+
+-   The value for the `Server-Timing` response header. This value identifies the variant assigned to the request.
+-   The `{{ HEADER_PREFIX }}-experiments` cookie. This value identifies the value assigned to the request. This value determines the variant that will be served to the client.
+
+```bash
 #!/bin/bash
 
 # Function to extract the value of a header from response
@@ -308,11 +313,6 @@ for i in {1..10}; do
     echo "------------------------"
 done
 ```
-
-The output for the above script includes:
-
--   The value for the `Server-Timing` response header. This value identifies the variant assigned to the request.
--   The `{{ HEADER_PREFIX }}-experiments` cookie. This value identifies the value assigned to the request. This value determines the variant that will be served to the client.
 
 <Tip>
 

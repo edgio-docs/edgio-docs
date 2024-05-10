@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import Link from 'components/MDX/Link';
 import {mobileMinWidth} from 'styles';
+import {HomepageSectionGroup} from 'utils/Types';
 
 const columnCount = 3;
 
@@ -25,6 +26,10 @@ const SectionContainer = styled.div`
   a {
     color: var(--text-primary);
     text-decoration: none;
+
+    &:hover {
+      color: var(--colors-blue0);
+    }
   }
 
   @media (max-width: ${mobileMinWidth}) {
@@ -57,13 +62,11 @@ const TitleIcon = styled.div`
 const TitleIconInner = styled.div``;
 
 const Title = styled.div`
-  color: var(--text-primary);
   font-size: 24px;
   font-weight: 600;
 `;
 
 const Subtitle = styled.div`
-  color: var(--text-primary);
   font-size: 14px;
   line-height: 18px;
 `;
@@ -84,7 +87,6 @@ const Section = styled.div`
 `;
 
 const SectionTitle = styled.div`
-  color: var(--text-primary);
   font-size: 18px;
   font-weight: 600;
 `;
@@ -122,21 +124,14 @@ const ItemDot = styled.div`
 `;
 
 const ItemText = styled.div`
-  color: var(--text-primary);
   font-size: 14px;
   white-space: nowrap;
-
-  a:hover {
-    color: var(--colors-blue0);
-    text-decoration: none;
-  }
 `;
 
 const ViewMoreContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 7px;
-  color: var(--text-primary);
   font-size: 14px;
   font-weight: 500;
 `;
@@ -151,27 +146,18 @@ const ViewMoreIcon = styled.div`
   align-items: center;
 `;
 
-interface SectionBoxProps {
-  title: string;
-  subtitle: string;
+type SectionBoxProps = HomepageSectionGroup & {
   className?: string;
   icon?: NamedExoticComponent<JSX.IntrinsicElements['svg']>;
-  href?: string;
-  sections: {
-    title: string;
-    items: any[];
-  }[];
-  viewMoreText: string;
-}
+};
 
 const SectionBox = ({
-  title,
-  subtitle,
+  heading,
+  subheading,
   className,
   icon,
   href,
   sections,
-  viewMoreText,
 }: SectionBoxProps) => {
   const Icon = icon;
 
@@ -184,24 +170,31 @@ const SectionBox = ({
           </TitleIcon>
           {href ? (
             <Link href={href}>
-              <Title>{title}</Title>
+              <Title>{heading}</Title>
             </Link>
           ) : (
-            <Title>{title}</Title>
+            <Title>{heading}</Title>
           )}
         </TitleContainer>
-        <Subtitle>{subtitle}</Subtitle>
+        <Subtitle>{subheading}</Subtitle>
       </SectionHeader>
       <ItemsContainer>
         {sections.map((section, i) => (
           <Section key={i}>
-            {section.title && <SectionTitle>{section.title}</SectionTitle>}
+            {section.title &&
+              (section.href ? (
+                <Link href={section.href}>
+                  <SectionTitle>{section.title}</SectionTitle>
+                </Link>
+              ) : (
+                <SectionTitle>{section.title}</SectionTitle>
+              ))}
             <ItemsGrid columns={columnCount}>
               {section.items.map((item) => (
                 <Item key={item.title}>
                   <ItemDot />
                   <ItemText>
-                    <Link href={item.path}>{item.title}</Link>
+                    <Link href={item.href}>{item.title}</Link>
                   </ItemText>
                 </Item>
               ))}
@@ -212,7 +205,7 @@ const SectionBox = ({
       {href && (
         <ViewMoreContainer>
           <ViewMoreText>
-            <Link href={href}>View {title} Documentation</Link>{' '}
+            <Link href={href}>View {heading} Documentation</Link>{' '}
           </ViewMoreText>
           <ViewMoreIcon>--&gt;</ViewMoreIcon>
         </ViewMoreContainer>

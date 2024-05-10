@@ -18,7 +18,7 @@ export const sections: HomepageSectionGroup[] = [
         items: [
           {
             title: 'Getting Started',
-            path: '',
+            path: 'getting_started',
           },
           {
             title: 'Properties',
@@ -254,7 +254,6 @@ export const sections: HomepageSectionGroup[] = [
     icon: IconUplynk,
     sections: [
       {
-        path: 'https://docs.edgecast.com/video/index.html',
         items: [
           {
             title: 'Getting Started',
@@ -342,11 +341,27 @@ export const sections: HomepageSectionGroup[] = [
   },
 ];
 
+// Add full href to each section, subsection, and item
 sections.forEach((section) => {
+  if (section.path) {
+    section.href = section.path;
+  }
   section.sections.forEach((subsection) => {
+    if (subsection.path) {
+      if (!subsection.path.startsWith('http')) {
+        subsection.href = `${section.path}/${subsection.path}`;
+      } else {
+        subsection.href = subsection.path;
+      }
+    }
+
     subsection.items.forEach((item) => {
-      if (!item.path.startsWith('http') && !item.path.startsWith('/')) {
-        item.path = `${section.path}/${subsection.path}/${item.path}`;
+      if (item.path) {
+        if (!item.path.startsWith('http')) {
+          item.href = `${section.path}/${subsection.path}/${item.path}`;
+        } else {
+          item.href = item.path;
+        }
       }
     });
   });

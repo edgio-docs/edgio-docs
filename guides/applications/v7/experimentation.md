@@ -300,7 +300,7 @@ curl_and_process() {
     local response=$(curl -s -D - "https://edgio-community-examples-entry.glb.edgio.link/" -o /dev/null)
     local server_timing=$(extract_header "$response" "Server-Timing")
     local cookies=$(extract_header "$response" "Set-Cookie")
-    local x_edg_experiment_cookie=$(echo "$cookies" | grep -oP "x-edg-experiments=\K[^;]+")
+    local x_edg_experiment_cookie=$(echo "$cookies" | awk -F';' '{for(i=1; i<=NF; i++) if ($i ~ /x-edg-experiments=/) print $i}' | sed 's/^.*x-edg-experiments=//')
 
     echo "Server-Timing: $server_timing"
     echo "x-edg-experiments: $x_edg_experiment_cookie"

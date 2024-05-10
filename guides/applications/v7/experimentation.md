@@ -285,7 +285,7 @@ The following shell script submits 10 requests to a sample Experimentation site 
 The output for this script includes:
 
 -   The value for the `Server-Timing` response header. This value identifies the variant assigned to the request.
--   The `{{ HEADER_PREFIX }}-experiments` cookie. This value identifies the value assigned to the request. This value determines the variant that will be served to the client.
+-   The `{{ HEADER_PREFIX }}-experiments` cookie. This value determines the variant that will be served to the client.
 
 ```bash
 #!/bin/bash

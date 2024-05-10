@@ -75,7 +75,7 @@ const ItemsContainer = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 20px;
 `;
 
 const Section = styled.div`

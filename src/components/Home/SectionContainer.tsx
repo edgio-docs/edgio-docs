@@ -81,7 +81,7 @@ const ItemsContainer = styled.div`
 const Section = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
   align-items: flex-start;
   width: 100%;
 `;
@@ -93,7 +93,7 @@ const SectionTitle = styled.div`
 
 const ItemsGrid = styled.div<{columns: number}>`
   display: grid;
-  grid-gap: 16px;
+  grid-gap: 4px;
   width: 100%;
   box-sizing: border-box;
 
@@ -202,14 +202,14 @@ const SectionBox = ({
           </Section>
         ))}
       </ItemsContainer>
-      {href && (
+      {/* {href && (
         <ViewMoreContainer>
           <ViewMoreText>
             <Link href={href}>View {heading} Documentation</Link>{' '}
           </ViewMoreText>
           <ViewMoreIcon>--&gt;</ViewMoreIcon>
         </ViewMoreContainer>
-      )}
+      )} */}
     </SectionContainer>
   );
 };

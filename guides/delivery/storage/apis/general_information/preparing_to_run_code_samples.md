@@ -123,9 +123,7 @@ u'42c4160c-cb49-4352-b07b-348687495972'
 
 Note that the sample above uses the login method to obtain a token, but you can also login using the `authenticate` method (JSON-RPC interface) or the `/account/login` call (HTTP interface). See [Log in to a Sub-directory](delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface/#log-in-to-subdirectory) and [Logging in Using the HTTP Interface](delivery/storage/apis/api_calls/logging_in_using_http_interface) for additional information.
 
-<Callout type="info">All JSON-RPC code samples in this document use `api` as the server variable and `token` as the token variable.
-
-</Callout>
+<Callout type="info">All JSON-RPC code samples in this document use `api` as the server variable and `token` as the token variable.</Callout>
 
 ### Testing Your Setup
 As a test, submit the noop call: `>>> result = api.noop(token)`

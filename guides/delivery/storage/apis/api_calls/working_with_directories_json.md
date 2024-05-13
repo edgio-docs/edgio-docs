@@ -88,9 +88,7 @@ Creates a directory along with any parent paths that do not already exist.
 
 If the directory is successfully created, the system sets the parent directory's mtime (last modified time) to the current system time.
 
-<Callout type="info">A directory cannot contain a file and a sub-directory with the same name.
-
-</Callout>
+<Callout type="info">A directory cannot contain a file and a sub-directory with the same name.</Callout>
 
 ### Create a Directory Using Named Parameters  {/*create-directory-using-named-parameters2*/}
 

@@ -151,8 +151,41 @@ export const sections: HomepageSectionGroup[] = [
         path: 'sites_frameworks',
         items: [
           {
-            title: 'Frameworks',
+            title: 'Next.js',
+            path: 'getting_started/next',
+          },
+          {
+            title: 'Nuxt3',
+            path: 'getting_started/nuxt3',
+          },
+          {
+            title: 'Express',
+            path: 'getting_started/express',
+          },
+          {
+            title: 'React',
+            path: 'getting_started/react',
+          },
+          {
+            title: 'Vue.js',
+            path: 'getting_started/vue',
+          },
+          {
+            title: 'Additional Frameworks',
             path: 'getting_started',
+          },
+        ],
+      },
+      {
+        title: 'APIs',
+        items: [
+          {
+            title: 'REST API',
+            path: '/rest_api',
+          },
+          {
+            title: 'EdgeJS API',
+            path: '/docs/v7.x/api/core/',
           },
         ],
       },
@@ -347,20 +380,22 @@ sections.forEach((section) => {
     section.href = section.path;
   }
   section.sections.forEach((subsection) => {
-    if (subsection.path) {
-      if (!subsection.path.startsWith('http')) {
-        subsection.href = `${section.path}/${subsection.path}`;
-      } else {
+    const {path} = section;
+    if (path) {
+      if (path.startsWith('http') || path.startsWith('/')) {
         subsection.href = subsection.path;
+      } else {
+        subsection.href = `${section.path}/${subsection.path}`;
       }
     }
 
     subsection.items.forEach((item) => {
-      if (item.path) {
-        if (!item.path.startsWith('http')) {
-          item.href = `${section.path}/${subsection.path}/${item.path}`;
+      const {path} = item;
+      if (path) {
+        if (path?.startsWith('http') || path?.startsWith('/')) {
+          item.href = path;
         } else {
-          item.href = item.path;
+          item.href = `${section.path}/${subsection.path}/${path}`;
         }
       }
     });

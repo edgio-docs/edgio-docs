@@ -343,7 +343,7 @@ const nav = {
             },
             {
               title: 'Managing Accounts and Users',
-              path: 'storage/console/#managing-accounts-and-users',
+              path: 'storage/console/#manage-accounts-and-users',
             },
             {
               title: 'Logging Out',
@@ -357,11 +357,11 @@ const nav = {
           routes: [
             {
               title: 'Upload Content',
-              path: 'storage/quick_start/upload_content',
+              path: 'storage/quick_start/#upload-content',
             },
             {
               title: 'Retrieve and Share Content',
-              path: 'storage/quick_start/retrieve_and_share_content',
+              path: 'storage/quick_start/#retrieve-and-share-content',
             },
           ],
         },
@@ -371,11 +371,11 @@ const nav = {
           routes: [
             {
               title: 'Accounts and Users',
-              path: 'storage/best_practices/#accounts_and_users',
+              path: 'storage/best_practices/#accounts-and-users',
             },
             {
               title: 'Directories and Files',
-              path: 'storage/best_practices/#directories_and_files',
+              path: 'storage/best_practices/#directories-and-files',
             },
             {
               title: 'Security',
@@ -391,13 +391,13 @@ const nav = {
             },
             {
               title: 'Ingest and Egress',
-              path: 'storage/best_practices/#ingest_and_egress',
+              path: 'storage/best_practices/#ingest-and-egress',
             },
           ],
         },
         {
           title: 'APIs',
-          path: 'storage/apis',
+          path: 'storage/api_reference',
           routes: [
             {
               title: 'General Information',
@@ -405,11 +405,11 @@ const nav = {
             },
             {
               title: 'API Calls',
-              path: 'storage/api_calls',
+              path: 'storage/api_reference/#api-calls',
             },
             {
               title: 'API Materials',
-              path: 'storage/reference_materials',
+              path: 'storage/api_reference/#reference_materials',
             },
           ],
         },

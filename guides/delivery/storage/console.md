@@ -90,7 +90,7 @@ You can delete a single file or multiple files.
 3.  Click **Delete** in the dialog that asks you to confirm the deletion.
 4.  The Console deletes the file.
 
-<Callout type="info">You can also delete a file using the Origin Storage [deleteFile API](/delivery/storage/api_reference/#delete-a-file).</Callout>
+<Callout type="info">You can also delete a file using the Origin Storage [deleteFile API](/delivery/storage/apis/api_calls/working_with_files/#delete-a-file).</Callout>
 
 #### Deleting Multiple Files  {/*deleting-multiple-files*/}
 1.  Navigate to the folder that contains the files you want to delete.
@@ -147,7 +147,7 @@ You can upload by drag and drop or by selecting individual files. The Console fu
 1.  Navigate to the folder to which you want to upload files.
 2.  Select one or more files from your desktop and drag them over the Console. As you hover over the Console, you see the Drop files here prompt:
 
-    [Drag and drop icon](/images/delivery/storage/drag.png)
+    ![Drag and drop icon](/images/delivery/storage/drag.png)
 
 3.  Release the files.
 4.  The Console uploads your files.
@@ -158,7 +158,7 @@ See also [Viewing Upload Progress](#viewing-upload-progress) and [Canceling Uplo
 1.  Navigate to the folder to which you want to upload files.
 2.  Click the upload button.
 
-    [Upload icon](/images/delivery/storage/upload.png)
+    ![Upload icon](/images/delivery/storage/upload.png)
 
 3.  The Open dialog appears. Use the dialog to browse to the location of your files and select the desired files.
 4.  Click the Open button in the dialog.
@@ -169,24 +169,24 @@ See also [Viewing Upload Progress](#viewing-upload-progress) and [Canceling Uplo
 #### Viewing Upload Progress  {/*viewing-upload-progress*/}
 During file upload, the Console displays the *upload progress* bar and the *Cancel All* icon:
 
-[Upload progress](/images/delivery/storage/upload-progress.png)
+![Upload progress](/images/delivery/storage/upload-progress.png)
 
 <Callout type="info">Small files are generally uploaded very quickly and the progress bar goes away almost immediately.</Callout>
 
 If you are uploading multiple files, you can click the *upload progress* bar to show upload details—the status of each file in the upload:
 
-[Uploading multiple icon](/images/delivery/storage/upload-multiple.png)
+![Uploading multiple icon](/images/delivery/storage/upload-multiple.png)
 
 For uploads with more than five files, the upload details includes the *Show all uploading* link:
 
-[Show all icon](/images/delivery/storage/show-all.png)
+![Show all icon](/images/delivery/storage/show-all.png)
 
 Click the link to view details for the remaining files.
 
 #### Identifying Newly Uploaded Files  {/*identifying-newly-uploaded-files*/}
 After the Console uploads a file, the Console flags the file with the New icon:
 
-[New icon](/images/delivery/storage/new.png)
+![New icon](/images/delivery/storage/new.png)
 
 The file is placed at the start of the files and folders list.
 
@@ -196,13 +196,13 @@ If you don't see your uploaded files in the files and folders list, the list mig
 
 You can cancel a single file upload or cancel all files in a multi-file upload by clicking the *Cancel All* icon:
 
-[Cancel all button](/images/delivery/storage/cancel.png)
+![Cancel all button](/images/delivery/storage/cancel.png)
 
 You can also cancel individual files in a multi-file upload:
 
 1.  Click the *upload progress* bar to show progress details.
 
-    [Upload progress](/images/delivery/storage/upload-progress.png)
+    ![Upload progress](/images/delivery/storage/upload-progress.png)
 
 2.  Click the **Cancel** icon for any individual uploads you want to stop.
 

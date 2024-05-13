@@ -28,7 +28,7 @@ Shared key is a large unique key created for use with the "HmacSHA256" MAC algor
 Authenticated users must have appropriate permissions assigned, on per shortname basis, in order to be authorized to manage purge requests.
 
 ## Patterns  {/*patterns*/}
-SmartPurge uses Patterns, rather than Regex, when matching multiple objects. For more information on Patterns, see [SmartPurge Pattern Details](/delivery/delivery/smartpurge/content_with_smartpurge/#smartpurge-pattern-details) in the [SmartPurge](/delivery/control/manage/content_with_smartpurge) section of the Control User Guide.
+SmartPurge uses Patterns, rather than Regex, when matching multiple objects. For more information on Patterns, see [SmartPurge Pattern Details](/delivery/control/manage/content_with_smartpurge/#smartpurge-pattern-details) in the [SmartPurge](/delivery/control/manage/content_with_smartpurge) section of the Control User Guide.
 
 <Callout type="info">For "exact" matches (where exact is true in the patterns object of a request), the Pattern is compared as a string literal to the Published URL. Any wildcard ("*") characters in the Pattern are treated as text. For "partial" matches (where exact is false in the patterns object), the Pattern is compared to the Origin URL (not the Published URL), and wildcard characters are treated as wildcards.</Callout>
 
@@ -425,6 +425,7 @@ If you use an invalid Request ID in a method, the response will be an HTTP 400 �
 If an excessive number of purge requests are submitted, the request will be rejected with a 429 HTTP Code (Too Many Requests).
 
 ## Manage SmartPurge API  {/*manage-smartpurge-api*/}
+
 ### Best Practices {/*best-practices*/}
 Objects are normally updated in or removed from the Edgio CDN cache during “freshness checks” with your origin. For a given object, a freshness check is initiated when a request has been made for the object, and EdgePrism determines that the object’s TTL has expired. Since TTL directly controls caching, setting object TTLs is the best and most efficient way to manage cached content.
 
@@ -483,7 +484,7 @@ This section describes the parameters for single purge request object schema:
 
     <Callout type="info">Purge request must have at least one pattern or content tag. Patterns and tags can be combined in one request.</Callout>
 
-- `tags`(array of objects, read-write, optional): List of content tags to purge, an array of objects with the following schema:
+- `tags` (array of objects, read-write, optional): List of content tags to purge, an array of objects with the following schema:
 
     |Name| Type| Description|
     |---|---|---|
@@ -737,7 +738,7 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-### Java Sample Code {/*java*/}
+### Java {/*java*/}
 
 ```Java
 import java.io.IOException;

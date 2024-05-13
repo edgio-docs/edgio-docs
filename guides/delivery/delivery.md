@@ -35,3 +35,6 @@ Refer to the [Change Log](/delivery/delivery/change_log) to see recent feature u
 [SmartPurge](/delivery/delivery/smartpurge)
 
 [SmartPurge REST API](/delivery/delivery/smartpurge/smartpurge_rest_api)
+
+## Resources
+[IP Allow List](https://control.llnw.com/aportal/support/documentation/iprssfeed/v2)

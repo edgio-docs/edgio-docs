@@ -304,18 +304,19 @@ Content Delivery uses unique “Cache Keys” to locate and return cached object
 
 Content Delivery uses unique “Cache Keys” to locate and return cached objects. By default, each Cache Key is based on the full origin URL of the requested object, including any query terms, and the HTTP method that caused the object to be cached.
 
-Query Term Customization
+#### Query Term Customization  {/*query-term-customization*/}
 You can configure Content Delivery to extensively modify query terms before they are stored in the Cache Key. Modifications may include:
 
-Stripping (removing) all query terms.
-Excluding specific query terms
-Including only specific query terms
+- Stripping (removing) all query terms.
+- Excluding specific query terms
+- Including only specific query terms
+
 Removing query terms can eliminate duplicate caching of content (and increase CDN efficiency and “Cache Hit Ratios”). Duplicate caching can occur when the origin provides the same content regardless of the presence of one or more query terms. Unless those query terms are removed, a new copy of the content will be cached for each change in the values of the query terms. Removing query terms can also eliminate duplicate caching when multiple URLs map to the same cached content by using different query terms.
 
-Adding Cache Key Suffixes
+#### Adding Cache Key Suffixes {/*adding-cache-key-suffixes*/}
 Cache Keys can also be configured to add custom values to the end of the key.
 
-Adding Suffixes Using Request Headers
+##### Adding Suffixes Using Request Headers {/*adding-suffixes-using-request-headers*/}
 Content Delivery caches multiple responses identified by a single URL, based on different request header values
 
 Custom Cache Key suffixes can be provided in an HTTP request header. When a specified header name is present in a request, Content Delivery appends the header value to the cache key of the response.
@@ -687,7 +688,7 @@ Middle-mile optimizations include:
 
 - Custom cache hierarchies, mapping the best path to the origin across Edgio’s private network (see [Cache Hierarchies](#cache-hierarchies).)
 - Connection meshing between POPs, ensuring low latency for all connections across the network (see [Connection Meshing](#connection-meshing))
-- Persistent connections for high traffic scalability (see [Dynamic Content Acceleration and Delivery Features In Context](#dynamic) and [Static Content Acceleration and Delivery Features In Context](#static))
+- Persistent connections for high traffic scalability (see [Dynamic Content Acceleration and Delivery Features In Context](#dynamic-in-context) and [Static Content Acceleration and Delivery Features In Context](#static))
 - WAN and TCP optimization for lowest content propagation times (see TCP/IP Optimization)
 
 ##### Last-Mile Acceleration {/*last-mile*/}

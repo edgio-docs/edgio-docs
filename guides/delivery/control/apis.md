@@ -4,9 +4,11 @@ title: Control REST APIs
 
 This content is also accessible in the navigation menu under the associated products.
 
-|API Guide|Type|
-|---|---|
-|[Billing](https://support.limelight.com/public/openapi/billing/index.html) <br /> [Configuration](https://support.limelight.com/public/openapi/configuration/index.html) <br /> [Realtime Reporting](https://support.limelight.com/public/openapi/realtimereporting/index.html) | REST <br /> REST <br /> REST <br />|
+|API Guide|Type|Description|
+|---|---|---|
+|[Billing](https://support.limelight.com/public/openapi/billing/index.html) |REST|<br />- Retrieve billing report data and metadata.<br />- Perform health checks on the Billing API application.|
+ [Configuration](https://support.limelight.com/public/openapi/configuration/index.html) |REST|Progammatically manage:<br />- Content Delivery Services<br />- IP Access Control Lists<br />- Edge Rules and Edge Prism Options<br />- Delivery Service Profiles<br />- HTTP Chunked Streaming Configurations<br />- Customer Certificates<br />- Log Delivery Service|
+ | [Realtime Reporting](https://support.limelight.com/public/openapi/realtimereporting/index.html) | REST |<br />- Retrieve reports using various filters.<br />- Search data segments.<br />- Perform health checks.|
 
 ## API Developer Tools and References
 [API Terminology](/delivery/control/support_tools/api_terminology)

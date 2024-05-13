@@ -12,7 +12,7 @@ For additional information about MediaVault and further configuration options, s
 
 ## Instructions {/*displaying-the-performance-dashboard*/}
 
-1.  For any given URL, fill out the fields in the top section of the page (See [Configuration Fields](#configuration-fields)). As you enter information, fields in the Output section are updated (see [Output Fields](#output-fields)).
+1.  For any given URL, fill out the fields in the top section of the page (See [Configuration Fields](#configuration-fields)). As you enter information, fields in the Output section are updated (See [Output Fields](#output-fields)).
 
 2.  Copy the value of the Secure URL field and publish it in place of the non-protected URL.
 

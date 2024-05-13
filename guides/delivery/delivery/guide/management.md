@@ -27,7 +27,7 @@ Content Delivery provides many different ways to access and view your data. The 
 - Realtime Reporting API Access: See Accessing Report Data via the Reporting API
 - File Retrieval
     - Server Logs - See [Retrieving Content Delivery Logs](#retrieving-logs)
-    - Download Completion Reports - see [Retrieving Download Completion Reports](#retrieving-dowload-completion-reports)
+    - Download Completion Reports - see [Retrieving Download Completion Reports](#retrieving-download-completion-reports)
 - Notifications: See [Receiving Real-Time Download Completion Receipts](#receiving-realtime-download-completion-receipts)
 
 ## Monitoring the User Experience  {/*monitoring-the-user-experience*/}

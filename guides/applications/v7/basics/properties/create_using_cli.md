@@ -21,5 +21,3 @@ Use this method if you have an existing codebase and want to initialize and depl
 6.  Click **Create Property** to finalize the creation.
 7.  Follow the instructions provided to install the CLI and finish deploying your property.
     ![CLI Instructions](/images/v7/basics/property-create-using-cli-complete.png)
-
-{{ properties_rename_delete_steps.md }}

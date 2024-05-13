@@ -41,5 +41,3 @@ Use this method if you have an existing website hosted on your servers and want 
     7.  Add more origin configurations as needed by clicking **+ Add Origin** and then repeating the above steps.
 
 7.  Click **Create Property**.
-
-{{ properties_rename_delete_steps.md }}

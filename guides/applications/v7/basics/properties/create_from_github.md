@@ -28,5 +28,3 @@ Use this method if you have an existing project on GitHub that uses a supported 
     ![Property Preparing](/images/v7/basics/property-import-existing-preparing.png)
 9.  Once the project has been prepared and deployed, you will be redirected to the property dashboard for viewing the deployment details.
     ![Property Dashboard](/images/v7/basics/property-import-existing-complete.png)
-
-{{ properties_rename_delete_steps.md }}

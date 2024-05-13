@@ -27,5 +27,3 @@ Use this method if you want to deploy a new property by selecting a template fro
     ![Property Cloning](/images/v7/basics/property-new-from-template-preparing.png)
 8.  Once the template has been cloned and deployed, you will be redirected to the property dashboard for viewing the deployment details.
     ![Property Dashboard](/images/v7/basics/property-new-from-template-complete.png)
-
-{{ properties_rename_delete_steps.md }}

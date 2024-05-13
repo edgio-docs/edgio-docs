@@ -4,14 +4,13 @@ title: Remix
 
 This article guides you through the setup and deployment of a [Remix](https://remix.run/) + Express application to {{ PRODUCT }}.
 
-<!-- ## Example {/* example */}
+## Example {/* example */}
 
 <ExampleButtons
-  title="Remix Express"
-  siteUrl="https://layer0-docs-layer0-remix-express-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/edgio-docs/edgio-remix-express-example"
-  deployFromRepo
-/> -->
+  title="Remix + Express"
+  siteUrl="https://edgio-community-examples-v7-remix-live.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-remix-example"
+/>
 
 {{ PREREQ.md }}
 

@@ -297,11 +297,11 @@ Shows the request run time, number of deleted and invalidated objects, number of
 
 Selectable tabs allow you to view lists of items purged by patterns, URLs, and Tags. For longer lists, use the **Filter** field to locate the information you need.
 
-## *Template Summary* Page  {/*template-summary-page*/}
+## Template Summary Page  {/*template-summary-page*/}
 
 The *Template Summary* page provides read-only information about a template, including identifying information, notes, edits applied to it, and history of its use.
 
-Icons at the top of the page allow you to [edit](#editing-a-template) or [duplicate](#duplicating-a-template) the template, [delete](#deleting-a-template) it, [do a dry run](#do-a-dry-run), or [do a purge](#do-a-purge).
+Icons at the top of the page allow you to [edit](#editing-a-template) or [duplicate](#duplicating-a-template) the template, [delete](#deleting-a-template) it, [do a dry run](#doing-a-dry-run), or [do a purge](#do-a-purge).
 
 The *Details* section provides historical information about template creation and modification as well as run information (dry runs are not included). The section also shows items purged by patterns, URLs, and Tags. For longer lists, use the **Filter** field to locate the information you need.
 
@@ -311,7 +311,7 @@ The *Details* section provides historical information about template creation an
 
 Purge notifications are displayed in the *Activity and Events* section of your account's dashboard.
 
-## The SmartPurge REST API  {/*the-smartpurge-rest-api*/}
+## SmartPurge REST API  {/*the-smartpurge-rest-api*/}
 
 The SmartPurge REST API provides programmatic access to all SmartPurge features.
 

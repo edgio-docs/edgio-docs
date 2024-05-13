@@ -4,12 +4,13 @@ title: Logging in Using the JSON-RPC Interface
 The JSON-RPC interface provides these methods for logging in:
 
 [Log In](#log-in)
+
 [Log in to a Subdirectory](#log-in-to-a-subdirectory)
 
 ## Log In  {/*log-in*/}
 Method name: `login`
 
-Logs into Origin Storage and obtains a token for subsequent calls. Note that by default the token is valid for one hour. If you want to extend your token's lifetime, use the `updateSession` call. (See [Set Your Token's Expiry](/delivery/storage/apis/api_calls/working_with_sessions#set-your-tokens-exiry) for details.)
+Logs into Origin Storage and obtains a token for subsequent calls. Note that by default the token is valid for one hour. If you want to extend your token's lifetime, use the `updateSession` call. (See [Set Your Token's Expiry](/delivery/storage/apis/api_calls/working_with_sessions/#set-your-tokens-exiry) for details.)
 
 ### Log In Using Named Parameters  {/*log-in-using-named-parameters*/}
 
@@ -230,7 +231,7 @@ This functionality is also available in the HTTP interface by using the `X-Agile
 -   **-47**: invalid sub-directory
 -   **-10001**: invalid username or password. Or both username and password were not passed
 
-<Callout type="info">For a list of error codes not specific to `authenticate`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `authenticate`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data  {/*response-data-2*/}
 

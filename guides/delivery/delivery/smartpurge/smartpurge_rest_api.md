@@ -342,8 +342,7 @@ limit=10&offset=0`
 |Required URI Parameters|- `shortname` - CDN Account shortname <br />- `url` - public exact URL to translate|
 |Optional URI Parameters|None|
 |Description|Translates public exact URL into the corresponding origin URL|
-|Request Example|`GET https://apis.llnw.com/purge/v1/account/example/translate?
-url=http://shortname.vo.llnwd.net/to/translate`|
+|Request Example|`GET https://apis.llnw.com/purge/v1/account/example/translate?url=http://shortname.vo.llnwd.net/to/translate`|
 
 **Response Example**
 

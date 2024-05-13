@@ -120,15 +120,16 @@ The reports provided by Control let you track overall traffic and detailed conte
 
 Reports are grouped by the major types of data they present. Available report titles include:
 
+### Traffic {/*traffic*/}
 - [Billing](/delivery/control/reports/traffic/billing)
 - [LivePush Streaming](/delivery/control/reports/traffic/live_push)
 - [Live Stats](/delivery/control/reports/traffic/live_stats)
 - [Traffic](/delivery/control/reports/traffic/traffic)
 
-### Content
+### Content {/*content*/}
 [Origin Storage](/delivery/control/reports/content/origin_storage)
 
-### Storage
+### Storage {/*storage*/}
 [Status Codes](/delivery/control/reports/content/status_codes)
 
 You can use Content Delivery report data for a variety of purposes, including budget planning, marketing analytics and performance analysis and troubleshooting.

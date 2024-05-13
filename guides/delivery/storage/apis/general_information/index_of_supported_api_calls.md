@@ -11,33 +11,71 @@ Both sections contain links to detailed information.
 ## API Calls by Name
 Calls are listed in alphabetical order within each interface. Note that there is not a one-to-one correspondence between calls in the two interfaces because the HTTP interface has fewer calls. Juxtaposition of the HTTP calls with the JSON-RPC calls in the following table is not meant to imply correspondence.
 
-| Interface | HTTP Interface |
+### JSON-RPC Interface
+| API Call | Details|
 | --- | --- |
-| abortMultipart<br /><br />     See [Abort a Multipart Upload](Working with Multipart JSON RPC.htm#Abort) | account/login<br /><br />     See [Log In](Logging in HTTP.htm#Log) |
-| authenticate<br /><br />     See [Log in to a Sub-directory](Logging In JSON RPC.htm#Log3) | multipart/complete<br /><br />     See [Complete a Multipart Upload](Working with Multipart HTTP.htm#Complete) |
-| checkToken<br /><br />     See [Determine Your Token's Age](Working with Sessions.htm#Determin) | multipart/create<br /><br />     See [Begin a Multipart Upload](Working with Multipart HTTP.htm#Create) |
-| completeMultipart<br /><br />     See [Complete a Multipart Upload](Working with Multipart JSON RPC.htm#Complete) | multipart-piece<br /><br />     See [Create a Multipart Piece](Working with Multipart HTTP.htm#Create2) |
-| deleteDir<br /><br />     See [Delete a Directory](Working with Directories JSON RPC.htm#Delete) | post/file<br /><br />     See [Web Browser Upload](Uploading Files.htm#File) |
-| deleteFile<br /><br />     See [Delete a File](Working with Files.htm#Delete) | post/raw<br /><br />     See [File Raw Post](Uploading Files.htm#File4) |
-| fetchFileHTTP<br /><br />    See [Copy a File](Working with Files.htm#Copy). |     |
-| getMultipartStatus<br /><br />     See [Get Status for a Multipart Upload](Working with Multipart JSON RPC.htm#Get) |     |
-| getMultipartStatusMap<br /><br />     See [Get String Equivalents of Multipart Status Codes](Working with Multipart JSON RPC.htm#Get2) |     |
-| initKeyPair<br /><br />     See [Initializing HMAC Key Pairs](Initializing HMAC Key Pairs.htm) |     |
-| listDir<br /><br />     See [List Directories](Working with Directories JSON RPC.htm#List) |     |
-| listFile<br /><br />     See [List Files](Working with Files.htm#List) |     |
-| listMultipart<br /><br />     See [List Your Multipart Uploads](Working with Multipart JSON RPC.htm#List) |     |
-| listMultipartPiece<br /><br />     See [List Pieces in a Multipart Upload](Working with Multipart JSON RPC.htm#List2) |     |
-| listPath<br /><br />     See [List Files and Directories](Working With Directories and Files Common.htm#List) |     |
-| login<br /><br />     See [Log In](Logging In JSON RPC.htm#Log) |     |
-| logout<br /><br />     See [Log Out](Logging Out.htm#Log) |     |
-| makeDir<br /><br />     See [Create a Directory](Working with Directories JSON RPC.htm#Create) |     |
-| makeDir2<br /><br />     See [Create a Directory Along With Leading Paths](Working with Directories JSON RPC.htm#Create2) |     |
-| mediaVaultURL<br /><br />     See [Generate a URL](Working with Files.htm#Generate) |     |
-| noop<br /><br />     See [Perform an Authenticated Server Verification](Verifying the Server API Connection.htm#Perform) |     |
-| ping<br /><br />     See [Perform an Unauthenticated Server Verification](Verifying the Server API Connection.htm#Perform2) |     |
-| rename<br /><br />     See [Rename a File or Directory](Working With Directories and Files Common.htm#Rename) |     |
-| restartMultipart<br /><br />     See [Restart a Multipart Upload](Working with Multipart JSON RPC.htm#Restart) |     |
-| setContentType<br /><br />     See [Set a File's Content Type](Working with Files.htm#Set) |     |
-| setMTime<br /><br />     See [Change a File or Directory Last Modification Time](Working With Directories and Files Common.htm#Set) |     |
-| stat<br /><br />     See [Obtain File or Directory Metadata](Working With Directories and Files Common.htm#Obtain) |     |
-| updateSession<br /><br />     See [Set Your Token's Expiry](Working with Sessions.htm#Set) |     |
+| abortMultipart|[Abort a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#abort) |
+|authenticate|[Log in to a Sub-directory](/delivery/storage/apis_api_calls/logging_in_using_the_json_rpc_interface/#log-in-to-a-subdirectory) |
+| checkToken|[Determine Your Token's Age](/delivery/storage/apis_api_calls/working_with_sessions/#determine-token-age) |
+| completeMultipart|[Complete a Multipart Upload](/delivery/storage/apis_api_calls/logging_in_using_the_json_rpc_interface/#complete) |
+| deleteDir|[Delete a Directory](/delivery/storage/apis/api_calls/working_with_directories_json/#delete-directory) |
+| deleteFile<br />|[Delete a File](/delivery/storage/apis/api_calls/working_with_files/#delete-a-file) |
+| fetchFileHTTP|[Copy a File](/delivery/storage/apis/api_calls/working_with_files/#copy-a-file). |
+| getMultipartStatus|[Get Status for a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#get-status) |
+| getMultipartStatusMap|[Get String Equivalents of Multipart Status Codes](/delivery/storage/apis/api_calls/working_with_multipart_json/#get-equivalent)  |
+| initKeyPair|[Initializing HMAC Key Pairs](/delivery/storage/apis/api_calls/initializing_hmac_key_pairs) |
+| listDir|[List Directories](/delivery/storage/apis/api_calls/working_with_directories_json/#list-directory) |
+| listFile<br />|[List Files](/delivery/storage/apis/api_calls/working_with_files/#list-file) |
+| listMultipart|[List Your Multipart Uploads](/delivery/storage/apis/api_calls/working_with_multipart_json/#list-pieces) |
+| listMultipartPiece<br /><br />     See [List Pieces in a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#list-multipart) |
+| listPath<br />|[List Files and Directories](/delivery/storage/apis/api_calls/working_with_methods/#list) |
+| login|[Log In](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface/#log-in) |
+| logout|[Log Out](/delivery/storage/apis/api_calls/logging_out/#log-out) |
+| makeDir|[Create a Directory](/delivery/storage/apis/api_calls/working_with_directories_json/#create-directory) |
+| makeDir2|[Create a Directory Along With Leading Paths](/delivery/storage/apis/api_calls/working_with_directories_json/#leading-paths) |
+| mediaVaultURL|[Generate a URL](/delivery/storage/apis/api_calls/working_with_files/#mediavault) |
+| noop|[Perform an Authenticated Server Verification](/delivery/storage/apis/api_calls/verifying_the_server_api_connection/#pass-token) |
+| ping<br />|[Perform an Unauthenticated Server Verification](/delivery/storage/apis/api_calls/verifying_the_server_api_connection/#no-pass-token) |
+| rename<br />|[Rename a File or Directory](/delivery/storage/apis/api_calls/working_with_methods/#rename) |
+| restartMultipart|[Restart a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#restart) |
+| setContentType|[Set a File's Content Type](/delivery/storage/apis/api_calls/working_with_files/#set-type) |
+| setMTime|[Change a File or Directory Last Modification Time](/delivery/storage/apis/api_calls/working_with_methods/#change-time) |
+| stat<br />[Obtain File or Directory Metadata](/delivery/storage/apis/api_calls/working_with_methods/#metadata) |
+| updateSession|[Set Your Token's Expiry](/delivery/storage/apis/api_calls/working_with_sessions/#set-your-tokens-exiry) |
+
+
+### HTTP Interface  {/*http-interface*/}
+| API Call | Details |
+| --- | --- |
+| account/login|[Log In](/delivery/storage/apis/api_calls/logging_in_using_http_interface) |
+|  multipart/complete|[Complete a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_http/#complete-multipart-upload) |
+|multipart/create|[Begin a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_http/#begin-multipart-upload) |
+|multipart-piece|[Create a Multipart Piece](/delivery/storage/apis/api_calls/working_with_multipart_http/#create-multipart-piece) |
+|post/file|[Web Browser Upload](/delivery/storage/apis/api_calls/uploading_files/#web-browser-upload) |
+|post/raw|[File Raw Post](/delivery/storage/apis/api_calls/uploading_files#file-raw-post) |
+
+## API Calls by Topic  {/*api-calls-by-topic*/}
+If you know what you want to do but you are not sure which call to use, refer to information in the following sections:
+
+### Authentication  {/*authentication*/}
+| Action  | API Call| Details|
+| --- | --- | --- |
+| Log in to Origin Storage| login<br /><br />/account/login (HTTP interface) | [Log In](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface/#log-in)<br /><br />[Log In](/delivery/storage/apis/api_calls/logging_in_using_http_interface) (HTTP interface) |
+| Log into a specific sub-directory in Origin Storage| authenticate | [Log in to a Sub-directory](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface/#log-in-to-subdirectory) |
+| Log out of Origin Storage| logout | [Logging Out](/delivery/storage/apis/api_calls/logging_out) |
+
+### Connections and Tokens  {/*connections-and-tokens*/}
+Calls are available in the JSON-RPC interface only.
+
+| Action  | API Call| Details|
+| --- | --- | --- |
+| Determine your token's age | checkToken | [Determine Your Token's Age](/delivery/storage/apis_api_calls/working_with_sessions/#determine-token-age) |
+| Set your token's expiry time | updateSession | [Set Your Token's Expiry](/delivery/storage/apis/api_calls/working_with_sessions/#set-your-tokens-exiry) |
+| Verify the server API connection if you are logged in | noop | [Perform an Authenticated Server Verification](Verifying the Server API Connection.htm#Perform) |
+| Verify the server API connection if you are not logged in | ping | [Perform an Unauthenticated Server Verification](Verifying the Server API Connection.htm#Perform2) |
+| Generate a new key pair for use in signing requests | initKeyPair | [Initializing HMAC Key Pairs](Initializing HMAC Key Pairs.htm) |
+
+### Directories  {/*directories*/}
+### Files  {/*files*/}
+### File Upload — Non-Multipart  {/*nonmultipart-download*/}
+### File Upload — Multipart  {/*multipart-download*/}

@@ -11,7 +11,7 @@ title: Storage API Reference Guide
 [Index of Supported API Calls](/delivery/storage/general_information/index_of_supported_protocols)
 
 ## API Calls  {/*api-calls*/}
-Logging in Using the JSON-RPC Interface
+[Logging in Using the JSON-RPC Interface](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface)
 
 [Logging in Using the HTTP Interface](/delivery/storage/apis/api_calls/logging_in_using_http_interface)
 
@@ -54,3 +54,5 @@ Logging in Using the JSON-RPC Interface
 [Multipart State Codes](/delivery/storage/apis/reference_materials/multipart_state_codes)
 
 [Multipart State Transitions](/delivery/storage/apis/reference_materials/multipop_state_transitions)
+
+[Path Segment and File Name Limitations](/delivery/storage/apis/reference_materials/path_segment_and_file_name_limitations)

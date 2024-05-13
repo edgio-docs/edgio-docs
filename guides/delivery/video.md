@@ -18,11 +18,11 @@ It helps you manage and personalize live and on-demand video to reach and conver
 Live Stream Provisioning
 
 ### Multi-device Media Delivery (MMD) Streaming
-Digital Rights Management Guide
+[Digital Rights Management Guide](/delivery/video/drm)
 
-MMD On-Demand Streaming Guide
+[MMD On-Demand Streaming Guide](/delivery/video/mmd_od)
 
-MMD Live Streaming Guide
+[MMD Live Streaming Guide](/delivery/video/mmd_live)
 
 MMD Live API Developers Reference
 

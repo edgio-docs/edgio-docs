@@ -307,7 +307,7 @@ This guide assumes:
 # in {{ APP_URL }} and configure it as a variable called "EDGIO_DEPLOY_TOKEN" in your GitLab
 # project's settings page. You should mask this variable to prevent it from appearing in logs.
 
-image: node:14
+image: node:16
 
 stages:
   - deploy
@@ -324,15 +324,15 @@ edgio_deploy:
       when: never
     - if: '$CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "main"'
       variables:
-        EDGIO_DEPLOY_PARAM: ' --environment=staging'
+        EDGIO_DEPLOY_ENVIRONMENT: 'staging'
     - if: '$CI_COMMIT_TAG'
       variables:
-        EDGIO_DEPLOY_PARAM: ' --environment=production'
+        EDGIO_DEPLOY_ENVIRONMENT: 'production'
     - if: '$CI_COMMIT_BRANCH'
       variables:
-        EDGIO_DEPLOY_PARAM: ''
+        EDGIO_DEPLOY_ENVIRONMENT: ''
   before_script:
     - npm ci --cache .npm --prefer-offline
   script:
-    - npm run {{ FULL_CLI_NAME }}:deploy -- --token="$EDGIO_DEPLOY_TOKEN" --non-interactive --branch="$CI_COMMIT_BRANCH$EDGIO_DEPLOY_PARAM"
+    - npm run {{ FULL_CLI_NAME }}:deploy -- --token="$EDGIO_DEPLOY_TOKEN" --non-interactive --branch="$CI_COMMIT_BRANCH" --environment"$EDGIO_DEPLOY_ENVIRONMENT"
 ```

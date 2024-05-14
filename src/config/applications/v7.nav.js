@@ -338,6 +338,10 @@ const nav = {
           title: 'TLS Certificates',
           path: 'security/tls_certificates',
         },
+        {
+          title: 'Attack Surface Management - BETA',
+          path: 'security/asm',
+        },
         separator,
         {
           title: 'Web Application Firewall (WAF)',
@@ -452,6 +456,10 @@ const nav = {
             {
               title: 'Nuxt3',
               path: 'sites_frameworks/getting_started/nuxt3',
+            },
+            {
+              title: 'Qwik',
+              path: 'sites_frameworks/getting_started/qwik',
             },
             {
               title: 'React',

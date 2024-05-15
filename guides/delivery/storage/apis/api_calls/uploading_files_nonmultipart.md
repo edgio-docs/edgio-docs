@@ -239,7 +239,7 @@ Content-Type: text/json;charset=utf-8
 ## Content Type Handling {/*content-type-handling*/}
 The file upload APIs (/post/file and /post/raw) determine content type as follows:
 
-- The content type specified by the Content-Type field of the attachment (form-data encoded payloadsup>1</sup>) takes precedence if set.
+- The content type specified by the Content-Type field of the attachment (form-data encoded payload<sup>1</sup>) takes precedence if set.
 - The `X-Agile-Content-Type` header takes precedence over `X-Agile-Content-Detect`.
 - The application/octet-stream is special content type, and if you provide it in the `X-Agile-Content-Type` header, the API attempts to detect the content type from the file name, usually the extension.
 - If you provide both `X-Agile-Content-Type` and `X-Agile-Content-Detect`, then `X-Agile-Content-Type` takes precedence.

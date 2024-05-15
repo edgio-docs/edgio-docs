@@ -212,7 +212,7 @@ This edge function transforms the above HTML to replace `<esi:include ... />` wi
 </html>
 ```
 
-### Example 3: Using fetch() with HtmlTransformer.stream() helper function {/* example3 */}
+### Example 3: Using fetch() with HtmlTransformer.streamResponse() helper function {/* example3 */}
 
 This example is a modified version of [Example 2](edge_functions/htmltransformer#example2) which incorporates streaming the response body. This technique saves memory by streaming the response body during transformation rather than reading the whole body into memory before transforming it.
 
@@ -242,17 +242,21 @@ export async function handleHttpRequest(request, context) {
   ];
 
   // Get the HTML from the origin server and stream the response body through the
-  // HtmlTransformer to the Response object
-  const response = fetch(request.url, {edgio: {origin: 'api_backend'}})
-    .then(HtmlTransformer.stream(transformerDefinitions))
-    .then((stream) => new Response(stream))
-  return response
+  // HtmlTransformer to the Response object using the HtmlTransformer.streamResponse()
+  // helper function
+  return fetch(request.url, {edgio: {origin: 'api_backend'}})
+    .then(upstreamResponse => {
+      const transformedResponse = HtmlTransformer.streamResponse(transformerDefinitions, upstreamResponse)
+      // Make any changes to your response headers here.
+      transformedResponse.headers.set('x-edge-function', 'ran')
+      return transformedResponse
+    })
 }
 ```
 
 ### Example 4: Using fetch() with response streaming {/* example4 */}
 
-This example is a modified version of [Example 3](edge_functions/htmltransformer#example3) without the HtmlTransformer.stream() helper function
+This example is a modified version of [Example 3](edge_functions/htmltransformer#example3) without the HtmlTransformer.streamResponse() helper function
 
 ```js
 export async function handleHttpRequest(request, context) {
@@ -382,13 +386,11 @@ await htmlTransformer.end();
 
 Flushes the transformer and completes the transformation. This function must be called after the last call to `await htmlTransformer.write()`.
 
-### static async stream() {/* stream */}
+### static async streamResponse() {/* streamResponse */}
 
 ```js
-  const response = fetch(request.url, {edgio: {origin: 'api_backend'}})
-    .then(HtmlTransformer.stream(transformerDefinitions))
-    .then((stream) => new Response(stream))
-  return response
+  return fetch(request.url, {edgio: {origin: 'api_backend'}})
+    .then(upstreamResponse => HtmlTransformer.streamResponse(transformerDefinitions, upstreamResponse))
 ```
 
 Static helper function to easily stream fetch() responses through the HtmlTransformer.

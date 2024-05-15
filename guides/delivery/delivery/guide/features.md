@@ -688,7 +688,7 @@ Middle-mile optimizations include:
 
 - Custom cache hierarchies, mapping the best path to the origin across Edgio’s private network (see [Cache Hierarchies](#cache-hierarchies).)
 - Connection meshing between POPs, ensuring low latency for all connections across the network (see [Connection Meshing](#connection-meshing))
-- Persistent connections for high traffic scalability (see [Dynamic Content Acceleration and Delivery Features In Context](#dynamic-in-context) and [Static Content Acceleration and Delivery Features In Context](#static-content-acceleration-and-delivery-features-in-context))
+- Persistent connections for high traffic scalability (see [Dynamic Content Acceleration and Delivery Features In Context](#dynamic-in-context) and [Static Content Acceleration and Delivery Features In Context](#static-in-context))
 - WAN and TCP optimization for lowest content propagation times (see TCP/IP Optimization)
 
 ##### Last-Mile Acceleration {/*last-mile*/}

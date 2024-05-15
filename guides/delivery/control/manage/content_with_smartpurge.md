@@ -301,7 +301,7 @@ Selectable tabs allow you to view lists of items purged by patterns, URLs, and T
 
 The *Template Summary* page provides read-only information about a template, including identifying information, notes, edits applied to it, and history of its use.
 
-Icons at the top of the page allow you to [edit](#editing-a-template) or [duplicate](#duplicating-a-template) the template, [delete](#deleting-a-template) it, [do a dry run](#doing-a-dry-run), or [do a purge](#do-a-purge).
+Icons at the top of the page allow you to [edit](#editing-a-template) or [duplicate](#duplicating-a-template) the template, [delete](#deleting-a-template) it, [do a dry run](#doing-a-dry-run), or [do a purge](#doing-a-purge).
 
 The *Details* section provides historical information about template creation and modification as well as run information (dry runs are not included). The section also shows items purged by patterns, URLs, and Tags. For longer lists, use the **Filter** field to locate the information you need.
 

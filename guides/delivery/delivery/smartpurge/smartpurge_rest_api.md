@@ -606,13 +606,7 @@ The following errors can be returned by (description and source may vary for dif
 | invalid tag | 1040 | The tag 'foo bar' is invalid. | `tags[1].tag` |
 | request is too big | 1041 | The combined size of patterns and tags arrays must not exceed 100. | patterns and tags |
 | request is empty | 1042 | Please specify patterns and/or tags in your purge request. | patterns and tags |
-| HTTP Method | GET |
-| URI Template | `/purge/v1/account/{shortname}/translate` |
-| Required URI Parameters | -   shortname - shortname<br />-   url - public exact URL to translate |
-| Optional URI Parameters | None |
-| Description | Translates public exact URL into the corresponding origin URL |
-| Request Example | GET https://apis.llnw.com/purge/v1/account/example/translate?  <br />url=http://shortname.vo.llnwd.net/to/translate |
-| Response Example | <br />    "translated":"http://origin.example.com/to/translate"<br /> |
+
 
 ## HTTP Status Codes  {/*https-status-codes*/}
 |  HTTP Status Code   | Description | Has Body? |
@@ -629,7 +623,7 @@ The following errors can be returned by (description and source may vary for dif
 | `413` | Request Entity Too Large | No  |
 | `429` | Too Many Requests | Yes |
 | `500` | Internal server error | No  |
-| 5`03 | Service is unavailable | No  |
+| `503` | Service is unavailable | No  |
 
 ## API Client Sample Code  {/*api-client-sample-code*/}
 ### Python {/*python*/}

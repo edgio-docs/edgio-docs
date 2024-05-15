@@ -22,9 +22,7 @@ Does an HTTP POST upload using multipart form-data. Slower than [File Raw Post](
 
 When the file creation is complete, the system sets the parent directory's mtime (last modification time) to the current system time.
 
-<Callout type="info">An end-to-end /post/file upload example is available. See [`/post/file` Example](/delivery/storage/apis/reference_materials/file_upload/examples/#post-file).
-
-</Callout>
+<Callout type="info">An end-to-end /post/file upload example is available. See [`/post/file` Example](/delivery/storage/apis/reference_materials/file_upload/examples/#post-file).</Callout>
 
 ### Request Headers {/*request-headers*/}
 

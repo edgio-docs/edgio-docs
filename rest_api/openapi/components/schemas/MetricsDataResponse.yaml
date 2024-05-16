@@ -9,6 +9,40 @@ properties:
   request:
     type: object
     description: Echoes the body parameters defined in the request.
+    properties:
+      date_range:
+        type: object
+        description: The query's time period.
+        properties:
+          start:
+            type: string
+            format: date-time
+          end:
+            type: string
+            format: date-time
+      dimensions:
+        type: array
+        items:
+          type: string
+        description: The query's dimensions.
+      metrics:
+        type: array
+        items:
+          type: string
+        description: The query's metrics.
+      filters:
+        type: object
+        description: The query's filters.
+        additionalProperties:
+          type: array
+          items:
+            type: string
+      time_granularity:
+        type: string
+        enum:
+          - FIVE_MINUTES
+          - HOUR
+          - DAY
   data_fields:
     type: array
     items:
@@ -47,9 +81,9 @@ example:
       data_type: NUMBER
   data_rows:
     - - '2024-04-14T00:00:00Z'
-      - 0.6799121963612469
+      - 0.95
     - - '2024-04-12T00:00:00Z'
-      - 0.6716810029916086
+      - 0.98
   request:
     dimensions:
       - time

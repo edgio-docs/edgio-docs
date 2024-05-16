@@ -17,10 +17,17 @@ post:
         schema:
           $ref: ../components/schemas/MetricsDataRequest.yaml
     required: true
+  security:
+    - metricsScope:
+        - app.metrics
   responses:
     '200':
-      description: OK. Returns the query's result.
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/MetricsDataResponse.yaml
+      $ref: ../components/responses/Metrics-Query-Dataset-200-OK.yaml
+    '400':
+      $ref: ../components/responses/Metrics-400-Bad-Request.yaml
+    '401':
+      $ref: ../components/responses/Metrics-401-Unauthorized.yaml
+    '404':
+      $ref: ../components/responses/Metrics-404-Not-Found.yaml
+    '500':
+      $ref: ../components/responses/Metrics-500-Internal-Error.yaml

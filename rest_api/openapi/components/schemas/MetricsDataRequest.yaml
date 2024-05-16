@@ -1,4 +1,8 @@
 type: object
+required:
+  - date_range
+  - metrics
+  - filters
 properties:
   date_range:
     type: object

@@ -11,10 +11,15 @@ get:
       required: true
       schema:
         type: string
+  security:
+    - metricsScope:
+        - app.metrics
   responses:
     '200':
-      description: OK. A dataset was retrieved.
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/MetricsDataset.yaml
+      $ref: ../components/responses/Metrics-Get-Dataset-200-OK.yaml
+    '401':
+      $ref: ../components/responses/Metrics-401-Unauthorized.yaml
+    '404':
+      $ref: ../components/responses/Metrics-404-Not-Found.yaml
+    '500':
+      $ref: ../components/responses/Metrics-500-Internal-Error.yaml

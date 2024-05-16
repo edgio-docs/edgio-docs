@@ -16,14 +16,14 @@ tags:
     
       Retrieve TLS certificates or upload your own TLS certificate to a specific environment. 
       
-      <a href="https://docs.edg.io/guides/v7/security/tls_certificates" target="_blank">Learn more about hosting TLS certificates on our network.</a>
+      <a href="/applications/v7/security/tls_certificates" target="_blank">Learn more about hosting TLS certificates on our network.</a>
   - name: deployments
     x-displayName: Deployment Info
     description: |
     
       Retrieve information and log data for a previous deployment. 
       
-      <a href="https://docs.edg.io/guides/v7/basics/deployments" target="_blank">Learn more about deployments.</a>
+      <a href="/applications/v7/basics/deployments" target="_blank">Learn more about deployments.</a>
   - name: configs
     x-displayName: CDN Configuration
     description: Deploy or retrieve a CDN configuration. This type of configuration consists of origin configurations, hostnames, rules, and experiments.
@@ -33,7 +33,7 @@ tags:
     
       Automate environment variable management. 
       
-      <a href="https://docs.edg.io/guides/v7/basics/environments#environment-variables" target="_blank">Learn more about environment variables.</a>
+      <a href="/applications/v7/basics/environments#environment-variables" target="_blank">Learn more about environment variables.</a>
   - name: purge-requests
     x-displayName: Purge
     description: Purge cached content and retrieve information about previously submitted purge requests.
@@ -158,12 +158,31 @@ tags:
       
       <a href="https://docs.edg.io/applications/security/client_side_protection" target="_blank">Learn more about Client-Side Protection policies.</a>
 
+  - name: metrics
+    x-displayName: Metrics
+    description: |
+
+      Generate report data through which you can analyze traffic trends, such as traffic volume, cache hit ratios, response times, geographical distribution of users, and origin server performance.
+
+      **Key concepts:**
+   
+      -   **Dataset:** A dataset is a structured collection of data that represents a set of events. Each dataset consists of metrics and dimensions.
+      -   **Dimension:** A dimension describes an attribute of a request and is typically used to correlate the desired set of requests with metrics. 
+
+          For example, the `country_code` dimension identifies the country from which a request originated. 
+
+      -   **Metric:** A metric measures the rate, an amount, or the total number of times that a particular attribute occurred over a given record. 
+
+          For example, the `requests_edge_total` metric reports the total number of requests submitted to our network.
+
+      <a href="/applications/develop/rest_api/metrics_rest_api_usage" target="_blank">Learn how to use the Metrics API.</a>
+
   - name: RTLD Access Logs Profile
     description: |
     
       Automate Real-Time Log Delivery (RTLD) Access Logs profile management. A RTLD Access Logs profile defines the condition(s) under which access log data will be delivered to the desired destination (e.g., your web server or AWS S3). 
       
-      <a href="https://docs.edg.io/guides/v7/logs/rtld" target="_blank">Learn more about Real-Time Log Delivery.</a>
+      <a href="/applications/v7/logs/rtld" target="_blank">Learn more about Real-Time Log Delivery.</a>
   - name: Log Fields
     description: Retrieve log fields associated with a Real-Time Log Delivery (RTLD) module.
   - name: AWS Regions
@@ -523,6 +542,24 @@ paths:
 #      - url: 'https://edgioapis.com/client-waf/v0.9'
 #    security:
 #      - client_wafScope: [app.client_waf]
+  /datasets:
+    $ref: paths/datasets.yaml
+    servers:
+      - url: 'https://edgioapis.com/metrics/v1'
+    security:
+      - metricsScope: [app.metrics]
+  /datasets/{name}:
+    $ref: paths/datasets_{name}.yaml
+    servers:
+      - url: 'https://edgioapis.com/metrics/v1'
+    security:
+      - metricsScope: [app.metrics]
+  /datasets/{name}/data:
+    $ref: paths/datasets_{name}_data.yaml
+    servers:
+      - url: 'https://edgioapis.com/metrics/v1'
+    security:
+      - metricsScope: [app.metrics]
   /accesslogs/profiles:
     $ref: paths/accesslogs_profiles.yaml
     servers:
@@ -597,6 +634,14 @@ components:
           tokenUrl: https://id.edgio.app/connect/token
           scopes:
             app.client_waf: Authorizes full access to Client-Side Protection.
+    metricsScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.metrics: Authorizes full access to the Metrics API. 
     rtldScope:
       type: oauth2
       description: Learn how to [generate and pass a token.](#section/Access-Tokens)
@@ -638,6 +683,9 @@ x-tagGroups:
     tags:
       - properties
       - environments
+  - name: Analytics - Metrics
+    tags:
+      - metrics
   - name: Real-Time Log Delivery (RTLD)
     tags:
       - RTLD Access Logs Profile

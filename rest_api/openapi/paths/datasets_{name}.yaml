@@ -1,0 +1,25 @@
+get:
+  tags:
+    - metrics
+  summary: Get Dataset
+  description: Returns a dataset. Specify the desired dataset by its name.
+  operationId: dataset
+  parameters:
+    - name: name
+      in: path
+      description: The dataset's name.
+      required: true
+      schema:
+        type: string
+  security:
+    - metricsScope:
+        - app.metrics
+  responses:
+    '200':
+      $ref: ../components/responses/Metrics-Get-Dataset-200-OK.yaml
+    '401':
+      $ref: ../components/responses/Metrics-401-Unauthorized.yaml
+    '404':
+      $ref: ../components/responses/Metrics-404-Not-Found.yaml
+    '500':
+      $ref: ../components/responses/Metrics-500-Internal-Error.yaml

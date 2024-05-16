@@ -1,0 +1,8 @@
+description: Internal error occured.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/MetricsErrorResponse.yaml
+    examples:
+      internal-server-error:
+        $ref: ../examples/Metrics-500-Internal-Error-Example.yaml

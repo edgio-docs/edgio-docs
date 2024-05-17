@@ -201,26 +201,27 @@ The following options are known to work. In some cases, the options are ignored 
 
 <Callout type="info">The `-W`, and `–inplace` options are required.</Callout>
 
-|Usage|Abbreviated Option|Option|Description|
-|---|---|---|---|
-|required|-W|-whole-file|copy files whole (without Rsync algorithm)|
-|required||-inplace|update destination files in-place (see man page)|
-|optional|-q|-quiet|suppress non-error messages|
-|optional||-no-motd|suppress daemon-mode MOTD (see man page caveat)|
-|optional|-r|-recursive|recurse into directories|
-|optional|-u|-update|recurse into directories|
-|optional|-O|-omit-dir-times|omit directories when preserving times|
-|optional|-i|-itemize-changes|output a change-summary for all updates|
-|optional|-r|-recursive|recurse into directories|
-|optional|-t|-times|preserve times|
-|optional|-u|-update|skip files that are newer on the receiver|
-|required|-v|-verbose|increase verbosity|
-|optional||-size-only|skip files that match in size|
-|optional||-progress|show progress during transfer|
-|optional||-stats|give some file-transfer stats|
-|ignored|-g|-group|preserve group|
-|ignored|-o|-owner|preserve owner (super-user only)|
-|ignored|-p|-perms|preserve permissions|
+| Usage | Abbreviated Option | Option | Description |
+| --- | --- | --- | --- |
+| required | \-W | \-whole-file | copy files whole (without Rsync algorithm) |
+| required |     | \-inplace | update destination files in-place (see man page) |
+| optional | \-q | \-quiet | suppress non-error messages |
+| optional |     | \-no-motd | suppress daemon-mode MOTD (see man page caveat) |
+| optional | \-r | \-recursive | recurse into directories |
+| optional | \-u | \-update | recurse into directories |
+| optional | \-O | \-omit-dir-times | omit directories when preserving times |
+| optional | \-i | \-itemize-changes | output a change-summary for all updates |
+| optional | \-r | \-recursive | recurse into directories |
+| optional | \-t | \-times | preserve times |
+| optional | \-u | \-update | skip files that are newer on the receiver |
+| required | \-v | \-verbose | increase verbosity |
+| optional |     | \-size-only | skip files that match in size |
+| optional |     | \-progress | show progress during transfer |
+| optional |     | \-stats | give some file-transfer stats |
+| ignored | \-g | \-group | preserve group |
+| ignored | \-o | \-owner | preserve owner (super-user only) |
+| ignored | \-p | \-perms | preserve permissions |
+
 
 #### Upload Example  {/*upload-example*/}
 This example shows how to sync files from a local machine to Origin Storage.

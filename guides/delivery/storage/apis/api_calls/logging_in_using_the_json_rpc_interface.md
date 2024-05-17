@@ -182,7 +182,7 @@ Limits operations to a specific sub-directory in a user namespace. The method is
 
 This functionality is also available in the HTTP interface by using the `X-Agile-Subdir` header in the `/account/login` call. For more information, see [Logging in Using the HTTP Interface](/delivery/storage/apis/api_calls/logging_in_using_http_interface).
 
-### Log In Using Named Parameters  {/*{/*log-in-using-named-parameters-2*/}*/}
+### Log In Using Named Parameters  {/*log-in-using-named-parameters-2*/}
 
 ```JSON
 {
@@ -197,7 +197,7 @@ This functionality is also available in the HTTP interface by using the `X-Agile
   "jsonrpc": "2.0"
 }
 ```
-### Log In Using Positional Parameters  {/*{/*log-in-using-positional-parameters-2*/}*/}
+### Log In Using Positional Parameters  {/*log-in-using-positional-parameters-2*/}
 
 ```JSON
 {

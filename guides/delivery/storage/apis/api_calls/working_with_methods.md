@@ -60,7 +60,7 @@ Positional parameters must be applied in the same order shown in the named param
 -   **\-12**: invalid page size parameter
 -   **\-10001**: invalid token
 
-<Callout type="info">For a list of error codes not specific to `listPath`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `listPath`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*response-data*/}
 On success returns an object with the following data:
@@ -499,7 +499,7 @@ Note the following:
 -   **\-7**: operation not supported. Directory contains files or directories.
 -   **\-10001**: invalid token
 
-<Callout type="info">For a list of error codes not specific to `rename`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `rename`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*rename-response-data*/}
 Returns only the codes discussed in [Return Codes](#rename-return-codes). Does not return any data structures.
@@ -572,7 +572,7 @@ Positional parameters must be applied in the same order shown in the named param
 -   **\-27**: invalid mtime
 -   **\-10001**: invalid token
 
-<Callout type="info">For a list of error codes not specific to `setMTime`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `setMTime`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*change-response-data*/}
 Returns only the codes discussed in [Return Codes](#change-return-codes). Does not return any data structures.

@@ -16,8 +16,8 @@ The final destination file will not be created until you have added pieces to, a
 
 - An error will be returned if any parent directories does not exist. To create parent paths, you can use either:
 
-- the makeDir2 API in the JSON RPC interface (see [Create a Directory Recursively](/delivery/storage/apis/api_calls/working_with_directories_json/#leading_paths)) or:
-the post/directory API in the HTTP interface (see [Create a Directory](/delivery/storage/apis/api_calls/working_with_directories_http)(/delivery/storage/apis/api_calls/working_with_directories_json/#leading-paths))
+- the makeDir2 API in the JSON RPC interface (see [Create a Directory Recursively](/delivery/storage/apis/api_calls/working_with_directories_json/#leading-paths)) or:
+the post/directory API in the HTTP interface (see [Create a Directory](/delivery/storage/apis/api_calls/working_with_directories_http))
 
 ### Using Named Parameters {/*using-named-parameters*/}
 ```JSON

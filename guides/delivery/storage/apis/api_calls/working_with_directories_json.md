@@ -210,7 +210,7 @@ Positional parameters must be applied in the same order shown in the named param
 
 ### Response Data {/*delete-responose-data*/}
 
-Returns only the codes discussed in [Return Codes](#delete-return-data). Does not return any data structures.
+Returns only the codes discussed in [Return Codes](#delete-return-codes). Does not return any data structures.
 
 ### Python Sample Requests {/*delete-python*/}
 Delete the temp directory:

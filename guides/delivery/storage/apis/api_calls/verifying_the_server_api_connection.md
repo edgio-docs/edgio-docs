@@ -85,7 +85,7 @@ Don't pass an operation:
 - **`0`**: success
 - **`-10001`**: invalid token
 
-<Callout type="info">For a list of error codes not specific to `noop`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `noop`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data  {/*response-data*/}
 On success returns an object with the following data:

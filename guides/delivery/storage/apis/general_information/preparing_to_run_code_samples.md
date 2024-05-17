@@ -125,7 +125,7 @@ Note that the sample above uses the login method to obtain a token, but you can 
 
 <Callout type="info">All JSON-RPC code samples in this document use `api` as the server variable and `token` as the token variable.</Callout>
 
-### Testing Your Setup
+### Testing Your Setup  {/*testing-your-setup*/}
 As a test, submit the noop call: `>>> result = api.noop(token)`
 
 If your output is as follows, you have successfully logged in:
@@ -137,5 +137,5 @@ If your output is as follows, you have successfully logged in:
 
 (If you would like to learn more about the noop call, see [Perform an Authenticated API Verification](/delivery/storage/apis/api_calls/#pass-token).)
 
-## Where to Go from Here
+## Where to Go from Here  {/*where-to-go-from-here*/}
 If you successfully submited your first JSON-RPC or HTTP request, you are ready to learn the various Origin Storage APIs! Head over to [API Index](/delivery/storage/apis/general_information/index_of_supported_api_calls) and choose one of the APIs listed therein. Or, if you would like to jump in and run ready-made samples for uploading files, head on over to [File Upload End-to-End Examples](/delivery/storage/apis/reference_materials/file_upload_examples).

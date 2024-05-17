@@ -12,13 +12,13 @@ This tutorial demonstrates how to split traffic between our [simple and full-fea
 
 ## Quick Start {/*quick-start*/}
 
-1.  Create an entry environment that will route traffic between our sample sites.
-2.  Create an origin configuration that points to our simple performance site.
-3.  Create an origin configuration that points to our full-featured performance site.
-4.  Create a rule that returns the [Experimentation - Variant Selector web page](https://edgio-community-examples-entry.glb.edgio.link/experiment-selection).
-5.  Create an experiment that splits traffic between the origin configurations defined in steps 2 and 3.
+1.  Create an entry environment that contains origin configurations through which traffic will be routed between our sample sites. 
+    -   Create an origin configuration that points to our simple performance site.
+    -   Create an origin configuration that points to our full-featured performance site.
+2.  Create a rule that returns the [Experimentation - Variant Selector web page](https://edgio-community-examples-entry.glb.edgio.link/experiment-selection).
+3.  Create an experiment that splits traffic between the entry environment's origin configurations.
 
-## Create Entry Environment {/**/}
+## Create Entry Environment {/*create-entry-environment*/}
 
 This tutorial requires an environment that is dedicated to splitting traffic between our sample sites. We will now add one by creating a property.
 
@@ -34,7 +34,7 @@ This tutorial requires an environment that is dedicated to splitting traffic bet
 
     Your new property configuration should now look like this:
     
-    ![Create Property - Simple site - origin configuration](/images/v7/basic-traffic-splitting-origins-1.png)
+    ![Create Property - Simple site - origin configuration](/images/v7/experimentation/basic-traffic-splitting-origins-1.png)
 
 6.  Set up an origin configuration for the Full-Featured Performance site.
 
@@ -45,7 +45,7 @@ This tutorial requires an environment that is dedicated to splitting traffic bet
 
     Your new origin configuration should now look like this:
     
-    ![Create Property - Full-Featured site - origin configuration](/images/v7/basic-traffic-splitting-origins-2.png)
+    ![Create Property - Full-Featured site - origin configuration](/images/v7/experimentation/basic-traffic-splitting-origins-2.png)
 
 7.  Click **Create Property**. {{ PRODUCT }} will now create a property whose Production environment contains two origin configurations that point to our sample Performance websites. After which, it will automatically deploy this configuration. 
 
@@ -59,7 +59,7 @@ Set up a rule that delivers a custom web page that allows you to select the vari
 
     1.  Click **+ Add** and then select **Add Condition**.
 
-        ![Rules - Add condition](/images/v7/basic-traffic-splitting-rules-add-condition.png)
+        ![Rules - Add condition](/images/v7/experimentation/basic-traffic-splitting-rules-add-condition.png)
 
     2.  From the **Variable** option, select `Path`.
     3.  Verify that the **Operator** option is set to `matches (simple)`.
@@ -67,7 +67,7 @@ Set up a rule that delivers a custom web page that allows you to select the vari
 
         Your configuration should now look like this:
 
-        ![Rules - Path](/images/v7/basic-traffic-splitting-rules-path.png)
+        ![Rules - Path](/images/v7/experimentation/basic-traffic-splitting-rules-path.png)
 
     5.  Click **Add Condition**.
 
@@ -153,7 +153,7 @@ Set up a rule that delivers a custom web page that allows you to select the vari
     
     Your rule should now look like this:
     
-    ![Rules page](/images/v7/basic-traffic-splitting-rule.png)
+    ![Rules page](/images/v7/experimentation/basic-traffic-splitting-rule.png)
 
 ## Create Experiment {/*create-experiment*/}
 
@@ -171,7 +171,7 @@ Set up an experiment that sends 90% of traffic to the Simple site and the remain
     
         Your configuration should now look like this:
 
-        ![Experimentation - Path condition](/images/v7/basic-traffic-splitting-experimentation-path-condition.png)
+        ![Experimentation - Path condition](/images/v7/experimentation/basic-traffic-splitting-experimentation-path-condition.png)
 
     5.  Click **Add Condition**.
 
@@ -185,7 +185,7 @@ Set up an experiment that sends 90% of traffic to the Simple site and the remain
 
         Your configuration should now look like this:
 
-        ![Experimentation - Set Origin](/images/v7/basic-traffic-splitting-experimentation-set-origin.png)
+        ![Experimentation - Set Origin](/images/v7/experimentation/basic-traffic-splitting-experimentation-set-origin.png)
 
     6.  Click **Add Feature**.
 
@@ -205,7 +205,13 @@ Set up an experiment that sends 90% of traffic to the Simple site and the remain
 Congratulations on setting up an experiment. You can now test this experiment by either:
 -   Loading the site normally. Click on the deployment's URL.
 
-    ![Experimentation - Deployment URL](/images/v7/basic-traffic-splitting-deployment-url.png)
+    ![Experimentation - Deployment URL](/images/v7/experimentation/basic-traffic-splitting-deployment-url.png)
+
+    <Callout type="info">
+
+    The variant assigned to a client persists until cookies are cleared. This means that testing this experiment may require clearing your cookies various times or initiating various distinct private browsing sessions. 
+
+    </Callout>
 
 -   Loading the custom web page (Experimentation - Variant Selector) that was defined within your rule. Append `/experiment-selection` to the deployment's URL.
 

@@ -1,3 +1,3 @@
 ---
-title: Storage Guides
+title: Video Guides
 ---

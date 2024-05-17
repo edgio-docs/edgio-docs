@@ -1,7 +1,7 @@
 ---
 title: PHP Example
 ---
-Here is a MD5 Hash Sample:
+Here is an MD5 Hash Sample:
 
 ```PHP
 <?PHP

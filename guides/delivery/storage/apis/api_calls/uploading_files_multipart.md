@@ -37,7 +37,7 @@ Multipart upload capabilities are available in both the  interface and the HTTP
 
 As indicated in the table above, only the HTTP interface lets you create multipart pieces.
 
-## Some Notes About Multipart Uploads
+## Some Notes About Multipart Uploads  {/*notes*/}
 -   You can create multiple multipart uploads for the same path (destination file) because each multipart upload has an ID unique to that upload. Note that although this is possible, it is not recommended because the most recent upload is not guaranteed to prevail.
 -   Multipart identifiers can only be used and managed by the user who created the multipart upload. Users cannot share multipart identifiers.
 -   The multipart framework does not check permissions on the destination path, so first ensure the destination is writable by your user.

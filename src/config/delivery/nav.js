@@ -127,7 +127,7 @@ const nav = {
         },
         {
           title: 'Storage',
-          path: 'storage/reference_materials',
+          path: 'storage/api_reference',
         },
         {
           title: 'Video',

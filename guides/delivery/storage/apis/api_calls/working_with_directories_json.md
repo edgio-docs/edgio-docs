@@ -131,7 +131,7 @@ You must use the UNIX/Linux path separator `/`. If you use the Windows path sepa
 
 If you omit the path separator, the directory is created under the root.
 
-Path segments can contain a maximum of 255 bytes. For more information, see [Path Segment and File Name Limitations](/delivery/storage/reference_materials/path_segment_and_file_name_limitations).|
+Path segments can contain a maximum of 255 bytes. For more information, see [Path Segment and File Name Limitations](/delivery/storage/reference_materials/path_segment_and_file_name_limitations).
 
 ### Return Codes  {/*return-codes*/}
 -   **0**: success

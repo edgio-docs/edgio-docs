@@ -8,4 +8,4 @@ Edgio Origin Storage is a high-performance, secure cloud solution that enables y
 - [Console](/delivery/storage/console)
 - [Quick Start](/delivery/storage/quick_start)
 - [Best Practices](/delivery/storage/best_practices)
-- [API](/delivery/storage/api_reference)
+- [APIs](/delivery/storage/api_reference)

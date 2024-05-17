@@ -3,8 +3,8 @@ title: Preparing to Run Code
 ---
 Origin Storage has two interfaces: JSON-RPC and HTTP. This document presents code samples for both. To get started running code samples, see:
 
-- Code Samples in the HTTP Interface
-- Code Samples in the JSON-RPC Interface
+- [Code Samples in the HTTP Interface](#code-samples-http)
+- [Code Samples in the JSON-RPC Interface](#code-samples-json-rpc)
 
 <Callout type="info">If you want to copy and paste Python code samples into a Python editor, please copy from the HTML version of this document and not the PDF. If you copy from PDF, indentation will not be preserved.</Callout>
 

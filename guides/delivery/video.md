@@ -1,11 +1,11 @@
 ---
 title: Video
 ---
-The Limelight Video Platform (LVP) helps customers manage all their video content. LVP lets customers upload media for publishing, add custom metadata, select thumbnails, trim video clips, add and manage closed caption files, create and schedule custom playlists, and insert advertising cue points. Customers can create custom encoding profiles that automatically convert media to multi-bitrate, multi-resolution formats including HLS, DASH, and MSS for playback on desktop browsers, Apple iOS, and Android devices. It also includes analytics that help Customers understand the consumption of their video Content.
+The **Limelight Video Platform (LVP)** helps customers manage all their video content. LVP lets customers upload media for publishing, add custom metadata, select thumbnails, trim video clips, add and manage closed caption files, create and schedule custom playlists, and insert advertising cue points. Customers can create custom encoding profiles that automatically convert media to multi-bitrate, multi-resolution formats including HLS, DASH, and MSS for playback on desktop browsers, Apple iOS, and Android devices. It also includes analytics that help Customers understand the consumption of their video Content.
 
-MMD Live provides on-the-fly packaging and delivery of live video content. When live content is requested for playback, MMD Live packages it in the appropriate streaming format and bitrate for the device requesting the content from a single video source and format.
+**MMD Live** provides on-the-fly packaging and delivery of live video content. When live content is requested for playback, MMD Live packages it in the appropriate streaming format and bitrate for the device requesting the content from a single video source and format.
 
-MMD-OD provides on the fly packaging and delivery of Video on Demand (VOD) content. When content is requested for playback, MMD-OD accesses the main mezzanine files and packages them in the appropriate streaming format for the device requesting the content. MMD-OD provides delivery of video in multiple formats to various devices from a set of single-format, multi-bitrate media files.
+**MMD-OD** provides on the fly packaging and delivery of Video on Demand (VOD) content. When content is requested for playback, MMD-OD accesses the main mezzanine files and packages them in the appropriate streaming format for the device requesting the content. MMD-OD provides delivery of video in multiple formats to various devices from a set of single-format, multi-bitrate media files.
 
 The Limelight Video Platform service is a powerful and modular set of live and on-demand video capabilities that seamlessly integrate with your existing infrastructure and workflows.
 

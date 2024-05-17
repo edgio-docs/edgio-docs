@@ -150,8 +150,7 @@ Positional parameters must be applied in the same order shown in the named param
 | Parameter Name | Type | Description |
 | --- | --- | --- |
 | token | str |   Valid token from a call to login (JSON-RPC interface) or /account/login (HTTP interface). See [Log In Using JSON-RPC](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface) and [Log in Using the HTTP Interface](/delivery/storage/apis/api_calls/logging_in_using_http_interface), respectively.  |
-| mpid | str |
-Multipart upload identifier from a prior call to createMultipart or /multipart/create. See Begin a Multipart Upload (JSON-RPC) and [Begin a Multipart Upload (JSON-RPC) Upload](#begin-multipart-upload) and [Begin a Multipart Upload (HTTP)](/delivery/storage/apis/api_calls/working_with_multipart_http/#begin-multipart-upload), respectively.   |
+| mpid | str |Multipart upload identifier from a prior call to createMultipart or /multipart/create. See Begin a Multipart Upload (JSON-RPC) and [Begin a Multipart Upload (JSON-RPC) Upload](#begin-multipart-upload) and [Begin a Multipart Upload (HTTP)](/delivery/storage/apis/api_calls/working_with_multipart_http/#begin-multipart-upload), respectively.   |
 
 ### Return Codes {/*get-status-return-codes*/}
 

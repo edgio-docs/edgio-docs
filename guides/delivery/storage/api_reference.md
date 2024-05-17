@@ -11,6 +11,7 @@ title: Storage API Reference Guide
 [Index of Supported API Calls](/delivery/storage/apis/general_information/index_of_supported_api_calls)
 
 ## API Calls  {/*api-calls*/}
+
 [Logging in Using the JSON-RPC Interface](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface)
 
 [Logging in Using the HTTP Interface](/delivery/storage/apis/api_calls/logging_in_using_http_interface)

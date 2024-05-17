@@ -18,10 +18,10 @@ This section provides an end-to-end example application to jump-start client-sid
 
 This [HTTP Example](#http-example) ties information together, providing a complete working sample.
 
-### Step 1: Establish a Token  {/*establish-token*/}
+#### Step 1: Establish a Token  {/*establish-token*/}
 You can use HTTP or JSON-RPC.
 
-#### HTTP Example  {/*http-example*/}
+##### HTTP Example  {/*http-example*/}
 Use the Python requests library.
 
 ```HTTP
@@ -40,7 +40,7 @@ Use the Python requests library.
 7c164371-d581-4068-8ce1-4d17b6a9d8a3
 ```
 
-#### JSON-RPC Example  {/*json-example*/}
+##### JSON-RPC Example  {/*json-example*/}
 
 Use the Python *jsonrpclib* library.
 
@@ -56,7 +56,7 @@ Use the Python *jsonrpclib* library.
 f3037573-2a6f-4042-ab8f-82d6823b0480
 ```
 
-### Step 2: Upload a File Over HTTP  {/*upload-file-http*/}
+#### Step 2: Upload a File Over HTTP  {/*upload-file-http*/}
 Always use HTTP for file uploads! This example uses /post/raw submitted with the Python requests library.
 
 ```HTTP
@@ -71,10 +71,10 @@ Always use HTTP for file uploads! This example uses /post/raw submitted with the
  r = requests.post( 'http://{Account Name}.upload.llnw.net/post/raw', data=filesrc, headers=upload_headers)
 ```
 
-### Step 3: Verify the Upload was Successful  {/*verify_upload*/}
+#### Step 3: Verify the Upload was Successful  {/*verify_upload*/}
 You can use HTTP or JSON-RPC.
 
-#### HTTP Example  {/*http*/}
+##### HTTP Example  {/*http*/}
 Look at the headers returned from the request. The /post/raw request returns the upload status in the X-Agile-Status header. A value of 0 means success.
 
 ```HTTP
@@ -111,7 +111,7 @@ Or, you can issue a HEAD request against the object and look at the headers retu
  ‘accept-ranges’: ‘bytes’, ‘server’:’nginx/1.0.12, ‘content-type’: ‘audio/mpeg’}
 ```
 
-#### JSON-RPC Example  {/*json*/}
+##### JSON-RPC Example  {/*json*/}
 Use the stat function to get information on the uploaded file. The stat function has an optional ‘detail’ parameter. Pass True for extended information, or pass False (or omit) for an abbreviated response. A value of 0 in the returned code field indicate success. Other values indicate failure. You can also look at other fields such as size and compare them to known values.
 
 ```JSON
@@ -128,7 +128,7 @@ u'checksum': u'ce2a9d3bdec04c3577164d067e479958b50e246f17aaa098d0fad9f150eb4465'
 u'gid': 1000003, u'mtime': 1425411089, u'size': 2055946, u'type': 2, u'ctime': 1425411089}
 ```
 
-#### Complete HTTP Example  {/*complete-http-example*/}
+##### Complete HTTP Example  {/*complete-http-example*/}
 This section ties information together, providing a complete Python working sample that you can quickly and easily copy and paste into a Python file.
 
 ```Python
@@ -174,8 +174,8 @@ If needed, you can create target directories using the Origin Storage API or the
 
 |API|Additional Information in the Origin Storage API Reference Guide|
 |---|---|
-|makeDir or makeDir2|[Working with Directories in the JSON-RPC Interface](/delivery/storage/apis/api_calls/working-with-directories-json)|
-|/post/directory|[Working with Directories in the HTTP Interface](/delivery/storage/apis/api_calls/working-with-directories-http) |
+|makeDir or makeDir2|[Working with Directories in the JSON-RPC Interface](/delivery/storage/apis/api_calls/working_with_directories_json)|
+|/post/directory|[Working with Directories in the HTTP Interface](/delivery/storage/apis/api_calls/working_with_directories_http) |
 
 **Control Portal**
 See [Creating Folders](/delivery/storage/console/#creating-folders) in the [Origin Storage Console User Guide](/delivery/storage/console).

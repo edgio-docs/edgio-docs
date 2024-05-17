@@ -174,7 +174,7 @@ On error, the HTTP Status Code is an error code, and the error is reflected in t
 
 The following table provides details about response values.
 
-|   HTTP Status Code  | Description | <response code header name> / JSON Object Values |
+|   HTTP Status Code  | Description | `<response code header name>` / JSON Object Values |
 | --- | --- | --- |
 | 200 | Success | 0   |
 | 400 | Bad request; missing or invalid parameters | **\-2**: You passed an invalid ID in the `X-Agile-Multipart` header.<br /><br />**\-4**: You attempted to complete a multipart upload that has no pieces.<br /><br />**\-5**: You attempted to complete a multipart upload with missing pieces. (The range of piece numbers in the multipart upload is not contiguous.)<br /><br />**\-8**: You attempted to complete a multipart upload that has already been completed.<br /><br />**\-17**: You attempted to complete a multipart upload that has been aborted. |

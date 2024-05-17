@@ -63,7 +63,7 @@ Positional parameters must be applied in the same order shown in the named param
 ### Return Codes {/*return-codes*/}
 -   **0**: success
 -   **\-1**: You have exceeded the maximum number of mulitpart uploads (1,000,000) that have not been completed or aborted.
--   **\-16**:  invalid path (path too long). See [Path Segment and File Name Limitations](/delivery/storage/apis/reference_marterials/path_segment_and_file_name_limitations).
+-   **\-16**:  invalid path (path too long). See [Path Segment and File Name Limitations](/delivery/storage/apis/reference_materials/path_segment_and_file_name_limitations).
 -   **\-20**:  invalid last modified time
 -   **\-21**: invalid content type
 -   **\-23**: parent directory does not exist or is invalid. One or more parent segments in the path argument do not exist.

@@ -135,7 +135,7 @@ If your output is as follows, you have successfully logged in:
 {u'operation': u'pong', u'code': 0}
 ```
 
-(If you would like to learn more about the noop call, see [Perform an Authenticated API Verification](/delivery/storage/apis/api_calls/#pass-token).)
+(If you would like to learn more about the `noop` call, see [Perform an Authenticated API Verification](/delivery/storage/apis/api_calls/verifying_the_server_api_connecton/#pass-token).)
 
 ## Where to Go from Here  {/*where-to-go-from-here*/}
 If you successfully submited your first JSON-RPC or HTTP request, you are ready to learn the various Origin Storage APIs! Head over to [API Index](/delivery/storage/apis/general_information/index_of_supported_api_calls) and choose one of the APIs listed therein. Or, if you would like to jump in and run ready-made samples for uploading files, head on over to [File Upload End-to-End Examples](/delivery/storage/apis/reference_materials/file_upload_examples).

@@ -152,7 +152,7 @@ Upload speed is faster than [Web Browser Upload](#web-browser-upload).
 
 When the file creation is complete, the system sets the parent directory's mtime (last modification time) to the current system time.
 
-<Callout type="info">An end-to-end /post/raw upload example is available. [See `/post/raw` Example](/delivery/storage/apis/reference_materials/file_upload_exapmles/#post-raw).</Callout>
+<Callout type="info">An end-to-end /post/raw upload example is available. [See `/post/raw` Example](/delivery/storage/apis/reference_materials/file_upload_examples/#post-raw).</Callout>
 
 ### Request Headers {/*frp-request-headers*/}
 | Header Name | Type | Description |

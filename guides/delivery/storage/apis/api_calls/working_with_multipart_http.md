@@ -58,7 +58,7 @@ The following table provides details about response values.
 
 | Header Name | Type | Description |
 | --- | --- | --- |
-| X-Agile-Status | int | Contains response codes. (See [HTTP Response Codes and Request Status Codes](#HTTP).) |
+| X-Agile-Status | int | Contains response codes. (See [HTTP Response Codes and Request Status Codes](#http-codes).) |
 | X-Agile-Meta | str | Contains the following fields, which show the content type and mtime of the multipart upload:<br /><br />`content_type=<type> mtime=<time>`<br /><br />The fields echo the values you passed in the `X-Agile-Content-Type` and `X-Agile-MTime` headers. If you did not pass values, then the content\_type field is set to None and mtime is 0.<br /><br />An mtime of 0 means the multipart upload will have an mtime equal to the time when the upload was created. |
 | X-Agile-Multipart | str | Multipart identifier to use in future requests.<br /><br />The returned identifier can only be managed by the user who created it. Users cannot share identifiers. |
 | X-Agile-Path | str | Absolute destination path where the multipart upload will be created when it is completed. |

@@ -174,8 +174,8 @@ If needed, you can create target directories using the Origin Storage API or the
 
 |API|Additional Information in the Origin Storage API Reference Guide|
 |---|---|
-|makeDir or makeDir2|[Working with Directories in the JSON-RPC Interface](/delivery/storage/apis/api_calls/#working-with-directories-json)|
-|/post/directory|[Working with Directories in the HTTP Interface](/delivery/storage/apis/api_calls/#working-with-directories-http) |
+|makeDir or makeDir2|[Working with Directories in the JSON-RPC Interface](/delivery/storage/apis/api_calls/working-with-directories-json)|
+|/post/directory|[Working with Directories in the HTTP Interface](/delivery/storage/apis/api_calls/working-with-directories-http) |
 
 **Control Portal**
 See [Creating Folders](/delivery/storage/console/#creating-folders) in the [Origin Storage Console User Guide](/delivery/storage/console).

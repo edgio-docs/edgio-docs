@@ -5,13 +5,13 @@ title: Working with Directories in the JSON-RPC Interface
 ## Create a Directory {/*create-directory*/}
 Method name: `makeDir`
 
-Creates a directory but does not create leading path segments. (See Create a Directory Along With Leading Paths if you want to create any non-existant leading paths for the new directory.)
+Creates a directory but does not create leading path segments. (See [Create a Directory Along With Leading Paths](#leading-paths) if you want to create any non-existant leading paths for the new directory.)
 
 If the directory is successfully created, the system sets the parent directory's mtime (last modified time) to the current system time.
 
 <Callout type="info">A directory cannot contain a file and a sub-directory with the same name.</Callout>
 
-### Create a Directory Using Named Parameters
+### Create a Directory Using Named Parameters {/*reate-named-parameters*/}
 
 ```JSON
 {
@@ -25,7 +25,7 @@ If the directory is successfully created, the system sets the parent directory's
 }
 ```
 
-### Create a Directory Using Positional Parameters
+### Create a Directory Using Positional Parameters {/*create-positional-parameters*/}
 Positional parameters must be applied in the same order shown in the named parameters sample. Example:
 
 
@@ -41,11 +41,11 @@ Positional parameters must be applied in the same order shown in the named param
 }
 ```
 
-### Parameter Descriptions
+### Parameter Descriptions {/*create-parameter-descriptions*/}
 
 | Parameter Name | Type | Description |
 | --- | --- | --- |
-| token | str |  Valid token from a call to login (JSON-RPC interface) or /account/login (HTTP interface). See [Log In Using JSON-RPC](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface) and [Log in Using the HTTP Interface](/delivery/storage/apis/api_calls/logging_in_using_http_interface), respectively.  |
+| token | str |  Valid token from a call to login (JSON-RPC interface) or `/account/login` (HTTP interface). See [Log In Using JSON-RPC](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface) and [Log in Using the HTTP Interface](/delivery/storage/apis/api_calls/logging_in_using_http_interface), respectively.  |
 | path | str | The directory to create. If the directory has parent paths that do not exist, the method call fails. For example if you pass /a/b for path and a does not exist then the call fails. To create parent paths, see [Create a Directory Along With Leading Paths](#leading-paths).<br /><br /> You can't create a directory if the parent directory contains a file with the same name as the directory you want to create. Example: if file b exists in directory a then you can't create a directory called b in directory a.
 
 You can create directories with any white space in the path, including spaces, new lines, carriage returns and horizontal tabs.
@@ -54,7 +54,7 @@ You must use the UNIX/Linux path separator `/`. If you use the Windows path sepa
 
 If you omit the path separator, the directory is created under the root.
 
-Path segments can contain a maximum of 255 bytes. For more information, see [Path Segment and File Name Limitations](/delivery/storage/reference_materials/path_segment_and_file_name_limitations).|
+Path segments can contain a maximum of 255 bytes. For more information, see [Path Segment and File Name Limitations](/delivery/storage/apis/reference_materials/path_segment_and_file_name_limitations).|
 
 ### Return Codes  {/*return-codes*/}
 -   **0**: success
@@ -67,7 +67,7 @@ Path segments can contain a maximum of 255 bytes. For more information, see [Pat
 -   **\-8**: invalid or malformed path
 -   **\-10001**: invalid token
 
-<Callout type="info">For a list of error codes not specific to `makeDir`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `makeDir`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*response-data*/}
 Returns only the codes discussed in [Return Codes](#return-codes). Does not return any data structures.
@@ -144,7 +144,7 @@ Path segments can contain a maximum of 255 bytes. For more information, see [Pat
 -   **\-8**: invalid or malformed path
 -   **\-10001**: invalid token
 
-<Callout type="info">For a list of error codes not specific to `makeDir2`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `makeDir2`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*response-data2*/}
 Returns only the codes discussed in [Return Codes](#return-codes). Does not return any data structures.
@@ -285,7 +285,7 @@ Positional parameters must be applied in the same order shown in the named param
 -   **\-12**: invalid pageSize
 -   **\-10001**: invalid token
 
-<Callout type="info">For a list of error codes not specific to `listDir`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `listDir`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*list-response-data*/}
 When the stat parameter is set to False, the method returns an object with the following data:

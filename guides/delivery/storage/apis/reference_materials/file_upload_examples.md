@@ -14,7 +14,7 @@ You can copy and paste the code into the Python IDE of your choice, or you can u
 f3037573-2a6f-4042-ab8f-82d6823b0480
 ```
 
-For complete details about login, see [Logging in Using the JSON-RPC Interface](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface).
+For complete details about `login`, see [Logging in Using the JSON-RPC Interface](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface).
 
 **HTTP Example**
 ```JSON
@@ -109,7 +109,7 @@ api.stat(token, '/zz/file1.txt', True)
 ## `/post/raw` Example {/*post-raw*/}
 This section presents a simple example using only the `X-Agile-Authorization`, `X-Agile-Basename`, and `X-Agile-Directory` headers.
 
-For complete details about /post/raw, see [File Raw Post](/delivery/storage/apis/api_calls/uploading_files_nonmultipart/#file_raw_post).
+For complete details about /post/raw, see [File Raw Post](/delivery/storage/apis/api_calls/uploading_files_nonmultipart/#file-raw-post).
 
 **Upload a File**
 ```

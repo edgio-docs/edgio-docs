@@ -333,7 +333,7 @@ Positional parameters must be applied in the same order shown in the named param
 ### Parameter Descriptions {/*obtain-parameter-descriptions*/}
 | Parameter Name | Type | Description |
 | --- | --- | --- |
-| token | str |  Valid token from a call to login (JSON-RPC interface) or /account/login (HTTP interface). See [Log In Using JSON-RPC](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface) and [Log in Using the HTTP Interface](/delivery/storage/apis/api_calls/logging_in_using_http_interface), respectively.   |
+| token | str |  Valid token from a call to login (JSON-RPC interface) or `/account/login` (HTTP interface). See [Log In Using JSON-RPC](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface) and [Log in Using the HTTP Interface](/delivery/storage/apis/api_calls/logging_in_using_http_interface), respectively.   |
 | path | str | Directory or file for which to provide details. |
 | detail | bool | Optional<br /><br />Indicates whether to Include file details in output.<br /><br />Defaults to `False` |
 

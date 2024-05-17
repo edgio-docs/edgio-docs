@@ -6,9 +6,9 @@ title: Storage API Reference Guide
 ## General Information
 [Overview](/delivery/storage/general_information)
 
-[Preparing to Run Code Samples](/delivery/storage/apis/general_information/#preparing_to_run_code_samples)
+[Preparing to Run Code Samples](/delivery/storage/apis/general_information/preparing_to_run_code_samples)
 
-[Index of Supported API Calls](/delivery/storage/apis/general_information/index_of_supported_protocols)
+[Index of Supported API Calls](/delivery/storage/apis/general_information/index_of_supported_api_calls)
 
 ## API Calls  {/*api-calls*/}
 [Logging in Using the JSON-RPC Interface](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface)
@@ -31,7 +31,7 @@ title: Storage API Reference Guide
 
 [Working With Methods Common to Files and Directories](/delivery/storage/apis/api_calls/working_with_methods)
 
-[Uploading Files — Non-Multipart](/delivery/storage/apis/api_calls/uploading_files_multipart)
+[Uploading Files — Multipart](/delivery/storage/apis/api_calls/uploading_files_multipart)
 
 [Uploading Files — Non-Multipart](/delivery/storage/apis/api_calls/uploading_files_nonmultipart)
 
@@ -55,6 +55,6 @@ title: Storage API Reference Guide
 
 [Multipart State Codes](/delivery/storage/apis/reference_materials/multipart_state_codes)
 
-[Multipart State Transitions](/delivery/storage/apis/reference_materials/multipop_state_transitions)
+[Multipart State Transitions](/delivery/storage/apis/reference_materials/multipart_state_transitions)
 
 [Path Segment and File Name Limitations](/delivery/storage/apis/reference_materials/path_segment_and_file_name_limitations)

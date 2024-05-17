@@ -9,6 +9,7 @@ Session-related APIs are available in the JSON-RPC interface only.
 The JSON-RPC interface provides these session-related methods:
 
 [Determine Your Token's Age](#determine-token-age)
+
 [Set Your Token's Expiry](#set-your-tokens-exiry)
 
 
@@ -54,7 +55,7 @@ Returns your token's age in seconds. For example, if your token is set to expire
 -   **0**: success
 -   **\-10001**: invalid token
 
-<Callout type="info">For a list of error codes not specific to `checkToken`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `checkToken`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 
 On success returns an object with the following data:
@@ -152,7 +153,7 @@ Pass an expire time:
 
 | Parameter Name | Type | Description |
 | --- | --- | --- |
-| token | str |  Valid token from a call to login (JSON-RPC interface) or /account/login (HTTP interface). See [Log In Using JSON-RPC](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface) and [Log in Using the HTTP Interface](/delivery/storage/apis/api_calls/logging_in_using_http_interface), respectively.|
+| token | str |  Valid token from a call to login (JSON-RPC interface) or `/account/login` (HTTP interface). See [Log In Using JSON-RPC](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface) and [Log in Using the HTTP Interface](/delivery/storage/apis/api_calls/logging_in_using_http_interface), respectively.|
 | expire | int | Optional<br /><br />Amount of time in seconds, after which your token will expire. To set your token to never expire, pass zero or pass only your token.<br /><br />Defaults to 0. |
 
 
@@ -162,7 +163,7 @@ Pass an expire time:
 -   **\-34**: invalid expiration
 -   **\-10001**: invalid token
 
-<Callout type="info">For a list of error codes not specific to `updateSession`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `updateSession`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 
 ### Response Data {/*response-data2*/}

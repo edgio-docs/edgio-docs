@@ -46,7 +46,7 @@ As indicated in the table above, only the HTTP interface lets you create multipa
 ## Where to Go for Instructions
 See the following sections for instruction about the multipart upload APIs:
 
--   [Working with Multipart Uploads in the Interface](/delivery/storage/apis/api_calls/working_with_multipart_json)
+-   [Working with Multipart Uploads in the JSON-RPC Interface](/delivery/storage/apis/api_calls/working_with_multipart_json)
 -   [Working with Multipart Uploads in the HTTP Interface](/delivery/storage/apis/api_calls/working_with_multipart_http)
 
 See [Multipart Example](/delivery/storage/apis/reference_materials/file_upload_examples/#multipart-example) for a complete end-to-end multipart upload example.

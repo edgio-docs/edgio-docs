@@ -600,7 +600,7 @@ The following errors can be returned by (description and source may vary for dif
 | internal translation exceeds limits | 1034 | The exact public URLs in your request could not be purged all at once. Please resubmit your request with fewer exact URLs. | system limits |
 | cache configuration error | 1035 | This purge request cannot be completed. An exact public URL in this request matches a misconfigured Published Host. Please contact Customer Service. | cache configuration |
 | translation unavailable | 1036 | This service is temporarily unavailable. Please resubmit your request later. If the problem persists, please contact Customer Service. | system error |
-| account misconfiguration | 1037 | An account misconfiguration prevents the request for pattern 'http://example.com' from proceeding. Please contact Customer service to resolve this issue. | `patterns[1].pattern` |
+| account misconfiguration | 1037 | An account misconfiguration prevents the request for pattern http://example.com from proceeding. Please contact Customer service to resolve this issue. | `patterns[1].pattern` |
 | invalid filter | 1038 | The provided shard filter is invalid. Format is `{"type": "shard", "value": {"index": M, "div": N"}}` where M and N are non-negative `integers < 65536` and `M<N`. | filter.shard |
 | feature unavailable | 1039 | The feature 'featurename' is not available at this time. | featurename |
 | invalid tag | 1040 | The tag 'foo bar' is invalid. | `tags[1].tag` |

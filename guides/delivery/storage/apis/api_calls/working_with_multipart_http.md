@@ -9,7 +9,7 @@ The HTTP interface lets you create a multipart upload, add pieces to it, and com
 
 For general information about multipart uploads, see [Uploading Files — Multipart](Uploading Files Multipart Container.htm).
 
-As you read information in the following sections, keep in mind the caveats mentioned in [Uploading Files — Non-Multipart](/delivery/storage/apis/api_calls/uploading_files_multipart).
+As you read information in the following sections, keep in mind the caveats mentioned in [Uploading Files — Non-Multipart](/delivery/storage/apis/api_calls/uploading_files_nonmultipart).
 
 
 ## Begin a Multipart Upload {/*begin-multipart-upload*/}

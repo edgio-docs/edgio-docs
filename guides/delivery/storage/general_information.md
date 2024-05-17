@@ -81,6 +81,6 @@ APIs that perform an operation return a single numeric code and no object. Follo
 ## HTTP Status Indicators  {/*http-status-indicators*/}
 Responses from HTTP calls always include the standard HTTP response code along with a response header that contains specific codes for success and failure. With one exception the header is called `X-Agile-Status`.
 
-Also note that the `/post/directory` call returns a JSON object with a status code and description. (See [Create a Directory](/delivery/storage/api_reference/#working-with-directories-http) for details.)
+Also note that the `/post/directory` call returns a JSON object with a status code and description. (See [Create a Directory](/delivery/storage/apis/api_calls/api_reference/working_with_directories_http) for details.)
 
 Of course the actual HTTP Status Code (200, 400, and so on) also gives an indication of the success or failure of a call.

@@ -220,7 +220,7 @@ Select an account and user name if you have not already done so. Use the drop-do
 <Callout type="info">If you attempt to create a directory with a `/` slash in the name one of two things happens: <br /> - If the folder name before the slash exists, the Console creates a new directory in that folder.<br /> - If the folder name before the slash does not exist, the Console displays an error informing you that the parent path does not exist.<br />  <br /> For example, if you are in the root directory and a folder named test exists and from the root directory you click **Create Folder** and enter `test/sub-test`, the Console creates the folder `sub-test` under `/test`.</Callout>
 
 
-<Callout type="info">You can also create directories using the Origin Storage API. Use any of the following: <br /> - [makeDir](/delivery/storage/api_reference/#create-directory)<br /> - [makeDir2](/delivery/storage/api_reference/#create-directory-paths)<br /> - [post/directory](/delivery/storage/api_reference/#create-directory-http)</Callout>
+<Callout type="info">You can also create directories using the Origin Storage API. Use any of the following: <br /> - [makeDir](/delivery/storage/api_reference/#create-directory)<br /> - [makeDir2](/delivery/storage/apis/api_calls/working_with_directories_json/#leading-paths)<br /> - [post/directory](/delivery/storage/apis/api_calls/working_with_directories_http)</Callout>
 
 ### Uploading Folders {/*uploading-folders*/}
 You can upload one or more folders by drag and drop.

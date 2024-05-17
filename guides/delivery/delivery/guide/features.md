@@ -696,12 +696,12 @@ Last-mile acceleration occurs between the Edgio Edge Servers in the POP nearest 
 
 Last-mile optimizations include:
 
-- Arc Light (see [Dynamic Content Acceleration and Delivery Features In Context](#dynamic-in-context) and [Static - Content Acceleration and Delivery Features In Context](static-in-context))
+- Arc Light (see [Dynamic Content Acceleration and Delivery Features In Context](#dynamic-in-context) and [Static - Content Acceleration and Delivery Features In Context](#static-in-context))
 - Cache Control (see [Caching Dynamic Content](#caching-dynamic-content))
 - Compression
 - Header control (see [Header Manipulation](#header-manipulation))
 - MediaVault content protection (see [URL Protection](#url-protection))
-- Device Detection (see [Device Detection](device-detection))
+- Device Detection (see [Device Detection](#device-detection))
 - Accelerated SSL offload
 - Persistent connections to browser
 - TCP optimizations

@@ -72,7 +72,7 @@ Positional parameters must be applied in the same order shown in the named param
 -   **\-27**: internal server error
 -   **\-10001**: invalid token
 
-<Callout type="info">For a list of error codes not specific to `createMultipart`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `createMultipart`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*response-data*/}
 
@@ -161,7 +161,7 @@ Multipart upload identifier from a prior call to createMultipart or /multipart/c
 -   **\-2**: You passed an invalid value for the mpid parameter.
 -   **\-10001**: invalid token
 
-<Callout type="info">For a list of error codes not specific to `getMultipartStatus`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `getMultipartStatus`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*get-status-response-data*/}
 On success returns an object with the following data:
@@ -257,7 +257,7 @@ Positional parameters must be applied in the same order shown in the named param
 -   **\-19**: invalid value for name parameter
 -   **\-10001**: invalid value for token parameter
 
-<Callout type="info">For a list of error codes not specific to `getMultipartStatusMap`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `getMultipartStatusMap`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*get-string-response-data*/}
 On success returns an object with the following data:
@@ -397,7 +397,7 @@ Positional parameters must be applied in the same order shown in the named param
 -   **\-14**: invalid pagesize
 -   **\-10001**: invalid value for token parameter
 
-<Callout type="info">For a list of error codes not specific to `listMultipart`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `listMultipart`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*list-multipart-response-data*/}
 On success returns an object with the following data:
@@ -681,7 +681,7 @@ Positional parameters must be applied in the same order shown in the named param
 -   **\-26**: multipart services down or unavailable
 -   **\-10001**: invalid token
 
-<Callout type="info">For a list of error codes not specific to `listMultipartPiece`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `listMultipartPiece`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*list-pieces-response-data*/}
 On success returns an object with the following data:
@@ -749,7 +749,7 @@ Positional parameters must be applied in the same order shown in the named param
 -   **\-22**: unable to restart the multipart upload; upload was not in a suitable state
 -   **\-10001**: invalid value for token parameter
 
-<Callout type="info">For a list of error codes not specific to `restartMutlipart`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `restartMutlipart`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*restart-response-data*/}
 Returns only the codes discussed in [Return Codes](#restart-return-codes). Does not return any data structures.
@@ -820,7 +820,7 @@ When the file creation is complete, the system sets the parent directory's mtime
 -   **\-17**: the multipart upload has been aborted
 -   **\-10001**: invalid value for token parameter
 
-<Callout type="info">For a list of error codes not specific to `completeMultipart`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `completeMultipart`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*using-response-data*/}
 On success returns an object with the following data:
@@ -901,7 +901,7 @@ Positional parameters must be applied in the same order shown in the named param
 -   **\-18**: invalid state; cannot be aborted
 -   **\-10001**: invalid value for token parameter
 
-<Callout type="info">For a list of error codes not specific to `abortMultipart`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `abortMultipart`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*abort-response-data*/}
 Returns only the codes discussed in [Return Codes](#abort-return-codes). Does not return any data structures.

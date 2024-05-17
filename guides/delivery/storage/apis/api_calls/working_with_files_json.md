@@ -42,7 +42,7 @@ The method asynchronously submits the copy request to a queue where it waits wit
 
 | Parameter Name | Type | Description |
 | --- | --- | --- |
-| token | str |  Valid token from a call to login (JSON-RPC interface) or /account/login (HTTP interface). See [Log In Using JSON-RPC](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface) and [Log in Using the HTTP Interface](/delivery/storage/apis/api_calls/logging_in_using_http_interface), respectively.|
+| token | str |  Valid token from a call to login (JSON-RPC interface) or `/account/login` (HTTP interface). See [Log In Using JSON-RPC](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface) and [Log in Using the HTTP Interface](/delivery/storage/apis/api_calls/logging_in_using_http_interface), respectively.|
 |path|str|The destination path and file name|
 |uri|str|The URI for the source path and file name. Must use properly URL-encoded values for disallowed characters or an error is returned.<Callout type="info">The root path of your account is `http://{Account name}/`<br /><br />Example:<br />If you have a preview.mp4 file in a previews directory off the root path, you reference the file like this:<br />`http://{Account name}/previews/preview.mp4`</Callout>|
 |flags	|int|Optional <br />Additional processing instructions. Valid values:<br />- FF_CREATE_DESTDIR: Automatically create the destination directory if it does not exist<br />- 1: Equivalent to FF_CREATE_DESTDIR|
@@ -55,7 +55,7 @@ The method asynchronously submits the copy request to a queue where it waits wit
 -   **\-56**: too busy - concurrency reached (wait and try again)
 -   **\-10001**: invalid token
 
-<Callout type="info">For a list of error codes not specific to `fetchFileHTTP`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `fetchFileHTTP`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*response-data*/}
 
@@ -114,7 +114,7 @@ Positional parameters must be applied in the same order shown in the named param
 -   **\-1**: file does not exist
 -   **\-10001**: invalid token
 
-<Callout type="info">For a list of error codes not specific to `deleteFile`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `deleteFile`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*delete-response-data*/}
 Returns only the codes discussed in [Return Codes](#delete-return-codes). Does not return any data structures.
@@ -194,7 +194,7 @@ Positional parameters must be applied in the same order shown in the named param
 -   **\-12**: invalid page size
 -   **\-10001**: invalid token
 
-<Callout type="info">For a list of error codes not specific to `listFile`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `listFile`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*list-response-data*/}
 When the stat parameter is set to `False`, the method returns an object with the following data:
@@ -345,7 +345,7 @@ Positional parameters must be applied in the same order shown in the named param
 -   **\-8**: invalid path
 -   **\-33**: invalid content type
 -   **\-10001**: invalid token
-<Callout type="info">For a list of error codes not specific to `setContentType`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `setContentType`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*set-response-data*/}
 Returns only the codes discussed in [Return Codes](#set-return-codes). Does not return any data structures.

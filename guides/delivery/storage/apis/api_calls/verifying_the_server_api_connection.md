@@ -196,7 +196,7 @@ Don't pass an operation:
 ### Return Codes {/*return-codes2*/}
 - **`0`**: success
 
-<Callout type="info">For a list of error codes not specific to `ping`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `ping`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ### Response Data {/*response-data2*/}
 On success returns an object with the following data:

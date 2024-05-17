@@ -45,7 +45,7 @@ Example:
 - **`-1`**: invalid token
 - **`-2`**: operation not permitted
 
-<Callout type="info">For a list of error codes not specific to `logout`, see [Global Error Codes](/delivery/storage/reference_materials/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `logout`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ## Response Data  {/*response-data*/}
 Returns only the codes discussed in Return Codes. Does not return any data structures.

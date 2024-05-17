@@ -5,14 +5,14 @@ The JSON-RPC interface provides these methods for logging in:
 
 [Log In](#log-in)
 
-[Log in to a Subdirectory](#log-in-to-a-subdirectory)
+[Log in to a Subdirectory](#log-in-to-subdirectory)
 
 ## Log In  {/*log-in*/}
 Method name: `login`
 
 Logs into Origin Storage and obtains a token for subsequent calls. Note that by default the token is valid for one hour. If you want to extend your token's lifetime, use the `updateSession` call. (See [Set Your Token's Expiry](/delivery/storage/apis/api_calls/working_with_sessions/#set-your-tokens-exiry) for details.)
 
-### Log In Using Named Parameters  {/*log-in-using-named-parameters*/}
+### Log In Using Named Parameters  {/*log-in-using-named-parameters*/}  {/**/}
 
 ```JSON
 {

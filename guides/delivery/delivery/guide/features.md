@@ -701,7 +701,6 @@ Last-mile optimizations include:
 - Compression
 - Header control (see [Header Manipulation](#header-manipulation))
 - MediaVault content protection (see [URL Protection](#url-protection))
-- Device Detection (see [Device Detection](#device-detection))
 - Accelerated SSL offload
 - Persistent connections to browser
 - TCP optimizations
@@ -768,11 +767,15 @@ Web Site and Application Acceleration utilizes its feature set to optimize the r
 
 The SmartPurge Rest API Guide appendix includes the following:
 
-[Request Endpoint Schema](delivery/delivery/smartpurge/smartpurge_rest_api/#request-endpoint-schema)
-[Error Response Schema](delivery/delivery/smartpurge/smartpurge_rest_api/#error-response-schema)
-[Error Response Descriptions](delivery/delivery/smartpurge/smartpurge_rest_api/#error-response-descriptions)
-[HTTP Status Codes](delivery/delivery/smartpurge/smartpurge_rest_api/#https-status-codes)
-[API Client Sample Code](delivery/delivery/smartpurge/smartpurge_rest_api/#api-client-sample-code)
+[Request Endpoint Schema](/delivery/delivery/smartpurge/smartpurge_rest_api/#request-endpoint-schema)
+
+[Error Response Schema](/delivery/delivery/smartpurge/smartpurge_rest_api/#error-response-schema)
+
+[Error Response Descriptions](/delivery/delivery/smartpurge/smartpurge_rest_api/#error-response-descriptions)
+
+[HTTP Status Codes](/delivery/delivery/smartpurge/smartpurge_rest_api/#https-status-codes)
+
+[API Client Sample Code](/delivery/delivery/smartpurge/smartpurge_rest_api/#api-client-sample-code)
 
 ## Analytics and Reporting  {/*analytics-and-reporting*/}
 

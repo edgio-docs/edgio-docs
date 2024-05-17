@@ -4,7 +4,7 @@ title: Index of Supported API Calls
 The following sections help you locate the information you need.
 
 See [API Calls by Name](#api-calls-by-name) if you know the call you want to make but you need further information about it.
-See [API Calls by Topic](api-calls-by-topic) if you know what you want to do but you are not sure which call to use.
+See [API Calls by Topic](#api-calls-by-topic) if you know what you want to do but you are not sure which call to use.
 
 Both sections contain links to detailed information.
 
@@ -20,7 +20,7 @@ Calls are listed in alphabetical order within each interface. Note that there is
 | completeMultipart|[Complete a Multipart Upload](/delivery/storage/apis_api_calls/logging_in_using_the_json_rpc_interface/#complete) |
 | deleteDir|[Delete a Directory](/delivery/storage/apis/api_calls/working_with_directories_json/#delete-directory) |
 | deleteFile<br />|[Delete a File](/delivery/storage/apis/api_calls/working_with_files/#delete-a-file) |
-| fetchFileHTTP|[Copy a File](/delivery/storage/apis/api_calls/working_with_files/#copy-a-file). |
+| fetchFileHTTP|[Copy a File](/delivery/storage/apis/api_calls/working_with_files/#copy-a-file) |
 | getMultipartStatus|[Get Status for a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#get-status) |
 | getMultipartStatusMap|[Get String Equivalents of Multipart Status Codes](/delivery/storage/apis/api_calls/working_with_multipart_json/#get-equivalent)  |
 | initKeyPair|[Initializing HMAC Key Pairs](/delivery/storage/apis/api_calls/initializing_hmac_key_pairs) |
@@ -40,7 +40,7 @@ Calls are listed in alphabetical order within each interface. Note that there is
 | restartMultipart|[Restart a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#restart) |
 | setContentType|[Set a File's Content Type](/delivery/storage/apis/api_calls/working_with_files/#set-type) |
 | setMTime|[Change a File or Directory Last Modification Time](/delivery/storage/apis/api_calls/working_with_methods/#change-time) |
-| stat<br />[Obtain File or Directory Metadata](/delivery/storage/apis/api_calls/working_with_methods/#metadata) |
+| stat|[Obtain File or Directory Metadata](/delivery/storage/apis/api_calls/working_with_methods/#metadata) |
 | updateSession|[Set Your Token's Expiry](/delivery/storage/apis/api_calls/working_with_sessions/#set-your-tokens-exiry) |
 
 
@@ -76,6 +76,20 @@ Calls are available in the JSON-RPC interface only.
 | Generate a new key pair for use in signing requests | initKeyPair | [Initializing HMAC Key Pairs](Initializing HMAC Key Pairs.htm) |
 
 ### Directories  {/*directories*/}
+Calls are available in the interface unless otherwise indicated.
+
+
+| To  | Use this call | For instructions see |
+| --- | --- | --- |
+| Change a directory's last modified time | setMTime | [Change a File or Directory Last Modification Time](Working With Directories and Files Common.htm#Set) |
+| Create a directory | makeDir<br /><br />/post/dir (HTTP interface) | [Create a Directory](Working with Directories JSON RPC.htm#Create)<br /><br />[Create a Directory](Working with Directories HTTP.htm#Create) (HTTP interface) |
+| Create a directory and leading path segments | makeDir2 | [Create a Directory Along With Leading Paths](Working with Directories JSON RPC.htm#Create2) |
+| Delete a directory | deleteDir | [Delete a Directory](Working with Directories JSON RPC.htm#Delete) |
+| List directories | listDir | [List Directories](Working with Directories JSON RPC.htm#List) |
+| List directories and files | listPath | [List Files and Directories](Working With Directories and Files Common.htm#List) |
+| Obtain directory metadata | stat | [Obtain File or Directory Metadata](Working With Directories and Files Common.htm#Obtain) |
+| Rename a directory | rename | [Rename a File or Directory](Working With Directories and Files Common.htm#Rename) |
+
 ### Files  {/*files*/}
-### File Upload — Non-Multipart  {/*nonmultipart-download*/}
-### File Upload — Multipart  {/*multipart-download*/}
+### File Upload - Non-Multipart  {/*nonmultipart-download*/}
+### File Upload - Multipart  {/*multipart-download*/}

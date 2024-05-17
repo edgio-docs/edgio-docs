@@ -7,7 +7,7 @@ This page provides an overview of methods available to upload and share your Ori
 There are multiple ways to ingest content using Origin Storage. Choose from the options below:
 
 - [Origin Storage APIs](#uploading-using-storage): Use Origin Storage directly from your application.
-- [Control Portal](uploading-using-control): This is the easiest and most expeditious way to get started. If you don’t like using a command line, this is for you.
+- [Control Portal](#uploading-using-control): This is the easiest and most expeditious way to get started. If you don’t like using a command line, this is for you.
 - [Java FTP and API client] (including Multipart support): See https://github.com/Orchestrate-Cloud-Storage/StorageClient.
 - [Rsync over SSH](#uploading-using-rsync). You can use this method directly from the command line.
 

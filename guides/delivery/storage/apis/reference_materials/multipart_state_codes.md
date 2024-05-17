@@ -3,13 +3,13 @@ title: Multipart State Codes
 ---
 Both multipart uploads and multipart pieces have lifecycles along with states that indicate where they are within their lifecycle. Each state has an associated integer code and a status string.
 
-State codes for mutlpart uploads are visible in the output from calls to `getMultipartStatus` and `listMultipart` (see [Get Status for a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#get-status) and [List Your Multipart Uploads](/delivery/storage/api/api_calls/working_with_multipart_json/#list-multipart)).
+State codes for mutlpart uploads are visible in the output from calls to `getMultipartStatus` and `listMultipart` (see [Get Status for a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#get-status) and [List Your Multipart Uploads](/delivery/storage/apis/api_calls/working_with_multipart_json/#list-multipart)).
 
-State codes for mulipart pieces are visible in the output from calls to `listMultipartPiece` (see [List Pieces in a Multipart Upload](/delivery/storage/api/api_calls/working_with_multipart_json/#list-pieces)).
+State codes for mulipart pieces are visible in the output from calls to `listMultipartPiece` (see [List Pieces in a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#list-pieces)).
 
 <Callout type="info">You can programmatically obtain the status strings by calling getMultipartStatusMap (see [Get String Equivalents of Multipart Status Codes](/delivery/storage/apis/api_calls/working_with_multipart_json/#get-equivalent)). This makes it easy to obtain status strings at runtime.</Callout>
 
-Allowable state transitions are listed in [Multipart State Transitions](/delivery/storage/api/reference_materials/multipart_state_transitions).
+Allowable state transitions are listed in [Multipart State Transitions](/delivery/storage/apis/reference_materials/multipart_state_transitions).
 
 ## Multipart Upload State Codes  {/*upload*/}
 The following table shows the status string and description for each code.

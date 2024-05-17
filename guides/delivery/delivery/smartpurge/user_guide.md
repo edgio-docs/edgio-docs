@@ -1,9 +1,7 @@
 ---
 title: SmartPurge User Guide
 ---
----
-title: Content with SmartPurge
----
+
 SmartPurge is Edgio's innovative system for removing content from CDN cache.
 
 ## Why Purge?  {/*why-purge*/}

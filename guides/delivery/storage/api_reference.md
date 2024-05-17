@@ -31,9 +31,9 @@ title: Storage API Reference Guide
 
 [Working With Methods Common to Files and Directories](/delivery/storage/apis/api_calls/working_with_methods)
 
-[Uploading Files — Multipart](/delivery/storage/apis/api_calls/uploading_files_multipart)
+[Uploading Files - Multipart](/delivery/storage/apis/api_calls/uploading_files_multipart)
 
-[Uploading Files — Non-Multipart](/delivery/storage/apis/api_calls/uploading_files_nonmultipart)
+[Uploading Files - Non-Multipart](/delivery/storage/apis/api_calls/uploading_files_nonmultipart)
 
 [Working with Multipart Uploads in the JSON-RPC Interface](/delivery/storage/apis/api_calls/working_with_multipart_json)
 

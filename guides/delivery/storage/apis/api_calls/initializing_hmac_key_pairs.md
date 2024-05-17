@@ -44,7 +44,7 @@ Example:
 - **`-10001`**: invalid value for token parameter
 - **`-10004`**: unable to generate access key. Contact your Account Manager.
 
-<Callout type="info">For a list of error codes not specific to `initKeyPair`, see [Global Error Codes](/delivery/storage/reference_materials/apis/global_error_codes).</Callout>
+<Callout type="info">For a list of error codes not specific to `initKeyPair`, see [Global Error Codes](/delivery/storage/apis/reference_materials/global_error_codes).</Callout>
 
 ## Response Data
 -   **access_key**: (str) key to use when signing a request

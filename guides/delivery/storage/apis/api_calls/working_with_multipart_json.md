@@ -7,8 +7,6 @@ For general information about multipart uploads, see [Uploading Files — Multip
 
 As you read the information in the following sections, keep in mind the caveats mentioned in [Some Notes About Multipart Uploads](/delivery/storage/apis/api_calls/uploading_files_multipart/#notes).
 
-See [Code Samples](#Code) for code samples.
-
 ## Begin a Multipart Upload {/*begin-multipart-upload*/}
 Method name: createMultipart
 
@@ -18,7 +16,7 @@ The final destination file will not be created until you have added pieces to, a
 
 - An error will be returned if any parent directories does not exist. To create parent paths, you can use either:
 
-- the makeDir2 API in the JSON RPC interface (see [Create a Directory Recursively]) or:
+- the makeDir2 API in the JSON RPC interface (see [Create a Directory Recursively](/delivery/storage/apis/api_calls/working_with_directories_json/#leading_paths)) or:
 the post/directory API in the HTTP interface (see [Create a Directory](/delivery/storage/apis/api_calls/working_with_directories_http)(/delivery/storage/apis/api_calls/working_with_directories_json/#leading-paths))
 
 ### Using Named Parameters {/*using-named-parameters*/}

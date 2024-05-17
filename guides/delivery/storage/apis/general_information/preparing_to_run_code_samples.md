@@ -12,8 +12,8 @@ Origin Storage has two interfaces: JSON-RPC and HTTP. This document presents cod
 
 All HTTP interface code samples use the curl command line tool and are written for use on Linux/Unix but you can easily adapt them to run on windows. Instructions for using curl are in the following sections:
 
-- [Running curl on Unix/Linux](#curl-windows)
-- [Running curl on Windows](#code-samples-json-rpc)
+- [Running curl on Unix/Linux](#curl-unix-linux)
+- [Running curl on Windows](#code-samples-windows)
 
 Regardless of the operating system you use, always use the curl -v (verbose) option, which causes curl to output all its actions.
 

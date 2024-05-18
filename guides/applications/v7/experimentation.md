@@ -55,7 +55,7 @@ An experiment:
 
 A single experiment with three variants is illustrated below.
 
-![Experimentation](/images/v7/components.png?width=950)
+![Experimentation](/images/v7/experimentation/components.png?width=950)
 
 
 ### Criteria {/*criteria*/}
@@ -102,7 +102,7 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 
 2.  Click **+ Add Experiment**. A blank experiment configuration will appear.
 
-    ![Experimentation](/images/v7/blank.png?width=450)
+    ![Experimentation](/images/v7/experimentation/blank.png?width=450)
 
 3.  From the **Name** option, assign a name to the experiment.
 
@@ -115,7 +115,7 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 
         For example, you may identify requests by HTTP method, path, or request headers.
 
-        ![Experimentation](/images/v7/add-condition.png?width=350)
+        ![Experimentation](/images/v7/experimentation/add-condition.png?width=350)
 
     3.  Define how a request will be compared against a value or state. In some cases, this involves selecting a [comparison operator](/applications/performance/rules/operators) and defining the value that will be compared against the request.
     4.  Click **Add Condition**.
@@ -145,7 +145,7 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 
         Your configuration should now look similar to this one:
 
-        ![Experimentation](/images/v7/variants.png?width=350)
+        ![Experimentation](/images/v7/experimentation/variants.png?width=350)
 
     5.  Optional. Add and configure another variant. Repeat this step as needed.
 

@@ -151,7 +151,7 @@ Conclude an experiment by either promoting the new feature or website or reverti
 
     1.  Transition production traffic to the legacy website by [rolling back your configuration](/applications/basics/deployments#versioning) to the state prior to this experiment.
 
-        ![Rollback Deployment](/images/v7/experimentation/basics/deployments-rollback.png?width=450)
+        ![Rollback Deployment](/images/v7/basics/deployments-rollback.png?width=450)
 
             <Callout type="info">
 

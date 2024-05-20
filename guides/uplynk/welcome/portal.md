@@ -18,7 +18,7 @@ Access to the CMS portal requires an account.
 
 **To set up and sign in to your account**
 
-1. [Sign up for an account]( { URL_SIGNUP } ). After which, a confirmation message will be sent to your email address.
+1. [Sign up for an account]( {{ URL_SIGNUP }} ). After which, a confirmation message will be sent to your email address.
 2. Confirm your email address by following the link provided in the confirmation message.
 3. Log in to the CMS using the credentials provided during account sign up.
 

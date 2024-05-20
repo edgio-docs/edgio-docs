@@ -2,7 +2,7 @@
 title: Basic Traffic Splitting Tutorial
 ---
 
-This tutorial demonstrates how to split traffic between our [simple and full-featured sample sites](https://docs.edg.io/applications/v7/performance/cdn_as_code#examples). 
+This tutorial demonstrates how to split traffic between our [simple and full-featured sample sites](/applications/v7/performance/cdn_as_code#examples). 
 
 <ButtonLink variant="fill" type="default" href="https://edgio-community-examples-entry.glb.edgio.link/experiment-selection">
 

@@ -18,6 +18,14 @@ This tutorial demonstrates how to split traffic between our [simple and full-fea
 2.  Create a rule that sets the `x-edg-experiments` cookie and another one that returns the [Experimentation - Variant Selector web page](https://edgio-community-examples-entry.glb.edgio.link/experiment-selection).
 3.  Create an experiment that splits traffic between the entry environment's origin configurations.
 
+<Important>
+
+Although our [sample traffic splitting implementation](https://edgio-community-examples-entry.glb.edgio.link/experiment-selection) allows you to seamlessly switch between variants, your implementation will require you to reload the sample site after selecting a new variant. 
+
+Why? Our website's security denies page reload requests from a different origin.
+
+</Important>
+
 ## Create Entry Environment {/*create-entry-environment*/}
 
 This tutorial requires an environment that is dedicated to splitting traffic between our sample sites. We will now add one by creating a property.
@@ -246,3 +254,11 @@ Congratulations on setting up an experiment. You can now test this experiment by
     **Sample URL:**
     
     `https://edgio-community-examples-entry.glb.edgio.link/experiment-selection`
+    
+    <Important>
+
+    Although our [sample traffic splitting implementation](https://edgio-community-examples-entry.glb.edgio.link/experiment-selection) allows you to seamlessly switch between variants, your implementation will require you to reload the sample site after selecting a new variant. 
+
+    Why? Our website's security denies page reload requests from a different origin.
+
+    </Important>

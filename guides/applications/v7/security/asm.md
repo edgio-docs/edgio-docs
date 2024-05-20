@@ -15,7 +15,9 @@ This BETA feature requires activation. {{ ACCOUNT_UPGRADE }}
 Definitions for key concepts are provided below.
 
 -   **Collection:** A collection represents the segment of your network that will be scanned for vulnerabilities. 
--   **Assets:** {{ PRODUCT }} identifies the hostnames and IP addresses associated with a scanned network segment. These entries are collectively known as assets.
+-   **Assets:** Your assets consist of hostnames, IP addresses, and GitHub repositories. There are two methods through which one of these components is added to your assets.
+    -   An asset is generated for each hostname, IP address, and GitHub repository defined as a seed.
+    -   {{ PRODUCT }} uses seeds to determine which network segments will be scanned. Each hostname and IP address identified through this scan is also considered an asset.
 -   **Exposures:** {{ PRODUCT }} scans your network for Common Vulnerabilities and Exposures (CVE). A CVE represents a known security vulnerability or exposure for a software package. 
 -   **Protections:** {{ PRODUCT }} identifies the security solutions that are protecting the assets associated with the scanned network segment.
 -   **Technologies:** {{ PRODUCT }} identifies the software and services used by the assets associated with the scanned network segment.
@@ -176,7 +178,8 @@ Rules allow you to:
 
 **Key information:**
 
--   {{ PRODUCT }} will not create an exposure unless a finding matches at least one rule that is configured to create an exposure. 
+-   {{ PRODUCT }} will not create an exposure for a hostname or IP address unless a finding matches at least one rule that is configured to create an exposure. 
+-   {{ PRODUCT }} scans GitHub repositories using custom logic that cannot be modified through rules. 
 -   {{ PRODUCT }} provides a default rule set that you can use as a starting point. This rule set creates exposures for all findings.
 -   Rules are processed in the order that they are listed. If a finding satifies multiple rules, then all of those rules are applied to it. {{ PRODUCT }} resolves conflicts by giving precedence to the rule that is closest to the bottom of the list. 
 
@@ -320,7 +323,30 @@ This procedure assumes that you have not deleted or modified the `Scan common re
 
 ## Exposures {/*exposures*/}
 
-Exposures represent the vulnerabilities and misconfigurations that {{ PRODUCT }} has discovered in your organization's attack surface. Exposures are automatically created and updated as {{ PRODUCT }} scans your organization's managed assets. However, you may [create or modify a rule](#rules) to prevent exposures from being created. [Learn how to disable exposures for port scans.](#scan-ports-without-exposures)
+Exposures represent the vulnerabilities and misconfigurations that {{ PRODUCT }} has discovered in your organization's attack surface. Exposures are automatically created and updated as {{ PRODUCT }} scans your organization's managed assets. 
+
+**Key information:**
+
+-   You may [create or modify a rule](#rules) to prevent exposures from being created for scanned hostnames and IP addresses. 
+
+    [Learn how to disable exposures for port scans.](#scan-ports-without-exposures)
+
+-   {{ PRODUCT }} scans GitHub repositories for the following types of exposures:
+
+    -   CVEs associated with the repository's dependencies.
+    -   CVEs detected through code scans.
+    -   Leaked secrets.
+
+    You cannot use rules to suppress exposures generated from scanning a GitHub repository. 
+
+-   An exposure's **Activity** section allows you to:
+    -   Track changes to that exposure.
+    -   Add comments.
+    -   View detailed information about how an exposure was detected.
+
+-   View and manage exposures by navigating to the **Exposures** page under the **Attack Surfaces** section.
+
+### Exposure Attributes {/*exposure-attributes*/}
 
 Each exposure has the following attributes:
 
@@ -340,13 +366,6 @@ Each exposure has the following attributes:
 -   **Technology Version:** Optional. The specific version of the technology that is associated with the exposure.
 -   **CVE:** Optional. The CVE that is associated with the exposure.
 -   **Comments:** Optional. Users can add comments to exposures to provide additional context or information.
-
-An exposure's **Activity** section allows you to:
--   Track changes to that exposure.
--   Add comments.
--   View detailed information about how an exposure was detected.
-
-View and manage exposures by navigating to the **Exposures** page under the **Attack Surfaces** section.
 
 ## Assets {/*assets*/}
 

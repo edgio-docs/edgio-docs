@@ -51,8 +51,8 @@ This tutorial requires an environment that is dedicated to splitting traffic bet
 
 ## Create Rule {/*create-rule*/}
 
-Set up the following behavior:
--   Sets the `x-edg-experiments` cookie based off of the value of the `experiments` query string parameter. 
+Create two rules to define the following behavior:
+-   Set the `x-edg-experiments` cookie based off of the value of the `experiments` query string parameter. 
 -   Respond with a custom web page that allows you to select the variant that will be loaded.
 
 1.  Navigate to the **Rules** page.

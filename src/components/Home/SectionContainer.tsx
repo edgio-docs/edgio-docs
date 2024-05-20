@@ -183,7 +183,7 @@ const SectionBox = ({
           <Section key={i}>
             {section.title &&
               (section.href ? (
-                <Link href={section.href}>
+                <Link href={section.href} useNextLink={!section.external}>
                   <SectionTitle>{section.title}</SectionTitle>
                 </Link>
               ) : (
@@ -194,7 +194,9 @@ const SectionBox = ({
                 <Item key={item.title}>
                   <ItemDot />
                   <ItemText>
-                    <Link href={item.href}>{item.title}</Link>
+                    <Link href={item.href} useNextLink={!item.external}>
+                      {item.title}
+                    </Link>
                   </ItemText>
                 </Item>
               ))}

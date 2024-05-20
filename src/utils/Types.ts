@@ -14,6 +14,7 @@ export type HomepageSectionGroup = {
   className?: string;
   icon?: NamedExoticComponent<JSX.IntrinsicElements['svg']>;
   path?: string;
+  external?: boolean;
   href?: string;
   sections: HomepageSection[];
 };
@@ -37,6 +38,7 @@ type HomepageSectionItem = {
   title: string;
   path: string;
   href?: string;
+  external?: boolean;
 };
 
 type HomepageSection = {
@@ -44,6 +46,7 @@ type HomepageSection = {
   description?: string;
   path?: string;
   href?: string;
+  external?: boolean;
   items: HomepageSectionItem[];
 };
 

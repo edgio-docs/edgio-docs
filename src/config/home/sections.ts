@@ -183,10 +183,12 @@ export const sections: HomepageSectionGroup[] = [
           {
             title: 'REST API',
             path: '/rest_api/',
+            external: true,
           },
           {
             title: 'EdgeJS API',
             path: '/docs/v7.x/api/core/',
+            external: true,
           },
         ],
       },

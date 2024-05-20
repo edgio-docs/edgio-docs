@@ -242,11 +242,14 @@ export async function handleHttpRequest(request, context) {
   ];
 
   // Get the HTML from the origin server and stream the response body through the
-  // HtmlTransformer to the Response object
-  const response = fetch(request.url, {edgio: {origin: 'api_backend'}})
-    .then(HtmlTransformer.stream(transformerDefinitions))
-    .then((stream) => new Response(stream))
-  return response
+  // HtmlTransformer
+  return fetch(request.url, {edgio: {origin: 'api_backend'}})
+    .then(response => {
+      let transformedResponse = HtmlTransformer.stream(transformerDefinitions, response)
+      // Make any changes to the response headers here.
+      transformedResponse.headers.set('x-html-transformer-ran', 'true')
+      return transformedResponse
+  })
 }
 ```
 
@@ -385,10 +388,20 @@ Flushes the transformer and completes the transformation. This function must be 
 ### static async stream() {/* stream */}
 
 ```js
-  const response = fetch(request.url, {edgio: {origin: 'api_backend'}})
-    .then(HtmlTransformer.stream(transformerDefinitions))
-    .then((stream) => new Response(stream))
-  return response
+  // Transforms response from origin
+  return fetch(request.url, {edgio: {origin: 'api_backend'}})
+    .then(response => HtmlTransformer.stream(transformerDefinitions, response))
+```
+
+```js
+  // Transforms response from origin and optionally manipulates the response headers
+  return fetch(request.url, {edgio: {origin: 'api_backend'}})
+    .then(response => {
+      let transformedResponse = HtmlTransformer.stream(transformerDefinitions, response)
+      // Make any changes to the response headers here.
+      transformedResponse.headers.set('x-html-transformer-ran', 'true')
+      return transformedResponse
+  })
 ```
 
 Static helper function to easily stream fetch() responses through the HtmlTransformer.

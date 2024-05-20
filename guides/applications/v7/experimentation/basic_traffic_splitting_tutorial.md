@@ -51,16 +51,45 @@ This tutorial requires an environment that is dedicated to splitting traffic bet
 
 ## Create Rule {/*create-rule*/}
 
-Set up a rule that delivers a custom web page that allows you to select the variant that will be loaded.
+Set up the following behavior:
+-   Sets the `x-edg-experiments` cookie based off of the value of the `experiments` query string parameter. 
+-   Respond with a custom web page that allows you to select the variant that will be loaded.
 
 1.  Navigate to the **Rules** page.
-2.  Click **+ Add Rule**.
-3.  Add a Path match condition for `/experiment-selection`.
+2.  Click **+ Add Rule** to create a rule that sets the `x-edg-experiments` cookie. 
+3.  Add a Query Parameter match condition for the `experiment` query string parameter.
 
     1.  Click **+ Add** and then select **Add Condition**.
 
         ![Rules - Add condition](/images/v7/experimentation/basic-traffic-splitting-rules-add-condition.png)
 
+    2.  From the **Variable** option, select `Query Parameter`.
+    3.  Set the **Parameter Name** option to `experiment`.
+    4.  Set the **Operator** option to `matches regular expression`.
+    5.  Set the **Match Value** option to `\b([1-9]|[1-9][0-9])\b`. 
+
+        This values matches whole numbers from 1 to 99. Your configuration should now look like this:
+
+        ![Rules - Path](/images/v7/experimentation/basic-traffic-splitting-rules-path.png)
+
+    6.  Click **Add Condition**.
+4.  Add an Add Response Headers feature for the `Set-Cookie` header.
+
+    1.  Click **+ Add** and then select **Add Feature**.
+    2.  Select `Add Response Headers`.
+    3.  Set the **Header Name** option to `Set-Cookie`.
+    4.  Set the **Value** option to `x-edg-experiments=%{arg_experiment}; Path=/; HttpOnly`.
+
+        Your configuration should now look like this:
+
+        ![Rules - Path](/images/v7/experimentation/basic-traffic-splitting-rules-add-response-headers.png)
+
+    5.  Click **Add Feature**.
+
+5.  Click **+ Add Rule** to respond with a custom web page.
+6.  Add a Path match condition for `/experiment-selection`.
+
+    1.  Click **+ Add** and then select **Add Condition**.
     2.  From the **Variable** option, select `Path`.
     3.  Verify that the **Operator** option is set to `matches (simple)`.
     4.  Set the **Match Value** option to `/experiment-selection`.
@@ -71,7 +100,7 @@ Set up a rule that delivers a custom web page that allows you to select the vari
 
     5.  Click **Add Condition**.
 
-4.  Add a Set Response Body feature for the custom web page.
+7.  Add a Set Response Body feature for the custom web page.
 
     1.  Click **+ Add** and then select **Add Feature**.
     2.  Select `Set Response Body`.
@@ -144,7 +173,7 @@ Set up a rule that delivers a custom web page that allows you to select the vari
 
     4.  Click **Add Feature**.
     
-5.  Add a Set Done feature to prevent requests to `/experiment-selection` from being proxied to the origin.
+8.  Add a Set Done feature to prevent requests to `/experiment-selection` from being proxied to the origin.
 
     1.  Click **+ Add** and then select **Add Feature**.
     2.  Select `Set Done`.

@@ -15,7 +15,7 @@ This tutorial demonstrates how to split traffic between our [simple and full-fea
 1.  Create an entry environment that contains origin configurations through which traffic will be routed between our sample sites. 
     -   Create an origin configuration that points to our simple performance site.
     -   Create an origin configuration that points to our full-featured performance site.
-2.  Create a rule that returns the [Experimentation - Variant Selector web page](https://edgio-community-examples-entry.glb.edgio.link/experiment-selection).
+2.  Create a rule that sets the `x-edg-experiments` cookie and another one that returns the [Experimentation - Variant Selector web page](https://edgio-community-examples-entry.glb.edgio.link/experiment-selection).
 3.  Create an experiment that splits traffic between the entry environment's origin configurations.
 
 ## Create Entry Environment {/*create-entry-environment*/}
@@ -49,7 +49,7 @@ This tutorial requires an environment that is dedicated to splitting traffic bet
 
 7.  Click **Create Property**. {{ PRODUCT }} will now create a property whose Production environment contains two origin configurations that point to our sample Performance websites. After which, it will automatically deploy this configuration. 
 
-## Create Rule {/*create-rule*/}
+## Create Rules {/*create-rules*/}
 
 Create two rules to define the following behavior:
 -   Set the `x-edg-experiments` cookie based off of the value of the `experiments` query string parameter. 

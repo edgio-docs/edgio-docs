@@ -134,7 +134,6 @@ Set up a rule that delivers a custom web page that allows you to select the vari
                     var win = window.open(url, '_blank');
                     
                     win.addEventListener('load', function() {
-                        debugger;
                         win.location.reload();
                     })
                 }

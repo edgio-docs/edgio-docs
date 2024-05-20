@@ -1,0 +1,13 @@
+type: object
+properties:
+  '@id':
+    type: string
+    description: The dataset collection's relative path.
+  '@type':
+    type: string
+    description: Returns `Collection`.
+  items:
+    type: array
+    items:
+      $ref: ./MetricsDataset.yaml
+    description: Contains a list of datasets.

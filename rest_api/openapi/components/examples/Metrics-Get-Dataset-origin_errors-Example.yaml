@@ -1,0 +1,61 @@
+value:
+  '@id': /datasets/origin_errors
+  '@type': MetricsDataset
+  name: origin_errors
+  description: >-
+    Aggregated usage metrics with breakdown time, environment ID, origin name,
+    HTTP method, response content type, and specific HTTP status codes between
+    400 and 599
+  created_at: '2024-05-02T00:00:00Z'
+  time_granularities:
+    - FIVE_MINUTES
+    - HOUR
+    - DAY
+  data_retention_policy:
+    five_minutes: 2764800
+    hour: 8208000
+    day: 69120000
+  dimensions:
+    - name: time
+      type: DATE
+      description: The date when the request happened.
+    - name: environment_id
+      type: STRING
+      description: The environment ID.
+    - name: origin_name
+      type: STRING
+      description: The origin name.
+    - name: http_method
+      type: STRING
+      description: The request HTTP method.
+    - name: content_type
+      type: STRING
+      description: Content-Type response header.
+    - name: http_status_code
+      type: NUMBER
+      description: The HTTP status codes between 400 and 599.
+  metrics:
+    - name: requests_origin_total
+      type: NUMBER
+      description: Total number of requests to origin.
+  filters:
+    - name: environment_id
+      type: array
+      required: true
+      description: Sets the filtering by environment id.
+    - name: origin_name
+      type: array
+      required: false
+      description: Sets the filtering by origin name.
+    - name: http_method
+      type: array
+      required: false
+      description: Sets the filtering by request HTTP method.
+    - name: content_type
+      type: array
+      required: false
+      description: Sets the filtering by response content type.
+    - name: http_status_code
+      type: array
+      required: false
+      description: Sets the filtering by http status code.

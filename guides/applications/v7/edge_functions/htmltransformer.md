@@ -555,7 +555,6 @@ The StartTag class has the following methods:
 | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `name(): string`                              | Returns the name of the tag                                                                                 |
 | `name_preserve_case(): string`                | Returns the name of the tag, preserving its case.                                                           |
-| `set_name(name: string)`                      | Sets the name of the tag. Returns an error if the tag name is invalid.                                      |
 | `namespace_uri(): string`                     | Returns the namespace URI of the tag                                                                        |
 | `attributes(): [Attributes]`                  | Returns an array of [Attribute](#attribute) objects                                                         |
 | `set_attribute(name: string, value)`          | Sets the value of the attribute with the specified name. Returns an error if the attribute name is invalid. |

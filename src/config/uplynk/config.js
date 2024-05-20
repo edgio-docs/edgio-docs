@@ -6,7 +6,7 @@ const PRODUCT_STREAMING = 'Streaming'
 const URL_UPLYNK_PORTAL = 'id.vdms.io';
 const URL_SIGNUP = 'http://www.uplynk.com/signup.html';
 const URL_CMS = 'https://cms.uplynk.com/';
-const URL_CDN = 'https://my.edgecast.com/'
+const URL_CDN = 'https://my.edgecast.com/';
 
 
 const config = {

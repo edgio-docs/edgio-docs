@@ -316,6 +316,10 @@ const nav = {
           path: 'experimentation/cross_environment_traffic_splitting',
         },
         {
+          title: 'Basic Traffic Splitting Tutorial',
+          path: 'experimentation/basic_traffic_splitting_tutorial',
+        },
+        {
           title: 'Iterative Migration Tutorial',
           path: 'experimentation/iterative_migration_tutorial',
         },

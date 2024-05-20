@@ -15,9 +15,9 @@ This BETA feature requires activation. {{ ACCOUNT_UPGRADE }}
 Definitions for key concepts are provided below.
 
 -   **Collection:** A collection represents the segment of your network that will be scanned for vulnerabilities. 
--   **Assets:** Your assets consist of hostnames, IP addresses, and GitHub repositories. There are two methods through which one of these components is added to your assets.
-    -   An asset is generated for each hostname, IP address, and GitHub repository defined as a seed.
-    -   {{ PRODUCT }} uses seeds to determine which network segments will be scanned. Each hostname and IP address identified through this scan is also considered an asset.
+-   **Assets:** Your assets consist of hostnames, IP addresses, and GitHub repositories. There are two methods for asset registration.
+    -   An asset is registered for each hostname, IP address, and GitHub repository defined as a seed.
+    -   {{ PRODUCT }} uses seeds to determine which network segments will be scanned. Each hostname and IP address identified through this scan is also registered as an asset.
 -   **Exposures:** {{ PRODUCT }} scans your network for Common Vulnerabilities and Exposures (CVE). A CVE represents a known security vulnerability or exposure for a software package. 
 -   **Protections:** {{ PRODUCT }} identifies the security solutions that are protecting the assets associated with the scanned network segment.
 -   **Technologies:** {{ PRODUCT }} identifies the software and services used by the assets associated with the scanned network segment.

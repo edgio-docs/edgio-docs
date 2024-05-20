@@ -78,7 +78,7 @@ Create two rules to define the following behavior:
 
         This values matches whole numbers from 1 to 99. Your configuration should now look like this:
 
-        ![Rules - Path](/images/v7/experimentation/basic-traffic-splitting-rules-path.png)
+        ![Rules - Path](/images/v7/experimentation/basic-traffic-splitting-rules-query-parameter.png)
 
     6.  Click **Add Condition**.
 4.  Add an Add Response Headers feature for the `Set-Cookie` header.
@@ -93,6 +93,10 @@ Create two rules to define the following behavior:
         ![Rules - Path](/images/v7/experimentation/basic-traffic-splitting-rules-add-response-headers.png)
 
     5.  Click **Add Feature**.
+    
+    Your rule should now look like this:
+
+    ![Rules - First rule](/images/v7/experimentation/basic-traffic-splitting-rule-1.png)
 
 5.  Click **+ Add Rule** to respond with a custom web page.
 6.  Add a Path match condition for `/experiment-selection`.
@@ -189,7 +193,7 @@ Create two rules to define the following behavior:
     
     Your rule should now look like this:
     
-    ![Rules page](/images/v7/experimentation/basic-traffic-splitting-rule.png)
+    ![Rules page](/images/v7/experimentation/basic-traffic-splitting-rule-2.png)
 
 ## Create Experiment {/*create-experiment*/}
 

@@ -177,11 +177,12 @@ export const sections: HomepageSectionGroup[] = [
         ],
       },
       {
-        title: 'APIs',
+        title: 'Develop',
+        path: 'develop',
         items: [
           {
             title: 'REST API',
-            path: '/rest_api',
+            path: '/rest_api/',
           },
           {
             title: 'EdgeJS API',
@@ -374,30 +375,27 @@ export const sections: HomepageSectionGroup[] = [
   },
 ];
 
-// Add full href to each section, subsection, and item
-sections.forEach((section) => {
-  if (section.path) {
-    section.href = section.path;
-  }
-  section.sections.forEach((subsection) => {
-    const {path} = section;
-    if (path) {
-      if (path.startsWith('http') || path.startsWith('/')) {
-        subsection.href = subsection.path;
-      } else {
-        subsection.href = `${section.path}/${subsection.path}`;
-      }
+(() => {
+  const setHref = (basePath: string, path: string) =>
+    path.startsWith('http') || path.startsWith('/')
+      ? path
+      : `${basePath}/${path}`;
+
+  sections.forEach((section) => {
+    if (section.path) {
+      section.href = section.path;
     }
 
-    subsection.items.forEach((item) => {
-      const {path} = item;
-      if (path) {
-        if (path?.startsWith('http') || path?.startsWith('/')) {
-          item.href = path;
-        } else {
-          item.href = `${section.path}/${subsection.path}/${path}`;
-        }
+    section.sections.forEach((subsection) => {
+      if (subsection.path) {
+        subsection.href = setHref(section.path!, subsection.path);
       }
+
+      subsection.items.forEach((item) => {
+        if (item.path) {
+          item.href = setHref(`${section.path}/${subsection.path}`, item.path);
+        }
+      });
     });
   });
-});
+})();

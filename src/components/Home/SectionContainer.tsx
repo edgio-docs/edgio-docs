@@ -93,7 +93,7 @@ const SectionTitle = styled.div`
 
 const ItemsGrid = styled.div<{columns: number}>`
   display: grid;
-  grid-gap: 4px;
+  grid-gap: 6px;
   width: 100%;
   box-sizing: border-box;
 
@@ -124,7 +124,7 @@ const ItemDot = styled.div`
 `;
 
 const ItemText = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   white-space: nowrap;
 `;
 

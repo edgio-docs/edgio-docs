@@ -14,6 +14,8 @@ export type HomepageSectionGroup = {
   className?: string;
   icon?: NamedExoticComponent<JSX.IntrinsicElements['svg']>;
   path?: string;
+  external?: boolean;
+  href?: string;
   sections: HomepageSection[];
 };
 
@@ -35,12 +37,16 @@ export type MDHeadingsList = MDHeading[];
 type HomepageSectionItem = {
   title: string;
   path: string;
+  href?: string;
+  external?: boolean;
 };
 
 type HomepageSection = {
   title?: string;
   description?: string;
   path?: string;
+  href?: string;
+  external?: boolean;
   items: HomepageSectionItem[];
 };
 

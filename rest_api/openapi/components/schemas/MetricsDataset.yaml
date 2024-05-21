@@ -1,0 +1,93 @@
+type: object
+properties:
+  '@id':
+    type: string
+    description: The dataset's relative path.
+  '@type':
+    type: string
+    description: Returns `MetricsDataset`.
+  name:
+    type: string
+    description: The dataset's unique name.
+  description:
+    type: string
+    description: A detailed summary of the dataset's contents.
+  created_at:
+    type: string
+    format: date-time
+    description: >-
+      The date and time (UTC) at which dataset has been created and started to
+      collect data.
+  time_granularities:
+    type: array
+    items:
+      type: string
+    description: A list of time granularities.
+  data_retention_policy:
+    type: object
+    description: Lists each time granularity and its retention period.
+    additionalProperties:
+      type: integer
+      description: A time granularity's retention period in seconds.
+      example:
+        FIVE_MINUTES: 2764800
+        HOUR: 8208000
+        DAY: 69120000
+  dimensions:
+    type: array
+    description: >-
+      Contains dimensions. A dimension describes an attribute of a request and
+      is typically used to correlate the desired set of requests with metrics.
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The dimension's name.
+        type:
+          type: string
+          description: The dimension's data type (e.g., `STRING`, `NUMBER`, `DATE`).
+        description:
+          type: string
+          description: A brief explanation of what the dimension represents.
+  metrics:
+    type: array
+    description: >-
+      Contains metrics. A metric measures the rate, an amount, or the total
+      number of times that a particular attribute occurred over a given record.
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The metric's name.
+        type:
+          type: string
+          description: The metric's data type (e.g., `NUMBER`).
+        description:
+          type: string
+          description: Describes what the metric measures.
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: >-
+            The date and time (UTC) at which metrics has been created and
+            started to collect data. If it is null, the metric is assumed to
+            have started collecting data at the same time as the dataset, as
+            indicated by the dataset's `created_at` property.
+  filters:
+    type: array
+    description: Contains a list of filters.
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The filter's name.
+        required:
+          type: boolean
+          description: Indicates whether the filter is mandatory or optional.
+        description:
+          type: string
+          description: Explains how the filter can be used.

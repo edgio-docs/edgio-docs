@@ -6,11 +6,11 @@ You may use Experimentation to send traffic to another environment either within
 
 One use for this capability is to migrate iteratively from a legacy to a new site. Validate a new feature by sending some production traffic to an environment where that new feature is hosted. 
 
-[View iterative migration tutorial.](/guides/experimentation/iterative_migration_tutorial)
+[View iterative migration tutorial.](/applications/experimentation/iterative_migration_tutorial)
 
 ## How Does Proxying Traffic Work? {/*how-does-proxying-traffic-work*/}
 
-{{ PRODUCT }} processes all requests using our [standard order of operations](/guides/v7/performance/request#order-of-operations). However, traffic that is sent to another environment will be processed by the rules for both environments as indicated below. 
+{{ PRODUCT }} processes all requests using our [standard order of operations](/applications/v7/performance/request#order-of-operations). However, traffic that is sent to another environment will be processed by the rules for both environments as indicated below. 
 
 -   **Entry Environment:** {{ PRODUCT }} will apply the entry environment's rules to the request. 
 -   **Destination Environment:** {{ PRODUCT }} will then apply the destination environment's rules to the request. These features take precedence over the ones defined within the entry environment's rules.
@@ -25,7 +25,7 @@ The two basic methods for routing traffic to multiple environments are:
 
     For example, you can route traffic to an environment that contains the configuration for your current site and another environment that contains your new site.
 
-    ![Dedicated Routing Environment](/images/v7/experimentation-routing-dedicated-environment.png)
+    ![Dedicated Routing Environment](/images/v7/experimentation/routing-dedicated-environment.png)
 
 -   **Shared Environment:** Set up an experiment on the environment that contains your hostnames and your site's configuration to route traffic to another environment. 
 
@@ -39,7 +39,7 @@ The two basic methods for routing traffic to multiple environments are:
 
     For example, you can route traffic to another environment for the purpose of A/B testing a new feature.
 
-    ![Shared Environment](/images/v7/experimentation-routing-shared-environment.png)
+    ![Shared Environment](/images/v7/experimentation/routing-shared-environment.png)
 
 <Callout type="important">
 
@@ -69,7 +69,7 @@ Before setting up an experiment, you will need to set up each environment to whi
 
 After which, you should note the domain associated with each deployment's edge link. Sample domains are highlighted below.
 
-![Edge Link's Domain](/images/v7/experimentation-cross-env-experiment-edge-link.png?width=650)
+![Edge Link's Domain](/images/v7/experimentation/cross-env-experiment-edge-link.png?width=650)
 
 ### Entry Environment Setup {/*entry-environment-setup*/}
 
@@ -95,17 +95,17 @@ Create an origin configuration within the entry environment.
 
 -   Verify that the **Use the following SNI hint and enforce origin SAN/CN checking** option was autopopulated with the same domain.
 
-[View the corresponding configuration properties for a CDN-as-code setup.](/guides/performance/cdn_as_code/edgio_config#origins)
+[View the corresponding configuration properties for a CDN-as-code setup.](/applications/performance/cdn_as_code/edgio_config#origins)
 
 Your origin configuration should look similar to the following illustration:
 
-![Entry Environment's Origin Configuration](/images/v7/experimentation-cross-env-experiment-origin-configuration.png?width=650)
+![Entry Environment's Origin Configuration](/images/v7/experimentation/cross-env-experiment-origin-configuration.png?width=650)
 
 #### Host Header Logging {/*host-header-logging*/}
 
 If you plan on setting up custom logic for traffic routed from the entry environment, then you should create a rule that sets the host requested by the client (`%{http_host}`) within the `x-forwarded-host` request header.
 
-![Set Request Headers Feature](/images/v7/experimentation-cross-env-experiment-host.png)
+![Set Request Headers Feature](/images/v7/experimentation/cross-env-experiment-host.png)
 
 After which, you should define custom logic within your code to handle requests that originate from the entry environment.
 
@@ -113,15 +113,15 @@ After which, you should define custom logic within your code to handle requests 
 
 Create an experiment within the entry environment. Configure each desired variant to point to an origin configuration that points to the desired environment. 
 
-![Set Origin Feature](/images/v7/experimentation-cross-env-experiment-set-origin.png)
+![Set Origin Feature](/images/v7/experimentation/cross-env-experiment-set-origin.png)
 
 Your experiment should look similar to the following illustration:
 
-![Cross-Environment Experiment](/images/v7/experimentation-cross-env-experiment.png?width=650)
+![Cross-Environment Experiment](/images/v7/experimentation/cross-env-experiment.png?width=650)
 
 Deploy your changes to the entry environment. We recommend adding a note indicating the start of this experiment.
 
-![Deploy Changes with note](/images/v7/experimentation-deploy-changes.png)
+![Deploy Changes with note](/images/v7/experimentation/deploy-changes.png)
 
 <Callout type="info">
 
@@ -144,12 +144,12 @@ Conclude an experiment by either promoting the new feature or website or reverti
 -   Serve the new website from the entry environment.
 
     1.  Transition production traffic to the new website by [applying the new website's environment configuration to the entry environment](#manual-cross-environment-deployment).
-    2.  [Disabling](/guides/experimentation#enable-disable) or [deleting](/guides/experimentation#delete) the experiment.
+    2.  [Disabling](/applications/experimentation#enable-disable) or [deleting](/applications/experimentation#delete) the experiment.
     3.   Deploying your changes.
 
 -   Serve the current website from the entry environment.
 
-    1.  Transition production traffic to the legacy website by [rolling back your configuration](/guides/basics/deployments#versioning) to the state prior to this experiment.
+    1.  Transition production traffic to the legacy website by [rolling back your configuration](/applications/basics/deployments#versioning) to the state prior to this experiment.
 
         ![Rollback Deployment](/images/v7/basics/deployments-rollback.png?width=450)
 
@@ -159,7 +159,7 @@ Conclude an experiment by either promoting the new feature or website or reverti
             
             </Callout>
 
-    2.  [Disabling](/guides/experimentation#enable-disable) or [deleting](/guides/experimentation#delete) the experiment.
+    2.  [Disabling](/applications/experimentation#enable-disable) or [deleting](/applications/experimentation#delete) the experiment.
     3.   Deploying your changes.
 
 <a id="manual-cross-environment-deployment" />
@@ -225,7 +225,7 @@ Conclude an experiment by either promoting the new feature or website or reverti
 
     <Callout type="info">
     
-      By default, the origin configurations defined at the root of the {{ CONFIG_FILE }} are applied to the environment being deployed. You may override a specific origin configuration by defining it within the [environments key](/guides/performance/cdn_as_code/edgio_config#environments).
+      By default, the origin configurations defined at the root of the {{ CONFIG_FILE }} are applied to the environment being deployed. You may override a specific origin configuration by defining it within the [environments key](/applications/performance/cdn_as_code/edgio_config#environments).
     
     </Callout>
 

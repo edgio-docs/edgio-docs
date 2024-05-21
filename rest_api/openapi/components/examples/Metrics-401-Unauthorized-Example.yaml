@@ -1,0 +1,4 @@
+value:
+  '@type': Error
+  code: unauthorized_access
+  title: User or client is not authorized (invalid or missing access token)

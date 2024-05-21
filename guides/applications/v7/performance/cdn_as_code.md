@@ -556,12 +556,12 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
 
   </Callout>
 
-- [Transforming and optimizing images](/guides/performance/image_optimization)
-- Transforming the response through [Cloud Functions](/guides/performance/serverless_compute)
-- [Removing response headers](/guides/performance/cdn_as_code/route_features#altering-the-response)
-- [Normalizing the cache key](/guides/performance/caching#customizing-the-cache-key)
-- Generating performance insights through [DevTools](/guides/performance/observability/developer_tools_chrome_extension)
-- Tracking [Core Web Vitals](/guides/performance/observability/real_user_monitoring) through real user monitoring (RUM).
+- [Transforming and optimizing images](/applications/performance/image_optimization)
+- Transforming the response through [Cloud Functions](/applications/performance/serverless_compute)
+- [Removing response headers](/applications/performance/cdn_as_code/route_features#altering-the-response)
+- [Normalizing the cache key](/applications/performance/caching#customizing-the-cache-key)
+- Generating performance insights through [DevTools](/applications/performance/observability/developer_tools_chrome_extension)
+- Tracking [Core Web Vitals](/applications/performance/observability/real_user_monitoring) through real user monitoring (RUM).
 
 <ExampleButtons
   title="Full-Featured"

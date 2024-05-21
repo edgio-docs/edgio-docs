@@ -30,17 +30,17 @@ npm run dev
 
 ## Configuring your Remix app for {{ PRODUCT }} {/* configuring-your-remix-app-for-edgio */}
 
+<Info>
+
+This section is relevant only if you have an existing Remix project without Express or the Remix adapter installed. If you already have Express and the Remix adapter installed or have created a new Remix app as described under [Create a new Remix app](#create-a-new-remix-app), you may skip this step.
+
+</Info>
+
 ### Configure Express Middleware {/* configure-express-middleware */}
 
 {{ PRODUCT }} requires an Express server to run your Remix app. The following sections will help you configure your Express server. Refer to the [Remix Quick Start](https://remix.run/docs/en/main/start/quickstart#bring-your-own-server) guide for more information.
 
 #### Install Express and Remix Adapter {/* install-express-and-remix-adapter */}
-
-<Info>
-
-You may skip this step if you have already installed Express and the Remix adapter, or have created a new app as described under [Create a new Remix app](#create-a-new-remix-app).
-
-</Info>
 
 Install Express and the Remix adapter. You should also uninstall the default Remix server or any other server you are using:
 
@@ -94,7 +94,7 @@ When the {{ PRODUCT }} CLI dev server is running, it will automatically detect t
 
 </Info>
 
-### Initialize your project {/* initialize-your-project */}
+## Initialize with {{ PRODUCT }} {/* initialize-with-edgio */}
 
 To initialize your project for deployment on {{ PRODUCT }}, run the following command in the root directory of your project:
 
@@ -110,7 +110,7 @@ This will automatically update your `package.json` and add all of the required {
 - `{{ CONFIG_FILE }}` - A configuration file for {{ PRODUCT }}
 - `routes.js` - A default routes file that sends all requests to Remix.
 
-### Routing {/* routing */}
+## Routing {/* routing */}
 
 {{ PRODUCT }} uses a `routes.js` file to define how requests are routed to your application. By default, all requests are sent to Remix. You can customize this file to add additional routes or modify the default behavior such as defining cache rules.
 
@@ -125,7 +125,7 @@ export default new Router().use(connectorRoutes).static('public');
 
 Refer to the [CDN-as-code](/applications/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
-### Run the Remix app locally on {{ PRODUCT }} {/* run-the-remix-app-locally-on */}
+## Run the Remix app locally on {{ PRODUCT }} {/* run-the-remix-app-locally-on */}
 
 Before running your app using the {{ PRODUCT }} CLI, you must first build your Remix app. To do this, run the following command in the root directory of your project:
 

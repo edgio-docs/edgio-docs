@@ -31,11 +31,10 @@ export default function HomeFeatures() {
               key={section.heading}
               className={section.className}
               icon={section.icon}
-              title={section.heading}
-              subtitle={section.subheading}
-              href={section.path}
+              heading={section.heading}
+              subheading={section.subheading}
+              href={section.href}
               sections={section.sections}
-              viewMoreText={'View more'}
             />
           ))}
         </div>

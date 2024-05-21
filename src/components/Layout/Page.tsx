@@ -1,28 +1,29 @@
 // @ts-ignore
+import * as React from 'react';
+
 import {default as JSURL} from 'jsurl';
 import debounce from 'lodash/debounce';
-import Link from 'next/link';
 import {useRouter} from 'next/router';
-import * as React from 'react';
 // @ts-ignore
 import scrollIntoView from 'scroll-into-view';
 import styled from 'styled-components';
 
-import {PRODUCT} from '../../../constants';
-import {PRODUCT_APPLICATIONS} from '../../../constants';
-
-import Header from './Header/Header';
-import SideNav from './Sidebar/Sidenav';
-import {useIsMobile} from './useMediaQuery';
-
+import Link from 'components/MDX/Link';
+import {ContextType, useAppContext} from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import textCompare from 'utils/textCompare';
 
+import Header from './Header/Header';
+import MobileHeader from './Header/MobileHeader';
+import {SidebarNav} from './SidebarNav';
+import {useIsMobile} from './useMediaQuery';
+
 export function Page({children}: PageProps) {
-  const isMobile = useIsMobile(850);
+  const isMobile = useIsMobile();
   const [showSidebar, setShowSidebar] = React.useState(isMobile);
   const router = useRouter();
-  const showBanner = !isMobile || (isMobile && !showSidebar);
+  const {context, hasNavigationMenu} = useAppContext();
+  const showBanner = context === ContextType.APPLICATIONS && !isMobile;
   const contentInnerRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -57,14 +58,19 @@ export function Page({children}: PageProps) {
 
   return (
     <StyledMainPage>
-      {showBanner && <Banner />}
-      <Header {...{showSidebar, setShowSidebar}} />
+      {isMobile ? (
+        <MobileHeader />
+      ) : (
+        <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+      )}
       <main className="docs-content">
-        <div
-          className="docs-side__nav custom-scrollbar"
-          data-open={isMobile && showSidebar}>
-          <SideNav />
-        </div>
+        {hasNavigationMenu && !isMobile && (
+          <div
+            className="docs-side__nav custom-scrollbar"
+            data-open={isMobile && showSidebar}>
+            <SidebarNav />
+          </div>
+        )}
         <div className="docs-content__inner" ref={contentInnerRef}>
           {children}
         </div>
@@ -79,7 +85,7 @@ interface StyledBannerProps {
 }
 
 const StyledMainPage = styled.div`
-  --sidebar-width: 280px;
+  --sidebar-width: 320px;
 
   .docs-content {
     width: 100%;
@@ -143,18 +149,19 @@ const StyledBanner = styled.div<StyledBannerProps>`
   --banner-text-color: ${({legacy, future}) => (legacy ? '#000' : '#fff')};
   --banner-background-color: ${({legacy, future}) =>
     legacy ? 'var(--callout-tip)' : future ? '#812990' : 'var(--lg-primary)'};
+  --banner-font-size: ${({legacy, future}) => (legacy ? '18px' : '1rem')};
 
   display: block;
   text-align: center;
   color: var(--banner-text-color);
   background: var(--banner-background-color);
-  font-size: calc(1rem - 2px);
+  font-size: var(--banner-font-size);
   padding: 1em;
   text-decoration: none;
   font-weight: 500;
 
   a {
-    color: var(--banner-text-color);
+    color: var(--colors-blue0);
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -214,28 +221,31 @@ function highlightElementByText(searchText: string, ownerElement: HTMLElement) {
 
 function Banner() {
   const {version} = useConditioning();
+  const {config} = useAppContext();
+  const {PRODUCT, PRODUCT_APPLICATIONS, PRODUCT_LEGACY} = config;
   if (version.selectedVersion === '7') {
     return (
       <StyledBanner future>
-        Introducing {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
-        {version.selectedVersionText}.&nbsp;
-        <Link href="/guides/v7/intro" passHref>
-          <a>Find out what&apos;s new.</a>
-        </Link>
+        Cloud Functions support for Node.js 16 is undergoing end-of-life.&nbsp;
+        <Link href="/guides/install_nodejs">View the end-of-life plan.</Link>
       </StyledBanner>
     );
   }
   if (!version.isLatest) {
     return (
       <StyledBanner legacy>
-        You are reading {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
-        {version.selectedVersionText} docs.&nbsp;
-        <Link href="/" passHref>
-          <a>
-            Check out our latest docs for {PRODUCT} {PRODUCT_APPLICATIONS}{' '}
-            {version.latestVersionText}.
-          </a>
+        {PRODUCT} {PRODUCT_APPLICATIONS} {version.selectedVersionText} and
+        support for Node.js 16 are undergoing end-of-life (EOL). Read the&nbsp;
+        <Link href="https://edg.io/blogs/layer0-end-of-life-announcement/">
+          {PRODUCT_LEGACY} EOL announcement
         </Link>
+        , the&nbsp;
+        <Link href="/guides/install_nodejs">Node.js 16 EOL plan</Link>
+        &nbsp; or browse&nbsp;
+        <Link href="/">
+          {PRODUCT} {PRODUCT_APPLICATIONS} {version.latestVersionText} docs
+        </Link>
+        .
       </StyledBanner>
     );
   }
@@ -243,14 +253,14 @@ function Banner() {
     <StyledBanner>
       🎉 Introducing {PRODUCT} {PRODUCT_APPLICATIONS} v6 which supports Node.js
       v16.{' '}
-      <Link href="/guides/reference/v6_migration" passHref>
-        <a>Learn how to upgrade.</a>
-      </Link>{' '}
+      <Link href="/guides/reference/v6_migration">Learn how to upgrade.</Link>{' '}
       🎉
     </StyledBanner>
   );
 }
 
 export interface PageProps {
+  showNav?: boolean;
+  showBanner?: boolean;
   children: React.ReactNode;
 }

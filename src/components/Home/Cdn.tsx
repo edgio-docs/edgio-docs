@@ -1,14 +1,17 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import {PRODUCT, PRODUCT_EDGE} from '../../../constants';
-import {IconServer} from '../Icon/IconServer';
+import {
+  IconAppsPerformance,
+  IconAppsPerformanceDark,
+} from 'components/Icon/IconAppsPerformance';
+import {useAppContext} from 'contexts/AppContext';
+import {useTheme} from 'contexts/ThemeContext';
+import useConditioning from 'utils/hooks/useConditioning';
+import itemsByColumn from 'utils/itemsByColumn';
 
 import {StyledFeatureSection} from './FeatureSection';
 import SectionHeader from './SectionHeader';
-
-import useConditioning from 'utils/hooks/useConditioning';
-import itemsByColumn from 'utils/itemsByColumn';
 
 const StyledComp = styled(StyledFeatureSection)``;
 
@@ -125,10 +128,6 @@ const items = {
       path: '/guides/performance/caching/purging',
     },
     {
-      title: 'Static Prerendering',
-      path: '/guides/performance/static_prerendering',
-    },
-    {
       title: 'Predictive Prefetch',
       path: '/guides/performance/prefetching',
     },
@@ -155,10 +154,6 @@ const items = {
     {
       title: 'Traditional Sites',
       path: '/guides/performance/traditional_sites',
-    },
-    {
-      title: 'Third-Party CDNs',
-      path: '/guides/performance/third_party_cdns',
     },
     {
       title: 'Compression',
@@ -262,15 +257,17 @@ export default function Cdn() {
     version,
     version: {toVersionedPath},
   } = useConditioning();
+  const {config} = useAppContext();
+  const {themedValue} = useTheme();
 
   const routesByColumns = itemsByColumn(items, version, 'title', 8);
 
   return (
     <StyledComp>
       <SectionHeader
-        Icon={IconServer}
+        Icon={themedValue(IconAppsPerformance, IconAppsPerformanceDark)}
         title="Performance"
-        subtitle={`Accelerate your web application through ${PRODUCT} ${PRODUCT_EDGE}.`}
+        subtitle={`Accelerate your web application through ${config.PRODUCT} ${config.PRODUCT_EDGE}.`}
       />
 
       <div className="route-items">

@@ -1,0 +1,96 @@
+parameters:
+  - $ref: ../components/parameters/organization_id.yaml
+  - $ref: ../components/parameters/client_waf_id.yaml
+get:
+  operationId: get-client-side-protection-policy
+  tags:
+    - Client-Side Protections
+  summary: Get Client-Side Protection Policy
+  description: Retrieves a Client-Side Protection policy.
+  security:
+    - client_wafScope: [app.client_waf]
+  responses:
+    '200':
+      description: OK. A Client-Side Protection policy was retrieved.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ClientWaf.yaml
+          example:
+            {
+              "id": "abc123",
+              "customer_id": "12345678-1234-1234-1234-1234567890ab",
+              "team_config": true,
+              "last_modified_date": "2023-10-23T19:48:25.142172Z",
+              "headers": [
+                  {
+                      "key": "Content-Security-Policy",
+                      "value": "default-src 'none'; img-src 'self'",
+                      "overwrite": true
+                  },
+                  {
+                      "key": "Content-Security-Policy-Report-Only",
+                      "value": "font-src https:;",
+                      "overwrite": true
+                  },
+                  {
+                      "key": "Sec-Fetch-Mode",
+                      "value": "no-cors",
+                      "overwrite": false
+                  }
+              ]
+          }
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+put:
+  operationId: update-client-side-protection-policy
+  tags:
+    - Client-Side Protection
+  summary: Update Client-Side Protection Policy
+  description: Updates a Client-Side Protection policy.
+  security:
+    - client_wafScope: [app.client_waf]
+  requestBody:
+    $ref: ../components/requestBodies/ClientWaf.yaml
+  responses:
+    '200':
+      description: OK. A Client-Side Protection policy was updated.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml
+delete:
+  operationId: delete-client-side-protection-policy
+  tags:
+    - Client-Side Protection
+  summary: Delete Client-Side Protection Policy
+  description: Deletes a Client-Side Protection policy.
+  security:
+    - client_wafScope: [app.client_waf]
+  responses:
+    '200':
+      description: OK. A Client-Side Protection policy was deleted.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ResponseObj.yaml
+          example:
+            $ref: ../components/examples/ResponseObj.json
+    '404':
+      $ref: ../components/responses/error_404.yaml
+    '429':
+      $ref: ../components/responses/error_429.yaml
+    '500':
+      $ref: ../components/responses/error_500.yaml

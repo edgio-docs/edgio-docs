@@ -1,8 +1,12 @@
+import React, {useState} from 'react';
+
 import {Tab} from '@headlessui/react';
 import cn from 'classnames';
 import Highlight, {defaultProps} from 'prism-react-renderer';
-import React, {useState} from 'react';
 import styled from 'styled-components';
+
+import getDescriptiveLanguage from 'components/getLanguage';
+import {StringMap} from 'utils/Types';
 
 import {
   clsByOperator,
@@ -12,9 +16,6 @@ import {
   LineNo,
 } from './CodeBlock';
 import {CopyCode, StyledCustomPre} from './CustomPre';
-
-import getDescriptiveLanguage from 'components/getLanguage';
-import {StringMap} from 'utils/Types';
 
 interface TabItemProps {
   children: string;
@@ -92,7 +93,7 @@ export function SnippetGroup({children}: SnippetGroupProps) {
                 {getDescriptiveLanguage(language)}
               </span>
               {filename && (
-                <span className="code-block__filename">🗄️ {filename}</span>
+                <span className="code-block__filename">{filename}</span>
               )}
             </div>
             <div className="header-end">
@@ -194,17 +195,20 @@ function CPre({
       theme={undefined}
       code={children}
       language="javascript">
+      {/* @ts-ignore */}
       {({className, style, tokens, getLineProps, getTokenProps}) => {
         return (
           <pre
             className={cn('code-block', 'custom-scrollbar', className)}
             style={style}>
+            {/* @ts-ignore */}
             {tokens.map((line, i) => {
               const lineNum = i + 1;
               return (
                 <Line key={i} {...getLineProps({line, key: i})}>
                   <LineNo className="line-num">{lineNum}</LineNo>
                   <LineContent className={cn(linesToHighlight[lineNum])}>
+                    {/* @ts-ignore */}
                     {line.map((token, key) => (
                       <span key={key} {...getTokenProps({token, key})} />
                     ))}

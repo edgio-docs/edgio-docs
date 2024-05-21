@@ -1,17 +1,18 @@
 import styled from 'styled-components';
 
+import {useIsMobile} from 'components/Layout/useMediaQuery';
+import {siteConfig} from 'config/appConfig';
+
 import {Toc} from '../Layout/Toc';
 
 // import DiscourseDiscuss from './DiscourseDiscuss';
 import EditPage from './EditPage';
 
-import {siteConfig} from 'config/appConfig';
-
-const StyledDocs = styled.div`
+const StyledDocs = styled.div<{hasToc: boolean}>`
   max-width: var(--docs-area-width);
-  margin: 0 auto 600px auto;
+  margin: 0 auto 50px auto;
   display: grid;
-  grid-template-columns: 75% 1fr;
+  grid-template-columns: ${(props) => (props.hasToc ? '75% 1fr' : '1fr')};
 
   .docs-article__section {
     padding: 0 20px 20px 20px;
@@ -204,10 +205,6 @@ const StyledDocs = styled.div`
   @media (max-width: 1200px) {
     grid-template-columns: 1fr;
   }
-
-  @media (max-width: 630px) {
-    margin-bottom: 900px;
-  }
 `;
 
 const anchorClassName = siteConfig.headerIdConfig.className;
@@ -223,8 +220,11 @@ export default function Docs({
   tocHeadings: {url: string; depth: number; text: string}[];
   source?: string;
 }) {
+  const hasToc = tocHeadings.length > 0;
+  const isMobile = useIsMobile();
+
   return (
-    <StyledDocs className="docs-body">
+    <StyledDocs className="docs-body" hasToc={hasToc}>
       <div className="docs-article__section">
         <article className="docs-article">
           <header className="docs-article__header">
@@ -237,15 +237,17 @@ export default function Docs({
                 aria-hidden="true"></a>
             </h1>
 
-            <div className="docs-article__header-icons">
-              <EditPage as="icon" source={source} />
-            </div>
+            {!isMobile && (
+              <div className="docs-article__header-icons">
+                <EditPage as="icon" source={source} />
+              </div>
+            )}
           </header>
           <div className="docs-article__body">{children}</div>
         </article>
         {/* <EditPage /> */}
       </div>
-      <Toc headings={tocHeadings} />
+      {hasToc && <Toc headings={tocHeadings} />}
     </StyledDocs>
   );
 }

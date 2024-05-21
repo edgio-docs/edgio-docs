@@ -1,3 +1,24 @@
+import {NamedExoticComponent} from 'react';
+
+export interface HeaderNavConfig {
+  [index: number]: NavSection;
+}
+
+export type HomepageConfig = {
+  sections: HomepageSectionGroup[];
+};
+
+export type HomepageSectionGroup = {
+  heading: string;
+  subheading: string;
+  className?: string;
+  icon?: NamedExoticComponent<JSX.IntrinsicElements['svg']>;
+  path?: string;
+  external?: boolean;
+  href?: string;
+  sections: HomepageSection[];
+};
+
 export type ItemsByVersion = {
   [key: string]: SimpleRouteItem[] | undefined;
 } & {
@@ -12,6 +33,23 @@ export interface MDHeading {
 
 export type MDHeadingsList = MDHeading[];
 
+// Homepage sections
+type HomepageSectionItem = {
+  title: string;
+  path: string;
+  href?: string;
+  external?: boolean;
+};
+
+type HomepageSection = {
+  title?: string;
+  description?: string;
+  path?: string;
+  href?: string;
+  external?: boolean;
+  items: HomepageSectionItem[];
+};
+
 export interface Route {
   title?: string;
   icon?: string;
@@ -24,6 +62,18 @@ export type SimpleRouteItem = StringMap & {
   title: string;
   path: string;
 };
+
+// Header Menu
+interface HeaderNavItem {
+  name: string;
+  url: string;
+}
+
+interface NavSection {
+  title: string;
+  items: HeaderNavItem[];
+  url?: string;
+}
 
 export interface StringMap {
   [key: string]: any;

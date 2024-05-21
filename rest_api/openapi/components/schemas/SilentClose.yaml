@@ -1,0 +1,15 @@
+title: Slient Close Action
+type: object
+description: Drops the request without providing a response to the client. 
+properties:
+  id:
+    type: string
+    description: The enforcement action's system-defined ID.
+  name:
+    type: string
+    description: The enforcement action's name.
+  enf_type:
+    type: string
+    description: The type of enforcement action. 
+    enum:
+      - SILENT_CLOSE

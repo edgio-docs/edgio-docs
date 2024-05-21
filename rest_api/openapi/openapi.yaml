@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Edgio REST API
-  version: 0.0.4
+  version: 0.1.0
   x-logo:
     url: 'https://docs.edg.io/_next/static/media/edgio-dark.ea0d686f.webp'
     backgroundColor: '#FFFFFF'
@@ -12,16 +12,28 @@ info:
 tags:
   - name: tls-certs
     x-displayName: TLS Certificates
-    description: Automate TLS certificate management.
+    description: |
+    
+      Retrieve TLS certificates or upload your own TLS certificate to a specific environment. 
+      
+      <a href="/applications/v7/security/tls_certificates" target="_blank">Learn more about hosting TLS certificates on our network.</a>
   - name: deployments
     x-displayName: Deployment Info
-    description: Retrieve information and log data for a previous deployment.
+    description: |
+    
+      Retrieve information and log data for a previous deployment. 
+      
+      <a href="/applications/v7/basics/deployments" target="_blank">Learn more about deployments.</a>
   - name: configs
     x-displayName: CDN Configuration
-    description: Deploy or retrieve a CDN configuration.
+    description: Deploy or retrieve a CDN configuration. This type of configuration consists of origin configurations, hostnames, rules, and experiments.
   - name: environment-variables
     x-displayName: Environment Variables
-    description: Automate environment variable management.
+    description: |
+    
+      Automate environment variable management. 
+      
+      <a href="/applications/v7/basics/environments#environment-variables" target="_blank">Learn more about environment variables.</a>
   - name: purge-requests
     x-displayName: Purge
     description: Purge cached content and retrieve information about previously submitted purge requests.
@@ -53,21 +65,21 @@ tags:
 
       -   Defines the production and audit enforcement action that will be applied to the requests identified as threats by access rules, API security ruleset, rate rules, custom ruleset, and managed rules.
 
-      <a href="https://docs.edg.io/guides/security/security_applications" target="_blank">Learn more about Security Apps.</a>
+      <a href="https://docs.edg.io/applications/security/security_applications" target="_blank">Learn more about Security Apps.</a>
   - name: Access Control List (ACL)
     x-displayName: Access Rules
     description: | 
     
       An access rule identifies legitimate traffic and threats through access controls.
       
-      <a href="https://docs.edg.io/guides/security/access_rules" target="_blank">Learn more about access rules.</a>
+      <a href="https://docs.edg.io/applications/security/access_rules" target="_blank">Learn more about access rules.</a>
   - name: Custom Rules
     x-displayName: Custom Rules
     description: | 
     
       A custom rule tailors how Edgio Security identifies a threat.
       
-      <a href="https://docs.edg.io/guides/security/custom_rules" target="_blank">Learn more about custom rules.</a>
+      <a href="https://docs.edg.io/applications/security/custom_rules" target="_blank">Learn more about custom rules.</a>
     
   - name: Rate Rules (Limits)
     x-displayName: Rate Rules 
@@ -75,7 +87,7 @@ tags:
 
       A rate rule restricts the flow of site traffic.
 
-      <a href="https://docs.edg.io/guides/security/rate_rules" target="_blank">Learn more about rate rules.</a>
+      <a href="https://docs.edg.io/applications/security/rate_rules" target="_blank">Learn more about rate rules.</a>
 
   - name: Managed Rules (Profiles)
     x-displayName: Managed Rules (Profiles)
@@ -84,7 +96,7 @@ tags:
       A managed rule identifies threats through predefined security policies. You may fine-tune these security policies to prevent false positives. 
 
       
-      <a href="https://docs.edg.io/guides/security/managed_rules" target="_blank">Learn more about managed rules.</a>
+      <a href="https://docs.edg.io/applications/security/managed_rules" target="_blank">Learn more about managed rules.</a>
 
   - name: Edgio Rulesets
     x-displayName: Edgio Rulesets
@@ -98,7 +110,7 @@ tags:
     
       A bot ruleset contains one or more rule(s) for determining how bots will be identified. 
             
-      <a href="https://docs.edg.io/guides/security/bot_rules#bot-manager-configuration" target="_blank">Learn more about bot rulesets.</a>
+      <a href="https://docs.edg.io/applications/security/bot_rules#bot-manager-configuration" target="_blank">Learn more about bot rulesets.</a>
 
   - name: Bot Managers
     x-displayName: Bot Manager Configuration
@@ -114,7 +126,7 @@ tags:
         
         -   Traffic that will be exempt from bot detection.
       
-      <a href="https://docs.edg.io/guides/security/bot_rules" target="_blank">Learn more about bot manager.</a>
+      <a href="https://docs.edg.io/applications/security/bot_rules" target="_blank">Learn more about bot manager.</a>
 
   - name: Known Bots
     x-displayName: Known Bots
@@ -128,15 +140,53 @@ tags:
       
       By default, Edgio validates all `POST`, `PUT`, and `PATCH` requests that satisfy your security app’s hostname and URL path requirements. If your website uses those HTTP methods for non-API requests, then it is strongly recommended to define one or more URL path(s) within your API Security rule.
       
-      <a href="https://docs.edg.io/guides/security/api_security#api-security-rule" target="_blank">Learn more about API Security rules.</a>
-      
+      <a href="https://docs.edg.io/applications/security/api_security#api-security-rule" target="_blank">Learn more about API Security rules.</a>
+
   - name: API Schemas
     x-displayName: API Schemas
     description: |
    
       An API schema is a JSON schema that describes the structure for a valid API payload.
       
-      <a href="https://docs.edg.io/guides/security/api_security#json-schema-syntax" target="_blank">Learn more about supported JSON schema syntax.</a>
+      <a href="https://docs.edg.io/applications/security/api_security#json-schema-syntax" target="_blank">Learn more about supported JSON schema syntax.</a>
+
+  - name: Client-Side Protection
+    x-displayName: Client-Side Protection
+    description: |
+
+      Client-Side Protection allows you to apply a consistent Content Security Policy (CSP) across all of your pages. The purpose of a CSP is to detect and mitigate attacks, such as cross-site scripting (XSS) and code injection. 
+      
+      <a href="https://docs.edg.io/applications/security/client_side_protection" target="_blank">Learn more about Client-Side Protection policies.</a>
+
+  - name: metrics
+    x-displayName: Metrics
+    description: |
+
+      Generate report data through which you can analyze traffic trends, such as traffic volume, cache hit ratios, response times, geographical distribution of users, and origin server performance.
+
+      **Key concepts:**
+   
+      -   **Dataset:** A dataset is a structured collection of data that represents a set of events. Each dataset consists of metrics and dimensions.
+      -   **Dimension:** A dimension describes an attribute of a request and is typically used to correlate the desired set of requests with metrics. 
+
+          For example, the `country_code` dimension identifies the country from which a request originated. 
+
+      -   **Metric:** A metric measures the rate, an amount, or the total number of times that a particular attribute occurred over a given record. 
+
+          For example, the `requests_edge_total` metric reports the total number of requests submitted to our network.
+
+      <a href="/applications/develop/rest_api/metrics_rest_api_usage" target="_blank">Learn how to use the Metrics API.</a>
+
+  - name: RTLD Access Logs Profile
+    description: |
+    
+      Automate Real-Time Log Delivery (RTLD) Access Logs profile management. A RTLD Access Logs profile defines the condition(s) under which access log data will be delivered to the desired destination (e.g., your web server or AWS S3). 
+      
+      <a href="/applications/v7/logs/rtld" target="_blank">Learn more about Real-Time Log Delivery.</a>
+  - name: Log Fields
+    description: Retrieve log fields associated with a Real-Time Log Delivery (RTLD) module.
+  - name: AWS Regions
+    description: Retrieve the available set of AWS regions.
 paths:
   /config/v0.1/tls-certs/{cert_id}:
     $ref: paths/config_v0.1_tls-certs_{cert_id}.yaml
@@ -360,7 +410,6 @@ paths:
 #      - url: 'https://edgioapis.com/waf/v0.9'
 #    security:
 #      - wafScope: [app.waf]
-    
   '/{organization_id}/api-gateways':
     $ref: 'paths/{organization_id}@api-gateways.yaml'
     servers:
@@ -469,6 +518,64 @@ paths:
       - url: 'https://edgioapis.com/bot-security/v0.9'
     security:
       - securityScope: {}
+  '/{organization_id}/client-wafs':
+    $ref: 'paths/{organization_id}@client-wafs.yaml'
+    servers:
+      - url: 'https://edgioapis.com/client-waf/v0.9'
+    security:
+      - client_wafScope: [app.client_waf]
+  '/{organization_id}/client-wafs/{client_waf_id}':
+    $ref: 'paths/{organization_id}@client-wafs@{client_waf_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/client-waf/v0.9'
+    security:
+      - client_wafScope: [app.client_waf]
+#  '/{organization_id}/client-wafs/{client_waf_id}/versions':
+#    $ref: 'paths/{organization_id}@client-wafs@{client_waf_id}@versions.yaml'
+#    servers:
+#      - url: 'https://edgioapis.com/client-waf/v0.9'
+#    security:
+#      - client_wafScope: [app.client_waf]
+#  '/{organization_id}/client-wafs/{client_waf_id}/versions/{version_id}':
+#    $ref: 'paths/{organization_id}@client-wafs@{client_waf_id}@versions@{version_id}.yaml'
+#    servers:
+#      - url: 'https://edgioapis.com/client-waf/v0.9'
+#    security:
+#      - client_wafScope: [app.client_waf]
+  /datasets:
+    $ref: paths/datasets.yaml
+    servers:
+      - url: 'https://edgioapis.com/metrics/v1'
+    security:
+      - metricsScope: [app.metrics]
+  /datasets/{name}:
+    $ref: paths/datasets_{name}.yaml
+    servers:
+      - url: 'https://edgioapis.com/metrics/v1'
+    security:
+      - metricsScope: [app.metrics]
+  /datasets/{name}/data:
+    $ref: paths/datasets_{name}_data.yaml
+    servers:
+      - url: 'https://edgioapis.com/metrics/v1'
+    security:
+      - metricsScope: [app.metrics]
+  /accesslogs/profiles:
+    $ref: paths/accesslogs_profiles.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
+  /accesslogs/profiles/{id}:
+    $ref: paths/accesslogs_profiles_{id}.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
+  /accesslogs/fields:
+    $ref: paths/accesslogs_fields.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
+  /aws-regions:
+    $ref: paths/aws-regions.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
 components:
   securitySchemes:
     cacheScope:
@@ -519,7 +626,30 @@ components:
           tokenUrl: https://id.edgio.app/connect/token
           scopes:
             app.bot_security: Authorizes full access to Bot Manager.
-
+    client_wafScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.client_waf: Authorizes full access to Client-Side Protection.
+    metricsScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.metrics: Authorizes full access to the Metrics API. 
+    rtldScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.rtld: Authorizes full access to Real-Time Log Delivery.
 x-tagGroups:
   - name: Cache
     tags:
@@ -544,6 +674,7 @@ x-tagGroups:
       - Custom Rules
       - Managed Rules (Profiles)
       - Edgio Rulesets
+      - Client-Side Protection
       - Security Applications (Scopes)
   - name: Organizations
     tags:
@@ -552,3 +683,11 @@ x-tagGroups:
     tags:
       - properties
       - environments
+  - name: Analytics - Metrics
+    tags:
+      - metrics
+  - name: Real-Time Log Delivery (RTLD)
+    tags:
+      - RTLD Access Logs Profile
+      - Log Fields
+      - AWS Regions

@@ -1,0 +1,8 @@
+name: limit
+in: query
+description: Specifies the maximum number of items to retrieve. Useful for pagination.
+schema:
+  type: integer
+  format: int32
+  minimum: 1
+  default: 50

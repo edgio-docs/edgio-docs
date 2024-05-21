@@ -44,9 +44,8 @@ yarn-error.log*
 
 rest_api/tmp/split/components
 rest_api/tmp/split/paths
-rest_api/dist
+# rest_api/dist ## Keep output files in case the convert service is down
 
 # IDE
 .fleet
 .idea
-.vscode/

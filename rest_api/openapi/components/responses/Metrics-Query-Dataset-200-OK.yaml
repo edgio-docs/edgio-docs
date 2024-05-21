@@ -1,0 +1,5 @@
+description: Query Dataset
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/MetricsDataResponse.yaml

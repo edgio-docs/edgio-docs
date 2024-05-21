@@ -23,7 +23,6 @@ const CHROME_EXTENSION = `${COMPANY_NAME} Developer Tools Chrome extension`;
 
 const CLI_NAME = 'edg';
 const FULL_CLI_NAME = 'edgio';
-const CLI_CMD = (cmd) => `${FULL_CLI_NAME} ${cmd}`;
 const PACKAGE_NAME = '@edgio';
 const PACKAGE_VERSION = 'latest';
 const INIT_ARG_EDGIO_VERSION = `--edgioVersion ${PACKAGE_VERSION}`;
@@ -48,15 +47,15 @@ const DOCS_PAGES_DOMAIN = 'layer0-docs.s3.amazonaws.com';
 const DOCS_REPO = 'edgio-docs/edgio-docs';
 const EXAMPLES_REPO = 'edgio-docs/edgio-examples';
 
-const WWW_URL = `https://www.${DOMAIN}`;
+const WWW_URL = `https://www.${DOMAIN}/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const APP_URL = `https://${APP_DOMAIN}`;
-const FORUM_URL = `https://forum.${DOMAIN}`;
-const FIDDLE_URL = `https://fiddle.${DOMAIN}`;
-const STATUS_URL = `https://status.${DOMAIN}`;
+const FORUM_URL = `https://forum.${DOMAIN}/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
+const FIDDLE_URL = `https://fiddle.${DOMAIN}/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
+const STATUS_URL = `https://status.${DOMAIN}/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const HELP_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const SUPPORT_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const DOCS_URL = `https://${DOCS_DOMAIN}`;
-const API_DOCS_URL = `/rest_api`;
+const API_DOCS_URL = `https://docs.edg.io/rest_api/`;
 const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
 const API_URL = `https://${API_DOMAIN}`;
 const IDENTITY_URL = `https://${IDENTITY_DOMAIN}`;
@@ -64,6 +63,8 @@ const API_SECURITY_VERSION = '0.9';
 const API_CONFIG_VERSION = '0.1';
 const SAMPLE_TEAM_ID = '12345678-1234-1234-1234-1234567890ab';
 const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
+const UPLYNK_CMS_URL = `https://cms.uplynk.com/`;
+const DELIVERY_PORTAL_URL = `https://control.llnw.com/acontrol/#/login`;
 
 const PORTAL_LINK = `[${PORTAL}](${LOGIN_URL})`;
 const IDENTITY_LINK = `[${IDENTITY_DASHBOARD}](${IDENTITY_URL})`;
@@ -107,7 +108,7 @@ const SIGN_UP = `## Sign up for ${PRODUCT} {/*sign-up*/}
 Deploying requires an account on ${PRODUCT}. [Sign up here for free.](${APP_URL}/signup)`;
 
 const PREFETCH_TIER1_INTRO = `
-The \`${FULL_CLI_NAME} init\` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at \`sw/service-worker.js\`. 
+The \`${FULL_CLI_NAME} init\` command adds a service worker based on [Workbox](https://developers.google.com/web/tools/workbox) at \`sw/service-worker.js\`.
 If you have an existing service worker that uses workbox, you can copy its contents into \`sw/service-worker.js\` and simply add the following to your service worker:
 
 \`\`\`js filename="sw/service-worker.js"
@@ -135,7 +136,7 @@ yarn global add ${PACKAGE_NAME}/cli
 
 const CONTACT_SUPPORT = `Contact our [technical customer support](${HELP_URL}).`;
 
-const SECURITY_NAV = `1.  From the ${PORTAL_LINK}, select the desired organization. 
+const SECURITY_NAV = `1.  From the ${PORTAL_LINK}, select the desired organization.
     2.  From the **Security** section, click `;
 
 const ENV_NAV = `1.  From the ${PORTAL_LINK}, select the desired private space or organization.
@@ -168,7 +169,6 @@ const config = {
   API_SECURITY_VERSION,
   API_REQUEST_HEADERS,
   CHROME_EXTENSION,
-  CLI_CMD,
   CLI_NAME,
   CONFIG_FILE,
   ROUTES_FILE,
@@ -222,6 +222,13 @@ const config = {
   INIT_ARG_EDGIO_VERSION,
   LEGACY_FW_INIT_ARG_EDGIO_VERSION,
   DOCS_NAME,
+  UPLYNK_CMS_URL,
+  DELIVERY_PORTAL_URL,
 };
 
 export default config;
+
+// Helper functions that are used in the templates, but not serialized in the config
+export const configHelpers = {
+  CLI_CMD: (cmd) => `${FULL_CLI_NAME} ${cmd}`,
+};

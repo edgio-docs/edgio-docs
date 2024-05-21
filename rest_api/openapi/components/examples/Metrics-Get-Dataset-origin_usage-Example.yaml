@@ -1,0 +1,92 @@
+value:
+  '@id': /datasets/origin_usage
+  '@type': MetricsDataset
+  name: origin_usage
+  description: >-
+    Aggregated usage metrics with breakdown time, environment ID, origin name,
+    HTTP method, and response content type.
+  created_at: '2024-05-02T00:00:00Z'
+  time_granularities:
+    - FIVE_MINUTES
+    - HOUR
+    - DAY
+  data_retention_policy:
+    five_minutes: 2764800
+    hour: 8208000
+    day: 69120000
+  dimensions:
+    - name: time
+      type: DATE
+      description: The date when the request happened.
+    - name: environment_id
+      type: STRING
+      description: The environment ID.
+    - name: origin_name
+      type: STRING
+      description: The origin name.
+    - name: http_method
+      type: STRING
+      description: The request HTTP method.
+    - name: content_type
+      type: STRING
+      description: Content-Type response header.
+  metrics:
+    - name: requests_origin_total
+      type: NUMBER
+      description: Total number of requests to origin.
+    - name: bytes_origin_total
+      type: NUMBER
+      description: Total number of bytes sent from origin.
+    - name: ttfb_origin_ms_5_percentile
+      type: NUMBER
+      description: Origin TTFB in ms. at the 5th percentile.
+    - name: ttfb_origin_ms_25_percentile
+      type: NUMBER
+      description: Origin TTFB in ms. at the 25th percentile.
+    - name: ttfb_origin_ms_50_percentile
+      type: NUMBER
+      description: Origin TTFB in ms. at the 50th percentile.
+    - name: ttfb_origin_ms_75_percentile
+      type: NUMBER
+      description: Origin TTFB in ms. at the 75th percentile.
+    - name: ttfb_origin_ms_95_percentile
+      type: NUMBER
+      description: Origin TTFB in ms. at the 95th percentile.
+    - name: ttfb_origin_ms_99_percentile
+      type: NUMBER
+      description: Origin TTFB in ms. at the 99th percentile.
+    - name: response_time_origin_ms_5_percentile
+      type: NUMBER
+      description: Origin response time in ms. at the 5th percentile.
+    - name: response_time_origin_ms_25_percentile
+      type: NUMBER
+      description: Origin response time in ms. at the 25th percentile.
+    - name: response_time_origin_ms_50_percentile
+      type: NUMBER
+      description: Origin response time in ms. at the 50th percentile.
+    - name: response_time_origin_ms_75_percentile
+      type: NUMBER
+      description: Origin response in ms. at the 75th percentile.
+    - name: response_time_origin_ms_95_percentile
+      type: NUMBER
+      description: Origin response in ms. at the 95th percentile.
+    - name: response_time_origin_ms_99_percentile
+      type: NUMBER
+      description: Origin response in ms. at the 99th percentile.
+  filters:
+    - name: environment_id
+      type: array
+      required: true
+      description: Sets the filtering by environment id.
+    - name: origin_name
+      type: array
+      required: false
+      description: Sets the filtering by origin name.
+    - name: http_method
+      type: array
+      required: false
+      description: Sets the filtering by request HTTP method.
+    - name: content_type
+      type: array
+      required: false
+      description: Sets the filtering by response content type.

@@ -39,51 +39,50 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: yarn --frozen-lockfile
-      - name: Deploy to docs.edg.io (stage)
-        id: deploy
+      - name: Copy API Spec
+        env:
+          GITLAB_ACCESS_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
         run: |
-          DEPLOY=$(yarn edgio:deploy --branch=$BRANCH_NAME --token=${{secrets.edgio_prod_deploy_token}} --environment=default 2>&1) || true
-          echo "$DEPLOY"
+          git clone https://oauth2:$GITLAB_ACCESS_TOKEN@gitlab.com/limelight-networks/cdn-analytics/core/server/eq-metrics-public-api.git
+          rsync -av "eq-metrics-public-api/src/api/public-docs/components/" "rest_api/openapi/components"
+          rsync -av "eq-metrics-public-api/src/api/public-docs/paths/" "rest_api/openapi/paths"
 
-          # Get the build link from the output of the command
-          echo "$DEPLOY" |
-            sed -n 's/.*\(https:\/\/edgio\.app\/[^ ]*\).*/\1/p' |
-            {
-              read buildlink || buildlink=""
-              if [[ -n $buildlink ]]; then
-                echo "$buildlink=$buildlink" >> $GITHUB_OUTPUT
-              else
-                echo "buildlink=" >> $GITHUB_OUTPUT
-              fi
-            }
+          # copy files to destination
 
-          # Get the permalink link from the output of the command
-          echo "$DEPLOY" |
-            sed -n 's/.*\(https.*-perma\.link\).*/\1/p' |
-            {
-              read permalink || permalink=""
-              if [[ -n $permalink ]]; then
-                echo "permalink=$permalink" >> $GITHUB_OUTPUT
-              else
-                echo "permalink=" >> $GITHUB_OUTPUT
-              fi
-            }
-            
-          # Get the edge link from the output of the command
-          echo "$DEPLOY" |
-            sed -n 's/.*\(https.*\(-limelight\|\.edgio\)\.link\).*/\1/p' |
-            {
-              read edge || edge=""
-              if [[ -n $edge ]]; then
-                echo "edge=$edge" >> $GITHUB_OUTPUT
-                echo "status=✅ Successful!" >> $GITHUB_OUTPUT
-              else
-                echo "edge=" >> $GITHUB_OUTPUT
-                echo "status=❌ See status check" >> $GITHUB_OUTPUT
-              fi
-            }
+      - name: Deploy to docs.edg.io (stage)
+        run: |
+          yarn edgio:deploy --branch=$BRANCH_NAME --token=${{secrets.edgio_prod_deploy_token}} --environment=default
         env:
           GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
+      - name: Process Deployment Manifest and Set Output
+        id: deploy
+        run: |
+          # Read deployment manifest and parse JSON content
+          content=$(cat .edgio/deployment-manifest.json)
+          number=$(echo $content | jq -r .number)
+          permalink=$(echo $content | jq -r .url)
+          edgeUrl=$(echo $content | jq -r .environment.url)
+          environmentName=$(echo $content | jq -r .environment.name)
+
+          # Console URL
+          consoleUrl="https://edgio.app/edgio-community/docs.edg.io/env/${environmentName}/builds/${number}"
+
+          # Build permalink URL
+          buildUrl=$permalink
+
+          # Generate branchUrl by removing the -${number} part from the permalink
+          branchUrl=$(echo $permalink | sed "s/-${number}//")
+
+          deployDate=$(date +"%Y-%m-%d %H:%M:%S")
+
+          # Set output variables
+          echo "consoleUrl=${consoleUrl}" >> $GITHUB_OUTPUT
+          echo "buildUrl=${buildUrl}" >> $GITHUB_OUTPUT
+          echo "branchUrl=${branchUrl}" >> $GITHUB_OUTPUT
+          echo "edgeUrl=${edgeUrl}" >> $GITHUB_OUTPUT
+          echo "deployDate=${deployDate}" >> $GITHUB_OUTPUT
+        shell: bash
+
       - uses: jwalton/gh-find-current-pr@v1
         id: finder
       - name: Publish Preview Link
@@ -92,6 +91,8 @@ jobs:
           number: ${{ steps.finder.outputs.pr }}
           header: preview
           message: |
-            ##### Deployment: ${{ steps.deploy.outputs.status }}
-            - Permalink: ${{ steps.deploy.outputs.permalink }}
-            - Edge: ${{ steps.deploy.outputs.edge }}
+            ##### Last deployment (${{ steps.deploy.outputs.deployDate }}) 🚀
+            - Console Build: ${{ steps.deploy.outputs.consoleUrl }}
+            - Permalink Preview: ${{ steps.deploy.outputs.buildUrl }}
+            - Branch Preview: ${{ steps.deploy.outputs.branchUrl }}
+            - Edge URL: ${{ steps.deploy.outputs.edgeUrl }}

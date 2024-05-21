@@ -1,0 +1,32 @@
+title: Hostname Filter Object
+description: Log filtering by hostname.
+type: object
+required:
+  - names
+  - condition
+properties:
+  names:
+    type: array
+    items:
+      type: string
+    uniqueItems: true
+    description: >-
+      Specify a string value for each hostname for which log data will be
+      delivered. Omit this parameter or define an empty array if log data should
+      not be filtered by hostnames.
+  condition:
+    type: string
+    enum:
+      - in
+      - not_in
+    description: >
+      Determines how log data will be filtered by hostname. 
+
+
+      Valid values are:
+
+      -   **in:** Filters log data to only include requests that point to the
+      hostname(s) defined within the `names` property.
+
+      -   **not_in:** Filters log data to exclude requests that point to the
+      hostname(s) defined within the `names` property.

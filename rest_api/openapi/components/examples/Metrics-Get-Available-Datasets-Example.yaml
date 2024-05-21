@@ -1,0 +1,490 @@
+value:
+  '@id': /datasets
+  '@type': Collection
+  items:
+    - '@id': /datasets/edge_usage_by_country
+      '@type': MetricsDataset
+      name: edge_usage_by_country
+      description: >-
+        Aggregated edge usage metrics with breakdown by time, environmet id and
+        user country code.
+      created_at: '2024-04-15T00:00:00Z'
+      time_granularities:
+        - FIVE_MINUTES
+        - HOUR
+        - DAY
+      data_retention_policy:
+        five_minutes: 2764800
+        hour: 8208000
+        day: 69120000
+      dimensions:
+        - name: time
+          type: DATE
+          description: The date when the request happened.
+        - name: environment_id
+          type: STRING
+          description: The environment ID.
+        - name: country_code
+          type: STRING
+          description: >-
+            The user's country code. It consists of two lowercase letters, or a
+            single hyphen '-' if the country is unknown.
+      metrics:
+        - name: requests_edge_total
+          type: NUMBER
+          description: Total number of requests to edge.
+        - name: requests_per_second_edge
+          type: NUMBER
+          description: Number of requests per second to edge.
+        - name: requests_hit_total
+          type: NUMBER
+          description: Total number of requests to edge that were served from the cache.
+        - name: requests_cache_hit_ratio
+          type: NUMBER
+          description: >-
+            Ratio of requests served from the cache, including both hits and
+            stale responses, to total number of requests made to edge.
+        - name: requests_miss_total
+          type: NUMBER
+          description: Total number of requests to edge that resulted in cache misses.
+        - name: requests_stale_total
+          type: NUMBER
+          description: >-
+            Total number of edge requests that resulted in the serving of stale
+            content.
+        - name: requests_prefetch_total
+          type: NUMBER
+          description: Total number of requests initiated by prefetch functionality.
+        - name: requests_prefetch_cache_hit_ratio
+          type: NUMBER
+          description: >-
+            Ratio of requests served from the cache as a result of prefetching,
+            including both hits and stale responses, to the total number of
+            prefetch requests.
+        - name: requests_cachable_total
+          type: NUMBER
+          description: Total number of cacheble requests.
+        - name: requests_2xx_total
+          type: NUMBER
+          description: Total number of edge requests with status code >=200 and <300.
+        - name: requests_3xx_total
+          type: NUMBER
+          description: Total number of edge requests with status code >=300 and <400.
+        - name: requests_4xx_total
+          type: NUMBER
+          description: Total number of edge requests with status code >=400 and <500.
+        - name: requests_5xx_total
+          type: NUMBER
+          description: Total number of edge requests with status code >=500 and <600.
+        - name: requests_error_ratio
+          type: NUMBER
+          description: >-
+            Ratio of requests resulting in server errors (5xx status codes) to
+            the total number of requests made to edge.
+        - name: bytes_edge_total
+          type: NUMBER
+          description: Total number of bytes sent from edge.
+        - name: bytes_hit_total
+          type: NUMBER
+          description: Total number of bytes sent from egde cache.
+          created_at: '2024-05-14T00:00:00Z'
+        - name: bytes_miss_total
+          type: NUMBER
+          description: Total number of bytes that were not found in edge cache.
+          created_at: '2024-05-14T00:00:00Z'
+        - name: bytes_stale_total
+          type: NUMBER
+          description: Total number of bytes served by edge as stale content.
+          created_at: '2024-05-14T00:00:00Z'
+        - name: bits_per_second_edge
+          type: NUMBER
+          description: Edge bandwith usage measured in bits per second (bps).
+        - name: ttfb_edge_ms_5_percentile
+          type: NUMBER
+          description: Edge TTFB in ms. at the 5th percentile.
+        - name: ttfb_edge_ms_25_percentile
+          type: NUMBER
+          description: Edge TTFB in ms. at the 25th percentile.
+        - name: ttfb_edge_ms_50_percentile
+          type: NUMBER
+          description: Edge TTFB in ms. at the 50th percentile.
+        - name: ttfb_edge_ms_75_percentile
+          type: NUMBER
+          description: Edge TTFB in ms. at the 75th percentile.
+        - name: ttfb_edge_ms_95_percentile
+          type: NUMBER
+          description: Edge TTFB in ms. at the 95th percentile.
+        - name: ttfb_edge_ms_99_percentile
+          type: NUMBER
+          description: Edge TTFB in ms. at the 99th percentile.
+        - name: response_time_edge_ms_5_percentile
+          type: NUMBER
+          description: Edge response time in ms. at the 5th percentile.
+        - name: response_time_edge_ms_25_percentile
+          type: NUMBER
+          description: Edge response time in ms. at the 25th percentile.
+        - name: response_time_edge_ms_50_percentile
+          type: NUMBER
+          description: Edge response time in ms. at the 50th percentile.
+        - name: response_time_edge_ms_75_percentile
+          type: NUMBER
+          description: Edge response in ms. at the 75th percentile.
+        - name: response_time_edge_ms_95_percentile
+          type: NUMBER
+          description: Edge response in ms. at the 95th percentile.
+        - name: response_time_edge_ms_99_percentile
+          type: NUMBER
+          description: Edge response in ms. at the 99th percentile.
+      filters:
+        - name: environment_id
+          type: array
+          required: true
+          description: Sets the filtering by environment id.
+        - name: country_code
+          type: array
+          required: false
+          description: >-
+            Sets the filtering by user's country code. Supported values: two
+            lowercase letters or '-'.
+    - '@id': /datasets/edge_errors
+      '@type': MetricsDataset
+      name: edge_errors
+      description: >-
+        Aggregated usage metrics with breakdown time, environment ID, user
+        country code, and specific HTTP status codes between 500 and 599
+      created_at: '2024-04-15T00:00:00Z'
+      time_granularities:
+        - FIVE_MINUTES
+        - HOUR
+        - DAY
+      data_retention_policy:
+        five_minutes: 2764800
+        hour: 8208000
+        day: 69120000
+      dimensions:
+        - name: time
+          type: DATE
+          description: The date when the request happened.
+        - name: environment_id
+          type: STRING
+          description: The environment ID.
+        - name: country_code
+          type: STRING
+          description: >-
+            The user's country code. It consists of two lowercase letters, or a
+            single hyphen '-' if the country is unknown.
+        - name: http_status_code
+          type: NUMBER
+          description: The HTTP status codes between 500 and 599.
+      metrics:
+        - name: requests_edge_total
+          type: NUMBER
+          description: Total number of requests to edge.
+      filters:
+        - name: environment_id
+          type: array
+          required: true
+          description: Sets the filtering by environment id.
+        - name: country_code
+          type: array
+          required: false
+          description: >-
+            Sets the filtering by user's country code. Supported values: two
+            lowercase letters or '-'.
+        - name: http_status_code
+          type: array
+          required: false
+          description: Sets the filtering by http status code.
+    - '@id': /datasets/origin_usage_by_country
+      '@type': MetricsDataset
+      name: origin_usage_by_country
+      description: >-
+        Aggregated usage metrics with breakdown time, environment ID, user
+        country code, and origin name.
+      created_at: '2024-04-15T00:00:00Z'
+      time_granularities:
+        - FIVE_MINUTES
+        - HOUR
+        - DAY
+      data_retention_policy:
+        five_minutes: 2764800
+        hour: 8208000
+        day: 69120000
+      dimensions:
+        - name: time
+          type: DATE
+          description: The date when the request happened.
+        - name: environment_id
+          type: STRING
+          description: The environment ID.
+        - name: country_code
+          type: STRING
+          description: >-
+            The user's country code. It consists of two lowercase letters, or a
+            single hyphen '-' if the country is unknown.
+        - name: origin_name
+          type: STRING
+          description: The origin name.
+      metrics:
+        - name: requests_origin_total
+          type: NUMBER
+          description: Total number of requests to origin.
+        - name: bytes_origin_total
+          type: NUMBER
+          description: Total number of bytes sent from origin.
+        - name: ttfb_origin_ms_5_percentile
+          type: NUMBER
+          description: Origin TTFB in ms. at the 5th percentile.
+        - name: ttfb_origin_ms_25_percentile
+          type: NUMBER
+          description: Origin TTFB in ms. at the 25th percentile.
+        - name: ttfb_origin_ms_50_percentile
+          type: NUMBER
+          description: Origin TTFB in ms. at the 50th percentile.
+        - name: ttfb_origin_ms_75_percentile
+          type: NUMBER
+          description: Origin TTFB in ms. at the 75th percentile.
+        - name: ttfb_origin_ms_95_percentile
+          type: NUMBER
+          description: Origin TTFB in ms. at the 95th percentile.
+        - name: ttfb_origin_ms_99_percentile
+          type: NUMBER
+          description: Origin TTFB in ms. at the 99th percentile.
+        - name: response_time_origin_ms_5_percentile
+          type: NUMBER
+          description: Origin response time in ms. at the 5th percentile.
+        - name: response_time_origin_ms_25_percentile
+          type: NUMBER
+          description: Origin response time in ms. at the 25th percentile.
+        - name: response_time_origin_ms_50_percentile
+          type: NUMBER
+          description: Origin response time in ms. at the 50th percentile.
+        - name: response_time_origin_ms_75_percentile
+          type: NUMBER
+          description: Origin response in ms. at the 75th percentile.
+        - name: response_time_origin_ms_95_percentile
+          type: NUMBER
+          description: Origin response in ms. at the 95th percentile.
+        - name: response_time_origin_ms_99_percentile
+          type: NUMBER
+          description: Origin response in ms. at the 99th percentile.
+      filters:
+        - name: environment_id
+          type: array
+          required: true
+          description: Sets the filtering by environment id.
+        - name: country_code
+          type: array
+          required: false
+          description: >-
+            Sets the filtering by the user's country code. Supported values: two
+            lowercase letters or '-'.
+        - name: origin_name
+          type: array
+          required: false
+          description: Sets the filtering by origin name.
+    - '@id': /datasets/origin_usage
+      '@type': MetricsDataset
+      name: origin_usage
+      description: >-
+        Aggregated usage metrics with breakdown time, environment ID, origin
+        name, HTTP method, and response content type.
+      created_at: '2024-05-02T00:00:00Z'
+      time_granularities:
+        - FIVE_MINUTES
+        - HOUR
+        - DAY
+      data_retention_policy:
+        five_minutes: 2764800
+        hour: 8208000
+        day: 69120000
+      dimensions:
+        - name: time
+          type: DATE
+          description: The date when the request happened.
+        - name: environment_id
+          type: STRING
+          description: The environment ID.
+        - name: origin_name
+          type: STRING
+          description: The origin name.
+        - name: http_method
+          type: STRING
+          description: The request HTTP method.
+        - name: content_type
+          type: STRING
+          description: Content-Type response header.
+      metrics:
+        - name: requests_origin_total
+          type: NUMBER
+          description: Total number of requests to origin.
+        - name: bytes_origin_total
+          type: NUMBER
+          description: Total number of bytes sent from origin.
+        - name: ttfb_origin_ms_5_percentile
+          type: NUMBER
+          description: Origin TTFB in ms. at the 5th percentile.
+        - name: ttfb_origin_ms_25_percentile
+          type: NUMBER
+          description: Origin TTFB in ms. at the 25th percentile.
+        - name: ttfb_origin_ms_50_percentile
+          type: NUMBER
+          description: Origin TTFB in ms. at the 50th percentile.
+        - name: ttfb_origin_ms_75_percentile
+          type: NUMBER
+          description: Origin TTFB in ms. at the 75th percentile.
+        - name: ttfb_origin_ms_95_percentile
+          type: NUMBER
+          description: Origin TTFB in ms. at the 95th percentile.
+        - name: ttfb_origin_ms_99_percentile
+          type: NUMBER
+          description: Origin TTFB in ms. at the 99th percentile.
+        - name: response_time_origin_ms_5_percentile
+          type: NUMBER
+          description: Origin response time in ms. at the 5th percentile.
+        - name: response_time_origin_ms_25_percentile
+          type: NUMBER
+          description: Origin response time in ms. at the 25th percentile.
+        - name: response_time_origin_ms_50_percentile
+          type: NUMBER
+          description: Origin response time in ms. at the 50th percentile.
+        - name: response_time_origin_ms_75_percentile
+          type: NUMBER
+          description: Origin response in ms. at the 75th percentile.
+        - name: response_time_origin_ms_95_percentile
+          type: NUMBER
+          description: Origin response in ms. at the 95th percentile.
+        - name: response_time_origin_ms_99_percentile
+          type: NUMBER
+          description: Origin response in ms. at the 99th percentile.
+      filters:
+        - name: environment_id
+          type: array
+          required: true
+          description: Sets the filtering by environment id.
+        - name: origin_name
+          type: array
+          required: false
+          description: Sets the filtering by origin name.
+        - name: http_method
+          type: array
+          required: false
+          description: Sets the filtering by request HTTP method.
+        - name: content_type
+          type: array
+          required: false
+          description: Sets the filtering by response content type.
+    - '@id': /datasets/origin_errors
+      '@type': MetricsDataset
+      name: origin_errors
+      description: >-
+        Aggregated usage metrics with breakdown time, environment ID, origin
+        name, HTTP method, response content type, and specific HTTP status codes
+        between 400 and 599
+      created_at: '2024-05-02T00:00:00Z'
+      time_granularities:
+        - FIVE_MINUTES
+        - HOUR
+        - DAY
+      data_retention_policy:
+        five_minutes: 2764800
+        hour: 8208000
+        day: 69120000
+      dimensions:
+        - name: time
+          type: DATE
+          description: The date when the request happened.
+        - name: environment_id
+          type: STRING
+          description: The environment ID.
+        - name: origin_name
+          type: STRING
+          description: The origin name.
+        - name: http_method
+          type: STRING
+          description: The request HTTP method.
+        - name: content_type
+          type: STRING
+          description: Content-Type response header.
+        - name: http_status_code
+          type: NUMBER
+          description: The HTTP status codes between 400 and 599.
+      metrics:
+        - name: requests_origin_total
+          type: NUMBER
+          description: Total number of requests to origin.
+      filters:
+        - name: environment_id
+          type: array
+          required: true
+          description: Sets the filtering by environment id.
+        - name: origin_name
+          type: array
+          required: false
+          description: Sets the filtering by origin name.
+        - name: http_method
+          type: array
+          required: false
+          description: Sets the filtering by request HTTP method.
+        - name: content_type
+          type: array
+          required: false
+          description: Sets the filtering by response content type.
+        - name: http_status_code
+          type: array
+          required: false
+          description: Sets the filtering by http status code.
+    - '@id': /datasets/origin_offload
+      '@type': MetricsDataset
+      name: origin_offload
+      description: >-
+        Aggregated usage metrics with breakdown time, environment ID, HTTP
+        method and response content type.
+      created_at: '2024-05-02T00:00:00Z'
+      time_granularities:
+        - FIVE_MINUTES
+        - HOUR
+        - DAY
+      data_retention_policy:
+        five_minutes: 2764800
+        hour: 8208000
+        day: 69120000
+      dimensions:
+        - name: time
+          type: DATE
+          description: The date when the request happened.
+        - name: environment_id
+          type: STRING
+          description: The environment ID.
+        - name: http_method
+          type: STRING
+          description: The request HTTP method.
+        - name: content_type
+          type: STRING
+          description: Content-Type response header.
+      metrics:
+        - name: requests_edge_total
+          type: NUMBER
+          description: Total number of requests to edge.
+        - name: requests_origin_total
+          type: NUMBER
+          description: Total number of requests to origin.
+        - name: bytes_edge_total
+          type: NUMBER
+          description: Total number of bytes sent from edge.
+        - name: bytes_origin_total
+          type: NUMBER
+          description: Total number of bytes sent from origin.
+      filters:
+        - name: environment_id
+          type: array
+          required: true
+          description: Sets the filtering by environment id.
+        - name: http_method
+          type: array
+          required: false
+          description: Sets the filtering by request HTTP method.
+        - name: content_type
+          type: array
+          required: false
+          description: Sets the filtering by response content type.

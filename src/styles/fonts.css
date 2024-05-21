@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'Mark-Bold';
+  src: url('/fonts/Mark-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}

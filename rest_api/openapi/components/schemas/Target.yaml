@@ -7,9 +7,11 @@ properties:
   value:
     description: |
     
-      Required for `REQUEST_HEADERS` type. The name of the request header through which requests will be identified. Valid values are: 
+      Required for `REQUEST_HEADERS`, `REQUEST_COOKIES`, and `QUERY_ARG`. The name of the request header, cookie, or query string parameter through which requests will be identified. 
+      
+      Valid values for the `REQUEST_HEADERS` type are: 
       
       ```
-      Host | Referer User-Agent
+      Host | Referer | User-Agent
       ```
     type: string

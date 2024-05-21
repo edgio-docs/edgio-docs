@@ -1,14 +1,17 @@
 import styled from 'styled-components';
 
-import {PRODUCT, FIDDLE_URL} from '../../../constants';
-
 import {
   IconEdgioSquareLogo,
   IconEdgioSquareLogoDark,
 } from 'components/Icon/IconEdgioSquareLogo';
 import Link from 'components/MDX/Link';
+import {useAppContext} from 'contexts/AppContext';
+import {useTheme} from 'contexts/ThemeContext';
+import {StringMap} from 'utils/Types';
 
 const StyledDocsFooter = styled.footer`
+  padding-top: 20px;
+
   @media (max-width: 585px) {
     justify-content: center;
   }
@@ -34,8 +37,8 @@ const StyledDocsFooter = styled.footer`
   }
 
   color: var(--docs-footer-color);
-  bottom: 0;
-  position: absolute;
+  // bottom: 0;
+  // position: absolute;
   width: 100%;
 
   .footer-start {
@@ -154,15 +157,11 @@ const secFooterLinks = [
   },
 ];
 
-const pryFooterLinks = {
+const pryFooterLinks = ({FIDDLE_URL}: StringMap) => ({
   resources: [
     {
       title: 'Video Tutorials',
-      href: 'https://vimeo.com/user/776463/folder/9270726',
-    },
-    {
-      title: 'Fiddle',
-      href: `${FIDDLE_URL}/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`,
+      href: 'https://www.youtube.com/@Edgio/videos',
     },
     {
       title: 'Status',
@@ -173,17 +172,14 @@ const pryFooterLinks = {
       href: 'https://edg.io/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
     },
     {
-      title: 'How-to guides',
-      href: '/guides/how-to',
-    },
-    {
-      title: 'Release Notes',
-      href: '/guides/release_notes',
+      title: 'Applications v7 Release Notes',
+      href: '/applications/v7/release_notes',
       versioned: false,
     },
     {
-      title: 'NPM Package Changelog',
-      href: '/guides/changelog',
+      title: 'Applications v7 NPM Package Changelog',
+      href: '/applications/v7/changelog',
+      versioned: false,
     },
   ],
   community: [
@@ -199,14 +195,6 @@ const pryFooterLinks = {
       title: 'JavaScript Jam',
       href: 'https://javascriptjam.com',
     },
-    {
-      title: 'Learning resources',
-      href: '/guides/learning',
-    },
-    // {
-    //   title: 'Glossary',
-    //   href: '/guides/glossary',
-    // },
     {
       title: 'Contributing',
       href: '/guides/contributing',
@@ -252,32 +240,37 @@ const pryFooterLinks = {
       href: 'https://edg.io/app/sites/',
     },
   ],
-};
+});
 
 export default function DocsFooter() {
+  const {theme, themedValue} = useTheme();
+  const {config} = useAppContext();
+  const {PRODUCT} = config;
+
+  const footerLinks = pryFooterLinks(config);
   return (
     <StyledDocsFooter>
       <div className="footer-start">
         <nav className="footer-start__nav">
           <div className="logo-wrap">
-            <div className="logo" id="light-theme">
-              <IconEdgioSquareLogo />
-            </div>
-            <div className="logo" id="dark-theme">
-              <IconEdgioSquareLogoDark />
+            <div className="logo">
+              {themedValue(
+                <IconEdgioSquareLogo />,
+                <IconEdgioSquareLogoDark />
+              )}
             </div>
           </div>
-          <FooterNavItem title="Products" items={pryFooterLinks.products} />
-          <FooterNavItem title="Resources" items={pryFooterLinks.resources} />
-          <FooterNavItem title="Community" items={pryFooterLinks.community} />
-          <FooterNavItem title="Social" items={pryFooterLinks.social} />
+          <FooterNavItem title="Products" items={footerLinks.products} />
+          <FooterNavItem title="Resources" items={footerLinks.resources} />
+          <FooterNavItem title="Community" items={footerLinks.community} />
+          <FooterNavItem title="Social" items={footerLinks.social} />
         </nav>
       </div>
       <div className="footer-end">
         <nav className="footer-end__nav">
           <p className="copy">
-            Copyright &copy; {new Date().getFullYear()} {PRODUCT} Inc. All
-            rights reserved.
+            Copyright &copy; {new Date().getFullYear()} {PRODUCT}. All rights
+            reserved.
           </p>
           <ul className="links">
             {secFooterLinks.map(({name, href}) => (

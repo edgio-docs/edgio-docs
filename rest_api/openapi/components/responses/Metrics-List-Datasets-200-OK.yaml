@@ -1,0 +1,8 @@
+description: Get Available Datasets
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/MetricsDatasetsCollection.yaml
+    examples:
+      datasets:
+        $ref: ../examples/Metrics-Get-Available-Datasets-Example.yaml

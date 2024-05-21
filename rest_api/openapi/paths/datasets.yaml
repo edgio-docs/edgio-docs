@@ -1,0 +1,19 @@
+get:
+  tags:
+    - metrics
+  summary: Get Available Datasets
+  description: >-
+    Returns all available datasets. A dataset is a structured collection of data
+    that represents a set of events. Each dataset consists of metrics and
+    dimensions.
+  operationId: datasets
+  security:
+    - metricsScope:
+        - app.metrics
+  responses:
+    '200':
+      $ref: ../components/responses/Metrics-List-Datasets-200-OK.yaml
+    '401':
+      $ref: ../components/responses/Metrics-401-Unauthorized.yaml
+    '500':
+      $ref: ../components/responses/Metrics-500-Internal-Error.yaml

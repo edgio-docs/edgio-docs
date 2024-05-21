@@ -334,6 +334,10 @@ const nav = {
           path: 'experimentation/cross_environment_traffic_splitting',
         },
         {
+          title: 'Basic Traffic Splitting Tutorial',
+          path: 'experimentation/basic_traffic_splitting_tutorial',
+        },
+        {
           title: 'Iterative Migration Tutorial',
           path: 'experimentation/iterative_migration_tutorial',
         },
@@ -644,6 +648,10 @@ const nav = {
             {
               title: 'Authentication',
               path: 'develop/rest_api/authentication',
+            },
+            {
+              title: 'Using the Metrics REST API',
+              path: 'develop/rest_api/metrics_rest_api_usage',
             },
             {
               title: 'REST API Reference',

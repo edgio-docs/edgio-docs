@@ -15,7 +15,7 @@ This BETA feature requires activation. {{ ACCOUNT_UPGRADE }}
 Definitions for key concepts are provided below.
 
 -   **Collection:** A collection represents the segment of your network that will be scanned for vulnerabilities. 
--   **Assets:** {{ PRODUCT }} identifies the hostnames, IP addresses, and TLS certificates associated with a scanned network segment. These entries are collectively known as assets.
+-   **Assets:** {{ PRODUCT }} identifies the hostnames and IP addresses associated with a scanned network segment. These entries are collectively known as assets.
 -   **Exposures:** {{ PRODUCT }} scans your network for Common Vulnerabilities and Exposures (CVE). A CVE represents a known security vulnerability or exposure for a software package. 
 -   **Protections:** {{ PRODUCT }} identifies the security solutions that are protecting the assets associated with the scanned network segment.
 -   **Technologies:** {{ PRODUCT }} identifies the software and services used by the assets associated with the scanned network segment.
@@ -142,9 +142,14 @@ Once you have created a collection and [added at least one seed](#add-seed) to i
 
 **Key information:**
 
--   Your initial scan will detect and scan all of your assets. It will also place your assets under management until your organization's limit is reached.
+-   Your initial scan will detect and scan all of your assets. It will also place your assets under management until your organization's limit is reached. If the number of detected assets exceeds your organization's limit, then {{ PRODUCT }} prioritizes hostnames over IP addresses. 
+
+    For example, let's assume that your organization has 100 hostnames and 600 IP addresses. If your organization's limit is 500 assets, then {{ PRODUCT }} will place 100 hostnames and 400 IP addresses under management. 
 -   Subsequent scans will only scan managed assets.
 -   You may also [add or remove assets from management](#assets).
+-   [Create or modify rules](#rules) to create custom exposure detection and to determine whether exposures are created from findings discovered from scanned assets.
+
+    For example, the default behavior is to scan ports for technologies, protections, and exposures. However, you can create a [rule that prevents exposures from being created from port scans](#scan-ports-without-exposures). 
 
 **To scan your network**
 
@@ -156,27 +161,172 @@ Once you have created a collection and [added at least one seed](#add-seed) to i
 
 ## Rules {/*rules*/}
 
-As {{ PRODUCT }} scans your organization's managed assets, it will discover findings. Rules determine the types of exposures that {{ PRODUCT }} will create based on these findings. {{ PRODUCT }} provides a default ruleset that you can use as a starting point. 
+Rules determine the type of exposures that will be created based off of:
+
+-   **Findings:** {{ PRODUCT }} scans your organization's managed assets for known vulnerabilities to discover findings. Rules determine the types of exposures that {{ PRODUCT }} will create based on these findings. 
+-   **Custom Criteria:** Configure a rule to add custom checks to a scan.
+
+    For example, a rule can create an exposure when it detects a response header with a specific value. 
 
 Rules allow you to:
 
 -   Determine whether exposures are reported when specific conditions are met.
 -   Customize the severity, priority, and assignee when specific conditions are met.
--   Specify which ports are scanned on a per entity basis.
+-   Specify which ports are scanned on a per asset basis.
 
-{{ PRODUCT }} will not create an exposure unless a finding matches at least one rule that is configured to create an exposure. The default ruleset creates exposures for all findings.
+**Key information:**
 
-View and edit rules by navigating to the **Rules** page under the **Attack Surfaces** section. 
+-   {{ PRODUCT }} will not create an exposure unless a finding matches at least one rule that is configured to create an exposure. 
+-   {{ PRODUCT }} provides a default rule set that you can use as a starting point. This rule set creates exposures for all findings.
+-   Rules are processed in the order that they are listed. If a finding satifies multiple rules, then all of those rules are applied to it. {{ PRODUCT }} resolves conflicts by giving precedence to the rule that is closest to the bottom of the list. 
+
+    For example, if both rules #4 and #6 apply to a finding, then precedence is given to rule #6.
+
+-   Determine whether a rule applies to a finding by defining one or more condition(s). 
+
+**To create a rule**
+
+1.  Load the **Rules** page.
+    {{ SECURITY_NAV }} **Attack Surface**.
+    5.  From the left-hand pane, select **Rules**.
+2.  Click **+ Create Rule**.
+3.  Define one or more condition(s) that identify the findings to which this rule will be applied.
+
+    1.  Select a type of condition. 
+    
+        ![Create Rule - Add Criteria](/images/v7/security/asm-create-rule-criteria.png)
+    
+    2.  Define when that condition will be met.
+    
+        -   **Severity:** Select an operator and a number from 0 (lowest) to 10 (highest) that represents the potential impact of an exposure.
+        
+            **Example:** `Severity` `is greater than` `3.7`
+
+        -   **CVE ID:** Select an operator that defines the relationship with a [CVE ID](https://cve.mitre.org/cve/search_cve_list.html).
+        
+            **Example:** `CVE ID` `equals` `CVE-2024-3094`
+
+        -   **CWE ID:** Select an operator that defines the relationship with a [Common Weakness Enumeration ID](https://cwe.mitre.org/).
+
+            **Example:** `CWE ID` `equals` `CWE-787`
+
+        -   **Response Header:** Type the name of the desired response header, select an operator, and then define the desired response header value.
+
+            **Example:** `Response Header` `cross-origin-opener-policy` `does not equal` `same-origin`
+
+        -   **Open Port:** Define a port or a range of ports for which {{ PRODUCT }} will check to see if they are open.
+
+            **Example:** `Open Port` `21-23`
+
+        -   **TLS Cert Is Missing:** This condition is satisfied when the asset is missing a TLS certificate.
+        -   **TLS Cert Days Until Expiration:** Select an operator that defines the relationship with the number of days before the asset's TLS certificate expires.
+        
+            **Example:** `TLS Cert Days Until Expiration` `is less than` `30`
+
+        -   **TLS Cipher:** Select an operator that defines the relationship with a TLS cipher.
+
+        **Example:** `TLS Cipher` `matches` `.*(?:DES|RC4|MD5|EXPORT|NULL).*`
+
+        -   **TLS SNI Hint Mismatch:** This condition is satisfied when the request's SNI hint does not match a value defined within the asset's TLS certificate. 
+
+    3.  Repeat the previous step as needed. If you have defined multiple conditions and would like to make them all mandatory, then you should select `All of` from the **When Any of the following finding criteria are met** option. 
+
+4.  From the **Action** option, choose how findings that satisfy this rule will be handled. 
+
+    -   **Create an exposure with following values:** Select this option to create an exposure. 
+    
+        1.  Optional. From the **Assign user** option, select a user to which this exposure will be assigned by default.
+        2.  Optional. From the **Assign priority** option, select the default priority that will be assigned to this exposure. 
+        3.  Optional. From the **Assign severity** option, select the default severity that will be assigned to this exposure. 
+        4.  Optional. From the **Assign summary** option, provide a brief summary of this finding. You may include variable data, such as `$summary`, `$cve`, or `$hostname`. 
+
+    -   **Don't create an exposure:** Select this option if an exposure should not be created for findings that match this rule. 
+    -   **If another rule creates exposure, assign values:** Select this option to override the user, priority, and severity assigned to a previously discovered exposure. 
+
+5.  Restrict this rule by collection. From the **Collections** option, select one of the following options:
+
+    -   **Applies to all collections:** Applies this rule to all collection. 
+    -   **Only applies to specific collections:** Applies this rule to the selected collections. Click directly below this option and select each desired collection.
+    -   **Applies to all collections except:** Applies this rule to all collections except for those that have been selected. Click directly below this option and select each collection to which this rule will not be applied.
+5.  Restrict this rule by asset. From the **Assets** option, select one of the following options:
+
+    -   **Applies to all assets:** Applies this rule to all assets. 
+    -   **Applies to assets matching any of the following criteria:** Applies this rule to a finding that matches at least one condition. Define one or more condition(s) for identifying assets.
+    -   **Applies to assets matching all of the following criteria:**  Applies this rule to a finding that matches all specified conditions. Define one or more condition(s) for identifying assets. 
+    
+    Define a condition by performing the following steps:
+    
+    1.  Click **+ Add Criteria**. 
+    2.  Select the type of asset (e.g., hostname or IP address).
+    3.  Select an operator that defines the relationship with the value specified in the next step.
+    4.  Specify a value.
+    
+    **Sample condition:** `Hostname` `matches` `.*(example.com)`
+
+6.  Determine whether to stop processing a finding when this rule is satisfied.
+
+    -   Allow subsequent rules to process by setting the **Exit on match** option to <Image inline src="/images/v7/icons/toggle-off-large.png" alt="Disabled" /> (off).
+    -   Stop processing when this rule is satisfied by setting the **Exit on match** option to <Image inline src="/images/v7/icons/toggle-on-large.png" alt="Enabled" /> (on).
+
+7.  From the **Rule description** option, type a brief description for this rule.
+8.  From the **Enabled** option, determine whether this rule will be enabled.
+9.  Click **Create Rule**.
+
+**To enable or disable a rule**
+
+1.  Load the **Rules** page.
+    {{ SECURITY_NAV }} **Attack Surface**.
+    5.  From the left-hand pane, select **Rules**.
+2.  Click on the desired rule.
+3.  From the **Enabled** option, determine whether this rule will be:
+
+    -   **Enabled:** It should look like this: <Image inline src="/images/v7/icons/toggle-on-large.png" alt="Enabled" />
+    -   **Disabled:** It should look like this: <Image inline src="/images/v7/icons/toggle-off-large.png" alt="Disabled" />
+4.  Click **Apply Changes**.
+
+**To modify a rule**
+
+1.  Load the **Rules** page.
+    {{ SECURITY_NAV }} **Attack Surface**.
+    5.  From the left-hand pane, select **Rules**.
+2.  Click on the desired rule.
+3.  Make the desired changes.
+4.  Click **Apply Changes**.
+
+**<a id="scan-ports-without-exposures" />To scan ports without creating exposures**
+
+<Info>
+
+This procedure assumes that you have not deleted or modified the `Scan common remote access ports` rule.
+
+</Info>
+
+1.  Load the **Rules** page.
+    {{ SECURITY_NAV }} **Attack Surface**.
+    5.  From the left-hand pane, select **Rules**.
+2.  Click on the `Scan common remote access ports` rule.
+3.  From the **Action** option, select `Don't create an exposure`.
+4.  Click **Apply Changes**.
+
+    Subsequent scans will continue to scan open ports for technologies and protections. However, exposures will not be generated from those scans. 
+
+**To delete a rule**
+
+1.  Load the **Rules** page.
+    {{ SECURITY_NAV }} **Attack Surface**.
+    5.  From the left-hand pane, select **Rules**.
+2.  Click the <Image inline src="/images/icons/delete.png" alt="Delete icon" /> (Delete) icon next to the rule that should be deleted.
+3.  When prompted, confirm the deletion by clicking **Delete**.
 
 ## Exposures {/*exposures*/}
 
-Exposures represent the vulnerabilities and misconfigurations that {{ PRODUCT }} has discovered in your organization's attack surface. Exposures are automatically created and updated as {{ PRODUCT }} scans your organization's managed assets. 
+Exposures represent the vulnerabilities and misconfigurations that {{ PRODUCT }} has discovered in your organization's attack surface. Exposures are automatically created and updated as {{ PRODUCT }} scans your organization's managed assets. However, you may [create or modify a rule](#rules) to prevent exposures from being created. [Learn how to disable exposures for port scans.](#scan-ports-without-exposures)
 
 Each exposure has the following attributes:
 
 -   **ID:** An identifier comprised of the collection name and an incrementing number.
 -   **Summary:** A brief description of the exposure.
--   **Entity:** The entity that the exposure is associated with (e.g., a hostname, IP address, or seed).
+-   **Asset:** The asset (e.g., a hostname, IP address, or seed) on which the exposure was detected.
 -   **Severity:** The potential impact of an exposure is reported as a number from 0 (lowest) to 10 (highest). 
 -   **Priority:** The priority of the exposure (Low, Medium, High, or Critical). Use priority to indicate the urgency with which the exposure should be addressed.
 -   **Assignee:** The user or team that is responsible for addressing the exposure.
@@ -213,8 +363,8 @@ View and manage exposures by navigating to the **Exposures** page under the **At
     5.  From the left-hand pane, select **Assets**.
 2.  Find the desired asset.
 3.  From the **Under Management** column, determine whether {{ PRODUCT }} may scan it for exposures.
-    -   **Enable:** Click on the icon to toggle it on. It should now look like this: <Image inline src="/images/v7/icons/toggle-on-large.png" alt="Enabled" />
-    -   **Disable:** Click on the icon to toggle it off. It should now look like this: <Image inline src="/images/v7/icons/toggle-off-large.png" alt="Enabled" />
+    -   **Managed Asset:** Set this option to <Image inline src="/images/v7/icons/toggle-on-large.png" alt="Enabled" /> (on).
+    -   **Unmanaged Asset:** Set this option to <Image inline src="/images/v7/icons/toggle-off-large.png" alt="Disabled" /> (off).
 
 ## Protections {/*protections*/}
 
@@ -226,10 +376,10 @@ View and manage exposures by navigating to the **Exposures** page under the **At
 -   Local File Inclusion (LFI)
 -   XML External Entity Injection (XXE)
 
-These attacks are considered benign and will not harm your organization's entities. 
+These attacks are considered benign and will not harm your organization's assets. 
 
 ## Technologies {/*technologies*/}
 
-{{ PRODUCT }} Attack Surface Management will discover and track the technologies that are associated with your organization's entities. Technologies are automatically created and updated as {{ PRODUCT }} scans your organization's entities.
+{{ PRODUCT }} Attack Surface Management will discover and track the technologies that are associated with your organization's assets. Technologies are automatically created and updated as {{ PRODUCT }} scans your organization's assets.
 
 View the technologies used by your network by navigating to the **Technologies** page under the **Attack Surfaces** section.

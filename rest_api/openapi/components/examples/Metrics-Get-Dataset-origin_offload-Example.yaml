@@ -1,0 +1,55 @@
+value:
+  '@id': /datasets/origin_offload
+  '@type': MetricsDataset
+  name: origin_offload
+  description: >-
+    Aggregated usage metrics with breakdown time, environment ID, HTTP method
+    and response content type.
+  created_at: '2024-05-02T00:00:00Z'
+  time_granularities:
+    - FIVE_MINUTES
+    - HOUR
+    - DAY
+  data_retention_policy:
+    five_minutes: 2764800
+    hour: 8208000
+    day: 69120000
+  dimensions:
+    - name: time
+      type: DATE
+      description: The date when the request happened.
+    - name: environment_id
+      type: STRING
+      description: The environment ID.
+    - name: http_method
+      type: STRING
+      description: The request HTTP method.
+    - name: content_type
+      type: STRING
+      description: Content-Type response header.
+  metrics:
+    - name: requests_edge_total
+      type: NUMBER
+      description: Total number of requests to edge.
+    - name: requests_origin_total
+      type: NUMBER
+      description: Total number of requests to origin.
+    - name: bytes_edge_total
+      type: NUMBER
+      description: Total number of bytes sent from edge.
+    - name: bytes_origin_total
+      type: NUMBER
+      description: Total number of bytes sent from origin.
+  filters:
+    - name: environment_id
+      type: array
+      required: true
+      description: Sets the filtering by environment id.
+    - name: http_method
+      type: array
+      required: false
+      description: Sets the filtering by request HTTP method.
+    - name: content_type
+      type: array
+      required: false
+      description: Sets the filtering by response content type.

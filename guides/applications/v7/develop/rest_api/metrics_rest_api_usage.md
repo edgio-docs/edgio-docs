@@ -54,6 +54,132 @@ A typical query contains the following information:
 
 The [above sample request](#sample-request) generates an environment-specific report for two metrics (i.e., `requests_origin_total` and `ttfb_origin_ms_75_percentile`) grouped by the `origin_name` dimension. 
 
+### Common Report Queries {/*common-report-queries*/}
+
+Common report queries are described below.
+
+#### Get Data Transferred {/*Get Data Transferred*/}
+
+Find out the total amount of data, in bytes, served from our network over a given time period.
+
+**Query:** Update the `environment_id` property and the `date_range` object before submitting the following query:
+
+```json
+POST https://edgioapis.com/metrics/v1/datasets/edge_usage_by_country/data 
+
+{
+    "dimensions": [
+        "time"
+    ],
+    "metrics": [
+        "bytes_edge_total"
+    ],
+    "filters": {
+        "environment_id": [
+            "12345678-1234-1234-1234-1234567890ab"
+        ]
+    },
+    "date_range": {
+        "start": "2024-05-20T00:00:00Z",
+        "end": "2024-05-21T00:00:00Z"
+    },
+    "time_granularity": "DAY"
+}
+```
+
+### Get Request Rate {/*get-request-rate*/}
+
+Find out the number of requests per second served from our network over a given time period.
+
+
+**Query:** Update the `environment_id` property and the `date_range` object before submitting the following query:
+
+```json
+POST https://edgioapis.com/metrics/v1/datasets/edge_usage_by_country/data 
+
+{
+    "dimensions": [
+        "time"
+    ],
+    "metrics": [
+        "requests_per_second_edge"
+    ],
+    "filters": {
+        "environment_id": [
+            "12345678-1234-1234-1234-1234567890ab"
+        ]
+    },
+    "date_range": {
+        "start": "2024-05-20T00:00:00Z",
+        "end": "2024-05-21T00:00:00Z"
+    },
+    "time_granularity": "DAY"
+}
+```
+
+#### Get Requests for Common Cache Statuses {/*get-requests-for-common-cache-statuses*/}
+
+Find out the total number of requests served from our network for the following cache statuses over a given time period:
+-   Cache hits (`requests_hit_total`)
+-   Cache misses (`requests_miss_total`)
+-   Expired hits (`requests_stale_total`). 
+
+    An expired hit means that stale content was served to the client. This occurs when the response from an origin server for a revalidation request indicates that a newer version of that asset does not exist. 
+
+**Query:** Update the `environment_id` property and the `date_range` object before submitting the following query:
+
+```json
+POST https://edgioapis.com/metrics/v1/datasets/edge_usage_by_country/data 
+
+{
+    "dimensions": [
+        "time"
+    ],
+    "metrics": [
+        "requests_hit_total", "requests_miss_total", "requests_stale_total"
+    ],
+    "filters": {
+        "environment_id": [
+            "12345678-1234-1234-1234-1234567890ab"
+        ]
+    },
+    "date_range": {
+        "start": "2024-05-20T00:00:00Z",
+        "end": "2024-05-21T00:00:00Z"
+    },
+    "time_granularity": "DAY"
+}
+```
+
+#### Get Bandwidth {/*get-bandwidth*/}
+
+Find out the amount of bandwidth, in bits, served over a given time period.
+
+**Query:** Update the `environment_id` property and the `date_range` object before submitting the following query:
+
+```json
+POST https://edgioapis.com/metrics/v1/datasets/edge_usage_by_country/data 
+
+{
+    "dimensions": [
+        "time"
+    ],
+    "metrics": [
+        "bits_per_second_edge"
+    ],
+    "filters": {
+        "environment_id": [
+            "12345678-1234-1234-1234-1234567890ab"
+        ]
+    },
+    "date_range": {
+        "start": "2024-05-20T00:00:00Z",
+        "end": "2024-05-21T00:00:00Z"
+    },
+    "time_granularity": "DAY"
+}
+```
+
 ## Report Data {/*report-data*/}
 
 The following properties are critical for interpreting the response:

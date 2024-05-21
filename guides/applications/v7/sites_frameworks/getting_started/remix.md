@@ -42,7 +42,7 @@ This section is relevant only if you have an existing Remix project without Expr
 
 #### Install Express and Remix Adapter {/* install-express-and-remix-adapter */}
 
-Install Express and the Remix adapter. You should also uninstall the default Remix server or any other server you are using:
+Install Express and the Remix Express adapter. You should also uninstall the default Remix server or any other server you are using:
 
 ```bash
 # Install Express and Remix adapter

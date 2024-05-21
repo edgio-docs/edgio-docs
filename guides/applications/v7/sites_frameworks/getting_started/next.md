@@ -100,10 +100,10 @@ module.exports = with{{ PRODUCT }}({
 
 ## {{ PRODUCT_NAME }} Devtools {/* devtools */}
 
-To understand better the caching mechanism, you can add {{ PRODUCT }} Devtools to see the caching metrics. Add the following code to your `_app.tsx` file:
+To gain better insights into the caching mechanism, you can use the {{ PRODUCT }} Devtools to view caching metrics. Add the following code to your `_app.tsx` file:
 
 ```js filename='_app.tsx'
-import { useDevtools } from '@edgio/react';
+import {useDevtools} from '{{ PACKAGE_NAME }}/react';
 
 const MyApp = ({Component, pageProps}) => {
   useDevtools();
@@ -111,13 +111,14 @@ const MyApp = ({Component, pageProps}) => {
 };
 ```
 
-<Callout type="warning">
+<Warning>
 
-Package `@edgio/devtools` will be removed in the next major {{ PRODUCT }} version.
-Please use [Google Chrome extension](/guides/performance/observability/developer_tools_chrome_extension) as an alternative.
+The `{{PACKAGE_NAME}}/devtools` package is deprecated and will be removed in
+the next major {{PRODUCT}} version. Please switch to using the [Google Chrome
+extension](/guides/performance/observability/developer_tools_chrome_extension)
+for improved debugging and performance insights.
 
-</Callout>
-
+</Warning>
 
 ## Running Locally {/* running-locally */}
 

@@ -291,11 +291,11 @@ The following sample request filters report data for a specific environment and 
 }
 ```
 
-### Common Reports {/*common-reports*/}
+## Common Reports {/*common-reports*/}
 
-Common report queries are described below.
+Find out how to generate common reports.
 
-#### Get Data Transferred {/*Get Data Transferred*/}
+### Get Data Transferred {/*Get Data Transferred*/}
 
 Find out the total amount of data, in bytes, served from our network over a given time period.
 
@@ -353,7 +353,7 @@ Find out the number of requests per second served from our network over a given 
 }
 ```
 
-#### Get Requests for Common Cache Statuses {/*get-requests-for-common-cache-statuses*/}
+### Get Requests for Common Cache Statuses {/*get-requests-for-common-cache-statuses*/}
 
 Find out the total number of requests served from our network for the following cache statuses over a given time period:
 -   Cache hits (`requests_hit_total`)
@@ -387,9 +387,9 @@ Find out the total number of requests served from our network for the following 
 }
 ```
 
-#### Get Bandwidth {/*get-bandwidth*/}
+### Get Bandwidth {/*get-bandwidth*/}
 
-Find out the amount of bandwidth, in bits, served over a given time period.
+Find out the amount of bandwidth, in bits per second, served over a given time period.
 
 **Request:** `POST https://edgioapis.com/metrics/v1/datasets/edge_usage_by_country/data`
 

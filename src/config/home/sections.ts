@@ -18,7 +18,7 @@ export const sections: HomepageSectionGroup[] = [
         items: [
           {
             title: 'Getting Started',
-            path: 'getting_started',
+            path: '/applications/getting_started',
           },
           {
             title: 'Properties',

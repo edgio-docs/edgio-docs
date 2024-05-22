@@ -2,12 +2,12 @@ type Redirect = [string | RegExp, string, number?];
 
 export default <Array<Redirect>>[
   // existing redirects
-  ['/applications/starter', '/applications/getting_started'],
+  ['/applications/starter', '/applications/v7/getting_started'],
   ['/applications/debugging', '/applications/performance/troubleshooting'],
   ['/applications/deploying', '/applications/basics/deployments'],
 
   // sidenav updates
-  ['/applications/webapp_cdn_getting_started', '/applications/getting_started'],  
+  ['/applications/webapp_cdn_getting_started', '/applications/getting_started'],
   ['/applications/deploy_apps', '/applications/basics/deployments'],
   [
     '/applications/edgio_config',
@@ -53,7 +53,7 @@ export default <Array<Redirect>>[
     '/applications/performance/observability/devtools',
   ],
   ['/applications/prefetching', '/applications/performance/prefetching'],
-  ['/applications/purging', '/applications/performance/caching/purging'],
+  ['/applications/purging', '/applications/performance/purging'],
   ['/applications/request_headers', '/applications/performance/request'],
   ['/applications/response_headers', '/applications/performance/response'],
   ['/applications/routing', '/applications/performance/cdn_as_code'],
@@ -293,10 +293,14 @@ export default <Array<Redirect>>[
   ['/applications/v4/v4_reference', '/applications/v4/limits'],
   ['/applications/v4/v4_security', '/applications/v4/security'],
   ['/applications/v4/v4_sites', '/applications/v4/connectors'],
-  ['/applications/v4/deploying', '/applications/basics/deployments'],
-  ['/applications/v4/getting_started', '/applications/getting_started'],
+  ['/applications/v4/deploying', '/applications/v7/basics/deployments'],
+  ['/applications/v4/getting_started', '/applications/v7/getting_started'],
 
   // v7
+  [
+    '/applications/v7/performance/purging',
+    '/applications/v7/performance/caching/purging'
+  ]
   [
     '/applications/v7/performance/observability/core_web_vitals',
     '/applications/v7/performance/observability/real_user_monitoring',

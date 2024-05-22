@@ -10,10 +10,19 @@ See [NPM Packages Changelog](/applications/changelog) for release notes related 
 
 </Callout>
 
+## May 2024 {/* may-2024 */}
+
+| Date       | Description                                                                                                                                                                                                                                  |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 05/16/2024 | **REST API:** Introduced the [Metrics API](https://docs.edg.io/rest_api/#tag/metrics). Use this API to generate a variety of reports based off key datasets, such as origin usage, network usage, and errors.                                |
+| 05/15/2024 | **REST API:** Introduced [Client-Side Protection](https://docs.edg.io/rest_api/#tag/Client-Side-Protection) profile management.                                                                                                              |
+| 05/10/2024 | **Rules:** Introduced the [Set Origin Response Headers feature](https://docs.edg.io/applications/v7/performance/rules/features#set-origin-response-headers) which allows you to set response headers as if they were provided by the origin. |
+
 ## April 2024 {/* april-2024 */}
 
 | Date       | Description                                                                                                                                                                                                                                                                                                      |
 | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 04/30/2024 | **{{ PRODUCT_SECURITY }}:** Introduced the [Attack Surface Management - BETA](/applications/security/asm) which monitors your organization’s attack surface to identify exposures and vulnerabilities.                                                                                                           |
 | 04/24/2024 | **{{ PRODUCT_SECURITY }}:** Introduced [Client-Side Protection](/applications/security/client_side_protection) which applies a consistent Content Security Policy (CSP) across all of your pages. The purpose of a CSP is to detect and mitigate attacks, such as cross-site scripting (XSS) and code injection. |
 | 04/24/2024 | **{{ PORTAL }}:** Data retention for Real User Monitoring analytics has been extended to 90 days for daily aggregated data.                                                                                                                                                                                      |
 | 04/18/2024 | **REST API:** Introduced [RTLD](https://docs.edg.io/rest_api/#tag/RTLD-Access-Logs-Profile) management.                                                                                                                                                                                                          |

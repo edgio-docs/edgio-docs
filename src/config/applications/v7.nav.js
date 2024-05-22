@@ -470,6 +470,10 @@ const nav = {
               path: 'sites_frameworks/getting_started/react',
             },
             {
+              title: 'Remix',
+              path: 'sites_frameworks/getting_started/remix',
+            },
+            {
               title: 'SvelteKit',
               path: 'sites_frameworks/getting_started/sveltekit',
             },

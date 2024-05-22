@@ -300,7 +300,7 @@ export default <Array<Redirect>>[
   [
     '/applications/v7/performance/purging',
     '/applications/v7/performance/caching/purging'
-  ]
+  ],
   [
     '/applications/v7/performance/observability/core_web_vitals',
     '/applications/v7/performance/observability/real_user_monitoring',

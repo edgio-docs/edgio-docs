@@ -23,11 +23,10 @@ The Metrics REST API allows you to generate reports for key datasets (e.g., orig
     1.  Pass the desired dataset within the path of the [Query Dataset operation](https://docs.edg.io/rest_api/#tag/metrics/operation/data).
     2.  Describe the desired report data through the request body. <a id="sample-request" />
 
-    **Sample request:**
+    **Sample URL:** `POST https://edgioapis.com/metrics/v1/datasets/origin_usage_by_country/data`
 
-    ```
-    POST https://edgioapis.com/metrics/v1/datasets/origin_usage_by_country/data
-    
+    **Sample Request Body:**
+    ```json
     {
         "date_range": {
             "start": "2024-04-26T00:00:00Z",
@@ -288,5 +287,194 @@ The following sample request filters report data for a specific environment and 
         "environment_id": ["777af1f3-aa60-1234-b777-56772909e833"],
         "origin_name": ["origin_1"]
     }
+}
+```
+
+## Common Reports {/*common-reports*/}
+
+Sample queries for commonly requested reports are provided below. 
+
+<Tip>
+
+Your business needs may require a different type of report. Examine the datasets returned by the [Get Available Datasets operation](https://docs.edg.io/rest_api/#tag/metrics/operation/datasets) to discover the types of data that can be returned and the manner in which it can be grouped and filtered.
+
+</Tip>
+
+### Get Data Transferred {/*Get Data Transferred*/}
+
+Find out the total amount of data, in bytes, served from our network over a given time period.
+
+**Request:** `POST https://edgioapis.com/metrics/v1/datasets/edge_usage_by_country/data`
+
+**Request Body:** Update the `environment_id` property and the `date_range` object before submitting the following query:
+
+```json
+{
+    "dimensions": [
+        "time"
+    ],
+    "metrics": [
+        "bytes_edge_total"
+    ],
+    "filters": {
+        "environment_id": [
+            "12345678-1234-1234-1234-1234567890ab"
+        ]
+    },
+    "date_range": {
+        "start": "2024-05-20T00:00:00Z",
+        "end": "2024-05-21T00:00:00Z"
+    },
+    "time_granularity": "DAY"
+}
+```
+
+### Get Request Rate {/*get-request-rate*/}
+
+Find out the number of requests per second served from our network over a given time period.
+
+**Request:** `POST https://edgioapis.com/metrics/v1/datasets/edge_usage_by_country/data`
+
+**Request Body:** Update the `environment_id` property and the `date_range` object before submitting the following query:
+
+```json
+{
+    "dimensions": [
+        "time"
+    ],
+    "metrics": [
+        "requests_per_second_edge"
+    ],
+    "filters": {
+        "environment_id": [
+            "12345678-1234-1234-1234-1234567890ab"
+        ]
+    },
+    "date_range": {
+        "start": "2024-05-20T00:00:00Z",
+        "end": "2024-05-21T00:00:00Z"
+    },
+    "time_granularity": "DAY"
+}
+```
+
+### Get Requests for Common Cache Statuses {/*get-requests-for-common-cache-statuses*/}
+
+Find out the total number of requests served from our network for the following cache statuses over a given time period:
+-   Cache hits (`requests_hit_total`)
+-   Cache misses (`requests_miss_total`)
+-   Expired hits (`requests_stale_total`). 
+
+    An expired hit means that stale content was served to the client. This occurs when the response from an origin server for a revalidation request indicates that a newer version of that asset does not exist. 
+
+**Request:** `POST https://edgioapis.com/metrics/v1/datasets/edge_usage_by_country/data`
+
+**Request Body:** Update the `environment_id` property and the `date_range` object before submitting the following query:
+
+```json
+{
+    "dimensions": [
+        "time"
+    ],
+    "metrics": [
+        "requests_hit_total", "requests_miss_total", "requests_stale_total"
+    ],
+    "filters": {
+        "environment_id": [
+            "12345678-1234-1234-1234-1234567890ab"
+        ]
+    },
+    "date_range": {
+        "start": "2024-05-20T00:00:00Z",
+        "end": "2024-05-21T00:00:00Z"
+    },
+    "time_granularity": "DAY"
+}
+```
+
+### Get Bandwidth {/*get-bandwidth*/}
+
+Find out the amount of bandwidth, in bits per second, served over a given time period.
+
+**Request:** `POST https://edgioapis.com/metrics/v1/datasets/edge_usage_by_country/data`
+
+**Request Body:** Update the `environment_id` property and the `date_range` object before submitting the following query:
+
+```json
+{
+    "dimensions": [
+        "time"
+    ],
+    "metrics": [
+        "bits_per_second_edge"
+    ],
+    "filters": {
+        "environment_id": [
+            "12345678-1234-1234-1234-1234567890ab"
+        ]
+    },
+    "date_range": {
+        "start": "2024-05-20T00:00:00Z",
+        "end": "2024-05-21T00:00:00Z"
+    },
+    "time_granularity": "DAY"
+}
+```
+
+### Get Errors by HTTP Status Code {/*get-errors-by-http-status-code*/}
+
+Get a breakdown of error responses by HTTP status code over a given time period. Each object in `data_row` represents a HTTP status code.
+
+**Request:** `POST https://edgioapis.com/metrics/v1/datasets/edge_errors/data`
+
+**Request Body:** Update the `environment_id` property and the `date_range` object before submitting the following query:
+
+```json
+{
+    "dimensions": [
+        "time", "http_status_code"
+    ],
+    "metrics": [
+        "requests_edge_total"
+    ],
+    "filters": {
+        "environment_id": [
+            "12345678-1234-1234-1234-1234567890ab"
+        ]
+    },
+    "date_range": {
+        "start": "2024-05-20T00:00:00Z",
+        "end": "2024-05-21T00:00:00Z"
+    },
+    "time_granularity": "DAY"
+}
+```
+
+### Get Usage by Origin {/*get-usage-by-origin*/}
+
+Find out the number of requests and the amount of data, in bytes, served by each origin over a given time period.
+
+**Request:** `POST https://edgioapis.com/metrics/v1/datasets/origin_usage/data`
+
+**Request Body:** Update the `environment_id` property and the `date_range` object before submitting the following query:
+
+```json
+{
+    "dimensions": [
+        "time", "origin_name"
+    ],
+    "metrics": [
+        "requests_origin_total", "bytes_origin_total"
+    ],
+    "filters": {
+        "environment_id": [
+            "12345678-1234-1234-1234-1234567890ab"
+        ]
+    },
+    "date_range": {
+        "start": "2024-05-20T00:00:00Z",
+        "end": "2024-05-21T00:00:00Z"
+    },
+    "time_granularity": "DAY"
 }
 ```

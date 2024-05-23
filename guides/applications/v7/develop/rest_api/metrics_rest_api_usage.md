@@ -478,3 +478,9 @@ Find out the number of requests and the amount of data, in bytes, served by each
     "time_granularity": "DAY"
 }
 ```
+
+## Available Datasets {/*datasets*/}
+
+The available datasets are described below.
+
+{{ datasets.md }}

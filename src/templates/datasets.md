@@ -1,3 +1,10 @@
+-   [edge_usage_by_country](#edge_usage_by_country)
+-   [edge_errors](#edge_errors)
+-   [origin_usage_by_country](#origin_usage_by_country)
+-   [origin_usage](#origin_usage)
+-   [origin_errors](#origin_errors)
+-   [origin_offload](#origin_offload)
+
 ### edge_usage_by_country {/*edge_usage_by_country*/} 
 
 Aggregated edge usage metrics with breakdown by time, environment id and user country code.

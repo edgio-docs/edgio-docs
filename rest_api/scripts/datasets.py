@@ -73,7 +73,7 @@ output_content += datasets_list
 output_content += html_content
 
 # Define the output file path
-output_file_path = "edgio-docs/src/templates/datasets.md"
+output_file_path = "src/templates/datasets.md"
  
 # Ensure the directory exists
 os.makedirs(os.path.dirname(output_file_path), exist_ok=True)

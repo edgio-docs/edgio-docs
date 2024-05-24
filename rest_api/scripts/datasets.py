@@ -9,8 +9,8 @@ AUTH_ENDPOINT = "https://id.edgio.app/connect/token"
 auth_response = requests.post(
     AUTH_ENDPOINT,
     data = {
-        "client_id": "XXXXXXXX",
-        "client_secret": "XXXXXXXXXX",
+        "client_id": "XXXXXXX",
+        "client_secret": "XXXXXXXX",
         "grant_type": "client_credentials",
         "scope": "app.metrics"
     },
@@ -51,7 +51,8 @@ def generate_html_list(items, title):
 datasets = data.get('items', [])
 
 # Generating HTML for each dataset
-html_content = ""
+html_content = "\n"
+datasets_list = ""
 output_content = ""
 for dataset in datasets:
     name = dataset.get('name', 'Unnamed dataset')
@@ -59,18 +60,20 @@ for dataset in datasets:
     dimensions = dataset.get('dimensions', [])
     metrics = dataset.get('metrics', [])
     filters = dataset.get('filters', [])
-
-    html_content = f"### {name} {{/*{name}*/}} \n\n{description}\n"
+ 
+    html_content += f"### {name} {{/*{name}*/}} \n\n{description}\n"
     html_content += generate_html_list(dimensions, "Dimensions")
     html_content += generate_html_list(metrics, "Metrics")
     html_content += generate_html_list(filters, "Filters")
-
+ 
     html_content += "\n"
-
-    output_content += html_content
+    datasets_list += f"-   [{name}](#{name})\n"
+ 
+output_content += datasets_list
+output_content += html_content
 
 # Define the output file path
-output_file_path = "src/templates/datasets.md"
+output_file_path = "edgio-docs/src/templates/datasets.md"
  
 # Ensure the directory exists
 os.makedirs(os.path.dirname(output_file_path), exist_ok=True)

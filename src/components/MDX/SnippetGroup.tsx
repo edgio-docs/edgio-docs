@@ -204,14 +204,19 @@ function CPre({
             {/* @ts-ignore */}
             {tokens.map((line, i) => {
               const lineNum = i + 1;
+              const lineProps = getLineProps({line, key: i});
+              delete lineProps.key;
+
               return (
-                <Line key={i} {...getLineProps({line, key: i})}>
+                <Line key={i} {...lineProps}>
                   <LineNo className="line-num">{lineNum}</LineNo>
                   <LineContent className={cn(linesToHighlight[lineNum])}>
                     {/* @ts-ignore */}
-                    {line.map((token, key) => (
-                      <span key={key} {...getTokenProps({token, key})} />
-                    ))}
+                    {line.map((token, key) => {
+                      const tokenProps = getTokenProps({token, key});
+                      delete tokenProps.key;
+                      return <span key={key} {...tokenProps} />;
+                    })}
                   </LineContent>
                 </Line>
               );

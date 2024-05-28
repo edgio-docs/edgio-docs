@@ -707,5 +707,6 @@ x-tagGroups:
   - name: Real-Time Log Delivery (RTLD)
     tags:
       - RTLD Access Logs Profile
+      - RTLD WAF Profile
       - Log Fields
       - AWS Regions

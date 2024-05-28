@@ -117,7 +117,8 @@ function Accordion({
             <Link
               href={toVersionedPath(route.path)}
               className="sidenav-link"
-              data-depth={depth}>
+              data-depth={depth}
+              legacyBehavior>
               {childElement}
             </Link>
           )

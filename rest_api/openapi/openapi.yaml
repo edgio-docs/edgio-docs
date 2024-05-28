@@ -183,6 +183,12 @@ tags:
       Automate Real-Time Log Delivery (RTLD) Access Logs profile management. A RTLD Access Logs profile defines the condition(s) under which access log data will be delivered to the desired destination (e.g., your web server or AWS S3). 
       
       <a href="/applications/v7/logs/rtld" target="_blank">Learn more about Real-Time Log Delivery.</a>
+  - name: RTLD WAF Profile
+    description: |
+    
+      Automate Real-Time Log Delivery (RTLD) Web Application Firewall (WAF) profile management. A RTLD WAF profile defines the condition(s) under which WAF log data will be delivered to the desired destination (e.g., your web server or AWS S3). 
+      
+      <a href="/applications/v7/logs/rtld" target="_blank">Learn more about Real-Time Log Delivery.</a>
   - name: Log Fields
     description: Retrieve log fields associated with a Real-Time Log Delivery (RTLD) module.
   - name: AWS Regions
@@ -570,6 +576,18 @@ paths:
       - url: 'https://edgioapis.com/rtld/v1'
   /accesslogs/fields:
     $ref: paths/accesslogs_fields.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
+  /waf/profiles:
+    $ref: paths/waf_profiles.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
+  /waf/profiles/{id}:
+    $ref: paths/waf_profiles_{id}.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
+  /waf/fields:
+    $ref: paths/waf_fields.yaml
     servers:
       - url: 'https://edgioapis.com/rtld/v1'
   /aws-regions:

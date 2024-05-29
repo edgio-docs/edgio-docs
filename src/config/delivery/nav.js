@@ -458,14 +458,14 @@ const nav = {
               path: 'video/apis/lvp',
             },
             {
-              title: 'MMD',
+              title: 'MMD Live',
               path: 'video/apis/mmd',
             },
+            {
+              title: 'MMD Live to VoD',
+              path: 'video/apis/live_to_vod',
+            },
           ],
-        },
-        {
-          title: 'FAQs',
-          path: 'video/faqs',
         },
       ],
     },

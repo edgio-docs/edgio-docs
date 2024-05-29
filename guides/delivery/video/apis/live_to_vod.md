@@ -1,107 +1,112 @@
 ---
-title: MMD Live API Developers Reference
+title: Live to VOD Developers Reference
 ---
-This documentation is intended for programmers who are writing client or server applications that interact with MMD Live Recording Schedules and Slots.
 
-## API Overview  {/*overview*/}
-| Action | Specific Calls |
-| --- | --- |
-| Query | [Get information on all slots in an account](#get_all_slots)<br /><br />[Get information on a specific slot](#get_a_specific_slot)<br /><br />[Get the streaming status of a slot](#get_stream_status_of_a_slot)<br /><br />[Get overview information for an account's slots](#Get_overview_information_for_an_account's_slots)<br /><br />[Get information about a recording schedule](#get_a_recording_schedule)<br /><br />[Get information about all recording schedules](#get_all_recording_schedules) |
-| Create | [Create a slot](#Create_a_slot)<br /><br />[Create a recording schedule](#create_a_recording_schedule) |
-| Update | [Update an existing recording schedule](#Update_an_existing_recording_schedule) |
-| Delete | [Delete a slot](#delete_a_slot)<br /><br />[Delete a recording schedule](#delete_a_recording_schedule) |
+This documentation is intended for programmers who are writing client or server applications that interact with MMD Live Recording Schedules and slots.
 
-Resources about the above bullet points are described further in [Data Resources](#data-sources).
+Specifically, the API permits the following:
 
+-   Query - Retrieve a specific Recording Schedule or all Recording Schedules
+-   Create - Create a new Recording Schedule
+-   Update - Update a specific Recording Schedule
+-   Delete - Delete a specific Recording Schedule
+
+Resources about these bullet points are described further in [Data Resources](#data-resources).
 
 ## Data Resources  {/*data-resources*/}
-The MMD Live APIs use four Data Resource objects. The method definitions using the Data Resources are defined in [API Requests - Query](#query), [API Requests - Create and Update](#create-and-update), and [API Requests - Delete](#delete).
+The Live to VoD APIs use four Data Resource objects. The method definitions using the Data Resources are defined in [API Requests - Query](#query), [API Requests - Create and Update](#create-update), and [API Requests - Delete](#delete).
 
-### Recording Schedule  {/*reording-sechedule*/}
+### Recording Schedule {/*data-resources-recording-schedule*/}
 | Property Name | Required On Create? | Updatable? | Type | Description |
 | --- | --- | --- | --- | --- |
-| id  | No<br /><br />Automatically set | No  | String | A unique ID is assigned to the Recording Schedule. |
+| id  | No<br /><br />Automatically set | No  | String | A unique ID assigned to the Recording Schedule. |
 | name | Yes | No  | String | Recording Schedule name.<br /><br />There is no restriction on the number and type of characters. Duplicate schedule names are allowed.<br /><br />Required when updating a schedule. |
 | start | Yes | No  | ISO8601 formatted date string without timezone | Desired Recording Schedule start date and time.<br /><br />Required when updating a schedule. |
-| recurrenceType | Yes | Yes | String | Type of Recording Schedule. One of:<br /><br />-   `ONCE`<br />-   `DAILY`<br />-   `WEEKLY`<br />-   `MONTHLY` |
+| recurrenceType | Yes | Yes | String | Type of Recording Schedule. One of:<br />-   `ONCE`<br />-   `DAILY`<br />-   `WEEKLY`<br />-   `MONTHLY` |
 | slotId | Yes | No  | String | The ID of the slot to contain the Recording Schedule.<br /><br />Required when updating a schedule. |
-| allRenditions | No  | No  | boolean | Whether to record all bitrates of your video<br /><br />`true`: record all bitrates (default)<br /><br />`false`: don't record all bitrates<br /><br />Required when updating a schedule. |
-| duration | Yes | Yes | ISO8601 interval format string | Recording duration.<br /><br />Default: PT4H<br /><br />Required when updating a schedule. |
+| allRenditions | No  | No  | boolean | Whether to record all bitrates of your video.<br /><br />true: record all bitrates (default).<br /><br />`false`: don't record all bitrates.<br /><br />Required when updating a schedule. |
+| duration | Yes | Yes | ISO8601 interval format string | Recording duration.<br /><br />Default: `PT4H`<br /><br />Required when updating a schedule. |
 | segmentDuration | Yes | Yes | ISO8601 interval format string | Segment duration.<br /><br />Default: `PT4H`<br /><br />Required when updating a schedule. |
 | timezone | Yes | Yes | timezone locality string | Timezone and sub-timezone in which recording should occur. |
-| enabled | No  | No, if set to `false` | boolean | Determines whether the schedule is enabled for recording. |
-| recordingStatus | No<br /><br />Automatically set | No  | String | Possible values:<br /><br />-   `SCHEDULED`<br />-   `RECORDING`<br />-   `CANCELLING`<br />-   `FINISHED` |
-| callbackUrl | No  | Yes | String | URL of your choice to which to post the recording status. |
+| enabled | No  | No, if set to false | boolean | Determines whether or not the schedule is enabled for recording. |
+| recordingStatus | No<br /><br />Automatically set | No  | String | Possible values:<br />-   `SCHEDULED`<br />-   `RECORDING`<br />-   `CANCELLING`<br />-   `FINISHED` |
+| callbackUrl | No  | Yes | String | URL to which to post recording status. |
 
-### Slot Streaming Status  {/*slot-streaming-status*/}
-<Callout type="info">The MMD Live API does not support the creation or updating of slot streaming status.</Callout>
+### Slot Status {/*data-resources-slot-status*/}
+The Live to VoD API does not support the creation or updating of slot status.
 
 | Property Name | Required On Create? | Updatable? | Type | Description |
 | --- | --- | --- | --- | --- |
 | id  | n/a | n/a | String | Slot ID. Use this as the ID of the slot to contain the Recording Schedule. |
-| status | n/a | n/a | String | Slot streaming status. One of:<br /><br />`active`: slot is streaming<br /><br />`inactive`: slot is not streaming |
+| status | n/a | n/a | String | Slot status. One of:<br />-   `active`: slot is streaming<br />-   `inactive`: slot is not streaming |
 
-### Slot  {/*slot*/}
+### Slot  {/*data-resources-slot*/}
+The Live to VoD API does not support the creation or updating of slots.
 
-| Property Name | Required On Create? | Updatable? | Type | Description |  |
-|---|---|---|---|---|---|
-| id | n/a | n/a | String | The Slot ID is the unique identifier assigned to the slot upon slot creation. In this version of the API, the Slot ID is the same as the stream name used in encoders. |  |
-| type | yes | n/a | String | Type of slot. One of:<br />-`576`<br />-`720`<br />-`1080`<br />-`transmux` |  |
-| name | yes | n/a | String | Note: This name is NOT the stream name used by encoders. |  |
-| state | n/a | n/a | String | State of the slot. One of:<br />-`Pending`<br />-`Ready`<br />-`Failed` |  |
-| publishUrls | n/a | n/a | Object | Publish URLs associated with the slot. Each object contains these String properties:<br />-`primary`: primary publish URL<br />- `backup`: backup publish URL |  |
-| playbackInfo | n/a | n/a | Object | Playback URLs for the various output types. Each object contains these String properties:<br />-`dash`: playback URL for DASH output<br />-`hls`: playback URL for HLS output<br />-`hds`: playback URL for HDS output<br />-`rtmp`: List of playback URLs for RTMP output |
-| mediaVaultType | no | n/a | String | Type of MediaVault protection. One of:<br />-`NONE` (default)<br />-`COOKIE`<br />-`URL`<br />-`URL_WITH_SUB_MANIFESTS` |
-| mediaVaultSecretKey | no | n/a | String | MediaVault secret key known only to the customer and Edgio. <br /><br />Null if MediaVault is not configured for the slot |
-| region | yes | n/a | String | The region in which to publish. Possible values:<br />-`north-america`<br />-`europe`<br />-`asia-pacific`|
- | profiles| yes|n/a|An array of Profile objects | See [Profile](#profile). |
- | shortname | n/a | n/a | String |The account shortname for the slot.  |
-| streamName | n/a | n/a |  String | The stream name used in encoders. The `streamName` format must match related regex format. For example: `^[A-Za-z]``[A-Za-z0-9-]` |
- | primaryPop | no | n/a | String | The preferred POP for the primary ingest. Defaults to auto-selection based on region. |
- | backupPop | n/a | n/a |String | The preferred POP for the backup ingest. Defaults to auto-selection based on region. |
-| username | yes, if the password is specified | n/a | String | The user name for publishing to the slot. Default credentials will be those configured for the account. |
-| password | yes, if the username is specified | n/a | String | The password for publishing to the slot. Default credentials will be those configured for the account. |
-| drmType |no  |  n/a| String| Currently a non-functioning field|
-| offsetTimecodes |  no | n/a | Boolean | Determines whether the service should override published packet timecodes. Required if the encoder is not using synchronized absolute timecodes. Default is `true`. |
-| subtitlesEnabled | no | n/a | Boolean | Determines whether a subtitles reference is included in the HLS manifest. Default is `true`. |
-| useBackup | no | n/a | Boolean | Determines whether to allocate a backup ingest. Default is `false`. |
-| callbackUrl |   no | n/a | String | HTTP URL that will receive POST requests for stream events. |
-| outputFormats |    yes | n/a | Array of Strings | The output formats to enable for this slot. Can be any of:<br />-`hls` <br />-`dash`<br />-`hds`<br />-`mss`<br />-`rtmp` |
-| ipGeoMatch |  no | n/a | String| When creating a slot:<br />-Pass null if you do not want to use IP/Geo access.<br />-Otherwise, pass a comma-delimited list of 2-character country codes where playback is allowed or denied.<br /><br />Use "-" (without quotes) before a geocode to indicate denial.<br /><br />Examples:<br />-fr: allow France only<br />-fr,all: allow all countries except France<br />-If you use all, it must appear at the end of the list.<br /><br />Contact your Account Manager if you need assistance with IP geocodes.|
+| Property Name | Required On Create? | Updatable? | Type | Description |
+|---|---|---|---|---|
+| id | n/a | n/a | String | The slot ID is the unique identifier assigned to the slot upon slot creation. In this version of the API, the Slot ID is the same as the Stream name used in encoders.<br /><br />This value will remain a unique identifier of the slot in future API versions, but the stream name may be a different field. |
+| type | n/a | n/a | String | Type of the slot. One of:<br />`576`<br />`720`<br />`1080`<br />`transmux` |
+| name | n/a | n/a | String | The title given to the slot when it was created. This is NOT the stream name used by encoders. |
+| state | n/a | n/a | String | State of the slot. One of:<br />`Pending`<br />`Ready`<br />`Failed` |
+| publishUrls | n/a | n/a | Object | Publish URLs associated with the slot. Each object contains these String properties:<br />`primary`: primary publish URL<br />`backup`: backup publish URL |
+| playbackInfo | n/a | n/a | Object | Playback URLs for the various output types. <br /><br />Each object contains these String properties:<br />`dash`: playback URL for DASH output<br />`hls`: playback URL for HLS output<br />`hds`: playback URL for HDS output<br />`rtmp`: List of playback URLs for RTMP output<br />`mss`: List of playback URLs for MSS output<br />`rtsp`: List of playback URLs for RTSP output |
+| mediaVaultType | n/a | n/a | String | Type of MediaVault protection. One of:<br />`NONE`<br />`COOKIE`<br />`URL`<br />`URL_WITH_SUB_MANIFESTS` |
+| mediaVaultSecretKey | n/a | n/a | String | MediaVault secret key known only to the customer and Edgio.<br /><br />Null if MediaVault is not configured for the slot |
+| region | n/a | n/a | String | Region in which to publish Possible values:<br />`north-america`<br />`europe`<br />`asia-pacific` |
+| profiles | n/a | n/a | Array of profile objects | See [Profile](#data-resources-profile). |
 
-### Profile  {/*profile*/}
+### Profile {/*data-resources-profile*/}
 A Profile object specifies the audio and video rendition(s) configured for a slot.
 
+The Live to VoD API does not support the creation or updating of profiles.
+
 | Property Name | Required On Create? | Updatable? | Type | Description |
 | --- | --- | --- | --- | --- |
-| id  | yes, if slot type is not `transmux` | n/a | String | The ID of a predefined transcode profile. |
 | name | n/a | n/a | String | Name of profile. |
-| videoBitrate | yes, if the Slot type is `transmux` | n/a | Number | Profile's video bitrate in bits/second. |
-| audioBitrate | yes, if the Slot type is `transmux` | n/a | Number | Profile's audio bitrate in bits/second. |
-| videoWidth | yes, if the Slot type is `transmux` | n/a | Number | Profile's video width. |
-| videoHeight | yes, if the Slot type is `transmux` | n/a | Number | Profile's video height. |
-
-### Overview  {/*overview*/}
-An Overview object provides usage statistics for an MMD Live account.
-
-| Property Name | Required On Create? | Updatable? | Type | Description |
-| --- | --- | --- | --- | --- |
-| transmuxTotal | n/a | n/a | Integer | The total allowed number of transmux slots. |
-| transmuxAvailable | n/a | n/a | Integer | The number of available transmux slots. |
-| 576Total | n/a | n/a | Integer | The total allowed number of 576p slots. |
-| 576Available | n/a | n/a | Integer | The number of available 576p slots. |
-| 720Total | n/a | n/a | Integer | The total allowed number of 720p slots. |
-| 720Available | n/a | n/a | Integer | The number of available 720p slots. |
-| 1080Total | n/a | n/a | Integer | The total allowed number of 1080p slots. |
-| 1080Available | n/a | n/a | Integer | The number of available 1080p slots. |
+| videoBitrate | n/a | n/a | Number | Profile's video bitrate in bits/second. |
+| audioBitrate | n/a | n/a | Number | Profile's audio bitrate in bits/second. |
+| videoWidth | n/a | n/a | Number | Profile's video width. |
+| videoHeight | n/a | n/a | Number | Profile's video height. |
 
 ## API Requests - Query  {/*query*/}
-The following methods are available for requesting content information for slots, slot streaming status, and Recording Schedules.
+The following methods are available for requesting content information for Recording Schedules, slots, and slot status:
 
-### Slots {/*api-requests-slots*/}
+### Get a recording schedule {/*recording-schedules-get*/}
+**URL**: `https://apis.llnw.com/config-api/v1/live/
+recording/shortname/{account name}/
+schedules/{scheduleId}`
 
-#### Get all slots
-**URL**: 	`https://apis.llnw.com/config-api/v1/` <br />`live/shortname/{account name}/slots`
+**Formats**: `JSON`
+
+**HTTP Method**: `GET`
+
+**Requires Authentication**: Yes. See [Authentication - Signing Requests](#authentication).
+
+**Parameters**: No payload parameters required
+
+**Response**: The retrieved [Recording Schedule](#data-resources-recording-schedule).
+
+**Errors**: Invalid value, Missing signature, A schedule does not exist
+
+### Get all recording schedules {/*recording-schedules-get-all*/}
+**URL**: 	`https://apis.llnw.com/config-api/v1/live/
+recording/shortname/{account name}/schedules`
+
+**Formats**: `JSON`
+
+**HTTP Method**: `GET`
+
+**Requires Authentication**: Yes. See [Authentication - Signing Requests](#authentication).
+
+**Optional Query Parameter**: `slotId`: If specified, the system will only return a list of Recording Schedules that are configured for the Slot.
+
+**Response**: A list of the retrieved [Recording Schedules](#data-resources-recording-schedule).
+
+**Errors**: - Invalid value <br />-Missing signature
+
+### Get all slots
+**URL**: 	`https://apis.llnw.com/config-api/v1/live/shortname/{account name}/slots`
 
 **Formats**: `JSON`
 
@@ -111,28 +116,11 @@ The following methods are available for requesting content information for slots
 
 **Parameters**: None
 
-**Response**: A list of [Slots](#slot).
+**Response**: A list of [Slots](#data-resources-slot).
 
 **Errors**: Invalid value, Missing signature
 
-#### Get a specific slot
-**URL**: `https://apis.llnw.com/config-api/v1/
-live/shortname/{account name}/slots/
-{slot ID}`
-
-**Formats**: `JSON`
-
-**HTTP Method**: `GET`
-
-**Requires Authentication**: Yes. See [Authentication - Signing Requests](#authentication).
-
-**Parameters**: None
-
-**Response**: The slot's Streaming Status below.
-
-**Errors**: Invalid value, Missing signature
-
-#### Get the streaming status of a slot  {/*get-streaming-status*/}
+### Get the streaming status of a slot  {/*get-streaming-status*/}
 **URL**: `https://apis.llnw.com/config-api/
 v1/live/shortname/{account name}/
 slots/{slotId}/status`
@@ -149,159 +137,10 @@ slots/{slotId}/status`
 
 **Errors**: Invalid value, Missing signature, The slot does not exist
 
-#### Get overview information for an account's slots
-**URL**: `https://apis.llnw.com/config-api/
-v1/live/shortname/{account name}/overview`
-
-**Formats**: `JSON`
-
-**HTTP Method**: `GET`
-
-**Requires Authentication**: Yes. See [Authentication - Signing Requests](#authentication).
-
-**Parameters**: None
-
-**Response**: The account's slot [Overview](#overview)
-
-**Errors**: Invalid value, Missing signature
-
-### Recording Schedules {/*recording-schedules-get-overview*/}
-#### Get a recording schedule {/*recording-schedules-get*/}
-**URL**: `https://apis.llnw.com/config-api/v1/live/
-recording/shortname/{account name}/
-schedules/{scheduleId}`
-
-**Formats**: `JSON`
-
-**HTTP Method**: `GET`
-
-**Requires Authentication**: Yes. See [Authentication - Signing Requests](#authentication).
-
-**Parameters**: No payload parameters required
-
-**Response**: The retrieved [Recording Schedule](#recording-schedule).
-
-**Errors**: Invalid value, Missing signature, A schedule does not exist
-
-#### Get all recording schedules {/*recording-schedules-get-all*/}
-**URL**: 	`https://apis.llnw.com/config-api/v1/live/
-recording/shortname/{account name}/schedules`
-
-**Formats**: `JSON`
-
-**HTTP Method**: `GET`
-
-**Requires Authentication**: Yes. See [Authentication - Signing Requests](#authentication).
-
-**Optional Query Parameter**: `slotId`: If specified, the system will only return a list of Recording Schedules that are configured for the Slot
-
-**Response**: A list of the retrieved [Recording Schedules](#recording-schedule).
-
-**Errors**: - Invalid value <br />-Missing signature
-
-
-
-## API Requests - Create and Update  {/*create-and-update*/}
-### Slots {/*create-and-update-slots*/}
-The following method is available for creating a slot:
-
-#### Create a Slot   {/*create-slot*/}
-**URL**: `https://apis.llnw.com/config-api/v1/live/shortname/{account name}/slots`
-
-**Formats**: `JSON`
-
-**HTTP Method**: `POST`
-
-**Requires Authentication**: Yes. See [Authentication - Signing Requests](#authentication).
-
-**Parameters**:
-| Key | Value |
-|---|---|
-| backupPop | The preferred POP for the backup ingest. Defaults to auto-selection based on region. <br /><br />Optional <br /><br />String |
-| callbackUrl | HTTP URL that will receive POST requests for stream events. <br /><br />Optional <br /><br />String |
-| drmType | Currently a non-functioning field. |
-| ipGeoMatch | When creating a slot: <br />- Pass null if you do not want to use IP/Geo access. <br />- Otherwise, pass a comma-delimited list of 2-character country codes where playback is allowed or denied. <br /><br />Use - (without quotes) before a geocode to indicate denial. <br /><br />Examples: <br />- `fr:` allow France only<br />-  `-fr,all:` allow all countries except France If you use `all`, it must appear at the end of the list. <br /><br />Optional <br /><br />String<br /><br />Contact your Account Manager if you need assistance with IP Geocodes. |
-| mediaVaultSecretKey | MediaVault secret key known only to the customer and Edgio. <br /><br />Null if MediaVault is not configured for the slot <br /><br />Optional <br /><br />String |
-| mediaVaultType | Type of MediaVault protection. One of: <br />- `NONE` (default) <br />- `COOKIE` <br />- `URL` <br />- `URL_WITH_SUB_MANIFESTS` <br /><br />Optional<br /><br /> String |
-| name | Name of the Slot <br /><br />Required <br /><br />String |
-| offsetTimecodes | Whether the service should override published packet timecodes. Required if the encoder is not using synchronized absolute timecodes. Default is true. <br /><br />Optional <br /><br />Boolean |
-| outputFormats | The output formats to enable for this slot. Can be any of: <br />- `hls` <br />- `dash` <br />- `hds` <br />- `mss` <br />- `rtmp` <br /><br />Required <br /><br />Array of Strings |
-| password | The password for publishing to the slot. Default credentials will be those configured for the account. <br /><br />Required if a username is specified. <br /><br />String |
-| primaryPop | The preferred POP for the primary ingest. Defaults to auto-selection based on region. <br /><br />Optional <br /><br />String |
-| profiles | [Profile](#profile) objects associated with the slot. <br /><br />Required <br /><br />An array of Profile objects. Profiles for transcode slots are identified by profile ID, where each transcode profile type has a specific set of acceptable IDs. See [Transcode Slots](#transcode) for a list of types and allowed IDs. <br /><br />Profiles for transmux slots are identified by an object that defines video properties. See [Transmux Slots](#transmux) for an explanation of the object. |
-| region | The region in which to publish. Possible values: <br />- `north-america` <br />- `europe` <br />- `asia-pacific` <br /><br />Required <br /><br />String |
-| subtitlesEnabled | Determines whether a subtitles reference is included in the HLS manifest. Default is `true`. <br /><br />Optional <br /><br />Boolean |
-| type | Type of slot. One of: <br />- `576` (transcode slot) <br />- `720` (transcode slot) <br />- `1080` (transcode slot) <br />- `transmux` <br /><br />Required <br /><br />String |
-| useBackup | Whether to allocate a backup ingest. Default is `false`. <br /><br />Optional <br /><br />Boolean |
-| username | The user name for publishing to the slot. Default credentials will be those configured for the account. <br /><br />Required if a password is specified. <br /><br />String |
-
-**Example Usage**
-*Transcode Slot Example*
-
-The following payload will create a 576 transcode slot with all available profiles and HLS and MPEG-DASH output enabled.
-
-```
-{
-     "name": "my-slot",
-     "region": "north-america",
-     "type": "576",
-     "profiles": [
-         {"id": "9"},
-         {"id": "10"},
-         {"id": "8"},
-         {"id": "7"},
-         {"id": "6"},
-         {"id": "3"}
-    ],
-    "outputFormats": [
-        "hls",
-        "dash"
-    ]
- }
-  ```
-
-*Transmux Slot Example*
-
-The following payload creates the same output as the Transcode Slot Example, except only one output is produced.
-
-```
-{
-     "name": "my-slot2",
-     "region": "north-america",
-     "type": "transmux",
-     "profiles": [
-      {
-        "videoBitrate": 192000,
-        "audioBitrate": 4000000,
-        "videoWidth": 1920,
-        "videoHeight": 1080
-      }
-    ],
-    "outputFormats": [
-        "hls",
-        "dash"
-    ]
- }
- ```
-
-**Response**:
-The created slot along with the following additional fields:
-
-| Key | Value |
-|---|---|
-| id | The Slot ID is the unique identifier assigned to the slot upon slot creation. In this version of the API, the Slot ID is the same as the stream name used in encoders. <br /><br />String |
-| state | State of the slot. One of: <br />- `Pending` <br />- `Ready` <br />- `Failed` <br /><br />String |
-| publishUrls | Publish URLs associated with the slot. Each object contains these String properties:   <br /><br />- `primary`: primary publish URL <br />- `backup` backup publish URL <br /><br />Object |
-| playbackInfo | Playback URLs for the various output types. Each object contains these String properties:   <br />- `dash`:  playback URL for DASH output <br />- `hls`: playback URL for HLS output <br />- `hds`: playback URL for HDS output <br />- `rtmp`: List of playback URLs for RTMP output <br /><br />Object |
-| shortname | The account shortname for the slot. <br /><br />String |
-| streamName | The stream name used in encoders.<br /><br />The streamName format must match the related regex format. For example: `^[A-Za-z][A-Za-z0-9-]` <br /><br />String |
-
-**Errors**: Invalid value, Missing signature
-
-### Recording Schedules {/*create-and-update-schedules*/}
+## API Requests - Create and Update  {/*create-update*/}
 The following methods are available for creating and updating schedules:
 
-#### Create a recording schedule {/*create-a-recording-schedule*/}
+### Create a recording schedule {/*create-a-recording-schedule*/}
 
 **URL**: `https://apis.llnw.com/config-api/v1/live/
 recording/shortname/{account name}/schedules`
@@ -344,7 +183,7 @@ The following payload will create a schedule that will record all renditions eve
 }
 ```
 
-**Response**: The created [Recording Schedule](#recording-schedule) with the following additional fields:
+**Response**: The created [Recording Schedule](#data-resources-recording-schedule) with the following additional fields:
 | Key | Value |
 |---|---|
 | id | String UUID of the recording schedule |
@@ -352,7 +191,7 @@ The following payload will create a schedule that will record all renditions eve
 
 **Errors**: Invalid value, Missing signature
 
-#### Update an existing recording schedule {/*update-a-recording-schedule*/}
+### Update an existing recording schedule {/*update-a-recording-schedule*/}
 Changes to a recording schedule, while a recording schedule is recording, may not take effect until the recording's next occurrence.
 
 **URL**: `https://apis.llnw.com/config-api/
@@ -394,15 +233,18 @@ schedules/{scheduleId}`
 
 **Errors**: Invalid value, Missing signature
 
-
 ## API Requests - Delete  {/*delete*/}
-### Slots {/*delete-slots*/}
-The following method is available for deleting slots:
+A Recording Schedule can only be deleted if it is in the `FINISHED` state.
 
+A Recording Schedule will be in the `FINISHED` state if:
 
-### Delete a slot  {/*delete-a-slot*/}
+- Its recurrenceType is `ONCE`, and the recording has completed OR
+- Its enabled field is `false`
+
 **URL**: `https://apis.llnw.com/config-api/
-v1/live/shortname/{account name}/slots{slot ID}`
+v1/live/recording/shortname/
+{account name}/schedules
+{scheduleId}`
 
 **Formats**: `JSON`
 
@@ -416,33 +258,7 @@ v1/live/shortname/{account name}/slots{slot ID}`
 
 **Errors**: Invalid value, Missing signature
 
-
-### Schedules {/*delete-schedules*/}
-#### Delete a recording schedule {/*delete-recording-schedules*/}
-The following method is available for deleting schedules:
-
-A Recording Schedule can only be deleted if it is in the `FINISHED` state.
-
-A Recording Schedule will be in the `FINISHED` state if:
-
-- Its `recurrenceType` is `ONCE`, and the recording has completed OR
-- Its enabled field is `false`
-
-**URL**: `https://apis.llnw.com/config-api/v1/live/recording/shortname/{account name}/schedules{scheduleId}`
-
-**Formats**: `JSON`
-
-**HTTP Method**: `DELETE`
-
-**Requires Authentication**: Yes. See [Authentication - Signing Requests](#authentication).
-
-**Parameters**: No payload parameters required
-
-**Response**: The updated [Recording Schedule](#recording-schedule).
-
-**Errors**: Invalid value, Missing signature
-
-## Authentication - Signing Release  {/*authentication*/}
+## Authentication - Signing Requests  {/*authentication*/}
 The Live to VoD APIs use symmetric key cryptography and HMAC (Hashed Message Authentication Code) for message authentication and user identification. To secure all calls to the API, an HMAC digest signature is applied to every request by using the following authentication headers:
 
 `X-LLNW-Security-Principal` – Name of the user performing the request. Services lookup shared keys by the username to authenticate a message. Since shared keys are stored on a per-user basis, an attacker would have to know both the username and the shared key for that user to impersonate another user.
@@ -487,7 +303,7 @@ PUT a payload like the following to the URL in [Update an existing recording sch
 
 The recording will stop immediately and begin post-processing.
 
-## Live to VoD Callbacks  {/*live-to-vod-callbacks*/}
+## Callbacks  {/*callback*/}
 Live to VoD provides the ability to monitor the state of your recordings through callbacks. When you create a recording, you can optionally provide a URL to which Live to VoD sends POST requests for these recording stages:
 
 - Recording of a segment<sup>1</sup> has started

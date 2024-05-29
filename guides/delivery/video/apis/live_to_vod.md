@@ -73,9 +73,7 @@ The Live to VoD API does not support the creation or updating of profiles.
 The following methods are available for requesting content information for Recording Schedules, slots, and slot status:
 
 ### Get a recording schedule {/*recording-schedules-get*/}
-**URL**: `https://apis.llnw.com/config-api/v1/live/
-recording/shortname/{account name}/
-schedules/{scheduleId}`
+**URL**: `https://apis.llnw.com/config-api/v1/live/recording/shortname/{account name}/schedules/{scheduleId}`
 
 **Formats**: `JSON`
 
@@ -90,8 +88,7 @@ schedules/{scheduleId}`
 **Errors**: Invalid value, Missing signature, A schedule does not exist
 
 ### Get all recording schedules {/*recording-schedules-get-all*/}
-**URL**: 	`https://apis.llnw.com/config-api/v1/live/
-recording/shortname/{account name}/schedules`
+**URL**: 	`https://apis.llnw.com/config-api/v1/live/recording/shortname/{account name}/schedules`
 
 **Formats**: `JSON`
 
@@ -121,9 +118,7 @@ recording/shortname/{account name}/schedules`
 **Errors**: Invalid value, Missing signature
 
 ### Get the streaming status of a slot  {/*get-streaming-status*/}
-**URL**: `https://apis.llnw.com/config-api/
-v1/live/shortname/{account name}/
-slots/{slotId}/status`
+**URL**: `https://apis.llnw.com/config-api/v1/live/shortname/{account name}/slots/{slotId}/status`
 
 **Formats**: `JSON`
 
@@ -142,8 +137,7 @@ The following methods are available for creating and updating schedules:
 
 ### Create a recording schedule {/*create-a-recording-schedule*/}
 
-**URL**: `https://apis.llnw.com/config-api/v1/live/
-recording/shortname/{account name}/schedules`
+**URL**: `https://apis.llnw.com/config-api/v1/live/recording/shortname/{account name}/schedules`
 
 **Formats**: `JSON`
 
@@ -194,9 +188,7 @@ The following payload will create a schedule that will record all renditions eve
 ### Update an existing recording schedule {/*update-a-recording-schedule*/}
 Changes to a recording schedule, while a recording schedule is recording, may not take effect until the recording's next occurrence.
 
-**URL**: `https://apis.llnw.com/config-api/
-v1/live/recording/shortname/{account name}/
-schedules/{scheduleId}`
+**URL**: `https://apis.llnw.com/config-api/v1/live/recording/shortname/{account name}/schedules/{scheduleId}`
 
 **Formats**: `JSON`
 
@@ -241,10 +233,7 @@ A Recording Schedule will be in the `FINISHED` state if:
 - Its recurrenceType is `ONCE`, and the recording has completed OR
 - Its enabled field is `false`
 
-**URL**: `https://apis.llnw.com/config-api/
-v1/live/recording/shortname/
-{account name}/schedules
-{scheduleId}`
+**URL**: `https://apis.llnw.com/config-api/v1/live/recording/shortname/{account name}/schedules{scheduleId}`
 
 **Formats**: `JSON`
 

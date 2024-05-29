@@ -116,9 +116,7 @@ The following methods are available for requesting content information for slots
 **Errors**: Invalid value, Missing signature
 
 #### Get a specific slot
-**URL**: `https://apis.llnw.com/config-api/v1/
-live/shortname/{account name}/slots/
-{slot ID}`
+**URL**: `https://apis.llnw.com/config-api/v1/live/shortname/{account name}/slots/{slot ID}`
 
 **Formats**: `JSON`
 
@@ -150,8 +148,7 @@ slots/{slotId}/status`
 **Errors**: Invalid value, Missing signature, The slot does not exist
 
 #### Get overview information for an account's slots
-**URL**: `https://apis.llnw.com/config-api/
-v1/live/shortname/{account name}/overview`
+**URL**: `https://apis.llnw.com/config-api/v1/live/shortname/{account name}/overview`
 
 **Formats**: `JSON`
 
@@ -167,9 +164,7 @@ v1/live/shortname/{account name}/overview`
 
 ### Recording Schedules {/*recording-schedules-get-overview*/}
 #### Get a recording schedule {/*recording-schedules-get*/}
-**URL**: `https://apis.llnw.com/config-api/v1/live/
-recording/shortname/{account name}/
-schedules/{scheduleId}`
+**URL**: `https://apis.llnw.com/config-api/v1/live/recording/shortname/{account name}/schedules/{scheduleId}`
 
 **Formats**: `JSON`
 
@@ -184,8 +179,7 @@ schedules/{scheduleId}`
 **Errors**: Invalid value, Missing signature, A schedule does not exist
 
 #### Get all recording schedules {/*recording-schedules-get-all*/}
-**URL**: 	`https://apis.llnw.com/config-api/v1/live/
-recording/shortname/{account name}/schedules`
+**URL**: 	`https://apis.llnw.com/config-api/v1/live/recording/shortname/{account name}/schedules`
 
 **Formats**: `JSON`
 
@@ -303,8 +297,7 @@ The following methods are available for creating and updating schedules:
 
 #### Create a recording schedule {/*create-a-recording-schedule*/}
 
-**URL**: `https://apis.llnw.com/config-api/v1/live/
-recording/shortname/{account name}/schedules`
+**URL**: `https://apis.llnw.com/config-api/v1/live/recording/shortname/{account name}/schedules`
 
 **Formats**: `JSON`
 
@@ -355,9 +348,7 @@ The following payload will create a schedule that will record all renditions eve
 #### Update an existing recording schedule {/*update-a-recording-schedule*/}
 Changes to a recording schedule, while a recording schedule is recording, may not take effect until the recording's next occurrence.
 
-**URL**: `https://apis.llnw.com/config-api/
-v1/live/recording/shortname/{account name}/
-schedules/{scheduleId}`
+**URL**: `https://apis.llnw.com/config-api/v1/live/recording/shortname/{account name}/schedules/{scheduleId}`
 
 **Formats**: `JSON`
 
@@ -401,8 +392,7 @@ The following method is available for deleting slots:
 
 
 ### Delete a slot  {/*delete-a-slot*/}
-**URL**: `https://apis.llnw.com/config-api/
-v1/live/shortname/{account name}/slots{slot ID}`
+**URL**: `https://apis.llnw.com/config-api/v1/live/shortname/{account name}/slots{slot ID}`
 
 **Formats**: `JSON`
 

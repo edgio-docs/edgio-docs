@@ -8,7 +8,7 @@ The Metrics REST API allows you to generate reports for key datasets (e.g., orig
 
 1.  Identify the name of the dataset (e.g., `edge_errors` or `origin_usage_by_country`) for which report data will be generated.
 
-    Discover the available datasets through the [Get Available Datasets operation](https://docs.edg.io/rest_api/#tag/metrics/operation/datasets):
+    View a [list of the available datasets](#datasets) or discover them through the [Get Available Datasets operation](https://docs.edg.io/rest_api/#tag/metrics/operation/datasets):
 
     `GET https://edgioapis.com/metrics/v1/datasets`
 
@@ -478,3 +478,9 @@ Find out the number of requests and the amount of data, in bytes, served by each
     "time_granularity": "DAY"
 }
 ```
+
+## Available Datasets {/*datasets*/}
+
+The following datasets are described below:
+
+{{ datasets.md }}

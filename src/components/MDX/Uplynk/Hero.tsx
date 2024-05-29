@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import styled from 'styled-components';
 
 import Container, {StyledContainer} from '../../Layout/Container';

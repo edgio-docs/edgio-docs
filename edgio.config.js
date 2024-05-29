@@ -5,7 +5,6 @@ module.exports = {
   routes: 'src/edgio/routes.ts',
   next: {
     enforceTrailingSlash: false,
-    disableImageOptimizer: true,
   },
   environments: {
     production: {

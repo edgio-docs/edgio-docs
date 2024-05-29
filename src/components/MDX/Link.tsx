@@ -32,7 +32,7 @@ function Link({
       }
       return child;
     }
-  );
+  )[0];
 
   if (!href) {
     // eslint-disable-next-line jsx-a11y/anchor-has-content
@@ -70,7 +70,7 @@ function Link({
       );
     case 'anchor':
       return (
-        <NextLink href={href}>
+        <NextLink href={href} legacyBehavior>
           <a className={cn(classes, className)} {...props}>
             {modifiedChildren}
           </a>
@@ -79,7 +79,7 @@ function Link({
   }
 
   return useNextLink ? (
-    <NextLink href={href}>
+    <NextLink href={href} legacyBehavior>
       {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
       <a className={cn(classes, className)} {...props}>
         {modifiedChildren}

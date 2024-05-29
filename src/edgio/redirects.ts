@@ -65,14 +65,8 @@ export default <Array<Redirect>>[
     '/applications/third_party_cdns',
     '/applications/performance/third_party_cdns',
   ],
-  [
-    '/applications/traffic_splitting',
-    '/applications/v7/experimentation',
-  ],
-  [
-    '/applications/split_testing',
-    '/applications/v7/experimentation',
-  ],
+  ['/applications/traffic_splitting', '/applications/v7/experimentation'],
+  ['/applications/split_testing', '/applications/v7/experimentation'],
   [
     '/applications/layer0_migration',
     '/applications/reference/layer0_migration',
@@ -89,7 +83,10 @@ export default <Array<Redirect>>[
     '/applications/security/managed_bot_defense',
   ],
   ['/applications/connectors', '/applications/sites_frameworks/connectors'],
-  ['/applications/isg', '/applications/v7/sites_frameworks/getting_started/nuxt#incremental-static-rendering-isg'],
+  [
+    '/applications/isg',
+    '/applications/v7/sites_frameworks/getting_started/nuxt#incremental-static-rendering-isg',
+  ],
   [
     '/applications/angular',
     '/applications/sites_frameworks/getting_started/angular',
@@ -106,7 +103,10 @@ export default <Array<Redirect>>[
     '/applications/docusaurus',
     '/applications/v6/sites_frameworks/getting_started/docusaurus',
   ],
-  ['/applications/dojo', '/applications/v6/sites_frameworks/getting_started/dojo'],
+  [
+    '/applications/dojo',
+    '/applications/v6/sites_frameworks/getting_started/dojo',
+  ],
   [
     '/applications/eleventy',
     '/applications/v6/sites_frameworks/getting_started/eleventy',
@@ -135,8 +135,14 @@ export default <Array<Redirect>>[
     '/applications/gridsome',
     '/applications/v6/sites_frameworks/getting_started/gridsome',
   ],
-  ['/applications/hexo', '/applications/sites_frameworks/legacy_connectors/hexo'],
-  ['/applications/hugo', '/applications/v6/sites_frameworks/getting_started/hugo'],
+  [
+    '/applications/hexo',
+    '/applications/sites_frameworks/legacy_connectors/hexo',
+  ],
+  [
+    '/applications/hugo',
+    '/applications/v6/sites_frameworks/getting_started/hugo',
+  ],
   [
     '/applications/ionic_react',
     '/applications/v6/sites_frameworks/getting_started/ionic_react',
@@ -149,7 +155,10 @@ export default <Array<Redirect>>[
     '/applications/jekyll',
     '/applications/v6/sites_frameworks/getting_started/jekyll',
   ],
-  ['/applications/lit', '/applications/v6/sites_frameworks/getting_started/lit'],
+  [
+    '/applications/lit',
+    '/applications/v6/sites_frameworks/getting_started/lit',
+  ],
   [
     '/applications/mkdocs',
     '/applications/sites_frameworks/legacy_connectors/mkdocs',
@@ -237,13 +246,19 @@ export default <Array<Redirect>>[
     '/applications/vitepress',
     '/applications/v6/sites_frameworks/getting_started/vitepress',
   ],
-  ['/applications/vsf', '/applications/v6/sites_frameworks/getting_started/vsf'],
+  [
+    '/applications/vsf',
+    '/applications/v6/sites_frameworks/getting_started/vsf',
+  ],
   ['/applications/vue', '/applications/sites_frameworks/getting_started/vue'],
   [
     '/applications/vuepress',
     '/applications/v6/sites_frameworks/getting_started/vuepress',
   ],
-  ['/applications/zola', '/applications/v6/sites_frameworks/getting_started/zola'],
+  [
+    '/applications/zola',
+    '/applications/v6/sites_frameworks/getting_started/zola',
+  ],
   [
     '/applications/cookbook',
     '/applications/performance/cdn_as_code/common_routing_patterns',
@@ -299,7 +314,7 @@ export default <Array<Redirect>>[
   // v7
   [
     '/applications/v7/performance/purging',
-    '/applications/v7/performance/caching/purging'
+    '/applications/v7/performance/caching/purging',
   ],
   [
     '/applications/v7/performance/observability/core_web_vitals',

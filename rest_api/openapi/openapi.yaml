@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Edgio REST API
-  version: 0.1.0
+  version: 0.1.1
   x-logo:
     url: 'https://docs.edg.io/_next/static/media/edgio-dark.ea0d686f.webp'
     backgroundColor: '#FFFFFF'
@@ -14,7 +14,7 @@ tags:
     x-displayName: TLS Certificates
     description: |
     
-      Retrieve TLS certificates or upload your own TLS certificate to a specific environment. 
+      Upload your own TLS certificate, retrieve existing TLS certificates, or request TLS certificate generation for a specific environment. 
       
       <a href="/applications/v7/security/tls_certificates" target="_blank">Learn more about hosting TLS certificates on our network.</a>
   - name: deployments
@@ -196,6 +196,12 @@ paths:
       - configScope: [app.config]
   /config/v0.1/tls-certs:
     $ref: paths/config_v0.1_tls-certs.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+    security:
+      - configScope: [app.config]
+  /config/v0.1/tls-certs/generate:
+    $ref: paths/config_v0.1_tls-certs_generate.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:

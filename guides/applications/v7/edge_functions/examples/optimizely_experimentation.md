@@ -20,7 +20,7 @@ The above example demonstrates using an Optimizely experiment to determine the t
 
 To get started, you'll need an Optimizely account and an existing experiment that you want to integrate with your {{ PRODUCT }} application. If you don't have an Optimizely account, you can [sign up for a free trial](https://www.optimizely.com/platform/).
 
-If you don't already have an existing {{ PRODUCT }} application, you can create one using the {{ CLI_NAME }} CLI:
+If you don't already have an existing {{ PRODUCT }} application, you can create one using the {{ PRODUCT }} CLI:
 
 ```bash
 {{ FULL_CLI_NAME }} init {{ INIT_ARG_EDGIO_VERSION }}
@@ -31,6 +31,13 @@ This will create a new {{ PRODUCT }} application with the necessary files and co
 Next, create the following directories which will be used to store the edge functions and other necessary files:
 
 ```bash
+. (project root)
+├── edge-functions
+├── lib
+│   ├── optimizely
+│   └── polyfills
+
+# Create the directories
 mkdir -p edge-functions lib/optimizely lib/polyfills
 ```
 
@@ -38,17 +45,23 @@ mkdir -p edge-functions lib/optimizely lib/polyfills
 
 To integrate Optimizely with your {{ PRODUCT }} application, you'll need to install the Optimizely SDK and some additional polyfills Optimizely depends on. You can do this by adding the following dependencies to your project:
 
+<PackageCommand>
+
 ```bash
 npm install @optimizely/optimizely-sdk crypto-js polyfill-crypto.getrandomvalues uuid
 ---
 yarn add @optimizely/optimizely-sdk crypto-js polyfill-crypto.getrandomvalues uuid
 ```
 
+</PackageCommand>
+
 ## Define Required Polyfills {/* define-required-polyfills */}
 
-The Optimizely SDK relies on the `uuid` (has a dependency on `crypto`) and other timing functions not available in the Edge Function runtime. To ensure the SDK works correctly, you'll need to create the following polyfills:
+The Optimizely SDK relies on the `uuid` (has a dependency on `crypto`) and other timing functions not available in the Edge Function runtime. To ensure the SDK works correctly, you'll need to create the following polyfills. These will be used later in the [edge function](#create-an-edge-function) to ensure the SDK functions correctly.
 
 ### crypto Polyfill {/* crypto-polyfill */}
+
+Optimizely requires `uuid` which has a dependency on `crypto`. The following polyfill provides the necessary functions for the SDK to work correctly.
 
 ```js filename="./lib/polyfills/crypto.js"
 import CryptoJS from 'crypto-js';
@@ -61,6 +74,8 @@ global.crypto = {
 ```
 
 ### Timer Polyfill {/* timer-polyfill */}
+
+Various dependencies reference standard JavaScript timing functions that are not available in the Edge Function runtime. The following polyfill provides the necessary functions for the SDK to work correctly.
 
 ```js filename="./lib/polyfills/timer.js"
 let timers = new Map();
@@ -136,13 +151,13 @@ let nextTimerId = 1;
 })(global);
 ```
 
-## Create an Optimizely Datafile {/* create-an-optimizely-datafile */}
+## Obtain the Optimizely Datafile {/* obtain-the-optimizely-datafile */}
 
 The Optimizely SDK requires a datafile that contains the configuration for your experiments. We recommend that you export the datafile from the Optimizely dashboard and save it as a JSON file in your project's `lib/optimizely` directory.
 
 ![Export Datafile](/images/v7/edge-functions/optimizely-dashboard.png)
 
-## Create an Edge Function {/* create-an-edge-function */}
+## Create the Edge Function {/* create-the-edge-function */}
 
 Next, you'll need to create an edge function that intercepts incoming requests and modifies the response based on the Optimizely experiment configuration. The edge function will check for an Optimizely experiment cookie in the request and use the Optimizely SDK to determine the appropriate variation to serve.
 
@@ -231,6 +246,24 @@ export async function handleHttpRequest(request, context) {
 
 See our [Optimizely example repo](https://github.com/edgio-docs/edgio-v7-optimizely-edge-example) for a complete implementation of the edge function.
 
+## Routing {/* routing */}
+
+With the edge function created, you'll need to define a route that maps incoming requests to the edge function. You can do this by updating the `{{ROUTES_FILE}}` file in your project's root directory:
+
+```js filename="routes.js"
+// This file was automatically added by {{ CLI_NAME }} init.
+// You should commit this file to source control.
+
+const {Router} = require('{{ PACKAGE_NAME }}/core/router');
+
+export default new Router().get('/optimizely-experiment', {
+  edge_function: './edge-functions/optimizely-experiment.js',
+});
+// Additional routes...
+```
+
+With this configuration, any incoming requests to `/optimizely-experiment` will be processed by the `optimizely-experiment.js` edge function. Here you may add other features such as [cache rules](/applications/performance/caching).
+
 ## Running Locally {/* running-locally */}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
@@ -238,6 +271,8 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 ```bash
 {{ FULL_CLI_NAME }} dev
 ```
+
+Once the development server is running, you can access your app at `http://localhost:3000`. Test the Optimizely experiment by navigating to the `/optimizely-experiment` route.
 
 ## Deploying {/* deploying */}
 

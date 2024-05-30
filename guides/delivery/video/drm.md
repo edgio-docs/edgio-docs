@@ -191,7 +191,7 @@ BjWHWn6OY1RaxqSzgd2QJ1pBMTY6Fj5WX7JPEuDRAOKGcAaq7/f6HYNm3273zwa7
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 
-    - Send the PGP protected archive to fps.certificates@keyos.com with the following email subject line: "LL-<your_MMD_OD_DRM_account_name> FairPlay Certificates"
+    - Send the PGP protected archive to fps.certificates@keyos.com with the following email subject line: `"LL-<your_MMD_OD_DRM_account_name> FairPlay Certificates"`
 
 At this point, you've completed the Apple FairPlay registration process.
 

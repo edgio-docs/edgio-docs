@@ -1,6 +1,3 @@
-required:
-  - organization_id
-  - user_email
 type: object
 properties:
   user_email:
@@ -10,8 +7,51 @@ properties:
   role:
     type: string
     enum:
-      - read_only
+      - viewer
       - purger
-      - member
+      - security_auditor
+      - security_manager
+      - editor
+      - maintainer
       - admin
-      - super_admin
+  property_roles:
+    type: array
+    items:
+      type: object
+      properties:
+        role:
+          type: string
+          description: User property role
+          enum:
+            - viewer
+            - purger
+            - editor
+            - maintainer
+        property_id:
+          type: string
+          description: Property ID (uuid)
+      required:
+        - role
+        - property_id
+  environment_roles:
+    type: array
+    items:
+      type: object
+      properties:
+        role:
+          type: string
+          description: User environment role
+          enum:
+            - viewer
+            - purger
+            - editor
+            - maintainer
+        environment_id:
+          type: string
+          description: Environment ID (uuid)
+      required:
+        - role
+        - environment_id
+required:
+  - user_email
+  - organization_id

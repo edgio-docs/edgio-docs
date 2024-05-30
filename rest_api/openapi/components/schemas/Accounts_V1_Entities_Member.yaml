@@ -1,7 +1,3 @@
-required:
-  - '@id'
-  - '@type'
-  - id
 type: object
 properties:
   '@type':
@@ -12,7 +8,6 @@ properties:
     description: The resource's relative path.
   '@links':
     type: object
-    properties: {}
     description: Links to related resources.
   id:
     type: string
@@ -21,13 +16,27 @@ properties:
     description: The user's role.
   created_at:
     type: string
-    description: The user's creation date and time (UTC).
     format: date-time
+    description: The user's creation date and time (UTC).
   updated_at:
     type: string
-    description: The user's last modification date and time (UTC).
     format: date-time
+    description: The user's last modification date and time (UTC).
   user_email:
     type: string
     description: The user's email.
+  environment_roles:
+    type: array
+    items:
+      $ref: ./Accounts_V1_Entities_EnvironmentRole.yaml
+    description: List of environment roles.
+  property_roles:
+    type: array
+    items:
+      $ref: ./Accounts_V1_Entities_PropertyRole.yaml
+    description: List of property roles.
+required:
+  - '@type'
+  - '@id'
+  - id
 description: Accounts_V1_Entities_Member model

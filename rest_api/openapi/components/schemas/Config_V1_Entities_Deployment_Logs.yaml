@@ -1,6 +1,3 @@
-required:
-  - '@id'
-  - '@type'
 type: object
 properties:
   '@type':
@@ -11,11 +8,13 @@ properties:
     description: The resource's relative path.
   '@links':
     type: object
-    properties: {}
     description: Links to related resources.
   logs:
     type: array
-    description: The deployment's log messages.
     items:
       $ref: ./Config_V1_Entities_Deployment_LogLine.yaml
+    description: The deployment's log messages.
+required:
+  - '@type'
+  - '@id'
 description: Config_V1_Entities_Deployment_Logs model

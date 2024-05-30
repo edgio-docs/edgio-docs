@@ -32,6 +32,8 @@ where
 - va=`<version>` is an optional hash algorithm version number
 - h=`<hash>` is a MD5 hash of the URL
 
+<Callout type="info">The EP option `allow_rate_limit` that MUST be configured on the rewrite to enable rate limiting and then the `rs` and `ri` parameters work as expected.</Callout>
+
 ### Cookie-Based  {/*cookie-based*/}
 - cf = A Cookie-based MediaVault parameter that defines the final expiration of an asset.
 - cd = A Cookie-based MediaVault time delta. Expirations for MediaVault cookies are incremented according to this delta for each request.

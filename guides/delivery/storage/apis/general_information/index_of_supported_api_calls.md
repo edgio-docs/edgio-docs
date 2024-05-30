@@ -91,5 +91,39 @@ Calls are available in the interface unless otherwise indicated.
 | Rename a directory | rename | [Rename a File or Directory](Working With Directories and Files Common.htm#Rename) |
 
 ### Files  {/*files*/}
+Calls are available in the JSON-RPC interface only.
+
+| To | Use this call | For instructions see |
+|---|---|---|
+| Change a file's last modified time | setMTime | [Change a File or Directory Last Modification Time](/delivery/storage/apis/api_calls/working_with_methods/#change-time) |
+| Copy a file | fetchFileHTTP | [Copy a File](/delivery/storage/apis/api_calls/working_with_files/#copy-a-file) |
+| Delete a file | deleteFile | [Delete a File](/delivery/storage/apis/api_calls/working_with_files/#delete-a-file) |
+| Generate a MediaVault URL | mediaVaultURL | [Generate a MediaVault URL](/delivery/storage/apis/api_calls/working_with_files/#mediavault) |
+| List files | listFile | [List Files](/delivery/storage/apis/api_calls/working_with_files/#list-file) |
+| List directories and files | listPath | [List Files and Directories](/delivery/storage/apis/api_calls/working_with_methods/#list) |
+| Obtain file metadata | stat | [Obtain File or Directory Metadata](/delivery/storage/apis/api_calls/working_with_methods/#metadata) |
+| Rename a file | rename | [Rename a File or Directory](/delivery/storage/apis/api_calls/working_with_methods/#rename) |
+| Set a file's content (MIME) type | setContentType | [Set a File's Content Type](/delivery/storage/apis/api_calls/working_with_files_json/#set-type) |
+
 ### File Upload - Non-Multipart  {/*nonmultipart-download*/}
+Calls are available in the HTTP interface only.
+
+| To | Use this call | For instructions see |
+|---|---|---|
+| Upload a file | /post/raw | [File Raw Post](/delivery/storage/apis/api_calls/uploading_files_nonmultipart/#file-raw-post) |
+| Web browser upload | /post/file | [Web Browser Upload](/delivery/storage/apis/api_calls/uploading_files_nonmultipart/#web-browser-upload) |
+
 ### File Upload - Multipart  {/*multipart-download*/}
+Calls are available in the JSON-RPC interface unless otherwise indicated.
+
+| To | Use this call | For instructions see |
+|---|---|---|
+| Create a mulltipart upload | createMultipart<br />POST to /multipart/create (HTTP interface) | [Begin a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#begin-multipart-upload)<br />[Begin a Multipart Upload (HTTP Interface)](/delivery/storage/apis/api_calls/working_with_multipart_json/#begin-multipart-upload) |
+| Create a multipart piece | POST to /multipart/piece (HTTP interface) | [Create a Multipart Piece](/delivery/storage/apis/api_calls/working_with_multipart_json/#create-multipart-piece) |
+| Get mapping of multipart status descriptions to integer codes | getMultipartStatusMap | [Get String Equivalents of Multipart Status Codes](/delivery/storage/apis/api_calls/working_with_multipart_json/#get-equivalent) |
+| Get a list of pieces in a mulltipart upload | listMultipartPiece | [List Pieces in a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#list-pieces) |
+| Get a list of mulltipart uploads started by your user | listMultipart | [List Your Multipart Uploads](/delivery/storage/apis/api_calls/working_with_multipart_json/#list-multipart) |
+| Get multipart upload status | getMulitpartStatus | [Get Status for a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#get-status) |
+| Complete a multipart upload | completeMultipart<br />POST to /multipart/complete (HTTP interface) | [Complete a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#complete)<br />[Complete a Multipart Upload (HTTP interface)](/delivery/storage/apis/api_calls/working_with_multipart_http/#complete-multipart-upload) |
+| Restart a multipart upload | restartMultipart | [Restart a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#restart) |
+| Abort a multipart upload | abortMultipart | [Abort a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#abort) |

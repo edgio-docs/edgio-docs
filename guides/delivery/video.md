@@ -1,7 +1,7 @@
 ---
 title: Video
 ---
-The **Limelight Video Platform (LVP)** helps customers manage all their video content. LVP lets customers upload media for publishing, add custom metadata, select thumbnails, trim video clips, add and manage closed caption files, create and schedule custom playlists, and insert advertising cue points. Customers can create custom encoding profiles that automatically convert media to multi-bitrate, multi-resolution formats including HLS, DASH, and MSS for playback on desktop browsers, Apple iOS, and Android devices. It also includes analytics that help Customers understand the consumption of their video Content.
+ <!--The **Limelight Video Platform (LVP)** helps customers manage all their video content. LVP lets customers upload media for publishing, add custom metadata, select thumbnails, trim video clips, add and manage closed caption files, create and schedule custom playlists, and insert advertising cue points. Customers can create custom encoding profiles that automatically convert media to multi-bitrate, multi-resolution formats including HLS, DASH, and MSS for playback on desktop browsers, Apple iOS, and Android devices. It also includes analytics that help Customers understand the consumption of their video Content. -->
 
 **MMD Live** provides on-the-fly packaging and delivery of live video content. When live content is requested for playback, MMD Live packages it in the appropriate streaming format and bitrate for the device requesting the content from a single video source and format.
 
@@ -14,8 +14,12 @@ It has easy-to-use workflow tools, automated conversion to any format, a built-i
 It helps you manage and personalize live and on-demand video to reach and convert audiences or maximize content revenue by delivering the right content, to the right device, at the right time.
 
 ## User Guides
-### API
-Live Stream Provisioning
+### APIs
+[Live Stream Provisioning](/delivery/video/apis/live_stream_provisioning)
+
+Live to VoD Developers Reference
+
+[MMD Live API Developers Reference](/delivery/video/apis/mmd)
 
 ### Multi-device Media Delivery (MMD) Streaming
 [Digital Rights Management Guide](/delivery/video/drm)
@@ -24,15 +28,9 @@ Live Stream Provisioning
 
 [MMD Live Streaming Guide](/delivery/video/mmd_live)
 
-MMD Live API Developers Reference
-
-### Other Streaming
-Live to VoD Developers Reference
-
 ### Live Push
-Live Push Guide
+[Live Push Guide](/delivery/video/live_push)
 
-### Limelight Video Platform (LVP)
+<!--### Limelight Video Platform (LVP)
 User Guide
-
-Content API Developers Reference
+Content API Developers Reference-->

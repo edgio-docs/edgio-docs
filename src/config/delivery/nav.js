@@ -451,7 +451,7 @@ const nav = {
           routes: [
             {
               title: 'Live Stream Provisioning',
-              path: 'video/apis/live_stream_provisioning',
+              path: 'https://support.limelight.com/public/openapi/live-stream-provisioning/index.html',
             },
             {
               title: 'LVP',
@@ -462,7 +462,7 @@ const nav = {
               path: 'video/apis/mmd',
             },
             {
-              title: 'MMD Live to VoD',
+              title: 'Live to VoD',
               path: 'video/apis/live_to_vod',
             },
           ],

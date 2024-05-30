@@ -6,10 +6,10 @@ This documentation is intended for programmers who are writing client or server 
 ## API Overview  {/*overview*/}
 | Action | Specific Calls |
 | --- | --- |
-| Query | [Get information on all slots in an account](#get_all_slots)<br /><br />[Get information on a specific slot](#get_a_specific_slot)<br /><br />[Get the streaming status of a slot](#get_stream_status_of_a_slot)<br /><br />[Get overview information for an account's slots](#Get_overview_information_for_an_account's_slots)<br /><br />[Get information about a recording schedule](#get_a_recording_schedule)<br /><br />[Get information about all recording schedules](#get_all_recording_schedules) |
-| Create | [Create a slot](#Create_a_slot)<br /><br />[Create a recording schedule](#create_a_recording_schedule) |
+| Query | [Get information on all slots in an account](#get-all-slots)<br />[Get information on a specific slot](#get_a_specific_slot)<br />[Get the streaming status of a slot](#get_stream_status_of_a_slot)<br />[Get overview information for an account's slots](#Get_overview_information_for_an_account's_slots)<br />[Get information about a recording schedule](#get_a_recording_schedule)<br />[Get information about all recording schedules](#get_all_recording_schedules) |
+| Create | [Create a slot](#Create_a_slot)<br />[Create a recording schedule](#create_a_recording_schedule) |
 | Update | [Update an existing recording schedule](#Update_an_existing_recording_schedule) |
-| Delete | [Delete a slot](#delete_a_slot)<br /><br />[Delete a recording schedule](#delete_a_recording_schedule) |
+| Delete | [Delete a slot](#delete_a_slot)<br />[Delete a recording schedule](#delete_a_recording_schedule) |
 
 Resources about the above bullet points are described further in [Data Resources](#data-sources).
 
@@ -100,7 +100,7 @@ The following methods are available for requesting content information for slots
 
 ### Slots {/*api-requests-slots*/}
 
-#### Get all slots
+#### Get all slots {/*get-all-slots*/}
 **URL**: 	`https://apis.llnw.com/config-api/v1/` <br />`live/shortname/{account name}/slots`
 
 **Formats**: `JSON`

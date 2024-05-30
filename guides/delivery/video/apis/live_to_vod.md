@@ -214,14 +214,14 @@ Changes to a recording schedule, while a recording schedule is recording, may no
 | start | Start time in the specified timezone.<br /><br />ISO8061 formatted date and time string without timezone.<br /><br />Example: `2018-10-01T12:00:00`<br /><br />Required |
 | duration | Duration of the recording.<br /><br />ISO8601 interval format string.<br /><br />Example: `PT4H`<br /><br />Required |
 | segmentDuration | Segment Duration of the recording. Use this value to break up recordings into smaller files.<br /><br />String<br /><br />Maximum value: 4 hours (`PT4H`)<br /><br />Example: `PT4H`<br /><br />Required |
-| slotId | The ID of the MMD Live Slot to record.<br />String<br />Required |
+| slotId | The ID of the MMD Live Slot to record.<br />String<br /><br />Required |
 | recurrenceType | Type of Recording Schedule to create.<br /><br />One of:<br />- `ONCE`<br />- `DAILY`<br />- `WEEKLY`<br />- `MONTHLY`<br /><br />String<br /><br />Required |
 | allRenditions | Determines whether to record all renditions of a slot.<br /><br />Boolean<br /><br />If false, the system will only record the highest bitrate rendition of the slot.<br /><br />Required |
 | enabled | Determines whether the Recording Schedule is enabled.<br /><br />Required |
 | callbackUrl | URL the system will make POST requests to at various points in the recording lifecycle.<br /><br />Must be a valid http or https URL<br /><br />String<br /><br />Optional |
 | timezone | Timezone locality string. The timezone that the system will record is based on the start parameter.<br /><br />Example: `America/New_York`<br /><br />String<br /><br />Required |
 
-**Response**: The updated [Recording Schedule](#recording-schedule).
+**Response**: The updated [Recording Schedule](#data-resources-recording-schedule).
 
 **Errors**: Invalid value, Missing signature
 

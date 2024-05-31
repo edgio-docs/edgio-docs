@@ -150,6 +150,61 @@ The `logs` array contains an object for each log entry associated with the curre
 
     </Callout>
 
+-   **ef_count (*Integer*):** Edge Functions invocations (count). (Category: Edge Functions) The number of Edge Functions executed to serve this request.
+-   **ef_customer_metric_0 (*Integer*):** Edge Function Customer Metric 0. (Category: Edge Functions) Custom time metric #0 defined within your code through the [context.metrics function](/applications/edge_functions#metrics-functions). If this metric is defined through `startTimer` and `stopTimer`, then this value is reported in nanoseconds.
+
+    **Default Value:** `0`
+
+-   **ef_customer_metric_1 (*Integer*):** Edge Function Customer Metric 1. (Category: Edge Functions) Custom time metric #1 defined within your code through the [context.metrics function](/applications/edge_functions#metrics-functions). If this metric is defined through `startTimer` and `stopTimer`, then this value is reported in nanoseconds.
+
+    **Default Value:** `0`
+
+-   **ef_customer_metric_2 (*Integer*):** Edge Function Customer Metric 2. (Category: Edge Functions) Custom time metric #2 defined within your code through the [context.metrics function](/applications/edge_functions#metrics-functions). If this metric is defined through `startTimer` and `stopTimer`, then this value is reported in nanoseconds.
+
+    **Default Value:** `0`
+
+-   **ef_customer_metric_3 (*Integer*):** Edge Function Customer Metric 3. (Category: Edge Functions) Custom time metric #3 defined within your code through the [context.metrics function](/applications/edge_functions#metrics-functions). If this metric is defined through `startTimer` and `stopTimer`, then this value is reported in nanoseconds.
+
+    **Default Value:** `0`
+
+-   **ef_customer_metric_4 (*Integer*):** Edge Function Customer Metric 4. (Category: Edge Functions) Custom time metric #4 defined within your code through the [context.metrics function](/applications/edge_functions#metrics-functions). If this metric is defined through `startTimer` and `stopTimer`, then this value is reported in nanoseconds.
+
+    **Default Value:** `0`
+
+-   **ef_customer_metric_5 (*Integer*):** Edge Function Customer Metric 5. (Category: Edge Functions) Custom time metric #5 defined within your code through the [context.metrics function](/applications/edge_functions#metrics-functions). If this metric is defined through `startTimer` and `stopTimer`, then this value is reported in nanoseconds.
+
+    **Default Value:** `0`
+
+-   **ef_customer_metric_6 (*Integer*):** Edge Function Customer Metric 6. (Category: Edge Functions) Custom time metric #6 defined within your code through the [context.metrics function](/applications/edge_functions#metrics-functions). If this metric is defined through `startTimer` and `stopTimer`, then this value is reported in nanoseconds.
+
+    **Default Value:** `0`
+
+-   **ef_customer_metric_7 (*Integer*):** Edge Function Customer Metric 7. (Category: Edge Functions) Custom time metric #7 defined within your code through the [context.metrics function](/applications/edge_functions#metrics-functions). If this metric is defined through `startTimer` and `stopTimer`, then this value is reported in nanoseconds.
+
+    **Default Value:** `0`
+
+-   **ef_customer_metric_8 (*Integer*):** Edge Function Customer Metric 8. (Category: Edge Functions) Custom time metric #8 defined within your code through the [context.metrics function](/applications/edge_functions#metrics-functions). If this metric is defined through `startTimer` and `stopTimer`, then this value is reported in nanoseconds.
+
+    **Default Value:** `0`
+
+-   **ef_customer_metric_9 (*Integer*):** Edge Function Customer Metric 9. (Category: Edge Functions) Custom time metric #9 defined within your code through the [context.metrics function](/applications/edge_functions#metrics-functions). If this metric is defined through `startTimer` and `stopTimer`, then this value is reported in nanoseconds.
+
+    **Default Value:** `0`
+
+-   **ef_memory_reserved_bytes (*Integer*):** Edge Function Memory Reserved Bytes. (Category: Edge Functions) The amount of memory, in bytes, used by Edge Functions for this request.
+-   **ef_name (*String*):** Edge Function Name. (Category: Edge Functions) The name of the first edge function executed for this request.
+-   **ef_sync_time (*Decimal*):** Edge Function CPU time. (Category: Edge Functions) Indicates the CPU time, in seconds, for all edge functions executed for this request. 
+
+    **Syntax:** `<SECONDS>.<MICROSECONDS>`
+
+-   **ef_total_time (*Decimal*):** Edge Function wall time. (Category: Edge Functions) Indicates the wall time, in seconds, for all edge functions executed for this request. 
+
+    **Syntax:** `<SECONDS>.<MICROSECONDS>`
+
+-   **ef_wait_time (*Decimal*):** Edge Function wait time. (Category: Edge Functions) Indicates the time spent waiting for I/O (e.g., network requests), in seconds, for all edge functions executed for this request.  
+
+    **Syntax:** `<SECONDS>.<MICROSECONDS>`
+
 -   **file_size (*Integer*):** File Size. (Category: Response) Indicates the size, in bytes, of the requested asset (i.e., response body).
 -   **first_byte_served (*Integer*):** First Byte Served. (Category: Network) Indicates whether the first byte of the requested content was served to the client. Valid values are:
 

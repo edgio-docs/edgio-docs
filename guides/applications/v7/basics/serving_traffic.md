@@ -57,7 +57,7 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
     </Callout>
 
-## DNS
+## DNS {/*dns*/}
 
 Once you are ready to serve traffic through {{ PRODUCT }}, you will need to configure DNS for each hostname. DNS configuration consists of defining a CNAME record that points your hostname to our service.
 

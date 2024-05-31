@@ -243,7 +243,7 @@ A Recording Schedule will be in the `FINISHED` state if:
 
 **Parameters**: No payload parameters required
 
-**Response**: The deleted [Recording Schedule](#recording-schedule).
+**Response**: The deleted [Recording Schedule](#data-resources-recording-schedule).
 
 **Errors**: Invalid value, Missing signature
 

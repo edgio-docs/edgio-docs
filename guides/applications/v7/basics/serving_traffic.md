@@ -57,13 +57,13 @@ As clients request your site, {{ PRODUCT }} sends traffic through our network to
 
     </Callout>
 
-## DNS
+## DNS {/*dns*/}
 
 Once you are ready to serve traffic through {{ PRODUCT }}, you will need to configure DNS for each hostname. DNS configuration consists of defining a CNAME record that points your hostname to our service.
 
 <Callout type="info">
 
-  If your hostname is at the zone apex (e.g., example.com), then you will need a DNS service provider that supports defining a CNAME record at the zone apex. Learn how to set this up through Route.](#serving-traffic-at-the-zone-apex)
+  If your hostname is at the zone apex (e.g., example.com), then you will need a DNS service provider that supports defining a CNAME record at the zone apex. [Learn how to set this up through Route.](#serving-traffic-at-the-zone-apex)
 
 </Callout>
 

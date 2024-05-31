@@ -125,6 +125,7 @@ Select a value in the Sort by drop-down menu:
 <Callout type="info">According to your account, the number in parentheses beside the transcode and transmux slots indicates the number of remaining slots you can create of each type.</Callout>
 
 2. Fill out fields in the following sections on the page that appears:
+
     [Live Push details](#live-push-details)
 
     [Ingest details](#ingest-details)
@@ -153,7 +154,7 @@ Select a value in the Sort by drop-down menu:
 | Use Backup Ingest | Stream to the backup ingest server as well as the primary. | Creating a backup allows you to stream to two distinctive ingest locations. When streaming to both primary and backup, you have redundancy that helps protect from regional outages and certain maintenance events. |
 
 #### Configuration details  {/*configuration-details*/}
-![Configuration Details](/images/delivery/video/config_details.png)
+![Configuration Details](/images/delivery/video/conf_details.png)
 
 | Field Name | Description/Instructions | Notes |
 |---|---|---|
@@ -217,7 +218,7 @@ These sections explain how you can manage your slots.
 4. Click **Submit** to submit your edits.
 
 #### View Slot Details  {/*view-slot-details*/}
-1. Locate the slot and click the Details icon (or click the slot's row)
+1. Locate the slot and click the Details icon (or click the slot's row).
     ![Details Icon](/images/delivery/video/details_icon.png)
 
     You will see the Ingest, Configuration, and Encoder details. You will also see the Live Push Ingest URLs.

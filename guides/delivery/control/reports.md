@@ -19,6 +19,7 @@ Reports are generated using data from EdgeQuery, Edgio’s powerful data collect
 - [DNS Overview](/delivery/control/reports/traffic/dns_overview)
 - [LivePush Streaming](/delivery/control/reports/traffic/live_push)
 - [Live Stats](/delivery/control/reports/traffic/live_stats)
+- [Service Provider Traffic](/delivery/control/reports/traffic/service_provider_traffic)
 - [Traffic](/delivery/control/reports/traffic/traffic)
 - [Transit](/delivery/control/reports/traffic/transit)
 - [Unified Traffic](/delivery/control/reports/traffic/unified_traffic)

@@ -124,7 +124,7 @@ const nav = {
             },
             {
             title: 'CLI',
-            path: 'develop/cli',
+            path: 'performance/cdn_as_code/cli',
             },
           ],
         },

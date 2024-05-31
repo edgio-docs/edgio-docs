@@ -147,9 +147,4 @@ import { install } from '{{ PACKAGE_NAME }}/prefetch/window'
 
 // Install {{ PRODUCT }} Service Worker
 install()
-
-// import installDevtools from '{{ PACKAGE_NAME }}/devtools/install'
-
-// Enable {{ PRODUCT }} Devtools
-// installDevtools()
 ```

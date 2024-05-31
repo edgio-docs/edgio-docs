@@ -3,25 +3,26 @@ title: Observability
 ---
 
 Use Observability to monitor the performance of an application running on {{ PRODUCT }}. Key tools and methods for tracking performance are described below.
--   Use our Real User Monitoring (RUM) library ({{ PACKAGE_NAME }}/rum) to track [Core Web Vitals](/applications/performance/observability/real_user_monitoring) and identify areas for improvement.
--   If you are using our CDN-as-code approach to CDN configuration, then you may use our [DevTools](/applications/performance/observability/devtools) to monitor the impact of your caching and predictive prefetching configurations on your site in real time. This allows use to identify and remediate issues.
--   Analyze the performance for specific requests through the [{{ HEADER_PREFIX }}-t](/applications/performance/response#-t-response-header). This response header contains the time the request spent at each layer of the {{ PRODUCT }} stack.
--   Track code execution time through our `{{ PACKAGE_NAME }}/core/timing` module.
 
-## Tracking your Own Timings {/*tracking-your-own-timings*/}
+- Use our Real User Monitoring (RUM) library ({{ PACKAGE_NAME }}/rum) to track [Core Web Vitals](/applications/performance/observability/real_user_monitoring) and identify areas for improvement.
+- If you are using our CDN-as-code approach to CDN configuration, then you may use our [DevTools](/applications/performance/observability/developer_tools_chrome_extension) to monitor the impact of your caching and predictive prefetching configurations on your site in real time. This allows use to identify and remediate issues.
+- Analyze the performance for specific requests through the [{{ HEADER_PREFIX }}-t](/applications/performance/response#-t-response-header). This response header contains the time the request spent at each layer of the {{ PRODUCT }} stack.
+- Track code execution time through our `{{ PACKAGE_NAME }}/core/timing` module.
+
+## Tracking your Own Timings {/* tracking-your-own-timings */}
 
 You can use the `{{ PACKAGE_NAME }}/core/timing` module to track how long it takes parts of your code to execute. A common case is
 tracking how long it takes to fetch a result from an upstream API. For example:
 
 ```js
-import Timing from '{{ PACKAGE_NAME }}/core/timing'
+import Timing from '{{ PACKAGE_NAME }}/core/timing';
 
-const timing = new Timing('api').start()
+const timing = new Timing('api').start();
 
 try {
-  const result = await fetch(API_URL)
+  const result = await fetch(API_URL);
 } finally {
-  timing.end() // this will result in a `{{ HEADER_PREFIX }}-user-t: api=(millis)` response header
+  timing.end(); // this will result in a `{{ HEADER_PREFIX }}-user-t: api=(millis)` response header
 }
 ```
 

@@ -98,6 +98,28 @@ module.exports = with{{ PRODUCT }}({
 })
 ```
 
+## {{ PRODUCT_NAME }} Devtools {/* devtools */}
+
+To gain better insights into the caching mechanism, you can use the {{ PRODUCT }} Devtools to view caching metrics. Add the following code to your `_app.tsx` file:
+
+```js filename='_app.tsx'
+import {useDevtools} from '{{ PACKAGE_NAME }}/react';
+
+const MyApp = ({Component, pageProps}) => {
+  useDevtools();
+  // ... rest of your _app.tsx code
+};
+```
+
+<Warning>
+
+The `{{PACKAGE_NAME}}/devtools` package is deprecated and will be removed in
+the next major {{PRODUCT}} version. Please switch to using the [Google Chrome
+extension](/guides/performance/observability/developer_tools_chrome_extension)
+for improved debugging and performance insights.
+
+</Warning>
+
 ## Running Locally {/* running-locally */}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:

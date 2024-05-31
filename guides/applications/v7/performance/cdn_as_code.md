@@ -59,7 +59,7 @@ When you run the above command, the CLI will prompt you with the following quest
   ✔ What is the hostname or IP address of the origin site that you will host on Edgio? … my-custom-property.com
   ✔ Should we create a new directory for your Edgio app or use the current directory? › Create a new directory
   ✔ Which package manager would you like to use? › npm
-  ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch, @edgio/devtools... done.
+  ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch... done.
   > edgio.config.js not found, creating...
   > routes.js not found, creating...
   🔑 You are not logged in.
@@ -95,7 +95,7 @@ Once your deployment completes, you should see an output similar to the followin
   ✔ What is the hostname or IP address of the origin site that you will host on Edgio? … my-custom-property.com
   ✔ Should we create a new directory for your Edgio app or use the current directory? › Create a new directory
   ✔ Which package manager would you like to use? › npm
-  ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch, @edgio/devtools... done.
+  ✔ installing @edgio/core, @edgio/cli, @edgio/prefetch... done.
   > edgio.config.js not found, creating...
   > routes.js not found, creating...
   🔑 You are not logged in.
@@ -560,7 +560,7 @@ This example demonstrates a full-featured {{ PRODUCT }} configuration that showc
 - Transforming the response through [Cloud Functions](/applications/performance/serverless_compute)
 - [Removing response headers](/applications/performance/cdn_as_code/route_features#altering-the-response)
 - [Normalizing the cache key](/applications/performance/caching#customizing-the-cache-key)
-- Generating performance insights through [DevTools](/applications/performance/observability/devtools)
+- Generating performance insights through [DevTools](/applications/performance/observability/developer_tools_chrome_extension)
 - Tracking [Core Web Vitals](/applications/performance/observability/real_user_monitoring) through real user monitoring (RUM).
 
 <ExampleButtons

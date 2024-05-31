@@ -39,7 +39,7 @@ const items = (config: StringMap) => ({
       path: '/guides/deploy_to_layer0',
     },
   ],
-  default: [
+  '6': [
     {
       title: 'CLI',
       path: '/guides/develop/cli',
@@ -51,6 +51,20 @@ const items = (config: StringMap) => ({
     {
       title: 'EdgeJS Unit Testing',
       path: '/guides/performance/unit_testing_edgejs',
+    },
+  ],
+  default: [
+    {
+      title: 'CLI',
+      path: '/applications/performance/cdn_as_code/cli',
+    },
+    {
+      title: 'Edgio Developer Tools Chrome Extension',
+      path: '/applications/performance/observability/developer_tools_chrome_extension',
+    },
+    {
+      title: 'EdgeJS Unit Testing',
+      path: '/applications/performance/unit_testing_edgejs',
     },
   ],
 });

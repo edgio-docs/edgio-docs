@@ -182,7 +182,7 @@ export const sections: HomepageSectionGroup[] = [
         items: [
           {
             title: 'Authentication',
-            path: '/rest_api/authentication'
+            path: '/applications/rest_api/authentication',
           },
           {
             title: 'REST API Reference',

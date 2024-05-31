@@ -698,7 +698,7 @@ const nav = {
         },
         {
           title: 'CLI',
-          path: 'develop/cli#commands',
+          path: 'performance/cdn_as_code/cli#commands',
         },
         separator,
         {
@@ -708,7 +708,7 @@ const nav = {
         },
         {
           title: 'Legacy Purge API',
-          path: 'develop/rest_api/cache_purge',
+          path: 'rest_api/cache_purge',
         },
         separator,
         {

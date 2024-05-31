@@ -63,7 +63,7 @@ Once you are ready to serve traffic through {{ PRODUCT }}, you will need to conf
 
 <Callout type="info">
 
-  If your hostname is at the zone apex (e.g., example.com), then you will need a DNS service provider that supports defining a CNAME record at the zone apex. Learn how to set this up through Route.](#serving-traffic-at-the-zone-apex)
+  If your hostname is at the zone apex (e.g., example.com), then you will need a DNS service provider that supports defining a CNAME record at the zone apex. [Learn how to set this up through Route.](#serving-traffic-at-the-zone-apex)
 
 </Callout>
 

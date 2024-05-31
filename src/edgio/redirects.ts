@@ -341,5 +341,17 @@ export default <Array<Redirect>>[
     '/applications/v7/basics/hostnames_and_origins',
     '/applications/v7/basics/hostnames',
   ],
+  [
+    '/applications/v7/develop/cli',
+    '/applications/v7/performance/cdn_as_code/cli',
+  ],
+  [
+    '/applications/v7/develop/rest_api',
+    '/applications/v7/rest_api',
+  ],
+  [
+    '/applications/v7/develop/rest_api/(.*)',
+    '/applications/v7/rest_api/$1',
+  ],
   [/\/guides\/(.*)/, '/applications/$1'],
 ];

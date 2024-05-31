@@ -175,7 +175,7 @@ tags:
 
           For example, the `requests_edge_total` metric reports the total number of requests submitted to our network.
 
-      <a href="/applications/develop/rest_api/metrics_rest_api_usage" target="_blank">Learn how to use the Metrics API.</a>
+      <a href="/applications/rest_api/metrics_rest_api_usage" target="_blank">Learn how to use the Metrics API.</a>
 
   - name: RTLD Access Logs Profile
     description: |

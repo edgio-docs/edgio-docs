@@ -7,7 +7,7 @@ There is a large variety of encoders, software, and hardware available for use w
 
 -   Elemental Live ([Website](https://aws.amazon.com/elemental-live/))
 -   ffmpeg (For advanced or custom applications) ([Website](https://www.ffmpeg.org/))
--   Haivision Kulabyte ([Website](https://www.haivision.com/products/encoders-transcoders-internet-streaming/kulabyte))
+-   Haivision ([Website](https://www.haivision.com/products/video-encoder-solutions/))
 -   Larix Broadcaster iOS, Android, and Windows Phone Apps ([Website](https://wmspanel.com/larix_broadcaster))
 -   Nimble Streamer ([Website](https://blog.wmspanel.com/2016/07/publishing-rtmp-limelight-cdn.html))
 -   Osprey ([Website](https://www.ospreyvideo.com/talon))

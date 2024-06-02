@@ -3,12 +3,12 @@ title: Configuration UI
 ---
 You can access the Control portal to view and configure the slots you have purchased. You can view, create, copy, and more.
 
-## Main Configuration Page  {/**/}
+## Main Configuration Page  {/*main-config-page*/}
 After logging into the Control portal, click the "Configure" menu on the left navigation, then click "Live Streaming."
 
 The live slots configured for your specific shortname are listed. You can view summary information for the type of slots you have purchased at the top of this page. For the transcode and transmux slots, the display shows how many you have configured (used) and how many of each type you still have left to configure (available). If 0 slots are available, you cannot create any more of that specific slot type.
 
-### Buttons and Icons  {/**/}
+### Buttons and Icons  {/*buttone-and-icons*/}
 **\+ new** button: At the top right of the screen, allows you to configure one of your purchased live slots.
 
 Icons are on the right side of each slot row. Icons for non-Live Push slots and Live Push slots are different.
@@ -114,7 +114,7 @@ Configuring a slot is a simple process.
 | Callback URL | The URL to which you want to publish events. See the '[Event Callback API Developers Reference](../../../../../Video/Video - Platform/Guide/callback_api.htm)' for more details. | This field is not visible for Live Push Slots. |
 | --- | --- |
 | Region (the region the slot ingests into) | -   All: show all regions; the default value<br />-   North-America: show North America regions only.<br />-   Asia-Pacific: show Asia Pacific regions only.<br />-   Europe: show European regions only.<br /><br />The regions shown in the are limited to those regions where slots are set up. |
-| Type (the type of slot) | -   All: show all slot types, default<br /><br />-   Other options (click to limit the list to that type):<br />    -   Realtime Streaming<br />    -   Transcode 720p<br />    -   Transcode 576p<br />    -   Transcode 1080p<br />    -   Transmux<br /><br />-   Live Push<br /><br />The entries shown in the will be those types with slots that are set up. |
+| Type (the type of slot) | -   All: show all slot types, default<br /><br />-   Other options (click to limit the list to that type):<br />    -   Transcode 720p<br />    -   Transcode 576p<br />    -   Transcode 1080p<br />    -   Transmux<br /><br />-   Live Push<br /><br />The entries shown in the will be those types with slots that are set up. |
 
 ### Ingest Details  {/*ingest*/}
 ![Ingest Details](/images/delivery/video/ingest_details.png)

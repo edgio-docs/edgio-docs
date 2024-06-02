@@ -10,5 +10,5 @@ title: MMD Live
 | [Configuration UI](/delivery/video/mmd_live/configuration_ui) |You can access the Control portal to view and configure the slots you have purchased. You can view, create, copy, and more.  |
 | [Live to VoD](/delivery/video/mmd_live/live_to_vod) | Edgio MMD Live includes a capability that allows an event that is being streamed live to be automatically recorded to Edgio Origin Storage for later playback as a Video on Demand (VoD) asset. Customers can configure the recording of single live events, recurring live events, or continuous streaming for later VoD playback. |
 | [Encoder Settings](/delivery/video/mmd_live/encoder_settings) | A client-based live stream encoder must capture live footage and stream it to the ingest servers of MMD Live. All encoders must support H.264 CODEC and AAC Audio CODEC. |
-| [Secure Communications](/delivery/video/mmd_live/secure_communications) | MMD Live provides a variety of methods to secure the publication of your live streams. |
+| [Secure Communications](/delivery/video/mmd_live/secure_communication) | MMD Live provides a variety of methods to secure the publication of your live streams. |
 |[MMD Live API Developers Reference](/delivery/video/apis/mmd)|This documentation is intended for programmers who are writing client or server applications that interact with MMD Live Recording Schedules and Slots.|

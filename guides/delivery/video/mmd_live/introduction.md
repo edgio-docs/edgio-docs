@@ -36,7 +36,7 @@ Your video latency from ingest to the edge is customizable. The allowable config
 
 
 ## Slot Configuration  {/*slot-config*/}
-MMD Live is allocated by “slot.” A slot is a reserved capacity for you to ingest your live stream into. Slots are of type SD, HD, FHD, or transmux. See [Inputs and Output](/delivery/video/mmd_live/inputs_outputs) for more detail.
+MMD Live is allocated by “slot.” A slot is a reserved capacity for you to ingest your live stream into. Slots are of type SD, HD, FHD, or transmux. See [Inputs and Outputs](/delivery/video/mmd_live/inputs_outputs) for more detail.
 
 The MMD Live section of Control (referred to as the "Configuration UI" in this document) allows you to configure slots for transcoding and transmuxing. Available customer configurations include:
 

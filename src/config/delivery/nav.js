@@ -433,7 +433,7 @@ const nav = {
             },
             {
               title: 'LVP',
-              path: 'video/lvp',
+              path: 'https://support.limelight.com/public/en/Default.htm#Video/Video%20-%20Platform/Guide/Limelight%20Video%20Platform.htm?TocPath=Video%257CGuides%257C_____3',
             },
             {
               title: 'MMD Live',

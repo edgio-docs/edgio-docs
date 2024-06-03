@@ -176,6 +176,7 @@ except LoginError,e:
   ```
 
 ## Log in to a Sub-directory  {/*log-in-to-subdirectory*/}
+
 Method name: `authenticate`
 
 Limits operations to a specific sub-directory in a user namespace. The method is a convenience as the directory is treated as a root so you don’t have to include the part of the path above the directory when making calls such as `listDir`. Provides better error codes and allows the caller to optionally set a token expiry and to set the sub-directory per token.

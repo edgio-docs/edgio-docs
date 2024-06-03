@@ -21,7 +21,7 @@ MediaVault for HTTP chunked streaming may be implemented using either URL- or Co
 
 Enabling MediaVault causes the Integrated Player Embed Code to not function.
 
-For additional information about securing live streams, see the [MediaVault Selection](/delivery/video/mmd_live/configuration_ui/#mediavault) in the [Configuration UI](/delivery/video/mmd_live/configuration_ui) chapter or contact your Edgio Customer Representative.
+For additional information about securing live streams, see the [MediaVault Section](/delivery/video/mmd_live/configuration_ui/#mediavault) in the [Configuration UI](/delivery/video/mmd_live/configuration_ui) chapter or contact your Edgio Customer Representative.
 
 ### DRM Protection  {/*drm*/}
 On a per-slot basis, you can protect your live streams using state-of-the-art Digital Rights Management (DRM) protection. See DRM Protection for more detail.

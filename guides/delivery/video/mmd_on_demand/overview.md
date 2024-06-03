@@ -98,4 +98,4 @@ For more information about Edgio Control, see the [Control User Guide](/delivery
 ### Subtitle Support  {/*subtitles*/}
 MMD OD supports WebVTT subtitle output for HLS and MPEG-DASH formats. WebVTT subtitles are configured dynamically via query parameters or custom HTTP headers.
 
-For details, please see [Subtitles](/delivery/video/mmd_on_demand/multi_bitrate_without_input_manifest/#subtitles).
+For details, please see [Subtitles](/delivery/video/mmd_on_demand/multi_bitrate_output_without_input_manifest/#subtitles).

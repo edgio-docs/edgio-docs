@@ -5,7 +5,7 @@ MMD OD includes URL query parameters that you can use to control various aspects
 
 <Callout type="info">You can use up to 2048 characters for query parameters.</Callout>
 
-### Server and Client Manifests  {/*server-and-client-manifests*/}
+## Server and Client Manifests  {/*server-and-client-manifests*/}
 
 The server manifest, which the MMD OD web server module uses, holds information about the available streams, options, and so forth. The webserver module uses the information in the server manifest file to (1) create the various client manifests and playlists and (2) apply any selected options. The webserver module gives the client manifest to the player for playback.
 
@@ -54,12 +54,12 @@ The following variables may be used in the `filter` parameter.
 | channels | number<br /><br />The number of audio channels | `curl 'http://mymmdod.llnds.net/component/ism/`  <br />`m2.ism/manifest.m3u8?filter=`  <br />`(type=="audio"%26%26channels==2)%7C%7C(type=="video")'` |
 | DisplayHeight | number<br /><br />The display height (in pixels) | `curl 'http://mymmdod.llnds.net/component/ism/m2.ism/`  <br />`manifest?filter=(type==%22video%22%26%26DisplayHeight==360)'` |
 | DisplayWidth | number<br /><br />The display width (in pixels) | `curl 'http://mymmdod.llnds.net/component/ism/m2.ism/`  <br />`manifest.m3u8?filter=(type=="audio"%7C%7CDisplayWidth>500)'` |
-| FourCC | string<br /><br />The FourCC code of the track: AVC1, AACL,  <br />TTML, JPEG, dtse, ac-3, hvc1 | curl 'http://mymmdod.llnds.net/component/ism/m2.ism/  <br />manifest.m3u8?filter=(FourCC=="AVC1")'<br /><br />`curl 'http://mymmdod.llnds.net/component/ism/m2.ism/`  <br />`manifest.m3u8?filter=(FourCC=="AACL")'` |
+| FourCC | string<br /><br />The FourCC code of the track: AVC1, AACL,  <br />TTML, JPEG, dtse, ac-3, hvc1 | curl `http://mymmdod.llnds.net/component/ism/m2.ism/`  <br />manifest.m3u8?filter=(FourCC=="AVC1")'<br /><br />`curl 'http://mymmdod.llnds.net/component/ism/m2.ism/`  <br />`manifest.m3u8?filter=(FourCC=="AACL")'` |
 | Maxheight | number<br /><br />The coded height (in pixels) | `curl'http://mymmdod.llnds.net/component/ism/m2.ism/`  <br />`manifest.m3u8?  <br />filter=(type=="video"%26%26Maxheight==480)'` |
 | MaxWidth | number<br /><br />The coded width (in pixels) | `curl 'http://mymmdod.llnds.net/component/ism/m2.ism/`  <br />`manifest.m3u8?filter=(type=="video"%26%26MaxWidth==480)'` |
 | SamplingRate | number<br /><br />Audio sampling rate (in Hz) | `curl 'http://mymmdod.llnds.net/component/ism/m2.ism/`  <br />`manifest.m3u8?`  <br />`filter=(type=="audio"%26%26SamplingRate==44100)'` |
 | systemBitrate | number<br /><br />System bitrate in Kbps | `curl 'http://mymmdod.llnds.net/usp/smil/multi_b.smil/manifest.m3u8?filter=(systemBitrate<1024000%26%26type=="video")' `|
-| systemLanguage | string<br /><br />3-character language code | curl 'http://mymmdod.llnds.net/usp/smil/  <br />`multi_b.smil/manifest.m3u8?filter=(systemBitrate<1024000%26%26systemLanguge=="eng")'` |
+| systemLanguage | string<br /><br />3-character language code | curl `http://mymmdod.llnds.net/usp/smil/`  <br />`multi_b.smil/manifest.m3u8?filter=(systemBitrate<1024000%26%26systemLanguge=="eng")` |
 | TimeScale | number<br /><br />The timescale | `curl 'http://mymmdod.llnds.net/component/ism/m2.ism/`  <br />`manifest.m3u8?`  <br />`filter=(TimeScale!=1000)'` |
 | trackID | number<br /><br />Track ID | `curl "http://mymmdod.llnds.net/component/ism/m2.ism/`  <br />`manifest.m3u8?filter=(trackID==2)"` |
 | trackname | string<br /><br />Track name | `curl 'http://mymmdod.llnds.net/component/ism/m2.ism/`  <br />`manifest.m3u8?filter=(trackname=="audio")'` |

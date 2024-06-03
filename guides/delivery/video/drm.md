@@ -204,7 +204,7 @@ Though not required, Edgio highly recommends that you gather statistics on the a
 - The number of video plays executed by your video players to be used to reconcile with Edgio’s usage calculation.
 
 #### Generating Playback URLs  {/*generating-playback-urls*/}
-Playback URLs are given to video players to request the media from MMD OD. Generating playback URLs using the dynamic manifest generation method of URL construction is well documented in the [Multi-Bitrate Output without Input Manifest](/delivery/video/mmd_on_demand/multi_bitrate_without_input_manifest) section of the [MMD On-Demand Streaming Guide](/delivery/video/mmd_od). You can use all the features mentioned in that guide in addition to DRM.
+Playback URLs are given to video players to request the media from MMD OD. Generating playback URLs using the dynamic manifest generation method of URL construction is well documented in the [Multi-Bitrate Output without Input Manifest](/delivery/video/mmd_on_demand/multi_bitrate_output_without_input_manifest) section of the [MMD On-Demand Streaming Guide](/delivery/video/mmd_od). You can use all the features mentioned in that guide in addition to DRM.
 
 For illustration purposes, suppose your media source files are stored on your content origin in this folder structure:
 

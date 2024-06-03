@@ -1,5 +1,5 @@
 ---
-tilte: Content Protection
+title: Content Protection
 ---
 Protecting content from unauthorized use is a critical need for content distributors.
 

@@ -15,7 +15,7 @@ It helps you manage and personalize live and on-demand video to reach and conver
 
 ## User Guides
 ### APIs
-[Live Stream Provisioning](/delivery/video/apis/live_stream_provisioning)
+[Live Stream Provisioning](https://support.limelight.com/public/openapi/live-stream-provisioning/index.html)
 
 [Live to VoD Developers Reference](/delivery/video/apis/live_to_vod)
 

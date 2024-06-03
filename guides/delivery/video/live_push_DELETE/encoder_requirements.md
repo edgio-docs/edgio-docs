@@ -1,3 +1,0 @@
----
-title: Encoder Requirements
----

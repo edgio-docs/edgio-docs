@@ -202,14 +202,13 @@ Check **Enable DRM**, then choose **BUYDRM** to enable DRM on MPEG-DASH output; 
 2. Follow the same steps used when configuring a slot. The values are pre-populated with the same information as the original slot except for the slot name. Since the name has to be unique, you must enter a new name.
 3. Click the **Submit** button, and the new slot is created.
 
-<Callout type="info">If you do not change the name or enter the name of an existing slot, a warning appears in the right part of the window.</Callout>
+    <Callout type="info">If you do not change the name or enter the name of an existing slot, a warning appears in the right part of the window.</Callout>
 
 ### Delete a Slot  {/*delete*/}
 
 1. Locate the slot you wish to delete and click the **Delete** (rubbish bin) icon.
 
-    <Callout type="info">You cannot undo or recover a deleted slot.
-</Callout>
+    <Callout type="info">You cannot undo or recover a deleted slot.</Callout>
 
 2. A confirmation dialog is displayed.
 
@@ -271,7 +270,7 @@ The Player icon is only enabled if [MediaVault](#mediavault) is not enabled for 
 
 Once your slot is configured, you can begin streaming to it right away. The slot is available to you whenever you want to use it.
 
-Start by setting up your encoder with the information provided in the “Slot Details” screen. See '[Setting Up Your Encoder](/delivery/video/mmd_live/encoder_settings)' in the [MMD Live Streaming Guide](/delivery/video/mmd_live) for encoder requirements and recommended settings.
+Start by setting up your encoder with the information provided in the “Slot Details” screen. See [Setting Up Your Encoder](/delivery/video/mmd_live/encoder_settings) in the [MMD Live Streaming Guide](/delivery/video/mmd_live) for encoder requirements and recommended settings.
 
 Be sure to use the specifications of your slot type when setting up your encoder. It's also important to publish to both primary and backup publishing URLs and use an absolute Timecode in your encoder to provide maximum failover protection for your live stream.
 

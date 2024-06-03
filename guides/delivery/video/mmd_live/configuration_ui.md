@@ -11,7 +11,7 @@ The live slots configured for your specific shortname are listed. You can view s
 
 ### Buttons and Icons  {/*buttons-and-icons*/}
 
-**+ new** button: At the top right of the screen, allows you to configure one of your purchased live slots.
+**\+ new** button: At the top right of the screen, allows you to configure one of your purchased live slots.
 
 Icons are on the right side of each slot row. Icons for non-Live Push slots and Live Push slots are different.
 
@@ -114,12 +114,8 @@ Configuring a slot is a simple process.
 | Field Name | Description | Notes |
 | --- | --- | --- |
 | Name | Identifies your slot. | A unique slot name is required; no two slots may have the same name.<br /><br />The slot name can have a maximum of 63 characters.<br /><br />A name can only contain letters, numbers, and hyphens (-). It cannot start or end with a hyphen.<br /><br />Spaces are not allowed. |
-| Keywords, comma-separated | Optional keywords to tag your slot. (A search feature may be added in the future.) | -   Maximum of 128 characters each. To enter a tag, type the value, then press the Enter key. The following characters are not allowed:<br />    -   period ('.')<br />    -   apostrophe (''')<br />    -   slash ( '/')<br />    -   backward slash (`\`)<br />    -   left bracket (`[`)<br />    -   right bracket (`]`)<br /><br />This field is not visible for Live Push Slots. |
+| Keywords, comma-separated | Optional keywords to tag your slot. (A search feature may be added in the future.) | -   Maximum of 128 characters each. To enter a tag, type the value, then press the Enter key. The following characters are not allowed:<br />    -   period (`.`)<br />    -   apostrophe (`'`)<br />    -   slash (`/`)<br />    -   backward slash (`\`)<br />    -   left bracket (`[`)<br />    -   right bracket (`]`)<br /><br />This field is not visible for Live Push Slots. |
 | Description | An optional free-form field to describe your slot. | Maximum of 1024 characters.<br /><br />This field is not visible for Live Push Slots. |
-| Callback URL | The URL to which you want to publish events. See the '[Event Callback API Developers Reference](../../../../../Video/Video - Platform/Guide/callback_api.htm)' for more details. | This field is not visible for Live Push Slots. |
-| --- | --- |
-| Region (the region the slot ingests into) | -   All: show all regions; the default value<br />-   North-America: show North America regions only.<br />-   Asia-Pacific: show Asia Pacific regions only.<br />-   Europe: show European regions only.<br /><br />The regions shown in the are limited to those regions where slots are set up. |
-| Type (the type of slot) | -   All: show all slot types, default<br /><br />-   Other options (click to limit the list to that type):<br />    -   Transcode 720p<br />    -   Transcode 576p<br />    -   Transcode 1080p<br />    -   Transmux<br /><br />-   Live Push<br /><br />The entries shown in the will be those types with slots that are set up. |
 
 ### Ingest Details  {/*ingest*/}
 

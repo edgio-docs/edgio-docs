@@ -5,7 +5,7 @@ You can access the Control portal to view and configure the slots you have purch
 
 ## Main Configuration Page  {/*main-config-page*/}
 
-After logging into the Control portal, click the "Configure" menu on the left navigation, then click "Live Streaming."
+After logging into the Control portal, click the *Configure* menu on the left navigation, then click **Live Streaming**.
 
 The live slots configured for your specific shortname are listed. You can view summary information for the type of slots you have purchased at the top of this page. For the transcode and transmux slots, the display shows how many you have configured (used) and how many of each type you still have left to configure (available). If 0 slots are available, you cannot create any more of that specific slot type.
 
@@ -15,7 +15,7 @@ The live slots configured for your specific shortname are listed. You can view s
 
 Icons are on the right side of each slot row. Icons for non-Live Push slots and Live Push slots are different.
 
-**Non-Live Push Slot**
+#### Non-Live Push Slot {/*non-live-push-slot*/}
 
 ![Non-Live Push Slots](/images/delivery/video/non_lp_slots.png)
 
@@ -25,7 +25,7 @@ Icons are on the right side of each slot row. Icons for non-Live Push slots and 
 - **Player**: This allows you to view the live stream. See [Viewing a Slot's Live Stream](#view-live-stream).
 - **Delete**: This allows you to delete a live slot configuration. See [Delete a Slot](#delete).
 
-**Live Push Slots**
+#### Live Push Slots {/*live-push-slots*/}
 
 Live Push slots do not allow recording and scheduling. They also allow users to edit a slot.
 
@@ -63,14 +63,14 @@ The *Show only* drop-down menu is disabled by default.
 
 ### Filtering  {/*filtering*/}
 
-To filter the list, click the Filter by  and select a value to filter by:
+To filter the list, click the *Filter by* dropdown  and select a value to filter by:
 
 - Region
 - Type
 
-When you select a value, the Show only  becomes enabled and contains a list of options relevant to the value in the Filter by .
+When you select a value, the Show only  becomes enabled and contains a list of options relevant to the value in the *Filter by* dropdown.
 
-| 'Filter by' Value | Options in 'Show only' |
+| *Filter by* Value | Options in *Show only* |
 | --- | --- |
 | Region (the region the slot ingests into) | -   **All**: show all regions; the default value<br />-   **North-America**: show North America regions only.<br />-   **Asia-Pacific**: show Asia Pacific regions only.<br />-   **Europe**: show European regions only.<br /><br />The regions shown in the are limited to those regions where slots are set up. |
 | Type (the type of slot) | -   **All**: show all slot types, default<br />-    Other options (click to limit the list to that type):<br />    --   Transcode 720p<br />    --   Transcode 576p<br />    --   Transcode 1080p<br />    --   Transmux<br /><br />The entries shown in the will be those types with slots that are set up. |
@@ -113,7 +113,7 @@ Configuring a slot is a simple process.
 
 | Field Name | Description | Notes |
 | --- | --- | --- |
-| Name | Identifies your slot. | A unique slot name is required; no two slots may have the same name.<br /><br />The slot name can have a maximum of 63 characters.<br /><br />A name can only contain letters, numbers, and hyphens (-). It cannot start or end with a hyphen.<br /><br />Spaces are not allowed. |
+| Name | Identifies your slot. | A unique slot name is required; no two slots may have the same name.<br /><br />The slot name can have a maximum of 63 characters.<br /><br />A name can only contain letters, numbers, and hyphens (`-`). It cannot start or end with a hyphen.<br /><br />Spaces are not allowed. |
 | Keywords, comma-separated | Optional keywords to tag your slot. (A search feature may be added in the future.) | -   Maximum of 128 characters each. To enter a tag, type the value, then press the Enter key. The following characters are not allowed:<br />    -   period (`.`)<br />    -   apostrophe (`'`)<br />    -   slash (`/`)<br />    -   backward slash (`\`)<br />    -   left bracket (`[`)<br />    -   right bracket (`]`)<br /><br />This field is not visible for Live Push Slots. |
 | Description | An optional free-form field to describe your slot. | Maximum of 1024 characters.<br /><br />This field is not visible for Live Push Slots. |
 
@@ -130,7 +130,7 @@ Configuring a slot is a simple process.
 
 <Callout type="info">The *Encoding Details* section is not available for Live Push streams.</Callout>
 
-#### Transcode Slots
+#### Transcode Slots  {/*transcode-slots*/}
 
 ![Encoding Details](/images/delivery/video/encoding_details.png)
 
@@ -147,7 +147,7 @@ Configuring a slot is a simple process.
 | Field Name | Description/Instructions | Notes |
 | --- | --- | --- |
 | Transmux bitrates | Bitrate configuration for transmux slots is highly customizable.<br /><br />1.  Select up to eight bitrates from the .<br />2.  Click the add button | Each selection is an encoding profile<br /><br />Your encoder must publish all configured bitrates. |
-| Bitrates for this slot | A suggested set of video and audio bitrates is available in the drop-down boxes, but you may also enter your custom bitrates in those boxes.<br /><br />If you have 'Bitrate Order' enabled for your account, each bitrate has a drag handle to its left.<br /><br />Drag and drop bitrates to reorder them. The order number determines the order in which the bitrate URL appears in the output manifest file. | You must select at least one bitrate.<br /><br />All configured bitrates must be published by your encoder to MMD Live for the slot to function correctly.<br /><br />The total bitrate (video + audio) is automatically calculated and displayed in the row for each bitrate.<br /><br />The summation of all totals is displayed at the top of the bitrate list.<br /><br />To remove a bitrate, hover over its row and click the *remove* button. |
+| Bitrates for this slot | A suggested set of video and audio bitrates is available in the drop-down boxes, but you may also enter your custom bitrates in those boxes.<br /><br />If you have *Bitrate Order* enabled for your account, each bitrate has a drag handle to its left.<br /><br />Drag and drop bitrates to reorder them. The order number determines the order in which the bitrate URL appears in the output manifest file. | You must select at least one bitrate.<br /><br />All configured bitrates must be published by your encoder to MMD Live for the slot to function correctly.<br /><br />The total bitrate (video + audio) is automatically calculated and displayed in the row for each bitrate.<br /><br />The summation of all totals is displayed at the top of the bitrate list.<br /><br />To remove a bitrate, hover over its row and click the *remove* button. |
 | -   Enable subtitles<br /><br />-   Allow to manage timecodes<br /><br />-   Output Formats | See [Subtitles and Timecodes](#subtitles-and-timecodes). |     |
 
 #### Subtitles and Timecodes  {/*subtitles-and-timecodes*/}
@@ -160,7 +160,7 @@ Beneath the slot's list of bitrates are checkboxes for managing subtitles and ti
 | --- | --- | --- |
 | Enable subtitles | Select this option to accurately inform iOS players that subtitles are present in HLS output from MMD Live. | If you don't select the option and the `#EXT-X-MEDIA:TYPE=SUBTITLES` tag is present, but subtitles are not, the iOS player will display a CC menu option to display subtitles even though subtitles are not present. |
 | Allow to manage timecodes | If your encoder does not allow you to enable absolute timecodes in chunks or if you want Edgio to manage timecodes, check this checkbox. | Absolute timecodes in chunks are necessary to enable the seamless transition from primary to backup to ingest in a primary ingest failure.<br /><br />Timecodes allow the failover mechanism to seamlessly switch to the backup stream at the correct time, resulting in little or no interruption to a viewer's experience when watching the live stream. |
-| Output Formats | Select one or more output formats; then click the 'Apply' entry at the bottom of the . | The slot will produce output in the formats that you selected. |
+| Output Formats | Select one or more output formats; then click the 'Apply' entry at the bottom of the dropdown menu. | The slot will produce output in the formats that you selected. |
 
 ### Content Security  {/*content-security*/}
 
@@ -234,7 +234,7 @@ MMD Live currently does not support the editing of slots. Currently, you must cr
 
 2. If you choose to, you may use the Edgio SmartEmbed Player found in the section labeled “EMBED CODE.” Choose an embed code option and player type, then copy the embed code and place it on your website. The embed code will play your live stream. For more information about SmartEmbed, see the Player Embedding Guide.
 
-    <Callout type="info">If you enable MediaVault, the EMBED CODE section is not displayed because MediaVault and embed code are not compatible</Callout>
+    <Callout type="info">If you enable MediaVault, the EMBED CODE section is not displayed because MediaVault and embed code are not compatible.</Callout>
 
 3. The Copy (double-window) icon next to a field allows you to copy the field to the clipboard easily:
 
@@ -250,8 +250,7 @@ MMD Live currently does not support the editing of slots. Currently, you must cr
 
 ### View a Slot's Live Stream  {/*view-live-stream*/}
 
-<Callout type="info">You cannot view a Live Push slot's stream.
-</Callout>
+<Callout type="info">You cannot view a Live Push slot's stream.</Callout>
 
 To view a slot's live stream:
 

@@ -142,8 +142,6 @@ Configuring a slot is a simple process.
 
 #### Transmux Slots
 
-![Transmux Slots](/images/delivery/video/transmux.jpg)
-
 | Field Name | Description/Instructions | Notes |
 | --- | --- | --- |
 | Transmux bitrates | Bitrate configuration for transmux slots is highly customizable.<br /><br />1.  Select up to eight bitrates from the .<br />2.  Click the add button | Each selection is an encoding profile<br /><br />Your encoder must publish all configured bitrates. |

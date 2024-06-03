@@ -21,13 +21,13 @@ Calls are listed in alphabetical order within each interface. Note that there is
 | checkToken|[Determine Your Token's Age](/delivery/storage/apis/api_calls/working_with_sessions/#determine-token-age) |
 | completeMultipart|[Complete a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_http/#complete-multipart-upload) |
 | deleteDir|[Delete a Directory](/delivery/storage/apis/api_calls/working_with_directories_json/#delete-directory) |
-| deleteFile<br />|[Delete a File](/delivery/storage/apis/api_calls/working_with_files/#delete-a-file) |
-| fetchFileHTTP|[Copy a File](/delivery/storage/apis/api_calls/working_with_files/#copy-a-file) |
+| deleteFile<br />|[Delete a File](/delivery/storage/apis/api_calls/working_with_files_json/#delete-a-file) |
+| fetchFileHTTP|[Copy a File](/delivery/storage/apis/api_calls/working_with_files_json/#copy-a-file) |
 | getMultipartStatus|[Get Status for a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#get-status) |
 | getMultipartStatusMap|[Get String Equivalents of Multipart Status Codes](/delivery/storage/apis/api_calls/working_with_multipart_json/#get-equivalent)  |
 | initKeyPair|[Initializing HMAC Key Pairs](/delivery/storage/apis/api_calls/initializing_hmac_key_pairs) |
 | listDir|[List Directories](/delivery/storage/apis/api_calls/working_with_directories_json/#list-directory) |
-| listFile<br />|[List Files](/delivery/storage/apis/api_calls/working_with_files/#list-file) |
+| listFile<br />|[List Files](/delivery/storage/apis/api_calls/working_with_files_json/#list-file) |
 | listMultipart|[List Your Multipart Uploads](/delivery/storage/apis/api_calls/working_with_multipart_json/#list-pieces) |
 | listMultipartPiece<br /><br />     See [List Pieces in a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#list-multipart) |
 | listPath<br />|[List Files and Directories](/delivery/storage/apis/api_calls/working_with_methods/#list) |
@@ -35,7 +35,7 @@ Calls are listed in alphabetical order within each interface. Note that there is
 | logout|[Log Out](/delivery/storage/apis/api_calls/logging_out/#log-out) |
 | makeDir|[Create a Directory](/delivery/storage/apis/api_calls/working_with_directories_json/#create-directory) |
 | makeDir2|[Create a Directory Along With Leading Paths](/delivery/storage/apis/api_calls/working_with_directories_json/#leading-paths) |
-| mediaVaultURL|[Generate a URL](/delivery/storage/apis/api_calls/working_with_files/#mediavault) |
+| mediaVaultURL|[Generate a URL](/delivery/storage/apis/api_calls/working_with_files_json/#mediavault) |
 | noop|[Perform an Authenticated Server Verification](/delivery/storage/apis/api_calls/verifying_the_server_api_connection/#pass-token) |
 | ping<br />|[Perform an Unauthenticated Server Verification](/delivery/storage/apis/api_calls/verifying_the_server_api_connection/#no-pass-token) |
 | rename<br />|[Rename a File or Directory](/delivery/storage/apis/api_calls/working_with_methods/#rename) |

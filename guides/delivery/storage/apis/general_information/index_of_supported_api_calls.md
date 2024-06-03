@@ -16,8 +16,8 @@ Calls are listed in alphabetical order within each interface. Note that there is
 | --- | --- |
 | abortMultipart|[Abort a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#abort) |
 |authenticate|[Log in to a Sub-directory](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface/#log-in-to-subdirectory)|
-| checkToken|[Determine Your Token's Age](/delivery/storage/apis/_api_calls/working_with_sessions/#determine-token-age) |
-| completeMultipart|[Complete a Multipart Upload](/delivery/storage/apis/_api_calls/logging_in_using_the_json_rpc_interface/#complete) |
+| checkToken|[Determine Your Token's Age](/delivery/storage/apis/api_calls/working_with_sessions/#determine-token-age) |
+| completeMultipart|[Complete a Multipart Upload](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface/#complete) |
 | deleteDir|[Delete a Directory](/delivery/storage/apis/api_calls/working_with_directories_json/#delete-directory) |
 | deleteFile<br />|[Delete a File](/delivery/storage/apis/api_calls/working_with_files/#delete-a-file) |
 | fetchFileHTTP|[Copy a File](/delivery/storage/apis/api_calls/working_with_files/#copy-a-file) |

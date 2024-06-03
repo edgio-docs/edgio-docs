@@ -4,20 +4,22 @@ title: MMD Live API Developers Reference
 This documentation is intended for programmers who are writing client or server applications that interact with MMD Live Recording Schedules and Slots.
 
 ## API Overview  {/*overview*/}
+
 | Action | Specific Calls |
 | --- | --- |
-| Query | [Get information on all slots in an account](#get-all-slots)<br />[Get information on a specific slot](#get-specific-slot)<br />[Get the streaming status of a slot](#get-streaming-status)<br />[Get overview information for an account's slots](#get_overview_information_for_an_account's_slots)<br />[Get information about a recording schedule](#get_a_recording_schedule)<br />[Get information about all recording schedules](#get_all_recording_schedules) |
+| Query | [Get information on all slots in an account](#get-all-slots)<br />[Get information on a specific slot](#get-specific-slot)<br />[Get the streaming status of a slot](#get-streaming-status)<br />[Get overview information for an account's slots](#get-overview-information-for-slots)<br />[Get information about a recording schedule](#get_a_recording_schedule)<br />[Get information about all recording schedules](#get_all_recording_schedules) |
 | Create | [Create a slot](#Create_a_slot)<br />[Create a recording schedule](#create_a_recording_schedule) |
 | Update | [Update an existing recording schedule](#Update_an_existing_recording_schedule) |
 | Delete | [Delete a slot](#delete_a_slot)<br />[Delete a recording schedule](#delete_a_recording_schedule) |
 
 Resources about the above bullet points are described further in [Data Resources](#data-sources).
 
-
 ## Data Resources  {/*data-resources*/}
+
 The MMD Live APIs use four Data Resource objects. The method definitions using the Data Resources are defined in [API Requests - Query](#query), [API Requests - Create and Update](#create-and-update), and [API Requests - Delete](#delete).
 
 ### Recording Schedule  {/*reording-sechedule*/}
+
 | Property Name | Required On Create? | Updatable? | Type | Description |
 | --- | --- | --- | --- | --- |
 | id  | No<br /><br />Automatically set | No  | String | A unique ID is assigned to the Recording Schedule. |
@@ -34,6 +36,7 @@ The MMD Live APIs use four Data Resource objects. The method definitions using t
 | callbackUrl | No  | Yes | String | URL of your choice to which to post the recording status. |
 
 ### Slot Streaming Status  {/*slot-streaming-status*/}
+
 <Callout type="info">The MMD Live API does not support the creation or updating of slot streaming status.</Callout>
 
 | Property Name | Required On Create? | Updatable? | Type | Description |
@@ -43,13 +46,13 @@ The MMD Live APIs use four Data Resource objects. The method definitions using t
 
 ### Slot  {/*slot*/}
 
-| Property Name | Required On Create? | Updatable? | Type | Description |  |
-|---|---|---|---|---|---|
-| id | n/a | n/a | String | The Slot ID is the unique identifier assigned to the slot upon slot creation. In this version of the API, the Slot ID is the same as the stream name used in encoders. |  |
-| type | yes | n/a | String | Type of slot. One of:<br />-`576`<br />-`720`<br />-`1080`<br />-`transmux` |  |
-| name | yes | n/a | String | Note: This name is NOT the stream name used by encoders. |  |
-| state | n/a | n/a | String | State of the slot. One of:<br />-`Pending`<br />-`Ready`<br />-`Failed` |  |
-| publishUrls | n/a | n/a | Object | Publish URLs associated with the slot. Each object contains these String properties:<br />-`primary`: primary publish URL<br />- `backup`: backup publish URL |  |
+| Property Name | Required On Create? | Updatable? | Type | Description |
+|---|---|---|---|---|
+| id | n/a | n/a | String | The Slot ID is the unique identifier assigned to the slot upon slot creation. In this version of the API, the Slot ID is the same as the stream name used in encoders. |
+| type | yes | n/a | String | Type of slot. One of:<br />-`576`<br />-`720`<br />-`1080`<br />-`transmux` |
+| name | yes | n/a | String | Note: This name is NOT the stream name used by encoders. |
+| state | n/a | n/a | String | State of the slot. One of:<br />-`Pending`<br />-`Ready`<br />-`Failed` |
+| publishUrls | n/a | n/a | Object | Publish URLs associated with the slot. Each object contains these String properties:<br />-`primary`: primary publish URL<br />- `backup`: backup publish URL |
 | playbackInfo | n/a | n/a | Object | Playback URLs for the various output types. Each object contains these String properties:<br />-`dash`: playback URL for DASH output<br />-`hls`: playback URL for HLS output<br />-`hds`: playback URL for HDS output<br />-`rtmp`: List of playback URLs for RTMP output |
 | mediaVaultType | no | n/a | String | Type of MediaVault protection. One of:<br />-`NONE` (default)<br />-`COOKIE`<br />-`URL`<br />-`URL_WITH_SUB_MANIFESTS` |
 | mediaVaultSecretKey | no | n/a | String | MediaVault secret key known only to the customer and Edgio. <br /><br />Null if MediaVault is not configured for the slot |
@@ -70,6 +73,7 @@ The MMD Live APIs use four Data Resource objects. The method definitions using t
 | ipGeoMatch |  no | n/a | String| When creating a slot:<br />-Pass null if you do not want to use IP/Geo access.<br />-Otherwise, pass a comma-delimited list of 2-character country codes where playback is allowed or denied.<br /><br />Use "-" (without quotes) before a geocode to indicate denial.<br /><br />Examples:<br />-fr: allow France only<br />-fr,all: allow all countries except France<br />-If you use all, it must appear at the end of the list.<br /><br />Contact your Account Manager if you need assistance with IP geocodes.|
 
 ### Profile  {/*profile*/}
+
 A Profile object specifies the audio and video rendition(s) configured for a slot.
 
 | Property Name | Required On Create? | Updatable? | Type | Description |
@@ -82,6 +86,7 @@ A Profile object specifies the audio and video rendition(s) configured for a slo
 | videoHeight | yes, if the Slot type is `transmux` | n/a | Number | Profile's video height. |
 
 ### Overview  {/*overview*/}
+
 An Overview object provides usage statistics for an MMD Live account.
 
 | Property Name | Required On Create? | Updatable? | Type | Description |
@@ -96,11 +101,13 @@ An Overview object provides usage statistics for an MMD Live account.
 | 1080Available | n/a | n/a | Integer | The number of available 1080p slots. |
 
 ## API Requests - Query  {/*query*/}
+
 The following methods are available for requesting content information for slots, slot streaming status, and Recording Schedules.
 
 ### Slots {/*api-requests-slots*/}
 
 #### Get all slots {/*get-all-slots*/}
+
 **URL**: 	`https://apis.llnw.com/config-api/v1/` <br />`live/shortname/{account name}/slots`
 
 **Formats**: `JSON`
@@ -116,6 +123,7 @@ The following methods are available for requesting content information for slots
 **Errors**: Invalid value, Missing signature
 
 #### Get a specific slot {/*get-specific-slot*/}
+
 **URL**: `https://apis.llnw.com/config-api/v1/live/shortname/{account name}/slots/{slot ID}`
 
 **Formats**: `JSON`
@@ -131,6 +139,7 @@ The following methods are available for requesting content information for slots
 **Errors**: Invalid value, Missing signature
 
 #### Get the streaming status of a slot  {/*get-streaming-status*/}
+
 **URL**: `https://apis.llnw.com/config-api/
 v1/live/shortname/{account name}/
 slots/{slotId}/status`
@@ -147,7 +156,8 @@ slots/{slotId}/status`
 
 **Errors**: Invalid value, Missing signature, The slot does not exist
 
-#### Get overview information for an account's slots
+#### Get overview information for an account's slots {/*get-overview-information-for-slots*/}
+
 **URL**: `https://apis.llnw.com/config-api/v1/live/shortname/{account name}/overview`
 
 **Formats**: `JSON`
@@ -163,7 +173,9 @@ slots/{slotId}/status`
 **Errors**: Invalid value, Missing signature
 
 ### Recording Schedules {/*recording-schedules-get-overview*/}
+
 #### Get a recording schedule {/*recording-schedules-get*/}
+
 **URL**: `https://apis.llnw.com/config-api/v1/live/recording/shortname/{account name}/schedules/{scheduleId}`
 
 **Formats**: `JSON`
@@ -179,6 +191,7 @@ slots/{slotId}/status`
 **Errors**: Invalid value, Missing signature, A schedule does not exist
 
 #### Get all recording schedules {/*recording-schedules-get-all*/}
+
 **URL**: 	`https://apis.llnw.com/config-api/v1/live/recording/shortname/{account name}/schedules`
 
 **Formats**: `JSON`
@@ -193,13 +206,14 @@ slots/{slotId}/status`
 
 **Errors**: - Invalid value <br />-Missing signature
 
-
-
 ## API Requests - Create and Update  {/*create-and-update*/}
+
 ### Slots {/*create-and-update-slots*/}
+
 The following method is available for creating a slot:
 
 #### Create a Slot   {/*create-slot*/}
+
 **URL**: `https://apis.llnw.com/config-api/v1/live/shortname/{account name}/slots`
 
 **Formats**: `JSON`
@@ -293,6 +307,7 @@ The created slot along with the following additional fields:
 **Errors**: Invalid value, Missing signature
 
 ### Recording Schedules {/*create-and-update-schedules*/}
+
 The following methods are available for creating and updating schedules:
 
 #### Create a recording schedule {/*create-a-recording-schedule*/}
@@ -346,6 +361,7 @@ The following payload will create a schedule that will record all renditions eve
 **Errors**: Invalid value, Missing signature
 
 #### Update an existing recording schedule {/*update-a-recording-schedule*/}
+
 Changes to a recording schedule, while a recording schedule is recording, may not take effect until the recording's next occurrence.
 
 **URL**: `https://apis.llnw.com/config-api/v1/live/recording/shortname/{account name}/schedules/{scheduleId}`
@@ -385,13 +401,14 @@ Changes to a recording schedule, while a recording schedule is recording, may no
 
 **Errors**: Invalid value, Missing signature
 
-
 ## API Requests - Delete  {/*delete*/}
+
 ### Slots {/*delete-slots*/}
+
 The following method is available for deleting slots:
 
-
 ### Delete a slot  {/*delete-a-slot*/}
+
 **URL**: `https://apis.llnw.com/config-api/v1/live/shortname/{account name}/slots{slot ID}`
 
 **Formats**: `JSON`
@@ -406,9 +423,10 @@ The following method is available for deleting slots:
 
 **Errors**: Invalid value, Missing signature
 
-
 ### Schedules {/*delete-schedules*/}
+
 #### Delete a recording schedule {/*delete-recording-schedules*/}
+
 The following method is available for deleting schedules:
 
 A Recording Schedule can only be deleted if it is in the `FINISHED` state.
@@ -433,6 +451,7 @@ A Recording Schedule will be in the `FINISHED` state if:
 **Errors**: Invalid value, Missing signature
 
 ## Authentication - Signing Release  {/*authentication*/}
+
 The Live to VoD APIs use symmetric key cryptography and HMAC (Hashed Message Authentication Code) for message authentication and user identification. To secure all calls to the API, an HMAC digest signature is applied to every request by using the following authentication headers:
 
 `X-LLNW-Security-Principal` – Name of the user performing the request. Services lookup shared keys by the username to authenticate a message. Since shared keys are stored on a per-user basis, an attacker would have to know both the username and the shared key for that user to impersonate another user.
@@ -444,9 +463,11 @@ The Live to VoD APIs use symmetric key cryptography and HMAC (Hashed Message Aut
 The shared key is a large unique key created for use with the `HmacSHA256` MAC algorithm. The Control maintains a unique and enciphered shared key for every user in the system. It is stored in HEX format and should be decoded to ASCII before usage. Users may access or regenerate this key at any time by using tools in the Control under *My Setting*s > *Edit My Profile*. `X-LLNW-Security-Token` is formed by applying MAC digest for the "data string"; i.e. `REQUEST_METHOD` + `URL` + `QUERY_STRING` (if present) + `TIMESTAMP` + `REQUEST_BODY` (if present)
 
 ## Starting and Stopping Recordings  {/*recordings*/}
+
 You can easily start and stop recording.
 
 ### Start a Recording  {/*start-a-recording*/}
+
 To start a recording, you simply create a new recording schedule and set the start attribute to the current time:
 
 POST a payload like the following to the URL in [Create a recording schedule](#create-a-recording-schedule):
@@ -465,6 +486,7 @@ POST a payload like the following to the URL in [Create a recording schedule](#c
 ```
 
 ### Stop a Recording  {/*stop-a-recording*/}
+
 To stop a recording, you update the recording schedule's enabled field to be false.
 
 PUT a payload like the following to the URL in [Update an existing recording schedule](#update-a-recording-schedule):
@@ -478,6 +500,7 @@ PUT a payload like the following to the URL in [Update an existing recording sch
 The recording will stop immediately and begin post-processing.
 
 ## Live to VoD Callbacks  {/*live-to-vod-callbacks*/}
+
 Live to VoD provides the ability to monitor the state of your recordings through callbacks. When you create a recording, you can optionally provide a URL to which Live to VoD sends POST requests for these recording stages:
 
 - Recording of a segment<sup>1</sup> has started
@@ -487,11 +510,13 @@ Live to VoD provides the ability to monitor the state of your recordings through
 <sup>1</sup>A segment is a single entity of a recording. For example, if a schedule says to record for two hours every Friday, that 2-hour recording will be a segment. Segments have an upper limit of 4 hours. If a schedule says to record for 5 hours every Friday, there will be two segments: one 4-hour segment and one 1-hour segment.
 
 ### Payload Received in the POST Requests  {/*payload-received*/}
+
 <Callout type="info">Callbacks are valid only for one-time and recurring recordings.</Callout>
 
 The payload contains a recording segment that includes a list of renditions.
 
 #### Recording Segment Fields {/*recording-segment-fields*/}
+
 | Field | Type | Description |
 | --- | --- | --- |
 | id  | String | The ID of the recording segment. UUID |
@@ -502,6 +527,7 @@ The payload contains a recording segment that includes a list of renditions.
 | renditions | List of [Rendition](#rendition-object) objects | List of the recorded renditions of the recording segment. |
 
 #### Rendition Object {/*rendition-object*/}
+
 | Field | Type | Description |
 | --- | --- | --- |
 | bitrate | String | The bitrate of recorded rendition in kbps. |
@@ -509,9 +535,11 @@ The payload contains a recording segment that includes a list of renditions.
 | file\_size | Long | File size of the recorded file in bytes. |
 
 ### Response Samples {/*response-samples*/}
+
 At various times, callbacks are sent, the payload looks slightly different. For example, when the recording starts and post-processing, the system does not have information about the renditions (as the files have not been fully recorded, converted to mp4, and uploaded). The following sections describe what the payload will look like at the various points.
 
 #### RECORDING {/*recording*/}
+
 ```
 {
   "id": "0e73e1f7-86b7-446f-8283-540dcb92bc08",
@@ -524,6 +552,7 @@ At various times, callbacks are sent, the payload looks slightly different. For 
 ```
 
 #### PROCESSING {/*processing*/}
+
 ```
 {
   "id": "0e73e1f7-86b7-446f-8283-540dcb92bc08",
@@ -534,7 +563,9 @@ At various times, callbacks are sent, the payload looks slightly different. For 
   "renditions": []
 }
 ```
+
 #### FILES_READY {/*files-ready*/}
+
 ```
 {
   "id": "0e73e1f7-86b7-446f-8283-540dcb92bc08",
@@ -558,6 +589,7 @@ At various times, callbacks are sent, the payload looks slightly different. For 
 ```
 
 ## MMD Live Callbacks  {/*live-callbacks*/}
+
 MMD Live provides the ability to monitor the state of your slots through callbacks. When you create a slot, you can optionally provide a URL to which MMD Live will send POST requests for the following events:
 
 -   Provisioning Complete
@@ -566,6 +598,7 @@ MMD Live provides the ability to monitor the state of your slots through callbac
 -   Stream Unpublish
 
 ### Payload Received in the POST Requests {/*payload-received*/}
+
 | Field | Type | Description |
 | --- | --- | --- |
 | id  | String | The ID of the slot. |
@@ -576,7 +609,9 @@ MMD Live provides the ability to monitor the state of your slots through callbac
 | type | String | Type of event. One of:<br />-   `provisioned`<br />-   `failed`<br />-   `publish`<br />-   `unpublish` |
 
 ### Response Samples {/*payload-received-response-samples*/}
+
 #### Provisioning Complete {/*payload-received-provisioning-complete*/}
+
 ```
 {
   "type":"provisioned",
@@ -587,6 +622,7 @@ MMD Live provides the ability to monitor the state of your slots through callbac
 ```
 
 #### Provisioning Error {/*payload-received-error*/}
+
 ```
 {
   "type":"failed",
@@ -597,6 +633,7 @@ MMD Live provides the ability to monitor the state of your slots through callbac
 ```
 
 #### Stream Publish {/*payload-received-stream-publish*/}
+
 ```
 {
   "type":"publish",
@@ -609,6 +646,7 @@ MMD Live provides the ability to monitor the state of your slots through callbac
 ```
 
 #### Stream Unpublish {/*payload-received-stream-unpublish*/}
+
 ```
 {
   "type":"unpublish",
@@ -621,17 +659,19 @@ MMD Live provides the ability to monitor the state of your slots through callbac
 ```
 
 ## MMD Live Profiles  {/*live-profiles*/}
-This appendix explains the possible values for the list of profile objects needed when [creating a slot](#create-a-slot).
 
+This appendix explains the possible values for the list of profile objects needed when [creating a slot](#create-slot).
 
 ### Transcode Slots {/*transcode*/}
-This section defines the IDs used for each transcode profile type (576, 720, 1080) in the list of profile objects required when [creating a slot](#create-a-slot).
+
+This section defines the IDs used for each transcode profile type (576, 720, 1080) in the list of profile objects required when [creating a slot](#create-slot).
 
 The only item required and used in the profile object for transcode slots is the id field.
 
 <Callout type="info">The order that the profile IDs are defined in the slot creation request dictate the order the various streams are listed in the manifest file when playing back the content.</Callout>
 
 #### SD Slot - 576p {/*sd*/}
+
 | ID  | Video Stream Resolution and Bitrate | Audio Stream Bitrate |
 | --- | --- | --- |
 | 3   | 1024x576 at 1.8 mbps | 128 kbps |
@@ -642,6 +682,7 @@ The only item required and used in the profile object for transcode slots is the
 | 10  | Audio only | 64 kbps |
 
 #### HD Slot - 720p {/*hd*/}
+
 | ID  | Video Stream Resolution and Bitrate | Audio Stream Bitrate |
 | --- | --- | --- |
 | 2   | 1280x720 at 2.4 mbps | 192 kbps |
@@ -653,7 +694,6 @@ The only item required and used in the profile object for transcode slots is the
 
 #### FHD Slot - 1080p {/*fhd*/}
 
-
 | ID  | Video Stream Resolution and Bitrate | Audio Stream Bitrate |
 | --- | --- | --- |
 | 1   | 1920x1080 at 4mbps | 192 kbps |
@@ -664,6 +704,7 @@ The only item required and used in the profile object for transcode slots is the
 | 10  | Audio only | 64 kbps |
 
 ### Transmux Slots {/*transmux*/}
+
 Transmux slots are defined by an object with `videoBitrate`, `audioBitrate`, `videoWidth`, and `videoHeight` properties.
 
 The maximum allowed total bitrate (video + audio) of a transmux slot is 16 Mbps. Customers can choose their resolution and bitrates provided bitrates do not reach the maximum bitrate threshold.

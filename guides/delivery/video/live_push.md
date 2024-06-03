@@ -4,14 +4,18 @@ title: Live Push User Guide
 This guide is intended for Edgio Networks Video Delivery customers who want to stream live media to desktop, mobile, and set-top boxes simultaneously using Video Delivery Live Push. Video Delivery’s multi-device support enables you to input a live stream, configure your video slots using the Control portal, and receive a URL or video player for delivery worldwide to desktop and mobile devices.
 
 ## Introduction  {/*introduction*/}
+
 ### Deliver Live Push  {/*deliver-live-push*/}
+
 Live Push is a live streaming product that utilizes the Edgio Live provisioning backend with a new ingest server. Live Push delivers an ingested stream via a playback URL.
 
 ### Live Push Outputs  {/*live-push-outputs*/}
+
 - HLS
 - MPEG-DASH
 
 ### Slot Configuration  {/*slot-configuration*/}
+
 Live Push is allocated by “slot.” A slot is a reserved capacity into which you ingest your live stream.
 
 The Live Streaming section of Control (referred to as the "Configuration UI" in this document) allows you to configure slots for Live Push. The available customer configurable items are:
@@ -28,16 +32,20 @@ The Live Streaming section of Control (referred to as the "Configuration UI" in 
 - Playback URLs
 - MediaVault
 
-Configuration details are covered in Configuration UI.
+Configuration details are covered in [Configuration UI](#configuration-ui).
 
 ### Live Stream Encoders  {/*live-stream-encoders*/}
+
 A client-based live stream encoder must capture live footage and stream it to the ingest servers of Live Push.
 
 ## Basic Steps  {/*basic-steps*/}
+
 ### Overview  {/*overview*/}
+
 Use this section to help plan your implementation of Live Push. These steps give you an overview of the detailed procedures provided in the following sections.
 
 ### Implementation  {/*implementation*/}
+
 To implement Live Push:
 
 1. Determine your live video needs: broadcast time, regions, playback devices, and so on.
@@ -49,9 +57,11 @@ To implement Live Push:
 7. View your live stream on the playback URL.
 
 ## Configuration UI  {/*configuration-ui*/}
+
 You can access the Control portal to view and configure the slots you have purchased. You can view, create, copy, and more.
 
 ### Main Configuration Page  {/*main-configuration-page*/}
+
 After logging into the Control portal, click the *Configure* menu on the left navigation; then click **Live Streaming**.
 
 The live slots configured for your specific shortname are listed. You can view summary information for the type of slots you have purchased at the top of this page. For the transcode and transmux slots, the display shows how many you have configured (used) and how many of each type you still have left to configure (available). If 0 slots are available, you cannot create any more of that specific slot type.
@@ -61,6 +71,7 @@ The display Live Push shows the total of all ingest bitrates provisioned, the to
 ![Live Push Slots](/images/delivery/video/live_push_slots.png)
 
 #### Buttons and Icons  {/*buttons-and-icons*/}
+
 The *+ new* button at the top of the screen allows you to configure one of your purchased live slots.
 
 Icons are at the right side of each slot row:
@@ -74,6 +85,7 @@ Clone: Make a copy of an existing live slot configuration. See [Clone a Slot](#c
 - **Delete**: Delete a live slot configuration. See [Delete a Slot](#delete-a-slot).
 
 #### List Information  {/*list-information*/}
+
 Each entry in the list has the following information:
 
 - **name**: The name given to the slot when it was created.
@@ -91,11 +103,13 @@ The status of the slot is shown to the left of the *Details* icon. Possible stat
 Click on a specific slot (or click the *Details* icon) to view slot details.
 
 #### Filter and Sort the List of Slots  {/*filter-and-sort-the-list-of-slots*/}
+
 Filtering and sorting controls appear above the list of slots.
 
 The *Show only* drop-down menu is disabled by default.
 
 ##### Filter  {/*filter*/}
+
 To filter the list, click the *Filter by* drop-down menu and select a value to filter by:
 
 - Region
@@ -109,6 +123,7 @@ When you select a value, the *Show only* drop-down menu becomes enabled and cont
 | Type (the type of slot) | All: show all slot types, default.<br />Other options (click to limit the list to that type):<br />- Transcode 720p<br />- Transcode 576p<br />- Transcode 1080p<br />- Transmux<br />- Live Push<br /><br />Note: The entries shown in the drop-down menu are those types with slots that are set up. |
 
 ##### Sort  {/*sort*/}
+
 Select a value in the Sort by drop-down menu:
 
 - Date created
@@ -118,6 +133,7 @@ Select a value in the Sort by drop-down menu:
 
 
 ### Configure a Slot  {/*configure-a-slot*/}
+
 1. Click the + new button at the top of the page and select a slot type:
 
     ![New Slot](/images/delivery/video/new_slot.png)
@@ -138,6 +154,7 @@ Select a value in the Sort by drop-down menu:
 4. When finished, click the **Submit** button.
 
 #### Live Push details  {/*live-push-details*/}
+
 ![Live Push Details](/images/delivery/video/live_push_details.png)
 
 | Field Name | Description | Notes |
@@ -146,6 +163,7 @@ Select a value in the Sort by drop-down menu:
 | Description | Additional descriptive text. | Can be any text up to 255 characters long. |
 
 #### Ingest details  {/*ingest-details*/}
+
 ![Ingest Details](/images/delivery/video/ingest_details2.png)
 
 | Field Name | Description | Notes |
@@ -154,6 +172,7 @@ Select a value in the Sort by drop-down menu:
 | Use Backup Ingest | Stream to the backup ingest server as well as the primary. | Creating a backup allows you to stream to two distinctive ingest locations. When streaming to both primary and backup, you have redundancy that helps protect from regional outages and certain maintenance events. |
 
 #### Configuration details  {/*configuration-details*/}
+
 ![Configuration Details](/images/delivery/video/conf_details.png)
 
 | Field Name | Description/Instructions | Notes |
@@ -167,6 +186,7 @@ Select a value in the Sort by drop-down menu:
 | Publish Credentials | A list of the credentials to publish to enable access to the Live Push slot for listed users. Click - clear all to clear the list. | The listed users will have access to the Live Push slot. |
 
 #### Security details  {/*security-details*/}
+
 This section allows you to configure publish viewer access lists.
 
 Here is a sample configuration:
@@ -183,7 +203,9 @@ For Live Push slots:
 - The ability to configure *Allow* and *Deny* lists to control viewer access is also available.
 
 ### Clone, Delete, Edit. and View Slots  {/*clone-delete-edit-view-slots*/}
+
 #### Clone a Slot  {/*clone-a-slot*/}
+
 These sections explain how you can manage your slots.
 
 1. Locate the slot you want to clone and click the Clone icon.
@@ -194,6 +216,7 @@ These sections explain how you can manage your slots.
     <Callout type="info">If you do not change the name or enter the name of an existing slot, a warning appears in the right part of the window.</Callout>
 
 #### Delete a Slot  {/*delete-a-slot*/}
+
 <Callout type="info">You cannot undo or recover a deleted slot.</Callout>
 
 1. Locate the slot you wish to delete and click the **Delete** (rubbish bin) icon.
@@ -206,6 +229,7 @@ These sections explain how you can manage your slots.
     The slot is removed from the list.
 
 #### Edit a Slot  {/*edit-a-slot*/}
+
 1. Locate the slot and click the **Edit** icon.
      ![Edit Icon](/images/delivery/video/edit.png)
 
@@ -218,6 +242,7 @@ These sections explain how you can manage your slots.
 4. Click **Submit** to submit your edits.
 
 #### View Slot Details  {/*view-slot-details*/}
+
 1. Locate the slot and click the Details icon (or click the slot's row).
     ![Details Icon](/images/delivery/video/details_icon.png)
 
@@ -234,6 +259,7 @@ These sections explain how you can manage your slots.
     When you click the icon, the browser displays a confirmation that the data has been copied.
 
 ### Use Your Slot  {/*use-your-slot*/}
+
 Once your slot is configured, you can begin streaming to it right away. The slot is available to you whenever you want to use it.
 
 Start by setting up your encoder with the information provided in the *Slot Details* screen. See [Encoder Requirements](#encoder-requirements) for the encoder requirements and recommended settings for Live Push.
@@ -243,6 +269,7 @@ Be sure to use the specifications of your slot type when setting up your encoder
 Once you are streaming, use the Live Push playback URL shown in the *Slot Details* screen in your video player or app. The Live Push playback URL is a base URL, and the actual manifest file path or paths uploaded by the encoder should be appended. You can also use the Edgio SmartEmbed on your website or blog, which loads a player that automatically contains your playback URL.
 
 ### Use Secure Playback URLs  {/*use-secure-playback-urls*/}
+
 Live Push supports the delivery of live streams over secure URLs. Simply change your playback protocol from `http://` to `https://` to take advantage of secure delivery.
 
 ## Live Push Encoder/Publisher Requirements  {/*encoder-requirements*/}
@@ -261,28 +288,35 @@ While MMD Live transmux and transcode streaming have a well-documented set of en
     - `init*`
 
 ### Domain Name Service  {/*domain-name-service*/}
+
 The ingest URL that is provided after slot creation is resolved by Edgio’s Domain Name Service (DNS). Suppose your encoder/publisher or Operating System (OS) is configured to cache DNS entries. In that case, there may be some delay in resolving a new ingest in the case of a host failover or slot migration. While there may be some slight network performance improvement from caching DNS entries, Edgio recommends against storing DNS cache entries in the publisher for high-profile events.
 
 ## Secure Communications  {/*secure-communications*/}
+
 Live Push provides a variety of methods to secure the publication of your live streams.
 
 ### Publish to Live Push  {/*publish-to-live-push*/}
+
 Live Push only accepts pre-chunked video inputs (for example, HLS or MPEG-DASH) directly from your encoders. All encoders must authenticate using your Live Push publication credentials given to you on account creation. Edgio works with encoder companies to implement Edgio’s authentication directly into the encoder software.
 
 <Callout type="info">HTTPS must be used to publish to Live Push. Connections attempting to use HTTP to publish to Live Push are rejected.</Callout>
 
 ### Authenticate Username:Passwords  {/*authenticate-username-passwords*/}
+
 Live Push uses Basic Auth as defined in [RFC 7617](https://tools.ietf.org/html/rfc7617). Publishers must use HTTPS to send data to Live Push Ingest, ensuring authentication details are transmitted confidentially.
 
 ### Secure Playback of Live Streams  {/*secure-playback-of-live-streams*/}
+
 Live Push provides several ways to secure live stream playback.
 
 #### HTTPS  {/*https*/}
+
 Live Push supports live stream playback through SSL. Simply change your playback URL from `http://` to `https://` to take advantage of secure delivery.
 
 If you would like to use your SSL certificate for secure delivery, please contact your Edgio representative for more information.
 
 #### MediaVault For Chunked Streaming  {/*mediavault-for-chunked-streaming*/}
+
 The MediaVault service option allows you to secure the playback of your live streams using tokenization.
 
 MediaVault for HTTP chunked streaming may be implemented using either URL- or cookie-based tokenization. You can set a hash secret for each slot. For more information about MediaVault, see the [MediaVault User Guide](/delivery/delivery/mediavault).
@@ -290,4 +324,5 @@ MediaVault for HTTP chunked streaming may be implemented using either URL- or co
 For additional information about securing live streams, see the MediaVault Selection in the [Configuration UI](#configuration-ui) section or contact your Edgio representative.
 
 #### MediaVault for Live Push  {/*mediavault-for-live-push*/}
+
 The MediaVault service option is also available for Live Push outputs.

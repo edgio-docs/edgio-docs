@@ -9,7 +9,7 @@ This guide shows you how to deploy a [Shopify Hydrogen](https://hydrogen.shopify
 <ExampleButtons
   title="Shopify Hydrogen"
   siteUrl="https://layer0-docs-layer0-shopify-hydrogen-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/edgio-docs/edgio-shopify-hydrogen-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-shopify-hydrogen-example"
   deployFromRepo />
 
 ## Shopify Hydrogen Requirements {/*shopify-hydrogen-requirements*/}
@@ -62,12 +62,12 @@ npm run dev
 
   ```bash
   npm run build -- --target node
-  
+
   OR
-  
+
   yarn build --target node
   ```
-  
+
   The production version of your app will be running at http://localhost:3000. You can inspect and deploy the compiled version of your Node.js Hydrogen storefront from dist/node.
 
   NOTE: This step will be auto configured when building with {{ PRODUCT }} as you follow the next steps.
@@ -256,7 +256,7 @@ module.exports = new Router()
   .fallback(({ renderWithApp }) => renderWithApp())
 ```
 
-Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
+Refer to the [CDN-as-code](/applications/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
 <a id="run-the-shopify-hydrogen-app-locally"></a>
 
@@ -290,4 +290,4 @@ Next, deploy the build to {{ PRODUCT_NAME }} by running the `{{ FULL_CLI_NAME }}
 {{ FULL_CLI_NAME }} deploy
 ```
 
-Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
+Refer to the [Deployments](/applications/basics/deployments) guide for more information on the `deploy` command and its options.

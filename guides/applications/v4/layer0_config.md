@@ -17,7 +17,7 @@ The `backends` config is an object whose keys are backend names and whose values
 
 ## connector {/*connector*/}
 
-The name of the connector package corresponding to the framework your app uses, or the path to a directory that implements the [connector interface](/guides/connectors).
+The name of the connector package corresponding to the framework your app uses, or the path to a directory that implements the [connector interface](/applications/connectors).
 
 **Example**
 
@@ -68,7 +68,7 @@ includeFiles: {
 
 ## prerenderConcurrency {/*prerenderconcurrency*/}
 
-The maximum number of URLs that will be concurrently prerendered during deployment when [static prerendering](/guides/static_prerendering) is enabled. Defaults to 200, which is the maximum allowed value.
+The maximum number of URLs that will be concurrently prerendered during deployment when [static prerendering](/applications/static_prerendering) is enabled. Defaults to 200, which is the maximum allowed value.
 
 ## sources {/*sources*/}
 
@@ -94,16 +94,16 @@ module.exports = {
       // The domain name or IP address of the origin server
       domainOrIp: "example.com",
 
-      // When provided, the following value will be sent as the host header 
-      // when connecting to the origin. If omitted, the host header from 
+      // When provided, the following value will be sent as the host header
+      // when connecting to the origin. If omitted, the host header from
       // the browser will be forwarded to the origin.
       hostHeader: "example.com",
 
-      // Uncomment the following line if TLS is not set up properly on the 
+      // Uncomment the following line if TLS is not set up properly on the
       // origin domain and you want to ignore TLS errors
       disableCheckCert: true,
 
-      // Overrides the default ports (80 for http and 443 for https) and 
+      // Overrides the default ports (80 for http and 443 for https) and
       // instead use a specific port when connecting to the origin
       port: 1337,
     },
@@ -115,19 +115,19 @@ module.exports = {
   // The name of the team in {{ PRODUCT }} to which this app should be deployed.
   team: 'my-team-name',
 
-  // Overrides the default path to the routes file. The path should be relative 
+  // Overrides the default path to the routes file. The path should be relative
   // to the root of your app.
   routes: 'routes.js',
 
-  // The maximum number of URLs that will be concurrently prendered during 
-  // deployment when static prerendering is enabled. Defaults to 200, which is 
+  // The maximum number of URLs that will be concurrently prendered during
+  // deployment when static prerendering is enabled. Defaults to 200, which is
   // the maximum allowed value.
   prerenderConcurrency: 200,
 
-  // A list of glob patterns identifying which source files should be uploaded 
-  // when running layer0 deploy --includeSources. This option is primarily used 
-  // to share source code with {{ PRODUCT }} support personnel for the purpose of 
-  // debugging. If omitted, layer0 deploy --includeSources will result in all 
+  // A list of glob patterns identifying which source files should be uploaded
+  // when running layer0 deploy --includeSources. This option is primarily used
+  // to share source code with {{ PRODUCT }} support personnel for the purpose of
+  // debugging. If omitted, layer0 deploy --includeSources will result in all
   // files which are not gitignored being uploaded to {{ PRODUCT }}.
   //
   sources : [
@@ -135,9 +135,9 @@ module.exports = {
      '!(**/secrets/**/*)', // except everything in the secrets directory
   ],
 
-  // Set to true to include all packages listed in the dependencies property 
-  // of package.json when deploying to {{ PRODUCT }}.  This option generally isn't 
-  // needed as {{ PRODUCT }} automatically includes all modules imported by your 
+  // Set to true to include all packages listed in the dependencies property
+  // of package.json when deploying to {{ PRODUCT }}.  This option generally isn't
+  // needed as {{ PRODUCT }} automatically includes all modules imported by your
   // code in the bundle that is uploaded during deployment
   //
   includeNodeModules: true,

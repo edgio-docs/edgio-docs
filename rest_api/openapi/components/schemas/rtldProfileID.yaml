@@ -1,0 +1,9 @@
+title: RTLD Access Logs profile ID
+description: The RTLD Access Logs profile's system-defined ID.
+type: object
+required:
+  - id
+properties:
+  id:
+    type: integer
+    description: The RTLD Access Logs profile's system-defined ID.

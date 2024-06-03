@@ -18,7 +18,7 @@ export const sections: HomepageSectionGroup[] = [
         items: [
           {
             title: 'Getting Started',
-            path: '',
+            path: '/applications/getting_started',
           },
           {
             title: 'Properties',
@@ -133,6 +133,10 @@ export const sections: HomepageSectionGroup[] = [
             path: 'managed_rules',
           },
           {
+            title: 'Client-Side Protection',
+            path: 'client_side_protection',
+          },
+          {
             title: 'Security Apps',
             path: 'security_applications',
           },
@@ -147,8 +151,43 @@ export const sections: HomepageSectionGroup[] = [
         path: 'sites_frameworks',
         items: [
           {
-            title: 'Frameworks',
+            title: 'Next.js',
+            path: 'getting_started/next',
+          },
+          {
+            title: 'Nuxt3',
+            path: 'getting_started/nuxt3',
+          },
+          {
+            title: 'Express',
+            path: 'getting_started/express',
+          },
+          {
+            title: 'React',
+            path: 'getting_started/react',
+          },
+          {
+            title: 'Vue.js',
+            path: 'getting_started/vue',
+          },
+          {
+            title: 'Additional Frameworks',
             path: 'getting_started',
+          },
+        ],
+      },
+      {
+        title: 'REST API',
+        path: 'rest_api',
+        items: [
+          {
+            title: 'Authentication',
+            path: '/applications/rest_api/authentication',
+          },
+          {
+            title: 'REST API Reference',
+            path: '/rest_api/',
+            external: true,
           },
         ],
       },
@@ -175,7 +214,7 @@ export const sections: HomepageSectionGroup[] = [
           },
           {
             title: 'MediaVault',
-            path: 'https://support.limelight.com/public/en/Content/Delivery/SmartPurge/Smart_Purge.htm',
+            path: 'https://support.limelight.com/public/en/Default.htm#Delivery/Content%20Delivery%20-%20MediaVault%20User%20Guide/MediaVault.htm',
           },
           {
             title: 'Origin Storage Quick Start',
@@ -199,16 +238,16 @@ export const sections: HomepageSectionGroup[] = [
             path: 'https://support.limelight.com/public/en/Content/Delivery/Content%20Delivery%20-%20User%20Guide/Delivery.htm',
           },
           {
-            title: 'MediaVault',
-            path: 'https://support.limelight.com/public/en/Content/Delivery/SmartPurge/Smart_Purge.htm',
-          },
-          {
             title: 'Origin Storage Quick Start',
             path: 'https://support.limelight.com/public/en/Content/Storage/Quick%20Start%20Guide%20Combined/Quick%20Start.htm',
           },
           {
             title: 'SmartPurge',
             path: 'https://support.limelight.com/public/en/Content/Delivery/SmartPurge/Smart_Purge.htm',
+          },
+          {
+            title: 'API Explorer',
+            path: 'https://developers.limelight.com/explorer/',
           },
         ],
       },
@@ -250,7 +289,6 @@ export const sections: HomepageSectionGroup[] = [
     icon: IconUplynk,
     sections: [
       {
-        path: 'https://docs.edgecast.com/video/index.html',
         items: [
           {
             title: 'Getting Started',
@@ -338,12 +376,27 @@ export const sections: HomepageSectionGroup[] = [
   },
 ];
 
-sections.forEach((section) => {
-  section.sections.forEach((subsection) => {
-    subsection.items.forEach((item) => {
-      if (!item.path.startsWith('http') && !item.path.startsWith('/')) {
-        item.path = `${section.path}/${subsection.path}/${item.path}`;
+(() => {
+  const setHref = (basePath: string, path: string) =>
+    path.startsWith('http') || path.startsWith('/')
+      ? path
+      : `${basePath}/${path}`;
+
+  sections.forEach((section) => {
+    if (section.path) {
+      section.href = section.path;
+    }
+
+    section.sections.forEach((subsection) => {
+      if (subsection.path) {
+        subsection.href = setHref(section.path!, subsection.path);
       }
+
+      subsection.items.forEach((item) => {
+        if (item.path) {
+          item.href = setHref(`${section.path}/${subsection.path}`, item.path);
+        }
+      });
     });
   });
-});
+})();

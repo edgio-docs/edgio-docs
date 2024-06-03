@@ -1,90 +1,15 @@
-get:
-  tags:
-    - tls-certs
-  summary: Get All TLS Certificates
-  description: Returns all TLS certificates associated with an environment.
-  operationId: getConfigV01TlsCerts
-  parameters:
-    - name: page
-      in: query
-      description: 0-based page number.
-      schema:
-        type: integer
-        format: int32
-        default: 0
-    - name: page_size
-      in: query
-      description: >-
-        Number of results per page. Valid values are: 1 - 100. **Default
-        value:** 20
-      schema:
-        type: integer
-        format: int32
-        default: 20
-    - name: environment_id
-      in: query
-      description: >
-        An environment's system-defined ID (e.g.,
-        12345678-1234-1234-1234-1234567890ab).
-
-
-        From the Edgio Console, navigate to the desired environment and then
-        click **Settings**. It is listed under **Environment ID**.
-      required: true
-      schema:
-        type: string
-  responses:
-    '200':
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Config_V1_Entities_TlsCert_Collection.yaml
-    '400':
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
-    '401':
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '403':
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '404':
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '500':
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-  security:
-    - configScope:
-        - app.config
 post:
-  tags:
-    - tls-certs
   summary: Upload TLS Certificate
   description: Upload your TLS certificate to activate it within a specific environment.
-  operationId: postConfigV01TlsCerts
   requestBody:
     content:
       application/json:
         schema:
           $ref: ../components/schemas/postConfigV01TlsCerts.yaml
     required: true
+  security:
+    - configScope:
+        - app.config
   responses:
     '201':
       description: OK
@@ -97,32 +22,126 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+            $ref: ../components/schemas/BaseApi_Entities_Error_UserError.yaml
     '401':
       description: Unauthorized
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_UnauthorizedError.yaml
     '403':
       description: Forbidden
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+            $ref: ../components/schemas/BaseApi_Entities_Error_ForbiddenError.yaml
     '404':
       description: Not Found
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_RecordNotFoundError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_TooManyRequestsError.yaml
     '500':
       description: Internal Server Error
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+            $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
+  tags:
+    - tls-certs
+  operationId: postConfigV01TlsCerts
+get:
+  summary: Get All TLS Certificates
+  description: Returns all TLS certificates associated with an environment.
+  parameters:
+    - in: query
+      name: page
+      description: 0-based page number.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        default: 0
+    - in: query
+      name: page_size
+      description: >-
+        Number of results per page. Valid values are: 1 - 100. **Default
+        value:** 20
+      required: false
+      schema:
+        type: integer
+        format: int32
+        default: 20
+    - in: query
+      name: environment_id
+      description: >
+        An environment's system-defined ID (e.g.,
+        12345678-1234-1234-1234-1234567890ab).
+
+
+        From the Edgio Console, navigate to the desired environment and then
+        click **Settings**. It is listed under **Environment ID**.
+      required: true
+      schema:
+        type: string
   security:
     - configScope:
         - app.config
-  x-codegen-request-body-name: postConfigV01TlsCerts
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Config_V1_Entities_TlsCert_Collection.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_UnauthorizedError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_ForbiddenError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_RecordNotFoundError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_TooManyRequestsError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
+  tags:
+    - tls-certs
+  operationId: getConfigV01TlsCerts

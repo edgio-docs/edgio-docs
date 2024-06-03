@@ -12,12 +12,12 @@ Edgio supports both Vue 2 and Vue 3, using both CLIs - `@vue/cli` and `vite`.
 <ExampleButtons
   title="Vue.js"
   siteUrl="https://edgio-community-examples-vue3-live.layer0-limelight.link"
-  repoUrl="https://github.com/edgio-docs/edgio-vue3-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-vue3-example"
   deployFromRepo />
 
 ## Connector {/*connector*/}
 
-{{ PRODUCT }} provides a connector for this framework. [Learn more.](/guides/sites_frameworks/connectors)
+{{ PRODUCT }} provides a connector for this framework. [Learn more.](/applications/sites_frameworks/connectors)
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-vue-cva-connector">
  View the Connector Code
@@ -33,7 +33,7 @@ If you don't have an existing Vue 3 site, you can create one by running:
 npm init vue@latest
 ```
 
-This command will create a project based on `vite`. 
+This command will create a project based on `vite`.
 
 If you need help with Vue initialization, please follow the [create-vue project's readme](https://github.com/vuejs/create-vue).
 
@@ -96,7 +96,7 @@ By default, `Prefetch` waits until the link appears in the viewport before prefe
 </Prefetch>
 ```
 
-Refer to the [Predictive Prefetch](/guides/performance/prefetching) for more examples of prefetch functionality.
+Refer to the [Predictive Prefetch](/applications/performance/prefetching) for more examples of prefetch functionality.
 
 ## Routing {/*routing*/}
 
@@ -112,7 +112,7 @@ const { vueRoutes } = require('{{ PACKAGE_NAME }}/vue-cva')
 export default new Router().use(vueRoutes)
 ```
 
-Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
+Refer to the [CDN-as-code](/applications/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
 ## Running Locally {/*running-locally*/}
 
@@ -138,8 +138,8 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
+Refer to the [Deployments](/applications/basics/deployments) guide for more information on the `deploy` command and its options.
 
 ## Server Side Rendering {/*server-side-rendering*/}
 
-For server side rendered Vue.js apps we recommend using the Nuxt.js framework which is supported on {{ PRODUCT }}. Refer to the [Nuxt](/guides/sites_frameworks/getting_started/nuxt) guide for more information.
+For server side rendered Vue.js apps we recommend using the Nuxt.js framework which is supported on {{ PRODUCT }}. Refer to the [Nuxt](/applications/sites_frameworks/getting_started/nuxt) guide for more information.

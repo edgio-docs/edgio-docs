@@ -40,13 +40,13 @@ blacklists for the following categories:
 
     <a id="country"></a>
 
--   **Country:** Identifies requests by the country from which the request originated. Specify each desired country using a [country code](/guides/reference/country_codes).  
+-   **Country:** Identifies requests by the country from which the request originated. Specify each desired country using a [country code](/applications/reference/country_codes).
 
     <Callout type="info">
 
       Country access controls take precedence over [country subdivision](#country-subdivision--iso3166-2-) access controls.
 
-      For example, if you define `US` within a whitelist, then state-specific access controls will be ignored for requests that originate within the United States. 
+      For example, if you define `US` within a whitelist, then state-specific access controls will be ignored for requests that originate within the United States.
 
     </Callout>
 
@@ -61,15 +61,15 @@ blacklists for the following categories:
 
       [Country](#country) access controls take precedence over country subdivision access controls.
 
-      For example, if you define `US` within a whitelist, then state-specific access controls will be ignored for requests that originate within the United States. 
+      For example, if you define `US` within a whitelist, then state-specific access controls will be ignored for requests that originate within the United States.
 
     </Callout>
- 
-    **Syntax:** 
+
+    **Syntax:**
 
     `<Country Code>`-`<Subdivision Code>`
 
-    **Example:** 
+    **Example:**
 
     The following value identifies requests from California:  `US-CA`
 
@@ -78,11 +78,11 @@ blacklists for the following categories:
 
     <a id="ip-address"></a>
 
--   **IP Address:** Identifies requests by the requester's IPv4 and/or IPv6 address. 
+-   **IP Address:** Identifies requests by the requester's IPv4 and/or IPv6 address.
 
     **Key information:**
 
-    -   Specify each desired IP address using standard IPv4/IPv6 and CIDR notation.  
+    -   Specify each desired IP address using standard IPv4/IPv6 and CIDR notation.
 
         <Callout type="info">
 
@@ -98,11 +98,11 @@ blacklists for the following categories:
 
         </Callout>
 
-    -   Certain services and applications, such as VPNs, mask a client's IP address. Specifically, they will report an IP address of their choosing instead of the client's real IP address. As a result, multiple devices and perhaps even users may end up sharing the same IP address. 
+    -   Certain services and applications, such as VPNs, mask a client's IP address. Specifically, they will report an IP address of their choosing instead of the client's real IP address. As a result, multiple devices and perhaps even users may end up sharing the same IP address.
 
     <a id="referrer"></a>
 
--   **Referrer:** Identifies requests by referrer. A successful match is found when the specified regular expression matches any portion of the `Referer` request header value.  
+-   **Referrer:** Identifies requests by referrer. A successful match is found when the specified regular expression matches any portion of the `Referer` request header value.
 
     <Callout type="info">
 
@@ -116,7 +116,7 @@ blacklists for the following categories:
 
     <Callout type="important">
 
-      Do not include a protocol or a hostname (e.g., `http://cdn.mydomain.com`) when defining a regular expression for this access control.  
+      Do not include a protocol or a hostname (e.g., `http://cdn.mydomain.com`) when defining a regular expression for this access control.
 
     </Callout>
 
@@ -128,7 +128,7 @@ blacklists for the following categories:
 
     **Example:**
 
-    All of the entries in the following sample access control list will match a request for `http://www.mydomain.com/marketing/images/ad001.png`:  
+    All of the entries in the following sample access control list will match a request for `http://www.mydomain.com/marketing/images/ad001.png`:
 
     `/marketing/.*`
 
@@ -151,22 +151,25 @@ The purpose of a whitelist is to identify legitimate traffic.
 
 ### Accesslists {/*accesslists*/}
 
-The purpose of an accesslist is to identify traffic that may access your
-content upon passing a threat assessment. If one or more accesslists
-have been defined, {{ PRODUCT_SECURITY }} will only inspect requests that satisfy at least
-one criterion in each defined accesslist. All other traffic, unless it
-has been whitelisted, will be blocked.
+The purpose of an accesslist is to identify traffic that may access your content upon passing a threat assessment. 
+
+{{ PRODUCT_SECURITY }} processes requests according to the following workflow:
+
+1.  Whitelisted traffic is automatically allowed. All other traffic proceed to the next step.
+2.  Has an accesslist been defined?
+    -   **Yes:** Does the request satisfy at least one criterion in any accesslist?
+        -   **Yes:** {{ PRODUCT_SECURITY }} will inspect the request.
+        -   **No:** {{ PRODUCT_SECURITY }} will block the request.
+    -   **No:** Proceed to check whether it should be blacklisted.
 
 ### Blacklists {/*blacklists*/}
 
 The purpose of a blacklist is to describe unwanted traffic.
 
--   Traffic is blacklisted when it satisfies all of the following
-    conditions:
+-   Traffic is blacklisted when it satisfies all of the following conditions:
     -   The request satisfies at least one blacklist criterion.
     -   The request does not qualify for whitelisting or accesslisting.
--   {{ PRODUCT_SECURITY }} automatically flags blacklisted requests as threats without
-    inspecting them.
+-   {{ PRODUCT_SECURITY }} automatically flags blacklisted requests as threats without inspecting them.
 
 **Key information:**
 
@@ -304,8 +307,8 @@ through the **Allowed Request Content Types** option.
             `Content-Type` header does not match a media type
             defined by this option, then {{ PRODUCT_SECURITY }} will consider this a
             violation of this access rule and enforce the security
-            policy (e.g., alert or block) defined within your [security application 
-            configuration](/guides/security/security_applications#enforcement-mode).
+            policy (e.g., alert or block) defined within your [security application
+            configuration](/applications/security/security_applications#enforcement-mode).
 -   Add a media type by typing it and then pressing `ENTER`.
 -   Media types are case-insensitive.
 
@@ -334,7 +337,7 @@ Blacklist** option.
     defined by this option.
 -   File extensions are case-insensitive.
 -   Add a file extension by typing it and then pressing `ENTER`.
--   **Syntax:** 
+-   **Syntax:**
 
     `.<File Extension>`
 
@@ -362,7 +365,7 @@ The recommended maximum value is 6,291,456 bytes.
 Define the maximum file size for a request that is part of a multipart
 message through a managed rule.
 
-[Learn more](/guides/security/managed_rules#file-size-and-query-string-limits-advanced).
+[Learn more](/applications/security/managed_rules#file-size-and-query-string-limits-advanced).
 
 </Callout>
 
@@ -388,7 +391,7 @@ You may create, modify, and delete access rules.
 -   Administer access rules from the **Access Rules**
     page.
 -   Apply an access rule to production traffic by adding it to a
-    [Security Application configuration](/guides/security/security_applications) and then
+    [Security Application configuration](/applications/security/security_applications) and then
     determining how it will be enforced. Multiple Security Application
     configurations may use the same access rule. Leverage this
     capability to tailor security screening by application or traffic
@@ -450,7 +453,7 @@ You may create, modify, and delete access rules.
 
     5.  From the **Allowed Request Content Types** option,
          verify that the list only contains the [media
-         types](#media-types--aka-content-types-) that should be allowed. 
+         types](#media-types--aka-content-types-) that should be allowed.
 
         Add a media type by typing it and then pressing `ENTER`. Remove a media type by clicking the `x` icon that appears directly to the right of it.
 
@@ -463,7 +466,7 @@ You may create, modify, and delete access rules.
 
     6.  From the **Extension Blacklist** option, verify that all
         of the listed [file extensions](#file-extensions) should be
-        blocked. 
+        blocked.
 
         Add a file extension by typing it and then pressing `ENTER`. Remove a file extension by clicking the `x` icon that appears directly to the right of it.
 
@@ -473,7 +476,7 @@ You may create, modify, and delete access rules.
 
         </Callout>
 
-    7.  From the **Header Blacklist** option, add the set of [request headers](#request-headers) that should be blocked. 
+    7.  From the **Header Blacklist** option, add the set of [request headers](#request-headers) that should be blocked.
 
         Add a request header by typing it and then pressing `ENTER`. Remove a request header by clicking the `x` icon that appears directly to the right of it.
 

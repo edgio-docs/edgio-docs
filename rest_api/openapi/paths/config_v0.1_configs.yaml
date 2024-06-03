@@ -1,18 +1,18 @@
 post:
-  tags:
-    - configs
   summary: Deploy CDN Configuration
   description: >
     Deploys your configuration to a specific environment. This deployment
     overwrites any existing origin configurations, hostnames, rules, and
     experiments.
-  operationId: postConfigV01Configs
   requestBody:
     content:
       application/json:
         schema:
           $ref: ../components/schemas/postConfigV01Configs.yaml
     required: true
+  security:
+    - configScope:
+        - app.config
   responses:
     '202':
       description: OK
@@ -25,32 +25,40 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+            $ref: ../components/schemas/BaseApi_Entities_Error_UserError.yaml
     '401':
       description: Unauthorized
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_UnauthorizedError.yaml
     '403':
       description: Forbidden
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+            $ref: ../components/schemas/BaseApi_Entities_Error_ForbiddenError.yaml
     '404':
       description: Not Found
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_RecordNotFoundError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_TooManyRequestsError.yaml
     '500':
       description: Internal Server Error
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-  security:
-    - configScope:
-        - app.config
-  x-codegen-request-body-name: postConfigV01Configs
+            $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
+  tags:
+    - configs
+  operationId: postConfigV01Configs

@@ -122,6 +122,10 @@ const nav = {
               title: 'edgio.config.js Configuration',
               path: 'performance/cdn_as_code/edgio_config',
             },
+            {
+              title: 'CLI',
+              path: 'performance/cdn_as_code/cli',
+            },
           ],
         },
         {
@@ -310,6 +314,20 @@ const nav = {
       title: 'Experimentation',
       path: 'experimentation',
       icon: 'experimentation',
+      routes: [
+        {
+          title: 'Cross-Environment Traffic Splitting',
+          path: 'experimentation/cross_environment_traffic_splitting',
+        },
+        {
+          title: 'Basic Traffic Splitting Tutorial',
+          path: 'experimentation/basic_traffic_splitting_tutorial',
+        },
+        {
+          title: 'Iterative Migration Tutorial',
+          path: 'experimentation/iterative_migration_tutorial',
+        },
+      ],
     },
     {
       title: 'Security',
@@ -327,6 +345,10 @@ const nav = {
         {
           title: 'TLS Certificates',
           path: 'security/tls_certificates',
+        },
+        {
+          title: 'Attack Surface Management - BETA',
+          path: 'security/asm',
         },
         separator,
         {
@@ -360,6 +382,10 @@ const nav = {
         {
           title: 'Managed Rules',
           path: 'security/managed_rules',
+        },
+        {
+          title: 'Client-Side Protection',
+          path: 'security/client_side_protection',
         },
         {
           title: 'Security Apps',
@@ -440,8 +466,16 @@ const nav = {
               path: 'sites_frameworks/getting_started/nuxt3',
             },
             {
+              title: 'Qwik',
+              path: 'sites_frameworks/getting_started/qwik',
+            },
+            {
               title: 'React',
               path: 'sites_frameworks/getting_started/react',
+            },
+            {
+              title: 'Remix',
+              path: 'sites_frameworks/getting_started/remix',
             },
             {
               title: 'SvelteKit',
@@ -580,54 +614,36 @@ const nav = {
               title: 'Log Fields (RTLD Bot)',
               path: 'logs/rtld/log_fields_rtld_bot_manager',
             },
+            {
+              title: 'Log Fields (RTLD Cloud Functions)',
+              path: 'logs/rtld/log_fields_rtld_cloud_functions',
+            },
           ],
         },
       ],
     },
     {
-      title: 'Develop',
-      path: 'develop',
+      title: 'REST API',
+      path: 'rest_api',
       icon: 'code-plain',
       routes: [
         {
-          title: 'CLI',
-          path: 'develop/cli',
+          title: 'Authentication',
+          path: 'rest_api/authentication',
         },
         {
-          title: 'REST API',
-          path: 'develop/rest_api',
-          routes: [
-            {
-              title: 'Authentication',
-              path: 'develop/rest_api/authentication',
-            },
-            {
-              title: 'REST API Reference',
-              path: '/rest_api/',
-              external: true,
-            },
-            separator,
-            {
-              title: 'Legacy Purge (Clear-Cache)',
-              path: 'develop/rest_api/cache_purge',
-            },
-          ],
+          title: 'Using the Metrics REST API',
+          path: 'rest_api/metrics_rest_api_usage',
         },
         {
-          title: 'EdgeJS API Reference',
-          path: 'develop/packages',
-          routes: [
-            {
-              title: '@edgio/core',
-              path: '/docs/v7.x/api/core/',
-              external: true,
-            },
-            {
-              title: '@edgio/prefetch',
-              path: '/docs/v7.x/api/prefetch/',
-              external: true,
-            },
-          ],
+          title: 'REST API Reference',
+          path: '/rest_api/',
+          external: true,
+        },
+        separator,
+        {
+          title: 'Legacy Purge (Clear-Cache)',
+          path: 'rest_api/cache_purge',
         },
       ],
     },
@@ -682,7 +698,7 @@ const nav = {
         },
         {
           title: 'CLI',
-          path: 'develop/cli#commands',
+          path: 'performance/cdn_as_code/cli#commands',
         },
         separator,
         {
@@ -692,7 +708,7 @@ const nav = {
         },
         {
           title: 'Legacy Purge API',
-          path: 'develop/rest_api/cache_purge',
+          path: 'rest_api/cache_purge',
         },
         separator,
         {

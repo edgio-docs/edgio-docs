@@ -4,14 +4,19 @@ import {ChatChannel} from '@fireaw.ai/sdk';
 import {useRouter} from 'next/router';
 import {FiSend, FiX} from 'react-icons/fi';
 import Modal from 'react-modal';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 import {siteConfig} from 'config/appConfig';
 import {useEdgioAnswersContext} from 'contexts/EdgioAnswersContext';
 import {useTheme} from 'contexts/ThemeContext';
+import {mobileMinWidth} from 'styles';
 import useHydrationIsLoaded from 'utils/hooks/useHydrationIsLoaded';
 
-import {IconEdgioAnswers, IconEdgioAnswersDark} from './Icon/IconEdgioAnswers';
+import {
+  IconEdgioAnswers,
+  IconEdgioAnswersDark,
+  IconEdgioAnswersWidget,
+} from './Icon/IconEdgioAnswers';
 import NoSSRWrapper from './Layout/NoSSRWrapper';
 import Link from './MDX/Link';
 import Markdown from './MDX/Markdown';
@@ -26,7 +31,6 @@ interface Message {
   finished?: boolean;
 }
 
-// Adjust modal and overlay styles according to your design requirements
 const customStyles: Modal.Styles = {
   content: {
     top: '10%',
@@ -64,16 +68,16 @@ const ChatInputContainer = styled.div`
 const ChatInput = styled.input<{hasContent: boolean}>`
   ${({hasContent}) =>
     hasContent
-      ? `
-  background: var(--ea-input-field-active-bg);
-  color: var(--text-primary);
-  `
-      : `
-  background: var(--ea-input-field-bg);
-  color: var(--ea-input-placeholder-color);
-  `}
+      ? css`
+          background: var(--ea-input-field-active-bg);
+          color: var(--text-primary);
+        `
+      : css`
+          background: var(--ea-input-field-bg);
+          color: var(--ea-input-placeholder-color);
+        `}
 
-  flex-grow: 1;
+  width: 100%;
   padding: 8px;
   border: 1px solid var(--border-primary);
   border-radius: 4px;
@@ -161,16 +165,6 @@ const Message = styled.div<{isUser: boolean}>`
   }
 `;
 
-const QuestionButtons = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  padding: 10px 0;
-  border-top: 1px solid var(--border-primary);
-`;
-
 const QuestionButton = styled.button`
   background-color: var(--bg-primary);
   color: var(--text-primary);
@@ -181,6 +175,24 @@ const QuestionButton = styled.button`
   cursor: pointer;
   &:hover {
     background-color: var(--colors-blue0);
+  }
+`;
+
+const QuestionButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border-primary);
+
+  @media (max-width: ${mobileMinWidth}) {
+    flex-direction: column;
+
+    ${QuestionButton} {
+      width: 100%;
+    }
   }
 `;
 
@@ -260,6 +272,14 @@ const ShowMoreLink = styled.a`
   margin-left: 5px;
 `;
 
+const WidgetContainer = styled.div`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 100;
+`;
+
 function Disclaimer() {
   const [showFullDisclaimer, setShowFullDisclaimer] = useState(false);
 
@@ -302,38 +322,24 @@ const defaultPlaceholder = 'Ask Edgio Answers...';
 const EdgioAnswers = () => {
   const router = useRouter();
   const {themedValue} = useTheme();
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const chatInputRef = useRef<HTMLInputElement>(null);
   const {chatbotId, apiToken} = siteConfig.fireawai;
   const [channel, setChannel] = useState<ChatChannel | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [isAwaitingResponse, setIsAwaitingResponse] = useState<boolean>(false);
-  const {starterQuestions, setStarterQuestions, query, setQuery} =
-    useEdgioAnswersContext();
+  const {
+    query,
+    setQuery,
+    isModalOpen,
+    starterQuestions,
+    setStarterQuestions,
+    closeModal,
+  } = useEdgioAnswersContext();
+
   const isLoaded = useHydrationIsLoaded();
   const placeholder = isAwaitingResponse
     ? 'Waiting for response...'
     : defaultPlaceholder;
-
-  useEffect(() => {
-    const checkHash = () => {
-      const hash = window.location.hash;
-      setIsModalOpen(hash === ROUTE_HASH);
-    };
-
-    checkHash();
-
-    const handleRouteChange = (url: string) => {
-      const hash = new URL(url, window.location.href).hash;
-      setIsModalOpen(hash === ROUTE_HASH);
-    };
-
-    router.events.on('hashChangeComplete', handleRouteChange);
-
-    return () => {
-      router.events.off('hashChangeComplete', handleRouteChange);
-    };
-  }, [router.events]);
 
   if (isLoaded) {
     Modal.setAppElement('#__next');
@@ -343,6 +349,15 @@ const EdgioAnswers = () => {
     return query.trim().length > 0;
   }
 
+  /**
+   * Initializes the chat channel with the provided API token and chatbot ID.
+   * If both the API token and chatbot ID are available, a new ChatChannel instance is created.
+   * The onMessage callback is set to handle incoming messages.
+   * If the message has content, it is added to the messages state.
+   * If the message is marked as finished, the isAwaitingResponse state is updated and the query state is cleared.
+   * If the chat channel is successfully connected, the starter questions are set if available.
+   * Finally, the channel state and query state are updated.
+   */
   const initializeChannel = () => {
     if (apiToken && chatbotId) {
       const newChannel = new ChatChannel({
@@ -409,13 +424,19 @@ const EdgioAnswers = () => {
   const sendMessage = () => {
     if (query.trim() && channel && !isAwaitingResponse) {
       channel.send(query);
-      setIsAwaitingResponse(false);
+      setIsAwaitingResponse(true);
       setQuery('');
     }
   };
 
+  /**
+   * Handles the logic for opening the modal.
+   * Adds a CSS class to the body to lock scrolling.
+   * Sets focus on the chat input field if it exists.
+   * Calls the sendMessage function if there is content.
+   */
   const onOpenModal = () => {
-    document.body.classList.add('ReactModal__Body--open');
+    document.body.classList.add('lock-scroll');
     if (chatInputRef.current) {
       chatInputRef.current.focus();
     }
@@ -425,17 +446,21 @@ const EdgioAnswers = () => {
     }
   };
 
+  /**
+   * Handles the close event of the modal.
+   * If RESET_ON_CLOSE is true and a channel is present, it disconnects the channel,
+   * clears the messages, and sets the channel to null.
+   * Removes the 'lock-scroll' class from the body element.
+   */
   const onCloseModal = () => {
     if (RESET_ON_CLOSE && channel) {
       channel.disconnect();
       setChannel(null);
       setMessages([]);
     }
-    document.body.classList.remove('ReactModal__Body--open');
-    setIsModalOpen(false);
+    document.body.classList.remove('lock-scroll');
 
-    const path = window.location.pathname;
-    router.push(path, path, {shallow: true});
+    closeModal();
   };
 
   return (
@@ -520,8 +545,12 @@ export const EdgioAnswersInput = ({duration = 1000}) => {
   const [placeholder, setPlaceholder] = useState('');
   const inputRef = useRef(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const {starterQuestions: presets, query, setQuery} = useEdgioAnswersContext();
-  const router = useRouter();
+  const {
+    starterQuestions: presets,
+    query,
+    setQuery,
+    openModal,
+  } = useEdgioAnswersContext();
 
   const typeMessage = (message: string, index: number) => {
     let i = 0;
@@ -567,8 +596,7 @@ export const EdgioAnswersInput = ({duration = 1000}) => {
 
   function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === 'Enter') {
-      setQuery(e.currentTarget.value);
-      router.push(edgioAnswersUrl);
+      openModal(e.currentTarget.value);
     }
   }
 
@@ -594,4 +622,13 @@ export const EdgioAnswersInput = ({duration = 1000}) => {
 };
 
 export default EdgioAnswers;
+export const EdgioAnswersWidget = () => {
+  const {openModal} = useEdgioAnswersContext();
+  return (
+    <WidgetContainer onClick={() => openModal()}>
+      <IconEdgioAnswersWidget />
+    </WidgetContainer>
+  );
+};
+
 export const edgioAnswersUrl = ROUTE_HASH;

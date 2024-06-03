@@ -11,16 +11,16 @@ Route features identify actions that will be applied to a request. Popular featu
 - **Set Variables**: Assigns a value to one or more user-defined variable(s) that are passed to your bespoke traffic processing solution.
 - **URL**: Redirects or rewrites requests to a different URL.
 
-See [Features Reference](/guides/performance/rules/features) for a complete list of features and their behavior.
+See [Features Reference](/applications/performance/rules/features) for a complete list of features and their behavior.
 
 ## Defining Route Features {/* defining-route-features */}
 
-As outlined in the [Route Features](/guides/performance/cdn_as_code#route-features) section of the CDN-as-Code guide:
+As outlined in the [Route Features](/applications/performance/cdn_as_code#route-features) section of the CDN-as-Code guide:
 
 - Route features are defined as the second argument to the `Router` method being called in the `routes.js` file, such as `.match()`, `.get()`, `.post()`, etc.
-- May also be defined in [conditional routes](/guides/performance/cdn_as_code/route_criteria#conditional-routes) such as `.if()`, `.elseif()`, etc.
+- May also be defined in [conditional routes](/applications/performance/cdn_as_code/route_criteria#conditional-routes) such as `.if()`, `.elseif()`, etc.
 
-The argument is an object that supports features outlined in the [Features Reference](/guides/performance/rules/features). The following example shows how to define a route feature that proxies a request to the origin host and caches it for 1 hour:
+The argument is an object that supports features outlined in the [Features Reference](/applications/performance/rules/features). The following example shows how to define a route feature that proxies a request to the origin host and caches it for 1 hour:
 
 ```js
 router.match('/:path*', {
@@ -94,7 +94,7 @@ router.get('/some/path', {
 
 ### Customizing the Cache Key {/* customizing-the-cache-key */}
 
-A [cache key](/guides/performance/caching/cache_key) is automatically generated for each request, but if your web application relies on query string parameter(s), request header(s), or cookie(s) when generating a response, then you should customize the cache key to include those elements. You can customize the cache key using the [`cache_key`](docs/api/core/interfaces/types.Caching.html#cache_key) feature:
+A [cache key](/applications/performance/caching/cache_key) is automatically generated for each request, but if your web application relies on query string parameter(s), request header(s), or cookie(s) when generating a response, then you should customize the cache key to include those elements. You can customize the cache key using the [`cache_key`](docs/api/core/interfaces/types.Caching.html#cache_key) feature:
 
 ```js
 router.get('/some/path', {
@@ -116,9 +116,9 @@ router.get('/some/path', {
 
 ## Debug Cache Headers {/* debug-cache-headers */}
 
-The debug cache response headers provide additional information about the cache policy applied to the requested asset. [Learn more.](/guides/performance/response#requesting-debug-cache-information)
+The debug cache response headers provide additional information about the cache policy applied to the requested asset. [Learn more.](/applications/performance/response#requesting-debug-cache-information)
 
-To enable debug mode, you need to set the [`debug_header` feature](/guides/performance/rules/features#debug-header). In your `routes.js` file, add the following:
+To enable debug mode, you need to set the [`debug_header` feature](/applications/performance/rules/features#debug-header). In your `routes.js` file, add the following:
 
 ```js
 import {Router, edgioRoutes} from '@edgio/core/router';
@@ -139,9 +139,9 @@ router.match('/some-path', {
 });
 ```
 
-To see the debug headers in the response, you will need to specify the `x-ec-debug` header in your request. This request header should list the values of the debug headers you want to see in the response as defined under [Requesting Debug Cache Information](/guides/performance/response#requesting-debug-cache-information).
+To see the debug headers in the response, you will need to specify the `x-ec-debug` header in your request. This request header should list the values of the debug headers you want to see in the response as defined under [Requesting Debug Cache Information](/applications/performance/response#requesting-debug-cache-information).
 
-For example, you can use the [`{{ CLI_CMD(curl) }}`](/guides/develop/cli#curl) command to request the `x-ec-cache` and `x-ec-cache-state` headers:
+For example, you can use the [`{{ CLI_CMD(curl) }}`](/applications/performance/cdn_as_code/cli#curl) command to request the `x-ec-cache` and `x-ec-cache-state` headers:
 
 ```bash
 {{ CLI_CMD(curl) }} https://your-site.com/some-path -H "x-ec-debug:x-ec-cache,x-ec-cache-state"
@@ -334,11 +334,11 @@ router.get('/products/:productId', {
 });
 ```
 
-Additional information on the `headers` feature can be found in the [Features](/guides/performance/rules/features#headers) guide.
+Additional information on the `headers` feature can be found in the [Features](/applications/performance/rules/features#headers) guide.
 
 ### Altering All Responses {/* altering-all-responses */}
 
-You can also write catch-all routes that will alter all responses. One example where this is useful is injecting [Content Security Policy](/guides/security/edgejs_security#content-security-policy-csp) headers.
+You can also write catch-all routes that will alter all responses. One example where this is useful is injecting [Content Security Policy](/applications/security/edgejs_security#content-security-policy-csp) headers.
 
 Another example is adding response headers for debugging, which is often useful if {{ PRODUCT_NAME }} is behind another CDN or if you are troubleshooting your router rules. For example, you could respond with the value of request `%{http_x_forwarded_for}` into `x-debug-xff` to see the value that {{ PRODUCT_NAME }} is receiving from the CDN:
 
@@ -360,12 +360,12 @@ router.match(
 );
 ```
 
-The rules for interpolating the values of request and response objects can be found in the [routing](/guides/performance/cdn_as_code#embedded-values) guide.
-Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/performance/cdn_as_code#route-execution) for more information on route execution order and sending responses.
+The rules for interpolating the values of request and response objects can be found in the [routing](/applications/performance/cdn_as_code#embedded-values) guide.
+Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/applications/performance/cdn_as_code#route-execution) for more information on route execution order and sending responses.
 
 ### Transforming Requests / Responses {/* transforming-requests-responses */}
 
-If you need to modify a request before going to an origin, or modify the response from an origin, you may use `transformRequest` and `transformResponse` functions on the `proxy` handler. Transform functions will be executed within the {{ PRODUCT }} cloud, and will not be executed on the edge. See [Cloud Functions](/guides/performance/serverless_compute) for more information.
+If you need to modify a request before going to an origin, or modify the response from an origin, you may use `transformRequest` and `transformResponse` functions on the `proxy` handler. Transform functions will be executed within the {{ PRODUCT }} cloud, and will not be executed on the edge. See [Cloud Functions](/applications/performance/serverless_compute) for more information.
 
 {{ routehelper_usage.md }}
 
@@ -625,7 +625,7 @@ router.get('/products/:id', ({ serveStatic, cache }) => {
 
 ## Image Optimization {/* image-optimization */}
 
-{{ PRODUCT_NAME }} can dynamically transform your images to tailor your site's design, experience, and performance needs. [Image optimization](/guides/performance/image_optimization) can be enabled using the [`response.optimize_images`](/docs/api/core/interfaces/types.Response.html#optimize_images) feature on your route(s).
+{{ PRODUCT_NAME }} can dynamically transform your images to tailor your site's design, experience, and performance needs. [Image optimization](/applications/performance/image_optimization) can be enabled using the [`response.optimize_images`](/docs/api/core/interfaces/types.Response.html#optimize_images) feature on your route(s).
 
 <ExampleButtons
   title="Image Optimization"
@@ -668,7 +668,7 @@ This example:
 
 <Callout type="important">
 
-Rules should match using a regular expression that captures the image path and query string parameters containing the image optimization options. This is necessary to ensure optimization options are captured and passed to the image optimizer. Using [simple path matching](/guides/performance/cdn_as_code/route_criteria#simple-path-matching) (e.g. `/images/:path*`) will not capture the query string parameters and optimizations will not be applied.
+Rules should match using a regular expression that captures the image path and query string parameters containing the image optimization options. This is necessary to ensure optimization options are captured and passed to the image optimizer. Using [simple path matching](/applications/performance/cdn_as_code/route_criteria#simple-path-matching) (e.g. `/images/:path*`) will not capture the query string parameters and optimizations will not be applied.
 
 </Callout>
 
@@ -851,7 +851,7 @@ router.match(
 
 ### Redirecting HTTP to HTTPS {/* redirecting-http-to-https */}
 
-To redirect all HTTP traffic to HTTPS, use the `url.url_redirect` feature. Matching the `source` with `(.*)` will capture the entire path and query string that is then appended to the `destination`. Referencing `%{host}` in the `destination` will ensure that the request is redirected to the current host. See [Feature Variables](/guides/performance/rules/feature_variables) for more information.
+To redirect all HTTP traffic to HTTPS, use the `url.url_redirect` feature. Matching the `source` with `(.*)` will capture the entire path and query string that is then appended to the `destination`. Referencing `%{host}` in the `destination` will ensure that the request is redirected to the current host. See [Feature Variables](/applications/performance/rules/feature_variables) for more information.
 
 ```js
 router.match(
@@ -872,7 +872,7 @@ router.match(
 
 ### Blocking traffic from specific countries {/* blocking-traffic-from-specific-countries */}
 
-If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [country code](/guides/reference/country_codes) using the `location.country` match condition:
+If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [country code](/applications/reference/country_codes) using the `location.country` match condition:
 
 ```js
 import {or} from '@edgio/core';
@@ -918,12 +918,12 @@ router.if(
 );
 ```
 
-Learn more about geolocation headers in the [Request guide](/guides/performance/request#request-headers). For detailed information on complex rules, see [Conditional Routes](/guides/performance/cdn_as_code/conditional_routes).
+Learn more about geolocation headers in the [Request guide](/applications/performance/request#request-headers). For detailed information on complex rules, see [Conditional Routes](/applications/performance/cdn_as_code/conditional_routes).
 
 <!-- TODO need support for regex client IP matching
 ### Allowing Specific IPs {/*allowing-specific-ips*/}
 
-If you need to block all traffic except requests that originate from specific IP addresses, you can do so by matching requests by the [{{ HEADER_PREFIX }}-client-ip](/guides/request_headers#general-headers) header:
+If you need to block all traffic except requests that originate from specific IP addresses, you can do so by matching requests by the [{{ HEADER_PREFIX }}-client-ip](/applications/request_headers#general-headers) header:
 
 ```js
 router.get(
@@ -950,15 +950,15 @@ If you need to block all search engine bot traffic to specific environments (suc
 
 The search engine traffic is automatically blocked on {{ PRODUCT }} edge links and permalinks as of {{ PRODUCT }} v6.
 
-If you would like to enable indexing on those links, you need to pass `{ indexPermalink: true }` into the Router constructor in `routes.js` file:
+</Callout>
+
+If you would like to enable indexing on edge and permalinks, you need to pass `{ indexPermalink: true }` into the Router constructor in `routes.js` file:
 
 ```js
 new Router({indexPermalink: true});
 ```
 
 Otherwise, {{ PRODUCT }} will match requests with the `host` header matching `/{{ LINK_DOMAIN }}|{{ PERMALINK_DOMAIN }}/` and set a response header of `x-robots-tag: noindex`.
-
-</Callout>
 
 Additionally, you can customize this to block traffic to development or staging websites based on the `host` header of the request:
 

@@ -26,7 +26,7 @@ function GetStartedCard({
   hrefText,
 }: IGetStartedCardProps) {
   return (
-    <NextLink href={href}>
+    <NextLink href={href} legacyBehavior>
       <a className="card">
         <header className="card-header">
           <div className="card-icon__box">

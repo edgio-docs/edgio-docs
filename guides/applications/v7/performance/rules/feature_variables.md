@@ -6,13 +6,13 @@ Feature variables retrieves request and response metadata. Use this metadata to 
 
 The following features support variables:
 
--   [Rewrite Cache Key (cache_key_rewrite)](/guides/performance/rules/features#rewrite-cache-key)
--   [Cache Key (cache_key)](/guides/performance/rules/features#cache-key). Feature variable supported is limited to the **Expressions** option (`include_expressions`).
--   [Add Response Headers (add_response_headers)](/guides/performance/rules/features#add-response-headers)
--   [Set Request Headers (set_request_headers)](/guides/performance/rules/features#set-request-headers)
--   [Set Response Headers (set_response_headers)](/guides/performance/rules/features#set-response-headers)
--   [URL Redirect (url_redirect)](/guides/performance/rules/features#url-redirect)
--   [URL Rewrite (url_rewrite)](/guides/performance/rules/features#rewrite-url)
+-   [Rewrite Cache Key (cache_key_rewrite)](/applications/performance/rules/features#rewrite-cache-key)
+-   [Cache Key (cache_key)](/applications/performance/rules/features#cache-key). Feature variable supported is limited to the **Expressions** option (`include_expressions`).
+-   [Add Response Headers (add_response_headers)](/applications/performance/rules/features#add-response-headers)
+-   [Set Request Headers (set_request_headers)](/applications/performance/rules/features#set-request-headers)
+-   [Set Response Headers (set_response_headers)](/applications/performance/rules/features#set-response-headers)
+-   [URL Redirect (url_redirect)](/applications/performance/rules/features#url-redirect)
+-   [URL Rewrite (url_rewrite)](/applications/performance/rules/features#rewrite-url)
 
 ## Definitions {/*definitions*/}
 
@@ -157,23 +157,23 @@ This category contains feature variables that describe the response sent to the 
 
 Feature variables support the following syntax:
 
--   **Feature Variable:** Use this syntax to get the entire value corresponding to the specified feature variable. 
+-   **Feature Variable:** Use this syntax to get the entire value corresponding to the specified feature variable.
 
     **Example:** `%{host}`
 
--   **Feature Variable with a Delimiter:** Use this syntax to transform the value corresponding to the specified feature variable. 
+-   **Feature Variable with a Delimiter:** Use this syntax to transform the value corresponding to the specified feature variable.
 
     **Example:** The following example converts the value associated with the `%{host}` variable to lower-case.
 
     `%{host,}`
 
--   **Feature Variable with a Delimiter and an Expression:** Use regular expressions to replace, delete, or manipulate a feature variable's value. 
+-   **Feature Variable with a Delimiter and an Expression:** Use regular expressions to replace, delete, or manipulate a feature variable's value.
 
     **Example:** `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$2.$3:80}`
 
 <Callout type="important">
 
-  Feature variable names only support alphabet characters and underscores. Convert unsupported characters to underscores. 
+  Feature variable names only support alphabet characters and underscores. Convert unsupported characters to underscores.
 
 </Callout>
 
@@ -242,7 +242,7 @@ A default value can be assigned to a header when it meets any of the following c
 
 Define this default value through any of the following methods:
 
--   Set a header to a default value when the header is missing or its value is set to `NULL`. 
+-   Set a header to a default value when the header is missing or its value is set to `NULL`.
 
     **Syntax:** `%{<FEATURE VARIABLE>:=<DEFAULT VALUE>}`
 
@@ -250,7 +250,7 @@ Define this default value through any of the following methods:
 
     `%{http_referer:=unspecified}`
 
--   Set a header to a default value when it is missing. 
+-   Set a header to a default value when it is missing.
 
     **Syntax:** `%{<FEATURE VARIABLE>=<DEFAULT VALUE>}`
 
@@ -285,9 +285,9 @@ By default, a variable will expand to its full value. Use the following syntax t
 **Key information:**
 
 -   The value assigned to the `<OFFSET>` term determines the starting character of the substring.
-    -   **Positive:** The starting character of the substring is calculated from the first character in the string. 
+    -   **Positive:** The starting character of the substring is calculated from the first character in the string.
     -   **Zero:** The starting character of the substring is the first character in the string.
-    -   **Negative:** The starting character of the substring is calculated from the last character in the string. 
+    -   **Negative:** The starting character of the substring is calculated from the last character in the string.
 
 -   The length of the substring is determined by the `<LENGTH>` term.
     -   **Omitted:** Omitting the `<LENGTH>` term allows the substring to include all characters between the starting character and the end of the string.
@@ -307,7 +307,7 @@ Based on the sample request URL, the above variable manipulation will produce th
 
 ### Pattern Removal {/*pattern-removal*/}
 
-Text that matches a specific pattern can be removed from either the beginning or the end of a variable's value. 
+Text that matches a specific pattern can be removed from either the beginning or the end of a variable's value.
 -   Remove text when the specified pattern is found at the beginning of a variable's value.
 
     `%{<VARIABLE>#<PATTERN>}`
@@ -347,7 +347,7 @@ Find and replace syntax is described below.
 **Key information:**
 
 -   Expand text that matches the specified pattern by specifying a dollar sign followed by a whole integer (e.g., `$1`).
--   Multiple patterns may be specified. The order in which the pattern is specified determines the integer that will be assigned to it. 
+-   Multiple patterns may be specified. The order in which the pattern is specified determines the integer that will be assigned to it.
 
     In the following example, the first pattern matches `www` or `www` followed by a single digit, the second pattern matches the second-level domain, and the third pattern matches the top-level domain.
 

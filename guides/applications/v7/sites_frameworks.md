@@ -2,9 +2,9 @@
 title: Sites
 ---
 
-{{ PRODUCT }} {{ PRODUCT_PLATFORM }} is a Jamstack platform built from the ground up to run high-performance websites and web apps. It is the only Jamstack platform with an integrated world-class CDN ([{{ PRODUCT }} {{ PRODUCT_EDGE }}](/guides/performance)) and a state-of-the-art [web security suite](/guides/security). {{ PRODUCT }} {{ PRODUCT_PLATFORM }} enables you to build your web apps faster and leverage a global CDN in your application code to achieve optimal performance for your production traffic.
+{{ PRODUCT }} {{ PRODUCT_PLATFORM }} is a Jamstack platform built from the ground up to run high-performance websites and web apps. It is the only Jamstack platform with an integrated world-class CDN ([{{ PRODUCT }} {{ PRODUCT_EDGE }}](/applications/performance)) and a state-of-the-art [web security suite](/applications/security). {{ PRODUCT }} {{ PRODUCT_PLATFORM }} enables you to build your web apps faster and leverage a global CDN in your application code to achieve optimal performance for your production traffic.
 
-Build upon these performance improvements through Server-Side Rendering (SSR). {{ PRODUCT }} {{ PRODUCT_PLATFORM }} takes an SSR-first approach that enables you to render your web apps using our Cloud Functions at any scale. This allows your teams to focus on shipping features that your customers will love instead of maintaining and scaling your backend server infrastructure. {{ PRODUCT }} {{ PRODUCT_PLATFORM }} improves real-world performance through [precise control over caching](/guides/performance/caching/cache_key) that allows you to cache highly dynamic content. Responses served from the CDN cache will achieve a comparable Time to First Byte (TTFB) as static cached content.
+Build upon these performance improvements through Server-Side Rendering (SSR). {{ PRODUCT }} {{ PRODUCT_PLATFORM }} takes an SSR-first approach that enables you to render your web apps using our Cloud Functions at any scale. This allows your teams to focus on shipping features that your customers will love instead of maintaining and scaling your backend server infrastructure. {{ PRODUCT }} {{ PRODUCT_PLATFORM }} improves real-world performance through [precise control over caching](/applications/performance/caching/cache_key) that allows you to cache highly dynamic content. Responses served from the CDN cache will achieve a comparable Time to First Byte (TTFB) as static cached content.
 
 We also support static page generation:
 
@@ -12,7 +12,7 @@ We also support static page generation:
 
 ## Getting Started {/* getting-started */}
 
-{{ PRODUCT }} {{ PRODUCT_PLATFORM }} provides [Next](/guides/sites_frameworks/getting_started/next), [Nuxt](/guides/sites_frameworks/getting_started/nuxt), and [Nuxt3](/guides/sites_frameworks/getting_started/nuxt3) integrations through which you can deploy your websites and applications to {{ PRODUCT }}. Getting started with {{ PRODUCT }} {{ PRODUCT_PLATFORM }} involves initializing your {{ PRODUCT }} property through our CLI. Our CLI will then automatically detect your framework and configure your app accordingly.
+{{ PRODUCT }} {{ PRODUCT_PLATFORM }} provides [Next](/applications/sites_frameworks/getting_started/next), [Nuxt](/applications/sites_frameworks/getting_started/nuxt), and [Nuxt3](/applications/sites_frameworks/getting_started/nuxt3) integrations through which you can deploy your websites and applications to {{ PRODUCT }}. Getting started with {{ PRODUCT }} {{ PRODUCT_PLATFORM }} involves initializing your {{ PRODUCT }} property through our CLI. Our CLI will then automatically detect your framework and configure your app accordingly.
 
 ## Compute Regions {/* regions */}
 

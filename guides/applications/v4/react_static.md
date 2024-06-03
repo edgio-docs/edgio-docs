@@ -9,7 +9,7 @@ This guide shows you how to deploy a [React Static](https://github.com/react-sta
 <ExampleButtons
   title="React Static"
   siteUrl="https://layer0-docs-layer0-react-static-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-react-static-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-react-static-example"
   deployFromRepo />
 
 {{ PREREQ.md }}
@@ -59,7 +59,7 @@ import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core/router'
 
 export default new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: https://docs.layer0.co/applications/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .static('dist', ({ cache }) => {
     cache({

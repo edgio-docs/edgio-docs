@@ -1,0 +1,21 @@
+title: Header Entry
+type: object
+properties:
+  key:
+    type: string
+    description: | 
+
+      The name of the header that will be added to the response sent to the client. Set this property to either of the following values:
+
+      -   `Content-Security-Policy`: Use this header to set your production Content Security Policy.
+      -   `Content-Security-Policy-Report-Only`: Use this header to set your audit Content Security Policy.
+      
+  value:
+    type: string
+    description: The response header's value. Set this header to the desired Content Security Policy.
+  overwrite:
+    type: boolean
+    description: Determines whether to overwrite the response header if provided by the origin. 
+  enforce:
+    type: boolean
+    description: Determines whether Edgio will set this header in the response.

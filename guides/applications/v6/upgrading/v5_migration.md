@@ -1,10 +1,10 @@
 ---
-title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 5 Migration Guide 
+title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 5 Migration Guide
 ---
 
 <Callout type="important">
 
-  If you are using {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 3.x or earlier, you should review the [v4 Migration Guide](/guides/upgrading/layer0_migration) before migrating to version 5.
+  If you are using {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 3.x or earlier, you should review the [v4 Migration Guide](/applications/upgrading/layer0_migration) before migrating to version 5.
 
 </Callout>
 
@@ -13,7 +13,7 @@ title: {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} Version 5 Migration Guide
   Consider upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6. It introduces support for running your app in the cloud using Node.js version 16. {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6 requires:
   *   {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5
   *   Node.js version 16
-  *   Updating your application(s) to be compatible with Node.js version 16. 
+  *   Updating your application(s) to be compatible with Node.js version 16.
 
 We recommend that you perform the seamless {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 5 migration now. Once you are ready to update your application to be compatible with Node.js version 16, you should migrate to version 6.
 
@@ -43,12 +43,12 @@ Migrate from version 4.x to 5 through the following steps:
 9.  [Optional: Permalink Indexing](#permalink-indexing)
 
 ## Step 1: Upgrade the {{ PRODUCT }} CLI {/*upgrade-the-cli*/}
- 
+
 We have renamed the {{ PRODUCT }} CLI from `0 | layer0` to `{{ CLI_NAME }} | {{ FULL_CLI_NAME }}`. Install the latest version of our CLI.
 
 <Callout type="info">
 
-  By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/guides/develop/cli#disable-analytics).
+  By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/applications/develop/cli#disable-analytics).
 
 </Callout>
 
@@ -66,7 +66,7 @@ yarn global add @edgio/cli@^5.0.0
 
 ## Step 2: Rename layer0.config.js {/*rename-layer0configjs*/}
 
-For each site, rename `layer0.config.js` to `edgio.config.js`. 
+For each site, rename `layer0.config.js` to `edgio.config.js`.
 
 <Callout type="important">
 
@@ -86,21 +86,21 @@ For each site, rename all references to {{ PRODUCT }} packages from `@layer0` to
     ...
       "dependencies": {
         "@layer0/rum": "4.18.1",
-      },          
+      },
       "devDependencies": {
         "@layer0/cli": "4.18.1",
         "@layer0/core": "4.18.1",
         "@layer0/devtools": "4.18.1",
     ...
     ```
-       
+
     You should update all of these references as shown below.
 
     ```
-    ...  
+    ...
       "dependencies": {
         "{{ PACKAGE_NAME }}/rum": "^5.0.0",
-      },          
+      },
       "devDependencies": {
         "{{ PACKAGE_NAME }}/cli": "^5.0.0",
         "{{ PACKAGE_NAME }}/core": "^5.0.0",
@@ -154,7 +154,7 @@ For each site, rename all references to {{ PRODUCT }} packages from `@layer0` to
 
 ## Step 4: Install Dependencies {/*install-dependencies*/}
 
-Install the dependencies defined in the previous step. 
+Install the dependencies defined in the previous step.
 
 **npm:**
 
@@ -224,4 +224,4 @@ new Router({ indexPermalink: true })
 
 ## Migration Complete {/*migration-complete*/}
 
-Congratulations on successfully migrating {{ PRODUCT }} to version 5! Once you are ready to make your application compatible with Node.js version 16, you should migrate to [{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6](/guides/upgrading/v6_migration).
+Congratulations on successfully migrating {{ PRODUCT }} to version 5! Once you are ready to make your application compatible with Node.js version 16, you should migrate to [{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 6](/applications/upgrading/v6_migration).

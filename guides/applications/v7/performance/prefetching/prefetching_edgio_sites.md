@@ -6,7 +6,7 @@ If your website uses {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or is based on a JavaS
 
 **Key information:**
 
--   By default, only content that has already been cached on the POP closest to the user may be prefetched. {{ PRODUCT }} returns a [412 Precondition Failed response](/guides/performance/troubleshooting#412-precondition-failed-status-code) for prefetch requests that result in cache misses. This ensures that your infrastructure does not experience additional load due to prefetching. 
+-   By default, only content that has already been cached on the POP closest to the user may be prefetched. {{ PRODUCT }} returns a [412 Precondition Failed response](/applications/performance/troubleshooting#412-precondition-failed-status-code) for prefetch requests that result in cache misses. This ensures that your infrastructure does not experience additional load due to prefetching.
 
 -   Due to security requirements, prefetching requires the HTTPS protocol. An exception to this requirement occurs when using localhost.
 
@@ -19,8 +19,8 @@ Perform the following steps:
 3.  [Register the service worker.](#registering-the-service-worker)
 4.  [Enable prefetching](#defining-a-prefetching-caching-policy) for the desired requests by adding the following features within one or more rules:
 
-    -   [Set Max Age (max_age)](/guides/performance/rules/features#set-max-age)
-    -   [Set Service Worker Max Age (service_worker_max_age)](/guides/performance/rules/features#set-service-worker-max-age) 
+    -   [Set Max Age (max_age)](/applications/performance/rules/features#set-max-age)
+    -   [Set Service Worker Max Age (service_worker_max_age)](/applications/performance/rules/features#set-service-worker-max-age)
 
     Alternatively, you may [manually enable prefetching](#manual-prefetching) for specific requests.
 
@@ -52,11 +52,11 @@ new Prefetcher().route();
 
 ### Serving the Service Worker {/*serving-the-service-worker*/}
 
-After you have created a service worker, your router needs to be configured to serve the file. If you are using one of our [connectors](/guides/sites_frameworks/getting_started), then it should be automatically configured for you. 
+After you have created a service worker, your router needs to be configured to serve the file. If you are using one of our [connectors](/applications/sites_frameworks/getting_started), then it should be automatically configured for you.
 
 **Example:**
 
-The following example defines a route that serves requests for `/service-worker.js`. However, your code will vary according to the location of your service worker file. 
+The following example defines a route that serves requests for `/service-worker.js`. However, your code will vary according to the location of your service worker file.
 
 ```js filename="routes.js"
 import {Router} from '{{ PACKAGE_NAME }}/core';
@@ -103,7 +103,7 @@ Now when your client-side code runs, the service worker will be installed and re
 
 ### Defining a Prefetching Caching Policy {/*defining-a-prefetching-caching-policy*/}
 
-Automatic prefetching requires an edge and service worker caching policy. From within your router, define a route that caches responses at the edge and in the service worker. Optionally, set a longer cache time for greater performance. 
+Automatic prefetching requires an edge and service worker caching policy. From within your router, define a route that caches responses at the edge and in the service worker. Optionally, set a longer cache time for greater performance.
 
 **Example:**
 
@@ -138,7 +138,7 @@ export default new Router()
 
 #### Default Caching Policy for Manually Prefetching {/*default-caching-policy-for-manually-prefetching*/}
 
-If the `caching.service_worker_max_age` feature has not been defined, you may still [manually prefetch content](#manual-prefetching). By default, manually prefetched content will be cached by the service worker for 2 minutes. Change the default time to live (TTL) by setting [`defaultMaxAgeSeconds`](/docs/api/prefetch/interfaces/sw_Prefetcher.PrefetcherConfig.html#defaultMaxAgeSeconds) when initializing the `Prefetcher` instance in your service worker. 
+If the `caching.service_worker_max_age` feature has not been defined, you may still [manually prefetch content](#manual-prefetching). By default, manually prefetched content will be cached by the service worker for 2 minutes. Change the default time to live (TTL) by setting [`defaultMaxAgeSeconds`](/docs/api/prefetch/interfaces/sw_Prefetcher.PrefetcherConfig.html#defaultMaxAgeSeconds) when initializing the `Prefetcher` instance in your service worker.
 
 **Example:**
 
@@ -152,11 +152,11 @@ const prefetcher = new Prefetcher({defaultMaxAgeSeconds: 60 * 10}); // set the l
 
 {{ PRODUCT }} will attempt to prefetch links that meet all of the following conditions:
 
--   You have [built](#building-the-service-worker), [served](#serving-the-service-worker), and [registered](#registering-the-service-worker) the service worker. 
+-   You have [built](#building-the-service-worker), [served](#serving-the-service-worker), and [registered](#registering-the-service-worker) the service worker.
 -   The link is displayed in the viewport (i.e., the area of the web page that is currently visible to the user).
 -   The link matches at least one rule that contains both of the following features:
-    -   [Set Max Age (max_age)](/guides/performance/rules/features#set-max-age)
-    -   [Set Service Worker Max Age (service_worker_max_age)](/guides/performance/rules/features#set-service-worker-max-age) 
+    -   [Set Max Age (max_age)](/applications/performance/rules/features#set-max-age)
+    -   [Set Service Worker Max Age (service_worker_max_age)](/applications/performance/rules/features#set-service-worker-max-age)
 
 <Callout type="info">
 
@@ -164,9 +164,9 @@ const prefetcher = new Prefetcher({defaultMaxAgeSeconds: 60 * 10}); // set the l
 
 </Callout>
 
-By default, the response varies according to whether the requested content has been cached within the POP closest to the user. 
--   If a cached response is found, then {{ PRODUCT }} will serve this cached content to the browser. The browser will then cache it locally for the duration defined by the Set Service Worker Max Age (service_worker_max_age) feature. 
--   If a cached response is not found, then {{ PRODUCT }} will return a [412 Precondition Failed response](/guides/performance/troubleshooting#412-precondition-failed-status-code).
+By default, the response varies according to whether the requested content has been cached within the POP closest to the user.
+-   If a cached response is found, then {{ PRODUCT }} will serve this cached content to the browser. The browser will then cache it locally for the duration defined by the Set Service Worker Max Age (service_worker_max_age) feature.
+-   If a cached response is not found, then {{ PRODUCT }} will return a [412 Precondition Failed response](/applications/performance/troubleshooting#412-precondition-failed-status-code).
 
     <Callout type="info">
 
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 #### Prefetching Based on Element Visibility {/*prefetching-based-on-element-visibility*/}
 
-To prefetch URLs based on element visibility, you can use the [`watch`](/docs/api/prefetch/interfaces/window_InstallOptions.default.html#watch) option when installing the service worker. The `watch` option accepts an array of objects with `selector` and `callback` properties. The `selector` property is a CSS selector that matches elements to watch for visibility. The `callback` property is a function that is called when an element matching the selector becomes visible. This element is passed to the callback function as an argument. 
+To prefetch URLs based on element visibility, you can use the [`watch`](/docs/api/prefetch/interfaces/window_InstallOptions.default.html#watch) option when installing the service worker. The `watch` option accepts an array of objects with `selector` and `callback` properties. The `selector` property is a CSS selector that matches elements to watch for visibility. The `callback` property is a function that is called when an element matching the selector becomes visible. This element is passed to the callback function as an argument.
 
 The following example will prefetch all links with an `href` attribute that are visible on the page:
 
@@ -492,20 +492,20 @@ function deepFetchResponsiveImages({$el, el, $}: DeepFetchCallbackParam) {
 This file, which is generated during deployment, is used by the `{{ PACKAGE_NAME }}/prefetch` to automatically prefetch all links based on configured rules. This file is publicly available from the `/__edgio__/cache-manifest.js` path.
 
 It exposes rules with the following features:
-- [`caching.max_age`](/guides/performance/rules/features#set-max-age)
-- [`caching.service_worker_max_age`](/guides/performance/rules/features#set-service-worker-max-age)
-- [`caching.bypass_cache`](/guides/performance/rules/features#bypass-cache)
-- [`caching.bypass_client_cache`](/guides/performance/rules/features#bypass-client-cache)
+- [`caching.max_age`](/applications/performance/rules/features#set-max-age)
+- [`caching.service_worker_max_age`](/applications/performance/rules/features#set-service-worker-max-age)
+- [`caching.bypass_cache`](/applications/performance/rules/features#bypass-cache)
+- [`caching.bypass_client_cache`](/applications/performance/rules/features#bypass-client-cache)
 
 and conditions:
-- [`request.path`](/guides/performance/rules/conditions#path)
-- [`request.method`](/guides/performance/rules/conditions#method)
-- [`request.scheme`](/guides/performance/rules/conditions#scheme)
-- [`request.query`](/guides/performance/rules/conditions#query)
-- [`request.querystring`](/guides/performance/rules/conditions#query-string)
-- [`request.origin_query_string`](/guides/performance/rules/conditions#origin-query-string)
+- [`request.path`](/applications/performance/rules/conditions#path)
+- [`request.method`](/applications/performance/rules/conditions#method)
+- [`request.scheme`](/applications/performance/rules/conditions#scheme)
+- [`request.query`](/applications/performance/rules/conditions#query)
+- [`request.querystring`](/applications/performance/rules/conditions#query-string)
+- [`request.origin_query_string`](/applications/performance/rules/conditions#origin-query-string)
 - `request.origin_query`
-- [`request.origin_path`](/guides/performance/rules/conditions#origin-path)
+- [`request.origin_path`](/applications/performance/rules/conditions#origin-path)
 
 All other features and conditions are unsupported and will be ignored. If you don't want to expose the rule publicly in this file for any reason, you can explicitly exclude it by adding `cache-manifest-ignore` comment to it.
 

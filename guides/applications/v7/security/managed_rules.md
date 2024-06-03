@@ -27,7 +27,7 @@ The characteristics of certain cookies, headers, and query string arguments may 
 
 ## Redacting Sensitive Data {/*redacting-sensitive-data*/}
 
-Standard security practices dictate that measures should be taken to prevent sensitive data (e.g., credit card information or passwords) from being passed as clear text from the client to your origin server. If this type of data is left unencrypted, then it will be logged by our system when an alert is triggered as a result of this data. If sensitive data cannot be encrypted or obfuscated, then you should disable logging for the desired [matched on variable](/guides/security/matched_on_variables).
+Standard security practices dictate that measures should be taken to prevent sensitive data (e.g., credit card information or passwords) from being passed as clear text from the client to your origin server. If this type of data is left unencrypted, then it will be logged by our system when an alert is triggered as a result of this data. If sensitive data cannot be encrypted or obfuscated, then you should disable logging for the desired [matched on variable](/applications/security/matched_on_variables).
 
 **To disable variable logging**
 
@@ -35,14 +35,14 @@ Standard security practices dictate that measures should be taken to prevent sen
     {{ SECURITY_NAV }} **Managed Rules**.
 2.  Click on the desired managed rule.
 3.  From the **Settings** tab, click **+ Add New Redacted Variable**.
-4.  From the **Match On** option, type either the exact name or a regular expression for the [matched on variable](/guides/security/matched_on_variables) that will be redacted. Use a regular expression if you would like to match against multiple variables. 
+4.  From the **Match On** option, type either the exact name or a regular expression for the [matched on variable](/applications/security/matched_on_variables) that will be redacted. Use a regular expression if you would like to match against multiple variables.
 5.  Optional. From the **Replacement Name** option, assign a new name to the variable(s) identified in the previous step.
 6.  From the **Replacement Value** option, type the value that will be logged for the variable(s) identified in the previous step.
 7.  Click **Save**.
 
 ## File Size and Query String Limits (Advanced) {/*file-size-and-query-string-limits-advanced*/}
 
-You may define query string argument and file size limitations 
+You may define query string argument and file size limitations
 for valid requests.
 
 <Callout type="important">
@@ -53,11 +53,11 @@ for valid requests.
 
 <Callout type="info">
 
-  Any single violation of these limits adds 5 points to a request's anomaly score. 
+  Any single violation of these limits adds 5 points to a request's anomaly score.
 
   For example, our service adds 10 points to a request's anomaly score if it exceeds both the query string length limit and the limit for the number of query string arguments.
 
-  [Learn more.](/guides/security/waf#managed-rule-violations)
+  [Learn more.](/applications/security/waf#managed-rule-violations)
 
 </Callout>
 
@@ -77,16 +77,16 @@ for valid requests.
 
     <Callout type="info">
 
-      Define the maximum file size for all other requests through an access rule. 
+      Define the maximum file size for all other requests through an access rule.
 
-      [Learn more](/guides/security/access_rules#file-size).
+      [Learn more](/applications/security/access_rules#file-size).
 
     </Callout>
 
 -   **Query string value / parameters:** A variety of restrictions may be placed on either a request's query string value or parameters.
     -   The **Total Argument Length** option defines the maximum number of characters for the query string value in the request URL.
-    -   The **Max # of Arguments /Request** option defines the maximum number of parameters that a query string may contain.  
-    -   The **Single Argument Length** option defines the maximum number of characters for any single query string parameter value in the request URL.  
+    -   The **Max # of Arguments /Request** option defines the maximum number of parameters that a query string may contain.
+    -   The **Single Argument Length** option defines the maximum number of characters for any single query string parameter value in the request URL.
     -   The **Argument Name Length** option defines the maximum number of characters for any single query string parameter name in the request URL.
 -   **JSON Inspection:** Determines whether JSON payloads will be inspected.
 
@@ -98,7 +98,7 @@ variety of unknown vulnerabilities. This rule set does not solely rely
 on signatures to check for known vulnerabilities. Rather, it analyzes
 all HTTP data for malicious payloads.
 
-In addition to defining a [threshold](/guides/security/waf#managed-rule-violations), this
+In addition to defining a [threshold](/applications/security/waf#managed-rule-violations), this
 rule set allows you to balance protection against false positives through
 the **Paranoia Level** option. Paranoia levels are explained
 below.
@@ -145,7 +145,7 @@ to site traffic will be detected.
 **Key information:**
 -   Only a single rule set may be associated with a managed rule.
 -   A threat detection policy or its rules may be disabled.
-    -   View a policy's rules by clicking on the <Image inline src="/images/v7/icons/expand-section.png" alt="Delete icon" /> icon that appears directly to the left of its name. 
+    -   View a policy's rules by clicking on the <Image inline src="/images/v7/icons/expand-section.png" alt="Delete icon" /> icon that appears directly to the left of its name.
 
         <Callout type="info">
 
@@ -175,13 +175,13 @@ changing landscape of threats, it is critical to keep up with the latest
 rule set updates. Using the latest rule set version maximizes the degree
 to which HTTP/HTTPS traffic is protected.
 
-Identify a rule set's version by the date on which it was released.  
+Identify a rule set's version by the date on which it was released.
 
-**Syntax:** 
+**Syntax:**
 
 `<Rule Set Name> <Date>`
 
-**Example:** 
+**Example:**
 
 `ERS **2023-12-10**`
 
@@ -238,7 +238,7 @@ Inbound policies:
 -   **Adv Joomla:** Detects attacks that target Joomla! CMS installations.
 -   **Adv SharePoint:** Detects attacks that target SharePoint installations.
 -   **Adv Struts:** Detects attacks that target Apache Struts installations.
--   **Adv WordPress:** Detects attacks that target WordPress installations. 
+-   **Adv WordPress:** Detects attacks that target WordPress installations.
 -   **Cross Site Scripting (XSS):** Detects cross-site scripting (XSS) attacks. An XSS attack is designed to add an unauthorized client-side script to a site.
 -   **EC Custom Rule:** Detects Bash shellshock attacks, httpoxy attacks, and attacks on Drupal and Apache installations.
 -   **HTTP Attack:** Detects attacks that leverage HTTP requests and responses.
@@ -262,7 +262,7 @@ Outbound policies:
 <Callout type="info">
 
   The ability to monitor outbound traffic requires {{ PRODUCT_SECURITY }} Premier.
-  
+
 </Callout>
 
 ### Rule Exceptions {/*rule-exceptions*/}
@@ -300,9 +300,9 @@ Tips for setting up rule exceptions:
 You may create, modify, and delete managed rules.
 
 **Key information:**
--   Administer managed rules from the **Manage Rules** page.    
+-   Administer managed rules from the **Manage Rules** page.
 -   Apply a managed rule to production traffic by adding it to a
-    [Security Application configuration](/guides/security/security_applications) and then
+    [Security Application configuration](/applications/security/security_applications) and then
     determining how it will be enforced. Multiple Security Application
     configurations may use the same managed rule. Leverage this
     capability to tailor security screening by application or traffic
@@ -334,7 +334,7 @@ You may create, modify, and delete managed rules.
 
     2.  Set the **Threshold** option to a level (e.g., 5) that balances security with risk tolerance. Requests that are scored at or higher than the specified value will be identified as malicious traffic.
 
-        [Learn more.](/guides/security/waf#managed-rule-violations)
+        [Learn more.](/applications/security/waf#managed-rule-violations)
 
         <Callout type="info">
 
@@ -350,7 +350,7 @@ You may create, modify, and delete managed rules.
 
         </Callout>
 
-         [Learn more.](/guides/security/waf#managed-rule-violations)
+         [Learn more.](/applications/security/waf#managed-rule-violations)
     4.  Review all enabled policies and rules to ensure that the legitimate traffic is not targeted by mistake.
 
     <a id="create-rule-exception"></a>
@@ -370,7 +370,7 @@ You may create, modify, and delete managed rules.
 <Callout type="important">
 
   If sensitive data is passed as clear text and cannot be encrypted, then you should redact the matched on variables that may potentially match on it.
-  
+
   [Learn how to redact variables.](#redacting-sensitive-data)
 
 </Callout>

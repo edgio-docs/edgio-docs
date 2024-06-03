@@ -6,7 +6,7 @@ The {{ PRODUCT_SECURITY }} dashboard provides the means through which you may pe
 -   Recent threats to site traffic.
 -   Recent trends in bot traffic detection.
 -   Recently rate limited requests.
--   Recent rate limiting enforcement events. 
+-   Recent rate limiting enforcement events.
 
 <Callout type="info">
 
@@ -19,15 +19,15 @@ The {{ PRODUCT_SECURITY }} dashboard provides the means through which you may pe
 
     1.  From the {{ PORTAL_LINK }}, select the desired organization.
     2.  Click **Security**.
-    
-    By default, the dashboard displays the sum of events across your entire security configuration.  
+
+    By default, the dashboard displays the sum of events across your entire security configuration.
 
 2.  Optional. Filter the dashboard to view a different set of events by clicking on the desired event type.
 
     -   [Total Events:](#total-events-view) View consolidated statistics across your entire security configuration.
     -   [WAF Events:](#waf-events-view) View statistics for requests that violate an access rule, custom rule, or managed rule.
     -   [Bot Events:](#bot-events-view) View statistics for requests identified as bot traffic.
-    -   [Rate Events:](#rate-events-view) View statistics for rate limited requests and enforcement events. 
+    -   [Rate Events:](#rate-events-view) View statistics for rate limited requests and enforcement events.
 
     ![](/images/v7/security/dashboard_event_type_selection.png)
 
@@ -40,13 +40,13 @@ The {{ PRODUCT_SECURITY }} dashboard provides the means through which you may pe
 
 <Callout type="tip">
 
-  Focus on relevant or critical events by applying one or more [filter(s)](#filters) to the dashboard. 
+  Focus on relevant or critical events by applying one or more [filter(s)](#filters) to the dashboard.
 
 </Callout>
 
 ## Total Events View {/*total-events-view*/}
 
-The Total Events view shows consolidated statistics across your entire security configuration. Use this view to identify patterns across your entire security configuration. 
+The Total Events view shows consolidated statistics across your entire security configuration. Use this view to identify patterns across your entire security configuration.
 
 ![](/images/v7/security/dashboard_total_events_graph.png)
 
@@ -64,7 +64,7 @@ A WAF event occurs when an access rule, custom rule, or managed rule is violated
 
 ## Bot Events View {/*bot-events-view*/}
 
-A bot event occurs when a bot manager rule is violated. Analyze recently detected bot traffic to 
+A bot event occurs when a bot manager rule is violated. Analyze recently detected bot traffic to
 -   Visualize peak bot traffic time periods and the amount of bot traffic directed at your web application and APIs.
 -   Identify the countries from which bot traffic originates.
 -   Identify key individual offenders by their IP address.
@@ -76,7 +76,7 @@ A bot event occurs when a bot manager rule is violated. Analyze recently detecte
 The Rate Events view contains the following tabs:
 
 -   **Rate Limiting:** Contains statistics for requests that exceed a rate limit.
--   **Rate Enforcer:** Contains statistics for groupings of rate limited requests. 
+-   **Rate Enforcer:** Contains statistics for groupings of rate limited requests.
 
 ### Rate Limiting Tab {/*rate-limiting-view*/}
 
@@ -127,10 +127,10 @@ The {{ PRODUCT_SECURITY }} dashboard contains the following components:
 
     **Key information:**
 
-    -   Each line on the graph represents a category of events. 
-    -   Change the category used to graph lines by selecting it from the option that appears directly to the left of the graph. A line will be drawn on the chart for each unique value. 
+    -   Each line on the graph represents a category of events.
+    -   Change the category used to graph lines by selecting it from the option that appears directly to the left of the graph. A line will be drawn on the chart for each unique value.
 
-        For example, if you select **Top Profile Type** and requests were screened by production and audit rules, then the graph will contain a line for audit and another one for production.  
+        For example, if you select **Top Profile Type** and requests were screened by production and audit rules, then the graph will contain a line for audit and another one for production.
 
     -   By default, graphing events by type will include up to the 10 most popular entries. <!--Customize this limit through the **Max Top Number** option. This option also affects the maximum number of unique entries that may be listed for each type of statistic listed under the graph.-->
 
@@ -144,7 +144,7 @@ The {{ PRODUCT_SECURITY }} dashboard contains the following components:
 
     ![Toggle from donut chart to bar graph](/images/v7/security/dashboard_donut_bar_icons.png)
 
--   **Statistics:** Statistics on the events detected over a given time period are displayed directly below the donut charts. Select a category to view statistics for it. 
+-   **Statistics:** Statistics on the events detected over a given time period are displayed directly below the donut charts. Select a category to view statistics for it.
 
     ![Statistics](/images/v7/security/dashboard_statistics.png?width=450)
 
@@ -155,13 +155,13 @@ The {{ PRODUCT_SECURITY }} dashboard contains the following components:
     </Callout>
 
     The following information is displayed for each category:
-    -   `<Value>`**:** Groups events by the request's value for the current category.  
+    -   `<Value>`**:** Groups events by the request's value for the current category.
 
-        The following illustration shows a partial listing of values for the `Rule Message` category.  
+        The following illustration shows a partial listing of values for the `Rule Message` category.
 
         ![](/images/v7/security/dashboard_category.png)
 
-    -   **%:** Indicates the percentage of detected events over a given time period that belong to the group identified by the **Value** field.  
+    -   **%:** Indicates the percentage of detected events over a given time period that belong to the group identified by the **Value** field.
 
         <Callout type="info">
 
@@ -169,7 +169,7 @@ The {{ PRODUCT_SECURITY }} dashboard contains the following components:
 
         </Callout>
 
-    -   **Events:** Indicates the number of detected events that belong to the group identified by the **Value** field.  
+    -   **Events:** Indicates the number of detected events that belong to the group identified by the **Value** field.
 
 -   **Log Data:** Paginated log data for the current time period is displayed within the **Log Events** section at the bottom of the dashboard. Click on a log entry to view detailed information about that event.
 
@@ -180,14 +180,14 @@ Filter the {{ PRODUCT_SECURITY }} dashboard by clicking on a top entry for a par
 **To apply a filter from the line graph**
 
 1.  From the line graph, select the desired category.
-2.  Click on the desired entry. 
+2.  Click on the desired entry.
 
     ![Filter by line graph](/images/v7/security/dashboard_filter_by_line_graph.png)
 
 **To filter for a specific statistic**
 
 1.  From the statistics section, select the desired category.
-2.  Click on the desired entry. 
+2.  Click on the desired entry.
 
     ![](/images/v7/security/dashboard_filter_by_stat.png)
 
@@ -195,12 +195,12 @@ Filter the {{ PRODUCT_SECURITY }} dashboard by clicking on a top entry for a par
 
 1.  Click **Edit/Add Filters** from the upper-right hand corner of the dashboard.
 2.  Click **+ Add Filter**.
-3.  Select the desired field. 
+3.  Select the desired field.
 4.  Optional. By default, the dashboard is filtered to find exact matches. Toggle the `=` to `≠` to filter for events that do not match the specified value.
 5.  Type the value by which the dashboard will be filtered.
 6.  Click **Save**.
 7.  Click **Apply**.
-    
+
 **To view, modify, enable, disable, or remove active filters**
 
 1.  Perform either of the following steps:
@@ -223,7 +223,7 @@ Filter the {{ PRODUCT_SECURITY }} dashboard by clicking on a top entry for a par
 
     The dashboard displays recent log events for the currently selected view (e.g., Total Events, WAF Events, and Bot Events).
 
-2.  Click on the desired view. 
+2.  Click on the desired view.
 
     ![Types of events](/images/v7/security/dashboard_event_type_selection.png?width=500)
 
@@ -234,7 +234,7 @@ Filter the {{ PRODUCT_SECURITY }} dashboard by clicking on a top entry for a par
 Select the [WAF Events view](#waf-events-view) to filter the **Log Events** section to only display log events for recent access rule, custom rule, or managed rule violations. The following summary is provided for each entry:
 -   **Timestamp:** Indicates the date and time (UTC) at which the request was screened.
 -   **Host:** Identifies the hostname requested by the client.
--   **Profile Type:** Indicates whether the request triggered a rule in [Production or Audit mode](/guides/security/waf#audit-security-rules).
+-   **Profile Type:** Indicates whether the request triggered a rule in [Production or Audit mode](/applications/security/waf#audit-security-rules).
 -   **Rule Msg:** Identifies the rule that was violated.
 
 #### <a id="threat-log-fields" />WAF Log Fields {/*waf-log-fields*/}
@@ -250,7 +250,7 @@ View the following detailed information on an event (i.e., rule violation) by cl
 Select the [Bot Events view](#bot-events-view) to filter the **Log Events** section to only display log events for requests that were flagged as bot traffic. The following summary is provided for each entry:
 -   **Timestamp:** Indicates the date and time (UTC) at which the request was screened.
 -   **Host:** Identifies the hostname requested by the client.
--   **Action Type:** Indicates the [enforcement action](/guides/security/bot_rules#actions) that was applied to the request. 
+-   **Action Type:** Indicates the [enforcement action](/applications/security/bot_rules#actions) that was applied to the request.
 -   **Rule Msg:** Identifies the rule that was violated.
 
 #### Bot Log Data {/*bot-log-data*/}
@@ -261,20 +261,20 @@ View the following detailed information on an event (i.e., request flagged as bo
 -   **Sub Events:** Describes why the request was flagged as bot traffic. [View log fields.](#sub-event-fields)
 -   **Other Data:** Describes the request, the security configuration that was violated, and the edge server on which it was processed. Key fields when analyzing bot traffic identified through a browser challenge are described below.
 
-    -   **Browser Challenge Status (challengeStatus):** Indicates the reason why a browser challenge was served. Valid values are:  
+    -   **Browser Challenge Status (challengeStatus):** Indicates the reason why a browser challenge was served. Valid values are:
         -   **CHAL_STATUS_NONE:** Indicates that a browser challenge was not issued.
-        -   **CHAL_STATUS_IP_MISMATCH:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a token is shared or the user's IP address is modified after the initial token was generated.  
-        -   **CHAL_STATUS_NO_TOKEN:** Indicates that a browser challenge was served for a new session.  
-        - **CHAL_STATUS_TOKEN_CORRUPTED:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a user agent submits a request that includes a token that our service cannot decrypt.  
-        -   **CHAL_STATUS_TOKEN_EXPIRED:** Indicates that a browser challenge was served due to an expired token. This status is typically reported when a user agent (e.g., web browser) submits a request after the expiration of the previously solved browser challenge. 
+        -   **CHAL_STATUS_IP_MISMATCH:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a token is shared or the user's IP address is modified after the initial token was generated.
+        -   **CHAL_STATUS_NO_TOKEN:** Indicates that a browser challenge was served for a new session.
+        - **CHAL_STATUS_TOKEN_CORRUPTED:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a user agent submits a request that includes a token that our service cannot decrypt.
+        -   **CHAL_STATUS_TOKEN_EXPIRED:** Indicates that a browser challenge was served due to an expired token. This status is typically reported when a user agent (e.g., web browser) submits a request after the expiration of the previously solved browser challenge.
 
             <Callout type="tip">
 
-              You may configure the duration for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge through the [Security Application](/guides/security/security_applications#bot-rule-configuration)'s **Valid for (in minutes)** option.  
+              You may configure the duration for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge through the [Security Application](/applications/security/security_applications#bot-rule-configuration)'s **Valid for (in minutes)** option.
 
             </Callout>
 
-        -   **CHAL_STATUS_UA_MISMATCH:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a token is shared with another user agent (e.g., web browser) within the same machine.  
+        -   **CHAL_STATUS_UA_MISMATCH:** Indicates that a browser challenge was served due to an invalid token. This status is typically reported when a token is shared with another user agent (e.g., web browser) within the same machine.
         -   **CHAL_STATUS_WRONG_ANSWER:** Indicates that a browser challenge was served because the user was unable to solve the previous browser challenge. This status may also be reported when the user agent (e.g., web browser) submits a tampered token.
     -   **Token Validity Duration (tokenDurationSec):** Indicates the number of minutes for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge.
 
@@ -283,7 +283,7 @@ View the following detailed information on an event (i.e., request flagged as bo
 Select the [Rate Events view](#rate-events-view) and then verify that the **Rate Limiting** tab is selected to filter the **Log Events** section to only display log events for rate limited requests. The following summary is provided for each entry:
 -   **Timestamp:** Indicates the date and time (UTC) at which the request was screened.
 -   **Host:** Identifies the hostname requested by the client.
--   **Action Type:** Indicates the [enforcement action](/guides/security/security_applications#enforcement) that was applied to the request. 
+-   **Action Type:** Indicates the [enforcement action](/applications/security/security_applications#enforcement) that was applied to the request.
 -   **Limit Name:** Identifies the rate rule that was violated.
 
 #### Rate Limit Log Data {/*rate-limit-log-data*/}
@@ -307,8 +307,8 @@ View information on a rate limit enforcement event by clicking on it. For exampl
 
 A sub event identifies a rule violation. Each sub event contains the following fields:
 
--   **Matched On:** Indicates a [variable](/guides/security/matched_on_variables) that identifies where the violation was found.
--   **Matched Value:** Indicates the value of the variable defined by the **Matched On** field.  
+-   **Matched On:** Indicates a [variable](/applications/security/matched_on_variables) that identifies where the violation was found.
+-   **Matched Value:** Indicates the value of the variable defined by the **Matched On** field.
 
     <Callout type="info">
 
@@ -319,20 +319,20 @@ A sub event identifies a rule violation. Each sub event contains the following f
 -   **Rule ID:** Indicates the ID for the rule that the request violated.
 -   **Rule Message:** Provides a description of the rule that the request violated.
 -   **Operator Name:** Indicates how the system interpreted the comparison between the **Operator Parameter** and the **Matched Value** fields. Common operators are:
-    -   **BEGINSWITH:** Begins with. Identifies a match due to a request element that started with the specified match value. 
-    -   **CONTAINS:** Contains. Identifies a match due to a request element that contained the specified match value. 
-    -   **ENDSWITH:** Ends with. Identifies a match due to a request element that ended with the specified match value. 
-    -   **STREQ:** Exact match. Identifies a match due to a request element that was an exact match to the specified match value. 
+    -   **BEGINSWITH:** Begins with. Identifies a match due to a request element that started with the specified match value.
+    -   **CONTAINS:** Contains. Identifies a match due to a request element that contained the specified match value.
+    -   **ENDSWITH:** Ends with. Identifies a match due to a request element that ended with the specified match value.
+    -   **STREQ:** Exact match. Identifies a match due to a request element that was an exact match to the specified match value.
     -   **RX:** Regex. Identifies a match due to a request element that satisfied the regular expression defined in the match value.
-    -   **EQ:** Value match. Identifies a match due to a request element 
-        that occurred the exact number of times defined in your custom rule. 
-    -   **IPMATCH:** IP Address. Identifies a match due to the request's IP 
-        address either being contained within an IP block or that was an 
+    -   **EQ:** Value match. Identifies a match due to a request element
+        that occurred the exact number of times defined in your custom rule.
+    -   **IPMATCH:** IP Address. Identifies a match due to the request's IP
+        address either being contained within an IP block or that was an
         exact match to an IP address defined in your custom rule.
--   **Operator Parameter:** Indicates the source or the value that was compared against the **Matched Value** field.           
--   **Rule Tags:** Indicates the tags associated with the rule that the 
-    request violated. These tags may be used to determine whether a rule, 
-    access control, or global setting was violated.  
+-   **Operator Parameter:** Indicates the source or the value that was compared against the **Matched Value** field.
+-   **Rule Tags:** Indicates the tags associated with the rule that the
+    request violated. These tags may be used to determine whether a rule,
+    access control, or global setting was violated.
 
     **Naming convention:**
 

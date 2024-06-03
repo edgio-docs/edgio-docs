@@ -20,7 +20,7 @@ The above Deploy Button uses the following HTML code:
 
 To configure your own project to be deploy button ready, there's a few steps to take.
 
-1. First, your project needs to already be configured and initialized with {{ PRODUCT }}. See our [Getting Started](/guides/getting_started) guide for initial setup.
+1. First, your project needs to already be configured and initialized with {{ PRODUCT }}. See our [Getting Started](/applications/getting_started) guide for initial setup.
 2. Next, create a basic `deploy` script as described below. Typically, this can simply be `{{ FULL_CLI_NAME }} deploy`, but if your site requires additional processing outside of the standard {{ PRODUCT }} build/deploy process, you will need to modify this script to include the necessary steps to make your site production-ready.
 3. Create a GitHub workflow as described below. This makes sure GitHub Actions is properly configured to build the project.
 

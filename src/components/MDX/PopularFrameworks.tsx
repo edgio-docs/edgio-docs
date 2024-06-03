@@ -96,13 +96,16 @@ export default function PopularFrameworks() {
       <ul className="framework-lists">
         {routesByColumns.map((route) => (
           <li key={route.path} className="framework-list__item">
-            <Link href={version.toVersionedPath(route.path)} passHref>
-              <a className="framework-link">
+            <Link
+              href={version.toVersionedPath(route.path)}
+              passHref
+              className="framework-link">
+              <>
                 <div className="icon">
                   {renderThemedElement(route.icon, route.iconDark)}
                 </div>
                 <span className="link-text">{route.title}</span>
-              </a>
+              </>
             </Link>
           </li>
         ))}

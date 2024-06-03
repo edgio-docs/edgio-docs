@@ -49,7 +49,7 @@ cd site
 
 <Callout type="info">
 
-  For more details on how to set up your BigCommerce store, view the <a href="/guides/bigcommerce">BigCommerce guide</a>
+  For more details on how to set up your BigCommerce store, view the <a href="/applications/bigcommerce">BigCommerce guide</a>
 
 </Callout>
 
@@ -90,13 +90,13 @@ Or from within `site` directory
 
 <Callout type="info">
 
-  For more details on using Next.js on {{ PRODUCT }} refer to the <a href="/guides/next">Next.js guide</a>.
+  For more details on using Next.js on {{ PRODUCT }} refer to the <a href="/applications/next">Next.js guide</a>.
 
 </Callout>
 
 <Callout type="info">
 
-  For more details on how to set up your BigCommerce store, view the <a href="/guides/bigcommerce">BigCommerce guide</a>.
+  For more details on how to set up your BigCommerce store, view the <a href="/applications/bigcommerce">BigCommerce guide</a>.
 
 </Callout>
 

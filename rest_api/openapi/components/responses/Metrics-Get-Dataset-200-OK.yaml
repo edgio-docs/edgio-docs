@@ -1,0 +1,18 @@
+description: Get Dataset
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/MetricsDataset.yaml
+    examples:
+      edge_usage_by_country:
+        $ref: ../examples/Metrics-Get-Dataset-edge_usage_by_country-Example.yaml
+      origin_usage_by_country:
+        $ref: ../examples/Metrics-Get-Dataset-origin_usage_by_country-Example.yaml
+      edge_errors:
+        $ref: ../examples/Metrics-Get-Dataset-edge_errors-Example.yaml
+      origin_usage:
+        $ref: ../examples/Metrics-Get-Dataset-origin_usage-Example.yaml
+      origin_errors:
+        $ref: ../examples/Metrics-Get-Dataset-origin_errors-Example.yaml
+      origin_offload:
+        $ref: ../examples/Metrics-Get-Dataset-origin_offload-Example.yaml

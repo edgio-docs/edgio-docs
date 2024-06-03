@@ -1,4 +1,4 @@
-import { GoKebabVertical } from 'react-icons/go';
+import {GoKebabVertical} from 'react-icons/go';
 
 import ApplicationsFeatures from './Applications/Features';
 import ApplicationsHero from './Applications/Hero';
@@ -10,8 +10,8 @@ import CustomPre from './CustomPre';
 import DeliveryFeatures from './Delivery/Features';
 import DeliveryHero from './Delivery/Hero';
 import ExampleButtons from './ExampleButtons';
-import Frameworks, { V7LegacyFrameworks } from './Frameworks';
-import { H1, H2, H3, H4 } from './Heading';
+import Frameworks, {V7LegacyFrameworks} from './Frameworks';
+import {H1, H2, H3, H4} from './Heading';
 import HomeFeatures from './Home/Features';
 import HomeHero from './Home/Hero';
 import Image from './Image';
@@ -21,10 +21,10 @@ import Link from './Link';
 import PackageCommand from './PackageCommand';
 import PopularFrameworks from './PopularFrameworks';
 import RawEdgeJS from './RawEdgeJS';
-import { SnippetGroup } from './SnippetGroup';
+import {SnippetGroup} from './SnippetGroup';
 import UplynkFeatures from './Uplynk/Featrues';
 import UplynkHero from './Uplynk/Hero';
-import Video, { VimeoMDXEmbed } from './Video';
+import Video, {VimeoMDXEmbed} from './Video';
 
 const P = (p: JSX.IntrinsicElements['p']) => (
   // modified `<p>` elements to render as a `<div>` element

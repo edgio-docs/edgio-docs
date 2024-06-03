@@ -9,7 +9,7 @@ This guide shows you how to deploy a [SolidJS](https://solidjs.com) application 
 <ExampleButtons
   title="SolidJS"
   siteUrl="https://edgio-community-examples-solidjs-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-solidjs-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-solidjs-example"
   deployFromRepo />
 
 {{ PREREQ.md }}
@@ -65,7 +65,7 @@ export default new Router()
   })
 ```
 
-Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
+Refer to the [CDN-as-code](/applications/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
 ### Run the SolidJS app locally on {{ PRODUCT }} {/*run-the-solidjs-app-locally-on*/}
 
@@ -97,4 +97,4 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
+Refer to the [Deployments](/applications/basics/deployments) guide for more information on the `deploy` command and its options.

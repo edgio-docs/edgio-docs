@@ -9,7 +9,7 @@ title: Astro
 <ExampleButtons
   title="Astro"
   siteUrl="https://layer0-docs-layer0-astro-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-astro-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-astro-example"
   deployFromRepo />
 
 ## Example SSR Site {/*example-ssr-site*/}
@@ -19,7 +19,7 @@ This Astro example app uses server-side rendering.
 <ExampleButtons
   title="Astro SSR"
   siteUrl="https://layer0-docs-layer0-astro-ssr-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-astro-ssr-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-astro-ssr-example"
   deployFromRepo />
 
 {{ PREREQ.md }}
@@ -62,7 +62,7 @@ import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core'
 
 export default new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: https://docs.layer0.co/applications/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .get('/:path*/:file.:ext(js|css|png|ico|jpg|gif|svg)', ({ cache, serveStatic }) => {
     cache({

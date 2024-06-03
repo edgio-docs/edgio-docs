@@ -1,10 +1,10 @@
 ---
-title: Traffic Splitting 
+title: Traffic Splitting
 ---
 
 <Callout type="info">
 
-  You can also use traffic splitting for [A/B Testing](/guides/performance/traffic_splitting/a_b_testing).
+  You can also use traffic splitting for [A/B Testing](/applications/performance/traffic_splitting/a_b_testing).
 
 </Callout>
 
@@ -37,13 +37,13 @@ The two general types of iterative site migrations are _gradual migrations_ and 
   2. On Wednesday configure a 50%/50% split.
   3. On Friday configure 100% of the traffic to the new site and remove all traffic from the legacy site.
 
-* Gradual site build-outs: You are replacing your legacy site with a new site that you are building/testing/deploying one piece at a time based on domains or routes, and so on. For example, you might have updated a single page or even an image and you want to publish the new item. 
-  
+* Gradual site build-outs: You are replacing your legacy site with a new site that you are building/testing/deploying one piece at a time based on domains or routes, and so on. For example, you might have updated a single page or even an image and you want to publish the new item.
+
   You are ready to roll out the first piece.
 
   1. You shift all traffic for that piece from the legacy site to the new by configuring 0% for the legacy and 100% for the new.
   2. As new pieces are ready, you do the same for them.
-  3. When all pieces have been deployed you remove traffic from the legacy site. 
+  3. When all pieces have been deployed you remove traffic from the legacy site.
 
 ## Migrating Sites - General Steps {/*migrating-sites-general-steps*/}
 
@@ -61,10 +61,10 @@ If you are using two code versions you can use Continuous Integration/Continuous
 
 1. Create environments called `new` and `legacy` in the {{ PORTAL }}.
 2. Configure CI/CD to deploy to the `new` or `legacy` site whenever you push changes. Integrate either of these  commands in your deployment script as appropriate:
-`0 deploy –environment=new` 
+`0 deploy –environment=new`
 `0 deploy –environment=legacy`
 
-1. [Configure the destinations](#step-2-configuring-destination-environments) in the `routes.js` file, 
+1. [Configure the destinations](#step-2-configuring-destination-environments) in the `routes.js` file,
 2. [Configure traffic splitting rules](#step-3-configure-traffic-splitting-rules-in-the-developer-console) in the {{ PORTAL }}.
 
 ### Step 1. Configuring Backends {/*step-1-configuring-backends*/}
@@ -77,7 +77,7 @@ If your sites consist of two separate servers use these steps to configure the d
 
 </Callout>
 
-Configure the backends in the {{ CONFIG_FILE }} file. (See [{{ CONFIG_FILE }}](/guides/basics/edgio_config) for more information.). For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
+Configure the backends in the {{ CONFIG_FILE }} file. (See [{{ CONFIG_FILE }}](/applications/basics/edgio_config) for more information.). For example, to split traffic between a new experience hosted on `origin.my-site.com` and a legacy experience hosted on `legacy-origin.my-site.com`:
 
 ```js filename="{{ CONFIG_FILE }}"
 module.exports = {

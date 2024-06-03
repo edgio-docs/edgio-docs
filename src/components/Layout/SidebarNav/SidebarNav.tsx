@@ -13,7 +13,7 @@ import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 
-interface Route {
+export interface Route {
   title: string | null;
   path: string;
   icon: string;
@@ -73,8 +73,8 @@ function Accordion({
             <Image
               src={'foo'}
               alt={route.icon}
-              width="16px"
-              height="16px"
+              width="16"
+              height="16"
               priority
             />,
             `/icons/${route.icon}-dark.svg`,
@@ -122,9 +122,10 @@ function Accordion({
         ) : (
           isInternalLink && (
             <Link
-              href={href}
-              className="sidenav-link internal-link"
-              data-depth={depth}>
+              href={toVersionedPath(route.path)}
+              className="sidenav-link"
+              data-depth={depth}
+              legacyBehavior>
               {childElement}
             </Link>
           )
@@ -201,7 +202,7 @@ const StyledSideNav = styled.div`
       height: calc(100% - 10px);
       top: 5px;
       width: 1px;
-      background-color: var(--hr-primary);
+      background-color: var(--sidebar-line);
       left: 8px;
     }
 
@@ -284,7 +285,7 @@ const StyledSideNav = styled.div`
   .sidenav-menu__container:empty {
     height: 1px;
     width: calc(100% - 32px);
-    background: var(--hr-primary);
+    background: var(--sidebar-line);
     transform: translateX(16px);
     opacity: 0.6;
     padding: 0;
@@ -312,12 +313,16 @@ const StyledSideNav = styled.div`
   }
 `;
 
-export default function SideNav() {
+interface SideNavProps extends React.HTMLAttributes<HTMLDivElement> {
+  items?: Route;
+}
+
+const SideNav: React.FC<SideNavProps> = (props) => {
   const {navMenuItems, hasNavigationMenu} = useAppContext();
 
   if (hasNavigationMenu) {
     return (
-      <StyledSideNav>
+      <StyledSideNav {...props}>
         <ul className="sidenav-sublist" data-nav-depth="0">
           <AccordionParent routes={(navMenuItems as Route).routes!} depth={0} />
         </ul>
@@ -326,4 +331,6 @@ export default function SideNav() {
   }
 
   return null;
-}
+};
+
+export default SideNav;

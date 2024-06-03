@@ -1,0 +1,4 @@
+value:
+  '@type': Error
+  code: internal_server_error
+  title: Internal server error occurred.

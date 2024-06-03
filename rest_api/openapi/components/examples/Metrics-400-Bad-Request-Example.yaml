@@ -1,0 +1,11 @@
+value:
+  '@type': Error
+  code: bad_request
+  title: One or more parameters in the request are invalid or missing.
+  details:
+    - '@type': ErrorDetail
+      source: /filters
+      description: Unknown Environment ID
+    - '@type': ErrorDetail
+      source: /date_range
+      description: The 'start' date must be before 'end' date.

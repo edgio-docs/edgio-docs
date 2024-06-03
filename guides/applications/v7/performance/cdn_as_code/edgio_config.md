@@ -29,7 +29,7 @@ The `origins` key is an array of objects whose properties are:
 | `hosts`                                    | `Array<Object>`                                                              | An array of objects that define how {{ PRODUCT }} will proxy requests for this origin configuration.                                                                                                                                                                                                                                                                                                                                                                                                               |
 | `hosts[].location`                         | `string` \| `Array<string>` \| `Array<{ hostname: string; port?: number; }>` | Contains properties that define the location to which {{ PRODUCT }} will proxy requests for this origin configuration.                                                                                                                                                                                                                                                                                                                                                                                             |
 | `hosts[].location[].hostname`              | `string`                                                                     | (Required) The domain name or IP address of the origin server.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| `hosts[].location[].port`                  | `number`                                                                     | The port on which the backend receives https requests. Defaults to 443 but you can specify any other acceptable port value. Note that specifying `80` has no special meaning as {{ PRODUCT_NAME }} will never send secured requests to unsecured backends. To [enable HTTP traffic](/guides/security/edgejs_security#ssl) on a backend you must have a route matching `http` protocol in your router and serve content from that route. All HTTP traffic assumes port `80` on the backend.                         |
+| `hosts[].location[].port`                  | `number`                                                                     | The port on which the backend receives https requests. Defaults to 443 but you can specify any other acceptable port value. Note that specifying `80` has no special meaning as {{ PRODUCT_NAME }} will never send secured requests to unsecured backends. To [enable HTTP traffic](/applications/security/edgejs_security#ssl) on a backend you must have a route matching `http` protocol in your router and serve content from that route. All HTTP traffic assumes port `80` on the backend.                         |
 | `hosts[].scheme`                           | `string`                                                                     | The scheme to use when connecting to the origin. Possible values are `https`, `http`, and `match`. Defaults to `match`, using the same scheme as the incoming request. Required when `hosts[].location[].port` is defined.                                                                                                                                                                                                                                                                                         |
 | `shields`                                  | `Object`                                                                     | Defines how {{ PRODUCT }} will shield your origin configuration.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | `shields.apac`                             | `string`                                                                     | The POP code for the Asia Pacific shield.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -150,7 +150,7 @@ environments: {
 
 ## connector {/* connector */}
 
-The name of the connector package corresponding to the framework your app uses, or the path to a directory that implements the [connector interface](/guides/sites_frameworks/connectors).
+The name of the connector package corresponding to the framework your app uses, or the path to a directory that implements the [connector interface](/applications/sites_frameworks/connectors).
 
 **Example**
 
@@ -192,7 +192,7 @@ The `serverless` key is an object with the following properties:
 <!--
 ## prerenderConcurrency {/* prerenderconcurrency */}
 
-The maximum number of URLs that will be concurrently prerendered during deployment when [static prerendering](/guides/performance/static_prerendering) is enabled. Defaults to 200, which is the maximum allowed value.-->
+The maximum number of URLs that will be concurrently prerendered during deployment when [static prerendering](/applications/performance/static_prerendering) is enabled. Defaults to 200, which is the maximum allowed value.-->
 
 ## sources {/* sources */}
 
@@ -209,7 +209,7 @@ sources: [
 
 ## interpolationValues {/* interpolation-values */}
 
-The following [feature variables](/guides/performance/rules/feature_variables) are only populated in a deployed environment. You can use the `interpolationValues` key to set these values in your local development environment for testing rules. Values set in this configuration are not propagated to the deployed environment.
+The following [feature variables](/applications/performance/rules/feature_variables) are only populated in a deployed environment. You can use the `interpolationValues` key to set these values in your local development environment for testing rules. Values set in this configuration are not propagated to the deployed environment.
 
 | Property                       | Type   |
 | ------------------------------ | ------ |
@@ -295,7 +295,7 @@ See the full API specification for the `{{ CONFIG_FILE }}` file [here](/docs/api
 ```js filename="{{CONFIG_FILE}}"
 // This file was automatically added by edgio init.
 // You should commit this file to source control.
-// Learn more about this file at https://docs.edg.io/guides/edgio_config
+// Learn more about this file at https://docs.edg.io/applications/edgio_config
 module.exports = {
   // The name of the site in Edgio to which this app should be deployed.
   // name: 'my-site-name',

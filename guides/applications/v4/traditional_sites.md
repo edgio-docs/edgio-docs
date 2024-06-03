@@ -297,5 +297,5 @@ document.addEventListener('DOMContentLoaded', function() {
 For the most part maintenance for traditional sites running on {{ PRODUCT_NAME }} is minimal. However, the typical scenarios that require changes are:
 
 - If you add personalized or user-specific content to the page you will need to make sure it is late loaded as described in the [_Make sure your pages are cacheable_](#section_make_sure_your_pages_are_cachable) section.
-- If you introduce a new segmentation of content (e.g. support a new language or currency), you may need to update your [custom cache key](/guides/caching#section_customizing_the_cache_key).
+- If you introduce a new segmentation of content (e.g. support a new language or currency), you may need to update your [custom cache key](/applications/caching#section_customizing_the_cache_key).
 - If you change the layout of the page (especially above the _fold_), it may alter the assets you need to prefetch or [deepfetch](#section_deep_fetching) to achieve the best performance.

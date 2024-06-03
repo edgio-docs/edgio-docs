@@ -15,7 +15,7 @@ This guide shows you how to deploy a [Remix](https://remix.run/) application to 
 <ExampleButtons
   title="Remix Express"
   siteUrl="https://layer0-docs-layer0-remix-express-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-remix-express-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-remix-express-example"
   deployFromRepo />
 
 {{ PREREQ.md }}
@@ -93,7 +93,7 @@ const { Router } = require('@{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: https://docs.layer0.co/applications/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .match('/', ({ cache }) => {
     cache({

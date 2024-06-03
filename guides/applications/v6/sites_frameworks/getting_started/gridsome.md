@@ -9,7 +9,7 @@ This guide shows you how to deploy a [Gridsome](https://gridsome.org/) applicati
 <ExampleButtons
   title="Gridsome"
   siteUrl="https://edgio-community-examples-gridsome-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-gridsome-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-gridsome-example"
   deployFromRepo />
 
 {{ PREREQ.md }}
@@ -62,7 +62,7 @@ export default new Router()
   .static('dist')
 ```
 
-Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
+Refer to the [CDN-as-code](/applications/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
 ### Run the Gridsome app locally on {{ PRODUCT_NAME }} {/*run-the-gridsome-app-locally-on*/}
 
@@ -94,4 +94,4 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
+Refer to the [Deployments](/applications/basics/deployments) guide for more information on the `deploy` command and its options.

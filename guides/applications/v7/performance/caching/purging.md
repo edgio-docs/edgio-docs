@@ -10,11 +10,11 @@ Purge cached content to force the CDN to request a new version of that content f
 
 </Callout>
 
-Purge by relative path, surrogate key, or all cached content using the:
+Purge by hostname, relative path, surrogate key, or all cached content using the:
 
 -   [{{ PORTAL }}](#console)
 -   [{{ PRODUCT }} CLI](#cli)
--   [{{ PRODUCT }} REST API (clear-cache)](#rest-api)
+-   [{{ PRODUCT }} REST API (Purge Cache)](#rest-api)
 
 <Callout type="info">
 
@@ -22,9 +22,21 @@ Purge by relative path, surrogate key, or all cached content using the:
 
 </Callout>
 
+## Hostname {/*hostname*/}
+
+You may purge cached content by the request URL's hostname. Choose between either of the following options:
+
+-   Purging all cached content for that hostname. Verify that the **Purge all entries** option is selected and then select the desired hostname from the **Hostname** option.
+
+    ![Purge by hostname](/images/v7/performance/caching-hostname.png)
+
+-   Purging requests for that hostname and a specific relative path. Select the **Purge by path** option and then select the desired hostname from the **Hostname** option.
+
+    ![Purge by hostname and relative path](/images/v7/performance/caching-hostname-relative-path.png)
+
 ## Relative Path {/*relative-path*/}
 
-You may specify a relative path that identifies the set of cached respones that will be purged. This relative path starts directly after the hostname.
+You may specify a relative path that identifies the set of cached responses that will be purged. This relative path starts directly after the hostname.
 
 <Callout type="tip">
 
@@ -44,35 +56,35 @@ Purge the above URL by specifying the following relative path:
 
 Alternatively, you can use an `*` to recursively purge a directory. The following relative path pattern recursively purges all content from the `/sports` directory including `marchtournament.html`:
 
-`/sports/*` 
+`/sports/*`
 
 ## Surrogate Key {/*surrogate-key*/}
 
-You  may purge cached content by surrogate key (aka cache tag). A surrogate key is a label that you may apply to cached responses. Purging by surrogate key allows you to purge related content across your entire site. 
+You may purge cached content by surrogate key (aka cache tag). A surrogate key is a label that you may apply to cached responses. Purging by surrogate key allows you to purge related content across your entire site.
 
 <Callout type="tip">
 
-  Improve performance and reduce the load on your web servers by only purging targetted content through the use of surrogate keys. 
+  Improve performance and reduce the load on your web servers by only purging targetted content through the use of surrogate keys.
 
 </Callout>
 
 #### Tagging Cached Content {/*tagging-cached-content*/}
 
-Apply a surrogate key by setting the `Surrogate-Key` response header. 
+Apply a surrogate key by setting the `Surrogate-Key` response header.
 
 **Syntax:** `Surrogate-Key: <TAG1> <TAG2> <TAG3>`
 
-**Example:** 
+**Example:**
 
 For example, the following response header applies three surrogate keys to the cached response. Purging any of those three surrogate keys will purge all cached responses tagged with that surrogate key.
 
 `Surrogate-Key: sports basketball march-tournament`
 
-[View a sample configuration.](/guides/performance/rules/feature_scenarios#tagging-requests-for-purging)
+[View a sample configuration.](/applications/performance/rules/feature_scenarios#tagging-requests-for-purging)
 
 ## {{ PORTAL }} {/*console*/}
 
-Use the {{ PORTAL }} to purge cached content within a specific environment. 
+Use the {{ PORTAL }} to purge cached content within a specific environment.
 
 **To purge content**
 
@@ -88,6 +100,8 @@ Use the {{ PORTAL }} to purge cached content within a specific environment.
 
     -   **All Cached Content:** Select **Purge all entries**.
     -   **By Path:** Select **Purge by path**. Specify each desired [relative path](#relative-path) on a separate line.
+    -   **By Hostname:** Select **Purge all entries** and then select the desired hostname from the **Hostname** option. 
+    -   **By Hostname for a Specific Path:** Select **Purge by path**, specify the desired relative path(s), and then select the desired hostname from the **Hostname** option.
     -   **By Surrogate Key:** Select **Purge by surrogate key**. Specify each desired [surrogate key](#surrogate-key) on a separate line.
 
 4.  Click **Purge Cache**.
@@ -96,7 +110,7 @@ Use the {{ PORTAL }} to purge cached content within a specific environment.
 
 ## {{ PRODUCT }} CLI {/*cli*/}
 
-Purge cached content through the {{ PRODUCT }} CLI by passing the [cache-clear argument](/guides/develop/cli#cache-clear). You may purge:
+Purge cached content through the {{ PRODUCT }} CLI by passing the [cache-clear argument](/applications/performance/cdn_as_code/cli#cache-clear). You may purge:
 
 -   **All content:** Exclude the `--path` and `--surrogate-key` options.
 -   **By relative path:** Pass the `--path` option. You may use an `*` to represent zero or more characters.
@@ -120,11 +134,12 @@ Run the following command to purge the `basketball` surrogate key from the `prod
 
 ## REST API {/*rest-api*/}
 
-Purge cached content through the {{ PRODUCT }} REST API through the [clear-cache endpoint](/guides/develop/rest_api/cache_purge#clear-cache). You may purge:
+Purge cached content through the {{ PRODUCT }} REST API through the [Purge Cache endpoint](https://docs.edg.io/rest_api/#tag/purge-requests/operation/postCacheV01PurgeRequests). You may purge:
 
--   **All content:** Exclude the `paths` and `surrogateKeys` properties.
--   **By relative path:** Pass the `paths` array of strings. You may use an `*` to represent zero or more characters.
--   **By surrogate key:** Pass the `surrogateKeys` array of strings. [Learn more about surrogate keys.](#surrogate-key)
+-   **All content:** Set the `purge_type` property to `all_entries`.
+-   **By relative path:**  Set the `purge_type` property to `path`. Pass the desired relative paths through the `values` array of strings. You may use an `*` to represent zero or more characters.
+-   **By surrogate key:**  Set the `purge_type` property to `surrogate_key`. Pass the desired surrogate keys through the `values` array of strings. [Learn more about surrogate keys.](#surrogate-key)
+-   **By hostname:** Set the `hostname` property to the desired hostname. Purging by hostname is compatible with the `purge_type` property set to either `all_entries` or `path`.
 
 ## Deployments {/*deployments*/}
 
@@ -138,7 +153,7 @@ By default, cached content is preserved when you deploy a new version of your si
 <!--
 ## Static prerendering after clearing the cache {/*static-prerendering-after-clearing-the-cache*/}
 
-If you have enabled [static prerendering](/guides/performance/static_prerendering), the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PORTAL }} or run `{{ FULL_CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.-->
+If you have enabled [static prerendering](/applications/performance/static_prerendering), the cache will automatically be repopulated when you clear all entries from the cache (such as when you select _Purge all entries_ in the {{ PORTAL }} or run `{{ FULL_CLI_NAME }} cache-clear` without providing `--path` or `--surrogate-key`). You can view the prerendering progress by clicking on the active deployment for the environment that was cleared.-->
 
 ## Automated Purging {/*automated-purging*/}
 

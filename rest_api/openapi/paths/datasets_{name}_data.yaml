@@ -1,0 +1,33 @@
+post:
+  tags:
+    - metrics
+  summary: Query Dataset
+  description: Queries a dataset. Specify the desired dataset by its name.
+  operationId: data
+  parameters:
+    - name: name
+      in: path
+      description: The dataset's name.
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/MetricsDataRequest.yaml
+    required: true
+  security:
+    - metricsScope:
+        - app.metrics
+  responses:
+    '200':
+      $ref: ../components/responses/Metrics-Query-Dataset-200-OK.yaml
+    '400':
+      $ref: ../components/responses/Metrics-400-Bad-Request.yaml
+    '401':
+      $ref: ../components/responses/Metrics-401-Unauthorized.yaml
+    '404':
+      $ref: ../components/responses/Metrics-404-Not-Found.yaml
+    '500':
+      $ref: ../components/responses/Metrics-500-Internal-Error.yaml

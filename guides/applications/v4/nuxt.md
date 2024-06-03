@@ -11,7 +11,7 @@ This Nuxt.js example app uses server-side rendering and prefetching to provide l
 <ExampleButtons
   title="Nuxt.js SSR"
   siteUrl="https://layer0-docs-layer0-nuxt-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-nuxt-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-nuxt-example"
   deployFromRepo />
 
 ## Example ISG Site {/*example-isg-site*/}
@@ -21,7 +21,7 @@ This Nuxt.js example app uses ISG (Incremental Static Generation) to provide lig
 <ExampleButtons
   title="Nuxt.js ISG"
   siteUrl="https://layer0-docs-layer0-nuxt-isg-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-nuxt-isg-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-nuxt-isg-example"
   deployFromRepo />
 
 <!--## Connector {/*connector*/}
@@ -187,7 +187,7 @@ const { nuxtRoutes, renderNuxtPage } = require('{{ PACKAGE_NAME }}/nuxt')
 
 module.exports = new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: https://docs.layer0.co/applications/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .use(nuxtRoutes)
 ```
@@ -367,7 +367,7 @@ If you set the `fallback` property in the [generate](https://nuxtjs.org/docs/2.x
 
 ## includeFiles {/*includefiles*/}
 
-Nuxt requires that certain resources are included in a build and deploy to have access to them. As such, at times this will require additional configuration. To include additional resources for server side rendering, API calls, etc., use the `includeFiles` option in your `{{ CONFIG_FILE }}` file. [Read more](/guides/layer0_config#section_includefiles)
+Nuxt requires that certain resources are included in a build and deploy to have access to them. As such, at times this will require additional configuration. To include additional resources for server side rendering, API calls, etc., use the `includeFiles` option in your `{{ CONFIG_FILE }}` file. [Read more](/applications/layer0_config#section_includefiles)
 
 In this example, we would have an `api` folder that we want to include all items from.
 

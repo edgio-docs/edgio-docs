@@ -1,0 +1,8 @@
+description: Auth not valid.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/MetricsErrorResponse.yaml
+    examples:
+      unauthorized-access:
+        $ref: ../examples/Metrics-401-Unauthorized-Example.yaml

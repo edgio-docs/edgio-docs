@@ -9,13 +9,13 @@ title: A/B Testing
 You can perform two kinds of A/B tests with {{ PRODUCT_NAME }}:
 
 1. A/B test multiple implementations of the same site (environment).
-2. Split traffic between multiple sites (environments) - This is commonly used to test a new experience against a legacy one. Check out the [Traffic Splitting](/guides/performance/traffic_splitting) guide for more detail.
+2. Split traffic between multiple sites (environments) - This is commonly used to test a new experience against a legacy one. Check out the [Traffic Splitting](/applications/performance/traffic_splitting) guide for more detail.
 
 The first option is configured in EdgeJS within the project, the second option is configured in the console application.
 
 ## A/B Testing Multiple Implementations {/*ab-testing-multiple-implementations*/}
 
-To A/B test multiple implementations of the same site, simply deploy each implementation to a separate [environment](/guides/basics/environments); then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#configuring-the-split-test).
+To A/B test multiple implementations of the same site, simply deploy each implementation to a separate [environment](/applications/basics/environments); then [configure the rules for splitting traffic using the {{ PRODUCT_NAME }} Developer Console](#configuring-the-split-test).
 
 To use Continuous Integration (CI) to deploy A/B tests we recommend that you:
 
@@ -70,7 +70,7 @@ Once you have made these changes, deploy your site using `{{ FULL_CLI_NAME }} de
 
 After deploying a router with multiple destinations, all requests will be sent to the first destination until you have configured the A/B test in the {{ PORTAL }}.
 
-Check out the [Traffic Splitting](/guides/performance/traffic_splitting) guide for more detail.
+Check out the [Traffic Splitting](/applications/performance/traffic_splitting) guide for more detail.
 
 ## Configuring the A/B Test {/*configuring-the-split-test*/}
 
@@ -114,7 +114,7 @@ To end the A/B test, you can either deploy a new version of your app with the ro
 
 ## Third-Party CDNs {/*third-party-cdns*/}
 
-If {{ PRODUCT_NAME }} is behind a third-party CDN, it is critical that you update the third party CDN to not cache responses from {{ PRODUCT_NAME }} nor to affect any cookies that begin with `{{ COOKIE_PREFIX }}_`. You can find more details [here](/guides/performance/third_party_cdns#split-testing).
+If {{ PRODUCT_NAME }} is behind a third-party CDN, it is critical that you update the third party CDN to not cache responses from {{ PRODUCT_NAME }} nor to affect any cookies that begin with `{{ COOKIE_PREFIX }}_`. You can find more details [here](/applications/performance/third_party_cdns#split-testing).
 
 ## How Requests are Routed {/*how-requests-are-routed*/}
 
@@ -162,7 +162,7 @@ This example Next.js application showcases how you can use Google Analytics to t
 
 </Callout>
 
-<ExampleButtons 
+<ExampleButtons
   title="Analytics Variant"
   repoUrl="https://github.com/edgio-docs/edgio-analytics-variant-example"
   siteUrl="https://edgio-community-examples-analytics-variant-live.layer0-limelight.link/" />
@@ -175,6 +175,6 @@ This example site has a configured A/B test in the Edgio Developer Console to sp
 
 Based on the above example of an ecommerce PWA, if a shopper adds something to the cart and then you change the traffic percentage before they return to checkout, the transaction could get credited to the wrong experience. The correct experience to credit in this scenario depends on your test and the metrics you are measuring. For example, consider a shopper who is on variant A when they add something to the cart, and then return later to checkout and are assigned variant B. If your A/B test involved a change to "path to product" (i.e. home, category, or product pages) then you should credit the transaction to variant A. However if the A/B test involved a change to the checkout you should credit the transaction to variant B.
 
-Be sure you understand the scope and behavior of the variables you are using to track the A or B variant in your analytics package. For example, in Google Analytics, a custom variable can be applied using "hit", "session", or "user level" scope. In the preceding example of the shopper adding something to the cart, you would likely want to use a "session" scoped variable. However, there are scenarios where a "hit" scope variable may be more appropriate. 
+Be sure you understand the scope and behavior of the variables you are using to track the A or B variant in your analytics package. For example, in Google Analytics, a custom variable can be applied using "hit", "session", or "user level" scope. In the preceding example of the shopper adding something to the cart, you would likely want to use a "session" scoped variable. However, there are scenarios where a "hit" scope variable may be more appropriate.
 
-While other methods are possible, our recommendation is that implementers should use the `{{ COOKIE_PREFIX }}_destination` cookie when determining which segment the user is in for the purposes of analytics.  
+While other methods are possible, our recommendation is that implementers should use the `{{ COOKIE_PREFIX }}_destination` cookie when determining which segment the user is in for the purposes of analytics.

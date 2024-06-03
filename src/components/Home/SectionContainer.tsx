@@ -4,6 +4,8 @@ import cn from 'classnames';
 import styled from 'styled-components';
 
 import Link from 'components/MDX/Link';
+import {mobileMinWidth} from 'styles';
+import {HomepageSectionGroup} from 'utils/Types';
 
 const columnCount = 3;
 
@@ -24,6 +26,14 @@ const SectionContainer = styled.div`
   a {
     color: var(--text-primary);
     text-decoration: none;
+
+    &:hover {
+      color: var(--colors-blue0);
+    }
+  }
+
+  @media (max-width: ${mobileMinWidth}) {
+    padding: 10px;
   }
 `;
 
@@ -52,13 +62,11 @@ const TitleIcon = styled.div`
 const TitleIconInner = styled.div``;
 
 const Title = styled.div`
-  color: var(--text-primary);
   font-size: 24px;
   font-weight: 600;
 `;
 
 const Subtitle = styled.div`
-  color: var(--text-primary);
   font-size: 14px;
   line-height: 18px;
 `;
@@ -67,26 +75,25 @@ const ItemsContainer = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 20px;
 `;
 
 const Section = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
   align-items: flex-start;
   width: 100%;
 `;
 
 const SectionTitle = styled.div`
-  color: var(--text-primary);
   font-size: 18px;
   font-weight: 600;
 `;
 
 const ItemsGrid = styled.div<{columns: number}>`
   display: grid;
-  grid-gap: 16px;
+  grid-gap: 6px;
   width: 100%;
   box-sizing: border-box;
 
@@ -96,7 +103,7 @@ const ItemsGrid = styled.div<{columns: number}>`
     grid-template-columns: repeat(2, 1fr); // 2 columns for medium screens
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${mobileMinWidth}) {
     grid-template-columns: repeat(1, 1fr); // 1 column for small screens
   }
 `;
@@ -117,21 +124,14 @@ const ItemDot = styled.div`
 `;
 
 const ItemText = styled.div`
-  color: var(--text-primary);
-  font-size: 14px;
+  font-size: 16px;
   white-space: nowrap;
-
-  a:hover {
-    color: var(--colors-blue0);
-    text-decoration: none;
-  }
 `;
 
 const ViewMoreContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 7px;
-  color: var(--text-primary);
   font-size: 14px;
   font-weight: 500;
 `;
@@ -146,27 +146,18 @@ const ViewMoreIcon = styled.div`
   align-items: center;
 `;
 
-interface SectionBoxProps {
-  title: string;
-  subtitle: string;
+type SectionBoxProps = HomepageSectionGroup & {
   className?: string;
   icon?: NamedExoticComponent<JSX.IntrinsicElements['svg']>;
-  href?: string;
-  sections: {
-    title: string;
-    items: any[];
-  }[];
-  viewMoreText: string;
-}
+};
 
 const SectionBox = ({
-  title,
-  subtitle,
+  heading,
+  subheading,
   className,
   icon,
   href,
   sections,
-  viewMoreText,
 }: SectionBoxProps) => {
   const Icon = icon;
 
@@ -179,24 +170,33 @@ const SectionBox = ({
           </TitleIcon>
           {href ? (
             <Link href={href}>
-              <Title>{title}</Title>
+              <Title>{heading}</Title>
             </Link>
           ) : (
-            <Title>{title}</Title>
+            <Title>{heading}</Title>
           )}
         </TitleContainer>
-        <Subtitle>{subtitle}</Subtitle>
+        <Subtitle>{subheading}</Subtitle>
       </SectionHeader>
       <ItemsContainer>
         {sections.map((section, i) => (
           <Section key={i}>
-            {section.title && <SectionTitle>{section.title}</SectionTitle>}
+            {section.title &&
+              (section.href ? (
+                <Link href={section.href} useNextLink={!section.external}>
+                  <SectionTitle>{section.title}</SectionTitle>
+                </Link>
+              ) : (
+                <SectionTitle>{section.title}</SectionTitle>
+              ))}
             <ItemsGrid columns={columnCount}>
               {section.items.map((item) => (
                 <Item key={item.title}>
                   <ItemDot />
                   <ItemText>
-                    <Link href={item.path}>{item.title}</Link>
+                    <Link href={item.href} useNextLink={!item.external}>
+                      {item.title}
+                    </Link>
                   </ItemText>
                 </Item>
               ))}
@@ -204,14 +204,14 @@ const SectionBox = ({
           </Section>
         ))}
       </ItemsContainer>
-      {href && (
+      {/* {href && (
         <ViewMoreContainer>
           <ViewMoreText>
-            <Link href={href}>View {title} Documentation</Link>{' '}
+            <Link href={href}>View {heading} Documentation</Link>{' '}
           </ViewMoreText>
           <ViewMoreIcon>--&gt;</ViewMoreIcon>
         </ViewMoreContainer>
-      )}
+      )} */}
     </SectionContainer>
   );
 };

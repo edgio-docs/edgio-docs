@@ -1,0 +1,36 @@
+type: object
+properties:
+  '@type':
+    type: string
+    example: Error
+    description: The error type.
+  code:
+    type: string
+    enum:
+      - unauthorized
+    description: A human readable error code following `snake_case`.
+  title:
+    type: string
+    enum:
+      - Unauthorized
+    description: The main error heading.
+  description:
+    type: string
+    example:
+      - Request did not include a required authentication component
+    description: Detailed description about the error.
+  status_code:
+    type: integer
+    format: int32
+    enum:
+      - 401
+    description: Represents the HTTP status code associated with the response.
+  details:
+    type: array
+    items:
+      $ref: ./BaseApi_Entities_BaseHyperionErrorDetail.yaml
+    description: Describes the error.
+required:
+  - '@type'
+  - title
+description: BaseApi_Entities_Error_UnauthorizedError model

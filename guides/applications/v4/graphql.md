@@ -11,13 +11,13 @@ title: GraphQL Caching
 <ExampleButtons
   title="GraphQL over Proxy"
   siteUrl="https://layer0-docs-graphql-caching-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/graphql-caching-example" 
+  repoUrl="https://github.com/layer0-docs/graphql-caching-example"
   deployFromRepo />
 
 <ExampleButtons
   title=" GraphQL with Apollo Server Micro"
   siteUrl="https://layer0-docs-layer0-next-graphql-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-nextjs-graphql-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-nextjs-graphql-example"
   deployFromRepo />
 
 The sections below walk you through configuring your {{ PRODUCT_NAME }} project and creating the necessary routing rules to cache GraphQL responses.
@@ -186,12 +186,12 @@ deriveSurrogateKeysFromJson(json => [`product.${json.id}`], { onConflict: 'overr
 
 ### Purge by Surrogate Key {/*purge-by-surrogate-key*/}
 
-To purge all responses with a given surrogate key, use the {{ PRODUCT_NAME }} CLI's [cache-clear](/guides/cli#section_cache_clear) command.
+To purge all responses with a given surrogate key, use the {{ PRODUCT_NAME }} CLI's [cache-clear](/applications/cli#section_cache_clear) command.
 
 ```bash
 layer0 cache-clear --team=my-team --site=my-site --environment=production --surrogate-key="product.1"
 ```
 
-For more information, see [clearing the cache from the CLI](/guides/cli#section_cache_clear).
+For more information, see [clearing the cache from the CLI](/applications/cli#section_cache_clear).
 
-You can also purge responses by surrogate key [via the REST API](/guides/rest_api#section_clear_cache) by specifying the `surrogateKeys` option.
+You can also purge responses by surrogate key [via the REST API](/applications/rest_api#section_clear_cache) by specifying the `surrogateKeys` option.

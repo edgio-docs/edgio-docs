@@ -9,7 +9,7 @@ This guide shows you how to deploy a [Vue.js](https://vuejs.org/) application to
 <ExampleButtons
   title="Vue.js"
   siteUrl="https://layer0-docs-layer0-static-vuejs-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-static-vuejs-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-static-vuejs-example"
   deployFromRepo />
 
 {{ PREREQ.md }}
@@ -157,7 +157,7 @@ const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: https://docs.layer0.co/applications/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   // Send requests to static assets in the build output folder `dist`
   .static('dist')

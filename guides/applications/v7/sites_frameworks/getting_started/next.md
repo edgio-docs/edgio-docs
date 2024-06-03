@@ -116,7 +116,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 {{ system_origins_callout.md }}
 
-See [Deployments](/guides/basics/deployments) for more information.
+See [Deployments](/applications/basics/deployments) for more information.
 
 ## Prefetching {/* prefetching */}
 
@@ -375,7 +375,7 @@ module.exports = with{{ PRODUCT }}({
   });
 ```
 
-Finally, you will need to update your `{{ CONFIG_FILE }}` to [include](/guides/performance/cdn_as_code/edgio_config#serverless) where the locale files are stored. Here is an using the default location `/public`:
+Finally, you will need to update your `{{ CONFIG_FILE }}` to [include](/applications/performance/cdn_as_code/edgio_config#serverless) where the locale files are stored. Here is an using the default location `/public`:
 
 ```js filename='{{ CONFIG_FILE }}' ins="13"
 module.exports = {
@@ -389,7 +389,7 @@ module.exports = {
 
 <!-- A working example app can be found [here](https://github.com/edgio-docs/edgio-next-i18n-example). -->
 
-## Image optimizer {/* image-optimizer */}
+## Image Optimizer {/* image-optimizer */}
 
 By default, Next.js image optimizer is replaced by our image optimizer, which is available in all build modes. You can disable it and use the built-in Next.js image optimizer instead by adding `disableImageOptimizer: true` to the `next` config in the `{{ CONFIG_FILE }}` file.
 

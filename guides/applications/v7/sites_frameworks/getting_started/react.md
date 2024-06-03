@@ -2,7 +2,7 @@
 title: React
 ---
 
-This guide shows you how to serve a [React](https://reactjs.org/) application to {{ PRODUCT }}. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/sites_frameworks/getting_started/next).
+This guide shows you how to serve a [React](https://reactjs.org/) application to {{ PRODUCT }}. If you're using Next.js specifically, we suggest using the [Next.js guide](/applications/sites_frameworks/getting_started/next).
 
 ## Example {/* example */}
 
@@ -77,11 +77,11 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands 
 
 {{ system_origins_callout.md }}
 
-See [Deployments](/guides/basics/deployments) for more information.
+See [Deployments](/applications/basics/deployments) for more information.
 
 ## Prefetching {/* prefetching */}
 
-Install the `{{ PACKAGE_NAME }}/react` to enable [prefetching](/guides/performance/prefetching).
+Install the `{{ PACKAGE_NAME }}/react` to enable [prefetching](/applications/performance/prefetching).
 
 ```bash
 npm i -D {{ PACKAGE_NAME }}/react

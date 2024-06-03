@@ -5,7 +5,7 @@ title: API Security
 Use API Security to:
 
 -   Define valid payloads for API requests. {{ PRODUCT }} categorizes a request as a threat when the payload violates at least one of your requirements.
--   Discover the APIs that have been requested in the last 30 days. 
+-   Discover the APIs that have been requested in the last 30 days.
 
 <Callout type="info">
 
@@ -23,17 +23,17 @@ Set up an API Security configuration by performing the following steps:
     -   **API Schema:** An API schema is a JSON schema that describes the structure for a valid API payload.
 
     <Callout type="important">
-	
-	  Setting up a new API Security rule requires creating at least one API schema. Your API Security rule will be read-only until you do so. 
-	
+
+	  Setting up a new API Security rule requires creating at least one API schema. Your API Security rule will be read-only until you do so.
+
 	</Callout>
 
-2.  Assign an API Security rule to a Security App configuration and define the enforcement action that will be applied to requests that violate the API schema(s) defined in the previous step. 
+2.  Assign an API Security rule to a Security App configuration and define the enforcement action that will be applied to requests that violate the API schema(s) defined in the previous step.
 
 <Callout type="tip">
-	
+
   By default, {{ PRODUCT }} validates all `POST`, `PUT`, and `PATCH` requests that satisfy your security app's hostname and URL path requirements. If your website uses those HTTP methods for non-API requests, then it is strongly recommended to define one or more URL path(s) within your API Security rule.
-	
+
 </Callout>
 
 ### API Security Rule {/*api-security-rule*/}
@@ -45,7 +45,7 @@ An API Security rule identifies an API schema and the set of requests that must 
     -   [Exact match (multiple entries):](#exact-match-multiple-entries) Restrict inspection to specific relative path(s).
     -   [Wildcard match:](#wildcard-match) Restrict inspection to a wildcard pattern for the relative path.
     -   [Regex match:](#regex-match) Restrict inspection to a regular expression for the relative path.
-	
+
         <Callout type="info">
 
           Wildcard and regular expression match comparison modes require {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ ACCOUNT_UPGRADE }}
@@ -97,7 +97,7 @@ An API Security rule identifies an API schema and the set of requests that must 
     -   **Example:** `/[cm]art`
     -   **Matches:** `/cart | /mart`
     -   **Does not match:** `/tart | /start`
--   **[*a*-*z*]:** Matches a single character from the specified range. 
+-   **[*a*-*z*]:** Matches a single character from the specified range.
     -   **Example:** `/[a-z]art`
     -   **Matches:** `/cart | /mart | /tart`
     -   **Does not match:** `/Cart | /marT | /start`
@@ -110,7 +110,7 @@ An API Security rule identifies an API schema and the set of requests that must 
     -   **Matches:** `/Cart | /Mart | /tart`
     -   **Does not match:** `/cart | /mart | /tArt`
 
-**Example:** 
+**Example:**
 
 Setting the `URL path(s)` option to the following value allows {{ PRODUCT }} {{ PRODUCT_SECURITY }} to inspect any request whose URL path starts with */marketing/*:
 
@@ -154,17 +154,17 @@ An API schema is a JSON schema that describes the structure for a valid API payl
 
 <Callout type="tip">
 
-  Define an API schema from within the **Schemas** tab of an API Security ruleset configuration. Use the **Derive Schema from Example** option to autogenerate a JSON schema from a sample JSON payload. You may then either build upon this base JSON schema to define a stricter set of requirements or save it without further modifications. 
+  Define an API schema from within the **Schemas** tab of an API Security ruleset configuration. Use the **Derive Schema from Example** option to autogenerate a JSON schema from a sample JSON payload. You may then either build upon this base JSON schema to define a stricter set of requirements or save it without further modifications.
 
 </Callout>
 
 #### JSON Schema Syntax {/*json-schema-syntax*/}
 
-The JSON Schema site provides [guidance and examples on how to define a JSON schema](https://json-schema.org/understanding-json-schema/index.html). {{ PRODUCT }} restricts syntax support as follows:
+The [JSON Schema site](https://json-schema.org) provides guidance and examples on how to define a JSON schema. {{ PRODUCT }} restricts syntax support as follows:
 -   {{ PRODUCT }} does not consider a number  with a zero fractional part (e.g., *1.0*, or *42.0*) an integer.
 -   {{ PRODUCT }} ignores the `$schema` keyword.
--   Specify `exclusiveMaximum` and `exclusiveMinimum` as integers. 
--   Remote schemas are unsupported.	
+-   Specify `exclusiveMaximum` and `exclusiveMinimum` as integers.
+-   Remote schemas are unsupported.
 -   [String formats](https://json-schema.org/understanding-json-schema/reference/string.html#built-in-formats) introduced after draft 4 are unsupported. For example, the following formats are unsupported: `time | date | duration | idn-email`
 -   The following keywords are unsupported: `$anchor | $comment | $dynamicAnchor | $dynamicRef | $recursiveRef |const | contentEncoding | contentMediaType| contentSchema | dependentRequired | if-then-else | minContains | maxContains | prefixItems | propertyNames | unevaluated`
 
@@ -177,10 +177,10 @@ The JSON Schema site provides [guidance and examples on how to define a JSON sch
 </Callout>
 
 #### JSON Schema Examples {/*json-schema-examples*/}
-A common method for setting up an API schema is to define the expected data type through the `type` property. 
+A common method for setting up an API schema is to define the expected data type through the `type` property.
 
 -   **String Example:** The following sample schema requires an API request to only contain a single string value:
-	
+
 	```json
     {
         "api_gw_id": "mnriXoB6",
@@ -188,7 +188,7 @@ A common method for setting up an API schema is to define the expected data type
     }
     ```
 -   **Object Examples:** The following sample schema requires an API request to contain an object. This object must contain a property called `email` set to a properly formatted email address:
-	
+
     ```json
 	{
 	    "api_gw_id": "mnriXoB6",
@@ -243,7 +243,7 @@ You may create, modify, and delete API Security rulesets.
 **Key information:**
 
 -   Administer API Security rulesets from the **API Security** page.
--   Apply an API Security ruleset to production traffic by adding it to a [Security App configuration](/guides/security/security_applications) and then determining how it will be enforced. Multiple Security App configurations may use the same API Security ruleset. 
+-   Apply an API Security ruleset to production traffic by adding it to a [Security App configuration](/applications/security/security_applications) and then determining how it will be enforced. Multiple Security App configurations may use the same API Security ruleset.
 -   Setting up a new API Security rule requires creating at least one API schema within the current API Security ruleset. Your API Security rule will be read-only until you do so.
 -   It may take up to 2 minutes for an update to an API Security ruleset to be applied across our entire network.
 
@@ -256,7 +256,7 @@ You may create, modify, and delete API Security rulesets.
 4.  Click the **Schemas** tab. {{ PRODUCT }} will save your configuration. You must save an API schema, as described in the next step, before setting up an API Security rule.
 5.  Add a JSON schema that defines the structure for a valid API payload.
     1.  Click **+ Create New** and then click on the new API schema (i.e., *Schema 1*).
-    2.  In the **Name** option, type a name for this JSON schema. 
+    2.  In the **Name** option, type a name for this JSON schema.
     3.  Perform one of the following steps:
         -   **Autogenerate Schema:** Perform the following steps to automatically generate a JSON schema from a sample payload:
             1.  Click **Derive Schema from Example**.
@@ -266,8 +266,8 @@ You may create, modify, and delete API Security rulesets.
             5.  When finished, click **Apply**.
         -   **Upload Schema:** Upload an API schema by clicking **Upload Schema JSON**, selecting the desired file, and then clicking **Open**.
     4.  Click **Save Schema**.
-    5.  Repeat steps 5.1 - 5.4 for each API schema that you would like to add to this API Security rule. 
-	
+    5.  Repeat steps 5.1 - 5.4 for each API schema that you would like to add to this API Security rule.
+
     <Callout type="tip">
 
       You may apply different API schemas to different endpoints or operations by creating an API Security rule for each API schema. You should then restrict each API Security rule to only apply API schema validation to the desired set of endpoints or operations.
@@ -280,7 +280,7 @@ You may create, modify, and delete API Security rulesets.
     3.  In the **Name** option, type a name for this API Security rule.
     4.  Optional. Restrict the set of requests that will be inspected to one or more specific relative path(s).
         1.  From the **URL Path(s)** option, determine whether {{ PRODUCT }} will perform URL path comparisons by [exact match](#exact-match-multiple-entries), [regular expression](#regex-match), or [wildcards](#wildcard-match).
-        2.  Specify the desired relative path or regular expression. 
+        2.  Specify the desired relative path or regular expression.
 
             If you selected *Exact Match*, then you may specify multiple relative paths. Press **ENTER** after typing each desired URL path.
 
@@ -313,12 +313,12 @@ You may create, modify, and delete API Security rulesets.
 
 ## API Discovery {/*api-discovery*/}
 
-{{ PRODUCT }} automatically discovers all API requests for the last 30 days. 
+{{ PRODUCT }} automatically discovers all API requests for the last 30 days.
 
 **Key information:**
 
--   Expand an endpoint to break down request statistics by HTTP method and status code. 
--   Request statistics are rounded to whole numbers. This may cause some entries to display *100%* or *0%* even though there are multiple entries for that endpoint. 
--   Use this information to discover legacy or deprecated endpoints that are still being requested. 
+-   Expand an endpoint to break down request statistics by HTTP method and status code.
+-   Request statistics are rounded to whole numbers. This may cause some entries to display *100%* or *0%* even though there are multiple entries for that endpoint.
+-   Use this information to discover legacy or deprecated endpoints that are still being requested.
 
 {{ security_version_control.md }}

@@ -7,9 +7,9 @@ This documentation is intended for programmers who are writing client or server 
 
 | Action | Specific Calls |
 | --- | --- |
-| Query | [Get information on all slots in an account](#get-all-slots)<br />[Get information on a specific slot](#get-specific-slot)<br />[Get the streaming status of a slot](#get-streaming-status)<br />[Get overview information for an account's slots](#get-overview-information-for-slots)<br />[Get information about a recording schedule](#recording-schedules-get)<br />[Get information about all recording schedules](#get_all_recording_schedules) |
-| Create | [Create a slot](#Create_a_slot)<br />[Create a recording schedule](#create_a_recording_schedule) |
-| Update | [Update an existing recording schedule](#Update_an_existing_recording_schedule) |
+| Query | [Get information on all slots in an account](#get-all-slots)<br />[Get information on a specific slot](#get-specific-slot)<br />[Get the streaming status of a slot](#get-streaming-status)<br />[Get overview information for an account's slots](#get-overview-information-for-slots)<br />[Get information about a recording schedule](#recording-schedules-get)<br />[Get information about all recording schedules](#recording-schedules-get-all) |
+| Create | [Create a slot](#create_slot)<br />[Create a recording schedule](#create_a_recording_schedule) |
+| Update | [Update an existing recording schedule](#update_an_existing_recording_schedule) |
 | Delete | [Delete a slot](#delete_a_slot)<br />[Delete a recording schedule](#delete_a_recording_schedule) |
 
 Resources about the above bullet points are described further in [Data Resources](#data-sources).

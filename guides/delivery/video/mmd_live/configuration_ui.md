@@ -142,7 +142,7 @@ Configuring a slot is a simple process.
 
 #### Transmux Slots
 
-![Transmux Slots](/images/delivery/video/transmux.png)
+![Transmux Slots](/images/delivery/video/transmux.jpg)
 
 | Field Name | Description/Instructions | Notes |
 | --- | --- | --- |

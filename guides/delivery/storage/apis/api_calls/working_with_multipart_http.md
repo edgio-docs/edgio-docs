@@ -11,7 +11,6 @@ For general information about multipart uploads, see [Uploading Files — Multip
 
 As you read information in the following sections, keep in mind the caveats mentioned in [Uploading Files — Non-Multipart](/delivery/storage/apis/api_calls/uploading_files_nonmultipart).
 
-
 ## Begin a Multipart Upload {/*begin-multipart-upload*/}
 
 ```
@@ -75,6 +74,7 @@ http://{Account name}.upload.llnw.net/multipart/create
 ```
 
 ### Sample Success Response  {/*sample-request-response*/}
+
 ```
 HTTP/1.1 200 OK
 Date: Wed, 22 Jul 2015 16:22:54 GMT
@@ -92,6 +92,7 @@ Content-Type: text/json;charset=utf-8
 ```
 
 ## Create a Multipart Piece {/*create-multipart-piece*/}
+
 ```
 POST to /multipart/piece
 ```
@@ -140,7 +141,9 @@ curl -v -k \
 --data-binary @/piece1.txt\
 http://{Account name}.upload.llnw.net/multipart/piece
 ```
+
 ### Sample Success Response  {/*create-sample-request-response*/}
+
 ```
 HTTP/1.1 200 OK
 Date: Thu, 16 Jul 2015 22:19:28 GMT
@@ -156,11 +159,12 @@ X-Agile-Size: 23
 Content-Type: text/json;charset=utf-8
 ```
 
-
 ## Complete a Multipart Upload  {/*complete-multipart-upload*/}
+
 ```
 POST to /multipart/complete
 ```
+
 Completes a multipart upload, concatenating the individual pieces into the final file defined by the X-Agile-Basename request header in the creation step. (See [Begin a Multipart Upload](#begin-a-multipart-upload).). Note that neither the final file or individual pieces are visible as files until you complete the multipart upload. You can, however, get information about a multipart upload and its pieces using the `listMultipart` and `listMultipartPiece` calls. (See [List Your Multipart Uploads](/delivery/storage/apis/api_calls/working_with_multipart_json/#list-multipart) and [List Pieces in a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#list-pieces) respectively.)
 
 When the file creation is complete, the system sets the parent directory's mtime (last modification time) to the current system time.
@@ -197,7 +201,9 @@ curl -v -k \
 -H "X-Agile-Multipart: 8dfe3fdbbef64dfc8f290da4fd8aef00"\
 http://{Account name}.upload.llnw.net/multipart/complete
 ```
+
 ### Sample Success Response  {/*complete-sample-request-response*/}
+
 ```
 HTTP/1.1 200 OK
 Date: Tue, 11 Aug 2015 19:23:36 GMT

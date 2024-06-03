@@ -2,7 +2,7 @@
 title: Edgio Developer Tools Chrome Extension
 ---
 
-The {{ CHROME_EXTENSION }} provides insight into how your site interacts with {{ PRODUCT }}. Specifically, it provides detailed information for the current page and all of the requests spawned from it. Spawned requests include everything from static assets to prefetch requests.
+The [{{ CHROME_EXTENSION }}](https://chromewebstore.google.com/detail/edgio-developer-tools/lennfodclaaegmceonbblmnnmpmpmahf) provides insight into how your site interacts with {{ PRODUCT }}. Specifically, it provides detailed information for the current page and all of the requests spawned from it. Spawned requests include everything from static assets to prefetch requests.
 
 ![{{ CHROME_EXTENSION }}](/images/v7/performance/edgio-developer-tools-chrome-extension-overview.png)
 
@@ -29,30 +29,13 @@ The recommended configuration is to enable this feature on all requests.
   export default new Router().always({headers: {debug_header: true}});
   ```
 
-<!-- ## Installation {/*installation*/}
+## Installation {/*installation*/}
 
 Perform the following steps:
 
-1.  From the Chrome browser, load the [Edgio Developer Tools page in the Chrome web store](https://chrome.google.com/webstore/detail/edgio-developer-tools/ieehikdcdpeailgpfdbafhnbfhpdgefm).
+1.  From the Chrome browser, load the [Edgio Developer Tools page in the Chrome web store](https://chromewebstore.google.com/detail/edgio-developer-tools/lennfodclaaegmceonbblmnnmpmpmahf).
 2.  Click **Add to Chrome**.
-3.  When prompted, confirm that the {{ CHROME_EXTENSION }} will be installed by clicking **Add extension**. -->
-
-## Installation {/* installation */}
-
-<Important>
-  The {{CHROME_EXTENSION}} is currently under review by the Chrome Web Store and
-  requires manual installation at this time.
-</Important>
-
-Perform the following steps:
-
-1. Download the <a href="/zip/edgio-devtools-extension.zip" target="_blank">{{ CHROME_EXTENSION }}</a> from {{ PRODUCT }}.
-2. Unzip the downloaded file.
-3. Open Chrome and navigate to `chrome://extensions`.
-4. Enable **Developer mode** in the top right corner.
-5. Click **Load unpacked**.
-6. Select the unzipped folder containing the {{ CHROME_EXTENSION }}.
-7. Confirm that the {{ CHROME_EXTENSION }} is enabled.
+3.  When prompted, confirm that the {{ CHROME_EXTENSION }} will be installed by clicking **Add extension**.
 
 ## Usage {/* usage */}
 

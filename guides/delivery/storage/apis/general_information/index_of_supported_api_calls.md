@@ -9,15 +9,17 @@ See [API Calls by Topic](#api-calls-by-topic) if you know what you want to do bu
 Both sections contain links to detailed information.
 
 ## API Calls by Name
+
 Calls are listed in alphabetical order within each interface. Note that there is not a one-to-one correspondence between calls in the two interfaces because the HTTP interface has fewer calls. Juxtaposition of the HTTP calls with the JSON-RPC calls in the following table is not meant to imply correspondence.
 
 ### JSON-RPC Interface
+
 | API Call | Details|
 | --- | --- |
 | abortMultipart|[Abort a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#abort) |
 |authenticate|[Log in to a Sub-directory](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface/#log-in-to-subdirectory)|
 | checkToken|[Determine Your Token's Age](/delivery/storage/apis/api_calls/working_with_sessions/#determine-token-age) |
-| completeMultipart|[Complete a Multipart Upload](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface/#complete) |
+| completeMultipart|[Complete a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_http/#complete-multipart-upload) |
 | deleteDir|[Delete a Directory](/delivery/storage/apis/api_calls/working_with_directories_json/#delete-directory) |
 | deleteFile<br />|[Delete a File](/delivery/storage/apis/api_calls/working_with_files/#delete-a-file) |
 | fetchFileHTTP|[Copy a File](/delivery/storage/apis/api_calls/working_with_files/#copy-a-file) |
@@ -45,6 +47,7 @@ Calls are listed in alphabetical order within each interface. Note that there is
 
 
 ### HTTP Interface  {/*http-interface*/}
+
 | API Call | Details |
 | --- | --- |
 | account/login|[Log In](/delivery/storage/apis/api_calls/logging_in_using_http_interface) |
@@ -55,9 +58,11 @@ Calls are listed in alphabetical order within each interface. Note that there is
 |post/raw|[File Raw Post](/delivery/storage/apis/api_calls/uploading_files#file-raw-post) |
 
 ## API Calls by Topic  {/*api-calls-by-topic*/}
+
 If you know what you want to do but you are not sure which call to use, refer to information in the following sections:
 
 ### Authentication  {/*authentication*/}
+
 | Action  | API Call| Details|
 | --- | --- | --- |
 | Log in to Origin Storage| login<br /><br />/account/login (HTTP interface) | [Log In](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface/#log-in)<br /><br />[Log In](/delivery/storage/apis/api_calls/logging_in_using_http_interface) (HTTP interface) |
@@ -65,6 +70,7 @@ If you know what you want to do but you are not sure which call to use, refer to
 | Log out of Origin Storage| logout | [Logging Out](/delivery/storage/apis/api_calls/logging_out) |
 
 ### Connections and Tokens  {/*connections-and-tokens*/}
+
 Calls are available in the JSON-RPC interface only.
 
 | Action  | API Call| Details|
@@ -76,6 +82,7 @@ Calls are available in the JSON-RPC interface only.
 | Generate a new key pair for use in signing requests | initKeyPair | [Initializing HMAC Key Pairs](Initializing HMAC Key Pairs.htm) |
 
 ### Directories  {/*directories*/}
+
 Calls are available in the interface unless otherwise indicated.
 
 
@@ -91,6 +98,7 @@ Calls are available in the interface unless otherwise indicated.
 | Rename a directory | rename | [Rename a File or Directory](Working With Directories and Files Common.htm#Rename) |
 
 ### Files  {/*files*/}
+
 Calls are available in the JSON-RPC interface only.
 
 | To | Use this call | For instructions see |
@@ -106,6 +114,7 @@ Calls are available in the JSON-RPC interface only.
 | Set a file's content (MIME) type | setContentType | [Set a File's Content Type](/delivery/storage/apis/api_calls/working_with_files_json/#set-type) |
 
 ### File Upload - Non-Multipart  {/*nonmultipart-download*/}
+
 Calls are available in the HTTP interface only.
 
 | To | Use this call | For instructions see |
@@ -114,6 +123,7 @@ Calls are available in the HTTP interface only.
 | Web browser upload | /post/file | [Web Browser Upload](/delivery/storage/apis/api_calls/uploading_files_nonmultipart/#web-browser-upload) |
 
 ### File Upload - Multipart  {/*multipart-download*/}
+
 Calls are available in the JSON-RPC interface unless otherwise indicated.
 
 | To | Use this call | For instructions see |

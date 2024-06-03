@@ -11,7 +11,7 @@ const nav = {
   routes: [
     {
       title: 'Overview',
-      path: 'index',
+      path: 'overview',
     },
     {
       title: 'Delivery',

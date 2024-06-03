@@ -98,7 +98,7 @@ Configuring a slot is a simple process.
 
     [Ingest details](#ingest)
 
-    [Configuration Details](#config-details)
+    [Configuration Details](#content-security)
 
     [Encoding details](#encoding)
 
@@ -142,7 +142,7 @@ Configuring a slot is a simple process.
 
 #### Transmux Slots
 
-![Transmux Slots](/images/delivery/video/transmux_slots.png)
+![Transmux Slots](/images/delivery/video/transmux.png)
 
 | Field Name | Description/Instructions | Notes |
 | --- | --- | --- |

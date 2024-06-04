@@ -45,7 +45,6 @@ Calls are listed in alphabetical order within each interface. Note that there is
 | stat|[Obtain File or Directory Metadata](/delivery/storage/apis/api_calls/working_with_methods/#metadata) |
 | updateSession|[Set Your Token's Expiry](/delivery/storage/apis/api_calls/working_with_sessions/#set-your-tokens-exiry) |
 
-
 ### HTTP Interface  {/*http-interface*/}
 
 | API Call | Details |

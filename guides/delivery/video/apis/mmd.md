@@ -14,6 +14,7 @@ This documentation is intended for programmers who are writing client or server 
 
 Resources about the above bullet points are described further in [Data Resources](#data-sources).
 
+
 ## Data Resources  {/*data-resources*/}
 
 The MMD Live APIs use four Data Resource objects. The method definitions using the Data Resources are defined in [API Requests - Query](#query), [API Requests - Create and Update](#create-and-update), and [API Requests - Delete](#delete).

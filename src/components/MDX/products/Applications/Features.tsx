@@ -3,18 +3,18 @@ import styled from 'styled-components';
 import Security from 'components/Home/Security';
 import {useTheme} from 'contexts/ThemeContext';
 
-import AccountsandTeams from '../../Home/AccountsandTeams';
-import Cdn from '../../Home/Cdn';
-import DeveloperTools from '../../Home/DeveloperTools';
-import FrameworkGuides from '../../Home/FrameworkGuides';
-import GetStarted from '../../Home/GetStarted';
-import Reference from '../../Home/Reference';
-import SectionHeader from '../../Home/SectionHeader';
+import AccountsandTeams from '../../../Home/AccountsandTeams';
+import Cdn from '../../../Home/Cdn';
+import DeveloperTools from '../../../Home/DeveloperTools';
+import FrameworkGuides from '../../../Home/FrameworkGuides';
+import GetStarted from '../../../Home/GetStarted';
+import Reference from '../../../Home/Reference';
+import SectionHeader from '../../../Home/SectionHeader';
 import {
   IconAppsGetStarted,
   IconAppsGetStartedDark,
-} from '../../Icon/IconAppsGetStarted';
-import Container from '../../Layout/Container';
+} from '../../../Icon/IconAppsGetStarted';
+import Container from '../../../Layout/Container';
 
 const StyledHomepageFeatures = styled.div`
   // padding-bottom: 500px;
@@ -49,13 +49,9 @@ const StyledHomepageFeatures = styled.div`
       }
     }
   }
-
-  @media (max-width: 630px) {
-    padding-bottom: 850px;
-  }
 `;
 
-export default function ApplicationsFeatures() {
+export function ApplicationsFeatures() {
   const {themedValue} = useTheme();
   return (
     <StyledHomepageFeatures>

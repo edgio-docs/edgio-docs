@@ -1,22 +1,22 @@
 import styled from 'styled-components';
 
-import Security from 'components/Home/Security';
+import Security from 'components/product/Applications/Security';
+import SectionHeader from 'components/SectionHeader';
 import {useTheme} from 'contexts/ThemeContext';
 
-import AccountsandTeams from '../../../Home/AccountsandTeams';
-import Cdn from '../../../Home/Cdn';
-import DeveloperTools from '../../../Home/DeveloperTools';
-import FrameworkGuides from '../../../Home/FrameworkGuides';
-import GetStarted from '../../../Home/GetStarted';
-import Reference from '../../../Home/Reference';
-import SectionHeader from '../../../Home/SectionHeader';
 import {
   IconAppsGetStarted,
   IconAppsGetStartedDark,
 } from '../../../Icon/IconAppsGetStarted';
 import Container from '../../../Layout/Container';
+import AccountsandTeams from '../../../product/Applications/AccountsandTeams';
+import Cdn from '../../../product/Applications/Cdn';
+import DeveloperTools from '../../../product/Applications/DeveloperTools';
+import FrameworkGuides from '../../../product/Applications/FrameworkGuides';
+import GetStarted from '../../../product/Applications/GetStarted';
+import Reference from '../../../product/Applications/Reference';
 
-const StyledHomepageFeatures = styled.div`
+const StyledFeatures = styled.div`
   // padding-bottom: 500px;
 
   .section-container {
@@ -49,16 +49,12 @@ const StyledHomepageFeatures = styled.div`
       }
     }
   }
-
-  @media (max-width: 630px) {
-    padding-bottom: 850px;
-  }
 `;
 
-export function DeliveryFeatures() {
+export function ApplicationsFeatures() {
   const {themedValue} = useTheme();
   return (
-    <StyledHomepageFeatures>
+    <StyledFeatures>
       <Container>
         <GetStarted>
           <SectionHeader
@@ -77,6 +73,6 @@ export function DeliveryFeatures() {
         <Reference />
         {/* <VideosandTutorials /> */}
       </Container>
-    </StyledHomepageFeatures>
+    </StyledFeatures>
   );
 }

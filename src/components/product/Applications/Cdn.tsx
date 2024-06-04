@@ -10,8 +10,8 @@ import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 
-import {StyledFeatureSection} from './FeatureSection';
-import SectionHeader from './SectionHeader';
+import {StyledFeatureSection} from '../../FeatureSection';
+import SectionHeader from '../../SectionHeader';
 
 const StyledComp = styled(StyledFeatureSection)``;
 

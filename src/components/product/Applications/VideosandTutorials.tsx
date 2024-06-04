@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import {useAppContext} from 'contexts/AppContext';
 
-import SectionHeader from './SectionHeader';
+import SectionHeader from '../../SectionHeader';
 
 const StyledComp = styled.div`
   display: grid;

@@ -14,7 +14,7 @@ import Integrations from './Integrations';
 import Link from './Link';
 import PackageCommand from './PackageCommand';
 import PopularFrameworks from './PopularFrameworks';
-import * as ProductFeaturesAndHero from './products';
+import * as ProductFeaturesAndHero from './product';
 import RawEdgeJS from './RawEdgeJS';
 import {SnippetGroup} from './SnippetGroup';
 import Video, {VimeoMDXEmbed} from './Video';

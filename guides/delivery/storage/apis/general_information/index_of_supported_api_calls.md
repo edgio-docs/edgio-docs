@@ -40,7 +40,7 @@ Calls are listed in alphabetical order within each interface. Note that there is
 | ping<br />|[Perform an Unauthenticated Server Verification](/delivery/storage/apis/api_calls/verifying_the_server_api_connection/#no-pass-token) |
 | rename<br />|[Rename a File or Directory](/delivery/storage/apis/api_calls/working_with_methods/#rename) |
 | restartMultipart|[Restart a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#restart) |
-| setContentType|[Set a File's Content Type](/delivery/storage/apis/api_calls/working_with_files/#set-type) |
+| setContentType|[Set a File's Content Type](/delivery/storage/apis/api_calls/working_with_files_json/#set-type) |
 | setMTime|[Change a File or Directory Last Modification Time](/delivery/storage/apis/api_calls/working_with_methods/#change-time) |
 | stat|[Obtain File or Directory Metadata](/delivery/storage/apis/api_calls/working_with_methods/#metadata) |
 | updateSession|[Set Your Token's Expiry](/delivery/storage/apis/api_calls/working_with_sessions/#set-your-tokens-exiry) |

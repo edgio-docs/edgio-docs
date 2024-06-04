@@ -1,4 +1,3 @@
-import sortBy from 'lodash/sortBy';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -6,10 +5,9 @@ import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 
-import {IconAppsTeams, IconAppsTeamsDark} from '../Icon/IconAppsTeams';
-
-import {StyledFeatureSection} from './FeatureSection';
-import SectionHeader from './SectionHeader';
+import {StyledFeatureSection} from '../../FeatureSection';
+import {IconAppsTeams, IconAppsTeamsDark} from '../../Icon/IconAppsTeams';
+import SectionHeader from '../../SectionHeader';
 
 const StyledComp = styled(StyledFeatureSection)``;
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import SectionContainer from 'components/Home/SectionContainer';
+import SectionContainer from 'components/SectionContainer';
 import {sections} from 'config/home/sections';
 import {HomepageSectionGroup} from 'utils/Types';
 

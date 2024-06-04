@@ -1,0 +1,7 @@
+in: path
+name: id
+schema:
+  type: string
+  format: uuid
+required: true
+description: Unique identifier (UUID) for the alert.

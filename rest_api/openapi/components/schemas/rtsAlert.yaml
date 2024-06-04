@@ -1,0 +1,13 @@
+title: Alert Properties
+description: >-
+  Comprehensive model representing an alert with all its properties, including
+  its ID.
+allOf:
+  - $ref: ./rtsAlertProperties.yaml
+  - properties:
+      id:
+        type: string
+        format: uuid
+        description: Unique identifier (UUID) for the alert.
+    required:
+      - id

@@ -1,0 +1,16 @@
+title: A collection of alerts
+description: >-
+  Comprehensive model representing an alert with all its properties, including
+  its ID and Hyperion metadata.
+allOf:
+  - $ref: >-
+      https://raw.githubusercontent.com/Edgio/hyperion/v2.0.0/schema/collection.json
+  - type: object
+    properties:
+      items:
+        type: array
+        items:
+          allOf:
+            - $ref: >-
+                https://raw.githubusercontent.com/Edgio/hyperion/v2.0.0/schema/node.json
+            - $ref: ./rtsAlert.yaml

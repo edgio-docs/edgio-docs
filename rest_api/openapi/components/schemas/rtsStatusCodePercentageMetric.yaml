@@ -1,0 +1,14 @@
+title: Status Code Ratio Metric
+description: >-
+  A specific HTTP status code (e.g., 504) or class of status codes (e.g., 4xx or
+  5xx) as a percentage of total traffic.
+type: object
+required:
+  - type
+  - status_code
+properties:
+  type:
+    type: string
+  status_code:
+    $ref: ./rtsStatusCodePattern.yaml
+additionalProperties: false

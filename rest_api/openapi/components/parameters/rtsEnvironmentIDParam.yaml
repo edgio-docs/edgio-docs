@@ -1,0 +1,6 @@
+in: query
+name: environment_id
+schema:
+  type: string
+  format: uuid
+description: Environment ID

@@ -11,8 +11,7 @@ import {
   useAppContext,
 } from 'contexts/AppContext';
 
-import HomeFeatures from '../components/MDX/Home/Features';
-import HomeHero from '../components/MDX/Home/Hero';
+import {HomeFeatures, HomeHero} from '../components/MDX/products/Home';
 
 interface HomePageProps extends AppProviderProps {}
 

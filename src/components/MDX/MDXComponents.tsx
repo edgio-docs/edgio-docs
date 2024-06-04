@@ -1,7 +1,5 @@
 import {GoKebabVertical} from 'react-icons/go';
 
-import ApplicationsFeatures from './Applications/Features';
-import ApplicationsHero from './Applications/Hero';
 import ButtonLink from './ButtonLink';
 import ButtonLinksGroup from './ButtonLinksGroup';
 import Callout from './Callout';
@@ -10,18 +8,15 @@ import CustomPre from './CustomPre';
 import ExampleButtons from './ExampleButtons';
 import Frameworks, {V7LegacyFrameworks} from './Frameworks';
 import {H1, H2, H3, H4} from './Heading';
-import HomeFeatures from './Home/Features';
-import HomeHero from './Home/Hero';
 import Image from './Image';
 import InlineCode from './InlineCode';
 import Integrations from './Integrations';
 import Link from './Link';
 import PackageCommand from './PackageCommand';
 import PopularFrameworks from './PopularFrameworks';
+import * as ProductFeaturesAndHero from './products';
 import RawEdgeJS from './RawEdgeJS';
 import {SnippetGroup} from './SnippetGroup';
-import UplynkFeatures from './Uplynk/Featrues';
-import UplynkHero from './Uplynk/Hero';
 import Video, {VimeoMDXEmbed} from './Video';
 
 const P = (p: JSX.IntrinsicElements['p']) => (
@@ -97,11 +92,6 @@ export const MDXComponents = {
   RawEdgeJS,
   PackageCommand,
 
-  // context-specific components
-  HomeHero,
-  HomeFeatures,
-  ApplicationsHero,
-  ApplicationsFeatures,
-  UplynkHero,
-  UplynkFeatures,
+  // product-specific components
+  ...ProductFeaturesAndHero,
 };

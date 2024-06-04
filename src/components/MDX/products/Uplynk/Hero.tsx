@@ -2,8 +2,8 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 
-import Container, {StyledContainer} from '../../Layout/Container';
-import Link from '../Link';
+import Container, {StyledContainer} from '../../../Layout/Container';
+import Link from '../../Link';
 
 const StyledHero = styled.div`
   background: var(--mediahero-bg-image);
@@ -58,7 +58,7 @@ const StyledHero = styled.div`
   }
 `;
 
-function ApplicationsHero() {
+export function UplynkHero() {
   return (
     <StyledHero>
       <Container>
@@ -98,5 +98,3 @@ function ApplicationsHero() {
     </StyledHero>
   );
 }
-
-export default ApplicationsHero;

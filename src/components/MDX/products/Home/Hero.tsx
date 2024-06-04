@@ -1,7 +1,7 @@
 import {Content, HeroContainer, StyledContainer} from 'components/Home/Hero';
 import SearchComponent from 'components/Home/SearchComponent';
 
-export default function HomeHero() {
+export function HomeHero() {
   return (
     <HeroContainer backgroundImage="var(--homepagehero-bg-image)">
       <StyledContainer>

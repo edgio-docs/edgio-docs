@@ -4,7 +4,7 @@ import SectionContainer from 'components/Home/SectionContainer';
 import {sections} from 'config/home/sections';
 import {HomepageSectionGroup} from 'utils/Types';
 
-import Container from '../../Layout/Container';
+import Container from '../../../Layout/Container';
 
 const StyledFeatures = styled.div`
   .grouped-sections {
@@ -21,7 +21,7 @@ const StyledFeatures = styled.div`
   }
 `;
 
-export default function HomeFeatures() {
+export function HomeFeatures() {
   return (
     <StyledFeatures>
       <Container>

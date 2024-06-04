@@ -123,8 +123,8 @@ const nav = {
               path: 'performance/cdn_as_code/edgio_config',
             },
             {
-            title: 'CLI',
-            path: 'performance/cdn_as_code/cli',
+              title: 'CLI',
+              path: 'performance/cdn_as_code/cli',
             },
           ],
         },

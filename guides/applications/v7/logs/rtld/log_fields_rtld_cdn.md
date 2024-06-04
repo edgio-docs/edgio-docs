@@ -150,7 +150,7 @@ The `logs` array contains an object for each log entry associated with the curre
 
     </Callout>
 
--   **ef_count (*Integer*):** Edge Functions invocations (count). (Category: Edge Functions) The number of Edge Functions executed to serve this request.
+-   <a id="ef_count" />**ef_count (*Integer*):** Edge Functions invocations (count). (Category: Edge Functions) The number of Edge Functions executed to serve this request.
 -   **ef_customer_metric_0 (*Integer*):** Edge Function Customer Metric 0. (Category: Edge Functions) Custom time metric #0 defined within your code through the [context.metrics function](/applications/edge_functions#metrics-functions). If this metric is defined through `startTimer` and `stopTimer`, then this value is reported in nanoseconds.
 
     **Default Value:** `0`

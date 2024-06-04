@@ -29,7 +29,7 @@ Calls are listed in alphabetical order within each interface. Note that there is
 | listDir|[List Directories](/delivery/storage/apis/api_calls/working_with_directories_json/#list-directory) |
 | listFile<br />|[List Files](/delivery/storage/apis/api_calls/working_with_files_json/#list-file) |
 | listMultipart|[List Your Multipart Uploads](/delivery/storage/apis/api_calls/working_with_multipart_json/#list-pieces) |
-| listMultipartPiece<br /><br />     See [List Pieces in a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#list-multipart) |
+| listMultipartPiece| [List Pieces in a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#list-pieces) |
 | listPath<br />|[List Files and Directories](/delivery/storage/apis/api_calls/working_with_methods/#list) |
 | login|[Log In](/delivery/storage/apis/api_calls/logging_in_using_the_json_rpc_interface/#log-in) |
 | logout|[Log Out](/delivery/storage/apis/api_calls/logging_out/#log-out) |

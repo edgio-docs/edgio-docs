@@ -13,7 +13,7 @@ import {DefaultSeo} from 'next-seo';
 import NProgress from 'nprogress';
 
 // Universal loading page (used in dynamically imported components) which contains the wrapper of each page
-import EdgioAnswers from 'components/EdgioAnswers';
+import EdgioAnswers, {EdgioAnswersWidget} from 'components/EdgioAnswers';
 import LoadingFallBackPage from 'components/Fallbacks/Loading';
 import Toast from 'components/Toast';
 import {siteConfig} from 'config/appConfig';
@@ -82,7 +82,7 @@ export default function MyApp({Component, pageProps}: DocsAppProps) {
       install({
         watch: [
           {
-            selector: 'a[href^="/guides"]',
+            selector: 'a[href^="/applications"]',
             callback: (el) => {
               const href = el.getAttribute('href') as string;
               prefetch(href);
@@ -147,6 +147,7 @@ export default function MyApp({Component, pageProps}: DocsAppProps) {
               <Toast />
             </MDXEmbedProvider>
             <EdgioAnswers />
+            <EdgioAnswersWidget />
           </ThemeProvider>
         </EdgioAnswersProvider>
       </AppProvider>

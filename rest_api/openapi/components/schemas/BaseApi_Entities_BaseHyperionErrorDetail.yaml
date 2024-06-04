@@ -1,0 +1,18 @@
+type: object
+properties:
+  '@type':
+    type: string
+    example: ErrorDetail
+    description: The error detail type.
+  description:
+    type: string
+    description: Detail description about the error.
+  '@links':
+    type: object
+    description: Links to related resources.
+  source:
+    type: string
+    description: JSON Pointer
+required:
+  - '@type'
+  - description

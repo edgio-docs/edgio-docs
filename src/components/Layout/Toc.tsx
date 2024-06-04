@@ -122,7 +122,7 @@ export function Toc({
                     data-selected={i === selectedIndex}
                     data-depth={h.depth || -1}
                     className="docs-toc__listItem">
-                    <Link href={toVersionedPath(path)}>
+                    <Link href={toVersionedPath(path)} legacyBehavior>
                       <a>{h.text}</a>
                     </Link>
                   </li>

@@ -10,7 +10,7 @@ enables you to quickly address long-term and zero-day vulnerabilities.
 
 <Callout type="info">
 
-  The Custom rules capability requires {{ PRODUCT_SECURITY }} Premier or Business. {{ ACCOUNT_UPGRADE }} 
+  The Custom rules capability requires {{ PRODUCT_SECURITY }} Premier or Business. {{ ACCOUNT_UPGRADE }}
 
 </Callout>
 
@@ -45,12 +45,12 @@ Each rule contains:
 
 {{ PRODUCT_SECURITY }} identifies a threat when a request satisfies at least one rule in a
 custom rule set. A rule is satisfied when a match is found for one or
-more variable(s) in each condition. 
+more variable(s) in each condition.
 
 <Callout type="info">
 
   A variable identifies the request element (e.g., request
-  header, query string, or request body) that {{ PRODUCT_SECURITY }} will analyze. 
+  header, query string, or request body) that {{ PRODUCT_SECURITY }} will analyze.
 
 </Callout>
 
@@ -119,7 +119,7 @@ support the following request elements:
 
 -   **Country:** Identifies requests by the country
     from which the request originated. Specify the desired country using
-    a [country code](/guides/reference/country_codes).
+    a [country code](/applications/reference/country_codes).
 
     <Callout type="tip">
 
@@ -132,20 +132,32 @@ support the following request elements:
 
     </Callout>
 
+    <a id="country-subdivision--iso3166-2-"></a>
+
+-   **Country Subdivision (ISO3166-2):** Identifies requests by a country's subdivision (e.g., state or province). Specify each desired subdivision using an [ISO-3166-2 code](https://www.iso.org/obp/ui/#search/code/).
+
+    **Syntax:**
+
+    `<Country Code>`-`<Subdivision Code>`
+
+    **Example:**
+
+    The following value identifies requests from California:  `US-CA`
+
     <a id="ip-address"></a>
 
 -   **IP address:** Identify requests by the
-    requester's IPv4 and/or IPv6 address. 
+    requester's IPv4 and/or IPv6 address.
 
-    -   Specify a comma-delimited list of the desired IP address(es) 
-        using standard IPv4/IPv6 and CIDR notation. 
+    -   Specify a comma-delimited list of the desired IP address(es)
+        using standard IPv4/IPv6 and CIDR notation.
     -   Specify a subnet by appending a slash (/) and the desired
-        bit-length of the prefix (e.g., 11.22.33.0/22). 
+        bit-length of the prefix (e.g., 11.22.33.0/22).
     -   Do not specify more than 1,000 IP addresses or IP blocks.
 
     <Callout type="info">
 
-      Identifying requests by IP address is only supported when a condition contains a single variable. 
+      Identifying requests by IP address is only supported when a condition contains a single variable.
 
     </Callout>
 
@@ -181,7 +193,7 @@ support the following request elements:
     <Callout type="info">
 
       {{ PRODUCT_SECURITY }} only inspects the first 8 KB of the request body. You may
-      [restrict the request body](/guides/security/managed_rules#file-size-and-query-string-limits-advanced)
+      [restrict the request body](/applications/security/managed_rules#file-size-and-query-string-limits-advanced)
       for valid requests to 8 KB (8,192 bytes) through a managed rule.
 
     </Callout>
@@ -195,7 +207,7 @@ support the following request elements:
 
     ```
     {
-        "id": "srZf45oP34p",    
+        "id": "srZf45oP34p",
         "sky": "blue"
     }
     ```
@@ -208,7 +220,7 @@ support the following request elements:
     <Callout type="info">
 
       {{ PRODUCT_SECURITY }} only inspects the first 8 KB of the request body. You may
-      [restrict the request body](/guides/security/managed_rules#file-size-and-query-string-limits-advanced)
+      [restrict the request body](/applications/security/managed_rules#file-size-and-query-string-limits-advanced)
       for valid requests to 8 KB (8,192 bytes) through a managed rule.
 
     </Callout>
@@ -420,7 +432,7 @@ You may create, modify, and delete custom rule sets.
 **Key information:**
 -   Administer custom rule sets from the **Custom Rules** page.
 -   Apply a custom rule set to production traffic by adding it to a
-    [Security Application configuration](/guides/security/security_applications) and then
+    [Security Application configuration](/applications/security/security_applications) and then
     determining how it will be enforced. Multiple Security Application
     configurations may use the same custom rule set. Leverage
     this capability to tailor security screening by application or
@@ -497,7 +509,7 @@ You may create, modify, and delete custom rule sets.
 
         <Callout type="info">
 
-          A rule must have at least one condition. 
+          A rule must have at least one condition.
 
         </Callout>
 

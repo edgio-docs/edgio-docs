@@ -55,7 +55,7 @@ const STATUS_URL = `https://status.${DOMAIN}/?sgId=7bc47c45-c1d6-4189-b416-55258
 const HELP_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const SUPPORT_URL = `https://${DOMAIN}/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006`;
 const DOCS_URL = `https://${DOCS_DOMAIN}`;
-const API_DOCS_URL = `/rest_api`;
+const API_DOCS_URL = `https://docs.edg.io/rest_api/`;
 const DOCS_PAGES_REPO_URL = `https://${DOCS_PAGES_DOMAIN}`;
 const API_URL = `https://${API_DOMAIN}`;
 const IDENTITY_URL = `https://${IDENTITY_DOMAIN}`;

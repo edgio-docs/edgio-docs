@@ -4,11 +4,11 @@ title: Install Node.js and npm
 
 <Callout type="info">
 
-  The Node.js 16 end-of-life (EOL) is only relevant if your configuration uses {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or [Cloud Functions](/guides/performance/serverless_compute). This article is inapplicable for all other cases (e.g., if you only deploy from the {{ PORTAL }}). 
+  The Node.js 16 end-of-life (EOL) is only relevant if your configuration uses {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or [Cloud Functions](/applications/performance/serverless_compute). This article is inapplicable for all other cases (e.g., if you only deploy from the {{ PORTAL }}).
 
 </Callout>
 
-Although you may develop your app with any version of Node.js, {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} runs your projects within a Node.js 16, 18, or 20 runtime environment. {{ PRODUCT }} determines the available set of runtime environments according to the version of the {{ PRODUCT }} CLI through which your project was deployed. 
+Although you may develop your app with any version of Node.js, {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} runs your projects within a Node.js 16, 18, or 20 runtime environment. {{ PRODUCT }} determines the available set of runtime environments according to the version of the {{ PRODUCT }} CLI through which your project was deployed.
 
 | Node.js Version | Requires                        |
 | --------------- | ------------------------------- |
@@ -58,7 +58,7 @@ The recommended method for installing Node.js is through a version manager like 
 
 ## Node.js 18 and 20 Support {/* nodejs-18-20-support */}
 
-Node.js 18 and 20 are supported by {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} starting from version 7.4.0 and 7.5.0, respectively. {{ PRODUCT }} will detect your project's Node.js version during deployment and use the appropriate runtime version. Optionally, you can set the [`cloudRuntime`](/guides/performance/cdn_as_code/edgio_config#cloudruntime) property in the `{{ CONFIG_FILE }}` file to target a specific Node.js version.
+Node.js 18 and 20 are supported by {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} starting from version 7.4.0 and 7.5.0, respectively. {{ PRODUCT }} will detect your project's Node.js version during deployment and use the appropriate runtime version. Optionally, you can set the [`cloudRuntime`](/applications/performance/cdn_as_code/edgio_config#cloudruntime) property in the `{{ CONFIG_FILE }}` file to target a specific Node.js version.
 
 Upgrade your project by running the commands corresponding to the desired Node.js version:
 

@@ -52,7 +52,7 @@ For this action to work
 
 - By default, new {{ PRODUCT }} sites are created with a `default` environment. The action below will create a new build for every push on the default environment.
 - To leverage the GitHub release workflow part of the action below, you need to **create an environment** `production`.
-- You need to have created a deploy key for your site (see above) and added it as a secret in your repo called "layer0_deploy_token". Read more on [accessing environment variables](https://docs.layer0.co/guides/environments#section_accessing_environment_variables_at_build_time) which might be essential for your app during the build time and for server-side requests (including SSG/SSR).
+- You need to have created a deploy key for your site (see above) and added it as a secret in your repo called "layer0_deploy_token". Read more on [accessing environment variables](https://docs.layer0.co/applications/environments#section_accessing_environment_variables_at_build_time) which might be essential for your app during the build time and for server-side requests (including SSG/SSR).
 - Depending on your use of NPM or YARN, adjust the "Install packages" step
 
 Read the comments at the top to understand how this action is configured.

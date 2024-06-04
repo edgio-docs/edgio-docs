@@ -10,7 +10,7 @@ Define a rule that uses advanced condition-based logic through:
 
 <Callout type="important">
 
-This documentation expects you to be familiar with defining simple rules through `.get()`, `.match()` and `.post()` [Router](/docs/api/core/classes/router_Router.default.html) methods, as explained in [Route Criteria and Conditions](/guides/performance/cdn_as_code/route_criteria) and [Route Features](/guides/performance/cdn_as_code/route_features) documentation.
+This documentation expects you to be familiar with defining simple rules through `.get()`, `.match()` and `.post()` [Router](/docs/api/core/classes/router_Router.default.html) methods, as explained in [Route Criteria and Conditions](/applications/performance/cdn_as_code/route_criteria) and [Route Features](/applications/performance/cdn_as_code/route_features) documentation.
 
 </Callout>
 
@@ -235,11 +235,11 @@ export default new Router()
 
 Using the `.conditional()` method to define complex rules is no longer recommended. It's advisable to use the `.if()`, `.elseif()`, and `.else()` methods instead.
 
-For those with existing `.conditional()` calls, you can map them to the simpler `.if()` calls using the `Export to EdgeJS` functionality available in {{ PORTAL_LINK }}. For more information, consult the [Rules](/guides/performance/rules#export-rules-edgejs) documentation.
+For those with existing `.conditional()` calls, you can map them to the simpler `.if()` calls using the `Export to EdgeJS` functionality available in {{ PORTAL_LINK }}. For more information, consult the [Rules](/applications/performance/rules#export-rules-edgejs) documentation.
 
 </Callout>
 
-Let's revisit the example from our [Default Route Configuration](/guides/performance/cdn_as_code#default-route-configuration) section where we cached all requests to `/api/*`:
+Let's revisit the example from our [Default Route Configuration](/applications/performance/cdn_as_code#default-route-configuration) section where we cached all requests to `/api/*`:
 
 ```js
 // This file was added by edgio init.

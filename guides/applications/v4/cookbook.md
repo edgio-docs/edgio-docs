@@ -127,7 +127,7 @@ router.match(
 ```
 
 The rules for interpolating the values of request and response objects can be found in the [routing](routing#section_embedded_values) guide.
-Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/guides/routing#section_route_execution) for more information on route execution order and sending responses.
+Note that catch-all routes that alter headers, cookies, or caching can be placed at the start of your router while allowing subsequent routes to run because they alter the request or the response without actually sending a response. See [route execution](/applications/routing#section_route_execution) for more information on route execution order and sending responses.
 
 ### Manipulating Cookies {/*manipulating-cookies*/}
 
@@ -404,11 +404,11 @@ router.get(
 )
 ```
 
-You can find more about geolocation headers [here](/guides/request_headers).
+You can find more about geolocation headers [here](/applications/request_headers).
 
 ### Allowing Specific IPs {/*allowing-specific-ips*/}
 
-If you need to block all traffic except requests that originate from specific IP addresses, you can do so by matching requests by the [{{ HEADER_PREFIX }}-client-ip](/guides/request_headers#section_general_headers) header:
+If you need to block all traffic except requests that originate from specific IP addresses, you can do so by matching requests by the [{{ HEADER_PREFIX }}-client-ip](/applications/request_headers#section_general_headers) header:
 
 ```js
 router.get(
@@ -427,7 +427,7 @@ router.get(
 
 ### Blocking Search Engine Crawlers {/*blocking-search-engine-crawlers*/}
 
-If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag. 
+If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag.
 
 To block search engine traffic for {{ PRODUCT }} edge links and permalinks, you can use the built-in `.noIndexPermalink()` call on the router:
 

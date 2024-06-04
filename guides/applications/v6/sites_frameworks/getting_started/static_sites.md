@@ -13,19 +13,19 @@ Here are a few examples of common static sites served by {{ PRODUCT }}.
 <ExampleButtons
   title="(Static) Backbone.js"
   siteUrl="https://edgio-community-examples-static-backbonejs-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-static-backbonejs-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-static-backbonejs-example"
   deployFromRepo />
 
 <ExampleButtons
   title="(Static) React"
   siteUrl="https://edgio-community-examples-static-react-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-static-react-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-static-react-example"
   deployFromRepo />
 
 <ExampleButtons
   title="(Static) Vue.js"
   siteUrl="https://edgio-community-examples-vue3-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-vue3-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-vue3-example"
   deployFromRepo />
 
 {{ PREREQ.md }}
@@ -98,12 +98,12 @@ const handler = ({ cache, serveStatic }, cacheConfig, path) => {
 module.exports = new Router()
 
   // Assets (Hashed and Cached on Edge and in the Browser)
-  .get('/css/:path*', res => handler(res, edgeAndBrowser, 'src/css/:path*')) 
-  .get('/js/:path*', res => handler(res, edgeAndBrowser, 'src/js/:path*')) 
-  
+  .get('/css/:path*', res => handler(res, edgeAndBrowser, 'src/css/:path*'))
+  .get('/js/:path*', res => handler(res, edgeAndBrowser, 'src/js/:path*'))
+
   // Path(s) that do not have a "." as well as "/" to serve the fallback page
-  .get('/:path*/:file([^\\.]+|)', res => handler(res, edgeOnly, 'src/index.html')) 
-  
+  .get('/:path*/:file([^\\.]+|)', res => handler(res, edgeOnly, 'src/index.html'))
+
   // All other paths to be served from the src directory
   .get('/:path*', res => handler(res, edgeOnly, 'src/:path*'))
 ```
@@ -116,4 +116,4 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-For more on deploying, see [Deploying](/guides/basics/deployments).
+For more on deploying, see [Deploying](/applications/basics/deployments).

@@ -1,0 +1,9 @@
+type: string
+enum:
+  - json
+  - json_array
+  - json_lines
+  - csv
+description: >-
+  Determines the log data's format. [Learn more about log
+  formats.](https://docs.edg.io/guides/v7/logs/rtld/log_fields_rtld_cdn)

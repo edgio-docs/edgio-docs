@@ -242,11 +242,14 @@ export async function handleHttpRequest(request, context) {
   ];
 
   // Get the HTML from the origin server and stream the response body through the
-  // HtmlTransformer to the Response object
-  const response = fetch(request.url, {edgio: {origin: 'api_backend'}})
-    .then(HtmlTransformer.stream(transformerDefinitions))
-    .then((stream) => new Response(stream))
-  return response
+  // HtmlTransformer
+  return fetch(request.url, {edgio: {origin: 'api_backend'}})
+    .then(response => {
+      let transformedResponse = HtmlTransformer.stream(transformerDefinitions, response)
+      // Make any changes to the response headers here.
+      transformedResponse.headers.set('x-html-transformer-ran', 'true')
+      return transformedResponse
+  })
 }
 ```
 
@@ -385,10 +388,20 @@ Flushes the transformer and completes the transformation. This function must be 
 ### static async stream() {/* stream */}
 
 ```js
-  const response = fetch(request.url, {edgio: {origin: 'api_backend'}})
-    .then(HtmlTransformer.stream(transformerDefinitions))
-    .then((stream) => new Response(stream))
-  return response
+  // Transforms response from origin
+  return fetch(request.url, {edgio: {origin: 'api_backend'}})
+    .then(response => HtmlTransformer.stream(transformerDefinitions, response))
+```
+
+```js
+  // Transforms response from origin and optionally manipulates the response headers
+  return fetch(request.url, {edgio: {origin: 'api_backend'}})
+    .then(response => {
+      let transformedResponse = HtmlTransformer.stream(transformerDefinitions, response)
+      // Make any changes to the response headers here.
+      transformedResponse.headers.set('x-html-transformer-ran', 'true')
+      return transformedResponse
+  })
 ```
 
 Static helper function to easily stream fetch() responses through the HtmlTransformer.
@@ -502,7 +515,7 @@ The Text class has the following methods:
 | `as_str(): string`                            | Returns the text                                                                           |
 | `set_str(text: string)`                       | Sets the text                                                                              |
 | `text_type(): string`                         | Returns the text type.                                                                     |
-| `last_text_in_node(): boolean`                | Returns true if the chunk is last in a HTML text node.                                     |
+| `last_in_text_node(): boolean`                | Returns true if the chunk is last in a HTML text node.                                     |
 | `before(text: string, content_type: string)`  | Inserts the text before the text chunk. Content type is ['html' or 'text'](#content_types) |
 | `after(text: string, content_type: string)`   | Inserts the text after the text chunk. Content type is ['html' or 'text'](#content_types)  |
 | `replace(text: string, content_type: string)` | Replaces the text chunk with the text. Content type is ['html' or 'text'](#content_types)  |
@@ -555,7 +568,6 @@ The StartTag class has the following methods:
 | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `name(): string`                              | Returns the name of the tag                                                                                 |
 | `name_preserve_case(): string`                | Returns the name of the tag, preserving its case.                                                           |
-| `set_name(name: string)`                      | Sets the name of the tag. Returns an error if the tag name is invalid.                                      |
 | `namespace_uri(): string`                     | Returns the namespace URI of the tag                                                                        |
 | `attributes(): [Attributes]`                  | Returns an array of [Attribute](#attribute) objects                                                         |
 | `set_attribute(name: string, value)`          | Sets the value of the attribute with the specified name. Returns an error if the attribute name is invalid. |

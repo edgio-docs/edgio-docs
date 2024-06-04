@@ -11,7 +11,7 @@ Sanity Studio is a single page app (SPA) written in React, where you can configu
 <ExampleButtons
   title="Sanity Studio"
   siteUrl="https://layer0-docs-layer0-sanity-studio-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-sanity-studio-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-sanity-studio-example"
   deployFromRepo />
 
 {{ PREREQ.md }}
@@ -65,7 +65,7 @@ import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core/router'
 
 export default new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: https://docs.layer0.co/applications/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .static('dist', ({ cache }) => {
       cache({

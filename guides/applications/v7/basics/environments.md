@@ -4,17 +4,17 @@ title: Environments
 
 An environment defines how traffic will be served through {{ PRODUCT }}. Each environment consists of:
 
--   [Hostnames:](/guides/basics/hostnames) A hostname identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
--   [Origins:](/guides/basics/origins) An origin configuration defines how our service will communicate with your web servers.
--   [Rules:](/guides/performance/rules) A rule determines how requests for a specific environment will be processed.
--   [Experiments:](/guides/performance/experiments) Randomized experimentation process wherein two or more versions of a variable are shown to different segments of website visitors at the same time to determine which version leaves the maximum impact and drives business metrics.
--   [Core Web Vitals:](/guides/performance/observability/real_user_monitoring) Review and analyze performance metrics collected through the measurement of actual Chrome users. 
--   [Caching:](/guides/performance/caching) By default, deploying to an environment also clears that environment's cached content. You may manually [purge content](/guides/performance/caching) from the **Caching** page, the [{{ PRODUCT }} CLI](/guides/develop/cli#cache-clear), or our [REST API](/guides/develop/rest_api/cache_purge#clear-cache). 
--   [Environment Variables:](#environment-variables) An environment variable is a placeholder for sensitive information (e.g., API keys and passwords) that should not be checked into source control. 
+-   [Hostnames:](/applications/basics/hostnames) A hostname identifies a domain (e.g., `cdn.example.com`) through which your site will be served.
+-   [Origins:](/applications/basics/origins) An origin configuration defines how our service will communicate with your web servers.
+-   [Rules:](/applications/performance/rules) A rule determines how requests for a specific environment will be processed.
+-   [Experiments:](/applications/performance/experiments) Randomized experimentation process wherein two or more versions of a variable are shown to different segments of website visitors at the same time to determine which version leaves the maximum impact and drives business metrics.
+-   [Core Web Vitals:](/applications/performance/observability/real_user_monitoring) Review and analyze performance metrics collected through the measurement of actual Chrome users.
+-   [Caching:](/applications/performance/caching) By default, deploying to an environment also clears that environment's cached content. You may manually [purge content](/applications/performance/caching) from the **Caching** page, the [{{ PRODUCT }} CLI](/applications/performance/cdn_as_code/cli#cache-clear), or our [REST API](https://docs.edg.io/rest_api/#tag/purge-requests/operation/postCacheV01PurgeRequests).
+-   [Environment Variables:](#environment-variables) An environment variable is a placeholder for sensitive information (e.g., API keys and passwords) that should not be checked into source control.
 -   **Traffic (Analytics):** Contains real-time statistics for this environment's traffic. You may also view a breakdown of traffic by specific routes.
--   [Real-Time Log Delivery:](/guides/logs/rtld) Delivers log data in near real-time to a variety of destinations. 
+-   [Real-Time Log Delivery:](/applications/logs/rtld) Delivers log data in near real-time to a variety of destinations.
 -   **User Activity:** Contains an audit trail of changes to this environment (e.g., changes to your configuration and deployments).
--   **Edge Insights:** Gain historical and near real-time insights into threat profiles, performance, and CDN usage. 
+-   **Edge Insights:** Gain historical and near real-time insights into threat profiles, performance, and CDN usage.
 -   **Traffic Splitting**: Create rules to split traffic between multiple origins to conduct A/B testing or implement blue/green deployments.
 
 **Key information:**
@@ -24,7 +24,7 @@ An environment defines how traffic will be served through {{ PRODUCT }}. Each en
     -   **{{ PORTAL }}:** `production`
     -   **CLI:** `default`
 
--   You may create additional environments for your property. 
+-   You may create additional environments for your property.
 
     One use for this capability is to set up your environments to match your software development workflow.
 
@@ -32,17 +32,16 @@ An environment defines how traffic will be served through {{ PRODUCT }}. Each en
 
     <Callout type="info">
 
-      If you used [our Github automation workflow](/guides/getting_started#creating-a-property--cli-with-automation-) to create a property, then we will create environments for you. You do not need to create additional environments.
-
+      If you used [our Github automation workflow](/applications/getting_started#creating-a-property--cli-with-automation-) to create a property, then we will create environments for you. You do not need to create additional environments.
 
     </Callout>
 
 <!--
-Free accounts are limited to three environments. Paid accounts allow you to create either five environments (on the Hyper plan) or as many environments as you need (on Enterprise plans). 
+Free accounts are limited to three environments. Paid accounts allow you to create either five environments (on the Hyper plan) or as many environments as you need (on Enterprise plans).
 -->
 
--   Applying changes to an environment requires a [deployment](/guides/basics/deployments).
--   Deployments to your environments are [versioned](/guides/basics/deployments#versioning). This allows you to quickly roll back your environment's configuration to a known working version.
+-   Applying changes to an environment requires a [deployment](/applications/basics/deployments).
+-   Deployments to your environments are [versioned](/applications/basics/deployments#versioning). This allows you to quickly roll back your environment's configuration to a known working version.
 
 ## Creating an Environment {/*creating-an-environment*/}
 
@@ -62,19 +61,26 @@ Perform the following steps to create an environment:
 
 4.  Optional. Copy environment variables, A/B testing configuration, and notes from another environment by selecting it from the `Copy settings from environment` option.
 
-5.  Determine deployment permissions through the **Allow all organization members to deploy to this environment** option. 
+5.  Determine deployment permissions through the **Restrict Editors to read-only access** option.
 
-    -   Mark this option to allow all team members to deploy to this environment.
-    -   Clear this option to restrict deployment to admins and the deploy token. 
+    -   Mark this option to prevent Editors from configuring or deploying to this environment. 
+    -   Clear this option to allow Editors to configure and deploy to this environment.
+
+    <Info>
+
+    Regardless of this option, deploy tokens, Maintainers, and Admins are always allowed to configure or deploy to this environment.
+
+    </Info>
+
+6.  Determine whether this [environment will be tagged as production](#production-environment) through the **Make this my production environment** option.
 
     ![limit environment](/images/v7/basics/environment-permissions.png?width=450)
 
-6.  Determine whether this [environment will be tagged as production](#production-environment) through the **Make this my production environment** option. 
 7.  Click **Create**.
 
 ## Environment Variables {/*environment-variables*/}
 
-Environment variables allow you to control certain facets of your application outside of its code. There are two types of {{PRODUCT}} environment variables: 
+Environment variables allow you to control certain facets of your application outside of its code. There are two types of {{PRODUCT}} environment variables:
 
 -   **System-defined:** {{ PRODUCT }} automatically defines the following variables within each environment:
 
@@ -89,9 +95,9 @@ You may create, modify, and delete environment variables from the {{ PORTAL }}.
 
 **Key information:**
 
--   Applying environment variable changes requires a [deployment](/guides/basics/deployments).
+-   Applying environment variable changes requires a [deployment](/applications/basics/deployments).
 -   Once an environment variable has been marked as secret, you cannot unset the **Keep this value a secret** option for that environment variable.
--   The value assigned to a secret environment variable is masked using asterisks and it is never revealed. However, you may set it to a different value. 
+-   The value assigned to a secret environment variable is masked using asterisks and it is never revealed. However, you may set it to a different value.
 
 **To create an environment variable**
 
@@ -117,7 +123,7 @@ You may create, modify, and delete environment variables from the {{ PORTAL }}.
 
 2.  Click on the desired environment variable.
 
-3.  Modify the environment variable's name, value, or both. 
+3.  Modify the environment variable's name, value, or both.
 
 4.  Click **Apply**.
 
@@ -129,7 +135,7 @@ You may create, modify, and delete environment variables from the {{ PORTAL }}.
 
 2.  Click on the <Image inline src="/images/v7/icons/delete-4.png" alt="Delete" /> icon next to the desired environment variable.
 
-3.  When prompted, click **Remove Variable** to confirm the permenant deletion of that environment variable.    
+3.  When prompted, click **Remove Variable** to confirm the permenant deletion of that environment variable.
 
 ### Accessing Environment Variables {/*accessing-environment-variables*/}
 
@@ -174,10 +180,10 @@ require('dotenv').config()
 
 ## Production Environment {/*production-environment*/}
 
-By default, the first environment created for your property will be tagged as `production`. This means that the performance of this environment will be prioritized over other environments during periods of high traffic. Examples of high traffic periods are a distributed denial of service (DDOS) attack or a load test. 
+By default, the first environment created for your property will be tagged as `production`. This means that the performance of this environment will be prioritized over other environments during periods of high traffic. Examples of high traffic periods are a distributed denial of service (DDOS) attack or a load test.
 
 <Callout type="info">
-    
+
   You may not delete an environment that has been assigned the `production` tag. If you would like to delete this environment, then you must tag a different environment as `production` first.
 
 </Callout>
@@ -205,6 +211,6 @@ Perform the following steps to permanently delete an environment:
 
 <Callout type="info">
 
-  The `production` environment cannot be deleted. 
+  The `production` environment cannot be deleted.
 
 </Callout>

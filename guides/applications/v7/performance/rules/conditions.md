@@ -282,13 +282,13 @@ router.conditional({
 
 #### Country {/*country*/} <edgejs>location</edgejs>
 
-Identifies requests by the country from which the request was issued. Specify each desired country through its [country code](/guides/reference/country_codes).
+Identifies requests by the country from which the request was issued. Specify each desired country through its [country code](/applications/reference/country_codes).
 
 **Key information:**
 
--   The `EU` and `AP` country codes do not encompass all IP addresses in those regions. 
+-   The `EU` and `AP` country codes do not encompass all IP addresses in those regions.
 
-    [Learn more.](/guides/reference/country_codes#regions)
+    [Learn more.](/applications/reference/country_codes#regions)
 
 -   Certain requests may not return a valid country code. A question mark (i.e., ?) will match requests for which a valid country code could not be determined.
 -   Country codes are case-sensitive.
@@ -299,7 +299,7 @@ Identifies requests by the country from which the request was issued. Specify ea
 
 -   The `EU` and `AP` country codes do not encompass all IP addresses in those regions.
 
-    [Learn more.](/guides/reference/country_codes#regions)
+    [Learn more.](/applications/reference/country_codes#regions)
 
 -   Certain requests may not return a valid country code. A question mark (i.e., ?) will match requests for which a valid country code could not be determined.
 -   Country codes are case-sensitive.
@@ -484,11 +484,11 @@ router.conditional({
 
 #### Filename {/*filename*/} <edgejs>request.path</edgejs>
 
-Identifies requests by the filename defined in the URL. 
+Identifies requests by the filename defined in the URL.
 
 **Key information:**
 
--   For the purposes of this match condition, a filename consists of the name of the requested asset, a period, and the file extension (e.g., `index.html`). 
+-   For the purposes of this match condition, a filename consists of the name of the requested asset, a period, and the file extension (e.g., `index.html`).
 -   Use a regular expression to specify multiples values (e.g., `value 1|value 2`).
 
 <edgejs>
@@ -596,7 +596,7 @@ router.conditional({
 
 #### Is App {/*is-app*/} <edgejs>device</edgejs>
 
-Identifies requests by whether the device that issued the request is a native application. 
+Identifies requests by whether the device that issued the request is a native application.
 
 <edgejs>
 **Example:**
@@ -822,7 +822,7 @@ router.conditional({
 
 #### Is Wireless Device {/*is-wireless-device*/} <edgejs>device</edgejs>
 
-Identifies requests by whether the device that issued the request is a wireless device. 
+Identifies requests by whether the device that issued the request is a wireless device.
 
 <edgejs>
 
@@ -1111,7 +1111,7 @@ Identifies requests by the request URL's relative path. This relative path compa
 
 **Key information:**
 
--   This relative path comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#rewrite-url) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Path](#path) match condition to match on the original relative path submitted by the client.
+-   This relative path comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/applications/performance/rules/features#rewrite-url) and [URL Redirect](/applications/performance/rules/features#url-redirect) features, respectively. Use the [Path](#path) match condition to match on the original relative path submitted by the client.
 -   This relative path starts directly after the hostname.
 -   For the purpose of satisfying this condition, query strings in the URL are ignored.
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1131,14 +1131,14 @@ Identifies requests by the request URL's relative path. This relative path compa
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. 
+          Curl does not encode non-US-ASCII characters.
 
         </Callout>
 
 <edgejs>
 **Key information:**
 
--   This relative path comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/guides/performance/rules/features#rewrite-url) and [URL Redirect](/guides/performance/rules/features#url-redirect) features, respectively. Use the [Path](#path) match condition to match on the original relative path submitted by the client.
+-   This relative path comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Rewrite or redirect a URL through the [URL Rewrite](/applications/performance/rules/features#rewrite-url) and [URL Redirect](/applications/performance/rules/features#url-redirect) features, respectively. Use the [Path](#path) match condition to match on the original relative path submitted by the client.
 -   This relative path starts directly after the hostname.
 -   For the purpose of satisfying this condition, query strings in the URL are ignored.
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1158,7 +1158,7 @@ Identifies requests by the request URL's relative path. This relative path compa
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. 
+          Curl does not encode non-US-ASCII characters.
 
         </Callout>
 -   **Supported operators:** `== | != | =~ | !~`
@@ -1188,7 +1188,7 @@ Identifies requests by the query string of the requested URL. This query string 
 
 **Key information:**
 
--   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#rewrite-url) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query String](#query-string) match condition to match on the query string submitted by the client. 
+-   You may configure {{ PRODUCT }} to [rewrite](/applications/performance/rules/features#rewrite-url) or [redirect](/applications/performance/rules/features#url-redirect) a URL. This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query String](#query-string) match condition to match on the query string submitted by the client.
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, the text specified in the **Value** option should not include a leading question mark (?).
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1208,14 +1208,14 @@ Identifies requests by the query string of the requested URL. This query string 
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. 
+          Curl does not encode non-US-ASCII characters.
 
         </Callout>
 
 <edgejs>
 **Key information:**
 
--   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#rewrite-url) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query String](#query-string) match condition to match on the query string submitted by the client. 
+-   You may configure {{ PRODUCT }} to [rewrite](/applications/performance/rules/features#rewrite-url) or [redirect](/applications/performance/rules/features#url-redirect) a URL. This query string comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query String](#query-string) match condition to match on the query string submitted by the client.
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, do not include a leading question mark (?).
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1235,7 +1235,7 @@ Identifies requests by the query string of the requested URL. This query string 
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. 
+          Curl does not encode non-US-ASCII characters.
 
         </Callout>
 -   **Supported operators:** `=== | !== | =~ | !~`
@@ -1249,7 +1249,7 @@ export default new Router().if(
       "===": [{ request: "origin_query_string" }, "country=france"],
     },
   },
-  { 
+  {
     // Features
   }
 );
@@ -1282,7 +1282,7 @@ Identifies requests by the relative path of the request URL submitted by the cli
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. 
+          Curl does not encode non-US-ASCII characters.
 
         </Callout>
 
@@ -1309,7 +1309,7 @@ Identifies requests by the relative path of the request URL submitted by the cli
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. 
+          Curl does not encode non-US-ASCII characters.
 
         </Callout>
 -   **Supported operators:** `=== | !== | == | != | =~ | !~ | in | not_in`
@@ -1428,7 +1428,7 @@ router.conditional({
 Identifies requests by a query string parameter of the request URL submitted by the client.
 
 **Key information:**
--   Although you may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#rewrite-url) or [redirect](/guides/performance/rules/features#url-redirect) a URL, this comparision will always be performed against the request URL submitted by the client. Use the [Query Parameter](#query-parameter) match condition to match on a query string parameter for a rewritten or redirected URL.
+-   Although you may configure {{ PRODUCT }} to [rewrite](/applications/performance/rules/features#rewrite-url) or [redirect](/applications/performance/rules/features#url-redirect) a URL, this comparision will always be performed against the request URL submitted by the client. Use the [Query Parameter](#query-parameter) match condition to match on a query string parameter for a rewritten or redirected URL.
 -   **Syntax:** `<NAME>=<VALUE>`
 
     **Example:** The following value is only satisfied when the request submitted by the client contains a query string parameter whose name is *country* and whose value is *US*: `country=US`
@@ -1450,14 +1450,14 @@ Identifies requests by a query string parameter of the request URL submitted by 
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. 
+          Curl does not encode non-US-ASCII characters.
 
         </Callout>
 
 <edgejs>
 **Key information:**
 
--   Although you may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#rewrite-url) or [redirect](/guides/performance/rules/features#url-redirect) a URL, this comparision will always be performed against the request URL submitted by the client. Use the [Query Parameter](#query-parameter) match condition to match on a query string parameter for a rewritten or redirected URL.
+-   Although you may configure {{ PRODUCT }} to [rewrite](/applications/performance/rules/features#rewrite-url) or [redirect](/applications/performance/rules/features#url-redirect) a URL, this comparision will always be performed against the request URL submitted by the client. Use the [Query Parameter](#query-parameter) match condition to match on a query string parameter for a rewritten or redirected URL.
 -   **Syntax:** `<NAME>=<VALUE>`
 
     **Example:** The following value is only satisfied when the request submitted by the client contains a query string parameter whose name is *country* and whose value is *US*: `country=US`
@@ -1479,7 +1479,7 @@ Identifies requests by a query string parameter of the request URL submitted by 
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. 
+          Curl does not encode non-US-ASCII characters.
 
         </Callout>
 -   **Supported operators:** `=== | !== | =~ | !~`
@@ -1489,7 +1489,7 @@ Identifies requests by a query string parameter of the request URL submitted by 
 ```
 export default new Router().match(
   { query: "country=france" },
-  { 
+  {
     // Features
   }
 );
@@ -1502,7 +1502,7 @@ Identifies requests by the value assigned to a query string parameter in the req
 
 **Key information:**
 
--   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#rewrite-url) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query](#query) match condition to match on a query string parameter submitted by the client. 
+-   You may configure {{ PRODUCT }} to [rewrite](/applications/performance/rules/features#rewrite-url) or [redirect](/applications/performance/rules/features#url-redirect) a URL. This comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query](#query) match condition to match on a query string parameter submitted by the client.
 -   **Parameter name:**
 
     -   Query parameter name comparisons are case-insensitive.
@@ -1520,7 +1520,7 @@ Identifies requests by the value assigned to a query string parameter in the req
 <edgejs>
 **Key information:**
 
--   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#rewrite-url) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query](#query) match condition to match on a query string parameter submitted by the client. 
+-   You may configure {{ PRODUCT }} to [rewrite](/applications/performance/rules/features#rewrite-url) or [redirect](/applications/performance/rules/features#url-redirect) a URL. This comparison is performed after {{ PRODUCT }} rewrites or redirects the request. Use the [Query](#query) match condition to match on a query string parameter submitted by the client.
 -   **Parameter name:**
 
     -   Query parameter name comparisons are case-insensitive.
@@ -1545,8 +1545,8 @@ export default new Router().if(
       "===": [{ "request.origin_query": "country" }, "france"],
     },
   },
-  { 
-    // Features  
+  {
+    // Features
   }
 );
 ```
@@ -1558,7 +1558,7 @@ Identifies requests by the query string of the requested URL. This query string 
 
 **Key information:**
 
--   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#rewrite-url) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This comparison is performed before {{ PRODUCT }} rewrites or redirects the request. Use the [Origin Query String](#origin-query-string) match condition to match on a query string of a rewritten or redirected URL.
+-   You may configure {{ PRODUCT }} to [rewrite](/applications/performance/rules/features#rewrite-url) or [redirect](/applications/performance/rules/features#url-redirect) a URL. This comparison is performed before {{ PRODUCT }} rewrites or redirects the request. Use the [Origin Query String](#origin-query-string) match condition to match on a query string of a rewritten or redirected URL.
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, the text specified in the **Value** option should not include a leading question mark (?).
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1578,14 +1578,14 @@ Identifies requests by the query string of the requested URL. This query string 
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. 
+          Curl does not encode non-US-ASCII characters.
 
         </Callout>
 
 <edgejs>
 **Key information:**
 
--   You may configure {{ PRODUCT }} to [rewrite](/guides/performance/rules/features#rewrite-url) or [redirect](/guides/performance/rules/features#url-redirect) a URL. This comparison is performed before {{ PRODUCT }} rewrites or redirects the request. Use the [Origin Query String](#origin-query-string) match condition to match on a query string of a rewritten or redirected URL.
+-   You may configure {{ PRODUCT }} to [rewrite](/applications/performance/rules/features#rewrite-url) or [redirect](/applications/performance/rules/features#url-redirect) a URL. This comparison is performed before {{ PRODUCT }} rewrites or redirects the request. Use the [Origin Query String](#origin-query-string) match condition to match on a query string of a rewritten or redirected URL.
 -   The value associated with this match condition will be compared against the entire request's query string.
 -   For the purposes of this option, a query string starts with the first character after the question mark (?) delimiter for the query string. Therefore, do not include a leading question mark (?).
 -   Certain characters require URL encoding. Use the percentage symbol to URL encode the following characters:
@@ -1605,7 +1605,7 @@ Identifies requests by the query string of the requested URL. This query string 
 
         <Callout type="tip">
 
-          Curl does not encode non-US-ASCII characters. 
+          Curl does not encode non-US-ASCII characters.
 
         </Callout>
 -   **Supported operators:** `=== | !== | =~ | !~`
@@ -1615,7 +1615,7 @@ Identifies requests by the query string of the requested URL. This query string 
 ```
 export default new Router().if(
   { edgeControlCriteria: { "===": [{ request: "querystring" }, "country=france"] } },
-  { 
+  {
     // Features
  }
 );
@@ -1624,13 +1624,13 @@ export default new Router().if(
 
 #### Random Integer {/*random-integer*/} <edgejs>random</edgejs>
 
-Identifies requests by performing a comparison against a random integer. 
+Identifies requests by performing a comparison against a random integer.
 
 <Callout type="tip">
 
   This condition is useful for applying an action to a random set of requests.
 
-  For example, if you set the maximum value to 2, then {{ PRODUCT }} will randomly apply 0, 1, and 2 to each request. If you configure this condition to match when the value is greater than `1`, then you can apply a set of actions to approximately a third of your requests. 
+  For example, if you set the maximum value to 2, then {{ PRODUCT }} will randomly apply 0, 1, and 2 to each request. If you configure this condition to match when the value is greater than `1`, then you can apply a set of actions to approximately a third of your requests.
 
 </Callout>
 
@@ -1644,18 +1644,18 @@ Identifies requests by performing a comparison against a random integer.
 
   This condition is useful for applying an action to a random set of requests.
 
-  For example, if you set the maximum value to 2, then {{ PRODUCT }} will randomly apply 0, 1, and 2 to each request. If you configure this condition to match when the value is greater than `1`, then you can apply a set of actions to approximately a third of your requests. 
+  For example, if you set the maximum value to 2, then {{ PRODUCT }} will randomly apply 0, 1, and 2 to each request. If you configure this condition to match when the value is greater than `1`, then you can apply a set of actions to approximately a third of your requests.
 
 </Callout>
 
 **Key information:**
 -   This condition generates a random integer between 0 and a user-defined number for each request. {{ PRODUCT }} will compare the number assigned to the request to the value defined within this condition.
 -   Set this match condition to the maximum value (number) for this random number generation.
--   Define the value to which {{ PRODUCT }} will perform a comparison through the second element of the array (number). 
+-   Define the value to which {{ PRODUCT }} will perform a comparison through the second element of the array (number).
 -   **Supported operators:** `< | <= | > | >=`
 
 **Example:** The following route is satisfied when a request is randomly assigned 6, 7, 8, 9, or 10:
-	  
+
 ```
 router.conditional({
     if: [{
@@ -1712,11 +1712,9 @@ Identifies requests by the code for the region (e.g., state or province) from wh
 
 **Key information:**
 
--   Identify the desired region by its region code. A region code, which consists of 1 to 3 alphanumeric characters, identifies a subdivision of a country by the region segment of the corresponding ISO 3166-2 code.
+-   Identify the desired region by its region code. A region code consists of 1 to 3 alphanumeric characters. A region code is also known as a subdivision code. This code is the latter half of an ISO 3166-2 code.
 
-    [View ISO 3166-2 codes. (Wikipedia)](https://en.wikipedia.org/wiki/ISO_3166-2)
-
-    [View ISO 3166-2 codes. (UNECE)](http://www.unece.org/cefact/locode/subdivisions.html)
+    [Look up ISO-3166-2 codes.](https://www.iso.org/obp/ui/#search/code/)
 
     **Example:**
 
@@ -1743,11 +1741,9 @@ Identifies requests by the code for the region (e.g., state or province) from wh
 <edgejs>
 **Key information:**
 
--   Identify the desired region by its region code. A region code, which consists of 1 to 3 alphanumeric characters, identifies a subdivision of a country by the region segment of the corresponding ISO 3166-2 code.
+-   Identify the desired region by its region code. A region code consists of 1 to 3 alphanumeric characters. A region code is also known as a subdivision code. This code is the latter half of an ISO 3166-2 code.
 
-    [View ISO 3166-2 codes. (Wikipedia)](https://en.wikipedia.org/wiki/ISO_3166-2)
-
-    [View ISO 3166-2 codes. (UNECE)](http://www.unece.org/cefact/locode/subdivisions.html)
+    [Look up ISO-3166-2 codes.](https://www.iso.org/obp/ui/#search/code/)
 
     **Example:**
 
@@ -1851,7 +1847,7 @@ Identifies requests by request header value.
     -   Only request headers whose name is an exact match to the specified value may satisfy this condition.
 
 -   **Header value:**
-    -   Set the second element of the array to the desired request header value (string). 
+    -   Set the second element of the array to the desired request header value (string).
     -   Specify multiples values through a regular expression (e.g., `value 1|value 2`).
 -   **Supported operators:** `=== | !== | =~ | !~`
 
@@ -1880,7 +1876,7 @@ Identifies requests by the height, in pixels, of the device that issued the requ
 
 **Key information:**
 
--   Specify height in pixels. 
+-   Specify height in pixels.
 -   Specify height as a whole number.
 
 <edgejs>
@@ -1915,7 +1911,7 @@ Identifies requests by the width, in pixels, of the device that issued the reque
 
 **Key information:**
 
--   Specify width in pixels. 
+-   Specify width in pixels.
 -   Specify width as a whole number.
 
 <edgejs>
@@ -1946,21 +1942,21 @@ router.conditional({
 
 #### Response Status Code {/*response-status-code*/} <edgejs>response</edgejs>
 
-Identifies requests whose response matches a HTTP status code. 
+Identifies requests whose response matches a HTTP status code.
 
 **Key information:**
 
 -   You may use this match condition to apply features that affect the response provided to the client. For example, you may set response headers, a response body, or HTTP status code for all requests whose HTTP status code is `404 Not Found`.
 
     <Callout type="tip">
-	
+
 	  You may use this match condition to instruct the client to redirect requests by setting a `Location` response header to the desired URL and the response status code to a `3xx` (redirection) status code (e.g., `301` and `302`).
 
     </Callout>
 
     <Callout type="info">
-	
-	  {{ PRODUCT }} checks for this match condition upon receiving a response. At this point in the request flow, all features that correspond to the request or cache have already been applied. 
+
+	  {{ PRODUCT }} checks for this match condition upon receiving a response. At this point in the request flow, all features that correspond to the request or cache have already been applied.
 
     </Callout>
 
@@ -1970,14 +1966,14 @@ Identifies requests whose response matches a HTTP status code.
 -   You may use this match condition to apply features that affect the response provided to the client. For example, you may set response headers, a response body, or HTTP status code for all requests whose HTTP status code is `404 Not Found`.
 
     <Callout type="tip">
-	
+
 	  You may use this match condition to instruct the client to redirect requests by setting a `Location` response header to the desired URL and the response status code to a `3xx` (redirection) status code (e.g., `301` and `302`).
 
     </Callout>
 
     <Callout type="info">
-	
-	  {{ PRODUCT }} checks for this match condition upon receiving a response. At this point in the request flow, all features that correspond to the request or cache have already been applied. 
+
+	  {{ PRODUCT }} checks for this match condition upon receiving a response. At this point in the request flow, all features that correspond to the request or cache have already been applied.
 
     </Callout>
 -   **Supported operators:** `=== | !== | =~ | !~ | in | not_in`

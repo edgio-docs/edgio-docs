@@ -35,7 +35,7 @@ The benefits of using {{ PRODUCT }} instead of Google Search Console to track Co
 - Correlate web vitals to your application's routes
 - Analyze score across a number of dimensions such as country, device, and connection type
 - Identify which pages are most negatively impacting your search ranking.
-- Use {{ PRODUCT_NAME }}'s [Edge-based A/B testing](/guides/performance/traffic_splitting/a_b_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
+- Use {{ PRODUCT_NAME }}'s [Edge-based A/B testing](/applications/performance/traffic_splitting/a_b_testing) to A/B test the impact of performance optimizations on Core Web Vitals.
 
 ## Installing Real User Monitoring (RUM) {/* installation */}
 
@@ -144,7 +144,7 @@ new Metrics({
 }).collect();
 ```
 
-The router supports the same pattern syntax as Express. Here's more information on [routing syntax](/guides/performance/cdn_as_code#route-pattern-syntax).
+The router supports the same pattern syntax as Express. Here's more information on [routing syntax](/applications/performance/cdn_as_code#route-pattern-syntax).
 
 For non single page applications (e.g. traditional "multi-page apps"), you can also explicitly set the page label by passing a `pageLabel` property during initialization. An example is shown below where the `pageLabel` is pulled from `document.title`:
 

@@ -2,20 +2,20 @@
 title: Deployments
 ---
 
-A deployment is required to apply changes to your code or configuration to an environment. 
+A deployment is required to apply changes to your code or configuration to an environment.
 
 ## Deploying {/*deploying*/}
 
 Deploy to an environment using either of the following methods:
 
--   **{{ PORTAL }}:** Use this method to deploy changes made within the {{ PORTAL }}. 
+-   **{{ PORTAL }}:** Use this method to deploy changes made within the {{ PORTAL }}.
     1.  Load the desired environment.
 
         1.  From the {{ PORTAL_LINK }}, select your private space or the desired organization.
         2.  Select the desired property.
         3.  From the left-hand pane, select the desired environment from under the **Environments** section.
 
-    2.  Update your hostname, origin, or rule configuration. 
+    2.  Update your hostname, origin, or rule configuration.
 
     3.  From the notification bar at the top of the page, click **Deploy Changes**.
 
@@ -39,34 +39,34 @@ Deploy to an environment using either of the following methods:
 
 {{ system_origins_callout.md }}
 
-<a id="deployment-specific-page" />Upon deploying a build, view deployment information from within the {{ PORTAL }} by navigating to the desired environment, clicking on **Deployments**, and then clicking the deployment's version number. 
+<a id="deployment-specific-page" />Upon deploying a build, view deployment information from within the {{ PORTAL }} by navigating to the desired environment, clicking on **Deployments**, and then clicking the deployment's version number.
 
 ![Deployment version number](/images/v7/basics/deployments-version-number.png?width=450)
 
 This deployment-specific page provides information about the deployment, such as:
 
 -   How and when it was deployed.
--   Current status. 
+-   Current status.
 -   URL(s) through which you can serve traffic for your website. These URL(s) are listed under the **URL** section.
 -   If you are using CDN-as-code, then we also provide:
     -   A permalink for testing your site. This type of link bypasses the edge of our network and serves traffic directly from the {{ PRODUCT }} cloud.
-    -   [Server logs](/guides/logs/server_logs) through which you can view console messages defined within your application.
+    -   [Server logs](/applications/logs/server_logs) through which you can view console messages defined within your application.
 
 ## Deployment Status {/*deployment-status*/}
 
 View status information for all deployments from the **Deployments** page. Online deployments are indicated by <Image inline src="/images/v7/icons/deployment-online.png" alt="Solid green circle" />, while retired deployments are indicated by <Image inline src="/images/v7/icons/deployment-retired.png" alt="Faint green circle" />.
 
-Each environment may have up to 5 online deployments. If you are using CDN-as-code, then you may use the permalink associated with any online deployment to test your site. 
+Each environment may have up to 5 online deployments. If you are using CDN-as-code, then you may use the permalink associated with any online deployment to test your site.
 
-Although older deployments are considered retired, you may revive a deployment by visiting its permalink. Once the deployment has been revived, the permalink will once again load your site. Additionally, we will retire the next oldest online deployment. 
+Although older deployments are considered retired, you may revive a deployment by visiting its permalink. Once the deployment has been revived, the permalink will once again load your site. Additionally, we will retire the next oldest online deployment.
 
 ## Versioning {/*versioning*/}
 
-Upon deploying changes, {{ PRODUCT }} assigns a unique version number to the deployment. This allows you to track the changes deployed to this environment. 
+Upon deploying changes, {{ PRODUCT }} assigns a unique version number to the deployment. This allows you to track the changes deployed to this environment.
 
 **Key information:**
 -   {{ PRODUCT }} increments this version number by 1 for each new deployment.
--   You can quickly roll back to any previous version. For example, you may wish to roll back to a previous deployment when a breaking change is introduced into an environment.  
+-   You can quickly roll back to any previous version. For example, you may wish to roll back to a previous deployment when a breaking change is introduced into an environment.
 -   Each deployment is also assigned an environment version number. Deploying new changes increments both the deployment and the environment version number. However, rolling back to a previous environment version will only increment the deployment version number. The environment version number, on the other hand, will be set to the environment version to which you rolled back.
 
 **To roll back to a previous version**
@@ -120,7 +120,7 @@ This sample GitHub action deploys your site to {{ PRODUCT }}. It requires:
 
 - A `default` environment. By default, new properties created through our CLI include a `default` environment. This Github action creates a new build for every push to the `default` environment.
 - A `production` environment. If you have not already created a `production` environment, then you should do so now.
-- A deploy token. Add this deploy token as a secret in your repository called `edgio_deploy_token`. Learn more on [accessing environment variables](/guides/basics/environments#accessing-environment-variables) which might be essential for your app during the build time and for server-side requests (including SSG/SSR).
+- A deploy token. Add this deploy token as a secret in your repository called `edgio_deploy_token`. Learn more on [accessing environment variables](/applications/basics/environments#accessing-environment-variables) which might be essential for your app during the build time and for server-side requests (including SSG/SSR).
 - Depending on your use of npm or Yarn, adjust the `Install packages` step.
 
 ### Template {/*template*/}
@@ -156,7 +156,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       deploy_token: ${{ secrets.EDGIO_DEPLOY_TOKEN }}
-      
+
     steps:
       # Validate presence of deploy token
       - name: Validate Deploy Token
@@ -307,7 +307,7 @@ This guide assumes:
 # in {{ APP_URL }} and configure it as a variable called "EDGIO_DEPLOY_TOKEN" in your GitLab
 # project's settings page. You should mask this variable to prevent it from appearing in logs.
 
-image: node:14
+image: node:16
 
 stages:
   - deploy
@@ -324,15 +324,15 @@ edgio_deploy:
       when: never
     - if: '$CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "main"'
       variables:
-        EDGIO_DEPLOY_PARAM: ' --environment=staging'
+        EDGIO_DEPLOY_ENVIRONMENT: 'staging'
     - if: '$CI_COMMIT_TAG'
       variables:
-        EDGIO_DEPLOY_PARAM: ' --environment=production'
+        EDGIO_DEPLOY_ENVIRONMENT: 'production'
     - if: '$CI_COMMIT_BRANCH'
       variables:
-        EDGIO_DEPLOY_PARAM: ''
+        EDGIO_DEPLOY_ENVIRONMENT: ''
   before_script:
     - npm ci --cache .npm --prefer-offline
   script:
-    - npm run {{ FULL_CLI_NAME }}:deploy -- --token="$EDGIO_DEPLOY_TOKEN" --non-interactive --branch="$CI_COMMIT_BRANCH$EDGIO_DEPLOY_PARAM"
+    - npm run {{ FULL_CLI_NAME }}:deploy -- --token="$EDGIO_DEPLOY_TOKEN" --non-interactive --branch="$CI_COMMIT_BRANCH" --environment"$EDGIO_DEPLOY_ENVIRONMENT"
 ```

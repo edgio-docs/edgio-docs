@@ -7,7 +7,7 @@ This guide shows you how to deploy a [Hugo](https://gohugo.io) application to {{
 ## Example {/*example*/}
 
 <ExampleButtons
-  repoUrl="https://github.com/layer0-docs/layer0-hugo-example" 
+  repoUrl="https://github.com/layer0-docs/layer0-hugo-example"
    />
 
 {{ PREREQ.md }}
@@ -118,7 +118,7 @@ import { Router } from '@{{ PRODUCT_NAME_LOWER }}/core/router'
 
 export default new Router()
   // Prevent search engine bot(s) from indexing
-  // Read more on: https://docs.layer0.co/guides/cookbook#blocking-search-engine-crawlers
+  // Read more on: https://docs.layer0.co/applications/cookbook#blocking-search-engine-crawlers
   .noIndexPermalink()
   .static('public', ({ cache }) => {
     cache({

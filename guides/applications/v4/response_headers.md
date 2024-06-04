@@ -14,7 +14,7 @@ This guide describes the headers that {{ PRODUCT_NAME }} injects into responses,
 
     `{{ HEADER_PREFIX }}-caching-status: disabled`
 
-   [Learn more.](/guides/caching#why-is-my-response-not-being-cached)
+   [Learn more.](/applications/caching#why-is-my-response-not-being-cached)
 -   `{{ HEADER_PREFIX }}-components`: Indicates the version for each POP component that processed the request and the environment ID. This response header is primarily meant for internal use when troubleshooting issues.
 <!-- `{{ HEADER_PREFIX }}-components: eh=0.1.6,e=atl,ec=1.1.0,ed=1.0.1,gh=0.1.6,g=hef,gd=1.0.1,p=1.21.10,w=3.11.0,wi=e8ce8753-163d-4be9-a39e-40454ace5146,b=serverless`
 -->
@@ -24,7 +24,7 @@ This guide describes the headers that {{ PRODUCT_NAME }} injects into responses,
 
 -   `{{ HEADER_PREFIX }}-surrogate-key`: Contains a space-delimited list of surrogate keys (cache tags). <!-- that can be injected when needed into your backend responses -->
 
-    [Learn more.](/guides/purging#surrogate-keys)
+    [Learn more.](/applications/purging#surrogate-keys)
 -   [{{ HEADER_PREFIX }}-t](#x-0-t-response-header): Contains time measurements for each {{ PRODUCT }} component through which a request was routed. It also provides cache status information for edge and global POPs.
 -   [{{ HEADER_PREFIX }}-version](#x-0-version-response-header): Describes the {{ PRODUCT }} deployment.
 
@@ -257,7 +257,6 @@ Definitions for the above variables are provided below.
 
 ## Serverless Compute - Cold Start Timing {/*serverless-timing*/}
 
-To calculate the Serverless cold start timing you must take the difference between `pf` and `wt` in the `{{ HEADER_PREFIX }}-t` header. `wt` is time taken for the lambda to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. To [track timings](/guides/performance#tracking-your-own-timings) for a function, it is possible to add specific code to do that.
+To calculate the Serverless cold start timing you must take the difference between `pf` and `wt` in the `{{ HEADER_PREFIX }}-t` header. `wt` is time taken for the lambda to execute after it has started, this is can be read as the time is takes the project code to execute. If that seems large, evaluate the code within your project to see why this might be. To [track timings](/applications/performance#tracking-your-own-timings) for a function, it is possible to add specific code to do that.
 
 Based on the example above, that would be `809 (pf) - 722 (wt) = 87ms`.
-

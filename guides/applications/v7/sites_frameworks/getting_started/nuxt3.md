@@ -9,7 +9,7 @@ This guide shows you how to deploy a [Nuxt3](https://v3.nuxtjs.org) application 
 <ExampleButtons
   title="Nuxt3"
   siteUrl="https://edgio-community-examples-v7-nuxt3-live.edgio.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-v7-nuxt3-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-v7-nuxt3-example"
   deployFromRepo />
 
 {{ PREREQ.md }}
@@ -76,11 +76,11 @@ Deploy your app to {{ PRODUCT }} by running the following command in your projec
 
 {{ system_origins_callout.md }}
 
-See [Deployments](/guides/basics/deployments) for more information.
+See [Deployments](/applications/basics/deployments) for more information.
 
 ### Resources {/*resources*/}
-1. [Routing with EdgeJS](/guides/performance/cdn_as_code)
-2. [Prefetching with EdgeJS](/guides/performance/prefetching)
+1. [Routing with EdgeJS](/applications/performance/cdn_as_code)
+2. [Prefetching with EdgeJS](/applications/performance/prefetching)
 
 ## Troubleshoot {/*troubleshoot*/}
 

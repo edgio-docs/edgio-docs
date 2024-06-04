@@ -4,7 +4,7 @@ title: Cache Hit Ratio Optimization
 
 There are many factors that influence cache hit ratio, such as:
 
--   Your caching policy. You need to identify the set of content that should be cached and how long it should be cached. 
+-   Your caching policy. You need to identify the set of content that should be cached and how long it should be cached.
 
     <Callout type="tip">
 
@@ -19,16 +19,16 @@ There are many factors that influence cache hit ratio, such as:
 
     </Callout>
 
--   Geographic distribution of your users. Clusters of users within the same geographic region typically result in a higher cache hit ratio than users distributed throughout the world. 
+-   Geographic distribution of your users. Clusters of users within the same geographic region typically result in a higher cache hit ratio than users distributed throughout the world.
 
--   Cache invalidation (purging). Purging your content affects your cache hit ratio, since new requests will result in cache misses until that content is cached. If related content is updated at the same cadence, then it may make sense to use [surrogate keys (aka cache tags)](/guides/performance/caching/purging#surrogate-key) to selectively target cached content when purging. 
+-   Cache invalidation (purging). Purging your content affects your cache hit ratio, since new requests will result in cache misses until that content is cached. If related content is updated at the same cadence, then it may make sense to use [surrogate keys (aka cache tags)](/applications/performance/caching/purging#surrogate-key) to selectively target cached content when purging.
 
 -   Serving stale content during revalidation. Once configured, our edge servers can immediately respond to stale content with cached content instead of waiting for revalidation to complete. After our edge servers revalidate cached content, they will respond to new requests with an up-to-date version of your cached content. This feature balances performance with the need to serve the latest version of your content.
 
     Set up this feature using one of the following methods:
 
-    -   **Rules:** Create a rule that configures the [Stale While Revalidate feature](/guides/performance/rules/features#stale-while-revalidate) to extend the amount of time that an edge server may serve stale content past the expiration of an asset's TTL.
-    -   **CDN-as-Code:** 
+    -   **Rules:** Create a rule that configures the [Stale While Revalidate feature](/applications/performance/rules/features#stale-while-revalidate) to extend the amount of time that an edge server may serve stale content past the expiration of an asset's TTL.
+    -   **CDN-as-Code:**
         ```js filename="./routes.js"
         new Router()
           .get('/', {
@@ -41,7 +41,7 @@ There are many factors that influence cache hit ratio, such as:
 
         <Callout type="info">
 
-          Once both TTL and the Stale While Revalidate time has been exceeded, our edge servers must wait for revalidation to complete before providing a response to the client. 
+          Once both TTL and the Stale While Revalidate time has been exceeded, our edge servers must wait for revalidation to complete before providing a response to the client.
 
           For example, if the `max-age` interval is set to 10 hours and Stale While Revalidate feature is set to 10 minutes, then cached content older than 10 hours and 10 minutes must be revalidated before an edge server may provide a response.
 

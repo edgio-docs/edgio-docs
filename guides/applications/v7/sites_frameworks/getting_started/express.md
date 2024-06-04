@@ -45,6 +45,19 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 {{ FULL_CLI_NAME }} dev
 ```
 
+<Important>
+
+{{ PRODUCT }} CLI does not support running Express servers written in TypeScript in development mode. Instead, perform a production build and test your app locally by running the production server.
+
+</Important>
+
+To run your app in production mode locally, build your app and run the server:
+
+```bash
+{{ FULL_CLI_NAME }} build
+{{ FULL_CLI_NAME }} run --production
+```
+
 ## Deploying {/* deploying */}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:

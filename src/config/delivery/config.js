@@ -1,4 +1,4 @@
-import { default as base } from '../base.config';
+import {default as base} from '../base.config';
 
 const DELIVERY = 'Delivery';
 const CACHING_DELIVERY = 'Caching and Delivery';
@@ -23,7 +23,6 @@ const config = {
   MMD_OD,
   LVP,
   LIVE_PUSH,
-
 };
 
 export default config;

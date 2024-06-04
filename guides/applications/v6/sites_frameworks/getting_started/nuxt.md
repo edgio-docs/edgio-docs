@@ -28,7 +28,7 @@ This Nuxt.js example app uses ISG (Incremental Static Generation) to provide lig
 
 ## Connector {/* connector */}
 
-This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/applications/sites_frameworks/connectors) for more information.
 
 <ButtonLink
   variant="stroke"
@@ -370,7 +370,7 @@ If you set the `fallback` property in the [generate](https://nuxtjs.org/docs/2.x
 
 ## includeFiles {/* includefiles */}
 
-Nuxt requires that certain resources are included in a build and deploy to have access to them. As such, at times this will require additional configuration. To include additional resources for server side rendering, API calls, etc., use the `includeFiles` option in your `{{ CONFIG_FILE }}` file. [Read more](/guides/basics/edgio_config#includefiles)
+Nuxt requires that certain resources are included in a build and deploy to have access to them. As such, at times this will require additional configuration. To include additional resources for server side rendering, API calls, etc., use the `includeFiles` option in your `{{ CONFIG_FILE }}` file. [Read more](/applications/basics/edgio_config#includefiles)
 
 In this example, we would have an `api` folder that we want to include all items from.
 
@@ -458,7 +458,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-See [Deployments](/guides/basics/deployments) for more information.
+See [Deployments](/applications/basics/deployments) for more information.
 
 ## Troubleshooting {/* troubleshooting */}
 

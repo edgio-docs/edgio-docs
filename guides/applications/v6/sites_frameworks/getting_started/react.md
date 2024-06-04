@@ -2,19 +2,19 @@
 title: React
 ---
 
-This guide shows you how to serve a [React](https://reactjs.org/) application to {{ PRODUCT }}. If you're using Next.js specifically, we suggest using the [Next.js guide](/guides/sites_frameworks/getting_started/next).
+This guide shows you how to serve a [React](https://reactjs.org/) application to {{ PRODUCT }}. If you're using Next.js specifically, we suggest using the [Next.js guide](/applications/sites_frameworks/getting_started/next).
 
 ## Example {/*example*/}
 
 <ExampleButtons
   title="React"
   siteUrl="https://edgio-community-examples-static-react-live.layer0-limelight.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-static-react-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-static-react-example"
   deployFromRepo />
 
 ## Connector {/*connector*/}
 
-This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/guides/sites_frameworks/connectors) for more information.
+This framework has a connector developed for {{ PRODUCT }}. See [Connectors](/applications/sites_frameworks/connectors) for more information.
 
 <ButtonLink variant="stroke" type="code" withIcon={true} href="https://github.com/edgio-docs/edgio-connectors/tree/main/edgio-react-cra-connector">
  View the Connector Code
@@ -86,11 +86,11 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following commands 
 {{ FULL_CLI_NAME }} deploy
 ```
 
-See [Deployments](/guides/basics/deployments) for more information.
+See [Deployments](/applications/basics/deployments) for more information.
 
 ## Prefetching {/*prefetching*/}
 
-Install the `{{ PACKAGE_NAME }}/react` to enable [prefetching](/guides/performance/prefetching).
+Install the `{{ PACKAGE_NAME }}/react` to enable [prefetching](/applications/performance/prefetching).
 
 ```bash
 npm i -D {{ PACKAGE_NAME }}/react

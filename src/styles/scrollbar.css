@@ -16,6 +16,7 @@
   background-clip: content-box;
 }
 
-.ReactModal__Body--open {
+.ReactModal__Body--open,
+.lock-scroll {
   overflow: hidden;
 }

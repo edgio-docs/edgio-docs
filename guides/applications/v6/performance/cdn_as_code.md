@@ -15,9 +15,9 @@ Using the Router, you can:
 
 ## Prerequisites {/*prerequisites*/}
 
-Before proceeding, you will need an {{ PRODUCT }} property. Create one now if you do not already have one. 
+Before proceeding, you will need an {{ PRODUCT }} property. Create one now if you do not already have one.
 
-[Learn how to create a property.](/guides/getting_started)
+[Learn how to create a property.](/applications/getting_started)
 
 ## Configuration {/*configuration*/}
 
@@ -248,7 +248,7 @@ The second argument to routes is a function that receives a `ResponseWriter` and
 
 ## Blocking Search Engine Crawlers {/*blocking-search-engine-crawlers*/}
 
-If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag. 
+If you need to block all search engine bot traffic to specific environments (such as your default or staging environment), the easiest way is to include the `x-robots-tag` header with the same directives you would otherwise set in a `meta` tag.
 
 <Callout type="info">
 
@@ -258,7 +258,7 @@ If you need to block all search engine bot traffic to specific environments (suc
   ```js
     new Router({ indexPermalink: true })
   ```
-  
+
   Otherwise, {{ PRODUCT }} will match requests with the `host` header matching `/layer0.link|layer0-perma.link/` and set a response header of `x-robots-tag: noindex, nofollow`.
 
 </Callout>

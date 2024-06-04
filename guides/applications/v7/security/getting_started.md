@@ -15,7 +15,7 @@ The core methods through which it secures site traffic are listed below.
 
 ## Prerequisites {/*prerequisites*/}
 
-Before you can secure your traffic, you will need an {{ COMPANY_NAME }} [organization](/guides/basics/collaboration#managing-teams) and a [property](/guides/getting_started#create-property) for the desired website. 
+Before you can secure your traffic, you will need an {{ COMPANY_NAME }} [organization](/applications/basics/collaboration#managing-teams) and a [property](/applications/getting_started#create-property) for the desired website.
 
 <Callout type="tip">
 
@@ -36,7 +36,7 @@ and managed rule are provided below.
 
 <Callout type="tip">
 
-  This tutorial covers how to set up basic application layer protection. However, our Premier or Business customers may use a [custom rule](/guides/security/custom_rules) to identify
+  This tutorial covers how to set up basic application layer protection. However, our Premier or Business customers may use a [custom rule](/applications/security/custom_rules) to identify
   threats using custom criteria that takes into account your site's
   traffic profile to identify specific threats and to avoid false positives.
 
@@ -86,10 +86,10 @@ application layer attacks.
     {{ SECURITY_NAV }} **Managed Rules**.
 2.  Click **+ New Managed Ruleset**.
 3.  In the **Name** option, type *My Managed Rule*.
-4.  Click the **Inbound Policies** tab. 
+4.  Click the **Inbound Policies** tab.
 5.  Set the **Threshold** option to *5*.
 6.  Set the **Paranoia Level** option to *1*.
-7.  From the **Policies** section, disable policies that do not apply to your application. 
+7.  From the **Policies** section, disable policies that do not apply to your application.
 
     For example, you may safely disable **Adv Drupal**, **Adv SharePoint**, and **Adv WordPress** if your application does not leverage those platforms.
 
@@ -131,7 +131,7 @@ By default, the dashboard tracks the set of threats detected over the last week.
 ### Data Gathering {/*data-gathering*/}
 
 After your Security App configuration has been implemented, time needs to pass to allow {{ PRODUCT_SECURITY }} to
-gather sufficient data from which trends may be detected. Wait a reasonable amount of time (e.g., 24 hours) after setting up a Security App configuration before performing data analysis. 
+gather sufficient data from which trends may be detected. Wait a reasonable amount of time (e.g., 24 hours) after setting up a Security App configuration before performing data analysis.
 
 ### Identify Trends {/*identify-trends*/}
 
@@ -154,7 +154,7 @@ Ensure that {{ PRODUCT_SECURITY }} is correctly identifying threats by viewing d
         -   Our recommendation is that all of the following conditions be met before disabling a rule:
 
             -   Your application cannot be updated to reduce false positives.
-            -   A [rule exception](/guides/security/managed_rules#rule-exceptions) cannot be created to eliminate false positives.
+            -   A [rule exception](/applications/security/managed_rules#rule-exceptions) cannot be created to eliminate false positives.
             -   A significant number of requests will be impacted by this rule.
 
             <Callout type="info">

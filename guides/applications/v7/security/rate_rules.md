@@ -26,10 +26,10 @@ honored.
     unique user agents.
 
     ![](/images/v7/security/rate_rules_source_scope.png)
-    
-    {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier allows customers to apply a rate rule to unique clients, user agents, ASNs, JA3, cookies, query string parameters, and request headers. Additionally, you can combine up to two items. For example, you can apply a rate rule to unique user agents on a per ASN basis. 
 
--   A [Security Application](/guides/security/security_applications) configuration determines
+    {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier allows customers to apply a rate rule to unique clients, user agents, ASNs, JA3, cookies, query string parameters, and request headers. Additionally, you can combine up to two items. For example, you can apply a rate rule to unique user agents on a per ASN basis.
+
+-   A [Security Application](/applications/security/security_applications) configuration determines
     the set of requests to which this rate rule will be applied. Use
     condition groups to define one or more additional prerequisites
     (e.g., URL or user agent) that a request must meet before it will
@@ -46,13 +46,13 @@ honored.
     requested from an origin server or if a cached version may be served
     directly from our network.
 -   A rate rule always runs in [production
-    mode](/guides/security/security_applications#enforcement-mode). Although you may not run it in audit mode, you may configure your security application configuration to only generate alerts when a rate limit is exceeded.
+    mode](/applications/security/security_applications#enforcement-mode). Although you may not run it in audit mode, you may configure your security application configuration to only generate alerts when a rate limit is exceeded.
 -   A rate rule is enforced by each POP according to the
     approximate number of requests that it receives over the specified
     time interval (e.g., 1 second, 10 seconds, or 1 minute).
 
 -   {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further [evaluation of a
-    request](/guides/security/waf#threat-detection) once enforcement is triggered.
+    request](/applications/security/waf#threat-detection) once enforcement is triggered.
 
     <Callout type="tip">
 
@@ -73,22 +73,22 @@ Setting up a rate rule involves defining a rate limit and determining how that r
     -   Indiscriminately across all requests.
     -   To each unique client that exceeds the defined rate limit.
 
-        Identify a unique client by its user agent, IP address, or both. {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier customers may identify clients using up to two of the following criteria: IP address, user agent, ASN, JA3, cookie, query string parameters, and request headers. 
+        Identify a unique client by its user agent, IP address, or both. {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier customers may identify clients using up to two of the following criteria: IP address, user agent, ASN, JA3, cookie, query string parameters, and request headers.
 
 
 -   **[Condition Group:](#condition-group)** A request counts towards a rate limit when it satisfies all of the following criteria:
-    -   A [Security Application configuration's](/guides/security/security_applications#traffic-identification) hostname and URL path match conditions. 
-    -   If one or more condition group(s) have been defined, then the request must also satisfy all of the conditions defined within at least one condition group.  
+    -   A [Security Application configuration's](/applications/security/security_applications#traffic-identification) hostname and URL path match conditions.
+    -   If one or more condition group(s) have been defined, then the request must also satisfy all of the conditions defined within at least one condition group.
 
     Each condition identifies the type of requests that are eligible for rate limiting by URL path, request headers, IP address, file extension, and request method. {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier customers may also identify requests by ASN, country, request header, request URL path, JA3, query string, and cookie.
--   **Action:** A [Security Application configuration](/guides/security/security_applications#enforcement) determines the type of action that will be applied to requests that exceed the above rate limit.
+-   **Action:** A [Security Application configuration](/applications/security/security_applications#enforcement) determines the type of action that will be applied to requests that exceed the above rate limit.
 
 ### Source {/*source*/}
 
 Apply a rate limit across all requests or to each unique client. Define this behavior from within the **Apply rate limit
 to** option. The available modes are described below.
 
--   **Any request:** Indicates that all requests will count towards the rate limit. Once the specified rate limit is exceeded, it will be enforced without taking into consideration which client submitted the request.  
+-   **Any request:** Indicates that all requests will count towards the rate limit. Once the specified rate limit is exceeded, it will be enforced without taking into consideration which client submitted the request.
 
     <Callout type="tip">
 
@@ -100,7 +100,7 @@ to** option. The available modes are described below.
 
     <Callout type="info">
 
-      Certain services and applications, such as VPNs, mask a client's IP address. Specifically, they will report an IP address of their choosing instead of the client's real IP address. As a result, multiple devices and perhaps even users may end up sharing the same IP address. 
+      Certain services and applications, such as VPNs, mask a client's IP address. Specifically, they will report an IP address of their choosing instead of the client's real IP address. As a result, multiple devices and perhaps even users may end up sharing the same IP address.
 
     </Callout>
 
@@ -111,14 +111,14 @@ to** option. The available modes are described below.
       All requests from a specific IP address that contain a blank or missing `User-Agent` header will be treated as a single client.
 
     </Callout>
-    
--   **User agent:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests from each unique user agent (e.g., web browser) will be tracked. 
 
--   **ASN:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests from each unique autonomous system number (ASN) will be tracked. 
--   **JA3:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique JA3 signature will be tracked. 
--   **Cookie:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified cookie will be tracked. 
--   **ARGS:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified query string parameter will be tracked. 
--   **Header:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified request header will be tracked. 
+-   **User agent:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests from each unique user agent (e.g., web browser) will be tracked.
+
+-   **ASN:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests from each unique autonomous system number (ASN) will be tracked.
+-   **JA3:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique JA3 signature will be tracked.
+-   **Cookie:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified cookie will be tracked.
+-   **ARGS:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified query string parameter will be tracked.
+-   **Header:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified request header will be tracked.
 
 {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier allows you to combine up to two of the above sources when defining unique clients.
 
@@ -165,7 +165,7 @@ The types of prerequisites that may be defined are described below.
 
 <a id="asn"></a>
 
--   **ASN:** A request will count towards the rate limit when it originates from an autonomous system (AS) whose number (ASN) matches a value defined in the **Value(s)** option. 
+-   **ASN:** A request will count towards the rate limit when it originates from an autonomous system (AS) whose number (ASN) matches a value defined in the **Value(s)** option.
 
     **Example:**
 
@@ -173,11 +173,11 @@ The types of prerequisites that may be defined are described below.
 
     <a id="country"></a>
 
--   **Country:** A request will count towards the rate limit when it originates from a country whose [code](/guides/reference/country_codes) matches a value defined in the **Value(s)** option.
+-   **Country:** A request will count towards the rate limit when it originates from a country whose [code](/applications/reference/country_codes) matches a value defined in the **Value(s)** option.
 
     <a id="file-extension"></a>
 
--   **File extension:** A request will count towards the rate limit when the filename of the requested content contains a file extension that matches a value defined in the **Value(s)** option. 
+-   **File extension:** A request will count towards the rate limit when the filename of the requested content contains a file extension that matches a value defined in the **Value(s)** option.
 
     **Syntax:**
 
@@ -188,17 +188,17 @@ The types of prerequisites that may be defined are described below.
     `.htm`
 
     <Callout type="info">
-    
+
       A request's file extension is determined by the request's relative path. If the query string determines the file extension for the response, then you should use [request query](#request-query) instead. Create a regular expression that matches for the desired file extension(s) within the query string.
-    
+
     </Callout>
     <a id="ip-address"></a>
 
--   **IP address:** A request will count towards the rate limit when its IP address matches a value defined in the **Value(s)** option.  
+-   **IP address:** A request will count towards the rate limit when its IP address matches a value defined in the **Value(s)** option.
 
     <Callout type="info">
 
-      Make sure to use standard IPv4 and CIDR notation.  
+      Make sure to use standard IPv4 and CIDR notation.
 
     </Callout>
 
@@ -223,10 +223,10 @@ The types of prerequisites that may be defined are described below.
         `<Host>:<Port>`
 
         **Key information:**
-        -   The entire `Host` header value will be compared against the specified value. 
-        -   The CDN only accepts HTTP/HTTPS requests on standard ports (i.e., 80 and 443). Typically, a `Host` request header does not include port information for standard ports. However, the requesting user agent defines the `Host` request header submitted to the CDN. 
-        -   For the purpose of this comparison, the hostname defined by this match condition will not be resolved to an IP address. 
-        -   For the purpose of this comparison, a customer origin's **HTTP Host Header** option is irrelevant.  
+        -   The entire `Host` header value will be compared against the specified value.
+        -   The CDN only accepts HTTP/HTTPS requests on standard ports (i.e., 80 and 443). Typically, a `Host` request header does not include port information for standard ports. However, the requesting user agent defines the `Host` request header submitted to the CDN.
+        -   For the purpose of this comparison, the hostname defined by this match condition will not be resolved to an IP address.
+        -   For the purpose of this comparison, a customer origin's **HTTP Host Header** option is irrelevant.
 
     <a id="user-agent"></a>
 
@@ -250,13 +250,13 @@ The types of prerequisites that may be defined are described below.
 
         <Callout type="info">
 
-          The request's referrer must be an exact match to the specified value. 
+          The request's referrer must be an exact match to the specified value.
 
         </Callout>
 
     <a id="request-method"></a>
 
--   **Request method:** A request will count towards the rate limit when the request's HTTP method matches a value defined in the **Value(s)** option. Valid values are: 
+-   **Request method:** A request will count towards the rate limit when the request's HTTP method matches a value defined in the **Value(s)** option. Valid values are:
 
     `GET | POST | PUT | HEAD | DELETE | OPTIONS`
 
@@ -270,8 +270,8 @@ The types of prerequisites that may be defined are described below.
 
       **Sample values:**
 
-      /marketing 
-      /800001/mycustomerorigin  
+      /marketing
+      /800001/mycustomerorigin
 
     </Callout>
 
@@ -319,7 +319,7 @@ The types of prerequisites that may be defined are described below.
     -   **Conditions per condition group:** 5
     -   **# of values per condition:**
         -   **IP Address:** 200
-        -   **All Other Conditions:** 100 
+        -   **All Other Conditions:** 100
 
         <Callout type="info">
 
@@ -329,7 +329,7 @@ The types of prerequisites that may be defined are described below.
 
 ## Multiple Rate Rules {/*multiple-rate-rules*/}
 
-You may define multiple rate rules within a [Security Application configuration](/guides/security/security_applications). This type of setup provides greater control when determining how requests will be rate limited.
+You may define multiple rate rules within a [Security Application configuration](/applications/security/security_applications). This type of setup provides greater control when determining how requests will be rate limited.
 
 Common use cases for multiple rules:
 
@@ -367,7 +367,7 @@ You may create, modify, and delete rate rules.
 **Key information:**
 
 -   Administer rate rules from the **Rate Rules** page.
--   Apply a rate rule to production traffic by adding it to a [Security Application configuration](/guides/security/security_applications) and then determining how it will be enforced. Multiple Security Application configurations may use the same rate rule. Leverage this capability to tailor security screening by application or traffic profile.
+-   Apply a rate rule to production traffic by adding it to a [Security Application configuration](/applications/security/security_applications) and then determining how it will be enforced. Multiple Security Application configurations may use the same rate rule. Leverage this capability to tailor security screening by application or traffic profile.
 
     <Callout type="info">
 
@@ -408,10 +408,10 @@ You may create, modify, and delete rate rules.
         If you set this option to `Request header` or `Cookie`, then you should also define the name of the desired request header or cookie within the **Request header name** or **Request cookie name** option, respectively.
     4.  If the **Match type** option is available, determine whether the **Value(s)** option will contain one or more exact
         value(s) (`Multiple exact match`) or a regular expression (`Regex`).
-		
+
     5.  Perform either of the following steps:
         -   **Values:** In the **Values** option, type the value that must be satisfied before a
-            request will count towards the rate rule and then press `ENTER`. Repeat this step as needed. 
+            request will count towards the rate rule and then press `ENTER`. Repeat this step as needed.
 
             <Callout type="tip">
 
@@ -507,7 +507,7 @@ The CDN handled the above requests in the following manner:
     -   **Index.html:** 300 requests
 
         600 requests per minute - 300 honored requests = 300 rate limited requests
-    -   **Styles.css:** 100 requests 
+    -   **Styles.css:** 100 requests
 
         400 requests per minute - 300 honored requests = 100 rate limited requests
     -   **Logo.png:** 0 requests
@@ -600,11 +600,11 @@ This sample scenario examines how four clients will be affected by rate rules.
 
 <Callout type="info">
 
-  Although the majority of the traffic described below satisfies multiple rules, only the first rule that a request violates will be applied to it. 
+  Although the majority of the traffic described below satisfies multiple rules, only the first rule that a request violates will be applied to it.
 
 </Callout>
 
--   **Client #1:**    
+-   **Client #1:**
     -   **Request URL:** `http://cdn.example.com/sales/index.htm`
         -   **Request rate:** 350 requests per minute
     -   **Action:** Approximately 200 requests will be honored, while approximately 150 requests will be redirected.

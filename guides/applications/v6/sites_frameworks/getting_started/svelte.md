@@ -9,7 +9,7 @@ This guide shows you how to deploy a [Svelte](https://svelte.dev/) application t
 <ExampleButtons
   title="Svelte"
   siteUrl="https://layer0-docs-layer0-svelte-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/edgio-docs/edgio-svelte-example" 
+  repoUrl="https://github.com/edgio-docs/edgio-svelte-example"
   deployFromRepo />
 
 {{ PREREQ.md }}
@@ -148,7 +148,7 @@ Replace the `routes.js` file that was created during `{{ FULL_CLI_NAME }} init` 
 const { Router } = require('{{ PACKAGE_NAME }}/core/router')
 
 module.exports = new Router()
-  
+
   // Send requests to static assets in the build output folder `public`
   .static('public')
 
@@ -160,7 +160,7 @@ module.exports = new Router()
 
 The example above assumes you're using Svelte as a single page app. It routes the static assets (JavaScript, CSS, and Images) in the production build folder `public` and maps all other requests to the app shell in `public/index.html`.
 
-Refer to the [CDN-as-code](/guides/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
+Refer to the [CDN-as-code](/applications/performance/cdn_as_code) guide for the full syntax of the `routes.js` file and how to configure it for your use case.
 
 ### Run the Svelte app locally on {{ PRODUCT }} {/*run-the-svelte-app-locally-on*/}
 
@@ -192,4 +192,4 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 {{ FULL_CLI_NAME }} deploy
 ```
 
-Refer to the [Deployments](/guides/basics/deployments) guide for more information on the `deploy` command and its options.
+Refer to the [Deployments](/applications/basics/deployments) guide for more information on the `deploy` command and its options.

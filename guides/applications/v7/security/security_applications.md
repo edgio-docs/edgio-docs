@@ -11,6 +11,7 @@ A Security App configuration:
     -   **Bot Manager:** A bot manager configuration identifies bot traffic.
     -   **Custom Rules:** A custom rule identifies threats using custom criteria that takes into account your site's traffic profile to avoid false positives.
     -   **Managed Rules:** A managed rule identifies threats through threat detection policies.
+    -   **Client-Side Protection Policy:** A Client-Side Protection policy detects and mitigates attacks, such as cross-site scripting (XSS) and code injection, by applying a Content Security Policy to your traffic.
 -   Identifies how the above [rules are enforced](#enforcement) on rate limited requests or threats .
 -   Allows you to audit new access rules, API Security rules, custom rules, and managed rules without impacting production traffic while keeping your applications secure with known configurations.
 
@@ -33,7 +34,7 @@ Identify the set of traffic to which a Security App configuration's rules will b
 By default, a Security App configuration applies to all hosts. However, you may limit a Security App configuration to one or more hosts. {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares the entire `Host` header value against the specified value.
 
 **Key information:**
--   The `Host` header identifies either a hostname or IP address using the following syntax: 
+-   The `Host` header identifies either a hostname or IP address using the following syntax:
 
     `<Host>`
 
@@ -55,13 +56,13 @@ By default, a Security App configuration applies to all URL paths. However, you 
 
     `/<Path>/<Asset>`
 
-    **Example:** 
+    **Example:**
 
     `/marketing/brochures/widget.htm`
 
 -   A partial match does not count towards the rate limit.
 
-    **Example:** 
+    **Example:**
 
     Given the above sample configuration, the following request would not count towards the rate limit:
 
@@ -110,7 +111,7 @@ It will only apply this Security App configuration to a request when one of the 
     -   **Example:** `[cm]art`
     -   **Matches:** `cart | mart`
     -   **Does not match:** `tart | start`
--   **[*a*-*z*]:** Matches a single character from the specified range. 
+-   **[*a*-*z*]:** Matches a single character from the specified range.
     -   **Example:** `[a-z]art`
     -   **Matches:** `cart | mart | tart`
     -   **Does not match:** `Cart | marT | start`
@@ -123,7 +124,7 @@ It will only apply this Security App configuration to a request when one of the 
     -   **Matches:** `Cart | Mart | tart`
     -   **Does not match:** `cart | mart | tArt`
 
-**Example:** 
+**Example:**
 
 Setting the `URL path(s)` option to the following value allows {{ PRODUCT }} {{ PRODUCT_SECURITY }} to apply this Security App configuration to any request whose URL path starts with */marketing/*: `/marketing/*`
 
@@ -150,22 +151,22 @@ The following sample request will match the above pattern:
 ## Threat Detection {/*threat-detection*/}
 
 Identify threats by adding the following rule(s) to your Security App configuration:
--   **Access Rules:** An [access rule](/guides/security/access_rules) identifies legitimate traffic and threats through access control lists.
--   **API Security Ruleset:** An [API Security rule](/guides/security/api_security) identifies threats by validating the payload of `POST`, `PUT`, and `PATCH` requests against a JSON schema.
--   **Rate Rules:** A [rate rule](/guides/security/rate_rules) defines a limit for the rate at which your content may be requested.
+-   **Access Rules:** An [access rule](/applications/security/access_rules) identifies legitimate traffic and threats through access control lists.
+-   **API Security Ruleset:** An [API Security rule](/applications/security/api_security) identifies threats by validating the payload of `POST`, `PUT`, and `PATCH` requests against a JSON schema.
+-   **Rate Rules:** A [rate rule](/applications/security/rate_rules) defines a limit for the rate at which your content may be requested.
 
-    Requests that originate from rate limited clients will not count towards the rate limit. Upon the expiration of the time period defined in the **Time period** option, we will resume counting these requests. If the client exceeds the rate limit again, then this action will be reapplied to it for the duration defined by this option. A "client" is defined by each rate rule's **Apply rate limit to** option. [Learn how rate limits are applied to clients.](/guides/security/rate_rules#how-does-it-work)
+    Requests that originate from rate limited clients will not count towards the rate limit. Upon the expiration of the time period defined in the **Time period** option, we will resume counting these requests. If the client exceeds the rate limit again, then this action will be reapplied to it for the duration defined by this option. A "client" is defined by each rate rule's **Apply rate limit to** option. [Learn how rate limits are applied to clients.](/applications/security/rate_rules#how-does-it-work)
 
--   **Bot Manager:** A [bot manager configuration](/guides/security/bot_rules) determines how bot traffic will be detected and the enforcement action that will be applied to bot traffic.
+-   **Bot Manager:** A [bot manager configuration](/applications/security/bot_rules) determines how bot traffic will be detected and the enforcement action that will be applied to bot traffic.
 
     <Callout type="info">
 
-      Bot Manager Standard is restricted to serving browser challenges. 
+      Bot Manager Standard is restricted to serving browser challenges.
 
-    </Callout> 
+    </Callout>
 
--   **Custom Rules:** A [custom rule](/guides/security/custom_rules) identifies threats using custom criteria that takes into account your site's traffic profile to avoid false positives.
--   **Managed Rules:** A [managed rule](/guides/security/managed_rules) identifies threats through threat detection policies.
+-   **Custom Rules:** A [custom rule](/applications/security/custom_rules) identifies threats using custom criteria that takes into account your site's traffic profile to avoid false positives.
+-   **Managed Rules:** A [managed rule](/applications/security/managed_rules) identifies threats through threat detection policies.
 
 <a id="enforcement-mode"></a>
 
@@ -194,7 +195,7 @@ You may apply an access, custom, or managed rule in one of the following modes:
 
 <Callout type="important">
 
-  Enabling this advanced setting has the potential to negatively impact {{ PRODUCT }} {{ PRODUCT_SECURITY }}'s ability to secure or rate limit your traffic. {{ PRODUCT }} does not validate the request header defined within the **Use Header for Client IP** option. We strongly recommend that you verify the spelling of the request header's name. You should also verify that the request header will be populated with the desired IP address(es). 
+  Enabling this advanced setting has the potential to negatively impact {{ PRODUCT }} {{ PRODUCT_SECURITY }}'s ability to secure or rate limit your traffic. {{ PRODUCT }} does not validate the request header defined within the **Use Header for Client IP** option. We strongly recommend that you verify the spelling of the request header's name. You should also verify that the request header will be populated with the desired IP address(es).
 
 </Callout>
 
@@ -221,17 +222,17 @@ The available enforcement actions are described below.
 
     <Callout type="tip">
 
-      Our recommendation for testing new configurations is to use [audit mode](#enforcement-mode) instead of applying the `Alert Only` enforcement action to a rule running in production mode.  
+      Our recommendation for testing new configurations is to use [audit mode](#enforcement-mode) instead of applying the `Alert Only` enforcement action to a rule running in production mode.
 
     </Callout>
 
     <Callout type="info">
 
-      {{ PRODUCT }} {{ PRODUCT_SECURITY }} applies a single enforcement action per mode (i.e., [production or audit](#enforcement-mode)). Once enforcement is triggered for that mode, {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further [evaluation of that request](/guides/security/waf#threat-detection). If you are setting up a rule in production mode, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.  
+      {{ PRODUCT }} {{ PRODUCT_SECURITY }} applies a single enforcement action per mode (i.e., [production or audit](#enforcement-mode)). Once enforcement is triggered for that mode, {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further [evaluation of that request](/applications/security/waf#threat-detection). If you are setting up a rule in production mode, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.
 
     </Callout>
 -   **Block Request:** Detected threats will be dropped and the client will receive a `403 Forbidden` response.
--   **Custom Response:** Rate limited requests or detected threats will receive a custom response.  
+-   **Custom Response:** Rate limited requests or detected threats will receive a custom response.
     -   **Response Body:** Define the payload that will be delivered to the client in response to a detected threat.
 
         <Callout type="tip">
@@ -331,10 +332,10 @@ The available enforcement actions are described below.
 
         </Callout>
 
--   **Drop request:** Rate rules only. Rate limited requests will be dropped and the client will receive the following response: 
- 
+-   **Drop request:** Rate rules only. Rate limited requests will be dropped and the client will receive the following response:
+
     -   **HTTP status code:** `503 Service Unavailable`
-    -   **Response header:** `Retry-After: 10 seconds` 
+    -   **Response header:** `Retry-After: 10 seconds`
 
     <Callout type="info">
 
@@ -350,7 +351,7 @@ The available enforcement actions are described below.
 
         **Example:** `http://cdn.mydomain.com/marketing/busy.html`
 
--   **Silent Close:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Drops the request without providing a response to the client. 
+-   **Silent Close:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Drops the request without providing a response to the client.
 
 ### Event Variables {/*event-variables*/}
 
@@ -366,7 +367,7 @@ variables that describe the event. These variables are described below.
 
 Add an event variable to a custom response header value or a custom response body by enclosing it with double curly braces.
 
-**Example:** 
+**Example:**
 
 `{{EVENT_ID}}`
 
@@ -374,9 +375,9 @@ Add an event variable to a custom response header value or a custom response bod
 
 Each detected threat is logged regardless of enforcement action (i.e., block, custom response, redirect, or alert). View logged threats from the **Threats**, **Bots**, **Rates**, or **Rate Enforcement** tabs of the **Security** dashboard.
 
-Sensitive data  (e.g., credit card information or passwords) can be redacted from our event logs. 
+Sensitive data  (e.g., credit card information or passwords) can be redacted from our event logs.
 
-[Learn how to redact sensitive data.](/guides/security/managed_rules#redacting-sensitive-data)
+[Learn how to redact sensitive data.](/applications/security/managed_rules#redacting-sensitive-data)
 
 ## Order of Precedence {/*order-of-precedence*/}
 
@@ -401,8 +402,8 @@ You may create, modify, and delete Security App configurations.
       The recommended approach is to apply the most restrictive policy to as much traffic as possible while causing minimal impact to data delivery.
 
     </Callout>
--   Apply [access rules](/guides/security/access_rules), [API Security](/guides/security/api_security), [rate rules](/guides/security/rate_rules), [bot manager configurations](/guides/security/bot_rules), [custom
-    rules](/guides/security/custom_rules), and [managed rules](/guides/security/managed_rules) to production traffic by adding it to a Security App configuration and then determining how it will be enforced.
+-   Apply [access rules](/applications/security/access_rules), [API Security](/applications/security/api_security), [rate rules](/applications/security/rate_rules), [bot manager configurations](/applications/security/bot_rules), [custom
+    rules](/applications/security/custom_rules), and [managed rules](/applications/security/managed_rules) to production traffic by adding it to a Security App configuration and then determining how it will be enforced.
 
     <Callout type="info">
 
@@ -438,7 +439,7 @@ You may create, modify, and delete Security App configurations.
       Enable the **Negative match** option to configure a Security App configuration to look for requests that do not match the specified value or pattern.
 
     </Callout>
-5.  Optional. Select an [access rule](/guides/security/access_rules#access-rule-administration) through which production traffic will be screened and determine how threats identified by it are handled.
+5.  Optional. Select an [access rule](/applications/security/access_rules#access-rule-administration) through which production traffic will be screened and determine how threats identified by it are handled.
 
     1.  From the **Rules** section, click **Access Rule**.
     2.  From the **Production Access Rule** option, select the desired access rule.
@@ -447,7 +448,7 @@ You may create, modify, and delete Security App configurations.
 
         [Learn more.](#enforcement)
 
-6.  Optional. [Audit production traffic](#threat-detection) using a new access rule.
+6.  Optional. [Audit production traffic](#threat-detection) using a different access rule.
     1.  From the **Rules** section, click **Access Rule**.
     2.  From the **Audit Access Rule** option, select the desired access rule.
 
@@ -463,7 +464,7 @@ You may create, modify, and delete Security App configurations.
 
     </Callout>
 
-7.  Optional. Select an [API Security ruleset](/guides/security/api_security#api-security-ruleset-administration) through which production traffic will be screened and determine how threats identified by it are handled.
+7.  Optional. Select an [API Security ruleset](/applications/security/api_security#api-security-ruleset-administration) through which production traffic will be screened and determine how threats identified by it are handled.
 
     1.  From the **Rules** section, click **API Security Rule**.
     2.  From the **Production API Security Rule** option, select the desired API Security ruleset.
@@ -471,7 +472,7 @@ You may create, modify, and delete Security App configurations.
 
         [Learn more.](#enforcement)
 
-8.  Optional. [Audit production traffic](#threat-detection) using a new API Security ruleset.
+8.  Optional. [Audit production traffic](#threat-detection) using a different API Security ruleset.
 
     1.  From the **Rules** section, click **API Security**.
     2.  From the **Audit API Security Rule** option, select the desired API Security ruleset.
@@ -488,7 +489,7 @@ You may create, modify, and delete Security App configurations.
 
     </Callout>
 
-9.  Optional. Select a [rate rule](/guides/security/rate_rules#rate-rule-administration) through which production traffic will be rate limited.
+9.  Optional. Select a [rate rule](/applications/security/rate_rules#rate-rule-administration) through which production traffic will be rate limited.
 
     1.  From the **Rules** section, click **Rate Rule**.
     2.  From the **Add Rate Rule** option, select the desired rate rule.
@@ -506,7 +507,7 @@ You may create, modify, and delete Security App configurations.
 
         <Callout type="important">
 
-          {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further [evaluation of a request](/guides/security/waf#threat-detection) once enforcement is triggered. For this reason, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.
+          {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further [evaluation of a request](/applications/security/waf#threat-detection) once enforcement is triggered. For this reason, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.
 
         </Callout>
 
@@ -523,13 +524,13 @@ You may create, modify, and delete Security App configurations.
         <Callout type="tip">
 
           Use multiple rate rules to apply different rate limits to various traffic profiles. Set up this type of configuration using either a single or multiple Security App configurations. If you assign multiple rate rules to a single
-          Security App configuration, then each rate rule should contain one or more [condition group(s)](/guides/security/rate_rules#condition-group).
+          Security App configuration, then each rate rule should contain one or more [condition group(s)](/applications/security/rate_rules#condition-group).
 
         </Callout>
 
     <a id="bot-rule-configuration"></a>
 
-10. Optional. Select a [bot manager configuration](/guides/security/bot_rules#bot-rule-administration) that identifies the set of production traffic that will be secured by Bot Manager.
+10. Optional. Select a [bot manager configuration](/applications/security/bot_rules#bot-rule-administration) that identifies the set of production traffic that will be secured by Bot Manager.
 
     1.  From the **Rules** section, click **Bot Manager**.
     2.  From the **Production Bot Rule** option, select the desired bot manager configuration.
@@ -537,10 +538,10 @@ You may create, modify, and delete Security App configurations.
 
             1.  Toggle the **reCAPTCHA off** option to **reCAPTCHA on**.
             2.  If you have not already added Google reCAPTCHA v3 to your site, [add it now](https://www.google.com/recaptcha/admin/create).
-            3.  Set the **reCAPTCHA Site Key** option to the site key provided by Google. 
+            3.  Set the **reCAPTCHA Site Key** option to the site key provided by Google.
             4.  Set the **reCAPTCHA Secret Key** option to the secret key provided by Google.
 
-11. Optional. Select a [custom rule](/guides/security/custom_rules#custom-rule-administration) through which production traffic will be screened and determine how threats identified by it are handled.
+11. Optional. Select a [custom rule](/applications/security/custom_rules#custom-rule-administration) through which production traffic will be screened and determine how threats identified by it are handled.
 
     1.  From the **Rules** section, click **Custom Rule**.
     2.  From the **Production Custom Rule** option, select the desired custom rule.
@@ -549,7 +550,7 @@ You may create, modify, and delete Security App configurations.
 
         [Learn more.](#enforcement)
 
-12. Optional. [Audit production traffic](#threat-detection) using a new custom rule.
+12. Optional. [Audit production traffic](#threat-detection) using a different custom rule.
     1.  From the **Rules** section, click **Custom Rule**.
     2.  From the **Audit Custom Rule** option, select the desired custom rule.
 
@@ -566,7 +567,7 @@ You may create, modify, and delete Security App configurations.
 
     </Callout>
 
-13. Optional. Select a [managed rule](/guides/security/managed_rules#managedruleadministration) through which production traffic will be screened and determine how threats identified by it are handled.
+13. Optional. Select a [managed rule](/applications/security/managed_rules#managedruleadministration) through which production traffic will be screened and determine how threats identified by it are handled.
 
     1.  From the **Rules** section, click **Managed Rule**.
     2.  From the **Production Managed Rule** option, select the desired managed rule.
@@ -575,7 +576,7 @@ You may create, modify, and delete Security App configurations.
 
         [Learn more.](#enforcement)
 
-14. Optional. [Audit production traffic](#threat-detection) using a new managed rule.
+14. Optional. [Audit production traffic](#threat-detection) using a different managed rule.
     1.  From the **Rules** section, click **Managed Rule**.
     2. From the **Audit Managed Rule** option, select the desired managed rule.
 
@@ -592,9 +593,20 @@ You may create, modify, and delete Security App configurations.
 
     </Callout>
 
-15. Click **Save**.
-16. Click **Accept All Changes**.
-17. Click **Save Changes**.
+15. Optional. Apply a production and audit Content Security Policy to your traffic by selecting the desired Client-Side Protection policy.
+
+    1.  From the **Rules** section, click **Client Protection**.
+    2.  From the **Select Policy** option, select the desired Client-Side Protection policy.
+    
+    <Info>
+    
+    The Client-Side Protection policy's configuration determines whether its production and audit Content Security Policy will be applied to your traffic through the `Content-Security-Policy` and `Content-Security-Policy-Report-Only` response headers, respectively. 
+    
+    </Info>
+
+16. Click **Save**.
+17. Click **Accept All Changes**.
+18. Click **Save Changes**.
 
 **To reorder Security App configurations**
 1.  Navigate to the **Security App** page.
@@ -636,11 +648,11 @@ You may create, modify, and delete Security App configurations.
 ## Version Control {/*version-control*/}
 
 Version control allows you to:
--   View a previous version of your Security App configuration. 
--   Reactivate a previous version of your Security App configuration. 
+-   View a previous version of your Security App configuration.
+-   Reactivate a previous version of your Security App configuration.
 -   Compare a previous version of your Security App configuration to the current version.
 
-An advantage of using version control is that it allows you to quickly roll back to a previously vetted configuration. For example, if you notice that a new configuration has resulted in more false positives, then you can roll back to the previous version before analyzing the data. 
+An advantage of using version control is that it allows you to quickly roll back to a previously vetted configuration. For example, if you notice that a new configuration has resulted in more false positives, then you can roll back to the previous version before analyzing the data.
 
 **To view, compare, and reactivate a previous configuration**
 
@@ -648,8 +660,8 @@ An advantage of using version control is that it allows you to quickly roll back
     {{ SECURITY_NAV }} **Security Apps**.
 2.  Click **Versions**.
 3.  Optional. Compare the current version with a previous one by clicking the <Image inline src="/images/v7/icons/diff.png" alt="Diff" /> icon next to the desired previous version. Differences between those two versions are highlighted in green (new or updated lines) and red (modified or deleted lines).
-4.  Click on the desired version to view it. 
+4.  Click on the desired version to view it.
 
     ![Version selection](/images/v7/security/version-control-version-selection-sa.png?width=750)
 
-4.  Optional. Reactivate the version selected in the previous step by clicking **Reactivate**. Click **Reactivate this version** to confirm that it will be reactivated. 
+4.  Optional. Reactivate the version selected in the previous step by clicking **Reactivate**. Click **Reactivate this version** to confirm that it will be reactivated.

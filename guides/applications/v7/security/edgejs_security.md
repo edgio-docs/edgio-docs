@@ -75,13 +75,13 @@ If you want the route to match both `http` and `https` protocols you can match o
 
 Additionally:
 
-- A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](/guides/performance/request#request-headers) request header.
+- A request's protocol can be determined by reading the [`{{ HEADER_PREFIX }}-protocol`](/applications/performance/request#request-headers) request header.
 - During local development all requests will appear secure by default. To test your router for `http` protocol matching you must either set the `local_{{ COOKIE_PREFIX }}_emulate_http_protocol` cookie to `true` (if using a browser) or send an `{{ HEADER_PREFIX }}-protocol` request header set to `http`.
 -->
 
 ## TLS Version {/*tls-version*/}
 
-We recommend that you enable TLS 1.3, 1.2, or both on your web server(s). 
+We recommend that you enable TLS 1.3, 1.2, or both on your web server(s).
 
 **Key information:**
 -   A recommended best practice is to disable support for SSL/TLS versions 1.1 or older.
@@ -102,7 +102,7 @@ We support the following HTTP protocol versions for client requests to our netwo
 ## Secrets {/*secrets*/}
 
 Rather than putting secret values such as API keys in your code and checking them into source control, you can securely
-store them in environment variables, then access them in your code from `process.env`. 
+store them in environment variables, then access them in your code from `process.env`.
 
 **To configure environment variables**
 
@@ -118,7 +118,7 @@ store them in environment variables, then access them in your code from `process
 
     ![networking](/images/security/environment-variables.png?width=700)
 
-Deploying to an environment using a deploy token pulls all environment variables and applies them to `process.env`. This allows these variables to be accessed at build time. 
+Deploying to an environment using a deploy token pulls all environment variables and applies them to `process.env`. This allows these variables to be accessed at build time.
 
 **Deploying with a deploy token example:** `{{ FULL_CLI_NAME }} deploy my-organization --environment=production --token=(my token)`
 
@@ -130,7 +130,7 @@ Use environment variables to store all of your build and runtime secrets in a si
 
 > The impact of a maliciously constructed response can be magnified if it is cached either by a web cache used by multiple users or even the browser cache of a single user. If a response is cached in a shared web cache, such as those commonly found in proxy servers, then all users of that cache will continue to receive the malicious content until the cache entry is purged.
 
-Guard against this type of attack by ensuring that all request parameters that influence content rendering are included within your [cache key](/guides/performance/caching/cache_key). 
+Guard against this type of attack by ensuring that all request parameters that influence content rendering are included within your [cache key](/applications/performance/caching/cache_key).
 
 For example, if you are rendering content based on a custom language cookie, then you must include it in your custom cache key:
 
@@ -177,7 +177,7 @@ The following table list the user agents that {{ PRODUCT_NAME }} examines and de
 | xing-contenttabreceiver | Xing social network crawler bot that indexes content for the Xing social network.                                                                                                                                                               |
 | yahoo                   | Another Yahoo Search robot for crawling and indexing web page information.                                                                                                                                                                      |
 
-If the set of bots detected by {{ PRODUCT_NAME }} is not sufficient for your needs, you can easily add your own bot detection through [EdgeJS](/guides/performance/cdn_as_code) and its [`match`](/docs/api/core/classes/router_Router.default.html#match) and [`setRequestHeader`](/docs/api/core/classes/router_RouteHelper.default.html#setRequestHeader) APIs:
+If the set of bots detected by {{ PRODUCT_NAME }} is not sufficient for your needs, you can easily add your own bot detection through [EdgeJS](/applications/performance/cdn_as_code) and its [`match`](/docs/api/core/classes/router_Router.default.html#match) and [`setRequestHeader`](/docs/api/core/classes/router_RouteHelper.default.html#setRequestHeader) APIs:
 
 ```js
 router.match(

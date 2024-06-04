@@ -1,0 +1,89 @@
+value:
+  '@id': /datasets/origin_usage_by_country
+  '@type': MetricsDataset
+  name: origin_usage_by_country
+  description: >-
+    Aggregated usage metrics with breakdown time, environment ID, user country
+    code, and origin name.
+  created_at: '2024-04-15T00:00:00Z'
+  time_granularities:
+    - FIVE_MINUTES
+    - HOUR
+    - DAY
+  data_retention_policy:
+    five_minutes: 2764800
+    hour: 8208000
+    day: 69120000
+  dimensions:
+    - name: time
+      type: DATE
+      description: The date when the request happened.
+    - name: environment_id
+      type: STRING
+      description: The environment ID.
+    - name: country_code
+      type: STRING
+      description: >-
+        The user's country code. It consists of two lowercase letters, or a
+        single hyphen '-' if the country is unknown.
+    - name: origin_name
+      type: STRING
+      description: The origin name.
+  metrics:
+    - name: requests_origin_total
+      type: NUMBER
+      description: Total number of requests to origin.
+    - name: bytes_origin_total
+      type: NUMBER
+      description: Total number of bytes sent from origin.
+    - name: ttfb_origin_ms_5_percentile
+      type: NUMBER
+      description: Origin TTFB in ms. at the 5th percentile.
+    - name: ttfb_origin_ms_25_percentile
+      type: NUMBER
+      description: Origin TTFB in ms. at the 25th percentile.
+    - name: ttfb_origin_ms_50_percentile
+      type: NUMBER
+      description: Origin TTFB in ms. at the 50th percentile.
+    - name: ttfb_origin_ms_75_percentile
+      type: NUMBER
+      description: Origin TTFB in ms. at the 75th percentile.
+    - name: ttfb_origin_ms_95_percentile
+      type: NUMBER
+      description: Origin TTFB in ms. at the 95th percentile.
+    - name: ttfb_origin_ms_99_percentile
+      type: NUMBER
+      description: Origin TTFB in ms. at the 99th percentile.
+    - name: response_time_origin_ms_5_percentile
+      type: NUMBER
+      description: Origin response time in ms. at the 5th percentile.
+    - name: response_time_origin_ms_25_percentile
+      type: NUMBER
+      description: Origin response time in ms. at the 25th percentile.
+    - name: response_time_origin_ms_50_percentile
+      type: NUMBER
+      description: Origin response time in ms. at the 50th percentile.
+    - name: response_time_origin_ms_75_percentile
+      type: NUMBER
+      description: Origin response in ms. at the 75th percentile.
+    - name: response_time_origin_ms_95_percentile
+      type: NUMBER
+      description: Origin response in ms. at the 95th percentile.
+    - name: response_time_origin_ms_99_percentile
+      type: NUMBER
+      description: Origin response in ms. at the 99th percentile.
+  filters:
+    - name: environment_id
+      type: array
+      required: true
+      description: Sets the filtering by environment id.
+    - name: country_code
+      type: array
+      required: false
+      description: >-
+        Sets the filtering by the user's country code. Supported values: two
+        lowercase letters or '-'.
+    - name: origin_name
+      type: array
+      required: false
+      description: Sets the filtering by origin name.

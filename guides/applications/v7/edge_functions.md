@@ -6,7 +6,7 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 
 **Key information:**
 
-- This article assumes that you are familiar with our [CDN-as-Code](/guides/performance/cdn_as_code) approach for defining rules.
+- This article assumes that you are familiar with our [CDN-as-Code](/applications/performance/cdn_as_code) approach for defining rules.
 - Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}
 
 {{ prereq.md }}
@@ -127,19 +127,19 @@ The edge function is passed two parameters: `request` and `context`.
 | ----------------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | `request`                           | Object          | Represents the incoming request                                                                                                                                                                                                                                 | [Request](https://developer.mozilla.org/en-US/docs/Web/API/Request)                                      |
 | `context`                           | Object          | A read-only object providing additional information about the request and your environment                                                                                                                                                                      |                                                                                                          |
-| `context.client`                    | Key-value store | The client's network information                                                                                                                                                                                                                                | `virt_` variables in [Feature Variables](/guides/performance/rules/feature_variables)                    |
-| `context.device`                    | Key-value store | The client's device capabilities                                                                                                                                                                                                                                | `wurfl_` variables in [Feature Variables](/guides/performance/rules/feature_variables)                   |
-| `context.environmentVars`           | Key-value store | Environment variables as defined in the {{ PORTAL }} (_Property_ -> _Environment_ --> **Environment Variables**)                                                                                                                                                | [Environment Variables](/guides/basics/environments#environment-variables)                               |
-| `context.geo`                       | Key-value store | The client's geo location                                                                                                                                                                                                                                       | `geo_` variables in [Feature Variables](/guides/performance/rules/feature_variables)                     |
-| `context.metrics`                   | Object          | Provides functions for injecting [metrics](#metrics-functions) into your edge function                                                                                                                                                                          | [Edge Insights - Access Logs](/guides/performance/observability/edge_insights)                           |
-| `context.origins`                   | Key-value store | Origin servers as defined in the {{ PORTAL }} (_Property_ -> _Environment_ -> **Origins**) or the `{{ CONFIG_FILE }}` file                                                                                                                                      | [Origin Configuration](/guides/basics/origins)                                                           |
-| `context.requestVars`               | Key-value store | Information about this property including values set using Set Variables                                                                                                                                                                                        | [Set Variables](/guides/performance/rules/features#set-variables)                                        |
+| `context.client`                    | Key-value store | The client's network information                                                                                                                                                                                                                                | `virt_` variables in [Feature Variables](/applications/performance/rules/feature_variables)              |
+| `context.device`                    | Key-value store | The client's device capabilities                                                                                                                                                                                                                                | `wurfl_` variables in [Feature Variables](/applications/performance/rules/feature_variables)             |
+| `context.environmentVars`           | Key-value store | Environment variables as defined in the {{ PORTAL }} (_Property_ -> _Environment_ --> **Environment Variables**)                                                                                                                                                | [Environment Variables](/applications/basics/environments#environment-variables)                         |
+| `context.geo`                       | Key-value store | The client's geo location                                                                                                                                                                                                                                       | `geo_` variables in [Feature Variables](/applications/performance/rules/feature_variables)               |
+| `context.metrics`                   | Object          | Provides functions for injecting [metrics](#metrics-functions) into your edge function                                                                                                                                                                          | [Edge Insights - Access Logs](/applications/performance/observability/edge_insights)                     |
+| `context.origins`                   | Key-value store | Origin servers as defined in the {{ PORTAL }} (_Property_ -> _Environment_ -> **Origins**) or the `{{ CONFIG_FILE }}` file                                                                                                                                      | [Origin Configuration](/applications/basics/origins)                                                     |
+| `context.requestVars`               | Key-value store | Information about this property including values set using Set Variables                                                                                                                                                                                        | [Set Variables](/applications/performance/rules/features#set-variables)                                  |
 | ~~`context.respondWith(response)`~~ | Function        | <ul><li>**{{ PRODUCT }} v7.2.3 or higher:** Deprecated. See [Responding to the Client](#responding-to-the-client).</li><li>**{{ PRODUCT }} v7.2.2 or lower:** Must be called to return the response from your edge function to the downstream client.</li></ul> | [context.respondWith(response)](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith) |
 | `context.waitUntil(promise)`        | Function        | Waits until the given promise is fulfilled                                                                                                                                                                                                                      | [context.waitUntil(promise)](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil) |
 
 ### Metrics Functions {/* metrics-functions */}
 
-Inject up to 10 metrics into your edge function through `context.metrics`. Metric data is reported through [Edge Insights](/guides/performance/observability/edge_insights) when viewing log data for the Access Logs data source. View these metrics by clicking on an entry within the **Logs** section and then looking for `Edge Function Customer Metric #` log fields.
+Inject up to 10 metrics into your edge function through `context.metrics`. Metric data is reported through [Edge Insights](/applications/performance/observability/edge_insights) when viewing log data for the Access Logs data source. View these metrics by clicking on an entry within the **Logs** section and then looking for `Edge Function Customer Metric #` log fields.
 
 | Function                                           | Description                                                                            |
 | -------------------------------------------------- | -------------------------------------------------------------------------------------- |
@@ -272,8 +272,8 @@ export async function handleHttpRequest(request, context) {
 ```
 
 <Callout type="important">
- 
-  As of v7.2.3, the `context.respondWith()` function is deprecated. You must return a `Response` object or a `Promise` that resolves to a `Response` object to respond to the client.
+
+As of v7.2.3, the `context.respondWith()` function is deprecated. You must return a `Response` object or a `Promise` that resolves to a `Response` object to respond to the client.
 
 </Callout>
 
@@ -307,7 +307,7 @@ module.exports = {
 };
 ```
 
-Learn more about origin configuration in our [CDN-as-Code](/guides/performance/cdn_as_code#config-file) guide.
+Learn more about origin configuration in our [CDN-as-Code](/applications/performance/cdn_as_code#config-file) guide.
 
 Request a resource from an origin by passing two required arguments to the `fetch()` function. Set the first argument to a URL or a `Request` object. Set the second argument to the name of the origin and any additional options compatible with the `fetch()` function.
 
@@ -391,9 +391,77 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
+### {{ PRODUCT_LOWER }}\_self Origin {/* edgio-self-origin */}
+
+The origin `{{ PRODUCT_LOWER }}_self` is a system-defined origin, referencing the current environment, used to fetch resources from the same property. This origin is particularly useful for composing complex behaviors where different resources within the same property need to interact with each other. When making a fetch request to the `{{ PRODUCT_LOWER }}_self` origin, the request undergoes the same processing steps as an incoming request from the client, including the application of rules and transformations specific to the requested path.
+
+Consider the following scenario where an incoming request is made to `/products`, which is handled by an edge function to fetch another resource `/promotions` on the same environment:
+
+```js filename="routes.js"
+import {Router} from '@edgio/core/router';
+
+export default new Router()
+  // Incoming requests for `/products` are handled by an edge function
+  .get('/products', {
+    edge_function: './edge-functions/products.js',
+  })
+
+  // Incoming requests for `/promotions` are proxied to the origin server
+  .get('/promotions', {
+    origin: {
+      set_origin: 'web',
+    },
+  });
+```
+
+```js filename="./edge-functions/products.js"
+export async function handleHttpRequest(request, context) {
+  // Fetch the promotions resource from the same property
+  const promosUrl = new URL('/promotions', request.url);
+  const resp = await fetch(promosUrl, {
+    edgio: {
+      origin: 'edgio_self',
+    },
+  });
+
+  // handle the response as needed (e.g., apply sale promotions to products)
+  /* ... */
+
+  // return the response to the client
+  return resp;
+}
+```
+
+1. **Incoming Request for `/products`:**
+
+   - The incoming request matches the `/products` route and is handled by the edge function.
+   - The edge function is invoked, which is configured to fetch another resource `/promotions` on the same property.
+
+2. **Internal Fetch to `/promotions`:**
+
+   - The edge function makes an internal fetch to`/promotions` as instructed by the `edgio_self` origin.
+   - The incoming request for `/promotions` is processed by the corresponding route.
+   - Applicable incoming request rules are applied.
+   - The request is then forwarded to the origin server.
+   - The origin server processes the request and returns a response.
+   - Applicable response rules for `/promotions` are applied.
+   - The response is then sent back to the edge function.
+
+3. **Returning the Final Response:**
+   - The edge function receives the response for `/promotions`.
+   - It may further process this response and then generates its own response.
+   - Applicable response rules for `/products` are applied.
+   - Finally, the response for `/products` is sent back to the client.
+
+#### Key Points
+
+- The `edgio_self` origin instructs edge functions to send fetch requests to itself.
+- This capability is particularly useful for composing complex behaviors where different resources within the same property need to interact with each other.
+- It ensures that each request, whether it's an initial browser request or an internally generated fetch from an edge function, undergoes the appropriate set of rules and processing steps configured for its specific path.
+
 ### Caching fetch() Requests {/* caching-fetch-requests */}
 
-See the [Edge Function Caching](/guides/edge_functions/caching) guide for more information on caching origin fetch requests.
+See the [Edge Function Caching](/applications/edge_functions/caching) guide for more information on caching origin fetch requests.
 
 ### Compressed Responses {/* compressed-responses */}
 

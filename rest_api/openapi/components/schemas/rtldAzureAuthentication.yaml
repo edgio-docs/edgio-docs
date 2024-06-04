@@ -1,0 +1,8 @@
+title: Azure Authentication Object
+description: Authentication for Azure
+type: object
+required:
+  - type
+properties:
+  type:
+    type: string

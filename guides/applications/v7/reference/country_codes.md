@@ -1,12 +1,16 @@
 ---
-title: Country Codes
+title: Country and Country Subdivision Codes
 ---
 
-ISO 3166 country codes are supported by:
+{{ PRODUCT }} identifies countries and country subdivisions (e.g., states or provinces) through [country codes](#country-codes) and [country subdivision codes](#country-subdivision-codes), respectively.
 
--   **Rules:** [Country match condition](/guides/performance/rules/conditions#country)
+## Country Codes {/*country-codes*/}
+
+ISO-3166 country codes are supported by:
+
+-   **Rules:** [Country match condition](/applications/performance/rules/conditions#country)
 -   **CDN-as-code:** [location.country condition](/docs/api/core/interfaces/types.RulesVariables.html#location)
--   **Web Application Firewall:** [Access Rules](/guides/security/access_rules), [Rate Rules](/guides/security/rate_rules), [Bot Manager](/guides/security/bot_rules), [Custom Rules](/guides/security/custom_rules), and [Dashboard](/guides/security/dashboard)
+-   **Web Application Firewall:** [Access Rules](/applications/security/access_rules), [Rate Rules](/applications/security/rate_rules), [Bot Manager](/applications/security/bot_rules), [Custom Rules](/applications/security/custom_rules), and [Dashboard](/applications/security/dashboard)
 
 <Callout type="info">
 
@@ -23,14 +27,14 @@ ISO 3166 country codes are supported by:
 | AD   | Andorra                      |
 | AO   | Angola                       |
 | AI   | Anguilla                     |
-| A1   | Anonymous Proxy <br /><br /><Callout type="info">This country code identifies a set of IP addresses used by specific anonymizers or VPN services. These types of services may be used to circumvent IP geolocation restrictions. This country code does not provide complete coverage of all proxied traffic. Rather, it identifies traffic for specific legal anonymous proxies.</Callout> |
-| A2   | Satellite Provider <br /><br /><Callout type="info">This country code identifies a set of IP addresses used by Satellite ISPs to provide Internet service to multiple countries (e.g., Nigeria and Ghana).</Callout> |
+| <a id="anonymous-proxy" />A1   | Anonymous Proxy <br /><br /><Callout type="info">This country code identifies a set of IP addresses used by specific anonymizers or VPN services. These types of services may be used to circumvent IP geolocation restrictions. This country code does not provide complete coverage of all proxied traffic. Rather, it identifies traffic for specific legal anonymous proxies.</Callout> |
+|  <a id="satellite-provider" />A2   | Satellite Provider <br /><br /><Callout type="info">This country code identifies a set of IP addresses used by Satellite ISPs to provide Internet service to multiple countries (e.g., Nigeria and Ghana).</Callout> |
 | AQ   | Antarctica                   |
 | AG   | Antigua and Barbuda          |
 | AR   | Argentina                    |
 | AM   | Armenia                      |
 | AW   | Aruba                        |
-| AP   | Asia/Pacific Region <br /><br /><Callout type="info">This country code identifies a small subset of IP addresses for the Asia/Pacific region. <br />[Learn more.](#regions) </Callout>  | 
+|  <a id="asia-pacific-region" />AP   | Asia/Pacific Region <br /><br /><Callout type="info">This country code identifies a small subset of IP addresses for the Asia/Pacific region. <br />[Learn more.](#regions) </Callout>  |
 | AU   | Australia                    |
 | AT   | Austria                      |
 | AZ   | Azerbaijan                   |
@@ -87,7 +91,7 @@ ISO 3166 country codes are supported by:
 | ER   | Eritrea                      |
 | EE   | Estonia                      |
 | ET   | Ethiopia                     |
-| EU   | Europe  <br /><br /><Callout type="info">This country code identifies a small subset of European IP addresses. <br />[Learn more.](#regions) </Callout>|
+| <a id="europe" />EU   | Europe  <br /><br /><Callout type="info">This country code identifies a small subset of European IP addresses. <br />[Learn more.](#regions) </Callout>|
 | FK   | Falkland Islands (Malvinas)  |
 | FO   | Faroe Islands                |
 | FJ   | Fiji                         |
@@ -262,6 +266,37 @@ ISO 3166 country codes are supported by:
 | ZM   | Zambia                       |
 | ZW   | Zimbabwe                     |
 
-## Regions {/*regions*/}
+### Region-Specific Country Codes {/*regions*/}
 
 {{ PRODUCT }} identifies the location from which a client requests your content through the client's IP address. However, certain IP addresses are not specific to a particular country, rather they are spread out over an entire region (i.e., Europe or Asia/Pacific). Requests that originate from these types of IP addresses are identified by a region-specific code instead of a country code. Region-specific codes identify requests for which a country of origin is unknown. Additionally, these codes represent a small subset of IP addresses in that region.
+
+Country codes that identify a region are listed below.
+
+-   **A1:** [Anonymous Proxy](#anonymous-proxy)
+-   **A2:** [Satellite Provider](#satellite-provider)
+-   **AP:** [Asia/Pacific Region](#asia-pacific-region)
+-   **EU:** [Europe](#europe)
+
+## Country Subdivision Codes {/*country-subdivision-codes*/}
+
+Country subdivision codes identify a country's subdivision (e.g., state or province). These codes are compatible with:
+
+-   **Rules:** [Region Code match condition](/applications/performance/rules/conditions#region-code)
+
+    **Syntax:** Specify a region using the subdivision code from an [ISO-3166-2 code](https://www.iso.org/obp/ui/#search/code/).
+
+    `<Country Code>`-`<Subdivision Code>`
+    
+    **Example:**
+
+    The ISO-3166-2 code for California is `US-CA`. Therefore, the subdivision code for California is `CA`.
+
+-   **Web Application Firewall:** [Access Rules](/applications/security/access_rules#country-subdivision--iso3166-2-) and [Custom Rules](/applications/security/custom_rules#country-subdivision--iso3166-2-)
+
+    **Syntax:** Specify each desired subdivision using an [ISO-3166-2 code](https://www.iso.org/obp/ui/#search/code/).
+
+    `<Country Code>`-`<Subdivision Code>`
+
+    **Example:**
+
+    Identify requests from California through the `US-CA` code.

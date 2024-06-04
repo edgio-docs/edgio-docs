@@ -1,5 +1,5 @@
-import {Content, HeroContainer, StyledContainer} from 'components/Home/Hero';
-import SearchComponent from 'components/Home/SearchComponent';
+import {Content, HeroContainer, StyledContainer} from 'components/Hero';
+import SearchComponent from 'components/SearchComponent';
 
 export function ApplicationsHero() {
   return (

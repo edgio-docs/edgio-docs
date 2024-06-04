@@ -7,29 +7,28 @@ import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 
-import {IconAngular} from '../Icon/IconAngular';
-import {IconAppsSites, IconAppsSitesDark} from '../Icon/IconAppsSites';
-import {IconAstro, IconAstroDark} from '../Icon/IconAstro';
-import {IconEmberJS} from '../Icon/IconEmberJS';
-import {IconGatsby} from '../Icon/IconGatsby';
-import {IconNextJS, IconNextJSDark} from '../Icon/IconNextJS';
+import {StyledFeatureSection} from '../../FeatureSection';
+import {IconAngular} from '../../Icon/IconAngular';
+import {IconAppsSites, IconAppsSitesDark} from '../../Icon/IconAppsSites';
+import {IconAstro, IconAstroDark} from '../../Icon/IconAstro';
+import {IconEmberJS} from '../../Icon/IconEmberJS';
+import {IconGatsby} from '../../Icon/IconGatsby';
+import {IconNextJS, IconNextJSDark} from '../../Icon/IconNextJS';
 import {
   IconNextJSCommerce,
   IconNextJSCommerceDark,
-} from '../Icon/IconNextJSCommerce';
-import {IconNuxt} from '../Icon/IconNuxt';
-import {IconPreact} from '../Icon/IconPreact';
-import {IconReact} from '../Icon/IconReact';
-import {IconReactStatic} from '../Icon/IconReactStatic';
-import {IconRedwood} from '../Icon/IconRedwood';
-import {IconRemix, IconRemixDark} from '../Icon/IconRemix';
-import {IconServerlessFunctions} from '../Icon/IconServerlessFunctions';
-import {IconSolidJS} from '../Icon/IconSolidJS';
-import {IconSvelte} from '../Icon/IconSvelte';
-import {IconVue} from '../Icon/IconVue';
-
-import {StyledFeatureSection} from './FeatureSection';
-import SectionHeader from './SectionHeader';
+} from '../../Icon/IconNextJSCommerce';
+import {IconNuxt} from '../../Icon/IconNuxt';
+import {IconPreact} from '../../Icon/IconPreact';
+import {IconReact} from '../../Icon/IconReact';
+import {IconReactStatic} from '../../Icon/IconReactStatic';
+import {IconRedwood} from '../../Icon/IconRedwood';
+import {IconRemix, IconRemixDark} from '../../Icon/IconRemix';
+import {IconServerlessFunctions} from '../../Icon/IconServerlessFunctions';
+import {IconSolidJS} from '../../Icon/IconSolidJS';
+import {IconSvelte} from '../../Icon/IconSvelte';
+import {IconVue} from '../../Icon/IconVue';
+import SectionHeader from '../../SectionHeader';
 
 const items = {
   '4': [

@@ -7,13 +7,12 @@ import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 import {StringMap} from 'utils/Types';
 
+import {StyledFeatureSection} from '../../FeatureSection';
 import {
   IconAppsReference,
   IconAppsReferenceDark,
-} from '../Icon/IconAppsReference';
-
-import {StyledFeatureSection} from './FeatureSection';
-import SectionHeader from './SectionHeader';
+} from '../../Icon/IconAppsReference';
+import SectionHeader from '../../SectionHeader';
 
 const StyledComp = styled(StyledFeatureSection)``;
 const items = (config: StringMap) => ({

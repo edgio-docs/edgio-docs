@@ -5,7 +5,7 @@ import {headerImagePaths as imagePaths} from 'config/appConfig';
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 
-import {NavMobile} from '../navigation';
+import {NavMobile} from '../SidebarNav';
 
 const MobileHeaderContainer = styled.header`
   position: sticky;

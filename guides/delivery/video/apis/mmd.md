@@ -9,8 +9,8 @@ This documentation is intended for programmers who are writing client or server 
 | --- | --- |
 | Query | [Get information on all slots in an account](#get-all-slots)<br />[Get information on a specific slot](#get-specific-slot)<br />[Get the streaming status of a slot](#get-streaming-status)<br />[Get overview information for an account's slots](#get-overview-information-for-slots)<br />[Get information about a recording schedule](#recording-schedules-get)<br />[Get information about all recording schedules](#recording-schedules-get-all) |
 | Create | [Create a slot](#create-slot)<br />[Create a recording schedule](#create-a-recording-schedule) |
-| Update | [Update an existing recording schedule](#update-an-existing-recording-schedule) |
-| Delete | [Delete a slot](#delete-a-slot)<br />[Delete a recording schedule](#delete_a_slot) |
+| Update | [Update an existing recording schedule](#update-a-recording-schedule) |
+| Delete | [Delete a slot](#delete-a-slot)<br />[Delete a recording schedule](#delete-a-slot) |
 
 Resources about the above bullet points are described further in [Data Resources](#data-sources).
 

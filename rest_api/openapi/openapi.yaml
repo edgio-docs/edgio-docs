@@ -576,11 +576,11 @@ paths:
   /alerts:
     $ref: paths/alerts.yaml
     servers:
-      - url: 'https://edgioapis.com/rts/v1'
+      - url: 'https://edgioapis.com/real-time-stats/v1'
   /alerts/{id}:
     $ref: paths/alerts_{id}.yaml
     servers:
-      - url: 'https://edgioapis.com/rts/v1'
+      - url: 'https://edgioapis.com/real-time-stats/v1'
   /accesslogs/profiles:
     $ref: paths/accesslogs_profiles.yaml
     servers:

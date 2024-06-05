@@ -200,3 +200,25 @@ Monitor violations for all Client-Side Protection policies from the **Report** s
     ![Client-Side Protection - Report - Time period](/images/v7/security/client-side-protection-report-time-period.png)
 
 -   View additional information about the request by clicking on the `Details` link.
+
+## Best Practices for Multiple Properties {/*best-practices-for-multiple-properties*/}
+
+Setting up Client-Side Protection for multiple properties introduces complexity due to existing Content-Security Policies (CSPs). Simplify this configuration through the following procedure:
+
+1.  Track each origin server that defines a CSP. Note the CSP that it sets.
+2.  Set up a strict audit Client-Side Protection policy and apply it to one of your properties. 
+
+    -   The default settings for a new Client-Side Protection policy creates a strict audit configuration. 
+    -   Apply your Client-Side Protection policy to one of your properties by restricting its Security Application configuration to the set of hostnames associated with that property. 
+    -   The purpose of this strict policy is to identify the assets being loaded by your site. 
+
+3.  Define a production policy within the above Client-Side Protection policy. 
+
+    -   This production policy should allow all of the resources associated with the property identified in step 2 to be loaded. If an origin server associated with this property sets a CSP, then your initial configuration should use that CSP.
+    -   Make sure that the **Status** option remains disabled. This allows us to collect logs without enforcing your CSP.
+    -   Enable the **Overwrite Origin** option.
+
+4.  After 24 hours have passed, review logs and adjust your production policy as needed.
+5.  Once you have optimized your production policy, you should enable the **Status** option.
+6.  Identify all properties that should use this CSP. Update the Security Application configuration to include the hostnames associated with those properties.  
+7.  For all remaining properties, develop and apply separate policies by performing steps 2 - 6.

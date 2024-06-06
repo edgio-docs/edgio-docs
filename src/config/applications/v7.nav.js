@@ -28,16 +28,8 @@ const nav = {
               path: 'basics/properties/create_self_hosted',
             },
             {
-              title: `Create using CLI`,
-              path: 'basics/properties/create_using_cli',
-            },
-            {
-              title: 'Create from Template',
-              path: 'basics/properties/create_from_template',
-            },
-            {
-              title: `Create from GitHub`,
-              path: 'basics/properties/create_from_github',
+              title: 'Create Edgio-Hosted Property',
+              path: 'basics/properties/create_edgio_hosted',
             },
           ],
         },

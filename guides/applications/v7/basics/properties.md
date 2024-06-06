@@ -34,10 +34,27 @@ By default, hostname(s) defined during property creation are assigned to the fir
 
 The {{ PORTAL }} offers several methods to set up a new property, designed to accommodate different needs and deployment workflows. This streamlined configuration allows for quick deployment from a variety of starting points.
 
-- [Create Self-Hosted Property](basics/properties/create_self_hosted): Place {{ PRODUCT }} in front of your current self-hosted site to leverage {{ PRODUCT }}'s features.
-- [Create using CLI](basics/properties/create_using_cli): Ideal for users who prefer to integrate {{ PRODUCT }} directly with their existing setups using the Command Line Interface.
-- [Create from Template](basics/properties/create_from_template): Allows users to deploy a new website by selecting from a variety of example projects, such as Next.js or Remix.
-- [Create from GitHub](basics/properties/create_from_github): Connect your existing GitHub project with {{ PRODUCT }} to facilitate automated deployments and enable branch previews.
+- [Create Self-Hosted Property](basics/properties/create_self_hosted):
+
+  Place {{ PRODUCT }} in front of your current self-hosted site to leverage {{ PRODUCT }}'s features.
+
+- [Create {{PRODUCT}}-Hosted Property](basics/properties/create_edgio_hosted):
+
+  Deploy a new property using an {{ PRODUCT }} template, connect an existing site hosted on GitHub, or use the {{ PRODUCT }} CLI to create and manage your property.
+
+### Rename a Property {/* rename-property */}
+
+1.  From the {{ PORTAL_LINK }}, click on the desired property.
+2.  Click **Settings**.
+3.  From the **Rename property "&lt;PROPERTY>"** section, set the **New Name** option to the desired name.
+4.  Click **Save**.
+
+### Delete a Property {/* delete-property */}
+
+1.  From the {{ PORTAL_LINK }}, click on the desired property.
+2.  Click **Settings**.
+3.  From the **Delete property** section, mark the **Confirm that I want to delete the property "&lt;PROPERTY>".** option.
+4.  Click **Delete Property**.
 
 <!--
 <a id="transfer-ownership" />

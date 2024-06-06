@@ -24,7 +24,7 @@
     "start": "next start",
     "postinstall": "is-ci || (husky install .husky)",
     "check-all": "npm-run-all prettier lint:fix tsc",
-    "clean": "rimraf node_modules && yarn",
+    "clean": "rimraf node_modules .edgio .next && yarn",
     "update-template-tables": "python3 scripts/md-tables-to-json.py",
     "validate-links": "node scripts/validateGuideLinks.js",
     "sitemap": "next-sitemap",

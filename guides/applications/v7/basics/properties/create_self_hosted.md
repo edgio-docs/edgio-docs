@@ -2,8 +2,6 @@
 title: Create a Self-Hosted Property
 ---
 
-## Create a Self-Hosted Property {/* create-self-hosted-property */}
-
 Use this method if you have an existing website hosted on your servers and want to leverage {{ PRODUCT }}'s features like caching, security, and performance optimizations. This method is ideal for users who want to place {{ PRODUCT }} in front of their current self-hosted site.
 
 **To create a property**

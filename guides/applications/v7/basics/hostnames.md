@@ -41,6 +41,7 @@ On a per environment-basis, define each hostname that will be served through {{ 
 -   Once you are ready to serve traffic through {{ PRODUCT }}, update the hostname's [DNS configuration](/applications/basics/serving_traffic) to point to our service.
 
     If your hostname is at the zone apex (e.g., example.com), then you will need a DNS service provider that supports defining a CNAME record at the zone apex. [Learn how to set this up through Route.](/applications/basics/serving_traffic#serving-traffic-at-the-zone-apex)
+-   It is strongly recommended to point your DNS away from {{ PRODUCT }} for hostnames that are no longer registered within your account. For example, this may occur when you modify or delete a hostname. [Learn more about hostname offboarding.](#hostname-offboarding)
 
 **To add, modify, or delete hostnames from an environment through the {{ PORTAL }}** <a id="add-modify-delete-hostname"></a>
 
@@ -117,3 +118,18 @@ Each hostname requires the installation of a [TLS certificate](/applications/sec
         **Example:** `_acme-challenge.cdn.example.com. CNAME _acme-challenge.xdn-validation.com.`
 
 -   **Bring Your Own Certificate (BYOC):** [Upload your own TLS certificate](/applications/security/tls_certificates#uploading-your-certificate).
+
+## Hostname Offboarding {/*hostname-offboarding*/}
+
+Any of the following actions will disassocate a hostname from your account:
+
+-   Deleting a hostname.
+-   Renaming a hostname. This action deregisters the original hostname and registers a new hostname. 
+-   Account deactivation. This may occur in response to a failure to provide payment within a reasonable time frame. 
+
+A best practice for deregistered hostnames is to perform either of the following actions through your DNS service provider:
+
+-   Update the corresponding CNAME record to point away from our service.
+-   Remove the corresponding CNAME record from the DNS zone.
+
+Take this action to reduce your risk exposure.

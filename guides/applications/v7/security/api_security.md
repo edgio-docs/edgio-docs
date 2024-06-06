@@ -160,7 +160,7 @@ An API schema is a JSON schema that describes the structure for a valid API payl
 
 #### JSON Schema Syntax {/*json-schema-syntax*/}
 
-The JSON Schema site provides [guidance and examples on how to define a JSON schema](https://json-schema.org/understanding-json-schema/index.html). {{ PRODUCT }} restricts syntax support as follows:
+The [JSON Schema site](https://json-schema.org) provides guidance and examples on how to define a JSON schema. {{ PRODUCT }} restricts syntax support as follows:
 -   {{ PRODUCT }} does not consider a number  with a zero fractional part (e.g., *1.0*, or *42.0*) an integer.
 -   {{ PRODUCT }} ignores the `$schema` keyword.
 -   Specify `exclusiveMaximum` and `exclusiveMinimum` as integers.

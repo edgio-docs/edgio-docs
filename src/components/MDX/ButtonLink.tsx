@@ -83,7 +83,7 @@ export default function ButtonLink({
   const {themedValue} = useTheme();
   return (
     <StyledButtonLink {...{type, variant}}>
-      <Link href={href} passHref>
+      <Link href={href} passHref legacyBehavior>
         <a target="_blank">
           {withIcon && (
             <div className="icon-wrap">

@@ -18,7 +18,7 @@ export const sections: HomepageSectionGroup[] = [
         items: [
           {
             title: 'Getting Started',
-            path: 'getting_started',
+            path: '/applications/getting_started',
           },
           {
             title: 'Properties',
@@ -177,17 +177,16 @@ export const sections: HomepageSectionGroup[] = [
         ],
       },
       {
-        title: 'Develop',
-        path: 'develop',
+        title: 'REST API',
+        path: 'rest_api',
         items: [
           {
-            title: 'REST API',
-            path: '/rest_api/',
-            external: true,
+            title: 'Authentication',
+            path: '/applications/rest_api/authentication',
           },
           {
-            title: 'EdgeJS API',
-            path: '/docs/v7.x/api/core/',
+            title: 'REST API Reference',
+            path: '/rest_api/',
             external: true,
           },
         ],

@@ -140,6 +140,10 @@ const nav = {
               title: 'edgio.config.js Configuration',
               path: 'performance/cdn_as_code/edgio_config',
             },
+            {
+            title: 'CLI',
+            path: 'performance/cdn_as_code/cli',
+            },
           ],
         },
         {
@@ -488,6 +492,10 @@ const nav = {
               path: 'sites_frameworks/getting_started/react',
             },
             {
+              title: 'Remix',
+              path: 'sites_frameworks/getting_started/remix',
+            },
+            {
               title: 'SvelteKit',
               path: 'sites_frameworks/getting_started/sveltekit',
             },
@@ -633,53 +641,27 @@ const nav = {
       ],
     },
     {
-      title: 'Develop',
-      path: 'develop',
+      title: 'REST API',
+      path: 'rest_api',
       icon: 'code-plain',
       routes: [
         {
-          title: 'CLI',
-          path: 'develop/cli',
+          title: 'Authentication',
+          path: 'rest_api/authentication',
         },
         {
-          title: 'REST API',
-          path: 'develop/rest_api',
-          routes: [
-            {
-              title: 'Authentication',
-              path: 'develop/rest_api/authentication',
-            },
-            {
-              title: 'Using the Metrics REST API',
-              path: 'develop/rest_api/metrics_rest_api_usage',
-            },
-            {
-              title: 'REST API Reference',
-              path: '/rest_api/',
-              external: true,
-            },
-            separator,
-            {
-              title: 'Legacy Purge (Clear-Cache)',
-              path: 'develop/rest_api/cache_purge',
-            },
-          ],
+          title: 'Using the Metrics REST API',
+          path: 'rest_api/metrics_rest_api_usage',
         },
         {
-          title: 'EdgeJS API Reference',
-          path: 'develop/packages',
-          routes: [
-            {
-              title: '@edgio/core',
-              path: '/docs/v7.x/api/core/',
-              external: true,
-            },
-            {
-              title: '@edgio/prefetch',
-              path: '/docs/v7.x/api/prefetch/',
-              external: true,
-            },
-          ],
+          title: 'REST API Reference',
+          path: '/rest_api/',
+          external: true,
+        },
+        separator,
+        {
+          title: 'Legacy Purge (Clear-Cache)',
+          path: 'rest_api/cache_purge',
         },
       ],
     },
@@ -734,7 +716,7 @@ const nav = {
         },
         {
           title: 'CLI',
-          path: 'develop/cli#commands',
+          path: 'performance/cdn_as_code/cli#commands',
         },
         separator,
         {
@@ -744,7 +726,7 @@ const nav = {
         },
         {
           title: 'Legacy Purge API',
-          path: 'develop/rest_api/cache_purge',
+          path: 'rest_api/cache_purge',
         },
         separator,
         {

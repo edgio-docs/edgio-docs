@@ -424,18 +424,23 @@ export default function FrameworkGuides() {
                   ) : (
                     <div className="dot" />
                   )}
-                  <Link href={toVersionedPath(path)}>{title}</Link>
+                  <Link href={toVersionedPath(path)} legacyBehavior>
+                    {title}
+                  </Link>
                 </li>
               ))}
               {index === routesByColumns.length - 1 &&
                 routesByColumns.length > 2 && (
                   <li className="route-list__item">
-                    <Link href={toVersionedPath(sitesGettingStarted)} passHref>
-                      <a>
+                    <Link
+                      href={toVersionedPath(sitesGettingStarted)}
+                      passHref
+                      legacyBehavior>
+                      <>
                         <div className="dot" />
                         <span>View all supported</span>
                         <IconArrow displayDirection="right" />
-                      </a>
+                      </>
                     </Link>
                   </li>
                 )}

@@ -72,8 +72,8 @@ function Accordion({
             <Image
               src={'foo'}
               alt={route.icon}
-              width="16px"
-              height="16px"
+              width="16"
+              height="16"
               priority
             />,
             `/icons/${route.icon}-dark.svg`,
@@ -117,7 +117,8 @@ function Accordion({
             <Link
               href={toVersionedPath(route.path)}
               className="sidenav-link"
-              data-depth={depth}>
+              data-depth={depth}
+              legacyBehavior>
               {childElement}
             </Link>
           )

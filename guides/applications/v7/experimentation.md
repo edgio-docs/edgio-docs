@@ -55,7 +55,7 @@ An experiment:
 
 A single experiment with three variants is illustrated below.
 
-![Experimentation](/images/v7/experimentation-components.png?width=950)
+![Experimentation](/images/v7/experimentation/components.png?width=950)
 
 
 ### Criteria {/*criteria*/}
@@ -102,7 +102,7 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 
 2.  Click **+ Add Experiment**. A blank experiment configuration will appear.
 
-    ![Experimentation](/images/v7/experimentation-blank.png?width=450)
+    ![Experimentation](/images/v7/experimentation/blank.png?width=450)
 
 3.  From the **Name** option, assign a name to the experiment.
 
@@ -115,7 +115,7 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 
         For example, you may identify requests by HTTP method, path, or request headers.
 
-        ![Experimentation](/images/v7/experimentation-add-condition.png?width=350)
+        ![Experimentation](/images/v7/experimentation/add-condition.png?width=350)
 
     3.  Define how a request will be compared against a value or state. In some cases, this involves selecting a [comparison operator](/applications/performance/rules/operators) and defining the value that will be compared against the request.
     4.  Click **Add Condition**.
@@ -145,7 +145,7 @@ You may create, enable, disable, and delete experiments. You may also adjust the
 
         Your configuration should now look similar to this one:
 
-        ![Experimentation](/images/v7/experimentation-variants.png?width=350)
+        ![Experimentation](/images/v7/experimentation/variants.png?width=350)
 
     5.  Optional. Add and configure another variant. Repeat this step as needed.
 
@@ -274,3 +274,65 @@ The `server-timing` response header tracks the variants assigned to a client. It
 **Sample Server-Timing Response Header:**
 
 `edgio_cache;desc=UNCACHEABLE,edgio_pop;desc=lac,edgio_country;desc=US,experiments;desc=%7B%22myexperiment_1695661110792%22%3A%22altlandingpage_1695661135500%22%7D`
+
+### Metadata Script {/*metadata-script*/}
+
+The following shell script submits 10 requests to a sample Experimentation site that splits traffic between the following sites:
+
+-   80% of requests are sent to the [Full-Featured sample site](https://edgio-community-examples-v7-full-featured-perfor-f74158.edgio.link/)
+-   20% of requests are sent to the [Simple sample site](https://edgio-community-examples-v7-simple-performance-live.edgio.link/)
+
+The output for this script includes:
+
+-   The value for the `Server-Timing` response header. This value identifies the variant assigned to the request.
+-   The `{{ HEADER_PREFIX }}-experiments` cookie. This value determines the variant that will be served to the client.
+
+```bash
+#!/bin/bash
+
+# Function to extract the value of a header from response
+extract_header() {
+    echo "$1" | grep -i "^$2:" | awk '{print substr($0, index($0,$2))}'
+}
+
+# Function to perform curl request and process the response
+curl_and_process() {
+    local response=$(curl -s -D - "https://edgio-community-examples-entry.glb.edgio.link/" -o /dev/null)
+    local server_timing=$(extract_header "$response" "Server-Timing")
+    local cookies=$(extract_header "$response" "Set-Cookie")
+    local x_edg_experiment_cookie=$(echo "$cookies" | awk -F';' '{for(i=1; i<=NF; i++) if ($i ~ /x-edg-experiments=/) print $i}' | sed 's/^.*x-edg-experiments=//')
+
+    echo "Server-Timing: $server_timing"
+    echo "x-edg-experiments: $x_edg_experiment_cookie"
+}
+
+# Perform 10 curls and process each response
+for i in {1..10}; do
+    echo "Response $i:"
+    curl_and_process
+    echo "------------------------"
+done
+```
+
+<Tip>
+
+Run the above script on your own site by updating the URL in the above curl request to a URL that points to your experiment.
+
+</Tip>
+
+**Sample output:**
+
+| Request # | X-Edg-Experiments | Server-Timing                                                                           |
+| --------- | ----------------- | --------------------------------------------------------------------------------------- |
+| 1         | 60                | ... desc=%7B%22Performance_Site_1715124149014%22%3A%22Full_Featured_1715124111690%22%7D |
+| 2         | 6                 | ... desc=%7B%22Performance_Site_1715124149014%22%3A%22Full_Featured_1715124111690%22%7D |
+| 3         | 79                | ... desc=%7B%22Performance_Site_1715124149014%22%3A%22Full_Featured_1715124111690%22%7D |
+| 4         | 23                | ... desc=%7B%22Performance_Site_1715124149014%22%3A%22Full_Featured_1715124111690%22%7D |
+| 5         | 43                | ... desc=%7B%22Performance_Site_1715124149014%22%3A%22Full_Featured_1715124111690%22%7D |
+| 6         | 57                | ... desc=%7B%22Performance_Site_1715124149014%22%3A%22Full_Featured_1715124111690%22%7D |
+| 7         | 5                 | ... desc=%7B%22Performance_Site_1715124149014%22%3A%22Full_Featured_1715124111690%22%7D |
+| 8         | 24                | ... desc=%7B%22Performance_Site_1715124149014%22%3A%22Full_Featured_1715124111690%22%7D |
+| 9         | 84                | ... desc=%7B%22Performance_Site_1715124149014%22%3A%22Simple_1715124128520%22%7D        |
+| 10        | 86                | ... desc=%7B%22Performance_Site_1715124149014%22%3A%22Simple_1715124128520%22%7D        |
+
+The last two requests were assigned the Simple sample site variant since they were assigned a value of 84 and 86, respectively.

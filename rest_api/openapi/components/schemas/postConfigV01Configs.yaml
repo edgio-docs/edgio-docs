@@ -1,7 +1,3 @@
-required:
-  - environment_id
-  - hostnames
-  - origins
 type: object
 properties:
   environment_id:
@@ -25,10 +21,20 @@ properties:
   experiments:
     type: array
     description: List of experiments.
-    example:
-      - {}
     items:
       type: string
+    example:
+      - {}
+  purge_cache_on_deploy:
+    type: boolean
+    description: >
+      Overwrite the default value, effectively allowing defining purge cache
+      behaviour with each deployment.
+    example: true
+required:
+  - environment_id
+  - origins
+  - hostnames
 description: >
   Deploys your configuration to a specific environment. This deployment
   overwrites any existing origin configurations, hostnames, rules, and

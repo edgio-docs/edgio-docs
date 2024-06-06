@@ -1,32 +1,95 @@
-get:
+post:
+  summary: Add Environment
+  description: Creates an environment.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/postAccountsV01Environments.yaml
+    required: true
+  security:
+    - accountsScope:
+        - app.accounts
+  responses:
+    '201':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Accounts_V1_Entities_Environment.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_UnauthorizedError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_ForbiddenError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_RecordNotFoundError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_TooManyRequestsError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
   tags:
     - environments
+  operationId: postAccountsV01Environments
+get:
   summary: Get All Environments
   description: Returns all environments that belong to the specified property.
-  operationId: getAccountsV01Environments
   parameters:
-    - name: page
-      in: query
+    - in: query
+      name: page
       description: 0-based page number.
+      required: false
       schema:
         type: integer
         format: int32
         default: 0
-    - name: page_size
-      in: query
+    - in: query
+      name: page_size
       description: >-
         Number of results per page. Valid values are: 1 - 100. **Default
         value:** 20
+      required: false
       schema:
         type: integer
         format: int32
         default: 20
-    - name: property_id
-      in: query
+    - in: query
+      name: property_id
       description: The property's system-defined ID.
       required: true
       schema:
         type: string
+  security:
+    - accountsScope:
+        - app.accounts
   responses:
     '200':
       description: OK
@@ -40,84 +103,40 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+            $ref: ../components/schemas/BaseApi_Entities_Error_UserError.yaml
     '401':
       description: Unauthorized
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_UnauthorizedError.yaml
     '403':
       description: Forbidden
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+            $ref: ../components/schemas/BaseApi_Entities_Error_ForbiddenError.yaml
     '404':
       description: Not Found
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_RecordNotFoundError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_TooManyRequestsError.yaml
     '500':
       description: Internal Server Error
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-  security:
-    - accountsScope:
-        - app.accounts
-post:
+            $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
   tags:
     - environments
-  summary: Add Environment
-  description: Creates an environment.
-  operationId: postAccountsV01Environments
-  requestBody:
-    content:
-      application/json:
-        schema:
-          $ref: ../components/schemas/postAccountsV01Environments.yaml
-    required: true
-  responses:
-    '201':
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Accounts_V1_Entities_Environment.yaml
-    '400':
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
-    '401':
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '403':
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '404':
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '500':
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-  security:
-    - accountsScope:
-        - app.accounts
-  x-codegen-request-body-name: postAccountsV01Environments
+  operationId: getAccountsV01Environments

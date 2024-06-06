@@ -2,13 +2,9 @@ type Redirect = [string | RegExp, string, number?];
 
 export default <Array<Redirect>>[
   // existing redirects
-  ['/applications/starter', '/applications/performance/traditional_sites'],
+  ['/applications/starter', '/applications/v7/getting_started'],
   ['/applications/debugging', '/applications/performance/troubleshooting'],
   ['/applications/deploying', '/applications/basics/deployments'],
-  // [
-  //   '/applications/getting_started',
-  //   /* outdated? '/applications/build_web_apps'*/ '/applications/webapp_cdn_getting_started',
-  // ],
 
   // sidenav updates
   ['/applications/webapp_cdn_getting_started', '/applications/getting_started'],
@@ -28,21 +24,21 @@ export default <Array<Redirect>>[
   ['/applications/deploy_to_edgio', '/applications/develop/deploy_to_edgio'],
   ['/applications/logs', '/applications/develop/logs'],
   ['/applications/packages', '/applications/develop/packages'],
-  ['/applications/bigcommerce', '/applications/integrations/bigcommerce'],
-  ['/applications/bloomreach', '/applications/integrations/bloomreach'],
+  ['/applications/bigcommerce', '/applications/v6/integrations/bigcommerce'],
+  ['/applications/bloomreach', '/applications/v6/integrations/bloomreach'],
   [
     '/applications/shopify_hydrogen',
-    '/applications/integrations/shopify_hydrogen',
+    '/applications/v6/integrations/shopify_hydrogen',
   ],
-  ['/applications/swell', '/applications/integrations/swell'],
-  ['/applications/wordpress', '/applications/integrations/wordpress'],
+  ['/applications/swell', '/applications/v6/integrations/swell'],
+  ['/applications/wordpress', '/applications/v6/integrations/wordpress'],
   ['/applications/caching', '/applications/performance/caching'],
   ['/applications/compression', '/applications/performance/compression'],
   [
     '/applications/edgejs_testing',
     '/applications/performance/unit_testing_edgejs',
   ],
-  ['/applications/graphql', '/applications/performance/graphql'],
+  ['/applications/graphql', '/applications/v4/graphql'],
   [
     '/applications/image_optimization',
     '/applications/performance/image_optimization',
@@ -69,20 +65,14 @@ export default <Array<Redirect>>[
     '/applications/third_party_cdns',
     '/applications/performance/third_party_cdns',
   ],
-  [
-    '/applications/traffic_splitting',
-    '/applications/performance/traffic_splitting',
-  ],
-  [
-    '/applications/split_testing',
-    '/applications/performance/traffic_splitting/split_testing',
-  ],
+  ['/applications/traffic_splitting', '/applications/v7/experimentation'],
+  ['/applications/split_testing', '/applications/v7/experimentation'],
   [
     '/applications/layer0_migration',
     '/applications/reference/layer0_migration',
   ],
   ['/applications/saml', '/applications/collaboration/sso'],
-  ['/applications/v5_migration', '/applications/reference/v5_migration'],
+  ['/applications/v5_migration', '/applications/v6/upgrading/v5_migration'],
   [
     '/applications/managed_rule_groups',
     '/applications/security/managed_rule_groups',
@@ -93,7 +83,10 @@ export default <Array<Redirect>>[
     '/applications/security/managed_bot_defense',
   ],
   ['/applications/connectors', '/applications/sites_frameworks/connectors'],
-  ['/applications/isg', '/applications/sites_frameworks/isg'],
+  [
+    '/applications/isg',
+    '/applications/v7/sites_frameworks/getting_started/nuxt#incremental-static-rendering-isg',
+  ],
   [
     '/applications/angular',
     '/applications/sites_frameworks/getting_started/angular',
@@ -104,24 +97,27 @@ export default <Array<Redirect>>[
   ],
   [
     '/applications/brunch',
-    '/applications/sites_frameworks/getting_started/brunch',
+    '/applications/v6/sites_frameworks/getting_started/brunch',
   ],
   [
     '/applications/docusaurus',
-    '/applications/sites_frameworks/getting_started/docusaurus',
+    '/applications/v6/sites_frameworks/getting_started/docusaurus',
   ],
-  ['/applications/dojo', '/applications/sites_frameworks/getting_started/dojo'],
+  [
+    '/applications/dojo',
+    '/applications/v6/sites_frameworks/getting_started/dojo',
+  ],
   [
     '/applications/eleventy',
-    '/applications/sites_frameworks/getting_started/eleventy',
+    '/applications/v6/sites_frameworks/getting_started/eleventy',
   ],
   [
     '/applications/ember',
-    '/applications/sites_frameworks/getting_started/ember',
+    '/applications/v6/sites_frameworks/getting_started/ember',
   ],
   [
     '/applications/ember_fastboot',
-    '/applications/sites_frameworks/getting_started/ember_fastboot',
+    '/applications/sites_frameworks/legacy_connectors/ember_fastboot',
   ],
   [
     '/applications/express',
@@ -129,57 +125,66 @@ export default <Array<Redirect>>[
   ],
   [
     '/applications/frontity',
-    '/applications/sites_frameworks/getting_started/frontity',
+    '/applications/sites_frameworks/legacy_connectors/frontity',
   ],
   [
     '/applications/gatsby',
-    '/applications/sites_frameworks/getting_started/gatsby',
+    '/applications/sites_frameworks/legacy_connectors/gatsby',
   ],
   [
     '/applications/gridsome',
-    '/applications/sites_frameworks/getting_started/gridsome',
+    '/applications/v6/sites_frameworks/getting_started/gridsome',
   ],
-  ['/applications/hexo', '/applications/sites_frameworks/getting_started/hexo'],
-  ['/applications/hugo', '/applications/sites_frameworks/getting_started/hugo'],
+  [
+    '/applications/hexo',
+    '/applications/sites_frameworks/legacy_connectors/hexo',
+  ],
+  [
+    '/applications/hugo',
+    '/applications/v6/sites_frameworks/getting_started/hugo',
+  ],
   [
     '/applications/ionic_react',
-    '/applications/sites_frameworks/getting_started/ionic_react',
+    '/applications/v6/sites_frameworks/getting_started/ionic_react',
   ],
   [
     '/applications/ionic_vue',
-    '/applications/sites_frameworks/getting_started/ionic_vue',
+    '/applications/v6/sites_frameworks/getting_started/ionic_vue',
   ],
   [
     '/applications/jekyll',
-    '/applications/sites_frameworks/getting_started/jekyll',
+    '/applications/v6/sites_frameworks/getting_started/jekyll',
   ],
-  ['/applications/lit', '/applications/sites_frameworks/getting_started/lit'],
+  [
+    '/applications/lit',
+    '/applications/v6/sites_frameworks/getting_started/lit',
+  ],
   [
     '/applications/mkdocs',
-    '/applications/sites_frameworks/getting_started/mkdocs',
+    '/applications/sites_frameworks/legacy_connectors/mkdocs',
   ],
   ['/applications/next', '/applications/sites_frameworks/getting_started/next'],
   [
     '/applications/next_commerce',
-    '/applications/sites_frameworks/getting_started/next_commerce',
+    '/applications/v6/sites_frameworks/getting_started/next_commerce',
   ],
   ['/applications/nuxt', '/applications/sites_frameworks/getting_started/nuxt'],
   [
     '/applications/nuxt3',
     '/applications/sites_frameworks/getting_started/nuxt3',
   ],
-  ['/applications/nx', '/applications/sites_frameworks/getting_started/nx'],
+  ['/applications/nx', '/applications/v4/nx'],
   [
     '/applications/preact',
-    '/applications/sites_frameworks/getting_started/preact',
+    '/applications/v6/sites_frameworks/getting_started/preact',
   ],
   [
     '/applications/razzle',
-    '/applications/sites_frameworks/getting_started/razzle',
+    '/applications/sites_frameworks/legacy_connectors/razzle',
   ],
   [
     '/applications/react-storefront',
-    '/applications/sites_frameworks/getting_started/react-storefront',
+    '/applications/v6/sites_frameworks/getting_started/react-storefront',
   ],
   [
     '/applications/react',
@@ -187,11 +192,11 @@ export default <Array<Redirect>>[
   ],
   [
     '/applications/react_static',
-    '/applications/sites_frameworks/getting_started/react_static',
+    '/applications/v6/sites_frameworks/getting_started/react_static',
   ],
   [
     '/applications/redwoodjs',
-    '/applications/sites_frameworks/getting_started/redwoodjs',
+    '/applications/v6/sites_frameworks/getting_started/redwoodjs',
   ],
   [
     '/applications/remix',
@@ -199,56 +204,61 @@ export default <Array<Redirect>>[
   ],
   [
     '/applications/saber',
-    '/applications/sites_frameworks/getting_started/saber',
+    '/applications/v6/sites_frameworks/getting_started/saber',
   ],
   [
     '/applications/sanity',
-    '/applications/sites_frameworks/getting_started/sanity',
+    '/applications/sites_frameworks/legacy_connectors/sanity',
   ],
   [
     '/applications/sapper',
-    '/applications/sites_frameworks/getting_started/sapper',
+    '/applications/v6/sites_frameworks/getting_started/sapper',
   ],
   [
     '/applications/scully',
-    '/applications/sites_frameworks/getting_started/scully',
+    '/applications/v6/sites_frameworks/getting_started/scully',
   ],
   [
     '/applications/solid',
-    '/applications/sites_frameworks/getting_started/solid',
+    '/applications/v6/sites_frameworks/getting_started/solid',
   ],
   [
     '/applications/spartacus',
-    '/applications/sites_frameworks/getting_started/spartacus',
+    '/applications/v6/sites_frameworks/getting_started/spartacus',
   ],
   [
     '/applications/static_sites',
-    '/applications/sites_frameworks/getting_started/static_sites',
+    '/applications/v6/sites_frameworks/getting_started/static_sites',
   ],
   [
     '/applications/stencil',
-    '/applications/sites_frameworks/getting_started/stencil',
+    '/applications/v6/sites_frameworks/getting_started/stencil',
   ],
   [
     '/applications/svelte',
-    '/applications/sites_frameworks/getting_started/svelte',
+    '/applications/v6/sites_frameworks/getting_started/svelte',
   ],
   [
     '/applications/umijs',
-    '/applications/sites_frameworks/getting_started/umijs',
+    '/applications/v6/sites_frameworks/getting_started/umijs',
   ],
   [
     '/applications/vitepress',
-    '/applications/sites_frameworks/getting_started/vitepress',
+    '/applications/v6/sites_frameworks/getting_started/vitepress',
   ],
-  ['/applications/vsf', '/applications/sites_frameworks/getting_started/vsf'],
-  ['/applications/vsf1', '/applications/sites_frameworks/getting_started/vsf1'],
+  [
+    '/applications/vsf',
+    '/applications/v6/sites_frameworks/getting_started/vsf',
+  ],
   ['/applications/vue', '/applications/sites_frameworks/getting_started/vue'],
   [
     '/applications/vuepress',
-    '/applications/sites_frameworks/getting_started/vuepress',
+    '/applications/v6/sites_frameworks/getting_started/vuepress',
   ],
-  ['/applications/zola', '/applications/sites_frameworks/getting_started/zola'],
+  [
+    '/applications/zola',
+    '/applications/v6/sites_frameworks/getting_started/zola',
+  ],
   [
     '/applications/cookbook',
     '/applications/performance/cdn_as_code/common_routing_patterns',
@@ -271,11 +281,11 @@ export default <Array<Redirect>>[
   ],
   [
     '/applications/reference/v5_migration',
-    '/applications/upgrading/v5_migration',
+    '/applications/v6/upgrading/v5_migration',
   ],
   [
     '/applications/reference/v6_migration',
-    '/applications/upgrading/v6_migration',
+    '/applications/v6/upgrading/v6_migration',
   ],
   ['/applications/bots', '/applications/security'],
   ['/applications/build_web_apps', '/applications/getting_started'],
@@ -298,8 +308,14 @@ export default <Array<Redirect>>[
   ['/applications/v4/v4_reference', '/applications/v4/limits'],
   ['/applications/v4/v4_security', '/applications/v4/security'],
   ['/applications/v4/v4_sites', '/applications/v4/connectors'],
+  ['/applications/v4/deploying', '/applications/v7/basics/deployments'],
+  ['/applications/v4/getting_started', '/applications/v7/getting_started'],
 
   // v7
+  [
+    '/applications/v7/performance/purging',
+    '/applications/v7/performance/caching/purging',
+  ],
   [
     '/applications/v7/performance/observability/core_web_vitals',
     '/applications/v7/performance/observability/real_user_monitoring',
@@ -324,6 +340,18 @@ export default <Array<Redirect>>[
   [
     '/applications/v7/basics/hostnames_and_origins',
     '/applications/v7/basics/hostnames',
+  ],
+  [
+    '/applications/v7/develop/cli',
+    '/applications/v7/performance/cdn_as_code/cli',
+  ],
+  [
+    '/applications/v7/develop/rest_api',
+    '/applications/v7/rest_api',
+  ],
+  [
+    '/applications/v7/develop/rest_api/(.*)',
+    '/applications/v7/rest_api/$1',
   ],
   [/\/guides\/(.*)/, '/applications/$1'],
 ];

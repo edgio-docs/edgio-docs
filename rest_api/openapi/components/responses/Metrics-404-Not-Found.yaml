@@ -1,0 +1,8 @@
+description: Dataset is not found.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/MetricsErrorResponse.yaml
+    examples:
+      not-found:
+        $ref: ../examples/Metrics-404-Not-Found-Example.yaml

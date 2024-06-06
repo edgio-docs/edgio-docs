@@ -1,0 +1,4 @@
+value:
+  '@type': Error
+  code: not_found
+  title: The dataset 'some_dataset' was not found.

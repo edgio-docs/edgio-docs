@@ -1,7 +1,3 @@
-required:
-  - '@id'
-  - '@type'
-  - id
 type: object
 properties:
   '@type':
@@ -12,22 +8,32 @@ properties:
     description: The resource's relative path.
   '@links':
     type: object
-    properties: {}
     description: Links to related resources.
   id:
     type: string
     description: The resource's system-defined ID.
   organization_id:
     type: string
+    description: >
+      An organization's system-defined ID (e.g.,
+      12345678-1234-1234-1234-1234567890ab).
+
+
+      From the Edgio Console, navigate to the desired organization and then
+      click **Settings**. It is listed under **Organization ID**.
   slug:
     type: string
     description: The property's name.
   created_at:
     type: string
-    description: The property's creation date and time (UTC).
     format: date-time
+    description: The property's creation date and time (UTC).
   updated_at:
     type: string
-    description: The property's last modification date and time (UTC).
     format: date-time
+    description: The property's last modification date and time (UTC).
+required:
+  - '@type'
+  - '@id'
+  - id
 description: Accounts_V1_Entities_Property model

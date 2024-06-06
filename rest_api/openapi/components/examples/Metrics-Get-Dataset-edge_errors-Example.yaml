@@ -1,0 +1,50 @@
+value:
+  '@id': /datasets/edge_errors
+  '@type': MetricsDataset
+  name: edge_errors
+  description: >-
+    Aggregated usage metrics with breakdown time, environment ID, user country
+    code, and specific HTTP status codes between 500 and 599
+  created_at: '2024-04-15T00:00:00Z'
+  time_granularities:
+    - FIVE_MINUTES
+    - HOUR
+    - DAY
+  data_retention_policy:
+    five_minutes: 2764800
+    hour: 8208000
+    day: 69120000
+  dimensions:
+    - name: time
+      type: DATE
+      description: The date when the request happened.
+    - name: environment_id
+      type: STRING
+      description: The environment ID.
+    - name: country_code
+      type: STRING
+      description: >-
+        The user's country code. It consists of two lowercase letters, or a
+        single hyphen '-' if the country is unknown.
+    - name: http_status_code
+      type: NUMBER
+      description: The HTTP status codes between 500 and 599.
+  metrics:
+    - name: requests_edge_total
+      type: NUMBER
+      description: Total number of requests to edge.
+  filters:
+    - name: environment_id
+      type: array
+      required: true
+      description: Sets the filtering by environment id.
+    - name: country_code
+      type: array
+      required: false
+      description: >-
+        Sets the filtering by user's country code. Supported values: two
+        lowercase letters or '-'.
+    - name: http_status_code
+      type: array
+      required: false
+      description: Sets the filtering by http status code.

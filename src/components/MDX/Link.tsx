@@ -25,7 +25,7 @@ function Link({
 }: LinkProps) {
   const hrefType = getHrefType(href);
 
-  href = useNormalizedPath(href, versioned);
+  href = toNormalizedPath(href, versioned);
 
   const classes = 'text-link';
   const modifiedChildren = React.Children.toArray(children).map(
@@ -90,9 +90,15 @@ Link.displayName = 'Link';
 
 export default Link;
 
-export function useNormalizedPath(path: string | undefined, versioned = true) {
+export function toNormalizedPath(path: string | undefined, versioned = true) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const {version} = useConditioning();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const {context} = useAppContext();
+
+  if (!path) {
+    return '';
+  }
 
   // If the path is already a full URL or anchor, return it as-is
   const hrefType = getHrefType(path);

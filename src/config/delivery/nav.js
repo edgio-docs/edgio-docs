@@ -108,10 +108,12 @@ const nav = {
         {
           title: 'Billing',
           path: 'https://support.limelight.com/public/openapi/configuration/index.html',
+          external: true,
         },
         {
           title: 'Configuration',
           path: 'https://support.limelight.com/public/openapi/configuration/index.html',
+          external: true,
         },
         {
           title: 'Live Stream Provisioning',
@@ -120,6 +122,7 @@ const nav = {
         {
           title: 'Realtime Reporting',
           path: 'https://support.limelight.com/public/openapi/realtimereporting/index.html',
+          external: true,
         },
         {
           title: 'SmartPurge',
@@ -137,6 +140,7 @@ const nav = {
         {
           title: 'API Explorer',
           path: 'https://support.limelight.com/public/explorer/llnw-api-explorer.html',
+          external: true,
         },
         {
           title: 'API Structure',
@@ -163,19 +167,23 @@ const nav = {
             {
               title: 'Billing',
               path: 'https://support.limelight.com/public/openapi/configuration/index.html',
+              external: true,
             },
             {
               title: 'Configuration',
               path: 'https://support.limelight.com/public/openapi/configuration/index.html',
+              external: true,
             },
             {
               title: 'Realtime Reporting',
               path: 'https://support.limelight.com/public/openapi/realtimereporting/index.html',
+              external: true,
             },
             separator,
             {
               title: 'API Explorer',
               path: 'https://support.limelight.com/public/explorer/llnw-api-explorer.html',
+              external: true,
             },
             {
               title: 'API Structure',
@@ -434,6 +442,7 @@ const nav = {
             {
               title: 'LVP',
               path: 'https://support.limelight.com/public/en/Default.htm#Video/Video%20-%20Platform/Guide/Limelight%20Video%20Platform.htm?TocPath=Video%257CGuides%257C_____3',
+              external: true,
             },
             {
               title: 'MMD Live',
@@ -452,6 +461,7 @@ const nav = {
             {
               title: 'Live Stream Provisioning',
               path: 'https://support.limelight.com/public/openapi/live-stream-provisioning/index.html',
+              external: true,
             },
             {
               title: 'LVP',

@@ -1,3 +1,4 @@
+import {toNormalizedPath} from 'components/MDX/Link';
 import {productsConfig} from 'config/appConfig';
 import {
   ContextType,
@@ -68,7 +69,7 @@ function useConditioning() {
     toVersionedPath: (path: string): string => {
       // Versioning only applies to the applications context
       if (context !== ContextType.APPLICATIONS) {
-        return path;
+        return toNormalizedPath(path, false);
       }
 
       const pathPrefix = productsConfig['applications'].pathPrefix;

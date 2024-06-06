@@ -4,7 +4,7 @@ title: Edge Experiments with Optimizely
 
 Optimizely is a popular experimentation platform that allows you to run A/B tests, multivariate tests, and personalization campaigns on your website. By integrating Optimizely with your {{ PRODUCT }} application, you can leverage the power of experimentation to optimize your user experience and drive better business outcomes.
 
-In this guide, we'll show you how to use {{ PRODUCT }} edge functions to integrate Optimizely experiments into your application. We'll create an edge function that intercepts incoming requests, checks for an Optimizely experiment cookie, and modifies the request to include the appropriate variation based on the experiment configuration.
+In this guide, we'll show you how to use {{ PRODUCT }} Edge Functions to integrate Optimizely experiments into your application. We'll create an edge function that intercepts incoming requests, checks for an Optimizely experiment cookie, and modifies the request based on the experiment configuration.
 
 <ExampleButtons
   title="Edge Experiments with Optimizely"
@@ -57,7 +57,7 @@ yarn add @optimizely/optimizely-sdk crypto-js polyfill-crypto.getrandomvalues uu
 
 ## Define Required Polyfills {/* define-required-polyfills */}
 
-The Optimizely SDK relies on the `uuid` (has a dependency on `crypto`) and other timing functions not available in the Edge Function runtime. To ensure the SDK works correctly, you'll need to create the following polyfills. These will be used later in the [edge function](#create-an-edge-function) to ensure the SDK functions correctly.
+The Optimizely SDK relies on the `uuid` (has a dependency on `crypto`) and other timing functions not available in the Edge Functions runtime. To ensure the SDK works correctly, you'll need to create the following polyfills. These will be used later in the [edge function](#create-an-edge-function) to ensure the SDK functions correctly.
 
 ### crypto Polyfill {/* crypto-polyfill */}
 
@@ -266,7 +266,7 @@ With this configuration, any incoming requests to `/optimizely-experiment` will 
 
 ## Running Locally {/* running-locally */}
 
-Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
+Test on your local machine by running the following command in your project's root directory:
 
 ```bash
 {{ FULL_CLI_NAME }} dev
@@ -276,7 +276,7 @@ Once the development server is running, you can access your app at `http://local
 
 ## Deploying {/* deploying */}
 
-Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
+Deploy your app to {{ PRODUCT}} by running the following command in your project's root directory:
 
 ```bash
 {{ FULL_CLI_NAME }} deploy

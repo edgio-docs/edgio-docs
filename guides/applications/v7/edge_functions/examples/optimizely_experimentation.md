@@ -4,15 +4,21 @@ title: Edge Experiments with Optimizely
 
 Optimizely is a popular experimentation platform that allows you to run A/B tests, multivariate tests, and personalization campaigns on your website. By integrating Optimizely with your {{ PRODUCT }} application, you can leverage the power of experimentation to optimize your user experience and drive better business outcomes.
 
+<Info>
+
+If you prefer a simpler workflow that does not require the use of Edge Functions or Optimizely, use [Experimentation](/applications/experimentation) to serve different experiences to your clients.
+
+</Info>
+
 In this guide, we'll show you how to use {{ PRODUCT }} Edge Functions to integrate Optimizely experiments into your application. We'll create an edge function that intercepts incoming requests, checks for an Optimizely experiment cookie, and modifies the request based on the experiment configuration.
+
+The following example demonstrates using an Optimizely experiment to determine the text direction of a webpage and modifies the HTML content accordingly before responding to the client.
 
 <ExampleButtons
   title="Edge Experiments with Optimizely"
   siteUrl="https://edgio-community-examples-v7-optimizely-edge-live.glb.edgio.link/"
   repoUrl="https://github.com/edgio-docs/edgio-v7-optimizely-edge-example"
 />
-
-The above example demonstrates using an Optimizely experiment to determine the text direction of a webpage and modifies the HTML content accordingly before responding to the client.
 
 {{ PREREQ.md }}
 

@@ -206,7 +206,7 @@ Monitor violations for all Client-Side Protection policies from the **Report** s
 Setting up Client-Side Protection for multiple properties introduces complexity due to existing Content-Security Policies (CSPs). Simplify this configuration through the following procedure:
 
 1.  Identify and track all of the CSPs being set by your origin servers. 
-2.  Set up Client-Side Protection for one of your properties.
+2.  Set up Client-Side Protection for one of your web properties.
 
     1.  Set up a strict audit Client-Side Protection policy and apply it to one of your properties. 
 
@@ -216,7 +216,7 @@ Setting up Client-Side Protection for multiple properties introduces complexity 
 
     2.  Define a production policy within the above Client-Side Protection policy. 
 
-        -   This production policy should allow all of the resources associated with the property identified in step 2 to be loaded. If an origin server associated with this property sets a CSP, then your initial configuration should use that CSP.
+        -   This production policy should allow all of the resources associated with this property to be loaded. If an origin server associated with this property sets a CSP, then your initial configuration should use that CSP.
         -   Make sure that the **Status** option remains disabled. This allows us to collect logs without enforcing your CSP.
         -   Enable the **Overwrite Origin** option.
 
@@ -225,10 +225,15 @@ Setting up Client-Side Protection for multiple properties introduces complexity 
 
 3.  Set up Client-Side Protection for another property by repeating step 2. 
 
-    Compare your production policy to all existing configurations. If your production policy is identical to a previously created one, then we recommend that you reuse the previously created one.
+    After which, compare your production policy to all existing configurations. If your production policy is identical to a previously created one, then we recommend that you reuse the previously created one through the following procedure:
 
     1.  Update the Security Application configuration corresponding to the previously created policy to include the hostnames associated with those properties.
-    2.  Identify the Security Application configuration through which the latest policy was enabled. If it is no longer needed, delete it. Otherwise, clear the Client-Side Protection assignment by setting the **Select Policy** option to `No Production Rule`.
+
+    For example, the following regular expression applies the Security Application configuration to www.example.com, cdn.example.com, and resources.example.com:
+
+    ![Security Application - Hostname Regular Expression](/images/v7/security/security-application-hostnames.png)
+
+    2.  Identify the Security Application configuration through which the latest Client-Side Protection policy was enabled. If it is no longer needed, delete it. Otherwise, clear the Client-Side Protection assignment by setting the **Select Policy** option to `No Production Rule`.
     3.  Delete the Client-Side Protection policy that is no longer in use.
 
-4.  Repeat the previous step until you have applied a CSP to all of your properties.
+4.  Repeat step 3 until you have applied a production CSP to all of your properties.

@@ -229,11 +229,11 @@ Setting up Client-Side Protection for multiple properties introduces complexity 
 
     1.  Update the Security Application configuration corresponding to the previously created policy to include the hostnames associated with those properties.
 
-    For example, the following regular expression applies the Security Application configuration to www.example.com, cdn.example.com, and resources.example.com:
+        For example, the following regular expression applies the Security Application configuration to `www.example.com`, `cdn.example.com`, and `resources.example.com`:
 
-    ![Security Application - Hostname Regular Expression](/images/v7/security/security-application-hostnames.png)
+        ![Security Application - Hostname Regular Expression](/images/v7/security/security-application-hostnames.png)
 
-    2.  Identify the Security Application configuration through which the latest Client-Side Protection policy was enabled. If it is no longer needed, delete it. Otherwise, clear the Client-Side Protection assignment by setting the **Select Policy** option to `No Production Rule`.
+    2.  Identify the Security Application configuration that applies the duplicate Client-Side Protection policy that is no longer needed. If the Security Application configuration is no longer needed, delete it. Otherwise, set its **Select Policy** option, which can be found on the **Client Protection** tab, to `No Production Rule`.
     3.  Delete the Client-Side Protection policy that is no longer in use.
 
 4.  Repeat step 3 until you have applied a production CSP to all of your properties.

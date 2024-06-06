@@ -222,7 +222,7 @@ Create and then initialize your property.
 
         <Callout type="info">
 
-          By default, {{ PRODUCT }} CLI v5.1+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/applications/develop/cli#disable-analytics).
+          By default, {{ PRODUCT }} CLI v5.1+ collects usage and error reporting information to help improve our products. However, it omits personally identifiable information. [Learn how to opt-out](/applications/performance/cdn_as_code/cli#disable-analytics).
 
         </Callout>
 

@@ -141,7 +141,7 @@ router.match('/some-path', {
 
 To see the debug headers in the response, you will need to specify the `x-ec-debug` header in your request. This request header should list the values of the debug headers you want to see in the response as defined under [Requesting Debug Cache Information](/applications/performance/response#requesting-debug-cache-information).
 
-For example, you can use the [`{{ CLI_CMD(curl) }}`](/applications/develop/cli#curl) command to request the `x-ec-cache` and `x-ec-cache-state` headers:
+For example, you can use the [`{{ CLI_CMD(curl) }}`](/applications/performance/cdn_as_code/cli#curl) command to request the `x-ec-cache` and `x-ec-cache-state` headers:
 
 ```bash
 {{ CLI_CMD(curl) }} https://your-site.com/some-path -H "x-ec-debug:x-ec-cache,x-ec-cache-state"

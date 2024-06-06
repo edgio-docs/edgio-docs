@@ -1,25 +1,28 @@
 post:
-  summary: Deploy CDN Configuration
-  description: >
-    Deploys your configuration to a specific environment. This deployment
-    overwrites any existing origin configurations, hostnames, rules, and
-    experiments.
+  summary: Generate TLS Certificates
+  description: >-
+    Generates a Let's Encrypt certificate for each eligible hostname associated
+    with the specified environment. A hostname is eligible for automatic
+    certificate generation when the CA is allowed to issue certificates for that
+    hostname and your control over the domain is established through an
+    `_acme_challenge` CNAME record. [Learn
+    more.](https://docs.edg.io/applications/basics/hostnames#https-traffic)
   requestBody:
     content:
       application/json:
         schema:
-          $ref: ../components/schemas/postConfigV01Configs.yaml
+          $ref: ../components/schemas/postConfigV01TlsCertsGenerate.yaml
     required: true
   security:
     - configScope:
         - app.config
   responses:
-    '202':
+    '201':
       description: OK
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/Config_V1_Entities_Config.yaml
+            $ref: ../components/schemas/Config_V1_Entities_TlsCert.yaml
     '400':
       description: Bad Request
       content:
@@ -60,5 +63,5 @@ post:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
   tags:
-    - configs
-  operationId: postConfigV01Configs
+    - tls-certs
+  operationId: postConfigV01TlsCertsGenerate

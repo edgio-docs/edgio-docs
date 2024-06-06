@@ -1,7 +1,3 @@
-required:
-  - '@id'
-  - '@type'
-  - id
 type: object
 properties:
   '@type':
@@ -12,7 +8,6 @@ properties:
     description: The resource's relative path.
   '@links':
     type: object
-    properties: {}
     description: Links to related resources.
   id:
     type: string
@@ -25,14 +20,18 @@ properties:
         - `done`: Edgio has purged the requested content.
   created_at:
     type: string
-    description: The date and time (UTC) at which the purge request was submitted.
     format: date-time
+    description: The date and time (UTC) at which the purge request was submitted.
   completed_at:
     type: string
-    description: The date and time (UTC) at which the purge request was completed.
     format: date-time
+    description: The date and time (UTC) at which the purge request was completed.
   progress_percentage:
     type: number
-    description: The purge request's completion percentage.
     format: float
+    description: The purge request's completion percentage.
+required:
+  - '@type'
+  - '@id'
+  - id
 description: Cache_V1_Entities_PurgeRequest model

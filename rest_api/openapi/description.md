@@ -43,7 +43,7 @@ Key information about our REST API services:
 
 Get started with our latest APIs by performing the following steps:
 
-1. <a href="https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients" target="_blank">Create an API client</a> for either your private space or the desired organization. Grant the set of scope(s) required by the endpoint(s) with which it will interact. Administer API clients from the <a href="https://edgio.app" target="_blank">Edgio Console's</a> **API Clients** page. 
+1. <a href="https://docs.edg.io/applications/rest_api/authentication#administering-api-clients" target="_blank">Create an API client</a> for either your private space or the desired organization. Grant the set of scope(s) required by the endpoint(s) with which it will interact. Administer API clients from the <a href="https://edgio.app" target="_blank">Edgio Console's</a> **API Clients** page. 
 2. Use this client's ID, secret key, and scopes to [generate a temporary access token](#section/Access-Tokens).
 3. Authorize your API requests by passing the temporary access token generated in the previous step through the `Authorization` request header.
 
@@ -83,7 +83,7 @@ Requesting an access token requires:
     client_id=<CLIENT ID>&client_secret=<SECRET>&grant_type=client_credentials&scope=<SCOPES>
     ```
 
-    -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your <a href="https://docs.edg.io/guides/develop/rest_api/authentication#administering-api-clients" target="_blank">REST API client</a>.
+    -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your <a href="https://docs.edg.io/applications/rest_api/authentication#administering-api-clients" target="_blank">REST API client</a>.
     -   `<SECRET>`**:** Represents the secret assigned to your REST API client.
     -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. 
 
@@ -156,7 +156,7 @@ Request headers provide information about your request to a REST API service. Th
 
 | Request Header | Description                                                                                                                                                                                                         |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Authorization  | Authorize requests through the `Authorization` request header. <a href="https://docs.edg.io/guides/develop/rest_api/authentication#authorizing-requests" target="_blank">Learn more about authorization.</a>                                                       |
+| Authorization  | Authorize requests through the `Authorization` request header. <a href="https://docs.edg.io/applications/rest_api/authentication#authorizing-requests" target="_blank">Learn more about authorization.</a>                                                       |
 | Accept         | This header should indicate the format in which the response will be returned. If you pass this header, set it to: `application/json`.                                                                |
 | Content-Type   | This header should indicate the format of the request body. If you pass this header, set it to: `application/json`. <br />You may omit this header when an endpoint does not have request properties. |
 | Host           | This header, which is set by the user agent, indicates the host name corresponding to the requested endpoint (i.e., edgioapis.com or id.edgio.app).                                                                               |

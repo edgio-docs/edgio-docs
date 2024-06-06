@@ -8,7 +8,7 @@ Learn basic information about our REST API:
 
 -   Requests to our REST API require authentication. Authentication requires:
 
-    -   An API client. [Learn how to generate an API client.](/applications/develop/rest_api/authentication#administering-api-clients)
+    -   An API client. [Learn how to generate an API client.](/applications/rest_api/authentication#administering-api-clients)
     -   An access token.
 
         [Generate an access token]({{ API_DOCS_URL }}#section/Access-Tokens) by posting an API client's ID, secret key, and the desired [scopes]({{ API_DOCS_URL }}#section/Scopes).

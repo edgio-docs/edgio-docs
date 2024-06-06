@@ -34,7 +34,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Deployment {/* deployment */}
 
-[Install the Edgio CLI](https://docs.edg.io/applications/v7/develop/cli) if you haven't already. Run your development server with `edgio dev`:
+[Install the Edgio CLI](/applications/performance/cdn_as_code/cli) if you haven't already. Run your development server with `edgio dev`:
 
 ```bash
 edgio dev

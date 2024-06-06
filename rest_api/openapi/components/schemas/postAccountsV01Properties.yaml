@@ -1,6 +1,3 @@
-required:
-  - organization_id
-  - slug
 type: object
 properties:
   slug:
@@ -11,4 +8,7 @@ properties:
     description: >-
       The system-defined ID for the organization under which this property will
       be created.
+required:
+  - slug
+  - organization_id
 description: Create a property.

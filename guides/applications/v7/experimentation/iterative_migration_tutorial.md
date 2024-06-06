@@ -45,7 +45,7 @@ This tutorial assumes:
         -   [Deploying](/applications/basics/deployments) through the {{ PORTAL }}.
     -   **CDN-as-Code:** If you deploy changes through the {{ PRODUCT }} CLI, then you should be familiar with the:
         -   [{{ CONFIG_FILE }} file](/applications/performance/cdn_as_code/edgio_config)
-        -   [{{ ROUTES_FILE }} file](/applications/develop/cli)
+        -   [{{ ROUTES_FILE }} file](/applications/performance/cdn_as_code/cli)
         -   [Deploying](/applications/basics/deployments) through the {{ PRODUCT }} CLI. 
 
 ## Identifying the Entry Environment {/*identifying-the-entry-environment*/}

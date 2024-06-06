@@ -227,7 +227,8 @@ Setting up Client-Side Protection for multiple properties introduces complexity 
 
     Compare your production policy to all existing configurations. If your production policy is identical to a previously created one, then we recommend that you reuse the previously created one.
 
-        1.  Update the Security Application configuration corresponding to the previously created policy to include the hostnames associated with those properties.
-        2.  Delete the recently created policy that is no longer in use. 
+    1.  Update the Security Application configuration corresponding to the previously created policy to include the hostnames associated with those properties.
+    2.  Identify the Security Application configuration through which the latest policy was enabled. If it is no longer needed, delete it. Otherwise, clear the Client-Side Protection assignment by setting the **Select Policy** option to `No Production Rule`.
+    3.  Delete the Client-Side Protection policy that is no longer in use.
 
 4.  Repeat the previous step until you have applied a CSP to all of your properties.

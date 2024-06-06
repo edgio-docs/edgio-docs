@@ -4,41 +4,50 @@ on:
     branches:
       - '**'
       - '!main'
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Extract branch name
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/[^[:alnum:].-]/-/g')" >> $GITHUB_ENV
+
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.9.1
         with:
           access_token: ${{ github.token }}
-      - uses: actions/checkout@v3
+
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            **/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Node Dependencies
+        run: yarn install --frozen-lockfile
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
-      - name: Ruby dependencies
-        run: |
-          gem install pry json
-      - name: Cache node modules
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-      - run: yarn --frozen-lockfile
+
+      - name: Install Ruby dependencies
+        run: gem install pry json
+
       - name: Copy API Spec
         env:
           GITLAB_ACCESS_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
@@ -47,52 +56,42 @@ jobs:
           rsync -av "eq-metrics-public-api/src/api/public-docs/components/" "rest_api/openapi/components"
           rsync -av "eq-metrics-public-api/src/api/public-docs/paths/" "rest_api/openapi/paths"
 
-          # copy files to destination
-
       - name: Deploy to docs.edg.io (stage)
         run: |
           yarn edgio:deploy --branch=$BRANCH_NAME --token=${{secrets.edgio_prod_deploy_token}} --environment=default
         env:
           GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
-      - name: Process Deployment Manifest and Set Output
-        id: deploy
-        run: |
-          # Read deployment manifest and parse JSON content
-          content=$(cat .edgio/deployment-manifest.json)
-          number=$(echo $content | jq -r .number)
-          permalink=$(echo $content | jq -r .url)
-          edgeUrl=$(echo $content | jq -r .environment.url)
-          environmentName=$(echo $content | jq -r .environment.name)
 
-          # Console URL
-          consoleUrl="https://edgio.app/edgio-community/docs.edg.io/env/${environmentName}/builds/${number}"
-
-          # Build permalink URL
-          buildUrl=$permalink
-
-          # Generate branchUrl by removing the -${number} part from the permalink
-          branchUrl=$(echo $permalink | sed "s/-${number}//")
-
-          deployDate=$(date +"%Y-%m-%d %H:%M:%S")
-
-          # Set output variables
-          echo "consoleUrl=${consoleUrl}" >> $GITHUB_OUTPUT
-          echo "buildUrl=${buildUrl}" >> $GITHUB_OUTPUT
-          echo "branchUrl=${branchUrl}" >> $GITHUB_OUTPUT
-          echo "edgeUrl=${edgeUrl}" >> $GITHUB_OUTPUT
-          echo "deployDate=${deployDate}" >> $GITHUB_OUTPUT
-        shell: bash
+      - name: Run Deployment Manifest Processor
+        id: process_manifest
+        run: node scripts/workflows/processDeploymentManifest.js
 
       - uses: jwalton/gh-find-current-pr@v1
         id: finder
+
       - name: Publish Preview Link
         uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
           number: ${{ steps.finder.outputs.pr }}
           header: preview
           message: |
-            ##### Last deployment (${{ steps.deploy.outputs.deployDate }}) 🚀
-            - Console Build: ${{ steps.deploy.outputs.consoleUrl }}
-            - Permalink Preview: ${{ steps.deploy.outputs.buildUrl }}
-            - Branch Preview: ${{ steps.deploy.outputs.branchUrl }}
-            - Edge URL: ${{ steps.deploy.outputs.edgeUrl }}
+            ##### Last deployment (${{ steps.process_manifest.outputs.deployDate }}) 🚀
+            Build URL: ${{ steps.process_manifest.outputs.buildUrl }}
+            Branch URL: ${{ steps.process_manifest.outputs.branchUrl }}
+            Edge URL: ${{ steps.process_manifest.outputs.edgeUrl }}
+
+      - name: Save NPM cache
+        uses: actions/upload-artifact@v3
+        with:
+          name: npm-cache
+          path: |
+            ~/.npm
+            **/node_modules
+
+      - name: Trigger `check-links` workflow
+        run: |
+          curl -X POST \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/repos/${{ github.repository }}/actions/workflows/check-links.yml/dispatches \
+          -d '{"ref":"${{ github.ref }}", "inputs":{"url":"${{ steps.process_manifest.outputs.branchUrl }}"}}'

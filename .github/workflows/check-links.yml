@@ -1,25 +1,45 @@
-name: Validate v7 Guide Links
-
+name: Check Links
 on:
-  schedule:
-    - cron: "0 0 * * *"
   workflow_dispatch:
+    inputs:
+      url:
+        description: 'URL to check for broken links'
+        required: true
+        type: string
 
 jobs:
-  validate-links:
+  check-links:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: 18
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
+      - run: npm install -g linkinator
 
-      - name: Run validation script
-        run: yarn validate-links
+      - name: Run Link Check
+        id: check_links
+        run: node scripts/checkLinks.js ${{ github.event.inputs.url }}
+
+      - name: Upload Linkinator Output
+        uses: actions/upload-artifact@v3
+        with:
+          name: linkinator-output
+          path: linkinator-output.json
+
+      - uses: jwalton/gh-find-current-pr@v1
+        id: finder
+
+      - name: Comment broken links on PR
+        uses: marocchino/sticky-pull-request-comment@v2.2.0
+        with:
+          number: ${{ steps.finder.outputs.pr }}
+          header: broken-links
+          message: |
+            ##### Broken Links Check 🚀
+            ${{ steps.check_links.outputs['broken-links'] }}
+
+            [Download full report](../actions/runs/${{ github.run_id }}/artifacts) for a detailed view.

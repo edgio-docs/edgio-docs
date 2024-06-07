@@ -80,25 +80,19 @@ jobs:
       #     hide_and_recreate: true
       #     hide_classify: 'OUTDATED'
       #     message: |
-      #       ##### Last deployment (${{ steps.process_manifest.outputs.deployDate }}) 🚀
-      #       Build URL: ${{ steps.process_manifest.outputs.buildUrl }}
-      #       Branch URL: ${{ steps.process_manifest.outputs.branchUrl }}
-      #       Edge URL: ${{ steps.process_manifest.outputs.edgeUrl }}
+      #       #### Latest deployment (${{ steps.process_manifest.outputs.deployDate }}) 🚀
+      #       - Build URL: ${{ steps.process_manifest.outputs.buildUrl }}
+      #       - Branch URL: ${{ steps.process_manifest.outputs.branchUrl }}
+      #       - Edge URL: ${{ steps.process_manifest.outputs.edgeUrl }}
 
       - name: Run Link Check
         id: check_links
         run: node scripts/workflows/checkLinks.js https://edgio-community-docs-edg-io-comsup-348-check-404s.edge.edgio-perma.link
 
-      - name: Read Broken Links Markdown
-        id: read_markdown
+      - id: timestamps
         run: |
-          BROKEN_LINKS=$(cat ./artifacts/broken-links.md)
-          echo "BROKEN_LINKS<<EOF" >> $GITHUB_ENV
-          echo "$BROKEN_LINKS" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
           echo "timestamp=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $GITHUB_ENV
           echo "readable_time=$(date -u +%Y-%m-%d\ %H:%M:%S\ UTC)" >> $GITHUB_ENV
-        shell: /usr/bin/bash -e {0}
 
       - name: Upload Linkinator Output
         id: artifact-upload-step
@@ -107,6 +101,20 @@ jobs:
           name: linkinator-output
           path: ./artifacts
 
+      - name: Update Broken Links Markdown
+        id: update_markdown
+        run: |
+          RUN_ID=${{ github.run_id }}
+          ARTIFACT_ID=${{ steps.artifact-upload-step.outputs.artifact-id }}
+          TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          READABLE_TIME=$(date -u +%Y-%m-%d\ %H:%M:%S\ UTC)
+          HEADER="#### Broken Links 🚨"
+          FOOTER="👉 [**Download the full report**](../actions/runs/$RUN_ID/artifacts/$ARTIFACT_ID) for a detailed view. 📄\n\n_Checked at <time datetime=\"$TIMESTAMP\">$READABLE_TIME</time>_."
+
+          BODY=$(cat broken-links.md)
+          echo -e "$HEADER\n\n$BODY\n\n$FOOTER" > broken-links.md
+        working-directory: ./artifacts
+
       - name: Comment broken links on PR
         uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
@@ -114,11 +122,4 @@ jobs:
           header: broken-links
           hide_and_recreate: true
           hide_classify: 'OUTDATED'
-          message: |
-            ##### Broken Links 🚨
-
-            ${{ env.BROKEN_LINKS }}
-
-            👉 [**Download the full report**](../actions/runs/${{ github.run_id }}/artifacts/${{ steps.artifact-upload-step.outputs.artifact-id }}) for a detailed view. 📄
-
-            _Checked at <time datetime="${{ env.timestamp }}">${{ env.readable_time }}</time>_.
+          path: ./artifacts/broken-links.md

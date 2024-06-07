@@ -9,12 +9,14 @@ let output = '';
 const linkinatorArgs = [
   URL,
   '--concurrency',
-  '10',
+  '20',
   '--format',
   'json',
   '--recurse',
   '--timeout',
   '10000',
+  '--exclude',
+  'example.com,domain.com,localhost,127.0.0.1',
 ];
 
 const linkinator = spawn('linkinator', linkinatorArgs);
@@ -74,6 +76,7 @@ linkinator.on('close', (code) => {
         console.log(`${status}\n${referrer}`);
         return `**[${link.status}]** ${link.url}\n  └── Referrer: ${link.parent}`;
       })
+      .slice(0, 20)
       .join('\n\n');
   } else {
     console.log('No broken links found.');

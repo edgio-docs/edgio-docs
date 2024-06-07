@@ -12,8 +12,8 @@ See [NPM Packages Changelog](/applications/changelog) for release notes related 
 
 ## June 2024 {/* june-2024 */}
 
-| Date       | Description                                                                                                                                                                                                                                  |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Date       | Description                                                                                                                                                                                                                                                              |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 06/06/2024 | **{{ PRODUCT_SECURITY }}:** <ul><li>Bot Manager Advanced now supports [difficulty-based browser challenges](/applications/security/bot_rules#browser-challenge).</li><li>**Rate Rules:** {{ PRODUCT }} Premier now supports rate limiting by HTTP status code.</li></ul> |
 
 ## May 2024 {/* may-2024 */}

@@ -15,8 +15,8 @@ const linkinatorArgs = [
   '--recurse',
   '--timeout',
   '10000',
-  '--exclude',
-  'example.com,domain.com,localhost,127.0.0.1',
+  '--skip',
+  '"/^(https?://)?(localhost|127.0.0.1|example.com|domain.com)(:d{1,5})?(/.*)?$/"',
 ];
 
 const linkinator = spawn('linkinator', linkinatorArgs);
@@ -69,6 +69,7 @@ linkinator.on('close', (code) => {
   if (brokenLinks.length > 0) {
     console.log('Broken links found:');
     commentContent = brokenLinks
+      .slice(0, 20)
       .sort((a, b) => a.url.localeCompare(b.url))
       .map((link) => {
         const status = `[${link.status}] ${link.url}`;
@@ -76,8 +77,7 @@ linkinator.on('close', (code) => {
         console.log(`${status}\n${referrer}`);
         return `**[${link.status}]** ${link.url}\n  └── Referrer: ${link.parent}`;
       })
-      .slice(0, 20)
-      .join('\n\n');
+      .join(`\n\n(_${brokenLinks.length - 20} more broken links..._)`);
   } else {
     console.log('No broken links found.');
     commentContent = 'No broken links found.';

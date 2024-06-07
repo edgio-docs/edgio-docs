@@ -98,7 +98,7 @@ jobs:
         id: artifact-upload-step
         uses: actions/upload-artifact@v4
         with:
-          name: linkinator-output
+          name: link-check-output
           path: ./artifacts
 
       - name: Update Broken Links Markdown
@@ -109,7 +109,7 @@ jobs:
           TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
           READABLE_TIME=$(date -u +%Y-%m-%d\ %H:%M:%S\ UTC)
           HEADER="#### Broken Links (top 20) 🚨"
-          FOOTER="👉 [**Download the full report**](../actions/runs/$RUN_ID/artifacts/$ARTIFACT_ID) for a detailed view. 📄\n\n_Checked at <time datetime=\"$TIMESTAMP\">$READABLE_TIME</time>_."
+          FOOTER="👉 [**Download the full report**](../actions/runs/$RUN_ID/artifacts/$ARTIFACT_ID) for a detailed view. 📄"
 
           BODY=$(cat broken-links.md)
           echo -e "$HEADER\n\n```\n$BODY\n```\n\n$FOOTER" > broken-links.md

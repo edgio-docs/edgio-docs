@@ -1,11 +1,13 @@
 const {spawn} = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const whitelist = require('./linkWhitelist');
 const URL = process.argv[2];
 const outputDir = path.join(process.cwd(), 'artifacts');
 const brokenLinksPath = path.join(outputDir, 'broken-links.md');
 const fullOutputPath = path.join(outputDir, 'broken-links-full.md');
 const JSONOutputPath = path.join(outputDir, 'linkinator-output.json');
+const ignoreStatuses = [429];
 let output = '';
 
 console.log(`Starting link check for URL: ${URL}`);
@@ -63,7 +65,28 @@ linkinator.on('close', (code) => {
   }
 
   // Extract broken links
-  const brokenLinks = result.links.filter((link) => link.state === 'BROKEN');
+  const brokenLinks = result.links.filter((link) => {
+    const path = new URL(link.url).pathname;
+    const isWhitelisted = whitelist.some((item) => {
+      // match link path against pattern
+      if (item instanceof RegExp) {
+        return item.test(path);
+      }
+
+      // match link path against string
+      if (item.startsWith('/')) {
+        return path === item;
+      }
+
+      // match link URL against string
+      return link.url === item;
+    });
+    return (
+      link.state === 'BROKEN' &&
+      !ignoreStatuses.includes(link.status) &&
+      !isWhitelisted
+    );
+  });
 
   // Output the broken links
   let commentContent;
@@ -88,9 +111,7 @@ linkinator.on('close', (code) => {
       .replace(/\*\*/g, '');
 
     commentContent = `
-\`\`\`
 ${commentContent}
-\`\`\`
 (_${brokenLinks.length - 20} more broken links..._)`;
   } else {
     console.log('No broken links found.');

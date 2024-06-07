@@ -112,7 +112,7 @@ jobs:
           FOOTER="👉 [**Download the full report**](../actions/runs/$RUN_ID/artifacts/$ARTIFACT_ID) for a detailed view. 📄"
 
           BODY=$(cat broken-links.md)
-          echo -e "$HEADER\n\n```\n$BODY\n```\n\n$FOOTER" > broken-links.md
+          echo -e "$HEADER\n\n$BODY\n\n$FOOTER" > broken-links.md
         working-directory: ./artifacts
 
       - name: Comment broken links on PR

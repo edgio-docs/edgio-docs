@@ -77,7 +77,13 @@ linkinator.on('close', (code) => {
         console.log(`${status}\n${referrer}`);
         return `**[${link.status}]** ${link.url}\n  └── Referrer: ${link.parent}`;
       })
-      .join(`\n\n(_${brokenLinks.length - 20} more broken links..._)`);
+      .join(`\n\n`);
+
+    commentContent = `
+\`\`\`
+${commentContent}
+\`\`\`
+(_${brokenLinks.length - 20} more broken links..._)`;
   } else {
     console.log('No broken links found.');
     commentContent = 'No broken links found.';

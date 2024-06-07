@@ -2,7 +2,7 @@ const {spawn} = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const whitelist = require('./linkWhitelist');
-const URL = process.argv[2];
+const url = process.argv[2];
 const outputDir = path.join(process.cwd(), 'artifacts');
 const brokenLinksPath = path.join(outputDir, 'broken-links.md');
 const fullOutputPath = path.join(outputDir, 'broken-links-full.md');
@@ -10,10 +10,10 @@ const JSONOutputPath = path.join(outputDir, 'linkinator-output.json');
 const ignoreStatuses = [429];
 let output = '';
 
-console.log(`Starting link check for URL: ${URL}`);
+console.log(`Starting link check for URL: ${url}`);
 
 const linkinatorArgs = [
-  URL,
+  url,
   '--concurrency',
   '20',
   '--format',

@@ -85,7 +85,7 @@ jobs:
 
       - name: Run Link Check
         id: check_links
-        run: node scripts/checkLinks.js ${{ steps.process_manifest.outputs.branchUrl }}
+        run: node scripts/workflows/checkLinks.js ${{ steps.process_manifest.outputs.branchUrl }}
 
       - name: Upload Linkinator Output
         uses: actions/upload-artifact@v3

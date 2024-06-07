@@ -80,14 +80,6 @@ jobs:
             Branch URL: ${{ steps.process_manifest.outputs.branchUrl }}
             Edge URL: ${{ steps.process_manifest.outputs.edgeUrl }}
 
-      - name: Save NPM cache
-        uses: actions/upload-artifact@v3
-        with:
-          name: npm-cache
-          path: |
-            ~/.npm
-            **/node_modules
-
       - name: Trigger `check-links` workflow
         run: |
           curl -X POST \

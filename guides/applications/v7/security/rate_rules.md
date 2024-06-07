@@ -53,14 +53,14 @@ Setting up a rate rule involves defining a rate limit and determining how that r
     -   Indiscriminately across all requests.
     -   To each unique client that exceeds the defined rate limit.
 
-        Identify a unique client by its user agent, IP address, or both. {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier customers may identify clients using up to two of the following criteria: IP address, user agent, HTTP status code, ASN, JA3, cookie, query string parameters, and request headers.
+        Identify a unique client by its user agent, IP address, or both. {{ PRODUCT }} Premier customers may identify clients using up to two of the following criteria: IP address, user agent, HTTP status code, ASN, JA3, cookie, query string parameters, and request headers.
 
 
 -   **[Condition Group:](#condition-group)** A request counts towards a rate limit when it satisfies all of the following criteria:
     -   A [Security Application configuration's](/applications/security/security_applications#traffic-identification) hostname and URL path match conditions.
     -   If one or more condition group(s) have been defined, then the request must also satisfy all of the conditions defined within at least one condition group.
 
-    Each condition identifies the type of requests that are eligible for rate limiting by URL path, request headers, IP address, file extension, and request method. {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier customers may also identify requests by ASN, country, request header, request URL path, JA3, query string, and cookie.
+    Each condition identifies the type of requests that are eligible for rate limiting by URL path, request headers, IP address, file extension, and request method. {{ PRODUCT }} Premier customers may also identify requests by ASN, country, request header, request URL path, JA3, query string, and cookie.
 -   **Action:** A [Security Application configuration](/applications/security/security_applications#enforcement) determines the type of action that will be applied to requests that exceed the above rate limit.
 
 ### Source {/*source*/}
@@ -92,16 +92,16 @@ to** option. The available modes are described below.
 
     </Callout>
 
--   **User agent:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests from each unique user agent (e.g., web browser) will be tracked.
+-   **User agent:** {{ PRODUCT }} Premier only. Indicates that the requests from each unique user agent (e.g., web browser) will be tracked.
 
--   **ASN:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests from each unique autonomous system number (ASN) will be tracked.
--   **Status Code:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests from either a specific or a range of HTTP status codes will be tracked. For example, if you specify `200`, then {{ PRODUCT }} will track all requests that result in a `200 OK` response. Alternatively, if you specify `300-399`, then {{ PRODUCT }} will track all requests that result in a `3xx` response.
--   **JA3:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique JA3 signature will be tracked.
--   **Cookie:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified cookie will be tracked.
--   **ARGS:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified query string parameter will be tracked.
--   **Header:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified request header will be tracked.
+-   **ASN:** {{ PRODUCT }} Premier only. Indicates that the requests from each unique autonomous system number (ASN) will be tracked.
+-   **Status Code:** {{ PRODUCT }} Premier only. Indicates that the requests from either a specific or a range of HTTP status codes will be tracked. For example, if you specify `200`, then {{ PRODUCT }} will track all requests that result in a `200 OK` response. Alternatively, if you specify `300-399`, then {{ PRODUCT }} will track all requests that result in a `3xx` response.
+-   **JA3:** {{ PRODUCT }} Premier only. Indicates that the requests for each unique JA3 signature will be tracked.
+-   **Cookie:** {{ PRODUCT }} Premier only. Indicates that the requests for each unique value for the specified cookie will be tracked.
+-   **ARGS:** {{ PRODUCT }} Premier only. Indicates that the requests for each unique value for the specified query string parameter will be tracked.
+-   **Header:** {{ PRODUCT }} Premier only. Indicates that the requests for each unique value for the specified request header will be tracked.
 
-{{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier allows you to combine up to two of the above sources when defining unique clients.
+{{ PRODUCT }} Premier allows you to combine up to two of the above sources when defining unique clients.
 
 ### Rate Limit {/*rate-limit*/}
 
@@ -276,9 +276,9 @@ The types of prerequisites that may be defined are described below.
 
     </Callout>
 
--   **JA3:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. A request will count towards the rate limit when its JA3 signature matches the specified signature.
--   <a id="request-query" />**Request query:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. A request will count towards the rate limit when its query string matches the specified value or pattern.
--   **Request cookie:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. A request will count towards the rate limit when it contains the specified cookie with the specified value.
+-   **JA3:** {{ PRODUCT }} Premier only. A request will count towards the rate limit when its JA3 signature matches the specified signature.
+-   <a id="request-query" />**Request query:** {{ PRODUCT }} Premier only. A request will count towards the rate limit when its query string matches the specified value or pattern.
+-   **Request cookie:** {{ PRODUCT }} Premier only. A request will count towards the rate limit when it contains the specified cookie with the specified value.
 
 **Key information:**
 
@@ -378,7 +378,7 @@ You may create, modify, and delete rate rules.
 2.  Click **+ New Rate Ruleset**.
 3.  In the **Name** option, type the unique name by which this rate rule will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
 4.  In the **Apply rate limit to** option, indicate whether the rate limit should be applied across all requests or to [each unique client](#source).
-    **{{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier Only:** You may select up to two sources when defining a unique client. For example, you may select `User agent` and `Cookie` to identify each combination of a specific cookie and user agent as a unique client.
+    **{{ PRODUCT }} Premier Only:** You may select up to two sources when defining a unique client. For example, you may select `User agent` and `Cookie` to identify each combination of a specific cookie and user agent as a unique client.
 
 5.  In the **Rate limit** option, define the maximum rate at which requests may flow to your origin server(s). Define this rate by indicating the maximum number of requests for the selected time interval (e.g., 1 second, 30 seconds, 1 minute, etc.).
 6.  Optional. Create a condition group to identify the types of requests that qualify for rate limiting.

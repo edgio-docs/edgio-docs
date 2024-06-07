@@ -44,7 +44,7 @@ Organization management consists of:
 
     <Callout type="info">
 
-      As shown above, the URL for your organization's **Overview** page is formed by appending your organization's name to the {{ PORTAL }}'s base URL. Additionally, an organization's edge link starts with the organization's name (e.g., `https://my-company-nature-videos-production.edgio.link/`).
+      As shown above, the URL for your organization's **Web Properties** page is formed by appending your organization's name to the {{ PORTAL }}'s base URL. Additionally, an organization's edge link starts with the organization's name (e.g., `https://my-company-nature-videos-production.edgio.link/`).
 
     </Callout>
 

@@ -68,7 +68,7 @@ Bot Manager Advanced inspects each request to determine whether the request:
 
 ## Actions {/*actions*/}
 
-If you are using Bot Manager Standard, then you may only apply a browser challenge to requests. If you are using Bot Manager Advanced, then you may apply any of the following enforcement actions to bot traffic:
+If you are using Bot Manager Standard, then you may only apply a [browser challenge](#browser-challenge) to requests. If you are using Bot Manager Advanced, then you may apply any of the following enforcement actions to bot traffic:
 
 -   [Alert](#alert)
 -   [Block](#block)

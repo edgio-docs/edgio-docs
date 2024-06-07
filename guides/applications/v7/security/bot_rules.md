@@ -70,215 +70,241 @@ Bot Manager Advanced inspects each request to determine whether the request:
 
 If you are using Bot Manager Standard, then you may only apply a browser challenge to requests. If you are using Bot Manager Advanced, then you may apply any of the following enforcement actions to bot traffic:
 
--   **Alert:** Generates an alert. Use this mode to track detected threats through the **Security** dashboard without impacting production traffic.
--   **Block:** Drops the request and the client will receive a `403 Forbidden` response. <a id="browser-challenge" />
--   **Browser Challenge:** Sends a browser challenge to the client. The client must solve this challenge within a few seconds.
+-   [Alert](#alert)
+-   [Block](#block)
+-   [Browser Challenge](#browser-challenge)
+-   [Custom Response](#custom-response)
+-   [reCAPTCHA](#recaptcha)
+-   [Redirect](#redirect)
+-   [Silent Close](#silent-close)
 
-    **Response:** The results of the above browser challenge determines what happens next.
+### Alert {/*alert*/}
 
-    -   **Solved:** If the client is able to solve the challenge, then our CDN serves the requested content. Additionally, a cookie will be added to the user's session. This cookie instructs our CDN to serve content to the user without requiring a browser challenge. Once the cookie expires, new requests for content protected by Bot Manager will once again require the client to solve a challenge.
+Generates an alert. Use this mode to track detected threats through the **Security** dashboard without impacting production traffic.
 
-        <Callout type="info">
+### Block {/*block*/}
 
-          Define the duration for this cookie through the **Valid for (in seconds)** option.
+Drops the request and the client will receive a `403 Forbidden` response. 
 
-        </Callout>
+### Browser Challenge {/*browser-challenge*/}
 
-    -   **Unsolved:** If the client is unable to solve the challenge, then our CDN responds with a new browser challenge.
+Sends a browser challenge to the client. The client must solve this challenge within a few seconds.
 
-    **Key information:**
+The client's response to the browser challenge determines what happens next.
 
-    -   Solving a challenge requires a JavaScript-enabled client. Users that have disabled JavaScript on their browsing session will be unable to access content protected by browser challenges.
-    -   We strongly recommend that you avoid applying browser challenges to machine-to-machine interactions.
+-   **Solved:** If the client is able to solve the challenge, then our CDN serves the requested content. Additionally, a cookie will be added to the user's session. This cookie instructs our CDN to serve content to the user without requiring a browser challenge. Once the cookie expires, new requests for content protected by Bot Manager will once again require the client to solve a challenge.
 
-        For example, applying browser challenges to API traffic will disrupt your API workflow.
+    <Callout type="info">
 
-    -   The **HTTP Status Code** option determines the HTTP status code for the response provided to clients that are being served the browser challenge.
+      Define the duration for this cookie through the **Valid for (in seconds)** option.
 
-        <Callout type="info">
+    </Callout>
 
-          Setting this option to certain status codes (e.g., `204`) may prevent clients that successfully solve a browser challenge from properly displaying your site.
+-   **Unsolved:** If the client is unable to solve the challenge, then our CDN responds with a new browser challenge.
 
-        </Callout>
+**Key information:**
 
-    -   You may define a custom payload for the browser challenge by enabling the **Custom Browser Challenge Page** option and then setting the **Browser Challenge Page Template** option to a Base64-encoded HTML page that we will serve as a custom browser challenge. This HTML page must satisfy the following requirements:
+-   Solving a challenge requires a JavaScript-enabled client. Users that have disabled JavaScript on their browsing session will be unable to access content protected by browser challenges.
+-   We strongly recommend that you avoid applying browser challenges to machine-to-machine interactions.
 
-        -   It must contain the following mustache: {{BOT_MUSTACHE}}
+    For example, applying browser challenges to API traffic will disrupt your API workflow.
 
-            <Callout type="tip">
+-   If you are using Bot Manager Advanced, you may customize the difficulty of the browser challenge by setting the **Browser challenge level** option to `Difficulty-based` and then selecting the desired difficulty level. 
 
-              Due to the speed at which our JavaScript function is executed, we recommend that you place the {{BOT_MUSTACHE}} mustache after all rendered content (e.g., near the end of the document's body).
+    -   Choose a difficulty level from 1 to 20. {{ PRODUCT }} serves our standard browser challenge when it is  set it to `0`.
+    -   Smaller levels are easier to solve, while larger levels introduce latency.
+    -   The amount of latency introduced by a level varies according to the client's CPU. However, it is safe to assume that double-digit levels may take various seconds to solve. 
 
-            </Callout>
+-   The **HTTP Status Code** option determines the HTTP status code for the response provided to clients that are being served the browser challenge.
 
-            <Callout type="info">
+    <Callout type="info">
 
-              We will replace the above {{BOT_MUSTACHE}} mustache with JavaScript upon serving a browser challenge.
+      Setting this option to certain status codes (e.g., `204`) may prevent clients that successfully solve a browser challenge from properly displaying your site.
 
-            </Callout>
+    </Callout>
 
-        -   It must check whether the user agent allows JavaScript using a `<noscript>` tag. Your custom HTML must display an error message if it has been disabled.
-        -   If your scripts sets third-party cookies, then your custom HTML must display an error message if they have been disabled.
+#### Custom Browser Challenge Template {/*browser-challenge-page-template*/}
 
-    <a id="custom-response" />
+By default, our browser challenge is served through an {{ PRODUCT }}-branded page. Serve our browser challenge through your own custom page by enabling the **Custom Browser Challenge Page** option and then setting the **Browser Challenge Page Template** option to the desired Base64-encoded HTML page. This HTML page must satisfy the following requirements:
 
--   **Custom Response:** Returns a custom response.
+-   It must contain the following mustache: {{BOT_MUSTACHE}}
 
-    -   **Response Body:** Define the payload that will be delivered to the client.
+    This mustache is a placeholder for our JavaScript browser challenge.
 
-        <Callout type="tip">
+    <Callout type="tip">
 
-          This option supports the use of [event variables](/applications/security/security_applications#event-variables) to customize the response.
+      Due to the speed at which our JavaScript function is executed, we recommend that you place the {{BOT_MUSTACHE}} mustache after all rendered content (e.g., near the end of the document's body).
 
-        </Callout>
+    </Callout>
 
-        **Sample payload for a HTML file:**
+-   It must check whether the user agent allows JavaScript using a `<noscript>` tag. Your custom HTML must display an error message if it has been disabled.
+-   If your scripts sets third-party cookies, then your custom HTML must display an error message if they have been disabled.
 
-        ```html
-        <!DOCTYPE html><html>
+### Custom Response {/*custom-response*/}
 
-        <head><title>Page Not Found</title></head>
+Returns a custom response.
 
-        <body>Page not found.</body>
+-   **Response Body:** Define the payload that will be delivered to the client.
 
-        </html>
-        ```
+    <Callout type="tip">
 
-    -   **HTTP Status Code:** Defines the HTTP status code that will be sent to the client.
+      This option supports the use of [event variables](/applications/security/security_applications#event-variables) to customize the response.
 
-        <details>
-          <summary>View valid status codes.</summary>
+    </Callout>
 
-          -   100
-          -   101
-          -   102
-          -   200
-          -   201
-          -   202
-          -   203
-          -   204
-          -   205
-          -   206
-          -   207
-          -   208
-          -   226
-          -   300
-          -   301
-          -   302
-          -   303
-          -   304
-          -   305
-          -   306
-          -   307
-          -   308
-          -   400
-          -   401
-          -   402
-          -   403
-          -   404
-          -   405
-          -   406
-          -   407
-          -   408
-          -   409
-          -   410
-          -   411
-          -   412
-          -   413
-          -   414
-          -   415
-          -   416
-          -   417
-          -   421
-          -   422
-          -   423
-          -   424
-          -   426
-          -   428
-          -   429
-          -   431
-          -   451
-          -   500
-          -   501
-          -   502
-          -   503
-          -   504
-          -   505
-          -   507
-          -   508
-          -   509
-          -   510
-          -   511
+    **Sample payload for a HTML file:**
 
-        </details>
+    ```html
+    <!DOCTYPE html><html>
 
-    -   **Custom Response Headers:** Defines one or more response headers that will be sent to the client. Define each custom response header on a separate line.
+    <head><title>Page Not Found</title></head>
 
-        **Syntax:** `<HEADER>:<VALUE>`
+    <body>Page not found.</body>
 
-        **Example:** `MyCustomHeader: True`
+    </html>
+    ```
 
-        <Callout type="info">
+-   **HTTP Status Code:** Defines the HTTP status code that will be sent to the client.
 
-          This option supports the use of [event variables](/applications/security/security_applications#event-variables) to customize the response.
+    <details>
+      <summary>View valid status codes.</summary>
 
-        </Callout>
+      -   100
+      -   101
+      -   102
+      -   200
+      -   201
+      -   202
+      -   203
+      -   204
+      -   205
+      -   206
+      -   207
+      -   208
+      -   226
+      -   300
+      -   301
+      -   302
+      -   303
+      -   304
+      -   305
+      -   306
+      -   307
+      -   308
+      -   400
+      -   401
+      -   402
+      -   403
+      -   404
+      -   405
+      -   406
+      -   407
+      -   408
+      -   409
+      -   410
+      -   411
+      -   412
+      -   413
+      -   414
+      -   415
+      -   416
+      -   417
+      -   421
+      -   422
+      -   423
+      -   424
+      -   426
+      -   428
+      -   429
+      -   431
+      -   451
+      -   500
+      -   501
+      -   502
+      -   503
+      -   504
+      -   505
+      -   507
+      -   508
+      -   509
+      -   510
+      -   511
 
-        <Callout type="info">
+    </details>
 
-          All characters, including spaces, defined before or after the colon will be treated as a part of the specified header name or value, respectively.
+-   **Custom Response Headers:** Defines one or more response headers that will be sent to the client. Define each custom response header on a separate line.
 
-        </Callout>
+    **Syntax:** `<HEADER>:<VALUE>`
 
--   **reCAPTCHA:** Performs an automated assessment of a client's interaction with your site. This assessment, which is performed without user interaction, requires [Google reCAPTCHA v3](https://www.google.com/recaptcha/about/).
+    **Example:** `MyCustomHeader: True`
 
-    **Response:** The results of the above reCAPTCHA determines what happens next.
+    <Callout type="info">
 
-    -   **Acceptable:** If the client's reCAPTCHA score is acceptable, then our CDN serves the requested content. Additionally, a cookie will be added to the user's session. This cookie instructs our CDN to serve content to the user without performing an additional reCAPTCHA assessment. Once the cookie expires, new requests for content protected by Bot Manager will require the client's interactions with your site to be reassessed.
+      This option supports the use of [event variables](/applications/security/security_applications#event-variables) to customize the response.
 
-        <Callout type="info">
+    </Callout>
 
-          Define the duration for this cookie through the **Valid for (in seconds)** option.
+    <Callout type="info">
 
-        </Callout>
+      All characters, including spaces, defined before or after the colon will be treated as a part of the specified header name or value, respectively.
 
-    -   **Unacceptable:** If the client's reCAPTCHA score is unacceptable, then the response from the CDN is determined by the enforcement action defined within the reCAPTCHA's **Rule Action** option. You may set this option to any enforcement action, with the exception of Browser Challenge, that has been enabled within this bot rule set.
+    </Callout>
 
-    **Key information:**
+### reCAPTCHA {/*recaptcha*/}
 
-    -   Google reCAPTCHA v3 is a score-based system that learns through real traffic. For this reason, we recommend that you avoid applying reCAPTCHA to machine-to-machine interactions.
+Performs an automated assessment of a client's interaction with your site. This assessment, which is performed without user interaction, requires [Google reCAPTCHA v3](https://www.google.com/recaptcha/about/).
 
-    -   Setting up reCAPTCHA requires:
+The results of the reCAPTCHA determines what happens next.
 
-        1.  [Adding reCAPTCHA v3 to your site](https://www.google.com/recaptcha/admin/create) through Google. Upon adding reCAPTCHA to your site, Google will provide a reCAPTCHA site key and secret key.
-        2.  Configure a reCAPTCHA action within the desired bot rule set.
-        3.  From the **Bot Rules** tab, find the desired bot rule(s) and set the **Rule Action** option to `reCAPTCHA`. Save your changes.
-        4.  From the desired Security Application configuration:
+-   **Acceptable:** If the client's reCAPTCHA score is acceptable, then our CDN serves the requested content. Additionally, a cookie will be added to the user's session. This cookie instructs our CDN to serve content to the user without performing an additional reCAPTCHA assessment. Once the cookie expires, new requests for content protected by Bot Manager will require the client's interactions with your site to be reassessed.
 
-            1.  Verify that the **Production Bot Manager** option is set to the above bot rule set.
-            2.  Toggle the **reCAPTCHA off** option to **reCAPTCHA on**.
-            3.  Set the **reCAPTCHA Site Key** option to the site key provided by Google in step 1.
-            4.  Set the **reCAPTCHA Secret Key** option to the secret key provided by Google in step 1.
-            5.  Save your changes.
+    <Callout type="info">
 
-    -   The **Action Status** option determines the HTTP status code for the response provided to clients that are being assessed through reCAPTCHA.
+      Define the duration for this cookie through the **Valid for (in seconds)** option.
 
-        <Callout type="info">
+    </Callout>
 
-          Setting this option to certain status codes (e.g., `204`) may prevent clients from properly displaying your site.
+-   **Unacceptable:** If the client's reCAPTCHA score is unacceptable, then the response from the CDN is determined by the enforcement action defined within the reCAPTCHA's **Rule Action** option. You may set this option to any enforcement action, with the exception of Browser Challenge, that has been enabled within this bot rule set.
 
-        </Callout>
+**Key information:**
 
--   **Redirect:** Redirects requests to the specified URL.
+-   Google reCAPTCHA v3 is a score-based system that learns through real traffic. For this reason, we recommend that you avoid applying reCAPTCHA to machine-to-machine interactions.
 
-    **Key information:**
+-   Setting up reCAPTCHA requires:
 
-    -   The HTTP status code for this response will be a `302 Found`.
-    -   Set the **URL** option to the full URL to which requests will be redirected.
+    1.  [Adding reCAPTCHA v3 to your site](https://www.google.com/recaptcha/admin/create) through Google. Upon adding reCAPTCHA to your site, Google will provide a reCAPTCHA site key and secret key.
+    2.  Configure a reCAPTCHA action within the desired bot rule set.
+    3.  From the **Bot Rules** tab, find the desired bot rule(s) and set the **Rule Action** option to `reCAPTCHA`. Save your changes.
+    4.  From the desired Security Application configuration:
 
-        **Example:** `http://cdn.mydomain.com/marketing/busy.html`
+        1.  Verify that the **Production Bot Manager** option is set to the above bot rule set.
+        2.  Toggle the **reCAPTCHA off** option to **reCAPTCHA on**.
+        3.  Set the **reCAPTCHA Site Key** option to the site key provided by Google in step 1.
+        4.  Set the **reCAPTCHA Secret Key** option to the secret key provided by Google in step 1.
+        5.  Save your changes.
 
--   **Silent Close:** Drops the request without providing a response to the client.
+-   The **Action Status** option determines the HTTP status code for the response provided to clients that are being assessed through reCAPTCHA.
+
+    <Callout type="info">
+
+      Setting this option to certain status codes (e.g., `204`) may prevent clients from properly displaying your site.
+
+    </Callout>
+
+### Redirect {/*redirect*/}
+
+Redirects requests to the specified URL.
+
+**Key information:**
+
+-   The HTTP status code for this response will be a `302 Found`.
+-   Set the **URL** option to the full URL to which requests will be redirected.
+
+    **Example:** `http://cdn.mydomain.com/marketing/busy.html`
+
+### Silent Close {/*silent-close*/}
+
+Drops the request without providing a response to the client.
 
 ## Bot Manager Configuration {/*bot-manager-configuration*/}
 

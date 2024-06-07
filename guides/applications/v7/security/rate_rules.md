@@ -7,58 +7,38 @@ A rate rule restricts the flow of site traffic with the intention of:
 -   Diverting malicious or inadvertent DDoS traffic.
 -   Preventing a customer origin server from being overloaded.
 
-Requests that exceed the rate limit may be dropped, redirected to
-another URL, or sent a custom response. The type of enforcement action
-that will take place is determined by the Security Application
-configuration that leverages it.
+Requests that exceed the rate limit may be dropped, redirected to another URL, or sent a custom response. The type of enforcement action that will take place is determined by the Security Application configuration that leverages it.
 
 ## How Does It Work? {/*how-does-it-work*/}
 
-A rate rule restricts the rate of traffic that may be directed to one or
-more web sites. HTTP/HTTPS requests that exceed a rate rule will not be
-honored.
+A rate rule restricts the rate of traffic that may be directed to one or more web sites. HTTP/HTTPS requests that exceed a rate rule will not be honored.
 
 **Key information:**
 
--   Our service inspects all traffic, regardless of delivery platform,
-    when determining whether a rate rule is applicable.
--   A rate rule may be applied to all requests, unique clients, or
-    unique user agents.
+-   Our service inspects all traffic, regardless of delivery platform, when determining whether a rate rule is applicable.
+-   A rate rule may be applied to all requests, unique clients, or unique user agents.
 
     ![](/images/v7/security/rate_rules_source_scope.png)
 
-    {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier allows customers to apply a rate rule to unique clients, user agents, ASNs, JA3, cookies, query string parameters, and request headers. Additionally, you can combine up to two items. For example, you can apply a rate rule to unique user agents on a per ASN basis.
+    If you are using {{ PRODUCT }} Premier, then you may also apply a rate rule by HTTP status codes, ASNs, JA3, cookies, query string parameters, and request headers. Additionally, you can combine up to two items. For example, you can apply a rate rule to unique user agents on a per ASN basis.
 
--   A [Security Application](/applications/security/security_applications) configuration determines
-    the set of requests to which this rate rule will be applied. Use
-    condition groups to define one or more additional prerequisites
-    (e.g., URL or user agent) that a request must meet before it will
-    count towards the rate limit.
+-   A [Security Application](/applications/security/security_applications) configuration determines the set of requests to which this rate rule will be applied. Use condition groups to define one or more additional prerequisites (e.g., URL or user agent) that a request must meet before it will count towards the rate limit.
 
     <Callout type="info">
 
-      If one or more condition group(s) have been defined, then the
-      request must also satisfy all of the conditions defined within at
-      least one condition group.
+      If one or more condition group(s) have been defined, then the request must also satisfy all of the conditions defined within at least one condition group.
 
     </Callout>
--   A rate rule does not take into account whether content needs to be
-    requested from an origin server or if a cached version may be served
-    directly from our network.
--   A rate rule always runs in [production
-    mode](/applications/security/security_applications#enforcement-mode). Although you may not run it in audit mode, you may configure your security application configuration to only generate alerts when a rate limit is exceeded.
--   A rate rule is enforced by each POP according to the
-    approximate number of requests that it receives over the specified
+-   A rate rule does not take into account whether content needs to be requested from an origin server or if a cached version may be served directly from our network.
+-   A rate rule always runs in [production mode](/applications/security/security_applications#enforcement-mode). Although you may not run it in audit mode, you may configure your security application configuration to only generate alerts when a rate limit is exceeded.
+-   A rate rule is enforced by each POP according to the approximate number of requests that it receives over the specified
     time interval (e.g., 1 second, 10 seconds, or 1 minute).
 
--   {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further [evaluation of a
-    request](/applications/security/waf#threat-detection) once enforcement is triggered.
+-   {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further [evaluation of a request](/applications/security/waf#threat-detection) once enforcement is triggered.
 
     <Callout type="tip">
 
-      We recommend that you limit your use of the `Alert Only`
-      enforcement to the shortest amount of time necessary to validate
-      changes to your configuration.
+      We recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.
 
     </Callout>
 
@@ -73,7 +53,7 @@ Setting up a rate rule involves defining a rate limit and determining how that r
     -   Indiscriminately across all requests.
     -   To each unique client that exceeds the defined rate limit.
 
-        Identify a unique client by its user agent, IP address, or both. {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier customers may identify clients using up to two of the following criteria: IP address, user agent, ASN, JA3, cookie, query string parameters, and request headers.
+        Identify a unique client by its user agent, IP address, or both. {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier customers may identify clients using up to two of the following criteria: IP address, user agent, HTTP status code, ASN, JA3, cookie, query string parameters, and request headers.
 
 
 -   **[Condition Group:](#condition-group)** A request counts towards a rate limit when it satisfies all of the following criteria:
@@ -115,6 +95,7 @@ to** option. The available modes are described below.
 -   **User agent:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests from each unique user agent (e.g., web browser) will be tracked.
 
 -   **ASN:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests from each unique autonomous system number (ASN) will be tracked.
+-   **Status Code:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests from either a specific or a range of HTTP status codes will be tracked. For example, if you specify `200`, then {{ PRODUCT }} will track all requests that result in a `200 OK` response. Alternatively, if you specify `300-399`, then {{ PRODUCT }} will track all requests that result in a `3xx` response.
 -   **JA3:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique JA3 signature will be tracked.
 -   **Cookie:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified cookie will be tracked.
 -   **ARGS:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Indicates that the requests for each unique value for the specified query string parameter will be tracked.

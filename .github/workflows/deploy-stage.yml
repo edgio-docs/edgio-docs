@@ -77,6 +77,8 @@ jobs:
         with:
           number: ${{ steps.finder.outputs.pr }}
           header: preview
+          hide_and_recreate: true
+          hide_classify: 'OUTDATED'
           message: |
             ##### Last deployment (${{ steps.process_manifest.outputs.deployDate }}) 🚀
             Build URL: ${{ steps.process_manifest.outputs.buildUrl }}
@@ -91,9 +93,12 @@ jobs:
         id: read_markdown
         run: |
           BROKEN_LINKS=$(cat broken-links.md)
-          echo "BROKEN_LINKS=$BROKEN_LINKS" >> $GITHUB_ENV
-          echo "timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_ENV
-          echo "readable_time=$(date -u +"%Y-%m-%d %H:%M:%S UTC")" >> $GITHUB_ENV
+          echo "BROKEN_LINKS<<EOF" >> $GITHUB_ENV
+          echo "$BROKEN_LINKS" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+          echo "timestamp=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $GITHUB_ENV
+          echo "readable_time=$(date -u +%Y-%m-%d\ %H:%M:%S\ UTC)" >> $GITHUB_ENV
+        shell: /usr/bin/bash -e {0}
 
       - name: Upload Linkinator Output
         id: artifact-upload-step
@@ -109,6 +114,8 @@ jobs:
         with:
           number: ${{ steps.finder.outputs.pr }}
           header: broken-links
+          hide_and_recreate: true
+          hide_classify: 'OUTDATED'
           message: |
             ##### Broken Links 🚨
 

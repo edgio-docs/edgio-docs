@@ -1,7 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
-const manifestPath = path.join(__dirname, '.edgio', 'deployment-manifest.json');
+const manifestPath = path.join(
+  process.cwd(),
+  '.edgio',
+  'deployment-manifest.json'
+);
 
 // Read the deployment manifest
 fs.readFile(manifestPath, 'utf8', (err, data) => {

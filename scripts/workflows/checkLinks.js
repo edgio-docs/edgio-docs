@@ -82,7 +82,10 @@ linkinator.on('close', (code) => {
     fs.writeFileSync(fullOutputPath, commentContent.join(`\n\n`));
 
     // Reduce to the first 20 items for the comment
-    commentContent = commentContent.slice(0, 20).join(`\n\n`).replace('**', '');
+    commentContent = commentContent
+      .slice(0, 20)
+      .join(`\n\n`)
+      .replace(/\*\*/g, '');
 
     commentContent = `
 \`\`\`

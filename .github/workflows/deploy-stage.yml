@@ -92,7 +92,7 @@ jobs:
       - name: Read Broken Links Markdown
         id: read_markdown
         run: |
-          BROKEN_LINKS=$(cat broken-links.md)
+          BROKEN_LINKS=$(cat ./artifacts/broken-links.md)
           echo "BROKEN_LINKS<<EOF" >> $GITHUB_ENV
           echo "$BROKEN_LINKS" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV

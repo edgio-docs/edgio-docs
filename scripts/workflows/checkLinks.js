@@ -67,11 +67,11 @@ linkinator.on('close', (code) => {
         return `- **[${link.status}]** ${link.url}\n  └── Referrer: ${link.parent}`;
       })
       .join('\n\n');
-
-    // Output the comment content for GitHub Actions
-    console.log(`::set-output name=broken-links::${commentContent}`);
   } else {
     console.log('No broken links found.');
-    console.log('::set-output name=broken-links::No broken links found.');
+    commentContent = 'No broken links found.';
   }
+
+  // Write the markdown content to a file
+  fs.writeFileSync('broken-links.md', commentContent);
 });

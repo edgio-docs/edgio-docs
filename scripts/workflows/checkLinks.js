@@ -16,7 +16,7 @@ const linkinatorArgs = [
   '--timeout',
   '10000',
   '--skip',
-  '^(https?://)?(localhost|127.0.0.1|example.com|domain.com)(:d{1,5})?(/.*)?$',
+  '^.*(localhost|127.0.0.1|example.com|domain.com).*$',
 ];
 
 const linkinator = spawn('linkinator', linkinatorArgs);

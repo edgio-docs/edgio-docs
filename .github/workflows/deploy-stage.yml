@@ -105,9 +105,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: linkinator-output
-          path: |
-            linkinator-output.json
-            broken-links.md
+          path: ./artifacts
 
       - name: Comment broken links on PR
         uses: marocchino/sticky-pull-request-comment@v2.2.0

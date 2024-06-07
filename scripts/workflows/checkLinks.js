@@ -1,5 +1,6 @@
 const {spawn} = require('child_process');
 const fs = require('fs');
+const path = require('path');
 const URL = process.argv[2];
 
 console.log(`Starting link check for URL: ${URL}`);
@@ -17,6 +18,12 @@ const linkinatorArgs = [
 ];
 
 const linkinator = spawn('linkinator', linkinatorArgs);
+
+// Ensure the output directory exists
+const outputDir = path.join(process.cwd(), 'artifacts');
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir);
+}
 
 // Capture the stdout and stderr output
 linkinator.stdout.on('data', (data) => {
@@ -38,10 +45,10 @@ linkinator.on('close', (code) => {
     process.exit(1);
   }
 
-  // write the output to a file
-  fs.writeFileSync('linkinator-output.json', output);
+  const outputPath = path.join(outputDir, 'linkinator-output.json');
 
-  output = fs.readFileSync('linkinator-output.json', 'utf8');
+  // write the output to a file
+  fs.writeFileSync(outputPath, output);
 
   // Parse the JSON output
   let result;
@@ -73,6 +80,8 @@ linkinator.on('close', (code) => {
     commentContent = 'No broken links found.';
   }
 
+  const brokenLinksPath = path.join(outputDir, 'broken-links.md');
+
   // Write the markdown content to a file
-  fs.writeFileSync('broken-links.md', commentContent);
+  fs.writeFileSync(brokenLinksPath, commentContent);
 });

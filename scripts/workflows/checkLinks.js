@@ -6,6 +6,7 @@ const outputDir = path.join(process.cwd(), 'artifacts');
 const brokenLinksPath = path.join(outputDir, 'broken-links.md');
 const fullOutputPath = path.join(outputDir, 'broken-links-full.md');
 const JSONOutputPath = path.join(outputDir, 'linkinator-output.json');
+let output = '';
 
 console.log(`Starting link check for URL: ${URL}`);
 

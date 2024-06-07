@@ -2,7 +2,7 @@ const {spawn} = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const URL = process.argv[2];
-
+const outputDir = path.join(process.cwd(), 'artifacts');
 const brokenLinksPath = path.join(outputDir, 'broken-links.md');
 const fullOutputPath = path.join(outputDir, 'broken-links-full.md');
 const JSONOutputPath = path.join(outputDir, 'linkinator-output.json');
@@ -25,8 +25,6 @@ const linkinatorArgs = [
 const linkinator = spawn('linkinator', linkinatorArgs);
 
 // Ensure the output directory exists
-let output = 'No broken links found.';
-const outputDir = path.join(process.cwd(), 'artifacts');
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir);
 }

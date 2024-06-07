@@ -111,6 +111,8 @@ linkinator.on('close', (code) => {
       .replace(/\*\*/g, '');
 
     commentContent = `
+** Broken Links ** (${brokenLinks.length}) 🚨
+
 ${commentContent}
 (_${brokenLinks.length - 20} more broken links..._)`;
   } else {

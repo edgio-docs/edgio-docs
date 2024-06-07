@@ -108,7 +108,7 @@ jobs:
           ARTIFACT_ID=${{ steps.artifact-upload-step.outputs.artifact-id }}
           TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
           READABLE_TIME=$(date -u +%Y-%m-%d\ %H:%M:%S\ UTC)
-          HEADER="#### Broken Links (top 20) 🚨"
+          HEADER=""
           FOOTER="👉 [**Download the full report**](../actions/runs/$RUN_ID/artifacts/$ARTIFACT_ID) for a detailed view. 📄"
 
           BODY=$(cat broken-links.md)

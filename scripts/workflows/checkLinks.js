@@ -56,15 +56,16 @@ linkinator.on('close', (code) => {
   const brokenLinks = result.links.filter((link) => link.state === 'BROKEN');
 
   // Output the broken links
+  let commentContent;
   if (brokenLinks.length > 0) {
     console.log('Broken links found:');
-    const commentContent = brokenLinks
+    commentContent = brokenLinks
       .sort((a, b) => a.url.localeCompare(b.url))
       .map((link) => {
         const status = `[${link.status}] ${link.url}`;
         const referrer = `└── Referrer: ${link.parent}`;
         console.log(`${status}\n${referrer}`);
-        return `- **[${link.status}]** ${link.url}\n  └── Referrer: ${link.parent}`;
+        return `**[${link.status}]** ${link.url}\n  └── Referrer: ${link.parent}`;
       })
       .join('\n\n');
   } else {

@@ -96,7 +96,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: linkinator-output
-          path: linkinator-output.json
+          path: |
+            linkinator-output.json
+            broken-links.md
 
       - name: Comment broken links on PR
         uses: marocchino/sticky-pull-request-comment@v2.2.0
@@ -108,4 +110,4 @@ jobs:
 
             ${{ steps.read_markdown.outputs }}
 
-            [Download full report](../actions/runs/${{ github.run_id }}/artifacts/${{ steps.artifact-upload-step.outputs.artifact-id }}) for a detailed view.
+            👉 [**Download the full report**](../actions/runs/${{ github.run_id }}/artifacts/${{ steps.artifact-upload-step.outputs.artifact-id }}) for a detailed view. 📄

@@ -3,9 +3,12 @@ const fs = require('fs');
 const path = require('path');
 const URL = process.argv[2];
 
+const brokenLinksPath = path.join(outputDir, 'broken-links.md');
+const fullOutputPath = path.join(outputDir, 'broken-links-full.md');
+const JSONOutputPath = path.join(outputDir, 'linkinator-output.json');
+
 console.log(`Starting link check for URL: ${URL}`);
 
-let output = '';
 const linkinatorArgs = [
   URL,
   '--concurrency',
@@ -22,6 +25,7 @@ const linkinatorArgs = [
 const linkinator = spawn('linkinator', linkinatorArgs);
 
 // Ensure the output directory exists
+let output = 'No broken links found.';
 const outputDir = path.join(process.cwd(), 'artifacts');
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir);
@@ -47,10 +51,8 @@ linkinator.on('close', (code) => {
     process.exit(1);
   }
 
-  const outputPath = path.join(outputDir, 'linkinator-output.json');
-
   // write the output to a file
-  fs.writeFileSync(outputPath, output);
+  fs.writeFileSync(JSONOutputPath, output);
 
   // Parse the JSON output
   let result;
@@ -69,15 +71,19 @@ linkinator.on('close', (code) => {
   if (brokenLinks.length > 0) {
     console.log('Broken links found:');
     commentContent = brokenLinks
-      .slice(0, 20)
       .sort((a, b) => a.url.localeCompare(b.url))
       .map((link) => {
         const status = `[${link.status}] ${link.url}`;
         const referrer = `└── Referrer: ${link.parent}`;
         console.log(`${status}\n${referrer}`);
         return `**[${link.status}]** ${link.url}\n  └── Referrer: ${link.parent}`;
-      })
-      .join(`\n\n`);
+      });
+
+    // Write the full output to a file
+    fs.writeFileSync(fullOutputPath, commentContent.join(`\n\n`));
+
+    // Reduce to the first 20 items for the comment
+    commentContent = commentContent.slice(0, 20).join(`\n\n`).replace('**', '');
 
     commentContent = `
 \`\`\`
@@ -88,9 +94,6 @@ ${commentContent}
     console.log('No broken links found.');
     commentContent = 'No broken links found.';
   }
-
-  const brokenLinksPath = path.join(outputDir, 'broken-links.md');
-
   // Write the markdown content to a file
   fs.writeFileSync(brokenLinksPath, commentContent);
 });

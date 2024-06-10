@@ -63,6 +63,7 @@ jobs:
       - name: Deploy to docs.edg.io (stage)
         run: |
           yarn edgio:deploy --branch=$BRANCH_NAME --token=${{secrets.edgio_prod_deploy_token}} --environment=default
+          sleep 30 # wait for the deployment to finish propagating
         env:
           GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
 

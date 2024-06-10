@@ -63,6 +63,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Copy API Spec
+        id: copy_api_spec
         env:
           GITLAB_ACCESS_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
         run: |
@@ -71,8 +72,25 @@ jobs:
           rsync -av "eq-metrics-public-api/src/api/public-docs/paths/" "rest_api/openapi/paths"
         continue-on-error: true
 
+      - name: Check Copy API Spec Status
+        if: always()
+        run: |
+          if [ ${{ steps.copy_api_spec.outcome }} == "failure" ]; then
+            echo "COPY_API_SPEC_FAILED=true" >> $GITHUB_ENV
+          else
+            echo "COPY_API_SPEC_FAILED=false" >> $GITHUB_ENV
+          fi
+
       - name: Deploy to docs.edg.io (prod)
         if: steps.check_commit_message.outputs.skip_deploy != 'true'
         run: yarn edgio:deploy --branch=$BRANCH_NAME --token=${{ secrets.edgio_prod_deploy_token }} --environment=production
         env:
           GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
+
+      - name: Final Check for Failures
+        if: always()
+        run: |
+          if [ "$COPY_API_SPEC_FAILED" == "true" ]; then
+            echo "One or more steps failed."
+            exit 1
+          fi

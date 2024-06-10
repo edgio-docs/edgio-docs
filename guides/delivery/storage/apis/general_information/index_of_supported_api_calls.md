@@ -53,8 +53,8 @@ Calls are listed in alphabetical order within each interface. Note that there is
 |  multipart/complete|[Complete a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_http/#complete-multipart-upload) |
 |multipart/create|[Begin a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_http/#begin-multipart-upload) |
 |multipart-piece|[Create a Multipart Piece](/delivery/storage/apis/api_calls/working_with_multipart_http/#create-multipart-piece) |
-|post/file|[Web Browser Upload](/delivery/storage/apis/api_calls/uploading_files/#web-browser-upload) |
-|post/raw|[File Raw Post](/delivery/storage/apis/api_calls/uploading_files#file-raw-post) |
+|post/file|[Web Browser Upload](/delivery/storage/apis/api_calls/uploading_files_nonmultipart/#web-browser-upload) |
+|post/raw|[File Raw Post](/delivery/storage/apis/api_calls/uploading_files_nonmultipart#file-raw-post) |
 
 ## API Calls by Topic  {/*api-calls-by-topic*/}
 

@@ -14,7 +14,6 @@ This documentation is intended for programmers who are writing client or server 
 
 Resources about the above bullet points are described further in [Data Resources](#data-sources).
 
-
 ## Data Resources  {/*data-resources*/}
 
 The MMD Live APIs use four Data Resource objects. The method definitions using the Data Resources are defined in [API Requests - Query](#query), [API Requests - Create and Update](#create-and-update), and [API Requests - Delete](#delete).
@@ -169,7 +168,7 @@ slots/{slotId}/status`
 
 **Parameters**: None
 
-**Response**: The account's slot [Overview](#overview)
+**Response**: The account's slot [Overview](#get-overview-information-for-slots)
 
 **Errors**: Invalid value, Missing signature
 
@@ -187,7 +186,7 @@ slots/{slotId}/status`
 
 **Parameters**: No payload parameters required
 
-**Response**: The retrieved [Recording Schedule](#recording-schedule).
+**Response**: The retrieved [Recording Schedule](#recording-schedule-get).
 
 **Errors**: Invalid value, Missing signature, A schedule does not exist
 

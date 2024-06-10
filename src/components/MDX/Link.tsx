@@ -3,9 +3,9 @@ import * as React from 'react';
 import cn from 'classnames';
 import NextLink from 'next/link';
 
-import {ExternalLink} from 'components/ExternalLink';
-import {productsConfig} from 'config/appConfig';
-import {useAppContext} from 'contexts/AppContext';
+import { ExternalLink } from 'components/ExternalLink';
+import { productsConfig } from 'config/appConfig';
+import { useAppContext } from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 
 type AProps = JSX.IntrinsicElements['a'];
@@ -25,7 +25,7 @@ function Link({
 }: LinkProps) {
   const hrefType = getHrefType(href);
 
-  href = useNormalizedPath(href, versioned);
+  href = toNormalizedPath(href, versioned);
 
   const classes = 'text-link';
   const modifiedChildren = React.Children.toArray(children).map(
@@ -90,9 +90,15 @@ Link.displayName = 'Link';
 
 export default Link;
 
-export function useNormalizedPath(path: string | undefined, versioned = true) {
+export function toNormalizedPath(path: string | undefined, versioned = true) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const {version} = useConditioning();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const {context} = useAppContext();
+
+  if (!path) {
+    return '';
+  }
 
   // If the path is already a full URL or anchor, return it as-is
   const hrefType = getHrefType(path);

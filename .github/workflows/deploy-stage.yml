@@ -58,6 +58,7 @@ jobs:
           git clone https://oauth2:$GITLAB_ACCESS_TOKEN@gitlab.com/limelight-networks/cdn-analytics/core/server/eq-metrics-public-api.git
           rsync -av "eq-metrics-public-api/src/api/public-docs/components/" "rest_api/openapi/components"
           rsync -av "eq-metrics-public-api/src/api/public-docs/paths/" "rest_api/openapi/paths"
+        continue-on-error: true
 
       - name: Deploy to docs.edg.io (stage)
         run: |

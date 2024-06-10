@@ -57,7 +57,7 @@ function Link({
     hrefType = 'anchor';
   }
 
-  if (versioned) {
+  if (versioned && hrefType === 'internal') {
     href = version.toVersionedPath(href);
   }
 

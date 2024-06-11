@@ -81,47 +81,48 @@ jobs:
           header: preview
           hide_and_recreate: true
           hide_classify: 'OUTDATED'
+          # - Branch Preview: ${{ steps.process_manifest.outputs.branchUrl }}
           message: |
             #### Latest deployment (${{ steps.process_manifest.outputs.deployDate }}) 🚀
-            - Build URL: ${{ steps.process_manifest.outputs.buildUrl }}
-            - Branch URL: ${{ steps.process_manifest.outputs.branchUrl }}
-            - Edge URL: ${{ steps.process_manifest.outputs.edgeUrl }}
+            - Console Build: ${{ steps.process_manifest.outputs.consoleUrl }}
+            - Permalink Preview: ${{ steps.process_manifest.outputs.buildUrl }}
+            - Edge Preview: ${{ steps.process_manifest.outputs.edgeUrl }}
 
-      - name: Run Link Check
-        id: check_links
-        run: node scripts/workflows/checkLinks.js https://edgio-community-docs-edg-io-comsup-348-check-404s.edge.edgio-perma.link
+      # - name: Run Link Check
+      #   id: check_links
+      #   run: node scripts/workflows/checkLinks.js https://edgio-community-docs-edg-io-comsup-348-check-404s.edge.edgio-perma.link
 
-      - id: timestamps
-        run: |
-          echo "timestamp=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $GITHUB_ENV
-          echo "readable_time=$(date -u +%Y-%m-%d\ %H:%M:%S\ UTC)" >> $GITHUB_ENV
+      # - id: timestamps
+      #   run: |
+      #     echo "timestamp=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $GITHUB_ENV
+      #     echo "readable_time=$(date -u +%Y-%m-%d\ %H:%M:%S\ UTC)" >> $GITHUB_ENV
 
-      - name: Upload Linkinator Output
-        id: artifact-upload-step
-        uses: actions/upload-artifact@v4
-        with:
-          name: link-check-output
-          path: ./artifacts
+      # - name: Upload Linkinator Output
+      #   id: artifact-upload-step
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: link-check-output
+      #     path: ./artifacts
 
-      - name: Update Broken Links Markdown
-        id: update_markdown
-        run: |
-          RUN_ID=${{ github.run_id }}
-          ARTIFACT_ID=${{ steps.artifact-upload-step.outputs.artifact-id }}
-          TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-          READABLE_TIME=$(date -u +%Y-%m-%d\ %H:%M:%S\ UTC)
-          HEADER=""
-          FOOTER="👉 [**Download the full report**](../actions/runs/$RUN_ID/artifacts/$ARTIFACT_ID) for a detailed view. 📄"
+      # - name: Update Broken Links Markdown
+      #   id: update_markdown
+      #   run: |
+      #     RUN_ID=${{ github.run_id }}
+      #     ARTIFACT_ID=${{ steps.artifact-upload-step.outputs.artifact-id }}
+      #     TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+      #     READABLE_TIME=$(date -u +%Y-%m-%d\ %H:%M:%S\ UTC)
+      #     HEADER=""
+      #     FOOTER="👉 [**Download the full report**](../actions/runs/$RUN_ID/artifacts/$ARTIFACT_ID) for a detailed view. 📄"
 
-          BODY=$(cat broken-links.md)
-          echo -e "$HEADER\n\n$BODY\n\n$FOOTER" > broken-links.md
-        working-directory: ./artifacts
+      #     BODY=$(cat broken-links.md)
+      #     echo -e "$HEADER\n\n$BODY\n\n$FOOTER" > broken-links.md
+      #   working-directory: ./artifacts
 
-      - name: Comment broken links on PR
-        uses: marocchino/sticky-pull-request-comment@v2.2.0
-        with:
-          number: ${{ steps.finder.outputs.pr }}
-          header: broken-links
-          hide_and_recreate: true
-          hide_classify: 'OUTDATED'
-          path: ./artifacts/broken-links.md
+      # - name: Comment broken links on PR
+      #   uses: marocchino/sticky-pull-request-comment@v2.2.0
+      #   with:
+      #     number: ${{ steps.finder.outputs.pr }}
+      #     header: broken-links
+      #     hide_and_recreate: true
+      #     hide_classify: 'OUTDATED'
+      #     path: ./artifacts/broken-links.md

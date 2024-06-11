@@ -22,6 +22,16 @@ const nav = {
         {
           title: 'Properties',
           path: 'basics/properties',
+          routes: [
+            {
+              title: 'Create Self-Hosted Property',
+              path: 'basics/properties/create_self_hosted',
+            },
+            {
+              title: 'Create Edgio-Hosted Property',
+              path: 'basics/properties/create_edgio_hosted',
+            },
+          ],
         },
         {
           title: 'Environments',
@@ -288,6 +298,10 @@ const nav = {
             {
               title: 'JWT Verification',
               path: 'edge_functions/examples/jwt_verification',
+            },
+            {
+              title: 'Optimizely Experimentation',
+              path: 'edge_functions/examples/optimizely_experimentation',
             },
             {
               title: 'Redirects',

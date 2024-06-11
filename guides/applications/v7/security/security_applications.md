@@ -19,7 +19,7 @@ A Security App configuration:
 
     <Callout type="info">
 
-      The ability to secure and audit your production traffic using separate configurations requires {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ ACCOUNT_UPGRADE }}
+      The ability to secure and audit your production traffic using separate configurations requires {{ PRODUCT }} Premier, Business, or Essentials. {{ ACCOUNT_UPGRADE }}
 
     </Callout>
 
@@ -82,7 +82,7 @@ Your Security App configuration determines how {{ PRODUCT }} {{ PRODUCT_SECURITY
 
 <Callout type="info">
 
-  Wildcard and regular expression match comparison modes require {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ ACCOUNT_UPGRADE }}
+  Wildcard and regular expression match comparison modes require {{ PRODUCT }} Premier, Business, or Essentials. {{ ACCOUNT_UPGRADE }}
 
 </Callout>
 
@@ -351,7 +351,7 @@ The available enforcement actions are described below.
 
         **Example:** `http://cdn.mydomain.com/marketing/busy.html`
 
--   **Silent Close:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier only. Drops the request without providing a response to the client.
+-   **Silent Close:** {{ PRODUCT }} Premier only. Drops the request without providing a response to the client.
 
 ### Event Variables {/*event-variables*/}
 

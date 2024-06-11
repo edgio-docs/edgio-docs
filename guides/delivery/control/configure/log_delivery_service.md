@@ -34,26 +34,26 @@ This list is more focused than the company/account at the top of the page and is
 
 You can create a single configuration for any combination of shortname, storage location, and service type.
 
-1.  Click the **+** button at the top of the Log Delivery List Page.
+1. Click the **+** button at the top of the Log Delivery List Page.
 
     The *Add Configuration* page is displayed, and you will see a message warning you about extra fees if you choose to store logs in.
 
-2.  Fill out the fields at the top of the page, noting that required fields are marked with an asterisk in the user interface. See [Log Delivery Configuration Fields](#log-delivery-service-configuration-fields) for details.
-3.  Select fields to include in log files. See [Configuring Log Fields](#configuring-log-fields).
-4.  Save the configuration by clicking the **Save** button.
+2. Fill out the fields at the top of the page, noting that required fields are marked with an asterisk in the user interface. See [Log Delivery Configuration Fields](#log-delivery-service-configuration-fields) for details.
+3. Select fields to include in log files. See [Configuring Log Fields](#configuring-log-fields).
+4. Save the configuration by clicking the **Save** button.
 
 <Callout type="info">It can take 15 to 40 minutes for a new configuration to take effect.</Callout>
 
 ### Editing a Log Delivery Configuration  {/*editing-a-log-delivery-configuration*/}
 
-1.  Click the configuration's row on the Log Delivery List page.
+1. Click the configuration's row on the Log Delivery List page.
 
     The configuration is displayed in edit mode. If the configuration's storage location is Origin Storage, you will see a message warning you about extra fees if you choose to store logs in.
 
     <Callout type="info"> - Existing configurations include [Directory Layout and FileName Template Fields](#delivery-option-fields) <br /> - If your user does not have 'Manage' permissions for all fields are disabled and you cannot modify the configuration.</Callout>
 
-2.  Modify fields as needed. See [Log Delivery Configuration Fields](#log-delivery-service-configuration-fields) and [Configuring Log Fields](#configuring-log-fields) for details.
-3.  Save the configuration by clicking the **Save** button.
+2. Modify fields as needed. See [Log Delivery Configuration Fields](#log-delivery-service-configuration-fields) and [Configuring Log Fields](#configuring-log-fields) for details.
+3. Save the configuration by clicking the **Save** button.
 
 <Callout type="info"> - It can take 15 to 40 minutes for changes to take effect. <br /> -  Depending on your permissions, you may not be able to edit a configuration.</Callout>
 
@@ -92,12 +92,12 @@ Static fields are user-defined fields with a value that does not change.
 
 ### Deleting a Log Delivery Configuration  {/*deleting-a-log-delivery-configuration*/}
 
-1.  Click the configuration's row in the Log Delivery List page.
+1. Click the configuration's row in the Log Delivery List page.
 
     The configuration is displayed.
 
-2.  Click the **DELETE** button at the bottom of the page.
-3.  Agree to the deletion in the subsequent confirmation dialog.
+2. Click the **DELETE** button at the bottom of the page.
+3. Agree to the deletion in the subsequent confirmation dialog.
 
     Control deletes the configuration.
 
@@ -107,11 +107,11 @@ Static fields are user-defined fields with a value that does not change.
 
 You can deactivate a configuration for purposes such as forcing the configuration to stop gathering log data.
 
-1.  Click the configuration's row in the Log Delivery List page.
+1. Click the configuration's row in the Log Delivery List page.
 
     The configuration is displayed.
 
-2.  Click the **DEACTIVATE** button at the bottom of the page.
+2. Click the **DEACTIVATE** button at the bottom of the page.
 
     A confirmation message is displayed at the top right of the page and the button's label changes to ACTIVATE..
 
@@ -123,11 +123,11 @@ You can deactivate a configuration for purposes such as forcing the configuratio
 
 You can reactivate a deactivated configuration.
 
-1.  Click the configuration's row in the Log Delivery List page.
+1. Click the configuration's row in the Log Delivery List page.
 
     The configuration is displayed.
 
-2.  Click the **ACTIVATE** button at the bottom of the page.
+2. Click the **ACTIVATE** button at the bottom of the page.
 
     A confirmation message is displayed at the top right of the page and the button's label changes to **DEACTIVATE**.
 
@@ -143,13 +143,13 @@ You can store your log files on the Amazon S3 platform. Amazon S3 is a cloud obj
 
 Before configuring Amazon S3 as a storage location, you must do the following:
 
-*   Create an S3 Identity and Access Management (IAM) user in Amazon's configuration screens.
+* Create an S3 Identity and Access Management (IAM) user in Amazon's configuration screens.
 
-*   Give the IAM user the following permissions for the bucket where you want to store logs:
+* Give the IAM user the following permissions for the bucket where you want to store logs:
 
-    *   ListBucket
-    *   GetObject
-    *   PutObject
+    * ListBucket
+    * GetObject
+    * PutObject
 
 #### Configuration Fields  {/*configuration-fields*/}
 
@@ -171,26 +171,26 @@ You can store your log files on the Google Cloud Storage platform. Google Cloud 
 
 Before configuring Google Cloud Storage as a storage location, you must do the following:
 
-1.  Create a Google Cloud Project (GCP) or use an existing project. See Google's [Google Cloud Platform - Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects) guide for instructions.
+1. Create a Google Cloud Project (GCP) or use an existing project. See Google's [Google Cloud Platform - Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects) guide for instructions.
 
-2.  Set up a GCP bucket to store your logs. You can create a new bucket or use an existing one. See Google's [Create Storage Buckets Guide](https://cloud.google.com/storage/docs/creating-buckets) for instructions..
+2. Set up a GCP bucket to store your logs. You can create a new bucket or use an existing one. See Google's [Create Storage Buckets Guide](https://cloud.google.com/storage/docs/creating-buckets) for instructions..
 
-3.  Create a Google service account that will use to access your bucket. See Google's [Service accounts](https://cloud.google.com/iam/docs/service-accounts) guide for instructions.
+3. Create a Google service account that will use to access your bucket. See Google's [Service accounts](https://cloud.google.com/iam/docs/service-accounts) guide for instructions.
 
-4.  Using Google's [IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles), guide, grant the following roles on the bucket:
-*   Storage Object Creator (`storage.objectCreate`)
-*   Storage Object Viewer (`storage.objectViewer`)
-5.  Add the service account as a member of the bucket you created in step 2.
+4. Using Google's [IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles), guide, grant the following roles on the bucket:
+* Storage Object Creator (`storage.objectCreate`)
+* Storage Object Viewer (`storage.objectViewer`)
+5. Add the service account as a member of the bucket you created in step 2.
 
-6.  Generate JSON access keys for the service account. See Google's [Creating service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys) guide for instructions.
+6. Generate JSON access keys for the service account. See Google's [Creating service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys) guide for instructions.
 
 #### Configuring a Google Cloud Storage Location  {/*configuring-a-google-cloud-storage-location*/}
 
-1.  Select **Google Cloud Storage** in the **STORAGE LOCATION** dropdoown.
+1. Select **Google Cloud Storage** in the **STORAGE LOCATION** dropdoown.
 
-2.  Configure the fields described in [Configuration Fields](#configuration-fields-cloud-storage).
+2. Configure the fields described in [Configuration Fields](#configuration-fields-cloud-storage).
 
-3.  Click **SAVE**.
+3. Click **SAVE**.
 
 #### Configuration Fields {/*configuration-fields-cloud-storage*/}
 
@@ -215,11 +215,11 @@ must be enabled for the name selected in the SHORTNAME.
 
 #### Configuring the Location  {/*configuring-the-location-origin-storage*/}
 
-1.  Select **Origin Storage** in the **STORAGE LOCATION** drop-down menu.
+1. Select **Origin Storage** in the **STORAGE LOCATION** drop-down menu.
 
-2.  Configure the field described in [Origin Storage Configuration Fields](#origin-storage-configuration-fields).
+2. Configure the field described in [Origin Storage Configuration Fields](#origin-storage-configuration-fields).
 
-3.  Click **SAVE**.
+3. Click **SAVE**.
 
     If is not enabled for the selected shortname, you will see a message when you attempt to save the configuration. Contact your Account Manager to enable Origin Storage for the shortname.
 
@@ -239,11 +239,11 @@ must be enabled for the name selected in the SHORTNAME.
 
 #### Configuring the Datadog Location  {/*configuring-the-datadog-location*/}
 
-1.  Select **Datadog** in the **STORAGE LOCATION** dropdown menu.
+1. Select **Datadog** in the **STORAGE LOCATION** dropdown menu.
 
-2.  Configure the fields as described in **[Configuration Fields](#datadog-configuration-fields)**.
+2. Configure the fields as described in **[Configuration Fields](#datadog-configuration-fields)**.
 
-3.  Click **SAVE**.
+3. Click **SAVE**.
 
 
 #### Datadog Configuration Fields  {/*datadog-configuration-fields*/}
@@ -261,9 +261,9 @@ Edgio's Log Delivery Service conforms to General Data Protection Regulations (GD
 
 You can configure logs to include the following fields, which contain Personally Identifiable Information (PII) :
 
-*   cs-cookie
-*   cs-uri
-*   so-src-uri
+* cs-cookie
+* cs-uri
+* so-src-uri
 
 ### Signing PII Agreements  {/*signing-pii-agreements*/}
 

@@ -300,6 +300,10 @@ const nav = {
               path: 'edge_functions/examples/jwt_verification',
             },
             {
+              title: 'Optimizely Experimentation',
+              path: 'edge_functions/examples/optimizely_experimentation',
+            },
+            {
               title: 'Redirects',
               path: 'edge_functions/examples/redirects',
             },

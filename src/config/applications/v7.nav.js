@@ -22,6 +22,16 @@ const nav = {
         {
           title: 'Properties',
           path: 'basics/properties',
+          routes: [
+            {
+              title: 'Create Self-Hosted Property',
+              path: 'basics/properties/create_self_hosted',
+            },
+            {
+              title: 'Create Edgio-Hosted Property',
+              path: 'basics/properties/create_edgio_hosted',
+            },
+          ],
         },
         {
           title: 'Environments',

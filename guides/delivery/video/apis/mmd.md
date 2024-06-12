@@ -397,7 +397,7 @@ Changes to a recording schedule, while a recording schedule is recording, may no
 | callbackUrl | URL the system will make POST requests to at various points in the recording lifecycle.<br /><br />Must be a valid http or https URL<br /><br />String<br /><br />Optional |
 | timezone | Timezone locality string. The timezone that the system will record is based on the start parameter.<br /><br />Example: `America/New_York`<br /><br />String<br /><br />Required |
 
-**Response**: The updated [Recording Schedule](#recording-schedule).
+**Response**: The updated Recording Schedule.
 
 **Errors**: Invalid value, Missing signature
 
@@ -419,7 +419,7 @@ The following method is available for deleting slots:
 
 **Parameters**: No payload parameters required
 
-**Response**: The deleted [Recording Schedule](#recording-schedule).
+**Response**: The deleted Recording Schedule.
 
 **Errors**: Invalid value, Missing signature
 

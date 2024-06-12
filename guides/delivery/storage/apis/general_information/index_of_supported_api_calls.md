@@ -92,8 +92,8 @@ Calls are available in the interface unless otherwise indicated.
 | Create a directory and leading path segments | makeDir2 | [Create a Directory Along With Leading Paths](/delivery/storage/apis/api_calls/working_with_directories_json/#leading-paths) |
 | Delete a directory | deleteDir | [Delete a Directory](/delivery/storage/apis/api_calls/working_with_directories_json/#delete-directory) |
 | List directories | listDir | [List Directories](/delivery/storage/apis/api_calls/working_with_directories_json/#list-directory) |
-| List directories and files | listPath | [List Files and Directories](/delivery/storage/apis/api_calls/working_with_directories_json/#list) |
-| Obtain directory metadata | stat | [Obtain File or Directory Metadata](/delivery/storage/apis/api_calls/working_with_directories_json/#metadata) |
+| List directories and files | listPath | [List Files and Directories](/delivery/storage/apis/api_calls/working_with_directories_json/#list-directory) |
+| Obtain directory metadata | stat | [Obtain File or Directory Metadata](/delivery/storage/apis/api_calls/working_with_methods/#metadata) |
 | Rename a directory | rename | [Rename a File or Directory](/delivery/storage/apis/api_calls/working_with_directories_json/#rename) |
 
 ### Files  {/*files*/}

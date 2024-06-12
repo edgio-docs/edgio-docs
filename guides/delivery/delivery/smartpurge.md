@@ -22,6 +22,6 @@ You can access SmartPurge through either the Control Portal or the [SmartPurge R
 
 ## SmartPurge Guides {/*smartpurge-guides*/}
 
-[User Guide](/delivery/smartpurge/user_guide)
+[User Guide](/delivery/delivery/smartpurge/user_guide)
 
-[REST API Guide](/delivery/smartpurge/smartpurge_rest_api)
+[REST API Guide](/delivery/delivery/smartpurge/smartpurge_rest_api)

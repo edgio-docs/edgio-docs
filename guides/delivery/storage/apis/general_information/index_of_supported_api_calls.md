@@ -94,7 +94,7 @@ Calls are available in the interface unless otherwise indicated.
 | List directories | listDir | [List Directories](/delivery/storage/apis/api_calls/working_with_directories_json/#list-directory) |
 | List directories and files | listPath | [List Files and Directories](/delivery/storage/apis/api_calls/working_with_directories_json/#list-directory) |
 | Obtain directory metadata | stat | [Obtain File or Directory Metadata](/delivery/storage/apis/api_calls/working_with_methods/#metadata) |
-| Rename a directory | rename | [Rename a File or Directory](/delivery/storage/apis/api_calls/working_with_directories_json/#rename) |
+| Rename a directory | rename | [Rename a File or Directory](/delivery/storage/apis/api_calls/working_with_methods/#rename) |
 
 ### Files  {/*files*/}
 
@@ -103,10 +103,10 @@ Calls are available in the JSON-RPC interface only.
 | To | Use this call | For instructions see |
 |---|---|---|
 | Change a file's last modified time | setMTime | [Change a File or Directory Last Modification Time](/delivery/storage/apis/api_calls/working_with_methods/#change-time) |
-| Copy a file | fetchFileHTTP | [Copy a File](/delivery/storage/apis/api_calls/working_with_files/#copy-a-file) |
-| Delete a file | deleteFile | [Delete a File](/delivery/storage/apis/api_calls/working_with_files/#delete-a-file) |
-| Generate a MediaVault URL | mediaVaultURL | [Generate a MediaVault URL](/delivery/storage/apis/api_calls/working_with_files/#mediavault) |
-| List files | listFile | [List Files](/delivery/storage/apis/api_calls/working_with_files/#list-file) |
+| Copy a file | fetchFileHTTP | [Copy a File](/delivery/storage/apis/api_calls/working_with_files_json/#copy-a-file) |
+| Delete a file | deleteFile | [Delete a File](/delivery/storage/apis/api_calls/working_with_files_json/#delete-a-file) |
+| Generate a MediaVault URL | mediaVaultURL | [Generate a MediaVault URL](/delivery/storage/apis/api_calls/working_with_files_json/#mediavault) |
+| List files | listFile | [List Files](/delivery/storage/apis/api_calls/working_with_files_json/#list-file) |
 | List directories and files | listPath | [List Files and Directories](/delivery/storage/apis/api_calls/working_with_methods/#list) |
 | Obtain file metadata | stat | [Obtain File or Directory Metadata](/delivery/storage/apis/api_calls/working_with_methods/#metadata) |
 | Rename a file | rename | [Rename a File or Directory](/delivery/storage/apis/api_calls/working_with_methods/#rename) |

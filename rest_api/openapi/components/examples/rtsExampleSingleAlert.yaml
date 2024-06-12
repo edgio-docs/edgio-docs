@@ -1,0 +1,18 @@
+value:
+  '@type': Alert
+  '@id': /rts/v1/alerts/ba7d2900-809f-453d-bdfd-c720fa370456
+  id: ba7d2900-809f-453d-bdfd-c720fa370123
+  environment_id: c9980249-2fb6-4699-a68e-271383815700
+  name: Account has more than 100 5xx events for last 5m
+  condition_duration: 5m
+  conditions:
+    - metric:
+        status_code: 5xx
+        type: status_code_per_sec
+      operator: '>'
+      threshold: 100
+  notification:
+    email:
+      to:
+        - info@example.com
+        - address2@example.com

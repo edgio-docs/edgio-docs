@@ -1,0 +1,15 @@
+value:
+  name: request body for Alert
+  environment_id: 25e98143-1fb8-4852-a957-99ea929984cb
+  condition_duration: 1m
+  conditions:
+    - metric:
+        type: status_code_per_sec
+        status_code: 5xx
+      operator: '>'
+      threshold: 10
+  notification:
+    email:
+      to:
+        - info@example.com
+        - address2@example.com

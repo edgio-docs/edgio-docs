@@ -1,0 +1,27 @@
+title: Bandwidth Metric
+description: The amount of traffic flowing through our network.
+type: object
+required:
+  - type
+  - name
+  - unit
+properties:
+  type:
+    type: string
+  name:
+    type: string
+    enum:
+      - egress
+  unit:
+    type: string
+    description: The units for the specified threshold.
+    enum:
+      - kbps
+      - kBps
+      - Mbps
+      - MBps
+      - Gbps
+      - GBps
+      - Tbps
+      - TBps
+additionalProperties: false

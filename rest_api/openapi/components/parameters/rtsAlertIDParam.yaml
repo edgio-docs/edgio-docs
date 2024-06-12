@@ -4,4 +4,10 @@ schema:
   type: string
   format: uuid
 required: true
-description: Unique identifier (UUID) for the alert.
+description: >
+  The real-time alert's unique identifier (UUID).
+
+
+  Use the <a href="#tag/real-time-alert/operation/GetAllAlerts">Get All
+  Real-Time Alerts operation</a> to retrieve a list of real-time alerts and
+  their system-defined IDs.

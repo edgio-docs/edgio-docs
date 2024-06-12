@@ -36,8 +36,8 @@ put:
   requestBody:
     $ref: ../components/requestBodies/rtsAlertRequest.yaml
   responses:
-    '204':
-      $ref: ../components/responses/rtsNoContent.yaml
+    '200':
+      $ref: ../components/responses/rtsSingleAlert.yaml
     '400':
       $ref: ../components/responses/rtsBadRequest.yaml
     '401':

@@ -96,7 +96,7 @@ Logging for rate limited requests is downsampled to 10% due to the volume of req
 
 ### Rate Enforcer Tab {/*rate-enforcement-view*/}
 
-A rate limit enforcement event identifies each instance that a set of requests exceed a rate limit. This type of event starts when a rate limit is exceeded. A Security App's configuration determines the duration for this event. 
+A rate limit enforcement event identifies each instance that a set of requests exceed a rate limit. This type of event starts when a rate limit is exceeded. The time period defined within a Security App's **Rate Rule** tab determines the duration for this event. 
 
 Analyze rate limit enforcement events to:
 

@@ -154,7 +154,7 @@ Enable HTTP/3, which uses QUIC as the transport protocol, by setting the `alt-sv
 
   <Callout type="important">
 
-  We may add or drop support for QUIC versions at any time. Ensure that you only advertise supported versions through the `%{quic_altsvc_versions}` variable
+  We may add or drop support for QUIC versions at any time. Ensure that you only advertise supported versions through the `%{quic_altsvc_versions}` variable.
 
   </Callout>
 

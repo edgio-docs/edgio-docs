@@ -76,7 +76,7 @@ A bot event occurs when a bot manager rule is violated. Analyze recently detecte
 The Rate Events view contains the following tabs:
 
 -   **Rate Limiting:** Contains statistics for requests that exceed a rate limit.
--   **Rate Enforcer:** Contains statistics for groupings of rate limited requests.
+-   **Rate Enforcer:** Contains statistics for rate limit enforcement events. An enforcement event starts when a rate limit is exceeded. A Security App's configuration determines the duration for this event. 
 
 ### Rate Limiting Tab {/*rate-limiting-view*/}
 
@@ -96,7 +96,9 @@ Logging for rate limited requests is downsampled to 10% due to the volume of req
 
 ### Rate Enforcer Tab {/*rate-enforcement-view*/}
 
-A rate limit enforcement event identifies when a set of requests were rate limited. Analyze rate limit enforcement events to:
+A rate limit enforcement event identifies each instance that a set of requests exceed a rate limit. This type of event starts when a rate limit is exceeded. A Security App's configuration determines the duration for this event. 
+
+Analyze rate limit enforcement events to:
 
 -   Visualize the time periods during which a high volume of requests resulted in the enforcement of a rate rule.
 -   Understand the frequency of rate limited requests.
@@ -105,7 +107,7 @@ A rate limit enforcement event identifies when a set of requests were rate limit
 
 #### Rate Enforcement Example {/*rate-enforcement-example*/}
 
-The **Rate Enforcer** tab will log a single event whenever your rate limit threshold is exceeded. This occurs regardless of the number of requests that end up being rate limited as a result of this enforcement.
+The **Rate Enforcer** tab logs a single event whenever your rate limit threshold is exceeded. This occurs regardless of the number of requests that end up being rate limited as a result of this enforcement.
 
 In this example, you have configured a rate limit of 300 requests per minute with an enforcement duration of 1 minute. Assuming the traffic pattern described below, the **Rate Enforcer** tab will indicate that 4 events took place.
 

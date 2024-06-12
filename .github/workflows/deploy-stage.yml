@@ -91,10 +91,10 @@ jobs:
           hide_classify: 'OUTDATED'
           # - Branch Preview: ${{ steps.process_manifest.outputs.branchUrl }}
           message: |
-            ##### Last deployment (${{ steps.deploy.outputs.deployDate }}) 🚀
-            - Console Build: ${{ steps.deploy.outputs.consoleUrl }}
-            - Permalink Preview: ${{ steps.deploy.outputs.buildUrl }}
-            - Edge URL: ${{ steps.deploy.outputs.edgeUrl }}
+            ##### Last deployment (${{ steps.process_manifest.outputs.deployDate }}) 🚀
+            - Console Build: ${{ steps.process_manifest.outputs.consoleUrl }}
+            - Permalink Preview: ${{ steps.process_manifest.outputs.buildUrl }}
+            - Edge URL: ${{ steps.process_manifest.outputs.edgeUrl }}
       - name: Final Check for Failures
         if: always()
         run: |

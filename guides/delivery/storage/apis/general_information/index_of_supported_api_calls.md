@@ -127,8 +127,8 @@ Calls are available in the JSON-RPC interface unless otherwise indicated.
 
 | To | Use this call | For instructions see |
 |---|---|---|
-| Create a mulltipart upload | createMultipart<br />POST to /multipart/create (HTTP interface) | [Begin a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#begin-multipart-upload)<br />[Begin a Multipart Upload (HTTP Interface)](/delivery/storage/apis/api_calls/working_with_multipart_json/#begin-multipart-upload) |
-| Create a multipart piece | POST to /multipart/piece (HTTP interface) | [Create a Multipart Piece](/delivery/storage/apis/api_calls/working_with_multipart_json/#create-multipart-piece) |
+| Create a mulltipart upload | createMultipart<br />POST to /multipart/create (HTTP interface) | [Begin a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#begin-multipart-upload)<br />[Begin a Multipart Upload (HTTP Interface)](/delivery/storage/apis/api_calls/working_with_multipart_http/#begin-multipart-upload) |
+| Create a multipart piece | POST to /multipart/piece (HTTP interface) | [Create a Multipart Piece](/delivery/storage/apis/api_calls/working_with_multipart_http/#create-multipart-piece) |
 | Get mapping of multipart status descriptions to integer codes | getMultipartStatusMap | [Get String Equivalents of Multipart Status Codes](/delivery/storage/apis/api_calls/working_with_multipart_json/#get-equivalent) |
 | Get a list of pieces in a mulltipart upload | listMultipartPiece | [List Pieces in a Multipart Upload](/delivery/storage/apis/api_calls/working_with_multipart_json/#list-pieces) |
 | Get a list of mulltipart uploads started by your user | listMultipart | [List Your Multipart Uploads](/delivery/storage/apis/api_calls/working_with_multipart_json/#list-multipart) |

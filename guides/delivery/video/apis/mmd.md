@@ -186,7 +186,7 @@ slots/{slotId}/status`
 
 **Parameters**: No payload parameters required
 
-**Response**: The retrieved [Recording Schedule](#recording-schedule-get).
+**Response**: The retrieved [Recording Schedule](#recording-schedules-get).
 
 **Errors**: Invalid value, Missing signature, A schedule does not exist
 
@@ -202,7 +202,7 @@ slots/{slotId}/status`
 
 **Optional Query Parameter**: `slotId`: If specified, the system will only return a list of Recording Schedules that are configured for the Slot
 
-**Response**: A list of the retrieved [Recording Schedules](#recording-schedule).
+**Response**: A list of the retrieved [Recording Schedules](#recording-schedules).
 
 **Errors**: - Invalid value <br />-Missing signature
 

@@ -74,7 +74,7 @@ Calls are available in the JSON-RPC interface only.
 
 | Action  | API Call| Details|
 | --- | --- | --- |
-| Determine your token's age | checkToken | [Determine Your Token's Age](/delivery/storage/apis_api_calls/working_with_sessions/#determine-token-age) |
+| Determine your token's age | checkToken | [Determine Your Token's Age](/delivery/storage/apis/api_calls/working_with_sessions/#determine-token-age) |
 | Set your token's expiry time | updateSession | [Set Your Token's Expiry](/delivery/storage/apis/api_calls/working_with_sessions/#set-your-tokens-exiry) |
 | Verify the server API connection if you are logged in | noop | [Perform an Authenticated Server Verification](Verifying the Server API Connection.htm#Perform) |
 | Verify the server API connection if you are not logged in | ping | [Perform an Unauthenticated Server Verification](Verifying the Server API Connection.htm#Perform2) |

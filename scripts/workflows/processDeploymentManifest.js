@@ -31,7 +31,7 @@ fs.readFile(manifestPath, 'utf8', (err, data) => {
     console.log(`::set-output name=buildUrl::${buildUrl}`);
     console.log(`::set-output name=branchUrl::${branchUrl}`);
     console.log(`::set-output name=edgeUrl::${edgeUrl}`);
-    console.log(`::set-output name=deployDate::${deployDate}`);
+    console.log(`::set-output name=deployDate::${deployDate} ET`);
   } catch (parseError) {
     console.error(`Error parsing deployment manifest: ${parseError.message}`);
     process.exit(1);

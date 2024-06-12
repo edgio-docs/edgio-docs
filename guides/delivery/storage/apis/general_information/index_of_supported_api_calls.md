@@ -76,9 +76,9 @@ Calls are available in the JSON-RPC interface only.
 | --- | --- | --- |
 | Determine your token's age | checkToken | [Determine Your Token's Age](/delivery/storage/apis/api_calls/working_with_sessions/#determine-token-age) |
 | Set your token's expiry time | updateSession | [Set Your Token's Expiry](/delivery/storage/apis/api_calls/working_with_sessions/#set-your-tokens-exiry) |
-| Verify the server API connection if you are logged in | noop | [Perform an Authenticated Server Verification](Verifying the Server API Connection.htm#Perform) |
-| Verify the server API connection if you are not logged in | ping | [Perform an Unauthenticated Server Verification](Verifying the Server API Connection.htm#Perform2) |
-| Generate a new key pair for use in signing requests | initKeyPair | [Initializing HMAC Key Pairs](Initializing HMAC Key Pairs.htm) |
+| Verify the server API connection if you are logged in | noop | [Perform an Authenticated Server Verification](/delivery/storage/apis/api_calls/verifying_the_server_api_connection/#pass-token) |
+| Verify the server API connection if you are not logged in | ping | [Perform an Unauthenticated Server Verification](/delivery/storage/apis/api_calls/verifying_the_server_api_connection/#no-pass-token) |
+| Generate a new key pair for use in signing requests | initKeyPair | [Initializing HMAC Key Pairs](/delivery/storage/apis/api_calls/initializing_hmac_key_pairs) |
 
 ### Directories  {/*directories*/}
 
@@ -87,14 +87,14 @@ Calls are available in the interface unless otherwise indicated.
 
 | To  | Use this call | For instructions see |
 | --- | --- | --- |
-| Change a directory's last modified time | setMTime | [Change a File or Directory Last Modification Time](Working With Directories and Files Common.htm#Set) |
-| Create a directory | makeDir<br /><br />/post/dir (HTTP interface) | [Create a Directory](Working with Directories JSON RPC.htm#Create)<br /><br />[Create a Directory](Working with Directories HTTP.htm#Create) (HTTP interface) |
-| Create a directory and leading path segments | makeDir2 | [Create a Directory Along With Leading Paths](Working with Directories JSON RPC.htm#Create2) |
-| Delete a directory | deleteDir | [Delete a Directory](Working with Directories JSON RPC.htm#Delete) |
-| List directories | listDir | [List Directories](Working with Directories JSON RPC.htm#List) |
-| List directories and files | listPath | [List Files and Directories](Working With Directories and Files Common.htm#List) |
-| Obtain directory metadata | stat | [Obtain File or Directory Metadata](Working With Directories and Files Common.htm#Obtain) |
-| Rename a directory | rename | [Rename a File or Directory](Working With Directories and Files Common.htm#Rename) |
+| Change a directory's last modified time | setMTime | [Change a File or Directory Last Modification Time](/delivery/storage/apis/api_calls/working_with_methods/#change-time) |
+| Create a directory | makeDir<br /><br />/post/dir (HTTP interface) | [Create a Directory](/delivery/storage/apis/api_calls/working_with_directories_json/#create-directory)<br /><br />[Create a Directory](/delivery/storage/apis/api_calls/working_with_directories_http) (HTTP interface) |
+| Create a directory and leading path segments | makeDir2 | [Create a Directory Along With Leading Paths](/delivery/storage/apis/api_calls/working_with_directories_json/#leading-paths) |
+| Delete a directory | deleteDir | [Delete a Directory](/delivery/storage/apis/api_calls/working_with_directories_json/#delete-directory) |
+| List directories | listDir | [List Directories](/delivery/storage/apis/api_calls/working_with_directories_json/#list-directory) |
+| List directories and files | listPath | [List Files and Directories](/delivery/storage/apis/api_calls/working_with_directories_json/#list) |
+| Obtain directory metadata | stat | [Obtain File or Directory Metadata](/delivery/storage/apis/api_calls/working_with_directories_json/#metadata) |
+| Rename a directory | rename | [Rename a File or Directory](/delivery/storage/apis/api_calls/working_with_directories_json/#rename) |
 
 ### Files  {/*files*/}
 

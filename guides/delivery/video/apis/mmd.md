@@ -202,7 +202,7 @@ slots/{slotId}/status`
 
 **Optional Query Parameter**: `slotId`: If specified, the system will only return a list of Recording Schedules that are configured for the Slot
 
-**Response**: A list of the retrieved [Recording Schedules](#recording-schedules).
+**Response**: A list of the retrieved [Recording Schedules](#recording-schedules-get-all).
 
 **Errors**: - Invalid value <br />-Missing signature
 
@@ -352,7 +352,7 @@ The following payload will create a schedule that will record all renditions eve
 }
 ```
 
-**Response**: The created [Recording Schedule](#recording-schedule) with the following additional fields:
+**Response**: The created [Recording Schedule](#create-a-recording-schedule) with the following additional fields:
 | Key | Value |
 |---|---|
 | id | String UUID of the recording schedule |

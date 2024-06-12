@@ -21,8 +21,10 @@ fs.readFile(manifestPath, 'utf8', (err, data) => {
     const branchUrl = buildUrl.replace(`-${manifest.number}`, '');
     const consoleUrl = `https://edgio.app/edgio-community/docs.edg.io/env/${manifest.environment.name}/builds/${manifest.number}`;
 
-    // Get the current date/time
-    const deployDate = new Date().toISOString();
+    // Get the current date/time in NYC timezone
+    const deployDate = new Date().toLocaleString('en-US', {
+      timeZone: 'America/New_York',
+    });
 
     // Output the URLs and deploy date in a format that GitHub Actions can read
     console.log(`::set-output name=consoleUrl::${consoleUrl}`);

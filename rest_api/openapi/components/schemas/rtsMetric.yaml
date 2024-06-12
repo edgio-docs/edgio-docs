@@ -1,0 +1,18 @@
+title: General Metric Schema
+description: Defines a condition's monitoring metric.
+type: object
+properties:
+  type:
+    type: string
+anyOf:
+  - $ref: ./rtsStatusCodePerSecMetric.yaml
+  - $ref: ./rtsStatusCodePercentageMetric.yaml
+  - $ref: ./rtsBandwidthMetric.yaml
+discriminator:
+  propertyName: type
+  mapping:
+    status_code_per_sec: ./rtsStatusCodePerSecMetric.yaml
+    status_code_percentage: ./rtsStatusCodePercentageMetric.yaml
+    bandwidth: ./rtsBandwidthMetric.yaml
+required:
+  - type

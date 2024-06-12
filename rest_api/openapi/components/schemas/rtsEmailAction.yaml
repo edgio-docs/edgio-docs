@@ -1,0 +1,15 @@
+title: Email Notification Action
+description: Email notification configuration.
+type: object
+required:
+  - to
+properties:
+  to:
+    type: array
+    description: >-
+      The set of email addresses to which a notification will be sent when a
+      real-time alert is triggered.
+    items:
+      type: string
+      format: email
+      minItems: 1

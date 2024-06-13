@@ -20,6 +20,9 @@ const PORTAL = `${COMPANY_NAME} Console`;
 const IDENTITY_DASHBOARD = `${PRODUCT} Identity Dashboard`;
 const DOCS_NAME = `${COMPANY_NAME} Docs`;
 const CHROME_EXTENSION = `${COMPANY_NAME} Developer Tools Chrome extension`;
+const CHROME_EXTENSION_URL =
+  'https://chromewebstore.google.com/detail/edgio-developer-tools/lennfodclaaegmceonbblmnnmpmpmahf';
+const CHROME_EXTENSION_LINK = `[${CHROME_EXTENSION}](${CHROME_EXTENSION_URL})`;
 
 const CLI_NAME = 'edg';
 const FULL_CLI_NAME = 'edgio';
@@ -169,6 +172,8 @@ const config = {
   API_SECURITY_VERSION,
   API_REQUEST_HEADERS,
   CHROME_EXTENSION,
+  CHROME_EXTENSION_LINK,
+  CHROME_EXTENSION_URL,
   CLI_NAME,
   CONFIG_FILE,
   ROUTES_FILE,

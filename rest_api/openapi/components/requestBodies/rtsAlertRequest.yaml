@@ -1,0 +1,8 @@
+required: true
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/rtsAlertProperties.yaml
+    examples:
+      reference:
+        $ref: ../examples/rtsExampleAlertBody.yaml

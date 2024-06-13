@@ -1,0 +1,14 @@
+title: Status Code Per Sec Metric
+description: >-
+  The number of times that a specific HTTP status code (e.g., 504) or class of
+  status codes (e.g., 4xx or 5xx) occurs per second.
+type: object
+required:
+  - type
+  - status_code
+properties:
+  type:
+    type: string
+  status_code:
+    $ref: ./rtsStatusCodePattern.yaml
+additionalProperties: false

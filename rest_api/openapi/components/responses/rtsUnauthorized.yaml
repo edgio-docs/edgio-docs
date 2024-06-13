@@ -1,0 +1,8 @@
+description: Unauthorized. Check token.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/rtsError.yaml
+    examples:
+      bad-request:
+        $ref: ../examples/rtsExampleUnauthorized.yaml

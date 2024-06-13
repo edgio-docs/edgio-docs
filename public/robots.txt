@@ -5,7 +5,6 @@ Allow: /
 # *
 User-agent: *
 Disallow: /docs/v*
-Allow: /docs/v7.x
 
 # Host
 Host: https://docs.edg.io

@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import { IconArrow } from 'components/Icon/IconArrow';
-import { useAppContext } from 'contexts/AppContext';
+import {IconArrow} from 'components/Icon/IconArrow';
+import {useAppContext} from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 
 const NextLink = Link;
@@ -112,7 +112,7 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
   let Delivery;
   let sitesGettingStarted;
 
-   return (
+  return (
     <StyledGetStarted>
       {children}
 

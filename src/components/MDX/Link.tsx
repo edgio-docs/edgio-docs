@@ -3,9 +3,9 @@ import * as React from 'react';
 import cn from 'classnames';
 import NextLink from 'next/link';
 
-import { ExternalLink } from 'components/ExternalLink';
-import { productsConfig } from 'config/appConfig';
-import { useAppContext } from 'contexts/AppContext';
+import {ExternalLink} from 'components/ExternalLink';
+import {productsConfig} from 'config/appConfig';
+import {useAppContext} from 'contexts/AppContext';
 import useConditioning from 'utils/hooks/useConditioning';
 
 type AProps = JSX.IntrinsicElements['a'];

@@ -50,6 +50,12 @@ Learn more about [Definitions](#definitions) and [Selectors](#selectors).
 
 ## Quick Start Examples {/* quickstart */}
 
+<ExampleButtons
+  title="HTMLTransformer"
+  siteUrl="https://edgio-community-examples-v7-ef-htmltransform-live.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-ef-htmltransform-example"
+/>
+
 ### Example 1: Basic Usage {/* example1 */}
 
 Here is an edge function that uses HtmlTransform to:

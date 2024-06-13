@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import {IconDelivery} from 'components/Icon/IconDelivery';
-import {useTheme} from 'contexts/ThemeContext';
+import { IconDelivery } from 'components/Icon/IconDelivery';
+import { useTheme } from 'contexts/ThemeContext';
 
 // Import Delivery-specific components
 // import ComponentName from '../../../Delivery/ComponentName';
@@ -9,6 +9,8 @@ import {useTheme} from 'contexts/ThemeContext';
 // Layout components
 import Container from '../../../Layout/Container';
 import SectionHeader from '../../../SectionHeader';
+import Cdn from '../../../product/Delivery/Cdn';
+import GetStarted from '../../../product/Delivery/GetStarted';
 
 // Icons
 
@@ -56,10 +58,13 @@ export function DeliveryFeatures() {
   return (
     <StyledFeatures>
       <Container>
-        <SectionHeader
-          Icon={themedValue(IconDelivery, IconDelivery)}
-          title="Get Started with Delivery"
-        />
+        <GetStarted>
+          <SectionHeader
+            Icon={themedValue(IconDelivery, IconDelivery)}
+            title="Get Started with Delivery"
+          />
+        </GetStarted>
+        <Cdn />
       </Container>
     </StyledFeatures>
   );

@@ -328,7 +328,7 @@ Creates a new HtmlTransformer instance. The `transformerDefinitions` is an array
 
 <Important>
 
-This usgae is not recommended for large responses as it may exceed memory
+This usage is not recommended for large responses as it may exceed memory
 limitations. Use the [`HtmlTransformer.stream()`](#stream) method to stream the response
 body during transformation.
 

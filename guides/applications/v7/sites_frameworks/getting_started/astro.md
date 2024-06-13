@@ -6,9 +6,9 @@ title: Astro
 
 <Callout type="important">
 
-  Astro 2.x is supported in all versions of {{ PRODUCT }} v7.
+Astro 2.x is supported in all versions of {{ PRODUCT }} v7.
 
-  Astro 3.x requires {{ PRODUCT }} v7.4.0 or later which introduces Node.js 18 support.
+Astro 3.x requires {{ PRODUCT }} v7.4.0 or later which introduces Node.js 18 support.
 
 </Callout>
 
@@ -34,7 +34,7 @@ npx astro build
 
 <Callout type="important">
 
-  Recent versions of Astro require Node.js >=18.14.1. You may need to update your `{{ CONFIG_FILE }}` file to specify Node.js 18 as the [cloud runtime](/applications/performance/cdn_as_code/edgio_config#cloudruntime).
+Recent versions of Astro require Node.js >=18.14.1. You may need to update your `{{ CONFIG_FILE }}` file to specify Node.js 18 as the [cloud runtime](/applications/performance/cdn_as_code/edgio_config#cloudruntime).
 
 </Callout>
 
@@ -77,7 +77,7 @@ To enable server side rendering, the following steps are required:
 
 ### Specify appPath inside {{ CONFIG_FILE }} {/* specify-apppath-inside */}
 
-After you've setup [@astrojs/node with Astro](https://docs.astro.build/en/applications/integrations-guide/node/), specify the server file path in `{{ CONFIG_FILE }}` as shown below:
+After you've setup [@astrojs/node with Astro](https://docs.astro.build/en/guides/integrations-guide/node/), specify the server file path in `{{ CONFIG_FILE }}` as shown below:
 
 ```js filename="{{ CONFIG_FILE }}" ins="1,4-6"
 const {join} = require('path');
@@ -95,9 +95,9 @@ module.exports = {
 Update `astro.config.mjs` to configure `server.host` as shown below:
 
 ```js filename="astro.config.mjs" ins="11-13"
-import { defineConfig } from 'astro/config';
+import {defineConfig} from 'astro/config';
 
-import node from "@astrojs/node";
+import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({

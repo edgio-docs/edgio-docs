@@ -19,36 +19,36 @@ const items = {
   default: [
     {
       title: 'Acceleration',
-      path: '/guides/delivery/delivery/guide/features/#acceleration',
+      path: '/delivery/delivery/guide/features/#acceleration',
     },
     {
       title: 'Content Acquisition ',
-      path: '/guides/delivery/delivery/guide/features/#content-acquisition',
+      path: '/delivery/delivery/guide/features/#content-acquisition',
     },
     {
       title: 'Customization',
-      path: '/guides/delivery/delivery/guide/features/#customization',
+      path: '/delivery/delivery/guide/features/#customization',
     },
     {
       title: 'Content Protection',
-      path: '/guides/delivery/delivery/guide/features/#content-protection',
+      path: '/delivery/delivery/guide/features/#content-protection',
     },
     {
       title: 'Defensive Protection ',
-      path: '/guides/delivery/delivery/guide/features/#defensive-protection',
+      path: '/delivery/delivery/guide/features/#defensive-protection',
     },
     {
       title: 'MediaVault',
-      path: '/guides/delivery/delivery/mediavault',
+      path: '/delivery/delivery/mediavault',
     },
     {
       title: 'SmartPurge',
-      path: '/guides/delivery/delivery/smartpurge',
+      path: '/delivery/delivery/smartpurge',
     },
   ],
 };
 
-export default function Cdn() {
+export default function DeliverySection() {
   const {
     version,
     version: {toVersionedPath},
@@ -63,7 +63,7 @@ export default function Cdn() {
       <SectionHeader
         Icon={themedValue(IconAppsPerformance, IconAppsPerformanceDark)}
         title="Delivery"
-        subtitle={`Deliver to multiple devices with today’s most popular protocols, including HTTP progressive download, Chunked Streaming, DASH, HLS, HDS, and MSS.
+        subtitle={`Deliver to multiple devices with today's most popular protocols, including HTTP progressive download, Chunked Streaming, DASH, HLS, HDS, and MSS.
         `}
       />
 

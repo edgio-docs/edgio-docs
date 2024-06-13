@@ -3,12 +3,11 @@ import styled from 'styled-components';
 
 import {IconArrow} from 'components/Icon/IconArrow';
 import {useAppContext} from 'contexts/AppContext';
-import useConditioning from 'utils/hooks/useConditioning';
 
 const NextLink = Link;
 
 interface IGetStartedCardProps {
-  icon: any; //React.NamedExoticComponent<React.SVGProps<SVGSVGElement>>;
+  icon?: any; //React.NamedExoticComponent<React.SVGProps<SVGSVGElement>>;
   title: string;
   subtitle: string;
   href: string;
@@ -104,13 +103,7 @@ const StyledGetStarted = styled.div`
 `;
 
 export default function GetStarted({children}: {children: React.ReactNode}) {
-  const {
-    version: {toVersionedPath, selectedVersion},
-  } = useConditioning();
   const {config} = useAppContext();
-
-  let Delivery;
-  let sitesGettingStarted;
 
   return (
     <StyledGetStarted>
@@ -118,23 +111,26 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
 
       <div className="cards">
         <GetStartedCard
+          icon={IconArrow}
           title={config.DELIVERY}
-          subtitle={`Power your streaming media and large file downloads on one of the world’s largest, most advanced global CDNs.
+          subtitle={`Power your streaming media and large file downloads on one of the world's largest, most advanced global CDNs.
           `}
-          href={toVersionedPath(`delivery`)}
+          href={`/delivery/delivery`}
           hrefText="Get Started"
         />
         <GetStartedCard
+          icon={IconArrow}
           title={config.STORAGE}
           subtitle={`A comprehensive object storage platform, built from the ground up to be your global media origin.`}
-          href={toVersionedPath(`storage`)}
+          href={`/delivery/storage`}
           hrefText="Learn More"
         />
         <GetStartedCard
+          icon={IconArrow}
           title={config.ANALYTICS}
           subtitle={`Intelligent analytics can help you build consumer loyalty and boost revenue. Get the insights you need, whatever your workflow.
           `}
-          href={toVersionedPath('control/reports')}
+          href={'/delivery/control/reports'}
           hrefText="View Reports"
         />
       </div>

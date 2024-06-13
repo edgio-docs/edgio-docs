@@ -4,8 +4,8 @@ import {IconDelivery} from 'components/Icon/IconDelivery';
 import {useTheme} from 'contexts/ThemeContext';
 
 import Container from '../../../Layout/Container';
-import Cdn from '../../../product/Delivery/Cdn';
-import GetStarted from '../../../product/Delivery/GetStarted';
+import DeliverySection from '../../../product/Delivery/DeliverySection';
+import GetStartedSection from '../../../product/Delivery/GetStartedSection';
 import SectionHeader from '../../../SectionHeader';
 
 // Icons
@@ -54,14 +54,14 @@ export function DeliveryFeatures() {
   return (
     <StyledFeatures>
       <Container>
-        <GetStarted>
+        <GetStartedSection>
           <SectionHeader
             Icon={themedValue(IconDelivery, IconDelivery)}
             title="Get Started with Delivery"
           />
-        </GetStarted>
+        </GetStartedSection>
 
-        <Cdn />
+        <DeliverySection />
       </Container>
     </StyledFeatures>
   );

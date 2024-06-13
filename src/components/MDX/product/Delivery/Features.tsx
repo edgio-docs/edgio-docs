@@ -4,10 +4,6 @@ import { IconDelivery } from 'components/Icon/IconDelivery';
 import { useTheme } from 'contexts/ThemeContext';
 import SectionHeader from '../../../SectionHeader';
 
-// Import Delivery-specific components
-// import ComponentName from '../../../Delivery/ComponentName';
-
-// Layout components
 import Container from '../../../Layout/Container';
 import Cdn from '../../../product/Delivery/Cdn';
 import GetStarted from '../../../product/Delivery/GetStarted';

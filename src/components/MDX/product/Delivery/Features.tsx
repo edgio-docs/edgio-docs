@@ -8,9 +8,9 @@ import { useTheme } from 'contexts/ThemeContext';
 
 // Layout components
 import Container from '../../../Layout/Container';
-import SectionHeader from '../../../SectionHeader';
 import Cdn from '../../../product/Delivery/Cdn';
 import GetStarted from '../../../product/Delivery/GetStarted';
+import SectionHeader from '../../../SectionHeader';
 
 // Icons
 

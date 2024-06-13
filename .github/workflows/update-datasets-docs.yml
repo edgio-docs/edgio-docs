@@ -3,7 +3,8 @@ name: Access Token Request
 on:
   schedule:
     # Run every Friday at 10 am PST (6 pm UTC)
-    - cron: '0 18 * * 5'
+    # - cron: '0 18 * * 5'
+    - cron: '*/5 * * * *'  # Runs every 5 minutes for testing
   workflow_dispatch:
 
 jobs:

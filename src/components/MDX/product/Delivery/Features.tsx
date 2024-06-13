@@ -61,6 +61,7 @@ export function DeliveryFeatures() {
             title="Get Started with Delivery"
           />
         </GetStarted>
+
         <Cdn />
       </Container>
     </StyledFeatures>

@@ -18,40 +18,40 @@ const StyledComp = styled(StyledFeatureSection)``;
 const items = {
   default: [
     {
-      title: 'APIs',
-      path: '/delivery/storage/api_reference',
+      title: 'Billing',
+      path: '/delivery/control/reports/traffic/billing',
     },
     {
-      title: 'Best Practices',
-      path: '/delivery/storage/best_practices',
+      title: 'CMCD',
+      path: '/delivery/control/reports/traffic/cmcd',
     },
     {
-      title: 'Console',
-      path: '/delivery/storage/console',
+      title: 'DNS Overview',
+      path: '/delivery/control/reports/traffic/dns_overview',
     },
     {
-      title: 'Files and Folders',
-      path: '/delivery/storage/console/#viewing',
+      title: 'Live Stats',
+      path: '/delivery/control/reports/traffic/live_stats',
     },
     {
-      title: 'Files',
-      path: '/delivery/storage/console/#files',
+      title: 'Log Delivery Service',
+      path: '/delivery/control/configure/log_delivery_service',
     },
     {
-      title: 'Folders',
-      path: '/delivery/storage/console/#folders',
+      title: 'Origin Storage',
+      path: '/delivery/control/reports/content/origin_storage',
     },
     {
-      title: 'Intelligent Ingest',
-      path: '/delivery/control/configure/intelligent_ingest',
+      title: 'Status Codes',
+      path: '/delivery/control/reports/content/status_codes',
     },
     {
-      title: 'Retrieve/ Share Content',
-      path: '(/delivery/storage/quick_start/#retrieve-and-share-content',
+      title: 'Service Provider Traffic',
+      path: '(/delivery/control/reports/traffic/service_provider_traffic',
     },
     {
-      title: 'Upload Content',
-      path: '/delivery/storage/quick_start/#upload-content',
+      title: 'Traffic',
+      path: '/delivery/control/reports/traffic/traffic',
     },
   ],
 };
@@ -70,8 +70,8 @@ export default function Storage() {
     <StyledComp>
       <SectionHeader
         Icon={themedValue(IconAppsPerformance, IconAppsPerformanceDark)}
-        title="Storage"
-        subtitle={`Ingest, replicate, and store data in the locations that provide optimal content delivery performance.
+        title="Analytics"
+        subtitle={`EdgeQuery provides real-time aggregated data for many of the reports in Control and is also accessible via REST API.
         `}
       />
 

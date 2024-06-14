@@ -4,10 +4,12 @@ import { IconDelivery } from 'components/Icon/IconDelivery';
 import { useTheme } from 'contexts/ThemeContext';
 
 import Container from '../../../Layout/Container';
+import SectionHeader from '../../../SectionHeader';
+import AnalyticsSection from '../../../product/Delivery/AnalyticsSection';
+import ControlSection from '../../../product/Delivery/ControlSection';
 import DeliverySection from '../../../product/Delivery/DeliverySection';
 import GetStartedSection from '../../../product/Delivery/GetStartedSection';
 import StorageSection from '../../../product/Delivery/StorageSection';
-import SectionHeader from '../../../SectionHeader';
 
 // Icons
 
@@ -64,6 +66,8 @@ export function DeliveryFeatures() {
 
         <DeliverySection />
         <StorageSection />
+        <AnalyticsSection />
+        <ControlSection />
       </Container>
     </StyledFeatures>
   );

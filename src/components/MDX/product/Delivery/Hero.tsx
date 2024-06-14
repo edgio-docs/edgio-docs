@@ -6,7 +6,7 @@ export function DeliveryHero() {
     <HeroContainer backgroundImage="var(--deliveryhero-bg-image)">
       <StyledContainer>
         <Content>
-          <h1>Content Delivery Network</h1>
+          <h1>Edgio Media Delivery</h1>
         </Content>
         <SearchComponent />
       </StyledContainer>

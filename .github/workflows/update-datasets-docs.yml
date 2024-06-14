@@ -52,13 +52,9 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v5
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        base: main
-        branch: update-from-script
-        title: "Update - Datasets script"
-        body: "This pull request contains updates from the datasets script."
-        labels: update
-        draft: false
+- name: Create PR
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: main
+          source_branch: update-from-script
+          pr_title: '[BOT] Update Datasets Script'

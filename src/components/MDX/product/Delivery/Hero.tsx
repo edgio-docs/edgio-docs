@@ -1,4 +1,4 @@
-import { Content, HeroContainer, StyledContainer } from 'components/Hero';
+import {Content, HeroContainer, StyledContainer} from 'components/Hero';
 import SearchComponent from 'components/SearchComponent';
 
 export function DeliveryHero() {

@@ -18,37 +18,45 @@ const StyledComp = styled(StyledFeatureSection)``;
 const items = {
   default: [
     {
-      title: 'Acceleration',
-      path: '/guides/delivery/delivery/guide/features/#acceleration',
+      title: 'APIs',
+      path: '/delivery/storage/api_reference',
     },
     {
-      title: 'Content Acquisition',
-      path: '/guides/delivery/delivery/guide/features/#content-acquisition',
+      title: 'Best Practices',
+      path: '/delivery/storage/best_practices',
     },
     {
-      title: 'Customization',
-      path: '/guides/delivery/delivery/guide/features/#customization',
+      title: 'Console',
+      path: '/delivery/storage/console',
     },
     {
-      title: 'Content Protection',
-      path: '/guides/delivery/delivery/guide/features/#content-protection',
+      title: 'Files and Folders',
+      path: '/delivery/storage/console/#viewing',
     },
     {
-      title: 'Defensive Protection',
-      path: '/guides/delivery/delivery/guide/features/#defensive-protection',
+      title: 'Files',
+      path: '/delivery/storage/console/#files',
     },
     {
-      title: 'MediaVault',
-      path: '/guides/delivery/delivery/mediavault',
+      title: 'Folders',
+      path: '/delivery/storage/console/#folders',
     },
     {
-      title: 'SmartPurge',
-      path: '/guides/delivery/delivery/smartpurge',
+      title: 'Intelligent Ingest',
+      path: '/delivery/control/configure/intelligent_ingest',
+    },
+    {
+      title: 'Retrieve/ Share Content',
+      path: '(/delivery/storage/quick_start/#retrieve-and-share-content',
+    },
+    {
+      title: 'Upload Content',
+      path: '/delivery/storage/quick_start/#upload-content',
     },
   ],
 };
 
-export default function Cdn() {
+export default function Storage() {
   const {
     version,
     version: {toVersionedPath},
@@ -62,8 +70,8 @@ export default function Cdn() {
     <StyledComp>
       <SectionHeader
         Icon={themedValue(IconAppsPerformance, IconAppsPerformanceDark)}
-        title="Delivery"
-        subtitle={`Deliver to multiple devices with today’s most popular protocols, including HTTP progressive download, Chunked Streaming, DASH, HLS, HDS, and MSS.
+        title="Storage"
+        subtitle={`Ingest, replicate, and store data in the locations that provide optimal content delivery performance.
         `}
       />
 

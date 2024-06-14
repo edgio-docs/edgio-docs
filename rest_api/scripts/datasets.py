@@ -2,15 +2,19 @@ import requests
 import json
 import os
 
-# Define the authentication endpoint and client_id
+# Retrieve client_id and client_secret from environment variables
+client_id = os.getenv('CLIENT_ID')
+client_secret = os.getenv('CLIENT_SECRET')
+
+# Define the authentication endpoint
 AUTH_ENDPOINT = "https://id.edgio.app/connect/token"
 
 # Make a POST request to the authentication endpoint to get the access token
 auth_response = requests.post(
     AUTH_ENDPOINT,
     data = {
-        "client_id": "XXXXXXX",
-        "client_secret": "XXXXXXXX",
+        "client_id": client_id,
+        "client_secret": client_secret,
         "grant_type": "client_credentials",
         "scope": "app.metrics"
     },

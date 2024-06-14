@@ -1,0 +1,5 @@
+description: OK. A list of all real-time alerts.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/rtsAlertCollection.yaml

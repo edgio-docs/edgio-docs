@@ -2,7 +2,7 @@
 title: Fastboot
 ---
 
-This guide shows you how to deploy an [Ember Fastboot](https://ember-fastboot.com/) application to {{ PRODUCT }}.
+This guide shows you how to deploy an [Ember Fastboot](https://github.com/ember-fastboot/ember-cli-fastboot/tree/master/packages/fastboot) application to {{ PRODUCT }}.
 
 ## Example {/* example */}
 

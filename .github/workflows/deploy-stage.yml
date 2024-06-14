@@ -4,41 +4,53 @@ on:
     branches:
       - '**'
       - '!main'
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Extract branch name
+        id: extract_branch
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/[^[:alnum:].-]/-/g')" >> $GITHUB_ENV
+
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.9.1
         with:
           access_token: ${{ github.token }}
-      - uses: actions/checkout@v3
+
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            **/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Node Dependencies
+        run: |
+          npm install -g linkinator
+          yarn install --frozen-lockfile
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
-      - name: Ruby dependencies
-        run: |
-          gem install pry json
-      - name: Cache node modules
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-      - run: yarn --frozen-lockfile
+
+      - name: Install Ruby dependencies
+        run: gem install pry json
+
       - name: Copy API Spec
         id: copy_api_spec
         env:
@@ -59,50 +71,30 @@ jobs:
       - name: Deploy to docs.edg.io (stage)
         run: |
           yarn edgio:deploy --branch=$BRANCH_NAME --token=${{secrets.edgio_prod_deploy_token}} --environment=default
+          sleep 30 # wait for the deployment to finish propagating
         env:
           GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
-      - name: Process Deployment Manifest and Set Output
-        id: deploy
-        run: |
-          # Read deployment manifest and parse JSON content
-          content=$(cat .edgio/deployment-manifest.json)
-          number=$(echo $content | jq -r .number)
-          permalink=$(echo $content | jq -r .url)
-          edgeUrl=$(echo $content | jq -r .environment.url)
-          environmentName=$(echo $content | jq -r .environment.name)
 
-          # Console URL
-          consoleUrl="https://edgio.app/edgio-community/docs.edg.io/env/${environmentName}/builds/${number}"
-
-          # Build permalink URL
-          buildUrl=$permalink
-
-          # Generate branchUrl by removing the -${number} part from the permalink
-          branchUrl=$(echo $permalink | sed "s/-${number}//")
-
-          deployDate=$(date +"%Y-%m-%d %H:%M:%S")
-
-          # Set output variables
-          echo "consoleUrl=${consoleUrl}" >> $GITHUB_OUTPUT
-          echo "buildUrl=${buildUrl}" >> $GITHUB_OUTPUT
-          echo "branchUrl=${branchUrl}" >> $GITHUB_OUTPUT
-          echo "edgeUrl=${edgeUrl}" >> $GITHUB_OUTPUT
-          echo "deployDate=${deployDate}" >> $GITHUB_OUTPUT
-        shell: bash
+      - name: Run Deployment Manifest Processor
+        id: process_manifest
+        run: node scripts/workflows/processDeploymentManifest.js
 
       - uses: jwalton/gh-find-current-pr@v1
         id: finder
+
       - name: Publish Preview Link
         uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
           number: ${{ steps.finder.outputs.pr }}
           header: preview
+          hide_and_recreate: true
+          hide_classify: 'OUTDATED'
+          # - Branch Preview: ${{ steps.process_manifest.outputs.branchUrl }}
           message: |
-            ##### Last deployment (${{ steps.deploy.outputs.deployDate }}) 🚀
-            - Console Build: ${{ steps.deploy.outputs.consoleUrl }}
-            - Permalink Preview: ${{ steps.deploy.outputs.buildUrl }}
-            - Branch Preview: ${{ steps.deploy.outputs.branchUrl }}
-            - Edge URL: ${{ steps.deploy.outputs.edgeUrl }}
+            ##### Last deployment (${{ steps.process_manifest.outputs.deployDate }}) 🚀
+            - Console Build: ${{ steps.process_manifest.outputs.consoleUrl }}
+            - Permalink Preview: ${{ steps.process_manifest.outputs.buildUrl }}
+            - Edge URL: ${{ steps.process_manifest.outputs.edgeUrl }}
       - name: Final Check for Failures
         if: always()
         run: |
@@ -110,3 +102,42 @@ jobs:
             echo "One or more steps failed."
             exit 1
           fi
+
+      # - name: Run Link Check
+      #   id: check_links
+      #   run: node scripts/workflows/checkLinks.js https://edgio-community-docs-edg-io-comsup-348-check-404s.edge.edgio-perma.link
+
+      # - id: timestamps
+      #   run: |
+      #     echo "timestamp=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $GITHUB_ENV
+      #     echo "readable_time=$(date -u +%Y-%m-%d\ %H:%M:%S\ UTC)" >> $GITHUB_ENV
+
+      # - name: Upload Linkinator Output
+      #   id: artifact-upload-step
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: link-check-output
+      #     path: ./artifacts
+
+      # - name: Update Broken Links Markdown
+      #   id: update_markdown
+      #   run: |
+      #     RUN_ID=${{ github.run_id }}
+      #     ARTIFACT_ID=${{ steps.artifact-upload-step.outputs.artifact-id }}
+      #     TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+      #     READABLE_TIME=$(date -u +%Y-%m-%d\ %H:%M:%S\ UTC)
+      #     HEADER=""
+      #     FOOTER="👉 [**Download the full report**](../actions/runs/$RUN_ID/artifacts/$ARTIFACT_ID) for a detailed view. 📄"
+
+      #     BODY=$(cat broken-links.md)
+      #     echo -e "$HEADER\n\n$BODY\n\n$FOOTER" > broken-links.md
+      #   working-directory: ./artifacts
+
+      # - name: Comment broken links on PR
+      #   uses: marocchino/sticky-pull-request-comment@v2.2.0
+      #   with:
+      #     number: ${{ steps.finder.outputs.pr }}
+      #     header: broken-links
+      #     hide_and_recreate: true
+      #     hide_classify: 'OUTDATED'
+      #     path: ./artifacts/broken-links.md

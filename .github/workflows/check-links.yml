@@ -1,25 +1,115 @@
-name: Validate v7 Guide Links
-
+name: Check Production Links
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: '0 0 * * *'
   workflow_dispatch:
+    inputs:
+      url:
+        description: 'The URL to check links for'
+        required: false
+        default: 'https://docs.edg.io'
 
 jobs:
-  validate-links:
+  issue:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
         with:
-          node-version: "16"
+          access_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-      - name: Run validation script
-        run: yarn validate-links
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            **/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Node Dependencies
+        run: |
+          npm install -g linkinator
+          yarn install --frozen-lockfile
+
+      - name: Set URL
+        id: set_url
+        run: echo "URL=${{ github.event.inputs.url || 'https://docs.edg.io' }}" >> $GITHUB_ENV
+
+      - name: Run Link Check
+        id: check_links
+        run: node scripts/workflows/checkLinks.js ${{ env.URL }}
+
+      - id: timestamps
+        run: |
+          echo "timestamp=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $GITHUB_ENV
+          echo "readable_time=$(date -u +%Y-%m-%d\ %H:%M:%S\ UTC)" >> $GITHUB_ENV
+
+      - name: Upload Linkinator Output
+        id: artifact-upload-step
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-check-output
+          path: ./artifacts
+
+      - name: Update Broken Links Markdown
+        id: update_markdown
+        run: |
+          RUN_ID=${{ github.run_id }}
+          ARTIFACT_ID=${{ steps.artifact-upload-step.outputs.artifact-id }}
+          TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          READABLE_TIME=$(date -u +%Y-%m-%d\ %H:%M:%S\ UTC)
+          HEADER="##### Broken Links 🚨"
+          FOOTER="👉 [**Download the full report**](../actions/runs/$RUN_ID/artifacts/$ARTIFACT_ID) for a detailed view. 📄"
+
+          BODY=$(cat broken-links.md)
+          echo -e "$HEADER\n\n$BODY\n\n$FOOTER" > broken-links.md
+        working-directory: ./artifacts
+
+      - name: Read Updated Broken Links Markdown
+        id: read_updated_markdown
+        run: cat artifacts/broken-links.md
+
+      - name: Create Issue if Broken Links Found
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const brokenLinks = fs.readFileSync('artifacts/broken-links.md', 'utf8').trim();
+            if (!brokenLinks.includes('No broken links found.')) {
+              const issueTitle = 'Broken Links Found in Scheduled Check';
+              const issueBody = `### Broken Links Report\n\n${brokenLinks}\n\nPlease check the details and fix the broken links.`;
+              const { data: issues } = await github.issues.listForRepo({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'open'
+              });
+              const existingIssue = issues.find(issue => issue.title === issueTitle);
+              if (!existingIssue) {
+                await github.issues.create({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  title: issueTitle,
+                  body: issueBody,
+                  labels: ['bug', 'documentation']
+                });
+              } else {
+                await github.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: existingIssue.number,
+                  body: issueBody
+                });
+              }
+            }

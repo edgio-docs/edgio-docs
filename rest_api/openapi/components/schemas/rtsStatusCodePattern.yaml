@@ -1,0 +1,4 @@
+title: Status Code Pattern
+description: A specific HTTP status code (e.g., 504) or class of status codes. (e.g., 5xx).
+type: string
+pattern: ^([1-5](\d{2}|xx))$

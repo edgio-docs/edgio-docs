@@ -48,6 +48,12 @@ const nav = {
         {
           title: 'Deployments',
           path: 'basics/deployments',
+          routes: [
+            {
+              title: 'Deploy Package Format v1',
+              path: 'basics/deployments/deploy_package_format_v1',
+            },
+          ],
         },
         {
           title: 'Serving Traffic through Our Network',

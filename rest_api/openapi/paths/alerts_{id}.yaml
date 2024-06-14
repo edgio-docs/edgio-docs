@@ -1,0 +1,75 @@
+get:
+  tags:
+    - real-time alert
+  summary: Get Real-Time Alert
+  description: Retrieves a real-time alert by its system-defined ID.
+  operationId: getAlertById
+  security:
+    - rtsAlertsScope:
+        - app.real_time_stats.alerts:read
+  parameters:
+    - $ref: ../components/parameters/rtsAlertIDParam.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/rtsSingleAlert.yaml
+    '401':
+      $ref: ../components/responses/rtsUnauthorized.yaml
+    '403':
+      $ref: ../components/responses/rtsForbidden.yaml
+    '404':
+      $ref: ../components/responses/rtsNotFound.yaml
+    '500':
+      $ref: ../components/responses/rtsInternalServerError.yaml
+put:
+  tags:
+    - real-time alert
+  summary: Update Real-Time Alert
+  description: >-
+    Updates a real-time alert. Identify the desired alert by its system-defined
+    ID.
+  operationId: replaceAlertById
+  security:
+    - rtsAlertsScope:
+        - app.real_time_stats.alerts
+  parameters:
+    - $ref: ../components/parameters/rtsAlertIDParam.yaml
+  requestBody:
+    $ref: ../components/requestBodies/rtsAlertRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/rtsSingleAlert.yaml
+    '400':
+      $ref: ../components/responses/rtsBadRequest.yaml
+    '401':
+      $ref: ../components/responses/rtsUnauthorized.yaml
+    '403':
+      $ref: ../components/responses/rtsForbidden.yaml
+    '404':
+      $ref: ../components/responses/rtsNotFound.yaml
+    '500':
+      $ref: ../components/responses/rtsInternalServerError.yaml
+  x-codegen-request-body-name: Body
+delete:
+  tags:
+    - real-time alert
+  summary: Delete Real-Time Alert
+  description: >-
+    Permanently deletes a real-time alert. Identify the desired alert by its
+    system-defined ID.
+  operationId: deleteAlertById
+  security:
+    - rtsAlertsScope:
+        - app.real_time_stats.alerts
+  parameters:
+    - $ref: ../components/parameters/rtsAlertIDParam.yaml
+  responses:
+    '204':
+      $ref: ../components/responses/rtsNoContent.yaml
+    '401':
+      $ref: ../components/responses/rtsUnauthorized.yaml
+    '403':
+      $ref: ../components/responses/rtsForbidden.yaml
+    '404':
+      $ref: ../components/responses/rtsNotFound.yaml
+    '500':
+      $ref: ../components/responses/rtsInternalServerError.yaml

@@ -44,8 +44,8 @@ const items = (config: StringMap) => ({
       path: '/guides/develop/cli',
     },
     {
-      title: 'Edgio Developer Tools Chrome Extension',
-      path: 'performance/observability/developer_tools_chrome_extension',
+      title: 'Devtools',
+      path: '/guides/performance/observability/devtools',
     },
     {
       title: 'EdgeJS Unit Testing',

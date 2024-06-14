@@ -55,6 +55,19 @@ function Link({
     href = `mailto:${href}`;
   }
 
+  let hrefType = 'internal';
+  const hasProtocol = /^(http|mailto|tel):/.test(href);
+  if (/^(http|mailto|tel|\/docs\/)/.test(href)) {
+    hrefType = 'external';
+  } else if (href.startsWith('#')) {
+    hrefType = 'anchor';
+  }
+
+  // only version relative links
+  if (versioned && !hasProtocol) {
+    href = version.toVersionedPath(href);
+  }
+
   switch (hrefType) {
     case 'external':
       return (

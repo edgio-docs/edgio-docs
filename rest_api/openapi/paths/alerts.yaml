@@ -1,0 +1,43 @@
+post:
+  tags:
+    - real-time alert
+  summary: Add Real-Time Alert
+  description: Creates a real-time alert.
+  operationId: CreateAlert
+  security:
+    - rtsAlertsScope:
+        - app.real_time_stats.alerts
+  requestBody:
+    $ref: ../components/requestBodies/rtsAlertRequest.yaml
+  responses:
+    '201':
+      $ref: ../components/responses/rtsSingleAlert.yaml
+    '400':
+      $ref: ../components/responses/rtsBadRequest.yaml
+    '401':
+      $ref: ../components/responses/rtsUnauthorized.yaml
+    '403':
+      $ref: ../components/responses/rtsForbidden.yaml
+    '500':
+      $ref: ../components/responses/rtsInternalServerError.yaml
+  x-codegen-request-body-name: Body
+get:
+  tags:
+    - real-time alert
+  summary: Get All Real-Time Alerts
+  description: Returns all real-time alerts associated with an environment.
+  operationId: GetAllAlerts
+  security:
+    - rtsAlertsScope:
+        - app.real_time_stats.alerts:read
+  parameters:
+    - $ref: ../components/parameters/rtsLimitParam.yaml
+    - $ref: ../components/parameters/rtsOffsetParam.yaml
+    - $ref: ../components/parameters/rtsEnvironmentIDParam.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/rtsAlertCollection.yaml
+    '401':
+      $ref: ../components/responses/rtsUnauthorized.yaml
+    '500':
+      $ref: ../components/responses/rtsInternalServerError.yaml

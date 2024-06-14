@@ -53,7 +53,7 @@ Troubleshoot cache-related issues by including cache metadata within the respons
 
 ![Enable the Debug Header feature](/images/v7/performance/rules-use-case-all-requests.png?width=700)
 
-Once you have enabled this feature, cache metadata will be included in the response when you use the [Edgio Developer Tools Chrome extension](https://chrome.google.com/webstore/detail/edgio-developer-tools/ieehikdcdpeailgpfdbafhnbfhpdgefm) or by [manually requesting it through headers](/applications/performance/response#requesting-debug-cache-information).
+Once you have enabled this feature, cache metadata will be included in the response when you use the {{ CHROME_EXTENSION_LINK }} or by [manually requesting it through headers](/applications/performance/response#requesting-debug-cache-information).
 
 ## Custom Response for Specific Status Codes {/* custom-response-for-specific-status-codes */}
 

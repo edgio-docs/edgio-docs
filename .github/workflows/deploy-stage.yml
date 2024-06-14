@@ -4,6 +4,10 @@ on:
     branches:
       - '**'
       - '!main'
+  workflow_run:
+    workflows: ["Update Available Datasets Section"]
+    types:
+      - completed
 
 jobs:
   deploy:

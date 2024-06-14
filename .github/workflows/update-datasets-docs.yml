@@ -56,7 +56,7 @@ jobs:
       uses: peter-evans/create-pull-request@v5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        branch: update-from-script
+        branch: main
         title: "Update - Datasets script"
         body: "This pull request contains updates from the datasets script."
         labels: update

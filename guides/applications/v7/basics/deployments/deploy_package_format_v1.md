@@ -1,8 +1,8 @@
 ---
-title: {{ PRODUCT }} Deployment Package v1 Format
+title: {{ PRODUCT }} Deployment Package Format V1
 ---
 
-The {{ PRODUCT }} Deployment Package Format is a specification for a directory structure and file formats used to deploy CDN-as-code projects to {{ PRODUCT }}.
+The {{ PRODUCT }} Deployment Package Format V1 is a specification for a directory structure and file formats used to deploy CDN-as-code projects to {{ PRODUCT }}.
 
 ## File Structure {/* file-structure */}
 

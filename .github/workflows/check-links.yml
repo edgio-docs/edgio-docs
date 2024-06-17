@@ -10,7 +10,7 @@ on:
         default: 'https://docs.edg.io'
 
 jobs:
-  issue:
+  check-links:
     runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Runs

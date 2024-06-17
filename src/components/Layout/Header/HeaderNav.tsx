@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import '@reach/menu-button/styles.css';
 import Link from 'components/MDX/Link';
 import headerNavConfig from 'config/header.nav';
+import {ContextType, useAppContext} from 'contexts/AppContext';
 
 const StyledMenuButton = styled(MenuButton)`
   display: inline-flex;
@@ -111,9 +112,17 @@ const SEOLinksContainer = styled.div`
 `;
 
 export default function HeaderNav() {
+  const {context} = useAppContext();
+  let navItems = headerNavConfig;
+
+  // Filter out "Fiddle" link for non-Applications contexts
+  if (context !== ContextType.APPLICATIONS) {
+    navItems = navItems.filter((navItem) => navItem.title !== 'Fiddle');
+  }
+
   return (
     <>
-      {headerNavConfig.map((navItem, index) => {
+      {navItems.map((navItem, index) => {
         const isLink = !!navItem.url;
         const hasItems = !!navItem.items;
 

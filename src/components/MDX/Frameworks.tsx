@@ -788,7 +788,7 @@ export default function Frameworks({frameworks = items}) {
       <ul className="framework-lists">
         {routesByColumns.map((route) => (
           <li key={route.path} className="framework-list__item">
-            <Link href={toVersionedPath(route.path)} passHref>
+            <Link href={toVersionedPath(route.path)} passHref legacyBehavior>
               <a className="framework-link">
                 <div className="icon">
                   {renderThemedElement(route.icon, route.iconDark)}

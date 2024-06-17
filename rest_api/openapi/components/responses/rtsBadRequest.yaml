@@ -1,0 +1,8 @@
+description: One or more required fields were empty or not meeting validation requirements.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/rtsError.yaml
+    examples:
+      bad-request:
+        $ref: ../examples/rtsExampleBadRequest.yaml

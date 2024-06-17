@@ -141,29 +141,30 @@ These system-defined origins should not be modified or deleted.
 
 ## HTTP/3 {/* http-3 */}
 
-Enable HTTP/3 and QUIC by including the `alt-svc` header in the response sent to the client. This response header informs the client that it may communicate with the CDN through QUIC, the set of supported QUIC versions, and the length of time that this data should be cached by the client.
+Enable HTTP/3, which uses QUIC as the transport protocol, by setting the `alt-svc` header in the response sent to the client to `%{quic_altsvc_versions}`. This response header informs the client that it may communicate with the CDN through QUIC, the set of supported QUIC versions, and the length of time that this data should be cached by the client.
+
+**Example:** `alt-svc: %{quic_altsvc_versions}`
 
 **Key information:**
 
 - Once a QUIC-compatible user agent discovers that a server supports QUIC, it will attempt to leverage QUIC for all subsequent requests to the same domain until the connection ends.
 - By default, QUIC is supported on the latest versions of Google Chrome, Chromium, and Opera. However, it may require enablement. If a user agent doesn't support QUIC, then it will communicate with the CDN using HTTP/2 over TCP.
 - Our QUIC implementation supports the Bottleneck Bandwidth and Round-trip propagation time (BBR) congestion control algorithm without requiring additional CDN setup. However, BBR will only be used when a QUIC-enabled client (e.g., Google Chrome) requests it.
-- The `alt-svc` header contains a `v` (version) parameter that identifies the supported QUIC versions. We strongly recommend that you define this response header through the [Set Response Headers (set_response_headers) feature](/applications/performance/rules/features#set-response-headers) and set the `v` parameter to the `%{quic_altsvc_versions}` variable. This variable returns the QUIC versions supported by our service.
+- We strongly recommend that you define the `alt-svc` response header through the [Set Response Headers (set_response_headers) feature](/applications/performance/rules/features#set-response-headers) and set the value to the `%{quic_altsvc_versions}` variable. This variable returns the QUIC versions supported by our service.
 
   <Callout type="important">
 
-  We may add or drop support for QUIC versions at any time. Ensure that you only advertise supported versions by setting the `v` parameter to the `%{quic_altsvc_versions}` variable
+  We may add or drop support for QUIC versions at any time. Ensure that you only advertise supported versions through the `%{quic_altsvc_versions}` variable.
 
   </Callout>
 
 - **Sample alt-svc header name/value:**
-  `alt-svc: quic=":443"; ma=2592000; v="49,48,46,43",h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000`
+  `alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000`
 
   The above sample response header indicates to the client that:
 
-  - QUIC is only supported for traffic over port 443 as defined by the `quic` parameter.
-  - The user agent should treat the connection as fresh for 259,200 seconds (i.e., 3 days) as determined by the `ma` (max-age) parameter.
-  - The `v` (version) parameter informs the client as to the supported QUIC versions.
+  - HTTP/3 is only supported for traffic over port 443 as defined by the `h3` parameter.
+  - The user agent should treat the connection as fresh for 2,592,000 seconds (i.e., 30 days) as determined by the `ma` (max-age) parameter.
 
 ## Load Balancing {/* load-balancing */}
 

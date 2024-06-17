@@ -119,7 +119,7 @@ export default function Integrations() {
       <ul className="integrations">
         {integrations(config).map((route: any) => (
           <li key={route.path} className="integration-list__item">
-            <Link href={toVersionedPath(route.path)} passHref>
+            <Link href={toVersionedPath(route.path)} passHref legacyBehavior>
               <a className="integration-link">
                 <div className="icon" id="light-theme">
                   <img

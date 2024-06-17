@@ -82,7 +82,9 @@ export default function Reference() {
               {route.map(({path, title}) => (
                 <li className="route-list__item" key={title}>
                   <div className="dot" />
-                  <Link href={toVersionedPath(path)}>{title}</Link>
+                  <Link href={toVersionedPath(path)} legacyBehavior>
+                    {title}
+                  </Link>
                 </li>
               ))}
             </ul>

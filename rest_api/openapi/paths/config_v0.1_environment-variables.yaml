@@ -1,33 +1,94 @@
-get:
+put:
+  summary: Set Environment Variable
+  description: Creates or updates an environment variable.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/putConfigV01EnvironmentVariables.yaml
+    required: true
+  security:
+    - configScope:
+        - app.config
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Config_V1_Entities_EnvironmentVariable.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_UnauthorizedError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_ForbiddenError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_RecordNotFoundError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_TooManyRequestsError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
   tags:
     - environment-variables
+  operationId: putConfigV01EnvironmentVariables
+get:
   summary: Get All Environment Variables
   description: Returns all environment variables associated with an environment.
-  operationId: getConfigV01EnvironmentVariables
   parameters:
-    - name: page
-      in: query
+    - in: query
+      name: page
       description: 0-based page number.
+      required: false
       schema:
         type: integer
         format: int32
         default: 0
-    - name: page_size
-      in: query
+    - in: query
+      name: page_size
       description: >-
         Number of results per page. Valid values are: 1 - 100. **Default
         value:** 20
+      required: false
       schema:
         type: integer
         format: int32
         default: 20
-    - name: key
-      in: query
+    - in: query
+      name: key
       description: Find an environment variable by its name.
+      required: false
       schema:
         type: string
-    - name: environment_id
-      in: query
+    - in: query
+      name: environment_id
       description: >
         An environment's system-defined ID (e.g.,
         12345678-1234-1234-1234-1234567890ab).
@@ -38,6 +99,9 @@ get:
       required: true
       schema:
         type: string
+  security:
+    - configScope:
+        - app.config
   responses:
     '200':
       description: OK
@@ -51,84 +115,40 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+            $ref: ../components/schemas/BaseApi_Entities_Error_UserError.yaml
     '401':
       description: Unauthorized
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_UnauthorizedError.yaml
     '403':
       description: Forbidden
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+            $ref: ../components/schemas/BaseApi_Entities_Error_ForbiddenError.yaml
     '404':
       description: Not Found
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_RecordNotFoundError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_TooManyRequestsError.yaml
     '500':
       description: Internal Server Error
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-  security:
-    - configScope:
-        - app.config
-put:
+            $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
   tags:
     - environment-variables
-  summary: Set Environment Variable
-  description: Creates or updates an environment variable.
-  operationId: putConfigV01EnvironmentVariables
-  requestBody:
-    content:
-      application/json:
-        schema:
-          $ref: ../components/schemas/putConfigV01EnvironmentVariables.yaml
-    required: true
-  responses:
-    '200':
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/Config_V1_Entities_EnvironmentVariable.yaml
-    '400':
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
-    '401':
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '403':
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '404':
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-    '500':
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-  security:
-    - configScope:
-        - app.config
-  x-codegen-request-body-name: putConfigV01EnvironmentVariables
+  operationId: getConfigV01EnvironmentVariables

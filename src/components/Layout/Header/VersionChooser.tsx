@@ -108,23 +108,24 @@ export default function VersionChooser() {
         {versions.map(({version, href, label}) => {
           return (
             <Link href={href} key={version} passHref>
-              <a>
-                <VersionItem
-                  selected={version === prefixedSelectedVersion}
-                  value={version}>
-                  {label}
-                </VersionItem>
-              </a>
+              <VersionItem
+                selected={version === prefixedSelectedVersion}
+                value={version}>
+                {label}
+              </VersionItem>
             </Link>
           );
         })}
       </VersionSelect>
       {versions.map(({version, href, label}) => {
         return (
-          <Link href={href} key={version} passHref>
-            <a aria-hidden style={{display: 'none'}}>
-              {label}
-            </a>
+          <Link
+            href={href}
+            key={version}
+            passHref
+            aria-hidden
+            style={{display: 'none'}}>
+            {label}
           </Link>
         );
       })}

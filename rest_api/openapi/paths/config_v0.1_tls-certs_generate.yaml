@@ -1,0 +1,67 @@
+post:
+  summary: Generate TLS Certificates
+  description: >-
+    Generates a Let's Encrypt certificate for each eligible hostname associated
+    with the specified environment. A hostname is eligible for automatic
+    certificate generation when the CA is allowed to issue certificates for that
+    hostname and your control over the domain is established through an
+    `_acme_challenge` CNAME record. [Learn
+    more.](https://docs.edg.io/applications/basics/hostnames#https-traffic)
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/postConfigV01TlsCertsGenerate.yaml
+    required: true
+  security:
+    - configScope:
+        - app.config
+  responses:
+    '201':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Config_V1_Entities_TlsCert.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_UnauthorizedError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_ForbiddenError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_RecordNotFoundError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_TooManyRequestsError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
+  tags:
+    - tls-certs
+  operationId: postConfigV01TlsCertsGenerate

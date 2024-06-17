@@ -1,6 +1,3 @@
-required:
-  - '@id'
-  - '@type'
 type: object
 properties:
   '@type':
@@ -13,11 +10,14 @@ properties:
     $ref: ./BaseApi_Entities_HyperionNavigationLinks.yaml
   total_items:
     type: integer
-    description: Total number of items.
     format: int32
+    description: Total number of items.
   items:
     type: array
-    description: List of properties.
     items:
       $ref: ./Accounts_V1_Entities_Property.yaml
+    description: List of properties.
+required:
+  - '@type'
+  - '@id'
 description: Accounts_V1_Entities_Property_Collection model

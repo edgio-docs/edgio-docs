@@ -61,10 +61,6 @@ See common things you need to look for on an eCommmerce site:
 | Product recommendations                                                                                                         | Late load                   | PDP      |
 | Inventory                                                                                                                       | Targeted cache clearing     | PDP      |
 
-Use this worksheet when auditing your site for personalized content to inventory and track the changes you will be making:
-
-[{{ PRODUCT_NAME }} Origin Content Changes Worksheet](https://docs.google.com/spreadsheets/d/1vFQl6Eh8vF9CbDpuu9cRYYzPyqBfLcNrRRU_0QwqAMM/edit?usp=sharing)
-
 ## Connector {/* connector */}
 
 This framework has a connector developed for {{ PRODUCT_NAME }}. See [Connectors](/applications/sites_frameworks/connectors) for more information.

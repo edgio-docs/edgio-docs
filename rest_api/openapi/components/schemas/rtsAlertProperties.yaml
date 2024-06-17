@@ -1,0 +1,26 @@
+title: Alert Properties Without ID
+description: All of the properties of an alert excluding ID
+type: object
+required:
+  - environment_id
+  - name
+  - conditions
+  - notification
+properties:
+  environment_id:
+    $ref: ./rtsEnvironmentID.yaml
+  name:
+    type: string
+    description: >-
+      The real-time alert's name. The subject line for each email notification
+      identifies the real-time alert that was triggered or resolved by name.
+  condition_duration:
+    $ref: ./rtsConditionDurationEnum.yaml
+  conditions:
+    type: array
+    description: Criteria that defines when an alert should be triggered.
+    items:
+      $ref: ./rtsCondition.yaml
+    minItems: 1
+  notification:
+    $ref: ./rtsNotification.yaml

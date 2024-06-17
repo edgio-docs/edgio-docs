@@ -4,10 +4,10 @@ require('dotenv').config();
 
 // Load the GitHub token and repository details from environment variables
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const OWNER = process.env.GITHUB_REPOSITORY_OWNER;
-const REPO = process.env.GITHUB_REPOSITORY;
+const OWNER = 'edgio-docs';
+const REPO = 'edgio-docs';
 
-const ASSIGNEES = ['tristanlee85', 'username2'];
+const ASSIGNEES = ['tristanlee85', 'jsernaque'];
 const octokit = new Octokit({auth: GITHUB_TOKEN});
 
 const checkBrokenLinks = async () => {

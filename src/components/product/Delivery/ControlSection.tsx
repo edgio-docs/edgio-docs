@@ -76,7 +76,7 @@ export default function Control() {
   const {config} = useAppContext();
   const {themedValue} = useTheme();
 
-  const routesByColumns = itemsByColumn(items, version, 'title', 8);
+  const routesByColumns = itemsByColumn(items, version, 'title', 4);
 
   return (
     <StyledComp>

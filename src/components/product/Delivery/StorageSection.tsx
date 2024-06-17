@@ -64,7 +64,7 @@ export default function Storage() {
   const {config} = useAppContext();
   const {themedValue} = useTheme();
 
-  const routesByColumns = itemsByColumn(items, version, 'title', 8);
+  const routesByColumns = itemsByColumn(items, version, 'title', 3);
 
   return (
     <StyledComp>

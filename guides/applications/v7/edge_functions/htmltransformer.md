@@ -153,7 +153,7 @@ This edge function transforms the above HTML to ensure HTTPS links, remove HTML 
 
 This sample edge function uses HtmlTransform to replace all `<esi:include src="..."/>` elements with the content of the specified URL.
 
-```js
+```js filename="./edge-functions/esi_example.js"
 export async function handleHttpRequest(request, context) {
   // This definition replaces <esi:include src="..." /> the response from the src
   const transformerDefinitions = [
@@ -164,7 +164,7 @@ export async function handleHttpRequest(request, context) {
       selector: 'esi\\:include[src]',
       element: async (el) => {
         const url = el.get_attribute('src');
-        const response = await fetch(url, {edgio: {origin: 'api_backend'}});
+        const response = await fetch(url, {edgio: {origin: 'edgio_self'}});
         if (response.status == 200) {
           const body = await response.text();
           el.replace(body, 'html');
@@ -178,8 +178,12 @@ export async function handleHttpRequest(request, context) {
     },
   ];
 
+  // For demo purposes, we'll fetch a local asset HTML file that contains an ESI include.
+  const esiIncludeSource = new URL(request.url);
+  esiIncludeSource.pathname = '/assets/esi_include.html';
+
   // Get the HTML from the origin server and stream the response body through the HtmlTransformer
-  return fetch(request.url, {edgio: {origin: 'api_backend'}}).then(
+  return fetch(esiIncludeSource, {edgio: {origin: 'edgio_self'}}).then(
     (response) => {
       let transformedResponse = HtmlTransformer.stream(
         transformerDefinitions,
@@ -195,7 +199,7 @@ export async function handleHttpRequest(request, context) {
 
 We will now examine how this edge function will transform the following HTML response provided by an origin server:
 
-```html
+```html filename="./assets/esi_include.html"
 <!DOCTYPE html>
 <html>
   <head>
@@ -203,9 +207,18 @@ We will now examine how this edge function will transform the following HTML res
   </head>
   <body>
     <h1>Script Example</h1>
-    <esi:include src="https://api.backend.com/body" />
+    <esi:include src="/assets/esi_snippet.html" />
   </body>
 </html>
+```
+
+Our ESI snippet file `/assets/esi_snippet.html` contains the following HTML:
+
+```html filename="./assets/esi_snippet.html"
+<div>
+  <h1>Hello, World!</h1>
+  <p>This snippet will be included in the response via ESI.</p>
+</div>
 ```
 
 This edge function transforms the above HTML to replace `<esi:include ... />` with the results of the fetch. The transformed HTML is shown below.
@@ -219,8 +232,8 @@ This edge function transforms the above HTML to replace `<esi:include ... />` wi
   <body>
     <h1>Script Example</h1>
     <div>
-      <p>Here is some HTML text with a link returned by the fetch().</p>
-      <a href="https://edg.io/">Edgio Homepage</a>
+      <h1>Hello, World!</h1>
+      <p>This snippet will be included in the response via ESI.</p>
     </div>
   </body>
 </html>
@@ -230,7 +243,7 @@ This edge function transforms the above HTML to replace `<esi:include ... />` wi
 
 This example is a modified version of [Example 2](#example2) without the `HtmlTransformer.stream()` helper function.
 
-```js
+```js filename="./edge-functions/esi_response_stream_example.js"
 export async function handleHttpRequest(request, context) {
   // This definition replaces <esi:include src="..." /> the response from the src
   const transformerDefinitions = [
@@ -241,7 +254,7 @@ export async function handleHttpRequest(request, context) {
       selector: 'esi\\:include[src]',
       element: async (el) => {
         const url = el.get_attribute('src');
-        const response = await fetch(url, {edgio: {origin: 'api_backend'}});
+        const response = await fetch(url, {edgio: {origin: 'edgio_self'}});
         if (response.status == 200) {
           const body = await response.text();
           el.replace(body, 'html');
@@ -256,17 +269,24 @@ export async function handleHttpRequest(request, context) {
   ];
   const textDecoder = new TextDecoder();
 
+  // For demo purposes, we'll fetch a local asset HTML file that contains an ESI include.
+  const esiIncludeSource = new URL(request.url);
+  esiIncludeSource.pathname = '/assets/esi_include.html';
+
   // Get the HTML from the origin server and stream the response body through the
   // HtmlTransformer to the Response object
-  const response = fetch(request.url, {edgio: {origin: 'api_backend'}})
+  const response = fetch(esiIncludeSource, {edgio: {origin: 'edgio_self'}})
     // Retrieve its body as ReadableStream
     .then(async (response) => {
       const reader = response.body.getReader();
       return new ReadableStream({
         start(controller) {
-          const htmlTransformer = new HtmlTransformer(definitions, (chunk) => {
-            controller.enqueue(chunk);
-          });
+          const htmlTransformer = new HtmlTransformer(
+            transformerDefinitions,
+            (chunk) => {
+              controller.enqueue(chunk);
+            }
+          );
           return pump();
           function pump() {
             return reader.read().then(async ({done, value}) => {

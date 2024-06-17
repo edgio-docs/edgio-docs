@@ -1,36 +1,35 @@
 value:
-  '@id': /rtld/v1/accesslogs/profiles
+  '@id': /rtld/v1/waf/profiles
   '@type': Collection
   items:
-    - '@id': /rtld/v1/accesslogs/profiles/10027
-      '@type': AccessLogsProfile
+    - '@id': /rtld/v1/waf/profiles/10027
+      '@type': WebApplicationFirewallLogsProfile
       id: 10027
       environment_id: c9980249-2fb6-4699-a68e-271383815700
       enabled: false
       downsampling_percent: 25
       fields:
-        - user_agent
-        - rewritten_path
-        - path
+        - client_country_code
+        - client_city
         - timestamp
         - client_ip
-        - client_ip_version
-        - status_code
-        - status
-        - cache_status
-        - bytes_out
-        - write_time
-        - file_size
-        - server_ip
         - server_port
-        - method
+        - url
         - host
-        - query
-        - auth_user
-        - read_time
+        - user_agent
+        - referer
+        - account_number
+        - uuid
+        - rule_message
+        - rule_tags
+        - sub_events_count
+        - sub_events
+        - waf_instance_name
+        - waf_profile_name
+        - action_type
+        - waf_profile_type
+        - client_country
       filters:
-        status_codes:
-          - 2xx
         host_names:
           names:
             - host.example.com

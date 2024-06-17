@@ -1,28 +1,8 @@
-title: GCS Object
-description: Contains the configuration for the Google Cloud Storage log delivery method.
 allOf:
-  - $ref: ./rtldDeliveryMethod.yaml
+  - $ref: ./rtldBaseGcs.yaml
   - type: object
     required:
-      - bucket
       - log_format
     properties:
-      bucket:
-        type: string
-        minLength: 3
-        maxLength: 222
-        pattern: ^[a-z0-9][a-z0-9_\-\.]*[a-z0-9]$
-        description: >-
-          Determines the Google Cloud Storage bucket to which log data will be
-          delivered.
-      prefix:
-        type: string
-        minLength: 1
-        maxLength: 50
-        description: >-
-          Defines the prefix that identifies a virtual log file storage location
-          and/or a prefix that will be added to each object added to your
-          bucket. [Learn more about
-          prefixes.](https://docs.edg.io/guides/v7/logs/rtld/google_cloud_storage_log_delivery#log-file-prefix)
       log_format:
         $ref: ./rtldLogFormat.yaml

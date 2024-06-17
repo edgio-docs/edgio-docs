@@ -1,34 +1,8 @@
-title: AWS S3 Object
-description: Contains the configuration for the AWS S3 log delivery method.
 allOf:
-  - $ref: ./rtldDeliveryMethod.yaml
+  - $ref: ./rtldBaseAwsS3.yaml
   - type: object
     required:
-      - bucket
-      - region
       - log_format
     properties:
-      bucket:
-        type: string
-        minLength: 3
-        maxLength: 255
-        pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\-\.]*[a-zA-Z0-9]$
-        description: Determines the AWS S3 bucket to which log data will be delivered.
-      prefix:
-        type: string
-        minLength: 1
-        maxLength: 1024
-        description: >-
-          Defines the prefix that identifies a virtual log file storage location
-          and/or a prefix that will be added to each object added to your
-          bucket. [Learn more about
-          prefixes.](https://docs.edg.io/guides/v7/logs/rtld/aws_s3_log_delivery#log-file-prefix)
-      region:
-        type: string
-        description: >-
-          Determines the region assigned to the AWS S3 bucket defined by the
-          `bucket` parameter. Use the [Get AWS Regions
-          endpoint](#tag/AWS-Regions/operation/GetAllAWSRegions) to retrieve the
-          set of valid values for this parameter.
       log_format:
         $ref: ./rtldLogFormat.yaml

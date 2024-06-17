@@ -2,7 +2,7 @@ required: true
 content:
   application/json:
     schema:
-      $ref: ../schemas/rtldALProfileProperties.yaml
+      $ref: ../schemas/rtldAlProfileProperties.yaml
     examples:
       reference:
-        $ref: ../examples/rtldExampleALProfileBody.yaml
+        $ref: ../examples/rtldExampleAlProfileBody.yaml

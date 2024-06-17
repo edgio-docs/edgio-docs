@@ -1,9 +1,11 @@
 get:
   tags:
-    - RTLD Access Logs Profile
-  summary: Get RTLD Access Logs Profile
-  description: Retrieves a RTLD Access Logs profile by its system-defined ID.
-  operationId: GetAlProfileById
+    - RTLD WAF Profile
+  summary: Get RTLD WAF Profile
+  description: >-
+    Retrieves a RTLD Web Application Firewall (WAF) profile by its
+    system-defined ID.
+  operationId: GetWafProfileById
   security:
     - rtldScope:
         - app.rtld:read
@@ -12,7 +14,7 @@ get:
     - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
   responses:
     '200':
-      $ref: ../components/responses/rtldSingleAlProfile.yaml
+      $ref: ../components/responses/rtldSingleWafProfile.yaml
     '401':
       $ref: ../components/responses/rtldUnauthorized.yaml
     '403':
@@ -23,10 +25,10 @@ get:
       $ref: ../components/responses/rtldInternalServerError.yaml
 put:
   tags:
-    - RTLD Access Logs Profile
-  summary: Update RTLD Access Logs Profile
-  description: Updates a RTLD Access Logs profile.
-  operationId: ReplaceAlProfileById
+    - RTLD WAF Profile
+  summary: Update RTLD WAF Profile
+  description: Updates a RTLD Web Application Firewall (WAF) profile.
+  operationId: ReplaceWafProfileById
   security:
     - rtldScope:
         - app.rtld
@@ -34,10 +36,10 @@ put:
     - $ref: ../components/parameters/rtldProfileIDParam.yaml
     - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
   requestBody:
-    $ref: ../components/requestBodies/rtldAlProfileRequest.yaml
+    $ref: ../components/requestBodies/rtldWafProfileRequest.yaml
   responses:
     '200':
-      $ref: ../components/responses/rtldSingleAlProfile.yaml
+      $ref: ../components/responses/rtldSingleWafProfile.yaml
     '400':
       $ref: ../components/responses/rtldBadRequest.yaml
     '401':
@@ -51,10 +53,10 @@ put:
   x-codegen-request-body-name: Body
 delete:
   tags:
-    - RTLD Access Logs Profile
-  summary: Delete RTLD Access Logs Profile
-  description: Permanently deletes a RTLD Access Logs profile.
-  operationId: DeleteAlProfileById
+    - RTLD WAF Profile
+  summary: Delete RTLD WAF Profile
+  description: Permanently deletes a RTLD Web Application Firewall (WAF) profile.
+  operationId: DeleteWafProfileById
   security:
     - rtldScope:
         - app.rtld

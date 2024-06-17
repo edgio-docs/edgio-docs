@@ -11,22 +11,22 @@ properties:
     $ref: ./rtldEnvironmentID.yaml
   delivery_method:
     oneOf:
-      - $ref: ./rtldAWSS3.yaml
-      - $ref: ./rtldAzureBlobStorage.yaml
+      - $ref: ./rtldAlAwsS3.yaml
+      - $ref: ./rtldAlAzureBlobStorage.yaml
       - $ref: ./rtldDataDog.yaml
-      - $ref: ./rtldGCS.yaml
-      - $ref: ./rtldHttpPost.yaml
+      - $ref: ./rtldAlGcs.yaml
+      - $ref: ./rtldAlHttpPost.yaml
       - $ref: ./rtldNewRelic.yaml
       - $ref: ./rtldSplunkEnterprise.yaml
       - $ref: ./rtldSumoLogic.yaml
     discriminator:
       propertyName: type
       mapping:
-        aws_s3: ./rtldAWSS3.yaml
-        azure_blob_storage: ./rtldAzureBlobStorage.yaml
+        aws_s3: ./rtldAlAwsS3.yaml
+        azure_blob_storage: ./rtldAlAzureBlobStorage.yaml
         datadog: ./rtldDataDog.yaml
-        gcs: ./rtldGCS.yaml
-        http_post: ./rtldHttpPost.yaml
+        gcs: ./rtldAlGcs.yaml
+        http_post: ./rtldAlHttpPost.yaml
         new_relic: ./rtldNewRelic.yaml
         splunk_enterprise: ./rtldSplunkEnterprise.yaml
         sumo_logic: ./rtldSumoLogic.yaml
@@ -110,7 +110,7 @@ properties:
 
 
       Use the [Get Log Fields (RTLD Access Logs)
-      endpoint](#tag/Log-Fields/operation/GetAllALFields) to retrieve the set of
+      endpoint](#tag/Log-Fields/operation/GetAllAlFields) to retrieve the set of
       valid values for this property.
   profile_name:
     type: string
@@ -119,4 +119,4 @@ properties:
       Determines the log delivery profile's name. Limit this unique name to 36
       characters.
   filters:
-    $ref: ./rtldALFilter.yaml
+    $ref: ./rtldAlFilter.yaml

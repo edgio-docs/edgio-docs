@@ -2,7 +2,7 @@ description: OK
 content:
   application/json:
     schema:
-      $ref: ../schemas/rtldALProfileCollection.yaml
+      $ref: ../schemas/rtldAlProfileCollection.yaml
     examples:
       reference:
-        $ref: ../examples/rtldExampleALProfileCollection.yaml
+        $ref: ../examples/rtldExampleAlProfileCollection.yaml

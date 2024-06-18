@@ -8,7 +8,7 @@ This process involves calculating a signature using the request's elements and y
 
 <ExampleButtons
   title="AWS S3 Request Signing"
-  siteUrl="https://your-s3-request-signing-example.edgio.link/"
+  siteUrl="https://edgio-community-examples-v7-aws-s3-request-signing-live.glb.edgio.link"
   repoUrl="https://github.com/edgio-docs/edgio-v7-aws-s3-request-signing-example"
 />
 

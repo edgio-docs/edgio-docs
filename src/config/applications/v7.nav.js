@@ -276,7 +276,7 @@ const nav = {
           path: 'edge_functions/examples',
           routes: [
             {
-              title: 'AWS Request Signing',
+              title: 'AWS S3 Request Signing',
               path: 'edge_functions/examples/aws_request_signing',
             },
             {

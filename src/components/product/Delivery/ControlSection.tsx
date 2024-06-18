@@ -5,12 +5,12 @@ import {
   IconAppsPerformance,
   IconAppsPerformanceDark,
 } from 'components/Icon/IconAppsPerformance';
-import {useAppContext} from 'contexts/AppContext';
-import {useTheme} from 'contexts/ThemeContext';
+import { useAppContext } from 'contexts/AppContext';
+import { useTheme } from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 
-import {StyledFeatureSection} from '../../FeatureSection';
+import { StyledFeatureSection } from '../../FeatureSection';
 import SectionHeader from '../../SectionHeader';
 
 const StyledComp = styled(StyledFeatureSection)``;
@@ -83,7 +83,7 @@ export default function Control() {
       <SectionHeader
         Icon={themedValue(IconAppsPerformance, IconAppsPerformanceDark)}
         title="Control"
-        subtitle={`Create and configure services, manage content, analyze usage, and access online support.
+        subtitle={`Create and configure services, manage content, and analyze usage.
         `}
       />
 

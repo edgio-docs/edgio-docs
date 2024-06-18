@@ -4,7 +4,7 @@ title: Edge Function Examples
 
 Explore a comprehensive collection of edge function examples provided by {{ PRODUCT }}. Each example is tailored to demonstrate practical implementations of common use cases, helping you effectively integrate edge functions into your projects.
 
-- [AWS Request Signing](/applications/edge_functions/examples/aws_request_signing): Learn how to sign AWS requests using the version 4 signature to securely interact with AWS services. This guide covers the process of creating a signature, ensuring your requests are authenticated.
+- [AWS S3 Request Signing](/applications/edge_functions/examples/aws_request_signing): Learn how to sign AWS requests using the version 4 signature to securely interact with AWS services. This guide covers the process of creating a signature, ensuring your requests are authenticated.
 
 - [Basic Request Signing](/applications/edge_functions/examples/basic_request_signing): This example walks you through the fundamentals of signing requests. It's ideal for understanding the basic principles of request authentication and integrity.
 

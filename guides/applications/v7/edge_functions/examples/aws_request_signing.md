@@ -2,9 +2,9 @@
 title: AWS S3 Request Signing
 ---
 
-[AWS S3 Request Signing](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) uses the AWS Signature Version 4 algorithm to sign requests to AWS services.
+[Sign AWS S3 requests](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) using the AWS Signature Version 4 algorithm.
 
-This process involves calculating a signature using the request's elements and your AWS access keys. The signature ensures that AWS can verify the request as being sent by an authenticated source, enhancing security when accessing AWS services like S3. Integrating this with Edge Functions allows for efficient and secure fetching of assets from S3 buckets.
+This process involves calculating a signature using the request's elements and your AWS access keys. This signature ensures that AWS can verify the request as being sent by an authenticated source, enhancing security when accessing AWS S3. Integrating this with Edge Functions allows for efficient and secure fetching of assets from S3 buckets.
 
 <ExampleButtons
   title="AWS S3 Request Signing"

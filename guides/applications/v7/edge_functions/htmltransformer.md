@@ -2,11 +2,39 @@
 title: HtmlTransformer
 ---
 
-The HtmlTransformer class is a compact and efficient edge function helper to assist in modifying the HTML response from the origin server. It serves as a wrapper for the [lol_html::HtmlRewriter Class](https://docs.rs/lol_html/latest/lol_html/struct.HtmlRewriter.html) Rust crate. This class supports streaming HTML response bodies, ensuring seamless compatibility.
+The `HtmlTransformer` class is a powerful and efficient edge function helper designed to modify HTML responses from the origin server. It serves as a wrapper for the [lol_html::HtmlRewriter Class](https://docs.rs/lol_html/latest/lol_html/struct.HtmlRewriter.html) Rust crate, ensuring seamless compatibility and supporting streaming HTML response bodies.
 
-To use the HtmlTransformer, create an instance of the class with `new HtmlTransformer(definitions, callback)`, passing in the rewriter `definitions` and the `callback` function for the streaming output. Arriving HTML response data is passed into the HtmlTransformer via the `await htmlTransformer.write(data)` method. The `write()` function can be called multiple times. Once the HTML response is complete the `await htmlTransformer.end()` method must be called to complete the transformation and flush the streaming data.
+This class provides a simple and intuitive API for transforming HTML responses. It allows you to [define transformations](#definitions) based on [HTML selectors](#selectors), such as elements, comments, and text, and apply these transformations to the HTML response as it streams in from the origin server. This approach is more efficient and avoids memory limitations, making it ideal for processing large HTML responses.
 
-There are two types of rewriter callback definitions that can be passed into the HtmlTransformer:
+To use the `HtmlTransformer`, you'll first need to define the transformations you want to apply to the HTML response. The following sample code demonstrates how to create an instance of the `HtmlTransformer` class and define the transformations:
+
+```js
+const transformerDefinitions = [
+  {
+    selector: 'a[href]',
+    element: async (el) => {
+      const href = el.get_attribute('href');
+      el.set_attribute('href', href.replace('http://', 'https://'));
+    },
+  },
+  {
+    selector: 'body',
+    comment: async (c) => {
+      c.remove();
+    },
+  },
+  {
+    doc_end: async (d) => {
+      d.append(
+        `&lt;!-- Transformed at ${new Date().toISOString()} by Edg.io -->`,
+        'html'
+      );
+    },
+  },
+];
+```
+
+There are two types of rewriter callback definitions that can be passed into the `HtmlTransformer`:
 
 - Transformations that match an HTML selector and trigger a callback function when the selector is found.
   - `comment`**:** Operates on any HTML comment matching the specified selector.
@@ -18,9 +46,17 @@ There are two types of rewriter callback definitions that can be passed into the
   - `doc_type`**:** Provides read-only information on the HTML document type.
   - `doc_end`**:** Triggered when the end of the HTML document is reached.
 
+Learn more about [Definitions](#definitions) and [Selectors](#selectors).
+
 ## Quick Start Examples {/* quickstart */}
 
-### Example 1: Basics Usage {/* example1 */}
+<ExampleButtons
+  title="HTMLTransformer"
+  siteUrl="https://edgio-community-examples-v7-ef-htmltransform-live.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-ef-htmltransform-example"
+/>
+
+### Example 1: Basic Usage {/* example1 */}
 
 Here is an edge function that uses HtmlTransform to:
 
@@ -64,29 +100,18 @@ export async function handleHttpRequest(request, context) {
     },
   ];
 
-  // Define the callback function to accept the transformed HTML stream
-  let responseBody = '';
-  const streamingCallback = (chunk) => {
-    responseBody += chunk;
-  };
-
-  // Create a new HTML transformer, passing in the definitions and streaming callback
-  let htmlTransformer = new HtmlTransformer(
-    transformerDefinitions,
-    streamingCallback
+  // Get the HTML from the origin server and stream the response body through the HtmlTransformer
+  return fetch(request.url, {edgio: {origin: 'api_backend'}}).then(
+    (response) => {
+      let transformedResponse = HtmlTransformer.stream(
+        transformerDefinitions,
+        response
+      );
+      // Make any changes to the response headers here.
+      transformedResponse.headers.set('x-html-transformer-ran', 'true');
+      return transformedResponse;
+    }
   );
-
-  // Get the HTML from the origin server
-  const response = await fetch(request.url, {edgio: {origin: 'api_backend'}});
-
-  // Pass the HTML response to the transformer.
-  await htmlTransformer.write(response);
-
-  // Flush the HTML transformer
-  await htmlTransformer.end();
-
-  // Return the transformed HTML body
-  return new Response(responseBody);
 }
 ```
 
@@ -124,11 +149,11 @@ This edge function transforms the above HTML to ensure HTTPS links, remove HTML 
 &lt;!-- Transformed at 2023-11-29T00:52:09.942Z by Edg.io -->
 ```
 
-### Example 2: Using fetch() {/* example2 */}
+### Example 2: Edge Side Includes with fetch() {/* example2 */}
 
 This sample edge function uses HtmlTransform to replace all `<esi:include src="..."/>` elements with the content of the specified URL.
 
-```js
+```js filename="./edge-functions/esi_example.js"
 export async function handleHttpRequest(request, context) {
   // This definition replaces <esi:include src="..." /> the response from the src
   const transformerDefinitions = [
@@ -139,7 +164,7 @@ export async function handleHttpRequest(request, context) {
       selector: 'esi\\:include[src]',
       element: async (el) => {
         const url = el.get_attribute('src');
-        const response = await fetch(url, {edgio: {origin: 'api_backend'}});
+        const response = await fetch(url, {edgio: {origin: 'edgio_self'}});
         if (response.status == 200) {
           const body = await response.text();
           el.replace(body, 'html');
@@ -153,35 +178,28 @@ export async function handleHttpRequest(request, context) {
     },
   ];
 
-  // Define the callback function to accept the transformed HTML stream
-  let responseBody = '';
-  const streamingCallback = (chunk) => {
-    responseBody += chunk;
-  };
+  // For demo purposes, we'll fetch a local asset HTML file that contains an ESI include.
+  const esiIncludeSource = new URL(request.url);
+  esiIncludeSource.pathname = '/assets/esi_include.html';
 
-  // Create a new HTML transformer, passing in the definitions and streaming callback
-  let htmlTransformer = new HtmlTransformer(
-    transformerDefinitions,
-    streamingCallback
+  // Get the HTML from the origin server and stream the response body through the HtmlTransformer
+  return fetch(esiIncludeSource, {edgio: {origin: 'edgio_self'}}).then(
+    (response) => {
+      let transformedResponse = HtmlTransformer.stream(
+        transformerDefinitions,
+        response
+      );
+      // Make any changes to the response headers here.
+      transformedResponse.headers.set('x-html-transformer-ran', 'true');
+      return transformedResponse;
+    }
   );
-
-  // Get the HTML from the origin server
-  const response = await fetch(request.url, {edgio: {origin: 'api_backend'}});
-
-  // Pass the HTML response to the transformer.
-  await htmlTransformer.write(response);
-
-  // Flush the HTML transformer
-  await htmlTransformer.end();
-
-  // Return the transformed HTML body
-  return new Response(responseBody);
 }
 ```
 
 We will now examine how this edge function will transform the following HTML response provided by an origin server:
 
-```html
+```html filename="./assets/esi_include.html"
 <!DOCTYPE html>
 <html>
   <head>
@@ -189,9 +207,18 @@ We will now examine how this edge function will transform the following HTML res
   </head>
   <body>
     <h1>Script Example</h1>
-    <esi:include src="https://api.backend.com/body" />
+    <esi:include src="/assets/esi_snippet.html" />
   </body>
 </html>
+```
+
+Our ESI snippet file `/assets/esi_snippet.html` contains the following HTML:
+
+```html filename="./assets/esi_snippet.html"
+<div>
+  <h1>Hello, World!</h1>
+  <p>This snippet will be included in the response via ESI.</p>
+</div>
 ```
 
 This edge function transforms the above HTML to replace `<esi:include ... />` with the results of the fetch. The transformed HTML is shown below.
@@ -205,18 +232,18 @@ This edge function transforms the above HTML to replace `<esi:include ... />` wi
   <body>
     <h1>Script Example</h1>
     <div>
-      <p>Here is some HTML text with a link returned by the fetch().</p>
-      <a href="https://edg.io/">Edgio Homepage</a>
+      <h1>Hello, World!</h1>
+      <p>This snippet will be included in the response via ESI.</p>
     </div>
   </body>
 </html>
 ```
 
-### Example 3: Using fetch() with HtmlTransformer.stream() helper function {/* example3 */}
+### Example 3: Using fetch() with response streaming {/* example4 */}
 
-This example is a modified version of [Example 2](edge_functions/htmltransformer#example2) which incorporates streaming the response body. This technique saves memory by streaming the response body during transformation rather than reading the whole body into memory before transforming it.
+This example is a modified version of [Example 2](#example2) without the `HtmlTransformer.stream()` helper function.
 
-```js
+```js filename="./edge-functions/esi_response_stream_example.js"
 export async function handleHttpRequest(request, context) {
   // This definition replaces <esi:include src="..." /> the response from the src
   const transformerDefinitions = [
@@ -227,7 +254,7 @@ export async function handleHttpRequest(request, context) {
       selector: 'esi\\:include[src]',
       element: async (el) => {
         const url = el.get_attribute('src');
-        const response = await fetch(url, {edgio: {origin: 'api_backend'}});
+        const response = await fetch(url, {edgio: {origin: 'edgio_self'}});
         if (response.status == 200) {
           const body = await response.text();
           el.replace(body, 'html');
@@ -240,96 +267,100 @@ export async function handleHttpRequest(request, context) {
       },
     },
   ];
+  const textDecoder = new TextDecoder();
 
-  // Get the HTML from the origin server and stream the response body through the
-  // HtmlTransformer
-  return fetch(request.url, {edgio: {origin: 'api_backend'}})
-    .then(response => {
-      let transformedResponse = HtmlTransformer.stream(transformerDefinitions, response)
-      // Make any changes to the response headers here.
-      transformedResponse.headers.set('x-html-transformer-ran', 'true')
-      return transformedResponse
-  })
-}
-```
-
-### Example 4: Using fetch() with response streaming {/* example4 */}
-
-This example is a modified version of [Example 3](edge_functions/htmltransformer#example3) without the HtmlTransformer.stream() helper function
-
-```js
-export async function handleHttpRequest(request, context) {
-  // This definition replaces <esi:include src="..." /> the response from the src
-  const transformerDefinitions = [
-    {
-      // This selector will match all <esi:include /> elements which have a src attribute.
-      // We escape the : character with 2 backslashes to indicate it is part of the tag name
-      // and not an attribute of the selector.
-      selector: 'esi\\:include[src]',
-      element: async (el) => {
-        const url = el.get_attribute('src');
-        const response = await fetch(url, {edgio: {origin: 'api_backend'}});
-        if (response.status == 200) {
-          const body = await response.text();
-          el.replace(body, 'html');
-        } else {
-          el.replace(
-            '<a>We encountered an error, please try again later.</a>',
-            'html'
-          );
-        }
-      },
-    },
-  ];
-  const textDecoder = new TextDecoder()
+  // For demo purposes, we'll fetch a local asset HTML file that contains an ESI include.
+  const esiIncludeSource = new URL(request.url);
+  esiIncludeSource.pathname = '/assets/esi_include.html';
 
   // Get the HTML from the origin server and stream the response body through the
   // HtmlTransformer to the Response object
-  const response = fetch(request.url, {edgio: {origin: 'api_backend'}})
+  const response = fetch(esiIncludeSource, {edgio: {origin: 'edgio_self'}})
     // Retrieve its body as ReadableStream
     .then(async (response) => {
-      const reader = response.body.getReader()
+      const reader = response.body.getReader();
       return new ReadableStream({
         start(controller) {
-          const htmlTransformer = new HtmlTransformer(definitions, (chunk) => {
-            controller.enqueue(chunk)
-          })
-          return pump()
+          const htmlTransformer = new HtmlTransformer(
+            transformerDefinitions,
+            (chunk) => {
+              controller.enqueue(chunk);
+            }
+          );
+          return pump();
           function pump() {
-            return reader.read().then(async ({ done, value }) => {
+            return reader.read().then(async ({done, value}) => {
               if (value) {
-                await htmlTransformer.write(textDecoder.decode(value))
+                await htmlTransformer.write(textDecoder.decode(value));
               }
               // When no more data needs to be consumed, close the stream
               if (done) {
-                await htmlTransformer.end()
-                controller.close()
-                return
+                await htmlTransformer.end();
+                controller.close();
+                return;
               }
               // Send the html to the HtmlTransformer.
-              return pump()
-            })
+              return pump();
+            });
           }
         },
-      })
+      });
     })
     // Create a new response out of the stream
-    .then((stream) => new Response(stream))
+    .then((stream) => new Response(stream));
 
-  return response
+  return response;
 }
 ```
+
 ## HtmlTransformer Class {/* class */}
 
+### static async stream(transformerDefinitions, response) {/* stream */}
+
+Static helper function to easily stream `fetch()` responses through the HtmlTransformer. This is the recommended method to use when transforming HTML responses.
+
+- `transformerDefinitions` is an array of [transformer definitions](#definitions).
+- `response` is the `fetch()` response object.
+
+```js
+// Transforms response from origin
+return fetch(request.url, {edgio: {origin: 'api_backend'}}).then((response) =>
+  HtmlTransformer.stream(transformerDefinitions, response)
+);
+```
+
+```js
+// Transforms response from origin and optionally manipulates the response headers
+return fetch(request.url, {edgio: {origin: 'api_backend'}}).then((response) => {
+  let transformedResponse = HtmlTransformer.stream(
+    transformerDefinitions,
+    response
+  );
+  // Make any changes to the response headers here.
+  transformedResponse.headers.set('x-html-transformer-ran', 'true');
+  return transformedResponse;
+});
+```
+
 ### new {/* new */}
+
+Creates a new HtmlTransformer instance. The `transformerDefinitions` is an array of [transformer definitions](#definitions). The `callback` is the function `(chunk) => { ... }` that receives the transformed HTML data chunks.
+
+<Important>
+
+This usage is not recommended for large responses as it may exceed memory
+limitations. Use the [`HtmlTransformer.stream()`](#stream) method to stream the response
+body during transformation.
+
+</Important>
 
 ```js
 const htmlTransformer = new HtmlTransformer(transformerDefinitions, callback);
 ```
 
-Creates a new HtmlTransformer instance. The `transformerDefinitions` is an array of [transformer definitions](#definitions). The `callback` is the function `(chunk) => { ... }` that receives the transformed HTML data chunks.
-
 ### async write(string) {/* write-string */}
+
+Writes the string to the transformer stream. This function can be called multiple times.
 
 ```js
 await htmlTransformer.write('<html><body><h1>Hello World</h1>');
@@ -338,9 +369,9 @@ await htmlTransformer.write('</body></html>');
 await htmlTransformer.end();
 ```
 
-Writes the string to the transformer stream. This function can be called multiple times.
-
 ### async write(Promise&lt;Response>) {/* write-promise */}
+
+Pass the Response's Promise to the transformer stream. This writes the entire response to the transformer as a stream.
 
 ```js
 const responsePromise = fetch(request.url, {edgio: {origin: 'api_backend'}});
@@ -348,9 +379,9 @@ await htmlTransformer.write(responsePromise);
 await htmlTransformer.end();
 ```
 
-Pass the Response's Promise to the transformer stream. This writes the entire response to the transformer as a stream.
-
 ### async write(Response) {/* write-response */}
+
+Pass the Response Object to the transformer stream. This writes the entire response to the transformer as a stream.
 
 ```js
 const response = await fetch(request.url, {edgio: {origin: 'api_backend'}});
@@ -360,9 +391,9 @@ if (response.status == 200) {
 }
 ```
 
-Pass the Response Object to the transformer stream. This writes the entire response to the transformer as a stream.
-
 ### async write(readableStream) {/* write-readable-stream */}
+
+Pass the ReadbleStream to the transformer stream. This writes the entire response to the transformer as a stream.
 
 ```js
 const response = await fetch(request.url, {edgio: {origin: 'api_backend'}});
@@ -375,36 +406,13 @@ if (response.status == 200) {
 }
 ```
 
-Pass the ReadbleStream to the transformer stream. This writes the entire response to the transformer as a stream.
-
 ### async end() {/* end */}
+
+Flushes the transformer and completes the transformation. This function must be called after the last call to `await htmlTransformer.write()`.
 
 ```js
 await htmlTransformer.end();
 ```
-
-Flushes the transformer and completes the transformation. This function must be called after the last call to `await htmlTransformer.write()`.
-
-### static async stream() {/* stream */}
-
-```js
-  // Transforms response from origin
-  return fetch(request.url, {edgio: {origin: 'api_backend'}})
-    .then(response => HtmlTransformer.stream(transformerDefinitions, response))
-```
-
-```js
-  // Transforms response from origin and optionally manipulates the response headers
-  return fetch(request.url, {edgio: {origin: 'api_backend'}})
-    .then(response => {
-      let transformedResponse = HtmlTransformer.stream(transformerDefinitions, response)
-      // Make any changes to the response headers here.
-      transformedResponse.headers.set('x-html-transformer-ran', 'true')
-      return transformedResponse
-  })
-```
-
-Static helper function to easily stream fetch() responses through the HtmlTransformer.
 
 ## Definitions {/* definitions */}
 

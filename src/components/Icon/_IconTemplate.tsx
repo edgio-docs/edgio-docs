@@ -10,5 +10,5 @@ export const IconNameDark = React.memo<JSX.IntrinsicElements['svg']>(
   ({className}) => <svg className={cn('inline', className)}></svg>
 );
 
-IconName.displayName = 'Icon';
-IconNameDark.displayName = 'IconDark';
+IconName.displayName = 'IconName';
+IconNameDark.displayName = 'IconNameDark';

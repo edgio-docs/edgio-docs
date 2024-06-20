@@ -1,11 +1,11 @@
-import {default as base} from '../base.config';
+import { default as base } from '../base.config';
 
 const DELIVERY = 'Delivery';
 const CACHING_DELIVERY = 'Caching and Delivery';
 const MEDIAVAULT = 'MediaVault';
 const CONTROL = 'Control';
 const EDGEPRISM = 'EdgePrism';
-const STORAGE = 'Origin Storage';
+const STORAGE = 'Storage';
 const MMD_LIVE = 'MMD Live';
 const MMD_OD = 'MMD OD';
 const LVP = 'LVP';

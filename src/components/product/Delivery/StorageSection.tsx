@@ -5,12 +5,12 @@ import {
   IconAppsPerformance,
   IconAppsPerformanceDark,
 } from 'components/Icon/IconAppsPerformance';
-import {useAppContext} from 'contexts/AppContext';
-import {useTheme} from 'contexts/ThemeContext';
+import { useAppContext } from 'contexts/AppContext';
+import { useTheme } from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 
-import {StyledFeatureSection} from '../../FeatureSection';
+import { StyledFeatureSection } from '../../FeatureSection';
 import SectionHeader from '../../SectionHeader';
 
 const StyledComp = styled(StyledFeatureSection)``;
@@ -30,7 +30,7 @@ const items = {
       path: '/delivery/storage/console',
     },
     {
-      title: 'Files and Folders',
+      title: 'Files and Folders List',
       path: '/delivery/storage/console/#viewing',
     },
     {

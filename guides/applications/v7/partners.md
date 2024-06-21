@@ -20,9 +20,9 @@ Navigate to your partner account landing page by performing the following steps:
 
 ## Reports {/*reports*/}
 
-From your partner account landing page, navigate to the **Reports** page to view a report that provides the following information for each of your organizations:
+View total usage metrics for each organization associated with your partner account from within the **Reports** page. Each of the following metrics sums usage across all environments that belong to that organization:
 
--   **Total GB transferred:** View the total amount of data transferred, in GB, for all properties associated with that organization.
+-   **Total GB transferred:** View the total amount of data transferred, in GB, for a specific organization. 
 -   **Total Cloud Functions GB-Hrs:** View an organization's Cloud Functions usage. Specifically, this metric reports total RAM usage, in GB, and total runtime, in hours.
 
 ## Organization Management {/*organization-management*/}
@@ -31,7 +31,7 @@ As a partner, you may create organizations. Additionally, you can modify and del
 
 **Key information:**
 
--   Each member of your partner account must be [assigned a role](#partner-member-management). This role determines whether you can manage organizations, properties, and environments.
+-   Each member of your partner account must be [assigned a role](#partner-member-management). This role determines whether that user may manage organizations, properties, and environments.
 -   If your role grants you the ability to manage organizations, properties, environments, or all three, then you may do so by navigating to the desired organization, property, or environment and then performing the desired action. 
 
     For example, if you would like to delete a organization, then you would navigate to the desired organization and then follow the standard deletion procedure. Specifically, you would navigate to the organization's **Settings** page, mark the **Confirm that I want to delete this organization.**, and then click **Delete Organization**.
@@ -57,13 +57,13 @@ As a partner, you may create organizations. Additionally, you can modify and del
 
 ## Partner Member Management {/*partner-member-management*/}
 
-Upon creating a user, you must assign a role that will be applied at the partner level. This role is applied across all organizations associated with your partner account. Each available role is described below.
+Upon creating a user, you must assign a role that is applied at the partner level. Each available role is described below.
 
-| Role       | Description                                                                                                                                                                                |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Viewer     | This role grants read-only access to all organizations associated with your partner account. This includes read-only access to each organization's settings, properties, and environments. |
-| Maintainer | This role grants the capability to manage properties and environments across all organizations associated with your partner account.                                                       |
-| Admin      | This role grants full access to the entire organization including the ability to manage the members of your partner account.                                                               |
+| Role       | Description                                                                                                                                                                                                |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Viewer     | This role grants read-only access to all organizations associated with your partner account. This includes read-only access to all settings, properties, and environments for each of those organizations. |
+| Maintainer | This role grants the capability to manage properties and environments across all organizations associated with your partner account.                                                                       |
+| Admin      | This role grants full access to the entire organization including the ability to manage the members of your partner account.                                                                               |
 
 **To add members**
 
@@ -140,7 +140,7 @@ You may customize the appearance of the {{ PORTAL }} in the following ways:
     -   **Delete a custom logo:** Click the `Delete` link under the desired logo.
     -   **Customize the Contact Support link:** Under the **Support Information** option, type the message or link that will replace the `Contact Support` link.
     
-        **Example:** `[Contact My Partner](https://mypartner.example.com/support)
+        **Example:** `[Contact My Partner](https://mypartner.example.com/support)`
 
 ## Activity {/*activity*/}
 

@@ -108,7 +108,7 @@ Upon creating a user, you must assign a role that will be applied at the organiz
 
     1.  Click **CONFIRM MY ACCOUNT** from the welcome email.
     2.  Click **Accept** to accept our terms of service and privacy policy.
-    3.  Set their password or link their account to Github or Google.
+    3.  Set their password or link their account to Github, Google, or Microsoft.
 
     <Callout type="info">
 

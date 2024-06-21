@@ -106,8 +106,8 @@ Upon creating a user, you must assign a role that will be applied at the organiz
 
     A new user must confirm their account by performing the following steps:
 
-    1.  Clicking **CONFIRM MY ACCOUNT** from the welcome email.
-    2.  Clicking **Accept** to accept our terms of service and privacy policy.
+    1.  Click **CONFIRM MY ACCOUNT** from the welcome email.
+    2.  Click **Accept** to accept our terms of service and privacy policy.
     3.  Set their password or link their account to Github or Google.
 
     <Callout type="info">

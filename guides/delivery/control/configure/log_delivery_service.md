@@ -522,6 +522,7 @@ for file_name in files_to_download:
 ```
 ### Download Using the Storage Management Console  {/*download-using-the-storage-management-console*/}
 
+#### Download Manually
 You can download a log file using the Origin Storage Management Console.
 
 Begin by logging into the Edgio Control Portal, then follow these steps:
@@ -530,7 +531,7 @@ Begin by logging into the Edgio Control Portal, then follow these steps:
 2. Navigate to the folder that contains the file you want to download.
 3. Click the download icon. Your browser downloads the file.
 
-#### Example
+#### Download via Python
 
 This Python script deletes the file once it is downloaded. It also deletes the directory if it becomes empty. Use the parameter max_files to download multiple files if you don't want the limit set to 0.
 

@@ -758,6 +758,11 @@ const nav = {
         },
       ],
     },
+    {
+      title: 'Partners',
+      path: 'partners',
+      icon: 'handshake',
+    },
   ],
 };
 export default nav;

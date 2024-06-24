@@ -41,7 +41,7 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          git diff --quiet || echo "has_changes=true" >> $GITHUB_OUTPUT
+          git diff || echo "has_changes=true" >> $GITHUB_OUTPUT
 
       - name: Check if there are modified files
         id: status

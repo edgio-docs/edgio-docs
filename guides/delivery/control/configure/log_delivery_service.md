@@ -520,7 +520,7 @@ for file_name in files_to_download:
         if response.status_code != 200:
             print("Unable to download " + file_name + ". Status code: " + response.status_code)
 ```
-### Download Using the Storage Management Console  {/*download-using-the-storage-management-console*/}
+### Download from Storage  {/*download-using-the-storage-management-console*/}
 
 #### Download Manually
 You can download a log file using the Origin Storage Management Console.

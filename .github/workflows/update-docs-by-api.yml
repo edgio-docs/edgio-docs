@@ -38,6 +38,11 @@ jobs:
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
         run: python ./rest_api/scripts/datasets.py
 
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --quiet || echo "has_changes=true" >> $GITHUB_OUTPUT
+
       - name: Configure Git
         run: |
           git config --global user.name 'github-actions[bot]'
@@ -48,6 +53,7 @@ jobs:
           git checkout -b update-from-script
 
       - name: Commit changes
+        if: steps.check_changes.outputs.has_changes == 'true'
         run: |
           git add -A
           git commit -m "Update data from the pops and datasets script"

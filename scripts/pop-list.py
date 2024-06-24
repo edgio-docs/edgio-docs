@@ -55,8 +55,8 @@ if isinstance(data, list):
             output_file.write(markdown_table)
         
         # Print the success message only if the file was written successfully
-        print(f"Available datasets saved to {output_file_path}")
-        print(markdown_table)
+        print({markdown_table})
+        print(f"POPs saved to {output_file_path}")
 
     except Exception as e:
         # Handle the exception if any error occurs

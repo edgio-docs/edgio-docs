@@ -55,12 +55,11 @@ if isinstance(data, list):
             output_file.write(markdown_table)
         
         # Print the success message only if the file was written successfully
-        print({markdown_table})
         print(f"POPs saved to {output_file_path}")
 
     except Exception as e:
         # Handle the exception if any error occurs
-        print(f"Failed to save HTML content to {output_file_path}: {e}")
+        print(f"Failed to save POPs to {output_file_path}: {e}")
 
 else:
     print("Unexpected API response format. Expected a list of dictionaries.")

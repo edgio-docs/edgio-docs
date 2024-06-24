@@ -10,7 +10,6 @@ jobs:
   generate-docs-by-api:
     runs-on: ubuntu-latest
     steps:
-    
       - name: Checkout code
         uses: actions/checkout@v2
         with:
@@ -31,7 +30,7 @@ jobs:
       - name: Run pops script
         env:
           EC_TOKEN: ${{ secrets.EC_TOKEN }}
-        run: python ./scripts/pop-list2.py
+        run: python ./scripts/pop-list.py
 
       - name: Run datasets script
         env:
@@ -39,22 +38,28 @@ jobs:
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
         run: python ./rest_api/scripts/datasets.py
 
-      - name: Configure Git
+      - name: Check if there are modified files
+        id: status
+        run: |
+          # Check if the git status is clean
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No modified files"
+            # Set a variable to indicate that there are no modified files
+            echo "NO_MODIFIED_FILES=true" >> $GITHUB_OUTPUT
+          else
+            echo "Modified files"
+            # Set a variable to indicate that there are modified files
+            echo "NO_MODIFIED_FILES=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit changes
+        if: steps.status.outputs.NO_MODIFIED_FILES == 'false'
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Create and switch to a new branch
-        run: |
           git checkout -b update-from-script
-
-      - name: Commit changes
-        run: |
           git add -A
-          git commit -m "Update data from the pops and datasets script"
-
-      - name: Push changes to new branch
-        run: |
+          git commit -m "Update content using the pops and datasets scripts"
           git push --set-upstream origin update-from-script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -67,4 +72,4 @@ jobs:
         with:
           destination_branch: main
           source_branch: update-from-script
-          pr_title: '[BOT] Update POPs and Datasets Script'
+          pr_title: '[BOT] Update POPs and Datasets'

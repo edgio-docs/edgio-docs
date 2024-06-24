@@ -11,6 +11,7 @@ Environment-specific aggregated edge usage metrics that can be broken down by ti
 
 **Dimensions:**
 
+-   **time:** The date and time (UTC) at which the request was received.
 -   **environment_id:** An environment's system-defined ID (e.g., 12345678-1234-1234-1234-1234567890ab). From the Edgio Console, navigate to the desired environment and then click **Settings**. It is listed under **Environment ID**.
 -   **country_code:** The request's country code which consists of two lowercase letters. Returns `-` when the country cannot be identified.
 

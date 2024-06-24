@@ -1,4 +1,4 @@
-name: Update Available Datasets Section
+name: Update POPs and Datasets Sections
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  request-token:
+  generate-docs-by-api:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -25,8 +25,14 @@ jobs:
           python -m pip install --upgrade pip
           # Install dependencies
           pip install requests
+          pip install pandas
 
-      - name: Run script
+      - name: Run pops script
+        env:
+          EC_TOKEN: ${{ secrets.EC_TOKEN }}
+        run: python ./scripts/pop-list.py
+
+      - name: Run datasets script
         env:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
@@ -44,7 +50,7 @@ jobs:
       - name: Commit changes
         run: |
           git add -A
-          git commit -m "Update data from the datasets script"
+          git commit -m "Update data from the pops and datasets script"
 
       - name: Push changes to new branch
         run: |
@@ -60,4 +66,4 @@ jobs:
         with:
           destination_branch: main
           source_branch: update-from-script
-          pr_title: '[BOT] Update Datasets Script'
+          pr_title: '[BOT] Update POPs and Datasets Script'

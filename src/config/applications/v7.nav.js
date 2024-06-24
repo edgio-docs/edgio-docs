@@ -726,20 +726,29 @@ const nav = {
         },
         separator,
         {
-          title: 'RTLD CDN',
+          title: 'RTLD CDN Log Fields',
           path: 'logs/rtld/log_fields_rtld_cdn',
         },
         {
-          title: 'RTLD WAF',
+          title: 'RTLD WAF Log Fields',
           path: 'logs/rtld/log_fields_rtld_waf',
         },
         {
-          title: 'RTLD Rate Limiting',
+          title: 'RTLD Rate Limiting Log Fields',
           path: 'logs/rtld/log_fields_rtld_rate_limiting',
         },
         {
-          title: 'RTLD Bot',
+          title: 'RTLD Bot Log Fields',
           path: 'logs/rtld/log_fields_rtld_bot_manager',
+        },
+        {
+          title: 'RTLD Cloud Functions Log Fields',
+          path: 'logs/rtld/log_fields_rtld_cloud_functions',
+        },
+        separator,
+        {
+          title: 'POPs',
+          path: 'reference/pops',
         },
       ],
     },

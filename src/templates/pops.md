@@ -17,7 +17,6 @@
 | BSN | Boston | North America |
 | BUR | Los Angeles | North America |
 | CDC | Ashburn | North America |
-| CGK | Jakarta | Asia |
 | CHA | Chicago | North America |
 | CHD | Chicago | North America |
 | CHF | Chicago | North America |

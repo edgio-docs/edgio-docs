@@ -10,6 +10,10 @@ jobs:
   generate-docs-by-api:
     runs-on: ubuntu-latest
     steps:
+    
+      - name: Clear Cache
+        run: rm -rf ~/.npm
+    
       - name: Checkout code
         uses: actions/checkout@v2
         with:

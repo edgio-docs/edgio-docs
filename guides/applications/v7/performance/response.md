@@ -156,7 +156,7 @@ Common response headers are described below.
   | 2    | The origin server responded with an invalid HTTP header. Check the headers included in the response.                                                      |
   | 3    | The origin server prematurely closed the connection.                                                                                                      |
   | 4    | Failed to encode the request.                                                                                                                             |
-  | 5    | Failed to connect to the origin server.                                                                                                                   |
+  | 5    | Failed to connect to the origin server.  <br />[Troubleshoot.](/applications/performance/troubleshooting#502-bad-gateway-status-code)                     |
   | 6    | The client sent an invalid request header. Check the headers included in the request.                                                                     |
   | 7    | Too many internal redirects.                                                                                                                              |
   | 8    | The client sent an invalid request (hotfile).                                                                                                             |

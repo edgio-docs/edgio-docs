@@ -43,6 +43,8 @@ if isinstance(data, list):
     for index, row in df.iterrows():
         markdown_table += f"| {row['Code']} | {row['City']} | {row['Continent']} |\n"
 
+    print(markdown_table)
+
     # Define the output file path
     output_file_path = "src/templates/pops.md"
 

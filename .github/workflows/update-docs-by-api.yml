@@ -11,9 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-      - name: Clear Cache
-        run: rm -rf ~/.npm
-    
       - name: Checkout code
         uses: actions/checkout@v2
         with:
@@ -34,7 +31,7 @@ jobs:
       - name: Run pops script
         env:
           EC_TOKEN: ${{ secrets.EC_TOKEN }}
-        run: python ./scripts/pop-list.py
+        run: python ./scripts/pop-list2.py
 
       - name: Run datasets script
         env:

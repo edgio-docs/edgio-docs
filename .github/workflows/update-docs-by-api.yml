@@ -43,23 +43,27 @@ jobs:
         run: |
           git diff --quiet || echo "has_changes=true" >> $GITHUB_OUTPUT
 
-      - name: Configure Git
+      - name: Check if there are modified files
+        id: status
+        run: |
+          # Check if the git status is clean
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No modified files"
+            # Set a variable to indicate that there are no modified files
+            echo "NO_MODIFIED_FILES=true" >> $GITHUB_OUTPUT
+          else
+            echo "Modified files"
+            # Set a variable to indicate that there are modified files
+            echo "NO_MODIFIED_FILES=false" >> $GITHUB_OUTPUT
+          fi
+      - name: Commit changes
+        if: steps.status.outputs.NO_MODIFIED_FILES == 'false'
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Create and switch to a new branch
-        run: |
           git checkout -b update-from-script
-
-      - name: Commit changes
-        if: steps.check_changes.outputs.has_changes == 'true'
-        run: |
           git add -A
           git commit -m "Update data from the pops and datasets script"
-
-      - name: Push changes to new branch
-        run: |
           git push --set-upstream origin update-from-script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

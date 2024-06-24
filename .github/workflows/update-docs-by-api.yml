@@ -25,6 +25,7 @@ jobs:
           python -m pip install --upgrade pip
           # Install dependencies
           pip install requests
+          pip install pandas
 
       - name: Run pops script
         env:

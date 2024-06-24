@@ -43,8 +43,6 @@ if isinstance(data, list):
     for index, row in df.iterrows():
         markdown_table += f"| {row['Code']} | {row['City']} | {row['Continent']} |\n"
 
-    print(markdown_table)
-
     # Define the output file path
     output_file_path = "src/templates/pops.md"
 
@@ -58,6 +56,7 @@ if isinstance(data, list):
         
         # Print the success message only if the file was written successfully
         print(f"Available datasets saved to {output_file_path}")
+        print(markdown_table)
 
     except Exception as e:
         # Handle the exception if any error occurs

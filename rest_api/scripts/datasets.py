@@ -76,8 +76,6 @@ for dataset in datasets:
 output_content += datasets_list
 output_content += html_content
 
-print(output_content)
-
 # Define the output file path
 output_file_path = "src/templates/datasets.md"
 
@@ -91,6 +89,7 @@ try:
     
     # Print the success message only if the file was written successfully
     print(f"Datasets saved to {output_file_path}")
+    print(output_content)
 
 except Exception as e:
     # Handle the exception if any error occurs

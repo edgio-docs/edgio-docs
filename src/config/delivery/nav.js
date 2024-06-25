@@ -12,10 +12,12 @@ const nav = {
     {
       title: 'Overview',
       path: 'overview',
+      icon: 'delivery/overview',
     },
     {
       title: 'Delivery',
       path: 'delivery',
+      icon: 'delivery/delivery',
       routes: [
         {
           title: 'User Guide',
@@ -104,6 +106,7 @@ const nav = {
     {
       title: 'APIs',
       path: 'apis',
+      icon: 'delivery/apis',
       routes: [
         {
           title: 'Billing',
@@ -159,6 +162,7 @@ const nav = {
     {
       title: 'Control',
       path: 'control',
+      icon: 'delivery/control',
       routes: [
         {
           title: 'APIs',
@@ -332,6 +336,7 @@ const nav = {
     {
       title: 'Storage',
       path: 'storage',
+      icon: 'delivery/storage',
       routes: [
         {
           title: 'Console',
@@ -430,6 +435,7 @@ const nav = {
     {
       title: 'Video',
       path: 'video',
+      icon: 'delivery/video',
       routes: [
         {
           title: 'Guides',

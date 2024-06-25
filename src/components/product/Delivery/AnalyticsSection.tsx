@@ -2,9 +2,9 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 import {
-  IconAppsPerformance,
-  IconAppsPerformanceDark,
-} from 'components/Icon/IconAppsPerformance';
+  IconAnalyticsSection,
+  IconAnalyticsSectionDark,
+} from 'components/Icon/delivery/IconAnalyticsSection';
 import {useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
@@ -69,7 +69,7 @@ export default function Storage() {
   return (
     <StyledComp>
       <SectionHeader
-        Icon={themedValue(IconAppsPerformance, IconAppsPerformanceDark)}
+        Icon={themedValue(IconAnalyticsSection, IconAnalyticsSectionDark)}
         title="Analytics"
         subtitle={`EdgeQuery provides real-time aggregated data for many of the reports in Control and is also accessible via REST API.
         `}

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import cn from 'classnames';
 
-export const IconDeliveryStorage = React.memo<JSX.IntrinsicElements['svg']>(
+export const IconStorage = React.memo<JSX.IntrinsicElements['svg']>(
   ({className}) => (
     <svg
       className={cn('inline', className)}
@@ -21,7 +21,7 @@ export const IconDeliveryStorage = React.memo<JSX.IntrinsicElements['svg']>(
   )
 );
 
-export const IconDeliveryStorageDark = IconDeliveryStorage;
+export const IconStorageDark = IconStorage;
 
-IconDeliveryStorage.displayName = 'IconDeliveryStorage';
-IconDeliveryStorageDark.displayName = 'IconDeliveryStorageDark';
+IconStorage.displayName = 'IconStorage';
+IconStorageDark.displayName = 'IconStorageDark';

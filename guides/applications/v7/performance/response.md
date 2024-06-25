@@ -124,8 +124,7 @@ Common response headers are described below.
   - By default, our edge servers only return this header when the requested content was previously cached.
   - The `Accept-Encoding` request header identifies the type of compression requested by the client. An edge server may deliver the requested content immediately if the cached asset matches the requested compression method.
 
-- <a id="warning" />
-  **Warning:** This response header is only returned when a stale response is served
+- **<a id="warning" />Warning:** This response header is only returned when a stale response is served
   to the client. A stale response is typically served under the following conditions:
 
   - The [Stale While Revalidate feature](/applications/performance/rules/features#stale-while-revalidate) was applied to the request.
@@ -148,6 +147,35 @@ Common response headers are described below.
   **Example:** `x-cache: HIT`
 
 - **x-ec-debug:** Contains the requested debug cache metadata when the [Debug Header feature](/applications/performance/rules/features#debug-header) has been enabled. [Learn more.](#requesting-debug-cache-information)
+- **x-ec-proxy-error:** Returns one of the following codes when an error occurs:
+
+  | Code | Description                                                                                                                                               |
+  | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | 0    | No or unknown error.                                                                                                                                      |
+  | 1    | Unexpected error due to a failed assertion.                                                                                                               |
+  | 2    | The origin server responded with an invalid HTTP header. Check the headers included in the response.                                                      |
+  | 3    | The origin server prematurely closed the connection.                                                                                                      |
+  | 4    | Failed to encode the request.                                                                                                                             |
+  | 5    | Failed to connect to the origin server.  <br />[Troubleshoot.](/applications/performance/troubleshooting#502-bad-gateway-status-code)                     |
+  | 6    | The client sent an invalid request header. Check the headers included in the request.                                                                     |
+  | 7    | Too many internal redirects.                                                                                                                              |
+  | 8    | The client sent an invalid request (hotfile).                                                                                                             |
+  | 9    | The origin server did not respond. Check your web server's availability.                                                                                  |
+  | 10   | The origin server responded with an invalid response header. Check the headers included in the response.                                                  |
+  | 11   | Failed to establish a TLS connection with the origin server. <br />[Troubleshoot.](/applications/performance/troubleshooting#502-bad-gateway-status-code) |
+  | 12   | Failed to validate the TLS certificate. <br />[Troubleshoot.](/applications/performance/troubleshooting#502-bad-gateway-status-code)                      |
+  | 13   | The origin server did not respond before the connection timed out. Check your web server's availability.                                                  |
+  | 14   | The origin request backlog is full.                                                                                                                       |
+  | 15   | The origin server responded, but the connection timed out before it could be read.                                                                        |
+  | 16   | Failed to decode the response from the origin server.                                                                                                     |
+  | 17   | The origin server responded without including at least one header. Check the origin server's response.                                                    |
+  | 18   | The origin server responded, but the connection timed out before the payload could be read.                                                               |
+  | 19   | Detected a proxy request loop.                                                                                                                            |
+  | 20   | A timeout occurred before establishing a connection to the origin server.  Check your web server's availability.                                          |
+  | 21   | Failed connection due to a blacklisted origin server.                                                                                                     |
+  | 22   | Failed to decode the response from the origin server.                                                                                                     |
+  | 23   | The origin server is unavailable. Check your web server's availability.                                                                                   |
+
 - **{{ HEADER_PREFIX }}-aws-region:** Indicates the [AWS region](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions) from which a request to the {{ PRODUCT }} cloud was served.
   <!--
 - **{{ HEADER_PREFIX }}-caching-status:** Indicates cache status information. If the response was not cached or served from cache, then it will report the reason why it was not cached.

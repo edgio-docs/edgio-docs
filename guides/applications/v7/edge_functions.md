@@ -6,34 +6,23 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 
 **Key information:**
 
-- This article assumes that you are familiar with our [CDN-as-Code](/applications/performance/cdn_as_code) approach for defining rules.
+- This article assumes that you are familiar with [defining rules](/applications/v7/performance/rules#rules-and-cdn-as-code) using CDN-as-Code or the {{ PORTAL }}.
 - Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}
 
 {{ prereq.md }}
 
-## Defining Edge Functions {/* defining-edge-functions */}
+## Edge Functions {/* edge-function */}
 
-An edge function is invoked when an incoming request matches a route that has an edge function assigned to it. Only a single edge function can be assigned to a route. If multiple routes match an incoming request, the edge function assigned to the last matching route is invoked.
+Edge functions are standalone JavaScript functions that are executed on the edge servers. They are defined within a JavaScript file and exported as an asynchronous function named `handleHttpRequest`. This function is invoked when an incoming request matches a rule that has an edge function assigned to it. Only a single edge function can be assigned to a rule. If multiple rules match an incoming request, the edge function assigned to the last matching rule is invoked.
 
-Define an edge function by:
+The location where edge functions are defined depends on the configuration of your property. There are two methods for defining edge functions:
 
-- Storing your standalone JavaScript code as a file with a `js` file extension.
-- Setting an `edge_function` property within your {{ ROUTES_FILE }}. Set this string property to the relative path to your edge function.
+- [CDN-as-Code](#cdn-as-code) - Define edge functions within your local project codebase.
+- [Rules UI](#rules-ui) - Define edge functions within the {{ PORTAL }}.
 
-  ```js filename="./routes.js"
-  import {Router} from '@edgio/core/router';
-  export default new Router()
-    .get('/', {
-      edge_function: './edge-functions/index.js',
-    })
-    .match('/api/*', {
-      edge_function: './edge-functions/api.js',
-    });
-  ```
+For either method, the edge function is defined as an asynchronous function exported as `handleHttpRequest` with the following signature:
 
-An edge function file must export the following entry point:
-
-```js
+```js filename="./edge-functions/index.js"
 /**
  * Handles an HTTP request and returns a response.
  *
@@ -56,6 +45,38 @@ export async function handleHttpRequest(request, context) {
   // ... function code ...
 }
 ```
+
+### For CDN-as-Code {/* cdn-as-code */}
+
+For properties using CDN-as-Code, edge functions are defined within your local project codebase. You can define edge functions by:
+
+- Storing your standalone JavaScript code as a file with a `js` file extension.
+- Setting an `edge_function` property within your {{ ROUTES_FILE }}. Set this string property to the relative path to your edge function.
+
+  ```js filename="./routes.js"
+  import {Router} from '@edgio/core/router';
+  export default new Router()
+    .get('/', {
+      edge_function: './edge-functions/index.js',
+    })
+    .match('/api/*', {
+      edge_function: './edge-functions/api.js',
+    });
+  ```
+
+### For Rules UI {/* rules-ui */}
+
+For properties managed within the {{ PORTAL }}, edge functions are defined at the environment level. Navigate to your property and perform the following steps:
+
+1. Identify the environment (e.g., `production`) that will contain the edge function.
+2. Click on **Edge Functions** in the left-hand navigation and choose the **Code** tab.
+   ![Edge Functions Create New Step 1](/images/v7/edge-functions/ui-create-function-step-1.png?width=800)
+3. Click on **Add Function** and provide a name for the edge function file.
+   ![Edge Functions Create New Step 2](/images/v7/edge-functions/ui-create-function-step-2.png?width=800)
+4. Once the file is created, you can define your edge function logic within the editor.
+   ![Edge Functions Create New Step 3](/images/v7/edge-functions/ui-create-function-step-3.png?width=800)
+5. Apply the edge function to your rule(s) by choosing the **Edge Function** feature and selecting the edge function you created.
+   ![Edge Functions Create New Step 4](/images/v7/edge-functions/ui-create-function-step-4.png?width=800)
 
 ### Edge Function Initialization Script (Optional) {/* edge-function-initialization-script */}
 
@@ -737,3 +758,4 @@ It's worth noting that not all implementations will be able to accept polyfills,
   siteUrl="https://edgio-community-examples-v7-edge-functions-live.edgio.link/"
   repoUrl="https://github.com/edgio-docs/edgio-v7-edge-functions-example"
 />
+````

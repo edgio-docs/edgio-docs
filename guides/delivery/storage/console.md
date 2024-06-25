@@ -10,6 +10,7 @@ If you are new to Origin Storage, you have the option to use either (or both) th
 <Callout type="info">The Console is intended for ad-hoc work only and should not be part of normal CDN work flows. Whenever possible, we recommend that customers leverage the Origin Storage API due to its feature-rich ingest workflow and its superior performance.</Callout>
 
 ## Console Workspace  {/*workspace*/}
+
 ![Console Workspace](/images/delivery/storage/storage-console.png)
 
 Navigate to *Control* > *Manage* > *Origin Storage Console* to access these controls:
@@ -22,12 +23,15 @@ Navigate to *Control* > *Manage* > *Origin Storage Console* to access these cont
 - **file and folder list**: Shows files / folders contained in the folder currently shown in the breadcrumbs bar.
 
 ## Viewing Content in the Files and Folders List  {/*viewing*/}
+
 ### Before You Start  {/*before-you-start*/}
+
 Select an account and user name if you have not already done so. Use the drop-down menus at the top of the workspace:
 
 ![Account and User dropdown](/images/delivery/storage/account-dropdown.png)
 
 ### Filtering  {/*filtering*/}
+
 You can filter the contents of the files and folders list by typing text in the Filter box in the top right corner of the page.
 
 <Callout type="info">The filter applies only to the folder you are currently viewing as reflected in the breadcrumbs bar, and not the entire directory structure of your content as a whole.</Callout>
@@ -41,6 +45,7 @@ As you type, the Console modifies the files and folders list to match your filte
 Filtering is case insensitive.
 
 ### Controlling List Content  {/*controlling-list-content*/}
+
 Using the following list options icons in the top right corner of the page, you can view:
 
 - files and folders
@@ -50,6 +55,7 @@ Using the following list options icons in the top right corner of the page, you 
 ![List controls](/images/delivery/storage/controls.png)
 
 ### Sorting  {/*sorting*/}
+
 Using the sort drop-down and sort icon, you can arrange the contents of the files and folders list.
 
 ![Sort options](/images/delivery/storage/sort.png)
@@ -71,6 +77,7 @@ Use the results per page links at the bottom of the page to control the number o
 ![Paging options](/images/delivery/storage/paging.png)
 
 ## Working with Files  {/*files*/}
+
 ### Before You Start  {/*before-you-start-files*/}
 
 Select an account and user name if you have not already done so. Use the drop-down menus at the top of the workspace:
@@ -82,55 +89,60 @@ Select an account and user name if you have not already done so. Use the drop-do
 You can delete a single file or multiple files.
 
 #### Deleting a Single File  {/*deleting-a-single-file*/}
-1.  Navigate to the folder that contains the file you want to delete.
-2.  Click the **delete** icon.
 
-![Delete icon](/images/delivery/storage/delete-single.png)
+1. Navigate to the folder that contains the file you want to delete.
+2. Click the **delete** icon.
 
-3.  Click **Delete** in the dialog that asks you to confirm the deletion.
-4.  The Console deletes the file.
+    ![Delete icon](/images/delivery/storage/delete-single.png)
+
+3. Click **Delete** in the dialog that asks you to confirm the deletion.
+4. The Console deletes the file.
 
 <Callout type="info">You can also delete a file using the Origin Storage [deleteFile API](/delivery/storage/apis/api_calls/working_with_files/#delete-a-file).</Callout>
 
 #### Deleting Multiple Files  {/*deleting-multiple-files*/}
-1.  Navigate to the folder that contains the files you want to delete.
-2.  Choose files you want to delete. You have two options:
 
-    -   Individual: Select individual files by clicking the checkboxes to the left of the file names.
-    -   All: To select all files currently visible in the *files and folders* list (based on the results per page setting), Click the checkbox to the left of the **Delete** button.
+1. Navigate to the folder that contains the files you want to delete.
+2. Choose files you want to delete. You have two options:
+
+    - Individual: Select individual files by clicking the checkboxes to the left of the file names.
+    - All: To select all files currently visible in the *files and folders* list (based on the results per page setting), Click the checkbox to the left of the **Delete** button.
 
     <Callout type="info">The button to delete files is inactive until you select one or more files.</Callout>
 
-4.  Click the **Delete** button.
-5.  Click **Delete** in the dialog that asks you to confirm.
+3. Click the **Delete** button.
+4. Click **Delete** in the dialog that asks you to confirm.
 
 ### Previewing Images  {/*previewing-images*/}
+
 You can view image files that are in your Origin Storage account.
 
-1.  Navigate to the folder that contains the file.
-2.  Click the *preview* icon.
+1. Navigate to the folder that contains the file.
+2. Click the *preview* icon.
 
     ![Preview icon](/images/delivery/storage/preview.png)
 
-3.  The image appears in a dialog along with its [direct link](#getting-direct-links-to-files).
+3. The image appears in a dialog along with its [direct link](#getting-direct-links-to-files).
 
 ### Getting Direct Links to Files  {/*getting-direct-links-to-files*/}
+
 The Console allows you to obtain a file’s URL that you can share by copying and pasting. The URL allows users to directly download the file from Origin Storage. For security purposes, the link is valid for 24 hours only.
 
-1.  Navigate to the folder that contains the file.
-2.  Click the *generate link* icon.
+1. Navigate to the folder that contains the file.
+2. Click the *generate link* icon.
 
     ![Generate link icon](/images/delivery/storage/generate-link.png)
 
-3.  The direct link appears in a dialog box along with the link expiration date/time.
+3. The direct link appears in a dialog box along with the link expiration date/time.
 
-4.  Click the copy to clipboard icon to get a link you can paste.
+4. Click the copy to clipboard icon to get a link you can paste.
 
     ![Copy to clipboard icon](/images/delivery/storage/copy.png)
 
 <Callout type="info">The Origin StorageAPI does not provide a means for obtaining a file's URL.</Callout>
 
 ### Downloading Files  {/*downloading-files*/}
+
 1. Navigate to the folder that contains the file you want to download.
 2. Click the *download* icon.
 
@@ -139,34 +151,38 @@ The Console allows you to obtain a file’s URL that you can share by copying an
 Your browser downloads the file.
 
 ### Uploading Files  {/*uploading-files*/}
+
 You can upload by drag and drop or by selecting individual files. The Console fully supports file names with UTF-8 characters.
 
 <Callout type="info">- The Console allows you to upload a zero-byte file and imposes no file size limits.<br />- The Console allows you to upload no more than 50 files at once. At any given time, the Console uploads only two files concurrently. The rest of the files are in an upload queue.<br />- If you attempt to upload a file in a directory that already contains the file name, the Console overwrites the existing file.<br />- There is no limit to the number of files that you can store in a directory, but the Console displays a maximum of 10,000, so anything over that limit will not visible within the Console.</Callout>
 
 #### Uploading by Drag and Drop  {/*uploading-by-drag-and-drop*/}
-1.  Navigate to the folder to which you want to upload files.
-2.  Select one or more files from your desktop and drag them over the Console. As you hover over the Console, you see the Drop files here prompt:
+
+1. Navigate to the folder to which you want to upload files.
+2. Select one or more files from your desktop and drag them over the Console. As you hover over the Console, you see the Drop files here prompt:
 
     ![Drag and drop icon](/images/delivery/storage/drag.png)
 
-3.  Release the files.
-4.  The Console uploads your files.
+3. Release the files.
+4. The Console uploads your files.
 
 See also [Viewing Upload Progress](#viewing-upload-progress) and [Canceling Uploads](#canceling-uploads).
 
 #### Uploading Using the Upload Button  {/*uploading-using-the-upload-button*/}
-1.  Navigate to the folder to which you want to upload files.
-2.  Click the upload button.
+
+1. Navigate to the folder to which you want to upload files.
+2. Click the upload button.
 
     ![Upload icon](/images/delivery/storage/upload.png)
 
-3.  The Open dialog appears. Use the dialog to browse to the location of your files and select the desired files.
-4.  Click the Open button in the dialog.
-5.  The Console uploads your files.
+3. The Open dialog appears. Use the dialog to browse to the location of your files and select the desired files.
+4. Click the Open button in the dialog.
+5. The Console uploads your files.
 
 See also [Viewing Upload Progress](#viewing-upload-progress) and [Canceling Uploads](#canceling-uploads).
 
 #### Viewing Upload Progress  {/*viewing-upload-progress*/}
+
 During file upload, the Console displays the *upload progress* bar and the *Cancel All* icon:
 
 ![Upload progress](/images/delivery/storage/upload-progress.png)
@@ -184,6 +200,7 @@ For uploads with more than five files, the upload details includes the *Show all
 Click the link to view details for the remaining files.
 
 #### Identifying Newly Uploaded Files  {/*identifying-newly-uploaded-files*/}
+
 After the Console uploads a file, the Console flags the file with the New icon:
 
 ![New icon](/images/delivery/storage/new.png)
@@ -200,19 +217,22 @@ You can cancel a single file upload or cancel all files in a multi-file upload b
 
 You can also cancel individual files in a multi-file upload:
 
-1.  Click the *upload progress* bar to show progress details.
+1. Click the *upload progress* bar to show progress details.
 
     ![Upload progress](/images/delivery/storage/upload-progress.png)
 
-2.  Click the **Cancel** icon for any individual uploads you want to stop.
+2. Click the **Cancel** icon for any individual uploads you want to stop.
 
 ## Working with Folders  {/*folders*/}
+
 ### Before You Start {/*before-you-start-folders*/}
+
 Select an account and user name if you have not already done so. Use the drop-down menus at the top of the workspace:
 
 ![Account and User dropdown](/images/delivery/storage/account-dropdown.png)
 
 ### Creating Folders {/*creating-folders*/}
+
 1. Navigate to the folder where you would like to create the new folder.
 2. Click the **Add** button.
 3. Enter a name in the *CREATE* dialog and click **Create**.
@@ -223,6 +243,7 @@ Select an account and user name if you have not already done so. Use the drop-do
 <Callout type="info">You can also create directories using the Origin Storage API. Use any of the following: <br /> - [makeDir](/delivery/storage/apis/api_calls/working_with_directories_json#create-directory)<br /> - [makeDir2](/delivery/storage/apis/api_calls/working_with_directories_json/#leading-paths)<br /> - [post/directory](/delivery/storage/apis/api_calls/working_with_directories_http)</Callout>
 
 ### Uploading Folders {/*uploading-folders*/}
+
 You can upload one or more folders by drag and drop.
 
 - All files within the folder will be uploaded.
@@ -242,6 +263,7 @@ To upload folders:
 <Callout type="info">Visibility of uploaded folders and files depends on the view in which you did the upload: <br />- 'folders only' - Uploaded folder(s) are visible but not the files within. You need to change to one of the other filter views.<br />- 'files only' - Uploaded folder(s) are not visible. You need to change to one of the other filter views.<br />- 'files and folders' - All uploaded folder(s) and the content within are visible if navigated to.</Callout>
 
 ### Deleting Folders {/*deleting-folders*/}
+
 <Callout type="info">- You can only delete empty folders. To delete files in a folder, see Deleting Files.<br />- The Console does not support recursive deletes (deleting a folder's subfolders, all their subfolders, and so on).<br />- You can also delete a folder using the Origin Storage deleteDir API.</Callout>
 
 ## Managing Accounts and Users  {/*manage-accounts-and-users*/}

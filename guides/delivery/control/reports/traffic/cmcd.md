@@ -1,7 +1,7 @@
 ---
 title: CMCD Report
 ---
-CMCD is a specification from the WAVE standards project that allows CDN providers to receive player statistics and the requesting object metadata in each HTTP request. See [CTA-5004](https://cta.tech/Resources/Standards/WAVE-Project).
+CMCD (Common Media Client Data) is a specification from the WAVE standards project that allows CDN providers to receive player statistics and the requesting object metadata in each HTTP request. See [CTA-5004](https://cta.tech/Resources/Standards/WAVE-Project).
 
 In addition to video playback analytics, CMCD data allows Edgio to collect player CMCD metrics with CDN metrics. This data can be used for more real-time action and to troubleshoot and diagnose issues.
 
@@ -13,7 +13,7 @@ This high-level diagram shows the architecture of a multi-CDN with CMCD:
 
 ![CMCD and CDN](/images/delivery/storage/cdn-cmcd.png)
 
-## CMCD Keys
+## CMCD Keys  {/*cmcd_keys*/}
 
 These keys can be transmitted from players to Edgio:
 
@@ -39,15 +39,15 @@ These keys can be transmitted from players to Edgio:
 | CMCD Version | v | Version of CMCD specification used. | This key allows for version control and indicates that there will be future CMCD versions released. |
 | Custom Key |  | Custom keys requires “cmcd-“ prefix.<br />Fictional example: cmcd-edgio. | Allows for unique CMCD keys to be sent which extends CMCD to be fully customizable. |
 
-## Data Transmission
+## Data Transmission  {/*transmission*/}
 
-Edgio supports all CMCD keys. The defined keys can be transmitted in three delivery modes from players to CDNs:
+Edgio supports all CMCD keys. Keys can be transmitted in three delivery modes from players to CDNs:
 
-1. Custom HTTP header in each request. The keys can be used with four header names.
-    - CMCD-Request: keys whose values vary with each request.
-    - CMCD-Object: keys whose values vary with the object being requested.
-    - CMCD-Status: keys whose values do not vary with every request or object.
-    - CMCD-Session: keys whose values are expected to be invariant over the life of the session.
+1. Custom HTTP header in each request. The keys can be used with four header names based on their expected level of variability:.
+    - CMCD-Request: Values vary with each request.
+    - CMCD-Object: Values vary with the object being requested.
+    - CMCD-Status: Values do not vary with every request or object.
+    - CMCD-Session: Values are expected not to vary over the life of the session.
 2. HTTP query arguments.
 3. JSON object independent of each HTTP request.
 
@@ -55,7 +55,7 @@ This diagram shows buffer starvation and startup in CMCD format for these transm
 
 ![CMCD Delivery](/images/delivery/storage/cmcd-delivery.png)
 
-## Enabling CMCD Logging  {/*enabling-cmcd-logging*/}
+## Enable CMCD Logging  {/*enabling-cmcd-logging*/}
 
 Due to the nature of the CMCD specification, it is essential to enable CMCD logging on both the client and server sides.
 
@@ -86,24 +86,24 @@ The report has these tabs:
 |Latency| Latency depends on the selected granularity. <br /> - 5 minutes: 5 to ten minutes<br />- Hour: 1 hour + delta (approximately 5-10 minutes)<br />- Day: 1 day + delta (approximately 5-10 minutes)|
 |Granularity| 5 minutes, hour, day|
 |Dimensions|Account, Continent, Country, Stream Type, Stream Format|
-|Metrics - Summary Area	|Vide0 Egress<br />Video Play time<br />Session Rebuffer %<br />Average Client Throughput<br />Average Video Bitrate<br />Slow TTFB|
+|Metrics - Summary Area |Vide0 Egress<br />Video Play time<br />Session Rebuffer %<br />Average Client Throughput<br />Average Video Bitrate<br />Slow TTFB|
 |Metrics - Elsewhere|Unique session count<br />Session rebuffer %<br />Average Client Throughput<br />Average Video Bitrate<br />Slow TTFB|
-|Delivery Mechanism	|EdgeQuery|
+|Delivery Mechanism |EdgeQuery|
 |Associated API Endpoint(s)|`POST /realtime-reporting-api/cmcd` returns Realtime Reporting API CMCD data according to parameters passed in request body |
 
-## Selecting Accounts, Date Range, and Time Zones  {/*selecting-accounts*/}
+## Select Accounts, Date Range, and Time Zones  {/*selecting-accounts*/}
 
 You can make selections in the controls above the tab header:
 
-*   *TRAFFIC FOR*. Select one or more accounts to which you have access for cross-account analysis. Click the **Select All** button to select all accounts.
+- *TRAFFIC FOR*. Select one or more accounts to which you have access for cross-account analysis. Click the **Select All** button to select all accounts.
 
     <Callout type="info">You must select at least one account; otherwise, the default company is automatically selected, and a warning is displayed.</Callout>
 
-*   *Date range*. Pick from pre-set time frames or choose custom date ranges in the . Click the **Apply** button on custom ranges.
+- *Date range*. Pick from pre-set time frames or choose custom date ranges in the . Click the **Apply** button on custom ranges.
 
-*   *Time zone*. The top five most commonly used timezones in are at the top of the . Scroll down for additional time zones.
+- *Time zone*. The top five most commonly used timezones in are at the top of the . Scroll down for additional time zones.
 
-## Filtering Report Data  {/*filtering-report-data*/}
+## Filter Report Data  {/*filtering-report-data*/}
 
 You can filter report data using filter controls on the *Overview*, *Details*, and *Geography* tabs. You can filter on Continents, Countries, Stream Types, and Stream Formats.
 
@@ -117,12 +117,12 @@ To reset filters to the default, click the **Reset** button.
 
 The *Overview* tab serves as a high-level snapshot of your aggregated data.
 
-
 #### Summary Area  {/*summary-area*/}
 
 For various statistics, the *Summary Area* shows the percent change for the selected reporting date range relative to the prior time period of the same length. For example, if you select **This Month**, the statistics show a comparison between this month's data and the previous month's.
 
 Colors and arrows represent changes:
+
 - An increase displays in green with an arrow pointing up.
 - A decrease displays in red with an arrow pointing down.
 - If there was no change from the previous period, the text is gray with an empty circle instead of an arrow.
@@ -185,6 +185,7 @@ Sort the data in the table by clicking a column header. When you sort on a field
 The *Geography* tab shows traffic for your data categories on an interactive map. The map can be used to understand how your audience traffic varies across the world or your chosen continents or countries.
 
 Hover your mouse pointer over a geographical region to view popups with details about
+
 - Total Sessions
 - Rebuffer Ratio
 - Client Throughput
@@ -195,23 +196,25 @@ Hover your mouse pointer over a geographical region to view popups with details 
 
 Select the filter control from the on the left above the map:
 
--   Stream Type
--   Stream Format
+- Stream Type
+- Stream Format
 
 From the top right corner of the chart, you can change the gradient shade of the map by these metrics:
--   Client Throughput (default)
--   Average Video Bitrate
--   Total Sessions
--   Average Slow TTFB
--   Rebuffer Ratio
+
+- Client Throughput (default)
+- Average Video Bitrate
+- Total Sessions
+- Average Slow TTFB
+- Rebuffer Ratio
 
 #### Zooming in and out  {/*zooming-in-and-out*/}
 
 To zoom in on the chart do either of the following:
--   Click the **[+]** control on the upper left of the map .
--   Click a region (continent, country, or state).
 
+- Click the **[+]** control on the upper left of the map .
+- Click a region (continent, country, or state).
 
 To zoom out, do either of the following:
--   Click the **[-]** control on the upper left of the map .
--   Click the **Continent** and **Whole World** controls on the right above the chart.
+
+- Click the **[-]** control on the upper left of the map .
+- Click the **Continent** and **Whole World** controls on the right above the chart.

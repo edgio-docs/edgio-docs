@@ -12,7 +12,7 @@ If you are new to Origin Storage, you have the option to use either (or both) th
 ## Console Workspace  {/*workspace*/}
 ![Console Workspace](/images/delivery/storage/storage-console.png)
 
-The Console Workspace contains these controls:
+Navigate to *Control* > *Manage* > *Origin Storage Console* to access these controls:
 
 - **choose account / choose name**: Allow you to choose the account and user name
 - **file and folder management**: Contains controls for file- and folder- management tasks such as uploading and deleting files and creating folders. (You can also [delete](#deleting-files) files while [viewing](#viewing) them in the files and folders list.)

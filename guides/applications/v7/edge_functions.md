@@ -80,6 +80,8 @@ For properties managed within the {{ PORTAL }}, edge functions are defined at th
 
 ### Edge Function Initialization Script (Optional) {/* edge-function-initialization-script */}
 
+{{ ef_edgejs_only_feature.md }}
+
 An edge function initialization script is a JavaScript file executed once before any edge function in a project is invoked. This script is particularly beneficial for projects with two or more edge functions, allowing for the setup of global variables, initialization of third-party libraries, and defining utility functions used across multiple edge functions. It reduces duplicate code setup and is specified within the `{{ ROUTES_FILE }}` file. The script must adhere to specific execution and memory constraints, similar to the edge functions themselves.
 
 To specify an edge function initialization script, add the `edge_function_init_script` property to the `Router(...)` constructor. The `edge_function_init_script` property accepts a string representing the path to the script.
@@ -300,35 +302,7 @@ As of v7.2.3, the `context.respondWith()` function is deprecated. You must retur
 
 ## Origin Requests Using fetch() {/* origin-requests-using-fetch */}
 
-Before issuing a fetch request to an origin, you must define an origin configuration within the `{{ CONFIG_FILE }}` file:
-
-```js filename="{{ CONFIG_FILE }}"
-module.exports = {
-  /* ... */
-  origins: [
-    {
-      // The name of the backend origin
-      name: 'web',
-
-      // Uncomment the following to override the host header sent from the browser when connecting to the origin
-      // override_host_header: 'example.com',
-
-      // The list of origin hosts to which to connect
-      hosts: [
-        {
-          // The domain name or IP address of the origin server
-          location: 'your-server.com',
-        },
-      ],
-
-      // Uncomment the following to configure a shield
-      // shields: { us_east: 'DCD' },
-    },
-  ],
-};
-```
-
-Learn more about origin configuration in our [CDN-as-Code](/applications/performance/cdn_as_code#config-file) guide.
+Before issuing a fetch request to an origin, you must define an origin configuration within the `{{ CONFIG_FILE }}` file or the {{ PORTAL }}. The origin configuration specifies the origin server to which the request is sent. See [Origin Configurations](/applications/v7/basics/origins) for more information.
 
 Request a resource from an origin by passing two required arguments to the `fetch()` function. Set the first argument to a URL or a `Request` object. Set the second argument to the name of the origin and any additional options compatible with the `fetch()` function.
 
@@ -349,7 +323,11 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
+<Tip>
+
 Create a reusable `fetch()` function by defining a utility function such as [`createFetchForOrigin()`](#createFetchForOrigin). See the [Polyfills and Helpers](#polyfills-and-helpers) section for more information.
+
+</Tip>
 
 ```js filename="./edge-functions/example.js"
 export async function handleHttpRequest(request, context) {
@@ -367,8 +345,12 @@ export async function handleHttpRequest(request, context) {
 
 Some libraries allow you to specify a `fetch()` function to use. For example, PlanetScale's database driver configuration accepts a custom function to use when making requests to the API.
 
+{{ ef_req_edgejs_deps.md }}
+
 ```js filename="./edge-functions/example.js"
 import {connect} from '@planetscale/database';
+
+// Custom fetch function. See Polyfills and Helpers section for more information.
 import {createFetchForOrigin} from './polyfills';
 
 const fetch = createFetchForOrigin('planetscale');
@@ -396,6 +378,7 @@ export async function handleHttpRequest(request, context) {
 This approach allows for creating unique `fetch()` functions for each origin server. Optionally, you can override the global `fetch()` function if you are unable to specify a `fetch()` function in your library.
 
 ```js filename="./edge-functions/example.js"
+// Custom fetch function. See Polyfills and Helpers section for more information.
 import createFetchForOrigin from './polyfills';
 
 export async function handleHttpRequest(request, context) {

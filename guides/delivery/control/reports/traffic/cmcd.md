@@ -17,13 +17,14 @@ This high-level diagram shows the architecture of a multi-CDN with CMCD:
 
 These keys can be transmitted from players to Edgio:
 
-| Encoded Bitrate | br | Encoded bitrate of the audio or video object being requested. | Shows actual bitrate delivered and can be used by CDN to infer the object size. |
+|Description|Key|Definition|Purpose|
 |---|---|---|---|
+| Encoded Bitrate | br | Encoded bitrate of the audio or video object being requested. | Shows actual bitrate delivered and can be used by CDN to infer the object size. |
 | Buffer Length | bl | Player Buffer length at the time of request. | Can be used by CDN to infer the health of the playback. |
 | Buffer Starvation | bs | Buffer starvation event. Indicates rebuffer/stalling in playback. | Rebuffer percent is calculated as total number of sessions vs sessions with at least one rebuffer event over given period of time. |
 | Content ID | cid | Unique string identifying the current content. | Useful for tracking down problematic content but is rarely used by players. |
 | Object Duration | d | Playback duration in milliseconds of the object being requested. | When aggregated it can be used as an estimate of hours watched.<br />Can be used to determine if the content is in an ad break and type of video being watched.<br />Can be used to determine the chunk size. |
-| Deadline | dl | Deadline from the request time until the first sample of this Segment/Object needs to be available in order to not create a buffer underrun or any other playback problems |  |
+| Deadline | dl | Deadline from the request time until the first sample of this Segment/Object needs to be available in order to not create a buffer underrun or any other playback problems. |  |
 | Measure Throughput | mtp | Throughput between the client and server, as measured by the client. | Estimated throughput bandwidth between CDN to player. Useful for comparing CDN and external metrics. |
 | Next Object Request | nor | Relative path of the next object to be requested. | Used for prefetching. |
 | Next Range Request | nrr | If the next request will be a partial object request, then this string denotes the byte range to be requested. If the ‘nor’ field is not set, then the object is assumed to match the object currently being requested. | Used for prefetching. |
@@ -36,9 +37,9 @@ These keys can be transmitted from players to Edgio:
 | Startup | su | Signals startup of content. | Removes the need for beaconing.<br />CDNs knowing the startup of content can be helpful for optimizing subsequent playback.<br />This flag is also sent after buffer flag (bs). |
 | Top Bitrate | tb | Highest bitrate rendition in the manifest or playlist that the client is allowed to play. | Used to determine bitrate or bitrate laddering issues.<br />Shows the top bitrate that the player could play at that time. Can be used for comparing to available bitrates. |
 | CMCD Version | v | Version of CMCD specification used. | This key allows for version control and indicates that there will be future CMCD versions released. |
-| Custom Key |  | Custom keys requires “cmcd-“ prefix.<br />Fictional example: cmcd-edgio | Allows for unique CMCD keys to be sent which extends CMCD to be fully customizable. |
+| Custom Key |  | Custom keys requires “cmcd-“ prefix.<br />Fictional example: cmcd-edgio. | Allows for unique CMCD keys to be sent which extends CMCD to be fully customizable. |
 
-## Transmission
+## Data Transmission
 
 Edgio supports all CMCD keys. The defined keys can be transmitted in three delivery modes from players to CDNs:
 

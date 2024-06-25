@@ -10,7 +10,7 @@ Content Delivery is designed to accommodate a broad range of use cases and still
 
 Edgio has a rich history of delivering large scale events online including Olympic sports, World Cups, and U.S. presidential elections, as well as ensuring that global software releases and updates are delivered on time and that new video and gaming titles are delivered seamlessly to eager end users all rushing to get them just as they are released.
 
-Our CDN and Content Delivery service runs on one of the world's largest private CDNs, by a group of world-class engineers, ensuring that your content gets delivered flawlessly from anywhere, to everywhere.
+Our CDN and Content Delivery service run on one of the world's largest private CDNs, by a group of world-class engineers, ensuring that your content gets delivered flawlessly from anywhere, to everywhere.
 
 With Content Delivery, you can:
 

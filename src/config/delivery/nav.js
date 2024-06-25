@@ -1,4 +1,4 @@
-import {productsConfig} from '../appConfig';
+import { productsConfig } from '../appConfig';
 
 const separator = {
   title: '',
@@ -260,6 +260,10 @@ const nav = {
             {
               title: 'Origin Storage Users',
               path: 'control/manage/origin_storage_users',
+            },
+            {
+              title: 'Origin Storage Console',
+              path: 'storage/console',
             },
           ],
         },

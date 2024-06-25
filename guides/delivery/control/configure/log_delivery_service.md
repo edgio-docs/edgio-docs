@@ -520,8 +520,9 @@ for file_name in files_to_download:
         if response.status_code != 200:
             print("Unable to download " + file_name + ". Status code: " + response.status_code)
 ```
-### Download Using the Storage Management Console  {/*download-using-the-storage-management-console*/}
+### Download from Storage  {/*download-using-the-storage-management-console*/}
 
+#### Download Manually
 You can download a log file using the Origin Storage Management Console.
 
 Begin by logging into the Edgio Control Portal, then follow these steps:
@@ -529,3 +530,222 @@ Begin by logging into the Edgio Control Portal, then follow these steps:
 1. Select "Manage", followed by "Origin Storage Console."
 2. Navigate to the folder that contains the file you want to download.
 3. Click the download icon. Your browser downloads the file.
+
+#### Download via Python
+
+This Python script deletes the file once it is downloaded. It also deletes the directory if it becomes empty. Use the parameter max_files to download multiple files if you don't want the limit set to 0.
+
+```Python
+#!/usr/bin/env python
+import logging, sys, csv, itertools
+from multiprocessing import Pool
+import requests
+import time
+import json
+import threading
+
+'''
+Author: spandey
+Unofficial Sample. Provided AS IS. WITHOUT ANY WARRANTY OR CONDITIONS.
+Uses Python 3
+'''
+LOG_FILENAME = 'LDSDownloadSession.log'
+FileList = 'DLFiles.log'
+logging.basicConfig(filename = LOG_FILENAME, level = logging.DEBUG, format='%(asctime)s %(levelname)s-%(filename)s:%(message)s')
+logger = logging.getLogger(__name__)
+
+class StatError(RuntimeError):
+        def __init__(self, arg):
+                self.args = arg
+
+class ListPathError(RuntimeError):
+        def __init__(self, arg):
+                self.args = arg
+
+jsonRPC_Endpoint=''
+token=''
+cookie = ''
+numFiles = 0
+
+numDirs = 0
+totalBytes = 0
+oldFileList = []
+theFileList = []
+dirList = []
+threads = []
+#max files to download per session set to 0 for unlimited download
+max_files = 5
+'''
+User-defined variables
+'''
+storage_log_dir = '/_livelogs/http/<change with the base path>'
+pageSize = 10000  # page size for listing log files
+files_to_download = []  # log files to download
+media_vault_expiry = 60  # expiry time for mediaVaultUrl request
+mv_errors = {-1: "Internal error", -2: "Path exists and is a directory", -8: "Invalid path",
+            -34: "Invalid expiry", -60: "Service is disabled or unavailable", -10001: "Invalid token"}
+'''
+Function to examine files returned from calls to listFile
+Based on a condition that you determine, you write file names to a list
+of files that will later be downloaded.
+This simple example looks for file names that contain the number 2.
+need to add {"method":"deleteFile","id":39,"jsonrpc":"2.0","params":{"token":"a4660cbde39c4dceb2cf796d494db3da","path":"/lll/1.mp4"}}
+'''
+
+def parse_list(file_list):
+    for log_file in file_list:
+        name = log_file['name']
+    if name.find('2') > -1:
+        files_to_download.append(name)
+        print(log_file['name'])
+
+def getFileListing(token, _dirname_, res):
+    numDirs = len(res['dirs'])
+    numFiles =  len(res['files'])
+    _directories_ = res['dirs']
+    print ("Total directory count: " + str(numDirs))
+    print ("Total file count: " + str(numFiles))
+    #Delete the dir in case is empty and is not the base path
+    if numDirs == 0 and numFiles == 0 and _dirname_.count('/') > 3:
+        delp = '{"method":"deleteDir","id":1,"jsonrpc":"2.0","params":{"token":"'+ token +'","path":"'+ _dirname_ +'"}}'
+        print("\nDeleting : "+ delp)
+        delpRes = requests.post(jsonRPC_Endpoint, data=delp)
+        delpRes = json.loads(delpRes.text)
+        delpCode = delpRes['result']
+        #print("\n\n-------------- Code: " + str(delpCode) )
+        if delpCode != 0:
+            print("Error attempting to call del url.\nCode: " + str(delpCode))
+
+    for _dir_ in _directories_:
+        #print ("Scanning Directory: " + _dir_['name'] + " for dirs")
+        dirName = _dirname_ + '/' + _dir_['name']
+        listPath(token, dirName)
+    # Listing Files
+    file_listing = res['files']
+    conteggio = 0
+    for file in file_listing:
+        '''
+        Download file. This is a single-threaded approach for simple use & demonstration purposes.
+        Customers might want to try a multi-threaded approach for a large number of files to download.
+        '''
+        conteggio += 1
+        log_path = _dirname_+ '/' + file['name']
+        #print("\nstarting download of: "+ log_path)
+        mvu = '{"method": "mediaVaultUrl", "id": 1, "params": {"token":"'+ token +'", "path": "'+ log_path +'", "expiry": '+str(media_vault_expiry)+'}, "jsonrpc": "2.0"}'
+        mvuRes = requests.post(jsonRPC_Endpoint, data=mvu)
+        mvuRes = json.loads(mvuRes.text)
+        #print("==== Printing mediaVaultUrl response  ====\n")
+        #print(mvuRes)
+        code = mvuRes['result']['code']
+        if code !=0:
+            print("Error attempting to call 'mediaVaultUrl.\nCode: " + str(code) + ": " + mv_errors[code])
+        else:
+            mv_download_url = mvuRes['result']['download_url']
+            # grab the name of the file to write from mv url
+            lds_file_name = mv_download_url.rsplit("/",1)[1].split("?")[0]
+            print(mv_download_url, '\nFilename:'+lds_file_name)
+            with open(lds_file_name, "wb") as f:
+                # Use the requests library to make the download
+                response = requests.get(mv_download_url, stream=True)
+                # check & show download progress
+                total_length = response.headers.get('content-length')
+                if total_length is None: # no content length header
+                    print("no content-length header found")
+                    f.write(response.content)
+                else:
+                    dl = 0
+                    total_length = int(total_length)
+                    for data in response.iter_content(chunk_size=4096):
+                        dl += len(data)
+                        f.write(data)
+                        done = int(50 * dl / total_length)
+                        sys.stdout.write("\r[%s%s]" % ('|' * done, ' ' * (50-done)) )
+                        sys.stdout.flush()
+                    #Delete the file just downloaded
+                    delu = '{"method":"deleteFile","id":1,"jsonrpc":"2.0","params":{"token":"'+ token +'","path":"'+ log_path +'"}}'
+                    print("\nDeleting : "+ delu)
+                    deluRes = requests.post(jsonRPC_Endpoint, data=delu)
+                    deluRes = json.loads(deluRes.text)
+                    #delcode = deluRes['result']['code']
+                    #print("\n\n-------------- Code: " + str(delcode) + ": " + mv_errors[delcode])
+                    #if delcode !=0:
+                    #    print("Error attempting to call del url.\nCode: " + str(delcode) + ": " + mv_errors[delcode])
+                # Upon non-success write a line to your errors file
+                if response.status_code != 200:
+                    print("Unable to download " + file['name'] + ". Status code: " + response.status_code)
+        if conteggio == max_files:
+            break    # break here
+
+# def writeToFile(filename, data):
+#       with open(filename, 'w') as f:
+#               i = 0
+#               for i in range(len(data)):
+#                       print(data[i]+'\n', end="", file=f)
+
+def listPath(token, _dirname_):
+        '''
+    Listing path recursively
+    '''
+        try:
+                # Scan through parent directory for the files and sub-dirs
+                listpathdata='{"method": "listPath","id": 1,"params": {"token": "'+token+'","path": "'+_dirname_+'","pageSize": '+str(pageSize)+',"cookie": "'+cookie+'","stat": true},"jsonrpc": "2.0"}'
+                # print('===List Path Data - Parent==\n', listpathdata)
+                res = requests.post(jsonRPC_Endpoint, data=listpathdata)
+                res = json.loads(res.text)
+                print ('======Listing Path for: '+_dirname_)
+                code = res['result']['code']
+
+                if code !=0:
+                        msg = 'Error issuing listPath command on directory: ' + _dirname_
+                        msg += '\n Return code: ' + str( code )
+                        msg += '\n See API documentation for details.'
+                        logger.error('ListPathError' + msg)
+                        raise ListPathError( msg )
+
+                theFileList = getFileListing(token,_dirname_,res['result'])
+
+        except ListPathError as e:
+                print (''.join( e.args ))
+
+        except StatError as e:
+                print (''.join( e.args ))
+
+def main(host, username, password):
+    global jsonRPC_Endpoint
+    jsonRPC_Endpoint = host
+    try:
+        # Obtain token
+        loginData='{"method": "login","id": 0,"params": {"username": "'+username+'","password":"'+password+'","detail": true},"jsonrpc": "2.0"}'
+        login = requests.post(jsonRPC_Endpoint, data=loginData)
+        print (login.reason, login.headers)
+        resp = json.loads(login.text)
+        token = resp['result'][0]
+        print ('=======Token & User======\n',token)
+        logger.debug('Logged In. Token Is: '+ token)
+
+        # Persist Token for the session until the logout or the end of time defined by 'expire'
+        persistData='{"method": "updateSession","id": 4,"params": {"token": "'+token+'", "expire": 0},"jsonrpc": "2.0"}'
+        persist = requests.post(jsonRPC_Endpoint, data=persistData)
+        persist = json.loads(persist.text)
+        #print('=======Updated Token======\n',persist)
+        if persist['result'] == 0:
+        #    print('Token Persisted!')
+            logger.debug('Token Persisted!. Token Is: '+ token)
+
+        # call listPath method on storage
+        listPath(token, storage_log_dir)
+    except Exception as e:
+        print(''.join( e.args ))
+        logger.error('Error Occured While Logging')
+    finally:
+        #print ('\nLogging out...\n')
+        logoutData = '{"method": "logout","id": 1,"params": {"token": "'+token+'"},"jsonrpc": "2.0"}'
+        logoutRes = requests.post(jsonRPC_Endpoint, data=logoutData)
+        logoutRes = json.loads(logoutRes.text)
+        #print ('Logout results: ', logoutRes)
+        if logoutRes['result'] == 0:
+            logger.debug('Logged Out!')
+
+if __name__ == "__main__":
+    main('https://<shortname>-l.upload.llnw.net/jsonrpc2', '<user-vs>',"<password-vs>")
+```

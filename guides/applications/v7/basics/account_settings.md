@@ -7,6 +7,7 @@ Your account settings consist of:
 -   [Date/time preferences](#date-time-preferences)
 -   [Password](#password)
 -   [Multi-factor authentication](#multi-factor-authentication)
+-   [Github Integration](#github-integration)
 
 ## Name {/*name*/}
 
@@ -356,13 +357,13 @@ Switch token generation method by deleting your existing MFA configuration. Afte
 4.  When prompted for confirmation, type your password within the **Enter your current password to confirm delete** option and then click **Delete**.
 5.  Set up your new [authenticator app](#authenticator-application) or [text message](#sms-messaging) configuration.
 
-## Github {/*github*/}
+## Github Integration {/*github-integration*/}
 
-You may revoke the {{ PORTAL }}'s access to your Github account at any time. 
+You may connect your Github account to the {{ PORTAL }} when creating a repository. This allows the {{ PORTAL }} to integrate our service with a new or existing Github repository. However, you may revoke the {{ PORTAL }}'s access to your Github account at any time. 
 
 <Tip>
 
-If the {{ PORTAL }} does not allow you to connect to a repository connected with your account, then you should try revoking access and then re-authorizing the {{ PORTAL }}'s access to your Github account. You may perform this reauthorization by connecting to your Github account when creating a repository.
+If the {{ PORTAL }} does not allow you to connect to a repository connected with your account, then you should try revoking access and then re-authorizing the {{ PORTAL }}'s access to your Github account by connecting to your Github account when creating a property.
 
 </Tip>
 

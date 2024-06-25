@@ -142,7 +142,7 @@ You may customize the appearance of the {{ PORTAL }} in the following ways:
     
         **Example:** `[Contact My Partner](https://mypartner.example.com/support)`
 
-### {{ PORTAL }} Access
+### {{ PORTAL }} Access {/*-access*/}
 
 Your customers will only see your logo and contact support customization when loading the {{ PORTAL }} using the following syntax:
 

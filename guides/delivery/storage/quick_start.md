@@ -1,5 +1,5 @@
 ---
-title: Storage Quick Start Guide
+title: Origin Storage Quick Start Guide
 ---
 This page provides an overview of methods available to upload and share your Origin Storage content.
 

@@ -219,7 +219,7 @@ export const sections: HomepageSectionGroup[] = [
             path: '/delivery/delivery/mediavault',
           },
           {
-            title: 'Origin Storage Quick Start',
+            title: 'Storage Quick Start',
             path: '/delivery/storage/quick_start',
           },
           {
@@ -239,10 +239,6 @@ export const sections: HomepageSectionGroup[] = [
           {
             title: 'Configuration',
             path: 'https://support.limelight.com/public/openapi/configuration/index.html',
-          },
-          {
-            title: 'Content',
-            path: '/delivery/video/apis/content_api_developers_reference',
           },
           {
             title: 'SmartPurge',
@@ -280,7 +276,7 @@ export const sections: HomepageSectionGroup[] = [
           },
           {
             title: 'Traffic Report',
-            path: '/delivery/control/reports/traffic/billing/traffic',
+            path: '/delivery/control/reports/traffic/billing',
           },
         ],
       },

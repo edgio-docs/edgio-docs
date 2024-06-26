@@ -1,8 +1,8 @@
-import {IconEdgioApplications} from 'components/Icon';
-import {IconDelivery} from 'components/Icon/IconDelivery';
-import {IconOpenEdge} from 'components/Icon/IconOpenEdge';
-import {IconUplynk} from 'components/Icon/IconUplynk';
-import {HomepageSectionGroup} from 'utils/Types';
+import { IconEdgioApplications } from 'components/Icon';
+import { IconDelivery } from 'components/Icon/IconDelivery';
+import { IconOpenEdge } from 'components/Icon/IconOpenEdge';
+import { IconUplynk } from 'components/Icon/IconUplynk';
+import { HomepageSectionGroup } from 'utils/Types';
 
 export const sections: HomepageSectionGroup[] = [
   {
@@ -200,13 +200,15 @@ export const sections: HomepageSectionGroup[] = [
       'Designed for high-quality, reliable streaming, and large-scale downloads.',
     className: 'delivery',
     icon: IconDelivery,
+    path: '/delivery',
     sections: [
       {
         title: 'CDN',
+        path: '/delivery/delivery/guide',
         items: [
           {
             title: 'Getting Started',
-            path: 'https://support.limelight.com/public/en/Content/Delivery/Content%20Delivery%20-%20User%20Guide/Getting%20Started%20with%20Content.htm',
+            path: '/delivery/delivery/getting_started',
           },
           {
             title: 'Delivery Guide',

@@ -2,15 +2,15 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 import {
-  IconAppsPerformance,
-  IconAppsPerformanceDark,
-} from 'components/Icon/IconAppsPerformance';
-import { useAppContext } from 'contexts/AppContext';
-import { useTheme } from 'contexts/ThemeContext';
+  IconControlSection,
+  IconControlSectionDark,
+} from 'components/Icon/delivery/IconControlSection';
+import {useAppContext} from 'contexts/AppContext';
+import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 
-import { StyledFeatureSection } from '../../FeatureSection';
+import {StyledFeatureSection} from '../../FeatureSection';
 import SectionHeader from '../../SectionHeader';
 
 const StyledComp = styled(StyledFeatureSection)``;
@@ -81,7 +81,7 @@ export default function Control() {
   return (
     <StyledComp>
       <SectionHeader
-        Icon={themedValue(IconAppsPerformance, IconAppsPerformanceDark)}
+        Icon={themedValue(IconControlSection, IconControlSectionDark)}
         title="Control"
         subtitle={`Create and configure services, manage content, and analyze usage.
         `}

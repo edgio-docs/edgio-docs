@@ -2,9 +2,9 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 import {
-  IconAppsPerformance,
-  IconAppsPerformanceDark,
-} from 'components/Icon/IconAppsPerformance';
+  IconDeliverySection,
+  IconDeliverySectionDark,
+} from 'components/Icon/delivery/IconDeliverySection';
 import {useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
@@ -61,7 +61,7 @@ export default function DeliverySection() {
   return (
     <StyledComp>
       <SectionHeader
-        Icon={themedValue(IconAppsPerformance, IconAppsPerformanceDark)}
+        Icon={themedValue(IconDeliverySection, IconDeliverySectionDark)}
         title="Delivery"
         subtitle={`Deliver to multiple devices with today's most popular protocols, including HTTP progressive download, Chunked Streaming, DASH, HLS, HDS, and MSS.
         `}

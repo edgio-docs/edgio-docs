@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-import {IconDelivery} from 'components/Icon/IconDelivery';
+import {
+  IconGettingStartedSection,
+  IconGettingStartedSectionDark,
+} from 'components/Icon/delivery/IconGettingStartedSection';
 import {useTheme} from 'contexts/ThemeContext';
 
 import Container from '../../../Layout/Container';
@@ -59,7 +62,10 @@ export function DeliveryFeatures() {
       <Container>
         <GetStartedSection>
           <SectionHeader
-            Icon={themedValue(IconDelivery, IconDelivery)}
+            Icon={themedValue(
+              IconGettingStartedSection,
+              IconGettingStartedSectionDark
+            )}
             title="Get Started with Delivery"
           />
         </GetStartedSection>

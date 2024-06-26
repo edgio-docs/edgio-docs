@@ -2,15 +2,15 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 import {
-  IconAppsPerformance,
-  IconAppsPerformanceDark,
-} from 'components/Icon/IconAppsPerformance';
-import { useAppContext } from 'contexts/AppContext';
-import { useTheme } from 'contexts/ThemeContext';
+  IconStorageSection,
+  IconStorageSectionDark,
+} from 'components/Icon/delivery/IconStorageSection';
+import {useAppContext} from 'contexts/AppContext';
+import {useTheme} from 'contexts/ThemeContext';
 import useConditioning from 'utils/hooks/useConditioning';
 import itemsByColumn from 'utils/itemsByColumn';
 
-import { StyledFeatureSection } from '../../FeatureSection';
+import {StyledFeatureSection} from '../../FeatureSection';
 import SectionHeader from '../../SectionHeader';
 
 const StyledComp = styled(StyledFeatureSection)``;
@@ -69,7 +69,7 @@ export default function Storage() {
   return (
     <StyledComp>
       <SectionHeader
-        Icon={themedValue(IconAppsPerformance, IconAppsPerformanceDark)}
+        Icon={themedValue(IconStorageSection, IconStorageSectionDark)}
         title="Storage"
         subtitle={`Ingest, replicate, and store data in the locations that provide optimal content delivery performance.
         `}

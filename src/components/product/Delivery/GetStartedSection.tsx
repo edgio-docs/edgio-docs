@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import {IconAnalytics} from 'components/Icon/delivery/IconAnalytics';
+import {IconDelivery} from 'components/Icon/delivery/IconDelivery';
+import {IconStorage} from 'components/Icon/delivery/IconStorage';
 import {IconArrow} from 'components/Icon/IconArrow';
 import {useAppContext} from 'contexts/AppContext';
 
@@ -111,7 +114,7 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
 
       <div className="cards">
         <GetStartedCard
-          icon={IconArrow}
+          icon={IconDelivery}
           title={config.DELIVERY}
           subtitle={`Power your streaming media and large file downloads on one of the world's largest, most advanced global CDNs.
           `}
@@ -119,14 +122,14 @@ export default function GetStarted({children}: {children: React.ReactNode}) {
           hrefText="Get Started"
         />
         <GetStartedCard
-          icon={IconArrow}
+          icon={IconStorage}
           title={config.STORAGE}
           subtitle={`A comprehensive object storage platform, built from the ground up to be your global media origin.`}
           href={`/delivery/storage`}
           hrefText="Learn More"
         />
         <GetStartedCard
-          icon={IconArrow}
+          icon={IconAnalytics}
           title={config.ANALYTICS}
           subtitle={`Intelligent analytics can help you build consumer loyalty and boost revenue. Get the insights you need, whatever your workflow.
           `}

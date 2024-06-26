@@ -276,7 +276,7 @@ export const sections: HomepageSectionGroup[] = [
           },
           {
             title: 'Traffic Report',
-            path: '/delivery/control/reports/traffic/billing',
+            path: '/delivery/control/reports/traffic/traffic',
           },
         ],
       },

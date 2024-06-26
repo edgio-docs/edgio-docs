@@ -13,32 +13,6 @@ This high-level diagram shows the architecture of a multi-CDN with CMCD:
 
 ![CMCD and CDN](/images/delivery/storage/cdn-cmcd.png)
 
-## CMCD Keys  {/*cmcd_keys*/}
-
-These keys can be transmitted from players to Edgio:
-
-|Description|Key|Definition|Purpose|
-|---|---|---|---|
-| Encoded Bitrate | br | Encoded bitrate of the audio or video object being requested. | Shows actual bitrate delivered and can be used by CDN to infer the object size. |
-| Buffer Length | bl | Player Buffer length at the time of request. | Can be used by CDN to infer the health of the playback. |
-| Buffer Starvation | bs | Buffer starvation event. Indicates rebuffer/stalling in playback. | Rebuffer percent is calculated as total number of sessions vs sessions with at least one rebuffer event over given period of time. |
-| Content ID | cid | Unique string identifying the current content. | Useful for tracking down problematic content but is rarely used by players. |
-| Object Duration | d | Playback duration in milliseconds of the object being requested. | When aggregated it can be used as an estimate of hours watched.<br />Can be used to determine if the content is in an ad break and type of video being watched.<br />Can be used to determine the chunk size. |
-| Deadline | dl | Deadline from the request time until the first sample of this Segment/Object needs to be available in order to not create a buffer underrun or any other playback problems. |  |
-| Measure Throughput | mtp | Throughput between the client and server, as measured by the client. | Estimated throughput bandwidth between CDN to player. Useful for comparing CDN and external metrics. |
-| Next Object Request | nor | Relative path of the next object to be requested. | Used for prefetching. |
-| Next Range Request | nrr | If the next request will be a partial object request, then this string denotes the byte range to be requested. If the ‘nor’ field is not set, then the object is assumed to match the object currently being requested. | Used for prefetching. |
-| Object Type | ot | Media type of the current object being requested:<br />m = text file, such as a manifest or playlist<br />a = audio only<br />v = video only<br />av = muxed audio and video<br />i = init segment<br />c = caption or subtitle<br />tt = ISOBMFF timed text track<br />k = cryptographic key, license or certificate.<br />= other<br />If the object type being requested is unknown, then this key MUST NOT be used. | Used for troubleshooting. Can be used to determine encoding and DRM issues. DRM providers have limited visibility on what versions/browsers are currently used/supported and so “k” is extra helpful.<br />"c” can be used to alert potential compliance issues. |
-| Playback Rate | pr | 1 if real-time, 2 if double speed, 0 if not playing. SHOULD only be sent if not equal to 1. | Can be used to infer if player if player is adjusting playback rate to make up for other issues (such as the origin or CDN is failing to delivery segments quick enough). |
-| Requested Maximum Throughput | rtp | Requested maximum throughput that the client considers sufficient for delivery of the asset.<br /><br />***Throughput refers to the amount of data that is transmitted. | Will tell you player and CDN performance. This can be used for more efficient data management and in effect, save resources.<br />This can benefit clients by preventing buffer saturation through over-delivery and can also deliver a community benefit through fair-share delivery. The concept is that each client receives the throughput necessary for great performance, but no more. |
-| Streaming Format | sf | d = MPEG DASH<br />h = HTTP Live Streaming (HLS)<br />s = Smooth Streaming<br />o = other | Helps determine stream related issues for players that support DASH/HLS. Can compare performance based on streaming format for players that have multi-format support. |
-| Session ID | sid | GUID identifying the current playback session. A playback session typically ties together segments belonging to a single media asset. Maximum length is 64 characters. It is RECOMMENDED to conform to the UUID specification. | This key is always recommended to be included in CMCD logging. It is arguably the most useful key as it is used for aligning logs together.<br />Can be helpful troubleshooting for caching issues. Same content ID with two session IDs strongly indicates a caching issue. |
-| Stream Type | st | v = all segments are available – e.g., VOD<br />l = segments become available over time – e.g., LIVE | Invaluable key for troubleshooting. |
-| Startup | su | Signals startup of content. | Removes the need for beaconing.<br />CDNs knowing the startup of content can be helpful for optimizing subsequent playback.<br />This flag is also sent after buffer flag (bs). |
-| Top Bitrate | tb | Highest bitrate rendition in the manifest or playlist that the client is allowed to play. | Used to determine bitrate or bitrate laddering issues.<br />Shows the top bitrate that the player could play at that time. Can be used for comparing to available bitrates. |
-| CMCD Version | v | Version of CMCD specification used. | This key allows for version control and indicates that there will be future CMCD versions released. |
-| Custom Key |  | Custom keys requires “cmcd-“ prefix.<br />Fictional example: cmcd-edgio. | Allows for unique CMCD keys to be sent which extends CMCD to be fully customizable. |
-
 ## Data Transmission  {/*transmission*/}
 
 Edgio supports all CMCD keys. Keys can be transmitted in three delivery modes from players to CDNs:
@@ -48,6 +22,8 @@ Edgio supports all CMCD keys. Keys can be transmitted in three delivery modes fr
     - CMCD-Object: Values vary with the object being requested.
     - CMCD-Status: Values do not vary with every request or object.
     - CMCD-Session: Values are expected not to vary over the life of the session.
+
+    <Info>CORS and content protection introduces extra complexity into CDN configurations. CORS needs to be configured to allow headers to be sent from the player to the CDN.</Info>
 2. HTTP query arguments.
 3. JSON object independent of each HTTP request.
 
@@ -55,9 +31,20 @@ This diagram shows buffer starvation and startup in CMCD format for these transm
 
 ![CMCD Delivery](/images/delivery/storage/cmcd-delivery.png)
 
+<important>HTTPS is strongly recommended over HTTP for to securely transmit CMCD data over the web.</important>
+
 ## Enable CMCD Logging  {/*enabling-cmcd-logging*/}
 
 Due to the nature of the CMCD specification, it is essential to enable CMCD logging on both the client and server sides.
+
+Most CDNs and players support CMCD. For example, these players support customer request headers and HTTP query arguments:
+
+- THEOplayer (also supports JSON object delivery)
+- Bitmovin
+- Shaka Player
+- Android ExoPlayer
+- hls.js
+- dash.js
 
 ### Client Side  {/*client-side*/}
 

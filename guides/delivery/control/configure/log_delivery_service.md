@@ -8,7 +8,7 @@ When requests for your content enter the CDN, the requests are logged based on c
 
 ## Log Delivery List Page  {/*log-delivery-list-page*/}
 
-Navigate to Configure > Log Delivery Service in the navigation pane. The Log Delivery Service page is displayed and initially shows configurations for the account in the drop-down menu on the right above the list.
+Navigate to *Configure* > *Log Delivery Service* in the navigation pane. The Log Delivery Service page is displayed and initially shows configurations for the Hoccount in the drop-down menu on the right above the list.
 
 Each configuration in the list includes this information:
 
@@ -211,7 +211,7 @@ You can store your log files on the Origin Storage platform. Origin Storage is a
 
 #### Prerequisites  {/*prerequisites-origin-storage*/}
 
-must be enabled for the name selected in the SHORTNAME.
+Origin Storage must be enabled for the name selected in the SHORTNAME.
 
 #### Configuring the Location  {/*configuring-the-location-origin-storage*/}
 

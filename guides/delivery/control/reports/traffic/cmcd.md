@@ -23,7 +23,7 @@ Edgio supports all CMCD keys. Keys can be transmitted in three delivery modes fr
     - CMCD-Status: Values do not vary with every request or object.
     - CMCD-Session: Values are expected not to vary over the life of the session.
 
-    <Info>CORS and content protection introduces extra complexity into CDN configurations. CORS needs to be configured to allow headers to be sent from the player to the CDN.</Info>
+        <Info>CORS and content protection introduces extra complexity into CDN configurations. CORS needs to be configured to allow headers to be sent from the player to the CDN.</Info>
 2. HTTP query arguments.
 3. JSON object independent of each HTTP request.
 

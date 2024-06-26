@@ -31,7 +31,7 @@ This diagram shows buffer starvation and startup in CMCD format for these transm
 
 ![CMCD Delivery](/images/delivery/storage/cmcd-delivery.png)
 
-<important>HTTPS is strongly recommended over HTTP for to securely transmit CMCD data over the web.</important>
+<Important>HTTPS is strongly recommended over HTTP for to securely transmit CMCD data over the web.</Important>
 
 ## Enable CMCD Logging  {/*enabling-cmcd-logging*/}
 

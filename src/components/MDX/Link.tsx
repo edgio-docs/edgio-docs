@@ -37,7 +37,7 @@ function Link({
       }
       return child;
     }
-  )[0];
+  );
 
   if (!href) {
     // eslint-disable-next-line jsx-a11y/anchor-has-content
@@ -59,14 +59,14 @@ function Link({
     case 'external':
       return (
         <ExternalLink href={href} className={cn(classes, className)} {...props}>
-          {modifiedChildren}
+          {...modifiedChildren}
         </ExternalLink>
       );
     case 'anchor':
       return (
         <NextLink href={href} legacyBehavior>
           <a className={cn(classes, className)} {...props}>
-            {modifiedChildren}
+            {...modifiedChildren}
           </a>
         </NextLink>
       );
@@ -76,12 +76,12 @@ function Link({
     <NextLink href={href} legacyBehavior>
       {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
       <a className={cn(classes, className)} {...props}>
-        {modifiedChildren}
+        {...modifiedChildren}
       </a>
     </NextLink>
   ) : (
     <a href={href} className={cn(classes, className)} {...props}>
-      {modifiedChildren}
+      {...modifiedChildren}
     </a>
   );
 }

@@ -1,12 +1,12 @@
 import {useEffect, useRef, useState} from 'react';
 
 import {ChatChannel} from '@fireaw.ai/sdk';
-import {useRouter} from 'next/router';
 import {FiSend, FiX} from 'react-icons/fi';
 import Modal from 'react-modal';
 import styled, {css} from 'styled-components';
 
-import {siteConfig} from 'config/appConfig';
+import {productsConfig, siteConfig} from 'config/appConfig';
+import {getContextTypeByName, useAppContext} from 'contexts/AppContext';
 import {useEdgioAnswersContext} from 'contexts/EdgioAnswersContext';
 import {useTheme} from 'contexts/ThemeContext';
 import {mobileMinWidth} from 'styles';
@@ -320,7 +320,7 @@ const ChatMessage = ({content}: {content: string}) => {
 const defaultPlaceholder = 'Ask Edgio Answers...';
 
 const EdgioAnswers = () => {
-  const router = useRouter();
+  const {context} = useAppContext();
   const {themedValue} = useTheme();
   const chatInputRef = useRef<HTMLInputElement>(null);
   const {chatbotId, apiToken} = siteConfig.fireawai;
@@ -340,6 +340,9 @@ const EdgioAnswers = () => {
   const placeholder = isAwaitingResponse
     ? 'Waiting for response...'
     : defaultPlaceholder;
+
+  // Used in the query to set the context expectation for the chatbot response
+  let contextStatement = '';
 
   if (isLoaded) {
     Modal.setAppElement('#__next');
@@ -363,6 +366,7 @@ const EdgioAnswers = () => {
       const newChannel = new ChatChannel({
         apiToken,
         chatbotId,
+        includeContext: true,
         onMessage: (message) => {
           if (message.content.length > 0) {
             // Only proceed if the message has content
@@ -376,12 +380,18 @@ const EdgioAnswers = () => {
                 const updatedMessages = [...prevMessages];
                 const existingMessage = updatedMessages[existingMessageIndex];
 
+                // Format the message content
+                message.content = formatMessageContent(message.content, [
+                  contextStatement,
+                ]);
+
                 // Concatenate new content with existing content, if any
                 updatedMessages[existingMessageIndex] = {
                   ...existingMessage,
                   content: message.content,
                   finished: message.finished,
                 };
+
                 return updatedMessages;
               } else {
                 // Message doesn't exist, add a new one
@@ -396,11 +406,7 @@ const EdgioAnswers = () => {
           }
         },
       });
-      newChannel.connect().then(() => {
-        if (newChannel.chat.settings.starterQuestions) {
-          setStarterQuestions(newChannel.chat.settings.starterQuestions);
-        }
-      });
+      newChannel.connect().then(() => {});
       setChannel(newChannel);
       setQuery('');
     }
@@ -411,7 +417,16 @@ const EdgioAnswers = () => {
     if (!channel) {
       initializeChannel();
     }
-  }, [apiToken, chatbotId, channel]);
+
+    if (context) {
+      const config = productsConfig[context];
+      contextStatement = config?.edgioAnswers?.contextStatement ?? '';
+      const questions = config?.edgioAnswers?.starterQuestions;
+      if (questions) {
+        setStarterQuestions(questions);
+      }
+    }
+  }, [apiToken, chatbotId, channel, context]);
 
   // Stop the current channel and reconnect
   const stopAndReconnect = () => {
@@ -423,7 +438,14 @@ const EdgioAnswers = () => {
 
   const sendMessage = () => {
     if (query.trim() && channel && !isAwaitingResponse) {
-      channel.send(query);
+      // Append context statement to the query
+      let qry = query;
+
+      if (contextStatement) {
+        qry = `${qry}\n\n${contextStatement}`;
+      }
+
+      channel.send(qry);
       setIsAwaitingResponse(true);
       setQuery('');
     }
@@ -540,13 +562,20 @@ const EdgioAnswers = () => {
   );
 };
 
-export const EdgioAnswersInput = ({duration = 1000}) => {
+export const EdgioAnswersInput = ({
+  duration = 1000,
+  context,
+}: {
+  duration?: number;
+  context?: string;
+}) => {
   const [index, setIndex] = useState(0);
   const [placeholder, setPlaceholder] = useState('');
   const inputRef = useRef(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const {
     starterQuestions: presets,
+    setStarterQuestions: setPresets,
     query,
     setQuery,
     openModal,
@@ -571,6 +600,19 @@ export const EdgioAnswersInput = ({duration = 1000}) => {
       }
     }, 25);
   };
+
+  useEffect(() => {
+    // Set the starter questions based on the context
+    if (context) {
+      const contextualPresets =
+        productsConfig[getContextTypeByName(context)]?.edgioAnswers
+          ?.starterQuestions;
+
+      if (contextualPresets) {
+        setPresets(contextualPresets);
+      }
+    }
+  }, [context]);
 
   useEffect(() => {
     if (presets.length) {
@@ -632,3 +674,32 @@ export const EdgioAnswersWidget = () => {
 };
 
 export const edgioAnswersUrl = ROUTE_HASH;
+
+/**
+ * Formats the message content, updating links and titles
+ * @param content - The message content
+ * @returns The formatted message content
+ */
+function formatMessageContent(
+  content: string,
+  removePatterns: string[] | RegExp[]
+) {
+  // Append product name to the beginning of markdown links based on the href
+  // (e.g. [Some Article](/delivery/storage/console) -> [Delivery - Some Article](/delivery/storage/console))
+  content = content.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, title, href) => {
+    const url = new URL(href);
+
+    let product = url.pathname.split('/')[1];
+    // capitalize the first letter of the title
+    product = product.charAt(0).toUpperCase() + product.slice(1);
+
+    return `[**${product}** - ${title}](${href})`;
+  });
+
+  // Remove patterns from the content
+  removePatterns.forEach((pattern) => {
+    content = content.replace(pattern, '');
+  });
+
+  return content.trim();
+}

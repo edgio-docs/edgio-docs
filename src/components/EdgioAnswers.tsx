@@ -5,8 +5,7 @@ import {FiSend, FiX} from 'react-icons/fi';
 import Modal from 'react-modal';
 import styled, {css} from 'styled-components';
 
-import {siteConfig} from 'config/appConfig';
-import {productsConfig} from 'config/appConfig';
+import {productsConfig, siteConfig} from 'config/appConfig';
 import {getContextTypeByName, useAppContext} from 'contexts/AppContext';
 import {useEdgioAnswersContext} from 'contexts/EdgioAnswersContext';
 import {useTheme} from 'contexts/ThemeContext';
@@ -582,11 +581,6 @@ export const EdgioAnswersInput = ({
     openModal,
   } = useEdgioAnswersContext();
 
-  // Set the starter questions based on the context
-  const contextPresets =
-    productsConfig[getContextTypeByName(context!)]?.edgioAnswers
-      ?.starterQuestions;
-
   const typeMessage = (message: string, index: number) => {
     let i = 0;
     intervalRef.current = setInterval(() => {
@@ -608,10 +602,17 @@ export const EdgioAnswersInput = ({
   };
 
   useEffect(() => {
-    if (contextPresets) {
-      setPresets(contextPresets);
+    // Set the starter questions based on the context
+    if (context) {
+      const contextualPresets =
+        productsConfig[getContextTypeByName(context)]?.edgioAnswers
+          ?.starterQuestions;
+
+      if (contextualPresets) {
+        setPresets(contextualPresets);
+      }
     }
-  }, [contextPresets]);
+  }, [context]);
 
   useEffect(() => {
     if (presets.length) {

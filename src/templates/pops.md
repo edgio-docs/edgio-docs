@@ -110,5 +110,3 @@
 | WIL | Kenya | Europe |
 | WMI | Warsaw | Europe |
 | XIJ | Kuwait | Europe |
-
-<!-- Comment -->

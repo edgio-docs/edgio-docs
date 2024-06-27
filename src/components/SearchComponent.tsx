@@ -8,8 +8,9 @@ import NoSSRWrapper from 'components/Layout/NoSSRWrapper';
 import {useIsMobile} from 'components/Layout/useMediaQuery';
 import Link from 'components/MDX/Link';
 import {ContextType, useAppContext} from 'contexts/AppContext';
-import {useTheme} from 'contexts/ThemeContext';
 import {mobileMinWidth} from 'styles';
+
+import {IconExternalLink} from './Icon';
 
 const searchButtons = [
   {
@@ -17,12 +18,12 @@ const searchButtons = [
     label: 'Applications',
   },
   {
-    id: 'uplynk',
-    label: 'Uplynk',
-  },
-  {
     id: 'delivery',
     label: 'Delivery',
+  },
+  {
+    id: 'uplynk',
+    label: 'Uplynk',
   },
 ];
 
@@ -88,16 +89,18 @@ const SearchContainer = styled.div<{active?: string}>`
     border: 1px solid var(--border-primary);
 
     .search-input {
+      display: flex;
+      align-items: center;
       color: var(--text-primary);
       outline: none;
       padding-left: 10px;
       font-size: 16px;
-
       width: 100%;
       height: auto;
-      //opacity: ${({active}) => (active === 'applications' ? '0' : '1')};
-      //cursor: ${({active}) =>
-        active === 'applications' ? 'pointer' : 'auto'};
+
+      * {
+        flex-grow: 1;
+      }
 
       .DocSearch-Button {
         width: 100%;
@@ -193,20 +196,18 @@ const StyledEdgioAnswersInput = styled.div`
     width: 100%;
     border: none;
     background: transparent;
+    flex: 1;
   }
 `;
 
 function HomeSearchComponent() {
   const [active, setActive] = useState('applications');
-  const {isClient} = useTheme();
-  const isMobile = useIsMobile();
-
-  const isApplicationsActive = active === 'applications';
   const isUplynkActive = active === 'uplynk';
-  const isDeliveryActive = active === 'delivery';
+
+  const EAInputContainer = () => <EdgioAnswersContainer context={active} />;
 
   return (
-    <SearchContainer active={active} isMobile={isMobile}>
+    <SearchContainer active={active}>
       <div className="search-buttons">
         {searchButtons.map((button) => (
           <button
@@ -221,26 +222,22 @@ function HomeSearchComponent() {
       <div className="search-box">
         <FiSearch className="search-icon" />
         <div className="search-input">
-          {isApplicationsActive && <EdgioAnswersContainer />}
-          {isUplynkActive && (
-            <StandardSearch
-              placeholder="Search Uplynk documentation..."
-              onKeyUp={(event) => {
-                if (event.key === 'Enter') {
-                  handleUplynkSearch(event.currentTarget.value);
-                }
-              }}
-            />
-          )}
-          {isDeliveryActive && (
-            <StandardSearch
-              placeholder="Search Delivery documentation..."
-              onKeyUp={(event) => {
-                if (event.key === 'Enter') {
-                  handleDeliverySearch(event.currentTarget.value);
-                }
-              }}
-            />
+          {/* Uplynk external search */}
+          {isUplynkActive ? (
+            <>
+              <StandardSearch
+                placeholder="Search Uplynk documentation..."
+                onKeyUp={(event) => {
+                  if (event.key === 'Enter') {
+                    handleUplynkSearch(event.currentTarget.value);
+                  }
+                }}
+              />
+              <IconExternalLink />
+            </>
+          ) : (
+            //Edgio Answers search
+            <EAInputContainer />
           )}
         </div>
       </div>
@@ -275,10 +272,10 @@ function ProductSearchComponent() {
   );
 }
 
-function EdgioAnswersContainer() {
+function EdgioAnswersContainer({context}: {context?: string}) {
   return (
     <StyledEdgioAnswersInput>
-      <EdgioAnswersInput />
+      <EdgioAnswersInput context={context} />
     </StyledEdgioAnswersInput>
   );
 }

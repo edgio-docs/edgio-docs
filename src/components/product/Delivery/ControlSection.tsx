@@ -47,7 +47,7 @@ const items = {
     },
     {
       title: 'Hash Generator',
-      path: 'delivery/control/configure/mediavault_hash_generator',
+      path: '/delivery/control/configure/mediavault_hash_generator',
     },
     {
       title: 'Realtime Reporting',

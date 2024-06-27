@@ -48,6 +48,7 @@ properties:
       set this parameter to null to disable log data downsampling.
   enabled:
     type: boolean
+    default: true
     description: Determines whether RTLD will use this profile to deliver log data.
   fields:
     type: array

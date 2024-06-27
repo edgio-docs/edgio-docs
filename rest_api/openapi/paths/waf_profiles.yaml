@@ -18,6 +18,8 @@ post:
       $ref: ../components/responses/rtldBadRequest.yaml
     '401':
       $ref: ../components/responses/rtldUnauthorized.yaml
+    '403':
+      $ref: ../components/responses/rtldForbidden.yaml
     '500':
       $ref: ../components/responses/rtldInternalServerError.yaml
   x-codegen-request-body-name: Body
@@ -39,5 +41,7 @@ get:
       $ref: ../components/responses/rtldWafProfileCollection.yaml
     '401':
       $ref: ../components/responses/rtldUnauthorized.yaml
+    '403':
+      $ref: ../components/responses/rtldForbidden.yaml
     '500':
       $ref: ../components/responses/rtldInternalServerError.yaml

@@ -7,6 +7,7 @@ Your account settings consist of:
 -   [Date/time preferences](#date-time-preferences)
 -   [Password](#password)
 -   [Multi-factor authentication](#multi-factor-authentication)
+-   [Github Integration](#github-integration)
 
 ## Name {/*name*/}
 
@@ -51,7 +52,7 @@ By default, date/time values are displayed as a time period relative to the pres
 
 <Callout type="info">
 
-  Our password policy does not apply to users that log in using Google or Github.
+  Our password policy does not apply to users that log in using Google, Github, or Microsoft.
 
 </Callout>
 
@@ -355,3 +356,20 @@ Switch token generation method by deleting your existing MFA configuration. Afte
 3.  Click the <Image inline src="/images/v7/icons/delete-2.png" alt="Delete" /> icon.
 4.  When prompted for confirmation, type your password within the **Enter your current password to confirm delete** option and then click **Delete**.
 5.  Set up your new [authenticator app](#authenticator-application) or [text message](#sms-messaging) configuration.
+
+## Github Integration {/*github-integration*/}
+
+You may connect your Github account to the {{ PORTAL }} when creating a repository. This allows the {{ PORTAL }} to integrate our service with a new or existing Github repository. However, you may revoke the {{ PORTAL }}'s access to your Github account at any time. 
+
+<Tip>
+
+If the {{ PORTAL }} does not allow you to connect to a repository connected with your account, then you should try revoking access and then re-authorizing the {{ PORTAL }}'s access to your Github account by connecting to your Github account when creating a property.
+
+</Tip>
+
+**To revoke access to your Github account**
+
+1.  From Github, navigate to the [Applications page](https://github.com/settings/applications) (Github | Settings | Applications).
+2.  Click on the **Authorized OAuth Apps** tab. Github may require you to authenticate your identity through multi-factor authentication.
+3.  Find the `Edgio Console` entry, click **...**, and then select **Revoke**.
+4.  When prompted, confirm that you would like to revoke access.

@@ -31,11 +31,11 @@ Set up an API Security configuration by performing the following steps:
 
     <Callout type="important">
 
-	  Setting up a new API Security rule requires creating at least one API schema. Your API Security rule will be read-only until you do so.
+      An API Security rule requires at least one JWKS or API schema.
 
-	</Callout>
+    </Callout>
 
-2.  Assign an API Security rule to a Security App configuration and define the enforcement action that will be applied to requests that violate the API schema(s) defined in the previous step.
+2.  Assign an API Security rule to a Security App configuration and define the enforcement action that will be applied to requests that contain an invalid JWT or violate the API schema(s) defined in the previous step.
 
 <Callout type="tip">
 
@@ -45,7 +45,7 @@ Set up an API Security configuration by performing the following steps:
 
 ### API Security Rule {/*api-security-rule*/}
 
-An API Security rule may contain a JSON Web Key Set, identify an API schema, and the set of requests for which JWTs will be validated and that must conform to that JSON schema. By default, your rule validates all `POST`, `PUT`, and `PATCH` requests. However, you may restrict inspection by:
+An API Security rule may contain a JSON Web Key Set, identify an API schema, and the set of requests that will be validated. By default, your rule validates all `POST`, `PUT`, and `PATCH` requests. However, you may restrict inspection by:
 
 -   **Relative Path(s):** You may restrict payload inspection to one or more relative path(s). This relative path starts directly after the hostname. The available comparison modes are listed below.
     -   **Default:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} will inspect all `POST`, `PUT`, and `PATCH` requests to ensure that they satisfy the API schema.
@@ -304,7 +304,7 @@ You may create, modify, and delete API Security rulesets.
 
 -   Administer API Security rulesets from the **API Security** page.
 -   Apply an API Security ruleset to production traffic by adding it to a [Security App configuration](/applications/security/security_applications) and then determining how it will be enforced. Multiple Security App configurations may use the same API Security ruleset.
--   Setting up a new API Security rule requires creating at least one API schema within the current API Security ruleset. Your API Security rule will be read-only until you do so.
+-   An API Security rule requires at least one JWKS or API schema.
 -   It may take up to 2 minutes for an update to an API Security ruleset to be applied across our entire network.
 
 **To create an API Security ruleset**

@@ -47,7 +47,7 @@ const items = {
     },
     {
       title: 'Service Provider Traffic',
-      path: '(/delivery/control/reports/traffic/service_provider_traffic',
+      path: '/delivery/control/reports/traffic/service_provider_traffic',
     },
     {
       title: 'Traffic',

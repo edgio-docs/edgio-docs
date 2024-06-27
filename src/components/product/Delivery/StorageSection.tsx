@@ -47,7 +47,7 @@ const items = {
     },
     {
       title: 'Retrieve/ Share Content',
-      path: '(/delivery/storage/quick_start/#retrieve-and-share-content',
+      path: '/delivery/storage/quick_start/#retrieve-and-share-content',
     },
     {
       title: 'Upload Content',

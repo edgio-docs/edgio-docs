@@ -1,11 +1,15 @@
 ---
 title: {{CACHING_DELIVERY}}
 ---
+
+<Info>This content refers to Caching and Delivery v2. For legacy Caching and Delivery (v1), see the [Control Caching & Delivery v1 User Guide](/images/delivery/control/v1-user-guide.pdf)</Info>
+
 {{CACHING_DELIVERY}} delivers content via HTTP and HTTPS for all file formats. Both full (entire file) and progressive (range request) downloads are supported.
 
 Navigate to Configure > {{CACHING_DELIVERY}} in the navigation pane. The {{CACHING_DELIVERY}} for page is displayed.
 
 ## Configuration List {/*configuration-list*/}
+
 The {{CACHING_DELIVERY}} page displays a list of the {{CACHING_DELIVERY}} configurations for the currently-selected Company and Account.
 
 The following information is shown for each configuration:
@@ -16,9 +20,11 @@ The following information is shown for each configuration:
 - **Published Path** - The URL path, if any, to use with the Published Host
 
 ## Filtering the List of Configurations {/*filtering-the-list-of-configurations*/}
+
 Use the **Filter by** dropdown menu and the filter text field to filter the list by specific fields:
 
 To filter the list:
+
 1. Make a selection in the drop-down menu.
 2. Enter a value in the filter text field.
 3. Press the Enter key on your keyboard. The list is reduced to include only configurations that match the filter.
@@ -26,11 +32,13 @@ To filter the list:
 Display the original list by clicking the **x** icon in the filter text field.
 
 ## Read-Only and Hidden Capabilities {/*read-only-and-hidden-capabilities*/}
+
 For particular use cases, configurations may have certain fields presented as either read-only or hidden (masked).
 
 An entire configuration may be read-only. Or, an editable configuration may have source and/or published fields hidden or read-only.
 
 Source and published fields are:
+
 - Source hostname
 - Source path
 - Published hostname
@@ -46,6 +54,7 @@ Hidden fields are masked with asterisks.
 Users can edit, clone, and revert the configuration.
 
 ## Creating a New Configuration {/*creating-a-new-configuration*/}
+
 To create a new configuration, click the **+ new** button, and the Create configuration screen will be displayed.
 
 ### Service Profiles  {/*service-profiles*/}
@@ -53,6 +62,7 @@ To create a new configuration, click the **+ new** button, and the Create config
 Each new configuration is based on a Service Profile. Service Profiles define the configuration structure and specify default and mandatory options that must be applied on every configuration. A Service Profile can serve as both a guide and a guardrail for the type of content your configuration will serve (characterized by a Use Case).
 
 The **Use Case** and **Service Profile** drop-down menus are disabled:
+
 - In existing configurations.
 - After you have selected a Published and Source Protocol while you are creating a new configuration.
 
@@ -145,6 +155,7 @@ You can use Arc Light to customize how Content Delivery reacts to HTTP requests 
 #### Configuration Overview  {/*configuration-overview*/}
 
 Use Arc Light to customize how Content Delivery reacts to the following HTTP request and response types:
+
 - Requests
     - Any
     - Origin only
@@ -159,6 +170,7 @@ For each of the above request and response types, you can assign one rule. Conte
 To enable Arc Light for a specific request or response type, check the checkbox next to the desired type (example: **x Rules on Edge Request**). To assign a rule, click one of the rules in the list below the request/response type.
 
 Rules can be triggered when a request or response meets pre-defined conditions, such as a pattern match with:
+
 - The URL, file name, or query term
 - The IP address
 - The value of a specified HTTP header
@@ -166,6 +178,7 @@ Rules can be triggered when a request or response meets pre-defined conditions, 
 - The geographic location of a request (using the IP address)
 
 When a rule is triggered, it can perform a variety of actions, such as:
+
 - Controlling which CORS headers are sent in response to a client request
 - Adding a cookie that contains geolocation information
 - Adding specific HTTP headers
@@ -262,11 +275,13 @@ Request and response example:
 Normally when the CDN receives a ```404 (Not Found), 503 (Service Unavailable)```, or ```504 (Gateway Timeout)``` response from your origin, the error is passed back to the requesting client. You can modify this configuration option as follows:
 
 For ```404``` errors:
+
 - Serve "stale" content from the CDNCache, or
 - Request content from a "backup host" (with or without a path), or
 - Redirect to a custom "Not Found" URL.
 
 For ```503``` and ```504``` errors:
+
 - Request content from a "backup host" or
 - Redirect to a custom "Service Unavailable URL."
 
@@ -295,6 +310,7 @@ Content Delivery Configuration Self Service provides access control using IP add
 |Enable IP Access Control|Whether you want to "allow list" or "deny list" requests based on IP address lists and IP-based geographic locations	|IP Access Control allows you to exclude specific geographies or limit access to known entities| Assign access lists to the Caching & Delivery configuration using the following drop-down menus: <br /> - **By IP address list**: Select one or more existing lists, then choose either Deny or Allow to indicate the type of restriction. Click Add to add the lists to the Access control list for this configuration section. <br /> - **By geolocation**: Select one or more geographic areas (continents or countries), then choose either Deny or Allow to indicate the type of restriction. Click Add to add the lists to the "Access control list for this configuration" section. <br /> **Access control list for this configuration** Section <br /> You can select a default security setting for the configuration - either **Default Allow** or **Default Deny**. You can then add one or more IP address lists and geographic locations that modify the default setting. IP address lists and geolocations can be "mixed and matched" in any order desired. <br /> To move an item in the list, move the mouse pointer over the item and use the vertical ellipses to drag and drop the item to another location in the list. <br /> If you have the correct permissions, click **Manage IP Lists** to display a dialog that allows you to create new IP access lists. You can also view, edit, and delete existing IP address lists. <br /> To view list details, click the + icon to the left of a list. <br /> - The text "Used by configs in accounts" shows which Accounts have configurations that use the list. <br /> - The text "Limited to accounts" shows any accounts to which your Company Admin has limited the list. <br /> To create a new list, click the **new list** button at the top of the dialog, then: 1. Provide a name for the list. <br /> 2. Provide a single IP address or range of IP addresses. You can also create and upload CSV files of IP addresses. Click the link to see a sample CSV file. <br /> 3. Optionally limit the list to accounts. <br /> 4. Click the **Save** button. The new list is now available in the ***By IP address list:** drop-down menu at the top of the section. <br /> To deny access to end users attempting to access your content using an anonymous VPN from an unauthorized geolocation, select the **Deny 'Anonymized with VPN' access** option. <br /> <Callout type="info">- IP address lists and geographic locations are processed in the order they are specified (top to bottom). Once a match is found, subsequent lists and locations are ignored <br /> - Users with the Company Admin role can manage lists for all accounts. Users with the User role who have been granted the Manage Delivery Configurations permission can apply all lists in the Accounts for which they have been granted management permission. <br /> - Changes made to IP address lists are applied immediately and affect all Account configurations which use them (even legacy configurations that can't be edited in Control.) <br /> - IP address lists cannot be deleted if they are in use.</Callout>|
 
 ### {{MEDIAVAULT}}  {/*mediavault*/}
+
 | Setting| Information Requested| Purpose| Selecting the Right Option|
 |---|---|---|---|
 |Enable {{MEDIAVAULT}} content protection|Whether you want to use {{MEDIAVAULT}} to provide additional content security. {{MEDIAVAULT}} provides high-performance URL authentication.|{{MEDIAVAULT}} can help you prevent “deep linking” and other unauthorized viewing behavior|To enable this feature, check the **Enable {{MEDIAVAULT}} content protection** checkbox, and provide a primary and secondary “shared secret” (both used to prevent URL tampering). <br /> You can also change the HTTP Error Code returned by {{MEDIAVAULT}} from the default 400 code by entering a new value in the Deny Status Code field.|
@@ -375,6 +391,7 @@ This option can be used to issue a redirect based on a specified header and valu
 |HTTP code 301 or 302 |Status code to use for the redirect. Enter either 301 or 302. <br /> Instead of delivering content from the origin, EdgePrism can redirect the user to a particular URL.|
 
 #### Strict Header Regex Checking {/*strict-header-regex-checking*/}
+
 If the header values you entered in the Redirect hostname header regex are not in the specified Header name, EdgePrism will use the fields below as the conditions under which it will issue the redirect.
 
 |Field|Description/ Instructions|
@@ -387,6 +404,7 @@ If the header values you entered in the Redirect hostname header regex are not i
 This section presents additional delivery options you can use in the Chunked Streaming configuration. For descriptions, hover your mouse pointer over the right side of the option name. An information icon appears along with the option description.
 
 ### Additional Options  {/*additional-options*/}
+
 The **Additional Options** section allows you to quickly configure options that are available elsewhere on the page. If you know the options you want, you can configure them here in one location.
 
 If you selected **Both HTTP and HTTPS** in the Content Location section, you could use the section to configure options for a particular protocol set.
@@ -451,6 +469,7 @@ Users are not able to delete configurations. For more information, see [Read-Onl
 <Image inline src="/images/delivery/control/revert-icon.png" alt="Revert" /> Each time you update a configuration, a new version is assigned.
 
 To revert to a previous configuration:
+
 1. Click the "undo" icon at the bottom right of the configuration row. A list of previous versions is displayed in a dialog.
 2. Select the version to which you want to revert. <br /> <Callout type="info">Although you intend to revert to a previous version, the reverted version will become the current version with a new version number. The new version number is displayed at the bottom of the dialog.</Callout>
 3. Click the Activate button. <br /><Callout type="info"> The ability to revert configurations is subject to conditions described in [Read-Only and Hidden Capabilities](#read-only-and-hidden-capabilities).</Callout>

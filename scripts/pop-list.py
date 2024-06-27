@@ -49,10 +49,17 @@ if isinstance(data, list):
     # Ensure the directory exists
     os.makedirs(os.path.dirname(output_file_path), exist_ok=True)
 
-    # Write the generated Markdown content to the output file
-    with open(output_file_path, "w") as output_file:
-        output_file.write(markdown_table)
+    try:
+        # Write the generated Markdown content to the output file
+        with open(output_file_path, "w") as output_file:
+            output_file.write(markdown_table)
+        
+        # Print the success message only if the file was written successfully
+        print(f"POPs saved to {output_file_path}")
 
-    print(f"POPs table saved to {output_file_path}")
+    except Exception as e:
+        # Handle the exception if any error occurs
+        print(f"Failed to save POPs to {output_file_path}: {e}")
+
 else:
     print("Unexpected API response format. Expected a list of dictionaries.")

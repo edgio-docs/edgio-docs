@@ -1,13 +1,6 @@
 value:
-  '@id': /rtld/v1/accesslogs/profiles?limit=1
+  '@id': /rtld/v1/accesslogs/profiles
   '@type': Collection
-  '@links':
-    first:
-      href: /rtld/v1/accesslogs/profiles?limit=1&offset=0
-    next:
-      href: /rtld/v1/accesslogs/profiles?limit=1&offset=1
-    last:
-      href: /rtld/v1/accesslogs/profiles?limit=1&offset=4
   items:
     - '@id': /rtld/v1/accesslogs/profiles/10027
       '@type': AccessLogsProfile
@@ -50,4 +43,3 @@ value:
           username: myuser
         log_format: json
       profile_name: myprofile
-  total_items: 5

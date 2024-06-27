@@ -1,19 +1,19 @@
 post:
   tags:
-    - RTLD Access Logs Profile
-  summary: Add RTLD Access Logs Profile
-  description: 'Creates a RTLD Access Logs profile. '
-  operationId: CreateAlProfile
+    - RTLD WAF Profile
+  summary: Add RTLD WAF Profile
+  description: 'Creates a RTLD Web Application Firewall (WAF) profile. '
+  operationId: CreateWafProfile
   security:
     - rtldScope:
         - app.rtld
   parameters:
     - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
   requestBody:
-    $ref: ../components/requestBodies/rtldAlProfileRequest.yaml
+    $ref: ../components/requestBodies/rtldWafProfileRequest.yaml
   responses:
     '201':
-      $ref: ../components/responses/rtldSingleAlProfile.yaml
+      $ref: ../components/responses/rtldSingleWafProfile.yaml
     '400':
       $ref: ../components/responses/rtldBadRequest.yaml
     '401':
@@ -25,10 +25,12 @@ post:
   x-codegen-request-body-name: Body
 get:
   tags:
-    - RTLD Access Logs Profile
-  summary: Get All RTLD Access Logs Profiles
-  description: Returns all RTLD Access Logs profiles associated with an environment.
-  operationId: GetAllAlProfiles
+    - RTLD WAF Profile
+  summary: Get All RTLD WAF Profiles
+  description: >-
+    Returns all RTLD Web Application Firewall (WAF) profiles associated with an
+    environment.
+  operationId: GetAllWafProfiles
   security:
     - rtldScope:
         - app.rtld:read
@@ -36,7 +38,7 @@ get:
     - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
   responses:
     '200':
-      $ref: ../components/responses/rtldAlProfileCollection.yaml
+      $ref: ../components/responses/rtldWafProfileCollection.yaml
     '401':
       $ref: ../components/responses/rtldUnauthorized.yaml
     '403':

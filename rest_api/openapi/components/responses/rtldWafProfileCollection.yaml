@@ -1,0 +1,8 @@
+description: OK
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/rtldWafProfileCollection.yaml
+    examples:
+      reference:
+        $ref: ../examples/rtldExampleWafProfileCollection.yaml

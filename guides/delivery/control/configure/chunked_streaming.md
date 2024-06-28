@@ -2,6 +2,8 @@
 title: Chunked Streaming
 ---
 
+<Info>This content refers to Chunked Streaming v2. For legacy Caching and Delivery (v1), see the [Control Chunked Streaming v1 User Guide](/assets/delivery/v1_user_guide)</Info>
+
 Using the Control portal, you can manage a configuration that controls several manifests and Chunked Streaming origins. Chunked Streaming provides a way for you to adopt Edgio's optimized configuration profiles for delivering chunked video content through the CDN over HTTP, HTTPS, or both. To use Chunked Streaming, you first need to chunk your content and generate the associated manifest files (Chunked Streaming does not encode, transcode or transmux your media). You can host your content on your origin servers or with Origin Storage.
 
 <Callout type="info">In general, Chunked Streaming is like Caching & Delivery, but Chunked Streaming allows you to create multiple delivery configurations for media formats.</Callout>

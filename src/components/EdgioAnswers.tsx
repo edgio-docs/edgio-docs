@@ -687,7 +687,7 @@ function formatMessageContent(
   // Append product name to the beginning of markdown links based on the href
   // (e.g. [Some Article](/delivery/storage/console) -> [Delivery - Some Article](/delivery/storage/console))
   content = content.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, title, href) => {
-    const url = new URL(href);
+    const url = new URL(href, window.location.origin);
 
     let product = url.pathname.split('/')[1];
     // capitalize the first letter of the title

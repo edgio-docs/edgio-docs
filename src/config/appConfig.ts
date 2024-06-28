@@ -135,8 +135,9 @@ export const productsConfig: ProductsConfig = {
     },
     edgioAnswers: {
       starterQuestions: [
-        'What is the Delivery product?',
-        'What are some of the features available?',
+        'What are the key features of Delivery?',
+        'Create a Storage user.',
+        'What reports can I find in Control?',
       ],
       contextStatement:
         'Only provide me with information about the Delivery product.',

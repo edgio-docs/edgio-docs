@@ -1,8 +1,8 @@
-import {IconEdgioApplications} from 'components/Icon';
-import {IconDelivery} from 'components/Icon/IconDelivery';
-import {IconOpenEdge} from 'components/Icon/IconOpenEdge';
-import {IconUplynk} from 'components/Icon/IconUplynk';
-import {HomepageSectionGroup} from 'utils/Types';
+import { IconEdgioApplications } from 'components/Icon';
+import { IconDelivery } from 'components/Icon/IconDelivery';
+import { IconOpenEdge } from 'components/Icon/IconOpenEdge';
+import { IconUplynk } from 'components/Icon/IconUplynk';
+import { HomepageSectionGroup } from 'utils/Types';
 
 export const sections: HomepageSectionGroup[] = [
   {
@@ -359,7 +359,7 @@ export const sections: HomepageSectionGroup[] = [
       {
         items: [
           {
-            title: 'Service Provider Traffic Report',
+            title: 'ISP Traffic Report',
             path: 'https://support.limelight.com/public/en/Content/Control/Open_Edge/Open_Edge.htm#Using',
           },
           {

@@ -1,5 +1,5 @@
 allOf:
-  - $ref: ./rtldBaseHttpPost.yaml
+  - $ref: ./rtldBaseGcs.yaml
   - type: object
     required:
       - log_format

@@ -24,5 +24,3 @@ allOf:
           and/or a prefix that will be added to each object added to your
           bucket. [Learn more about
           prefixes.](https://docs.edg.io/guides/v7/logs/rtld/google_cloud_storage_log_delivery#log-file-prefix)
-      log_format:
-        $ref: ./rtldLogFormat.yaml

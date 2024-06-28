@@ -1,21 +1,27 @@
 ---
-title: AWS Request Signing
+title: AWS S3 Request Signing
 ---
 
-[AWS Request Signing](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) uses the AWS Signature Version 4 algorithm to sign requests to AWS services.
+{{ ef_req_edgejs.md }}
 
-This process involves calculating a signature using the request's elements and your AWS access keys. The signature ensures that AWS can verify the request as being sent by an authenticated source, enhancing security when accessing AWS services like S3. Integrating this with Edge Functions allows for efficient and secure fetching of assets from S3 buckets.
+[Sign AWS S3 requests](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) using the AWS Signature Version 4 algorithm. This process involves calculating a signature using the request's elements and your AWS access keys. This signature ensures that AWS can verify the request as being sent by an authenticated source, enhancing security when accessing AWS S3. Integrating this with Edge Functions allows for efficient and secure fetching of assets from S3 buckets.
+
+<ExampleButtons
+  title="AWS S3 Request Signing"
+  siteUrl="https://edgio-community-examples-v7-aws-s3-request-signing-live.glb.edgio.link"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-aws-s3-request-signing-example"
+/>
 
 ## Dependencies {/* dependencies */}
 
-This guides references the following dependencies that will need to be installed in your project:
+This guide references the following dependencies that will need to be installed in your project:
 
 <PackageCommand>
 
 ```
-npm install crypto-js
+npm install crypto-js aws4fetch
 ---
-yarn add crypto-js
+yarn add crypto-js aws4fetch
 ```
 
 </PackageCommand>
@@ -30,10 +36,11 @@ In the {{ PRODUCT }} router, you can use the `edge_function` feature to specify 
 import {Router, edgioRoutes} from '@edgio/core';
 
 export default new Router()
+  // Built-in Edgio routes
   .use(edgioRoutes)
 
-  // Match any GET request to the /assets/* path and handle it with the edge function
-  .get('/assets/:path*', {
+  // Specifies the edge function for /s3/* paths. Modify the path as needed.
+  .get('/s3/:anything*', {
     edge_function: './edge-functions/main.js',
   });
 ```
@@ -44,10 +51,10 @@ AWS request signing requires the following credentials that need to be defined i
 
 ```bash filename=".env"
 # AWS S3 credentials
-AWS_SECRET_ACCESS_KEY = XXX
-AWS_ACCESS_KEY_ID = XXX
-AWS_HOSTNAME = XXX
-AWS_REGION = XXX
+S3_HOSTNAME=edgio-docs-demo.s3.us-east-2.amazonaws.com
+S3_REGION=us-east-2
+S3_ACCESS_KEY_ID=XXX
+S3_SECRET_ACCESS_KEY=YYY
 ```
 
 Define your S3 origin configuration in the `{{ CONFIG_FILE }}` file:
@@ -57,6 +64,7 @@ Define your S3 origin configuration in the `{{ CONFIG_FILE }}` file:
 // You should commit this file to source control.
 // Learn more about this file at https://docs.edg.io/applications/edgio_config
 
+// Load environment variables from .env file
 require('dotenv').config();
 
 module.exports = {
@@ -68,19 +76,19 @@ module.exports = {
       name: 's3',
 
       // Use the following to override the host header sent from the browser when connecting to the origin
-      override_host_header: process.env.AWS_HOSTNAME,
+      override_host_header: process.env.S3_HOSTNAME,
 
       // The list of origin hosts to which to connect
       hosts: [
         {
           // The domain name or IP address of the origin server
-          location: process.env.AWS_HOSTNAME,
+          location: process.env.S3_HOSTNAME,
         },
       ],
 
       tls_verify: {
         use_sni: true,
-        sni_hint_and_strict_san_check: process.env.AWS_HOSTNAME,
+        sni_hint_and_strict_san_check: process.env.S3_HOSTNAME,
       },
 
       // Uncomment the following to configure a shield
@@ -92,29 +100,35 @@ module.exports = {
 
 ## Edge Function {/* edge-function */}
 
-The edge function will sign the incoming request using the `AwsV4Signer` class, and then forward the request to the S3 bucket. The `AwsV4Signer` class is a third-party library that handles the signing process, and is included in the `edge-functions` directory of this example.
+The edge function will sign the incoming request using the `AwsV4Signer` class, and then forward the request to the S3 bucket. The `AwsV4Signer` class is a third-party library that handles the signing process and is included in the `edge-functions` directory of this example.
 
 ```js filename="edge-functions/main.js"
-import {AwsV4Signer} from './awsv4';
+import {AwsV4Signer} from './awsv4'; // See the awsv4.js file below
 
 /**
- * An example edge function which forwards the request to the origin.
- * See routes.js for how this function is configured to run for requests to "/assets/*".
+ * This edge function signs an S3 request using the AWS v4 signature algorithm
+ * and forwards the request to the S3 origin. Authentication credentials are
+ * read from environment variables set in the Edgio Developer Console.
  */
-
 export async function handleHttpRequest(request, context) {
-  const s3Url = new URL(
-    request.path, // this is the incoming request path, but may need to be modified depending on your S3 bucket configuration
-    `https://${context.environmentVars.AWS_HOSTNAME}/`
-  );
+  const {S3_HOSTNAME, S3_REGION, S3_ACCESS_KEY_ID, S3_SECRET_ACCESS_KEY} =
+    context.environmentVars;
+
+  const initialUrl = new URL(request.url);
+
+  // Remove the /s3 prefix from the path before signing since we only
+  // want to sign the path relative to the bucket.
+  // For example, /s3/some-path/file.jpg becomes /some-path/file.jpg
+  const s3Path = initialUrl.pathname.replace(/^\/s3/, '');
+  const s3Url = new URL(s3Path, `https://${S3_HOSTNAME}`);
 
   const signer = new AwsV4Signer({
     url: s3Url.href,
     method: request.method,
-    region: context.environmentVars.S3_REGION,
+    region: S3_REGION,
     service: 's3',
-    accessKeyId: context.environmentVars.S3_ACCESS_KEY_ID,
-    secretAccessKey: context.environmentVars.S3_SECRET_ACCESS_KEY,
+    accessKeyId: S3_ACCESS_KEY_ID,
+    secretAccessKey: S3_SECRET_ACCESS_KEY,
     signQuery: true,
   });
 
@@ -129,6 +143,8 @@ export async function handleHttpRequest(request, context) {
   });
 }
 ```
+
+The `awsv4.js` file contains the `AwsV4Signer` class that handles the signing process. This class is used in the edge function to sign the incoming request.
 
 ```js filename="edge-functions/awsv4.js"
 // @ts-check

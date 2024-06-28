@@ -7,8 +7,6 @@ import Link from 'components/MDX/Link';
 import {mobileMinWidth} from 'styles';
 import {HomepageSectionGroup} from 'utils/Types';
 
-const columnCount = 3;
-
 const SectionContainer = styled.div`
   width: 100%;
   padding: 40px;
@@ -91,19 +89,20 @@ const SectionTitle = styled.div`
   font-weight: 600;
 `;
 
-const ItemsGrid = styled.div<{columns: number}>`
+const ItemsGrid = styled.div`
   display: grid;
   grid-gap: 6px;
   width: 100%;
   box-sizing: border-box;
 
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-flow: dense;
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr); // 2 columns for medium screens
   }
 
-  @media (max-width: ${mobileMinWidth}) {
+  @media (max-width: 768px) {
     grid-template-columns: repeat(1, 1fr); // 1 column for small screens
   }
 `;
@@ -112,6 +111,8 @@ const Item = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: nowrap;
+  overflow: hidden;
 `;
 
 const ItemDot = styled.div`
@@ -120,11 +121,14 @@ const ItemDot = styled.div`
   min-height: 8px;
   height: 8px;
   background: var(--theme-primary);
-  border-radius: 1px;
+  flex-shrink: 0;
 `;
 
 const ItemText = styled.div`
   font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
   white-space: nowrap;
 `;
 
@@ -189,7 +193,7 @@ const SectionBox = ({
               ) : (
                 <SectionTitle>{section.title}</SectionTitle>
               ))}
-            <ItemsGrid columns={columnCount}>
+            <ItemsGrid>
               {section.items.map((item) => (
                 <Item key={item.title}>
                   <ItemDot />

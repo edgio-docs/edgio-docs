@@ -2,8 +2,6 @@
 title: Chunked Streaming
 ---
 
-<Info>This content refers to Chunked Streaming v2. For legacy Caching and Delivery (v1), see the [Control Chunked Streaming v1 User Guide](/assets/delivery/legacy.pdf)</Info>
-
 Using the Control portal, you can manage a configuration that controls several manifests and Chunked Streaming origins. Chunked Streaming provides a way for you to adopt Edgio's optimized configuration profiles for delivering chunked video content through the CDN over HTTP, HTTPS, or both. To use Chunked Streaming, you first need to chunk your content and generate the associated manifest files (Chunked Streaming does not encode, transcode or transmux your media). You can host your content on your origin servers or with Origin Storage.
 
 <Callout type="info">In general, Chunked Streaming is like Caching & Delivery, but Chunked Streaming allows you to create multiple delivery configurations for media formats.</Callout>
@@ -18,22 +16,23 @@ The rest of the gray bars show individual configurations grouped by Published Ho
 
 The *Chunked Streaming Configurations list* provides the following information for each configuration:
 
--   **source hostname** (Origin Hostname) – The private URL prefix used by to retrieve and cache content from your origin server (not visible to end-users).
--   **source path** – The private URL prefix used by to retrieve and cache content from your origin server (not
--   visible to end-users).
+- **source hostname** (Origin Hostname) – The private URL prefix used by to retrieve and cache content from your origin server (not visible to end-users).
+- **source path** – The private URL prefix used by to retrieve and cache content from your origin server (not
+- visible to end-users).
 
--   **protocol** – protocols in this format:
+- **protocol** – protocols in this format:
     `{source protocol}` > `{published protocol}`
     Multiple protocol combinations are allowed. An example is: HTTP ➤ HTTPS & HTTPS ➤ HTTP
 
--   **format** - The media formats which the content is delivered in
--   **published path** – The path portion of the URL (visible to end-users).
--   **action icons** \- edit, view, clone, delete
--   **configuration information** - version, date version created or last modified, and the user that created or modified the version
+- **format** - The media formats which the content is delivered in
+- **published path** – The path portion of the URL (visible to end-users).
+- **action icons** \- edit, view, clone, delete
+- **configuration information** - version, date version created or last modified, and the user that created or modified the version
 
 ## Filtering the List of Configurations {/*filtering-the-list-of-configurations*/}
 
 To filter the list:
+
 1. Make a selection in the drop-down menu.
 2. Enter a value in the filter text field.
 3. Press the Enter key on your keyboard. The list is reduced to include only configurations that match the filter.
@@ -51,6 +50,7 @@ A Chunked Streaming configuration consists of one root instance and two child in
 Each new configuration is based on a Service Profile. Service Profiles define the configuration structure and specify default and mandatory options that must be applied on every configuration. A Service Profile can serve as both a guide and a guardrail for the type of content your configuration will serve (characterized by a Use Case).
 
 The **Use Case** and **Service Profile** drop-down menus are disabled:
+
 - In existing configurations.
 - After you have selected a Published and Source Protocol while you are creating a new configuration.
 
@@ -60,21 +60,21 @@ If you wish to modify a Service Profile or migrate, add, or remove a Protocol Se
 
 ### Creating a new configuration {/*creating-a-new-config*/}
 
-1.  Begin the new configuration by clicking the **+ new** button at the top left of the page.
-2.  Make configurations in the sections in the subsequent Create configuration screen.
-3.  When you are finished, click the Activate button at the bottom of the page or the floating blue checkmark icon on the right side of the screen.
+1. Begin the new configuration by clicking the **+ new** button at the top left of the page.
+2. Make configurations in the sections in the subsequent Create configuration screen.
+3. When you are finished, click the Activate button at the bottom of the page or the floating blue checkmark icon on the right side of the screen.
 
 ### Content Location {/*content-location*/}
 
 With two exceptions, configuring a Content Location is similar to (v2).
 
--   When configuring the Source URL path, keep in mind that it will be the root for all child video format configurations. For example, you have a DASH configuration, and you configure /streaming/ as the source URL path, then that path will have two children:
+- When configuring the Source URL path, keep in mind that it will be the root for all child video format configurations. For example, you have a DASH configuration, and you configure /streaming/ as the source URL path, then that path will have two children:
 
     `/streaming/DASH/manifest`
 
     `/streaming/DASH/chunk`
 
--   **The path ends with a filename** and **Only publish files with these extensions** options are not present under the Source URL path field in the Content Location section.
+- **The path ends with a filename** and **Only publish files with these extensions** options are not present under the Source URL path field in the Content Location section.
 
 For additional information, see [Content Location](/delivery/control/configure/caching_and_delivery/#content-location) in the Caching & Delivery section.
 
@@ -86,11 +86,11 @@ You can make configurations for any supported Chunked Streaming formats (HDS, HL
 
 #### Adding a Media Format
 
-1.  Click the **Add format** button and choose a format from the subsequent .
+1. Click the **Add format** button and choose a format from the subsequent .
 
     A configuration section for the selected format is displayed. <br /> <Callout type="info">Several additional sections are also displayed below the Media Delivery section. (Instructions for the additional UI sections are described later in this document.)</Callout>
 
-2.  Configure the Chunk TTL and Manifest TTL fields.
+2. Configure the Chunk TTL and Manifest TTL fields.
 
     Both fields allow you to configure manually, default values to the root instance, or choose from preset times.
 

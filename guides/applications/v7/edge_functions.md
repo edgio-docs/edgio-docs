@@ -11,7 +11,7 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 
 {{ prereq.md }}
 
-## Edge Functions {/* edge-function */}
+## Edge Functions {/* edge-functions */}
 
 Edge functions are standalone JavaScript functions that are executed on the edge servers. They are defined within a JavaScript file and exported as an asynchronous function named `handleHttpRequest`. This function is invoked when an incoming request matches a rule that has an edge function assigned to it. Only a single edge function can be assigned to a rule. If multiple rules match an incoming request, the edge function assigned to the last matching rule is invoked.
 
@@ -46,7 +46,7 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
-### For CDN-as-Code {/* cdn-as-code */}
+### CDN-as-Code {/* cdn-as-code */}
 
 For properties using CDN-as-Code, edge functions are defined within your local project codebase. You can define edge functions by:
 
@@ -64,7 +64,7 @@ For properties using CDN-as-Code, edge functions are defined within your local p
     });
   ```
 
-### For Rules UI {/* rules-ui */}
+### Rules ({{ PORTAL }})
 
 For properties managed within the {{ PORTAL }}, edge functions are defined at the environment level. Navigate to your property and perform the following steps:
 

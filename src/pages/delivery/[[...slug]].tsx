@@ -89,10 +89,9 @@ export const getStaticPaths = async () => {
   // Convert file paths to routes. The first part of the path will be the [product] and the rest will be the [slug]
   routes.push(
     ...[...new Set(paths)].map((path) => {
-      const [product, ...slug] = path.split('/');
+      const slug = path.split('/');
       return {
         params: {
-          product,
           slug,
         },
       };

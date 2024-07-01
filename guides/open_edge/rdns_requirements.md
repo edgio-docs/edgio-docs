@@ -16,7 +16,7 @@ IPv4 block: 198.51.100.0/24<br />
 Reverse Zone: 100.51.198.in-addr.arpa
 
 Use dig to determine the name servers for the reverse zone.<br />
-**>dig NS 100.51.198.in-addr.arpa**
+**\>dig NS 100.51.198.in-addr.arpa**
 
 ; <<>> DiG 9.9.11 <<>> NS 100.51.198.in-addr.arpa
 ---Output truncated---<br />
@@ -61,7 +61,7 @@ Once the delegation of the reverse zone is completed, validate the configuration
 100.51.198.in-addr.arpa.  3600    IN      NS      aa2.dns.llnw.net.**
 
 To validate that the Edgio DNS servers are configured for the zone in question:<br />
->dig @aa1.dns.llnw.net NS 100.51.198.in-addr.arpa
+\>dig @aa1.dns.llnw.net NS 100.51.198.in-addr.arpa
 
 ; <<>> DiG 9.9.11 <<>> @aa1.dns.llnw.net NS 100.51.198.in-addr.arpa<br />
 ---Output truncated---<br />
@@ -82,7 +82,7 @@ IN NS aa2.dns.llnw.net.
 **Validation**
 
 Validate that the delegation is working properly.
-> dig NS 100.51.198.in-addr.arpa
+\> dig NS 100.51.198.in-addr.arpa
 
 ; <<>> DiG 9.9.11 <<>> NS 100.51.198.in-addr.arpa<br />
 ---Output truncated---<br />
@@ -123,7 +123,7 @@ Reverse Zone: 100.51.198.in-addr.arpa
 **Validation**
 Validate that the delegation is working properly.
 
-> dig NS llns.100.51.198.in-addr.arpa
+\> dig NS llns.100.51.198.in-addr.arpa
 
 ; <<>> DiG 9.9.11 <<>> NS llns.100.51.198.in-addr.arpa<br />
 ---Output truncated---<br />
@@ -143,7 +143,7 @@ Determine the current configuration for the reverse zone for the IPv6 block in q
 IPv6 block: 2001:db8:1234:5678::/64<br />
 Reverse Zone: 8.7.6.5.4.3.2.1.8.b.d.0.1.0.0.2.ip6.arpa<br />
 Use dig to determine the name servers for the reverse zone.<br />
->dig NS 8.7.6.5.4.3.2.1.8.b.d.0.1.0.0.2.ip6.arpa
+\>dig NS 8.7.6.5.4.3.2.1.8.b.d.0.1.0.0.2.ip6.arpa
 
 ; <<>> DiG 9.9.11 <<>> NS 8.7.6.5.4.3.2.1.8.b.d.0.1.0.0.2.ip6.arpa<br />
 ---Output truncated---<br />

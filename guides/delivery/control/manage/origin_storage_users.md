@@ -3,7 +3,9 @@ title: Origin Storage Accounts and Users
 ---
 <Callout type="info">Except where noted, the procedures in this section require Company Admin privileges.</Callout>
 
-Navigate to Manage > Origin Storage Users in the navigation pane. The *Origin Storage Users* screen is displayed, with a list of all Origin Storage users associated with the currently selected Edgio Account.
+<Tip>Refer to the Storage Console Guide for details on working with accounts, users, files, site navigation, and more.</Tip>
+
+Navigate to *Manage* > *Origin Storage Users* in the navigation pane. The *Origin Storage Users* screen is displayed, with a list of all Origin Storage users associated with the currently selected Edgio Account.
 
 [Manage Users screen](/images/delivery/storage/manage.png)
 
@@ -11,9 +13,9 @@ Links at the top of the list allow you to show active, inactive, or all users.
 
 The list includes the following information for each storage account:
 
--   **Bucket User** - Indicates if the user is allowed to work with buckets.
--   **Username** - Displays the username of the user who created the storage account.
--   **Restricted Directory** - Displays the path to the restricted directory.
+- **Bucket User** - Indicates if the user is allowed to work with buckets.
+- **Username** - Displays the username of the user who created the storage account.
+- **Restricted Directory** - Displays the path to the restricted directory.
 
 ## Creating a New Origin Storage User Account  {/*creating-a-new-origin-storage-user-account*/}
 
@@ -21,14 +23,14 @@ To create a new user account, click **+ new**, and the *Create Origin Storage Us
 
 [Create New User screen](/images/delivery/storage/create.png)
 
--   Enter the **Username** of the user who will be managing this account.
+- Enter the **Username** of the user who will be managing this account.
 
     Once your has been saved, this field cannot be edited
--   Enter the **Restricted Directory** path to your restricted content. For example: `/testtest/test`
+- Enter the **Restricted Directory** path to your restricted content. For example: `/testtest/test`
 
     The restricted directory is prepended with your shortname before the slash (/)
--   Enter the **Password** and **Confirm Password** for this account
--   Click **Save** to create the new account
+- Enter the **Password** and **Confirm Password** for this account
+- Click **Save** to create the new account
 
 <Callout type="info">If you are a bucket-enabled customer, you can only create bucket-enabled users, and the restricted directory is your bucket "root." It is pre-configured as `/<account name>\_buckets` and is disabled. Otherwise, all UI elements and functionality for creating new user accounts are the same as for non-bucket-enabled customers.</Callout>
 

@@ -23,7 +23,13 @@ function Link({
   useNextLink = true,
   ...props
 }: LinkProps) {
-  const hrefType = getHrefType(href);
+  let hrefType = getHrefType(href);
+
+  // hrefs with an encoded ^ at the end should be treated as external links and remove the ^
+  if (href?.endsWith('%5E')) {
+    href = href.slice(0, -3);
+    hrefType = 'external';
+  }
 
   href = toNormalizedPath(href, versioned);
 

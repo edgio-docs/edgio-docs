@@ -2,6 +2,8 @@
 title: {{CACHING_DELIVERY}}
 ---
 
+<Info>This content refers to Caching and Delivery v2. For legacy Caching and Delivery (v1), see the [Control Caching and Delivery v1 User Guide](/assets/delivery/legacy.pdf)</Info>
+
 {{CACHING_DELIVERY}} delivers content via HTTP and HTTPS for all file formats. Both full (entire file) and progressive (range request) downloads are supported.
 
 Navigate to *Configure* > *{{CACHING_DELIVERY}}* in the navigation pane. The {{CACHING_DELIVERY}} for page is displayed.

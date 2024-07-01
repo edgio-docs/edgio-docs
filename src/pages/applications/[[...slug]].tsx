@@ -24,7 +24,8 @@ import {remarkPlugins} from '../../../plugins/markdownToHtml';
 import rehypeExtractHeadings from '../../../plugins/rehype-extract-headings';
 import {MDXComponents} from '../../components/MDX/MDXComponents';
 
-const guidesPath = join(process.cwd(), 'guides');
+const PRODUCT = 'applications';
+const guidesPath = join(process.cwd(), 'guides', PRODUCT);
 
 interface GuideProps extends AppProviderProps {
   source: any;
@@ -79,18 +80,9 @@ export const getStaticPaths = async () => {
 
   // First part of the path will be the "product" (eg. 'applications', 'uplynk', etc.)
   // Some products will have a version in the path (eg. 'applications/v7') and will have the following structure:
-  // /{PREFIX}/[guide] => guide for the non-versioned product
-  // /{PREFIX}/[version] => homepage for the version product
-  // /{PREFIX}/[version]/[guide] => guide for the versioned product
-
-  // In dev mode, don't prerender any pages and fallback to SSR for
-  // faster page loads
-  // if (isEdgioRunDev()) {
-  //   return {
-  //     paths: [],
-  //     fallback: 'blocking',
-  //   };
-  // }
+  // /{PRODUCT}/[guide] => guide for the non-versioned product
+  // /{PRODUCT}/[version] => homepage for the version product
+  // /{PRODUCT}/[version]/[guide] => guide for the versioned product
 
   paths.push(...allGuides.sort());
 
@@ -119,22 +111,18 @@ export const getStaticPaths = async () => {
   };
 };
 
-export async function getStaticProps({
-  params,
-}: {
-  params: {product: string; slug: string[]};
-}) {
-  let {product, slug} = params;
+export async function getStaticProps({params}: {params: {slug: string[]}}) {
+  let {slug} = params;
   let [version, ...guide] = (slug = slug || []);
   const versionRE = /^v(\d+)$/;
   const hasVersionInSlug = versionRE.test(version);
   let isHomepage = false;
 
   // Configurations for the matched product
-  const productConfig = productsConfig[product];
+  const productConfig = productsConfig[PRODUCT];
 
   if (!productConfig) {
-    logger.warn(`No product configuration found for '${product}'`);
+    logger.warn(`No product configuration found for '${PRODUCT}'`);
     return {notFound: true};
   }
 
@@ -159,7 +147,7 @@ export async function getStaticProps({
   if (!hasVersionInSlug && versions.length > 1) {
     const latestVersion = versions.sort().reverse()[0];
     logger.warn(
-      `No version specified for '${product}'. Redirecting to latest version: '${pathPrefix}/${latestVersion}/${slug.join(
+      `No version specified for '${PRODUCT}'. Redirecting to latest version: '${pathPrefix}/${latestVersion}/${slug.join(
         '/'
       )}'`
     );
@@ -189,7 +177,7 @@ export async function getStaticProps({
   );
 
   // Find the first matching file
-  const files = await globby(guideGlobs);
+  const files = await globby(guideGlobs, {});
   const [file] = files;
   if (!file) {
     logger.warn(`No matching files for route '${slugAsString}'`);
@@ -200,7 +188,7 @@ export async function getStaticProps({
     `Using '${file}' for route '${slugAsString}'. Available files: ${files}`
   );
 
-  const initialContextProps = await getInitialContextProps(product, version);
+  const initialContextProps = await getInitialContextProps(PRODUCT, version);
 
   // Update template with versioned constants
   let content =

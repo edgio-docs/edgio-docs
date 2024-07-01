@@ -2,7 +2,7 @@
 title: Waiting Room
 ---
 
-{{ ef_req_edgejs.md }}
+{{ ef_req_edgejs_deps.md }}
 
 A waiting room can be used to restrict access to a website by means of queueing requests during high traffic periods. This can be useful for preventing a website from becoming overloaded during a traffic spike, or for restricting access to a website during a limited-time event.
 

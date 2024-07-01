@@ -2,7 +2,7 @@
 title: Edge Experiments with Optimizely
 ---
 
-{{ ef_req_edgejs.md }}
+{{ ef_req_edgejs_deps.md }}
 
 Optimizely is a popular experimentation platform that allows you to run A/B tests, multivariate tests, and personalization campaigns on your website. By integrating Optimizely with your {{ PRODUCT }} application, you can leverage the power of experimentation to optimize your user experience and drive better business outcomes.
 

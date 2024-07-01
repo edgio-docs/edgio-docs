@@ -1,19 +1,36 @@
-/*
- * Copyright (c) Facebook, Inc. and its affiliates.
- */
+import {AnchorHTMLAttributes} from 'react';
 
-import * as React from 'react';
+import {FaExternalLinkAlt} from 'react-icons/fa';
+import styled from 'styled-components';
+
+const ExternalLinkWrapper = styled.a`
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+`;
+
+const ExternalLinkIcon = styled.span`
+  margin-left: 0.25rem;
+  font-size: 0.8rem;
+`;
 
 export function ExternalLink({
   href,
   target,
   children,
   ...props
-}: JSX.IntrinsicElements['a']) {
+}: AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
-    <a href={href} target={target ?? '_blank'} rel="noopener" {...props}>
+    <ExternalLinkWrapper
+      href={href}
+      target={target ?? '_blank'}
+      rel="noopener noreferrer"
+      {...props}>
       {children}
-    </a>
+      <ExternalLinkIcon>
+        <FaExternalLinkAlt />
+      </ExternalLinkIcon>
+    </ExternalLinkWrapper>
   );
 }
 

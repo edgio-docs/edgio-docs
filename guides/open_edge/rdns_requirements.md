@@ -76,8 +76,8 @@ To validate that the Edgio DNS servers are configured for the zone in question:
 100.51.198.in-addr.arpa.  3600    IN      NS      aa2.dns.llnw.net.
 ```
 
-## Internal Delegation  {/*internal*/}
-### Option A - Delegate /16 or Larger  {/*a*/}
+### Internal Delegation  {/*internal*/}
+#### Option A - Delegate /16 or Larger  {/*a*/}
 If the reverse zone is currently delegated to your company’s name servers, the reverse zone will need to be created and/or updated to use the Edgio name servers.
 
 IN NS aa1.dns.llnw.net.<br />
@@ -100,14 +100,14 @@ Validate that the delegation is working properly.
 100.51.198.in-addr.arpa. 300 IN     NS      aa1.dns.llnw.net.
 ```
 
-### Option B - Delegate Smaller than a /16 {/*b*/}
+#### Option B - Delegate Smaller than a /16 {/*b*/}
 If the reverse zone is currently delegated to your company’s name servers, there are two options.
 1.	The Edgio preferred option is to delegate the /24 reverse zone to Edgio.  Follow the instructions provided in the [External Delegation](#external-1) section above.
 2.	If your company does not want to have the RIR delegate the /24 to Edgio directly, please follow the directions below for [Option C - Delegate smaller than a /24 below](#c).
 
 <Callout type="info">If your company is choosing to not delegate a /24 via the RIR you will need to notify the Edgio team so that the necessary configuration can be completed within our systems.</Callout>
 
-### Option C - Delegate Smaller than a /24  {/*c*/}
+#### Option C - Delegate Smaller than a /24  {/*c*/}
 
 If the allocation is a /24 or smaller, the reverse zone will need to be created or updated with the following information.
 In addition to the existing NS entries, the following entries need to be added to the zone:

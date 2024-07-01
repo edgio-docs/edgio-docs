@@ -40,13 +40,12 @@ Open Edge is powered by Edgio Edge Cache, a "plug and play" service that lets yo
 ## Requirements
 
 ### Blockers
-This section lists the minimum requirements prospective clients must meet to implement Edgio’s Open Edge Appliance
-or Full Stack solutions. Clients who do not meet these specifications are not candidates for these Edgio products.
+This section lists the minimum requirements prospective clients must meet to implement Edgio’s Open Edge Appliance or Full Stack solutions. Clients who do not meet these specifications are not candidates for these Edgio products.
 
 |Appliance| Full Stack| Requirement|
 |---|---|---|
-|Yes|Yes|Reverse DNS zones must be delegated to Edgio DNS servers. See Reverse DNS requirements for details.|
-||| **Space and Power**|
+|Yes|Yes|Reverse DNS zones must be delegated to Edgio DNS servers. See [Reverse DNS requirements](/delivery/open_edge/rdns_requirements) for details.|
+| || **Space and Power**|
 |Yes|No| 1U appliance server (Minimum rack dimensions: Width = 600mm; depth = 1070mm)|
 |No|Yes|Minimum rack dimensions: Width = 600mm; depth = 1070mm; height = 42RU (2000mm)|
 |Yes|No|A maximum of 1100w at boot and steady-state operation at approximately 500-600w using C13-C14 power cords|

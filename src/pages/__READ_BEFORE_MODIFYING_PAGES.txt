@@ -1,4 +1,4 @@
-# Important Note About Modifying Pages
+** Important Note About Modifying Pages **
 
 Before modifying any of the page routes, please consider the following:
 

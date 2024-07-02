@@ -20,6 +20,12 @@ export function ExternalLink({
   children,
   ...props
 }: AnchorHTMLAttributes<HTMLAnchorElement>) {
+  // only show icon for "simple" links (eg. not for images, buttons, etc)
+  const showIcon =
+    Array.isArray(children) &&
+    children.length === 1 &&
+    typeof children[0] === 'string';
+
   return (
     <ExternalLinkWrapper
       href={href}
@@ -27,9 +33,11 @@ export function ExternalLink({
       rel="noopener noreferrer"
       {...props}>
       {children}
-      <ExternalLinkIcon>
-        <FaExternalLinkAlt />
-      </ExternalLinkIcon>
+      {showIcon && (
+        <ExternalLinkIcon>
+          <FaExternalLinkAlt />
+        </ExternalLinkIcon>
+      )}
     </ExternalLinkWrapper>
   );
 }

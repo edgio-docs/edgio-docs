@@ -25,6 +25,10 @@ export type ProductConfig = {
   versions: {
     [version: string]: ProductVersionConfig;
   } & {default?: ProductVersionConfig};
+  edgioAnswers?: {
+    starterQuestions: string[];
+    contextStatement: string;
+  };
 };
 
 export type ProductVersionConfig = {
@@ -100,6 +104,15 @@ export const productsConfig: ProductsConfig = {
         },
       },
     },
+    edgioAnswers: {
+      starterQuestions: [
+        'How do I get started with EdgeJS?',
+        'How do I cache images/* at the edge for 1 hour?',
+        'How do I prevent caching in the browser with EdgeJS?',
+      ],
+      contextStatement:
+        'Only provide me with information about the Applications product.',
+    },
   },
   uplynk: {
     pathPrefix: '/uplynk',
@@ -120,6 +133,15 @@ export const productsConfig: ProductsConfig = {
         navigationImport: () => import('config/delivery/nav'),
       },
     },
+    edgioAnswers: {
+      starterQuestions: [
+        'What are the key features of Delivery?',
+        'Create a Storage user.',
+        'What reports can I find in Control?',
+      ],
+      contextStatement:
+        'Only provide me with information about the Delivery product.',
+    },
   },
   open_edge: {
     pathPrefix: '/open_edge',
@@ -139,6 +161,14 @@ export const productsConfig: ProductsConfig = {
         guidesPath: 'guides/home',
         navigationImport: null,
       },
+    },
+    edgioAnswers: {
+      starterQuestions: [
+        'How do I configure caching for my Applications property?',
+        'What does Delivery offer?',
+      ],
+      contextStatement:
+        'Prioritize information for product-specific questions, but include general context if necessary.',
     },
   },
 };
@@ -162,7 +192,7 @@ export const siteConfig = {
     gtmId: 'GTM-5WCD2BK',
   },
   fireawai: {
-    chatbotId: 'f98fb410-2056-447e-984f-753cbbe5d513',
+    chatbotId: '5aa46a00-64ab-44a7-ba8e-778402716981',
     apiToken: 'ac9030b3-dfa6-4e18-8069-e8df54c131e4',
   },
 };

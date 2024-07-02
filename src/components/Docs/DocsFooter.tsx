@@ -5,9 +5,8 @@ import {
   IconEdgioSquareLogoDark,
 } from 'components/Icon/IconEdgioSquareLogo';
 import Link from 'components/MDX/Link';
-import {useAppContext} from 'contexts/AppContext';
+import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useTheme} from 'contexts/ThemeContext';
-import {StringMap} from 'utils/Types';
 
 const StyledDocsFooter = styled.footer`
   padding-top: 20px;
@@ -134,6 +133,57 @@ const StyledDocsFooter = styled.footer`
   }
 `;
 
+// Applications resources (default)
+const appResources = [
+  {
+    title: 'Video Tutorials',
+    href: 'https://www.youtube.com/@Edgio/videos',
+  },
+  {
+    title: 'Status',
+    href: 'https://status.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+  },
+  {
+    title: 'Support',
+    href: 'https://edg.io/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+  },
+  {
+    title: 'Applications v7 Release Notes',
+    href: '/applications/v7/release_notes',
+    versioned: false,
+  },
+  {
+    title: 'Applications v7 NPM Package Changelog',
+    href: '/applications/v7/changelog',
+    versioned: false,
+  },
+];
+
+// Delivery resources
+const deliveryResources = [
+  {
+    title: 'Status',
+    href: 'https://status.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+  },
+  {
+    title: 'Support',
+    href: 'https://edg.io/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+  },
+  {
+    title: 'Control Release Notes',
+    href: '/delivery/control/support_tools/change_log',
+  },
+  {
+    title: 'Delivery Release Notes',
+    href: '/delivery/delivery/change_log',
+  },
+  {
+    title: 'IP Allow List',
+    href: 'https://control.llnw.com/aportal/support/documentation/iprssfeed/v2',
+    external: true,
+  },
+];
+
 const secFooterLinks = [
   {
     name: 'About Edgio',
@@ -157,31 +207,8 @@ const secFooterLinks = [
   },
 ];
 
-const pryFooterLinks = ({FIDDLE_URL}: StringMap) => ({
-  resources: [
-    {
-      title: 'Video Tutorials',
-      href: 'https://www.youtube.com/@Edgio/videos',
-    },
-    {
-      title: 'Status',
-      href: 'https://status.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
-    },
-    {
-      title: 'Support',
-      href: 'https://edg.io/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
-    },
-    {
-      title: 'Applications v7 Release Notes',
-      href: '/applications/v7/release_notes',
-      versioned: false,
-    },
-    {
-      title: 'Applications v7 NPM Package Changelog',
-      href: '/applications/v7/changelog',
-      versioned: false,
-    },
-  ],
+const pryFooterLinks = ({resources = appResources}) => ({
+  resources,
   community: [
     {
       title: 'Forum',
@@ -244,10 +271,27 @@ const pryFooterLinks = ({FIDDLE_URL}: StringMap) => ({
 
 export default function DocsFooter() {
   const {theme, themedValue} = useTheme();
-  const {config} = useAppContext();
+  const {config, context} = useAppContext();
   const {PRODUCT} = config;
 
-  const footerLinks = pryFooterLinks(config);
+  // Resources links differ across products
+  const resources = [];
+  switch (context) {
+    case ContextType.DELIVERY:
+      resources.push(...deliveryResources);
+      break;
+    case ContextType.APPLICATIONS:
+      resources.push(...appResources);
+      break;
+    case ContextType.HOME:
+      resources.push(...appResources);
+      break;
+    default:
+      console.warn('No context provided for footer resources. Using default.');
+      break;
+  }
+
+  const footerLinks = pryFooterLinks({resources});
   return (
     <StyledDocsFooter>
       <div className="footer-start">

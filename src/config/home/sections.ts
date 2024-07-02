@@ -1,8 +1,8 @@
-import {IconEdgioApplications} from 'components/Icon';
-import {IconDelivery} from 'components/Icon/IconDelivery';
-import {IconOpenEdge} from 'components/Icon/IconOpenEdge';
-import {IconUplynk} from 'components/Icon/IconUplynk';
-import {HomepageSectionGroup} from 'utils/Types';
+import { IconEdgioApplications } from 'components/Icon';
+import { IconDelivery } from 'components/Icon/IconDelivery';
+import { IconOpenEdge } from 'components/Icon/IconOpenEdge';
+import { IconUplynk } from 'components/Icon/IconUplynk';
+import { HomepageSectionGroup } from 'utils/Types';
 
 export const sections: HomepageSectionGroup[] = [
   {
@@ -359,16 +359,24 @@ export const sections: HomepageSectionGroup[] = [
       {
         items: [
           {
-            title: 'ISP Traffic Report',
-            path: 'https://support.limelight.com/public/en/Content/Control/Open_Edge/Open_Edge.htm#Using',
-          },
-          {
-            title: 'Edge Cache',
-            path: 'https://support.limelight.com/public/en/Content/Control/Open_Edge/Open_Edge.htm#Cache',
+            title: 'Overview',
+            path: '/open_edge/overview',
           },
           {
             title: 'FAQs',
-            path: 'https://support.limelight.com/public/en/Content/Open_Edge/Open_Edge_FAQs.htm',
+            path: '/open_edge/faqs',
+          },
+          {
+            title: 'SP Traffic Report',
+            path: '/delivery/control/reports/traffic/service_provider_traffic',
+          },
+          {
+            title: 'User Management',
+            path: '/delivery/control/manage/control_portal_users',
+          },
+          {
+            title: 'Requirements',
+            path: '/open_edge/overview/#requirements',
           },
         ],
       },

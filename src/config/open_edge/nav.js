@@ -23,7 +23,7 @@ const nav = {
     },
     {
       title: 'rDNS Reqs',
-      path: 'overview/#rdns',
+      path: 'rdns_requirements',
     },
   ],
 };

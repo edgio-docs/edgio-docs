@@ -367,7 +367,7 @@ export const sections: HomepageSectionGroup[] = [
             path: '/open_edge/faqs',
           },
           {
-            title: 'ISP Traffic Report',
+            title: 'SP Traffic Report',
             path: '/delivery/control/reports/traffic/service_provider_traffic',
           },
           {

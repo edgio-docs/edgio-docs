@@ -26,12 +26,18 @@ Use dig to determine the name servers for the reverse zone.<br />
 
 ;; ANSWER SECTION:
 100.51.198.in-addr.arpa.  29176   IN      NS      ns1.apnic.net. --> External Delegation
+```
 
 Or:
+
+```
 ;; ANSWER SECTION:
 100.51.198.in-addr.arpa.  29176   IN      NS      ns1.mycompany.net. --> Internal Delegation
+```
 
 Or:
+
+```
 (no answer section)
 ;; AUTHORITY SECTION:
 51.198.in-addr.arpa.    3600    IN      SOA     ns1.somecompany.net. —> Internal Delegation (by you or upstream company)
@@ -62,8 +68,11 @@ Once the delegation of the reverse zone is completed, validate the configuration
 ;; ANSWER SECTION:
 100.51.198.in-addr.arpa.  3600    IN      NS      aa1.dns.llnw.net.
 100.51.198.in-addr.arpa.  3600    IN      NS      aa2.dns.llnw.net.
+```
 
 To validate that the Edgio DNS servers are configured for the zone in question:
+
+```
 >dig @aa1.dns.llnw.net NS 100.51.198.in-addr.arpa
 
 ; <<>> DiG 9.9.11 <<>> @aa1.dns.llnw.net NS 100.51.198.in-addr.arpa
@@ -166,6 +175,7 @@ Use dig to determine the name servers for the reverse zone.<br />
 ```
 
 Or:
+
 ```
 ;; ANSWER SECTION:
 8.7.6.5.4.3.2.1.8.b.d.0.1.0.0.2.ip6.arpa.   2198    IN      SOA     ns1.mycompany.net. 28800 7200 2419200 3600 --> Internal Delegation

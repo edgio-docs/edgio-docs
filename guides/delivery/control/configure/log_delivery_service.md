@@ -17,7 +17,7 @@ Each configuration in the list includes this information:
 | Number of configurations and configuration names | Customer-assigned configuration name. |
 | SHORTNAME | Currently selected account name. |
 | SERVICE TYPE | Delivery service for which logs will be created. (HTTP or MMD Live Ingest). |
-| STORAGE TYPE | Log file location:<br /> - Origin Storage: Logs are stored at the root of your space in a directory called '_livelogs'. You are responsible for data maintenance; is not responsible for data removal.<br /> Amazon S3: Amazon's cloud-based object storage.<br /> - Google Cloud Storage: Google's cloud-based object storage.<br /> - Datadog: A third-party storage option with existing account. |
+| STORAGE TYPE | Log file location:<br /> - Origin Storage: Logs are stored at the root of your space in a directory called '_livelogs'. You are responsible for data maintenance; is not responsible for data removal.<br /><br /> Amazon S3: Amazon's cloud-based object storage.<br /> - Google Cloud Storage: Google's cloud-based object storage.<br /> - Datadog: A third-party storage option with existing account. |
 | FILE COMPRESSION | File compression method. Possible values:<br /> - ZSTD<br /> - LZ4<br /> - SNAPPY <br /> - LZF (Edgio's LZ4 implementation uses the LZ4 (Framed) compression algorithm.) <br /> - GZIP |
 | STATUS | Configuration status. When you create and save a configuration, it goes through a validation process. Possible status values:<br /> - In Progress<br /> - Pending<br /> - Completed <br /> - Failed <br /> - Deactivated |
 | LAST UPDATED | Configuration's creation or last modified date. |

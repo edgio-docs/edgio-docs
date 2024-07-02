@@ -4,6 +4,7 @@ title: Origin Storage Quick Start Guide
 This page provides an overview of methods available to upload and share your Origin Storage content.
 
 ## Upload Content  {/*upload-content*/}
+
 There are multiple ways to ingest content using Origin Storage. Choose from the options below:
 
 - [Origin Storage APIs](#uploading-using-storage): Use Origin Storage directly from your application.
@@ -14,14 +15,17 @@ There are multiple ways to ingest content using Origin Storage. Choose from the 
 <Callout type="info">Whenever possible it is recommended that customers use the Origin Storage Application Programming Interface (API) due to its feature-rich ingest workflow and its superior performance.</Callout>
 
 ### Uploading Using the Origin Storage API  {/*uploading-using-storage*/}
+
 This section provides an end-to-end example application to jump-start client-side integration with Origin Storage. This section shows how to create a token, upload a file over HTTP, and verify that the file was correctly uploaded.
 
 This [HTTP Example](#http-example) ties information together, providing a complete working sample.
 
 #### Step 1: Establish a Token  {/*establish-token*/}
+
 You can use HTTP or JSON-RPC.
 
 ##### HTTP Example  {/*http-example*/}
+
 Use the Python requests library.
 
 ```HTTP
@@ -57,6 +61,7 @@ f3037573-2a6f-4042-ab8f-82d6823b0480
 ```
 
 #### Step 2: Upload a File Over HTTP  {/*upload-file-http*/}
+
 Always use HTTP for file uploads! This example uses /post/raw submitted with the Python requests library.
 
 ```HTTP
@@ -72,9 +77,11 @@ Always use HTTP for file uploads! This example uses /post/raw submitted with the
 ```
 
 #### Step 3: Verify the Upload was Successful  {/*verify_upload*/}
+
 You can use HTTP or JSON-RPC.
 
 ##### HTTP Example  {/*http*/}
+
 Look at the headers returned from the request. The /post/raw request returns the upload status in the X-Agile-Status header. A value of 0 means success.
 
 ```HTTP
@@ -112,6 +119,7 @@ Or, you can issue a HEAD request against the object and look at the headers retu
 ```
 
 ##### JSON-RPC Example  {/*json*/}
+
 Use the stat function to get information on the uploaded file. The stat function has an optional ‘detail’ parameter. Pass True for extended information, or pass False (or omit) for an abbreviated response. A value of 0 in the returned code field indicate success. Other values indicate failure. You can also look at other fields such as size and compare them to known values.
 
 ```JSON
@@ -129,6 +137,7 @@ u'gid': 1000003, u'mtime': 1425411089, u'size': 2055946, u'type': 2, u'ctime': 1
 ```
 
 ##### Complete HTTP Example  {/*complete-http-example*/}
+
 This section ties information together, providing a complete Python working sample that you can quickly and easily copy and paste into a Python file.
 
 ```Python
@@ -161,13 +170,16 @@ print r.headers
 ```
 
 ### Uploading Using the Control Portal  {/*uploading-using-control*/}
+
 You can upload using the drag-and-drop capability in the Control Portal.
 
 #### Step 1: Log Into Control  {/*log-into-control*/}
+
 1. Go to:control.llnw.com.
 2. Log in using the credentials and shortname/account information you received in your Edgio Welcome Letter.
 
 #### Step 2: Create Directories  {/*create-directories*/}
+
 If needed, you can create target directories using the Origin Storage API or the Control portal.
 
 **Origin Storage API**
@@ -180,20 +192,21 @@ If needed, you can create target directories using the Origin Storage API or the
 **Control Portal**
 See [Creating Folders](/delivery/storage/console/#creating-folders) in the [Origin Storage Console User Guide](/delivery/storage/console).
 
-
 #### Step 3: Upload Content  {/*upload-content*/}
+
 To upload content using the Control Portal, please see [Uploading Files](/delivery/storage/console/#uploading-files) in the Control Portal User Guide.
 
 If you would like to upload content using another method (API, FTP, etc.), see the links to the guides in [Choose an Ingest Method](#upload-content).
 
 ### Uploading Using Rsync over SSH  {/*uploading-using-rsync*/}
+
 Rsync is a software application for Unix-like and Windows systems which synchronizes files and directories from one location to another, while minimizing data transfer using delta encoding, when appropriate. An important feature of Rsync not found in most protocols is that mirroring takes place with only one transmission in each direction. Rsync can copy or display directory contents and copy files, optionally using compression and recursion.
 
 - Rsync over SSH is available only with pre-configured Source IP Access Control List (ACL) provisioning
 - Rsync over SSH supports both pre-configured SSH authorized keys and basic password authentication
 - Rsync options that trigger mkstemp() system calls are not supported
 - The file system path accessing Origin Storage via SCP is /content
-    -    must be specified as the prefix when using Rsync to ingest files (e.g., `Rsync filename llp:/content/path`)
+  - must be specified as the prefix when using Rsync to ingest files (e.g., `Rsync filename llp:/content/path`)
 
 #### Rsync Options  {/*rsync-options*/}
 
@@ -222,8 +235,8 @@ The following options are known to work. In some cases, the options are ignored 
 | ignored | \-o | \-owner | preserve owner (super-user only) |
 | ignored | \-p | \-perms | preserve permissions |
 
-
 #### Upload Example  {/*upload-example*/}
+
 This example shows how to sync files from a local machine to Origin Storage.
 
 **Directory Structure**
@@ -238,11 +251,12 @@ Here is the command to sync the directories using Rsync over SSH:
 ![Sample directory structure2](/images/delivery/storage/sample2.png)
 
 ## Retrieve and Share Your Content  {/*retrieve-and-share*/}
+
 After you upload content, you have several options for retrieving and sharing content:
 
 - Use the Control Portal:
-    - To retrieve content, please see [Downloading Files](/delivery/storage/console/#downloading-files) in the in the in the Control Portal User Guide.
-    - To share content via email, please see [Getting Direct Links to Files](/delivery/storage/console#getting-direct-links-to-files) in the in the in the Control Portal User Guide.
+  - To retrieve content, please see [Downloading Files](/delivery/storage/console/#downloading-files) in the in the in the Control Portal User Guide.
+  - To share content via email, please see [Getting Direct Links to Files](/delivery/storage/console#getting-direct-links-to-files) in the in the in the Control Portal User Guide.
 - To download and share the content via a CDN, consult your CDN provider. Origin Storage can act as origin storage for any CDN. If Edgio Content Delivery is your CDN of choice, please see [Configuring Caching and Delivery](/delivery/control/configure/caching_and_delivery) in the Control Portal User Guide.
 
 <Callout type="info">Do not attempt to directly download content from Origin Storage using FTP, SFTP, FTPS, SCP, or rsync because doing so can negatively impact other system processes. To download content, use an HTTP GET request.</Callout>

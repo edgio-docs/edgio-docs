@@ -11,7 +11,7 @@ const ExternalLinkWrapper = styled.a`
 
 const ExternalLinkIcon = styled.span`
   margin-left: 0.25rem;
-  font-size: 0.8rem;
+  font-size: 8px;
 `;
 
 export function ExternalLink({

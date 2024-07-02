@@ -1,4 +1,4 @@
-import {productsConfig} from '../appConfig';
+import { productsConfig } from '../appConfig';
 
 const separator = {
   title: '',
@@ -10,8 +10,23 @@ const nav = {
   path: productsConfig['open_edge'].pathPrefix,
   routes: [
     {
-      title: 'Getting Started',
-      path: 'getting_started',
+      title: 'Overview',
+      path: 'overview',
+      icon: 'spark',
+    },
+    {
+      title: 'FAQs',
+      path: 'faqs',
+      icon: 'spark',
+    },
+    {
+      title: 'Blockers',
+      path: 'overview/#blockers',
+      icon: 'spark',
+    },
+    {
+      title: 'rDNS Reqs',
+      path: 'overview/#rdns',
       icon: 'spark',
     },
   ],

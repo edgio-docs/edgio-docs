@@ -46,7 +46,7 @@ This section lists the minimum requirements prospective clients must meet to imp
 
 |Appliance| Full Stack| Requirement|
 |---|---|---|
-|Yes|Yes|Reverse DNS zones must be delegated to Edgio DNS servers. See [Reverse DNS requirements](/delivery/open_edge/rdns_requirements) for details.|
+|Yes|Yes|Reverse DNS zones must be delegated to Edgio DNS servers. See [Reverse DNS requirements](/open_edge/rdns_requirements) for details.|
 
 #### Space and Power  {/*space*/}
 
@@ -74,7 +74,7 @@ This section lists the minimum requirements prospective clients must meet to imp
 |---|---|---|
 |Yes|Yes|- Anycast announcements restricted to the connected provider network edge. Specifically, the Anycast prefix cannot be allowed to propagate beyond the connected network edge and any downstreams that have had their traffic computed in the analysis (e.g., single homed downstreams or even smaller ISPs peered with a local ‘friendly big brother’.)<br />- Target network (s/network/infrastructure) routes to the Internet|
 
-### rDNS Requirements  {/*rdns*/}
+### rDNS  {/*rdns*/}
 
 See the [Reverse DNS Requirements](/open_edge/rdns_requirements) document for details.
 

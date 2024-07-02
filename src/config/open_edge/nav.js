@@ -12,22 +12,18 @@ const nav = {
     {
       title: 'Overview',
       path: 'overview',
-      icon: 'spark',
     },
     {
       title: 'FAQs',
       path: 'faqs',
-      icon: 'spark',
     },
     {
       title: 'Blockers',
       path: 'overview/#blockers',
-      icon: 'spark',
     },
     {
       title: 'rDNS Reqs',
       path: 'overview/#rdns',
-      icon: 'spark',
     },
   ],
 };

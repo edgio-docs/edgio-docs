@@ -1,5 +1,5 @@
 allOf:
-  - $ref: ./rtldBaseHttpPost.yaml
+  - $ref: ./rtldBaseAwsS3.yaml
   - type: object
     required:
       - log_format

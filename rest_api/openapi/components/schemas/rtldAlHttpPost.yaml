@@ -5,4 +5,4 @@ allOf:
       - log_format
     properties:
       log_format:
-        $ref: ./rtldLogFormat.yaml
+        $ref: ./rtldAlLogFormat.yaml

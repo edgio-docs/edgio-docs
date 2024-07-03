@@ -142,6 +142,20 @@ You may customize the appearance of the {{ PORTAL }} in the following ways:
     
         **Example:** `[Contact My Partner](https://mypartner.example.com/support)`
 
+### {{ PORTAL }} Access {/*-access*/}
+
+Your customers will only see your logo and contact support customization when loading the {{ PORTAL }} using the following syntax:
+
+`https://edgio.app/sso?partner=<PARTNER_SLUG>`
+
+For example, if your partner account is `My Partner`, then your customers should access the {{ PORTAL }} through the following URL:
+
+`https://edgio.app/sso?partner=my-partner`
+
+The quickest way to look up your partner slug is to load your partner account and then check the URL segment that directly follows the `/partner/` URL segment.
+
+**Sample URL:** `https://edgio.app/partner/my-partner`
+
 ## Activity {/*activity*/}
 
 Your partner account's **Activity** page provides an audit trail of all changes to both your partner account and the organizations associated with your account. For example, an event is logged whenever an organization is created, a property is created, or when an updated configuration is deployed.

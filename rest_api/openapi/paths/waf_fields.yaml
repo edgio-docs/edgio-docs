@@ -1,9 +1,9 @@
 get:
   tags:
     - Log Fields
-  summary: Get Log Fields (RTLD Access Logs)
-  description: Retrieves the available set of log fields for RTLD Access Logs.
-  operationId: GetAllAlFields
+  summary: Get Log Fields (RTLD WAF)
+  description: Retrieves the available set of log fields for RTLD WAF.
+  operationId: GetAllWafFields
   security:
     - rtldScope:
         - app.rtld:read
@@ -16,7 +16,7 @@ get:
             $ref: ../components/schemas/rtldCodeNameCollection.yaml
           examples:
             reference:
-              $ref: ../components/examples/rtldExampleAlFieldsCollection.yaml
+              $ref: ../components/examples/rtldExampleWafFieldsCollection.yaml
     '401':
       $ref: ../components/responses/rtldUnauthorized.yaml
     '500':

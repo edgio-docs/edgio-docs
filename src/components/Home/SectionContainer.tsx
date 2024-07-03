@@ -94,7 +94,7 @@ const ItemsGrid = styled.div`
   width: 100%;
   box-sizing: border-box;
 
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, 250px);
   grid-auto-flow: dense;
 
   @media (max-width: 1024px) {

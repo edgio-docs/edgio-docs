@@ -397,7 +397,7 @@ For example: `http://test.example.com/my_callback.php?purge_request_id=7b4cb3865
 See the [Sample Code](#api-client-sample-code) for examples of how to provide the callback URL.
 
 ## API Activation  {/*api-activation*/}
-When your SmartPurge API service is ready for use, each of the Technical Contacts for your Limelight Account will receive an email Welcome Letter from the Edgio NOC (Network Operations Center) at support@edgio.com.
+When your SmartPurge API service is ready for use, each of the Technical Contacts for your Edgio Account will receive an email Welcome Letter from the Edgio NOC (Network Operations Center) at support@edgio.com.
 
 The letter will include any information you need to enter to activate and configure the service, and also provides contact information for the Edgio NOC, additional information on troubleshooting and escalation, and background information on maintenance notifications.
 

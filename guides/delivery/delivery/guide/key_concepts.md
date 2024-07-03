@@ -64,7 +64,7 @@ Normally, Content Delivery does not cache responses with the following HTTP stat
 In some cases, this behavior can be modified. For more information, see Content Acquisition, Origin Support and Origin Error Handling.
 
 #### Authentication, Vary Headers & Cookies
-Responses to content requests that require authentication (as defined by the presence of an Authorization header) are not cacheable by default; however, options are available to override this and provide cacheability for authenticated responses. If you need this feature, please contact Limelight Customer Service.
+Responses to content requests that require authentication (as defined by the presence of an Authorization header) are not cacheable by default; however, options are available to override this and provide cacheability for authenticated responses. If you need this feature, please contact Edgio Customer Service.
 
 Responses with a Vary header are generally not cacheable unless the Accept-Encoding header is present and compression is applied by the configuration. Content Delivery can also be configured to ignore Vary headers. For more information, see Vary Header Optimization.
 

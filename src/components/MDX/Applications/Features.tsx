@@ -17,31 +17,41 @@ import {
 import Container from '../../Layout/Container';
 
 const StyledHomepageFeatures = styled.div`
-  // padding-bottom: 500px;
+  .sections-container {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
 
-  .section-container {
-    > * {
-      padding: 30px 0;
+  .section {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 30px 0;
 
-      :not(:last-child) {
-        box-shadow: inset 0px -1px var(--hr-secondary);
-      }
+    &:not(:last-child) {
+      box-shadow: inset 0px -1px var(--hr-secondary);
     }
   }
 
   .grouped-col__2 {
     display: grid;
-    --size: 40%;
-    grid-template-columns: repeat(2, var(--size));
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
     justify-content: space-between;
+    width: 100%;
 
-    .section-header__content {
-      max-width: 100%;
+    > div {
+      box-shadow: inset 0px -1px var(--hr-secondary);
+      padding: 0 0 30px 0;
+    }
+
+    .route-items {
+      /* the grouped columns only have 1 column */
+      grid-template-columns: repeat(1, 1fr);
     }
 
     @media (max-width: 1086px) {
       grid-template-columns: 1fr;
-      padding: 0;
 
       > div {
         box-shadow: inset 0px -1px var(--hr-secondary);
@@ -56,22 +66,44 @@ export default function ApplicationsFeatures() {
   return (
     <StyledHomepageFeatures>
       <Container>
-        <GetStarted>
-          <SectionHeader
-            Icon={themedValue(IconAppsGetStarted, IconAppsGetStartedDark)}
-            title="Get Started with Applications"
-          />
-        </GetStarted>
+        <div className="sections-container">
+          <div className="section">
+            <GetStarted>
+              <SectionHeader
+                Icon={themedValue(IconAppsGetStarted, IconAppsGetStartedDark)}
+                title="Get Started with Applications"
+              />
+            </GetStarted>
+          </div>
 
-        <Cdn />
-        <Security />
-        <div className="grouped-col__2">
-          <DeveloperTools />
-          <AccountsandTeams />
+          <div className="section">
+            <Cdn />
+          </div>
+
+          <div className="section">
+            <Security />
+          </div>
+
+          <div className="grouped-col__2">
+            <div>
+              <DeveloperTools />
+            </div>
+            <div>
+              <AccountsandTeams />
+            </div>
+          </div>
+
+          <div className="section">
+            <FrameworkGuides />
+          </div>
+
+          <div className="section">
+            <Reference />
+          </div>
+          {/* <div className="section">
+            <VideosandTutorials />
+          </div> */}
         </div>
-        <FrameworkGuides />
-        <Reference />
-        {/* <VideosandTutorials /> */}
       </Container>
     </StyledHomepageFeatures>
   );

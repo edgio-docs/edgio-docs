@@ -1,5 +1,7 @@
 const axios = require('axios');
 const dotenv = require('dotenv');
+const {connect, sendMessage} = require('fireawai-node-sdk');
+const {htmlToText} = require('html-to-text');
 
 dotenv.config();
 
@@ -29,16 +31,40 @@ const fetchTopicDetails = async (topicId) => {
   }
 };
 
+const getTextFromPost = (post) => {
+  const text = htmlToText(post.cooked, {
+    wordwrap: false,
+    ignoreHref: true,
+    ignoreImage: true,
+    preserveNewlines: true,
+  });
+  return text;
+};
+
+const sendQueryToFireawai = async (query) => {
+  try {
+    await connect();
+    return sendMessage(query);
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
 const sendReply = async (topicId, message) => {
   const url = `${BASE_URL}/posts.json`;
   const payload = {
     topic_id: topicId,
     raw: message,
-    api_key: API_KEY,
-    api_username: API_USERNAME,
   };
   try {
-    await axios.post(url, payload);
+    await axios.post(url, payload, {
+      headers: {
+        'Api-Key': API_KEY,
+        'Api-Username': API_USERNAME,
+        'Content-Type': 'application/json',
+      },
+    });
     console.log(`Reply sent to topic ${topicId}`);
   } catch (error) {
     console.error(`Error sending reply to topic ${topicId}:`, error);
@@ -48,26 +74,40 @@ const sendReply = async (topicId, message) => {
 const run = async () => {
   const topics = await fetchTopics();
   const now = new Date();
-  const oneWeekAgo = new Date(now);
-  oneWeekAgo.setDate(now.getDate() - 7);
+  const oneDayAgo = new Date(now);
+  oneDayAgo.setDate(now.getDate() - 1);
 
-  console.log('Topics:', topics.length);
   for (const topic of topics) {
     const createdAt = new Date(topic.created_at);
-    console.log('Topic:', topic.id, 'Created At:', createdAt);
-    if (createdAt >= oneWeekAgo) {
+    if (createdAt >= oneDayAgo) {
       const topicDetails = await fetchTopicDetails(topic.id);
-      console.log('Topic:', topic.id);
-      console.log('Details:', topicDetails);
-      if (
-        topicDetails &&
-        topicDetails.post_stream &&
-        topicDetails.post_stream.stream.length === 1
-      ) {
-        const message =
-          'This is an automated reply to a topic with no replies in the last 24 hours.';
-        console.log('Sending reply to topic:', topic.id);
-        // await sendReply(topic.id, message);
+      console.log('Processing topic:', topic.id, topic.title);
+
+      if (topicDetails) {
+        const hasApiUserReplied = topicDetails.post_stream.posts.some(
+          (post) => post.username === API_USERNAME
+        );
+
+        if (hasApiUserReplied) {
+          console.log('Topic has already been replied to. Skipping...');
+          continue;
+        }
+
+        const postBody = getTextFromPost(topicDetails.post_stream.posts[0]);
+        console.log('Sending query to Fireawai:', postBody);
+        const resp = await sendQueryToFireawai(postBody);
+        let reply =
+          resp.message && resp.message.message && resp.message.message.content;
+
+        console.log('Response from Fireawai:', reply);
+
+        if (reply) {
+          reply += `\n\n---
+
+*Edgio Answers may provide inaccurate information and should be verified. Consult our [official documentation](https://docs.edgio.io) for more information.*`;
+
+          await sendReply(topic.id, reply);
+        }
       }
     }
   }

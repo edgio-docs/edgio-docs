@@ -26,7 +26,7 @@ The following requests support UTF-8 and the X-Agile-Encoding header:
 Notes:
 
 - Create multipart piece (`multipart/piece`) and complete multipart (`multipart/complete`) do not require UTF-8 encoding because they do not allow the caller to pass file names.
-- Origin Storage path segment names and file names have a limit of 255 bytes. Because UTF-8 is supported, be sure to calculate the actual length before passing paths and file names in headers if you are using other than basic Latin letters, digits, and punctuation signs. See [Path Segment and File Name Limitations](/delivery/storage/apis/reference_materials/path_segment_and_file_name_limitations) for additional information.
+- Origin Storage path segment names and file names have a limit of 4096 bytes. Because UTF-8 is supported, be sure to calculate the actual length before passing paths and file names in headers if you are using other than basic Latin letters, digits, and punctuation signs. See [Path Segment and File Name Limitations](/delivery/storage/apis/reference_materials/path_segment_and_file_name_limitations) for additional information.
 
 ## Request and Response Example  {/*example*/}
 Here is a sample request using UTF-8 encoding:

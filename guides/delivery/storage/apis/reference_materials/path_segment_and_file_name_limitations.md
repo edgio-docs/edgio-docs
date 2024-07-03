@@ -1,7 +1,7 @@
 ---
 title: Path Segment and File Name Limitations
 ---
-Origin Storage path segment names and file names can contain a maximum of 255 bytes. The maximum path length (path + file name) is 4096 bytes.
+Origin Storage path segment names, file names, and path length (path + file name) can contain a maximum of 4096 bytes.
 
 For request headers that support UTF-8 encoding, Unicode characters are encoded using byte sequences of different lengths:
 
@@ -12,7 +12,7 @@ UTF-8 path segments are URL-encoded ascii representations of the unicode charact
 
 For example, the Chinese character 今 is three bytes: '\xe4\xbb\x8a'
 
-When URL-encoded , the character is: '%E4%BB%8A' three bytes each for a total of 9 bytes, so this single character would actually take up 9 bytes of the 255 byte limit. See Byte Calculation for additional details.
+When URL-encoded , the character is: '%E4%BB%8A' three bytes each for a total of 9 bytes, so this single character would actually take up 9 bytes of the 4096-byte limit. See Byte Calculation for additional details.
 
 **Byte Calculation**
 

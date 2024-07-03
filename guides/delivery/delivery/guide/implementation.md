@@ -3,7 +3,7 @@ title: Implementation
 ---
 ## Understanding Your Welcome Letter   {/*understanding-your-welcome-letter*/}
 
-When your Content Delivery service is ready for use, each of the Technical Contacts you provide for your Limelight Account will receive an email Welcome Letter from the Limelight NOC (Network Operations Center).
+When your Content Delivery service is ready for use, each of the Technical Contacts you provide for your Edgio Account will receive an email Welcome Letter from the Edgio NOC (Network Operations Center).
 
 The Welcome Letter will include any information you need to enter to activate and configure Content Delivery and will also provide you with contact information for the Edgio Support team, additional information on troubleshooting and escalation, and background information on maintenance notifications.
 
@@ -72,7 +72,7 @@ We recommend that any “go-live” activity be carefully planned so that traffi
 
 If you are using your own hostname and CNAMEing this to Edgio in order to go live, we suggest using a low TTL value in your DNS zone when initially making the change to Edgio. This will help you roll-back quickly in the event that you have any issue with the configuration of the Content Delivery service. Once you are comfortable with the service, this TTL can be increased to reduce the number of DNS lookups needed to resolve requests for your content to the Content Delivery service.
 
-As traffic is directed to the Edgio Content Delivery service, cache fill will begin as requests are made for content. For small content libraries, cache fill will be quick and the CDN efficiency you can achieve will be reached quickly. For larger content libraries, the cache-fill can take some time, and will be affected by the rate at which your users request content from across your library. Migrations from other CDN services to Limelight or the addition of Edgio as a secondary CDN to serve content alongside another CDN would be expected to reach optimal cache efficiency over some time, depending on the rate of requests across the entire content library.
+As traffic is directed to the Edgio Content Delivery service, cache fill will begin as requests are made for content. For small content libraries, cache fill will be quick and the CDN efficiency you can achieve will be reached quickly. For larger content libraries, the cache-fill can take some time, and will be affected by the rate at which your users request content from across your library. Migrations from other CDN services to Edgio or the addition of Edgio as a secondary CDN to serve content alongside another CDN would be expected to reach optimal cache efficiency over some time, depending on the rate of requests across the entire content library.
 
 In both cases, the efficiency you are achieving can be monitored using the CDN efficiency report available in the Control portal. This report can be used to determine if content is caching as expected. The File Type report will also indicate the cache efficiency being achieved for each type of file being delivered by Content Delivery and can be used in combination with Edgio’s Customer Facing Troubleshooting Headers, to assess if your configurations are working as expected.
 

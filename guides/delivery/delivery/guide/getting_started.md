@@ -3,17 +3,17 @@ title: Getting Started
 ---
 
 ## Working with Edgio  {/*working-with-edgio*/}
-Your primary contact at Limelight will be your Account Manager, who will work closely with you from initial Limelight Account setup to “going live” with your service(s).
+Your primary contact at Edgio will be your Account Manager, who will work closely with you from initial Edgio Account setup to “going live” with your service(s).
 
 Initially, your Account Manager and Solutions Engineer will help you identify and confirm all of the information needed to complete your order. Once your order has been placed, your Account Manager will track the progress of the order and request any additional information needed to ensure a successful implementation.
 
-When your Content Delivery service is ready (“provisioned”), you will receive a Welcome Letter from our support team with important information about your Limelight Account. For more information, please see [Understanding Your Welcome Letter(/delivery/guide/implementation/#understanding-your-welcome-letter)].
+When your Content Delivery service is ready (“provisioned”), you will receive a Welcome Letter from our support team with important information about your Edgio Account. For more information, please see [Understanding Your Welcome Letter(/delivery/guide/implementation/#understanding-your-welcome-letter)].
 
 Once your service is configured and available to be used to deliver your content, you can contact our Support team 24 x 7 for technical assistance with your Content Delivery service. If you have questions about which Content Delivery features you purchased, or about additional services, your Account Manager will be happy to assist.
 
 Finally, you can log in to [Edgio Control](https://control.llnw.com/) at any time to submit and track support tickets, access documentation, and view detailed reports on the traffic handled by your Content Delivery service.
 
-To set up your Limelight Account, please be prepared to provide your Account Manager the following information:
+To set up your Edgio Account, please be prepared to provide your Account Manager the following information:
 
 - Contacts
     -An administrative contact for your team
@@ -33,7 +33,7 @@ To set up your Limelight Account, please be prepared to provide your Account Man
     - The percentage of your traffic that comes from major geographic regions (North America, Europe, Asia, etc.), plus any international markets that require particular attention
 - Configuration
     - Origin Hostname - the URL where Content Delivery will request content to fill the cache
-    - Published Hostname - the URL prefix you want your audience to see in published links to your content (optional). You can provide this in the form of a DNS CNAME if you want to control the prefix completely or a suggested Limelight Account name (which, if accepted, will be prepended to the default Content Delivery form: account_name.vo.llnw.net).
+    - Published Hostname - the URL prefix you want your audience to see in published links to your content (optional). You can provide this in the form of a DNS CNAME if you want to control the prefix completely or a suggested Edgio Account name (which, if accepted, will be prepended to the default Content Delivery form: account_name.vo.llnw.net).
 
 
 ## Choosing an Origin   {/*choosing-an-origin*/}

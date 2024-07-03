@@ -229,7 +229,7 @@ When your origin receives HTTP requests, your web applications can analyze the c
 
 To make origin-based analysis easier, and also to support more complex business logic, Content Delivery can pre-process HTTP request headers before they are passed to your origin. You can configure Content Delivery to analyze and manipulate existing headers, to add new “custom” headers, and to remove named headers.
 
-<Callout type="info">Manipulated request and response headers are not passed to any “fallback” URLs you may have specified. If you need to pass and react to header information after an HTTP error, Limelight recommends using the “backup” URL options instead. For more information, please see the [404 Status Code Handling](#404) and [50x Status Code Handling](#503-504) sections.</Callout>
+<Callout type="info">Manipulated request and response headers are not passed to any “fallback” URLs you may have specified. If you need to pass and react to header information after an HTTP error, Edgio recommends using the “backup” URL options instead. For more information, please see the [404 Status Code Handling](#404) and [50x Status Code Handling](#503-504) sections.</Callout>
 
 #### Response Header Manipulation  {/*response-header-manipulation*/}
 HTTP response headers are used by your origin to communicate specific information about the content being requested. Specific response headers may be intended for use by the requesting client, by the CDN, or both.
@@ -238,7 +238,7 @@ Content Delivery can process the response headers received from your origin to d
 
 For example, you can configure Content Delivery to add custom response headers to control the behavior of browsers and other clients. In Control, you can configure up to three custom response headers to set cookies, manipulate browser cache settings, and so on. You can also configure an unlimited number of additional response headers on request - if you need to do so, please contact Edgio Customer Service. Response headers can also be manipulated by other Content Delivery configuration options.
 
-<Callout type="info">Manipulated request and response headers are not passed to any “fallback” URLs you may have specified. If you need to pass and react to header information after an HTTP error, Limelight recommends using the “backup” URL options instead. For more information, please see the [404 Status Code Handling](#404) and [50x Status Code Handling](#503-504) sections.</Callout>
+<Callout type="info">Manipulated request and response headers are not passed to any “fallback” URLs you may have specified. If you need to pass and react to header information after an HTTP error, Edgio recommends using the “backup” URL options instead. For more information, please see the [404 Status Code Handling](#404) and [50x Status Code Handling](#503-504) sections.</Callout>
 
 #### Vary Header Optimization  {/*vary-header-optimization*/}
 The HTTP Vary response header can be used to specify which HTTP request headers are used to determine the uniqueness of a cached object. For each variation in the values of the specified requests headers, a new version of the object must be requested from origin and stored in cache.

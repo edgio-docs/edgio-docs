@@ -28,4 +28,4 @@ jobs:
           DISCOURSE_BASE_URL: ${{ secrets.DISCOURSE_BASE_URL }}
           FIREAWAI_API_KEY: ${{ secrets.FIREAWAI_API_KEY }}
           FIREAWAI_CHATBOT_ID: ${{ secrets.FIREAWAI_CHATBOT_ID }}
-        run: npm run check-forum-posts
+        run: yarn check-forum-posts

@@ -126,7 +126,7 @@
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "2.x",
     "eslint-plugin-sort-exports": "^0.7.0",
-    "fireawai-node-sdk": "^1.0.4",
+    "fireawai-node-sdk": "^1.0.40",
     "fs-extra": "^10.1.0",
     "globby": "^11.0.1",
     "gray-matter": "^4.0.2",

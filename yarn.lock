@@ -6940,10 +6940,10 @@ find-yarn-workspace-root@^2.0.0:
   dependencies:
     micromatch "^4.0.2"
 
-fireawai-node-sdk@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/fireawai-node-sdk/-/fireawai-node-sdk-1.0.4.tgz#2db49ed349feea894292c7179775b3e97dc1892b"
-  integrity sha512-gbTpMumEE4o3L8xKz3JpNxuso/BVOyljObDTjfwigmXaXLhwmdxiRY7sY4Pj81S3hD4LC0mq5xpiXFaa5wgl1g==
+fireawai-node-sdk@^1.0.40:
+  version "1.0.40"
+  resolved "https://registry.yarnpkg.com/fireawai-node-sdk/-/fireawai-node-sdk-1.0.40.tgz#0dd59cae583747274cf7e39614a914725f938d02"
+  integrity sha512-qPvsGO/f5ypvYgHXz9l/Ch6YaM2TETz08fEFsgSSIDOFEu2TYe+tyCd6pqE+49zXgl7bFuCYexuLtimprdGtDw==
   dependencies:
     axios "^1.7.2"
     body-parser "^1.20.2"

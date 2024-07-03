@@ -42,7 +42,7 @@ const StyledHomepageFeatures = styled.div`
 
     > div {
       box-shadow: inset 0px -1px var(--hr-secondary);
-      padding: 50px 0;
+      padding: 0 0 30px 0;
     }
 
     .route-items {

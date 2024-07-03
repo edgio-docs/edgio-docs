@@ -2,6 +2,8 @@
 title: Getting Started with CDN-As-Code ({{ EDGEJS_LABEL}})
 ---
 
+Some new text
+
 {{ROUTEHELPER.md}}
 
 {{ PRODUCT }} provides a CDN-as-code platform that allows you to configure CDN behavior using {{ EDGEJS_LABEL }} within a file ({{ ROUTES_FILE }}) stored alongside your code. This allows you to leverage the power of source control for collaboration and to link your CDN configurations with specific versions of your web application.

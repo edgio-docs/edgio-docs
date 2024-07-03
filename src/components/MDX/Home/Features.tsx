@@ -17,8 +17,8 @@ const StyledFeatures = styled.div`
   .grouped-sections > * {
     flex: 1 1 calc(50% - 20px);
     min-width: 400px;
-    // max-width: calc(50% - 20px);
     box-sizing: border-box;
+    gap: 20px;
   }
 
   @media (max-width: 820px) {

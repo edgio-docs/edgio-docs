@@ -131,7 +131,7 @@
   --toc-text-link: var(--colors-white0);
   --text-link-primary: var(--toc-text-link);
   --hr-primary: #d8d8d8;
-  --hr-secondary: #2a2b2c;
+  --hr-secondary: #17232e;
   --bg-primary: var(--colors-black4);
   --bg-secondary: var(--colors-black1);
   --href-hover-primary: #4e4e4e;
@@ -145,8 +145,8 @@
   --scrollbar-bg: #353535;
   --get-started-card-bg: #000000;
   --sidebar-link-primary: var(--colors-white0);
-  --sidebar-line: var(--colors-black3);
-  --callout-border: #332e30;
+  --sidebar-line: var(--hr-secondary);
+  --callout-border: var(--hr-secondary);
   --callout-bg: #171c21;
   --callout-stroke: none;
   --callout-stroke-width: none;
@@ -156,15 +156,15 @@
   --callout-warning: #ffc800;
   --callout-danger: #f45263;
   --table-header-bg: var(--colors-black3);
-  --border-primary: var(--colors-black3);
+  --border-primary: var(--hr-secondary);
   --home-card-bg: #101820;
   --home-card-font-color: var(--text-secondary);
   --nav-header-bg: var(--bg-primary);
 
   --code-block-bg: #101820;
-  --code-block-border-color: #3a444d;
+  --code-block-border-color: var(--hr-secondary); /*#3a444d;*/
   --inline-code-bg: #003144;
-  --inline-code-border-color: #3a444d;
+  --inline-code-border-color: var(--hr-secondary); /*#3a444d;*/
 
   --select-bg: #0f1216;
   --select-border-color: #0094d6;

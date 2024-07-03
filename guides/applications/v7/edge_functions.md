@@ -13,14 +13,7 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 
 ## Edge Functions {/* edge-functions */}
 
-Edge functions are standalone JavaScript functions that are executed on the edge servers. They are defined within a JavaScript file and exported as an asynchronous function named `handleHttpRequest`. This function is invoked when an incoming request matches a rule that has an edge function assigned to it. Only a single edge function can be assigned to a rule. If multiple rules match an incoming request, the edge function assigned to the last matching rule is invoked.
-
-The location where edge functions are defined depends on the configuration of your property. There are two methods for defining edge functions:
-
-- [CDN-as-Code](#cdn-as-code) - Define edge functions within your local project codebase.
-- [Rules UI](#rules-ui) - Define edge functions within the {{ PORTAL }}.
-
-For either method, the edge function is defined as an asynchronous function exported as `handleHttpRequest` with the following signature:
+Edge functions are standalone JavaScript functions that are executed on the edge servers. They are defined within a JavaScript file and exported as an asynchronous function named `handleHttpRequest`:
 
 ```js filename="./edge-functions/index.js"
 /**
@@ -45,6 +38,13 @@ export async function handleHttpRequest(request, context) {
   // ... function code ...
 }
 ```
+
+This function is invoked when an incoming request matches a rule that has an edge function assigned to it. Only a single edge function can be assigned to a rule. If multiple rules match an incoming request, the edge function assigned to the last matching rule is invoked.
+
+The location where edge functions are defined depends on the configuration of your property. There are two methods for defining edge functions:
+
+- [CDN-as-Code](#cdn-as-code) - Define edge functions within your local project codebase.
+- [Rules UI](#rules-ui) - Define edge functions within the {{ PORTAL }}.
 
 ### CDN-as-Code {/* cdn-as-code */}
 

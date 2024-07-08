@@ -27,6 +27,9 @@ const defaultFeatures: Features = {
     stale_while_revalidate: '1d',
     service_worker_max_age: '1h',
   },
+  response: {
+    compress_content_types: ['text/html', 'text/css', 'application/javascript'],
+  },
 };
 
 const router = new Router({indexPermalink: true})

@@ -45,6 +45,14 @@ function Link({
     }
   );
 
+  // links with no children href should be rendered as anchors
+  // eg:
+  //    [](some-id) => <a id="some-id" />
+  //    [](#some-id) => <a id="some-id" />
+  if (!children && href) {
+    return <a id={href.replace('#', '')} />;
+  }
+
   if (!href) {
     // eslint-disable-next-line jsx-a11y/anchor-has-content
     return <a href={href} className={className} {...props} />;

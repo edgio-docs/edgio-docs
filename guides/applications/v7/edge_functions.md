@@ -6,34 +6,16 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 
 **Key information:**
 
-- This article assumes that you are familiar with our [CDN-as-Code](/applications/performance/cdn_as_code) approach for defining rules.
+- This article assumes that you are familiar with [defining rules](/applications/v7/performance/rules#rules-and-cdn-as-code) using CDN-as-Code or the {{ PORTAL }}.
 - Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}
 
 {{ prereq.md }}
 
-## Defining Edge Functions {/* defining-edge-functions */}
+## Edge Functions {/* edge-functions */}
 
-An edge function is invoked when an incoming request matches a route that has an edge function assigned to it. Only a single edge function can be assigned to a route. If multiple routes match an incoming request, the edge function assigned to the last matching route is invoked.
+Edge functions are standalone JavaScript functions that are executed on the edge servers. They are defined within a JavaScript file and exported as an asynchronous function named `handleHttpRequest`:
 
-Define an edge function by:
-
-- Storing your standalone JavaScript code as a file with a `js` file extension.
-- Setting an `edge_function` property within your {{ ROUTES_FILE }}. Set this string property to the relative path to your edge function.
-
-  ```js filename="./routes.js"
-  import {Router} from '@edgio/core/router';
-  export default new Router()
-    .get('/', {
-      edge_function: './edge-functions/index.js',
-    })
-    .match('/api/*', {
-      edge_function: './edge-functions/api.js',
-    });
-  ```
-
-An edge function file must export the following entry point:
-
-```js
+```js filename="./edge-functions/index.js"
 /**
  * Handles an HTTP request and returns a response.
  *
@@ -57,7 +39,48 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
+This function is invoked when an incoming request matches a rule that has an edge function assigned to it. Only a single edge function can be assigned to a rule. If multiple rules match an incoming request, the edge function assigned to the last matching rule is invoked.
+
+The location where edge functions are defined depends on the configuration of your property. There are two methods for defining edge functions:
+
+- [CDN-as-Code](#cdn-as-code) - Define edge functions within your local project codebase.
+- [Rules UI](#rules-ui) - Define edge functions within the {{ PORTAL }}.
+
+### CDN-as-Code {/* cdn-as-code */}
+
+For properties using CDN-as-Code, edge functions are defined within your local project codebase. You can define edge functions by:
+
+- Storing your standalone JavaScript code as a file with a `js` file extension.
+- Setting an `edge_function` property within your {{ ROUTES_FILE }}. Set this string property to the relative path to your edge function.
+
+  ```js filename="./routes.js"
+  import {Router} from '@edgio/core/router';
+  export default new Router()
+    .get('/', {
+      edge_function: './edge-functions/index.js',
+    })
+    .match('/api/*', {
+      edge_function: './edge-functions/api.js',
+    });
+  ```
+
+### Rules ({{ PORTAL }})
+
+For properties managed within the {{ PORTAL }}, edge functions are defined at the environment level. Navigate to your property and perform the following steps:
+
+1. Identify the environment (e.g., `production`) that will contain the edge function.
+2. Click on **Edge Functions** in the left-hand navigation and choose the **Code** tab.
+   ![Edge Functions Create New Step 1](/images/v7/edge-functions/ui-create-function-step-1.png?width=800)
+3. Click on **Add Function** and provide a name for the edge function file.
+   ![Edge Functions Create New Step 2](/images/v7/edge-functions/ui-create-function-step-2.png?width=800)
+4. Once the file is created, you can define your edge function logic within the editor.
+   ![Edge Functions Create New Step 3](/images/v7/edge-functions/ui-create-function-step-3.png?width=800)
+5. Apply the edge function to your rule(s) by choosing the **Edge Function** feature and selecting the edge function you created.
+   ![Edge Functions Create New Step 4](/images/v7/edge-functions/ui-create-function-step-4.png?width=800)
+
 ### Edge Function Initialization Script (Optional) {/* edge-function-initialization-script */}
+
+{{ ef_edgejs_only_feature.md }}
 
 An edge function initialization script is a JavaScript file executed once before any edge function in a project is invoked. This script is particularly beneficial for projects with two or more edge functions, allowing for the setup of global variables, initialization of third-party libraries, and defining utility functions used across multiple edge functions. It reduces duplicate code setup and is specified within the `{{ ROUTES_FILE }}` file. The script must adhere to specific execution and memory constraints, similar to the edge functions themselves.
 
@@ -279,35 +302,7 @@ As of v7.2.3, the `context.respondWith()` function is deprecated. You must retur
 
 ## Origin Requests Using fetch() {/* origin-requests-using-fetch */}
 
-Before issuing a fetch request to an origin, you must define an origin configuration within the `{{ CONFIG_FILE }}` file:
-
-```js filename="{{ CONFIG_FILE }}"
-module.exports = {
-  /* ... */
-  origins: [
-    {
-      // The name of the backend origin
-      name: 'web',
-
-      // Uncomment the following to override the host header sent from the browser when connecting to the origin
-      // override_host_header: 'example.com',
-
-      // The list of origin hosts to which to connect
-      hosts: [
-        {
-          // The domain name or IP address of the origin server
-          location: 'your-server.com',
-        },
-      ],
-
-      // Uncomment the following to configure a shield
-      // shields: { us_east: 'DCD' },
-    },
-  ],
-};
-```
-
-Learn more about origin configuration in our [CDN-as-Code](/applications/performance/cdn_as_code#config-file) guide.
+Before issuing a fetch request to an origin, you must define an origin configuration within the `{{ CONFIG_FILE }}` file or the {{ PORTAL }}. The origin configuration specifies the origin server to which the request is sent. See [Origin Configurations](/applications/v7/basics/origins) for more information.
 
 Request a resource from an origin by passing two required arguments to the `fetch()` function. Set the first argument to a URL or a `Request` object. Set the second argument to the name of the origin and any additional options compatible with the `fetch()` function.
 
@@ -328,7 +323,11 @@ export async function handleHttpRequest(request, context) {
 }
 ```
 
+<Tip>
+
 Create a reusable `fetch()` function by defining a utility function such as [`createFetchForOrigin()`](#createFetchForOrigin). See the [Polyfills and Helpers](#polyfills-and-helpers) section for more information.
+
+</Tip>
 
 ```js filename="./edge-functions/example.js"
 export async function handleHttpRequest(request, context) {
@@ -346,8 +345,12 @@ export async function handleHttpRequest(request, context) {
 
 Some libraries allow you to specify a `fetch()` function to use. For example, PlanetScale's database driver configuration accepts a custom function to use when making requests to the API.
 
+{{ ef_req_edgejs_deps.md }}
+
 ```js filename="./edge-functions/example.js"
 import {connect} from '@planetscale/database';
+
+// Custom fetch function. See Polyfills and Helpers section for more information.
 import {createFetchForOrigin} from './polyfills';
 
 const fetch = createFetchForOrigin('planetscale');
@@ -375,6 +378,7 @@ export async function handleHttpRequest(request, context) {
 This approach allows for creating unique `fetch()` functions for each origin server. Optionally, you can override the global `fetch()` function if you are unable to specify a `fetch()` function in your library.
 
 ```js filename="./edge-functions/example.js"
+// Custom fetch function. See Polyfills and Helpers section for more information.
 import createFetchForOrigin from './polyfills';
 
 export async function handleHttpRequest(request, context) {
@@ -737,3 +741,4 @@ It's worth noting that not all implementations will be able to accept polyfills,
   siteUrl="https://edgio-community-examples-v7-edge-functions-live.edgio.link/"
   repoUrl="https://github.com/edgio-docs/edgio-v7-edge-functions-example"
 />
+````

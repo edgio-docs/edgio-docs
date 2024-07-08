@@ -2,15 +2,16 @@
 title: Fastboot
 ---
 
-This guide shows you how to deploy an [Ember Fastboot](https://ember-fastboot.com/) application to {{ PRODUCT }}.
+This guide shows you how to deploy an [Ember Fastboot](https://github.com/ember-fastboot/ember-cli-fastboot/tree/master/packages/fastboot) application to {{ PRODUCT }}.
 
-## Example {/*example*/}
+## Example {/* example */}
 
 <ExampleButtons
   title="Fastboot"
   siteUrl="https://layer0-docs-layer0-ember-fastboot-example-default.layer0-limelight.link"
-  repoUrl="https://github.com/layer0-docs/layer0-ember-fastboot-example" 
-  deployFromRepo />
+  repoUrl="https://github.com/layer0-docs/layer0-ember-fastboot-example"
+  deployFromRepo
+/>
 
 <!--## Connector {/*connector*/}
 
@@ -20,11 +21,12 @@ This framework has a connector developed for {{ PRODUCT }}. See [Connectors](con
   View the Connector Code
 </ButtonLink>
 -->
+
 {{ SYSTEM_REQUIREMENTS.md }}
 
 {{ SIGN_UP }}
 
-## Getting Started {/*getting-started*/}
+## Getting Started {/* getting-started */}
 
 To prepare your Fastboot app for deployment on the {{ PRODUCT }}, run the following command in the root folder of your project:
 
@@ -43,39 +45,39 @@ This will automatically add all of the required dependencies and files to your p
 - `sw/service-worker.js` - The source code for your service worker, which enables prefetching when running on {{ PRODUCT }}.
 - `{{ CONFIG_FILE }}` - Contains configuration options for deploying on {{ PRODUCT }}.
 
-## Adding {{ PRODUCT_NAME }} Service Worker {/*adding-layer0-service-worker*/}
+## Adding {{ PRODUCT_NAME }} Service Worker {/* adding-layer0-service-worker */}
 
 To add {{ PRODUCT_NAME }} service worker to your app, call the `install` function from `{{ CLI_NAME }}/prefetch/window` hook when the app first loads. For example, you can alter
 `app/app.js` as follows:
 
 ```js
-import Application from '@ember/application'
-import Resolver from 'ember-resolver'
-import loadInitializers from 'ember-load-initializers'
-import config from './config/environment'
+import Application from '@ember/application';
+import Resolver from 'ember-resolver';
+import loadInitializers from 'ember-load-initializers';
+import config from './config/environment';
 
 // add this to import {{ PRODUCT_NAME }} service worker prefetching functionality
-import { install } from '{{ PACKAGE_NAME }}/prefetch/window'
+import {install} from '{{ PACKAGE_NAME }}/prefetch/window';
 
 export default class App extends Application {
-  modulePrefix = config.modulePrefix
-  podModulePrefix = config.podModulePrefix
-  Resolver = Resolver
+  modulePrefix = config.modulePrefix;
+  podModulePrefix = config.podModulePrefix;
+  Resolver = Resolver;
 }
 
-loadInitializers(App, config.modulePrefix)
+loadInitializers(App, config.modulePrefix);
 
 // add this to install the service worker when your app loads
 if (typeof navigator != 'undefined') {
-  install()
+  install();
 }
 ```
 
-## dependencies vs devDependencies {/*dependencies-vs-devdependencies*/}
+## dependencies vs devDependencies {/* dependencies-vs-devdependencies */}
 
 To reduce serverless cold-start times, limit the packages listed in the `dependencies` section of your `package.json` to only those packages used at runtime. The `{{ CLI_NAME }}/fastboot` package must also be included in `dependencies`. Other packages not used at runtime should be included in `devDependencies`. Only those packages listed in `dependencies` are deployed to {{ PRODUCT_NAME }} along with your application code.
 
-## {{ CONFIG_FILE }} {/*-config_file-*/}
+## {{ CONFIG_FILE }} {/* -config_file- */}
 
 Ember fastboot apps should always have the following in {{ CONFIG_FILE }}:
 
@@ -83,10 +85,10 @@ Ember fastboot apps should always have the following in {{ CONFIG_FILE }}:
 module.exports = {
   connector: '{{ PACKAGE_NAME }}/fastboot',
   includeNodeModules: true, // this ensures that package.json dependencies are uploaded to the cloud
-}
+};
 ```
 
-## Running Locally {/*running-locally*/}
+## Running Locally {/* running-locally */}
 
 Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running the following command in your project's root directory:
 
@@ -94,7 +96,7 @@ Test your app with the {{ PRODUCT_PLATFORM }} on your local machine by running t
 {{ CLI_NAME }} dev
 ```
 
-### Simulate edge caching locally {/*simulate-edge-caching-locally*/}
+### Simulate edge caching locally {/* simulate-edge-caching-locally */}
 
 To simulate edge caching locally, run:
 
@@ -102,7 +104,7 @@ To simulate edge caching locally, run:
 {{ CLI_NAME }} dev --cache
 ```
 
-## Deploying {/*deploying*/}
+## Deploying {/* deploying */}
 
 Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command in your project's root directory:
 

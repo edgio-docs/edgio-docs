@@ -95,7 +95,14 @@ to** option. The available modes are described below.
 -   **User agent:** {{ PRODUCT }} Premier only. Indicates that the requests from each unique user agent (e.g., web browser) will be tracked.
 
 -   **ASN:** {{ PRODUCT }} Premier only. Indicates that the requests from each unique autonomous system number (ASN) will be tracked.
--   **Status Code:** {{ PRODUCT }} Premier only. Indicates that the requests from either a specific or a range of HTTP status codes will be tracked. For example, if you specify `200`, then {{ PRODUCT }} will track all requests that result in a `200 OK` response. Alternatively, if you specify `300-399`, then {{ PRODUCT }} will track all requests that result in a `3xx` response.
+-   **Status Code:** {{ PRODUCT }} Premier only. Indicates that the requests from either a specific or a range of HTTP status codes will be tracked. For example, if you specify `403`, then {{ PRODUCT }} will track all requests that result in a `403 Forbidden` response. Alternatively, if you specify `400-499`, then {{ PRODUCT }} will track all requests that result in a `4xx` response.
+
+    <Tip>
+    
+    An advantage of rate limiting by status code is that it allows you to define a more aggressive policy without increasing your risk of false positives. For example, clients do not typically generate many `403 Forbidden` responses. This means that you can temporarily block IP addresses that generate too many `403 Forbidden` responses (e.g., 5 per second).
+
+    </Tip>
+
 -   **JA3:** {{ PRODUCT }} Premier only. Indicates that the requests for each unique JA3 signature will be tracked.
 -   **Cookie:** {{ PRODUCT }} Premier only. Indicates that the requests for each unique value for the specified cookie will be tracked.
 -   **ARGS:** {{ PRODUCT }} Premier only. Indicates that the requests for each unique value for the specified query string parameter will be tracked.

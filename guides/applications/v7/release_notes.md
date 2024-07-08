@@ -12,18 +12,22 @@ See [NPM Packages Changelog](/applications/changelog) for release notes related 
 
 ## June 2024 {/* june-2024 */}
 
-| Date       | Description                                                                                                                                                                                                                                                              |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 06/06/2024 | **{{ PRODUCT_SECURITY }}:** <ul><li>Bot Manager Advanced now supports [difficulty-based browser challenges](/applications/security/bot_rules#browser-challenge).</li><li>**Rate Rules:** {{ PRODUCT }} Premier now supports rate limiting by HTTP status code.</li></ul> |
+| Date       | Description                                                                                                                                                                                                                                                                                                                       |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 06/27/2024 | **REST API:** Introduced the [RTLD WAF API](https://docs.edg.io/rest_api/#tag/RTLD-WAF-Profile). Use this API to manage your [RTLD WAF](/applications/logs/rtld/log_fields_rtld_waf) configurations.                                                                                                                              |
+| 06/27/2024 | **{{ PRODUCT_SECURITY }}:** <ul><li>API Security now supports the ability to [validate JWTs](/applications/security/api_security#json-web-tokens--jwt-).</li><li>Access Rules now allow up to 1,000 JA3 entries and 50,000 IP addresses for high-capacity access rules ({{PRODUCT}} Premier and Enterprise customers). </li></ul> |
+| 06/11/2024 | **REST API:** Introduced the [Real-Time Alerts API](https://docs.edg.io/rest_api/#tag/real-time-alert). Use this API to manage your [real-time alert](/applications/basics/alerts#real-time-alerts) configurations.                                                                                                               |
+| 06/06/2024 | **{{ PRODUCT_SECURITY }}:** <ul><li>Bot Manager Advanced now supports [difficulty-based browser challenges](/applications/security/bot_rules#browser-challenge).</li><li>**Rate Rules:** {{ PRODUCT }} Premier now supports rate limiting by HTTP status code.</li></ul>                                                          |
 
 ## May 2024 {/* may-2024 */}
 
-| Date       | Description                                                                                                                                                                                                                                  |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 05/30/2024 | **Analytics:** Added [RTLD CDN log fields for Edge Functions metrics](/applications/logs/rtld/log_fields_rtld_cdn#ef_count).                                                                                                                 |
-| 05/16/2024 | **REST API:** Introduced the [Metrics API](https://docs.edg.io/rest_api/#tag/metrics). Use this API to generate a variety of reports based off key datasets, such as origin usage, network usage, and errors.                                |
-| 05/15/2024 | **REST API:** Introduced [Client-Side Protection](https://docs.edg.io/rest_api/#tag/Client-Side-Protection) profile management.                                                                                                              |
-| 05/10/2024 | **Rules:** Introduced the [Set Origin Response Headers feature](https://docs.edg.io/applications/v7/performance/rules/features#set-origin-response-headers) which allows you to set response headers as if they were provided by the origin. |
+| Date       | Description                                                                                                                                                                                                            |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 05/30/2024 | **Analytics:** Added [RTLD CDN log fields for Edge Functions metrics](/applications/logs/rtld/log_fields_rtld_cdn#ef_count).                                                                                           |
+| 05/23/2024 | **Rules:** Introduced the [Is Full Desktop match condition](/applications/performance/rules/conditions#is-full-desktop).                                                                                               |
+| 05/16/2024 | **REST API:** Introduced the [Metrics API](https://docs.edg.io/rest_api/#tag/metrics). Use this API to generate a variety of reports based off key datasets, such as origin usage, network usage, and errors.          |
+| 05/15/2024 | **REST API:** Introduced [Client-Side Protection](https://docs.edg.io/rest_api/#tag/Client-Side-Protection) profile management.                                                                                        |
+| 05/10/2024 | **Rules:** Introduced the [Set Origin Response Headers feature](/applications/performance/rules/features#set-origin-response-headers) which allows you to set response headers as if they were provided by the origin. |
 
 ## April 2024 {/* april-2024 */}
 

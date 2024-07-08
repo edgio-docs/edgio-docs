@@ -149,11 +149,11 @@ const secFooterLinks = [
   },
   {
     name: 'Investors',
-    href: 'https://investors.edg.io/corporate-profile/default.aspx',
+    href: 'https://investors.edg.io/',
   },
   {
     name: 'Press Releases',
-    href: 'https://investors.edg.io/news/press-releases/default.aspx',
+    href: 'https://investors.edg.io/news-and-events/press-releases',
   },
 ];
 
@@ -193,11 +193,11 @@ const pryFooterLinks = ({FIDDLE_URL}: StringMap) => ({
     },
     {
       title: 'JavaScript Jam',
-      href: 'https://javascriptjam.com',
+      href: 'https://www.javascriptjam.com',
     },
     {
       title: 'Contributing',
-      href: '/guides/contributing',
+      href: '/applications/v7/contributing',
     },
   ],
   social: [

@@ -133,8 +133,8 @@ const nav = {
               path: 'performance/cdn_as_code/edgio_config',
             },
             {
-            title: 'CLI',
-            path: 'performance/cdn_as_code/cli',
+              title: 'CLI',
+              path: 'performance/cdn_as_code/cli',
             },
           ],
         },
@@ -276,7 +276,7 @@ const nav = {
           path: 'edge_functions/examples',
           routes: [
             {
-              title: 'AWS Request Signing',
+              title: 'AWS S3 Request Signing',
               path: 'edge_functions/examples/aws_request_signing',
             },
             {
@@ -726,20 +726,29 @@ const nav = {
         },
         separator,
         {
-          title: 'RTLD CDN',
+          title: 'RTLD CDN Log Fields',
           path: 'logs/rtld/log_fields_rtld_cdn',
         },
         {
-          title: 'RTLD WAF',
+          title: 'RTLD WAF Log Fields',
           path: 'logs/rtld/log_fields_rtld_waf',
         },
         {
-          title: 'RTLD Rate Limiting',
+          title: 'RTLD Rate Limiting Log Fields',
           path: 'logs/rtld/log_fields_rtld_rate_limiting',
         },
         {
-          title: 'RTLD Bot',
+          title: 'RTLD Bot Log Fields',
           path: 'logs/rtld/log_fields_rtld_bot_manager',
+        },
+        {
+          title: 'RTLD Cloud Functions Log Fields',
+          path: 'logs/rtld/log_fields_rtld_cloud_functions',
+        },
+        separator,
+        {
+          title: 'POPs',
+          path: 'reference/pops',
         },
       ],
     },
@@ -757,6 +766,11 @@ const nav = {
           path: 'upgrading/updating_packages',
         },
       ],
+    },
+    {
+      title: 'Partners',
+      path: 'partners',
+      icon: 'handshake',
     },
   ],
 };

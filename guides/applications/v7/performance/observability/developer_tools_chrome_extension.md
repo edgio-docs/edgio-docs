@@ -2,7 +2,7 @@
 title: Edgio Developer Tools Chrome Extension
 ---
 
-The [{{ CHROME_EXTENSION }}](https://chromewebstore.google.com/detail/edgio-developer-tools/lennfodclaaegmceonbblmnnmpmpmahf) provides insight into how your site interacts with {{ PRODUCT }}. Specifically, it provides detailed information for the current page and all of the requests spawned from it. Spawned requests include everything from static assets to prefetch requests.
+The {{ CHROME_EXTENSION_LINK }} provides insight into how your site interacts with {{ PRODUCT }}. Specifically, it provides detailed information for the current page and all of the requests spawned from it. Spawned requests include everything from static assets to prefetch requests.
 
 ![{{ CHROME_EXTENSION }}](/images/v7/performance/edgio-developer-tools-chrome-extension-overview.png)
 
@@ -29,11 +29,11 @@ The recommended configuration is to enable this feature on all requests.
   export default new Router().always({headers: {debug_header: true}});
   ```
 
-## Installation {/*installation*/}
+## Installation {/* installation */}
 
 Perform the following steps:
 
-1.  From the Chrome browser, load the [Edgio Developer Tools page in the Chrome web store](https://chromewebstore.google.com/detail/edgio-developer-tools/lennfodclaaegmceonbblmnnmpmpmahf).
+1.  From the Chrome browser, load the {{ CHROME_EXTENSION_LINK }}.
 2.  Click **Add to Chrome**.
 3.  When prompted, confirm that the {{ CHROME_EXTENSION }} will be installed by clicking **Add extension**.
 

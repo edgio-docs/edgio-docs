@@ -104,7 +104,7 @@ export async function POST(req: NextRequest) {
 The `POST` handler initializes and calls a simple chain with a prompt, chat model, and output parser. [See the LangChain docs](https://js.langchain.com/docs/guides/expression_language/cookbook#prompttemplate--llm--outputparser) for more information.
 
 - Chat models stream message chunks rather than bytes, so output parsing is handling serialization and byte-encoding by initializing `HttpResponseOutputParser()` to `outputParser`.
-- To select a different model, the client would be initialized like so (see a [full list of supported models here](https://js.langchain.com/docs/modules/model_io/models/)):
+- To select a different model, the client would be initialized like so (see a [full list of supported models here](https://js.langchain.com/v0.1/docs/modules/model_io/chat/)):
 
 ```ts
 import {ChatAnthropic} from 'langchain/chat_models/anthropic';

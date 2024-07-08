@@ -34,6 +34,14 @@ function Link({
     }
   )[0];
 
+  // links with no children href should be rendered as anchors
+  // eg:
+  //    [](some-id) => <a id="some-id" />
+  //    [](#some-id) => <a id="some-id" />
+  if (!children && href) {
+    return <a id={href.replace('#', '')} />;
+  }
+
   if (!href) {
     // eslint-disable-next-line jsx-a11y/anchor-has-content
     return <a href={href} className={className} {...props} />;
@@ -51,13 +59,15 @@ function Link({
   }
 
   let hrefType = 'internal';
+  const hasProtocol = /^(http|mailto|tel):/.test(href);
   if (/^(http|mailto|tel|\/docs\/)/.test(href)) {
     hrefType = 'external';
   } else if (href.startsWith('#')) {
     hrefType = 'anchor';
   }
 
-  if (versioned) {
+  // only version relative links
+  if (versioned && !hasProtocol) {
     href = version.toVersionedPath(href);
   }
 

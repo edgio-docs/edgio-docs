@@ -2,15 +2,19 @@ import requests
 import json
 import os
 
-# Define the authentication endpoint and client_id
+# Retrieve client_id and client_secret from environment variables
+client_id = os.getenv('CLIENT_ID')
+client_secret = os.getenv('CLIENT_SECRET')
+
+# Define the authentication endpoint
 AUTH_ENDPOINT = "https://id.edgio.app/connect/token"
 
 # Make a POST request to the authentication endpoint to get the access token
 auth_response = requests.post(
     AUTH_ENDPOINT,
     data = {
-        "client_id": "XXXXXXX",
-        "client_secret": "XXXXXXXX",
+        "client_id": client_id,
+        "client_secret": client_secret,
         "grant_type": "client_credentials",
         "scope": "app.metrics"
     },
@@ -68,18 +72,24 @@ for dataset in datasets:
  
     html_content += "\n"
     datasets_list += f"-   [{name}](#{name})\n"
- 
+
 output_content += datasets_list
 output_content += html_content
 
 # Define the output file path
 output_file_path = "src/templates/datasets.md"
- 
+
 # Ensure the directory exists
 os.makedirs(os.path.dirname(output_file_path), exist_ok=True)
- 
-# Write the generated HTML content to the output file
-with open(output_file_path, "w") as output_file:
-    output_file.write(output_content)
- 
-print(f"HTML content saved to {output_file_path}")
+
+try:
+    # Write the generated HTML content to the output file
+    with open(output_file_path, "w") as output_file:
+        output_file.write(output_content)
+    
+    # Print the success message only if the file was written successfully
+    print(f"Datasets saved to {output_file_path}")
+
+except Exception as e:
+    # Handle the exception if any error occurs
+    print(f"Failed to save HTML content to {output_file_path}: {e}")

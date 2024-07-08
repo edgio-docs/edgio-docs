@@ -1,29 +1,8 @@
-title: HttpPost Object
-description: Contains the configuration for the HTTP `POST` log delivery method.
 allOf:
-  - $ref: ./rtldDeliveryMethod.yaml
+  - $ref: ./rtldBaseHttpPost.yaml
   - type: object
     required:
-      - destination_endpoint
       - log_format
     properties:
-      destination_endpoint:
-        type: string
-        format: uri
-        pattern: ^https:\/\/.
-        maxLength: 1024
-        description: |
-          Defines the absolute URL to which log data will be delivered.
-
-          **Sample value:** `https://logs.example.com/cdn/`
-      authentication:
-        oneOf:
-          - $ref: ./rtldBasicAuthentication.yaml
-          - $ref: ./rtldCustomAuthentication.yaml
-        discriminator:
-          propertyName: type
-          mapping:
-            http_basic: ./rtldBasicAuthentication.yaml
-            custom_authentication: ./rtldCustomAuthentication.yaml
       log_format:
         $ref: ./rtldLogFormat.yaml

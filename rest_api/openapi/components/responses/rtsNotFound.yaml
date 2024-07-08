@@ -1,0 +1,8 @@
+description: Not Found. Verify the resource ID and your permissions to the resource.
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/rtsError.yaml
+    examples:
+      not-found:
+        $ref: ../examples/rtsExampleNotFound.yaml

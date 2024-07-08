@@ -1,0 +1,75 @@
+name: Update POPs and Datasets Sections
+
+on:
+  schedule:
+    # Run every Friday at 10 am PST (6 pm UTC)
+    - cron: '0 18 * * 5'
+  workflow_dispatch:
+
+jobs:
+  generate-docs-by-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: main  # Ensure you are checking out the main branch
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Install dependencies
+          pip install requests
+          pip install pandas
+
+      - name: Run pops script
+        env:
+          EC_TOKEN: ${{ secrets.EC_TOKEN }}
+        run: python ./scripts/pop-list.py
+
+      - name: Run datasets script
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        run: python ./rest_api/scripts/datasets.py
+
+      - name: Check if there are modified files
+        id: status
+        run: |
+          # Check if the git status is clean
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No modified files"
+            # Set a variable to indicate that there are no modified files
+            echo "NO_MODIFIED_FILES=true" >> $GITHUB_OUTPUT
+          else
+            echo "Modified files"
+            # Set a variable to indicate that there are modified files
+            echo "NO_MODIFIED_FILES=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit changes
+        if: steps.status.outputs.NO_MODIFIED_FILES == 'false'
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git checkout -b update-from-script
+          git add -A
+          git commit -m "Update content using the pops and datasets scripts"
+          git push --set-upstream origin update-from-script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout the repository for PR creation
+        uses: actions/checkout@v2
+
+      - name: Create PR
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: main
+          source_branch: update-from-script
+          pr_title: '[BOT] Update POPs and Datasets'

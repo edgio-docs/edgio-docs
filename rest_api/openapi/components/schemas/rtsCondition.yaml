@@ -1,0 +1,28 @@
+title: Alert Condition
+description: Criteria that define when an alert should be triggered.
+type: object
+required:
+  - metric
+  - operator
+  - threshold
+properties:
+  metric:
+    $ref: ./rtsMetric.yaml
+  operator:
+    type: string
+    description: >-
+      Establishes the relationship between a metric and the value assigned to
+      it.
+    enum:
+      - '>'
+      - <
+      - '>='
+      - <=
+    x-enum-varnames:
+      - GreaterThan
+      - LessThan
+      - GreaterThanOrEqual
+      - LessThanOrEqual
+  threshold:
+    type: number
+    description: The threshold for the specified metric.

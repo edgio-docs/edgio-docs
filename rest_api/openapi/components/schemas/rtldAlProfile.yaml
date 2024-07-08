@@ -1,0 +1,5 @@
+title: RTLD Access Logs profile properties
+description: A RTLD Access Logs profile's configuration including its system-defined ID.
+allOf:
+  - $ref: ./rtldProfileID.yaml
+  - $ref: ./rtldAlProfileProperties.yaml

@@ -219,8 +219,8 @@ export const sections: HomepageSectionGroup[] = [
             path: '/delivery/delivery/mediavault',
           },
           {
-            title: 'Storage Quick Start',
-            path: '/delivery/storage/apis/general_information/index_of_supported_api_calls',
+            title: 'Storage APIs',
+            path: '/delivery/storage//delivery/storage/api_reference',
           },
           {
             title: 'SmartPurge',
@@ -243,6 +243,10 @@ export const sections: HomepageSectionGroup[] = [
           {
             title: 'SmartPurge',
             path: '/delivery/delivery/smartpurge/smartpurge_rest_api',
+          },
+          {
+            title: 'Storage',
+            path: '/delivery/storage/api_reference',
           },
           {
             title: 'API Explorer',

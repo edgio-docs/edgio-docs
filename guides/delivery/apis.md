@@ -7,7 +7,7 @@ This content is also accessible from the navigation menu under the associated pr
 |---|---|---|
 |Control |[Billing](https://support.limelight.com/public/openapi/billing/index.html) <br /> [Configuration](https://support.limelight.com/public/openapi/configuration/index.html) <br /> [Realtime Reporting](https://support.limelight.com/public/openapi/realtimereporting/index.html) | REST <br /> REST <br /> REST |
 |Delivery|[SmartPurge](/delivery/delivery/smartpurge/smartpurge_rest_api) |REST|
-|Storage|[API Guide](/delivery/storage//delivery/storage/api_reference)|JSON-RPC <br /> REST|
+|Storage|[API Guide](/delivery/storage/api_reference)|JSON-RPC <br /> REST|
 |Video | [Live Stream Provisioning](/delivery/video/apis/live_stream_provisioning)<br /> |REST <br /> REST|
 
 ## Developer Tools and References

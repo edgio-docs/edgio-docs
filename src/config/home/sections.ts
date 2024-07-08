@@ -220,7 +220,7 @@ export const sections: HomepageSectionGroup[] = [
           },
           {
             title: 'Storage APIs',
-            path: '/delivery/storage//delivery/storage/api_reference',
+            path: '/delivery/storage/api_reference',
           },
           {
             title: 'SmartPurge',

@@ -65,7 +65,7 @@ In some cases, this behavior can be modified. For more information, see [Content
 
 #### Negative Caching  {/*negative-caching*/}
 
-You can override these default values by using negative caching to set a cache TTL for the specified HTTP status code. The force_negstore_by_status option causes EdgePrism to negatively cache any response with a status code matching any of the status codes listed as arguments to the rewrite option. The expected use case for this option is to enable negative caching for temporary responses in order to work around quirky origin servers.
+You can override these default values by using negative caching to set a cache TTL for the specified HTTP status code. The `force_negstore_by_status` option causes EdgePrism to negatively cache any response with a status code matching any of the status codes listed as arguments to the rewrite option. The expected use case for this option is to enable negative caching for temporary responses in order to work around quirky origin servers.
 
 ##### Example rewrite {/*example rewrite*/}
 

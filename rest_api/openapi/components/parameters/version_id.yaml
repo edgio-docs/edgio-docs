@@ -1,6 +1,9 @@
 name: version_id
 in: path
 required: true
-description: the id of a version
+description: |
+  A resource's version number (e.g., `1`, `2`, or `3`).
+  
+  Retrieve the resource's version history to find out the available versions.
 schema:
   type: string

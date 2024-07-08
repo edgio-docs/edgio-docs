@@ -6,16 +6,21 @@ get:
   operationId: get-bot-rule-version
   tags:
     - Bot Rules
-  summary: GET specific version of bot rule object identified by version id
-  description: Get get specific version of bot rule object.
+  summary: Get Bot Ruleset by Version
+  description: Retrieve a specific version of a bot ruleset.
   security:
     - bot_securityScope: [app.bot_security]
   responses:
     '200':
-      description: Version for that bot rule object.
+      description: OK. A specific version of a bot ruleset was retrieved.
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/version_long.yaml
+            allOf:
+              - $ref: ../components/schemas/version_long.yaml
+              - type: object
+                properties:
+                  config_payload:
+                    $ref: ../components/schemas/Bot.yaml
     '404':
-      description: version not found
+      $ref: ../components/responses/error_404.yaml

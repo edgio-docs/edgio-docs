@@ -6,16 +6,25 @@ get:
   operationId: get-scopes-version
   tags:
     - Security Applications (Scopes)
-  summary: GET specific version of scope object identified by version id
-  description: Get get specific version of scope object.
+  summary: Get Security Apps by Version
+  description: |
+    Retrieve the set of Security App configurations associated with a specific version. 
+    
+    Security App configurations are versioned as a single entity. This means that applying a change to one or more Security App configuration(s) causes Edgio to save and version all Security App configurations. This allows you to retrieve the state of your Security App configurations at a specific point-in-time. 
+
   security:
     - wafScope: [app.waf]
   responses:
     '200':
-      description: Version for that scope object.
+      description: OK. A specific version of a Security App was retrieved.
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/version_long.yaml
+            allOf:
+              - $ref: ../components/schemas/version_long.yaml
+              - type: object
+                properties:
+                  config_payload:
+                    $ref: ../components/schemas/Scopes.yaml
     '404':
-      description: version not found
+      $ref: ../components/responses/error_404.yaml

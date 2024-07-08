@@ -5,13 +5,13 @@ get:
   operationId: get-custom-rule-versions
   tags:
     - Custom Rules
-  summary: GET versions of a rule object
-  description: Get existing versions of rule id.
+  summary: Get Custom Rule's Version History
+  description: Retrieve a list of versions for a specific custom rule. 
   security:
     - wafScope: [app.waf]
   responses:
     '200':
-      description: A list of versions for that rule id.
+      description: OK. A custom rule's version history was retrieved.
       content:
         application/json:
           schema:
@@ -19,11 +19,13 @@ get:
             properties:
               '@id':
                 type: string
+                description: The relative URI through which this response was generated.
               '@type':
                 type: string
+                description: Returns `Collection`.
               items:
                 type: array
                 items:
                   $ref: ../components/schemas/version_short.yaml
     '404':
-      description: rule not found
+      $ref: ../components/responses/error_404.yaml

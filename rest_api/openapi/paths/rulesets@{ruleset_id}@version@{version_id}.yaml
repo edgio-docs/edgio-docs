@@ -1,8 +1,11 @@
+parameters:
+  - $ref: ../components/parameters/ruleset_id.yaml
+  - $ref: ../components/parameters/version_id.yaml
 get:
   operationId: get-ruleset-version-policies
   tags:
     - Edgio Rulesets
-  summary: Get Policies (Edgio Ruleset)
+  summary: Get Edgio Ruleset's Policies
   description: Retrieve a list of policies associated with an Edgio ruleset. 
   security:
     - wafScope: [app.waf]

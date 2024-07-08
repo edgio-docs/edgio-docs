@@ -3,7 +3,7 @@ type: object
 properties:
   id:
     type: string
-    description: The Security App's system-defined ID.
+    description: The Security App's system-defined ID. This ID is currently reserved for internal use. 
   name:
     type: string
     description: The Security App's name.

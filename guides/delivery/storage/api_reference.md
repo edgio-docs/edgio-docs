@@ -1,10 +1,10 @@
 ---
 title: Storage API Reference Guide
 ---
-<!-- this page will be a page of links -->
+
+[Overview](/delivery/storage/general_information)
 
 ## General Information
-[Overview](/delivery/storage/general_information)
 
 [Preparing to Run Code Samples](/delivery/storage/apis/general_information/preparing_to_run_code_samples)
 

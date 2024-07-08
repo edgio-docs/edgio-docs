@@ -1,4 +1,4 @@
-import {productsConfig} from '../appConfig';
+import { productsConfig } from '../appConfig';
 
 const separator = {
   title: '',
@@ -369,6 +369,24 @@ const nav = {
           ],
         },
         {
+          title: 'APIs',
+          path: 'storage/api_reference',
+          routes: [
+            {
+              title: 'General Information',
+              path: 'storage/general_information',
+            },
+            {
+              title: 'API Calls',
+              path: 'storage/api_reference/#api-calls',
+            },
+            {
+              title: 'API Materials',
+              path: 'storage/api_reference/#reference_materials',
+            },
+          ],
+        },
+        {
           title: 'Quick Start',
           path: 'storage/quick_start',
           routes: [
@@ -409,24 +427,6 @@ const nav = {
             {
               title: 'Ingest and Egress',
               path: 'storage/best_practices/#ingest-and-egress',
-            },
-          ],
-        },
-        {
-          title: 'APIs',
-          path: 'storage/api_reference',
-          routes: [
-            {
-              title: 'General Information',
-              path: 'storage/general_information',
-            },
-            {
-              title: 'API Calls',
-              path: 'storage/api_reference/#api-calls',
-            },
-            {
-              title: 'API Materials',
-              path: 'storage/api_reference/#reference_materials',
             },
           ],
         },

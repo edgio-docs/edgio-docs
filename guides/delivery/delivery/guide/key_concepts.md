@@ -28,7 +28,7 @@ Objects are generally not cacheable when an origin provides any of the following
 - `Cache-Control: no-store`
 - `Pragma: no-cache`
 
-See also: [Caching Dynamic Content](/delivery/delivery/guide/features/#caching-dynamic-content).
+See also: [Caching Dynamic Content](/delivery/delivery/guide/features/#caching-dynamic-content) and [Negative Caching](#negative-caching).
 
 #### Response Codes  {/*response-codes*/}
 
@@ -61,9 +61,22 @@ Normally, Content Delivery does not cache responses with the following HTTP stat
 - 503 Service Unavailable
 - 504 Gateway Timeout
 
-In some cases, this behavior can be modified. For more information, see Content Acquisition, Origin Support and Origin Error Handling.
+In some cases, this behavior can be modified. For more information, see [Content Acquisition](/delivery/delivery/guide/features/#content-acquisition) and [Origin Support and Origin Error Handling](/delivery/delivery/guide/features/#error-handling).
 
-#### Authentication, Vary Headers & Cookies
+#### Negative Caching  {/*negative-caching*/}
+
+You can override these default values by using negative caching to set a cache TTL for the specified HTTP status code. The force_negstore_by_status option causes EdgePrism to negatively cache any response with a status code matching any of the status codes listed as arguments to the rewrite option. The expected use case for this option is to enable negative caching for temporary responses in order to work around quirky origin servers.
+
+##### Example rewrite {/*example rewrite*/}
+
+`cdn_rewrite http://foo.test/ http://origin.test/ force_negstore_by_status 412,415`
+
+The `force_negstore_by_status` will override any cache-related response header. For example, if the response header contains Cache-Control: no-store, then EdgePrism will negatively cache the response nonetheless.
+
+EdgePrism doesn’t put any restrictions on the listed status codes. For example, it’s possible to specify 200 in the list of status codes, in which case EdgePrism will indeed negatively cache any 200 OK response instead of positively caching it.
+
+
+#### Authentication, Vary Headers & Cookies {/*authentication*/}
 Responses to content requests that require authentication (as defined by the presence of an Authorization header) are not cacheable by default; however, options are available to override this and provide cacheability for authenticated responses. If you need this feature, please contact Edgio Customer Service.
 
 Responses with a Vary header are generally not cacheable unless the Accept-Encoding header is present and compression is applied by the configuration. Content Delivery can also be configured to ignore Vary headers. For more information, see Vary Header Optimization.

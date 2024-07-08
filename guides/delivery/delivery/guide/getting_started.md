@@ -73,13 +73,13 @@ If you are using Origin Storage as your origin, you need to upload your content 
 
 For detailed information on doing so, please see the links to the [Origin Storage Quick Start Guide](/delivery/storage/quick_start), [Console User Guide](/delivery/storage/console) and [Best Practices Guide](/delivery/storage/best_practices).
 
-#### Migrating from Other CDNs
+#### Migrating from Other CDNs {/*migrating-from-other-cdns*/}
 
 If you are migrating your content from another CDN, you may want to develop a written migration plan that takes into account any CDN customizations or advanced features you depend on. Your Account Manager and Solutions Engineer can provide general migration advice and guidelines, and if desired, Edgio Advanced Services can help you develop the migration plan and manage the migration itself.
 
 For more information on Edgio Advanced Services, please contact your Account Manager.
 
-#### Managing Non-Edgio Origins
+#### Managing Non-Edgio Origins {/*managing-non-edgio-origins*/}
 
 For the Content Delivery service to cache your content, your origin must provide the following two HTTP response headers with every object:
 

@@ -264,11 +264,11 @@ Content Delivery can be configured to add, set and override CORS ("Cross Origin 
 The following CORS headers are supported:
 
 - Request
-    - `Origin`
+  - `Origin`
 - Response
-    - `Access-Control-Allow-Origin`
-    - `Access-Control-Allow-Credentials`
-    - `Access-Control-Expose-Headers`
+  - `Access-Control-Allow-Origin`
+  - `Access-Control-Allow-Credentials`
+  - `Access-Control-Expose-Headers`
 
 This feature ensures that CORS Request and Response headers are configurable, and simplifies and standardizes the process of adding CORS support to Content Delivery configurations.
 
@@ -561,13 +561,13 @@ In a multi-layered security solution, Content Delivery provides the best first l
 Defense protection features are:
 
 - Deflect network layer attacks:
-    - Reflected and brute force attacks
-    - HTTP SYN flood
-    - ICMP flood
+  - Reflected and brute force attacks
+  - HTTP SYN flood
+  - ICMP flood
 - Maintain HTTP and HTTPS application performance during attack
 - Filter unwanted traffic:
-    - Check headers, query terms and cookies
-    - Assess user location for access rights
+  - Check headers, query terms and cookies
+  - Assess user location for access rights
 - Mask web application infrastructure from the public internet
 - Protect access to content with time-limited and individualized URLs
 - Real-time status code reporting describes user and application behavior

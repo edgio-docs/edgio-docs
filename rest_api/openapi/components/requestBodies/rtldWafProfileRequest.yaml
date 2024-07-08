@@ -1,0 +1,8 @@
+required: true
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/rtldWafProfileProperties.yaml
+    examples:
+      reference:
+        $ref: ../examples/rtldExampleWafProfileBody.yaml

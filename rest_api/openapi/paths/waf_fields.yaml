@@ -1,0 +1,23 @@
+get:
+  tags:
+    - Log Fields
+  summary: Get Log Fields (RTLD WAF)
+  description: Retrieves the available set of log fields for RTLD WAF.
+  operationId: GetAllWafFields
+  security:
+    - rtldScope:
+        - app.rtld:read
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/rtldCodeNameCollection.yaml
+          examples:
+            reference:
+              $ref: ../components/examples/rtldExampleWafFieldsCollection.yaml
+    '401':
+      $ref: ../components/responses/rtldUnauthorized.yaml
+    '500':
+      $ref: ../components/responses/rtldInternalServerError.yaml

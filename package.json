@@ -28,7 +28,8 @@
     "update-template-tables": "python3 scripts/md-tables-to-json.py",
     "validate-links": "node scripts/validateGuideLinks.js",
     "sitemap": "next-sitemap",
-    "rest-api": "yarn workspace rest-api run"
+    "rest-api": "yarn workspace rest-api run",
+    "check-forum-posts": "node scripts/workflows/answerPosts.js"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
@@ -125,12 +126,13 @@
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "2.x",
     "eslint-plugin-sort-exports": "^0.7.0",
-    "fireawai-node-sdk": "^1.0.0",
+    "fireawai-node-sdk": "^1.0.40",
     "fs-extra": "^10.1.0",
     "globby": "^11.0.1",
     "gray-matter": "^4.0.2",
     "hast-util-has-property": "^1.0.4",
     "hast-util-heading-rank": "^1.0.1",
+    "html-to-text": "^9.0.5",
     "husky": "^7.0.4",
     "is-ci": "^3.0.1",
     "jsurl": "^0.1.5",

@@ -4,7 +4,11 @@ title: API Security
 
 Use API Security to:
 
--   Define valid payloads for API requests. {{ PRODUCT }} categorizes a request as a threat when the payload violates at least one of your requirements.
+-   Validate JSON Web Tokens (JWT). 
+-   Define valid payloads for API requests through one or more API schema(s).
+-   {{ PRODUCT }} categorizes a request as a threat when it satisfies one of the following conditions:
+    -   JWT validation is enabled and {{ PRODUCT }} is unable to verify the JWT.
+    -   The payload violates at least one requirement defined within your API schema.
 -   Discover the APIs that have been requested in the last 30 days.
 
 <Callout type="info">
@@ -19,16 +23,19 @@ Set up an API Security configuration by performing the following steps:
 
 1.  Create an API Security ruleset. An API Security ruleset consists of the following components:
 
-    -   **API Security Rules:** Define one or more API Security rules. Each of these configurations identifies an API schema and the conditions under which it will be enforced.
+    -   **API Security Rules:** Define one or more API Security rules that allow you to:
+        -   Validate request bodies through an API schema. 
+        -   Validate RS256-signed JWTs through a JSON Web Key Set (JWKS).
+        -   Define the conditions under which the JWT and request body validation defined within this rule will be enforced.
     -   **API Schema:** An API schema is a JSON schema that describes the structure for a valid API payload.
 
     <Callout type="important">
 
-	  Setting up a new API Security rule requires creating at least one API schema. Your API Security rule will be read-only until you do so.
+      An API Security rule requires at least one JWKS or API schema.
 
-	</Callout>
+    </Callout>
 
-2.  Assign an API Security rule to a Security App configuration and define the enforcement action that will be applied to requests that violate the API schema(s) defined in the previous step.
+2.  Assign an API Security rule to a Security App configuration and define the enforcement action that will be applied to requests that contain an invalid JWT or violate the API schema(s) defined in the previous step.
 
 <Callout type="tip">
 
@@ -38,7 +45,7 @@ Set up an API Security configuration by performing the following steps:
 
 ### API Security Rule {/*api-security-rule*/}
 
-An API Security rule identifies an API schema and the set of requests that must conform to that JSON schema. By default, your API Security rule validates all `POST`, `PUT`, and `PATCH` requests against an API schema. However, you may restrict inspection by:
+An API Security rule may contain a JSON Web Key Set, identify an API schema, and the set of requests that will be validated. By default, your rule validates all `POST`, `PUT`, and `PATCH` requests. However, you may restrict inspection by:
 
 -   **Relative Path(s):** You may restrict payload inspection to one or more relative path(s). This relative path starts directly after the hostname. The available comparison modes are listed below.
     -   **Default:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} will inspect all `POST`, `PUT`, and `PATCH` requests to ensure that they satisfy the API schema.
@@ -148,6 +155,59 @@ The following sample request will match the above pattern:
 
 `/Cat#7`
 
+### JSON Web Tokens (JWT) {/*json-web-tokens--jwt-*/}
+
+You may choose to enable JWT validation within an API Security's rule. Once enabled, requests that match that rule's criteria must provide a valid JWT within the `Authorization` request header using the following syntax:
+
+`Authorization: Bearer <TOKEN>`
+
+If you also enable the **Allow Empty Tokens** option, then {{ PRODUCT }} will skip JWT validation for requests that do not include an `Authorization` header.
+
+{{ PRODUCT }} validates a JWT by comparing it with a JSON Web Key (JWK) registered with that rule. A JWK is a JSON object whose members represent the properties of a JWT. 
+
+Register up to 2 JWKs by pasting a JSON Web Key Set (JWKS) within the **JWKS** option. This JWKS may:
+-   Contain up to 2 JWKs. 
+-   Each JWK must be signed using the RS256 algorithm.
+
+**Sample JWKS (truncated):**
+
+```
+{
+    "keys": [{
+            "kty": "RSA",
+            "use": "sig",
+            "kid": "174EFCA3923B25163F581A0CB71CAD97B036E0B8",
+            "x5t": "F078o5I7JRY_WBoMtxytl7A24Lg",
+            "x5c": [
+                "MIIEWzCCA0OgAwIBAgIJAPzw5pQEyIL4MA0GCSqGSIbgZ3
+                ...
+                fIwQFTXJNGSzbYy8tBGSZI22rYtkz2rvVXTGFNX2HglofS0v"
+            ],
+            "e": "AQAB",
+            "n": "n1x3isqbPYjG2dUm5d5N1MBk9zKHt5LujgFXJO1SCnCW
+                  ...
+                  kGzKbQXk8QoXonkB9waAUJl8DZWmyR4oHhLw4UySKCow",
+            "alg": "RS256"
+        }, {
+            "kty": "RSA",
+            "use": "sig",
+            "kid": "635BCE35DAAADA6B1C4F31DBBE9D610A296CAA2E",
+            "x5t": "Y1vONdqq2mscTzHbvp1hCilsqi4",
+            "e": "AQAB",
+            "n": "59_PSn8HTeKK6s7e9eZxmXxjVE-YwBxRuEONekpOX0tlSYf3
+                  ...
+                  f6iGFKt6Rxwmcl0KB3Mc_0AmT6GMhbR-KCx29KFNHtgn92Zw",
+            "x5c": [
+                "MIIG3DCCBcSgpM1FpkyeMiuHqpM1FpkyeMiuHq512512dqg
+                 ...
+                 f8OPsg5XMNTSZJUZrUULTCfl7jJeVBibqlXyeckjEG/MzM="
+            ],
+            "alg": "RS256"
+        }
+    ]
+}
+```
+
 ### API Schema {/*api-schema*/}
 
 An API schema is a JSON schema that describes the structure for a valid API payload.
@@ -244,7 +304,7 @@ You may create, modify, and delete API Security rulesets.
 
 -   Administer API Security rulesets from the **API Security** page.
 -   Apply an API Security ruleset to production traffic by adding it to a [Security App configuration](/applications/security/security_applications) and then determining how it will be enforced. Multiple Security App configurations may use the same API Security ruleset.
--   Setting up a new API Security rule requires creating at least one API schema within the current API Security ruleset. Your API Security rule will be read-only until you do so.
+-   An API Security rule requires at least one JWKS or API schema.
 -   It may take up to 2 minutes for an update to an API Security ruleset to be applied across our entire network.
 
 **To create an API Security ruleset**
@@ -253,11 +313,9 @@ You may create, modify, and delete API Security rulesets.
     {{ SECURITY_NAV }} **API Security**.
 2.  Click **+ Create New API Rule**.
 3.  In the **Name of Ruleset** option, type a name for this API Security ruleset.
-4.  Click the **Schemas** tab. {{ PRODUCT }} will save your configuration. You must save an API schema, as described in the next step, before setting up an API Security rule.
-5.  Add a JSON schema that defines the structure for a valid API payload.
-    1.  Click **+ Create New** and then click on the new API schema (i.e., *Schema 1*).
-    2.  In the **Name** option, type a name for this JSON schema.
-    3.  Perform one of the following steps:
+4.  Add a JSON schema that defines the structure for a valid API payload.
+    1.  In the **Name** option, type a name for this JSON schema.
+    2.  Perform one of the following steps:
         -   **Autogenerate Schema:** Perform the following steps to automatically generate a JSON schema from a sample payload:
             1.  Click **Derive Schema from Example**.
             2.  Paste a sample JSON payload.
@@ -265,8 +323,9 @@ You may create, modify, and delete API Security rulesets.
             4.  Optional. Enhance this API schema. For example, you may define a range of valid values for integer properties or you may define certain properties as required.
             5.  When finished, click **Apply**.
         -   **Upload Schema:** Upload an API schema by clicking **Upload Schema JSON**, selecting the desired file, and then clicking **Open**.
+        -   **Manual Entry:** Type or paste the desired API schema.
     4.  Click **Save Schema**.
-    5.  Repeat steps 5.1 - 5.4 for each API schema that you would like to add to this API Security rule.
+    5.  Add another JSON schema by clicking **+ Create New** from within the **Schemas** section and then repeating steps 4.1 - 4.4.
 
     <Callout type="tip">
 
@@ -274,18 +333,23 @@ You may create, modify, and delete API Security rulesets.
 
     </Callout>
 
-6.  Add an API Security rule that identifies the API schema created in the previous step and the set of requests to which it will be applied.
-    1.  Click the **API GW Rules** tab.
-    2.  Click **+ Create New**.
-    3.  In the **Name** option, type a name for this API Security rule.
-    4.  Optional. Restrict the set of requests that will be inspected to one or more specific relative path(s).
+5.  Add an API Security rule that identifies a JSON schema created in the previous step and the set of requests to which it will be applied.
+    1.  Below the **Schemas** section, click **+ Create New**.
+    2.  In the **Name** option, type a name for this API Security rule.
+    3.  Optional. Restrict the set of requests that will be inspected to one or more specific relative path(s).
         1.  From the **URL Path(s)** option, determine whether {{ PRODUCT }} will perform URL path comparisons by [exact match](#exact-match-multiple-entries), [regular expression](#regex-match), or [wildcards](#wildcard-match).
         2.  Specify the desired relative path or regular expression.
 
             If you selected *Exact Match*, then you may specify multiple relative paths. Press **ENTER** after typing each desired URL path.
 
-    5.  Optional. Restrict the set of requests that will be inspected by HTTP method by selecting the desired HTTP method from the **Methods** option. Repeat this step as needed.
-    6.  From the **Schema ID** option, select the API schema created in step 5.
+    4.  Optional. Restrict the set of requests that will be inspected by HTTP method by selecting the desired HTTP method from the **Methods** option. Repeat this step as needed.
+    5.  Optional. Validate JWTs included within an API request's `Authorization` header.
+        1.  Enable the **JWT Validation** option.
+        2.  Define a JSON Web Key Set (JWKS) by performing either of the following steps:
+            -   Upload a JWKS by clicking **Upload JWKS**, selecting the desired file, and then clicking **Open**.
+            -   Paste the desired JWKS within the **JWKS** option.
+        3.  By default, API requests must include a valid JWT. Enable the **Allow Empty Tokens** option to allow requests without an **Authorization** header.
+    6.  Optional. Require requests to provide a valid API payload. From the **Schema** option, select the JSON schema created in step 4.
     7.  Click **Save**.
 
 **To modify an API Security ruleset**

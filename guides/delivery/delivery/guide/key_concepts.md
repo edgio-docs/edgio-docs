@@ -61,7 +61,7 @@ Normally, Content Delivery does not cache responses with the following HTTP stat
 - 503 Service Unavailable
 - 504 Gateway Timeout
 
-In some cases, this behavior can be modified. For more information, see [Content Acquisition](/delivery/delivery/guide/features/#content-acquisition) and [Origin Support and Origin Error Handling](/delivery/delivery/guide/features/#error-handling).
+In some cases, this behavior can be modified. For more information, see [Content Acquisition](/delivery/delivery/guide/features/#content-acquisition) and [Origin Support and Origin Error Handling](/delivery/delivery/guide/features/#origin-support).
 
 #### Negative Caching  {/*negative-caching*/}
 

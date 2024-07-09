@@ -74,7 +74,7 @@ blacklists for the following categories:
     The following value identifies requests from California:  `US-CA`
 
     <a id="ja3"></a>
--   **JA3:**  Premier only. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic across various IP addresses and ports.
+-   **JA3:** {{ PRODUCT }} Premier only. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic across various IP addresses and ports.
 
     <a id="ip-address"></a>
 
@@ -94,7 +94,7 @@ blacklists for the following categories:
 
         <Callout type="tip">
 
-          {{ PRODUCT_SECURITY }} Premier and Standard customers are allowed to create up to 2 access rules that may contain up to 10,000 IP addresses or IP blocks. Use the **High-Capacity** option to identify these two access rules. All other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. You may reassign high-capacity status to another access rule by first clearing the **High-Capacity** option from an existing high-capacity access rule.
+          {{ PRODUCT }} Premier and Enterprise customers are allowed to create up to 2 access rules that may contain up to 50,000 IP addresses or IP blocks. Use the **High-Capacity** option to identify these two access rules. All other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. You may reassign high-capacity status to another access rule by first clearing the **High-Capacity** option from an existing high-capacity access rule.
 
         </Callout>
 
@@ -173,67 +173,58 @@ The purpose of a blacklist is to describe unwanted traffic.
 
 **Key information:**
 
--   A whitelist, accesslist, and blacklist may consist of zero or more
-    entries (e.g., IP address, country, referrer, etc.).
+-   A whitelist, accesslist, and blacklist may consist of zero or more entries (e.g., IP address, country, referrer, etc.).
 -   A blank whitelist, accesslist, or blacklist is ignored.
 -   The order of precedence is:
 
     `Whitelist > Accesslist > Blacklist`
 
-    For example, {{ PRODUCT_SECURITY }} will inspect a request that satisfies both an
-    accesslist and a blacklist. However, it will automatically allow the
-    delivery of a request that satisfies a whitelist, an accesslist, and
+    For example, {{ PRODUCT_SECURITY }} will inspect a request that satisfies both an accesslist and a blacklist. However, it will automatically allow the delivery of a request that satisfies a whitelist, an accesslist, and
     a blacklist.
 -   Specify only a single item per line.
--   All entries within a URL, referrer, cookie, or user agent whitelist,
-    accesslist, and blacklist are regular expressions.
+-   All entries within a URL, referrer, cookie, or user agent whitelist, accesslist, and blacklist are regular expressions.
 
     <Callout type="info">
 
-      By default, a regular expression defines a case-sensitive match. Use
-      syntax (e.g., `[a-zA-Z]`) to make it case-insensitive.
+      By default, a regular expression defines a case-sensitive match. Use syntax (e.g., `[a-zA-Z]`) to make it case-insensitive.
 
     </Callout>
 
--   Unlike whitelists and blacklists, a request must satisfy at least
-    one criterion in each defined [accesslist](#Accesslists).
+-   Unlike whitelists and blacklists, a request must satisfy at least one criterion in each defined [accesslist](#Accesslists).
 
     <a id="list-limits"></a>
 
 -   The maximum number of entries varies by category.
 
-    | Category   | Combined Limit (Whitelist, Accesslist, and Blacklist) |
-    |------------|-------------------------------------------------------|
-    | ASN        | 200                                                   |
-    | Cookie     | 200                                                   |
-    | Country    | 600                                                   |
-    | IP Address | 1,000  <Callout type="tip">{{ PRODUCT_SECURITY }} Premier and Standard customers are allowed to create up to 2 access rules that may contain up to 10,000 IP addresses or IP blocks. Use the **High-Capacity** option to identify these two access rules. All other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. You may reassign high-capacity status to another access rule by first clearing the **High-Capacity** option from an existing high-capacity access rule.</Callout> |
-    | Referrer   | 200                                                   |
-    | URL        | 200                                                   |
-    | User Agent | 200                                                   |
+    | Category            | Combined Limit (Whitelist, Accesslist, and Blacklist) |
+    |---------------------|-------------------------------------------------------|
+    | ASN                 | 200                                                   |
+    | Cookie              | 200                                                   |
+    | Country             | 600                                                   |
+    | Country Subdivision | 200                                                   |
+    | JA3                 | 1,000                                                 |
+    | IP Address          | 1,000  <Callout type="tip">{{ PRODUCT }} Premier and Enterprise customers are allowed to create up to 2 access rules that may contain up to 50,000 IP addresses or IP blocks. Use the **High-Capacity** option to identify these two access rules. All other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. You may reassign high-capacity status to another access rule by first clearing the **High-Capacity** option from an existing high-capacity access rule.</Callout> |
+    | Referrer            | 200                                                   |
+    | URL                 | 200                                                   |
+    | User Agent          | 200                                                   |
 
     <Callout type="info">
 
-      {{ PRODUCT_SECURITY }} Insights supports up to 25 entries for each of the above
-      categories. {{ ACCOUNT_UPGRADE  }}
+      {{ PRODUCT_SECURITY }} Insights supports up to 25 entries for each of the above categories. {{ ACCOUNT_UPGRADE  }}
 
     </Callout>
 
     <Callout type="info">
 
-      Whitelist, accesslist, and blacklist entries count towards this
-      limit.
+      Whitelist, accesslist, and blacklist entries count towards this limit.
 
     </Callout>
 
--   Unlike managed rules, access controls are enforced regardless of
-    whether the requested content will be served from cache or your web
-    server.
+-   Unlike managed rules, access controls are enforced regardless of whether the requested content will be served from cache or your web server.
 
 ## Additional Access Controls {/*additional-access-controls*/}
 
-Unlike the access controls described above, the following access
-controls are limited to identifying malicious traffic:
+Unlike the access controls described above, the following access controls are limited to identifying malicious traffic:
 
 -   [HTTP method](#http-methods)
 -   [Media type](#media-types--aka-content-types-)

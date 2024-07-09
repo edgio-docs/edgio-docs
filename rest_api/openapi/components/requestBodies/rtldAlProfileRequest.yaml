@@ -1,0 +1,8 @@
+required: true
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/rtldAlProfileProperties.yaml
+    examples:
+      reference:
+        $ref: ../examples/rtldExampleAlProfileBody.yaml

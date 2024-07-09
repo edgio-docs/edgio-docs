@@ -5,7 +5,7 @@ content:
       allOf:
         - $ref: >-
             https://raw.githubusercontent.com/Edgio/hyperion/v2.0.0/schema/node.json
-        - $ref: ../schemas/rtldALProfile.yaml
+        - $ref: ../schemas/rtldAlProfile.yaml
     examples:
       reference:
-        $ref: ../examples/rtldExampleSingleALProfile.yaml
+        $ref: ../examples/rtldExampleSingleAlProfile.yaml

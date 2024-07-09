@@ -1,0 +1,11 @@
+description: OK
+content:
+  application/json:
+    schema:
+      allOf:
+        - $ref: >-
+            https://raw.githubusercontent.com/Edgio/hyperion/v2.0.0/schema/node.json
+        - $ref: ../schemas/rtldWafProfile.yaml
+    examples:
+      reference:
+        $ref: ../examples/rtldExampleSingleWafProfile.yaml

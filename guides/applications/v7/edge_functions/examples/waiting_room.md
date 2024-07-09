@@ -2,6 +2,8 @@
 title: Waiting Room
 ---
 
+{{ ef_req_edgejs_deps.md }}
+
 A waiting room can be used to restrict access to a website by means of queueing requests during high traffic periods. This can be useful for preventing a website from becoming overloaded during a traffic spike, or for restricting access to a website during a limited-time event.
 
 The example is derived from an [Upstash blog post](https://upstash.com/blog/nextjs-edge-waiting-room) using an edge database to store the number of active sessions, and to determine whether the current user is active. If the number of active sessions is less than the maximum allowed, or if the current user is already active, the request will be allowed to proceed. Otherwise, the request will be queued and the user will be shown a waiting room page.

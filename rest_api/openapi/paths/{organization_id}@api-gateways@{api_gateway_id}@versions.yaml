@@ -5,13 +5,13 @@ get:
   operationId: get-api-gateway-rule-versions
   tags:
     - API Gateways
-  summary: GET versions of a API gateway object
-  description: Get existing versions of an API gateway id.
+  summary: Get API Gateway's Version History
+  description: Retrieve a list of versions for a specific API gateway.
   security:
     - api_securityScope: [app.api_security]
   responses:
     '200':
-      description: A list of versions for that API gateway id.
+      description: OK. An API gateway's version history was retrieved. 
       content:
         application/json:
           schema:
@@ -19,8 +19,10 @@ get:
             properties:
               '@id':
                 type: string
+                description: The relative URI through which this response was generated.
               '@type':
                 type: string
+                description: Returns `Collection`.
               items:
                 type: array
                 items:

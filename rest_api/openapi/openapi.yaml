@@ -328,13 +328,13 @@ paths:
     security:
       - wafScope: [app.waf]
   '/{organization_id}/acls/{acl_id}/versions':
-    $ref: 'paths/{organization_id}@acl@{acl_id}@versions.yaml'
+    $ref: 'paths/{organization_id}@acls@{acl_id}@versions.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
       - wafScope: [app.waf]
   '/{organization_id}/acls/{acl_id}/versions/{version_id}':
-    $ref: 'paths/{organization_id}@acl@{acl_id}@versions@{version_id}.yaml'
+    $ref: 'paths/{organization_id}@acls@{acl_id}@versions@{version_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
@@ -526,7 +526,7 @@ paths:
     security:
       - bot_securityScope: [app.bot_security]
   '/{organization_id}/bot-managers/{bot_manager_id}/versions/{version_id}':
-    $ref: 'paths/{organization_id}@bot-manager@{bot_manager_id}@versions@{version_id}.yaml'
+    $ref: 'paths/{organization_id}@bot-managers@{bot_manager_id}@versions@{version_id}.yaml'
     servers:
       - url: 'https://edgioapis.com/bot-security/v0.9'
     security:

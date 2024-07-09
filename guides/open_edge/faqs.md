@@ -1,8 +1,8 @@
 ---
-title: Open Edge FAQs
+title: {{ OPEN_EDGE }} FAQs
 ---
 
-## How is traffic directed to an Open Edge PoP?
+## How is traffic directed to an {{ OPEN_EDGE }} PoP?
 
 Edgio uses Anycast Border Gateway Protocol (BGP) announcements to direct clients towards the nearest DNS servers. The primary method of controlling which Point of Presence (PoP) clients are delivered from is through DNS. In the event of a PoP failure that results in BGP communication issues between Edgio and our providers, traffic is automatically routed to the next logically close location where IP announcements are being advertised. Edgio's DNS systems have the capability to selectively move traffic based on various metrics and data inputs. This process is primarily automated, with manual controls and overrides in place. During planned maintenance, Edgio has the ability to proactively shift traffic to selected locations and adhere to best practices by utilizing the best known connected location with the nearest proximity to the location undergoing maintenance.
 
@@ -45,6 +45,7 @@ If the Service Provider owns the hardware, all manufacturer warranty transfer to
 Edgio operates an Agile software-development process with a goal of 10 monthly releases per annual cycle. One monthly release is not planned during the December holiday blackout period, and one monthly release is not planned based on anticipated additional software-development load due to failed QA or unplanned work. Each monthly release is tested in Edgio’s QA environment, followed by a carefully monitored production burn-in environment. After acceptance of all stages, Edgio’s entire network is upgraded across a 72-hour upgrade window.
 
 ## How is a PoP failover handled?
+
 The default policy of Edgio traffic management is to failover or spillover traffic from any of our Service Provider partners into sites owned and operated by Edgio. This prevents stampede failure because the Edgio core PoPs are generally 10x the size of our Partner Network locations. Once health and traffic levels have returned to normal, Edgio’s standard traffic-engineering processes return traffic to the affected sites.
 
 ## What is the power consumption in watts of our PoP?

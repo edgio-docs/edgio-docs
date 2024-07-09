@@ -28,7 +28,12 @@ const defaultFeatures: Features = {
     service_worker_max_age: '1h',
   },
   response: {
-    compress_content_types: ['text/html', 'text/css', 'application/javascript'],
+    compress_content_types: [
+      'text/html',
+      'text/css',
+      'application/javascript',
+      'application/json',
+    ],
   },
 };
 

@@ -1,8 +1,8 @@
-import { IconEdgioApplications } from 'components/Icon';
-import { IconDelivery } from 'components/Icon/IconDelivery';
-import { IconOpenEdge } from 'components/Icon/IconOpenEdge';
-import { IconUplynk } from 'components/Icon/IconUplynk';
-import { HomepageSectionGroup } from 'utils/Types';
+import {IconEdgioApplications} from 'components/Icon';
+import {IconDelivery} from 'components/Icon/IconDelivery';
+import {IconOpenEdge} from 'components/Icon/IconOpenEdge';
+import {IconUplynk} from 'components/Icon/IconUplynk';
+import {HomepageSectionGroup} from 'utils/Types';
 
 export const sections: HomepageSectionGroup[] = [
   {

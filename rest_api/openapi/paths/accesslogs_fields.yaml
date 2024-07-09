@@ -3,16 +3,20 @@ get:
     - Log Fields
   summary: Get Log Fields (RTLD Access Logs)
   description: Retrieves the available set of log fields for RTLD Access Logs.
-  operationId: GetAllALFields
+  operationId: GetAllAlFields
   security:
     - rtldScope:
         - app.rtld:read
-  parameters:
-    - $ref: ../components/parameters/rtldLimitParam.yaml
-    - $ref: ../components/parameters/rtldOffsetParam.yaml
   responses:
     '200':
-      $ref: ../components/responses/rtldALFieldsCollection.yaml
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/rtldCodeNameCollection.yaml
+          examples:
+            reference:
+              $ref: ../components/examples/rtldExampleAlFieldsCollection.yaml
     '401':
       $ref: ../components/responses/rtldUnauthorized.yaml
     '500':

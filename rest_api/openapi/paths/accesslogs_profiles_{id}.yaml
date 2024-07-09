@@ -3,7 +3,7 @@ get:
     - RTLD Access Logs Profile
   summary: Get RTLD Access Logs Profile
   description: Retrieves a RTLD Access Logs profile by its system-defined ID.
-  operationId: GetALProfileById
+  operationId: GetAlProfileById
   security:
     - rtldScope:
         - app.rtld:read
@@ -12,7 +12,7 @@ get:
     - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
   responses:
     '200':
-      $ref: ../components/responses/rtldSingleALProfile.yaml
+      $ref: ../components/responses/rtldSingleAlProfile.yaml
     '401':
       $ref: ../components/responses/rtldUnauthorized.yaml
     '403':
@@ -26,7 +26,7 @@ put:
     - RTLD Access Logs Profile
   summary: Update RTLD Access Logs Profile
   description: Updates a RTLD Access Logs profile.
-  operationId: ReplaceALProfileById
+  operationId: ReplaceAlProfileById
   security:
     - rtldScope:
         - app.rtld
@@ -34,10 +34,10 @@ put:
     - $ref: ../components/parameters/rtldProfileIDParam.yaml
     - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
   requestBody:
-    $ref: ../components/requestBodies/rtldALProfileRequest.yaml
+    $ref: ../components/requestBodies/rtldAlProfileRequest.yaml
   responses:
     '200':
-      $ref: ../components/responses/rtldSingleALProfile.yaml
+      $ref: ../components/responses/rtldSingleAlProfile.yaml
     '400':
       $ref: ../components/responses/rtldBadRequest.yaml
     '401':
@@ -54,7 +54,7 @@ delete:
     - RTLD Access Logs Profile
   summary: Delete RTLD Access Logs Profile
   description: Permanently deletes a RTLD Access Logs profile.
-  operationId: DeleteALProfileById
+  operationId: DeleteAlProfileById
   security:
     - rtldScope:
         - app.rtld

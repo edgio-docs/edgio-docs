@@ -1,0 +1,76 @@
+get:
+  tags:
+    - RTLD WAF Profile
+  summary: Get RTLD WAF Profile
+  description: >-
+    Retrieves a RTLD Web Application Firewall (WAF) profile by its
+    system-defined ID.
+  operationId: GetWafProfileById
+  security:
+    - rtldScope:
+        - app.rtld:read
+  parameters:
+    - $ref: ../components/parameters/rtldProfileIDParam.yaml
+    - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/rtldSingleWafProfile.yaml
+    '401':
+      $ref: ../components/responses/rtldUnauthorized.yaml
+    '403':
+      $ref: ../components/responses/rtldForbidden.yaml
+    '404':
+      $ref: ../components/responses/rtldNotFound.yaml
+    '500':
+      $ref: ../components/responses/rtldInternalServerError.yaml
+put:
+  tags:
+    - RTLD WAF Profile
+  summary: Update RTLD WAF Profile
+  description: Updates a RTLD Web Application Firewall (WAF) profile.
+  operationId: ReplaceWafProfileById
+  security:
+    - rtldScope:
+        - app.rtld
+  parameters:
+    - $ref: ../components/parameters/rtldProfileIDParam.yaml
+    - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
+  requestBody:
+    $ref: ../components/requestBodies/rtldWafProfileRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/rtldSingleWafProfile.yaml
+    '400':
+      $ref: ../components/responses/rtldBadRequest.yaml
+    '401':
+      $ref: ../components/responses/rtldUnauthorized.yaml
+    '403':
+      $ref: ../components/responses/rtldForbidden.yaml
+    '404':
+      $ref: ../components/responses/rtldNotFound.yaml
+    '500':
+      $ref: ../components/responses/rtldInternalServerError.yaml
+  x-codegen-request-body-name: Body
+delete:
+  tags:
+    - RTLD WAF Profile
+  summary: Delete RTLD WAF Profile
+  description: Permanently deletes a RTLD Web Application Firewall (WAF) profile.
+  operationId: DeleteWafProfileById
+  security:
+    - rtldScope:
+        - app.rtld
+  parameters:
+    - $ref: ../components/parameters/rtldProfileIDParam.yaml
+    - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
+  responses:
+    '204':
+      $ref: ../components/responses/rtldNoContent.yaml
+    '401':
+      $ref: ../components/responses/rtldUnauthorized.yaml
+    '403':
+      $ref: ../components/responses/rtldForbidden.yaml
+    '404':
+      $ref: ../components/responses/rtldNotFound.yaml
+    '500':
+      $ref: ../components/responses/rtldInternalServerError.yaml

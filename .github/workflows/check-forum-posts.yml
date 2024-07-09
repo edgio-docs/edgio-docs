@@ -1,0 +1,31 @@
+name: Check Forum Posts
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/15 * * * *'
+
+jobs:
+  check_forum_posts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Check forum posts
+        env:
+          DISCOURSE_API_KEY: ${{ secrets.DISCOURSE_API_KEY }}
+          DISCOURSE_API_USERNAME: ${{ secrets.DISCOURSE_API_USERNAME }}
+          DISCOURSE_BASE_URL: ${{ secrets.DISCOURSE_BASE_URL }}
+          FIREAWAI_API_KEY: ${{ secrets.FIREAWAI_API_KEY }}
+          FIREAWAI_CHATBOT_ID: ${{ secrets.FIREAWAI_CHATBOT_ID }}
+        run: yarn check-forum-posts

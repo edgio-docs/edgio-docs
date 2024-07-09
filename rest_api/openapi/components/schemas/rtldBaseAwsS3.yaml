@@ -30,5 +30,3 @@ allOf:
           `bucket` parameter. Use the [Get AWS Regions
           endpoint](#tag/AWS-Regions/operation/GetAllAWSRegions) to retrieve the
           set of valid values for this parameter.
-      log_format:
-        $ref: ./rtldLogFormat.yaml

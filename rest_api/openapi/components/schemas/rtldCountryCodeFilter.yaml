@@ -1,0 +1,32 @@
+title: Country Code Filter Object
+description: Log filtering by Country Code.
+type: object
+required:
+  - codes
+  - condition
+properties:
+  codes:
+    type: array
+    items:
+      type: string
+    uniqueItems: true
+    description: >-
+      Defines the set of countries by which log data will be filtered. Identify
+      each desired country by its ISO 3166 country code. A null value indicates
+      that log data will not be filtered by a country.
+  condition:
+    type: string
+    enum:
+      - in
+      - not_in
+    description: >
+      Determines how log data will be filtered by country code. 
+
+
+      Valid values are:
+
+      -   **in:** Filters log data to only include requests that originate from
+      the countries defined within the `codes` property.
+
+      -   **not_in:** Filters log data to exclude requests that originate from
+      the countries defined within the `codes` property.

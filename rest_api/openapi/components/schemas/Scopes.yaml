@@ -23,7 +23,7 @@ properties:
     description: The date and time at which a Security App returned by the `scopes` array was last modified.
   last_modified_by:
     type: string
-    description: The Edgio Console user that last modified this access rule. This field does not reflect updates performed through the REST API.
+    description: The Edgio Console user that last modified this Security App configuration. This field does not reflect updates performed through the REST API.
   scopes:
     type: array
     description: Contains a list of Security Apps.

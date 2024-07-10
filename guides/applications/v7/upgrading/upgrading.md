@@ -971,6 +971,6 @@ In addition to Brotli and Gzip compression, {{ PRODUCT }} {{ PRODUCT_APPLICATION
 
 ### HTTP/3 {/*http-3*/}
 
-{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 introduces support for communicating with clients through HTTP/3. This requires signalling to the client HTTP/3 support through the `alt-svc` response header.
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 introduces support for communicating with clients through HTTP/3. This requires signalling HTTP/3 support to the client through the `alt-svc` response header.
 
 [Learn how to enable HTTP/3.](/applications/basics/origins#http-3)

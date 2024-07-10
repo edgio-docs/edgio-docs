@@ -13,17 +13,15 @@ Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} to version 7 involves the 
 1.  **{{ PRODUCT_LEGACY }} (Version 4 and Earlier):** [Rename layer0.config.js and {{ PRODUCT }} packages.](#rename-layer0-components)
 2.  [Upgrade Node.js](#upgrade-to-node-js) to version 18.x or 20.x and update your application accordingly.
 3.  [Create an {{ PRODUCT }} account.](#create-account)
-4.  [Create an organization.](#create-an-organization)
-5.  [Create a property.](#create-property)
-6.  [Define environments.](#define-environments)
-7.  [Upgrade {{ PRODUCT }} packages.](#upgrade-packages)
-8.  [Update your CDN-as-code configuration](#update-your-cdn-as-code-configuration) to reflect changes introduced in version 7.
-9. [Image Optimization](#image-optimization)
-10. [Real User Monitoring (RUM) Token](#real-user-monitoring-rum-token)
-11. [Build your {{ PRODUCT }} properties.](#build-your-properties)
-12. [Deploy to {{ PRODUCT }}](#deploy-to)
-13. [Configure your Firewall](#configure-your-firewall)
-14. [Update your DNS](#update-your-dns)
+4.  [Create an organization, properties, and environments.](#create-an-organization--properties--and-environments)
+5.  [Upgrade {{ PRODUCT }} packages.](#upgrade-packages)
+6.  [Update your CDN-as-code configuration](#update-your-cdn-as-code-configuration) to reflect changes introduced in version 7.
+7.  [Image Optimization](#image-optimization)
+8.  [Real User Monitoring (RUM) Token](#real-user-monitoring-rum-token)
+9.  [Build your {{ PRODUCT }} properties.](#build-your-properties)
+10. [Deploy to {{ PRODUCT }}](#deploy-to)
+11. [Configure your Firewall](#configure-your-firewall)
+12. [Update your DNS](#update-your-dns)
 
 ## Step 1: Rename layer0 Components {/* rename-layer0-components */}
 
@@ -180,7 +178,35 @@ Additionally, check your CI/CD environment for Node.js version settings. If your
 
 Although you already have an existing account through `app.layer0.co`, you will need to [sign up for a new account through {{ APP_DOMAIN }}]({{ APP_URL }}/signup) using the same email address, Google account, or Github account.
 
-## Step 4: Create an Organization {/* create-an-organization */}
+## Step 4: Create an Organization, Properties, and Environments {/*create-an-organization--properties--and-environments*/}
+
+Create an organization, properties, and environments by either:
+
+-   [Migrating your existing team, sites, environments, and environment variables](#migrate-team-sites-environments) to version 7.
+-   Manually defining them within the {{ PORTAL }} through the following procedures:
+    -   [Create an Organization](#create-an-organization)
+    -   [Create a Property](#create-property)
+    -   [Create Environments](define-environments).
+
+**<a id="migrate-team-sites-environments" />To migrate your existing team, sites, and environments**
+
+1.  From the {{ PORTAL_LINK }}, create an API key.
+    1.  Click your profile icon and then select **My Account**.
+    2.  From the **Application Keys** section, click **Edit**.
+    3.  Click **Create an API Key**.
+    4.  In the **Name** option, assign a name for this key.
+    5.  Create **Create token**.
+    6.  Copy the token by clicking the <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" /> icon.
+2.  From [app.layer0.co](https://app.layer0.co), navigate to the desired team.
+3.  Click **Settings**.
+4.  Find the **Edgio v7 migration** section and then click **Copy team and sites to Edgio v7 Console**.
+5.  In the **Edgio console API key** option, paste the API key created in step 1.
+6.  Click **Copy team to v7**. This migration process may take up to a minute. 
+7.  From the {{ PORTAL_LINK }}, verify that your organization along with its properties and environments were successfully migrated.
+
+    Proceed to [Step 5: Upgrade {{ PRODUCT }} Packages](#upgrade-packages). 
+
+### Create an Organization {/* create-an-organization */}
 
 If the property being migrated belongs to a {{ PRODUCT_LEGACY }} team space, then you will need to recreate it within {{ APP_DOMAIN }}.
 
@@ -200,7 +226,7 @@ If the property being migrated belongs to a {{ PRODUCT_LEGACY }} team space, the
 
 </Callout>
 
-## Step 5: Create a Property {/* create-property */}
+### Create a Property {/* create-property */}
 
 Create and then initialize your property.
 
@@ -237,13 +263,13 @@ Create and then initialize your property.
 
     If you are not using a supported framework, then you will be prompted to provide additional information. [Learn more.](/applications/performance/cdn_as_code#initialize-property)
 
-## Step 6: Define Environments {/* define-environments */}
+### Create Environments {/* define-environments */}
 
 As mentioned in the previous step, {{ PRODUCT }} automatically creates a `default` and a `production` environment upon initializing a property. If you require additional environment(s), then you should create them now.
 
 [Learn how to create an environment.](/applications/basics/environments#creating-an-environment)
 
-## Step 7: Upgrade {{ PRODUCT }} Packages {/* upgrade-packages */}
+## Step 5: Upgrade {{ PRODUCT }} Packages {/* upgrade-packages */}
 
 Update all {{ PRODUCT }} packages to version 7 using the CLI.
 
@@ -257,7 +283,7 @@ If you are upgrading from version 4 and earlier, then you should have already up
 
 </Callout>
 
-## Step 8: Update your CDN-as-Code Configuration {/* update-your-cdn-as-code-configuration */}
+## Step 6: Update your CDN-as-Code Configuration {/* update-your-cdn-as-code-configuration */}
 
 Updating your CDN-as-code configuration to be compatible with version 7 involves:
 
@@ -674,7 +700,7 @@ new Router().match('/:path', {
 
     [Learn more.](/applications/performance/response#requesting-debug-cache-information)
 
-## Step 9: Image Optimization {/*image-optimization*/}
+## Step 7: Image Optimization {/*image-optimization*/}
 
 If you currently optimize images through `opt.moovweb.net`, then you should perform the following steps to update to the latest version:
 
@@ -696,7 +722,7 @@ View:
 -   [Supported query string parameters.](/applications/performance/image_optimization#query-string-parameters)
 -   [Sample default optimization implementation.](/applications/performance/rules/feature_scenarios#default-image-optimizations)
 
-## Step 10: Real User Monitoring (RUM) Token {/* real-user-monitoring-rum-token */}
+## Step 8: Real User Monitoring (RUM) Token {/* real-user-monitoring-rum-token */}
 
 If you are tracking Core Web Vitals through RUM, then you will need to update the `initEdgioRum` script to use your version 7 token. Your version 7 token is provided on the **Core Web Vitals** page.
 
@@ -714,7 +740,7 @@ If you are tracking Core Web Vitals through RUM, then you will need to update th
   onload="initEdgioRum()"></script>
 ```
 
-## Step 11: Build your {{ PRODUCT }} Properties {/* build-your-properties */}
+## Step 9: Build your {{ PRODUCT }} Properties {/* build-your-properties */}
 
 Build each of your {{ PRODUCT }} properties by running the following command in its root directory:
 
@@ -750,7 +776,7 @@ If you encounter a build issue as a result of upgrading Node.js, then you should
 
     Run `{{ FULL_CLI_NAME }} build` to rebuild your {{ PRODUCT }} property.
 
-## Step 12: Deploy to {{ PRODUCT }} {/* deploy-to- */}
+## Step 10: Deploy to {{ PRODUCT }} {/* deploy-to- */}
 
 Once you have successfully built your property, run the following command to deploy your configuration to the `default` environment:
 
@@ -767,7 +793,7 @@ Once it has successfully deployed, run the following command to deploy your conf
 {{ FULL_CLI_NAME }} deploy --environment=production
 ```
 
-## Step 13: Configure your Firewall {/* configure-your-firewall */}
+## Step 11: Configure your Firewall {/* configure-your-firewall */}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 uses a different set of IP blocks than previous versions. This means that you need to update your firewall to allow:
 
@@ -778,7 +804,7 @@ View our IP blocks by clicking **Instructions** from the **Origins** page.
 
 [Learn more about firewall setup.](/applications/basics/serving_traffic#firewall-allowing-ip-addresses)
 
-## Step 14: Update your DNS {/* update-your-dns */}
+## Step 12: Update your DNS {/* update-your-dns */}
 
 <Callout type="important">
 

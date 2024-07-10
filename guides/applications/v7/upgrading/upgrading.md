@@ -813,6 +813,8 @@ Review the following changes and revise your configuration as needed:
 - [Log Data](#log-data)
 - [Incremental Static Regeneration (ISR)](#incremental-static-regeneration-isr)
 - [Default Caching Policy](#default-caching-policy)
+- [Compression](#compression)
+- [HTTP/3](#http-3)
 
 ### Cache-manifest.js File {/* cache-manifest-js-file */}
 

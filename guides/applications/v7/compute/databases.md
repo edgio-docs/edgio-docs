@@ -16,6 +16,135 @@ For additional security, it is recommended that customers only allow database co
 
 {{ PRODUCT }} Cloud IP address ranges can be found in {{ PRODUCT }} Console -> Organization -> Property -> Environment -> Origins.
 
+#### Quick Start {/* aws-rds-quick-start */}
+
+Prepare your project by installing the following packages:
+
+<PackageCommand>
+
+```
+npm install postgres dotenv
+---
+yarn add postgres dotenv
+```
+
+</PackageCommand>
+
+Additionally, create a `.env` file in the root of your project with the following content:
+
+```plaintext
+DB_HOST=your-database-host
+DB_PORT=your-database-port
+DB_NAME=your-database-name
+DB_USER=your-database-user
+DB_PASSWORD=your-database-password
+```
+
+Modify `{{ CONFIG_FILE }}` to use the `dotenv` package to load the `.env` file. This will make the database credentials available as Environment Variables for local development. Be sure to add these Environment Variables to the {{ PORTAL }} for production.
+
+```javascript filename="{{ CONFIG_FILE }}"
+require('dotenv').config();
+
+// ... rest of the configuration
+```
+
+Next, define a cloud function that will handle the database connection and interaction. In the following sample, the function queries a PostgreSQL database for vehicle makes and models and returns the results as an HTML table.
+
+```javascript filename="./cloud-functions/db.js"
+import postgres from 'postgres';
+
+const sql = postgres({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+});
+
+export async function dbHandler(req, res) {
+  try {
+    const data = await sql`
+      SELECT
+        vm.model_id,
+        vm.model_name,
+        v.make_name
+      FROM
+        vehicle_models vm
+      JOIN
+        vehicle_makes v ON vm.make_id = v.make_id;
+    `;
+
+    let html = `
+      <html>
+      <head>
+        <title>Vehicle Makes and Models</title>
+        <style>
+          table {
+            width: 50%;
+            border-collapse: collapse;
+          }
+          table, th, td {
+            border: 1px solid black;
+          }
+          th, td {
+            padding: 8px;
+            text-align: left;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>Vehicle Makes and Models</h1>
+        <table>
+          <tr>
+            <th>Model ID</th>
+            <th>Model Name</th>
+            <th>Make Name</th>
+          </tr>`;
+
+    data.forEach((row) => {
+      html += `
+          <tr>
+            <td>${row.model_id}</td>
+            <td>${row.model_name}</td>
+            <td>${row.make_name}</td>
+          </tr>`;
+    });
+
+    html += `
+        </table>
+      </body>
+      </html>`;
+
+    res.setHeader('Content-Type', 'text/html');
+    res.statusCode = 200;
+    res.body = html;
+  } catch (error) {
+    console.error('Error querying the database:', error);
+    res.statusCode = 500;
+    res.body = 'Internal Server Error';
+  }
+}
+```
+
+Lastly, configure the router to handle requests to the database function.
+
+```javascript filename="./routes.js"
+import {Router, edgioRoutes} from '@edgio/core';
+import {dbHandler} from './cloud-functions/db';
+
+export default new Router()
+
+  // Handle requests to `/some-path` using the `dbHandler` cloud function
+  .match('/some-path', ({compute}) => {
+    compute(dbHandler);
+  })
+
+  // plugin enabling basic Edgio functionality
+  .use(edgioRoutes);
+```
+
+![AWS RDS Example Output](/images/v7/compute/aws-rds-example-output.png)
+
 ### AWS DynamoDB {/* aws-dynamodb */}
 
 Customers can use AWS SDK v3 for Node.js to interact with AWS DynamoDB. More information can be found in the [AWS SDK v3 documentation](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_dynamodb_code_examples.html).

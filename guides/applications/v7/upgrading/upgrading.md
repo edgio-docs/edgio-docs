@@ -186,17 +186,18 @@ Create an organization, properties, and environments by either:
 -   Manually defining them within the {{ PORTAL }} through the following procedures:
     -   [Create an Organization](#create-an-organization)
     -   [Create a Property](#create-property)
-    -   [Create Environments](define-environments).
+    -   [Create Environments](#define-environments).
 
 **<a id="migrate-team-sites-environments" />To migrate your existing team, sites, and environments**
 
-1.  From the {{ PORTAL_LINK }}, create an API key.
+1.  From the {{ PORTAL_LINK }}, create and then copy an application key (aka API key).
     1.  Click your profile icon and then select **My Account**.
     2.  From the **Application Keys** section, click **Edit**.
     3.  Click **Create an API Key**.
     4.  In the **Name** option, assign a name for this key.
     5.  Create **Create token**.
     6.  Copy the token by clicking the <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" /> icon.
+    7.  Click **Close**.
 2.  From [app.layer0.co](https://app.layer0.co), navigate to the desired team.
 3.  Click **Settings**.
 4.  Find the **Edgio v7 migration** section and then click **Copy team and sites to Edgio v7 Console**.

@@ -27,7 +27,7 @@ Upgrading to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} to version 7 involves the 
 
 ## Step 1: Rename layer0 Components {/* rename-layer0-components */}
 
-This section only applies to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} 4 and earlier. Proceed to the [Upgrade Node.js step](#upgrade-node-js) if you are using a later version.
+This section only applies to {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 4 and earlier. Proceed to the [Upgrade Node.js step](#upgrade-node-js) if you are using a later version.
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} now uses {{ PRODUCT }} branding for our CLI, packages, and a configuration file. Additionally, our service will no longer modify duplicate query string parameters.
 
@@ -812,6 +812,9 @@ Review the following changes and revise your configuration as needed:
 - [Duplicate Query String Parameters](#duplicate-query-string-parameters)
 - [Log Data](#log-data)
 - [Incremental Static Regeneration (ISR)](#incremental-static-regeneration-isr)
+- [Default Caching Policy](#default-caching-policy)
+- [Compression](#compression)
+- [HTTP/3](#http-3)
 
 ### Cache-manifest.js File {/* cache-manifest-js-file */}
 
@@ -935,3 +938,39 @@ Review your code to see whether it generates duplicate query string parameters. 
 ### Incremental Static Regeneration (ISR) {/*incremental-static-regeneration-isr*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 no longer supports generic Incremental Static Regeneration (ISR) through the means of the `serveStatic(...)` router method. If you are using ISR with a Next.js or Nuxt application, your application will continue to work as expected.
+
+### Default Caching Policy {/*default-caching-policy*/}
+
+By default, {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7:
+
+-   Honors cache instructions provided by an origin server. 
+-   Caches eligible requests after a POP receives 2 requests for the same content. The following content types are exempt from this policy and are eligible for caching after a single request: 
+    -   text/html
+    -   text/css
+    -   text/xml
+    -   application/json
+    -   application/javascript
+    -   application/xml
+
+<Info>
+
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 uses the [caching](/docs/api/core/interfaces/types.Caching.html) feature to [add caching to a route](/applications/performance/cdn_as_code/route_features#caching). 
+
+</Info>
+
+### Compression {/*compression*/}
+
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 has stricter requirements for edge server compression. 
+-   Compression must be explicitly enabled for each desired content type through the [compress_content_types](/docs/api/core/interfaces/types.Response.html#compress_content_types) feature. 
+-   Compression requires a cached version of the requested content.
+-   The requested content must be greater than 128 bytes and less than 3 MB.
+
+In addition to Brotli and Gzip compression, {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 supports `deflate` and `bzip2` compression. Additionally, version 7 supports transcoding compressed content when the user agent (e.g., a web browser) requests a compression method that has not been previously cached. 
+
+[Learn how compression works.](/applications/performance/compression#how-does-compression-work)
+
+### HTTP/3 {/*http-3*/}
+
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 introduces support for communicating with clients through HTTP/3. This requires signalling HTTP/3 support to the client through the `alt-svc` response header.
+
+[Learn how to enable HTTP/3.](/applications/basics/origins#http-3)

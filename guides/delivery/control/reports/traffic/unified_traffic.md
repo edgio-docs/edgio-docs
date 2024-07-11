@@ -4,7 +4,7 @@ title: Unified Traffic Report
 
 Traffic reports display summary data about CDN usage, such as data volume and the number of associated requests and connections, by service (protocol). Traffic reports can include both high-level overviews and detailed data.
 
-The Unified Traffic Report provides an integrated view of combined traffic for legacy Limelight and legacy Edgecast for one or more selected Accounts. The report loads with the following smart defaults, which you can change by making further selections in the header.
+The Unified Traffic Report provides an integrated view of combined traffic for EdgePrism and Sailfish Delivery for one or more selected Accounts. The report loads with the following smart defaults, which you can change by making further selections in the header.
 
 ![Traffic Report](/images/delivery/control/unified-traffic-report.png)
 

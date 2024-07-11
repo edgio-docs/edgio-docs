@@ -3,7 +3,7 @@ title: Traffic Report
 ---
 Traffic reports display summary data about CDN usage, such as data volume and the number of associated requests and connections, by service (protocol). Traffic reports can include both high-level overviews and detailed data.
 
-The Traffic Report provides an integrated view of traffic for legacy Limelight data for one or more selected Accounts. The report loads with the following smart defaults, which you can change by making further selections in the header.
+The Traffic Report provides an integrated view of traffic for EdgePrism Delivery data for one or more selected Accounts. The report loads with the following smart defaults, which you can change by making further selections in the header.
 
 ![Traffic Report](/images/delivery/control/traffic-report.png)
 

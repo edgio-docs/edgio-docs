@@ -5,7 +5,7 @@ title: Selective URL Handling
 
 This option allows you to specify which queryterms are to be included in the authentication. The queryterms in the list will be used in the authentication if they are present in the URL. The list does not indicate required queryterms that must be present in the URL. The option has flags to control its behavior.
 
-### Rewrite Options  {/*rewrite-options*/}
+## Rewrite Options  {/*rewrite-options*/}
 |   Option  |   Type  | Description    |
 | --- | --- | --- |
 | `<val_only>` | flag | Determines if we are using just the queryterm value.  <br />-0 (zero) means we use the queryterm name and value in the calculation (like we do today).  <br />-1 (one) means we just use the queryterm values. |

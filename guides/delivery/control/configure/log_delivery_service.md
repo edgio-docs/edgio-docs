@@ -369,18 +369,18 @@ The following fields are available for you to include when you select *MMD_LIVE_
 | Field | Details |
 | --- | --- |
 | audio-bytes | *(int64)* The number of ingested audio bytes. |
-| egress-bytes | *(int64)* The number of total possible egress bytes for all output formats. Calculation: (audio_bytes + video_bytes) * num_formats |
+| egress-bytes | *(int64)* The number of total possible egress bytes for all output formats. |
 | end-time-ms | *(int64)* The request end time (in milliseconds). |
 | frames | *(int32)* The number of transcoded frames. |
-| ingest-bytes | *(int64)* The number of ingested bytes. If is_transcode == 0 then total_bytes else 0. |
+| ingest-bytes | *(int64)* The number of ingested bytes. If is-transcode == 0 then total-bytes else 0. |
 | is-transcode | *(int32)* Indicates whether or not the stream is transcoded (1 - transcoding, 0 - transmuxing). |
 | num-output-formats | *(int32)* The number of output formats configured for the stream. |
 | slot-name | *(string)* The base name of the stream. |
 | slot-profile | *(string)* The name of the stream profile. |
 | start-time-ms | *(int64)* The request start time (in milliseconds). |
 | total-bytes | *(int64)* The total number of ingested bytes. |
-| transcode-bytes | *(int64)* The number of transcoded bytes. If is_transcode == 1 then video_bytes + audio_bytes else 0. |
-| transcode-pixels | *(int64)*The number of transcoded pixels. If is_transcode == 1 then video_width * video_height * frames else 0. |
+| transcode-bytes | *(int64)* The number of transcoded bytes.  |
+| transcode-pixels | *(int64)*The number of transcoded pixels.  |
 
 ## Retrieving Log Files from Origin Storage  {/*retrieving-log-files-from-origin-storage*/}
 

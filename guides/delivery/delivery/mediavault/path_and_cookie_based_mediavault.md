@@ -1,7 +1,7 @@
 ---
 title: Path- and Cookie-based MediaVault
 ---
-This page details the configuration details for MediaVault configurations.
+This page details the details for MediaVault configurations.
 
 ## Path-based Configuration  {/*path-based-configuration*/}
 This feature allows you to use MediaVault to secure media streams via path-based tokenized support. Use this method to embed security tokens in the path for streaming media as an alternative to cross-site cookies to prevent browsers from interfering with the functionality.

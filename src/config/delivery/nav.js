@@ -1,4 +1,4 @@
-import {productsConfig} from '../appConfig';
+import { productsConfig } from '../appConfig';
 
 const separator = {
   title: '',
@@ -262,12 +262,12 @@ const nav = {
               path: 'control/manage/control_portal_users',
             },
             {
-              title: 'Origin Storage Users',
-              path: 'control/manage/origin_storage_users',
-            },
-            {
               title: 'Origin Storage Console',
               path: 'storage/console',
+            },
+            {
+              title: 'Origin Storage Users',
+              path: 'control/manage/origin_storage_users',
             },
           ],
         },
@@ -339,6 +339,24 @@ const nav = {
       icon: 'delivery/storage',
       routes: [
         {
+          title: 'APIs',
+          path: 'storage/api_reference',
+          routes: [
+            {
+              title: 'General Information',
+              path: 'storage/general_information',
+            },
+            {
+              title: 'API Calls',
+              path: 'storage/api_reference/#api-calls',
+            },
+            {
+              title: 'API Materials',
+              path: 'storage/api_reference/#reference_materials',
+            },
+          ],
+        },
+        {
           title: 'Console',
           path: 'storage/console',
           routes: [
@@ -365,24 +383,6 @@ const nav = {
             {
               title: 'Logging Out',
               path: 'storage/console/#logging-out',
-            },
-          ],
-        },
-        {
-          title: 'APIs',
-          path: 'storage/api_reference',
-          routes: [
-            {
-              title: 'General Information',
-              path: 'storage/general_information',
-            },
-            {
-              title: 'API Calls',
-              path: 'storage/api_reference/#api-calls',
-            },
-            {
-              title: 'API Materials',
-              path: 'storage/api_reference/#reference_materials',
             },
           ],
         },

@@ -165,14 +165,6 @@ Once you have created a collection and [added at least one seed](#add-seed) to i
 
 **Key information:**
 
--   Your network's firewall must allow the following IP addresses:
-
-    ```
-    3.220.136.205
-    34.236.88.192
-    52.3.81.5
-    ```
-
 -   Your initial scan will detect and scan all of your assets. It will also place your assets under management until your organization's limit is reached. If the number of detected assets exceeds your organization's limit, then {{ PRODUCT }} prioritizes hostnames over IP addresses. 
 
     For example, let's assume that your organization has 100 hostnames and 600 IP addresses. If your organization's limit is 500 assets, then {{ PRODUCT }} will place 100 hostnames and 400 IP addresses under management. 

@@ -1,5 +1,5 @@
 ---
-title: Attack Surface Management - BETA
+title: Attack Surface Management
 ---
 
 {{ PRODUCT }} Attack Surface Management (ASM) allows you to monitor and secure your organization's attack surface. It provides a comprehensive inventory of your organization's internet-facing assets, technologies, and vulnerabilities. 
@@ -10,7 +10,7 @@ Definitions for key concepts are provided below.
 
 -   **Collection:** A [collection](#collections) represents the segment(s) of your network that will be scanned for vulnerabilities. 
 -   **Assets:** Your assets consist of hostnames, IP addresses, GitHub repositories, and Snyk instances. There are two methods for registering an asset.
-    -   An asset is registered for each hostname, IP address, and GitHub repository defined as a seed.
+    -   An asset is registered for each hostname, IP address, GitHub repository, and Snyk instance defined as a seed.
     -   {{ PRODUCT }} uses seeds to determine which network segments will be scanned. Each hostname and IP address identified through this scan is also registered as an asset.
 -   **Exposures:** By default, {{ PRODUCT }} scans your network for:
     -   Common Vulnerabilities and Exposures (CVE). A CVE represents a known security vulnerability or exposure for a software package. 

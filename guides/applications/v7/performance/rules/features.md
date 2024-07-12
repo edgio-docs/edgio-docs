@@ -1949,7 +1949,7 @@ Defines the set of CDN-specific request headers that will be forwarded from an e
 
 **Key information:**
 
--   Assign a value by typing it and then pressing 'ENTER'. Repeat this step as needed.
+-   Assign a value by typing it and then pressing `ENTER`. Repeat this step as needed.
 -   Each CDN-specific request header defined in this feature will be forwarded to an origin server.
 -   Prevent a CDN-specific request header from being forwarded to an origin server by removing it from this list.
 

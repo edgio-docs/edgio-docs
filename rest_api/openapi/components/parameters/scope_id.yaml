@@ -3,9 +3,10 @@ in: path
 required: true
 description: |
 
-  A Security App's system-defined ID. 
+  The system-defined ID for a collection of Security App configurations.
   
-  Use the [Get All Security Apps operation](#tag/Security-Applications-(Scopes)/operation/get-security-applications) to retrieve a list of Security Apps and their system-defined IDs.
+  Use the [Get All Security Apps operation](#tag/Security-Applications-(Scopes)/operation/get-security-applications) to retrieve the system-defined ID for this collection. This ID is reported by the `id` property in the root of the response. Do not use an ID defined within the `scopes` array.
+
 
 schema:
   type: string

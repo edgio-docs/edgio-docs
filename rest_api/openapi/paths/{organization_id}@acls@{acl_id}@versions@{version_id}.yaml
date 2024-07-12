@@ -1,18 +1,18 @@
 parameters:
   - $ref: ../components/parameters/organization_id.yaml
-  - $ref: ../components/parameters/rule_id.yaml
+  - $ref: ../components/parameters/acl_id.yaml
   - $ref: ../components/parameters/version_id.yaml
 get:
-  operationId: get-custom-rule-version
+  operationId: get-acl-version
   tags:
-    - Custom Rules
-  summary: Get Custom Rule by Version
-  description: Retrieve a specific version of a custom rule.
+    - Access Control List (ACL)
+  summary: Get Access Rule by Version
+  description: Retrieve a specific version of an access rule.
   security:
     - wafScope: [app.waf]
   responses:
     '200':
-      description: OK. A specific version of a custom rule was retrieved.
+      description: OK. A specific version of an access rule was retrieved.
       content:
         application/json:
           schema:
@@ -21,6 +21,6 @@ get:
               - type: object
                 properties:
                   config_payload:
-                    $ref: ../components/schemas/Rule.yaml
+                    $ref: ../components/schemas/Acl.yaml
     '404':
       $ref: ../components/responses/error_404.yaml

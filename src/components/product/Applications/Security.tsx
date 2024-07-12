@@ -38,6 +38,11 @@ const items = {
 
   default: [
     {
+      title: 'Attack Surface Management',
+      path: '/guides/security/asm',
+      separator: true,
+    },
+    {
       title: 'Website Security (EdgeJS)',
       path: '/guides/security/edgejs_security',
       separator: true,

@@ -37,12 +37,12 @@ description: >
 
   $ curl -H"Content-type: application/json"\ -H"Authorization: Bearer
   eyJhbGciOiJSUzI1NiIsImtpZCI6IjE3NEVGQ0EzOTIzQjI1MTYzRjU4MUEwQ0I3MUNBRDk3QjAzNkUwQjgiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJGMDc4bzVJN0pSWV9XQm9NdHh5dGw3QTI0TGcifQ.eyJuYmYiOjE1ODk1OTI4MjksImV4cCI6MTU4OTU5MzEyOSwiaXNzIjoiaHR0cHM6Ly9pZC52ZG1zLmlvIiwiYXVkIjpbImh0dHBzOi8vaWQudmRtcy5pby9yZXNvdXJjZXMiLCJlYy53YWYuY2FzIl0sImNsaWVudF9pZCI6IjY5MWFmYzlmLWY5YjYtNGQyNy04MzE5LTFlMGU2NzIwYjZlYiIsInNjb3BlIjpbImVjLndhZiJdfQ.RDHQMyaGaWlmwIxR4bpoeOqOnuD3g0OTqclFZEY823S7SrO0A6f6l5xNiAhuxWMBYP1cZNS7nNaLr1U4yofPJzdHk2bimdDpkK1WnAOlwn2F89kKUMpzuI9qsI4ndZeXBSACvI4GwRoDuScYxg093qXcAg63DRxBpLf8qm9wr_x4_8-GPoGOIA9V7DgMcxQzDHiH8JhbqIjxSNvVlRb-qG_iycWFWDTAqBIBaygDyq0s_QkThx1byZCtX0fU9UhLbo0_2bI31Fws7abKc3XZp-o2qGSgJ7MQdwxdc_uFUZEMpyhRjmUv4ZeqflkjwLP6I5fXOzyGwpZV2VoV-S6D9g"\
-  https://api.vdms.io/app/api-security/v0.9/dc849fd9-a0df-408e-a2c1-e2e49b983ce5/api-gateways
+  https://api.vdms.io/app/waf/v1/dc849fd9-a0df-408e-a2c1-e2e49b983ce5/acls
 
   [
     {
       "id": "ddOe8I3D",
-      "name": "api_gateway",
+      "name": "NEWACL",
       "last_modified_date": "2023-02-16T21:01:57.87388Z"
     }
   ]

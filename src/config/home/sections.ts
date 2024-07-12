@@ -105,7 +105,11 @@ export const sections: HomepageSectionGroup[] = [
         path: 'security',
         items: [
           {
-            title: 'Getting Started',
+            title: 'Attack Surface Management',
+            path: 'asm',
+          },
+          {
+            title: 'Getting Started with WAAP',
             path: 'getting_started',
           },
           {

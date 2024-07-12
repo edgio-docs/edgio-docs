@@ -15,7 +15,7 @@ properties:
     description: The date and time at which this configuration was last modified.
   last_modified_by:
     type: string
-    description: The Edgio Console user that last modified this access rule. This field does not reflect updates performed through the REST API.
+    description: The Edgio Console user that last modified this API Security ruleset. This field does not reflect updates performed through the REST API.
   team_config:
     type: boolean
     description: This property must always be `true`. If passed in the request, set it to `true`.

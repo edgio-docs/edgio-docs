@@ -534,7 +534,7 @@ Defines the set of status codes that can result in cached content.
 
 **Key information:**
 
--   Caching non-`200 OK` response also requires enabling the [Ignore Origin No Cache feature](#ignore-origin-no-cache).
+-   Caching a non-`200 OK` response also requires enabling the [Ignore Origin No Cache feature](#ignore-origin-no-cache).
 -   This feature cannot be used to disable caching for responses that generate a `200 OK` status code.
 
 <edgejs>

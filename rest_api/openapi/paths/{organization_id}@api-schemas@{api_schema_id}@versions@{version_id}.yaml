@@ -6,16 +6,21 @@ get:
   operationId: get-api-schema-version
   tags:
     - API Schemas
-  summary: GET specific version of API schema object identified by version id
-  description: Get get specific version of API Schema object.
+  summary: Get API Schema by Version
+  description: Retrieve a specific version of an API schema.
   security:
     - api_securityScope: [app.api_security]
   responses:
     '200':
-      description: Version for that api schema object.
+      description: OK. A specific version of an API schema was retrieved.
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/version_long.yaml
+            allOf:
+              - $ref: ../components/schemas/version_long.yaml
+              - type: object
+                properties:
+                  config_payload:
+                    $ref: ../components/schemas/ApiSchema.yaml
     '404':
-      description: version not found
+      $ref: ../components/responses/error_404.yaml

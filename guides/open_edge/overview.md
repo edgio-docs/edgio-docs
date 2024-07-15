@@ -10,7 +10,7 @@ The goal of this guide is to help Edgio's {{ OPEN_EDGE }} partners:
 
 ## About {{ OPEN_EDGE }}  {/*about*/}
 
-For service providers, video streaming and online gaming are key drivers of revenue and growth. But they are bandwidth-intensive, putting pressure on cost and infrastructure. And with growing demand compounded by file downloads and webpage delivery, the pressure continues to mount. The solution? Embed Content Delivery Network technology (CDN) on-net, reducing backhaul cost and improving performance while opening potential revenue opportunities.
+For service providers, video streaming and online gaming are key drivers of revenue and growth. But they are bandwidth-intensive, putting pressure on cost and infrastructure. And with growing demand compounded by file downloads and webpage delivery, the pressure continues to mount. The solution? Embed Content Delivery Network (CDN) technology  on-net, reducing backhaul cost and improving performance while opening potential revenue opportunities.
 
 {{ OPEN_EDGE }} offers you a fully-managed CDN service embedded within your network. The flexible, easy-to-deploy architecture addresses many challenges in serving content to both on-net and off-net users. Edgio’s private global CDN and caching technologies provide the capacity and reach your needs while reducing network build-out and operational costs. The solutions are built for the future, including software that supports Open Caching specifications. The solution is backed by Edgio’s unrestricted 24/7/365 free live support and Network Operations Center.
 

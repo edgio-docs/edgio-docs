@@ -59,7 +59,7 @@ properties:
     description: The date and time at which this configuration was last modified.
   last_modified_by:
     type: string
-    description: The Edgio Console user that last modified this access rule. This field does not reflect updates performed through the REST API.
+    description: The Edgio Console user that last modified this bot ruleset. This field does not reflect updates performed through the REST API.
   name:
     type: string
     description: The bot manager configuration's name.

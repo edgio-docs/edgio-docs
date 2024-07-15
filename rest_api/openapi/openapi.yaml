@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Edgio REST API
-  version: 0.3.0
+  version: 0.4.0
   x-logo:
     url: 'https://docs.edg.io/_next/static/media/edgio-dark.ea0d686f.webp'
     backgroundColor: '#FFFFFF'
@@ -303,18 +303,18 @@ paths:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
       - wafScope: [app.waf]
-#  '/{organization_id}/scopes/{scope_id}/versions':
-#    $ref: 'paths/{organization_id}@scopes@{scope_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
-#  '/{organization_id}/scopes/{scope_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@scopes@{scope_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
+  '/{organization_id}/scopes/{scope_id}/versions':
+    $ref: 'paths/{organization_id}@scopes@{scope_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
+  '/{organization_id}/scopes/{scope_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@scopes@{scope_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
   '/{organization_id}/acls':
     $ref: 'paths/{organization_id}@acls.yaml'
     servers:
@@ -327,18 +327,18 @@ paths:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
       - wafScope: [app.waf]
-#  '/{organization_id}/acl/{acl_id}/versions':
-#    $ref: 'paths/{organization_id}@acl@{acl_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
-#  '/{organization_id}/acl/{acl_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@acl@{acl_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
+  '/{organization_id}/acls/{acl_id}/versions':
+    $ref: 'paths/{organization_id}@acls@{acl_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
+  '/{organization_id}/acls/{acl_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@acls@{acl_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
   '/{organization_id}/rules':
     $ref: 'paths/{organization_id}@rules.yaml'
     servers:
@@ -351,18 +351,18 @@ paths:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
       - wafScope: [app.waf]
-#  '/{organization_id}/rules/{rule_id}/versions':
-#    $ref: 'paths/{organization_id}@rules@{rule_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
-#  '/{organization_id}/rules/{rule_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@rules@{rule_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
+  '/{organization_id}/rules/{rule_id}/versions':
+    $ref: 'paths/{organization_id}@rules@{rule_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
+  '/{organization_id}/rules/{rule_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@rules@{rule_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
   '/{organization_id}/limits':
     $ref: 'paths/{organization_id}@limits.yaml'
     servers:
@@ -375,18 +375,18 @@ paths:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
       - wafScope: [app.waf]
-#  '/{organization_id}/limits/{limit_id}/versions':
-#    $ref: 'paths/{organization_id}@limits@{limit_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
-#  '/{organization_id}/limits/{limit_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@limits@{limit_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
+  '/{organization_id}/limits/{limit_id}/versions':
+    $ref: 'paths/{organization_id}@limits@{limit_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
+  '/{organization_id}/limits/{limit_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@limits@{limit_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
   '/{organization_id}/profiles':
     $ref: 'paths/{organization_id}@profiles.yaml'
     servers:
@@ -399,18 +399,18 @@ paths:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
       - wafScope: [app.waf]
-#  '/{organization_id}/profiles/{profile_id}/versions':
-#    $ref: 'paths/{organization_id}@profiles@{profile_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
-#  '/{organization_id}/profiles/{profile_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@profiles@{profile_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
+  '/{organization_id}/profiles/{profile_id}/versions':
+    $ref: 'paths/{organization_id}@profiles@{profile_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
+  '/{organization_id}/profiles/{profile_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@profiles@{profile_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
   '/rulesets':
     $ref: 'paths/rulesets.yaml'
     servers:
@@ -423,12 +423,12 @@ paths:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
       - wafScope: [app.waf]
-#  '/rulesets/{ruleset_id}/version/{version_id}':
-#    $ref: 'paths/rulesets@{ruleset_id}@version@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
+  '/rulesets/{ruleset_id}/version/{version_id}':
+    $ref: 'paths/rulesets@{ruleset_id}@version@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
   '/{organization_id}/api-gateways':
     $ref: 'paths/{organization_id}@api-gateways.yaml'
     servers:
@@ -447,18 +447,18 @@ paths:
       - url: 'https://edgioapis.com/api-security/v0.9'
     security:
       - api_securityScope: [app.api_security]
-#  '/{organization_id}/api-gateways/{api_gateway_id}/versions':
-#    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/api-security/v0.9'
-#    security:
-#      - api_securityScope: [app.api_security]
-#  '/{organization_id}/api-gateways/{api_gateway_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/api-security/v0.9'
-#    security:
-#      - api_securityScope: [app.api_security]
+  '/{organization_id}/api-gateways/{api_gateway_id}/versions':
+    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/api-security/v0.9'
+    security:
+      - api_securityScope: [app.api_security]
+  '/{organization_id}/api-gateways/{api_gateway_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/api-security/v0.9'
+    security:
+      - api_securityScope: [app.api_security]
   '/{organization_id}/api-schemas':
     $ref: 'paths/{organization_id}@api-schemas.yaml'
     servers:
@@ -471,18 +471,18 @@ paths:
       - url: 'https://edgioapis.com/api-security/v0.9'
     security:
       - api_securityScope: [app.api_security]
-#  '/{organization_id}/api-schemas/{api_schema_id}/versions':
-#    $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/api-security/v0.9'
-#    security:
-#      - api_securityScope: [app.api_security]
-#  '/{organization_id}/api-schemas/{api_schema_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/api-security/v0.9'
-#    security:
-#      - api_securityScope: [app.api_security]
+  '/{organization_id}/api-schemas/{api_schema_id}/versions':
+    $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/api-security/v0.9'
+    security:
+      - api_securityScope: [app.api_security]
+  '/{organization_id}/api-schemas/{api_schema_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/api-security/v0.9'
+    security:
+      - api_securityScope: [app.api_security]
   '/{organization_id}/bots':
     $ref: 'paths/{organization_id}@bots.yaml'
     servers:
@@ -495,18 +495,18 @@ paths:
       - url: 'https://edgioapis.com/bot-security/v0.9'
     security:
       - bot_securityScope: [app.bot_security]
-#  '/{organization_id}/bots/{bot_id}/versions':
-#    $ref: 'paths/{organization_id}@bots@{bot_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/bot-security/v0.9'
-#    security:
-#      - bot_securityScope: [app.bot_security]
-#  '/{organization_id}/bots/{bot_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@bots@{bot_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/bot-security/v0.9'
-#    security:
-#      - bot_securityScope: [app.bot_security]
+  '/{organization_id}/bots/{bot_id}/versions':
+    $ref: 'paths/{organization_id}@bots@{bot_id}@versions.yaml'
+    servers:
+     - url: 'https://edgioapis.com/bot-security/v0.9'
+    security:
+      - bot_securityScope: [app.bot_security]
+  '/{organization_id}/bots/{bot_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@bots@{bot_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/bot-security/v0.9'
+    security:
+      - bot_securityScope: [app.bot_security]
   '/{organization_id}/bot-managers':
     $ref: 'paths/{organization_id}@bot-managers.yaml'
     servers:
@@ -519,18 +519,18 @@ paths:
       - url: 'https://edgioapis.com/bot-security/v0.9'
     security:
       - bot_securityScope: [app.bot_security]
-#  '/{organization_id}/bot-managers/{bot_manager_id}/versions':
-#    $ref: 'paths/{organization_id}@bot-managers@{bot_manager_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/bot-security/v0.9'
-#    security:
-#      - bot_securityScope: [app.bot_security]
-#  '/{organization_id}/bot-manager/{bot_manager_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@bot-manager@{bot_manager_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/bot-security/v0.9'
-#    security:
-#      - bot_securityScope: [app.bot_security]
+  '/{organization_id}/bot-managers/{bot_manager_id}/versions':
+    $ref: 'paths/{organization_id}@bot-managers@{bot_manager_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/bot-security/v0.9'
+    security:
+      - bot_securityScope: [app.bot_security]
+  '/{organization_id}/bot-managers/{bot_manager_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@bot-managers@{bot_manager_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/bot-security/v0.9'
+    security:
+      - bot_securityScope: [app.bot_security]
   /known-bots/companies:
     $ref: paths/known-bots@companies.yaml
     servers:
@@ -549,18 +549,18 @@ paths:
       - url: 'https://edgioapis.com/client-waf/v0.9'
     security:
       - client_wafScope: [app.client_waf]
-#  '/{organization_id}/client-wafs/{client_waf_id}/versions':
-#    $ref: 'paths/{organization_id}@client-wafs@{client_waf_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/client-waf/v0.9'
-#    security:
-#      - client_wafScope: [app.client_waf]
-#  '/{organization_id}/client-wafs/{client_waf_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@client-wafs@{client_waf_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/client-waf/v0.9'
-#    security:
-#      - client_wafScope: [app.client_waf]
+  '/{organization_id}/client-wafs/{client_waf_id}/versions':
+    $ref: 'paths/{organization_id}@client-wafs@{client_waf_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/client-waf/v0.9'
+    security:
+      - client_wafScope: [app.client_waf]
+  '/{organization_id}/client-wafs/{client_waf_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@client-wafs@{client_waf_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/client-waf/v0.9'
+    security:
+      - client_wafScope: [app.client_waf]
   /datasets:
     $ref: paths/datasets.yaml
     servers:

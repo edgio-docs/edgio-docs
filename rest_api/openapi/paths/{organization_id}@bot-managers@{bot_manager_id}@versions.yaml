@@ -5,13 +5,13 @@ get:
   operationId: get-bot-manager-versions
   tags:
     - Bot Managers
-  summary: GET versions of a bot manager object
-  description: Get existing versions of bot manager id.
+  summary: Get Bot Manager Configuration's Version History
+  description: Retrieve a list of versions for a specific bot manager configuration.
   security:
     - bot_securityScope: [app.bot_security]
   responses:
     '200':
-      description: A list of versions for that bot manager id.
+      description: OK. A bot manager configuration's version history was retrieved. 
       content:
         application/json:
           schema:
@@ -19,11 +19,13 @@ get:
             properties:
               '@id':
                 type: string
+                description: The relative URI through which this response was generated.
               '@type':
                 type: string
+                description: Returns `Collection`.
               items:
                 type: array
                 items:
                   $ref: ../components/schemas/version_short.yaml
     '404':
-      description: bot manager not found
+      $ref: ../components/responses/error_404.yaml

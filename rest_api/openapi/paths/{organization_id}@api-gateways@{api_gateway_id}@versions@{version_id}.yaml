@@ -6,16 +6,21 @@ get:
   operationId: get-api-gateway-rule-version
   tags:
     - API Gateways
-  summary: GET specific version of API gateway object identified by version id
-  description: Get get specific version of API gateway object.
+  summary: Get API Gateway by Version
+  description: Retrieve a specific version of an API gateway.
   security:
     - api_securityScope: [app.api_security]
   responses:
     '200':
-      description: Version for that API gateway object.
+      description: OK. A specific version of an API gateway was retrieved. 
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/version_long.yaml
+            allOf:
+              - $ref: ../components/schemas/version_long.yaml
+              - type: object
+                properties:
+                  config_payload:
+                    $ref: ../components/schemas/ApiGateway.yaml
     '404':
-      description: version not found
+      $ref: ../components/responses/error_404.yaml

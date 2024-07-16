@@ -17,7 +17,7 @@ Also, suggests that you use private browsing mode in your browser.
 
 ## Procedure {/*procedure*/}
 
-1.  Log into [Control](https://control.llnw.com/acontrol/#/login).
+1.  Log into [Control](https://control-new.edg.io/acontrol/#/login).
 
 2.  In the navigation pane, click **Configure** > **SSL Certificates**.
 

@@ -175,7 +175,7 @@ You can upload using the drag-and-drop capability in the Control Portal.
 
 #### Step 1: Log Into Control  {/*log-into-control*/}
 
-1. Go to:control.llnw.com.
+1. Go to https://control-new.edg.io/acontrol/#/login.
 2. Log in using the credentials and shortname/account information you received in your Edgio Welcome Letter.
 
 #### Step 2: Create Directories  {/*create-directories*/}

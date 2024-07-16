@@ -5,7 +5,7 @@ title: Video
 
 **MMD Live** provides on-the-fly packaging and delivery of live video content. When live content is requested for playback, MMD Live packages it in the appropriate streaming format and bitrate for the device requesting the content from a single video source and format.
 
-**MMD-OD** provides on the fly packaging and delivery of Video on Demand (VOD) content. When content is requested for playback, MMD-OD accesses the main mezzanine files and packages them in the appropriate streaming format for the device requesting the content. MMD-OD provides delivery of video in multiple formats to various devices from a set of single-format, multi-bitrate media files.
+**MMD-OD** provides on-the-fly packaging and delivery of Video on Demand (VOD) content. When content is requested for playback, MMD-OD accesses the main mezzanine files and packages them in the appropriate streaming format for the device requesting the content. MMD-OD provides delivery of video in multiple formats to various devices from a set of single-format, multi-bitrate media files.
 
 The **Limelight Video Platform (LVP)** service is a powerful and modular set of live and on-demand video capabilities that seamlessly integrate with your existing infrastructure and workflows.
 

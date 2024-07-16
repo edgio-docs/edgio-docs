@@ -2,15 +2,15 @@
 title: Key Features
 ---
 
-[Content Acquisition](#content-acquisition)
+- [Content Acquisition](#content-acquisition)
 
-[Customization](#customization)
+- [Customization](#customization)
 
-[Content Protection](#content-protection)
+- [Content Protection](#content-protection)
 
-[Defensive Protection](#defensive-protection)
+- [Defensive Protection](#defensive-protection)
 
-[Acceleration](#acceleration)
+- [Acceleration](#acceleration)
 
 The Content Delivery service provides a rich set of features (configuration options) that give you complete control over how your content is requested, cached and delivered.
 

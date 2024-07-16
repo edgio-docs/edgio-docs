@@ -119,8 +119,16 @@ An edge function can automatically inject Core Web Vitals tracking to all of you
 3.  Replace `<TOKEN>` with your RUM token.
 
     You can find this token on the **Script tag** tab. 
-
-    `token: 'ab1234c7-fe39-4a0e-8b3c-1ddf837a5c90'`
+    
+    ```js filename="edge-functions/main.js"
+    ...
+            function initEdgioRum() {
+              new Edgio.Metrics({
++               token: 'ab1234c7-fe39-4a0e-8b3c-1ddf837a5c90'
+              }).collect()
+            }
+    ...
+    ```
 
 4.  Optional. If you are also injecting Predictive Prefetching, then you should insert a script tag that installs it as shown below.
 

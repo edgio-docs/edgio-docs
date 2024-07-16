@@ -17,7 +17,13 @@ The quickest way to get started is to automatically inject a tag that installs P
 -   [Set Max Age (max_age)](/applications/performance/rules/features#set-max-age)
 -   [Set Service Worker Max Age (service_worker_max_age)](/applications/performance/rules/features#set-service-worker-max-age)
 
-The quickest method for achieving this configuration varies according to whether you are using CDN-as-code or the {{ PORTAL }} to deploy changes.
+The quickest method for achieving this configuration is through Edge Functions. The method for implementing an edge function varies according to whether you are using CDN-as-code or the {{ PORTAL }} to deploy changes.
+
+<Info>
+
+Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}
+
+</Info>
 
 **{{ PORTAL }}: To inject Predictive Prefetching within your requests**
 

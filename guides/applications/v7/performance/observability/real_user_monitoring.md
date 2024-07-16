@@ -50,6 +50,12 @@ Tracking Core Web Vitals on {{ PRODUCT }} requires adding the `{{ PACKAGE_NAME }
 
 ### Edge Functions {/*edge-functions*/}
 
+<Info>
+
+Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}
+
+</Info>
+
 An edge function can automatically inject Core Web Vitals tracking to all of your web pages. The method for generating this edge function varies according to whether you are using CDN-as-code or the {{ PORTAL }} to deploy changes.
 
 **{{ PORTAL }}: To inject Core Web Vitals tracking within your requests**

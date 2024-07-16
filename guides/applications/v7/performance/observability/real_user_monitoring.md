@@ -52,7 +52,7 @@ Tracking Core Web Vitals on {{ PRODUCT }} requires adding the `{{ PACKAGE_NAME }
 
 An edge function can automatically inject Core Web Vitals tracking to all of your web pages. The method for generating this edge function varies according to whether you are using CDN-as-code or the {{ PORTAL }} to deploy changes.
 
-**{{ PORTAL }}: To add Core Web Vitals tracking**
+**{{ PORTAL }}: To inject Core Web Vitals tracking within your requests**
 
 1.  Click **Create Edge Function** from the **Edge Function** tab of the **Real User Monitoring** page.
 
@@ -62,7 +62,7 @@ An edge function can automatically inject Core Web Vitals tracking to all of you
 3.  Deploy your changes to this environment.
 
 
-**CDN-as-Code: To add Core Web Vitals tracking**
+**CDN-as-Code: To inject Core Web Vitals tracking within your requests**
 
 1.  In the {{ PRODUCT }} router, use the `edge_function` feature to specify the path to the edge function that will add Core Web Vitals tracking.
 
@@ -75,10 +75,6 @@ An edge function can automatically inject Core Web Vitals tracking to all of you
       // Built-in Edgio routes
       .use(edgioRoutes)
 
-
-    router}, {
-      /* ... */
-    });
       // Specifies the edge function for all paths. Modify the path as needed.
       .match({}, {
         edge_function: './edge-functions/main.js',
@@ -146,8 +142,19 @@ An edge function can automatically inject Core Web Vitals tracking to all of you
       return new Response(html, originResponse)
     }
     ```
+    
+    <Info>
+    
+    [Predictive Prefetching also requires a rule](/applications/performance/prefetching) that applies the [Set Max Age (max_age)](/applications/performance/rules/features#set-max-age) and [Set Service Worker Max Age (service_worker_max_age)](/applications/performance/rules/features#set-service-worker-max-age) features to the pages that will be prefetched. 
 
-5.  Deploy your changes. 
+    </Info>
+
+
+5.  Deploy your changes to this environment by running the following command from your property’s root directory:
+
+    ```bash
+    {{ CLI_CMD(deploy) }}
+    ```
 
 ### Script Tag and Google Tag Manager {/* google-tag-manager */}
 

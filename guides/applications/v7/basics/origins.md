@@ -106,7 +106,9 @@ Create an origin configuration for each desired grouping of web server(s).
 
     4.  Optional. Configure cache misses from a specific region to always be proxied to your origin by selecting `Bypass`.
 
-7.  If you are finished making changes to this environment, click **Deploy Changes**.
+7.  Optional. Customize whether {{ PRODUCT }} will submit follow-up requests for specific status codes through the [Retry Status Codes settings](#follow-up-requests).
+
+8.  If you are finished making changes to this environment, click **Deploy Changes**.
     <a id="primary-failover-load-balancing" />
 
 ## Origin TLS Settings {/* origin-tls-settings */}
@@ -122,6 +124,17 @@ An origin configuration's TLS settings determine how {{ PRODUCT }} will communic
 
 - By default, our network disables delivery and responds with a `502 Bad Gateway` when we detect an origin server using a self-signed certificate during the TLS handshake. Allow {{ PRODUCT }} to serve traffic when it detects a self-signed certificate by enabling the **Allow Self-Signed Certs** option. <a id="certificate-pinning" />
 - Register the SHA-1 digest for the public key of your end-entity (i.e., leaf) certificate within the **Pinned Cert(s)** option. After which, our edge servers will respond with a `502 Bad Gateway` response when the SHA-1 digest for the public key detected from the origin server does not match one of the pinned certificates.
+
+## Follow-Up Requests {/*follow-up-requests*/}
+
+By default, {{ PRODUCT }} submits follow-up requests when an [origin is unavailable](#unavailable-servers). Customize this behavior and extend it to other status codes by setting the **Retry Status Codes** setting to one or more status code(s) (e.g., `429`, `502`, and `503`) to which the following configuration will be applied:
+
+-   **The number of seconds that our edge servers will wait before retry:** Determines the number of seconds that our edge servers will wait before retrying a request to that origin entry.
+-   **Maximum number of request retries:** Determines the maximum number of attempts that {{ PRODUCT }} will make to connect to that origin entry.
+-   **The maximum number of seconds our edge servers will wait before retry:** Determines the maximum number of seconds that {{ PRODUCT }} will wait between attempts to connect to that origin entry. 
+-   **Ignore the Retry-After origin response header:** Determines whether {{ PRODUCT }} will ignore the `Retry-After` response header for this origin configuration. 
+    -   **Enabled:** {{ PRODUCT }} will ignore the `Retry-After` header provided in the response.
+    -   **Disabled:** The `Retry-After` response header takes precedence over the origin configuration's **Retry Status Codes** settings. These settings will only be applicable when the `Retry-After` header is missing from the response.
 
 ## System-Defined Origins {/* system-defined-origins */}
 
@@ -196,12 +209,14 @@ A server is considered unavailable when either of the following conditions are t
 - A TCP connection is refused.
 - The connection times out.
 
-The manner in which an unavailable server affects load balancing is described below.
+By default, an unavailable server affects load balancing as described below.
 
 1.  Once a server is designated as unavailable, CDN traffic will not be load balanced to the corresponding hostname or IP address for a brief time period.
 2.  Upon the expiration of this time period, CDN traffic may once again flow through the corresponding hostname or IP address according to its position within your origin configuration.
 3.  If the server is still unavailable, then CDN traffic will not be load balanced to the corresponding hostname or IP address for a brief, but slightly longer time period.
 4.  Steps 2 and 3 repeat until the server becomes available.
+
+Override this behavior through an origin configuration's [Retry Status Codes settings](#follow-up-requests).
 
 ## Origin Hostname Resolution {/* origin-hostname-resolution */}
 

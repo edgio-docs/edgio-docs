@@ -106,7 +106,7 @@ Create an origin configuration for each desired grouping of web server(s).
 
     4.  Optional. Configure cache misses from a specific region to always be proxied to your origin by selecting `Bypass`.
 
-7.  Optional. Customize whether {{ PRODUCT }} will submit follow-up requests for specific status codes through the [Retry Status Codes settings](#follow-up-requests).
+7.  Optional. **Advanced Configuration.** Customize whether {{ PRODUCT }} will submit follow-up requests for specific status codes through the [Retry Status Codes settings](#follow-up-requests).
 
 8.  If you are finished making changes to this environment, click **Deploy Changes**.
     <a id="primary-failover-load-balancing" />
@@ -135,6 +135,12 @@ By default, {{ PRODUCT }} submits follow-up requests when an [origin is unavaila
 -   **Ignore the Retry-After origin response header:** Determines whether {{ PRODUCT }} will ignore the `Retry-After` response header for this origin configuration. 
     -   **Enabled:** {{ PRODUCT }} will ignore the `Retry-After` header provided in the response.
     -   **Disabled:** The `Retry-After` response header takes precedence over the origin configuration's **Retry Status Codes** settings. These settings will only be applicable when the `Retry-After` header is missing from the response.
+
+<Warning>
+
+The **Retry Status Codes** section contains advanced settings that should only be modified by expert users. Improper configuration of these settings may introduce unnecessary latency and impact your site's performance. 
+
+</Warning>
 
 ## System-Defined Origins {/* system-defined-origins */}
 

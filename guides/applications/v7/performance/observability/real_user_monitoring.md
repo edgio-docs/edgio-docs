@@ -124,7 +124,7 @@ An edge function can automatically inject Core Web Vitals tracking to all of you
     ...
             function initEdgioRum() {
               new Edgio.Metrics({
-+               token: 'ab1234c7-fe39-4a0e-8b3c-1ddf837a5c90'
+    +          token: 'ab1234c7-fe39-4a0e-8b3c-1ddf837a5c90'
               }).collect()
             }
     ...

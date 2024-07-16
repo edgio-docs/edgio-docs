@@ -124,7 +124,7 @@ An edge function can automatically inject Core Web Vitals tracking to all of you
     ...
             function initEdgioRum() {
               new Edgio.Metrics({
-    +          token: 'ab1234c7-fe39-4a0e-8b3c-1ddf837a5c90'
+    +           token: 'ab1234c7-fe39-4a0e-8b3c-1ddf837a5c90'
               }).collect()
             }
     ...
@@ -144,7 +144,7 @@ An edge function can automatically inject Core Web Vitals tracking to all of you
             }
           </script>
           <script src="https://rum.edgio.net/latest.js" defer onload="initEdgioRum()"></script>
-          <script src="/__edgio__/prefetch/install.js" defer></script>
+    +     <script src="/__edgio__/prefetch/install.js" defer></script>
         </body>`
       )
       return new Response(html, originResponse)
@@ -153,7 +153,7 @@ An edge function can automatically inject Core Web Vitals tracking to all of you
     
     <Info>
     
-    [Predictive Prefetching also requires a rule](/applications/performance/prefetching) that applies the [Set Max Age (max_age)](/applications/performance/rules/features#set-max-age) and [Set Service Worker Max Age (service_worker_max_age)](/applications/performance/rules/features#set-service-worker-max-age) features to the pages that will be prefetched. 
+    [Predictive Prefetching also requires a rule](/applications/performance/prefetching#quick-start) that applies the [Set Max Age (max_age)](/applications/performance/rules/features#set-max-age) and [Set Service Worker Max Age (service_worker_max_age)](/applications/performance/rules/features#set-service-worker-max-age) features to the pages that will be prefetched. 
 
     </Info>
 

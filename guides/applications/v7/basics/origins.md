@@ -127,7 +127,7 @@ An origin configuration's TLS settings determine how {{ PRODUCT }} will communic
 
 ## Follow-Up Requests {/*follow-up-requests*/}
 
-By default, {{ PRODUCT }} submits follow-up requests when an [origin is unavailable](#unavailable-servers). Customize this behavior and extend it to other status codes by setting the **Retry Status Codes** setting to one or more status code(s) (e.g., `429`, `502`, and `503`) to which the following configuration will be applied:
+By default, {{ PRODUCT }} submits follow-up requests when an [origin is unavailable](#unavailable-servers). Customize this behavior and extend it to other status codes by setting the **Retry Status Codes** setting to one or more status code(s) (e.g., `429`, `502`, and `503`). After which, define the follow-up behavior for those status codes through the following settings:
 
 -   **The number of seconds that our edge servers will wait before retry:** Determines the number of seconds that our edge servers will wait before retrying a request to that origin entry.
 -   **Maximum number of request retries:** Determines the maximum number of attempts that {{ PRODUCT }} will make to connect to that origin entry.

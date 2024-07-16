@@ -120,7 +120,7 @@ An edge function can automatically inject Core Web Vitals tracking to all of you
 
     You can find this token on the **Script tag** tab. 
     
-    ```js filename="edge-functions/main.js"
+    ```js diff filename="edge-functions/main.js"
     ...
             function initEdgioRum() {
               new Edgio.Metrics({
@@ -132,7 +132,7 @@ An edge function can automatically inject Core Web Vitals tracking to all of you
 
 4.  Optional. If you are also injecting Predictive Prefetching, then you should insert a script tag that installs it as shown below.
 
-    ```js filename="edge-functions/main.js"
+    ```js diff filename="edge-functions/main.js"
     ...
       html = html.replace(
         '</body>', `

@@ -42,10 +42,10 @@ The quickest method for achieving this configuration varies according to whether
 
 </Callout>
 
-1.  In the {{ PRODUCT }} router, add the following rules:
+1.  In the {{ PRODUCT }} router, add a rule that:
 
-    1.  Use the `edge_function` feature to specify the path to the edge function that will add Predictive Prefetching.
-    2.  Set the `max_age` and `service_worker_max_age` features.
+    -   Initializes an edge function at the specified path through the `edge_function` feature.
+    -   Sets the `max_age` and `service_worker_max_age` features.
 
     ```js filename="routes.js"
     // This file was added by edgio init.
@@ -56,20 +56,17 @@ The quickest method for achieving this configuration varies according to whether
       // Built-in Edgio routes
       .use(edgioRoutes)
 
-      // Specifies the edge function for all paths. Modify the path as needed.
-      .match({}, {
-        edge_function: './edge-functions/main.js',
-      })
-      
-   // cache policy for product API calls
-   .get('/api/products/:id.json', {
-     caching: {
+    // Predictive Prefetching edge function and cache policy for product API calls
+    .get('/api/products/:id.json', {
+      edge_function: './edge-functions/main.js',
+      caching: {
         max_age: '1h',
         stale_while_revalidate: '1d',
         service_worker_max_age: '1h',
       }
     })
     ```
+
 2.  Add the following edge function:
 
     ```js filename="edge-functions/main.js"

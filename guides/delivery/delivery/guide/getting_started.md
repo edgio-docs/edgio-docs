@@ -12,7 +12,7 @@ When your Content Delivery service is ready (“provisioned”), you will receiv
 
 Once your service is configured and available to be used to deliver your content, you can contact our Support team 24 x 7 for technical assistance with your Content Delivery service. If you have questions about which Content Delivery features you purchased, or about additional services, your Account Manager will be happy to assist.
 
-Finally, you can log in to [Edgio Control](https://control.llnw.com/) at any time to submit and track support tickets, access documentation, and view detailed reports on the traffic handled by your Content Delivery service.
+Finally, you can log in to [Edgio Control](https://control-new.edg.io/acontrol/#/login) at any time to submit and track support tickets, access documentation, and view detailed reports on the traffic handled by your Content Delivery service.
 
 To set up your Edgio Account, please be prepared to provide your Account Manager the following information:
 

@@ -88,7 +88,7 @@ The Control Portal allows you to view data about your traffic and create additio
 
 To log into Control:
 
-1. Go to https://control.llnw.com/acontrol/#/login.
+1. Go to {{DELIVERY_PORTAL_URL}}.
 
 2. Enter the user and password that were provided to you in your Welcome Letter.
 

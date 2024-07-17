@@ -1,10 +1,10 @@
 import {default as base} from '../base.config';
 
-const PRODUCT = 'Uplynk';
+const OPEN_EDGE = 'Open Edge';
 
 const config = {
   ...base,
-  PRODUCT,
+  OPEN_EDGE,
 };
 
 export default config;

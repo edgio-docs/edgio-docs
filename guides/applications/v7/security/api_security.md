@@ -167,7 +167,9 @@ If you also enable the **Allow Empty Tokens** option, then {{ PRODUCT }} will sk
 
 Register up to 2 JWKs by pasting a JSON Web Key Set (JWKS) within the **JWKS** option. This JWKS may:
 -   Contain up to 2 JWKs. 
--   Each JWK must be signed using the RS256 algorithm.
+-   Each JWK must be signed by a known provider using the RS256 algorithm. Self-signed certificates are disallowed since we cannot verify the chain of authority.
+-   A JWK should contain `x5c` and `x5t` parameters through which we can verify that the key was signed by a known provider. 
+-   A JWK should not contain private key parameters, such as `p`, `q`, `dp`, `dq`, and `qi`.
 
 **Sample JWKS (truncated):**
 

@@ -129,12 +129,15 @@ An origin configuration's TLS settings determine how {{ PRODUCT }} will communic
 
 By default, {{ PRODUCT }} submits retry requests when an [origin is unavailable](#unavailable-servers). Customize this behavior and extend it to other status codes by setting the **Retry Status Codes** setting to one or more status code(s) (e.g., `429`, `502`, and `503`). After which, define the retry behavior for those status codes through the following settings:
 
--   **The number of seconds that our edge servers will wait before retry:** Determines the number of seconds that our edge servers will wait before retrying a request to that origin entry.
+-   **The number of seconds that our edge servers will wait before retry:** Determines the number of seconds that our edge servers will wait before retrying a request to that origin entry. If the retry request results in the same status code, then our edge servers will wait a slightly longer time before retrying the request again.
 -   **Maximum number of request retries:** Determines the maximum number of attempts that {{ PRODUCT }} will make to connect to that origin entry.
--   **The maximum number of seconds our edge servers will wait before retry:** Determines the maximum number of seconds that {{ PRODUCT }} will wait between attempts to connect to that origin entry. 
+-   **The maximum number of seconds our edge servers will wait before retry:** Sets the maximum number of seconds that {{ PRODUCT }} will wait between attempts to connect to an origin entry. 
+
+    Additionally, if the **Ignore the Retry-After origin response header** is disabled and the `Retry-After` response header returns a value larger than this setting, then {{ PRODUCT }} will stop retrying the request and respond to the client with the response provided by the origin server. 
+
 -   **Ignore the Retry-After origin response header:** Determines whether {{ PRODUCT }} will ignore the `Retry-After` response header for this origin configuration. 
     -   **Enabled:** {{ PRODUCT }} will ignore the `Retry-After` header provided in the response.
-    -   **Disabled:** The `Retry-After` response header takes precedence over the origin configuration's **Retry Status Codes** settings. These settings will only be applicable when the `Retry-After` header is missing from the response.
+    -   **Disabled:** The `Retry-After` response header takes precedence over the origin configuration's **The number of seconds that our edge servers will wait before retry** setting. This setting will only be applicable when the `Retry-After` header is missing from the response.
 
 <Warning>
 

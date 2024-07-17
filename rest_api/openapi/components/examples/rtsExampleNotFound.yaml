@@ -1,0 +1,8 @@
+value:
+  '@type': Error
+  code: not_found
+  status_code: 404
+  title: Could not find resource or you do not have permission to resource
+  details:
+    - '@type': ErrorDetail
+      description: Resource with id '90c85bf4-16b4-4880-91df-5b8c796b3cf3' was not found

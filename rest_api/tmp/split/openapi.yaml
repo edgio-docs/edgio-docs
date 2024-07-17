@@ -1,26 +1,14 @@
-openapi: 3.0.1
+openapi: 3.0.0
 info:
   title: Edgio Edgio APIs
   description: API spec for Edgio APIs
   termsOfService: https://edg.io/legal/terms-of-service/
   contact:
     name: info@edg.io
-    url: https://edg.io/contact-support/
     email: info@edg.io
+    url: https://edg.io/contact-support/
   version: 1.0.0-beta
-servers:
-  - url: //edgioapis.com/
 tags:
-  - name: environment-variables
-    description: Operations about environment-variables
-  - name: tls-certs
-    description: Operations about tls-certs
-  - name: deployments
-    description: Operations about deployments
-  - name: configs
-    description: Operations about configs
-  - name: purge-requests
-    description: Operations about purge-requests
   - name: members
     description: Operations about members
   - name: environments
@@ -29,29 +17,23 @@ tags:
     description: Operations about properties
   - name: organizations
     description: Operations about organizations
+  - name: asm
+    description: Operations about asms
   - name: bff
     description: Operations about bffs
+  - name: purge-requests
+    description: Operations about purge-requests
+  - name: environment-redirects
+    description: Operations about environment-redirects
+  - name: environment-variables
+    description: Operations about environment-variables
+  - name: tls-certs
+    description: Operations about tls-certs
+  - name: deployments
+    description: Operations about deployments
+  - name: configs
+    description: Operations about configs
 paths:
-  /config/v0.1/environment-variables/{environment_variable_id}:
-    $ref: paths/config_v0.1_environment-variables_{environment_variable_id}.yaml
-  /config/v0.1/environment-variables:
-    $ref: paths/config_v0.1_environment-variables.yaml
-  /config/v0.1/tls-certs/{cert_id}:
-    $ref: paths/config_v0.1_tls-certs_{cert_id}.yaml
-  /config/v0.1/tls-certs:
-    $ref: paths/config_v0.1_tls-certs.yaml
-  /config/v0.1/deployments/{deployment_id}/logs:
-    $ref: paths/config_v0.1_deployments_{deployment_id}_logs.yaml
-  /config/v0.1/deployments/{deployment_id}:
-    $ref: paths/config_v0.1_deployments_{deployment_id}.yaml
-  /config/v0.1/configs/{config_id}:
-    $ref: paths/config_v0.1_configs_{config_id}.yaml
-  /config/v0.1/configs:
-    $ref: paths/config_v0.1_configs.yaml
-  /cache/v0.1/purge-requests/{request_id}:
-    $ref: paths/cache_v0.1_purge-requests_{request_id}.yaml
-  /cache/v0.1/purge-requests:
-    $ref: paths/cache_v0.1_purge-requests.yaml
   /accounts/v0.1/members/{member_id}:
     $ref: paths/accounts_v0.1_members_{member_id}.yaml
   /accounts/v0.1/members:
@@ -66,6 +48,150 @@ paths:
     $ref: paths/accounts_v0.1_properties.yaml
   /accounts/v0.1/organizations/{organization_id}:
     $ref: paths/accounts_v0.1_organizations_{organization_id}.yaml
+  /asm/v0.1/proxies/filters:
+    $ref: paths/asm_v0.1_proxies_filters.yaml
+  /asm/v0.1/proxies/stats:
+    $ref: paths/asm_v0.1_proxies_stats.yaml
+  /asm/v0.1/proxies:
+    $ref: paths/asm_v0.1_proxies.yaml
+  /asm/v0.1/criterion-types:
+    $ref: paths/asm_v0.1_criterion-types.yaml
+  /asm/v0.1/context:
+    $ref: paths/asm_v0.1_context.yaml
+  /asm/v0.1/cwes/{id}:
+    $ref: paths/asm_v0.1_cwes_{id}.yaml
+  /asm/v0.1/cwes:
+    $ref: paths/asm_v0.1_cwes.yaml
+  /asm/v0.1/cves/{id}:
+    $ref: paths/asm_v0.1_cves_{id}.yaml
+  /asm/v0.1/cves/filters:
+    $ref: paths/asm_v0.1_cves_filters.yaml
+  /asm/v0.1/cves:
+    $ref: paths/asm_v0.1_cves.yaml
+  /asm/v0.1/cpe-matches/{id}:
+    $ref: paths/asm_v0.1_cpe-matches_{id}.yaml
+  /asm/v0.1/cpe-matches:
+    $ref: paths/asm_v0.1_cpe-matches.yaml
+  /asm/v0.1/cpes/{id}:
+    $ref: paths/asm_v0.1_cpes_{id}.yaml
+  /asm/v0.1/cpes:
+    $ref: paths/asm_v0.1_cpes.yaml
+  /asm/v0.1/rules/{id}:
+    $ref: paths/asm_v0.1_rules_{id}.yaml
+  /asm/v0.1/rules/reorder:
+    $ref: paths/asm_v0.1_rules_reorder.yaml
+  /asm/v0.1/rules/reset:
+    $ref: paths/asm_v0.1_rules_reset.yaml
+  /asm/v0.1/rules:
+    $ref: paths/asm_v0.1_rules.yaml
+  /asm/v0.1/comments/{id}:
+    $ref: paths/asm_v0.1_comments_{id}.yaml
+  /asm/v0.1/comments:
+    $ref: paths/asm_v0.1_comments.yaml
+  /asm/v0.1/dashboard/world-map:
+    $ref: paths/asm_v0.1_dashboard_world-map.yaml
+  /asm/v0.1/dashboard/stats:
+    $ref: paths/asm_v0.1_dashboard_stats.yaml
+  /asm/v0.1/technologies/categories:
+    $ref: paths/asm_v0.1_technologies_categories.yaml
+  /asm/v0.1/technologies/{id}:
+    $ref: paths/asm_v0.1_technologies_{id}.yaml
+  /asm/v0.1/technologies/filters:
+    $ref: paths/asm_v0.1_technologies_filters.yaml
+  /asm/v0.1/technologies:
+    $ref: paths/asm_v0.1_technologies.yaml
+  /asm/v0.1/technology-versions/{id}:
+    $ref: paths/asm_v0.1_technology-versions_{id}.yaml
+  /asm/v0.1/technology-versions/filters:
+    $ref: paths/asm_v0.1_technology-versions_filters.yaml
+  /asm/v0.1/technology-versions:
+    $ref: paths/asm_v0.1_technology-versions.yaml
+  /asm/v0.1/exposures/{id}/scan-results:
+    $ref: paths/asm_v0.1_exposures_{id}_scan-results.yaml
+  /asm/v0.1/exposures/{id}/watch:
+    $ref: paths/asm_v0.1_exposures_{id}_watch.yaml
+  /asm/v0.1/exposures/{id}:
+    $ref: paths/asm_v0.1_exposures_{id}.yaml
+  /asm/v0.1/exposures/bulk-edit:
+    $ref: paths/asm_v0.1_exposures_bulk-edit.yaml
+  /asm/v0.1/exposures/timeline:
+    $ref: paths/asm_v0.1_exposures_timeline.yaml
+  /asm/v0.1/exposures/count:
+    $ref: paths/asm_v0.1_exposures_count.yaml
+  /asm/v0.1/exposures/filters:
+    $ref: paths/asm_v0.1_exposures_filters.yaml
+  /asm/v0.1/exposures:
+    $ref: paths/asm_v0.1_exposures.yaml
+  /asm/v0.1/scans/{id}/cancel:
+    $ref: paths/asm_v0.1_scans_{id}_cancel.yaml
+  /asm/v0.1/scans/{id}:
+    $ref: paths/asm_v0.1_scans_{id}.yaml
+  /asm/v0.1/scans/filters:
+    $ref: paths/asm_v0.1_scans_filters.yaml
+  /asm/v0.1/scans:
+    $ref: paths/asm_v0.1_scans.yaml
+  /asm/v0.1/tasks/{id}/cancel:
+    $ref: paths/asm_v0.1_tasks_{id}_cancel.yaml
+  /asm/v0.1/tasks/{id}/retry:
+    $ref: paths/asm_v0.1_tasks_{id}_retry.yaml
+  /asm/v0.1/tasks/{id}/raw-results:
+    $ref: paths/asm_v0.1_tasks_{id}_raw-results.yaml
+  /asm/v0.1/tasks/{id}:
+    $ref: paths/asm_v0.1_tasks_{id}.yaml
+  /asm/v0.1/tasks/filters:
+    $ref: paths/asm_v0.1_tasks_filters.yaml
+  /asm/v0.1/tasks:
+    $ref: paths/asm_v0.1_tasks.yaml
+  /asm/v0.1/assets/{id}/whois:
+    $ref: paths/asm_v0.1_assets_{id}_whois.yaml
+  /asm/v0.1/assets/{id}/scan:
+    $ref: paths/asm_v0.1_assets_{id}_scan.yaml
+  /asm/v0.1/assets/{id}:
+    $ref: paths/asm_v0.1_assets_{id}.yaml
+  /asm/v0.1/assets/bulk-edit:
+    $ref: paths/asm_v0.1_assets_bulk-edit.yaml
+  /asm/v0.1/assets/graph:
+    $ref: paths/asm_v0.1_assets_graph.yaml
+  /asm/v0.1/assets/filters:
+    $ref: paths/asm_v0.1_assets_filters.yaml
+  /asm/v0.1/assets:
+    $ref: paths/asm_v0.1_assets.yaml
+  /asm/v0.1/seed-types:
+    $ref: paths/asm_v0.1_seed-types.yaml
+  /asm/v0.1/seeds/{id}:
+    $ref: paths/asm_v0.1_seeds_{id}.yaml
+  /asm/v0.1/seeds:
+    $ref: paths/asm_v0.1_seeds.yaml
+  /asm/v0.1/collections/{id}/reset:
+    $ref: paths/asm_v0.1_collections_{id}_reset.yaml
+  /asm/v0.1/collections/{id}/scan:
+    $ref: paths/asm_v0.1_collections_{id}_scan.yaml
+  /asm/v0.1/collections/{id}:
+    $ref: paths/asm_v0.1_collections_{id}.yaml
+  /asm/v0.1/collections:
+    $ref: paths/asm_v0.1_collections.yaml
+  /bff/rta/alerts/{alert_id}:
+    $ref: paths/bff_rta_alerts_{alert_id}.yaml
+  /bff/rta/alerts:
+    $ref: paths/bff_rta_alerts.yaml
+  /bff/mtls/chains/{sunfish_chain_id}:
+    $ref: paths/bff_mtls_chains_{sunfish_chain_id}.yaml
+  /bff/mtls/chains:
+    $ref: paths/bff_mtls_chains.yaml
+  /bff/mtls/config:
+    $ref: paths/bff_mtls_config.yaml
+  /bff/rtld/fields:
+    $ref: paths/bff_rtld_fields.yaml
+  /bff/rtld/countries:
+    $ref: paths/bff_rtld_countries.yaml
+  /bff/rtld/metadata/{metadata_type}:
+    $ref: paths/bff_rtld_metadata_{metadata_type}.yaml
+  /bff/rtld/{profile_type}/profiles/{profile_id}:
+    $ref: paths/bff_rtld_{profile_type}_profiles_{profile_id}.yaml
+  /bff/rtld/{profile_type}/profiles:
+    $ref: paths/bff_rtld_{profile_type}_profiles.yaml
+  /bff/rtld/stats:
+    $ref: paths/bff_rtld_stats.yaml
   /bff/ids/teams/{team_id}/feature-scopes:
     $ref: paths/bff_ids_teams_{team_id}_feature-scopes.yaml
   /bff/ids/teams/{team_id}/clients/{client_id}/secrets/{secret_id}:
@@ -76,8 +202,46 @@ paths:
     $ref: paths/bff_ids_teams_{team_id}_clients_{client_id}.yaml
   /bff/ids/teams/{team_id}/clients:
     $ref: paths/bff_ids_teams_{team_id}_clients.yaml
+  /bff/ids/teams/{team_id}/integration:
+    $ref: paths/bff_ids_teams_{team_id}_integration.yaml
+  /bff/serverless/{query_name}:
+    $ref: paths/bff_serverless_{query_name}.yaml
+  /bff/cwv/{query_name}:
+    $ref: paths/bff_cwv_{query_name}.yaml
+  /bff/cwv/staff-top-hosts:
+    $ref: paths/bff_cwv_staff-top-hosts.yaml
   /bff/traffic/{query_name}:
     $ref: paths/bff_traffic_{query_name}.yaml
+  /bff/traffic/staff-top-hosts:
+    $ref: paths/bff_traffic_staff-top-hosts.yaml
+  /cache/v0.1/purge-requests/{request_id}:
+    $ref: paths/cache_v0.1_purge-requests_{request_id}.yaml
+  /cache/v0.1/purge-requests:
+    $ref: paths/cache_v0.1_purge-requests.yaml
+  /config/v0.1/environment-redirects/{environment_redirect_id}:
+    $ref: paths/config_v0.1_environment-redirects_{environment_redirect_id}.yaml
+  /config/v0.1/environment-redirects:
+    $ref: paths/config_v0.1_environment-redirects.yaml
+  /config/v0.1/environment-variables/{environment_variable_id}:
+    $ref: paths/config_v0.1_environment-variables_{environment_variable_id}.yaml
+  /config/v0.1/environment-variables:
+    $ref: paths/config_v0.1_environment-variables.yaml
+  /config/v0.1/tls-certs/{cert_id}:
+    $ref: paths/config_v0.1_tls-certs_{cert_id}.yaml
+  /config/v0.1/tls-certs/generate:
+    $ref: paths/config_v0.1_tls-certs_generate.yaml
+  /config/v0.1/tls-certs:
+    $ref: paths/config_v0.1_tls-certs.yaml
+  /config/v0.1/deployments/{deployment_id}/logs:
+    $ref: paths/config_v0.1_deployments_{deployment_id}_logs.yaml
+  /config/v0.1/deployments/{deployment_id}:
+    $ref: paths/config_v0.1_deployments_{deployment_id}.yaml
+  /config/v0.1/configs/{config_id}:
+    $ref: paths/config_v0.1_configs_{config_id}.yaml
+  /config/v0.1/configs:
+    $ref: paths/config_v0.1_configs.yaml
+servers:
+  - url: //edgioapis.com
 components:
   securitySchemes:
     configScope:

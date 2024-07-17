@@ -1,12 +1,6 @@
 ---
-title: Attack Surface Management - BETA
+title: Attack Surface Management
 ---
-
-<Important>
-
-This BETA feature requires activation. {{ ACCOUNT_UPGRADE }}
-
-</Important>
 
 {{ PRODUCT }} Attack Surface Management (ASM) allows you to monitor and secure your organization's attack surface. It provides a comprehensive inventory of your organization's internet-facing assets, technologies, and vulnerabilities. 
 
@@ -14,9 +8,17 @@ This BETA feature requires activation. {{ ACCOUNT_UPGRADE }}
 
 Definitions for key concepts are provided below.
 
--   **Collection:** A collection represents the segment of your network that will be scanned for vulnerabilities. 
--   **Assets:** {{ PRODUCT }} identifies the hostnames and IP addresses associated with a scanned network segment. These entries are collectively known as assets.
--   **Exposures:** {{ PRODUCT }} scans your network for Common Vulnerabilities and Exposures (CVE). A CVE represents a known security vulnerability or exposure for a software package. 
+-   **Collection:** A [collection](#collections) represents the segment(s) of your network that will be scanned for vulnerabilities. 
+-   **Assets:** Your assets consist of hostnames, IP addresses, GitHub repositories, and Snyk instances. There are two methods for registering an asset.
+    -   An asset is registered for each hostname, IP address, GitHub repository, and Snyk instance defined as a seed.
+    -   {{ PRODUCT }} uses seeds to determine which network segments will be scanned. Each hostname and IP address identified through this scan is also registered as an asset.
+-   **Exposures:** By default, {{ PRODUCT }} scans your network for:
+    -   Common Vulnerabilities and Exposures (CVE). A CVE represents a known security vulnerability or exposure for a software package. 
+    -   Common Weakness Enumeration (CWE). A CWE identifies a common software or hardware weakness that can potentially introduce a security vulnerability. 
+    -   Open ports.
+    -   TLS issues.
+    -   Exposed secrets.
+    -   Response header violations. For example, a required header may be missing or it can assigned an invalid value.
 -   **Protections:** {{ PRODUCT }} identifies the security solutions that are protecting the assets associated with the scanned network segment.
 -   **Technologies:** {{ PRODUCT }} identifies the software and services used by the assets associated with the scanned network segment.
 -   **Rules:** Determines how vulnerabilities and exposures are detected and handled. 
@@ -32,13 +34,29 @@ Once your network has been scanned, you should review and mitigate your exposure
 ## Getting Started {/*getting-started*/}
 
 1.  Create a collection (**Attack Surfaces** | **Collections** | **+ Create Collection**) and then add one or more seed(s) to your collection. 
-2.  Scan your network.
-3.  Review and mitigate exposures.
+2.  Verify that your network's firewall allows the following IP addresses:
+
+    ```
+    3.220.136.205
+    34.236.88.192
+    52.3.81.5
+    ```
+
+3.  Scan your network.
+4.  Review and mitigate exposures.
 
 ## Collections {/*collections*/}
 
-A collection represents the segment of your network that will be scanned for vulnerabilities. Define this distinct network segment through seeds. A seed defines a distinct network segment through a domain, an IP address, an IP address range, or a GitHub repository. 
+A collection represents the segment(s) of your network that will be scanned for vulnerabilities. 
 
+Each collection must contain at least one seed. Use one or more seed(s) to:
+
+-   Define a domain, an IP address, or a range of IP addresses scope that will be scanned.
+-   Define a GitHub repository from which security vulnerabilities identified by Dependabot will be pulled.
+-   Define a Snyk instance from which security vulnerabilities will be pulled.
+
+Once you have defined the desired seed(s), {{ PRODUCT }} will scan your network for exposures and retrieve vulnerabilities identified by Dependabot (GitHub) and Snyk. This allows {{PRODUCT}} to generate a consolidated list of vulnerabilities and exposures that provides full visibility into your organization's attack surface. 
+    
 ### Managing Collections {/*managing-collections*/}
 
 You may create, modify, and delete collections. Finally, you can reset a collection to delete all exposures, assets, and technologies associated with it.
@@ -84,14 +102,19 @@ You may create, modify, and delete collections. Finally, you can reset a collect
     -   **GitHub Repository:** 
         1.  From the **Seed** option, type the repository path (e.g., edgio-docs\edgio-docs). A repository path typically identifies the owner of the repository (e.g., an organization or a user), a slash, and then the name of the repository.
         2.  From the **GitHub Personal Access Token** option, provide a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) through which {{ PRODUCT }} will access your repository. 
-        3.  From the **Branches**, type one or more branch(es) that will be scanned. Use a comma to delimit each branch.
-        4.  From the **Linked hostnames** option, type one or more hostname(s) associated with the specified branches. Use a comma to delimit each hostname.
+        <!-- 3.  From the **Branches**, type one or more branch(es) that will be scanned. Use a comma to delimit each branch. -->
+        3.  From the **Linked hostnames** option, type one or more hostname(s) associated with the specified branches. Use a comma to delimit each hostname.
     -   **IP Address:** From the **Seed** option, type the desired IP address.
     -   **IP Address Range:** From the **Seed** option, type the desired IP address range or IP address block. Use CIDR notation.
 
         **Sample IP address range:** `192.0.2.10-100`
 
         **Sample IP address block:** `192.0.2.0/24`
+    -   **Snyk:** 
+        1.  In the **Name** option, type a descriptive name.
+        2.  In the **Organization id** option, type your Snyk organization's internal ID.
+        3.  In the **API Key** option, type your Snyk organization's API key.
+
 6.  Click **Create Seed**.
 
 **To modify a collection**
@@ -153,11 +176,19 @@ Once you have created a collection and [added at least one seed](#add-seed) to i
 
 **To scan your network**
 
-1.  Load the **Collections** page.
+1.  Verify that your network's firewall allows the following IP addresses:
+
+    ```
+    3.220.136.205
+    34.236.88.192
+    52.3.81.5
+    ```
+
+2.  Load the **Collections** page.
     {{ SECURITY_NAV }} **Attack Surface**.
     5.  From the left-hand pane, select **Collections**.
-2.  Click on the desired collection.
-3.  Click **Scan Now**.
+3.  Click on the desired collection.
+4.  Click **Scan Now**.
 
 ## Rules {/*rules*/}
 
@@ -176,7 +207,9 @@ Rules allow you to:
 
 **Key information:**
 
--   {{ PRODUCT }} will not create an exposure unless a finding matches at least one rule that is configured to create an exposure. 
+-   {{ PRODUCT }} will not create an exposure for a hostname or IP address unless a finding matches at least one rule that is configured to create an exposure. 
+-   For GitHub repositories, {{ PRODUCT }} pulls vulnerabilities identified by Dependabot. 
+-   For Snyk, {{ PRODUCT }} pulls vulnerabilities identified by Snyk. 
 -   {{ PRODUCT }} provides a default rule set that you can use as a starting point. This rule set creates exposures for all findings.
 -   Rules are processed in the order that they are listed. If a finding satifies multiple rules, then all of those rules are applied to it. {{ PRODUCT }} resolves conflicts by giving precedence to the rule that is closest to the bottom of the list. 
 
@@ -320,7 +353,30 @@ This procedure assumes that you have not deleted or modified the `Scan common re
 
 ## Exposures {/*exposures*/}
 
-Exposures represent the vulnerabilities and misconfigurations that {{ PRODUCT }} has discovered in your organization's attack surface. Exposures are automatically created and updated as {{ PRODUCT }} scans your organization's managed assets. However, you may [create or modify a rule](#rules) to prevent exposures from being created. [Learn how to disable exposures for port scans.](#scan-ports-without-exposures)
+Exposures represent the vulnerabilities and misconfigurations that {{ PRODUCT }} has discovered in your organization's attack surface. Exposures are automatically created and updated as {{ PRODUCT }} scans your organization's managed assets. 
+
+**Key information:**
+
+-   You may [create or modify a rule](#rules) to prevent exposures from being created for scanned hostnames and IP addresses. 
+
+    [Learn how to disable exposures for port scans.](#scan-ports-without-exposures)
+
+-   {{ PRODUCT }} scans GitHub repositories for the following types of exposures:
+
+    -   CVEs associated with a repository's dependencies.
+    -   CVEs detected through code scans.
+    -   Leaked secrets.
+
+    You cannot use rules to suppress exposures generated from scanning a GitHub repository. 
+
+-   An exposure's **Activity** section allows you to:
+    -   Track changes to that exposure.
+    -   Add comments.
+    -   View detailed information about how an exposure was detected.
+
+-   View and manage exposures by navigating to the **Exposures** page under the **Attack Surfaces** section.
+
+### Exposure Attributes {/*exposure-attributes*/}
 
 Each exposure has the following attributes:
 
@@ -340,13 +396,6 @@ Each exposure has the following attributes:
 -   **Technology Version:** Optional. The specific version of the technology that is associated with the exposure.
 -   **CVE:** Optional. The CVE that is associated with the exposure.
 -   **Comments:** Optional. Users can add comments to exposures to provide additional context or information.
-
-An exposure's **Activity** section allows you to:
--   Track changes to that exposure.
--   Add comments.
--   View detailed information about how an exposure was detected.
-
-View and manage exposures by navigating to the **Exposures** page under the **Attack Surfaces** section.
 
 ## Assets {/*assets*/}
 
@@ -383,3 +432,50 @@ These attacks are considered benign and will not harm your organization's assets
 {{ PRODUCT }} Attack Surface Management will discover and track the technologies that are associated with your organization's assets. Technologies are automatically created and updated as {{ PRODUCT }} scans your organization's assets.
 
 View the technologies used by your network by navigating to the **Technologies** page under the **Attack Surfaces** section.
+
+## Report {/*report*/}
+
+Once you have scanned your network, {{ PRODUCT }} generates an executive-level security assessment of your organization's attack surface. You may customize this report to meet your organization's business needs. This report uses standard Markdown syntax. This syntax has been extended to support [{{ PRODUCT }}-specific variables](#-specific-variables). 
+
+**To modify your report**
+
+1.  Load the **Security Assessment** page.
+    {{ SECURITY_NAV }} **Attack Surface**.
+    5.  From the left-hand pane, select **Security Assessment**.
+2.  Click **Edit**.
+3.  Make the desired changes. 
+4.  Click **Save Changes**.
+
+<Tip>
+
+You can reset the report to the default content by clicking **Revert to Default Template** when modifying a report.
+
+</Tip>
+
+**To print your report**
+
+1.  Load the **Security Assessment** page.
+    {{ SECURITY_NAV }} **Attack Surface**.
+    5.  From the left-hand pane, select **Security Assessment**.
+2.  Click **Print** to display your report in full screen mode and to open the **Print** dialog box. 
+
+    If a virtual PDF printer has been installed on your device, then you may generate a PDF instead of printing to a physical printer. 
+
+### {{ PRODUCT }}-Specific Variables {/*-specific-variables*/}
+
+Your report supports the use of {{ PRODUCT }}-specific variables. These variables, which are placeholders for key elements, are described below.
+
+| Variable                                         | Description                                                                                                                       |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| `{logo}`                                         | Represents the {{ PRODUCT }} logo.                                                                                                |
+| `{organization_name}`                            | Represents your organization's name.                                                                                              |
+| `{counts}`                                       | Represents summary information for the detected exposures, hostnames, IP addresses, and technologies.                             |
+| `{exposures_by_priority_column_chart}`           | Represents a bar chart of exposures by priority.                                                                                  |
+| `{exposures_by_type_pie_chart}`                  | Represents a pie chart of exposures by type.                                                                                      |
+| `{exposures_by_technology_bar_chart}`            | Represents a bar chart of exposures by technology.                                                                                |
+| `{critical_technologies_list}`                   | Represents the **Technologies with Critical Vulnerabilities** section which lists vulnerabilities with a severity of 8 or higher. |
+| `{assets_graph}`                                 | Represents the **Assets** section which includes a diagram of your assets.                                                        |
+| `{protections_table_and_chart}`                  | Represents a table and a pie chart for the services through which your traffic is proxied.                                        |
+| `{high_and_critical_exposures_table}`            | Represents a table that lists your high and critical exposures that have not been resolved or mitigated.                          |
+| `{exposures_by_technology_and_severity_heatmap}` | Represents a heatmap of the number of exposures by technology and severity.                                                       |
+| `{critical_technology_names}`                    | Represents a list of your critical technologies.                                                                                  |

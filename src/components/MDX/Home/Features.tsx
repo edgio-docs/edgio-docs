@@ -8,15 +8,23 @@ import Container from '../../Layout/Container';
 
 const StyledFeatures = styled.div`
   .grouped-sections {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
+    justify-content: center; /* Center the items */
+  }
 
-    /* Start with 1 column layout */
-    grid-template-columns: 1fr;
+  .grouped-sections > * {
+    flex: 1 1 calc(50% - 20px);
+    min-width: 400px;
+    box-sizing: border-box;
+    gap: 20px;
+  }
 
-    /* At widths where 2 columns of minimum 500px can fit, use 2 columns */
-    @media (min-width: 1024px) {
-      grid-template-columns: repeat(2, minmax(500px, 1fr));
+  @media (max-width: 820px) {
+    .grouped-sections > * {
+      flex: 1 1 100%;
+      max-width: 100%;
     }
   }
 `;
@@ -31,11 +39,10 @@ export default function HomeFeatures() {
               key={section.heading}
               className={section.className}
               icon={section.icon}
-              title={section.heading}
-              subtitle={section.subheading}
-              href={section.path}
+              heading={section.heading}
+              subheading={section.subheading}
+              href={section.href}
               sections={section.sections}
-              viewMoreText={'View more'}
             />
           ))}
         </div>

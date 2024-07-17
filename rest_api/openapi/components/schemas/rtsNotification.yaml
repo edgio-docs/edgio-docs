@@ -1,0 +1,7 @@
+title: Alert Notification
+description: Defines how a notification for a real-time alert is delivered.
+type: object
+properties:
+  email:
+    $ref: ./rtsEmailAction.yaml
+additionalProperties: false

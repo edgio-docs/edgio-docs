@@ -1,0 +1,27 @@
+parameters:
+  - $ref: ../components/parameters/organization_id.yaml
+  - $ref: ../components/parameters/bot_manager_id.yaml
+  - $ref: ../components/parameters/version_id.yaml
+get:
+  operationId: get-bot-manager-version
+  tags:
+    - Bot Managers
+  summary: Get Bot Manager Configuration by Version
+  description: Retrieve a specific version of a bot manager configuration. 
+  security:
+    - bot_securityScope: [app.bot_security]
+  responses:
+    '200':
+      description: OK. A specific version of a bot manager configuration was retrieved.
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: ../components/schemas/version_long.yaml
+              - type: object
+                properties:
+                  config_payload:
+                    $ref: ../components/schemas/BotManager.yaml
+
+    '404':
+      $ref: ../components/responses/error_404.yaml

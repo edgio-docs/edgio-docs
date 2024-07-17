@@ -44,7 +44,7 @@ Organization management consists of:
 
     <Callout type="info">
 
-      As shown above, the URL for your organization's **Overview** page is formed by appending your organization's name to the {{ PORTAL }}'s base URL. Additionally, an organization's edge link starts with the organization's name (e.g., `https://my-company-nature-videos-production.edgio.link/`).
+      As shown above, the URL for your organization's **Web Properties** page is formed by appending your organization's name to the {{ PORTAL }}'s base URL. Additionally, an organization's edge link starts with the organization's name (e.g., `https://my-company-nature-videos-production.edgio.link/`).
 
     </Callout>
 
@@ -106,9 +106,9 @@ Upon creating a user, you must assign a role that will be applied at the organiz
 
     A new user must confirm their account by performing the following steps:
 
-    1.  Clicking **CONFIRM MY ACCOUNT** from the welcome email.
-    2.  Clicking **Accept** to accept our terms of service and privacy policy.
-    3.  Set their password or link their account to Github or Google.
+    1.  Click **CONFIRM MY ACCOUNT** from the welcome email.
+    2.  Click **Accept** to accept our terms of service and privacy policy.
+    3.  Set their password or link their account to Github, Google, or Microsoft.
 
     <Callout type="info">
 

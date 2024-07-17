@@ -534,7 +534,7 @@ Defines the set of status codes that can result in cached content.
 
 **Key information:**
 
--   Caching non-`200 OK` response also requires enabling the [Ignore Origin No Cache feature](#ignore-origin-no-cache).
+-   Caching a non-`200 OK` response also requires enabling the [Ignore Origin No Cache feature](#ignore-origin-no-cache).
 -   This feature cannot be used to disable caching for responses that generate a `200 OK` status code.
 
 <edgejs>
@@ -1943,14 +1943,13 @@ export default new Router()
 
 **Default Behavior:** 10,000 requests
 
-<!--
 #### Proxy Special Headers {/*proxy-special-headers*/}
 
 Defines the set of CDN-specific request headers that will be forwarded from an edge server to an origin server.
 
 **Key information:**
 
--   Assign a value by typing it and then pressing 'ENTER'. Repeat this step as needed.
+-   Assign a value by typing it and then pressing `ENTER`. Repeat this step as needed.
 -   Each CDN-specific request header defined in this feature will be forwarded to an origin server.
 -   Prevent a CDN-specific request header from being forwarded to an origin server by removing it from this list.
 
@@ -1972,8 +1971,7 @@ export default new Router()
 ```
 </edgejs>
 
-**Default Behavior:** By default, all CDN-specific request headers are forwarded to the origin server.
--->
+**Default Behavior:** By default, CDN-specific request headers are forwarded to the origin server.
 
 #### Set Origin {/*set-origin*/}
 

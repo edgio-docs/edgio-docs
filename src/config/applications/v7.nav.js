@@ -22,6 +22,16 @@ const nav = {
         {
           title: 'Properties',
           path: 'basics/properties',
+          routes: [
+            {
+              title: 'Create Self-Hosted Property',
+              path: 'basics/properties/create_self_hosted',
+            },
+            {
+              title: 'Create Edgio-Hosted Property',
+              path: 'basics/properties/create_edgio_hosted',
+            },
+          ],
         },
         {
           title: 'Environments',
@@ -121,6 +131,10 @@ const nav = {
             {
               title: 'edgio.config.js Configuration',
               path: 'performance/cdn_as_code/edgio_config',
+            },
+            {
+              title: 'CLI',
+              path: 'performance/cdn_as_code/cli',
             },
           ],
         },
@@ -262,7 +276,7 @@ const nav = {
           path: 'edge_functions/examples',
           routes: [
             {
-              title: 'AWS Request Signing',
+              title: 'AWS S3 Request Signing',
               path: 'edge_functions/examples/aws_request_signing',
             },
             {
@@ -284,6 +298,10 @@ const nav = {
             {
               title: 'JWT Verification',
               path: 'edge_functions/examples/jwt_verification',
+            },
+            {
+              title: 'Optimizely Experimentation',
+              path: 'edge_functions/examples/optimizely_experimentation',
             },
             {
               title: 'Redirects',
@@ -316,6 +334,10 @@ const nav = {
           path: 'experimentation/cross_environment_traffic_splitting',
         },
         {
+          title: 'Basic Traffic Splitting Tutorial',
+          path: 'experimentation/basic_traffic_splitting_tutorial',
+        },
+        {
           title: 'Iterative Migration Tutorial',
           path: 'experimentation/iterative_migration_tutorial',
         },
@@ -339,7 +361,7 @@ const nav = {
           path: 'security/tls_certificates',
         },
         {
-          title: 'Attack Surface Management - BETA',
+          title: 'Attack Surface Management',
           path: 'security/asm',
         },
         separator,
@@ -464,6 +486,10 @@ const nav = {
             {
               title: 'React',
               path: 'sites_frameworks/getting_started/react',
+            },
+            {
+              title: 'Remix',
+              path: 'sites_frameworks/getting_started/remix',
             },
             {
               title: 'SvelteKit',
@@ -611,53 +637,27 @@ const nav = {
       ],
     },
     {
-      title: 'Develop',
-      path: 'develop',
+      title: 'REST API',
+      path: 'rest_api',
       icon: 'code-plain',
       routes: [
         {
-          title: 'CLI',
-          path: 'develop/cli',
+          title: 'Authentication',
+          path: 'rest_api/authentication',
         },
         {
-          title: 'REST API',
-          path: 'develop/rest_api',
-          routes: [
-            {
-              title: 'Authentication',
-              path: 'develop/rest_api/authentication',
-            },
-            {
-              title: 'Using the Metrics REST API',
-              path: 'develop/rest_api/metrics_rest_api_usage',
-            },
-            {
-              title: 'REST API Reference',
-              path: '/rest_api/',
-              external: true,
-            },
-            separator,
-            {
-              title: 'Legacy Purge (Clear-Cache)',
-              path: 'develop/rest_api/cache_purge',
-            },
-          ],
+          title: 'Using the Metrics REST API',
+          path: 'rest_api/metrics_rest_api_usage',
         },
         {
-          title: 'EdgeJS API Reference',
-          path: 'develop/packages',
-          routes: [
-            {
-              title: '@edgio/core',
-              path: '/docs/v7.x/api/core/',
-              external: true,
-            },
-            {
-              title: '@edgio/prefetch',
-              path: '/docs/v7.x/api/prefetch/',
-              external: true,
-            },
-          ],
+          title: 'REST API Reference',
+          path: '/rest_api/',
+          external: true,
+        },
+        separator,
+        {
+          title: 'Legacy Purge (Clear-Cache)',
+          path: 'rest_api/cache_purge',
         },
       ],
     },
@@ -712,7 +712,7 @@ const nav = {
         },
         {
           title: 'CLI',
-          path: 'develop/cli#commands',
+          path: 'performance/cdn_as_code/cli#commands',
         },
         separator,
         {
@@ -722,24 +722,33 @@ const nav = {
         },
         {
           title: 'Legacy Purge API',
-          path: 'develop/rest_api/cache_purge',
+          path: 'rest_api/cache_purge',
         },
         separator,
         {
-          title: 'RTLD CDN',
+          title: 'RTLD CDN Log Fields',
           path: 'logs/rtld/log_fields_rtld_cdn',
         },
         {
-          title: 'RTLD WAF',
+          title: 'RTLD WAF Log Fields',
           path: 'logs/rtld/log_fields_rtld_waf',
         },
         {
-          title: 'RTLD Rate Limiting',
+          title: 'RTLD Rate Limiting Log Fields',
           path: 'logs/rtld/log_fields_rtld_rate_limiting',
         },
         {
-          title: 'RTLD Bot',
+          title: 'RTLD Bot Log Fields',
           path: 'logs/rtld/log_fields_rtld_bot_manager',
+        },
+        {
+          title: 'RTLD Cloud Functions Log Fields',
+          path: 'logs/rtld/log_fields_rtld_cloud_functions',
+        },
+        separator,
+        {
+          title: 'POPs',
+          path: 'reference/pops',
         },
       ],
     },
@@ -757,6 +766,11 @@ const nav = {
           path: 'upgrading/updating_packages',
         },
       ],
+    },
+    {
+      title: 'Partners',
+      path: 'partners',
+      icon: 'handshake',
     },
   ],
 };

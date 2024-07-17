@@ -31,7 +31,7 @@ function SectionHeaderSubtitle({subtitle}: {subtitle: string}) {
 const StyledSectionheader = styled.header`
   display: flex;
   align-items: flex-start;
-  column-gap: 19px;
+  column-gap: 18px;
 
   .section-icon__box {
     .icon-box {
@@ -64,7 +64,7 @@ const StyledSectionheader = styled.header`
   }
 
   .section-header__subtitle {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 28px;
     color: var(--subtitle-primary);
   }

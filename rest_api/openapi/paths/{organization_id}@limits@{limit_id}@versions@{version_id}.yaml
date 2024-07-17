@@ -6,16 +6,21 @@ get:
   operationId: get-limit-version
   tags:
     - Rate Rules (Limits)
-  summary: GET specific version of limit object identified by version id
-  description: Get get specific version of limit object.
+  summary: Get Rate Rule by Version
+  description: Retrieve a specific version of a rate rule.
   security:
     - wafScope: [app.waf]
   responses:
     '200':
-      description: Version for that limit object.
+      description: OK. A specific version of a rate rule was retrieved.
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/version_long.yaml
+            allOf:
+              - $ref: ../components/schemas/version_long.yaml
+              - type: object
+                properties:
+                  config_payload:
+                    $ref: ../components/schemas/Limit.yaml
     '404':
-      description: version not found
+      $ref: ../components/responses/error_404.yaml

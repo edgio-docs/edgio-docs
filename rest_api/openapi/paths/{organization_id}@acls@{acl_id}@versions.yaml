@@ -1,0 +1,31 @@
+parameters:
+  - $ref: ../components/parameters/organization_id.yaml
+  - $ref: ../components/parameters/acl_id.yaml
+get:
+  operationId: get-acl-versions
+  tags:
+    - Access Control List (ACL)
+  summary: Get Access Rule's Version History
+  description: Retrieve a list of versions for a specific access rule. 
+  security:
+    - wafScope: [app.waf]
+  responses:
+    '200':
+      description: OK. An access rule's version history was retrieved. 
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              '@id':
+                type: string
+                description: The relative URI through which this response was generated.
+              '@type':
+                type: string
+                description: Returns `Collection`.
+              items:
+                type: array
+                items:
+                  $ref: ../components/schemas/version_short.yaml
+    '404':
+      $ref: ../components/responses/error_404.yaml

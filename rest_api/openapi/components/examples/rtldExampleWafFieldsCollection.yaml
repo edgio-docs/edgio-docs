@@ -1,0 +1,16 @@
+value:
+  '@id': /rtld/v1/waf/fields
+  '@type': Collection
+  items:
+    - code: client_country_code
+      name: Country Code
+    - code: client_city
+      name: City Name
+    - code: timestamp
+      name: Epoch Time
+    - code: client_ip
+      name: Client IP
+    - code: server_port
+      name: Server Port
+    - code: url
+      name: URL

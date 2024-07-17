@@ -1,20 +1,31 @@
 import styled from 'styled-components';
 
 export const StyledFeatureSection = styled.div`
-  display: grid;
-  row-gap: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
 
   .route-items {
-    display: flex;
-    justify-content: space-between;
-    padding-left: calc(19px + 32px);
-    flex-wrap: wrap;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: 100%;
+    margin-left: 50px;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 800px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .route-list__items {
-    display: grid;
-    row-gap: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     list-style: none;
     padding: 0;
   }
@@ -22,7 +33,7 @@ export const StyledFeatureSection = styled.div`
   .route-list__item {
     display: flex;
     align-items: center;
-    column-gap: 10px;
+    gap: 6px;
 
     .dot {
       --size: 8px;
@@ -33,8 +44,7 @@ export const StyledFeatureSection = styled.div`
     }
 
     a {
-      font-weight: 600;
-      font-size: 18px;
+      font-size: 16px;
       line-height: 24px;
       color: var(--text-link-primary);
       position: relative;

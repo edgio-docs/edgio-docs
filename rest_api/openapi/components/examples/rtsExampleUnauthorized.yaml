@@ -1,0 +1,10 @@
+value:
+  '@type': Error
+  code: unauthorized
+  status_code: 401
+  title: Auth not valid
+  description: Could not validate access
+  details:
+    - '@type': ErrorDetail
+      source: /name
+      description: Error in Auth

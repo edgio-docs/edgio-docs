@@ -18,7 +18,7 @@ export const sections: HomepageSectionGroup[] = [
         items: [
           {
             title: 'Getting Started',
-            path: '',
+            path: '/applications/getting_started',
           },
           {
             title: 'Properties',
@@ -105,7 +105,11 @@ export const sections: HomepageSectionGroup[] = [
         path: 'security',
         items: [
           {
-            title: 'Getting Started',
+            title: 'Attack Surface Management',
+            path: 'asm',
+          },
+          {
+            title: 'Getting Started with WAAP',
             path: 'getting_started',
           },
           {
@@ -151,8 +155,43 @@ export const sections: HomepageSectionGroup[] = [
         path: 'sites_frameworks',
         items: [
           {
-            title: 'Frameworks',
+            title: 'Next.js',
+            path: 'getting_started/next',
+          },
+          {
+            title: 'Nuxt3',
+            path: 'getting_started/nuxt3',
+          },
+          {
+            title: 'Express',
+            path: 'getting_started/express',
+          },
+          {
+            title: 'React',
+            path: 'getting_started/react',
+          },
+          {
+            title: 'Vue.js',
+            path: 'getting_started/vue',
+          },
+          {
+            title: 'Additional Frameworks',
             path: 'getting_started',
+          },
+        ],
+      },
+      {
+        title: 'REST API',
+        path: 'rest_api',
+        items: [
+          {
+            title: 'Authentication',
+            path: '/applications/rest_api/authentication',
+          },
+          {
+            title: 'REST API Reference',
+            path: '/rest_api/',
+            external: true,
           },
         ],
       },
@@ -254,7 +293,6 @@ export const sections: HomepageSectionGroup[] = [
     icon: IconUplynk,
     sections: [
       {
-        path: 'https://docs.edgecast.com/video/index.html',
         items: [
           {
             title: 'Getting Started',
@@ -342,12 +380,27 @@ export const sections: HomepageSectionGroup[] = [
   },
 ];
 
-sections.forEach((section) => {
-  section.sections.forEach((subsection) => {
-    subsection.items.forEach((item) => {
-      if (!item.path.startsWith('http') && !item.path.startsWith('/')) {
-        item.path = `${section.path}/${subsection.path}/${item.path}`;
+(() => {
+  const setHref = (basePath: string, path: string) =>
+    path.startsWith('http') || path.startsWith('/')
+      ? path
+      : `${basePath}/${path}`;
+
+  sections.forEach((section) => {
+    if (section.path) {
+      section.href = section.path;
+    }
+
+    section.sections.forEach((subsection) => {
+      if (subsection.path) {
+        subsection.href = setHref(section.path!, subsection.path);
       }
+
+      subsection.items.forEach((item) => {
+        if (item.path) {
+          item.href = setHref(`${section.path}/${subsection.path}`, item.path);
+        }
+      });
     });
   });
-});
+})();

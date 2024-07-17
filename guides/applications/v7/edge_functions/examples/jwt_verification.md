@@ -2,6 +2,8 @@
 title: JWT Verification
 ---
 
+{{ ef_req_edgejs_deps.md }}
+
 Edge functions can be used to verify the authenticity of a JSON Web Token (JWT) sent by a client. This can be useful for ensuring that the client is authorized to access a protected resource, or for verifying the identity of the client. Handling this verification at the edge can help to offload the work from the origin server, and offer a more secure and efficient way to verify the token.
 
 <ExampleButtons
@@ -15,14 +17,11 @@ Edge functions can be used to verify the authenticity of a JSON Web Token (JWT) 
 In the {{ PRODUCT }} router, you can use the `edge_function` feature to specify the path to the edge function that will handle the JWT verification. We expect the client to send a POST request with a JSON body containing the JWT token to be verified. The edge function will then validate the token and return a response with the validation result.
 
 ```js filename="routes.js"
-import { Router, edgioRoutes } from '@edgio/core';
+import {Router, edgioRoutes} from '@edgio/core';
 
-export default new Router()
-  .use(edgioRoutes)
-  .post('/jwt', {
-    edge_function: './edge-functions/main.js',
-  });
-
+export default new Router().use(edgioRoutes).post('/jwt', {
+  edge_function: './edge-functions/main.js',
+});
 ```
 
 ## Edge Function {/* edge-function */}
@@ -36,7 +35,7 @@ The Edge Function runtime does not currently support a native crypto library, so
 </Callout>
 
 ```js filename="edge-functions/main.js"
-import { JWT } from './JWT.js';
+import {JWT} from './JWT.js';
 
 /**
  * Handle an HTTP request to validate a JWT.
@@ -47,13 +46,13 @@ import { JWT } from './JWT.js';
  */
 export async function handleHttpRequest(request, context) {
   // Extract the JWT token from the request body
-  const { token } = await request.json();
+  const {token} = await request.json();
 
   // Retrieve the secret key from environment variables
   const secret = context.environmentVars['JWT_SECRET'] || 'your-256-bit-secret';
 
   // Initialize response structure
-  const resp = { valid: false };
+  const resp = {valid: false};
 
   // Create JWT instance with the token and secret
   const jwt = new JWT(token, secret);
@@ -71,15 +70,15 @@ export async function handleHttpRequest(request, context) {
   // Return the response with appropriate HTTP status code
   return new Response(JSON.stringify(resp), {
     status: isValid ? 200 : 401, // 200 OK for valid token, 401 for invalid
-    headers: { 'Content-Type': 'application/json' }, // Set response content type
+    headers: {'Content-Type': 'application/json'}, // Set response content type
   });
 }
 ```
 
 ```js filename="edge-functions/JWT.js"
-import { Buffer } from 'buffer';
+import {Buffer} from 'buffer';
 import * as Base64 from 'crypto-js/enc-base64url';
-import { HmacSHA256, HmacSHA384, HmacSHA512 } from 'crypto-js';
+import {HmacSHA256, HmacSHA384, HmacSHA512} from 'crypto-js';
 
 // Function to decode base64 strings
 const base64decode = (str) => Buffer.from(str, 'base64').toString();

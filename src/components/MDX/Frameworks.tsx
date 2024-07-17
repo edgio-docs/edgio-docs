@@ -10,9 +10,9 @@ import {
   IconDojo,
   IconEleventy,
   IconEleventyDark,
-  IconEmberJS,
   IconEmberFastboot,
   IconEmberFastbootDark,
+  IconEmberJS,
   IconExpress,
   IconExpressDark,
   IconFrontity,
@@ -27,13 +27,13 @@ import {
   IconLit,
   IconMKDocs,
   IconMKDocsDark,
-  IconNX,
-  IconNXDark,
   IconNextJS,
-  IconNextJSDark,
   IconNextJSCommerce,
   IconNextJSCommerceDark,
+  IconNextJSDark,
   IconNuxt,
+  IconNX,
+  IconNXDark,
   IconPreact,
   IconQwik,
   IconRazzle,
@@ -55,8 +55,8 @@ import {
   IconSvelte,
   IconUmiJS,
   IconVitePress,
-  IconVueStorefront,
   IconVue,
+  IconVueStorefront,
   IconZola,
   IconZolaDark,
 } from 'components/Icon';
@@ -438,6 +438,12 @@ const items: ItemsByVersion = {
       iconDark: <IconReact />,
     },
     {
+      title: 'Remix',
+      path: '/guides/sites_frameworks/getting_started/remix',
+      icon: <IconRemix />,
+      iconDark: <IconRemixDark />,
+    },
+    {
       title: 'SvelteKit',
       path: '/guides/sites_frameworks/getting_started/sveltekit',
       icon: <IconSvelte />,
@@ -782,7 +788,7 @@ export default function Frameworks({frameworks = items}) {
       <ul className="framework-lists">
         {routesByColumns.map((route) => (
           <li key={route.path} className="framework-list__item">
-            <Link href={toVersionedPath(route.path)} passHref>
+            <Link href={toVersionedPath(route.path)} passHref legacyBehavior>
               <a className="framework-link">
                 <div className="icon">
                   {renderThemedElement(route.icon, route.iconDark)}

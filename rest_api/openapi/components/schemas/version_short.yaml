@@ -3,17 +3,25 @@ type: object
 properties:
   '@id':
     type: string
+    description: A version's relative path.
   '@type':
     type: string
+    description: Returns `Version`.
   version:
     type: integer
+    description: Version number.
   config_id:
     type: string
+    description: The configuration's system-defined ID.
   draft:
     type: boolean
+    description: Reserved for internal use.
   modified_date:
     type: string
+    description: The date and time (UTC) at which this resource was last modified.
   modified_by:
     type: string
+    description: The Edgio Console user that last modified this resource. This field does not reflect updates performed through the REST API. 
   config_name:
     type: string
+    description: The configuration's name. 

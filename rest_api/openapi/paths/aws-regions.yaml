@@ -7,9 +7,6 @@ get:
   security:
     - rtldScope:
         - app.rtld:read
-  parameters:
-    - $ref: ../components/parameters/rtldLimitParam.yaml
-    - $ref: ../components/parameters/rtldOffsetParam.yaml
   responses:
     '200':
       $ref: ../components/responses/rtldAWSRegionsCollection.yaml

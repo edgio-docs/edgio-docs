@@ -1,0 +1,47 @@
+title: Log Filtering Object
+description: Contains your log filtering configuration.
+type: object
+properties:
+  access_rule:
+    type: array
+    items:
+      type: string
+    description: >-
+      Defines the set of access rules by which log data will be filtered.
+      Identify each desired access rule by its name. A null value indicates that
+      log data will not be filtered by an access rule.
+  host_names:
+    $ref: ./rtldHostNameFilter.yaml
+  country_code:
+    $ref: ./rtldCountryCodeFilter.yaml
+  custom_rule:
+    type: array
+    items:
+      type: string
+    description: >-
+      Defines the set of custom rules by which log data will be filtered.
+      Identify each desired custom rule by its name. A null value indicates that
+      log data will not be filtered by a custom rule.
+  security_app_config:
+    type: array
+    items:
+      type: string
+    description: >-
+      Defines the set of security application manager configurations by which
+      log data will be filtered. Identify each desired security application
+      manager configuration by its name. A null value indicates that log data
+      will not be filtered by a security application manager configuration.
+  user_agent_regexp:
+    type: string
+    description: >-
+      Defines a RE2-compatible regular expression pattern that identifies the
+      set of user agents by which log data will be filtered. A null value
+      indicates that log data will not be filtered by a user agent.
+  managed_rule:
+    type: array
+    items:
+      type: string
+    description: >-
+      Defines the set of managed rules by which log data will be filtered.
+      Identify each desired managed rule by its name. A null value indicates
+      that log data will not be filtered by a managed rule.

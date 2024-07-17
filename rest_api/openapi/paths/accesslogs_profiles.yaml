@@ -3,21 +3,23 @@ post:
     - RTLD Access Logs Profile
   summary: Add RTLD Access Logs Profile
   description: 'Creates a RTLD Access Logs profile. '
-  operationId: CreateALProfile
+  operationId: CreateAlProfile
   security:
     - rtldScope:
         - app.rtld
   parameters:
     - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
   requestBody:
-    $ref: ../components/requestBodies/rtldALProfileRequest.yaml
+    $ref: ../components/requestBodies/rtldAlProfileRequest.yaml
   responses:
     '201':
-      $ref: ../components/responses/rtldSingleALProfile.yaml
+      $ref: ../components/responses/rtldSingleAlProfile.yaml
     '400':
       $ref: ../components/responses/rtldBadRequest.yaml
     '401':
       $ref: ../components/responses/rtldUnauthorized.yaml
+    '403':
+      $ref: ../components/responses/rtldForbidden.yaml
     '500':
       $ref: ../components/responses/rtldInternalServerError.yaml
   x-codegen-request-body-name: Body
@@ -26,18 +28,18 @@ get:
     - RTLD Access Logs Profile
   summary: Get All RTLD Access Logs Profiles
   description: Returns all RTLD Access Logs profiles associated with an environment.
-  operationId: GetAllALProfiles
+  operationId: GetAllAlProfiles
   security:
     - rtldScope:
         - app.rtld:read
   parameters:
-    - $ref: ../components/parameters/rtldLimitParam.yaml
-    - $ref: ../components/parameters/rtldOffsetParam.yaml
     - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
   responses:
     '200':
-      $ref: ../components/responses/rtldALProfileCollection.yaml
+      $ref: ../components/responses/rtldAlProfileCollection.yaml
     '401':
       $ref: ../components/responses/rtldUnauthorized.yaml
+    '403':
+      $ref: ../components/responses/rtldForbidden.yaml
     '500':
       $ref: ../components/responses/rtldInternalServerError.yaml

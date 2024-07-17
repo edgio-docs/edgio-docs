@@ -1,0 +1,41 @@
+value:
+  '@id': /rtld/v1/waf/profiles/10027
+  '@type': WebApplicationFirewallLogsProfile
+  id: 10027
+  environment_id: c9980249-2fb6-4699-a68e-271383815700
+  enabled: false
+  downsampling_percent: 25
+  fields:
+    - client_country_code
+    - client_city
+    - timestamp
+    - client_ip
+    - server_port
+    - url
+    - host
+    - user_agent
+    - referer
+    - account_number
+    - uuid
+    - rule_message
+    - rule_tags
+    - sub_events_count
+    - sub_events
+    - waf_instance_name
+    - waf_profile_name
+    - action_type
+    - waf_profile_type
+    - client_country
+  filters:
+    host_names:
+      names:
+        - host.example.com
+      condition: in
+  delivery_method:
+    type: http_post
+    destination_endpoint: https://logs.example.com/cdn/
+    authentication:
+      type: http_basic
+      username: myuser
+    log_format: json
+  profile_name: myprofile

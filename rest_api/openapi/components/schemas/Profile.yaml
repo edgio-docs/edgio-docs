@@ -28,7 +28,7 @@ properties:
     type: string
     description: |
 
-      The ID for the ruleset associated with this managed rule.
+      The system-defined ID for the Edgio ruleset associated with this managed rule.
       
       Use the [Get Edgio Rulesets endpoint](#tag/Edgio-Rulesets/operation/get-rulesets) to retrieve a list of Edgio rulesets and their system-defined IDs.
 
@@ -36,7 +36,7 @@ properties:
     type: string
     description: |
 
-      The version of the ruleset associated with this managed rule.    
+      The version of the Edgio ruleset associated with this managed rule.
 
       Use the [Get Edgio Rulesets endpoint](#tag/Edgio-Rulesets/operation/get-rulesets) to retrieve a list of Edgio rulesets and their versions.
 

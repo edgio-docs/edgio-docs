@@ -38,6 +38,11 @@ const items = {
 
   default: [
     {
+      title: 'Attack Surface Management',
+      path: '/guides/security/asm',
+      separator: true,
+    },
+    {
       title: 'Website Security (EdgeJS)',
       path: '/guides/security/edgejs_security',
       separator: true,
@@ -117,7 +122,9 @@ export default function Security() {
               {route.map(({path, title}) => (
                 <li className="route-list__item" key={title}>
                   <div className="dot" />
-                  <Link href={toVersionedPath(path)}>{title}</Link>
+                  <Link href={toVersionedPath(path)} legacyBehavior>
+                    {title}
+                  </Link>
                 </li>
               ))}
             </ul>

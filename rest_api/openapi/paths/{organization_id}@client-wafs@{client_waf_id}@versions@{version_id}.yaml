@@ -6,17 +6,21 @@ get:
   operationId: get-client-waf-configuration-version
   tags:
     - Client WAFs
-  summary: GET specific version of Client WAF object identified by version id
-  description: Get get specific version of Client WAF object.
+  summary: Get Client-Side Protection Policy by Version
+  description: Retrieve a specific version of a Client-Side Protection policy.
   security:
     - client_wafScope: [app.client_waf]
   responses:
     '200':
-      description: Version for that Client WAF object.
+      description: OK. A specific version of a Client-Side Protection policy was retrieved.
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/version_long.yaml
+            allOf:
+              - $ref: ../components/schemas/version_long.yaml
+              - type: object
+                properties:
+                  config_payload:
+                    $ref: ../components/schemas/ClientWaf.yaml
     '404':
-      description: version not found
       $ref: ../components/responses/error_404.yaml

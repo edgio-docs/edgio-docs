@@ -71,6 +71,11 @@ function useConditioning() {
         return path;
       }
 
+      // If the path starts with a / and includes a version within the path, keep the path as-is
+      if (path.startsWith('/') && path.match(/\/v\d+\//)) {
+        return path;
+      }
+
       const pathPrefix = productsConfig['applications'].pathPrefix;
       const escapedPrefix = pathPrefix.replace(
         /[-\/\\^$*+?.()|[\]{}]/g,
@@ -103,7 +108,7 @@ function useConditioning() {
               pathPrefix, // forcing all urls to start with the prefix
               versionConfig.pathPrefix,
               ...path
-                .replace('/guides/', '/') //legacy
+                .replace(/^\/guides\//, '/') //legacy
                 .replace(pathPrefix, '/')
                 .replace(`/${versionConfig.pathPrefix}/`, '/')
                 .split('/'),

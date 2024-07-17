@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Edgio REST API
-  version: 0.1.0
+  version: 0.4.0
   x-logo:
     url: 'https://docs.edg.io/_next/static/media/edgio-dark.ea0d686f.webp'
     backgroundColor: '#FFFFFF'
@@ -14,16 +14,16 @@ tags:
     x-displayName: TLS Certificates
     description: |
     
-      Retrieve TLS certificates or upload your own TLS certificate to a specific environment. 
+      Upload your own TLS certificate, retrieve existing TLS certificates, or request TLS certificate generation for a specific environment. 
       
-      <a href="/applications/v7/security/tls_certificates" target="_blank">Learn more about hosting TLS certificates on our network.</a>
+      <a href="https://docs.edg.io/applications/v7/security/tls_certificates" target="_blank">Learn more about hosting TLS certificates on our network.</a>
   - name: deployments
     x-displayName: Deployment Info
     description: |
     
       Retrieve information and log data for a previous deployment. 
       
-      <a href="/applications/v7/basics/deployments" target="_blank">Learn more about deployments.</a>
+      <a href="https://docs.edg.io/applications/v7/basics/deployments" target="_blank">Learn more about deployments.</a>
   - name: configs
     x-displayName: CDN Configuration
     description: Deploy or retrieve a CDN configuration. This type of configuration consists of origin configurations, hostnames, rules, and experiments.
@@ -33,7 +33,7 @@ tags:
     
       Automate environment variable management. 
       
-      <a href="/applications/v7/basics/environments#environment-variables" target="_blank">Learn more about environment variables.</a>
+      <a href="https://docs.edg.io/applications/v7/basics/environments#environment-variables" target="_blank">Learn more about environment variables.</a>
   - name: purge-requests
     x-displayName: Purge
     description: Purge cached content and retrieve information about previously submitted purge requests.
@@ -175,12 +175,25 @@ tags:
 
           For example, the `requests_edge_total` metric reports the total number of requests submitted to our network.
 
-      <a href="/applications/develop/rest_api/metrics_rest_api_usage" target="_blank">Learn how to use the Metrics API.</a>
+      <a href="https://docs.edg.io/applications/rest_api/metrics_rest_api_usage" target="_blank">Learn how to use the Metrics API.</a>
 
+  - name: real-time alert
+    x-displayName: Real-Time Alerts
+    description: |
+  
+      Receive email notifications when the condition(s) defined for a specific environment are met. 
+
+      <a href="https://docs.edg.io/applications/basics/alerts#real-time-alerts" target="_blank">Learn more about real-time alerts.</a>
   - name: RTLD Access Logs Profile
     description: |
     
       Automate Real-Time Log Delivery (RTLD) Access Logs profile management. A RTLD Access Logs profile defines the condition(s) under which access log data will be delivered to the desired destination (e.g., your web server or AWS S3). 
+      
+      <a href="/applications/v7/logs/rtld" target="_blank">Learn more about Real-Time Log Delivery.</a>
+  - name: RTLD WAF Profile
+    description: |
+    
+      Automate Real-Time Log Delivery (RTLD) Web Application Firewall (WAF) profile management. A RTLD WAF profile defines the condition(s) under which WAF log data will be delivered to the desired destination (e.g., your web server or AWS S3). 
       
       <a href="/applications/v7/logs/rtld" target="_blank">Learn more about Real-Time Log Delivery.</a>
   - name: Log Fields
@@ -196,6 +209,12 @@ paths:
       - configScope: [app.config]
   /config/v0.1/tls-certs:
     $ref: paths/config_v0.1_tls-certs.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+    security:
+      - configScope: [app.config]
+  /config/v0.1/tls-certs/generate:
+    $ref: paths/config_v0.1_tls-certs_generate.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
@@ -284,18 +303,18 @@ paths:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
       - wafScope: [app.waf]
-#  '/{organization_id}/scopes/{scope_id}/versions':
-#    $ref: 'paths/{organization_id}@scopes@{scope_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
-#  '/{organization_id}/scopes/{scope_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@scopes@{scope_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
+  '/{organization_id}/scopes/{scope_id}/versions':
+    $ref: 'paths/{organization_id}@scopes@{scope_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
+  '/{organization_id}/scopes/{scope_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@scopes@{scope_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
   '/{organization_id}/acls':
     $ref: 'paths/{organization_id}@acls.yaml'
     servers:
@@ -308,18 +327,18 @@ paths:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
       - wafScope: [app.waf]
-#  '/{organization_id}/acl/{acl_id}/versions':
-#    $ref: 'paths/{organization_id}@acl@{acl_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
-#  '/{organization_id}/acl/{acl_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@acl@{acl_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
+  '/{organization_id}/acls/{acl_id}/versions':
+    $ref: 'paths/{organization_id}@acls@{acl_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
+  '/{organization_id}/acls/{acl_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@acls@{acl_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
   '/{organization_id}/rules':
     $ref: 'paths/{organization_id}@rules.yaml'
     servers:
@@ -332,18 +351,18 @@ paths:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
       - wafScope: [app.waf]
-#  '/{organization_id}/rules/{rule_id}/versions':
-#    $ref: 'paths/{organization_id}@rules@{rule_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
-#  '/{organization_id}/rules/{rule_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@rules@{rule_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
+  '/{organization_id}/rules/{rule_id}/versions':
+    $ref: 'paths/{organization_id}@rules@{rule_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
+  '/{organization_id}/rules/{rule_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@rules@{rule_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
   '/{organization_id}/limits':
     $ref: 'paths/{organization_id}@limits.yaml'
     servers:
@@ -356,18 +375,18 @@ paths:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
       - wafScope: [app.waf]
-#  '/{organization_id}/limits/{limit_id}/versions':
-#    $ref: 'paths/{organization_id}@limits@{limit_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
-#  '/{organization_id}/limits/{limit_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@limits@{limit_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
+  '/{organization_id}/limits/{limit_id}/versions':
+    $ref: 'paths/{organization_id}@limits@{limit_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
+  '/{organization_id}/limits/{limit_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@limits@{limit_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
   '/{organization_id}/profiles':
     $ref: 'paths/{organization_id}@profiles.yaml'
     servers:
@@ -380,18 +399,18 @@ paths:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
       - wafScope: [app.waf]
-#  '/{organization_id}/profiles/{profile_id}/versions':
-#    $ref: 'paths/{organization_id}@profiles@{profile_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
-#  '/{organization_id}/profiles/{profile_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@profiles@{profile_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
+  '/{organization_id}/profiles/{profile_id}/versions':
+    $ref: 'paths/{organization_id}@profiles@{profile_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
+  '/{organization_id}/profiles/{profile_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@profiles@{profile_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
   '/rulesets':
     $ref: 'paths/rulesets.yaml'
     servers:
@@ -404,12 +423,12 @@ paths:
       - url: 'https://edgioapis.com/waf/v0.9'
     security:
       - wafScope: [app.waf]
-#  '/rulesets/{ruleset_id}/version/{version_id}':
-#    $ref: 'paths/rulesets@{ruleset_id}@version@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/waf/v0.9'
-#    security:
-#      - wafScope: [app.waf]
+  '/rulesets/{ruleset_id}/version/{version_id}':
+    $ref: 'paths/rulesets@{ruleset_id}@version@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/waf/v0.9'
+    security:
+      - wafScope: [app.waf]
   '/{organization_id}/api-gateways':
     $ref: 'paths/{organization_id}@api-gateways.yaml'
     servers:
@@ -428,18 +447,18 @@ paths:
       - url: 'https://edgioapis.com/api-security/v0.9'
     security:
       - api_securityScope: [app.api_security]
-#  '/{organization_id}/api-gateways/{api_gateway_id}/versions':
-#    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/api-security/v0.9'
-#    security:
-#      - api_securityScope: [app.api_security]
-#  '/{organization_id}/api-gateways/{api_gateway_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/api-security/v0.9'
-#    security:
-#      - api_securityScope: [app.api_security]
+  '/{organization_id}/api-gateways/{api_gateway_id}/versions':
+    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/api-security/v0.9'
+    security:
+      - api_securityScope: [app.api_security]
+  '/{organization_id}/api-gateways/{api_gateway_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@api-gateways@{api_gateway_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/api-security/v0.9'
+    security:
+      - api_securityScope: [app.api_security]
   '/{organization_id}/api-schemas':
     $ref: 'paths/{organization_id}@api-schemas.yaml'
     servers:
@@ -452,18 +471,18 @@ paths:
       - url: 'https://edgioapis.com/api-security/v0.9'
     security:
       - api_securityScope: [app.api_security]
-#  '/{organization_id}/api-schemas/{api_schema_id}/versions':
-#    $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/api-security/v0.9'
-#    security:
-#      - api_securityScope: [app.api_security]
-#  '/{organization_id}/api-schemas/{api_schema_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/api-security/v0.9'
-#    security:
-#      - api_securityScope: [app.api_security]
+  '/{organization_id}/api-schemas/{api_schema_id}/versions':
+    $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/api-security/v0.9'
+    security:
+      - api_securityScope: [app.api_security]
+  '/{organization_id}/api-schemas/{api_schema_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@api-schemas@{api_schema_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/api-security/v0.9'
+    security:
+      - api_securityScope: [app.api_security]
   '/{organization_id}/bots':
     $ref: 'paths/{organization_id}@bots.yaml'
     servers:
@@ -476,18 +495,18 @@ paths:
       - url: 'https://edgioapis.com/bot-security/v0.9'
     security:
       - bot_securityScope: [app.bot_security]
-#  '/{organization_id}/bots/{bot_id}/versions':
-#    $ref: 'paths/{organization_id}@bots@{bot_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/bot-security/v0.9'
-#    security:
-#      - bot_securityScope: [app.bot_security]
-#  '/{organization_id}/bots/{bot_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@bots@{bot_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/bot-security/v0.9'
-#    security:
-#      - bot_securityScope: [app.bot_security]
+  '/{organization_id}/bots/{bot_id}/versions':
+    $ref: 'paths/{organization_id}@bots@{bot_id}@versions.yaml'
+    servers:
+     - url: 'https://edgioapis.com/bot-security/v0.9'
+    security:
+      - bot_securityScope: [app.bot_security]
+  '/{organization_id}/bots/{bot_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@bots@{bot_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/bot-security/v0.9'
+    security:
+      - bot_securityScope: [app.bot_security]
   '/{organization_id}/bot-managers':
     $ref: 'paths/{organization_id}@bot-managers.yaml'
     servers:
@@ -500,18 +519,18 @@ paths:
       - url: 'https://edgioapis.com/bot-security/v0.9'
     security:
       - bot_securityScope: [app.bot_security]
-#  '/{organization_id}/bot-managers/{bot_manager_id}/versions':
-#    $ref: 'paths/{organization_id}@bot-managers@{bot_manager_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/bot-security/v0.9'
-#    security:
-#      - bot_securityScope: [app.bot_security]
-#  '/{organization_id}/bot-manager/{bot_manager_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@bot-manager@{bot_manager_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/bot-security/v0.9'
-#    security:
-#      - bot_securityScope: [app.bot_security]
+  '/{organization_id}/bot-managers/{bot_manager_id}/versions':
+    $ref: 'paths/{organization_id}@bot-managers@{bot_manager_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/bot-security/v0.9'
+    security:
+      - bot_securityScope: [app.bot_security]
+  '/{organization_id}/bot-managers/{bot_manager_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@bot-managers@{bot_manager_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/bot-security/v0.9'
+    security:
+      - bot_securityScope: [app.bot_security]
   /known-bots/companies:
     $ref: paths/known-bots@companies.yaml
     servers:
@@ -530,18 +549,18 @@ paths:
       - url: 'https://edgioapis.com/client-waf/v0.9'
     security:
       - client_wafScope: [app.client_waf]
-#  '/{organization_id}/client-wafs/{client_waf_id}/versions':
-#    $ref: 'paths/{organization_id}@client-wafs@{client_waf_id}@versions.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/client-waf/v0.9'
-#    security:
-#      - client_wafScope: [app.client_waf]
-#  '/{organization_id}/client-wafs/{client_waf_id}/versions/{version_id}':
-#    $ref: 'paths/{organization_id}@client-wafs@{client_waf_id}@versions@{version_id}.yaml'
-#    servers:
-#      - url: 'https://edgioapis.com/client-waf/v0.9'
-#    security:
-#      - client_wafScope: [app.client_waf]
+  '/{organization_id}/client-wafs/{client_waf_id}/versions':
+    $ref: 'paths/{organization_id}@client-wafs@{client_waf_id}@versions.yaml'
+    servers:
+      - url: 'https://edgioapis.com/client-waf/v0.9'
+    security:
+      - client_wafScope: [app.client_waf]
+  '/{organization_id}/client-wafs/{client_waf_id}/versions/{version_id}':
+    $ref: 'paths/{organization_id}@client-wafs@{client_waf_id}@versions@{version_id}.yaml'
+    servers:
+      - url: 'https://edgioapis.com/client-waf/v0.9'
+    security:
+      - client_wafScope: [app.client_waf]
   /datasets:
     $ref: paths/datasets.yaml
     servers:
@@ -560,6 +579,14 @@ paths:
       - url: 'https://edgioapis.com/metrics/v1'
     security:
       - metricsScope: [app.metrics]
+  /alerts:
+    $ref: paths/alerts.yaml
+    servers:
+      - url: 'https://edgioapis.com/real-time-stats/v1'
+  /alerts/{id}:
+    $ref: paths/alerts_{id}.yaml
+    servers:
+      - url: 'https://edgioapis.com/real-time-stats/v1'
   /accesslogs/profiles:
     $ref: paths/accesslogs_profiles.yaml
     servers:
@@ -570,6 +597,18 @@ paths:
       - url: 'https://edgioapis.com/rtld/v1'
   /accesslogs/fields:
     $ref: paths/accesslogs_fields.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
+  /waf/profiles:
+    $ref: paths/waf_profiles.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
+  /waf/profiles/{id}:
+    $ref: paths/waf_profiles_{id}.yaml
+    servers:
+      - url: 'https://edgioapis.com/rtld/v1'
+  /waf/fields:
+    $ref: paths/waf_fields.yaml
     servers:
       - url: 'https://edgioapis.com/rtld/v1'
   /aws-regions:
@@ -642,6 +681,14 @@ components:
           tokenUrl: https://id.edgio.app/connect/token
           scopes:
             app.metrics: Authorizes full access to the Metrics API. 
+    rtsAlertsScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.real_time_stats.alerts: Authorizes full access to real-time alerts.
     rtldScope:
       type: oauth2
       description: Learn how to [generate and pass a token.](#section/Access-Tokens)
@@ -686,8 +733,12 @@ x-tagGroups:
   - name: Analytics - Metrics
     tags:
       - metrics
+  - name: Real-Time Alerts
+    tags: 
+      - real-time alert
   - name: Real-Time Log Delivery (RTLD)
     tags:
       - RTLD Access Logs Profile
+      - RTLD WAF Profile
       - Log Fields
       - AWS Regions

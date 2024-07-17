@@ -1,0 +1,10 @@
+name: ruleset_id
+in: path
+required: true
+description: |
+
+  The Edgio ruleset's system-defined ID. 
+  
+  Use the [Get Edgio Rulesets operation](#tag/Edgio-Rulesets/operation/get-rulesets) to retrieve a list of Edgio rulesets and their system-defined IDs.
+schema:
+  type: string

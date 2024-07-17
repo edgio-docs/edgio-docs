@@ -1,0 +1,73 @@
+title: RTLD WAF Profile properties
+description: A RTLD WAF profile's configuration excluding its system-defined ID.
+type: object
+required:
+  - profile_name
+  - environment_id
+  - delivery_method
+  - fields
+properties:
+  environment_id:
+    $ref: ./rtldEnvironmentID.yaml
+  delivery_method:
+    oneOf:
+      - $ref: ./rtldAwsS3.yaml
+      - $ref: ./rtldAzureBlobStorage.yaml
+      - $ref: ./rtldDataDog.yaml
+      - $ref: ./rtldGcs.yaml
+      - $ref: ./rtldHttpPost.yaml
+      - $ref: ./rtldSplunkEnterprise.yaml
+      - $ref: ./rtldSumoLogic.yaml
+    discriminator:
+      propertyName: type
+      mapping:
+        aws_s3: ./rtldAwsS3.yaml
+        azure_blob_storage: ./rtldAzureBlobStorage.yaml
+        datadog: ./rtldDataDog.yaml
+        gcs: ./rtldGcs.yaml
+        http_post: ./rtldHttpPost.yaml
+        splunk_enterprise: ./rtldSplunkEnterprise.yaml
+        sumo_logic: ./rtldSumoLogic.yaml
+  description:
+    type: string
+    minLength: 1
+    maxLength: 1024
+    description: >-
+      Defines the log delivery profile's description. Limit this description to
+      100 characters.
+  downsampling_percent:
+    type: number
+    enum:
+      - 0.1
+      - 1
+      - 25
+      - 50
+      - 75
+    description: >-
+      Determines the percentage to which log data will be downsampled. Omit or
+      set this parameter to null to disable log data downsampling.
+  enabled:
+    type: boolean
+    default: true
+    description: Determines whether RTLD will use this profile to deliver log data.
+  fields:
+    type: array
+    items:
+      type: string
+    minItems: 1
+    uniqueItems: true
+    description: >
+      Defines the set of log fields that will be delivered.
+
+
+      Use the [Get Log Fields (RTLD WAF)
+      endpoint](#tag/Log-Fields/operation/GetAllWafFields) to retrieve the set
+      of valid values for this property.
+  profile_name:
+    type: string
+    maxLength: 36
+    description: >-
+      Determines the log delivery profile's name. Limit this unique name to 36
+      characters.
+  filters:
+    $ref: ./rtldWafFilter.yaml

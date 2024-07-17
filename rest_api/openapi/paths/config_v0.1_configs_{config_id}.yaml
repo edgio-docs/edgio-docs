@@ -1,23 +1,26 @@
 get:
-  tags:
-    - configs
   summary: Get CDN Configuration
   description: >
     Retrieve an environment's origin configurations, hostnames, rules, and
     experiments.
-
-
-    Use the [Get Environment
-    operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId)
-    to retrieve the system-defined ID (`@links.active_config.id`) for an
-    environment's active configuration
-  operationId: getConfigV01ConfigsConfigId
   parameters:
-    - name: config_id
-      in: path
+    - in: path
+      name: config_id
+      description: >
+        The system-defined ID for a configuration that was deployed to an
+        environment.
+
+
+        Use the [Get Environment
+        operation](#tag/environments/operation/getAccountsV01EnvironmentsEnvironmentId)
+        to retrieve the system-defined ID (`@links.active_config.id`) for an
+        environment's active configuration.
       required: true
       schema:
         type: string
+  security:
+    - configScope:
+        - app.config
   responses:
     '201':
       description: OK
@@ -30,31 +33,40 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_UserError.yaml
+            $ref: ../components/schemas/BaseApi_Entities_Error_UserError.yaml
     '401':
       description: Unauthorized
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_UnauthorizedError.yaml
     '403':
       description: Forbidden
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+            $ref: ../components/schemas/BaseApi_Entities_Error_ForbiddenError.yaml
     '404':
       description: Not Found
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_RecordNotFoundError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_TooManyRequestsError.yaml
     '500':
       description: Internal Server Error
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BaseApi_Entities_GeneralError.yaml
-  security:
-    - configScope:
-        - app.config
+            $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
+  tags:
+    - configs
+  operationId: getConfigV01ConfigsConfigId

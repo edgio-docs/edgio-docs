@@ -10,11 +10,8 @@
 | AMN | Amsterdam | Europe |
 | BDC | Ashburn | North America |
 | BKK | Thailand (TIG) | Asia |
-| BLR | Bangalore, India | Asia |
 | BOG | Bogota,Colombia | South America |
 | BSB | Boston | North America |
-| BSM | Boston | North America |
-| BSN | Boston | North America |
 | BUR | Los Angeles | North America |
 | CDC | Ashburn | North America |
 | CGK | Jakarta | Asia |
@@ -110,5 +107,3 @@
 | WIL | Kenya | Europe |
 | WMI | Warsaw | Europe |
 | XIJ | Kuwait | Europe |
-
-<!-- Comment -->

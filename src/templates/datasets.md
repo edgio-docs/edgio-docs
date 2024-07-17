@@ -194,4 +194,3 @@ Environment-specific aggregated usage metrics that can be broken down by time, H
 -   **http_method:** Filters data by HTTP method.
 -   **content_type:** Filters data by the response's content type (e.g., text/css or text/javascript).
 
-<!-- Comment -->

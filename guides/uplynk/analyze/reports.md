@@ -3,7 +3,7 @@ title: Reports
 ---
 To access reports, click **Analytics** from the left navigation; then select the desired report from the left-hand pane.
 
-<Callout type="info">If a report displays an AWS error message indicating that you are not authorized to view it, then you must adjust your browser's security configuration to allow `cms.uplynk.com` to use third-party cookies. [Learn more](#aws-report-error).</Callout>
+<Callout type="info">If a report displays an AWS error message indicating that you are not authorized to view it, then you must adjust your browser's security configuration to allow `cms.uplynk.com` to use third-party cookies. [Learn more](#aws-report-error)</Callout>
 
 [Reports](https://cms.uplynk.com/static/cms2/index.html#/analytics) (log-in required) provide insight into billing, usage data, live channel viewership, live event metrics, on-demand metrics, and ads.
 
@@ -23,34 +23,34 @@ Click **Controls** or a Control option to expand the panel where you can customi
 
 |Option| Description| Details|
 |---|---|---|
-|Time Range| Select a custom date range, the relative by granularity, and exclusion options.|To view metrics for a different time period, select an option from the *Time Range* section:<br />- Custom date range. From the *Date range* option, set a start and end date/time.<br />- Predefined date range. Customize your metric choices via the *Relative by* section (e.g., `Previous day`, `This day`, and `Last n` days).<br />- Exclude dates. Check the *Exclude last* box to select your exclusion options.<br /><br /><Callout type="info">By default, all dates/times are specified in UTC.</Callout>|
+|Time Range| Select a custom date range, the **relative by** granularity, and exclusion options.|To view metrics for a different time period, select an option from the **Time Range** section:<br />- Custom date range. From the **Date range** option, set a start and end date/time.<br />- Predefined date range. Customize your metric choices via the **Relative by** section (e.g., `Previous day`, `This day`, and `Last n` days).<br />- Exclude dates. Check the **Exclude last** box to select your exclusion options.<br /><br /><Callout type="info">By default, all dates/times are specified in UTC.</Callout>|
 |Account|Filter by one or multiple account name(s).|1. Click on the *Account* drop-down.<br />2. Optional. Search for an account by typing its name.<br />3. Add accounts to the report by marking the desired accounts.<br />4. Remove accounts from the report by clearing the desired accounts. <br />5. Optional. Click **SHOW SELECTED VALUES** to list all the accounts you've included.|
 |Playback Typ|Choose between (`live` or `vod`). This option also determines the metrics that are displayed.|
 |Channel/ Event|`live` Playback Type only. Filter by channel or event name.|The default values for this dropdown and the associated analytics are based on the Playback Type selected. This option is NULL for vod Playback Type.|
-|Asset|`vod` Playback Type only. Search for then select the Assets you want included.|The default values for this dropdown and the associated analytics are based on the Playback Type selected. This option is NULL for live Playback Type.|
-|Granularity|Error Details report only. Change the interval for this report by selecting the desired granularity. Choose from Day, Hour, Month, Quarter, Year.|
+|Asset|`vod` Playback Type only. Search for then select the assets you want included.|The default values for this dropdown and the associated analytics are based on the **Playback Type** selected. This option is NULL for live Playback Type.|
+|Granularity|Error Details report only. Change the interval for this report by selecting the desired granularity. Choose from `Day`, `Hour`, `Month`, `Quarter`, `Year`.|
 
 ### Functions {/*functions*/}
 
 #### View/ Export individual data metrics  {/*view-export*/}
 
-Access these features by hovering in the top right corner of any tile, clicking the three dots ![Three Dots Icon](/images/uplynk/three-dots.png), and selecting the option.
+Access these features by hovering in the top right corner of any tile, clicking the three dots <Image inline src="/images/uplynk/three-dots.png" alt="Revert" />, and selecting the option.
 
 ![Report Features](/images/uplynk/report-features.png)
 
 |Option| Access|
 |---|---|
 | Maximize/ minimize data category. |Toggle the maximize icon ![Minimize-Maximize Icon](/images/uplynk/minmax.png) to enlarge or reduce the data view.|
-| View summary of metric. |Click the three dots ![Three Dots Icon](/images/uplynk/three-dots.png); then select **View Summary Data**.|
-| Export data summary. |Click the three dots ![Three Dots Icon](/images/uplynk/three-dots.png) next to the data metric; then select **Export to CSV**. Your file will be saved to your default location.|
+| View summary of metric. |Click the three dots <Image inline src="/images/uplynk/three-dots.png" alt="Revert" />; then select **View Summary Data**.|
+| Export data summary. |Click the three dots <Image inline src="/images/uplynk/three-dots.png" alt="Revert" /> next to the data metric; then select **Export to CSV**. Your file will be saved to your default location.|
 
 #### Export reports {/*export-reports*/}
 
-1. Click on the *Controls* bar to define the report metrics. See [Data Controls](#data-controls) for details and options.
+1. Click on the **Controls** bar to define the report metrics. See [Data Controls](#data-controls) for details and options.
 
     <Tip>Reports include only data that satisfies all filters specified in the Control panel.</Tip>
 
-2. Select the **Export** icon ![Export Icon](/images/uplynk/export-icon.png) from the top, right corner. Then click **Print**.
+2. Select the **Export** icon <Image inline src="/images/uplynk/export-icon.png" alt="Revert" /> from the top, right corner. Then click **Print**.
 
 3. Choose your print options, then **GO TO PREVIEW**.
 
@@ -60,7 +60,7 @@ Access these features by hovering in the top right corner of any tile, clicking 
 
 #### View exported reports {/*view-exported-reports*/}
 
-1. Select the Export icon ![Export Icon](/images/uplynk/export-icon.png) from the top, right corner. Then click **View exports** to list your PDF, CSV and XLS files.
+1. Select the Export icon <Image inline src="/images/uplynk/export-icon.png" alt="Revert" /> from the top, right corner. Then click **View exports** to list your PDF, CSV and XLS files.
 
 2. Click on a report to view it.
 
@@ -103,11 +103,11 @@ Breaks down the number of ads that were served by OTT device category (e.g., OTT
 
 Breaks down ad requests and responses for each of your ad demand partners.
 
-## Asset Summary  {/**/}
+## Asset Summary  {/*asset-summary*/}
 
 The Asset Summary report provides the following analytics for your CMS assets:
 
-### ASSET PLAYBACK STATISTICS  {/**/}
+#### ASSET PLAYBACK STATISTICS  {/*asset-playback-stats*/}
 
 Analyze asset-specific statistics.
 
@@ -120,11 +120,11 @@ Analyze asset-specific statistics.
 |Total Hours Watched| Indicates the total number of hours that assets were played.|
 |Asset Views| Indicates the total number of times that assets were requested as a result of a live channel, live event, or VOD.|
 
-### PLAYBACK HOURS BY COUNTRY  {/**/}
+#### PLAYBACK HOURS BY COUNTRY  {/*playback-hours-by-country*/}
 
 Breaks down your audience by country.
 
-### PLAYBACK HOURS BY PLATFORM  {/**/}
+### PLAYBACK HOURS BY PLATFORM  {/*playback-hours-by-platform*/}
 
 Breaks down your audience by operating system.
 
@@ -142,7 +142,7 @@ Breaks down your encoding analytics.
   - **Event**: Live events
   - **VOD**: On-demand content
 
-### To generate the Asset Summary report  {/**/}
+### To generate the Asset Summary report  {/*asset-summary-report*/}
 
 1. Navigate to the *Asset Summary* page. From the main menu, click **Analytics** and then select **Asset Summary** from the left-hand pane.
 2. Click on the *Controls* bar to define this report.
@@ -150,13 +150,13 @@ Breaks down your encoding analytics.
 4. Optional: Generate a report for a different or multiple accounts:<br />a. Click on the *Account* drop-down.<br />b. Optional. Search for an account by typing its name.<br />c. Add accounts to the report by marking the desired accounts.<br />d. Remove accounts from the report by clearing the desired accounts.
 5. Optional. Filter report data by asset(s).<br />a. Click on the *Assets* drop-down to filter by CMS assets.<br />b. Mark the assets that will be included in the report. <br />c. Clear the assets that will be excluded from the report.
 
-## Billing Summary  {/**/}
+## Billing Summary  {/*billing-summary*/}
 
 <Info>The Billing Summary is only available for date ranges spanning a month or longer.</Info>
 
 Gain deeper insights into the following billing categories:
 
-## PLAYBACK  {/**/}
+## PLAYBACK  {/*playback*/}
 
 View statistics on:
 
@@ -168,7 +168,7 @@ View statistics on:
 |Event Hours| The number of hours that the account's live events were streamed.|
 |Total Hours Watched| The total number of hours that the account's content was streamed.|
 
-### ENCODING  {/**/}
+### ENCODING  {/*encoding*/}
 
 View statistics on:
 
@@ -182,7 +182,7 @@ View statistics on:
 |CloudSlicer VOD Encoding Hours| The number of hours for which content was encoded for on-demand playback originated from Cloud Slicers.|
 |Total Encoding Hours| The total number of hours for which content was encoded.|
 
-### STORAGE  {/**/}
+### STORAGE  {/*storage*/}
 
 View statistics on:
 
@@ -194,7 +194,7 @@ View statistics on:
 |Live Event Storage Hours| The number of hours of on-demand content stored in a library that was generated from a live event.|
 |Storage Hours| The total number of hours of on-demand content stored during the report's time period.|
 
-### CLOUD SLICING  {/**/}
+### CLOUD SLICING  {/*cloud-slicing*/}
 
 View statistics on:
 
@@ -207,25 +207,25 @@ View statistics on:
 |Cloud Slicing Hours| The total number of hours of content sliced by a Cloud Slicer.|
 |Spot Slicing Hours| The number of hours of content sliced by a VOD Cloud Slicer. This includes ingest (via S3 bucket ingest and VoD uploader) and post ingest asset processing (clipping, VoD Concat, ad-break modifications, supplemental audio tracks and captioning, etc.).|
 
-### To generate the Billing Summary report  {/**/}
+### To generate the Billing Summary report  {/*generate-billing-summary-report*/}
 
 1. Navigate to the *Billing Summary Report* page. From the main menu, click **Analytics** and then select **Billing Summary** from the left-hand pane.
 2. Click on the *Controls* bar to define this report.
 3. From the *Time Range* option, define a time period that spans at least a month by selecting either:<br />- One of the predefined date ranges: `Previous month`, `This month`, `Month to date`, `Last n months`| Next n months.<br />- Custom date range. From the *Date range* option, set a start and end date/time.<br /><Tip>By default, all dates/times are specified in UTC.</Tip>
 
-## Channel Summary  {/**/}
+## Channel Summary  {/*channel-summary*/}
 
 The *Channel Summary* report provides the following analytics for one or more live channel(s):
 
-### AUDIENCE  {/**/}
+### AUDIENCE  {/*audience*/}
 
 Track the total number of peak concurrent viewers. This metric identifies the maximum number of viewers that were simultaneously watching a live channel. If the current report contains multiple live channels, then this metric provides the sum of the peak concurrent viewers for each live channel over the time period identified on the x-axis.
 
-### CHANNEL VIEWS  {/**/}
+### CHANNEL VIEWS  {/*channel-views*/}
 
 Track the total number of viewers that were watching a live channel. If the current report contains multiple live channels, then this metric provides the total number of viewers for all live channels over the time period identified on the x-axis.
 
-### CHANNEL PLAYBACK STATISTICS  {/**/}
+### CHANNEL PLAYBACK STATISTICS  {/*channel-playback-stats*/}
 
 Analyze live channel-specific statistics.
 
@@ -235,7 +235,7 @@ Analyze live channel-specific statistics.
 |Channel Hours| Indicates the number of hours that content was played during the live channel.|
 |Channel Views| Indicates the total number of live channel viewers.|
 
-### ASSET PLAYBACK STATISTICS  {/**/}
+### ASSET PLAYBACK STATISTICS  {/*asset-playback-stats*/}
 
 Analyze statistics for assets played through your live channel.
 
@@ -248,11 +248,11 @@ Analyze statistics for assets played through your live channel.
 
 
 
-### PLAYBACK HOURS BY COUNTRY  {/**/}
+### PLAYBACK HOURS BY COUNTRY  {/*playback-hours-by-country-asset*/}
 
 Breaks down your audience by country.
 
-### PLAYBACK HOURS BY PLATFORM  {/**/}
+### PLAYBACK HOURS BY PLATFORM  {/*playback-hours-by-platform*/}
 
 Breaks down your audience by operating system.
 
@@ -265,7 +265,7 @@ Breaks down your encoding analytics.
 - **Account**: The name of the account associated with the asset.
 - **Profile Rate Card**: The encoding profiles used by the Cloud Slicers to encode your content.
 
-### To generate the Channel Summary report  {/**/}
+### To generate the Channel Summary report  {/*generate-channel-summary-report*/}
 
 1. Navigate to the *Channel Summary* page. From the main menu, click **Analytics** and then select **Channel Summary** from the left-hand pane.
 2. Click on the *Controls* bar to define this report.
@@ -273,29 +273,29 @@ Breaks down your encoding analytics.
 4. Optional: Generate a report for a different or multiple accounts:<br />a. Click on the *Account* drop-down.<br />b. Optional. Search for an account by typing its name.<br />c. Add accounts to the report by marking the desired accounts.<br />d. Remove accounts from the report by clearing the desired accounts.
 5. Optional. Filter report data by asset(s).<br />a. Click on the *Channel* drop-down to filter by live channels.<br />b. Mark the live channels that will be included in the report. <br />c. Clear the live channels that will be excluded from the report.
 
-## CSL Summary  {/**/}
+## CSL Summary  {/*csl-summary*/}
 
 The Cloud Slicer Live Summary report provides insights into the usage of the Cloud Slicer for live content.
 
-### RUNTIME  {/**/}
+### RUNTIME  {/*runtime*/}
 
 Indicates the total number of hours that Cloud Slicers were running.
 
 <Info>This metric does not measure the Cloud Slicer's encoding hours.</Info>
 
-### CLOUD SLICING HOURS  {/**/}
+### CLOUD SLICING HOURS  {/*cloud-slicing-hours*/}
 
 Indicates the number of hours that Cloud Slicers spent slicing your content.
 
-### PROFILE RATE CARD  {/**/}
+### PROFILE RATE CARD  {/*profile-rate-card*/}
 
 Indicates the encoding profiles used by the Cloud Slicers to encode your content.
 
-### IS MANAGED  {/**/}
+### IS MANAGED  {/*is-managed*/}
 
 Visualize Cloud Slicer usage by whether the Cloud Slicers were managed by Uplynk.
 
-### DETAILED BREAKDOWN  {/**/}
+### DETAILED BREAKDOWN  {/*detailed-breakdown*/}
 
 This report shows the following statistics by Cloud Slicer|
 
@@ -307,26 +307,26 @@ This report shows the following statistics by Cloud Slicer|
 |Is Managed| Indicates whether the Cloud Slicer is managed by Uplynk.|
 |Runtime Hours| Indicates the total number of hours that the Cloud Slicer ran.|
 
-### To generate the CSL Summary report  {/**/}
+### To generate the CSL Summary report  {/*csl-summary-report*/}
 
 1. Navigate to the *CSL Summary* page. From the main menu, click **Analytics** and then select **CSL Summary** from the left-hand pane.
 2. Click on the *Controls* bar to define this report.
 3. From the *Time Range* option, define a time period that spans at least a month by selecting either:<br />- One of the predefined date ranges: `Previous month`, `This month`, `Month to date`, `Last n months`| Next n months.<br />- Custom date range. From the *Date range* option, set a start and end date/time.<br /><Tip>By default, all dates/times are specified in UTC.</Tip>
 4. Optional: Generate a report for a different or multiple accounts:<br />a. Click on the *Account* drop-down.<br />b. Optional. Search for an account by typing its name.<br />c. Add accounts to the report by marking the desired accounts.<br />d. Remove accounts from the report by clearing the desired accounts.
 
-## Event Summary
+## Event Summary  {/*event-summary*/}
 
 The Event Summary report provides the following analytics for one or more live event(s):
 
-### AUDIENCE
+### AUDIENCE  {/*audience*/}
 
 Track the number of peak concurrent viewers. This metric identifies the maximum number of viewers that were simultaneously watching a live event. If the current report contains multiple live events, then this metric provides the average of the peak concurrent viewers for all live events over the time period identified on the x-axis.
 
-### EVENT VIEWS
+### EVENT VIEWS  {/*event-views*/}
 
 Track the total number of live event viewers. This metric identifies the number of viewers that were watching a live event. If the current report contains multiple live events, then this metric provides the total number of viewers for all live events over the time period identified on the x-axis.
 
-### PLAYBACK STATISTICS
+### PLAYBACK STATISTICS  {/*playback-stats*/}
 
 Analyze live event-specific statistics.
 
@@ -338,11 +338,11 @@ Analyze live event-specific statistics.
 |Total Hours Watched| Indicates the total number of hours that the live event was played.|
 |Event Views| Indicates the total number of live event viewers.|
 
-### PLAYBACK HOURS BY COUNTRY
+### PLAYBACK HOURS BY COUNTRY  {/*playback-hours-by-country*/}
 
 Breaks down your audience by country.
 
-### PLAYBACK HOURS BY PLATFORM
+### PLAYBACK HOURS BY PLATFORM  {/*playback-hours-by-platform*/}
 
 Breaks down your audience by operating system.
 
@@ -356,7 +356,7 @@ Breaks down your encoding analytics.
 - **Is CloudSliced**: If TRUE, this event uses cloud slicing for encoding.
 
 
-### To generate the Event Summary report
+### To generate the Event Summary report  {/*event-summary-report*/}
 
 1. Navigate to the *Event Summary* page. From the main menu, click **Analytics** and then select **Event Summary** from the left-hand pane.
 2. Click on the *Controls* bar to define this report.
@@ -364,18 +364,18 @@ Breaks down your encoding analytics.
 4. Optional: Generate a report for a different or multiple accounts:<br />a. Click on the *Account* drop-down.<br />b. Optional. Search for an account by typing its name.<br />c. Add accounts to the report by marking the desired accounts.<br />d. Remove accounts from the report by clearing the desired accounts.
 5. Optional. Filter report data by live event(s).<br />a. Click on the *Event* drop-down to filter by live events.<br />b. Mark the live event that will be included in the report. <br />c. Clear the live event that will be excluded from the report.
 
-## Multi-CDN Summary
+## Multi-CDN Summary  {/*multi-cdn-summary*/}
 The Multi-CDN Summary report provides statistics for the distribution of your content via CDNs:
 
-### PLAYBACK
+### PLAYBACK  {/*playback*/}
 
 Indicates the total numbers of hours that your content was watched (aka playback hours) broken down by customer account and CDN.
 
-### CDN DISTRIBUTION
+### CDN DISTRIBUTION  {/*cdn-distribution*/}
 
 This pie chart contains a slice for each CDN through which your content was distributed.
 
-### PLAYBACK BY CONTENT TYPE
+### PLAYBACK BY CONTENT TYPE  {/*playback-by-content-type*/}
 
 Indicates the total numbers of hours that your content was watched (aka playback hours) broken down by each unique combination of customer account, CDN, and one of the following content types:
 
@@ -383,7 +383,7 @@ Indicates the total numbers of hours that your content was watched (aka playback
 - Event: Live events
 - VOD: On-demand content
 
-### CONTENT TYPE DISTRIBUTION
+### CONTENT TYPE DISTRIBUTION  {/*content-type-distribution*/}
 
 This bar chart, which shows the number of hours that your content was watched (aka playback hours), contains a color-coded bar for each unique combination of CDN and one of the following content types:
 
@@ -391,7 +391,7 @@ This bar chart, which shows the number of hours that your content was watched (a
 - Event: Live events
 - VOD: On-demand content
 
-### COUNTRY BREAKDOWN
+### COUNTRY BREAKDOWN  {/*country-breakdown*/}
 
 Indicates the total numbers of hours that your content was watched (aka playback hours) broken down by each unique combination of CDN, country, and one of the following content types:
 
@@ -401,7 +401,7 @@ Indicates the total numbers of hours that your content was watched (aka playback
 
 <Info>This report is useful to analyze CDN usage when leveraging our Multi-CDN solution.</Info>
 
-### To generate the Multi-CDN Summary report
+### To generate the Multi-CDN Summary report  {/*multi-cdn-report*/}
 
 1. Navigate to the *Multi-CDN Summary* page. From the main menu, click **Analytics** and then select **Multi-CDN Summary** from the left-hand pane.
 2. Click on the *Controls* bar to define this report.
@@ -489,10 +489,10 @@ Each error type is briefly described below.
 |Time Out| The third-party ad server took too long to provide a response.|
 |Undefined| An error that does not match any of the above categories occurred.|
 
-## Syndication Summary
+## Syndication Summary  {/*syndication-summary*/}
 The Syndication Summary report provides statistics for content published to social media and content distribution platforms:
 
-### OVERVIEW
+### OVERVIEW  {/*overview*/}
 
 View statistics on:
 
@@ -504,18 +504,18 @@ View statistics on:
 |SYNDICATION GB DELIVERED| Indicates the total amount of data, in GB, that was published to social media and content distribution platforms.|
 |SYNDICATION HLS PULL HOURS| Indicates the total number of hours of content that social media and content distribution platforms pulled from AWS S3 via HLS.|
 
-### SYNDICATION HOURS BY CONTENT TYPE
+### SYNDICATION HOURS BY CONTENT TYPE  {/*syndication-hours-by-content-type*/}
 
 This bar chart, which tracks the number of hours that were published to social media and content distribution platforms, contains a color-coded bar for each of the following content types
 
 - Channel: Live channels
 - Event: Live events
 
-### SYNDICATION HOURS
+### SYNDICATION HOURS  {/*syndication-hours*/}
 
 This chart tracks the total number of hours published to social media and content distribution platforms over time.
 
-### PLATFORMS PUBLISHED
+### PLATFORMS PUBLISHED  {/*platforms-published*/}
 
 This pie chart contains shows how your content was published. Each slice represents either of the following items:
 
@@ -524,7 +524,7 @@ This pie chart contains shows how your content was published. Each slice represe
 
     `HLS | Zixi | Other`
 
-### DETAILED VIEW
+### DETAILED VIEW  {/*detailed-view*/}
 
 Indicates the total number of hours published and data delivered for each unique combination of platform/procotol and live channel/live event.
 
@@ -538,7 +538,7 @@ Indicates the total number of hours published and data delivered for each unique
 |Syndication Hours Published| Indicates the number of hours that were published for this unique combination of platform/procotol and live channel/live event.|
 |Syndication GB Delivered| Indicates the amount of data, in GB, that were published for this unique combination of platform/procotol and live channel/live event.|
 
-### To Generate the Syndication Summary Report
+### To Generate the Syndication Summary Report  {/*syndication-summary-report*/}
 
 1. Navigate to the Syndication Summary page. From the main menu, click **Analytics** and then select **Syndication Summary** from the left-hand pane.
 2. Click on the *Controls* bar to define this report.
@@ -561,11 +561,11 @@ View statistics on:
 |Event Views| Indicates the total number of times that your live events were viewed.|
 |VOD Views| Indicates the total number of times that your on-demand content was requested.|
 
-### BREAKDOWN
+### BREAKDOWN  {/*breakdown*/}
 
 Indicates the number of hours that your ads, live channels, live events, and VOD assets were watched.
 
-### HOURS WATCHED BY PLAYBACK CONTEXT (STACKED BAR)
+### HOURS WATCHED BY PLAYBACK CONTEXT (STACKED BAR)  {/*hours-watched*/}
 
 This bar chart, which shows the number of hours that your content was watched (aka playback hours), contains a color-coded bar for the following content types:
 
@@ -575,11 +575,11 @@ This bar chart, which shows the number of hours that your content was watched (a
 
 Additionally, the top of each bar indicates the total number of playback hours for the time period indicated in the x-axis.
 
-### VIEWS BY PLAYBACK CONTEXT
+### VIEWS BY PLAYBACK CONTEXT  {/*views-by-playback-type*/}
 
 This line chart contains color-coded lines that track the number of times that your live channels (`Channel Views`), live events (`Event Views`), and on-demand content (`VOD Views`) were viewed.
 
-### COUNTRY BREAKDOWN
+### COUNTRY BREAKDOWN  {/*country-breakdown*/}
 
 This report shows the following statistics for each country:
 
@@ -591,11 +591,11 @@ This report shows the following statistics for each country:
 |Event Views| Indicates the total number of times that your live events were viewed.|
 |VOD Views| Indicates the total number of times that your on-demand content was viewed.|
 
-### PLAYBACK HOURS BY PLATFORM
+### PLAYBACK HOURS BY PLATFORM  {/*playback-by-platform*/}
 
 Breaks down your audience by operating system.
 
-### To Generate the Usage Summary Report
+### To Generate the Usage Summary Report  {/*usage-summary-report*/}
 
 1. Navigate to the Usage Summary page. From the main menu, click **Analytics** and then select **Usage Summary** from the left-hand pane.
 2. Click on the *Controls* bar to define this report.
@@ -604,3 +604,25 @@ Breaks down your audience by operating system.
 5. Optional: Change the granularity of this report by selecting the desired interval from the *Granularity* option.
 
 ## AWS (Not Authorized) Report Error  {/*aws-report-error*/}
+
+Navigating to a report may return the following error message:
+
+`We can't display this page (Not Authorized).`
+
+This error occurs because your browser's security policy does not allow `cms.uplynk.com` to use third-party cookies.
+
+Fix this issue by performing either of the following steps:
+
+Chrome: Add cms.uplynk.com as a site that can always use cookies.
+
+See Google's documentation ([Allow or block cookies for a specific site](https://support.google.com/chrome/answer/95647#zippy=%2Callow-or-block-cookies-for-a-specific-site)) to learn more.
+
+- Firefox: Turn off Enhanced Tracking Protection for cms.uplynk.com.
+
+    See Firefox's documentation ([Enable third-party cookies for specific sites](https://support.mozilla.org/en-US/kb/third-party-cookies-firefox-tracking-protection#w_enable-third-party-cookies-for-specific-sites)) to learn more.
+
+- Safari: Disable the Prevent cross-site tracking option.
+
+    See Apple's [documentation](https://support.apple.com/guide/safari/prevent-cross-site-tracking-sfri40732/16.1/mac/13.0) to learn more.
+
+<Callout type="info">An alternative to modifying your browser's security policy is to refresh the page whenever you encounter this error.</Callout>

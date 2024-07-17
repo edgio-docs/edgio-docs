@@ -11,7 +11,7 @@ const nav = {
   routes: [
     {
       title: 'Overview',
-      path: 'overview1',
+      path: 'overview',
       icon: 'spark',
       routes: [
         {

@@ -289,7 +289,11 @@ View statistics on:
 
 1. Navigate to the *Billing Summary Report* page. From the main menu, click **Analytics** and then select **Billing Summary** from the left-hand pane.
 2. Click on the *Controls* bar to define this report.
-3. From the *Time Range* option, define a time period that spans at least a month by selecting either:<br />- One of the predefined date ranges: `Previous month`, `This month`, `Month to date`, `Last n months`| Next n months.<br />- Custom date range. From the *Date range* option, set a start and end date/time.<br /><Tip>By default, all dates/times are specified in UTC.</Tip>
+3. From the *Time Range* option, define a time period that spans at least a month by selecting either:
+    - One of the predefined date ranges: `Previous month`, `This month`, `Month to date`, `Last n months`, `Next n months`.
+    - Custom date range. From the *Date range* option, set a start and end date/time.
+
+<Tip>By default, all dates/times are specified in UTC.</Tip>
 
 ## Channel Summary  {/*channel-summary*/}
 
@@ -377,7 +381,7 @@ Visualize Cloud Slicer usage by whether the Cloud Slicers were managed by Uplynk
 
 #### DETAILED BREAKDOWN  {/*detailed-breakdown*/}
 
-This report shows the following statistics by Cloud Slicer|
+This report shows the following statistics by Cloud Slicer
 
 |Report Data|Details|
 |---|---|

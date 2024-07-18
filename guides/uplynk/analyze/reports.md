@@ -25,10 +25,10 @@ Click **Controls** or a Control option to expand the panel where you can customi
 |---|---|---|
 |Time Range| Select a custom date range, the **relative by** granularity, and exclusion options.|To view metrics for a different time period, select an option from the **Time Range** section:<ul><li>Custom date range. From the **Date range** option, set a start and end date/time.</li><li>Predefined date range. Customize your metric choices via the **Relative by** section (e.g., `Previous day`, `This day`, and `Last n` days).</li><li>Exclude dates. Check the **Exclude last** box to select your exclusion options.</li></ul><br /><br /><Callout type="info">By default, all dates/times are specified in UTC.</Callout>|
 |Account|Filter by one or multiple account name(s).|<ol><li>Click on the Account drop-down.</li><li>Optional. Search for an account by typing its name.</li><li>Add accounts to the report by marking the desired accounts.</li><li>Remove accounts from the report by clearing the desired accounts.</li><li>Optional. Click **SHOW SELECTED VALUES** to list all the accounts you've included.|</li><li></li></ol>
-|Playback Type|Choose between (`live` or `vod`). This option also determines the metrics that are displayed.|
+|Playback Type|Choose between (`live` or `vod`). This option also determines the metrics that are displayed.||
 |Channel/ Event|`live` Playback Type only. Filter by channel or event name.|The default values for this dropdown and the associated analytics are based on the Playback Type selected. This option is NULL for `vod` Playback Type.|
 |Asset|`vod` Playback Type only. Search for then select the assets you want included.|The default values for this dropdown and the associated analytics are based on the **Playback Type** selected. This option is NULL for `live` Playback Type.|
-|Granularity|Error Details report only. Change the interval for this report by selecting the desired granularity. Choose from `Day`, `Hour`, `Month`, `Quarter`, `Year`.|
+|Granularity|Error Details report only. Change the interval for this report by selecting the desired granularity. Choose from `Day`, `Hour`, `Month`, `Quarter`, `Year`.||
 
 ### Functions {/*functions*/}
 
@@ -534,7 +534,7 @@ Indicates the total number of hours published and data delivered for each unique
 |Data|Details|
 |---|---|
 |Account Name| Identifies the account for which syndication publishing statistics are provided.|
-|Syndication Target| Indicates where or how your content was published. This field identifies either:<br />- Social media or content distribution platform. This occurs when a publishing target's Platform option is set to a specific social media or content distribution platform.<br />- Protocol. This occurs when a publishing target's Platform option is set to Other. Valid values are: `HLS | Zixi | Other` |
+|Syndication Target| Indicates where or how your content was published. This field identifies either:<br />- Social media or content distribution platform. This occurs when a publishing target's Platform option is set to a specific social media or content distribution platform.<br />- Protocol. This occurs when a publishing target's Platform option is set to Other. Valid values are: `HLS \| Zixi \| Other` |
 |Content Type| Indicates the source from which your content was published. Valid values are: <br />- Channel: Live channels<br />- Event: Live events|
 |Channel Description| Indicates the name of the live channel from which your content was published. This cell is blank when this row reports content published from a live event.|
 |Event Description| Indicates the name of the live event from which your content was published. This cell is blank when this row reports content published from a live channel.|

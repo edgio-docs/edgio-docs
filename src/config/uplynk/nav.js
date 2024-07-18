@@ -32,7 +32,7 @@ const nav = {
         },
         {
           title: 'News and Updates',
-          path: 'overview/news_updates',
+          path: 'https://cms.uplynk.com/static/cms/news.html',
         },
       ],
     },
@@ -94,6 +94,12 @@ const nav = {
         {
           title: 'Assets',
           path: 'manage/assets',
+          routes: [
+            {
+              title: 'Content Management',
+              path: 'manage/assets/content_management',
+            },
+          ],
         },
         {
           title: 'Channels',

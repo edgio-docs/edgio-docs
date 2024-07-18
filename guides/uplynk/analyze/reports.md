@@ -224,7 +224,7 @@ Breaks down your encoding analytics.
 
 1. Navigate to the Asset Summary page. From the main menu, click **Analytics** and then select **Asset Summary** from the left-hand pane.
 2. Click on the **Controls** bar to define this report.
-3. Optional. Generate a report for a different time period. From the **Time Range** option, select either:<br />- Predefined date range (e.g., `Previous day`, `This day`, and `Last n` days).<br />- Custom date range. From the **Date range** option, set a start and end date/time.<br /><Tip>By default, all dates/times are specified in UTC.</Tip>
+3. Optional. Generate a report for a different time period. From the **Time Range** option, select either:<ul><li>Predefined date range (e.g., `Previous day`, `This day`, and `Last n` days).</li><li>Custom date range. From the **Date range** option, set a start and end date/time.</li></ul><br /><Tip>By default, all dates/times are specified in UTC.</Tip>
 4. Optional: Generate a report for a different or multiple accounts:<br />a. Click on the **Account** drop-down.<br />b. Optional. Search for an account by typing its name.<br />c. Add accounts to the report by marking the desired accounts.<br />d. Remove accounts from the report by clearing the desired accounts.
 5. Optional. Filter report data by asset(s).<br />a. Click on the **Assets** drop-down to filter by CMS assets.<br />b. Mark the assets that will be included in the report. <br />c. Clear the assets that will be excluded from the report.
 
@@ -489,7 +489,7 @@ Indicates the total numbers of hours that your content was watched (aka playback
 
 1. Navigate to the Multi-CDN Summary page. From the main menu, click **Analytics** and then select **Multi-CDN Summary** from the left-hand pane.
 2. Click on the **Controls** bar to define this report.
-3. Optional. Generate a report for a different time period. From the **Time Range** option, select either:<br />- Predefined date range (e.g., `Previous day`, `This day`, and `Last n` days).<br />- Custom date range. From the **Date range** option, set a start and end date/time.<br /><Tip>By default, all dates/times are specified in UTC.</Tip>
+3. Optional. Generate a report for a different time period. From the **Time Range** option, select either:<ul><li>Predefined date range (e.g., `Previous day`, `This day`, and `Last n` days).</li><li>Custom date range. From the **Date range** option, set a start and end date/time.</li></ul><br /><Tip>By default, all dates/times are specified in UTC.</Tip>
 4. Optional: Generate a report for a different or multiple accounts:<br />a. Click on the **Account** drop-down.<br />b. Optional. Search for an account by typing its name.<br />c. Add accounts to the report by marking the desired accounts.<br />d. Remove accounts from the report by clearing the desired accounts.
 5. Optional. Filter report data by live event(s).<br />a. Click on the **Event** drop-down to filter by live events.<br />b. Mark the live event that will be included in the report. <br />c. Clear the live event that will be excluded from the report.
 6. Optional. Change the granularity of this report by selecting the desired interval from the **Granularity** option.
@@ -546,7 +546,7 @@ Indicates the total number of hours published and data delivered for each unique
 
 1. Navigate to the Syndication Summary page. From the main menu, click **Analytics** and then select **Syndication Summary** from the left-hand pane.
 2. Click on the **Controls** bar to define this report.
-3. Optional: Generate a report for a different time period. From the Time Range option, select either:<ul><li>Predefined date range (e.g., `Previous day`, `This day`, and `Last n` days).</li><li>Custom date range: From the **Date range** option, set a start and end date/time.</li></ul><br /><Tip>By default, all dates/times are specified in UTC.</Tip>
+3. Optional: Generate a report for a different time period. From the **Time Range** option, select either:<ul><li>Predefined date range (e.g., `Previous day`, `This day`, and `Last n` days).</li><li>Custom date range: From the **Date range** option, set a start and end date/time.</li></ul><br /><Tip>By default, all dates/times are specified in UTC.</Tip>
 4. Optional: Generate a report for a different or multiple accounts:<br />a. Click on the **Account** drop-down.<br />b. Optional. Search for an account by typing its name.<br />c. Add accounts to the report by marking the desired accounts.<br />d. Remove accounts from the report by clearing the desired accounts.
 5. Optional: Change the granularity of this report by selecting the desired interval from the **Granularity** option.
 
@@ -603,7 +603,7 @@ Breaks down your audience by operating system.
 
 1. Navigate to the Usage Summary page. From the main menu, click **Analytics** and then select **Usage Summary** from the left-hand pane.
 2. Click on the **Controls** bar to define this report.
-3. Optional: Generate a report for a different time period. From the Time Range option, select either:<ul><li>Predefined date range (e.g., `Previous day`, `This day`, and `Last n` days).</li><li>Custom date range: From the **Date range** option, set a start and end date/time.</li></ul><br /><Tip>By default, all dates/times are specified in UTC.</Tip>
+3. Optional: Generate a report for a different time period. From the **Time Range** option, select either:<ul><li>Predefined date range (e.g., `Previous day`, `This day`, and `Last n` days).</li><li>Custom date range: From the **Date range** option, set a start and end date/time.</li></ul><br /><Tip>By default, all dates/times are specified in UTC.</Tip>
 4. Optional: Generate a report for a different or multiple accounts:<br />a. Click on the **Account** drop-down.<br />b. Optional. Search for an account by typing its name.<br />c. Add accounts to the report by marking the desired accounts.<br />d. Remove accounts from the report by clearing the desired accounts.
 5. Optional: Change the granularity of this report by selecting the desired interval from the **Granularity** option.
 

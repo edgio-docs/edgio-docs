@@ -3,7 +3,7 @@ title: Reports
 ---
 To access reports, click **Analytics** from the left navigation; then select the desired report from the left-hand pane.
 
-<Callout type="info">If a report displays an AWS error message indicating that you are not authorized to view it, then you must adjust your browser's security configuration to allow `cms.uplynk.com` to use third-party cookies. [Learn more](#aws-report-error).</Callout>
+<Callout type="info">If a report displays an AWS error message indicating that you are not authorized to view it, then you must adjust your browser's security configuration to allow `cms.uplynk.com` to use third-party cookies. <br>[Learn more](#aws-report-error).</Callout>
 
 [Reports](https://cms.uplynk.com/static/cms2/index.html#/analytics) (log-in required) provide insight into billing, usage data, live channel viewership, live event metrics, on-demand metrics, and ads.
 
@@ -106,7 +106,7 @@ Breaks down ad requests and responses for each of your ad demand partners.
 
 ### Errors Summary {/*errors-summary*/}
 
-The *Errors Summary* report provides the following analytics for ad breaks that did not contain ads due to errors and timeouts:
+The Errors Summary report provides the following analytics for ad breaks that did not contain ads due to errors and timeouts:
 
 #### OVERVIEW {/*errors-summary-overview*/}
 
@@ -131,7 +131,7 @@ This line chart contains color-coded lines that track over time the number of ad
 
 ### Error Details {/*error-details*/}
 
-The *Errors Details* report provides the following analytics for ad errors:
+The Errors Details report provides the following analytics for ad errors:
 
 #### AD REQUEST TRANSACTION SUMMARY {/*ad-request-transaction-summary*/}
 
@@ -155,7 +155,7 @@ Hover over the slices in this pie graph to view the number and contributing perc
 |Analytic|Details|
 |---|---|
 |Account Name| An Uplynk account by name.|
-|Request Type| Indicates whether the error occurred with the initial request to the ad decision server or a wrapper request spawned from it. <br />- Main Provider: Initial request.<br />- Wrapper: Wrapper request.|
+|Request Type| Indicates whether the error occurred with the initial request to the ad decision server or a wrapper request spawned from it. <ul><li>**Main Provider**: Initial request.</li><li>**Wrapper**: Wrapper request.</li></ul>|
 |Demand Partner| A third-party ad provider by name.|
 |Error Message| A brief description for the error.|
 |Error Category| The [type of error](#ad-error-categories) that occurred.|
@@ -288,11 +288,11 @@ View statistics on:
 
 #### To generate the Billing Summary report  {/*generate-billing-summary-report*/}
 
-1. Navigate to the *Billing Summary Report* page. From the main menu, click **Analytics** and then select **Billing Summary** from the left-hand pane.
-2. Click on the *Controls* bar to define this report.
-3. From the *Time Range* option, define a time period that spans at least a month by selecting either:
+1. Navigate to the Billing Summary Report page. From the main menu, click **Analytics** and then select **Billing Summary** from the left-hand pane.
+2. Click on the **Controls** bar to define this report.
+3. From the **Time Range** option, define a time period that spans at least a month by selecting either:
     - One of the predefined date ranges: `Previous month`, `This month`, `Month to date`, `Last n months`, `Next n months`.
-    - Custom date range. From the *Date range* option, set a start and end date/time.
+    - Custom date range. From the **Date range** option, set a start and end date/time.
 
 <Tip>By default, all dates/times are specified in UTC.</Tip>
 
@@ -350,11 +350,11 @@ Breaks down your encoding analytics.
 
 #### To generate the Channel Summary report  {/*generate-channel-summary-report*/}
 
-1. Navigate to the *Channel Summary* page. From the main menu, click **Analytics** and then select **Channel Summary** from the left-hand pane.
-2. Click on the *Controls* bar to define this report.
-3. Optional. Generate a report for a different time period. From the *Time Range* option, select either:<br />- Predefined date range (e.g., `Previous day`, `This day`, and `Last n` days).<br />- Custom date range. From the *Date range* option, set a start and end date/time.<br /><Tip>By default, all dates/times are specified in UTC.</Tip>
-4. Optional: Generate a report for a different or multiple accounts:<br />a. Click on the *Account* drop-down.<br />b. Optional. Search for an account by typing its name.<br />c. Add accounts to the report by marking the desired accounts.<br />d. Remove accounts from the report by clearing the desired accounts.
-5. Optional. Filter report data by asset(s).<br />a. Click on the *Channel* drop-down to filter by live channels.<br />b. Mark the live channels that will be included in the report. <br />c. Clear the live channels that will be excluded from the report.
+1. Navigate to the Channel Summary page. From the main menu, click **Analytics** and then select **Channel Summary** from the left-hand pane.
+2. Click on the **Controls** bar to define this report.
+3. Optional. Generate a report for a different time period. From the *Time Range* option, select either:<br />- Predefined date range (e.g., `Previous day`, `This day`, and `Last n` days).<br />- Custom date range. From the **Date range** option, set a start and end date/time.<br /><Tip>By default, all dates/times are specified in UTC.</Tip>
+4. Optional: Generate a report for a different or multiple accounts:<br />a. Click on the **Account** drop-down.<br />b. Optional. Search for an account by typing its name.<br />c. Add accounts to the report by marking the desired accounts.<br />d. Remove accounts from the report by clearing the desired accounts.
+5. Optional. Filter report data by asset(s).<br />a. Click on the **Channel** drop-down to filter by live channels.<br />b. Mark the live channels that will be included in the report. <br />c. Clear the live channels that will be excluded from the report.
 
 ## CSL Summary  {/*csl-summary*/}
 
@@ -394,7 +394,7 @@ This report shows the following statistics by Cloud Slicer
 
 1. Navigate to the **CSL Summary** page. From the main menu, click **Analytics** and then select **CSL Summary** from the left-hand pane.
 2. Click on the **Controls** bar to define this report.
-3. From the **Time Range** option, define a time period that spans at least a month by selecting either:<br />- One of the predefined date ranges: `Previous month`, `This month`, `Month to date`, `Last n months`| Next n months.<br />- Custom date range. From the **Date range** option, set a start and end date/time.<br /><Tip>By default, all dates/times are specified in UTC.</Tip>
+3. From the **Time Range** option, define a time period that spans at least a month by selecting either:<ul><li>One of the predefined date ranges: `Previous month`, `This month`, `Month to date`, `Last n months`, `Next n months`</li><li>Custom date range. From the **Date range** option, set a start and end date/time.</li></ul><br /><Tip>By default, all dates/times are specified in UTC.</Tip>
 4. Optional: Generate a report for a different or multiple accounts:<br />a. Click on the **Account** drop-down.<br />b. Optional. Search for an account by typing its name.<br />c. Add accounts to the report by marking the desired accounts.<br />d. Remove accounts from the report by clearing the desired accounts.
 
 ## Event Summary  {/*event-summary*/}
@@ -527,7 +527,7 @@ This chart tracks the total number of hours published to social media and conten
 This pie chart contains shows how your content was published. Each slice represents either of the following items:
 
 - Social media or content distribution platform. This occurs when a publishing target's Platform option is set to a specific social media or content distribution platform.
-- Protocol. This occurs when a publishing target's Platform option is set to Other. Valid values are: `HLS \| Zixi \| Other`.
+- Protocol. This occurs when a publishing target's Platform option is set to Other. Valid values are: `HLS | Zixi | Other`.
 
 #### DETAILED VIEW  {/*detailed-view*/}
 
@@ -547,7 +547,7 @@ Indicates the total number of hours published and data delivered for each unique
 
 1. Navigate to the Syndication Summary page. From the main menu, click **Analytics** and then select **Syndication Summary** from the left-hand pane.
 2. Click on the **Controls** bar to define this report.
-3. Optional: Generate a report for a different time period. From the Time Range option, select either:<br />- Predefined date range (e.g., `Previous day`, `This day`, and `Last n` days).<br />- Custom date range: From the Date range option, set a start and end date/time.<br /><Tip>By default, all dates/times are specified in UTC.</Tip>
+3. Optional: Generate a report for a different time period. From the Time Range option, select either:<ul><li>Predefined date range (e.g., `Previous day`, `This day`, and `Last n` days).</li><li>Custom date range: From the **Date range** option, set a start and end date/time.</li></ul><br /><Tip>By default, all dates/times are specified in UTC.</Tip>
 4. Optional: Generate a report for a different or multiple accounts:<br />a. Click on the **Account** drop-down.<br />b. Optional. Search for an account by typing its name.<br />c. Add accounts to the report by marking the desired accounts.<br />d. Remove accounts from the report by clearing the desired accounts.
 5. Optional: Change the granularity of this report by selecting the desired interval from the **Granularity** option.
 
@@ -604,7 +604,7 @@ Breaks down your audience by operating system.
 
 1. Navigate to the Usage Summary page. From the main menu, click **Analytics** and then select **Usage Summary** from the left-hand pane.
 2. Click on the **Controls** bar to define this report.
-3. Optional: Generate a report for a different time period. From the Time Range option, select either:<br />- Predefined date range (e.g., `Previous day`, `This day`, and `Last n` days).<br />- Custom date range: From the Date range option, set a start and end date/time.<br /><Tip>By default, all dates/times are specified in UTC.</Tip>
+3. Optional: Generate a report for a different time period. From the Time Range option, select either:<ul><li>Predefined date range (e.g., `Previous day`, `This day`, and `Last n` days).</li><li>Custom date range: From the **Date range** option, set a start and end date/time.</li></ul><br /><Tip>By default, all dates/times are specified in UTC.</Tip>
 4. Optional: Generate a report for a different or multiple accounts:<br />a. Click on the **Account** drop-down.<br />b. Optional. Search for an account by typing its name.<br />c. Add accounts to the report by marking the desired accounts.<br />d. Remove accounts from the report by clearing the desired accounts.
 5. Optional: Change the granularity of this report by selecting the desired interval from the **Granularity** option.
 

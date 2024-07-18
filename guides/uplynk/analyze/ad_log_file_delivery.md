@@ -13,7 +13,7 @@ Our service may automatically deliver compressed ad log data to an Amazon S3 buc
    - For instructions on creating a bucket, refer to the [AWS documentation on how to create a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html).
 
 2. **Contact Your Account Manager**
-   - Reach out to your account manager to obtain the AWS IAM ARN through which the log data will be delivered.
+   Reach out to your account manager to obtain the AWS IAM ARN through which the log data will be delivered.
 
 3. **Authorize the IAM ARN**
    - Authorize the identified IAM ARN to perform the following actions on the Amazon S3 bucket:

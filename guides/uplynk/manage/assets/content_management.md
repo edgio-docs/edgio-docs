@@ -14,7 +14,7 @@ The **Content** Tab Contains:
 
   - View a [virtual linear playlist](/uplynk/manage/assets/virtual_linear_playlists_and_smartstart/#virtual-linear-playlist-management) by expanding **Playlists** and then selecting the desired playlist.
 
-## Searching for Content
+## Search for Content
 
 Search for assets whose name, asset ID, or external ID contains a keyword by typing one or more word(s) in the search box that appears in the portal's upper-right hand corner.
 
@@ -64,3 +64,7 @@ Use the following special characters to fine-tune your search results:
 | + | Require search results to contain a specific word or phrase. Specify a phrase by enclosing two or more words within double quotes.<br />Example: Require all search results to contain the word league and the search phrase `basketball game`: `+league +"basketball game"` |
 | * | Performs a wildcard search.<br />Example: Search for assets that contain `asket`. Search results could potentially include `casket`, `basket`, and `basketball`.<br />`*asket*` |
 | , | Use a comma to delimit search criteria.<br />Example: Search for assets whose external ID starts with ma and whose name contains the word blue, but must not contain the word purple: `external: ma*, name: +blue -purple` |
+
+## Duplicate a Playlist
+
+See [Duplicate a Playlist](uplynk/manage/assets/virtual_linear_playlists_and_smartstart/#duplicate-playlist) in the [Virtual Linear Playlists Guide](uplynk/manage/assets/virtual_linear_playlists_and_smartstart).

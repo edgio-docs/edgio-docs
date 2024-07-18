@@ -3,7 +3,7 @@ title: Reports
 ---
 To access reports, click **Analytics** from the left navigation; then select the desired report from the left-hand pane.
 
-<Callout type="info">If a report displays an AWS error message indicating that you are not authorized to view it, then you must adjust your browser's security configuration to allow `cms.uplynk.com` to use third-party cookies. <br>[Learn more](#aws-report-error).</Callout>
+<Callout type="info">If a report displays an AWS error message indicating that you are not authorized to view it, then you must adjust your browser's security configuration to allow `cms.uplynk.com` to use third-party cookies. <br />[Learn more](#aws-report-error).</Callout>
 
 [Reports](https://cms.uplynk.com/static/cms2/index.html#/analytics) (log-in required) provide insight into billing, usage data, live channel viewership, live event metrics, on-demand metrics, and ads.
 
@@ -219,7 +219,6 @@ Breaks down your encoding analytics.
 |Slicer Name|The name of the slicer associated with the content.|
 |Account|The name of the account associated with the asset.|
 |Profile Rate Card|The encoding profiles used by the Cloud Slicers to encode your content.|
-|Content Type|Select between these options:<ul><li>**Channel**: Live channels</li><li>**Event**: Live events</li><li>**VOD**: On-demand content</li></ul>
 
 #### To generate the Asset Summary report  {/*asset-summary-report*/}
 
@@ -531,7 +530,7 @@ This pie chart contains shows how your content was published. Each slice represe
 
 #### DETAILED VIEW  {/*detailed-view*/}
 
-Indicates the total number of hours published and data delivered for each unique combination of platform/procotol and live channel/live event.
+Indicates the total number of hours published and data delivered for each unique combination of platform/protocol and live channel/live event.
 
 |Data|Details|
 |---|---|

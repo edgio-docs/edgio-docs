@@ -7,8 +7,8 @@ To access reports, click **Analytics** from the left navigation; then select the
 
 [Reports](https://cms.uplynk.com/static/cms2/index.html#/analytics) (log-in required) provide insight into billing, usage data, live channel viewership, live event metrics, on-demand metrics, and ads.
 
-
 ## Controls and Functions {/*controls-and-functions*/}
+
 Customize your dashboards and report data using controls. Functions allow you to view and print your selections.
 
 ### Data Controls  {/*data-controls*/}
@@ -67,6 +67,7 @@ Access these features by hovering in the top right corner of any tile, clicking 
 3. Select **Hide exports** to close the export list.
 
 ## Ad Summary  {/*ad-summary*/}
+
 {{ COMPANY_NAME }} provides these reports for analyzing ad performance: Ad Delivery, Errors Summary, and Error Details.
 
 ### Ad Delivery  {/*ad-delivery*/}
@@ -255,7 +256,7 @@ View statistics on:
 |Account Name| The account for which billing statistics are provided.|
 |Channel Encoding Hours| The number of hours for which content was encoded due to a live channel.|
 |VOD Encoding Hours| The number of hours for which content was encoded for on-demand playback. This metric excludes content encoded for a live channel or a live event.|
-|Live Event Encoding Hours| The number of hours for which content was encoded due to a live event .|
+|Live Event Encoding Hours| The number of hours for which content was encoded due to a live event.|
 |CloudSlicer Live Encoding Hours| The number of hours for which content was encoded due to a live event originated from Cloud Slicers.|
 |CloudSlicer VOD Encoding Hours| The number of hours for which content was encoded for on-demand playback originated from Cloud Slicers.|
 |Total Encoding Hours| The total number of hours for which content was encoded.|
@@ -327,8 +328,6 @@ Analyze statistics for assets played through your live channel.
 |Asset Description| Indicates the asset's name.|
 |Total Hours Watched| Indicates the number of hours that the asset defined within the Asset Description field was played through this live channel.|
 |Asset Views (Channel)| Indicates the total number of instances that playback of the asset defined within the Asset Description field was initiated through this live channel. <br /><Tip>This statistic is incremented whenever asset playback is initiated. For the purpose of this statistic, resuming playback of an asset after an ad break counts as a separate view. As a result, multiple views can be generated for the same asset during a single playback session. For example, if a user plays an entire asset that contains 3 ad breaks, then that playback session will generate 4 views.</Tip>|
-
-
 
 #### PLAYBACK HOURS BY COUNTRY  {/*playback-hours-by-country-asset*/}
 
@@ -441,7 +440,6 @@ Breaks down your encoding analytics.
 |Profile Rate Card|The encoding profiles used by the Cloud Slicers to encode your content.|
 |Is CloudSliced|If TRUE, this event uses cloud slicing for encoding.|
 
-
 #### To generate the Event Summary report  {/*event-summary-report*/}
 
 1. Navigate to the Event Summary page. From the main menu, click **Analytics** and then select **Event Summary** from the left-hand pane.
@@ -451,6 +449,7 @@ Breaks down your encoding analytics.
 5. Optional. Filter report data by live event(s).<br />a. Click on the **Event** drop-down to filter by live events.<br />b. Mark the live event that will be included in the report. <br />c. Clear the live event that will be excluded from the report.
 
 ## Multi-CDN Summary  {/*multi-cdn-summary*/}
+
 The Multi-CDN Summary report provides statistics for the distribution of your content via CDNs:
 
 #### PLAYBACK  {/*playback*/}
@@ -465,25 +464,25 @@ This pie chart contains a slice for each CDN through which your content was dist
 
 Indicates the total numbers of hours that your content was watched (aka playback hours) broken down by each unique combination of customer account, CDN, and one of the following content types:
 
-- Channel: Live channels
-- Event: Live events
-- VOD: On-demand content
+- **Channel**: Live channels
+- **Event**: Live events
+- **VOD**: On-demand content
 
 #### CONTENT TYPE DISTRIBUTION  {/*content-type-distribution*/}
 
 This bar chart, which shows the number of hours that your content was watched (aka playback hours), contains a color-coded bar for each unique combination of CDN and one of the following content types:
 
-- Channel: Live channels
-- Event: Live events
-- VOD: On-demand content
+- **Channel**: Live channels
+- **Event**: Live events
+- **VOD**: On-demand content
 
 #### COUNTRY BREAKDOWN  {/*country-breakdown*/}
 
 Indicates the total numbers of hours that your content was watched (aka playback hours) broken down by each unique combination of CDN, country, and one of the following content types:
 
-- Channel: Live channels
-- Event: Live events
-- VOD: On-demand content
+- **Channel**: Live channels
+- **Event**: Live events
+- **VOD**: On-demand content
 
 <Info>This report is useful to analyze CDN usage when leveraging our Multi-CDN solution.</Info>
 
@@ -497,6 +496,7 @@ Indicates the total numbers of hours that your content was watched (aka playback
 6. Optional. Change the granularity of this report by selecting the desired interval from the **Granularity** option.
 
 ## Syndication Summary  {/*syndication-summary*/}
+
 The Syndication Summary report provides statistics for content published to social media and content distribution platforms:
 
 #### OVERVIEW  {/*overview*/}
@@ -515,8 +515,8 @@ View statistics on:
 
 This bar chart, which tracks the number of hours that were published to social media and content distribution platforms, contains a color-coded bar for each of the following content types
 
-- Channel: Live channels
-- Event: Live events
+- **Channel**: Live channels
+- **Event**: Live events
 
 #### SYNDICATION HOURS  {/*syndication-hours*/}
 
@@ -527,9 +527,7 @@ This chart tracks the total number of hours published to social media and conten
 This pie chart contains shows how your content was published. Each slice represents either of the following items:
 
 - Social media or content distribution platform. This occurs when a publishing target's Platform option is set to a specific social media or content distribution platform.
-- Protocol. This occurs when a publishing target's Platform option is set to Other. Valid values are:
-
-    `HLS | Zixi | Other`
+- Protocol. This occurs when a publishing target's Platform option is set to Other. Valid values are: `HLS \| Zixi \| Other`.
 
 #### DETAILED VIEW  {/*detailed-view*/}
 

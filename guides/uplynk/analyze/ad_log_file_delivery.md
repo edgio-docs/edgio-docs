@@ -105,7 +105,7 @@ The following sample log data contains two requests:
 b4df6e49-b99c-487d-9182-dab06d5b1f2b  2022-06-02T18:34:03.676Z  2022-06-02T18:34:03.746Z  d594ee1c-7bb2-44ed-bd36-fdeb9a19cea7  complete  121651e9-ddcc-429f-85b2-06e42f05b5aa  0.05933880805969238 0.0038710416564941424 0.055324  1.437664031982422E-4  ""  ""  true  false 2022-06-02T18:34:03.676Z  2022-06-02T18:34:03.743Z  -
 ```
 
-### Response  {/*response*/}
+## Response  {/*response*/}
 
 Response log data describes the response from an ad decision server.
 
@@ -161,7 +161,7 @@ b1eaa87c-aad7-460b-a246-7f43dee1d1ac  2022-06-07T17:40:06.332Z  2022-06-07T17:40
 9cb4688f-911e-4df4-99e8-95bccf575fad  2022-06-01T03:03:24.886Z  2022-06-01T03:03:24.886Z  ae816075-9654-4af2-be85-87aad4c94528  ae816075-9654-4af2-be85-87aad4c94528-0-0--impressions-0 impressions https://example.com/live/pcs/view?xai=AKAOjsuwtiF_KOwoxeL6uLmnAqnLePfFV0Eh95Q7PXbvk1hMekiBt6VXJNMiCeiL2ou0gMAo4gXBzY56QdcLYtaoGYlUdioG4dlFx7PyBLx84iT2CY-tEVMLbzvCYXywSnh4ElOSGx5H33lMNLqRg2cOOUGnchOZkGvj_5QQwdikj7kciJ1hrU7reJ0hQo0UKMaRPsVSQwAiQ3BWtmtPuiqMThqLf2nm_voBDKIRVoillY3SppcZDJoj79n7pNxF18sMBFzf5bsZjU4EWbNo2oYabRJTY4sU9d90Ol3K-gofi55vC1YlnJ_ukQXZD9s&sai=AMfl-YTQQnBeH5AC3eyZVGSfYwNXc7Io7mxEjzn_W59ZvrVj&sig=Cg0ArKJSzOt2_tBqik2iEAE&uach_m=[UACH]&adurl=
 ```
 
-## Timestamps  {/*timestamps*/}
+## Timestamps  {/*timestamp*/}
 
 Timestamps are reported using the following syntax:
 

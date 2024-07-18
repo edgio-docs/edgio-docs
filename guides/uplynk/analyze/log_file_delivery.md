@@ -117,7 +117,7 @@ Indicates that an event beacon was sent to an ad server.
 |---|---|
 | group ID | Indicates an ID that identifies multiple URLs that correspond to a single event. For example, multiple impressions may be sent to various ad servers (e.g., Google Ad Manager, FreeWheel, and Verizon Media Ad Platform Video SSP) for a single ad. |
 | session ID | Indicates a unique playback session ID.<br />Learn more about this [playback session (session_created)](#session-created). |
-| ad asset ID | Indicates the asset ID corresponding to the ad that was played.<br />Value for non-ads (e.g., slot impression):<br />`-` |
+| ad asset ID | Indicates the asset ID corresponding to the ad that was played.<br />Value for non-ads (e.g., slot impression): `-` |
 | event description | Indicates the type of event. Valid values are:<br />`videoview \| slotimpression \| defaultimpression \| start \| firstquartile \| midpoint \| thirdquartile \| complete` |
 | ad break position | Indicates the zero-based position of the ad break.<br />Syntax: `[pre \| mid \| post].{Position}`<br />Example: The following sample value identifies the second mid-roll ad: `mid.1` |
 | ad index in break/pod | Indicates the zero-based index for the ad in the ad break / ad pod. For example, `1` indicates the second position in the ad break.<br />Return value for events without ad breaks: `-1` |
@@ -173,7 +173,7 @@ Indicates that a viewer initiated the playback of live or VOD content.
 
 <Callout type="info">Fields marked as `Enhanced Logs Only` will only be included when you have enabled enhanced logs. If you previously enabled custom log fields for the legacy version of log file delivery, then enhanced logs will be automatically enabled. Otherwise, please contact our technical support.</Callout>
 
-## channel_deleted  {/*channel-deleted*/}
+### channel_deleted  {/*channel-deleted*/}
 
 Indicates that the live channel was deleted.
 
@@ -182,7 +182,7 @@ Indicates that the live channel was deleted.
 | channel ID | Identifies the live channel that was deleted by its channel ID. |
 | cause | Identifies the user that deleted the channel by their user ID. |
 
-## channel_ping {/*channel-ping*/}
+### channel_ping {/*channel-ping*/}
 
 Indicates that the viewer continued to watch the live channel. This event, which is triggered every 10 minutes during the playback of a live channel, allows us to estimate simultaneous viewers during live playback.
 
@@ -196,7 +196,7 @@ Time is divided into 10 minute intervals that are known as buckets. During live 
 | user IP | Indicates the IP address of the playback device. |
 | player user agent | Indicates the player's user agent as reported by the `User-Agent` request header. |
 | player referrer URL | Indicates the referrer as reported by the `Referer` request header. |
-| euid | Indicates the [external user ID](uplynk/delivery/playback_urls/customizing_playback_via_parameters/#general-parameters) provided in the playback URL.<br />Default value: `-` |
+| euid | Indicates the [external user ID](uplynk/deliver/playback_urls/customizing_playback_via_parameters/#general-parameters) provided in the playback URL.<br />Default value: `-` |
 | session ID | Indicates a unique playback session ID.<br />Learn more about this [playback session (session_created)](#session-created). |
 
 ### channel_play_started {/*channel_play_started*/}
@@ -208,10 +208,10 @@ Indicates that a viewer initiated the playback of a live channel.
 | user IP | Indicates the IP address of the playback device. |
 | player user agent | Indicates the player's user agent as reported by the `User-Agent` request header. |
 | player referrer URL | Indicates the referrer as reported by the `Referer` request header. |
-| euid | Indicates the [external user ID](uplynk/delivery/playback_urls/customizing_playback_via_parameters/#general-parameters) provided in the playback URL.<br />Default value: `-` |
+| euid | Indicates the [external user ID](uplynk/deliver/playback_urls/customizing_playback_via_parameters/#general-parameters) provided in the playback URL.<br />Default value: `-` |
 | session ID | Indicates a unique playback session ID.<br />Learn more about this [playback session (session_created)](#session-created). |
 
-## drm_error {/*drm-error*/}
+### drm_error {/*drm-error*/}
 
 Indicates that a DRM-related error occurred. For example, a request from a player that uses a deprecated Content Decryption Module (CDM) will generate this type of error.
 
@@ -251,7 +251,7 @@ Indicates that an input error occurred. For example, the player may have request
 | user agent | Indicates the player's user agent as reported by the `User-Agent` request header. |
 | message | Provides a short description of why the error occurred. |
 
-## event_copied {/*event-copied*/}
+### event_copied {/*event-copied*/}
 
 Indicates that a live event was copied.
 
@@ -260,7 +260,7 @@ Indicates that a live event was copied.
 | event ID | Identifies a live event by its event ID. |
 | cause | Indicates the user ID for the user that copied the live event. |
 
-## event_ping {/*event-ping*/}
+### event_ping {/*event-ping*/}
 
 Indicates that the viewer continued to watch the live event. This event, which is triggered every 10 minutes during the playback of a live event, allows us to estimate simultaneous viewers during live playback.
 
@@ -274,7 +274,7 @@ Time is divided into 10 minute intervals that are known as buckets. During live 
 | user IP | Indicates the IP address of the playback device. |
 | player user agent | Indicates the player's user agent as reported by the User-Agent request header. |
 | player referrer URL | Indicates the referrer as reported by the Referer request header. |
-| euid | Indicates the [external user ID](uplynk/delivery/playback_urls/customizing_playback_via_parameters/#general-parameters) provided in the playback URL.<br />Default value: `-` |
+| euid | Indicates the [external user ID](uplynk/deliver/playback_urls/customizing_playback_via_parameters/#general-parameters) provided in the playback URL.<br />Default value: `-` |
 | session ID | Indicates a unique playback session ID.<br />Learn more about this [playback session (session_created)](#session-created). |
 
 ### event_play_started  {/*event-play-started*/}
@@ -287,7 +287,7 @@ Indicates that a user started watching a live event.
 | user IP | Indicates the IP address of the playback device. |
 | player user agent | Indicates the player's user agent as reported by the User-Agent request header. |
 | player referrer URL | Indicates the referrer as reported by the Referer request header. |
-| euid | Indicates the [external user ID](uplynk/delivery/playback_urls/customizing_playback_via_parameters/#general-parameters) provided in the playback URL.<br />Default value: `-` |
+| euid | Indicates the [external user ID](uplynk/deliver/playback_urls/customizing_playback_via_parameters/#general-parameters) provided in the playback URL.<br />Default value: `-` |
 | session ID | Indicates a unique playback session ID.<br />Learn more about this [playback session (session_created)](#session-created). |
 
 ### session_created   {/*session-created*/}
@@ -301,7 +301,7 @@ Indicates that a new playback session was created.
 | content type | Indicates the type of content that was played, Valid values are: `asset \| channel \| event` |
 | playing owner ID | Identifies the owner of shared content by user ID.<br />Return value for your content: `-`<br /><Callout type="info">If your user ID is returned by this field, then your content was played from another account (e.g., an ad or a shared library).</Callout> |
 | user agent | Indicates the player's user agent as reported by the User-Agent request header. |
-| euid | Indicates the [external user ID](uplynk/delivery/playback_urls/customizing_playback_via_parameters/#general-parameters) provided in the playback URL.<br />Default value: `-` |
+| euid | Indicates the [external user ID](uplynk/deliver/playback_urls/customizing_playback_via_parameters/#general-parameters) provided in the playback URL.<br />Default value: `-` |
 | referer | Indicates the referrer as reported by the `Referer` request header. |
 | user IP | Indicates the IP address of the playback device. |
 
@@ -317,7 +317,7 @@ Indicates that a single temporal slice of media was delivered. Each slice repres
 | user IP | Indicates the IP address of the playback device. |
 | player user agent | Indicates the player's user agent as reported by the `User-Agent` request header. |
 | player referrer URL | Indicates the referrer as reported by the `Referer` request header. |
-| euid | Indicates the [external user ID](uplynk/delivery/playback_urls/customizing_playback_via_parameters/#general-parameters) provided in the playback URL.<br />Default value: `-` |
+| euid | Indicates the [external user ID](uplynk/deliver/playback_urls/customizing_playback_via_parameters/#general-parameters) provided in the playback URL.<br />Default value: `-` |
 | session ID | Indicates a unique playback session ID.<br />Learn more about this [playback session (session_created)](#session-created). |
 | playing owner ID | Identifies the owner of shared content by user ID.<br />Return value for your content: `-`<br /><Callout type="info">If your user ID is returned by this field, then your content was played from another account (e.g., an ad or a shared library). </Callout>|
 | channel ID | Indicates a channel ID when the slice was played in the context of a live channel.<br />Default value: `-` |

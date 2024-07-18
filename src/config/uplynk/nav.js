@@ -12,7 +12,7 @@ const nav = {
     {
       title: 'Overview',
       path: 'overview',
-      icon: 'spark',
+      icon: 'uplynk/overview',
       routes: [
         {
           title: 'Inputs and Outputs',

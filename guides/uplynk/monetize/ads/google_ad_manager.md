@@ -11,7 +11,9 @@ Use Google Ad Manager (formerly known as DoubleClick for Publishers) to integrat
 Google Ad Manager has specific URL requirements for ad requests that meet the following criteria:
 
 - Initial and wrapper requests that start with the following base URL:
+
   `http://pubads.g.doubleclick.net/gampad/live/ads`
+
   `http://pubads.g.doubleclick.net/gampad/ads`
 
 - Wrapper requests that start with the following base URL:
@@ -50,7 +52,7 @@ Google Ad Manager parameters are described here.
 |---|---|---|
 | ad.adUnit<br /><span style="color:red">Required</span> | Identifies the directory path to an ad unit.<br />Example:<br />`ad.adUnit=/dfp_ads` |   |
 | ad.networkID<br /><span style="color:red">Required</span> | Identifies the network ID for the Google account.<br />Example:<br />`ad.networkID=12345` |   |
-| ad.output<br /><span style="color:red"><span style="color:red">Required</span></span> | Indicates the response format. Valid values are:<br />`xml_vast3 \| xml_vast2 \| xml_vmap1`<br /><Info>VOD Only<br />Selecting a VAST format (i.e., `xml__vast3` or `xml_vast2`) for a VOD playback session causes our service to create a VMAP template. This allows our service to manage all of the ad requests within that VOD asset across all ad breaks.</Info><br />Example:<br />`ad.output=xml_vmap1` | Passes unaltered to the ad server. |
+| ad.output<br /><span style="color:red">Required</span> | Indicates the response format. Valid values are:<br />`xml_vast3 \| xml_vast2 \| xml_vmap1`<br /><Info>VOD Only<br />Selecting a VAST format (i.e., `xml__vast3` or `xml_vast2`) for a VOD playback session causes our service to create a VMAP template. This allows our service to manage all of the ad requests within that VOD asset across all ad breaks.</Info><br />Example:<br />`ad.output=xml_vmap1` | Passes unaltered to the ad server. |
 | ad.serverUrl<br /><span style="color:red">Required</span> | Identifies the URL to the Google ad decision server.<br />Example:<br />`ad.serverUrl=http://pubads.g.doubleclick.net/gampad/ads?` |   |
 | ad.sz<br /><span style="color:red">Required</span> | Indicates the size of the master video ad slot.<br />Example:<br />`ad.sz=640x480` | Passes unaltered to the ad server. |
 | ad.ad_rule | Determines whether video ad requests will be an ad rule request.<br />Valid values are:<br />**0**: VAST Template<br />**1**: Ad rules playlist<br />Example:<br />`ad.ad_rule=0` | Passes unaltered to the ad server. |

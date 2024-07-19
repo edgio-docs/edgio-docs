@@ -99,6 +99,10 @@ const nav = {
               title: 'Content Management',
               path: 'manage/assets/content_management',
             },
+            {
+              title: 'Virtual Linear Playlists and Smartstart',
+              path: 'manage/assets/virtual_linear_playlists_and_smartstart',
+            },
           ],
         },
         {
@@ -127,6 +131,12 @@ const nav = {
         {
           title: 'Ads',
           path: 'monetize/ads',
+          routes: [
+            {
+              title: 'Universal Ad Configuration',
+              path: 'monetize/ads/universal_ad_configuration',
+            },
+          ],
         },
       ],
     },

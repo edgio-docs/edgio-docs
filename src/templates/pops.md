@@ -54,7 +54,6 @@
 | MDR | Madrid | Europe |
 | MDW | Chicago (ORD2) | North America |
 | MEX | Mexico City, Mexico | North America |
-| MIC | Miami | North America |
 | MID | Miami | North America |
 | MIL | Milan | Europe |
 | MIM | Miami | North America |
@@ -68,7 +67,6 @@
 | NAG | Mumbai, India | Asia |
 | NDL | Delhi, India | Asia |
 | NWA | Sydney | Australia |
-| NYA | New York | North America |
 | NYD | New York | North America |
 | OMM | Oman | Europe |
 | OSA | Osaka | Asia |

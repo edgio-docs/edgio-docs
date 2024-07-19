@@ -14,7 +14,7 @@ The **Content** Tab Contains:
 
   - View a [virtual linear playlist](/uplynk/manage/assets/virtual_linear_playlists_and_smartstart/#virtual-linear-playlist-management) by expanding **Playlists** and then selecting the desired playlist.
 
-## Search for Content
+## Search for Content  {/*search-for-content*/}
 
 Search for assets whose name, asset ID, or external ID contains a keyword by typing one or more word(s) in the search box that appears in the portal's upper-right hand corner.
 
@@ -32,14 +32,13 @@ The currently selected item in the side navigation tab determines what will be s
 
 By default, a search result must match at least one whole word defined within your search phrase.
 
-<Callout type="info"></Callout>Use a wildcard to search for partial words. For example searching for `basket` will only return search results that contain the word `basket`.
-while searching for `basket*` will also return search results that contain `baskets` and `basketball`.
+<Callout type="info">Use a wildcard to search for partial words. For example searching for `basket` will only return search results that contain the word `basket`, while searching for `basket*` will also return search results that contain `baskets` and `basketball`.</Callout>
 
-### Refining Searches
+### Refining Searches  {/*refining-searches*/}
 
 Use search operators and special characters to refine your searches.
 
-#### Search Operators
+#### Search Operators  {/*search-operators*/}
 Use the following search operators to define the scope of a search:
 
 | Search Operator | Description |
@@ -48,13 +47,13 @@ Use the following search operators to define the scope of a search:
 | id: | Search by asset ID.<br />Example: `id:6f3c092e8bd94911a2e7ce29d81c9849` |
 | name: | Search by an asset's name.<br />Example: Find assets whose name contains the phrase `2023 Conference`.<br />`name:"2023 Conference"` |
 | external: | Search by an asset's external ID.<br />Example: `external:basketball` |
-| meta: | Search by an asset's metadata.<br />Syntax (Any metadata field that contains a specific value): `meta:Value`<br />Syntax (field name and value): `meta:Field=Value`<br /><Info>`{Field}` is case-sensitive.</Info><br /><Tip></Tip>Both `{Field}` and `{Value}` support the space character (e.g., `meta: My First Field=Just Another Value`).<br />Example: Search for assets with a metadata field that contains the word `image`: `meta:image`<br />Search for assets whose class metadata field contains the word `image`: `meta:class=image` |
+| meta: | Search by an asset's metadata.<br />Syntax (Any metadata field that contains a specific value): `meta:Value`<br />Syntax (field name and value): `meta:Field=Value`<br /><Info>`{Field}` is case-sensitive.</Info><br /><Tip>Both `{Field}` and `{Value}` support the space character (e.g., `meta: My First Field=Just Another Value`).</Tip><br />Example: Search for assets with a metadata field that contains the word `image`: `meta:image`<br />Search for assets whose class metadata field contains the word `image`: `meta:class=image` |
 
 <Info>Use a comma to separate a phrase search from a search operator (e.g., `conference, meta: image`).</Info>
 
 <Info>You may add an optional space directly after the colon. For example, both `name:2023` and `name: 2023` return the same search results.</Info>
 
-### Special Characters
+### Special Characters  {/*special-characters*/}
 Use the following special characters to fine-tune your search results:
 
 | Special Character | Description |
@@ -65,6 +64,6 @@ Use the following special characters to fine-tune your search results:
 | * | Performs a wildcard search.<br />Example: Search for assets that contain `asket`. Search results could potentially include `casket`, `basket`, and `basketball`.<br />`*asket*` |
 | , | Use a comma to delimit search criteria.<br />Example: Search for assets whose external ID starts with ma and whose name contains the word blue, but must not contain the word purple: `external: ma*, name: +blue -purple` |
 
-## Duplicate a Playlist
+## Duplicate a Playlist  {/*duplicate-a-playlist*/}
 
-See [Duplicate a Playlist](uplynk/manage/assets/virtual_linear_playlists_and_smartstart/#duplicate-playlist) in the [Virtual Linear Playlists Guide](uplynk/manage/assets/virtual_linear_playlists_and_smartstart).
+See [Duplicate a Playlist](/uplynk/manage/assets/virtual_linear_playlists_and_smartstart/#duplicate-playlist) in the [Virtual Linear Playlists Guide](/uplynk/manage/assets/virtual_linear_playlists_and_smartstart).

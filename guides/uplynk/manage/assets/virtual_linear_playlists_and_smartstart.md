@@ -209,7 +209,7 @@ This feature allows you to copy an existing playlist's entries and settings whil
 
 - **Disable**: From the **Details** tab, set the **Embedded Ad Break Duration** option to `0`.
 
-#### Delete a Virtual Linear Playlist  {/*delete-virtual-linear-playlist*/}
+### Delete a Virtual Linear Playlist  {/*delete-virtual-linear-playlist*/}
 
 1. Navigate to the [Playlists page](https://cms.uplynk.com/static/cms2/index.html#/content/playlists): From the main menu, navigate to **Content** > **Playlists**.
 2. Click on the desired playlist.

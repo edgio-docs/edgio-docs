@@ -136,6 +136,10 @@ const nav = {
               title: 'Universal Ad Configuration',
               path: 'monetize/ads/universal_ad_configuration',
             },
+            {
+              title: 'Google Ad Manager',
+              path: 'monetize/ads/google_ad_manager',
+            },
           ],
         },
       ],

@@ -25,19 +25,13 @@ Universal Ad Config requires a third-party ad provider that supports:
 
 ## Passthrough Parameters
 
-Use this prefix to pass known ad parameters to the ad server:
-
-`ad.pt.<PARAMETER>=<VALUE>`
+Use this prefix to pass known ad parameters to the ad server: `ad.pt.<PARAMETER>=<VALUE>`
 
 **Examples**
 
-If an ad server expects a campaign ID (e.g., 1234) to be passed through the `c_id` ad parameter, then you should add the following query string parameter to the playback URL:
+If an ad server expects a campaign ID (e.g., 1234) to be passed through the `c_id` ad parameter, then you should add the following query string parameter to the playback URL: `ad.pt.c_id=1234`
 
-`ad.pt.c_id=1234`
-
-Uplynk will then pass the following query string parameter in the ad request:
-
-`c_id=1234`
+Uplynk will then pass the following query string parameter in the ad request: `c_id=1234`
 
 ## Macros
 
@@ -63,13 +57,9 @@ Use macros when the value of an ad parameter is unknown during ad configuration 
 
 **Example**
 
-Add the following query string parameter to the playback URL to pass the ad break duration through the `break_dur` parameter:
+Add the following query string parameter to the playback URL to pass the ad break duration through the `break_dur` parameter: `ad.pt.break_dur=[U_BREAK_DUR_S]`
 
-`ad.pt.break_dur=[U_BREAK_DUR_S]`
-
-If the Live Slicer requests a 90-second ad break, then Uplynk will pass the following query string parameter in the ad request:
-
-`break_dur=90.0`
+If the Live Slicer requests a 90-second ad break, then Uplynk will pass the following query string parameter in the ad request: `break_dur=90.0`
 
 ### Pass First Valid
 
@@ -87,14 +77,8 @@ Use the **Pass First Valid** prefix to define a default value that will be passe
 
 **Example:**
 
-Add the following query string parameter to the playback URL to pass an ad break duration for an ad configuration that will be used for both live and VOD streams:
+Add the following query string parameter to the playback URL to pass an ad break duration for an ad configuration that will be used for both live and VOD streams: `ad.pfv.break_dur=[U_BREAK_DUR_S],90.0`
 
-`ad.pfv.break_dur=[U_BREAK_DUR_S],90.0`
+If the Live Slicer requests a 60-second ad break, then Uplynk will pass the following query string parameter in the ad request: `break_dur=60.0`
 
-If the Live Slicer requests a 60-second ad break, then Uplynk will pass the following query string parameter in the ad request:
-
-`break_dur=60.0`
-
-If this ad configuration is used for a VOD stream, then Uplynk will pass the following query string parameter in the ad request:
-
-`break_dur=90.0`
+If this ad configuration is used for a VOD stream, then Uplynk will pass the following query string parameter in the ad request: `break_dur=90.0`

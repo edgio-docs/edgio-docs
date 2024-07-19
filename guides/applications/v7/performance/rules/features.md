@@ -41,9 +41,9 @@ export default new Router()
 
 #### Token Auth  {/*token-auth*/}
 
-Determines whether Token-Based Authentication will be applied to a request.
+Determines whether Token Auth will be applied to a request.
 
--   If Token-Based Authentication is enabled, then only requests that provide an encrypted token and satisfy the requirements specified by that token will be honored.
+-   If Token Auth is enabled, then only requests that provide an encrypted token and satisfy the requirements specified by that token will be honored.
 -   Token values will be encrypted and decrypted using your primary and backup encryption key(s).
 -   This feature takes precedence over most features with the exception of the [Rewrite URL feature](#rewrite-url).
 
@@ -54,7 +54,7 @@ You may not currently set a primary and backup encryption key through the {{ POR
 </Important>
 
 <edgejs>
--   If Token-Based Authentication is enabled, then only requests that provide an encrypted token and satisfy the requirements specified by that token will be honored.
+-   If Token Auth is enabled, then only requests that provide an encrypted token and satisfy the requirements specified by that token will be honored.
 -   Token values will be encrypted and decrypted using your primary and backup encryption key(s).
 -   This feature takes precedence over most features with the exception of the Rewrite URL feature.
 
@@ -72,20 +72,19 @@ export default new Router()
 
 **Default Behavior:** false
 
-<!--
 #### Token Auth Denial Code {/*token-auth-denial-code*/}
 
-Determines the type of response that will be returned to a user when a request is denied due to Token-Based Authentication.
+Determines the type of response that will be returned to a user when a request is denied due to Token Auth.
 
--   **Code:** Determines the HTTP status code for the response for requests denied due to Token-Based Authentication.
--   **Headers:** Contains a key-value pair that defines a response header that is specific to the status code set by the **Code** option.
+-   **Status code:** Determines the HTTP status code for the response for requests denied due to Token Auth.
+-   **Http Response Header:** Contains one or more response header(s) that are specific to the status code set by the **Status code** option.
 
     -   **3xx:** Set the `Location` response header to the URL to which denied requests will be redirected. If this header is not set, then we will return a standard response page.
     -   **401:** Set the `WWW-Authenticate` response header to info on how to authenticate. If the `WWW-Authenticate` header is set to `basic`, then the unauthorized user will be prompted for account credentials.
 
 <edgejs>
--   **token_auth_denial_code (*Object*):** <a id="token-auth-denial-code" /> Determines the type of response that will be returned to a user when a request is denied due to Token-Based Authentication.
--   **code (*Integer*):** Determines the HTTP status code for the response for requests denied due to Token-Based Authentication.
+-   **token_auth_denial_code (*Object*):** <a id="token-auth-denial-code" /> Determines the type of response that will be returned to a user when a request is denied due to Token Auth.
+-   **code (*Integer*):** Determines the HTTP status code for the response for requests denied due to Token Auth.
 
 -   **headers (*Object*):** Contains a key-value pair that defines a response header that is specific to the status code set by `code`.
 -   **3xx:** Set the `Location` response header to the URL to which denied requests will be redirected. If this header is not set, then we will return a standard response page.
@@ -125,12 +124,11 @@ Determines the type of response that will be returned to a user when a request i
     ```
 </edgejs>
 
-**Default Behavior:** By default, requests denied by Token-Based Authentication return a `403 Forbidden` response.
--->
+**Default Behavior:** By default, requests denied by Token Auth return a `403 Forbidden` response.
 
 #### Token Auth Ignore 	URL Case {/*token-auth-ignore-url-case*/}
 
-Determines whether URL comparisons made by the following Token-Based Authentication parameters are case-sensitive:
+Determines whether URL comparisons made by the following Token Auth parameters are case-sensitive:
 
 -   ec_url_allow
 -   ec_ref_allow

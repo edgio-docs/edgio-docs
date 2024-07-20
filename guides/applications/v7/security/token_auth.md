@@ -88,7 +88,7 @@ The backup key is solely used to transition to a different encryption key. As a 
 
 </Info>
 
-### Switching Encryption Keys {/**/}
+### Switching Encryption Keys {/*switching-encryption-keys*/}
 
 {{ PRODUCT }} can only decrypt tokens using either the primary or backup encryption key. A request is denied when it contains a token generated using any other encryption key.
 
@@ -111,7 +111,7 @@ As a result, it is recommended to use a primary and a backup encryption key to e
 5.  Click **Update**.
 6.  Apply this change by deploying to this environment.
 
-#### Removing an Encryption Key {/**/}
+#### Removing an Encryption Key {/*removing-an-encryption-key*/}
 
 Remove the old encryption key once the following events have taken place:
 
@@ -338,7 +338,7 @@ For these requests, {{ PRODUCT }} requires both of the following conditions to b
 
 -   The request satisfies all of the condition(s) defined within the token. 
 
-### Disable Token Auth {/*disable-token-auth*/}
+### Disabling Token Auth {/*disabling-token-auth*/}
 
 By default, Token Auth is not applied to requests. However, if you have already enabled Token Auth within a rule, then you may disable it for specific requests by adding it to a rule in disabled mode. 
 

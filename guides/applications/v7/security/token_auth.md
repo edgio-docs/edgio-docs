@@ -55,13 +55,13 @@ The purpose of encryption keys is to encrypt or decrypt a token.
 -   An encryption key may consist of any combination of alphanumeric characters. All other characters, including spaces, are not valid for encryption keys.
 -   An encryption key is case-sensitive. In other words, the case of an encryption key affects the encryption and decryption of token values.
 -   The maximum length of an encryption key is 250 characters.
--   By default, a token value is only specific to an encryption key. This means that it may be possible for a client to use a single token value to gain access to protected content from various folders. Use the `ec_url_allow` parameter to ensure that a token may only be used for a specific directory or for a particular file.
+-   By default, a token value is only specific to an encryption key. This means that it may be possible for a client to use a single token value to gain access to protected content from various folders. <!--Use the `ec_url_allow` parameter to ensure that a token may only be used for a specific directory or for a particular file.-->
 -   Changes to your encryption key configuration, such as adding or updating an encryption key, require a deployment. 
 -   <a id="openssl" />A standard method for generating random values is to use the OpenSSL tool to perform hexadecimal encoding. 
 
-    **Syntax:** `rand -hex <KeyLength>`
+    **Syntax:** `rand -hex <Length>`
 
-    Hexadecimal encoding doubles the specified length. For example, specifying a length of "32" will generate a value containing 64 characters.
+    Hexadecimal encoding doubles the specified length. For example, specifying a length of `32` will generate a value containing 64 characters.
 
     **Example:**
 
@@ -80,9 +80,7 @@ The purpose of encryption keys is to encrypt or decrypt a token.
 2.  From the **Token-Based Authentication** settings, set the **Primary Key** option to the desired alphanumeric value. 
 3.  Ensure that the **Primary Key Minimum Encryption Version** option remains set to `v3`. 
 4.  Click **Save**.
-5.  If you have already configured a rule that enforces Token Auth and would like {{ PRODUCT }} to use your updated encryption key configuration, then should apply this change by deploying to this environment.
-
-    If this is your initial setup, then you may postpone deployment until after you have set up Token Auth enforcement.
+5.  Apply this change by deploying to this environment.
 
 <Info>
 
@@ -118,7 +116,7 @@ As a result, it is recommended to use a primary and a backup encryption key to e
 Remove the old encryption key once the following events have taken place:
 
 -   All protected content can now only be requested with a token generated using the new primary encryption key. 
--   Cached content that leverage an old token is no longer being served. This may require purging cached content.
+-   Cached content that leverages an old token is no longer being served. This may require purging cached content.
 
 **To remove an encryption key**
 
@@ -291,12 +289,12 @@ This section provides a brief description for each available parameter.
 
     `ec_ref_deny=www1.example.com/obj1,*.server2.example.com`
 
+<!--
 -   **ec_url_allow:** Links a URL path to a token.
 
     -   Only requests that start with the specified URL path will be allowed access.
-    -   Do not include the protocol and hostname of the desired URL (e.g., http://www.domain.com).
+    -   This relative path starts after the hostname. Exclude the protocol and hostname (e.g., `https://www.example.com`) when using this parameter.
 
-<!--
     **Example:** This example 
 
 /000001/dir1/movie1,/000001/dir2
@@ -342,7 +340,7 @@ For these requests, {{ PRODUCT }} requires both of the following conditions to b
 
 ### Disable Token Auth {/*disable-token-auth*/}
 
-By default, Token Auth is not applied to requests. However, if you have already enabled Token Auth within a rule, then you disable it for specific requests by adding it to a rule in disabled mode. 
+By default, Token Auth is not applied to requests. However, if you have already enabled Token Auth within a rule, then you may disable it for specific requests by adding it to a rule in disabled mode. 
 
 ![Rules - shown with Token Auth disabled](/images/v7/security/token_auth_rules_2.png)
 
@@ -354,7 +352,7 @@ Notice that the rule disabling Token Auth appears below the rule that enables it
 
 ### Redirecting Unauthorized Users {/*redirecting-unauthorized-users*/}
 
-By default, {{ PRODUCT }} responds with a `403 Forbidden` when the request does not meet the minimum requirements defined within the token. Use the Token Auth Denial Code feature to return a different status code or even redirect users to another web page.
+By default, {{ PRODUCT }} responds with a `403 Forbidden` when the request does not meet the minimum requirements defined within the token. Use the [Token Auth Denial Code feature](/applications/performance/rules/features#token-auth-denial-code) to return a different status code or even redirect users to another web page.
 
 Common response codes are listed below.
 
@@ -372,5 +370,5 @@ Common response codes are listed below.
 
     1.  Set the **Status Code** option to `302`.
     2.  Set the **Header Name** option to `Location`.
-    3.  Set the **Value** option to the full URL to the user-friendly error page (e.g., https://www.example.com/purchasecontent.aspx).
+    3.  Set the **Value** option to the full URL to the user-friendly error page (e.g., `https://www.example.com/purchasecontent.aspx`).
     4.  Click **Apply**.

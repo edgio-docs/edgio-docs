@@ -134,7 +134,11 @@ Remove the old encryption key once the following events have taken place:
 
 ## Securing Content {/*securing-content*/}
 
-Define the set of requests that will be protected by Token Auth by creating one or more rule(s) with the Token Auth feature. The rule's match conditions determines the set of requests for which Token Auth will be enforced. For these requests, {{ PRODUCT }} requires both of the following conditions to be met:
+Define the set of requests that will be protected by Token Auth by creating one or more rule(s) with the Token Auth feature. The rule's match conditions determines the set of requests for which Token Auth will be enforced. 
+
+![Rules - shown with Token Auth enabled](/images/v7/security/token_auth_rules_1.png)
+
+For these requests, {{ PRODUCT }} requires both of the following conditions to be met:
 -   The request URL's query string must start with a valid token. A token is considered valid if it can be decrypted using either the current primary or backup encryption key. If the request URL contains additional query string parameters, then they should be appended to the token through the use of an ampersand.
 
     **Example:**
@@ -143,11 +147,11 @@ Define the set of requests that will be protected by Token Auth by creating one 
 
 -   The request satisfies all of the condition(s) defined within the token. 
 
-![Rules - shown with Token Auth enabled](/images/v7/security/token_auth_rules_1.png?width=550)
+### Disable Token Auth {/*disable-token-auth*/}
 
-Alternatively, you may also disable Token Auth on a subset of requests by adding it to a rule in disabled mode. 
+By default, Token Auth is not applied to requests. However, if you have already enabled Token Auth within a rule, then you disable it for specific requests by adding it to a rule in disabled mode. 
 
-![Rules - shown with Token Auth disabled](/images/v7/security/token_auth_rules_1.png?width=550)
+![Rules - shown with Token Auth disabled](/images/v7/security/token_auth_rules_2.png)
 
 <Info>
 
@@ -175,7 +179,7 @@ Common response codes are listed below.
 
     1.  Set the **Status Code** option to `302`.
     2.  Set the **Header Name** option to `Location`.
-    3.  Set the **Value** option to the full URL to the user-friendly error page (e.g., http://www.server.com/purchasecontent.aspx).
+    3.  Set the **Value** option to the full URL to the user-friendly error page (e.g., https://www.example.com/purchasecontent.aspx).
     4.  Click **Apply**.
 
 ## Tokens {/*tokens*/}
@@ -189,8 +193,8 @@ A token consists of encrypted data that defines the requirements that the reques
 -   There is no limit to the number of tokens that can be generated for a specific encryption key. 
 -   Generate a token using either of the following tools:
 
-    -   Our Token Generator application (ectoken3)
-    -   A custom script or application
+    -   [Our Token Generator application (ectoken3)](#token-generator-application)
+    -   [A custom script or application](#custom-token-generator)
 
 ### Token Generator Application {/*token-generator-application*/}
 
@@ -198,13 +202,13 @@ This application provides the means to generate tokens using a script. It includ
 
 -   Windows executable
 
-    Requires BouncyCastle.Crypto.dll and Blowfish.dll within the same folder as the encryption executable.
+    BouncyCastle.Crypto.dll and Blowfish.dll must reside within the same folder as the encryption executable.
 
 -   Linux binaries
 
 **Syntax (Single Parameter):** `ectoken3 <Key Name> "<Parameter>=<Value>"`
 
-**Syntax (Multiple Parameters):** `ectoken3 <Key Name> "<Parameter>=<Value>&<Parameter>=<Value>,<Value>"
+**Syntax (Multiple Parameters):** `ectoken3 <Key Name> "<Parameter>=<Value>&<Parameter>=<Value>,<Value>"`
 
 [Learn more about parameters.](#token-auth-parameters)
 

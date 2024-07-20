@@ -361,6 +361,10 @@ const nav = {
           path: 'security/tls_certificates',
         },
         {
+          title: 'Token Auth',
+          path: 'security/token_auth',
+        },
+        {
           title: 'Attack Surface Management',
           path: 'security/asm',
         },

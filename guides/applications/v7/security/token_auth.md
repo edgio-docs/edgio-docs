@@ -315,13 +315,13 @@ Authorize a request secured by Token Auth by adding a token at the start of the 
 
 **Example:**
 
-<img src="http://images.mydomain.com/images/myimage.jpg?c1019f8a6942b46a1ce679e168d5797670f3ee7e39068054ee4534d8a5a859dc06">
+`<img src="http://images.mydomain.com/images/myimage.jpg?c1019f8a6942b46a1ce679e168d5797670f3ee7e39068054ee4534d8a5a859dc06">`
 
 If the request URL contains additional query string parameters, then they should be appended to the token through the use of an ampersand.
 
 **Example:**
 
-<img src="http://images.mydomain.com/images/myimage.jpg?c1019f8a6942b46a1ce679e168d5797670f3ee7e39068054ee4534d8a5a859dc06&width=240&height=480">
+`<img src="http://images.mydomain.com/images/myimage.jpg?c1019f8a6942b46a1ce679e168d5797670f3ee7e39068054ee4534d8a5a859dc06&width=240&height=480">`
 
 ## Securing Content {/*securing-content*/}
 

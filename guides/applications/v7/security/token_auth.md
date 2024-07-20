@@ -39,11 +39,11 @@ For each request, {{ PRODUCT }} will check whether Token Auth has been enabled. 
 Get started with Token Auth by performing the following steps:
 
 1.  Define a [primary encryption key](#encryption-keys).
-2.  Ensure that requests for content that will be protected by Token Auth contain a query string that start with a token.
+2.  Ensure that requests for content that will be protected by Token Auth [contain a query string that start with a token](#request-authorization).
 
-    This step requires generating encrypted tokens that define the minimum access requirements. For example, you could use a server-side script to generate and inject tokens within links to protected content.
+    This step requires [generating encrypted tokens](#tokens) that define the minimum access requirements. For example, you could use a server-side script to generate and inject tokens within links to protected content.
 
-3.  Enable Token Auth on the desired requests by adding the Token Auth feature to one or more rule(s).
+3.  [Enable Token Auth](#securing-content) on the desired requests by adding the Token Auth feature to one or more rule(s).
 4.  Deploy your changes.
 
 ## Encryption Keys {/*encryption-keys*/}
@@ -55,7 +55,7 @@ The purpose of encryption keys is to encrypt or decrypt a token.
 -   An encryption key may consist of any combination of alphanumeric characters. All other characters, including spaces, are not valid for encryption keys.
 -   An encryption key is case-sensitive. In other words, the case of an encryption key affects the encryption and decryption of token values.
 -   The maximum length of an encryption key is 250 characters.
--   By default, a token value is only specific to an encryption key. This means that it may be possible for a client to use a single token value to gain access to protected content from various folders. Use the `Allow URL` parameter to ensure that a token may only be used for a specific directory or for a particular file.
+-   By default, a token value is only specific to an encryption key. This means that it may be possible for a client to use a single token value to gain access to protected content from various folders. Use the `ec_url_allow` parameter to ensure that a token may only be used for a specific directory or for a particular file.
 -   Changes to your encryption key configuration, such as adding or updating an encryption key, require a deployment. 
 -   <a id="openssl" />A standard method for generating random values is to use the OpenSSL tool to perform hexadecimal encoding. 
 
@@ -131,56 +131,6 @@ Remove the old encryption key once the following events have taken place:
 4.  Apply this change by deploying to this environment.
 
     The backup key will be deactivated upon the completion of the deployment. After which, links that use tokens based off of the old encryption key will be rejected.
-
-## Securing Content {/*securing-content*/}
-
-Define the set of requests that will be protected by Token Auth by creating one or more rule(s) with the Token Auth feature. The rule's match conditions determines the set of requests for which Token Auth will be enforced. 
-
-![Rules - shown with Token Auth enabled](/images/v7/security/token_auth_rules_1.png)
-
-For these requests, {{ PRODUCT }} requires both of the following conditions to be met:
--   The request URL's query string must start with a valid token. A token is considered valid if it can be decrypted using either the current primary or backup encryption key. If the request URL contains additional query string parameters, then they should be appended to the token through the use of an ampersand.
-
-    **Example:**
-    
-    `https://cdn.example.com/secure/product.pdf?1234567890abcdefgh`
-
--   The request satisfies all of the condition(s) defined within the token. 
-
-### Disable Token Auth {/*disable-token-auth*/}
-
-By default, Token Auth is not applied to requests. However, if you have already enabled Token Auth within a rule, then you disable it for specific requests by adding it to a rule in disabled mode. 
-
-![Rules - shown with Token Auth disabled](/images/v7/security/token_auth_rules_2.png)
-
-<Info>
-
-Notice that the rule disabling Token Auth appears below the rule that enables it. This allows it take to precedence.
-
-</Info>
-
-### Redirecting Unauthorized Users {/*redirecting-unauthorized-users*/}
-
-By default, {{ PRODUCT }} responds with a `403 Forbidden` when the request does not meet the minimum requirements defined within the token. Use the Token Auth Denial Code feature to return a different status code or even redirect users to another web page.
-
-Common response codes are listed below.
-
--   **301:** A `301 Moved Permanently` response redirects unauthorized users to the URL specified in the `Location` header.
--   **302:** A `302 Found` response redirects unauthorized users to the URL specified in the `Location` header. This status code is the industry standard method of performing a redirect.
--   **307:** A `307 Temporary Redirect` response redirects unauthorized users to the URL specified in the `Location` header.
--   **403:** A `403 Forbidden` response is typically returned when an unauthorized user trys to access content.
--   **404:** A `404 Not Found` response indicates that the HTTP client was able to communicate with the server, but the specified asset was not found.
-
-**To redirect unauthorized users to a user-friendly error page (recommended configuration)**
-
-1.  Navigate to the desired environment's **Rules** page.
-2.  Find the rule that enables the Token Auth feature.
-3.  Add the Token Auth Denial Code feature. 
-
-    1.  Set the **Status Code** option to `302`.
-    2.  Set the **Header Name** option to `Location`.
-    3.  Set the **Value** option to the full URL to the user-friendly error page (e.g., https://www.example.com/purchasecontent.aspx).
-    4.  Click **Apply**.
 
 ## Tokens {/*tokens*/}
 
@@ -358,3 +308,69 @@ allows requests to CDN storage that meet one of the following criteria:
     All content stored in the directory tree that starts with "dir2."
 
 -->
+
+## Request Authorization {/*request-authorization*/}
+
+Authorize a request secured by Token Auth by adding a token at the start of the request URL's query string.
+
+[Learn how to generate a token.](#tokens)
+
+**Example:**
+
+<img src="http://images.mydomain.com/images/myimage.jpg?c1019f8a6942b46a1ce679e168d5797670f3ee7e39068054ee4534d8a5a859dc06">
+
+If the request URL contains additional query string parameters, then they should be appended to the token through the use of an ampersand.
+
+**Example:**
+
+<img src="http://images.mydomain.com/images/myimage.jpg?c1019f8a6942b46a1ce679e168d5797670f3ee7e39068054ee4534d8a5a859dc06&width=240&height=480">
+
+## Securing Content {/*securing-content*/}
+
+Define the set of requests that will be protected by Token Auth by creating one or more rule(s) with the Token Auth feature. The rule's match conditions determines the set of requests for which Token Auth will be enforced. 
+
+![Rules - shown with Token Auth enabled](/images/v7/security/token_auth_rules_1.png)
+
+For these requests, {{ PRODUCT }} requires both of the following conditions to be met:
+-   The request URL's query string must start with a valid token. A token is considered valid if it can be decrypted using either the current primary or backup encryption key. 
+
+    **Example:**
+    
+    `https://cdn.example.com/secure/product.pdf?1234567890abcdefgh`
+
+-   The request satisfies all of the condition(s) defined within the token. 
+
+### Disable Token Auth {/*disable-token-auth*/}
+
+By default, Token Auth is not applied to requests. However, if you have already enabled Token Auth within a rule, then you disable it for specific requests by adding it to a rule in disabled mode. 
+
+![Rules - shown with Token Auth disabled](/images/v7/security/token_auth_rules_2.png)
+
+<Info>
+
+Notice that the rule disabling Token Auth appears below the rule that enables it. This allows it take to precedence.
+
+</Info>
+
+### Redirecting Unauthorized Users {/*redirecting-unauthorized-users*/}
+
+By default, {{ PRODUCT }} responds with a `403 Forbidden` when the request does not meet the minimum requirements defined within the token. Use the Token Auth Denial Code feature to return a different status code or even redirect users to another web page.
+
+Common response codes are listed below.
+
+-   **301:** A `301 Moved Permanently` response redirects unauthorized users to the URL specified in the `Location` header.
+-   **302:** A `302 Found` response redirects unauthorized users to the URL specified in the `Location` header. This status code is the industry standard method of performing a redirect.
+-   **307:** A `307 Temporary Redirect` response redirects unauthorized users to the URL specified in the `Location` header.
+-   **403:** A `403 Forbidden` response is typically returned when an unauthorized user trys to access content.
+-   **404:** A `404 Not Found` response indicates that the HTTP client was able to communicate with the server, but the specified asset was not found.
+
+**To redirect unauthorized users to a user-friendly error page (recommended configuration)**
+
+1.  Navigate to the desired environment's **Rules** page.
+2.  Find the rule that enables the Token Auth feature.
+3.  Add the Token Auth Denial Code feature. 
+
+    1.  Set the **Status Code** option to `302`.
+    2.  Set the **Header Name** option to `Location`.
+    3.  Set the **Value** option to the full URL to the user-friendly error page (e.g., https://www.example.com/purchasecontent.aspx).
+    4.  Click **Apply**.

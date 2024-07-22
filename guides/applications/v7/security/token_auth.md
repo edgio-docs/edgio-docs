@@ -32,14 +32,14 @@ For each request, {{ PRODUCT }} will check whether Token Auth has been enabled. 
         
         </Info>
 
-    -   **Invalid Request:** If the request does not satisfy at least one criterion, then the request will be denied. By default, we will return a `403 Forbidden` response. However, you may customize your configuration to return a different status code or even redirect users to another web page.
+    -   **Invalid Request:** If the request does not satisfy all of the conditions defined in the token, then the request will be denied. By default, we will return a `403 Forbidden` response. However, you may customize your configuration to return a different status code or even redirect users to another web page.
 
 ## Getting Started {/*getting-started*/}
 
 Get started with Token Auth by performing the following steps:
 
 1.  Define a [primary encryption key](#encryption-keys).
-2.  Ensure that requests for content that will be protected by Token Auth [contain a query string that start with a token](#request-authorization).
+2.  Ensure that requests for content that will be protected by Token Auth [contain a query string that start with a token](#authorizing-requests).
 
     This step requires [generating encrypted tokens](#tokens) that define the minimum access requirements. For example, you could use a server-side script to generate and inject tokens within links to protected content.
 
@@ -306,21 +306,27 @@ This section provides a brief description for each available parameter.
     
     `/dir1/movie1,/dir2`
 
-## Request Authorization {/*request-authorization*/}
+## Authorizing Requests {/*authorizing-requests*/}
 
-Authorize a request secured by Token Auth by adding a token at the start of the request URL's query string.
+Authorize a request secured by Token Auth by [generating a token](#tokens) and then adding it to the query string.
 
-[Learn how to generate a token.](#tokens)
+-   By default, you must specify this token at the start of the query string.
 
-**Example:**
+    **Example:**
 
-`<img src="http://images.mydomain.com/images/myimage.jpg?c1019f8a6942b46a1ce679e168d5797670f3ee7e39068054ee4534d8a5a859dc06">`
+    `<img src="http://images.mydomain.com/images/myimage.jpg?c1019f8a6942b46a1ce679e168d5797670f3ee7e39068054ee4534d8a5a859dc06">`
 
-If the request URL contains additional query string parameters, then they should be appended to the token through the use of an ampersand.
+    If the request URL contains additional query string parameters, then they should be appended to the token through the use of an ampersand.
 
-**Example:**
+    **Example:**
 
-`<img src="http://images.mydomain.com/images/myimage.jpg?c1019f8a6942b46a1ce679e168d5797670f3ee7e39068054ee4534d8a5a859dc06&width=240&height=480">`
+    `<img src="http://images.mydomain.com/images/myimage.jpg?c1019f8a6942b46a1ce679e168d5797670f3ee7e39068054ee4534d8a5a859dc06&width=240&height=480">`
+
+-   Specify a token as a custom query string parameter by enabling the [Token Auth Parameter feature](/applications/performance/rules/features#token-auth-parameter).
+
+    **Example:** The following example assumes that the Token Auth Parameter feature is set to `token`:
+
+    `<img src="http://images.mydomain.com/images/myimage.jpg?width=240&height=480&token=c1019f8a6942b46a1ce679e168d5797670f3ee7e39068054ee4534d8a5a859dc06">`
 
 ## Securing Content {/*securing-content*/}
 
@@ -329,7 +335,7 @@ Define the set of requests that will be protected by Token Auth by creating one 
 ![Rules - shown with Token Auth enabled](/images/v7/security/token_auth_rules_1.png)
 
 For these requests, {{ PRODUCT }} requires both of the following conditions to be met:
--   The request URL's query string must start with a valid token. A token is considered valid if it can be decrypted using either the current primary or backup encryption key. 
+-   The request URL's query string must contain a valid token. A token is considered valid if it can be decrypted using either the current primary or backup encryption key. 
 
     **Example:**
     

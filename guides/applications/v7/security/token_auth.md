@@ -18,7 +18,7 @@ For each request, {{ PRODUCT }} will check whether Token Auth has been enabled. 
 
     **Example:**
     
-    `https://cdn.example.com/secure/product.pdf?1234567890abcdefgh`
+    `https://cdn.example.com/secure/product.pdf?1234567890abcdefgh1234567890abcdefgh`
 
 -   The request must satisfy all of the requirements defined within the token.
 
@@ -55,7 +55,7 @@ The purpose of encryption keys is to encrypt or decrypt a token.
 -   An encryption key may consist of any combination of alphanumeric characters. All other characters, including spaces, are not valid for encryption keys.
 -   An encryption key is case-sensitive. In other words, the case of an encryption key affects the encryption and decryption of token values.
 -   The maximum length of an encryption key is 250 characters.
--   By default, a token value is only specific to an encryption key. This means that it may be possible for a client to use a single token value to gain access to protected content from various folders. <!--Use the `ec_url_allow` parameter to ensure that a token may only be used for a specific directory or for a particular file.-->
+-   By default, a token value is only specific to an encryption key. This means that it may be possible for a client to use a single token value to gain access to protected content from various folders. Use the [ec_url_allow parameter](#ec_url_allow) to ensure that a token may only be used for a specific directory or for a particular file.
 -   Changes to your encryption key configuration, such as adding or updating an encryption key, require a deployment. 
 -   <a id="openssl" />A standard method for generating random values is to use the OpenSSL tool to perform hexadecimal encoding. 
 
@@ -154,15 +154,19 @@ This application provides the means to generate tokens using a script. It includ
 
 -   Linux binaries
 
-**Syntax (Single Parameter):** `ectoken3 <Key Name> "<Parameter>=<Value>"`
+<ButtonLink href="/zip/edgio_token_generator.zip">
+  Download Token Generator
+</ButtonLink>
 
-**Syntax (Multiple Parameters):** `ectoken3 <Key Name> "<Parameter>=<Value>&<Parameter>=<Value>,<Value>"`
+**Syntax (Single Parameter):** `ectoken3 <Encryption Key> "<Parameter>=<Value>"`
+
+**Syntax (Multiple Parameters):** `ectoken3 <Encryption Key> "<Parameter>=<Value>&<Parameter>=<Value>,<Value>"`
 
 [Learn more about parameters.](#token-auth-parameters)
 
-**Example:** The following token, which uses the MyKey encryption key, expires on 12/31/2024 at 12:00:00 GMT, restricts access to North America, and restricts referrers to trusted.example.com:
+**Example:** The following token, which uses the mykeyabc123 encryption key, expires on 12/31/2024 at 12:00:00 GMT, restricts access to North America, and restricts referrers to trusted.example.com:
 
-`ectoken3 MyKey "ec_expire=1735646400&ec_country_allow=US,CA,MX&ec_ref_allow=trusted.example.com"`
+`ectoken3 mykeyabc123 "ec_expire=1735646400&ec_country_allow=US,CA,MX&ec_ref_allow=trusted.example.com"`
 
 The resulting token is:
 `1ea46ba396e88f03a9f6b6b968b32d2fd88858148f120a1bbca7882de68b8b14a9bde8bcd6c36bcd30e8bbb47d9997ab7260381b4c1ed99de5baf805ed54fd3609e8066e43a92a5b2c7839ba95080d3668ab9dd47d9275d8eb29b8ccf8f49515745f18a66c`
@@ -193,7 +197,7 @@ Decrypt a token to view its requirements.
 
 -   One use for this capability is to troubleshoot clients that cannot view your content due to Token Auth. 
 -   You may only decrypt tokens if their encryption key is still active. 
--   **Syntax:** `ectoken3 decrypt <Key Name> <Token>`
+-   **Syntax:** `ectoken3 decrypt <Encryption Key> <Token>`
 
 ### Token Auth Parameters {/*token-auth-parameters*/}
 
@@ -289,23 +293,18 @@ This section provides a brief description for each available parameter.
 
     `ec_ref_deny=www1.example.com/obj1,*.server2.example.com`
 
-<!--
--   **ec_url_allow:** Links a URL path to a token.
+-   **<a id="ec_url_allow" />ec_url_allow:** Links a URL path to a token.
 
     -   Only requests that start with the specified URL path will be allowed access.
     -   This relative path starts after the hostname. Exclude the protocol and hostname (e.g., `https://www.example.com`) when using this parameter.
+    -   Use a comma to delimit multiple paths.
 
-    **Example:** This example 
+    **Example:** This example allows requests that meet one of the following criteria:
 
-/000001/dir1/movie1,/000001/dir2
-
-allows requests to CDN storage that meet one of the following criteria:
-
-    The name of the requested content starts with "movie1" and is stored in a folder called "dir1."
-    All content stored in the directory tree that starts with "dir1/movie1."
-    All content stored in the directory tree that starts with "dir2."
-
--->
+    -   All content stored in the directory tree that starts with `/dir1/movie1`.
+    -   All content stored in the directory tree that starts with `/dir2`."
+    
+    `/dir1/movie1,/dir2`
 
 ## Request Authorization {/*request-authorization*/}
 
@@ -334,7 +333,7 @@ For these requests, {{ PRODUCT }} requires both of the following conditions to b
 
     **Example:**
     
-    `https://cdn.example.com/secure/product.pdf?1234567890abcdefgh`
+    `https://cdn.example.com/secure/product.pdf?1234567890abcdefgh1234567890abcdefgh`
 
 -   The request satisfies all of the condition(s) defined within the token. 
 

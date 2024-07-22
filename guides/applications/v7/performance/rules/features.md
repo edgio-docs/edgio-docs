@@ -149,6 +149,25 @@ export default new Router()
 
 **Default Behavior:** false
 
+#### Token Auth Parameter {/*token-auth-parameter*/}
+
+Allows tokens to be specified as a custom query string parameter. 
+
+<edgejs>
+**Example:**
+
+```js filename="./routes.js"
+export default new Router()
+  .get('/', {
+    access: {
+      "token_auth_parameter": "token",
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** By default, tokens may only be specified as a value at the start of the query string.
+
 ## Caching {/*caching*/}
 
 Caching features customize when and how content is cached.

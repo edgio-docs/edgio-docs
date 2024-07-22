@@ -125,14 +125,14 @@ Use virtual linear playlists to provide a [virtual linear experience](#virtual-l
 - Repeat the previous step as needed.
 - Click **Add to Playlist**.
 
-    <Tip>Reposition an asset by dragging the drag icon <Image inline src="/images/uplynk/drag-icon.png" alt="Revert" /> to the desired position in the playlist.</Tip>
+    <Tip>Reposition an asset by dragging the move icon <Image inline src="/images/uplynk/drag-icon.png" alt="Revert" /> to the desired position in the playlist.</Tip>
 
 11. **Add ad breaks to the playlist** by performing the following steps:
 
     - Click **+ Ad Break**.
     - From the **Duration (seconds)** option, indicate the duration, in seconds, of the ad break.
     - Click **Add**. The ad break will be appended to your playlist.
-    - Reposition the ad break by dragging the <Image inline src="/images/uplynk/drag-icon.png" alt="Revert" /> to the desired position in the playlist.
+    - Reposition the ad break by dragging the move icon <Image inline src="/images/uplynk/drag-icon.png" alt="Revert" /> to the desired position in the playlist.
     - Repeat Step 12 as needed.
 
 12. Click **Save Playlist.**
@@ -209,7 +209,7 @@ This feature allows you to copy an existing playlist's entries and settings whil
 
 - **Disable**: From the **Details** tab, set the **Embedded Ad Break Duration** option to `0`.
 
-#### Delete a Virtual Linear Playlist  {/*delete-virtual-linear-playlist*/}
+### Delete a Virtual Linear Playlist  {/*delete-virtual-linear-playlist*/}
 
 1. Navigate to the [Playlists page](https://cms.uplynk.com/static/cms2/index.html#/content/playlists): From the main menu, navigate to **Content** > **Playlists**.
 2. Click on the desired playlist.

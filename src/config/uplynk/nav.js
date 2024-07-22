@@ -103,6 +103,10 @@ const nav = {
               title: 'Virtual Linear Playlists and Smartstart',
               path: 'manage/assets/virtual_linear_playlists_and_smartstart',
             },
+            {
+              title: 'Reprocessing',
+              path: 'manage/assets/reprocessing',
+            },
           ],
         },
         {
@@ -116,6 +120,16 @@ const nav = {
         {
           title: 'Content Protection',
           path: 'manage/content_protection',
+          routes: [
+            {
+              title: 'Geoblocking',
+              path: 'manage/content_protection/geoblocking',
+            },
+            {
+              title: 'Blackout',
+              path: 'manage/content_protection/blackout',
+            },
+          ],
         },
       ],
     },
@@ -125,8 +139,8 @@ const nav = {
       icon: 'server',
       routes: [
         {
-          title: 'Syndication Publishing',
-          path: 'monetize/syndication_publishing',
+          title: 'Syndication',
+          path: 'monetize/syndication',
         },
         {
           title: 'Ads',
@@ -135,6 +149,10 @@ const nav = {
             {
               title: 'Universal Ad Configuration',
               path: 'monetize/ads/universal_ad_configuration',
+            },
+            {
+              title: 'Google Ad Manager',
+              path: 'monetize/ads/google_ad_manager',
             },
           ],
         },

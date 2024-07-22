@@ -164,7 +164,7 @@ This application provides the means to generate tokens using a script. It includ
 
 [Learn more about parameters.](#token-auth-parameters)
 
-**Example:** The following token, which uses the mykeyabc123 encryption key, expires on 12/31/2024 at 12:00:00 GMT, restricts access to North America, and restricts referrers to trusted.example.com:
+**Example:** The following token, which uses the `mykeyabc123` encryption key, expires on 12/31/2024 at 12:00:00 GMT, restricts access to North America, and restricts referrers to trusted.example.com:
 
 `ectoken3 mykeyabc123 "ec_expire=1735646400&ec_country_allow=US,CA,MX&ec_ref_allow=trusted.example.com"`
 
@@ -203,7 +203,7 @@ Decrypt a token to view its requirements.
 
 This section provides a brief description for each available parameter.
 
--   **ec_clientip:** Restricts content delivery to requests that originate from a specific IP address.
+-   **<a id="ec_clientip" />ec_clientip:** Restricts content delivery to requests that originate from a specific IP address.
 
     -   This parameter supports standard IPv4/IPv6 and CIDR notation.
 
@@ -211,7 +211,7 @@ This section provides a brief description for each available parameter.
 
     `ec_clientip=111.11.111.11`
 
--   **ec_country_allow:** Restricts content delivery to the specified countries.
+-   **<a id="ec_country_allow" />ec_country_allow:** Restricts content delivery to the specified countries.
 
     -   Use [ISO 3166 country codes](/applications/reference/country_codes) to specify countries.
     -   Use a comma to delimit multiple country codes.
@@ -220,7 +220,7 @@ This section provides a brief description for each available parameter.
 
     `ec_country_allow=US`
 
--   **ec_country_deny:** Blocks requests from one or more countries.
+-   **<a id="ec_country_deny" />ec_country_deny:** Blocks requests from one or more countries.
 
     -   Use [ISO 3166 country codes](/applications/reference/country_codes) to specify countries.
     -   Use a comma to delimit multiple country codes.
@@ -229,7 +229,7 @@ This section provides a brief description for each available parameter.
 
     `ec_country_deny=US,CA`
 
--   **ec_expire:** Defines an expiration date and time (GMT) for the token value.
+-   **<a id="ec_expire" />ec_expire:** Defines an expiration date and time (GMT) for the token value.
 
     -   Specify the number of seconds that will pass from Unix time to the expiration date.
 
@@ -237,7 +237,7 @@ This section provides a brief description for each available parameter.
 
     `ec_expire=1735646400`
 
--   **ec_host_allow:** Restricts delivery to the specified set of hosts.
+-   **<a id="ec_host_allow" />ec_host_allow:** Restricts delivery to the specified set of hosts.
 
     -   Do not include the protocol portion of the desired URL (e.g., http://).
     -   A comparison will be made against the `Host` request header. Delivery is restricted to requests whose hostname matches a specified value.
@@ -247,7 +247,7 @@ This section provides a brief description for each available parameter.
     
     `ec_host_allow=server1.example.com,*.server2.example.com`
 
--   **ec_host_deny:** Defines the set of hosts that will be blocked.
+-   **<a id="ec_host_deny" />ec_host_deny:** Defines the set of hosts that will be blocked.
 
     -   Do not include the protocol portion of the desired URL (e.g., http://).
     -   A comparison will be made against the value specified in the `Host` request header. Delivery is restricted to requests whose hostname do not match a specified value.
@@ -257,7 +257,7 @@ This section provides a brief description for each available parameter.
     
     `ec_host_deny=server1.example.com,*.server2.example.com`
 
--   **ec_proto_allow:** Restrict delivery to the specified protocol(s). Valid values are:
+-   **<a id="ec_proto_allow" />ec_proto_allow:** Restrict delivery to the specified protocol(s). Valid values are:
 
     `http | https`
 
@@ -265,7 +265,7 @@ This section provides a brief description for each available parameter.
 
     `ec_proto_allow=https`
 
--   **ec_proto_deny:** Denies requests that leverage the specified protocol. Valid values are:
+-   **<a id="ec_proto_deny" />ec_proto_deny:** Denies requests that leverage the specified protocol. Valid values are:
 
     `http | https`
 
@@ -273,7 +273,7 @@ This section provides a brief description for each available parameter.
 
     `ec_proto_deny=http`
 
--   **ec_ref_allow:** Restricts delivery to the specified set of referrers.
+-   **<a id="ec_ref_allow" />ec_ref_allow:** Restricts delivery to the specified set of referrers.
 
     -   Do not include the protocol portion of the desired URL (e.g., http://).
     -   The specified value will be compared against the request's `Referer` header. This header value must start with a value defined by this parameter.
@@ -283,7 +283,7 @@ This section provides a brief description for each available parameter.
 
     `ec_ref_allow=www1.example.com/obj1,*.server2.example.com`
 
--   **ec_ref_deny:** Defines the set of referrers for which delivery will be denied.
+-   **<a id="ec_ref_deny" />ec_ref_deny:** Defines the set of referrers for which delivery will be denied.
 
     -   Do not include the protocol portion of the desired URL (e.g., http://).
     -   The specified value will be compared against the request's `Referer` header. This header value must start with a value defined by this parameter.

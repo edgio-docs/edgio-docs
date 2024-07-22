@@ -18,7 +18,7 @@ For each request, {{ PRODUCT }} will check whether Token Auth has been enabled. 
 
     **Example:**
     
-    `https://cdn.example.com/secure/product.pdf?1234567890abcdefgh`
+    `https://cdn.example.com/secure/product.pdf?1234567890abcdefgh1234567890abcdefgh`
 
 -   The request must satisfy all of the requirements defined within the token.
 
@@ -32,14 +32,14 @@ For each request, {{ PRODUCT }} will check whether Token Auth has been enabled. 
         
         </Info>
 
-    -   **Invalid Request:** If the request does not satisfy at least one criterion, then the request will be denied. By default, we will return a `403 Forbidden` response. However, you may customize your configuration to return a different status code or even redirect users to another web page.
+    -   **Invalid Request:** If the request does not satisfy all of the conditions defined in the token, then the request will be denied. By default, we will return a `403 Forbidden` response. However, you may customize your configuration to return a different status code or even redirect users to another web page.
 
 ## Getting Started {/*getting-started*/}
 
 Get started with Token Auth by performing the following steps:
 
 1.  Define a [primary encryption key](#encryption-keys).
-2.  Ensure that requests for content that will be protected by Token Auth [contain a query string that start with a token](#request-authorization).
+2.  Ensure that requests for content that will be protected by Token Auth [contain a query string that start with a token](#authorizing-requests).
 
     This step requires [generating encrypted tokens](#tokens) that define the minimum access requirements. For example, you could use a server-side script to generate and inject tokens within links to protected content.
 
@@ -55,7 +55,7 @@ The purpose of encryption keys is to encrypt or decrypt a token.
 -   An encryption key may consist of any combination of alphanumeric characters. All other characters, including spaces, are not valid for encryption keys.
 -   An encryption key is case-sensitive. In other words, the case of an encryption key affects the encryption and decryption of token values.
 -   The maximum length of an encryption key is 250 characters.
--   By default, a token value is only specific to an encryption key. This means that it may be possible for a client to use a single token value to gain access to protected content from various folders. <!--Use the `ec_url_allow` parameter to ensure that a token may only be used for a specific directory or for a particular file.-->
+-   By default, a token value is only specific to an encryption key. This means that it may be possible for a client to use a single token value to gain access to protected content from various folders. Use the [ec_url_allow parameter](#ec_url_allow) to ensure that a token may only be used for a specific directory or for a particular file.
 -   Changes to your encryption key configuration, such as adding or updating an encryption key, require a deployment. 
 -   <a id="openssl" />A standard method for generating random values is to use the OpenSSL tool to perform hexadecimal encoding. 
 
@@ -154,15 +154,19 @@ This application provides the means to generate tokens using a script. It includ
 
 -   Linux binaries
 
-**Syntax (Single Parameter):** `ectoken3 <Key Name> "<Parameter>=<Value>"`
+<ButtonLink href="/zip/edgio_token_generator.zip">
+  Download Token Generator
+</ButtonLink>
 
-**Syntax (Multiple Parameters):** `ectoken3 <Key Name> "<Parameter>=<Value>&<Parameter>=<Value>,<Value>"`
+**Syntax (Single Parameter):** `ectoken3 <Encryption Key> "<Parameter>=<Value>"`
+
+**Syntax (Multiple Parameters):** `ectoken3 <Encryption Key> "<Parameter>=<Value>&<Parameter>=<Value>,<Value>"`
 
 [Learn more about parameters.](#token-auth-parameters)
 
-**Example:** The following token, which uses the MyKey encryption key, expires on 12/31/2024 at 12:00:00 GMT, restricts access to North America, and restricts referrers to trusted.example.com:
+**Example:** The following token, which uses the `mykeyabc123` encryption key, expires on 12/31/2024 at 12:00:00 GMT, restricts access to North America, and restricts referrers to trusted.example.com:
 
-`ectoken3 MyKey "ec_expire=1735646400&ec_country_allow=US,CA,MX&ec_ref_allow=trusted.example.com"`
+`ectoken3 mykeyabc123 "ec_expire=1735646400&ec_country_allow=US,CA,MX&ec_ref_allow=trusted.example.com"`
 
 The resulting token is:
 `1ea46ba396e88f03a9f6b6b968b32d2fd88858148f120a1bbca7882de68b8b14a9bde8bcd6c36bcd30e8bbb47d9997ab7260381b4c1ed99de5baf805ed54fd3609e8066e43a92a5b2c7839ba95080d3668ab9dd47d9275d8eb29b8ccf8f49515745f18a66c`
@@ -193,13 +197,13 @@ Decrypt a token to view its requirements.
 
 -   One use for this capability is to troubleshoot clients that cannot view your content due to Token Auth. 
 -   You may only decrypt tokens if their encryption key is still active. 
--   **Syntax:** `ectoken3 decrypt <Key Name> <Token>`
+-   **Syntax:** `ectoken3 decrypt <Encryption Key> <Token>`
 
 ### Token Auth Parameters {/*token-auth-parameters*/}
 
 This section provides a brief description for each available parameter.
 
--   **ec_clientip:** Restricts content delivery to requests that originate from a specific IP address.
+-   **<a id="ec_clientip" />ec_clientip:** Restricts content delivery to requests that originate from a specific IP address.
 
     -   This parameter supports standard IPv4/IPv6 and CIDR notation.
 
@@ -207,7 +211,7 @@ This section provides a brief description for each available parameter.
 
     `ec_clientip=111.11.111.11`
 
--   **ec_country_allow:** Restricts content delivery to the specified countries.
+-   **<a id="ec_country_allow" />ec_country_allow:** Restricts content delivery to the specified countries.
 
     -   Use [ISO 3166 country codes](/applications/reference/country_codes) to specify countries.
     -   Use a comma to delimit multiple country codes.
@@ -216,7 +220,7 @@ This section provides a brief description for each available parameter.
 
     `ec_country_allow=US`
 
--   **ec_country_deny:** Blocks requests from one or more countries.
+-   **<a id="ec_country_deny" />ec_country_deny:** Blocks requests from one or more countries.
 
     -   Use [ISO 3166 country codes](/applications/reference/country_codes) to specify countries.
     -   Use a comma to delimit multiple country codes.
@@ -225,7 +229,7 @@ This section provides a brief description for each available parameter.
 
     `ec_country_deny=US,CA`
 
--   **ec_expire:** Defines an expiration date and time (GMT) for the token value.
+-   **<a id="ec_expire" />ec_expire:** Defines an expiration date and time (GMT) for the token value.
 
     -   Specify the number of seconds that will pass from Unix time to the expiration date.
 
@@ -233,7 +237,7 @@ This section provides a brief description for each available parameter.
 
     `ec_expire=1735646400`
 
--   **ec_host_allow:** Restricts delivery to the specified set of hosts.
+-   **<a id="ec_host_allow" />ec_host_allow:** Restricts delivery to the specified set of hosts.
 
     -   Do not include the protocol portion of the desired URL (e.g., http://).
     -   A comparison will be made against the `Host` request header. Delivery is restricted to requests whose hostname matches a specified value.
@@ -243,7 +247,7 @@ This section provides a brief description for each available parameter.
     
     `ec_host_allow=server1.example.com,*.server2.example.com`
 
--   **ec_host_deny:** Defines the set of hosts that will be blocked.
+-   **<a id="ec_host_deny" />ec_host_deny:** Defines the set of hosts that will be blocked.
 
     -   Do not include the protocol portion of the desired URL (e.g., http://).
     -   A comparison will be made against the value specified in the `Host` request header. Delivery is restricted to requests whose hostname do not match a specified value.
@@ -253,7 +257,7 @@ This section provides a brief description for each available parameter.
     
     `ec_host_deny=server1.example.com,*.server2.example.com`
 
--   **ec_proto_allow:** Restrict delivery to the specified protocol(s). Valid values are:
+-   **<a id="ec_proto_allow" />ec_proto_allow:** Restrict delivery to the specified protocol(s). Valid values are:
 
     `http | https`
 
@@ -261,7 +265,7 @@ This section provides a brief description for each available parameter.
 
     `ec_proto_allow=https`
 
--   **ec_proto_deny:** Denies requests that leverage the specified protocol. Valid values are:
+-   **<a id="ec_proto_deny" />ec_proto_deny:** Denies requests that leverage the specified protocol. Valid values are:
 
     `http | https`
 
@@ -269,7 +273,7 @@ This section provides a brief description for each available parameter.
 
     `ec_proto_deny=http`
 
--   **ec_ref_allow:** Restricts delivery to the specified set of referrers.
+-   **<a id="ec_ref_allow" />ec_ref_allow:** Restricts delivery to the specified set of referrers.
 
     -   Do not include the protocol portion of the desired URL (e.g., http://).
     -   The specified value will be compared against the request's `Referer` header. This header value must start with a value defined by this parameter.
@@ -279,7 +283,7 @@ This section provides a brief description for each available parameter.
 
     `ec_ref_allow=www1.example.com/obj1,*.server2.example.com`
 
--   **ec_ref_deny:** Defines the set of referrers for which delivery will be denied.
+-   **<a id="ec_ref_deny" />ec_ref_deny:** Defines the set of referrers for which delivery will be denied.
 
     -   Do not include the protocol portion of the desired URL (e.g., http://).
     -   The specified value will be compared against the request's `Referer` header. This header value must start with a value defined by this parameter.
@@ -289,39 +293,40 @@ This section provides a brief description for each available parameter.
 
     `ec_ref_deny=www1.example.com/obj1,*.server2.example.com`
 
-<!--
--   **ec_url_allow:** Links a URL path to a token.
+-   **<a id="ec_url_allow" />ec_url_allow:** Links a URL path to a token.
 
     -   Only requests that start with the specified URL path will be allowed access.
     -   This relative path starts after the hostname. Exclude the protocol and hostname (e.g., `https://www.example.com`) when using this parameter.
+    -   Use a comma to delimit multiple paths.
 
-    **Example:** This example 
+    **Example:** This example allows requests that meet one of the following criteria:
 
-/000001/dir1/movie1,/000001/dir2
+    -   All content stored in the directory tree that starts with `/dir1/movie1`.
+    -   All content stored in the directory tree that starts with `/dir2`."
+    
+    `/dir1/movie1,/dir2`
 
-allows requests to CDN storage that meet one of the following criteria:
+## Authorizing Requests {/*authorizing-requests*/}
 
-    The name of the requested content starts with "movie1" and is stored in a folder called "dir1."
-    All content stored in the directory tree that starts with "dir1/movie1."
-    All content stored in the directory tree that starts with "dir2."
+Authorize a request secured by Token Auth by [generating a token](#tokens) and then adding it to the query string.
 
--->
+-   By default, you must specify this token at the start of the query string.
 
-## Request Authorization {/*request-authorization*/}
+    **Example:**
 
-Authorize a request secured by Token Auth by adding a token at the start of the request URL's query string.
+    `<img src="http://images.mydomain.com/images/myimage.jpg?c1019f8a6942b46a1ce679e168d5797670f3ee7e39068054ee4534d8a5a859dc06">`
 
-[Learn how to generate a token.](#tokens)
+    If the request URL contains additional query string parameters, then they should be appended to the token through the use of an ampersand.
 
-**Example:**
+    **Example:**
 
-`<img src="http://images.mydomain.com/images/myimage.jpg?c1019f8a6942b46a1ce679e168d5797670f3ee7e39068054ee4534d8a5a859dc06">`
+    `<img src="http://images.mydomain.com/images/myimage.jpg?c1019f8a6942b46a1ce679e168d5797670f3ee7e39068054ee4534d8a5a859dc06&width=240&height=480">`
 
-If the request URL contains additional query string parameters, then they should be appended to the token through the use of an ampersand.
+-   Specify a token as a custom query string parameter by enabling the [Token Auth Parameter feature](/applications/performance/rules/features#token-auth-parameter).
 
-**Example:**
+    **Example:** The following example assumes that the Token Auth Parameter feature is set to `token`:
 
-`<img src="http://images.mydomain.com/images/myimage.jpg?c1019f8a6942b46a1ce679e168d5797670f3ee7e39068054ee4534d8a5a859dc06&width=240&height=480">`
+    `<img src="http://images.mydomain.com/images/myimage.jpg?width=240&height=480&token=c1019f8a6942b46a1ce679e168d5797670f3ee7e39068054ee4534d8a5a859dc06">`
 
 ## Securing Content {/*securing-content*/}
 
@@ -330,11 +335,11 @@ Define the set of requests that will be protected by Token Auth by creating one 
 ![Rules - shown with Token Auth enabled](/images/v7/security/token_auth_rules_1.png)
 
 For these requests, {{ PRODUCT }} requires both of the following conditions to be met:
--   The request URL's query string must start with a valid token. A token is considered valid if it can be decrypted using either the current primary or backup encryption key. 
+-   The request URL's query string must contain a valid token. A token is considered valid if it can be decrypted using either the current primary or backup encryption key. 
 
     **Example:**
     
-    `https://cdn.example.com/secure/product.pdf?1234567890abcdefgh`
+    `https://cdn.example.com/secure/product.pdf?1234567890abcdefgh1234567890abcdefgh`
 
 -   The request satisfies all of the condition(s) defined within the token. 
 

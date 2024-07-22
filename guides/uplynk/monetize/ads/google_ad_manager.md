@@ -37,7 +37,7 @@ Our service performs the following modifications to ad requests that meet the ab
 
 #### Wrapper Request Examples
 
-| Initial Request (sssb=1) | Request URL (Wrapper) | Replacement URL (Wrapper) |
+| Initial Request (`sssb=1`) | Request URL (Wrapper) | Replacement URL (Wrapper) |
 |---|---|---|
 | Present | http://ad.doubleclick.net?parameter1=value1 | https://serverside.doubleclick.net?parameter1=value1 |
 | Missing | http://ad.doubleclick.net?parameter1=value1 | https://serverside.doubleclick.net?parameter1=value1&ipe=ssb |
@@ -46,15 +46,17 @@ Our service performs the following modifications to ad requests that meet the ab
 
 ## Ad Parameters
 
-Google Ad Manager parameters are described here.
+This section describes Google Ad Manager parameters.
+
+<Info>Required parameters are bolded.</Info>
 
 | Parameter | Description | Behavior |
 |---|---|---|
-| ad.adUnit<br /> | Identifies the directory path to an ad unit.<br />Example:<br />`ad.adUnit=/dfp_ads` |   |
-| ad.networkID<br /> | Identifies the network ID for the Google account.<br />Example:<br />`ad.networkID=12345` |   |
-| ad.output<br /> | Indicates the response format. Valid values are:<br />`xml_vast3 \| xml_vast2 \| xml_vmap1`<br /><Info>VOD Only<br />Selecting a VAST format (i.e., `xml__vast3` or `xml_vast2`) for a VOD playback session causes our service to create a VMAP template. This allows our service to manage all of the ad requests within that VOD asset across all ad breaks.</Info><br />Example:<br />`ad.output=xml_vmap1` | Passes unaltered to the ad server. |
-| ad.serverUrl<br /> | Identifies the URL to the Google ad decision server.<br />Example:<br />`ad.serverUrl=http://pubads.g.doubleclick.net/gampad/ads?` |   |
-| ad.sz<br /> | Indicates the size of the master video ad slot.<br />Example:<br />`ad.sz=640x480` | Passes unaltered to the ad server. |
+| **ad.adUnit** | Identifies the directory path to an ad unit.<br />Example:<br />`ad.adUnit=/dfp_ads` |   |
+| **ad.networkID**| Identifies the network ID for the Google account.<br />Example:<br />`ad.networkID=12345` |   |
+| **ad.output** | Indicates the response format. Valid values are:<br />`xml_vast3 \| xml_vast2 \| xml_vmap1`<br /><Info>VOD Only<br />Selecting a VAST format (i.e., `xml__vast3` or `xml_vast2`) for a VOD playback session causes our service to create a VMAP template. This allows our service to manage all of the ad requests within that VOD asset across all ad breaks.</Info><br />Example:<br />`ad.output=xml_vmap1` | Passes unaltered to the ad server. |
+| **ad.serverUrl** | Identifies the URL to the Google ad decision server.<br />Example:<br />`ad.serverUrl=http://pubads.g.doubleclick.net/gampad/ads?` |   |
+| **ad.sz** | Indicates the size of the master video ad slot.<br />Example:<br />`ad.sz=640x480` | Passes unaltered to the ad server. |
 | ad.ad_rule | Determines whether video ad requests will be an ad rule request.<br />Valid values are:<br />**0**: VAST Template<br />**1**: Ad rules playlist<br />Example:<br />`ad.ad_rule=0` | Passes unaltered to the ad server. |
 | ad.addtl_consent | Global Data Privacy Parameter. A string that contains a list of consented and/or disclosed Google ad technology providers (ATPs) that are not registered with IAB.<br />Example:<br />`2~1.35.41.101~dv.9.21.81 means that the user has consented to ATPs with IDs 1, 35, 41 and 101, ATPs with IDs 9, 21, and 81 have been disclosed to the user and the string is created using the format defined in the v2 specification.` | Passes unaltered to the ad server. |
 | ad.an |   | Passes unaltered to the ad server. |
@@ -79,7 +81,7 @@ Google Ad Manager parameters are described here.
 | ad.description_url | Identifies the URL of the page that contains the player that submitted the request. This URL should be specific to the video as opposed to the domain for all ad requests. |   |
 | ad.env |   | Forced to vp. This is a static parameter that cannot be overwritten. |
 | ad.excl_cat | Ad exclusion category. Blocks any line items containing the exclusion label from being eligible for a given ad request. Use this parameter in conjunction with the scp and `cust_params` parameters.<br />Example:<br />`&ad.scp=excl_cat%3Dairline_exclusion_label%7C` |   |
-| ad.extcalls | Set it to liveconnect to Instruct Google Ad Manager to enable integration with LiveConnect.<br />Example:<br />`ad.extcalls=liveconnect` | Passes unaltered to the ad server. |
+| ad.extcalls | Set it to liveconnect to instruct Google Ad Manager to enable integration with LiveConnect.<br />Example:<br />`ad.extcalls=liveconnect` | Passes unaltered to the ad server. |
 | ad.gdfp_req |   | Forced to 1. This is a static parameter that cannot be overwritten. |
 | ad.gdpr | Global Data Privacy Parameter. Possible values: 0 / 1<br />0=GDPR does not apply.<br />1=GDPR applies.<br />Example:<br />`ad.gdpr=1` | Passes unaltered to the ad server. |
 | ad.gdpr_consent | Global Data Privacy Parameter. URL-safe, base 64-encoded Transparency and Consent string. Only meaningful if gdpr=1.<br />Example:<br />`ad.gdpr_consent=1` | Passes unaltered to the ad server. |
@@ -94,7 +96,7 @@ Google Ad Manager parameters are described here.
 | ad.lip | Required for a request from the last position in a standardized ad pod.<br />Example:<br />`ad.lip=true` | Passes unaltered to the ad server. |
 | ad.ltd | The limited ads parameter accepts a constant value that indicates whether to serve ads in a limited way in the absence of consent for the use of cookies or other local identifiers. Unlike other URL parameters, setting ltd=1 changes the behavior of the IMA SDK to treat the request as ID-less and to disallow storage.<br />Example:<br />`ltd=1` | Passes unaltered to the ad server. |
 | ad.max_ad_duration | Required for min_ad_duration.<br />Determines the ad's maximum duration in milliseconds. Use this parameter when requesting a single ad.<br />Example:<br />`ad.max_ad_duration=60000` | Passes unaltered to the ad server. |
-| ad.min_ad_duration | Required for max_ad_duration.<br />Determines the ad's minimum duration in milliseconds. Use this parameter when requesting a single ad.<br />Example:<br />`ad.min_ad_duration=15000` | Passes unaltered to the ad server. |
+| ad.min_ad_duration | Required for `max_ad_duration`.<br />Determines the ad's minimum duration in milliseconds. Use this parameter when requesting a single ad.<br />Example:<br />`ad.min_ad_duration=15000` | Passes unaltered to the ad server. |
 | ad.mridx | Determines whether the request to the ad server will identify the current mid-roll ad break by its position within the current playback session. Include this information by setting this parameter to:<br />enabled<br />Example:<br />`ad.mridx=enabled`<br />#View deprecated behavior.<br />You may also pass the current mid-roll ad break's position within the current program by enabling the ad.pod parameter. | Gets the midroll ad break number for this session. |
 | ad.msid |   | Passes unaltered to the ad server. |
 | ad.nofb |   | Passes unaltered to the ad server. |

@@ -1,3 +1,3 @@
 ---
-title: Syndication Publishing
+title: Syndication
 ---

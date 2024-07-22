@@ -129,6 +129,14 @@ const nav = {
               title: 'Blackout',
               path: 'manage/content_protection/blackout',
             },
+            {
+              title: 'Set up Blackout Tutorial',
+              path: 'manage/content_protection/set_up_blackout_tutorial',
+            },
+            {
+              title: 'Conditional and Reverse Blackout',
+              path: 'manage/content_protection/conditional_and_reverse_blackout',
+            },
           ],
         },
       ],

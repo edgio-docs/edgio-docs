@@ -1939,7 +1939,7 @@ Identifies requests whose response contains a `Set-Cookie` header with the speci
 
 -   Use a regular expression (e.g., `value 1|value 2`) to specify multiple cookie values.
 -   {{ PRODUCT }} compares the specified value or pattern against the `Set-Cookie` header(s) defined in the response.
--   We recommend the use of regular expressions when the response contains multiple `Set-Cookie` headers.
+-   We strongly recommend the use of regular expressions when the response contains multiple `Set-Cookie` headers. Matching with the `equals | does not equal` operators may produce unexpected results.
 
 <edgejs>
 
@@ -1947,7 +1947,7 @@ Identifies requests whose response contains a `Set-Cookie` header with the speci
 
 -   Use a regular expression (e.g., `value 1|value 2`) to specify multiple cookie values.
 -   {{ PRODUCT }} compares the specified value or pattern against the `Set-Cookie` header(s) defined in the response.
--   We recommend the use of regular expressions when the response contains multiple `Set-Cookie` headers.
+-   We strongly recommend the use of regular expressions when the response contains multiple `Set-Cookie` headers. Matching with the `=== | !==` operators may produce unexpected results.
 -   **Supported operators:** `=== | !== | =~ | !~`
 
 </edgejs>

@@ -19,7 +19,7 @@ Click **Controls** or a Control option to expand the panel where you can customi
 
 <Tip>Dashboard views and reports include only data that satisfies all filters specified in the Control panel.</Tip>
 
-#### Control panel options  {/*control-panel-options*/}
+#### Control Panel Options  {/*control-panel-options*/}
 
 |Option| Description| Details|
 |---|---|---|
@@ -529,7 +529,7 @@ This chart tracks the total number of hours published to social media and conten
 This pie chart contains shows how your content was published. Each slice represents either of the following items:
 
 - Social media or content distribution platform. This occurs when a publishing target's Platform option is set to a specific social media or content distribution platform.
-- Protocol. This occurs when a publishing target's Platform option is set to Other. Valid values are: `HLS | Zixi | Other`.
+- Protocol. This occurs when a publishing target's Platform option is set to Other. Valid values are: HLS, Zixi, Other.
 
 #### DETAILED VIEW  {/*detailed-view*/}
 

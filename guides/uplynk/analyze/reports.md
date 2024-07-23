@@ -9,7 +9,7 @@ To access reports, click **Analytics** from the left navigation; then select the
 
 ## Controls and Functions {/*controls-and-functions*/}
 
-Customize your dashboards and report data using controls. Functions allow you to view and print your selections.
+Customize your report data using controls. Functions allow you to view and print your selections.
 
 ### Data Controls  {/*data-controls*/}
 
@@ -17,7 +17,7 @@ Customize your dashboards and report data using controls. Functions allow you to
 
 Click **Controls** or a Control option to expand the panel where you can customize your metrics to view, print, or export.
 
-<Tip>Dashboard views and reports include only data that satisfies all filters specified in the Control panel.</Tip>
+<Tip>Reports include only data that satisfies all filters specified in the Control panel.</Tip>
 
 #### Control panel options  {/*control-panel-options*/}
 

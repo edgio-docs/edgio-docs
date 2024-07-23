@@ -2,9 +2,7 @@
 title: Universal Ad Configuration
 ---
 
-Use the Universal Ad Config to integrate ads from your own third-party ad provider into your content.
-
-[Learn how to get started](/uplynk/monetize/ads/#setup-overview).
+Use the Universal Ad Config to integrate ads from your own third-party ad provider into your content. <br /> [Learn how to get started](/uplynk/monetize/ads/#setup-overview).
 
 ## Requirements
 
@@ -59,15 +57,13 @@ Use macros when the value of an ad parameter is unknown during ad configuration 
 
 Add the following query string parameter to the playback URL to pass the ad break duration through the `break_dur` parameter: `ad.pt.break_dur=[U_BREAK_DUR_S]`
 
-If the Live Slicer requests a 90-second ad break, then Uplynk will pass the following query string parameter in the ad request: `break_dur=90.0`
+If the Live Slicer requests a 90-second ad break, Uplynk will pass the following query string parameter in the ad request: `break_dur=90.0`
 
 ### Pass First Valid
 
 Use the **Pass First Valid** prefix to define a default value that will be passed when a macro does not resolve to a value. This prefix instructs Uplynk to pass the first valid value from a comma-delimited list.
 
-**Syntax:**
-
-`ad.pfv.<PARAMETER>=<VALUE 1>[,<VALUE 2>,<VALUE N>]`
+**Syntax**: `ad.pfv.<PARAMETER>=<VALUE 1>[,<VALUE 2>,<VALUE N>]`
 
 **Key Information**
 

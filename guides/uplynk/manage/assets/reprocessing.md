@@ -21,7 +21,7 @@ The reprocessing screen is comprised of these panels and sections:
 | F | Panels | Select the panels to view/hide. |
 | G | Help | **Learn Shortcut Keys**: View a list of available keyboard shortcuts.<br />**Documentation**: Link to relevant content. |
 
-## Choose an Asset
+## Choose an Asset  {/*choose-an-asset*/}
 
 1. **Locate the Asset:** Find the asset you want to reprocess. Refer to [Content Management](/uplynk/manage/assets/content_management) for information on the CMS and Search features.
 2. **Create a Copy:** Click **Reprocess** in the top-right corner to create a copy.
@@ -29,7 +29,7 @@ The reprocessing screen is comprised of these panels and sections:
    - In the **Details** section, enter a new name in the **New Asset Name** field.
 4. **Optional:** Choose an **External ID** if applicable.
 
-## Insert New Ad Break
+## Insert New Ad Break  {/*insert-new-ad-break*/}
 
 1. **Optional:** Identify a specific point in time for the new ad break by clicking the desired location in the seek bar at the bottom of the player.
 2. **Add New Ad Break:**
@@ -38,7 +38,7 @@ The reprocessing screen is comprised of these panels and sections:
    - Click **Insert** to create the new ad break marker.
 3. **Save Changes:** Click **Reprocess** in the top-right corner to save your changes.
 
-## Modify/Delete Existing Ad Break
+## Modify/Delete Existing Ad Break  {/*modify-delete-existing-ad-break*/}
 
 1. **View/Modify Existing Ad Breaks:**
    - Go to the **Ad Breaks** section.

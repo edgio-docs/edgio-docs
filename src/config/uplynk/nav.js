@@ -83,6 +83,16 @@ const nav = {
         {
           title: 'Live',
           path: 'acquire/live',
+          routes: [
+            {
+              title: 'On Prem Slicer',
+              path: 'acquire/live/on_prem_slicer',
+            },
+            {
+              title: 'Failover',
+              path: 'acquire/live/failover',
+            },
+          ],
         },
       ],
     },
@@ -129,6 +139,14 @@ const nav = {
               title: 'Blackout',
               path: 'manage/content_protection/blackout',
             },
+            {
+              title: 'Set up Blackout Tutorial',
+              path: 'manage/content_protection/set_up_blackout_tutorial',
+            },
+            {
+              title: 'Conditional and Reverse Blackout',
+              path: 'manage/content_protection/conditional_and_reverse_blackout',
+            },
           ],
         },
       ],
@@ -170,6 +188,16 @@ const nav = {
         {
           title: 'Media Player',
           path: 'deliver/media_player',
+          routes: [
+            {
+              title: 'Embed a Media Player Tutorial',
+              path: 'deliver/media_player/add_media_player_to_web_page_tutorial',
+            },
+            {
+              title: 'Sign a Playback Tutorial',
+              path: 'deliver/media_player/embed_media_player_tutorial',
+            },
+          ],
         },
         {
           title: 'StreamStats for API',

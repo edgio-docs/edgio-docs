@@ -18,17 +18,17 @@ The following sample scenarios illustrate common use cases:
 
     Solution: Blackout may be used to prevent the distribution of this restricted content over the Internet.
 
-## How Does It Work?
+## How Does It Work?  {/*how-does-it-work*/}
 
 Apply blackout to programs as needed. Blacked out viewers will stream alternate content.
 
 ![Card](/images/uplynk/how-works.png)
 
-### Blackout Notification
+### Blackout Notification  {/*blackout-notification*/}
 
 At the start of a program that requires blackout, an ID (i.e., `blackout_id`) must be sent to the Live Slicer. This ID should identify a rule that has been associated with the live channel. This rule identifies an audience (i.e., a grouping of viewers) and whether the regularly scheduled program or alternate content will be streamed to those viewers.
 
-### Streaming Request
+### Streaming Request  {/*streaming-request*/}
 
 A viewer requests a live channel's programming through a custom media player. The response sent to the media player is a URL that varies according to whether blackout is applicable. Blackout will be applied when all of the following conditions are true:
 
@@ -44,7 +44,7 @@ The above workflow is illustrated here.
 
 ![Blackout Workflow](/images/uplynk/blackout-workflow.png)
 
-## Setup
+## Setup  {/*setup*/}
 
 Setting up blackout requires:
 
@@ -54,7 +54,7 @@ Setting up blackout requires:
 4. Setting up a [media player](#media-player).
 5. Sending a blackout [notification](#notification) to the Live Slicer.
 
-### Audiences
+### Audiences  {/*sudiences*/}
 
 An audience identifies viewers that will be blacked out via one or more of the following criteria:
 
@@ -72,7 +72,7 @@ View a list of [country codes](http://dev.maxmind.com/geoip/legacy/codes/iso3166
 
 <Info>Factors, such as proxy services, VPNs, and the nature of geolocation technology, may result in an inaccurate assessment of a viewer's zip code or DMA when calculating location information by IP address. In turn, this may incorrectly allow viewers access to content that should have been blacked out. Therefore, it is strongly recommended to utilize a device's location services to identify a viewer's location and then submit this information when a media player requests a stream.<br />[Learn more](#setting-viewer-location-or-device)</Info>
 
-#### Match Option
+#### Match Option  {/*match-option*/}
 
 The Match option determines whether a viewer must meet any, all, or none of the specified criteria in order to qualify as a member of the current audience.
 
@@ -94,7 +94,7 @@ The Match option determines whether a viewer must meet any, all, or none of the 
 
   If an audience has been configured to match on zip codes, country codes, and DMAs, then a viewer will only qualify for membership when the request does not originate within any of the specified zip codes, country codes, and DMAs. If the request satisfies any of the defined categories, then it will not qualify for membership.
 
-#### Set Up a Basic Audience
+#### Set Up a Basic Audience  {/*set-up-basic-audience*/}
 
 1. Navigate to the **Audiences** page (**Live Channels** > **Audiences**).
 
@@ -118,7 +118,7 @@ The Match option determines whether a viewer must meet any, all, or none of the 
 
 8. Click **Save** to update the audience configuration with these changes.
 
-#### Grouping Audiences
+#### Grouping Audiences  {/*grouping-audiences*/}
 
 Multiple audiences may be grouped together, allowing you to apply a blackout rule to multiple audiences.
 
@@ -144,7 +144,7 @@ You have created an audience for each major metropolitan area in a state. Howeve
 
 8. Click **Save** to update the audience configuration with these changes.
 
-### Blackout Rules
+### Blackout Rules  {/*blackout-rules*/}
 
 A blackout rule defines when and how a blackout will be applied to blacked-out content. Specifically, it:
 
@@ -155,7 +155,7 @@ A blackout rule defines when and how a blackout will be applied to blacked-out c
   - **Asset**: On-demand content from the CMS library.
   - **Slicer**: Media processed by an alternate Live Slicer.
 
-## To Create a Blackout Rule
+## To Create a Blackout Rule  {/*create-blackout-rule*/}
 
 1. Navigate to the **Audiences** page (**Live Channels** > **Audiences**).
 
@@ -197,14 +197,14 @@ A blackout rule defines when and how a blackout will be applied to blacked-out c
 
 10. Click **Save** to apply your changes to the blackout rule.
 
-## Live Channel
+## Live Channel  {/*live-channel*/}
 
 Set up a blackout configuration on a live channel by:
 
 1. Identifying when blackout should be triggered via a blackout ID.
 2. Associating blackout logic with the above blackout ID by adding blackout rules to it.
 
-### To Configure Blackout on a Live Channel
+### To Configure Blackout on a Live Channel  {/*configure-blackout-on-live-channel*/}
 
 1. Navigate to the [**Audiences** page](https://cms.uplynk.com/static/cms2/index.html#/live-channels/audiences).
 
@@ -225,7 +225,7 @@ Set up a blackout configuration on a live channel by:
 
 5. Click **Save** to update the live channel configuration with these changes.
 
-### Set up a Media Player
+### Set up a Media Player  {/*set-up-media-player*/}
 
 <Info>Standard programming will be broadcast to all users unless blackout is invoked in the playback URL.</Info>
 
@@ -256,7 +256,7 @@ Set a viewer's location or device by passing one or more of the following query 
 
 `https://content.uplynk.com/player5/6ZpnSRiEmjj3fMdnzDaV00sc.html?repl=aboi&repl.cbdma=803&repl.cbzip=90405`
 
-### Live Linear Programming
+### Live Linear Programming  {/*live-linear-programming*/}
 
 <Info>An alternative method for triggering blackout is via a SCTE-35 message. Please contact {{SUPPORT_URL}} for more information.</Info>
 
@@ -264,7 +264,7 @@ Blackout may be applied to a program or an asset within a live channel. The meth
 
 <Info>The first applicable blackout rule determines the alternate content that will be streamed.</Info>
 
-#### Applying Blackout to a Program
+#### Apply Blackout to a Program  {/*appl-blackout-program*/}
 
 Setting up blackout for use with a program requires assigning it a blackout ID. Set a blackout ID at the start of a program via the content_start method. This method accepts the meta request body parameter which allows metadata to be associated with the program being initiated. In this case, the blackout_id metadata field should be set to the desired blackout ID.
 
@@ -283,13 +283,13 @@ POST /content_start HTTP/1.1
 		}
 ```
 
-#### Applying Blackout to an Asset
+#### Apply Blackout to an Asset  {/*apply-blackout to asset*/}
 
 <Info>Blackout is only enforced on live channels. Therefore, blackout will only be applied to on-demand content when a viewer streams it via a live channel.</Info>
 
 Blackout may only be applied to assets that have been assigned a blackout ID (i.e., `blackout_id`). No further configuration is required once this ID has been defined.
 
-## To Assign a Blackout ID to an Asset
+## Assign a Blackout ID to an Asset  {/*assign-blackout-id-to-asset*/}
 
 1. From the **Content** tab, select the desired asset.
 

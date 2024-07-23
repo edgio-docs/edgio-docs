@@ -34,7 +34,7 @@ By default, a search result must match at least one whole word defined within yo
 
 <Callout type="info">Use a wildcard to search for partial words. For example searching for `basket` will only return search results that contain the word `basket`, while searching for `basket*` will also return search results that contain `baskets` and `basketball`.</Callout>
 
-### Refining Searches  {/*refining-searches*/}
+### Refine Searches  {/*refining-searches*/}
 
 Use search operators and special characters to refine your searches.
 
@@ -57,7 +57,7 @@ Use the following search operators to define the scope of a search:
 Use the following special characters to fine-tune your search results:
 
 | Special Character | Description |
-|---|---|
+|:---:|---|
 | "" | Enclose a phrase with quotation marks to require the entire phrase.<br />Example: Search for assets that contain the phrase `basketball convention`: `"basketball convention"` |
 | - | Filter out search results that contain a specific word.<br />Example: Search for assets that contain the phrase basketball convention that do not contain the word 2022:<br />"basketball convention" -2022 |
 | + | Require search results to contain a specific word or phrase. Specify a phrase by enclosing two or more words within double quotes.<br />Example: Require all search results to contain the word league and the search phrase `basketball game`: `+league +"basketball game"` |

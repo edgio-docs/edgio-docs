@@ -19,19 +19,6 @@ Click **Controls** or a Control option to expand the panel where you can customi
 
 <Tip>Reports include only data that satisfies all filters specified in the Control panel.</Tip>
 
-#### Control panel options  {/*control-panel-options*/}
-
-|Option| Description| Details|
-|---|---|---|
-|Time Range| Select a custom date range, the **relative by** granularity, and exclusion options.|To view metrics for a different time period, select an option from the **Time Range** section:<ul><li>Custom date range. From the **Date range** option, set a start and end date/time.</li><li>Predefined date range. Customize your metric choices via the **Relative by** section (e.g., `Previous day`, `This day`, and `Last n` days).</li><li>Exclude dates. Check the **Exclude last** box to select your exclusion options.</li></ul><br /><Callout type="info">By default, all dates/times are specified in UTC.</Callout>|
-|Account|Filter by one or multiple account name(s).|<ol><li>Click on the Account drop-down.</li><li>Optional. Search for an account by typing its name.</li><li>Add accounts to the report by marking the desired accounts.</li><li>Remove accounts from the report by clearing the desired accounts.</li><li>Optional. Click **SHOW SELECTED VALUES** to list all the accounts you've included.</li></ol>|
-|Playback Type|Choose between (`live` or `vod`). This option also determines the metrics that are displayed.||
-|Channel/ Event|`live` Playback Type only. Filter by channel or event name.|The default values for this dropdown and the associated analytics are based on the Playback Type selected. This option is NULL for `vod` Playback Type.|
-|Asset|`vod` Playback Type only. Search for then select the assets you want included.|The default values for this dropdown and the associated analytics are based on the **Playback Type** selected. This option is NULL for `live` Playback Type.|
-|Granularity|Error Details report only. Change the interval for this report by selecting the desired granularity. Choose from `Day`, `Hour`, `Month`, `Quarter`, `Year`.||
-
-### Functions {/*functions*/}
-
 #### View/ Export individual data metrics  {/*view-export*/}
 
 Access these features by hovering in the top right corner of any tile, clicking the three dots <Image inline src="/images/uplynk/three-dots.png" alt="Revert" />, and selecting the option.
@@ -220,12 +207,15 @@ Breaks down your encoding analytics.
 |Account|The name of the account associated with the asset.|
 |Profile Rate Card|The encoding profiles used by the Cloud Slicers to encode your content.|
 
-#### To generate the Asset Summary report  {/*asset-summary-report*/}
+#### Generate the Asset Summary report  {/*asset-summary-report*/}
 
 1. Navigate to the Asset Summary page. From the main menu, click **Analytics** and then select **Asset Summary** from the left-hand pane.
 2. Click on the **Controls** bar to define this report.
-3. Optional. Generate a report for a different time period. From the **Time Range** option, select either:<ul><li>Predefined date range (e.g., `Previous day`, `This day`, and `Last n` days).</li><li>Custom date range. From the **Date range** option, set a start and end date/time.</li></ul><br /><Tip>By default, all dates/times are specified in UTC.</Tip>
-4. Optional: Generate a report for a different or multiple accounts:<br />a. Click on the **Account** drop-down.<br />b. Optional. Search for an account by typing its name.<br />c. Add accounts to the report by marking the desired accounts.<br />d. Remove accounts from the report by clearing the desired accounts.
+3. Optional. Generate a report for a different time period. From the **Time Range** option, select either:<ul><li>Predefined date range (e.g., `Previous day`, `This day`, and `Last n` days).</li><li>Custom date range. From the **Date range** option, set a start and end date/time.</li></ul>
+
+    <Tip>By default, all dates/times are specified in UTC.</Tip>
+
+4. Optional: Generate a report for a different or multiple accounts:<br /><ul><li>Click on the **Account** drop-down.</li><li>Optional. Search for an account by typing its name.</li></ul><li>Add accounts to the report by marking the desired accounts.</<li>Remove accounts from the report by clearing the desired accounts.
 5. Optional. Filter report data by asset(s).<br />a. Click on the **Assets** drop-down to filter by CMS assets.<br />b. Mark the assets that will be included in the report. <br />c. Clear the assets that will be excluded from the report.
 
 ## Billing Summary  {/*billing-summary*/}
@@ -526,7 +516,7 @@ This chart tracks the total number of hours published to social media and conten
 This pie chart contains shows how your content was published. Each slice represents either of the following items:
 
 - Social media or content distribution platform. This occurs when a publishing target's Platform option is set to a specific social media or content distribution platform.
-- Protocol. This occurs when a publishing target's Platform option is set to Other. Valid values are: `HLS | Zixi | Other`.
+- Protocol. This occurs when a publishing target's Platform option is set to Other. Valid values are: HLS, Zixi, Other.
 
 #### DETAILED VIEW  {/*detailed-view*/}
 
@@ -617,15 +607,15 @@ This error occurs because your browser's security policy does not allow `cms.upl
 
 Fix this issue by performing either of the following steps:
 
-- Chrome: Add cms.uplynk.com as a site that can always use cookies.
+- **Chrome**: Add cms.uplynk.com as a site that can always use cookies.
 
     See Google's documentation ([Allow or block cookies for a specific site](https://support.google.com/chrome/answer/95647#zippy=%2Callow-or-block-cookies-for-a-specific-site)) to learn more.
 
-- Firefox: Turn off Enhanced Tracking Protection for cms.uplynk.com.
+- **Firefox**: Turn off Enhanced Tracking Protection for cms.uplynk.com.
 
     See Firefox's documentation ([Enable third-party cookies for specific sites](https://support.mozilla.org/en-US/kb/third-party-cookies-firefox-tracking-protection#w_enable-third-party-cookies-for-specific-sites)) to learn more.
 
-- Safari: Disable the Prevent cross-site tracking option.
+- **Safari**: Disable the Prevent cross-site tracking option.
 
     See Apple's [documentation](https://support.apple.com/guide/safari/prevent-cross-site-tracking-sfri40732/16.1/mac/13.0) to learn more.
 

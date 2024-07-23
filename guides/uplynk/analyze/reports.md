@@ -19,6 +19,19 @@ Click **Controls** or a Control option to expand the panel where you can customi
 
 <Tip>Dashboard views and reports include only data that satisfies all filters specified in the Control panel.</Tip>
 
+#### Control Panel Options  {/*control-panel-options*/}
+
+|Option| Description| Details|
+|---|---|---|
+|Time Range| Select a custom date range, the **relative by** granularity, and exclusion options.|To view metrics for a different time period, select an option from the **Time Range** section:<ul><li>Custom date range. From the **Date range** option, set a start and end date/time.</li><li>Predefined date range. Customize your metric choices via the **Relative by** section (e.g., `Previous day`, `This day`, and `Last n` days).</li><li>Exclude dates. Check the **Exclude last** box to select your exclusion options.</li></ul><br /><Callout type="info">By default, all dates/times are specified in UTC.</Callout>|
+|Account|Filter by one or multiple account name(s).|<ol><li>Click on the Account drop-down.</li><li>Optional. Search for an account by typing its name.</li><li>Add accounts to the report by marking the desired accounts.</li><li>Remove accounts from the report by clearing the desired accounts.</li><li>Optional. Click **SHOW SELECTED VALUES** to list all the accounts you've included.</li></ol>|
+|Playback Type|Choose between (`live` or `vod`). This option also determines the metrics that are displayed.||
+|Channel/ Event|`live` Playback Type only. Filter by channel or event name.|The default values for this dropdown and the associated analytics are based on the Playback Type selected. This option is NULL for `vod` Playback Type.|
+|Asset|`vod` Playback Type only. Search for then select the assets you want included.|The default values for this dropdown and the associated analytics are based on the **Playback Type** selected. This option is NULL for `live` Playback Type.|
+|Granularity|Error Details report only. Change the interval for this report by selecting the desired granularity. Choose from `Day`, `Hour`, `Month`, `Quarter`, `Year`.||
+
+### Functions {/*functions*/}
+
 #### View/ Export individual data metrics  {/*view-export*/}
 
 Access these features by hovering in the top right corner of any tile, clicking the three dots <Image inline src="/images/uplynk/three-dots.png" alt="Revert" />, and selecting the option.
@@ -215,7 +228,7 @@ Breaks down your encoding analytics.
 
     <Tip>By default, all dates/times are specified in UTC.</Tip>
 
-4. Optional: Generate a report for a different or multiple accounts:<br /><ul><li>Click on the **Account** drop-down.</li><li>Optional. Search for an account by typing its name.</li></ul><li>Add accounts to the report by marking the desired accounts.</<li>Remove accounts from the report by clearing the desired accounts.
+4. Optional: Generate a report for a different or multiple accounts:<br /><ul><li>Click on the **Account** drop-down.</li><li>Optional. Search for an account by typing its name.</li><li>Add accounts to the report by marking the desired accounts.</li><li>Remove accounts from the report by clearing the desired accounts</li></ul>.
 5. Optional. Filter report data by asset(s).<br />a. Click on the **Assets** drop-down to filter by CMS assets.<br />b. Mark the assets that will be included in the report. <br />c. Clear the assets that will be excluded from the report.
 
 ## Billing Summary  {/*billing-summary*/}

@@ -220,7 +220,7 @@ Breaks down your encoding analytics.
 |Account|The name of the account associated with the asset.|
 |Profile Rate Card|The encoding profiles used by the Cloud Slicers to encode your content.|
 
-#### To generate the Asset Summary report  {/*asset-summary-report*/}
+#### Generate the Asset Summary report  {/*asset-summary-report*/}
 
 1. Navigate to the Asset Summary page. From the main menu, click **Analytics** and then select **Asset Summary** from the left-hand pane.
 2. Click on the **Controls** bar to define this report.
@@ -228,7 +228,7 @@ Breaks down your encoding analytics.
 
     <Tip>By default, all dates/times are specified in UTC.</Tip>
 
-4. Optional: Generate a report for a different or multiple accounts:<br />a. Click on the **Account** drop-down.<br />b. Optional. Search for an account by typing its name.<br />c. Add accounts to the report by marking the desired accounts.<br />d. Remove accounts from the report by clearing the desired accounts.
+4. Optional: Generate a report for a different or multiple accounts:<br /><ul><li>Click on the **Account** drop-down.</li><li>Optional. Search for an account by typing its name.</li></ul><li>Add accounts to the report by marking the desired accounts.</<li>Remove accounts from the report by clearing the desired accounts.
 5. Optional. Filter report data by asset(s).<br />a. Click on the **Assets** drop-down to filter by CMS assets.<br />b. Mark the assets that will be included in the report. <br />c. Clear the assets that will be excluded from the report.
 
 ## Billing Summary  {/*billing-summary*/}

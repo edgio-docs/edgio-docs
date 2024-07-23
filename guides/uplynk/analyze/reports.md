@@ -620,15 +620,15 @@ This error occurs because your browser's security policy does not allow `cms.upl
 
 Fix this issue by performing either of the following steps:
 
-- Chrome: Add cms.uplynk.com as a site that can always use cookies.
+- **Chrome**: Add cms.uplynk.com as a site that can always use cookies.
 
     See Google's documentation ([Allow or block cookies for a specific site](https://support.google.com/chrome/answer/95647#zippy=%2Callow-or-block-cookies-for-a-specific-site)) to learn more.
 
-- Firefox: Turn off Enhanced Tracking Protection for cms.uplynk.com.
+- **Firefox**: Turn off Enhanced Tracking Protection for cms.uplynk.com.
 
     See Firefox's documentation ([Enable third-party cookies for specific sites](https://support.mozilla.org/en-US/kb/third-party-cookies-firefox-tracking-protection#w_enable-third-party-cookies-for-specific-sites)) to learn more.
 
-- Safari: Disable the Prevent cross-site tracking option.
+- **Safari**: Disable the Prevent cross-site tracking option.
 
     See Apple's [documentation](https://support.apple.com/guide/safari/prevent-cross-site-tracking-sfri40732/16.1/mac/13.0) to learn more.
 

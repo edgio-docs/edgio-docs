@@ -17,7 +17,13 @@ A feature identifies an action that will be applied to a request. Features are c
 
 ## Access {/*access*/}
 
-Access features control access to content.
+Control access to content through these features:
+
+-   [Deny Access](#deny-access)
+-   [Token Auth](#token-auth)
+-   [Token Auth Denial Code](#token-auth-denial-code)
+-   [Token Auth Ignore URL Case](#token-auth-ignore-url-case)
+-   [Token Auth Parameter](#token-auth-parameter)
 
 #### Deny Access {/*deny-access*/}
 
@@ -126,7 +132,7 @@ Determines the type of response that will be returned to a user when a request i
 
 **Default Behavior:** By default, requests denied by Token Auth return a `403 Forbidden` response.
 
-#### Token Auth Ignore 	URL Case {/*token-auth-ignore-url-case*/}
+#### Token Auth Ignore URL Case {/*token-auth-ignore-url-case*/}
 
 Determines whether URL comparisons made by the following Token Auth parameters are case-sensitive:
 
@@ -170,7 +176,32 @@ export default new Router()
 
 ## Caching {/*caching*/}
 
-Caching features customize when and how content is cached.
+Customize when and how content is cached through these features:
+
+-   [Bandwith Throttling](#bandwidth-throttling)
+-   [Bypass Cache](#bypass-cache)
+-   [Bypass Client Cache](#bypass-client-cache)
+-   [Cache Control Header Treatment](#cache-control-header-treatment)
+-   [Cache Key](#cache-key)
+-   [Cache Key Query String](#cache-key-query-string)
+-   [Cacheable Request Body Size](#cacheable-request-body-size)
+-   [Cacheable Status Codes](#cacheable-status-codes)
+-   [Enable Caching for Methods](#enable-caching-for-methods)
+-   [Expires Header Treatment](#expires-header-treatment)
+-   [Honor No Cache Request Header](#honor-no-cache-request-header)
+-   [Ignore Origin No Cache](#ignore-origin-no-cache)
+-   [Ignore Unsatisfiable Ranges](#ignore-unsatisfiable-ranges)
+-   [Partial Cache Sharing Min Hit Size](#partial-cache-sharing-min-hit-size)
+-   [Prevalidate Cached Content](#prevalidate-cached-content)
+-   [Refresh Zero Byte Cache Files](#refresh-zero-byte-cache-files)
+-   [Revalidate After Origin Unavailable](#revalidate-after-origin-unavailable)
+-   [Revalidate While Stale Timer](#revalidate-while-stale-timer)
+-   [Rewrite Cache Key](#rewrite-cache-key)
+-   [Set Client Max Age](#set-client-max-age)
+-   [Set Max Age](#set-max-age)
+-   [Set Service Worker Max Age](#set-service-worker-max-age)
+-   [Stale On Error](#stale-on-error)
+-   [Stale While Revalidate](#stale-while-revalidate)
 
 #### Bandwith Throttling {/*bandwidth-throttling*/}
 
@@ -1295,7 +1326,16 @@ export default new Router()
 
 ## Headers {/*headers*/}
 
-Header features add, modify, or delete headers from the request or response.
+Add, modify, or delete headers from the request or response through the following features:
+
+-   [Add Response Headers](#add-response-headers)
+-   [Debug Header](#debug-header)
+-   [Remove Origin Response Headers](#remove-origin-response-headers)
+-   [Remove Response Headers](#remove-response-headers)
+-   [Set Client IP Custom Header](#set-client-ip-custom-header)
+-   [Set Origin Response Headers](#set-origin-response-headers)
+-   [Set Request Headers](#set-request-headers)
+-   [Set Response Headers](#set-response-headers)
 
 #### Add Response Headers {/*add-response-headers*/}
 
@@ -1784,7 +1824,11 @@ export default new Router()
 
 ## Log {/*log*/}
 
-Log features customize how log data is stored.
+Customize how log data is stored through the following features:
+
+-   [Custom Log Field](#custom-log-field)
+-   [Log Query String](#log-query-string)
+-   [Mask Client Subnet](#mask-client-subnet)
 
 #### Custom Log Field {/*custom-log-field*/}
 
@@ -1929,7 +1973,11 @@ export default new Router()
 
 ## Origin {/*origin*/}
 
-Origin features control how the CDN communicates with an origin server.
+Control how the CDN communicates with an origin server through the following features:
+
+-   [Max Keep-Alive Requests](#max-keep-alive-requests)
+-   [Proxy Special Headers](#proxy-special-headers)
+-   [Set Origin](#set-origin)
 
 #### Max Keep-Alive Requests {/*max-keep-alive-requests*/}
 
@@ -2011,7 +2059,14 @@ export default new Router()
 
 ## Response {/*response*/}
 
-Response features manipulate the response sent to the client.
+Manipulate the response sent to the client through the following features:
+
+-   [Allow Prefetching of Uncached Content](#allow-prefetching-of-uncached-content)
+-   [Compress Content Types](#compress-content-types)
+-   [Optimize Images](#optimize-images)
+-   [Set Done](#set-done)
+-   [Set Response Body](#set-response-body)
+-   [Set Status Code](#set-status-code)
 
 #### Allow Prefetching of Uncached Content {/*allow-prefetching-of-uncached-content*/}
 
@@ -2251,7 +2306,11 @@ export default new Router()
 
 ## URL {/*url*/}
 
-URL features redirect or rewrite requests to a different URL.
+Redirect or rewrite requests to a different URL through the following features:
+
+-   [Follow Redirects](#follow-redirects)
+-   [Rewrite URL](#rewrite-url)
+-   [URL Redirect](#url-redirect)
 
 #### Follow Redirects {/*follow-redirects*/}
 

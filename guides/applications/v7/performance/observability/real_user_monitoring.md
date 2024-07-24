@@ -20,7 +20,7 @@ be tracked via [Google Search Console](https://search.google.com/search-console/
 
 <a id="why-use-layer0-to-track-core-web-vitals"></a>
 
-## Why use {{ PRODUCT_NAME }} to track Core Web Vitals? {/* why-use-to-track-core-web-vitals */}
+## Why use {{ PRODUCT }} to track Core Web Vitals? {/* why-use-to-track-core-web-vitals */}
 
 The benefits of using {{ PRODUCT }} instead of Google Search Console to track Core Web Vitals are that it allows you to:
 
@@ -31,7 +31,7 @@ The benefits of using {{ PRODUCT }} instead of Google Search Console to track Co
 
 ## Installing Real User Monitoring (RUM) {/* installation */}
 
-Tracking Core Web Vitals on {{ PRODUCT_NAME }} requires adding the `{{ PACKAGE_NAME }}/rum` client library to your application. The {{ PORTAL_LINK }} provides information on how to install this library using a script tag, Google tag manager, npm, and yarn.
+Tracking Core Web Vitals on {{ PRODUCT }} requires adding the `{{ PACKAGE_NAME }}/rum` client library to your application. The {{ PORTAL_LINK }} provides information on how to install this library using an edge function, a script tag, Google tag manager, npm, and yarn.
 
 **To view {{ PACKAGE_NAME }}/rum installation instructions**
 
@@ -47,6 +47,128 @@ Tracking Core Web Vitals on {{ PRODUCT_NAME }} requires adding the `{{ PACKAGE_N
     The {{ PORTAL }} provides installation instructions that contain a token that is specific to your property.
 
     </Callout>
+
+### Edge Functions {/*edge-functions*/}
+
+<Info>
+
+Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}
+
+</Info>
+
+An edge function can automatically inject Core Web Vitals tracking to all of your web pages. The method for generating this edge function varies according to whether you are using CDN-as-code or the {{ PORTAL }} to deploy changes.
+
+**{{ PORTAL }}: To inject Core Web Vitals tracking within your requests**
+
+1.  Click **Create Edge Function** from the **Edge Function** tab of the **Real User Monitoring** page.
+
+    {{ PRODUCT }} will automatically generate an edge function that adds Core Web Vitals tracking to a request and a rule that invokes that edge function. 
+
+2.  Review your rules.
+3.  Deploy your changes to this environment.
+
+
+**CDN-as-Code: To inject Core Web Vitals tracking within your requests**
+
+1.  In the {{ PRODUCT }} router, use the `edge_function` feature to specify the path to the edge function that will add Core Web Vitals tracking.
+
+    ```js filename="routes.js"
+    // This file was added by edgio init.
+    // You should commit this file to source control.
+    import {Router, edgioRoutes} from '@edgio/core';
+
+    export default new Router()
+      // Built-in Edgio routes
+      .use(edgioRoutes)
+
+      // Specifies the edge function for all paths. Modify the path as needed.
+      .match({}, {
+        edge_function: './edge-functions/main.js',
+      });
+    ```
+
+2.  Add the following edge function:
+
+    ```js filename="edge-functions/main.js"
+    export async function handleHttpRequest(request, context) {
+      const originResponse = await fetch(request.url, {
+        headers: request.headers,
+        method: request.method,
+        body: request.body,
+        edgio: {
+          origin: context.requestVars.matched_origin_name
+        }
+      })
+
+      // Return origin response if not HTML
+      if(!originResponse.headers.get("content-type").startsWith('text/html')){
+        return originResponse;
+      }
+
+      let html = await originResponse.text()
+      html = html.replace(
+        '</body>', `
+          <script defer>
+            function initEdgioRum() {
+              new Edgio.Metrics({
+                token: '<TOKEN>'
+              }).collect()
+            }
+          </script>
+          <script src="https://rum.edgio.net/latest.js" defer onload="initEdgioRum()"></script>
+        </body>`
+      )
+      return new Response(html, originResponse)
+    }
+    ```
+
+3.  Replace `<TOKEN>` with your RUM token.
+
+    You can find this token on the **Script tag** tab. 
+    
+    ```js diff filename="edge-functions/main.js"
+    ...
+            function initEdgioRum() {
+              new Edgio.Metrics({
+    +           token: 'ab1234c7-fe39-4a0e-8b3c-1ddf837a5c90'
+              }).collect()
+            }
+    ...
+    ```
+
+4.  Optional. If you are also injecting Predictive Prefetching, then you should insert a script tag that installs it as shown below.
+
+    ```js diff filename="edge-functions/main.js"
+    ...
+      html = html.replace(
+        '</body>', `
+          <script defer>
+            function initEdgioRum() {
+              new Edgio.Metrics({
+                token: '<TOKEN>'
+              }).collect()
+            }
+          </script>
+          <script src="https://rum.edgio.net/latest.js" defer onload="initEdgioRum()"></script>
+    +     <script src="/__edgio__/prefetch/install.js" defer></script>
+        </body>`
+      )
+      return new Response(html, originResponse)
+    }
+    ```
+    
+    <Info>
+    
+    [Predictive Prefetching also requires a rule](/applications/performance/prefetching#quick-start) that applies the [Set Max Age (max_age)](/applications/performance/rules/features#set-max-age) and [Set Service Worker Max Age (service_worker_max_age)](/applications/performance/rules/features#set-service-worker-max-age) features to the pages that will be prefetched. 
+
+    </Info>
+
+
+5.  Deploy your changes to this environment by running the following command from your property’s root directory:
+
+    ```bash
+    {{ CLI_CMD(deploy) }}
+    ```
 
 ### Script Tag and Google Tag Manager {/* google-tag-manager */}
 
@@ -224,19 +346,19 @@ new {{ RUM_NS }}.Metrics({
   appVersion: 'v1.0.0',
 
   // Whether or not the page was served from the CDN cache, if this is known.
-  // This is automatically set for sites that are deployed on {{ PRODUCT_NAME }}.
+  // This is automatically set for sites that are deployed on {{ PRODUCT }}.
   cacheHit: true | false,
 
   // The country code in which the browser is running. This is often provided by CDNs
   // as a request header that can be embedded in your script tab by your application code.
-  // This is automatically set for sites that are deployed on {{ PRODUCT_NAME }}.
+  // This is automatically set for sites that are deployed on {{ PRODUCT }}.
   country: 'US',
 })
 ```
 
 <!--
   // When running a split test, use this field to specify which variant is active.
-  // This is automatically set for sites that are deployed on {{ PRODUCT_NAME }}.
+  // This is automatically set for sites that are deployed on {{ PRODUCT }}.
   splitTestVariant: 'name-of-variant',
 
 ## Custom cache TTL {/*custom-cache-ttl*/}

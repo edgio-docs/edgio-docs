@@ -435,7 +435,7 @@ View the technologies used by your network by navigating to the **Technologies**
 
 ## Report {/*report*/}
 
-Once you have scanned your network, {{ PRODUCT }} generates an executive-level security assessment of your organization's attack surface. You may customize this report to meet your organization's business needs. This report uses standard Markdown syntax. This syntax has been extended to support [{{ PRODUCT }}-specific variables](#-specific-variables). 
+Once you have scanned your network, {{ PRODUCT }} generates an executive-level security assessment of your organization's attack surface. You may customize this report to meet your organization's business needs. This report uses [standard Markdown syntax](https://www.markdownguide.org/basic-syntax/). This syntax has been extended to support [{{ PRODUCT }}-specific variables](#-specific-variables). 
 
 **To modify your report**
 

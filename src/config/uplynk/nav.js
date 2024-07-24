@@ -141,7 +141,7 @@ const nav = {
             },
             {
               title: 'Set up Blackout',
-              path: 'manage/content_protection/set_up_blackout_tutorial',
+              path: 'manage/content_protection/set_up_blackout',
             },
             {
               title: 'Conditional and Reverse Blackout',
@@ -184,6 +184,16 @@ const nav = {
         {
           title: 'Playback URLS',
           path: 'deliver/playback_urls',
+          routes: [
+            {
+              title: 'Customize Playback via Parameters',
+              path: 'deliver/playback_urls/customize_playback_via_parameters',
+            },
+            {
+              title: 'Sign a Playback URL',
+              path: 'deliver/playback_urls/sign_playback_url',
+            },
+          ],
         },
         {
           title: 'Media Player',
@@ -191,11 +201,11 @@ const nav = {
           routes: [
             {
               title: 'Embed Media Player',
-              path: 'deliver/media_player/embed_media_player_tutorial',
+              path: 'deliver/media_player/embed_media_player',
             },
             {
               title: 'Add Media Player to Web Page',
-              path: 'deliver/media_player/add_media_player_to_web_page_tutorial',
+              path: 'deliver/media_player/add_media_player_to_web_page',
             },
           ],
         },

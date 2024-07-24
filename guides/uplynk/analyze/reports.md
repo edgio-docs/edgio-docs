@@ -42,7 +42,7 @@ Access these features by hovering in the top right corner of any tile, clicking 
 | View summary of metric. |Click the three dots <Image inline src="/images/uplynk/three-dots.png" alt="Revert" />; then select **View Summary Data**.|
 | Export data summary. |Click the three dots <Image inline src="/images/uplynk/three-dots.png" alt="Revert" /> next to the data metric; then select **Export to CSV**. Your file will be saved to your default location.|
 
-#### Export reports {/*export-reports*/}
+#### Export Reports {/*export-reports*/}
 
 1. Click on the **Controls** bar to define the report metrics. See [Data Controls](#data-controls) for details and options.
 
@@ -185,7 +185,7 @@ Each error type is briefly described below.
 
 The Asset Summary report provides the following analytics for your CMS assets:
 
-#### ASSET PLAYBACK STATISTICS  {/*asset-playback-stats*/}
+##### ASSET PLAYBACK STATISTICS  {/*asset-playback-stats*/}
 
 Analyze asset-specific statistics.
 
@@ -198,7 +198,7 @@ Analyze asset-specific statistics.
 |Total Hours Watched| Indicates the total number of hours that assets were played.|
 |Asset Views| Indicates the total number of times that assets were requested as a result of a live channel, live event, or VOD.|
 
-#### PLAYBACK HOURS BY COUNTRY  {/*playback-hours-by-country*/}
+**PLAYBACK HOURS BY COUNTRY**
 
 Breaks down your audience by country.
 

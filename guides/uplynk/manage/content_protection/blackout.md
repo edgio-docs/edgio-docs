@@ -6,13 +6,13 @@ Blackout allows specific live linear programming to be blacked out to predefined
 
 The following sample scenarios illustrate common use cases:
 
-1. Scenario #1:
+1. **Scenario #1**:
 
     A national broadcaster's live channel contains a live sporting event. However, a local broadcaster has superior rights to this event.
 
     Solution: Blackout may be used to limit the distribution of this sporting event to the local broadcaster.
 
-2. Scenario #2:
+2. **Scenario #2**:
 
     A movie or TV show that has not been licensed for distribution over the Internet has been scheduled in a live channel.
 
@@ -54,7 +54,7 @@ Setting up blackout requires:
 4. Setting up a [media player](#media-player).
 5. Sending a blackout [notification](#notification) to the Live Slicer.
 
-### Audiences  {/*sudiences*/}
+### Audiences  {/*audiences*/}
 
 An audience identifies viewers that will be blacked out via one or more of the following criteria:
 
@@ -155,7 +155,7 @@ A blackout rule defines when and how a blackout will be applied to blacked-out c
   - **Asset**: On-demand content from the CMS library.
   - **Slicer**: Media processed by an alternate Live Slicer.
 
-## To Create a Blackout Rule  {/*create-blackout-rule*/}
+## Create a Blackout Rule  {/*create-blackout-rule*/}
 
 1. Navigate to the **Audiences** page (**Live Channels** > **Audiences**).
 
@@ -171,13 +171,10 @@ A blackout rule defines when and how a blackout will be applied to blacked-out c
 
         <Tip>To find a live channel ID:<ol><li>From the CMS, click the **Live Channels** tab.</li><li>Select the desired live channel. Basic options and live channel information will be displayed on the **Details** tab.</li><li>Find the live channel's system-defined ID under the **GUID** label.</li></ol></Tip>
 
-        <Tip>To find a live channel's external ID:<ol><li>From the CMS, click the **Live Channels** tab.</li><li>Select the desired live channel. Basic options and live channel information will be displayed on the **Details** tab.</li><li>The live channel's external ID is listed under the **External ID** option.</li></ol></Tip>
-
    - **Asset**: Indicates that on-demand content from the CMS library will be streamed. Set the **Alternate Content ID** option to the asset ID or external ID for the desired CMS asset.
 
      <Tip>To find an asset ID:<ol><li>Navigate to the CMS library by clicking the **Content** tab.</li><li>Select the desired asset</li><li>The asset ID corresponding to the asset selected in the previous step is listed under the **GUID** label.</li></ol></Tip>
 
-        <Tip>To find an asset's external ID<ol><li>Navigate to the CMS library by clicking the **Content** tab.</li><li>Select the desired asset.</li><li>The external ID corresponding to the asset selected in the previous step is listed under the **External ID** option.</li></ol></Tip>
 
    - **Slicer**: Indicates that media processed by an alternate Live Slicer will be streamed. Set the **Alternate Content ID** option to the ID for the desired Live Slicer.
 
@@ -206,7 +203,7 @@ Set up a blackout configuration on a live channel by:
 
 ### To Configure Blackout on a Live Channel  {/*configure-blackout-on-live-channel*/}
 
-1. Navigate to the [**Audiences** page](https://cms.uplynk.com/static/cms2/index.html#/live-channels/audiences).
+1. Navigate to the [**Audiences**](https://cms.uplynk.com/static/cms2/index.html#/live-channels/audiences) page.
 
 2. Perform either of the following:
    - Create a live channel by clicking **+ Create Channel**, assigning it a name, and then clicking **Create & Edit**.

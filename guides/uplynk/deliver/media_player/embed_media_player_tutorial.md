@@ -4,17 +4,17 @@ title: Embed Media Player Tutorial
 
 Learn how to embed a media player to Tumblr, Blogger, or a self-hosted web page.
 
-Software Prerequisites
+**Software Prerequisites**
 
 - CMS or
 - Web server
 
-Knowledge Prerequisites
+**Knowledge Prerequisites**
 
 - Basic CMS administration or
 - Basic web hosting
 
-Key Steps
+**Key Steps**
 
 1. Copy the embed media player code.
 2. Paste the embed media player code.
@@ -61,7 +61,7 @@ The HTML embed code provided within the CMS is compatible with a variety of plat
 
 5. Click Publish and then view the embedded video.
 
-## Self-Hosted Web Page: Embed Video
+### Self-Hosted Web Page: Embed Video
 
 1. Open the desired HTML file within a text editor.
 

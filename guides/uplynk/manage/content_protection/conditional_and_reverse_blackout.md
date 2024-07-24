@@ -33,7 +33,7 @@ Using the `meta` parameter on the slicer's `content_start` method to set the ass
 
 Because the `repl.boid` value and the `meta.blackout_id` match, when the timeline reaches this asset, the viewer will see the blackout slate instead of the asset.
 
-### Reverse Blackout  {/*reverse-blackout*/}
+## Reverse Blackout  {/*reverse-blackout*/}
 
 **Load Parameter:** `repl=rbo`
 
@@ -45,7 +45,7 @@ The `rbo`, or “reverse blackout”, plugin operates in reverse of the blackout
 |----------------|--------|----------|-------------|
 | `prop,val.<id>` | string | No       | The `prop,val.<id>` parameters specify what asset property to use for filtering. `<id>` must be replaced by a unique identifier for each property/value pair. A meaningful string identifier is acceptable, or an incrementing integer value would work as well. Filename-type wildcards can also be used in the value, where `*` matches multiple characters, and `?` matches one character. Note that the match is case-insensitive. |
 
-## Example  {/*reverse-example*/}
+### Example  {/*reverse-example*/}
 
 Let's say you have multiple assets in a timeline and wish to black out all content except those with a `desc` property of either “Nightly News” or "Good Morning, USA". Assume that the assets with a description of "Good Morning, USA" are always that exact string. Further, for "Nightly News", the description might include a suffix such as "Nightly News - 01", meaning you want to match any descriptions that start with "Nightly News". Use the following playback URL parameters to achieve this:
 

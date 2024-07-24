@@ -140,7 +140,7 @@ const nav = {
               path: 'manage/content_protection/blackout',
             },
             {
-              title: 'Set up Blackout Tutorial',
+              title: 'Set up Blackout',
               path: 'manage/content_protection/set_up_blackout_tutorial',
             },
             {
@@ -190,12 +190,12 @@ const nav = {
           path: 'deliver/media_player',
           routes: [
             {
-              title: 'Embed a Media Player Tutorial',
-              path: 'deliver/media_player/add_media_player_to_web_page_tutorial',
+              title: 'Embed Media Player',
+              path: 'deliver/media_player/embed_media_player_tutorial',
             },
             {
-              title: 'Sign a Playback Tutorial',
-              path: 'deliver/media_player/embed_media_player_tutorial',
+              title: 'Add Media Player to Web Page',
+              path: 'deliver/media_player/add_media_player_to_web_page_tutorial',
             },
           ],
         },

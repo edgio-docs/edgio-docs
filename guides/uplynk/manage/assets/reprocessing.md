@@ -10,7 +10,7 @@ Content reprocessing allows you to insert ad breaks to an existing Uplynk asset.
 
 The reprocessing screen is comprised of these panels and sections:
 
-![Reprocessing](/images/uplynk/reprocessing.png)
+![Reprocessing](/images/uplynk/reprocess.png)
 
 | A | Details | Modify reprocessed asset's name, ID, and ad breaks. |
 |:---:|---|---|

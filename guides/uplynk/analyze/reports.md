@@ -286,7 +286,7 @@ View statistics on:
 |Cloud Slicing Hours| The total number of hours of content sliced by a Cloud Slicer.|
 |Spot Slicing Hours| The number of hours of content sliced by a VOD Cloud Slicer. This includes ingest (via S3 bucket ingest and VoD uploader) and post ingest asset processing (clipping, VoD Concat, ad-break modifications, supplemental audio tracks and captioning, etc.).|
 
-#### To generate the Billing Summary report  {/*generate-billing-summary-report*/}
+#### Generate the Billing Summary report  {/*generate-billing-summary-report*/}
 
 1. Navigate to the Billing Summary Report page. From the main menu, click **Analytics** and then select **Billing Summary** from the left-hand pane.
 2. Click on the **Controls** bar to define this report.
@@ -348,7 +348,7 @@ Breaks down your encoding analytics.
 |Account|The name of the account associated with the asset.|
 |Profile Rate Card|The encoding profiles used by the Cloud Slicers to encode your content|
 
-#### To generate the Channel Summary report  {/*generate-channel-summary-report*/}
+#### Generate the Channel Summary report  {/*generate-channel-summary-report*/}
 
 1. Navigate to the Channel Summary page. From the main menu, click **Analytics** and then select **Channel Summary** from the left-hand pane.
 2. Click on the **Controls** bar to define this report.
@@ -390,7 +390,7 @@ This report shows the following statistics by Cloud Slicer
 |Is Managed| Indicates whether the Cloud Slicer is managed by Uplynk.|
 |Runtime Hours| Indicates the total number of hours that the Cloud Slicer ran.|
 
-#### To generate the CSL Summary report  {/*csl-summary-report*/}
+#### Generate the CSL Summary report  {/*csl-summary-report*/}
 
 1. Navigate to the **CSL Summary** page. From the main menu, click **Analytics** and then select **CSL Summary** from the left-hand pane.
 2. Click on the **Controls** bar to define this report.
@@ -440,7 +440,7 @@ Breaks down your encoding analytics.
 |Profile Rate Card|The encoding profiles used by the Cloud Slicers to encode your content.|
 |Is CloudSliced|If TRUE, this event uses cloud slicing for encoding.|
 
-#### To generate the Event Summary report  {/*event-summary-report*/}
+#### Generate the Event Summary report  {/*event-summary-report*/}
 
 1. Navigate to the Event Summary page. From the main menu, click **Analytics** and then select **Event Summary** from the left-hand pane.
 2. Click on the **Controls** bar to define this report.
@@ -486,7 +486,7 @@ Indicates the total numbers of hours that your content was watched (aka playback
 
 <Info>This report is useful to analyze CDN usage when leveraging our Multi-CDN solution.</Info>
 
-#### To generate the Multi-CDN Summary report  {/*multi-cdn-report*/}
+#### Generate the Multi-CDN Summary report  {/*multi-cdn-report*/}
 
 1. Navigate to the Multi-CDN Summary page. From the main menu, click **Analytics** and then select **Multi-CDN Summary** from the left-hand pane.
 2. Click on the **Controls** bar to define this report.
@@ -543,7 +543,7 @@ Indicates the total number of hours published and data delivered for each unique
 |Syndication Hours Published| Indicates the number of hours that were published for this unique combination of platform/procotol and live channel/live event.|
 |Syndication GB Delivered| Indicates the amount of data, in GB, that were published for this unique combination of platform/procotol and live channel/live event.|
 
-#### To Generate the Syndication Summary Report  {/*syndication-summary-report*/}
+#### Generate the Syndication Summary Report  {/*syndication-summary-report*/}
 
 1. Navigate to the Syndication Summary page. From the main menu, click **Analytics** and then select **Syndication Summary** from the left-hand pane.
 2. Click on the **Controls** bar to define this report.
@@ -600,7 +600,7 @@ This report shows the following statistics for each country:
 
 Breaks down your audience by operating system.
 
-#### To Generate the Usage Summary Report  {/*usage-summary-report*/}
+#### Generate the Usage Summary Report  {/*usage-summary-report*/}
 
 1. Navigate to the Usage Summary page. From the main menu, click **Analytics** and then select **Usage Summary** from the left-hand pane.
 2. Click on the **Controls** bar to define this report.

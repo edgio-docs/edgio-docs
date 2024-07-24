@@ -5,6 +5,8 @@ const {join} = require('path');
 const glob = require('glob');
 const xmlFormatter = require('xml-formatter');
 
+require('dotenv').config();
+
 const siteUrl = process.env.SITE_URL || 'https://docs.edg.io';
 const sitemapPaths = ['/applications/v7/', '/delivery/'];
 

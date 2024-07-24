@@ -2,822 +2,822 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/ai_integrations
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/ai_integrations
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/ai_integrations/cohere
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/ai_integrations/cohere
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/ai_integrations/langchain
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/ai_integrations/langchain
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/ai_integrations/llama
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/ai_integrations/llama
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/ai_integrations/mistral
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/ai_integrations/mistral
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/basics
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/basics
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/basics/account_settings
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/basics/account_settings
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/basics/alerts
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/basics/alerts
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/basics/collaboration
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/basics/collaboration
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/basics/deployments
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/basics/deployments
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/basics/environments
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/basics/environments
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/basics/hostnames
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/basics/hostnames
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/basics/origins
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/basics/origins
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/basics/properties
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/basics/properties
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/basics/properties/create_edgio_hosted
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/basics/properties/create_edgio_hosted
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/basics/properties/create_self_hosted
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/basics/properties/create_self_hosted
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/basics/serving_traffic
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/basics/serving_traffic
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/changelog
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/changelog
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/contributing
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/contributing
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/edge_functions
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/edge_functions
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/edge_functions/caching
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/edge_functions/caching
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/edge_functions/examples
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/edge_functions/examples
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/edge_functions/examples/aws_request_signing
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/edge_functions/examples/aws_request_signing
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/edge_functions/examples/basic_request_signing
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/edge_functions/examples/basic_request_signing
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/edge_functions/examples/content_stitching
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/edge_functions/examples/content_stitching
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/edge_functions/examples/header_manipulation
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/edge_functions/examples/header_manipulation
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/edge_functions/examples/json_responses
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/edge_functions/examples/json_responses
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/edge_functions/examples/jwt_verification
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/edge_functions/examples/jwt_verification
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/edge_functions/examples/optimizely_experimentation
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/edge_functions/examples/optimizely_experimentation
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/edge_functions/examples/redirects
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/edge_functions/examples/redirects
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/edge_functions/examples/waiting_room
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/edge_functions/examples/waiting_room
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/edge_functions/fetch_cloud_functions
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/edge_functions/fetch_cloud_functions
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/edge_functions/htmltransformer
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/edge_functions/htmltransformer
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/edge_functions/migrating_cloudflare_workers
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/edge_functions/migrating_cloudflare_workers
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/edge_functions/migrating_cloudfront_functions
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/edge_functions/migrating_cloudfront_functions
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/experimentation
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/experimentation
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/experimentation/basic_traffic_splitting_tutorial
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/experimentation/basic_traffic_splitting_tutorial
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/experimentation/cross_environment_traffic_splitting
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/experimentation/cross_environment_traffic_splitting
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/experimentation/iterative_migration_tutorial
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/experimentation/iterative_migration_tutorial
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/getting_started
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/getting_started
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/how-to
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/how-to
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/install_nodejs
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/install_nodejs
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/intro
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/intro
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/learning
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/learning
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/build_logs
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/build_logs
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/aws_s3_log_delivery
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/aws_s3_log_delivery
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/azure_blob_storage_log_delivery
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/azure_blob_storage_log_delivery
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/custom_log_fields
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/custom_log_fields
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/datadog_log_delivery
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/datadog_log_delivery
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/filtering_log_data
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/filtering_log_data
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/google_cloud_storage_log_delivery
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/google_cloud_storage_log_delivery
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/log_data_verification
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/log_data_verification
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/log_fields_rtld_bot_manager
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/log_fields_rtld_bot_manager
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/log_fields_rtld_cdn
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/log_fields_rtld_cdn
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/log_fields_rtld_cloud_functions
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/log_fields_rtld_cloud_functions
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/log_fields_rtld_rate_limiting
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/log_fields_rtld_rate_limiting
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/log_fields_rtld_waf
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/log_fields_rtld_waf
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/log_file_naming_convention
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/log_file_naming_convention
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/new_relic_log_delivery
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/new_relic_log_delivery
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/splunk_enterprise_log_delivery
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/splunk_enterprise_log_delivery
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/sumo_logic_log_delivery
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/sumo_logic_log_delivery
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/rtld/web_server_log_delivery
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/rtld/web_server_log_delivery
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/logs/server_logs
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/logs/server_logs
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/partners
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/partners
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/caching
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/caching
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/caching/cache_hit_ratio_optimization
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/caching/cache_hit_ratio_optimization
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/caching/cache_key
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/caching/cache_key
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/caching/cache_request_flow
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/caching/cache_request_flow
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/caching/cache_status_codes
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/caching/cache_status_codes
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/caching/purging
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/caching/purging
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/cdn_as_code
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/cdn_as_code
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/cdn_as_code/cli
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/cdn_as_code/cli
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/cdn_as_code/conditional_routes
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/cdn_as_code/conditional_routes
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/cdn_as_code/edgio_config
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/cdn_as_code/edgio_config
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/cdn_as_code/error_handling
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/cdn_as_code/error_handling
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/cdn_as_code/route_criteria
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/cdn_as_code/route_criteria
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/cdn_as_code/route_features
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/cdn_as_code/route_features
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/compression
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/compression
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/getting_started
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/getting_started
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/image_optimization
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/image_optimization
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/limits
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/limits
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/observability
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/observability
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/observability/developer_tools_chrome_extension
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/observability/developer_tools_chrome_extension
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/observability/devtools
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/observability/devtools
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/observability/edge_insights
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/observability/edge_insights
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/observability/real_user_monitoring
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/observability/real_user_monitoring
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/prefetching
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/prefetching
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/prefetching/prefetching_edgio_sites
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/prefetching/prefetching_edgio_sites
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/prefetching/prefetching_script_tag
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/prefetching/prefetching_script_tag
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/redirects
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/redirects
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/request
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/request
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/response
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/response
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/rules
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/rules
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/rules/conditions
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/rules/conditions
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/rules/feature_scenarios
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/rules/feature_scenarios
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/rules/feature_variables
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/rules/feature_variables
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/rules/features
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/rules/features
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/rules/operators
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/rules/operators
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/rules/request_matching_scenarios
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/rules/request_matching_scenarios
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/serverless_compute
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/serverless_compute
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/traditional_sites
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/traditional_sites
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/traffic_splitting
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/traffic_splitting
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/troubleshooting
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/troubleshooting
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/performance/unit_testing_edgejs
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/unit_testing_edgejs
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/reference
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/reference
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/reference/country_codes
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/reference/country_codes
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/reference/pops
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/reference/pops
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/release_notes
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/release_notes
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/rest_api
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/rest_api
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/rest_api/authentication
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/rest_api/authentication
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/rest_api/cache_purge
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/rest_api/cache_purge
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/rest_api/metrics_rest_api_usage
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/rest_api/metrics_rest_api_usage
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/access_rules
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/access_rules
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/api_security
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/api_security
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/asm
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/asm
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/bot_rules
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/bot_rules
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/client_side_protection
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/client_side_protection
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/custom_rules
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/custom_rules
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/dashboard
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/dashboard
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/edgejs_security
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/edgejs_security
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/getting_started
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/getting_started
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/introduction
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/introduction
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/managed_rule_groups
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/managed_rule_groups
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/managed_rules
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/managed_rules
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/matched_on_variables
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/matched_on_variables
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/origin_shield
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/origin_shield
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/rate_rules
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/rate_rules
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/response_to_client
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/response_to_client
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/security_applications
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/security_applications
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/tls_certificates
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/tls_certificates
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/security/waf
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/waf
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/connectors
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/connectors
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/getting_started
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/getting_started
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/getting_started/angular
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/getting_started/angular
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/getting_started/astro
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/getting_started/astro
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/getting_started/express
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/getting_started/express
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/getting_started/next
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/getting_started/next
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/getting_started/nodejs_connector
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/getting_started/nodejs_connector
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/getting_started/nuxt
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/getting_started/nuxt
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/getting_started/nuxt3
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/getting_started/nuxt3
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/getting_started/qwik
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/getting_started/qwik
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/getting_started/react
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/getting_started/react
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/getting_started/remix
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/getting_started/remix
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/getting_started/sveltekit
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/getting_started/sveltekit
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/getting_started/vue
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/getting_started/vue
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/isg
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/isg
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/legacy_connectors
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/legacy_connectors
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/legacy_connectors/ember_fastboot
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/legacy_connectors/ember_fastboot
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/legacy_connectors/frontity
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/legacy_connectors/frontity
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/legacy_connectors/gatsby
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/legacy_connectors/gatsby
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/legacy_connectors/hexo
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/legacy_connectors/hexo
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/legacy_connectors/mkdocs
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/legacy_connectors/mkdocs
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/legacy_connectors/razzle
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/legacy_connectors/razzle
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/legacy_connectors/sanity
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/legacy_connectors/sanity
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/sites_frameworks/limits
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/sites_frameworks/limits
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/upgrading
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/upgrading
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/upgrading/updating_packages
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/upgrading/updating_packages
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/upgrading/upgrading
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/upgrading/upgrading
         </loc>
     </url>
     <url>
         <loc>
-            https://docs.edg.io/applications/v7/what_is_graphql
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/what_is_graphql
         </loc>
     </url>
 </urlset>

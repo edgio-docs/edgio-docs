@@ -307,7 +307,6 @@ router.conditional({
     ],
 });
 ```
-
 </edgejs>
 
 #### Cookie {/*cookie*/} <edgejs>request</edgejs>
@@ -322,7 +321,6 @@ Identifies requests by a cookie's value.
 -   Use a regular expression (e.g., `value 1|value 2`) to specify multiple cookie values.
 
 <edgejs>
-
 **Key information:**
 
 -   Set `request.cookie` to the exact name of the desired cookie. You may not use special characters, including an asterisk, or a regular expression.
@@ -364,7 +362,6 @@ Identifies requests by the country from which the request was issued. Specify ea
 -   Country codes are case-sensitive.
 
 <edgejs>
-
 **Key information:**
 
 -   The `EU` and `AP` country codes do not encompass all IP addresses in those regions.
@@ -562,7 +559,6 @@ Identifies requests by the filename defined in the URL.
 -   Use a regular expression to specify multiples values (e.g., `value 1|value 2`).
 
 <edgejs>
-
 **Key information:**
 
 -   For the purposes of this match condition, a filename consists of the name of the requested asset, a period, and the file extension (e.g., `index.html`).
@@ -593,7 +589,6 @@ router.conditional({
 Identifies requests by a device's preferred document type definition (DTD) for HTML content (e.g., `html4`).
 
 <edgejs>
-
 **Example:**
 
 ```
@@ -611,15 +606,13 @@ router.conditional({
     ],
 });
 ```
-
 </edgejs>
 
-#### HTTP X-Forwarded-Host {/*http-x-forwarded-host*/}
+#### HTTP X-Forwarded-Host {/*http-x-forwarded-host*/} <edgejs>variable</edgejs>
 
 Identifies requests by the value assigned to the `x-forwarded-host` header. 
 
 <edgejs>
-
 **Example:**
 
 ```
@@ -644,7 +637,6 @@ router.conditional({
 Identifies requests by whether the device that issued the request supports Base64-encoded images.
 
 <edgejs>
-
 **Example:**
 
 ```
@@ -669,7 +661,6 @@ router.conditional({
 Identifies requests by whether the operating system of the device that issued the request is Android.
 
 <edgejs>
-
 **Example:**
 
 ```
@@ -718,7 +709,6 @@ router.conditional({
 Identifies requests by whether the device that issued the request provides a full desktop experience.
 
 <edgejs>
-
 **Example:**
 ```
 export default new Router().if(
@@ -728,7 +718,6 @@ export default new Router().if(
   } }
 );
 ```
-
 </edgejs>
 
 #### Is iOS {/*is-ios*/} <edgejs>device</edgejs>
@@ -736,7 +725,6 @@ export default new Router().if(
 Identifies requests by whether the operating system of the device that issued the request is iOS.
 
 <edgejs>
-
 **Example:**
 
 ```
@@ -761,7 +749,6 @@ router.conditional({
 Identifies requests by whether the device that issued the request is considered to be an automated HTTP client (e.g., a robot crawler).
 
 <edgejs>
-
 **Example:**
 
 ```
@@ -2164,7 +2151,6 @@ Identifies requests whose response contains a `Set-Cookie` header with the speci
 -   We strongly recommend the use of regular expressions when the response contains multiple `Set-Cookie` headers. Matching with the `equals | does not equal` operators may produce unexpected results.
 
 <edgejs>
-
 **Key information:**
 
 -   Use a regular expression (e.g., `value 1|value 2`) to specify multiple cookie values.
@@ -2189,7 +2175,6 @@ router.conditional({
     ],
 });
 ```
-
 </edgejs>
 
 #### Response Status Code {/*response-status-code*/} <edgejs>response</edgejs>
@@ -2280,6 +2265,7 @@ router.conditional({
     ],
 });
 ```
+</edgejs>
 
 #### Response Vary {/*response-vary*/} <edgejs>variable</edgejs>
 
@@ -2312,6 +2298,7 @@ router.conditional({
     ],
 });
 ```
+</edgejs>
 
 #### Response X-Cache {/*response-x-cache*/} <edgejs>variable</edgejs>
 
@@ -2339,6 +2326,7 @@ router.conditional({
     ],
 });
 ```
+</edgejs>
 
 #### Scheme {/*scheme*/} <edgejs>request</edgejs>
 
@@ -2367,7 +2355,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Virtual Destination Address {/*response-virtual-destination-address*/} <edgejs>variable</edgejs>
+#### Virtual Destination Address {/*virtual-destination-address*/} <edgejs>variable</edgejs>
 
 Identifies requests by the client’s IP address.
 
@@ -2395,7 +2383,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Virtual HTTP Version {/*response-virtual-http-version*/} <edgejs>variable</edgejs>
+#### Virtual HTTP Version {/*virtual-http-version*/} <edgejs>variable</edgejs>
 
 Identifies requests by the version of the client’s request protocol.
 
@@ -2419,7 +2407,7 @@ router.conditional({
 ```
 </edgejs>
 
-#### Wurfl Capability Device OS Version {/*response-wurfl-capability-device-os-version*/} <edgejs>variable</edgejs>
+#### Wurfl Capability Device OS Version {/*wurfl-capability-device-os-version*/} <edgejs>variable</edgejs>
 
 Identifies requests by the version number of the OS installed on the device.
 
@@ -2433,10 +2421,6 @@ Identifies requests by the version number of the OS installed on the device.
 -   Use a regular expression to specify multiple values (e.g., '1.0.1|1.0.2').
 -   **Supported operators:** `=== | !== | =~ | !~`
 
-**Example:**
-
-
-<edgejs>
 **Example:**
 
 ```

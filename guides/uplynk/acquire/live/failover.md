@@ -6,7 +6,7 @@ title: Failover
 
 Live Slicer failover minimizes the impact on your viewer's playback experience when a Live Slicer's performance is sub-optimal by automatically switching the live stream's source to a different Live Slicer. This is possible because each Live Slicer in a failover group provides status information to our system at regular and frequent intervals. If the primary Live Slicer is unhealthy, our system will switch the source of the live stream to a different Live Slicer. This may cause viewers to experience a few seconds of discontinuity.
 
-## Key Information:
+## Key Information  {/*key-information*/}
 
 - **Live Slicer failover** is only supported when streaming a live channel.
 - Setting up Live Slicer failover requires:
@@ -21,7 +21,7 @@ Live Slicer failover minimizes the impact on your viewer's playback experience w
 
      <Info>Restart the Live Slicers associated with a failover group to apply threshold changes.</Info>
 
-  [Learn more](/uplynk/acquire/live/live_slicer_metrics).
+  [Learn more about metrics](/uplynk/acquire/live/on_prem_slicer_metrics).
 
 - Minimize slate upon Live Slicer failover by setting at least one backup Live Slicer to hot mode. The available modes are described below:
 
@@ -56,7 +56,7 @@ Live Slicer failover minimizes the impact on your viewer's playback experience w
 - View a failover group's audit log by opening it and then clicking the **Change Log** tab.
 - Review a failover group's events by opening it and then clicking on the **Event Log** tab.
 
-## Set up Live Slicer Failover
+## Set up Live Slicer Failover  {/*set-up-live-slicer-failover*/}
 
 This section details setup for one or more live channel(s).
 
@@ -64,9 +64,9 @@ This section details setup for one or more live channel(s).
    - Go to the **Slicers** page by selecting **Slicers** from the left navigation of the main page.
 
 2. **Create a Failover Group**:
-   - Click `+ Create Failover Group`.
+   - Click **+ Create Failover Group**.
    - In the **Failover Group Name** option, type the name for the failover group.
-   - Click `Create & Edit`.
+   - Click **Create & Edit**.
 
 3. **Configure Hot-Warm Mode**:
    - From the **Hot-Warm Mode** option, determine whether backup live slicers will run in hot or warm mode.
@@ -87,9 +87,9 @@ This section details setup for one or more live channel(s).
    - If any desired Live Slicers have never been used before, start them now.
 
 7. **Add Slicers to Group**:
-   - Click `Add Slicers to Group`.
-   - From the **Slicers** option, select the desired Live Slicers and then click `Add`.
-   - Click `Update Slicer Mapping(s)`. The selected Live Slicers will be listed in the **Slicers in Group** section.
+   - Click **Add Slicers to Group**.
+   - From the **Slicers** option, select the desired Live Slicers and then click **Add**.
+   - Click **Update Slicer Mapping(s)**. The selected Live Slicers will be listed in the **Slicers in Group** section.
 
 8. **Enable Live Slicers**:
    - From the **Available** column, enable each desired Live Slicer by toggling its availability status to enabled.
@@ -98,9 +98,9 @@ This section details setup for one or more live channel(s).
    - Order the Live Slicers from highest to lowest priority by dragging the Live Slicer to the desired position.
 
 10. **Add Live Channels to Failover Group**:
-    - Click `Add Channel Mapping`.
-    - From the **Channels** option, select the desired live channels and then click `Add`.
-    - Click `Update Channel Mapping(s)`. The selected live channels will be listed in the **Channels using Group** section.
+    - Click **Add Channel Mapping**.
+    - From the **Channels** option, select the desired live channels and then click **Add**.
+    - Click **Update Channel Mapping(s)**. The selected live channels will be listed in the **Channels using Group** section.
 
 11. **Determine Health Metrics**:
     - Click the **Thresholds** tab.
@@ -163,7 +163,7 @@ This section details setup for one or more live channel(s).
     - Perform step 13 for the newly added Live Slicer(s).
     - In prioritized failover mode, the system will failover to the Live Slicer with the highest priority within a few minutes.
 
-## To Modify a Failover Group
+## Modify a Failover Group  {/*modify-failover-group*/}
 
 1. **Navigate to the Slicers Page**:
    - Go to the **Slicers** page by selecting **Slicers** from the left navigation of the main page.
@@ -186,26 +186,26 @@ This section details setup for one or more live channel(s).
 
 6. **Remove Live Slicers**:
    - From the **Slicers in Group** section, mark each Live Slicer to be removed.
-   - Click `Remove`.
+   - Click **Remove**.
 
 7. **Add Live Channels**:
    - Reassign a Live Slicer to a different failover group by first removing it from its current failover group.
-   - Click `Add Channel Mapping`.
-   - From the **Channels** option, select the desired live channels and then click `Add`.
-   - Click `Update Channel Mapping(s)`. The selected live channels will be listed in the **Channels using Group** section.
+   - Click **Add Channel Mapping**.
+   - From the **Channels** option, select the desired live channels and then click **Add**.
+   - Click **Update Channel Mapping(s)**. The selected live channels will be listed in the **Channels using Group** section.
 
 8. **Remove Live Channels**:
    - From the **Channels using Group** section, mark each live channel to be removed.
-   - Click `Remove`.
+   - Click **Remove**.
 
 9. **Update Health Conditions**:
    - Determine the conditions under which a Live Slicer is considered healthy.
-   - Click `Save`.
+   - Click **Save**.
 
 10. **Restart Live Slicers**:
     - Restart all Live Slicers associated with this failover group if you have updated the conditions (e.g., thresholds) for determining a Live Slicer's health.
 
-## Failover Notifications
+## Failover Notifications  {/*failover-notifications*/}
 
 Publish failover events through the following workflow:
 
@@ -217,10 +217,10 @@ Publish failover events through the following workflow:
    - Get started with Amazon SNS for free through its SNS free tier. [Learn more](https://aws.amazon.com/sns/).
 
 3. **Data Formatting**:
-   - Our [service formats data using JSON](#key-failover-notification-fields). This data may then be filtered via custom code.
+   - Our [service formats data using JSON](#failover-notification-fields). This data may then be filtered via custom code.
    - This article explains how to strip out additional data generated by Amazon SNS via a custom function in Amazon Lambda.
 
-### Get Started with Failover Notifications
+### Get Started with Failover Notifications  {/*get-started-with-failover-notifications*/}
 
 Perform the following steps to set up notifications:
 
@@ -243,30 +243,30 @@ Perform the following steps to set up notifications:
 5. **Configure Amazon SNS to Broadcast Notifications**:
    - Learn how to set up Amazon SNS and Lambda to broadcast notifications to a Slack channel.
 
-### Failover Notification Fields
+### Failover Notification Fields  {/*failover-notification-fields*/}
 
 Our service sends information that describes a failover event in JSON format. Key parameters in this notification are described here.
 
 
 | Field   | Description    |
 |---|---|
-| **Subject**       | Returns Slicer Failover |
-| **Message**       | Provides detailed information about the Failover event. Key parameters are described below.                                   |
-| **Service**       | Returns failover.                   |
-| **Sender**        | Returns failover.                   |
-| **Account**       | Indicates the user name (e.g., email address) associated with the account for which this failover event occurred.              |
-| **OID**           | Indicates the system-defined ID of the account for which this failover event occurred.                                        |
+| **Subject**| Returns Slicer Failover |
+| **Message**| Provides detailed information about the Failover event. Key parameters are described below.  |
+| **Service**| Returns failover.|
+| **Sender** | Returns failover.|
+| **Account**| Indicates the user name (e.g., email address) associated with the account for which this failover event occurred.|
+| **OID**    | Indicates the system-defined ID of the account for which this failover event occurred.  |
 | **FO_Group_Name** | Indicates a failover group's name.  |
-| **FO_Group_ID**   | Indicates a failover group's system-defined ID.                                                                               |
-| **Channels**      | Contains an array of the live channels associated with the failover group defined by the FO_Group_Name property.              |
-| **Date_Time**     | Indicates when the notification was triggered. This timestamp is reported as Unix time in milliseconds.                      |
-| **Original_Slicer** | Indicates the slicerID of the Live Slicer that was the source of the live stream prior to the failover event.                |
-| **Slicer**        | Indicates the slicerID of the Live Slicer that was the source of the live stream after the failover event.                    |
-| **Reason**        | Provides additional information about this failover event. For example, this parameter may indicate the reason for failover.  |
+| **FO_Group_ID**   | Indicates a failover group's system-defined ID.   |
+| **Channels**      | Contains an array of the live channels associated with the failover group defined by the FO_Group_Name property.|
+| **Date_Time**     | Indicates when the notification was triggered. This timestamp is reported as Unix time in milliseconds.   |
+| **Original_Slicer** | Indicates the slicerID of the Live Slicer that was the source of the live stream prior to the failover event.  |
+| **Slicer** | Indicates the slicerID of the Live Slicer that was the source of the live stream after the failover event. |
+| **Reason** | Provides additional information about this failover event. For example, this parameter may indicate the reason for failover.  |
 | **Slicers_In_Group** | Contains a key-value pair for each Live Slicer associated with the failover group defined by the FO_Group_Name property.     |
-|                   | Each key-value pair identifies the name of a Live Slicer and its failover status. Valid failover states are described below.  |
+|| Each key-value pair identifies the name of a Live Slicer and its failover status. Valid failover states are described below.  |
 
-### Valid Failover States
+### Valid Failover States  {/**/}
 
 - **Active**: Indicates that our service is using this Live Slicer's feed to generate the live stream for all live channels associated with this failover group.
 - **Hot**: Indicates that the Live Slicer is encoding and storing content within our system. Our service can quickly fail over to a Live Slicer in this state.

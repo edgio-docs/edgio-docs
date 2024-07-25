@@ -51,8 +51,8 @@ Setting up blackout requires:
 1. Defining one or more [audiences](#audiences).
 2. Defining one or more [blackout rules](#blackout-rules).
 3. Setting up blackout on the desired [live channel](#live-channel).
-4. Setting up a [media player](#media-player).
-5. Sending a blackout [notification](#notification) to the Live Slicer.
+4. Setting up a [media player](#set-up-media-player).
+5. Sending a blackout [notification](#live-linear-programming) to the Live Slicer.
 
 ### Audiences  {/*audiences*/}
 

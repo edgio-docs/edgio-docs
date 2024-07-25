@@ -1,3 +1,3 @@
 ---
-title: Signing Playback URL Tutorial
+title: Sign Playback URL Tutorial
 ---

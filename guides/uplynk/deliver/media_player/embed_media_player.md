@@ -31,11 +31,11 @@ The CMS provides HTML code that may be embedded onto a web page.
    - Live Event: From the [Live Events page](https://cms.uplynk.com/static/cms2/index.html#/live-events/events), select the desired live event.
    - Live Channel: From the Live Channels tab, select the desired live channel.
 
-3. Click the Playback tab.
+3. Click the **Playback** tab.
 
-4. Optional: Set the dimensions, in pixels, for the embedded media player through the iFrame Width and iFrame Height options.
+4. Optional: Set the dimensions, in pixels, for the embedded media player through the **iFrame Width** and **iFrame Height** options.
 
-5. Click Copy to copy the HTML code provided under the Embed HTML option.
+5. Click **Copy** to copy the HTML code provided under the Embed HTML option.
 
 ## Step 2 - Paste the HTML Embed Code
 
@@ -45,9 +45,9 @@ The HTML embed code provided within the CMS is compatible with a variety of plat
 
 1. Log in to [Tumblr](http://tumblr.com/).
 2. Open the [Dashboard](http://www.tumblr.com/dashboard).
-3. Click Video to create a video entry.
-4. From the Add a Video page, paste the embed code into the Embed a Video tab.
-5. Click Create Post and then view the embedded video.
+3. Click **Video** to create a video entry.
+4. From the **Add a Video** page, paste the embed code into the **Embed a Video** tab.
+5. Click **Create Post** and then view the embedded video.
 
 ### Blogger: Embed Video Within a Post
 
@@ -59,7 +59,7 @@ The HTML embed code provided within the CMS is compatible with a variety of plat
 
 4. Paste the embed code on a new line at the end of the HTML code.
 
-5. Click Publish and then view the embedded video.
+5. Click **Publish** and then view the embedded video.
 
 ### Self-Hosted Web Page: Embed Video
 
@@ -91,7 +91,7 @@ The HTML embed code provided within the CMS is compatible with a variety of plat
 
 Playback of the content referenced within embedded code may be restricted to a set of authorized domains. Attempting playback from an unauthorized domain will result in a "Not found" message.
 
-Example
+**Example**
 
 If you set `www.example.com` as the only allowed domain, playback will only be permitted when the player code is embedded on a web page accessed through the `www.example.com` domain.
 
@@ -103,7 +103,7 @@ The embedded video cannot be played back through any of the following web pages:
 - [http://www2.example.com/videos/marketing.html](http://www2.example.com/videos/marketing.html)
 - [http://www.example.org/videos/marketing.html](http://www.example.org/videos/marketing.html)
 
-Instructions
+**Instructions**
 
 1. From the Playback tab, set the **Allowed Domains** option to a comma-separated list of domains that will be allowed to play your content via the embedded code.
 

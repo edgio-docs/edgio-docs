@@ -20,9 +20,10 @@ The Health Monitoring section guides you to configure and monitor the health of 
 
 |Section|Details|
 |---|---|
-|Quick Start|Follow these steps to quickly set up Live Slicer health monitoring.|
-|Setup|Learn how to configure health monitoring for Live Slicers: Select accounts, create view, create and assign the rule set, define notification preferences, grant account access.|
-|Dashboard|See the features and functions available via the Live Slicer monitoring dashboard.|
-|Penalty Box|Use the Penalty Box to quickly review all Live Slicers that are experiencing one or more monitored metrics at warning levels, critical levels, or both.|
-|Issue Identification and Remediation|Learn how to interpret and troubleshoot status information.|
-|Organizations|Learn how to work with organizations, system-defined entities containing accounts and users that allow the use of shared Slicer Views and rulesets for Live Slicer health monitoring.|
+|[Quick Start](/uplynk/acquire/live/health_monitoring/setup/#quick-start)|Follow these steps to quickly set up Live Slicer health monitoring.|
+|[Setup](/uplynk/acquire/live/health_monitoring/setup)|Learn how to configure health monitoring for Live Slicers: Select accounts, create view, create and assign the rule set, define notification preferences, grant account access.|
+|[Dashboard](/uplynk/acquire/live/health_monitoring/dashboard)|See the features and functions available via the Live Slicer monitoring dashboard.|
+|[Penalty Box](/uplynk/acquire/live/health_monitoring/penalty_box_and_issue_remediation/#penalty-box)|Use the Penalty Box to quickly review all Live Slicers that are experiencing one or more monitored metrics at warning levels, critical levels, or both.|
+|[Issue Identification and Remediation](/uplynk/acquire/live/health_monitoring/penalty_box_and_issue_remediation/#issue-identification)|Learn how to interpret and troubleshoot status information.|
+|[Metrics](/uplynk/acquire/live/health_monitoring/metrics)|View details about the available health monitoring metrics.|
+|[Organizations](/uplynk/acquire/live/health_monitoring/organizations)|Learn how to work with organizations, system-defined entities containing accounts and users that allow the use of shared Slicer Views and rulesets for Live Slicer health monitoring.|

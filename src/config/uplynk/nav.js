@@ -85,6 +85,10 @@ const nav = {
           path: 'acquire/live',
           routes: [
             {
+              title: 'Cloud Slicer Live',
+              path: 'acquire/live/cloud_slicer_live',
+            },
+            {
               title: 'On Prem Slicer',
               path: 'acquire/live/on_prem_slicer',
             },

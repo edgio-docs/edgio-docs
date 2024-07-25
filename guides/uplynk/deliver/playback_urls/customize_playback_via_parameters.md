@@ -1,5 +1,5 @@
 ---
-title: Customizing Playback via Parameters
+title: Customize Playback via Parameters
 ---
 
 Customize playback by adding the desired customization parameters directly after core identification parameters in the playback URL's query string.

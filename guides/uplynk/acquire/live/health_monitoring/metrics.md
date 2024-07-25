@@ -1,14 +1,10 @@
 ---
-title: Metrics
+title: Monitoring Metrics
 ---
-
-# Monitoring Metrics
 
 A description for each monitoring metric is provided below.
 
-View diagnosis and troubleshooting information.
-
-| Rule | Description |
+| Metric | Details |
 |---|---|
 | Ad Last Seen | Determines the length of time that may elapse since the end of the last ad break before triggering a warning/critical status.<br /><Info><br />The Live Slicer resets this metric upon changing state (e.g., Slicing, Replacing Content, and Blackout)</Info>.<br /><br /> **Troubleshooting**<br />Check whether ad breaks are being triggered. |
 | Black Video | Determines the length of time that black frames may be sent by a Live Slicer before triggering a warning/critical status.<br /><br />This rule measures the duration of black video by averaging the video's luminosity percentage over the last few seconds.<br /><Info><br />Periods of black video may be normal. Consider the source content when setting critical/warning thresholds.</Info><br /><br />**Diagnosis**<br />Check the luma response parameter for a very low value.<br /><br /> **Troubleshooting**<br />Check the source feed to resolve issues with video input. |

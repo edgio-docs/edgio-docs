@@ -2,7 +2,7 @@
 title: Content Management
 ---
 
-The **Content** Tab Contains:
+The **Content Tab** contains:
 
 - All of your VOD content.
 

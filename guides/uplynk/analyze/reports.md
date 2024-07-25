@@ -185,7 +185,7 @@ Each error type is briefly described below.
 
 The Asset Summary report provides the following analytics for your CMS assets:
 
-##### ASSET PLAYBACK STATISTICS  {/*asset-playback-stats*/}
+#### ASSET PLAYBACK STATISTICS  {/*asset-playback-stats*/}
 
 Analyze asset-specific statistics.
 
@@ -198,7 +198,7 @@ Analyze asset-specific statistics.
 |Total Hours Watched| Indicates the total number of hours that assets were played.|
 |Asset Views| Indicates the total number of times that assets were requested as a result of a live channel, live event, or VOD.|
 
-**PLAYBACK HOURS BY COUNTRY**
+#### PLAYBACK HOURS BY COUNTRY** {/*playback-hours-by-country*/}
 
 Breaks down your audience by country.
 

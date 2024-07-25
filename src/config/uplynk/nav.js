@@ -92,6 +92,10 @@ const nav = {
               title: 'Failover',
               path: 'acquire/live/failover',
             },
+            {
+              title: 'Health Monitoring',
+              path: 'acquire/live/health_monitoring',
+            },
           ],
         },
       ],

@@ -186,7 +186,7 @@ Indicates that the live channel was deleted.
 
 Indicates that the viewer continued to watch the live channel. This event, which is triggered every 10 minutes during the playback of a live channel, allows us to estimate simultaneous viewers during live playback.
 
-Time is divided into 10 minute intervals that are known as buckets. During live playback, a single `channel_ping` event is triggered once per bucket. Each bucket is assigned a unique number starting from 0. Bucket 0 refers to the Unix epoch (00:00:00 on January 1, 1970 UTC), bucket 1 starts 10 minutes after that, and so on.
+Time is divided into ten-minute intervals that are known as buckets. During live playback, a single `channel_ping` event is triggered once per bucket. Each bucket is assigned a unique number starting from 0. Bucket 0 refers to the Unix epoch (00:00:00 on January 1, 1970 UTC), bucket 1 starts 10 minutes after that, and so on.
 
 | Field | Description |
 |---|---|
@@ -196,7 +196,7 @@ Time is divided into 10 minute intervals that are known as buckets. During live 
 | user IP | Indicates the IP address of the playback device. |
 | player user agent | Indicates the player's user agent as reported by the `User-Agent` request header. |
 | player referrer URL | Indicates the referrer as reported by the `Referer` request header. |
-| euid | Indicates the [external user ID](uplynk/deliver/playback_urls/customizing_playback_via_parameters/general-parameters) provided in the playback URL.<br />Default value: `-` |
+| euid | Indicates the [external user ID](/uplynk/deliver/playback_urls/general-parameters) provided in the playback URL.<br />Default value: `-` |
 | session ID | Indicates a unique playback session ID.<br />Learn more about this [playback session (session_created)](#session-created). |
 
 ### channel_play_started {/*channel_play_started*/}
@@ -317,7 +317,7 @@ Indicates that a single temporal slice of media was delivered. Each slice repres
 | user IP | Indicates the IP address of the playback device. |
 | player user agent | Indicates the player's user agent as reported by the `User-Agent` request header. |
 | player referrer URL | Indicates the referrer as reported by the `Referer` request header. |
-| euid | Indicates the [external user ID](uplynk/deliver/playback_urls/customizing_playback_via_parameters/general-parameters) provided in the playback URL.<br />Default value: `-` |
+| euid | Indicates the [external user ID](/uplynk/deliver/playback_urls/customize_playback_via_parameters/#general-parameters) provided in the playback URL.<br />Default value: `-` |
 | session ID | Indicates a unique playback session ID.<br />Learn more about this [playback session (session_created)](#session-created). |
 | playing owner ID | Identifies the owner of shared content by user ID.<br />Return value for your content: `-`<br /><Callout type="info">If your user ID is returned by this field, then your content was played from another account (e.g., an ad or a shared library). </Callout>|
 | channel ID | Indicates a channel ID when the slice was played in the context of a live channel.<br />Default value: `-` |

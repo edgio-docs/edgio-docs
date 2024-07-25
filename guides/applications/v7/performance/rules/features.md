@@ -198,6 +198,7 @@ Customize when and how content is cached through these features:
 -   [Revalidate While Stale Timer](#revalidate-while-stale-timer)
 -   [Rewrite Cache Key](#rewrite-cache-key)
 -   [Set Client Max Age](#set-client-max-age)
+-   [Set Default Internal Max Age](#set-default-internal-max-age)
 -   [Set Max Age](#set-max-age)
 -   [Set Service Worker Max Age](#set-service-worker-max-age)
 -   [Stale On Error](#stale-on-error)
@@ -1161,6 +1162,52 @@ export default new Router()
 </edgejs>
 
 **Default Behavior:** The `Cache-Control` / `Expires` headers cached with the response from the origin server will pass through to the browser.
+
+#### Set Default Internal Max Age {/*set-default-internal-max-age*/}
+
+Defines a default `max-age` interval for edge server to origin server cache revalidation. This interval determines the amount of time that will pass before an edge server will check whether cached content matches the asset stored on the origin server.
+
+**Key information:**
+
+-   This default caching policy is only applied to responses from an origin server that have not been assigned a `max-age` directive through either the `Cache-Control` or `Expires` header.
+-   This default caching policy is inapplicable to requests that are not deemed cacheable.
+-   This default caching policy does not affect browser to edge server cache revalidations.
+    -   Browser to edge server revalidation is determined by the `Cache-Control` or `Expires` headers sent to the browser, which can be customized through the [Set Max Age feature](#set-max-age).
+-   The results of this default caching policy do not have an observable effect on the response headers and the content returned from edge servers for your content, but it may have an effect on the amount of revalidation traffic sent from edge servers to your origin server.
+-   Configure this feature by performing the following steps:
+
+    -   Select the status code for which this default caching policy will be applied.
+    -   Specify an integer value and then selecting the desired time unit (i.e., seconds, minutes, hours, etc.). This value defines the default `max-age` interval.
+
+<edgejs>
+**Key information:**
+
+-   This default caching policy is only applied to responses from an origin server that have not been assigned a `max-age` directive through either the `Cache-Control` or `Expires` header.
+-   This default caching policy is inapplicable to requests that are not deemed cacheable.
+-   This default caching policy does not affect browser to edge server cache revalidations.
+    -   Browser to edge server revalidation is determined by the `Cache-Control` or `Expires` headers sent to the browser, which can be customized through the [Set Max Age feature](#set-max-age).
+-   The results of this default caching policy do not have an observable effect on the response headers and the content returned from edge servers for your content, but it may have an effect on the amount of revalidation traffic sent from edge servers to your origin server.
+-   Configure this feature by performing the following steps:
+
+    -   Specify the status code for which this default caching policy will be applied.
+    -   Specify an integer value and then the desired time unit. This value defines the default `max-age` interval.
+-   **Syntax:** `"<STATUS CODE>": "<TIME>[s|m|h|d|w|y]"`
+
+**Example:**
+
+```js filename="./routes.js"
+export default new Router()
+  .get('/', {
+    caching: {
+      "default_internal_max_age": {
+        "200": "1h"
+      }
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** Disabled. {{ PRODUCT }} does not set a default internal `max-age` interval. However, it may be set on a per request basis either through the [Set Max Age feature](#set-max-age) or when an origin server provides cache directives.
 
 #### Set Max Age{/*set-max-age*/}
 

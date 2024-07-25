@@ -12,8 +12,9 @@ The reprocessing screen is comprised of these panels and sections:
 
 ![Reprocessing](/images/uplynk/reprocess.png)
 
-| A | Details | Modify reprocessed asset's name, ID, and ad breaks. |
+|Section|Feature|Details|
 |:---:|---|---|
+| A | Details | Modify reprocessed asset's name, ID, and ad breaks. |
 | B | Player | Play back video with ad breaks. |
 | C | Seek Bar | View ad breaks in blue. Click on the seek bar then **+ Ad Break** to use that timestamp for a new ad break. |
 | D | Source/Output Info | Captures the title, ID, duration, ad-break timestamps, and date of the original asset, as well as the title, ID, duration and ad-break timestamps of the reprocessed asset. |
@@ -25,8 +26,7 @@ The reprocessing screen is comprised of these panels and sections:
 
 1. **Locate the Asset:** Find the asset you want to reprocess. Refer to [Content Management](/uplynk/manage/assets/content_management) for information on the CMS and Search features.
 2. **Create a Copy:** Click **Reprocess** in the top-right corner to create a copy.
-3. **Rename the Content:**
-   - In the **Details** section, enter a new name in the **New Asset Name** field.
+3. **Rename the Content:** In the **Details** section, enter a new name in the **New Asset Name** field.
 4. **Optional:** Choose an **External ID** if applicable.
 
 ## Insert New Ad Break  {/*insert-new-ad-break*/}

@@ -132,7 +132,7 @@ Captions and subtitles within a sidecar TTML file will be converted to both CEA-
 
 Please make sure that your TTML files conform to the following layout:
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <tt xml:lang="en" xmlns="http://www.w3.org/2006/04/ttaf1" xmlns:tts="http://www.w3.org/2006/04/ttaf1#styling">
 <head>
@@ -231,7 +231,7 @@ The Slicer will output a fragmented TTML for DASH VOD for a TTML document or a D
 
     - **DVB-TTML Stream:**
 
-        -`render_dvb_ttml {PID 1}:{Language 1},{PID 2}:{Language 2},{PID n}:{Language n}`
+        `render_dvb_ttml {PID 1}:{Language 1},{PID 2}:{Language 2},{PID n}:{Language n}`
 
 - Set `show_dash_subtitles=imsc` within the playback URL's query string.
 
@@ -259,3 +259,72 @@ Ensure that the WebVTT codec is always initialized by playing a short clip that 
 |-----------|-------------|
 | `smartcic` | Set this parameter to `1` to only prepend a codec initialization clip to the manifest file when the main content contains WebVTT subtitles. |
 | `forcecic` | Set this parameter to `1` to always prepend a codec initialization clip to the manifest file. |
+
+## Tutorial
+
+**Goal:** Learn how to add closed captioning support to on-demand content.
+
+**Key Steps:**
+
+1. Create a TTML file.
+2. Add style information.
+3. Slice the file.
+
+### Step 1 - Create a TTML File
+
+There are many methods for creating a TTML file. In this example, we'll use an online tool from Microsoft called [HTML5 Video Caption Maker (VCM)](https://testdrive-archive.azurewebsites.net/Graphics/CaptionMaker/Default.html).
+
+Because it is an online tool, VCM has the limitation that your content must be hosted via a web server. VCM prompts you for the URL of your content.
+
+1. Copy and paste the following URL into the text field labeled **"Enter URL of video file:"**:
+
+   `http://ftp.nluug.nl/ftp/graphics/blender/apricot/trailer/sintel_trailer-480p.mp4`
+
+2. Click the **Load** button.
+
+   The trailer is short and only has a few lines of dialog.
+
+3. Begin by clicking **Play**.
+
+4. Once you've heard a line of dialog, press **Pause**.
+
+5. Type the dialog in the textarea below the video (yellow highlight added for emphasis).
+
+6. Click **Save & Continue**. The video will continue playing.
+
+7. Wait for a line of dialog, and again click **Pause**.
+
+8. Type the dialog in the text area below the video.
+
+9. Repeat these steps until you are satisfied with the captions.
+
+10. Next, find the **TTML** radio button and click it. This will display the markup for your TTML file.
+
+11. Copy this text and save it as a local text file on your computer.
+
+   The same TTML used in the example can also be copied below:
+
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <tt xmlns="http://www.w3.org/ns/ttml" xml:lang="en" >
+   <body>
+       <div>
+           <p begin="0.000s" end="14.780s">What brings you to the land of the gatekeepers?</p>
+           <p begin="14.780s" end="20.193s">I'm searching for someone.</p>
+           <p begin="20.193s" end="39.444s">A dangerous quest for a lone hunter.</p>
+           <p begin="39.444s" end="44.371s">I've been alone for as long as I can remember.</p>
+       </div>
+   </body>
+   </tt>
+
+## Step 2 - Add Style Information
+
+The default caption styling varies widely by platform. To give your captions uniformity, we will add minimal style information to our TTML document. The document below includes our style additions.
+
+## Step 3 - Slice File with TTML
+
+We create the VOD asset using the command line slicer. We'll employ the -ttml option to tell the slicer where to locate our TTML caption file. The following is an example slicer command with the option:
+
+```
+/path/to/slicer /path/to/video/sintel_trailer-480p.mp4 -u username -apikey APIKey -ttml /path/to/ttml/sintel_trailer-480p.mp4.ttml
+```

@@ -35,8 +35,6 @@ The Live Slicer Monitoring dashboard shows health statistics for all active and 
 
 2. **Enable Monitoring:** You must enable monitoring on the customer account that owns the Live Slicer.
 
-Certainly! Here's the text converted to markdown:
-
 ## Enabling/Disabling Monitoring
 
 Before you can add a Live Slicer to a Slicer View, you must first enable monitoring on the customer account that owns it.
@@ -65,8 +63,6 @@ Before you can add a Live Slicer to a Slicer View, you must first enable monitor
    - Click **Yes, Delete It** to confirm that monitoring should be disabled on the account.
 
         <Tip>Disabling monitoring removes that customer account's Live Slicers from your Slicer Views.</Tip>
-
-Here's the text converted to markdown:
 
 ## Permissions
 
@@ -142,8 +138,6 @@ You may allow other users to monitor your Live Slicers.
    - Click **Yes, Remove It** to confirm that the marked user(s) should no longer be allowed to monitor the Live Slicers associated with the account selected in step 2.
 
 <Info>Removing monitoring permissions from a user will remove the account's Live Slicers from the Slicer Views associated with that user.</Info>
-
-Here's the text converted to markdown:
 
 ## Slicer View
 
@@ -317,7 +311,7 @@ The Live Slicer Monitoring dashboard may be configured to provide audio cues whe
 
 <Tip>Audio notifications will play on each device on which the Live Slicer Monitoring dashboard has been loaded, regardless of whether it is the active browser tab/window or if it has been minimized.</Tip>
 
-### To set up audio notifications:
+### Set up Audio Notifications:
 
 1. Navigate to the [Notifications page](https://monitor.uplynk.com/settings/notifications).
    - From the main menu, navigate to **Services**.

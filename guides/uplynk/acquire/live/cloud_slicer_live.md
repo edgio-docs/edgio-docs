@@ -11,7 +11,7 @@ Cloud Slicer Live (CSL) allows you to run a slicer in our cloud. This allows you
 
 Create and delete slicers as required by your business needs.
 
-## Quick Start
+## Quick Start  {/*quick-start*/}
 
 Set up a streaming workflow by performing the following steps:
 
@@ -27,13 +27,13 @@ Set up a streaming workflow by performing the following steps:
 
 5. **Point Your Player** to your live channel or live event's playback URL.
 
-## Ingest Point Administration
+## Ingest Point Administration  {/*ingest-point-administration*/}
 
 An ingest point identifies a URL and ports to which an encoder should push an audio/video feed.
 
 Upon creating a CSL slicer, you must associate it with an ingest point from which it will ingest an audio/video feed.
 
-### Key Information
+### Key Information  {/*key-information*/}
 
 - An ingest point is restricted to a specific region and streaming protocol.
 - An ingest point can be in either of the following states:
@@ -41,7 +41,7 @@ Upon creating a CSL slicer, you must associate it with an ingest point from whic
   - **NOT_IN_USE**: This state indicates that it is available for assignment to a CSL slicer.
 - Deleting a CSL slicer changes the state of the ingest point that was associated with it from **IN_USE** to **NOT_IN_USE**. This allows you to reuse the same ingest point with a different CSL slicer.
 
-### To Create an Ingest Point
+### Create an Ingest Point  {/*create-ingest-point*/}
 
 1. Navigate to **[Ingest Points](https://cms.uplynk.com/static/cms2/index.html#/slicers/ingest-points)**: From the main navigation, go to **Slicers** > **Ingest Points**.
 2. Click **+ Ingest Point**.
@@ -51,7 +51,7 @@ Upon creating a CSL slicer, you must associate it with an ingest point from whic
 6. Optional: In the **Endpoint Description** option, type a description for this ingest point.
 7. Click **Create**.
 
-### To Modify an Ingest Point
+### Modify an Ingest Point  {/*modify-ingest-point*/}
 
 <Info>You may not reassign an ingest point to a different region. Create a new ingest point if you require one for a different region.</Info>
 
@@ -61,7 +61,7 @@ Upon creating a CSL slicer, you must associate it with an ingest point from whic
 4. Optional: In the **Description** option, modify the description assigned to this ingest point.
 5. Click **Save**.
 
-### To Delete an Ingest Point
+### Delete an Ingest Point  {/*delete-ingest-point*/}
 
 1. Navigate to **[Ingest Points](https://cms.uplynk.com/static/cms2/index.html#/slicers/ingest-points)**: From the main navigation, go to **Slicers** > **Ingest Points**.
 2. Check the ingest point's status:
@@ -71,7 +71,7 @@ Upon creating a CSL slicer, you must associate it with an ingest point from whic
 4. Click **Delete Ingest Point**.
 5. Click **Yes, Delete** to confirm the deletion.
 
-## Cloud Slicer Live Administration
+## Cloud Slicer Live Administration  {/**/}
 
 Before creating a CSL slicer, you must first perform the following steps:
 
@@ -83,7 +83,7 @@ Before creating a CSL slicer, you must first perform the following steps:
 
 3. **[Create an Ingest Point](#create-an-injest-point)** point within the region identified in step 1.
 
-### Key Information
+### Key Information  {/*key-info*/}
 
 - You may assign a custom slicer configuration to your CSL slicer. You can define this custom configuration by:
   - Importing settings from a file
@@ -98,9 +98,9 @@ Before creating a CSL slicer, you must first perform the following steps:
 
 - Our service manages certain slicer configuration settings. You should not manually assign these [reserved settings](#reserved-slicer-settings) to your CSL slicer.
 
-### To Create a CSL Slicer
+### Create a CSL Slicer  {/*create-slicer*/}
 
-1. Navigate to the [**Hosted Slicers** page](https://cms.uplynk.com/static/cms2/index.html#/slicers/): Go to **Slicers** > **Hosted Slicers** from the left navigation of the main page.
+1. Navigate to [**Hosted Slicers**](https://cms.uplynk.com/static/cms2/index.html#/slicers/): Go to **Slicers** > **Hosted Slicers** from the left navigation of the main page.
 2. Click **+ Create Slicer**.
 3. From the **Ingest Point** section, select an ingest point that corresponds to the region where this slicer will be hosted and the streaming protocol for the feed that it will ingest.
    - Click **Select Ingest Point**.
@@ -132,9 +132,9 @@ Before creating a CSL slicer, you must first perform the following steps:
 7. Optional: From the **Slicer Notes** option, briefly describe the purpose of this CSL slicer.
 8. Click **Create**.
 
-### To Modify a CSL Slicer  {/**/}
+### Modify a CSL Slicer  {/*modify-slicer*/}
 
-1. Navigate to the [**Hosted Slicers** page](https://cms.uplynk.com/static/cms2/index.html#/slicers/): Go to **Slicers** > **Hosted Slicers** from the left navigation of the main page.
+1. Navigate to [**Hosted Slicers**](https://cms.uplynk.com/static/cms2/index.html#/slicers/): Go to **Slicers** > **Hosted Slicers** from the left navigation of the main page.
 2. Click on the desired CSL slicer.
 3. Update this CSL slicer as needed.
    - Optional: From the **Slicer Configuration** section, review your slicer configuration. Import, add, or remove slicer settings as needed.
@@ -191,14 +191,14 @@ You can import existing slicer configuration settings or adjust a slicer's setti
 
     2. Click **x Remove**.
 
-### To Delete a CSL Slicer  {/**/}
+### Delete a CSL Slicer  {/*delete*/}
 
-1. Navigate to the **Slicers** page.
+1. Navigate to [**Hosted Slicers**](https://cms.uplynk.com/static/cms2/index.html#/slicers/): Go to **Slicers** > **Hosted Slicers** from the left navigation of the main page.
 2. Click on the desired CSL slicer.
 3. Click **Delete Hosted Slicer**.
 4. When prompted, click **Delete** to confirm the deletion.
 
-### To Restart a CSL Slicer
+### Restart a CSL Slicer  {/*restart*/}
 
 <Info>Restarting a CSL slicer typically takes around 60 seconds.</Info>
 
@@ -207,7 +207,7 @@ You can import existing slicer configuration settings or adjust a slicer's setti
 3. Click **Restart Hosted Slicer**.
 4. Click **Restart** to confirm this action.
 
-### Slicer Status Information
+### Slicer Status Information  {/*slicer-status*/}
 
 Use a CSL slicer's status to find out whether it is ready to stream your content. Core CSL slicer statuses are described below:
 
@@ -217,13 +217,13 @@ Use a CSL slicer's status to find out whether it is ready to stream your content
 - **running**: Indicates that your CSL slicer is active. An active CSL slicer can be in any of the following states: capture, replace, ad, or blackout.
 - **failed**: Indicates that our service could not create your CSL slicer.
 
-### Reserved Slicer Configuration Settings
+### Reserved Slicer Configuration Settings  {/*reserved-slicer-config*/}
 
 You may not use the following settings with a CSL slicer:
 
 `api_port | apikey | capture_delay | multicast | no_signal_image | no_signal_pad | port | rtmp_url | rtp_backlog_dur | rtp_headers | rtp_readahead_dur | ssl_port | username`
 
-## Slicer Configuration File
+## Slicer Configuration File  {/*slicer-config-file*/}
 
 You may import a slicer configuration file when defining your CSL slicer's slicer configuration. You may format this slicer configuration file using either colon-separated values or JSON.
 
@@ -231,7 +231,7 @@ You may import a slicer configuration file when defining your CSL slicer's slice
 
 <Tip>Our service automatically detects the format when importing your slicer configuration file. It does not rely on the file extension when making this assessment.</Tip>
 
-#### Colon-Separated Values (Live Slicer Configuration File)
+#### Colon-Separated Values (Live Slicer Configuration File)  {/*csv*/}
 
 You may define slicer configuration settings using the same format as a Live Slicer configuration file. Specify each [desired setting](#confiuration-settings) on a separate line.
 
@@ -247,7 +247,7 @@ autoexpire_age:3
 slicerID:sports_slicer
 ```
 
-#### JSON
+#### JSON  {/*json*/}
 
 You may define slicer configuration settings using JSON format. Define each slicer configuration setting as a key-value pair using JSON notation.
 
@@ -265,7 +265,7 @@ You may define slicer configuration settings using JSON format. Define each slic
 }
 ```
 
-## Encoder
+## Encoder  {/*encoder*/}
 
 Your encoder must push an audio/video feed to an ingest point. If you have assigned that ingest point to a CSL slicer, then that CSL slicer will automatically encode your content.
 
@@ -291,7 +291,7 @@ Our service will only ingest your feed when the following conditions are met:
 
    `srt://ingest-prod-1-us-east-1.mss.aws.oath.cloud:48120?passphrase=7b4777ca-c0de-410b-913e-a011607ef525`
 
-## Link Health Monitoring
+## Link Health Monitoring  {/*link-health-monitoring*/}
 
 A link is established when an encoder starts pushing an audio/video feed to an ingest point. CSL slicer performance relies on this link, and therefore, we track key link health metrics. These metrics are measured by:
 

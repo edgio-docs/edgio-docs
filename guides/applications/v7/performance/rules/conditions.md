@@ -7,10 +7,10 @@ A match condition identifies the set of requests to which one or more feature(s)
 | Category  | Match Conditions  |
 |---|---|
 | Location  | <ul><li>[ASN](#asn)</li><li>[City](#city)</li><li>[Continent](#continent)</li><li>[Country](#country)</li><li>[DMA Code](#dma-code)</li><li>[Latitude](#latitude)</li><li>[Longitude](#longitude)</li><li>[Postal Code](#postal-code)</li><li>[Region Code](#region-code)</li></ul> |
-| Request  | <ul><li>[Client IP](#client-ip)</li><li>[Cookie](#cookie)</li><li>[Directory](#directory)</li><li>[Extension](#extension)</li><li>[Filename](#filename)</li><li>[Method](#method)</li><li>[Origin Path](#origin-path)</li><li>[Origin Query String](#origin-query-string)</li><li>[Path](#path)</li><li>[POP Code](#pop-code)</li><li>[Query](#query)</li><li>[Query Parameter](#query-parameter)</li><li>[Query String](#query-string)</li><li>[Referring Domain](#referring-domain)</li><li>[Request Header](#request-header)</li><li>[Scheme](#scheme)</li></ul>  |
+| Request  | <ul><li>[Client IP](#client-ip)</li><li>[Cookie](#cookie)</li><li>[Directory](#directory)</li><li>[Extension](#extension)</li><li>[Filename](#filename)</li><li>[HTTP X-Forwarded-Host](#http-x-forwarded-host)</li><li>[Is Subrequest](#is-subrequest)</li><li>[Method](#method)</li><li>[Origin Path](#origin-path)</li><li>[Origin Query String](#origin-query-string)</li><li>[Path](#path)</li><li>[POP Code](#pop-code)</li><li>[Query](#query)</li><li>[Query Parameter](#query-parameter)</li><li>[Query String](#query-string)</li><li>[Referring Domain](#referring-domain)</li><li>[Request Header](#request-header)</li><li>[Scheme](#scheme)</li><li>[Virtual Destination Address](#virtual-destination-address)</li><li>[Virtual HTTP Version](#virtual-http-version)</li><li>[Wurfl Capability Device OS Version](#wurfl-capability-device-os-version)</li></ul>  |
 | Device  | <ul><li>[Brand Name](#brand-name)</li><li hidden>[Device Operating System](#device-operating-system)</li><li>[Dual Orientation](#dual-orientation)</li><li>[HTML Preferred DTD](#html-preferred-dtd)</li><li>[Image Inlining](#image-inlining)</li><li>[Is Android](#is-android)</li><li>[Is App](#is-app)</li><li>[Is Full Desktop](#is-full-desktop)</li><li>[Is iOS](#is-ios)</li><li>[Is Robot](#is-robot)</li><li>[Is Smartphone](#is-smartphone)</li><li>[Is SmartTV](#is-smarttv)</li><li>[Is Tablet](#is-tablet)</li><li>[Is Touchscreen](#is-touchscreen)</li><li>[Is Windows Phone](#is-windows-phone)</li><li>[Is Wireless Device](#is-wireless-device)</li><li>[Marketing Name](#marketing-name)</li><li>[Mobile Browser](#mobile-browser)</li><li>[Model Name](#model-name)</li><li>[Progressive Download](#progressive-download)</li><li>[Release Date](#release-date)</li><li>[Resolution Height](#resolution-height)</li><li>[Resolution Width](#resolution-width)</li></ul>  |
 | Miscellaneous  | <ul><li>[Random Integer](#random-integer)</li></ul>  |
-| Response  | <ul><li>[Response Set Cookie](#response-set-cookie)</li><li>[Response Status Code](#response-status-code)</li></ul>  |
+| Response  | <ul><li>[Cache Status](#cache-status)</li><li>[Content Length](#content-length)</li><li>[Response Age](#response-age)</li><li>[Response Content Type](#response-content-type)</li><li>[Response Edgecast Control](#response-edgecast-control)</li><li>[Response Location](#response-location)</li><li>[Response Set Cookie](#response-set-cookie)</li><li>[Response Status Code](#response-status-code)</li><li>[Response Transfer Encoding](#response-transfer-encoding)</li><li>[Response Vary](#response-vary)</li><li>[Response X-Cache](#response-x-cache)</li></ul>  |
 
 #### ASN {/*asn*/} <edgejs>location</edgejs>
 
@@ -92,12 +92,12 @@ Identifies requests by the [cache status](/applications/performance/caching/cach
 
 **Key information:**
 
--   For each request, {{ PRODUCT }} checks the cache status on the edge server handling the request. It then compares this cache status code against the specified value or pattern.
+-   The edge server handling the request identifies the cache status for the requested resource. {{ PRODUCT }} then compares the code for this cache status against the specified value or pattern.
 
 <edgejs>
 **Key information:**
 
--   For each request, {{ PRODUCT }} checks the cache status on the edge server handling the request. It then compares this cache status code against the specified value or pattern.
+-   The edge server handling the request identifies the cache status for the requested resource. {{ PRODUCT }} then compares the code for this cache status against the specified value or pattern.
 -   Specify a value using any combination of numbers, letters, or symbols.
 -   Use a regular expression to specify multiple values (e.g., 'value 1|value 2').
 -   **Supported operators:** `=== | !== | =~ | !~`
@@ -2109,7 +2109,7 @@ This match condition is designed to provide backwards-compatibility for customer
 
 #### Response Location {/*response-location*/} <edgejs>variable</edgejs>
 
-Identifies requests through the `Location` response header. This header identifies the URL to which the request should be redirected. For example, this header is included with `301` or `302` responses.
+Identifies requests through the `Location` response header. This header identifies the URL to which the request should be redirected. One common use for this header is for redirect requests, such as `301` or `302` responses.
 
 **Key information:**
 

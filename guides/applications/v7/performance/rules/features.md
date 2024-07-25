@@ -1171,8 +1171,9 @@ Defines a default `max-age` interval for edge server to origin server cache reva
 
 -   This default caching policy is only applied to responses from an origin server that have not been assigned a `max-age` directive through either the `Cache-Control` or `Expires` header.
 -   This default caching policy is inapplicable to requests that are not deemed cacheable.
+-   The [Set Max Age feature](#set-max-age) overrides this default caching policy.
 -   This default caching policy does not affect browser to edge server cache revalidations.
-    -   Browser to edge server revalidation is determined by the `Cache-Control` or `Expires` headers sent to the browser, which can be customized through the [Set Max Age feature](#set-max-age).
+    -   Browser to edge server revalidation is determined by the `Cache-Control` or `Expires` headers sent to the browser, which can be customized through the [Set Client Max Age feature](#set-client-max-age).
 -   The results of this default caching policy do not have an observable effect on the response headers and the content returned from edge servers for your content, but it may have an effect on the amount of revalidation traffic sent from edge servers to your origin server.
 -   Configure this feature by performing the following steps:
 
@@ -1184,13 +1185,14 @@ Defines a default `max-age` interval for edge server to origin server cache reva
 
 -   This default caching policy is only applied to responses from an origin server that have not been assigned a `max-age` directive through either the `Cache-Control` or `Expires` header.
 -   This default caching policy is inapplicable to requests that are not deemed cacheable.
+-   The [Set Max Age feature](#set-max-age) overrides this default caching policy.
 -   This default caching policy does not affect browser to edge server cache revalidations.
-    -   Browser to edge server revalidation is determined by the `Cache-Control` or `Expires` headers sent to the browser, which can be customized through the [Set Max Age feature](#set-max-age).
+    -   Browser to edge server revalidation is determined by the `Cache-Control` or `Expires` headers sent to the browser, which can be customized through the [Set Client Max Age feature](#set-client-max-age).
 -   The results of this default caching policy do not have an observable effect on the response headers and the content returned from edge servers for your content, but it may have an effect on the amount of revalidation traffic sent from edge servers to your origin server.
--   Configure this feature by performing the following steps:
+-   Configure this feature by defining the following key/value pair:
 
-    -   Specify the status code for which this default caching policy will be applied.
-    -   Specify an integer value and then the desired time unit. This value defines the default `max-age` interval.
+    -   Set the key to the status code for which this default caching policy will be applied.
+    -   Set the key's value to an integer value and then the desired time unit. This value defines the default `max-age` interval.
 -   **Syntax:** `"<STATUS CODE>": "<TIME>[s|m|h|d|w|y]"`
 
 **Example:**

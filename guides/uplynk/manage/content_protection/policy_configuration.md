@@ -20,9 +20,9 @@ Studio DRM policies determine how security restrictions (e.g., copying or viewin
 1. Add [core identification parameters](/uplynk/delivery/playback_urls/#core-identification-parameters) to the playback URL.
 2. Define the desired Studio DRM policy by adding one or more of the following customization parameters to the playback URL:
    - `drm_policy_name`: Applies a Studio DRM policy configuration to the playback session.
-   - *{Policy Setting}*: Applies a specific policy to the playback session.
+   - *`{Policy Setting}`*: Applies a specific policy to the playback session.
 
-   [Learn more](#).
+   [Learn more](/uplynk/deliver).
 3. Leverage an expansion parameter to shorten the query string and to obfuscate the Studio DRM policy being applied.
 4. Sign the playback URL.
 5. Optional: Encrypt the playback URL's query string for an added level of security.

@@ -90,6 +90,39 @@ Common response headers are described below.
 - **Etag:** Indicates the entity tag (ETag) for the requested content. This ETag allows our edge servers to revalidate stale content. In other words, our edge servers will use ETag when checking with the origin server to see if there is a newer version of the requested content.
 - **Expires:** Indicates the date and time (GMT) at which the response will be considered stale. By default, our edge servers must revalidate requests for stale content.
 - **Last-Modified:** Indicates the date and time (GMT) at which the requested content was last updated.
+- **Nel:** Indicates {{ PRODUCT }}'s Network Error Logging (NEL) policy. This policy instructs the client to generate a report for each attempt to connect to our network. 
+
+    <Tip>
+    Review NEL data from within Edge Insights through the NEL data source.
+    </Tip>
+
+    **Example:**
+    ```
+    {
+        "report_to": "default",
+        "max_age": 43200,
+        "include_subdomains": true,
+        "failure_fraction": 1.0,
+        "success_fraction": 0.001
+    }
+    ```
+
+- **Report-To:** Instructs the client on how to submit NEL reports. 
+
+    **Example:** 
+
+    ```
+    {
+        "group": "default",
+        "max_age": 1800,
+        "include_subdomains": true,
+        "endpoints": [{
+                "url": "https://report.edgecast.com/nel/v0?envid=12345678-90ab-cdef-ghij-klmnopqrstuv&pop=lac"
+            }
+        ]
+    }
+    ```
+
 - **Server:** Provides information about the server that fulfilled the request.
 
   - **Origin Server:** If an origin server provided a response for a cache miss that includes the `Server` response header, then our edge servers will forward it to the client. If it is missing from the response, then the CDN will define this header as indicated below.

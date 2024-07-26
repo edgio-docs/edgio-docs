@@ -1,7 +1,7 @@
 ---
 title: Analyze
 ---
-Gain insight into how our streaming service serves your needs.
+Our analytics provide insights to unlock valuable metrics and detailed reports essential for optimizing your video streaming service. By understanding key performance indicators, user behavior, and ad delivery effectiveness, you can make informed decisions to enhance your service’s overall performance.
 
 |Section|Details|
 |---|---|

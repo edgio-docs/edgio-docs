@@ -93,7 +93,7 @@ Common response headers are described below.
 - **Nel:** Indicates {{ PRODUCT }}'s Network Error Logging (NEL) policy. This policy instructs the client to generate a report for each attempt to connect to our network. 
 
     <Tip>
-    Review NEL data from within Edge Insights through the NEL data source.
+    Review NEL data from within Edge Insights through the [NEL data source](/applications/performance/observability/edge_insights#nel).
     </Tip>
 
     **Example:**

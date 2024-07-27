@@ -394,7 +394,7 @@ Use the RUM Logs data source for historical and near real-time analysis of [Core
 
 ## Edge Function Logs {/*edge-function-logs*/}
 
-Use the Edge Function Logs data source for historical and near real-time analysis of [Edge Functions](/applications/edge-functions). 
+Use the Edge Function Logs data source for historical and near real-time analysis of [Edge Functions](/applications/edge_functions). 
 
 ## NEL {/*nel*/}
 
@@ -402,7 +402,7 @@ Use the NEL data source for historical and near real-time analysis of Network Er
 
 Each NEL field is defined below.
 
-{{ table_nel_alerts.md }}
+{{ table_nel.md }}
 
 ## Cloud Functions Logs {/*cloud-functions-logs*/}
 

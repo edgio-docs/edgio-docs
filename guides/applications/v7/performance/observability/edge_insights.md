@@ -26,12 +26,17 @@ Generating a report consists of performing the following steps:
 2.  Select one of the following data sources:
 
     -   **Access Logs:** Use this data source to analyze CDN traffic for up to the last 6 hours.
-    -   **Analytics:** Use this data source to analyze aggregated CDN traffic for up to the last 7 days.
     -   **Bot Manager Alerts:** Use this data source to view bot manager rule violations for up to the last 7 days.
     -   **Edge Control:** Use this data source to analyze how recent CDN deployments affects content delivery and performance.
     -   **Downsampled Access Logs:** Use this data source to analyze CDN traffic, downsampled to 0.1%, for up to the last 7 days.
     -   **Rate Limiting Alerts:** Use this data source to view traffic that exceeded your rate limit(s), downsampled to 10%, for up to the last 30 days.
-    -   **WAF Alerts:** Use this data source to view access rule, custom rule, and managed rule violations of your WAF security application manager configuration for up to the last 30 days.
+    -   **WAF Alerts:** Use this data source to view access rule, custom rule, and managed rule violations of your Security App configurations for up to the last 30 days.
+    -   **RUM Logs:** Use this data source to view Core Web Vitals (CWV) data that were tracked through our Real User Monitoring (RUM) library. This log data is available for up to the last 7 days.
+    -   **Edge Function Logs:** Use this data source to view log data for edge functions that were computed within the last 7 days.
+    -   **Internal Logs (FE):** Reserved for internal use.
+    -   **NEL:** Use this data source to view Network Error Logging (NEL) data for up to the last 7 days. Use this data to discover issues that your clients encounter when accessing your site. 
+    -   **Cloud Functions Logs:** Use this data source to view Cloud Functions log data for up to the last 24 hours.
+    -   **Security Logs:** Use this data source to view access rule, rate limiting, bot manager, custom rule, and managed rule violations of your Security App configurations for up to the last 7 days.
 
 3.  Select the time period for which data will be returned.
 
@@ -328,16 +333,6 @@ Each Access Log field is defined below.
 
 {{ table_access_logs.md }}
 
-## Analytics {/*analytics*/}
-
-Use this data source to analyze CDN traffic that has been downsampled to 0.1%. This data provides historical and near real-time visibility into your CDN traffic at a high-level.
-
-Calculate an approximation of your actual total events by multiplying your total events by 1,000. For example, if your total events reports 100K, then the approximate number of requests for that time period is 100,000,000.
-
-Each Analytics field is defined below.
-
-{{ table_analytics.md }}
-
 ## Bot Manager Alerts {/*bot-manager-alerts*/}
 
 Use the Bot Manager Alerts data source for historical and near real-time analysis of recently detected [bot traffic](/applications/security/bot_rules).
@@ -345,6 +340,16 @@ Use the Bot Manager Alerts data source for historical and near real-time analysi
 ## Edge Control {/*edge-control*/}
 
 Use this data source to analyze how a new CDN configuration affects content delivery and performance.
+
+## Downsampled Access Logs {/*downsampled-access-logs*/}
+
+Use this data source to analyze CDN traffic that has been downsampled to 0.1%. This data provides historical and near real-time visibility into your CDN traffic at a high-level.
+
+Calculate an approximation of your actual total events by multiplying your total events by 1,000. For example, if your total events reports 100K, then the approximate number of requests for that time period is 100,000,000.
+
+Each Downsampled Access Logs field is defined below.
+
+{{ table_analytics.md }}
 
 ## Rate Limiting Alerts {/*rate-limiting-alerts*/}
 
@@ -382,3 +387,33 @@ Use the WAF Alerts data source for historical and near real-time analysis of [re
 Each WAF field is defined below.
 
 {{ table_waf_alerts.md }}
+
+## RUM Logs {/*rum-logs*/}
+
+Use the RUM Logs data source for historical and near real-time analysis of [Core Web Vitals](/applications/performance/observability/real_user_monitoring#what-are-core-web-vitals). 
+
+## Edge Function Logs {/*edge-function-logs*/}
+
+Use the Edge Function Logs data source for historical and near real-time analysis of [Edge Functions](/applications/edge_functions). 
+
+## NEL {/*nel*/}
+
+Use the NEL data source for historical and near real-time analysis of Network Error Logging data reported by your clients. This data source is critical for identifying site issues that your clients may be experiencing due to TLS issues, network issues, or even DNS issues.
+
+Each NEL field is defined below.
+
+{{ table_nel.md }}
+
+## Cloud Functions Logs {/*cloud-functions-logs*/}
+
+Use the Cloud Functions Logs data source for historical and near real-time analysis of [Cloud Functions](/applications/performance/serverless_compute). 
+
+## Security Logs {/*security-logs*/}
+
+Use the Security Logs data source for historical and near real-time analysis for access rule, rate limiting, bot manager, custom rule, and managed rule violations of your Security App configurations.
+
+View definitions for Security log fields:
+
+-   [WAF Alerts](#waf-alerts)
+-   [Rate Limiting Alerts](#rate-limiting-alerts)
+-   [Bot Manager Alerts](#bot-manager-alerts)

@@ -13,9 +13,9 @@ Once your service is configured and available to be used to deliver your content
 
 Finally, you can log in to [Edgio Control](https://control.llnw.com/) at any time to submit and track support tickets, access documentation, and view detailed reports on the traffic handled by your Content Delivery service.
 
-To set up your Limelight Account, please be prepared to provide your Account Manager the following information:
+To set up your account, please be prepared to provide your Account Manager the following information:
 
-- Contacts
+- Contacts<br >
     -An administrative contact for your team
     -A technical contact for your team
 - Content Overview
@@ -96,7 +96,8 @@ If you are migrating your content from another CDN, you may want to develop a wr
 
 For more information on Edgio Advanced Services, please contact your Account Manager.
 
-Managing Non-Edgio Origins
+**Managing Non-Edgio Origins**
+
 For the Content Delivery service to cache your content, your origin must provide the following two HTTP response headers with every object:
 
 Last-Modified – the date and time the object was last modified on the origin server (typically the same as the file timestamp).
@@ -105,7 +106,8 @@ Also, it is important that you verify the accuracy of file timestamps on your or
 
 Furthermore, if you are using a server load balancer, it is critical that you verify that file timestamps match each other across all servers. Timestamp inconsistency between servers may cause improper caching behavior.
 
-Protecting Your Content
+**Protecting Your Content**
+
 Content Delivery provides multiple ways to protect your content, including:
 
 URL protection

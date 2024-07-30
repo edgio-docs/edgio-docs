@@ -45,7 +45,7 @@ Set up an API Security configuration by performing the following steps:
 
 ### API Security Rule {/*api-security-rule*/}
 
-An API Security rule may contain a JSON Web Key Set, identify an API schema, and the set of requests that will be validated. By default, your rule validates all `POST`, `PUT`, and `PATCH` requests. However, you may restrict inspection by:
+An API Security rule identifies the set of requests that will undergo schema validation, JWT validation, or both. By default, your rule validates all `POST`, `PUT`, and `PATCH` requests. However, you may restrict inspection by:
 
 -   **Relative Path(s):** You may restrict payload inspection to one or more relative path(s). This relative path starts directly after the hostname. The available comparison modes are listed below.
     -   **Default:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} will inspect all `POST`, `PUT`, and `PATCH` requests to ensure that they satisfy the API schema.
@@ -157,7 +157,7 @@ The following sample request will match the above pattern:
 
 ### JSON Web Tokens (JWT) {/*json-web-tokens--jwt-*/}
 
-API Security supports JWT validation. Enable this validation through a rule. Once enabled, requests that match that rule's criteria must provide a valid JWT token. This token must:
+JSON Web Token (JWT) validation requires requests that match a rule's criteria to provide a valid JWT token. This token must:
 
 -   Be defined within the `Authorization` request header using the following syntax:
 

@@ -73,7 +73,7 @@ This package supports the following attributes:
 
 {{ PRODUCT }} will attempt to prefetch links that meet all of the following conditions:
 
--   [The `{{ PACKAGE_NAME }}/prefetch` script has been included on a page.](#registering-the-service-worker-traditional-website)
+-   [The {{ PACKAGE_NAME }}/prefetch script has been included on a page.](#registering-the-service-worker-traditional-website)
 -   The link is displayed in the viewport (i.e., the area of the web page that is currently visible to the user).
 -   The link matches at least one rule that contains both of the following features:
     -   [Set Max Age (max_age)](/applications/performance/rules/features#set-max-age)

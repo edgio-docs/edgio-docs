@@ -31,12 +31,12 @@ tags:
     x-displayName: Environment Variables
     description: |
     
-      Automate environment variable management. Although changes to your environment variables are saved immediately, they will not take affect until you deploy them. 
+      Automate environment variable management. Although changes to your environment variables are saved immediately, they will not take affect until your next deployment.
       
       <a href="https://docs.edg.io/applications/v7/basics/environments#environment-variables" target="_blank">Learn more about environment variables.</a>
   - name: environment-redirects
     x-displayName: Bulk Redirects
-    description: Manage or retrieve a list of URLs for which we will return a `3xx` response with a `Location` header set to the desired URL. Although changes to your bulk redirect configuration are saved immediately, they will not take affect until you deploy them. 
+    description: Manage or retrieve a list of URLs for which we will return a `3xx` response with a `Location` header set to the desired URL. Although changes to your bulk redirect configuration are saved immediately, they will not take affect until your next deployment. 
   - name: purge-requests
     x-displayName: Purge
     description: Purge cached content and retrieve information about previously submitted purge requests.

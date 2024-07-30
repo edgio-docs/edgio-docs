@@ -721,12 +721,12 @@ x-tagGroups:
   - name: Cache
     tags:
       - purge-requests
-  - name: Deployments
+  - name: Configuration & Deployments
     tags:
       - configs
       - environment-variables
       - environment-redirects
-      - deployments      
+      - deployments
   - name: TLS Certificates
     tags:
       - tls-certs

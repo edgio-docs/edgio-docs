@@ -60,7 +60,7 @@ The following examples demonstrate how to enable edge server compression using:
 
 -   [Rules:](/applications/performance/rules#managing-rules)
 
-    The following configuration enables edge server compression for the common content types described above.
+    The following configuration enables edge server compression by setting the Compress Content Types feature to common content types:
 
     ![Compress Content Types Feature](/images/v7/performance/compress-content-types.png?width=450)
 

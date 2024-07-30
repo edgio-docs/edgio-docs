@@ -845,7 +845,7 @@ Review the following changes and revise your configuration as needed:
 
 ### Cache-manifest.js File {/* cache-manifest-js-file */}
 
-Version 7 no longer generates or uses the `cache-manifest.js` file. If you detect `404 Not Found` requests for `cache-manifest.js` after upgrading to version 7, verify that:
+If you detect `404 Not Found` requests for `cache-manifest.js` after upgrading to version 7, verify that:
 
 - You have upgraded the `{{ PACKAGE_NAME }}/prefetch` library to version 7.
 - Your application no longer references the `@layer0/prefetch` library.

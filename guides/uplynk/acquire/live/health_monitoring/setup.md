@@ -2,17 +2,15 @@
 title: Setup
 ---
 
-## Quick Start
-
 Quickly set up Live Slicer health monitoring by performing the following steps:
 
 1. [Enable monitoring](#prerequisites) on your account.
 2. [Create a view(#create-slicer-view)] for the desired Live Slicers.
 3. [Monitor the Live Slicers](#dashboard) identified above from the Live Slicer Monitoring dashboard.
 
-## Key Steps
+## Key Steps  {/*key-steps*/}
 
-Setting up Live Slicer health monitoring involves:
+Set up Live Slicer health monitoring involves:
 
 1. Selecting one or more customer account(s) whose Live Slicers can be monitored.
 2. Creating a Slicer View that identifies the set of Live Slicers that will be monitored.
@@ -20,7 +18,7 @@ Setting up Live Slicer health monitoring involves:
 4. Defining notification preferences.
 5. Granting Live Slicer monitoring access to other accounts.
 
-## Prerequisites
+## Prerequisites  {/*prerequisites*/}
 
 The Live Slicer Monitoring dashboard shows health statistics for all active and recently active Live Slicers associated with a Slicer View. You may only add Live Slicers to a Slicer View when the following conditions are met:
 
@@ -31,17 +29,17 @@ The Live Slicer Monitoring dashboard shows health statistics for all active and 
 
         <Info>Monitoring permissions defined on the Account Access page only determine access to the legacy Live Slicer Health dashboard. This version of the Live Slicer Monitoring dashboard requires that you grant monitoring permissions through the Allowed Watchers page. [Learn more](#permissions).</Info>
 
-   - You belong to an organization that has been assigned the account that owns the desired Live Slicer(s). [Learn more](#organizations).
+   - You belong to an organization that has been assigned the account that owns the desired Live Slicer(s). [Learn more](/uplynk/acquire/health_monitoring/organizations).
 
 2. **Enable Monitoring:** You must enable monitoring on the customer account that owns the Live Slicer.
 
-## Enabling/Disabling Monitoring
+## Enable/Disable Monitoring  {/*enable-disable*/}
 
 Before you can add a Live Slicer to a Slicer View, you must first enable monitoring on the customer account that owns it.
 
 <Tip>You may only enable monitoring on customer accounts to which you have been [granted monitoring access](#permissions).</Tip>
 
-### Enable monitoring on an account
+### Enable monitoring on an account  {/*enable-monitoring*/}
 
 1. **Navigate to the [Monitored Accounts page](https://monitor.uplynk.com/settings/monitored-accounts):**
    - From the main menu, navigate to **Services** > **Monitoring 2.0**.
@@ -51,7 +49,7 @@ Before you can add a Live Slicer to a Slicer View, you must first enable monitor
    - Mark each customer account for which monitoring will be enabled.
    - Click "Add # Accounts" to confirm.
 
-### Disable monitoring on an account
+### Disable monitoring on an account  {/*disable-monitoring*/}
 
 1. **Navigate to the [Monitored Accounts page](https://monitor.uplynk.com/settings/monitored-accounts):**
    - From the main menu, navigate to **Services** > **Monitoring 2.0**.
@@ -64,13 +62,13 @@ Before you can add a Live Slicer to a Slicer View, you must first enable monitor
 
         <Tip>Disabling monitoring removes that customer account's Live Slicers from your Slicer Views.</Tip>
 
-## Permissions
+## Permissions  {/*permissions*/}
 
 You may allow other users to monitor your Live Slicers.
 
 <Tip>Users with either the admin or read/write permission may also determine the set of users that will be allowed to monitor the Live Slicers associated with each of your organization's accounts. [Learn more](#organizations).</Tip>
 
-### Allow user(s) to monitor your Live Slicers
+### Allow user(s) to monitor your Live Slicers  {/*allow-users-to-monitor*/}
 
 1. **Navigate to the [Allowed Watchers page](https://monitor.uplynk.com/settings/allowed-watcher):**
    - From the main menu, navigate to **Services** > **Monitoring 2.0**.
@@ -86,7 +84,7 @@ You may allow other users to monitor your Live Slicers.
 
 4. **Repeat steps 2 and 3 as needed.**
 
-### Disallow user(s) from monitoring your Live Slicers
+### Disallow user(s) from monitoring your Live Slicers  {/*disallow-users*/}
 
 1. **Navigate to the [Allowed Watchers page](https://monitor.uplynk.com/settings/allowed-watcher):**
    - From the main menu, navigate to **Services** > **Monitoring 2.0**.
@@ -101,7 +99,7 @@ You may allow other users to monitor your Live Slicers.
 
         <Tip>Removing monitoring permissions from a user will remove your Live Slicers from the Slicer Views associated with that user.</Tip>
 
-### Allow user(s) to monitor Live Slicers associated with an account
+### Allow user(s) to monitor Live Slicers associated with an account  {/*allow-users-with-account*/}
 
 <Info>By default, all users associated with your organization will be allowed to monitor the Live Slicers associated with your organization's accounts. [Learn more](#organizations).</Info>
 
@@ -121,7 +119,7 @@ You may allow other users to monitor your Live Slicers.
 
 4. **Repeat steps 2 and 3 as needed.**
 
-### Disallow user(s) from monitoring Live Slicers associated with an account
+### Disallow user(s) from monitoring Live Slicers associated with an account  {/*disallow-users*/}
 
 <Info>This procedure may only be performed by users that have been granted either the admin or read/write permission.</Info>
 
@@ -139,7 +137,7 @@ You may allow other users to monitor your Live Slicers.
 
 <Info>Removing monitoring permissions from a user will remove the account's Live Slicers from the Slicer Views associated with that user.</Info>
 
-## Slicer View
+## Slicer View  {/*slicer-view*/}
 
 A Slicer View identifies a set of Live Slicers. You may switch between Slicer Views from the Live Slicer Monitoring dashboard. Use Slicer Views to:
 
@@ -148,7 +146,7 @@ A Slicer View identifies a set of Live Slicers. You may switch between Slicer Vi
 
 - A user with either the admin or read/write permission can create Slicer Views that can be leveraged by any member of your organization. This type of Slicer View is known as an organization Slicer View. [Learn more](#organizations).
 
-### Create a Slicer View
+### Create a Slicer View  {/*create-a-slicer-view*/}
 
 1. **Verify that you have enabled monitoring on the desired accounts.**
 
@@ -157,7 +155,7 @@ A Slicer View identifies a set of Live Slicers. You may switch between Slicer Vi
    - Then navigate to **Settings** > **Slicer Views**.
 
 3. **Organization: Admin and Read/Write Users:**
-   - Determine whether a Slicer View will be created for your organization or for personal use. From the Organizations option, select either your organization or `Personal`.
+   - Determine whether a Slicer View will be created for your organization or for personal use. From the **Organizations** option, select either your organization or `Personal`.
    - Click **+ Create New Slicer View**.
 
 4. **Create the Slicer View:**
@@ -167,14 +165,14 @@ A Slicer View identifies a set of Live Slicers. You may switch between Slicer Vi
    - Click ![Card](/images/uplynk/red-add-icon.png).
    - Click **Save**.
 
-### Modify a Slicer View
+### Modify a Slicer View  {/*modify-slicer-view*/}
 
 2. **Navigate to the [Slicer Views page](https://monitor.uplynk.com/settings/slicer-views):**
    - From the main menu, navigate to **Services** > **Monitoring 2.0**.
    - Then navigate to **Settings** > **Slicer Views**.
 
 2. **Organization: Admin and Read/Write Users:**
-   - Determine whether to modify a Slicer View that was created for your organization or for personal use. From the Organizations option, select either your organization or `Personal`.
+   - Determine whether to modify a Slicer View that was created for your organization or for personal use. From the **Organizations** option, select either your organization or `Personal`.
    - Click on the desired Slicer View.
 
 3. **Modify the Slicer View:**
@@ -182,22 +180,22 @@ A Slicer View identifies a set of Live Slicers. You may switch between Slicer Vi
    - Remove Live Slicers by marking them from the Slicers in View list and then clicking ![Card](/images/uplynk/red-remove-icon.png).
    - Click **Save**.
 
-### Delete a Slicer View
+### Delete a Slicer View  {/*delete-slicer-view*/}
 
 2. **Navigate to the [Slicer Views page](https://monitor.uplynk.com/settings/slicer-views):**
    - From the main menu, navigate to **Services** > **Monitoring 2.0**.
    - Then navigate to **Settings** > **Slicer Views**.
 
 2. **Organization: Admin and Read/Write Users:**
-   - Determine whether to delete a Slicer View that was created for your organization or for personal use. From the Organizations option, select either your organization or `Personal`.
+   - Determine whether to delete a Slicer View that was created for your organization or for personal use. From the **Organizations** option, select either your organization or `Personal`.
    - Hover over the desired Slicer View and then click **Delete** (rubbish bin icon).
    - Click **Yes, Delete It** to confirm that the Slicer View should be deleted.
 
-## Monitoring Rules
+## Monitoring Rules  {/*monitoring-rules*/}
 
 Use rulesets to define rules that identify the set of metrics that will be monitored and the thresholds for warning/critical levels.
 
-### Key Information:
+### Key Information  {/*key-information-monitoring-rules*/}
 
 - By default, Live Slicers will be monitored using a default set of read-only monitoring rules. However, a custom set of monitoring rules may be [assigned to one or more Live Slicers](#assign-custom-set).
 - View your custom monitoring configurations from the [Monitoring Rules page](https://monitor.uplynk.com/settings/rules?refresh=true).
@@ -208,7 +206,7 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 
 [Learn more](#organizations)
 
-### Create a custom set of monitoring rules:
+### Create a custom set of monitoring rules  {/*create-custom-set*/}
 
 1. Navigate to the [Monitoring Rules page](https://monitor.uplynk.com/settings/rules).
    - From the main menu, navigate to **Services**.
@@ -230,7 +228,7 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 
 5. Click **Save**.
 
-### Modify a custom set of monitoring rules:
+### Modify a custom set of monitoring rules  {/*modify-custom-set*/}
 
 1. Navigate to the [Monitoring Rules page](https://monitor.uplynk.com/settings/rules).
    - From the main menu, navigate to **Services**.
@@ -245,14 +243,14 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 
 5. Click **Save**.
 
-### Delete a custom set of monitoring rules:
+### Delete a custom set of monitoring rules  {/*delete-custom-set*/}
 
 1. Navigate to the [Monitoring Rules page](https://monitor.uplynk.com/settings/rules).
    - From the main menu, navigate to **Services**.
    - Click **Monitoring 2.0**.
    - Navigate to **Settings** > **Monitoring Rules**.
 
-2. **Organization: Admin and Read/Write Users**. Determine whether to delete a ruleset that was created for your organization or for personal use. From the Organizations option, select either your organization or `Personal`.
+2. **Organization: Admin and Read/Write Users**. Determine whether to delete a ruleset that was created for your organization or for personal use. From the **Organizations** option, select either your organization or `Personal`.
 
 3. Mark each desired ruleset.
 
@@ -267,7 +265,7 @@ Use rulesets to define rules that identify the set of metrics that will be monit
    - Click **Monitoring 2.0**.
    - Navigate to **Settings** > **Monitoring Rules**.
 
-2. Determine whether you will map a ruleset that was created for your organization or for personal use. From the Organizations option, select either your organization or `Personal`.
+2. Determine whether you will map a ruleset that was created for your organization or for personal use. From the **Organizations** option, select either your organization or `Personal`.
 
 3. Click **Ruleset Mappings**.
 
@@ -281,14 +279,14 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 
     <Tip>Alternatively, you may assign a ruleset to a Live Slicer from the Live Slicer Monitoring dashboard by clicking on the desired Live Slicer and then selecting the rule set that will be applied to it from the Ruleset option.</Tip>
 
-### Assign the default set of monitoring rules to one or more Live Slicers
+### Assign the default set of monitoring rules to one or more Live Slicers  {/*assign-default-set*/}
 
 1. Navigate to the [Monitoring Rules page](https://monitor.uplynk.com/settings/rules).
    - From the main menu, navigate to **Services**.
    - Click **Monitoring 2.0**.
    - Navigate to **Settings** > **Monitoring Rules**.
 
-2. Determine whether you will map a ruleset that was created for your organization or for personal use. From the Organizations option, select either your organization or Personal.
+2. Determine whether you will map a ruleset that was created for your organization or for personal use. From the **Organizations** option, select either your organization or Personal.
 
 3. Click **Ruleset Mappings**.
 
@@ -298,11 +296,11 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 
 6. Click **Remove Ruleset from Selected Slicers**.
 
-## Metrics
+## Metrics  {/*metrics*/}
 
 Refer to the matrix of [monitoring metrics](/uplynk/acquire/health_monitoring/metrics).
 
-## Audio Notifications
+## Audio Notifications  {/*audio-notifications*/}
 
 The Live Slicer Monitoring dashboard may be configured to provide audio cues when one of the following conditions is true:
 
@@ -311,7 +309,7 @@ The Live Slicer Monitoring dashboard may be configured to provide audio cues whe
 
 <Tip>Audio notifications will play on each device on which the Live Slicer Monitoring dashboard has been loaded, regardless of whether it is the active browser tab/window or if it has been minimized.</Tip>
 
-### Set up Audio Notifications:
+### Set up Audio Notifications  {/*set-up-audio-notifications*/}
 
 1. Navigate to the [Notifications page](https://monitor.uplynk.com/settings/notifications).
    - From the main menu, navigate to **Services**.

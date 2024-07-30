@@ -51,7 +51,7 @@ This tutorial leverages PHP code to generate an authorization token that authori
     - Verify that the code defined in test.php matches the code defined above.
     - Verify that PHP has been properly installed on your web server.
 
-## Step 2 - Implementing a Media Player in PHP
+## Step 2 - Implement a Media Player in PHP
 
 A media player is required to playback content. The easiest way to implement a media player within a PHP file is to simply rename the web page created in the [Adding a Media Player to a Web Page](/uplynk/deliver/media_player/add_media_player_to_web_page) tutorial.
 
@@ -67,7 +67,7 @@ A media player is required to playback content. The easiest way to implement a m
 
 The [Adding a Media Player to a Web Page](/uplynk/deliver/media_player/add_media_player_to_web_page) tutorial disabled the requirement for a digitally signed playback URL to remove any potential obstacles for content playback in a test environment. Once the asset is ready for playback in a production environment, this requirement should be reapplied to prevent unauthorized playback.
 
-1. From the CMS, navigate to the [**Content** tab](https://cms.uplynk.com/static/cms2/index.html#/content) and then select the asset associated with `player.php`.
+1. From the CMS, navigate to the [**Content**](https://cms.uplynk.com/static/cms2/index.html#/content) tab and then select the asset associated with `player.php`.
 
 2. Mark the **Require a token for playback** option.
 
@@ -160,7 +160,7 @@ Update the PHP file to generate a playback URL that authorizes playback for any 
 
 9. From your web browser, refresh player.php to playback your content. Playback will be authorized after the system verifies that a valid token was included with the playback request.
 
-## Step 5 - Optional. Validating Tokens
+## Step 5 - Optional. Validate Tokens
 
 Server-side logic may be added to selectively allow playback, such as requiring login credentials or restricting content to certain regions. To ensure that valid tokens are being generated, the CMS provides the capability to validate tokens.
 

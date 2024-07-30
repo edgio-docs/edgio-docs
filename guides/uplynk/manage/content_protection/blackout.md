@@ -70,7 +70,7 @@ View a list of [country codes](http://dev.maxmind.com/geoip/legacy/codes/iso3166
 
 <Info>A viewer's location (i.e., zip code, DMA, and country) is either automatically determined by IP address or manually defined in the playback request. <br />[Learn more](#setting-viewer-location-or-device).</Info>
 
-<Info>Factors, such as proxy services, VPNs, and the nature of geolocation technology, may result in an inaccurate assessment of a viewer's zip code or DMA when calculating location information by IP address. In turn, this may incorrectly allow viewers access to content that should have been blacked out. Therefore, it is strongly recommended to utilize a device's location services to identify a viewer's location and then submit this information when a media player requests a stream.<br />[Learn more](#setting-viewer-location-or-device)</Info>
+<Info>Factors, such as proxy services, VPNs, and the nature of geolocation technology, may result in an inaccurate assessment of a viewer's zip code or DMA when calculating location information by IP address. In turn, this may incorrectly allow viewers access to content that should have been blacked out. Therefore, it is strongly recommended to utilize a device's location services to identify a viewer's location and then submit this information when a media player requests a stream.<br />[Learn more.](#setting-viewer-location-or-device)</Info>
 
 #### Match Option  {/*match-option*/}
 
@@ -201,7 +201,7 @@ Set up a blackout configuration on a live channel by:
 1. Identifying when blackout should be triggered via a blackout ID.
 2. Associating blackout logic with the above blackout ID by adding blackout rules to it.
 
-### To Configure Blackout on a Live Channel  {/*configure-blackout-on-live-channel*/}
+### Configure Blackout on a Live Channel  {/*configure-blackout-on-live-channel*/}
 
 1. Navigate to the [**Audiences**](https://cms.uplynk.com/static/cms2/index.html#/live-channels/audiences) page.
 
@@ -255,7 +255,7 @@ Set a viewer's location or device by passing one or more of the following query 
 
 ### Live Linear Programming  {/*live-linear-programming*/}
 
-<Info>An alternative method for triggering blackout is via a SCTE-35 message. Please contact {{SUPPORT_URL}} for more information.</Info>
+<Info>An alternative method for triggering blackout is via a SCTE-35 message. Please contact [support](https://edg.io/contact-support/) for more information.</Info>
 
 Blackout may be applied to a program or an asset within a live channel. The method for applying blackout varies according to whether it is being applied to a program or an asset. However, both methods require a blackout ID (i.e., `blackout_id`) to be associated with the program or asset. This ID identifies the logic through which blackout will be applied. Specifically, a live channel's configuration associates a blackout ID with one or more blackout rules. Each of these blackout rules define the set of viewers that will be blacked out via an audience and the alternate content that will be streamed instead of the regularly scheduled program.
 

@@ -45,13 +45,13 @@ CEA-608 data is preserved when embedded within a container format.
 - CEA-608 tracks may be defined via up to 4 channels (i.e., cc1, cc2, cc3, and cc4). Each channel should be marked as either data or subtitles.
 - Automatically convert CEA-608/708 channel to WebVTT via the `render_608` and `render_608_buffer` parameters.
 
-    [Learn more (Live Streaming) configuration](/uplynk/acquire/live/configuration_file_settings).
+    [Learn more (Live Streaming) configuration](/uplynk/acquire/live/live_slicer_configuration_file_settings).
 
     [Learn more (VOD) options](/uplynk/acquire/vod/options).
 
 - SDI only: Configure the Live Slicer to look for CEA-608 data in the horizontal ancillary data of an SDI signal via either the `ancillary_lines` or the `ancillary_scan` parameter.
 
-    [Learn more](/uplynk/acquire/live/configuration_file_settings).
+    [Learn more](/uplynk/acquire/live/live/slicer/configuration_file_settings).
 
 - CEA-608 data will be embedded within a H.264/H.265 stream as Supplemental Enhancement Information (SEI) messages within a Network Abstraction Layer (NAL).
 
@@ -316,6 +316,7 @@ Because it is an online tool, VCM has the limitation that your content must be h
        </div>
    </body>
    </tt>
+   ```
 
 ## Step 2 - Add Style Information
 

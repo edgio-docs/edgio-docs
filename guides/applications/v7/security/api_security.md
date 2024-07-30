@@ -157,7 +157,7 @@ The following sample request will match the above pattern:
 
 ### JSON Web Tokens (JWT) {/*json-web-tokens--jwt-*/}
 
-JSON Web Token (JWT) validation requires requests that match a rule's criteria to provide a valid JWT token. This token must:
+JSON Web Token (JWT) validation requires each request that matches a rule's criteria to provide a valid JWT token. This token must:
 
 -   Be defined within the `Authorization` request header using the following syntax:
 

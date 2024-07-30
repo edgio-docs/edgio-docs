@@ -27,7 +27,7 @@
     "clean": "rimraf node_modules .edgio .next && yarn",
     "update-template-tables": "python3 scripts/md-tables-to-json.py",
     "validate-links": "node scripts/validateGuideLinks.js",
-    "sitemap": "next-sitemap",
+    "sitemap": "node scripts/generateSitemap.js",
     "rest-api": "yarn workspace rest-api run",
     "check-forum-posts": "node scripts/workflows/answerPosts.js"
   },
@@ -162,6 +162,7 @@
     "retext": "^7.0.1",
     "retext-smartypants": "^4.0.0",
     "rss": "^1.2.2",
+    "sitemap": "^8.0.0",
     "string-replace-loader": "^3.1.0",
     "string-similarity": "^4.0.4",
     "tailwindcss": "^2.2.7",
@@ -170,6 +171,7 @@
     "typescript": "^4.0.2",
     "unist-util-visit": "^2.0.3",
     "webpack-bundle-analyzer": "^4.5.0",
+    "xml-formatter": "^3.6.3",
     "xregexp": "~2.0.0"
   },
   "engines": {

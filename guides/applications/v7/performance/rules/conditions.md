@@ -7,10 +7,10 @@ A match condition identifies the set of requests to which one or more feature(s)
 | Category  | Match Conditions  |
 |---|---|
 | Location  | <ul><li>[ASN](#asn)</li><li>[City](#city)</li><li>[Continent](#continent)</li><li>[Country](#country)</li><li>[DMA Code](#dma-code)</li><li>[Latitude](#latitude)</li><li>[Longitude](#longitude)</li><li>[Postal Code](#postal-code)</li><li>[Region Code](#region-code)</li></ul> |
-| Request  | <ul><li>[Client IP](#client-ip)</li><li>[Cookie](#cookie)</li><li>[Directory](#directory)</li><li>[Extension](#extension)</li><li>[Filename](#filename)</li><li>[Method](#method)</li><li>[Origin Path](#origin-path)</li><li>[Origin Query String](#origin-query-string)</li><li>[Path](#path)</li><li>[POP Code](#pop-code)</li><li>[Query](#query)</li><li>[Query Parameter](#query-parameter)</li><li>[Query String](#query-string)</li><li>[Referring Domain](#referring-domain)</li><li>[Request Header](#request-header)</li><li>[Scheme](#scheme)</li></ul>  |
+| Request  | <ul><li>[Client IP](#client-ip)</li><li>[Cookie](#cookie)</li><li>[Directory](#directory)</li><li>[Extension](#extension)</li><li>[Filename](#filename)</li><li>[HTTP X-Forwarded-Host](#http-x-forwarded-host)</li><li>[Is Subrequest](#is-subrequest)</li><li>[Method](#method)</li><li>[Origin Path](#origin-path)</li><li>[Origin Query String](#origin-query-string)</li><li>[Path](#path)</li><li>[POP Code](#pop-code)</li><li>[Query](#query)</li><li>[Query Parameter](#query-parameter)</li><li>[Query String](#query-string)</li><li>[Referring Domain](#referring-domain)</li><li>[Request Header](#request-header)</li><li>[Scheme](#scheme)</li><li>[Virtual Destination Address](#virtual-destination-address)</li><li>[Virtual HTTP Version](#virtual-http-version)</li><li>[Wurfl Capability Device OS Version](#wurfl-capability-device-os-version)</li></ul>  |
 | Device  | <ul><li>[Brand Name](#brand-name)</li><li hidden>[Device Operating System](#device-operating-system)</li><li>[Dual Orientation](#dual-orientation)</li><li>[HTML Preferred DTD](#html-preferred-dtd)</li><li>[Image Inlining](#image-inlining)</li><li>[Is Android](#is-android)</li><li>[Is App](#is-app)</li><li>[Is Full Desktop](#is-full-desktop)</li><li>[Is iOS](#is-ios)</li><li>[Is Robot](#is-robot)</li><li>[Is Smartphone](#is-smartphone)</li><li>[Is SmartTV](#is-smarttv)</li><li>[Is Tablet](#is-tablet)</li><li>[Is Touchscreen](#is-touchscreen)</li><li>[Is Windows Phone](#is-windows-phone)</li><li>[Is Wireless Device](#is-wireless-device)</li><li>[Marketing Name](#marketing-name)</li><li>[Mobile Browser](#mobile-browser)</li><li>[Model Name](#model-name)</li><li>[Progressive Download](#progressive-download)</li><li>[Release Date](#release-date)</li><li>[Resolution Height](#resolution-height)</li><li>[Resolution Width](#resolution-width)</li></ul>  |
 | Miscellaneous  | <ul><li>[Random Integer](#random-integer)</li></ul>  |
-| Response  | <ul><li>[Response Status Code](#response-status-code)</li></ul>  |
+| Response  | <ul><li>[Cache Status](#cache-status)</li><li>[Content Length](#content-length)</li><li>[Response Age](#response-age)</li><li>[Response Content Type](#response-content-type)</li><li>[Response Edgecast Control](#response-edgecast-control)</li><li>[Response Location](#response-location)</li><li>[Response Set Cookie](#response-set-cookie)</li><li>[Response Status Code](#response-status-code)</li><li>[Response Transfer Encoding](#response-transfer-encoding)</li><li>[Response Vary](#response-vary)</li><li>[Response X-Cache](#response-x-cache)</li></ul>  |
 
 #### ASN {/*asn*/} <edgejs>location</edgejs>
 
@@ -76,6 +76,41 @@ router.conditional({
                     device: 'brand_name',
                 },
                 'Samsung|Apple',
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+</edgejs>
+
+#### Cache Status {/*cache-status*/} <edgejs>variable</edgejs>
+
+Identifies requests by the [cache status](/applications/performance/caching/cache_status_codes) for the requested content. 
+
+**Key information:**
+
+-   The edge server handling the request identifies the cache status for the requested resource. {{ PRODUCT }} then compares the code for this cache status against the specified value or pattern.
+
+<edgejs>
+**Key information:**
+
+-   The edge server handling the request identifies the cache status for the requested resource. {{ PRODUCT }} then compares the code for this cache status against the specified value or pattern.
+-   Specify a value using any combination of numbers, letters, or symbols.
+-   Use a regular expression to specify multiple values (e.g., 'value 1|value 2').
+-   **Supported operators:** `=== | !== | =~ | !~`
+
+**Example:**
+
+```
+router.conditional({
+    if: [{
+            '=~': [{
+                    variable: 'cache_status',
+                },
+                'TCP_HIT|TCP_PARTIAL_HIT',
             ],
         }, {
             // Features
@@ -185,6 +220,41 @@ router.conditional({
 ```
 </edgejs>
 
+#### Content Length {/*content-length*/} <edgejs>variable</edgejs>
+
+Identifies requests by the content length, in bytes, of the response.
+
+**Key information:**
+
+-   Use a regular expression (e.g., `\b[1-9][0-9]{2}\b`) to specify a range of valid values.
+
+<edgejs>
+
+**Key information:**
+
+-   Use a regular expression (e.g., `\b[1-9][0-9]{2}\b`) to specify a range of valid values.
+-   **Supported operators:** `=== | !== | =~ | !~`
+
+**Example:**
+
+```
+router.conditional({
+    if: [{
+            '=~': [{
+                    variable: 'content_length',
+                },
+                '\\b[1-9][0-9]{2}\\b',
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+
+</edgejs>
+
 #### Continent {/*continent*/} <edgejs>location</edgejs>
 
 Identifies requests by the continent from which the request was issued.
@@ -237,7 +307,6 @@ router.conditional({
     ],
 });
 ```
-
 </edgejs>
 
 #### Cookie {/*cookie*/} <edgejs>request</edgejs>
@@ -252,7 +321,6 @@ Identifies requests by a cookie's value.
 -   Use a regular expression (e.g., `value 1|value 2`) to specify multiple cookie values.
 
 <edgejs>
-
 **Key information:**
 
 -   Set `request.cookie` to the exact name of the desired cookie. You may not use special characters, including an asterisk, or a regular expression.
@@ -294,7 +362,6 @@ Identifies requests by the country from which the request was issued. Specify ea
 -   Country codes are case-sensitive.
 
 <edgejs>
-
 **Key information:**
 
 -   The `EU` and `AP` country codes do not encompass all IP addresses in those regions.
@@ -492,7 +559,6 @@ Identifies requests by the filename defined in the URL.
 -   Use a regular expression to specify multiples values (e.g., `value 1|value 2`).
 
 <edgejs>
-
 **Key information:**
 
 -   For the purposes of this match condition, a filename consists of the name of the requested asset, a period, and the file extension (e.g., `index.html`).
@@ -523,7 +589,6 @@ router.conditional({
 Identifies requests by a device's preferred document type definition (DTD) for HTML content (e.g., `html4`).
 
 <edgejs>
-
 **Example:**
 
 ```
@@ -541,7 +606,30 @@ router.conditional({
     ],
 });
 ```
+</edgejs>
 
+#### HTTP X-Forwarded-Host {/*http-x-forwarded-host*/} <edgejs>variable</edgejs>
+
+Identifies requests by the value assigned to the `x-forwarded-host` header. 
+
+<edgejs>
+**Example:**
+
+```
+router.conditional({
+    if: [{
+            '=~': [{
+                    variable: 'http_x_forwarded_host',
+                },
+                'www.example.com|cdn.example.com',
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
 </edgejs>
 
 #### Image Inlining {/*image-inlining*/} <edgejs>device</edgejs>
@@ -549,7 +637,6 @@ router.conditional({
 Identifies requests by whether the device that issued the request supports Base64-encoded images.
 
 <edgejs>
-
 **Example:**
 
 ```
@@ -574,7 +661,6 @@ router.conditional({
 Identifies requests by whether the operating system of the device that issued the request is Android.
 
 <edgejs>
-
 **Example:**
 
 ```
@@ -623,7 +709,6 @@ router.conditional({
 Identifies requests by whether the device that issued the request provides a full desktop experience.
 
 <edgejs>
-
 **Example:**
 ```
 export default new Router().if(
@@ -633,7 +718,6 @@ export default new Router().if(
   } }
 );
 ```
-
 </edgejs>
 
 #### Is iOS {/*is-ios*/} <edgejs>device</edgejs>
@@ -641,7 +725,6 @@ export default new Router().if(
 Identifies requests by whether the operating system of the device that issued the request is iOS.
 
 <edgejs>
-
 **Example:**
 
 ```
@@ -666,7 +749,6 @@ router.conditional({
 Identifies requests by whether the device that issued the request is considered to be an automated HTTP client (e.g., a robot crawler).
 
 <edgejs>
-
 **Example:**
 
 ```
@@ -724,6 +806,30 @@ router.conditional({
     if: [{
             '===': [{
                     device: 'is_smarttv',
+                },
+                true,
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+</edgejs>
+
+#### Is Subrequest {/*is-subrequest*/} <edgejs>variable</edgejs>
+
+Identifies a subrequest that was spawned from the client's request. Our edge servers generate subrequests under certain conditions or as required by special configurations. 
+
+<edgejs>
+**Example:**
+
+```
+router.conditional({
+    if: [{
+            '===': [{
+                    variable: 'is_subrequest',
                 },
                 true,
             ],
@@ -1327,11 +1433,11 @@ router.conditional({
 
 #### POP Code {/*pop-code*/} <edgejs>request</edgejs>
 
-Identifies requests by the point-of-presence (POP) that processed the request. Set this match condition to the three-letter code for the desired POP.
+Identifies requests by the point-of-presence (POP) that processed the request. Set this match condition to the [three-letter code for the desired POP](/applications/reference/pops).
 
 <edgejs>
 **Key information:**
--   Specify multiples values through a regular expression (e.g., `value 1|value 2`).
+-   Specify multiples values through a regular expression (e.g., `LAA|LAC`).
 -   **Supported operators:** `=== | !== | =~ | !~`
 
 **Example:**
@@ -1342,7 +1448,7 @@ router.conditional({
             '===': [{
                     request: 'pop_code',
                 },
-                'lac',
+                'LAC',
             ],
         }, {
             // Features
@@ -1931,6 +2037,146 @@ router.conditional({
 ```
 </edgejs>
 
+
+#### Response Age {/*response-age*/} <edgejs>variable</edgejs>
+
+Identifies requests through the `Age` response header. This header contains the time, in seconds, since the response was cached on the edge server through which it was served.
+
+<edgejs>
+**Key information:**
+
+-   **Supported operators:** `< | <= | > | >=`
+
+**Example:** The following route is satisfied when the cached response is older than 120 seconds:
+
+```
+router.conditional({
+    if: [{
+            '>': [{
+                    "variable": "resp_age",
+                },
+                120,
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+</edgejs>
+
+#### Response Content Type {/*response-content-type*/} <edgejs>variable</edgejs>
+
+Identifies requests through the `Content-Type` response header. This header identifies the type of content returned in the response's payload.
+
+**Key information:**
+
+-   Use a regular expression to specify multiple values (e.g., `application\/json|text\/html`).
+
+<edgejs>
+**Key information:**
+
+-   Use a regular expression to specify multiple values (e.g., 'application\/json|text\/html').
+-   **Supported operators:** `=== | !== | =~ | !~`
+
+**Example:** The following route is satisfied when the response's payload is JSON or HTML:
+
+```
+router.conditional({
+    if: [{
+            '=~': [{
+                    "variable": "resp_content_type",
+                },
+                "application\/json|text\/html",
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+</edgejs>
+
+#### Response Edgecast Control {/*response-edgecast-control*/} <edgejs>variable</edgejs>
+
+Identifies requests through the `Edgecast Control` response header. 
+
+<Important>
+This match condition is designed to provide backwards-compatibility for customers migrated from Edgecast with specialized configurations. This match condition should not be used under any other circumstances.
+</Important>
+
+#### Response Location {/*response-location*/} <edgejs>variable</edgejs>
+
+Identifies requests through the `Location` response header. This header identifies the URL to which the request should be redirected. One common use for this header is for redirect requests, such as `301` or `302` responses.
+
+**Key information:**
+
+-   Use a regular expression to specify multiple values (e.g., `value 1|value 2`).
+
+<edgejs>
+**Key information:**
+
+-   Use a regular expression to specify multiple values (e.g., `value 1|value 2`).
+-   **Supported operators:** `=== | !== | =~ | !~`
+
+**Example:** The following route is satisfied when the response contains a `Location` header set to `https://cdn.example.com/alternate`:
+
+```
+router.conditional({
+    if: [{
+            '===': [{
+                    "variable": "resp_location",
+                },
+                "https:\/\/cdn.example.com\/alternate",
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+</edgejs>
+
+#### Response Set Cookie {/*response-set-cookie*/} <edgejs>variable</edgejs>
+
+Identifies requests whose response contains a `Set-Cookie` header with the specified value or pattern.
+
+**Key information:**
+
+-   Use a regular expression (e.g., `value 1|value 2`) to specify multiple cookie values.
+-   {{ PRODUCT }} compares the specified value or pattern against the `Set-Cookie` header(s) defined in the response.
+-   We strongly recommend the use of regular expressions when the response contains multiple `Set-Cookie` headers. Matching with the `equals | does not equal` operators may produce unexpected results.
+
+<edgejs>
+**Key information:**
+
+-   Use a regular expression (e.g., `value 1|value 2`) to specify multiple cookie values.
+-   {{ PRODUCT }} compares the specified value or pattern against the `Set-Cookie` header(s) defined in the response.
+-   We strongly recommend the use of regular expressions when the response contains multiple `Set-Cookie` headers. Matching with the `=== | !==` operators may produce unexpected results.
+-   **Supported operators:** `=== | !== | =~ | !~`
+
+**Example:**
+
+```
+router.conditional({
+    if: [{
+            '=~': [{
+                    variable: 'resp_set_cookie',
+                },
+                '(.*)brand(.*)',
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+</edgejs>
+
 #### Response Status Code {/*response-status-code*/} <edgejs>response</edgejs>
 
 Identifies requests whose response matches a HTTP status code.
@@ -1988,6 +2234,100 @@ router.conditional({
 ```
 </edgejs>
 
+#### Response Transfer Encoding {/*response-transfer-encoding*/} <edgejs>variable</edgejs>
+
+Identifies requests through the `Transfer-Encoding` response header. This header identifies the type of encoding that is safe to use when transferring the response's payload.
+
+**Key information:**
+
+-   Specify multiples values through a regular expression (e.g., `value 1|value 2`).
+
+<edgejs>
+**Key information:**
+
+-   Specify multiples values through a regular expression (e.g., `value 1|value 2`).
+-   **Supported operators:** `=== | !== | =~ | !~`
+
+**Example:**
+
+```
+router.conditional({
+    if: [{
+            '===': [{
+                    variable: 'resp_transfer_encoding',
+                },
+                'chunked',
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+</edgejs>
+
+#### Response Vary {/*response-vary*/} <edgejs>variable</edgejs>
+
+Identifies requests through the `Vary` response header. This header identifies factors, aside from method and URL, that determined the payload returned in the response. For example, this header may list the request headers that were used to determine the response's payload.
+
+**Key information:**
+
+-   Specify multiples values through a regular expression (e.g., `value 1|value 2`).
+
+<edgejs>
+**Key information:**
+
+-   Specify multiples values through a regular expression (e.g., `value 1|value 2`).
+-   **Supported operators:** `=== | !== | =~ | !~`
+
+**Example:**
+
+```
+router.conditional({
+    if: [{
+            '=~': [{
+                    variable: 'resp_vary',
+                },
+                '(.*)Tier(.*)',
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+</edgejs>
+
+#### Response X-Cache {/*response-x-cache*/} <edgejs>variable</edgejs>
+
+Identifies requests through the `x-cache` response header. This header is set to `HIT` when a cached version of the requested content was served directly to the client by an edge server. 
+
+<edgejs>
+**Key information:**
+
+-   **Supported operators:** `=== | !== | =~ | !~`
+
+**Example:**
+
+```
+router.conditional({
+    if: [{
+            '===': [{
+                    variable: 'resp_x_cache',
+                },
+                'HIT',
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+</edgejs>
+
 #### Scheme {/*scheme*/} <edgejs>request</edgejs>
 
 Identifies requests by their HTTP protocol: HTTP or HTTPS.
@@ -2005,6 +2345,91 @@ router.conditional({
                     request: 'scheme',
                 },
                 'HTTP',
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+</edgejs>
+
+#### Virtual Destination Address {/*virtual-destination-address*/} <edgejs>variable</edgejs>
+
+Identifies requests by the client’s IP address.
+
+<Tip>
+This match condition was introduced for backwards-compatibility. We recommend that you use the [Client IP match condition](#client-ip) instead.
+</Tip>
+
+<edgejs>
+**Example:**
+
+```
+router.conditional({
+    if: [{
+            '===': [{
+                    "variable": "virt_dst_addr"
+                },
+                '5.5.5.64/26',
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+</edgejs>
+
+#### Virtual HTTP Version {/*virtual-http-version*/} <edgejs>variable</edgejs>
+
+Identifies requests by the version of the client’s request protocol.
+
+<edgejs>
+**Example:**
+
+```
+router.conditional({
+    if: [{
+            '===': [{
+                    "variable": "virt_http_version"
+                },
+                '2.0',
+            ],
+        }, {
+            // Features
+            },
+        },
+    ],
+});
+```
+</edgejs>
+
+#### Wurfl Capability Device OS Version {/*wurfl-capability-device-os-version*/} <edgejs>variable</edgejs>
+
+Identifies requests by the version number of the OS installed on the device.
+
+**Key information:**
+
+-   Use a regular expression to specify multiple values (e.g., `value 1|value 2`).
+
+<edgejs>
+**Key information:**
+
+-   Use a regular expression to specify multiple values (e.g., '1.0.1|1.0.2').
+-   **Supported operators:** `=== | !== | =~ | !~`
+
+**Example:**
+
+```
+router.conditional({
+    if: [{
+            '===': [{
+                    "variable": "wurfl_cap_device_os_version"
+                },
+                '1.0.1',
             ],
         }, {
             // Features

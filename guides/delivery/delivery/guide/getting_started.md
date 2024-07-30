@@ -160,7 +160,7 @@ Also, it is important that you verify the accuracy of file timestamps on your or
 
 Furthermore, if you are using a server load balancer, it is critical that you verify that file timestamps match each other across all servers. Timestamp inconsistency between servers may cause improper caching behavior.
 
-## Protecting Your Content  {/*protecting-your-content*/}
+#### Protecting Your Content  {/*protecting-your-content*/}
 
 Content Delivery provides multiple ways to protect your content, including:
 

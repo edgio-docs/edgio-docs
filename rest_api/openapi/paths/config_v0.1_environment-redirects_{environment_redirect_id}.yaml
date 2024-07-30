@@ -1,0 +1,136 @@
+delete:
+  summary: Delete Bulk Redirect
+  description: Deletes a bulk redirect.
+  parameters:
+    - in: path
+      name: environment_redirect_id
+      description: >
+        The bulk redirect's system-defined ID.
+
+
+        Retrieve a list of bulk redirects and their system-defined IDs through
+        the [Get All Bulk Redirects
+        operation](#tag/environment-redirects/operation/getConfigV01EnvironmentRedirects).
+      required: true
+      schema:
+        type: string
+  security:
+    - configScope:
+        - app.config
+  responses:
+    '204':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Config_V1_Entities_EnvironmentRedirect.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_UnauthorizedError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_ForbiddenError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_RecordNotFoundError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_TooManyRequestsError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
+  tags:
+    - environment-redirects
+  operationId: deleteConfigV01EnvironmentRedirectsEnvironmentRedirectId
+get:
+  summary: Get Bulk Redirect
+  description: Returns a bulk redirect.
+  parameters:
+    - in: path
+      name: environment_redirect_id
+      description: >
+        The bulk redirect's system-defined ID.
+
+
+        Retrieve a list of bulk redirects and their system-defined IDs through
+        the [Get All Bulk Redirects
+        operation](#tag/environment-redirects/operation/getConfigV01EnvironmentRedirects).
+      required: true
+      schema:
+        type: string
+  security:
+    - configScope:
+        - app.config
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Config_V1_Entities_EnvironmentRedirect.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_UnauthorizedError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_ForbiddenError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_RecordNotFoundError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_TooManyRequestsError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
+  tags:
+    - environment-redirects
+  operationId: getConfigV01EnvironmentRedirectsEnvironmentRedirectId

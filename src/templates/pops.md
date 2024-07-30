@@ -10,11 +10,8 @@
 | AMN | Amsterdam | Europe |
 | BDC | Ashburn | North America |
 | BKK | Thailand (TIG) | Asia |
-| BLR | Bangalore, India | Asia |
 | BOG | Bogota,Colombia | South America |
 | BSB | Boston | North America |
-| BSM | Boston | North America |
-| BSN | Boston | North America |
 | BUR | Los Angeles | North America |
 | CDC | Ashburn | North America |
 | CGK | Jakarta | Asia |
@@ -57,7 +54,6 @@
 | MDR | Madrid | Europe |
 | MDW | Chicago (ORD2) | North America |
 | MEX | Mexico City, Mexico | North America |
-| MIC | Miami | North America |
 | MID | Miami | North America |
 | MIL | Milan | Europe |
 | MIM | Miami | North America |
@@ -71,7 +67,6 @@
 | NAG | Mumbai, India | Asia |
 | NDL | Delhi, India | Asia |
 | NWA | Sydney | Australia |
-| NYA | New York | North America |
 | NYD | New York | North America |
 | OMM | Oman | Europe |
 | OSA | Osaka | Asia |
@@ -110,5 +105,3 @@
 | WIL | Kenya | Europe |
 | WMI | Warsaw | Europe |
 | XIJ | Kuwait | Europe |
-
-<!-- Comment -->

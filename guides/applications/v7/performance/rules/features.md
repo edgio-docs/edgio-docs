@@ -17,7 +17,13 @@ A feature identifies an action that will be applied to a request. Features are c
 
 ## Access {/*access*/}
 
-Access features control access to content.
+Control access to content through these features:
+
+-   [Deny Access](#deny-access)
+-   [Token Auth](#token-auth)
+-   [Token Auth Denial Code](#token-auth-denial-code)
+-   [Token Auth Ignore URL Case](#token-auth-ignore-url-case)
+-   [Token Auth Parameter](#token-auth-parameter)
 
 #### Deny Access {/*deny-access*/}
 
@@ -41,9 +47,9 @@ export default new Router()
 
 #### Token Auth  {/*token-auth*/}
 
-Determines whether Token-Based Authentication will be applied to a request.
+Determines whether Token Auth will be applied to a request.
 
--   If Token-Based Authentication is enabled, then only requests that provide an encrypted token and satisfy the requirements specified by that token will be honored.
+-   If Token Auth is enabled, then only requests that provide an encrypted token and satisfy the requirements specified by that token will be honored.
 -   Token values will be encrypted and decrypted using your primary and backup encryption key(s).
 -   This feature takes precedence over most features with the exception of the [Rewrite URL feature](#rewrite-url).
 
@@ -54,7 +60,7 @@ You may not currently set a primary and backup encryption key through the {{ POR
 </Important>
 
 <edgejs>
--   If Token-Based Authentication is enabled, then only requests that provide an encrypted token and satisfy the requirements specified by that token will be honored.
+-   If Token Auth is enabled, then only requests that provide an encrypted token and satisfy the requirements specified by that token will be honored.
 -   Token values will be encrypted and decrypted using your primary and backup encryption key(s).
 -   This feature takes precedence over most features with the exception of the Rewrite URL feature.
 
@@ -72,20 +78,19 @@ export default new Router()
 
 **Default Behavior:** false
 
-<!--
 #### Token Auth Denial Code {/*token-auth-denial-code*/}
 
-Determines the type of response that will be returned to a user when a request is denied due to Token-Based Authentication.
+Determines the type of response that will be returned to a user when a request is denied due to Token Auth.
 
--   **Code:** Determines the HTTP status code for the response for requests denied due to Token-Based Authentication.
--   **Headers:** Contains a key-value pair that defines a response header that is specific to the status code set by the **Code** option.
+-   **Status code:** Determines the HTTP status code for the response for requests denied due to Token Auth.
+-   **Http Response Header:** Contains one or more response header(s) that are specific to the status code set by the **Status code** option.
 
     -   **3xx:** Set the `Location` response header to the URL to which denied requests will be redirected. If this header is not set, then we will return a standard response page.
     -   **401:** Set the `WWW-Authenticate` response header to info on how to authenticate. If the `WWW-Authenticate` header is set to `basic`, then the unauthorized user will be prompted for account credentials.
 
 <edgejs>
--   **token_auth_denial_code (*Object*):** <a id="token-auth-denial-code" /> Determines the type of response that will be returned to a user when a request is denied due to Token-Based Authentication.
--   **code (*Integer*):** Determines the HTTP status code for the response for requests denied due to Token-Based Authentication.
+-   **token_auth_denial_code (*Object*):** <a id="token-auth-denial-code" /> Determines the type of response that will be returned to a user when a request is denied due to Token Auth.
+-   **code (*Integer*):** Determines the HTTP status code for the response for requests denied due to Token Auth.
 
 -   **headers (*Object*):** Contains a key-value pair that defines a response header that is specific to the status code set by `code`.
 -   **3xx:** Set the `Location` response header to the URL to which denied requests will be redirected. If this header is not set, then we will return a standard response page.
@@ -125,12 +130,11 @@ Determines the type of response that will be returned to a user when a request i
     ```
 </edgejs>
 
-**Default Behavior:** By default, requests denied by Token-Based Authentication return a `403 Forbidden` response.
--->
+**Default Behavior:** By default, requests denied by Token Auth return a `403 Forbidden` response.
 
-#### Token Auth Ignore 	URL Case {/*token-auth-ignore-url-case*/}
+#### Token Auth Ignore URL Case {/*token-auth-ignore-url-case*/}
 
-Determines whether URL comparisons made by the following Token-Based Authentication parameters are case-sensitive:
+Determines whether URL comparisons made by the following Token Auth parameters are case-sensitive:
 
 -   ec_url_allow
 -   ec_ref_allow
@@ -151,9 +155,54 @@ export default new Router()
 
 **Default Behavior:** false
 
+#### Token Auth Parameter {/*token-auth-parameter*/}
+
+Allows tokens to be specified as a custom query string parameter. 
+
+<edgejs>
+**Example:**
+
+```js filename="./routes.js"
+export default new Router()
+  .get('/', {
+    access: {
+      "token_auth_parameter": "token",
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** By default, tokens may only be specified as a value at the start of the query string.
+
 ## Caching {/*caching*/}
 
-Caching features customize when and how content is cached.
+Customize when and how content is cached through these features:
+
+-   [Bandwith Throttling](#bandwidth-throttling)
+-   [Bypass Cache](#bypass-cache)
+-   [Bypass Client Cache](#bypass-client-cache)
+-   [Cache Control Header Treatment](#cache-control-header-treatment)
+-   [Cache Key](#cache-key)
+-   [Cache Key Query String](#cache-key-query-string)
+-   [Cacheable Request Body Size](#cacheable-request-body-size)
+-   [Cacheable Status Codes](#cacheable-status-codes)
+-   [Enable Caching for Methods](#enable-caching-for-methods)
+-   [Expires Header Treatment](#expires-header-treatment)
+-   [Honor No Cache Request Header](#honor-no-cache-request-header)
+-   [Ignore Origin No Cache](#ignore-origin-no-cache)
+-   [Ignore Unsatisfiable Ranges](#ignore-unsatisfiable-ranges)
+-   [Partial Cache Sharing Min Hit Size](#partial-cache-sharing-min-hit-size)
+-   [Prevalidate Cached Content](#prevalidate-cached-content)
+-   [Refresh Zero Byte Cache Files](#refresh-zero-byte-cache-files)
+-   [Revalidate After Origin Unavailable](#revalidate-after-origin-unavailable)
+-   [Revalidate While Stale Timer](#revalidate-while-stale-timer)
+-   [Rewrite Cache Key](#rewrite-cache-key)
+-   [Set Client Max Age](#set-client-max-age)
+-   [Set Default Internal Max Age](#set-default-internal-max-age)
+-   [Set Max Age](#set-max-age)
+-   [Set Service Worker Max Age](#set-service-worker-max-age)
+-   [Stale On Error](#stale-on-error)
+-   [Stale While Revalidate](#stale-while-revalidate)
 
 #### Bandwith Throttling {/*bandwidth-throttling*/}
 
@@ -1114,6 +1163,54 @@ export default new Router()
 
 **Default Behavior:** The `Cache-Control` / `Expires` headers cached with the response from the origin server will pass through to the browser.
 
+#### Set Default Internal Max Age {/*set-default-internal-max-age*/}
+
+Defines a default `max-age` interval for edge server to origin server cache revalidation. This interval determines the amount of time that will pass before an edge server will check whether cached content matches the asset stored on the origin server.
+
+**Key information:**
+
+-   This default caching policy is only applied to responses from an origin server that have not been assigned a `max-age` directive through either the `Cache-Control` or `Expires` header.
+-   This default caching policy is inapplicable to requests that are not deemed cacheable.
+-   The [Set Max Age feature](#set-max-age) overrides this default caching policy.
+-   This default caching policy does not affect browser to edge server cache revalidations.
+    -   Browser to edge server revalidation is determined by the `Cache-Control` or `Expires` headers sent to the browser, which can be customized through the [Set Client Max Age feature](#set-client-max-age).
+-   The results of this default caching policy do not have an observable effect on the response headers and the content returned from edge servers for your content, but it may have an effect on the amount of revalidation traffic sent from edge servers to your origin server.
+-   Configure this feature by performing the following steps:
+
+    -   Select the status code for which this default caching policy will be applied.
+    -   Specify an integer value and then selecting the desired time unit (i.e., seconds, minutes, hours, etc.). This value defines the default `max-age` interval.
+
+<edgejs>
+**Key information:**
+
+-   This default caching policy is only applied to responses from an origin server that have not been assigned a `max-age` directive through either the `Cache-Control` or `Expires` header.
+-   This default caching policy is inapplicable to requests that are not deemed cacheable.
+-   The [Set Max Age feature](#set-max-age) overrides this default caching policy.
+-   This default caching policy does not affect browser to edge server cache revalidations.
+    -   Browser to edge server revalidation is determined by the `Cache-Control` or `Expires` headers sent to the browser, which can be customized through the [Set Client Max Age feature](#set-client-max-age).
+-   The results of this default caching policy do not have an observable effect on the response headers and the content returned from edge servers for your content, but it may have an effect on the amount of revalidation traffic sent from edge servers to your origin server.
+-   Configure this feature by defining the following key/value pair:
+
+    -   Set the key to the status code for which this default caching policy will be applied.
+    -   Set the key's value to an integer value and then the desired time unit. This value defines the default `max-age` interval.
+-   **Syntax:** `"<STATUS CODE>": "<TIME>[s|m|h|d|w|y]"`
+
+**Example:**
+
+```js filename="./routes.js"
+export default new Router()
+  .get('/', {
+    caching: {
+      "default_internal_max_age": {
+        "200": "1h"
+      }
+    }
+  })
+```
+</edgejs>
+
+**Default Behavior:** Disabled. {{ PRODUCT }} does not set a default internal `max-age` interval. However, it may be set on a per request basis either through the [Set Max Age feature](#set-max-age) or when an origin server provides cache directives.
+
 #### Set Max Age{/*set-max-age*/}
 
 Defines a `max-age` interval for edge server to origin server cache revalidation. In other words, the amount of time that will pass before an edge server will check whether a cached asset matches the asset stored on the origin server.
@@ -1278,7 +1375,16 @@ export default new Router()
 
 ## Headers {/*headers*/}
 
-Header features add, modify, or delete headers from the request or response.
+Add, modify, or delete headers from the request or response through the following features:
+
+-   [Add Response Headers](#add-response-headers)
+-   [Debug Header](#debug-header)
+-   [Remove Origin Response Headers](#remove-origin-response-headers)
+-   [Remove Response Headers](#remove-response-headers)
+-   [Set Client IP Custom Header](#set-client-ip-custom-header)
+-   [Set Origin Response Headers](#set-origin-response-headers)
+-   [Set Request Headers](#set-request-headers)
+-   [Set Response Headers](#set-response-headers)
 
 #### Add Response Headers {/*add-response-headers*/}
 
@@ -1767,7 +1873,11 @@ export default new Router()
 
 ## Log {/*log*/}
 
-Log features customize how log data is stored.
+Customize how log data is stored through the following features:
+
+-   [Custom Log Field](#custom-log-field)
+-   [Log Query String](#log-query-string)
+-   [Mask Client Subnet](#mask-client-subnet)
 
 #### Custom Log Field {/*custom-log-field*/}
 
@@ -1912,7 +2022,11 @@ export default new Router()
 
 ## Origin {/*origin*/}
 
-Origin features control how the CDN communicates with an origin server.
+Control how the CDN communicates with an origin server through the following features:
+
+-   [Max Keep-Alive Requests](#max-keep-alive-requests)
+-   [Proxy Special Headers](#proxy-special-headers)
+-   [Set Origin](#set-origin)
 
 #### Max Keep-Alive Requests {/*max-keep-alive-requests*/}
 
@@ -1994,7 +2108,14 @@ export default new Router()
 
 ## Response {/*response*/}
 
-Response features manipulate the response sent to the client.
+Manipulate the response sent to the client through the following features:
+
+-   [Allow Prefetching of Uncached Content](#allow-prefetching-of-uncached-content)
+-   [Compress Content Types](#compress-content-types)
+-   [Optimize Images](#optimize-images)
+-   [Set Done](#set-done)
+-   [Set Response Body](#set-response-body)
+-   [Set Status Code](#set-status-code)
 
 #### Allow Prefetching of Uncached Content {/*allow-prefetching-of-uncached-content*/}
 
@@ -2234,7 +2355,11 @@ export default new Router()
 
 ## URL {/*url*/}
 
-URL features redirect or rewrite requests to a different URL.
+Redirect or rewrite requests to a different URL through the following features:
+
+-   [Follow Redirects](#follow-redirects)
+-   [Rewrite URL](#rewrite-url)
+-   [URL Redirect](#url-redirect)
 
 #### Follow Redirects {/*follow-redirects*/}
 

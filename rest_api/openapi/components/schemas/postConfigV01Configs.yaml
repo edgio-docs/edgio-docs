@@ -31,6 +31,25 @@ properties:
       Overwrite the default value, effectively allowing defining purge cache
       behaviour with each deployment.
     example: true
+  edge_functions_sources:
+    type: object
+    description: |
+      JSON object of Edge Functions sources:
+
+      - The **key** denotes the name of the Edge Function.
+      - The **value** holds the source of the Edge Function.
+    example:
+      my-edge-function.js: |
+        export async function handleHttpRequest(request, context) {
+          return new Response(
+            JSON.stringify({ message: "Hello from the edge function!"}),
+            {
+              headers: {
+                "Content-Type": "application/json"
+              }
+            }
+          )
+        }
 required:
   - environment_id
   - origins

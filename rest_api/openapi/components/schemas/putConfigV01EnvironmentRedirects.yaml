@@ -1,0 +1,33 @@
+type: object
+properties:
+  environment_id:
+    type: string
+    description: >
+      An environment's system-defined ID (e.g.,
+      12345678-1234-1234-1234-1234567890ab).
+
+
+      From the Edgio Console, navigate to the desired environment and then click
+      **Settings**. It is listed under **Environment ID**.
+  from:
+    type: string
+    description: An absolute or relative URL that will be redirected.
+  to:
+    type: string
+    description: An absolute or relative URL to which clients will be redirected.
+  status:
+    type: integer
+    format: int32
+    description: >-
+      `3xx` status code for the response sent to the client. Valid values are:
+      `301 | 302 | 307 | 308`
+  forward_query_string:
+    type: boolean
+    description: >-
+      Determines whether the `Location` response header will include the
+      request’s query string.
+required:
+  - environment_id
+  - from
+  - to
+description: Creates or updates a bulk redirect.

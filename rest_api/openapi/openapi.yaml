@@ -31,9 +31,17 @@ tags:
     x-displayName: Environment Variables
     description: |
     
-      Automate environment variable management. 
+      Automate environment variable management. Changes to your environment variables will not take effect until the next deployment.
+
       
       <a href="https://docs.edg.io/applications/v7/basics/environments#environment-variables" target="_blank">Learn more about environment variables.</a>
+  - name: environment-redirects
+    x-displayName: Bulk Redirects
+    description: |
+    
+      Manage or retrieve a list of URLs for which we will return a `3xx` response with a `Location` header set to the desired URL. Changes to your bulk redirects will not take effect until the next deployment. 
+      
+      <a href="https://docs.edg.io/applications/v7/performance/redirects#bulk-redirects" target="_blank">Learn more about bulk redirects.</a>
   - name: purge-requests
     x-displayName: Purge
     description: Purge cached content and retrieve information about previously submitted purge requests.
@@ -245,6 +253,18 @@ paths:
       - configScope: [app.config]
   /config/v0.1/environment-variables/{environment_variable_id}:
     $ref: paths/config_v0.1_environment-variables_{environment_variable_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+    security:
+      - configScope: [app.config]
+  /config/v0.1/environment-redirects/{environment_redirect_id}:
+    $ref: paths/config_v0.1_environment-redirects_{environment_redirect_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+    security:
+      - configScope: [app.config]
+  /config/v0.1/environment-redirects:
+    $ref: paths/config_v0.1_environment-redirects.yaml
     servers:
       - url: 'https://edgioapis.com'
     security:
@@ -701,11 +721,12 @@ x-tagGroups:
   - name: Cache
     tags:
       - purge-requests
-  - name: Deployments
+  - name: Configuration & Deployments
     tags:
       - configs
       - environment-variables
-      - deployments      
+      - environment-redirects
+      - deployments
   - name: TLS Certificates
     tags:
       - tls-certs

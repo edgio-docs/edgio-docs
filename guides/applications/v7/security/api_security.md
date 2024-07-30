@@ -157,11 +157,19 @@ The following sample request will match the above pattern:
 
 ### JSON Web Tokens (JWT) {/*json-web-tokens--jwt-*/}
 
-You may choose to enable JWT validation within an API Security's rule. Once enabled, requests that match that rule's criteria must provide a valid JWT within the `Authorization` request header using the following syntax:
+API Security supports JWT validation. Enable this validation through a rule. Once enabled, requests that match that rule's criteria must provide a valid JWT token. This token must:
 
-`Authorization: Bearer <TOKEN>`
+-   Be defined within the `Authorization` request header using the following syntax:
 
-If you also enable the **Allow Empty Tokens** option, then {{ PRODUCT }} will skip JWT validation for requests that do not include an `Authorization` header.
+    `Authorization: Bearer <TOKEN>`
+
+-   Contain the following components:
+    -   **iss:** An `iss` value identifies the issuer of the JWT.
+    -   **kid:** A `kid` value identifies the key through which the JWT was signed.
+
+<Tip>
+Skip JWT validation for requests that do not include an `Authorization` header by enabling the **Allow Empty Tokens** option.
+</Tip>
 
 {{ PRODUCT }} validates a JWT by comparing it with a JSON Web Key (JWK) registered with that rule. A JWK is a JSON object whose members represent the properties of a JWT. 
 

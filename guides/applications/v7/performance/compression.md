@@ -56,43 +56,41 @@ Enable compression for each desired content type through the following steps:
 1.  Create or modify a rule that identifies the set of requests on which compression will be enabled.
 2.  Add the [Compress Content Types feature (compress_content_types)](/applications/performance/rules/features#compress-content-types) to it. Set it to the desired set of content types.
 
-The following examples demonstrate how to enable edge server compression using:
+**Key information:**
 
--   [Rules:](/applications/performance/rules#managing-rules)
+-   Once you have enabled edge server compression on the desired content types, {{ PRODUCT }} will compress content when all of the [required conditions](#edge-server-compression) have been met. If one or more conditions have not been met, then {{ PRODUCT }} will serve either uncompressed cached content or the response provided by the origin server or the {{ PRODUCT }} cloud.
+-   Edge server compression is incompatible with [Image Optimization](/applications/performance/image_optimization). Requests that are processed by Image Optimization will not under edge server compression. 
+-   The following examples demonstrate how to enable edge server compression using:
 
-    The following configuration enables edge server compression by setting the Compress Content Types feature to common content types:
+    -   [Rules:](/applications/performance/rules#managing-rules)
 
-    ![Compress Content Types Feature](/images/v7/performance/compress-content-types.png?width=450)
+        The following configuration enables edge server compression by setting the Compress Content Types feature to common content types:
 
--   [CDN-as-Code:](/applications/performance/cdn_as_code)
+        ![Compress Content Types Feature](/images/v7/performance/compress-content-types.png?width=450)
 
-    The following sample rule enables edge server compression across all requests for the common content types described above.
+    -   [CDN-as-Code:](/applications/performance/cdn_as_code)
 
-    ```js filename="./routes.js"
-    export default new Router().match(
-      {},
-      {
-        response: {
-          compress_content_types: [
-            "application/javascript",
-            "application/json",
-            "application/xml",
-            "text/css",
-            "text/html",
-            "text/javascript",
-            "text/plain",
-            "text/xml ",
-          ],
-        },
-      }
-    );
-    ```
+        The following sample rule enables edge server compression across all requests for the common content types described above.
 
-<Callout type="info">
-
-  Once you have enabled edge server compression on the desired content types, {{ PRODUCT }} will compress content when all of the [required conditions](#edge-server-compression) have been met. If one or more conditions have not been met, then {{ PRODUCT }} will serve either uncompressed cached content or the response provided by the origin server or the {{ PRODUCT }} cloud.
-
-</Callout>
+        ```js filename="./routes.js"
+        export default new Router().match(
+          {},
+          {
+            response: {
+              compress_content_types: [
+                "application/javascript",
+                "application/json",
+                "application/xml",
+                "text/css",
+                "text/html",
+                "text/javascript",
+                "text/plain",
+                "text/xml ",
+              ],
+            },
+          }
+        );
+        ```
 
 ## Cache Implications {/*implications-on-caching*/}
 

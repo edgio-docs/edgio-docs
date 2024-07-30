@@ -14,26 +14,27 @@ Once your service is configured and available to be used to deliver your content
 
 Finally, you can log in to [Edgio Control](https://control-new.edg.io/acontrol/#/login) at any time to submit and track support tickets, access documentation, and view detailed reports on the traffic handled by your Content Delivery service.
 
-To set up your Edgio Account, please be prepared to provide your Account Manager the following information:
+To set up your account, please be prepared to provide your Account Manager the following information:
 
-- **Contacts**
-    -An administrative contact for your team<br />- A technical contact for your team
-- **Content Overview**
-  - An overview of the types of content you deliver and the way your audience consumes it
-  - The method you use to publish your content today and the frequency with which you update your content
-  - Any content security or access restrictions
-  - Any requirements for integration with your company’s content-management system
-- **Content Statistics**
-  - The types of files (file extensions) in your content
-  - The average size of your individual content files
-  - The approximate disk space required to store all of your content, and the projected annual growth rate
-  - The approximate number of files in your library and percentage of those files your audience accesses regularly
-- **Traffic Statistics**
-  - The monthly traffic volume you expect Content Delivery to handle during the first six months and projected annual growth rate
-  - The percentage of your traffic that comes from major geographic regions (North America, Europe, Asia, etc.), plus any international markets that require particular attention
-- **Configuration**
-  - Origin Hostname - the URL where Content Delivery will request content to fill the cache
-  - Published Hostname - the URL prefix you want your audience to see in published links to your content (optional). You can provide this in the form of a DNS CNAME if you want to control the prefix completely or a suggested Edgio Account name (which, if accepted, will be prepended to the default Content Delivery form: account_name.vo.llnw.net).
+- Contacts<br >
+    -An administrative contact for your team
+    -A technical contact for your team
+- Content Overview
+    - An overview of the types of content you deliver and the way your audience consumes it
+    - The method you use to publish your content today and the frequency with which you update your content
+    - Any content security or access restrictions
+    - Any requirements for integration with your company’s content-management system
+- Content Statistics
+    - The types of files (file extensions) in your content
+    - The average size of your individual content files
+    - The approximate disk space required to store all of your content, and the projected annual growth rate
+    - The approximate number of files in your library and percentage of those files your audience accesses regularly
+- Traffic Statistics
+    - The monthly traffic volume you expect Content Delivery to handle during the first six months and projected annual growth rate
+    - The percentage of your traffic that comes from major geographic regions (North America, Europe, Asia, etc.), plus any international markets that require particular attention
+- Configuration
+    - Origin Hostname - the URL where Content Delivery will request content to fill the cache
+    - Published Hostname - the URL prefix you want your audience to see in published links to your content (optional). You can provide this in the form of a DNS CNAME if you want to control the prefix completely or a suggested Limelight Account name (which, if accepted, will be prepended to the default Content Delivery form: account_name.vo.llnw.net).
 
 ## Choosing an Origin   {/*choosing-an-origin*/}
 
@@ -79,7 +80,7 @@ If you are migrating your content from another CDN, you may want to develop a wr
 
 For more information on Edgio Advanced Services, please contact your Account Manager.
 
-#### Managing Non-Edgio Origins {/*managing-non-edgio-origins*/}
+**Managing Non-Edgio Origins**
 
 For the Content Delivery service to cache your content, your origin must provide the following two HTTP response headers with every object:
 
@@ -89,7 +90,8 @@ Also, it is important that you verify the accuracy of file timestamps on your or
 
 Furthermore, if you are using a server load balancer, it is critical that you verify that file timestamps match each other across all servers. Timestamp inconsistency between servers may cause improper caching behavior.
 
-Protecting Your Content
+**Protecting Your Content**
+
 Content Delivery provides multiple ways to protect your content, including:
 
 - URL protection

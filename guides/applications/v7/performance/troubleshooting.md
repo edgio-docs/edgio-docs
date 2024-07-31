@@ -189,26 +189,28 @@ Identify prefetch requests through the following query string parameter: `{{ PRO
 
 Troubleshoot Image Optimization issues through the following procedure:
 
-1.  Verify that Image Optimization processed the image checking for the `x-edgeio-status` response header. 
+1.  Verify that Image Optimization processed the image by checking for the `x-edgeio-status` response header. 
 2.  Check for warnings or errors.
 3.  Analyze the source and output image.
 
+#### Missing X-Edgeio-Status Header {/*missing-x-edgeio-status-header*/}
+
+If the `x-edgeio-status` header is missing from the response, then Image Optimization did not process the image. Check the response's status code.
+
+-   **2xx or 3xx Response:** Verify that the rule that enables Image Optimization was [applied to the request](#applied-rules). 
+-   **5xx Response:** {{ PRODUCT }} was unable to communicate with your origin server and both the source and optimized image were not previously cached. Check your origin server's availability.
+    
 #### Check for Warnings and Errors {/*check-for-warnings-and-errors*/}
 
-Check whether Image Optimization returned a warning or error by performing the following steps:
+Check the `x-edgeio-status` header to determine whether Image Optimization returned a warning or error.
 
-1.  Is the `x-edgeio-status` header missing from the response? If so, then the image was not processed by Image Optimization. 
-    -   **2xx or 3xx Response:** Verify that the rule that enables Image Optimization was [applied to the request](#applied-rules). 
-    -   **5xx Response:** {{ PRODUCT }} was unable to communicate with your origin server and both the source and optimized image were not previously cached.
-2.  What is the `x-edgeio-status` header's value?
+-   **OK:** Image Optimization performed one or more optimizations. 
 
-    -   **OK:** Image Optimization performed one or more optimizations. 
-    
-        Check for an `x-edgeio-warning` response header to find out whether one or more optimizations were skipped. Troubleshoot warnings by analyzing image metadata.
+    Check for an `x-edgeio-warning` response header to find out whether one or more optimizations were skipped. Troubleshoot warnings by analyzing image metadata.
 
-    -   **ERROR:** Perform the following steps:
-        -   Check for a `400 Bad Request` response. This type of response indicates that {{ PRODUCT }} was unable to optimize the requested image due to an unsupported query string parameter or value. Fix the request URL's query string and then try again. 
-        -   Check the `x-edgeio-error` response header to find out how the [optimized image exceeded our limits](/applications/performance/image_optimization#image-requirements). 
+-   **ERROR:** Perform the following steps:
+    -   Check for a `400 Bad Request` response. This type of response indicates that {{ PRODUCT }} was unable to optimize the requested image due to an unsupported query string parameter or value. Fix the request URL's query string and then try again. 
+    -   Check the `x-edgeio-error` response header to find out how the [optimized image exceeded our limits](/applications/performance/image_optimization#image-requirements). 
 
 #### Image Metadata Analysis
 

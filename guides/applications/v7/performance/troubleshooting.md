@@ -192,7 +192,7 @@ Troubleshoot Image Optimization issues through the following procedure:
 1.  Verify that Image Optimization processed the image and check for warnings or errors.
 2.  Analzye the source and output image.
 
-##### Image Optimization Verification
+#### Image Optimization Verification
 
 Verify that Image Optimization processed an image by checking for the `x-edgeio-status` response header. 
 
@@ -200,18 +200,18 @@ Verify that Image Optimization processed an image by checking for the `x-edgeio-
 
     If {{ PRODUCT }} also returned a `5xx` response, then it was unable to communicate with your origin server and both the source and optimized image were not previously cached.
 
--   If this header is set to `OK`, then Image Optimization performed one or more optimizations. Check for an `x-edgeio-warning` response header to find out whether one or more optimizations were skipped. 
+-   If this header is set to `OK`, then Image Optimization performed one or more optimizations. Check for an `x-edgeio-warning` response header to find out whether one or more optimizations were skipped. Troubleshoot warnings by analyzing image metadata.
 -   If this header is set to `ERROR`, then:
     -   Check for a `400 Bad Request` response. This type of response indicates that {{ PRODUCT }} was unable to optimize the requested image due to an unsupported query string parameter or value. Check the request URL and try again. 
     -   Check the `x-edgeio-error` response header to find out how the [optimized image exceeded our limits](/applications/performance/image_optimization#image-requirements). 
 
-##### Image Metadata Analysis
+#### Image Metadata Analysis
 
 By default, {{ PRODUCT }} does not provide information about the source or output image. Include this information by setting the following header within a request to optimize an image: `x-ec-edgeio-debug: info`
 
 The response for such a request includes a `x-edgeio-info` response header. Use this header to analyze basic properties for the source and transformed image.
 
-[Learn more about the `x-edgeio-info` response header.](/applications/performance/image_optimization#troubleshooting)
+[Learn more about the x-edgeio-info response header.](/applications/performance/image_optimization#troubleshooting)
 
 ## Status Codes {/*status-codes*/}
 

@@ -88,7 +88,7 @@ The following request will result in a match when the `Path` condition is set to
 
 `http://cdn.example.com/shows/cdn-detectives`
 
-### In {/*in*/}
+### Is One Of {/*is-one-of*/}
 
 Indicates that the value derived from the request must be an exact match to the one of the value(s) defined within a condition.
 
@@ -100,7 +100,7 @@ Indicates that the value derived from the request must be an exact match to the 
 
 </Callout>
 
-### Not In {/*not-in*/}
+### Is Not One Of {/*is-not-one-of*/}
 
 Indicates that the value derived from the request must not be an exact match to the one of the value(s) defined within a condition.
 

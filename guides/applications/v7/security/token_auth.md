@@ -182,7 +182,7 @@ Use the code from our open-source repositories to create a custom application to
 -   [C](https://github.com/Edgio/ectoken)
 -   [C#](https://github.com/Edgio/cs-ectoken)
 -   [Go](https://github.com/Edgio/go-ectoken)
--   [JavaScript](https://github.com/Edgio/js-ectoken)
+-   [JavaScript](https://github.com/Edgio/js-ectoken) or [npm package (@edgio/ectoken)](https://www.npmjs.com/package/@edgio/ectoken)
 -   [Perl](https://github.com/Edgio/perl-ectoken)
 -   [PHP](https://github.com/Edgio/php-ectoken)
 -   [Python](https://github.com/Edgio/py-ectoken)
@@ -239,7 +239,7 @@ This section provides a brief description for each available parameter.
 
 -   **<a id="ec_host_allow" />ec_host_allow:** Restricts delivery to the specified set of hosts.
 
-    -   Do not include the protocol portion of the desired URL (e.g., http://).
+    -   Exclude the protocol portion of the desired URL (e.g., http://).
     -   A comparison will be made against the `Host` request header. Delivery is restricted to requests whose hostname matches a specified value.
     -   Use a comma to delimit multiple hosts.
 
@@ -249,7 +249,7 @@ This section provides a brief description for each available parameter.
 
 -   **<a id="ec_host_deny" />ec_host_deny:** Defines the set of hosts that will be blocked.
 
-    -   Do not include the protocol portion of the desired URL (e.g., http://).
+    -   Exclude the protocol portion of the desired URL (e.g., http://).
     -   A comparison will be made against the value specified in the `Host` request header. Delivery is restricted to requests whose hostname do not match a specified value.
     -   Use a comma to delimit multiple hosts.
 
@@ -275,7 +275,7 @@ This section provides a brief description for each available parameter.
 
 -   **<a id="ec_ref_allow" />ec_ref_allow:** Restricts delivery to the specified set of referrers.
 
-    -   Do not include the protocol portion of the desired URL (e.g., http://).
+    -   Exclude the protocol portion of the desired URL (e.g., http://).
     -   The specified value will be compared against the request's `Referer` header. This header value must start with a value defined by this parameter.
     -   Use a comma to delimit multiple referrers.
 
@@ -285,7 +285,7 @@ This section provides a brief description for each available parameter.
 
 -   **<a id="ec_ref_deny" />ec_ref_deny:** Defines the set of referrers for which delivery will be denied.
 
-    -   Do not include the protocol portion of the desired URL (e.g., http://).
+    -   Exclude the protocol portion of the desired URL (e.g., http://).
     -   The specified value will be compared against the request's `Referer` header. This header value must start with a value defined by this parameter.
     -   Use a comma to delimit multiple referrers.
 

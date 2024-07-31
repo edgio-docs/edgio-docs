@@ -4,7 +4,7 @@ title: Penalty Box and Issue Remediation
 
 This section details key features and functions for finding, identifying, and resolving issues.
 
-## Penalty Box
+## Penalty Box  {/*penalty-box*/}
 
 The Penalty Box allows you to quickly review all Live Slicers that are experiencing one or more monitored metrics at warning levels, critical levels, or both.
 
@@ -26,7 +26,7 @@ Each category indicates the number of Live Slicers that are experiencing one or 
 
 Use the **Unhealthy Only** option to determine whether to list your organization or **Personal slicers** when that category only contains healthy Live Slicers.
 
-## Issue Identification and Remediation
+## Issue Identification and Remediation  {/*issue-identification-remediation*/}
 
 Learn how to interpret status information.
 
@@ -37,14 +37,14 @@ It is not recommended to use log data as a monitoring mechanism. Instead, levera
 - System resources
 - Configuration
 
-### Egress Bandwidth
+### Egress Bandwidth  {/*egress-bandwidth*/}
 
 <Tip>Most Live Slicer issues are due to egress bandwidth.</Tip>
 
 A Live Slicer combats latency issues by uploading up to five video slices in parallel. Under ideal circumstances, it will only upload one or two slices at a time. However, bandwidth constraints may require it to upload additional slices in an effort to catch up. If bandwidth continues to fall short of what is needed, the slicer will buffer up to 5 minutes of video before it begins dropping incoming frames.
 
 
-### Confirming Egress Bandwidth Issues
+### Confirm Egress Bandwidth Issues  {/*confirm-egress-bandwidth*/}
 
 Confirm egress bandwidth issues through the following error messages:
 
@@ -57,7 +57,7 @@ Confirm egress bandwidth issues through the following error messages:
 | Clearing current broker - too many consecutive communication failures | This message indicates that the Live Slicer was unable to communicate with the backend.<br /><br />**More Information**:<br />The Live Slicer will switch to a different backend component and then retry. |
 | Unable to mark slice X delivered, <reason> | Check for frequent occurrences of this error message.<br /><br />**More Information**:<ul><li>This message indicates that the Live Slicer was unable to provide a report of recently uploaded slices to the backend. The Live Slicer will retry until it successfully reports to the backend.</li><li>This message is uncommon due to the small size of the data being sent.</li></ul> |
 
-### Testing
+### Testing  {/*testing*/}
 
 <Tip>This tool only tests burst bandwidth and is not a good indicator of average bandwidth.</Tip>
 
@@ -72,15 +72,15 @@ $ cd /opt/uplynk/latest
 $ ./slicer -u <username> -apikey <APIKey> -bandwidth
 ```
 
-### Source Signal
+### Source Signal  {/*source-signal*/}
 
 A Live Slicer that is not receiving a video signal will output blank green frames with silent audio. This state is indicated by the status methods when the signal response parameter returns "No signal."
 
-#### Diagnosis
+#### Diagnosis  {/*diagnosis*/}
 
 A source signal issue may arise due to the SDI source or the UDP transport stream.
 
-#### SDI Source
+#### SDI Source  {/*SDI-source*/}
 
 The following message indicates that the Live Slicer is unable to receive the source signal from the capture card:
 
@@ -88,7 +88,7 @@ The following message indicates that the Live Slicer is unable to receive the so
 |---|---|
 | Card thinks signal dropped | The Live Slicer will log this message up to 5 consecutive frames before it begins outputting green frames. |
 
-### UDP Transport Streams
+### UDP Transport Streams  {/*udp-transport-streams*/}
 
 Under normal circumstances, a UDP transport stream may drop packets in transit to the Live Slicer and generate any of the error messages listed below. Identify signal issues by the frequency of these error messages.
 
@@ -103,13 +103,13 @@ Under normal circumstances, a UDP transport stream may drop packets in transit t
 | Unable to decode frame, skipping | Indicates that the Live Slicer was unable to decode a video frame.<br /><br />**More Information**:<br />This issue is commonly caused by dropped packets. This will prevent the frame from containing sufficient information for the purpose of decoding it. |
 | Unable to decode audio, skipping | Indicates that the Live Slicer was unable to decode an audio frame.<br /><br />**More Information**:<br />This issue is commonly caused by dropped packets. This will prevent the frame from containing sufficient information for the purpose of decoding it. |
 
-### Reverse Path Filtering
+### Reverse Path Filtering  {/*reverse-path-filtering*/}
 
 Tools that communicate directly with the network interface (e.g., Wireshark) will be unaffected by this issue. However, the Live Slicer will be unable to receive the signal.
 
 A common obstacle with multicast UDP signals is reverse path filtering. This issue occurs when multicast packets arrive on an interface that doesn't have a route for the source address. By default, the Linux kernel will filter these packets and prevent them from being delivered to the Live Slicer.
 
-#### Resolution/Remediation
+#### Resolution/Remediation  {/*resolution-remediation*/}
 
 Resolve this issue by either:
 
@@ -120,11 +120,12 @@ Resolve this issue by either:
     $ echo 1 > /proc/sys/net/ipv4/conf/all/rp_filter
     $ sysctl -w "net.ipv4.conf.all.rp_filter=0"
     ```
-### System Resources
+
+### System Resources  {/*system-resources*/}
 
 The Live Slicer requires significant memory and CPU resources to perform real-time video processing. Insufficient resources may cause dropped frames.
 
-#### Diagnosis
+#### Diagnosis  {/*diagnosis*/}
 
 Check for dropped frames occurring without egress bandwidth symptoms. Upon detecting this condition, leverage system tools to monitor system resources (e.g., CPU usage, load average, and memory consumption).
 
@@ -133,7 +134,7 @@ Check for dropped frames occurring without egress bandwidth symptoms. Upon detec
 | Load Average | Check load average by using a system tool, such as:<ul><li>uptime</li><li>top</li></ul>Verify that the load average is less than 2x the number of core processors.<br /><br />**More Information**:<ul><li>The above tools report average CPU load for the last 1, 5, and 15 minutes.</li><li>These statistics indicate the average number of tasks that were ready to be processed during that time period.<br />**Example**:<br />A load average of 12 indicates that there are 12 tasks ready to run. On a 6-core system, this means that there are twice as many tasks ready to run as there are cores available to run them.</li></ul> |
 | Memory Usage | Check memory usage by using a system tool, such as:<ul><li>/proc/meminfo</li><li>top</li></ul>Check for high levels of swap usage by looking at the `SwapTotal` field in `/proc/meminfo`. This is an indicator of a performance issue that may cause dropped frames.<br /><br />**More Information**:<ul><li>A Live Slicer's memory usage depends on the following factors:<br />- The resolution and frame rate of the source material.<br />- Complexity of the video.<br />- The amount of backlog induced by poor egress bandwidth.</li><li>Typical memory usage ranges from 3 to 8 GB. However, this statistic will fluctuate significantly during operation. The system should have sufficient RAM to accommodate this fluctuation, plus some extra for operating system overhead. </li></ul>|
 
-### Configuration
+### Configuration  {/*configuration*/}
 
 This section covers common configuration issues that may prevent the Live Slicer from functioning properly.
 
@@ -144,15 +145,15 @@ This section covers common configuration issues that may prevent the Live Slicer
 | Audio channel layout | **SDI Signal Only**<br />Update the Live Slicer's configuration file through the following steps:<ol><li>Set the desired audio channel layout through the audio_layout setting.</li><li>Add audio tracks by:<br />- Inserting the `audio_tracks` setting. Set it to the desired number of tracks.<br />- Adding an `audio_layout_X` setting for each audio track.<br />**Example**:<br />Add a second track on the second stereo pair (channels 3 and 4) by adding the following settings: `audio_tracks: 2` and `audio_layout_1: stereo 2`.</li><li>Restart the Live Slicer.</li></ol>**More Information**:<br />By default, the slicer will use the first two channels from the input signal as a stereo pair. |
 | Unique Live Slicer IDs | The following log message indicates that multiple Live Slicers are using the same ID:<br />Unable to mark slice X delivered: Deliver rejected: slicing for beam Y is already done.<br />Resolve this issue by assigning a unique ID to each Live Slicer.<br /><br />**More Information**:<br />A unique ID must be assigned to each Live Slicer regardless of whether it is capturing the same signal as other Live Slicers. |
 
-### Miscellaneous Troubleshooting Information
+### Miscellaneous Troubleshooting Information  {/*misc-troubleshooting*/}
 
 This section provides additional tips for issue identification and remediation.
 
-#### Asset Rollover
+#### Asset Rollover  {/*asset-rollover*/}
 
 The maximum duration of a live asset is 8 hours. Once a live asset reaches this duration, the Live Slicer will start writing to a new asset.
 
-#### Delayed Playback
+#### Delayed Playback  {/*desired-playback*/}
 
 <Info>Expired or deleted assets cannot be viewed on delay.</Info>
 

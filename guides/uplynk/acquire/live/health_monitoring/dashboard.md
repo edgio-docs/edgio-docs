@@ -15,7 +15,7 @@ The Live Slicer Monitoring dashboard provides statistics and graphs that describ
 
 ![Monitoring Callouts](/images/uplynk/monitoring-callout.png)
 
-The right pane provides the following information and statistics for each Live Slicer associated with the current Slicer View.
+The **right pane** provides the following information and statistics for each Live Slicer associated with the current Slicer View.
 
 | Column Name | Description  |
 |---|---|
@@ -29,7 +29,7 @@ The right pane provides the following information and statistics for each Live S
 | Broker  | Identifies the name of the broker handling the Live Slicer's content.|
 | Broker IP     | Indicates the IP address of the broker handling the Live Slicer's content.    |
 | State**   | Indicates the Live Slicer's current state:<ul><li>**Slicing**: Indicates that the Live Slicer is currently slicing content.</li><li>**Ad Break**: Indicates that content is being driven by a third-party ad server instead of the Live Slicer.</li><li>**Replacing Content**: Indicates that content is being driven by pre-encoded content instead of the Live Slicer.</li><li>**Blackout**: Indicates that the content currently being sliced by the Live Slicer is being blacked out.</li><li>**Inactive**: Indicates that the Live Slicer was active within the last 24 hours, but is not currently slicing content, replacing content, in an ad break, or in a blackout state.</li></ul>     |
-| Signal  | Indicates the input signal type:<ul><li>**Blackmagic Capture Devices**: Indicates the signal format reported by the card. Sample value: `HD 1080i 60fps`</li><li>**UDP Transport Streams**: Reports the following information: TS \{multicast \| unicast\}\{Source IP Address\}:\{Port\}\{Resolution Width x Height\} </li><li>**No Signal**: Reports the following value when the signal is lost: No signal</li></ul>|
+| Signal  | Indicates the input signal type:<ul><li>**Blackmagic Capture Devices**: Indicates the signal format reported by the card. Sample value: `HD 1080i 60fps`</li><li>**UDP Transport Streams**: Reports the following information: TS \{multicast unicast\}\{Source IP Address\}:\{Port\}\{Resolution Width x Height\} </li><li>**No Signal**: Reports the following value when the signal is lost: No signal</li></ul>|
 | Luma    | Indicates the average luminosity percentage for the last few seconds of video. This percentage will only be returned when the Live Slicer has reported a luma value. |
 | Vol     | Indicates the average loudness percentage for the last few seconds of audio. This percentage will only be returned when the Live Slicer has reported a volume value. |
 | CCLS    | Indicates the number of seconds since the Live Slicer received the most recent caption.  [Learn more](/uplynk/acquire/live/health_monitoring/metrics). |
@@ -54,7 +54,7 @@ By default, all Live Slicers that have been associated with the currently select
 - **Choose Columns**: Select the set of columns to be displayed by clicking the columns icon <Image inline src="/images/uplynk/columns.png" alt="Revert" />.
 - **View Detailed Information**: Clicking on a Live Slicer provides more detailed information about that Live Slicer and its health. This detailed view is known as Live Slicer Details.
 
-## Live Slicer Details
+## Live Slicer Details  {/*live-slicer-details*/}
 
 View more detailed health information by clicking on a Live Slicer.
 
@@ -64,7 +64,7 @@ View more detailed health information by clicking on a Live Slicer.
 
 This mode consists of the following four views: Slicer Snapshot, Charts, Health Details, Status.
 
-### Slicer Snapshot
+### Slicer Snapshot  {/*slicer-snapshot*/}
 
 This view consists of the following sections:
 
@@ -80,7 +80,7 @@ This view consists of the following sections:
 
 <Tip>You may view Live Slicer health for a previous time window by clicking the **Choose Start Date** link that appears to the right of the Start Date option and then selecting the desired start date and time.</Tip>
 
-### Charts
+### Charts  {/*charts*/}
 
 This view graphs historical statistics for key metrics. Click on a metric to view its line graph.
 
@@ -112,14 +112,14 @@ Some of the metrics reported in this view may be responsible for determining Liv
 
 <Info>A Live Slicer's status is determined by ruleset. If a Live Slicer has been assigned multiple rulesets, then each unique combination of Live Slicer and ruleset will be listed on the dashboard.</Info>
 
-### Health Details
+### Health Details  {/*health-details*/}
 
 This view provides detailed Live Slicer health for a given timestamp.
 
 - **Details**: Identifies the timestamp for the current set of health data and the amount of time that the Live Slicer has been in the current state.
 - **Metrics**: Provides health data for each metric. Specifically, each row identifies a metric, its health status at the time identified in the Details section, and a brief description of the last time that this metric's health status changed.
 
-### Status
+### Status  {/*status*/}
 
 This view provides metric data for a given timestamp.
 
@@ -127,7 +127,7 @@ This view provides metric data for a given timestamp.
 - **Status JSON**: Provides detailed Live Slicer information, including metrics, in JSON format.
 - **Metrics**: Provides data for each metric.
 
-### Alert Log Data
+### Alert Log Data  {/*alert-log-data*/}
 
 The Alert Log page displays log data for alerts generated for the current Live Slicer over the specified date range. Leverage this historical data to discover trending issues and adjust warning/critical alert levels.
 

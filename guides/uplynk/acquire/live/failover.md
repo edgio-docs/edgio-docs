@@ -266,7 +266,7 @@ Our service sends information that describes a failover event in JSON format. Ke
 | **Slicers_In_Group** | Contains a key-value pair for each Live Slicer associated with the failover group defined by the FO_Group_Name property.     |
 || Each key-value pair identifies the name of a Live Slicer and its failover status. Valid failover states are described below.  |
 
-### Valid Failover States  {/**/}
+### Valid Failover States  {/*valid-failover-states*/}
 
 - **Active**: Indicates that our service is using this Live Slicer's feed to generate the live stream for all live channels associated with this failover group.
 - **Hot**: Indicates that the Live Slicer is encoding and storing content within our system. Our service can quickly fail over to a Live Slicer in this state.

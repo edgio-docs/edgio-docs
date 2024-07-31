@@ -100,6 +100,14 @@ const nav = {
               title: 'Health Monitoring',
               path: 'acquire/live/health_monitoring',
             },
+            {
+              title: 'SCTE Plugins',
+              path: 'acquire/live/scte_plugins',
+            },
+            {
+              title: 'Troubleshooting',
+              path: 'acquire/live/troubleshooting',
+            },
           ],
         },
       ],
@@ -110,7 +118,7 @@ const nav = {
       icon: 'server',
       routes: [
         {
-          title: 'Assets',
+          title: 'Content',
           path: 'manage/assets',
           routes: [
             {
@@ -130,6 +138,12 @@ const nav = {
         {
           title: 'Channels',
           path: 'manage/channels',
+          routes: [
+            {
+              title: 'Boundaries',
+              path: 'manage/content_protection/geoblocking',
+            },
+          ],
         },
         {
           title: 'Live Events',
@@ -216,10 +230,6 @@ const nav = {
               path: 'deliver/media_player/add_media_player_to_web_page',
             },
           ],
-        },
-        {
-          title: 'StreamStats for API',
-          path: 'deliver/streamstats',
         },
       ],
     },

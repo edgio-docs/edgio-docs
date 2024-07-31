@@ -6,29 +6,29 @@ title: Monetize
 
 Our Syndication product allows you to distribute your live or virtual live content simultaneously to multiple social media and content distribution platforms, such as YouTube, with minimal effort. By setting up publishing targets, you can configure your streams to be pushed or pulled using various protocols, including HLS-Pull for platforms that support this method. This feature ensures that your content reaches a wider audience across different platforms without the need for multiple streams. Additionally, our Syndication product supports the insertion of SCTE-35 markers to indicate where ads should be placed, enabling better ad management and monetization.
 
-## Use Cases  {/*syndication-use-cases*/}
+### Use Cases  {/*syndication-use-cases*/}
 
-### 1. Expand Audience Reach  {/*expand-audience-reach*/}
+#### 1. Expand Audience Reach  {/*expand-audience-reach*/}
 
 **Objective:** Increase the visibility of your live content by broadcasting simultaneously on YouTube.
 
 **Scenario:** You want to reach a broader audience by streaming live events on YouTube in addition to your native platform. This helps in engaging with YouTube's vast user base, gaining new followers, and promoting your content more effectively.
 
-### 2. Diversify Distribution with HLS-Pull  {/*diversify-distribution*/}
+#### 2. Diversify Distribution with HLS-Pull  {/*diversify-distribution*/}
 
 **Objective:** Stream your content on multiple FAST platforms using HLS-Pull.
 
 **Scenario:** You aim to distribute your live stream across various FAST platforms that support HLS-Pull, such as Samsung TV Plus or Pluto TV. Syndication Publishing supports SCTE-35 markers, allowing you to indicate where ads should be placed within your content. This approach ensures better ad management and monetization opportunities while reaching different audience segments across multiple streaming services.
 
-### 3. Monetize and Engage  {/*monetize-and-engage*/}
+#### 3. Monetize and Engage  {/*monetize-and-engage*/}
 
 **Objective:** Leverage YouTube’s monetization features.
 
 **Scenario:** You want to monetize live streams through YouTube’s advertising and super chat features. By streaming directly to YouTube, you can access these monetization tools while engaging with viewers through YouTube's interactive features like live chat.
 
-## How to Use  {/*how-to-use*/}
+### How to Use  {/*how-to-use*/}
 
-### Set Up a YouTube Publishing Target  {/*set-up-youtube-publishing-target*/}
+#### Set Up a YouTube Publishing Target  {/*set-up-youtube-publishing-target*/}
 
 1. **Contact Account Manager:**
    - Ensure Syndication Publishing is activated by contacting your account manager.
@@ -56,7 +56,7 @@ Our Syndication product allows you to distribute your live or virtual live conte
    - **Configure Stream Details (Integrated Authentication Only):**
      - Set the video title, description, privacy level, and audience (for kids or not) within the YouTube options on the Publish tab.
 
-### Set Up HLS Pull  {/*set-up-hls-pull*/}
+#### Set Up HLS Pull  {/*set-up-hls-pull*/}
 
 1. **Create a Publishing Target:**
    - Navigate to Settings | Publishing.
@@ -83,9 +83,9 @@ Our Syndication product allows you to distribute your live or virtual live conte
 
 By following these steps, you can effectively distribute your live streaming content to YouTube and other platforms using HLS-Pull, enhancing your audience reach and ensuring reliable streaming performance.
 
-# Ads  {/*ads*/}
+## Ads  {/*ads*/}
 
-## Overview  {/*ads-overview*/}
+### Overview  {/*ads-overview*/}
 
 Monetize your content by inserting ads seamlessly into your live streams and video-on-demand (VOD) content. Our ad insertion service ensures a smooth transition between your content and advertisements, enhancing the viewing experience while maximizing your revenue potential.
 
@@ -101,7 +101,7 @@ Monetize your content by inserting ads seamlessly into your live streams and vid
 - **Quality Upscaling:** Ads are automatically upscaled to the highest quality in your encoding profile without altering their frame rate.
 - **Ad Retrieval:** Our service requests ads for all ad breaks upon initiating playback, ensuring a smooth and uninterrupted viewing experience.
 
-## Use Cases  {/*ads-use-cases*/}
+### Use Cases  {/*ads-use-cases*/}
 
 - **Pre-roll Ads for Live Streams:** Monetize your live content by playing ads before the viewer joins the stream. This is ideal for ensuring that every viewer sees an advertisement, maximizing ad impressions.
 - **Mid-roll Ads for Live Events:** Enhance your revenue by incorporating mid-roll ads during live events. The player detects upcoming ad breaks and seamlessly inserts ads, keeping viewers engaged while generating ad revenue.

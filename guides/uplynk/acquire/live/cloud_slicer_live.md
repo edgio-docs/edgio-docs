@@ -91,8 +91,8 @@ Before creating a CSL slicer, you must first perform the following steps:
   - A combination of both
 
 - You may import settings from a file. We support the following formats:
-  - **Text File**: Import a file that uses the same format as a Live Slicer configuration file. Specify each [desired setting](configuration-file-settings) on a separate line.
-  - **JSON**: Import a file containing [settings](#configuration-settings) defined as key-value pairs using JSON notation.
+  - **Text File**: Import a file that uses the same format as a Live Slicer configuration file. Specify each [desired setting](#configuration-file-settings) on a separate line.
+  - **JSON**: Import a file containing [settings](#configuration-file-settings) defined as key-value pairs using JSON notation.
 
     [Learn more](#slicer-configuration-file).
 

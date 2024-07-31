@@ -108,7 +108,7 @@ The Match option determines whether a viewer must meet any, all, or none of the 
 
 5. Click **Create & Edit**.
 
-6. In the **Match** option, select whether a viewer will qualify for membership when the request matches any, all, or none of the specified criteria.<br />[Learn more.](#match-options)
+6. In the **Match** option, select whether a viewer will qualify for membership when the request matches any, all, or none of the specified criteria.<br />[Learn more.](#match-option)
 
 7. Add the desired IP addresses, zip codes, designated market areas (DMAs), devices, and/or country codes.
    - Click **+** under the desired category.

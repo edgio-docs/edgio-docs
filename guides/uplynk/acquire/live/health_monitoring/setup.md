@@ -5,7 +5,7 @@ title: Setup
 Quickly set up Live Slicer health monitoring by performing the following steps:
 
 1. [Enable monitoring](#prerequisites) on your account.
-2. [Create a view(#create-slicer-view)] for the desired Live Slicers.
+2. [Create a view](#create-slicer-view) for the desired Live Slicers.
 3. [Monitor the Live Slicers](#dashboard) identified above from the Live Slicer Monitoring dashboard.
 
 ## Key Steps  {/*key-steps*/}

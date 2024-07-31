@@ -141,7 +141,7 @@ const nav = {
           routes: [
             {
               title: 'Boundaries',
-              path: 'manage/content_protection/geoblocking',
+              path: 'manage/channels/boundaries',
             },
           ],
         },

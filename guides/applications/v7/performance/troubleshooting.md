@@ -212,7 +212,7 @@ Check the `x-edgeio-status` header to determine whether Image Optimization retur
     -   Check for a `400 Bad Request` response. This type of response indicates that {{ PRODUCT }} was unable to optimize the requested image due to an unsupported query string parameter or value. Fix the request URL's query string and then try again. 
     -   Check the `x-edgeio-error` response header to find out how the [optimized image exceeded our limits](/applications/performance/image_optimization#image-requirements). 
 
-#### Image Metadata Analysis
+#### Image Metadata Analysis {/*image-metadata-analysis*/}
 
 By default, {{ PRODUCT }} does not provide information about the source or output image. Include this information by setting the following header within a request to optimize an image: `x-ec-edgeio-debug: info`
 

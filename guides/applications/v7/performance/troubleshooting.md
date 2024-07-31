@@ -7,6 +7,7 @@ Troubleshoot:
 -   [General issues](#general-troubleshooting-procedures)
 -   [Caching](#caching)
 -   [Performance](#performance)
+-   [Image Optimization](#image-optimization)
 -   [Status codes](#status-codes)
 
 [Learn more about our troubleshooting tools.](#troubleshooting-tools)
@@ -151,7 +152,7 @@ Review the following items to find out why a request resulted in a cache miss.
     -   If you must add query string parameters to the cache key, we recommend that you restrict it to the parameters that are critical to your business needs. This recommendation ensures optimal performance by allowing our CDN to serve more requests from cache.
     -   If you are unsure as to whether you have already defined a custom cache key, then you should review your rules for [features that modify the cache key](/applications/performance/caching/cache_key#customizing-the-cache-key).
 
-## Performance {/*performance*/}
+## Website Performance {/*performance*/}
 
 Use the [{{ CHROME_EXTENSION }}](/applications/performance/observability/developer_tools_chrome_extension) to troubleshoot performance.
 
@@ -183,6 +184,41 @@ By default, you may only prefetch content that is cached on the POP closest to t
 Identify prefetch requests through the following query string parameter: `{{ PRODUCT_NAME_LOWER }}_dt_pf=1&{{ PRODUCT_NAME_LOWER }}_prefetch=1`.
 
 **Example:** `https://cdn.example.com/css/styles.css?edgio_dt_pf=1&edgio_prefetch=1`
+
+## Image Optimization {/*image-optimization*/}
+
+Troubleshoot Image Optimization issues through the following procedure:
+
+1.  Verify that Image Optimization processed the image by checking for the `x-edgeio-status` response header. 
+2.  Check for warnings or errors.
+3.  Analyze the source and output image.
+
+#### Missing X-Edgeio-Status Header {/*missing-x-edgeio-status-header*/}
+
+If the `x-edgeio-status` header is missing from the response, then Image Optimization did not process the image. Check the response's status code.
+
+-   **2xx or 3xx Response:** Verify that the rule that enables Image Optimization was [applied to the request](#applied-rules). 
+-   **5xx Response:** {{ PRODUCT }} was unable to communicate with your origin server and both the source and optimized image were not previously cached. Check your origin server's availability.
+    
+#### Check for Warnings and Errors {/*check-for-warnings-and-errors*/}
+
+Check the `x-edgeio-status` header to determine whether Image Optimization returned a warning or error.
+
+-   **OK:** Image Optimization performed one or more optimizations. 
+
+    Check for an `x-edgeio-warning` response header to find out whether one or more optimizations were skipped. Troubleshoot warnings by analyzing image metadata.
+
+-   **ERROR:** Perform the following steps:
+    -   Check for a `400 Bad Request` response. This type of response indicates that {{ PRODUCT }} was unable to optimize the requested image due to an unsupported query string parameter or value. Fix the request URL's query string and then try again. 
+    -   Check the `x-edgeio-error` response header to find out how the [optimized image exceeded our limits](/applications/performance/image_optimization#image-requirements). 
+
+#### Image Metadata Analysis {/*image-metadata-analysis*/}
+
+By default, {{ PRODUCT }} does not provide information about the source or output image. Include this information by setting the following header within a request to optimize an image: `x-ec-edgeio-debug: info`
+
+The response for such a request includes a `x-edgeio-info` response header. Use this header to analyze basic properties for the source and transformed image.
+
+[Learn more about the x-edgeio-info response header.](/applications/performance/image_optimization#troubleshooting)
 
 ## Status Codes {/*status-codes*/}
 

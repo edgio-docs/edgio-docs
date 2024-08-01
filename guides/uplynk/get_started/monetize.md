@@ -85,7 +85,7 @@ By following these steps, you can effectively distribute your live streaming con
 
 ## Ads  {/*ads*/}
 
-### Overview  {/*ads-overview*/}
+### General Information  {/*general-information*/}
 
 Monetize your content by inserting ads seamlessly into your live streams and video-on-demand (VOD) content. Our ad insertion service ensures a smooth transition between your content and advertisements, enhancing the viewing experience while maximizing your revenue potential.
 

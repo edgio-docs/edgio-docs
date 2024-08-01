@@ -152,7 +152,7 @@ Before creating a CSL slicer, you must first perform the following steps:
 
 <Info>If you modified the CSL slicer's slicer version, the CSL slicer will automatically restart. No further action is required to apply changes to your CSL slicer's slicer configuration.</Info>
 
-### Customize a Slicer     {/*customize-a-slicer*/}
+### Customize a CSL Slicer     {/*customize-a-slicer*/}
 
 You can import existing slicer configuration settings or adjust a slicer's settings.
 

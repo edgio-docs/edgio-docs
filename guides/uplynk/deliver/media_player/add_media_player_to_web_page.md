@@ -15,7 +15,7 @@ This section provides instructions on how to host a media player that can stream
 - Basic web server administration
 - Basic HTML coding
 
-## Key Steps:
+## Key Steps
 
 1. Verify web server access.
 2. Link to libraries.

@@ -118,7 +118,7 @@ const nav = {
       icon: 'server',
       routes: [
         {
-          title: 'Content',
+          title: 'Assets',
           path: 'manage/assets',
           routes: [
             {
@@ -140,8 +140,16 @@ const nav = {
           path: 'manage/channels',
           routes: [
             {
-              title: 'Boundaries',
+              title: 'Linear',
               path: 'manage/channels/boundaries',
+            },
+            {
+              title: 'virtual Linear',
+              path: 'manage/channels/virtual_linear',
+            },
+            {
+              title: 'Boundaries',
+              path: 'manage/channels/linear',
             },
           ],
         },

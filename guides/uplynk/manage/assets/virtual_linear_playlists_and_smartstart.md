@@ -213,5 +213,161 @@ This feature allows you to copy an existing playlist's entries and settings whil
 
 1. Navigate to the [Playlists page](https://cms.uplynk.com/static/cms2/index.html#/content/playlists): From the main menu, navigate to **Content** > **Playlists**.
 2. Click on the desired playlist.
-3. Click **Delete Playlist**.
-4. When prompted, confirm deletion by typing DELETE and then clicking **Delete Playlist**.
+3. Click **Delete Playlist** from the bottom right corner.
+4. When prompted, confirm deletion by clicking **Delete**.
+
+## Virtual Linear Experience  {/*virtual-linear-experience*/}
+
+Simulate a more authentic virtual linear experience by implementing the following components:
+
+- [Timeline](#timeline) - Set up a timeline by including timeline metadata through the `dmm.schemas.top` query string parameter and then using this metadata to construct the timeline within your player.
+- [Seeking](#seeking) - Use the `plts` (i.e., playlist timestamp) query string parameter within the playback URL to seek to a specified position in the playlist.
+
+## Timeline  {/*timeline*/}
+
+Implement a timeline within your player by leveraging content duration and ad break location information provided within a timeline Dynamic Manifest Marker. A Dynamic Manifest Marker dynamically provides different types of metadata (e.g., timeline and ad break information) within the manifest file.
+
+<Warning>A timeline Dynamic Manifest Marker does not provide information about ad duration. Additionally, ad break duration is unknown at the start of the playback of a virtual linear playlist. Therefore, we recommend that ad breaks be represented within the timeline as events (e.g., a mark within the timeline).</Warning>
+
+<Warning>Include information about requested ads by adding ad break Dynamic Manifest Markers.</Warning>
+
+[Learn more.](#)
+
+### Add a Timeline Dynamic Manifest Marker  {/*add-a-timeline-dynamic-manifest-marker*/}
+
+To add a timeline Dynamic Manifest Marker to the top of a manifest file, include the following query string parameters in the playback URL:
+
+`&dmm.schemas.top=timeline&pltl=1`
+
+<Info>The `pltl` (i.e., playlist timeline) query string parameter adds timeline metadata for all of the assets defined within your virtual linear playlist. This could lead to a large timeline when your playlist contains multiple assets or when there are many ad breaks between assets.</Info>
+
+<Info>The `pltl` query string parameter is optional for Smartstart-enabled assets.</Info>
+
+**Sample playback request**: <br />
+`https://content.uplynk.com/playlist/10c5467d77c54dc4b739db2cd832143a.mpd?dmm.schemas.top=timeline&pltl=1`
+
+**Sample playback request (Smartstart)**:<br />`https://content.uplynk.com/playlist/12d5e67d77c54dc4b739fb2cd835944c.mpd?dmm.schemas.top=timeline`
+
+Sample representations of timeline metadata for HLS and DASH are provided below.
+
+- **HLS version 7 and up** - A timeline Dynamic Manifest Marker is added as an #EXT-X-DATERANGE tag at the top of a ray manifest file. The X-DATA attribute contains Base64-encoded timeline metadata.
+
+  **Example**:
+
+  ```
+  #EXT-X-DATERANGE:ID="2e64fcbc2c5d4eecbf5fc6bb4c8b2d60:2020-12-18 02:09:28.957000+00:00:playlist",
+
+  START-DATE="1970-01-01T00:00:00+00:00",
+
+  DURATION=60.3093,
+
+  CLASS="urn:uplynk:top-data:playlist:v1",
+
+  X-DATA="eyJicmVha3...VwZWF0IjotMX0="
+  ```
+
+- **DASH** - A timeline Dynamic Manifest Marker is added as an EventStream tag at the top of a manifest file.
+
+  **Example**:
+
+    ```
+    <EventStream schemeIdUri="urn:uplynk:top-data:timeline" timescale="90000" value="top-data">
+
+    <Event duration="5877840" id="5877840" presentationTime="0">{"repeat": -1, "content_duration": 60.3093, "breaks_count": 4, "session_id": "d9cab2afee494db7a0a5b877727ef387", "breaks": [{"id": 1, "offset": 11.0080}, {"id": 2, "offset": 26.0000}, {"id": 3, "offset": 33.0026}, {"id": 4, "offset": 52.0053}]}</Event>
+
+    </EventStream>
+    ```
+
+**Sample timeline metadata**:
+
+```
+{
+	'repeat': -1,
+	'content_duration': 60.3093,
+	'breaks_count': 4,
+	'session_id': 'd9cab2afee494db7a0a5b877727ef387',
+	'breaks': [{
+			'id': 1,
+			'offset': 11.0080
+		}, {
+			'id': 2,
+			'offset': 26.0000
+		}, {
+			'id': 3,
+			'offset': 33.0026
+		}, {
+			'id': 4,
+			'offset': 52.0053
+		}
+	]
+}
+```
+
+## Ad Break Dynamic Manifest Markers  {/*ad-break-dynamic-manifest-markers*/}
+
+A virtual linear playlist allows the player to fetch ads as playback approaches an ad break. Leverage ad break Dynamic Manifest Markers to provide metadata about requested ads.
+
+Add ad break Dynamic Manifest Markers to the manifest file by including the following query string parameter in the playback URL: <br />`&dmm.schemas.breaks=break_info`
+
+**Sample playback request**: <br />`https://content.uplynk.com/playlist/10c5467d77c54dc4b739db2cd832143a.mpd?dmm.schema.breaks=break_info`
+
+An ad break Dynamic Manifest Marker may include the following information:
+
+- Requested ad break duration
+- Actual ad break duration
+- Total duration for all ads
+- Number of ads in the ad break
+- Actual ad break duration status
+- Duration of the current ad
+- Position of the current ad within the ad break
+- Offset, in seconds, of the current ad within the ad break
+- Ad slate
+- Whether ad break information has been received from the ad server and processed
+
+Sample representations of this metadata for HLS and DASH are provided below.
+
+- **HLS Version 7 and Up** - An ad break Dynamic Manifest Marker is added as an `#EXT-X-DATERANGE` tag within a manifest file. The `X-DATA` attribute contains Base64-encoded ad break metadata. The `daterange` class for this data is: `urn:uplynk:ad-data:break_info`
+
+- **DASH** - An ad break Dynamic Manifest Marker is reported within an event stream with the following `schemeIdUri`:<br />`urn:uplynk:break_info:ad-data`
+
+Check the `dmm_data_not_ready` property to find out whether actual ad break duration is known.
+
+**Example (unknown actual ad break duration)**:<br />
+The following sample data indicates that actual ad break duration has not yet been determined:
+
+```
+{
+	'break_dur_req': 180.00,
+	'break_dur_act': -1,
+	'ad_dur': 10010.02,
+	'num_ads': 3,
+	'ad_slate': 0,
+	'dmm_data_not_ready': 1
+}
+```
+
+**Example (known actual ad break duration)**:<br />The following sample data indicates that actual ad break duration exceeded the requested ad break duration by 5.68 seconds:
+
+```
+{
+	'break_dur_req': 180.00,
+	'break_dur_act': 185.68,
+	'ad_dur': 10010.02,
+	'num_ads': 3,
+	'ad_slate': 0,
+	'dmm_data_not_ready': 0
+}
+```
+
+## Seeking  {/*seeking*/}
+
+Define the `plts` query string parameter within the playback URL to seek to a specific position within the playlist. This seek position is measured from the start of the playlist in seconds.
+
+**Sample playback URL**:<br />The following sample playback URL seeks 2 minutes from the start of the playlist:
+
+`https://content.uplynk.com/playlist/2e64fcbc2c5d4eecbf5fc6bb4c8b2d60.m3u8?plts=120`
+
+**Key information**:
+
+- Only content counts towards seek times. Specifically, ad breaks are excluded from this calculation.
+- The `plts` query string parameter is exempt from digital signatures.

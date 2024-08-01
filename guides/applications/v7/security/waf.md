@@ -127,7 +127,7 @@ Each request undergoes the following security workflow:
 
     <Info>
     Although most enforcement actions will cause {{ PRODUCT }} to stop evaluating a request, this is not the case for alerts generated as a result of a rate rule. Requests that generate alerts are still eligible for enforcement by other security rules defined within a Security Application configuration.
-    <br /><br />
+    <br />
     Rate rules is an exception with regards to request evaluation after an alert has been triggered. For all other security rules, {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further evaluation of a request once enforcement is triggered.
     </Info>
 

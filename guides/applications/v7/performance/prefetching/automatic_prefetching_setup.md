@@ -28,17 +28,23 @@ Set up involves adding an edge function from our library that automatically inje
 
 **{{ PORTAL }}: To inject Predictive Prefetching within your requests**
 
-1.  Navigate to the desired environment's **Edge Functions** page.
+1.  Add the Predictive Prefetching edge function to the desired environment. 
 
-    {{ ENV_NAV }} **Edge Functions**.
+    1.  Navigate to the desired environment's **Edge Functions** page.
 
-2.  Click **+ Create New** and then select **Generate Edge Function**.
-3.  From the **Edge Function Generators** pane, select `Predictive Prefetching` and then click **Add Edge Function**.
+        {{ ENV_NAV }} **Edge Functions**.
 
+    2.  Click **+ Create New** and then select `Generate Edge Function`. 
+    2.  Select `Predictive Prefetching` and then click **Add Edge Function**.
+    
+        ![Edge Function Generators - Predictive Prefetching](/images/v7/performance/prefetch-edge-function-generator.png)
+    
     {{ PRODUCT }} will now create an edge function and add two rules to invoke and configure Predictive Prefetching.
 
-4.  Click **Open Rules**.
-5.  Review your rules.
-    -   If
-    -   
-6.  Click **Deploy Changes**.
+2.  Review the newly created rules to ensure that:
+    -   Predictive prefetching will be enabled on the desired pages. Check the match condition for the rule that runs the Preditive Prefetching edge funtion.
+    -   The desired links will be prefetched. Check the match condition for the rule that defines the Set Max Age and Set Service Worker Max Age features.
+
+    ![Rules - Prefetching rules](/images/v7/performance/prefetch-rules.png)
+
+3.  Click **Deploy Changes**.

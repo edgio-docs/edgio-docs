@@ -29,13 +29,19 @@ Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}
 
 1.  Add the Predictive Prefetching edge function to the desired environment. 
 
-    From the **Edge Functions** page, click **+ Create New**, select `Generate Edge Function`. After which, select `Predictive Prefetching` and then click **Add Edge Function**.
+    1.  From the **Edge Functions** page, click **+ Create New** and then select `Generate Edge Function`. 
+    2.  Select `Predictive Prefetching` and then click **Add Edge Function**.
     
-    ![Edge Function Generators - Predictive Prefetching](/images/v7/performance/prefetch-edge-function-generator.png)
+        ![Edge Function Generators - Predictive Prefetching](/images/v7/performance/prefetch-edge-function-generator.png)
     
     {{ PRODUCT }} will now create an edge function and add two rules to invoke and configure Predictive Prefetching.
 
-2.  Review your rules.
+2.  Review the newly created rules to ensure that:
+    -   Predictive prefetching will be enabled on the desired pages. Check the match condition for the rule that runs the Preditive Prefetching edge funtion.
+    -   The desired links will be prefetched. Check the match condition for the rule that defines the Set Max Age and Set Service Worker Max Age features.
+
+    ![Rules - Prefetching rules](/images/v7/performance/prefetch-rules.png)
+
 3.  Click **Deploy Changes**.
 
 [View detailed procedure.](/applications/performance/prefetching/automatic_prefetching_setup#setup)

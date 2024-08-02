@@ -44,13 +44,22 @@ The following sample scenario assumes that the `Related resources` list is visib
 
 ![Prefetch sample scenario](/images/v7/performance/prefetch-example.png)
 
-In this scenario, the client will immediately submit the following requests while the user interacts with the page:
+**Request flow:**
 
-```
-https://cdn.example.com/schedule.html
-https://cdn.example.com/events.html
-https://cdn.example.com/statistics.html
-https://cdn.example.com/brochure.pdf
-```
+1.  The client submits a request for: `https://www.example.com`.
+2.  The closest POP responds with the payload for that request. This payload installs the `{{ PACKAGE_NAME }}/prefetch` package. It also contains links to related resources.
+3.  The predictive prefetching service worker detects that the viewport contains 4 links. As a result, it will submit the following 4 prefetch requests while the user interacts with the page:
+
+    ```
+    https://cdn.example.com/schedule.html
+    https://cdn.example.com/events.html
+    https://cdn.example.com/statistics.html
+    https://cdn.example.com/brochure.pdf
+    ```
+
+4.  The closest POP will provide a response for each prefetching request according to whether it has been cached within that POP. 
+
+    -   **Cache Hit:** Returns the requested content within a `200 OK` response.
+    -   **Cache Miss:** Returns a `412 Precondition Failed` response.
 
 Retrieving content before it is requested can potentially make it immediately available when it is requested by the client.

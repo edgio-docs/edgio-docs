@@ -1,5 +1,5 @@
 ---
-title: Prefetching with a Script Tag
+title: Manual Predictive Prefetching Setup
 ---
 
 Set up predictive prefetching by adding a script tag to all of your pages.

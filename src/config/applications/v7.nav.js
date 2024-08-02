@@ -174,12 +174,20 @@ const nav = {
           path: 'performance/prefetching',
           routes: [
             {
-              title: 'Prefetching with a Script Tag',
+              title: 'Automatic Setup',
+              path: 'performance/prefetching/automatic_prefetching_setup',
+            },
+            {
+              title: 'Manual Setup',
               path: 'performance/prefetching/prefetching_script_tag',
             },
             {
-              title: 'Prefetching with Edgio Sites',
-              path: 'performance/prefetching/prefetching_edgio_sites',
+              title: 'CDN-as-Code Setup',
+              path: 'performance/prefetching/prefetching_cdn_as_code',
+            },
+            {
+              title: 'Cache-Manifest.js File',
+              path: 'performance/prefetching/cache_manifest_js_file',
             },
           ],
         },

@@ -27,18 +27,18 @@ Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}
 
 **{{ PORTAL }}: To inject Predictive Prefetching within your requests**
 
-1.  Navigate to the desired environment's **Edge Functions** page.
+1.  Add the Predictive Prefetching edge function to the desired environment. 
 
-    {{ ENV_NAV }} **Edge Functions**.
-
-2.  Click **+ Create New** and then select **Generate Edge Function**.
-3.  From the **Edge Function Generators** pane, select `Predictive Prefetching` and then click **Add Edge Function**.
-
+    From the **Edge Functions** page, click **+ Create New**, select `Generate Edge Function`. After which, select `Predictive Prefetching` and then click **Add Edge Function**.
+    
+    ![Edge Function Generators - Predictive Prefetching](/images/v7/performance/prefetch-edge-function-generator.png)
+    
     {{ PRODUCT }} will now create an edge function and add two rules to invoke and configure Predictive Prefetching.
 
-4.  Click **Open Rules**.
-5.  Review your rules.
-6.  Click **Deploy Changes**.
+2.  Review your rules.
+3.  Click **Deploy Changes**.
+
+[View detailed procedure.](/applications/performance/prefetching/automatic_prefetching_setup#setup)
 
 **CDN-as-Code: To inject Predictive Prefetching within your requests**
 
@@ -128,3 +128,18 @@ These requests will be submitted with the following query string parameters: `{{
 This workflow is illustrated below.
 
 ![Prefetch workflow](/images/v7/performance/prefetch-how-does-it-work.png)
+
+### Sample Scenario {/*sample-scenario*/}
+
+The following sample scenario assumes that the `Related resources` list is currently visible to the user:
+
+![Prefetch sample scenario](/images/v7/performance/prefetch-example.png)
+
+In this scenario, the client will immediately submit the following requests while the user interacts with the page:
+
+-   https://cdn.example.com/schedule.html
+-   https://cdn.example.com/events.html
+-   https://cdn.example.com/statistics.html
+-   https://cdn.example.com/brochure.pdf
+
+Retrieving content before it is requested can potentially make it immediately available when it is requested by the client.

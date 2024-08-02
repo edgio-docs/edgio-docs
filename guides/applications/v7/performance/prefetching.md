@@ -10,12 +10,7 @@ A sample interaction with a predictive prefetching-enabled website is described 
 2.  The user's web browser requests popular pages, resources, and API calls. It then stores this content locally.
 3.  The user navigates to a different page. It is rendered immediately since that content was prefetched by the browser.
 
-## Quick Start {/*quick-start*/}
-
-The quickest way to get started is to automatically inject a tag that installs Predictive Prefetching to each of your pages and then add a rule that contains the following features:
-
--   [Set Max Age (max_age)](/applications/performance/rules/features#set-max-age)
--   [Set Service Worker Max Age (service_worker_max_age)](/applications/performance/rules/features#set-service-worker-max-age)
+## Setup {/*setup*/}
 
 Set up predictive prefetching:
 -   [Using our automated setup](/guides/performance/prefetching/automatic_prefetching_setup#setup) that installs predictive prefetching through an edge function and configures it through rules. This is the recommended approach if you deploy changes through the {{ PORTAL }}.
@@ -45,15 +40,17 @@ This workflow is illustrated below.
 
 ### Sample Scenario {/*sample-scenario*/}
 
-The following sample scenario assumes that the `Related resources` list is currently visible to the user:
+The following sample scenario assumes that the `Related resources` list is visible to the user as soon as the page loads:
 
 ![Prefetch sample scenario](/images/v7/performance/prefetch-example.png)
 
 In this scenario, the client will immediately submit the following requests while the user interacts with the page:
 
--   https://cdn.example.com/schedule.html
--   https://cdn.example.com/events.html
--   https://cdn.example.com/statistics.html
--   https://cdn.example.com/brochure.pdf
+```
+https://cdn.example.com/schedule.html
+https://cdn.example.com/events.html
+https://cdn.example.com/statistics.html
+https://cdn.example.com/brochure.pdf
+```
 
 Retrieving content before it is requested can potentially make it immediately available when it is requested by the client.

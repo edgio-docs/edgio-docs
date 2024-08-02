@@ -185,10 +185,6 @@ const nav = {
               title: 'CDN-as-Code Setup',
               path: 'performance/prefetching/prefetching_cdn_as_code',
             },
-            {
-              title: 'Cache-Manifest.js File',
-              path: 'performance/prefetching/cache_manifest_js_file',
-            },
           ],
         },
         {
@@ -725,6 +721,10 @@ const nav = {
         {
           title: 'CLI',
           path: 'performance/cdn_as_code/cli#commands',
+        },
+        {
+          title: 'Cache-Manifest.js File',
+          path: 'performance/prefetching/cache_manifest_js_file',
         },
         separator,
         {

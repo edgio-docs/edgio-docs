@@ -32,10 +32,13 @@ Set up involves adding an edge function from our library that automatically inje
 
     1.  Navigate to the desired environment's **Edge Functions** page.
 
-        {{ ENV_NAV }} **Edge Functions**.
+        1.  From the {{ PORTAL_LINK }}, select the desired private space or organization.
+        2.  Select the desired property.
+        3.  From the left-hand pane, select the desired environment from under the **Environments** section.
+        4.  From the left-hand pane, select **Edge Functions**.
 
     2.  Click **+ Create New** and then select `Generate Edge Function`. 
-    2.  Select `Predictive Prefetching` and then click **Add Edge Function**.
+    3.  Select `Predictive Prefetching` and then click **Add Edge Function**.
     
         ![Edge Function Generators - Predictive Prefetching](/images/v7/performance/prefetch-edge-function-generator.png)
     

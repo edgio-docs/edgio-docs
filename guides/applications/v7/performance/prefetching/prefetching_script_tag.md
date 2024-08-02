@@ -16,8 +16,8 @@ Set up predictive prefetching by adding a script tag to all of your pages.
 
 Perform the following steps:
 
-1.  [Register the service worker](#registering-the-service-worker-traditional-website) by adding a prefetching script tag to your web pages.
-2.  [Enable prefetching](#automatic-prefetching-traditional-website) for the desired requests by adding the following features within one or more rules:
+1.  [Register the service worker](#registering-the-service-worker-traditional-website) by adding a prefetching script tag to each web page that should support prefetching.
+2.  [Define a caching policy](#automatic-prefetching-traditional-website) for the set of requests that can be prefetched. This caching policy requires the following features:
 
     -   [Set Max Age (max_age)](/applications/performance/rules/features#set-max-age)
     -   [Set Service Worker Max Age (service_worker_max_age)](/applications/performance/rules/features#set-service-worker-max-age)
@@ -71,11 +71,11 @@ This package supports the following attributes:
 
 ### Automatic Prefetching {/*automatic-prefetching-traditional-website*/}
 
-{{ PRODUCT }} will attempt to prefetch links that meet all of the following conditions:
+{{ PRODUCT }} will attempt to prefetch links when all of the following conditions have been met:
 
--   [The {{ PACKAGE_NAME }}/prefetch script has been included on a page.](#registering-the-service-worker-traditional-website)
--   The link is displayed in the viewport (i.e., the area of the web page that is currently visible to the user).
--   The link matches at least one rule that contains both of the following features:
+-   [The {{ PACKAGE_NAME }}/prefetch script has been included on the page](#registering-the-service-worker-traditional-website) that contains the desired link.
+-   The desired link is displayed in the viewport (i.e., the area of the web page that is currently visible to the user).
+-   The desired link matches at least one rule that contains both of the following features:
     -   [Set Max Age (max_age)](/applications/performance/rules/features#set-max-age)
     -   [Set Service Worker Max Age (service_worker_max_age)](/applications/performance/rules/features#set-service-worker-max-age)
 

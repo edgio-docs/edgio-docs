@@ -2,6 +2,8 @@
 title: Monetize
 ---
 
+Monetize your content by inserting ads into live streams and VOD. In addition to streaming content directly to your consumers, you may also simultaneously distribute it to multiple social media and content distribution platforms with minimal effort.
+
 ## Syndication  {/*syndication*/}
 
 Our Syndication product allows you to distribute your live or virtual live content simultaneously to multiple social media and content distribution platforms, such as YouTube, with minimal effort. By setting up publishing targets, you can configure your streams to be pushed or pulled using various protocols, including HLS-Pull for platforms that support this method. This feature ensures that your content reaches a wider audience across different platforms without the need for multiple streams. Additionally, our Syndication product supports the insertion of SCTE-35 markers to indicate where ads should be placed, enabling better ad management and monetization.

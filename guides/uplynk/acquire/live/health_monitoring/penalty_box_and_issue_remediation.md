@@ -15,9 +15,9 @@ To view the [Penalty Box](https://monitor.uplynk.com/penalty-box), follow these 
 1. From the main menu, navigate to **Services** and then click on **Monitoring 2.0**.
 2. Open the **Slicers** menu and then click on **Penalty Box**.
 
-The Penalty Box displays all unhealthy Live Slicers for any of your [monitored accounts](/uplynk/acquire/live/health_monitoring/setup/#enable-disable).
+The Penalty Box displays all unhealthy Live Slicers for any of your [monitored accounts](/uplynk/acquire/live/health_monitoring/#enable-disable).
 
-- Unhealthy Live Slicers for your own account belong to the **Personal slicers** category. This category also includes any Live Slicers to which you have been granted access that do not belong to your [organization](/uplynk/acquire/live/health_monitoring/organizations).
+- Unhealthy Live Slicers for your own account belong to the **Personal slicers** category. This category also includes any Live Slicers to which you have been granted access that do not belong to your [organization](/uplynk/acquire/live/health_monitoring/#organizations).
 - If you belong to an organization, then your organization will also be displayed as a category.
 
 Each category indicates the number of Live Slicers that are experiencing one or more monitored metrics at critical and warning levels.

@@ -143,7 +143,7 @@ Initializes the slicer module. Call this function via the `Initialize()` functio
 
 Returns a string that indicates the current Live Slicer state.
 
-### Valid values are:
+**Valid values are:**
 
 - **start_blackout**: Indicates that the Live Slicer started up and remains in blackout mode.
 - **slicing**: Indicates that the Live Slicer is currently slicing.

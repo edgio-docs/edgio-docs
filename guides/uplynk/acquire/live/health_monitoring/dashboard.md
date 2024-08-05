@@ -19,11 +19,11 @@ The **right pane** provides the following information and statistics for each Li
 
 | Column Name | Description  |
 |---|---|
-| Health  | Indicates Live Slicer health via the following color-coded icons:<ul><li><Image inline src="/images/uplynk/healthy.png" alt="Revert" /> **Healthy**: Indicates that all monitored metrics are below warning thresholds.</li><li><Image inline src="/images/uplynk/neutral.png" alt="Revert" /> **Neutral**: Indicates that the Live Slicer is not slicing content.</li><li><Image inline src="/images/uplynk/warning.png" alt="Revert" /> **Warning**: Indicates that one or more monitored metrics are at warning levels.</li><li><Image inline src="/images/uplynk/critical.png" alt="Revert" /> **Critical**: Indicates that one or more monitored metrics are at critical levels. </li></ul><br /><Tip>A Live Slicer's status is determined by [ruleset](/uplynk/acquire/live/health_monitoring/setup/#monitoring-rules). If a Live Slicer has been [assigned multiple rulesets](/uplynk/acquire/live/health_monitoring/setup/#assign-custom-set), then each unique combination of Live Slicer and ruleset will be listed on the dashboard.</Tip> |
+| Health  | Indicates Live Slicer health via the following color-coded icons:<ul><li><Image inline src="/images/uplynk/healthy.png" alt="Revert" /> **Healthy**: Indicates that all monitored metrics are below warning thresholds.</li><li><Image inline src="/images/uplynk/neutral.png" alt="Revert" /> **Neutral**: Indicates that the Live Slicer is not slicing content.</li><li><Image inline src="/images/uplynk/warning.png" alt="Revert" /> **Warning**: Indicates that one or more monitored metrics are at warning levels.</li><li><Image inline src="/images/uplynk/critical.png" alt="Revert" /> **Critical**: Indicates that one or more monitored metrics are at critical levels. </li></ul><br /><Tip>A Live Slicer's status is determined by [ruleset](/uplynk/acquire/live/health_monitoring/#monitoring-rules). If a Live Slicer has been [assigned multiple rulesets](/uplynk/acquire/live/health_monitoring/#assign-custom-set), then each unique combination of Live Slicer and ruleset will be listed on the dashboard.</Tip> |
 | Duration| Indicates the amount of time that the Live Slicer has been in the current health state.   |
 | Slicer ID     | Indicates a Live Slicer's ID. This ID is defined by the slicerID parameter in the Live Slicer's configuration file.     |
 | Ruleset | Indicates the ruleset used to determine the state of Live Slicer health. |
-| Owner   | Identifies the name of the user that owns the Live Slicer.   <br />[Learn how to monitor Live Slicers across multiple accounts](/uplynk/acquire/live/health_monitoring/setup/#enable-disable).  |
+| Owner   | Identifies the name of the user that owns the Live Slicer.   <br />[Learn how to monitor Live Slicers across multiple accounts](/uplynk/acquire/live/health_monitoring/#enable-disable).  |
 | IP| Indicates the Live Slicer's IP address.   |
 | Zone    | Indicates the zone to which the Live Slicer is pushing content.|
 | Broker  | Identifies the name of the broker handling the Live Slicer's content.|
@@ -32,12 +32,12 @@ The **right pane** provides the following information and statistics for each Li
 | Signal  | Indicates the input signal type:<ul><li>**Blackmagic Capture Devices**: Indicates the signal format reported by the card. Sample value: `HD 1080i 60fps`</li><li>**UDP Transport Streams**: Reports the following information: TS \{multicast unicast\}\{Source IP Address\}:\{Port\}\{Resolution Width x Height\} </li><li>**No Signal**: Reports the following value when the signal is lost: No signal</li></ul>|
 | Luma    | Indicates the average luminosity percentage for the last few seconds of video. This percentage will only be returned when the Live Slicer has reported a luma value. |
 | Vol     | Indicates the average loudness percentage for the last few seconds of audio. This percentage will only be returned when the Live Slicer has reported a volume value. |
-| CCLS    | Indicates the number of seconds since the Live Slicer received the most recent caption. <br /> [Learn more](/uplynk/acquire/live/health_monitoring/metrics). |
-| NTLS    | Indicates the number of seconds since the Live Slicer received the most recent Nielsen tag. <br />[Learn more](/uplynk/acquire/live/health_monitoring/metrics).    |
-| SCTELS  | Indicates the number of seconds since the Live Slicer received the most recent SCTE signal. <br />[Learn more](/uplynk/acquire/live/health_monitoring/metrics).    |
-| PB| Indicates the number of packets that are queued to be read by the Live Slicer. <br />[Learn more](/uplynk/acquire/live/health_monitoring/metrics). |
-| DF| Indicates the number of [dropped frames](/uplynk/acquire/live/health_monitoring/metrics).|
-| UQ| Indicates the number of slices that are awaiting to be uploaded. <br />[Learn more](/uplynk/acquire/live/health_monitoring/metrics).    |
+| CCLS    | Indicates the number of seconds since the Live Slicer received the most recent caption. <br /> [Learn more](/uplynk/acquire/live/health_monitoring/#metrics). |
+| NTLS    | Indicates the number of seconds since the Live Slicer received the most recent Nielsen tag. <br />[Learn more](/uplynk/acquire/live/health_monitoring/#metrics).    |
+| SCTELS  | Indicates the number of seconds since the Live Slicer received the most recent SCTE signal. <br />[Learn more](/uplynk/acquire/live/health_monitoring/#metrics).    |
+| PB| Indicates the number of packets that are queued to be read by the Live Slicer. <br />[Learn more](/uplynk/acquire/live/health_monitoring/#metrics). |
+| DF| Indicates the number of [dropped frames](/uplynk/acquire/live/health_monitoring/#metrics).|
+| UQ| Indicates the number of slices that are awaiting to be uploaded. <br />[Learn more](/uplynk/acquire/live/health_monitoring/#metrics).    |
 | CPU     | Indicates the percentage of CPU usage for the computer hosting the Live Slicer. CPU usage is reported for 1 second, 5 seconds, and 15 seconds ago.|
 | OS| Indicates the operating system for the computer hosting the Live Slicer. |
 | Real MEM| Indicates the amount of physical memory, in MB, used by the Live Slicer. |
@@ -59,7 +59,7 @@ By default, all Live Slicers that have been associated with the currently select
 View more detailed health information by clicking on a Live Slicer.
 
 - **Health Measurement**: Live Slicer health is measured according to its current ruleset. View and/or set a Live Slicer's ruleset from the pane on the right-hand side of the window.
-- **Assign Rulesets**: Assign rulesets to one or more Live Slicer(s) from the [Monitoring Rules](/uplynk/acquire/live/health_monitoring/setup/#monitoring-rules) page.
+- **Assign Rulesets**: Assign rulesets to one or more Live Slicer(s) from the [Monitoring Rules](/uplynk/acquire/live/health_monitoring/#monitoring-rules) page.
 - **Set Profile**: View and/or set the profile that determines when the Live Slicer will push health data to Amazon SNS or trigger audio notifications from the pane on the right-hand side of the window.
 
 This mode consists of the following four views: Slicer Snapshot, Charts, Health Details, Status.
@@ -95,7 +95,7 @@ Each metric is color-coded to indicate health status:
 
 Some of the metrics reported in this view may be responsible for determining Live Slicer health status in multiple ways. This relationship is explored below.
 
-<Tip>For more information see [Monitoring Metrics](/uplynk/acquire/live/health_monitoring/metrics).</Tip>
+<Tip>For more information see [Monitoring Metrics](/uplynk/acquire/live/health_monitoring/#metrics).</Tip>
 
 | Metric | Description |
 |---|---|

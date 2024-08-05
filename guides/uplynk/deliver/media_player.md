@@ -12,18 +12,11 @@ Create a media player to playback:
 
 - Embed a Media Player
 - Add a Media Player to a Web Page
-- Roku Channel
-- iOS App
 
 ## Helpful Resources  {/*hepful-resources*/}
 
 - Playback URLs
-- HTML5 AdaptivePlayer SDK
-- Web Players
-- Android SDK
-- Microsoft Media Platform: Player Framework
-- Microsoft Universal Windows Platform
-- Xbox 360 Development
+
 
 ## Client API  {/*client-api*/}
 

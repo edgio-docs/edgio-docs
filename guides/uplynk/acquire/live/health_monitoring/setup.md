@@ -29,7 +29,7 @@ The Live Slicer Monitoring dashboard shows health statistics for all active and 
 
         <Info>Monitoring permissions defined on the Account Access page only determine access to the legacy Live Slicer Health dashboard. This version of the Live Slicer Monitoring dashboard requires that you grant monitoring permissions through the Allowed Watchers page. [Learn more](#permissions).</Info>
 
-   - You belong to an organization that has been assigned the account that owns the desired Live Slicer(s). [Learn more](/uplynk/acquire/health_monitoring/organizations).
+   - You belong to an organization that has been assigned the account that owns the desired Live Slicer(s). [Learn more](/uplynk/acquire/health_monitoring/#organizations).
 
 2. **Enable Monitoring:** You must enable monitoring on the customer account that owns the Live Slicer.
 
@@ -162,7 +162,7 @@ A Slicer View identifies a set of Live Slicers. You may switch between Slicer Vi
    - Type the name that will be assigned to the Slicer View in the View Name field.
    - Optional: Use the Search field to filter the list of available Live Slicers by name and owner.
    - Mark the desired Live Slicers.
-   - Click ![Card](/images/uplynk/red-add-icon.png).
+   - Click the red add icon.![Red add icon](/images/uplynk/red-add-icon.png)
    - Click **Save**.
 
 ### Modify a Slicer View  {/*modify-slicer-view*/}
@@ -298,7 +298,7 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 
 ## Metrics  {/*metrics*/}
 
-Refer to the matrix of [monitoring metrics](/uplynk/acquire/health_monitoring/metrics).
+Refer to the matrix of [monitoring metrics](/uplynk/acquire/health_monitoring/#metrics).
 
 ## Audio Notifications  {/*audio-notifications*/}
 

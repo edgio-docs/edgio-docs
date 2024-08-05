@@ -12,6 +12,15 @@ A sample interaction with a predictive prefetching-enabled website is described 
 
 ## Setup {/*setup*/}
 
+Set up predictive prefetching using one of the following options:
+
+| Setup  | Description  |
+|---|---|---|
+| [Automatic](/guides/performance/prefetching/automatic_prefetching_setup#setup) | Automatically generates an edge function and rules through which predictive prefetching is enabled for your web page. This is the recommended approach if you deploy changes through the {{ PORTAL }}.  <br /><Info>Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}</Info>|
+| [Manual](/guides/performance/prefetching/prefetching_script_tag#setup)  | Manually enable predictive prefetching on each desired page by adding a script tag. Additionally, you must create a rule that defines a caching policy for the set of requests that will be prefetched by your clients.|
+| [CDN-as-Code](/applications/performance/prefetching/prefetching_edgio_sites)  | Build, serve, and register a service worker that will prefetch requests. Additionally, you must create a rule that defines a caching policy for the set of requests that will be prefetched by your clients. This is the recommended approach for a JavaScript front-end framework that uses CDN-as-code.|
+
+<!--
 Set up predictive prefetching:
 -   [Using our automated setup](/guides/performance/prefetching/automatic_prefetching_setup#setup) that installs predictive prefetching through an edge function and configures it through rules. This is the recommended approach if you deploy changes through the {{ PORTAL }}.
 
@@ -23,6 +32,7 @@ Set up predictive prefetching:
 
 -   [Manually](/guides/performance/prefetching/prefetching_script_tag#setup) by adding a script tag to each desired page and then defining a caching policy for the content that will be prefetched.
 -   [Using our @edgio/prefetch package](/applications/performance/prefetching/prefetching_edgio_sites). This is the recommended approach for a JavaScript front-end framework that uses CDN-as-code.
+-->
 
 ## How Does It Work? {/*how-does-it-work*/}
 
@@ -56,6 +66,8 @@ The following sample scenario assumes that the `Related resources` list is visib
     https://cdn.example.com/statistics.html
     https://cdn.example.com/brochure.pdf
     ```
+
+    It will also submit prefetch requests for resources defined within each page's `<HEAD>` element, such as stylesheets and scripts. 
 
 4.  The closest POP will provide a response for each prefetching request according to whether it has been cached within that POP. 
 

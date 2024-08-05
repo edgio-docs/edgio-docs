@@ -71,7 +71,7 @@ Upon creating a CSL slicer, you must associate it with an ingest point from whic
 4. Click **Delete Ingest Point**.
 5. Click **Yes, Delete** to confirm the deletion.
 
-## Cloud Slicer Live Administration  {/**/}
+## Cloud Slicer Live Administration  {/*cloud-slicer-live-administration*/}
 
 Before creating a CSL slicer, you must first perform the following steps:
 
@@ -81,7 +81,7 @@ Before creating a CSL slicer, you must first perform the following steps:
 
 <Info>The SRT streaming protocol requires slicer version 22060200 or higher.</Info>
 
-3. **[Create an Ingest Point](#create-an-injest-point)** point within the region identified in step 1.
+3. **[Create an Ingest Point](#create-ingest-point)** point within the region identified in step 1.
 
 ### Key Information  {/*key-info*/}
 

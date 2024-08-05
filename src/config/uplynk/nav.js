@@ -141,15 +141,15 @@ const nav = {
           routes: [
             {
               title: 'Linear',
-              path: 'manage/channels/boundaries',
+              path: 'manage/channels/linear',
             },
             {
-              title: 'virtual Linear',
+              title: 'Virtual Linear',
               path: 'manage/channels/virtual_linear',
             },
             {
               title: 'Boundaries',
-              path: 'manage/channels/linear',
+              path: 'manage/channels/boundaries',
             },
           ],
         },
@@ -168,10 +168,6 @@ const nav = {
             {
               title: 'Blackout',
               path: 'manage/content_protection/blackout',
-            },
-            {
-              title: 'Set up Blackout',
-              path: 'manage/content_protection/set_up_blackout',
             },
             {
               title: 'Conditional and Reverse Blackout',
@@ -201,6 +197,14 @@ const nav = {
             {
               title: 'Google Ad Manager',
               path: 'monetize/ads/google_ad_manager',
+            },
+            {
+              title: 'FreeWheel',
+              path: 'monetize/ads/freewheel',
+            },
+            {
+              title: 'Ad Insertion Data',
+              path: 'monetize/ads/ad_insertion_data',
             },
           ],
         },

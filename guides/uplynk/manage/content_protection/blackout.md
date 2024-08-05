@@ -128,7 +128,7 @@ You have created an audience for each major metropolitan area in a state. Howeve
 
 **To Set Up a Superaudience**
 
-1. Navigate to the **Audiences** page (**Live Channels** > **Audiences**).
+1. Navigate to the [**Audiences**](https://cms.uplynk.com/static/cms2/index.html#/live-channels/audiences) page (**Live Channels** > **Audiences**).
 
 2. Click **+ Create Audience**.
 
@@ -157,7 +157,7 @@ A blackout rule defines when and how a blackout will be applied to blacked-out c
 
 ## Create a Blackout Rule  {/*create-blackout-rule*/}
 
-1. Navigate to the **Audiences** page (**Live Channels** > **Audiences**).
+1. Navigate to the [**Audiences**](https://cms.uplynk.com/static/cms2/index.html#/live-channels/audiences) page (**Live Channels** > **Audiences**).
 
 2. Click **+ Create Rule**.
 
@@ -203,7 +203,7 @@ Set up a blackout configuration on a live channel by:
 
 ### Configure Blackout on a Live Channel  {/*configure-blackout-on-live-channel*/}
 
-1. Navigate to the [**Audiences**](https://cms.uplynk.com/static/cms2/index.html#/live-channels/audiences) page.
+1. Navigate to the [**Audiences**](https://cms.uplynk.com/static/cms2/index.html#/live-channels/audiences) page (**Live Channels** > **Audiences**).
 
 2. Perform either of the following:
    - Create a live channel by clicking **+ Create Channel**, assigning it a name, and then clicking **Create & Edit**.
@@ -299,3 +299,118 @@ Blackout may only be applied to assets that have been assigned a blackout ID (i.
 5. Set the new `blackout_id` metadata field to the desired blackout ID.
 
 6. Click **Save**.
+
+## Tutorial
+
+# Setting up Blackout Tutorial
+
+Learn how to set up Blackout and apply it to live linear channel programming.
+
+**Prerequisites:**
+
+- Live Slicer
+- Live linear channel (CMS)
+
+**Key Steps:**
+
+1. Create an audience.
+2. Create a blackout rule.
+3. Prepare a live channel for blackout.
+4. Set up a media player.
+5. Apply Blackout to programming.
+
+## Introduction
+
+Blackout is designed to limit the distribution of restricted content, such as sporting events, movies, and other types of licensed content. Instead of the regularly scheduled program, content from an alternate source will be broadcast to blacked out viewers.
+
+<Tip>This functionality is handled on the server, eliminating the need for special client-side code or SDKs.</Tip>
+
+Blackout provides the means to:
+
+- Replace restricted content as needed.
+- Tailor the set of blacked out viewers to meet your business needs.
+- Easily define alternate programming for blacked out viewers.
+
+### Step 1: Create an Audience
+
+A blackout zone defines a region by zip code, market (DMA), or IP address/subnet. This blackout zone may then be leveraged when defining how Blackout may be applied to a live linear channel.
+
+1. Sign in to the [CMS](https://cms.uplynk.com/).
+2. Navigate to the [**Audiences**](https://cms.uplynk.com/static/cms2/index.html#/live-channels/audiences) page (**Live Channels** > **Audiences**).
+3. Click **+ Create Audience**.
+4. In the **Audience Name** option, type "Los Angeles."
+5. Under the **Type** option, verify that the **Single** mode has been selected.
+6. Click **Create & Edit**.
+7. From the **Match** option, select **Any**.
+8. Add a DMA by clicking **+** under the **DMAs** section.
+9. Type "803." This ID corresponds to the Los Angeles market.
+10. Click **Add** to add the Los Angeles market to the audience.
+11. Click **Save** to update the audience configuration with these changes.
+
+### Step 2: Define a Blackout Rule
+
+Defining a blackout rule does not automatically apply Blackout to a live linear channel. Blackout must be enabled on a per program or asset basis.
+
+<Tip>A blackout rule identifies viewers that should be blacked out and the alternate content that will be streamed to them.</Tip>
+
+1. Navigate to the [Rules](https://cms.uplynk.com/static/cms2/index.html#/live-channels/rules) page (**Live Channels** > **Rules**).
+2. Click **+ Create Rule**.
+3. In the **Rule Name** option, type `Blackout LA Rule`.
+4. Click **Create & Edit**.
+5. From the **Alternate Content Type** option, select "slate."
+6. Click **+ Add Audience** to display the Select Audience dialog box.
+7. From the **Available Audiences** list, select "Los Angeles" and then click **Select**.
+8. Click **Save** to apply your changes to the blackout rule.
+
+### Step 3: Prepare a Live Channel for Blackout
+
+Setting up Blackout on a live channel requires defining when and how blackout is applied by assigning it a blackout ID and rule.
+
+1. Navigate to the [Live Channels](https://cms.uplynk.com/static/cms2/index.html#/live-channels) page.
+2. Select the desired live channel.
+3. Click the **Blackout** tab.
+4. Click **+ Add Blackout ID**.
+5. In the **Blackout ID** option, type `LA-Sports`.
+6. In the **Description** option, type `Los Angeles Sports`.
+7. From the **Rules** option, select **Blackout LA Rule** and then click **>**.
+8. Click **Done**.
+9. Click **Save** to apply your changes to the live channel.
+
+### Step 4: Set up a Media Player
+
+The enforcement of Blackout is only possible when a media player loads the Blackout replacement plugin. Load this plugin by adding "repl=aboi" as a query string to the playback URL.
+
+**Example:**
+
+The following sample URL corresponds to a test player:
+
+`https://content.uplynk.com/player5/6ZpnSRiEmjj3fMdnzDaV00sc.html?repl=aboi`
+
+<Info>Test players are solely meant to provide an easy way to demo content or test playback. They should not be used for production traffic.</Info>
+
+Modify the playback URL defined within your media player to include the following query string parameter: `repl=aboi`
+
+### Step 5: Apply Blackout to Programming
+
+Blackout may only be applied to live linear channel programming that has been assigned a blackout rule ID. One method for assigning a blackout rule ID is to set the `blackout_id` metadata field to the desired blackout ID. This tutorial leverages the [content_start](https://docs.edgecast.com/video/Content/Develop/Live-Slicer-API.htm#contentstart) method to start a new program in the live linear channel and apply this metadata field to it.
+
+1. Submit the following curl request to assign the "LA-Sports" blackout rule to a new program called "Los Angeles Home Game":
+
+    ```
+    curl --data '{"meta":{"blackout_id":"LA-Sports"},"title":"Los Angeles Home Game"}'
+          http://localhost:65009/content_start
+    ```
+
+2. Verify that the Live Slicer is now generating a new asset by performing the following steps:
+
+    - From the [Content tab](https://cms.uplynk.com/static/cms2/index.html#/content), verify that the asset currently being generated is called "Los Angeles Home Game" and then select it.
+    - Verify that this asset contains a `blackout_id` metadata field set to `LA-Sports`.
+
+    3. Verify that Blackout is currently being applied to the live linear channel.
+    - **DMA Override**: If you are not testing from Los Angeles, override the test player's DMA to the Los Angeles market by appending the following query string parameter to the playback URL launched in the [Step 4: Setting up a Media Player](#set-up-a-media-player) section: `repl.cbdma=803`
+      - **Sample playback URL**:<br />`https://content.uplynk.com/player5/6ZpnSRiEmjj3fMdnzDaV00sc.html?repl=aboi&repl.cbdma=803`
+    - Wait 30 to 60 seconds and then verify that the media player now streams slate.
+
+**Finished!**
+
+You have successfully applied Blackout to specific programming within a live linear channel. This configuration will force viewers in Los Angeles to view slate during each time slot for which the asset defined in step 5 has been scheduled in that live linear channel.

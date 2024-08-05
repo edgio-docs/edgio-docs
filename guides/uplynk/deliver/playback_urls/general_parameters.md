@@ -16,7 +16,7 @@ This section describes all customization parameters that are not specific to ad 
 | **dmm.schemas.top**    | Adds a Dynamic Manifest Marker (DMM) to the top of a manifest file. <br />**Example**: `dmm.schemas.top=first_segment_url`    |
 | **timeline**   | Set to `timeline` to add a timeline DMM to the top of a manifest file for Smartstart-enabled assets. <br />**Example**: `dmm.schemas.top=timeline`    |
 | **euid** | Identifies the current user with a custom ID. Should be 100 characters or less, using alphanumeric characters, underscores, or dashes. <br />**Example**: `euid=145XnM_0bHt2hZIGw8twtl3ccpjVF5rRVj6VJ_ZgqvtY2KmH` |
-| **expand**     | Identifies a comma-separated list of expansion parameters to shorten the playback URL and facilitate parameter adjustments. <br /> Note: Does not support parameters like `linearv`, `jsonp`, `pbs`, etc.   |
+| **expand**     | Identifies a comma-separated list of expansion parameters to shorten the playback URL and facilitate parameter adjustments. <br /> **Note**: Does not support parameters like `linearv`, `jsonp`, `pbs`, etc.   |
 | **forcecic**   | **DASH Live Streams Only** <br /> Set to `1` to always prepend a codec initialization clip to the manifest file. <br />**Example**: `forcecic=1`       |
 | **fpuseki**    | **Apple FairPlay Streaming Only** <br /> Set to `1` to minimize content key requests. Requires encoding profile changes and player update. <br />**Example**: `fpuseki=1`     |
 | **geo.country.allow**  | **Requires Geoblocking** <br /> Restricts access to requests from specified countries. <br /> **Syntax:** `?geo.country.allow=Country Code[,Country Code 2,Country Code n]`    |

@@ -4,7 +4,7 @@ title: Linear Channels
 
 A live channel represents a live linear stream that adheres to a timeline that identifies content and when it should be played.
 
-## Setup
+## Setup  {/*setup*/}
 
 Add audio/video content to a live channel via the following methods:
 
@@ -24,7 +24,7 @@ Add audio/video content to a live channel via the following methods:
 
 Click **Save** to apply your changes to your live channel's configuration.
 
-### To Create a Live Channel
+### Create a Live Channel  {/*create-a-live-channel*/}
 
 1. Navigate to the Live Channels page.
    - **From the main menu**, navigate to Channels.
@@ -36,7 +36,7 @@ Click **Save** to apply your changes to your live channel's configuration.
    - Tick the **Edit after creation** box to open the record after submitting.
 6. Click **Create**.
 
-### To Change the Default Playback Latency
+### Change the Default Playback Latency  {/*change-the-default-playback-latency*/}
 
 1. From the **Details** tab of the Live Channels record, select the **Playback Latency** option from the dropdown:
    - **Default:** ~60 seconds
@@ -48,14 +48,14 @@ Click **Save** to apply your changes to your live channel's configuration.
 3. Playback latency options cannot currently be used with Time Shifting.
 4. Contact Support if you do not see the Playback Latency feature.
 
-### To Delete a Live Channel
+### Delete a Live Channel  {/*delete-a-live-channel*/}
 
 1. Navigate to the Live Channels page.
    - **From the main menu**, navigate to Channels.
 2. Tick the box on the live channel's tile; then click **Delete Channel** at the bottom of the pane.
 3. When prompted to confirm, click **Delete**.
 
-### To Assign a Failover Group to a Live Channel
+### Assign a Failover Group to a Live Channel  {/*assign-a-failover-group*/}
 
 A prerequisite for this procedure is a failover group. [Learn more.](#)
 

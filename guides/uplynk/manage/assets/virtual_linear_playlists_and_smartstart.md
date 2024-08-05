@@ -229,9 +229,9 @@ Implement a timeline within your player by leveraging content duration and ad br
 
 <Warning>A timeline Dynamic Manifest Marker does not provide information about ad duration. Additionally, ad break duration is unknown at the start of the playback of a virtual linear playlist. Therefore, we recommend that ad breaks be represented within the timeline as events (e.g., a mark within the timeline).</Warning>
 
-<Warning>Include information about requested ads by adding ad break Dynamic Manifest Markers.</Warning>
+<Warning>Include information about requested ads by adding ad break Dynamic Manifest Markers. [Learn more.](#add-break-dynamic-manifest-markers)</Warning>
 
-[Learn more.](#)
+
 
 ### Add a Timeline Dynamic Manifest Marker  {/*add-a-timeline-dynamic-manifest-marker*/}
 

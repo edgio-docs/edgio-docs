@@ -6,7 +6,7 @@ Use Google Ad Manager (formerly known as DoubleClick for Publishers) to integrat
 
 [Learn how to get started](/uplynk/monetize/ads).
 
-### Ad Requests
+## Ad Requests  {/*ad-requests*/}
 
 Google Ad Manager has specific URL requirements for ad requests that meet the following criteria:
 
@@ -26,7 +26,7 @@ Our service performs the following modifications to ad requests that meet the ab
 - **Domain Substitution:** Our service substitutes the domain with `serverside.doubleclick.net`.
 - **Query String Parameter:** Our service adds the impression pinging entity query string parameter (`ipe=ssb`) when the `sssb=1` query string parameter is missing from the initial ad request.
 
-#### Initial Ad Request Examples
+### Initial Ad Request Examples  {/*initial-ad-examples*/}
 
 | Request URL (Initial) | Replacement URL (Initial) |
 |---|---|
@@ -35,7 +35,7 @@ Our service performs the following modifications to ad requests that meet the ab
 | http://pubads.g.doubleclick.net/gampad/ads?parameter1=value1&sssb=1 | https://serverside.doubleclick.net/gampad/ads?parameter1=value1 |
 | http://pubads.g.doubleclick.net/gampad/live/ads?parameter1=value1 | https://serverside.doubleclick.net/gampad/live/ads?parameter1=value1&ipe=ssb |
 
-#### Wrapper Request Examples
+### Wrapper Request Examples   {/*wrapper-request-examples*/}
 
 | Initial Request (`sssb=1`) | Request URL (Wrapper) | Replacement URL (Wrapper) |
 |---|---|---|
@@ -44,7 +44,7 @@ Our service performs the following modifications to ad requests that meet the ab
 | Present | http://pubads.g.doubleclick.net/gampad/ads?parameter1=value1 | https://serverside.doubleclick.net?parameter1=value1 |
 | Missing | http://pubads.g.doubleclick.net/gampad/ads?parameter1=value1 | https://serverside.doubleclick.net?parameter1=value1&ipe=ssb |
 
-## Ad Parameters
+## Ad Parameters  {/*ad-parameters*/}
 
 This section describes Google Ad Manager parameters.
 
@@ -136,7 +136,7 @@ This section describes Google Ad Manager parameters.
 | ad.vpos | Indicates whether the ad request is being sent from pre-roll,mid-roll or post-roll.<br />Default value:<br />By default, this parameter is set to the asset's external ID. If an external ID has not been defined, then it is set to the asset ID.<br /><br />Example: `ad.vpos=preroll, midroll, postroll` | Passes through as 'same_scor', default to timestamp; defaults to whether Uplynk is triggering it as a preroll or midroll. |
 | skippreroll | If the ad.preroll=1 URL parameter is specified in the Uplynk playback URL, the URL parameter `skippreroll=1` forces Uplynk to look ahead in the stream and skip the pre-roll ad if the mid-roll is within 60 seconds of the stream start.<br />`skippreroll=1` | This URL parameter skips the pre-roll if the mid-roll ad is within 60 seconds of the stream start. |
 
-## On-Demand Streaming: Customizing Ad Content for Ad Slots
+## On-Demand Streaming: Customizing Ad Content for Ad Slots  {/*on-demand-streaming*/}
 
 Ad requests for pre-roll, mid-roll, and post-roll ad slots can be customized by setting slot-specific values for any parameter. Mid-roll slots are identified by a zero-based index. Any of the available parameters can be overridden in the playback URL using this technique. Sample implementations for the `vpos` (ad request position) and `adUnit` (the adUnit for a Google Ad Manager order) parameters are provided below.
 
@@ -144,3 +144,22 @@ Ad requests for pre-roll, mid-roll, and post-roll ad slots can be customized by 
 |---|---|
 | ad.adUnit | Determines the custom adUnit values for each ad slot.<br /><br />Example: ad.pre.adUnit=yourAdUnit1&ad.0.adUnit=yourAdUnit2 |
 | ad.vpos | Determines the custom vpos values for each ad slot.<br /><br />Example: `ad.pre.vpos=preroll&ad.0.vpos=midroll` |
+
+## Ad Pod Duration  {/*ad-pod-duration*/}
+
+The duration of an ad pod can be customized by setting slot-specific values for the pmad and pmxd parameters.
+
+| Parameter | Description |
+|---|---|
+| ad.pmnd | Required for pmxd.<br />Determines the ad pod's minimum duration in milliseconds. Use this parameter when requesting multiple ads (i.e., an ad pod).<br />Example: `ad.pmnd=0` |
+| ad.pmxd | Required for pmnd.<br />Determines the ad pod's maximum duration in milliseconds. Use this parameter when requesting multiple ads (i.e., an ad pod).<br />Example: `ad.pmxd=60000` |
+
+## Macro Definitions  {/*macro-definitions*/}
+
+The system replaces the following macro definitions in the request URL with session-specific values.
+
+| Macro | Value |
+|---|---|
+| CORRELATOR | timestamp |
+| SCOR | timestamp |
+| URL | referrer url |

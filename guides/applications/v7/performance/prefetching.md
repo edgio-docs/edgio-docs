@@ -14,11 +14,11 @@ A sample interaction with a predictive prefetching-enabled website is described 
 
 Set up predictive prefetching using one of the following options:
 
-| Setup  | Description  |
-|---|---|---|
-| [Automatic](/guides/performance/prefetching/automatic_prefetching_setup#setup) | Automatically generates an edge function and rules through which predictive prefetching is enabled for your web page. This is the recommended approach if you deploy changes through the {{ PORTAL }}.  <br /><Info>Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}</Info>|
-| [Manual](/guides/performance/prefetching/prefetching_script_tag#setup)  | Manually enable predictive prefetching on each desired page by adding a script tag. Additionally, you must create a rule that defines a caching policy for the set of requests that will be prefetched by your clients.|
-| [CDN-as-Code](/applications/performance/prefetching/prefetching_edgio_sites)  | Build, serve, and register a service worker that will prefetch requests. Additionally, you must create a rule that defines a caching policy for the set of requests that will be prefetched by your clients. This is the recommended approach for a JavaScript front-end framework that uses CDN-as-code.|
+| Setup                                                                          | Description                                                                                                                                                                                                                                                                                               |
+| ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Automatic](/guides/performance/prefetching/automatic_prefetching_setup#setup) | Automatically generates an edge function and rules through which predictive prefetching is enabled for your web page. This is the recommended approach if you deploy changes through the {{ PORTAL }}.  <br /><Info>Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}</Info>                      |
+| [Manual](/guides/performance/prefetching/prefetching_script_tag#setup)         | Manually enable predictive prefetching on each desired page by adding a script tag. Additionally, you must create a rule that defines a caching policy for the set of requests that will be prefetched by your clients.                                                                                   |
+| [CDN-as-Code](/applications/performance/prefetching/prefetching_edgio_sites)   | Build, serve, and register a service worker that will prefetch requests. Additionally, you must create a rule that defines a caching policy for the set of requests that will be prefetched by your clients. This is the recommended approach for a JavaScript front-end framework that uses CDN-as-code. |
 
 <!--
 Set up predictive prefetching:

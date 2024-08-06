@@ -16,8 +16,8 @@ This capability allows you to define a list of URLs for which we will return a `
 **Key information:**
 -   Requests are processed in the following order:
 
-    1.  **Rules - URL Redirect Feature:** This feature takes precedence over bulk redirects.
-    2.  **Bulk Redirects:** Bulk redirects take precedence over rules that do not contain the URL Redirect feature.
+    1.  **Rules - URL Rewrite & URL Redirect Features:** These features take precedence over bulk redirects.
+    2.  **Bulk Redirects:** Bulk redirects take precedence over rules that do not contain the URL Rewrite or the URL Redirect features.
     3.  **Rules - Other Features:** Once a request is slated for redirection, only features that affect the response can be applied. For example, you may set headers for the `3xx` response sent to the client.
 
 -   Your redirect configuration is excluded from versioning. This allows you to roll back an environment to a previous version without affecting your URL redirects.

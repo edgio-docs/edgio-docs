@@ -125,6 +125,12 @@ Each request undergoes the following security workflow:
 
 6.  Has the rate limit been exceeded? If so, then the request is identified as a threat and no further checks will be performed.
 
+    <Info>
+    Although most enforcement actions will cause {{ PRODUCT }} to stop evaluating a request, this is not the case for alerts generated as a result of a rate rule. Requests that generate alerts are still eligible for enforcement by other security rules defined within a Security Application configuration.
+    <br />
+    Rate rules is an exception with regards to request evaluation after an alert has been triggered. For all other security rules, {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further evaluation of a request once enforcement is triggered.
+    </Info>
+
 7.  Was the client identified as a bot? If so, then the request is identified as a threat and no further checks will be performed.
 
 8.  The request will undergo threat detection analysis if the Security App configuration has been assigned a custom rule set. Was a rule in the custom rule set satisfied? If so, then the request is identified as a threat and no further checks will be performed.

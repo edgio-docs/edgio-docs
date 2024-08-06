@@ -818,6 +818,8 @@ The response from our CDN varies according to results for the request to optimiz
 |No Image|400 Bad Request|{{ PRODUCT }} was unable to optimize the requested image due to an unsupported query string parameter or value. Check the request URL and try again. The response will include the following headers:<br />`x-edgeio-status: ERROR`<br />`x-edgeio-error: Error Message`<br /><br />Check the `x-edgeio-error` response header for additional information on why the request failed.|
 |No Image|5xx|{{ PRODUCT }} was unable to communicate with your origin server and both the source and optimized image were not previously cached.|
 
+[Learn how to perform basic troubleshooting.](/applications/performance/troubleshooting#image-optimization)
+
 ## Bypassing {{ PRODUCT }} Image Optimization {/*bypassing-image-optimization*/}
 
 Prevent {{ PRODUCT }} from transforming an image by including the following header in the request:
@@ -826,9 +828,9 @@ Prevent {{ PRODUCT }} from transforming an image by including the following head
 
 This configuration allows our CDN to deliver the source image to the client.
 
-## Troubleshooting {/*troubleshooting*/}
+## Image Metadata Troubleshooting {/*troubleshooting*/}
 
-Perform basic troubleshooting by examining basic properties for the source and transformed image. Include this information in the response by setting the `x-ec-edgeio-debug` request header to `info`.
+If [basic troubleshooting](/applications/performance/troubleshooting#image-optimization) reveals that one or more optimizations were skipped, you should examine the basic properties for the source and transformed image to find out why. Include this information in the response by setting the `x-ec-edgeio-debug` request header to `info`.
 
 **Request header syntax:** `x-ec-edgeio-debug: info`
 

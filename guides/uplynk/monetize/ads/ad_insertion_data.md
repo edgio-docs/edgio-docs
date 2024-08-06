@@ -1,5 +1,5 @@
 ---
-title: Ad Insertion Data (Ad Server Debug)
+title: Ad Debug
 ---
 
 We provide near real-time data on the ads requested for your content. Analyze this information to gain insights into ad insertions, such as:

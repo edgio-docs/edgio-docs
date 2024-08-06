@@ -258,12 +258,12 @@ Our service sends information that describes a failover event in JSON format. Ke
 | **OID**    | Indicates the system-defined ID of the account for which this failover event occurred.  |
 | **FO_Group_Name** | Indicates a failover group's name.  |
 | **FO_Group_ID**   | Indicates a failover group's system-defined ID.   |
-| **Channels**      | Contains an array of the live channels associated with the failover group defined by the FO_Group_Name property.|
+| **Channels**      | Contains an array of the live channels associated with the failover group defined by the `FO_Group_Name` property.|
 | **Date_Time**     | Indicates when the notification was triggered. This timestamp is reported as Unix time in milliseconds.   |
 | **Original_Slicer** | Indicates the slicerID of the Live Slicer that was the source of the live stream prior to the failover event.  |
 | **Slicer** | Indicates the slicerID of the Live Slicer that was the source of the live stream after the failover event. |
 | **Reason** | Provides additional information about this failover event. For example, this parameter may indicate the reason for failover.  |
-| **Slicers_In_Group** | Contains a key-value pair for each Live Slicer associated with the failover group defined by the FO_Group_Name property.     |
+| **Slicers_In_Group** | Contains a key-value pair for each Live Slicer associated with the failover group defined by the `FO_Group_Name` property.     |
 || Each key-value pair identifies the name of a Live Slicer and its failover status. Valid failover states are described below.  |
 
 ### Valid Failover States  {/*valid-failover-states*/}

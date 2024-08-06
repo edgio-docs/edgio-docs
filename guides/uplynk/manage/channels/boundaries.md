@@ -43,9 +43,7 @@ The manner in which a boundary is handled when viewing a live stream is determin
 | replace_as_ad_return_early | If the ad parameter (e.g., `&ad=myadcampaign`) is present in the playback request, then this mode replaces the content within the boundary with dynamic advertisement(s). If there is insufficient ad content, then the stream will switch back to content once all ads have been streamed. |
 | skip   | This mode replaces the content within the boundary with slate.|
 
-**Sample URL:**
-
-`https://content.uplynk.com/<asset_id>.m3u8?ad=<ad_config>&boundary.c3=replace_as_ad`
+**Sample URL:**<br />`https://content.uplynk.com/<asset_id>.m3u8?ad=<ad_config>&boundary.c3=replace_as_ad`
 
 ### On-Demand Streaming
 
@@ -59,9 +57,7 @@ All boundaries defined within a live stream will be retained by the asset create
 | skip | The segment defined by the boundary will be omitted. In other words, the viewing experience will be seamless between the slices that occur right before and after the boundary. |
 | skip | This mode replaces the content within the boundary with slate. |
 
-**Sample URL:**
-
-`https://content.uplynk.com/<asset_id>.m3u8?ad=<ad_config>&boundary.c3=skip`
+**Sample URL:**<br />`https://content.uplynk.com/<asset_id>.m3u8?ad=<ad_config>&boundary.c3=skip`
 
 ### Use Cases
 
@@ -92,9 +88,7 @@ In this scenario, on-demand playback takes place 5 days after the live stream. T
 - Allow the playback of the original c7 boundaries as advertisements.
 - Skip the halftime boundary.
 
-**Sample URL:**
-
-`https://content.uplynk.com/<asset_id>.m3u8?boundary.c3=replace_as_ad&boundary.c7=ignore_as_ad&boundary.halftime=skip`
+**Sample URL:**<br />`https://content.uplynk.com/<asset_id>.m3u8?boundary.c3=replace_as_ad&boundary.c7=ignore_as_ad&boundary.halftime=skip`
 
 | Start Time - End Time | Boundary Type<br />(Live Slicer API) | Playback |
 |---|---|---|
@@ -116,15 +110,11 @@ In this scenario, on-demand playback takes place 8 days after the live stream. T
 - Replace the c7 boundaries with dynamic ads.
 - Include the content defined in the halftime boundary and treat it as standard content.
 
-**Sample URL:**
-
-`https://content.uplynk.com/<asset_id>.m3u8?boundary.c3=skip&boundary.c7=replace_as_ad&boundary.halftime=ignore_as_content`
+**Sample URL:**<br />`https://content.uplynk.com/<asset_id>.m3u8?boundary.c3=skip&boundary.c7=replace_as_ad&boundary.halftime=ignore_as_content`
 
 The following playback URL is also valid since ignore_as_content is set by default.
 
-**Sample URL:**
-
-`https://content.uplynk.com/<asset_id>.m3u8?boundary.c3=skip&boundary.c7=replace_as_ad`
+**Sample URL:**<br />`https://content.uplynk.com/<asset_id>.m3u8?boundary.c3=skip&boundary.c7=replace_as_ad`
 
 | Start Time - End Time | Boundary Name<br />(Given to the slice API) | Playback During On-Demand Streaming |
 |---|---|---|

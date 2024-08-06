@@ -1,5 +1,5 @@
 ---
-title: Sign Playback URL Tutorial
+title: Sign Playback URL
 ---
 
 Learn how to generate a signed playback URL that controls when content may be played. This tutorial provides instructions on how to stream a single asset. However, the same steps may be used to implement a media player that plays back a live channel or a live event.
@@ -18,7 +18,7 @@ Learn how to generate a signed playback URL that controls when content may be pl
 2. Add code to generate an authorized playback URL.
 3. Test playback.
 
-## Step 1 - Verify PHP Installation
+## Step 1: Verify PHP Installation
 
 This tutorial leverages PHP code to generate an authorization token that authorizes a media player to play back content. Since this PHP code is executed on the server, it requires PHP to be installed on the web server hosting the media player. The purpose of this step is to verify that PHP is properly installed.
 
@@ -51,11 +51,11 @@ This tutorial leverages PHP code to generate an authorization token that authori
     - Verify that the code defined in test.php matches the code defined above.
     - Verify that PHP has been properly installed on your web server.
 
-## Step 2 - Implement a Media Player in PHP
+## Step 2: Implement a Media Player in PHP
 
-A media player is required to playback content. The easiest way to implement a media player within a PHP file is to simply rename the web page created in the [Adding a Media Player to a Web Page](/uplynk/deliver/media_player/add_media_player_to_web_page) tutorial.
+A media player is required to playback content. The easiest way to implement a media player within a PHP file is to simply rename the web page created in the [Add a Media Player to a Web Page](/uplynk/deliver/media_player/add_media_player_to_web_page) tutorial.
 
-1. Follow the [Adding a Media Player to a Web Page](/uplynk/deliver/media_player/add_media_player_to_web_page) tutorial to create `player.html`.
+1. Follow the [Add a Media Player to a Web Page](/uplynk/deliver/media_player/add_media_player_to_web_page) tutorial to create `player.html`.
 
 2. Rename `player.html` to `player.php`.
 
@@ -63,9 +63,9 @@ A media player is required to playback content. The easiest way to implement a m
 
 4. Load `player.php` in a web browser to verify that it can still playback content.
 
-## Step 3 - Re-enable the URL Signature Requirement
+## Step 3: Re-enable the URL Signature Requirement
 
-The [Adding a Media Player to a Web Page](/uplynk/deliver/media_player/add_media_player_to_web_page) tutorial disabled the requirement for a digitally signed playback URL to remove any potential obstacles for content playback in a test environment. Once the asset is ready for playback in a production environment, this requirement should be reapplied to prevent unauthorized playback.
+The [Add a Media Player to a Web Page](/uplynk/deliver/media_player/add_media_player_to_web_page) tutorial disabled the requirement for a digitally signed playback URL to remove any potential obstacles for content playback in a test environment. Once the asset is ready for playback in a production environment, this requirement should be reapplied to prevent unauthorized playback.
 
 1. From the CMS, navigate to the [**Content**](https://cms.uplynk.com/static/cms2/index.html#/content) tab and then select the asset associated with `player.php`.
 
@@ -75,7 +75,7 @@ The [Adding a Media Player to a Web Page](/uplynk/deliver/media_player/add_media
 
 4. Reload `player.php`. It should no longer allow playback, as playback now requires a digitally signed playback URL.
 
-## Step 4 - Implement Token Generation
+## Step 4: Implement Token Generation
 
 Update the PHP file to generate a playback URL that authorizes playback for any viewer by:
 

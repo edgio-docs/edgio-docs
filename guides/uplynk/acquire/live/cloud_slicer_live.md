@@ -69,7 +69,7 @@ Upon creating a CSL slicer, you must associate it with an ingest point from whic
    - **NOT_IN_USE**: Proceed to the next step.
 3. Click on the desired ingest point.
 4. Click **Delete Ingest Point**.
-5. Click **Yes, Delete** to confirm the deletion.
+5. Click **Yes** > **Delete** to confirm the deletion.
 
 ## Cloud Slicer Live Administration  {/*cloud-slicer-live-administration*/}
 
@@ -96,7 +96,7 @@ Before creating a CSL slicer, you must first perform the following steps:
 
     [Learn more](#slicer-configuration-file).
 
-- Our service manages certain slicer configuration settings. You should not manually assign these [reserved settings](#reserved-slicer-settings) to your CSL slicer.
+- Our service manages certain slicer configuration settings. You should not manually assign these [reserved settings](#reserved-slicer-config) to your CSL slicer.
 
 ### Create a CSL Slicer  {/*create-slicer*/}
 

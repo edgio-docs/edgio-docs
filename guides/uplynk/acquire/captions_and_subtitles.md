@@ -264,13 +264,13 @@ Ensure that the WebVTT codec is always initialized by playing a short clip that 
 
 **Goal:** Learn how to add closed captioning support to on-demand content.
 
-**Key Steps:**
+**Key Steps**
 
 1. Create a TTML file.
 2. Add style information.
 3. Slice the file.
 
-### Step 1 - Create a TTML File  {/*step-1*/}
+### Step 1: Create a TTML File  {/*step-1*/}
 
 There are many methods for creating a TTML file. In this example, we'll use an online tool from Microsoft called [HTML5 Video Caption Maker (VCM)](https://testdrive-archive.azurewebsites.net/Graphics/CaptionMaker/Default.html).
 
@@ -318,11 +318,11 @@ Because it is an online tool, VCM has the limitation that your content must be h
    </tt>
    ```
 
-### Step 2 - Add Style Information  {/*step-2*/}
+### Step 2: Add Style Information  {/*step-2*/}
 
 The default caption styling varies widely by platform. To give your captions uniformity, we will add minimal style information to our TTML document. The document below includes our style additions.
 
-### Step 3 - Slice File with TTML  {/*step-3*/}
+### Step 3: Slice File with TTML  {/*step-3*/}
 
 We create the VOD asset using the command line slicer. We'll employ the -ttml option to tell the slicer where to locate our TTML caption file. The following is an example slicer command with the option:
 

@@ -28,9 +28,7 @@ Our Syndication product allows you to distribute your live or virtual live conte
 
 **Scenario:** You want to monetize live streams through YouTube’s advertising and super chat features. By streaming directly to YouTube, you can access these monetization tools while engaging with viewers through YouTube's interactive features like live chat.
 
-### How to Use  {/*how-to-use*/}
-
-#### Set Up a YouTube Publishing Target  {/*set-up-youtube-publishing-target*/}
+### Set Up a YouTube Publishing Target  {/*set-up-youtube-publishing-target*/}
 
 1. **Contact Account Manager:**
    - Ensure Syndication Publishing is activated by contacting your account manager.
@@ -58,7 +56,7 @@ Our Syndication product allows you to distribute your live or virtual live conte
    - **Configure Stream Details (Integrated Authentication Only):**
      - Set the video title, description, privacy level, and audience (for kids or not) within the YouTube options on the Publish tab.
 
-#### Set Up HLS Pull  {/*set-up-hls-pull*/}
+### Set Up HLS Pull  {/*set-up-hls-pull*/}
 
 1. **Create a Publishing Target:**
    - Navigate to Settings | Publishing.

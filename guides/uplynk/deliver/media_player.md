@@ -10,12 +10,12 @@ Create a media player to playback:
 
 ## Setup  {/*setup*/}
 
-- Embed a Media Player
-- Add a Media Player to a Web Page
+- [Embed a Media Player](/uplynk/deliver/media_player/embed_media_player)
+- [Add a Media Player to a Web Page](/uplynk/deliver/media_player/add_media_player_to_web_page)
 
 ## Helpful Resources  {/*hepful-resources*/}
 
-- Playback URLs
+- [Playback URLs](/uplynk/deiver/media_player)
 
 
 ## Client API  {/*client-api*/}

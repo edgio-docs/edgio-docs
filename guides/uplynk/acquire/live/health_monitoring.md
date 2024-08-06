@@ -18,7 +18,7 @@ Monitor the health for all recently active Live Slicers through the following to
 
 Quickly set up Live Slicer health monitoring by performing the following steps:
 
-1. [Enable monitoring](#prerequisites) on your account.
+1. [Enable monitoring](#enable-monitoring) on your account.
 2. [Create a view](#create-slicer-view) for the desired Live Slicers.
 3. [Monitor the Live Slicers](#dashboard) identified above from the Live Slicer Monitoring dashboard.
 
@@ -176,7 +176,7 @@ A Slicer View identifies a set of Live Slicers. You may switch between Slicer Vi
    - Type the name that will be assigned to the Slicer View in the View Name field.
    - Optional: Use the Search field to filter the list of available Live Slicers by name and owner.
    - Mark the desired Live Slicers.
-   - Click the red icon. ![Red icon](/images/uplynk/red-add-icon.png?width=16)
+   - Click the red left-arrow icon. ![Red icon](/images/uplynk/red-add-icon.png?width=16)
    - Click **Save**.
 
 #### Modify a Slicer View  {/*modify-slicer-view*/}
@@ -190,8 +190,8 @@ A Slicer View identifies a set of Live Slicers. You may switch between Slicer Vi
    - Click on the desired Slicer View.
 
 3. **Modify the Slicer View:**
-   - Add Live Slicers by marking from the Available Slicers list and then clicking ![Card](/images/uplynk/red-add-icon.png).
-   - Remove Live Slicers by marking them from the Slicers in View list and then clicking ![Card](/images/uplynk/red-remove-icon.png).
+   - Add Live Slicers by marking from the Available Slicers list and then clicking the red left-arrow icon. ![Red arrow icon](/images/uplynk/red-add-icon.png)
+   - Remove Live Slicers by marking them from the Slicers in View list and then clicking the red right-arrow icon. ![Red arrow icon](/images/uplynk/red-remove-icon.png)
    - Click **Save**.
 
 #### Delete a Slicer View  {/*delete-slicer-view*/}

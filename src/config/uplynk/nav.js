@@ -162,6 +162,10 @@ const nav = {
           path: 'manage/content_protection',
           routes: [
             {
+              title: 'Studio DRM',
+              path: 'manage/content_protection/studio_drm',
+            },
+            {
               title: 'Geoblocking',
               path: 'manage/content_protection/geoblocking',
             },
@@ -195,6 +199,10 @@ const nav = {
               path: 'monetize/ads/universal_ad_configuration',
             },
             {
+              title: 'Ad Parameters',
+              path: 'monetize/ads/ad_parameters',
+            },
+            {
               title: 'Google Ad Manager',
               path: 'monetize/ads/google_ad_manager',
             },
@@ -203,7 +211,7 @@ const nav = {
               path: 'monetize/ads/freewheel',
             },
             {
-              title: 'Ad Insertion Data',
+              title: 'Ad Debug',
               path: 'monetize/ads/ad_insertion_data',
             },
           ],

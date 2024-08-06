@@ -17,8 +17,8 @@ scte_module: scte_baseline
 The Baseline SCTE plugin triggers blackout based on the `splice_insert`'s `out_of_network_indicator` field.
 
 To achieve the desired blackout effect, set the `out_of_network_indicator` field to:
-1. `1`: Enter blackout.
-2. `2`: Leave blackout.
+- `1`: Enter blackout.
+- `2`: Leave blackout.
 
 ### Content Start  {/*content-start*/}
 

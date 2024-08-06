@@ -16,10 +16,12 @@ Set up predictive prefetching using one of the following options:
 
 | Setup                                                                          | Description                                                                                                                                                                                                                                                                                               |
 | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Automatic](/guides/performance/prefetching/automatic_prefetching_setup#setup) | Automatically generate an edge function and rules that enable predictive prefetching on your web pages. This is the recommended approach if you deploy changes through the {{ PORTAL }}.  <br /><Info>Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}</Info>                      |
 | [Manual](/guides/performance/prefetching/prefetching_script_tag#setup)         | Manually enable predictive prefetching on each desired page by adding a script tag. Additionally, you must create a rule that defines a caching policy for the set of requests that will be prefetched by your clients.                                                                                   |
 | [CDN-as-Code](/applications/performance/prefetching/prefetching_cdn_as_code)   | Build, serve, and register a service worker that will prefetch requests. Additionally, you must create a rule that defines a caching policy for the set of requests that will be prefetched by your clients. This is the recommended approach for a JavaScript front-end framework that uses CDN-as-code. |
 
+<!--
+| [Automatic](/guides/performance/prefetching/automatic_prefetching_setup#setup) | Automatically generate an edge function and rules that enable predictive prefetching on your web pages. This is the recommended approach if you deploy changes through the {{ PORTAL }}.  <br /><Info>Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}</Info>                      |
+-->
 ## How Does It Work? {/*how-does-it-work*/}
 
 Upon loading a page on which automatic predictive prefetching has been enabled, the browser will request all links that meet the following conditions:
@@ -54,8 +56,6 @@ The following sample scenario assumes that the `Related resources` list is visib
     https://cdn.example.com/statistics.html
     https://cdn.example.com/brochure.pdf
     ```
-
-    It can also submit prefetch requests for resources defined within each page's `<HEAD>` element, such as stylesheets and scripts. 
 
 4.  The closest POP will provide a response for each prefetching request according to whether it has been cached within that POP. 
 

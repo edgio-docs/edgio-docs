@@ -34,10 +34,11 @@ Generating a report consists of performing the following steps:
     -   **RUM Logs:** Use this data source to view Core Web Vitals (CWV) data that were tracked through our Real User Monitoring (RUM) library. This log data is available for up to the last 7 days.
     -   **Edge Function Logs:** Use this data source to view log data for edge functions that were computed within the last 7 days.
     -   **Internal Logs (FE):** Reserved for internal use.
-    -   **NEL:** Use this data source to view Network Error Logging (NEL) data for up to the last 7 days. Use this data to discover issues that your clients encounter when accessing your site. 
     -   **Cloud Functions Logs:** Use this data source to view Cloud Functions log data for up to the last 24 hours.
     -   **Security Logs:** Use this data source to view access rule, rate limiting, bot manager, custom rule, and managed rule violations of your Security App configurations for up to the last 7 days.
-
+<!--
+    -   **NEL:** Use this data source to view Network Error Logging (NEL) data for up to the last 7 days. Use this data to discover issues that your clients encounter when accessing your site. 
+-->
 3.  Select the time period for which data will be returned.
 
     <Callout type="info">
@@ -396,6 +397,7 @@ Use the RUM Logs data source for historical and near real-time analysis of [Core
 
 Use the Edge Function Logs data source for historical and near real-time analysis of [Edge Functions](/applications/edge_functions). 
 
+<!--
 ## NEL {/*nel*/}
 
 Use the NEL data source for historical and near real-time analysis of Network Error Logging data reported by your clients. This data source is critical for identifying site issues that your clients may be experiencing due to TLS issues, network issues, or even DNS issues.
@@ -403,7 +405,7 @@ Use the NEL data source for historical and near real-time analysis of Network Er
 Each NEL field is defined below.
 
 {{ table_nel.md }}
-
+-->
 ## Cloud Functions Logs {/*cloud-functions-logs*/}
 
 Use the Cloud Functions Logs data source for historical and near real-time analysis of [Cloud Functions](/applications/performance/serverless_compute). 

@@ -18,7 +18,7 @@ Set up predictive prefetching using one of the following options:
 | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Automatic](/guides/performance/prefetching/automatic_prefetching_setup#setup) | Automatically generate an edge function and rules that enable predictive prefetching on your web pages. This is the recommended approach if you deploy changes through the {{ PORTAL }}.  <br /><Info>Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}</Info>                      |
 | [Manual](/guides/performance/prefetching/prefetching_script_tag#setup)         | Manually enable predictive prefetching on each desired page by adding a script tag. Additionally, you must create a rule that defines a caching policy for the set of requests that will be prefetched by your clients.                                                                                   |
-| [CDN-as-Code](/applications/performance/prefetching/prefetching_edgio_sites)   | Build, serve, and register a service worker that will prefetch requests. Additionally, you must create a rule that defines a caching policy for the set of requests that will be prefetched by your clients. This is the recommended approach for a JavaScript front-end framework that uses CDN-as-code. |
+| [CDN-as-Code](/applications/performance/prefetching/prefetching_cdn_as_code)   | Build, serve, and register a service worker that will prefetch requests. Additionally, you must create a rule that defines a caching policy for the set of requests that will be prefetched by your clients. This is the recommended approach for a JavaScript front-end framework that uses CDN-as-code. |
 
 ## How Does It Work? {/*how-does-it-work*/}
 
@@ -43,7 +43,9 @@ The following sample scenario assumes that the `Related resources` list is visib
 **Request flow:**
 
 1.  The client submits a request for: `https://www.example.com`.
-2.  The closest POP responds with the payload for that request. This payload installs the `{{ PACKAGE_NAME }}/prefetch` package. It also contains links to related resources.
+2.  The closest POP responds with the payload for that request. This payload:
+    -   Installs the `{{ PACKAGE_NAME }}/prefetch` package. 
+    -   Contains links to related resources.
 3.  The predictive prefetching service worker detects that the viewport contains 4 links. As a result, it will submit the following 4 prefetch requests while the user interacts with the page:
 
     ```
@@ -53,7 +55,7 @@ The following sample scenario assumes that the `Related resources` list is visib
     https://cdn.example.com/brochure.pdf
     ```
 
-    It will also submit prefetch requests for resources defined within each page's `<HEAD>` element, such as stylesheets and scripts. 
+    It can also submit prefetch requests for resources defined within each page's `<HEAD>` element, such as stylesheets and scripts. 
 
 4.  The closest POP will provide a response for each prefetching request according to whether it has been cached within that POP. 
 

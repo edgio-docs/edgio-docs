@@ -38,4 +38,4 @@ Setting up Studio DRM consists of the following steps:
 | Live Event | # | # |
 | Live Channels | # | # |
 | CMS Assets (Non-slate) | # | # |
-| CMS Assets (Slate for Live Event or Live Channels)<br>Learn more. |   |   |
+| CMS Assets (Slate for Live Event or Live Channels)<br />Learn more. |   |   |

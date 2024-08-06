@@ -4,6 +4,12 @@ title: Automatic Predictive Prefetching Setup
 
 {{ PRODUCT }} can automatically set up predictive prefetching across your entire website. 
 
+**Key information:**
+
+-   By default, only content that has already been cached on the POP closest to the user may be prefetched. {{ PRODUCT }} returns a [412 Precondition Failed response](/applications/performance/troubleshooting#412-precondition-failed-status-code) for prefetch requests that result in cache misses. This ensures that your infrastructure does not experience additional load due to prefetching.
+
+-   Due to security requirements, prefetching requires the HTTPS protocol. An exception to this requirement occurs when using localhost.
+
 ## How Does It Work? {/**/}
 
 By default, our automated setup configures {{ PRODUCT }} to automatically inject the following tag into each web page on which the edge function is applied:
@@ -45,8 +51,8 @@ Automated setup involves adding the Predictive Prefetching edge function to your
     {{ PRODUCT }} will now create an edge function and add two rules to invoke and configure Predictive Prefetching.
 
 2.  Review the newly created rules to ensure that:
-    -   Predictive prefetching will be enabled on the desired pages. Check the match condition for the rule that runs the Preditive Prefetching edge funtion.
-    -   The desired links will be prefetched. Check the match condition for the rule that defines the Set Max Age and Set Service Worker Max Age features.
+    -   Predictive prefetching will be enabled on the desired pages. Check the match condition for the rule that runs the Preditive Prefetching edge function.
+    -   The desired links will be prefetched. Check the match condition for the rule that defines the Set Max Age and Set Service Worker Max Age features. 
 
     ![Rules - Prefetching rules](/images/v7/performance/prefetch-rules.png)
 

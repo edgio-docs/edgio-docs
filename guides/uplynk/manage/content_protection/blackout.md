@@ -302,8 +302,6 @@ Blackout may only be applied to assets that have been assigned a blackout ID (i.
 
 ## Tutorial
 
-# Setting up Blackout Tutorial
-
 Learn how to set up Blackout and apply it to live linear channel programming.
 
 **Prerequisites:**
@@ -319,7 +317,7 @@ Learn how to set up Blackout and apply it to live linear channel programming.
 4. Set up a media player.
 5. Apply Blackout to programming.
 
-## Introduction
+### Introduction
 
 Blackout is designed to limit the distribution of restricted content, such as sporting events, movies, and other types of licensed content. Instead of the regularly scheduled program, content from an alternate source will be broadcast to blacked out viewers.
 

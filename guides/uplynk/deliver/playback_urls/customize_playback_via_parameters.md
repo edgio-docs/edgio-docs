@@ -121,10 +121,10 @@ Define one of the following scopes when specifying FPS policy settings:
 
 - **Track-Specific**: Apply a policy setting to a specific tracks by indicating the track type within the query string parameter.<br />**Syntax**: `fp.{TrackType}.{Policy}`<br />Valid values for `{TrackType}` are:
 
-    - sd: Applies the policy setting to standard definition (576p or less) tracks.
-    - hd: Applies the policy setting to high-definition (720p and 1080p) tracks.
-    - uhd1: Applies the policy setting to 4K ultra-high-definition video tracks.
-    - uhd2: Applies the policy setting to 8K ultra-high-definition video tracks.
+    - **sd**: Applies the policy setting to standard definition (576p or less) tracks.
+    - **hd**: Applies the policy setting to high-definition (720p and 1080p) tracks.
+    - **uhd1**: Applies the policy setting to 4K ultra-high-definition video tracks.
+    - **uhd2**: Applies the policy setting to 8K ultra-high-definition video tracks.
 
 **Example**: `...&fp.hd.hdcp=0`
 
@@ -135,7 +135,7 @@ Use the following query string parameters to define a FPS policy.
 | Query String Parameter         | Description |
 |-----------|------|
 | `fp.airplay`<br />`fp.TrackType.airplay` | Determines whether playback will be allowed over AirPlay.<br /><br />**Valid values are**:<br /><ul><li>1: Allow AirPlay.</li><li>0: Disallow AirPlay.</li></ul>**Default value**: 1 |
-| `fp.avadapter`<br />`fp.TrackType.avadapter` | Determines whether playback may be mirrored via an Apple Lightning AV Adapter.<br /><br />**Valid values are**:<br /><ul><li>1: Allow mirroring.</li><li>0: Disallow mirroring.</li></ul>**Default value**:  1|
+| `fp.avadapter`<br />`fp.TrackType.avadapter` | Determines whether playback may be mirrored via an Apple Lightning AV Adapter.<br /><br />**Valid values are**:<br /><ul><li>1: Allow mirroring.</li><li>0: Disallow mirroring.</li></ul>**Default value**: 1|
 | `fp.hdcp`<br />`fp.TrackType.hdcp` | Determines whether High-bandwidth Digital Content Protection (HDCP) enforcement is required.<br /><br />**Valid values are**:<br /><ul><li>-1: HDCP is not enforced.</li><li>0: HDCP type 0 content streams is enforced. This allows the stream to be transmitted by the HDCP repeater to all HDCP devices.</li><li>1: HDCP content type 1 (HDCP version 2.2 or later) is enforced. Streams may not be transmitted by the HDCP repeater to HDCP 1.x-compliant devices or HDCP2.0-compliant repeaters.</li></ul>**Default value**: -1 |
 | `fp.lease_duration`<br />`fp.TrackType.lease_duration` | Determines the length of time, in seconds, during which playback will be allowed. Playback will stop upon the expiration of the lease.<br /><br />**Key information**:<br /><ul><li>This countdown starts upon the acquisition of the Content Key.</li><li>This parameter requires offline playback. Set `fp.persistence` to 1.<br />`&fp.persistence=1`</li><li>This parameter may be combined with `fp.rental_duration`.</li></ul>**Default value**: 0|
 | `fp.persistence`<br />`fp.TrackType.persistence` | Determines whether offline playback is allowed.<br /><br />**Valid values are**:<br /><ul><li>1: Allow offline playback.</li><li>0: Disallow offline playback.</li></ul>**Default value**: 0|

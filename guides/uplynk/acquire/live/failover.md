@@ -56,6 +56,26 @@ Live Slicer failover minimizes the impact on your viewer's playback experience w
 - View a failover group's audit log by opening it and then clicking the **Change Log** tab.
 - Review a failover group's events by opening it and then clicking on the **Event Log** tab.
 
+## Metrics  {/*metrics*/}
+
+| Metric | Description |
+|---|---|
+| Audio loss | Determines the length of time during which audio is not detected before triggering failover.<br /><Tip>Periods of silence may be normal. Consider the source content when setting thresholds.</Tip> |
+| Black screen | Determines the length of time that black frames may be sent by an On Prem Slicer before triggering failover.<br /><Tip>Periods of black video may be normal. Consider the source content when setting thresholds.</Tip><br /><Info>This metric measures the duration of black video by averaging the video's luminosity percentage over the last few seconds. </Info>|
+| CC last seen | Determines the amount of time that a Live Slicer may not receive closed captioning data before triggering failover.<br /><br />Key information:<br /><ul><li>This metric is reported in 10 second intervals.</li><li>This metric is inapplicable when closed captioning data has not been received from the Live Slicer.</li><li>Consider the content when setting the threshold for this metric. Some content may contain an extended time period without closed captioning data.</li></ul><br /> |
+| Dropped frames | Determines how many frames may be dropped within the current reporting period before triggering failover. |
+| Input loss | Determines the length of time that the system may not receive the Live Slicer's signal before triggering failover. |
+| Nielsen last seen | Determines the length of time that may elapse since the Live Slicer last received a Nielsen watermark before triggering failover.<br /><br />Key information:<ul><li>Nielsen watermarks may be inserted into the audio stream sent to the Live Slicer. They are typically inserted at 10 second intervals. However, this interval may vary according to your implementation.</li><li>Nielsen watermarks are leveraged by the Live Slicer to generate ID3 tags through which a media player reports viewership data.</li></ul>|
+| Processing queue | Determines how many packets may be queued to be read by the Live Slicer before triggering failover.<br /><br />Key information:<ul><li>The recommended levels for this metric varies according to the signal type. For example, a UDP Unicast stream should have a much lower threshold (e.g., 1,000) than a UDP Multicast stream (e.g., 10,000).</li><li>A high value may be indicative of insufficient CPU resources on the computer hosting the Live Slicer.</li><li>A transient spike in this metric may not be cause for concern.</li></ul> |
+| SCTE last seen | Determines the length of time that may elapse since the Live Slicer last received a SCTE 35/104 signal before triggering failover. |
+| Static audio | Determines the length of time during which static audio is detected before triggering failover.<br /><Info>Static audio is detected by analyzing the audio's loudness percentage over the last few seconds. This metric ignores periods of silence.</Info> |
+| Static video | Determines the length of time during which static video (e.g., green screen, color bars, or a frozen frame) is detected before triggering failover.<br /><Info>Static video is detected by analyzing the video's average luminosity percentage over the last few seconds.</Info> |
+| TR 101 290 P1 errors | Requires a UDP source and Live Slicer version 22083100 or higher<br /><br />Determines the number of first priority errors that may occur before triggering failover. A first priority error occurs when a Digital Video Broadcasting (DVB) measurement test identifies an issue that may prevent the MPEG-2 Transport Stream (TS) from being decoded. The parameters that are evaluated for this test are defined within an ETSI technical report (ETSI TR 101 290). |
+| TR 101 290 P2 errors | Requires a UDP source and Live Slicer version 22083100 or higher<br /><br />Determines the number of second priority errors that may occur before triggering failover. A second priority error occurs when a Digital Video Broadcasting (DVB) measurement test identifies an issue with a parameter that should be continuously monitored. The parameters that are evaluated for this test are defined within an ETSI technical report (ETSI TR 101 290). |
+| Upload queue | Determines how many slices may be queued for upload before triggering failover.<br /><Info>A value higher than 2 may be indicative of Live Slicer connectivity issues.</Info> |
+| Video loss | Determines the length of time during which video is not detected before triggering failover.<br /><Info>Loss of video is assessed according to whether a video packet identifier (PID) is detected in the live stream.</Info> |
+| Percent Failed ARQ | Indicates the percentage of requests that were unsuccessful after triggering ARQ. |
+
 ## Set up Live Slicer Failover  {/*set-up-live-slicer-failover*/}
 
 This section details setup for one or more live channel(s).

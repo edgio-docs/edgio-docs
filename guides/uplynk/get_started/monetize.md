@@ -30,11 +30,10 @@ Our Syndication product allows you to distribute your live or virtual live conte
 
 ### Set Up a YouTube Publishing Target  {/*set-up-youtube-publishing-target*/}
 
-1. **Contact Account Manager:**
-   - Ensure Syndication Publishing is activated by contacting your account manager.
+1. **Contact Account Manager:** Ensure Syndication Publishing is activated by contacting your account manager.
 
 2. **Create a Publishing Target:**
-   - Navigate to Settings | Publishing.
+   - Navigate to **Settings** > **Publishing**.
    - Click **+ New Target** to open the Add Publishing Target dialog box.
    - Assign a unique name to the new publishing target under Target Name.
    - Select YouTube from the Platform options.
@@ -53,8 +52,7 @@ Our Syndication product allows you to distribute your live or virtual live conte
      - Click Save.
      - The service will validate the stream key or credentials and attempt to connect to YouTube. Verify and correct any errors if the connection fails.
 
-   - **Configure Stream Details (Integrated Authentication Only):**
-     - Set the video title, description, privacy level, and audience (for kids or not) within the YouTube options on the Publish tab.
+   - **Configure Stream Details (Integrated Authentication Only):** Set the video title, description, privacy level, and audience (for kids or not) within the YouTube options on the Publish tab.
 
 ### Set Up HLS Pull  {/*set-up-hls-pull*/}
 

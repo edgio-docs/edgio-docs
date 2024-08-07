@@ -162,7 +162,7 @@ The following query string parameters are applicable to all DASH Studio DRM solu
 
 ### Google Widevine
 
-Define a Widevide DRM policy by including parameters that define:
+Define a Widevine DRM policy by including parameters that define:
 
 - [**Content Key Specs**](#content-key-specs): Define what content keys will be returned.
 - [**Policy Overrides**](#policy-overrides): Define the conditions under which playback will be allowed.

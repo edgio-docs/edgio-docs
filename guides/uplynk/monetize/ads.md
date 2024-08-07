@@ -28,11 +28,11 @@ The ad insertion workflow for live streams and VOD is similar. The only differen
 
 **Basic Ad Insertion Workflow for Live Streams**
 
-<![Basic Ad Insertion Workflow](/images/uplynk/live-stream-ad.png)
+![Basic Ad Insertion Workflow](/images/uplynk/live-stream-ad.png)
 
 **Basic Ad Insertion Workflow for VOD**
 
-<![Basic Ad Insertion Workflow](/images/uplynk/vod-ad.png)
+![Basic Ad Insertion Workflow](/images/uplynk/vod-ad.png)
 
 ## Third-Party Ad Servers
 

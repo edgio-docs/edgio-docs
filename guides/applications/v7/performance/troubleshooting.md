@@ -314,10 +314,10 @@ Troubleshoot this status code by performing the following steps:
 1.  Checking whether your [web servers are available](#web-server-availability).
 2.  Checking your [SNI configuration](#sni-configuration).
 3.  Comparing the [request's Host header to your certificate](#host-header).
-4.  Verify your [certificate's chain of trust or use a self-signed certificate](#self-signed-certificates-or-chain-of-trust).
+4.  Verify your [certificate's chain of trust or use a self-signed certificate](#chain-of-trust-or-self-signed-certificate).
 5.  If you have implemented [certificate pinning](#certificate-pinning), you should verify that your certificates have been pinned.
 
-#### Web Server Availability {/*web-server-availability*/}
+#### Step 1: Web Server Availability {/*web-server-availability*/}
 
 Identify the origin configuration that is returning a `502 Bad Gateway`. Request the origin directly to verify that it is available.
 
@@ -325,7 +325,7 @@ Identify the origin configuration that is returning a `502 Bad Gateway`. Request
 
 `https://origin-1.example.com/`
 
-#### SNI Configuration {/*sni-configuration*/}
+#### Step 2: SNI Configuration {/*sni-configuration*/}
 
 Check whether your site requires SNI by reviewing your server's configuration or log data.
 
@@ -343,19 +343,19 @@ Your origin configuration setup varies according to whether your site requires S
 
 -   **No SNI:** If your site does not require SNI, then you should disable your origin configuration's **Use SNI** option and remove the SNI hint.
 
-#### Host Header {/*host-header*/}
+#### Step 3: Host Header {/*host-header*/}
 
 If the client's `Host` header does not match a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN), then you will need to update the **Override Host Header** option.
 
-#### Self-Signed Certificates or Chain of Trust {/*self-signed-certificates-or-chain-of-trust*/}
+#### Step 4: Chain of Trust or Self-Signed Certificate {/*chain-of-trust-or-self-signed-certificate*/}
 
 Is your server using a self-signed certificate?
 -   **Yes:** You must enable the **Allow Self-Signed Certs** option on the desired origin configuration.
--   **No:** {{ PRODUCT }} requires a full chain certificate. Your certificate’s chain of trust must start with the server's certificate and terminate with the root certificate.
+-   **No:** {{ PRODUCT }} requires a full chain certificate that allows it to verify that the client and the Certificate Authorities within that chain are trustworthy. Your certificate’s chain of trust must consist of an ordered list of certificates from the server (leaf) to the root. {{ PRODUCT }} returns a `502 Bad Gateway` when your chain of trust is incomplete (e.g., missing an intermediate certificate).
 
-#### Certificate Pinning {/*certificate-pinning*/}
+#### Step 5: Certificate Pinning {/*certificate-pinning*/}
 
-If you have pinned a certificate to the desired origin configuration, then you may need to pin an additional certificate.
+If you have pinned a certificate to the desired origin configuration, then you may need to [pin an additional certificate](/applications/basics/origins#certificate-pinning).
 
 ### 504 Gateway Timeout Status Code {/*504-gateway-timeout-status-code*/}
 

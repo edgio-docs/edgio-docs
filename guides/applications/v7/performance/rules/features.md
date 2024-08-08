@@ -1332,32 +1332,29 @@ export default new Router()
 
 Improves performance by allowing our edge servers to serve stale content while revalidation takes place.
 
-Configure this feature by specifying an integer value and then selecting the desired time unit (i.e., seconds, minutes, hours, etc.). This value defines the length of time past TTL expiration during which stale content may be delivered.
+**Key information:**
 
-The following formula indicates the length of time during which stale content may be delivered:
+-   Configure this feature by specifying an integer value and then selecting the desired time unit (i.e., seconds, minutes, hours, etc.). This value defines the length of time past TTL expiration during which stale content may be delivered.
 
-`<TTL> + <STALE WHILE REVALIDATE TIME>`
+    The following formula indicates the length of time during which stale content may be delivered:
 
-<Callout type="info">
+    `<TTL> + <STALE WHILE REVALIDATE TIME>`
 
-  Each stale response includes a [Warning response header](/applications/performance/response#warning).
-
-</Callout>
+-   Each stale response includes a [Warning response header](/applications/performance/response#warning).
+-   {{ PRODUCT }} revalidates requests when the origin returns a `Cache-Control: s-maxage` directive. This behavior occurs regardless of whether this feature has been applied to the request. <!--RFC 9111-->
 
 <edgejs>
-Configure this feature by specifying an integer value and a time unit. This value defines the length of time past TTL expiration during which stale content may be delivered.
+**Key information:**
 
-The following formula indicates the length of time during which stale content may be delivered:
+-   Configure this feature by specifying an integer value and a time unit. This value defines the length of time past TTL expiration during which stale content may be delivered.
 
-`<TTL> + <STALE WHILE REVALIDATE TIME>`
+    The following formula indicates the length of time during which stale content may be delivered:
 
-<Callout type="info">
+    `<TTL> + <STALE WHILE REVALIDATE TIME>`
 
-  Each stale response includes a `Warning` response header.
-
-</Callout>
-
-**Syntax:** `<TIME>[s|m|h|d|w|y]`
+-   **Syntax:** `<TIME>[s|m|h|d|w|y]`
+-   Each stale response includes a [Warning response header](/applications/performance/response#warning).
+-   {{ PRODUCT }} revalidates requests when the origin returns a `Cache-Control: s-maxage` directive. This behavior occurs regardless of whether this feature has been applied to the request. 
 
 **Example:**
 

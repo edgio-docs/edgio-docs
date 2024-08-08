@@ -11,7 +11,7 @@ Learn how to define the following FreeWheel ad configurations:
 
 ## FreeWheel Ad Requests  {/*freewheel-ad-requests*/}
 
-Upon setting the Server URL parameter, our service constructs the following GET request in order to request ads for your content:
+Upon setting the Server URL parameter, our service constructs the following `GET` request in order to request ads for your content:
 
 `http://[customerId].v.fwmrm.net/ad/g/1?[globalParams];[keyValues];[ParamsForSlot1];[ParamsForSlot2];...;[ParamsForSlotN];`
 
@@ -41,7 +41,7 @@ By default, ads will be requested for pre-roll, mid-roll, and post-roll ad units
 
 ## FreeWheel Ad Parameters  {/*freewheel-ad-parameters*/}
 
-This section describes parameters that our service will insert into the GET request sent to the FreeWheel ad server.
+This section describes parameters that our service will insert into the `GET` request sent to the FreeWheel ad server.
 
 | Name| Parameter | Description|
 |----------|-----------|------|
@@ -64,22 +64,22 @@ This section describes parameters that our service will insert into the GET requ
 | HyLDA | ad.hylda| Activates FreeWheel’s HyLDA feature. Set this flag to 1. <br />**Example**: `ad.hylda=1`|
 | Acid| ad.acid | Adds Acid as a value in the HyLDA keyword. This parameter is only applicable when the HyLDA flag has been enabled. <br />**Example**: `ad.acid=Acid`   |
 | Default Ad Capabilities       | ad.metr | Defines the default capabilities for all ads. Set this parameter to an integer that maps bits to capabilities. <br />**Example**: `ad.metr=8` <br />**Default Value**: 7    |
-| Asset Network ID   | ad.asnw | Adds a video asset network ID (`videoAsset@videoAssetNetworkId`) to the FreeWheel GET ad request. <br />**Example**: `ad.asnw=14611k`   |
-| Custom Asset ID    | ad.caid | Sets the custom asset ID (`videoAsset@customId`) that will be included with the FreeWheel GET ad request. Syntax: `@[Key-Value-Name]` Sends the value assigned to an asset's key-value pair to FreeWheel. <br />**Example**: `ad.caid=@custom_id` |
-| Key-Value Pairs    | ad.kv   | Passes or retrieves key-value pair(s) using the FreeWheel GET ad request. <br />**Example**: `ad.kv=key_1,value_1,key_2,value_2`       |
+| Asset Network ID   | ad.asnw | Adds a video asset network ID (`videoAsset@videoAssetNetworkId`) to the FreeWheel `GET` ad request. <br />**Example**: `ad.asnw=14611k`   |
+| Custom Asset ID    | ad.caid | Sets the custom asset ID (`videoAsset@customId`) that will be included with the FreeWheel `GET` ad request. Syntax: `@[Key-Value-Name]` Sends the value assigned to an asset's key-value pair to FreeWheel. <br />**Example**: `ad.caid=@custom_id` |
+| Key-Value Pairs    | ad.kv   | Passes or retrieves key-value pair(s) using the FreeWheel `GET` ad request. <br />**Example**: `ad.kv=key_1,value_1,key_2,value_2`       |
 | Key-Value Separator| ad.kvsep| Determines the delimiter that must be used when defining key-value pairs through the Key-Value Pairs parameter. <br />**Example**: `ad.kvsep=/` <br />**Default Value**: ,  |
-| Site Section Network ID       | ad.ssnw | Sets the site section network ID (`siteSection@siteSectionNetworkId`) included with the FreeWheel GET ad request. <br />**Example**: `ad.ssnw=112233` |
-| Video Asset Fallback ID       | ad.afid | Sets the video asset fallback ID (`videoAsset@fallbackId`) included with the FreeWheel GET ad request. This ID is used when an ad request's video asset ID is not recognized. <br />**Example**: `ad.afid=AssetFallBackId`|
-| Visitor Custom ID  | ad.vcid | Sets the visitor's custom ID included with the FreeWheel GET ad request. This ID is the equivalent to the visitor/@customId attribute in the XML request. <br />**Example**: `ad.vcid=CustomVisitorID`      |
-| Site Section Fallback ID      | ad.sfid | Sets the site section fallback ID included with the FreeWheel GET ad request. This ID is used when an ad request's site section ID is not recognized. <br />**Example**: `ad.sfid=global`   |
+| Site Section Network ID       | ad.ssnw | Sets the site section network ID (`siteSection@siteSectionNetworkId`) included with the FreeWheel `GET` ad request. <br />**Example**: `ad.ssnw=112233` |
+| Video Asset Fallback ID       | ad.afid | Sets the video asset fallback ID (`videoAsset@fallbackId`) included with the FreeWheel `GET` ad request. This ID is used when an ad request's video asset ID is not recognized. <br />**Example**: `ad.afid=AssetFallBackId`|
+| Visitor Custom ID  | ad.vcid | Sets the visitor's custom ID included with the FreeWheel `GET` ad request. This ID is the equivalent to the visitor/@customId attribute in the XML request. <br />**Example**: `ad.vcid=CustomVisitorID`      |
+| Site Section Fallback ID      | ad.sfid | Sets the site section fallback ID included with the FreeWheel `GET` ad request. This ID is used when an ad request's site section ID is not recognized. <br />**Example**: `ad.sfid=global`   |
 | Pre-Roll Ad Unit   | ad.preroll| Requests a pre-roll ad unit. Set this parameter to 1. <br />**Example**: `ad.preroll=1` <br />**Default Value**: 0     |
 | Ad Units| ad.slau | Determines whether pre-roll, mid-roll, and post-roll ad units will be requested from FreeWheel. Valid values are: `preroll, midroll, postroll`|
 | Asset Duration     | ad.vdur | Overrides an asset's duration (`videoAsset@duration`). <br />**Example**: `ad.vdur=3600` |
-| Tag (FreeWheel Ad Request)    | ad.tag  | Sets a FreeWheel GET ad request URL that will be used instead of a POST Smart XML request. <br />**Example**: `ad.tag=http://demo.v.fwmrm.net/ad/g/1?...`|
+| Tag (FreeWheel Ad Request)    | ad.tag  | Sets a FreeWheel `GET` ad request URL that will be used instead of a POST Smart XML request. <br />**Example**: `ad.tag=http://demo.v.fwmrm.net/ad/g/1?...`|
 | Primary Content Type | ad.prct | Defines a global primary content type for all non-temporal, user-generated ad units. <br />**Example**: `ad.prct=text/html_lit_js_wc_nw` <br />**Default Value**: `text/html_lit_js_wc_nw`  |
-| Client IP Address  | ad.vip  | Overrides the client's IP address that will be included with the FreeWheel GET ad request. <br />**Example**: `ad.vip=192.168.1.1` <br />**Default Value**: The IP address of the device that requested the playback of your content. |
-| Client Referrer    | ad._fw_h_referer   | Overrides the Referer header value that will be included with the FreeWheel GET ad request. <br />**Example**: `ad._fw_h_referer=http://www.sampledomain.com` <br />**Default Value**: By default, the value of the Referer header included with the playback request will be included with the FreeWheel GET ad request.|
-| Client User Agent  | ad._fw_h_user_agent | Overrides the value of the User-Agent header that will be included with the FreeWheel GET ad request. <br />**Example**: `ad._fw_h_user_agent=user-agent%3A%20Mozilla%2F5.0%20...` <br />**Default Value**: By default, the playback request's User-Agent header value will be included with the FreeWheel GET ad request.       |
+| Client IP Address  | ad.vip  | Overrides the client's IP address that will be included with the FreeWheel `GET` ad request. <br />**Example**: `ad.vip=192.168.1.1` <br />**Default Value**: The IP address of the device that requested the playback of your content. |
+| Client Referrer    | ad._fw_h_referer   | Overrides the Referer header value that will be included with the FreeWheel `GET` ad request. <br />**Example**: `ad._fw_h_referer=http://www.sampledomain.com` <br />**Default Value**: By default, the value of the Referer header included with the playback request will be included with the FreeWheel `GET` ad request.|
+| Client User Agent  | ad._fw_h_user_agent | Overrides the value of the User-Agent header that will be included with the FreeWheel `GET` ad request. <br />**Example**: `ad._fw_h_user_agent=user-agent%3A%20Mozilla%2F5.0%20...` <br />**Default Value**: By default, the playback request's User-Agent header value will be included with the FreeWheel `GET` ad request.       |
 | Customer ID| ad.customer_id     | **Required when Server URL is undefined.** The Server URL parameter (`ad.serverurl`) takes precedence over this parameter. This parameter should not be specified if you plan on passing the Server URL parameter. <br />**Example**: `ad.customer_id=demo`   |
 | Custom Site Section ID| ad.csid | **Required when Location Description is undefined.** The Location Description parameter (`ad.locationDesc`) takes precedence over this parameter. This parameter should not be specified if you plan on passing the Location Description parameter. <br />**Example**: `ad.csid=web`    |
 | End-User ID| ad.euid | The Visitor Custom ID parameter (`ad.vcid`) takes precedence over this parameter. This parameter should not be specified if you plan on passing the Visitor Custom ID parameter. <br />**Example**: `ad.euid=CustomVisitorID`       |

@@ -133,6 +133,10 @@ const nav = {
               title: 'Reprocessing',
               path: 'manage/assets/reprocessing',
             },
+            {
+              title: 'Boundaries',
+              path: 'manage/assets/boundaries',
+            },
           ],
         },
         {
@@ -146,10 +150,6 @@ const nav = {
             {
               title: 'Virtual Linear',
               path: 'manage/channels/virtual_linear',
-            },
-            {
-              title: 'Boundaries',
-              path: 'manage/channels/boundaries',
             },
           ],
         },
@@ -178,6 +178,14 @@ const nav = {
               path: 'manage/content_protection/conditional_and_reverse_blackout',
             },
           ],
+        },
+        {
+          title: 'Clipping',
+          path: 'manage/clipping',
+        },
+        {
+          title: 'Health Notifications via Amazon SNS',
+          path: 'manage/health_notifications_via_amazon_sns',
         },
       ],
     },

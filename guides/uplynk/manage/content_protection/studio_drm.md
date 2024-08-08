@@ -80,7 +80,7 @@ Playback of Studio DRM-protected content requires the viewer's player/client to 
 
 **Basic HLS Workflow (Apple FairPlay Streaming)**
 
-<Image inline src="/images/uplynk/hls-fps" alt="Revert" />
+![HLS Workflow](/images/uplynk/hls-fps.png)
 
 1. Player requests SPC message from our license server.
 - The player requests a manifest file in response to a request to play encrypted HLS content.
@@ -94,7 +94,7 @@ Playback of Studio DRM-protected content requires the viewer's player/client to 
 
 **Basic DASH Workflow (Google Widevine and Microsoft PlayReady)**
 
-<Image inline src="/images/uplynk/dash-wv" alt="Revert" />
+![HLS Workflow](/images/uplynk/dash-wv.png)
 
 1. In response to a request to stream Studio DRM-protected content, the player submits a license request to our license server.
     - The player requests a manifest file in response to a request to play Studio DRM-protected content.
@@ -108,6 +108,6 @@ Playback of Studio DRM-protected content requires the viewer's player/client to 
 ## More Information  {/*more-information*/}
 
 - [Apple FairPlay Streaming (FPS) DRM](/uplynk/manage/content_protection/studio_drm/apple_fps)
-- [DASH (Google Widevine DRM and Microsoft PlayReady)]((/uplynk/manage/content_protection/studio_drm/dash))
+- [DASH (Google Widevine DRM and Microsoft PlayReady)](/uplynk/manage/content_protection/studio_drm/dash)
 - [Studio DRM Policy Configuration](/uplynk/manage/content_protection/policy_configuration)
 - [Studio DRM API](https://docs.edgecast.com/video/Content/Develop/Studio-DRM-API.htm)

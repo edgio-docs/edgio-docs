@@ -108,7 +108,7 @@ Before creating a CSL slicer, you must first perform the following steps:
    - Click **Save**.
     - RTP, SRT, and RIST
         - In the **Source IP Address** option, type the IP address from which your feed will be pushed. Our service will only ingest feeds served from this IP address. Allow your feed to be pushed from any IP address by setting this option to `0.0.0.0`.
-        - Regardless of how this setting is configured, the encoder pushing the feed to our service must authenticate to our service by passing the CSL slicer's streaming key. <br />[Learn more](#encode).
+        - Regardless of how this setting is configured, the encoder pushing the feed to our service must authenticate to our service by passing the CSL slicer's streaming key. <br />[Learn more](#encoder).
 
 4. From the **Slicer Software Version** section, assign a slicer software version to the CSL slicer.
    - Click **Select Version**.

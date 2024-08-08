@@ -362,7 +362,7 @@ For each ad, the `START-DATE` attribute of the `EXT-X-DATERANG`E tag will have t
 
 For each ad, an `<Event>` node will be inserted within an `<EventStream>` node in that ad's period within the DASH manifest. This Event node will contain the JSON payload as shown below.
 
-![DASH](/images/uplynk/dash-ads.png)
+![DASH](/images/uplynk/dash-ad.png)
 
 In order to improve readability, a formatted version of the above sample JSON payload is provided below.
 

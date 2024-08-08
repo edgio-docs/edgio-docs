@@ -220,7 +220,7 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 
 [Learn more](#organizations)
 
-#### Create a custom set of monitoring rules  {/*create-custom-set*/}
+#### Create a Custom Set of Monitoring Rules  {/*create-custom-set*/}
 
 1. Navigate to the [Monitoring Rules page](https://monitor.uplynk.com/settings/rules).
    - From the main menu, navigate to **Services**.
@@ -242,7 +242,7 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 
 5. Click **Save**.
 
-#### Modify a custom set of monitoring rules  {/*modify-custom-set*/}
+#### Modify a Custom Set of Monitoring Rules  {/*modify-custom-set*/}
 
 1. Navigate to the [Monitoring Rules page](https://monitor.uplynk.com/settings/rules).
    - From the main menu, navigate to **Services**.
@@ -257,7 +257,7 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 
 5. Click **Save**.
 
-#### Delete a custom set of monitoring rules  {/*delete-custom-set*/}
+#### Delete a Custom Set of Monitoring Rules  {/*delete-custom-set*/}
 
 1. Navigate to the [Monitoring Rules page](https://monitor.uplynk.com/settings/rules).
    - From the main menu, navigate to **Services**.
@@ -272,7 +272,7 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 
 5. Click **Yes, Delete It**.
 
-#### Assign a custom set of monitoring rules to one or more Live Slicers  {/*assign-custom-set*/}
+#### Assign a Custom Set of Monitoring Rules to One or More Live Slicers  {/*assign-custom-set*/}
 
 1. Navigate to the [Monitoring Rules page](https://monitor.uplynk.com/settings/rules).
    - From the main menu, navigate to **Services**.
@@ -293,7 +293,7 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 
     <Tip>Alternatively, you may assign a ruleset to a Live Slicer from the Live Slicer Monitoring dashboard by clicking on the desired Live Slicer and then selecting the rule set that will be applied to it from the Ruleset option.</Tip>
 
-#### Assign the default set of monitoring rules to one or more Live Slicers  {/*assign-default-set*/}
+#### Assign the Default Set of Monitoring Rules to One or More Live Slicers  {/*assign-default-set*/}
 
 1. Navigate to the [Monitoring Rules page](https://monitor.uplynk.com/settings/rules).
    - From the main menu, navigate to **Services**.

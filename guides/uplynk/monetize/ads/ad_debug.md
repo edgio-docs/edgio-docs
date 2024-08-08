@@ -61,7 +61,9 @@ Find and review ad jobs through the [Ad Server Debug](https://cms.uplynk.com/sta
 
 ### Find Playback Session ID  {/*find-playback-session-id*/}
 
-Implement the [Preplay API](https://docs.edgecast.com/video/Content/Develop/Preplayv2.htm) within your custom player to retrieve the playback session ID.<Info>Alternatively, inspect your playback URL to find out your own playback session.<br />[Learn more](#audit-a-playback-session).</Info>
+Implement the [Preplay API](https://docs.edgecast.com/video/Content/Develop/Preplayv2.htm) within your custom player to retrieve the playback session ID.
+
+<Info>Alternatively, inspect your playback URL to find out your own playback session.<br />[Learn more](#audit-a-playback-session).</Info>
 
 
 
@@ -74,7 +76,7 @@ Use the following settings to search for the desired ad job data:
 | Ad server query params | For certain ad providers, such as GAM and Invidi, you can filter for specific ad server query parameters. For example, for GAM requests, you can query for ad jobs with `ppid=123` in the primary ad server request. |
 | Ad Playback Type | Filters ad job data by whether the ad was requested as a part of a live stream or VOD. |
 | From<br />To | Filters ad job data by the time period during which the ad was requested. |
-| Channel/Live Event ID | Filters ad job data by the live channel or live event during which it was requested. Identify a live channel or live event by its system-defined ID.<br />Find a [live channel ID](#locate-a-live-channel-id) or a [live event ID](#find-a-live-event-id). |
+| Channel/Live Event ID | Filters ad job data by the live channel or live event during which it was requested. Identify a live channel or live event by its system-defined ID.<br />Find a [live channel ID](#locate-live-channel-id) or a [live event ID](#find-a-live-event-id). |
 | Asset ID | Filters ad job data by the VOD asset during which it was requested. Identify an asset by its system-defined ID.<br />[Find an asset ID](#locate-an-asset-id). |
 | Session ID | Filters ad job data by the playback session for which it was requested. Identify your playback session by its system-defined ID.<br />[Find a playback session ID](#find-playback-session-id). |
 | Status | Filters ad job data by status.<br />[Learn more](#ad-job-data). |
@@ -149,8 +151,6 @@ View a transaction's request and response by clicking on it from the Transaction
 
 The **Request** tab describes either the initial request to an ad decision server or a wrapper. This tab reports the following information:
 
-### Transaction Details  {/*transaction-details*/}
-
 | **Name**  | **Description** |
 |----------|----------|
 | Request URL     | Typically indicates the request URL. The request URL's query string parameters are reported directly below this URL.<br /><br />**Google Ad Manager and VOD Playback:** If the [ad.output parameter](/uplynk/monetize/ads/google_ad_manager/#ad-parameters) was set to a VAST format (i.e., `xml__vast3` or `xml_vast2`) for a VOD playback session, then this field returns a VMAP template instead of a URL for the initial ad request. However, our service populates this field with a request URL for subsequent wrapper requests. |
@@ -216,7 +216,7 @@ View an ad job's beacons by clicking on an ad job from the Ad Server Debug Query
 
 <Tip>Sort the table to quickly find beacons with similar attributes (e.g., delivery status or HTTP status code).</Tip>
 
-## Troubleshooting Ad Jobs  {/*troubleshooting-ad-jobs*/}
+## Troubleshoot Ad Jobs  {/*troubleshooting-ad-jobs*/}
 
 Troubleshoot ad jobs that contain completed transactions with warnings, failed transactions, or both.
 
@@ -250,7 +250,7 @@ A warning triangle icon appears next to both of the following:
 
 View the warning by hovering over it as illustrated below.
 
-![Ad Server Debug Warning](/images/uplynk/ad-server-warning)
+![Ad Server Debug Warning](/images/uplynk/ad-server-warning.png)
 
 In the above illustration, the ad job contains a warning that indicates that a transaction contains 4 empty impressions. Inspecting the transaction's raw response reveals that it does contain 4 empty impressions. Reviewing the `<Error>` tag indicates that an error also occurred. Although the ad decision server returned 4 empty impressions and an error, an ad was still served to the viewer.
 

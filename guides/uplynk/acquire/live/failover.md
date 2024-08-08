@@ -227,6 +227,8 @@ This section details setup for one or more live channel(s).
 
 ## Failover Notifications  {/*failover-notifications*/}
 
+<Tip>See [Health Notifications via Amazon SNS](/uplynk/manage/health_notifications_via_amazon_sns) for additional information.</Tip>
+
 Publish failover events through the following workflow:
 
 1. **Data Push**:

@@ -12,7 +12,7 @@ Customize playback by adding the desired customization parameters directly after
 
     `?tc=1&exp=1358341863&rn=4114845747&ct=a&cid=ea...&rays=dcba&pk=myapp&...&sig=dm13...`
 
-- It is strongly recommended to sign your playback URL to ensure its integrity. Please include customization parameters when signing your playback URL.
+- It is strongly recommended to [sign your playback URL](/uplynk/deliver/playback_urls/#signing-playback-urls-with-token) to ensure its integrity. Please include customization parameters when signing your playback URL.
 
 ## General Parameters  {/*general-parameters*/}
 
@@ -37,7 +37,7 @@ This section describes all customization parameters that are not specific to ad 
 | **hlsver**     | Determines the minimum HLS version required by the player. Maximum value is 7. <br />**Example**: Set to `7` for latest feature support. |
 | **ifo**  | Set to `1` to include a playlist containing only I-frames, useful for trick mode. <br /> HLS: Automatically included in protocol version 4 or higher. <br /> DASH: Required for I-frame playlist generation. <br />**Example**: `ifo=1`     |
 | **maxfps**     | Limits the maximum frames per second (FPS) in the manifest. <br />**Example**: `maxfps=59` to exclude rays with 60 FPS or higher.      |
-| **needscors**  | Determines CORS support for the manifest response. <br /> `0` allows requests from any site. `1` leverages CORS with specific headers. <br /> Default values: HLS `0`, DASH `1`. |
+| **needscors**  | Determines CORS support for the manifest response. <br /> `0` allows requests from any site. `1` leverages CORS with specific headers. <br /> **Default values**: HLS `0`, DASH `1`. |
 | **opaqueid**   | Uniquely identifies a viewer. Used to limit concurrent sessions. <br />**Example**: `opaqueid=joe-smith-001`      |
 | **pltl** | Set the Playlist Timeline parameter to `1` to add a timeline DMM for assets in a virtual linear playlist. <br />**Example**: `dmm.schemas.top=timeline&pltl=1`    |
 | **plts** | Set the Playlist Timestamp parameter to specify a seek position in seconds from the start of the playlist. <br />**Example**: `plts=300` to seek 5 minutes into the playlist.  |
@@ -89,11 +89,11 @@ Ad parameters that apply to all ad decision servers are described below.
 | ad.prbd | Set this parameter to the name of the Prebid configuration that identifies your Prebid server and provides bidding instructions.<br />[Learn more](/uplynk/monetize/ads/#prebids).<br />**Syntax**: `ad.prbd=Prebid Config Name`<br />**Example:** `ad.prbd=myPrebidServer` |
 | is_ad | Manually forces an asset to be reported as an ad in the [asset_play_started event (push logs)](/uplynk/analyze/log_file_delivery/#asset-play-started).<br />This parameter is unnecessary when the system automatically inserts ads.<br />This parameter is useful when ads are managed and inserted by an external system, since it allows our push logs to reflect that the asset was played back as an ad.<br />**Example:** Report playback as an ad in the push logs: `is_ad=1` |
 
-## Google Ad Manager  {/*google-ad-manager*/}
+### Google Ad Manager  {/*google-ad-manager*/}
 
 [View Google Ad Manager-specific parameters](/uplynk/monetize/ads/google_ad_manager).
 
-## FreeWheel  {/*freewheel*/}
+### FreeWheel  {/*freewheel*/}
 
 [View FreeWheel-specific parameters](/uplynk/monetize/ads/freewheel).
 
@@ -271,7 +271,7 @@ Use the following query string parameters to define a PlayReady policy.
 | pr.license_begin_seconds | Determines the number of seconds prior to the current playback request for which the license will be valid. A license cannot be used prior to the specified time.<br />Set this parameter to 0 to make the license valid any time prior to the playback request.<br />The purpose of this parameter is to account for time differences between our servers and the client. For example, a playback request will be denied if this parameter is set to 60 seconds and the client's time is 4 minutes behind our server's time.<br />**Default value**: 3600<br />By default, playback will be allowed when a client's time is up to an hour behind our server's time. |
 | pr.license_duration_seconds<br />pr.TrackType.license_duration_seconds | Determines the length of time, in seconds, during which content playback is allowed.<br />This countdown starts upon license creation.<br />No further decryption is allowed upon license expiration.<br />**Default value**: 86400 |
 | pr.playback_duration_seconds<br />pr.TrackType.playback_duration_seconds | Determines the length of time, in seconds, for which playback will be valid. This countdown starts after initial playback.<br />Use this parameter when setting up a policy for offline playback or license renewal.<br />Playback is unlimited when playback duration has not been specified.<br />**Default value**: 0 |
-| pr.playenabler<br />pr.TrackType.playenabler | Allows license delivery where it would normally be disallowed. Set this parameter to the Play Enabler GUID that defines the additional condition under which license delivery will be allowed.<br />The purpose of this parameter is to facilitate testing. For example, by default, playback on a virtual machine is restricted. Pass `B621D91F-EDCC-4035-8D4B-DC71760D43E9` to allow playback of constrained resolution on an unknown output (e.g., VM).<br />Syntax:<br />`pr.playenabler={Play Enabler GUID}`<br />View Microsoft's Compliance Rules to learn more about Play Enablers. |
+| pr.playenabler<br />pr.TrackType.playenabler | Allows license delivery where it would normally be disallowed. Set this parameter to the Play Enabler GUID that defines the additional condition under which license delivery will be allowed.<br />The purpose of this parameter is to facilitate testing. For example, by default, playback on a virtual machine is restricted. Pass `B621D91F-EDCC-4035-8D4B-DC71760D43E9` to allow playback of constrained resolution on an unknown output (e.g., VM).<br />Syntax:<br />`pr.playenabler={Play Enabler GUID}`<br />[View Microsoft's Compliance Rules to learn more about Play Enablers](http://www.microsoft.com/playReady/licensing/compliance). |
 | pr.realtime_expiration | Determines whether the current playback session will be stopped upon license expiration.<br />**Valid values are**:<br />True: Upon license expiration, the current playback session will be stopped.<br />False: The current playback session will continue if it was started prior to license expiration.<br />**Default value**: True |
 | pr.require_hdcp_type_1<br />pr.TrackType.require_hdcp_type_1 | Determines the version of HDCP that will be enforced on digital video outputs when pr.digital_video_protection_level is set to 250 or higher.<br />**Valid values are**:<br />True: HDCP content type 1 (HDCP version 2.2 or later) is enforced. Streams may not be transmitted by the HDCP repeater to HDCP 1.x-compliant devices or HDCP2.0-compliant repeaters.<br />False: Allows any version of HDCP.<br />**Default value**: False |
 | pr.securitylevel<br />pr.TrackType.securitylevel | Determines the minimum security requirements for the client device.<br />**Valid values are**:<br />150: No security.<br />This security level is solely provided for testing purposes.<br />2000: Use this security level for hardened devices and applications consuming commercial content. Requires the protection of Assets, Client Secrets, or Content Secrets via software or hardware.<br />3000: Use this security level for hardened devices with the highest security consuming the highest quality of commercial content.<br />Devices Only: <br />Requires the protection of Assets, Client Secrets, and Content Secrets via hardware using a Trusted Execution Environment (TEE) for the processor.<br />**Default value**: 150 |

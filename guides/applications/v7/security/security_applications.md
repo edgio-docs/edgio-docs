@@ -672,6 +672,12 @@ Version control allows you to:
 -   Reactivate a previous version of your Security App configuration.
 -   Compare a previous version of your Security App configuration to the current version.
 
+<Info>
+
+{{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier and Business support a rolling window of up to 200 versions, while {{ PRODUCT }} {{ PRODUCT_SECURITY }} Essentials and Insights is restricted to a rolling window of up to 100 versions.
+
+</Info>
+
 An advantage of using version control is that it allows you to quickly roll back to a previously vetted configuration. For example, if you notice that a new configuration has resulted in more false positives, then you can roll back to the previous version before analyzing the data.
 
 **To view, compare, and reactivate a previous configuration**

@@ -379,6 +379,21 @@ Sensitive data  (e.g., credit card information or passwords) can be redacted fro
 
 [Learn how to redact sensitive data.](/applications/security/managed_rules#redacting-sensitive-data)
 
+## Origin Signaling {/*origin-signaling*/}
+
+{{ PRODUCT }} can add custom headers to requests that meet the following conditions:
+
+-   {{ PRODUCT }} {{ PRODUCT_SECURITY }} generated an alert for the request. All other enforcement actions prevent {{ PRODUCT }} from communicating with the origin server. 
+-   The request was forwarded to an origin server because it could not be served from cache.
+
+These custom headers may return any of the following information:
+
+-   **Known Bot:** Returns `1` if the request was categorized as a known bot. Otherwise, returns `0`.
+-   **Bot Score:** Indicates the request's bot score. This score indicates our level of confidence that the request originated from a bot.
+-   **WAF Score:** Indicates the request's anomaly score. This score is determined by the number of rules that were violated and their severity.
+
+Set up origin signaling by enabling the `Origin Signal Header` section within the desired Security App configuration and then defining the custom headers that will be included with requests forwarded to an origin. 
+
 ## Order of Precedence {/*order-of-precedence*/}
 
 The recommended practice is to create a Security App configuration that is tuned for each of your applications. This allows you to apply a restrictive security policy with minimal false positives. Each Security App configuration's host and URL path conditions determine the set of traffic to which it may be applied. If a request is eligible to be screened by multiple Security App configurations, then {{ PRODUCT }} {{ PRODUCT_SECURITY }} will screen it using the first eligible configuration in the list.
@@ -604,9 +619,14 @@ You may create, modify, and delete Security App configurations.
     
     </Info>
 
-16. Click **Save**.
-17. Click **Accept All Changes**.
-18. Click **Save Changes**.
+16. Optional. Set up [origin signaling](#origin-signaling). 
+    1.  Enable the **Origin Signal Header** section.
+    2.  From the **Header Name** option, assign a name for the desired custom header that will be included with requests forwarded to an origin.
+    3.  From the **Select Type** option, select the type of information that will be reported by that custom header.
+    4.  Optional. Add another custom request header by clicking **+ Add  Header** and then repeating steps 2 and 3.
+17. Click **Save**.
+18. Click **Accept All Changes**.
+19. Click **Save Changes**.
 
 **To reorder Security App configurations**
 1.  Navigate to the **Security App** page.

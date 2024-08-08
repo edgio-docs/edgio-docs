@@ -1,5 +1,5 @@
 ---
-title: Freewheel
+title: FreeWheel
 ---
 
 Learn how to define the following FreeWheel ad configurations:

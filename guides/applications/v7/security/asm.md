@@ -33,7 +33,7 @@ Once your network has been scanned, you should review and mitigate your exposure
 
 ## Getting Started {/*getting-started*/}
 
-1.  Create a collection (**Attack Surfaces** | **Collections** | **+ Create Collection**) and then add one or more seed(s) to your collection. 
+1.  [Create a collection](#create-a-collection) (**Attack Surface** page | **+ Create a Collection**) and then [add one or more seed(s)](#add-seed) to your collection. 
 2.  Verify that your network's firewall allows the following IP addresses:
 
     ```
@@ -42,7 +42,7 @@ Once your network has been scanned, you should review and mitigate your exposure
     52.3.81.5
     ```
 
-3.  Scan your network.
+3.  [Scan your network.](#scanning-your-network)
 4.  Review and mitigate exposures.
 
 ## Collections {/*collections*/}
@@ -65,25 +65,26 @@ You may create, modify, and delete collections. Finally, you can reset a collect
 {{ PRODUCT }} limits the number of collections that can be created. This limit is enforced on a per organization basis. 
 </Info>
 
-**To create a collection**
+**<a id="create-a-collection" />To create a collection**
 
-1.  Load the **Collections** page.
+1.  Load the **Create a Collection** pane.
     {{ SECURITY_NAV }} **Attack Surface**.
-    5.  From the left-hand pane, select **Collections**.
+    5.  Perform one of the following steps:
+        -   **Initial Collection:** Click **+ Create a Collection**.
+        -   **Subsequent Collections:** From the left-hand pane, select **Collections** and then click **+ Create Collection**.
 
-2.  Click **+ Create Collection**.
-3.  From the **Name** option, assign a name to this collection. 
-4.  Optional. From the **Description** option, provide a brief description for the purpose of this collection.
-5.  Optional. Define a schedule for when {{ PRODUCT }} will scan your network.
+2.  From the **Name** option, assign a name to this collection. 
+3.  Optional. From the **Description** option, provide a brief description for the purpose of this collection.
+4.  Optional. Define a schedule for when {{ PRODUCT }} will scan your network.
     1.  Mark each day of the week on which {{ PRODUCT }} will scan your network.
     2.  Select the time (UTC) at which the scan will start. 
-6.  Optional. Define when notifications will be sent.
+5.  Optional. Define when notifications will be sent.
     -   **Scan Start:** Require {{ PRODUCT }} to notify you when it starts scanning your network by marking the **Send email on scan start** option. Disable this notification by clearing this option.
     -   **Scan Start:** Require {{ PRODUCT }} to notify you when it completes a network scan by marking the **Send email when a scan completes** option. Disable this notification by clearing this option.
     -   **Scan Start:** Require {{ PRODUCT }} to notify you when it detects new exposures or if existing exposures have been resolved by marking the **Only send when new exposures are found or existing exposures are resolved** option. Disable this notification by clearing this option.
 
     If you have enabled at least one notification, then you should define the set of users that will be notified. From the **Recipients** section, click within the option and then select the desired user. Repeat as needed.
-9.  Click **Create Collection**.
+6.  Click **Create Collection**.
 
     Once you have created a collection, you should add seeds that define the segment of your network that will be scanned.
 
@@ -161,7 +162,7 @@ Resetting a collection permanently deletes all exposures, assets, and technologi
 
 ## Scanning Your Network {/*scanning-your-network*/}
 
-Once you have created a collection and [added at least one seed](#add-seed) to it, start scanning your network by clicking **Scan Now**. {{ PRODUCT }} will discover and scan all of the assets associated with the seeds in the collection. Monitor the progress of the scan from the **Scans** section.
+Once you have created a collection and [added at least one seed](#add-seed) to it, start scanning your network by viewing that collection and then clicking **Scan Now**. {{ PRODUCT }} will discover and scan all of the assets associated with the seeds in the collection. Monitor the progress of the scan from the **Scans** section.
 
 **Key information:**
 
@@ -173,6 +174,12 @@ Once you have created a collection and [added at least one seed](#add-seed) to i
 -   [Create or modify rules](#rules) to create custom exposure detection and to determine whether exposures are created from findings discovered from scanned assets.
 
     For example, the default behavior is to scan ports for technologies, protections, and exposures. However, you can create a [rule that prevents exposures from being created from port scans](#scan-ports-without-exposures). 
+-   {{ PRODUCT }} may identify unreachable assets when it scans your network. Perform the following steps to view a list of these assets:
+
+    1.  Open the desired scan.
+    2.  From the **Tasks** section, find the **Status** option. Select `Asset Unreachable` and then click **Update**.
+
+        ![Tasks - unreachable assets](/images/v7/security/asm-unreachable-assets.png)
 
 **To scan your network**
 
@@ -439,12 +446,16 @@ Once you have scanned your network, {{ PRODUCT }} generates an executive-level s
 
 **To modify your report**
 
-1.  Load the **Security Assessment** page.
+1.  Load the **Report** page.
     {{ SECURITY_NAV }} **Attack Surface**.
-    5.  From the left-hand pane, select **Security Assessment**.
-2.  Click **Edit**.
-3.  Make the desired changes. 
-4.  Click **Save Changes**.
+    5.  From the left-hand pane, select **Report**.
+2.  Optional. Filter the report's data by selecting one or more collections.
+
+    ![ASM Report - Filtering by collection](/images/v7/security/asm-report-collection-filter.png)
+
+3.  Click **Edit**.
+4.  Make the desired changes. 
+5.  Click **Save Changes**.
 
 <Tip>
 
@@ -454,9 +465,9 @@ You can reset the report to the default content by clicking **Revert to Default 
 
 **To print your report**
 
-1.  Load the **Security Assessment** page.
+1.  Load the **Report** page.
     {{ SECURITY_NAV }} **Attack Surface**.
-    5.  From the left-hand pane, select **Security Assessment**.
+    5.  From the left-hand pane, select **Report**.
 2.  Click **Print** to display your report in full screen mode and to open the **Print** dialog box. 
 
     If a virtual PDF printer has been installed on your device, then you may generate a PDF instead of printing to a physical printer. 

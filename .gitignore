@@ -51,3 +51,5 @@ rest_api/tmp/split/paths
 # IDE
 .fleet
 .idea
+
+output/

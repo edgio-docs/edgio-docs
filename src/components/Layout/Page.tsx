@@ -15,7 +15,7 @@ import textCompare from 'utils/textCompare';
 
 import Header from './Header/Header';
 import MobileHeader from './Header/MobileHeader';
-import {SidebarNav} from './SidebarNav';
+import {SidebarNav} from './navigation';
 import {useIsMobile} from './useMediaQuery';
 
 export function Page({children}: PageProps) {

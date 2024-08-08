@@ -1,5 +1,5 @@
 import {edgioAnswersUrl} from 'components/EdgioAnswers';
-import {AccordionItem} from 'components/Layout/SidebarNav/Accordion';
+import {AccordionItem} from 'components/Layout/navigation/Accordion';
 import config from 'config/base.config';
 
 const {STATUS_URL, SUPPORT_URL, FORUM_URL, FIDDLE_URL} = config;

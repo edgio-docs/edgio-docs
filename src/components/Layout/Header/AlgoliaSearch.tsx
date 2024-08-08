@@ -11,11 +11,7 @@ import {createPortal} from 'react-dom';
 import styled from 'styled-components';
 
 import {siteConfig} from 'config/appConfig';
-import {
-  ContextType,
-  getLatestVersion,
-  useAppContext,
-} from 'contexts/AppContext';
+import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useOpenEdgioModal} from 'contexts/EdgioAnswersContext';
 
 const StyledSearchWrapper = styled.div`
@@ -58,14 +54,12 @@ const AlgoliaSearch = ({onSearchOpen, onSearchClose}: AlgoliaSearchProps) => {
   const {context, version} = useAppContext();
   const openModal = useOpenEdgioModal();
 
-  const facetFilters = ['version:all'];
+  const facetFilters = [];
 
-  // Search only the latest version of applications on the home page. Otherwise, search the current version.
-  if (context === ContextType.HOME) {
-    const latestAppsVersion = getLatestVersion(ContextType.APPLICATIONS);
-    facetFilters.push(`version:${latestAppsVersion}`);
-  } else {
-    facetFilters.push(`version:${version}`);
+  // Home context should search all products + versions
+  // Other products should search the current version or default
+  if (context !== ContextType.HOME) {
+    facetFilters.push(`version:${context}-${version}`);
   }
 
   const searchParameters = {

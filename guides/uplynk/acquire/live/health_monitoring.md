@@ -19,12 +19,12 @@ Monitor the health for all recently active Live Slicers through the following to
 Quickly set up Live Slicer health monitoring by performing the following steps:
 
 1. [Enable monitoring](#enable-monitoring) on your account.
-2. [Create a view](#create-slicer-view) for the desired Live Slicers.
+2. [Create a view](#create-a-slicer-view) for the desired Live Slicers.
 3. [Monitor the Live Slicers](#dashboard) identified above from the Live Slicer Monitoring dashboard.
 
 ### Key Steps  {/*key-steps*/}
 
-Set up Live Slicer health monitoring involves:
+Setting up Live Slicer health monitoring involves:
 
 1. Selecting one or more customer account(s) whose Live Slicers can be monitored.
 2. Creating a Slicer View that identifies the set of Live Slicers that will be monitored.
@@ -61,7 +61,7 @@ Before you can add a Live Slicer to a Slicer View, you must first enable monitor
 
 2. **Click Configure Monitored Accounts:**
    - Mark each customer account for which monitoring will be enabled.
-   - Click "Add # Accounts" to confirm.
+   - Click **Add # Accounts** to confirm.
 
 #### Disable monitoring on an account  {/*disable-monitoring*/}
 

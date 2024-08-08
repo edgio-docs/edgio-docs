@@ -36,9 +36,9 @@ Our Syndication product allows you to distribute your live or virtual live conte
    - Navigate to **Settings** > **Publishing**.
    - Click **+ New Target** to open the Add Publishing Target dialog box.
    - Assign a unique name to the new publishing target under Target Name.
-   - Select YouTube from the Platform options.
+   - Select **YouTube** from the Platform options.
 
-   **Authentication Methods:**
+3. **Authenticate** via one of these methods:
    - **Stream Key:**
      - Obtain your stream key from YouTube's live streaming settings.
      - Paste the stream key into the Stream Key option.
@@ -48,11 +48,11 @@ Our Syndication product allows you to distribute your live or virtual live conte
      - Enable the YouTube Integrated Authentication option.
      - Select the appropriate Clipping profile for authentication.
 
-   - **Save and Validate:**
+4. **Save and Validate:**
      - Click Save.
      - The service will validate the stream key or credentials and attempt to connect to YouTube. Verify and correct any errors if the connection fails.
 
-   - **Configure Stream Details (Integrated Authentication Only):** Set the video title, description, privacy level, and audience (for kids or not) within the YouTube options on the Publish tab.
+5. **Configure Stream Details**:  (Integrated Authentication Only): Set the video title, description, privacy level, and audience (for kids or not) within the YouTube options on the Publish tab.
 
 ### Set Up HLS Pull  {/*set-up-hls-pull*/}
 

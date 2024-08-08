@@ -30,6 +30,6 @@ Studio DRM policies determine how security restrictions (e.g., copying or viewin
 4. Sign the playback URL.
 5. (Optional) Encrypt the playback URL's query string for an added level of security.
 
-## Apple FairPlay Streaming
+## Apple FairPlay Streaming (FPS)
 
 Use the following settings to define an Apple FairPlay Streaming DRM policy:

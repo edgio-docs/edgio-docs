@@ -199,10 +199,6 @@ const nav = {
               path: 'monetize/ads/universal_ad_configuration',
             },
             {
-              title: 'Ad Parameters',
-              path: 'monetize/ads/ad_parameters',
-            },
-            {
               title: 'Google Ad Manager',
               path: 'monetize/ads/google_ad_manager',
             },
@@ -212,7 +208,7 @@ const nav = {
             },
             {
               title: 'Ad Debug',
-              path: 'monetize/ads/ad_insertion_data',
+              path: 'monetize/ads/ad_debug',
             },
           ],
         },

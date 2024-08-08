@@ -106,36 +106,37 @@ Filter your results by [status](#ad-job-data) by clicking the filter icon and th
 
 Search results consist of a list of ad jobs that meet the specified search criteria. The following information is reported for each ad job:
 
-| Name | Description |
-|---|---|
-| Status | Indicates the ad job's status. The available statuses are described below.<br />Completed: Indicates that an ad job's initial transactions with the ad decision server were completed in a timely manner.<br />This state may include ad jobs with a failed wrapper transaction.<br />Failed: Indicates that an ad job's initial transactions either did not complete on time or resulted in empty or malformed responses.<br />View the failure reason by hovering over this label.<br />#<br />Learn more.<br />Pending: Indicates that work on an ad job has not been started.<br />Due to the speed at which ad jobs are processed, this state should happen infrequently. Additionally, an ad job that does report this state should quickly transition to a different state.<br />Processing: Indicates that an ad job contains at least one transaction that is still being processed. For example, this state may indicate that the system is still fetching ads from the ad decision server and creating the ad payload.<br />Due to the speed at which ad jobs are processed, this state should happen infrequently. Additionally, an ad job that does report this state should quickly transition to a different state. |
-| Date Created | Indicates the date and time at which the ad job was initiated.<br />For your convenience, date and time are displayed using your local time zone. However, this is not an indicator of the time zone corresponding to the playback session for which ad insertion data is being reported. |
-| Channel/Event | Identifies a live channel or a live event by its name. |
-| Session ID | Identifies a playback session by its system-defined ID. |
-| T# | Indicates the number of transactions associated with the ad job. |
-| B# | Indicates the number of beacons associated with the ad job. |
-| F# | Indicates the number of failed transactions that occurred within an ad job. A transaction is considered a failure when it either does not complete on time or it resulted in an empty or malformed response. |
+| **Name**        | **Description**         |
+|------|-----|
+| Status      | Indicates the ad job's status. The available statuses are described below. <ul><li>**Completed**: Indicates that an ad job's initial transactions with the ad decision server were completed in a timely manner. This state may include ad jobs with a failed wrapper transaction.</li><li>**Failed**: Indicates that an ad job's initial transactions either did not complete on time or resulted in empty or malformed responses. View the failure reason by hovering over this label. [Learn more](#troubleshooting-ad-jobs).</li><li>**Pending**: Indicates that work on an ad job has not been started. Due to the speed at which ad jobs are processed, this state should happen infrequently. Additionally, an ad job that does report this state should quickly transition to a different state.</li><li>**Processing**: Indicates that an ad job contains at least one transaction that is still being processed. For example, this state may indicate that the system is still fetching ads from the ad decision server and creating the ad payload. Due to the speed at which ad jobs are processed, this state should happen infrequently. Additionally, an ad job that does report this state should quickly transition to a different state.</li></ul> |
+| Date Created | Indicates the date and time at which the ad job was initiated. For your convenience, date and time are displayed using your local time zone. However, this is not an indicator of the time zone corresponding to the playback session for which ad insertion data is being reported.|
+| Channel/Event | Identifies a live channel or a live event by its name.   |
+| Session ID   | Identifies a playback session by its system-defined ID.   |
+| T# | Indicates the number of transactions associated with the ad job.    |
+| B# | Indicates the number of beacons associated with the ad job.|
+| F# | Indicates the number of failed transactions that occurred within an ad job. A transaction is considered a failure when it either does not complete on time or it resulted in an empty or malformed response.    |
 
-Click on an ad job to view its transactions and beacons.
+<Tip>Click on an ad job to view its transactions and beacons.</Tip>
 
 ### Transactions  {/*transactions*/}
 
-View an ad job's transactions by clicking on an ad job from the Ad Server Debug Query Results page. The following information is reported for each transaction:
+View an ad job's transactions by clicking on an ad job from the **Ad Server Debug Query Results** page. The following information is reported for each transaction:
+
 
 | Name | Description |
 |---|---|
-| Status | Indicates a transaction's status. The available statuses are described below.<br />Completed: Indicates that the transaction was completed in a timely manner.<br />Failed: Indicates that the transaction either did not complete on time or resulted in an empty or malformed response.<br />View the failure reason by hovering over this label.<br />#<br />Learn more.<br />Pending: Indicates that the ad request has not been submitted.<br />Due to the speed at which ad jobs are processed, this state should happen infrequently. Additionally, an ad job that does report this state should quickly transition to a different state.<br />Processing: Indicates that the transaction that is still being processed. For example, this state may indicate that the system is still fetching the requested ad from the ad decision server and creating the ad payload.<br />Due to the speed at which ad jobs are processed, this state should happen infrequently. Additionally, an ad job that does report this state should quickly transition to a different state. |
-| Date Created | Indicates the date and time at which the transaction was initiated.<br />For your convenience, date and time are displayed using your local time zone. However, this is not an indicator of the time zone corresponding to the playback session for which ad insertion data is being reported. |
-| Type | Indicates the transaction type: is the primary ad request (labeled “Primary” in purple), a wrapper spawned from the primary transaction (labeled “Primary Wrapper”), or a wrapper spawned from another wrapper transaction (labeled “Wrapper”).<br />Primary: The primary ad request.<br />Primary Wrapper: A wrapper spawned from the primary transaction.<br />Wrapper: A wrapper spawned from another wrapper transaction. |
+| Status      | Indicates the ad job's status. The available statuses are described below. <ul><li>**Completed**: Indicates that an ad job's initial transactions with the ad decision server were completed in a timely manner. This state may include ad jobs with a failed wrapper transaction.</li><li>**Failed**: Indicates that an ad job's initial transactions either did not complete on time or resulted in empty or malformed responses. View the failure reason by hovering over this label. [Learn more](#troubleshooting-ad-jobs).</li><li>**Pending**: Indicates that work on an ad job has not been started. Due to the speed at which ad jobs are processed, this state should happen infrequently. Additionally, an ad job that does report this state should quickly transition to a different state.</li><li>**Processing**: Indicates that an ad job contains at least one transaction that is still being processed. For example, this state may indicate that the system is still fetching ads from the ad decision server and creating the ad payload. Due to the speed at which ad jobs are processed, this state should happen infrequently. Additionally, an ad job that does report this state should quickly transition to a different state.</li></ul> |
+| Date Created | Indicates the date and time at which the ad job was initiated. For your convenience, date and time are displayed using your local time zone. However, this is not an indicator of the time zone corresponding to the playback session for which ad insertion data is being reported.|
+| Type | Indicates the transaction type: is the primary ad request (labeled “Primary” in purple), a wrapper spawned from the primary transaction (labeled “Primary Wrapper”), or a wrapper spawned from another wrapper transaction (labeled “Wrapper”).<ul><li>**Primary**: The primary ad request.</li><li>**Primary Wrapper**: A wrapper spawned from the primary transaction.</li><li>**Wrapper**: A wrapper spawned from another wrapper transaction.</li></ul> |
 | Total Elapsed Time | Indicates the total amount of time it took to complete the transaction. |
 | Transaction ID | Identifies the transaction by its system-defined ID. |
 | Initial Ad ID | Displays the ad ID found in the initial/ primary response. |
-| Wrapper Chains | Indicates the number and status of wrapper chains spawned from this transaction.<br /><br />Each wrapper chain starts with a primary transaction followed by one or more wrapper transactions.<br /><br />Green indicates all wrapper chains ended with a successful response containing ads.<br />Yellow indicates a mix of successes and failures.<br />Red indicates all wrapper chains ended with a failed response.<br /><br />Wrapper chains can be collapsed or expanded with the carrot buttons on the left, or with the Expand All / Collapse All buttons. |
+| Wrapper Chains | Indicates the number and status of wrapper chains spawned from this transaction.<br /><br />Each wrapper chain starts with a primary transaction followed by one or more wrapper transactions.<br /><br />Green indicates all wrapper chains ended with a successful response containing ads. Yellow indicates a mix of successes and failures.<br />Red indicates all wrapper chains ended with a failed response.<br /><br />Wrapper chains can be collapsed or expanded with the carrot buttons on the left, or with the Expand All / Collapse All buttons. |
 | Wrapper Depth | Indicates the position of this wrapper in the chain with the number of parent transactions of this request. 0 is the primary ad request, 1 is for Primary Wrappers, 2 would be the 3rd transaction in the wrapper chain, and so on. |
 
-Click on a transaction to view the ad request and the raw XML response from the ad decision server.
+<Tip>Click on a transaction to view the ad request and the raw XML response from the ad decision server.</Tip>
 
-Sort the table to quickly find transactions with similar attributes (e.g., status, wrappers, and creatives).
+<Tip>Sort the table to quickly find transactions with similar attributes (e.g., status, wrappers, and creatives).</Tip>
 
 ### Transaction Details  {/*transaction-details*/}
 
@@ -144,30 +145,30 @@ View a transaction's request and response by clicking on it from the Transaction
 - The **Request** tab describes either the initial request to an ad decision server or a wrapper.
 - The **Response** tab provides the raw XML response provided by an ad decision server and summary information.
 
-#### Request  {/*request*/}
+**Request**
 
 The **Request** tab describes either the initial request to an ad decision server or a wrapper. This tab reports the following information:
 
 ### Transaction Details  {/*transaction-details*/}
 
-| **Name**            | **Description**                                                                                                                                                                                                                   |
-|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Request URL**     | Typically indicates the request URL. The request URL's query string parameters are reported directly below this URL.<br /><br />**Google Ad Manager and VOD Playback:** If the ad.output parameter was set to a VAST format (i.e., xml__vast3 or xml_vast2) for a VOD playback session, then this field returns a VMAP template instead of a URL for the initial ad request. However, our service populates this field with a request URL for subsequent wrapper requests. |
-| **Request Headers** | Contains a list of request headers and their values.<br /><br />**Google Ad Manager and VOD Playback:** If the ad.output parameter was set to a VAST format (i.e., xml__vast3 or xml_vast2) for a VOD playback session, then this section will not be populated for the initial ad request. However, our service populates this section for subsequent wrapper requests. |
-| **Date Created**    | Identifies the date and time at which the ad request was submitted.                                                                                                                                                             |
-| **Date Updated**    | Deprecated.                                                                                                                                                                                                                      |
-| **Total Time**      | Identifies the total amount of time, in seconds, it took to submit the ad request and receive a response from the ad decision server.                                                                                            |
-| **Connection Time** | Identifies the amount of time, in seconds, it took to establish a connection to the ad decision server.                                                                                                                          |
-| **Header Request Time** | Identifies the amount of time, in seconds, it took after establishing a connection to send the ad request and to download response headers.                                                                                     |
-| **Body Download Time** | Identifies the amount of time, in seconds, it took to download the response body.                                                                                                                                             |
-| **Failure Reason**  | Identifies the reason for which the transaction failed. This field reports None for pending or successful ad requests.                                                                                                             |
-| **Pod Location**    | Reserved for future use.                                                                                                                                                                                                          |
-| **Redirects**       | Identifies the number of HTTP redirects (e.g., 302 Found) that were generated as a result of this ad request.<br /><br />**Example:** A request for `http://example.com` may redirect to `https://www.example.com`.
+| **Name**  | **Description** |
+|----------|----------|
+| Request URL     | Typically indicates the request URL. The request URL's query string parameters are reported directly below this URL.<br /><br />**Google Ad Manager and VOD Playback:** If the [ad.output parameter](/uplynk/monetize/ads/google_ad_manager/#ad-parameters) was set to a VAST format (i.e., `xml__vast3` or `xml_vast2`) for a VOD playback session, then this field returns a VMAP template instead of a URL for the initial ad request. However, our service populates this field with a request URL for subsequent wrapper requests. |
+| Request Headers | Contains a list of request headers and their values.<br /><br />**Google Ad Manager and VOD Playback:** If the [ad.output parameter](/uplynk/monetize/ads/google_ad_manager/#ad-parameters) was set to a VAST format (i.e., `xml__vast3` or `xml_vast2`) for a VOD playback session, then this section will not be populated for the initial ad request. However, our service populates this section for subsequent wrapper requests. |
+| Date Created    | Identifies the date and time at which the ad request was submitted.       |
+| Date Updated    | Deprecated.    |
+| Total Time      | Identifies the total amount of time, in seconds, it took to submit the ad request and receive a response from the ad decision server.  |
+| Connection Time | Identifies the amount of time, in seconds, it took to establish a connection to the ad decision server.  |
+| Header Request Time | Identifies the amount of time, in seconds, it took after establishing a connection to send the ad request and to download response headers.     |
+| Body Download Time | Identifies the amount of time, in seconds, it took to download the response body. |
+| Failure Reason  | Identifies the reason for which the transaction failed. This field reports None for pending or successful ad requests.         |
+| Pod Location    | Reserved for future use.  |
+| Redirects       | Identifies the number of HTTP redirects (e.g., 302 Found) that were generated as a result of this ad request.<br /><br />**Example:** A request for `http://example.com` may redirect to `https://www.example.com`.
 
 
-#### Response  {/*response*/}
+**Response**
 
-The Response tab describes the response from an ad decision server. This tab reports the following information:                                                        |
+The Response tab describes the response from an ad decision server. This tab reports the following information:      |
 
 | Name | Description |
 |---|---|
@@ -199,30 +200,29 @@ View the list of ads returned by this ad job here. The following information is 
 | Fallback? | True/ False indicating whether this ad was a fallback ad. Fallback ads are used as backup ads in the case other ads are unusable. |
 | Asset Status | Displays the status of the ad asset in the Uplynk system. Clicking the button will play the ad if its status is ‘OK’. |
 
-Beacons
+### Beacons {/*beacons*/}
+
 View an ad job's beacons by clicking on an ad job from the Ad Server Debug Query Results page and then clicking on the Beacons tab. The following information is reported for each beacon:
 
-### Beacon Details  {/*beacon-details*/}
+| **Name**| **Description**|
+|------|----|
+| **Delivered**     | Indicates whether the current beacon was successfully delivered to an ad decision server. Valid values are:<br />- **success:** The ad decision server received the beacon.<br />- **pending:** Our system has not yet sent the beacon to the ad decision server.<br />- **error:** Our system experienced a communication error upon sending the beacon to the ad decision server. For example, an error occurs when the ad decision server does not return a `2xx` response or it takes too long to respond. |
+| **Date Created**  | Indicates the date and time at which the beacon was sent to the ad decision server.<Info>For your convenience, date and time are displayed using your local time zone. However, this is not an indicator of the time zone corresponding to the playback session for which ad insertion data is being reported.</Info> |
+| **Name**| Indicates the name assigned to the beacon.    |
+| **Beacon URL**    | Indicates the URL to which beacon data was sent.       |
+| **Type**| Indicates the type of ad event that triggered the beacon. Valid values are:<br />- **IMPRESSION:** Indicates that a creative was rendered.<br />- **ERROR:** Indicates that an error occurred.<br />- **CLICK:** Indicates that the viewer clicked on a creative. |
+| **Code**| Indicates the beacon's HTTP status code (e.g., 200).    |
+| **Browser**       | Indicates the client's behavior when a viewer clicks on an ad. Valid values are:<br />- **Hide:** Indicates that the ad will continue to play.<br />- **Replace:** Indicates that the client should open the link associated with the ad and switch focus to that content.<Info>This field is only relevant for client-side beacons.</Info> |
 
-| **Name**          | **Description**                                                                                                                                                                                                                           |
-|-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Delivered**     | Indicates whether the current beacon was successfully delivered to an ad decision server. Valid values are:<br />- **success:** The ad decision server received the beacon.<br />- **pending:** Our system has not yet sent the beacon to the ad decision server.<br />- **error:** Our system experienced a communication error upon sending the beacon to the ad decision server. For example, an error occurs when the ad decision server does not return a 2xx response or it takes too long to respond. |
-| **Date Created**  | Indicates the date and time at which the beacon was sent to the ad decision server.<br /><br />For your convenience, date and time are displayed using your local time zone. However, this is not an indicator of the time zone corresponding to the playback session for which ad insertion data is being reported. |
-| **Name**          | Indicates the name assigned to the beacon.                                                                                                                                                                                                  |
-| **Beacon URL**    | Indicates the URL to which beacon data was sent.                                                                                                                                                                                           |
-| **Type**          | Indicates the type of ad event that triggered the beacon. Valid values are:<br />- **IMPRESSION:** Indicates that a creative was rendered.<br />- **ERROR:** Indicates that an error occurred.<br />- **CLICK:** Indicates that the viewer clicked on a creative. |
-| **Code**          | Indicates the beacon's HTTP status code (e.g., 200).                                                                                                                                                                                        |
-| **Browser**       | Indicates the client's behavior when a viewer clicks on an ad. Valid values are:<br />- **Hide:** Indicates that the ad will continue to play.<br />- **Replace:** Indicates that the client should open the link associated with the ad and switch focus to that content.<br /><br />This field is only relevant for client-side beacons. |
-
-Sort the table to quickly find beacons with similar attributes (e.g., delivery status or HTTP status code).
+<Tip>Sort the table to quickly find beacons with similar attributes (e.g., delivery status or HTTP status code).</Tip>
 
 ## Troubleshooting Ad Jobs  {/*troubleshooting-ad-jobs*/}
 
 Troubleshoot ad jobs that contain completed transactions with warnings, failed transactions, or both.
 
-Audit your own playback session to correlate the playback experience to ad insertion data.
+<Tip>Audit your own playback session to correlate the playback experience to ad insertion data.</Tip>
 
-An ad job is considered to be successfully completed when the initial transactions to the ad decision server are completed in a timely manner. However, a successful ad job may contain transaction(s) with warnings or failures.
+<Info>An ad job is considered to be successfully completed when the initial transactions to the ad decision server are completed in a timely manner. However, a successful ad job may contain transaction(s) with warnings or failures.</Info>
 
 **Troubleshoot an Ad Job**
 
@@ -236,44 +236,45 @@ An ad job is considered to be successfully completed when the initial transactio
    - **Errors:** Indicates any errors that occurred when processing the response.
    - **Warnings:** Indicates any warnings that occurred.
 7. Use the information uncovered in the previous step to perform additional investigation into the failure, error, or warning.
-8. View the transaction in JSON format by clicking **Export Transaction JSON**. The `raw_response` JSON field contains the raw data for the response in XML format.
+
+<Info>View the transaction in JSON format by clicking **Export Transaction JSON**. The `raw_response` JSON field contains the raw data for the response in XML format.</Info>
 
 ### Warnings  {/*warnings*/}
 
 A warning indicates that the request to the ad decision server was incomplete or improperly formed. For example, a warning is generated when the request contains missing parameters or values.
 
-A warning icon ![Warning Icon](#) appears next to both of the following:
+A warning triangle icon appears next to both of the following:
 
 - Ad jobs that contain at least one transaction with a warning.
 - The transaction to which the warning applies.
 
 View the warning by hovering over it as illustrated below.
 
+![Ad Server Debug Warning](/images/uplynk/ad-server-warning)
 
+In the above illustration, the ad job contains a warning that indicates that a transaction contains 4 empty impressions. Inspecting the transaction's raw response reveals that it does contain 4 empty impressions. Reviewing the `<Error>` tag indicates that an error also occurred. Although the ad decision server returned 4 empty impressions and an error, an ad was still served to the viewer.
 
+```
+			<Impression id=\"3rdparty\"/>
+			<Impression id=\"3rdparty\"/>
+			<Impression id=\"3rdparty\"/>
+		<Impression id=\"3rdparty\"/>
+```
 
-
-In the above illustration, the ad job contains a warning that indicates that a transaction contains 4 empty impressions. Inspecting the transaction's raw response reveals that it does contain 4 empty impressions. Reviewing the Error tag indicates that an error also occurred. Although the ad decision server returned 4 empty impressions and an error, an ad was still served to the viewer.
-
-
-
-
-
-
-#### Failure  {/*failure*/}
+### Failure  {/*failure*/}
 
 A failed transaction indicates that an ad impression was not delivered either because the transaction did not complete on time or it resulted in an empty or malformed response. View the failure reason by hovering over the transaction's status.
 
-### Ad Request Failure Reasons  {/*ad-request-failure-reasons*/}
+#### Ad Request Failure Reasons  {/*ad-request-failure-reasons*/}
 
 Failures can occur at various stages of processing an ad request. Edgio categorizes the failure reasons into failure types based on these stages.
 
 The failure types are:
 
-- **Request**
-- **Response**
-- **Parsing**
-- **Processing**
+- [**Request**](#failure-reasons-request)
+- [**Response**](#failure-reasons-response)
+- [**Parsing**](#parsing)
+- [**Processing**](#processing)
 
 In certain cases, the "Error" section of the job or transaction details includes additional information about an ad failure that can be sent to Edgio Support to help troubleshoot an inquiry about a failed job or transaction.
 
@@ -306,7 +307,7 @@ A high-level check of the response contents ensuring they are in a valid format.
 | invalid XML | The XML of the ad response was malformed. |
 | response too big | The ad response was too big. Ad responses are limited to 1 MB to ensure processing ad jobs aren’t blocked by an enormous ad response. |
 
-#### Parsing {/*parsing*/}
+### Parsing {/*parsing*/}
 Reading and parsing the response to extract the ad information.
 
 For the no ad break, no ads returned and no media file errors, the ad server did not provide the needed information and should be contacted to see why the responses did not include that data. Parse errors can occur for a variety of reasons. Contact support with any questions and be sure to include any additional information provided in the “Errors” section.
@@ -340,11 +341,11 @@ Verify that ads are being served properly or troubleshoot ad delivery by auditin
 3. Start video playback of the desired live stream or VOD.
 4. From within the **Network** tab of your web browser's developer tools, select a playback request.
 5. Copy your playback session ID from the `pbs` query string parameter.
-6. Navigate to the Ad Server Debug page.
+6. Navigate to the [Ad Server Debug page](https://cms.uplynk.com/static/cms2/index.html#/ad-server-debug) via **Services** > **Ad Server Debug**.
 7. Paste your playback session ID within the **Session ID** option.
 8. Click **Fetch Ad Data**.
 
-   Ad job data is provided in near real-time. If the desired results are not returned, try again after a minute or two.
+   <Tip>Ad job data is provided in near real-time. If the desired results are not returned, try again after a minute or two.</Tip>
 
 9. Review ad job data.
 

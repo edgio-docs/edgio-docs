@@ -10,9 +10,8 @@ Customize playback by adding the desired customization parameters directly after
 - Please verify that all query string parameters are set to URL-safe values.
 - Customization parameters are shown in blue font in the following sample query string:
 
-    ```
-    ?tc=1&exp=1358341863&rn=4114845747&ct=a&cid=ea...&rays=dcba&pk=myapp&...&sig=dm13...
-    ```
+    `?tc=1&exp=1358341863&rn=4114845747&ct=a&cid=ea...&rays=dcba&pk=myapp&...&sig=dm13...`
+
 - It is strongly recommended to sign your playback URL to ensure its integrity. Please include customization parameters when signing your playback URL.
 
 ## General Parameters  {/*general-parameters*/}
@@ -67,7 +66,36 @@ This section describes all customization parameters that are not specific to ad 
 
 ## Ad Parameters  {/*ad-parameters*/}
 
-See [Ad Parameters](/uplynk/monetize/ads/ad_parameters)
+Ad-specific customization parameters are organized according to the following categories:
+
+- [General Ad Parameters](#general-ad-parameters)
+- [Google Ad Manager](/uplynk/monetize/ads/google_ad_manager)
+- [FreeWheel](/uplynk/monetize/ads/freewheel)
+
+### General Ad Parameters  {/*general-ad-parameters*/}
+
+Ad parameters that apply to all ad decision servers are described below.
+
+| Parameter | Description |
+|---|---|
+| ad | Identifies the [ad configuration](/uplynk/monetize/ads) that determines the ad decision server from which ads will be obtained during playback.<ul><li>Specifying an ad configuration that does not exist will prevent playback.</li><li>Omitting this parameter allows playback without ads.</li></ul>**Example:**<br />`ad=fw2` |
+| ad._debug | Tags a playback session for the purpose of tracking [ad insertion data](/uplynk/monetize/ads/ad_debug). Set this parameter to the desired tag.<br /><br />**Example:**<br />`ad._debug=campaign2` |
+| ad.breakend | Prevents ads from exceeding an ad break's duration. Valid values are:<br />`chop, drop`<br /><br />Passing this parameter also affects how ad break duration is calculated. Specifically, it reduces the duration of the ad break by the number of seconds that the current playback session is behind [playback delay](/uplynk/delivery/playback_urls/general_parameters).<br /><br />[Learn more about ad break duration adjustments](/uplink/monetize/ads/#ad-break-duration-calculation).<br /><br />**chop**<br />Switches over to content upon reaching an ad break's adjusted duration.<ul><li>Once the ad break's adjusted duration is reached, the stream will cut back over to content regardless of whether that causes the ad to only be partially played.</li><li>An ad may extend slightly beyond an ad break.</li></ul>[Learn more](/uplynk/monetize/ads/#ad-chopping-example).<br />**Syntax**: `ad.breakend=chop`<br /><br />**drop**<br />Drops ads that exceed the adjusted ad break duration. If the ad break's requested duration has been exceeded, then the stream will cut back over to content. Otherwise, slate will be played until the end of the ad break.<br />Slate may extend slightly beyond an ad break. [Learn more](/uplynk/monetize/ads/#ad-chopping-example).<br />**Syntax**: `ad.breakend=drop` |
+| ad.caid | **Multiple asset playback URLs only**<br />Defines the asset ID that will be sent to an ad decision server.<br />**Default behavior**: Our system sends the ID of the first asset listed in the playback URL to the ad decision server. Use this parameter to send a different asset ID to the ad decision server. |
+| ad.cping | Set this parameter to 1 to enable the [Ping API](https://docs.edgecast.com/video/Content/Develop/Pingv2.htm).<br />**Example:** `ad.cping=1` |
+| ad.flex | Set this parameter to the number of seconds that an ad break may extend beyond an ad break's duration.<br />Use this parameter to introduce flexibility for the enforcement of ad.breakend's chop and drop modes.<br />**Syntax**: `ad.flex=Seconds`<br />**Default value**: 4 seconds<br />[Learn more](/uplynk/monetize/ads/#chopping-and-dropping-ads). |
+| ad.kv | Defines the key-value pairs that will be sent to the ad decision server. Use commas to separate keys and values.<br />**Example:**<br />`ad.kv=key1,value1,key2,value2` |
+| ad.Parameter | Pass ad decision server-specific parameters to the ad decision server.<br />This parameter requires the ad parameter.<br />The ad. prefix is removed from the name that is passed to the ad decision server when acquiring ads for playback. In the following example, our system will pass the account and ctxid parameters to the ad decision server.<br />**Example:**<br />`ad.account=vz1234&ad.ctxid=MA_99_174` |
+| ad.prbd | Set this parameter to the name of the Prebid configuration that identifies your Prebid server and provides bidding instructions.<br />[Learn more](/uplynk/monetize/ads/#prebids).<br />**Syntax**: `ad.prbd=Prebid Config Name`<br />**Example:** `ad.prbd=myPrebidServer` |
+| is_ad | Manually forces an asset to be reported as an ad in the [asset_play_started event (push logs)](/uplynk/analyze/log_file_delivery/#asset-play-started).<br />This parameter is unnecessary when the system automatically inserts ads.<br />This parameter is useful when ads are managed and inserted by an external system, since it allows our push logs to reflect that the asset was played back as an ad.<br />**Example:** Report playback as an ad in the push logs: `is_ad=1` |
+
+## Google Ad Manager  {/*google-ad-manager*/}
+
+[View Google Ad Manager-specific parameters](/uplynk/monetize/ads/google_ad_manager).
+
+## FreeWheel  {/*freewheel*/}
+
+[View FreeWheel-specific parameters](/uplynk/monetize/ads/freewheel).
 
 ## Studio DRM Parameters  {/*studio-drm*/}
 
@@ -87,7 +115,7 @@ Apply a Studio DRM policy to a playback session by including one or more of the 
 
     <Tip>Apply a general Studio DRM policy via the drm_policy_name parameter and then define more granular policies for specific scenarios (e.g., allow a device that doesn't support DRM to play low resolution streams).</Tip>
 
-### Apply DRM Policy to Playback Session
+### Apply DRM Policy to Playback Session  {/*apply-drm-policy-to-playback-session*/}
 
 Apply a DRM policy using one of the following methods (ordered from most to least amount of precedence):
 
@@ -103,7 +131,7 @@ Apply a DRM policy using one of the following methods (ordered from most to leas
    - All DRM policy settings have a default value.
    - This default DRM policy is only applicable when a Studio DRM policy configuration or a conflicting policy setting has not been defined.
 
-### Disable Studio DRM
+### Disable Studio DRM  {/*disable-studio-drm*/}
 
 Use the following parameters to disable Studio DRM.
 
@@ -111,7 +139,7 @@ Use the following parameters to disable Studio DRM.
 |---|----|------|
 | drm_optional           | Disable Studio DRM    | Disables Studio DRM protection. <br /><br />**Key information:** <ul><li>**DASH Streaming Only**</li><li>If you are streaming content via DASH, then you must also pass the [`ck` parameter](#all-dash-drm-solutions): `&ck=1`</li><li>A player should request a cleartext key from the following URL when playing content that is not protected by Studio DRM: `https://content.uplynk.com/ck`</li><li>This parameter is the equivalent of clearing the "Require studio approved DRM for playback" option for this playback session.</li><li>This parameter is typically used to allow playback of specific rays or configurations of protected content without requiring DRM.</li></ul><br />**Syntax:** `&ck=1&drm_optional=1`<br /><br />**Sample Usage:**<br />Include the following query string parameters to restrict playback on a device that doesn't support DRM to the two lowest quality rays:<br />`...&ck=1&drm_optional=1&rays=ba`<br /><br />All playback URLs for Studio DRM-protected content should require a [digital signature](/uplynk/deliver/playback_urls/playback_urls/#signing-playback-urls-with-token) to prevent URL tampering. |
 
-### Apple FairPlay Streaming (FPS)
+### Apple FairPlay Streaming (FPS)  {/*fps*/}
 
 In addition to FPS policy settings, you may also reuse content keys via the [fpuseki parameter](#general-parameters).
 
@@ -142,7 +170,7 @@ Use the following query string parameters to define a FPS policy.
 | `fp.playback_duration`<br />`fp.TrackType.playback_duration` | Determines the length of time, in seconds, for which playback will be valid.<br /><br />Key information:<br /><ul><li>This parameter requires:<br />Offline playback. Set `fp.persistence` to 1.<br />`&fp.persistence=1`<br />iOS 11 or later<br />Your application's user agent should identify the OS as iOS 11 or later.</li><li>This countdown starts upon initial playback.</li><li>Use this parameter for offline playback or lease renewals only.</li><li>A license will not expire when this parameter is not specified or if it is set to 0.</li><li>Once playback is successfully initiated, it will be allowed even if playback extends beyond the rental duration.</li></ul>**Default value**: 0|
 | `fp.rental_duration`<br />`fp.TrackType.rental_duration` | Determines the length of time, in seconds, during which the Content Key is valid prior to initial playback. Playback may only be initiated with a valid Content Key.<br /><br />Key information:<br /><ul><li>This countdown starts upon the acquisition of the Content Key.</li><li>This parameter may be combined with `fp.lease_duration` and `fp.persistence`.</li><li>A Content Key will not expire if this parameter is not specified.</li><li>Once playback is successfully initiated, it will be allowed even if playback extends beyond the rental duration. However, the client will not be allowed to restart playback with an expired Content Key.</li></ul>**Default value**: 0 |
 
-### DASH
+### DASH  {/*dash*/}
 
 DASH policy settings are organized into the following categories:
 
@@ -150,7 +178,7 @@ DASH policy settings are organized into the following categories:
 - [Google Widevine](#google-widevine)
 - [Microsoft PlayReady](#microsoft-playready)
 
-#### All DASH DRM Solutions
+#### All DASH DRM Solutions  {/*all-dash-drm-solutions*/}
 
 The following query string parameters are applicable to all DASH Studio DRM solutions.
 
@@ -160,14 +188,14 @@ The following query string parameters are applicable to all DASH Studio DRM solu
 | noadredir| Disable Ad Redirects | **VOD Only** <br /> By default, ads within VOD content will be represented as a list of segments. This allows ad impressions to be injected via redirects on every other segment. Disable this functionality through this parameter. <br /><br />**Key information**: <br />Audio and video slices for VOD ad content are represented within the manifest file through a list of segments (SegmentList). If your player does not support this type of manifest, then you must disable ad redirects. This will generate a manifest file that contains a set of templates (SegmentTemplate) for VOD ad content. <br />Disable ad redirects by performing either one of the following actions: <br />Pass this parameter. <br />Leverage our [Ping](https://docs.edgecast.com/video/Content/Develop/Pingv2.htm) and [Preplay](https://docs.edgecast.com/video/Content/Develop/Preplayv2.htm) APIs to track ad impressions. <br /><br />**Syntax**: `&noadredir=1` |
 | nielsen  | Nielsen           | Advertises to the DASH player that the manifest may contain Nielsen data encoded within the emsg box. <br />This parameter is required when the manifest contains Nielsen data. <br />Please also set the [Nielsen parameter within the Live Slicer configuration file](/uplynk/acquire/live/on-prem-slicer/#configuration-file-settings). <br /><br />**Syntax**: `&nielsen=1`  |
 
-### Google Widevine
+### Google Widevine  {/*google-widevine*/}
 
 Define a Widevine DRM policy by including parameters that define:
 
 - [**Content Key Specs**](#content-key-specs): Define what content keys will be returned.
 - [**Policy Overrides**](#policy-overrides): Define the conditions under which playback will be allowed.
 
-#### Content Key Specs
+#### Content Key Specs  {/*content-key-specs*/}
 
 Use content key specs to define the set of Content Keys that will be returned to the player.
 
@@ -193,7 +221,7 @@ Each restriction is described below.
 | required_output_protection.hdcp_srm_rule           | Determines whether the device will be required to support a specific version of a System Renewability Message (SRM). <br /> **Valid values are**: <br /> **HDCP_SRM_RULE_NONE**: The device is not required to have a specific version of the SRM. <br /> **CURRENT_SRM**: Disallow the Content Key if the device has an older SRM and cannot support SRM updates. <br /> **Default value**: <br /> HDCP_SRM_RULE_NONE             |
 | security_level| Determines the minimum security requirements for performing cryptography, content decoding, and media operations. <br /> **Valid values are**: <br /> **1**: Requires software-based white-box cryptography. <br /> **2**: Requires software-based white-box cryptography and an obfuscated decoder. <br /> **3**: Requires a hardware-backed Trusted Execution Environment (TEE) for key material and cryptography. <br /> **4**: Requires a hardware-backed TEE for cryptography and content decoding. <br /> **5**: Requires a hardware-backed TEE for cryptography, content decoding, and all compressed and uncompressed media operations. <br /> Security levels 3, 4, and 5 require HDCP to be set via required_output_protection.hdcp. <br /> **Default value**: <br /> 1  |
 
-#### Policy Overrides
+#### Policy Overrides  {/*policy-overrides*/}
 
 Use the following parameters to determine the conditions under which playback will be allowed.
 
@@ -209,7 +237,7 @@ Each policy override is described below.
 | playback_duration_seconds   | Determines the length of time, in seconds, for which a license will be valid after its initial use. <br /> This parameter should only be specified for offline or license renewal scenarios. <br /> **Default value**: <br /> 0 |
 | rental_duration_seconds     | Determines the length of the window, in seconds, during which a license will be valid prior to its initial use. <br /> **Key information:** <br /> This window starts from the time at which the license was issued. <br /> Once a license is used, rental duration is not used or enforced. <br /> Please use either playback or license duration to further limit playback. <br /> This parameter should only be specified for offline scenarios. <br /> **Default value**: <br /> 0 |
 
-### Microsoft PlayReady
+### Microsoft PlayReady  {/*microsoft-playready*/}
 
 Define one of the following scopes when specifying PlayReady policy settings:
 

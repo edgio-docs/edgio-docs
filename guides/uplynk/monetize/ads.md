@@ -19,7 +19,7 @@ Upon initiating playback, our service determines the set of pre-roll, mid-roll, 
 
 <Tip>Ads are automatically upscaled to the highest quality rate in your encoding profile. Our service upscales your ads without altering their frame rate.</Tip>
 
-## How Does It Work?
+## How Does It Work?  {/*how-does-it-work*/}
 
 The ad insertion workflow for live streams and VOD is similar. The only difference between them is the timing for ad retrieval.
 
@@ -34,11 +34,10 @@ The ad insertion workflow for live streams and VOD is similar. The only differen
 
 ![Basic Ad Insertion Workflow](/images/uplynk/vod-ad.png)
 
-## Third-Party Ad Servers
+## Third-Party Ad Servers  {/*third-party-ad-servers*/}
 
 Request ads from one or more of the following third-party ad servers:
 
-- [Verizon Media Ad Platform Video SSP](/uplynk/monetize/ads/verizon_media_ad_platform)
 - [Google Ad Manager](/uplynk/monetize/ads/google_ad_manager)
 - [Freewheel](/uplynk/monetize/ads/freewheel)
 
@@ -70,7 +69,7 @@ Perform the following steps to integrate a third-party ad server with live conte
 
 <Tip>Ad break duration may be specified for an asset that is played back within a live stream. However, the length of an ad break for an asset that is played back as on-demand content is determined by the response from the ad decision server. As a result, you may not specify ad break duration for VOD and ad slate will not be inserted during playout. For example, if the ad decision server returns a 45.35 second ad response, then the duration of the ad break will be 45.35 seconds.</Tip>
 
-## Ad-Specific Metadata
+## Ad-Specific Metadata  {/*ad-specific-metadata*/}
 
 Query string parameter names vary by third-party ad server.
 
@@ -82,7 +81,7 @@ The following sample playback URL identifies an ad server configuration (i.e., V
 
 `https://content.uplynk.com/ext/1/myasset.m3u8?tc=1&exp=1358341863&rn=4114845747&ct=a&eid=mtg_003&oid=a735c65ea4041685bc74c0a375326cc5&ad=VideoSSP&keywords=marketing&sig=37e...cbf`
 
-## Ad Breaks
+## Ad Breaks  {/*ad-breaks*/}
 
 A set of ads are requested prior to the start of an ad break. However, the total duration for those ads will rarely be an exact match to the ad break's duration. Ads that extend beyond the ad break's duration cause the viewer to fall further behind the live stream (i.e., latency). For this reason, we provide the capability to determine how ad spots are handled when they exceed an ad break's duration.
 
@@ -96,7 +95,7 @@ The advantages and disadvantages for each method of handling ad breaks are shown
 | [Ad Chopping](#chopping-and-dropping-ads) | Less | Less | Less | Less | Yes |
 | [Ad Dropping](#chopping-and-dropping-ads) | Less | Less | More | Less | Yes |
 
-### Default Behavior
+### Default Behavior  {/*default-behavior*/}
 
 By default, ads from the ad pool will be inserted into the ad break as long as the amount of time left in the ad break is greater than playback drift. If playback drift exceeds the amount of time left in the ad break, all remaining ads will be dropped and the stream will cut back over to content.
 
@@ -273,7 +272,7 @@ Prebid grants more flexibility to your ad decision server by allowing it to choo
 It maximizes content monetization by allowing bids from your demand partners to always be evaluated alongside direct ads.
 It increases viewer engagement and reduces ad fatigue by diversifying the set of ads served to your viewers.
 
-### Set up Prebid
+### Setup   {/*setup-prebid*/}
 
 1. Contact your account manager to activate the Prebid feature.
 2. Set up a Prebid server. <br />[View Prebid documentation on how to set up a Prebid server.](https://docs.prebid.org/prebid-server/overview/prebid-server-overview.html)
@@ -303,7 +302,7 @@ It increases viewer engagement and reduces ad fatigue by diversifying the set of
 
 6. Create line items that target bids within your ad decision server.
 
-## Ad Verification
+## Ad Verification  {/*ad-verification*/}
 
 Ad verification is only supported when using VAST 3.x or 4.0.
 
@@ -321,7 +320,7 @@ Measure ad viewability by customizing your player to extract verification data f
 
 <Info>Ad verification works with our Prebid feature. However, it has been omitted from this workflow for the sake of simplicity.</Info>
 
-### Setup
+### Setup  {/*setup-ad-verification*/}
 
 <Info>Ad verification requires an [Interactive Advertising Bureau (IAB) account](https://www.iab.com/). If you do not currently have an account, please create one.</Info>
 
@@ -333,12 +332,12 @@ Setting up ad verification requires updating your player to:
 
 <Info>Steps 2 and 3 are outside the scope of this document. Please refer to the documentation provided by your ad verification system to learn how to provide ad verification data via OMID.</Info>
 
-#### Ad Verification Data
+#### Ad Verification Data  {/*ad-verification-data*/}
 
 Add ad verification data to the manifest by including one or more of the following query string parameter(s) in the playback URL:
 
-| Query String Parameter    | Description                                                                                                   |
-|---------------------------|---------------------------------------------------------------------------------------------------------------|
+| Query String Parameter    | Description|
+|---------------------------|-----------|
 | timedmeta.events.ads    | Inserts tracking event data from the VAST response. This data is reported within an `EXT-X-DATERANGE` ad marker tag whose class/scheme identifier is `urn:uplynk:ad-data:events`. <br /> **Example**: `timedmeta.events=complete,midpoint` |
 | timedmeta.extensions.ads | Inserts custom VAST extensions data. This data is reported within an `EXT-X-DATERANGE` ad marker tag whose class/scheme identifier is `urn:uplynk:ad-data:data:extensions`. <br /> **Example**: `timedmeta.extensions=waterfall,geo` |
 | timedmeta.schemas.ads   | Inserts ad viewability data. This data is reported within an `EXT-X-DATERANGE` ad marker tag whose class/scheme identifier is `urn:uplynk:ad-data:omsdk`. <br /> **Example**: `timedmeta.schemas.ads=omsdk` |
@@ -351,7 +350,7 @@ Initiating a playback session with one of the above query string parameters will
 
 <Info>Timed metadata does not currently return data that allows a player to signal their position in a stream. This means that players must still use data from the [Ping API](https://docs.edgecast.com/video/Content/Develop/Pingv2.htm) to signal their position in a stream.</Info>
 
-### HLS
+### HLS  {/*hls*/}
 
 Inserts a Base64-encoded JSON payload into the `X-DATA` attribute of the `EXT-X-DATERANGE` tag of an HLS manifest.
 
@@ -359,7 +358,8 @@ Inserts a Base64-encoded JSON payload into the `X-DATA` attribute of the `EXT-X-
 
 For each ad, the `START-DATE` attribute of the `EXT-X-DATERANG`E tag will have the same value as the corresponding `EXT-X-PROGRAM-DATE-TIME` tag. The specified timestamp doesn't reflect playback time. Instead, the first ad in a stream will be assigned a timestamp of `1970-01-01T00:00:00+00:00`. Each subsequent ad will be assigned a value that takes place after the previous ad.
 
-DASH
+### DASH {/*dash*/}
+
 For each ad, an `<Event>` node will be inserted within an `<EventStream>` node in that ad's period within the DASH manifest. This Event node will contain the JSON payload as shown below.
 
 ![DASH](/images/uplynk/dash-ads.png)

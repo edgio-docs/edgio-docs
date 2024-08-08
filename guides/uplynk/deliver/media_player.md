@@ -13,7 +13,7 @@ Create a media player to playback:
 - [Embed a Media Player](/uplynk/deliver/media_player/embed_media_player)
 - [Add a Media Player to a Web Page](/uplynk/deliver/media_player/add_media_player_to_web_page)
 
-## Helpful Resources  {/*hepful-resources*/}
+## Helpful Resource  {/*helpful-resources*/}
 
 - [Playback URLs](/uplynk/deiver/media_player)
 

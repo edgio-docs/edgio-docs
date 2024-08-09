@@ -870,7 +870,7 @@ router.match(
 
 ## Blocking Unwanted Traffic {/* blocking-unwanted-traffic */}
 
-Although there are various strategies for blocking unwanted traffic, the recommended method for blocking traffic is through {{ PRODUCT }} {{ PRODUCT_SECURITY }}'s [access rules](/security/access-rules). Access rules allow you to define traffic profiles (e.g., country, IP address, or user agent) that should always be allowed, blocked, or undergo additional security screening. 
+Although there are various strategies for blocking unwanted traffic, the recommended method for blocking traffic is through {{ PRODUCT }} {{ PRODUCT_SECURITY }}'s [access rules](/applications/security/access-rules). Access rules allow you to define traffic profiles (e.g., country, IP address, or user agent) that should always be allowed, blocked, or undergo additional security screening. 
 
 ### Blocking traffic from specific countries {/* blocking-traffic-from-specific-countries */}
 
@@ -996,12 +996,12 @@ Token Auth provides a safeguard against hotlinking by requiring requests to cont
 
 Set up Token Auth by performing the following steps:
 
-1.  Define a [primary encryption key](/security/token_auth#encryption-keys).
-2.  Ensure that requests for content that will be protected by Token Auth [contain a query string that start with a token](/security/token_auth#authorizing-requests).
+1.  Define a [primary encryption key](/applications/security/token_auth#encryption-keys).
+2.  Ensure that requests for content that will be protected by Token Auth [contain a query string that start with a token](/applications/security/token_auth#authorizing-requests).
 
-    This step requires [generating encrypted tokens](/security/token_auth#tokens) that define the minimum access requirements. For example, you could use a server-side script to generate and inject tokens within links to protected content.
+    This step requires [generating encrypted tokens](/applications/security/token_auth#tokens) that define the minimum access requirements. For example, you could use a server-side script to generate and inject tokens within links to protected content.
 
-3.  [Enable Token Auth](#securing-content) on the desired requests by adding the Token Auth feature to one or more rule(s).
+3.  Enable Token Auth on the desired requests by adding the Token Auth feature to one or more rule(s).
 
     ```js
     router.match(/^\/secure\/.+/i, {

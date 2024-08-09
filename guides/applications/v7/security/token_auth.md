@@ -51,6 +51,8 @@ Get started with Token Auth by performing the following steps:
 
 3.  [Enable Token Auth](#securing-content) on the desired requests by adding the Token Auth feature to one or more rule(s).
 
+    ![Rules - shown with Token Auth enabled](/images/v7/security/token_auth_rules_1.png?height=275)
+
     [CDN-as-code: View sample code.](/applications/performance/cdn_as_code/route_features#token-auth)
 
 4.  Deploy your changes.
@@ -342,6 +344,8 @@ Authorize a request secured by Token Auth by [generating a token](#tokens) and t
 Define the set of requests that will be protected by Token Auth by creating one or more rule(s) with the Token Auth feature. The rule's match conditions determines the set of requests for which Token Auth will be enforced. 
 
 ![Rules - shown with Token Auth enabled](/images/v7/security/token_auth_rules_1.png)
+
+[CDN-as-code: View sample code.](/applications/performance/cdn_as_code/route_features#token-auth)
 
 For these requests, {{ PRODUCT }} requires both of the following conditions to be met:
 -   The request URL's query string must contain a valid token. A token is considered valid if it can be decrypted using either the current primary or backup encryption key. 

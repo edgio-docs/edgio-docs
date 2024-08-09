@@ -9,8 +9,6 @@ export const getStaticPaths = async () => {
     .sort()
     .reverse();
 
-  console.log('versions', versions);
-
   return {
     paths: versions.map((version) => ({
       params: {

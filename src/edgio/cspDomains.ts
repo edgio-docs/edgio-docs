@@ -23,6 +23,7 @@ export const connectSrcDomains = [
   '*.doubleclick.net',
   '*.fireaw.ai',
   'wss://*.fireaw.ai',
+  'wss://*.docsbot.ai',
 ].sort();
 
 export const fontSrcDomains = ['fonts.gstatic.com', '*.edgio-perma.link'];

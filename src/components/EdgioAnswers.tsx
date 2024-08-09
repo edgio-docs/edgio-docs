@@ -1,12 +1,11 @@
 import {useEffect, useRef, useState} from 'react';
 
-import {ChatChannel} from '@fireaw.ai/sdk';
-import {useRouter} from 'next/router';
 import {FiSend, FiX} from 'react-icons/fi';
 import Modal from 'react-modal';
 import styled, {css} from 'styled-components';
 
-import {siteConfig} from 'config/appConfig';
+import {productsConfig, siteConfig} from 'config/appConfig';
+import {getContextTypeByName, useAppContext} from 'contexts/AppContext';
 import {useEdgioAnswersContext} from 'contexts/EdgioAnswersContext';
 import {useTheme} from 'contexts/ThemeContext';
 import {mobileMinWidth} from 'styles';
@@ -24,11 +23,25 @@ import Markdown from './MDX/Markdown';
 const RESET_ON_CLOSE = false;
 const ROUTE_HASH = '#edgio-answers';
 
-interface Message {
-  id: string;
-  role: 'user' | 'assistant';
+type MessageType = 'start' | 'stream' | 'end';
+interface IMessage {
+  id?: string; // this is only available once the received message is finished
+  type?: MessageType;
+  role?: 'user' | 'bot';
   content: string;
   finished?: boolean;
+}
+interface IBotMessage {
+  id: string;
+  answer: string;
+  sources: {title: string; url: string}[];
+  history: string[];
+}
+
+interface IBotResponse {
+  message: string;
+  sender: string;
+  type: MessageType;
 }
 
 const customStyles: Modal.Styles = {
@@ -320,12 +333,13 @@ const ChatMessage = ({content}: {content: string}) => {
 const defaultPlaceholder = 'Ask Edgio Answers...';
 
 const EdgioAnswers = () => {
-  const router = useRouter();
+  const {context} = useAppContext();
   const {themedValue} = useTheme();
   const chatInputRef = useRef<HTMLInputElement>(null);
   const {chatbotId, apiToken} = siteConfig.fireawai;
-  const [channel, setChannel] = useState<ChatChannel | null>(null);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [ws, setWs] = useState<WebSocket | null>(null);
+  const [messages, setMessages] = useState<IMessage[]>([]);
+  const [history, setHistory] = useState<string[]>([]);
   const [isAwaitingResponse, setIsAwaitingResponse] = useState<boolean>(false);
   const {
     query,
@@ -336,10 +350,17 @@ const EdgioAnswers = () => {
     closeModal,
   } = useEdgioAnswersContext();
 
+  // TODO this needs to change based on the current product
+  const teamId = 'gQe050bzo1BngpQN3Ojp';
+  const botId = 'diWYp40uSWLmoO5InSwd';
+
   const isLoaded = useHydrationIsLoaded();
   const placeholder = isAwaitingResponse
     ? 'Waiting for response...'
     : defaultPlaceholder;
+
+  // Used in the query to set the context expectation for the chatbot response
+  let contextStatement = '';
 
   if (isLoaded) {
     Modal.setAppElement('#__next');
@@ -358,72 +379,141 @@ const EdgioAnswers = () => {
    * If the chat channel is successfully connected, the starter questions are set if available.
    * Finally, the channel state and query state are updated.
    */
-  const initializeChannel = () => {
+  const initializeWebSocket = () => {
     if (apiToken && chatbotId) {
-      const newChannel = new ChatChannel({
-        apiToken,
-        chatbotId,
-        onMessage: (message) => {
-          if (message.content.length > 0) {
-            // Only proceed if the message has content
-            setMessages((prevMessages) => {
-              const existingMessageIndex = prevMessages.findIndex(
-                (m) => m.id === message.id
-              );
+      const websocket = new WebSocket(
+        `wss://api.docsbot.ai/teams/${teamId}/bots/${botId}/chat`
+      );
 
-              // If the message already exists, update it
-              if (existingMessageIndex !== -1) {
-                const updatedMessages = [...prevMessages];
-                const existingMessage = updatedMessages[existingMessageIndex];
+      websocket.onmessage = (event) => {
+        const {message, type}: IBotResponse = JSON.parse(event.data);
+        const isStart = type === 'start';
+        const isStreaming = type === 'stream';
+        const isFinished = type === 'end';
+        const role = 'bot';
 
-                // Concatenate new content with existing content, if any
-                updatedMessages[existingMessageIndex] = {
-                  ...existingMessage,
-                  content: message.content,
-                  finished: message.finished,
-                };
-                return updatedMessages;
-              } else {
-                // Message doesn't exist, add a new one
-                return [...prevMessages, {...message}];
-              }
-            });
-          }
-
-          if (message.finished) {
-            setIsAwaitingResponse(false);
-            setQuery('');
-          }
-        },
-      });
-      newChannel.connect().then(() => {
-        if (newChannel.chat.settings.starterQuestions) {
-          setStarterQuestions(newChannel.chat.settings.starterQuestions);
+        if (isStart) {
+          // `message` is a string of the initial response
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            {
+              type, // start
+              role,
+              content: message,
+            },
+          ]);
         }
-      });
-      setChannel(newChannel);
-      setQuery('');
+
+        if (isStreaming) {
+          // `message` is a string of the word being streamed back
+          setMessages((prevMessages) => {
+            // Since we are in the streaming phase, the last message should be the one being streamed
+            const existingMessageIndex = prevMessages.length - 1;
+
+            const updatedMessages = [...prevMessages];
+            const existingMessage = updatedMessages[existingMessageIndex];
+            // Concatenate new content with existing content, if any
+            updatedMessages[existingMessageIndex] = {
+              ...existingMessage,
+              type, // stream
+              content: existingMessage.content + message,
+              finished: isFinished,
+            };
+            return updatedMessages;
+          });
+        }
+
+        if (isFinished) {
+          // `message` will be an object with the final response and sources
+          const botMessage: IBotMessage = JSON.parse(message);
+          const {id, answer, history} = formatMessageContent(botMessage);
+
+          // Update the history which will be included in future requests
+          setHistory(history);
+
+          // Update the message content with the final response
+          setMessages((prevMessages) => {
+            // Since we are in the finished phase, the last message should be the one being streamed
+            const existingMessageIndex = prevMessages.length - 1;
+
+            const updatedMessages = [...prevMessages];
+            const existingMessage = updatedMessages[existingMessageIndex];
+            updatedMessages[existingMessageIndex] = {
+              ...existingMessage,
+              id,
+              type, // end
+              content: answer,
+              finished: true,
+            };
+
+            return updatedMessages;
+          });
+
+          setIsAwaitingResponse(false);
+          setQuery('');
+        }
+      };
+
+      websocket.onopen = () => {
+        setWs(websocket);
+      };
+
+      websocket.onclose = () => {
+        setWs(null);
+      };
+
+      websocket.onerror = (error) => {
+        console.error('WebSocket error:', error);
+        setWs(null);
+      };
     }
   };
 
   // Initialize the chat channel on mount
   useEffect(() => {
-    if (!channel) {
-      initializeChannel();
+    if (!ws) {
+      initializeWebSocket();
     }
-  }, [apiToken, chatbotId]);
+
+    if (context) {
+      const config = productsConfig[context];
+      contextStatement = config?.edgioAnswers?.contextStatement ?? '';
+      const questions = config?.edgioAnswers?.starterQuestions;
+      if (questions) {
+        setStarterQuestions(questions);
+      }
+    }
+
+    return () => {
+      if (ws) {
+        ws.close();
+      }
+    };
+  }, [apiToken, chatbotId, ws, context]);
 
   // Stop the current channel and reconnect
   const stopAndReconnect = () => {
-    if (channel) {
-      channel.disconnect();
-      initializeChannel();
+    if (ws) {
+      ws.close();
+      initializeWebSocket();
     }
   };
 
-  const sendMessage = () => {
-    if (query.trim() && channel && !isAwaitingResponse) {
-      channel.send(query);
+  const sendMessage = (msg?: string) => {
+    if (query.trim() && ws && !isAwaitingResponse) {
+      msg = query;
+    }
+
+    if (msg && msg.length) {
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        {
+          role: 'user',
+          content: msg,
+          finished: true,
+        },
+      ]);
+      ws?.send(JSON.stringify({question: msg, history}));
       setIsAwaitingResponse(true);
       setQuery('');
     }
@@ -453,13 +543,11 @@ const EdgioAnswers = () => {
    * Removes the 'lock-scroll' class from the body element.
    */
   const onCloseModal = () => {
-    if (RESET_ON_CLOSE && channel) {
-      channel.disconnect();
-      setChannel(null);
+    if (RESET_ON_CLOSE && ws) {
+      ws.close();
       setMessages([]);
     }
     document.body.classList.remove('lock-scroll');
-
     closeModal();
   };
 
@@ -482,6 +570,8 @@ const EdgioAnswers = () => {
               {messages
                 .slice()
                 .reverse()
+                // Don't render a message until it is streaming or finished
+                .filter((message) => message.type !== 'start')
                 .map((message, index) => {
                   const isUser = message.role === 'user';
                   return (
@@ -497,11 +587,7 @@ const EdgioAnswers = () => {
               {starterQuestions.map((question, index) => (
                 <QuestionButton
                   key={index}
-                  onClick={() => {
-                    setQuery(question);
-                    setIsAwaitingResponse(true);
-                    channel?.send(question);
-                  }}>
+                  onClick={() => sendMessage(question)}>
                   {question}
                 </QuestionButton>
               ))}
@@ -522,7 +608,7 @@ const EdgioAnswers = () => {
                   <SendButton
                     hasContent={hasContent()}
                     awaitingResponse={isAwaitingResponse}
-                    onClick={sendMessage}>
+                    onClick={() => sendMessage()}>
                     <FiSend />
                   </SendButton>
                 ) : (
@@ -540,13 +626,20 @@ const EdgioAnswers = () => {
   );
 };
 
-export const EdgioAnswersInput = ({duration = 1000}) => {
+export const EdgioAnswersInput = ({
+  duration = 1000,
+  context,
+}: {
+  duration?: number;
+  context?: string;
+}) => {
   const [index, setIndex] = useState(0);
   const [placeholder, setPlaceholder] = useState('');
   const inputRef = useRef(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const {
     starterQuestions: presets,
+    setStarterQuestions: setPresets,
     query,
     setQuery,
     openModal,
@@ -571,6 +664,19 @@ export const EdgioAnswersInput = ({duration = 1000}) => {
       }
     }, 25);
   };
+
+  useEffect(() => {
+    // Set the starter questions based on the context
+    if (context) {
+      const contextualPresets =
+        productsConfig[getContextTypeByName(context)]?.edgioAnswers
+          ?.starterQuestions;
+
+      if (contextualPresets) {
+        setPresets(contextualPresets);
+      }
+    }
+  }, [context]);
 
   useEffect(() => {
     if (presets.length) {
@@ -632,3 +738,47 @@ export const EdgioAnswersWidget = () => {
 };
 
 export const edgioAnswersUrl = ROUTE_HASH;
+
+/**
+ * Formats the message content, updating links and titles
+ * @param content - The message content
+ * @returns The formatted message content
+ */
+function formatMessageContent(
+  message: IBotMessage,
+  removePatterns?: string[] | RegExp[]
+) {
+  let {answer, sources} = message;
+  // // Append product name to the beginning of markdown links based on the href
+  // // (e.g. [Some Article](/delivery/storage/console) -> [Delivery - Some Article](/delivery/storage/console))
+  // content = content.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, title, href) => {
+  //   const url = new URL(href, window.location.origin);
+
+  //   let product = url.pathname.split('/')[1];
+  //   // capitalize the first letter of the title
+  //   product = product.charAt(0).toUpperCase() + product.slice(1);
+
+  //   return `[**${product}** - ${title}](${href})`;
+  // });
+
+  // Remove patterns from the content
+  removePatterns &&
+    removePatterns.forEach((pattern) => {
+      answer = answer.replace(pattern, '');
+    });
+
+  // Append sources to the end of the content
+  if (sources.length) {
+    answer += `\n\n---\n\n**Related Articles:**\n${sources
+      .map((source) => `- [${source.title}](${source.url})`)
+      .join('\n')}`;
+  }
+
+  answer = answer.trim();
+
+  return {
+    ...message,
+    answer,
+    sources,
+  };
+}

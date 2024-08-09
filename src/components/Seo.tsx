@@ -24,9 +24,8 @@ const Seo = withRouter(
     image = 'https://docs.edg.io/images/seo/docs.ogimage.png',
     router,
     children,
-    version = '',
   }: SeoProps & {router: Router}) => {
-    const {config} = useAppContext();
+    const {config, context, version} = useAppContext();
     const {PRODUCT} = config;
 
     return (
@@ -50,7 +49,23 @@ const Seo = withRouter(
         )}
 
         {/* VERSION */}
-        {<meta name="app:guide-version" key="version" content={version} />}
+        {
+          <meta
+            name="app:guide-version"
+            key="version"
+            content={version || 'default'}
+          />
+        }
+        {<meta name="app:product" key="name" content={context || ''} />}
+        {
+          <meta
+            name="app:product-version"
+            key="version"
+            content={version || ''}
+          />
+        }
+
+        {/* FAVICON */}
 
         {/* <link rel="icon" type="image/x-icon" href={favicon} />
       <link rel="apple-touch-icon" href={favicon} />  @todo favicon */}

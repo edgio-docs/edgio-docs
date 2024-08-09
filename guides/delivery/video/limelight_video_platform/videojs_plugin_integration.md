@@ -1,0 +1,3 @@
+---
+title: VideoJS Plugin Integration
+---

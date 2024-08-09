@@ -870,7 +870,7 @@ router.match(
 
 ## Blocking Unwanted Traffic {/* blocking-unwanted-traffic */}
 
-Although there are various strategies for blocking unwanted traffic, the recommended method for blocking traffic is through {{ PRODUCT }} {{ PRODUCT_SECURITY }}'s [access rules](/applications/security/access-rules). Access rules allow you to define traffic profiles (e.g., country, IP address, or user agent) that should always be allowed, blocked, or undergo additional security screening. 
+Although there are various strategies for blocking unwanted traffic, the recommended method for blocking traffic is through {{ PRODUCT }} {{ PRODUCT_SECURITY }}'s [access rules](/applications/security/access_rules). Access rules allow you to define traffic profiles (e.g., country, IP address, or user agent) that should always be allowed, blocked, or undergo additional security screening. 
 
 ### Blocking traffic from specific countries {/* blocking-traffic-from-specific-countries */}
 

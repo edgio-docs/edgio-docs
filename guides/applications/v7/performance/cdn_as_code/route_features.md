@@ -870,6 +870,8 @@ router.match(
 
 ## Blocking Unwanted Traffic {/* blocking-unwanted-traffic */}
 
+Although there are various strategies for blocking unwanted traffic, the recommended method for blocking traffic is through {{ PRODUCT }} {{ PRODUCT_SECURITY }}'s [access rules](/security/access-rules). Access rules allow you to define traffic profiles (e.g., country, IP address, or user agent) that should always be allowed, blocked, or undergo additional security screening. 
+
 ### Blocking traffic from specific countries {/* blocking-traffic-from-specific-countries */}
 
 If you need to block all traffic from a specific country or set of countries, you can do so by matching requests by the [country code](/applications/reference/country_codes) using the `location.country` match condition:
@@ -981,3 +983,31 @@ router.get(
 ```
 
 For other available directives, see [Google Developer Central](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#directives) and [Bing Webmaster Tools](https://www.bing.com/webmasters/help/which-robots-metatags-does-bing-support-5198d240) for lists of supported options.
+
+## Token Auth {/*token-auth*/}
+
+Token Auth provides a safeguard against hotlinking by requiring requests to contain a token value that defines the criteria that the request must satisfy before it can be served through our network. 
+
+<ExampleButtons
+  title="Token Auth"
+  siteUrl="https://edgio-community-examples-v7-token-auth-example-live.glb.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-token-auth-example/"
+/>
+
+Set up Token Auth by performing the following steps:
+
+1.  Define a [primary encryption key](/security/token_auth#encryption-keys).
+2.  Ensure that requests for content that will be protected by Token Auth [contain a query string that start with a token](/security/token_auth#authorizing-requests).
+
+    This step requires [generating encrypted tokens](/security/token_auth#tokens) that define the minimum access requirements. For example, you could use a server-side script to generate and inject tokens within links to protected content.
+
+3.  [Enable Token Auth](#securing-content) on the desired requests by adding the Token Auth feature to one or more rule(s).
+
+    ```js
+    router.match(/^\/secure\/.+/i, {
+      access: {
+        token_auth: true
+      }
+    });
+    ```
+4.  Deploy your changes.

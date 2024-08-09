@@ -335,11 +335,11 @@ Your origin configuration setup varies according to whether your site requires S
 
 -   **SNI:** If your site requires SNI, then you should enable your origin configuration's **Use SNI** option and verify that the SNI hint is set to a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN).
 
-<Callout type="info">
+    <Info>
 
-  If your site requires SNI and your origin configuration is misconfigured, then Edge Insights will return a `proxy_hard_error` field set to `HARD_ERR_502_SSL_CONNECT_ERROR`. A quick way of checking for this condition is to [filter Edge Insights](#status-codes) by the `502 Bad Gateway` status code and then viewing a request from within the **Logs** section.
+      If your site requires SNI and your origin configuration is misconfigured, then Edge Insights will return a `proxy_hard_error` field set to `HARD_ERR_502_SSL_CONNECT_ERROR`. A quick way of checking for this condition is to [filter Edge Insights](#status-codes) by the `502 Bad Gateway` status code and then viewing a request from within the **Logs** section.
 
-</Callout>
+    </Info>
 
 -   **No SNI:** If your site does not require SNI, then you should disable your origin configuration's **Use SNI** option and remove the SNI hint.
 

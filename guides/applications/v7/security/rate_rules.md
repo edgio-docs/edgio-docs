@@ -30,17 +30,12 @@ A rate rule restricts the rate of traffic that may be directed to one or more we
 
     </Callout>
 -   A rate rule does not take into account whether content needs to be requested from an origin server or if a cached version may be served directly from our network.
--   A rate rule always runs in [production mode](/applications/security/security_applications#enforcement-mode). Although you may not run it in audit mode, you may configure your security application configuration to only generate alerts when a rate limit is exceeded.
--   A rate rule is enforced by each POP according to the approximate number of requests that it receives over the specified
-    time interval (e.g., 1 second, 10 seconds, or 1 minute).
+-   A rate rule is enforced by each POP according to the approximate number of requests that it receives over the specified time interval (e.g., 1 second, 10 seconds, or 1 minute).
+-   A rate rule always runs in [production mode](/applications/security/security_applications#enforcement-mode). Although you may not run it in audit mode, you may configure your Security Application configuration to only generate alerts when a rate limit is exceeded.
 
--   {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further [evaluation of a request](/applications/security/waf#threat-detection) once enforcement is triggered.
-
-    <Callout type="tip">
-
-      We recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.
-
-    </Callout>
+    <Info>
+    Requests that generate alerts count towards the rate limit for other rate rules defined within a Security Application configuration.
+    </Info>
 
 [View sample scenarios.](#scenario-1-rate-limiting-all-requests)
 
@@ -318,6 +313,12 @@ The types of prerequisites that may be defined are described below.
 ## Multiple Rate Rules {/*multiple-rate-rules*/}
 
 You may define multiple rate rules within a [Security Application configuration](/applications/security/security_applications). This type of setup provides greater control when determining how requests will be rate limited.
+
+Although most enforcement actions will cause {{ PRODUCT }} to stop evaluating a request, this is not the case for alerts. Requests that generate alerts are still eligible for enforcement by other rate rules defined within a Security Application configuration.
+
+<Info>
+Rate rules is an exception with regards to request evaluation after an alert has been triggered. For all other security rules, {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further [evaluation of a request](/applications/security/waf#threat-detection) once enforcement is triggered.
+</Info>
 
 Common use cases for multiple rules:
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import {siteConfig} from 'config/appConfig';
 
-const TOP_OFFSET = 96;
+const TOP_OFFSET = 104;
 
 export function getHeaderAnchors(): HTMLAnchorElement[] {
   return Array.prototype.filter.call(

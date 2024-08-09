@@ -56,7 +56,12 @@ Enable compression for each desired content type through the following steps:
 1.  Create or modify a rule that identifies the set of requests on which compression will be enabled.
 2.  Add the [Compress Content Types feature (compress_content_types)](/applications/performance/rules/features#compress-content-types) to it. Set it to the desired set of content types.
 
-The following examples demonstrate how to enable edge server compression using:
+**Key information:**
+
+-   Once you have enabled edge server compression on the desired content types, {{ PRODUCT }} will compress content when all of the [required conditions](#edge-server-compression) have been met. If one or more conditions have not been met, then {{ PRODUCT }} will serve either uncompressed cached content or the response provided by the origin server or the {{ PRODUCT }} cloud.
+-   Edge server compression is incompatible with [Image Optimization](/applications/performance/image_optimization). Requests that are processed by Image Optimization will not undergo edge server compression. 
+
+**Sample configurations:**
 
 -   [Rules:](/applications/performance/rules#managing-rules)
 
@@ -87,12 +92,6 @@ The following examples demonstrate how to enable edge server compression using:
       }
     );
     ```
-
-<Callout type="info">
-
-  Once you have enabled edge server compression on the desired content types, {{ PRODUCT }} will compress content when all of the [required conditions](#edge-server-compression) have been met. If one or more conditions have not been met, then {{ PRODUCT }} will serve either uncompressed cached content or the response provided by the origin server or the {{ PRODUCT }} cloud.
-
-</Callout>
 
 ## Cache Implications {/*implications-on-caching*/}
 

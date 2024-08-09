@@ -7,6 +7,7 @@ Troubleshoot:
 -   [General issues](#general-troubleshooting-procedures)
 -   [Caching](#caching)
 -   [Performance](#performance)
+-   [Image Optimization](#image-optimization)
 -   [Status codes](#status-codes)
 
 [Learn more about our troubleshooting tools.](#troubleshooting-tools)
@@ -151,7 +152,7 @@ Review the following items to find out why a request resulted in a cache miss.
     -   If you must add query string parameters to the cache key, we recommend that you restrict it to the parameters that are critical to your business needs. This recommendation ensures optimal performance by allowing our CDN to serve more requests from cache.
     -   If you are unsure as to whether you have already defined a custom cache key, then you should review your rules for [features that modify the cache key](/applications/performance/caching/cache_key#customizing-the-cache-key).
 
-## Performance {/*performance*/}
+## Website Performance {/*performance*/}
 
 Use the [{{ CHROME_EXTENSION }}](/applications/performance/observability/developer_tools_chrome_extension) to troubleshoot performance.
 
@@ -183,6 +184,41 @@ By default, you may only prefetch content that is cached on the POP closest to t
 Identify prefetch requests through the following query string parameter: `{{ PRODUCT_NAME_LOWER }}_dt_pf=1&{{ PRODUCT_NAME_LOWER }}_prefetch=1`.
 
 **Example:** `https://cdn.example.com/css/styles.css?edgio_dt_pf=1&edgio_prefetch=1`
+
+## Image Optimization {/*image-optimization*/}
+
+Troubleshoot Image Optimization issues through the following procedure:
+
+1.  Verify that Image Optimization processed the image by checking for the `x-edgeio-status` response header. 
+2.  Check for warnings or errors.
+3.  Analyze the source and output image.
+
+#### Missing X-Edgeio-Status Header {/*missing-x-edgeio-status-header*/}
+
+If the `x-edgeio-status` header is missing from the response, then Image Optimization did not process the image. Check the response's status code.
+
+-   **2xx or 3xx Response:** Verify that the rule that enables Image Optimization was [applied to the request](#applied-rules). 
+-   **5xx Response:** {{ PRODUCT }} was unable to communicate with your origin server and both the source and optimized image were not previously cached. Check your origin server's availability.
+    
+#### Check for Warnings and Errors {/*check-for-warnings-and-errors*/}
+
+Check the `x-edgeio-status` header to determine whether Image Optimization returned a warning or error.
+
+-   **OK:** Image Optimization performed one or more optimizations. 
+
+    Check for an `x-edgeio-warning` response header to find out whether one or more optimizations were skipped. Troubleshoot warnings by analyzing image metadata.
+
+-   **ERROR:** Perform the following steps:
+    -   Check for a `400 Bad Request` response. This type of response indicates that {{ PRODUCT }} was unable to optimize the requested image due to an unsupported query string parameter or value. Fix the request URL's query string and then try again. 
+    -   Check the `x-edgeio-error` response header to find out how the [optimized image exceeded our limits](/applications/performance/image_optimization#image-requirements). 
+
+#### Image Metadata Analysis {/*image-metadata-analysis*/}
+
+By default, {{ PRODUCT }} does not provide information about the source or output image. Include this information by setting the following header within a request to optimize an image: `x-ec-edgeio-debug: info`
+
+The response for such a request includes a `x-edgeio-info` response header. Use this header to analyze basic properties for the source and transformed image.
+
+[Learn more about the x-edgeio-info response header.](/applications/performance/image_optimization#troubleshooting)
 
 ## Status Codes {/*status-codes*/}
 
@@ -275,34 +311,51 @@ Perform the following steps to reduce excessive `412 Precondition Failed` respon
 ### 502 Bad Gateway Status Code {/*502-bad-gateway-status-code*/}
 
 Troubleshoot this status code by performing the following steps:
+1.  Checking whether your [web servers are available](#web-server-availability).
+2.  Checking your [SNI configuration](#sni-configuration).
+3.  Comparing the [request's Host header to your certificate](#host-header).
+4.  Verify your [certificate's chain of trust or use a self-signed certificate](#chain-of-trust-or-self-signed-certificate).
+5.  If you have implemented [certificate pinning](#certificate-pinning), you should verify that your certificates have been pinned.
 
--   Identify the origin configuration that is returning a `502 Bad Gateway`. Request the origin directly to verify that it is available.
+#### Step 1: Web Server Availability {/*web-server-availability*/}
 
-    **Example:** If your origin configuration points to `origin-1.example.com`, then you could potentially verify that this origin is available by submitting the following request:
+Identify the origin configuration that is returning a `502 Bad Gateway`. Request the origin directly to verify that it is available.
 
-    `https://origin-1.example.com/`
+**Example:** If your origin configuration points to `origin-1.example.com`, then you could potentially verify that this origin is available by submitting the following request:
 
--   Check whether your site requires SNI by reviewing your server's configuration or log data.
+`https://origin-1.example.com/`
 
-    Alternatively, there are online tools (e.g., [Qualys SSL Labs](https://www.ssllabs.com/ssltest/)) that allow you to check whether your site requires SNI. Submit your origin's hostname to start the test. Once the test is complete, check whether your server requires SNI. For example, SSL Labs returns the following message within the summary section: `This site works only in browsers with SNI support.`
+#### Step 2: SNI Configuration {/*sni-configuration*/}
 
-    Your origin configuration setup varies according to whether your site requires SNI.
+Check whether your site requires SNI by reviewing your server's configuration or log data.
 
-    -   **SNI:** If your site requires SNI, then you should enable your origin configuration's **Use SNI** option and verify that the SNI hint is set to a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN).
+Alternatively, there are online tools (e.g., [Qualys SSL Labs](https://www.ssllabs.com/ssltest/)) that allow you to check whether your site requires SNI. Submit your origin's hostname to start the test. Once the test is complete, check whether your server requires SNI. For example, SSL Labs returns the following message within the summary section: `This site works only in browsers with SNI support.`
 
-    <Callout type="info">
+Your origin configuration setup varies according to whether your site requires SNI.
 
-      If your site requires SNI and your origin configuration is misconfigured, then Edge Insights will return a `proxy_hard_error` field set to `HARD_ERR_502_SSL_CONNECT_ERROR`. A quick way of checking for this condition is to [filter Edge Insights](#status-codes) by the `502 Bad Gateway` status code and then viewing a request from within the **Logs** section.
+-   **SNI:** If your site requires SNI, then you should enable your origin configuration's **Use SNI** option and verify that the SNI hint is set to a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN).
 
-    </Callout>
+<Callout type="info">
 
-    -   **No SNI:** If your site does not require SNI, then you should disable your origin configuration's **Use SNI** option and remove the SNI hint.
+  If your site requires SNI and your origin configuration is misconfigured, then Edge Insights will return a `proxy_hard_error` field set to `HARD_ERR_502_SSL_CONNECT_ERROR`. A quick way of checking for this condition is to [filter Edge Insights](#status-codes) by the `502 Bad Gateway` status code and then viewing a request from within the **Logs** section.
 
--   If the client's `Host` header does not match a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN), then you will need to update the **Override Host Header** option.
--   Is your server using a self-signed certificate?
-    -   **Yes:** You must enable the **Allow Self-Signed Certs** option on the desired origin configuration.
-    -   **No:** {{ PRODUCT }} requires a full chain certificate. Your certificate’s chain of trust must start with the server's certificate and terminate with the root certificate.
--   If you have pinned a certificate to the desired origin configuration, then you may need to pin an additional certificate.
+</Callout>
+
+-   **No SNI:** If your site does not require SNI, then you should disable your origin configuration's **Use SNI** option and remove the SNI hint.
+
+#### Step 3: Host Header {/*host-header*/}
+
+If the client's `Host` header does not match a hostname defined within your certificate’s Subject Alternative Name (SAN) or Common Name (CN), then you will need to update the **Override Host Header** option.
+
+#### Step 4: Chain of Trust or Self-Signed Certificate {/*chain-of-trust-or-self-signed-certificate*/}
+
+Is your server using a self-signed certificate?
+-   **Yes:** You must enable the **Allow Self-Signed Certs** option on the desired origin configuration.
+-   **No:** {{ PRODUCT }} requires a full chain certificate that allows it to verify that the client and the Certificate Authorities within that chain are trustworthy. Your certificate’s chain of trust must consist of an ordered list of certificates from the server (leaf) to the root. {{ PRODUCT }} returns a `502 Bad Gateway` when your chain of trust is incomplete (e.g., missing an intermediate certificate).
+
+#### Step 5: Certificate Pinning {/*certificate-pinning*/}
+
+If you have pinned a certificate to the desired origin configuration, then you may need to [pin an additional certificate](/applications/basics/origins#certificate-pinning).
 
 ### 504 Gateway Timeout Status Code {/*504-gateway-timeout-status-code*/}
 

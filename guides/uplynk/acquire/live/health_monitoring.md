@@ -216,9 +216,7 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 - Once you have created a custom monitoring configuration, you may reassign a Live Slicer to it. This means that the previous set of monitoring rules (e.g., Default) will no longer apply to the Live Slicer, since a Live Slicer may only be associated with a single set of monitoring rules at any given time.
 - All metrics, with the exception of Closed Captioning Last Seen, are updated every 4 seconds. The Closed Captioning Last Seen metric is updated every 10 seconds.
 - The Live Slicer will only report monitoring data when slicing content. It cannot report data when it is in another state (i.e., ad break, replace content, or blackout), since it is not receiving a video feed.
-- A user with either the admin or read/write permission can create rulesets that can be leveraged by any member of your organization. This type of ruleset is known as an organization ruleset.
-
-[Learn more](#organizations)
+- A user with either the admin or read/write permission can create rulesets that can be leveraged by any member of your organization. This type of ruleset is known as an organization ruleset. [Learn more](#organizations).
 
 #### Create a Custom Set of Monitoring Rules  {/*create-custom-set*/}
 
@@ -392,7 +390,7 @@ The **right pane** provides the following information and statistics for each Li
 | Duration| Indicates the amount of time that the Live Slicer has been in the current health state.   |
 | Slicer ID     | Indicates a Live Slicer's ID. This ID is defined by the slicerID parameter in the Live Slicer's configuration file.     |
 | Ruleset | Indicates the ruleset used to determine the state of Live Slicer health. |
-| Owner   | Identifies the name of the user that owns the Live Slicer.   <br />[Learn how to monitor Live Slicers across multiple accounts](/uplynk/acquire/live/health_monitoring/#enable-disable).  |
+| Owner   | Identifies the name of the user that owns the Live Slicer.   <br />[Learn how to monitor Live Slicers across multiple accounts](/uplynk/acquire/live/health_monitoring/#assign-custom-set).  |
 | IP| Indicates the Live Slicer's IP address.   |
 | Zone    | Indicates the zone to which the Live Slicer is pushing content.|
 | Broker  | Identifies the name of the broker handling the Live Slicer's content.|

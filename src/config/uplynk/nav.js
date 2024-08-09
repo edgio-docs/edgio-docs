@@ -166,6 +166,14 @@ const nav = {
               path: 'manage/content_protection/studio_drm',
             },
             {
+              title: 'Apple FPS',
+              path: 'manage/content_protection/apple_fps',
+            },
+            {
+              title: 'DASH',
+              path: 'manage/content_protection/dash',
+            },
+            {
               title: 'Geoblocking',
               path: 'manage/content_protection/geoblocking',
             },

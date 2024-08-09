@@ -25,7 +25,7 @@ Setting up Studio DRM consists of the following steps:
 
 2. **Apple FairPlay Streaming (FPS) Only**
    - [Register as a licensed content owner with Apple](https://developer.apple.com/contact/fps/).
-   - [Submit your FPS deployment package information via the CMS](/uplynk/manage/content_protection/studio_drm/apple_fps).
+   - [Submit your FPS deployment package information via the CMS](/uplynk/manage/content_protection/apple_fps).
 
 3. **Studio DRM**
 
@@ -107,7 +107,7 @@ Playback of Studio DRM-protected content requires the viewer's player/client to 
 
 ## More Information  {/*more-information*/}
 
-- [Apple FairPlay Streaming (FPS) DRM](/uplynk/manage/content_protection/studio_drm/apple_fps)
+- [Apple FairPlay Streaming (FPS) DRM](/uplynk/manage/content_protection/apple_fps)
 - [DASH (Google Widevine DRM and Microsoft PlayReady)](/uplynk/manage/content_protection/studio_drm/dash)
 - [Studio DRM Policy Configuration](/uplynk/manage/content_protection/policy_configuration)
 - [Studio DRM API](https://docs.edgecast.com/video/Content/Develop/Studio-DRM-API.htm)

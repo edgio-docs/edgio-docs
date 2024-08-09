@@ -15,7 +15,7 @@ Create a media player to playback:
 
 ## Helpful Resource  {/*helpful-resources*/}
 
-- [Playback URLs](/uplynk/deliver/media_player)
+- [Playback URLs](/uplynk/deliver/playback_urls)
 
 
 ## Client API  {/*client-api*/}

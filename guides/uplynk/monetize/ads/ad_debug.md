@@ -80,7 +80,7 @@ Use the following settings to search for the desired ad job data:
 | Asset ID | Filters ad job data by the VOD asset during which it was requested. Identify an asset by its system-defined ID.<br />[Find an asset ID](#locate-an-asset-id). |
 | Session ID | Filters ad job data by the playback session for which it was requested. Identify your playback session by its system-defined ID.<br />[Find a playback session ID](#find-playback-session-id). |
 | Status | Filters ad job data by status.<br />[Learn more](#ad-job-data). |
-| Debug Name | Filters ad job data by tagged playback session(s).<br />Tag a playback session by passing the [`ad._debug` parameter](/uplynk/deliver/playback_urls/general_parameters) in the playback URL. |
+| Debug Name | Filters ad job data by tagged playback session(s).<br />Tag a playback session by passing the [`ad._debug` parameter](/uplynk/deliver/playback_urls/#general_parameters) in the playback URL. |
 | Transactions | Determines whether transactions will be included in the search results. |
 | Beacons | Determines whether beacons will be included in the search results. |
 

@@ -8,13 +8,13 @@ Studio DRM policies determine how security restrictions (e.g., copying or viewin
 
 ## Set Up a Studio DRM Policy Configuration  {/*set-up-a-studio-drm-policy-configuration*/}
 
-1. Navigate to the [**DRM Policy Config** page](https://cms.uplynk.com/static/cms2/index.html#/settings/drm-policy-config).
+1. Navigate to [**DRM Policy Config**](https://cms.uplynk.com/static/cms2/index.html#/settings/drm-policy-config).
 2. Click **+ DRM Configuration**.
 3. In the **DRM Configuration** option, type a name through which this policy will be identified. Click **Add**.
 4. Define a policy for each DRM solution that you plan on using:
    - [Apple FairPlay Streaming](#apple-fairplay-streaming)
    - [Microsoft PlayReady](#microsoft-playready)
-   - [Google Widevine](#google-widevine)
+   - [Google Widevine](#google-widevine-drm)
 5. Click **Save**.
 
 ## Apply a Studio DRM Policy  {/*apply-a-studio-drm-policy*/}

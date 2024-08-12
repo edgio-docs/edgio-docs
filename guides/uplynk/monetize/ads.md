@@ -26,11 +26,9 @@ The ad insertion workflow for live streams and VOD is similar. The only differen
 - **Live Streams**: Our service requests ads whenever it detects an upcoming ad break.
 - **VOD**: Our service requests ads for all ad breaks upon initiating playback.
 
-**Basic Ad Insertion Workflow for Live Streams**
+**Workflows**
 
 ![Basic Ad Insertion Workflow](/images/uplynk/live-stream-ad.png)
-
-**Basic Ad Insertion Workflow for VOD**
 
 ![Basic Ad Insertion Workflow](/images/uplynk/vod-ad.png)
 

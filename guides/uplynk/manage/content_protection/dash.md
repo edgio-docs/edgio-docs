@@ -24,6 +24,6 @@ Follow these steps to get started with Studio DRM:
         https://content.uplynk.com/ea10fa402fec4bbe996019a0827e6c37.mpd?&drm_policy_name=wvpolicy1
         ```
 
-        <Tip>Use a [Studio DRM policy configuration](/uplynk/manage/content_protection/policy_configuration) and/or the parameter expansion capability to obfuscate your Studio DRM policies.</Tip>
+        <Tip>Use a [Studio DRM policy configuration](/uplynk/manage/content_protection/policy_configuration) and/or the [parameter expansion](https://docs.edgecast.com/video/Content/Security/Apple-FairPlay-DRM.htm) capability to obfuscate your Studio DRM policies.</Tip>
 
 https://docs.edgecast.com/video/Content/Security/DASH.htm

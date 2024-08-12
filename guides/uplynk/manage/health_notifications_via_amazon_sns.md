@@ -22,7 +22,7 @@ Perform the following steps to set up Live Slicer health notifications:
 
 2. [**Set up an Amazon SNS topic.**](#set-up-an-amazon-sns-topic)<br />Our service pushes Live Slicer health and failover notifications to the same Amazon SNS topic.
 
-3. [**Configure the Live Slicer**](#configure-communication-with-amazon-sns) to push health notifications to an Amazon SNS topic.
+3. [**Configure the Live Slicer**](#integrate-slack-with-amazon-sns) to push health notifications to an Amazon SNS topic.
 
 4. **Configure Amazon SNS** to broadcast health notifications to the desired destination(s). This [section](#integrate-slack-with-amazon-sns) explains how to set up Amazon SNS and Lambda to broadcast health notifications to a Slack channel.
 

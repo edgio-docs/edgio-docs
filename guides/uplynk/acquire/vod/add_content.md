@@ -4,8 +4,8 @@ title: Add VOD Content
 
 On-demand content may be added to your library through the CMS, Slicer, or Slicebot. Slicebot, an automation tool, establishes a workflow through which content may be added to your library as it is generated. [Learn more](/uplynk/acquire/vod/automation_via_slicebot).
 
-- [View Slicer / Slicebot installation instructions](/uplynk/acquire/vod/#install-or-upgrade).
--
+[View Slicer / Slicebot installation instructions](/uplynk/acquire/vod/#install-or-upgrade)
+
 
 ## Quick Start
 

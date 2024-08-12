@@ -404,7 +404,7 @@ Blackout may only be applied to live linear channel programming that has been as
     - From the [Content tab](https://cms.uplynk.com/static/cms2/index.html#/content), verify that the asset currently being generated is called "Los Angeles Home Game" and then select it.
     - Verify that this asset contains a `blackout_id` metadata field set to `LA-Sports`.
 
-    3. Verify that Blackout is currently being applied to the live linear channel.
+3. Verify that Blackout is currently being applied to the live linear channel.
     - **DMA Override**: If you are not testing from Los Angeles, override the test player's DMA to the Los Angeles market by appending the following query string parameter to the playback URL launched in the [Step 4: Setting up a Media Player](#step-4) section: `repl.cbdma=803`
       - **Sample playback URL**:<br />`https://content.uplynk.com/player5/6ZpnSRiEmjj3fMdnzDaV00sc.html?repl=aboi&repl.cbdma=803`
     - Wait 30 to 60 seconds and then verify that the media player now streams slate.

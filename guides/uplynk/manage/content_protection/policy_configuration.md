@@ -26,7 +26,7 @@ Studio DRM policies determine how security restrictions (e.g., copying or viewin
 
    [Learn more](/uplynk/deliver/playback_urls/).
 
-3. Leverage an [expansion parameter](/uplynk/deliver/playback_urls/general-parameters) to shorten the query string and to obfuscate the Studio DRM policy being applied.
+3. Leverage an [expansion parameter](/uplynk/deliver/playback_urls/#general-parameters) to shorten the query string and to obfuscate the Studio DRM policy being applied.
 4. Sign the playback URL.
 5. (Optional) Encrypt the playback URL's query string for an added level of security.
 

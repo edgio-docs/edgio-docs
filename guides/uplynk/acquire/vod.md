@@ -77,8 +77,7 @@ Load the Slicer by performing one of the following:
   - If it was pinned to either the taskbar or the Start menu, simply click on the Slicer icon.
   - Otherwise, double-click the executable from the location to which it was extracted.
 
-- **macOS**:
-  - Double-click it from the **Applications** folder.
+- **macOS**: Double-click it from the **Applications** folder.
 
   <Tip>If the Slicer application cannot be opened due to a security configuration, try opening it while holding down the **Control** key.</Tip>
 
@@ -98,7 +97,7 @@ This tutorial provides step-by-step instructions on how to test on-demand stream
   Or
 - **macOS**
 
-((Knowledge Prerequisites))
+**Knowledge Prerequisites**
 
 - Basic understanding of **Windows**
   Or
@@ -166,7 +165,7 @@ The CMS provides a media player through which playback may be tested.
 
    - The test player will stream the selected on-demand content in a new browser window or tab.
 
-Please refer to our media player tutorials to learn how to [add a media player to a web page](/uplynk/deliver/media_player/add_media_player_to_web_page) and our security tutorials to learn how security may be integrated with content playback.
+Refer to our media player tutorials to learn how to [add a media player to a web page](/uplynk/deliver/media_player/add_media_player_to_web_page).
 
 ## More Information  {/*more-information*/}
 

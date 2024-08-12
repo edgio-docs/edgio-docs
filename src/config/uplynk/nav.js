@@ -79,6 +79,20 @@ const nav = {
         {
           title: 'VOD',
           path: 'acquire/vod',
+          routes: [
+            {
+              title: 'Add Content',
+              path: 'acquire/vod/add_content',
+            },
+            {
+              title: 'Automation via Slicebot',
+              path: 'acquire/vod/automation_via_slicebot',
+            },
+            {
+              title: 'VOD Uploader',
+              path: 'acquire/vod/vod_uploader',
+            },
+          ],
         },
         {
           title: 'Live',

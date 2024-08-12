@@ -193,6 +193,8 @@ https://docs.edgecast.com/video/index.html#Setup/Playback-URLs.htm%3FTocPath%3DB
 
 ## Sign Playback URLs with a Token {/*signing-playback-urls-with-token*/}
 
+### Exceptions {/*exceptions*/}
+
 
 
 ## Core Identification Parameters {/*core-identification-parameters*/}

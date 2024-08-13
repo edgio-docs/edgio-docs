@@ -23,5 +23,3 @@ Monetize your content by inserting ads seamlessly into your live streams and vid
 - **Pre-roll Ads for Live Streams:** Monetize your live content by playing ads before the viewer joins the stream. This is ideal for ensuring that every viewer sees an advertisement, maximizing ad impressions.
 - **Mid-roll Ads for Live Events:** Enhance your revenue by incorporating mid-roll ads during live events. The player detects upcoming ad breaks and seamlessly inserts ads, keeping viewers engaged while generating ad revenue.
 - **Ad Integration for VOD Content:** Utilize pre-roll, mid-roll, and post-roll ads for your VOD content. Our service determines the optimal ad configuration upon playback initiation, ensuring a smooth viewing experience and effective ad delivery.
-
-{ universal_ad_configuration.md }

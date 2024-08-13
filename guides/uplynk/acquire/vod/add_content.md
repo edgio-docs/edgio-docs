@@ -7,7 +7,7 @@ On-demand content may be added to your library through the CMS, Slicer, or Slice
 [View Slicer / Slicebot installation instructions](/uplynk/acquire/vod/#install-or-upgrade)
 
 
-## Quick Start
+## Quick Start  {/*quick-start*/}
 
 On-demand content may be added to your library through either of the following methods:
 
@@ -16,7 +16,7 @@ On-demand content may be added to your library through either of the following m
 
 - **Command Line**: [Pass options through the command line](#slicer-command-line) to define Slicer credentials and how content will be ingested into your library.
 
-## VOD Uploader
+## VOD Uploader  {/*vod-uploader*/}
 
 VOD Uploader allows you to:
 
@@ -97,13 +97,13 @@ VOD Uploader allows you to:
    - Click **Start Upload**. The VOD Uploader will upload and then encode your content. Track the progress in the **Active & Recent Uploads** section.
    - Once you start a job, you may safely navigate to another page while VOD Uploader processes your content.
 
-## VOD Uploader Template
+## VOD Uploader Template  {/*vod-uploader-template*/}
 
 Apply a base set of Slicebot configuration settings to uploaded content by assigning a VOD Uploader template. A VOD Uploader template contains the following Slicebot configuration settings:
 
 `Add to Libraries | Auto Expire Hours | Auto Replace | Forced Aspect Ratio | Mix Audio Tracks | Poster Size | Poster Offset | Skip Playback Token`
 
-### Create a VOD Uploader Template
+### Create a VOD Uploader Template  {/*create-a-vod-uploader-template*/}
 
 1. **Navigate to the VOD Uploader Templates Page** by navigating to **Settings > VOD Uploader Templates**.
 
@@ -113,7 +113,7 @@ Apply a base set of Slicebot configuration settings to uploaded content by assig
    - Define the desired settings.
    - Click **Save**.
 
-### Modify a VOD Uploader Template
+### Modify a VOD Uploader Template  {/*modify-a-vod-uploader-template*/}
 
 1. **Navigate to the VOD Uploader Templates Page** by navigating to **Settings > VOD Uploader Templates**.
 
@@ -122,7 +122,7 @@ Apply a base set of Slicebot configuration settings to uploaded content by assig
    - Modify the desired settings.
    - Click **Save**.
 
-### Delete a VOD Uploader Template
+### Delete a VOD Uploader Template  {/*delete-a-vod-uploader-template*/}
 
 1. **Navigate to the VOD Uploader Templates Page** by navigating to **Settings > VOD Uploader Templates**.
 
@@ -130,26 +130,134 @@ Apply a base set of Slicebot configuration settings to uploaded content by assig
    - Click on the desired template.
    - Click **Delete**.
 
-## Format
+## Format  {/*format*/}
 
-https://docs.edgecast.com/video/index.html#Ingestion/MI-OD.htm%3FTocPath%3DBasic%2520Setup%7COn-Demand%2520Content%7C_____2
+VOD Uploader, the Slicer, and Slicebot are compatible with standard audio/video file formats (e.g., mov, mpeg/mpg, avi, m4v, and mkv).
+
+<Tip>Do not reprocess content for the sole purpose of preparing it for slicing. Rather, let the VOD Uploader, Slicer, or Slicebot process it in its current format. Incompatible file formats will generate an error message.</Tip>
+
+<Info>Unflattened reference files are unsupported.</Info>
+
+**Recommended codecs/container**
+
+- Video Codec: H.264 or H.265
+- Audio Codec: AAC
+- Container: MP4
+
+<Tip>Generate high quality output by using a high quality source. However, the source's bit rate should not exceed 25 Mbps, since this will slow down processing without a noticeable improvement in output quality.</Tip>
+
+<Info>All assets are encoded at approximately the same level of loudness. This is achieved by applying gain or attenuation to the source audio as needed.</Info>
+
+### Encoding Profiles  {/*encoding-profiles*/}
+
+By default, audio/video will be encoded using the HD 720p25/30 encoding profile. This encoding profile has a maximum resolution of 1280x720. Please contact your account manager if you would like to upgrade to a different encoding profile.
+
+[Learn more](/uplynk/acquire/encoding_profiles).
+
+#### Color Space  {/*color-space*/}
+
+By default, an asset's color standard is converted to either HDR10 or SDR according to whether your [encoding profile](/uplynk/acquire/encoding_profiles) supports HDR.
+
+| Encoding Profile | Color Standard (Source) | Color Standard (Output) |
+|---|---|---|
+| HDR | Hybrid Log-Gamma (HLG), HDR, or SDR | HDR10 |
+| SDR | HLG, HDR, or SDR | SDR |
+
+## Custom Color Representation  {/*custom-color-representation*/}
+
+Customize color representation conversion by assigning a lookup table (LUT) to the desired color space conversion. Define this mapping through the `rgb_lut` setting.
+
+### Key Information  {/*key-information*/}
+
+- Verify that your LUT adheres to Adobe's Cube LUT Specification 1.0.
+- You may define multiple RGB LUTs to adjust for different input assets. The output asset's color standard (i.e., HDR10 or SDR) determines the configuration that will be used. If multiple LUTs have been defined for that color standard, the configuration that best matches the input asset's color space and range will be used.
+- By default, the output asset's color space uses a narrow (i.e., limited) range (16 - 235). You may define the desired range when configuring the [`rgb_lut`](#options) setting.
+
+   **Slicer Example**
+
+   The following configuration uses a custom LUT to generate an HDR 10 asset with a full range when the input asset is HLG:
+
+   ```bash
+   -rgb_lut hlg hdr10,full /path/mylut.cube
+   ```
+- Alternatively, you may explicitly define a color space, a color primary, the transformation characteristics, and the range.
+
+   **Slicer Example**
+
+   The following configuration is equivalent to the above sample configuration:
+
+   ```bash
+   -rgb_lut colorspace:bt2020nc,primaries:bt2020,trc:arib-std-b67,range:tv colorspace:bt2020nc,primaries:bt2020,trc:smpte2084,range:pc /path/mylut.cube
+   ```
+
+[View Slicer syntax information](#options).
+
+### Audio Codec  {/*audio-codec*/}
+
+By default, your media's audio is encoded using the Advanced Audio Coding (AAC) audio codec. However, you may configure it to encode an audio track into Dolby Digital Plus (DD+) and AAC subtracks by passing the dolby switch.
+
+**Default Channel Layout for Dolby**
+
+`C L R RL RR LFE`
+
+If the source audio track is stereo, then the subtrack will contain 4 muted channels (i.e., C RL RR LFE). If the source audio track contains more than 6 channels, then it will be automatically downmixed to Dolby 5.1.
+
+Use the mix and nexttrack switches to apply a custom mix to your audio subtracks. For example, if your source audio track contains 8 channels, you may use the mix switch to map the first 6 channels to 5.1 and the last two channels to stereo.
+
+**Slicer Examples**
+
+This first example generates an audio track that contains AAC and Dolby 5.1 subtracks:
+
+`./slicer ... -audiodesc english -dolby -atrack 0`
+
+This second example generates these audio tracks:
+
+- Track 1: AAC and Dolby 5.1 subtracks
+- Track 2: AAC subtrack
+
+`./slicer ... -audiodesc english -dolby -atrack 0 -audiodesc sap -atrack 1`
+
+This third example generates AAC and Dolby 5.1 subtracks for both audio tracks:
+
+`./slicer ... -audiodesc english -dolby -atrack 0 -audiodesc sap -dolby -atrack 1`
+
+## Add Multiple Audio Tracks  {/*add-multiple-audio-tracks*/}
+
+Use the following Slicer syntax to associate multiple audio tracks with a video:
+
+`... -audiodesc "Value 1" -lang Value 1 -atrack Value 1 -audiodesc "Value 2" -lang Value 2 -atrack Value 2 -audiodesc "Value 3" -lang Value 3 -atrack Value 3 ...`
+
+**Example**
+
+`./slicer -u joe -apikey abcDEFghiJKLmnoPQRtuvWXYz123ABCdefGHIJKL ..\Videos\marketing.mp4 -audiodesc "First Track" -lang en -atrack 0 -audiodesc "Second Track" -lang sp -atrack 1 -audiodesc "Third Track" -lang fr -atrack 2`
+
+<Info>A single video may be associated with up to 31 audio tracks.</Info>
+
+## Slicer Command Line  {/*slicer-command-line*/}
+
+[VOD Uploader](#vod-uploader) provides an easy way to add content to the library. An alternative method that allows more flexibility when adding content is the command line mode.
+
+<Info>The Slicer requires authorization to add content. Authorization credentials may be specified via the `-u` and `-apikey` options or by defining the `SLICER_USER` and `SLICER_APIKEY` environment variables.</Info>
+
+## Add Content through the Command Line {/*add-content-through-command-line*/}
+
+1. Open the command prompt.
+2. Navigate to the directory where the Slicer was installed.
+3. Launch the Slicer by passing your credentials and the path to the desired on-demand content.
+
+**Syntax**
+
+`./slicer -u UserName -apikey APIKey MediaFile(RelativePath) AdditionalOptions`
+
+The progress of this job will be reported in both the command line and the CMS.
+
+### Locate API Keys  {/*locate-api-keys*/}
+
+1. Navigate to the [Integration Keys page](#https://cms.uplynk.com/static/cms2/index.html#/settings/integration-keys) by clicking the **Settings** tab and then clicking **Integration Keys** from the side navigation tab.
+2. Your API key(s) are listed under the API Keys section.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-## Add content through the Command Line {/*add-content-through-command-line*/}
-
-### Options
+### Options  {/*options*/}
 
 | Option    | Description |
 |-----|---|

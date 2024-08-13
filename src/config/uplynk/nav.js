@@ -56,6 +56,16 @@ const nav = {
         {
           title: 'Monetize',
           path: 'get_started/monetize',
+          routes: [
+            {
+              title: 'Ads',
+              path: 'get_started/monetize/ads',
+            },
+            {
+              title: 'Syndication',
+              path: 'get_started/monetize/syndication',
+            },
+          ],
         },
         {
           title: 'Deliver',

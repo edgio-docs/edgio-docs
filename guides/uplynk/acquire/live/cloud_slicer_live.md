@@ -233,7 +233,7 @@ You may import a slicer configuration file when defining your CSL slicer's slice
 
 #### Colon-Separated Values (Live Slicer Configuration File)  {/*csv*/}
 
-You may define slicer configuration settings using the same format as a Live Slicer configuration file. Specify each [desired setting](#confiuration-settings) on a separate line.
+You may define slicer configuration settings using the same format as a Live Slicer configuration file. Specify each [desired setting](/uplynk/acquire/live/on_prem_slicer/#configuration-file-settings) on a separate line.
 
 **Syntax**: "*\{Setting\}*": "*\{Value\}*"
 

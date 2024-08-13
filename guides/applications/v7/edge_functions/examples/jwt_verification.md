@@ -4,7 +4,7 @@ title: JWT Verification
 
 {{ ef_req_edgejs_deps.md }}
 
-Edge functions can be used to verify the authenticity of a JSON Web Token (JWT) sent by a client. This can be useful for ensuring that the client is authorized to access a protected resource, or for verifying the identity of the client. Handling this verification at the edge can help to offload the work from the origin server, and offer a more secure and efficient way to verify the token.
+One use for an edge function is to verify the authenticity of a JSON Web Token (JWT) sent by a client. This can be useful for ensuring that the client is authorized to access a protected resource, or for verifying the identity of the client. Handling this verification at the edge can help to offload the work from the origin server, and offer a more secure and efficient way to verify the token.
 
 <ExampleButtons
   title="JWT Verification"
@@ -14,7 +14,7 @@ Edge functions can be used to verify the authenticity of a JSON Web Token (JWT) 
 
 ## Router Configuration {/* router-configuration */}
 
-In the {{ PRODUCT }} router, you can use the `edge_function` feature to specify the path to the edge function that will handle the JWT verification. We expect the client to send a POST request with a JSON body containing the JWT token to be verified. The edge function will then validate the token and return a response with the validation result.
+In the {{ PRODUCT }} router, you can use the `edge_function` feature to specify the path to the edge function that will handle the JWT verification. We expect the client to send a `POST` request with a JSON body containing the JWT token to be verified. The edge function will then validate the token and return a response with the validation result.
 
 ```js filename="routes.js"
 import {Router, edgioRoutes} from '@edgio/core';

@@ -9,7 +9,7 @@ This example uses Edge Functions to validate a JSON Web Token (JWT) sent by a cl
 <ExampleButtons
   title="JWT Validation"
   siteUrl="https://edgio-community-examples-v7-ef-jwt-validation-live.glb.edgio.link/"
-  repoUrl="https://github.com/edgio-docs/v7-ef-jwt-validation"
+  repoUrl="https://github.com/edgio-docs/edgio-v7-ef-jwt-validation-example"
 />
 
 ## Router Configuration {/* router-configuration */}

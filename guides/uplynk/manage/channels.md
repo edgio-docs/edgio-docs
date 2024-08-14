@@ -17,7 +17,7 @@ Add audio/video content to a live channel via the following methods:
 - Test playback by leveraging a restriction-free media player associated with a live channel.
 - Secure a live linear feed by setting up whitelisted domains, [a digital signature](/uplynk/deliver/playback_urls/#signing-playback-urls-with-token), and/or [blackout](/uplynk/manage/content_protection/blackout) within your live channel configuration.
 - Slate is played in a loop when a live channel's timeline is missing content or during blackouts. Define the type of slate that will be played within a live channel's configuration.
-- By default, a live channel trails the live horizon by ~60 seconds. See [Playback Latency](#change-the-default-playback-latency) for reduced-latency options.
+- By default, a live channel trails the live horizon by \~60 seconds. See [Playback Latency](#change-the-default-playback-latency) for reduced-latency options.
 - Set up Live Slicer failover to ensure uninterrupted playback of your live stream.
 
 [Learn more.](/uplynk/deliver/live/failover)
@@ -44,9 +44,9 @@ Click **Save** to apply your changes to your live channel's configuration.
 
 From the **Details** tab of the **Live Channels** record, select the **Playback Latency** option from the dropdown:
 
-   - **Default**: ~60 seconds
-   - **Low**: Low 20s, 5+ second buffering, Missing Content Slate (MCS) is possible
-   - **Lower**: Upper teens, 2+ seconds buffering, MCS is possible
+   - **Default**: \~60 seconds
+   - **Low**: Low 20s, 5\+ second buffering, Missing Content Slate (MCS) is possible
+   - **Lower**: Upper teens, 2\+ seconds buffering, MCS is possible
    - **Lowest**: As low as 15 seconds, minimal buffering, no MCS
 
 <Info>Use two-second slices. Slates must be encoded to 2 seconds. Playback latency options cannot currently be used with Time Shifting. Contact Support if you do not see the Playback Latency feature.</Info>
@@ -59,7 +59,7 @@ From the **Details** tab of the **Live Channels** record, select the **Playback 
 
 3. When prompted to confirm, click **Delete**.
 
-### Assign a Failover Group to a Live Channel  {/**/}
+### Assign a Failover Group to a Live Channel  {/*assign-a-failover-group-to-a-live-channel*/}
 
 <Info>A prerequisite for this procedure is a failover group. [Learn more](/uplynk/deliver/live/failover).</Info>
 

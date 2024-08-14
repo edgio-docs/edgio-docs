@@ -230,17 +230,17 @@ The available enforcement actions are:
 
 Rate limited requests or detected threats will only generate an alert.
 
-**Key information:**
+**Best Practices:**
 
--   Our recommendation for testing new configurations varies by the type of security rule:
+Our recommendation for testing new configurations varies by the type of security rule:
 
-    -   **Rate Rules:** Use the `Alert Only` enforcement action.
-    
-        {{ PRODUCT }} {{ PRODUCT_SECURITY }} will continue evaluating a request that triggers an alert due to a rate rule violation.
+-   **Rate Rules:** Use the `Alert Only` enforcement action.
 
-    -   **All Other Types:** Use [audit mode](#enforcement-mode) instead of applying the `Alert Only` enforcement action to a rule running in production mode.
+    {{ PRODUCT }} {{ PRODUCT_SECURITY }} will continue evaluating a request that triggers an alert due to a rate rule violation.
 
-        {{ PRODUCT }} {{ PRODUCT_SECURITY }} applies a single enforcement action per mode (i.e., [production or audit](#enforcement-mode)). Once enforcement is triggered for that mode, {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further [evaluation of that request](/applications/security/waf#threat-detection). If you are setting up a rule in production mode, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.
+-   **All Other Types:** Use [audit mode](#enforcement-mode).
+
+    {{ PRODUCT }} {{ PRODUCT_SECURITY }} applies a single enforcement action per mode (i.e., [production or audit](#enforcement-mode)). Once enforcement is triggered for that mode, {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further [evaluation of that request](/applications/security/waf#threat-detection). If you are setting up a rule in production mode, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.
 
 #### Block Request{/*block-request*/}
 

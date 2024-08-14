@@ -1,137 +1,114 @@
 ---
-title: JWT Verification
+title: JWT Validation
 ---
 
 {{ ef_req_edgejs_deps.md }}
 
-One use for an edge function is to verify the authenticity of a JSON Web Token (JWT) sent by a client. This can be useful for ensuring that the client is authorized to access a protected resource, or for verifying the identity of the client. Handling this verification at the edge can help to offload the work from the origin server, and offer a more secure and efficient way to verify the token.
+One use for Edge Functions is to validate the JSON Web Token (JWT) sent by a client. This can be useful for ensuring that the client is authorized to access a protected resource, or for verifying the identity of the client. Handling this validation at the edge can help to offload the work from the origin server, and offer a more secure and efficient way to verify the token.
 
 <ExampleButtons
-  title="JWT Verification"
-  siteUrl="https://edgio-community-examples-v7-jwt-verification-live.glb.edgio.link/"
-  repoUrl="https://github.com/edgio-docs/edgio-v7-jwt-verification-example"
+  title="JWT Validation"
+  siteUrl="https://edgio-community-examples-v7-ef-jwt-validation-live.glb.edgio.link/"
+  repoUrl="https://github.com/edgio-docs/v7-ef-jwt-validation"
 />
 
 ## Router Configuration {/* router-configuration */}
 
-In the {{ PRODUCT }} router, you can use the `edge_function` feature to specify the path to the edge function that will handle the JWT verification. We expect the client to send a `POST` request with a JSON body containing the JWT token to be verified. The edge function will then validate the token and return a response with the validation result.
+In the {{ PRODUCT }} router, you can use the `edge_function` feature to specify the path to the edge function that will handle the JWT validation. 
 
 ```js filename="routes.js"
 import {Router, edgioRoutes} from '@edgio/core';
 
 export default new Router().use(edgioRoutes).post('/jwt', {
-  edge_function: './edge-functions/main.js',
+  edge_function: './edge-functions/validate.js',
 });
 ```
 
 ## Edge Function {/* edge-function */}
 
-The edge function will be responsible for validating the JWT token sent by the client. The token will be extracted from the request body, and the secret key used to sign the token will be retrieved from the environment variables. The token will then be validated using the secret key, and the result will be returned in the response. This example supports the HS256, HS384, and HS512 algorithms.
+The purpose of this edge function is to validate a JWT token that was signed using either the HS256, HS384, or HS512 algorithm. It expects to receive a `POST` request with the following JSON payload:
 
-<Callout type="important">
+-   **token:** Required. This parameter must be set to the JWT that will be validated. 
+-   **pubKey:** By default, the JWT will be decoded using a default signing key (i.e., `your-256-bit-secret`) defined within the `JWT_SECRET` environment variable. However, you may decode it using a custom signing key by defining a `pubKey` parameter. 
+    <Important>
 
-The Edge Function runtime does not currently support a native crypto library, so a third-party library to generate the signature is needed. In this example, we'll use the [crypto-js](https://github.com/brix/crypto-js) library.
+    This example allows you to pass a signing key to make it easier to test JWT validation through this edge function. However, signing keys should be kept secret. For example, a client should not pass a signing key within the request payload.
 
-</Callout>
+    </Important>
 
-```js filename="edge-functions/main.js"
-import {JWT} from './JWT.js';
+Upon completion, this edge function will report the result in the response.
 
-/**
- * Handle an HTTP request to validate a JWT.
- *
- * @param {Request} request - The incoming HTTP request.
- * @param {any} context - Context providing runtime information.
- * @returns {Response} HTTP response with validation result.
- */
-export async function handleHttpRequest(request, context) {
-  // Extract the JWT token from the request body
-  const {token} = await request.json();
+**Sample curl request:**
 
-  // Retrieve the secret key from environment variables
-  const secret = context.environmentVars['JWT_SECRET'] || 'your-256-bit-secret';
-
-  // Initialize response structure
-  const resp = {valid: false};
-
-  // Create JWT instance with the token and secret
-  const jwt = new JWT(token, secret);
-
-  // Validate the JWT
-  const isValid = jwt.validate();
-
-  // If valid, update response with additional JWT info
-  if (isValid) {
-    resp.valid = true;
-    resp.payload = jwt.payloadObject(); // Extract payload
-    resp.alg = jwt.algUsed(); // Extract algorithm used
-  }
-
-  // Return the response with appropriate HTTP status code
-  return new Response(JSON.stringify(resp), {
-    status: isValid ? 200 : 401, // 200 OK for valid token, 401 for invalid
-    headers: {'Content-Type': 'application/json'}, // Set response content type
-  });
-}
+```
+curl -X POST -d '{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"}' https://edgio-community-examples-v7-ef-jwt-validation-live.glb.edgio.link/jwt
 ```
 
-```js filename="edge-functions/JWT.js"
-import {Buffer} from 'buffer';
-import * as Base64 from 'crypto-js/enc-base64url';
-import {HmacSHA256, HmacSHA384, HmacSHA512} from 'crypto-js';
+**Sample response:**
 
-// Function to decode base64 strings
-const base64decode = (str) => Buffer.from(str, 'base64').toString();
+`{"valid":true,"alg":"HS256","payload":{"sub":"1234567890","name":"John Doe","iat":1516239022}}`
 
-// Hashing functions mapped to JWT algorithms
-const hashLibraries = {
-  HS256: HmacSHA256,
-  HS384: HmacSHA384,
-  HS512: HmacSHA512,
-};
+Alternatively, you can validate JWTs by submitting the form on the following web page:
 
-export class JWT {
-  constructor(token, secret) {
-    const [header_base64, payload_base64, origSignature] = token.split('.');
+[https://edgio-community-examples-v7-ef-jwt-validation-live.glb.edgio.link/](https://edgio-community-examples-v7-ef-jwt-validation-live.glb.edgio.link/)
 
-    this.header_base64 = header_base64;
-    this.payload_base64 = payload_base64;
+### Code {/*code*/}
 
-    try {
-      // Decode header and payload from base64
-      this.header = JSON.parse(base64decode(header_base64));
-      this.payload = JSON.parse(base64decode(payload_base64));
-    } catch (e) {
-      // Invalid payload or header, initialize empty objects
-      this.header = {};
-      this.payload = {};
+This edge function's code:
+
+```js filename="edge-functions/validate.js"
+import { KJUR, KEYUTIL } from 'jsrsasign'
+import { Buffer } from 'buffer'
+
+// Set up some polyfills to allow this code to run locally and when deployed:
+global.process = global.process || { env: {} }
+const fromBase64 = (str) => Buffer.from(str, 'base64').toString()
+
+export async function handleHttpRequest(request, context) {
+  Object.assign(process.env, context.environmentVars)
+
+  // Extract the toke and any other objects from the request.
+  const { token, ...other } = await request.json()
+
+  // Split out the header and payload from the cleartext token and determine the right algorithm to use.
+  const [header, payload] = token.split('.')
+  const { alg } = JSON.parse(fromBase64(header))
+
+  let validationComponent = null
+  let valid = false
+  const resp = { valid }
+
+  try {
+    // For HSxxx algorithms, the validation requires a plaintext secret key.
+    // For RSxxx, ESxxx, and PSxxx algorithms, a public key is required instead.
+    // The public key is expected to be part of the request payload and be named pubKey;
+    // the secret key SHOULD NOT be part of the payload.
+    // Note that for demo purposes (being able to set an arbitrary signing key) this
+    // version of the EF will use the secret from `pubKey` if it exists.
+    if (/^HS/i.test(alg)) {
+      if ('pubKey' in other) {
+        validationComponent = other.pubKey
+      } else {
+        validationComponent = process.env.JWT_SECRET
+      }
+    } else if (/^[REP]S/i.test(alg)) {
+      validationComponent = KEYUTIL.getKey(other.pubKey)
+    } else {
+      return new Response('Invalid JWT alg specified.', { status: 401 })
     }
 
-    this.origSignature = origSignature;
-    this.hasher = hashLibraries[this.header.alg];
-    this.secret = secret;
-  }
-
-  // Validates the JWT token
-  validate() {
-    try {
-      const calculatedSignature = Base64.stringify(
-        this.hasher(`${this.header_base64}.${this.payload_base64}`, this.secret)
-      );
-      return calculatedSignature === this.origSignature;
-    } catch (e) {
-      return false;
+    valid = KJUR.jws.JWS.verifyJWT(token, validationComponent, { alg: [alg] })
+    if (valid === true) {
+      // Only parse the payload if the signature is valid.
+      const decodedPayload = JSON.parse(fromBase64(payload))
+      Object.assign(resp, { valid, alg, payload: decodedPayload })
     }
+  } catch (e) {
+    // Handle exceptions here.
   }
 
-  // Returns the payload object
-  payloadObject() {
-    return this.payload;
-  }
-
-  // Returns the algorithm used in JWT
-  algUsed() {
-    return this.header.alg;
-  }
+  return new Response(JSON.stringify(resp), {
+    status: valid ? 200 : 401
+  })
 }
 ```

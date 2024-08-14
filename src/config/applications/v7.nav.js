@@ -225,10 +225,6 @@ const nav = {
           title: 'Image Optimization',
           path: 'performance/image_optimization',
         },
-        {
-          title: 'Traditional Sites',
-          path: 'performance/traditional_sites',
-        },
         separator,
         {
           title: 'Compression',

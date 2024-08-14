@@ -452,7 +452,7 @@
     </url>
     <url>
         <loc>
-            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/prefetching/prefetching_edgio_sites
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/prefetching/prefetching_cdn_as_code
         </loc>
     </url>
     <url>
@@ -517,11 +517,6 @@
     </url>
     <url>
         <loc>
-            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/traditional_sites
-        </loc>
-    </url>
-    <url>
-        <loc>
             https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/performance/traffic_splitting
         </loc>
     </url>
@@ -538,6 +533,11 @@
     <url>
         <loc>
             https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/reference
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/reference/cache_manifest_js_file
         </loc>
     </url>
     <url>
@@ -668,6 +668,11 @@
     <url>
         <loc>
             https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/tls_certificates
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://edgio-community-docs-edg-io-delivery.glb.edgio.link/applications/v7/security/token_auth
         </loc>
     </url>
     <url>

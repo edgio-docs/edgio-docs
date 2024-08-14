@@ -170,8 +170,7 @@ const Message = styled.div<{isUser: boolean; context: string}>`
   border-radius: 5px;
 
   &::before {
-    content: ${({isUser, context}) =>
-      isUser ? "'You'" : `'Edgio Answers - ${context}'`};
+    content: ${({isUser, context}) => (isUser ? "'You'" : `'Edgio Answers'`)};
     position: absolute;
     top: -10px;
     ${({isUser}) => (isUser ? 'right: 10px;' : 'left: 10px;')}
@@ -449,11 +448,9 @@ const EdgioAnswers = () => {
               });
               break;
             case 'stream':
-              const existingMessageIndex = messages.length - 1;
-              const existingMessage = messages[existingMessageIndex];
               updateChatMessage(-1, {
                 type,
-                content: existingMessage.content + message,
+                content: message,
                 finished: false,
               });
               break;
@@ -562,20 +559,27 @@ const EdgioAnswers = () => {
    */
   const updateChatMessage = (index: number, message: IMessage) => {
     setMessages((prevMessages) => {
-      const updatedMessages = [...prevMessages];
-
       // If the index is -1, update the last message
       if (index === -1) {
-        index = updatedMessages.length - 1;
+        index = prevMessages.length - 1;
       }
 
-      const existingMessage = updatedMessages[index];
-      updatedMessages[index] = {
-        ...existingMessage,
-        ...message,
-      };
+      const existingMessage = prevMessages[index];
+      let existingContent = existingMessage.content;
 
-      return updatedMessages;
+      // `content` will be appended to the existing message content for stream messages
+      if (message.content && message.type === 'stream') {
+        existingContent = existingContent + message.content;
+      }
+
+      return [
+        ...prevMessages.slice(0, -1),
+        {
+          ...existingMessage,
+          ...message,
+          content: existingContent,
+        },
+      ];
     });
   };
 

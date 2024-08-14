@@ -152,10 +152,6 @@ const items = {
       path: '/guides/performance/image_optimization',
     },
     {
-      title: 'Traditional Sites',
-      path: '/guides/performance/traditional_sites',
-    },
-    {
       title: 'Compression',
       path: '/guides/performance/compression',
     },

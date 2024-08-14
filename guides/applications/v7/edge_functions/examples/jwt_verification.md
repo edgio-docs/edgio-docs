@@ -26,10 +26,11 @@ export default new Router().use(edgioRoutes).post('/jwt', {
 
 ## Edge Function {/* edge-function */}
 
-The purpose of this edge function is to validate a JWT token that was signed using either the HS256, HS384, or HS512 algorithm. It expects to receive a `POST` request with the following JSON payload:
+This edge function uses the [jsrsasign libary](https://github.com/kjur/jsrsasign) to validate a JWT signed with a HS256, HS384, or HS512 algorithm. It expects to receive a `POST` request with the following JSON payload:
 
 -   **token:** Required. This parameter must be set to the JWT that will be validated. 
 -   **pubKey:** By default, the JWT will be decoded using a default signing key (i.e., `your-256-bit-secret`) defined within the `JWT_SECRET` environment variable. However, you may decode it using a custom signing key by defining a `pubKey` parameter. 
+
     <Important>
 
     This example allows you to pass a signing key to make it easier to test JWT validation through this edge function. However, signing keys should be kept secret. For example, a client should not pass a signing key within the request payload.

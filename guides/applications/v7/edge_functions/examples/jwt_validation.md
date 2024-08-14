@@ -68,7 +68,7 @@ const fromBase64 = (str) => Buffer.from(str, 'base64').toString()
 export async function handleHttpRequest(request, context) {
   Object.assign(process.env, context.environmentVars)
 
-  // Extract the toke and any other objects from the request.
+  // Extract the token and any other objects from the request.
   const { token, ...other } = await request.json()
 
   // Split out the header and payload from the cleartext token and determine the right algorithm to use.

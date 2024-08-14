@@ -1,10 +1,36 @@
 ---
-title: Universal Ad Configuration
+title: Ads
 ---
+
+Monetize your content by inserting ads seamlessly into your live streams and video-on-demand (VOD) content. Our ad insertion service ensures a smooth transition between your content and advertisements, enhancing the viewing experience while maximizing your revenue potential.
+
+## Live Streams  {/*live-streams*/}
+
+- **Pre-roll Ads:** Play ads before the viewer joins the live stream.
+- **Mid-roll Ads:** Play ads during the live stream at scheduled breaks. The player requests ads when an upcoming ad break is detected, and our service stitches them into the live stream.
+- **Post-roll Ads:** Play ads after a live event.
+- **Ad Retrieval:** Our service requests ads whenever it detects an upcoming ad break, ensuring timely and seamless ad insertion.
+
+## Video On-Demand (VOD)  {/*vod*/}
+
+- **Ad Configuration:** Upon initiating playback, our service determines the set of pre-roll, mid-roll, and post-roll ads to be stitched into your on-demand content.
+- **Seamless Integration:** Ads are stitched into your content to provide a seamless transition, preventing ad blockers from blocking your ads.
+- **Quality Upscaling:** Ads are automatically upscaled to the highest quality in your encoding profile without altering their frame rate.
+- **Ad Retrieval:** Our service requests ads for all ad breaks upon initiating playback, ensuring a smooth and uninterrupted viewing experience.
+
+## Use Cases  {/*ads-use-cases*/}
+
+- **Pre-roll Ads for Live Streams:** Monetize your live content by playing ads before the viewer joins the stream. This is ideal for ensuring that every viewer sees an advertisement, maximizing ad impressions.
+- **Mid-roll Ads for Live Events:** Enhance your revenue by incorporating mid-roll ads during live events. The player detects upcoming ad breaks and seamlessly inserts ads, keeping viewers engaged while generating ad revenue.
+- **Ad Integration for VOD Content:** Utilize pre-roll, mid-roll, and post-roll ads for your VOD content. Our service determines the optimal ad configuration upon playback initiation, ensuring a smooth viewing experience and effective ad delivery.
+
+
+## Universal Ad Configuration  {/*universal-ad-configuration*/}
+
 
 Use the Universal Ad Config to integrate ads from your own third-party ad provider into your content. <br /> [Learn how to get started](/uplynk/monetize/ads/#setup-overview).
 
-## Requirements  {/*requirements*/}
+### Requirements  {/*requirements*/}
 
 Universal Ad Config requires a third-party ad provider that supports:
 
@@ -21,7 +47,7 @@ Universal Ad Config requires a third-party ad provider that supports:
 
     Enabling the `vast_vod` parameter on a VOD playback session allows our service to create a VMAP template and manage all of the ad requests within that VOD asset across all ad breaks.
 
-## Passthrough Parameters  {/*passthrough-parameters*/}
+### Passthrough Parameters  {/*passthrough-parameters*/}
 
 Use this prefix to pass known ad parameters to the ad server: `ad.pt.<PARAMETER>=<VALUE>`
 
@@ -31,7 +57,7 @@ If an ad server expects a campaign ID (e.g., 1234) to be passed through the `c_i
 
 Uplynk will then pass the following query string parameter in the ad request: `c_id=1234`
 
-## Macros  {/*macros*/}
+### Macros  {/*macros*/}
 
 Use macros when the value of an ad parameter is unknown during ad configuration setup or playback. Uplynk will replace the following macros with data that is specific to the current playback session:
 
@@ -59,7 +85,7 @@ Add the following query string parameter to the playback URL to pass the ad brea
 
 If the Live Slicer requests a 90-second ad break, Uplynk will pass the following query string parameter in the ad request: `break_dur=90.0`
 
-### Pass First Valid  {/*pass-first-valid*/}
+#### Pass First Valid  {/*pass-first-valid*/}
 
 Use the **Pass First Valid** prefix to define a default value that will be passed when a macro does not resolve to a value. This prefix instructs Uplynk to pass the first valid value from a comma-delimited list.
 

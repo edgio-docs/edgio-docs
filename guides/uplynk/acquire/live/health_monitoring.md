@@ -18,13 +18,13 @@ Monitor the health for all recently active Live Slicers through the following to
 
 Quickly set up Live Slicer health monitoring by performing the following steps:
 
-1. [Enable monitoring](#prerequisites) on your account.
-2. [Create a view](#create-slicer-view) for the desired Live Slicers.
+1. [Enable monitoring](#enable-monitoring) on your account.
+2. [Create a view](#create-a-slicer-view) for the desired Live Slicers.
 3. [Monitor the Live Slicers](#dashboard) identified above from the Live Slicer Monitoring dashboard.
 
 ### Key Steps  {/*key-steps*/}
 
-Set up Live Slicer health monitoring involves:
+Setting up Live Slicer health monitoring involves:
 
 1. Selecting one or more customer account(s) whose Live Slicers can be monitored.
 2. Creating a Slicer View that identifies the set of Live Slicers that will be monitored.
@@ -61,7 +61,7 @@ Before you can add a Live Slicer to a Slicer View, you must first enable monitor
 
 2. **Click Configure Monitored Accounts:**
    - Mark each customer account for which monitoring will be enabled.
-   - Click "Add # Accounts" to confirm.
+   - Click **Add # Accounts** to confirm.
 
 #### Disable monitoring on an account  {/*disable-monitoring*/}
 
@@ -176,7 +176,7 @@ A Slicer View identifies a set of Live Slicers. You may switch between Slicer Vi
    - Type the name that will be assigned to the Slicer View in the View Name field.
    - Optional: Use the Search field to filter the list of available Live Slicers by name and owner.
    - Mark the desired Live Slicers.
-   - Click the red icon. ![Red icon](/images/uplynk/red-add-icon.png?width=16)
+   - Click the red left-arrow icon. ![Red icon](/images/uplynk/red-add-icon.png?width=16)
    - Click **Save**.
 
 #### Modify a Slicer View  {/*modify-slicer-view*/}
@@ -190,8 +190,8 @@ A Slicer View identifies a set of Live Slicers. You may switch between Slicer Vi
    - Click on the desired Slicer View.
 
 3. **Modify the Slicer View:**
-   - Add Live Slicers by marking from the Available Slicers list and then clicking ![Card](/images/uplynk/red-add-icon.png).
-   - Remove Live Slicers by marking them from the Slicers in View list and then clicking ![Card](/images/uplynk/red-remove-icon.png).
+   - Add Live Slicers by marking from the Available Slicers list and then clicking the red left-arrow icon. ![Red arrow icon](/images/uplynk/red-add-icon.png)
+   - Remove Live Slicers by marking them from the Slicers in View list and then clicking the red right-arrow icon. ![Red arrow icon](/images/uplynk/red-remove-icon.png)
    - Click **Save**.
 
 #### Delete a Slicer View  {/*delete-slicer-view*/}
@@ -216,11 +216,9 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 - Once you have created a custom monitoring configuration, you may reassign a Live Slicer to it. This means that the previous set of monitoring rules (e.g., Default) will no longer apply to the Live Slicer, since a Live Slicer may only be associated with a single set of monitoring rules at any given time.
 - All metrics, with the exception of Closed Captioning Last Seen, are updated every 4 seconds. The Closed Captioning Last Seen metric is updated every 10 seconds.
 - The Live Slicer will only report monitoring data when slicing content. It cannot report data when it is in another state (i.e., ad break, replace content, or blackout), since it is not receiving a video feed.
-- A user with either the admin or read/write permission can create rulesets that can be leveraged by any member of your organization. This type of ruleset is known as an organization ruleset.
+- A user with either the admin or read/write permission can create rulesets that can be leveraged by any member of your organization. This type of ruleset is known as an organization ruleset. [Learn more](#organizations).
 
-[Learn more](#organizations)
-
-#### Create a custom set of monitoring rules  {/*create-custom-set*/}
+#### Create a Custom Set of Monitoring Rules  {/*create-custom-set*/}
 
 1. Navigate to the [Monitoring Rules page](https://monitor.uplynk.com/settings/rules).
    - From the main menu, navigate to **Services**.
@@ -242,7 +240,7 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 
 5. Click **Save**.
 
-#### Modify a custom set of monitoring rules  {/*modify-custom-set*/}
+#### Modify a Custom Set of Monitoring Rules  {/*modify-custom-set*/}
 
 1. Navigate to the [Monitoring Rules page](https://monitor.uplynk.com/settings/rules).
    - From the main menu, navigate to **Services**.
@@ -257,7 +255,7 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 
 5. Click **Save**.
 
-#### Delete a custom set of monitoring rules  {/*delete-custom-set*/}
+#### Delete a Custom Set of Monitoring Rules  {/*delete-custom-set*/}
 
 1. Navigate to the [Monitoring Rules page](https://monitor.uplynk.com/settings/rules).
    - From the main menu, navigate to **Services**.
@@ -272,7 +270,7 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 
 5. Click **Yes, Delete It**.
 
-#### Assign a custom set of monitoring rules to one or more Live Slicers  {/*assign-custom-set*/}
+#### Assign a Custom Set of Monitoring Rules to One or More Live Slicers  {/*assign-custom-set*/}
 
 1. Navigate to the [Monitoring Rules page](https://monitor.uplynk.com/settings/rules).
    - From the main menu, navigate to **Services**.
@@ -293,7 +291,7 @@ Use rulesets to define rules that identify the set of metrics that will be monit
 
     <Tip>Alternatively, you may assign a ruleset to a Live Slicer from the Live Slicer Monitoring dashboard by clicking on the desired Live Slicer and then selecting the rule set that will be applied to it from the Ruleset option.</Tip>
 
-#### Assign the default set of monitoring rules to one or more Live Slicers  {/*assign-default-set*/}
+#### Assign the Default Set of Monitoring Rules to One or More Live Slicers  {/*assign-default-set*/}
 
 1. Navigate to the [Monitoring Rules page](https://monitor.uplynk.com/settings/rules).
    - From the main menu, navigate to **Services**.
@@ -392,12 +390,12 @@ The **right pane** provides the following information and statistics for each Li
 | Duration| Indicates the amount of time that the Live Slicer has been in the current health state.   |
 | Slicer ID     | Indicates a Live Slicer's ID. This ID is defined by the slicerID parameter in the Live Slicer's configuration file.     |
 | Ruleset | Indicates the ruleset used to determine the state of Live Slicer health. |
-| Owner   | Identifies the name of the user that owns the Live Slicer.   <br />[Learn how to monitor Live Slicers across multiple accounts](/uplynk/acquire/live/health_monitoring/#enable-disable).  |
+| Owner   | Identifies the name of the user that owns the Live Slicer.   <br />[Learn how to monitor Live Slicers across multiple accounts](/uplynk/acquire/live/health_monitoring/#assign-custom-set).  |
 | IP| Indicates the Live Slicer's IP address.   |
 | Zone    | Indicates the zone to which the Live Slicer is pushing content.|
 | Broker  | Identifies the name of the broker handling the Live Slicer's content.|
 | Broker IP     | Indicates the IP address of the broker handling the Live Slicer's content.    |
-| State**   | Indicates the Live Slicer's current state:<ul><li>**Slicing**: Indicates that the Live Slicer is currently slicing content.</li><li>**Ad Break**: Indicates that content is being driven by a third-party ad server instead of the Live Slicer.</li><li>**Replacing Content**: Indicates that content is being driven by pre-encoded content instead of the Live Slicer.</li><li>**Blackout**: Indicates that the content currently being sliced by the Live Slicer is being blacked out.</li><li>**Inactive**: Indicates that the Live Slicer was active within the last 24 hours, but is not currently slicing content, replacing content, in an ad break, or in a blackout state.</li></ul>     |
+| State   | Indicates the Live Slicer's current state:<ul><li>**Slicing**: Indicates that the Live Slicer is currently slicing content.</li><li>**Ad Break**: Indicates that content is being driven by a third-party ad server instead of the Live Slicer.</li><li>**Replacing Content**: Indicates that content is being driven by pre-encoded content instead of the Live Slicer.</li><li>**Blackout**: Indicates that the content currently being sliced by the Live Slicer is being blacked out.</li><li>**Inactive**: Indicates that the Live Slicer was active within the last 24 hours, but is not currently slicing content, replacing content, in an ad break, or in a blackout state.</li></ul>     |
 | Signal  | Indicates the input signal type:<ul><li>**Blackmagic Capture Devices**: Indicates the signal format reported by the card. Sample value: `HD 1080i 60fps`</li><li>**UDP Transport Streams**: Reports the following information: TS \{multicast unicast\}\{Source IP Address\}:\{Port\}\{Resolution Width x Height\} </li><li>**No Signal**: Reports the following value when the signal is lost: No signal</li></ul>|
 | Luma    | Indicates the average luminosity percentage for the last few seconds of video. This percentage will only be returned when the Live Slicer has reported a luma value. |
 | Vol     | Indicates the average loudness percentage for the last few seconds of audio. This percentage will only be returned when the Live Slicer has reported a volume value. |
@@ -673,7 +671,7 @@ This section covers common configuration issues that may prevent the Live Slicer
 |---|---|
 | Closed captions not working with SDI feeds | Perform the following steps:<ol><li>Use the ancillary scan mode to discover the ancillary line number and/or DID/SDID. Enable `ancillary scan` mode by changing the **ancillary_scan** setting in the Live Slicer's config file from "off" to "on" and then restarting it.</li><li>Check the logs for the following message: `Unknown DID/SDID X/Y on line Z`</li><li>Set the following Live Slicer's config settings to the X, Y, and Z values defined in the log message:<br />- captions_DID<br />- captions_SDID<br />- ancillary_lines</li><li>Restart the Live Slicer.</li><li>Repeat steps 2 - 4 until the right combination is found.</li><li>Turn off ancillary scan mode.</li></ol><br />**More Information**:<br />The Live Slicer must be told where to look for CEA-608/708 closed captions for SDI feeds. By default, the slicer looks on ancillary line 9/13 for SMPTE 291M messages with the DID/SDID 0x61/0x01, which is the most common configuration for broadcast signals. |
 | Auto expiring assets | Change the `autoexpire_age` setting in the Live Slicer's config file to the desired length of time and then restart the Live Slicer.<br /><br />**More Information**:<br />By default, the Live Slicer expires live assets after 24 hours. |
-| Audio channel layout | **SDI Signal Only**<br />Update the Live Slicer's configuration file through the following steps:<ol><li>Set the desired audio channel layout through the audio_layout setting.</li><li>Add audio tracks by:<br />- Inserting the `audio_tracks` setting. Set it to the desired number of tracks.<br />- Adding an `audio_layout_X` setting for each audio track.<br />**Example**:<br />Add a second track on the second stereo pair (channels 3 and 4) by adding the following settings: `audio_tracks: 2` and `audio_layout_1: stereo 2`.</li><li>Restart the Live Slicer.</li></ol><br /><br />**More Information**:<br />By default, the slicer will use the first two channels from the input signal as a stereo pair. |
+| Audio channel layout | **SDI Signal Only**<br />Update the Live Slicer's configuration file through the following steps:<ol><li>Set the desired audio channel layout through the audio_layout setting.</li><li>Add audio tracks by:<br />- Inserting the `audio_tracks` setting. Set it to the desired number of tracks.<br />- Adding an `audio_layout_X` setting for each audio track.<br />**Example**:<br />Add a second track on the second stereo pair (channels 3 and 4) by adding the following settings: `audio_tracks: 2` and `audio_layout_1: stereo 2`.</li><li>Restart the Live Slicer.</li></ol><br />**More Information**:<br />By default, the slicer will use the first two channels from the input signal as a stereo pair. |
 | Unique Live Slicer IDs | The following log message indicates that multiple Live Slicers are using the same ID:<br />`Unable to mark slice X delivered: Deliver rejected: slicing for beam Y is already done.`<br />Resolve this issue by assigning a unique ID to each Live Slicer.<br /><br />**More Information**:<br />A unique ID must be assigned to each Live Slicer regardless of whether it is capturing the same signal as other Live Slicers. |
 
 ### Troubleshooting  {/*misc-troubleshooting*/}

@@ -56,6 +56,16 @@ const nav = {
         {
           title: 'Monetize',
           path: 'get_started/monetize',
+          routes: [
+            {
+              title: 'Ads',
+              path: 'get_started/monetize/ads',
+            },
+            {
+              title: 'Syndication',
+              path: 'get_started/monetize/syndication',
+            },
+          ],
         },
         {
           title: 'Deliver',
@@ -79,6 +89,20 @@ const nav = {
         {
           title: 'VOD',
           path: 'acquire/vod',
+          routes: [
+            {
+              title: 'Add Content',
+              path: 'acquire/vod/add_content',
+            },
+            {
+              title: 'Automation via Slicebot',
+              path: 'acquire/vod/automation_via_slicebot',
+            },
+            {
+              title: 'VOD Uploader',
+              path: 'acquire/vod/vod_uploader',
+            },
+          ],
         },
         {
           title: 'Live',
@@ -133,6 +157,10 @@ const nav = {
               title: 'Reprocessing',
               path: 'manage/assets/reprocessing',
             },
+            {
+              title: 'Boundaries',
+              path: 'manage/assets/boundaries',
+            },
           ],
         },
         {
@@ -147,10 +175,6 @@ const nav = {
               title: 'Virtual Linear',
               path: 'manage/channels/virtual_linear',
             },
-            {
-              title: 'Boundaries',
-              path: 'manage/channels/boundaries',
-            },
           ],
         },
         {
@@ -161,6 +185,18 @@ const nav = {
           title: 'Content Protection',
           path: 'manage/content_protection',
           routes: [
+            {
+              title: 'Studio DRM',
+              path: 'manage/content_protection/studio_drm',
+            },
+            {
+              title: 'Apple FPS',
+              path: 'manage/content_protection/apple_fps',
+            },
+            {
+              title: 'DASH',
+              path: 'manage/content_protection/dash',
+            },
             {
               title: 'Geoblocking',
               path: 'manage/content_protection/geoblocking',
@@ -174,6 +210,14 @@ const nav = {
               path: 'manage/content_protection/conditional_and_reverse_blackout',
             },
           ],
+        },
+        {
+          title: 'Clipping',
+          path: 'manage/clipping',
+        },
+        {
+          title: 'Health Notifications via Amazon SNS',
+          path: 'manage/health_notifications_via_amazon_sns',
         },
       ],
     },
@@ -203,8 +247,8 @@ const nav = {
               path: 'monetize/ads/freewheel',
             },
             {
-              title: 'Ad Insertion Data',
-              path: 'monetize/ads/ad_insertion_data',
+              title: 'Ad Debug',
+              path: 'monetize/ads/ad_debug',
             },
           ],
         },

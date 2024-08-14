@@ -300,9 +300,7 @@ Blackout may only be applied to assets that have been assigned a blackout ID (i.
 
 6. Click **Save**.
 
-## Tutorial
-
-# Setting up Blackout Tutorial
+## Tutorial  {/*tutorial*/}
 
 Learn how to set up Blackout and apply it to live linear channel programming.
 
@@ -319,7 +317,7 @@ Learn how to set up Blackout and apply it to live linear channel programming.
 4. Set up a media player.
 5. Apply Blackout to programming.
 
-## Introduction
+### Introduction  {/*introduction*/}
 
 Blackout is designed to limit the distribution of restricted content, such as sporting events, movies, and other types of licensed content. Instead of the regularly scheduled program, content from an alternate source will be broadcast to blacked out viewers.
 
@@ -331,7 +329,7 @@ Blackout provides the means to:
 - Tailor the set of blacked out viewers to meet your business needs.
 - Easily define alternate programming for blacked out viewers.
 
-### Step 1: Create an Audience
+### Step 1: Create an Audience  {/*step-1*/}
 
 A blackout zone defines a region by zip code, market (DMA), or IP address/subnet. This blackout zone may then be leveraged when defining how Blackout may be applied to a live linear channel.
 
@@ -347,7 +345,7 @@ A blackout zone defines a region by zip code, market (DMA), or IP address/subnet
 10. Click **Add** to add the Los Angeles market to the audience.
 11. Click **Save** to update the audience configuration with these changes.
 
-### Step 2: Define a Blackout Rule
+### Step 2: Define a Blackout Rule  {/*step-2*/}
 
 Defining a blackout rule does not automatically apply Blackout to a live linear channel. Blackout must be enabled on a per program or asset basis.
 
@@ -362,7 +360,7 @@ Defining a blackout rule does not automatically apply Blackout to a live linear 
 7. From the **Available Audiences** list, select "Los Angeles" and then click **Select**.
 8. Click **Save** to apply your changes to the blackout rule.
 
-### Step 3: Prepare a Live Channel for Blackout
+### Step 3: Prepare a Live Channel for Blackout  {/*step-3*/}
 
 Setting up Blackout on a live channel requires defining when and how blackout is applied by assigning it a blackout ID and rule.
 
@@ -376,7 +374,7 @@ Setting up Blackout on a live channel requires defining when and how blackout is
 8. Click **Done**.
 9. Click **Save** to apply your changes to the live channel.
 
-### Step 4: Set up a Media Player
+### Step 4: Set up a Media Player  {/*step-4*/}
 
 The enforcement of Blackout is only possible when a media player loads the Blackout replacement plugin. Load this plugin by adding "repl=aboi" as a query string to the playback URL.
 
@@ -390,7 +388,7 @@ The following sample URL corresponds to a test player:
 
 Modify the playback URL defined within your media player to include the following query string parameter: `repl=aboi`
 
-### Step 5: Apply Blackout to Programming
+### Step 5: Apply Blackout to Programming  {/*step-5*/}
 
 Blackout may only be applied to live linear channel programming that has been assigned a blackout rule ID. One method for assigning a blackout rule ID is to set the `blackout_id` metadata field to the desired blackout ID. This tutorial leverages the [content_start](https://docs.edgecast.com/video/Content/Develop/Live-Slicer-API.htm#contentstart) method to start a new program in the live linear channel and apply this metadata field to it.
 
@@ -406,8 +404,8 @@ Blackout may only be applied to live linear channel programming that has been as
     - From the [Content tab](https://cms.uplynk.com/static/cms2/index.html#/content), verify that the asset currently being generated is called "Los Angeles Home Game" and then select it.
     - Verify that this asset contains a `blackout_id` metadata field set to `LA-Sports`.
 
-    3. Verify that Blackout is currently being applied to the live linear channel.
-    - **DMA Override**: If you are not testing from Los Angeles, override the test player's DMA to the Los Angeles market by appending the following query string parameter to the playback URL launched in the [Step 4: Setting up a Media Player](#set-up-a-media-player) section: `repl.cbdma=803`
+3. Verify that Blackout is currently being applied to the live linear channel.
+    - **DMA Override**: If you are not testing from Los Angeles, override the test player's DMA to the Los Angeles market by appending the following query string parameter to the playback URL launched in the [Step 4: Setting up a Media Player](#step-4) section: `repl.cbdma=803`
       - **Sample playback URL**:<br />`https://content.uplynk.com/player5/6ZpnSRiEmjj3fMdnzDaV00sc.html?repl=aboi&repl.cbdma=803`
     - Wait 30 to 60 seconds and then verify that the media player now streams slate.
 

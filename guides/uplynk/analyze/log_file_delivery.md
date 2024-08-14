@@ -115,7 +115,7 @@ Indicates that an event beacon was sent to an ad server.
 
 | Field | Description |
 |---|---|
-| group ID | Indicates an ID that identifies multiple URLs that correspond to a single event. For example, multiple impressions may be sent to various ad servers (e.g., Google Ad Manager, FreeWheel, and Verizon Media Ad Platform Video SSP) for a single ad. |
+| group ID | Indicates an ID that identifies multiple URLs that correspond to a single event. For example, multiple impressions may be sent to various ad servers (e.g., Google Ad Manager, FreeWheel) for a single ad. |
 | session ID | Indicates a unique playback session ID.<br />Learn more about this [playback session (session_created)](#session-created). |
 | ad asset ID | Indicates the asset ID corresponding to the ad that was played.<br />Value for non-ads (e.g., slot impression): `-` |
 | event description | Indicates the type of event. Valid values are:<br />`videoview \| slotimpression \| defaultimpression \| start \| firstquartile \| midpoint \| thirdquartile \| complete` |

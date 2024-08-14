@@ -69,7 +69,7 @@ Upon creating a CSL slicer, you must associate it with an ingest point from whic
    - **NOT_IN_USE**: Proceed to the next step.
 3. Click on the desired ingest point.
 4. Click **Delete Ingest Point**.
-5. Click **Yes, Delete** to confirm the deletion.
+5. Click **Yes** > **Delete** to confirm the deletion.
 
 ## Cloud Slicer Live Administration  {/*cloud-slicer-live-administration*/}
 
@@ -96,7 +96,7 @@ Before creating a CSL slicer, you must first perform the following steps:
 
     [Learn more](#slicer-configuration-file).
 
-- Our service manages certain slicer configuration settings. You should not manually assign these [reserved settings](#reserved-slicer-settings) to your CSL slicer.
+- Our service manages certain slicer configuration settings. You should not manually assign these [reserved settings](#reserved-slicer-config) to your CSL slicer.
 
 ### Create a CSL Slicer  {/*create-slicer*/}
 
@@ -108,7 +108,7 @@ Before creating a CSL slicer, you must first perform the following steps:
    - Click **Save**.
     - RTP, SRT, and RIST
         - In the **Source IP Address** option, type the IP address from which your feed will be pushed. Our service will only ingest feeds served from this IP address. Allow your feed to be pushed from any IP address by setting this option to `0.0.0.0`.
-        - Regardless of how this setting is configured, the encoder pushing the feed to our service must authenticate to our service by passing the CSL slicer's streaming key. <br />[Learn more](#SRT).
+        - Regardless of how this setting is configured, the encoder pushing the feed to our service must authenticate to our service by passing the CSL slicer's streaming key. <br />[Learn more](#encoder).
 
 4. From the **Slicer Software Version** section, assign a slicer software version to the CSL slicer.
    - Click **Select Version**.
@@ -233,7 +233,7 @@ You may import a slicer configuration file when defining your CSL slicer's slice
 
 #### Colon-Separated Values (Live Slicer Configuration File)  {/*csv*/}
 
-You may define slicer configuration settings using the same format as a Live Slicer configuration file. Specify each [desired setting](#confiuration-settings) on a separate line.
+You may define slicer configuration settings using the same format as a Live Slicer configuration file. Specify each [desired setting](/uplynk/acquire/live/on_prem_slicer/#configuration-file-settings) on a separate line.
 
 **Syntax**: "*\{Setting\}*": "*\{Value\}*"
 

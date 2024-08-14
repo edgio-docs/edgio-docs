@@ -11,7 +11,7 @@ Add audio/video content to a live channel via the following methods:
 - **Live Slicer**: Verify that the slicer ID defined in the desired live channel is a case-sensitive match to the one defined in the [Live Slicer configuration file](/uplynk/deliver/live/on_prem_slicer/#configure-the-live-slicer) (`/etc/uplynk.conf`). This allows the Live Slicer's output to be automatically added to the live channel's timeline.
 - **API**: Add pre-encoded content and/or live content from multiple Live Slicers to a live channel via our [Channel API](https://docs.edgecast.com/video/Content/Develop/Channel.htm).
 
-**Key Information:**
+**Key Information**
 
 - Stream a feed by pointing a media player to the live channel's [playback URL](/uplynk/delivery/playback_urls). Additionally, quickly embed a media player within a web page by leveraging a live channel's HTML code.
 - Test playback by leveraging a restriction-free media player associated with a live channel.
@@ -129,14 +129,14 @@ Each schedule entry consists of the following elements:
 - **Content**: A schedule entry's content varies by type:
   - **Ad Break**: During playback, an upcoming ad break will trigger your player to issue a request for ads. An ad decision server may then serve dynamic ads which are automatically inserted into the scheduled ad break.
   - **Asset**: This type of schedule entry consists of an asset and the ad breaks that have been inserted into it. Dynamic ads may be inserted into those ad breaks during playback as described above.
+
     <Info>View an asset's ad breaks from the **Ad Breaks** tab. The **Offset** column indicates when each ad break will start relative to the start of the asset. For example, an offset of `00:10:30` indicates that the ad break will start 10 minutes and 30 seconds into the asset.</Info>
+
     <Info>Insert ad breaks into an asset while encoding it. For example, use the [break parameter](/uplynk/acquire/vod/add_content/#options) to insert one or more ad breaks when encoding content via the Slicer.</Info>
 
   - **Slicer**: This type of schedule entry consists of the live feed from a specific Live Slicer. You may only schedule another user's Live Slicer if it is streaming to a library shared with your account.
 
-<Tip>Add a playlist to insert the assets and ad breaks associated with it into your live channel's schedule. These assets and ad breaks are inserted in sequential order starting from the selected start time.
-
-Once you have added a playlist to your schedule, you may modify or delete each schedule entry as needed. Modifying or deleting a schedule entry will not affect any other schedule entry or the original playlist. Additionally, modifying or deleting the original playlist will not affect your live channel's schedule.</Tip>
+<Tip>Add a playlist to insert the assets and ad breaks associated with it into your live channel's schedule. These assets and ad breaks are inserted in sequential order starting from the selected start time.<br />Once you have added a playlist to your schedule, you may modify or delete each schedule entry as needed. Modifying or deleting a schedule entry will not affect any other schedule entry or the original playlist. Additionally, modifying or deleting the original playlist will not affect your live channel's schedule.</Tip>
 
 <Info>Information describing a schedule entry is available for 30 days after it ends.</Info>
 

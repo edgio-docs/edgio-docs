@@ -217,141 +217,163 @@ You may customize how rules that run in [production mode](#enforcement-mode) wil
 
 </Callout>
 
-The available enforcement actions are described below.
--   **Alert Only:** Rate limited requests or detected threats will only generate an alert.
+The available enforcement actions are:
+
+-   [Alert Only](#alert-only)
+-   [Block Request](#block-request)
+-   [Custom Response](#custom-response)
+-   [Drop Request](#drop-request)
+-   [Redirect](#redirect--http-302-)
+-   [Silent Close](#silent-close)
+
+#### Alert Only{/*alert-only*/} 
+
+Rate limited requests or detected threats will only generate an alert.
+
+**Best Practices:**
+
+Our recommendation for testing new configurations varies by the type of security rule:
+
+-   **Rate Rules:** Use the `Alert Only` enforcement action.
+
+    {{ PRODUCT }} {{ PRODUCT_SECURITY }} will continue evaluating a request that triggers an alert due to a rate rule violation.
+
+-   **All Other Types:** Use [audit mode](#enforcement-mode).
+
+    {{ PRODUCT }} {{ PRODUCT_SECURITY }} applies a single enforcement action per mode (i.e., [production or audit](#enforcement-mode)). Once enforcement is triggered for that mode, {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further [evaluation of that request](/applications/security/waf#threat-detection). If you are setting up a rule in production mode, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.
+
+#### Block Request{/*block-request*/}
+
+Detected threats will be dropped and the client will receive a `403 Forbidden` response.
+
+#### Custom Response{/*custom-response*/} 
+
+Rate limited requests or detected threats will receive a custom response.
+-   **Response Body:** Define the payload that will be delivered to the client in response to a detected threat.
 
     <Callout type="tip">
 
-      Our recommendation for testing new configurations is to use [audit mode](#enforcement-mode) instead of applying the `Alert Only` enforcement action to a rule running in production mode.
+      This option supports the use of [event variables](#event-variables) to customize the response according to the detected threat.
+
+    </Callout>
+
+    **Sample payload for a CSS file:**
+
+    ```
+    body {
+
+        background-color: #ffffff;
+    }
+    ```
+
+-   **HTTP Status Code:** Defines the HTTP status code that will be sent to the client.
+
+    <details>
+      <summary>View valid status codes.</summary>
+
+      -   100
+      -   101
+      -   102
+      -   200
+      -   201
+      -   202
+      -   203
+      -   204
+      -   205
+      -   206
+      -   207
+      -   208
+      -   226
+      -   300
+      -   301
+      -   302
+      -   303
+      -   304
+      -   305
+      -   306
+      -   307
+      -   308
+      -   400
+      -   401
+      -   402
+      -   403
+      -   404
+      -   405
+      -   406
+      -   407
+      -   408
+      -   409
+      -   410
+      -   411
+      -   412
+      -   413
+      -   414
+      -   415
+      -   416
+      -   417
+      -   421
+      -   422
+      -   423
+      -   424
+      -   426
+      -   428
+      -   429
+      -   431
+      -   451
+      -   500
+      -   501
+      -   502
+      -   503
+      -   504
+      -   505
+      -   507
+      -   508
+      -   509
+      -   510
+      -   511
+
+    </details>
+
+-   **Custom Response Headers:** Defines one or more response headers that will be sent to the client. Add a custom response header by clicking **+ Add Response Header**, setting the **Name** option to the name of the response header, and then setting the **Value** option to the response header value.
+
+    <Callout type="tip">
+
+      This option supports the use of [event variables](#event-variables) to customize the response according to the detected threat.
 
     </Callout>
 
     <Callout type="info">
 
-      {{ PRODUCT }} {{ PRODUCT_SECURITY }} applies a single enforcement action per mode (i.e., [production or audit](#enforcement-mode)). Once enforcement is triggered for that mode, {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further [evaluation of that request](/applications/security/waf#threat-detection). If you are setting up a rule in production mode, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.
-
-    </Callout>
--   **Block Request:** Detected threats will be dropped and the client will receive a `403 Forbidden` response.
--   **Custom Response:** Rate limited requests or detected threats will receive a custom response.
-    -   **Response Body:** Define the payload that will be delivered to the client in response to a detected threat.
-
-        <Callout type="tip">
-
-          This option supports the use of [event variables](#event-variables) to customize the response according to the detected threat.
-
-        </Callout>
-
-        **Sample payload for a CSS file:**
-
-        ```
-        body {
-
-            background-color: #ffffff;
-        }
-        ```
-
-    -   **HTTP Status Code:** Defines the HTTP status code that will be sent to the client.
-
-        <details>
-          <summary>View valid status codes.</summary>
-
-          -   100
-          -   101
-          -   102
-          -   200
-          -   201
-          -   202
-          -   203
-          -   204
-          -   205
-          -   206
-          -   207
-          -   208
-          -   226
-          -   300
-          -   301
-          -   302
-          -   303
-          -   304
-          -   305
-          -   306
-          -   307
-          -   308
-          -   400
-          -   401
-          -   402
-          -   403
-          -   404
-          -   405
-          -   406
-          -   407
-          -   408
-          -   409
-          -   410
-          -   411
-          -   412
-          -   413
-          -   414
-          -   415
-          -   416
-          -   417
-          -   421
-          -   422
-          -   423
-          -   424
-          -   426
-          -   428
-          -   429
-          -   431
-          -   451
-          -   500
-          -   501
-          -   502
-          -   503
-          -   504
-          -   505
-          -   507
-          -   508
-          -   509
-          -   510
-          -   511
-
-        </details>
-
-    -   **Custom Response Headers:** Defines one or more response headers that will be sent to the client. Add a custom response header by clicking **+ Add Response Header**, setting the **Name** option to the name of the response header, and then setting the **Value** option to the response header value.
-
-        <Callout type="tip">
-
-          This option supports the use of [event variables](#event-variables) to customize the response according to the detected threat.
-
-        </Callout>
-
-        <Callout type="info">
-
-          All characters, including spaces, will be treated as a part of the specified header name or value, respectively.
-
-        </Callout>
-
--   **Drop request:** Rate rules only. Rate limited requests will be dropped and the client will receive the following response:
-
-    -   **HTTP status code:** `503 Service Unavailable`
-    -   **Response header:** `Retry-After: 10 seconds`
-
-    <Callout type="info">
-
-      The `Retry-After` response header provides a hint to the client as to when service may resume.
+      All characters, including spaces, will be treated as a part of the specified header name or value, respectively.
 
     </Callout>
 
--   **Redirect (HTTP 302):** Rate limited requests or detected threats will be redirected to the specified URL.
+#### Drop request{/*drop-request*/} 
 
-    **Key information:**
-    -   The HTTP status code for this response will be a `302 Found`.
-    -   Set the **URL** option to the full URL to which rate limited requests or detected threats will be redirected.
+Rate rules only. Rate limited requests will be dropped and the client will receive the following response:
 
-        **Example:** `http://cdn.mydomain.com/marketing/busy.html`
+-   **HTTP status code:** `503 Service Unavailable`
+-   **Response header:** `Retry-After: 10 seconds`
 
--   **Silent Close:** {{ PRODUCT }} Premier only. Drops the request without providing a response to the client.
+<Callout type="info">
+
+  The `Retry-After` response header provides a hint to the client as to when service may resume.
+
+</Callout>
+
+#### Redirect (HTTP 302){/*redirect--http-302-*/} 
+
+Rate limited requests or detected threats will be redirected to the specified URL.
+
+**Key information:**
+-   The HTTP status code for this response will be a `302 Found`.
+-   Set the **URL** option to the full URL to which rate limited requests or detected threats will be redirected.
+
+    **Example:** `http://cdn.mydomain.com/marketing/busy.html`
+
+#### Silent Close{/*silent-close*/} 
+
+{{ PRODUCT }} Premier only. Drops the request without providing a response to the client.
 
 ### Event Variables {/*event-variables*/}
 
@@ -378,6 +400,21 @@ Each detected threat is logged regardless of enforcement action (i.e., block, cu
 Sensitive data  (e.g., credit card information or passwords) can be redacted from our event logs.
 
 [Learn how to redact sensitive data.](/applications/security/managed_rules#redacting-sensitive-data)
+
+## Origin Signaling {/*origin-signaling*/}
+
+{{ PRODUCT }} can add custom headers to requests that meet the following conditions:
+
+-   {{ PRODUCT }} {{ PRODUCT_SECURITY }} generated an alert for the request. All other enforcement actions prevent {{ PRODUCT }} from communicating with the origin server. 
+-   The request was forwarded to an origin server because it could not be served from cache.
+
+These custom headers may return any of the following information:
+
+-   **Known Bot:** Returns `1` if the request was categorized as a known bot. Otherwise, returns `0`.
+-   **Bot Score:** Indicates the request's bot score. This score indicates our level of confidence that the request originated from a bot.
+-   **WAF Score:** Indicates the request's anomaly score. This score is determined by the number of rules that were violated and their severity.
+
+Set up origin signaling by enabling the `Origin Signal Header` section within the desired Security App configuration and then defining the custom headers that will be included with requests forwarded to an origin. 
 
 ## Order of Precedence {/*order-of-precedence*/}
 
@@ -505,12 +542,6 @@ You may create, modify, and delete Security App configurations.
 
         [Learn more.](#enforcement)
 
-        <Callout type="important">
-
-          {{ PRODUCT }} {{ PRODUCT_SECURITY }} does not perform further [evaluation of a request](/applications/security/waf#threat-detection) once enforcement is triggered. For this reason, we recommend that you limit your use of the `Alert Only` enforcement to the shortest amount of time necessary to validate changes to your configuration.
-
-        </Callout>
-
     5.  From the **Time period** option, select the time period for which the action selected in the next step will be applied to clients that exceed the rate limit defined in the rate rule selected in step 9.2.
 
         <Callout type="info">
@@ -604,9 +635,14 @@ You may create, modify, and delete Security App configurations.
     
     </Info>
 
-16. Click **Save**.
-17. Click **Accept All Changes**.
-18. Click **Save Changes**.
+16. Optional. Set up [origin signaling](#origin-signaling). 
+    1.  Enable the **Origin Signal Header** section.
+    2.  From the **Header Name** option, assign a name for the desired custom header that will be included with requests forwarded to an origin.
+    3.  From the **Select Type** option, select the type of information that will be reported by that custom header.
+    4.  Optional. Add another custom request header by clicking **+ Add  Header** and then repeating steps 2 and 3.
+17. Click **Save**.
+18. Click **Accept All Changes**.
+19. Click **Save Changes**.
 
 **To reorder Security App configurations**
 1.  Navigate to the **Security App** page.
@@ -651,6 +687,12 @@ Version control allows you to:
 -   View a previous version of your Security App configuration.
 -   Reactivate a previous version of your Security App configuration.
 -   Compare a previous version of your Security App configuration to the current version.
+
+<Info>
+
+{{ PRODUCT }} {{ PRODUCT_SECURITY }} Premier and Business support a rolling window of up to 200 versions, while {{ PRODUCT }} {{ PRODUCT_SECURITY }} Essentials and Insights is restricted to a rolling window of up to 100 versions.
+
+</Info>
 
 An advantage of using version control is that it allows you to quickly roll back to a previously vetted configuration. For example, if you notice that a new configuration has resulted in more false positives, then you can roll back to the previous version before analyzing the data.
 

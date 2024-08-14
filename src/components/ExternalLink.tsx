@@ -7,6 +7,25 @@ const ExternalLinkWrapper = styled.a`
   display: inline-flex;
   align-items: center;
   text-decoration: none;
+
+  color: #2993e0;
+  font-weight: 600;
+
+  // ::after {
+  //   content: '';
+  //   position: absolute;
+  //   bottom: 0;
+  //   height: 1px;
+  //   left: 0;
+  //   background: #2993e0;
+  //   width: 0;
+  //   transform: translateY(2px);
+  //   transition: width 0.2s ease-in-out;
+  // }
+
+  // &:hover::after {
+  //   width: 100%;
+  // }
 `;
 
 const ExternalLinkIcon = styled.span`

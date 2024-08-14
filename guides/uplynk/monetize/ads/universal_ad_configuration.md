@@ -4,7 +4,7 @@ title: Universal Ad Configuration
 
 Use the Universal Ad Config to integrate ads from your own third-party ad provider into your content. <br /> [Learn how to get started](/uplynk/monetize/ads/#setup-overview).
 
-## Requirements
+## Requirements  {/*requirements*/}
 
 Universal Ad Config requires a third-party ad provider that supports:
 
@@ -21,7 +21,7 @@ Universal Ad Config requires a third-party ad provider that supports:
 
     Enabling the `vast_vod` parameter on a VOD playback session allows our service to create a VMAP template and manage all of the ad requests within that VOD asset across all ad breaks.
 
-## Passthrough Parameters
+## Passthrough Parameters  {/*passthrough-parameters*/}
 
 Use this prefix to pass known ad parameters to the ad server: `ad.pt.<PARAMETER>=<VALUE>`
 
@@ -31,7 +31,7 @@ If an ad server expects a campaign ID (e.g., 1234) to be passed through the `c_i
 
 Uplynk will then pass the following query string parameter in the ad request: `c_id=1234`
 
-## Macros
+## Macros  {/*macros*/}
 
 Use macros when the value of an ad parameter is unknown during ad configuration setup or playback. Uplynk will replace the following macros with data that is specific to the current playback session:
 
@@ -59,7 +59,7 @@ Add the following query string parameter to the playback URL to pass the ad brea
 
 If the Live Slicer requests a 90-second ad break, Uplynk will pass the following query string parameter in the ad request: `break_dur=90.0`
 
-### Pass First Valid
+### Pass First Valid  {/*pass-first-valid*/}
 
 Use the **Pass First Valid** prefix to define a default value that will be passed when a macro does not resolve to a value. This prefix instructs Uplynk to pass the first valid value from a comma-delimited list.
 

@@ -355,6 +355,50 @@ const EdgioAnswers = () => {
     DocsbotConfig | undefined
   >();
 
+  /**
+   * Adds a chat message to the messages state.
+   * @param message - The message to add.
+   * @returns void
+   */
+  const addChatMessage = (message: IMessage, reset = false) => {
+    setMessages((prevMessages) => {
+      const messages = reset ? [] : [...prevMessages];
+      return [...messages, message];
+    });
+  };
+
+  /**
+   * Updates a chat message at a specific index.
+   * @param index - The index of the message to update; use -1 to update the last message.
+   * @param message - The updated message.
+   * @returns void
+   */
+  const updateChatMessage = (index: number, message: IMessage) => {
+    setMessages((prevMessages) => {
+      // If the index is -1, update the last message
+      if (index === -1) {
+        index = prevMessages.length - 1;
+      }
+
+      const existingMessage = prevMessages[index];
+      let existingContent = existingMessage.content;
+
+      // `content` will be appended to the existing message content for stream messages
+      if (message.content && message.type === 'stream') {
+        existingContent = existingContent + message.content;
+      }
+
+      return [
+        ...prevMessages.slice(0, -1),
+        {
+          ...existingMessage,
+          ...message,
+          content: existingContent,
+        },
+      ];
+    });
+  };
+
   // Initialize the chat channel once the config is established
   useEffect(() => {
     if (ws) {
@@ -537,50 +581,6 @@ const EdgioAnswers = () => {
       setIsAwaitingResponse(true);
       setQuery('');
     }
-  };
-
-  /**
-   * Adds a chat message to the messages state.
-   * @param message - The message to add.
-   * @returns void
-   */
-  const addChatMessage = (message: IMessage, reset = false) => {
-    setMessages((prevMessages) => {
-      const messages = reset ? [] : [...prevMessages];
-      return [...messages, message];
-    });
-  };
-
-  /**
-   * Updates a chat message at a specific index.
-   * @param index - The index of the message to update; use -1 to update the last message.
-   * @param message - The updated message.
-   * @returns void
-   */
-  const updateChatMessage = (index: number, message: IMessage) => {
-    setMessages((prevMessages) => {
-      // If the index is -1, update the last message
-      if (index === -1) {
-        index = prevMessages.length - 1;
-      }
-
-      const existingMessage = prevMessages[index];
-      let existingContent = existingMessage.content;
-
-      // `content` will be appended to the existing message content for stream messages
-      if (message.content && message.type === 'stream') {
-        existingContent = existingContent + message.content;
-      }
-
-      return [
-        ...prevMessages.slice(0, -1),
-        {
-          ...existingMessage,
-          ...message,
-          content: existingContent,
-        },
-      ];
-    });
   };
 
   /**

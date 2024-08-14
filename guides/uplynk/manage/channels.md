@@ -4,7 +4,7 @@ title: Channels
 
 A live channel represents a live linear stream that adheres to a timeline that identifies content and when it should be played.
 
-## Setup
+## Setup  {/*setup*/}
 
 Add audio/video content to a live channel via the following methods:
 
@@ -24,7 +24,7 @@ Add audio/video content to a live channel via the following methods:
 
 Click **Save** to apply your changes to your live channel's configuration.
 
-### Create a Live Channel
+### Create a Live Channel  {/*create-a-live-channel*/}
 
 1. Navigate to the [Live Channels page](https://cms.uplynk.com/static/cms2/index.html#/live-channels) via **Channels** from the main menu.
 
@@ -51,7 +51,7 @@ From the **Details** tab of the **Live Channels** record, select the **Playback 
 
 <Info>Use two-second slices. Slates must be encoded to 2 seconds. Playback latency options cannot currently be used with Time Shifting. Contact Support if you do not see the Playback Latency feature.</Info>
 
-### Delete a Live Channel
+### Delete a Live Channel  {/*delete-a-live-channel*/}
 
 1. Navigate to the [Live Channels page](https://cms.uplynk.com/static/cms2/index.html#/live-channels) via **Channels** from the main menu.
 
@@ -59,7 +59,7 @@ From the **Details** tab of the **Live Channels** record, select the **Playback 
 
 3. When prompted to confirm, click **Delete**.
 
-### Assign a Failover Group to a Live Channel
+### Assign a Failover Group to a Live Channel  {/**/}
 
 <Info>A prerequisite for this procedure is a failover group. [Learn more](/uplynk/deliver/live/failover).</Info>
 
@@ -81,7 +81,7 @@ From the **Details** tab of the **Live Channels** record, select the **Playback 
 
 7. Click **Save**.
 
-## Ad Breaks and Content Replacement
+## Ad Breaks and Content Replacement  {/*ad-breaks-and-content-replacement*/}
 
 Insert ad breaks or replace content within your live feed via the following methods:
 
@@ -95,7 +95,7 @@ Insert ad breaks or replace content within your live feed via the following meth
 
 <Info>Upon encountering an ad break command or a content replacement command, the Live Slicer will enter a blackout state and stop capturing the live signal for a specified amount of time. This will cause a gap in the live stream. This gap may be automatically filled at playout with an asset or dynamic ads.</Info>
 
-### Schedule Ad Breaks and Assets
+### Schedule Ad Breaks and Assets  {/*schedule-ad-breaks-and-assets*/}
 
 Certain features are incompatible with live channels that support schedule entries. [Learn more](#restrictions).
 
@@ -105,13 +105,13 @@ Schedule ad breaks, assets, and Live Slicers within your live channel's timeline
 
 ![Schedule Entries](/images/uplynk/schedule-entries.png)
 
-### Enable Scheduling
+### Enable Scheduling  {/*enable-scheduling*/}
 
 Enable scheduling on a live channel during its creation by marking the **Enable Scheduling** option. You will see a calendar icon in the top right corner of the live channel's tile when scheduling is enabled.
 
 <Info>You cannot enable or disable the scheduling feature on existing live channels.</Info>
 
-### Schedule Entry Components
+### Schedule Entry Components  {/*schedule-entry-components*/}
 
 Each schedule entry consists of the following elements:
 
@@ -140,7 +140,7 @@ Once you have added a playlist to your schedule, you may modify or delete each s
 
 <Info>Information describing a schedule entry is available for 30 days after it ends.</Info>
 
-#### Add an Entry to Live Channel Schedule
+#### Add an Entry to Live Channel Schedule  {/*add-an-entry-to-live-channel-schedule*/}
 
 1. Navigate to **Live Channels**: Click the desired live channel. Click the **Schedule** tab.
     <Info>Live channels created without scheduling enabled have a **History** tab and no scheduling functionality.</Info>
@@ -180,7 +180,7 @@ If you would like to trim the beginning of the asset to fit within the current s
 
 7. Click **Add Asset**, **Add Ad Break**, **Add Slicer**, or **Add Playlist** to apply the above change(s).
 
-#### Modify a Schedule Entry
+#### Modify a Schedule Entry  {/*modify-a-schedule-entry*/}
 
 1. Navigate to the **Schedule** tab for the desired live channel:
    - Go to **Live Channels**.
@@ -198,7 +198,7 @@ If you would like to trim the beginning of the asset to fit within the current s
 
 4. Click **Update Asset**, **Update Ad Break**, or **Update Slicer** to save your changes.
 
-#### Replay Schedule Entries
+#### Replay Schedule Entries  {/*replay-schedule-entries*/}
 
 Use this feature to replay a live session during a specified time slot.
 
@@ -220,7 +220,7 @@ Use this feature to replay a live session during a specified time slot.
 
 4. Click **Add Replay** at the bottom left to save this entry and add it to the schedule.
 
-#### Reorder Schedule Entries
+#### Reorder Schedule Entries  {/*reorder-schedule-entries*/}
 
 1. Navigate to the **Schedule** tab for the desired live channel:
    - Go to **Live Channels**.
@@ -230,7 +230,7 @@ Use this feature to replay a live session during a specified time slot.
 
 3. The update is confirmed with a pop-up in the top right corner.
 
-#### Delete a Schedule Entry
+#### Delete a Schedule Entry  {/*delete-a-schedule-entry*/}
 
 1. Navigate to the **Schedule** tab for the desired live channel:
    - Go to **Live Channels**.
@@ -244,7 +244,7 @@ Use this feature to replay a live session during a specified time slot.
 3. Click **Delete**.
 4. When prompted, confirm the deletion by typing **DELETE** and then clicking **Delete**.
 
-#### Export a Schedule
+#### Export a Schedule  {/*export-a-schedule*/}
 
 This feature allows you to select fields from scheduled content to export to a `.csv` file, so you can quickly re-use the same schedule or share it with other stakeholders.
 
@@ -272,7 +272,7 @@ This feature allows you to select fields from scheduled content to export to a `
 
 5. Click **Export** to save the csv file to your system's default location.
 
-#### Import a Schedule
+#### Import a Schedule  {/*import-a-schedule*/}
 
 Use this feature to import a `.csv` file of an existing schedule to quickly add content to your channel. Importing a `.csv` file will override any content currently scheduled in the channel.
 
@@ -398,14 +398,14 @@ Use `h`, `m`, and `s` as shorthand for hours, minutes, and seconds, respectively
 **Example**<br />Use the following value to define a duration of 5 minutes and 30 seconds:
 `00:05:30`
 
-#### Restrictions
+#### Restrictions  {/*restrictions*/}
 
 The following capabilities are unsupported for live channels that can leverage schedule entries:
 
 - Blackout or reverse blackout
 - [Channel API](https://docs.edgecast.com/video/Content/Develop/Channel.htm) or the [replace_content endpoint](https://docs.edgecast.com/video/Content/Develop/Live-Slicer-API.htm#replacecontent)
 
-### Source Override
+### Source Override  {/*source-override*/}
 
 You may manually override a live channel's source to another Live Slicer. At any point, you may return the live channel to the schedule. This allows your viewers to join in progress (JIP) the regularly scheduled programming.
 
@@ -415,19 +415,19 @@ You may manually override a live channel's source to another Live Slicer. At any
 
 <Info>Overriding a live channel's source will not modify your schedule or your live channel's default Live Slicer.</Info>
 
-#### Manually Override a Live Channel's Source
+#### Manually Override a Live Channel's Source  {/*manually-override-live-channel-source*/}
 
 1. Load the desired live channel.
 2. From the right-hand pane, set the **Override Content** option to the [case-sensitive ID](/uplynk/acquire/live/on_prem_slicer/#configuration-file-settings) of the Live Slicer that will serve as the live channel's new source.
 3. Click **Yes, Override** to confirm that you would like to override the live channel's source.
 
-#### Stop Overriding a Live Channel's Source
+#### Stop Overriding a Live Channel's Source  {/*stop-overriding-live-channel-source*/}
 
 1. Load the desired live channel.
 2. From the right-hand pane, click **Return to Schedule**.
 3. Click **Yes, Return** to confirm that you would like to return to regularly scheduled programming.
 
-## REST APIs
+## REST APIs  {/*rest-apis*/}
 
 Leverage our REST APIs to automate Live Slicer behavior and to manage schedule entries.
 
@@ -444,18 +444,18 @@ Leverage our REST APIs to automate Live Slicer behavior and to manage schedule e
 
 <Tip>[Certain features are incompatible](#restrictions) with live channels that can leverage schedule entries.</Tip>
 
-## Syndication Publishing
+## Syndication Publishing  {/*syndication-publishing*/}
 
 Contact your account manager to activate Syndication Publishing.
 
 In addition to streaming content directly to your consumers, you may also simultaneously distribute it to multiple social media and content distribution platforms with minimal effort.
 
-### Set Up Syndication Publishing
+### Set Up Syndication Publishing  {/*set-up-syndication-publishing*/}
 
 1. Create a [publishing target](/uplynk/monetize/syndication/#publishing-target) for each desired social media or content distribution platform.
 2. [Publish to the desired platform(s)](/uplynk/monetize/syndication/#publishing) by associating the desired publishing target(s) with your live channel.
 
-## More Information
+## More Information  {/*more-information*/}
 
 - [Live Slicer Setup](/uplynk/acquire/live/on_prem_slicer)
 - [Latency](/uplynk/manage/channels/#latency)

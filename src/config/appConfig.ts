@@ -20,15 +20,19 @@ const announcements = importAnnouncements();
 
 type DynamicImport<T = any> = () => Promise<{default: T}>;
 
+export type DocsbotConfig = {
+  teamId: string;
+  botId: string;
+  prompt: string;
+  starterQuestions: string[];
+};
+
 export type ProductConfig = {
   pathPrefix: string;
   versions: {
     [version: string]: ProductVersionConfig;
   } & {default?: ProductVersionConfig};
-  edgioAnswers?: {
-    starterQuestions: string[];
-    contextStatement: string;
-  };
+  edgioAnswers?: DocsbotConfig;
 };
 
 export type ProductVersionConfig = {
@@ -105,13 +109,14 @@ export const productsConfig: ProductsConfig = {
       },
     },
     edgioAnswers: {
+      teamId: 'gQe050bzo1BngpQN3Ojp',
+      botId: 'diWYp40uSWLmoO5InSwd',
+      prompt: 'How can I help you with Applications?',
       starterQuestions: [
         'How do I get started with EdgeJS?',
         'How do I cache images/* at the edge for 1 hour?',
         'How do I prevent caching in the browser with EdgeJS?',
       ],
-      contextStatement:
-        'Only provide me with information about the Applications product.',
     },
   },
   uplynk: {
@@ -134,13 +139,14 @@ export const productsConfig: ProductsConfig = {
       },
     },
     edgioAnswers: {
+      teamId: 'gQe050bzo1BngpQN3Ojp',
+      botId: 'CKwkiEfdItVWfscHIA2m',
+      prompt: 'How can I help you with Delivery?',
       starterQuestions: [
         'What are the key features of Delivery?',
         'Create a Storage user.',
         'What reports can I find in Control?',
       ],
-      contextStatement:
-        'Only provide me with information about the Delivery product.',
     },
   },
   open_edge: {
@@ -163,12 +169,13 @@ export const productsConfig: ProductsConfig = {
       },
     },
     edgioAnswers: {
+      teamId: 'gQe050bzo1BngpQN3Ojp',
+      botId: 'DSS25EIxZJxe8wwWtd63',
+      prompt: 'Hi, how can I help you with Edgio?',
       starterQuestions: [
         'How do I configure caching for my Applications property?',
         'What does Delivery offer?',
       ],
-      contextStatement:
-        'Prioritize information for product-specific questions, but include general context if necessary.',
     },
   },
 };

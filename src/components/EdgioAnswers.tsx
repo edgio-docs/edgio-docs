@@ -4,7 +4,7 @@ import {FiSend, FiX} from 'react-icons/fi';
 import Modal from 'react-modal';
 import styled, {css} from 'styled-components';
 
-import {productsConfig, siteConfig} from 'config/appConfig';
+import {DocsbotConfig, productsConfig} from 'config/appConfig';
 import {getContextTypeByName, useAppContext} from 'contexts/AppContext';
 import {useEdgioAnswersContext} from 'contexts/EdgioAnswersContext';
 import {useTheme} from 'contexts/ThemeContext';
@@ -23,11 +23,11 @@ import Markdown from './MDX/Markdown';
 const RESET_ON_CLOSE = false;
 const ROUTE_HASH = '#edgio-answers';
 
-type MessageType = 'start' | 'stream' | 'end';
+type MessageType = 'start' | 'stream' | 'end' | 'error';
 interface IMessage {
   id?: string; // this is only available once the received message is finished
   type?: MessageType;
-  role?: 'user' | 'bot';
+  role?: 'user' | 'bot' | 'system';
   content: string;
   finished?: boolean;
 }
@@ -151,7 +151,14 @@ const MessageWrapper = styled.div<{isUser: boolean}>`
   margin: 10px;
 `;
 
-const Message = styled.div<{isUser: boolean}>`
+const SystemMessageWrapper = styled.div`
+  padding: 0;
+  border-radius: 5px;
+  background: var(--ea-system-message-bg);
+  margin: 10px;
+`;
+
+const Message = styled.div<{isUser: boolean; context: string}>`
   position: relative;
   margin: 1px;
   padding: 10px;
@@ -163,7 +170,8 @@ const Message = styled.div<{isUser: boolean}>`
   border-radius: 5px;
 
   &::before {
-    content: ${({isUser}) => (isUser ? "'You'" : "'Edgio Answers'")};
+    content: ${({isUser, context}) =>
+      isUser ? "'You'" : `'Edgio Answers - ${context}'`};
     position: absolute;
     top: -10px;
     ${({isUser}) => (isUser ? 'right: 10px;' : 'left: 10px;')}
@@ -176,6 +184,15 @@ const Message = styled.div<{isUser: boolean}>`
     padding: 0 5px;
     border-radius: 5px;
   }
+`;
+
+// Horizontal line with text centered, small font size, and light color. used for system messages
+const SystemMessage = styled.div`
+  text-align: center;
+  font-size: 12px;
+  color: var(--ea-system-message-color);
+  padding: 10px 0;
+  border-top: 1px solid var(--border-primary);
 `;
 
 const QuestionButton = styled.button`
@@ -215,9 +232,9 @@ const MessageContent = styled.div`
   .article-text {
     font-size: 14px;
     margin: 10px auto;
-    .text-link {
-      display: inline-block;
-    }
+    // .text-link {
+    //   display: inline-block;
+    // }
   }
 `;
 
@@ -266,10 +283,6 @@ const DisclaimerContainer = styled.div`
   color: var(--ea-input-placeholder-color);
   padding: 10px;
 
-  a {
-    display: inline-block;
-  }
-
   p {
     color: var(--text-primary);
     margin-top: 10px;
@@ -277,12 +290,6 @@ const DisclaimerContainer = styled.div`
     border: 1px solid var(--border-primary);
     background: var(--bg-secondary);
   }
-`;
-
-const ShowMoreLink = styled.a`
-  color: var(--text-link);
-  cursor: pointer;
-  margin-left: 5px;
 `;
 
 const WidgetContainer = styled.div`
@@ -293,6 +300,14 @@ const WidgetContainer = styled.div`
   z-index: 100;
 `;
 
+const SYSTEM_MESSAGES = {
+  applications: 'Now answering questions about Applications.',
+  delivery: 'Now answering questions about Delivery.',
+  uplynk: 'Now answering questions about Uplynk.',
+  open_edge: 'Now answering questions about Open Edge.',
+  home: 'Now answering questions across all Edgio services.',
+};
+
 function Disclaimer() {
   const [showFullDisclaimer, setShowFullDisclaimer] = useState(false);
 
@@ -302,22 +317,9 @@ function Disclaimer() {
 
   return (
     <DisclaimerContainer>
-      <>
-        By submitting, you consent to sharing this text with Fireaw.ai for
-        processing.
-      </>
-      <ShowMoreLink className="text-link" onClick={toggleDisclaimer}>
-        <div>{showFullDisclaimer ? 'Show less...' : 'Show more...'}</div>
-      </ShowMoreLink>
-      {showFullDisclaimer && (
-        <p>
-          Edgio uses a third party,{' '}
-          <Link href="https://fireaw.ai">Fireaw.ai</Link>, to process the text
-          you enter in this prompt. Only the text you enter here will be sent to
-          Fireaw.ai for processing.{' '}
-          <>By submitting, you consent to sharing this text with Fireaw.ai.</>
-        </p>
-      )}
+      Edgio Answers uses AI and makes mistakes.{' '}
+      <Link href="https://edg.io/company/legal/terms-of-service/">Terms</Link> |{' '}
+      <Link href="https://edg.io/company/legal/privacy-policy/">Privacy</Link>
     </DisclaimerContainer>
   );
 }
@@ -334,9 +336,9 @@ const defaultPlaceholder = 'Ask Edgio Answers...';
 
 const EdgioAnswers = () => {
   const {context} = useAppContext();
+  const [prevContext, setPrevContext] = useState<string | null>(null);
   const {themedValue} = useTheme();
   const chatInputRef = useRef<HTMLInputElement>(null);
-  const {chatbotId, apiToken} = siteConfig.fireawai;
   const [ws, setWs] = useState<WebSocket | null>(null);
   const [messages, setMessages] = useState<IMessage[]>([]);
   const [history, setHistory] = useState<string[]>([]);
@@ -349,18 +351,64 @@ const EdgioAnswers = () => {
     setStarterQuestions,
     closeModal,
   } = useEdgioAnswersContext();
-
-  // TODO this needs to change based on the current product
-  const teamId = 'gQe050bzo1BngpQN3Ojp';
-  const botId = 'diWYp40uSWLmoO5InSwd';
-
   const isLoaded = useHydrationIsLoaded();
+  const [docsbotConfig, setDocsbotConfig] = useState<
+    DocsbotConfig | undefined
+  >();
+
+  // Initialize the chat channel once the config is established
+  useEffect(() => {
+    if (ws) {
+      ws.close();
+    }
+
+    if (docsbotConfig) {
+      initializeWebSocket(docsbotConfig);
+    }
+
+    return () => {
+      if (ws) {
+        ws.close();
+      }
+    };
+  }, [docsbotConfig]);
+
+  // Set the config based on the context
+  useEffect(() => {
+    if (context && context !== prevContext) {
+      const config =
+        productsConfig[getContextTypeByName(context)]?.edgioAnswers;
+
+      setPrevContext(context);
+      setDocsbotConfig(config);
+      setStarterQuestions(config?.starterQuestions || []);
+      addChatMessage(
+        {
+          role: 'system',
+          content: SYSTEM_MESSAGES[context] || '',
+          type: 'end',
+          finished: true,
+        },
+        true
+      );
+      addChatMessage({
+        role: 'bot',
+        content: config?.prompt || '',
+        type: 'end',
+        finished: true,
+      });
+    }
+  }, [context]);
+
+  // If the current product isn't configured for Edgio Answers, return null
+  if (!context || !productsConfig[context]?.edgioAnswers) {
+    console.info('Edgio Answers is not configured for this product.');
+    return null;
+  }
+
   const placeholder = isAwaitingResponse
     ? 'Waiting for response...'
     : defaultPlaceholder;
-
-  // Used in the query to set the context expectation for the chatbot response
-  let contextStatement = '';
 
   if (isLoaded) {
     Modal.setAppElement('#__next');
@@ -379,126 +427,101 @@ const EdgioAnswers = () => {
    * If the chat channel is successfully connected, the starter questions are set if available.
    * Finally, the channel state and query state are updated.
    */
-  const initializeWebSocket = () => {
-    if (apiToken && chatbotId) {
-      const websocket = new WebSocket(
-        `wss://api.docsbot.ai/teams/${teamId}/bots/${botId}/chat`
-      );
+  const initializeWebSocket = (config: DocsbotConfig) => {
+    if (config) {
+      const {teamId, botId} = config;
 
-      websocket.onmessage = (event) => {
-        const {message, type}: IBotResponse = JSON.parse(event.data);
-        const isStart = type === 'start';
-        const isStreaming = type === 'stream';
-        const isFinished = type === 'end';
-        const role = 'bot';
+      if (teamId && botId) {
+        const websocket = new WebSocket(
+          `wss://api.docsbot.ai/teams/${teamId}/bots/${botId}/chat`
+        );
 
-        if (isStart) {
-          // `message` is a string of the initial response
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            {
-              type, // start
-              role,
-              content: message,
-            },
-          ]);
-        }
+        websocket.onmessage = (event) => {
+          const {message, type}: IBotResponse = JSON.parse(event.data);
+          const role = 'bot';
 
-        if (isStreaming) {
-          // `message` is a string of the word being streamed back
-          setMessages((prevMessages) => {
-            // Since we are in the streaming phase, the last message should be the one being streamed
-            const existingMessageIndex = prevMessages.length - 1;
+          switch (type) {
+            case 'start':
+              addChatMessage({
+                type,
+                role,
+                content: message,
+              });
+              break;
+            case 'stream':
+              const existingMessageIndex = messages.length - 1;
+              const existingMessage = messages[existingMessageIndex];
+              updateChatMessage(-1, {
+                type,
+                content: existingMessage.content + message,
+                finished: false,
+              });
+              break;
+            case 'end':
+              const botMessage: IBotMessage = JSON.parse(message);
+              const {id, answer, history} = formatMessageContent(botMessage);
 
-            const updatedMessages = [...prevMessages];
-            const existingMessage = updatedMessages[existingMessageIndex];
-            // Concatenate new content with existing content, if any
-            updatedMessages[existingMessageIndex] = {
-              ...existingMessage,
-              type, // stream
-              content: existingMessage.content + message,
-              finished: isFinished,
-            };
-            return updatedMessages;
-          });
-        }
+              setHistory(history);
 
-        if (isFinished) {
-          // `message` will be an object with the final response and sources
-          const botMessage: IBotMessage = JSON.parse(message);
-          const {id, answer, history} = formatMessageContent(botMessage);
+              updateChatMessage(-1, {
+                id,
+                type,
+                content: answer,
+                finished: true,
+              });
 
-          // Update the history which will be included in future requests
-          setHistory(history);
+              setIsAwaitingResponse(false);
+              setQuery('');
+              break;
+            case 'error':
+              addChatMessage({
+                type,
+                role: 'system',
+                content:
+                  'An unexpected error occurred. Please refresh the page and try again.',
+              });
+              // Prevent sending messages when an error occurs as this will also
+              // close the connection
+              setIsAwaitingResponse(true);
+              break;
+          }
+        };
 
-          // Update the message content with the final response
-          setMessages((prevMessages) => {
-            // Since we are in the finished phase, the last message should be the one being streamed
-            const existingMessageIndex = prevMessages.length - 1;
+        websocket.onopen = () => {
+          setWs(websocket);
+        };
 
-            const updatedMessages = [...prevMessages];
-            const existingMessage = updatedMessages[existingMessageIndex];
-            updatedMessages[existingMessageIndex] = {
-              ...existingMessage,
-              id,
-              type, // end
-              content: answer,
-              finished: true,
-            };
+        websocket.onclose = () => {
+          setWs(null);
+        };
 
-            return updatedMessages;
-          });
-
-          setIsAwaitingResponse(false);
-          setQuery('');
-        }
-      };
-
-      websocket.onopen = () => {
-        setWs(websocket);
-      };
-
-      websocket.onclose = () => {
-        setWs(null);
-      };
-
-      websocket.onerror = (error) => {
-        console.error('WebSocket error:', error);
-        setWs(null);
-      };
+        websocket.onerror = (error) => {
+          console.error('WebSocket error:', error);
+          setWs(null);
+        };
+      }
     }
   };
 
-  // Initialize the chat channel on mount
-  useEffect(() => {
-    if (!ws) {
-      initializeWebSocket();
-    }
-
-    if (context) {
-      const config = productsConfig[context];
-      contextStatement = config?.edgioAnswers?.contextStatement ?? '';
-      const questions = config?.edgioAnswers?.starterQuestions;
-      if (questions) {
-        setStarterQuestions(questions);
-      }
-    }
-
-    return () => {
-      if (ws) {
-        ws.close();
-      }
-    };
-  }, [apiToken, chatbotId, ws, context]);
-
-  // Stop the current channel and reconnect
+  /**
+   * Stops the current chat channel and reconnects with the current config.
+   * @returns void
+   */
   const stopAndReconnect = () => {
     if (ws) {
       ws.close();
-      initializeWebSocket();
+
+      if (docsbotConfig) {
+        initializeWebSocket(docsbotConfig);
+      }
     }
   };
 
+  /**
+   * Sends a message to the chat channel.
+   * @param msg - The message to send.
+   * @returns void
+   */
   const sendMessage = (msg?: string) => {
     if (query.trim() && ws && !isAwaitingResponse) {
       msg = query;
@@ -517,6 +540,43 @@ const EdgioAnswers = () => {
       setIsAwaitingResponse(true);
       setQuery('');
     }
+  };
+
+  /**
+   * Adds a chat message to the messages state.
+   * @param message - The message to add.
+   * @returns void
+   */
+  const addChatMessage = (message: IMessage, reset = false) => {
+    setMessages((prevMessages) => {
+      const messages = reset ? [] : [...prevMessages];
+      return [...messages, message];
+    });
+  };
+
+  /**
+   * Updates a chat message at a specific index.
+   * @param index - The index of the message to update; use -1 to update the last message.
+   * @param message - The updated message.
+   * @returns void
+   */
+  const updateChatMessage = (index: number, message: IMessage) => {
+    setMessages((prevMessages) => {
+      const updatedMessages = [...prevMessages];
+
+      // If the index is -1, update the last message
+      if (index === -1) {
+        index = updatedMessages.length - 1;
+      }
+
+      const existingMessage = updatedMessages[index];
+      updatedMessages[index] = {
+        ...existingMessage,
+        ...message,
+      };
+
+      return updatedMessages;
+    });
   };
 
   /**
@@ -574,6 +634,16 @@ const EdgioAnswers = () => {
                 .filter((message) => message.type !== 'start')
                 .map((message, index) => {
                   const isUser = message.role === 'user';
+                  const isSystem = message.role === 'system';
+
+                  if (isSystem) {
+                    return (
+                      <SystemMessageWrapper key={index}>
+                        <SystemMessage>{message.content}</SystemMessage>
+                      </SystemMessageWrapper>
+                    );
+                  }
+
                   return (
                     <MessageWrapper key={index} isUser={isUser}>
                       <Message isUser={isUser}>
@@ -730,6 +800,13 @@ export const EdgioAnswersInput = ({
 export default EdgioAnswers;
 export const EdgioAnswersWidget = () => {
   const {openModal} = useEdgioAnswersContext();
+  const {context} = useAppContext();
+
+  if (!context || !productsConfig[context]?.edgioAnswers) {
+    console.info('Edgio Answers is not configured for this product.');
+    return null;
+  }
+
   return (
     <WidgetContainer onClick={() => openModal()}>
       <IconEdgioAnswersWidget />

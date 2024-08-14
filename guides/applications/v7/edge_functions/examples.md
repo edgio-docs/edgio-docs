@@ -14,6 +14,8 @@ Explore a comprehensive collection of edge function examples provided by {{ PROD
 
 - [JSON Responses](/applications/edge_functions/examples/json_responses): This guide focuses on handling JSON responses effectively. It includes parsing techniques, error handling, and best practices for JSON data manipulation.
 
+- [JWT Validation](/applications/edge_functions/examples/jwt_validation): Learn how to validate a JSON Web Token (JWT).
+
 - [Optimizely Experimentation](/applications/edge_functions/examples/optimizely_experimentation): Integrate Optimizely experiments into your application using Edge Functions. This guide demonstrates how to modify responses based on experiment configurations.
 
 - [Redirects](/applications/edge_functions/examples/redirects): Implement efficient and smart redirects using edge functions. This example illustrates various redirect scenarios, including permanent and temporary redirection.

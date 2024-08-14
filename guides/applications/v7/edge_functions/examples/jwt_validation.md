@@ -4,7 +4,7 @@ title: JWT Validation
 
 {{ ef_req_edgejs_deps.md }}
 
-One use for Edge Functions is to validate the JSON Web Token (JWT) sent by a client. This can be useful for ensuring that the client is authorized to access a protected resource, or for verifying the identity of the client. Handling this validation at the edge can help to offload the work from the origin server, and offer a more secure and efficient way to verify the token.
+This example uses Edge Functions to validate a JSON Web Token (JWT) sent by a client. Handling this validation at the edge can help to offload the work from the origin server, and offer a more secure and efficient way to verify the token. Additionally, you can extend this edge function to check whether the client is authorized to access a protected resource or to verify the client's identity.
 
 <ExampleButtons
   title="JWT Validation"
@@ -41,7 +41,7 @@ Upon completion, this edge function will report the result in the response.
 
 **Sample curl request:**
 
-```
+```bash
 curl -X POST -d '{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"}' https://edgio-community-examples-v7-ef-jwt-validation-live.glb.edgio.link/jwt
 ```
 

@@ -9,7 +9,6 @@ const ExternalLinkWrapper = styled.a`
   text-decoration: none;
 
   color: #2993e0;
-  font-weight: 600;
 
   // ::after {
   //   content: '';

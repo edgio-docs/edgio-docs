@@ -5,7 +5,11 @@ import Modal from 'react-modal';
 import styled, {css} from 'styled-components';
 
 import {DocsbotConfig, productsConfig} from 'config/appConfig';
-import {getContextTypeByName, useAppContext} from 'contexts/AppContext';
+import {
+  ContextType,
+  getContextTypeByName,
+  useAppContext,
+} from 'contexts/AppContext';
 import {useEdgioAnswersContext} from 'contexts/EdgioAnswersContext';
 import {useTheme} from 'contexts/ThemeContext';
 import {mobileMinWidth} from 'styles';
@@ -349,11 +353,15 @@ const EdgioAnswers = () => {
     starterQuestions,
     setStarterQuestions,
     closeModal,
+    overrideContext,
+    setOverrideContext,
   } = useEdgioAnswersContext();
   const isLoaded = useHydrationIsLoaded();
   const [docsbotConfig, setDocsbotConfig] = useState<
     DocsbotConfig | undefined
   >();
+
+  const pendingSendFn = useRef<((ws: WebSocket) => void) | null>(null);
 
   /**
    * Adds a chat message to the messages state.
@@ -401,34 +409,35 @@ const EdgioAnswers = () => {
 
   // Initialize the chat channel once the config is established
   useEffect(() => {
-    if (ws) {
-      ws.close();
-    }
-
     if (docsbotConfig) {
       initializeWebSocket(docsbotConfig);
     }
 
     return () => {
-      if (ws) {
-        ws.close();
-      }
+      ws?.close();
     };
   }, [docsbotConfig]);
 
   // Set the config based on the context
   useEffect(() => {
-    if (context && context !== prevContext) {
-      const config =
-        productsConfig[getContextTypeByName(context)]?.edgioAnswers;
+    const ctx = overrideContext;
+    if (!ctx) {
+      ws?.close();
+      setWs(null);
+    } else if (ctx !== prevContext) {
+      const config = productsConfig[getContextTypeByName(ctx)]?.edgioAnswers;
 
-      setPrevContext(context);
+      // Context has changed, close the current connection
+      ws?.close();
+      setWs(null);
+
+      setPrevContext(ctx);
       setDocsbotConfig(config);
       setStarterQuestions(config?.starterQuestions || []);
       addChatMessage(
         {
           role: 'system',
-          content: SYSTEM_MESSAGES[context] || '',
+          content: SYSTEM_MESSAGES[ctx] || '',
           type: 'end',
           finished: true,
         },
@@ -441,7 +450,34 @@ const EdgioAnswers = () => {
         finished: true,
       });
     }
+  }, [overrideContext]);
+
+  // As navigation context changes, update the override context
+  useEffect(() => {
+    setOverrideContext(context as ContextType);
   }, [context]);
+
+  // Send any pending messages
+  useEffect(() => {
+    if (ws && pendingSendFn.current) {
+      const handleOpen = () => {
+        if (pendingSendFn.current) {
+          pendingSendFn.current(ws);
+          pendingSendFn.current = null;
+        }
+      };
+
+      if (ws.readyState === WebSocket.OPEN) {
+        handleOpen();
+      } else {
+        ws.addEventListener('open', handleOpen);
+      }
+
+      return () => {
+        ws.removeEventListener('open', handleOpen);
+      };
+    }
+  }, [ws, pendingSendFn.current]);
 
   // If the current product isn't configured for Edgio Answers, return null
   if (!context || !productsConfig[context]?.edgioAnswers) {
@@ -532,7 +568,7 @@ const EdgioAnswers = () => {
           setWs(websocket);
         };
 
-        websocket.onclose = () => {
+        websocket.onclose = (event) => {
           setWs(null);
         };
 
@@ -549,12 +585,10 @@ const EdgioAnswers = () => {
    * @returns void
    */
   const stopAndReconnect = () => {
-    if (ws) {
-      ws.close();
+    ws?.close();
 
-      if (docsbotConfig) {
-        initializeWebSocket(docsbotConfig);
-      }
+    if (docsbotConfig) {
+      initializeWebSocket(docsbotConfig);
     }
   };
 
@@ -564,22 +598,33 @@ const EdgioAnswers = () => {
    * @returns void
    */
   const sendMessage = (msg?: string) => {
-    if (query.trim() && ws && !isAwaitingResponse) {
+    if (query.trim()) {
       msg = query;
     }
 
-    if (msg && msg.length) {
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        {
-          role: 'user',
-          content: msg,
-          finished: true,
-        },
-      ]);
-      ws?.send(JSON.stringify({question: msg, history}));
-      setIsAwaitingResponse(true);
-      setQuery('');
+    const fnSend = (ws: WebSocket) => {
+      if (msg && msg.length) {
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          {
+            role: 'user',
+            content: msg,
+            finished: true,
+          },
+        ]);
+        ws.send(JSON.stringify({question: msg, history}));
+        setIsAwaitingResponse(true);
+        setQuery('');
+      }
+    };
+
+    if (ws?.readyState === WebSocket.OPEN) {
+      fnSend(ws);
+    } else {
+      if (!ws || ws.readyState === WebSocket.CLOSED) {
+        stopAndReconnect();
+      }
+      pendingSendFn.current = fnSend;
     }
   };
 
@@ -717,6 +762,7 @@ export const EdgioAnswersInput = ({
     query,
     setQuery,
     openModal,
+    setOverrideContext,
   } = useEdgioAnswersContext();
 
   const typeMessage = (message: string, index: number) => {
@@ -776,20 +822,19 @@ export const EdgioAnswersInput = ({
 
   function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === 'Enter') {
-      openModal(e.currentTarget.value);
+      const {value} = e.currentTarget;
+      setQuery(value);
+      openModal(value);
     }
   }
 
-  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setQuery(e.target.value);
-  }
+  function onChange(e: React.ChangeEvent<HTMLInputElement>) {}
 
   return (
     <NoSSRWrapper>
       <ChatInput
         ref={inputRef}
         type="text"
-        value={query}
         hasContent={query.trim().length > 0}
         placeholder={placeholder}
         onChange={onChange}

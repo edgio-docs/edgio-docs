@@ -113,7 +113,7 @@ const nav = {
               path: 'acquire/live/cloud_slicer_live',
             },
             {
-              title: 'On Prem Slicer',
+              title: 'On Prem/Live Slicer',
               path: 'acquire/live/on_prem_slicer',
             },
             {
@@ -148,6 +148,10 @@ const nav = {
             {
               title: 'Content Management',
               path: 'manage/assets/content_management',
+            },
+            {
+              title: 'Assets',
+              path: 'manage/assets/assets',
             },
             {
               title: 'Virtual Linear Playlists and Smartstart',

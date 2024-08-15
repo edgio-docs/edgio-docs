@@ -29,8 +29,8 @@ A publishing target configuration determines how your live stream will be publis
 | Platform    | Description     |
 |--------|--------|
 | AWS Elemental MediaConnect | Provide the following information: <ul><li>A hostname or IP address that points to your AWS Elemental MediaConnect server.</li><li>The ID for the stream to which we will publish content.</li><li>Optional: A password that authorizes our service to publish to a password-protected stream.</li></ul> Configure your AWS Elemental MediaConnect's output to use `Zixi` push. |
-| Facebook              | Configure our service to authenticate to Facebook using either of the following methods: <ul><li>**Integrated Authentication**: Leverage credentials defined within a Clipping profile to automatically publish to a Facebook page. [Learn more](#facebook).</li><li>**Stream Key**: Provide a stream key to authorize our service to publish to a specific Facebook page.</li></ul> |
-| Pluto TV              | Provide the following information: <ul><li>A hostname or IP address that points to your Pluto TV account (Zixi push).</li><li>The ID for the stream to which we will publish content.</li><li>Optional: A password that authorizes our service to publish to a password-protected stream.</li></ul>  |
+| Facebook   | Configure our service to authenticate to Facebook using either of the following methods: <ul><li>**Integrated Authentication**: Leverage credentials defined within a Clipping profile to automatically publish to a Facebook page. [Learn more](#facebook).</li><li>**Stream Key**: Provide a stream key to authorize our service to publish to a specific Facebook page.</li></ul> |
+| Pluto TV   | Provide the following information: <ul><li>A hostname or IP address that points to your Pluto TV account (Zixi push).</li><li>The ID for the stream to which we will publish content.</li><li>Optional: A password that authorizes our service to publish to a password-protected stream.</li></ul>  |
 | TikTok | Provide a stream key that authorizes our service to publish to a specific TikTok account. |
 | Twitch | Provide a stream key that authorizes our service to publish to a specific Twitch channel.|
 | YouTube| Configure our service to authenticate to YouTube using either of the following methods: <ul><li>**Integrated Authentication**: Leverage credentials defined within a Clipping profile to automatically create a scheduled live stream within the YouTube Studio dashboard. [Learn more](#youtube).</li><li>**Stream Key**: Provide a stream key to authorize our service to publish to a specific YouTube channel.</li></ul>  |
@@ -368,9 +368,11 @@ Once you have created a publishing target configuration, follow these steps to p
 
 2. **Stop Publishing** by clicking the **X** next to the desired publishing target. Repeat this step as needed for other targets.
 
-3. **Navigate to the Publish Tab** for the desired live channel or live event.
+### Modify Publishing Stream Quality
 
-4. **Select the Publishing Target**.
+1. **Navigate to the Publish Tab** for the desired live channel or live event.
+
+2. **Select the Publishing Target**.
 
 3. **Stop Publishing (If Active)**
    - If your content is currently being published to that target, click **Stop Publishing**.
@@ -389,3 +391,202 @@ Once you have created a publishing target configuration, follow these steps to p
 2. **Select Targets to Remove**.
 
 3. **Remove the Targets** by clicking **Delete** (rubbish bin icon).
+
+## Publishing Jobs
+
+Adding a publishing target to a live channel or live event creates a publishing job in the stopped state. This publishing job identities:
+
+- A live channel or live event.
+- A publishing target.
+- The job's [current status](#publishing).
+- The timestamp at which the job was last started and stopped.
+
+**Key information**:
+
+- View all of your publishing jobs from the [Jobs tab](https://cms.uplynk.com/static/cms2/index.html#/settings/publishing/jobs) of the Publishing page. To access, from the main menu, navigate to **Settings**. Click **Publishing** from the side navigation pane. Click the **Jobs** tab.
+- Filter your jobs by performing the following steps:
+
+  1. Click the filter funnel icon.
+  2. Optional. Click on either **Channel** or **Live Event** to filter for all jobs associated with either a live channel or a live event.
+  3. Optional. Mark or clear each status according to whether jobs with that status should be displayed or hidden.
+  4. Click **Apply**.
+- Use this consolidated view of your publishing jobs to quickly assess the state of syndication publishing across your entire account.
+
+<Tip>For example, use this consolidated view to quickly identify what is currently being published from your account by filtering for publishing jobs in the active state.</Tip>
+
+### Publish Job Event Notifications
+
+Publish key publishing job events through the following workflow:
+
+1. Syndication Publishing pushes data to Amazon SNS for any of the following events:
+
+    | Severity | Event |
+    |---|---|
+    | Info | A user starts a publishing job. |
+    | Info | A user stops a publishing job. |
+    | Warning | Syndication Publishing restarts a publishing job. This typically occurs when the initial attempt to start a publishing job fails. |
+    | Warning | Syndication Publishing was unable to communicate with the social media or content distribution platform. |
+    | Critical | Syndication Publishing could not start or restart a publishing job. This event only occurs after multiple attempts to start or restart the publishing job have failed. |
+    | Critical | Syndication Publishing was forced to stop the publishing job. |
+
+2. Amazon SNS broadcasts data to one or more destination(s) (e.g., mobile device, web server, or Slack).
+
+<Info>Get started with Amazon SNS for free through its SNS free tier. [Learn more](https://aws.amazon.com/sns/pricing/).</Info>
+
+<Info>Syndication Publishing [formats data using JSON](#key-publishing-job-notification-fields). This data may then be filtered via custom code. This article explains how to strip out additional data generated by Amazon SNS via a custom function in Amazon Lambda.</Info>
+
+### Get Started with Publishing Job Notifications
+
+Perform the following steps to set up Syndication Publishing notifications:
+
+1. [Set up an Amazon SNS topic](#set-up-an-amazon-sns-topic).
+2. [Configure communication](#configure-communication-with-amazon-sms) between Syndication Publishing and Amazon SNS.
+3. Configure Amazon SNS to broadcast notifications to the desired destination(s).
+
+    [Learn how to set up Amazon SNS and Lambda to broadcast notifications to a Slack channel](#slack-integration).
+
+#### Set up an Amazon SNS Topic  {/*set-up-an-amazon-sns-topic*/}
+Amazon SNS communicates with publishers and subscribers through a "topic." For this purpose of this article, Syndication Publishing will assume the role of a publisher, while a Slack channel will assume the role of the subscriber.
+
+<Info>Amazon SNS may be configured to broadcast data to multiple types of subscribers (e.g., web server, mobile device, email, etc.).</Info>
+
+Perform the following steps to create a topic:
+
+1. Sign in to the Amazon AWS Management console. If you don't have an AWS account, then [sign up for one](http://docs.aws.amazon.com/sns/latest/dg/SNSBeforeYouBegin.html).
+2. Open the [Amazon SNS console](https://console.aws.amazon.com/sns/).
+3. Click **Get started**.
+
+    <Tip>Amazon SNS may require Amazon SES (i.e., Amazon Simple Email Service). Please sign up for the Amazon SES service if an error message appears within the SNS dashboard.</Tip>
+
+4. From the upper-right hand corner, change your location to ` US West (Oregon) us-west-2`
+5. Click **Topics** from the side navigation pane.
+6. Click **Create topic**.
+7. Click **Standard**.
+
+    <Info>Our service does not support pushing notifications to a First-In-First-Out (FIFO) topic.</Info>
+
+8. In the **Name** option, assign a unique name (e.g., syndication-publishing) to the topic.
+9. Optional. If notifications will be sent over SMS notifications, then set the Display name option to the desired name.
+10. Expand the Access policy section.
+11. From the Define who can publish messages to the topic option, select Only the specified AWS accounts. Set the Only these AWS users option to our AWS account ID: `545191325524`
+12. Click **Create topic**.
+13. Copy the topic's ARN.
+
+#### Configure Communication with Amazon SNS
+
+Syndication Publishing requires an ARN topic before it will push data to Amazon SNS. Perform the following steps:
+
+1. Navigate to the SNS tab of the Syndication Publishing page. From the main menu, navigate to **Settings**. From the side navigation pane, click **Publishing**. Click on the **SNS** tab.
+
+2. In the **SNS Topic ARN** setting, paste the ARN for the topic created above.
+3. Click **Save**.
+
+#### Integrating Slack with Amazon SNS
+
+<Info>Amazon SNS can broadcast notifications to different subscribers (e.g., mobile devices) using a variety of delivery methods (e.g., HTTP, email, AWS Lambda, etc.).</Info>
+
+The configuration that has been performed up to this point allows the Syndication Publishing to send notifications to Amazon SNS. This section explains how to push those notifications from Amazon SNS to a Slack channel. Integrating Amazon SNS involves the following steps:
+
+1. Set up a Slack webhook.
+2. Create an Amazon Lambda function that subscribes to the Amazon SNS topic.
+
+#### Setting up a Slack Webhook
+
+Slack requires that a webhook be created before it will post messages from external sources (e.g., Amazon SNS).
+
+[Learn how to create a Slack webhook](https://api.slack.com/messaging/webhooks#getting_started).
+
+#### Subscribe to a SNS Topic via Amazon Lambda
+
+Amazon SNS needs to be informed of the above webhook before it can send data to a Slack channel. This task may be performed via Amazon Lambda. Amazon Lambda is a compute service that runs code in response to events (e.g., when data is pushed from a Syndication Publishing to Amazon SNS).
+
+[View Amazon Lambda's documentation](http://docs.aws.amazon.com/lambda/latest/dg/welcome.html).
+
+This article creates a Lambda function in Python that performs the following tasks:
+
+- Subscribes to a SNS topic.
+- Identifies the Slack webhook through which it will post messages to a Slack channel.
+- Strips out data added by Amazon SNS.
+
+<Tip>Add custom code to this function to tailor how messages are posted to a Slack channel (e.g., filter notifications by Syndication Publishing).</Tip>
+
+Perform the following steps to create a Lambda function:
+
+1. Open the [Amazon Lambda console](https://console.aws.amazon.com/lambda/).
+2. Click **Get Started Now**.
+3. Click **Blank Function**.
+4. Click the dashed box and then select **SNS** as the trigger for this function.
+5. Verify that the SNS topic created earlier in this article is selected in the SNS topic option.
+6. Mark the **Enable trigger** option.
+7. Click **Next**.
+8. Configure the Lambda function as follows:
+
+    - **Name**: Set the **Name** option to the name of the function (e.g., forward_to_slack).
+    - **Description**: Set the **Description** option to a brief description for the purpose of the function (e.g., Send Syndication Publishing information to a Slack channel.).
+    - **Runtime**: Set the **Runtime** option to "Python 2.7."
+    - **Code**: Set the **Lambda function code** option to the following code:
+
+      ```json
+      import json
+      import urllib2
+
+      def forward_to_slack (event, context):
+          # The URL for your Slack Channel's webhook
+          url = "https://hooks.slack.com/services/ABCDE1234/FGHIJ5678/KLMNOPQRSTUV901234567890"
+
+          # Format the message
+          try:
+              # Try to navigate to the Message that was sent via SNS and strip out the
+              #  rest of the delivery information
+              slack_data = {"text":str(event['Records'][0]['Sns']['Message'])}
+          except:
+              slack_data = {"text":str(event)}
+
+          # Dump the json to prepare it for sending
+          data = json.dumps(slack_data)
+
+          # Create the request
+          req = urllib2.Request(url, data)
+
+          # Send request
+          urllib2.urlopen(req)
+      ```
+
+      Update the webhook URL defined in the code to point to the one copied in the Setting up a Slack Webhook section.
+
+    - **Handler**: Set the **Handler** option to "lambda_function." and then append the name of the function defined in the Name option (e.g., `lambda_function.forward_to_slack`).
+
+    - Role: Set the **Role** option to "Create new role from template(s)."
+
+    - Role name: Set the **Role name** option to the name that will be assigned to the new role (e.g., lambda_basic_execution).
+
+    - Click **Next**.
+
+9. Amazon Lambda will now allow you to review the function that will be created. Verify that the correct SNS topic has been selected and that the Lambda function configuration looks similar to the following illustration:
+
+    ![Amazon Lamda function](/images/uplynk/lamda.png)
+
+10. Click **Create function**.
+
+Amazon Lambda will now automatically post data to a Slack channel as it is provided by Syndication Publishing.
+
+#### Key Publishing Job Notification Fields
+
+Syndication Publishing sends information that describes a key publishing job event in JSON format. Key parameters in this notification are described below.
+
+| Field         | Description|
+|---------------|------|
+| **Subject**   | Provides a simple description of the publishing job event that triggered this notification. <br /> **Syntax:** `Syndication Notification - {Severity} - {Event} - {Timestamp}` <br /> **Example:** `"Syndication Notification - Info - Job started by user - 2021-12-10_21:15:55",` |
+| **Message**   | Provides detailed information about the publishing job event. Key parameters are described below.|
+| Date_Time | Indicates when the notification was triggered.|
+| Severity  | Indicates whether it is an Info, Critical, or Warning notification. |
+| Message   | Describes the type of notification.|
+| Description | Provides additional event information. For example, this parameter may indicate the reason why a publishing job could not be started.       |
+| Schedule_Id | Indicates the publishing job's system-defined ID.|
+| Target_Name | Indicates the publishing target's name.     |
+| Protocol  | Indicates the publishing target's protocol.   |
+| Platform  | Indicates the publishing target's social media or content distribution platform.|
+| Content_Name | Indicates the name of the live channel or live event associated with the publishing job.        |
+| Content_Id | Indicates the system-defined ID of the live channel or live event associated with the publishing job.         |
+| Content_Type | Identifies whether this publishing job is associated with a live channel or live event. Valid values are: <br /> - `c`: Live channel <br /> - `e`: Live event |
+| **Example**   | `"{"Service": "syndication", "Sender": "syndication", "Date_Time": "2021-12-10_21:15:55", "Severity": "Info", "Message": "Job started by user", "Description": "", "Schedule_Id": "23f1ed53db5e4538b6a0b31183fad807", "Target_Name": "YouTubePT", "Protocol": "rtmp", "Platform": "YouTube", "Content_Name": "Entertainment", "Content_Id": "c8929b67f1354607877b319edb0c01af", "Content_Type": "c"}"` |

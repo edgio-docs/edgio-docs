@@ -755,14 +755,15 @@ export const EdgioAnswersInput = ({
   const [index, setIndex] = useState(0);
   const [placeholder, setPlaceholder] = useState('');
   const inputRef = useRef(null);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<NodeJS.Timeout | undefined>();
+  const timeoutRef = useRef<NodeJS.Timeout | undefined>();
+
   const {
     starterQuestions: presets,
     setStarterQuestions: setPresets,
     query,
     setQuery,
     openModal,
-    setOverrideContext,
   } = useEdgioAnswersContext();
 
   const typeMessage = (message: string, index: number) => {
@@ -774,7 +775,7 @@ export const EdgioAnswersInput = ({
         i++;
       } else {
         clearInterval(intervalRef.current as NodeJS.Timeout);
-        setTimeout(() => {
+        timeoutRef.current = setTimeout(() => {
           if (index < presets.length - 1) {
             setIndex((prevIndex) => prevIndex + 1);
           } else {
@@ -814,8 +815,9 @@ export const EdgioAnswersInput = ({
   }, [index, presets]);
 
   function onFocus() {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
+    if (intervalRef.current || timeoutRef.current) {
+      clearInterval(intervalRef?.current);
+      clearTimeout(timeoutRef?.current);
       setPlaceholder(defaultPlaceholder);
     }
   }

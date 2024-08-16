@@ -95,7 +95,7 @@ const nav = {
               path: 'acquire/vod/add_content',
             },
             {
-              title: 'Automation via Slicebot',
+              title: 'Automate via Slicebot',
               path: 'acquire/vod/automation_via_slicebot',
             },
             {

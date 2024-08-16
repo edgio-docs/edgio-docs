@@ -11,7 +11,7 @@ Perform the following steps to set up Syndication Publishing:
 1. Create a publishing target for each desired social media or content distribution platform.
 2. Publish to the desired platform(s) by associating the desired publishing target(s) with your live channel or live event.
 
-## Publishing Target
+## Publish a Target  {/*publish-a-target*/}
 
 Distribute your content to any social media or content distribution platform (e.g., YouTube, Twitch, and TikTok) that supports ingest through any of the following protocols:
 
@@ -36,13 +36,13 @@ A publishing target configuration determines how your live stream will be publis
 | YouTube| Configure our service to authenticate to YouTube using either of the following methods: <ul><li>**Integrated Authentication**: Leverage credentials defined within a Clipping profile to automatically create a scheduled live stream within the YouTube Studio dashboard. [Learn more](#youtube).</li><li>**Stream Key**: Provide a stream key to authorize our service to publish to a specific YouTube channel.</li></ul>  |
 | Custom | Publish to any social media or content distribution platform using the RTMP, RTMPS, HLS, Zixi, SRT, or RIST protocol. <ul><li>**RTMP or RTMPS - Push**: <br />**Stream URL Syntax**: `{Base Stream URL}/{Stream Key}` <br /> The desired social media or content distribution platform determines whether a stream key must be defined within your stream URL. Please refer to their documentation for more information.</li><li>**HLS - Push**: <br />**Stream URL Syntax**: `{Base Stream URL}/`  <br />**Sample stream URLs**: <br /> `rtmp://platform.example.com/live/3u40-9rqs-502b-7zeq/` <br /> `http://platform.example.com/live/` </li><li>**HLS - Pull**: Our service generates a stream URL once you start publishing to this target. You will need to configure the desired platform to pull the stream using this URL.</li><li>**Zixi - Push**: Publish a feed to a Zixi-enabled device or service via the Zixi protocol by identifying the destination server and a stream ID. Optional: Provide a password for password-protected streams.</li><li>**SRT - Push**: <br />**Stream URL Syntax**: `srt://{Host}:{Port}` </li><li>**RIST - Push**: <br />**Stream URL Syntax**: `rist://{Host}:{Port}` <br /> You may only push an audio/video feed to an even port number. RIST reserves odd port numbers (`{Port}+1`) for error correction use.</li></ul>  |
 
-### Create a Publishing Target
+### Create a Publishing Target  {/*create-a-publishing-target*/}
 
 <Info>Contact your account manager to activate Syndication Publishing.</Info>
 
 Setting up a publishing target varies by social media or content distribution platform. Expand the section for the platform to which your content will be published.
 
-#### YouTube
+#### YouTube  {/*youtube*/}
 
 Perform the following steps to create a publishing target for YouTube:
 
@@ -73,7 +73,7 @@ Perform the following steps to create a publishing target for YouTube:
 
 <Info>Our service will validate your stream key or credentials and attempt to connect to YouTube . If it is unable to connect, then you should either verify the stream key defined in the Stream Key option or update the credentials associated with the Clipping profile selected within the previous step.</Info>
 
-#### Facebook
+#### Facebook  {/*facebook*/}
 
 https://docs.edgecast.com/video/index.html#Setup/Syndication-Publishing.htm%3FTocPath%3DBasic%2520Setup%7C_____10
 
@@ -113,7 +113,7 @@ If you plan to use Facebook credentials defined within a Clipping profile (i.e.,
 
 <Info>Our service will validate your stream key or credentials and attempt to connect to Facebook. If it is unable to connect, you should either verify the stream key defined in the **Stream Key** option or update the credentials associated with the Clipping profile selected in the previous step.</Info>
 
-#### Twitch or TikTok
+#### Twitch or TikTok  {/*twitch-or-tiktok*/}
 
 Perform the following steps to create a publishing target for Twitch or TikTok:
 
@@ -131,7 +131,7 @@ Perform the following steps to create a publishing target for Twitch or TikTok:
 
 <Info>Our service will validate your stream key and attempt to connect to Twitch or TikTok. If it is unable to connect, you should verify the stream key defined in the **Stream Key** option.</Info>
 
-#### AWS Elemental MediaConnect or Pluto TV
+#### AWS Elemental MediaConnect or Pluto TV  {/*aws*/}
 
 Perform the following steps to create a publishing target:
 
@@ -155,7 +155,7 @@ Perform the following steps to create a publishing target:
 
 <Info>Our service will attempt to establish a connection to the AWS Elemental MediaConnect or Pluto TV server. If it is unable to connect, verify the configuration defined above.</Info>
 
-#### Custom (RTMP, RTMPS, HLS, Zixi, SRT, or RIST)
+#### Custom (RTMP, RTMPS, HLS, Zixi, SRT, or RIST)  {/*custom*/}
 
 Perform the following steps to create a custom publishing target for RTMP, RTMPS, HLS, Zixi, SRT, or RIST live stream:
 
@@ -216,7 +216,7 @@ Perform the following steps to create a custom publishing target for RTMP, RTMPS
 
 <Info>Our service will validate your stream URL and attempt to connect to the social media or content distribution platform. If it is unable to connect, then you should verify the stream URL and stream key defined in the Stream URI option.</Info>
 
-#### Modify a Publishing Target
+#### Modify a Publishing Target  {/*modify-a-publishing-target*/}
 
 1. Load the [Publishing Page](https://cms.uplynk.com/static/cms2/index.html#/settings/publishing) by navigating to **Settings > Publishing**.
 
@@ -226,7 +226,7 @@ Perform the following steps to create a custom publishing target for RTMP, RTMPS
 
 4. Click **Save**.
 
-## Deleting a Publishing Target
+## Delete a Publishing Target  {/*delete-a-publishing-target*/}
 
 1. Ensure No Active Channels or Events: Make sure that no live channel or live event is publishing to the target(s) you want to delete.
 
@@ -238,7 +238,7 @@ Perform the following steps to create a custom publishing target for RTMP, RTMPS
 
 5. Confirm Deletion: When prompted, confirm the deletion by clicking **Yes, Delete**.
 
-## Publishing
+## Publish   {/*publish*/}
 
 Once you have created a publishing target configuration, follow these steps to publish your stream:
 
@@ -287,7 +287,7 @@ Once you have created a publishing target configuration, follow these steps to p
 
     <Info>[Playback URL parameters](/uplynk/deliver/playback_urls/customize_playback_via_parameters) provide more control over the live stream pushed to your social media or content distribution platform. For example, you may use them to include ad parameters or to add an artificial playback delay.</Info>
 
-### Publish Your Content to a Platform
+### Publish Content to a Platform  {/*publish-content-to-a-platform*/}
 
 1. **Create a Publishing Target**.  Repeat this step as needed.
 
@@ -362,7 +362,7 @@ Once you have created a publishing target configuration, follow these steps to p
 
             <Info>If using a stream key for Facebook or YouTube, manually start your live stream.</Info>
 
-### Stop Publishing
+### Stop Publishing  {/*stop-publishing*/}
 
 1. **Navigate to the Publish Tab** by clicking the desired live channel or live event and then the **Publish** tab.
 
@@ -384,7 +384,7 @@ Once you have created a publishing target configuration, follow these steps to p
    - If you are ready to start publishing, click **Publish**.
    - Otherwise, click **Done** to save your changes.
 
-### Remove a Publishing Target from a Live Channel or Live Event
+### Remove a Publishing Target from a Live Channel or Live Event  {/**/}
 
 1. **Navigate to the Publish Tab** by clicking the desired live channel or live event and then the **Publish** tab.
 
@@ -392,7 +392,7 @@ Once you have created a publishing target configuration, follow these steps to p
 
 3. **Remove the Targets** by clicking **Delete** (rubbish bin icon).
 
-## Publishing Jobs
+## Publish Jobs  {/*publish-jobs*/}
 
 Adding a publishing target to a live channel or live event creates a publishing job in the stopped state. This publishing job identities:
 
@@ -414,7 +414,7 @@ Adding a publishing target to a live channel or live event creates a publishing 
 
 <Tip>For example, use this consolidated view to quickly identify what is currently being published from your account by filtering for publishing jobs in the active state.</Tip>
 
-### Publish Job Event Notifications
+### Publish Job Event Notifications  {/*publish-job-event-notifications*/}
 
 Publish key publishing job events through the following workflow:
 
@@ -435,7 +435,7 @@ Publish key publishing job events through the following workflow:
 
 <Info>Syndication Publishing [formats data using JSON](#key-publishing-job-notification-fields). This data may then be filtered via custom code. This article explains how to strip out additional data generated by Amazon SNS via a custom function in Amazon Lambda.</Info>
 
-### Get Started with Publishing Job Notifications
+### Get Started with Publishing Job Notifications  {/*get-started-with-publishing-job-notifications*/}
 
 Perform the following steps to set up Syndication Publishing notifications:
 
@@ -472,7 +472,7 @@ Perform the following steps to create a topic:
 12. Click **Create topic**.
 13. Copy the topic's ARN.
 
-#### Configure Communication with Amazon SNS
+#### Configure Communication with Amazon SNS  {/*configure-communication-with-amazon-sns*/}
 
 Syndication Publishing requires an ARN topic before it will push data to Amazon SNS. Perform the following steps:
 
@@ -481,7 +481,7 @@ Syndication Publishing requires an ARN topic before it will push data to Amazon 
 2. In the **SNS Topic ARN** setting, paste the ARN for the topic created above.
 3. Click **Save**.
 
-#### Integrating Slack with Amazon SNS
+#### Integrating Slack with Amazon SNS  {/*integrating-slack-with-amazon-sns*/}
 
 <Info>Amazon SNS can broadcast notifications to different subscribers (e.g., mobile devices) using a variety of delivery methods (e.g., HTTP, email, AWS Lambda, etc.).</Info>
 
@@ -490,13 +490,13 @@ The configuration that has been performed up to this point allows the Syndicatio
 1. Set up a Slack webhook.
 2. Create an Amazon Lambda function that subscribes to the Amazon SNS topic.
 
-#### Setting up a Slack Webhook
+#### Set up a Slack Webhook  {/*set-up-a-slack-webhook*/}
 
 Slack requires that a webhook be created before it will post messages from external sources (e.g., Amazon SNS).
 
 [Learn how to create a Slack webhook](https://api.slack.com/messaging/webhooks#getting_started).
 
-#### Subscribe to a SNS Topic via Amazon Lambda
+#### Subscribe to a SNS Topic via Amazon Lambda  {/*subscribe-to-a-sns-topic-via-amazon-lamda*/}
 
 Amazon SNS needs to be informed of the above webhook before it can send data to a Slack channel. This task may be performed via Amazon Lambda. Amazon Lambda is a compute service that runs code in response to events (e.g., when data is pushed from a Syndication Publishing to Amazon SNS).
 
@@ -570,7 +570,7 @@ Perform the following steps to create a Lambda function:
 
 Amazon Lambda will now automatically post data to a Slack channel as it is provided by Syndication Publishing.
 
-#### Key Publishing Job Notification Fields
+#### Key Publishing Job Notification Fields  {/*key-publishing-job-notification-fields*/}
 
 Syndication Publishing sends information that describes a key publishing job event in JSON format. Key parameters in this notification are described below.
 

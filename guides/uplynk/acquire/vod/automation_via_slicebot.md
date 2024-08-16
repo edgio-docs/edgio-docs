@@ -1,5 +1,5 @@
 ---
-title: Automation via Slicebot
+title: Automate via Slicebot
 ---
 
 Use Slicebot to monitor one or more directories for new files. Once a file is detected, it is automatically sliced and uploaded to the cloud.
@@ -20,7 +20,7 @@ Setting up Slicebot consists of the following steps:
 This section explains:
 
 - The available [configuration](#configuration) methods.
-- How to set up the [main Slicebot configuration file](#main-configuration-file).
+- How to set up the [main Slicebot configuration file](#main-configuration).
 - How to set up a [file-specific configuration file](#file-specific-configuration-file).
 - How to define configuration settings within a [file name](#file-name-configuration).
 - How to [test](#testing) out a configuration.

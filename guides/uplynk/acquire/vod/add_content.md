@@ -64,7 +64,7 @@ VOD Uploader allows you to:
 - Attempting to upload content from private URLs will typically generate a `403 Forbidden` error.
 - If you are uploading content from Dropbox, change the query string from `?dl=0` to `?dl=1` to prevent Dropbox from attempting playback.
 
-## Add content through VOD Uploader  {/*add-content-through-vod-uploader*/}
+## Add Content through VOD Uploader  {/*add-content-through-vod-uploader*/}
 
 1. **Navigate to the [VOD Uploader Page](https://cms.uplynk.com/static/cms2/index.html#/content/uploads)** by navigating to **Content** > **VOD Uploader**.
 

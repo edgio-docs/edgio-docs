@@ -104,3 +104,7 @@ Add the following query string parameter to the playback URL to pass an ad break
 If the Live Slicer requests a 60-second ad break, then Uplynk will pass the following query string parameter in the ad request: `break_dur=60.0`
 
 If this ad configuration is used for a VOD stream, then Uplynk will pass the following query string parameter in the ad request: `break_dur=90.0`
+
+## More Information  {/*more-information*/}
+
+View detailed [instructions on inserting ads into live streams and VOD](/uplynk/monetize/ads).

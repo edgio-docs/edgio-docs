@@ -155,7 +155,7 @@ A blackout rule defines when and how a blackout will be applied to blacked-out c
   - **Asset**: On-demand content from the CMS library.
   - **Slicer**: Media processed by an alternate Live Slicer.
 
-## Create a Blackout Rule  {/*create-blackout-rule*/}
+#### Create a Blackout Rule  {/*create-blackout-rule*/}
 
 1. Navigate to the [**Audiences**](https://cms.uplynk.com/static/cms2/index.html#/live-channels/audiences) page (**Live Channels** > **Audiences**).
 
@@ -286,7 +286,7 @@ POST /content_start HTTP/1.1
 
 Blackout may only be applied to assets that have been assigned a blackout ID (i.e., `blackout_id`). No further configuration is required once this ID has been defined.
 
-## Assign a Blackout ID to an Asset  {/*assign-blackout-id-to-asset*/}
+#### Assign a Blackout ID to an Asset  {/*assign-blackout-id-to-asset*/}
 
 1. From the **Content** tab, select the desired asset.
 

@@ -4,7 +4,7 @@ title: Clipping
 
 The Clipping tool creates an excerpt from a live channel or Video on Demand (VOD) content. The asset created from this clipping process is known as a clip. A clip may be played back as VOD content.
 
-## Quick Start
+## Quick Start  {/*quick-start*/}
 
 Create a clip by performing the following steps:
 
@@ -17,7 +17,7 @@ Create a clip by performing the following steps:
 
 <Tip>Optimize clip creation performance by turning off all effects on the **Effects** tab. If the source asset is Studio DRM-protected, you must also disable the Studio DRM option from the **Details** tab.</Tip>
 
-## Profiles
+## Profiles  {/*profiles*/}
 
 Profiles allow you to define a default configuration for each type of clip. Apply this default configuration to a clip by selecting the desired profile from the Clipping tool.
 
@@ -29,7 +29,7 @@ The settings that may be defined through profiles are listed below:
 - **Default Intro/Outro Bumpers:** Define a default [intro and/or outro bumper](#intro-outro-bumpers).
 - **Signed Playback URLs:** Determine whether a token will be required by default for new clips through the **Require a token for playback on all new clips** option.
 
-### Set Up a Profile
+### Set Up a Profile  {/*set-up-a-profile*/}
 
 1. Navigate to the [Clipping page](https://cms.uplynk.com/static/cms2/index.html#/settings/clipping). From the main menu, navigate to **Settings** > **Clipping**.
 2. Click **+ Profile**.
@@ -41,11 +41,11 @@ The settings that may be defined through profiles are listed below:
 6. Define the desired default settings.
 7. Click **Save**.
 
-## Start/Stop Markers
+## Start/Stop Markers  {/*start-stop-markers*/}
 
 You can define the exact segment of the live channel or VOD content that will be clipped through start and stop markers. Start and stop markers may be defined by selecting a playhead, frame, or an exact time.
 
-### Playhead
+### Playhead  {/*playhead*/}
 
 <Info>A playhead's position is defined by time and it is indicated between the video preview and the timeline.</Info>
 
@@ -53,13 +53,13 @@ A playhead is a vertical line on the timeline that identifies a specific positio
 
 Set a clip's start/stop position by playhead by clicking **Set Start** or **Set Stop**. The start or stop marker will then be set to the time associated with the playhead at that moment in time.
 
-### Frame
+### Frame  {/*frame*/}
 
 Live channel or VOD content consists of a set of sequential video frames. The number of video frames within a specific second is known as the frame rate (frames per second). A clip's start/stop position may be set to a specific frame.
 
 Select a frame by setting the By Time option to the exact second where the frame may be found, clicking **Select Frame**, and then selecting the desired frame from the available set of frames for the given time.
 
-### Exact Time
+### Exact Time  {/*exact-time*/}
 
 The valid range for video frames will vary according to the source video's frame rate (frames per second). Standard frame rates are 24, 30, and 60 fps. The valid range for these frame rates is 0-23, 0-29, and 0-59, respectively.
 
@@ -69,7 +69,7 @@ A clip's start/stop position may be defined or fine-tuned by setting the By Time
 
 **Example**: This value represents the second frame at the thirty minute and 20 second mark: `00:30:20;01`
 
-## Poster Image
+## Poster Image  {/*poster-image*/}
 
 A poster image is the image that is displayed by the media player until the video is started. By default, a clip's poster image is set to a frame at its halfway point.
 
@@ -77,7 +77,7 @@ A clip's poster image may be set through the **Set Poster Image** option. Set it
 
 Once a poster image has been defined, a thumbnail preview will be displayed directly above the **Set Poster Image** option. Enlarge this preview by clicking on it. Alternatively, download it by clicking the download icon that appears directly to the right of the **Set Poster Image** option.
 
-## Effects
+## Effects  {/*effects*/}
 
 Various optional effects may be applied to a clipped video segment. The order in which these effects may be applied is outlined below.
 
@@ -88,7 +88,7 @@ Various optional effects may be applied to a clipped video segment. The order in
 | Near the End of Clipped Video | Fade Out |
 | End of Clipped Video | Outro Bumper |
 
-### Intro/Outro Bumpers
+### Intro/Outro Bumpers  {/*intro-outro-bumpers*/}
 
 <Info>The length of a video bumper is restricted to 59 seconds or less. Longer VOD content will be unavailable for selection.</Info>
 
@@ -96,7 +96,7 @@ A video bumper typically consists of a brief announcement, logo, or a branded me
 
 Define a clip's intro/outro bumper by navigating to the **Effects** tab, marking either the **Intro bumper** or the **Outro bumper** option, and then selecting the desired clip.
 
-### Image Overlays
+### Image Overlays  {/*image-overlays*/}
 
 An overlay allows the display of a static image on top of a clip. The most common usage for an image overlay is to brand a video by displaying a logo.
 
@@ -108,7 +108,7 @@ An image must be uploaded as an overlay before it can be applied to a clip. Plea
 - If the image's resolution matches the target clip's resolution, then positioning the relevant portion of the image overlay (e.g., logo) is easy. Simply place the relevant portion of the image (e.g., logo) in the desired relative position (e.g., lower right-hand corner). The system will proportionally scale the image to match the video's resolution when the image overlay is applied to it. This allows the desired content to maintain the same relative position when it is applied to the video clip.
 - Multiple image overlays may be uploaded. Support for multiple image overlays allows them to be tailored to meet varying resolution or branding requirements.
 
-#### Upload an Image from the CMS
+#### Upload an Image from the CMS  {/*upload-an-image-from-the-cms*/}
 
 1. Navigate to the [Clipping page](https://cms.uplynk.com/static/cms2/index.html#/settings/clipping). From the main menu, navigate to **Settings** > **Clipping**.
 2. Select the desired profile or create a new one.
@@ -119,7 +119,7 @@ An image must be uploaded as an overlay before it can be applied to a clip. Plea
 7. Click **Upload**.
 8. Click **Save**. The newly uploaded image will now be available for selection during clip creation.
 
-#### Apply an Image Overlay to a Clip
+#### Apply an Image Overlay to a Clip  {/*apply-an-image-overlay-to-a-clip*/}
 
 1. From the **Profile** option, select a profile that contains the desired image overlay.
 2. Click the **Effects** tab.
@@ -130,11 +130,11 @@ An image must be uploaded as an overlay before it can be applied to a clip. Plea
 
 A fade in/out effect may be applied to a clip. This effect gradually transitions from a black background to the clip or vice-versa. Define the duration, in seconds, of the fade effect from the **Fade In** or the **Fade Out** options on the **Effects** tab.
 
-## Metadata
+## Metadata  {/*metadata*/}
 
 Metadata allows supplemental data to be associated with a clip. This metadata may then be forwarded to your web site or custom player via the [AssetInfo API](https://docs.edgecast.com/video/Content/Develop/AssetInfo.htm).
 
-<Info></Info>The External ID metadata key cannot be hidden when a third-party platform integration configuration maps to it.
+<Info>The External ID metadata key cannot be hidden when a third-party platform integration configuration maps to it.</Info>
 
 By default, a new clip may be assigned an external ID through the External ID metadata key. This external ID may be leveraged when [generating a friendly playback URL](/uplynk/deliver/playback_urls/#assets) for the clip in question. Hide this external ID metadata key by clearing the **Show External ID option in the Clipping Tool** option from the desired profile.
 
@@ -162,7 +162,7 @@ Additional metadata may be associated with a clip by defining custom keys. A cus
 
 - A value cannot be directly modified. However, it can be deleted and a new one may be added in its place. Delete a value by clicking the corresponding **Delete** label.
 
-### Add a Custom Metadata Key to a Profile
+### Add a Custom Metadata Key to a Profile  {/*add-a-custom-metadata-key-to-a-profile*/}
 
 1. Navigate to the [Clipping page](https://cms.uplynk.com/static/cms2/index.html#/settings/clipping). From the main menu, navigate to **Settings > Clipping**.
 2. Select the desired profile or create a new one.
@@ -174,11 +174,11 @@ Additional metadata may be associated with a clip by defining custom keys. A cus
 
 Metadata key values may be defined during the clip creation process from the **Details** tab within the Clipping tool.
 
-## Clip Live Channels or In-Progress Assets
+## Clip Live Channels or In-Progress Assets  {/*clip-live-channels-or-in-progress-assets*/}
 
 You may use the Clipping tool to clip from a live channel or from an asset that is still being sliced. However, the Clipping tool will only contain the video that was already sliced at the time that the tool was launched. Update the Clipping tool to contain the video that has been sliced since it was opened by clicking **Refresh Video**. This action refreshes the video from within the Clipping tool without losing marker data, metadata, effects, etc.
 
-## Drafts
+## Drafts  {/*drafts*/}
 
 Drafts allow you to automate the identification of video segments that should be converted to video clips. After which, use the Clipping tool to adjust the start/stop markers, apply the desired settings and/or effects, and then generate the video clip.
 
@@ -197,7 +197,7 @@ Use the Clipping tool to generate a video clip from a draft.
 
 <Info>Upon creating a video clip from a draft, the draft will be removed from the **Drafts** tab. If no drafts remain, then the **Drafts** tab will be hidden.</Info>
 
-### Generate a Video Clip from a Draft
+### Generate a Video Clip from a Draft  {/*generate-a-video-clip-from-a-draft*/}
 
 1. Navigate to the [Clipping page](https://cms.uplynk.com/static/cms2/index.html#/settings/clipping). From the main menu, navigate to **Settings > Clipping**.
 2. Find and select an asset for which one or more drafts have been generated via the Clip Draft API.
@@ -209,12 +209,12 @@ Use the Clipping tool to generate a video clip from a draft.
 
 <Tip>The draft selected in step 5 will be removed from the **Drafts** tab.</Tip>
 
-## Keyboard Shortcuts
+## Keyboard Shortcuts  {/*keyboard-shortcuts*/}
 
 Keyboard shortcuts are provided to facilitate setting start and stop markers. These shortcuts keys, which are listed below, are only available when the timeline has the focus.
 
 | Action                     | Key          | More Information|
-|----|--------------|-------|
+|----|:--------------:|-------|
 | **Play/Pause**             | SPACE        ||
 | **Pause**                  | k            ||
 | **Jump Back**              | j            | Jumps back up to 8 seconds to the start of a previous slice.|
@@ -228,7 +228,7 @@ Keyboard shortcuts are provided to facilitate setting start and stop markers. Th
 | **Zoom In (Timeline)**     | + or =       | Zooms in to the timeline in 10% increments. This will cause the visible area of the timeline to display a shorter time range. <br /> Use the scroll bar directly below the timeline to scroll to the beginning or the end of the video.                      |
 | **Zoom Out (Timeline)**    | -            | Zooms out of the timeline in 10% increments. This will cause the visible area of the timeline to display a longer time range.           |
 
-## Clip Playback
+## Clip Playback  {/*clip-playback*/}
 
 By default, creating a clip will add it to the library as VOD content. Similar to all other VOD content, this new VOD asset may be:
 
@@ -244,7 +244,7 @@ By default, creating a clip will add it to the library as VOD content. Similar t
 - **Studio DRM option:** Found on the **Details** tab, this option determines whether a clip created from a Studio DRM-protected asset will require a Studio DRM license or cleartext key.
 - **Ad Breaks option:** Found on the **Details** tab, this option determines whether ad breaks that were inserted into the source asset during the time period identified by the clip's start and stop markers will be included in the clip.
 
-## Third-Party Platform Integration
+## Third-Party Platform Integration  {/*third-party-platform-integration*/}
 
 <Info>Publishing to a third-party platform requires that integration settings be defined prior to clip creation.</Info>
 
@@ -252,7 +252,7 @@ The Clipping tool supports the capability to automatically publish a clip to a t
 
 <Info>Studio DRM protection may be applied when creating a clip from a Studio DRM-protected asset. Publishing to a third-party platform is disabled when Studio DRM protection is enabled. Disable the **Studio DRM** option from the **Details** tab before attempting to publish to a third-party platform.</Info>
 
-### Setup
+### Setup  {/*setup*/}
 
 Integration with a third-party platform consists of defining authentication information and then mapping key data to third-party platform fields. Once integration settings have been defined, new clips will automatically be published to the third-party platform.
 
@@ -266,17 +266,17 @@ Integration with a third-party platform consists of defining authentication info
 8. From the **Metadata Mapping** section, map third-party platform fields to metadata keys.
 9. Click **Save** to save your changes.
 
-#### Authentication
+#### Authentication  {/*authentication*/}
 
 The capability to upload content to a third-party platform requires authorization. Typically, this involves defining a user name, password, and a key through which content will be uploaded to the third-party platform.
 
-#### Metadata Mapping
+#### Metadata Mapping  {/*metadata-mapping*/}
 
 Clip-specific information may be leveraged when publishing content to a third-party platform. This capability facilitates content management and automated workflow by leveraging relevant information when defining critical properties for newly published content.
 
 A prerequisite for metadata mapping is the [creation of custom metadata keys](#metadata). After which, metadata keys should be assigned to third-party platform fields from within your third-party platform integration configuration.
 
-#### Export Restrictions
+#### Export Restrictions  {/*export-restrictions*/}
 
 Each platform enforces minimum requirements on the videos that may be uploaded to their service. Our service adheres to these platform-specific requirements and enforces the applicable ones when exporting clips to a platform. Please ensure that the requirements listed below are satisfied before exporting a video clip to the platform in question.
 

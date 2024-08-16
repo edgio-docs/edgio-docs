@@ -76,3 +76,7 @@ Our Syndication product allows you to distribute your live or virtual live conte
    - Stop or modify publishing as necessary through the Publish tab.
 
 By following these steps, you can effectively distribute your live streaming content to YouTube and other platforms using HLS-Pull, enhancing your audience reach and ensuring reliable streaming performance.
+
+## More Information  {/*more-information*/}
+
+View detailed [instructions and options on syndication and publishing](/uplynk/monetize/syndication).

@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import {FiSearch} from 'react-icons/fi'; // Make sure to install react-icons using `npm install react-icons`
 import styled from 'styled-components';
@@ -8,6 +8,7 @@ import NoSSRWrapper from 'components/Layout/NoSSRWrapper';
 import {useIsMobile} from 'components/Layout/useMediaQuery';
 import Link from 'components/MDX/Link';
 import {ContextType, useAppContext} from 'contexts/AppContext';
+import {useEdgioAnswersContext} from 'contexts/EdgioAnswersContext';
 import {mobileMinWidth} from 'styles';
 
 import {IconExternalLink} from './Icon';
@@ -203,8 +204,21 @@ const StyledEdgioAnswersInput = styled.div`
 function HomeSearchComponent() {
   const [active, setActive] = useState('applications');
   const isUplynkActive = active === 'uplynk';
+  const {setOverrideContext} = useEdgioAnswersContext();
 
-  const EAInputContainer = () => <EdgioAnswersContainer context={active} />;
+  const EAInputContainer = () => {
+    return <EdgioAnswersContainer context={active} />;
+  };
+
+  useEffect(() => {
+    if (active === 'applications') {
+      setOverrideContext(ContextType.APPLICATIONS);
+    } else if (active === 'delivery') {
+      setOverrideContext(ContextType.DELIVERY);
+    } else {
+      setOverrideContext(null);
+    }
+  }, [active]);
 
   return (
     <SearchContainer active={active}>

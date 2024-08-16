@@ -178,6 +178,7 @@ export default new Router()
 
 Customize when and how content is cached through these features:
 
+-   [Add Early Hints](#add-early-hints)
 -   [Bandwith Throttling](#bandwidth-throttling)
 -   [Bypass Cache](#bypass-cache)
 -   [Bypass Client Cache](#bypass-client-cache)
@@ -187,6 +188,7 @@ Customize when and how content is cached through these features:
 -   [Cacheable Request Body Size](#cacheable-request-body-size)
 -   [Cacheable Status Codes](#cacheable-status-codes)
 -   [Enable Caching for Methods](#enable-caching-for-methods)
+-   [Enable Early Hints](#enable-early-hints)
 -   [Expires Header Treatment](#expires-header-treatment)
 -   [Honor No Cache Request Header](#honor-no-cache-request-header)
 -   [Ignore Origin No Cache](#ignore-origin-no-cache)
@@ -203,6 +205,25 @@ Customize when and how content is cached through these features:
 -   [Set Service Worker Max Age](#set-service-worker-max-age)
 -   [Stale On Error](#stale-on-error)
 -   [Stale While Revalidate](#stale-while-revalidate)
+
+#### Add Early Hints {/*add-early-hints*/}
+
+Sends custom early hints through a `103 Early Hints` response.
+
+**Key information:**
+
+-   Upon receiving a request for which this feature is applicable, {{ PRODUCT }} will immediately respond with a `103 Early Hints` response when the following conditions are met:
+    -   The requested content cannot be served immediately from cache.
+    -   Early hints have not been cached for the requested content.
+-   If early hints for the requested content were previously cached, then they will take precedence over those defined within this feature.
+-   Set this feature to one or more `Link` header's value. This value must contain a `rel` attribute set to either:
+    -   **preload:** Instructs the client to preemptively fetch and cache the asset.
+    -   **preconnect:** Instructs the client to preemptively establish a connection to the origin.
+
+    **Example:** `</style.css>; rel=preload; as=style`
+
+-   This feature caches `103 Early Hints` responses regardless of whether the response for the requested content is uncacheable.
+-   An origin server can also provide early hints. Serve and cache an origin server's early hints through the [Enable Early Hints feature](#enable-early-hints).
 
 #### Bandwith Throttling {/*bandwidth-throttling*/}
 
@@ -651,6 +672,20 @@ export default new Router()
 </edgejs>
 
 **Default Behavior:** By default, only `GET` requests are eligible for caching.
+
+#### Enable Early Hints {/*enable-early-hints*/}
+
+Caches and serves HTTP `103 Early Hints` responses. Early hints allow clients to preload resources required by the requested resource.
+
+**Key information:**
+
+-   Early hints provides the best performance improvement for low latency network requests that result in long server think times. 
+-   This feature allows us to cache `Link` headers whose `rel` attribute is set to either:
+    -   **preload:** Instructs the client to preemptively fetch and cache the asset.
+    -   **preconnect:** Instructs the client to preemptively establish a connection to the origin.
+-   Add custom early hints through the [Add Early Hints feature](#add-early-hints).
+
+**Default Behavior:** `103 Early Hints` responses are not cached. 
 
 #### Expires Header Treatment {/*expires-header-treatment*/}
 

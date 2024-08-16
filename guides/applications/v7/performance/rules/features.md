@@ -215,8 +215,9 @@ Sends custom early hints through a `103 Early Hints` response.
 -   Upon receiving a request for which this feature is applicable, {{ PRODUCT }} will immediately respond with a `103 Early Hints` response when the following conditions are met:
     -   The requested content cannot be served immediately from cache.
     -   Early hints have not been cached for the requested content.
--   If early hints for the requested content were previously cached, then they will take precedence over those defined within this feature.
--   Set this feature to one or more `Link` header's value. This value must contain a `rel` attribute set to either:
+
+        If early hints for the requested content were previously cached, then they will take precedence over those defined within this feature.
+-   Define each desired early hint by typing a `Link` header value and then pressing `ENTER`. This value must contain a `rel` attribute set to either:
     -   **preload:** Instructs the client to preemptively fetch and cache the asset.
     -   **preconnect:** Instructs the client to preemptively establish a connection to the origin.
 
@@ -675,7 +676,7 @@ export default new Router()
 
 #### Enable Early Hints {/*enable-early-hints*/}
 
-Caches and serves HTTP `103 Early Hints` responses. Early hints allow clients to preload resources required by the requested resource.
+Caches early hints defined within an origin server's response and serves HTTP `103 Early Hints` responses. Early hints allow clients to preload resources required by the requested resource.
 
 **Key information:**
 

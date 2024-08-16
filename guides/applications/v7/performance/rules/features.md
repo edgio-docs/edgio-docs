@@ -676,7 +676,7 @@ export default new Router()
 
 #### Enable Early Hints {/*enable-early-hints*/}
 
-Caches early hints defined within an origin server's response and serves HTTP `103 Early Hints` responses. Early hints allow clients to preload resources required by the requested resource.
+Enables support for early hints provided within an origin server's response. Specifically, it allows {{ PRODUCT }} to cache those early hints and serve HTTP `103 Early Hints` responses. Early hints allow clients to preload resources required by the requested resource.
 
 **Key information:**
 
@@ -686,7 +686,7 @@ Caches early hints defined within an origin server's response and serves HTTP `1
     -   **preconnect:** Instructs the client to preemptively establish a connection to the origin.
 -   Add custom early hints through the [Add Early Hints feature](#add-early-hints).
 
-**Default Behavior:** `103 Early Hints` responses are not cached. 
+**Default Behavior:** Early hints provided by the origin server are not cached and `103 Early Hints` responses for those early hints are not served.
 
 #### Expires Header Treatment {/*expires-header-treatment*/}
 

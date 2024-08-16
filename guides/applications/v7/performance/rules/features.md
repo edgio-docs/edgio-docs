@@ -187,8 +187,7 @@ Customize when and how content is cached through these features:
 -   [Cache Key Query String](#cache-key-query-string)
 -   [Cacheable Request Body Size](#cacheable-request-body-size)
 -   [Cacheable Status Codes](#cacheable-status-codes)
--   [Enable Caching for Methods](#enable-caching-for-methods)
--   [Enable Early Hints](#enable-early-hints)
+-   [Enable Caching for Methods](#enable-caching-for-methods) <!-- -   [Enable Early Hints](#enable-early-hints)-->
 -   [Expires Header Treatment](#expires-header-treatment)
 -   [Honor No Cache Request Header](#honor-no-cache-request-header)
 -   [Ignore Origin No Cache](#ignore-origin-no-cache)

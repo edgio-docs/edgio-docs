@@ -20,8 +20,7 @@ const StyledToc = styled.div`
     border-radius: 4px;
     position: sticky;
     overflow: auto;
-    padding: calc(var(--header-height) / 2) 0 calc(var(--header-height) / 2)
-      20px;
+    padding: 18px 0px 18px 20px;
     --scrollbar-bg: #606060;
     max-height: calc(100vh - var(--header-height) - 16px);
     top: calc(var(--header-height) + 8px);
@@ -29,9 +28,9 @@ const StyledToc = styled.div`
   }
 
   .docs-toc__heading {
-    margin-bottom: 16px;
-    font-size: 12px;
-    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 700;
     text-transform: uppercase;
     color: var(--toc-text-primary);
   }

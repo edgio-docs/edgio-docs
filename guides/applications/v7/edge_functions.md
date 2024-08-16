@@ -9,7 +9,13 @@ Edge Functions enable you to execute a small piece of JavaScript code on our edg
 - This article assumes that you are familiar with [defining rules](/applications/v7/performance/rules#rules-and-cdn-as-code) using CDN-as-Code or the {{ PORTAL }}.
 - Edge Functions requires activation. {{ ACCOUNT_UPGRADE }}
 
-{{ prereq.md }}
+## Prerequisites {/* prerequisites */}
+
+Setup requires:
+-   An {{ PRODUCT }} account. [Sign up for free.]({{APP_URL}}/signup)
+-   An {{ PRODUCT }} property. [Learn how to create a property.](/applications/getting_started)
+-   Node.js. [View supported versions and installation steps.](/applications/install_nodejs)
+-   [{{ PRODUCT }} CLI](/applications/performance/cdn_as_code/cli).
 
 ## Edge Functions {/* edge-functions */}
 

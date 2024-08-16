@@ -3,7 +3,6 @@
 | AEP | Buenos Aires | South America |
 | AGB | Atlanta | North America |
 | AGC | Atlanta | North America |
-| AKL | Auckland | Australia |
 | AMA | Amsterdam | Europe |
 | AMB | Amsterdam | Europe |
 | AMM | Amsterdam | Europe |

@@ -341,7 +341,7 @@ export default <Array<Redirect>>[
     '/applications/v7/experimentation',
   ],
   ['/applications/v7/edge-functions', '/applications/v7/edge_functions'],
-  ['/applications/v7/edge-functions/examples/jwt_verification', '/applications/v7/edge_functions/examples/jwt_validation'],
+  ['/applications/v7/edge_functions/examples/jwt_verification', '/applications/v7/edge_functions/examples/jwt_validation'],  
   [
     /\/guides\/v7\/sites_frameworks\/getting_started\/(ember_fastboot|frontity|gatsby|hexo|mkdocs|razzle|sanity)/,
     '/applications/v7/sites_frameworks/legacy_connectors/$1',

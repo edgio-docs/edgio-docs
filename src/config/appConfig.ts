@@ -144,7 +144,7 @@ export const productsConfig: ProductsConfig = {
       prompt: 'How can I help you with Delivery?',
       starterQuestions: [
         'What are the key features of Delivery?',
-        'Create a Storage user.',
+        'How do I create a Storage user?',
         'What reports can I find in Control?',
       ],
     },

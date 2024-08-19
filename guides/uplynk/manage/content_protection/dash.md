@@ -14,7 +14,7 @@ Follow these steps to get started with Studio DRM:
 
 1. **Contact your account manager** to enable Studio DRM.
 2. **Verify** that the "Require studio approved DRM for playback" and "Require a token for playback" options have been enabled on the desired live event, live channel, or CMS asset.
-3. **Re-ingest** the slate that was encoded prior to Studio DRM activation. Use the `cleardash` parameter and turn off digital signatures to ensure optimal playback performance. [Learn more](#).
+3. **Re-ingest** the slate that was encoded prior to Studio DRM activation. Use the `cleardash` parameter and turn off digital signatures to ensure optimal playback performance. [Learn more](#unencrypted-dash-content).
 4. **Re-encode existing CMS assets** that were encoded before Studio DRM activation. Only assets encoded after Studio DRM activation can be secured via Studio DRM. Use the Slicer, Slicebot, or the Cloud Slicer for re-encoding.
 5. **Construct the playback URL** for the desired live event, live channel, or CMS asset.
    - Find the DASH version of the playback URL corresponding to the desired live event, live channel, or CMS asset.

@@ -30,7 +30,7 @@ This section explains:
 
 Configuration settings may be defined through the following mechanisms:
 
-- [**Main Configuration File**](#main-configuration-file)
+- [**Main Configuration File**](#main-configuration)
 
     - Defines a default configuration.
     - Identifies the set of directories to be monitored.

@@ -111,11 +111,11 @@ export const productsConfig: ProductsConfig = {
     edgioAnswers: {
       teamId: 'gQe050bzo1BngpQN3Ojp',
       botId: 'diWYp40uSWLmoO5InSwd',
-      prompt: 'How can I help you with Applications?',
+      prompt: 'How can I help you with Edgio Applications?',
       starterQuestions: [
-        'How do I get started with EdgeJS?',
+        'How do I get started?',
         'How do I cache images/* at the edge for 1 hour?',
-        'How do I prevent caching in the browser with EdgeJS?',
+        'How do I deploy configurations?',
       ],
     },
   },
@@ -141,7 +141,7 @@ export const productsConfig: ProductsConfig = {
     edgioAnswers: {
       teamId: 'gQe050bzo1BngpQN3Ojp',
       botId: 'CKwkiEfdItVWfscHIA2m',
-      prompt: 'How can I help you with Delivery?',
+      prompt: 'How can I help you with Edgio Delivery?',
       starterQuestions: [
         'What are the key features of Delivery?',
         'How do I create a Storage user?',
@@ -174,7 +174,7 @@ export const productsConfig: ProductsConfig = {
       prompt: 'Hi, how can I help you with Edgio?',
       starterQuestions: [
         'How do I configure caching for my Applications property?',
-        'What does Delivery offer?',
+        'How do I create a Storage user for Delivery?',
       ],
     },
   },

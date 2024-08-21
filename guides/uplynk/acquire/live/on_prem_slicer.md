@@ -2,11 +2,11 @@
 title: On Prem Slicer
 ---
 
-The Live Slicer (aka Live Slicer) captures content from a live signal and sends it to the cloud for encoding. This tool runs as a daemon process on a Linux system. It is controlled using [standard initctls Command](#administration).
+The On Prem Slicer (aka Live Slicer) captures content from a live signal and sends it to the cloud for encoding. This tool runs as a daemon process on a Linux system. It is controlled using [standard initctls Command](#administration).
 
-## Install the Live Slicer
+## Install the Live Slicer  {/*install-the-live-slicer*/}
 
-### Pre-requisites
+### Pre-requisites  {/*pre-requisites*/}
 
 Perform the following steps before installing the Live Slicer:
 
@@ -33,7 +33,7 @@ Perform the following steps before installing the Live Slicer:
    - Use Network Time Protocol (NTP) to sync your Linux server's time with a public time server.
 
 
-### Install or Upgrade a Live Slicer
+### Install or Upgrade a Live Slicer  {/*install-or-upgrade-a-live-slicer*/}
 
 Perform these steps when installing or upgrading the Live Slicer to the latest version.
 
@@ -110,11 +110,11 @@ Perform these steps when installing or upgrading the Live Slicer to the latest v
 
 5. Navigate to the newly created directory.
 
-**Command**: `$ cd uplynk_slicer_linux_64-231114.04.01-master/`
+    **Command**: `$ cd uplynk_slicer_linux_64-231114.04.01-master/`
 
 6. Run `install_live`.
 
-**Command**: `$ sudo ./install_live`
+    **Command**: `$ sudo ./install_live`
 
 ## Configure the Live Slicer  {/*configure-the-live-slicer*/}
 

@@ -75,8 +75,6 @@ Perform the following steps to create a publishing target for YouTube:
 
 #### Facebook  {/*facebook*/}
 
-https://docs.edgecast.com/video/index.html#Setup/Syndication-Publishing.htm%3FTocPath%3DBasic%2520Setup%7C_____10
-
 Perform the following steps to create a publishing target for Facebook:
 
 
@@ -283,7 +281,7 @@ Once you have created a publishing target configuration, follow these steps to p
 
     If your stream started with slate and you published your target with `High` video quality, then the resolution of your published stream may be capped at 720p.
 
-- You may [add query string parameters](#publish-content-to-a-platform) to the playback URLs defined within the manifest file for the stream published to your social media or content distribution platform.
+- You may add query string parameters to the playback URLs defined within the manifest file for the stream published to your social media or content distribution platform.
 
     <Info>[Playback URL parameters](/uplynk/deliver/playback_urls/customize_playback_via_parameters) provide more control over the live stream pushed to your social media or content distribution platform. For example, you may use them to include ad parameters or to add an artificial playback delay.</Info>
 
@@ -355,10 +353,8 @@ Once you have created a publishing target configuration, follow these steps to p
       - Find the **HLS Master URL** option and click **Copy** to copy the URL for pulling the HLS stream.
 
 7. **Configure Platforms**
-      - **Facebook or YouTube (Integrated Authentication):**
-        - Upon detecting a stream, we will automatically submit a "go live" request.
-      - **All Other Platforms:**
-        - Start your live stream from within each social media or content distribution platform.
+      - **Facebook or YouTube (Integrated Authentication):** Upon detecting a stream, we will automatically submit a "go live" request.
+      - **All Other Platforms:** Start your live stream from within each social media or content distribution platform.
 
             <Info>If using a stream key for Facebook or YouTube, manually start your live stream.</Info>
 
@@ -398,7 +394,7 @@ Adding a publishing target to a live channel or live event creates a publishing 
 
 - A live channel or live event.
 - A publishing target.
-- The job's [current status](#publishing).
+- The job's [current status](#publish).
 - The timestamp at which the job was last started and stopped.
 
 **Key information**:

@@ -5,19 +5,19 @@ title: Playback URLs
 Learn How To:
 
 - **Generate playback URLs for:**
-  - Assets
-  - Virtual linear playlists
-  - Live channels
-  - Live events
+  - [Assets](#assets)
+  - [Virtual linear playlists](#virtual-linear-playlists)
+  - [Live channels](#live-channels)
+  - [Live events](#live-events)
 
-- **Sign playback URLs with a token**
+- **[Sign playback URLs](#signing-playback-urls-with-a-token) with a token**
 
-    - Basic Setup
+    - [Basic Setup](#basic-setup)
 
-        - Core identification parameters
-        - Signature parameter
-    - Encrypting query strings
-- **Validate playback URLs using application keys**
+        - [Core identification parameters](#core-identification-parameters)
+        - [Signature parameter](#digital-signature)
+    - [Encrypt query strings](#encrypt-query-strings)
+- **Validate playback URLs using [application keys**](#application-keys)
 
 ## Assets
 
@@ -173,7 +173,7 @@ Manage virtual linear playlists through the [Virtual Linear Playlist API](https:
     <Info>The `pltl` query string parameter is optional for Smartstart-enabled assets.</Info>
 - [Learn more about virtual linear playlists and Smartstart](/uplynk/manage/assets/virtual_linear_playlist_and_smartstart).
 
-## Live Channels  {/*;ive-channels*/}
+## Live Channels  {/*live-channels*/}
 
 The two types of playback URLs for a live channel are:
 

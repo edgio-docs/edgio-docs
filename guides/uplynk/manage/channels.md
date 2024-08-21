@@ -13,7 +13,7 @@ Add audio/video content to a live channel via the following methods:
 
 **Key Information**
 
-- Stream a feed by pointing a media player to the live channel's [playback URL](/uplynk/delivery/playback_urls). Additionally, quickly embed a media player within a web page by leveraging a live channel's HTML code.
+- Stream a feed by pointing a media player to the live channel's [playback URL](/uplynk/deliver/playback_urls). Additionally, quickly embed a media player within a web page by leveraging a live channel's HTML code.
 - Test playback by leveraging a restriction-free media player associated with a live channel.
 - Secure a live linear feed by setting up whitelisted domains, [a digital signature](/uplynk/deliver/playback_urls/#signing-playback-urls-with-token), and/or [blackout](/uplynk/manage/content_protection/blackout) within your live channel configuration.
 - Slate is played in a loop when a live channel's timeline is missing content or during blackouts. Define the type of slate that will be played within a live channel's configuration.

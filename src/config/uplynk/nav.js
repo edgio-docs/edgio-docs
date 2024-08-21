@@ -1,4 +1,4 @@
-import {productsConfig} from '../appConfig';
+import { productsConfig } from '../appConfig';
 
 const separator = {
   title: '',
@@ -148,10 +148,6 @@ const nav = {
             {
               title: 'Content Management',
               path: 'manage/assets/content_management',
-            },
-            {
-              title: 'Assets',
-              path: 'manage/assets/assets',
             },
             {
               title: 'Virtual Linear Playlists and Smartstart',

@@ -330,7 +330,7 @@ You may configure the Live Events Dashboard to alert the operator when a live ev
 
 Quickly add multiple ad pods to a live event configuration by importing a CSV file. Define the following fields within that CSV file:
 
-# Ad Pod Fields
+#### Ad Pod Fields
 
 | Field | Description |
 |---|---|
@@ -370,6 +370,245 @@ A live event may be created, viewed, and operated by either the owner of the acc
 | Assigned | Identifies a user as a potential operator for the live events associated with your account. In addition to this permission, authorization must be granted to this user on a per live event basis. After which, the user will be allowed to operate authorized live events via the Live Events Dashboard. |
 
 Permissions may be defined on a per user basis from the [Account Access](https://cms.uplynk.com/static/cms2/index.html#/settings/account-access) page. Navigate to this page by clicking the **Settings** tab and then clicking **Account Access Settings** from the side navigation tab.
+
+#### Authorize a User as an Operator
+
+1. Grant the **Assigned** permission to the desired user from the **Account Access Settings** page. If the operator requires the capability to view or make changes to a live event prior to its start, then grant the **Read** and **Write** permissions as well.
+
+   <Info>Users who have been granted the **Write** permission may operate any live event and therefore do not require authorization on a per live event basis. Skip the following two steps for this type of user.</Info>
+
+2. Navigate to the [**Live Events**](https://cms.uplynk.com/static/cms2/index.html#/live-events/events) page. From the main menu, navigate to **Events** > **Live Events**.
+3. Select the desired live event to open it.
+4. Click the **Config** tab.
+5. From the **Event Operator** option, select the user identified in step 1.
+6. Click **Save**.
+
+### Content Expiration
+
+A live event may generate the following types of content:
+
+- **Temporary Live Event Assets**: The primary and each backup Live Slicer will generate temporary audio/video assets. These assets are stitched together to form the live stream and on-demand content.
+- **CMS Asset**: An asset that replicates the viewing experience of the live event will be added to the CMS library upon its completion. Live events with a duration longer than 8 hours will be split into multiple assets.
+
+    [Learn more](#on-demand-content).
+
+**Account-Level Settings:**
+
+- A default content expiration policy may be defined from the [**Live Events**](https://cms.uplynk.com/static/cms2/index.html#/settings/live-events) page. Define the desired content expiration policy through the settings in the **Content Expiration** section. These settings determine whether the CMS asset and the temporary assets generated from the live event will be automatically deleted once the specified number of hours have elapsed from the completion of the live event.
+    <Info>A minimum content expiration policy of 150% of the duration of the live event is automatically applied to the temporary assets generated for all live events.</Info>
+
+**Live Event Configuration:**
+- Override the default expiration policy for the CMS asset generated for a live event through the **VOD Auto Expire Hours** option.
+
+Valid values are:
+
+- `<Blank Value>`: The default expiration policy will be honored.
+- `0`: The asset generated from the live event will be immediately deleted from the CMS library.
+- `<Hours>`: The asset generated from the live event will be deleted from the CMS library after the specified number of hours have elapsed.
+
+### Markers
+
+Mark key events within your live event via markers. A marker is a custom tag that can be applied to a specific moment within your live event. Marking an event adds it to:
+
+- **Live Events**: Adds a log entry. View your live event's log data via the **EVENT DETAILS** tab of the **Live Events** Dashboard and the Logs tab of your live event configuration.
+
+    **Log event syntax**: `Event Marker Set: {Marker Type}:{Marker Name}`
+
+- [**Live Event Status Reporting**](#live-event-status-reporting): Triggers an `event` whose event property uses the following syntax:
+
+    `"event": "Event Marker Set: {Marker Type}:{Marker Name}",`
+
+- **Live Stream**: Adds an ID3 tag, which is a text information frame (TXXX frame), to the live stream.
+- [**Get Live Events API**](https://docs.edgecast.com/video/Content/Develop/Live-Events.htm#GetLiveEvents): Returns marker log data within the `markers` list.
+
+<Info>Each marked event logs the type of marker, the name of the marker, and the specific moment at which the live event was marked.</Info>
+
+#### Marker Setup
+
+Setting up markers requires:
+
+1. Creating a marker template that contains the set of markers that may be applied to your live event.
+2. Assigning the desired marker template to your live event.
+
+<Info>Assign a template by loading the desired live event configuration, verifying that the Details tab is active, and then selecting the desired template from the Marker Template option.</Info>
+
+Once you have performed both of the above steps, your live event operator can mark key events using the set of markers corresponding to the marker template assigned to the live event.
+
+**Create a Marker Template**
+
+1. Navigate to the [Marker Templates](https://cms.uplynk.com/static/cms2/index.html#/settings/live-events/marker-templates) tab: Go to the **Live Events** page and click on the **Marker Templates** tab.
+
+2. Click **+ Marker Template**.
+3. From the **Marker Template Name** option, type the name that will be assigned to the new template and then click **Add**.
+4. Select the new template from the list.
+
+5. Add a Marker Category:
+   - Click **+ Type**.
+   - From the **Type Name** option, type the name of the marker category.
+   - Click **Add**.
+   - Repeat the previous step as needed to add more categories.
+
+6. Add a Marker to the Template:
+   - Select the desired marker type to expand it.
+   - From the **Marker Name** option, type the name that will be assigned to the marker.
+   - Click **Add**.
+   - Repeat the previous step as needed to add more markers.
+
+5. Click **Save**.
+
+#### Mark Key Events Within a Live Event
+
+1. Verify that the desired marker template has been assigned to your live event configuration.
+
+2. Start Live Event: Open the Live Event Dashboard and [start your live event](#broadcast-a-live-event).
+
+3. Select Marker<br />In the **Markers** section, select the desired marker by performing the following steps:
+     - From the **Type** option, select the desired type of marker.
+     - From the **Tag** option, select the desired marker.
+     - If the desired marker is not listed, type the name of the desired marker and press **ENTER**. It will then be added to the list of available markers for the duration of your Live Event Dashboard session. To permanently add this marker for future live events, follow the instructions in the **Create a marker template** procedure.
+
+4. Wait until the desired moment in the live event, then click **Mark** to use the selected marker to add a marked event to your log data, live stream, and Live Event Status Reporting.
+
+5. Repeat steps 3 and 4 as needed.
+
+## Set up Slate
+
+Slate may either be:
+
+- **Automatically Inserted**: Slate will be automatically triggered under the following conditions:
+
+    - **Pre-Event Slate**: Prior to the start of a live event.
+    - **Post-Event Slate**: Directly after the completion of a live event.
+    - **Ad Slate**: During an ad break when ad content is not being received.
+    - **Missing Content Slate**: During a live event when both of the following conditions are true:
+        - The Live Slicer is not producing content.
+        - The live event is not in an ad break.
+
+    Define default pre-event, post-event, ad, and missing content slate from the [Slate page](https://cms.uplynk.com/static/cms2/index.html#/settings/slate). You may [override this default configuration](#configure-live-event-slate) when setting up your live event. Additionally, a live event's pre-event slate may also be manually set from the **Live Events** Dashboard prior to the start of the live event.
+
+- **Manually Inserted**: The Live Events Dashboard allows slate content to be manually inserted during a live event by selecting the desired asset from within the Live Events Dashboard's Switcher pane.
+
+    **Key Information:**
+
+    - Slate that is manually inserted into a live event is known as mid-event slate.
+    - Prior to the start of your live event, you may select a CMS library for mid-event slate through the **Mid Slate Library** option from your live event's **Config** tab. The assets associated with that library will be available for selection when inserting mid-event slate during a live event.
+    - If you enable the **VOD Replayable** option on your live event, our service will generate an asset through which your live event can be replayed as on-demand content. Each time you insert slate into your live event, you must choose whether that asset will contain the slate content being inserted.
+
+        - **Include** slate within the VOD asset generated by your live event:
+
+            1. Open the configuration for the desired live event and set the **Enable Slate in VOD Replay** option to **Yes**. You cannot set the **Enable Slate in VOD Replay** option to Yes if a live event has been configured to use slate from a CMS library shared with your account.
+
+            2. From the Live Events Dashboard, find the desired asset under the **Mid Event Slate** section and click on **Save to Replay**. Use the **Save to Replay** option to include the entire mid-slate asset within the asset generated for VOD replay of your live event. This occurs regardless of whether the live event operator chooses to add only a portion of that mid-event slate asset or loops it multiple times. If the live event operator loops a mid-event slate asset multiple times, it will be included only once for that instance of slate.
+
+        - **Exclude** slate from the VOD asset: From the Live Events Dashboard, find the desired asset under the **Mid Event Slate** section and click to the left of the **Save to Replay** cell. If the **Save to Replay** cell is not present, you may click anywhere on the desired asset.
+
+#### Configure a Live Event's Slate   {/*configure-live-event-slate*/}
+
+1. Navigate to the [Live Events](https://cms.uplynk.com/static/cms2/index.html#/live-events/events) page. From the main menu, navigate to **Events** > **Live Events**.
+
+2. Select a Live Event that has not yet started.
+
+3. Click the **Config** tab.
+
+4. At the bottom of the page, view the default pre-event, post-event, ad, or missing content slate.
+
+5. Change the default pre-event, post-event, ad, or missing content slate:
+     - Click **Change** that appears directly below the desired slate.
+     - Select the desired asset.
+
+    <Info>You may only choose an asset from the [default CMS library](#define-a-default-slate-configuration) for the type of slate being configured.</Info>
+
+6. Optional: If you want to include mid-event slate within the VOD replay asset of your live event, enable the **Enable Slate in VOD Replay** option.
+
+    <Info>If you enable this option, also select a CMS library that you own in the next step. If you select a shared CMS library, the live event operator will be unable to include mid-event slate within the VOD replay asset, regardless of this option's status.</Info>
+
+7. From the **Mid Slate Library** option, select the desired CMS library.
+     <Info>All assets within the selected library will be available for selection as source content from the **Switcher** pane of the Live Events Dashboard.</Info>
+
+8. Click **Save**.
+
+#### Define a Default Slate Configuration
+
+1. From the [**Content** tab](https://cms.uplynk.com/static/cms2/index.html#/content), organize assets that will serve as slate content into one or more CMS libraries.
+
+    <Info>You may assign different libraries for each type of slate.</Info>
+
+2. Navigate to the [Slate](https://cms.uplynk.com/static/cms2/index.html#/settings/slate) page. From the main menu, navigate to **Settings** > **Slate**.
+
+3. Click on the **Slate Types** tab.
+
+4. **Ad Slate**: Perform the following steps to set the default asset that will be broadcast as slate during an ad break when ad content is not being received:
+
+    - Set the **Ad Slate Library** option to the CMS library that contains assets that may be used as ad slate.
+    - Set the **Ad Slate** option to the desired asset.
+
+5. **Missing Content Slate**: Perform the following steps to set the default asset that will be broadcast as slate when content is not being received and the live event is not in an ad break:
+
+    - Set the **Missing Content Slate Library** option to the CMS library that contains assets that may be used as missing content slate.
+    - Set the **Missing Content Slate** option to the desired asset.
+
+6. Click on the **Live Event Slates** tab.
+
+7. **Pre-Event Slate**: Perform the following steps to set the default asset that will be broadcast as slate prior to the start of a live event:
+
+    - Set the **Pre Event Slate** Library option to the CMS library that contains assets that may be used as pre-event slate.
+    - Set the **Pre Event Slate** option to the desired asset.
+
+    <Tip>The asset that will serve as pre-event slate may be changed prior to the start of the live event from within the **Live Events** Dashboard.</Tip>
+
+8. **Mid-Event Slate**: Set the **Mid Event Slate Library** option to the CMS library that contains assets that may be used as mid-event slate.
+
+    <Info>All assets within the selected library will be available for selection as source content from within the Switcher pane of the Live Events Dashboard.</Info>
+
+    <Tip>An asset for your live event may be generated upon its completion. The option to include mid-event slate within that asset is only available when inserting slate using an asset that you own.</Tip>
+
+9. **Post-Event Slate**: Perform the following steps to set the default asset that will be broadcast as slate after the live event has completed:
+
+    - Set the **Post Event Slate Library** option to the CMS library that contains assets that may be used as post-event slate.
+    - Set the **Post Event Slate** option to the desired asset.
+
+10. Click **Save**.
+
+### Post-Event Slate Duration
+
+After the end of a live event, post-event slate will automatically play in one of the following modes:
+
+- **Loop Indefinitely**: The post-event slate will play continuously on loop.
+- **Play Through One Time**: The post-event slate asset will be played only once.
+- **Set Time Duration in Minutes**: The post-event slate will play for the specified number of minutes.
+
+<Info>The `EXT-X-END` tag will be included in the HLS manifest file to indicate the end of post-event slate. It is up to a media player to interpret this tag. [Learn more](https://developer.apple.com/library/content/technotes/tn2288/_index.html#//apple_ref/doc/uid/DTS40012238-CH1-EVENT_PLAYLIST).</Info>
+
+To set one of the above modes, navigate to the **Post Event Slate Duration** section of the [Live Events](https://cms.uplynk.com/static/cms2/index.html#/settings/live-events) page.
+
+## Set up a Media Player
+
+<Info>A single playback URL allows the playback of the live event as a live stream and on-demand content.</Info>
+
+**To set up a media player for use with a live event**
+
+1. Generate a playback URL using either the live event's ID (i.e., GUID) or external ID.
+
+- **Event ID**: An event ID is automatically generated upon creating a live event.
+
+<Info>Copy a playback URL by navigating to the [Live Events](https://cms.uplynk.com/static/cms2/index.html#/live-events/events) page, viewing the desired live event, clicking the Playback tab, and then clicking copy from under the **HLS URL** option.</Info>
+
+**Syntax**: https://content.uplynk.com/event/LiveEventID.m3u8
+
+``
+External ID: An external ID may be assigned to a live event upon its creation or modification.
+
+Syntax:
+
+https://content.uplynk.com/event/ext/<OwnerID>/LiveEventExternalID.m3u8
+If the live event configuration requires a token for playback, then create a script that signs the playback URL.
+Point the media player to the live event using the above playback URL.
+Distribute the media player to the desired viewers.
+If you are setting up a HLS player, you may add support for fast forwarding, rewinding, or pausing and resuming through the Live Timeshifting capability.
+
+
+
+
 
 ## Tutorial  {/*tutorial*/}
 

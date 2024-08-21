@@ -47,7 +47,7 @@ Set up playback via Apple FairPlay Streaming (FPS) by performing the following s
         ?rmt=fps&drm_policy_name=wvpolicy1
         ```
 
-        <Info>Use a [Studio DRM policy configuration](/uplynk/manage/content_protection/policy_configuration) and/or the [expansion parameter](/uplynk/deliver/playback_urls/customize_playback_via_parameters/#general-parameters) capability to obfuscate your Studio DRM policies.</Info>
+        <Info>Use a [Studio DRM policy configuration](/uplynk/manage/content_protection/policy_configuration) and/or the [expansion parameter](/uplynk/deliver/playback_urls/#core-identification-parameters) capability to obfuscate your Studio DRM policies.</Info>
 
       **Digital Signature**: [Sign the playback URL](/uplynk/deliver/playback_urls/#basic_setup).
 

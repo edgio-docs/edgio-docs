@@ -153,21 +153,21 @@ Once you have defined the above settings, the configuration file will need to up
 
 - **UDP**: Please update these Live Slicer configuration settings to reflect your installation. See [Live Slicer Configuration File Settings](#configuration-file-settings) for setting details.
 
-    | **Setting**| **Action**    | **Description**|
+    | Setting| Action    | Description|
     |----------------------|---------------|------|
-    | **card**   | Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
-    | **SCTE104_DID**| Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
-    | **SCTE104_SDID**     | Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
-    | **captions_DID**     | Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
-    | **captions_SDID**    | Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
-    | **ancillary_lines**  | Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
-    | **input**  | Modify  | Set it to `udp`.  |
-    | **unicast or multicast** | Add | Add either a unicast or multicast setting to the configuration file. Set it to the IP address of the computer generating the UDP stream. |
-    | **port**   | Add | Add this setting and set it to the port on which the Live Slicer will listen for the UDP stream.|
-    | **rtp_headers**| Add | **RTP Only**: Add this setting and set it to `1`. <br /> If you do not plan on using RTP and this setting is present in your configuration file, then either remove this setting or set it to `0`. |
-    | **rtp_readahead_dur**| Add | **RTP Only**: Add this setting and set it to the number of seconds (e.g., `2.0`) that the Live Slicer will wait before uploading the stream to the cloud. |
-    | **rtp_backlog_dur**  | Add | **RTP Only**: Add this setting and set it to the number of seconds (e.g., `1.4`) for which packet history will be preserved to reduce dropped packets. |
-    | **rtp_redundant_feed** | Add| **RTP Only**: Add this setting and set it to a URL that points to a redundant RTP feed through which the original stream will be reconstructed. <br /> A redundant RTP feed requires the source computer to have two network routes (e.g., 2-port network card). <br /> **Sample configuration**: `rtp_redundant_feed: rtp://stream.example.com:1234` |
+    | card   | Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
+    | SCTE104_DID| Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
+    | SCTE104_SDID     | Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
+    | captions_DID     | Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
+    | captions_SDID    | Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
+    | ancillary_lines  | Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
+    | input  | Modify  | Set it to `udp`.  |
+    | unicast or multicast | Add | Add either a unicast or multicast setting to the configuration file. Set it to the IP address of the computer generating the UDP stream. |
+    | port   | Add | Add this setting and set it to the port on which the Live Slicer will listen for the UDP stream.|
+    | rtp_headers| Add | **RTP Only**: Add this setting and set it to `1`. <br /> If you do not plan on using RTP and this setting is present in your configuration file, then either remove this setting or set it to `0`. |
+    | rtp_readahead_dur| Add | **RTP Only**: Add this setting and set it to the number of seconds (e.g., `2.0`) that the Live Slicer will wait before uploading the stream to the cloud. |
+    | rtp_backlog_dur  | Add | **RTP Only**: Add this setting and set it to the number of seconds (e.g., `1.4`) for which packet history will be preserved to reduce dropped packets. |
+    | rtp_redundant_feed | Add| **RTP Only**: Add this setting and set it to a URL that points to a redundant RTP feed through which the original stream will be reconstructed. <br /> A redundant RTP feed requires the source computer to have two network routes (e.g., 2-port network card). <br /> **Sample configuration**: `rtp_redundant_feed: rtp://stream.example.com:1234` |
 
     <Tip>If you plan on streaming RTP over UDP, then use the Status endpoint of the Live Slicer API to monitor your RTP feeds and FEC status.</Tip>
 
@@ -224,7 +224,7 @@ Once you have defined the above settings, the configuration file will need to up
     | captions_DID | Remove/Ignore | This setting does not apply to TCP streaming and will be ignored. |
     | captions_SDID | Remove/Ignore | This setting does not apply to TCP streaming and will be ignored. |
     | ancillary_lines | Remove/Ignore | This setting does not apply to TCP streaming and will be ignored. |
-    | input | Modify | Set it to `tcp`.See [Live Slicer Configuration File Settings](#configuration-file-settings) for setting details. |
+    | input | Modify | Set it to `tcp`. See [Live Slicer Configuration File Settings](#configuration-file-settings) for setting details. |
     | input_addr | Add | Set it to the IP address of the computer generating the TCP stream.See [Live Slicer Configuration File Settings](#configuration-file-settings) for setting details. |
     | port | Add | Add this setting and set it to the port on which the Live Slicer will listen for the TCP stream. See [Live Slicer Configuration File Settings](#configuration-file-settings) for setting details.|
 
@@ -278,7 +278,7 @@ Customize color representation conversion by assigning a lookup table (LUT) to t
 You may define multiple RGB LUTs to adjust for different input signals. The Live Slicer determines which configuration to use based on the output signal's color standard (i.e., HDR10 or SDR). If multiple LUTs have been defined for that color standard, then it will use the configuration that best matches the input signal's color space and range.
 
 - By default, the output signal's color space uses a narrow (i.e., limited) range (16 - 235). You may define the desired range when configuring the rgb_lut setting.<br />**Example**:<br />The following configuration uses a custom LUT to generate an HDR 10 output signal with a full range when the input signal is HLG:<br />`rgb_lut from hlg to hdr10,full /path/mylut.cube`
-- Alternatively, you may explicitly define a color space, a color primary, the transformation characteristics, and the range.<br />**Example**:<br />The following configuration is equivalent to the above sample configuration:<br />rgb_lut from colorspace:bt2020nc,primaries:bt2020,trc:arib-std-b67,range:tv to colorspace:bt2020nc,primaries:bt2020,trc:smpte2084,range:pc /path/mylut.cube
+- Alternatively, you may explicitly define a color space, a color primary, the transformation characteristics, and the range.<br />**Example**:<br />The following configuration is equivalent to the above sample configuration:<br />`rgb_lut from colorspace:bt2020nc,primaries:bt2020,trc:arib-std-b67,range:tv to colorspace:bt2020nc,primaries:bt2020,trc:smpte2084,range:pc /path/mylut.cube`
 
 See [Live Slicer Configuration File Settings](#configuration-file-settings).
 
@@ -288,7 +288,7 @@ See [Live Slicer Configuration File Settings](#configuration-file-settings).
 
 The Live Slicer's behavior with regards to audio ingest varies depending on whether you are streaming over UDP, RTMP, or SDI.
 
-- **UDP / RTMP / SRT / TCP**<br />You must specify each audio track that will be ingested via the `pids` parameter.<br />**<br />**Example**<br />**<br />The following configuration initializes the audio tracks that correspond to the packets with identifiers 308, 256, 257, and 258:<br />`pids: 308,256,257,258`
+- **UDP \/ RTMP \/ SRT \/ TCP**<br />You must specify each audio track that will be ingested via the `pids` parameter.<br />**<br />**Example**<br />**<br />The following configuration initializes the audio tracks that correspond to the packets with identifiers 308, 256, 257, and 258:<br />`pids: 308,256,257,258`
 
 - **SDI**: The Live Slicer automatically ingests the audio tracks that correspond to SDI channels 0 - 15.
 
@@ -325,9 +325,9 @@ The Live Slicer may be configured to use either Standard or Custom audio channel
 
 #### Standard Layout (SDI Signal)
 
-Configure a standard audio channel layout through the use of the audio_layout parameter.
+Configure a standard audio channel layout through the use of `the audio_layout` parameter.
 
-| **Audio Channel** | **Channel Layout**|
+| Audio Channel | Channel Layout|
 |-----------|----|
 | stereo 1| <ul><li>1: Left</li><li>2: Right</li></ul>    |
 | stereo 2| <ul><li>3: Left</li><li>4: Right</li></ul>    |
@@ -354,13 +354,7 @@ Before defining a custom audio layout, it is important to become acquainted with
 
 ##### Setup
 
-Setting up a custom audio channel layout requires replacing the `audio_layout` configuration setting with `audio_custom_layout_{Track}`. The configuration for this setting varies according to how audio should be mapped.
 
-Use the following syntax to downmix audio to mono:<br />`audio_custom_layout_{Track}: mono|X={SDI_Input_Channel}@{Level}`
-
-Use the following syntax to downmix audio to stereo:<br />`audio_custom_layout_{Track}: stereo|L={SDI_Input_Channel}@{Level},R={SDI_Input_Channel}@{Level}`
-
-Use the following syntax to downmix audio to 5.1:<br />`audio_custom_layout_{Track}: 5.1|C={SDI_Input_Channel}@{Level},L={SDI_Input_Channel}@{Level},R={SDI_Input_Channel}@{Level},RL={SDI_Input_Channel}@{Level},RR={SDI_Input_Channel}@{Level},LFE={SDI_Input_Channel}@{Level}`
 
 **Set up a custom audio channel layout**
 

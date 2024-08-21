@@ -354,6 +354,18 @@ Before defining a custom audio layout, it is important to become acquainted with
 
 ##### Setup
 
+Setting up a custom audio channel layout requires replacing the `audio_layout` configuration setting with `audio_custom_layout_{Track}`. The configuration for this setting varies according to how audio should be mapped.
+
+Use the following syntax to downmix audio to mono:<br />`audio_custom_layout_{Track}: mono|X={SDI_Input_Channel}@{Level}`
+
+Use the following syntax to downmix audio to stereo:<br />`audio_custom_layout_{Track}: stereo|L={SDI_Input_Channel}@{Level},R={SDI_Input_Channel}@{Level}`
+
+Use the following syntax to downmix audio to 5.1:<br />`audio_custom_layout_{Track}: 5.1|C={SDI_Input_Channel}@{Level},L={SDI_Input_Channel}@{Level},R={SDI_Input_Channel}@{Level},RL={SDI_Input_Channel}@{Level},RR={SDI_Input_Channel}@{Level},LFE={SDI_Input_Channel}@{Level}`
+
+**Set up a custom audio channel layout**
+
+1. Replace *\{Track\}* with the ID of the audio track that will be assigned a custom audio layout.
+2. Set X or L and R (Left and Right) to an ampersand delimited list of SDI channels that will serve as the source for the specified audio track. The valid range for each channel is 0 - 15.<br /><br />The following sample mono configuration sets the source for audio track 0 to SDI channels 0, 1, and 3.<br />`audio_custom_layout_0: mono|X=0&1&3`<br /><br />The level for each assigned SDI channel may be defined by appending the @ symbol followed by the desired value. Use the following formula to calculate level:<br />`{Volume %} * 10`<br /><br />The following sample stereo configuration sets Left to SDI channel 0 at 70.7% and SDI channel 2 at 80%, while Right is set to SDI channel 4 at 20.2%.<br />`audio_custom_layout_0: stereo|L=0@707&2@800,R=4@202`<br /><br />If the audio level is missing, then it will be set to 100%. The following sample stereo configuration sets Left to SDI channel 0 at 100% and Right is set to SDI channels 3 and 4 at 100%.<br />`audio_custom_layout_0: stereo|L=0,R=3&4`
 
 
 
@@ -409,6 +421,7 @@ Use the following commands to start, stop, and restart the Live Slicer.
 
 <Info>An invalid Live Slicer configuration may prevent the Live Slicer from starting up.
 </Info>
+
 <Tip>Review the syslog file to check whether the Live Slicer is running.</Tip>
 
 <Info>The Live Slicer will automatically start whenever the server is restarted.</Info>
@@ -421,7 +434,7 @@ A brief description is provided below for each setting that may be defined in a 
 <Info>By default, the value assigned to a setting cannot contain a hashtag.
 Learn how to override this behavior.</Info>
 
-| **Setting**| **Description**|
+| Setting| Description|
 |------|------|
 | ancillary_lines           | **SDI (Blackmagic) Only.**<br /> Defines the ancillary lines that will be scanned (0 to 31). Ignored with ancillary_scan set to on or input set to UDP/RTMP. <br />**Syntax**<br /> `ancillary_lines: #, #, ...` <br />**Example**<br /> `ancillary_lines: 9, 13` |
 | ancillary_scan| **SDI (Blackmagic) Only.**<br /> Determines whether all ancillary lines will be scanned. <br />**Valid values**<ul><li>**on** (scan all)</li><li>**off** (scan only defined lines)</li></ul> **Syntax**<br /> `ancillary_scan: on\|off` <br />**Example**<br /> `ancillary_scan: off`     |
@@ -441,15 +454,15 @@ Learn how to override this behavior.</Info>
 | capture_delay | Determines the delay in seconds for timecode matching. <br />**Syntax**<br /> `capture_delay: Seconds` <br />**Example**<br /> `capture_delay: 5`   |
 | capture_mode  | **SDI (Blackmagic) Only.**<br /> Determines the capture mode for Blackmagic DeckLink SDI card. Run the following command to view valid values for this setting: `$ uplynk_liveslicer -card CardNumber -list`<br />The recommended value for this setting is auto. This configuration allows the Live Slicer to autodetect the video mode for BlackMagic cards that support signal detection.<br />**Syntax**<br /> `capture_mode: Mode` <br />**Example**<br /> `capture_mode: auto`    |
 | card       | **SDI (Blackmagic) Only.**<br /> Identifies the card number(s) for Blackmagic DeckLink SDI card(s). <br />**Syntax**<br /> `card: Card Number` <br />**Example**<br /> `card: 1` |
-| cc#_desc   | **Advanced.**<br /> Defines a description for the closed captioning channel. <br />**Syntax**<br /> `cc#_desc: CC Channel Description` <br />**Example**<br /> `cc1_desc: English  `      |
-| cc#_lang   | **Advanced.**<br /> Identifies the language for the closed captioning channel. Specify a language by its code (e.g., en).<br />**Syntax**<br /> `cc#_lang: CC Channel Language` <br />**Example**<br /> `cc1_lang: en` |
+| cc\#_desc   | **Advanced.**<br /> Defines a description for the closed captioning channel. <br />**Syntax**<br /> `cc#_desc: CC Channel Description` <br />**Example**<br /> `cc1_desc: English  `      |
+| cc\#_lang   | **Advanced.**<br /> Identifies the language for the closed captioning channel. Specify a language by its code (e.g., en).<br />**Syntax**<br /> `cc#_lang: CC Channel Language` <br />**Example**<br /> `cc1_lang: en` |
 | cc_filter  | **Advanced.**<br /> Determines whether closed captions will be filtered. <br />**Valid values**<br /> **on** (Disables filtering CEA-608/708 captions on all channels with the exception of channel 1) or **off** (Filters CEA-608/708 captions on all channels)<br />**Syntax**<br /> `cc_filter: on\|off` <br />**Example**<br /> `cc_filter: on`          |
 | debugoverlay  | **Advanced.**<br /> Set to 1 to overlay debug information on the video. This setting should not be used for production traffic. The type of debug information to be overlaid onto the video may vary by Live Slicer version.<br />**Example**<br /> `debugoverlay: 1`|
 | description| **Required**. Defines a description for new assets. <br />**Syntax**<br /> `description: Asset Description` <br />**Example**<br /> `description: My Live Event`        |
 | disable_slicer_config_upload | **Requires Slicer version 22083100 or higher.**<br /> Determines whether to automatically upload configuration files. The Live Slicer excludes sensitive data when uploading your configuration file. Specifically, the uploaded configuration file will exclude the username and apikey settings.<br />**Valid values**<br /> **yes** (The Live Slicer will not upload your configuration file) or **no** (Default. Allows the Live Slicer to automatically upload your configuration file to our service) <br />**Example**<br /> `disable_slicer_config_upload: yes`  |
 | drm_mode   | Requires Slicer version 18052400 or higher. Determines the security level for CMS assets. Once Studio DRM is activated on your account, Studio DRM encryption is automatically applied to all new assets. This setting does not alter this behavior. It determines whether Studio DRM will be enforced and whether playback URLs must be signed.<br />**Syntax**<br /> `-drm_mode Mode` <br />**Valid values**<br /> **none**, **regular** (signed playback URL), **studio** (signed playback URL and Studio DRM) <br />**Example**<br /> `-drm_mode: studio`   |
 | drop_expired_breaks        | Determines how expired API requests are handled. <br />**Valid values**<br /> on (ignore) or off (perform action defined within an API request once it has been retained for the duration defined within the future_break_expiration_minutes setting. This occurs regardless of whether the specified timecode has elapsed.). <br />**Example**<br /> `drop_expired_breaks: on`|
-| enable_remote_config      | Requires Slicer version 21071400 or higher. Set to 1 to allow reporting health status according to the criteria defined within a failover group.This setting may override settings that precede it in the configuration file. It is strongly recommended to define this setting after the `failover_id` setting.. <br />**Valid values**<br /> 0 or 1 <br />**Example**<br /> `enable_remote_config: 1`   |
+| enable_remote_config      | Requires Slicer version 21071400 or higher. Set to 1 to allow reporting health status according to the criteria defined within a failover group.This setting may override settings that precede it in the configuration file. It is strongly recommended to define this setting after the `failover_id` setting. <br />**Valid values**<br /> 0 or 1 <br />**Example**<br /> `enable_remote_config: 1`   |
 | enable_rtmp_pull          | **RTMP Only.** <br />**Requires Slicer version 22083100 or higher.**<br /> Determines if RTMP feed can be pulled. <br />**Valid values**<br /> **yes** (Allows the Live Slicer to pull the RTMP feed) or **no** (Live Slicer will not pull RTMP feeds. Your encoder must push the RTMP feed to the Live Slicer) <br />**Example**<br /> `enable_rtmp_pull: yes `          |
 | failover_id| **Requires Slicer version 20081700 or higher.** <br />Assigns a failover group to the Live Slicer. Live Slicer failover also requires that you add this Live Slicer to the failover group identified by this setting. [Learn more](https://docs.edgecast.com/video/Content/Develop/Live-Slicer-API.htm#FutureTimecodes).<br />**Syntax**<br /> `failover_id: ID` <br />**Example**<br /> `failover_id: 1232b8646dea4cd0a48f5e0ffaa4f8c7`|
 | future_break_expiration_minutes | Determines the number of minutes that the Live Slicer will retain an API request for a scheduled break before flagging it as eligible for expiration. The drop_expired_breaks setting determines how the Live Slicer handles expired API requests. <br />**Syntax**<br /> `future_break_expiration_minutes: {Minutes}` <br />**Example**<br /> `future_break_expiration_minutes: 50 `  |

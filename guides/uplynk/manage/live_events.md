@@ -601,7 +601,7 @@ External ID: An external ID may be assigned to a live event upon its creation or
 
 **Syntax**:
 
-https://content.uplynk.com/event/ext/<OwnerID>/LiveEventExternalID.m3u8
+`https://content.uplynk.com/event/ext/<OwnerID>/LiveEventExternalID.m3u8`
 
 If the live event configuration requires a token for playback, then create a script that signs the playback URL.
 Point the media player to the live event using the above playback URL.

@@ -45,7 +45,7 @@ Set up a live event by performing the following steps:
 2. [Set up a live event configuration](#set-up-a-live-event-configuration).
 3. [Set up and distribute a media player](#set-up-a-media-player).
 4. [Broadcast the live event](#broadcast-a-live-event).
-5. Optional. [Provide on-demand access to the completed live event](on-demand-content).
+5. Optional. [Provide on-demand access to the completed live event](#on-demand-content).
 
 ## Set up a Live Slicer
 
@@ -126,7 +126,7 @@ Configure the Live Slicer to communicate over HTTPS by generating and installing
 | Live Slicer Configuration | Description |
 |-------------------------------|-----------------|
 | `ssl_port: 65010`             | Define the port through which the Live Slicer will send and receive TLS traffic. This sample configuration uses port 65010 for TLS traffic, but it can be configured to any available port. |
-| ssl_cert: `/Path/SSLCertificate.pem` | Identify the TLS certificate through which data will be encrypted by replacing the following variables: <ul><li>`Path`: Replace this with the path to the directory where the desired TLS certificate resides.</li><li>`SSLCertificate`: Replace this with the TLS certificate's filename.</li></ul> <br /> -  |
+| ssl_cert: `/Path/SSLCertificate.pem` | Identify the TLS certificate through which data will be encrypted by replacing the following variables: <ul><li>`Path`: Replace this with the path to the directory where the desired TLS certificate resides.</li><li>`SSLCertificate`: Replace this with the TLS certificate's filename.</li></ul> |
 | manual_ip: `DomainName`       | Defines the hostname through which TLS traffic will flow. |
 
 5. **Optional. Self-Signed SSL Certificates Only**: Perform the following steps from each web browser that will load the Live Events Dashboard:
@@ -184,7 +184,7 @@ A live event must be scheduled before it can be broadcasted. At its core, settin
    - Configuring how long content generated from the live event will be kept.
 
         **Playback Latency**: Select the level of latency behind live for this event:
-        - **Default:** ~60 seconds
+        - **Default:** \60 seconds
         - **Low:** Low 20s, 5+ second buffering, Missing Content Slate (MCS) is possible
         - **Lower:** Upper teens
 
@@ -241,7 +241,7 @@ Duplicating a live event will not generate an exact copy. Unique or live event-s
 | Playback | The following changes will be applied to playback settings:<ul><li>**URLs**: New playback URLs.</li><li>**Test Players**: Default test player. Custom test players associated with the source live event will not be carried over to the new live event.</li><li>**Embed**: New embed HTML code.</li></ul> |
 | Scheduled Start Time | Blank |
 | Scheduled Stop Time | Blank |
-| Status Information | The following status information will be set:<ul><li>**State**: Pre Event</li><li>**Testing**: Not Started</li><li>**GUID**: New GUID</li><li>**Actual Start Time**: Hasn't Started</li><li>**Actual Stop Time**: Hasn't Ended </li></ul><br /><br /><br /><br />|
+| Status Information | The following status information will be set:<ul><li>**State**: Pre Event</li><li>**Testing**: Not Started</li><li>**GUID**: New GUID</li><li>**Actual Start Time**: Hasn't Started</li><li>**Actual Stop Time**: Hasn't Ended </li></ul>|
 
 #### Add a Set of Ad Pods by Importing a CSV File
 
@@ -598,9 +598,10 @@ To set one of the above modes, navigate to the **Post Event Slate Duration** sec
 ``
 External ID: An external ID may be assigned to a live event upon its creation or modification.
 
-Syntax:
+**Syntax**:
 
 https://content.uplynk.com/event/ext/<OwnerID>/LiveEventExternalID.m3u8
+
 If the live event configuration requires a token for playback, then create a script that signs the playback URL.
 Point the media player to the live event using the above playback URL.
 Distribute the media player to the desired viewers.

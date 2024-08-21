@@ -1,8 +1,8 @@
 ---
-title: On Prem Slicer (aka Live Slicer)
+title: On Prem Slicer
 ---
 
-The Live Slicer captures content from a live signal and sends it to the cloud for encoding. This tool runs as a daemon process on a Linux system. It is controlled using [standard initctls **Command**](#administration).
+The Live Slicer (aka Live Slicer) captures content from a live signal and sends it to the cloud for encoding. This tool runs as a daemon process on a Linux system. It is controlled using [standard initctls Command](#administration).
 
 ## Install the Live Slicer
 
@@ -112,7 +112,7 @@ Perform these steps when installing or upgrading the Live Slicer to the latest v
 
 **Command**: `$ cd uplynk_slicer_linux_64-231114.04.01-master/`
 
-6. Run install_live.
+6. Run `install_live`.
 
 **Command**: `$ sudo ./install_live`
 

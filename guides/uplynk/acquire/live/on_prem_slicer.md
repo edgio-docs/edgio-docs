@@ -54,7 +54,6 @@ Perform these steps when installing or upgrading the Live Slicer to the latest v
     **Command**: `$ tar -xvf uplynk_slicer_linux_64-231114.04.01.tbz2`
 
     ```
-    ...
     uplynk_slicer_linux_64-231114.04.01-master/
 
     uplynk_slicer_linux_64-231114.04.01-master/slicebot.cfg.example
@@ -104,8 +103,6 @@ Perform these steps when installing or upgrading the Live Slicer to the latest v
     uplynk_slicer_linux_64-231114.04.01-master/libavformat.so.57.58.101
 
     uplynk_slicer_linux_64-231114.04.01-master/libavutil.so.55
-
-    ...
     ```
 
 5. Navigate to the newly created directory.
@@ -115,6 +112,7 @@ Perform these steps when installing or upgrading the Live Slicer to the latest v
 6. Run `install_live`.
 
     **Command**: `$ sudo ./install_live`
+
 ## Configure the Live Slicer  {/*configure-the-live-slicer*/}
 
 Upon installing the Live Slicer, the following configuration file will be created:

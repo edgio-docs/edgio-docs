@@ -1,0 +1,74 @@
+get:
+  tags:
+    - RTLD Rate Limiting Profile
+  summary: Get RTLD RL Profile
+  description: Retrieves a RTLD Rate Limiting (RL) profile by its system-defined ID.
+  operationId: GetRlProfileById
+  security:
+    - rtldScope:
+        - app.rtld:read
+  parameters:
+    - $ref: ../components/parameters/rtldProfileIDParam.yaml
+    - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/rtldSingleRlProfile.yaml
+    '401':
+      $ref: ../components/responses/rtldUnauthorized.yaml
+    '403':
+      $ref: ../components/responses/rtldForbidden.yaml
+    '404':
+      $ref: ../components/responses/rtldNotFound.yaml
+    '500':
+      $ref: ../components/responses/rtldInternalServerError.yaml
+put:
+  tags:
+    - RTLD Rate Limiting Profile
+  summary: Update RTLD RL Profile
+  description: Updates a RTLD Rate Limiting (RL) profile.
+  operationId: ReplaceRlProfileById
+  security:
+    - rtldScope:
+        - app.rtld
+  parameters:
+    - $ref: ../components/parameters/rtldProfileIDParam.yaml
+    - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
+  requestBody:
+    $ref: ../components/requestBodies/rtldRlProfileRequest.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/rtldSingleRlProfile.yaml
+    '400':
+      $ref: ../components/responses/rtldBadRequest.yaml
+    '401':
+      $ref: ../components/responses/rtldUnauthorized.yaml
+    '403':
+      $ref: ../components/responses/rtldForbidden.yaml
+    '404':
+      $ref: ../components/responses/rtldNotFound.yaml
+    '500':
+      $ref: ../components/responses/rtldInternalServerError.yaml
+  x-codegen-request-body-name: Body
+delete:
+  tags:
+    - RTLD Rate Limiting Profile
+  summary: Delete RTLD RL Profile
+  description: Permanently deletes a RTLD Rate Limiting (RL) profile.
+  operationId: DeleteRlProfileById
+  security:
+    - rtldScope:
+        - app.rtld
+  parameters:
+    - $ref: ../components/parameters/rtldProfileIDParam.yaml
+    - $ref: ../components/parameters/rtldEnvironmentIDParam.yaml
+  responses:
+    '204':
+      $ref: ../components/responses/rtldNoContent.yaml
+    '401':
+      $ref: ../components/responses/rtldUnauthorized.yaml
+    '403':
+      $ref: ../components/responses/rtldForbidden.yaml
+    '404':
+      $ref: ../components/responses/rtldNotFound.yaml
+    '500':
+      $ref: ../components/responses/rtldInternalServerError.yaml

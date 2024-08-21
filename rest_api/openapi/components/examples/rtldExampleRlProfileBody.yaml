@@ -1,0 +1,33 @@
+value:
+  environment_id: c9980249-2fb6-4699-a68e-271383815700
+  fields:
+    - account_number
+    - client_city
+    - client_country
+    - client_country_code
+    - client_ip
+    - client_tls_ja3_md5
+    - host
+    - limit_action_duration
+    - limit_action_percentage
+    - limit_action_type
+    - limit_id
+    - limit_name
+    - limit_start_timestamp
+    - method
+    - referer
+    - scope_id
+    - scope_name
+    - timestamp
+    - url
+    - user_agent
+    - uuid
+  delivery_method:
+    type: http_post
+    authentication:
+      type: http_basic
+      username: myuser
+      password: mypassword
+    destination_endpoint: https://logs.example.com/cdn/
+    log_format: json
+  profile_name: myprofile

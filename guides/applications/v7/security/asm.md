@@ -9,9 +9,10 @@ title: Attack Surface Management
 Definitions for key concepts are provided below.
 
 -   **Collection:** A [collection](#collections) represents the segment(s) of your network that will be scanned for vulnerabilities. 
--   **Assets:** Your assets consist of hostnames, IP addresses, GitHub repositories, and Snyk instances. There are two methods for registering an asset.
-    -   An asset is registered for each hostname, IP address, GitHub repository, and Snyk instance defined as a seed.
-    -   {{ PRODUCT }} uses seeds to determine which network segments will be scanned. Each hostname and IP address identified through this scan is also registered as an asset.
+-   **Assets:** Your assets consist of hostnames, IP addresses, GitHub repositories, Snyk targets, and AWS Resources. There are two methods for registering an asset.
+    -   An asset is registered for each hostname, IP address, GitHub repository defined as a seed.
+    -   {{ PRODUCT }} uses seeds to determine which network segments will be scanned. Each hostname and IP address identified through this scan is also registered as an asset. 
+        For more complex seeds that target whole organizations/systems, such as Snyk and Amazon GuardDuty, multiple assets (Snyk targets and AWS resources) are created as assets.
 -   **Exposures:** By default, {{ PRODUCT }} scans your network for:
     -   Common Vulnerabilities and Exposures (CVE). A CVE represents a known security vulnerability or exposure for a software package. 
     -   Common Weakness Enumeration (CWE). A CWE identifies a common software or hardware weakness that can potentially introduce a security vulnerability. 
@@ -19,6 +20,7 @@ Definitions for key concepts are provided below.
     -   TLS issues.
     -   Exposed secrets.
     -   Response header violations. For example, a required header may be missing or it can assigned an invalid value.
+    -   AWS issues.
 -   **Protections:** {{ PRODUCT }} identifies the security solutions that are protecting the assets associated with the scanned network segment.
 -   **Technologies:** {{ PRODUCT }} identifies the software and services used by the assets associated with the scanned network segment.
 -   **Rules:** Determines how vulnerabilities and exposures are detected and handled. 
@@ -52,10 +54,11 @@ A collection represents the segment(s) of your network that will be scanned for 
 Each collection must contain at least one seed. Use one or more seed(s) to:
 
 -   Define a domain, an IP address, or a range of IP addresses scope that will be scanned.
--   Define a GitHub repository from which security vulnerabilities identified by Dependabot will be pulled.
+-   Define a GitHub repository from which security vulnerabilities identified by GitHub (from Dependabot, Code scanning and Secret scanning) will be pulled.
 -   Define a Snyk instance from which security vulnerabilities will be pulled.
+-   Define an Amazon GuardDuty instance and targeted regions from which findings will be pulled.
 
-Once you have defined the desired seed(s), {{ PRODUCT }} will scan your network for exposures and retrieve vulnerabilities identified by Dependabot (GitHub) and Snyk. This allows {{PRODUCT}} to generate a consolidated list of vulnerabilities and exposures that provides full visibility into your organization's attack surface. 
+Once you have defined the desired seed(s), {{ PRODUCT }} will scan your network for exposures and retrieve vulnerabilities identified by GitHub and Snyk. This allows {{PRODUCT}} to generate a consolidated list of vulnerabilities and exposures that provides full visibility into your organization's attack surface. 
     
 ### Managing Collections {/*managing-collections*/}
 
@@ -115,6 +118,11 @@ You may create, modify, and delete collections. Finally, you can reset a collect
         1.  In the **Name** option, type a descriptive name.
         2.  In the **Organization id** option, type your Snyk organization's internal ID.
         3.  In the **API Key** option, type your Snyk organization's API key.
+    -   **Amazon GuardDuty:**
+        1.  In the **Name** option, type a descriptive name.
+        2.  In the **Access Key ID** option, type your Amazon GuardDuty [access key ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey).
+        3.  In the **Secret Access Key** option, type your Amazon GuardDuty [secret access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey).
+        4.  In the **Regions** option, type regions that should be scanned.
 
 6.  Click **Create Seed**.
 
@@ -215,8 +223,9 @@ Rules allow you to:
 **Key information:**
 
 -   {{ PRODUCT }} will not create an exposure for a hostname or IP address unless a finding matches at least one rule that is configured to create an exposure. 
--   For GitHub repositories, {{ PRODUCT }} pulls vulnerabilities identified by Dependabot. 
--   For Snyk, {{ PRODUCT }} pulls vulnerabilities identified by Snyk. 
+-   For GitHub repositories, {{ PRODUCT }} pulls vulnerabilities identified by GitHub (from Dependabot, Code scanning and Secret scanning). 
+-   For Snyk, {{ PRODUCT }} pulls vulnerabilities identified by Snyk.
+-   For Amazon GuardDuty, {{ PRODUCT }} pulls findings identified by Amazon GuardDuty for selected regions.
 -   {{ PRODUCT }} provides a default rule set that you can use as a starting point. This rule set creates exposures for all findings.
 -   Rules are processed in the order that they are listed. If a finding satifies multiple rules, then all of those rules are applied to it. {{ PRODUCT }} resolves conflicts by giving precedence to the rule that is closest to the bottom of the list. 
 

@@ -71,6 +71,7 @@ An alternative to the Live Slicer is the [CameraSlicer](#cameraslicer). It provi
    livepreview_with_audio: on
    livepreview_max_viewers: 2
    ```
+
     Additional information for each of the above Live Slicer settings is provided below.
 
     - **api_port**: Verify that the Live Slicer has been configured to listen for API requests on a specific port.
@@ -323,7 +324,7 @@ An ad pod defines an ad break window and associates metadata with it.
 
 You may configure the Live Events Dashboard to alert the operator when a live event is in an ad state for a specified number of minutes. Once enabled, a warning will be displayed 15 seconds prior to the specified number of minutes. After the specified time limit has elapsed, a critical alert will replace the warning.
 
-- **Set up a default alert configuration** through the **Default Ad Break Warning (min)** option from the [Live Events](https://cms.uplynk.com/static/cms2/index.html#/settings/live-events) page.
+- **Set up a default alert configuration** through the **Default Ad Break Warning (min)** option from the [Live Events](https://cms.uplynk.com/static/cms2/index.html/#settings/live-events) page.
 - **Override this default setting on a per live event basis** by opening the desired live event, clicking the **Config** tab, and then setting the **Ad Break Warning (mins)** option to the desired number of minutes.
 
 #### Ad Pod CSV Setup
@@ -454,7 +455,7 @@ Once you have performed both of the above steps, your live event operator can ma
    - Click **Add**.
    - Repeat the previous step as needed to add more markers.
 
-5. Click **Save**.
+7. Click **Save**.
 
 #### Mark Key Events Within a Live Event
 

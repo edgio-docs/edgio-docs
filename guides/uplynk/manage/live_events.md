@@ -184,7 +184,7 @@ A live event must be scheduled before it can be broadcasted. At its core, settin
    - Configuring how long content generated from the live event will be kept.
 
         **Playback Latency**: Select the level of latency behind live for this event:
-        - **Default:** \60 seconds
+        - **Default:** 60 seconds
         - **Low:** Low 20s, 5+ second buffering, Missing Content Slate (MCS) is possible
         - **Lower:** Upper teens
 

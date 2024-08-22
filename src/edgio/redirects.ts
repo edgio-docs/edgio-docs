@@ -329,10 +329,19 @@ export default <Array<Redirect>>[
     '/applications/v7/performance/cdn_as_code',
   ],
   [
+    '/applications/v7/performance/traditional_sites',
+    '/applications/v7/performance',
+  ],
+  ['/applications/v7/intro', '/applications'],
+  [
     '/applications/v7/performance/experiments',
     '/applications/v7/experimentation',
   ],
   ['/applications/v7/edge-functions', '/applications/v7/edge_functions'],
+  [
+    '/applications/v7/edge_functions/examples/jwt_verification',
+    '/applications/v7/edge_functions/examples/jwt_validation',
+  ],
   [
     /\/guides\/v7\/sites_frameworks\/getting_started\/(ember_fastboot|frontity|gatsby|hexo|mkdocs|razzle|sanity)/,
     '/applications/v7/sites_frameworks/legacy_connectors/$1',

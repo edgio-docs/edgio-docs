@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Edgio REST API
-  version: 0.5.0
+  version: 0.4.0
   x-logo:
     url: 'https://docs.edg.io/_next/static/media/edgio-dark.ea0d686f.webp'
     backgroundColor: '#FFFFFF'
@@ -195,20 +195,7 @@ tags:
   - name: RTLD Access Logs Profile
     description: |
     
-      Automate Real-Time Log Delivery (RTLD) Access Logs profile management. A RTLD Access Logs profile defines the condition(s) under which log data for requests submitted to our network will be delivered to the desired destination (e.g., your web server or AWS S3). 
-      
-      <a href="/applications/v7/logs/rtld" target="_blank">Learn more about Real-Time Log Delivery.</a>
-  - name: RTLD BOT Profile
-    x-displayName: RTLD Bot Profile
-    description: |
-    
-      Automate Real-Time Log Delivery (RTLD) Bot profile management. A RTLD Bot profile defines the condition(s) under which Bot Manager log data will be delivered to the desired destination (e.g., your web server or AWS S3). 
-      
-      <a href="/applications/v7/logs/rtld" target="_blank">Learn more about Real-Time Log Delivery.</a>
-  - name: RTLD Rate Limiting Profile
-    description: |
-    
-      Automate Real-Time Log Delivery (RTLD) Rate Limiting profile management. A RTLD Rate Limiting profile defines the condition(s) under which log data for requests that exceed your rate limits will be delivered to the desired destination (e.g., your web server or AWS S3). 
+      Automate Real-Time Log Delivery (RTLD) Access Logs profile management. A RTLD Access Logs profile defines the condition(s) under which access log data will be delivered to the desired destination (e.g., your web server or AWS S3). 
       
       <a href="/applications/v7/logs/rtld" target="_blank">Learn more about Real-Time Log Delivery.</a>
   - name: RTLD WAF Profile
@@ -632,30 +619,6 @@ paths:
     $ref: paths/accesslogs_fields.yaml
     servers:
       - url: 'https://edgioapis.com/rtld/v1'
-  /bot/profiles:
-    $ref: paths/bot_profiles.yaml
-    servers:
-      - url: 'https://edgioapis.com/rtld/v1'
-  /bot/profiles/{id}:
-    $ref: paths/bot_profiles_{id}.yaml
-    servers:
-      - url: 'https://edgioapis.com/rtld/v1'
-  /bot/fields:
-    $ref: paths/bot_fields.yaml
-    servers:
-      - url: 'https://edgioapis.com/rtld/v1'
-  /rl/profiles:
-    $ref: paths/rl_profiles.yaml
-    servers:
-      - url: 'https://edgioapis.com/rtld/v1'
-  /rl/profiles/{id}:
-    $ref: paths/rl_profiles_{id}.yaml
-    servers:
-      - url: 'https://edgioapis.com/rtld/v1'
-  /rl/fields:
-    $ref: paths/rl_fields.yaml
-    servers:
-      - url: 'https://edgioapis.com/rtld/v1'
   /waf/profiles:
     $ref: paths/waf_profiles.yaml
     servers:
@@ -797,8 +760,6 @@ x-tagGroups:
   - name: Real-Time Log Delivery (RTLD)
     tags:
       - RTLD Access Logs Profile
-      - RTLD BOT Profile
-      - RTLD Rate Limiting Profile
       - RTLD WAF Profile
       - Log Fields
       - AWS Regions

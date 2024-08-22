@@ -14,11 +14,11 @@ title: Origin Analytics
     2.  Mark each origin configuration for which analytics will be provided.
     3.  Click **Update**.
     
-    ![Filtering by Origin](/images/v7/performance/origin-analytics-origin-filter.png?height=357)
+    ![Filtering by Origin](/images/v7/performance/origin-analytics-origin-filter.png?height=315)
 
 3.  Optional. Adjust the time period for which analytics will be displayed. From the upper-right hand corner of this page, select a different time period (e.g., `Today`, `Last 24 Hours`, or `Last 7 Days`).
 
-    ![Filtering by Origin](/images/v7/performance/origin-analytics-time-period.png?height=357)
+    ![Filtering by Origin](/images/v7/performance/origin-analytics-time-period.png)
 
 ## Key Metrics {/*key-metrics*/}
 

@@ -57,5 +57,59 @@ Perform these steps when installing or upgrading the Live Slicer to the latest v
     $ tar -xvf uplynk_slicer_linux_64-231114.04.01.tbz2`
     ```
 
+    ```
+    uplynk_slicer_linux_64-231114.04.01-master/
+
+    uplynk_slicer_linux_64-231114.04.01-master/slicebot.cfg.example
+
+    uplynk_slicer_linux_64-231114.04.01-master/libfreetype.so.6
+
+    uplynk_slicer_linux_64-231114.04.01-master/libavcodec.so.57
+
+    uplynk_slicer_linux_64-231114.04.01-master/libcares.so.2
+
+    uplynk_slicer_linux_64-231114.04.01-master/slicer
+
+    uplynk_slicer_linux_64-231114.04.01-master/example.conf
+
+    uplynk_slicer_linux_64-231114.04.01-master/libcrypto.so.1.0.0
+
+    uplynk_slicer_linux_64-231114.04.01-master/libssl.so.1.0.0
+
+    uplynk_slicer_linux_64-231114.04.01-master/liveslicer
+
+    uplynk_slicer_linux_64-231114.04.01-master/font_i420.dat
+
+    uplynk_slicer_linux_64-231114.04.01-master/libavfilter.so.6
+
+    uplynk_slicer_linux_64-231114.04.01-master/ca-bundle.crt
+
+    uplynk_slicer_linux_64-231114.04.01-master/install_live
+
+    uplynk_slicer_linux_64-231114.04.01-master/libswscale.so.4
+
+    uplynk_slicer_linux_64-231114.04.01-master/libswresample.so.2.4.100
+
+    uplynk_slicer_linux_64-231114.04.01-master/libbeam-slicer.so
+
+    uplynk_slicer_linux_64-231114.04.01-master/libopus.so.0
+
+    uplynk_slicer_linux_64-231114.04.01-master/libopus.so.0.5.0
+
+    uplynk_slicer_linux_64-231114.04.01-master/LICENSE.txt
+
+    uplynk_slicer_linux_64-231114.04.01-master/slicebot
+
+    uplynk_slicer_linux_64-231114.04.01-master/README.html
+
+    uplynk_slicer_linux_64-231114.04.01-master/libavformat.so.57
+
+    uplynk_slicer_linux_64-231114.04.01-master/libavformat.so.57.58.101
+
+    uplynk_slicer_linux_64-231114.04.01-master/libavutil.so.55
+
+	...
+    ```
+
 
 <!-- ^^ publishes with 4,5,6 removed. doesn't publish with 4,5,6 removed and configure live slicer -->

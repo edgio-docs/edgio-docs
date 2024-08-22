@@ -200,6 +200,10 @@ const nav = {
               path: 'performance/observability/edge_insights',
             },
             {
+              title: 'Origin Analytics',
+              path: 'performance/observability/origin_analytics',
+            },
+            {
               title: 'Real User Monitoring (RUM)',
               path: 'performance/observability/real_user_monitoring',
             },

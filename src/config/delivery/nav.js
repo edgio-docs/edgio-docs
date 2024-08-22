@@ -1,4 +1,4 @@
-import {productsConfig} from '../appConfig';
+import { productsConfig } from '../appConfig';
 
 const separator = {
   title: '',
@@ -472,10 +472,6 @@ const nav = {
               title: 'Live Stream Provisioning',
               path: 'https://support.limelight.com/public/openapi/live-stream-provisioning/index.html',
               external: true,
-            },
-            {
-              title: 'LVP',
-              path: 'video/apis/lvp',
             },
             {
               title: 'MMD Live',

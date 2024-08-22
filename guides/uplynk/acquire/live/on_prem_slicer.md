@@ -126,8 +126,6 @@ Perform these steps when installing or upgrading the Live Slicer to the latest v
     $ sudo ./install_live
     ```
 
-<!-- ^^ publishes with 4,5,6 removed. doesn't publish with 4,5,6 removed and configure live slicer -->
-
 ## Configure the Live Slicer  {/*configure-the-live-slicer*/}
 
 Upon installing the Live Slicer, the following configuration file will be created:
@@ -144,4 +142,4 @@ Update the following settings in your Live Slicer configuration file:
 |-------------|--------|
 | description | Set this to a description that will be assigned to new assets.    |
 | username    | Set this to the email address associated with your account.|
-| apikey| If missing, add a line for the `apikey` setting. Set it to your secret API key. <br /> Leverage our API to generate an API key that only authorizes slicer-related actions by creating a sub-owner with only the slice permission. <br /> **Example**: `apikey: abcDEFghiJKLmnoPQRtuvWXYz123ABCdefGHIJKL`<br > **Locate API Keys**<ol><li>Navigate to the [Integration Keys page](#https://cms.uplynk.com/static/cms2/index.html#/settings/integration-keys) by clicking the **Settings** tab and then clicking **Integration Keys** from the side navigation tab.</li><li>Your API key(s) are listed under the **API Keys** section.</li></ol>|
+| apikey| If missing, add a line for the `apikey` setting. Set it to your secret API key. <br /> Leverage our API to generate an API key that only authorizes slicer-related actions by creating a sub-owner with only the slice permission. <br /> **Example**: `apikey: abcDEFghiJKLmnoPQRtuvWXYz123ABCdefGHIJKL`<br > **Locate API Keys**<ol><li>Navigate to the

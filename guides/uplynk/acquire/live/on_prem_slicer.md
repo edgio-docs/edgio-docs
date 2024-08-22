@@ -110,6 +110,20 @@ Perform these steps when installing or upgrading the Live Slicer to the latest v
 
 	...
     ```
+5. Navigate to the newly created directory.
 
+    **Command**:
+
+    ```
+    $ cd uplynk_slicer_linux_64-231114.04.01-master/
+    ```
+
+6. Run `install_live`.
+
+    **Command**:
+
+    ```
+    $ sudo ./install_live
+    ```
 
 <!-- ^^ publishes with 4,5,6 removed. doesn't publish with 4,5,6 removed and configure live slicer -->

@@ -1,0 +1,5 @@
+title: RTLD Bot profile properties
+description: A RTLD Bot profile's configuration including its system-defined ID.
+allOf:
+  - $ref: ./rtldProfileID.yaml
+  - $ref: ./rtldBotProfileProperties.yaml

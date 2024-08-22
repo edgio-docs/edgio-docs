@@ -372,16 +372,28 @@ Before defining a custom audio layout, it is important to become acquainted with
 
 Setting up a custom audio channel layout requires replacing the `audio_layout` configuration setting with `audio_custom_layout_{Track}`. The configuration for this setting varies according to how audio should be mapped.
 
-Use the following syntax to downmix audio to mono:<br />`audio_custom_layout_{Track}: mono|X={SDI_Input_Channel}@{Level}`
+Use the following syntax to downmix audio to mono:
 
-Use the following syntax to downmix audio to stereo:<br />`audio_custom_layout_{Track}: stereo|L={SDI_Input_Channel}@{Level},R={SDI_Input_Channel}@{Level}`
+```
+audio_custom_layout_{Track}: mono|X={SDI_Input_Channel}@{Level}
+```
 
-Use the following syntax to downmix audio to 5.1:<br />`audio_custom_layout_{Track}: 5.1|C={SDI_Input_Channel}@{Level},L={SDI_Input_Channel}@{Level},R={SDI_Input_Channel}@{Level},RL={SDI_Input_Channel}@{Level},RR={SDI_Input_Channel}@{Level},LFE={SDI_Input_Channel}@{Level}`
+Use the following syntax to downmix audio to stereo:
+
+```
+audio_custom_layout_{Track}: stereo|L={SDI_Input_Channel}@{Level},R={SDI_Input_Channel}@{Level}
+```
+
+Use the following syntax to downmix audio to 5.1:
+
+```
+audio_custom_layout_{Track}: 5.1|C={SDI_Input_Channel}@{Level},L={SDI_Input_Channel}@{Level},R={SDI_Input_Channel}@{Level},RL={SDI_Input_Channel}@{Level},RR={SDI_Input_Channel}@{Level},LFE={SDI_Input_Channel}@{Level}
+```
 
 **Set up a custom audio channel layout**
 
 1. Replace *\{Track\}* with the ID of the audio track that will be assigned a custom audio layout.
-2. Set X or L and R (Left and Right) to an ampersand delimited list of SDI channels that will serve as the source for the specified audio track. The valid range for each channel is 0 - 15.<br /><br />The following sample mono configuration sets the source for audio track 0 to SDI channels 0, 1, and 3.<br />`audio_custom_layout_0: mono|X=0&1&3`<br /><br />The level for each assigned SDI channel may be defined by appending the @ symbol followed by the desired value. Use the following formula to calculate level:<br />`{Volume %} * 10`<br /><br />The following sample stereo configuration sets Left to SDI channel 0 at 70.7% and SDI channel 2 at 80%, while Right is set to SDI channel 4 at 20.2%.<br />`audio_custom_layout_0: stereo|L=0@707&2@800,R=4@202`<br /><br />If the audio level is missing, then it will be set to 100%. The following sample stereo configuration sets Left to SDI channel 0 at 100% and Right is set to SDI channels 3 and 4 at 100%.<br />`audio_custom_layout_0: stereo|L=0,R=3&4`
+2. Set X or L and R (Left and Right) to an ampersand delimited list of SDI channels that will serve as the source for the specified audio track. The valid range for each channel is 0 - 15.<br /><br />The following sample mono configuration sets the source for audio track 0 to SDI channels 0, 1, and 3.<br />audio_custom_layout_0: mono\|X=0&1&3<br /><br />The level for each assigned SDI channel may be defined by appending the @ symbol followed by the desired value. Use the following formula to calculate level:<br />`{Volume %} * 10`<br /><br />The following sample stereo configuration sets Left to SDI channel 0 at 70.7% and SDI channel 2 at 80%, while Right is set to SDI channel 4 at 20.2%.<br />audio_custom_layout_0: stereo\|L=0@707&2@800,R=4@202<br /><br />If the audio level is missing, then it will be set to 100%. The following sample stereo configuration sets Left to SDI channel 0 at 100% and Right is set to SDI channels 3 and 4 at 100%.<br />audio_custom_layout_0: stereo\|L=0,R=3&4
 
 
 

@@ -2,7 +2,7 @@
 title: Log Delivery Service
 ---
 
-When requests for your content enter the CDN, the requests are logged based on configurations. The Log Delivery Service allows you to configure and manage your log files.
+Log Delivery Service (LDS) collects log data from CDN services and delivers it to a destination of your choice. It seamlessly integrates with platforms like Amazon S3, Google Cloud Storage, Hydrolix, Edgio Origin Storage, and others. LDS offers valuable insights into CDN performance and your traffic patterns.
 
 <Callout type="info">Log field names, delimiters, date and time format, file name, and directory structure adhere to W3C/ISO standards.</Callout>
 
@@ -32,7 +32,7 @@ This list is more focused than the company/account at the top of the page and is
 
 ### Creating a Log Delivery Configuration  {/*creating-a-log-delivery-configuration*/}
 
-You can create a single configuration for any combination of shortname, storage location, and service type.
+You can create a single configuration for any combination of shortname, destination, and service type.
 
 1. Click the **+** button at the top of the Log Delivery List Page.
 
@@ -48,7 +48,7 @@ You can create a single configuration for any combination of shortname, storage 
 
 1. Click the configuration's row on the Log Delivery List page.
 
-    The configuration is displayed in edit mode. If the configuration's storage location is Origin Storage, you will see a message warning you about extra fees if you choose to store logs in.
+    The configuration is displayed in edit mode. If the configuration's destination is Origin Storage, you will see a message warning you about extra fees if you choose to store logs in.
 
     <Callout type="info"> - Existing configurations include [Directory Layout and FileName Template Fields](#delivery-option-fields) <br /> - If your user does not have 'Manage' permissions for all fields are disabled and you cannot modify the configuration.</Callout>
 
@@ -141,7 +141,7 @@ You can store your log files on the Amazon S3 platform. Amazon S3 is a cloud obj
 
 #### Prerequisites  {/*prerequisites*/}
 
-Before configuring Amazon S3 as a storage location, you must do the following:
+Before configuring Amazon S3 as a destination, you must do the following:
 
 * Create an S3 Identity and Access Management (IAM) user in Amazon's configuration screens.
 
@@ -153,7 +153,7 @@ Before configuring Amazon S3 as a storage location, you must do the following:
 
 #### Configuration Fields  {/*configuration-fields*/}
 
-These are visible only when you select Amazon S3 as the storage location.
+These are visible only when you select Amazon S3 as the destination.
 
 | Field | Description |
 | --- | --- |
@@ -169,7 +169,7 @@ You can store your log files on the Google Cloud Storage platform. Google Cloud 
 
 #### Prerequisites  {/*prerequisites-google-storage*/}
 
-Before configuring Google Cloud Storage as a storage location, you must do the following:
+Before configuring Google Cloud Storage as a destination, you must do the following:
 
 1. Create a Google Cloud Project (GCP) or use an existing project. See Google's [Google Cloud Platform - Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects) guide for instructions.
 
@@ -184,9 +184,9 @@ Before configuring Google Cloud Storage as a storage location, you must do the f
 
 6. Generate JSON access keys for the service account. See Google's [Creating service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys) guide for instructions.
 
-#### Configuring a Google Cloud Storage Location  {/*configuring-a-google-cloud-storage-location*/}
+#### Configuring a Google Cloud Destination  {/*configuring-a-google-cloud-storage-location*/}
 
-1. Select **Google Cloud Storage** in the **STORAGE LOCATION** dropdoown.
+1. Select **Google Cloud Storage** in the **DESTINATION** dropdoown.
 
 2. Configure the fields described in [Configuration Fields](#configuration-fields-cloud-storage).
 
@@ -194,7 +194,7 @@ Before configuring Google Cloud Storage as a storage location, you must do the f
 
 #### Configuration Fields {/*configuration-fields-cloud-storage*/}
 
-These are visible only when you select Google Cloud Storage as the storage location. Required fields are marked with an asterisk in the Control user interface.
+These are visible only when you select Google Cloud Storage as the destination. Required fields are marked with an asterisk in the Control user interface.
 
 | Field | Description |
 | --- | --- |
@@ -215,7 +215,7 @@ Origin Storage must be enabled for the name selected in the SHORTNAME.
 
 #### Configuring the Location  {/*configuring-the-location-origin-storage*/}
 
-1. Select **Origin Storage** in the **STORAGE LOCATION** drop-down menu.
+1. Select **Origin Storage** in the **DESTINATION** drop-down menu.
 
 2. Configure the field described in [Origin Storage Configuration Fields](#origin-storage-configuration-fields).
 
@@ -239,12 +239,11 @@ Origin Storage must be enabled for the name selected in the SHORTNAME.
 
 #### Configuring the Datadog Location  {/*configuring-the-datadog-location*/}
 
-1. Select **Datadog** in the **STORAGE LOCATION** dropdown menu.
+1. Select **Datadog** in the **DESTINATION** dropdown menu.
 
 2. Configure the fields as described in **[Configuration Fields](#datadog-configuration-fields)**.
 
 3. Click **SAVE**.
-
 
 #### Datadog Configuration Fields  {/*datadog-configuration-fields*/}
 
@@ -254,6 +253,66 @@ Origin Storage must be enabled for the name selected in the SHORTNAME.
 | API Key | API key associated with your Datadog account |
 | Service | _(optional)_ The property to be used as the 'service' property of Datadog |
 | Tags | _(optional)_ Comma-separated list of tag to send with logs (e.g.cdn:edgio) |
+
+### Enabling log Delivery to Hydrolix {/*enable-hydrolix*/}
+
+You can configure LDS to stream logs data to Hydrolix platform.
+
+#### Prerequisites {/*hydrolix-prerequisites*/}
+
+Before configuring Hydrolix as a destination, you will need to do the following on your target Hydrolix environment:
+
+1. Create a [Project/Table](https://docs.hydrolix.io/docs/projects-and-tables).
+
+2. Create a [Transform](https://docs.hydrolix.io/docs/transforms-and-write-schema).
+
+#### Configure a Hydrolix as LDS Destination {/*configure-hydrolix*/}
+
+1. Select **Hydrolix** in the **DESTINATION** drop-down menu.
+
+2. Configure the fields as described in [Configuration Fields](#hydrolix-configuration-fields).
+
+3. Click **SAVE**.
+
+#### Hydrolix Configuration Fields {/*hydrolix-configuration-fields*/}
+
+| **Field**     | **Description** |
+|------|-----|
+| STREAMING API HOSTNAME      | Hostname of your Hydrolix Streaming API. This value will be used in the URL `https://<hydrolix-streaming-api-hostname>/ingest/event` for log ingestion. |
+| PROJECT NAME| Hydrolix project name to include in the `x-hdx-table` HTTP header.     |
+| TABLE NAME    | Hydrolix table name to include in the `x-hdx-table` HTTP header. |
+| TRANSFORM SCHEMA NAME| (optional) Hydrolix transform schema name to include in the `x-hdx-transform` HTTP header.  |
+| AUTHORIZATION HEADER VALUE  | Authorization header value to use when sending logs. (e.g., `Basic <Base64 encoded username and password>', 'Bearer <Your API key>`') |
+
+### Enabling Log Delivery to Custom HTTPS Endpoint {/*enable-to-https*/}
+
+LDS supports log data streaming to a custom HTTPS endpoint using POST requests.
+
+#### Configure a Custom HTTPS endpoint as  LDS destination
+
+1. Select **Custom HTTPS endpoint** in the **DESTINATION** drop-down menu.
+
+2. Configure the fields as described in [Configuration Fields](#https-configuration-fields).
+
+3. Click **SAVE**.
+
+#### HTTPS Configuration Fields {/*https-configuration-fields*/}
+
+### Sampling Data  {/*sampling-data*/}
+
+[Data Sampling](/images/delivery/data-sampling.png)
+
+1. Slide the circle to select the percentage of log volume by status code group.
+
+    The valid range for sampling rates is `0` to `100`, where:
+
+    - `0` means all data is filtered out.
+
+    - `100` means no filtering is applied (all data is delivered).
+
+    - Any value in between represents the percentage of log lines to be delivered.
+
+2. The specified percentage is displayed above the circle.
 
 ## Working with Personally Identifiable Information  {/*working-with-personally-identifiable-information*/}
 
@@ -302,7 +361,8 @@ Click the **Agree** button to indicate you agree.
 | --- | --- |
 | DIRECTORY LAYOUT | The DIRECTORY LAYOUT property specifies the folder path within the destination storage where log files will be uploaded. It supports dynamic placeholders that are replaced with relevant information during file upload.<br /> Supported Dynamic Placeholders: <br /> `{service_type}`: Type of service for which logs are collected.<br />`{config_uuid}`: UUID of the LDS configuration.<br />`{yyyy}` , `{MM}`, `{dd}` : Resolves to year, month, and day respectively based on the start of the time period of the log entries covered in the file, all in UTC timezone.<br />`{yyyy_proc}`, `{MM_proc}`, `{dd_proc}`: Resolves to year, month, and day respectively using the timestamp that represents the time when the file was prepared by LDS for delivery, all in UTC timezone.<br />Default Value: `{service_type}/{config_uuid}/{yyyy}/{MM}/{dd}` <br /> <Callout type="info">It is not possible to combine `{yyyy_proc}`, `{MM_proc}`, `{dd_proc}` and `{yyyy}`, `{MM}`, `{dd}` variables in the directory layout. Mixing these variables in the directory structure is invalid. <br /><br /></Callout>|
 | FILE NAME TEMPLATE | The FILE NAME TEMPLATE property determines the naming convention for log files uploaded to your destination storage. It supports dynamic placeholders that are resolved during file creation.<br /><br />Supported Dynamic Placeholders:<br />`{shortname}`: The account name for which the log entries have been collected.<br />`{request_end_date_time_from}`: This timestamp represents the start of the time period covered by log entries in the file, formatted as `{year}{month}{day}{hour}{minute}{second}` in UTC timezone.<br />`{request_end_date_time_to}`: This timestamp represents the end of the time period covered by log entries in the file, formatted as `{year}{month}{day}{hour}{minute}{second}` in UTC timezone. <br /><br /> <Callout type="info">The time period covered by log entries in the file is not fixed and may vary based on LDS setup and processing requirements. While currently supporting 10-minute and hourly time periods, LDS may add support for new time periods in the future.</Callout><br />`{process_window_date_time}`: The timestamp when the file was prepared for delivery, formatted as `{year}{month}{day}{hour}{minute}{second}` in UTC timezone.<br />`{split_id}`: ID assigned to the file, used for splitting large log files. When a file needs to be split to avoid exceeding the 1GB size limit, each part is given a unique split_id. The first split file is labeled as 000, and subsequent splits are numbered sequentially (001, 002, and so on). If a file does not require splitting, the split_id remains 000. <br /><br /> <Callout type="info">Log file size is measured before compression, so a log file may be split even though it’s compressed size is smaller than 1GB.</Callout><br />`{format}`: Log file format, which can be either w3c or json_lines.<br />`{compression}`: File compression format.<br />Default Value:<br />`{shortname}_{request_end_date_time_from}-{request_end_date_time_to}.{process_window_date_time}_{split_id}.{format}.{compression}` |
-| FILE COMPRESSION | File compression method.<br />encourages you to investigate available compression methods before deciding on a method. |
+|DATA FORMAT|Log data format: W3C (tab separated), JSON lines, TSV.|
+| DATA COMPRESSION | File compression method.<br />encourages you to investigate available compression methods before deciding on a method. |
 
 ### Log File Fields  {/*log-file-fields*/}
 

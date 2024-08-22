@@ -540,3 +540,25 @@ To revert to a previous configuration:
 1. Click the "undo" icon at the bottom right of the configuration row. A list of previous versions is displayed in a dialog.
 2. Select the version to which you want to revert. <br /> <Callout type="info">Although you intend to revert to a previous version, the reverted version will become the current version with a new version number. The new version number is displayed at the bottom of the dialog.</Callout>
 3. Click the Activate button. <br /><Callout type="info"> The ability to revert configurations is subject to conditions described in [Read-Only and Hidden Capabilities](#read-only-and-hidden-capabilities).</Callout>
+
+## Linking a Staging and Production Configuration {/*linking*/}
+
+Use this feature to establish and remove a link between two configurations, designating one as Staging and the other as Production. This allows you to push updates from the Staging config to the Production configuration.
+
+### Link an Existing Configuration {/*linking-existing*/}
+
+
+
+1. Click the chain link icon at the bottom right of the configuration.
+2. In the **Link PROD config** section, click **Search existing**.
+3. Locate the configuration by choosing between `Published Hostname`, `Source Hostname`, `UUID`, `IPAC`, or `Username` in the **Filter by** dropdown and then typing the search criteria into the adjacent box.
+4. Optional. Review the configuration by clicking the **VIEW CONFIG** button.
+5. Click **Link**.
+
+### Link a New Configuration {/*linking-new*/}
+
+1. Click the chain link icon at the bottom right of the configuration.
+2. In the **Link PROD config** section, click **Create new**.
+3. Fill out the **PUBLISHED HOSTNAME** and **PUBLISHED PATH** fields.
+4. Optional. To sync a different source/ host path, untick that option and enter a **SOURCE HOSTNAME** and **SOURCE PATH**.
+5. Click **Link**.

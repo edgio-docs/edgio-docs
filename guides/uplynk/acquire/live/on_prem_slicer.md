@@ -49,28 +49,13 @@ Perform these steps when installing or upgrading the Live Slicer to the latest v
 
 3. Download the Live Slicer by clicking **Downloads** from the bottom right-hand corner of the CMS and then clicking on the desired OS.
 
+4. Extract the zip file to the desired directory.
+
+    **Command**:
+
+    ```
+    $ tar -xvf uplynk_slicer_linux_64-231114.04.01.tbz2`
+    ```
 
 
-
-
-
-## Configure the Live Slicer  {/*configure-the-live-slicer*/}
-
-Upon installing the Live Slicer, the following configuration file will be created:
-
-`/etc/uplynk.conf`
-
-Use this file to configure the Live Slicer. View a [sample configuration file](https://docs.edgecast.com/video/Content/Resources/Supplemental/LiveSlicerConf).
-
-Update the following settings in your Live Slicer configuration file:
-
-| Setting | Description    |
-|-------------|--------|
-| description | Set this to a description that will be assigned to new assets.    |
-| username    | Set this to the email address associated with your account.|
-| apikey| If missing, add a line for the `apikey` setting. Set it to your secret API key. <br /> Leverage our API to generate an API key that only authorizes slicer-related actions by creating a sub-owner with only the slice permission. <br /> **Example**: `apikey: abcDEFghiJKLmnoPQRtuvWXYz123ABCdefGHIJKL`<br > **Locate API Keys**<ol><li>Navigate to the [Integration Keys page](#https://cms.uplynk.com/static/cms2/index.html#/settings/integration-keys) by clicking the **Settings** tab and then clicking **Integration Keys** from the side navigation tab.</li><li>Your API key(s) are listed under the **API Keys** section.</li></ol>|
-| slicerID    | Set this to a case-sensitive alphanumeric value by which this Live Slicer will be identified. <br /> A Live Slicer may broadcast content via one or more live channels or live events. <br />Assign a Live Slicer to a live channel and/or a live event via the **Slicer ID** option. Information on how to find this option is provided below.<br />**Live Channel**:<br />Select the live channel and then verify that the **Details** tab is active.<br />**Live Event**:<br />Open the desired live event configuration and then click on the Slicers tab.<br />Verify the case of the Live Slicer's ID when setting up your live channel or live event.|
-
-Once you have defined the above settings, the configuration file will need to updated to reflect your signal source (e.g., SDI, UDP, or RTMP).
-
-<Info>If you plan on streaming over RTP, then you must process your audio/video feed using [ffmpeg](https://ffmpeg.org/) and serve it over UDP.</Info>
+<!-- ^^ publishes with 4,5,6 removed. doesn't publish with 4,5,6 removed and configure live slicer -->

@@ -2,21 +2,15 @@ value:
   '@id': /rtld/v1/bot/fields
   '@type': Collection
   items:
-    - category: Response
-      code: timestamp
+    - code: timestamp
       name: Timestamp
-    - category: Request Header
-      code: user_agent
+    - code: user_agent
       name: User Agent
-    - category: Request
-      code: url
+    - code: url
       name: URL
-    - category: General
-      code: sam_name
+    - code: sam_name
       name: SAM Name
-    - category: General
-      code: sam_id
+    - code: sam_id
       name: SAM ID
-    - category: Request
-      code: method
+    - code: method
       name: Request Method

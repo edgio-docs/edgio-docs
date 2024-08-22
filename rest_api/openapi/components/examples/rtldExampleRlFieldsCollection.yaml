@@ -2,21 +2,15 @@ value:
   '@id': /rtld/v1/rl/fields
   '@type': Collection
   items:
-    - category: Response
-      code: timestamp
+    - code: timestamp
       name: Timestamp
-    - category: Request Header
-      code: user_agent
+    - code: user_agent
       name: User Agent
-    - category: Request
-      code: url
+    - code: url
       name: URL
-    - category: Security Configuration
-      code: scope_name
+    - code: scope_name
       name: Scope Name
-    - category: Security Configuration
-      code: scope_id
+    - code: scope_id
       name: Scope ID
-    - category: Request
-      code: method
+    - code: method
       name: Request Method

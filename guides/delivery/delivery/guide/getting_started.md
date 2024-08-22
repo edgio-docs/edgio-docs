@@ -17,7 +17,8 @@ Finally, you can log in to [Edgio Control](https://control-new.edg.io/acontrol/#
 To set up your Edgio Account, please be prepared to provide your Account Manager the following information:
 
 - **Contacts**
-    -An administrative contact for your team<br />- A technical contact for your team
+    - An administrative contact for your team
+    - A technical contact for your team
 - **Content Overview**
   - An overview of the types of content you deliver and the way your audience consumes it
   - The method you use to publish your content today and the frequency with which you update your content

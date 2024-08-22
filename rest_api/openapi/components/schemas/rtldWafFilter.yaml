@@ -22,15 +22,15 @@ properties:
       Defines the set of custom rules by which log data will be filtered.
       Identify each desired custom rule by its name. A null value indicates that
       log data will not be filtered by a custom rule.
-  security_application_manager_name:
+  security_app_config:
     type: array
     items:
       type: string
     description: >-
-      Defines the set of Security App configuration by which log data will be
-      filtered. Identify each desired Security App configuration by its name. A
-      null value indicates that log data will not be filtered by a Security App
-      configuration.
+      Defines the set of security application manager configurations by which
+      log data will be filtered. Identify each desired security application
+      manager configuration by its name. A null value indicates that log data
+      will not be filtered by a security application manager configuration.
   user_agent_regexp:
     type: string
     description: >-

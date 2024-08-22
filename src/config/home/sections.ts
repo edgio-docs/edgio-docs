@@ -204,50 +204,53 @@ export const sections: HomepageSectionGroup[] = [
       'Designed for high-quality, reliable streaming, and large-scale downloads.',
     className: 'delivery',
     icon: IconDelivery,
+    path: '/delivery',
     sections: [
       {
         title: 'CDN',
+        path: '/delivery/delivery',
         items: [
           {
             title: 'Getting Started',
-            path: 'https://support.limelight.com/public/en/Content/Delivery/Content%20Delivery%20-%20User%20Guide/Getting%20Started%20with%20Content.htm',
+            path: '/delivery/delivery/guide/getting_started',
           },
           {
             title: 'Delivery Guide',
-            path: 'https://support.limelight.com/public/en/Content/Delivery/Content%20Delivery%20-%20User%20Guide/Delivery.htm',
+            path: '/delivery/delivery/guide',
           },
           {
             title: 'MediaVault',
-            path: 'https://support.limelight.com/public/en/Default.htm#Delivery/Content%20Delivery%20-%20MediaVault%20User%20Guide/MediaVault.htm',
+            path: '/delivery/delivery/mediavault',
           },
           {
-            title: 'Origin Storage Quick Start',
-            path: 'https://support.limelight.com/public/en/Content/Storage/Quick%20Start%20Guide%20Combined/Quick%20Start.htm',
+            title: 'Storage APIs',
+            path: '/delivery/storage/api_reference',
           },
           {
             title: 'SmartPurge',
-            path: 'https://support.limelight.com/public/en/Content/Delivery/SmartPurge/Smart_Purge.htm',
+            path: '/delivery/delivery/smartpurge',
           },
         ],
       },
       {
         title: 'APIs',
+        path: '/delivery/apis',
         items: [
           {
-            title: 'Getting Started',
-            path: 'https://support.limelight.com/public/en/Content/Delivery/Content%20Delivery%20-%20User%20Guide/Getting%20Started%20with%20Content.htm',
+            title: 'Billing',
+            path: 'https://support.limelight.com/public/openapi/billing/index.html',
           },
           {
-            title: 'Delivery',
-            path: 'https://support.limelight.com/public/en/Content/Delivery/Content%20Delivery%20-%20User%20Guide/Delivery.htm',
-          },
-          {
-            title: 'Origin Storage Quick Start',
-            path: 'https://support.limelight.com/public/en/Content/Storage/Quick%20Start%20Guide%20Combined/Quick%20Start.htm',
+            title: 'Configuration',
+            path: 'https://support.limelight.com/public/openapi/configuration/index.html',
           },
           {
             title: 'SmartPurge',
-            path: 'https://support.limelight.com/public/en/Content/Delivery/SmartPurge/Smart_Purge.htm',
+            path: '/delivery/delivery/smartpurge/smartpurge_rest_api',
+          },
+          {
+            title: 'Storage',
+            path: '/delivery/storage/api_reference',
           },
           {
             title: 'API Explorer',
@@ -257,30 +260,31 @@ export const sections: HomepageSectionGroup[] = [
       },
       {
         title: 'Control Portal',
+        path: '/delivery/control',
         items: [
           {
             title: 'Billing Report',
-            path: 'https://support.limelight.com/public/en/Content/Control/Control%20Portal%20-%20User%20Guide/User%20Guide%20v3/Report/Billing%20Report.htm',
+            path: '/delivery/control/reports/traffic/billing',
           },
           {
             title: 'Caching & Delivery',
-            path: 'https://support.limelight.com/public/en/Content/Control/Control%20Portal%20-%20User%20Guide/User%20Guide%20v3/Configure/Caching%20and%20Delivery%20-%20v2.htm',
+            path: '/delivery/control/configure/caching_and_delivery',
           },
           {
             title: 'Chunked Streaming',
-            path: 'https://support.limelight.com/public/en/Content/Control/Control%20Portal%20-%20User%20Guide/User%20Guide%20v3/Configure/Chunked%20Streaming%20-%20v2.htm',
+            path: '/delivery/control/configure/chunked_streaming',
           },
           {
             title: 'Live Stats Report',
-            path: 'https://support.limelight.com/public/en/Content/Control/Control%20Portal%20-%20User%20Guide/User%20Guide%20v3/Report/Live%20Stats%20Report.htm',
+            path: '/delivery/control/reports/traffic/live_stats',
           },
           {
             title: 'Log Delivery Service',
-            path: 'https://support.limelight.com/public/en/Default.htm#Control/Control%20Portal%20-%20User%20Guide/User%20Guide%20v3/Configure/Log%20Delivery%20Services.htm?Highlight=log%20delivery%20service',
+            path: '/delivery/control/configure/log_delivery_service',
           },
           {
             title: 'Traffic Report',
-            path: 'https://support.limelight.com/public/en/Content/Control/Control%20Portal%20-%20User%20Guide/User%20Guide%20v3/Report/Traffic%20Report.htm',
+            path: '/delivery/control/reports/traffic/traffic',
           },
         ],
       },
@@ -363,16 +367,24 @@ export const sections: HomepageSectionGroup[] = [
       {
         items: [
           {
-            title: 'Service Provider Traffic Report',
-            path: 'https://support.limelight.com/public/en/Content/Control/Open_Edge/Open_Edge.htm#Using',
-          },
-          {
-            title: 'Edge Cache',
-            path: 'https://support.limelight.com/public/en/Content/Control/Open_Edge/Open_Edge.htm#Cache',
+            title: 'Overview',
+            path: '/open_edge/overview',
           },
           {
             title: 'FAQs',
-            path: 'https://support.limelight.com/public/en/Content/Open_Edge/Open_Edge_FAQs.htm',
+            path: '/open_edge/faqs',
+          },
+          {
+            title: 'SP Traffic Report',
+            path: '/delivery/control/reports/traffic/service_provider_traffic',
+          },
+          {
+            title: 'User Management',
+            path: '/delivery/control/manage/control_portal_users',
+          },
+          {
+            title: 'Requirements',
+            path: '/open_edge/overview/#requirements',
           },
         ],
       },

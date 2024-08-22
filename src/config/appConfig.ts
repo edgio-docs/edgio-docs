@@ -20,11 +20,19 @@ const announcements = importAnnouncements();
 
 type DynamicImport<T = any> = () => Promise<{default: T}>;
 
+export type DocsbotConfig = {
+  teamId: string;
+  botId: string;
+  prompt: string;
+  starterQuestions: string[];
+};
+
 export type ProductConfig = {
   pathPrefix: string;
   versions: {
     [version: string]: ProductVersionConfig;
   } & {default?: ProductVersionConfig};
+  edgioAnswers?: DocsbotConfig;
 };
 
 export type ProductVersionConfig = {
@@ -100,6 +108,16 @@ export const productsConfig: ProductsConfig = {
         },
       },
     },
+    edgioAnswers: {
+      teamId: 'gQe050bzo1BngpQN3Ojp',
+      botId: 'diWYp40uSWLmoO5InSwd',
+      prompt: 'How can I help you with Edgio Applications?',
+      starterQuestions: [
+        'How do I get started?',
+        'How do I cache images/* at the edge for 1 hour?',
+        'How do I deploy configurations?',
+      ],
+    },
   },
   uplynk: {
     pathPrefix: '/uplynk',
@@ -120,6 +138,16 @@ export const productsConfig: ProductsConfig = {
         navigationImport: () => import('config/delivery/nav'),
       },
     },
+    edgioAnswers: {
+      teamId: 'gQe050bzo1BngpQN3Ojp',
+      botId: 'CKwkiEfdItVWfscHIA2m',
+      prompt: 'How can I help you with Edgio Delivery?',
+      starterQuestions: [
+        'What are the key features of Delivery?',
+        'How do I create a Storage user?',
+        'What reports can I find in Control?',
+      ],
+    },
   },
   open_edge: {
     pathPrefix: '/open_edge',
@@ -139,6 +167,15 @@ export const productsConfig: ProductsConfig = {
         guidesPath: 'guides/home',
         navigationImport: null,
       },
+    },
+    edgioAnswers: {
+      teamId: 'gQe050bzo1BngpQN3Ojp',
+      botId: 'DSS25EIxZJxe8wwWtd63',
+      prompt: 'Hi, how can I help you with Edgio?',
+      starterQuestions: [
+        'How do I configure caching for my Applications property?',
+        'How do I create a Storage user for Delivery?',
+      ],
     },
   },
 };
@@ -162,7 +199,7 @@ export const siteConfig = {
     gtmId: 'GTM-5WCD2BK',
   },
   fireawai: {
-    chatbotId: 'f98fb410-2056-447e-984f-753cbbe5d513',
+    chatbotId: '5aa46a00-64ab-44a7-ba8e-778402716981',
     apiToken: 'ac9030b3-dfa6-4e18-8069-e8df54c131e4',
   },
 };

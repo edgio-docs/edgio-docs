@@ -1,5 +1,5 @@
 title: Country Code Filter Object
-description: Log filtering by country code.
+description: Log filtering by Country Code.
 type: object
 required:
   - codes

@@ -7,10 +7,10 @@ import styled from 'styled-components';
 import useConditioning from 'utils/hooks/useConditioning';
 import {MDHeading, MDHeadingsList} from 'utils/Types';
 
-import {MDXComponents} from '../../components/MDX/MDXComponents';
 import {siteConfig} from '../../config/appConfig';
 import Docs from '../Docs';
 import DocsFooter from '../Docs/DocsFooter';
+import {MDXComponents} from '../MDX/MDXComponents';
 import Seo from '../Seo';
 
 const PageLayout = styled.div`

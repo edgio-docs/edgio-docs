@@ -1,8 +1,0 @@
-required: true
-content:
-  application/json:
-    schema:
-      $ref: ../schemas/rtldRlProfileProperties.yaml
-    examples:
-      reference:
-        $ref: ../examples/rtldExampleRlProfileBody.yaml

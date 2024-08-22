@@ -20,7 +20,7 @@ allOf:
         maxLength: 1024
         description: >
           Defines a URL that points to your Splunk Enterprise's HTTP Event
-          Collector configuration.  
+          Collector configuration.
 
 
           **Default URL syntax:**

@@ -20,7 +20,7 @@ properties:
       - in
       - not_in
     description: >
-      Determines how log data will be filtered by hostname. 
+      Determines how log data will be filtered by hostname.
 
 
       Valid values are:

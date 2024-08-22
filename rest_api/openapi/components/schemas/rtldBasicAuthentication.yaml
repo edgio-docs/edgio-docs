@@ -15,7 +15,7 @@ allOf:
         maxLength: 1024
         description: >
           Defines the password through which requests to your web server will be
-          authenticated. 
+          authenticated.
 
 
           Base-64 encoding will applied to the specified credentials. After

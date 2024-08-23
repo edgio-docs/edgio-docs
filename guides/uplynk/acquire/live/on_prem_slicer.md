@@ -333,3 +333,24 @@ Configure a standard audio channel layout through the use of `the audio_layout` 
 | 5.1     | <ul><li>1: Center</li><li>2: Left</li><li>3: Right</li><li>4: Rear Left</li><li>5: Rear Right</li><li>6: LFE (Sub)</li></ul> |
 | CEA     | <ul><li>1: Left</li><li>2: Right</li><li>3: Center</li><li>4: LFE (Sub)</li><li>5: Surround Left</li><li>6: Surround Right</li></ul> |
 | 7.1     | <ul><li>1: Center</li><li>2: Left</li><li>3: Right</li><li>4: Rear Left</li><li>5: Rear Right</li><li>6: LFE (Sub)</li><li>7: Surround Left</li><li>8: Surround Right</li></ul> |
+
+#### Custom Audio Layout (SDI Signal)
+
+A custom audio channel layout allows each audio track to be mapped to one or more channels. Additionally, a custom level may be assigned to each mapped channel.
+
+##### Terminology
+
+Before defining a custom audio layout, it is important to become acquainted with the following terminology:
+
+- **SDI Channel**: Identifies a single unit within a representation of an audio stream. For example, the left portion of a stereo feed may consist of one or more SDI channels.
+- **Track**: Identifies the set of channels required to produce a single representation of an audio stream. For example, an audio track for a stereo feed may consist of two or more SDI channels.
+
+##### Setup
+
+Setting up a custom audio channel layout requires replacing the `audio_layout` configuration setting with `audio_custom_layout_{Track}`. The configuration for this setting varies according to how audio should be mapped.
+
+Use the following syntax to downmix audio to mono:<br />`audio_custom_layout_{Track}: mono|X={SDI_Input_Channel}@{Level}`
+
+Use the following syntax to downmix audio to stereo:<br />`audio_custom_layout_{Track}: stereo|L={SDI_Input_Channel}@{Level},R={SDI_Input_Channel}@{Level}`
+
+Use the following syntax to downmix audio to 5.1:<br />`audio_custom_layout_{Track}: 5.1|C={SDI_Input_Channel}@{Level},L={SDI_Input_Channel}@{Level},R={SDI_Input_Channel}@{Level},RL={SDI_Input_Channel}@{Level},RR={SDI_Input_Channel}@{Level},LFE={SDI_Input_Channel}@{Level}`

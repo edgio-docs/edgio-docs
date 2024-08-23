@@ -24,7 +24,7 @@ Follow these steps to get started with Studio DRM:
         https://content.uplynk.com/ea10fa402fec4bbe996019a0827e6c37.mpd?&drm_policy_name=wvpolicy1
         ```
 
-        <Tip>Use a [Studio DRM policy configuration](/uplynk/manage/content_protection/policy_configuration) and/or the [parameter expansion](/uplynk/deliver/customize_playback_via_parameters/#general_parameters) capability to obfuscate your Studio DRM policies.</Tip>
+        <Tip>Use a [Studio DRM policy configuration](/uplynk/manage/content_protection/policy_configuration) and/or the [parameter expansion](/uplynk/deliver/playback_urls/customize_playback_via_parameters/#general_parameters) capability to obfuscate your Studio DRM policies.</Tip>
 
     - [Sign the playback URL](/uplynk/deliver/playback_urls/#basic_setup).
 

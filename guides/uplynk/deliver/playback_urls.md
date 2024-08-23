@@ -17,7 +17,7 @@ Learn How To:
         - [Core identification parameters](#core-identification-parameters)
         - [Signature parameter](#digital-signature)
     - [Encrypt query strings](#encrypt-query-strings)
-- **Validate playback URLs using [application keys**](#application-keys)
+- **Validate playback URLs using [application keys](#application-keys)**
 
 ## Assets
 
@@ -113,7 +113,7 @@ Restrict playback by specifying a starting or stopping point via the following c
 - **Starting Point**: Specify a starting time for playback in seconds (`start`) or slice numbers (`sstart`).
 - **Stopping Point**: Specify a stopping time for playback in seconds (`stop`) or slice numbers (`sstop`).
 
-See [General Parameter descriptions](/uplynk/delivery/playback_urls/general_parameters) for more information.
+See [General Parameter descriptions](/uplynk/delivery/playback_urls/#general_parameters) for more information.
 
 ### Play Multiple Videos {/*play-multiple-videos*/}
 

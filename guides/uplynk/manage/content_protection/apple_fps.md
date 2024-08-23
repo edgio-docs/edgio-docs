@@ -49,7 +49,7 @@ Set up playback via Apple FairPlay Streaming (FPS) by performing the following s
 
         <Info>Use a [Studio DRM policy configuration](/uplynk/manage/content_protection/policy_configuration) and/or the [expansion parameter](/uplynk/deliver/playback_urls/#core-identification-parameters) capability to obfuscate your Studio DRM policies.</Info>
 
-      **Digital Signature**: [Sign the playback URL](/uplynk/deliver/playback_urls/#basic_setup).
+      **Digital Signature**: [Sign the playback URL](/uplynk/deliver/playback_urls/#signing-playback-url-with-token).
 
    - Update the Key Server Module (KSM) URL's scheme to `https://`.
    - Submit a Content Key request to our Key Server using the above KSM URL.

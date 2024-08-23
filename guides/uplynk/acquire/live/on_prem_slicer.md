@@ -261,3 +261,165 @@ By default, the Live Slicer will automatically convert the input signal's color 
 |---|---|---|
 | HDR | HDR (including HLG) or SDR<br />All SDR source content, including ads, will be converted to HDR10. | HDR10 |
 | SDR | HDR (including HLG) or SDR | SDR |
+
+### Custom Color Representation
+
+Customize color representation conversion by assigning a lookup table (LUT) to the desired color space conversion. Define this mapping through the rgb_lut setting.
+
+**Key information**<br />
+- Verify that your LUT adheres to Adobe's Cube LUT Specification 1.0.
+You may define multiple RGB LUTs to adjust for different input signals. The Live Slicer determines which configuration to use based on the output signal's color standard (i.e., HDR10 or SDR). If multiple LUTs have been defined for that color standard, then it will use the configuration that best matches the input signal's color space and range.
+
+- By default, the output signal's color space uses a narrow (i.e., limited) range (16 - 235). You may define the desired range when configuring the rgb_lut setting.<br />**Example**:<br />The following configuration uses a custom LUT to generate an HDR 10 output signal with a full range when the input signal is HLG:<br />`rgb_lut from hlg to hdr10,full /path/mylut.cube`
+- Alternatively, you may explicitly define a color space, a color primary, the transformation characteristics, and the range.<br />**Example**:<br />The following configuration is equivalent to the above sample configuration:<br />`rgb_lut from colorspace:bt2020nc,primaries:bt2020,trc:arib-std-b67,range:tv to colorspace:bt2020nc,primaries:bt2020,trc:smpte2084,range:pc /path/mylut.cube`
+
+See [Live Slicer Configuration File Settings](#configuration-file-settings).
+
+## Audio
+
+### Audio Ingest
+
+The Live Slicer's behavior with regards to audio ingest varies depending on whether you are streaming over UDP, RTMP, or SDI.
+
+- **UDP \/ RTMP \/ SRT \/ TCP**<br />You must specify each audio track that will be ingested via the `pids` parameter.<br />**<br />**Example**<br />**<br />The following configuration initializes the audio tracks that correspond to the packets with identifiers 308, 256, 257, and 258:<br />`pids: 308,256,257,258`
+
+- **SDI**: The Live Slicer automatically ingests the audio tracks that correspond to SDI channels 0 - 15.
+
+### Audio Codec  {/*audio-codec*/}
+
+By default, the Live Slicer encodes audio using the Advanced Audio Coding (AAC) audio codec. However, you may configure it to encode an audio track into Dolby Digital Plus (DD+) and AAC subtracks by passing the `audio_dolby_#` parameter.
+
+<Info>Playback of DD+ audio subtracks requires the ddp playback URL parameter.</Info>
+
+**Sample Configurations**
+
+- **UDP**: The following configuration will encode track 257 as DD+ and encode all of the other tracks (i.e., 257, 258, and 308) defined by the pids parameter as AAC:
+
+    ```
+    pids: 308,256,257,258
+    audio_lang_256: eng
+    audio_desc_256: primary
+    audio_lang_257: eng
+    audio_desc_257: secondary
+    audio_dolby_257: 1
+    ```
+
+- **SDI**: The following configuration will encode the audio track for SDI channel 7 as DD+ and encode all of the other tracks (i.e., SDI channels 0 - 6 and 8 - 15) as AAC: `audio_dolby_7: 1`
+
+### Audio Normalization
+
+By default, assets are encoded at approximately the same level of loudness. This level may be adjusted via the `gain` setting. Use this setting to determine the gain or attenuation, in decibels, that should be applied to the live signal as it is encoded.
+
+<Info>The Live Slicer logs the calculated gain value every ten seconds. Monitor `/var/log/syslog` to find the appropriate value for the `gain` setting.</Info>
+
+### Audio Channel Layout (SDI Signal)
+
+The Live Slicer may be configured to use either Standard or Custom audio channel layouts.
+
+#### Standard Layout (SDI Signal)
+
+Configure a standard audio channel layout through the use of `the audio_layout` parameter.
+
+| Audio Channel | Channel Layout|
+|-----------|----|
+| stereo 1| <ul><li>1: Left</li><li>2: Right</li></ul>    |
+| stereo 2| <ul><li>3: Left</li><li>4: Right</li></ul>    |
+| stereo 3| <ul><li>5: Left</li><li>6: Right</li></ul>    |
+| stereo 4| <ul><li>7: Left</li><li>8: Right</li></ul>    |
+| stereo 5| <ul><li>9: Left</li><li>10: Right</li></ul>   |
+| stereo 6| <ul><li>11: Left</li><li>12: Right</li></ul> |
+| stereo 7| <ul><li>13: Left</li><li>14: Right</li></ul> |
+| stereo 8| <ul><li>15: Left</li><li>16: Right</li></ul>|
+| 5.1     | <ul><li>1: Center</li><li>2: Left</li><li>3: Right</li><li>4: Rear Left</li><li>5: Rear Right</li><li>6: LFE (Sub)</li></ul> |
+| CEA     | <ul><li>1: Left</li><li>2: Right</li><li>3: Center</li><li>4: LFE (Sub)</li><li>5: Surround Left</li><li>6: Surround Right</li></ul> |
+| 7.1     | <ul><li>1: Center</li><li>2: Left</li><li>3: Right</li><li>4: Rear Left</li><li>5: Rear Right</li><li>6: LFE (Sub)</li><li>7: Surround Left</li><li>8: Surround Right</li></ul> |
+
+#### Custom Audio Layout (SDI Signal)
+
+A custom audio channel layout allows each audio track to be mapped to one or more channels. Additionally, a custom level may be assigned to each mapped channel.
+
+##### Terminology
+
+Before defining a custom audio layout, it is important to become acquainted with the following terminology:
+
+- **SDI Channel**: Identifies a single unit within a representation of an audio stream. For example, the left portion of a stereo feed may consist of one or more SDI channels.
+- **Track**: Identifies the set of channels required to produce a single representation of an audio stream. For example, an audio track for a stereo feed may consist of two or more SDI channels.
+
+##### Setup
+
+Setting up a custom audio channel layout requires replacing the `audio_layout` configuration setting with `audio_custom_layout_{Track}`. The configuration for this setting varies according to how audio should be mapped.
+
+Use the following syntax to downmix audio to mono:<br />`audio_custom_layout_{Track}: mono|X={SDI_Input_Channel}@{Level}`
+
+Use the following syntax to downmix audio to stereo:<br />`audio_custom_layout_{Track}: stereo|L={SDI_Input_Channel}@{Level},R={SDI_Input_Channel}@{Level}`
+
+Use the following syntax to downmix audio to 5.1:<br />`audio_custom_layout_{Track}: 5.1|C={SDI_Input_Channel}@{Level},L={SDI_Input_Channel}@{Level},R={SDI_Input_Channel}@{Level},RL={SDI_Input_Channel}@{Level},RR={SDI_Input_Channel}@{Level},LFE={SDI_Input_Channel}@{Level}`
+
+**Set up a custom audio channel layout**
+
+1. Replace *\{Track\}* with the ID of the audio track that will be assigned a custom audio layout.
+2. Set X or L and R (Left and Right) to an ampersand delimited list of SDI channels that will serve as the source for the specified audio track. The valid range for each channel is 0 - 15.<br /><br />The following sample mono configuration sets the source for audio track 0 to SDI channels 0, 1, and 3.<br />`audio_custom_layout_0: mono|X=0&1&3`<br /><br />The level for each assigned SDI channel may be defined by appending the @ symbol followed by the desired value. Use the following formula to calculate level:<br />`{Volume %} * 10`<br /><br />The following sample stereo configuration sets Left to SDI channel 0 at 70.7% and SDI channel 2 at 80%, while Right is set to SDI channel 4 at 20.2%.<br />`audio_custom_layout_0: stereo|L=0@707&2@800,R=4@202`<br /><br />If the audio level is missing, then it will be set to 100%. The following sample stereo configuration sets Left to SDI channel 0 at 100% and Right is set to SDI channels 3 and 4 at 100%.<br />`audio_custom_layout_0: stereo|L=0,R=3&4`
+
+##### Multiple Track Setup
+
+A custom audio layout may be defined for multiple tracks (e.g., language-specific tracks). This type of setup requires informing the Live Slicer as to the number of tracks that will be mapped via the `audio_tracks` configuration setting.
+
+<Warning>The Live Slicer will only generate audio for a single track when this configuration setting is omitted.</Warning>
+
+<Info>Although we support up to 31 audio tracks, your SDI capture card can only detect up to 16 audio tracks.</Info>
+
+Use the following syntax to indicate the number of audio tracks that will be mapped: `audio_tracks: {Quantity}`
+
+For example, use the following configuration to indicate that a custom audio layout for three audio tracks (e.g., English, French, and Spanish) will be mapped: `audio_tracks: 3`
+
+##### Audio Channel Layout (UDP / RTMP / SRT / TCP)
+
+By default, the Live Slicer uses the following channel layout for Dolby: `C L R RL RR LFE`
+
+## Log Data  {/*log-data*/}
+
+The Live Slicer outputs verbose logging information to syslog. A default syslog configuration will send these messages to: `/var/log/syslog`
+
+<Tip>The syslog contains valuable information that will help us troubleshoot Live Slicer-related issues. Please send us a compressed version of the syslog when experiencing issues with the Live Slicer.</Tip>
+
+### Verbosity
+
+By default, the Live Slicer logs error conditions and informational messages. Configure the Live Slicer to also log debug messages by adding the following configuration to your Live Slicer configuration file: `verbosity: 3`<br />[Learn more](#configuration-file-settings).
+
+Alternatively, use the following syntax if you plan on starting the Live Slicer via the command line: `sudo systemctl start uplynk_liveslicer.service -v 3`
+
+## Live Slicer Failover
+
+Live Slicer failover minimizes the impact to your viewer's playback experience when a Live Slicer's performance is sub-optimal by automatically switching the live stream's source to a different Live Slicer.
+
+Set up Live Slicer failover through the following steps:
+
+1. Create a failover group and assign it Live Slicers and live channel(s).
+2. Instruct each desired Live Slicer to join this failover group by updating its configuration file.
+
+[Learn more](#configuration-file-settings).
+
+### Administration (initcl Commands)
+
+Use the following commands to start, stop, and restart the Live Slicer.
+
+| Action | Command |
+|---|---|
+| Start | **upstart**:<br />`sudo start uplynk_liveslicer`<br />**systemd**:<br />`sudo systemctl start uplynk_liveslicer.service` |
+| Stop | **upstart**:<br />`sudo stop uplynk_liveslicer`<br />**systemd**:<br />`sudo systemctl stop uplynk_liveslicer.service` |
+| Restart | **upstart**:<br />`sudo restart uplynk_liveslicer`<br />**systemd**:<br />`sudo systemctl restart uplynk_liveslicer.service` |
+
+<Info>An invalid Live Slicer configuration may prevent the Live Slicer from starting up.
+</Info>
+
+<Tip>Review the syslog file to check whether the Live Slicer is running.</Tip>
+
+<Info>The Live Slicer will automatically start whenever the server is restarted.</Info>
+
+
+## Configuration File Settings  {/*configuration-file-settings*/}
+
+A brief description is provided below for each setting that may be defined in a Live Slicer's configuration file (i.e., `/etc/uplynk.conf`).
+
+<Info>By default, the value assigned to a setting cannot contain a hashtag.
+Learn how to override this behavior.</Info>

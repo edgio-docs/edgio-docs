@@ -20,7 +20,7 @@ Add audio/video content to a live channel via the following methods:
 - By default, a live channel trails the live horizon by \~60 seconds. See [Playback Latency](#change-the-default-playback-latency) for reduced-latency options.
 - Set up Live Slicer failover to ensure uninterrupted playback of your live stream.
 
-[Learn more.](/uplynk/deliver/live/failover)
+[Learn more.](/uplynk/acquire/live/failover)
 
 Click **Save** to apply your changes to your live channel's configuration.
 

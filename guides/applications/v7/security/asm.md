@@ -54,7 +54,7 @@ A collection represents the segment(s) of your network that will be scanned for 
 Each collection must contain at least one seed. Use one or more seed(s) to:
 
 -   Define a domain, an IP address, or a range of IP addresses scope that will be scanned.
--   Define a GitHub repository from which security vulnerabilities identified by GitHub (from Dependabot, Code scanning and Secret scanning) will be pulled.
+-   Define a GitHub repository from which security vulnerabilities identified by GitHub will be pulled. These vulnerabilities are identified through Dependabot, code scanning, and secret scanning.
 -   Define a Snyk instance from which security vulnerabilities will be pulled.
 -   Define an Amazon GuardDuty instance and targeted regions from which findings will be pulled.
 

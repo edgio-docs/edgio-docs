@@ -120,7 +120,7 @@ Instructions on when and how a specific file is processed may be defined by crea
     <Info>Use the [`helper_noext`](#configuration-settings) setting to exclude the source media's file extension (e.g., mp4).</Info>
 
 - This type of configuration file should not contain section headers (e.g., \[global\] or \[~/folder/\]).
-- File-specific settings override conflicting settings defined in the [main configuration file](#main-configuration-file).
+- File-specific settings override conflicting settings defined in the [main configuration file](#main-configuration).
 - The recommended best practice is to ensure that a file-specific configuration file is present in a monitored directory before the corresponding media file is copied into it. This ensures that the media file will be processed according to the configuration defined in the file-specific configuration file.
 - Define the [require_config](#configuration-settings) setting within the main configuration file to require a file-specific configuration before processing a file.
 

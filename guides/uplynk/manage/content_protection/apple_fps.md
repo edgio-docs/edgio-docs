@@ -49,7 +49,7 @@ Set up playback via Apple FairPlay Streaming (FPS) by performing the following s
 
         <Info>Use a [Studio DRM policy configuration](/uplynk/manage/content_protection/policy_configuration) and/or the [expansion parameter](/uplynk/deliver/playback_urls/#core-identification-parameters) capability to obfuscate your Studio DRM policies.</Info>
 
-      **Digital Signature**: [Sign the playback URL](/uplynk/deliver/playback_urls/#signing-playback-url-with-token).
+      **Digital Signature**: [Sign the playback URL](/uplynk/deliver/playback_urls/#signing-playback-urls-with-token).
 
    - Update the Key Server Module (KSM) URL's scheme to `https://`.
    - Submit a Content Key request to our Key Server using the above KSM URL.
@@ -128,7 +128,7 @@ Reduce rebuffering, improve startup time, and speed up switching between differe
 Reuse licenses for content, ads, and different rays by performing the following steps:
 
 1. Contact your account manager to request that your encoding profile be optimized for content key reuse.
-2. Include fpuseki=1 within the playback URL's query string.
+2. Include `fpuseki=1` within the playback URL's query string.
 3. Update your player to cache licenses and associate them with license URLs.
 
 <Tip>Add logic to your code to request a new license when a request with a cached license fails. This best practice is especially useful when you have defined a duration for content keys within your Studio DRM policy.</Tip>

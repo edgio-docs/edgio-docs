@@ -225,7 +225,7 @@ Rules allow you to:
 -   {{ PRODUCT }} will not create an exposure for a hostname or IP address unless a finding matches at least one rule that is configured to create an exposure. 
 -   For GitHub repositories, {{ PRODUCT }} pulls vulnerabilities identified by GitHub. 
 -   For Snyk, {{ PRODUCT }} pulls vulnerabilities identified by Snyk.
--   For Amazon GuardDuty, {{ PRODUCT }} pulls findings identified by Amazon GuardDuty for selected regions.
+-   For Amazon GuardDuty, {{ PRODUCT }} pulls findings identified by Amazon GuardDuty for the regions defined within the seed.
 -   {{ PRODUCT }} provides a default rule set that you can use as a starting point. This rule set creates exposures for all findings.
 -   Rules are processed in the order that they are listed. If a finding satifies multiple rules, then all of those rules are applied to it. {{ PRODUCT }} resolves conflicts by giving precedence to the rule that is closest to the bottom of the list. 
 

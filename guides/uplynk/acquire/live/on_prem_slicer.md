@@ -117,9 +117,7 @@ Perform these steps when installing or upgrading the Live Slicer to the latest v
 
 ## Configure the Live Slicer  {/*configure-the-live-slicer*/}
 
-Upon installing the Live Slicer, the following configuration file will be created:
-
-`/etc/uplynk.conf`
+Upon installing the Live Slicer, the following configuration file will be created: `/etc/uplynk.conf`
 
 Use this file to configure the Live Slicer. View a [sample configuration file](https://docs.edgecast.com/video/Content/Resources/Supplemental/LiveSlicerConf).
 

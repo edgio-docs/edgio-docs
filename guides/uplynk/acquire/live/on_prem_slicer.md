@@ -416,3 +416,26 @@ Use the following commands to start, stop, and restart the Live Slicer.
 <Tip>Review the syslog file to check whether the Live Slicer is running.</Tip>
 
 <Info>The Live Slicer will automatically start whenever the server is restarted.</Info>
+
+## Configuration File Settings  {/*configuration-file-settings*/}
+
+A brief description is provided below for each setting that may be defined in a Live Slicer's configuration file (i.e., `/etc/uplynk.conf`).
+
+<Info>By default, the value assigned to a setting cannot contain a hashtag.
+Learn how to override this behavior.</Info>
+
+---------------------------------------
+
+| Setting| Description|
+|------|------|
+| ancillary_lines           | **SDI (Blackmagic) Only.**<br /> Defines the ancillary lines that will be scanned (0 to 31). Ignored with ancillary_scan set to on or input set to UDP/RTMP. <br />**Syntax**<br /> `ancillary_lines: #, #, ...` <br />**Example**<br /> `ancillary_lines: 9, 13` |
+| ancillary_scan| **SDI (Blackmagic) Only.**<br /> Determines whether all ancillary lines will be scanned. <br />**Valid values**<ul><li>**on** (scan all)</li><li>**off** (scan only defined lines)</li></ul> **Syntax**<br /> `ancillary_scan: on\|off` <br />**Example**<br /> `ancillary_scan: off`     |
+| api_port   | **API**<br />Defines the port for API calls. Omit IP to bind to any adapter. <br />**Default**<br /> `127.0.0.1:65009` <br />**Syntax**<br /> `IP Address:Port` or `Port`. <br />**Example**<br /> `api_port: 127.0.0.1:65009`  |
+| apikey     | **Required**. <br />**Requires Live Slicer version 17111500 or higher**<br />Defines the secret API key for authentication. <br />**Syntax**<br /> `apikey: API Key` <br />**Example**<br /> `apikey: abcDEFghiJKLmnoPQRtuvWXYz123ABCdefGHIJKL` |
+| audio_custom_layout_Track | **SDI (Blackmagic) Only.**<br /> Defines a custom audio channel layout for the \{Track\} variable. <br />This custom audio channel layout allows audio to be downmixed to mono or stereo. This configuration setting is incompatible with audio_layout. Please remove audio_layout from the Live Slicer configuration file prior to including this setting. This parameter does not apply to AC-3 audio or audio transmitted via UDP or RTMP. Although we support up to 31 audio tracks, your SDI capture card can only detect up to 16 audio tracks. [Learn more](#custom-audio-layout).<br />**Syntax (downmix audio to mono)**<br />`audio_custom_layout_{Track}: mono\|X=SDI Input Channel@Level`<br />**Syntax (downmix audio to stereo)**<br />`audio_custom_layout_Track: stereo\|L=SDI Input Channel@Level,R=SDI Input Channel@Level`<br />**Syntax (downmix audio to 5.1)**<br />`audio_custom_layout_{Track}: 5.1\|C=SDI Input Channel@Level,L=SDI Input Channel@Level,R=SDI Input Channel@Level,LR=SDI Input Channel@Level,RR=SDI Input Channel@Level,LFE=SDI Input Channel@Level`<br />**Example**<br />`audio_custom_layout_0: stereo\|L=0@707&2@800,R=4`|
+| audio_desc_#  | Assigns a description to an audio track. Identify the source audio track by specifying its SDI channel or PID within this setting's name. By default, audio tracks are assigned a description of `unspecified`.<br />**Syntax**<br /> `audio_desc_#: Audio Track Description` <br />**Example**<br /> `audio_desc_12: My Track`|
+| audio_dolby_# | Set to 1 to encode audio as Dolby Digital Plus (DD+). Identify the source audio track by specifying its SDI channel or PID within this setting's name.<br />**Syntax**<br /> `audio_dolby_#: 1` <br />**Example**<br /> `audio_dolby_12: 1`           |
+| audio_lang_PID| **UDP and RTMP Only**. <br />Assigns a language to the audio track with the PID. <br />**Syntax**<br /> `audio_lang_PID: Language` <br />**Example**<br /> `audio_lang_12: en`|
+| audio_layout  | **SDI (Blackmagic) Only.**<br /> Defines a standard audio channel layout. This parameter does not apply to AC-3 audio or audio transmitted via UDP. Alternatively, each audio track may be assigned a custom audio layout. Use a custom audio layout to downmix audio to mono or stereo.<br />**Valid values**<br /> stereo #, 5.1, CEA, 7.1. <br />**Syntax**<br /> `audio_layout: Audio Channel Layout` <br />**Example**<br /> `audio_layout: 5.1 `        |
+| authenticated_api_port    | **Advanced.**<br /> Exposes the authenticated API on a specific port. **Syntax (IP address and port)**<br /> `authenticated_api_port: IP Address:Port` or `Port` <br />**Example**<br /> `authenticated_api_port: 88`    |
+| autoexpire_age| Determines asset retention time. <br />**Valid values**<br /> **0** (no deletion) or **# hours** (number of hours that assets will be retained before being deleted). <br />**Syntax**<br /> `autoexpire_age: 0\|Hours` <br />**Example**<br /> `autoexpire_age: 24  `        |

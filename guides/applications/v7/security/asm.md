@@ -56,7 +56,7 @@ Each collection must contain at least one seed. Use one or more seed(s) to:
 -   Define a domain, an IP address, or a range of IP addresses scope that will be scanned.
 -   Define a GitHub repository from which security vulnerabilities identified by GitHub will be pulled. These vulnerabilities are identified through Dependabot, code scanning, and secret scanning.
 -   Define a Snyk instance from which security vulnerabilities will be pulled.
--   Define an Amazon GuardDuty instance and targeted regions from which findings will be pulled.
+-   Define an Amazon GuardDuty instance and the region(s) from which findings will be pulled.
 
 Once you have defined the desired seed(s), {{ PRODUCT }} will scan your network for exposures and retrieve vulnerabilities identified by GitHub and Snyk. This allows {{PRODUCT}} to generate a consolidated list of vulnerabilities and exposures that provides full visibility into your organization's attack surface. 
     

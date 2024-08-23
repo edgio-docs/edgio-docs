@@ -12,7 +12,7 @@ Definitions for key concepts are provided below.
 -   **Assets:** Your assets consist of hostnames, IP addresses, GitHub repositories, Snyk targets, and AWS Resources. There are two methods for registering an asset.
     -   An asset is registered for each hostname, IP address, and GitHub repository defined as a seed.
     -   {{ PRODUCT }} uses seeds to determine which network segments will be scanned. Each hostname and IP address identified through this scan is also registered as an asset. 
-        For more complex seeds that target whole organizations/systems, such as Snyk and Amazon GuardDuty, multiple assets (Snyk targets and AWS resources) are created as assets.
+    -   Each Snyk and Amazon GuardDuty seed may target an entire organization or system. {{ PRODUCT }} will generate an asset for each Snyk target and AWS resource associated with those configurations.
 -   **Exposures:** By default, {{ PRODUCT }} scans your network for:
     -   Common Vulnerabilities and Exposures (CVE). A CVE represents a known security vulnerability or exposure for a software package. 
     -   Common Weakness Enumeration (CWE). A CWE identifies a common software or hardware weakness that can potentially introduce a security vulnerability. 

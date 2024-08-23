@@ -10,7 +10,7 @@ Learn how to:
   - [Live channels](#live-channels)
   - [Live events](#live-events)
 
-- **[Sign playback URLs](#signing-playback-urls-with-a-token) with a token**
+- **[Sign playback URLs](#signing-playback-urls-with-token) with a token**
 
     - [Basic Setup](#basic-setup)
 

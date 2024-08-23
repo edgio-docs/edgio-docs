@@ -136,7 +136,7 @@ fail_emails = jane@mycompany.com
 
 Instructions on when and how a specific file is processed may be defined by including the desired settings within the source media's file name.
 
-<Info>Slicebot will only honor settings defined within a file name when the [`allow_inline` setting](#configuration-settings) has been enabled via either the [main](#main-configuration-file) or a [file-specific configuration file](#file-specific-configuration-file).</Info>
+<Info>Slicebot will only honor settings defined within a file name when the [`allow_inline` setting](#configuration-settings) has been enabled via either the [main](#main-configuration) or a [file-specific configuration file](#file-specific-configuration-file).</Info>
 
 <Info>Although most configuration settings may be defined within a file name, there are exceptions (e.g., halt_on_error and ignore). The description associated with each setting indicates any limitations on where it may be implemented.</Info>
 

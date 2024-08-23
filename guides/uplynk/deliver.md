@@ -12,7 +12,7 @@ Use playback URLs or a media player to delivery your content to your customers.
   - [Live channels](#live-channels)
   - [Live events](#live-events)
 
-- **[Sign playback URLs](#signing-playback-urls-with-a-token) with a token**
+- **[Sign playback URLs](#signing-playback-urls-with-token) with a token**
 
     - [Basic Setup](#basic-setup)
 

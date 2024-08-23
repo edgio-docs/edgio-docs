@@ -214,7 +214,7 @@ Use the Clipping tool to generate a video clip from a draft.
 Keyboard shortcuts are provided to facilitate setting start and stop markers. These shortcuts keys, which are listed below, are only available when the timeline has the focus.
 
 | Action                     | Key          | More Information|
-|----|:--------------:|-------|
+|---|:---:|---|
 | **Play/Pause**             | SPACE        ||
 | **Pause**                  | k            ||
 | **Jump Back**              | j            | Jumps back up to 8 seconds to the start of a previous slice.|

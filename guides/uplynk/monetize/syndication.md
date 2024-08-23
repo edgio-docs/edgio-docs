@@ -439,7 +439,7 @@ Perform the following steps to set up Syndication Publishing notifications:
 2. [Configure communication](#configure-communication-with-amazon-sns) between Syndication Publishing and Amazon SNS.
 3. Configure Amazon SNS to broadcast notifications to the desired destination(s).
 
-    [Learn how to set up Amazon SNS and Lambda to broadcast notifications to a Slack channel](#slack-integration).
+    [Learn how to set up Amazon SNS and Lambda to broadcast notifications to a Slack channel](#subscribe-to-a-sns-topic-via-amazon-lamda).
 
 #### Set up an Amazon SNS Topic  {/*set-up-an-amazon-sns-topic*/}
 Amazon SNS communicates with publishers and subscribers through a "topic." For this purpose of this article, Syndication Publishing will assume the role of a publisher, while a Slack channel will assume the role of the subscriber.

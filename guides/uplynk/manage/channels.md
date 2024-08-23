@@ -159,24 +159,24 @@ Each schedule entry consists of the following elements:
 
 5. If our service detects a conflict with one or more previously scheduled entries, then you will be required to resolve it before being allowed to proceed. Resolve a conflict by performing one or more of the following steps:
 
-- Adjust the entry's start time from within the **Start Time** option.
-- If you are adding an ad break, adjust the entry's duration from within the Total Duration option.
-- From the **Conflicts** tab, you may instruct our service to remove conflicting entries or to trim the entry being added.
+   - Adjust the entry's start time from within the **Start Time** option.
+   - If you are adding an ad break, adjust the entry's duration from within the Total Duration option.
+   - From the **Conflicts** tab, you may instruct our service to remove conflicting entries or to trim the entry being added.
 
-- If you would like to remove previously scheduled entries that conflict with the entry being added, then you should select the **Remove conflicts** option.
-If you would like to trim the beginning of the asset to fit within the current scheduling gap, then you should select the **Autofit new entry by trimming it from the beginning** option.
+   - If you would like to remove previously scheduled entries that conflict with the entry being added, then you should select the **Remove conflicts** option.
+   If you would like to trim the beginning of the asset to fit within the current scheduling gap, then you should select the **Autofit new entry by trimming it from the beginning** option.
 
-    For example, selecting this option when scheduling a 20 minute asset within a 15 minute scheduling gap would trim the first 5 minutes of that asset. This means that playback of this entry will start 5 minutes into the asset.
+      For example, selecting this option when scheduling a 20 minute asset within a 15 minute scheduling gap would trim the first 5 minutes of that asset. This means that playback of this entry will start 5 minutes into the asset.
 
-- If you would like to trim from the end of the asset to fit within the current scheduling gap, then you should select the **Autofit new entry by trimming it from the end** option.
+   - If you would like to trim from the end of the asset to fit within the current scheduling gap, then you should select the **Autofit new entry by trimming it from the end** option.
 
-    For example, selecting this option when scheduling a 20 minute asset within a 15 minute scheduling gap would trim the last 5 minutes of that asset. This means that viewers will only be allowed to play the first 15 minutes of this entry.
+      For example, selecting this option when scheduling a 20 minute asset within a 15 minute scheduling gap would trim the last 5 minutes of that asset. This means that viewers will only be allowed to play the first 15 minutes of this entry.
 
-<Info>Trimming an asset can affect the number of ads served. Specifically, we will not serve ads for an ad break positioned within a portion of the asset that is trimmed.</Info>
+      <Info>Trimming an asset can affect the number of ads served. Specifically, we will not serve ads for an ad break positioned within a portion of the asset that is trimmed.</Info>
 
-- Click **Cancel** if you no longer wish to add this entry to your live channel's schedule.
+   - Click **Cancel** if you no longer wish to add this entry to your live channel's schedule.
 
-7. Click **Add Asset**, **Add Ad Break**, **Add Slicer**, or **Add Playlist** to apply the above change(s).
+6. Click **Add Asset**, **Add Ad Break**, **Add Slicer**, or **Add Playlist** to apply the above change(s).
 
 #### Modify a Schedule Entry  {/*modify-a-schedule-entry*/}
 

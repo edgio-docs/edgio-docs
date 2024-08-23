@@ -10,9 +10,20 @@ const nav = {
   path: productsConfig['open_edge'].pathPrefix,
   routes: [
     {
-      title: 'Getting Started',
-      path: 'getting_started',
-      icon: 'spark',
+      title: 'Overview',
+      path: 'overview',
+    },
+    {
+      title: 'FAQs',
+      path: 'faqs',
+    },
+    {
+      title: 'Blockers',
+      path: 'overview/#blockers',
+    },
+    {
+      title: 'rDNS Reqs',
+      path: 'rdns_requirements',
     },
   ],
 };

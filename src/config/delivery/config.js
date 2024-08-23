@@ -1,10 +1,30 @@
 import {default as base} from '../base.config';
 
-const PRODUCT = 'Delivery';
+const DELIVERY = 'Delivery';
+const CACHING_DELIVERY = 'Caching and Delivery';
+const MEDIAVAULT = 'MediaVault';
+const CONTROL = 'Control';
+const EDGEPRISM = 'EdgePrism';
+const STORAGE = 'Storage';
+const MMD_LIVE = 'MMD Live';
+const MMD_OD = 'MMD OD';
+const LVP = 'LVP';
+const LIVE_PUSH = 'Live Push';
+const ANALYTICS = 'Analytics';
 
 const config = {
   ...base,
-  PRODUCT,
+  DELIVERY,
+  CACHING_DELIVERY,
+  MEDIAVAULT,
+  CONTROL,
+  EDGEPRISM,
+  STORAGE,
+  MMD_LIVE,
+  MMD_OD,
+  LVP,
+  LIVE_PUSH,
+  ANALYTICS,
 };
 
 export default config;

@@ -8,6 +8,8 @@ import React, {
 
 import {useRouter} from 'next/router';
 
+import {ContextType} from './AppContext';
+
 interface EdgioAnswersContextType {
   starterQuestions: string[];
   setStarterQuestions: React.Dispatch<React.SetStateAction<string[]>>;
@@ -16,6 +18,8 @@ interface EdgioAnswersContextType {
   isModalOpen: boolean;
   openModal: (query?: string) => void;
   closeModal: () => void;
+  overrideContext: ContextType | null;
+  setOverrideContext: React.Dispatch<React.SetStateAction<ContextType | null>>;
 }
 
 const defaultContext: EdgioAnswersContextType = {
@@ -26,6 +30,8 @@ const defaultContext: EdgioAnswersContextType = {
   isModalOpen: false,
   openModal: () => {},
   closeModal: () => {},
+  overrideContext: null,
+  setOverrideContext: () => {},
 };
 
 const ROUTE_HASH = '#edgio-answers';
@@ -43,6 +49,9 @@ export const EdgioAnswersProvider = ({children}: Props) => {
   const [starterQuestions, setStarterQuestions] = useState<string[]>([]);
   const [query, setQuery] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [overrideContext, setOverrideContext] = useState<ContextType | null>(
+    null
+  );
 
   useEffect(() => {
     const checkHash = () => {
@@ -99,6 +108,8 @@ export const EdgioAnswersProvider = ({children}: Props) => {
         isModalOpen,
         openModal,
         closeModal,
+        overrideContext,
+        setOverrideContext,
       }}>
       {children}
     </EdgioAnswersContext.Provider>

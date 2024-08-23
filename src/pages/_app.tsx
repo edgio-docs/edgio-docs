@@ -132,6 +132,8 @@ export default function MyApp({Component, pageProps}: DocsAppProps) {
     `https://docs.edg.io` + (router.asPath === '/' ? '' : router.asPath)
   ).split('?')[0];
 
+  const isHome = router.asPath === '/';
+
   return loading && fallbackMap.hasOwnProperty(changingTo) ? (
     fallbackMap[changingTo]
   ) : (
@@ -147,7 +149,7 @@ export default function MyApp({Component, pageProps}: DocsAppProps) {
               <Toast />
             </MDXEmbedProvider>
             <EdgioAnswers />
-            <EdgioAnswersWidget />
+            {!isHome && <EdgioAnswersWidget />}
           </ThemeProvider>
         </EdgioAnswersProvider>
       </AppProvider>

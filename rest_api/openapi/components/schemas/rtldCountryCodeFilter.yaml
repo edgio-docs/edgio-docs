@@ -20,7 +20,7 @@ properties:
       - in
       - not_in
     description: >
-      Determines how log data will be filtered by country code. 
+      Determines how log data will be filtered by country code.
 
 
       Valid values are:

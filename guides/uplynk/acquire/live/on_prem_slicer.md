@@ -124,3 +124,40 @@ Update the following settings in your Live Slicer configuration file:
 | description | Set this to a description that will be assigned to new assets.    |
 | username    | Set this to the email address associated with your account.|
 |apikey|If missing, add a line for the apikey setting. Set it to your secret API key. Leverage our API to generate an API key that only authorizes slicer-related actions by creating a sub-owner that has only been granted the `slice` permission. [Learn more](https://docs.edgecast.com/video/Content/Develop/Sub-Owners.htm). Find your API key via the [Integration Keys page](https://cms.uplynk.com/static/cms2/index.html#/settings/integration-keys) > **Settings** tab > **Integration Keys** from the side navigation. Your API key(s) are listed under the API Keys section.<br />**Example**: `apikey: bcDEFghiJKLmnoPQRtuvWXYz123ABCdefGHIJKL`|
+| slicerID    | Set this to a case-sensitive alphanumeric value by which this Live Slicer will be identified. <br /> A Live Slicer may broadcast content via one or more live channels or live events. <br />Assign a Live Slicer to a live channel and/or a live event via the **Slicer ID** option. Information on how to find this option is provided below.<br />**Live Channel**:<br />Select the live channel and then verify that the **Details** tab is active.<br />**Live Event**:<br />Open the desired live event configuration and then click on the Slicers tab.<br />Verify the case of the Live Slicer's ID when setting up your live channel or live event.|
+
+Once you have defined the above settings, the configuration file will need to updated to reflect your signal source (e.g., SDI, UDP, or RTMP).
+
+<Info>If you plan on streaming over RTP, then you must process your audio/video feed using [ffmpeg](https://ffmpeg.org/) and serve it over UDP.</Info>
+
+**Instructions per your signal source**:
+
+- **SDI (Blackmagic DeckLink SDI card)**: Please review and/or update these Live Slicer configuration settings to reflect your installation. See [Live Slicer Configuration File Settings](#configuration-file-settings) for setting details.
+
+    | Setting | Description |
+    |---|---|
+    | input | Verify that this setting is set to `blackmagic`. |
+    | card | Verify that this setting is set to the card number corresponding to your Blackmagic DeckLink SDI card. |
+    | SCTE104_DID | Verify that this setting correctly identifies the DID for SCTE104 triggers. |
+    | SCTE104_SDID | Verify that this setting correctly identifies the SDID for SCTE104 triggers. |
+    | captions_DID | Verify that this setting correctly identifies the DID for closed captioning. |
+    | captions_SDID | Verify that this setting correctly identifies the SDID for closed captioning. |
+    | ancillary_lines | Verify that this setting accurately reflects the ancillary lines to be scanned. |
+
+- **UDP**: Please update these Live Slicer configuration settings to reflect your installation. See [Live Slicer Configuration File Settings](#configuration-file-settings) for setting details.
+
+    | Setting| Action    | Description|
+    |----------------------|---------------|------|
+    | card   | Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
+    | SCTE104_DID| Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
+    | SCTE104_SDID     | Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
+    | captions_DID     | Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
+    | captions_SDID    | Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
+    | ancillary_lines  | Remove/Ignore | This setting does not apply to UDP streaming and will be ignored.|
+    | input  | Modify  | Set it to `udp`.  |
+    | unicast or multicast | Add | Add either a unicast or multicast setting to the configuration file. Set it to the IP address of the computer generating the UDP stream. |
+    | port   | Add | Add this setting and set it to the port on which the Live Slicer will listen for the UDP stream.|
+    | rtp_headers| Add | **RTP Only**: Add this setting and set it to `1`. <br /> If you do not plan on using RTP and this setting is present in your configuration file, then either remove this setting or set it to `0`. |
+    | rtp_readahead_dur| Add | **RTP Only**: Add this setting and set it to the number of seconds (e.g., `2.0`) that the Live Slicer will wait before uploading the stream to the cloud. |
+    | rtp_backlog_dur  | Add | **RTP Only**: Add this setting and set it to the number of seconds (e.g., `1.4`) for which packet history will be preserved to reduce dropped packets. |
+    | rtp_redundant_feed | Add| **RTP Only**: Add this setting and set it to a URL that points to a redundant RTP feed through which the original stream will be reconstructed. <br /> A redundant RTP feed requires the source computer to have two network routes (e.g., 2-port network card). <br /> **Sample configuration**: `rtp_redundant_feed: rtp://stream.example.com:1234` |

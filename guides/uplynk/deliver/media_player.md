@@ -18,7 +18,7 @@ Create a media player to playback:
 - [Playback URLs](/uplynk/deliver/playback_urls)
 
 
-## Client API  {/*client-api*/}
+## Client APIs  {/*client-api*/}
 
 Use the [client service](https://docs.edgecast.com/video/Content/Develop/Client.htm) to retrieve information required for your playout experiences.
 

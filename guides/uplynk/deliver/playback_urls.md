@@ -2,7 +2,7 @@
 title: Playback URLs
 ---
 
-Learn How To:
+Learn how to:
 
 - **Generate playback URLs for:**
   - [Assets](#assets)

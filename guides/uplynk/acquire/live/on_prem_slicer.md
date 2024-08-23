@@ -372,7 +372,9 @@ Use the following syntax to indicate the number of audio tracks that will be map
 
 For example, use the following configuration to indicate that a custom audio layout for three audio tracks (e.g., English, French, and Spanish) will be mapped: `audio_tracks: 3`
 
-##### Audio Channel Layout (UDP / RTMP / SRT / TCP)
+##### Audio Channel Layout
+
+For UDP / RTMP / SRT / TCP
 
 By default, the Live Slicer uses the following channel layout for Dolby: `C L R RL RR LFE`
 

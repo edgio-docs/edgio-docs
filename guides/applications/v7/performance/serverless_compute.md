@@ -49,7 +49,7 @@ npx degit https://github.com/edgio-docs/edgio-serverless-example my-serverless-f
 
 ## Responding to requests {/* responding-to-requests */}
 
-Use the [compute](/docs/api/core/classes/router_RouteHelper.default.html#compute) method to generate a synthetic response:
+Use the [compute](/docs/v7.x/api/core/classes/router_RouteHelper.default.html#compute) method to generate a synthetic response:
 
 ```js
 // routes.js
@@ -100,7 +100,7 @@ export default new Router().get('/some-route/:someParam', ({compute}) => {
 });
 ```
 
-See [RouteHelper](/docs/api/core/classes/router_RouteHelper.default.html) for all of the methods that you can call when responding to a request.
+See [RouteHelper](/docs/v7.x/api/core/classes/router_RouteHelper.default.html) for all of the methods that you can call when responding to a request.
 
 ## Modifying a response from the origin {/* modifying-a-response-from-the-origin */}
 
@@ -220,7 +220,7 @@ export default new Router().get('/', ({cache, compute}) => {
 });
 ```
 
-See the [cache](/docs/api/core/classes/router_RouteHelper.default.html#cache) method for more options.
+See the [cache](/docs/v7.x/api/core/classes/router_RouteHelper.default.html#cache) method for more options.
 
 ## Running your project locally {/* running-your-project-locally */}
 

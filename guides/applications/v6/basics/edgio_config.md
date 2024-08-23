@@ -17,7 +17,7 @@ The `backends` config is an object whose keys are backend names and whose values
 
 ### Custom Ports {/*customports*/}
 
-For security reasons, you must use the [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) function to proxy requests to a custom port (i.e., a port other than 443 or 80).
+For security reasons, you must use the [compute](/docs/v6.x/api/core/classes/_router_responsewriter_.responsewriter.html#compute) function to proxy requests to a custom port (i.e., a port other than 443 or 80).
 
 The following sample code demonstrates how to proxy to a backend (i.e., `commerce`) whose `port` property has been set to a custom port:
 

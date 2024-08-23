@@ -10,7 +10,7 @@ Set up predictive prefetching by adding a script tag to all of your pages.
 
 -   Due to security requirements, prefetching requires the HTTPS protocol. An exception to this requirement occurs when using localhost.
 
--   If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or a JavaScript front-end framework, you can achieve deeper prefetch integration and custom behavior by installing the `{{ PACKAGE_NAME }}/prefetch` package.  [Learn how to install and use this package](/applications/performance/prefetching/prefetching_edgio_sites).
+-   If you are using {{ PRODUCT }} {{ PRODUCT_PLATFORM }} or a JavaScript front-end framework, you can achieve deeper prefetch integration and custom behavior by installing the `{{ PACKAGE_NAME }}/prefetch` package.  [Learn how to install and use this package](/applications/performance/prefetching/prefetching_cdn_as_code).
 
 ## Setup {/*setup*/}
 
@@ -143,7 +143,7 @@ Verify that links are automatically prefetched and cached locally by opening the
 
 ### Manual Prefetching {/*manual-prefetching-traditional-website*/}
 
-Call the [Edgio.prefetch() function](/docs/api/prefetch/functions/window_prefetch.prefetch.html) from your code to manually prefetch resources.
+Call the [Edgio.prefetch() function](/docs/v7.x/api/prefetch/functions/window_prefetch.prefetch.html) from your code to manually prefetch resources.
 
 **Example:**
 

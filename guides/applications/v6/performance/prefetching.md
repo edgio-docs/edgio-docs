@@ -40,7 +40,7 @@ install();
 
 ## Configuring Routes for Prefetching {/* configuring-routes-for-prefetching */}
 
-To ensure that excessive prefetch traffic isn't passed on to your origin, {{ PRODUCT_NAME }} will serve prefetch requests when a cached response is available at the edge. By default, all prefetch requests will be cached at the edge for 2 minutes (see [`DEFAULT_MAX_AGE_SECONDS`](/docs/api/prefetch/modules/_sw_prefetcher_.html#default_max_age_seconds)). Additionally, you may configure a route that caches responses at the edge and in the service worker within your router, optionally giving it longer cache time for greater performance. In this example we define a route that caches product API calls for one hour:
+To ensure that excessive prefetch traffic isn't passed on to your origin, {{ PRODUCT_NAME }} will serve prefetch requests when a cached response is available at the edge. By default, all prefetch requests will be cached at the edge for 2 minutes (see [`DEFAULT_MAX_AGE_SECONDS`](/docs/v6.x/api/prefetch/modules/_sw_prefetcher_.html#default_max_age_seconds)). Additionally, you may configure a route that caches responses at the edge and in the service worker within your router, optionally giving it longer cache time for greater performance. In this example we define a route that caches product API calls for one hour:
 
 ```js filename="routes.js"
 import {Router} from '{{ PACKAGE_NAME }}/core';
@@ -89,7 +89,7 @@ prefetch('/api/products/1.json', 'fetch', {
 });
 ```
 
-All prefetch function options can be found in its API Documentation [here](/docs/api/prefetch/modules/_window_prefetch_.html#prefetchconfiguration).
+All prefetch function options can be found in its API Documentation [here](/docs/v6.x/api/prefetch/modules/_window_prefetch_.html#prefetchconfiguration).
 
 ## React {/* react */}
 
@@ -188,7 +188,7 @@ By default `Prefetch` will fetch and cache the URL in the link's `to` attribute 
 
 By default, prefetching only fetches the JSON API data or HTML document for a prefetched page. In order to achieve truly instant page transitions, all of the page's assets above the fold need to be prefetched as well. These typically include images, CSS, and JavaScript. This is where "deep fetching" comes in. Deep fetching parses the prefetched page and then fetches the important assets of the prefetched page that you specify.
 
-To add deep fetching to your project, add the [DeepFetchPlugin](/docs/api/prefetch/classes/_sw_deepfetchplugin_.deepfetchplugin.html) to your service worker. The `DeepFetchPlugin` is then configured with an array of selectors that describe which assets need to be prefetched:
+To add deep fetching to your project, add the [DeepFetchPlugin](/docs/v6.x/api/prefetch/classes/_sw_deepfetchplugin_.deepfetchplugin.html) to your service worker. The `DeepFetchPlugin` is then configured with an array of selectors that describe which assets need to be prefetched:
 
 ```js
 import {Prefetcher} from '{{ PACKAGE_NAME }}/prefetch/sw';
@@ -209,7 +209,7 @@ The `DeepFetchPlugin` can parse both HTML and JSON documents to extract the page
 
 ### Deep fetching URLs in JSON responses {/* deep-fetching-urls-in-json-responses */}
 
-For JSON responses, you'll pass the `DeepFetchPlugin` an array of [DeepFetchJsonConfig interface](/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchjsonconfig.html) objects. These `DeepFetchJsonConfig` objects describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
+For JSON responses, you'll pass the `DeepFetchPlugin` an array of [DeepFetchJsonConfig interface](/docs/v6.x/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchjsonconfig.html) objects. These `DeepFetchJsonConfig` objects describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
 
 ```js
 new DeepFetchPlugin([
@@ -232,7 +232,7 @@ The `jsonQuery` syntax is provided by the [json-query](https://github.com/audita
 
 ### Deep Fetching for HTML documents {/* deep-fetching-for-html-documents */}
 
-To deep fetch HTML documents, pass the plugin objects that match the [DeepFetchHtmlConfig interface](/docs/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchhtmlconfig.html) and describe which HTML elements need to be prefetched via CSS selectors.
+To deep fetch HTML documents, pass the plugin objects that match the [DeepFetchHtmlConfig interface](/docs/v6.x/api/prefetch/interfaces/_sw_deepfetchplugin_.deepfetchhtmlconfig.html) and describe which HTML elements need to be prefetched via CSS selectors.
 
 For example, imagine you're configuring prefetching for a product page and you want to ensure the main product image is prefetched so that it appears immediately when the page loads. If the main product image is displayed with an HTML `img` element with a CSS class called `product-featured-media`, it can be prefetched by adding the following to the DeepFetchPlugin:
 
@@ -325,4 +325,4 @@ install({includeCacheMisses: true});
 
 This file is generated at runtime and is used by the `Prefetcher` class from `{{ PACKAGE_NAME }}/prefetch` to add routes to the [service worker](#service-worker). The routes ensure that custom cache keys and the `serviceWorkerSeconds` properties from the `cache()` settings in your router are propagated to the service worker.
 
-For more information on `Prefetcher`, `serviceWorkerSeconds`, and `cache()`, see [Class Prefetcher](/docs/api/prefetch/classes/_sw_prefetcher_.prefetcher.html).
+For more information on `Prefetcher`, `serviceWorkerSeconds`, and `cache()`, see [Class Prefetcher](/docs/v6.x/api/prefetch/classes/_sw_prefetcher_.prefetcher.html).

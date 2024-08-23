@@ -8,7 +8,7 @@ This guide gives examples of common routing patterns using {{ PRODUCT_NAME }}.
 
 ### Same Path {/*same-path*/}
 
-To forward a request to the same path on one of the backends listed in `{{ CONFIG_FILE }}`, use the [`proxy`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy) method of `ResponseWriter`:
+To forward a request to the same path on one of the backends listed in `{{ CONFIG_FILE }}`, use the [`proxy`](/docs/v6.x/api/core/classes/_router_responsewriter_.responsewriter.html#proxy) method of `ResponseWriter`:
 
 ```js
 router.get('/some-path', ({ proxy }) => {
@@ -31,7 +31,7 @@ module.exports = {
 
 ### Different Path {/*different-path*/}
 
-To forward the request to a different path, use the [`path`](/docs/api/core/interfaces/_router_responsewriter_.proxyoptions.html#path) option of the `ProxyOptions` interface:
+To forward the request to a different path, use the [`path`](/docs/v6.x/api/core/interfaces/_router_responsewriter_.proxyoptions.html#path) option of the `ProxyOptions` interface:
 
 ```js
 router.get('/products/:productId', ({ proxy }) => {
@@ -41,7 +41,7 @@ router.get('/products/:productId', ({ proxy }) => {
 
 ### Adding Caching {/*adding-caching*/}
 
-To cache proxied requests at the edge, use the [`cache`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) method.
+To cache proxied requests at the edge, use the [`cache`](/docs/v6.x/api/core/classes/_router_responsewriter_.responsewriter.html#cache) method.
 
 ```js
 router.get('/products/:productId', ({ cache, proxy }) => {
@@ -72,7 +72,7 @@ router.get(
 )
 ```
 
-The above example makes use of [`setRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader), [`updateRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#updaterequestheader), and [`removeRequestHeader`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#removerequestheader) API calls.
+The above example makes use of [`setRequestHeader`](/docs/v6.x/api/core/classes/_router_responsewriter_.responsewriter.html#setrequestheader), [`updateRequestHeader`](/docs/v6.x/api/core/classes/_router_responsewriter_.responsewriter.html#updaterequestheader), and [`removeRequestHeader`](/docs/v6.x/api/core/classes/_router_responsewriter_.responsewriter.html#removerequestheader) API calls.
 
 ### Altering the Response {/*altering-the-response*/}
 
@@ -131,7 +131,7 @@ Note that catch-all routes that alter headers, cookies, or caching can be placed
 
 ### Manipulating Cookies {/*manipulating-cookies*/}
 
-You can manipulate cookies before they are sent to the browser using cookie response API calls like [`addResponseCookie`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#addresponsecookie):
+You can manipulate cookies before they are sent to the browser using cookie response API calls like [`addResponseCookie`](/docs/v6.x/api/core/classes/_router_responsewriter_.responsewriter.html#addresponsecookie):
 
 ```js
 router.get('/some/path', ({
@@ -214,7 +214,7 @@ router
 
 ## Serving a Static File {/*serving-a-static-file*/}
 
-To serve a specific file use the [`serveStatic`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#servestatic) API:
+To serve a specific file use the [`serveStatic`](/docs/v6.x/api/core/classes/_router_responsewriter_.responsewriter.html#servestatic) API:
 
 ```js
 router.get('/favicon.ico', ({ serveStatic, cache }) => {
@@ -305,7 +305,7 @@ router.get('/products/:id', ({ serveStatic, cache }) => {
 
 ## Responding with a String Response Body {/*responding-with-a-string-response-body*/}
 
-To respond with a simple, constant string as the response body use the [`send`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#send) method:
+To respond with a simple, constant string as the response body use the [`send`](/docs/v6.x/api/core/classes/_router_responsewriter_.responsewriter.html#send) method:
 
 ```js
 router.get('/some-path', ({ cache, setResponseHeader, send }) => {
@@ -324,7 +324,7 @@ router.get('/some-path', ({ cache, setResponseHeader, send }) => {
 })
 ```
 
-To compute a dynamic response use the [`compute`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute) method:
+To compute a dynamic response use the [`compute`](/docs/v6.x/api/core/classes/_router_responsewriter_.responsewriter.html#compute) method:
 
 ```js
 router.get('/hello/:name', ({ cache, setResponseHeader, compute, send }) => {
@@ -347,7 +347,7 @@ router.get('/hello/:name', ({ cache, setResponseHeader, compute, send }) => {
 
 ## Redirecting {/*redirecting*/}
 
-To redirect the browser to a different URL, use the [`redirect`](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect) API:
+To redirect the browser to a different URL, use the [`redirect`](/docs/v6.x/api/core/classes/_router_responsewriter_.responsewriter.html#redirect) API:
 
 ```js
 router.get('/p/:productId', ({ redirect }) => {

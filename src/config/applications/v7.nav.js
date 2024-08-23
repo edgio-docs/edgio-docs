@@ -720,7 +720,7 @@ const nav = {
         },
         {
           title: 'Cache-Manifest.js File',
-          path: 'performance/prefetching/cache_manifest_js_file',
+          path: 'reference/cache_manifest_js_file',
         },
         separator,
         {

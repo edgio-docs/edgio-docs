@@ -374,7 +374,7 @@ For example, use the following configuration to indicate that a custom audio lay
 
 ##### Audio Channel Layout
 
-For UDP / RTMP / SRT / TCP
+For UDP \/ RTMP \/ SRT \/ TCP
 
 By default, the Live Slicer uses the following channel layout for Dolby: `C L R RL RR LFE`
 

@@ -223,7 +223,7 @@ Rules allow you to:
 **Key information:**
 
 -   {{ PRODUCT }} will not create an exposure for a hostname or IP address unless a finding matches at least one rule that is configured to create an exposure. 
--   For GitHub repositories, {{ PRODUCT }} pulls vulnerabilities identified by GitHub (from Dependabot, Code scanning and Secret scanning). 
+-   For GitHub repositories, {{ PRODUCT }} pulls vulnerabilities identified by GitHub. 
 -   For Snyk, {{ PRODUCT }} pulls vulnerabilities identified by Snyk.
 -   For Amazon GuardDuty, {{ PRODUCT }} pulls findings identified by Amazon GuardDuty for selected regions.
 -   {{ PRODUCT }} provides a default rule set that you can use as a starting point. This rule set creates exposures for all findings.

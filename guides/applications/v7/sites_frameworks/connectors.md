@@ -130,7 +130,7 @@ export default async function build({ skipFramework }) {
 
 {{ PRODUCT_NAME }} runs your application in the {{ PRODUCT }} cloud by proxying requests to your framework's application server, which it expects to be running on a specific port. The prod.js entry point exports a function that is called when a new Cloud Function is provisioned. It is responsible for starting your app on the provided port so that it can receive requests from {{ PRODUCT_NAME }}.
 
-_Optional. This entry point is only needed if your app uses server-side rendering or calls the_ [renderWithApp](/docs/api/core/classes/router_RouteHelper.default.html#renderWithApp) _method on RouteHelper._
+_Optional. This entry point is only needed if your app uses server-side rendering or calls the_ [renderWithApp](/docs/v7.x/api/core/classes/router_RouteHelper.default.html#renderWithApp) _method on RouteHelper._
 
 For example:
 

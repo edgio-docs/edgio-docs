@@ -101,7 +101,7 @@ Commonly used features for defining a caching policy are listed below.
 
 #### Defining a Caching Policy through CDN-as-Code {/* cdn-as-code */}
 
-Add the [caching](/docs/api/core/interfaces/types.Caching.html) feature to your route:
+Add the [caching](/docs/v7.x/api/core/interfaces/types.Caching.html) feature to your route:
 
 ```js
 router.get('/some/path', {

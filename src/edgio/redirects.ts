@@ -333,6 +333,14 @@ export default <Array<Redirect>>[
     '/applications/v7/performance',
   ],
   [
+    '/applications/v7/performance/prefetching/cache_manifest_js_file',
+    '/applications/v7/reference/cache_manifest_js_file',
+  ],
+  [
+    '/applications/v7/performance/prefetching/prefetching_edgio_sites',
+    '/applications/v7/performance/prefetching/prefetching_cdn_as_code',
+  ],
+  [
     '/applications/v7/intro',
     '/applications',
   ],

@@ -62,15 +62,15 @@ module.exports = new Router().match('/some-path', ({ cache, proxy }) => {
 
 When {{ PRODUCT_NAME }} receives a request, it executes **each route that matches the request** in the order in which they are declared until one sends a response. The following methods return a response:
 
-- [appShell](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#appshell)
-- [compute](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute)
-- [proxy](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#proxy)
-- [redirect](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#redirect)
-- [send](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#send)
-- [serveStatic](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#servestatic)
-- [serviceWorker](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#serviceworker)
-- [stream](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#stream)
-- [use](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#compute)
+- [appShell](/docs/v4.x/api/core/classes/_router_responsewriter_.responsewriter.html#appshell)
+- [compute](/docs/v4.x/api/core/classes/_router_responsewriter_.responsewriter.html#compute)
+- [proxy](/docs/v4.x/api/core/classes/_router_responsewriter_.responsewriter.html#proxy)
+- [redirect](/docs/v4.x/api/core/classes/_router_responsewriter_.responsewriter.html#redirect)
+- [send](/docs/v4.x/api/core/classes/_router_responsewriter_.responsewriter.html#send)
+- [serveStatic](/docs/v4.x/api/core/classes/_router_responsewriter_.responsewriter.html#servestatic)
+- [serviceWorker](/docs/v4.x/api/core/classes/_router_responsewriter_.responsewriter.html#serviceworker)
+- [stream](/docs/v4.x/api/core/classes/_router_responsewriter_.responsewriter.html#stream)
+- [use](/docs/v4.x/api/core/classes/_router_responsewriter_.responsewriter.html#compute)
 
 Multiple routes can therefore be executed for a given request. A common pattern is to add caching with one route and render the response with a later one using middleware. In the following example we cache then render a response with Next.js:
 
@@ -103,7 +103,7 @@ new Router()
 
 `*` Adding, updating, or removing a request cookie can be achieved with `updateRequestHeader` applied to `cookie` header.
 
-You can find detailed descriptions of these APIs in the `{{ PACKAGE_NAME }}/core` [documentation](/docs/api/core/classes/_router_responsewriter_.responsewriter.html).
+You can find detailed descriptions of these APIs in the `{{ PACKAGE_NAME }}/core` [documentation](/docs/v4.x/api/core/classes/_router_responsewriter_.responsewriter.html).
 
 ### Embedded Values {/*embedded-values*/}
 
@@ -407,7 +407,7 @@ The second argument to routes is a function that receives a `ResponseWriter` and
 - Cache the response at edge and in the browser
 - Manipulate request and response headers
 
-[See the API Docs for Response Writer](/docs/api/core/classes/_router_responsewriter_.responsewriter.html)
+[See the API Docs for Response Writer](/docs/v4.x/api/core/classes/_router_responsewriter_.responsewriter.html)
 
 ## Blocking Search Engine Crawlers {/*blocking-search-engine-crawlers*/}
 
@@ -507,7 +507,7 @@ module.exports = new Router()
 
 The `.catch` method allows the edge router to render a response based on the result preceeding routes. So in the example above whenever we receive a 5xx, we respond with `customized-error-page.html` from the application's root directory, and change the status code to 502.
 
-- Your catch callback is provided a [ResponseWriter](/docs/api/core/classes/_router_responsewriter_.responsewriter.html) instance. You can use any ResponseWriter method except `proxy` inside `.catch`.
+- Your catch callback is provided a [ResponseWriter](/docs/v4.x/api/core/classes/_router_responsewriter_.responsewriter.html) instance. You can use any ResponseWriter method except `proxy` inside `.catch`.
 - We highly recommend keeping `catch` routes simple. Serve responses using `serveStatic` instead of `send` to minimize the size of the edge bundle.
 
 ## Environment Edge Redirects {/*environment-edge-redirects*/}

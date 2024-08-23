@@ -78,7 +78,7 @@ export default new Router()
 
 ### Registering the Service Worker {/*registering-the-service-worker*/}
 
-After you have created and served the service worker, it needs to be registered. If you are using a front-end framework that does not automatically register service workers, then you should invoke the `install` function from the `{{ PACKAGE_NAME }}/prefetch` to install the service worker within your client-side code. See [InstallOptions](/docs/api/prefetch/interfaces/window_InstallOptions.default.html) for additional options when installing the service worker.
+After you have created and served the service worker, it needs to be registered. If you are using a front-end framework that does not automatically register service workers, then you should invoke the `install` function from the `{{ PACKAGE_NAME }}/prefetch` to install the service worker within your client-side code. See [InstallOptions](/docs/v7.x/api/prefetch/interfaces/window_InstallOptions.default.html) for additional options when installing the service worker.
 
 <a id="sample-install-prefetch-code" />**Example:**
 
@@ -138,7 +138,7 @@ export default new Router()
 
 #### Default Caching Policy for Manually Prefetching {/*default-caching-policy-for-manually-prefetching*/}
 
-If the `caching.service_worker_max_age` feature has not been defined, you may still [manually prefetch content](#manual-prefetching). By default, manually prefetched content will be cached by the service worker for 2 minutes. Change the default time to live (TTL) by setting [`defaultMaxAgeSeconds`](/docs/api/prefetch/interfaces/sw_Prefetcher.PrefetcherConfig.html#defaultMaxAgeSeconds) when initializing the `Prefetcher` instance in your service worker.
+If the `caching.service_worker_max_age` feature has not been defined, you may still [manually prefetch content](#manual-prefetching). By default, manually prefetched content will be cached by the service worker for 2 minutes. Change the default time to live (TTL) by setting [`defaultMaxAgeSeconds`](/docs/v7.x/api/prefetch/interfaces/sw_Prefetcher.PrefetcherConfig.html#defaultMaxAgeSeconds) when initializing the `Prefetcher` instance in your service worker.
 
 **Example:**
 
@@ -213,7 +213,7 @@ export default new Router()
 
 ### Manual Prefetching {/*manual-prefetching*/}
 
-Manual prefetching also uses `prefetch` function, but it is manually called from your client-side code. This is especially useful when prefetching based on user interactions or other events. The [`prefetch`](/docs/api/prefetch/functions/window_prefetch.prefetch.html) function accepts a URL and an optional `config` object with properties defined in the [`PrefetchConfiguration`](/docs/api/prefetch/types/window_prefetch.PrefetchConfiguration.html) interface. This function may be called at any time after the service worker is installed.
+Manual prefetching also uses `prefetch` function, but it is manually called from your client-side code. This is especially useful when prefetching based on user interactions or other events. The [`prefetch`](/docs/v7.x/api/prefetch/functions/window_prefetch.prefetch.html) function accepts a URL and an optional `config` object with properties defined in the [`PrefetchConfiguration`](/docs/v7.x/api/prefetch/types/window_prefetch.PrefetchConfiguration.html) interface. This function may be called at any time after the service worker is installed.
 
 The following sections describe various ways to implement manual prefetching using the `prefetch` function.
 
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 #### Prefetching Based on Element Visibility {/*prefetching-based-on-element-visibility*/}
 
-To prefetch URLs based on element visibility, you can use the [`watch`](/docs/api/prefetch/interfaces/window_InstallOptions.default.html#watch) option when installing the service worker. The `watch` option accepts an array of objects with `selector` and `callback` properties. The `selector` property is a CSS selector that matches elements to watch for visibility. The `callback` property is a function that is called when an element matching the selector becomes visible. This element is passed to the callback function as an argument.
+To prefetch URLs based on element visibility, you can use the [`watch`](/docs/v7.x/api/prefetch/interfaces/window_InstallOptions.default.html#watch) option when installing the service worker. The `watch` option accepts an array of objects with `selector` and `callback` properties. The `selector` property is a CSS selector that matches elements to watch for visibility. The `callback` property is a function that is called when an element matching the selector becomes visible. This element is passed to the callback function as an argument.
 
 The following example will prefetch all links with an `href` attribute that are visible on the page:
 
@@ -383,7 +383,7 @@ By default, the `Prefetch` component will fetch and cache the URL in the link's 
 
 By default, prefetching only fetches the JSON API data or HTML document for a prefetched page. In order to achieve truly instant page transitions, all of the page's assets above the fold need to be prefetched as well. This typically includes images, CSS, and JavaScript. This is where deep fetching comes in. Deep fetching parses the prefetched page and then fetches important assets from the prefetched page.
 
-To add deep fetching to your project, add the [DeepFetchPlugin](/docs/api/prefetch/classes/sw_DeepFetchPlugin.default.html) to your service worker. The `DeepFetchPlugin` is then configured with an array of selectors that describe which assets need to be prefetched:
+To add deep fetching to your project, add the [DeepFetchPlugin](/docs/v7.x/api/prefetch/classes/sw_DeepFetchPlugin.default.html) to your service worker. The `DeepFetchPlugin` is then configured with an array of selectors that describe which assets need to be prefetched:
 
 ```js filename="service-worker.js"
 import {Prefetcher} from '{{ PACKAGE_NAME }}/prefetch/sw';
@@ -404,7 +404,7 @@ The `DeepFetchPlugin` can parse both HTML and JSON documents to extract the page
 
 ### Deep Fetching Urls in JSON Responses {/* deep-fetching-urls-in-json-responses */}
 
-For JSON responses, you should pass the `DeepFetchPlugin`, which is an array of [DeepFetchJsonConfig interface](/docs/api/prefetch/classes/sw_DeepFetchPlugin.default.html#jsonConfigs) objects. These `DeepFetchJsonConfig` objects describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
+For JSON responses, you should pass the `DeepFetchPlugin`, which is an array of [DeepFetchJsonConfig interface](/docs/v7.x/api/prefetch/classes/sw_DeepFetchPlugin.default.html#jsonConfigs) objects. These `DeepFetchJsonConfig` objects describe the asset URLs in the JSON response that should be prefetched. For example, the snippet below finds product images to deep fetch for a category page response:
 
 ```js filename="service-worker.js"
 new DeepFetchPlugin([
@@ -427,7 +427,7 @@ The `jsonQuery` syntax is provided by the [json-query](https://github.com/audita
 
 ### Deep Fetching for HTML Documents {/* deep-fetching-for-html-documents */}
 
-To deep fetch HTML documents, pass the plugin objects that match the [DeepFetchHtmlConfig interface](/docs/api/prefetch/classes/sw_DeepFetchPlugin.default.html#htmlConfigs) and describe which HTML elements need to be prefetched via CSS selectors.
+To deep fetch HTML documents, pass the plugin objects that match the [DeepFetchHtmlConfig interface](/docs/v7.x/api/prefetch/classes/sw_DeepFetchPlugin.default.html#htmlConfigs) and describe which HTML elements need to be prefetched via CSS selectors.
 
 For example, imagine you're configuring prefetching for a product page and you want to ensure the main product image is prefetched so that it appears immediately when the page loads. If the main product image is displayed with an HTML `img` element with a CSS class called `product-featured-media`, it can be prefetched by adding the following to the DeepFetchPlugin:
 

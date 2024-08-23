@@ -8,7 +8,7 @@ The examples found in this guide can be found in the [edgio-v7-error-handling-ex
 
 ## The `catch` method {/* the-catch-method */}
 
-EdgeJS provides a [`catch`](/docs/api/core/classes/router_Router.default.html#catch) method that you can use to responses that result in an error. There are two main ways to use this method:
+EdgeJS provides a [`catch`](/docs/v7.x/api/core/classes/router_Router.default.html#catch) method that you can use to responses that result in an error. There are two main ways to use this method:
 
 ## Displaying a custom error page {/* displaying-a-custom-error-page */}
 

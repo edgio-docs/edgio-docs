@@ -1,3 +1,3 @@
 ---
-title: {{ VOD }} Uploader
+title: VOD Uploader
 ---

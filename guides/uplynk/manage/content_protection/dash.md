@@ -53,7 +53,7 @@ The player must request a license before it will be allowed to play Studio DRM-p
 
 <Info>Protection Scheme Specific Header (PSSH) data, which is used to generate a license request, is only provided as segments within the manifest file.</Info>
 
-<Info>If you have disabled Studio DRM, then you must request a cleartext key instead of a license. [Learn more](/uplynk/deliver/playback_urls/#disable-studio-drm).</Info>
+<Info>If you have disabled Studio DRM, then you must request a cleartext key instead of a license. [Learn more](/uplynk/deliver/playback_urls/customize_playback_via_parameters/#disable-studio-drm).</Info>
 
 
 **License acquisition URL for Google Widevine**: `https://content.uplynk.com/wv`

@@ -590,23 +590,22 @@ To set one of the above modes, navigate to the **Post Event Slate Duration** sec
 
 1. Generate a playback URL using either the live event's ID (i.e., GUID) or external ID.
 
-- **Event ID**: An event ID is automatically generated upon creating a live event.
+    - **Event ID**: An event ID is automatically generated upon creating a live event.
 
-<Info>Copy a playback URL by navigating to the [Live Events](https://cms.uplynk.com/static/cms2/index.html#/live-events/events) page, viewing the desired live event, clicking the Playback tab, and then clicking copy from under the **HLS URL** option.</Info>
+    <Info>Copy a playback URL by navigating to the [Live Events](https://cms.uplynk.com/static/cms2/index.html#/live-events/events) page, viewing the desired live event, clicking the Playback tab, and then clicking copy from under the **HLS URL** option.</Info>
 
-**Syntax**: https://content.uplynk.com/event/LiveEventID.m3u8
+    **Syntax**: `https://content.uplynk.com/event/LiveEventID.m3u8`
 
-``
-External ID: An external ID may be assigned to a live event upon its creation or modification.
 
-**Syntax**:
+    - **External ID**: An external ID may be assigned to a live event upon its creation or modification.
 
-`https://content.uplynk.com/event/ext/<OwnerID>/LiveEventExternalID.m3u8`
+    **Syntax**:<br />`https://content.uplynk.com/event/ext/<OwnerID>/LiveEventExternalID.m3u8`
 
-If the live event configuration requires a token for playback, then create a script that signs the playback URL.
-Point the media player to the live event using the above playback URL.
-Distribute the media player to the desired viewers.
-If you are setting up a HLS player, you may add support for fast forwarding, rewinding, or pausing and resuming through the Live Timeshifting capability.
+2. If the live event configuration requires a token for playback, then create a script that [signs the playback URL](/uplynk/deliver/playback_urls/#signing_playback_urls_with_token).
+3. Point the media player to the live event using the above playback URL.
+4. Distribute the media player to the desired viewers.
+
+<Tip>If you are setting up a HLS player, you may add support for fast forwarding, rewinding, or pausing and resuming through the Live Timeshifting capability.</Tip>
 
 
 

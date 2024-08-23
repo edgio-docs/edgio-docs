@@ -49,8 +49,6 @@ Perform these steps when installing or upgrading the Live Slicer to the latest v
 
 4. Extract the zip file to the desired directory.
 
-4. Extract the zip file to the desired directory.
-
     **Command**: `$ tar -xvf uplynk_slicer_linux_64-231114.04.01.tbz2`
 
     ```
@@ -125,3 +123,4 @@ Update the following settings in your Live Slicer configuration file:
 |-------------|--------|
 | description | Set this to a description that will be assigned to new assets.    |
 | username    | Set this to the email address associated with your account.|
+|apikey|If missing, add a line for the apikey setting. Set it to your secret API key. Leverage our API to generate an API key that only authorizes slicer-related actions by creating a sub-owner that has only been granted the `slice` permission. [Learn more](https://docs.edgecast.com/video/Content/Develop/Sub-Owners.htm). Find your API key via the [Integration Keys page](https://cms.uplynk.com/static/cms2/index.html#/settings/integration-keys) > **Settings** tab > **Integration Keys** from the side navigation. Your API key(s) are listed under the API Keys section.<br />**Example**: `apikey: bcDEFghiJKLmnoPQRtuvWXYz123ABCdefGHIJKL`|

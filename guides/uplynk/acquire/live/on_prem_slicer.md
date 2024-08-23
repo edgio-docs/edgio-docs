@@ -161,3 +161,103 @@ Once you have defined the above settings, the configuration file will need to up
     | rtp_readahead_dur| Add | **RTP Only**: Add this setting and set it to the number of seconds (e.g., `2.0`) that the Live Slicer will wait before uploading the stream to the cloud. |
     | rtp_backlog_dur  | Add | **RTP Only**: Add this setting and set it to the number of seconds (e.g., `1.4`) for which packet history will be preserved to reduce dropped packets. |
     | rtp_redundant_feed | Add| **RTP Only**: Add this setting and set it to a URL that points to a redundant RTP feed through which the original stream will be reconstructed. <br /> A redundant RTP feed requires the source computer to have two network routes (e.g., 2-port network card). <br /> **Sample configuration**: `rtp_redundant_feed: rtp://stream.example.com:1234` |
+
+    <Tip>If you plan on streaming RTP over UDP, then use the Status endpoint of the Live Slicer API to monitor your RTP feeds and FEC status.</Tip>
+
+    **Multiple Ethernet Adapters**<br />The Live Slicer listens for data on all interfaces. If multiple interfaces are available, then a packet may be received on one interface and then routed to a different one. This may cause the Linux kernel to apply reverse path filtering and therefore drop inbound packets that would have been routed to a different interface.
+
+    **Example**:<br />A packet is received from 239.0.0.0 on eth1. Sending a packet back to 239.0.0.0 would result in the packet being routed to eth0. This would trigger reverse path filtering and the inbound packet from eth1 would be dropped.
+
+    **Solution**:<br />The solution for this issue is to ensure that the desired multicast IP address is routable to the interface on which the Live Slicer will be listening.
+
+    <Info>An alternative solution is to disable reverse path filtering. However, it is important to become acquainted with the security implications of this solution prior to its implementation.</Info>
+
+
+- **RTMP**
+
+    <Info>Please do not publish your stream until after you have configured the Live Slicer to ingest RTMP, restarted it, and it is in the waiting for data state. Please restart stream encoding when your encoder cannot connect to the Live Slicer.</Info>
+
+    <Info>The RTMP source is incompatible with SCTE, ad breaks, or Action Message Format (AMF).</Info>
+
+    Please update these Live Slicer configuration settings to reflect your installation.
+
+    | Setting | Action | Description |
+    |---|---|---|
+    | card | Remove/Ignore | This setting does not apply to the RTMP source and will be ignored. |
+    | SCTE104_DID | Remove/Ignore | This setting does not apply to the RTMP source and will be ignored. |
+    | SCTE104_SDID | Remove/Ignore | This setting does not apply to the RTMP source and will be ignored. |
+    | captions_DID | Remove/Ignore | This setting does not apply to the RTMP source and will be ignored. |
+    | captions_SDID | Remove/Ignore | This setting does not apply to the RTMP source and will be ignored. |
+    | ancillary_lines | Remove/Ignore | This setting does not apply to the RTMP source and will be ignored. |
+    | input | Modify | Set it to `rtmp`.<br />See [Live Slicer Configuration File Settings](#configuration-file-settings) for setting details. |
+    | rtmp_url | Add | Add this setting and set it to the URL for the RTMP stream that your encoder will push to the Live Slicer.<br />You may configure the Live Slicer to pull the RTMP stream from your encoder through the enable_rtmp_pull setting. <br/>See [Live Slicer Configuration File Settings](#configuration-file-settings) for setting details.|
+
+- **SRT**: Please update these Live Slicer configuration settings to reflect your installation.
+
+    | Setting | Action | Description |
+    |---|---|---|
+    | card | Remove/Ignore | This setting does not apply to SRT streaming and will be ignored. |
+    | SCTE104_DID | Remove/Ignore | This setting does not apply to SRT streaming and will be ignored. |
+    | SCTE104_SDID | Remove/Ignore | This setting does not apply to SRT streaming and will be ignored. |
+    | captions_DID | Remove/Ignore | This setting does not apply to SRT streaming and will be ignored. |
+    | captions_SDID | Remove/Ignore | This setting does not apply to SRT streaming and will be ignored. |
+    | ancillary_lines | Remove/Ignore | This setting does not apply to SRT streaming and will be ignored. |
+    | input | Modify | Set it to `srt`.<br/>See [Live Slicer Configuration File Settings](#configuration-file-settings) for setting details. |
+    | input_addr | Add | Set it to the IP address of the computer generating the SRT stream.<br/>See [Live Slicer Configuration File Settings](#configuration-file-settings) for setting details. |
+    | port | Add | Add this setting and set it to the port on which the Live Slicer will listen for the SRT stream.<br/>See [Live Slicer Configuration File Settings](#configuration-file-settings) for setting details. |
+
+
+- **TCP**: Please update these Live Slicer configuration settings to reflect your installation.
+
+    | Setting | Action | Description |
+    |---|---|---|
+    | card | Remove/Ignore | This setting does not apply to TCP streaming and will be ignored. |
+    | SCTE104_DID | Remove/Ignore | This setting does not apply to TCP streaming and will be ignored. |
+    | SCTE104_SDID | Remove/Ignore | This setting does not apply to TCP streaming and will be ignored. |
+    | captions_DID | Remove/Ignore | This setting does not apply to TCP streaming and will be ignored. |
+    | captions_SDID | Remove/Ignore | This setting does not apply to TCP streaming and will be ignored. |
+    | ancillary_lines | Remove/Ignore | This setting does not apply to TCP streaming and will be ignored. |
+    | input | Modify | Set it to `tcp`. See [Live Slicer Configuration File Settings](#configuration-file-settings) for setting details. |
+    | input_addr | Add | Set it to the IP address of the computer generating the TCP stream.See [Live Slicer Configuration File Settings](#configuration-file-settings) for setting details. |
+    | port | Add | Add this setting and set it to the port on which the Live Slicer will listen for the TCP stream. See [Live Slicer Configuration File Settings](#configuration-file-settings) for setting details.|
+
+    <Info>The Live Slicer must be [restarted](#administration) for configuration changes to take effect.</Info>
+
+    <Info>Additional settings may be added to define the audio/video tracks to be processed, define the language for audio tracks, and to specify a description for audio tracks. [View a comprehensive listing of settings.](#configuration-file-settings)</Info>
+
+### SCTE 35/104 Signal Processing
+
+By default, the Live Slicer performs basic SCTE 35/104 signal processing. Specifically, it converts SCTE 104 to SCTE 35 and then applies SCTE 35 signal processing to it. This allows a [single plugin](/uplynk/acquire/live/scte_plugins/#baseline-scte-plugin) to support SDI, UDP, and RTMP. If the SCTE processing provided by the baseline plugin is insufficient, use the [Python plugin](/uplynk/acquire/live/scte_plugins/#python-scte-plugin) to add custom Python functions.
+
+**Disable SCTE processing**<br />Define the following setting in your Live Slicer configuration file:<br />`scte_type: none`
+
+### Metadata
+
+By default, metadata is not defined for assets generated by the Live Slicer. However, an asset's metadata may be defined through any of the following methods:
+
+- **Live Slicer Configuration File**: Use the meta configuration parameter to define a key/value pair for the desired metadata field. By default, the metadata defined by this parameter will be assigned to assets generated by the Live Slicer.
+
+    Define additional metadata fields by specifying this configuration parameter on a separate line for each desired field.
+
+    **Example**:
+
+    ```
+    meta MyField1=ValueA
+
+    meta MyField2=ValueB
+    ```
+
+- **Live Slicer API**: Assign metadata to a particular asset through the [add_meta method](#ad-meta).
+
+    <Tip>The add_meta method takes precedence when the same metadata field is defined by both methods.</Tip>
+
+<Info>Metadata may be defined when setting up a live channel. However, this metadata only applies to the live channel object. Assets generated from a live channel will not inherit metadata from that live channel.</Info>
+
+## Color Space
+
+By default, the Live Slicer will automatically convert the input signal's color standard to either HDR10 or SDR according to whether your [encoding profile](/uplynk/acquire/encoding_profiles) supports HDR.
+
+| Encoding Profile | Color Standard (Source) | Color Standard (Output) |
+|---|---|---|
+| HDR | HDR (including HLG) or SDR<br />All SDR source content, including ads, will be converted to HDR10. | HDR10 |
+| SDR | HDR (including HLG) or SDR | SDR |

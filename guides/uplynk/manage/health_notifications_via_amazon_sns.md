@@ -72,7 +72,7 @@ Perform the following steps to create a topic:
 
 Both of the following configurations must be defined before the Live Slicer will push health information to Amazon SNS:
 
-1. [**Create a notification profile**](#audio-notifications) that determines when SNS push notifications will be triggered.
+1. [**Create a notification profile**](/uplynk/acquire/live/health_monitoring/#audio-notifications) that determines when SNS push notifications will be triggered.
 2. **Assign the above notification profile** to each desired Live Slicer.
 
     - Navigate to the Live Slicer Monitoring dashboard. From the main menu, navigate to **Services** and then click **Monitoring 2.0**.

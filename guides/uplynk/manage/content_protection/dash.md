@@ -26,7 +26,7 @@ Follow these steps to get started with Studio DRM:
 
         <Tip>Use a [Studio DRM policy configuration](/uplynk/manage/content_protection/policy_configuration) and/or the [parameter expansion](/uplynk/deliver/playback_urls/customize_playback_via_parameters/#general_parameters) capability to obfuscate your Studio DRM policies.</Tip>
 
-    - [Sign the playback URL](/uplynk/deliver/playback_urls/#basic_setup).
+    - [Sign the playback URL](/uplynk/deliver/playback_urls/#signing-playback-urls-with-a-token).
 
 6. **Update your player/client** to submit a license request to our license server via one of the following license acquisition URLs:
 

@@ -359,3 +359,59 @@ Use the following syntax to downmix audio to 5.1:<br />`audio_custom_layout_{Tra
 
 1. Replace *\{Track\}* with the ID of the audio track that will be assigned a custom audio layout.
 2. Set X or L and R (Left and Right) to an ampersand delimited list of SDI channels that will serve as the source for the specified audio track. The valid range for each channel is 0 - 15.<br /><br />The following sample mono configuration sets the source for audio track 0 to SDI channels 0, 1, and 3.<br />`audio_custom_layout_0: mono|X=0&1&3`<br /><br />The level for each assigned SDI channel may be defined by appending the @ symbol followed by the desired value. Use the following formula to calculate level:<br />`{Volume %} * 10`<br /><br />The following sample stereo configuration sets Left to SDI channel 0 at 70.7% and SDI channel 2 at 80%, while Right is set to SDI channel 4 at 20.2%.<br />`audio_custom_layout_0: stereo|L=0@707&2@800,R=4@202`<br /><br />If the audio level is missing, then it will be set to 100%. The following sample stereo configuration sets Left to SDI channel 0 at 100% and Right is set to SDI channels 3 and 4 at 100%.<br />`audio_custom_layout_0: stereo|L=0,R=3&4`
+
+##### Multiple Track Setup
+
+A custom audio layout may be defined for multiple tracks (e.g., language-specific tracks). This type of setup requires informing the Live Slicer as to the number of tracks that will be mapped via the `audio_tracks` configuration setting.
+
+<Warning>The Live Slicer will only generate audio for a single track when this configuration setting is omitted.</Warning>
+
+<Info>Although we support up to 31 audio tracks, your SDI capture card can only detect up to 16 audio tracks.</Info>
+
+Use the following syntax to indicate the number of audio tracks that will be mapped: `audio_tracks: {Quantity}`
+
+For example, use the following configuration to indicate that a custom audio layout for three audio tracks (e.g., English, French, and Spanish) will be mapped: `audio_tracks: 3`
+
+##### Audio Channel Layout (UDP / RTMP / SRT / TCP)
+
+By default, the Live Slicer uses the following channel layout for Dolby: `C L R RL RR LFE`
+
+## Log Data  {/*log-data*/}
+
+The Live Slicer outputs verbose logging information to syslog. A default syslog configuration will send these messages to: `/var/log/syslog`
+
+<Tip>The syslog contains valuable information that will help us troubleshoot Live Slicer-related issues. Please send us a compressed version of the syslog when experiencing issues with the Live Slicer.</Tip>
+
+### Verbosity
+
+By default, the Live Slicer logs error conditions and informational messages. Configure the Live Slicer to also log debug messages by adding the following configuration to your Live Slicer configuration file: `verbosity: 3`<br />[Learn more](#configuration-file-settings).
+
+Alternatively, use the following syntax if you plan on starting the Live Slicer via the command line: `sudo systemctl start uplynk_liveslicer.service -v 3`
+
+## Live Slicer Failover
+
+Live Slicer failover minimizes the impact to your viewer's playback experience when a Live Slicer's performance is sub-optimal by automatically switching the live stream's source to a different Live Slicer.
+
+Set up Live Slicer failover through the following steps:
+
+1. Create a failover group and assign it Live Slicers and live channel(s).
+2. Instruct each desired Live Slicer to join this failover group by updating its configuration file.
+
+[Learn more](#configuration-file-settings).
+
+### Administration (initcl Commands)
+
+Use the following commands to start, stop, and restart the Live Slicer.
+
+| Action | Command |
+|---|---|
+| Start | **upstart**:<br />`sudo start uplynk_liveslicer`<br />**systemd**:<br />`sudo systemctl start uplynk_liveslicer.service` |
+| Stop | **upstart**:<br />`sudo stop uplynk_liveslicer`<br />**systemd**:<br />`sudo systemctl stop uplynk_liveslicer.service` |
+| Restart | **upstart**:<br />`sudo restart uplynk_liveslicer`<br />**systemd**:<br />`sudo systemctl restart uplynk_liveslicer.service` |
+
+<Info>An invalid Live Slicer configuration may prevent the Live Slicer from starting up.
+</Info>
+
+<Tip>Review the syslog file to check whether the Live Slicer is running.</Tip>
+
+<Info>The Live Slicer will automatically start whenever the server is restarted.</Info>

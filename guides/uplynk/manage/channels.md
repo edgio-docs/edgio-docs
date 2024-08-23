@@ -18,9 +18,7 @@ Add audio/video content to a live channel via the following methods:
 - Secure a live linear feed by setting up whitelisted domains, [a digital signature](/uplynk/deliver/playback_urls/#signing-playback-urls-with-token), and/or [blackout](/uplynk/manage/content_protection/blackout) within your live channel configuration.
 - Slate is played in a loop when a live channel's timeline is missing content or during blackouts. Define the type of slate that will be played within a live channel's configuration.
 - By default, a live channel trails the live horizon by \~60 seconds. See [Playback Latency](#change-the-default-playback-latency) for reduced-latency options.
-- Set up Live Slicer failover to ensure uninterrupted playback of your live stream.
-
-[Learn more.](/uplynk/acquire/live/failover)
+- Set up Live Slicer failover to ensure uninterrupted playback of your live stream. [Learn more.](/uplynk/acquire/live/failover)
 
 Click **Save** to apply your changes to your live channel's configuration.
 
@@ -61,7 +59,7 @@ From the **Details** tab of the **Live Channels** record, select the **Playback 
 
 ### Assign a Failover Group to a Live Channel  {/*assign-a-failover-group-to-a-live-channel*/}
 
-<Info>A prerequisite for this procedure is a failover group. [Learn more](/uplynk/deliver/live/failover).</Info>
+<Info>A prerequisite for this procedure is a failover group. [Learn more](/uplynk/acquire/live/failover).</Info>
 
 1. Navigate to the Slicers page via **Slicers** from the main menu.
 

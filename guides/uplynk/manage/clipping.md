@@ -24,7 +24,7 @@ Profiles allow you to define a default configuration for each type of clip. Appl
 The settings that may be defined through profiles are listed below:
 
 - **Metadata:** Define a default set of [metadata keys](#metadata). Additionally, determine whether an external ID may be assigned to new clips through the **Show External ID** option in the Clipping Tool.
-- **Third-Party Integrations:** Automatically [publish new clips to a third-party platform](#third-party-platform-integrations).
+- **Third-Party Integrations:** Automatically [publish new clips to a third-party platform](#third-party-platform-integration).
 - **Overlays:** Define the set of [image overlays](#image-overlays) that will be available for selection and apply a default one to new clips.
 - **Default Intro/Outro Bumpers:** Define a default [intro and/or outro bumper](#intro-outro-bumpers).
 - **Signed Playback URLs:** Determine whether a token will be required by default for new clips through the **Require a token for playback on all new clips** option.

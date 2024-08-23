@@ -436,7 +436,7 @@ Publish key publishing job events through the following workflow:
 Perform the following steps to set up Syndication Publishing notifications:
 
 1. [Set up an Amazon SNS topic](#set-up-an-amazon-sns-topic).
-2. [Configure communication](#configure-communication-with-amazon-sms) between Syndication Publishing and Amazon SNS.
+2. [Configure communication](#configure-communication-with-amazon-sns) between Syndication Publishing and Amazon SNS.
 3. Configure Amazon SNS to broadcast notifications to the desired destination(s).
 
     [Learn how to set up Amazon SNS and Lambda to broadcast notifications to a Slack channel](#slack-integration).

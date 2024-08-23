@@ -477,3 +477,69 @@ Learn how to override this behavior.</Info>
 | port| **Required for UDP**<br /> Identifies the UDP port. <br />**Syntax**<br />`port: Port`<br />**Example**<br /> `port: 1234`. |
 | preview| Determines if the Live Events Dashboard's Slicer Live Preview will display a video preview. If the `livepreview_with_audio` setting is not enabled, then this preview will only consist of video. Valid values are `on` or `off`.          |
 | progID | **UDP Only.**<br />Identifies the program in a multi-program transport stream. Configure this setting to the ID of the desired program. If the `pids` setting has not been defined, then all audio tracks in the program will be consumed. By default, the Live Slicer will consume the first audio/video track when a progID and PIDs have not been specified.<br />**Syntax**<br />`progID: Program ID`<br />**Example**<br /> `progID: 128`.  |
+| render_608         | **Requires version 19022000 or higher.**<br /> Converts CEA-608/708 channels to WebVTT. <br />**Example**<br /> `render_608: cc1,cc2,cc3,cc4`.        |
+| render_608_buffer  | **Requires version 19022000 or higher.**<br /> Determines the maximum buffer duration, in seconds, for rending captions to video. Raw video frames will be buffered for the specified duration and therefore is memory intensive. Although memory usage will vary according to resolution and frames per seconds, we strongly discourage a buffer size greater than 5 seconds. This buffer is only relevant for pop-on captions. Roll-up and paint-on captions are rendered immediately and therefore do not require a buffer. <br />**Syntax**<br />`render_608_buffer: {Seconds}`<br />**Example**<br /> `render_608_buffer: 2`.  |
+| render_teletext    | **Requires version 20031300 or higher.**<br /> Converts DVB teletext pages to WebVTT. Use this parameter to assign a language track to a DVB teletext page number. Use a comma to delimit multiple DVB teletext configurations.<br />**Syntax**<br />`render_teletext {Page Number 1}:{Language 1},{Page Number 2}:{Language 2},{Page Number n}:{Language n}`<br />**Example**<br />Converts English DVB teletext from page 888, Italian DVB teletext from page 887, and Russian DVB teletext from page 886: `render_teletext 888:eng,887:it,886:ru`. |
+| rgb_lut| **Requires version 20092800 or higher.**<br /> Customizes color representation conversion. <br />**Syntax (Simple)**<br />`rgb_lut from {Color Standard},{Range} to {Color Standard},{Range} /{Absolute Path}/{Cube File Name}` <br />**Syntax (Extended)**<br />`rgb_lut from colorspace:{Color Space},primaries:{RGB Primaries},trc:{Transformation Characteristics},range:{Range} to colorspace:{Color Space},primaries:{RGB Primaries},trc:{Transformation Characteristics},range:{Range} /{Absolute Path}/{Cube File Name}` <br />**Example (simple)**<br /> `rgb_lut from hlg to hdr10,full /path/mylut.cube`. <br /> [Learn more](#color-space).   |
+| rtmp_url           | **RTMP Only.**<br /> Identifies the RTMP stream URL. The `enable_rtmp_pull` setting determines whether the Live Slicer may pull the RTMP stream instead of monitoring this URL for a stream pushed by your encoder.<br />**Example**<br /> `rtmp://example.com:1935/live/mystream`.     |
+| rtp_backlog_dur    | **RTP Only.**<br />  Determines the seconds for packet history preservation. <br />**Syntax**<br /> `rtp_backlog_dur: {Seconds}.{Deciseconds}`<br />**Recommended Configuration**<br />`rtp_backlog_dur: 1.4`|
+| rtp_headers        | Determines RTP usage when streaming over UDP. Valid values are `0` (off) and `1` (on) <br />**Example**<br /> `rtp_headers: 1`  |
+| rtp_readahead_dur  | **RTP Only.**<br /> Balance stream latency with tolerance to disordered packets and forward error correction (FEC) latency when configuring this setting. Set it higher than the average value reported by the `skew_sec` statistic reported by the [Status endpoint of the Live Slicer API](https://docs.edgecast.com/video/Content/Develop/Live-Slicer-API.htm#status). <br />**Syntax**<br /> `rtp_readahead_dur: {Seconds}.{Deciseconds}`<br />**Default Configuration**<br />`rtp_readahead_dur: 2.0`   |
+| rtp_redundant_feed | **RTP Only.**<br />  Identifies the URL to a backup SMPTE 2022-compliant RTP feed through which the original stream will be reconstructed. Packets missing from one feed will be taken from the other feed. A redundant RTP feed requires the source computer to have two network routes (e.g., 2-port network card). <br />**Syntax**<br />`rtp_redundant_feed: rtp://{hostname}:{port}`<br />**Example**<br /> `rtp_redundant_feed: rtp://stream.example.com:1234`.|
+| scte_module        | Identifies the SCTE plugin for SCTE 35/104 signal processing. This parameter requires `scte_type` to be set to python. This parameter requires scte_type to be set to python. You may omit the absolute path to the desired Python file and its file name extension when it resides in the "plugins" subfolder of your Live Slicer's installation directory. Valid values are `scte_baseline` or Python file path. <br />**Python Syntax (default path)**<br /> `scte_module: {File Name without Extension}`<br />**Example**<br />`scte_module: my_scte_plugin`<br />**Syntax (custom path)**<br />`scte_module: /{Absolute Path}/{File Name}`<br />**Example**<br />`/Users/joe/plugins/my_scte_plugin.py`<br />[Learn more](/uplynk/acquire/live/scte_plugins).|
+| scte_python_version| **Requires version 20031300 or higher**<br /> Determines the Python version. Valid values are `2.7`, `3.6`, `3.6m`. **Default Configuration** <br />`scte_python_version: 2.7`. |
+| scte_type          | Determines how SCTE 35/104 signals are processed. Valid values are `none` (Disables SCTE 35/104 signal processing) or `python` (Allows SCTE 35/104 signal processing. The `scte_module` parameter determines the SCTE plugin that will process your SCTE 35/104 signal).|
+| SCTE104_DID        | **SDI (Blackmagic) Only.**<br /> Defines the DID for SCTE104 triggers. <br />**Syntax**<br />`SCTE104_DID: DID`<br />**Example**<br /> `SCTE104_DID: 0x41`.      |
+| SCTE104_SDID       | **SDI (Blackmagic) Only.**<br />  Defines the SDID for SCTE104 triggers. <br />**Syntax**<br />`SCTE104_SDID: SDID`<br />**Example**<br /> `SCTE104_SDID: 0x07`.    |
+| slicerID           | **Required.**<br /> Assigns a unique ID to a Live Slicer. Use this ID to identify this Live Slicer when setting up a live channel or a live event.<br />**Syntax**<br />slicerID: Live Slicer ID<br />**Example**<br /> `slicerID: SportsFeed1`.  |
+| ssl_port           | Exposes the authenticated API over SSL/TLS. Use this parameter to allow the Live Slicer to communicate with the Live Events Dashboard without causing mixed content blocking.<br />**Syntax**<br /> `ssl_port: IP Address:Port` or `ssl_port: Port`. <br />**Example**<br /> `ssl_port: 443`.|
+| start_blackout     | **Advanced.**<br /> Determines if the Live Slicer will start in blackout mode. Valid values are `yes` (Indicates that the Live Slicer will start in blackout mode) or `sticky` (Indicates that the Live Slicer will resume its previous mode upon being started. For example, if a Live Slicer was stopped in blackout mode, then it will resume blackout mode the next time that it is started.). <br />**Syntax**<br />`start_blackout: yes\|sticky`<br />**Example**<br /> `start_blackout: sticky`.   |
+| thumbnail          | Adds a thumbnail with specified dimensions. A default thumbnail will be created regardless of whether this option is passed. The upper-bound for a thumbnail's dimensions is determined by the specified width and height. The thumbnail will fit within the specified dimensions, while maintaining the source video's aspect ratio. A thumbnail's maximum size cannot exceed any of the following dimensions: Your source video's resolution; your encoding profile's maximum resolution; 1280x720 or 720x1280. Add this setting for each desired thumbnail size. Each instance of this setting should be specified on a separate line. Generating additional thumbnails may incur additional storage costs.<br />**Syntax**<br />`thumbnail: Prefix=WidthxHeight`<br />**Example**<br /> `thumbnail: tiny=150x150` <br />`thumbnail: small=200x200`  |
+| timecard           |  **Advanced - SDI (Blackmagic) Only.**<br /> Determines whether the Live Slicer will load a dynamic library (i.e., libuplynk_timecode.so) that facilitates the integration of an external timecode generator. Enable this capability by configuring this setting to `true`. <br />**Example**<br /> `timecard: true`.           |
+| timecode           | **Advanced.**<br /> Adds an ID3 tag that defines the time for pic_timing data. <br />**Syntax**<br />`timecode: hh:mm:ss:ff`<br />**Example**<br /> `timecode: 11:22:11:03`.           |
+| unicast| **UDP Only.**<br /> Defines the IP address for UDP unicast stream. This setting must be defined when the signal's input source is a UDP unicast MPEG2 transport stream.<br />**Syntax**<br />`unicast: IP Address`<br />**Example**<br /> `unicast: 100.100.55.22`.    |
+| upscale| **Requires version 21070801 or higher.**<br /> Set to `yes` to upscale video feed to the highest quality. Your content's frame rate is independent of resolution. Therefore, upscaling your video feed will not affect its frame rate. Ads are always upscaled regardless of this setting.<br />**Example**<br /> `upscale: yes`.           |
+| username           | **Required.**<br /> Defines the user name for authentication. Typically, your user name is the email address associated with your account.<br />**Example**<br /> `username: joe@example.com`.          |
+| useSystemClockAsTimecode | UDP (including RTP) and RTMP: Set to `1` to enable `start_timecode` parameter support.        |
+| verbosity          | Sets log data verbosity level. Valid values are `1` (default. Logs error conditions and informational messages) or `3` (Logs error conditions, informational messages, and debug messages). <br />**Positive Values**: The video will be forced ahead of the audio by the specified amount of time.<br />**Negative Values**: The video will be forced behind the audio.<br />**Syntax**<br />`username: User Name`<br />**Example**<br /> `verbosity: 3`.     |
+| video_sync_ms      | **Advanced - SDI (Blackmagic) Only**<br /> Sets audio/video sync offset in milliseconds. <br />**Syntax**<br />video_sync_ms: Milliseconds<br />**Example**<br /> `video_sync_ms: 55`.       |
+| wallclock          | **Advanced.**<br /> Adds an ID3 tag based on timestamp to each slice. This setting relies on the system time of the computer hosting the Live Slicer.<br />**Example**<br /> `wallclock: true`       |
+
+
+
+
+### Hashtags
+
+By default, the hashtag symbol (i.e., #) indicates the start of a comment in a configuration file. Override this behavior by renaming the desired setting as indicated below.
+
+`verbatim_Setting`
+
+<Tip>Please remove comments from settings to which the above workaround has been applied.</Tip>
+
+<Info>Most settings only support predefined values or integers. Do not apply this override procedure to those settings.</Info>
+
+**Example**<br />In this example, the `description` setting is set to `Live Capture` and a brief description of this setting appears directly to the right of the hashtag symbol.
+
+```
+description: Live Capture # A description that will be assigned to new assets.
+
+...
+```
+
+In order to set the `description` setting to a value that contains a hashtag, we will modify its name to include the prefix `verbatim_` and we will remove the comment from that line.
+
+```
+verbatim_description: #1 Videos by Genre
+
+...
+```
+
+The above configuration sets the `verbatim_description` setting to `#1 Videos by Genre`.
+
+## More Information
+
+- [Live Slicer Health Monitoring](/uplynk/acquire/live/health_monitoring)
+- [Live Slicer Health Notifications](/uplynk/manage/health_notifications_via_amazon_sns)
+- [Media Player Setup](/uplynk/deliver/media_player)
+- [Latency (Live Linear)](/uplynk/acquire/live/#latency)
+- [Latency (Live Events)](/uplynk/manage/live_events/#latency)

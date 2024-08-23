@@ -146,7 +146,7 @@ Certain types of content (e.g., slate) should not be protected by Studio DRM.
 1. Disable Studio DRM by performing either of the following:
 
 - Clear the **Require studio approved DRM for playback** option on the desired CMS asset.
-- ass the `drm_optional` parameter in the playback URL. [Learn more](/uplynk/acquire/playback_urls/customize_playback_via_parameters/#disable-studio-drm).
+- ass the `drm_optional` parameter in the playback URL. [Learn more](/uplynk/deliver/playback_urls/customize_playback_via_parameters/#disable-studio-drm).
 
 2. Update your player to request a cleartext key via the following URL:
 

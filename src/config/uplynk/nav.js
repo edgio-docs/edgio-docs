@@ -48,10 +48,34 @@ const nav = {
         {
           title: 'Acquire',
           path: 'get_started/acquire',
+          routes: [
+            {
+              title: 'Cloud Slicer Live',
+              path: 'get_started/acquire/cloud_slicer_live',
+            },
+            {
+              title: 'VOD Uploader',
+              path: 'get_started/acquire/vod_uploader',
+            },
+          ],
         },
         {
           title: 'Manage',
           path: 'get_started/manage',
+          routes: [
+            {
+              title: 'Channels',
+              path: 'get_started/manage/channels',
+            },
+            {
+              title: 'Live Events',
+              path: 'get_started/manage/live_events',
+            },
+            {
+              title: 'Playlists and Smartstart',
+              path: 'get_started/manage/playlists_and_smartstart',
+            },
+          ],
         },
         {
           title: 'Monetize',

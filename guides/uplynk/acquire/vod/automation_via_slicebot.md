@@ -200,7 +200,7 @@ This section describes the supported configuration settings that can be used to 
 
 The following configuration settings may be leveraged when defining:
 
-- [The main configuration file](#main-configuration-file).
+- [The main configuration file](#main-configuration).
 - [A file-specific configuration file](#file-specific-configuration-file).
 - [Configuration settings by file name](#file-name-configuration).
 

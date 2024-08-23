@@ -18,7 +18,6 @@ Definitions for key concepts are provided below.
     -   Common Weakness Enumeration (CWE). A CWE identifies a common software or hardware weakness that can potentially introduce a security vulnerability. 
     -   Open ports.
     -   TLS issues.
-    -   Exposed secrets.
     -   Response header violations. For example, a required header may be missing or it can assigned an invalid value.
     -   AWS issues.
 -   **Protections:** {{ PRODUCT }} identifies the security solutions that are protecting the assets associated with the scanned network segment.

@@ -122,7 +122,7 @@ You may create, modify, and delete collections. Finally, you can reset a collect
         1.  In the **Name** option, type a descriptive name.
         2.  In the **Access Key ID** option, type your Amazon GuardDuty [access key ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey).
         3.  In the **Secret Access Key** option, type your Amazon GuardDuty [secret access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey).
-        4.  In the **Regions** option, type regions that should be scanned.
+        4.  In the **Regions** option, type the regions for which findings will be pulled.
 
 6.  Click **Create Seed**.
 

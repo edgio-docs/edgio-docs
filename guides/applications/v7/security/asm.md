@@ -10,7 +10,7 @@ Definitions for key concepts are provided below.
 
 -   **Collection:** A [collection](#collections) represents the segment(s) of your network that will be scanned for vulnerabilities. 
 -   **Assets:** Your assets consist of hostnames, IP addresses, GitHub repositories, Snyk targets, and AWS Resources. There are two methods for registering an asset.
-    -   An asset is registered for each hostname, IP address, GitHub repository defined as a seed.
+    -   An asset is registered for each hostname, IP address, and GitHub repository defined as a seed.
     -   {{ PRODUCT }} uses seeds to determine which network segments will be scanned. Each hostname and IP address identified through this scan is also registered as an asset. 
         For more complex seeds that target whole organizations/systems, such as Snyk and Amazon GuardDuty, multiple assets (Snyk targets and AWS resources) are created as assets.
 -   **Exposures:** By default, {{ PRODUCT }} scans your network for:

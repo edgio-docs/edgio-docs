@@ -22,3 +22,38 @@ Perform the following steps before installing the Live Slicer:
     | OS    | Optimized for: <br /> - Ubuntu Linux 14.04 LTS 64-bit or higher (tested on 14.04 LTS and 16.04 LTS) <br /> - CentOS 7 64-bit or higher |
     | Live Feed | The broadcasting infrastructure must transmit data to the Live Slicer using one of the following technologies: <br /> - **UDP**: Use either a UDP unicast or multicast MPEG2 transport stream. <br /> - **SDI**: Requires installation of one of the following Blackmagic DeckLink SDI cards: Decklink Duo 2 or Decklink Quad 2. Install Blackmagic DeckLink drivers from [Blackmagic's site](https://www.blackmagicdesign.com/support). <br /> - **RTMP**: By default, the service expects your encoder to push the RTMP stream to a Live Slicer. You may configure a Live Slicer to pull the RTMP stream from your encoder through the [`enable_rtmp_pull`](#configuration-file-settings) setting. <br /> - **SRT**: Use a SRT MPEG2 transport stream. <br /> - **TCP**: Use a TCP MPEG2 transport stream. Ensure optimal data transmission rates by placing the source of the live feed in close proximity to the Live Slicer. |
     | Ports | Outbound connections on ports 80 and 443    |
+
+2. **Configure Firewall**
+   - Allow outbound connections on ports 80 and 443.
+   - The Live Slicer relies on these ports to communicate with our services and to upload encrypted slices for encoding.
+
+3. **Verify System Time**
+   - Ensure that the system time on the computer hosting the Live Slicer is accurate.
+   - Use Network Time Protocol (NTP) to sync your Linux server's time with a public time server.
+
+### Install or Upgrade a Live Slicer
+
+Perform these steps when installing or upgrading the Live Slicer to the latest version.
+
+<Tip>If you plan on using a Blackmagic DeckLink SDI capture card, then the Live Slicer must be installed on the computer where that card is housed.</Tip>
+
+1. Live Slicer version 21092100 or higher: Install the `libnl-3.200` library.
+
+    **Command**: `sudo apt install libnl-3-200`
+
+2. Python and bzip2: Install the `python bzip2` applications.
+
+    **Command**: `sudo apt install python bzip2`
+
+3. Download the Live Slicer by clicking **Downloads** from the bottom right-hand corner of the CMS and then clicking on the desired OS.
+
+4. Extract the zip file to the desired directory.
+
+
+5. Navigate to the newly created directory.
+
+**Command**: `$ cd uplynk_slicer_linux_64-231114.04.01-master/`
+
+6. Run install_live.
+
+**Command**: `$ sudo ./install_live`

@@ -2,110 +2,397 @@
 title: Live
 ---
 
-Our live event service allows you to:
+A live linear stream typically establishes a 24/7 audio/video feed from content captured via SDI or UDP. In addition to mirroring the input signal, it also supports [content and ad replacement](/uplynk/manage/channels/#ad-breaks-and-content-replacement).
 
-- Test your stream prior to the start of the event.
-- Control the audio/video feed source.
+## Basic Setup
 
-    An operator controls:
+Set up a live linear stream by configuring the following components:
 
-    - When and which Live Slicer will slice content.
-    - The timing and duration of ad breaks.
-    - When slate should be inserted into the stream.
-- Mark key events within your stream.
+1. [**Live Channel**](/uplynk/manage/channels): A live channel represents a live linear stream that contains a timeline identifying live and on-demand content and when it should be played.
 
-**Key Information**
+2. **Slicer**: Use a Live Slicer, Cloud Slicer Live, or both to capture and push audio/video content to a live channel's timeline.
 
-- Scheduled live events may be tracked within a calendar.
-- A live event must have a starting and ending point.
-- A live event's playback URL may be signed to control how and when the live event may be viewed. [Learn more.](/uplynk/deliver/playback_urls)
-- The source of a live event may consist of multiple Live Slicers. This type of setup allows manual failover to a backup Live Slicer when the live feed from the primary Live Slicer is unavailable or suboptimal.
-- [Slate](#set-up-slate) will be displayed under the following conditions:
+    - [**Live Slicer**](/uplynk/acquire/live/on_prem_slicer): A Live Slicer is a Linux daemon. Use the [Channel API](https://docs.edgecast.com/video/Content/Develop/Channel.htm#getlivechannelschedule) to populate a live channel's timeline with pre-encoded content and/or live feeds from additional Live Slicers.
+    - [**Cloud Slicer Live**](/uplynk/acquire/live/cloud_slicer_live): Cloud Slicer Live allows you to run a slicer in our cloud. This allows you to ingest and encode content without on-premise hardware.
 
-    - Prior to the start of the live event.
-    - Upon the completion of the live event.
-    - During an ad break when ad content is missing.
-    - Outside of an ad break when the Live Slicer is not producing content.
+3. [**Media Player**](/uplynk/deliver/media_player)
 
-    <Info>Slate may also be manually inserted into the broadcast.</Info>
+    - Once a live linear feed has been processed into a stream, it may be played back from anywhere in the world.
 
-- A live event may be configured to allow on-demand playback upon its completion. This type of setup will generate a CMS asset upon the completion of the live event. Although this asset will exclude slate, it will contain ad breaks.
+    - If you are setting up an HLS player, you may add support for fast forwarding, rewinding, or pausing and resuming through the [Live Timeshifting](#live_timeshifting) capability.
 
-## Quick Start  {/*quick-start*/}
+## How it Works
 
-Set up a live event by performing the following steps:
+The following diagram illustrates the flow through which a live linear feed is processed and then streamed to users around the world.
 
-1. [Configure a Live Slicer for use with live events](#set-up-a-live-slicer).
-2. [Set up a live event configuration](#set-up-a-live-event-configuration).
-3. [Set up and distribute a media player](#set-up-a-media-player).
-4. [Broadcast the live event](#broadcast-a-live-event).
-5. Optional. [Provide on-demand access to the completed live event](#on-demand-content).
+![LLS Diagram](/images/uplynk/lls-diagram.png)
 
-## Set up a Live Slicer  {/*set-up-a-live-slicer*/}
+As illustrated above, a stream is generated from a live linear feed through the following phases:
 
-<Info>An alternative to the Live Slicer is the [CameraSlicer](/uplynk/manage/live_events/#cameraslicer). It provides a simplified streaming solution when the full functionality and flexibility provided by the Live Slicer and the Live Events Dashboard are not needed.</Info>
+1. **Push to Live Slicer**: The existing broadcasting infrastructure pushes a live linear feed to a Live Slicer via either UDP or SDI.
 
-### Prepare the Live Slicer to Stream a Live Event  {/*prepare-the-live-slicer-to-stream-a-live-event*/}
+2. **Slicing**: Both the Live Slicer and the Cloud Slicer Live slice, encrypt, and then upload content to the cloud.
 
-1. Verify that the latest version of the Live Slicer (231114.04.01) is installed. <br />[View Live Slicer release notes](https://cms.uplynk.com/static/cms/news.html).
+3. **Encoding and Storage**: Our cloud encoders encode audio/video into H.264/H.265 and AAC. After encoding, the media is added to cloud storage.
 
-2. Verify that the system time on the computer hosting the Live Slicer is accurate.
+As viewers request the live linear feed, it is served via our CDN service, ensuring an optimal viewing experience by efficiently delivering data worldwide.
 
-    <Tip>Use Network Time Protocol (NTP) to sync your Linux server's time with a public time server.</Tip>
+<Info>Prevent hotlinking by digitally signing the playback URL.</Info>
 
-    The Live Events Dashboard uses UTC time to schedule certain commands to the Live Slicer. Therefore, inaccurate system time on the computer hosting the Live Slicer may lead to synchronization issues.
+<Info>Security measures, such as Blackout, may be applied to the stream to restrict playback to authorized users.</Info>
 
-    **Sample synchronization issues**: <ul><li>It could prevent the Live Slicer from ending an event and thereby cause the Live Slicer to perpetually slice content into an orphaned live event.</li><li>It may prevent on-demand content from being generated for the live event.</li></ul>
+## Latency
 
-3. Define the following settings in the Live Slicer configuration file (`/etc/uplynk.conf`):
+Latency measures the delay between the capture of the source video and when it is displayed to the viewer.
+
+<Info>If you do not see the Playback Latency option, contact Support.</Info>
+
+The following illustration provides an overview of components involved in the workflow from video capture to playback.
+
+![Latency workflow](/images/uplynk/latency.png)
+
+A short explanation of how each of the above components adds latency is provided below.
+
+| Component | Latency Factors |
+|---|---|
+| Slicer | The amount of time it takes to slice and deliver processed media to our Streaming service. This may be exacerbated by using underpowered hardware or insufficient bandwidth for your encoding profile. |
+| Streaming Service | The amount of time it takes to decode, encode, and package sliced media into an adaptive bitrate format. |
+| Digital Rights Management (DRM) | The amount of time it takes to request and generate licenses for content protected by DRM. |
+| Ad Decision Server | <ul><li>The amount of time it takes to request, bid, and deliver ads to our Streaming service. This may be exacerbated by complicated ad campaigns, a large waterfall, and slow responses by the ad decisioning server and third-party ad providers.</li><li>Ad breaks extending beyond their intended duration due to long ad creatives.</li><li>Delayed ad delivery due to a late notification of an upcoming ad break.</li></ul>|
+| CDN | The amount of time it takes to cache and deliver your stream to the player. |
+| Player | The amount of time it takes to initialize and then play your stream. This may be exacerbated by clients that use underpowered hardware or that have insufficient bandwidth. |
+| Manifest Engine | Decisioning logic that controls the timing and creation of individual manifests for playback by users. |
+
+### Best Practices for Reducing Latency
+
+Reduce latency by applying the following best practices:
+
+<Info>The following optimizations are listed in descending order according to the degree to which they will reduce latency.</Info>
+
+| Type  | Optimization(s)|
+|-----|-----|
+| Playback Profile| <ul><li>Selectable, pre-figured control file with reduced-latency options. Selectable, pre-figured control file that contains the parameters related to reduced-latency options. Used during manifest creation and driven by selectable latency options. Use the drop-down on the Channel's **Details** tab and the Live Event's Config tabs. See [Selecting playback latency](#select-playback-latency) to choose latency options. Selecting a low latency playback option (other than default) may increase the probability of missing content slate and decrease the number of ad fills.</li><li>Contact Professional Services Group for optimization.</li><li>In addition to the selectable latency settings, a variety of factors, such as the hardware on the computer hosting the Live Slicer, ad workflow, encoding profile, and platform/ player affect the latency achieved, the quality of the customer viewing experience, and the ad monetization. Any latency numbers associated with settings are estimates, and your individual results may vary.</li></ul>**Chopping / Dropping Ads**<br /><ul><li>Reduce ad-related latency by chopping or dropping ads exceeding ad break duration.</li><li>Use `ad.flex` to determine ad extension duration.</li></ul>|
+| Player | **Client**<ul><li>Use a player (e.g., [THEOplayer](https://www.theoplayer.com/)) that supports two-second media segment files and fast startup times.</li><li>The HLS specification requires that a player wait for three media segments prior to initiating playback. DASH, on the other hand, can initiate playback immediately. This, in theory, allows DASH to offer lower latency than HLS, but in practice, testing has shown little difference between the latencies achieved by HLS or DASH. Different HLS players offer varying degrees of latency.</li><li>Latency may differ based on protocol and player.</li></ul>       |
+| Encoding Profile| **Two Second Media Segments**<ul><li>Reduce media segment duration to two seconds for more responsive manifest files and faster playback initiation. This allows the generation of a manifest file that is more responsive to changing conditions (e.g., ad break duration variability). Additionally, it reduces the amount of time that the player must wait before initiating playback. However, it may increase rebuffering for some players.</li><li>Update slate to match segment duration of main content. Using slate that has been encoded as four second media segments when your main content's media segment size is two seconds will cause playback issues. [Learn more about slate](#set-up-slate).</li><li>Contact customer support to update encoding profile.</li></ul> **B-frames and DRM**<ul><li>Reduce latency by only activating necessary features.</li><li>Use recommended low latency encoding profiles.</li><li>B-frames cause latency if enabled on every ray.</li></ul>         |
+| Slate | **Re-encode Slate (Two Second Media Segments)**<ul><li>A player may only switch from slate to your main content once it finishes playing the current media segment. Use slate that has been encoded in two second media segments to reduce the potential amount of time that the player must wait before switching to your main content. This recommendation should be applied regardless of whether your account has been configured to generate two second media segments for your main content.</li><li>System slate is already encoded with two-second media segments.</li></ul>  |
+| Slicer| <ul><li>**GPU:** Use Nvidia Tesla T4 GPU to reduce latency and missing content slate. Required at higher resolutions.</li><li>**CPU:** Use Quad-core x86-64 (2GHz) or higher.</li><li>**Memory:** Recommend 64 GB or more of RAM.</li><li>**Upload Bandwidth:** Should exceed encoder bandwidth by 25%. The amount of bandwidth generated by your encoder varies by encoding profile. For example, the default [encoding profile](/uplynk/acquire/encoding_profiles) (i.e., HD 720p25/30) requires 5 Megabits per second (Mbps).</li><li>**Build:** Always use the [latest Live Slicer build](https://cms.uplynk.com/static/cms2/index.html#/downloads) for optimizations.</li></ul> |
+| Ads   | <ul><li>**Chopping / Dropping Ads**: Reduce latency by managing ad break duration as noted above.</li><li>**Ad Slate**: Encode all slate, including ad slate, using two-second media segments.</li></ul>  |
+| Automation / Playout System| **Ad Break Notifications**: Ensure timely ad breaks in the video stream with SCTE triggers for ad decisioning.       |
+| Adaptive Bitrate Streaming | **Format:** Supports both DASH and HLS.   |
+| Cloud | **Network Connection:** Optimize egress for encoded media with newer streaming protocols like SRT and RIST, minimizing latency based on network round-trip time.  |
+
+### Select the Playback Latency  {/*select-playback-latency*/}
+
+Default latency for Live Channels and Live Events is 60+ seconds. To reduce latency to ~15 seconds, refer to the Playback Latency for channels and events for setup instructions.
+
+#### Latency Options  {/*latency options*/}
+
+- **Default**: ~60 seconds
+- **Low**: Low 20s, 5+ second buffering, Missing Content Slate (MCS) is possible
+- **Lower**: Upper teens, 2+ seconds buffering, MCS is possible
+- **Lowest**: As low as 15 seconds, minimal buffering, no MCS
+
+<Info>Different protocols and platforms may affect latency beyond the control of Edgio.</Info>
+
+#### Important Considerations  {/*Important-considerations*/}
+
+- Many factors are in play for reduced latency. Any latency numbers referenced by Edgio documentation are estimates. Actual results may vary.
+- Reducing latency does not currently work with Time Shifting.
+- Inconsistent Slate Slice Duration is not recommended and will give unpredictable latency results.
+- Four-second profiles may still work but won’t achieve the desired latency results and are unlikely to produce any video at the lowest setting.
+- Two-second profiles without Playback Latency settings will give default delays.
+- Existing V1 channels will not see the **Playback Latency** drop-down.
+- MCS latency can only be removed via ad-break opportunities or new sessions.
+- Player buffering cannot be controlled via Edgio's Streaming service.
+- Platform specificity may vary latency by multiple seconds.
+- Many factors contribute to latency, so playback latency may vary.
+- If using a Channel Scheduler with historical, four-second segment assets, you cannot schedule those assets onto an Edgio-enabled channel.
+- The act of ‘Creating’ a CSL slicer will always create (/override) a profile to slicer ID mapping, even if using the default profile. Slicer Resets will not update the mapping.
+- Due to continued testing, new technology, and other factors, playback profile parameters used by the manifest engine may change from time to time, without notice.
+
+
+## Live Timeshifting  {/*live-timeshifting*/}
+
+<Info>Contact your account manager to enable the Live Timeshifting capability on your account.</Info>
+
+The Live Timeshifting capability for HLS allows viewers to fast forward, rewind, or pause / resume for up to one hour from the time they join a live event or a live channel's stream. This capability is achieved by expanding the playback window up to 60 minutes.
+
+Our implementation uses the HLS Playlist Delta Updates standard which allows us to serve historical segments on the media player's initial request and recent changes on subsequent requests. This minimizes the time required to load and maintain a larger playback window for your viewers.
+
+**Key information**
+
+- Historical segments exclude ads. Any ads that occurred before the media player joined the stream will be unavailable for playback. However, ads played after the media player joined the stream should be available for replay.
+
+- If the Live Timeshifting capability is enabled and the hlsver parameter is set to a version lower than 9, then it will be overridden by version 9.
+
+### Requirements  {/*requirements*/}
+
+The Live Timeshifting capability requires:
+
+- A media player that supports HLS 9 or higher.
+
+- A playback URL for a live event or a live channel whose query string includes the hist parameter set to the desired historical playback time in minutes.
+
+**Example**: `hist=50`
+
+**Sample playback URL**:
+
+`https://content.uplynk.com/event/abc580a0080e4d438a09c97a54cc7ab1.m3u8?hist=50`
+
+### Initial and Subsequent Playlist Responses  {/*playlist-responses*/}
+
+The initial playlist response for a playback request that meets the above requirements includes:
+
+- The `CAN-SKIP-UNTIL` tag, which advertises Delta Updates availability, and tells the player how old a segment has to be in order to be skipped.
+- The `MEDIA-SEQUENCE` tag set to 0, since this is the first response.
+- The full playlist including requested historical playback segments.
+
+**Initial Playlist Response Example**:
+
+```
+#EXTM3U
+
+#EXT-X-VERSION:9
+
+#EXT-X-PLAYLIST-TYPE:EVENT
+
+#EXT-X-TARGETDURATION:4
+
+#EXT-X-SERVER-CONTROL:CAN-SKIP-UNTIL=36.0
+
+#EXT-X-MEDIA-SEQUENCE:0
+
+#EXTINF:4.00,
+
+fileSequence0.ts
+
+#EXTINF:4.00,
+
+fileSequence1.ts
+
+#EXTINF:4.00,
+
+fileSequence2.ts
+
+#EXTINF:4.00,
+
+fileSequence3.ts
+
+#EXTINF:4.00,
+
+fileSequence4.ts
+
+...
+```
+
+The player decides whether to request a Delta Update by appending the `_HLS_SKIP=YES` directive to the stream request. When a Delta Update is requested, the server skips the old segments and only includes the most recent segments in the manifest. As playback progresses, the server notifies the media player as to:
+
+- The number of segments that have been skipped through the `#EXT-X-SKIP` tag. This tag replaces all the segment URL lines which were added to the playlist before the skip limit.
+- The number of segments that have been rolled off through the `#EXT-X-MEDIA-SEQUENCE` tag.
+- Delta Updates availability through the `CAN-SKIP-UNTIL` tag.
+
+**Subsequent Playlist Response Example**:
+
+```
+#EXTM3U
+
+#EXT-X-VERSION:9
+
+#EXT-X-PLAYLIST-TYPE:EVENT
+
+#EXT-X-TARGETDURATION:4
+
+#EXT-X-SERVER-CONTROL:CAN-SKIP-UNTIL=36.0
+
+#EXT-X-MEDIA-SEQUENCE:266
+
+#EXT-X-SKIP:SKIPPED-SEGMENTS=527
+
+#EXTINF:4.00,
+
+fileSequence793.ts
+
+#EXTINF:4.00,
+
+fileSequence794.ts
+
+#EXTINF:4.00,
+
+fileSequence795.ts
+
+#EXTINF:4.00,
+
+fileSequence796.ts
+
+...
+```
+
+## Set up a Live Linear Channel  {/*set-up*/}
+
+Learn how to stream a live linear feed. Alternatively, stream a single live event by taking advantage of our live event streaming capabilities.
+
+**Software Prerequisites**: Linux
+
+**Knowledge Prerequisites**: Basic understanding of Linux
+
+**Key Steps**
+
+1. Create a live channel.
+2. Install, configure, and start the Live Slicer.
+3. Capture media.
+4. Test playback.
+
+### Step 1: Set Up an Account and Sign in  {/*step-1*/}
+
+An account is required to stream content via our service. [Learn more](/uplynk/welcome/portal).
+
+Sign in to the [CMS](https://cms.uplynk.com/).
+
+### Step 2: Create a Live Channel  {/*step-2*/}
+
+A live channel determines how content generated by a Live Slicer will be made available to viewers.
+
+1. From the Streaming section of the CMS, navigate to the **Live Channels** tab.
+
+2. Click **+Channel** from the bottom-left hand corner of the CMS.
+
+3. In the **Channel Name** option, type the name that will be assigned to the live channel.
+
+4. In the **Slicer ID (Optional)** option, type the alphanumeric ID that will be assigned to the live channel.
+
+5. (Optional) Set channel options:
+   - Check the **Enabling Scheduling** option to use the advanced scheduling interface and the latest channel APIs.
+   - Tick the **Edit after creation** box to open the record after submitting.
+
+6. Click **Create**.
+
+### Step 3: Install the Live Slicer  {/*step-3*/}
+
+1. Install the Live Slicer on a Linux computer. [View minimum system requirements](/uplynk/acquire/live/on_prem_slicer/#pre-requisites).
+
+    <Tip>If you plan on using a Blackmagic DeckLink SDI capture card, then the Live Slicer must be installed on the computer where that card is housed.</Tip>
+
+2. For Live Slicer version 21092100 or higher:
+   - Install the `libnl-3.200` library.
+
+     ```bash
+     sudo apt install libnl-3-200
+     ```
+
+3. Install Python and bzip2 applications.
+
+   ```bash
+   sudo apt install python bzip2
+    ```
+4. Download the Live Slicer by clicking Downloads from the bottom right-hand corner of the CMS and then clicking on the desired OS.
+
+5. Extract the zip file to the desired directory.
 
     ```
-    api_port: 127.0.0.1:65009
-    preview: on
-    livepreview_with_audio: on
-    livepreview_max_viewers: 2
+    $ tar -xvf uplynk_slicer_linux_64-231114.04.01.tbz2
     ```
 
+6. Navigate to the newly created directory.
 
-    Additional information for each of the above Live Slicer settings is provided below.
+    ```
+    $ cd uplynk_slicer_linux_64-231114.04.01-master/
+    ```
 
-    - **api_port**: Verify that the Live Slicer has been configured to listen for API requests on a specific port.
-    - **preview**: Enables the live preview capability within the Live Events Dashboard.
-    - **livepreview_with_audio**: Enables audio within the Live Events Dashboard's live preview when using Live Slicer version 22083100 or higher.
-    - **livepreview_max_viewers**: Limits the number of simultaneous viewers of a live preview.
+7. Run install_live.
 
-        <Info></Info>Each instance of a live preview consumes resources on the computer hosting the Live Slicer. This setting is designed to prevent performance issues by capping the number of simultaneous connections.
+    ```
+    $ sudo ./install_live
+    ```
+### Step 4: Configure the Live Slicer  {/*step-4*/}
 
-4. Recommended: Secure the communication between the Live Slicer and the Live Events Dashboard through the use of SSL/TLS.
+Define Live Slicer settings within the Live Slicer configuration file.
 
-    <Warning>If a Live Slicer is not configured to support TLS, then browsers may not properly load the Live Events Dashboard due to the page containing a mixture of HTTP and HTTPS content. Some browsers display a warning icon in the address bar to indicate this issue. An operator may then choose to accept this potential security threat by configuring the browser to allow insecure content.</Warning>
+1. Open [`/etc/uplynk.conf`](https://docs.edgecast.com/video/Content/Resources/Supplemental/LiveSlicerConf) in a text editor.
 
-### Set up SSL/TLS  {/*set-up-ssl-tls*/}
+2. Set the `username` setting to the email address associated with your account.
 
-The Live Slicer may communicate with the Live Events Dashboard over SSL/TLS. The use of TLS secures all transferred data by encrypting it.
+   ```plaintext
+   username: joe@example.com
+    ```
+3. If present, delete the password line.
 
-#### Set up TLS Certificate Automatically  {/*set-up-tls-certificate-automatically*/}
+    ```
+    password: samplepassword
+    ```
 
-A TLS certificate may be automatically generated by the CMS, downloaded, and then installed on the computer hosting the Live Slicer by performing the following steps:
+4. If missing, add a line for the apikey setting. Set it to your secret API key. Find you API key via [Integration Keys](https://cms.uplynk.com/static/cms2/index.html#/settings/integration-keys) > **Settings** tab > **Integration Keys** from the side navigation > **API Keys** section.
 
-1. Verify that the Live Slicer is hosted on a computer with a public IP address.
+    ```
+    apikey: abcDEFghiJKLmnoPQRtuvWXYz123ABCdefGHIJKL
+    ```
 
-2. Perform the following updates within the Live Slicer configuration file (`/etc/uplynk.conf`) and then save your changes:
+5. Set the slicerID setting to the case-sensitive slicer ID assigned to the channel in step 2.
 
-   - Set the `ssl_port` setting to the desired port.
+    ```
+    slicerID: marketingvids01
+    ```
 
-     **Example**: `ssl_port: 65010`
+6. Set the card setting to the number assigned to the Blackmagic capture card that will generate the source feed.
+
+    ```
+    card: 1
+    ```
+
+### Step 5: Start the Live Slicer  {/*step-5*/}
+
+Start or restart the Live Slicer whenever you modify the Live Slicer configuration file.
+
+Start the Live Slicer using one of the following commands:
+
+- **Upstart**
+
+    ```bash
+    sudo start uplynk_liveslicer
+    ```
+
+- **systemd**
+
+    ```
+    sudo systemctl start uplynk_liveslicer.service
+    ```
+
+### Step 6: Start Audio/Video Capture  {/*step-6*/}
+
+Set up the Blackmagic capture card to capture the audio/video feed.
+
+1. Connect an audio and video source to the Blackmagic capture card.
+
+2. Open Blackmagic system preferences and configure the connections as input sources.
+
+3. Open **Preferences** (**Edit** > **Preferences**) and then:
+   - Set a project format.
+   - Choose a capture file format.
+   - Specify a storage location.
+
+4. Close **Preferences** and click on the **Log and Capture** tab.
+
+5. Click **Capture**. The Live Slicer will automatically pick up the feed.
+
+### Step 7: Test the Live Linear Stream  {/*step-7*/}
+
+Congratulations on successfully creating and broadcasting a live linear feed. It is now time to test the stream through the test player provided from the CMS.
+
+<Tip>A link to a test media player that has been exposed to unauthorized individuals may be invalidated at any time by clicking the rubbish bin icon within the live channel's **Test Players** (Warning: Restriction free) section.</Tip>
+
+1. From the **Live Channels** tab in the CMS, make sure that the live channel is selected.
+
+3. Click the **Playback** tab.
+
+4. From the **Test Players** section, follow the **View** link corresponding to the desired test player.
+
+<Info>Please refer to our media player tutorial to learn how to [create a media player](/uplynk/deliver/media_player/add_media_player_to_web_page).</Info>
 
 
-   - If present, remove the `ssl_cert` and `manual_ip` settings.
 
-3. Verify that your firewall is configured to allow traffic on the port defined by the `ssl_port` setting.
+## More Information  {/*more-information*/}
 
-4. Restart the Live Slicer.
-
-
-#### Set up TLS Certificate Manually {/*set-up-tls-certificate-manually*/}
-
-tutorial
-
-cameraslicer
+- [Live Channel Setup](/uplynk/manage/channels)
+- [Cloud Slicer Live](/uplynk/acquire/live/cloud_slicer_live)
+- [Live Slicer Failover](/uplynk/acquire/live/on_prem_slicer/#failover)
+- [Python SCTE Plugin](/uplynk/acquire/live/scte_plugins/#python-scte-plugin)
+- [Baseline SCTE Plugin](/uplynk/acquire/live/scte_plugins/#baseline-scte-plugin)

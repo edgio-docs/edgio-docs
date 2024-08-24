@@ -429,7 +429,7 @@ You may manually override a live channel's source to another Live Slicer. At any
 
 Leverage our REST APIs to automate Live Slicer behavior and to manage schedule entries.
 
-- [**Live Slicer API**](https://docs.edgecast.com/video/Content/Develop/Live-Slicer-API.htm)<br />The Live Slicer exposes an HTTP-based API for marking ad breaks, blackouts, and content boundaries. A [Live Slicer's configuration file](/uplynk/acquire/live/on_prem_slicer) identifies a port and IP address where the Live Slicer should listen for these API calls. The API commands sent to the Live Slicer can take effect immediately, or within a few seconds. They cannot be used to specify where ad and content boundaries will occur in the future.
+- [**Live Slicer API**](https://docs.edgecast.com/video/Content/Develop/Live-Slicer-API.htm)<br />The Live Slicer exposes an HTTP-based API for marking ad breaks, blackouts, and content boundaries. A [Live Slicer's configuration file](/uplynk/acquire/live/on_prem_slicer/#configuration_file_settings) identifies a port and IP address where the Live Slicer should listen for these API calls. The API commands sent to the Live Slicer can take effect immediately, or within a few seconds. They cannot be used to specify where ad and content boundaries will occur in the future.
 
 - [**Slicer API**](https://docs.edgecast.com/video/Content/Develop/Slicer.htm)<br />Use the Slicer API to schedule Live Slicer behavior. This allows you to:
     - Schedule future ad breaks and content boundaries (e.g., blackouts)

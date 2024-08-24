@@ -508,7 +508,7 @@ Learn how to override this behavior.</Info>
 
 
 
-### Hashtags
+### Hashtags  {/*hashtags*/}
 
 By default, the hashtag symbol (i.e., #) indicates the start of a comment in a configuration file. Override this behavior by renaming the desired setting as indicated below.
 
@@ -536,7 +536,7 @@ verbatim_description: #1 Videos by Genre
 
 The above configuration sets the `verbatim_description` setting to `#1 Videos by Genre`.
 
-## More Information
+## More Information  {/*more-information*/}
 
 - [Live Slicer Health Monitoring](/uplynk/acquire/live/health_monitoring)
 - [Live Slicer Health Notifications](/uplynk/manage/health_notifications_via_amazon_sns)

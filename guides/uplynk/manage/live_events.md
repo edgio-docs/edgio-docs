@@ -126,7 +126,7 @@ Configure the Live Slicer to communicate over HTTPS by generating and installing
 
 | Live Slicer Configuration | Description |
 |-------------------------------|-----------------|
-| `ssl_port: 65010`             | Define the port through which the Live Slicer will send and receive TLS traffic. This sample configuration uses port 65010 for TLS traffic, but it can be configured to any available port. |
+| `ssl_port: 65010`  | Define the port through which the Live Slicer will send and receive TLS traffic. This sample configuration uses port 65010 for TLS traffic, but it can be configured to any available port. |
 | ssl_cert: `/Path/SSLCertificate.pem` | Identify the TLS certificate through which data will be encrypted by replacing the following variables: <ul><li>`Path`: Replace this with the path to the directory where the desired TLS certificate resides.</li><li>`SSLCertificate`: Replace this with the TLS certificate's filename.</li></ul> |
 | manual_ip: `DomainName`       | Defines the hostname through which TLS traffic will flow. |
 
@@ -606,6 +606,78 @@ To set one of the above modes, navigate to the **Post Event Slate Duration** sec
 4. Distribute the media player to the desired viewers.
 
 <Tip>If you are setting up a HLS player, you may add support for fast forwarding, rewinding, or pausing and resuming through the Live Timeshifting capability.</Tip>
+
+## Latency
+
+Latency measures the delay between the capture of the source video and when it is displayed to the viewer.
+
+<Info>If you do not see the Playback Latency option, contact Support.</Info>
+
+The following illustration provides an overview of components involved in the workflow from video capture to playback.
+
+![Latency workflow](/images/uplynk/latency.png)
+
+A short explanation of how each of the above components adds latency is provided below.
+
+| Component | Latency Factors |
+|---|---|
+| Slicer | The amount of time it takes to slice and deliver processed media to our Streaming service. This may be exacerbated by using underpowered hardware or insufficient bandwidth for your encoding profile. |
+| Streaming Service | The amount of time it takes to decode, encode, and package sliced media into an adaptive bitrate format. |
+| Digital Rights Management (DRM) | The amount of time it takes to request and generate licenses for content protected by DRM. |
+| Ad Decision Server | <ul><li>The amount of time it takes to request, bid, and deliver ads to our Streaming service. This may be exacerbated by complicated ad campaigns, a large waterfall, and slow responses by the ad decisioning server and third-party ad providers.</li><li>Ad breaks extending beyond their intended duration due to long ad creatives.</li><li>Delayed ad delivery due to a late notification of an upcoming ad break.</li></ul>|
+| CDN | The amount of time it takes to cache and deliver your stream to the player. |
+| Player | The amount of time it takes to initialize and then play your stream. This may be exacerbated by clients that use underpowered hardware or that have insufficient bandwidth. |
+| Manifest Engine | Decisioning logic that controls the timing and creation of individual manifests for playback by users. |
+
+### Best Practices for Reducing Latency
+
+Reduce latency by applying the following best practices:
+
+<Info>The following optimizations are listed in descending order according to the degree to which they will reduce latency.</Info>
+
+| Type  | Optimization(s)|
+|-----|-----|
+| Playback Profile| <ul><li>Selectable, pre-figured control file with reduced-latency options. Selectable, pre-figured control file that contains the parameters related to reduced-latency options. Used during manifest creation and driven by selectable latency options. Use the drop-down on the Channel's **Details** tab and the Live Event's Config tabs. See [Selecting playback latency](#select-playback-latency) to choose latency options. Selecting a low latency playback option (other than default) may increase the probability of missing content slate and decrease the number of ad fills.</li><li>Contact Professional Services Group for optimization.</li><li>In addition to the selectable latency settings, a variety of factors, such as the hardware on the computer hosting the Live Slicer, ad workflow, encoding profile, and platform/ player affect the latency achieved, the quality of the customer viewing experience, and the ad monetization. Any latency numbers associated with settings are estimates, and your individual results may vary.</li></ul>**Chopping / Dropping Ads**<br /><ul><li>Reduce ad-related latency by chopping or dropping ads exceeding ad break duration.</li><li>Use `ad.flex` to determine ad extension duration.</li></ul>|
+| Player | **Client**<ul><li>Use a player (e.g., [THEOplayer](https://www.theoplayer.com/)) that supports two-second media segment files and fast startup times.</li><li>The HLS specification requires that a player wait for three media segments prior to initiating playback. DASH, on the other hand, can initiate playback immediately. This, in theory, allows DASH to offer lower latency than HLS, but in practice, testing has shown little difference between the latencies achieved by HLS or DASH. Different HLS players offer varying degrees of latency.</li><li>Latency may differ based on protocol and player.</li></ul>       |
+| Encoding Profile| **Two Second Media Segments**<ul><li>Reduce media segment duration to two seconds for more responsive manifest files and faster playback initiation. This allows the generation of a manifest file that is more responsive to changing conditions (e.g., ad break duration variability). Additionally, it reduces the amount of time that the player must wait before initiating playback. However, it may increase rebuffering for some players.</li><li>Update slate to match segment duration of main content. Using slate that has been encoded as four second media segments when your main content's media segment size is two seconds will cause playback issues. [Learn more about slate](#set-up-slate).</li><li>Contact customer support to update encoding profile.</li></ul> **B-frames and DRM**<ul><li>Reduce latency by only activating necessary features.</li><li>Use recommended low latency encoding profiles.</li><li>B-frames cause latency if enabled on every ray.</li></ul>         |
+| Slate | **Re-encode Slate (Two Second Media Segments)**<ul><li>A player may only switch from slate to your main content once it finishes playing the current media segment. Use slate that has been encoded in two second media segments to reduce the potential amount of time that the player must wait before switching to your main content. This recommendation should be applied regardless of whether your account has been configured to generate two second media segments for your main content.</li><li>System slate is already encoded with two-second media segments.</li></ul>  |
+| Slicer| <ul><li>**GPU:** Use Nvidia Tesla T4 GPU to reduce latency and missing content slate. Required at higher resolutions.</li><li>**CPU:** Use Quad-core x86-64 (2GHz) or higher.</li><li>**Memory:** Recommend 64 GB or more of RAM.</li><li>**Upload Bandwidth:** Should exceed encoder bandwidth by 25%. The amount of bandwidth generated by your encoder varies by encoding profile. For example, the default [encoding profile](/uplynk/acquire/encoding_profiles) (i.e., HD 720p25/30) requires 5 Megabits per second (Mbps).</li><li>**Build:** Always use the [latest Live Slicer build](https://cms.uplynk.com/static/cms2/index.html#/downloads) for optimizations.</li></ul> |
+| Ads   | <ul><li>**Chopping / Dropping Ads**: Reduce latency by managing ad break duration as noted above.</li><li>**Ad Slate**: Encode all slate, including ad slate, using two-second media segments.</li></ul>  |
+| Automation / Playout System| **Ad Break Notifications**: Ensure timely ad breaks in the video stream with SCTE triggers for ad decisioning.       |
+| Adaptive Bitrate Streaming | **Format:** Supports both DASH and HLS.   |
+| Cloud | **Network Connection:** Optimize egress for encoded media with newer streaming protocols like SRT and RIST, minimizing latency based on network round-trip time.  |
+
+### Select the Playback Latency  {/*select-playback-latency*/}
+
+Default latency for Live Channels and Live Events is 60+ seconds. To reduce latency to ~15 seconds, refer to the Playback Latency for channels and events for setup instructions.
+
+#### Latency Options  {/*latency options*/}
+
+- **Default**: ~60 seconds
+- **Low**: Low 20s, 5+ second buffering, Missing Content Slate (MCS) is possible
+- **Lower**: Upper teens, 2+ seconds buffering, MCS is possible
+- **Lowest**: As low as 15 seconds, minimal buffering, no MCS
+
+<Info>Different protocols and platforms may affect latency beyond the control of Edgio.</Info>
+
+#### Important Considerations  {/*Important-considerations*/}
+
+- Many factors are in play for reduced latency. Any latency numbers referenced by Edgio documentation are estimates. Actual results may vary.
+- Reducing latency does not currently work with Time Shifting.
+- Inconsistent Slate Slice Duration is not recommended and will give unpredictable latency results.
+- Four-second profiles may still work but won’t achieve the desired latency results and are unlikely to produce any video at the lowest setting.
+- Two-second profiles without Playback Latency settings will give default delays.
+- Existing V1 channels will not see the **Playback Latency** drop-down.
+- MCS latency can only be removed via ad-break opportunities or new sessions.
+- Player buffering cannot be controlled via Edgio's Streaming service.
+- Platform specificity may vary latency by multiple seconds.
+- Many factors contribute to latency, so playback latency may vary.
+- If using a Channel Scheduler with historical, four-second segment assets, you cannot schedule those assets onto an Edgio-enabled channel.
+- The act of ‘Creating’ a CSL slicer will always create (/override) a profile to slicer ID mapping, even if using the default profile. Slicer Resets will not update the mapping.
+- Due to continued testing, new technology, and other factors, playback profile parameters used by the manifest engine may change from time to time, without notice.
+
+
+
 
 
 

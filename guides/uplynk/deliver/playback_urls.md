@@ -19,7 +19,7 @@ Learn how to:
     - [Encrypt query strings](#encrypt-query-strings)
 - **Validate playback URLs using [application keys](#application-keys)**
 
-## Assets
+## Assets  {/*assets*/}
 
 Use either of the following types of playback URLs to stream an asset:
 

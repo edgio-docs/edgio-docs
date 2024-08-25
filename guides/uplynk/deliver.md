@@ -7,19 +7,19 @@ Use playback URLs or a media player to delivery your content to your customers.
 ## Playback URLs  {/*playback_urls*/}
 
 - **Generate playback URLs for:**
-  - [Assets](#assets)
-  - [Virtual linear playlists](#virtual-linear-playlists)
-  - [Live channels](#live-channels)
-  - [Live events](#live-events)
+  - [Assets](/uplynk/deliver/playback_urls/#assets)
+  - [Virtual linear playlists](/uplynk/deliver/playback_urls/#virtual-linear-playlists)
+  - [Live channels](/uplynk/deliver/playback_urls/#live-channels)
+  - [Live events](/uplynk/deliver/playback_urls/#live-events)
 
-- **[Sign playback URLs](#signing-playback-urls-with-token) with a token**
+- **[Sign playback URLs](/uplynk/deliver/playback_urls/#signing-playback-urls-with-token) with a token**
 
     - [Basic Setup](#basic-setup)
 
-        - [Core identification parameters](#core-identification-parameters)
-        - [Signature parameter](#digital-signature)
-    - [Encrypt query strings](#encrypt-query-strings)
-- **Validate playback URLs using [application keys](#application-keys)**
+        - [Core identification parameters](/uplynk/deliver/playback_urls/#core-identification-parameters)
+        - [Signature parameter](/uplynk/deliver/playback_urls/#digital-signature)
+    - [Encrypt query strings](/uplynk/deliver/playback_urls/#encrypt-query-strings)
+- **Validate playback URLs using [application keys](/uplynk/deliver/playback_urls/#application-keys)**
 
 ## Media Player  {/*media_player*/}
 

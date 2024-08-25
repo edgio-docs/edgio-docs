@@ -4,7 +4,7 @@ title: Live
 
 A live linear stream typically establishes a 24/7 audio/video feed from content captured via SDI or UDP. In addition to mirroring the input signal, it also supports [content and ad replacement](/uplynk/manage/channels/#ad-breaks-and-content-replacement).
 
-## Basic Setup
+## Basic Setup  {/*basic-setup*/}
 
 Set up a live linear stream by configuring the following components:
 
@@ -19,13 +19,13 @@ Set up a live linear stream by configuring the following components:
 
     - Once a live linear feed has been processed into a stream, it may be played back from anywhere in the world.
 
-    - If you are setting up an HLS player, you may add support for fast forwarding, rewinding, or pausing and resuming through the [Live Timeshifting](#live_timeshifting) capability.
+    - If you are setting up an HLS player, you may add support for fast forwarding, rewinding, or pausing and resuming through the [Live Timeshifting](#live-timeshifting) capability.
 
-## How it Works
+## How it Works  {/*how-it-works*/}
 
 The following diagram illustrates the flow through which a live linear feed is processed and then streamed to users around the world.
 
-![LLS Diagram](/images/uplynk/lls-diagram.png)
+![LLS Diagram](/images/uplynk/lls-workflow.png)
 
 As illustrated above, a stream is generated from a live linear feed through the following phases:
 
@@ -41,7 +41,7 @@ As viewers request the live linear feed, it is served via our CDN service, ensur
 
 <Info>Security measures, such as Blackout, may be applied to the stream to restrict playback to authorized users.</Info>
 
-## Latency
+## Latency  {/*latency*/}
 
 Latency measures the delay between the capture of the source video and when it is displayed to the viewer.
 
@@ -63,7 +63,7 @@ A short explanation of how each of the above components adds latency is provided
 | Player | The amount of time it takes to initialize and then play your stream. This may be exacerbated by clients that use underpowered hardware or that have insufficient bandwidth. |
 | Manifest Engine | Decisioning logic that controls the timing and creation of individual manifests for playback by users. |
 
-### Best Practices for Reducing Latency
+### Best Practices for Reducing Latency  {/*best-practices-for-reducing-latency*/}
 
 Reduce latency by applying the following best practices:
 

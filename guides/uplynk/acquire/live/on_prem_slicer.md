@@ -388,7 +388,7 @@ The Live Slicer outputs verbose logging information to syslog. A default syslog 
 
 By default, the Live Slicer logs error conditions and informational messages. Configure the Live Slicer to also log debug messages by adding the following configuration to your Live Slicer configuration file: `verbosity: 3`<br />[Learn more](#configuration-file-settings).
 
-Alternatively, use the following syntax if you plan on starting the Live Slicer via the command line: `sudo systemctl start uplynk_liveslicer.service -v 3`
+Alternatively, use the following syntax if you plan on starting the Live Slicer via the command line: <br />`sudo systemctl start uplynk_liveslicer.service -v 3`
 
 ## Live Slicer Failover  {/*live-slicer-failover*/}
 
@@ -397,9 +397,7 @@ Live Slicer failover minimizes the impact to your viewer's playback experience w
 Set up Live Slicer failover through the following steps:
 
 1. Create a failover group and assign it Live Slicers and live channel(s).
-2. Instruct each desired Live Slicer to join this failover group by updating its configuration file.
-
-[Learn more](#configuration-file-settings).
+2. Instruct each desired Live Slicer to join this failover group by updating its configuration file. [Learn more](#configuration-file-settings).
 
 ### Administration (initcl Commands)  {/*administration*/}
 

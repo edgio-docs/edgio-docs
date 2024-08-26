@@ -451,7 +451,7 @@ In addition to streaming content directly to your consumers, you may also simult
 ### Set Up Syndication Publishing  {/*set-up-syndication-publishing*/}
 
 1. Create a [publishing target](/uplynk/monetize/syndication/#publishing-target) for each desired social media or content distribution platform.
-2. [Publish to the desired platform(s)](/uplynk/monetize/syndication/#publishing) by associating the desired publishing target(s) with your live channel.
+2. [Publish to the desired platform(s)](/uplynk/monetize/syndication/#publish) by associating the desired publishing target(s) with your live channel.
 
 ## More Information  {/*more-information*/}
 

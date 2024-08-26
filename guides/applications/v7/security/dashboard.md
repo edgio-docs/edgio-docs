@@ -7,6 +7,7 @@ The {{ PRODUCT_SECURITY }} dashboard provides the means through which you may pe
 -   Recent trends in bot traffic detection.
 -   Recently rate limited requests.
 -   Recent rate limiting enforcement events.
+-   Recent violations of your Content Security Policy (CSP).
 
 <Callout type="info">
 
@@ -28,6 +29,7 @@ The {{ PRODUCT_SECURITY }} dashboard provides the means through which you may pe
     -   [WAF Events:](#waf-events-view) View statistics for requests that violate an access rule, custom rule, or managed rule.
     -   [Bot Events:](#bot-events-view) View statistics for requests identified as bot traffic.
     -   [Rate Events:](#rate-events-view) View statistics for rate limited requests and enforcement events.
+    -   [Client Events:](#client-events-view) View statistics for CSP violations defined within a Client-Side Protection configuration.
 
     ![](/images/v7/security/dashboard_event_type_selection.png)
 
@@ -111,13 +113,26 @@ The **Rate Enforcer** tab logs a single event whenever your rate limit threshold
 
 In this example, you have configured a rate limit of 300 requests per minute with an enforcement duration of 1 minute. Assuming the traffic pattern described below, the **Rate Enforcer** tab will indicate that 4 events took place.
 
-| Time  | # of Requests |
+| Time  | # of Requests  |
 |-------|----------------|
 | 12:01 | 300,000        |
 | 12:03 | 1,000,000      |
 | 12:05 | 800,000        |
 | 12:07 | 400,000        |
 
+## Client Events View {/*client-events-view*/}
+
+A client event occurs when a Content Security Policy (CSP) defined within a Client-Side Protection configuration has been violated. Analyze these violations to:
+
+-   Detect Cross-Site Scripting (XSS) attacks.
+-   Identify unsafe practices, such as:
+    -   Allowing inline scripts which can allow a bad actor to inject malicious scripts. 
+    -   Loading resources from unverified or untrusted sources. 
+-   Detect unauthorized requests to external domains. 
+
+Generate graphs for client events based off of the following metrics: blocked URL, disposition, document domain, document path, effective directive, source file, and status code. 
+
+[Learn about the above metrics and client log events.](#client-log-events)
 
 ## Dashboard Usage {/*usage*/}
 
@@ -231,37 +246,27 @@ Filter the {{ PRODUCT_SECURITY }} dashboard by clicking on a top entry for a par
 
 3.  Scroll down to the **Log Events** section.
 
-### <a id="threat-log-data" />WAF Log Events {/*waf-log-events*/}
+### <a id="threat-log-data" /><a id="waf-log-fields" />WAF Log Events {/*waf-log-events*/}
 
-Select the [WAF Events view](#waf-events-view) to filter the **Log Events** section to only display log events for recent access rule, custom rule, or managed rule violations. The following summary is provided for each entry:
--   **Timestamp:** Indicates the date and time (UTC) at which the request was screened.
--   **Host:** Identifies the hostname requested by the client.
--   **Profile Type:** Indicates whether the request triggered a rule in [Production or Audit mode](/applications/security/waf#audit-security-rules).
--   **Rule Msg:** Identifies the rule that was violated.
+Select the [WAF Events view](#waf-events-view) to filter the **Log Events** section to only display log events for recent access rule, custom rule, or managed rule violations. 
 
-#### <a id="threat-log-fields" />WAF Log Fields {/*waf-log-fields*/}
-
-View the following detailed information on an event (i.e., rule violation) by clicking on it:
+View information for a specific rule violation by clicking on it. Log fields are categorized as follows:
 
 -   **Common Headers:** Provides key request header data.
 -   **Sub Events:** Describes a rule violation. [View log fields.](#sub-event-fields)
 -   **Other Data:** Describes the request, the security configuration that was violated, and the edge server on which it was processed.
 
-### Bot Log Events {/*bot-log-events*/}
+### <a id="bot-log-data" />Bot Log Events {/*bot-log-events*/}
 
-Select the [Bot Events view](#bot-events-view) to filter the **Log Events** section to only display log events for requests that were flagged as bot traffic. The following summary is provided for each entry:
--   **Timestamp:** Indicates the date and time (UTC) at which the request was screened.
--   **Host:** Identifies the hostname requested by the client.
--   **Action Type:** Indicates the [enforcement action](/applications/security/bot_rules#actions) that was applied to the request.
--   **Rule Msg:** Identifies the rule that was violated.
+Select the [Bot Events view](#bot-events-view) to filter the **Log Events** section to only display log events for requests that were flagged as bot traffic. 
 
-#### Bot Log Data {/*bot-log-data*/}
-
-View the following detailed information on an event (i.e., request flagged as bot traffic) by clicking on it:
+View information for a request identified as bot traffic by clicking on it. Log fields are categorized as follows:
 
 -   **Common Headers:** Provides key request header data.
--   **Sub Events:** Describes why the request was flagged as bot traffic. [View log fields.](#sub-event-fields)
--   **Other Data:** Describes the request, the security configuration that was violated, and the edge server on which it was processed. Key fields when analyzing bot traffic identified through a browser challenge are described below.
+-   **Sub Events:** Describes a rule violation. [View log fields.](#sub-event-fields)
+-   **Other Data:** Describes the request, the security configuration that was violated, the applied [enforcement action](/applications/security/bot_rules#actions), and the edge server on which it was processed.
+
+    Key fields when analyzing bot traffic identified through a browser challenge are described below.
 
     -   **Browser Challenge Status (challengeStatus):** Indicates the reason why a browser challenge was served. Valid values are:
         -   **CHAL_STATUS_NONE:** Indicates that a browser challenge was not issued.
@@ -280,30 +285,38 @@ View the following detailed information on an event (i.e., request flagged as bo
         -   **CHAL_STATUS_WRONG_ANSWER:** Indicates that a browser challenge was served because the user was unable to solve the previous browser challenge. This status may also be reported when the user agent (e.g., web browser) submits a tampered token.
     -   **Token Validity Duration (tokenDurationSec):** Indicates the number of minutes for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge.
 
-### Rate Limit Log Events {/*rate-limit-log-events*/}
+### <a id="rate-limit-log-data" />Rate Limit Log Events {/*rate-limit-log-events*/}
 
-Select the [Rate Events view](#rate-events-view) and then verify that the **Rate Limiting** tab is selected to filter the **Log Events** section to only display log events for rate limited requests. The following summary is provided for each entry:
--   **Timestamp:** Indicates the date and time (UTC) at which the request was screened.
--   **Host:** Identifies the hostname requested by the client.
--   **Action Type:** Indicates the [enforcement action](/applications/security/security_applications#enforcement) that was applied to the request.
--   **Limit Name:** Identifies the rate rule that was violated.
+Select the [Rate Events view](#rate-events-view) and then verify that the **Rate Limiting** tab is selected to filter the **Log Events** section to only display log events for rate limited requests. 
 
-#### Rate Limit Log Data {/*rate-limit-log-data*/}
-
-View the following detailed information on an event (i.e., rule violation) by clicking on it:
+View information for a specific violation by clicking on it. Log fields are categorized as follows:
 
 -   **Common Headers:** Provides key request header data.
--   **Other Data:** Describes the request, the security configuration that was violated, and the edge server on which it was processed.
+-   **Other Data:** Describes the request, the security configuration that was violated, the applied [enforcement action (actionType)](/applications/security/security_applications#enforcement), and the edge server on which it was processed.
 
-### Rate Limit Enforcement Log Events {/*rate-limit-enforcement-log-events*/}
 
-Select the [Rate Events view](#rate-events-view) and then select the **Rate Enforcer** tab to filter the **Log Events** section to only display log events for rate limit enforcement events. The following summary is provided for each entry:
--   **Timestamp:** Indicates the date and time (UTC) at which your rate limiting policy was enforced.
--   **Limit Name:** Identifies the rate rule that was violated.
+### <a id="rate-limit-enforcement-log-data" />Rate Limit Enforcement Log Events {/*rate-limit-enforcement-log-events*/}
 
-#### Rate Limit Enforcement Log Data {/*rate-limit-enforcement-log-data*/}
+Select the [Rate Events view](#rate-events-view) and then select the **Rate Enforcer** tab to filter the **Log Events** section to only display log events for rate limit enforcement events. 
 
-View information on a rate limit enforcement event by clicking on it. For example, view the type of enforcement action (i.e., `enforcementEnfType`) that was applied to the rate limited requests and the time period (i.e.,. `enforcementStartTimeMs` and `enforcementDurationSec`) during which it was applied.
+View information on a rate limit enforcement event by clicking on it. For example, view the type of enforcement action (i.e., `enforcementEnfType`) that was applied to the rate limited requests and the time period (i.e., `enforcementStartTimeMs` and `enforcementDurationSec`) during which it was applied.
+
+### Client Log Events {/*client-log-events*/}
+
+Select the [Client Events view](#client-events-view) to filter the **Log Events** section to only display log events for requests that violated your Client-Side Protection policy. 
+
+View the following key event-specific information by clicking on it:
+
+-   **Blocked Query:** The query string defined within the request for the resource that violated your CSP.
+-   **Blocked URL:** The URL that violated your CSP.
+-   **Disposition:** Indicates how the violation was handled.
+    -   **enforce:** The client blocked a request that violated your production Client-Side Protection policy. 
+    -   **report:** The client allowed the request, but reported the violation of your audit Client-Side Protection policy. 
+-   **Document Domain:** The domain for the document that attempted to load an external resource that violated your CSP.
+-   **Document Path:** The path for the document that attempted to load an external resource that violated your CSP.
+-   **Effective Directive:** The [CSP directive](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy#directives) that was violated. 
+-   **Source File:** The URL for the document that attempted to load an external resource that violated your CSP.
+-   **Status Code:** The status code for the request that violated your CSP. 
 
 ### Sub Event Fields {/*sub-event-fields*/}
 
@@ -346,7 +359,7 @@ A sub event identifies a rule violation. Each sub event contains the following f
 
     </Callout>
 
-    **Example values:**
+    **Sample values:**
 
     -   **Policy:** The following sample values identify a policy:
 
@@ -365,3 +378,4 @@ A sub event identifies a rule violation. Each sub event contains the following f
         `OWASP_CRS/POLICY/SIZE_LIMIT`
 
 -   **Total Anomaly Score:** Indicates the anomaly score assigned to the request. This score is determined by the number of rules that were violated and their severity.
+

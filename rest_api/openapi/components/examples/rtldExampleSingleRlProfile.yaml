@@ -1,0 +1,42 @@
+value:
+  '@id': /rtld/v1/rl/profiles/10027
+  '@type': RateLimitingLogsProfile
+  id: 10027
+  environment_id: c9980249-2fb6-4699-a68e-271383815700
+  enabled: false
+  downsampling_percent: 25
+  fields:
+    - account_number
+    - client_city
+    - client_country
+    - client_country_code
+    - client_ip
+    - client_tls_ja3_md5
+    - host
+    - limit_action_duration
+    - limit_action_percentage
+    - limit_action_type
+    - limit_id
+    - limit_name
+    - limit_start_timestamp
+    - method
+    - referer
+    - scope_id
+    - scope_name
+    - timestamp
+    - url
+    - user_agent
+    - uuid
+  filters:
+    host_names:
+      names:
+        - host.example.com
+      condition: in
+  delivery_method:
+    type: http_post
+    destination_endpoint: https://logs.example.com/cdn/
+    authentication:
+      type: http_basic
+      username: myuser
+    log_format: json
+  profile_name: myprofile

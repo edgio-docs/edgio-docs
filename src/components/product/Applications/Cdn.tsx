@@ -144,10 +144,6 @@ const items = {
       path: '/guides/performance/serverless_compute',
     },
     {
-      title: 'EdgeJS Unit Testing',
-      path: '/guides/performance/unit_testing_edgejs',
-    },
-    {
       title: 'Image Optimization',
       path: '/guides/performance/image_optimization',
     },

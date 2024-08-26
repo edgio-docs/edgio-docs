@@ -14,7 +14,7 @@ Each edge point-of-presence (POP) has its own L1 cache. If a request cannot be f
 
 ## Caching a Response {/*caching-a-response*/}
 
-To cache a response, use the [cache](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#cache) function in your route's callback:
+To cache a response, use the [cache](/docs/v6.x/api/core/classes/_router_responsewriter_.responsewriter.html#cache) function in your route's callback:
 
 ```js
 import { CustomCacheKey } from '{{ PACKAGE_NAME }}/core/router'

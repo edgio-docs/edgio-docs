@@ -474,10 +474,6 @@ const nav = {
               external: true,
             },
             {
-              title: 'LVP',
-              path: 'video/apis/lvp',
-            },
-            {
               title: 'MMD Live',
               path: 'video/apis/mmd',
             },

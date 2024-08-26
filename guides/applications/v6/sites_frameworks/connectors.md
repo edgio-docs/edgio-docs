@@ -126,7 +126,7 @@ export default async function build({ skipFramework }) {
 
 {{ PRODUCT_NAME }} runs your application in its serverless cloud by proxying requests to your framework's application server, which it expects to be running on a specific port. The prod.js entry point exports a function that is called when a new serverless function is provisioned. It is responsible for starting your app on the provided port so that it can receive requests from {{ PRODUCT_NAME }}.
 
-_Optional. This entry point is only needed if your app uses server-side rendering or calls the_ [renderWithApp](/docs/api/core/classes/_router_responsewriter_.responsewriter.html#renderwithapp) _method on ResponseWriter._
+_Optional. This entry point is only needed if your app uses server-side rendering or calls the_ [renderWithApp](/docs/v6.x/api/core/classes/_router_responsewriter_.responsewriter.html#renderwithapp) _method on ResponseWriter._
 
 For example:
 

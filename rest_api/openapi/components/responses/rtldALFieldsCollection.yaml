@@ -1,8 +1,0 @@
-description: OK
-content:
-  application/json:
-    schema:
-      $ref: ../schemas/rtldCodeNameCollection.yaml
-    examples:
-      reference:
-        $ref: ../examples/rtldExampleALFieldsCollection.yaml

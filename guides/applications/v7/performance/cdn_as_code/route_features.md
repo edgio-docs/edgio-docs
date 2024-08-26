@@ -33,7 +33,7 @@ router.match('/:path*', {
 });
 ```
 
-Route features are often defined using object notation, but in some cases, it may be necessary to use [RouteHelper](/docs/api/core/classes/router_RouteHelper.default.html) methods to define features. Some functionality such as [transforming requests/responses](#transforming-requests-responses) or [serving static files](#serving-a-static-file) requires the use of `RouteHelper` methods.
+Route features are often defined using object notation, but in some cases, it may be necessary to use [RouteHelper](/docs/v7.x/api/core/classes/router_RouteHelper.default.html) methods to define features. Some functionality such as [transforming requests/responses](#transforming-requests-responses) or [serving static files](#serving-a-static-file) requires the use of `RouteHelper` methods.
 
 {{ routehelper_usage.md }}
 
@@ -74,7 +74,7 @@ While both of these examples are functionally equivalent, the second example is 
 
 ## Caching {/* caching */}
 
-Add caching to a route using the [`caching`](/docs/api/core/interfaces/types.Caching.html) feature:
+Add caching to a route using the [`caching`](/docs/v7.x/api/core/interfaces/types.Caching.html) feature:
 
 ```js
 router.get('/some/path', {
@@ -500,7 +500,7 @@ router
 
 ## Serving a Static File {/* serving-a-static-file */}
 
-To serve a specific file, use the [`serveStatic`](/docs/api/core/classes/router_RouteHelper.default.html#serveStatic) method.
+To serve a specific file, use the [`serveStatic`](/docs/v7.x/api/core/classes/router_RouteHelper.default.html#serveStatic) method.
 
 {{ routehelper_usage.md }}
 
@@ -520,7 +520,7 @@ router
 
 ## Serving Static Files From a Directory {/* serving-static-files-from-a-directory */}
 
-To serve a files from a directory, use the [`serveStatic`](/docs/api/core/classes/router_RouteHelper.default.html#serveStatic) method.
+To serve a files from a directory, use the [`serveStatic`](/docs/v7.x/api/core/classes/router_RouteHelper.default.html#serveStatic) method.
 
 {{ routehelper_usage.md }}
 
@@ -562,7 +562,7 @@ router
 
 ## Routing to Cloud Functions {/* routing-to-cloud-functions */}
 
-Render the result of a Cloud Function within your application by using the [`renderWithApp`](/docs/api/core/classes/router_RouteHelper.default.html#renderWithApp) method. Use this method to respond with an SSR or API result from your application.
+Render the result of a Cloud Function within your application by using the [`renderWithApp`](/docs/v7.x/api/core/classes/router_RouteHelper.default.html#renderWithApp) method. Use this method to respond with an SSR or API result from your application.
 
 {{ routehelper_usage.md }}
 
@@ -625,7 +625,7 @@ router.get('/products/:id', ({ serveStatic, cache }) => {
 
 ## Image Optimization {/* image-optimization */}
 
-{{ PRODUCT_NAME }} can dynamically transform your images to tailor your site's design, experience, and performance needs. [Image optimization](/applications/performance/image_optimization) can be enabled using the [`response.optimize_images`](/docs/api/core/interfaces/types.Response.html#optimize_images) feature on your route(s).
+{{ PRODUCT_NAME }} can dynamically transform your images to tailor your site's design, experience, and performance needs. [Image optimization](/applications/performance/image_optimization) can be enabled using the [`response.optimize_images`](/docs/v7.x/api/core/interfaces/types.Response.html#optimize_images) feature on your route(s).
 
 <ExampleButtons
   title="Image Optimization"
@@ -761,7 +761,7 @@ When using `response.set_response_body` to send a response, you must also set `r
 
 </Callout>
 
-To compute a dynamic response, use the [`compute`](/docs/api/core/classes/router_RouteHelper.default.html#compute) method.
+To compute a dynamic response, use the [`compute`](/docs/v7.x/api/core/classes/router_RouteHelper.default.html#compute) method.
 
 {{ routehelper_usage.md }}
 
@@ -801,7 +801,7 @@ router.get('/p/:productId', {
 });
 ```
 
-To compute the destination URL, use the [`compute`](/docs/api/core/classes/router_RouteHelper.default.html#compute) method.
+To compute the destination URL, use the [`compute`](/docs/v7.x/api/core/classes/router_RouteHelper.default.html#compute) method.
 
 {{ routehelper_usage.md }}
 

@@ -1,0 +1,8 @@
+description: OK
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/rtldBotProfileCollection.yaml
+    examples:
+      reference:
+        $ref: ../examples/rtldExampleBotProfileCollection.yaml

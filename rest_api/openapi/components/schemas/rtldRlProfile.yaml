@@ -1,0 +1,5 @@
+title: RTLD RL profile properties
+description: A RTLD RL profile's configuration including its system-defined ID.
+allOf:
+  - $ref: ./rtldProfileID.yaml
+  - $ref: ./rtldRlProfileProperties.yaml

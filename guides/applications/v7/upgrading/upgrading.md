@@ -981,14 +981,14 @@ By default, {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7:
 
 <Info>
 
-{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 uses the [caching](/docs/api/core/interfaces/types.Caching.html) feature to [add caching to a route](/applications/performance/cdn_as_code/route_features#caching). 
+{{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 uses the [caching](/docs/v7.x/api/core/interfaces/types.Caching.html) feature to [add caching to a route](/applications/performance/cdn_as_code/route_features#caching). 
 
 </Info>
 
 ### Compression {/*compression*/}
 
 {{ PRODUCT }} {{ PRODUCT_APPLICATIONS }} version 7 has stricter requirements for edge server compression. 
--   Compression must be explicitly enabled for each desired content type through the [compress_content_types](/docs/api/core/interfaces/types.Response.html#compress_content_types) feature. 
+-   Compression must be explicitly enabled for each desired content type through the [compress_content_types](/docs/v7.x/api/core/interfaces/types.Response.html#compress_content_types) feature. 
 -   Compression requires a cached version of the requested content.
 -   The requested content must be greater than 128 bytes and less than 3 MB.
 

@@ -8,7 +8,7 @@ Your primary contact at Edgio will be your Account Manager, who will work closel
 
 Initially, your Account Manager and Solutions Engineer will help you identify and confirm all of the information needed to complete your order. Once your order has been placed, your Account Manager will track the progress of the order and request any additional information needed to ensure a successful implementation.
 
-When your Content Delivery service is ready (“provisioned”), you will receive a Welcome Letter from our support team with important information about your Edgio Account. For more information, please see [Understanding Your Welcome Letter(/delivery/guide/implementation/#understanding-your-welcome-letter)].
+When your Content Delivery service is ready (“provisioned”), you will receive a Welcome Letter from our support team with important information about your Edgio Account. For more information, please see [Understanding Your Welcome Letter](/delivery/delivery/guide/implementation/#understanding-your-welcome-letter).
 
 Once your service is configured and available to be used to deliver your content, you can contact our Support team 24 x 7 for technical assistance with your Content Delivery service. If you have questions about which Content Delivery features you purchased, or about additional services, your Account Manager will be happy to assist.
 
@@ -17,7 +17,8 @@ Finally, you can log in to [Edgio Control](https://control-new.edg.io/acontrol/#
 To set up your Edgio Account, please be prepared to provide your Account Manager the following information:
 
 - **Contacts**
-    -An administrative contact for your team<br />- A technical contact for your team
+    - An administrative contact for your team
+    - A technical contact for your team
 - **Content Overview**
   - An overview of the types of content you deliver and the way your audience consumes it
   - The method you use to publish your content today and the frequency with which you update your content

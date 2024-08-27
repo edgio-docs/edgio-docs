@@ -180,7 +180,7 @@ Generate graphs for client events based off of the following metrics: blocked UR
 
 #### Client Log Events {/*client-log-events*/}
 
-The **Log Events** section only displays log events for requests violated your Client-Side Protection policy when the **Client Events** view is active. View the following key event-specific information by clicking on it:
+The **Log Events** section only displays log events for requests violated your Client-Side Protection policy when the **Client Events** view is active. View key information for a specific violation by clicking on an event:
 
 -   **Blocked Query:** The query string defined within the request for the resource that violated your CSP.
 -   **Blocked URL:** The URL that violated your CSP.
@@ -247,7 +247,7 @@ The {{ PRODUCT_SECURITY }} dashboard contains the following components:
 
     -   **Events:** Indicates the number of detected events that belong to the group identified by the **Value** field.
 
--   **Log Data:** Paginated log data for the current time period is displayed within the **Log Events** section at the bottom of the dashboard. Click on a log entry to view detailed information about that event.
+-   **Log Data:** Paginated [log data](#log-events) for the current time period is displayed within the **Log Events** section at the bottom of the dashboard. Click on a log entry to view detailed information about that event.
 
 ### Filters {/*filters*/}
 

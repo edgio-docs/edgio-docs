@@ -456,5 +456,5 @@ In addition to streaming content directly to your consumers, you may also simult
 ## More Information  {/*more-information*/}
 
 - [Live Slicer Setup](/uplynk/acquire/live/on_prem_slicer)
-- [Latency](/uplynk/manage/channels/#latency)
+- [Latency](/uplynk/manage/channels/#change-the-default-playback-latency)
 - [Media Player Setup](/uplynk/delivery/media_player)

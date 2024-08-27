@@ -14,7 +14,7 @@ Use playback URLs or a media player to delivery your content to your customers.
 
 - **[Sign playback URLs](/uplynk/deliver/playback_urls/#signing-playback-urls-with-token) with a token**
 
-    - [Basic Setup](#basic-setup)
+    - [Basic Setup](/uplynk/deliver/playback_urls#basic-setup)
 
         - [Core identification parameters](/uplynk/deliver/playback_urls/#core-identification-parameters)
         - [Signature parameter](/uplynk/deliver/playback_urls/#digital-signature)

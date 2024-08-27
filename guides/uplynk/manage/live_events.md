@@ -26,7 +26,7 @@ Our live event service allows you to:
 
 - The source of a live event may consist of multiple Live Slicers. This setup allows manual failover to a backup Live Slicer when the live feed from the primary Live Slicer is unavailable or suboptimal.
 
-- [Slate](#slate) will be displayed under the following conditions:
+- [Slate](#set-up-slate) will be displayed under the following conditions:
 
     - Prior to the start of the live event.
     - Upon the completion of the live event.

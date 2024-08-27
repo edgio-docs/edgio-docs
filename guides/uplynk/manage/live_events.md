@@ -239,7 +239,7 @@ Duplicating a live event will not generate an exact copy. Unique or live event-s
 | Assets | Blank |
 | Auto Start/Stop | No |
 | External ID | Blank |
-| Logs | The following two actions will be logged:<ul><li>Event Created</li><li>Event Copied from `{Live Event ID}`.</li></ul><br /> |
+| Logs | The following two actions will be logged:<ul><li>Event Created</li><li>Event Copied from `{Live Event ID}`.</li></ul>|
 | Playback | The following changes will be applied to playback settings:<ul><li>**URLs**: New playback URLs.</li><li>**Test Players**: Default test player. Custom test players associated with the source live event will not be carried over to the new live event.</li><li>**Embed**: New embed HTML code.</li></ul> |
 | Scheduled Start Time | Blank |
 | Scheduled Stop Time | Blank |
@@ -289,7 +289,7 @@ Duplicating a live event will not generate an exact copy. Unique or live event-s
 
 - **Data**: Verify that the CSV's data does not conflict with metadata that has already been associated with the live event.
 
-<Warning>Importing a CSV will overwrite metadata fields when a key with the same name is found.</Warning>
+    <Warning>Importing a CSV will overwrite metadata fields when a key with the same name is found.</Warning>
 
 2. From the **Add Metadata** pane, **click Browse...**.
 3. Navigate to the desired CSV file, select it, and then click **Open**.
@@ -531,7 +531,7 @@ Slate may either be:
 
 #### Define a Default Slate Configuration  {/*define-a-default-slate-configuration*/}
 
-1. From the [**Content** tab](https://cms.uplynk.com/static/cms2/index.html#/content), organize assets that will serve as slate content into one or more CMS libraries.
+1. From the [Content tab](https://cms.uplynk.com/static/cms2/index.html#/content), organize assets that will serve as slate content into one or more CMS libraries.
 
     <Info>You may assign different libraries for each type of slate.</Info>
 
@@ -677,15 +677,15 @@ Default latency for Live Channels and Live Events is 60+ seconds. To reduce late
 - The act of ‘Creating’ a CSL slicer will always create (/override) a profile to slicer ID mapping, even if using the default profile. Slicer Resets will not update the mapping.
 - Due to continued testing, new technology, and other factors, playback profile parameters used by the manifest engine may change from time to time, without notice.
 
-## Broadcast a Live Event
+## Broadcast a Live Event  {/*broadcast-a-live-event*/}
 
-<Info></Info>You should only allow a single operator to manage a live event. Using multiple operators on a single live event may lead to unexpected behavior.
+<Info>You should only allow a single operator to manage a live event. Using multiple operators on a single live event may lead to unexpected behavior.</Info>
 
 If the live event has been [scheduled and configured to automatically start/stop](#set-up-a-live-event), then no additional actions need to be taken.
 
 <Info>Override auto start/stop by turning it off from the live event and then saving your changes. Alternatively, an operator may override auto start/stop by opening the live event in the Live Events Dashboard and then clicking **Cancel** from the upper-right hand window. After which, the operator should start the following procedure from step 3.</Info>
 
-## Broadcast a Live Event
+**Broadcast a Live Event**
 
 1. Navigate to the [Live Events page](https://cms.uplynk.com/static/cms2/index.html#/live-events/events).  From the main menu, navigate to **Events > Live Events**.
 

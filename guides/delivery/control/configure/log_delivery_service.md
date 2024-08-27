@@ -309,7 +309,7 @@ Origin Storage must be enabled for the name selected in the SHORTNAME.
 | STORAGE ACCOUNTS | The Origin Storage account where you want to store logs. By default logs are stored under the same account that owns LDS configuration |
 
 
-## Sampling Data  {/*sampling-data*/}
+## Sample Data  {/*sampling-data*/}
 
 [Data Sampling](/images/delivery/data-sampling.png)
 

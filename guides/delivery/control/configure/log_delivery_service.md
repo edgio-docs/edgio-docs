@@ -183,9 +183,10 @@ LDS supports log data streaming to a custom HTTPS endpoint using POST requests.
 | Field | Description |
 |---|---|
 | URL |  HTTPS URL that accepts POST requests. |
-| AUTHORIZATION HEADER VALUE | (optional) Authorization header value to use when sending logs. (e.g., 'Basic \<Base64 encoded username and password\>', 'Bearer <Your API key>') |
+| AUTHORIZATION HEADER VALUE | (optional) Authorization header value to use when sending logs. (e.g., 'Basic \<Base64 encoded username and password\>', 'Bearer \<Your API key\>') |
 | CUSTOM HEADER NAME | (optional) Custom HTTP header name to use when sending logs. (Content-Type, Encoding, Authorization, Host are not supported). |
 | CUSTOM HEADER VALUE | (optional) Custom HTTP header value to use when sending logs. |
+
 ### Datadog  {/*enabling-log-delivery-to-datadog*/}
 
 #### Prerequisites  {/*prerequisites-datadog*/}

@@ -252,7 +252,7 @@ These are visible only when you select Google Cloud Storage as the destination. 
 | BUCKET NAME | Title of the Google Cloud Storage bucket you created. |
 | PATH | Path within the bucket where logs are stored.<br /> Defaults to an empty value.  <br /> <Callout type="info">Do not add a leading slash to the path. If you do, Google Cloud Storage creates an object URL with a double slash. Example:  `gs://bucket_name//cdn_logs/...` </Callout>|
 
-### Enable log Delivery to Hydrolix {/*enable-hydrolix*/}
+### Hydrolix {/*enable-hydrolix*/}
 
 You can configure LDS to stream logs data to Hydrolix platform.
 
@@ -453,11 +453,11 @@ The following fields are available for you to include when you select *MMD_LIVE_
 | transcode-bytes | *(int64)* The number of transcoded bytes.  |
 | transcode-pixels | *(int64)*The number of transcoded pixels.  |
 
-## Retrieve Log Files from Origin Storage  {/*retrieving-log-files-from-origin-storage*/}
+## Download Log Files from Origin Storage  {/*retrieving-log-files-from-origin-storage*/}
 
 You can retrieve your files from Edgio Origin Storage using Origin Storage API calls in conjunction with an HTTP GET request or via the Origin Storage Management Console.
 
-### Download Using the API  {/*download-using-the-api*/}
+### API  {/*download-using-the-api*/}
 
 All methods in this section are in the Origin Storage JSON-RPC API interface. We presented essential information; for detailed information about each method, see the [Origin Storage API Reference Guide](/delivery/storage/apis).
 
@@ -525,7 +525,7 @@ The method returns this object:
 ```
 <Callout type="info">Do not attempt to directly download content from Origin Storage using FTP, SFTP, FTPS, SCP, or rsync because doing so can negatively impact other system processes. To download content, use an HTTP GET request.</Callout>
 
-#### API End-to-End Example
+#### API End-to-End Example  {/*api-example*/}
 
 For simplicity, we've omitted error checking. The code sample uses Python.
 
@@ -591,7 +591,7 @@ for file_name in files_to_download:
         if response.status_code != 200:
             print("Unable to download " + file_name + ". Status code: " + response.status_code)
 ```
-### Download from Storage  {/*download-using-the-storage-management-console*/}
+### Storage  {/*download-using-the-storage-management-console*/}
 
 #### Download Manually
 You can download a log file using the Origin Storage Management Console.
@@ -602,7 +602,7 @@ Begin by logging into the Edgio Control Portal, then follow these steps:
 2. Navigate to the folder that contains the file you want to download.
 3. Click the download icon. Your browser downloads the file.
 
-#### Download via Python
+#### Download via Python  {/*python*/}
 
 This Python script deletes the file once it is downloaded. It also deletes the directory if it becomes empty. Use the parameter max_files to download multiple files if you don't want the limit set to 0.
 

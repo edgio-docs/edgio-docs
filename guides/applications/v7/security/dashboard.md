@@ -64,9 +64,7 @@ Click on the **WAF Events** tab to load this view.
 
 #### <a id="threat-log-data" /><a id="waf-log-fields" />WAF Log Events {/*waf-log-events*/}
 
-The **WAF Events** view filters the **Log Events** section to only display log events for recent access rule, custom rule, or managed rule violations. 
-
-View information for a specific rule violation by clicking on it. Log fields are categorized as follows:
+The **Log Events** section only displays log events for recent access rule, custom rule, or managed rule violations when the **WAF Events** view is active. View information for a specific rule violation by clicking on it. Log fields are categorized as follows:
 
 -   **Common Headers:** Provides key request header data.
 -   **Sub Events:** Describes a rule violation. [View definitions for key log fields.](#sub-event-fields)
@@ -83,9 +81,7 @@ A bot event occurs when a bot manager rule is violated. Analyze recently detecte
 
 #### <a id="bot-log-data" />Bot Log Events {/*bot-log-events*/}
 
-Select the **Bot Events** view to filter the **Log Events** section to only display log events for requests that were flagged as bot traffic. 
-
-View information for a request identified as bot traffic by clicking on it. Log fields are categorized as follows:
+The **Log Events** section only displays log events for requests that were flagged as bot traffic when the **Bot Events** view is active. View information for a request identified as bot traffic by clicking on it. Log fields are categorized as follows:
 
 -   **Common Headers:** Provides key request header data.
 -   **Sub Events:** Describes a rule violation. [View log fields.](#sub-event-fields)
@@ -135,9 +131,7 @@ Logging for rate limited requests is downsampled to 10% due to the volume of req
 
 #### <a id="rate-limit-log-data" />Rate Limit Log Events {/*rate-limit-log-events*/}
 
-Select the [Rate Events view](#rate-events-view) and then verify that the **Rate Limiting** tab is selected to filter the **Log Events** section to only display log events for rate limited requests. 
-
-View information for a specific violation by clicking on it. Log fields are categorized as follows:
+The **Log Events** section only displays log events for rate limited requests when the **Rate Limiting** tab of the **Rate Events** view is active. View information for a specific violation by clicking on it. Log fields are categorized as follows:
 
 -   **Common Headers:** Provides key request header data.
 -   **Other Data:** Describes the request, the security configuration that was violated, the applied [enforcement action (actionType)](/applications/security/security_applications#enforcement), and the edge server on which it was processed.
@@ -168,9 +162,7 @@ In this example, you have configured a rate limit of 300 requests per minute wit
 
 #### <a id="rate-limit-enforcement-log-data" />Rate Limit Enforcement Log Events {/*rate-limit-enforcement-log-events*/}
 
-Select the [Rate Events view](#rate-events-view) and then select the **Rate Enforcer** tab to filter the **Log Events** section to only display log events for rate limit enforcement events. 
-
-View information on a rate limit enforcement event by clicking on it. For example, view the type of enforcement action (i.e., `enforcementEnfType`) that was applied to the rate limited requests and the time period (i.e., `enforcementStartTimeMs` and `enforcementDurationSec`) during which it was applied.
+The **Log Events** section only displays log events for rate limit enforcement events when the **Rate Enforcer tab** of the **Rate Events** view is active. View information on a rate limit enforcement event by clicking on it. For example, view the type of enforcement action (i.e., `enforcementEnfType`) that was applied to the rate limited requests and the time period (i.e., `enforcementStartTimeMs` and `enforcementDurationSec`) during which it was applied.
 
 ## Client Events View {/*client-events-view*/}
 
@@ -188,9 +180,7 @@ Generate graphs for client events based off of the following metrics: blocked UR
 
 #### Client Log Events {/*client-log-events*/}
 
-Select the [Client Events view](#client-events-view) to filter the **Log Events** section to only display log events for requests that violated your Client-Side Protection policy. 
-
-View the following key event-specific information by clicking on it:
+The **Log Events** section only displays log events for requests violated your Client-Side Protection policy when the **Client Events** view is active. View the following key event-specific information by clicking on it:
 
 -   **Blocked Query:** The query string defined within the request for the resource that violated your CSP.
 -   **Blocked URL:** The URL that violated your CSP.

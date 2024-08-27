@@ -60,14 +60,16 @@ A WAF event occurs when an access rule, custom rule, or managed rule is violated
 
 Click on the **WAF Events** tab to load this view.
 
-### <a id="threat-log-data" /><a id="waf-log-fields" />WAF Log Events {/*waf-log-events*/}
+![](/images/v7/security/dashboard_waf_events_view.png)
+
+#### <a id="threat-log-data" /><a id="waf-log-fields" />WAF Log Events {/*waf-log-events*/}
 
 The **WAF Events** view filters the **Log Events** section to only display log events for recent access rule, custom rule, or managed rule violations. 
 
 View information for a specific rule violation by clicking on it. Log fields are categorized as follows:
 
 -   **Common Headers:** Provides key request header data.
--   **Sub Events:** Describes a rule violation. [View log fields.](#sub-event-fields)
+-   **Sub Events:** Describes a rule violation. [View definitions for key log fields.](#sub-event-fields)
 -   **Other Data:** Describes the request, the security configuration that was violated, and the edge server on which it was processed.
 
 ## Bot Events View {/*bot-events-view*/}
@@ -77,9 +79,11 @@ A bot event occurs when a bot manager rule is violated. Analyze recently detecte
 -   Identify the countries from which bot traffic originates.
 -   Identify key individual offenders by their IP address.
 
-### <a id="bot-log-data" />Bot Log Events {/*bot-log-events*/}
+![](/images/v7/security/dashboard_bot_events_view.png)
 
-Select the [Bot Events view](#bot-events-view) to filter the **Log Events** section to only display log events for requests that were flagged as bot traffic. 
+#### <a id="bot-log-data" />Bot Log Events {/*bot-log-events*/}
+
+Select the **Bot Events** view to filter the **Log Events** section to only display log events for requests that were flagged as bot traffic. 
 
 View information for a request identified as bot traffic by clicking on it. Log fields are categorized as follows:
 
@@ -121,6 +125,8 @@ A rate limit event occurs when a request exceeds a rate limit. Analyze recently 
 -   Identify key individual offenders by their IP address.
 -   View detailed information that describes a rate limited request.
 
+![](/images/v7/security/dashboard_rate_limiting_tab.png)
+
 <Callout type="info">
 
 Logging for rate limited requests is downsampled to 10% due to the volume of requests that may occur during a single incident (e.g., volumetric Distributed Denial-of-Service attack).
@@ -136,7 +142,6 @@ View information for a specific violation by clicking on it. Log fields are cate
 -   **Common Headers:** Provides key request header data.
 -   **Other Data:** Describes the request, the security configuration that was violated, the applied [enforcement action (actionType)](/applications/security/security_applications#enforcement), and the edge server on which it was processed.
 
-
 ### Rate Enforcer Tab {/*rate-enforcement-view*/}
 
 A rate limit enforcement event identifies each instance that a set of requests exceed a rate limit. This type of event starts when a rate limit is exceeded. The time period defined within a Security App's **Rate Rule** tab determines the duration for this event. 
@@ -145,6 +150,8 @@ Analyze rate limit enforcement events to:
 
 -   Visualize the time periods during which a high volume of requests resulted in the enforcement of a rate rule.
 -   Understand the frequency of rate limited requests.
+
+![](/images/v7/security/dashboard_rate_enforcement_tab.png)
 
 #### Rate Enforcement Example {/*rate-enforcement-example*/}
 
@@ -177,7 +184,9 @@ A client event occurs when a Content Security Policy (CSP) defined within a Clie
 
 Generate graphs for client events based off of the following metrics: blocked URL, disposition, document domain, document path, effective directive, source file, and status code. 
 
-### Client Log Events {/*client-log-events*/}
+![](/images/v7/security/dashboard_client_events_view.png)
+
+#### Client Log Events {/*client-log-events*/}
 
 Select the [Client Events view](#client-events-view) to filter the **Log Events** section to only display log events for requests that violated your Client-Side Protection policy. 
 
@@ -300,11 +309,19 @@ Filter the {{ PRODUCT_SECURITY }} dashboard by clicking on a top entry for a par
 
     The dashboard displays recent log events for the currently selected view (e.g., Total Events, WAF Events, and Bot Events).
 
-2.  Click on the desired view.
+2.  Load the desired view.
 
     ![Types of events](/images/v7/security/dashboard_event_type_selection.png?width=500)
 
 3.  Scroll down to the **Log Events** section.
+
+View log field definitions for:
+
+    -   [Total Events view](#total-events-view)
+    -   [WAF Events view](#waf-events-view)
+    -   [Bot Events view](#bot-events-view)
+    -   Rate Events view: [Rate Limiting tab](#rate-limiting-view) or [Rate Enforcer tab](#rate-enforcement-view)
+    -   [Client Events view](#client-events-view)
 
 ### Sub Event Fields {/*sub-event-fields*/}
 

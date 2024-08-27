@@ -694,7 +694,7 @@ If the live event has been [scheduled and configured to automatically start/stop
 3. Click **Open Dashboard**.
 
 4. **Verify Connection:**
-   [Ensure a connection was established to the Live Slicer(s)](#verify-slicer-connectivity) associated with the live event configuration. A live event may be managed over the internet provided that a firewall does not prevent communication between the Live Events Dashboard and the Live Slicer. Otherwise, an operator should load the Live Events Dashboard from within the same network as the Live Slicer.
+   [Ensure a connection was established to the Live Slicer(s)](#verify-live-slicer-connectivity) associated with the live event configuration. A live event may be managed over the internet provided that a firewall does not prevent communication between the Live Events Dashboard and the Live Slicer. Otherwise, an operator should load the Live Events Dashboard from within the same network as the Live Slicer.
 
    **Troubleshooting:**
    If a connection to the Live Slicer cannot be established, verify that SSL support has been added to the Live Slicer. Alternatively, look for a warning icon in the browser's address bar. Click on that icon to accept the potential security risk of loading content via HTTP alongside HTTPS traffic. Eliminate this security risk by adding SSL support to the Live Slicer.
@@ -733,7 +733,7 @@ If the live event has been [scheduled and configured to automatically start/stop
 
 9. Monitor the live stream to identify the ending point of the live event and then [stop the live event](#start-stop-a-live-event) from the Live Events Dashboard. It is possible to resume a live event after it has been stopped.
 
-### Verify Live Slicer Connectivity
+### Verify Live Slicer Connectivity  {/*verify-live-slicer-connectivity*/}
 
 The **Live Events** Dashboard indicates a Live Slicer's status using the following indicators:
 
@@ -743,7 +743,7 @@ The **Live Events** Dashboard indicates a Live Slicer's status using the followi
 
 <Info>This status information is only designed to measure the connectivity between the Live Slicer and the **Live Events** Dashboard. Monitor Live Slicer health through the Live Slicer Health dashboard. Learn more.</Info>
 
-#### Test a Live Event
+#### Test a Live Event  {/*test-a-live-event*/}
 
 The **Live Events** Dashboard contains a test mode that allows an operator to validate source content and replicate the viewing experience prior to the start of the live event.
 
@@ -782,7 +782,7 @@ In this mode, you can perform the following tests:
 
    - [Customize the playback URL](/uplynk/deliver/playback_urls/customize_playback_via_parameters) by defining parameters in the URL Params setting. Click **Update** to apply the new playback URL to the Audience View preview.
 
-##### Slicer Live Preview & Audience View
+##### Slicer Live Preview & Audience View  {/*slicer-live-preview*/}
 
 The **Slicer Live Preview** pane provides a real-time preview of the source selected in the **Switcher** pane, while the Audience View pane provides an approximation of a viewer's experience.
 
@@ -800,7 +800,7 @@ The **Slicer Live Preview** pane provides a real-time preview of the source sele
         | livepreview_with_audio: on | Requires Slicer version 22083100 or higher<br />Enables audio for the Slicer Live Preview.<br />The Slicer Live Preview pane displays audio levels regardless of whether this setting is enabled. |
         | livepreview_max_viewers: # | Determines the maximum number of simultaneous viewers of a live preview.<br />Each instance of a live preview consumes resources on the computer hosting the Live Slicer. This setting is designed to prevent performance issues by capping the number of simultaneous connections. |
 
-### Start or Stop a Live Event
+### Start or Stop a Live Event  {/*start-stop-live-event*/}
 
 Broadcast a live event to viewers by starting it. This will cause the following actions to take place:
 
@@ -822,7 +822,7 @@ Once the live event is over, it will need to be stopped. This will cause the fol
 
 4. **Failover to a Different Live Slicer:** If multiple Live Slicers are associated with the live event configuration, you can quickly fail over the stream by selecting the feed from a different Live Slicer in the Slicers pane.
 
-### View Live Event Details
+### View Live Event Details  {/*view-event-details*/}
 
 The following live event information may be viewed at any time after entering the event by clicking the **Event Details** tab:
 
@@ -831,7 +831,7 @@ The following live event information may be viewed at any time after entering th
 - Metadata associated with the live event configuration
 - Audit log data that tracks major events (e.g., event creation, source switching, event started/ended, etc.). Audited events may be posted to your web server. [Learn more](#status-reporting).
 
-### Resume a Live Event
+### Resume a Live Event  {/*resume-a-live-event*/}
 
 A live event may be resumed for a short window (i.e., 1 to 5 minutes) after it has been stopped. This capability allows an operator to undo a premature stop event action.
 
@@ -844,7 +844,7 @@ A live event may be resumed for a short window (i.e., 1 to 5 minutes) after it h
 - Post-processing (e.g., creating on-demand content from a live event) will not start until after this window expires.
 - Additional content sliced after resuming a live event will be included in the CMS asset generated from the live event.
 
-## Syndication Publishing
+## Syndication Publishing  {/*syndication-publishing*/}
 
 <Info>Contact your account manager to activate Syndication Publishing.</Info>
 
@@ -855,14 +855,14 @@ In addition to streaming content directly to your consumers, you may also simult
 1. Create a [publishing target](/uplynk/monetize/syndication/#publishing-target) for each desired social media or content distribution platform.
 2. [Publish to the desired platform(s)](uplynk/monetize/syndication/#publishing) by associating the desired publishing target(s) with your live event.
 
-## On-Demand Content
+## On-Demand Content  {/*on-demand-content*/}
 
 Upon the completion of a live event, an asset will be automatically added to the CMS library. This asset is described below.
 
 - **Contents**: This asset contains the entire live event feed including markers for ad breaks. However, it will not contain slate inserted into the live event feed.
-- **Naming Convention**: This asset will be named after the live event's description. If the live event has not been assigned a description, then it will be named after the first Live Slicer associated with the live event (e.g., [MySlicer].
+- **Naming Convention**: This asset will be named after the live event's description. If the live event has not been assigned a description, then it will be named after the first Live Slicer associated with the live event (e.g., MySlicer).
 
-### Change a Live Event's Asset
+### Change a Live Event's Asset  {/*change-a-live-event-asset*/}
 
 A live event may be assigned a different CMS asset. A common use case for this capability is to create a clip from a live event and then set it as the on-demand version of the live event.
 
@@ -872,7 +872,7 @@ Reassigning the asset associated with a live event will trigger the following ac
 - The original asset will be assigned the expiration policy defined by the live event's **Auto Expire Hours** option. View this setting from the live event's **Config** tab.
 - The CMS asset newly assigned to the live event will be assigned the expiration policy defined by the live event's **VOD Auto Expire Hours** option. View this setting from the live event's **Config** tab.
 
-### Change the Asset Associated with a Live Event
+### Change the Asset Associated with a Live Event  {/*change-asset*/}
 
 1. Load the configuration associated with the desired live event.
 2. Click **Change VOD Asset** from the notification bar.
@@ -880,7 +880,7 @@ Reassigning the asset associated with a live event will trigger the following ac
 4. Click **Save**.
 5. Verify that the **VOD label** has been applied to the asset that best represents the on-demand version of the live event.
 
-### Playback On-Demand Content
+### Playback On-Demand Content  {/*playback-on-demand-content*/}
 
 The playback URL associated with a live event may be used to stream it while the live event is in the **Live (On Air)** state. Once the live event is completed, the live event's **VOD Replayable** option determines whether that same URL may be leveraged to stream it as on-demand content.
 
@@ -896,7 +896,7 @@ The playback URL associated with a live event may be used to stream it while the
 
 - An alternative method to stream the live event as on-demand content is to play back the CMS library asset that was automatically generated from the live event. This may be performed through the asset's playback URL.
 
-### Long Live Events
+### Long Live Events  {/*long-live-events*/}
 
 The behavior for a live event whose duration is 8 hours or longer will vary as described below.
 
@@ -913,7 +913,7 @@ The behavior for a live event whose duration is 8 hours or longer will vary as d
 
 <Info>A media player may not support the playback of content that lasts over 8 hours. Please verify playback for each of your media players.</Info>
 
-### Manually Generate On-Demand Content
+### Manually Generate On-Demand Content  {/*manually-generate-on-demand-content*/}
 
 Although on-demand content is automatically generated once a live event is completed, there are certain circumstances under which you may wish to manually generate it. For example, you may wish to address a quality issue that was noticed during the live event. If one or more backup Live Slicers were associated with the live event, you could generate alternate on-demand content by using any combination of content generated from the Live Slicers associated with the live event.
 
@@ -948,7 +948,7 @@ The naming convention for temporary assets will be set to either of the followin
 
 <Info>Please wait 150% of the live event's duration before attempting to delete temporary assets.</Info>
 
-## Live Event Status Reporting
+## Live Event Status Reporting  {/*live-event-status-reporting*/}
 
 Major events (e.g., creating, starting, and stopping a live event) are tracked for each live event. Our service can report these events as JSON data to a web server through HTTP POST requests. Your web server may then log this data and perform custom actions in response to specific types of events.
 
@@ -981,7 +981,7 @@ Major events (e.g., creating, starting, and stopping a live event) are tracked f
 
 5. Click **Save**.
 
-### Authentication
+### Authentication  {/*authentication*/}
 
 Verify that a request came from our service through either of the following authentication methods:
 
@@ -1016,7 +1016,7 @@ Verify that a request came from our service through either of the following auth
 
 <Tip>[View a sample Python 3 script](https://docs.edgecast.com/video/Content/Resources/Scripts/webserver.py) that instantiates a sample web server and contains functions through which you authenticate a token or a signature.</Tip>
 
-### Request Body
+### Request Body  {/*request-body*/}
 
 The HTTP POST request body will contain the following properties:
 
@@ -1034,7 +1034,7 @@ The HTTP POST request body will contain the following properties:
 | user_id | String | Indicates the system-defined ID associated with the user account that triggered the event.<br />**Find user ID**:<ol><li>Load the [User Settings page](https://cms.uplynk.com/static/cms2/index.html#/settings/).</li><li>Your user ID is listed under the User ID label.</li></ol>  |
 | username | String | Indicates the e-mail address associated with the user account that triggered the event. |
 
-### State
+### State  {/*state*/}
 
 Live event states are defined below.
 
@@ -1046,7 +1046,7 @@ Live event states are defined below.
 | post | Indicates that the live event had completed and post-processing (e.g., creating on-demand content from a live event) was initiated. |
 | complete | Indicates that the live event had completed and all post-processing tasks were completed. |
 
-### Events
+### Events  {/*events*/}
 
 Events are defined below.
 
@@ -1076,7 +1076,7 @@ Events are defined below.
 | VOD Asset Deleted | Indicates that a CMS asset was manually deleted. |
 | VOD Available | Indicates that a CMS asset containing the audio/video feed for a completed live event was created. |
 
-### Sample Request Body
+### Sample Request Body  {/*sample-request-body*/}
 
 Updating a live event configuration will trigger Live Event Status Reporting. A sample request body for this type of event is provided below.
 
@@ -1099,7 +1099,7 @@ Updating a live event configuration will trigger Live Event Status Reporting. A 
 }
 ```
 
-## Conflicting Scheduled Events
+## Conflicting Scheduled Events  {/*conflicting-scheduled-events*/}
 
 The following warning indicators will be triggered when overlapping events on the same Live Slicer are detected:
 
@@ -1125,7 +1125,7 @@ In this scenario, a warning will be generated if another live event is scheduled
 - **Expected Start Time:** 11/11/2016 before 09:00 PM
 - **Expected Stop Time:** 11/11/2016 after 05:00 PM
 
-## Stream a Live Event Tutorial
+## Stream a Live Event Tutorial  {/*stream-a-live-event-tutorial*/}
 
 Learn how to stream a live event.
 
@@ -1174,7 +1174,7 @@ To this end, it is recommended to:
 1. Create a live event configuration for testing purposes. Determine the optimal streaming quality for the host computer by streaming for a short time period (e.g., 5 minutes).
 2. Create another live event configuration for the actual live event. Make sure to set the streaming quality to an optimal value.
 
-### Step 1 - Set Up a Live Slicer
+### Step 1 - Set Up a Live Slicer  {/*step-1*/}
 
 A Live Slicer is required to prepare an audio/video feed into a live stream that will be broadcast to all of your viewers. Set up the latest version of the Live Slicer on a Linux computer.
 
@@ -1265,7 +1265,7 @@ A Live Slicer is required to prepare an audio/video feed into a live stream that
     - Close **Preferences** and then click on the **Log and Capture** tab.
     - Click **Capture**. The Live Slicer will automatically pick up the feed.
 
-### Step 2 - Create a Live Event in the CMS
+### Step 2 - Create a Live Event in the CMS  {/*step-2*/}
 
 Create a basic live event configuration that will stream the audio/video feed generated by the above Live Slicer.
 
@@ -1285,7 +1285,7 @@ Create a basic live event configuration that will stream the audio/video feed ge
 
 8. Click **Save**.
 
-### Step 3 - Set up a Media Player
+### Step 3 - Set up a Media Player  {/*step-3*/}
 
 A media player that points to the live event must be distributed to your viewers.
 
@@ -1321,7 +1321,7 @@ A media player that points to the live event must be distributed to your viewers
 
 7. Load the above web page and verify that it loads pre-event slate.
 
-## Step 4 - Broadcast a Live Event
+## Step 4 - Broadcast a Live Event  {/*step-4*/}
 
 Broadcast a live event through the Live Events Dashboard.
 
@@ -1342,7 +1342,7 @@ Broadcast a live event through the Live Events Dashboard.
 
 7. Monitor the live stream to identify the ending point of the live event and then stop it by clicking **Stop Event** twice.
 
-## Step 5 (Optional) - Stream the Live Event as On-Demand Content
+## Step 5 (Optional) - Stream the Live Event as On-Demand Content  {/*Step-5*/}
 
 Upon completing your live event, it will be added to the CMS library. This allows the live event to be played back as on-demand content using the playback URL, test players, or HTML embed code associated with the live event or the VOD asset generated from it.
 
@@ -1350,7 +1350,7 @@ Upon completing your live event, it will be added to the CMS library. This allow
 
 The CameraSlicer (Mac Only) application allows live event streaming by capturing content from local hardware and sending it to the cloud for encoding.
 
-### Minimum System Requirements
+### Minimum System Requirements  {/*minimum-system-requirements*/}
 
 The minimum system requirements for the computer hosting the CameraSlicer are provided below.
 
@@ -1364,11 +1364,11 @@ The minimum system requirements for the computer hosting the CameraSlicer are pr
 | Audio/Video Source | Audio/video hardware must be installed on the computer hosting the CameraSlicer.<br />The CameraSlicer may also recognize audio/video hardware-emulators (e.g., ManyCam). |
 | Ports | Outbound connections on 80 and 443 |
 
-### Set up Firewall
+### Set up Firewall  {/*set-up-firewall*/}
 
 The CameraSlicer relies on ports 80 and 443 to communicate with our services and to upload encrypted slices for encoding. Please make sure to configure the firewall shielding the computer hosting the CameraSlicer to allow outbound connections on these ports.
 
-### Install CameraSlicer
+### Install CameraSlicer  {/*install-cameraslicer*/}
 
 Installation instructions for the CameraSlicer are provided below.
 
@@ -1376,13 +1376,13 @@ Installation instructions for the CameraSlicer are provided below.
 
 2. Unzip the archive and move the CameraSlicer application to the Applications folder.
 
-### Open the CameraSlicer Application
+### Open the CameraSlicer Application  {/*open-cameraslicer*/}
 
 Open the CameraSlicer application by double-clicking it from the Applications folder.
 
 <Tip>If the CameraSlicer application cannot be opened as a result of a security configuration, try opening it while holding down the Control key.</Tip>
 
-### Use the CameraSlicer to Stream a Live Event
+### Use the CameraSlicer to Stream a Live Event  {/*use-cameraslicer-to-stream*/}
 
 The CameraSlicer (Mac only) provides a simplified alternative to the Live Slicer for live event streaming. However, it does not support the following features:
 
@@ -1439,7 +1439,7 @@ The CameraSlicer (Mac only) provides a simplified alternative to the Live Slicer
 10. Identify the starting point for the live event through the live preview and then click **Begin Event**.
     If prompted, allow the CameraSlicer application to accept incoming network connections.
 
-## C. Insert an Ad Break
+**C. Insert an Ad Break**
 
 1. Under the **Ad Break** section, assign an estimated ad break duration in minutes and seconds.
 
@@ -1449,7 +1449,7 @@ The CameraSlicer (Mac only) provides a simplified alternative to the Live Slicer
 
 4. Click **Finish Event** to end the live event.
 
-### Wizard Steps
+### Wizard Steps  {/*wizard-steps*/}
 
 The CameraSlicer provides a wizard that steps you through its configuration. This wizard consists of the following steps:
 
@@ -1458,7 +1458,7 @@ The CameraSlicer provides a wizard that steps you through its configuration. Thi
 3. [Setup](#setup): Define the audio/video source and the quality of the stream to be generated.
 4. [Broadcast](#broadcast): Define ad breaks and mark the end of the live event.
 
-#### Authentication
+#### Authentication  {/*authentication*/}
 
 Upon loading the CameraSlicer app, it will prompt for CMS credentials. It will use these credentials to communicate with our services and to upload content.
 
@@ -1468,7 +1468,7 @@ Once valid credentials have been provided, the CameraSlicer will display a list 
 
 <Info>The CameraSlicer will only list live events whose status is set to "Pre-Event."</Info>
 
-#### Setup
+#### Setup  {/*setup*/}
 
 Define the following settings through this step:
 
@@ -1490,7 +1490,7 @@ Learn more.
 
 - Viewers may request a live event before the CameraSlicer starts capturing and slicing audio/video. Pre-event content will be streamed to those viewers.
 
-#### Broadcast
+#### Broadcast  {/*broadcast*/}
 
 This step:
 
@@ -1498,7 +1498,7 @@ This step:
 - Allows ad breaks to be added to the live event.
 - Allows the live event to be completed.
 
-##### Ad Breaks
+##### Ad Breaks  {/*ad-breaks*/}
 
 Ad breaks may be manually inserted into a live event through the following actions:
 
@@ -1516,10 +1516,10 @@ Ad breaks may be manually inserted into a live event through the following actio
 
 - Define the asset that will be streamed on a loop for ad slate through the Ad Slate option. View this option by clicking the tab with the gears icon and then clicking **Live** from the **Advanced** pane on the left-hand side of the window.
 
-#### Finish Event
+#### Finish Event  {/*finish-event*/}
 
 Upon reaching the end of the live event, click **Finish Event** to toggle the status of the live event to "Complete." This action completes the live event and prepares it for on-demand viewing.
 
-## More Information
+## More Information  {/*more-information*/}
 
 [Media Player Setup](/uplynk/deliver/media_player)

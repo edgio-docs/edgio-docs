@@ -168,7 +168,7 @@ Manage virtual linear playlists through the [Virtual Linear Playlist API](https:
 
 - Use the virtual linear playlist's `skip_drm` property to determine whether a [digital signature](#signing-playback-urls-with-token) is required. This property overrides an asset's Require a token for playback setting.
 - Use the virtual linear playlist's `studio_drm_required` property to determine whether it will be protected by [Studio DRM](/uplynk/manage/content_protection/studio_drm). This property overrides an asset's Require studio approved DRM for playback setting.
-- If you plan on implementing a timeline within your player, use the dmm.schemas.top and pltl query string parameters to include timeline data within the manifest. [Learn more](/uplynk/deliver/playback_urls#general_parameters).
+- If you plan on implementing a timeline within your player, use the dmm.schemas.top and pltl query string parameters to include timeline data within the manifest. [Learn more](/uplynk/deliver/playback_urls/customize_playback_via_parameters#general_parameters).
 
     <Info>The `pltl` query string parameter is optional for Smartstart-enabled assets.</Info>
 - [Learn more about virtual linear playlists and Smartstart](/uplynk/manage/assets/virtual_linear_playlist_and_smartstart).

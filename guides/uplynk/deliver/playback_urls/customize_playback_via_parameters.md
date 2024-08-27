@@ -49,15 +49,3 @@ This section describes all customization parameters that are not specific to ad 
 | show_vtt   | **HLS Live Streams Only** <br /> Set to `1` to [enable WebVTT for HLS live streams](/uplynk/acquire/captions_and_subtitles#webvtt). <br />**Example**: `show_vtt=1`       |
 | smartcic   | **DASH Live Streams Only** <br /> Set to `1` to prepend a codec initialization clip only when the main content contains WebVTT subtitles.  [Learn more](/uplynk/acquire/captions_and_subtitles#fragmented-ttl)<br />**Example**: `smartcic=1`     |
 | srs  | **DASH Only** <br /> Determines how media segment start times and duration are represented in a DASH manifest. Valid values: `template`, `templatetimeline`, `tizentemplate`, `list`. <br /> Default value (DASH Live Streams): `templatetimeline`, Default (DASH VOD Streams): `template` |
-| sstart     | Sets the starting point for playback in slice numbers (0-based). <br />**Example**: `sstart=15` to start playback at the 16th slice.      |
-| sstop| Sets the stopping point for playback in slice numbers (0-based). <br />**Example**: `sstop=20` to stop playback after the 21st slice.       |
-| start| Sets the playback start offset in seconds, rounded down to the nearest slice boundary. <br />**Example**: `start=95.3` to start at the slice containing the 95.3 second.   |
-| staticomsdk| Set to `1` to insert a static JSON payload into the manifest for ad verification workflow testing. <br />**Example**: `staticomsdk=1`       |
-| stop | Sets the playback stop time in seconds, rounded up to the nearest slice boundary. <br />**Example**: `stop=110.9` to stop playback after the slice containing the 110.9 second. |
-| subtitle_placeholders_off | Set to `1` to display only available language tracks, overriding the `dash_subtitles_merge` parameter. <br />**Example**: `subtitle_placeholders_off=1`      |
-| thumbsray  | Set to `1` to include trick play thumbnails in the manifest file. <br />**Example**: `thumbsray=1`   |
-| timedmeta.events.ads | Inserts tracking events from the ad response into the manifest file. Use a comma to delimit each event. <br />**Example**: `timedmeta.events=complete,midpoint`  |
-| timedmeta.extensions.ads | Inserts custom VAST extensions from the ad response into the manifest file. Use a comma to delimit each extension. <br />**Example**: `timedmeta.extensions=waterfall,geo`      |
-| timedmeta.schemas.ads | Set to `omsdk` to insert ad viewability data into the manifest file. <br />**Example**: `timedmeta.schemas.ads=omsdk`    |
-| ts   | Sets the start time for playback in Unix time. This feature cannot be used any farther back in time than the schedule and assets for the linear stream exist.<br />**Example**: `ts=1368529129` for playback starting at 2013-05-14 10:58:49 UTC|
-| up.max_concurrent_sessions | Limits the number of concurrent sessions to the specified value. Specify the `opaqueid` parameter to limit the number of concurrent sessions by viewer. | Limit the number of concurrent sessions for the viewer identified by the `opaqueid` parameter to 2: `up.max_concurrent_sessions=2` |

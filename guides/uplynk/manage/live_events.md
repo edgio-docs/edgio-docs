@@ -204,7 +204,7 @@ A live event must be scheduled before it can be broadcasted. At its core, settin
 
 8. Optional. From the **Pod Format** tab, define the ad pods that will be associated with the live event.
 
-    [**Add a Set of Ad Pods by Importing a CSV File**](#add-a-set-of-ad-pods-by-importing-a-csv-file)
+    [**Add a Set of Ad Pods by Importing a CSV File**](#add-a-set-of-ad-pods-csv)
 
     [**Manually Define Ad Pods**](#manually-define-ad-pods)
 

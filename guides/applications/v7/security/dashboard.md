@@ -291,7 +291,7 @@ Filter the {{ PRODUCT_SECURITY }} dashboard by clicking on a top entry for a par
 
 ## Log Events {/*log-events*/}
 
-{{ PRODUCT }} provides log data for recent events within the {{ PORTAL }}. Use this log data to analyze specific requests that were flagged as violations of your security configuration.
+{{ PRODUCT }} provides log data for recent events within the **Log Events** section of the {{ PRODUCT_SECURITY }} dashboard. Use this log data to analyze specific requests that were flagged as violations of your security configuration.
 
 **To view recent event logs**
 1.  Navigate to the **Dashboard** page.

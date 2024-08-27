@@ -17,7 +17,7 @@ Each configuration in the list includes this information:
 | Number of configurations and configuration names | Customer-assigned configuration name. |
 | SHORTNAME | Currently selected account name. |
 | SERVICE TYPE | Delivery service for which logs will be created. (HTTP or MMD Live Ingest). |
-| DESTINATION | Log file location:<br /> - Origin Storage: Logs are stored at the root of your space in a directory called '_livelogs'. You are responsible for data maintenance; is not responsible for data removal.<br /><br /> Amazon S3: Amazon's cloud-based object storage.<br /> - Google Cloud Storage: Google's cloud-based object storage.<br /> - Datadog: A third-party storage option with existing account. |
+| DESTINATION | Log file location:<br /> - **Origin Storage**: Logs are stored at the root of your space in a directory called '_livelogs'. You are responsible for data maintenance; is not responsible for data removal.<br /> - **Amazon S3**: Amazon's cloud-based object storage.<br /> - **Google Cloud Storage**: Google's cloud-based object storage.<br /> - **Datadog**: A third-party storage option with existing account. |
 | DATA COMPRESSION | File compression method. Possible values:<br /> - ZSTD<br /> - LZ4<br /> - SNAPPY <br /> - LZF (Edgio's LZ4 implementation uses the LZ4 (Framed) compression algorithm.) <br /> - GZIP |
 | STATE| Identifies whether the configuration is actively used, suspended, etc.|
 |STATUS | Configuration status. When you create and save a configuration, it goes through a validation process. Possible status values:<br /> - In Progress<br /> - Pending<br /> - Completed <br /> - Failed <br /> - Deactivated |
@@ -71,7 +71,7 @@ You can add, remove, and reorder active log fields. You can also add static fiel
 
 Drag and drop individual fields to reorder them.
 
-### Work with Static Fields
+### Work with Static Fields {/*work-with-static-fields*/}
 
 Static fields are user-defined fields with a value that does not change.
 
@@ -183,7 +183,7 @@ LDS supports log data streaming to a custom HTTPS endpoint using POST requests.
 | Field | Description |
 |---|---|
 | URL |  HTTPS URL that accepts POST requests. |
-| AUTHORIZATION HEADER VALUE | (optional) Authorization header value to use when sending logs. (e.g., 'Basic <Base64 encoded username and password>', 'Bearer <Your API key>') |
+| AUTHORIZATION HEADER VALUE | (optional) Authorization header value to use when sending logs. (e.g., 'Basic \<Base64 encoded username and password\>', 'Bearer <Your API key>') |
 | CUSTOM HEADER NAME | (optional) Custom HTTP header name to use when sending logs. (Content-Type, Encoding, Authorization, Host are not supported). |
 | CUSTOM HEADER VALUE | (optional) Custom HTTP header value to use when sending logs. |
 ### Datadog  {/*enabling-log-delivery-to-datadog*/}
@@ -308,8 +308,6 @@ Origin Storage must be enabled for the name selected in the SHORTNAME.
 | STORAGE ACCOUNTS | The Origin Storage account where you want to store logs. By default logs are stored under the same account that owns LDS configuration |
 
 
-
-
 ## Sampling Data  {/*sampling-data*/}
 
 [Data Sampling](/images/delivery/data-sampling.png)
@@ -325,10 +323,6 @@ Origin Storage must be enabled for the name selected in the SHORTNAME.
     - Any value in between represents the percentage of log lines to be delivered.
 
 2. The specified percentage is displayed above the circle.
-
-
-
-
 
 ## Personally Identifiable Information  {/*working-with-personally-identifiable-information*/}
 

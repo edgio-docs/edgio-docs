@@ -97,12 +97,22 @@ The `logs` array contains an object for each log entry associated with the curre
 
 -   **stack_trace (*String*):** Stack trace. (Category: Application) Contains the stack trace triggered by the request.
 -   **dri_data (*String*):** DRI data. (Category: Application) Describes the request logged by Deep Request Inspection through the following fields:
+
+        -   **bodyLength:**
+        -   **bodyTruncated:**
+
         -   **headers:** Contains request headers.
+        
+        -   **host:** 
+        
         -   **method:** Indicates the request's HTTP method (e.g., `GET`, `HEAD`, and `POST`).
         -   **path:** Indicates the URL path for the content that was requested, posted, or deleted. This URL, which excludes the query string, is reported as a relative path that starts directly after the hostname.
         -   **protocol:** Indicates the request's scheme. Valid values are:
 
             `http: | https:`
+
+        -   **statusCode:**
+        -   **statusMessage:**
 
 -   **message (*String*):** Log message. (Category: Application) Contains a console message triggered by the request.
 -   **source (*String*):** Source. (Category: Application) Indicates whether the source of the log message is due to the application or Deep Request Inspection (DRI). Valid values are:

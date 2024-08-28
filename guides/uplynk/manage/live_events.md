@@ -1462,7 +1462,7 @@ The CameraSlicer provides a wizard that steps you through its configuration. Thi
 
 Upon loading the CameraSlicer app, it will prompt for CMS credentials. It will use these credentials to communicate with our services and to upload content.
 
-#### Select Event Step
+#### Select Event Step  {/*select-event*/}
 
 Once valid credentials have been provided, the CameraSlicer will display a list of the live events to which it can publish content. Select the desired live event and then click Next.
 

@@ -332,9 +332,9 @@ Our system automatically hosts a playback page and signs playback URLs under the
 
 Define what will be signed and the digital signature through the following query string parameters:
 
-- [Core identification parameters](#core-identification-parameters): Include these required parameters in order to identify playback content, its owner, and the playback window.
+- [Core identification parameters](#cus): Include these required parameters in order to identify playback content, its owner, and the playback window.
 
-- [Customization parameters](#customization-parameters): Include these optional parameters to customize how content playback is handled.
+- [Customization parameters](/uplynk/deliver/playback_urls/customize_playback_via_parameters): Include these optional parameters to customize how content playback is handled.
 - [Signature parameter](signature-parameter): Append the `sig` parameter to the end of the query string to digitally sign the playback URL based off of the specified core identification and customization parameters.
 
 **Syntax**:<br />`{Playback URL}?{Core Identification Parameters}&{Optional Customization Parameters}&sig={Signature}`

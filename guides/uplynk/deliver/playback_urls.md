@@ -261,7 +261,7 @@ Generate a playback URL for a live event by including its event ID.
 
 `https://content.uplynk.com/event/f21c3336c35f47baa59345e2879b6edb.m3u8`
 
-### External ID (Event)  {/*external-id*/}
+### External ID (Event)  {/*external-id-event*/}
 
 A playback URL may be constructed by including both of the following values:
 
@@ -352,7 +352,7 @@ The following core identification parameters must be specified:
 | rn      | Defines a random number that increases the uniqueness of the signature.| `rn=4114845747`|
 | ct      | Identifies the type of content that will be played back. Valid values are: `a` for Asset, `c` for Live channel, `e` for Live event, `p` for Virtual linear playlist (including Smartstart-enabled assets). | `ct=a`|
 | cid     | Identifies an asset, channel, live event, or virtual linear playlist via one of the following methods: <br /> - **System-defined ID (GUID):** Set the `cid` parameter to an [asset ID](#asset-id), [channel ID](#channel-id), [event ID](#event-id), or [playlist ID](#virtual-linear-playlists). <br /> - **External ID:** Set both `eid` and `oid` parameters. | `cid=ea10fa402fec4bbe996019a0827e6c37` |
-| eid & oid | **External ID:** <br /> - `eid`: Set this parameter to the external ID for the desired [asset](#asset-id), [live channel](#external-id-channel), or [live event](#external-id-asset). <br /> - `oid`: Set this parameter to your user ID. Specify your own user ID regardless of whether the content resides in your CMS library or one shared with you. [User IDs defined within the actual playback URL](#external-id-asset) for content in a shared library should still identify the user that shared the content with you. Find your user ID via [User Settings](https://cms.uplynk.com/static/cms2/index.html#/settings/) > **Settings** > **User Settings**.| `...&eid=puppycampaign1234&oid=`<br />`ab233951a92b88a1a123cdd49b0a9be5` |
+| eid & oid | **External ID:** <br /> - `eid`: Set this parameter to the external ID for the desired [asset](#asset-id), [live channel](#channel-id), or [live event](#external-id-event). <br /> - `oid`: Set this parameter to your user ID. Specify your own user ID regardless of whether the content resides in your CMS library or one shared with you. [User IDs defined within the actual playback URL](#external-id-asset) for content in a shared library should still identify the user that shared the content with you. Find your user ID via [User Settings](https://cms.uplynk.com/static/cms2/index.html#/settings/) > **Settings** > **User Settings**.| `...&eid=puppycampaign1234&oid=`<br />`ab233951a92b88a1a123cdd49b0a9be5` |
 
 ##### Core Identification Parameter Examples  {/*core-id-parameters*/}
 

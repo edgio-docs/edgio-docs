@@ -146,7 +146,7 @@ The first ad break in this sample scenario is for a 60 second ad spot. An ad ser
 
 Each subsequent ad break causes the viewer to fall further behind as indicated in the **Playback Drift** column. After the sixth ad break, playback drift is at 19.42 seconds. After the second ad in the seventh ad break, there will only be 16.67 seconds left in the ad break. Playback drift now exceeds the amount of time left in the ad break (i.e., 19.42 seconds > 16.67 seconds). As a result, this triggers the end of the ad break, all remaining ads will be dropped, and the stream will cut back over to content. Ending the ad break early allows the player to recover 12.67 seconds and thus reduces playback drift to 6.75 seconds.
 
-### Chopping and Dropping Ads {/*chopping-and-dropping-ads*/}
+### Chop and Drop Ads {/*chopping-and-dropping-ads*/}
 
 By default, an entire ad is played regardless of whether it exceeds an ad break's duration. Use the following query string parameters to override this behavior:
 
@@ -168,7 +168,7 @@ https://content.uplynk.com/ext/1/myasset.m3u8?tc=1&exp=1358341863&rn=4114845747&
 
 <Tip>A digital signature should be applied to the above URL.</Tip>
 
-### Ad Break Duration Calculation  {/*ad-break-duration-calculation*/}
+### Calculate Ad Break Duration  {/*ad-break-duration-calculation*/}
 
 As mentioned above, you may define the duration of each ad break via ad pods and boundaries. However, if you enable either the chopping or dropping of ads, then ad break duration will be automatically adjusted to account for playback drift using the following formula:
 

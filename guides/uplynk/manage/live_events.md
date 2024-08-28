@@ -829,7 +829,7 @@ The following live event information may be viewed at any time after entering th
 - Pre-event slate: A live event's pre-event slate may be changed from this tab prior to the start of the live event.
 
 - Metadata associated with the live event configuration
-- Audit log data that tracks major events (e.g., event creation, source switching, event started/ended, etc.). Audited events may be posted to your web server. [Learn more](#status-reporting).
+- Audit log data that tracks major events (e.g., event creation, source switching, event started/ended, etc.). Audited events may be posted to your web server. [Learn more](#live-event-status-reporting).
 
 ### Resume a Live Event  {/*resume-a-live-event*/}
 

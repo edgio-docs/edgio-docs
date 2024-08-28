@@ -709,7 +709,7 @@ If the live event has been [scheduled and configured to automatically start/stop
      - Close the source and audience view by clearing the **Slicer Live Preview** and **Audience View** options from the View menu.
    - Optional: Publish your live event to one or more social media platforms.
 
-7. Optional. [Publish your live event](#syndication) to one or more social media platforms.
+7. Optional. [Publish your live event](#syndication-publishing) to one or more social media platforms.
 
 8. **Manage Ad Breaks and Slate Content:**
 
@@ -749,7 +749,7 @@ The **Live Events** Dashboard contains a test mode that allows an operator to va
 
 <Info>Testing mode is designed to replicate the experience that a viewer will have when streaming a live event. However, viewers attempting playback prior to the start of the live event will only see pre-event slate.</Info>
 
-<Info>Determine whether live event testing is mandatory through the **Require testing before a live event** can be started option which can be found under the **Additional Configuration Settings** section of the [Live Events page](https://cms.uplynk.com/static/cms2/index.html#/settings/live-events).</Info>
+<Info>Determine whether live event testing is mandatory through the **Require testing before a live event** can be started option which can be found under the **Additional Configuration Settings** section of the [Live Events](https://cms.uplynk.com/static/cms2/index.html#/settings/live-events) page.</Info>
 
 
 **Test a Live Event**

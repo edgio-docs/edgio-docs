@@ -303,7 +303,7 @@ Control how and when content is consumed by informing our system when playback s
 
     - **Asset**: Select the desired asset from the [Content tab](https://cms.uplynk.com/static/cms2/index.html#/content) and then click the **Playback** tab.
     - **Live Channel**: Select the desired live channel from the **Live Channels** tab and then click the **Playback** tab.
-    - **Live Event**: Open the desired live event from the [**Live Events** page](https://cms.uplynk.com/static/cms2/index.html#/live-events/events) and then click the Config tab.
+    - **Live Event**: Open the desired live event from the [**Live Events**](https://cms.uplynk.com/static/cms2/index.html#/live-events/events) page and then click the Config tab.
 2. Toggle the state of the **Require a token for playback** option to determine whether the playback URL must be signed.
 3. Click **Save**.
 

@@ -105,7 +105,7 @@ Apply a Studio DRM policy to a playback session by including one or more of the 
 
     **Example:** `...&drm_policy_name=widevine1`
 
-- **Individual Policy Settings**<br />Apply individual policy settings to a playback session by specifying each desired [FPS](#fps) or [DASH](#dash) ([Widevine](#google-widevine) and [PlayReady](#playready)) policy setting.
+- **Individual Policy Settings**<br />Apply individual policy settings to a playback session by specifying each desired [FPS](#fps) or [DASH](#dash) ([Widevine](#google-widevine) and [PlayReady](#microsoft-playready)) policy setting.
 
     <Info>All specified Studio DRM policies will be applied to the playback session. However, explicitly defined policy settings (e.g., &ck=1) take precedence over a Studio DRM policy configuration (drm_policy_name).</Info>
 

@@ -1027,7 +1027,7 @@ The HTTP POST request body will contain the following properties:
 | event_id | String | Indicates the system-defined ID for the event that took place. |
 | external_id | String | Identifies the asset associated with this event by its external ID. |
 | metatdata | Object | Contains a key-value pair for each metadata field associated with the event. |
-| state | String | Indicates the state of the live event at the point in time at which the event took place.<br />Valid values are:<br />`pre \| live \| resume \| post \| complete`<br />[Learn more](#slate). |
+| state | String | Indicates the state of the live event at the point in time at which the event took place.<br />Valid values are:<br />`pre \| live \| resume \| post \| complete`<br />[Learn more](#state). |
 | testing_complete | Integer | Indicates the date and time at which live event testing was completed. A null value is reported when live event testing had not been completed at the point in time at which the event took place. |
 | testing_start | Integer | Indicates the date and time at which live event testing was started. A null value is reported when live event testing had not been started at the point in time at which the event took place. |
 | timestamp | Integer | Indicates the date and time, in Unix time (milliseconds), at which the event took place. |

@@ -701,7 +701,7 @@ If the live event has been [scheduled and configured to automatically start/stop
 
 5. [Test the live event](#test-a-live-event) via the Live Events Dashboard. This step may be skipped by removing the live event testing requirement from the Live Events page.
 
-6. **[Start the Live Event](#start-stop-a-live-event):**  Monitor the live stream to identify the starting point of the live event and then start the live event from the Live Events Dashboard.
+6. **[Start the Live Event](#start-stop-live-event):**  Monitor the live stream to identify the starting point of the live event and then start the live event from the Live Events Dashboard.
 
    **Best Practices:**
    - If you are monitoring multiple live events, consider performing the following steps to reduce CPU usage:

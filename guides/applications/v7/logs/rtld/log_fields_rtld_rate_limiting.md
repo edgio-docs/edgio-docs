@@ -78,6 +78,7 @@ The `logs` array contains an object for each log entry associated with the curre
 -   **limit_start_timestamp (*Integer*):** Rate Limiting Action Start Epoch. (Category: Security Configuration) Indicates the timestamp, in Unix time (milliseconds), at which the enforcement of the rate limit started.
 -   **method (*String*):** Request Method. (Category: Request) Indicates the request's HTTP method (e.g., `GET`).
 -   **referer (*String*):** Referer. (Category: Request Header) Indicates the `Referer` header value sent in the client's request to the CDN. This header reports the URL of the site from which the request originated.
+-   **rtld_profile_name (*String*):** RTLD Profile Name. (Category: General) Indicates the name of the RTLD profile.
 -   **scope_id (*String*):** Scope ID. (Category: Security Configuration) Indicates the system-defined ID of the Security Application Manager configuration that enforced the rate limit.
 -   **scope_name (*String*):** Scope Name. (Category: Security Configuration) Indicates the name of the Security Application Manager configuration that enforced the rate limit.
 -   **timestamp (*Decimal*):** Timestamp. (Category: Response) Indicates the Unix time, in seconds, at which an edge server delivered the requested content to the client.

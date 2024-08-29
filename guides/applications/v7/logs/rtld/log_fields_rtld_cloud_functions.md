@@ -116,6 +116,7 @@ The `logs` array contains an object for each log entry associated with the curre
 
 -   **stack_trace (*String*):** Stack trace. (Category: Application) Contains the stack trace triggered by the request.
 -   **timestamp (*Decimal*):** Timestamp. (Category: Request) Indicates the Unix time, in seconds, at which the request was submitted.
+
     **Syntax:** `<SECONDS>.<MICROSECONDS>`
 
 ## Sample Log Data {/*sample-log-data*/}

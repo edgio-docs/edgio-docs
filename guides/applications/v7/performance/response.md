@@ -428,23 +428,23 @@ Valid values are:
 - **wg**: Cloud worker age - Indicates the amount of time, in milliseconds, that the instance of the cloud worker that processed the request has been running.
 - **wl**: Cloud worker lifetime - Indicates the total processing time, in milliseconds, for all cloud workers for all requests.
 
-Starting with @edgio/core version 7.12.12, you can also start seeing the following metrics in the `{{ HEADER_PREFIX }}-t` response header that are used for internal monitoring and debugging purposes:
-- **hid**: Cloud worker handler ID - The unique ID of the Cloud worker handler that processed the request. The Cloud worker handler component is responsible for supervising Cloud worker server instance, proxying the request to the server and managing resources.
+Starting with @edgio/core version 7.12.x, you can also see the following metrics in the `{{ HEADER_PREFIX }}-t` response header that are used for internal monitoring and debugging purposes:
+- **hid**: Cloud worker handler ID - The unique ID of the Cloud worker handler instance that processed the request. The Cloud worker handler component is responsible for supervising Cloud worker server instance, proxying the request to the server and managing resources. The ID is same for all requests served by the same Cloud worker. The number of Cloud workers scales up/down based on the traffic.
 - **hlt**: Cloud worker handler lifetime - The total time in milliseconds this handler instance exists.
 - **hrc**: Cloud worker handler requests count - The number of requests this handler instance processed.
-- **hec**: Cloud worker handler errors count - The number of errors this handler instance encountered (errors with level 1). For example 540 - Edgio Out of Resources error.
+- **hec**: Cloud worker handler errors count - The number of errors this handler instance encountered (errors with level 1). For example 540 - Edgio Out of Resources error or 549 - Edgio Project Crashed.
 - **hrss**: Cloud worker handler resident set size - The amount of memory in MiB occupied by the code segment, heap and stack of this handler instance.
 - **ht**: Cloud worker handler time - The total time in milliseconds this handler instance spent from receiving the request, proxying request, fetching response and sending the response back to client.
 - **hcs**: Cloud worker handler cold-start - True if this handler instance was started for the first time for this request, false otherwise.
-- **hcst**: Cloud worker handler cold-start time - The value of `ht` metric for the first request where `hcs` value was true.
-- **sid**: Cloud worker server ID - The unique ID of the Cloud worker server instance that processed the request. The Cloud worker server component is responsible for importing your application code, starting your app (for example Next.js) and executing your compute functions. This ID will change on each crash or cold-start of your application.
+- **hcst**: Cloud worker handler cold-start time - The captured value of `ht` metric from the first request where `hcs` value was true.
+- **sid**: Cloud worker server ID - The unique ID of the Cloud worker server instance that processed the request. The Cloud worker server component is responsible for importing your project code, starting your app (for example Next.js) and executing your compute functions. This ID will change for same Cloud worker every time your project needs to be restarted because of fatal error.
 - **slt**: Cloud worker server lifetime - The total time in milliseconds this server instance exists.
-- **src**: Cloud worker server requests count - The number of requests this server instance processed.
-- **sec**: Cloud worker server errors count - The number of errors this server instance encountered (errors with level 2). For example top-level uncaught errors in your application that will result in 534 - Edgio Project Error.
+- **src**: Cloud worker server requests count - The number of requests this server instance processed. This number equals to `hrc` metric value unless your project was restarted because of a fatal error.
+- **sec**: Cloud worker server errors count - The number of errors this server instance encountered (errors with level 2). For example top-level uncaught errors in your project that will result in 534 - Edgio Project Error.
 - **srss**: Cloud worker server resident set size  - The amount of memory in MiB occupied by the code segment, heap and stack of this server instance and your application.
 - **st**: Cloud worker server time  - The total time in milliseconds this server instance spent from receiving the request to sending the response back to Cloud worker handler. For example if you have a Next.js application, this means the time it took Next.js server to return response.
 - **scs**: Cloud worker server cold-start - True if this server instance was started for the first time for this request, false otherwise.
-- **scst**: Cloud worker server cold-start time - The value of `st` metric for the first request where `scs` value was true.
+- **scst**: Cloud worker server cold-start time - The captured value of `st` metric from the first request where `scs` value was true.
 - **srt**: Cloud worker server ready time - The time in milliseconds it took from spawning the server instance to the moment it was ready to process requests on Cloud worker server cold-start.
 - **art**: Application ready time - The time in milliseconds it took to import your application code and start your app (for example Next.js) on Cloud worker server cold-start.
 

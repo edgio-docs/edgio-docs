@@ -526,6 +526,8 @@ If you want to change protocol sets, see [Changing Protocol Sets](/delivery/cont
   {{CONTROL}}.
 </Callout>
 
+<Tip>To clone a linked configuration, refer to [Cloning a Linked Configuration](#cloning-a-linked-config)</Tip>
+
 ## Deleting a Configuration {/*deleting-a-configuration*/}
 
 Users are not able to delete configurations. For more information, see [Read-Only and Hidden Capabilities](#read-only-and-hidden-capabilities).
@@ -545,9 +547,9 @@ To revert to a previous configuration:
 
 Use this feature to establish and remove a link between two configurations, designating one as Staging and the other as Production. This allows you to push updates from the Staging config to the Production configuration.
 
-### Link an Existing Configuration {/*linking-existing*/}
+<Tip>The configuration selected as **PROD** is overridden with the **Staging** configuration structure</Tip>
 
-
+### Linking an Existing Configuration {/*linking-existing*/}
 
 1. Click the chain link icon at the bottom right of the configuration.
 2. In the **Link PROD config** section, click **Search existing**.
@@ -555,10 +557,36 @@ Use this feature to establish and remove a link between two configurations, desi
 4. Optional. Review the configuration by clicking the **VIEW CONFIG** button.
 5. Click **Link**.
 
-### Link a New Configuration {/*linking-new*/}
+### Linking a New Configuration {/*linking-new*/}
 
 1. Click the chain link icon at the bottom right of the configuration.
 2. In the **Link PROD config** section, click **Create new**.
 3. Fill out the **PUBLISHED HOSTNAME** and **PUBLISHED PATH** fields.
 4. Optional. To sync a different source/ host path, untick that option and enter a **SOURCE HOSTNAME** and **SOURCE PATH**.
 5. Click **Link**.
+6. The configuration selected as **PROD** is overridden with the **Staging** configuration structure, and you receive a confirmation message: "By linking this configuration, all current settings for this record will be destroyed and replaced by those on the linked staging configuration. Are you sure you want to continue with linking these two configurations?"
+7. Upon successful linking, you receive a message with the UUIDs and links to Staging and PROD configs.
+
+### Editing a Linked Configuration  {/*editing-a-linked-config*/}
+
+**When configurations are linked**
+- The **Edit** button is disabled for PROD configs and basic users cannot edit. Control admin permissions are required to edit PROD configurations via SSUI.
+
+- ServiceProfiles and Protocol sets cannot be changed for the linked Staging and PROD configs.
+
+**To update a PROD configuration**
+- **Basic users** can update the Staging configuration and push change to PROD via the **sync link** button in the toolbar.
+- Control admins can edit a PROD configuration via SSUI or push changes both ways (PROD \> Staging, Staging \> PROD).
+
+### Cloning a Linked Configuration  {/*cloning-a-linked-config*/}
+
+You can clone both Staging and PROD linked configurations without limitation.
+
+<Tip>The cloned configuration is created as a normal configuration, and is not linked to any other configuration by default</Tip>
+
+### Reverting a Linked Configuration
+
+A **PROD** config cannot be reverted. You will see the message:
+"This configuration record is the Production side of a ‘Prod-Stage’ linked relationship, and so it cannot be updated directly. Please navigate to the associated Staging configuration, make necessary updates there, and then synchronize those changes to this configuration."
+
+A **Staging** config can only be reverted to a version that has the **linkProdStage** structure. Once you link a configuration, it can only be reverted to a linked configuration; it cannot be linked to the source configuration.

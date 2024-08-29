@@ -284,6 +284,7 @@ The `logs` array contains an object for each log entry associated with the curre
     The `path` field always reports the requested URL's relative path, while `rewritten_path` reports the relative path after the [URL has been rewritten](/applications/performance/rules/features#rewrite-url).
 
 -   **rl_alert (*Integer*):** RL Alert. (Category: Response) Returns `1` for a request that violated a rate rule whose enforcement action is `Alert only`. Otherwise, returns `0`.
+-   **rtld_profile_name (*String*):** RTLD Profile Name. (Category: General) Indicates the name of the RTLD profile.
 -   **scheme (*String*):** Scheme. (Category: Request) Indicates the request's scheme. Valid values are: `http | https`
 -   **server_ip (*String*):** Edge Server IP Address. (Category: Network) Indicates the IP address for the edge server that processed the request.
 -   **server_port (*Integer*):** Edge Server Port. (Category: Network) Indicates the port number on an edge server to which the client directed a request. Valid values are:

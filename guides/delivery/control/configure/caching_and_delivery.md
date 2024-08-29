@@ -25,7 +25,7 @@ The following information is shown for each configuration:
 - **Protocol** - The level of HTTP protocol security to use when delivering your cached content to end-users
 - **Published Path** - The URL path, if any, to use with the Published Host
 
-## Filtering the List of Configurations {/*filtering-the-list-of-configurations*/}
+## Filter the List of Configurations {/*filtering-the-list-of-configurations*/}
 
 Use the **Filter by** dropdown menu and the filter text field to filter the list by specific fields:
 
@@ -59,7 +59,7 @@ Hidden fields are masked with asterisks.
 
 Users can edit, clone, and revert the configuration.
 
-## Creating a New Configuration {/*creating-a-new-configuration*/}
+## Create a New Configuration {/*creating-a-new-configuration*/}
 
 To create a new configuration, click the **+ new** button, and the Create configuration screen will be displayed.
 
@@ -374,17 +374,17 @@ If a user is editing a configuration, then the field is visible and enabled depe
 
 ### Logging {/*logging*/}
 
-| Setting            | Information Requested                                                                      | Purpose                                                                                                                                                  | Selecting the Right Option                                                                                                                                                                                                                                                                                                        |
-| ------------------ | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Setting| Information Requested| Purpose| Selecting the Right Option|
+| ------------------ | --------- | ------- | ------ |
 | Log cookies        | Whether you want Content Delivery to stop saving cookie information in your log files      | If you process log files and don’t need the information in the Cookie header, you may want to remove it to simplify processing and reduce log file size. | If you know you need Cookie header information in your log files, check the **Log cookies** checkbox. Otherwise, leave it unchecked. <br /> When this setting is enabled, Content Delivery logs all Cookie header information, up to a maximum of 8 KB for the entire header (regardless of the number of cookies in the header). |
-| Log request header | Whether you wantContent Delivery tostart saving specific Request Headers in your log files | If you process log files and need access to information in the Request Headers, you may want to enable this option                                       | If you know you need Request Header information in your log files, check the **Log Request Header** checkbox and enter the names of the specific headers to log. Otherwise, leave it unchecked.                                                                                                                                   |
+| Log request header | Whether you wantContent Delivery tostart saving specific Request Headers in your log files | If you process log files and need access to information in the Request Headers, you may want to enable this option                                       | If you know you need Request Header information in your log files, check the **Log Request Header** checkbox and enter the names of the specific headers to log. Otherwise, leave it unchecked.|
 
 ### Cookie Handling {/*cookie-handling*/}
 
 {{EDGEPRISM}} issues a `Set-Cookie` header whenever it receives a request that has a specified query parameter. This feature provides a way for a cookie to be set with the query string sent in a request URL. You can create a configuration by entering values into the fields provided.
 
-| Field                   | Description                               |
-| ----------------------- | ----------------------------------------- |
+| Field | Description  |
+| ------------ | ------ |
 | Cookie parameter        | Cookie name                               |
 | URL query term selector | String that identifies the query term     |
 | Expiration              | Date when the configuration expires       |
@@ -443,7 +443,7 @@ If you selected **Both HTTP and HTTPS** in the Content Location section, you cou
 1. Begin typing an option name in the Options field. The field has auto-complete capabilities, so you do not have to type the full name. As you type, matching options display in the auto-filtered list. <Callout type="info">Available options depend on your account name and the service profile at the top of the page.</Callout>
 2. Select the option from the auto-filtered list. The UI adds the option to a list above the option field.
 
-#### Working with the Option/Protocol Sets List {/*working-with-the-options-protocol-sets-list*/}
+#### Work with the Option/Protocol Sets List {/*working-with-the-options-protocol-sets-list*/}
 
 This list allows you to associate protocol sets for the option you selected and enter any required option parameters.
 
@@ -461,7 +461,9 @@ This list allows you to associate protocol sets for the option you selected and 
 
 You can use the **Notes** field for additional information for others (why the configuration changes were made, etc.). Users can refer to the notes later when browsing historical configuration changes
 
-## Editing a Configuration {/*editing-a-configuration*/}
+## Work with Configurations {/*work-with-configurations*/}
+
+### Edit {/*editing-a-configuration*/}
 
 To make configuration changes to existing Published Protocols or Source Protocols,
 
@@ -494,7 +496,7 @@ For information on the individual settings displayed, see the descriptions in [C
   older configuration version.{' '}
 </Callout>
 
-## Previewing a Configuration {/*previewing-a-configuration*/}
+### Preview {/*previewing-a-configuration*/}
 
 <Image
   inline
@@ -504,7 +506,7 @@ For information on the individual settings displayed, see the descriptions in [C
 at the bottom right of the configuration row. For information on the individual settings
 displayed, please see the setting descriptions in [Creating a New Configuration](#creating-a-new-configuration).
 
-## Cloning a Configuration {/*cloning-a-configuration*/}
+### Clone {/*cloning-a-configuration*/}
 
 <Image inline src="/images/delivery/control/clone-icon.png" alt="Clone" /> To clone
 (make a copy of) a configuration, click the "copy" icon at the configuration row's
@@ -528,11 +530,11 @@ If you want to change protocol sets, see [Changing Protocol Sets](/delivery/cont
 
 <Tip>To clone a linked configuration, refer to [Cloning a Linked Configuration](#cloning-a-linked-config)</Tip>
 
-## Deleting a Configuration {/*deleting-a-configuration*/}
+### Delete {/*deleting-a-configuration*/}
 
 Users are not able to delete configurations. For more information, see [Read-Only and Hidden Capabilities](#read-only-and-hidden-capabilities).
 
-## Reverting to a Previous Configuration {/*reverting-to-a-previous-configuration*/}
+### Revert to a Previous Configuration {/*reverting-to-a-previous-configuration*/}
 
 <Image inline src="/images/delivery/control/revert-icon.png" alt="Revert" /> Each
 time you update a configuration, a new version is assigned.
@@ -543,13 +545,13 @@ To revert to a previous configuration:
 2. Select the version to which you want to revert. <br /> <Callout type="info">Although you intend to revert to a previous version, the reverted version will become the current version with a new version number. The new version number is displayed at the bottom of the dialog.</Callout>
 3. Click the Activate button. <br /><Callout type="info"> The ability to revert configurations is subject to conditions described in [Read-Only and Hidden Capabilities](#read-only-and-hidden-capabilities).</Callout>
 
-## Linking a Staging and Production Configuration {/*linking*/}
+### Link a Staging and Production Configuration {/*linking*/}
 
 Use this feature to establish and remove a link between two configurations, designating one as Staging and the other as Production. This allows you to push updates from the Staging config to the Production configuration.
 
 <Tip>The configuration selected as **PROD** is overridden with the **Staging** configuration structure</Tip>
 
-### Linking an Existing Configuration {/*linking-existing*/}
+#### Link Existing  {/*linking-existing*/}
 
 1. Click the chain link icon at the bottom right of the configuration.
 2. In the **Link PROD config** section, click **Search existing**.
@@ -557,7 +559,7 @@ Use this feature to establish and remove a link between two configurations, desi
 4. Optional. Review the configuration by clicking the **VIEW CONFIG** button.
 5. Click **Link**.
 
-### Linking a New Configuration {/*linking-new*/}
+#### Link New  {/*linking-new*/}
 
 1. Click the chain link icon at the bottom right of the configuration.
 2. In the **Link PROD config** section, click **Create new**.
@@ -567,7 +569,7 @@ Use this feature to establish and remove a link between two configurations, desi
 6. The configuration selected as **PROD** is overridden with the **Staging** configuration structure, and you receive a confirmation message: "By linking this configuration, all current settings for this record will be destroyed and replaced by those on the linked staging configuration. Are you sure you want to continue with linking these two configurations?"
 7. Upon successful linking, you receive a message with the UUIDs and links to Staging and PROD configs.
 
-### Editing a Linked Configuration  {/*editing-a-linked-config*/}
+#### Edit a Linked Configuration  {/*editing-a-linked-config*/}
 
 **When configurations are linked**
 - The **Edit** button is disabled for PROD configs and basic users cannot edit. Control admin permissions are required to edit PROD configurations via SSUI.
@@ -578,13 +580,13 @@ Use this feature to establish and remove a link between two configurations, desi
 - **Basic users** can update the Staging configuration and push change to PROD via the **sync link** button in the toolbar.
 - Control admins can edit a PROD configuration via SSUI or push changes both ways (PROD \> Staging, Staging \> PROD).
 
-### Cloning a Linked Configuration  {/*cloning-a-linked-config*/}
+#### Clone a Linked Configuration  {/*cloning-a-linked-config*/}
 
 You can clone both Staging and PROD linked configurations without limitation.
 
 <Tip>The cloned configuration is created as a normal configuration, and is not linked to any other configuration by default</Tip>
 
-### Reverting a Linked Configuration
+#### Revert a Linked Configuration  {/*revert-a-linked-configuration*/}
 
 A **PROD** config cannot be reverted. You will see the message:
 "This configuration record is the Production side of a ‘Prod-Stage’ linked relationship, and so it cannot be updated directly. Please navigate to the associated Staging configuration, make necessary updates there, and then synchronize those changes to this configuration."

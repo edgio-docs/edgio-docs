@@ -569,7 +569,7 @@ Use this feature to establish and remove a link between two configurations, desi
 6. The configuration selected as **PROD** is overridden with the **Staging** configuration structure, and you receive a confirmation message: "By linking this configuration, all current settings for this record will be destroyed and replaced by those on the linked staging configuration. Are you sure you want to continue with linking these two configurations?"
 7. Upon successful linking, you receive a message with the UUIDs and links to Staging and PROD configs.
 
-#### Edit a Linked Configuration  {/*editing-a-linked-config*/}
+#### Edit  {/*editing-a-linked-config*/}
 
 **When configurations are linked**
 - The **Edit** button is disabled for PROD configs and basic users cannot edit. Control admin permissions are required to edit PROD configurations via SSUI.
@@ -580,15 +580,22 @@ Use this feature to establish and remove a link between two configurations, desi
 - **Basic users** can update the Staging configuration and push change to PROD via the **sync link** button in the toolbar.
 - Control admins can edit a PROD configuration via SSUI or push changes both ways (PROD \> Staging, Staging \> PROD).
 
-#### Clone a Linked Configuration  {/*cloning-a-linked-config*/}
+#### Clone  {/*cloning-a-linked-config*/}
 
 You can clone both Staging and PROD linked configurations without limitation.
 
 <Tip>The cloned configuration is created as a normal configuration, and is not linked to any other configuration by default</Tip>
 
-#### Revert a Linked Configuration  {/*revert-a-linked-configuration*/}
+#### Revert  {/*revert-a-linked-configuration*/}
 
 A **PROD** config cannot be reverted. You will see the message:
 "This configuration record is the Production side of a ‘Prod-Stage’ linked relationship, and so it cannot be updated directly. Please navigate to the associated Staging configuration, make necessary updates there, and then synchronize those changes to this configuration."
 
 A **Staging** config can only be reverted to a version that has the **linkProdStage** structure. Once you link a configuration, it can only be reverted to a linked configuration; it cannot be linked to the source configuration.
+
+#### Delete
+
+<Tip>A linked configuration cannot be deleted. You must first remove the link.</Tip>
+
+1. Click **Remove Link** from the toolbar.
+2. Click **Delete**.

@@ -19,8 +19,9 @@ Definitions for key concepts are provided below.
     -   Open ports.
     -   TLS issues.
     -   Response header violations. For example, a required header may be missing or it can assigned an invalid value.
-    -   AWS issues.
-    -   Exposed secrets.
+
+    Additionally, {{ PRODUCT }} can pull vulnerabilities identified by GitHub, Snyk, or Amazon GuardDuty.
+
 -   **Protections:** {{ PRODUCT }} identifies the security solutions that are protecting the assets associated with the scanned network segment.
 -   **Technologies:** {{ PRODUCT }} identifies the software and services used by the assets associated with the scanned network segment.
 -   **Rules:** Determines how vulnerabilities and exposures are detected and handled. 

@@ -65,11 +65,11 @@ Create an origin configuration for each desired grouping of web server(s).
 
 5.  Define [TLS settings for this origin configuration](#origin-tls-settings) through the **Origin TLS Settings** section.
 
-    1.  Most web servers require a SNI hint during the TLS handshake. Define this SNI hint through the **Use SNI** option. By default, this option is set to the value assigned to the **Override Host Header** option.
+    1.  Most web servers require a SNI hint during the TLS handshake. Define this SNI hint through the **Use SNI hint and enforce origin SAN/CN checking** option. By default, this option is set to the value assigned to the **Override Host Header** option.
 
         Perform either of the following steps:
 
-        - If your web server requires a SNI hint, verify or set the SNI hint through the **Use SNI** option.
+        - If your web server requires a SNI hint, enable the **Use SNI** option and then verify or set the SNI hint through the **Use SNI hint and enforce origin SAN/CN checking** option.
 
           <Callout type="info">
 
@@ -77,7 +77,7 @@ Create an origin configuration for each desired grouping of web server(s).
 
           </Callout>
 
-        - If your web server does not use SNI, then you should disable the **Use SNI** option. You should also verify that the **Use the following SNI hint and enforce origin SAN/CN checking** option is set to a blank value.
+        - If your web server does not use SNI, then you should disable both SNI options. You should also verify that the **Use the following SNI hint and enforce origin SAN/CN checking** option is set to a blank value.
 
     2.  If your origin servers use a self-signed certificate, then you should toggle the **Allow Self Signed Certs** option to the on position (<Image inline src="/images/v7/icons/toggle-on.png" alt="Toggle on" />). Otherwise, this option should be disabled.
     3.  Set up [certificate pinning](#certificate-pinning) by adding one or more public keys.
@@ -115,12 +115,12 @@ Create an origin configuration for each desired grouping of web server(s).
 
 An origin configuration's TLS settings determine how {{ PRODUCT }} will communicate with your web servers during the TLS handshake. <a id="sni" />
 
-- **SNI:** An origin configuration's **Use SNI** option determines whether {{ PRODUCT }} will:
+- **SNI:** An origin configuration's **Use SNI** and the **Use SNI hint and enforce origin SAN/CN checking** options determine whether {{ PRODUCT }} will:
 
-  - Provide a Server Name Indication (SNI) hint to your origin server during the TLS handshake. A SNI-enabled web server uses a SNI hint to determine the TLS certificate that will be returned.
   - Perform a strict check using the hostname defined within this option against the certificate’s Subject Alternative Name (SAN) or Common Name (CN) during the TLS handshake. If the hostname does not match, then we will respond with a `502 Bad Gateway` response.
+  - Provide a Server Name Indication (SNI) hint to your origin server during the TLS handshake. A SNI-enabled web server uses a SNI hint to determine the TLS certificate that will be returned.
 
-  Enable this option and provide a SNI hint if your web servers require SNI. Otherwise, your web server will reject the request and our edge servers will respond with a `502 Bad Gateway` response. <a id="self-signed-certificates" />
+  Enable both options and provide a SNI hint if your web servers require SNI. Otherwise, your web server will reject the request and our edge servers will respond with a `502 Bad Gateway` response. <a id="self-signed-certificates" />
 
 - By default, our network disables delivery and responds with a `502 Bad Gateway` when we detect an origin server using a self-signed certificate during the TLS handshake. Allow {{ PRODUCT }} to serve traffic when it detects a self-signed certificate by enabling the **Allow Self-Signed Certs** option. <a id="certificate-pinning" />
 - Register the SHA-1 digest for the public key of your end-entity (i.e., leaf) certificate within the **Pinned Cert(s)** option. After which, our edge servers will respond with a `502 Bad Gateway` response when the SHA-1 digest for the public key detected from the origin server does not match one of the pinned certificates.

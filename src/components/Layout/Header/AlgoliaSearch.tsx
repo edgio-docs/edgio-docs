@@ -60,6 +60,9 @@ const AlgoliaSearch = ({onSearchOpen, onSearchClose}: AlgoliaSearchProps) => {
   // Other products should search the current version or default
   if (context !== ContextType.HOME) {
     facetFilters.push(`version:${context}-${version}`);
+  } else {
+    facetFilters.push(`version:${ContextType.APPLICATIONS}-v7`);
+    facetFilters.push(`version:${ContextType.DELIVERY}-default`);
   }
 
   const searchParameters = {

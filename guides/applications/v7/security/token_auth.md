@@ -89,9 +89,8 @@ The purpose of encryption keys is to encrypt or decrypt a token.
     {{ ENV_NAV }} **Settings**.
 
 2.  From the **Token-Based Authentication** settings, set the **Primary Key** option to the desired alphanumeric value. 
-3.  Ensure that the **Primary Key Minimum Encryption Version** option remains set to `v3`. 
-4.  Click **Save**.
-5.  Apply this change by deploying to this environment.
+3.  Click **Save**.
+4.  Apply this change by deploying to this environment.
 
 <Info>
 
@@ -118,9 +117,8 @@ As a result, it is recommended to use a primary and a backup encryption key to e
 
 2.  From the **Token-Based Authentication** settings, copy the value from the **Primary Key** option to the **Backup Key** option.
 3.  In the **Primary Key** option, type your new encryption key.
-4.  Ensure that the encryption version for both keys remains set to `v3`.
-5.  Click **Update**.
-6.  Apply this change by deploying to this environment.
+4.  Click **Update**.
+5.  Apply this change by deploying to this environment.
 
 #### Removing an Encryption Key {/*removing-an-encryption-key*/}
 

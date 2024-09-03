@@ -105,21 +105,28 @@ You may create, modify, and delete collections. Finally, you can reset a collect
 
     -   **Domain:** From the **Seed** option, type the name of the domain (e.g., example.com) that will be scanned.
     -   **GitHub Repository:** 
+
         1.  From the **Seed** option, type the repository path (e.g., edgio-docs\edgio-docs). A repository path typically identifies the owner of the repository (e.g., an organization or a user), a slash, and then the name of the repository.
         2.  From the **GitHub Personal Access Token** option, provide a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) through which {{ PRODUCT }} will access your repository. 
+
         <!-- 3.  From the **Branches**, type one or more branch(es) that will be scanned. Use a comma to delimit each branch. -->
         3.  From the **Linked hostnames** option, type one or more hostname(s) associated with the specified branches. Use a comma to delimit each hostname.
+
     -   **IP Address:** From the **Seed** option, type the desired IP address.
     -   **IP Address Range:** From the **Seed** option, type the desired IP address range or IP address block. Use CIDR notation.
 
         **Sample IP address range:** `192.0.2.10-100`
 
         **Sample IP address block:** `192.0.2.0/24`
+
     -   **Snyk:** 
+
         1.  In the **Name** option, type a descriptive name.
         2.  In the **Organization id** option, type your Snyk organization's internal ID.
         3.  In the **API Key** option, type your Snyk organization's API key.
+
     -   **Amazon GuardDuty:**
+
         1.  In the **Name** option, type a descriptive name.
         2.  In the **Access Key ID** option, type your Amazon GuardDuty [access key ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey).
         3.  In the **Secret Access Key** option, type your Amazon GuardDuty [secret access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey).
@@ -183,6 +190,7 @@ Once you have created a collection and [added at least one seed](#add-seed) to i
 -   [Create or modify rules](#rules) to create custom exposure detection and to determine whether exposures are created from findings discovered from scanned assets.
 
     For example, the default behavior is to scan ports for technologies, protections, and exposures. However, you can create a [rule that prevents exposures from being created from port scans](#scan-ports-without-exposures). 
+-   By default, {{ PRODUCT }} performs superficial penetration testing to assess whether your assets are protected by a Web Application Firewall (WAF). For example, this testing will assess whether those assets are susceptible to cross-side scription or SQL injection. Disable this type of testing by clearing the **Enable WAF detection** setting from the **Attack Surface Management** section of your organization's **Settings** page. 
 -   {{ PRODUCT }} may identify unreachable assets when it scans your network. Perform the following steps to view a list of these assets:
 
     1.  Open the desired scan.

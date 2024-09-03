@@ -85,7 +85,7 @@ You can create, modify, and delete API clients from your private space or an org
 
 Upon creating an API client, a client ID and a secret will be generated. Use this information, along with scopes, to [generate an access token]({{ API_DOCS_URL }}#section/Access-Tokens).
 
-**To copy an API client's ID and secret**
+**<a id="copy-client-id-secret" />To copy an API client's ID and secret**
 
 1.  Navigate to the **API Clients** page.
 
@@ -164,13 +164,16 @@ Each request to our REST API service must be authorized through an access token.
 Requests for access tokens requires:
 
 -   A `Content-Type` header set to `application/x-www-form-urlencoded`.
--   A request body set to:
+-   A request body that contains the following four parameters:
 
     `client_id=<CLIENT ID>&client_secret=<SECRET>&grant_type=client_credentials&scope=<SCOPES>`
 
-    -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your REST API client.
-    -   `<SECRET>`**:** Represents the secret assigned to your REST API client.
-    -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. Common scopes are listed below.
+    | Parameter     | Description                                                                                                                           |
+    | ------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+    | client_id     | Replace `<CLIENT ID>` with the [system-defined ID assigned to your REST API client](#copy-client-id-secret).                          |
+    | client_secret | Replace `<SECRET>` with the [secret assigned to your REST API client](#copy-client-id-secret).                                        |
+    | grant_type    | Set this parameter to `client_credentials`.                                                                                           |
+    | scope         | Replace `<SCOPES>` with one or more [scopes](#scopes). Use the plus symbol (+) to delimit each scope.                                 |
 
 **Sample access token request:**
 
@@ -211,7 +214,6 @@ Requests to our API gateway must be authorized through an access token. Specify 
 A sample `Authorization` request header is provided below.
 
 `Authorization: Bearer A1bcbGciOiJSUzI1NiIsImtpZCI6Ij13N1VGQ01zOTIzQjI1MTYzRjU4MU1wQ0I3MUNBRDk3QjAzNkUwQjgiLCJ01XAiOiJKV1QiLCJ4NXQiOiJGMDc4bzVJN0pSWV9XQm9Ndcc5dGw3QTI0TGcifQ.1yJuYmYiOj11NjUzMDgwNzgsImV4cCI6MTU2NTMwODM3OCwiaXNzIjoiacR0ccM6Ly9pZC52ZG1zLmlvIiwiYXVkIjpbImc0dcBzOi8vaWQudmRtcy5pby9yZXNvdXJjZXMiLCJlYy5ydWxlcyJdLCJjbGllbnRfaWQiOiIxNTccOWZmZi04MTQzLTRmOW1tOWY1Yi1jNDgzZWVkNzclM2QiLCJzY29wZSI6WyJlYy5ydWxlcyJdfQ.XQ4TvzDrwLo4bO71cb1TbgYxmtcgTzC46Do0A9F3inAqw1qcrNr9IgRDxJDqR4Udc9QR86LVTQC2-ogGWP3pI12GtDtiUQdKYs5fpcuMf2Kbqau6kuU1M5BJmGOcBNCCAJnU7SrDprVbPlwanGqk3yjcyo9nto8KWCRTwq2t31UQ1Ci31FZSr4vaMZJqk1vBW6NS3-yGowGCZbSIQBKpSgcc75coPtSjF1Qi6M4yORDyMC8c3KKlIp2b-6mpfDFXINIFV-XvnNuQ9v-lcc43VWuDAcQO8wmS4VzS1Ac1tpg1Pp4Bcdtjt12yKAXvi0X19R1BDmpxmO17cRRKYQ`
-
 
 ## Scopes {/*scopes*/}
 

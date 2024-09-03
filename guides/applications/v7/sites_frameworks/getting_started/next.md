@@ -391,7 +391,7 @@ module.exports = {
 
 ## Image Optimizer {/* image-optimizer */}
 
-By default, Next.js image optimizer is replaced by our image optimizer, which is available in all build modes. You can disable it and use the built-in Next.js image optimizer instead by adding `disableImageOptimizer: true` to the `next` config in the `{{ CONFIG_FILE }}` file.
+By default, the Next.js image optimizer is replaced by our [image optimizer](/applications/performance/image_optimization), which is available in all build modes. However, you can disable our solution and use the built-in Next.js image optimizer instead by adding `disableImageOptimizer: true` to the `next` config in the `{{ CONFIG_FILE }}` file.
 
 ```js filename='{{ CONFIG_FILE }}' ins="3"
 module.exports = {

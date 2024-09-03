@@ -455,7 +455,7 @@ The following fields are available for you to include when you select *MMD_LIVE_
 | transcode-bytes | *(int64)* The number of transcoded bytes.  |
 | transcode-pixels | *(int64)*The number of transcoded pixels.  |
 
-## Download Log Files from Origin Storage  {/*retrieving-log-files-from-origin-storage*/}
+## Retrieve Log Files from Origin Storage  {/*retrieving-log-files-from-origin-storage*/}
 
 You can retrieve your files from Edgio Origin Storage using Origin Storage API calls in conjunction with an HTTP GET request or via the Origin Storage Management Console.
 
@@ -593,9 +593,8 @@ for file_name in files_to_download:
         if response.status_code != 200:
             print("Unable to download " + file_name + ". Status code: " + response.status_code)
 ```
-### Storage  {/*download-using-the-storage-management-console*/}
+###  Manual Download {/*download-using-the-storage-management-console*/}
 
-#### Download Manually
 You can download a log file using the Origin Storage Management Console.
 
 Begin by logging into the Edgio Control Portal, then follow these steps:

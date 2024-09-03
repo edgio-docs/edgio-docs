@@ -190,7 +190,7 @@ Once you have created a collection and [added at least one seed](#add-seed) to i
 -   [Create or modify rules](#rules) to create custom exposure detection and to determine whether exposures are created from findings discovered from scanned assets.
 
     For example, the default behavior is to scan ports for technologies, protections, and exposures. However, you can create a [rule that prevents exposures from being created from port scans](#scan-ports-without-exposures). 
--   By default, {{ PRODUCT }} performs superficial penetration testing to assess whether your assets are protected by a Web Application Firewall (WAF). For example, this testing will assess whether those assets are susceptible to cross-side scription or SQL injection. Disable this type of testing by clearing the **Enable WAF detection** setting from the **Attack Surface Management** section of your organization's **Settings** page. 
+-   By default, {{ PRODUCT }} performs superficial penetration testing to assess whether your assets are protected by a Web Application Firewall (WAF). For example, this testing will assess whether those assets are susceptible to cross-side scripting (XSS) or SQL injection. Disable this type of testing by clearing the **Enable WAF detection** setting from the **Attack Surface Management** section of your organization's **Settings** page. 
 -   {{ PRODUCT }} may identify unreachable assets when it scans your network. Perform the following steps to view a list of these assets:
 
     1.  Open the desired scan.

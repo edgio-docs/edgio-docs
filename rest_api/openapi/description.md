@@ -77,15 +77,18 @@ Requesting an access token requires:
     `https://id.edgio.app/connect/token`
 
 -   A `Content-Type` header set to `application/x-www-form-urlencoded`.
--   A request body set to:
+-   A request body that contains the following four parameters:
 
     ```
     client_id=<CLIENT ID>&client_secret=<SECRET>&grant_type=client_credentials&scope=<SCOPES>
     ```
-
-    -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your <a href="https://docs.edg.io/applications/rest_api/authentication#administering-api-clients" target="_blank">REST API client</a>.
-    -   `<SECRET>`**:** Represents the secret assigned to your REST API client.
-    -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. 
+    
+    | Parameter     | Description                                                                                                                                |
+    | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+    | client_id     | Replace `<CLIENT ID>` with the [system-defined ID assigned to your REST API client](#copy-client-id-secret).                               |
+    | client_secret | Replace `<SECRET>` with the [secret assigned to your REST API client](#copy-client-id-secret).                                             |
+    | grant_type    | Set this parameter to `client_credentials`.                                                                                                |
+    | scope         | Replace `<SCOPES>` with one or more [scopes](#section/Scopes). Use the plus symbol (+) to delimit each scope.                              |
 
 **Sample access token request:**
 

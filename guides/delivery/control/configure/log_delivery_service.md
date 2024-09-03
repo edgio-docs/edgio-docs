@@ -254,7 +254,9 @@ These are visible only when you select Google Cloud Storage as the destination. 
 
 ### Hydrolix {/*enable-hydrolix*/}
 
-You can configure LDS to stream logs data to Hydrolix platform.
+You can configure LDS to stream log data to Hydrolix platform.
+
+<Tip>Token-based authentication is not currently supported.</Tip>
 
 #### Prerequisites {/*hydrolix-prerequisites*/}
 
@@ -264,7 +266,7 @@ Before configuring Hydrolix as a destination, you will need to do the following 
 
 2. Create a [Transform](https://docs.hydrolix.io/docs/transforms-and-write-schema).
 
-#### Configure a Hydrolix as LDS Destination {/*configure-hydrolix*/}
+#### Configure Hydrolix as LDS Destination {/*configure-hydrolix*/}
 
 1. Select **Hydrolix** in the **DESTINATION** drop-down menu.
 
@@ -272,7 +274,7 @@ Before configuring Hydrolix as a destination, you will need to do the following 
 
 3. Click **SAVE**.
 
-#### Hydrolix Configuration Fields {/*hydrolix-configuration-fields*/}
+#### Configuration Fields {/*hydrolix-configuration-fields*/}
 
 | **Field**     | **Description** |
 |------|-----|

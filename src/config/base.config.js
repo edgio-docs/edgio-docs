@@ -67,7 +67,7 @@ const API_CONFIG_VERSION = '0.1';
 const SAMPLE_TEAM_ID = '12345678-1234-1234-1234-1234567890ab';
 const LOGIN_URL = `${APP_URL}/?sgId=ef4d5169-93f2-4f55-aabb-dc3be4286e1f`;
 const UPLYNK_CMS_URL = `https://cms.uplynk.com/`;
-const DELIVERY_PORTAL_URL = `https://control-new.edg.io/acontrol/#/login`;
+const DELIVERY_PORTAL_URL = `https://control.edg.io/acontrol/#/login`;
 
 const PORTAL_LINK = `[${PORTAL}](${LOGIN_URL})`;
 const IDENTITY_LINK = `[${IDENTITY_DASHBOARD}](${IDENTITY_URL})`;

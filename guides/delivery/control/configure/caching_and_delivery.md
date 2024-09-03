@@ -589,13 +589,13 @@ You can clone both Staging and PROD linked configurations without limitation.
 #### Revert  {/*revert-a-linked-configuration*/}
 
 A **PROD** config cannot be reverted. You will see the message:
-"This configuration record is the Production side of a ‘Prod-Stage’ linked relationship, and so it cannot be updated directly. Please navigate to the associated Staging configuration, make necessary updates there, and then synchronize those changes to this configuration."
+"This configuration record is the Production side of a 'PROD-Stage’ linked relationship, and so it cannot be updated directly. Please navigate to the associated Staging configuration, make necessary updates there, and then synchronize those changes to this configuration."
 
 A **Staging** config can only be reverted to a version that has the **linkProdStage** structure. Once you link a configuration, it can only be reverted to a linked configuration; it cannot be linked to the source configuration.
 
 #### Delete
 
-<Tip>A linked configuration cannot be deleted. You must first remove the link.</Tip>
+<Tip>A linked configuration cannot be deleted using the rubbish-bin icon. You must first remove the link from the configuration, and then you can delete.</Tip>
 
 1. Click **Remove Link** from the toolbar.
 2. Click **Delete**.

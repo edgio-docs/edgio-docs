@@ -49,7 +49,7 @@ from the origin or respond with one of the following response codes:
 | 546 {{ PRODUCT }} Origin Shield POP TLS Error                                                                                                            | There was an error negotiating a secure TLS connection with the Origin Shield POP. {{ CONTACT_SUPPORT }}                                                                                                                                                                                                                                                   |
 | 547 {{ PRODUCT }} Origin Shield POP No HTTP Response                                                                                                     | {{ PRODUCT }} did not receive an HTTP response from the Origin Shield POP. {{ CONTACT_SUPPORT }}                                                                                                                                                                                                                                                           |
 | 548 {{ PRODUCT }} Origin Shield POP DNS Resolution Error                                                                                                 | {{ PRODUCT }} failed to resolve the Origin Shield POP's host name through DNS. {{ CONTACT_SUPPORT }}                                                                                                                                                                                                                                                       |
-| 549 Project Crashed                                                                                                                                      | The {{ PRODUCT }} project's cloud function crashed unexpectedly because of fatal error in project's code or undesired process.exit call somewhere in the third party code. This error will cause a cold-start of your project for next request. Use [server logs](/applications/logs/server_logs) to debug.                                                |
+| 549 Project Crashed                                                                                                                                      | The {{ PRODUCT }} project's cloud function crashed unexpectedly because of fatal error in project's code or undesired process.exit call somewhere in the third party code. This error will cause a cold start of your project for next request. Use [server logs](/applications/logs/server_logs) to debug.                                                |
 
 ## Response Headers {/* response-headers */}
 
@@ -413,7 +413,7 @@ The following abbreviations are used for time units:
 
 ### {{ HEADER_PREFIX }}-t Response Header {/* -t-response-header */}
 
-The {{ HEADER_PREFIX }}-t response header is solely returned for {{ PRODUCT }} cloud requests ({{ PRODUCT }} {{ PRODUCT_PLATFORM }} and Cloud Functions). It contains time measurements for each cloud component.
+The `{{ HEADER_PREFIX }}-t` response header is solely returned for {{ PRODUCT }} cloud requests ({{ PRODUCT }} {{ PRODUCT_PLATFORM }} and Cloud Functions). It contains time measurements for each cloud component.
 
 **Syntax:**
 
@@ -440,8 +440,8 @@ Additional valid values for `@edgio/core` version 7.12.x or higher:
 - **hec**: Cloud worker handler errors count. The number of errors, such as `540 {{ PRODUCT }} Out of Resources` or `549 {{ PRODUCT }} Project Crashed`, encountered by this instance of the cloud worker handler. <!--(errors with level 1)--> 
 - **hrss**: Cloud worker handler resident set size. The amount of memory, in MiB, occupied by the code segment, heap, and stack of this instance of the cloud worker handler.
 - **ht**: Cloud worker handler time. The total time, in milliseconds, it took this instance of the cloud worker handler to process the request (i.e., receive the request, proxy the request, fetch the response, and sending the response back to client).
-- **hcs**: Cloud worker handler cold-start. Returns `true` when this instance of the cloud worker handler was initiated by this request. Otherwise, returns `false`.
-- **hcst**: Cloud worker handler cold-start time. Returns the value of the `ht` metric as measured by the request at which the `hcs` metric was set to `true`.
+- **hcs**: Cloud worker handler cold start. Returns `true` when this instance of the cloud worker handler was initiated by this request. Otherwise, returns `false`.
+- **hcst**: Cloud worker handler cold start time. Returns the value of the `ht` metric as measured by the request at which the `hcs` metric was set to `true`.
 - **sid**: Cloud worker server ID. The unique ID for the instance of the cloud worker server that processed the request. 
 
   The cloud worker server component is responsible for importing your project code, starting your app (e.g., Next.js) and executing your compute functions. This ID is updated whenever your project is restarted due to a fatal error.
@@ -451,8 +451,8 @@ Additional valid values for `@edgio/core` version 7.12.x or higher:
 - **sec**: Cloud worker server errors count. The number of errors, such as `534 Edgio Project Error`, encountered by this instance of the cloud worker server. <!--(errors with level 2)-->. 
 - **srss**: Cloud worker server resident set size. The amount of memory, in MiB, occupied by the code segment, heap, and stack of this instance of the cloud worker server and your application.
 - **st**: Cloud worker server time. The total time, in milliseconds, it took this instance of the cloud worker server to process the request (i.e., receive the request and then sending the response back to a cloud worker handler). For example, if you have a Next.js application, this metric measures the time it took the Next.js server to return a response.
-- **scs**: Cloud worker server cold-start. Returns `true` when this instance of the cloud worker server was initiated by this request. Otherwise, returns `false`. 
-- **scst**: Cloud worker server cold-start time. Returns the value of the `st` metric as measured by the request at which the `scs` metric was set to `true`.
+- **scs**: Cloud worker server cold start. Returns `true` when this instance of the cloud worker server was initiated by this request. Otherwise, returns `false`. 
+- **scst**: Cloud worker server cold start time. Returns the value of the `st` metric as measured by the request at which the `scs` metric was set to `true`.
 - **srt**: Cloud worker server ready time. The time, in milliseconds, it took for this instance of a cloud worker server to perform a cold start (i.e., the time from which this instance was spawned to to the moment it was ready to process requests).
 - **art**: Application ready time. The time, in milliseconds, it took to import your application code and start your app (e.g., Next.js) after a cloud worker server cold start.
 

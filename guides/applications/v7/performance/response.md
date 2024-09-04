@@ -34,7 +34,7 @@ from the origin or respond with one of the following response codes:
 | [531 Project Upstream Connection Error](/applications/performance/troubleshooting#531-project-upstream-connection-error-status-code)                     | {{ PRODUCT }} could not establish a connection to your origin.                                                                                                                                                                                                                                                                                             |
 | 532 Project Response Too Large                                                                                                                           | The response from the {{ PRODUCT }} cloud function exceeded the [maximum response body limit](/applications/performance/limits#cloud-function-limits).                                                                                                                                                                                               |
 | 533 Project Upstream TLS Error                                                                                                                           | There was an error negotiating a secure TLS connection with the origin. Check whether the upstream TLS certificate has expired and whether the provided host name matches the upstream TLS certificate.                                                                                                                                                    |
-| 534 Project Error                                                                                                                                        | Your project's cloud function has failed unexpectedly while processing the request because of an uncaught exception somewhere in the user's code or has issued a malformed response. Use [server logs](/applications/logs/server_logs) to debug.                                                                                                           |
+| 534 Project Error                                                                                                                                        | Your project's cloud function has failed unexpectedly while processing the request due to an uncaught exception in your custom code or a malformed response. Use [server logs](/applications/logs/server_logs) to debug.                                                                                                           |
 | 535 Unknown Project                                                                                                                                      | The `host` header is missing or does not match any {{ PRODUCT }} deployment. Check the request and your project configuration.                                                                                                                                                                                                                             |
 | <a id="536"></a>536 Project HTTP Response Timeout                                                                                                        | {{ PRODUCT }} did not receive an HTTP response from the upstream. Common causes are the upstream dropped the connection prematurely, the upstream application threw an exception, and the upstream took too long to respond.                                                                                                                               |
 | 537 Project DNS Resolution Error                                                                                                                         | Failed to resolve the host name through DNS, which might indicate a problem with your DNS provider or an incorrectly configured domain.                                                                                                                                                                                                                    |
@@ -266,7 +266,11 @@ Common response headers are described below.
   - **h**: Cloud worker handler
   - **s**: Cloud worker server
 
-  **Example:** `{{ HEADER_PREFIX }}-status: p=200,w=200` or `{{ HEADER_PREFIX }}-status: p=542,h=542,s=200`
+  **Examples:** 
+  
+  `{{ HEADER_PREFIX }}-status: p=200,w=200`
+  
+  `{{ HEADER_PREFIX }}-status: p=542,h=542,s=200`
 
 - **{{ HEADER_PREFIX }}-surrogate-key:** Contains a space-delimited list of surrogate keys (cache tags). <!-- surrogate keys can be injected when needed into your backend responses -->
 
@@ -276,7 +280,7 @@ Common response headers are described below.
 
 - **{{ HEADER_PREFIX }}-version:** Indicates basic information for your current deployment.
 
-  **Syntax:** `{{ HEADER_PREFIX }}-version: <DEPLOYMENT> <ENVIRONMENT VERSION> <INTERNAL> <EDGIO PACKAGES VERSION> <DEPLOYMENT TIMESTAMP> <ENVIRONMENT ID>`
+  **Syntax:** `{{ HEADER_PREFIX }}-version: <DEPLOYMENT> <ENVIRONMENT VERSION> <INTERNAL> <{{ PRODUCT }} PACKAGE VERSION> <DEPLOYMENT TIMESTAMP> <ENVIRONMENT ID>`
 
   **Example:** `{{ HEADER_PREFIX }}-version: 16 16 19 7.13.2 2023-04-02T22:52:30Z ed922fee-185c-427d-8949-83d135108aab`
 
@@ -285,7 +289,7 @@ Common response headers are described below.
   - **DEPLOYMENT:** Identifies a deployment by its version number.
   - **ENVIRONMENT VERSION:** Indicates the environment's version number.
   - **INTERNAL:** Reserved for future use.
-  - **EDGIO PACKAGES VERSION:** Indicates the version of the [@edgio/core](https://www.npmjs.com/package/@edgio/core) package that was used to deploy your project from CLI, or it's `NA` if the deployment was done through the UI.
+  - **{{ PRODUCT }} PACKAGE VERSION:** Indicates the version of the [@edgio/core](https://www.npmjs.com/package/@edgio/core) package for deployments performed through the CLI. Returns `NA` for deployments performed through the {{ PORTAL }}.
   - **DEPLOYMENT TIMESTAMP:** Indicates the date and time (UTC; 24-hour clock) at which your site was deployed.
 
     **Syntax:** `YYYY-MM-DDThh:mm:ss.msZ`
@@ -417,36 +421,40 @@ The {{ HEADER_PREFIX }}-t response header is solely returned for {{ PRODUCT }} c
 
 Valid values are:
 
-- **pt**: Cloud load balancer time - Indicates the total time, in milliseconds, it took to process the cloud request. This metric measures the time between when the cloud load balancer receives the request and when it sends a response to the client.
-- **pc**: Cloud load balancer counter - Indicates the number of requests generated by the cloud load balancer. A value greater than `1` indicates that the load balancer had to scale the request by adding it to a queue and then resubmitting it. This occurs due to low available compute capacity.
-- **pf**: Cloud load balancer fetch time - Indicates the total time, in milliseconds, it took to fetch a response from a cloud worker. Specifically, it measures the amount of time between when the cloud load balancer forwards a request to a cloud worker and when it receives a response.
-- **wbt**: Cloud worker billed time - Indicates the total billed time in milliseconds. This measurement may be higher than `wt`, since it includes cloud workload time and time spent capturing cloud log data.
-- **wbm**: Cloud worker billed memory - Indicates billed memory usage in Megabytes. This metric measures memory allocated to the cloud worker.
-- **wm**: Cloud worker memory - Indicates actual cloud worker memory usage in Megabytes.
-- **wt**: Cloud worker time - Indicates the total time, in milliseconds, it took for the cloud worker to generate a response.
-- **wc**: Cloud worker count - Indicates the number of times that a cloud worker was invoked for this request.
-- **wg**: Cloud worker age - Indicates the amount of time, in milliseconds, that the instance of the cloud worker that processed the request has been running.
-- **wl**: Cloud worker lifetime - Indicates the total processing time, in milliseconds, for all cloud workers for all requests.
+- **pt**: Cloud load balancer time. Indicates the total time, in milliseconds, it took to process the cloud request. This metric measures the time between when the cloud load balancer receives the request and when it sends a response to the client.
+- **pc**: Cloud load balancer counter. Indicates the number of requests generated by the cloud load balancer. A value greater than `1` indicates that the load balancer had to scale the request by adding it to a queue and then resubmitting it. This occurs due to low available compute capacity.
+- **pf**: Cloud load balancer fetch time. Indicates the total time, in milliseconds, it took to fetch a response from a cloud worker. Specifically, it measures the amount of time between when the cloud load balancer forwards a request to a cloud worker and when it receives a response.
+- **wbt**: Cloud worker billed time. Indicates the total billed time in milliseconds. This measurement may be higher than `wt`, since it includes cloud workload time and time spent capturing cloud log data.
+- **wbm**: Cloud worker billed memory. Indicates billed memory usage in Megabytes. This metric measures memory allocated to the cloud worker.
+- **wm**: Cloud worker memory. Indicates actual cloud worker memory usage in Megabytes.
+- **wt**: Cloud worker time. Indicates the total time, in milliseconds, it took for the cloud worker to generate a response.
+- **wc**: Cloud worker count. Indicates the number of times that a cloud worker was invoked for this request.
+- **wg**: Cloud worker age. Indicates the amount of time, in milliseconds, that the instance of the cloud worker that processed the request has been running.
+- **wl**: Cloud worker lifetime. Indicates the total processing time, in milliseconds, for all cloud workers for all requests.
 
-Starting with @edgio/core version 7.12.x, you can also see the following metrics in the `{{ HEADER_PREFIX }}-t` response header that are used for internal monitoring and debugging purposes:
-- **hid**: Cloud worker handler ID - The unique ID of the Cloud worker handler instance that processed the request. The Cloud worker handler component is responsible for supervising Cloud worker server instance, proxying the request to the server and managing resources. The ID is same for all requests served by the same Cloud worker. The number of Cloud workers scales up/down based on the traffic.
-- **hlt**: Cloud worker handler lifetime - The total time in milliseconds this handler instance exists.
-- **hrc**: Cloud worker handler requests count - The number of requests this handler instance processed.
-- **hec**: Cloud worker handler errors count - The number of errors this handler instance encountered (errors with level 1). For example 540 - Edgio Out of Resources error or 549 - Edgio Project Crashed.
-- **hrss**: Cloud worker handler resident set size - The amount of memory in MiB occupied by the code segment, heap and stack of this handler instance.
-- **ht**: Cloud worker handler time - The total time in milliseconds this handler instance spent from receiving the request, proxying request, fetching response and sending the response back to client.
-- **hcs**: Cloud worker handler cold-start - True if this handler instance was started for the first time for this request, false otherwise.
-- **hcst**: Cloud worker handler cold-start time - The captured value of `ht` metric from the first request where `hcs` value was true.
-- **sid**: Cloud worker server ID - The unique ID of the Cloud worker server instance that processed the request. The Cloud worker server component is responsible for importing your project code, starting your app (for example Next.js) and executing your compute functions. This ID will change for same Cloud worker every time your project needs to be restarted because of fatal error.
-- **slt**: Cloud worker server lifetime - The total time in milliseconds this server instance exists.
-- **src**: Cloud worker server requests count - The number of requests this server instance processed. This number equals to `hrc` metric value unless your project was restarted because of a fatal error.
-- **sec**: Cloud worker server errors count - The number of errors this server instance encountered (errors with level 2). For example top-level uncaught errors in your project that will result in 534 - Edgio Project Error.
-- **srss**: Cloud worker server resident set size  - The amount of memory in MiB occupied by the code segment, heap and stack of this server instance and your application.
-- **st**: Cloud worker server time  - The total time in milliseconds this server instance spent from receiving the request to sending the response back to Cloud worker handler. For example if you have a Next.js application, this means the time it took Next.js server to return response.
-- **scs**: Cloud worker server cold-start - True if this server instance was started for the first time for this request, false otherwise.
-- **scst**: Cloud worker server cold-start time - The captured value of `st` metric from the first request where `scs` value was true.
-- **srt**: Cloud worker server ready time - The time in milliseconds it took from spawning the server instance to the moment it was ready to process requests on Cloud worker server cold-start.
-- **art**: Application ready time - The time in milliseconds it took to import your application code and start your app (for example Next.js) on Cloud worker server cold-start.
+Additional valid values for `@edgio/core` version 7.12.x or higher:
+
+- **hid**: Cloud worker handler ID. The unique ID for the instance of the cloud worker handler that processed the request. The cloud worker handler component is responsible for supervising a cloud worker server instance, proxying the request to the server, and managing resources. This ID is same across all requests served by the same cloud worker. The number of cloud workers scales up and down based on traffic load.
+- **hlt**: Cloud worker handler lifetime. The total time, in milliseconds, that this instance of the cloud worker handler existed.
+- **hrc**: Cloud worker handler requests count. The number of requests that this instance of the cloud worker handler processed.
+- **hec**: Cloud worker handler errors count. The number of errors, such as `540 {{ PRODUCT }} Out of Resources` or `549 {{ PRODUCT }} Project Crashed`, encountered by this instance of the cloud worker handler. <!--(errors with level 1)--> 
+- **hrss**: Cloud worker handler resident set size. The amount of memory, in MiB, occupied by the code segment, heap, and stack of this instance of the cloud worker handler.
+- **ht**: Cloud worker handler time. The total time, in milliseconds, it took this instance of the cloud worker handler to process the request (i.e., receive the request, proxy the request, fetch the response, and sending the response back to client).
+- **hcs**: Cloud worker handler cold-start. Returns `true` when this instance of the cloud worker handler was initiated by this request. Otherwise, returns `false`.
+- **hcst**: Cloud worker handler cold-start time. Returns the value of the `ht` metric as measured by the request at which the `hcs` metric was set to `true`.
+- **sid**: Cloud worker server ID. The unique ID for the instance of the cloud worker server that processed the request. 
+
+  The cloud worker server component is responsible for importing your project code, starting your app (e.g., Next.js) and executing your compute functions. This ID is updated whenever your project is restarted due to a fatal error.
+
+- **slt**: Cloud worker server lifetime. The total time, in milliseconds, this instance of the cloud worker server existed. 
+- **src**: Cloud worker server requests count. The number of requests processed by this instance of the cloud worker server. This value should match the value for the `hrc` metric unless your project was restarted due to a fatal error.
+- **sec**: Cloud worker server errors count. The number of errors, such as `534 Edgio Project Error`, encountered by this instance of the cloud worker server. <!--(errors with level 2)-->. 
+- **srss**: Cloud worker server resident set size. The amount of memory, in MiB, occupied by the code segment, heap, and stack of this instance of the cloud worker server and your application.
+- **st**: Cloud worker server time. The total time, in milliseconds, it took this instance of the cloud worker server to process the request (i.e., receive the request and then sending the response back to a cloud worker handler). For example, if you have a Next.js application, this metric measures the time it took the Next.js server to return a response.
+- **scs**: Cloud worker server cold-start. Returns `true` when this instance of the cloud worker server was initiated by this request. Otherwise, returns `false`. 
+- **scst**: Cloud worker server cold-start time. Returns the value of the `st` metric as measured by the request at which the `scs` metric was set to `true`.
+- **srt**: Cloud worker server ready time. The time, in milliseconds, it took for this instance of a cloud worker server to perform a cold start (i.e., the time from which this instance was spawned to to the moment it was ready to process requests).
+- **art**: Application ready time. The time, in milliseconds, it took to import your application code and start your app (e.g., Next.js) after a cloud worker server cold start.
 
 **Example:** The following sample {{ HEADER_PREFIX }}-t response header is for a Cloud Functions request:
 

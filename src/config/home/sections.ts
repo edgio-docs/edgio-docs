@@ -1,8 +1,8 @@
-import {IconEdgioApplications} from 'components/Icon';
-import {IconDelivery} from 'components/Icon/IconDelivery';
-import {IconOpenEdge} from 'components/Icon/IconOpenEdge';
-import {IconUplynk} from 'components/Icon/IconUplynk';
-import {HomepageSectionGroup} from 'utils/Types';
+import { IconEdgioApplications } from 'components/Icon';
+import { IconDelivery } from 'components/Icon/IconDelivery';
+import { IconOpenEdge } from 'components/Icon/IconOpenEdge';
+import { IconUplynk } from 'components/Icon/IconUplynk';
+import { HomepageSectionGroup } from 'utils/Types';
 
 export const sections: HomepageSectionGroup[] = [
   {
@@ -304,23 +304,23 @@ export const sections: HomepageSectionGroup[] = [
           },
           {
             title: 'Live Linear',
-            path: 'https://docs.edgecast.com/video/index.html#Setup/Live-Linear.htm',
+            path: 'acquire/live',
           },
           {
             title: 'Live Events',
-            path: 'https://docs.edgecast.com/video/index.html#Setup/Live-Events-2.htm',
+            path: 'manage/live_events',
           },
           {
             title: 'Live Slicer',
-            path: 'https://docs.edgecast.com/video/index.html#Slicer/Live-Slicer-Setup.htm',
+            path: 'acquire/live/on_prem_slicer',
           },
           {
             title: 'Cloud Slicer Live',
-            path: 'https://docs.edgecast.com/video/index.html#Slicer/Cloud-Slicer-Live.htm',
+            path: 'acquire/live/cloud_slicer_live',
           },
           {
             title: 'On-Demand Content',
-            path: 'https://docs.edgecast.com/video/index.html#Setup/On-Demand-Content.htm',
+            path: 'acquire/vod',
           },
           {
             title: 'Channel Scheduler',
@@ -328,31 +328,31 @@ export const sections: HomepageSectionGroup[] = [
           },
           {
             title: 'Playback URLs',
-            path: 'https://docs.edgecast.com/video/index.html#Setup/Playback-URLs.htm',
+            path: 'deliver/playback_urls',
           },
           {
             title: 'Captions and Subtitles',
-            path: 'https://docs.edgecast.com/video/index.html#Setup/Captions-Subtitles.htm',
+            path: 'acquire/captions_and_subtitles',
           },
           {
-            title: 'Syndication Publishing',
-            path: 'https://docs.edgecast.com/video/index.html#Setup/Syndication-Publishing.htm',
+            title: 'Syndication',
+            path: 'monetize/syndication',
           },
           {
             title: 'Blackout',
-            path: 'https://docs.edgecast.com/video/index.html#Security/Blackout.htm',
+            path: 'deliver/manage/content_protection/blackout',
           },
           {
             title: 'Geoblocking',
-            path: 'https://docs.edgecast.com/video/index.html#Security/Geoblocking.htm',
+            path: 'deliver/manage/content_protection/geoblocking',
           },
           {
             title: 'Studio DRM',
-            path: 'https://docs.edgecast.com/video/index.html#Security/Studio-DRM.htm',
+            path: 'deliver/manage/content_protection/studio_drm',
           },
           {
             title: 'Ads',
-            path: 'https://docs.edgecast.com/video/index.html#AdIntegration/Ad-Server-Integration.htm',
+            path: 'monetize/ads',
           },
         ],
       },

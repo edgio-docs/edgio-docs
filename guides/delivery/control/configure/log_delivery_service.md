@@ -313,6 +313,8 @@ Origin Storage must be enabled for the name selected in the SHORTNAME.
 
 ## Sample Data  {/*sampling-data*/}
 
+Data Sampling allows you to control the volume of delivered log data by specifying the percentage of log lines to be delivered for each status code group (e.g., 1xx, 2xx, 3xx).
+
 [Data Sampling](/images/delivery/data-sampling.png)
 
 1. Slide the circle to select the percentage of log volume by status code group.

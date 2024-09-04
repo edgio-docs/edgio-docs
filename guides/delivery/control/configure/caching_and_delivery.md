@@ -554,15 +554,17 @@ Use this feature to establish and remove a link between two configurations, desi
 #### Link Existing  {/*linking-existing*/}
 
 1. Click the chain link icon at the bottom right of the configuration.
-2. In the **Link PROD config** section, click **Search existing**.
+2. In the **Link PROD config** field, click **Search existing**.
 3. Locate the configuration by choosing between `Published Hostname`, `Source Hostname`, `UUID`, `IPAC`, or `Username` in the **Filter by** dropdown and then typing the search criteria into the adjacent box.
 4. Optional. Review the configuration by clicking the **VIEW CONFIG** button.
 5. Click **Link**.
+6. Click **OK** to acknowledge the overwrite notice. You will see a confirmation message in the top, right corner with links to both the Staging and Prod configurations.
+7. Upon successful linking, you receive a message with the UUIDs and links to Staging and PROD configs.
 
 #### Link New  {/*linking-new*/}
 
 1. Click the chain link icon at the bottom right of the configuration.
-2. In the **Link PROD config** section, click **Create new**.
+2. In the **Link PROD config** field, click **Create new**.
 3. Fill out the **PUBLISHED HOSTNAME** and **PUBLISHED PATH** fields.
 4. Optional. To sync a different source/ host path, untick that option and enter a **SOURCE HOSTNAME** and **SOURCE PATH**.
 5. Click **Link**.
@@ -591,11 +593,12 @@ You can clone both Staging and PROD linked configurations without limitation.
 A **PROD** config cannot be reverted. You will see the message:
 "This configuration record is the Production side of a 'PROD-Stage’ linked relationship, and so it cannot be updated directly. Please navigate to the associated Staging configuration, make necessary updates there, and then synchronize those changes to this configuration."
 
-A **Staging** config can only be reverted to a version that has the **linkProdStage** structure. Once you link a configuration, it can only be reverted to a linked configuration; it cannot be linked to the source configuration.
+A **Staging** config can only be reverted to a version that has the **linkProdStage** structure. Once you link a configuration, it cannot be reverted to the initial version that was not linked.
 
 #### Delete
 
-<Tip>A linked configuration cannot be deleted using the rubbish-bin icon. You must first remove the link from the configuration, and then you can delete.</Tip>
+<Tip>**Manage** permissions are required to delete delivery configurations.</Tip>
 
-1. Click **Remove Link** from the toolbar.
-2. Click **Delete**.
+1. Click the **Remove Link** icon from the configuration options.
+2. Select **OK** to acknowledge the link removal. You will see a confirmation message.
+3. Click the rubbish-bin icon to delete the link. You can now work with the configurations as you typically do.

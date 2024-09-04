@@ -298,7 +298,7 @@ Origin Storage must be enabled for the name selected in the SHORTNAME.
 
 1. Select **Origin Storage** in the **DESTINATION** drop-down menu.
 
-2. Configure the field described in [Origin Storage Configuration Fields](#origin-storage-configuration-fields).
+2. Configure the fields described in [Origin Storage Configuration Fields](#origin-storage-configuration-fields).
 
 3. Click **SAVE**.
 
@@ -310,7 +310,6 @@ Origin Storage must be enabled for the name selected in the SHORTNAME.
 | --- | --- |
 | STORAGE ACCOUNTS | The Origin Storage account where you want to store logs. By default logs are stored under the same account that owns LDS configuration |
 
-
 ## Sample Data  {/*sampling-data*/}
 
 Data Sampling allows you to control the volume of delivered log data by specifying the percentage of log lines to be delivered for each status code group (e.g., 1xx, 2xx, 3xx).
@@ -321,9 +320,9 @@ Data Sampling allows you to control the volume of delivered log data by specifyi
 
     The valid range for sampling rates is `0` to `100`, where:
 
-    - `0` means all data is filtered out.
+    - `0`: all data is filtered out.
 
-    - `100` means no filtering is applied (all data is delivered).
+    - `100`: no filtering is applied (all data is delivered).
 
     - Any value in between represents the percentage of log lines to be delivered.
 

@@ -21,7 +21,7 @@ Deploy to an environment using either of the following methods:
 
         ![Deploy Changes](/images/v7/performance/rules-deploy-changes.png?width=450)
 
--   **{{ PRODUCT }} CLI:** Use this method to deploy changes from your local machine (e.g., changes to {{ CONFIG_FILE }} or {{ ROUTES_FILE }}).
+-   **{{ PRODUCT }} CLI:** Use this method to deploy changes to your [CDN-as-code configuration](/applications/performance/cdn_as_code) from your local machine (e.g., changes to {{ CONFIG_FILE }} or {{ ROUTES_FILE }}).
 
     ```bash
     {{ FULL_CLI_NAME }} deploy [<ORGANIZATION>] [--environment=<ENVIRONMENT>]

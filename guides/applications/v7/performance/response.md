@@ -23,33 +23,33 @@ are how the web signals errors and other states from the server to the web brows
 If there is an issue with the request, {{PRODUCT}} will either forward the error
 from the origin or respond with one of the following response codes:
 
-| Status Code                                                                                                                          | Description                                                                                                                                                                                                                                                                                                                                                |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 400 Bad Request                                                                                                                      | The URL is too long or the request headers are too large. [View request limits.](/applications/performance/limits#request-and-response-limits)                                                                                                                                                                                                             |
-| [404 Not Found](/applications/performance/troubleshooting#404-not-found-status-code)                                                 | The server could not find the requested resource.                                                                                                                                                                                                                                                                                                          |
-| [412 Precondition Failed](/applications/performance/troubleshooting#412-precondition-failed-status-code)                             | The requested content was not prefetched because it was not cached on the POP closest to the client. By default, {{ PRODUCT }} only prefetches cached content.                                                                                                                                                                                             |
-| [502 Bad Gateway](/applications/performance/troubleshooting#502-bad-gateway-status-code)                                             | {{ PRODUCT }} could not establish a connection to an origin server.                                                                                                                                                                                                                                                                                        |
-| 505 HTTP Version Not Supported                                                                                                       | An invalid HTTP protocol or version was requested.                                                                                                                                                                                                                                                                                                         |
-| 530 Internal {{ PRODUCT }} Error                                                                                                     | Unexpected error in one of Edgio's cloud function components. {{ CONTACT_SUPPORT }}                                                                                                                                                                                                                                                                        |
-| [531 Project Upstream Connection Error](/applications/performance/troubleshooting#531-project-upstream-connection-error-status-code) | {{ PRODUCT }} could not establish a connection to your origin.                                                                                                                                                                                                                                                                                             |
-| 532 Project Response Too Large                                                                                                       | The response from the {{ PRODUCT }} cloud function exceeded the [maximum response body limit](/applications/performance/limits#cloud-function-limits).                                                                                                                                                                                                     |
-| 533 Project Upstream TLS Error                                                                                                       | There was an error negotiating a secure TLS connection with the origin. Check whether the upstream TLS certificate has expired and whether the provided host name matches the upstream TLS certificate.                                                                                                                                                    |
-| 534 Project Error                                                                                                                    | Your project's cloud function has failed unexpectedly while processing the request because of an uncaught exception somewhere in the user's code or has issued a malformed response. Use [server logs](/applications/logs/server_logs) to debug.                                                                                                           |
-| 535 Unknown Project                                                                                                                  | The `host` header is missing or does not match any {{ PRODUCT }} deployment. Check the request and your project configuration.                                                                                                                                                                                                                             |
-| <a id="536"></a>536 Project HTTP Response Timeout                                                                                    | {{ PRODUCT }} did not receive an HTTP response from the upstream. Common causes are the upstream dropped the connection prematurely, the upstream application threw an exception, and the upstream took too long to respond.                                                                                                                               |
-| 537 Project DNS Resolution Error                                                                                                     | Failed to resolve the host name through DNS, which might indicate a problem with your DNS provider or an incorrectly configured domain.                                                                                                                                                                                                                    |
-| 538 Project Request Loop                                                                                                             | The {{ PRODUCT }} project exceeded the maximum level (3) of nested {{ PRODUCT }} requests. A request is nested when the {{ PRODUCT }} property is the upstream of itself or of another {{ PRODUCT }} property.                                                                                                                                             |
-| [539 Project Timeout](/applications/performance/troubleshooting#troubleshooting-539-status-codes)                                    | The project's cloud function did not respond on time, either due to slow upstreams, loops or badly handled asynchronous requests in code (e.g. missing "await" or call to "callback"). It can also be caused by a lack of allowlists (whitelists) configured on your web server(s). [View limits.](/applications/performance/limits#cloud-function-limits) |
-| 540 {{ PRODUCT }} Out of Resources                                                                                                   | The {{ PRODUCT }} project's cloud function crashed because of an out-of-memory situation. Use [server logs](/applications/logs/server_logs) to debug and lower memory usage.                                                                                                                                                                               |
-| 541 {{ PRODUCT }} Out of Workers                                                                                                     | A request could not be scheduled for processing due to the amount of traffic on your website. {{ ACCOUNT_UPGRADE }}                                                                                                                                                                                                                                        |
-| 542 Project Header Overflow                                                                                                          | The {{ PRODUCT }} project's request or response contained too many HTTP headers or the overall headers size exceeded the limit. [View limits.](/applications/performance/limits#request-and-response-limits)                                                                                                                                               |
-| 543 Global Upstream Timeout                                                                                                          | The request failed to propagate between the edge of our network and the Origin Shield POP. {{ CONTACT_SUPPORT }}                                                                                                                                                                                                                                           |
-| 544 Invalid Host Header                                                                                                              | The `host` header is set to an invalid domain.                                                                                                                                                                                                                                                                                                             |
-| 545 {{ PRODUCT }} Component Not Ready                                                                                                | An unprepared {{ PRODUCT }} component received traffic. {{ CONTACT_SUPPORT }}                                                                                                                                                                                                                                                                              |
-| 546 {{ PRODUCT }} Origin Shield POP TLS Error                                                                                        | There was an error negotiating a secure TLS connection with the Origin Shield POP. {{ CONTACT_SUPPORT }}                                                                                                                                                                                                                                                   |
-| 547 {{ PRODUCT }} Origin Shield POP No HTTP Response                                                                                 | {{ PRODUCT }} did not receive an HTTP response from the Origin Shield POP. {{ CONTACT_SUPPORT }}                                                                                                                                                                                                                                                           |
-| 548 {{ PRODUCT }} Origin Shield POP DNS Resolution Error                                                                             | {{ PRODUCT }} failed to resolve the Origin Shield POP's host name through DNS. {{ CONTACT_SUPPORT }}                                                                                                                                                                                                                                                       |
-| 549 Project Crashed                                                                                                                  | The {{ PRODUCT }} project's cloud function crashed unexpectedly because of fatal error in project's code or undesired process.exit call somewhere in the third party code. This error will cause a cold-start of your project for next request. Use [server logs](/applications/logs/server_logs) to debug.                                                |
+| Status Code                                                                                                                                              | Description                                                                                                                                                                                                                                                                                                                                                |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 400 Bad Request                                                                                                                                          | The URL is too long or the request headers are too large. [View request limits.](/applications/performance/limits#request-and-response-limits)                                                                                                                                                                                                             |
+| [404 Not Found](/applications/performance/troubleshooting#404-not-found-status-code)                                                                     | The server could not find the requested resource.                                                                                                                                                                                                                                                                                                          |
+| [412 Precondition Failed](/applications/performance/troubleshooting#412-precondition-failed-status-code)                                                 | The requested content was not prefetched because it was not cached on the POP closest to the client. By default, {{ PRODUCT }} only prefetches cached content.                                                                                                                                                                                             |
+| [502 Bad Gateway](/applications/performance/troubleshooting#502-bad-gateway-status-code)                                                                 | {{ PRODUCT }} could not establish a connection to an origin server.                                                                                                                                                                                                                                                                                        |
+| 505 HTTP Version Not Supported                                                                                                                           | An invalid HTTP protocol or version was requested.                                                                                                                                                                                                                                                                                                         |
+| 530 Internal {{ PRODUCT }} Error                                                                                                                         | Unexpected error in one of Edgio's cloud function components. {{ CONTACT_SUPPORT }}                                                                                                                                                                                                                                                                        |
+| [531 Project Upstream Connection Error](/applications/performance/troubleshooting#531-project-upstream-connection-error-status-code)                     | {{ PRODUCT }} could not establish a connection to your origin.                                                                                                                                                                                                                                                                                             |
+| 532 Project Response Too Large                                                                                                                           | The response from the {{ PRODUCT }} cloud function exceeded the [maximum response body limit](/applications/performance/limits#cloud-function-limits).                                                                                                                                                                                               |
+| 533 Project Upstream TLS Error                                                                                                                           | There was an error negotiating a secure TLS connection with the origin. Check whether the upstream TLS certificate has expired and whether the provided host name matches the upstream TLS certificate.                                                                                                                                                    |
+| 534 Project Error                                                                                                                                        | Your project's cloud function has failed unexpectedly while processing the request because of an uncaught exception somewhere in the user's code or has issued a malformed response. Use [server logs](/applications/logs/server_logs) to debug.                                                                                                           |
+| 535 Unknown Project                                                                                                                                      | The `host` header is missing or does not match any {{ PRODUCT }} deployment. Check the request and your project configuration.                                                                                                                                                                                                                             |
+| <a id="536"></a>536 Project HTTP Response Timeout                                                                                                        | {{ PRODUCT }} did not receive an HTTP response from the upstream. Common causes are the upstream dropped the connection prematurely, the upstream application threw an exception, and the upstream took too long to respond.                                                                                                                               |
+| 537 Project DNS Resolution Error                                                                                                                         | Failed to resolve the host name through DNS, which might indicate a problem with your DNS provider or an incorrectly configured domain.                                                                                                                                                                                                                    |
+| 538 Project Request Loop                                                                                                                                 | The {{ PRODUCT }} project exceeded the maximum level (3) of nested {{ PRODUCT }} requests. A request is nested when the {{ PRODUCT }} property is the upstream of itself or of another {{ PRODUCT }} property.                                                                                                                                             |
+| [539 Project Timeout](/applications/performance/troubleshooting#troubleshooting-539-status-codes)                                                        | The project's cloud function did not respond on time, either due to slow upstreams, loops or badly handled asynchronous requests in code (e.g. missing "await" or call to "callback"). It can also be caused by a lack of allowlists (whitelists) configured on your web server(s). [View limits.](/applications/performance/limits#cloud-function-limits) |
+| 540 {{ PRODUCT }} Out of Resources                                                                                                                       | The {{ PRODUCT }} project's cloud function crashed because of an out-of-memory situation. Use [server logs](/applications/logs/server_logs) to debug and lower memory usage.                                                                                                                                                                               |
+| 541 {{ PRODUCT }} Out of Workers                                                                                                                         | A request could not be scheduled for processing due to the amount of traffic on your website. {{ ACCOUNT_UPGRADE }}                                                                                                                                                                                                                                        |
+| 542 Project Header Overflow                                                                                                                              | The {{ PRODUCT }} project's request or response contained too many HTTP headers or the overall headers size exceeded the limit. [View limits.](/applications/performance/limits#request-and-response-limits)                                                                                                                                               |
+| 543 Global Upstream Timeout                                                                                                                              | The request failed to propagate between the edge of our network and the Origin Shield POP. {{ CONTACT_SUPPORT }}                                                                                                                                                                                                                                           |
+| 544 Invalid Host Header                                                                                                                                  | The `host` header is set to an invalid domain.                                                                                                                                                                                                                                                                                                             |
+| 545 {{ PRODUCT }} Component Not Ready                                                                                                                    | An unprepared {{ PRODUCT }} component received traffic. {{ CONTACT_SUPPORT }}                                                                                                                                                                                                                                                                              |
+| 546 {{ PRODUCT }} Origin Shield POP TLS Error                                                                                                            | There was an error negotiating a secure TLS connection with the Origin Shield POP. {{ CONTACT_SUPPORT }}                                                                                                                                                                                                                                                   |
+| 547 {{ PRODUCT }} Origin Shield POP No HTTP Response                                                                                                     | {{ PRODUCT }} did not receive an HTTP response from the Origin Shield POP. {{ CONTACT_SUPPORT }}                                                                                                                                                                                                                                                           |
+| 548 {{ PRODUCT }} Origin Shield POP DNS Resolution Error                                                                                                 | {{ PRODUCT }} failed to resolve the Origin Shield POP's host name through DNS. {{ CONTACT_SUPPORT }}                                                                                                                                                                                                                                                       |
+| 549 Project Crashed                                                                                                                                      | The {{ PRODUCT }} project's cloud function crashed unexpectedly because of fatal error in project's code or undesired process.exit call somewhere in the third party code. This error will cause a cold-start of your project for next request. Use [server logs](/applications/logs/server_logs) to debug.                                                |
 
 ## Response Headers {/* response-headers */}
 
@@ -91,41 +91,38 @@ Common response headers are described below.
 - **Etag:** Indicates the entity tag (ETag) for the requested content. This ETag allows our edge servers to revalidate stale content. In other words, our edge servers will use ETag when checking with the origin server to see if there is a newer version of the requested content.
 - **Expires:** Indicates the date and time (GMT) at which the response will be considered stale. By default, our edge servers must revalidate requests for stale content.
 - **Last-Modified:** Indicates the date and time (GMT) at which the requested content was last updated.
-- **Nel:** Indicates {{ PRODUCT }}'s Network Error Logging (NEL) policy. This policy instructs the client to generate a report for each attempt to connect to our network.
+- **Nel:** Indicates {{ PRODUCT }}'s Network Error Logging (NEL) policy. This policy instructs the client to generate a report for each attempt to connect to our network. 
 
-  <Tip>
-    Review NEL data from within Edge Insights through the [NEL data
-    source](/applications/performance/observability/edge_insights#nel).
-  </Tip>
+    <Tip>
+    Review NEL data from within Edge Insights through the [NEL data source](/applications/performance/observability/edge_insights#nel).
+    </Tip>
 
-  **Example:**
+    **Example:**
+    ```
+    {
+        "report_to": "default",
+        "max_age": 43200,
+        "include_subdomains": true,
+        "failure_fraction": 1.0,
+        "success_fraction": 0.001
+    }
+    ```
 
-  ```json
-  {
-    "report_to": "default",
-    "max_age": 43200,
-    "include_subdomains": true,
-    "failure_fraction": 1.0,
-    "success_fraction": 0.001
-  }
-  ```
+- **Report-To:** Instructs the client on how to submit NEL reports. 
 
-- **Report-To:** Instructs the client on how to submit NEL reports.
+    **Example:** 
 
-  **Example:**
-
-  ```json
-  {
-    "group": "default",
-    "max_age": 1800,
-    "include_subdomains": true,
-    "endpoints": [
-      {
-        "url": "https://report.edgecast.com/nel/v0?envid=12345678-90ab-cdef-ghij-klmnopqrstuv&pop=lac"
-      }
-    ]
-  }
-  ```
+    ```
+    {
+        "group": "default",
+        "max_age": 1800,
+        "include_subdomains": true,
+        "endpoints": [{
+                "url": "https://report.edgecast.com/nel/v0?envid=12345678-90ab-cdef-ghij-klmnopqrstuv&pop=lac"
+            }
+        ]
+    }
+    ```
 
 - **Server:** Provides information about the server that fulfilled the request.
 
@@ -193,7 +190,7 @@ Common response headers are described below.
   | 2    | The origin server responded with an invalid HTTP header. Check the headers included in the response.                                                      |
   | 3    | The origin server prematurely closed the connection.                                                                                                      |
   | 4    | Failed to encode the request.                                                                                                                             |
-  | 5    | Failed to connect to the origin server. <br />[Troubleshoot.](/applications/performance/troubleshooting#502-bad-gateway-status-code)                      |
+  | 5    | Failed to connect to the origin server.  <br />[Troubleshoot.](/applications/performance/troubleshooting#502-bad-gateway-status-code)                     |
   | 6    | The client sent an invalid request header. Check the headers included in the request.                                                                     |
   | 7    | Too many internal redirects.                                                                                                                              |
   | 8    | The client sent an invalid request (hotfile).                                                                                                             |
@@ -208,7 +205,7 @@ Common response headers are described below.
   | 17   | The origin server responded without including at least one header. Check the origin server's response.                                                    |
   | 18   | The origin server responded, but the connection timed out before the payload could be read.                                                               |
   | 19   | Detected a proxy request loop.                                                                                                                            |
-  | 20   | A timeout occurred before establishing a connection to the origin server. Check your web server's availability.                                           |
+  | 20   | A timeout occurred before establishing a connection to the origin server.  Check your web server's availability.                                          |
   | 21   | Failed connection due to a blacklisted origin server.                                                                                                     |
   | 22   | Failed to decode the response from the origin server.                                                                                                     |
   | 23   | The origin server is unavailable. Check your web server's availability.                                                                                   |
@@ -226,11 +223,10 @@ Common response headers are described below.
   -->
 
 - **{{ HEADER_PREFIX }}-components:** Contains {{ PRODUCT }} cloud information that is primarily meant for internal use when troubleshooting issues.
-  <!--
+    <a id="-mr" />
+<!--
 - **{{ HEADER_PREFIX }}-hit-request-id:** For responses served from cache, this header indicates the unique ID of the request that was cached on our CDN.
   -->
-
-  <a id="-mr" />
 
 - **{{ HEADER_PREFIX }}-mr:** Identifies each rule that was applied to a request.
 
@@ -433,7 +429,6 @@ Valid values are:
 - **wl**: Cloud worker lifetime - Indicates the total processing time, in milliseconds, for all cloud workers for all requests.
 
 Starting with @edgio/core version 7.12.x, you can also see the following metrics in the `{{ HEADER_PREFIX }}-t` response header that are used for internal monitoring and debugging purposes:
-
 - **hid**: Cloud worker handler ID - The unique ID of the Cloud worker handler instance that processed the request. The Cloud worker handler component is responsible for supervising Cloud worker server instance, proxying the request to the server and managing resources. The ID is same for all requests served by the same Cloud worker. The number of Cloud workers scales up/down based on the traffic.
 - **hlt**: Cloud worker handler lifetime - The total time in milliseconds this handler instance exists.
 - **hrc**: Cloud worker handler requests count - The number of requests this handler instance processed.
@@ -446,8 +441,8 @@ Starting with @edgio/core version 7.12.x, you can also see the following metrics
 - **slt**: Cloud worker server lifetime - The total time in milliseconds this server instance exists.
 - **src**: Cloud worker server requests count - The number of requests this server instance processed. This number equals to `hrc` metric value unless your project was restarted because of a fatal error.
 - **sec**: Cloud worker server errors count - The number of errors this server instance encountered (errors with level 2). For example top-level uncaught errors in your project that will result in 534 - Edgio Project Error.
-- **srss**: Cloud worker server resident set size - The amount of memory in MiB occupied by the code segment, heap and stack of this server instance and your application.
-- **st**: Cloud worker server time - The total time in milliseconds this server instance spent from receiving the request to sending the response back to Cloud worker handler. For example if you have a Next.js application, this means the time it took Next.js server to return response.
+- **srss**: Cloud worker server resident set size  - The amount of memory in MiB occupied by the code segment, heap and stack of this server instance and your application.
+- **st**: Cloud worker server time  - The total time in milliseconds this server instance spent from receiving the request to sending the response back to Cloud worker handler. For example if you have a Next.js application, this means the time it took Next.js server to return response.
 - **scs**: Cloud worker server cold-start - True if this server instance was started for the first time for this request, false otherwise.
 - **scst**: Cloud worker server cold-start time - The captured value of `st` metric from the first request where `scs` value was true.
 - **srt**: Cloud worker server ready time - The time in milliseconds it took from spawning the server instance to the moment it was ready to process requests on Cloud worker server cold-start.

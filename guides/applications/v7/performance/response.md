@@ -94,9 +94,8 @@ Common response headers are described below.
 - **Nel:** Indicates {{ PRODUCT }}'s Network Error Logging (NEL) policy. This policy instructs the client to generate a report for each attempt to connect to our network.
 
   <Tip>
-
-  Review NEL data from within Edge Insights through the [NEL datasource](/applications/performance/observability/edge_insights#nel).
-
+    Review NEL data from within Edge Insights through the [NEL data
+    source](/applications/performance/observability/edge_insights#nel).
   </Tip>
 
   **Example:**
@@ -215,22 +214,25 @@ Common response headers are described below.
   | 23   | The origin server is unavailable. Check your web server's availability.                                                                                   |
 
 - **{{ HEADER_PREFIX }}-aws-region:** Indicates the [AWS region](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions) from which a request to the {{ PRODUCT }} cloud was served.
-
-<!--- **{{ HEADER_PREFIX }}-caching-status:** Indicates cache status information. If the response was not cached or served from cache, then it will report the reason why it was not cached.
+  <!--
+- **{{ HEADER_PREFIX }}-caching-status:** Indicates cache status information. If the response was not cached or served from cache, then it will report the reason why it was not cached.
 
       **Example:** The following sample response header indicates that caching was explictly disabled for this request:
 
       `{{ HEADER_PREFIX }}-caching-status: disabled`
 
-      [Learn more.](/applications/performance/caching#why-is-my-response-not-being-cached)  -->
+      [Learn more.](/applications/performance/caching#why-is-my-response-not-being-cached)
+
+  -->
 
 - **{{ HEADER_PREFIX }}-components:** Contains {{ PRODUCT }} cloud information that is primarily meant for internal use when troubleshooting issues.
-
- <!--- **{{ HEADER_PREFIX }}-hit-request-id:** For responses served from cache, this header indicates the unique ID of the request that was cached on our CDN.-->
-
-- **{{ HEADER_PREFIX }}-mr:** Identifies each rule that was applied to a request.
+  <!--
+- **{{ HEADER_PREFIX }}-hit-request-id:** For responses served from cache, this header indicates the unique ID of the request that was cached on our CDN.
+  -->
 
   <a id="-mr" />
+
+- **{{ HEADER_PREFIX }}-mr:** Identifies each rule that was applied to a request.
 
   **Syntax:** `{{ HEADER_PREFIX }}-mr: <ENVIRONMENT #>:<RULE #>[;<ENVIRONMENT #>:<RULE #>;<ENVIRONMENT #>:<RULE #>]`
 

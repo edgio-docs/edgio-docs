@@ -340,15 +340,15 @@ export const sections: HomepageSectionGroup[] = [
           },
           {
             title: 'Blackout',
-            path: '/uplynk/deliver/manage/content_protection/blackout',
+            path: '/uplynk/manage/content_protection/blackout',
           },
           {
             title: 'Geoblocking',
-            path: '/uplynk/deliver/manage/content_protection/geoblocking',
+            path: '/uplynk/manage/content_protection/geoblocking',
           },
           {
             title: 'Studio DRM',
-            path: '/uplynk/deliver/manage/content_protection/studio_drm',
+            path: '/uplynk/manage/content_protection/studio_drm',
           },
           {
             title: 'Ads',

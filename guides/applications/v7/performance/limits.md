@@ -48,6 +48,7 @@ Limitations for {{ PRODUCT }} Cloud Functions are listed below. If your project 
 | Response headers count | 70         | The maximum number of developer-controlled headers defined within the response. Exceeding this limit results in a [542 Project Header Overflow](/applications/performance/response#status-codes) response.                                           |
 | Scheduling timeout     | 60 seconds | The maximum number of seconds that {{ PRODUCT }} will try to schedule the processing of a request before timing out. Exceeding this limit results in a [541 {{ PRODUCT }} Out of Workers](/applications/performance/response#status-codes) response. |
 
+<!--
 ### Deployment Limits {/*deployment-limits*/}
 
 {{ PRODUCT }} deployment limits are provided below.
@@ -56,7 +57,7 @@ Limitations for {{ PRODUCT }} Cloud Functions are listed below. If your project 
 | ------------------------------------ | --------------------- | ----------- |
 | Prerender concurrency                | 200                   |             |
 | Total number of prerendered requests | 25,000 per deployment |             |
-
+-->
 #### Reserved Headers {/*prohibited-headers*/}
 
 The following headers are served for use by {{ PRODUCT }}. You may not modify these request headers.

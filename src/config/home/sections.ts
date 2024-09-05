@@ -300,59 +300,59 @@ export const sections: HomepageSectionGroup[] = [
         items: [
           {
             title: 'Getting Started',
-            path: 'https://docs.edgecast.com/video/index.html#Setup/Setup-Overview.htm',
+            path: '/uplynk/get_started',
           },
           {
             title: 'Live Linear',
-            path: 'acquire/live',
+            path: '/uplynk/acquire/live',
           },
           {
             title: 'Live Events',
-            path: 'manage/live_events',
+            path: '/uplynk/manage/live_events',
           },
           {
             title: 'Live Slicer',
-            path: 'acquire/live/on_prem_slicer',
+            path: '/uplynk/acquire/live/on_prem_slicer',
           },
           {
             title: 'Cloud Slicer Live',
-            path: 'acquire/live/cloud_slicer_live',
+            path: '/uplynk/acquire/live/cloud_slicer_live',
           },
           {
             title: 'On-Demand Content',
-            path: 'acquire/vod',
+            path: '/uplynk/acquire/vod',
           },
           {
             title: 'Channel Scheduler',
-            path: 'manage/channels',
+            path: '/uplynk/manage/channels',
           },
           {
             title: 'Playback URLs',
-            path: 'deliver/playback_urls',
+            path: '/uplynk/deliver/playback_urls',
           },
           {
             title: 'Captions and Subtitles',
-            path: 'acquire/captions_and_subtitles',
+            path: '/uplynk/acquire/captions_and_subtitles',
           },
           {
             title: 'Syndication',
-            path: 'monetize/syndication',
+            path: '/uplynk/monetize/syndication',
           },
           {
             title: 'Blackout',
-            path: 'deliver/manage/content_protection/blackout',
+            path: '/uplynk/deliver/manage/content_protection/blackout',
           },
           {
             title: 'Geoblocking',
-            path: 'deliver/manage/content_protection/geoblocking',
+            path: '/uplynk/deliver/manage/content_protection/geoblocking',
           },
           {
             title: 'Studio DRM',
-            path: 'deliver/manage/content_protection/studio_drm',
+            path: '/uplynk/deliver/manage/content_protection/studio_drm',
           },
           {
             title: 'Ads',
-            path: 'monetize/ads',
+            path: '/uplynk/monetize/ads',
           },
         ],
       },

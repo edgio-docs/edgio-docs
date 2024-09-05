@@ -2,13 +2,9 @@
 title: {{CACHING_DELIVERY}}
 ---
 
-<Info>
-
-This content refers to Caching and Delivery v2. For legacy Caching and
+<Info>This content refers to Caching and Delivery v2. For legacy Caching and
 Delivery (v1), see the [Control Caching and Delivery v1 User
-Guide](/assets/delivery/legacy.pdf^).
-
-</Info>
+Guide](/assets/delivery/legacy.pdf).</Info>
 
 {{CACHING_DELIVERY}} delivers content via HTTP and HTTPS for all file formats. Both full (entire file) and progressive (range request) downloads are supported.
 
@@ -600,5 +596,5 @@ A **Staging** config can only be reverted to a version that has the **linkProdSt
 <Tip>**Manage** permissions are required to delete delivery configurations.</Tip>
 
 1. Click the **Remove Link** icon from the configuration options.
-2. Select **OK** to acknowledge the link removal. You will see a confirmation message.
-3. Click the rubbish-bin icon to delete the link. You can now work with the configurations as you typically do.
+2. Select **OK** to acknowledge the link removal. You will see a confirmation message, and you can now work with the configurations as you typically do.
+3. Click the rubbish-bin icon to delete the link.

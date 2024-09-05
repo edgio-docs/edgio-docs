@@ -310,7 +310,7 @@ Origin Storage must be enabled for the name selected in the SHORTNAME.
 | --- | --- |
 | STORAGE ACCOUNTS | The Origin Storage account where you want to store logs. By default logs are stored under the same account that owns LDS configuration |
 
-## Sample Data  {/*sampling-data*/}
+## Data Sampling  {/*sampling-data*/}
 
 Data Sampling allows you to control the volume of delivered log data by specifying the percentage of log lines to be delivered for each status code group (e.g., 1xx, 2xx, 3xx).
 

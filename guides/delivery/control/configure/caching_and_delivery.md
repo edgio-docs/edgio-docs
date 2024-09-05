@@ -597,4 +597,4 @@ A **Staging** config can only be reverted to a version that has the **linkProdSt
 
 1. Click the **Remove Link** icon from the configuration options.
 2. Select **OK** to acknowledge the link removal. You will see a confirmation message, and you can now work with the configurations as you typically do.
-3. Click the rubbish-bin icon to delete the link.
+3. Click the rubbish-bin icon to delete the configuration.

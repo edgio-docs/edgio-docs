@@ -324,7 +324,7 @@ export const sections: HomepageSectionGroup[] = [
           },
           {
             title: 'Channel Scheduler',
-            path: 'https://docs.edgecast.com/video/index.html#Develop/Schedule-Entries-API.htm?Highlight=scheduler',
+            path: 'manage/channels',
           },
           {
             title: 'Playback URLs',

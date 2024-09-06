@@ -49,7 +49,7 @@ You may create, modify, and delete Client-Side Protection policies.
 1.  Navigate to the **Client Protection** page.
     {{ SECURITY_NAV }} **Client Protection**.
 2.  Click **+ New Policy**.
-3.  Type the unique name by which this policy will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
+3.  <a id="create-name" />Type the unique name by which this policy will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
 4.  Define an Audit policy through which you can detect attacks.
 
     1.  Click on the **Audit** tab.

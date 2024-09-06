@@ -314,7 +314,7 @@ You may create, modify, and delete managed rules.
 1.  Navigate to the **Managed Rules** page.
     {{ SECURITY_NAV }} **Managed Rules**.
 2.  Click **+ New Managed Ruleset**.
-3.  In the **Name** option, type the unique name by which this managed rule will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
+3.  <a id="create-name" />In the **Name** option, type the unique name by which this managed rule will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
 4.  In the **Response Header Name** option, verify the name of the response header that will be included with blocked requests. This name may only consist of alphanumeric characters and dashes.
 5.  Determine whether {{ PRODUCT_SECURITY }} will [ignore specific cookies, request headers, or query string arguments](#preventing-false-positives-ignore-list) when assessing whether a request is a threat.
     1.  From the **Ignore List** section, choose to ignore specific cookies, request headers, or query string arguments.

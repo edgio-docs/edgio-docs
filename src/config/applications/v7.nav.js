@@ -406,7 +406,7 @@ const nav = {
           path: 'security/client_side_protection',
         },
         {
-          title: 'Security Apps',
+          title: 'Security Application Manager',
           path: 'security/security_applications',
         },
         {

@@ -384,7 +384,7 @@ You may create, modify, and delete rate rules.
 1.  Navigate to the **Rate Rules** page.
     {{ SECURITY_NAV }} **Rate Rules**.
 2.  Click **+ New Rate Ruleset**.
-3.  In the **Name** option, type the unique name by which this rate rule will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
+3.  <a id="create-name" />In the **Name** option, type the unique name by which this rate rule will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
 4.  In the **Apply rate limit to** option, indicate whether the rate limit should be applied across all requests or to [each unique client](#source).
     **{{ PRODUCT }} Premier Only:** You may select up to two sources when defining a unique client. For example, you may select `User agent` and `Cookie` to identify each combination of a specific cookie and user agent as a unique client.
 

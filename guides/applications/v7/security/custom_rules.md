@@ -444,7 +444,7 @@ You may create, modify, and delete custom rule sets.
 1.  Navigate to the **Custom Rules** page.
     {{ SECURITY_NAV }} **Custom Rules**.
 2.  Click **+ New Custom Ruleset**.
-3.  In the **Name** option, type the unique name by which this
+3.  <a id="create-name" />In the **Name** option, type the unique name by which this
     custom rule set will be identified. This name should be sufficiently
     descriptive to identify it when setting up a Security Application
     configuration.

@@ -1,10 +1,12 @@
 ---
-title: Security App
+title: Security Application Manager
 ---
 
 The **Security Application Manager** page contains the Security App configurations that {{ PRODUCT }} may use to screen your traffic. Traffic is screened using the first eligible Security App configuration according to the order in which they are listed. 
 
 [Learn more about threat detection.](/applications/security/waf#threat-detection)
+
+## Security Apps {/*security-apps*/}
 
 A Security App configuration:
 -   [Identifies the set of traffic](#identifying-traffic-for-inspection) that will undergo security screening by hostname, a URL path, or both.
@@ -27,9 +29,7 @@ A Security App configuration:
 
     </Callout>
 
-<a id="traffic-identification"></a>
-
-## Identifying Traffic for Inspection {/*identifying-traffic-for-inspection*/}
+## <a id="traffic-identification" />Identifying Traffic for Inspection {/*identifying-traffic-for-inspection*/}
 
 Restrict the set of traffic that will be screened by this Security App configuration by hostname, URL path, or both.
 

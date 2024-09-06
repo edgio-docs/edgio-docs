@@ -10,17 +10,17 @@ Define a rule that uses advanced condition-based logic through:
 
 <Callout type="important">
 
-This documentation expects you to be familiar with defining simple rules through `.get()`, `.match()` and `.post()` [Router](/docs/api/core/classes/router_Router.default.html) methods, as explained in [Route Criteria and Conditions](/applications/performance/cdn_as_code/route_criteria) and [Route Features](/applications/performance/cdn_as_code/route_features) documentation.
+This documentation expects you to be familiar with defining simple rules through `.get()`, `.match()` and `.post()` [Router](/docs/v7.x/api/core/classes/router_Router.default.html) methods, as explained in [Route Criteria and Conditions](/applications/performance/cdn_as_code/route_criteria) and [Route Features](/applications/performance/cdn_as_code/route_features) documentation.
 
 </Callout>
 
 ## Using the .if(), .elseif(), and .else() Methods {/* using-the-if-elseif-and-else-methods */}
 
-The [Router](/docs/api/core/classes/router_Router.default.html) class includes the conditional methods `.if()`, `.elseif()`, and `.else()` to implement if/then logic on requests. You can chain these methods to craft sophisticated routing rules. For enhanced conditions, you can embed [logical operator functions](#logical-and-or-not-functions) within the `.if()` and `.elseif()` criteria.
+The [Router](/docs/v7.x/api/core/classes/router_Router.default.html) class includes the conditional methods `.if()`, `.elseif()`, and `.else()` to implement if/then logic on requests. You can chain these methods to craft sophisticated routing rules. For enhanced conditions, you can embed [logical operator functions](#logical-and-or-not-functions) within the `.if()` and `.elseif()` criteria.
 
-Both the [`.if()`](/docs/api/core/classes/router_Router.default.html#if) and [`.elseif()`](/docs/api/core/classes/router_Router.default.html#elseif) methods have the same signature when it comes to defining conditions and features. The first argument is of type [`ConditionCriteria`](/docs/api/core/types/router_RouteCriteria.ConditionCriteria.html), designed to specify one or more conditions. The subsequent (_N_) arguments are of the [`ConditionalParam`](/docs/api/core/types/router_Router.ConditionParam.html) type, letting you define various features or routers, especially for [nested rules](#nested-rules).
+Both the [`.if()`](/docs/v7.x/api/core/classes/router_Router.default.html#if) and [`.elseif()`](/docs/v7.x/api/core/classes/router_Router.default.html#elseif) methods have the same signature when it comes to defining conditions and features. The first argument is of type [`ConditionCriteria`](/docs/v7.x/api/core/types/router_RouteCriteria.ConditionCriteria.html), designed to specify one or more conditions. The subsequent (_N_) arguments are of the [`ConditionalParam`](/docs/v7.x/api/core/types/router_Router.ConditionParam.html) type, letting you define various features or routers, especially for [nested rules](#nested-rules).
 
-Likewise, the [`.else()`](/docs/api/core/classes/router_Router.default.html#else) method takes any number (_N_) of arguments of the [`ConditionalParam`](/docs/api/core/types/router_Router.ConditionParam.html) type, allowing you to outline features or [nested rules](#nested-rules).
+Likewise, the [`.else()`](/docs/v7.x/api/core/classes/router_Router.default.html#else) method takes any number (_N_) of arguments of the [`ConditionalParam`](/docs/v7.x/api/core/types/router_Router.ConditionParam.html) type, allowing you to outline features or [nested rules](#nested-rules).
 
 It's important to note the chaining order of the conditional methods.
 
@@ -120,7 +120,7 @@ In this example, if the request path is `/foo`, the response body will be `Hello
 
 ## Logical .and(), .or(), not() Functions {/* logical-and-or-not-functions */}
 
-Using the [`.and()`](/docs/api/core/functions/router_RouteCriteria.and.html), [`.or()`](/docs/api/core/functions/router_RouteCriteria.or.html) and [`.not()`](/docs/api/core/functions/router_RouteCriteria.not.html) helper functions, you can create more complex logic within your conditional rules. These functions may be imported from the `{{ PACKAGE_NAME }}/core` package.
+Using the [`.and()`](/docs/v7.x/api/core/functions/router_RouteCriteria.and.html), [`.or()`](/docs/v7.x/api/core/functions/router_RouteCriteria.or.html) and [`.not()`](/docs/v7.x/api/core/functions/router_RouteCriteria.not.html) helper functions, you can create more complex logic within your conditional rules. These functions may be imported from the `{{ PACKAGE_NAME }}/core` package.
 
 ```js
 import {Router, and, or, not} from '@edgio/core';
@@ -203,7 +203,7 @@ export default new Router()
 
 ## Advanced Criteria {/* advanced-criteria */}
 
-If you wish to utilize the `.if()`, `.elseif()`, and `.else()` methods but find that your criteria are not supported by [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html), consider using the `edgeControlCriteria` property. This property allows you to define more advanced criteria using object-literal notation and is of the type `Matches`. For a detailed specification of the `Matches` type, refer to the [API reference](/docs/api/core/interfaces/types.Matches.html).
+If you wish to utilize the `.if()`, `.elseif()`, and `.else()` methods but find that your criteria are not supported by [`RouteCriteria`](/docs/v7.x/api/core/interfaces/router_RouteCriteria.default.html), consider using the `edgeControlCriteria` property. This property allows you to define more advanced criteria using object-literal notation and is of the type `Matches`. For a detailed specification of the `Matches` type, refer to the [API reference](/docs/v7.x/api/core/interfaces/types.Matches.html).
 
 The following example applies the nested logic if the device is a tablet and the HTTP request method is `GET` (combination of both criteria formats):
 
@@ -261,7 +261,7 @@ export default new Router()
   .use(edgioRoutes);
 ```
 
-Using the example above for caching the `/api/*` path, we can rewrite the same route using the [`conditional()`](/docs/api/core/classes/router_Router.default.html#conditional) method. This method accepts a single argument of type `Matches`. You can see the full specification of the `Matches` type in the [API reference](/docs/api/core/interfaces/types.Matches.html).
+Using the example above for caching the `/api/*` path, we can rewrite the same route using the [`conditional()`](/docs/v7.x/api/core/classes/router_Router.default.html#conditional) method. This method accepts a single argument of type `Matches`. You can see the full specification of the `Matches` type in the [API reference](/docs/v7.x/api/core/interfaces/types.Matches.html).
 
 ```js filename="./routes.js"
 import {Router} from '@edgio/core/router';
@@ -318,7 +318,7 @@ This is equivalent to the previous example. Broken down by line:
 
 #### Operators {/* operators */}
 
-The [`Boolean`](/docs/api/core/interfaces/types.Boolean.html) type is used as a logical operator in the `if` array. You may specify an `and` or `or` operator. The `and` operator requires all conditions to be met. The `or` operator requires only one condition to be met.
+The [`Boolean`](/docs/v7.x/api/core/interfaces/types.Boolean.html) type is used as a logical operator in the `if` array. You may specify an `and` or `or` operator. The `and` operator requires all conditions to be met. The `or` operator requires only one condition to be met.
 
 Currently, only a single `and/or` operator is supported. The following would be an invalid use of multiple operators:
 
@@ -351,7 +351,7 @@ Currently, only a single `and/or` operator is supported. The following would be 
 
 The criteria outline the conditions that a request must fulfill for certain features to be applied. In simple terms, they state: "If the request meets these conditions, apply the specified features."
 
-In the following example, we are using the `===` operator to check if a certain aspect of the request ([`RulesVariables`](/docs/api/core/interfaces/types.RulesVariables.html)) matches an expected value:
+In the following example, we are using the `===` operator to check if a certain aspect of the request ([`RulesVariables`](/docs/v7.x/api/core/interfaces/types.RulesVariables.html)) matches an expected value:
 
 ```js
 {

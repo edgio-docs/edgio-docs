@@ -9,16 +9,19 @@ title: Attack Surface Management
 Definitions for key concepts are provided below.
 
 -   **Collection:** A [collection](#collections) represents the segment(s) of your network that will be scanned for vulnerabilities. 
--   **Assets:** Your assets consist of hostnames, IP addresses, GitHub repositories, and Snyk instances. There are two methods for registering an asset.
-    -   An asset is registered for each hostname, IP address, GitHub repository, and Snyk instance defined as a seed.
-    -   {{ PRODUCT }} uses seeds to determine which network segments will be scanned. Each hostname and IP address identified through this scan is also registered as an asset.
+-   **Assets:** Your assets consist of hostnames, IP addresses, GitHub repositories, Snyk targets, and AWS resources. {{ PRODUCT }} registers assets using the following methods:
+    -   An asset is registered for each hostname, IP address, and GitHub repository defined as a seed.
+    -   {{ PRODUCT }} uses seeds to determine which network segments will be scanned. Each hostname and IP address identified through this scan is also registered as an asset. 
+    -   Each Snyk and Amazon GuardDuty seed may target an entire organization or system. {{ PRODUCT }} will generate an asset for each Snyk target and AWS resource associated with those configurations.
 -   **Exposures:** By default, {{ PRODUCT }} scans your network for:
     -   Common Vulnerabilities and Exposures (CVE). A CVE represents a known security vulnerability or exposure for a software package. 
     -   Common Weakness Enumeration (CWE). A CWE identifies a common software or hardware weakness that can potentially introduce a security vulnerability. 
     -   Open ports.
     -   TLS issues.
-    -   Exposed secrets.
     -   Response header violations. For example, a required header may be missing or it can assigned an invalid value.
+
+    Additionally, {{ PRODUCT }} can pull vulnerabilities identified by GitHub, Snyk, or Amazon GuardDuty.
+
 -   **Protections:** {{ PRODUCT }} identifies the security solutions that are protecting the assets associated with the scanned network segment.
 -   **Technologies:** {{ PRODUCT }} identifies the software and services used by the assets associated with the scanned network segment.
 -   **Rules:** Determines how vulnerabilities and exposures are detected and handled. 
@@ -52,10 +55,11 @@ A collection represents the segment(s) of your network that will be scanned for 
 Each collection must contain at least one seed. Use one or more seed(s) to:
 
 -   Define a domain, an IP address, or a range of IP addresses scope that will be scanned.
--   Define a GitHub repository from which security vulnerabilities identified by Dependabot will be pulled.
+-   Define a GitHub repository from which security vulnerabilities identified by GitHub will be pulled. These vulnerabilities are identified through Dependabot, code scanning, and secret scanning.
 -   Define a Snyk instance from which security vulnerabilities will be pulled.
+-   Define an Amazon GuardDuty instance and the region(s) from which findings will be pulled.
 
-Once you have defined the desired seed(s), {{ PRODUCT }} will scan your network for exposures and retrieve vulnerabilities identified by Dependabot (GitHub) and Snyk. This allows {{PRODUCT}} to generate a consolidated list of vulnerabilities and exposures that provides full visibility into your organization's attack surface. 
+Once you have defined the desired seed(s), {{ PRODUCT }} will scan your network for exposures and retrieve vulnerabilities identified by GitHub and Snyk. This allows {{PRODUCT}} to generate a consolidated list of vulnerabilities and exposures that provides full visibility into your organization's attack surface. 
     
 ### Managing Collections {/*managing-collections*/}
 
@@ -101,20 +105,32 @@ You may create, modify, and delete collections. Finally, you can reset a collect
 
     -   **Domain:** From the **Seed** option, type the name of the domain (e.g., example.com) that will be scanned.
     -   **GitHub Repository:** 
+
         1.  From the **Seed** option, type the repository path (e.g., edgio-docs\edgio-docs). A repository path typically identifies the owner of the repository (e.g., an organization or a user), a slash, and then the name of the repository.
         2.  From the **GitHub Personal Access Token** option, provide a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) through which {{ PRODUCT }} will access your repository. 
+
         <!-- 3.  From the **Branches**, type one or more branch(es) that will be scanned. Use a comma to delimit each branch. -->
         3.  From the **Linked hostnames** option, type one or more hostname(s) associated with the specified branches. Use a comma to delimit each hostname.
+
     -   **IP Address:** From the **Seed** option, type the desired IP address.
     -   **IP Address Range:** From the **Seed** option, type the desired IP address range or IP address block. Use CIDR notation.
 
         **Sample IP address range:** `192.0.2.10-100`
 
         **Sample IP address block:** `192.0.2.0/24`
+
     -   **Snyk:** 
+
         1.  In the **Name** option, type a descriptive name.
         2.  In the **Organization id** option, type your Snyk organization's internal ID.
         3.  In the **API Key** option, type your Snyk organization's API key.
+
+    -   **Amazon GuardDuty:**
+
+        1.  In the **Name** option, type a descriptive name.
+        2.  In the **Access Key ID** option, type your Amazon GuardDuty [access key ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey).
+        3.  In the **Secret Access Key** option, type your Amazon GuardDuty [secret access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey).
+        4.  In the **Regions** option, type the regions for which findings will be pulled.
 
 6.  Click **Create Seed**.
 
@@ -174,6 +190,7 @@ Once you have created a collection and [added at least one seed](#add-seed) to i
 -   [Create or modify rules](#rules) to create custom exposure detection and to determine whether exposures are created from findings discovered from scanned assets.
 
     For example, the default behavior is to scan ports for technologies, protections, and exposures. However, you can create a [rule that prevents exposures from being created from port scans](#scan-ports-without-exposures). 
+-   By default, {{ PRODUCT }} performs superficial penetration testing to assess whether your assets are protected by a Web Application Firewall (WAF). For example, this testing will assess whether those assets are susceptible to cross-side scripting (XSS) or SQL injection. Disable this type of testing by clearing the **Enable WAF detection** setting from the **Attack Surface Management** section of your organization's **Settings** page. 
 -   {{ PRODUCT }} may identify unreachable assets when it scans your network. Perform the following steps to view a list of these assets:
 
     1.  Open the desired scan.
@@ -215,8 +232,9 @@ Rules allow you to:
 **Key information:**
 
 -   {{ PRODUCT }} will not create an exposure for a hostname or IP address unless a finding matches at least one rule that is configured to create an exposure. 
--   For GitHub repositories, {{ PRODUCT }} pulls vulnerabilities identified by Dependabot. 
--   For Snyk, {{ PRODUCT }} pulls vulnerabilities identified by Snyk. 
+-   For GitHub repositories, {{ PRODUCT }} pulls vulnerabilities identified by GitHub. 
+-   For Snyk, {{ PRODUCT }} pulls vulnerabilities identified by Snyk.
+-   For Amazon GuardDuty, {{ PRODUCT }} pulls findings identified by Amazon GuardDuty for the regions defined within the seed.
 -   {{ PRODUCT }} provides a default rule set that you can use as a starting point. This rule set creates exposures for all findings.
 -   Rules are processed in the order that they are listed. If a finding satifies multiple rules, then all of those rules are applied to it. {{ PRODUCT }} resolves conflicts by giving precedence to the rule that is closest to the bottom of the list. 
 

@@ -49,7 +49,7 @@ npx degit https://github.com/edgio-docs/edgio-serverless-example my-serverless-f
 
 ## Responding to requests {/* responding-to-requests */}
 
-Use the [compute](/docs/api/core/classes/router_RouteHelper.default.html#compute) method to generate a synthetic response:
+Use the [compute](/docs/v7.x/api/core/classes/router_RouteHelper.default.html#compute) method to generate a synthetic response:
 
 ```js
 // routes.js
@@ -100,7 +100,7 @@ export default new Router().get('/some-route/:someParam', ({compute}) => {
 });
 ```
 
-See [RouteHelper](/docs/api/core/classes/router_RouteHelper.default.html) for all of the methods that you can call when responding to a request.
+See [RouteHelper](/docs/v7.x/api/core/classes/router_RouteHelper.default.html) for all of the methods that you can call when responding to a request.
 
 ## Modifying a response from the origin {/* modifying-a-response-from-the-origin */}
 
@@ -220,7 +220,7 @@ export default new Router().get('/', ({cache, compute}) => {
 });
 ```
 
-See the [cache](/docs/api/core/classes/router_RouteHelper.default.html#cache) method for more options.
+See the [cache](/docs/v7.x/api/core/classes/router_RouteHelper.default.html#cache) method for more options.
 
 ## Running your project locally {/* running-your-project-locally */}
 
@@ -244,9 +244,7 @@ Deploy your app to the {{ PRODUCT_PLATFORM }} by running the following command i
 
 ## Limits {/* limits */}
 
-{{ PRODUCT }} Cloud Functions limits are listed below.
+{{ PRODUCT }} Cloud Functions have the following limitations:
 
-- Our Cloud Functions have a maximum runtime of 20 seconds per request. The response for a function that exceeds this limit is a [539 Project Timeout](/applications/performance/response#exclusive-status-codes).
-- Our Cloud Functions workers are allowed to generate a response body with a maximum file size of 6 MB.
 - Your project must comply with all applicable [{{ PRODUCT }} {{ PRODUCT_EDGE }} limitations.](/applications/performance/limits)
 - Your project must comply with [{{ PRODUCT }} {{ PRODUCT_PLATFORM }} limitations.](/applications/sites_frameworks/limits)

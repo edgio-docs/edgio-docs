@@ -1,0 +1,8 @@
+required: true
+content:
+  application/json:
+    schema:
+      $ref: ../schemas/rtldBotProfileProperties.yaml
+    examples:
+      reference:
+        $ref: ../examples/rtldExampleBotProfileBody.yaml

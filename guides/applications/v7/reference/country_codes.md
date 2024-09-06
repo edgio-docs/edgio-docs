@@ -9,7 +9,7 @@ title: Country and Country Subdivision Codes
 ISO-3166 country codes are supported by:
 
 -   **Rules:** [Country match condition](/applications/performance/rules/conditions#country)
--   **CDN-as-code:** [location.country condition](/docs/api/core/interfaces/types.RulesVariables.html#location)
+-   **CDN-as-code:** [location.country condition](/docs/v7.x/api/core/interfaces/types.RulesVariables.html#location)
 -   **Web Application Firewall:** [Access Rules](/applications/security/access_rules), [Rate Rules](/applications/security/rate_rules), [Bot Manager](/applications/security/bot_rules), [Custom Rules](/applications/security/custom_rules), and [Dashboard](/applications/security/dashboard)
 
 <Callout type="info">

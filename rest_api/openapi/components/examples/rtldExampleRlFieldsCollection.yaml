@@ -1,0 +1,16 @@
+value:
+  '@id': /rtld/v1/rl/fields
+  '@type': Collection
+  items:
+    - code: timestamp
+      name: Timestamp
+    - code: user_agent
+      name: User Agent
+    - code: url
+      name: URL
+    - code: scope_name
+      name: Scope Name
+    - code: scope_id
+      name: Scope ID
+    - code: method
+      name: Request Method

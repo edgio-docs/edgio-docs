@@ -10,7 +10,7 @@ As outlined in the [Route Criteria](/applications/performance/cdn_as_code#route-
 
 Match all requests through either of the following methods:
 
-- [`.match`](/docs/api/core/classes/router_Router.default.html#match) with an empty criteria object
+- [`.match`](/docs/v7.x/api/core/classes/router_Router.default.html#match) with an empty criteria object
 
   ```js
   router.match({}, {
@@ -18,7 +18,7 @@ Match all requests through either of the following methods:
   });
   ```
 
-- [`always`](/docs/api/core/classes/router_Router.default.html#always) (requires {{ PRODUCT }} v7.2.0 or later)
+- [`always`](/docs/v7.x/api/core/classes/router_Router.default.html#always) (requires {{ PRODUCT }} v7.2.0 or later)
 
   ```js
   router.always({
@@ -214,7 +214,7 @@ This matches the path literally, so `/some-path` will match, but `/Some-Path` wi
 
 ## Multiple Path Matching {/* multiple-path-matching */}
 
-Multiple path matching uses the [`InOperatorValues`](/docs/api/core/types/router_RouteCriteria.InOperatorValues.html) type for matching a generic array of values. To use this, you must specify the argument as a [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html) type for the `path` you would like to match against. This type of matching is similar to `exact` matching in that it uses strict comparison.
+Multiple path matching uses the [`InOperatorValues`](/docs/v7.x/api/core/types/router_RouteCriteria.InOperatorValues.html) type for matching a generic array of values. To use this, you must specify the argument as a [`RouteCriteria`](/docs/v7.x/api/core/interfaces/router_RouteCriteria.default.html) type for the `path` you would like to match against. This type of matching is similar to `exact` matching in that it uses strict comparison.
 
 For example, the following route matches requests to `/some-path` and `/another-path`, but not `/Some-Path` or `/Another-Path`:
 
@@ -259,7 +259,7 @@ router.match(
 );
 ```
 
-Regular expression matching is also available for matching query parameters, cookies, and request headers, and more. Any property of [`RouteCriteria`](/docs/api/core/interfaces/router_RouteCriteria.default.html) that accepts [`CriteriaValue`](/docs/api/core/types/router_RouteCriteria.CriteriaValue.html) or [`OptionalCriteriaValue`](/docs/api/core/types/router_RouteCriteria.OptionalCriteriaValue.html) types can use a regular expression and negation.
+Regular expression matching is also available for matching query parameters, cookies, and request headers, and more. Any property of [`RouteCriteria`](/docs/v7.x/api/core/interfaces/router_RouteCriteria.default.html) that accepts [`CriteriaValue`](/docs/v7.x/api/core/types/router_RouteCriteria.CriteriaValue.html) or [`OptionalCriteriaValue`](/docs/v7.x/api/core/types/router_RouteCriteria.OptionalCriteriaValue.html) types can use a regular expression and negation.
 
 
 <Callout type="important">

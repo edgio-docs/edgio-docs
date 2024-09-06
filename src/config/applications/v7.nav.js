@@ -200,6 +200,10 @@ const nav = {
               path: 'performance/observability/edge_insights',
             },
             {
+              title: 'Origin Analytics',
+              path: 'performance/observability/origin_analytics',
+            },
+            {
               title: 'Real User Monitoring (RUM)',
               path: 'performance/observability/real_user_monitoring',
             },
@@ -716,7 +720,7 @@ const nav = {
         },
         {
           title: 'Cache-Manifest.js File',
-          path: 'performance/prefetching/cache_manifest_js_file',
+          path: 'reference/cache_manifest_js_file',
         },
         separator,
         {

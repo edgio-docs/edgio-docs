@@ -14,7 +14,6 @@
 | BUR | Los Angeles | North America |
 | CDC | Ashburn | North America |
 | CGK | Jakarta | Asia |
-| CHA | Chicago | North America |
 | CHD | Chicago | North America |
 | CHF | Chicago | North America |
 | CJU | Seoul, Republic of South Korea | Asia |
@@ -39,7 +38,6 @@
 | JNB | Johannesburg, South Africa | Europe |
 | KHH | Kaohsiung | Asia |
 | KWI | Kuwait | Europe |
-| LAA | Los Angeles | North America |
 | LAC | Los Angeles | North America |
 | LHC | London | Europe |
 | LHD | London | Europe |
@@ -73,7 +71,6 @@
 | PAA | Paris | Europe |
 | PAB | Paris | Europe |
 | PBC | Puebla, Mexico | North America |
-| PHD | Philadelphia | North America |
 | PIT | Pittsburgh | North America |
 | PNH | Phnom Penh | Asia |
 | PVR | Guadalajara | North America |

@@ -86,7 +86,7 @@ The `environments` key is an object whose properties define the name of the envi
 | `<ENV_NAME>.hostnames`                       | Object[] | A list of hostnames specific to the environment.                                                                                                                                                                                                 |
 | `<ENV_NAME>.hostnames[].hostname`            | String   | (Required) The hostname for the environment.                                                                                                                                                                                                     |
 | `<ENV_NAME>.hostnames[].default_origin_name` | String   | Optional default origin this hostname should use                                                                                                                                                                                                 |
-| `<ENV_NAME>.hostnames[].tls`                 | Object   | Optional [TLS configuration](/docs/api/core/interfaces/types.Hostnames.html#tls)                                                                                                                                                                 |
+| `<ENV_NAME>.hostnames[].tls`                 | Object   | Optional [TLS configuration](/docs/v7.x/api/core/interfaces/types.Hostnames.html#tls)                                                                                                                                                                 |
 | `<ENV_NAME>.origins`                         | Object[] | A list of origin configurations that override those defined within the [origins property](#origins). <Important> An origin configuration defined within this property is ignored when a corresponding one is not found at the root. </Important> |
 
 **Sample Configuration**
@@ -290,7 +290,7 @@ Unexpected behavior may occur when there is a mismatch between your project's No
 
 By default, the following `{{ CONFIG_FILE }}` file is created by `{{ CLI_CMD(init) }}`. The contents of this file may differ when a framework supported by {{ PRODUCT }} {{ PRODUCT_PLATFORM }} is detected during initialization.
 
-See the full API specification for the `{{ CONFIG_FILE }}` file [here](/docs/api/core/interfaces/config.default.html).
+See the full API specification for the `{{ CONFIG_FILE }}` file [here](/docs/v7.x/api/core/interfaces/config.default.html).
 
 ```js filename="{{CONFIG_FILE}}"
 // This file was automatically added by edgio init.

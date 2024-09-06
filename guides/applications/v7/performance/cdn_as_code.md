@@ -334,7 +334,7 @@ Routes define a set of [Rules](/applications/performance/rules) that determine h
 
 In {{ EDGEJS_LABEL }}, this is broken down into two parts when calling a router function. We'll dive deeper into the different available methods below, but for now, will use the `.match()` method as an example.
 
-The `.match()` takes two arguments: `.match(criteria, features)`. The [`.match()` API documentation](/docs/api/core/classes/router_Router.default.html#match) will provide you with the specific type definitions, but we'll refer to them as `criteria` and `features` throughout this guide.
+The `.match()` takes two arguments: `.match(criteria, features)`. The [`.match()` API documentation](/docs/v7.x/api/core/classes/router_Router.default.html#match) will provide you with the specific type definitions, but we'll refer to them as `criteria` and `features` throughout this guide.
 
 - `criteria` can be a String for a simple path matching, or an Object that defines more specific criteria for matching requests such as HTTP method, headers, cookies, and query string parameters.
 - `features` is an Object that defines how {{ PRODUCT }} will handle the requests that match the criteria, such as caching, redirects, proxying to an origin server, and more.
@@ -445,7 +445,7 @@ Routes are defined by calling a method on the `Router` class. While most methods
 - `options`
 - `head`
 
-For a complete list and details, refer to the [Router API documentation](/docs/api/core/classes/router_Router.default.html).
+For a complete list and details, refer to the [Router API documentation](/docs/v7.x/api/core/classes/router_Router.default.html).
 
 ## Route Execution {/* route-execution */}
 

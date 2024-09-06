@@ -17,10 +17,10 @@ Each configuration in the list includes this information:
 | Number of configurations and configuration names | Customer-assigned configuration name. |
 | SHORTNAME | Currently selected account name. |
 | SERVICE TYPE | Delivery service for which logs will be created. (HTTP or MMD Live Ingest). |
-| DESTINATION | Log file location:<br /> - **Origin Storage**: Logs are stored at the root of your space in a directory called '_livelogs'. You are responsible for data maintenance; is not responsible for data removal.<br /> - **Amazon S3**: Amazon's cloud-based object storage.<br /> - **Google Cloud Storage**: Google's cloud-based object storage.<br /> - **Datadog**: A third-party storage option with existing account. |
-| DATA COMPRESSION | File compression method. Possible values:<br /> - ZSTD<br /> - LZ4<br /> - SNAPPY <br /> - LZF (Edgio's LZ4 implementation uses the LZ4 (Framed) compression algorithm.) <br /> - GZIP |
+| DESTINATION | Log file location:<ul><li>**Amazon S3**: Amazon's cloud-based object storage.</li><li>**Origin Storage**: Logs are stored at the root of your space in a directory called '_livelogs'.</li></ul>  You are responsible for data maintenance; Edgio is not responsible for data removal.<ul><li>**Google Cloud Storage**: Google's cloud-based object storage.</li><li>**Datadog**: A third-party storage option with existing account.</li></ul> |
+| DATA COMPRESSION | File compression method. Possible values:<ul><li>ZSTD</li><li>LZ4</li><li>SNAPPY</li><li>LZF (Edgio's LZ4 implementation uses the LZ4 (Framed) compression algorithm.) </li><li>GZIP</li></ul> |
 | STATE| Identifies whether the configuration is actively used, suspended, etc.|
-|STATUS | Configuration status. When you create and save a configuration, it goes through a validation process. Possible status values:<br /> - In Progress<br /> - Pending<br /> - Completed <br /> - Failed <br /> - Deactivated |
+|STATUS | Configuration status. When you create and save a configuration, it goes through a validation process. Possible status values:<ul><li>In Progress</li><li>Pending</li><li>Completed</li><li>Failed</li><li>Deactivated</li></ul>  |
 | LAST UPDATED | Configuration's creation or last modified date. |
 
 ## Choose an Account  {/*choosing-an-account*/}
@@ -49,12 +49,12 @@ You can create a single configuration for any combination of shortname, destinat
 
     The configuration is displayed in edit mode. If the configuration's destination is Origin Storage, you will see a message warning you about extra fees if you choose to store logs in.
 
-    <Callout type="info"> - Existing configurations include [Directory Layout and FileName Template Fields](#delivery-option-fields) <br /> - If your user does not have 'Manage' permissions for all fields are disabled and you cannot modify the configuration.</Callout>
+    <Callout type="info"> <ul><li>Existing configurations include [Directory Layout and FileName Template Fields](#delivery-option-fields)</li><li>If your user does not have 'Manage' permissions for all fields are disabled and you cannot modify the configuration.</li></ul> </Callout>
 
 2. Modify fields as needed. See [Log Delivery Configuration Fields](#log-delivery-service-configuration-fields) and [Configuring Log Fields](#configuring-log-fields) for details.
 3. Save the configuration by clicking the **Save** button.
 
-<Callout type="info"> - It can take 15 to 40 minutes for changes to take effect. <br /> -  Depending on your permissions, you may not be able to edit a configuration.</Callout>
+    <Callout type="info"> <ul><li>It can take 15 to 40 minutes for changes to take effect. </li><li>Depending on your permissions, you may not be able to edit a configuration.</li></ul> </Callout>
 
 ## Configure Log Fields  {/*configuring-log-fields*/}
 
@@ -102,7 +102,7 @@ Static fields are user-defined fields with a value that does not change.
 
 <Callout type="info">It can take 15 to 40 minutes for the deletion to take effect. </Callout>
 
-### Deactivate/ Activate a Log Delivery Service Configuration  {/*activate-deactivate-a-log-delivery-service-configuration*/}
+### Deactivate/Activate a Log Delivery Service Configuration  {/*activate-deactivate-a-log-delivery-service-configuration*/}
 
 #### Deactivate   {/*deactivating-a-log-delivery-service-configuration*/}
 
@@ -183,7 +183,7 @@ LDS supports log data streaming to a custom HTTPS endpoint using POST requests.
 | Field | Description |
 |---|---|
 | URL |  HTTPS URL that accepts POST requests. |
-| AUTHORIZATION HEADER VALUE | (optional) Authorization header value to use when sending logs. (e.g., 'Basic \<Base64 encoded username and password\>', 'Bearer \<Your API key\>') |
+| AUTHORIZATION HEADER VALUE | (optional) Authorization header value to use when sending logs. (e.g., `Basic \<Base64 encoded username and password\>`, `Bearer \<Your API key\>`) |
 | CUSTOM HEADER NAME | (optional) Custom HTTP header name to use when sending logs. (Content-Type, Encoding, Authorization, Host are not supported). |
 | CUSTOM HEADER VALUE | (optional) Custom HTTP header value to use when sending logs. |
 
@@ -209,8 +209,8 @@ LDS supports log data streaming to a custom HTTPS endpoint using POST requests.
 | --- | --- |
 | Site | Datadog site region that matches your Datadog environment |
 | API Key | API key associated with your Datadog account |
-| Service | _(optional)_ The property to be used as the 'service' property of Datadog |
-| Tags | _(optional)_ Comma-separated list of tag to send with logs (e.g.cdn:edgio) |
+| Service | (optional) The property to be used as the 'service' property of Datadog |
+| Tags | (optional) Comma-separated list of tag to send with logs (e.g.cdn:edgio) |
 
 ### Google Cloud Storage  {/*enabling-log-delivery-to-google-cloud-storage*/}
 
@@ -282,7 +282,7 @@ Before configuring Hydrolix as a destination, you will need to do the following 
 | PROJECT NAME| Hydrolix project name to include in the `x-hdx-table` HTTP header.     |
 | TABLE NAME    | Hydrolix table name to include in the `x-hdx-table` HTTP header. |
 | TRANSFORM SCHEMA NAME| (optional) Hydrolix transform schema name to include in the `x-hdx-transform` HTTP header.  |
-| AUTHORIZATION HEADER VALUE  | Authorization header value to use when sending logs. (e.g., `Basic <Base64 encoded username and password>', 'Bearer <Your API key>`') |
+| AUTHORIZATION HEADER VALUE  | Authorization header value to use when sending logs. (e.g., `Basic <Base64 encoded username and password>', 'Bearer <Your API key>`) |
 
 ### Origin Storage  {/*enabling-log-delivery-to-origin-storage*/}
 
@@ -346,7 +346,7 @@ When you access Log Delivery Service, you will see a message that describes the 
 
 Click the **Agree** button to indicate you agree.
 
-<Callout type="info"> - If you do not agree to the terms and conditions, you cannot view any configurations. <br /> - Non-Company Admin users can sign agreements only for the company to which they belong. <br /> - Company Admin users can sign agreements for child companies as well.</Callout>
+<Callout type="info"> <ul><li>If you do not agree to the terms and conditions, you cannot view any configurations. </li><li>Non-Company Admin users can sign agreements only for the company to which they belong.</li><li>Company Admin users can sign agreements for child companies as well.</li></ul> </Callout>
 
 ## Fields   {/*field-reference*/}
 
@@ -366,7 +366,7 @@ Click the **Agree** button to indicate you agree.
 
 | Field or Section | Description |
 | --- | --- |
-| STORAGE TYPE | Log file location. Possible values:<br /> - Origin Storage: Logs are stored at the root of your space in a directory called '_livelogs'. You are responsible for data maintenance; Edgio is not responsible for data removal.<br /> - Amazon S3: Amazon's Simple Storage Service. When you select this option, additional fields are displayed, which are described in [Log Delivery to Amazon S3](#enabling-log-delivery-to-amazon-s3).<br /> - Google Cloud Storage: Google's cloud-based object storage. See [Google Cloud Platform - Creating and managing projects.](https://cloud.google.com/resource-manager/docs/creating-managing-projects)<br /> <br /> <Callout type="info">If you change the location from Amazon to Origin Storage, you will see a message about applicable fees </Callout> |
+| STORAGE TYPE | Log file location. Possible values:<br /><ul><li>Origin Storage: Logs are stored at the root of your space in a directory called '_livelogs'. You are responsible for data maintenance; Edgio is not responsible for data removal.</li><li>Amazon S3: Amazon's Simple Storage Service. When you select this option, additional fields are displayed, which are described in [Log Delivery to Amazon S3](#enabling-log-delivery-to-amazon-s3).</li><li>Google Cloud Storage: Google's cloud-based object storage. See [Google Cloud Platform - Creating and managing projects.](https://cloud.google.com/resource-manager/docs/creating-managing-projects)</li></ul><Callout type="info">If you change the location from Amazon to Origin Storage, you will see a message about applicable fees </Callout> |
 | STORAGE ACCOUNT | The Origin Storage account where you want to store logs. By default logs are stored under the same account that owns the Log Delivery Service configuration. |
 
 ### Delivery Options   {/*delivery-option-fields*/}

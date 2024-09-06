@@ -371,16 +371,16 @@ If a user is editing a configuration, then the field is visible and enabled depe
 ### Logging {/*logging*/}
 
 | Setting| Information Requested| Purpose| Selecting the Right Option|
-| ------------------ | --------- | ------- | ------ |
-| Log cookies        | Whether you want Content Delivery to stop saving cookie information in your log files      | If you process log files and don’t need the information in the Cookie header, you may want to remove it to simplify processing and reduce log file size. | If you know you need Cookie header information in your log files, check the **Log cookies** checkbox. Otherwise, leave it unchecked. <br /> When this setting is enabled, Content Delivery logs all Cookie header information, up to a maximum of 8 KB for the entire header (regardless of the number of cookies in the header). |
-| Log request header | Whether you wantContent Delivery tostart saving specific Request Headers in your log files | If you process log files and need access to information in the Request Headers, you may want to enable this option                                       | If you know you need Request Header information in your log files, check the **Log Request Header** checkbox and enter the names of the specific headers to log. Otherwise, leave it unchecked.|
+| --- | --- | --- | --- |
+| Log cookies        | Whether you want Content Delivery to stop saving cookie information in your log files      | If you process log files and don’t need the information in the cookie header, you may want to remove it to simplify processing and reduce log file size. | If you know you need Cookie header information in your log files, check the **Log cookies** checkbox. Otherwise, leave it unchecked. <br /> When this setting is enabled, Content Delivery logs all Cookie header information, up to a maximum of 8 KB for the entire header (regardless of the number of cookies in the header). |
+| Log request header | Whether you want Content Delivery to start saving specific Request Headers in your log files | If you process log files and need access to information in the Request Headers, you may want to enable this option  | If you know you need Request Header information in your log files, check the **Log Request Header** checkbox and enter the names of the specific headers to log. Otherwise, leave it unchecked.|
 
 ### Cookie Handling {/*cookie-handling*/}
 
 {{EDGEPRISM}} issues a `Set-Cookie` header whenever it receives a request that has a specified query parameter. This feature provides a way for a cookie to be set with the query string sent in a request URL. You can create a configuration by entering values into the fields provided.
 
 | Field | Description  |
-| ------------ | ------ |
+| --- | --- |
 | Cookie parameter        | Cookie name                               |
 | URL query term selector | String that identifies the query term     |
 | Expiration              | Date when the configuration expires       |
@@ -587,7 +587,7 @@ You can clone both Staging and PROD linked configurations without limitation.
 #### Revert  {/*revert-a-linked-configuration*/}
 
 A **PROD** config cannot be reverted. You will see the message:
-"This configuration record is the Production side of a 'PROD-Stage’ linked relationship, and so it cannot be updated directly. Please navigate to the associated Staging configuration, make necessary updates there, and then synchronize those changes to this configuration."
+"This configuration record is the Production side of a 'PROD-Staging’ linked relationship, and so it cannot be updated directly. Please navigate to the associated Staging configuration, make necessary updates there, and then synchronize those changes to this configuration."
 
 A **Staging** config can only be reverted to a version that has the **linkProdStage** structure. Once you link a configuration, it cannot be reverted to the initial version that was not linked.
 

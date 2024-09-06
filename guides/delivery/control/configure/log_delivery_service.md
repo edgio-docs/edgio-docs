@@ -2,7 +2,7 @@
 title: Log Delivery Service
 ---
 
-When requests for your content enter the CDN, the requests are logged based on configurations. The Log Delivery Service allows you to configure and manage your log files.
+Log Delivery Service (LDS) collects log data from CDN services and delivers it to a destination of your choice. It seamlessly integrates with platforms like Amazon S3, Google Cloud Storage, Hydrolix, Edgio Origin Storage, and others. LDS offers valuable insights into CDN performance and your traffic patterns.
 
 <Callout type="info">Log field names, delimiters, date and time format, file name, and directory structure adhere to W3C/ISO standards.</Callout>
 
@@ -17,22 +17,21 @@ Each configuration in the list includes this information:
 | Number of configurations and configuration names | Customer-assigned configuration name. |
 | SHORTNAME | Currently selected account name. |
 | SERVICE TYPE | Delivery service for which logs will be created. (HTTP or MMD Live Ingest). |
-| STORAGE TYPE | Log file location:<br /> - Origin Storage: Logs are stored at the root of your space in a directory called '_livelogs'. You are responsible for data maintenance; is not responsible for data removal.<br /><br /> Amazon S3: Amazon's cloud-based object storage.<br /> - Google Cloud Storage: Google's cloud-based object storage.<br /> - Datadog: A third-party storage option with existing account. |
-| FILE COMPRESSION | File compression method. Possible values:<br /> - ZSTD<br /> - LZ4<br /> - SNAPPY <br /> - LZF (Edgio's LZ4 implementation uses the LZ4 (Framed) compression algorithm.) <br /> - GZIP |
-| STATUS | Configuration status. When you create and save a configuration, it goes through a validation process. Possible status values:<br /> - In Progress<br /> - Pending<br /> - Completed <br /> - Failed <br /> - Deactivated |
+| DESTINATION | Log file location:<ul><li>**Amazon S3**: Amazon's cloud-based object storage.</li><li>**Origin Storage**: Logs are stored at the root of your space in a directory called '_livelogs'.</li></ul>  You are responsible for data maintenance; Edgio is not responsible for data removal.<ul><li>**Google Cloud Storage**: Google's cloud-based object storage.</li><li>**Datadog**: A third-party storage option with existing account.</li></ul> |
+| DATA COMPRESSION | File compression method. Possible values:<ul><li>ZSTD</li><li>LZ4</li><li>SNAPPY</li><li>LZF (Edgio's LZ4 implementation uses the LZ4 (Framed) compression algorithm.) </li><li>GZIP</li></ul> |
+| STATE| Identifies whether the configuration is actively used, suspended, etc.|
+|STATUS | Configuration status. When you create and save a configuration, it goes through a validation process. Possible status values:<ul><li>In Progress</li><li>Pending</li><li>Completed</li><li>Failed</li><li>Deactivated</li></ul>  |
 | LAST UPDATED | Configuration's creation or last modified date. |
 
-## Choosing an Account  {/*choosing-an-account*/}
+## Choose an Account  {/*choosing-an-account*/}
 
 Each account has its own set of configurations. You can choose an account to work with from the toggle in the top right corner above the list.
 
 This list is more focused than the company/account at the top of the page and is limited to the accounts that your user can access and accounts that have the product enabled.
 
-## Working with Log Delivery Service Configurations  {/*working-with-log-delivery-service-configurations*/}
+## Create a Log Delivery Configuration  {/*creating-a-log-delivery-configuration*/}
 
-### Creating a Log Delivery Configuration  {/*creating-a-log-delivery-configuration*/}
-
-You can create a single configuration for any combination of shortname, storage location, and service type.
+You can create a single configuration for any combination of shortname, destination, and service type.
 
 1. Click the **+** button at the top of the Log Delivery List Page.
 
@@ -44,35 +43,35 @@ You can create a single configuration for any combination of shortname, storage 
 
 <Callout type="info">It can take 15 to 40 minutes for a new configuration to take effect.</Callout>
 
-### Editing a Log Delivery Configuration  {/*editing-a-log-delivery-configuration*/}
+## Edit a Log Delivery Configuration  {/*editing-a-log-delivery-configuration*/}
 
 1. Click the configuration's row on the Log Delivery List page.
 
-    The configuration is displayed in edit mode. If the configuration's storage location is Origin Storage, you will see a message warning you about extra fees if you choose to store logs in.
+    The configuration is displayed in edit mode. If the configuration's destination is Origin Storage, you will see a message warning you about extra fees if you choose to store logs in.
 
-    <Callout type="info"> - Existing configurations include [Directory Layout and FileName Template Fields](#delivery-option-fields) <br /> - If your user does not have 'Manage' permissions for all fields are disabled and you cannot modify the configuration.</Callout>
+    <Callout type="info"> <ul><li>Existing configurations include [Directory Layout and FileName Template Fields](#delivery-option-fields)</li><li>If your user does not have 'Manage' permissions for all fields are disabled and you cannot modify the configuration.</li></ul> </Callout>
 
 2. Modify fields as needed. See [Log Delivery Configuration Fields](#log-delivery-service-configuration-fields) and [Configuring Log Fields](#configuring-log-fields) for details.
 3. Save the configuration by clicking the **Save** button.
 
-<Callout type="info"> - It can take 15 to 40 minutes for changes to take effect. <br /> -  Depending on your permissions, you may not be able to edit a configuration.</Callout>
+    <Callout type="info"> <ul><li>It can take 15 to 40 minutes for changes to take effect. </li><li>Depending on your permissions, you may not be able to edit a configuration.</li></ul> </Callout>
 
-### Configuring Log Fields  {/*configuring-log-fields*/}
+## Configure Log Fields  {/*configuring-log-fields*/}
 
 You can add, remove, and reorder active log fields. You can also add static fields.
 
-#### Moving Fields between Lists {/*moving-fields-between-lists*/}
+### Move Fields between Lists {/*moving-fields-between-lists*/}
 
 - Drag and drop individual fields from one set to another.
 - Move all fields using the button beneath the **Selected log fields** set.
 - Click **SELECT ALL** to move all fields from the **Available log fields** set to the **Selected log fields** set. The button's text changes to 'DESELECT ALL'.
 - Click **DESELECT ALL** to move all fields from the **Selected** set to the **Available** set. The button's text changes to 'SELECT ALL'.
 
-#### Reordering Selected Fields {/*reording-select-fields*/}
+### Reorder Selected Fields {/*reording-select-fields*/}
 
 Drag and drop individual fields to reorder them.
 
-#### Working with Static Fields
+### Work with Static Fields {/*work-with-static-fields*/}
 
 Static fields are user-defined fields with a value that does not change.
 
@@ -90,7 +89,7 @@ Static fields are user-defined fields with a value that does not change.
 
     2. In the subsequent dialog enter a new value and click **SAVE**, or click the **DELETE** button.
 
-### Deleting a Log Delivery Configuration  {/*deleting-a-log-delivery-configuration*/}
+## Delete a Log Delivery Configuration  {/*deleting-a-log-delivery-configuration*/}
 
 1. Click the configuration's row in the Log Delivery List page.
 
@@ -103,7 +102,9 @@ Static fields are user-defined fields with a value that does not change.
 
 <Callout type="info">It can take 15 to 40 minutes for the deletion to take effect. </Callout>
 
-### Deactivating a Log Delivery Service Configuration  {/*deactivating-a-log-delivery-service-configuration*/}
+### Deactivate/Activate a Log Delivery Service Configuration  {/*activate-deactivate-a-log-delivery-service-configuration*/}
+
+#### Deactivate   {/*deactivating-a-log-delivery-service-configuration*/}
 
 You can deactivate a configuration for purposes such as forcing the configuration to stop gathering log data.
 
@@ -119,7 +120,7 @@ You can deactivate a configuration for purposes such as forcing the configuratio
 
 <Callout type="info">It can take 5 to 10 minutes for a deactivation to take effect. </Callout>
 
-### Activating a Log Delivery Service Configuration  {/*activating-a-log-delivery-service-configuration*/}
+#### Activate   {/*activating-a-log-delivery-service-configuration*/}
 
 You can reactivate a deactivated configuration.
 
@@ -135,13 +136,15 @@ You can reactivate a deactivated configuration.
 
 <Callout type="info">It can take 5 to 10 minutes for an activation to take effect. </Callout>
 
-### Enabling Log Delivery to Amazon S3  {/*enabling-log-delivery-to-amazon-s3*/}
+## Enable Log Delivery to a Destination {/*enabling-log-delivery-to-destination*/}
+
+### Amazon S3  {/*enabling-log-delivery-to-amazon-s3*/}
 
 You can store your log files on the Amazon S3 platform. Amazon S3 is a cloud object storage service built to store and retrieve data.
 
 #### Prerequisites  {/*prerequisites*/}
 
-Before configuring Amazon S3 as a storage location, you must do the following:
+Before configuring Amazon S3 as a destination, you must do the following:
 
 * Create an S3 Identity and Access Management (IAM) user in Amazon's configuration screens.
 
@@ -153,7 +156,7 @@ Before configuring Amazon S3 as a storage location, you must do the following:
 
 #### Configuration Fields  {/*configuration-fields*/}
 
-These are visible only when you select Amazon S3 as the storage location.
+These are visible only when you select Amazon S3 as the destination.
 
 | Field | Description |
 | --- | --- |
@@ -163,13 +166,59 @@ These are visible only when you select Amazon S3 as the storage location.
 | ACCESS KEY | Bucket access key provided by Amazon. |
 | SECRET KEY | Bucket secret key provided by Amazon. <Callout type="info">After you set the secret key and save the configuration, the key is not visible, but you can enter a new key if needed and save the configuration. </Callout>|
 
-### Enabling Log Delivery to Google Cloud Storage  {/*enabling-log-delivery-to-google-cloud-storage*/}
+### Custom HTTPS Endpoint {/*enable-to-https*/}
+
+LDS supports log data streaming to a custom HTTPS endpoint using POST requests.
+
+#### Configure a Custom HTTPS endpoint as  LDS destination
+
+1. Select **Custom HTTPS endpoint** in the **DESTINATION** drop-down menu.
+
+2. Configure the fields as described in [Configuration Fields](#https-configuration-fields).
+
+3. Click **SAVE**.
+
+#### HTTPS Configuration Fields {/*https-configuration-fields*/}
+
+| Field | Description |
+|---|---|
+| URL |  HTTPS URL that accepts POST requests. |
+| AUTHORIZATION HEADER VALUE | (optional) Authorization header value to use when sending logs. (e.g., `Basic \<Base64 encoded username and password\>`, `Bearer \<Your API key\>`) |
+| CUSTOM HEADER NAME | (optional) Custom HTTP header name to use when sending logs. (Content-Type, Encoding, Authorization, Host are not supported). |
+| CUSTOM HEADER VALUE | (optional) Custom HTTP header value to use when sending logs. |
+
+### Datadog  {/*enabling-log-delivery-to-datadog*/}
+
+#### Prerequisites  {/*prerequisites-datadog*/}
+
+1. A Datadog account: Use an existing account or create a new one.
+
+2. A Datadog API key: Generate via Datadog. (See Datadog's documentation on [API and Application Keys](https://docs.datadoghq.com/account_management/api-app-keys/).)
+
+#### Configure the Datadog Location  {/*configuring-the-datadog-location*/}
+
+1. Select **Datadog** in the **DESTINATION** dropdown menu.
+
+2. Configure the fields as described in **[Configuration Fields](#datadog-configuration-fields)**.
+
+3. Click **SAVE**.
+
+#### Datadog Configuration Fields  {/*datadog-configuration-fields*/}
+
+| Field | Description |
+| --- | --- |
+| Site | Datadog site region that matches your Datadog environment |
+| API Key | API key associated with your Datadog account |
+| Service | (optional) The property to be used as the 'service' property of Datadog |
+| Tags | (optional) Comma-separated list of tag to send with logs (e.g.cdn:edgio) |
+
+### Google Cloud Storage  {/*enabling-log-delivery-to-google-cloud-storage*/}
 
 You can store your log files on the Google Cloud Storage platform. Google Cloud Storage is a service for storing and accessing your data on Google Cloud Platform infrastructure.
 
 #### Prerequisites  {/*prerequisites-google-storage*/}
 
-Before configuring Google Cloud Storage as a storage location, you must do the following:
+Before configuring Google Cloud Storage as a destination, you must do the following:
 
 1. Create a Google Cloud Project (GCP) or use an existing project. See Google's [Google Cloud Platform - Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects) guide for instructions.
 
@@ -184,9 +233,9 @@ Before configuring Google Cloud Storage as a storage location, you must do the f
 
 6. Generate JSON access keys for the service account. See Google's [Creating service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys) guide for instructions.
 
-#### Configuring a Google Cloud Storage Location  {/*configuring-a-google-cloud-storage-location*/}
+#### Configure a Google Cloud Destination  {/*configuring-a-google-cloud-storage-location*/}
 
-1. Select **Google Cloud Storage** in the **STORAGE LOCATION** dropdoown.
+1. Select **Google Cloud Storage** in the **DESTINATION** dropdoown.
 
 2. Configure the fields described in [Configuration Fields](#configuration-fields-cloud-storage).
 
@@ -194,7 +243,7 @@ Before configuring Google Cloud Storage as a storage location, you must do the f
 
 #### Configuration Fields {/*configuration-fields-cloud-storage*/}
 
-These are visible only when you select Google Cloud Storage as the storage location. Required fields are marked with an asterisk in the Control user interface.
+These are visible only when you select Google Cloud Storage as the destination. Required fields are marked with an asterisk in the Control user interface.
 
 | Field | Description |
 | --- | --- |
@@ -203,7 +252,39 @@ These are visible only when you select Google Cloud Storage as the storage locat
 | BUCKET NAME | Title of the Google Cloud Storage bucket you created. |
 | PATH | Path within the bucket where logs are stored.<br /> Defaults to an empty value.  <br /> <Callout type="info">Do not add a leading slash to the path. If you do, Google Cloud Storage creates an object URL with a double slash. Example:  `gs://bucket_name//cdn_logs/...` </Callout>|
 
-### Enabling Log Delivery to Origin Storage  {/*enabling-log-delivery-to-origin-storage*/}
+### Hydrolix {/*enable-hydrolix*/}
+
+You can configure LDS to stream log data to Hydrolix platform.
+
+<Tip>Token-based authentication is not currently supported.</Tip>
+
+#### Prerequisites {/*hydrolix-prerequisites*/}
+
+Before configuring Hydrolix as a destination, you will need to do the following on your target Hydrolix environment:
+
+1. Create a [Project/Table](https://docs.hydrolix.io/docs/projects-and-tables).
+
+2. Create a [Transform](https://docs.hydrolix.io/docs/transforms-and-write-schema).
+
+#### Configure Hydrolix as LDS Destination {/*configure-hydrolix*/}
+
+1. Select **Hydrolix** in the **DESTINATION** drop-down menu.
+
+2. Configure the fields as described in [Configuration Fields](#hydrolix-configuration-fields).
+
+3. Click **SAVE**.
+
+#### Configuration Fields {/*hydrolix-configuration-fields*/}
+
+| **Field**     | **Description** |
+|------|-----|
+| STREAMING API HOSTNAME      | Hostname of your Hydrolix Streaming API. This value will be used in the URL `https://<hydrolix-streaming-api-hostname>/ingest/event` for log ingestion. |
+| PROJECT NAME| Hydrolix project name to include in the `x-hdx-table` HTTP header.     |
+| TABLE NAME    | Hydrolix table name to include in the `x-hdx-table` HTTP header. |
+| TRANSFORM SCHEMA NAME| (optional) Hydrolix transform schema name to include in the `x-hdx-transform` HTTP header.  |
+| AUTHORIZATION HEADER VALUE  | Authorization header value to use when sending logs. (e.g., `Basic <Base64 encoded username and password>', 'Bearer <Your API key>`) |
+
+### Origin Storage  {/*enabling-log-delivery-to-origin-storage*/}
 
 You can store your log files on the Origin Storage platform. Origin Storage is a distributed storage service operated by Edgio.
 
@@ -213,11 +294,11 @@ You can store your log files on the Origin Storage platform. Origin Storage is a
 
 Origin Storage must be enabled for the name selected in the SHORTNAME.
 
-#### Configuring the Location  {/*configuring-the-location-origin-storage*/}
+#### Configure the Location  {/*configuring-the-location-origin-storage*/}
 
-1. Select **Origin Storage** in the **STORAGE LOCATION** drop-down menu.
+1. Select **Origin Storage** in the **DESTINATION** drop-down menu.
 
-2. Configure the field described in [Origin Storage Configuration Fields](#origin-storage-configuration-fields).
+2. Configure the fields described in [Origin Storage Configuration Fields](#origin-storage-configuration-fields).
 
 3. Click **SAVE**.
 
@@ -229,33 +310,25 @@ Origin Storage must be enabled for the name selected in the SHORTNAME.
 | --- | --- |
 | STORAGE ACCOUNTS | The Origin Storage account where you want to store logs. By default logs are stored under the same account that owns LDS configuration |
 
-### Enabling Log Delivery to Datadog  {/*enabling-log-delivery-to-datadog*/}
+## Data Sampling  {/*sampling-data*/}
 
-#### Prerequisites  {/*prerequisites-datadog*/}
+Data Sampling allows you to control the volume of delivered log data by specifying the percentage of log lines to be delivered for each status code group (e.g., 1xx, 2xx, 3xx).
 
-1. A Datadog account: Use an existing account or create a new one.
+[Data Sampling](/images/delivery/data-sampling.png)
 
-2. A Datadog API key: Generate via Datadog. (See Datadog's documentation on [API and Application Keys](https://docs.datadoghq.com/account_management/api-app-keys/).)
+1. Slide the circle to select the percentage of log volume by status code group.
 
-#### Configuring the Datadog Location  {/*configuring-the-datadog-location*/}
+    The valid range for sampling rates is `0` to `100`, where:
 
-1. Select **Datadog** in the **STORAGE LOCATION** dropdown menu.
+    - `0`: all data is filtered out.
 
-2. Configure the fields as described in **[Configuration Fields](#datadog-configuration-fields)**.
+    - `100`: no filtering is applied (all data is delivered).
 
-3. Click **SAVE**.
+    - Any value in between represents the percentage of log lines to be delivered.
 
+2. The specified percentage is displayed above the circle.
 
-#### Datadog Configuration Fields  {/*datadog-configuration-fields*/}
-
-| Field | Description |
-| --- | --- |
-| Site | Datadog site region that matches your Datadog environment |
-| API Key | API key associated with your Datadog account |
-| Service | _(optional)_ The property to be used as the 'service' property of Datadog |
-| Tags | _(optional)_ Comma-separated list of tag to send with logs (e.g.cdn:edgio) |
-
-## Working with Personally Identifiable Information  {/*working-with-personally-identifiable-information*/}
+## Personally Identifiable Information  {/*working-with-personally-identifiable-information*/}
 
 Edgio's Log Delivery Service conforms to General Data Protection Regulations (GDPR) requirements.
 
@@ -265,7 +338,7 @@ You can configure logs to include the following fields, which contain Personally
 * cs-uri
 * so-src-uri
 
-### Signing PII Agreements  {/*signing-pii-agreements*/}
+### Sign PII Agreements  {/*signing-pii-agreements*/}
 
 Per GDPR, you must explicitly indicate that you understand risks associated with the PII fields.
 
@@ -273,11 +346,11 @@ When you access Log Delivery Service, you will see a message that describes the 
 
 Click the **Agree** button to indicate you agree.
 
-<Callout type="info"> - If you do not agree to the terms and conditions, you cannot view any configurations. <br /> - Non-Company Admin users can sign agreements only for the company to which they belong. <br /> - Company Admin users can sign agreements for child companies as well.</Callout>
+<Callout type="info"> <ul><li>If you do not agree to the terms and conditions, you cannot view any configurations. </li><li>Non-Company Admin users can sign agreements only for the company to which they belong.</li><li>Company Admin users can sign agreements for child companies as well.</li></ul> </Callout>
 
-## Field Reference  {/*field-reference*/}
+## Fields   {/*field-reference*/}
 
-### Log Delivery Service Configuration Fields  {/*log-delivery-service-configuration-fields*/}
+### Log Delivery Service Configuration   {/*log-delivery-service-configuration-fields*/}
 
 <Callout type="info"> Log Delivery Service configuration fields are attributes of a Log Delivery Service configuration and are not to be confused with log fields (see [Log File Fields](#log-file-fields)), which appear in log files.</Callout>
 
@@ -289,22 +362,23 @@ Click the **Agree** button to indicate you agree.
 | Delivery Destination | See [Delivery Destination Fields](#delivery-destination-fields). |
 | Delivery Options | See [Delivery Options Fields](#delivery-option-fields). |
 
-### Delivery Destination Fields  {/*delivery-destination-fields*/}
+### Delivery Destination   {/*delivery-destination-fields*/}
 
 | Field or Section | Description |
 | --- | --- |
-| STORAGE TYPE | Log file location. Possible values:<br /> - Origin Storage: Logs are stored at the root of your space in a directory called '_livelogs'. You are responsible for data maintenance; Edgio is not responsible for data removal.<br /> - Amazon S3: Amazon's Simple Storage Service. When you select this option, additional fields are displayed, which are described in [Log Delivery to Amazon S3](#enabling-log-delivery-to-amazon-s3).<br /> - Google Cloud Storage: Google's cloud-based object storage. See [Google Cloud Platform - Creating and managing projects.](https://cloud.google.com/resource-manager/docs/creating-managing-projects)<br /> <br /> <Callout type="info">If you change the location from Amazon to Origin Storage, you will see a message about applicable fees </Callout> |
+| STORAGE TYPE | Log file location. Possible values:<br /><ul><li>Origin Storage: Logs are stored at the root of your space in a directory called '_livelogs'. You are responsible for data maintenance; Edgio is not responsible for data removal.</li><li>Amazon S3: Amazon's Simple Storage Service. When you select this option, additional fields are displayed, which are described in [Log Delivery to Amazon S3](#enabling-log-delivery-to-amazon-s3).</li><li>Google Cloud Storage: Google's cloud-based object storage. See [Google Cloud Platform - Creating and managing projects.](https://cloud.google.com/resource-manager/docs/creating-managing-projects)</li></ul><Callout type="info">If you change the location from Amazon to Origin Storage, you will see a message about applicable fees </Callout> |
 | STORAGE ACCOUNT | The Origin Storage account where you want to store logs. By default logs are stored under the same account that owns the Log Delivery Service configuration. |
 
-### Delivery Options Fields  {/*delivery-option-fields*/}
+### Delivery Options   {/*delivery-option-fields*/}
 
 | Field | Description |
 | --- | --- |
 | DIRECTORY LAYOUT | The DIRECTORY LAYOUT property specifies the folder path within the destination storage where log files will be uploaded. It supports dynamic placeholders that are replaced with relevant information during file upload.<br /> Supported Dynamic Placeholders: <br /> `{service_type}`: Type of service for which logs are collected.<br />`{config_uuid}`: UUID of the LDS configuration.<br />`{yyyy}` , `{MM}`, `{dd}` : Resolves to year, month, and day respectively based on the start of the time period of the log entries covered in the file, all in UTC timezone.<br />`{yyyy_proc}`, `{MM_proc}`, `{dd_proc}`: Resolves to year, month, and day respectively using the timestamp that represents the time when the file was prepared by LDS for delivery, all in UTC timezone.<br />Default Value: `{service_type}/{config_uuid}/{yyyy}/{MM}/{dd}` <br /> <Callout type="info">It is not possible to combine `{yyyy_proc}`, `{MM_proc}`, `{dd_proc}` and `{yyyy}`, `{MM}`, `{dd}` variables in the directory layout. Mixing these variables in the directory structure is invalid. <br /><br /></Callout>|
 | FILE NAME TEMPLATE | The FILE NAME TEMPLATE property determines the naming convention for log files uploaded to your destination storage. It supports dynamic placeholders that are resolved during file creation.<br /><br />Supported Dynamic Placeholders:<br />`{shortname}`: The account name for which the log entries have been collected.<br />`{request_end_date_time_from}`: This timestamp represents the start of the time period covered by log entries in the file, formatted as `{year}{month}{day}{hour}{minute}{second}` in UTC timezone.<br />`{request_end_date_time_to}`: This timestamp represents the end of the time period covered by log entries in the file, formatted as `{year}{month}{day}{hour}{minute}{second}` in UTC timezone. <br /><br /> <Callout type="info">The time period covered by log entries in the file is not fixed and may vary based on LDS setup and processing requirements. While currently supporting 10-minute and hourly time periods, LDS may add support for new time periods in the future.</Callout><br />`{process_window_date_time}`: The timestamp when the file was prepared for delivery, formatted as `{year}{month}{day}{hour}{minute}{second}` in UTC timezone.<br />`{split_id}`: ID assigned to the file, used for splitting large log files. When a file needs to be split to avoid exceeding the 1GB size limit, each part is given a unique split_id. The first split file is labeled as 000, and subsequent splits are numbered sequentially (001, 002, and so on). If a file does not require splitting, the split_id remains 000. <br /><br /> <Callout type="info">Log file size is measured before compression, so a log file may be split even though it’s compressed size is smaller than 1GB.</Callout><br />`{format}`: Log file format, which can be either w3c or json_lines.<br />`{compression}`: File compression format.<br />Default Value:<br />`{shortname}_{request_end_date_time_from}-{request_end_date_time_to}.{process_window_date_time}_{split_id}.{format}.{compression}` |
-| FILE COMPRESSION | File compression method.<br />encourages you to investigate available compression methods before deciding on a method. |
+|DATA FORMAT|Log data format: W3C (tab separated), JSON lines, TSV.|
+| DATA COMPRESSION | File compression method.<br />encourages you to investigate available compression methods before deciding on a method. |
 
-### Log File Fields  {/*log-file-fields*/}
+### Log File   {/*log-file-fields*/}
 
 #### HTTP {/*http*/}
 
@@ -382,11 +456,11 @@ The following fields are available for you to include when you select *MMD_LIVE_
 | transcode-bytes | *(int64)* The number of transcoded bytes.  |
 | transcode-pixels | *(int64)*The number of transcoded pixels.  |
 
-## Retrieving Log Files from Origin Storage  {/*retrieving-log-files-from-origin-storage*/}
+## Retrieve Log Files from Origin Storage  {/*retrieving-log-files-from-origin-storage*/}
 
 You can retrieve your files from Edgio Origin Storage using Origin Storage API calls in conjunction with an HTTP GET request or via the Origin Storage Management Console.
 
-### Download Using the API  {/*download-using-the-api*/}
+### API  {/*download-using-the-api*/}
 
 All methods in this section are in the Origin Storage JSON-RPC API interface. We presented essential information; for detailed information about each method, see the [Origin Storage API Reference Guide](/delivery/storage/apis).
 
@@ -454,7 +528,7 @@ The method returns this object:
 ```
 <Callout type="info">Do not attempt to directly download content from Origin Storage using FTP, SFTP, FTPS, SCP, or rsync because doing so can negatively impact other system processes. To download content, use an HTTP GET request.</Callout>
 
-#### API End-to-End Example
+#### API End-to-End Example  {/*api-example*/}
 
 For simplicity, we've omitted error checking. The code sample uses Python.
 
@@ -520,9 +594,8 @@ for file_name in files_to_download:
         if response.status_code != 200:
             print("Unable to download " + file_name + ". Status code: " + response.status_code)
 ```
-### Download from Storage  {/*download-using-the-storage-management-console*/}
+###  Manual Download {/*download-using-the-storage-management-console*/}
 
-#### Download Manually
 You can download a log file using the Origin Storage Management Console.
 
 Begin by logging into the Edgio Control Portal, then follow these steps:
@@ -531,7 +604,7 @@ Begin by logging into the Edgio Control Portal, then follow these steps:
 2. Navigate to the folder that contains the file you want to download.
 3. Click the download icon. Your browser downloads the file.
 
-#### Download via Python
+#### Download via Python  {/*python*/}
 
 This Python script deletes the file once it is downloaded. It also deletes the directory if it becomes empty. Use the parameter max_files to download multiple files if you don't want the limit set to 0.
 

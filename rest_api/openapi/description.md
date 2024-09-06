@@ -68,7 +68,7 @@ A scope authorizes an API client to perform specific actions (e.g., create and r
 
 ## Access Tokens 
 
-Each request to a REST API service must be authorized by passing an access token to the `Authorization` request header. Access tokens provide temporary authorization (e.g., 1 minute) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
+Each request to a REST API service must be authorized by passing an access token to the `Authorization` request header. Access tokens provide temporary authorization (e.g., 1 minute) to our REST API service. The duration of this authorization is determined by the API client's **Access Token Lifetime (Seconds)** option. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
 
 Requesting an access token requires:
 

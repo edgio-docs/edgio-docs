@@ -19,7 +19,7 @@ A request commonly contains the following components:
 
 {{ PRODUCT }} processes each request in the following order:
 
-![Traffic workflow](/images/v7/security/traffic-order-of-operations.png)
+![A request is processed in the following order: DNS > DDoS Mitigation > Bulk Redirects > Rules > Experimentation > Web Application and API Protection (including WAF) > Cache > Edge Functions > Origin Shield > Edgio Cloud > Origin](/images/v7/security/traffic-order-of-operations.png)
 
 Learn how:
 

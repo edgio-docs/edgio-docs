@@ -459,23 +459,18 @@ You may create, modify, and delete Security App configurations.
 
     Restrict this security policy by hostname, URL path, or both by configuring the **Hostname** and **URL path(s)** options, respectively. Before you can specify a hostname or URL path, you must first select one of the following modes:
     -   **Default:** Use this mode to apply this Security App configuration regardless of the request's host or URL path.
-    -   **Exact match (multiple entries):** Use this mode to apply this Security App configuration to the specified hostname(s) or URL path(s).
+    -   [Exact match (multiple entries):](#exact-match-multiple-entries) Use this mode to apply this Security App configuration to the specified hostname(s) or URL path(s).
 
-        [Learn more.](#exact-match-multiple-entries)
+    -   [Wildcard match:](#wildcard-match) Use this mode to apply this Security App configuration to all hostnames or URL paths that satisfy the specified wildcard pattern.
 
-    -   **Wildcard match:** Use this mode to apply this Security App configuration to all hostnames or URL paths that satisfy the specified wildcard pattern.
-
-        [Learn more.](#wildcard-match)
-    -   **Regex match:** Use this mode to apply this Security App configuration to all hostnames or URL paths that satisfy the specified regular expression pattern.
-
-        [Learn more.](#regex-match)
+    -   [Regex match:](#regex-match) Use this mode to apply this Security App configuration to all hostnames or URL paths that satisfy the specified regular expression pattern.
 
     <Callout type="info">
 
       Enable the **Negative match** option to configure a Security App configuration to look for requests that do not match the specified value or pattern.
 
     </Callout>
-5.  Optional. Set up an access control policy by assigning an [access rule](/applications/security/access_rules#access-rule-administration) to the Security App configuration.
+5.  Optional. Set up an access control policy by assigning an [access rule](/applications/security/access_rules) to the Security App configuration.
 
     1.  Click **Access Rule**. An **Access Rule** section will appear.
     2.  If the desired access rule does not currently exist, then you should create it now by clicking on `+ Create New Access Rule`. 
@@ -489,9 +484,9 @@ You may create, modify, and delete Security App configurations.
 
             [Learn more.](#enforcement)
 
-    4.  Optional. Set up auditing for [threat detection](#threat-detection-mode) by selecting the desired access rule from the **Audit Access Rule** option.
+    4.  Optional. Set up auditing for threat detection by selecting the desired access rule from the **Audit Access Rule** option.
 
-6.  Optional. Define how to secure API requests by assigning an [API Security ruleset](/applications/security/api_security#api-security-ruleset-administration) to the Security App configuration.
+6.  Optional. Define how to secure API requests by assigning an [API Security ruleset](/applications/security/api_security) to the Security App configuration.
 
     1.  Click **API Security**. An **API Security** section will appear.
     2.  If the desired API Security ruleset does not currently exist, then you should create it now by clicking on `+ Create New API Security Rule`. 
@@ -504,9 +499,9 @@ You may create, modify, and delete Security App configurations.
 
             [Learn more.](#enforcement)
 
-    4.  Optional. Set up auditing for [threat detection](#threat-detection-mode) by selecting the desired API Security ruleset from the **Audit API Security Rule** option.
+    4.  Optional. Set up auditing for threat detection by selecting the desired API Security ruleset from the **Audit API Security Rule** option.
 
-7.  Optional. Set up rate limiting by assigning one or more [rate rule(s)](/applications/security/rate_rules#rate-rule-administration) to the Security App configuration. 
+7.  Optional. Set up rate limiting by assigning one or more [rate rule(s)](/applications/security/rate_rules) to the Security App configuration. 
 
     1.  Click **Rate Rule**. A **Rate Rule** section will appear.
     2.  If the desired rate rule does not currently exist, then you should create it now by clicking on `+ Create New Rate Rule`. 
@@ -532,7 +527,7 @@ You may create, modify, and delete Security App configurations.
 
         </Callout>
 
-    6.  If you would like to apply an additional rate limit, then repeat steps 7.2 - 7.5.
+    6.  If you would like to apply an additional rate limit, then repeat steps 7.ii - 7.v.
 
         <Callout type="tip">
 
@@ -540,7 +535,7 @@ You may create, modify, and delete Security App configurations.
 
         </Callout>
 
-8.  <a id="bot-rule-configuration" />Optional. Determine how bots will be detected by assigning a [bot manager configuration](/applications/security/bot_rules#bot-rule-administration) to the Security App configuration.
+8.  <a id="bot-rule-configuration" />Optional. Determine how bots will be detected by assigning a [bot manager configuration](/applications/security/bot_rules) to the Security App configuration.
 
     1.  Click **Bot Manager**. A **Bot Manager** section will appear.
     2.  If the desired bot manager configuration does not currently exist, then you should create it now by clicking on `+ Create New Bot Manager Rule`. 
@@ -555,7 +550,7 @@ You may create, modify, and delete Security App configurations.
             3.  Set the **reCAPTCHA Site Key** option to the site key provided by Google.
             4.  Set the **reCAPTCHA Secret Key** option to the secret key provided by Google.
 
-9. Optional. Define a custom security policy by assigning a [custom rule](/applications/security/custom_rules#custom-rule-administration) to the Security App configuration.
+9. Optional. Define a custom security policy by assigning a [custom rule](/applications/security/custom_rules) to the Security App configuration.
 
     1.  Click **Custom Rule**. A **Custom Rule** section will appear.
     2.  If the desired custom rule does not currently exist, then you should create it now by clicking on `+ Create New Custom Rule`. 
@@ -569,9 +564,9 @@ You may create, modify, and delete Security App configurations.
 
             [Learn more.](#enforcement)
 
-    4.  Optional. Set up auditing for [threat detection](#threat-detection-mode) by selecting the desired custom rule from the **Audit Custom Rule** option.
+    4.  Optional. Set up auditing for threat detection by selecting the desired custom rule from the **Audit Custom Rule** option.
 
-10. Optional. Apply a predefined security policy by assigning a [managed rule](/applications/security/managed_rules#managedruleadministration) to the Security App configuration.
+10. Optional. Apply a predefined security policy by assigning a [managed rule](/applications/security/managed_rules) to the Security App configuration.
 
     1.  Click **Managed Rule**. A **Managed Rule** section will appear.
     2.  If the desired managed rule does not currently exist, then you should create it now by clicking on `+ Create New Managed Rule`. 
@@ -585,9 +580,9 @@ You may create, modify, and delete Security App configurations.
 
             [Learn more.](#enforcement)
 
-    4.  Optional. Set up auditing for [threat detection](#threat-detection-mode) by selecting the desired managed rule from the **Audit Managed Rule** option.
+    4.  Optional. Set up auditing for threat detection by selecting the desired managed rule from the **Audit Managed Rule** option.
 
-11. Optional. Apply a Content Security Policy to your traffic by assigning a [Client-Side Protection policy](/applications/security/client_side_protection#policy-administration) to the Security App configuration.
+11. Optional. Apply a Content Security Policy to your traffic by assigning a [Client-Side Protection policy](/applications/security/client_side_protection) to the Security App configuration.
 
     1.  Click **Client Protection**. A **Client Protection** section will appear.
     2.  If the desired Client-Side Protection policy does not currently exist, then you should create it now by clicking on `+ Create New Client Rule`. 

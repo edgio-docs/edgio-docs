@@ -157,7 +157,7 @@ Upon creating an API client, a client ID and a secret will be generated. Use thi
 
 ## Generating Access Tokens {/*generating-access-tokens*/}
 
-Each request to our REST API service must be authorized through an access token. Access tokens provide temporary authorization (e.g., 5 minutes) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
+Each request to our REST API service must be authorized through an access token. Access tokens provide temporary authorization (e.g., 1 minute), as determined by the API client's **Access Token Lifetime (Seconds)** option, to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
 
 **Request syntax:** `POST https://{{ IDENTITY_TOKEN_DOMAIN }}/connect/token`
 

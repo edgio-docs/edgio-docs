@@ -247,34 +247,6 @@ export default new Router()
   });
 ```
 
-### Preview Mode {/* preview-mode */}
-
-To be able to use [Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode) while being able to cache the respective pages, update your routes to match the requests that contain the two cookies `__prerender_bypass` & `__next_preview_data`, and send those to the {{ PRODUCT }} cloud for rendering.
-
-```js filename="routes.js" ins="8-21"
-import {Router} from '{{ PACKAGE_NAME }}/core/router';
-import {nextRoutes} from '{{ PACKAGE_NAME }}/next';
-
-export default new Router()
-  // By default send all requests to the Next.js app
-  .use(nextRoutes)
-  // Disable caching for preview mode
-  .match(
-    {
-      cookies: {
-        __prerender_bypass: /.*/g,
-        __next_preview_data: /.*/g,
-      },
-    },
-    {
-      caching: {
-        bypass_cache: true,
-        bypass_client_cache: true,
-      },
-    }
-  );
-```
-
 ### Rewrites and Redirects {/* rewrites-and-redirects */}
 
 The `nextRoutes` plugin automatically adds routes for [rewrites](https://nextjs.org/docs/api-reference/next.config.js/rewrites) and [redirects](https://nextjs.org/docs/api-reference/next.config.js/redirects) specified in `next.config.js`. Redirects are served directly from the network edge to maximize performance.

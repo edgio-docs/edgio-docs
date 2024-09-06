@@ -5,8 +5,8 @@ import {
   IconEdgioSquareLogoDark,
 } from 'components/Icon/IconEdgioSquareLogo';
 import Link from 'components/MDX/Link';
-import {ContextType, useAppContext} from 'contexts/AppContext';
-import {useTheme} from 'contexts/ThemeContext';
+import { ContextType, useAppContext } from 'contexts/AppContext';
+import { useTheme } from 'contexts/ThemeContext';
 
 const StyledDocsFooter = styled.footer`
   padding-top: 20px;
@@ -170,11 +170,11 @@ const deliveryResources = [
     href: 'https://edg.io/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
   },
   {
-    title: 'Control Release Notes',
+    title: 'Control Change Log',
     href: '/delivery/control/support_tools/change_log',
   },
   {
-    title: 'Delivery Release Notes',
+    title: 'Delivery Change Log',
     href: '/delivery/delivery/change_log',
   },
   {

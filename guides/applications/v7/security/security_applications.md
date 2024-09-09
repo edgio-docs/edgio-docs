@@ -152,11 +152,9 @@ The following sample request will match the above pattern:
 
 </Callout>
 
-**Example:** `^[a-zA-Z0-9]*$`
-
-**Matches:** `cat` | `CAT7` | `Category`
-
-**Does Not Match:** `Category 7` | `Cat#7`
+| Sample Configuration | Matches                       | Does Not Match         |
+| -------------------- | ----------------------------- | ---------------------- |
+| ^[a-zA-Z0-9]*$       | cat <br />CAT7 <br />Category | Category 7 <br />Cat#7 |
 
 ## Threat Detection {/*threat-detection*/}
 

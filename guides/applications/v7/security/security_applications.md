@@ -90,38 +90,49 @@ Your Security App configuration determines how {{ PRODUCT }} {{ PRODUCT_SECURITY
 {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares the specified value(s) against the entire host or URL path.
 It will only apply this Security App configuration to a request when one of the specified value(s) is an exact match. This comparison is case-sensitive.
 
-| Sample Configuration | Matches  | Does Not Match  |
-|---|---|---|
-| cat | cat | Cat <br /> Category <br /> Moscato |
-| bat | bat | Bat <br /> Batch |
+| Sample Configuration | Matches | Does Not Match                     |
+| -------------------- | ------- | ---------------------------------- |
+| cat                  | cat     | Cat <br /> Category <br /> Moscato |
+| bat                  | bat     | Bat <br /> Batch                   |
 
 #### Wildcard Match {/*wildcard-match*/}
 
 {{ PRODUCT }} {{ PRODUCT_SECURITY }} checks whether the entire host or URL path is a case-sensitive match for the wildcard pattern. The supported set of wildcards are listed below.
 -   **\*:** Matches zero or more characters.
-    -   **Example:** `cat*`
-    -   **Matches:** `cat | category | muscat`
-    -   **Does not match:** `cAt | Category`
+
+    | Sample Configuration | Matches                         | Does Not Match     |
+    | -------------------- | ------------------------------- | ------------------ |
+    | cat*                 | cat <br />category <br />muscat | cAt <br />Category |
+
 -   **?:** Matches a single character.
-    -   **Example:** `cat?`
-    -   **Matches:** `cats | muscats`
-    -   **Does not match:** `Cats | cat`
+
+    | Sample Configuration | Matches            | Does Not Match |
+    | -------------------- | ------------------ | -------------- |
+    | cat?                 | cats <br />muscats | Cats <br />cat |
+
 -   **[*abc*]:** Matches a single character defined within the brackets.
-    -   **Example:** `[cm]art`
-    -   **Matches:** `cart | mart`
-    -   **Does not match:** `tart | start`
+
+    | Sample Configuration | Matches         | Does Not Match   |
+    | -------------------- | --------------- | ---------------- |
+    | [cm]art              | cart <br />mart | tart <br />start |
+
 -   **[*a*-*z*]:** Matches a single character from the specified range.
-    -   **Example:** `[a-z]art`
-    -   **Matches:** `cart | mart | tart`
-    -   **Does not match:** `Cart | marT | start`
+
+    | Sample Configuration | Matches                    | Does Not Match              |
+    | -------------------- | -------------------------- | --------------------------- |
+    | [a-z]art             | cart <br />mart <br />tart | Cart <br />marT <br />start |
+
 -   **[!*abc*]:** Matches a single character that is not defined within the brackets.
-    -   **Example:** `[!cm]art`
-    -   **Matches:** `Cart | Mart | tart`
-    -   **Does not match:** `cart | mart | tArt`
+
+    | Sample Configuration | Matches                    | Does Not Match             |
+    | -------------------- | -------------------------- | -------------------------- |
+    | [!cm]art             | Cart <br />Mart <br />tart | cart <br />mart <br />tArt |
+
 -   **[!*a*-*z*]:** Matches a single character that is excluded from the specified range.
-    -   **Example:** `[!a-m]art`
-    -   **Matches:** `Cart | Mart | tart`
-    -   **Does not match:** `cart | mart | tArt`
+
+    | Sample Configuration | Matches                    | Does Not Match             |
+    | -------------------- | -------------------------- | -------------------------- |
+    | [!a-m]art            | Cart <br />Mart <br />tart | cart <br />mart <br />tArt |
 
 **Example:**
 

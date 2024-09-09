@@ -2,9 +2,7 @@
 title: Security Application Manager
 ---
 
-The **Security Application Manager** page contains the Security App configurations that {{ PRODUCT }} may use to screen your traffic. Traffic is screened using the first eligible Security App configuration according to the order in which they are listed. 
-
-[Learn more about threat detection.](/applications/security/waf#threat-detection)
+The **Security Application Manager** page contains the Security App configurations that {{ PRODUCT }} may use to [screen your traffic](/applications/security/waf#threat-detection). Traffic is screened using the first eligible Security App configuration according to [the order in which they are listed](#order-of-precedence). 
 
 ## Security Apps {/*security-apps*/}
 
@@ -19,7 +17,7 @@ A Security App configuration:
     -   **Managed Rules:** A managed rule identifies threats through threat detection policies.
     -   **Client-Side Protection Policy:** A Client-Side Protection policy detects and mitigates attacks, such as cross-site scripting (XSS) and code injection, by applying a Content Security Policy to your traffic.
 -   Determines how violations of your access rules, API security rulesets, rate rules, custom rules, and managed rules are [enforced](#enforcement).
--   Allows you to audit new access rules, API Security rules, custom rules, and managed rules without impacting production traffic and while keeping your applications secure with known configurations.
+-   Allows you to audit new access rules, API Security rules, custom rules, managed rules, and Client-Side Protection policy without impacting production traffic and while keeping your applications secure with known configurations.
 
     From the **Security** dashboard, click **WAF Events** and then filter by `Profile Type = AUDIT` to isolate and analyze threats detected as a result of an audit of new access rules,  API Security rules, custom rules, and managed rules.
 
@@ -31,7 +29,7 @@ A Security App configuration:
 
 ## <a id="traffic-identification" />Identifying Traffic for Inspection {/*identifying-traffic-for-inspection*/}
 
-Restrict the set of traffic that will be screened by this Security App configuration by hostname, URL path, or both.
+Screen all traffic with this Security App configuration or restrict screening by hostname, URL path, or both.
 
 ### Host {/*host*/}
 
@@ -48,9 +46,7 @@ By default, a Security App configuration applies to all hosts. However, you may 
 -   The CDN only accepts HTTP/HTTPS requests on standard ports (i.e., 80 and 443). Typically, a `Host` request header does not include port information for standard ports. However, the requesting user agent defines the `Host` request header submitted to the CDN.
 -   For the purpose of this comparison, the hostname defined by this match condition will not be resolved to an IP address.
 -   For the purpose of this comparison, an origin configuration's **Override Host Header** option is irrelevant.
--   {{ PRODUCT }} {{ PRODUCT_SECURITY }} supports various comparison modes (i.e., exact match, wildcard, and regular expression).
-
-    [Learn more.](#match-comparison-modes)
+-   {{ PRODUCT }} {{ PRODUCT_SECURITY }} supports various [comparison modes (i.e., exact match, wildcard, and regular expression)](#match-comparison-modes).
 
 ### URL Path {/*url-path*/}
 
@@ -73,9 +69,7 @@ By default, a Security App configuration applies to all URL paths. However, you 
 
     `http://cdn.example.com/marketing/brochures/widget.html`
 
--   {{ PRODUCT }} {{ PRODUCT_SECURITY }} supports various comparison modes (i.e., exact match, wildcard, and regular expression).
-
-    [Learn more.](#match-comparison-modes)
+-   {{ PRODUCT }} {{ PRODUCT_SECURITY }} supports various [comparison modes (i.e., exact match, wildcard, and regular expression)](#match-comparison-modes).
 
 ### Match Comparison Modes {/*match-comparison-modes*/}
 
@@ -172,10 +166,9 @@ Identify threats by adding the following rule(s) to your Security App configurat
 
 -   **Custom Rules:** A [custom rule](/applications/security/custom_rules) identifies threats using custom criteria that takes into account your site's traffic profile to avoid false positives.
 -   **Managed Rules:** A [managed rule](/applications/security/managed_rules) identifies threats through threat detection policies.
+-   **Client-Side Protection Policy:** A [Client-Side Protection](/applications/security/client_side_protection) policy detects and mitigates attacks, such as cross-site scripting (XSS) and code injection, by applying a Content Security Policy to your traffic.
 
-<a id="enforcement-mode"></a>
-
-### Threat Detection Mode {/*threat-detection-mode*/}
+### <a id="enforcement-mode" />Threat Detection Mode {/*threat-detection-mode*/}
 
 You may apply an access, custom, or managed rule in one of the following modes:
 -   **Production:** This mode secures your application by allowing you to choose from a variety of actions through which your security policy will be [enforced](#enforcement).
@@ -454,6 +447,9 @@ You may create, modify, and delete Security App configurations.
 1.  Navigate to the **Security Application Manager** page.
     {{ SECURITY_NAV }} **Application Manager**.
 2.  Click **+ Create New**.
+
+    ![Create Security Application](/images/v7/security/security-application-create.png?width=750)
+
 3.  In the **Security Application Name** option, type the unique name by which this Security App configuration will be identified. After which, click **Continue**.
 4.  Optional. From the **Hostname and URL Paths** section, identify the set of traffic to which this security policy will be applied.
 

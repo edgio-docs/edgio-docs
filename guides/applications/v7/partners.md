@@ -27,7 +27,7 @@ View total usage metrics for each organization associated with your partner acco
 
 ## Organization Management {/*organization-management*/}
 
-As a partner, you may create organizations. Additionally, you can modify and delete organizations associated with your partner account.
+As a partner, you may create organizations and take ownership of an existing organization. Additionally, you can modify and delete organizations associated with your partner account.
 
 **Key information:**
 
@@ -54,6 +54,19 @@ As a partner, you may create organizations. Additionally, you can modify and del
     </Info>
 
 4.  Click **Create an Organization**.
+
+**To take ownership of an organization**
+
+1.  Navigate to the desired organization's **Settings** page. 
+2.  From the **Move Organization to another Partner** section, select your partner account.
+3.  Click **Save**.
+
+**To renounce ownership of an organization**
+
+1.  Navigate to the desired organization's **Settings** page. 
+2.  From the **Move Organization to another Partner** section, select `No partner`.
+3.  Click **Save**.
+
 
 ## Partner Member Management {/*partner-member-management*/}
 

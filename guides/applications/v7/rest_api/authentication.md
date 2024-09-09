@@ -157,7 +157,7 @@ Upon creating an API client, a client ID and a secret will be generated. Use thi
 
 ## Generating Access Tokens {/*generating-access-tokens*/}
 
-Each request to our REST API service must be authorized through an access token. Access tokens provide temporary authorization (e.g., 5 minutes) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
+Each request to our REST API service must be authorized through an access token. Access tokens provide temporary authorization (e.g., 1 minute), as determined by the API client's **Access Token Lifetime (Seconds)** option, to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
 
 **Request syntax:** `POST https://{{ IDENTITY_TOKEN_DOMAIN }}/connect/token`
 
@@ -207,7 +207,7 @@ Requests to our API gateway must be authorized through an access token. Specify 
 -   An unauthorized request will generate a `401 Unauthorized` response. The response body may indicate the reason why the request was deemed unauthorized. A request will not be authorized under the following conditions:
     -   **Missing/Invalid Token:** Either the `Authorization` header was not specified or a properly formatted token value (see above) was not defined.
     -   **Insufficient Permissions:** The scope associated with the token is insufficient for the requested action.
-    -   **Expired Token:** A token automatically expires after 300 seconds (i.e., 5 minutes). Once a token has expired, it can no longer authorize requests.
+    -   **Expired Token:** A token automatically expires according to the duration defined by the API client's **Access Token Lifetime (Seconds)** option. Once a token has expired, it can no longer authorize requests.
 
 ### Examples {/*examples*/}
 

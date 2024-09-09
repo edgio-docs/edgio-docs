@@ -322,7 +322,7 @@ You may create, modify, and delete API Security rulesets.
 1.  Navigate to the **API Security** page.
     {{ SECURITY_NAV }} **API Security**.
 2.  Click **+ Create New API Rule**.
-3.  In the **Name of Ruleset** option, type a name for this API Security ruleset.
+3.  <a id="create-name" />In the **Name of Ruleset** option, type a name for this API Security ruleset.
 4.  Add a JSON schema that defines the structure for a valid API payload.
     1.  In the **Name** option, type a name for this JSON schema.
     2.  Perform one of the following steps:

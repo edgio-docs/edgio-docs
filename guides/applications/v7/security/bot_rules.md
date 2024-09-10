@@ -80,7 +80,7 @@ If you are using Bot Manager Standard, then you may only apply a [browser challe
 
 ### Alert {/*alert*/}
 
-Generates an alert. Use this mode to track detected threats through the **Security** dashboard without impacting production traffic.
+Generates an alert. Use this mode to track detected threats through the Security dashboard without impacting production traffic.
 
 ### Block {/*block*/}
 
@@ -557,7 +557,7 @@ Bot Manager Advanced allows you to exempt traffic from bot detection by URL, use
 
     <Callout type="info">
 
-      Use the **Security** dashboard to find the JA3 fingerprint that corresponds to a false positive.
+      Use the Security dashboard to find the JA3 fingerprint that corresponds to a false positive.
 
     </Callout>
 

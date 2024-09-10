@@ -136,7 +136,7 @@ It will only apply this Security App configuration to a request when one of the 
 
 **Example:**
 
-Setting the `URL path(s)` option to the following value allows {{ PRODUCT }} {{ PRODUCT_SECURITY }} to apply this Security App configuration to any request whose URL path starts with */marketing/*: `/marketing/*`
+Setting the **URL path(s)** option to `/marketing/*` allows {{ PRODUCT }} {{ PRODUCT_SECURITY }} to apply this Security App configuration to any request whose URL path starts with `/marketing/`. 
 
 The following sample request will match the above pattern:
 
@@ -179,15 +179,25 @@ Identify threats by adding the following rule(s) to your Security App configurat
 
 ### <a id="enforcement-mode" />Threat Detection Mode {/*threat-detection-mode*/}
 
-You may apply an access, custom, or managed rule in one of the following modes:
+You may apply an access rule, API security ruleset, custom rule, managed rule in one of the following modes:
 -   **Production:** This mode secures your application by allowing you to choose from a variety of actions through which your security policy will be [enforced](#enforcement).
--   **Audit:** This mode allows you to test new security policies without impacting production traffic. Requests that are identified as threats are logged. Use the **Threats** tab of the **Security** dashboard to analyze detected
-    threats and check for false positives. You should apply this security policy to production traffic once you are confident that it will generate minimal false positives.
+-   **Audit:** This mode allows you to test new security policies without impacting production traffic. 
 
     **Key information:**
     
+    -   Requests that are identified as threats by a rule running in audit threat detection mode are solely logged. View this log data through the Security dashboard.
+    -   Track threats identified by your audit security policy by filtering the **WAF Events** view of the **Security** dashboard by the `audit` profile type.
+
+        ![](/images/v7/security/security-dashboard-filter-profile-type-audit.png?width=750)
+
+    -   Once you are confident that an audit security rule will generate minimal false positives, you should set your production threat detection to it.
+    
+        For example, once you are confident that the `Access Control v2` access rule returns minimal false positives, then you should set the **Production Access Rule** option to it.
+
+        ![](/images/v7/security/security-application-tdm-switch.png?width=750)
+
     -   Rate rules and Bot Manager may only run in production mode. You cannot run them in audit mode.
-    -   Track threats identified by your audit policy by filtering the **WAF Events** view of the **Security** dashboard by the `audit` profile type.
+    -   A Client-Side Protection policy allows you to define both an audit and a production Content Security Policy (CSP). Restrict the Security dashboard to only display requests that violated your audit CSP by filtering for `Disposition=report`.
     -   Although you may audit a security policy that has been applied to production traffic (i.e., production mode), this will cause the same threat to be logged twice.
 
 ### Client IP Address

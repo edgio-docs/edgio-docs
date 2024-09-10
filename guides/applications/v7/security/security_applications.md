@@ -437,11 +437,13 @@ The recommended practice is to create a Security App configuration that is tuned
 
     For example, ordering your configurations as indicated below allows you to apply different security policies according to the type of request (i.e., API requests, main web site requests, and all other requests):
 
-    | Position | Security App Configuration | Scope                      |
-    | -------- | -------------------------- | -------------------------- |
-    | 1        | API Requests               | www.example.com and `/api` |
-    | 2        | Main Site                  | www.example.com            |
-    | 3        | All Sites                  | None                       |
+    | Position | Security App Configuration | Hostname          | URL Path |
+    | -------- | -------------------------- | ----------------- | -------- |
+    | 1        | API Requests               | Default           | `/api`   |
+    | 2        | Main Site                  | `www.example.com` | Default  |
+    | 3        | All Sites                  | Default           | Default  |
+
+    If the `All Sites` Security App configuration were moved to the first position, then it would screen all requests and prevent your other Security App configurations from being applied to your traffic.
 
 -   Reorder Security App configurations by dragging the desired configuration's <Image inline src="/images/v7/icons/drag.png" /> icon to the desired position.
 

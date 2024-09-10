@@ -444,7 +444,7 @@ The recommended practice is to create a Security App configuration that is tuned
     | 3        | Main Site                  | `www.example.com` | Default      |
     | 4        | All Sites                  | Default           | Default      |
 
-    Reordering these configurations would drastically how your traffic is screened. 
+    Reordering these configurations would drastically affect how your traffic is screened. 
 
     -   By default, a Security App configuration applies to all requests. If the `All Sites` Security App configuration were moved to the first position, then it would screen all requests and prevent your other Security App configurations from being applied to your traffic.
     -   If you were to swap the `Scripts` Security App configuration with `Main Site`, then the `Main Site` Security App configuration would screen all requests for `www.example.com`. Your traffic would never be screened by the `Scripts` security configuration.

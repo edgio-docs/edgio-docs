@@ -2,9 +2,7 @@
 title: Security Application Manager
 ---
 
-The **Security Application Manager** page contains the Security App configurations that {{ PRODUCT }} may use to screen your traffic. Traffic is screened using the first eligible Security App configuration according to the order in which they are listed. 
-
-[Learn more about threat detection.](/applications/security/waf#threat-detection)
+The **Security Application Manager** page contains the Security App configurations that {{ PRODUCT }} may use to [screen your traffic](/applications/security/waf#threat-detection). Traffic is screened using the first eligible Security App configuration according to [the order in which they are listed](#order-of-precedence). 
 
 ## Security Apps {/*security-apps*/}
 
@@ -19,7 +17,7 @@ A Security App configuration:
     -   **Managed Rules:** A managed rule identifies threats through threat detection policies.
     -   **Client-Side Protection Policy:** A Client-Side Protection policy detects and mitigates attacks, such as cross-site scripting (XSS) and code injection, by applying a Content Security Policy to your traffic.
 -   Determines how violations of your access rules, API security rulesets, rate rules, custom rules, and managed rules are [enforced](#enforcement).
--   Allows you to audit new access rules, API Security rules, custom rules, and managed rules without impacting production traffic and while keeping your applications secure with known configurations.
+-   Allows you to audit new access rules, API Security rules, custom rules, managed rules, and Client-Side Protection policy without impacting production traffic and while keeping your applications secure with known configurations.
 
     From the **Security** dashboard, click **WAF Events** and then filter by `Profile Type = AUDIT` to isolate and analyze threats detected as a result of an audit of new access rules,  API Security rules, custom rules, and managed rules.
 
@@ -31,7 +29,7 @@ A Security App configuration:
 
 ## <a id="traffic-identification" />Identifying Traffic for Inspection {/*identifying-traffic-for-inspection*/}
 
-Restrict the set of traffic that will be screened by this Security App configuration by hostname, URL path, or both.
+Screen all traffic with this Security App configuration or restrict screening by hostname, URL path, or both.
 
 ### Host {/*host*/}
 
@@ -48,9 +46,7 @@ By default, a Security App configuration applies to all hosts. However, you may 
 -   The CDN only accepts HTTP/HTTPS requests on standard ports (i.e., 80 and 443). Typically, a `Host` request header does not include port information for standard ports. However, the requesting user agent defines the `Host` request header submitted to the CDN.
 -   For the purpose of this comparison, the hostname defined by this match condition will not be resolved to an IP address.
 -   For the purpose of this comparison, an origin configuration's **Override Host Header** option is irrelevant.
--   {{ PRODUCT }} {{ PRODUCT_SECURITY }} supports various comparison modes (i.e., exact match, wildcard, and regular expression).
-
-    [Learn more.](#match-comparison-modes)
+-   {{ PRODUCT }} {{ PRODUCT_SECURITY }} supports various [comparison modes (i.e., exact match, wildcard, and regular expression)](#match-comparison-modes).
 
 ### URL Path {/*url-path*/}
 
@@ -73,9 +69,7 @@ By default, a Security App configuration applies to all URL paths. However, you 
 
     `http://cdn.example.com/marketing/brochures/widget.html`
 
--   {{ PRODUCT }} {{ PRODUCT_SECURITY }} supports various comparison modes (i.e., exact match, wildcard, and regular expression).
-
-    [Learn more.](#match-comparison-modes)
+-   {{ PRODUCT }} {{ PRODUCT_SECURITY }} supports various [comparison modes (i.e., exact match, wildcard, and regular expression)](#match-comparison-modes).
 
 ### Match Comparison Modes {/*match-comparison-modes*/}
 
@@ -96,42 +90,53 @@ Your Security App configuration determines how {{ PRODUCT }} {{ PRODUCT_SECURITY
 {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares the specified value(s) against the entire host or URL path.
 It will only apply this Security App configuration to a request when one of the specified value(s) is an exact match. This comparison is case-sensitive.
 
-| Sample Configuration | Matches  | Does Not Match  |
-|---|---|---|
-| cat | cat | Cat <br /> Category <br /> Moscato |
-| bat | bat | Bat <br /> Batch |
+| Sample Configuration | Matches | Does Not Match                     |
+| -------------------- | ------- | ---------------------------------- |
+| cat                  | cat     | Cat <br /> Category <br /> Moscato |
+| bat                  | bat     | Bat <br /> Batch                   |
 
 #### Wildcard Match {/*wildcard-match*/}
 
 {{ PRODUCT }} {{ PRODUCT_SECURITY }} checks whether the entire host or URL path is a case-sensitive match for the wildcard pattern. The supported set of wildcards are listed below.
 -   **\*:** Matches zero or more characters.
-    -   **Example:** `cat*`
-    -   **Matches:** `cat | category | muscat`
-    -   **Does not match:** `cAt | Category`
+
+    | Sample Configuration | Matches                         | Does Not Match     |
+    | -------------------- | ------------------------------- | ------------------ |
+    | cat*                 | cat <br />category <br />muscat | cAt <br />Category |
+
 -   **?:** Matches a single character.
-    -   **Example:** `cat?`
-    -   **Matches:** `cats | muscats`
-    -   **Does not match:** `Cats | cat`
+
+    | Sample Configuration | Matches            | Does Not Match |
+    | -------------------- | ------------------ | -------------- |
+    | cat?                 | cats <br />muscats | Cats <br />cat |
+
 -   **[*abc*]:** Matches a single character defined within the brackets.
-    -   **Example:** `[cm]art`
-    -   **Matches:** `cart | mart`
-    -   **Does not match:** `tart | start`
+
+    | Sample Configuration | Matches         | Does Not Match   |
+    | -------------------- | --------------- | ---------------- |
+    | [cm]art              | cart <br />mart | tart <br />start |
+
 -   **[*a*-*z*]:** Matches a single character from the specified range.
-    -   **Example:** `[a-z]art`
-    -   **Matches:** `cart | mart | tart`
-    -   **Does not match:** `Cart | marT | start`
+
+    | Sample Configuration | Matches                    | Does Not Match              |
+    | -------------------- | -------------------------- | --------------------------- |
+    | [a-z]art             | cart <br />mart <br />tart | Cart <br />marT <br />start |
+
 -   **[!*abc*]:** Matches a single character that is not defined within the brackets.
-    -   **Example:** `[!cm]art`
-    -   **Matches:** `Cart | Mart | tart`
-    -   **Does not match:** `cart | mart | tArt`
+
+    | Sample Configuration | Matches                    | Does Not Match             |
+    | -------------------- | -------------------------- | -------------------------- |
+    | [!cm]art             | Cart <br />Mart <br />tart | cart <br />mart <br />tArt |
+
 -   **[!*a*-*z*]:** Matches a single character that is excluded from the specified range.
-    -   **Example:** `[!a-m]art`
-    -   **Matches:** `Cart | Mart | tart`
-    -   **Does not match:** `cart | mart | tArt`
+
+    | Sample Configuration | Matches                    | Does Not Match             |
+    | -------------------- | -------------------------- | -------------------------- |
+    | [!a-m]art            | Cart <br />Mart <br />tart | cart <br />mart <br />tArt |
 
 **Example:**
 
-Setting the `URL path(s)` option to the following value allows {{ PRODUCT }} {{ PRODUCT_SECURITY }} to apply this Security App configuration to any request whose URL path starts with */marketing/*: `/marketing/*`
+Setting the **URL path(s)** option to `/marketing/*` allows {{ PRODUCT }} {{ PRODUCT_SECURITY }} to apply this Security App configuration to any request whose URL path starts with `/marketing/`. 
 
 The following sample request will match the above pattern:
 
@@ -147,11 +152,9 @@ The following sample request will match the above pattern:
 
 </Callout>
 
-**Example:** `^[a-zA-Z0-9]*$`
-
-**Matches:** `cat` | `CAT7` | `Category`
-
-**Does Not Match:** `Category 7` | `Cat#7`
+| Sample Configuration | Matches                       | Does Not Match         |
+| -------------------- | ----------------------------- | ---------------------- |
+| ^[a-zA-Z0-9]*$       | cat <br />CAT7 <br />Category | Category 7 <br />Cat#7 |
 
 ## Threat Detection {/*threat-detection*/}
 
@@ -172,20 +175,29 @@ Identify threats by adding the following rule(s) to your Security App configurat
 
 -   **Custom Rules:** A [custom rule](/applications/security/custom_rules) identifies threats using custom criteria that takes into account your site's traffic profile to avoid false positives.
 -   **Managed Rules:** A [managed rule](/applications/security/managed_rules) identifies threats through threat detection policies.
+-   **Client-Side Protection Policy:** A [Client-Side Protection](/applications/security/client_side_protection) policy detects and mitigates attacks, such as cross-site scripting (XSS) and code injection, by applying a Content Security Policy to your traffic.
 
-<a id="enforcement-mode"></a>
+### <a id="enforcement-mode" />Threat Detection Mode {/*threat-detection-mode*/}
 
-### Threat Detection Mode {/*threat-detection-mode*/}
-
-You may apply an access, custom, or managed rule in one of the following modes:
+You may apply an access rule, API security ruleset, custom rule, managed rule in one of the following modes:
 -   **Production:** This mode secures your application by allowing you to choose from a variety of actions through which your security policy will be [enforced](#enforcement).
--   **Audit:** This mode allows you to test new security policies without impacting production traffic. Requests that are identified as threats are logged. Use the **Threats** tab of the **Security** dashboard to analyze detected
-    threats and check for false positives. You should apply this security policy to production traffic once you are confident that it will generate minimal false positives.
+-   **Audit:** This mode allows you to test new security policies without impacting production traffic. 
 
     **Key information:**
     
+    -   Requests that are identified as threats by a rule running in audit threat detection mode are solely logged. View this log data through the Security dashboard.
+    -   Track threats identified by your audit security policy by filtering the **WAF Events** view of the **Security** dashboard by the `audit` profile type.
+
+        ![](/images/v7/security/security-dashboard-filter-profile-type-audit.png?width=750)
+
+    -   Once you are confident that an audit security rule will generate minimal false positives, you should set your production threat detection to it.
+    
+        For example, once you are confident that the `Access Control v2` access rule returns minimal false positives, then you should set the **Production Access Rule** option to it.
+
+        ![](/images/v7/security/security-application-tdm-switch.png?width=750)
+
     -   Rate rules and Bot Manager may only run in production mode. You cannot run them in audit mode.
-    -   Track threats identified by your audit policy by filtering the **WAF Events** view of the **Security** dashboard by the `audit` profile type.
+    -   A Client-Side Protection policy allows you to define both an audit and a production Content Security Policy (CSP). Restrict the Security dashboard to only display requests that violated your audit CSP by filtering for `Disposition=report`.
     -   Although you may audit a security policy that has been applied to production traffic (i.e., production mode), this will cause the same threat to be logged twice.
 
 ### Client IP Address
@@ -454,6 +466,9 @@ You may create, modify, and delete Security App configurations.
 1.  Navigate to the **Security Application Manager** page.
     {{ SECURITY_NAV }} **Application Manager**.
 2.  Click **+ Create New**.
+
+    ![Create Security Application](/images/v7/security/security-application-create.png?width=750)
+
 3.  In the **Security Application Name** option, type the unique name by which this Security App configuration will be identified. After which, click **Continue**.
 4.  Optional. From the **Hostname and URL Paths** section, identify the set of traffic to which this security policy will be applied.
 

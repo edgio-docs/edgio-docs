@@ -197,7 +197,7 @@ You may apply an access rule, API security ruleset, custom rule, managed rule in
         ![](/images/v7/security/security-application-tdm-switch.png?width=750)
 
     -   Rate rules and Bot Manager may only run in production mode. You cannot run them in audit mode.
-    -   A Client-Side Protection policy allows you to define both an audit and a production Content Security Policy (CSP). Restrict the Security dashboard to only display requests that violated your audit CSP by filtering for `Disposition=report`.
+    -   A Client-Side Protection policy allows you to define both an audit and a production Content Security Policy (CSP). Restrict the Security dashboard to only display requests that violated your audit CSP by clicking the **Client Events** tab and then filtering for `Disposition=report`.
     -   Although you may audit a security policy that has been applied to production traffic (i.e., production mode), this will cause the same threat to be logged twice.
 
 ### Client IP Address
@@ -431,11 +431,19 @@ Set up origin signaling by enabling the `Origin Signal Header` section within th
 
 The recommended practice is to create a Security App configuration that is tuned for each of your applications. This allows you to apply a restrictive security policy with minimal false positives. Each Security App configuration's host and URL path conditions determine the set of traffic to which it may be applied. If a request is eligible to be screened by multiple Security App configurations, then {{ PRODUCT }} {{ PRODUCT_SECURITY }} will screen it using the first eligible configuration in the list.
 
-<Callout type="tip">
+**Key information:**
 
-  Reorder Security App configurations by dragging the desired configuration's <Image inline src="/images/v7/icons/drag.png" /> icon to the desired position.
+-   If you plan on using multiple Security App configurations, then you should typically order them from smallest to largest [scope (i.e., Hostname and URL path)](#identifying-traffic-for-inspection). 
 
-</Callout>
+    For example, ordering your configurations as indicated below allows you to apply different security policies according to the type of request (i.e., API requests, main web site requests, and all other requests):
+
+    | Position | Security App Configuration | Scope                      |
+    | -------- | -------------------------- | -------------------------- |
+    | 1        | API Requests               | www.example.com and `/api` |
+    | 2        | Main Site                  | www.example.com            |
+    | 3        | All Sites                  | None                       |
+
+-   Reorder Security App configurations by dragging the desired configuration's <Image inline src="/images/v7/icons/drag.png" /> icon to the desired position.
 
 ## Security App Administration {/*security-application-administration*/}
 
@@ -631,7 +639,7 @@ You may create, modify, and delete Security App configurations.
 
 <Callout type="tip">
 
-  Traffic is always screened using the first eligible Security App configuration. If multiple Security App configurations are applicable to the same request, then consider updating their host or URL path conditions to a more restrictive pattern.
+  Traffic is always screened using the [first eligible Security App configuration](#order-of-precedence). If multiple Security App configurations are applicable to the same request, then consider updating their host or URL path conditions to a more restrictive pattern.
 
 </Callout>
 

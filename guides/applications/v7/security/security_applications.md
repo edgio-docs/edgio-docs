@@ -19,7 +19,7 @@ A Security App configuration:
 -   Determines how violations of your access rules, API security rulesets, rate rules, custom rules, and managed rules are [enforced](#enforcement).
 -   Allows you to audit new access rules, API Security rules, custom rules, managed rules, and Client-Side Protection policy without impacting production traffic and while keeping your applications secure with known configurations.
 
-    From the **Security** dashboard, click **WAF Events** and then filter by `Profile Type = AUDIT` to isolate and analyze threats detected as a result of an audit of new access rules,  API Security rules, custom rules, and managed rules.
+    From the Security dashboard, click **WAF Events** and then filter by `Profile Type = AUDIT` to isolate and analyze threats detected as a result of an audit of new access rules,  API Security rules, custom rules, and managed rules.
 
     <Callout type="info">
 
@@ -186,7 +186,7 @@ You may apply an access rule, API security ruleset, custom rule, managed rule in
     **Key information:**
     
     -   Requests that are identified as threats by a rule running in audit threat detection mode are solely logged. View this log data through the Security dashboard.
-    -   Track threats identified by your audit security policy by filtering the **WAF Events** view of the **Security** dashboard by the `audit` profile type.
+    -   Track threats identified by your audit security policy by filtering the **WAF Events** view of the Security dashboard by the `audit` profile type.
 
         ![](/images/v7/security/security-dashboard-filter-profile-type-audit.png?width=750)
 
@@ -406,7 +406,7 @@ Add an event variable to a custom response header value or a custom response bod
 
 ### Event Logging {/*event-logging*/}
 
-Each detected threat is logged regardless of enforcement action (i.e., block, custom response, redirect, or alert). View logged threats from the **Threats**, **Bots**, **Rates**, or **Rate Enforcement** tabs of the **Security** dashboard.
+Each detected threat is logged regardless of enforcement action (i.e., block, custom response, redirect, or alert). View logged threats from the **Threats**, **Bots**, **Rates**, or **Rate Enforcement** tabs of the Security dashboard.
 
 Sensitive data  (e.g., credit card information or passwords) can be redacted from our event logs.
 
@@ -435,15 +435,17 @@ The recommended practice is to create a Security App configuration that is tuned
 
 -   If you plan on using multiple Security App configurations, then you should typically order them from smallest to largest [scope (i.e., Hostname and URL path)](#identifying-traffic-for-inspection). 
 
-    For example, ordering your configurations as indicated below allows you to apply different security policies according to the type of request (i.e., API requests, main web site requests, and all other requests):
+    **Example:** Ordering your configurations as indicated below allows you to apply different security policies according to the type of request (i.e., API requests, script requests, main web site requests, and all other requests):
 
-    | Position | Security App Configuration | Hostname          | URL Path |
-    | -------- | -------------------------- | ----------------- | -------- |
-    | 1        | API Requests               | Default           | `/api`   |
-    | 2        | Main Site                  | `www.example.com` | Default  |
-    | 3        | All Sites                  | Default           | Default  |
+    | Position | Security App Configuration | Hostname          | URL Path     |
+    | -------- | -------------------------- | ----------------- | ------------ |
+    | 1        | API Requests               | `api.example.com` | Default      |
+    | 2        | Scripts                    | `www.example.com` | `/scripts/*` |
+    | 3        | Main Site                  | `www.example.com` | Default      |
+    | 4        | All Sites                  | Default           | Default      |
 
-    If the `All Sites` Security App configuration were moved to the first position, then it would screen all requests and prevent your other Security App configurations from being applied to your traffic.
+    -   By default, a Security App configuration applies to all requests. If the `All Sites` Security App configuration were moved to the first position, then it would screen all requests and prevent your other Security App configurations from being applied to your traffic.
+    -   If you were to swap the `Scripts` Security App configuration with `Main Site`, then the `Main Site` Security App configuration would screen all requests for `www.example.com`. The `Scripts` security configuration would never be applied to your traffic.
 
 -   Reorder Security App configurations by dragging the desired configuration's <Image inline src="/images/v7/icons/drag.png" /> icon to the desired position.
 

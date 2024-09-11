@@ -433,7 +433,7 @@ The recommended practice is to create a Security App configuration that is tuned
 
 **Key information:**
 
--   If you plan on using multiple Security App configurations, then you should typically order them from smallest to largest [scope (i.e., Hostname and URL path)](#identifying-traffic-for-inspection). 
+-   If you plan on using multiple Security App configurations, then you should typically order them from narrowest to broadest [scope (i.e., Hostname and URL path)](#identifying-traffic-for-inspection). 
 
     **Example:** Ordering your configurations as indicated below allows you to apply different security policies according to the type of request (i.e., API requests, script requests, main web site requests, and all other requests):
 

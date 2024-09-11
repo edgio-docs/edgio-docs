@@ -1,8 +1,8 @@
 ---
-title: Basic Website Security Recommendations
+title: Basic Website Security
 ---
 
-Basic security recommendations for your website are provided below.
+Basic security recommendations for your website are provided below. Additionally, we strongly recommend that you implement a [security policy](/applications/security/waf) to protect against application layer attacks. 
 
 ## TLS Version {/*tls-version*/}
 

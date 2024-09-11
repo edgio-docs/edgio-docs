@@ -16,6 +16,18 @@ properties:
   is_custom_challenge:
     type: boolean
     description: Determines whether to serve a standard or custom browser challenge.
+  challenge_level:
+    type: integer
+    format: uint32
+    description: |
+ 
+      Determines whether to serve our standard or difficulty-based browser challenge. Valid values are:
+      -   **1:** Standard browser challenge
+      -   **2:** Difficulty-based browser challenge
+  challenge_difficulty:
+    type: integer
+    format: uint32
+    description: Difficulty-based browser challenges only. Determines the difficulty level for the browser challenge. Valid values are `0 - 20`. Smaller values are easier to solve, while larger values introduce latency.
   response_body_base64:
     type: string
     description: |

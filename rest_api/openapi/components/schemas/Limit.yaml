@@ -82,6 +82,8 @@ properties:
 
       -   **ARGS:{Name}:** Edgio Security Premier only. Indicates that requests will be grouped by the value assigned to the query string parameter defined by the `{Name}` placeholder. Each unique value for the specified parameter is considered a separate group. A request is excluded from this rate limit when the specified parameter is not present.
 
+      -   **STATUS_CODE:{Code}:** Edgio Security Premier only. Indicates that requests will be grouped by the status code of the response.
+
     items:
       allOf:
         - $ref: ./LimitKeyType.yaml

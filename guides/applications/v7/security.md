@@ -2,7 +2,7 @@
 title: Introduction to Security
 ---
 
-The majority of web sites, web applications, and web servers receive and process requests from outside a company's protected internal network. This makes them potentialy vulnerable to a variety of malicious attacks including SQL injections, cross-site scripting, and application layer distributed denial of service (DDoS).
+Most web sites, web applications, and web servers receive and process requests from outside a company's protected internal network. This makes them potentially vulnerable to a variety of malicious attacks including SQL injections, cross-site scripting, and application layer distributed denial of service (DDoS).
 
 This exposure poses a threat to your infrastructure, the application’s performance, and the confidentiality, integrity, and availability of the data delivered by those resources over the Internet. These types of attacks can produce outcomes that are detrimental to your business, such as unauthorized access to content, the loss of personally identifiable information (PII), the dissemination of private/copyrighted information, and network downtime.
 
@@ -21,11 +21,11 @@ Protect your external web infrastructure against these threats through the follo
 
 -   **Web Application and API Protection**
 
-    Monitor, detect, and prevent application layer attacks through the use of our Web Application Firewall (WAF), Bot Manager, API Security, and Client-Side Protection. Each of these products improves your security posture through the following security measures:
+    Monitor, detect, and prevent application layer attacks with our Web Application Firewall (WAF), Bot Manager, API Security, and Client-Side Protection. Each of these products improves your security posture through the following security measures:
 
     -   Inspects inbound HTTP/HTTPS traffic against reactive and proactive security policies.
     -   Identifies undesired traffic through HTTP request delivery profiles.
-    -   Identifies undesired traffic through custom critieria that matches your business needs.
+    -   Identifies undesired traffic through custom criteria that matches your business needs.
     -   Responds to malicious or suspicious activity in-band and on a real-time basis.
     -   Restricts the flow of site traffic (aka rate limiting) with the intention of:
         -   Diverting malicious or inadvertent DDoS traffic.

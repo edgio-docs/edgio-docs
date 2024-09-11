@@ -149,6 +149,10 @@ const AlgoliaSearch = ({onSearchOpen, onSearchClose}: AlgoliaSearchProps) => {
             searchParameters={searchParameters}
             transformItems={transformItems}
             resultsFooterComponent={({state}) => {
+              if (!siteConfig.edgioAnswers.enabled) {
+                return null;
+              }
+
               return (
                 <StyledFooter onClick={() => onClickEdgioAnswers(state.query)}>
                   Looking for something else? <br />

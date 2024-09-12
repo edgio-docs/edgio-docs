@@ -1,8 +1,7 @@
 import * as React from 'react';
 
 import '@docsearch/css';
-import {install} from '@edgio/prefetch/window';
-import {prefetch} from '@edgio/prefetch/window/prefetch';
+import {install, prefetch} from '@edgio/prefetch/window';
 import {Metrics} from '@edgio/rum';
 import {MDXEmbedProvider} from 'mdx-embed';
 import type {AppProps} from 'next/app';
@@ -78,19 +77,18 @@ export default function MyApp({Component, pageProps}: DocsAppProps) {
 
   React.useEffect(() => {
     // Install service worker
-    if ('serviceWorker' in navigator) {
-      install({
-        watch: [
-          {
-            selector: 'a[href^="/applications"]',
-            callback: (el) => {
-              const href = el.getAttribute('href') as string;
-              prefetch(href);
-            },
+    install({
+      watch: [
+        {
+          selector: 'a[href^="/applications"]',
+          callback: (el) => {
+            const href = el.getAttribute('href') as string;
+            prefetch(href);
           },
-        ],
-      });
-    }
+        },
+      ],
+    });
+
     // All of this should execute if JS is available after (if) mounted
     const handleRouteChange = (url: string, {shallow}: {shallow: any}) => {
       // Start the spinner

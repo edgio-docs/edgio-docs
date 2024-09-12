@@ -21,7 +21,7 @@ Protect your external web infrastructure against these threats through the follo
 
 -   **Web Application and API Protection**
 
-    Monitor, detect, and prevent application layer attacks with our Web Application Firewall (WAF), Bot Manager, API Security, and Client-Side Protection. Each of these products improves your security posture through the following security measures:
+    Monitor, detect, and prevent application layer attacks with our Web Application Firewall (WAF), Bot Manager, API Security, and Client-Side Protection. Each security layer improves your security posture through the following threat detection activity:
 
     -   Inspects inbound HTTP/HTTPS traffic against reactive and proactive security policies.
     -   Identifies undesired traffic through HTTP request delivery profiles.

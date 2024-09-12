@@ -198,9 +198,8 @@ export const siteConfig = {
   analytics: {
     gtmId: 'GTM-5WCD2BK',
   },
-  fireawai: {
-    chatbotId: '5aa46a00-64ab-44a7-ba8e-778402716981',
-    apiToken: 'ac9030b3-dfa6-4e18-8069-e8df54c131e4',
+  edgioAnswers: {
+    enabled: true,
   },
 };
 

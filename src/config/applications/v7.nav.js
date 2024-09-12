@@ -370,7 +370,7 @@ const nav = {
         },
         separator,
         {
-          title: 'Web Application Firewall (WAF)',
+          title: 'Web Application and API Protection (WAAP)',
           path: 'security/waf',
         },
         {

@@ -79,7 +79,7 @@ Additional information on each of the above steps is provided below.
 
 ## Audit Security Rules {/*audit-security-rules*/}
 
-Apply a security rule within a Security App configuration in one of the following modes:
+Apply a security rule within a Security App configuration in one of the following threat detection modes:
 
 -   **Audit:** Test new security configurations by screening traffic in Audit mode. 
 -   **Production:** Use this mode to enforce your security policy.

@@ -1,8 +1,8 @@
 ---
-title: Securing Your Web Applications ({{ PRODUCT_SECURITY }})
+title: Securing Your Web Applications
 ---
 
-Our security offering is designed to secure your web applications against malicious and unwanted traffic.
+{{ PRODUCT }} {{ PRODUCT_SECURITY }} is designed to secure your web applications against malicious and unwanted traffic.
 The core methods through which it secures site traffic are listed below.
 
 -   Leverages our distributed worldwide network to provide protection

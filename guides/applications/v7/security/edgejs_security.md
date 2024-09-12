@@ -12,7 +12,7 @@ We recommend that you enable TLS 1.3, 1.2, or both on your web server(s).
 -   A recommended best practice is to disable support for SSL/TLS versions 1.1 or older.
 -   TLS 1.3 improves security and performance of internet communications. Specifically, it eliminates known TLS 1.2 security vulnerabilities and prevents snooping and man-in-the-middle attacks.
 
-## HTTP/1/2 Version {/*http12-version*/}
+## HTTP Version {/*http12-version*/}
 
 We support the following HTTP protocol versions for client requests to our network:
 -   **HTTP/1:** {{ PRODUCT }} uses the HTTP protocol version defined in the request when proxying requests to an origin and in the response provided to the client.

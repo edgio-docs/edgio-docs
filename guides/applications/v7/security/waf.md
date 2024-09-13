@@ -77,14 +77,18 @@ Additional information on each of the above steps is provided below.
 
 </Callout>
 
-## <a id="audit-security-rules" />Dual Threat Detection Modes {/*dual-threat-detection-modes*/}
+## <a id="audit-security-rules" />Dual Threat Detection {/*dual-threat-detection*/}
 
 {{ PRODUCT }} {{ PRODUCT_SECURITY }} supports dual threat detection. This capability allows you to:
 
 -   Enforce a proven security policy on your production traffic.
 -   Audit a new security policy without impacting your production traffic. Auditing a new security policy before enforcing it provides the means through which you can safely identify and reduce false positives introduced by changes to your security policy. 
 
-Set up dual threat detection mode by applying a security rule within a Security App configuration in one of the following threat detection modes:
+Set up dual threat detection within a Security App configuration by setting a security rule in Production mode and another one in Audit mode. In the following sample configuration, the `Access Control v1` access rule will be enforced, while threats detected by the `Access Control v2` access rule will only generate alerts. 
+
+![Security App configuration - Production and  Audit mode](/images/v7/security/security-application-tdm-switch.png)
+
+Threat detection modes are described below.
 
 -   **Audit:** Test new security configurations by screening traffic in Audit mode. 
 -   **Production:** Use this mode to enforce your security policy.

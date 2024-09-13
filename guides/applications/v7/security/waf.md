@@ -10,7 +10,7 @@ Monitor, detect, and prevent attacks against your applications and API traffic t
 
     This design encourages you to apply a consistent security policy across all of your organization's properties. However, you can also tailor your security policy to specific types of requests. For example, you can apply a security policy to a specific domain (e.g., `www.example.com`) or URL path (e.g., `/scripts/*`).
 
--   Our service includes a basic offering called {{ PRODUCT_SECURITY }} Insights. However, we also offer more comprehensive security soutions. {{ ACCOUNT_UPGRADE }}
+-   {{ PRODUCT }} allows all organizations to set up basic security through {{ PRODUCT_SECURITY }} Insights. However, we also offer more comprehensive solutions. {{ ACCOUNT_UPGRADE }}
 
 Use {{ PRODUCT }} {{ PRODUCT_SECURITY }} to:
 

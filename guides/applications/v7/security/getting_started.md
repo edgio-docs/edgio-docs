@@ -39,7 +39,7 @@ Create an access rule that identifies traffic that should be allowed, denied, or
 5.  Click **+ blacklist**.
 6.  From within this blacklist section, add an IP address from which suspicious traffic originates by typing it and then pressing `ENTER`. Repeat this step as needed.
 
-    ![](/images/v7/security/getting_started_access_rules.png?width=600)
+    ![](/images/v7/security/getting_started_access_rules.png?height=400)
 
 7.  Click **Save**.
 

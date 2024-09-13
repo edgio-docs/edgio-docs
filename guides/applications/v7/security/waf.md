@@ -77,9 +77,14 @@ Additional information on each of the above steps is provided below.
 
 </Callout>
 
-## Audit Security Rules {/*audit-security-rules*/}
+## <a id="audit-security-rules" />Dual Threat Detection Modes {/*dual-threat-detection-modes*/}
 
-Apply a security rule within a Security App configuration in one of the following threat detection modes:
+{{ PRODUCT }} {{ PRODUCT_SECURITY }} supports dual threat detection. This capability allows you to:
+
+-   Enforce a proven security policy on your production traffic.
+-   Audit a new security policy without impacting your production traffic. Auditing a new security policy before enforcing it provides the means through which you can safely identify and reduce false positives introduced by changes to your security policy. 
+
+Set up dual threat detection mode by applying a security rule within a Security App configuration in one of the following threat detection modes:
 
 -   **Audit:** Test new security configurations by screening traffic in Audit mode. 
 -   **Production:** Use this mode to enforce your security policy.

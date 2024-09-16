@@ -2,6 +2,8 @@ import {edgioAnswersUrl} from 'components/EdgioAnswers';
 import {AccordionItem} from 'components/Layout/navigation/Accordion';
 import config from 'config/base.config';
 
+import {siteConfig} from './appConfig';
+
 const {STATUS_URL, SUPPORT_URL, FORUM_URL, FIDDLE_URL} = config;
 
 const headerNav: AccordionItem[] = [
@@ -65,10 +67,12 @@ const headerNav: AccordionItem[] = [
   {
     title: 'Support',
     items: [
-      {
-        title: 'Edgio Answers',
-        url: edgioAnswersUrl,
-      },
+      siteConfig.edgioAnswers.enabled
+        ? {
+            title: 'Edgio Answers',
+            url: edgioAnswersUrl,
+          }
+        : null,
       {
         title: 'Status Page',
         url: STATUS_URL,
@@ -81,7 +85,7 @@ const headerNav: AccordionItem[] = [
         title: 'Contact Us',
         url: SUPPORT_URL,
       },
-    ],
+    ].filter(Boolean),
   },
   {
     title: 'Fiddle',

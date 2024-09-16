@@ -349,7 +349,7 @@ const nav = {
       icon: 'shield',
       routes: [
         {
-          title: 'Website Security (EdgeJS)',
+          title: 'Basic Website Security',
           path: 'security/edgejs_security',
         },
         {
@@ -370,7 +370,7 @@ const nav = {
         },
         separator,
         {
-          title: 'Web Application Firewall (WAF)',
+          title: 'Web Application and API Protection',
           path: 'security/waf',
         },
         {

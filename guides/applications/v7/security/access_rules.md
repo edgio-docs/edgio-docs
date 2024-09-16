@@ -32,11 +32,13 @@ An access rule identifies legitimate traffic and threats through access control 
 
 ## <a id="basic-access-controls" />Access Control Lists {/*access-control-lists*/}
 
-Control access to your content by creating whitelists, accesslists, and blacklists for the following categories:
+Control access to your content by creating whitelists, accesslists, and blacklists.
 
 #### ASN {/*asn*/}
 
 Identifies requests according to the autonomous system (AS) from which the request originated. Specify each desired AS by its autonomous system number (ASN).
+
+**Example:** `64496`
 
 #### Cookie {/*cookie*/}
 
@@ -91,11 +93,7 @@ Identifies requests by the requester's IPv4 and/or IPv6 address.
 
 -   Specify each desired IP address using standard IPv4/IPv6 and CIDR notation.
 
-    <Callout type="info">
-
-      Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., 11.22.33.0/22).
-
-    </Callout>
+    Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., 11.22.33.0/22).
 
 -   **Limit:** You may specify up to 1,000 IP addresses or IP blocks per access rule. Whitelist, accesslist, and blacklist entries count towards this limit.
 
@@ -173,8 +171,7 @@ The purpose of a blacklist is to describe unwanted traffic.
 
     `Whitelist > Accesslist > Blacklist`
 
-    For example, {{ PRODUCT_SECURITY }} will inspect a request that satisfies both an accesslist and a blacklist. However, it will automatically allow the delivery of a request that satisfies a whitelist, an accesslist, and
-    a blacklist.
+    For example, {{ PRODUCT_SECURITY }} will inspect a request that satisfies both an accesslist and a blacklist. However, it will automatically allow the delivery of a request that satisfies a whitelist, an accesslist, and a blacklist.
 -   Specify only a single item per line.
 -   All entries within a URL, referrer, cookie, or user agent whitelist, accesslist, and blacklist are regular expressions.
 
@@ -370,9 +367,7 @@ You may create, modify, and delete access rules.
 5.  Define which HTTP methods and media types are allowed and which file extensions and request headers are disallowed.
 
     1.  If the **Advanced Settings** section is collapsed, click on it to expand it.
-    2.  From the **Allowed HTTP Methods** section, verify that only the [HTTP methods](#http-methods) that should be
-        allowed are marked. If the desired HTTP method is not listed, then you may manually define it in the **Other HTTP
-        Methods** option by typing it and then pressing 'ENTER'.
+    2.  From the **Allowed HTTP Methods** section, verify that only the [HTTP methods](#http-methods) that should be allowed are marked. If the desired HTTP method is not listed, then you may manually define it in the **Other HTTP Methods** option by typing it and then pressing 'ENTER'.
 
         <Callout type="info">
 

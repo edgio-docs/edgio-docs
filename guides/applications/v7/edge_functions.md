@@ -742,9 +742,10 @@ It's worth noting that not all implementations will be able to accept polyfills,
 
 ## Edge Function Examples {/* examples */}
 
+The following site contains links to multiple examples showcasing Edge Functions.
+
 <ExampleButtons
   title="Edge Functions"
   siteUrl="https://edgio-community-examples-v7-edge-functions-live.edgio.link/"
   repoUrl="https://github.com/edgio-docs/edgio-v7-edge-functions-example"
 />
-````

@@ -52,7 +52,7 @@ Bot Manager Advanced inspects each request to determine whether the request:
 
         </Callout>
 
-    -   The JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic as a specific bot across various IP addresses and ports.
+    -   The JA3 or JA4 fingerprint assigned to the request. These fingerprints allow us to classify traffic.
 
 3.  Matches a known good bot (e.g., search bot).
 4.  Is spoofing a known good bot.
@@ -64,7 +64,7 @@ Bot Manager Advanced inspects each request to determine whether the request:
 
     `Exceptions > Bots Identified by a Rule > Known Bots > Spoofed Bots`
 
--   Bypass the above bot detection measures by creating an exception for one or more URL(s), user agent(s), JA3 fingerprint(s), or cookie(s).
+-   Bypass the above bot detection measures by creating an exception for one or more URL(s), user agent(s), JA3 fingerprint(s), JA4 fingerprint(s), or cookie(s).
 
 ## Actions {/*actions*/}
 
@@ -401,7 +401,7 @@ A variable identifies the request element that {{ PRODUCT }} {{ PRODUCT_SECURITY
 
     <a id="bot-score" />
 
--   **Bot score:** Bot Manager Advanced only. Identifies requests based off a score that defines our level of confidence that it is a bot. This score is calculated by analyzing the request and its behavior. The range for this score is 0 to 100.
+-   **Bot score:** Bot Manager Advanced only ({{ PRODUCT }} Enterprise and Premier). Identifies requests based off a score that defines our level of confidence that it is a bot. This score is calculated by analyzing the request and its behavior. The range for this score is 0 to 100.
 
     <a id="country" />
 
@@ -429,7 +429,11 @@ A variable identifies the request element that {{ PRODUCT }} {{ PRODUCT_SECURITY
 
     <a id="ja3" />
 
--   **Ja3:** Bot Manager Advanced only. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic as a specific bot across various IP addresses and ports.
+-   **JA3:** Bot Manager Advanced ({{ PRODUCT }} Premier) only. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic as a specific bot across various IP addresses and ports.
+
+    <a id="ja4" />
+
+-   **JA4:** Bot Manager Advanced ({{ PRODUCT }} Premier) only. Identifies requests by the [JA4 fingerprint](https://github.com/FoxIO-LLC/ja4/blob/main/technical_details/JA4.md) assigned to the request. This method of traffic classification is less prone to evasion techniques than JA3.
 
     <a id="request-cookies" />
 
@@ -546,18 +550,18 @@ We will now examine how the **Count** option affects comparisons for this config
 
 ## Exceptions {/*exceptions*/}
 
-Bot Manager Advanced allows you to exempt traffic from bot detection by URL, user agent, JA3 fingerprint, and cookie.
+Bot Manager Advanced allows you to exempt traffic from bot detection by URL, user agent, JA3 fingerprint, JA4 fingerprint, and cookie.
 
 **Key information:**
 
 -   Define each entry on a separate line.
 -   URL, user agents, and cookies are regular expressions.
--   A JA3 fingerprint identifies a client using key characteristics from a TLS request.
--   Our service will only bypass bot detection when it finds an exact match for a JA3 fingerprint exception.
+-   A JA3 or JA4 fingerprint identifies a client using key characteristics from a TLS request.
+-   Our service will only bypass bot detection when it finds an exact match for an exception.
 
     <Callout type="info">
 
-      Use the Security dashboard to find the JA3 fingerprint that corresponds to a false positive.
+      Use the Security dashboard to find the JA3 or JA4 fingerprint that corresponds to a false positive.
 
     </Callout>
 

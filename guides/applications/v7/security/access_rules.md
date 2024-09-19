@@ -12,6 +12,7 @@ An access rule identifies legitimate traffic and threats through access control 
     -   [Country Subdivision](#country-subdivision--iso3166-2-)
     -   [IP address](#ip-address)
     -   [JA3](#ja3)
+    -   [JA4](#ja4)
     -   [Referrer](#referrer)
     -   [URL](#url)
     -   [User agent](#user-agent)
@@ -49,19 +50,25 @@ Identifies requests by searching for a cookie name that matches the specified re
 -   Certain common characters (e.g., `?.+`) have special meaning in a regular expression. 
 -   Use a backslash to escape a special character.
 
-#### Country {/*country*/}
+#### Country Code (ISO-3166) {/*country*/}
 
-Identifies requests by the country from which the request originated. Specify each desired country using a [country code](/applications/reference/country_codes).
+Identifies requests by the country from which the request originated. 
 
-<Callout type="info">
+**Key information:**
 
-  Country access controls take precedence over [country subdivision](#country-subdivision--iso3166-2-) access controls.
+-   Specify a country through its [country code](/applications/reference/country_codes).
+-   If you plan on adding multiple countries, then each country code must be defined on a separate line.
+-   Country access controls take precedence over [country subdivision](#country-subdivision--iso3166-2-) access controls.
 
-  For example, if you define `US` within a whitelist, then state-specific access controls will be ignored for requests that originate within the United States.
+    For example, if you define `US` within a whitelist, then state-specific access controls will be ignored for requests that originate within the United States.
 
-</Callout>
+-   **Example:** The following configuration identifies requests from the United States, Mexico, and Canada: 
 
-**Example:** The following value identifies requests from the United States: `US`
+    ```
+    US
+    MX
+    CA
+    ```
 
 #### Country Subdivision (ISO3166-2) {/*country-subdivision--iso3166-2-*/}
 
@@ -84,6 +91,10 @@ Identifies requests by a country's subdivision (e.g., state or province). Specif
 #### JA3 {/*ja3*/}
 
 {{ PRODUCT }} Premier only. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic across various IP addresses and ports.
+
+#### JA4 {/*ja4*/}
+
+{{ PRODUCT }} Premier only. Identifies requests by the [JA4 fingerprint](https://github.com/FoxIO-LLC/ja4/blob/main/technical_details/JA4.md) assigned to the request. This method of traffic classification is less prone to evasion techniques than JA3.
 
 #### IP Address {/*ip-address*/}
 

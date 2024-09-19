@@ -174,6 +174,10 @@ const nav = {
           path: 'performance/prefetching',
           routes: [
             {
+              title: 'Automatic Setup',
+              path: 'performance/prefetching/automatic_prefetching_setup',
+            },
+            {
               title: 'Manual Setup',
               path: 'performance/prefetching/prefetching_script_tag',
             },

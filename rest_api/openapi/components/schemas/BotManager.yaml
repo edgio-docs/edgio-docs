@@ -28,6 +28,11 @@ properties:
     description: Identifies traffic that will be exempt from bot detection by JA3 fingerprint. A JA3 fingerprint identifies a client using key characteristics from a TLS request.
     items:
       type: string
+  exception_ja4:
+    type: array
+    description: Identifies traffic that will be exempt from bot detection by JA4 fingerprint. A JA4 fingerprint identifies a client using key characteristics from a TLS request.
+    items:
+      type: string
   exception_url:
     type: array
     description: A regular expression that identifies traffic that will be exempt from bot detection by URL. 

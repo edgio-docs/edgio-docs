@@ -76,6 +76,8 @@ properties:
 
       -   **JA3:** Edgio Security Premier only. Indicates that requests will be grouped by a client's JA3. Each unique JA3 is considered a separate group.
 
+      -   **JA4:** Edgio Security Premier only. Indicates that requests will be grouped by a client's JA4. Each unique JA4 is considered a separate group.
+
       -   **HEADER:{Name}:** Edgio Security Premier only. Indicates that requests will be grouped by the value assigned to the request header defined by the `{Name}` placeholder. Each unique value for the specified header is considered a separate group. A request is excluded from this rate limit when the specified header is not present. 
 
       -   **COOKIE:{Name}:** Edgio Security Premier only. Indicates that requests will be grouped by the value assigned to the cookie defined by the `{Name}` placeholder. Each unique value for the specified cookie is considered a separate group. A request is excluded from this rate limit when the specified cookie is not present.

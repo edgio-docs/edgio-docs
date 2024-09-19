@@ -56,6 +56,10 @@ properties:
     description: Requires Edgio Premier. Contains access controls for JA3 fingerprints.
     allOf:
       - $ref: ./AclStrings.yaml
+  ja4:
+    description: Requires Edgio Premier. Contains access controls for JA4 fingerprints.
+    allOf:
+      - $ref: ./AclStrings.yaml
   asn:
     description: Contains access controls for autonomous system numbers (ASNs).
     allOf:

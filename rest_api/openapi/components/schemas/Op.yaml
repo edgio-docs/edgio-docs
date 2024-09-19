@@ -16,6 +16,26 @@ properties:
 
       -   **RX:** Requires that the request's attribute be an exact match to the regular expression defined in the `value` property.
 
+      -   **EQ:** requires the request's attribute be numerically equal to the value defined in the `values` property.
+
+          Only use `EQ` with the `BOT_SCORE` match condition.
+
+      -   **GE:** requires the request's attribute be numerically greater than or equal to the value defined in the `values` property.
+
+          Only use `GE` with the `BOT_SCORE` match condition.
+
+      -   **GT:** requires the request's attribute be numerically greater than the value defined in the `values` property.
+
+          Only use `GT` with the `BOT_SCORE` match condition.
+
+      -   **LE:** requires the request's attribute be numerically less than or equal to the value defined in the `values` property.
+
+          Only use `LE` with the `BOT_SCORE` match condition.
+
+      -   **LT:** requires the request's attribute be numerically less than the value defined in the `values` property.
+
+          Only use `LT` with the `BOT_SCORE` match condition.
+
     allOf:
       - $ref: ./OpType.yaml
   value:

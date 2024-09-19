@@ -18,6 +18,10 @@ properties:
       - QUERY_STRING
       - GEO
       - REMOTE_ADDR
+      - REMOTE_ASN
+      - BOT_SCORE
+      - REMOTE_JA3
+      - REMOTE_JA4
   match:
     description: Contains comparison settings for the request element identified by the `type` property. You may define up to 20 entries.
     type: array

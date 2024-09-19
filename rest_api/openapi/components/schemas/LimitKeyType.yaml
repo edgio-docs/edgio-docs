@@ -4,6 +4,7 @@ enum:
   - USER_AGENT
   - ASN
   - JA3
+  - JA4
   - HEADER:<name>
   - ARGS:<name>
   - COOKIE:<name>

@@ -91,7 +91,6 @@
 | TKA | Tokyo | Asia |
 | TKB | Tokyo | Asia |
 | TKC | Tokyo | Asia |
-| TLC | Mexico City | North America |
 | TPE | Taipei | Asia |
 | UAE | Fujairah, United Arab Emirates | Europe |
 | VAL | Valparaiso | South America |

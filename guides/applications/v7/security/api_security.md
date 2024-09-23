@@ -54,11 +54,11 @@ An API Security rule identifies the set of requests that will undergo schema val
     -   [Wildcard match:](#wildcard-match) Restrict inspection to a wildcard pattern for the relative path.
     -   [Regex match:](#regex-match) Restrict inspection to a regular expression for the relative path.
 
-        <Callout type="info">
+    <Callout type="info">
 
-          Wildcard and regular expression match comparison modes require {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ ACCOUNT_UPGRADE }}
+      Wildcard and regular expression match comparison modes require {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ ACCOUNT_UPGRADE }}
 
-        </Callout>
+    </Callout>
 
 -   **Method(s):** You may restrict payload inspection to one or more of the following HTTP method(s): `PUT | POST | PATCH`
 
@@ -66,71 +66,61 @@ An API Security rule identifies the set of requests that will undergo schema val
 
 {{  PRODUCT }} {{ PRODUCT_SECURITY }} compares the specified value(s) against the entire relative URL path. It will only inspect a request when one of the specified value(s) is an exact match. This comparison is case-sensitive.
 
-**Sample Configuration:**
-
-`/cat`
-
-`/bat`
-
-**Matches:**
-
-`/cat`
-
-`/bat`
-
-**Does Not Match:**
-
-`/Cat`
-
-`/Bat`
-
-`/Category`
-
-`/Moscato`
-
-`/Batch`
+| Sample Configuration | Matches | Does Not Match                     |
+| -------------------- | ------- | ---------------------------------- |
+| cat                  | cat     | Cat <br /> Category <br /> Moscato |
+| bat                  | bat     | Bat <br /> Batch                   |
 
 #### Wildcard Match {/*wildcard-match*/}
 
-{{  PRODUCT }} {{ PRODUCT_SECURITY }} checks whether the entire relative URL path is a case-sensitive match for the wildcard pattern. The supported set of wildcards are listed below.
+Requires {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{  PRODUCT }} {{ PRODUCT_SECURITY }} checks whether the entire relative URL path is a case-sensitive match for the wildcard pattern. The supported set of wildcards are listed below.
 -   **\*:** Matches zero or more characters.
-    -   **Example:** `/cat*`
-    -   **Matches:** `/cat | /category`
-    -   **Does not match:** `/cAt | /Category | /muscat`
+
+    | Sample Configuration | Matches                         | Does Not Match     |
+    | -------------------- | ------------------------------- | ------------------ |
+    | cat*                 | cat <br />category <br />muscat | cAt <br />Category |
+
 -   **?:** Matches a single character.
-    -   **Example:** `/cat?`
-    -   **Matches:** `/cats`
-    -   **Does not match:** `/Cats | /cat | /muscats`
+
+    | Sample Configuration | Matches            | Does Not Match |
+    | -------------------- | ------------------ | -------------- |
+    | cat?                 | cats <br />muscats | Cats <br />cat |
+
 -   **[*abc*]:** Matches a single character defined within the brackets.
-    -   **Example:** `/[cm]art`
-    -   **Matches:** `/cart | /mart`
-    -   **Does not match:** `/tart | /start`
+
+    | Sample Configuration | Matches         | Does Not Match   |
+    | -------------------- | --------------- | ---------------- |
+    | [cm]art              | cart <br />mart | tart <br />start |
+
 -   **[*a*-*z*]:** Matches a single character from the specified range.
-    -   **Example:** `/[a-z]art`
-    -   **Matches:** `/cart | /mart | /tart`
-    -   **Does not match:** `/Cart | /marT | /start`
+
+    | Sample Configuration | Matches                    | Does Not Match              |
+    | -------------------- | -------------------------- | --------------------------- |
+    | [a-z]art             | cart <br />mart <br />tart | Cart <br />marT <br />start |
+
 -   **[!*abc*]:** Matches a single character that is not defined within the brackets.
-    -   **Example:** `/[!cm]art`
-    -   **Matches:** `/Cart | /Mart | /tart`
-    -   **Does not match:** `/cart | /mart | /tArt`
+
+    | Sample Configuration | Matches                    | Does Not Match             |
+    | -------------------- | -------------------------- | -------------------------- |
+    | [!cm]art             | Cart <br />Mart <br />tart | cart <br />mart <br />tArt |
+
 -   **[!*a*-*z*]:** Matches a single character that is excluded from the specified range.
-    -   **Example:** `/[!a-m]art`
-    -   **Matches:** `/Cart | /Mart | /tart`
-    -   **Does not match:** `/cart | /mart | /tArt`
+
+    | Sample Configuration | Matches                    | Does Not Match             |
+    | -------------------- | -------------------------- | -------------------------- |
+    | [!a-m]art            | Cart <br />Mart <br />tart | cart <br />mart <br />tArt |
 
 **Example:**
 
-Setting the `URL path(s)` option to the following value allows {{ PRODUCT }} {{ PRODUCT_SECURITY }} to inspect any request whose URL path starts with */marketing/*:
+Setting the **URL path(s)** option to `/marketing/*` allows {{ PRODUCT }} {{ PRODUCT_SECURITY }} to inspect any request whose URL path starts with `/marketing/`.
 
-`/marketing/*`
-
-The following sample request will match the above pattern:
+The following sample request matches the above pattern:
 
 `https://cdn.example.com/marketing/mycampaign/image.png`
 
 #### Regex Match {/*regex-match*/}
 
-{{ PRODUCT 	}} {{ PRODUCT_SECURITY }} checks whether the entire relative URL path is a match for the pattern defined in a regular expression.
+Requires {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ PRODUCT }} {{ PRODUCT_SECURITY }} checks whether the entire relative URL path is a match for the pattern defined in a regular expression.
 
 <Callout type="info">
 
@@ -138,23 +128,9 @@ The following sample request will match the above pattern:
 
 </Callout>
 
-**Sample Configuration:**
-
-`^\/[a-zA-Z0-9]*$`
-
-**Matches:**
-
-`/cat`
-
-`/CAT7`
-
-`/Category`
-
-**Does Not Match:**
-
-`/Category 7`
-
-`/Cat#7`
+| Sample Configuration | Matches                       | Does Not Match         |
+| -------------------- | ----------------------------- | ---------------------- |
+| ^[a-zA-Z0-9]*$       | cat <br />CAT7 <br />Category | Category 7 <br />Cat#7 |
 
 ### JSON Web Tokens (JWT) {/*json-web-tokens--jwt-*/}
 
@@ -223,11 +199,11 @@ Register up to 2 JWKs by pasting a JSON Web Key Set (JWKS) within the **JWKS** o
 
 An API schema is a JSON schema that describes the structure for a valid API payload.
 
-<Callout type="tip">
+<Tip>
 
-  Define an API schema from within the **Schemas** tab of an API Security ruleset configuration. Use the **Derive Schema from Example** option to autogenerate a JSON schema from a sample JSON payload. You may then either build upon this base JSON schema to define a stricter set of requirements or save it without further modifications.
+  Autogenerate a JSON schema from a sample JSON payload through the **Derive Schema from Example** option which can be found on the **Schemas** tab of an API Security ruleset configuration. You may then either build upon this base JSON schema to define a stricter set of requirements or save it without further modifications.
 
-</Callout>
+</Tip>
 
 #### JSON Schema Syntax {/*json-schema-syntax*/}
 

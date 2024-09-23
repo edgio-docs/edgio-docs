@@ -2,9 +2,9 @@
 title: LangChain
 ---
 
-This template leverages Edgio's cutting-edge delivery network to scaffold a LangChain.js + Next.js starter app, enhancing its performance and scalability while showcasing several use cases for different LangChain modules.
+This template leverages {{ PRODUCT }}'s cutting-edge delivery network to scaffold a LangChain.js + Next.js starter app, enhancing its performance and scalability while showcasing several use cases for different LangChain modules.
 
-With Edgio, the app benefits from faster load times, improved user experience, and seamless global deployment capabilities, making it an ideal platform for developing and deploying AI-powered applications efficiently at scale.
+With {{ PRODUCT }}, the app benefits from faster load times, improved user experience, and seamless global deployment capabilities, making it an ideal platform for developing and deploying AI-powered applications efficiently at scale.
 
 {{ prereq.md }}
 
@@ -25,7 +25,7 @@ Set up environment variables in a `.env.local` file by copying the `.env.example
 cp .env.example .env.local
 ```
 
-To start with the basic examples, you'll just need to add your [OpenAI API key](https://help.openai.com/en/articles/4936850-where-do-i-find-my-api-key).
+To start with the basic examples, you'll just need to add your [OpenAI API key](https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key).
 
 ```bash
 OPENAI_API_KEY="YOUR_API_KEY"
@@ -101,7 +101,7 @@ export async function POST(req: NextRequest) {
 }
 ```
 
-The `POST` handler initializes and calls a simple chain with a prompt, chat model, and output parser. [See the LangChain docs](https://js.langchain.com/docs/guides/expression_language/cookbook#prompttemplate--llm--outputparser) for more information.
+The `POST` handler initializes and calls a simple chain with a prompt, chat model, and output parser. [See the LangChain docs](https://js.langchain.com/docs/) for more information.
 
 - Chat models stream message chunks rather than bytes, so output parsing is handling serialization and byte-encoding by initializing `HttpResponseOutputParser()` to `outputParser`.
 - To select a different model, the client would be initialized like so (see a [full list of supported models here](https://js.langchain.com/v0.1/docs/modules/model_io/chat/)):
@@ -113,11 +113,11 @@ const model = new ChatAnthropic({});
 
 ### Agents and Retrieval {/* agents-and-retrieval */}
 
-To try out the Agent or Retrieval examples, follow the instructions in the [Edgio AI repository](https://github.com/Edgio/edgio-ai).
+To try out the Agent or Retrieval examples, follow the instructions in the [{{ PRODUCT }} AI repository](https://github.com/Edgio/edgio-ai).
 
 ## Deployment {/* deployment */}
 
-[Install the Edgio CLI](/applications/performance/cdn_as_code/cli) if you haven't already. Run your development server with `edgio dev`:
+[Install the {{ PRODUCT }} CLI](/applications/performance/cdn_as_code/cli) if you haven't already. Run your development server with `edgio dev`:
 
 ```bash
 edgio dev

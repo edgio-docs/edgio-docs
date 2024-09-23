@@ -97,7 +97,7 @@ It will only apply this Security App configuration to a request when one of the 
 
 #### Wildcard Match {/*wildcard-match*/}
 
-{{ PRODUCT }} {{ PRODUCT_SECURITY }} checks whether the entire host or URL path is a case-sensitive match for the wildcard pattern. The supported set of wildcards are listed below.
+Requires {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ PRODUCT }} {{ PRODUCT_SECURITY }} checks whether the entire host or URL path is a case-sensitive match for the wildcard pattern. The supported set of wildcards are listed below.
 -   **\*:** Matches zero or more characters.
 
     | Sample Configuration | Matches                         | Does Not Match     |
@@ -138,13 +138,13 @@ It will only apply this Security App configuration to a request when one of the 
 
 Setting the **URL path(s)** option to `/marketing/*` allows {{ PRODUCT }} {{ PRODUCT_SECURITY }} to apply this Security App configuration to any request whose URL path starts with `/marketing/`. 
 
-The following sample request will match the above pattern:
+The following sample request matches the above pattern:
 
 `https://cdn.example.com/marketing/mycampaign/image.png`
 
 #### Regex Match {/*regex-match*/}
 
-{{ PRODUCT }} {{ PRODUCT_SECURITY }} checks whether the entire host or URL path is a match for the pattern defined in a regular expression.
+Requires {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ PRODUCT }} {{ PRODUCT_SECURITY }} checks whether the entire host or URL path is a match for the pattern defined in a regular expression.
 
 <Callout type="info">
 

@@ -3,7 +3,7 @@ title: Security Dashboard
 ---
 
 The {{ PRODUCT_SECURITY }} dashboard provides the means through which you may perform a historical analysis of:
--   Recent threats to site traffic.
+-   Recent violations of the security policy defined within your access rules, API security configuration, custom rules, and managed rules.
 -   Recent trends in bot traffic detection.
 -   Recently rate limited requests.
 -   Recent rate limiting enforcement events.
@@ -26,7 +26,7 @@ The {{ PRODUCT_SECURITY }} dashboard provides the means through which you may pe
 2.  Optional. Filter the dashboard to view a different set of events by clicking on the desired event type.
 
     -   [Total Events:](#total-events-view) View consolidated statistics across your entire security configuration.
-    -   [WAF Events:](#waf-events-view) View statistics for requests that violate an access rule, custom rule, or managed rule.
+    -   [WAF Events:](#waf-events-view) View statistics for requests that violate an access rule, API Security configuration, custom rule, or managed rule.
     -   [Bot Events:](#bot-events-view) View statistics for requests identified as bot traffic.
     -   [Rate Events:](#rate-events-view) View statistics for rate limited requests and enforcement events.
     -   [Client Events:](#client-events-view) View statistics for CSP violations defined within a Client-Side Protection configuration.
@@ -50,7 +50,7 @@ The Total Events view shows consolidated statistics across your entire security 
 
 ## <a id="threats-view" />WAF Events View {/*waf-events-view*/}
 
-A WAF event occurs when an access rule, custom rule, or managed rule is violated. It allows you to:
+A WAF event occurs when an access rule, API security configuration, custom rule, or managed rule is violated. It allows you to:
 
 -   Visualize the time periods during which your site and web applications are most heavily targeted.
 -   Understand the variety, frequency, and severity of illegitimate traffic.

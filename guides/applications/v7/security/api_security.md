@@ -6,10 +6,11 @@ Use API Security to:
 
 -   Validate JSON Web Tokens (JWT). 
 -   Define valid payloads for API requests through one or more API schema(s).
--   {{ PRODUCT }} categorizes a request as a threat when it satisfies one of the following conditions:
+-   A request violates your API Security configuration when it satisfies one of the following conditions:
     -   JWT validation is enabled and {{ PRODUCT }} is unable to verify the JWT.
     -   The payload violates at least one requirement defined within your API schema.
--   Discover the APIs that have been requested in the last 30 days.
+-   Discover the APIs that have been requested in the last 30 days by reviewing the **API Discovery** section of the **API Security** page.
+-   Review violations of your API Security configuration through the **WAF Events** view of the {{ PRODUCT_SECURITY }} dashboard.
 
 <Callout type="info">
 

@@ -10,6 +10,12 @@ See [NPM Packages Changelog](/applications/changelog) for release notes related 
 
 </Callout>
 
+## September 2024 {/* september-2024 */}
+
+| Date       | Description                                                                                                                                                                                                 |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 09/18/2024 | **{{ PRODUCT_SECURITY }}:** <ul><li>Introduced JA4 support to access rules, rate rules, and Bot Manager.</li><li>**Rate Rules:** Introduced the ability to rate limit by the request's bot score.</li></ul> |
+
 ## August 2024 {/* august-2024 */}
 
 | Date       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |

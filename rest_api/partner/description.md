@@ -43,7 +43,7 @@ Key information about our REST API services:
 
 Get started with our latest APIs by performing the following steps:
 
-1. <a href="https://docs.edg.io/applications/rest_api/authentication#administering-api-clients" target="_blank">Create an API client</a> for either your private space or the desired organization. Grant the set of scope(s) required by the endpoint(s) with which it will interact. Administer API clients from the <a href="https://edgio.app" target="_blank">Edgio Console's</a> **API Clients** page. 
+1. Create an API client within your partner account. Grant the set of scope(s) required by the endpoint(s) with which it will interact. Administer API clients from within the <a href="https://edgio.app" target="_blank">Edgio Console</a>. Navigate to your partner account landing page and then click on **API Clients**. 
 2. Use this client's ID, secret key, and scopes to [generate a temporary access token](#section/Access-Tokens).
 3. Authorize your API requests by passing the temporary access token generated in the previous step through the `Authorization` request header.
 
@@ -61,7 +61,7 @@ A scope authorizes an API client to perform specific actions (e.g., create and r
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | app.cache        | Authorizes full access for purging cached content and retrieve purge status information.                                                     |
 | app.config       | Authorizes full access for deploying CDN configurations, retrieving deployment information and log data, and managing environment variables. |
-| app.accounts     | Authorizes full access to manage organizations, properties, and environments.                                                                |
+| app.accounts     | Authorizes full access to manage organizations, properties, environments, organization's members, and your partner account's members.        |
 | app.waf          | Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules.                                          |
 | app.bot_security | Authorizes full access to Bot Manager.                                                                                                       |
 | app.api_security | Authorizes full access to API Security.                                                                                                      |

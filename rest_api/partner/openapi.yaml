@@ -10,13 +10,45 @@ info:
   description:
     $ref: description.md
 tags:
-  - name: 
-    x-displayName: 
+  - name: members
+    x-displayName: Organization Members
     description: |
     
-      DESCRIPTION
+      Automate the member management for any organization associated with your partner account.
+  - name: partners
+    x-displayName: Partner Members
+    description: |
+    
+      Automate member management for your partner account.
 paths:
-
+  /accounts/v0.1/members/{member_id}:
+    $ref: paths/accounts_v0.1_members_{member_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+  /accounts/v0.1/members:
+    $ref: paths/accounts_v0.1_members.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+  /accounts/v0.1/partners/{partner_id}/members/{member_id}:
+    $ref: paths/accounts_v0.1_partners_{partner_id}_members_{member_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+  /accounts/v0.1/partners/{partner_id}/members:
+    $ref: paths/accounts_v0.1_partners_{partner_id}_members.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+  /accounts/v0.1/partners/{partner_id}/logo-dark:
+    $ref: paths/accounts_v0.1_partners_{partner_id}_logo-dark.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+  /accounts/v0.1/partners/{partner_id}/logo:
+    $ref: paths/accounts_v0.1_partners_{partner_id}_logo.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+  /accounts/v0.1/partners/{partner_id}:
+    $ref: paths/accounts_v0.1_partners_{partner_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com'
 components:
   securitySchemes:
     cacheScope:
@@ -100,6 +132,9 @@ components:
           scopes:
             app.rtld: Authorizes full access to Real-Time Log Delivery.
 x-tagGroups:
-  - name: Members
+  - name: Organization Members
     tags:
-      - 
+      - members
+  - name: Partner Members
+    tags:
+      - partners

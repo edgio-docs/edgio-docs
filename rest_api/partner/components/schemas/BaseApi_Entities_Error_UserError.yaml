@@ -1,0 +1,36 @@
+type: object
+properties:
+  '@type':
+    type: string
+    example: Error
+    description: The error type.
+  code:
+    type: string
+    enum:
+      - invalid_input
+    description: A human readable error code following `snake_case`.
+  title:
+    type: string
+    enum:
+      - Bad request
+    description: The main error heading.
+  description:
+    type: string
+    example:
+      - Request has one or more errors and cannot be processed
+    description: Detailed description about the error.
+  status_code:
+    type: integer
+    format: int32
+    enum:
+      - 400
+    description: Represents the HTTP status code associated with the response.
+  details:
+    type: array
+    items:
+      $ref: ./BaseApi_Entities_BaseHyperionErrorDetail.yaml
+    description: Describes the error.
+required:
+  - '@type'
+  - title
+description: BaseApi_Entities_Error_UserError model

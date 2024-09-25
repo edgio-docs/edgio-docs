@@ -1,0 +1,105 @@
+openapi: 3.0.1
+info:
+  title: Edgio REST API - Partner
+  version: 0.1.0
+  x-logo:
+    url: 'https://docs.edg.io/_next/static/media/edgio-dark.ea0d686f.webp'
+    backgroundColor: '#FFFFFF'
+    altText: 'Logo'
+    href: 'https://docs.edg.io'
+  description:
+    $ref: description.md
+tags:
+  - name: 
+    x-displayName: 
+    description: |
+    
+      DESCRIPTION
+paths:
+
+components:
+  securitySchemes:
+    cacheScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.cache: Authorizes full access for purging cached content and retrieve purge status information.
+    configScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.config: Authorizes full access for deploying CDN configurations, retrieving deployment information and log data, and managing environment variables.
+    accountsScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.accounts: Authorizes full access to manage organizations, properties, environments, and members.
+    wafScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.waf: Authorizes full access to security apps, access rules, rate rules, custom rules, and managed rules.
+    api_securityScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.api_security: Authorizes full access to API Security.
+    bot_securityScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.bot_security: Authorizes full access to Bot Manager.
+    client_wafScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.client_waf: Authorizes full access to Client-Side Protection.
+    metricsScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.metrics: Authorizes full access to the Metrics API. 
+    rtsAlertsScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.real_time_stats.alerts: Authorizes full access to real-time alerts.
+    rtldScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.rtld: Authorizes full access to Real-Time Log Delivery.
+x-tagGroups:
+  - name: Members
+    tags:
+      - 

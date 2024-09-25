@@ -221,6 +221,16 @@ router
   })
   .match(/^\/rest_api$/, ({redirect}) => redirect('/rest_api/'));
 
+// -- Partner REST API --
+router
+  .match('/partner_rest_api/:path*', ({serveStatic}) => {
+    serveStatic('partner_rest_api/dist/:path*');
+  })
+  .match(/^\/partner_rest_api\/$/, ({serveStatic}) => {
+    serveStatic('partner_rest_api/dist/rest_api.html');
+  })
+  .match(/^\/partner_rest_api$/, ({redirect}) => redirect('/partner_rest_api/'));
+
 // redirects
 redirects.forEach(([from, to, statusCode]) => {
   router.match(from, ({redirect}) =>

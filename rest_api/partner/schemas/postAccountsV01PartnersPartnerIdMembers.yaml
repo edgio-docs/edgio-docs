@@ -1,0 +1,13 @@
+type: object
+properties:
+  user_email:
+    type: string
+  role:
+    type: string
+    enum:
+      - viewer
+      - maintainer
+      - admin
+required:
+  - user_email
+description: Creates a partner's member.

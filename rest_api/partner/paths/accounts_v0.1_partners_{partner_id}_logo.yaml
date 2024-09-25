@@ -1,0 +1,73 @@
+put:
+  summary: Update Partner logo
+  description: Updates a partner's logo.
+  parameters:
+    - in: path
+      name: partner_id
+      description: >
+        The partner's system-defined ID.
+
+
+        From the Edgio Console, navigate to the desired partner and then click
+        **Settings**. It is listed under **Partner ID**.
+      required: true
+      schema:
+        type: string
+    - in: multipart/form-data
+      name: logo
+      description: The partner's logo.
+      required: true
+      schema:
+        type: BaseApi_Types_UploadedFile
+  security:
+    - accountsScope:
+        - app.accounts
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Accounts_V1_Entities_Partner.yaml
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_UserError.yaml
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_UnauthorizedError.yaml
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_ForbiddenError.yaml
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_RecordNotFoundError.yaml
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: >-
+              ../components/schemas/BaseApi_Entities_Error_TooManyRequestsError.yaml
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
+  tags:
+    - partners
+  operationId: putAccountsV01PartnersPartnerIdLogo

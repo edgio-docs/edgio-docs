@@ -11,15 +11,15 @@ info:
     $ref: description.md
 tags:
   - name: members
-    x-displayName: Organization Members
+    x-displayName: Members
     description: |
     
-      Automate the member management for any organization associated with your partner account.
+      Automate member management. One set of endpoints allows you to manage members for any organization associated with your partner account. Another set of endpoints allow you to manage the members associated with your partner account.
   - name: partners
-    x-displayName: Partner Members
+    x-displayName: Partner Account
     description: |
     
-      Automate member management for your partner account.
+      Automate the management of your partner account.
 paths:
   /accounts/v0.1/members/{member_id}:
     $ref: paths/accounts_v0.1_members_{member_id}.yaml
@@ -132,9 +132,9 @@ components:
           scopes:
             app.rtld: Authorizes full access to Real-Time Log Delivery.
 x-tagGroups:
-  - name: Organization Members
+  - name: Members
     tags:
       - members
-  - name: Partner Members
+  - name: Partner Account 
     tags:
       - partners

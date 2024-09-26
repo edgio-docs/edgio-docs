@@ -61,7 +61,7 @@ Upon successfully registering your client application, the following information
 
 ### Administering API Clients {/*administering-api-clients*/}
 
-You can create, modify, and delete API clients from your private space or an organization. 
+The [Admin role](/applications/basics/collaboration#managing-team-members) is required to view, create, modify, and delete API clients. 
 
 **To create an API client**
 

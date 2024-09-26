@@ -43,7 +43,9 @@ Key information about our REST API services:
 
 Get started with our latest APIs by performing the following steps:
 
-1. <a href="https://docs.edg.io/applications/rest_api/authentication#administering-api-clients" target="_blank">Create an API client</a> for either your private space or the desired organization. Grant the set of scope(s) required by the endpoint(s) with which it will interact. Administer API clients from the <a href="https://edgio.app" target="_blank">Edgio Console's</a> **API Clients** page. 
+1. <a href="https://docs.edg.io/applications/rest_api/authentication#administering-api-clients" target="_blank">Create an API client</a> for either your private space or the desired organization. 
+    -   Grant the set of scope(s) required by the endpoint(s) with which it will interact. 
+    -   The ability to administer API clients requires the Admin role and can be performed from the <a href="https://edgio.app" target="_blank">Edgio Console's</a> **API Clients** page. 
 2. Use this client's ID, secret key, and scopes to [generate a temporary access token](#section/Access-Tokens).
 3. Authorize your API requests by passing the temporary access token generated in the previous step through the `Authorization` request header.
 

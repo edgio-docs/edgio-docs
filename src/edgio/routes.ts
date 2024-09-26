@@ -224,10 +224,10 @@ router
 // -- Partner REST API --
 router
   .match('/partner_rest_api/:path*', ({serveStatic}) => {
-    serveStatic('partner_rest_api/dist/:path*');
+    serveStatic('rest_api/dist/:path*');
   })
   .match(/^\/partner_rest_api\/$/, ({serveStatic}) => {
-    serveStatic('partner_rest_api/dist/partner_rest_api.html');
+    serveStatic('rest_api/dist/partner_rest_api.html');
   })
   .match(/^\/partner_rest_api$/, ({redirect}) => redirect('/partner_rest_api/'));
 

@@ -12,10 +12,10 @@ See [NPM Packages Changelog](/applications/changelog) for release notes related 
 
 ## September 2024 {/* september-2024 */}
 
-| Date       | Description                                                                                                                                                                                                                                                                                                   |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 09/24/2024 | **Edge Functions:** {{ PRODUCT }} version 7.13.6 introduces the following changes: <ul><li>The `request.path` and `request.url` properties now return the rewritten path or URL, respectively.</li><li>A new property called `request.originalUrl` returns the URL as submitted by the user-agent. </li></ul> |
-| 09/18/2024 | **{{ PRODUCT_SECURITY }}:** <ul><li>Introduced JA4 support to access rules, rate rules, and Bot Manager.</li><li>**Rate Rules:** Introduced the ability to rate limit by the request's bot score.</li></ul>                                                                                                   |
+| Date       | Description                                                                                                                                                                                                                                                                                                                           |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 09/24/2024 | **Edge Functions:** The following changes apply to projects running {{ PRODUCT }} version 7.13.6 or later: <ul><li>The `request.path` and `request.url` properties now return the rewritten path or URL, respectively.</li><li>A new property called `request.originalUrl` returns the URL as submitted by the user-agent. </li></ul> |
+| 09/18/2024 | **{{ PRODUCT_SECURITY }}:** <ul><li>Introduced JA4 support to access rules, rate rules, and Bot Manager.</li><li>**Rate Rules:** Introduced the ability to rate limit by the request's bot score.</li></ul>                                                                                                                           |
 
 ## August 2024 {/* august-2024 */}
 

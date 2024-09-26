@@ -920,7 +920,7 @@ router.if(
 );
 ```
 
-[Learn more about complex rules.](/applications/performance/cdn_as_code/conditional_routes).
+[Learn more about complex rules.](/applications/performance/cdn_as_code/conditional_routes)
 
 <!-- TODO need support for regex client IP matching
 ### Allowing Specific IPs {/*allowing-specific-ips*/}

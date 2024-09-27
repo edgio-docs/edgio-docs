@@ -214,7 +214,7 @@ Edge functions are passed a `Request` instance representing the incoming request
 - **URL**:
   - `request.url`: Provides the full URL.
   - `request.path`: Provides the request path.
-  - `request.originalUrl`: Requires {{ PRODUCT }} version 7.13.6 or later. Provides the original URL sent by the user-agent. This property is only present on the incoming request provided to the `handleHttpRequest` handler.
+  - `request.originalUrl`: Requires {{ PRODUCT }} version 7.13.6 or later. Provides the original URL sent by the user agent. This property is only present on the incoming request provided to the `handleHttpRequest` handler.
   <Important>
   As of {{ PRODUCT }} version 7.13.6, the `request.path` and `request.url` properties return the [rewritten](/applications/performance/rules/features#rewrite-url) path or URL, respectively. 
   </Important>

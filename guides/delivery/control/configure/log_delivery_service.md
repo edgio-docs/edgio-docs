@@ -177,7 +177,7 @@ When configuring LDS, you must select the log fields to be collected and deliver
 | s-ttfb | *(int32)* The number of milliseconds between the CDN receiving the end-user request and writing the first byte of the response, as measured on the server. A value of 0 (zero) means the time was less than 1ms. | 56 |
 | s-ttfb-sec | *(double)* The time between the CDN receiving the request and writing the first byte of the response, formatted as `{seconds}.{milliseconds}` | 0.056 |
 
-#### Server-origin communication related metrics
+#### Server-Origin Communication-Related Metrics{/*server-origin-communication-related-metrics*/}
 
 | Field | Details | Sample Data |
 | --- | --- | --- |
@@ -185,7 +185,7 @@ When configuring LDS, you must select the log fields to be collected and deliver
 | so-src-uri-noquery | *(string)* The URL-encoded source/ origin URL that the published URL has been mapped to (query part excluded). | http://cmdist.dtvce.com/content/B003109030M3.ats |
 | so-src-uri-path | *(string)* The URL path from the source/origin URL, excluding the query string, starting after the hostname | /geo-health.txt |
 
-#### Origin related metrics
+#### Origin-Related Metrics{/*origin-related-metrics*/}
 
 | Field | Details | Sample Data |
 | --- | --- | --- |

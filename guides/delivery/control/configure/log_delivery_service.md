@@ -192,7 +192,7 @@ When configuring LDS, you must select the log fields to be collected and deliver
 | o-ip | (string) The IP address of the origin server that supplied the first byte of the response. Enable via the log_origin_ip_address option. | 69.164.9.82 |
 
 
-#### Application(Edgio) specific metrics
+#### Application ({{ PRODUCT }})-Specific Metrics {/*application----specific-metrics*/}
 
 | Field | Details | Sample Data |
 | --- | --- | --- |
@@ -226,7 +226,7 @@ The following fields are available for you to include when you select *MMD_LIVE_
 
 Static fields allow you to add a constant string value to every log line provided by LDS, which is useful for metadata or fixed identifiers. Static fields can be managed on the `Create/Update LDS Configuration` page.
 
-#### Create Static Field
+#### Create Static Field {/*create-static-field*/}
 1. Click **ADD STATIC FIELD** below the **Available Log Fields** section in your configuration.
 2. Enter a **field name** (up to 50 characters, starting with a letter, using lowercase Latin letters, digits, `_`, or `-`) and a **value** (up to 1024 characters).
 3. After entering the field name and value, click the **ADD STATIC FIELD** button to create the field. The field will then appear in the **Available Log Fields** section.
@@ -235,28 +235,31 @@ Static fields allow you to add a constant string value to every log line provide
 - You can create up to 10 static fields per account and service type.
 - You can add the static field to the **Selected Log Fields** by dragging it or double-clicking it.
 
-#### Edit Static Field
+#### Edit Static Field {/*edit-static-field*/}
 - To change the value of a static field, click on its name in either the **Available Log Fields** or **Selected Log Fields** section. A popup will appear allowing you to modify the field value. The field name is fixed and can only be specified during creation.
 
-#### Delete Static Field
+#### Delete Static Field {/*delete-static-field*/}
 - To delete a static field, first ensure it is removed from the **Selected Log Fields** section, as deletion is not permitted while it is in use in any LDS configuration. Click on the field name in the **Available Log Fields** section. A popup will appear with a **Delete** button for confirmation.
 
 ### Field Aliases {/*field-aliases*/}
 Field aliases allow you to assign alternative names to log fields. Aliases can be managed on the `Create/Update LDS Configuration` page.
-#### Assigning an Alias to Log Field
+
+#### Assigning an Alias to Log Field {/*assigning-an-alias-to-log-field*/}
 1. To assign an alias, click the square brackets <img src="/images/delivery/control/lds/square-brackets.png" alt="active" style={{ display: 'inline', width: '16px', height: '16px', margin: '0px' }} /> next to the field name in the **Selected Log Fields** section. An input box will appear where you can enter the alias.
 2. Once done, press **Enter** or click outside the box to save. The alias will then display alongside the original log field name.
-#### Edit Alias
+
+#### Edit Alias {/*edit-alias*/}
 - Click on the alias, modify the name, and press **Enter** or click outside the input box to save.
-#### Delete Alias
+
+#### Delete Alias {/*delete-alias*/}
 - To delete an alias, click the alias, clear the name, and press **Enter** or click outside the input box to save.
 
 
-## Configure Destinations {/*destinations*/}
+## Configure Destinations {/*configure-destinations*/}
 
 LDS supports delivery to the following destinations: Amazon S3, Custom HTTPS endpoint, Datadog, Edgio Origin Storage, Google Cloud Storage, and Hydrolix.
 
-### Delivery to Amazon S3 {/*s3*/}
+### Delivery to Amazon S3 {/*delivery-to-amazon-s3*/}
 
 **Prerequisites**
 
@@ -284,7 +287,7 @@ LDS supports delivery to the following destinations: Amazon S3, Custom HTTPS end
 
 <Callout type="info">During the validation process, LDS creates a test file in the specified S3 bucket using the provided credentials and settings. The file is named `_edgio_validation/validation_{timestamp}.txt`. The file will only appear if the validation is successful. Since these files are no longer necessary after validation, you can delete them as needed.</Callout>
 
-### Delivery to Custom HTTPS endpoint (Streaming){/*https-endpoint*/}
+### Delivery to Custom HTTPS endpoint (Streaming) {/*delivery-to-custom-https-endpoint--streaming-*/}
 
 LDS supports streaming log data to a custom HTTPS endpoint using POST requests. To configure this:
 
@@ -302,7 +305,7 @@ LDS supports streaming log data to a custom HTTPS endpoint using POST requests. 
 
 <Callout type="info">During validation, LDS sends a sample POST request to the provided endpoint to verify access. The request body contains sample data formatted according to the selected data format and compressed using the chosen data compression algorithm. A response with any 2xx status code indicates that the validation is successful.</Callout>
 
-### Delivery to Datadog (Streaming){/*data-dog*/}
+### Delivery to Datadog (Streaming) {/*delivery-to-datadog--streaming-*/}
 
 **Prerequisites**
 - **A Datadog account**: Use an existing account or create a new one.
@@ -318,7 +321,7 @@ LDS supports streaming log data to a custom HTTPS endpoint using POST requests. 
 3. Optionally, in the **Data Sampling** section, reduce the volume of delivered logs by applying sampling rules. Refer to the [Data Sampling](#data-sampling) for additional details.
 4. Click **Save** to validate the connection to the destination and apply your settings.
 
-### Delivery to Edgio Origin Storage{/*origin-storage*/}
+### Delivery to {{ PRODUCT }} Origin Storage {/*delivery-to--origin-storage*/}
 <Callout type="info">Standard fees apply for using Origin Storage.</Callout>
 **Prerequisites**
 - Ensure Origin Storage is enabled for the account where you want to store logs.
@@ -335,7 +338,7 @@ LDS supports streaming log data to a custom HTTPS endpoint using POST requests. 
 4. Optionally, in the **Data Sampling** section, reduce the volume of delivered logs by applying sampling rules. Refer to the [Data Sampling](#data-sampling) for additional details.
 5. Click **Save** to validate the connection to the destination and apply your settings.
 
-### Delivery to Google Cloud Storage{/*google-cloud-storage*/}
+### Delivery to Google Cloud Storage {/*delivery-to-google-cloud-storage*/}
 
 **Prerequisites**
 - **Create a Google Cloud Project (GCP)** or use an existing project. See Google’s [Google’s guide for instructions](https://cloud.google.com/resource-manager/docs/creating-managing-projects).
@@ -363,7 +366,7 @@ LDS supports streaming log data to a custom HTTPS endpoint using POST requests. 
 8. Click **Save** to validate the connection to the destination and apply your settings.
 <Callout type="info">During the validation process, LDS creates a test file in the specified GCP bucket using the provided credentials and settings. The file is named `_edgio_validation/validation_{timestamp}.txt`. The file will only appear if the validation is successful. Since these files are no longer necessary after validation, you can delete them as needed.</Callout>
 
-### Delivery to Hydrolix (Streaming){/*hydrolix*/}
+### Delivery to Hydrolix (Streaming) {/*delivery-to-hydrolix--streaming-*/}
 
 **Prerequisites**
 - Create a [Project/Table](https://docs.hydrolix.io/docs/projects-and-tables)
@@ -459,18 +462,18 @@ Top-Level Fields:
 ```
 <Callout type="info">When using `JSON, JSON Array, and JSON Lines` formats, fields with `null` values are excluded from log lines by default. To include these fields, enable the **INCLUDE NULL VALUES IN JSON** option in the `Delivery Options` section during LDS configuration.</Callout>
 
-### Configuration:
+### Configuration {/*configuration*/}
 
 To configure data format:
 1. Go to the Delivery Options section on the `Create/Update LDS Configuration` page. 
 2. Select the desired format from the `DATA FORMAT` dropdown.
 
 
-## Log Files Naming and Location{/*files-naming-and-location*/} 
+## Log Files Naming and Location {/*log-files-naming-and-location*/} 
 
 For file delivery destinations, LDS allows you to manage where logs are placed and how they're named.
 
-### Folder Path{/*files-location*/}
+### Folder Path {/*folder-path*/}
 
 The log file location is determined by the following properties:
 
@@ -489,7 +492,7 @@ To configure the Directory Layout, go to the `Delivery Options` section on the `
 - `{service_type}/{config_uuid}/{yyyy}/{MM}/{dd}`: Organizes directories by service type, configuration UUID, and the date range of the log entries.
 - `No Subdirectories`: Places all log files in the root directory of the storage, without any subdirectory structure. This option is available for Amazon S3 and Google Cloud Storage. 
 
-### Log File Naming{/*files-naming*/}
+### Log File Naming {/*log-file-naming*/}
 
 **FILENAME TEMPLATE**: Determines the naming convention for log files uploaded to your destination storage. The default template is:
 
@@ -522,7 +525,7 @@ LDS supports the following data compression algorithms to reduce log file sizes:
 - **SNAPPY**
 - **ZSTD**
 
-### Configuration:
+### Configuration {/*dc-configuration*/}
 
 To configure data format:
 1. Go to the Delivery Options section on the `Create/Edit LDS configuration page`. 
@@ -551,7 +554,7 @@ Per GDPR, you must explicitly indicate that you understand the risks associated 
 - Non-Company Admin users can sign agreements only for the company to which they belong.
 - Company Admin users can sign agreements for child companies as well.
 
-## Permissions
+## Permissions {/*permissions*/}
 To access and control LDS configurations, you need the following permissions:
 - `Configure > Log Delivery Service > View`: Allows you to view the list of LDS configurations and their details.
 - `Configure > Log Delivery Service > Manage`: Grants you full access to view and manage LDS configurations. This includes the ability to create, edit, activate, deactivate, and delete configurations.
@@ -570,7 +573,7 @@ You have two options for downloading LDS files from Origin Storage:
 ### Downloading Files via Origin Storage API {/*download-file-from-origin-storage-api*/} 
 This section outlines the methods you need to download files using the Origin Storage JSON-RPC API. While essential information is provided here, for detailed documentation on each method, refer to the [Origin Storage API Reference Guide](/delivery/storage/apis).
 
-#### Prerequisites:
+#### Prerequisites {/*prerequisites*/}
 - **API Username and Password**: You need credentials to authenticate your API requests. You can manage these on the `Manage > Origin Storage Users` page.
   <Callout type="info"> It is not possible to view an existing user's password, but you can set a new one if needed. </Callout>
 - **URL to the Storage API**: Your Edgio account name is a part of the JSON-RPC API URL. The API URL follows this format: `http://{Account name}-l.upload.llnw.net/jsonrpc2`

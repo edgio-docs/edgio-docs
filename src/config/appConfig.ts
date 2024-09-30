@@ -199,7 +199,7 @@ export const siteConfig = {
     gtmId: 'GTM-5WCD2BK',
   },
   edgioAnswers: {
-    enabled: true,
+    enabled: false,
   },
 };
 

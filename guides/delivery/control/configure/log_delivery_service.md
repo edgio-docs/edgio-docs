@@ -32,6 +32,7 @@ The **Log Delivery Service** page under the **Configure** menu displays a list o
 - **STATUS**: Includes controls to [activate or deactivate the configuration](#active-deactivate-lds-configurations), as well as to delete it.
 
 ## Create an LDS Configuration  {/*create-lds-configuration*/} 
+
 1. Navigate to **Configure > Log Delivery Service** and click the "+" button.
 2. Enter a **NAME** for the configuration.
 3. Select a **SHORTNAME** that you want the LDS to collect logs for.
@@ -46,15 +47,15 @@ The **Log Delivery Service** page under the **Configure** menu displays a list o
 8. In the **DESTINATION** dropdown, select the storage type where you want the logs to be delivered.
 <Callout type="info">  Each account can have only one LDS configuration per destination. For additional configurations to the same destination, please contact your account manager.</Callout>
 9. Enter the details for your chosen destination.
-   - For Amazon S3 see [Configure logs delivery to Amazon S3](#s3)
-   - For Custom HTTPS endpoint see [Configure logs delivery to Custom HTTPS endpoint](#https-endpoint)
-   - For Datadog see [Configure logs delivery to Datadog](#data-dog)
-   - For Origin Storage see [Configure logs delivery to Edgio Origin Storage](#origin-storage)
-   - For Google Cloud Storage see [Configure logs delivery to Google Cloud Storage](#google-cloud-storage)
-   - For Hydrolix see [Configure logs delivery to Hydrolix](#hydrolix)
+   - For Amazon S3 see [Configure logs delivery to Amazon S3](#delivery-to-amazon-s3)
+   - For Custom HTTPS endpoint see [Configure logs delivery to Custom HTTPS endpoint](#delivery-to-custom-https-endpoint--streaming-)
+   - For Datadog see [Configure logs delivery to Datadog](#delivery-to-datadog--streaming-)
+   - For Origin Storage see [Configure logs delivery to Edgio Origin Storage](#delivery-to--origin-storage)
+   - For Google Cloud Storage see [Configure logs delivery to Google Cloud Storage](#delivery-to-google-cloud-storage)
+   - For Hydrolix see [Configure logs delivery to Hydrolix](#delivery-to-hydrolix--streaming-)
 4. In the **Delivery Options** section, customize the log data format and compression, and set file naming and storage paths.
-   - Use **DIRECTORY LAYOUT** dropdown to choose the folder path within the destination. Available for file-based destinations (S3, GCP, and Origin Storage). For further details refer to [Changing Log Data Location](#files-naming).
-   - The **FILENAME TEMPLATE** dropdown determines the naming convention for log files uploaded to your destination storage. The filename template is fixed and cannot be edited through the UI. Available for file-based destinations (S3, GCP, and Origin Storage). For details refer, see [Changing Log Data Location](#files-naming).
+   - Use **DIRECTORY LAYOUT** dropdown to choose the folder path within the destination. Available for file-based destinations (S3, GCP, and Origin Storage). For further details refer to [Changing Log Data Location](#log-files-naming-and-location).
+   - The **FILENAME TEMPLATE** dropdown determines the naming convention for log files uploaded to your destination storage. The filename template is fixed and cannot be edited through the UI. Available for file-based destinations (S3, GCP, and Origin Storage). For details refer, see [Changing Log Data Location](#log-files-naming-and-location).
    - In the **DATA FORMAT** dropdown, you can select the format for the uploaded log data. Available formats may vary depending on the selected destination type. See [Log Data Formats](#data-formats).
    - In the **DATA COMPRESSION** dropdown, select the compression format for the log data. The available options may vary based on the selected destination type. Refer to [Log Data Compression](#data-compression) for more information.
 11. In the **Data Sampling** section, configure the volume of delivered log data. For more information, see [Data Sampling](#data-sampling).
@@ -69,12 +70,12 @@ The **Log Delivery Service** page under the **Configure** menu displays a list o
    - **Name**: Modify the name of the configuration for easier identification.
    - **Available Log Fields**: Change the fields to be collected by dragging them between the Available and Selected sections, or add static fields using the **Add Static Field** button. Additionally, you can assign aliases to selected fields by clicking the square brackets <img src="/images/delivery/control/lds/square-brackets.png" alt="active" style={{ display: 'inline', width: '16px', height: '16px', margin: '0px' }} /> next to the field name and entering an alias in the input box that appears. For details refer to [Static Fields](#static-fields) and  [Field Aliases](#field-aliases)
    - In the **Delivery Destination** section, modify the destination details for log delivery as necessary.
-     - For Amazon S3 see [Configure logs delivery to Amazon S3](#s3)
-     - For Custom HTTPS endpoint see [Configure logs delivery to Custom HTTPS endpoint](#https-endpoint)
-     - For Datadog see [Configure logs delivery to Datadog](#data-dog)
-     - For Origin Storage see [Configure logs delivery to Edgio Origin Storage](#origin-storage)
-     - For Google Cloud Storage see [Configure logs delivery to Google Cloud Storage](#google-cloud-storage)
-     - For Hydrolix see [Configure logs delivery to Hydrolix](#hydrolix)
+     - For Amazon S3 see [Configure logs delivery to Amazon S3](#delivery-to-amazon-s3)
+     - For Custom HTTPS endpoint see [Configure logs delivery to Custom HTTPS endpoint](#delivery-to-custom-https-endpoint--streaming-)
+     - For Datadog see [Configure logs delivery to Datadog](#delivery-to-datadog--streaming-)
+     - For Origin Storage see [Configure logs delivery to Edgio Origin Storage](#delivery-to--origin-storage)
+     - For Google Cloud Storage see [Configure logs delivery to Google Cloud Storage](#delivery-to-google-cloud-storage)
+     - For Hydrolix see [Configure logs delivery to Hydrolix](#delivery-to-hydrolix--streaming-)
 4. Under the **Delivery Options** section:
      - Use **DIRECTORY LAYOUT** dropdown to configure the folder structure within the destination for file-based storage (S3, GCP, and Origin Storage). For more information, see [Changing Log Data Location](#log-files-naming-and-location).
      - In the **DATA FORMAT** dropdown choose the format for the log data. The available options may depend on your selected destination. Refer to [Log Data Formats](#data-formats) for more information.
@@ -222,7 +223,7 @@ The following fields are available for you to include when you select *MMD_LIVE_
 | transcode-pixels | *(int64)*The number of transcoded pixels.  | 69580800 |
 
 
-### Static Fields  {/*static-log-fields*/}
+### Static Fields  {/*static-fields*/}
 
 Static fields allow you to add a constant string value to every log line provided by LDS, which is useful for metadata or fixed identifiers. Static fields can be managed on the `Create/Update LDS Configuration` page.
 
@@ -278,7 +279,7 @@ LDS supports delivery to the following destinations: Amazon S3, Custom HTTPS end
 5. In the **ACCESS KEY** field, enter the access key for your Amazon S3 bucket.
 6. In the **SECRET KEY** field, enter the secret key for your Amazon S3 bucket.
 7. Optionally, in the **Delivery Options** section:
-   - Change the **DIRECTORY LAYOUT** to customize how logs are organized within a bucket. For details, refer to [Log Files Naming and Location](#files-naming-and-location).
+   - Change the **DIRECTORY LAYOUT** to customize how logs are organized within a bucket. For details, refer to [Log Files Naming and Location](#log-files-naming-and-location).
    - Choose the **DATA COMPRESSION** method for your log files. Supported options include: LZ4 *(default)*, GZIP, LZF, SNAPPY, ZSTD.
    - Select the log **DATA FORMAT:**: [W3C (Tab-Separated)](#w3c)*(default)*, [TSV](#tsv), [JSON Lines](#json-lines), [JSON Array](#json-array), [JSON](#json).
    - If you need fields with `null` values to be included in JSON format files, select the **INCLUDE NULL VALUES IN JSON** option, as they are excluded by default.
@@ -331,7 +332,7 @@ LDS supports streaming log data to a custom HTTPS endpoint using POST requests. 
 2. Optionally, specify the **STORAGE ACCOUNT** if you want to use a different Origin Storage account. By default, logs are stored under the same account that owns the LDS configuration.
   <Callout type="info">Log files are stored in a directory named ‘_livelogs’ at the root of your space. You are responsible for managing and removing data; LDS does not handle data removal.</Callout>
 3. Optionally, in the **Delivery Options** section:
-   - Change the **DIRECTORY LAYOUT** to customize how logs are organized within a bucket. For details, refer to [Log Files Naming and Location](#files-naming-and-location).
+   - Change the **DIRECTORY LAYOUT** to customize how logs are organized within a bucket. For details, refer to [Log Files Naming and Location](#log-files-naming-and-location).
    - Choose the **DATA COMPRESSION** method for your log files. Supported options include: LZ4 *(default)*, GZIP, LZF, SNAPPY, ZSTD.
    - Select the log **DATA FORMAT:**: [W3C (Tab-Separated)](#w3c)*(default)*, [TSV](#tsv), [JSON Lines](#json-lines), [JSON Array](#json-array), [JSON](#json).
    - If you need fields with `null` values to be included in JSON format files, select the **INCLUDE NULL VALUES IN JSON** option, as they are excluded by default.
@@ -358,7 +359,7 @@ LDS supports streaming log data to a custom HTTPS endpoint using POST requests. 
 4. In the **BUCKET NAME** field, enter the name of the storage bucket you created in your Google Cloud account.
 5. Optionally, specify the **PATH** within the bucket where logs will be stored. By default, logs are stored in the root of the bucket.
 6. Optionally, in the **Delivery Options** section:
-   - Change the **DIRECTORY LAYOUT** to customize how logs are organized within a bucket. For details, refer to [Log Files Naming and Location](#files-naming-and-location).
+   - Change the **DIRECTORY LAYOUT** to customize how logs are organized within a bucket. For details, refer to [Log Files Naming and Location](#log-files-naming-and-location).
    - Choose the **DATA COMPRESSION** method for your log files. Supported options include: LZ4 *(default)*, GZIP, LZF, SNAPPY, ZSTD.
    - Select the log **DATA FORMAT:**: [W3C (Tab-Separated)](#w3c)*(default)*, [TSV](#tsv), [JSON Lines](#json-lines), [JSON Array](#json-array), [JSON](#json).
    - If you need fields with `null` values to be included in JSON format files, select the **INCLUDE NULL VALUES IN JSON** option, as they are excluded by default.

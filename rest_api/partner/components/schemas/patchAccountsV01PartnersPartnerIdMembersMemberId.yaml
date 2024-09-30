@@ -1,0 +1,9 @@
+type: object
+properties:
+  role:
+    type: string
+    enum:
+      - viewer
+      - maintainer
+      - admin
+description: Updates a partner's member.

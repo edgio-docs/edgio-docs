@@ -14,7 +14,10 @@ tags:
     x-displayName: Members
     description: |
     
-      Automate member management. One set of endpoints allows you to manage members for any organization associated with your partner account. Another set of endpoints allow you to manage the members associated with your partner account.
+      Automate the management of the members of your partner account. 
+      
+      Manage the members for any organization associated with your partner account by using an API client created within your partner account to request our [customer-facing member endpoints](https://docs.edg.io/rest_api/#tag/members).
+      
   - name: partners
     x-displayName: Partner Account
     description: |

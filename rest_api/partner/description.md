@@ -1,4 +1,12 @@
-Our REST-compliant web services facilitate the integration of our services into your workflow(s), applications, or interfaces.
+The Partner REST API allows you to manage your partner account and the members associated with it. 
+
+**Key information:** 
+
+-   These endpoints require an API client specific to your partner account. 
+-   Manage your API clients by navigating to your partner account's landing page and then clicking on **API Clients**. 
+-   API clients associated with your partner account may also be used to modify the organizations associated with your partner account. 
+
+    [Learn more through our customer-facing REST API reference.](https://docs.edg.io/rest_api/)
 
 ## Introduction
 
@@ -28,14 +36,14 @@ Key information about our REST API services:
 
 -   **Services:** Our REST API consists of the following services:
 
-    | Service      | Version | Functionality                                                                                                               |
-    | ------------ |-------- | --------------------------------------------------------------------------------------------------------------------------- |
-    | cache        | 0.1     | Purge cached content and find out purge status.                                                                             |
-    | config       | 0.1     | Deploy CDN configurations, retrieve deployment information and log data, and manage environment variables.                  |
-    | accounts     | 0.1     | Retrieve and manage organizations, properties, and environments.                                                            |
-    | waf          | 0.9     | Retrieve and manage the following configurations: security apps, access rules, rate rules, custom rules, and managed rules. |
-    | bot-security | 0.9     | Retrieve and manage bot manager configurations.                                                                             |
-    | api-security | 0.9     | Retrieve and manage API security configurations.                                                                            |
+| Service      | Version | Functionality                                                                                                               |
+| ------------ | ------- | --------------------------------------------------------------------------------------------------------------------------- |
+| cache        | 0.1     | Purge cached content and find out purge status.                                                                             |
+| config       | 0.1     | Deploy CDN configurations, retrieve deployment information and log data, and manage environment variables.                  |
+| accounts     | 0.1     | Retrieve and manage organizations, properties, environments, organization members, and partner members.                     |
+| waf          | 0.9     | Retrieve and manage the following configurations: security apps, access rules, rate rules, custom rules, and managed rules. |
+| bot-security | 0.9     | Retrieve and manage bot manager configurations.                                                                             |
+| api-security | 0.9     | Retrieve and manage API security configurations.                                                                            |
 
     Each service is versioned independently. This allows us to apply major enhancements to a service without impacting other services.
 

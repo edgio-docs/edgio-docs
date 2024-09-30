@@ -579,7 +579,7 @@ This section outlines the methods you need to download files using the Origin St
   - If you are a long-standing customer and the preceding endpoints fail to resolve, use the following endpoints with the suffix `-l` after `{Account name}`:
     - Example: `http://supercustomer-l.upload.llnw.net/jsonrpc2`
 
-#### Step 1: Authenticate using the `login` Method
+#### Step 1: Authenticate using the `login` Method{/*step-1--authenticate*/}
 First, you need to get an authentication token by calling the `login` method. This token is required for subsequent calls.
 **Method Signature**:
 ```
@@ -590,7 +590,7 @@ Parameters:
 - `password`: Origin Storage API password.
 - `detail`: (optional) A boolean (true/false) indicating whether to return detailed data or a simpler response. Defaults to False.
 
-#### Step 2: List Log Files using the `listFile` Method
+#### Step 2: List Log Files using the `listFile` Method{/*step-2--list-log-files*/}
 Once authenticated, you can list log files from a specific directory by calling the `listFile` method.
 **Method Signature**:
 ```
@@ -852,7 +852,7 @@ if __name__ == "__main__":
     main(API_URL, API_USERNAME,API_PASSWORD)
 ```
 
-##### Script Configuration
+##### Script Configuration {/*script-configuration*/}
 
 - `API_USERNAME`: Your API username.
 - `API_PASSWORD`: Your API password.
@@ -862,7 +862,7 @@ if __name__ == "__main__":
 - `DELETE_FILE_AFTER_DOWNLOAD`: Set to True if you want to delete files after downloading.
 - `DELETE_EMPTY_DIRECTORY`: Set to True to delete any empty directories after the files are removed.
 
-##### How to Run the Script
+##### How to Run the Script {/*how-to-run-the-script*/}
 
 1. Install the necessary dependencies if not already installed: `requests, logging, and multiprocessing`.
 ```

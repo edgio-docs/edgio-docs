@@ -4,14 +4,15 @@ title: Bot Manager
 
 Bot Manager is designed to mitigate undesired bot traffic and prevent them from performing undesired or malicious activity, such as scraping your site, carding, taking over accounts through credential stuffing, spamming your forms, launching DDoS attacks, and committing ad fraud.
 
-There are two versions of Bot Manager:
+There are two versions of Bot Manager. Key differences between these versions are highlighted below.
 
-| Capabilities          | Bot Manager Standard                    | Bot Manager Advanced                                                                    |
-| --------------------- | --------------------------------------- | --------------------------------------------------------------------------------------- |
-| Enforcement Actions   | Browser Challenge                       | Browser Challenge, Alert, Block, Custom Response, reCAPTCHA, Redirect, and Silent Close |
-| Custom Bot Detection  | [Limited Variable Support](#conditions) | All Variables                                                                           |
-| Known Bot Detection   | No                                      | Yes                                                                                     |
-| Spoofed Bot Detection | No                                      | Yes                                                                                     |
+-   **Bot Manager Standard:** This version is designed to mitigate basic bots by requiring a browser to solve a JavaScript-based challenge.
+-   **Bot Manager Advanced:** This version provides all of the functionality that comes with Bot Manager Standard. Additionally, it provides:
+    -   Automatic detection of known bots (e.g., search bots) and bad bots, including those that spoof good bots, through the analysis of requests and behavior. 
+    -   Additional types of criteria through which you may profile an undesired bot. 
+    -   Additional enforcement actions that can be applied to bot traffic. 
+    -   The ability to bypass bot detection for specific traffic profiles. 
+    -   Actionable near real-time data on detected bots through which you may fine-tune your configuration to reduce false positives.
 
 <Callout type="info">
 
@@ -21,12 +22,11 @@ There are two versions of Bot Manager:
 
 ## How Does It Work? {/*how-does-it-work*/}
 
-The differences between the behavior of Bot Manager Standard and Bot Manager Advanced are described below.
+The workflows through which Bot Manager Standard and Bot Manager Advanced detect bots are described below.
 
 ### Bot Manager Standard {/*bot-manager-standard*/}
 
-Bot Manager Standard requires a client (e.g., a web browser) to solve a challenge before resolving the request. {{ PRODUCT }} {{ PRODUCT_SECURITY }} blocks traffic when the client cannot solve this challenge within a few seconds. Basic bots typically cannot solve this type of challenge and therefore their
-traffic is blocked. [Learn more.](#browser-challenge)
+Bot Manager Standard requires a client (e.g., a web browser) to solve a JavaScript-based challenge before resolving the request. {{ PRODUCT }} {{ PRODUCT_SECURITY }} blocks traffic when the client cannot solve this challenge within a few seconds. Basic bots typically cannot solve this type of challenge and therefore their traffic is blocked. [Learn more.](#browser-challenge)
 
 ### Bot Manager Advanced {/*bot-manager-advanced*/}
 
@@ -48,7 +48,7 @@ Bot Manager Advanced inspects each request to determine whether the request:
 
         </Callout>
 
-    -   The JA3 or JA4 fingerprint assigned to the request. These fingerprints allow us to classify traffic.
+    -   The JA3 or JA4 (requires {{ PRODUCT }} Premier) fingerprint assigned to the request. These fingerprints allow us to classify traffic.
 
 3.  Matches a known good bot (e.g., search bot).
 4.  Is spoofing a known good bot.
@@ -425,11 +425,11 @@ A variable identifies the request element that {{ PRODUCT }} {{ PRODUCT_SECURITY
 
     <a id="ja3" />
 
--   **JA3:** Bot Manager Advanced ({{ PRODUCT }} Premier) only. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic as a specific bot across various IP addresses and ports.
+-   **JA3:** Requires Bot Manager Advanced or {{ PRODUCT }} Premier. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic as a specific bot across various IP addresses and ports.
 
     <a id="ja4" />
 
--   **JA4:** Bot Manager Advanced ({{ PRODUCT }} Premier) only. Identifies requests by the [JA4 fingerprint](https://github.com/FoxIO-LLC/ja4/blob/main/technical_details/JA4.md) assigned to the request. This method of traffic classification is less prone to evasion techniques than JA3.
+-   **JA4:** Requires {{ PRODUCT }} Premier. Identifies requests by the [JA4 fingerprint](https://github.com/FoxIO-LLC/ja4/blob/main/technical_details/JA4.md) assigned to the request. This method of traffic classification is less prone to evasion techniques than JA3.
 
     <a id="request-cookies" />
 
@@ -546,7 +546,7 @@ We will now examine how the **Count** option affects comparisons for this config
 
 ## Exceptions {/*exceptions*/}
 
-Bot Manager Advanced allows you to exempt traffic from bot detection by URL, user agent, JA3 fingerprint, JA4 fingerprint, and cookie.
+Bot Manager Advanced allows you to exempt traffic from bot detection by URL, user agent, JA3 fingerprint, JA4 fingerprint (requires {{ PRODUCT }} Premier), and cookie.
 
 **Key information:**
 

@@ -6,18 +6,18 @@ Bot Manager is designed to mitigate undesired bot traffic and prevent them from 
 
 There are two versions of Bot Manager:
 
-| Capabilities                   | Bot Manager Standard                                                                               | Bot Manager Advanced                                                                               |
-| ------------------------------ | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Enforcement: Browser Challenge | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
-| Enforcement: Alert             |                                                                                                    | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
-| Enforcement: Block             |                                                                                                    | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
-| Enforcement: Custom Response   |                                                                                                    | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
-| Enforcement: reCAPTCHA         |                                                                                                    | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
-| Enforcement: Redirect          |                                                                                                    | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
-| Enforcement: Silent Close      |                                                                                                    | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
-| Custom Bot Detection           | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
-| Known Bot Detection            |                                                                                                    | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
-| Spoofed Bot Detection          |                                                                                                    | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
+| Capabilities                   | Bot Manager Standard                                        | Bot Manager Advanced                                        |
+| ------------------------------ | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| Enforcement: Browser Challenge | <Image inline src="/images/v7/icons/save.png" alt="Save" /> | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
+| Enforcement: Alert             |                                                             | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
+| Enforcement: Block             |                                                             | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
+| Enforcement: Custom Response   |                                                             | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
+| Enforcement: reCAPTCHA         |                                                             | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
+| Enforcement: Redirect          |                                                             | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
+| Enforcement: Silent Close      |                                                             | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
+| Custom Bot Detection           | <Image inline src="/images/v7/icons/save.png" alt="Save" /> | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
+| Known Bot Detection            |                                                             | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
+| Spoofed Bot Detection          |                                                             | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
 
 <Callout type="info">
 

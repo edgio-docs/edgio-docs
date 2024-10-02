@@ -383,7 +383,7 @@ A variable identifies the request element that {{ PRODUCT }} {{ PRODUCT_SECURITY
 
     <a id="ip-address" />
 
--   **IP address:** Identify requests by the requester's IPv4 and/or IPv6 address.
+-   **IP address:** Identify requests by the requester's IP address.
 
     -   Specify a comma-delimited list of the desired IP address(es) using standard IPv4/IPv6 and CIDR notation.
     -   Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., 11.22.33.0/22).
@@ -514,7 +514,7 @@ We will now examine how the **Count** option affects comparisons for this config
 
 ## Exceptions {/*exceptions*/}
 
-Bot Manager Advanced allows you to exempt traffic from bot detection by URL, user agent, JA3 fingerprint, JA4 fingerprint (requires {{ PRODUCT }} Premier), and cookie.
+Bot Manager Advanced allows you to exempt traffic from bot detection by URL, user agent, JA3 fingerprint, and cookie.
 
 **Key information:**
 

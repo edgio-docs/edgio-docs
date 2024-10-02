@@ -30,12 +30,12 @@ Bot Manager Standard requires a client (e.g., a web browser) to solve a JavaScri
 
 ### Bot Manager Advanced {/*bot-manager-advanced*/}
 
-Bot Manager Advanced inspects each request to determine whether the request:
+Bot Manager Advanced inspects each request to determine whether it is bot traffic.
 
-1.  Matches an exception. [Exceptions](#exceptions) identify trafic that should bypass bot detection.
-2.  Matches a rule. A rule defines the criteria that our service will use to identify a bad bot.
+1.  Does the request match an exception? [Exceptions](#exceptions) identify trafic that should bypass bot detection.
+2.  Does the request match a rule?  A rule defines the criteria that our service will use to identify bot traffic.
 
-    You may identify bots using:
+    Identify bots using:
 
     -   Information derived from the request, such as geolocation, IP address, and the URL path.
     -   Our request and behavioral analysis that assigns a bot score to the request that defines our level of confidence that it is a bot.
@@ -48,10 +48,10 @@ Bot Manager Advanced inspects each request to determine whether the request:
 
         </Callout>
 
-    -   The JA3 or JA4 (requires {{ PRODUCT }} Premier) fingerprint assigned to the request. These fingerprints allow us to classify traffic.
+    -   The JA3 or JA4 (requires {{ PRODUCT }} Premier) fingerprint assigned to the request. Fingerprints allow us to classify traffic.
 
-3.  Matches a known good bot (e.g., search bot).
-4.  Is spoofing a known good bot.
+3.  Does the request match a known good bot (e.g., search bot)?
+4.  Does the request spoof a known good bot?
 
 **Key information:**
 
@@ -84,7 +84,7 @@ Drops the request and the client will receive a `403 Forbidden` response.
 
 ### Browser Challenge {/*browser-challenge*/}
 
-Sends a browser challenge to the client. The client must solve this challenge within a few seconds.
+Sends a JavaScript-based challenge to the client. The client must solve this challenge within a few seconds.
 
 The client's response to the browser challenge determines what happens next.
 
@@ -125,7 +125,7 @@ By default, our browser challenge is served through an {{ PRODUCT }}-branded pag
 
 -   It must contain the following mustache: {{BOT_MUSTACHE}}
 
-    This mustache is a placeholder for our JavaScript browser challenge.
+    This mustache is a placeholder for our JavaScript-based challenge.
 
     <Callout type="tip">
 
@@ -304,10 +304,10 @@ Drops the request without providing a response to the client.
 
 ## Bot Manager Configuration {/*bot-manager-configuration*/}
 
-Each rule within a Bot Manager configuration identifies bot traffic. Each rule contains:
+A Bot Manager configuration may contain up to 10 rules. Each rule within a Bot Manager configuration identifies bot traffic. Each rule contains:
 
 -   Up to 6 conditions that define request identification criteria.
--   A rule ID and message that will be associated with requests identified by this rule.
+-   A rule ID and message that will be associated with requests identified by this rule. A rule ID must be a number between 77,000,000 and 77,999,999.
 
     <Callout type="tip">
 
@@ -315,37 +315,19 @@ Each rule within a Bot Manager configuration identifies bot traffic. Each rule c
 
     </Callout>
 
-    <Callout type="info">
-
-      A rule ID must be a number between 77,000,000 and 77,999,999.
-
-    </Callout>
-
-<Callout type="info">
-
-  A Bot Manager configuration may contain up to 10 rules.
-
-</Callout>
-
 ### Custom Bot Detection {/*custom-bot-detection*/}
 
-A request must satisfy at least one rule before WAF will consider it bot traffic. A rule is satisfied when a match is found for each of its conditions. A condition defines what will be matched (i.e., variable), how it will be matched (i.e., operator), and a match value.
+A request must satisfy at least one rule before {{ PRODUCT }} will consider it bot traffic. A rule is satisfied when a match is found for each of its conditions. A condition defines what will be matched (i.e., variable), how it will be matched (i.e., operator), and a match value.
 
-<Callout type="info">
+**Key information:**
 
-  Certain variables match on key-value pairs. If you match on multiple keys within a single variable, {{ PRODUCT }} {{ PRODUCT_SECURITY }} will only need to find one of those matches to satisfy that variable.
+-   Certain variables match on key-value pairs. If you match on multiple keys within a single variable, {{ PRODUCT }} {{ PRODUCT_SECURITY }} will only need to find one of those matches to satisfy that variable.
 
-  For example, if you set up a request header variable to match for `Authorization` and `Content-Type`, then requests that contain either or both of those headers will satisfy that variable.
+    For example, if you set up a request header variable to match for `Authorization` and `Content-Type`, then requests that contain either or both of those headers will satisfy that variable.
 
-</Callout>
+-   Bot detection through a {{ PRODUCT }} Reputation DB rule has been deprecated. Although existing rules may continue to use this database, you may not assign it to a new rule.
 
-<Callout type="info">
-
-  Bot detection through a {{ PRODUCT }} Reputation DB rule has been deprecated. Although existing rules may contine to use this database, you may not assign it to a new rule.
-
-</Callout>
-
-**Example #1:**
+**Custom Bot Detection Example:** 
 
 This example assumes that your Bot Manager configuration contains the following two rules:
 
@@ -354,24 +336,10 @@ This example assumes that your Bot Manager configuration contains the following 
 | 1    | Custom matches | This rule contains a single condition. |
 | 2    | Custom matches | This rule contains two conditions.     |
 
-Assuming the above configuration, WAF identifies bot traffic whenever either of the following conditions are met:
+Assuming the above configuration, {{ PRODUCT }} identifies bot traffic whenever either of the following conditions are met:
 
 -   A match is found for the variable defined in the first rule's condition.
 -   A match is found for the variables defined in both of the second rule's conditions.
-
-**Example #2:**
-
-This example assumes that your Bot Manager configuration contains the following two rules:
-
-| Rule | Type                   | Description                                                                                                |
-|------|------------------------|------------------------------------------------------------------------------------------------------------|
-| 1    | Custom matches         | This rule contains two conditions.                                                                         |
-| 2    | {{ PRODUCT }}  Reputation DB | This rule is satisfied when the client's IP address matches an IP address within our reputation database. |
-
-Assuming the above configuration, {{ PRODUCT }} {{ PRODUCT_SECURITY }} applies bot rules protection under either of the following circumstances:
-
--   A match is found for the variables defined in both of the first rule's conditions.
--   The client's IP address matches an IP address within our reputation database.
 
 #### Conditions {/*conditions*/}
 
@@ -397,7 +365,7 @@ A variable identifies the request element that {{ PRODUCT }} {{ PRODUCT_SECURITY
 
     <a id="bot-score" />
 
--   **Bot score:** Bot Manager Advanced only ({{ PRODUCT }} Enterprise and Premier). Identifies requests based off a score that defines our level of confidence that it is a bot. This score is calculated by analyzing the request and its behavior. The range for this score is 0 to 100.
+-   **Bot score:** Requires Bot Manager Advanced, {{ PRODUCT }} Enterprise, or {{ PRODUCT }} Premier. Identifies requests based off a score that defines our level of confidence that it is a bot. This score is calculated by analyzing the request and its behavior. The range for this score is 0 to 100.
 
     <a id="country" />
 
@@ -664,7 +632,7 @@ You may create, modify, and delete Bot Manager configurations.
     2.  In the **Rule message** option, type a brief description for this rule.
     3.  In the **Rule Action** option, choose how this rule will be enforced.
     4.  In the **Rule ID** option, specify a number between 77,000,000 and 77,999,999.
-    5.  Modify the default condition to determine how WAF will identify requests. From the condition's **Variable** option, select the request element through which WAF will identify requests.
+    5.  Modify the default condition to determine how {{ PRODUCT }} will identify requests. From the condition's **Variable** option, select the request element through which {{ PRODUCT }} will identify requests.
 
         [Learn more about variables.](#variables)
 
@@ -682,7 +650,7 @@ You may create, modify, and delete Bot Manager configurations.
 
         [Learn more.](#count)
 
-    8.  From the **Operator** option, select an operator that determines how WAF will compare the match value to the request element identified by the above variable.
+    8.  From the **Operator** option, select an operator that determines how {{ PRODUCT }} will compare the match value to the request element identified by the above variable.
 
         [Learn more.](#operators)
 

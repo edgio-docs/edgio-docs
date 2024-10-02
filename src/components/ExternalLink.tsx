@@ -29,7 +29,7 @@ const ExternalLinkWrapper = styled.a`
 
 const ExternalLinkIcon = styled.span`
   margin-left: 0.25rem;
-  font-size: 8px;
+  font-size: 12px;
 `;
 
 export function ExternalLink({

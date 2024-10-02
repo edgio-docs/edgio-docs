@@ -6,18 +6,12 @@ Bot Manager is designed to mitigate undesired bot traffic and prevent them from 
 
 There are two versions of Bot Manager:
 
-| Capabilities                   | Bot Manager Standard                                        | Bot Manager Advanced                                        |
-| ------------------------------ | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| Enforcement: Browser Challenge | <Image inline src="/images/v7/icons/save.png" alt="Save" /> | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
-| Enforcement: Alert             |                                                             | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
-| Enforcement: Block             |                                                             | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
-| Enforcement: Custom Response   |                                                             | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
-| Enforcement: reCAPTCHA         |                                                             | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
-| Enforcement: Redirect          |                                                             | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
-| Enforcement: Silent Close      |                                                             | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
-| Custom Bot Detection           | <Image inline src="/images/v7/icons/save.png" alt="Save" /> | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
-| Known Bot Detection            |                                                             | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
-| Spoofed Bot Detection          |                                                             | <Image inline src="/images/v7/icons/save.png" alt="Save" /> |
+| Capabilities          | Bot Manager Standard                    | Bot Manager Advanced                                                                    |
+| --------------------- | --------------------------------------- | --------------------------------------------------------------------------------------- |
+| Enforcement Actions   | Browser Challenge                       | Browser Challenge, Alert, Block, Custom Response, reCAPTCHA, Redirect, and Silent Close |
+| Custom Bot Detection  | [Limited Variable Support](#conditions) | All Variables                                                                           |
+| Known Bot Detection   | No                                      | Yes                                                                                     |
+| Spoofed Bot Detection | No                                      | Yes                                                                                     |
 
 <Callout type="info">
 

@@ -284,6 +284,12 @@ Uploading a TLS certificate requires:
 -   The intermediate certificates (IC) used by the CA, including the CA's signing certificate.
 -   The private key that was generated with the CSR.
 
+<Info>
+
+By default, you only need to upload a wildcard certificate a single time. After which, it will be available for use across all of your organization's properties and environments. [Learn more.](/applications/basics/hostnames#wildcard-certificates)
+
+</Info>
+
 **To upload your TLS certificate**
 
 1.  Load the **TLS Certificate** page.

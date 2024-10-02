@@ -119,6 +119,10 @@ Each hostname requires the installation of a [TLS certificate](/applications/sec
 
 -   **Bring Your Own Certificate (BYOC):** [Upload your own TLS certificate](/applications/security/tls_certificates#uploading-your-certificate).
 
+    <a id="wildcard-certificates" />**Wildcard Certificates:** If you plan on using a wildcard certificate, then you only need to upload it a single time. After which, it will be available for use across your organization's properties and environments if you are using a default configuration.
+    
+    If you have requested the use of our PCI-compliant network, then the wildcard certificate will only be applicable for environments that use the same network as the environment on which it was uploaded. You can check whether your environments use the same network from the **Organization DNS Configuration** section of your organization's **Settings** page. 
+
 ## Hostname Offboarding {/*hostname-offboarding*/}
 
 Any of the following actions will disassocate a hostname from your account:

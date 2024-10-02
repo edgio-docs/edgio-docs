@@ -6,16 +6,18 @@ Bot Manager is designed to mitigate undesired bot traffic and prevent them from 
 
 There are two versions of Bot Manager:
 
--   **Bot Manager Standard:** This version is designed to mitigate basic bots through a browser challenge.
-
-    <Callout type="important">
-
-      Solving a challenge requires a JavaScript-enabled client. Users that have disabled JavaScript on their browsing session will be unable to
-  access content protected by bot rules.
-
-    </Callout>
-
--   **Bot Manager Advanced:**  This version adds an additional layer of security that is dedicated to bot detection and mitigation. It is designed to automatically detect known bots (e.g., search bots) and bad bots, including those that spoof good bots, by analyzing requests and behavior. You may even customize how bad bots are detected and mitigated by defining custom criteria that profiles a bad bot and the action that we will take for that traffic. Bot Manager Advanced is also able to mitigate basic bots by requiring a web browser to resolve a JavaScript challenge before our service will resolve traffic. Finally, it provides actionable near real-time data on detected bots through which you may fine-tune your configuration to reduce false positives.
+| Capabilities                   | Bot Manager Standard                                                                               | Bot Manager Advanced                                                                               |
+| ------------------------------ | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Enforcement: Browser Challenge | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
+| Enforcement: Alert             |                                                                                                    | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
+| Enforcement: Block             |                                                                                                    | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
+| Enforcement: Custom Response   |                                                                                                    | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
+| Enforcement: reCAPTCHA         |                                                                                                    | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
+| Enforcement: Redirect          |                                                                                                    | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
+| Enforcement: Silent Close      |                                                                                                    | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
+| Custom Bot Detection           | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
+| Known Bot Detection            |                                                                                                    | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
+| Spoofed Bot Detection          |                                                                                                    | <div style="text-align: center;"><Image inline src="/images/v7/icons/save.png" alt="Save" /></div> |
 
 <Callout type="info">
 

@@ -8,6 +8,10 @@ title: TLS Certificates
 
     -   Allow {{ PRODUCT }} to [autogenerate a TLS certificate for each of your hostnames.](#autogenerating-tls-certificates)
     -   [Upload your own TLS certificate.](#uploading-your-certificate)
+    
+        <a id="wildcard-certificates" />**Wildcard Certificates:** If you plan on using a wildcard certificate, then you only need to upload it a single time. After which, it will be available for use across your organization's properties and environments if you are using a default configuration.
+        
+        If you have requested the use of our PCI-compliant network, then the wildcard certificate will only be applicable for environments that use the same network as the environment on which it was uploaded. You can check whether your environments use the same network from the **Organization DNS Configuration** section of your organization's **Settings** page. 
 
     <Callout type="info">
 

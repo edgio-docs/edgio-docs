@@ -356,7 +356,19 @@ A variable identifies the request element that {{ PRODUCT }} {{ PRODUCT_SECURITY
 
     For example, if you set up a request header variable to match for `Authorization` and `Content-Type`, then requests that contain either or both of those headers will satisfy that variable.
 
-We support the following request elements:
+-   We support the following request elements:
+    -   [ASN](#asn)
+    -   [Bot score](#bot-score)
+    -   [Country](#country)
+    -   [IP address](#ip-address)
+    -   [JA3](#ja3)
+    -   [JA4](#ja4)
+    -   [Request cookies](#request-cookies)
+    -   [Request header](#request-header)
+    -   [Request method](#request-method)
+    -   [Request query](#request-query)
+    -   [Request URI](#request-uri)
+    -   [Request URL Path](#request-url-path)
 
 ###### ASN {/*asn*/}
 

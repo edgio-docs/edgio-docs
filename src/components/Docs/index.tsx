@@ -128,26 +128,38 @@ const StyledDocs = styled.div<{hasToc: boolean}>`
 
   .article-header {
     margin-top: 0;
-    font-size: 32px;
+    font-size: 1.8em;
     line-height: 40px;
     letter-spacing: -0.663px;
     font-weight: bold;
   }
 
   h2.article-heading {
-    font-size: 24px;
+    font-size: 1.65em;
     line-height: 28px;
     font-weight: 600;
   }
 
   h3.article-heading {
-    font-size: 20px;
+    font-size: 1.5em;
     line-height: 24px;
     font-weight: 600;
   }
 
   h4.article-heading {
-    font-size: 18px;
+    font-size: 1.3em;
+    line-height: 20px;
+    font-weight: 600;
+  }
+
+  h5.article-heading {
+    font-size: 1.2em;
+    line-height: 20px;
+    font-weight: 600;
+  }
+
+  h6.article-heading {
+    font-size: 1.1em;
     line-height: 20px;
     font-weight: 600;
   }

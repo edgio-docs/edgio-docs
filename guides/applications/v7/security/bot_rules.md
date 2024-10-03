@@ -487,34 +487,32 @@ An operator determines how {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare a 
 ##### Match Value {/*match-value*/}
 
 {{ PRODUCT }} {{ PRODUCT_SECURITY }} uses a match value to identify threats.
--   **Default:** By default, {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares a match value against the request element identified by a variable (e.g., URL path or a
-    request header's value).
+-   **Default:** By default, {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares a match value against the request element identified by a variable (e.g., URL path or a request header's value).
 -   **Count:** Enable the **Count** option on a variable to compare this value against the number of times that the request element identified by a variable (e.g., a specific cookie or request header) occurs within the request.
 
-**Example:**
+    **Example:**
 
-This example assumes the following configuration:
+    This example assumes the following configuration:
 
-```
-Variable: Request header = Authentication
-Match value: 1
-```
+    ```
+    Variable: Request header = Authentication
+    Match value: 1
+    ```
 
-We will now examine how the **Count** option affects comparisons for this configuration.
--   **Disabled:** If the **Count** option has been disabled on the variable, then {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare the value of the
-    `Authentication` request header to `1`.
--   **Enabled:** If the **Count** option has been enabled on the variable, then {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare the number of times that the
-    `Authentication` request header occurred in the request to *1*.
+    We will now examine how the **Count** option affects comparisons for this configuration.
+    -   **Disabled:** If the **Count** option has been disabled on the variable, then {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare the value of the
+        `Authentication` request header to `1`.
+    -   **Enabled:** If the **Count** option has been enabled on the variable, then {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare the number of times that the `Authentication` request header occurred in the request to *1*.
 
-<Callout type="info">
+    <Callout type="info">
 
-  The type of comparison that will be performed is determined by the **Operator** option.
+      The type of comparison that will be performed is determined by the **Operator** option.
 
-</Callout>
+    </Callout>
 
 ## Exceptions {/*exceptions*/}
 
-Bot Manager Advanced allows you to exempt traffic from bot detection by URL, user agent, JA3 fingerprint, and cookie.
+Bot Manager Advanced allows you to exempt traffic from bot detection by URL, user agent, JA3 fingerprint, and cookie. {{ PRODUCT }} Premier customers may also exempt traffic by JA4 fingerprint. 
 
 **Key information:**
 
@@ -604,7 +602,7 @@ You may create, modify, and delete Bot Manager configurations.
 
         -   **Redirect:** Set the **URL** option to the full URL to which requests will be redirected.
 
-5.  Bot Manager Advanced only. Perform the following steps to automatically detect known bots:
+5.  Bot Manager Advanced: Perform the following steps to automatically detect known bots:
 
     1.  From the left-hand pane, verify that **Known Bots** is selected.
     2.  Select whether to apply an action to all known bots (**Toggle all**), a specific bot, or to 200+ bots (**other**).
@@ -618,7 +616,7 @@ You may create, modify, and delete Bot Manager configurations.
     3.  From the **Actions** column, select the action that will be applied to each known bot that was enabled in the previous step.
     4.  Repeat steps 2 and 3 as needed.
 
-6.  Bot Manager Advanced only. The **Spoofed Bots** section determines how to handle traffic that spoofs the known bots selected in the previous step. From the **Rule Action** option, select the desired action.
+6.  Bot Manager Advanced: The **Spoofed Bots** section determines how to handle traffic that spoofs the known bots selected in the previous step. From the **Rule Action** option, select the desired action.
 
     <Callout type="info">
 
@@ -659,10 +657,10 @@ You may create, modify, and delete Bot Manager configurations.
     11.  Optional. Click **+ Add Condition** to add another condition that must be met prior to request identification.
 
 8.  Optional. Add another rule by repeating step 7.
-9.  Optional. Bot Manager Advanced only. Identify traffic that will bypass bot detection.
+9.  Optional. Bot Manager Advanced: Identify traffic that will bypass bot detection.
 
     1.  Click the **Exceptions** tab.
-    2.  Add the desired URL(s), user agent(s), JA3 fingerprint(s), and cookie(s) as [exception(s)](#exceptions).
+    2.  Add the desired URL(s), user agent(s), JA3 fingerprint(s), JA4 fingerprint(s), and cookie(s) as [exception(s)](#exceptions).
 
         <Callout type="info">
 
@@ -679,9 +677,9 @@ You may create, modify, and delete Bot Manager configurations.
 3.  Make the desired changes.
 
     **Key tasks:**
-    -   Bot Manager Advanced only. Add, modify, or delete an action.
-    -   Bot Manager Advanced only. Set or modify the action that will be taken for all known bots, specific known bots, and spoofed bots from the **Known Bots** tab.
-    -   Bot Manager Advanced only. Update your exceptions to bot detection by adding, modifying, or deleting entries from the **Exceptions** tab.
+    -   Bot Manager Advanced: Add, modify, or delete an action.
+    -   Bot Manager Advanced: Set or modify the action that will be taken for all known bots, specific known bots, and spoofed bots from the **Known Bots** tab.
+    -   Bot Manager Advanced: Update your exceptions to bot detection by adding, modifying, or deleting entries from the **Exceptions** tab.
     -   Change the [type of rule](#request-identification) from the **Rule type** option.
     -   **Custom matches only:** Delete variables and matches within a variable by clicking the <Image inline src="/images/v7/icons/remove.png" alt="Delete" /> (delete) icon.
     -   **Custom matches only:** Delete a condition by clicking **Delete Condition**.

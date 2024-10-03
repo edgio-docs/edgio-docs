@@ -1,4 +1,4 @@
-import { productsConfig } from '../appConfig';
+import {productsConfig} from '../appConfig';
 
 const separator = {
   title: '',

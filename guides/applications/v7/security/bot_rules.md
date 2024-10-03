@@ -356,8 +356,6 @@ A variable identifies the request element that {{ PRODUCT }} {{ PRODUCT_SECURITY
 
     For example, if you set up a request header variable to match for `Authorization` and `Content-Type`, then requests that contain either or both of those headers will satisfy that variable.
 
-</Callout>
-
 We support the following request elements:
 
 ###### ASN {/*asn*/}

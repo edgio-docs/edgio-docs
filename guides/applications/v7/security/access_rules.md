@@ -90,15 +90,15 @@ Identifies requests by a country's subdivision (e.g., state or province). Specif
 
 #### JA3 {/*ja3*/}
 
-{{ PRODUCT }} Premier only. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic across various IP addresses and ports.
+Requires {{ PRODUCT }} Premier. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic across various IP addresses and ports.
 
 #### JA4 {/*ja4*/}
 
-{{ PRODUCT }} Premier only. Identifies requests by the [JA4 fingerprint](https://github.com/FoxIO-LLC/ja4/blob/main/technical_details/JA4.md) assigned to the request. This method of traffic classification is less prone to evasion techniques than JA3.
+Requires {{ PRODUCT }} Premier. Identifies requests by the [JA4 fingerprint](https://github.com/FoxIO-LLC/ja4/blob/main/technical_details/JA4.md) assigned to the request. This method of traffic classification is less prone to evasion techniques than JA3.
 
 #### IP Address {/*ip-address*/}
 
-Identifies requests by the requester's IPv4 and/or IPv6 address.
+Identifies requests by the requester's IP address.
 
 **Key information:**
 

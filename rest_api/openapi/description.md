@@ -90,7 +90,7 @@ Requesting an access token requires:
     | client_id     | Replace `<CLIENT ID>` with the [system-defined ID assigned to your REST API client](https://docs.edg.io/applications/rest_api/authentication#copy-client-id-secret). |
     | client_secret | Replace `<SECRET>` with the [secret assigned to your REST API client](https://docs.edg.io/applications/rest_api/authentication#copy-client-id-secret).               |
     | grant_type    | Set this parameter to `client_credentials`.                                                                                                                          |
-    | scope         | Replace `<SCOPES>` with one or more [scopes](#section/Scopes). Use the plus symbol (+) to delimit each scope.                                                        |
+    | scope         | Replace `<SCOPES>` with one or more [scopes](#section/Scopes). Use a space character or the plus symbol (+) to delimit each scope.                                   |
 
 **Sample access token request:**
 

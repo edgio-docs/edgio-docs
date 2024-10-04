@@ -105,7 +105,7 @@ The client's response to the browser challenge determines what happens next.
 
     For example, applying browser challenges to API traffic will disrupt your API workflow.
 
--   If you are using Bot Manager Advanced, you may customize the difficulty of the browser challenge by setting the **Browser challenge level** option to `Difficulty-based` and then selecting the desired difficulty level. 
+-   <a id="difficulty-based" />If you are using Bot Manager Advanced, you may customize the difficulty of the browser challenge by setting the **Browser challenge level** option to `Difficulty-based` and then selecting the desired difficulty level. 
 
     -   Choose a difficulty level from 1 to 20. {{ PRODUCT }} serves our standard browser challenge when it is  set it to `0`.
     -   Smaller levels are easier to solve, while larger levels introduce latency.
@@ -541,13 +541,23 @@ You may create, modify, and delete Bot Manager configurations.
 3.  <a id="create-name" />In the **Name** option, type the unique name by which this Bot Manager configuration will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application Manager configuration.
 4.  Set up the desired enforcement action(s).
 
-    <Callout type="info">
+    ![Enforcement actions](/images/v7/security/bot_manager_configuration_actions.png?width=450)
 
-      Bot Manager Standard only supports browser challenges. Once you have defined a browser challenge, skip to step 7.
+    -   **Bot Manager Standard:** This version only supports browser challenges. Review and revise your browser challenge configuration as needed and then skip to step 6.
+    -   **Bot Manager Advanced:** This version supports all enforcement actions. 
 
-    </Callout>
+        <Info>
+          The behavior of the alert, block, and silent close actions cannot be configured. 
+        </Info>
 
-    -   Perform the following steps to set up a browser challenge:
+        <Info>
+          Unlike other enforcement actions, you must configure the reCAPTCHA and redirect actions before they will be available for selection as enforcement actions.
+        </Info>
+
+
+    **Browser Challenge** 
+
+    The default configuration is suitable for basic bot mitigation. Perform the following steps to customize this enforcement action:
 
         1.  From the **HTTP status code** option, determine the HTTP status code for the response provided to clients that are being served the browser challenge.
 
@@ -559,103 +569,111 @@ You may create, modify, and delete Bot Manager configurations.
 
         2.  From the **Valid for (in seconds)** option, type the number of seconds for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge to be solved. Specify a value between 1 and 1,000,000 seconds.
         3.  Serve a custom browser challenge by enabling the **Custom Browser Challenge Page** option and then setting the **Browser Challenge Page Template** option to the desired payload.
+        4.  **Bot Manager Advanced:** Increase the [difficulty of this JavaScript-based challenge](#difficulty-based) by setting the **Browser challenge level** option to `Difficulty-based` and then selecting the desired difficulty from the **Browser challenge difficulty** option. 
 
-    -   **Bot Manager Advanced:** Set up a browser challenge (see above), custom response, or redirect that can be applied to known bots, spoofed bots, and bots detected through rules.
+    **Custom Response** 
+
+    Perform the following steps:
+
+    1.  From the **Actions** section, select **Custom Response**.
+    2.  In the **Response Body** option, specify the body of the response that will be sent to clients.
+    3.  In the **HTTP status code** option, set the HTTP status code for the response that will be sent to clients.
+    4.  In the **Response Headers** option, define each desired [custom response header](#custom-response) on a separate line.
+
+        **Example:** `MyCustomHeader: True`
+
+    **reCAPTCHA** 
+
+    Perform the following steps to set up a reCAPTCHA:
+
+    1.  Set the **Rule Action** option to the enforcement action that will be applied when a client's reCAPTCHA score falls below an acceptable level.
+    2.  In the **Action Status** option, set the HTTP status code for the response provided to clients that are being served the reCAPTCHA.
 
         <Callout type="info">
 
-          Unlike other actions, alert actions do not require configuration before they can be applied to bot traffic.
+          Setting this option to certain status codes (e.g., `204`) may prevent clients from properly displaying your site.
 
         </Callout>
 
-        -   **Block:** From the **Actions** section, select **Block** and then toggle it to the on position.
+    3.  In the **Valid for (in seconds)** option, type the number of seconds for which our CDN will serve content to a client with an acceptable reCAPTCHA score without reassessment. Specify a value between 1 and 1,000,000 seconds.
 
-        -   **Custom Response:** Perform the following steps:
+    <Callout type="important">
 
-            1.  From the **Actions** section, select **Custom Response**.
-            2.  From the **Response Body** option, specify the body of the response that will be sent to clients.
-            3.  From the **HTTP status code** option, determine the HTTP status code for the response that will be sent to clients.
-            4.  From the **Response Headers** option, define each desired [custom response header](#custom-response) on a separate line.
+      You must enable reCAPTCHA within a Security Application configuration and provide your Google reCAPTCHA site and secret keys.
 
-                **Example:** `MyCustomHeader: True`
+    </Callout>
 
-        -   **reCAPTCHA:** Perform the following steps to set up a reCAPTCHA:
+    **Redirect** 
 
-            1.  Set the **Rule Action** option to the enforcement action that will be applied when a client's reCAPTCHA score falls below an acceptable level.
-            2.  From the **Action Status** option, determine the HTTP status code for the response provided to clients that are being served the reCAPTCHA.
+    Set the **URL** option to the full URL to which requests will be redirected.
 
-                <Callout type="info">
-
-                  Setting this option to certain status codes (e.g., `204`) may prevent clients from properly displaying your site.
-
-                </Callout>
-
-            3.  From the **Valid for (in seconds)** option, type the number of seconds for which our CDN will serve content to a client with an acceptable reCAPTCHA score without reassessment. Specify a value between 1 and 1,000,000 seconds.
-
-            <Callout type="important">
-
-              You must enable reCAPTCHA within a Security Application configuration and provide your Google reCAPTCHA site and secret keys.
-
-            </Callout>
-
-        -   **Redirect:** Set the **URL** option to the full URL to which requests will be redirected.
-
-5.  Bot Manager Advanced: Perform the following steps to automatically detect known bots:
+5.  **Bot Manager Advanced:** Set up known bot and spoofed bot detection.
 
     1.  From the left-hand pane, verify that **Known Bots** is selected.
-    2.  Select whether to apply an action to all known bots (**Toggle all**), a specific bot, or to 200+ bots (**other**).
+    2.  Select whether to apply an action to all known bots, a specific bot, or to 200+ bots (**other**).
 
         <Callout type="info">
 
-          Toggle **other** to apply an action to 200+ known good bots. This option excludes the bots listed on the **Known Bots** tab.
+          Toggle **other** to apply an action to 200+ known bots. This option excludes the bots listed above it.
 
         </Callout>
 
     3.  From the **Actions** column, select the action that will be applied to each known bot that was enabled in the previous step.
-    4.  Repeat steps 2 and 3 as needed.
+    4.  From the **Spoof Actions** column, select the action that will be applied to requests that spoof each known bot that was enabled in step 5.ii.
+    5.  Repeat steps ii - iv as needed.
 
-6.  Bot Manager Advanced: The **Spoofed Bots** section determines how to handle traffic that spoofs the known bots selected in the previous step. From the **Rule Action** option, select the desired action.
+6.  Review the default rule(s) for identifying bots from the **Bot Rules** tab. 
 
-    <Callout type="info">
+    -   **Bot Manager Standard:** By default, a browser challenge will be served when the request's user agent contains the word `bot`. 
+    -   **Bot Manager Advanced:** A new Bot Manager configuration contains the following two rules:
+        -   **Bot Score > 90:** This rule flags a request when its bot score is greater than 90. A high bot score is a good indicator that the request was submitted by a bot.
+        -   **JA3 Block placeholder:** Update the placeholder value defined within this rule with the JA3 fingerprints that will be blocked. If you do not wish to block requests by JA3 fingerprint, then you should delete this rule by clicking on it and then clicking the <Image inline src="/images/v7/icons/delete-2.png" alt="Delete" /> icon.
 
-      The **Spoofed Bots** section does not apply to the 200+ known bots defined within the `other` category.
+6.  Optional. Create rules for identifying bots from the **Bot Rules** tab. A rule is satisfied when a match is found for each of its conditions.
 
-    </Callout>
-
-7.  Create rules for identifying bots from the **Bot Rules** tab.
-
-    1.  Click **+ New Rule**. A rule is satisfied when a match is found for each of its conditions.
+    1.  Click **+ New Rule**. 
     2.  In the **Rule message** option, type a brief description for this rule.
     3.  In the **Rule Action** option, choose how this rule will be enforced.
     4.  In the **Rule ID** option, specify a number between 77,000,000 and 77,999,999.
-    5.  Modify the default condition to determine how {{ PRODUCT }} will identify requests. From the condition's **Variable** option, select the request element through which {{ PRODUCT }} will identify requests.
+    5.  Modify the default condition to determine how {{ PRODUCT }} will identify requests. 
 
-        [Learn more about variables.](#variables)
+        1.  From the condition's **Variable** option, select the [request element](#variables) through which {{ PRODUCT }} will identify requests.
 
-    6.  Certain variables (e.g., request cookies and request header) match on name and value. If you have selected this type of variable, then perform the following steps:
+        2.  Optional. Mark the **Count** option to match by the number of instances that a match is found instead of by inspecting that request element.
 
-        1.  Click **+ Add Match**.
-        2.  From the **Name** option, type the desired name.
+            [Learn more.](#count)
 
-            For example, match for requests that contain an `Authorization` header by setting this option to `Authorization`.
+        3.  Certain variables (e.g., request cookies and request header) match on name and value. If you have selected this type of variable, then perform the following steps:
 
-        3.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the name defined in the previous step.
-        4.  If you specified a regular expression in the **Name** option, then you should mark the **Regex Match** option.
-        5.  Optional. Add another match through which this variable can be satisfied by repeating the above steps.
-    7.  Optional. Mark the **Count** option to match by the number of instances that a match is found instead of by inspecting that request element.
+            1.  Under the **Matches** section, click **+ Add Match**.
+            2.  From the **Name** option, type the desired name (e.g., cookie name or the request header name).
 
-        [Learn more.](#count)
+                For example, match for requests that contain an `Authorization` header by setting this option to `Authorization`.
 
-    8.  From the **Operator** option, select an operator that determines how {{ PRODUCT }} will compare the match value to the request element identified by the above variable.
+            3.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the name defined in the previous step.
+            4.  If you specified a regular expression in the **Name** option, then you should mark the **Regex Match** option.
+            5.  Optional. Add another match through which this variable can be satisfied by repeating the above steps.
 
-        [Learn more.](#operators)
+        4.  From the **Operator** option, select an operator that determines how {{ PRODUCT }} will compare the match value to the request element identified by the above variable.
 
-    9.  In the **Match value** option, type the value that will be compared against the request element identified by the above variable.
-    10.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the value defined in the previous step.
-    11.  Optional. Click **+ Add Condition** to add another condition that must be met prior to request identification.
+            [Learn more.](#operators)
 
-8.  Optional. Add another rule by repeating step 7.
-9.  Optional. Bot Manager Advanced: Identify traffic that will bypass bot detection.
+        5.  In the **Match value** option, type either of the following values:
+
+            -   **Count - Disabled:** Type the value that will be compared against the value associated with the request element identified by the variable selected in step a.
+            -   **Count - Enabled:** Type the number of instances that a match must be found within a single request. 
+            
+                For example, if you are counting the `Set-Cookie` header, then this numerical value determines the number of times that the `Set-Cookie` header must be found within a request. 
+
+        6.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the value defined in the previous step.
+    6.  Optional. Add another condition by clicking **+ Add Condition**.
+
+        <Info>
+          A rule's action is only applied to a request when it satisfies all of the conditions defined within that rule. 
+        </Info>
+
+    7.  Optional. Add another rule by repeating the above steps.
+7.  **Bot Manager Advanced:** Optional. Identify traffic that will bypass bot detection.
 
     1.  Click the **Exceptions** tab.
     2.  Add the desired URL(s), user agent(s), JA3 fingerprint(s), JA4 fingerprint(s), and cookie(s) as [exception(s)](#exceptions).
@@ -666,7 +684,7 @@ You may create, modify, and delete Bot Manager configurations.
 
         </Callout>
 
-10.  Click **Save**.
+8.  Click **Save**.
 
 **To modify a Bot Manager configuration**
 1.  Navigate to the **Bot Manager** page.

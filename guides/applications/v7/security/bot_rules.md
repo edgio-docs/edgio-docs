@@ -666,10 +666,14 @@ You may create, modify, and delete Bot Manager configurations.
                 For example, if you are counting the `Set-Cookie` header, then this numerical value determines the number of times that the `Set-Cookie` header must be found within a request. 
 
         6.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the value defined in the previous step.
-    6.  Optional. Click **+ Add Condition** to add another condition that must be met prior to request identification.
+    6.  Optional. Add another condition by clicking **+ Add Condition**.
 
-7.  Optional. Add another rule by repeating the previous step.
-8.  **Bot Manager Advanced:** Optional. Identify traffic that will bypass bot detection.
+        <Info>
+          A rule's action is only applied to a request when it satisfies all of the conditions defined within that rule. 
+        </Info>
+
+    7.  Optional. Add another rule by repeating the above steps.
+7.  **Bot Manager Advanced:** Optional. Identify traffic that will bypass bot detection.
 
     1.  Click the **Exceptions** tab.
     2.  Add the desired URL(s), user agent(s), JA3 fingerprint(s), JA4 fingerprint(s), and cookie(s) as [exception(s)](#exceptions).
@@ -680,7 +684,7 @@ You may create, modify, and delete Bot Manager configurations.
 
         </Callout>
 
-9.  Click **Save**.
+8.  Click **Save**.
 
 **To modify a Bot Manager configuration**
 1.  Navigate to the **Bot Manager** page.

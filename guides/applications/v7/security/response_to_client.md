@@ -16,8 +16,8 @@ The user experience for each type of enforcement action is described below.
 
     **Default security response header name/value:** `X-EC-Security-Audit: 403`
 
--   **Browser Challenge:** Our service serves a browser challenege whenever a client submits a request that matches the traffic identification critieria defined within your Security Application and bot rule configuration. The status code for this browser challenge is defined within your Bot Manager configuration. If a client is unable to solve a request, then the client will receive another browser challenge.  
--   **Custom Response:** {{ PRODUCT }} returns a custom response when a request violates your security policy, exceeds a rate limit, or is identified as bot traffic. Define this custom response within a Security Application configuration or a Bot Manager configuration. This custom response defines the response headers, body, and status code that will be sent to the user.
--   **Drop Request:** Our service sends a `503 Service Unavailable` response with a `Retry-After` header to rate limited requests.
--   **Redirect (HTTP 302):** Our service redirects requests that exceed a rate limit or that are identified as bot traffic to a predefined URL. Our service returns a `302 Found` response that instructs clients to request the resource at the URL defined within your redirect configuration.
+-   **Browser Challenge:** Bot Manager. Our service serves a browser challenge whenever a client submits a request that matches the traffic identification critieria defined within your Security Application and bot rule configuration. The status code for this browser challenge is defined within your Bot Manager configuration. If a client is unable to solve a request, then the client will receive another browser challenge.  
+-   **Custom Response:** {{ PRODUCT }} returns a custom response when a request violates your security policy, exceeds a rate limit, or is identified as bot traffic. Define the response headers, body, and status code that will be sent to the user within a Security Application configuration or a Bot Manager configuration. 
+-   **Drop Request:** Rate rules only. Our service sends a `503 Service Unavailable` response with a `Retry-After` header.
+-   **Redirect:** Our service returns a `302 Found` response that instructs clients to request the resource at the URL defined within your redirect configuration.
 -   **Silent Close:** Our service drops the request without providing a response to the client.

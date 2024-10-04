@@ -9,7 +9,7 @@ Purge content through the [clear-cache endpoint](#clear-cache).
 Authenticate API requests by passing a deploy token throgh the `x-api-key` header.
 
 **To create a deploy token**
-1.  From the {{ PORTAL_LINK }}, select the desired private or team space.
+1.  From the {{ PORTAL_LINK }}, select the desired private space or organization.
 2.  Select the desired property.
 3.  From the left-hand pane, select **Settings**.
 4.  From the **Deploy Tokens** section, click **Create new Deploy Token**.
@@ -26,7 +26,7 @@ Purges entries from the cache for a specific environment. You can purge specific
 
 The following request headers are required:
 
-- `x-api-key`: A site deploy token
+- `x-api-key`: A property's deploy token
 - `content-type`: `"application/json"`
 
 #### Body {/*body*/}
@@ -36,8 +36,8 @@ Note that only one of the optional arguments can be passed at a time, for exampl
 
 ```json
 {
-  "team": "the team name",
-  "site": "the site name",
+  "team": "the organization name",
+  "site": "the property name",
   "environment": "the environment name",
   "paths": ["Optional. An array of paths to clear. Use * as a wildcard."],
   "surrogateKeys": ["Optional. An array of surrogate keys to clear"],
@@ -51,8 +51,8 @@ Note that only one of the optional arguments can be passed at a time, for exampl
 const fetch = require('node-fetch')
 
 const deployToken = '*****'
-const team = 'my-team'
-const site = 'my-site'
+const team = 'my-organization'
+const site = 'my-property'
 const environment = 'production'
 const paths = ['/some/path']
 

@@ -347,119 +347,117 @@ A condition determines how requests will be identified through variables, operat
 
 ##### Variables {/*variables*/}
 
-A variable identifies the request element that {{ PRODUCT }} {{ PRODUCT_SECURITY }} will analyze. We support the following request elements:
+A variable identifies the request element that {{ PRODUCT }} {{ PRODUCT_SECURITY }} will analyze. 
 
-<a id="asn" />
+**Key information:**
 
--   **ASN:** Identifies requests by the Autonomous System Number (ASN) associated with the client's IP address.
+-   <a id="count" />All variables support the ability to match on the number of times that a request element is found within the request. Set up a variable to match on the number of instances instead of inspecting the element for a specific value or regular expression pattern by marking the **Count** option.
+-   You may define zero or more keys when setting up variables that match on key-value pairs. {{ PRODUCT }} {{ PRODUCT_SECURITY }} must find at least one of the specified keys in the request before that variable will be satisfied. 
 
-    <Callout type="tip">
+    For example, if you set up a request header variable to match for `Authorization` and `Content-Type`, then requests that contain either or both of those headers will satisfy that variable.
 
-      Specify a regular expression to match for multiple ASNs.
+-   We support the following request elements:
+    -   [ASN](#asn)
+    -   [Bot score](#bot-score)
+    -   [Country](#country)
+    -   [IP address](#ip-address)
+    -   [JA3](#ja3)
+    -   [JA4](#ja4)
+    -   [Request cookies](#request-cookies)
+    -   [Request header](#request-header)
+    -   [Request method](#request-method)
+    -   [Request query](#request-query)
+    -   [Request URI](#request-uri)
+    -   [Request URL Path](#request-url-path)
 
-      **Example:**
+###### ASN {/*asn*/}
 
-      Use the following pattern to match for requests from 15133 and 14153: `15133|14153`
+Identifies requests by the Autonomous System Number (ASN) associated with the client's IP address.
+
+Specify a regular expression to match for multiple ASNs.
+
+**Example:**
+
+Use the following pattern to match for requests from 15133 and 14153: `15133|14153`
+
+###### Bot Score {/*bot-score*/}
+
+Requires Bot Manager Advanced, {{ PRODUCT }} Enterprise, or {{ PRODUCT }} Premier. Identifies requests based off a score that defines our level of confidence that it is a bot. This score is calculated by analyzing the request and its behavior. The range for this score is 0 to 100.
+
+###### Country {/*country*/}
+
+Identifies requests by the country from which the request originated. Specify the desired country using a [country code](/applications/reference/country_codes).
+
+Specify a regular expression to match for multiple country codes.
+
+**Example:**
+
+Use the following pattern to match for requests from the United States, Canada, and Mexico: `US|CA|MX`
+
+###### IP Address {/*ip-address*/}
+
+Identify requests by the requester's IP address.
+
+**Key information:** 
+
+-   Specify a comma-delimited list of the desired IP address(es) using standard IPv4/IPv6 and CIDR notation.
+-   Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., `11.22.33.0/22`).
+-   Do not specify more than 1,000 IP addresses or IP blocks.
+-   **Example:** `192.0.2.20,203.0.113.0/24,2001:DB8::/32`
+
+###### JA3 {/*ja3*/}
+
+Requires Bot Manager Advanced or {{ PRODUCT }} Premier. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic as a specific bot across various IP addresses and ports.
+
+###### JA4 {/*ja4*/}
+
+Requires {{ PRODUCT }} Premier. Identifies requests by the [JA4 fingerprint](https://github.com/FoxIO-LLC/ja4/blob/main/technical_details/JA4.md) assigned to the request. This method of traffic classification is less prone to evasion techniques than JA3.
+
+###### Request Cookies {/*request-cookies*/}
+
+Match against all or specific cookies.
+
+-   **All:** Do not specify the desired cookie within this variable. Specify the desired cookie value or pattern within the **Match value** option.
+-   **Specific Cookies:** Define the name of the desired cookie within this variable. Specify the desired cookie value or pattern within the **Match value** option.
+
+    <Callout type="info">
+
+      Setting up a cookie variable also allows you to define whether {{ PRODUCT }} {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against cookies. Use a negative match to find requests whose payload does not contain the specified cookie.
 
     </Callout>
 
-    <a id="bot-score" />
+###### Request Header {/*request-header*/}
 
--   **Bot score:** Requires Bot Manager Advanced, {{ PRODUCT }} Enterprise, or {{ PRODUCT }} Premier. Identifies requests based off a score that defines our level of confidence that it is a bot. This score is calculated by analyzing the request and its behavior. The range for this score is 0 to 100.
+Match against all or specific request headers.
 
-    <a id="country" />
+-   **All:** Do not specify the desired request header within this variable and specify the desired header value or pattern within the **Match value** option.
+-   **Specific Request Headers:** Define the name of the desired request header within this variable and specify the desired header value or pattern within the **Match value** option.
 
--   **Country:** Identifies requests by the country from which the request originated. Specify the desired country using a [country code](/applications/reference/country_codes).
+    <Callout type="info">
 
-    <Callout type="tip">
-
-      Specify a regular expression to match for multiple country codes.
-
-      **Example:**
-
-      Use the following pattern to match for requests from the United States, Canada, and Mexico: `US|CA|MX`
+      Setting up a request header variable also allows you to define whether {{ PRODUCT }} {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against request headers. Use a negative match to find requests whose payload does not contain the specified request header.
 
     </Callout>
 
-    <a id="ip-address" />
+###### Request Method {/*request-method*/}
 
--   **IP address:** Identify requests by the requester's IP address.
+Match against request method (e.g., `GET` and `POST`).
 
-    -   Specify a comma-delimited list of the desired IP address(es) using standard IPv4/IPv6 and CIDR notation.
-    -   Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., 11.22.33.0/22).
-    -   Do not specify more than 1,000 IP addresses or IP blocks.
+###### Request Query {/*request-query-string*/}
 
-    **Example:** `192.0.2.20,203.0.113.0/24,2001:DB8::/32`
+Match against the request's query string. Specify the desired value or pattern within the **Match value** option.
 
-    <a id="ja3" />
+###### Request URI {/*request-uri*/}
 
--   **JA3:** Requires Bot Manager Advanced or {{ PRODUCT }} Premier. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic as a specific bot across various IP addresses and ports.
+Match against the request's URL path and query string. Define a URL path that starts directly after the hostname. Exclude the protocol and hostname when defining this property.
 
-    <a id="ja4" />
+**Sample values:** `/marketing?id=123456` and `/resources/images`
 
--   **JA4:** Requires {{ PRODUCT }} Premier. Identifies requests by the [JA4 fingerprint](https://github.com/FoxIO-LLC/ja4/blob/main/technical_details/JA4.md) assigned to the request. This method of traffic classification is less prone to evasion techniques than JA3.
+###### Request URL Path {/*request-url-path*/}
 
-    <a id="request-cookies" />
+Match against the request's URL path. Define a URL path that starts directly after the hostname. Exclude the protocol, hostname, and query string when defining this property.
 
--   **Request cookies:** Match against all or specific cookies.
-
-    -   **All:** Do not specify the desired cookie within this variable. Specify the desired cookie value or pattern within the **Match value** option.
-    -   **Specific Cookies:** Define the name of the desired cookie within this variable. Specify the desired cookie value or pattern within the **Match value** option.
-
-        <Callout type="info">
-
-          Setting up a cookie variable also allows you to define whether {{ PRODUCT }} {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against cookies. Use a negative match to find requests whose payload does not
-          contain the specified cookie.
-
-        </Callout>
-
-    <a id="request-header" />
-
--   **Request header:** Match against all or specific request headers.
-
-    -   **All:** Do not specify the desired request header within this variable and specify the desired header value or pattern within the **Match value** option.
-    -   **Specific Request Headers:** Define the name of the desired request header within this variable and specify the desired header value or pattern within the **Match value** option.
-
-        <Callout type="info">
-
-          Setting up a request header variable also allows you to define whether {{ PRODUCT }} {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against request headers. Use a negative match to find requests whose
-          payload does not contain the specified request header.
-
-        </Callout>
-
-    <a id="request-method" />
-
--   **Request method:** Match against request method (e.g., `GET` and `POST`).
-
-    <a id="request-query-string" />
-
--   **Request query:** Match against the request's query string. Specify the desired value or pattern within the **Match value** option.
-
-    <a id="request-uri" />
-
--   **Request URI:** Match against the request's URL path and query string. Define a URL path that starts directly after the hostname. Exclude the protocol and hostname when defining this property.
-
-    **Sample values:** `/marketing?id=123456` and `/resources/images`
-
-    <a id="request-url-path" />
-
--   **Request URL path:** Match against the request's URL path. Define a URL path that starts directly after the hostname. Exclude the protocol, hostname, and query string when defining this property.
-
-    **Sample values:** `/marketing` and `/resources/images`
-
-    <a id="count" />
-
-<Callout type="info">
-
-  All variables support the ability to match on the number of times that a request element is found within the request. Set up a variable to match on the number of instances instead of inspecting the element for a specific value or regular expression pattern by marking the **Count** option.
-
-</Callout>
-
-<Callout type="info">
-
-  You may define zero or more keys when setting up variables that match on key-value pairs. {{ PRODUCT }} {{ PRODUCT_SECURITY }} must find at least one of the specified keys in the request before that variable will be satisfied. For example, if you set up a request header variable to match for `Authorization` and `Content-Type`, then requests that contain either or both of those headers will satisfy that variable.
-
-</Callout>
+**Sample values:** `/marketing` and `/resources/images`
 
 ##### Operators {/*operators*/}
 

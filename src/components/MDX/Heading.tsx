@@ -43,6 +43,12 @@ export const H3 = ({className, ...props}: HeadingProps) => (
 export const H4 = ({className, ...props}: HeadingProps) => (
   <Heading as="h4" className={cn(className, 'article-heading')} {...props} />
 );
+export const H5 = ({className, ...props}: HeadingProps) => (
+  <Heading as="h5" className={cn(className, 'article-heading')} {...props} />
+);
+export const H6 = ({className, ...props}: HeadingProps) => (
+  <Heading as="h6" className={cn(className, 'article-heading')} {...props} />
+);
 
 export interface HeadingProps {
   className?: string;

@@ -105,7 +105,7 @@ The client's response to the browser challenge determines what happens next.
 
     For example, applying browser challenges to API traffic will disrupt your API workflow.
 
--   If you are using Bot Manager Advanced, you may customize the difficulty of the browser challenge by setting the **Browser challenge level** option to `Difficulty-based` and then selecting the desired difficulty level. 
+-   <a id="difficulty-based" />If you are using Bot Manager Advanced, you may customize the difficulty of the browser challenge by setting the **Browser challenge level** option to `Difficulty-based` and then selecting the desired difficulty level. 
 
     -   Choose a difficulty level from 1 to 20. {{ PRODUCT }} serves our standard browser challenge when it is  set it to `0`.
     -   Smaller levels are easier to solve, while larger levels introduce latency.
@@ -541,13 +541,23 @@ You may create, modify, and delete Bot Manager configurations.
 3.  <a id="create-name" />In the **Name** option, type the unique name by which this Bot Manager configuration will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application Manager configuration.
 4.  Set up the desired enforcement action(s).
 
-    <Callout type="info">
+    ![Enforcement actions](/images/v7/security/bot_manager_configuration_actions.png?width=450)
 
-      Bot Manager Standard only supports browser challenges. Once you have defined a browser challenge, skip to step 7.
+    -   **Bot Manager Standard:** This version only supports browser challenges. Review and revise your browser challenge configuration as needed and then skip to step 7.
+    -   **Bot Manager Advanced:** This version supports all enforcement actions. 
 
-    </Callout>
+        <Info>
+          The behavior for the alert, block, and silent close actions cannot be configured. 
+        </Info>
 
-    -   Perform the following steps to set up a browser challenge:
+        <Info>
+          Unlike other enforcement actions, you must configure the reCAPTCHA and redirect actions before they will be available for selection as enforcement actions.
+        </Info>
+
+
+    **Browser Challenge** 
+
+    The default configuration is suitable for basic bot mitigation. Perform the following steps to customize this enforcement action:
 
         1.  From the **HTTP status code** option, determine the HTTP status code for the response provided to clients that are being served the browser challenge.
 
@@ -559,46 +569,43 @@ You may create, modify, and delete Bot Manager configurations.
 
         2.  From the **Valid for (in seconds)** option, type the number of seconds for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge to be solved. Specify a value between 1 and 1,000,000 seconds.
         3.  Serve a custom browser challenge by enabling the **Custom Browser Challenge Page** option and then setting the **Browser Challenge Page Template** option to the desired payload.
+        4.  **Bot Manager Advanced Only:** Increase the [difficulty of this JavaScript-based challenge](#difficulty-based) by setting the **Browser challenge level** option to `Difficulty-based` and then selecting the desired difficulty from the **Browser challenge difficulty** option. 
 
-    -   **Bot Manager Advanced:** Set up a browser challenge (see above), custom response, or redirect that can be applied to known bots, spoofed bots, and bots detected through rules.
+    **Custom Response** 
+
+    Perform the following steps:
+
+    1.  From the **Actions** section, select **Custom Response**.
+    2.  In the **Response Body** option, specify the body of the response that will be sent to clients.
+    3.  In the **HTTP status code** option, set the HTTP status code for the response that will be sent to clients.
+    4.  In the **Response Headers** option, define each desired [custom response header](#custom-response) on a separate line.
+
+        **Example:** `MyCustomHeader: True`
+
+    **reCAPTCHA** 
+
+    Perform the following steps to set up a reCAPTCHA:
+
+    1.  Set the **Rule Action** option to the enforcement action that will be applied when a client's reCAPTCHA score falls below an acceptable level.
+    2.  In the **Action Status** option, set the HTTP status code for the response provided to clients that are being served the reCAPTCHA.
 
         <Callout type="info">
 
-          Unlike other actions, alert actions do not require configuration before they can be applied to bot traffic.
+          Setting this option to certain status codes (e.g., `204`) may prevent clients from properly displaying your site.
 
         </Callout>
 
-        -   **Block:** From the **Actions** section, select **Block** and then toggle it to the on position.
+    3.  In the **Valid for (in seconds)** option, type the number of seconds for which our CDN will serve content to a client with an acceptable reCAPTCHA score without reassessment. Specify a value between 1 and 1,000,000 seconds.
 
-        -   **Custom Response:** Perform the following steps:
+    <Callout type="important">
 
-            1.  From the **Actions** section, select **Custom Response**.
-            2.  From the **Response Body** option, specify the body of the response that will be sent to clients.
-            3.  From the **HTTP status code** option, determine the HTTP status code for the response that will be sent to clients.
-            4.  From the **Response Headers** option, define each desired [custom response header](#custom-response) on a separate line.
+      You must enable reCAPTCHA within a Security Application configuration and provide your Google reCAPTCHA site and secret keys.
 
-                **Example:** `MyCustomHeader: True`
+    </Callout>
 
-        -   **reCAPTCHA:** Perform the following steps to set up a reCAPTCHA:
+    **Redirect** 
 
-            1.  Set the **Rule Action** option to the enforcement action that will be applied when a client's reCAPTCHA score falls below an acceptable level.
-            2.  From the **Action Status** option, determine the HTTP status code for the response provided to clients that are being served the reCAPTCHA.
-
-                <Callout type="info">
-
-                  Setting this option to certain status codes (e.g., `204`) may prevent clients from properly displaying your site.
-
-                </Callout>
-
-            3.  From the **Valid for (in seconds)** option, type the number of seconds for which our CDN will serve content to a client with an acceptable reCAPTCHA score without reassessment. Specify a value between 1 and 1,000,000 seconds.
-
-            <Callout type="important">
-
-              You must enable reCAPTCHA within a Security Application configuration and provide your Google reCAPTCHA site and secret keys.
-
-            </Callout>
-
-        -   **Redirect:** Set the **URL** option to the full URL to which requests will be redirected.
+    Set the **URL** option to the full URL to which requests will be redirected.
 
 5.  Bot Manager Advanced: Perform the following steps to automatically detect known bots:
 

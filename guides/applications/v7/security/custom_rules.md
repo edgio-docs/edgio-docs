@@ -137,7 +137,7 @@ Match against all or specific key-value pair(s) in the request body for a URL-en
 
     <Callout type="info">
 
-      Setting up a request body parsed variable also allows you to define whether {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against key names. Use a negative match to find requests whose payload does not contain the specified key.
+      Setting up a request body parsed variable also allows you to define whether {{ PRODUCT }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against key names. Use a negative match to find requests whose payload does not contain the specified key.
 
     </Callout>
 
@@ -155,7 +155,7 @@ Match against all or specific key-value pair(s) in the request body for a URL-en
 
 **Example:**
 
-Match against the following request body by setting the the **Match value** option to *blue*. Require that this value be assigned to the `sky` key by also setting the request body parsed variable to `sky`.
+Match against the following request body by setting the the **Match value** option to `blue`. Require that this value be assigned to the `sky` key by also setting the request body parsed variable to `sky`.
 
 ```
 {
@@ -320,8 +320,8 @@ You may create, modify, and delete custom rule sets.
     3.  From the **Operator** option, select an [operator](#operators) that determines how {{ PRODUCT }} will compare the match value to the request element identified by the above variable.
     4.  In the **Match value** option, type either of the following values:
 
-        -   **Count - Disabled:** Type the value that will be compared against the value associated with the request element identified by the variable selected above.
-        -   **Count - Enabled:** Type the number of instances that a match must be found within a single request. 
+        -   **Count Option - Disabled:** Type the value that will be compared against the value associated with the request element identified by the variable selected above.
+        -   **Count Option - Enabled:** Type the number of instances that a match must be found within a single request. 
         
             For example, if you are counting the `Set-Cookie` header, then this numerical value determines the number of times that the `Set-Cookie` header must be found within a request. 
     5.  From the **Match transformations** option, select each [transformation](#match-transformations) that will be applied to the source value.

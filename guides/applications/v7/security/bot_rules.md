@@ -659,8 +659,8 @@ You may create, modify, and delete Bot Manager configurations.
 
         5.  In the **Match value** option, type either of the following values:
 
-            -   **Count - Disabled:** Type the value that will be compared against the value associated with the request element identified by the variable selected in step a.
-            -   **Count - Enabled:** Type the number of instances that a match must be found within a single request. 
+            -   **Count Option - Disabled:** Type the value that will be compared against the value associated with the request element identified by the variable selected in step a.
+            -   **Count Option - Enabled:** Type the number of instances that a match must be found within a single request. 
             
                 For example, if you are counting the `Set-Cookie` header, then this numerical value determines the number of times that the `Set-Cookie` header must be found within a request. 
 

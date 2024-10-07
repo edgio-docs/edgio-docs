@@ -347,12 +347,12 @@ A condition determines how requests will be identified through variables, operat
 
 ##### Variables {/*variables*/}
 
-A variable identifies the request element that {{ PRODUCT }} {{ PRODUCT_SECURITY }} will analyze. 
+A variable identifies the request element that {{ PRODUCT }} will analyze. 
 
 **Key information:**
 
 -   <a id="count" />All variables support the ability to match on the number of times that a request element is found within the request. Set up a variable to match on the number of instances instead of inspecting the element for a specific value or regular expression pattern by marking the **Count** option.
--   You may define zero or more keys when setting up variables that match on key-value pairs. {{ PRODUCT }} {{ PRODUCT_SECURITY }} must find at least one of the specified keys in the request before that variable will be satisfied. 
+-   You may define zero or more keys when setting up variables that match on key-value pairs. {{ PRODUCT }} must find at least one of the specified keys in the request before that variable will be satisfied. 
 
     For example, if you set up a request header variable to match for `Authorization` and `Content-Type`, then requests that contain either or both of those headers will satisfy that variable.
 
@@ -417,12 +417,12 @@ Requires {{ PRODUCT }} Premier. Identifies requests by the [JA4 fingerprint](htt
 
 Match against all or specific cookies.
 
--   **All:** Do not specify the desired cookie within this variable. Specify the desired cookie value or pattern within the **Match value** option.
+-   **All:** Match against all cookies by not specifying a cookie name within this variable. Specify the desired cookie value or pattern within the **Match value** option.
 -   **Specific Cookies:** Define the name of the desired cookie within this variable. Specify the desired cookie value or pattern within the **Match value** option.
 
     <Callout type="info">
 
-      Setting up a cookie variable also allows you to define whether {{ PRODUCT }} {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against cookies. Use a negative match to find requests whose payload does not contain the specified cookie.
+      Setting up a cookie variable also allows you to define whether {{ PRODUCT }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against cookies. Use a negative match to find requests that do not contain the specified cookie.
 
     </Callout>
 
@@ -430,12 +430,12 @@ Match against all or specific cookies.
 
 Match against all or specific request headers.
 
--   **All:** Do not specify the desired request header within this variable and specify the desired header value or pattern within the **Match value** option.
+-   **All:** Match against all request headers by not specifying a request header name within this variable. Specify the desired header value or pattern within the **Match value** option.
 -   **Specific Request Headers:** Define the name of the desired request header within this variable and specify the desired header value or pattern within the **Match value** option.
 
     <Callout type="info">
 
-      Setting up a request header variable also allows you to define whether {{ PRODUCT }} {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against request headers. Use a negative match to find requests whose payload does not contain the specified request header.
+      Setting up a request header variable also allows you to define whether {{ PRODUCT }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against request headers. Use a negative match to find requests that do not contain the specified request header.
 
     </Callout>
 
@@ -461,7 +461,8 @@ Match against the request's URL path. Define a URL path that starts directly aft
 
 ##### Operators {/*operators*/}
 
-An operator determines how {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare a match value against the request element identified by a variable.
+An operator determines how {{ PRODUCT }} will compare a match value against the request element identified by a variable.
+
 -   **Begins with:** A match is found when the request element starts with the specified match value.
 -   **Contains:** A match is found when the request element contains the specified match value.
 -   **Ends with:**  A match is found when the request element ends with the specified match value.
@@ -484,8 +485,9 @@ An operator determines how {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare a 
 
 ##### Match Value {/*match-value*/}
 
-{{ PRODUCT }} {{ PRODUCT_SECURITY }} uses a match value to identify threats.
--   **Default:** By default, {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares a match value against the request element identified by a variable (e.g., URL path or a request header's value).
+{{ PRODUCT }} uses a match value to identify threats.
+
+-   **Default:** By default, {{ PRODUCT }} compares a match value against the request element identified by a variable (e.g., URL path or a request header's value).
 -   **Count:** Enable the **Count** option on a variable to compare this value against the number of times that the request element identified by a variable (e.g., a specific cookie or request header) occurs within the request.
 
     **Example:**
@@ -498,9 +500,9 @@ An operator determines how {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare a 
     ```
 
     We will now examine how the **Count** option affects comparisons for this configuration.
-    -   **Disabled:** If the **Count** option has been disabled on the variable, then {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare the value of the
+    -   **Disabled:** If the **Count** option has been disabled on the variable, then {{ PRODUCT }} will compare the value of the
         `Authentication` request header to `1`.
-    -   **Enabled:** If the **Count** option has been enabled on the variable, then {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare the number of times that the `Authentication` request header occurred in the request to *1*.
+    -   **Enabled:** If the **Count** option has been enabled on the variable, then {{ PRODUCT }} will compare the number of times that the `Authentication` request header occurred in the request to *1*.
 
     <Callout type="info">
 
@@ -639,10 +641,7 @@ You may create, modify, and delete Bot Manager configurations.
 
         1.  From the condition's **Variable** option, select the [request element](#variables) through which {{ PRODUCT }} will identify requests.
 
-        2.  Optional. Mark the **Count** option to match by the number of instances that a match is found instead of by inspecting that request element.
-
-            [Learn more.](#count)
-
+        2.  Optional. Mark the **Count** option to match by the [number of instances that a match is found](#count) instead of by inspecting that request element.
         3.  Certain variables (e.g., request cookies and request header) match on name and value. If you have selected this type of variable, then perform the following steps:
 
             1.  Under the **Matches** section, click **+ Add Match**.

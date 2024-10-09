@@ -30,12 +30,12 @@ Generating a report consists of performing the following steps:
     -   **Edge Control:** Use this data source to analyze how recent CDN deployments affects content delivery and performance.
     -   **Downsampled Access Logs:** Use this data source to analyze CDN traffic, downsampled to 0.1%, for up to the last 7 days.
     -   **Rate Limiting Alerts:** Use this data source to view traffic that exceeded your rate limit(s), downsampled to 10%, for up to the last 30 days.
-    -   **WAF Alerts:** Use this data source to view access rule, custom rule, and managed rule violations of your Security App configurations for up to the last 30 days.
+    -   **WAF Alerts:** Use this data source to view access rule, custom rule, and managed rule violations of your Security Application configurations for up to the last 30 days.
     -   **RUM Logs:** Use this data source to view Core Web Vitals (CWV) data that were tracked through our Real User Monitoring (RUM) library. This log data is available for up to the last 7 days.
     -   **Edge Function Logs:** Use this data source to view log data for edge functions that were computed within the last 7 days.
     -   **Internal Logs (FE):** Reserved for internal use.
     -   **Cloud Functions Logs:** Use this data source to view Cloud Functions log data for up to the last 24 hours.
-    -   **Security Logs:** Use this data source to view access rule, rate limiting, bot manager, custom rule, and managed rule violations of your Security App configurations for up to the last 7 days.
+    -   **Security Logs:** Use this data source to view access rule, rate limiting, bot manager, custom rule, and managed rule violations of your Security Application configurations for up to the last 7 days.
 <!--
     -   **NEL:** Use this data source to view Network Error Logging (NEL) data for up to the last 7 days. Use this data to discover issues that your clients encounter when accessing your site. 
 -->
@@ -412,7 +412,7 @@ Use the Cloud Functions Logs data source for historical and near real-time analy
 
 ## Security Logs {/*security-logs*/}
 
-Use the Security Logs data source for historical and near real-time analysis for access rule, rate limiting, bot manager, custom rule, and managed rule violations of your Security App configurations.
+Use the Security Logs data source for historical and near real-time analysis for access rule, rate limiting, bot manager, custom rule, and managed rule violations of your Security Application configurations.
 
 View definitions for Security log fields:
 

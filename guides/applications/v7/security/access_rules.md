@@ -276,7 +276,7 @@ Define the set of valid media types (aka content types or MIME types) through th
     -   **Present:** If a request includes the `Content-Type` header, then {{ PRODUCT_SECURITY }} will compare its value against the list of allowed values.
 
         -   **Match Found:** If a request's `Content-Type` header matches a media type defined by this option, then it will proceed to the next security check within this threat assessment.
-        -   **Match Not Found:** If a request's `Content-Type` header does not match a media type defined by this option, then {{ PRODUCT_SECURITY }} will consider this a violation of this access rule and enforce the security policy (e.g., alert or block) defined within your [Security App configuration](/applications/security/security_applications#enforcement-mode).
+        -   **Match Not Found:** If a request's `Content-Type` header does not match a media type defined by this option, then {{ PRODUCT_SECURITY }} will consider this a violation of this access rule and enforce the security policy (e.g., alert or block) defined within your [Security Application configuration](/applications/security/security_applications#enforcement-mode).
 -   Add a media type by typing it and then pressing `ENTER`.
 -   Media types are case-insensitive.
 
@@ -317,7 +317,7 @@ Define the set of invalid file extensions through the **Extension Blacklist** op
 
 ### File Size {/*file-size*/}
 
-Define the maximum file size, in bytes, for a `POST` request via the **Single File Upload Limit** option
+Define the maximum file size, in bytes, for a `POST` request through the **Single File Upload Limit** option
 
 <Callout type="tip">
 
@@ -325,6 +325,7 @@ The recommended maximum value is 6,291,456 bytes.
 
 </Callout>
 
+<!--
 <Callout type="info">
 
 Define the maximum file size for a request that is part of a multipart message through a managed rule.
@@ -332,11 +333,10 @@ Define the maximum file size for a request that is part of a multipart message t
 [Learn more](/applications/security/managed_rules#file-size-and-query-string-limits-advanced).
 
 </Callout>
-
-
+-->
 ### Request Headers {/*request-headers*/}
 
-Define the set of invalid request headers via the **Header Blacklist** option.
+Define the set of invalid request headers through the **Header Blacklist** option.
 
 **Key information:**
 
@@ -352,7 +352,7 @@ You may create, modify, and delete access rules.
 
 -   Administer access rules from the **Access Rules**
     page.
--   Apply an access rule to production traffic by adding it to a [Security App configuration](/applications/security/security_applications) and then determining how it will be enforced. Multiple Security App configurations may use the same access rule. Leverage this capability to tailor security screening by application or traffic profile.
+-   Apply an access rule to production traffic by adding it to a [Security Application configuration](/applications/security/security_applications) and then determining how it will be enforced. Multiple Security Application configurations may use the same access rule. Leverage this capability to tailor security screening by application or traffic profile.
 -   It may take up to 2 minutes for an updated access rule to be applied across our entire network.
 
 **To create an access rule**
@@ -360,7 +360,7 @@ You may create, modify, and delete access rules.
 1.  Navigate to the **Access Rules** page.
     {{ SECURITY_NAV }} **Access Rules**.
 2.  Click **+ New Access Ruleset**.
-3.  <a id="create-name" />In the **Name of Rule** option, type the unique name by which this access rule will be identified. This name should be sufficiently descriptive to identify it when setting up a Security App configuration.
+3.  <a id="create-name" />In the **Name of Rule** option, type the unique name by which this access rule will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
 4.  Define the desired whitelists, accesslists, and blacklists.
 
     1.  From the **Add an Access Control** option, select the [desired category](#basic-access-controls) (IP, Country, Referrer, etc.).
@@ -378,7 +378,7 @@ You may create, modify, and delete access rules.
 5.  Define which HTTP methods and media types are allowed and which file extensions and request headers are disallowed.
 
     1.  If the **Advanced Settings** section is collapsed, click on it to expand it.
-    2.  From the **Allowed HTTP Methods** section, verify that only the [HTTP methods](#http-methods) that should be allowed are marked. If the desired HTTP method is not listed, then you may manually define it in the **Other HTTP Methods** option by typing it and then pressing 'ENTER'.
+    2.  From the **Allowed HTTP Methods** section, verify that only the [HTTP methods](#http-methods) that should be allowed are marked. If the desired HTTP method is not listed, then you may manually define it in the **Other HTTP Methods** option by typing it and then pressing `ENTER`.
 
         <Callout type="info">
 
@@ -435,11 +435,11 @@ You may create, modify, and delete access rules.
 
 <Callout type="important">
 
-  You cannot delete an access rule that is associated with a Security  App configuration. Either modify the Security App configuration to point to a different access rule or  delete that Security App configuration.
+  You cannot delete an access rule that is associated with a Security  App configuration. Either modify the Security Application configuration to point to a different access rule or  delete that Security Application configuration.
 
 </Callout>
 
-1.  Check your Security App configurations to verify that the desired access rule is not in use.
+1.  Check your Security Application configurations to verify that the desired access rule is not in use.
 2.  Navigate to the **Access Rules** page.
     {{ SECURITY_NAV }} **Access Rules**.
 3.  Click on the desired access rule set.

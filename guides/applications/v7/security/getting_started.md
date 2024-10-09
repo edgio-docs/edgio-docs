@@ -86,9 +86,9 @@ Create a managed rule that leverages predefined rules to detect application laye
 
 8.  Click **Save**.
 
-## Step 2: Create a Security App {/*step-2-create-a-security-app*/}
+## Step 2: Create a Security Application {/*step-2-create-a-security-app*/}
 
-A Security App configuration defines the set of traffic that will be inspected and defines the security policy that will be applied to it. Instructions on how to create a Security App configuration for all of your site's traffic is provided below.
+A Security Application configuration defines the set of traffic that will be inspected and defines the security policy that will be applied to it. Instructions on how to create a Security Application configuration for all of your site's traffic is provided below.
 
 1.  Navigate to the **Security Application Manager** page.
     {{ SECURITY_NAV }} **Application Manager**.
@@ -129,8 +129,8 @@ The Security dashboard illustrates threat detection trends and lists recent requ
 
 ### Data Gathering {/*data-gathering*/}
 
-After your Security App configuration has been implemented, time needs to pass to allow {{ PRODUCT_SECURITY }} to
-gather sufficient data from which trends may be detected. Wait a reasonable amount of time (e.g., 24 hours) after setting up a Security App configuration before performing data analysis.
+After your Security Application configuration has been implemented, time needs to pass to allow {{ PRODUCT_SECURITY }} to
+gather sufficient data from which trends may be detected. Wait a reasonable amount of time (e.g., 24 hours) after setting up a Security Application configuration before performing data analysis.
 
 ### Identify Trends {/*identify-trends*/}
 

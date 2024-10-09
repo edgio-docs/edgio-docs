@@ -36,7 +36,7 @@ Set up an API Security configuration by performing the following steps:
 
     </Callout>
 
-2.  Assign an API Security rule to a Security App configuration and define the enforcement action that will be applied to requests that contain an invalid JWT or violate the API schema(s) defined in the previous step.
+2.  Assign an API Security rule to a Security Application configuration and define the enforcement action that will be applied to requests that contain an invalid JWT or violate the API schema(s) defined in the previous step.
 
 <Callout type="tip">
 
@@ -290,7 +290,7 @@ You may create, modify, and delete API Security rulesets.
 **Key information:**
 
 -   Administer API Security rulesets from the **API Security** page.
--   Apply an API Security ruleset to production traffic by adding it to a [Security App configuration](/applications/security/security_applications) and then determining how it will be enforced. Multiple Security App configurations may use the same API Security ruleset.
+-   Apply an API Security ruleset to production traffic by adding it to a [Security Application configuration](/applications/security/security_applications) and then determining how it will be enforced. Multiple Security Application configurations may use the same API Security ruleset.
 -   An API Security rule requires at least one JWKS or API schema.
 -   It may take up to 2 minutes for an update to an API Security ruleset to be applied across our entire network.
 
@@ -299,7 +299,7 @@ You may create, modify, and delete API Security rulesets.
 1.  Navigate to the **API Security** page.
     {{ SECURITY_NAV }} **API Security**.
 2.  Click **+ Create New API Rule**.
-3.  <a id="create-name" />In the **Name of Ruleset** option, type a name for this API Security ruleset.
+3.  <a id="create-name" />In the **Name of Ruleset** option, type the unique name by which this  API Security ruleset will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
 4.  Add a JSON schema that defines the structure for a valid API payload.
     1.  In the **Name** option, type a name for this JSON schema.
     2.  Perform one of the following steps:
@@ -351,11 +351,11 @@ You may create, modify, and delete API Security rulesets.
 
 <Callout type="important">
 
-  You cannot delete an API Security ruleset that is associated with a Security App configuration. Please either modify the Security App configuration to point to a different API Security ruleset or delete that Security App configuration.
+  You cannot delete an API Security ruleset that is associated with a Security Application configuration. Please either modify the Security Application configuration to point to a different API Security ruleset or delete that Security Application configuration.
 
 </Callout>
 
-1.  Check your Security App configurations to verify that the desired API Security ruleset is not in use.
+1.  Check your Security Application configurations to verify that the desired API Security ruleset is not in use.
 2.  Navigate to the **API Security** page.
     {{ SECURITY_NAV }} **API Security**.
 3.  Click on the desired API Security ruleset.

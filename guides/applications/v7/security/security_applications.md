@@ -4,7 +4,7 @@ title: Security Application Manager
 
 The **Security Application Manager** page contains the Security Application configurations that {{ PRODUCT }} may use to [screen your traffic](/applications/security/waf#threat-detection). Traffic is screened using the first eligible Security Application configuration according to [the order in which they are listed](#order-of-precedence). 
 
-## Security Apps {/*security-apps*/}
+## Security Applications {/*security-apps*/}
 
 A Security Application configuration:
 -   [Identifies the set of traffic](#identifying-traffic-for-inspection) that will undergo security screening by hostname, a URL path, or both.

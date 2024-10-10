@@ -10,7 +10,7 @@ Use managed rules to:
 
 ## Preventing False Positives (Ignore List) {/*preventing-false-positives-ignore-list*/}
 
-The characteristics of certain cookies, headers, and query string arguments may resemble malicious traffic. This may result in {{ PRODUCT_SECURITY }} incorrectly identifying a request as a threat. Avoid this situation by identifying the cookies, headers, and query string arguments that should be ignored when {{ PRODUCT_SECURITY }} performs threat assessment.
+The characteristics of certain cookies, headers, and query string arguments may resemble malicious traffic. This may result in {{ PRODUCT }} incorrectly identifying a request as a threat. Avoid this situation by identifying the cookies, headers, and query string arguments that should be ignored when {{ PRODUCT }} performs threat assessment.
 
 **Key information:**
 
@@ -50,31 +50,9 @@ Define query string arguments limitations for valid requests.
 
 </Callout>
 
-<!-- -   **File size:** The **Multiple File Upload Limit** option defines the total file size, in bytes, for a `POST` request that is a multipart message.
-
-    <Callout type="tip">
-
-      The recommended maximum value is 6,291,456 bytes.
-
-    </Callout>
-
-    <Callout type="info">
-
-      For the purpose of this setting, file size is calculated from the body (i.e., message or payload) of `POST` requests with a `Content-Type` header that is set to `multipart/form-data`.
-
-    </Callout>
-
-    <Callout type="info">
-
-      Define the maximum file size for all other requests through an access rule.
-
-      [Learn more](/applications/security/access_rules#file-size).
-
-    </Callout>
--->
 -   **Query string value / parameters:** A variety of restrictions may be placed on either a request's query string value or parameters.
     -   The **Total Argument Length** option defines the maximum number of characters for the query string value in the request URL.
-    -   The **Max # of Arguments /Request** option defines the maximum number of parameters that a query string may contain.
+    -   The **Max # of Arguments/Request** option defines the maximum number of parameters that a query string may contain.
     -   The **Single Argument Length** option defines the maximum number of characters for any single query string parameter value in the request URL.
     -   The **Argument Name Length** option defines the maximum number of characters for any single query string parameter name in the request URL.
 -   **JSON Inspection:** Determines whether JSON payloads will be inspected.
@@ -120,7 +98,7 @@ The ERS rule set consists of a set of threat detection policies. Each threat det
 -   A threat detection policy or its rules may be disabled.
     -   View a policy's rules by clicking on the <Image inline src="/images/v7/icons/expand-section.png" alt="Expand section" /> icon from the far right column.
 
-    ![Inbound Policies - expanded](/images/v7/security/managed_rules_inbound_policies_expanded.png)
+        ![Inbound Policies - expanded](/images/v7/security/managed_rules_inbound_policies_expanded.png)
 
         <Callout type="info">
 
@@ -296,7 +274,7 @@ You may create, modify, and delete managed rules.
     4.  Review all enabled policies and rules to ensure that the legitimate traffic is not targeted by mistake.
 
 8.  {{ PRODUCT_SECURITY }} Premier only. Optional. Prevent data leakage in the response sent to the client by clicking the **Outbound Policies** tab and then enabling the desired outbound rules.
-9.  <a id="create-rule-exception" />Optional. Configure the set of rules that will be ignored for a specific set of requests. 
+9.  <a id="create-rule-exception" />Optional. Define the type of requests for which specific rules will be ignored.
     1.  Click the **Exceptions** tab.
     2.  Click **+ Add New Condition**.
     3.  From the **Parameter** option, select whether requests will be identified by argument (i.e., query string argument or request body parameter), cookie, or request header.

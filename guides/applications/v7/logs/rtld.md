@@ -35,7 +35,7 @@ Log data consists a set of log entries. Each entry describes either:
 
 -   **RTLD CDN:** A HTTP/HTTPS request that was directed to the {{ PRODUCT }} network.
 -   **RTLD WAF:** A HTTP/HTTPS request that was identified as a threat by WAF and information on why it was deemed a threat.
--   **RTLD Rate Limiting:** A HTTP/HTTPS request that exceeded a rate limit enforced by a Security App configuration.
+-   **RTLD Rate Limiting:** A HTTP/HTTPS request that exceeded a rate limit enforced by a Security Application configuration.
 -   **RTLD Bot:** A HTTP/HTTPS request that was identified as originating from a bot.
 -   **RTLD Cloud Functions:** A HTTP/HTTPS request that was processed by Cloud Functions.
 

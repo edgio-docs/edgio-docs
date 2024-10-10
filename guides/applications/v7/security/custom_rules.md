@@ -149,7 +149,7 @@ Match against all or specific key-value pair(s) in the request body for a URL-en
 
 <Callout type="info">
 
-  {{ PRODUCT }} only inspects the first 8 KB of the request body. You may [restrict the request body](/applications/security/managed_rules#file-size-and-query-string-limits-advanced) for valid requests to 8 KB (8,192 bytes) through a managed rule.
+  {{ PRODUCT }} only inspects the first 8 KB of the request body. You may [restrict the request body](/applications/security/access_rules#file-size) for valid requests to 8 KB (8,192 bytes) through an access rule.
 
 </Callout>
 
@@ -170,7 +170,7 @@ Match against a URL-encoded request body for any type of request (e.g., XML).
 
 <Callout type="info">
 
-  {{ PRODUCT }} only inspects the first 8 KB of the request body. You may [restrict the request body](/applications/security/managed_rules#file-size-and-query-string-limits-advanced) for valid requests to 8 KB (8,192 bytes) through a managed rule.
+  {{ PRODUCT }} only inspects the first 8 KB of the request body. You may [restrict the request body](/applications/security/access_rules#file-size) for valid requests to 8 KB (8,192 bytes) through an access rule.
 
 </Callout>
 

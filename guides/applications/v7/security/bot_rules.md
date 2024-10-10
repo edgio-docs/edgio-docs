@@ -710,6 +710,12 @@ You may create, modify, and delete Bot Manager configurations.
 
 **To delete a Bot Manager configuration**
 
+<Callout type="important">
+
+  You cannot delete a Bot Manager configuration that is associated with a Security Application configuration. Please either modify the Security Application configuration to point to a different Bot Manager configuration or delete that Security Application configuration.
+
+</Callout>
+
 1.  Navigate to the **Bot Manager** page.
     {{ SECURITY_NAV }} **Bot Manager**.
 2.  Click on the desired Bot Manager configuration.

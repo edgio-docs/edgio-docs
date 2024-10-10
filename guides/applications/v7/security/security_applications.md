@@ -2,11 +2,11 @@
 title: Security Application Manager
 ---
 
-The **Security Application Manager** page contains the Security App configurations that {{ PRODUCT }} may use to [screen your traffic](/applications/security/waf#threat-detection). Traffic is screened using the first eligible Security App configuration according to [the order in which they are listed](#order-of-precedence). 
+The **Security Application Manager** page contains the Security Application configurations that {{ PRODUCT }} may use to [screen your traffic](/applications/security/waf#threat-detection). Traffic is screened using the first eligible Security Application configuration according to [the order in which they are listed](#order-of-precedence). 
 
-## Security Apps {/*security-apps*/}
+## Security Applications {/*security-apps*/}
 
-A Security App configuration:
+A Security Application configuration:
 -   [Identifies the set of traffic](#identifying-traffic-for-inspection) that will undergo security screening by hostname, a URL path, or both.
 -   Determines how [threats will be detected](#threat-detection) through:
     -   **Access Rules:** An access rule identifies legitimate traffic and threats through access control lists.
@@ -29,11 +29,11 @@ A Security App configuration:
 
 ## <a id="traffic-identification" />Identifying Traffic for Inspection {/*identifying-traffic-for-inspection*/}
 
-Screen all traffic with this Security App configuration or restrict screening by hostname, URL path, or both.
+Screen all traffic with this Security Application configuration or restrict screening by hostname, URL path, or both.
 
 ### Host {/*host*/}
 
-By default, a Security App configuration applies to all hosts. However, you may restrict security screening to requests to one or more hosts. 
+By default, a Security Application configuration applies to all hosts. However, you may restrict security screening to requests to one or more hosts. 
 
 **Key information:**
 -   {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares the entire `Host` header value against the specified value.
@@ -50,7 +50,7 @@ By default, a Security App configuration applies to all hosts. However, you may 
 
 ### URL Path {/*url-path*/}
 
-By default, a Security App configuration applies to all URL paths. However, you may restrict security screening to requests to one or more URL paths. {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares the entire URL path against the specified value.
+By default, a Security Application configuration applies to all URL paths. However, you may restrict security screening to requests to one or more URL paths. {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares the entire URL path against the specified value.
 
 **Key information:**
 -   URL path comparisons start directly after the hostname.
@@ -73,8 +73,8 @@ By default, a Security App configuration applies to all URL paths. However, you 
 
 ### Match Comparison Modes {/*match-comparison-modes*/}
 
-Your Security App configuration determines how {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares a request's host or URL path against the specified value. The available modes are listed below.
--   **Default:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} will not perform a comparison. It will apply the current Security App configuration to all hosts or URL paths.
+Your Security Application configuration determines how {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares a request's host or URL path against the specified value. The available modes are listed below.
+-   **Default:** {{ PRODUCT }} {{ PRODUCT_SECURITY }} will not perform a comparison. It will apply the current Security Application configuration to all hosts or URL paths.
 -   [Exact match (multiple entries):](#exact-match-multiple-entries) Use this mode to specify each desired value.
 -   [Wildcard match:](#wildcard-match) Use this mode to specify a wildcard pattern.
 -   [Regex match:](#regex-match) Use this mode to specify a regular expression.
@@ -88,7 +88,7 @@ Your Security App configuration determines how {{ PRODUCT }} {{ PRODUCT_SECURITY
 #### Exact Match (Multiple Entries) {/*exact-match-multiple-entries*/}
 
 {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares the specified value(s) against the entire host or URL path.
-It will only apply this Security App configuration to a request when one of the specified value(s) is an exact match. This comparison is case-sensitive.
+It will only apply this Security Application configuration to a request when one of the specified value(s) is an exact match. This comparison is case-sensitive.
 
 | Sample Configuration | Matches | Does Not Match                     |
 | -------------------- | ------- | ---------------------------------- |
@@ -136,7 +136,7 @@ Requires {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ PRODUCT }} 
 
 **Example:**
 
-Setting the **URL path(s)** option to `/marketing/*` allows {{ PRODUCT }} {{ PRODUCT_SECURITY }} to apply this Security App configuration to any request whose URL path starts with `/marketing/`. 
+Setting the **URL path(s)** option to `/marketing/*` allows {{ PRODUCT }} {{ PRODUCT_SECURITY }} to apply this Security Application configuration to any request whose URL path starts with `/marketing/`. 
 
 The following sample request matches the above pattern:
 
@@ -158,7 +158,7 @@ Requires {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ PRODUCT }} 
 
 ## Threat Detection {/*threat-detection*/}
 
-Identify threats by adding the following rule(s) to your Security App configuration:
+Identify threats by adding the following rule(s) to your Security Application configuration:
 -   **Access Rules:** An [access rule](/applications/security/access_rules) identifies legitimate traffic and threats through access control lists.
 -   **API Security Ruleset:** An [API Security rule](/applications/security/api_security) identifies threats by validating the payload of `POST`, `PUT`, and `PATCH` requests against a JSON schema.
 -   **Rate Rules:** A [rate rule](/applications/security/rate_rules) defines a limit for the rate at which your content may be requested.
@@ -425,19 +425,19 @@ These custom headers may return any of the following information:
 -   **Bot Score:** Indicates the request's bot score. This score indicates our level of confidence that the request originated from a bot.
 -   **WAF Score:** Indicates the request's anomaly score. This score is determined by the number of rules that were violated and their severity.
 
-Set up origin signaling by enabling the `Origin Signal Header` section within the desired Security App configuration and then defining the custom headers that will be included with requests forwarded to an origin. 
+Set up origin signaling by enabling the `Origin Signal Header` section within the desired Security Application configuration and then defining the custom headers that will be included with requests forwarded to an origin. 
 
 ## Order of Precedence {/*order-of-precedence*/}
 
-The recommended practice is to create a Security App configuration that is tuned for each of your applications. This allows you to apply a restrictive security policy with minimal false positives. Each Security App configuration's host and URL path conditions determine the set of traffic to which it may be applied. If a request is eligible to be screened by multiple Security App configurations, then {{ PRODUCT }} {{ PRODUCT_SECURITY }} will screen it using the first eligible configuration in the list.
+The recommended practice is to create a Security Application configuration that is tuned for each of your applications. This allows you to apply a restrictive security policy with minimal false positives. Each Security Application configuration's host and URL path conditions determine the set of traffic to which it may be applied. If a request is eligible to be screened by multiple Security Application configurations, then {{ PRODUCT }} {{ PRODUCT_SECURITY }} will screen it using the first eligible configuration in the list.
 
 **Key information:**
 
--   If you plan on using multiple Security App configurations, then you should typically order them from narrowest to broadest [scope (i.e., Hostname and URL path)](#identifying-traffic-for-inspection). 
+-   If you plan on using multiple Security Application configurations, then you should typically order them from narrowest to broadest [scope (i.e., Hostname and URL path)](#identifying-traffic-for-inspection). 
 
     **Example:** Ordering your configurations as indicated below allows you to apply different security policies according to the type of request (i.e., API requests, script requests, main web site requests, and all other requests):
 
-    | Position | Security App Configuration | Hostname          | URL Path     |
+    | Position | Security Application Configuration | Hostname          | URL Path     |
     | -------- | -------------------------- | ----------------- | ------------ |
     | 1        | API Requests               | `api.example.com` | Default      |
     | 2        | Scripts                    | `www.example.com` | `/scripts/*` |
@@ -446,17 +446,17 @@ The recommended practice is to create a Security App configuration that is tuned
 
     Reordering these configurations would drastically affect how your traffic is screened. 
 
-    -   By default, a Security App configuration applies to all requests. If the `All Sites` Security App configuration were moved to the first position, then it would screen all requests and prevent your other Security App configurations from being applied to your traffic.
-    -   If you were to swap the `Scripts` Security App configuration with `Main Site`, then the `Main Site` Security App configuration would screen all requests for `www.example.com`. Your traffic would never be screened by the `Scripts` security configuration.
+    -   By default, a Security Application configuration applies to all requests. If the `All Sites` Security Application configuration were moved to the first position, then it would screen all requests and prevent your other Security Application configurations from being applied to your traffic.
+    -   If you were to swap the `Scripts` Security Application configuration with `Main Site`, then the `Main Site` Security Application configuration would screen all requests for `www.example.com`. Your traffic would never be screened by the `Scripts` security configuration.
 
--   Reorder Security App configurations by dragging the desired configuration's <Image inline src="/images/v7/icons/drag.png" /> icon to the desired position.
+-   Reorder Security Application configurations by dragging the desired configuration's <Image inline src="/images/v7/icons/drag.png" /> icon to the desired position.
 
-## Security App Administration {/*security-application-administration*/}
+## Security Application Administration {/*security-application-administration*/}
 
-You may create, modify, and delete Security App configurations.
+You may create, modify, and delete Security Application configurations.
 
 **Key information:**
--   Administer Security App configurations from the **Security App** page.
+-   Administer Security Application configurations from the **Security App** page.
 -   Identify the set of traffic (e.g., all requests or by origin) to which your security policy will be applied by balancing the need to secure as much traffic as possible with the level of restrictive measures imposed by it.
 
     <Callout type="tip">
@@ -465,41 +465,41 @@ You may create, modify, and delete Security App configurations.
 
     </Callout>
 -   Apply [access rules](/applications/security/access_rules), [API Security](/applications/security/api_security), [rate rules](/applications/security/rate_rules), [bot manager configurations](/applications/security/bot_rules), [custom
-    rules](/applications/security/custom_rules), and [managed rules](/applications/security/managed_rules) to production traffic by adding it to a Security App configuration and then determining how it will be enforced.
+    rules](/applications/security/custom_rules), and [managed rules](/applications/security/managed_rules) to production traffic by adding it to a Security Application configuration and then determining how it will be enforced.
 
     <Callout type="info">
 
-      Rules are administered independently from Security App configurations. This allows you to use the same rule within multiple Security App configurations. Leverage this capability to tailor security screening by application or traffic
+      Rules are administered independently from Security Application configurations. This allows you to use the same rule within multiple Security Application configurations. Leverage this capability to tailor security screening by application or traffic
       profile.
 
     </Callout>
 -   Use [audit mode](#threat-detection-mode) to verify that new access rules, API Security rules, custom rules, and managed rules will not generate substantial false positives.
--   It may take up to 2 minutes for an updated Security App configuration to be applied across our entire network.
+-   It may take up to 2 minutes for an updated Security Application configuration to be applied across our entire network.
 
-**To create a Security App configuration**
+**To create a Security Application configuration**
 1.  Navigate to the **Security Application Manager** page.
     {{ SECURITY_NAV }} **Application Manager**.
 2.  Click **+ Create New**.
 
     ![Create Security Application](/images/v7/security/security-application-create.png?width=750)
 
-3.  In the **Security Application Name** option, type the unique name by which this Security App configuration will be identified. After which, click **Continue**.
+3.  In the **Security Application Name** option, type the unique name by which this Security Application configuration will be identified. After which, click **Continue**.
 4.  Optional. From the **Hostname and URL Paths** section, identify the set of traffic to which this security policy will be applied.
 
     Restrict this security policy by hostname, URL path, or both by configuring the **Hostname** and **URL path(s)** options, respectively. Before you can specify a hostname or URL path, you must first select one of the following modes:
-    -   **Default:** Use this mode to apply this Security App configuration regardless of the request's host or URL path.
-    -   [Exact match (multiple entries):](#exact-match-multiple-entries) Use this mode to apply this Security App configuration to the specified hostname(s) or URL path(s).
+    -   **Default:** Use this mode to apply this Security Application configuration regardless of the request's host or URL path.
+    -   [Exact match (multiple entries):](#exact-match-multiple-entries) Use this mode to apply this Security Application configuration to the specified hostname(s) or URL path(s).
 
-    -   [Wildcard match:](#wildcard-match) Use this mode to apply this Security App configuration to all hostnames or URL paths that satisfy the specified wildcard pattern.
+    -   [Wildcard match:](#wildcard-match) Use this mode to apply this Security Application configuration to all hostnames or URL paths that satisfy the specified wildcard pattern.
 
-    -   [Regex match:](#regex-match) Use this mode to apply this Security App configuration to all hostnames or URL paths that satisfy the specified regular expression pattern.
+    -   [Regex match:](#regex-match) Use this mode to apply this Security Application configuration to all hostnames or URL paths that satisfy the specified regular expression pattern.
 
     <Callout type="info">
 
-      Enable the **Negative match** option to configure a Security App configuration to look for requests that do not match the specified value or pattern.
+      Enable the **Negative match** option to configure a Security Application configuration to look for requests that do not match the specified value or pattern.
 
     </Callout>
-5.  Optional. Set up an access control policy by assigning an [access rule](/applications/security/access_rules) to the Security App configuration.
+5.  Optional. Set up an access control policy by assigning an [access rule](/applications/security/access_rules) to the Security Application configuration.
 
     1.  Click **Access Rule**. An **Access Rule** section will appear.
     2.  If the desired access rule does not currently exist, then you should create it now by clicking on `+ Create New Access Rule`. 
@@ -515,7 +515,7 @@ You may create, modify, and delete Security App configurations.
 
     4.  Optional. Set up auditing for threat detection by selecting the desired access rule from the **Audit Access Rule** option.
 
-6.  Optional. Define how to secure API requests by assigning an [API Security ruleset](/applications/security/api_security) to the Security App configuration.
+6.  Optional. Define how to secure API requests by assigning an [API Security ruleset](/applications/security/api_security) to the Security Application configuration.
 
     1.  Click **API Security**. An **API Security** section will appear.
     2.  If the desired API Security ruleset does not currently exist, then you should create it now by clicking on `+ Create New API Security Rule`. 
@@ -530,7 +530,7 @@ You may create, modify, and delete Security App configurations.
 
     4.  Optional. Set up auditing for threat detection by selecting the desired API Security ruleset from the **Audit API Security Rule** option.
 
-7.  Optional. Set up rate limiting by assigning one or more [rate rule(s)](/applications/security/rate_rules) to the Security App configuration. 
+7.  Optional. Set up rate limiting by assigning one or more [rate rule(s)](/applications/security/rate_rules) to the Security Application configuration. 
 
     1.  Click **Rate Rule**. A **Rate Rule** section will appear.
     2.  If the desired rate rule does not currently exist, then you should create it now by clicking on `+ Create New Rate Rule`. 
@@ -540,7 +540,7 @@ You may create, modify, and delete Security App configurations.
 
         <Callout type="info">
 
-          If the selected rate rule contains a condition group, then a request must satisfy the Security App configuration's host and URL path match conditions and all of the conditions within at least one condition group in order to be eligible for rate limiting.
+          If the selected rate rule contains a condition group, then a request must satisfy the Security Application configuration's host and URL path match conditions and all of the conditions within at least one condition group in order to be eligible for rate limiting.
 
         </Callout>
 
@@ -560,11 +560,11 @@ You may create, modify, and delete Security App configurations.
 
         <Callout type="tip">
 
-          Use multiple rate rules to apply different rate limits to various traffic profiles. Set up this type of configuration using either a single or multiple Security App configurations. If you assign multiple rate rules to a single Security App configuration, then each rate rule should contain one or more [condition group(s)](/applications/security/rate_rules#condition-group).
+          Use multiple rate rules to apply different rate limits to various traffic profiles. Set up this type of configuration using either a single or multiple Security Application configurations. If you assign multiple rate rules to a single Security Application configuration, then each rate rule should contain one or more [condition group(s)](/applications/security/rate_rules#condition-group).
 
         </Callout>
 
-8.  <a id="bot-rule-configuration" />Optional. Determine how bots will be detected by assigning a [bot manager configuration](/applications/security/bot_rules) to the Security App configuration.
+8.  <a id="bot-rule-configuration" />Optional. Determine how bots will be detected by assigning a [bot manager configuration](/applications/security/bot_rules) to the Security Application configuration.
 
     1.  Click **Bot Manager**. A **Bot Manager** section will appear.
     2.  If the desired bot manager configuration does not currently exist, then you should create it now by clicking on `+ Create New Bot Manager Rule`. 
@@ -579,7 +579,7 @@ You may create, modify, and delete Security App configurations.
             3.  Set the **reCAPTCHA Site Key** option to the site key provided by Google.
             4.  Set the **reCAPTCHA Secret Key** option to the secret key provided by Google.
 
-9. Optional. Define a custom security policy by assigning a [custom rule](/applications/security/custom_rules) to the Security App configuration.
+9. Optional. Define a custom security policy by assigning a [custom rule](/applications/security/custom_rules) to the Security Application configuration.
 
     1.  Click **Custom Rule**. A **Custom Rule** section will appear.
     2.  If the desired custom rule does not currently exist, then you should create it now by clicking on `+ Create New Custom Rule`. 
@@ -595,7 +595,7 @@ You may create, modify, and delete Security App configurations.
 
     4.  Optional. Set up auditing for threat detection by selecting the desired custom rule from the **Audit Custom Rule** option.
 
-10. Optional. Apply a predefined security policy by assigning a [managed rule](/applications/security/managed_rules) to the Security App configuration.
+10. Optional. Apply a predefined security policy by assigning a [managed rule](/applications/security/managed_rules) to the Security Application configuration.
 
     1.  Click **Managed Rule**. A **Managed Rule** section will appear.
     2.  If the desired managed rule does not currently exist, then you should create it now by clicking on `+ Create New Managed Rule`. 
@@ -611,7 +611,7 @@ You may create, modify, and delete Security App configurations.
 
     4.  Optional. Set up auditing for threat detection by selecting the desired managed rule from the **Audit Managed Rule** option.
 
-11. Optional. Apply a Content Security Policy to your traffic by assigning a [Client-Side Protection policy](/applications/security/client_side_protection) to the Security App configuration.
+11. Optional. Apply a Content Security Policy to your traffic by assigning a [Client-Side Protection policy](/applications/security/client_side_protection) to the Security Application configuration.
 
     1.  Click **Client Protection**. A **Client Protection** section will appear.
     2.  If the desired Client-Side Protection policy does not currently exist, then you should create it now by clicking on `+ Create New Client Rule`. 
@@ -637,7 +637,7 @@ You may create, modify, and delete Security App configurations.
 13. Click **Save & Continue**.
 14. If no additional changes to your security configuration are needed, then click **Deploy Changes** to allow these changes to take effect. 
 
-**To reorder Security App configurations**
+**To reorder Security Application configurations**
 1.  Navigate to the **Security Application Manager** page.
     {{ SECURITY_NAV }} **Application Manager**.
 2.  Drag the desired configuration's <Image inline src="/images/v7/icons/drag.png" /> icon to the desired position.
@@ -645,22 +645,22 @@ You may create, modify, and delete Security App configurations.
 
 <Callout type="tip">
 
-  Traffic is always screened using the [first eligible Security App configuration](#order-of-precedence). If multiple Security App configurations are applicable to the same request, then consider updating their host or URL path conditions to a more restrictive pattern.
+  Traffic is always screened using the [first eligible Security Application configuration](#order-of-precedence). If multiple Security Application configurations are applicable to the same request, then consider updating their host or URL path conditions to a more restrictive pattern.
 
 </Callout>
 
-**To modify a Security App configuration**
+**To modify a Security Application configuration**
 1.  Navigate to the **Security Application Manager** page.
     {{ SECURITY_NAV }} **Application Manager**.
-2.  Click on the desired Security App configuration.
+2.  Click on the desired Security Application configuration.
 3.  Make the desired changes.
 4.  Click **Save & Continue**.
 5.  If no additional changes to your security configuration are needed, then click **Deploy Changes** to allow these changes to take effect. 
 
-**To delete a Security App configuration**
+**To delete a Security Application configuration**
 1.  Navigate to the **Security Application Manager** page.
     {{ SECURITY_NAV }} **Application Manager**.
-2.  Click on the desired Security App configuration.
+2.  Click on the desired Security Application configuration.
 3.  Click the <Image inline src="/images/v7/icons/delete-2.png" /> icon.
 4.  When prompted, confirm the deletion by clicking **Confirm**.
 5.  If no additional changes to your security configuration are needed, then click **Deploy Changes** to allow this deletion to take effect. 
@@ -668,9 +668,9 @@ You may create, modify, and delete Security App configurations.
 ## Version Control {/*version-control*/}
 
 Version control allows you to:
--   View a previous version of your Security App configuration.
--   Reactivate a previous version of your Security App configuration.
--   Compare a previous version of your Security App configuration to the current version.
+-   View a previous version of your Security Application configuration.
+-   Reactivate a previous version of your Security Application configuration.
+-   Compare a previous version of your Security Application configuration to the current version.
 
 <Info>
 

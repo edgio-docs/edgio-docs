@@ -49,7 +49,7 @@ Use {{ PRODUCT }} {{ PRODUCT_SECURITY }} to:
 
 ## Basic Setup {/*basic-setup*/}
 
-Secure your web applications by defining security rules and then creating a Security App configuration that enforces them. After which, perform near-real-time threat monitoring through the dashboard.
+Secure your web applications by defining security rules and then creating a Security Application configuration that enforces them. After which, perform near-real-time threat monitoring through the dashboard.
 
 ![](/images/v7/security/setup_overview.png)
 
@@ -63,7 +63,7 @@ Additional information on each of the above steps is provided below.
     - Custom threat detection rules. 
     - Threat detection policies.
     - Content Security Policies.
--   **Step 2 - Create a Security App Configuration:** Create a Security App Configuration that identifies the type of traffic for which:
+-   **Step 2 - Create a Security Application Configuration:** Create a Security Application Configuration that identifies the type of traffic for which:
     -   New security rules will be tested. This is known as Audit mode.
     -   Security rules will be enforced. This is known as Production mode.
 
@@ -73,7 +73,7 @@ Additional information on each of the above steps is provided below.
 
 <Callout type="tip">
 
-  Different applications and types of requests may require varying levels of protection. Create security rules and Security App configurations for each use case that requires a unique level of protection.
+  Different applications and types of requests may require varying levels of protection. Create security rules and Security Application configurations for each use case that requires a unique level of protection.
 
 </Callout>
 
@@ -84,9 +84,9 @@ Additional information on each of the above steps is provided below.
 -   Enforce a proven security policy on your production traffic.
 -   Audit a new security policy without impacting your production traffic. Auditing a new security policy before enforcing it provides the means through which you can safely identify and reduce false positives introduced by changes to your security policy. 
 
-Set up dual threat detection within a Security App configuration by setting a security rule in Production mode and another one in Audit mode. In the following sample configuration, the `Access Control v1` access rule will be enforced, while threats detected by the `Access Control v2` access rule will only generate alerts. 
+Set up dual threat detection within a Security Application configuration by setting a security rule in Production mode and another one in Audit mode. In the following sample configuration, the `Access Control v1` access rule will be enforced, while threats detected by the `Access Control v2` access rule will only generate alerts. 
 
-![Security App configuration - Production and  Audit mode](/images/v7/security/security-application-tdm-switch.png)
+![Security Application configuration - Production and  Audit mode](/images/v7/security/security-application-tdm-switch.png)
 
 Threat detection modes are described below.
 
@@ -99,7 +99,7 @@ Screening traffic in Audit mode generates an alert when a request violates a sec
 
 ## Threat Detection {/*threat-detection*/}
 
-A Security App configuration contains security rules that define the criteria that determine whether traffic is legitimate or a threat. {{ PRODUCT_SECURITY }} leverages this security configuration and performs a sequential check for each criterion. An overview of this security check is illustrated below.
+A Security Application configuration contains security rules that define the criteria that determine whether traffic is legitimate or a threat. {{ PRODUCT_SECURITY }} leverages this security configuration and performs a sequential check for each criterion. An overview of this security check is illustrated below.
 
 ![](/images/v7/security/request_screening_overview.png)
 
@@ -134,7 +134,7 @@ Each request undergoes the following security workflow:
 
     </Callout>
 
-5.  The payload for `POST`, `PUT`, and `PATCH` requests will undergo additional threat detection analysis if the Security App configuration has been assigned an API Security ruleset. Does the request's payload violate an API schema? If so, then the request is identified as a threat and no further checks will be performed.
+5.  The payload for `POST`, `PUT`, and `PATCH` requests will undergo additional threat detection analysis if the Security Application configuration has been assigned an API Security ruleset. Does the request's payload violate an API schema? If so, then the request is identified as a threat and no further checks will be performed.
 
 6.  Has the rate limit been exceeded? If so, then the request is identified as a threat and no further checks will be performed.
 
@@ -146,11 +146,11 @@ Each request undergoes the following security workflow:
 
 7.  Was the client identified as a bot? If so, then the request is identified as a threat and no further checks will be performed.
 
-8.  The request will undergo threat detection analysis if the Security App configuration has been assigned a custom rule set. Was a rule in the custom rule set satisfied? If so, then the request is identified as a threat and no further checks will be performed.
+8.  The request will undergo threat detection analysis if the Security Application configuration has been assigned a custom rule set. Was a rule in the custom rule set satisfied? If so, then the request is identified as a threat and no further checks will be performed.
 
 9.  Will the request be served from cache instead of being forwarded to an origin server? If so, it is considered legitimate and no further checks will be performed.
 
-10.  The request will undergo additional threat detection analysis if the Security App configuration has been assigned a managed rule set. A request will be classified as a threat when the severity and frequency of rule violations exceeds the configured threshold.
+10.  The request will undergo additional threat detection analysis if the Security Application configuration has been assigned a managed rule set. A request will be classified as a threat when the severity and frequency of rule violations exceeds the configured threshold.
 
 11. For requests served to a client, does the response's payload attempt to load a resource that violates your production Content Security Policy? If so, then the client will block that request from being submitted. 
 
@@ -160,20 +160,23 @@ The above threat detection workflow is illustrated below.
 
 ### Managed Rule Violations {/*managed-rule-violations*/}
 
-If other security rules cannot identify whether a request is legitimate or a threat, then it is up to the Security App configuration's managed rule to make that determination. The request will be evaluated according to a managed rule's enabled rules and its definition of a valid HTTP request. A request will not be considered a threat until a threshold of violations is met. The score assigned to a request is determined according to the severity and frequency of the violations.
+If other security rules cannot identify whether a request is legitimate or a threat, then it is up to the Security Application configuration's managed rule to make that determination. The request will be evaluated according to a managed rule's enabled rules and its definition of a valid HTTP request. A request is considered a threat when either of the following conditions are true:
 
--   **Severity:** Each rule is assigned a severity. Each severity is assigned an anomaly score from 2 to 5.
+-   The request violates a rule associated with the EC Custom Rule policy or a policy whose name starts with `Adv`.
+-   The request violates sufficient rules to reach the threshold score defined within the managed rule. The score assigned to a request is determined according to the severity and frequency of the violations.
 
-    | Severity | Anomaly Score | Description                                                                   |
-    |----------|---------------|-------------------------------------------------------------------------------|
-    | Critical | 5             | This severity level is triggered by web attack violations.                    |
-    | Error    | 4             | This severity level is reserved for future use.                               |
-    | Warning  | 3             | This severity level is triggered by malicious client violations.              |
-    | Notice   | 2             | This severity level is generally used to indicate protocol policy violations. |
+    -   **Severity:** Each rule is assigned a severity. Each severity is assigned an anomaly score from 2 to 5.
 
--   **Frequency:** A threat is identified when the aggregate score for all violations meets or exceeds the configured threshold value. This allows {{ PRODUCT_SECURITY }} to account for minor violations without forcing it to take action for a single offense.
+        | Severity | Anomaly Score | Description                                                                   |
+        |----------|---------------|-------------------------------------------------------------------------------|
+        | Critical | 5             | This severity level is triggered by web attack violations.                    |
+        | Error    | 4             | This severity level is reserved for future use.                               |
+        | Warning  | 3             | This severity level is triggered by malicious client violations.              |
+        | Notice   | 2             | This severity level is generally used to indicate protocol policy violations. |
 
-A managed rule may be assigned a threshold value from 2 to 20. However, the recommended value is 5. A threshold value of 5 triggers threat identification after a single severe violation or multiple minor violations. This balanced approach identifies questionable requests without impacting legitimate traffic.
+    -   **Frequency:** A threat is identified when the aggregate score for all violations meets or exceeds the configured threshold value. This allows {{ PRODUCT_SECURITY }} to account for minor violations without forcing it to take action for a single offense.
+
+    A managed rule may be assigned a threshold value from 2 to 20. However, the recommended value is 5. A threshold value of 5 triggers threat identification after a single severe violation or multiple minor violations. This balanced approach identifies questionable requests without impacting legitimate traffic.
 
 ## Best Practices {/*best-practices*/}
 
@@ -191,7 +194,7 @@ Best practices for setting up security vary by organization due to a variety of 
     Both country and referrer access controls may potentially be applied to a site that requires authentication and only caters to customers in the United States. However, this configuration would be too restrictive for a site that has worldwide users from various traffic sources.
 -   **Acceptable Risk:** {{ PRODUCT_SECURITY }} allows the flexibility to determine the degree to which a site will be protected. A balance must be found between security and allowing the flow of legitimate traffic. A major factor in this balancing act is the degree to which an organization is able to cope with risk.
 
-As a result of the above factors, it may make sense to tailor security by request type. This may require a Security App configuration and security rules for each custom set of security requirements.
+As a result of the above factors, it may make sense to tailor security by request type. This may require a Security Application configuration and security rules for each custom set of security requirements.
 
 ## Recommended Setup {/*recommended-setup*/}
 
@@ -201,7 +204,7 @@ The recommended approach for setting up security is described below.
 
 2.  Create a managed rule according to [these recommendations](#threat-detection-through-managed-rules).
 
-3.  Create a Security App configuration that only screens traffic for your application. Add the above managed rule and access rule. Set their production action to **Alert only**.
+3.  Create a Security Application configuration that only screens traffic for your application. Add the above managed rule and access rule. Set their production action to **Alert only**.
 
 4.  Repeat steps 1 - 3 as needed.
 
@@ -221,7 +224,7 @@ The recommended approach for setting up security is described below.
 
         -   **Delivery Profile:** Consider modifying the delivery profile defined within your access rule or managed rule to account for the set of traffic being blocked.
 
-    -   **Balanced:** If the current security policy balances security with risk tolerance without causing too many false positives, then you should update the Security App configuration's production action for the access rule and managed rule to **Block request**. This will cause {{ PRODUCT_SECURITY }} to deny requests that are identified as threats.
+    -   **Balanced:** If the current security policy balances security with risk tolerance without causing too many false positives, then you should update the Security Application configuration's production action for the access rule and managed rule to **Block request**. This will cause {{ PRODUCT_SECURITY }} to deny requests that are identified as threats.
 
 ### Threat Detection through Managed Rules {/*threat-detection-through-managed-rules*/}
 
@@ -258,4 +261,4 @@ Use an access rule to define access controls for URLs, countries, IP addresses, 
     </Callout>
 
 -   **Accesslist:** The recommended approach for traffic from trusted sources is to identify it through an accesslist. This approach allows that trafic after it passes a threat assessment.
--   **Blacklist:** The recommended approach for unwanted traffic is to identify it through a blacklist. Traffic identified through a blacklist can be blocked through your Security App configuration.
+-   **Blacklist:** The recommended approach for unwanted traffic is to identify it through a blacklist. Traffic identified through a blacklist can be blocked through your Security Application configuration.

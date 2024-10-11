@@ -14,7 +14,7 @@ By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting informa
 
 ## Installation {/* installation */}
 
-Install the {{ PRODUCT_NAME }} CLI or to upgrade to the latest version by running either of the following commands:
+Install the {{ PRODUCT_NAME }} CLI or upgrade to the latest version by running:
 
 <SnippetGroup>
 

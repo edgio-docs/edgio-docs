@@ -77,6 +77,10 @@ On a per environment-basis, define each hostname that will be served through {{ 
 3.  Repeat step 2 as needed.
 4.  If you are finished making changes to this environment, click **Deploy Changes**.
 
+    **Next Steps:** Serving traffic over a new hostname requires a [TLS certificate](#https-traffic) and a [valid DNS configuration](/applications/basics/serving_traffic#dns). 
+    
+    [View a checklist for serving traffic through our network.](/applications/basics/serving_traffic#checklist)
+
 **<a id="cdn-as-code" />To add, modify, or delete hostnames within your CDN-as-code configuration**
 
 <Callout type="info">

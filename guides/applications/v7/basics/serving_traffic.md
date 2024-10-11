@@ -63,7 +63,7 @@ Once you are ready to serve traffic through {{ PRODUCT }}, you will need to conf
 
 <Callout type="info">
 
-  If your hostname is at the zone apex (e.g., example.com), then you will need a DNS service provider that supports defining a CNAME record at the zone apex. [Learn how to set this up through Route.](#serving-traffic-at-the-zone-apex)
+  If your hostname is at the zone apex (e.g., `example.com`), then you will need a DNS service provider that supports defining a CNAME record at the zone apex. [Learn how to set this up through Route.](#serving-traffic-at-the-zone-apex)
 
 </Callout>
 
@@ -84,6 +84,12 @@ From your DNS service provider, point your hostname(s) to a service domain that 
 2.  From the **DNS** column, click **Actions needed**.
 
     ![DNS - Actions needed](/images/v7/basics/hostnames-dns.png)
+    
+    <Info>
+    This button is disabled if you have not deployed a new hostname yet or when setting up a hostname for a new root domain and you have not already activated a TLS certificate.
+    
+    For example, this button will be enabled for `images.example.com` if you have already deployed this change and you currently serve traffic through `cdn.example.com`. However, it will be disabled for `cdn.example.org` until you set up a TLS certificate for it. 
+    </Info>
 
 3.  From the **DNS Configuration** pane, click <Image inline src="/images/v7/icons/copy-to-clipboard.png" alt="Copy to clipboard icon" />  to copy this domain.
 

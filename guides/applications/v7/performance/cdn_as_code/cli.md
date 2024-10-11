@@ -14,21 +14,23 @@ By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting informa
 
 ## Installation {/* installation */}
 
-To install, or upgrade to the latest, {{ PRODUCT_NAME }} CLI run
+Install the {{ PRODUCT_NAME }} CLI or to upgrade to the latest version by running either of the following commands:
 
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
-```
+<SnippetGroup>
 
-Or with yarn
+    ```bash tabLabel="npm"
+    npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
+    ```
 
-```bash
-yarn global add {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
-```
+    ```bash tabLabel="yarn"
+    yarn global add {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
+    ```
+
+</SnippetGroup>
 
 ## Upgrade Project to Latest Version {/* upgrade-project-to-latest-version */}
 
-If you already have a project running on {{ PRODUCT_NAME }} and you want to update packages to the most recent release of `{{ PACKAGE_NAME }}`, simply run:
+Update the packages for an existing {{ PRODUCT }} property to the latest version by running:
 
 ```bash
 {{ FULL_CLI_NAME }} use {{ PACKAGE_VERSION}}
@@ -37,6 +39,8 @@ If you already have a project running on {{ PRODUCT_NAME }} and you want to upda
 Before deploying your property, verify that all functionality, including request/response data, is as expected.
 
 ## Commands {/* commands */}
+
+CLI commands are described below.
 
 ### build {/* build */}
 

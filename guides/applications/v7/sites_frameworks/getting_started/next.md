@@ -71,8 +71,8 @@ In the generated `{{ CONFIG_FILE }}` file, you can customize how {{ PRODUCT }} b
 | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
 | `generateSourceMaps`         | Output sourcemaps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PORTAL }}.                                                                                                      | `true`  |
 | `disableImageOptimizer`      | Disables the {{ PRODUCT }} image optimizer and allows to use the Next's built in image optimizer. <a id="disableImageOptimizer"></a>                                                                                                   | `false` |
-| `disableDevtools`            | Disables the {{ PRODUCT }} development tools widget on the site. <a id="disableDevtools"></a>                                                                                                                                          | `false` |
 | `disableServiceWorker`       | Disables the build of the service worker.                                                                                                                                                                                              | `false` |
+| `disablePreviewMode`         | Disables Next.js' [Preview Mode feature](https://nextjs.org/docs/pages/building-your-application/configuring/preview-mode). Preview Mode allows you to bypass edge cache and serve pre-rendered pages.                                 | `false` |
 | `forceServerBuild`           | Forces the `{{ PACKAGE_NAME }}/next` connector to use the server build. This config option replaces the NEXT_FORCE_SERVER_BUILD env variable.                                                                                          | `false` |
 | `optimizeServerBuild`        | Optimizes the server build by bundling all server assets and decreasing the overall startup time. This option has no effect on apps with the {{ PRODUCT }} cloud build. This option is set to `false` for Next 13.x apps.              | `true`  |
 | `proxyToServerlessByDefault` | Reduces the number of generated rules by adding the default catch-all rule that proxies all requests to Next.js to the {{ PRODUCT }} cloud. Set this option to `false` if you want to proxy all unmatched pages to a different origin. | `true`  |
@@ -391,7 +391,7 @@ module.exports = {
 
 ## Image Optimizer {/* image-optimizer */}
 
-By default, Next.js image optimizer is replaced by our image optimizer, which is available in all build modes. You can disable it and use the built-in Next.js image optimizer instead by adding `disableImageOptimizer: true` to the `next` config in the `{{ CONFIG_FILE }}` file.
+By default, the Next.js image optimizer is replaced by our [image optimizer](/applications/performance/image_optimization), which is available in all build modes. However, you can disable our solution and use the built-in Next.js image optimizer instead by adding `disableImageOptimizer: true` to the `next` config in the `{{ CONFIG_FILE }}` file.
 
 ```js filename='{{ CONFIG_FILE }}' ins="3"
 module.exports = {

@@ -5,8 +5,8 @@ import styled from 'styled-components';
 
 import {EdgioAnswersInput, edgioAnswersUrl} from 'components/EdgioAnswers';
 import NoSSRWrapper from 'components/Layout/NoSSRWrapper';
-import {useIsMobile} from 'components/Layout/useMediaQuery';
 import Link from 'components/MDX/Link';
+import {siteConfig} from 'config/appConfig';
 import {ContextType, useAppContext} from 'contexts/AppContext';
 import {useEdgioAnswersContext} from 'contexts/EdgioAnswersContext';
 import {mobileMinWidth} from 'styles';
@@ -260,10 +260,8 @@ function HomeSearchComponent() {
 }
 
 function ProductSearchComponent() {
-  const isMobile = useIsMobile();
-
   return (
-    <SearchContainer isMobile={isMobile}>
+    <SearchContainer>
       <div className="search-buttons">
         {
           <>
@@ -296,6 +294,10 @@ function EdgioAnswersContainer({context}: {context?: string}) {
 
 export default function SearchComponent() {
   const {context} = useAppContext();
+
+  if (!siteConfig.edgioAnswers.enabled) {
+    return null;
+  }
 
   return (
     <NoSSRWrapper>

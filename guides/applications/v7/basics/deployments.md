@@ -21,7 +21,7 @@ Deploy to an environment using either of the following methods:
 
         ![Deploy Changes](/images/v7/performance/rules-deploy-changes.png?width=450)
 
--   **{{ PRODUCT }} CLI:** Use this method to deploy changes from your local machine (e.g., changes to {{ CONFIG_FILE }} or {{ ROUTES_FILE }}).
+-   **{{ PRODUCT }} CLI:** Use this method to deploy changes to your [CDN-as-code configuration](/applications/performance/cdn_as_code) from your local machine (e.g., changes to {{ CONFIG_FILE }} or {{ ROUTES_FILE }}).
 
     ```bash
     {{ FULL_CLI_NAME }} deploy [<ORGANIZATION>] [--environment=<ENVIRONMENT>]
@@ -56,7 +56,7 @@ This deployment-specific page provides information about the deployment, such as
 
 View status information for all deployments from the **Deployments** page. Online deployments are indicated by <Image inline src="/images/v7/icons/deployment-online.png" alt="Solid green circle" />, while retired deployments are indicated by <Image inline src="/images/v7/icons/deployment-retired.png" alt="Faint green circle" />.
 
-Each environment may have up to 5 online deployments. If you are using CDN-as-code, then you may use the permalink associated with any online deployment to test your site.
+Paying customers may have up to 10 online deployments per environment, while free customers are restricted to 3 online deployments. If you are using CDN-as-code, then you may use the permalink associated with any online deployment to test your site.
 
 Although older deployments are considered retired, you may revive a deployment by visiting its permalink. Once the deployment has been revived, the permalink will once again load your site. Additionally, we will retire the next oldest online deployment.
 

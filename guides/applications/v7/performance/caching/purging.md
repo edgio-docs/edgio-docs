@@ -38,12 +38,10 @@ You may purge cached content by the request URL's hostname. Choose between eithe
 
 You may specify a relative path that identifies the set of cached responses that will be purged. This relative path starts directly after the hostname.
 
-<Callout type="tip">
-
+<!-- 
+Tip
   Use an `*` to represent zero or more characters.
-
-</Callout>
-
+-->
 **Example:**
 
 This example assumes that you need to purge the following content:
@@ -54,10 +52,10 @@ Purge the above URL by specifying the following relative path:
 
 `/sports/basketball/marchtournament.html`
 
-Alternatively, you can use an `*` to recursively purge a directory. The following relative path pattern recursively purges all content from the `/sports` directory including `marchtournament.html`:
+<!--Alternatively, you can use an `*` to recursively purge a directory. The following relative path pattern recursively purges all content from the `/sports` directory including `marchtournament.html`:
 
 `/sports/*`
-
+-->
 ## Surrogate Key {/*surrogate-key*/}
 
 You may purge cached content by surrogate key (aka cache tag). A surrogate key is a label that you may apply to cached responses. Purging by surrogate key allows you to purge related content across your entire site.
@@ -113,7 +111,7 @@ Use the {{ PORTAL }} to purge cached content within a specific environment.
 Purge cached content through the {{ PRODUCT }} CLI by passing the [cache-clear argument](/applications/performance/cdn_as_code/cli#cache-clear). You may purge:
 
 -   **All content:** Exclude the `--path` and `--surrogate-key` options.
--   **By relative path:** Pass the `--path` option. You may use an `*` to represent zero or more characters.
+-   **By relative path:** Pass the `--path` option. <!--You may use an `*` to represent zero or more characters.-->
 -   **By surrogate key:** Pass the `--surrogate-key` option. [Learn more about surrogate keys.](#surrogate-key)
 
 **Example:**
@@ -122,11 +120,11 @@ Run the following command to purge the `basketball` surrogate key from the `prod
 
 <SnippetGroup>
 
-    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
+    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or later"
     {{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my-videos --environment=production --surrogate-key=basketball
     ```
 
-    ```bash tabLabel="Version 7.2.1 or lower"
+    ```bash tabLabel="Version 7.2.1 or earlier"
     {{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my-videos --environment=production --surrogate-key=basketball
     ```
 
@@ -137,7 +135,7 @@ Run the following command to purge the `basketball` surrogate key from the `prod
 Purge cached content through the {{ PRODUCT }} REST API through the [Purge Cache endpoint](https://docs.edg.io/rest_api/#tag/purge-requests/operation/postCacheV01PurgeRequests). You may purge:
 
 -   **All content:** Set the `purge_type` property to `all_entries`.
--   **By relative path:**  Set the `purge_type` property to `path`. Pass the desired relative paths through the `values` array of strings. You may use an `*` to represent zero or more characters.
+-   **By relative path:**  Set the `purge_type` property to `path`. Pass the desired relative paths through the `values` array of strings. <!--You may use an `*` to represent zero or more characters.-->
 -   **By surrogate key:**  Set the `purge_type` property to `surrogate_key`. Pass the desired surrogate keys through the `values` array of strings. [Learn more about surrogate keys.](#surrogate-key)
 -   **By hostname:** Set the `hostname` property to the desired hostname. Purging by hostname is compatible with the `purge_type` property set to either `all_entries` or `path`.
 
@@ -168,7 +166,7 @@ These scripts assume that you have created environments called "production", "st
 
 <SnippetGroup>
 
-    ```js tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
+    ```js tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or later"
       "scripts": {
         ...
         "clearcache:dev": "{{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
@@ -180,7 +178,7 @@ These scripts assume that you have created environments called "production", "st
       },
     ```
 
-    ```js tabLabel="Version 7.2.1 or lower"
+    ```js tabLabel="Version 7.2.1 or earlier"
       "scripts": {
         ...
         "clearcache:dev": "{{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",

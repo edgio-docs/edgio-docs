@@ -5,8 +5,8 @@ import {
   IconEdgioSquareLogoDark,
 } from 'components/Icon/IconEdgioSquareLogo';
 import Link from 'components/MDX/Link';
-import {ContextType, useAppContext} from 'contexts/AppContext';
-import {useTheme} from 'contexts/ThemeContext';
+import { ContextType, useAppContext } from 'contexts/AppContext';
+import { useTheme } from 'contexts/ThemeContext';
 
 const StyledDocsFooter = styled.footer`
   padding-top: 20px;

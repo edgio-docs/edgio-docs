@@ -3,3 +3,8 @@ enum:
   - RX
   - EM
   - IPMATCH
+  - EQ
+  - GE
+  - GT
+  - LE
+  - LT

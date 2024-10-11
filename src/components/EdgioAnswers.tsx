@@ -4,7 +4,7 @@ import {FiSend, FiX} from 'react-icons/fi';
 import Modal from 'react-modal';
 import styled, {css} from 'styled-components';
 
-import {DocsbotConfig, productsConfig} from 'config/appConfig';
+import {DocsbotConfig, productsConfig, siteConfig} from 'config/appConfig';
 import {
   ContextType,
   getContextTypeByName,
@@ -162,7 +162,7 @@ const SystemMessageWrapper = styled.div`
   margin: 10px;
 `;
 
-const Message = styled.div<{isUser: boolean; context: string}>`
+const Message = styled.div<{isUser: boolean}>`
   position: relative;
   margin: 1px;
   padding: 10px;
@@ -174,7 +174,7 @@ const Message = styled.div<{isUser: boolean; context: string}>`
   border-radius: 5px;
 
   &::before {
-    content: ${({isUser, context}) => (isUser ? "'You'" : `'Edgio Answers'`)};
+    content: ${({isUser}) => (isUser ? "'You'" : `'Edgio Answers'`)};
     position: absolute;
     top: -10px;
     ${({isUser}) => (isUser ? 'right: 10px;' : 'left: 10px;')}
@@ -407,84 +407,6 @@ const EdgioAnswers = () => {
     });
   };
 
-  // Initialize the chat channel once the config is established
-  useEffect(() => {
-    if (docsbotConfig) {
-      initializeWebSocket(docsbotConfig);
-    }
-
-    return () => {
-      ws?.close();
-    };
-  }, [docsbotConfig]);
-
-  // Set the config based on the context
-  useEffect(() => {
-    const ctx = overrideContext;
-    if (!ctx) {
-      ws?.close();
-      setWs(null);
-    } else if (ctx !== prevContext) {
-      const config = productsConfig[getContextTypeByName(ctx)]?.edgioAnswers;
-
-      // Context has changed, close the current connection
-      ws?.close();
-      setWs(null);
-
-      setPrevContext(ctx);
-      setDocsbotConfig(config);
-      setStarterQuestions(config?.starterQuestions || []);
-      addChatMessage(
-        {
-          role: 'system',
-          content: SYSTEM_MESSAGES[ctx] || '',
-          type: 'end',
-          finished: true,
-        },
-        true
-      );
-      addChatMessage({
-        role: 'bot',
-        content: config?.prompt || '',
-        type: 'end',
-        finished: true,
-      });
-    }
-  }, [overrideContext]);
-
-  // As navigation context changes, update the override context
-  useEffect(() => {
-    setOverrideContext(context as ContextType);
-  }, [context]);
-
-  // Send any pending messages
-  useEffect(() => {
-    if (ws && pendingSendFn.current) {
-      const handleOpen = () => {
-        if (pendingSendFn.current) {
-          pendingSendFn.current(ws);
-          pendingSendFn.current = null;
-        }
-      };
-
-      if (ws.readyState === WebSocket.OPEN) {
-        handleOpen();
-      } else {
-        ws.addEventListener('open', handleOpen);
-      }
-
-      return () => {
-        ws.removeEventListener('open', handleOpen);
-      };
-    }
-  }, [ws, pendingSendFn.current]);
-
-  // If the current product isn't configured for Edgio Answers, return null
-  if (!context || !productsConfig[context]?.edgioAnswers) {
-    console.info('Edgio Answers is not configured for this product.');
-    return null;
-  }
-
   const placeholder = isAwaitingResponse
     ? 'Waiting for response...'
     : defaultPlaceholder;
@@ -660,6 +582,85 @@ const EdgioAnswers = () => {
     closeModal();
   };
 
+  // Initialize the chat channel once the config is established
+  useEffect(() => {
+    if (docsbotConfig) {
+      initializeWebSocket(docsbotConfig);
+    }
+
+    return () => {
+      ws?.close();
+    };
+  }, [docsbotConfig]);
+
+  // Set the config based on the context
+  useEffect(() => {
+    const ctx = overrideContext;
+    if (!ctx) {
+      ws?.close();
+      setWs(null);
+    } else if (ctx !== prevContext) {
+      const config = productsConfig[getContextTypeByName(ctx)]?.edgioAnswers;
+
+      // Context has changed, close the current connection
+      ws?.close();
+      setWs(null);
+
+      setPrevContext(ctx);
+      setDocsbotConfig(config);
+      setStarterQuestions(config?.starterQuestions || []);
+      addChatMessage(
+        {
+          role: 'system',
+          content: SYSTEM_MESSAGES[ctx] || '',
+          type: 'end',
+          finished: true,
+        },
+        true
+      );
+      addChatMessage({
+        role: 'bot',
+        content: config?.prompt || '',
+        type: 'end',
+        finished: true,
+      });
+    }
+  }, [overrideContext]);
+
+  // As navigation context changes, update the override context
+  useEffect(() => {
+    setOverrideContext(context as ContextType);
+  }, [context]);
+
+  // Send any pending messages
+  useEffect(() => {
+    if (ws && pendingSendFn.current) {
+      const handleOpen = () => {
+        if (pendingSendFn.current) {
+          pendingSendFn.current(ws);
+          pendingSendFn.current = null;
+        }
+      };
+
+      if (ws.readyState === WebSocket.OPEN) {
+        handleOpen();
+      } else {
+        ws.addEventListener('open', handleOpen);
+      }
+
+      return () => {
+        ws.removeEventListener('open', handleOpen);
+      };
+    }
+  }, [ws, pendingSendFn.current]);
+
+  if (!siteConfig.edgioAnswers.enabled) {
+    return null;
+  } else if (!context || !productsConfig[context]?.edgioAnswers) {
+    console.warn('Edgio Answers is not configured for this product.');
+    return null;
+  }
+
   return (
     <NoSSRWrapper>
       <ModalWrapper>
@@ -786,6 +787,24 @@ export const EdgioAnswersInput = ({
     }, 25);
   };
 
+  function onFocus() {
+    if (intervalRef.current || timeoutRef.current) {
+      clearInterval(intervalRef?.current);
+      clearTimeout(timeoutRef?.current);
+      setPlaceholder(defaultPlaceholder);
+    }
+  }
+
+  function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Enter') {
+      const {value} = e.currentTarget;
+      setQuery(value);
+      openModal(value);
+    }
+  }
+
+  function onChange(e: React.ChangeEvent<HTMLInputElement>) {}
+
   useEffect(() => {
     // Set the starter questions based on the context
     if (context) {
@@ -814,23 +833,9 @@ export const EdgioAnswersInput = ({
     };
   }, [index, presets]);
 
-  function onFocus() {
-    if (intervalRef.current || timeoutRef.current) {
-      clearInterval(intervalRef?.current);
-      clearTimeout(timeoutRef?.current);
-      setPlaceholder(defaultPlaceholder);
-    }
+  if (!siteConfig.edgioAnswers.enabled) {
+    return null;
   }
-
-  function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key === 'Enter') {
-      const {value} = e.currentTarget;
-      setQuery(value);
-      openModal(value);
-    }
-  }
-
-  function onChange(e: React.ChangeEvent<HTMLInputElement>) {}
 
   return (
     <NoSSRWrapper>
@@ -852,6 +857,10 @@ export default EdgioAnswers;
 export const EdgioAnswersWidget = () => {
   const {openModal} = useEdgioAnswersContext();
   const {context} = useAppContext();
+
+  if (!siteConfig.edgioAnswers.enabled) {
+    return null;
+  }
 
   if (!context || !productsConfig[context]?.edgioAnswers) {
     console.info('Edgio Answers is not configured for this product.');

@@ -43,7 +43,9 @@ Key information about our REST API services:
 
 Get started with our latest APIs by performing the following steps:
 
-1. <a href="https://docs.edg.io/applications/rest_api/authentication#administering-api-clients" target="_blank">Create an API client</a> for either your private space or the desired organization. Grant the set of scope(s) required by the endpoint(s) with which it will interact. Administer API clients from the <a href="https://edgio.app" target="_blank">Edgio Console's</a> **API Clients** page. 
+1. <a href="https://docs.edg.io/applications/rest_api/authentication#administering-api-clients" target="_blank">Create an API client</a> for either your private space or the desired organization. 
+    -   Grant the set of scope(s) required by the endpoint(s) with which it will interact. 
+    -   The ability to administer API clients requires the Admin role and can be performed from the <a href="https://edgio.app" target="_blank">Edgio Console's</a> **API Clients** page. 
 2. Use this client's ID, secret key, and scopes to [generate a temporary access token](#section/Access-Tokens).
 3. Authorize your API requests by passing the temporary access token generated in the previous step through the `Authorization` request header.
 
@@ -68,7 +70,7 @@ A scope authorizes an API client to perform specific actions (e.g., create and r
 
 ## Access Tokens 
 
-Each request to a REST API service must be authorized by passing an access token to the `Authorization` request header. Access tokens provide temporary authorization (e.g., 1 minute) to our REST API service. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
+Each request to a REST API service must be authorized by passing an access token to the `Authorization` request header. Access tokens provide temporary authorization (e.g., 1 minute) to our REST API service. The duration of this authorization is determined by the API client's **Access Token Lifetime (Seconds)** option. Once an access token expires, it may no longer be used to authorize requests. Attempting to authorize a request with an expired token will result in a `401 Unauthenticated Access` response.
 
 Requesting an access token requires:
 
@@ -77,15 +79,18 @@ Requesting an access token requires:
     `https://id.edgio.app/connect/token`
 
 -   A `Content-Type` header set to `application/x-www-form-urlencoded`.
--   A request body set to:
+-   A request body that contains the following four parameters:
 
     ```
     client_id=<CLIENT ID>&client_secret=<SECRET>&grant_type=client_credentials&scope=<SCOPES>
     ```
 
-    -   `<CLIENT ID>`**:** Represents the system-defined ID assigned to your <a href="https://docs.edg.io/applications/rest_api/authentication#administering-api-clients" target="_blank">REST API client</a>.
-    -   `<SECRET>`**:** Represents the secret assigned to your REST API client.
-    -   `<SCOPES>`**:** Replace this term with one or more scopes. Use the plus symbol (+) to delimit each scope. 
+    | Parameter     | Description                                                                                                                                                          |
+    | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | client_id     | Replace `<CLIENT ID>` with the [system-defined ID assigned to your REST API client](https://docs.edg.io/applications/rest_api/authentication#copy-client-id-secret). |
+    | client_secret | Replace `<SECRET>` with the [secret assigned to your REST API client](https://docs.edg.io/applications/rest_api/authentication#copy-client-id-secret).               |
+    | grant_type    | Set this parameter to `client_credentials`.                                                                                                                          |
+    | scope         | Replace `<SCOPES>` with one or more [scopes](#section/Scopes). Use a space character or the plus symbol (+) to delimit each scope.                                   |
 
 **Sample access token request:**
 

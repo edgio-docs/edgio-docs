@@ -47,7 +47,7 @@ This category contains feature variables that describe the client's device or br
 |Is Smartphone|`%{wurfl_vcap_is_smartphone}`| Indicates whether the device is a smartphone.<br />**Sample Value:** `true`|
 |Is Tablet|`%{wurfl_cap_is_tablet}`| Indicates whether the device is a tablet. This is an OS-independent description.<br />**Sample Value:** `true`|
 |Is Touchscreen|`%{wurfl_vcap_is_touchscreen}`| Indicates whether the device's primary pointing device is a touchscreen.<br />**Sample Value:** `true`|
-|Is Windows Phone|`%{wurfl_vcap_is_windows_phone}`| Indicates whether the device is a a Windows Mobile 6.5/Windows Phone 7 or higher.<br />**Sample Value:** `true`|
+|Is Windows Phone|`%{wurfl_vcap_is_windows_phone}`| Indicates whether the device is a a Windows Mobile 6.5/Windows Phone 7 or later.<br />**Sample Value:** `true`|
 |Is Wireless Device|`%{wurfl_cap_is_wireless_device}`| Indicates whether the device is considered a wireless device For the purposes of this capability, PCs and laptops are not considered to be mobile devices.<br />**Sample Value:** `true`|
 |Marketing Name|`%{wurfl_cap_marketing_name}`| Indicates the device's marketing name.<br />**Sample Value:** `BlackBerry 8100 Pearl`|
 |Mobile Browser|`%{wurfl_cap_mobile_browser}`| Indicates the browser used to request content from the device.<br />**Sample Value:** `Chrome`|

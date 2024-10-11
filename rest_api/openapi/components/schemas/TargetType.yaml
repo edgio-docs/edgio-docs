@@ -19,10 +19,13 @@ description:  |
 
   -   **REMOTE_JA3:** Edgio Security Premier only. JA3 signature.
 
+  -   **REMOTE_JA4:** Edgio Security Premier only. JA4 signature.
+
   -   **REQUEST_COOKIES:** Edgio Security Premier only. Cookie value. Set the `target.value` property to the desired cookie.
 
   -   **QUERY_ARG:** Edgio Security Premier only. Query string parameter value. Set the `target.value` property to the desired query string parameter.
 
+  -   **BOT_SCORE:** Edgio Security Premier or Edgio Advanced Bot required. The bot score associated with the request.
 
 
 enum:
@@ -34,5 +37,7 @@ enum:
   - REQUEST_METHOD
   - REQUEST_URI
   - REMOTE_JA3
+  - REMOTE_JA4
   - REQUEST_COOKIES
   - QUERY_ARG
+  - BOT_SCORE

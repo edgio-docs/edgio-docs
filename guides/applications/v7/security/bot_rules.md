@@ -4,18 +4,15 @@ title: Bot Manager
 
 Bot Manager is designed to mitigate undesired bot traffic and prevent them from performing undesired or malicious activity, such as scraping your site, carding, taking over accounts through credential stuffing, spamming your forms, launching DDoS attacks, and committing ad fraud.
 
-There are two versions of Bot Manager:
+There are two versions of Bot Manager. Key differences between these versions are highlighted below.
 
--   **Bot Manager Standard:** This version is designed to mitigate basic bots through a browser challenge.
-
-    <Callout type="important">
-
-      Solving a challenge requires a JavaScript-enabled client. Users that have disabled JavaScript on their browsing session will be unable to
-  access content protected by bot rules.
-
-    </Callout>
-
--   **Bot Manager Advanced:**  This version adds an additional layer of security that is dedicated to bot detection and mitigation. It is designed to automatically detect known bots (e.g., search bots) and bad bots, including those that spoof good bots, by analyzing requests and behavior. You may even customize how bad bots are detected and mitigated by defining custom criteria that profiles a bad bot and the action that we will take for that traffic. Bot Manager Advanced is also able to mitigate basic bots by requiring a web browser to resolve a JavaScript challenge before our service will resolve traffic. Finally, it provides actionable near real-time data on detected bots through which you may fine-tune your configuration to reduce false positives.
+-   **Bot Manager Standard:** This version is designed to mitigate basic bots by requiring a browser to solve a JavaScript-based challenge.
+-   **Bot Manager Advanced:** This version provides all of the functionality that comes with Bot Manager Standard. Additionally, it provides:
+    -   Automatic detection of known bots (e.g., search bots) and bad bots, including those that spoof good bots, through the analysis of requests and behavior. 
+    -   Additional types of criteria through which you may profile an undesired bot. 
+    -   Additional enforcement actions that can be applied to bot traffic. 
+    -   The ability to bypass bot detection for specific traffic profiles. 
+    -   Actionable near real-time data on detected bots through which you may fine-tune your configuration to reduce false positives.
 
 <Callout type="info">
 
@@ -25,21 +22,20 @@ There are two versions of Bot Manager:
 
 ## How Does It Work? {/*how-does-it-work*/}
 
-The differences between the behavior of Bot Manager Standard and Bot Manager Advanced are described below.
+The workflows through which Bot Manager Standard and Bot Manager Advanced detect bots are described below.
 
 ### Bot Manager Standard {/*bot-manager-standard*/}
 
-Bot Manager Standard requires a client (e.g., a web browser) to solve a challenge before resolving the request. {{ PRODUCT }} {{ PRODUCT_SECURITY }} blocks traffic when the client cannot solve this challenge within a few seconds. Basic bots typically cannot solve this type of challenge and therefore their
-traffic is blocked. [Learn more.](#browser-challenge)
+Bot Manager Standard requires a client (e.g., a web browser) to solve a JavaScript-based challenge before resolving the request. {{ PRODUCT }} {{ PRODUCT_SECURITY }} blocks traffic when the client cannot solve this challenge within a few seconds. Basic bots typically cannot solve this type of challenge and therefore their traffic is blocked. [Learn more.](#browser-challenge)
 
 ### Bot Manager Advanced {/*bot-manager-advanced*/}
 
-Bot Manager Advanced inspects each request to determine whether the request:
+Bot Manager Advanced inspects each request to determine whether it is bot traffic.
 
-1.  Matches an exception. [Exceptions](#exceptions) identify trafic that should bypass bot detection.
-2.  Matches a rule. A rule defines the criteria that our service will use to identify a bad bot.
+1.  Does the request match an exception? [Exceptions](#exceptions) identify trafic that should bypass bot detection.
+2.  Does the request match a rule?  A rule defines the criteria that our service will use to identify bot traffic.
 
-    You may identify bots using:
+    Identify bots using:
 
     -   Information derived from the request, such as geolocation, IP address, and the URL path.
     -   Our request and behavioral analysis that assigns a bot score to the request that defines our level of confidence that it is a bot.
@@ -52,10 +48,10 @@ Bot Manager Advanced inspects each request to determine whether the request:
 
         </Callout>
 
-    -   The JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic as a specific bot across various IP addresses and ports.
+    -   The JA3 or JA4 (requires {{ PRODUCT }} Premier) fingerprint assigned to the request. Fingerprints allow us to classify traffic.
 
-3.  Matches a known good bot (e.g., search bot).
-4.  Is spoofing a known good bot.
+3.  Does the request match a known good bot (e.g., search bot)?
+4.  Does the request spoof a known good bot?
 
 **Key information:**
 
@@ -64,7 +60,7 @@ Bot Manager Advanced inspects each request to determine whether the request:
 
     `Exceptions > Bots Identified by a Rule > Known Bots > Spoofed Bots`
 
--   Bypass the above bot detection measures by creating an exception for one or more URL(s), user agent(s), JA3 fingerprint(s), or cookie(s).
+-   Bypass the above bot detection measures by creating an exception for one or more URL(s), user agent(s), JA3 fingerprint(s), JA4 fingerprint(s), or cookie(s).
 
 ## Actions {/*actions*/}
 
@@ -80,7 +76,7 @@ If you are using Bot Manager Standard, then you may only apply a [browser challe
 
 ### Alert {/*alert*/}
 
-Generates an alert. Use this mode to track detected threats through the **Security** dashboard without impacting production traffic.
+Generates an alert. Use this mode to track detected threats through the Security dashboard without impacting production traffic.
 
 ### Block {/*block*/}
 
@@ -88,7 +84,7 @@ Drops the request and the client will receive a `403 Forbidden` response.
 
 ### Browser Challenge {/*browser-challenge*/}
 
-Sends a browser challenge to the client. The client must solve this challenge within a few seconds.
+Sends a JavaScript-based challenge to the client. The client must solve this challenge within a few seconds.
 
 The client's response to the browser challenge determines what happens next.
 
@@ -109,7 +105,7 @@ The client's response to the browser challenge determines what happens next.
 
     For example, applying browser challenges to API traffic will disrupt your API workflow.
 
--   If you are using Bot Manager Advanced, you may customize the difficulty of the browser challenge by setting the **Browser challenge level** option to `Difficulty-based` and then selecting the desired difficulty level. 
+-   <a id="difficulty-based" />If you are using Bot Manager Advanced, you may customize the difficulty of the browser challenge by setting the **Browser challenge level** option to `Difficulty-based` and then selecting the desired difficulty level. 
 
     -   Choose a difficulty level from 1 to 20. {{ PRODUCT }} serves our standard browser challenge when it is  set it to `0`.
     -   Smaller levels are easier to solve, while larger levels introduce latency.
@@ -129,7 +125,7 @@ By default, our browser challenge is served through an {{ PRODUCT }}-branded pag
 
 -   It must contain the following mustache: {{BOT_MUSTACHE}}
 
-    This mustache is a placeholder for our JavaScript browser challenge.
+    This mustache is a placeholder for our JavaScript-based challenge.
 
     <Callout type="tip">
 
@@ -308,10 +304,10 @@ Drops the request without providing a response to the client.
 
 ## Bot Manager Configuration {/*bot-manager-configuration*/}
 
-Each rule within a Bot Manager configuration identifies bot traffic. Each rule contains:
+A Bot Manager configuration may contain up to 10 rules. Each rule within a Bot Manager configuration identifies bot traffic. Each rule contains:
 
 -   Up to 6 conditions that define request identification criteria.
--   A rule ID and message that will be associated with requests identified by this rule.
+-   A rule ID and message that will be associated with requests identified by this rule. A rule ID must be a number between 77,000,000 and 77,999,999.
 
     <Callout type="tip">
 
@@ -319,37 +315,19 @@ Each rule within a Bot Manager configuration identifies bot traffic. Each rule c
 
     </Callout>
 
-    <Callout type="info">
-
-      A rule ID must be a number between 77,000,000 and 77,999,999.
-
-    </Callout>
-
-<Callout type="info">
-
-  A Bot Manager configuration may contain up to 10 rules.
-
-</Callout>
-
 ### Custom Bot Detection {/*custom-bot-detection*/}
 
-A request must satisfy at least one rule before WAF will consider it bot traffic. A rule is satisfied when a match is found for each of its conditions. A condition defines what will be matched (i.e., variable), how it will be matched (i.e., operator), and a match value.
+A request must satisfy at least one rule before {{ PRODUCT }} will consider it bot traffic. A rule is satisfied when a match is found for each of its conditions. A condition defines what will be matched (i.e., variable), how it will be matched (i.e., operator), and a match value.
 
-<Callout type="info">
+**Key information:**
 
-  Certain variables match on key-value pairs. If you match on multiple keys within a single variable, {{ PRODUCT }} {{ PRODUCT_SECURITY }} will only need to find one of those matches to satisfy that variable.
+-   Certain variables match on key-value pairs. If you match on multiple keys within a single variable, {{ PRODUCT }} {{ PRODUCT_SECURITY }} will only need to find one of those matches to satisfy that variable.
 
-  For example, if you set up a request header variable to match for `Authorization` and `Content-Type`, then requests that contain either or both of those headers will satisfy that variable.
+    For example, if you set up a request header variable to match for `Authorization` and `Content-Type`, then requests that contain either or both of those headers will satisfy that variable.
 
-</Callout>
+-   Bot detection through a {{ PRODUCT }} Reputation DB rule has been deprecated. Although existing rules may continue to use this database, you may not assign it to a new rule.
 
-<Callout type="info">
-
-  Bot detection through a {{ PRODUCT }} Reputation DB rule has been deprecated. Although existing rules may contine to use this database, you may not assign it to a new rule.
-
-</Callout>
-
-**Example #1:**
+**Custom Bot Detection Example:** 
 
 This example assumes that your Bot Manager configuration contains the following two rules:
 
@@ -358,24 +336,10 @@ This example assumes that your Bot Manager configuration contains the following 
 | 1    | Custom matches | This rule contains a single condition. |
 | 2    | Custom matches | This rule contains two conditions.     |
 
-Assuming the above configuration, WAF identifies bot traffic whenever either of the following conditions are met:
+Assuming the above configuration, {{ PRODUCT }} identifies bot traffic whenever either of the following conditions are met:
 
 -   A match is found for the variable defined in the first rule's condition.
 -   A match is found for the variables defined in both of the second rule's conditions.
-
-**Example #2:**
-
-This example assumes that your Bot Manager configuration contains the following two rules:
-
-| Rule | Type                   | Description                                                                                                |
-|------|------------------------|------------------------------------------------------------------------------------------------------------|
-| 1    | Custom matches         | This rule contains two conditions.                                                                         |
-| 2    | {{ PRODUCT }}  Reputation DB | This rule is satisfied when the client's IP address matches an IP address within our reputation database. |
-
-Assuming the above configuration, {{ PRODUCT }} {{ PRODUCT_SECURITY }} applies bot rules protection under either of the following circumstances:
-
--   A match is found for the variables defined in both of the first rule's conditions.
--   The client's IP address matches an IP address within our reputation database.
 
 #### Conditions {/*conditions*/}
 
@@ -383,119 +347,122 @@ A condition determines how requests will be identified through variables, operat
 
 ##### Variables {/*variables*/}
 
-A variable identifies the request element that {{ PRODUCT }} {{ PRODUCT_SECURITY }} will analyze. We support the following request elements:
+A variable identifies the request element that {{ PRODUCT }} will analyze. 
 
-<a id="asn" />
+**Key information:**
 
--   **ASN:** Identifies requests by the Autonomous System Number (ASN) associated with the client's IP address.
+-   <a id="count" />All variables support the ability to match on the number of times that a request element is found within the request. Set up a variable to match on the number of instances instead of inspecting the element for a specific value or regular expression pattern by marking the **Count** option.
+-   You may define zero or more keys when setting up variables that match on key-value pairs. {{ PRODUCT }} must find at least one of the specified keys in the request before that variable will be satisfied. 
 
-    <Callout type="tip">
+    For example, if you set up a request header variable to match for `Authorization` and `Content-Type`, then requests that contain either or both of those headers will satisfy that variable.
 
-      Specify a regular expression to match for multiple ASNs.
+-   We support the following request elements:
+    -   [ASN](#asn)
+    -   [Bot score](#bot-score)
+    -   [Country](#country)
+    -   [IP address](#ip-address)
+    -   [JA3](#ja3)
+    -   [JA4](#ja4)
+    -   [Request cookies](#request-cookies)
+    -   [Request header](#request-header)
+    -   [Request method](#request-method)
+    -   [Request query](#request-query)
+    -   [Request URI](#request-uri)
+    -   [Request URL Path](#request-url-path)
 
-      **Example:**
+###### ASN {/*asn*/}
 
-      Use the following pattern to match for requests from 15133 and 14153: `15133|14153`
+Identifies requests by the Autonomous System Number (ASN) associated with the client's IP address.
+
+Specify a regular expression to match for multiple ASNs.
+
+**Example:**
+
+Use the following pattern to match for requests from 15133 and 14153: `15133|14153`
+
+###### Bot Score {/*bot-score*/}
+
+Requires Bot Manager Advanced, {{ PRODUCT }} Enterprise, or {{ PRODUCT }} Premier. Identifies requests based off a score that defines our level of confidence that it is a bot. This score is calculated by analyzing the request and its behavior. The range for this score is 0 to 100.
+
+###### Country {/*country*/}
+
+Identifies requests by the country from which the request originated. Specify the desired country using a [country code](/applications/reference/country_codes).
+
+Specify a regular expression to match for multiple country codes.
+
+**Example:**
+
+Use the following pattern to match for requests from the United States, Canada, and Mexico: `US|CA|MX`
+
+###### IP Address {/*ip-address*/}
+
+Identify requests by the requester's IP address.
+
+**Key information:** 
+
+-   Specify a comma-delimited list of the desired IP address(es) using standard IPv4/IPv6 and CIDR notation.
+-   Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., `11.22.33.0/22`).
+-   Do not specify more than 1,000 IP addresses or IP blocks.
+-   **Example:** `192.0.2.20,203.0.113.0/24,2001:DB8::/32`
+
+###### JA3 {/*ja3*/}
+
+Requires Bot Manager Advanced or {{ PRODUCT }} Premier. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic as a specific bot across various IP addresses and ports.
+
+###### JA4 {/*ja4*/}
+
+Requires {{ PRODUCT }} Premier. Identifies requests by the [JA4 fingerprint](https://github.com/FoxIO-LLC/ja4/blob/main/technical_details/JA4.md) assigned to the request. This method of traffic classification is less prone to evasion techniques than JA3.
+
+###### Request Cookies {/*request-cookies*/}
+
+Match against all or specific cookies.
+
+-   **All:** Match against all cookies by not specifying a cookie name within this variable. Specify the desired cookie value or pattern within the **Match value** option.
+-   **Specific Cookies:** Define the name of the desired cookie within this variable. Specify the desired cookie value or pattern within the **Match value** option.
+
+    <Callout type="info">
+
+      Setting up a cookie variable also allows you to define whether {{ PRODUCT }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against cookies. Use a negative match to find requests that do not contain the specified cookie.
 
     </Callout>
 
-    <a id="bot-score" />
+###### Request Header {/*request-header*/}
 
--   **Bot score:** Bot Manager Advanced only. Identifies requests based off a score that defines our level of confidence that it is a bot. This score is calculated by analyzing the request and its behavior. The range for this score is 0 to 100.
+Match against all or specific request headers.
 
-    <a id="country" />
+-   **All:** Match against all request headers by not specifying a request header name within this variable. Specify the desired header value or pattern within the **Match value** option.
+-   **Specific Request Headers:** Define the name of the desired request header within this variable and specify the desired header value or pattern within the **Match value** option.
 
--   **Country:** Identifies requests by the country from which the request originated. Specify the desired country using a [country code](/applications/reference/country_codes).
+    <Callout type="info">
 
-    <Callout type="tip">
-
-      Specify a regular expression to match for multiple country codes.
-
-      **Example:**
-
-      Use the following pattern to match for requests from the United States, Canada, and Mexico: `US|CA|MX`
+      Setting up a request header variable also allows you to define whether {{ PRODUCT }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against request headers. Use a negative match to find requests that do not contain the specified request header.
 
     </Callout>
 
-    <a id="ip-address" />
+###### Request Method {/*request-method*/}
 
--   **IP address:** Identify requests by the requester's IPv4 and/or IPv6 address.
+Match against request method (e.g., `GET` and `POST`).
 
-    -   Specify a comma-delimited list of the desired IP address(es) using standard IPv4/IPv6 and CIDR notation.
-    -   Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., 11.22.33.0/22).
-    -   Do not specify more than 1,000 IP addresses or IP blocks.
+###### Request Query {/*request-query-string*/}
 
-    **Example:** `192.0.2.20,203.0.113.0/24,2001:DB8::/32`
+Match against the request's query string. Specify the desired value or pattern within the **Match value** option.
 
-    <a id="ja3" />
+###### Request URI {/*request-uri*/}
 
--   **Ja3:** Bot Manager Advanced only. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic as a specific bot across various IP addresses and ports.
+Match against the request's URL path and query string. Define a URL path that starts directly after the hostname. Exclude the protocol and hostname when defining this property.
 
-    <a id="request-cookies" />
+**Sample values:** `/marketing?id=123456` and `/resources/images`
 
--   **Request cookies:** Match against all or specific cookies.
+###### Request URL Path {/*request-url-path*/}
 
-    -   **All:** Do not specify the desired cookie within this variable. Specify the desired cookie value or pattern within the **Match value** option.
-    -   **Specific Cookies:** Define the name of the desired cookie within this variable. Specify the desired cookie value or pattern within the **Match value** option.
+Match against the request's URL path. Define a URL path that starts directly after the hostname. Exclude the protocol, hostname, and query string when defining this property.
 
-        <Callout type="info">
-
-          Setting up a cookie variable also allows you to define whether {{ PRODUCT }} {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against cookies. Use a negative match to find requests whose payload does not
-          contain the specified cookie.
-
-        </Callout>
-
-    <a id="request-header" />
-
--   **Request header:** Match against all or specific request headers.
-
-    -   **All:** Do not specify the desired request header within this variable and specify the desired header value or pattern within the **Match value** option.
-    -   **Specific Request Headers:** Define the name of the desired request header within this variable and specify the desired header value or pattern within the **Match value** option.
-
-        <Callout type="info">
-
-          Setting up a request header variable also allows you to define whether {{ PRODUCT }} {{ PRODUCT_SECURITY }} uses a regular expression, a negative match, or both when comparing the value assigned to the variable against request headers. Use a negative match to find requests whose
-          payload does not contain the specified request header.
-
-        </Callout>
-
-    <a id="request-method" />
-
--   **Request method:** Match against request method (e.g., `GET` and `POST`).
-
-    <a id="request-query-string" />
-
--   **Request query:** Match against the request's query string. Specify the desired value or pattern within the **Match value** option.
-
-    <a id="request-uri" />
-
--   **Request URI:** Match against the request's URL path and query string. Define a URL path that starts directly after the hostname. Exclude the protocol and hostname when defining this property.
-
-    **Sample values:** `/marketing?id=123456` and `/resources/images`
-
-    <a id="request-url-path" />
-
--   **Request URL path:** Match against the request's URL path. Define a URL path that starts directly after the hostname. Exclude the protocol, hostname, and query string when defining this property.
-
-    **Sample values:** `/marketing` and `/resources/images`
-
-    <a id="count" />
-
-<Callout type="info">
-
-  All variables support the ability to match on the number of times that a request element is found within the request. Set up a variable to match on the number of instances instead of inspecting the element for a specific value or regular expression pattern by marking the **Count** option.
-
-</Callout>
-
-<Callout type="info">
-
-  You may define zero or more keys when setting up variables that match on key-value pairs. {{ PRODUCT }} {{ PRODUCT_SECURITY }} must find at least one of the specified keys in the request before that variable will be satisfied. For example, if you set up a request header variable to match for `Authorization` and `Content-Type`, then requests that contain either or both of those headers will satisfy that variable.
-
-</Callout>
+**Sample values:** `/marketing` and `/resources/images`
 
 ##### Operators {/*operators*/}
 
-An operator determines how {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare a match value against the request element identified by a variable.
+An operator determines how {{ PRODUCT }} will compare a match value against the request element identified by a variable.
+
 -   **Begins with:** A match is found when the request element starts with the specified match value.
 -   **Contains:** A match is found when the request element contains the specified match value.
 -   **Ends with:**  A match is found when the request element ends with the specified match value.
@@ -518,46 +485,45 @@ An operator determines how {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare a 
 
 ##### Match Value {/*match-value*/}
 
-{{ PRODUCT }} {{ PRODUCT_SECURITY }} uses a match value to identify threats.
--   **Default:** By default, {{ PRODUCT }} {{ PRODUCT_SECURITY }} compares a match value against the request element identified by a variable (e.g., URL path or a
-    request header's value).
+{{ PRODUCT }} uses a match value to identify threats.
+
+-   **Default:** By default, {{ PRODUCT }} compares a match value against the request element identified by a variable (e.g., URL path or a request header's value).
 -   **Count:** Enable the **Count** option on a variable to compare this value against the number of times that the request element identified by a variable (e.g., a specific cookie or request header) occurs within the request.
 
-**Example:**
+    **Example:**
 
-This example assumes the following configuration:
+    This example assumes the following configuration:
 
-```
-Variable: Request header = Authentication
-Match value: 1
-```
+    ```
+    Variable: Request header = Authentication
+    Match value: 1
+    ```
 
-We will now examine how the **Count** option affects comparisons for this configuration.
--   **Disabled:** If the **Count** option has been disabled on the variable, then {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare the value of the
-    `Authentication` request header to `1`.
--   **Enabled:** If the **Count** option has been enabled on the variable, then {{ PRODUCT }} {{ PRODUCT_SECURITY }} will compare the number of times that the
-    `Authentication` request header occurred in the request to *1*.
+    We will now examine how the **Count** option affects comparisons for this configuration.
+    -   **Disabled:** If the **Count** option has been disabled on the variable, then {{ PRODUCT }} will compare the value of the
+        `Authentication` request header to `1`.
+    -   **Enabled:** If the **Count** option has been enabled on the variable, then {{ PRODUCT }} will compare the number of times that the `Authentication` request header occurred in the request to *1*.
 
-<Callout type="info">
+    <Callout type="info">
 
-  The type of comparison that will be performed is determined by the **Operator** option.
+      The type of comparison that will be performed is determined by the **Operator** option.
 
-</Callout>
+    </Callout>
 
 ## Exceptions {/*exceptions*/}
 
-Bot Manager Advanced allows you to exempt traffic from bot detection by URL, user agent, JA3 fingerprint, and cookie.
+Bot Manager Advanced allows you to exempt traffic from bot detection by URL, user agent, JA3 fingerprint, and cookie. {{ PRODUCT }} Premier customers may also exempt traffic by JA4 fingerprint. 
 
 **Key information:**
 
 -   Define each entry on a separate line.
 -   URL, user agents, and cookies are regular expressions.
--   A JA3 fingerprint identifies a client using key characteristics from a TLS request.
--   Our service will only bypass bot detection when it finds an exact match for a JA3 fingerprint exception.
+-   A JA3 or JA4 fingerprint identifies a client using key characteristics from a TLS request.
+-   Our service will only bypass bot detection when it finds an exact match for an exception.
 
     <Callout type="info">
 
-      Use the **Security** dashboard to find the JA3 fingerprint that corresponds to a false positive.
+      Use the Security dashboard to find the JA3 or JA4 fingerprint that corresponds to a false positive.
 
     </Callout>
 
@@ -574,16 +540,26 @@ You may create, modify, and delete Bot Manager configurations.
 1.  Navigate to the **Bot Manager** page.
     {{ SECURITY_NAV }} **Bot Manager**.
 2.  Click **+ New Bot Manager**.
-3.  In the **Name** option, type the unique name by which this Bot Manager configuration will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application Manager configuration.
+3.  <a id="create-name" />In the **Name** option, type the unique name by which this Bot Manager configuration will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application Manager configuration.
 4.  Set up the desired enforcement action(s).
 
-    <Callout type="info">
+    ![Enforcement actions](/images/v7/security/bot_manager_configuration_actions.png?width=450)
 
-      Bot Manager Standard only supports browser challenges. Once you have defined a browser challenge, skip to step 7.
+    -   **Bot Manager Standard:** This version only supports browser challenges. Review and revise your browser challenge configuration as needed and then skip to step 6.
+    -   **Bot Manager Advanced:** This version supports all enforcement actions. 
 
-    </Callout>
+        <Info>
+          The behavior of the alert, block, and silent close actions cannot be configured. 
+        </Info>
 
-    -   Perform the following steps to set up a browser challenge:
+        <Info>
+          Unlike other enforcement actions, you must configure the reCAPTCHA and redirect actions before they will be available for selection as enforcement actions.
+        </Info>
+
+
+    **Browser Challenge** 
+
+    The default configuration is suitable for basic bot mitigation. Perform the following steps to customize this enforcement action:
 
         1.  From the **HTTP status code** option, determine the HTTP status code for the response provided to clients that are being served the browser challenge.
 
@@ -595,106 +571,111 @@ You may create, modify, and delete Bot Manager configurations.
 
         2.  From the **Valid for (in seconds)** option, type the number of seconds for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge to be solved. Specify a value between 1 and 1,000,000 seconds.
         3.  Serve a custom browser challenge by enabling the **Custom Browser Challenge Page** option and then setting the **Browser Challenge Page Template** option to the desired payload.
+        4.  **Bot Manager Advanced:** Increase the [difficulty of this JavaScript-based challenge](#difficulty-based) by setting the **Browser challenge level** option to `Difficulty-based` and then selecting the desired difficulty from the **Browser challenge difficulty** option. 
 
-    -   **Bot Manager Advanced:** Set up a browser challenge (see above), custom response, or redirect that can be applied to known bots, spoofed bots, and bots detected through rules.
+    **Custom Response** 
+
+    Perform the following steps:
+
+    1.  From the **Actions** section, select **Custom Response**.
+    2.  In the **Response Body** option, specify the body of the response that will be sent to clients.
+    3.  In the **HTTP status code** option, set the HTTP status code for the response that will be sent to clients.
+    4.  In the **Response Headers** option, define each desired [custom response header](#custom-response) on a separate line.
+
+        **Example:** `MyCustomHeader: True`
+
+    **reCAPTCHA** 
+
+    Perform the following steps to set up a reCAPTCHA:
+
+    1.  Set the **Rule Action** option to the enforcement action that will be applied when a client's reCAPTCHA score falls below an acceptable level.
+    2.  In the **Action Status** option, set the HTTP status code for the response provided to clients that are being served the reCAPTCHA.
 
         <Callout type="info">
 
-          Unlike other actions, alert actions do not require configuration before they can be applied to bot traffic.
+          Setting this option to certain status codes (e.g., `204`) may prevent clients from properly displaying your site.
 
         </Callout>
 
-        -   **Block:** From the **Actions** section, select **Block** and then toggle it to the on position.
+    3.  In the **Valid for (in seconds)** option, type the number of seconds for which our CDN will serve content to a client with an acceptable reCAPTCHA score without reassessment. Specify a value between 1 and 1,000,000 seconds.
 
-        -   **Custom Response:** Perform the following steps:
+    <Callout type="important">
 
-            1.  From the **Actions** section, select **Custom Response**.
-            2.  From the **Response Body** option, specify the body of the response that will be sent to clients.
-            3.  From the **HTTP status code** option, determine the HTTP status code for the response that will be sent to clients.
-            4.  From the **Response Headers** option, define each desired [custom response header](#custom-response) on a separate line.
+      You must enable reCAPTCHA within a Security Application configuration and provide your Google reCAPTCHA site and secret keys.
 
-                **Example:** `MyCustomHeader: True`
+    </Callout>
 
-        -   **reCAPTCHA:** Perform the following steps to set up a reCAPTCHA:
+    **Redirect** 
 
-            1.  Set the **Rule Action** option to the enforcement action that will be applied when a client's reCAPTCHA score falls below an acceptable level.
-            2.  From the **Action Status** option, determine the HTTP status code for the response provided to clients that are being served the reCAPTCHA.
+    Set the **URL** option to the full URL to which requests will be redirected.
 
-                <Callout type="info">
-
-                  Setting this option to certain status codes (e.g., `204`) may prevent clients from properly displaying your site.
-
-                </Callout>
-
-            3.  From the **Valid for (in seconds)** option, type the number of seconds for which our CDN will serve content to a client with an acceptable reCAPTCHA score without reassessment. Specify a value between 1 and 1,000,000 seconds.
-
-            <Callout type="important">
-
-              You must enable reCAPTCHA within a Security Application configuration and provide your Google reCAPTCHA site and secret keys.
-
-            </Callout>
-
-        -   **Redirect:** Set the **URL** option to the full URL to which requests will be redirected.
-
-5.  Bot Manager Advanced only. Perform the following steps to automatically detect known bots:
+5.  **Bot Manager Advanced:** Set up known bot and spoofed bot detection.
 
     1.  From the left-hand pane, verify that **Known Bots** is selected.
-    2.  Select whether to apply an action to all known bots (**Toggle all**), a specific bot, or to 200+ bots (**other**).
+    2.  Select whether to apply an action to all known bots, a specific bot, or to 200+ bots (**other**).
 
         <Callout type="info">
 
-          Toggle **other** to apply an action to 200+ known good bots. This option excludes the bots listed on the **Known Bots** tab.
+          Toggle **other** to apply an action to 200+ known bots. This option excludes the bots listed above it.
 
         </Callout>
 
     3.  From the **Actions** column, select the action that will be applied to each known bot that was enabled in the previous step.
-    4.  Repeat steps 2 and 3 as needed.
+    4.  From the **Spoof Actions** column, select the action that will be applied to requests that spoof each known bot that was enabled in step 5.ii.
+    5.  Repeat steps ii - iv as needed.
 
-6.  Bot Manager Advanced only. The **Spoofed Bots** section determines how to handle traffic that spoofs the known bots selected in the previous step. From the **Rule Action** option, select the desired action.
+6.  Review the default rule(s) for identifying bots from the **Bot Rules** tab. 
 
-    <Callout type="info">
+    -   **Bot Manager Standard:** By default, a browser challenge will be served when the request's user agent contains the word `bot`. 
+    -   **Bot Manager Advanced:** A new Bot Manager configuration contains the following two rules:
+        -   **Bot Score > 90:** This rule flags a request when its bot score is greater than 90. A high bot score is a good indicator that the request was submitted by a bot.
+        -   **JA3 Block placeholder:** Update the placeholder value defined within this rule with the JA3 fingerprints that will be blocked. If you do not wish to block requests by JA3 fingerprint, then you should delete this rule by clicking on it and then clicking the <Image inline src="/images/v7/icons/delete-2.png" alt="Delete" /> icon.
 
-      The **Spoofed Bots** section does not apply to the 200+ known bots defined within the `other` category.
+6.  Optional. Create rules for identifying bots from the **Bot Rules** tab. A rule is satisfied when a match is found for each of its conditions.
 
-    </Callout>
-
-7.  Create rules for identifying bots from the **Bot Rules** tab.
-
-    1.  Click **+ New Rule**. A rule is satisfied when a match is found for each of its conditions.
+    1.  Click **+ New Rule**. 
     2.  In the **Rule message** option, type a brief description for this rule.
     3.  In the **Rule Action** option, choose how this rule will be enforced.
     4.  In the **Rule ID** option, specify a number between 77,000,000 and 77,999,999.
-    5.  Modify the default condition to determine how WAF will identify requests. From the condition's **Variable** option, select the request element through which WAF will identify requests.
+    5.  Modify the default condition to determine how {{ PRODUCT }} will identify requests. 
 
-        [Learn more about variables.](#variables)
+        1.  From the condition's **Variable** option, select the [request element](#variables) through which {{ PRODUCT }} will identify requests.
 
-    6.  Certain variables (e.g., request cookies and request header) match on name and value. If you have selected this type of variable, then perform the following steps:
+        2.  Optional. Mark the **Count** option to match by the [number of instances that a match is found](#count) instead of by inspecting that request element.
+        3.  Certain variables (e.g., request cookies and request header) match on name and value. If you have selected this type of variable, then perform the following steps:
 
-        1.  Click **+ Add Match**.
-        2.  From the **Name** option, type the desired name.
+            1.  Under the **Matches** section, click **+ Add Match**.
+            2.  From the **Name** option, type the desired name (e.g., cookie name or the request header name).
 
-            For example, match for requests that contain an `Authorization` header by setting this option to `Authorization`.
+                For example, match for requests that contain an `Authorization` header by setting this option to `Authorization`.
 
-        3.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the name defined in the previous step.
-        4.  If you specified a regular expression in the **Name** option, then you should mark the **Regex Match** option.
-        5.  Optional. Add another match through which this variable can be satisfied by repeating the above steps.
-    7.  Optional. Mark the **Count** option to match by the number of instances that a match is found instead of by inspecting that request element.
+            3.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the name defined in the previous step.
+            4.  If you specified a regular expression in the **Name** option, then you should mark the **Regex Match** option.
+            5.  Optional. Add another match through which this variable can be satisfied by repeating the above steps.
 
-        [Learn more.](#count)
+        4.  From the **Operator** option, select an operator that determines how {{ PRODUCT }} will compare the match value to the request element identified by the above variable.
 
-    8.  From the **Operator** option, select an operator that determines how WAF will compare the match value to the request element identified by the above variable.
+            [Learn more.](#operators)
 
-        [Learn more.](#operators)
+        5.  In the **Match value** option, type either of the following values:
 
-    9.  In the **Match value** option, type the value that will be compared against the request element identified by the above variable.
-    10.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the value defined in the previous step.
-    11.  Optional. Click **+ Add Condition** to add another condition that must be met prior to request identification.
+            -   **Count Option - Disabled:** Type the value that will be compared against the value associated with the request element identified by the variable selected in step a.
+            -   **Count Option - Enabled:** Type the number of instances that a match must be found within a single request. 
+            
+                For example, if you are counting the `Set-Cookie` header, then this numerical value determines the number of times that the `Set-Cookie` header must be found within a request. 
 
-8.  Optional. Add another rule by repeating step 7.
-9.  Optional. Bot Manager Advanced only. Identify traffic that will bypass bot detection.
+        6.  Optional. Mark the **Negative Match** option to match for requests that do not contain a matching value for the value defined in the previous step.
+    6.  Optional. Add another condition by clicking **+ Add Condition**.
+
+        <Info>
+          A rule's action is only applied to a request when it satisfies all of the conditions defined within that rule. 
+        </Info>
+
+    7.  Optional. Add another rule by repeating the above steps.
+7.  **Bot Manager Advanced:** Optional. Identify traffic that will bypass bot detection.
 
     1.  Click the **Exceptions** tab.
-    2.  Add the desired URL(s), user agent(s), JA3 fingerprint(s), and cookie(s) as [exception(s)](#exceptions).
+    2.  Add the desired URL(s), user agent(s), JA3 fingerprint(s), JA4 fingerprint(s), and cookie(s) as [exception(s)](#exceptions).
 
         <Callout type="info">
 
@@ -702,7 +683,7 @@ You may create, modify, and delete Bot Manager configurations.
 
         </Callout>
 
-10.  Click **Save**.
+8.  Click **Save**.
 
 **To modify a Bot Manager configuration**
 1.  Navigate to the **Bot Manager** page.
@@ -711,9 +692,9 @@ You may create, modify, and delete Bot Manager configurations.
 3.  Make the desired changes.
 
     **Key tasks:**
-    -   Bot Manager Advanced only. Add, modify, or delete an action.
-    -   Bot Manager Advanced only. Set or modify the action that will be taken for all known bots, specific known bots, and spoofed bots from the **Known Bots** tab.
-    -   Bot Manager Advanced only. Update your exceptions to bot detection by adding, modifying, or deleting entries from the **Exceptions** tab.
+    -   Bot Manager Advanced: Add, modify, or delete an action.
+    -   Bot Manager Advanced: Set or modify the action that will be taken for all known bots, specific known bots, and spoofed bots from the **Known Bots** tab.
+    -   Bot Manager Advanced: Update your exceptions to bot detection by adding, modifying, or deleting entries from the **Exceptions** tab.
     -   Change the [type of rule](#request-identification) from the **Rule type** option.
     -   **Custom matches only:** Delete variables and matches within a variable by clicking the <Image inline src="/images/v7/icons/remove.png" alt="Delete" /> (delete) icon.
     -   **Custom matches only:** Delete a condition by clicking **Delete Condition**.
@@ -728,6 +709,12 @@ You may create, modify, and delete Bot Manager configurations.
 4.  Click **Save**.
 
 **To delete a Bot Manager configuration**
+
+<Callout type="important">
+
+  You cannot delete a Bot Manager configuration that is associated with a Security Application configuration. Please either modify the Security Application configuration to point to a different Bot Manager configuration or delete that Security Application configuration.
+
+</Callout>
 
 1.  Navigate to the **Bot Manager** page.
     {{ SECURITY_NAV }} **Bot Manager**.

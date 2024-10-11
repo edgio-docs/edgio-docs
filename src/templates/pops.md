@@ -14,7 +14,6 @@
 | BUR | Los Angeles | North America |
 | CDC | Ashburn | North America |
 | CGK | Jakarta | Asia |
-| CHA | Chicago | North America |
 | CHD | Chicago | North America |
 | CHF | Chicago | North America |
 | CJU | Seoul, Republic of South Korea | Asia |
@@ -92,7 +91,6 @@
 | TKA | Tokyo | Asia |
 | TKB | Tokyo | Asia |
 | TKC | Tokyo | Asia |
-| TLC | Mexico City | North America |
 | TPE | Taipei | Asia |
 | UAE | Fujairah, United Arab Emirates | Europe |
 | VAL | Valparaiso | South America |

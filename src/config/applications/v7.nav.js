@@ -174,6 +174,10 @@ const nav = {
           path: 'performance/prefetching',
           routes: [
             {
+              title: 'Automatic Setup',
+              path: 'performance/prefetching/automatic_prefetching_setup',
+            },
+            {
               title: 'Manual Setup',
               path: 'performance/prefetching/prefetching_script_tag',
             },
@@ -349,7 +353,7 @@ const nav = {
       icon: 'shield',
       routes: [
         {
-          title: 'Website Security (EdgeJS)',
+          title: 'Basic Website Security',
           path: 'security/edgejs_security',
         },
         {
@@ -370,7 +374,7 @@ const nav = {
         },
         separator,
         {
-          title: 'Web Application Firewall (WAF)',
+          title: 'Web Application and API Protection',
           path: 'security/waf',
         },
         {
@@ -406,7 +410,7 @@ const nav = {
           path: 'security/client_side_protection',
         },
         {
-          title: 'Security Apps',
+          title: 'Security Application Manager',
           path: 'security/security_applications',
         },
         {

@@ -120,7 +120,8 @@ const nav = {
         },
         {
           title: 'Live Stream Provisioning',
-          path: 'video/apis/live_stream_provisioning',
+          path: 'https://support.limelight.com/public/openapi/live-stream-provisioning/index.html',
+          external: true,
         },
         {
           title: 'Realtime Reporting',
@@ -137,7 +138,8 @@ const nav = {
         },
         {
           title: 'Video',
-          path: 'video/apis/content_api_developers_api_reference',
+          path: 'https://support.limelight.com/public/video/en/Default.htm#Video/Video%20-%20Platform/Guide/content_api.htm#Create_a_new_channel_group',
+          external: true,
         },
         separator,
         {

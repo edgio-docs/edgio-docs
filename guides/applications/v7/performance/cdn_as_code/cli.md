@@ -2,6 +2,8 @@
 title: CLI
 ---
 
+{{ ROUTEHELPER.md }}
+
 This guide shows you everything you can do with the {{ PRODUCT_NAME }} command line interface.
 
 <Callout type="info">
@@ -12,21 +14,23 @@ By default, {{ PRODUCT }} CLI v5.1.0+ collects usage and error reporting informa
 
 ## Installation {/* installation */}
 
-To install, or upgrade to the latest, {{ PRODUCT_NAME }} CLI run
+Install the {{ PRODUCT_NAME }} CLI or upgrade to the latest version by running:
 
-```bash
-npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
-```
+<SnippetGroup>
 
-Or with yarn
+    ```bash tabLabel="npm"
+    npm i -g {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
+    ```
 
-```bash
-yarn global add {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
-```
+    ```bash tabLabel="yarn"
+    yarn global add {{ PACKAGE_NAME }}/cli@{{ PACKAGE_VERSION }}
+    ```
+
+</SnippetGroup>
 
 ## Upgrade Project to Latest Version {/* upgrade-project-to-latest-version */}
 
-If you already have a project running on {{ PRODUCT_NAME }} and you want to update packages to the most recent release of `{{ PACKAGE_NAME }}`, simply run:
+Update the packages for an existing {{ PRODUCT }} property to the latest version by running:
 
 ```bash
 {{ FULL_CLI_NAME }} use {{ PACKAGE_VERSION}}
@@ -35,6 +39,8 @@ If you already have a project running on {{ PRODUCT_NAME }} and you want to upda
 Before deploying your property, verify that all functionality, including request/response data, is as expected.
 
 ## Commands {/* commands */}
+
+CLI commands are described below.
 
 ### build {/* build */}
 
@@ -63,8 +69,8 @@ specified environment will be cleared.
 
 | Name                  | Description                                                                    |
 | --------------------- | ------------------------------------------------------------------------------ |
-| `--team`              | <ul><li>**{{PRODUCT }} CLI version 7.2.2 or higher:** Deprecated. Use `--organization` instead. </li><li>**{{PRODUCT }} CLI version 7.2.1 or lower:** (Required) The organization name</li></ul>         |
-| `--organization`      | **{{PRODUCT }} CLI version 7.2.2 or higher:** (Required) The organization name |
+| `--team`              | <ul><li>**{{PRODUCT }} CLI version 7.2.2 or later:** Deprecated. Use `--organization` instead. </li><li>**{{PRODUCT }} CLI version 7.2.1 or earlier:** (Required) The organization name</li></ul>         |
+| `--organization`      | **{{PRODUCT }} CLI version 7.2.2 or later:** (Required) The organization name |
 | `--property`          | (Required) The property name                                                   |
 | `--environment`       | (Required) The environment name                                                |
 | `--path, -p`          | A path to clear. Use "\*" as a wildcard                                        |
@@ -74,11 +80,11 @@ specified environment will be cleared.
 
 <SnippetGroup>
 
-    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
+    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or later"
     {{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my-property --environment=production --path=/p/*
     ```
 
-    ```bash tabLabel="Version 7.2.1 or lower"
+    ```bash tabLabel="Version 7.2.1 or earlier"
     {{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my-property --environment=production --path=/p/*
     ```
 
@@ -221,8 +227,8 @@ Builds and deploys your property on {{ PRODUCT_NAME }}.
 
 | Name                       | Description                                                                                                                                                                                                                                                                                                                                 |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--team, -t`               | <ul><li>**{{PRODUCT }} CLI version 7.2.2 or higher:** Deprecated. Use `--organization` instead. </li><li>**{{PRODUCT }} CLI version 7.2.1 or lower:** The name of the organization under which the property will be deployed. If omitted, the `team` config in `{{ CONFIG_FILE }}` will be used, or deployed to your private space if omitted. </li></ul>                                                                                                                                                            |
-| `--organization`           | **{{PRODUCT }} CLI version 7.2.2 or higher:** The name of the organization under which the property will be deployed. If omitted, the `team` config in `{{ CONFIG_FILE }}` will be used, or deployed to your private space if omitted.     |
+| `--team, -t`               | <ul><li>**{{PRODUCT }} CLI version 7.2.2 or later:** Deprecated. Use `--organization` instead. </li><li>**{{PRODUCT }} CLI version 7.2.1 or earlier:** The name of the organization under which the property will be deployed. If omitted, the `team` config in `{{ CONFIG_FILE }}` will be used, or deployed to your private space if omitted. </li></ul>                                                                                                                                                            |
+| `--organization`           | **{{PRODUCT }} CLI version 7.2.2 or later:** The name of the organization under which the property will be deployed. If omitted, the `team` config in `{{ CONFIG_FILE }}` will be used, or deployed to your private space if omitted.     |
 | `--property`               | The name of the property to deploy. By default the `name` field in `{{ CONFIG_FILE }}` or `package.json` is used.                                                                                                                                                                                                                           |
 | `--environment, -e`        | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                                                                 |
 | `--branch, -b`             | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                                                            |
@@ -293,8 +299,8 @@ Manage deployed property's environments and environment variables.
 
 | Name                | Description                                                                           |
 | ------------------- | ------------------------------------------------------------------------------------- |
-| `--team, -t`               | <ul><li>**{{PRODUCT }} CLI version 7.2.2 or higher:** Deprecated. Use `--organization` instead. </li><li>**{{PRODUCT }} CLI version 7.2.1 or lower:** The name of the organization under which the property belongs. Uses private space if omitted.</li></ul>                                                                                                                                                            |
-| `--organization`           | **{{PRODUCT }} CLI version 7.2.2 or higher:** The name of the organization under which the property belongs. Uses private space if omitted.     |
+| `--team, -t`               | <ul><li>**{{PRODUCT }} CLI version 7.2.2 or later:** Deprecated. Use `--organization` instead. </li><li>**{{PRODUCT }} CLI version 7.2.1 or earlier:** The name of the organization under which the property belongs. Uses private space if omitted.</li></ul>                                                                                                                                                            |
+| `--organization`           | **{{PRODUCT }} CLI version 7.2.2 or later:** The name of the organization under which the property belongs. Uses private space if omitted.     |
 | `--property`        | The property to pull variables from. Uses package.json name property if omitted.      |
 | `--environment, -e` | Environment to pull variables from. Uses default environment if omitted.              |
 | `--path`            | Path to your site's root directory. Uses current directory by default.                |
@@ -303,11 +309,11 @@ Manage deployed property's environments and environment variables.
 
 <SnippetGroup>
 
-    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
+    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or later"
     {{ FULL_CLI_NAME }} env pull .env.local --organization my-organization --property my-property --environment production
     ```
 
-    ```bash tabLabel="Version 7.2.1 or lower"
+    ```bash tabLabel="Version 7.2.1 or earlier"
     {{ FULL_CLI_NAME }} env pull .env.local --team my-organization --property my-property --environment production
     ```
 
@@ -331,24 +337,24 @@ If you are not using the latest version of {{ PRODUCT }}, then you must specify 
 
 #### Options {/* options */}
 
-| Name                              | Description                                                                                                                                                                                                                                                                                                                                 |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--{{PRODUCT_NAME_LOWER}}Version` | The version of {{ PRODUCT_NAME }} to install. Defaults to `latest`.                                                                                                                                                                                                                                                                         |
-| `--skip{{PRODUCT_NAME}}Deps`      | Skips installing {{ PRODUCT_NAME }} packages.                                                                                                                                                                                                                                                                                               |
+| Name                              | Description                                                                                                                                                                                                                                                                                                                                       |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--{{PRODUCT_NAME_LOWER}}Version` | The version of {{ PRODUCT_NAME }} to install. Defaults to `latest`.                                                                                                                                                                                                                                                                               |
+| `--skip{{PRODUCT_NAME}}Deps`      | Skips installing {{ PRODUCT_NAME }} packages.                                                                                                                                                                                                                                                                                                     |
 | `--connector`                     | The name of a specific connector package to install, or a path to a directory that implements the [connector interface](/applications/sites_frameworks/connectors#implementing-a-connector-directly-within-your-project).                                                                                                                         |
-| `--name`                          | The name of the property. Defaults to the `name` field in `package.json`.                                                                                                                                                                                                                                                                   |
-| `--team, -t`                      | The name of the organization under which the property belongs. Uses private space if omitted.                                                                                                                                                                                                                                                       |
-| `--origin`                        | The domain or IP address of the origin to use for the property.                                                                                                                                                                                                                                                                             |
-| `--deploy`                        | Deploys the property after initializing.                                                                                                                                                                                                                                                                                                    |
-| `--skipFramework, --sf`           | Skips installing the framework (Next.js, Vue, Angular, etc..) and simply rebundles your router.                                                                                                                                                                                                                                             |
+| `--name`                          | The name of the property. Defaults to the `name` field in `package.json`.                                                                                                                                                                                                                                                                         |
+| `--team, -t`                      | The name of the organization under which the property belongs. Uses private space if omitted.                                                                                                                                                                                                                                                     |
+| `--origin`                        | The domain or IP address of the origin to use for the property.                                                                                                                                                                                                                                                                                   |
+| `--deploy`                        | Deploys the property after initializing.                                                                                                                                                                                                                                                                                                          |
+| `--skipFramework, --sf`           | Skips installing the framework (Next.js, Vue, Angular, etc..) and simply rebundles your router.                                                                                                                                                                                                                                                   |
 | `--includeSources`                | Includes all non-gitignored source files in the bundle uploaded to {{ PRODUCT_NAME }}. This can be helpful when debugging, especially when working with {{ PRODUCT_NAME }} support. You can limit the files that are uploaded using the [sources](/applications/performance/cdn_as_code/edgio_config#sources) configuration in {{ CONFIG_FILE }}. |
-| `--disablePermanentAssets`        | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                      |
-| `--property`                      | The name of the property to deploy. By default the `name` field in `{{ CONFIG_FILE }}` or `package.json` is used.                                                                                                                                                                                                                           |
-| `--skip-build`                    | Skips running the `{{ CLI_CMD(build) }}` command, including the framework build, and uses the previous build instead.                                                                                                                                                                                                                       |
-| `--path`                          | Path to your site's root directory. Uses current directory by default.                                                                                                                                                                                                                                                                      |
-| `--branch, -b`                    | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                                                            |
-| `--environment, -e`               | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                                                                 |
-| `--commit-url`                    | The URL at which the commit can be viewed in your source control provided. If your package.json provides the repository attribute the commit URL will be derived automatically if you use GitHub, GitLab, or BitBucket.                                                                                                                     |
+| `--disablePermanentAssets`        | Set this to true to suppress errors like "Immutable file (...) content was changed" during deployment.                                                                                                                                                                                                                                            |
+| `--property`                      | The name of the property to deploy. By default the `name` field in `{{ CONFIG_FILE }}` or `package.json` is used.                                                                                                                                                                                                                                 |
+| `--skip-build`                    | Skips running the `{{ CLI_CMD(build) }}` command, including the framework build, and uses the previous build instead.                                                                                                                                                                                                                             |
+| `--path`                          | Path to your site's root directory. Uses current directory by default.                                                                                                                                                                                                                                                                            |
+| `--branch, -b`                    | The name of the source control branch. This is automatically set when using Git.                                                                                                                                                                                                                                                                  |
+| `--environment, -e`               | The environment to deploy to. By default the `default` environment is used.                                                                                                                                                                                                                                                                       |
+| `--commit-url`                    | The URL to the main page of the desired source control repository followed by the `commit` subfolder (e.g., `https://github.com/edgio-docs/edgio-docs/commit`). This commit URL can be automatically derived when `package.json` provides the `repository` attribute and you are using GitHub, GitLab, or BitBucket.                              |
 | `--disable-team-check`            | Skips the check to see if the property is being deployed to a private space and also exists within an organization.                                                                                                                                                                                                                               |
 
 ### login {/* login */}

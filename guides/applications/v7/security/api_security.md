@@ -6,10 +6,11 @@ Use API Security to:
 
 -   Validate JSON Web Tokens (JWT). 
 -   Define valid payloads for API requests through one or more API schema(s).
--   {{ PRODUCT }} categorizes a request as a threat when it satisfies one of the following conditions:
+-   A request violates your API Security configuration when it satisfies one of the following conditions:
     -   JWT validation is enabled and {{ PRODUCT }} is unable to verify the JWT.
     -   The payload violates at least one requirement defined within your API schema.
--   Discover the APIs that have been requested in the last 30 days.
+-   Discover the APIs that have been requested in the last 30 days by reviewing the **API Discovery** section of the **API Security** page.
+-   Review violations of your API Security configuration through the **WAF Events** view of the {{ PRODUCT_SECURITY }} dashboard.
 
 <Callout type="info">
 
@@ -35,7 +36,7 @@ Set up an API Security configuration by performing the following steps:
 
     </Callout>
 
-2.  Assign an API Security rule to a Security App configuration and define the enforcement action that will be applied to requests that contain an invalid JWT or violate the API schema(s) defined in the previous step.
+2.  Assign an API Security rule to a Security Application configuration and define the enforcement action that will be applied to requests that contain an invalid JWT or violate the API schema(s) defined in the previous step.
 
 <Callout type="tip">
 
@@ -53,11 +54,11 @@ An API Security rule identifies the set of requests that will undergo schema val
     -   [Wildcard match:](#wildcard-match) Restrict inspection to a wildcard pattern for the relative path.
     -   [Regex match:](#regex-match) Restrict inspection to a regular expression for the relative path.
 
-        <Callout type="info">
+    <Callout type="info">
 
-          Wildcard and regular expression match comparison modes require {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ ACCOUNT_UPGRADE }}
+      Wildcard and regular expression match comparison modes require {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ ACCOUNT_UPGRADE }}
 
-        </Callout>
+    </Callout>
 
 -   **Method(s):** You may restrict payload inspection to one or more of the following HTTP method(s): `PUT | POST | PATCH`
 
@@ -65,71 +66,61 @@ An API Security rule identifies the set of requests that will undergo schema val
 
 {{  PRODUCT }} {{ PRODUCT_SECURITY }} compares the specified value(s) against the entire relative URL path. It will only inspect a request when one of the specified value(s) is an exact match. This comparison is case-sensitive.
 
-**Sample Configuration:**
-
-`/cat`
-
-`/bat`
-
-**Matches:**
-
-`/cat`
-
-`/bat`
-
-**Does Not Match:**
-
-`/Cat`
-
-`/Bat`
-
-`/Category`
-
-`/Moscato`
-
-`/Batch`
+| Sample Configuration | Matches | Does Not Match                     |
+| -------------------- | ------- | ---------------------------------- |
+| cat                  | cat     | Cat <br /> Category <br /> Moscato |
+| bat                  | bat     | Bat <br /> Batch                   |
 
 #### Wildcard Match {/*wildcard-match*/}
 
-{{  PRODUCT }} {{ PRODUCT_SECURITY }} checks whether the entire relative URL path is a case-sensitive match for the wildcard pattern. The supported set of wildcards are listed below.
+Requires {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{  PRODUCT }} {{ PRODUCT_SECURITY }} checks whether the entire relative URL path is a case-sensitive match for the wildcard pattern. The supported set of wildcards are listed below.
 -   **\*:** Matches zero or more characters.
-    -   **Example:** `/cat*`
-    -   **Matches:** `/cat | /category`
-    -   **Does not match:** `/cAt | /Category | /muscat`
+
+    | Sample Configuration | Matches                         | Does Not Match     |
+    | -------------------- | ------------------------------- | ------------------ |
+    | cat*                 | cat <br />category <br />muscat | cAt <br />Category |
+
 -   **?:** Matches a single character.
-    -   **Example:** `/cat?`
-    -   **Matches:** `/cats`
-    -   **Does not match:** `/Cats | /cat | /muscats`
+
+    | Sample Configuration | Matches            | Does Not Match |
+    | -------------------- | ------------------ | -------------- |
+    | cat?                 | cats <br />muscats | Cats <br />cat |
+
 -   **[*abc*]:** Matches a single character defined within the brackets.
-    -   **Example:** `/[cm]art`
-    -   **Matches:** `/cart | /mart`
-    -   **Does not match:** `/tart | /start`
+
+    | Sample Configuration | Matches         | Does Not Match   |
+    | -------------------- | --------------- | ---------------- |
+    | [cm]art              | cart <br />mart | tart <br />start |
+
 -   **[*a*-*z*]:** Matches a single character from the specified range.
-    -   **Example:** `/[a-z]art`
-    -   **Matches:** `/cart | /mart | /tart`
-    -   **Does not match:** `/Cart | /marT | /start`
+
+    | Sample Configuration | Matches                    | Does Not Match              |
+    | -------------------- | -------------------------- | --------------------------- |
+    | [a-z]art             | cart <br />mart <br />tart | Cart <br />marT <br />start |
+
 -   **[!*abc*]:** Matches a single character that is not defined within the brackets.
-    -   **Example:** `/[!cm]art`
-    -   **Matches:** `/Cart | /Mart | /tart`
-    -   **Does not match:** `/cart | /mart | /tArt`
+
+    | Sample Configuration | Matches                    | Does Not Match             |
+    | -------------------- | -------------------------- | -------------------------- |
+    | [!cm]art             | Cart <br />Mart <br />tart | cart <br />mart <br />tArt |
+
 -   **[!*a*-*z*]:** Matches a single character that is excluded from the specified range.
-    -   **Example:** `/[!a-m]art`
-    -   **Matches:** `/Cart | /Mart | /tart`
-    -   **Does not match:** `/cart | /mart | /tArt`
+
+    | Sample Configuration | Matches                    | Does Not Match             |
+    | -------------------- | -------------------------- | -------------------------- |
+    | [!a-m]art            | Cart <br />Mart <br />tart | cart <br />mart <br />tArt |
 
 **Example:**
 
-Setting the `URL path(s)` option to the following value allows {{ PRODUCT }} {{ PRODUCT_SECURITY }} to inspect any request whose URL path starts with */marketing/*:
+Setting the **URL path(s)** option to `/marketing/*` allows {{ PRODUCT }} {{ PRODUCT_SECURITY }} to inspect any request whose URL path starts with `/marketing/`.
 
-`/marketing/*`
-
-The following sample request will match the above pattern:
+The following sample request matches the above pattern:
 
 `https://cdn.example.com/marketing/mycampaign/image.png`
 
 #### Regex Match {/*regex-match*/}
 
-{{ PRODUCT 	}} {{ PRODUCT_SECURITY }} checks whether the entire relative URL path is a match for the pattern defined in a regular expression.
+Requires {{ PRODUCT_SECURITY }} Premier, Business, or Essentials. {{ PRODUCT }} {{ PRODUCT_SECURITY }} checks whether the entire relative URL path is a match for the pattern defined in a regular expression.
 
 <Callout type="info">
 
@@ -137,23 +128,9 @@ The following sample request will match the above pattern:
 
 </Callout>
 
-**Sample Configuration:**
-
-`^\/[a-zA-Z0-9]*$`
-
-**Matches:**
-
-`/cat`
-
-`/CAT7`
-
-`/Category`
-
-**Does Not Match:**
-
-`/Category 7`
-
-`/Cat#7`
+| Sample Configuration | Matches                       | Does Not Match         |
+| -------------------- | ----------------------------- | ---------------------- |
+| ^[a-zA-Z0-9]*$       | cat <br />CAT7 <br />Category | Category 7 <br />Cat#7 |
 
 ### JSON Web Tokens (JWT) {/*json-web-tokens--jwt-*/}
 
@@ -222,11 +199,11 @@ Register up to 2 JWKs by pasting a JSON Web Key Set (JWKS) within the **JWKS** o
 
 An API schema is a JSON schema that describes the structure for a valid API payload.
 
-<Callout type="tip">
+<Tip>
 
-  Define an API schema from within the **Schemas** tab of an API Security ruleset configuration. Use the **Derive Schema from Example** option to autogenerate a JSON schema from a sample JSON payload. You may then either build upon this base JSON schema to define a stricter set of requirements or save it without further modifications.
+  Autogenerate a JSON schema from a sample JSON payload through the **Derive Schema from Example** option which can be found on the **Schemas** tab of an API Security ruleset configuration. You may then either build upon this base JSON schema to define a stricter set of requirements or save it without further modifications.
 
-</Callout>
+</Tip>
 
 #### JSON Schema Syntax {/*json-schema-syntax*/}
 
@@ -313,7 +290,7 @@ You may create, modify, and delete API Security rulesets.
 **Key information:**
 
 -   Administer API Security rulesets from the **API Security** page.
--   Apply an API Security ruleset to production traffic by adding it to a [Security App configuration](/applications/security/security_applications) and then determining how it will be enforced. Multiple Security App configurations may use the same API Security ruleset.
+-   Apply an API Security ruleset to production traffic by adding it to a [Security Application configuration](/applications/security/security_applications) and then determining how it will be enforced. Multiple Security Application configurations may use the same API Security ruleset.
 -   An API Security rule requires at least one JWKS or API schema.
 -   It may take up to 2 minutes for an update to an API Security ruleset to be applied across our entire network.
 
@@ -322,7 +299,7 @@ You may create, modify, and delete API Security rulesets.
 1.  Navigate to the **API Security** page.
     {{ SECURITY_NAV }} **API Security**.
 2.  Click **+ Create New API Rule**.
-3.  In the **Name of Ruleset** option, type a name for this API Security ruleset.
+3.  <a id="create-name" />In the **Name of Ruleset** option, type the unique name by which this  API Security ruleset will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
 4.  Add a JSON schema that defines the structure for a valid API payload.
     1.  In the **Name** option, type a name for this JSON schema.
     2.  Perform one of the following steps:
@@ -374,11 +351,11 @@ You may create, modify, and delete API Security rulesets.
 
 <Callout type="important">
 
-  You cannot delete an API Security ruleset that is associated with a Security App configuration. Please either modify the Security App configuration to point to a different API Security ruleset or delete that Security App configuration.
+  You cannot delete an API Security ruleset that is associated with a Security Application configuration. Please either modify the Security Application configuration to point to a different API Security ruleset or delete that Security Application configuration.
 
 </Callout>
 
-1.  Check your Security App configurations to verify that the desired API Security ruleset is not in use.
+1.  Check your Security Application configurations to verify that the desired API Security ruleset is not in use.
 2.  Navigate to the **API Security** page.
     {{ SECURITY_NAV }} **API Security**.
 3.  Click on the desired API Security ruleset.

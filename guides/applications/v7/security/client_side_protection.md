@@ -6,7 +6,7 @@ Client-Side Protection allows you to apply a consistent Content Security Policy 
 
 <Callout type="info">
 
-  Client-Side Protection requires {{ PRODUCT }} {{ PRODUCT_SECURITY }} Standard and manual activation. {{ ACCOUNT_UPGRADE }}
+  Client-Side Protection requires {{ PRODUCT }} Enterprise, {{ PRODUCT }} Premier, or {{ PRODUCT_SECURITY }} Standard. Additionally, it requires manual activation. {{ ACCOUNT_UPGRADE }}
 
 </Callout>
 
@@ -49,11 +49,11 @@ You may create, modify, and delete Client-Side Protection policies.
 1.  Navigate to the **Client Protection** page.
     {{ SECURITY_NAV }} **Client Protection**.
 2.  Click **+ New Policy**.
-3.  Type the unique name by which this policy will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
+3.  <a id="create-name" />In the **Name** option, type the unique name by which this policy will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
 4.  Define an Audit policy through which you can detect attacks.
 
     1.  Click on the **Audit** tab.
-    2.  From the **Overwrite Origin** option, determine whether this policy will override the policy defined within the `Content-Security-Policy-Report-Only` response header provided by your origin. 
+    2.  From the **Overwrite Origin** option, determine whether this policy will override an audit policy when provided by an origin server. An origin server can define an audit policy through the `Content-Security-Policy-Report-Only` response header. 
 
         -   **Enabled:** Your audit policy will overwrite the `Content-Security-Policy-Report-Only` header when present in the response provided by an origin. 
 

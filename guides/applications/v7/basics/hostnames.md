@@ -77,6 +77,10 @@ On a per environment-basis, define each hostname that will be served through {{ 
 3.  Repeat step 2 as needed.
 4.  If you are finished making changes to this environment, click **Deploy Changes**.
 
+    **Next Steps:** Serving traffic over a new hostname requires a [TLS certificate](#https-traffic) and a [valid DNS configuration](/applications/basics/serving_traffic#dns). 
+    
+    [View a checklist for serving traffic through our network.](/applications/basics/serving_traffic#checklist)
+
 **<a id="cdn-as-code" />To add, modify, or delete hostnames within your CDN-as-code configuration**
 
 <Callout type="info">
@@ -118,6 +122,10 @@ Each hostname requires the installation of a [TLS certificate](/applications/sec
         **Example:** `_acme-challenge.cdn.example.com. CNAME _acme-challenge.xdn-validation.com.`
 
 -   **Bring Your Own Certificate (BYOC):** [Upload your own TLS certificate](/applications/security/tls_certificates#uploading-your-certificate).
+
+    <a id="wildcard-certificates" />**Wildcard Certificates:** If you plan on using a wildcard certificate, then you only need to upload it a single time. After which, it will be available for use across your organization's properties and environments if you are using a default configuration.
+    
+    If you have requested the use of our PCI-compliant network, then the wildcard certificate will only be applicable for environments that use the same network as the environment on which it was uploaded. You can check whether your environments use the same network from the **Organization DNS Configuration** section of your organization's **Settings** page. 
 
 ## Hostname Offboarding {/*hostname-offboarding*/}
 

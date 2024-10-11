@@ -163,7 +163,7 @@ The edge function is passed two parameters: `request` and `context`.
 | `context.metrics`                   | Object          | Provides functions for injecting [metrics](#metrics-functions) into your edge function                                                                                                                                                                          | [Edge Insights - Access Logs](/applications/performance/observability/edge_insights)                     |
 | `context.origins`                   | Key-value store | Origin servers as defined in the {{ PORTAL }} (_Property_ -> _Environment_ -> **Origins**) or the `{{ CONFIG_FILE }}` file                                                                                                                                      | [Origin Configuration](/applications/basics/origins)                                                     |
 | `context.requestVars`               | Key-value store | Information about this property including values set using Set Variables                                                                                                                                                                                        | [Set Variables](/applications/performance/rules/features#set-variables)                                  |
-| ~~`context.respondWith(response)`~~ | Function        | <ul><li>**{{ PRODUCT }} v7.2.3 or higher:** Deprecated. See [Responding to the Client](#responding-to-the-client).</li><li>**{{ PRODUCT }} v7.2.2 or lower:** Must be called to return the response from your edge function to the downstream client.</li></ul> | [context.respondWith(response)](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith) |
+| ~~`context.respondWith(response)`~~ | Function        | <ul><li>**{{ PRODUCT }} v7.2.3 or later:** Deprecated. See [Responding to the Client](#responding-to-the-client).</li><li>**{{ PRODUCT }} v7.2.2 or earlier:** Must be called to return the response from your edge function to the downstream client.</li></ul> | [context.respondWith(response)](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith) |
 | `context.waitUntil(promise)`        | Function        | Waits until the given promise is fulfilled                                                                                                                                                                                                                      | [context.waitUntil(promise)](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil) |
 
 ### Metrics Functions {/* metrics-functions */}
@@ -211,7 +211,13 @@ Edge functions are passed a `Request` instance representing the incoming request
   - **JSON**: `await request.json()`
   - **Text**: `await request.text()`
 - **Method**: `request.method` to get the HTTP method of the request.
-- **URL**: `request.url` provides the full URL, and `request.path` gives the request path.
+- **URL**:
+  - `request.url`: Provides the full URL.
+  - `request.path`: Provides the request path.
+  - `request.originalUrl`: Requires {{ PRODUCT }} version 7.13.6 or later. Provides the original URL sent by the user agent. This property is only present on the incoming request provided to the `handleHttpRequest` handler.
+  <Important>
+  As of {{ PRODUCT }} version 7.13.6, the `request.path` and `request.url` properties return the [rewritten](/applications/performance/rules/features#rewrite-url) path or URL, respectively. 
+  </Important>
 - **Cloning**: To clone a request without its body, use `request.cloneWithoutBody()`.
 
 #### Unsupported Methods and Properties {/* request-unsupported-methods-and-properties */}
@@ -742,9 +748,10 @@ It's worth noting that not all implementations will be able to accept polyfills,
 
 ## Edge Function Examples {/* examples */}
 
+The following site contains links to multiple examples showcasing Edge Functions.
+
 <ExampleButtons
   title="Edge Functions"
   siteUrl="https://edgio-community-examples-v7-edge-functions-live.edgio.link/"
   repoUrl="https://github.com/edgio-docs/edgio-v7-edge-functions-example"
 />
-````

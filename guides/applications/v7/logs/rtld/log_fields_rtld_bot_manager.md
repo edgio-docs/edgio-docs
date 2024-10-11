@@ -103,10 +103,11 @@ The `logs` array contains an object for each log entry associated with the curre
 -   **matched_value (*String*):** Matched Value. (Category: Event) Indicates the value of the variable defined in the matched_on field.
 -   **method (*String*):** Request Method. (Category: Request) Indicates the request's HTTP method (e.g., `GET`, `HEAD`, and `POST`).
 -   **referer (*String*):** Referer. (Category: Request Header) Indicates the `Referer` header value sent in the client's request to the CDN. This header reports the URL of the site from which the request originated.
+-   **rtld_profile_name (*String*):** RTLD Profile Name. (Category: General) Indicates the name of the RTLD profile.
 -   **rule_id (*Integer*):** Rule ID. (Category: Event) Indicates the ID for the rule that the request violated.
 -   **rule_message (*String*):** Rule Message. (Category: Event) Provides a description of the rule that the request violated.
--   **sam_id (*String*):** SAM ID. (Category: General) Indicates the system-defined ID of the Security App configuration that the request violated.
--   **sam_name (*String*):** SAM Name. (Category: General) Indicates the name of the Security App configuration that the request violated.
+-   **sam_id (*String*):** SAM ID. (Category: General) Indicates the system-defined ID of the Security Application configuration that the request violated.
+-   **sam_name (*String*):** SAM Name. (Category: General) Indicates the name of the Security Application configuration that the request violated.
 -   **timestamp (*Decimal*):** Epoch Time. (Category: Response) Indicates the Unix time, in seconds, at which an edge server delivered the requested content to the client.
 
     **Syntax:** `<SECONDS>.<MICROSECONDS>`

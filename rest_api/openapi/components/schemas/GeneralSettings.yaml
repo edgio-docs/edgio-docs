@@ -20,11 +20,13 @@ properties:
   combined_file_sizes:
     type: integer
     format: uint64
-    description: The total file size for multipart message lengths.
+    description: End-of-life. This property does not affect your security configuration. Set the `max_file_size` property through either the [Add Access Rule](#tag/Access-Control-List-(ACL)/operation/create-acl-rule) or the [Update Access Rule](#tag/Access-Control-List-(ACL)/operation/update-acl-rule) operations to define file size limits.
+    deprecated: true
   max_file_size:
     type: integer
     format: uint64
-    description: End-of-life. This property does not affect your security configuration. Use the [Add Access Rule](#tag/Access-Control-List-(ACL)/operation/create-acl-rule) and the [Update Access Rule](#tag/Access-Control-List-(ACL)/operation/update-acl-rule) operations to manage this setting.
+    description: End-of-life. This property does not affect your security configuration. Set the `max_file_size` property through either the [Add Access Rule](#tag/Access-Control-List-(ACL)/operation/create-acl-rule) or the [Update Access Rule](#tag/Access-Control-List-(ACL)/operation/update-acl-rule) operations to define file size limits.
+    deprecated: true
   response_header_name:
     type: string
     description: Determines the name of the response header that will be included with blocked requests. 

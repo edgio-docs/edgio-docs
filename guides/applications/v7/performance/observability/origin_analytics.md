@@ -7,7 +7,7 @@ title: Origin Analytics
 **To view analytics for your origins**
 
 1.  Load the **Origin Analytics** page.
-    {{ ENV_NAV }} **Origin Analytics**.
+    {{ ENV_NAV }} **Analytics** | **Origin Analytics**.
 2.  Optional. Filter by one or more origin configuration(s).
 
     1.  Click on the **Origins** option.

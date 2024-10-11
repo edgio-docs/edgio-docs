@@ -210,7 +210,7 @@ The purpose of a blacklist is to describe unwanted traffic.
     | Country             | 600                                                   |
     | Country Subdivision | 200                                                   |
     | JA3                 | 1,000                                                 |
-    | IP Address          | 1,000  <Callout type="tip">{{ PRODUCT }} Premier and Enterprise customers are allowed to create up to 2 access rules that may contain up to 50,000 IP addresses or IP blocks. Use the **High-Capacity** option to identify these two access rules. All other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. You may reassign high-capacity status to another access rule by first clearing the **High-Capacity** option from an existing high-capacity access rule.</Callout> |
+    | IP Address          | 1,000 <br />{{ PRODUCT }} Premier and Enterprise support up to 2 high-capacity access rules that contain up to:<ol><li>**{{ PRODUCT }} Premier:** 50,000 IP addresses or IP blocks.</li><li>**{{ PRODUCT }} Enterprise:** 10,000 IP addresses or IP blocks.</li></ol>[Learn more.](#ip-address) |
     | Referrer            | 200                                                   |
     | URL                 | 200                                                   |
     | User Agent          | 200                                                   |

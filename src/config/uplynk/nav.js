@@ -15,10 +15,6 @@ const nav = {
       icon: 'uplynk/overview',
       routes: [
         {
-          title: 'Glossary',
-          path: 'overview/glossary',
-        },
-        {
           title: 'Portal',
           path: 'overview/portal',
         },
@@ -118,16 +114,6 @@ const nav = {
         {
           title: 'Channels',
           path: 'manage/channels',
-          routes: [
-            {
-              title: 'Linear',
-              path: 'manage/channels/linear',
-            },
-            {
-              title: 'Virtual Linear',
-              path: 'manage/channels/virtual_linear',
-            },
-          ],
         },
         {
           title: 'Live Events',

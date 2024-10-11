@@ -31,12 +31,12 @@ The benefits of using {{ PRODUCT }} instead of Google Search Console to track Co
 
 ## Installing Real User Monitoring (RUM) {/* installation */}
 
-Tracking Core Web Vitals on {{ PRODUCT }} requires adding the `{{ PACKAGE_NAME }}/rum` client library to your application. The {{ PORTAL_LINK }} provides information on how to install this library using an edge function, a script tag, Google tag manager, npm, and yarn.
+Tracking Core Web Vitals on {{ PRODUCT }} requires adding the `{{ PACKAGE_NAME }}/rum` client library to your application. The {{ PORTAL }} provides information on how to install this library using an edge function, a script tag, Google tag manager, npm, and yarn.
 
 **To view {{ PACKAGE_NAME }}/rum installation instructions**
 
-1.  Load the **Core Web Vitals** page.
-    {{ ENV_NAV }} **Core Web Vitals**.
+1.  Load the **Real User Monitoring** page.
+    {{ ENV_NAV }} **Analytics** | **Real User Monitoring**.
 
 2.  Click on the tab for the desired installation method.
 

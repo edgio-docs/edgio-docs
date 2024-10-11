@@ -106,13 +106,18 @@ Identifies requests by the requester's IP address.
 
     Specify a subnet by appending a slash (/) and the desired bit-length of the prefix (e.g., 11.22.33.0/22).
 
--   **Limit:** You may specify up to 1,000 IP addresses or IP blocks per access rule. Whitelist, accesslist, and blacklist entries count towards this limit.
+-   **Limit:** Whitelist, accesslist, and blacklist entries count towards the following limits:
+    -   **All:** You may specify up to 1,000 IP addresses or IP blocks per access rule. 
+    -   **{{ PRODUCT }} Enterprise:** You may create up to 2 high-capacity access rules that contain up to 10,000 IP addresses or IP blocks.
+    -   **{{ PRODUCT }} Premier:** You may create up to 2 high-capacity access rules that contain up to 50,000 IP addresses or IP blocks.
 
-    <Callout type="tip">
+    <Info>
 
-      {{ PRODUCT }} Premier and Enterprise customers are allowed to create up to 2 access rules that may contain up to 50,000 IP addresses or IP blocks. Use the **High-Capacity** option to identify these two access rules. All other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. You may reassign high-capacity status to another access rule by first clearing the **High-Capacity** option from an existing high-capacity access rule.
+      Use the **High-Capacity** option to identify high-capacity access rules. All other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. 
+      
+      You may reassign high-capacity status to another access rule by first clearing the **High-Capacity** option from an existing high-capacity access rule.
 
-    </Callout>
+    </Info>
 
 -   Certain services and applications, such as VPNs, mask a client's IP address. Specifically, they will report an IP address of their choosing instead of the client's real IP address. As a result, multiple devices and perhaps even users may end up sharing the same IP address.
 
@@ -205,7 +210,7 @@ The purpose of a blacklist is to describe unwanted traffic.
     | Country             | 600                                                   |
     | Country Subdivision | 200                                                   |
     | JA3                 | 1,000                                                 |
-    | IP Address          | 1,000  <Callout type="tip">{{ PRODUCT }} Premier and Enterprise customers are allowed to create up to 2 access rules that may contain up to 50,000 IP addresses or IP blocks. Use the **High-Capacity** option to identify these two access rules. All other access rules are limited to a maximum of 1,000 IP addresses or IP blocks. You may reassign high-capacity status to another access rule by first clearing the **High-Capacity** option from an existing high-capacity access rule.</Callout> |
+    | IP Address          | 1,000 <br /><br />**{{ PRODUCT }} Premier and Enterprise:** Create up to 2 high-capacity access rules that contain up to:<ul><li>**{{ PRODUCT }} Premier:** 50,000 IP addresses or IP blocks.</li><li>**{{ PRODUCT }} Enterprise:** 10,000 IP addresses or IP blocks.</li></ul>[Learn more.](#ip-address) |
     | Referrer            | 200                                                   |
     | URL                 | 200                                                   |
     | User Agent          | 200                                                   |

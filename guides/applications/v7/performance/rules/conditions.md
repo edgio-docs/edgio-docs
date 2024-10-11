@@ -894,7 +894,7 @@ router.conditional({
 
 #### Is Windows Phone {/*is-windows-phone*/} <edgejs>device</edgejs>
 
-Identifies requests by whether the device that issued the request is a Windows Mobile 6.5/Windows Phone 7 or higher.
+Identifies requests by whether the device that issued the request is a Windows Mobile 6.5/Windows Phone 7 or later.
 
 <edgejs>
 

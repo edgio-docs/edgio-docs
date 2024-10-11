@@ -120,11 +120,11 @@ Run the following command to purge the `basketball` surrogate key from the `prod
 
 <SnippetGroup>
 
-    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
+    ```bash tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or later"
     {{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my-videos --environment=production --surrogate-key=basketball
     ```
 
-    ```bash tabLabel="Version 7.2.1 or lower"
+    ```bash tabLabel="Version 7.2.1 or earlier"
     {{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my-videos --environment=production --surrogate-key=basketball
     ```
 
@@ -166,7 +166,7 @@ These scripts assume that you have created environments called "production", "st
 
 <SnippetGroup>
 
-    ```js tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or higher"
+    ```js tabLabel="{{ PRODUCT }} CLI Version 7.2.2 or later"
       "scripts": {
         ...
         "clearcache:dev": "{{ FULL_CLI_NAME }} cache-clear --organization=my-organization --property=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",
@@ -178,7 +178,7 @@ These scripts assume that you have created environments called "production", "st
       },
     ```
 
-    ```js tabLabel="Version 7.2.1 or lower"
+    ```js tabLabel="Version 7.2.1 or earlier"
       "scripts": {
         ...
         "clearcache:dev": "{{ FULL_CLI_NAME }} cache-clear --team=my-organization --property=my{{ PRODUCT_NAME }}App --environment=development --token=${{ PRODUCT_NAME_LOWER }}_deploy_token",

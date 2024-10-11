@@ -102,7 +102,7 @@ export const productsConfig: ProductsConfig = {
         guidesPath: 'guides/applications/v7',
         navigationImport: () => import('config/applications/v7.nav'),
         announcement: {
-          id: 'v7-announcement',
+          id: 'v7-announcement-7133',
           message: announcements['apps_v7_announcement'],
           type: 'important',
         },

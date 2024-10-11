@@ -432,7 +432,7 @@ Valid values are:
 - **wg**: Cloud worker age. Indicates the amount of time, in milliseconds, that the instance of the cloud worker that processed the request has been running.
 - **wl**: Cloud worker lifetime. Indicates the total processing time, in milliseconds, for all cloud workers for all requests.
 
-Additional valid values for `@edgio/core` version 7.12.x or higher:
+Additional valid values for `@edgio/core` version 7.12.x or later:
 
 - **hid**: Cloud worker handler ID. The unique ID for the instance of the cloud worker handler that processed the request. The cloud worker handler component is responsible for supervising a cloud worker server instance, proxying the request to the server, and managing resources. This ID is same across all requests served by the same cloud worker. The number of cloud workers scales up and down based on traffic load.
 - **hlt**: Cloud worker handler lifetime. The total time, in milliseconds, that this instance of the cloud worker handler existed.

@@ -184,6 +184,21 @@ const deliveryResources = [
   },
 ];
 
+const uplynkResources = [
+  {
+    title: 'Video Tutorials',
+    href: 'https://www.youtube.com/@Edgio/videos',
+  },
+  {
+    title: 'Status',
+    href: 'https://status.edg.io/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+  },
+  {
+    title: 'Support',
+    href: 'https://edg.io/contact-support/?sgId=7bc47c45-c1d6-4189-b416-552581d86006',
+  },
+];
+
 const secFooterLinks = [
   {
     name: 'About Edgio',
@@ -279,6 +294,9 @@ export default function DocsFooter() {
   switch (context) {
     case ContextType.DELIVERY:
       resources.push(...deliveryResources);
+      break;
+    case ContextType.UPLYNK:
+      resources.push(...uplynkResources);
       break;
     case ContextType.APPLICATIONS:
       resources.push(...appResources);

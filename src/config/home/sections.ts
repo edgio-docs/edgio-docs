@@ -295,7 +295,7 @@ export const sections: HomepageSectionGroup[] = [
     subheading: 'Facilitates effortless and versatile content streaming.',
     className: 'uplynk',
     icon: IconUplynk,
-    path: '/uplynk',
+    path: '/uplynk/get_started',
     sections: [
       {
         items: [

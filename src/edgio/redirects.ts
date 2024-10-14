@@ -366,4 +366,5 @@ export default <Array<Redirect>>[
   ['/applications/v7/develop/rest_api', '/applications/v7/rest_api'],
   ['/applications/v7/develop/rest_api/(.*)', '/applications/v7/rest_api/$1'],
   [/\/guides\/(.*)/, '/applications/$1'],
+  ['/uplynk', '/uplynk/get_started'],
 ];

@@ -16,7 +16,7 @@ const headerNav: AccordionItem[] = [
       },
       {
         title: 'Uplynk',
-        url: '/uplynk/',
+        url: '/uplynk/overview',
       },
       {
         title: 'Open Edge',

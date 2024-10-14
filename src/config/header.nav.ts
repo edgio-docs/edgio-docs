@@ -16,15 +16,15 @@ const headerNav: AccordionItem[] = [
       },
       {
         title: 'Uplynk',
-        url: 'https://docs.edgecast.com/video/index.html',
+        url: '/uplynk/',
       },
       {
         title: 'Open Edge',
-        url: 'https://support.limelight.com/public/en/Default.htm#Control/Open_Edge/Open_Edge.htm',
+        url: '/open_edge/overview',
       },
       {
         title: 'Delivery',
-        url: 'https://support.limelight.com/public/en/Default.htm#Delivery/Delivery_Public.htm',
+        url: '/delivery/',
       },
       /* divider */
       null,

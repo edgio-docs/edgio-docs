@@ -1,4 +1,4 @@
-import { productsConfig } from '../appConfig';
+import {productsConfig} from '../appConfig';
 
 const separator = {
   title: '',
@@ -21,6 +21,7 @@ const nav = {
         {
           title: 'News and Updates',
           path: 'https://cms.uplynk.com/static/cms/news.html',
+          external: true,
         },
       ],
     },

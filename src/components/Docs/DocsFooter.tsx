@@ -5,8 +5,8 @@ import {
   IconEdgioSquareLogoDark,
 } from 'components/Icon/IconEdgioSquareLogo';
 import Link from 'components/MDX/Link';
-import { ContextType, useAppContext } from 'contexts/AppContext';
-import { useTheme } from 'contexts/ThemeContext';
+import {ContextType, useAppContext} from 'contexts/AppContext';
+import {useTheme} from 'contexts/ThemeContext';
 
 const StyledDocsFooter = styled.footer`
   padding-top: 20px;
@@ -287,7 +287,7 @@ export default function DocsFooter() {
       resources.push(...appResources);
       break;
     default:
-      console.warn('No context provided for footer resources. Using default.');
+      // console.warn('No context provided for footer resources. Using default.');
       break;
   }
 

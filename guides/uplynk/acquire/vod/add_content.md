@@ -253,7 +253,7 @@ The progress of this job will be reported in both the command line and the CMS.
 
 ### Locate API Keys  {/*locate-api-keys*/}
 
-1. Navigate to the [Integration Keys page](#https://cms.uplynk.com/static/cms2/index.html#/settings/integration-keys) by clicking the **Settings** tab and then clicking **Integration Keys** from the side navigation tab.
+1. Navigate to the [Integration Keys page](https://cms.uplynk.com/static/cms2/index.html#/settings/integration-keys) by clicking the **Settings** tab and then clicking **Integration Keys** from the side navigation tab.
 2. Your API key(s) are listed under the API Keys section.
 
 

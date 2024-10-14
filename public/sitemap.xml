@@ -10,4 +10,9 @@
             https://docs.edg.io/delivery/sitemap.xml
         </loc>
     </url>
+    <url>
+        <loc>
+            https://docs.edg.io/uplynk/sitemap.xml
+        </loc>
+    </url>
 </urlset>

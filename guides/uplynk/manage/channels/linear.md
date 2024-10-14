@@ -9,7 +9,7 @@ A live channel represents a live linear stream that adheres to a timeline that i
 Add audio/video content to a live channel via the following methods:
 
 - **Live Slicer** - Verify that the slicer ID defined in the desired live channel is a case-sensitive match to the one defined in the Live Slicer configuration file (`/etc/uplynk.conf`). This allows the Live Slicer's output to be automatically added to the live channel's timeline.
-- **API** - Add pre-encoded content and/or live content from multiple Live Slicers to a live channel via our [Channel API](#https://docs.edgecast.com/video/Content/Develop/Channel.htm).
+- **API** - Add pre-encoded content and/or live content from multiple Live Slicers to a live channel via our [Channel API](https://docs.edgecast.com/video/Content/Develop/Channel.htm).
 
 **Key Information**
 

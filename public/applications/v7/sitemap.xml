@@ -437,12 +437,22 @@
     </url>
     <url>
         <loc>
+            https://docs.edg.io/applications/v7/performance/observability/origin_analytics
+        </loc>
+    </url>
+    <url>
+        <loc>
             https://docs.edg.io/applications/v7/performance/observability/real_user_monitoring
         </loc>
     </url>
     <url>
         <loc>
             https://docs.edg.io/applications/v7/performance/prefetching
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/applications/v7/performance/prefetching/automatic_prefetching_setup
         </loc>
     </url>
     <url>
@@ -518,10 +528,10 @@
     <url>
         <loc>
             https://docs.edg.io/applications/v7/performance/troubleshooting
-    </loc>
-  </url>
-  <url>
-    <loc>
+        </loc>
+    </url>
+    <url>
+        <loc>
             https://docs.edg.io/applications/v7/reference
         </loc>
     </url>

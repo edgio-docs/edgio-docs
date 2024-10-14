@@ -12,6 +12,8 @@ const fileRe = /{{\s*(\w+(?:\.md))\s*}}/gi;
 const templatePath = join(process.cwd(), 'src', 'templates');
 let templatesRead: StringMap;
 
+const missingTemplateVariables = new Set<string>();
+
 function readTemplateFile(filePath: string, depth: number): string | undefined {
   const templateReadDepth = templatesRead[filePath];
 
@@ -71,7 +73,7 @@ export default function templateReplace(file: string, data: StringMap) {
 
   return template.replaceAll(variableRe, (match, key, ...args) => {
     const defValue = encode(match, {mode: 'extensive'});
-    const msg = `No constant found for template variable '${match}' in '${file}'. This will render as ${defValue}.\n`;
+    const msg = `No constant found for template variable '${match}' in '${file}'. This will render as '${defValue}'.\n`;
     let value = data[key];
 
     if (typeof value === 'function') {
@@ -80,6 +82,7 @@ export default function templateReplace(file: string, data: StringMap) {
 
     if (!value) {
       logger.warn(msg);
+      missingTemplateVariables.add(msg);
       return defValue;
     }
 

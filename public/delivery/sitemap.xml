@@ -542,7 +542,7 @@
     </url>
     <url>
         <loc>
-            https://docs.edg.io/delivery/video/apis/lvp
+            https://docs.edg.io/delivery/video/apis/mmd
         </loc>
     </url>
     <url>
@@ -653,6 +653,86 @@
     <url>
         <loc>
             https://docs.edg.io/delivery/video/lvp
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/delivery/video/mmd_live
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/delivery/video/mmd_live/closed_captions
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/delivery/video/mmd_live/configuration_ui
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/delivery/video/mmd_live/encoder_settings
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/delivery/video/mmd_live/inputs_outputs
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/delivery/video/mmd_live/introduction
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/delivery/video/mmd_live/live_to_vod
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/delivery/video/mmd_live/secure_communication
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/delivery/video/mmd_od
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/delivery/video/mmd_on_demand/enabling_trick_play_in_hls
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/delivery/video/mmd_on_demand/multi_bitrate_output_with_input_manifest
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/delivery/video/mmd_on_demand/multi_bitrate_output_without_input_manifest
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/delivery/video/mmd_on_demand/overview
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/delivery/video/mmd_on_demand/query_parameters
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/delivery/video/mmd_on_demand/secure_communications_and_drm
+        </loc>
+    </url>
+    <url>
+        <loc>
+            https://docs.edg.io/delivery/video/mmd_on_demand/video_source_file_specifications
         </loc>
     </url>
     <url>

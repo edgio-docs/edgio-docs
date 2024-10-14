@@ -74,7 +74,7 @@ export const getStaticPaths = async () => {
   ).map(
     (path: string) =>
       path
-        .replace(/.mdx?/, '') // remove extension
+        .replace(/.mdx?$/, '') // remove extension
         .replace(/\/index$/, '') // remove index
   );
 
@@ -179,7 +179,7 @@ export async function getStaticProps({params}: {params: {slug: string[]}}) {
   const files = await globby(guideGlobs, {});
   const [file] = files;
   if (!file) {
-    logger.warn(`No matching files for route '${slugAsString}'`);
+    logger.warn(`[applications] No matching files for route '${slugAsString}'`);
     return {notFound: true};
   }
 

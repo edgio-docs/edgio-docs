@@ -153,7 +153,7 @@ After you choose an option, Control creates and downloads the report.
 
 ### Creating Recurring Report Emails and Email Alerts  {/*creating-recurring-report-emails*/}
 
-See [Working with Recurring Report Emails](/delivery/control/reports/general_information/general_information/#working-with-recurring-report-emails) and [Working with Email Alerts](/delivery/control/reports/general_information//general_information#working-with-email-alerts).
+See [Working with Recurring Report Emails](/delivery/control/reports/general_information/general_information/#working-with-recurring-report-emails) and [Working with Email Alerts](/delivery/control/reports/general_information/general_information#working-with-email-alerts).
 
 <Callout type="info">You can also create email alerts in the URLs tab. For more information, see [Configuring Email Alerts Per URL](#configuring-email).</Callout>
 

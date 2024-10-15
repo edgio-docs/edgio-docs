@@ -68,7 +68,7 @@ delete:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
   tags:
-    - members
+    - partner-members
   operationId: deleteAccountsV01PartnersPartnerIdMembersMemberId
 patch:
   summary: Update Partner Member
@@ -147,7 +147,7 @@ patch:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
   tags:
-    - members
+    - partner-members
   operationId: patchAccountsV01PartnersPartnerIdMembersMemberId
 get:
   summary: Get Partner Member
@@ -219,5 +219,5 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
   tags:
-    - members
+    - partner-members
   operationId: getAccountsV01PartnersPartnerIdMembersMemberId

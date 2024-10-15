@@ -69,7 +69,7 @@ post:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
   tags:
-    - members
+    - partner-members
   operationId: postAccountsV01PartnersPartnerIdMembers
 get:
   summary: Get All Partner Members
@@ -155,5 +155,5 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
   tags:
-    - members
+    - partner-members
   operationId: getAccountsV01PartnersPartnerIdMembers

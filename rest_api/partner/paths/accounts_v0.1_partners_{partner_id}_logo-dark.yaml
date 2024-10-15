@@ -13,12 +13,8 @@ put:
       required: true
       schema:
         type: string
-    - in: multipart/form-data
-      name: logo
-      description: The partner's logo.
-      required: true
-      schema:
-        type: BaseApi_Types_UploadedFile
+  requestBody:
+    $ref: ../components/requestBodies/putAccountsV01PartnersPartnerIdLogoDark.yaml
   security:
     - accountsScope:
         - app.accounts

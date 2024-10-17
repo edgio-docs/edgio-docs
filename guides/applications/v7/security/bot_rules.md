@@ -6,13 +6,16 @@ Bot Manager is designed to mitigate undesired bot traffic and prevent them from 
 
 There are two versions of Bot Manager. Key differences between these versions are highlighted below.
 
--   **Bot Manager Standard:** This version is designed to mitigate basic bots by requiring a browser to solve a JavaScript-based challenge.
--   **Bot Manager Advanced:** This version provides all of the functionality that comes with Bot Manager Standard. Additionally, it provides:
+-   **Standard Bot Manager:** This version is designed to mitigate basic bots by requiring a browser to solve a JavaScript-based challenge.
+-   **Advanced Bot Manager:** This version provides all of the functionality that comes with Standard Bot Manager. Additionally, it provides:
     -   Automatic detection of known bots (e.g., search engine bots) and bad bots, including those that spoof good bots, through the analysis of requests and behavior. 
     -   Additional types of criteria through which you may profile an undesired bot. 
     -   Additional enforcement actions that can be applied to bot traffic. 
     -   The ability to bypass bot detection for specific traffic profiles. 
     -   Actionable near real-time data on detected bots through which you may fine-tune your configuration to reduce false positives.
+-   **Premier Bot Manager:** This version provides all of the functionality that comes with Advanced and Standard Bot Manager. Additionally, it provides:
+    -   Automatic bot detection using dedicated machine learning models tailored to your traffic profile. These models establish a baseline for normal website behavior and then compare all requests to this traffic pattern. <!--    -   Improved unknown bot detection and classification.-->
+    -   Bot detection through JA4 signatures.
 
 <Callout type="info">
 
@@ -22,15 +25,15 @@ There are two versions of Bot Manager. Key differences between these versions ar
 
 ## How Does It Work? {/*how-does-it-work*/}
 
-The workflows through which Bot Manager Standard and Bot Manager Advanced detect bots are described below.
+The workflows through which Bot Manager detects bots are described below.
 
-### Bot Manager Standard {/*bot-manager-standard*/}
+### Standard Bot Manager {/*bot-manager-standard*/}
 
-Bot Manager Standard requires a client (e.g., a web browser) to solve a JavaScript-based challenge before resolving the request. {{ PRODUCT }} {{ PRODUCT_SECURITY }} blocks traffic when the client cannot solve this challenge within a few seconds. Basic bots typically cannot solve this type of challenge and therefore their traffic is blocked. [Learn more.](#browser-challenge)
+Standard Bot Manager requires a client (e.g., a web browser) to solve a JavaScript-based challenge before resolving the request. {{ PRODUCT }} {{ PRODUCT_SECURITY }} blocks traffic when the client cannot solve this challenge within a few seconds. Basic bots typically cannot solve this type of challenge and therefore their traffic is blocked. [Learn more.](#browser-challenge)
 
-### Bot Manager Advanced {/*bot-manager-advanced*/}
+### Premier and Advanced Bot Manager {/*bot-manager-advanced*/}
 
-Bot Manager Advanced inspects each request to determine whether it is bot traffic.
+Premier and Advanced Bot Manager inspects each request to determine whether it is bot traffic.
 
 1.  Does the request match an exception? [Exceptions](#exceptions) identify trafic that should bypass bot detection.
 2.  Does the request match a rule?  A rule defines the criteria that our service will use to identify bot traffic.
@@ -64,12 +67,13 @@ Bot Manager Advanced inspects each request to determine whether it is bot traffi
 
 ## Actions {/*actions*/}
 
-If you are using Bot Manager Standard, then you may only apply a [browser challenge](#browser-challenge) to requests. If you are using Bot Manager Advanced, then you may apply any of the following enforcement actions to bot traffic:
+If you are using Standard Bot Manager, then you may only apply a [browser challenge](#browser-challenge) to requests. If you are using Premier or Advanced Bot Manager, then you may apply any of the following enforcement actions to bot traffic:
 
 -   [Alert](#alert)
 -   [Block](#block)
 -   [Browser Challenge](#browser-challenge)
 -   [Custom Response](#custom-response)
+-   [Ignore](#ignore)
 -   [reCAPTCHA](#recaptcha)
 -   [Redirect](#redirect)
 -   [Silent Close](#silent-close)
@@ -105,7 +109,7 @@ The client's response to the browser challenge determines what happens next.
 
     For example, applying browser challenges to API traffic will disrupt your API workflow.
 
--   <a id="difficulty-based" />If you are using Bot Manager Advanced, you may customize the difficulty of the browser challenge by setting the **Browser challenge level** option to `Difficulty-based` and then selecting the desired difficulty level. 
+-   <a id="difficulty-based" />If you are using Premier or Advanced Bot Manager, you may customize the difficulty of the browser challenge by setting the **Browser challenge level** option to `Difficulty-based` and then selecting the desired difficulty level. 
 
     -   Choose a difficulty level from 1 to 20. {{ PRODUCT }} serves our standard browser challenge when it is set it to `0`.
     -   Smaller levels are easier to solve, while larger levels introduce latency.
@@ -246,6 +250,12 @@ Returns a custom response.
 
     </Callout>
 
+### Ignore {/*ignore*/}
+
+Skips Bot Rules screening. This enforcement action is only available when setting up known bot detection.
+
+{{ PRODUCT }} can continue to [screen requests](/applications/security/waf#threat-detection) that skip Bot Rules screening. 
+
 ### reCAPTCHA {/*recaptcha*/}
 
 Performs an automated assessment of a client's interaction with your site. This assessment, which is performed without user interaction, requires [Google reCAPTCHA v3](https://www.google.com/recaptcha/about/).
@@ -382,7 +392,7 @@ Use the following pattern to match for requests from 15133 and 14153: `15133|141
 
 ###### Bot Score {/*bot-score*/}
 
-Requires Bot Manager Advanced, {{ PRODUCT }} Enterprise, or {{ PRODUCT }} Premier. Identifies requests based off a score that defines our level of confidence that it is a bot. This score is calculated by analyzing the request and its behavior. The range for this score is 0 to 100.
+Requires Premier Bot Manager, Advanced Bot Manager, {{ PRODUCT }} Enterprise, or {{ PRODUCT }} Premier. Identifies requests based off a score that defines our level of confidence that it is a bot. This score is calculated by analyzing the request and its behavior. The range for this score is 0 to 100.
 
 ###### Country {/*country*/}
 
@@ -407,11 +417,11 @@ Identify requests by the requester's IP address.
 
 ###### JA3 {/*ja3*/}
 
-Requires Bot Manager Advanced or {{ PRODUCT }} Premier. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic as a specific bot across various IP addresses and ports.
+Requires Premier Bot Manager, Advanced Bot Manager, or {{ PRODUCT }} Premier. Identifies requests by the JA3 fingerprint assigned to the request. A JA3 fingerprint identifies a client using key characteristics from a TLS request. This allows us to classify traffic as a specific bot across various IP addresses and ports.
 
 ###### JA4 {/*ja4*/}
 
-Requires {{ PRODUCT }} Premier. Identifies requests by the [JA4 fingerprint](https://github.com/FoxIO-LLC/ja4/blob/main/technical_details/JA4.md) assigned to the request. This method of traffic classification is less prone to evasion techniques than JA3.
+Requires Premier Bot Manager or {{ PRODUCT }} Premier. Identifies requests by the [JA4 fingerprint](https://github.com/FoxIO-LLC/ja4/blob/main/technical_details/JA4.md) assigned to the request. This method of traffic classification is less prone to evasion techniques than JA3.
 
 ###### Request Cookies {/*request-cookies*/}
 
@@ -512,7 +522,7 @@ An operator determines how {{ PRODUCT }} will compare a match value against the 
 
 ## Exceptions {/*exceptions*/}
 
-Bot Manager Advanced allows you to exempt traffic from bot detection by URL, user agent, JA3 fingerprint, and cookie. {{ PRODUCT }} Premier customers may also exempt traffic by JA4 fingerprint. 
+Premier and Advanced Bot Manager allow you to exempt traffic from bot detection by URL, user agent, JA3 fingerprint, and cookie. Premier Bot Manager and {{ PRODUCT }} Premier customers may also exempt traffic by JA4 fingerprint. 
 
 **Key information:**
 
@@ -545,8 +555,8 @@ You may create, modify, and delete Bot Manager configurations.
 
     ![Enforcement actions](/images/v7/security/bot_manager_configuration_actions.png?width=450)
 
-    -   **Bot Manager Standard:** This version only supports browser challenges. Review and revise your browser challenge configuration as needed and then skip to step 6.
-    -   **Bot Manager Advanced:** This version supports all enforcement actions. 
+    -   **Standard Bot Manager:** This version only supports browser challenges. Review and revise your browser challenge configuration as needed and then skip to step 6.
+    -   **Premier and Advanced Bot Manager:** These versions support all enforcement actions. 
 
         <Info>
           The behavior of the alert, block, and silent close actions cannot be configured. 
@@ -571,7 +581,7 @@ You may create, modify, and delete Bot Manager configurations.
 
         2.  From the **Valid for (in seconds)** option, type the number of seconds for which our CDN will serve content to a client that solves a browser challenge without requiring an additional browser challenge to be solved. Specify a value between 1 and 1,000,000 seconds.
         3.  Serve a custom browser challenge by enabling the **Custom Browser Challenge Page** option and then setting the **Browser Challenge Page Template** option to the desired payload.
-        4.  **Bot Manager Advanced:** Increase the [difficulty of this JavaScript-based challenge](#difficulty-based) by setting the **Browser challenge level** option to `Difficulty-based` and then selecting the desired difficulty from the **Browser challenge difficulty** option. 
+        4.  **Premier and Advanced Bot Manager:** Increase the [difficulty of this JavaScript-based challenge](#difficulty-based) by setting the **Browser challenge level** option to `Difficulty-based` and then selecting the desired difficulty from the **Browser challenge difficulty** option. 
 
     **Custom Response** 
 
@@ -609,7 +619,7 @@ You may create, modify, and delete Bot Manager configurations.
 
     Set the **URL** option to the full URL to which requests will be redirected.
 
-5.  **Bot Manager Advanced:** Set up known bot and spoofed bot detection.
+5.  **Premier and Advanced Bot Manager:** Set up known bot and spoofed bot detection.
 
     1.  Click the **Known Bots** tab. 
     2.  Configure the enforcement action for known bots and traffic that spoofs them.
@@ -630,8 +640,8 @@ You may create, modify, and delete Bot Manager configurations.
 
 6.  Review the default rule(s) for identifying bots from the **Bot Rules** tab. 
 
-    -   **Bot Manager Standard:** By default, a browser challenge will be served when the request's user agent contains the word `bot`. 
-    -   **Bot Manager Advanced:** A new Bot Manager configuration contains the following two rules:
+    -   **Standard Bot Manager:** By default, a browser challenge will be served when the request's user agent contains the word `bot`. 
+    -   **Premier and Advanced Bot Manager:** A new Bot Manager configuration contains the following two rules:
         -   **Bot Score > 90:** This rule flags a request when its bot score is greater than 90. A high bot score is a good indicator that the request was submitted by a bot.
         -   **JA3 Block placeholder:** Update the placeholder value defined within this rule with the JA3 fingerprints that will be blocked. If you do not wish to block requests by JA3 fingerprint, then you should delete this rule by clicking on it and then clicking the <Image inline src="/images/v7/icons/delete-2.png" alt="Delete" /> icon.
 
@@ -676,7 +686,7 @@ You may create, modify, and delete Bot Manager configurations.
         </Info>
 
     7.  Optional. Add another rule by repeating the above steps.
-8.  **Bot Manager Advanced:** Optional. Identify traffic that will bypass bot detection.
+8.  **Premier and Advanced Bot Manager:** Optional. Identify traffic that will bypass bot detection.
 
     1.  Click the **Exceptions** tab.
     2.  Add the desired URL(s), user agent(s), JA3 fingerprint(s), JA4 fingerprint(s), and cookie(s) as [exception(s)](#exceptions).
@@ -696,9 +706,9 @@ You may create, modify, and delete Bot Manager configurations.
 3.  Make the desired changes.
 
     **Key tasks:**
-    -   Bot Manager Advanced: Add, modify, or delete an action.
-    -   Bot Manager Advanced: Set or modify the action that will be taken for all known bots, specific known bots, and spoofed bots from the **Known Bots** tab.
-    -   Bot Manager Advanced: Update your exceptions to bot detection by adding, modifying, or deleting entries from the **Exceptions** tab.
+    -   Premier and Advanced Bot Manager: Add, modify, or delete an action.
+    -   Premier and Advanced Bot Manager: Set or modify the action that will be taken for all known bots, specific known bots, and spoofed bots from the **Known Bots** tab.
+    -   Premier and Advanced Bot Manager: Update your exceptions to bot detection by adding, modifying, or deleting entries from the **Exceptions** tab.
     -   Change the [type of rule](#request-identification) from the **Rule type** option.
     -   **Custom matches only:** Delete variables and matches within a variable by clicking the <Image inline src="/images/v7/icons/remove.png" alt="Delete" /> (delete) icon.
     -   **Custom matches only:** Delete a condition by clicking **Delete Condition**.

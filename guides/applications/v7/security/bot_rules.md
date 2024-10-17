@@ -8,7 +8,7 @@ There are two versions of Bot Manager. Key differences between these versions ar
 
 -   **Bot Manager Standard:** This version is designed to mitigate basic bots by requiring a browser to solve a JavaScript-based challenge.
 -   **Bot Manager Advanced:** This version provides all of the functionality that comes with Bot Manager Standard. Additionally, it provides:
-    -   Automatic detection of known bots (e.g., search bots) and bad bots, including those that spoof good bots, through the analysis of requests and behavior. 
+    -   Automatic detection of known bots (e.g., search engine bots) and bad bots, including those that spoof good bots, through the analysis of requests and behavior. 
     -   Additional types of criteria through which you may profile an undesired bot. 
     -   Additional enforcement actions that can be applied to bot traffic. 
     -   The ability to bypass bot detection for specific traffic profiles. 
@@ -107,7 +107,7 @@ The client's response to the browser challenge determines what happens next.
 
 -   <a id="difficulty-based" />If you are using Bot Manager Advanced, you may customize the difficulty of the browser challenge by setting the **Browser challenge level** option to `Difficulty-based` and then selecting the desired difficulty level. 
 
-    -   Choose a difficulty level from 1 to 20. {{ PRODUCT }} serves our standard browser challenge when it is  set it to `0`.
+    -   Choose a difficulty level from 1 to 20. {{ PRODUCT }} serves our standard browser challenge when it is set it to `0`.
     -   Smaller levels are easier to solve, while larger levels introduce latency.
     -   The amount of latency introduced by a level varies according to the client's CPU. However, it is safe to assume that double-digit levels may take various seconds to solve. 
 
@@ -611,18 +611,22 @@ You may create, modify, and delete Bot Manager configurations.
 
 5.  **Bot Manager Advanced:** Set up known bot and spoofed bot detection.
 
-    1.  From the left-hand pane, verify that **Known Bots** is selected.
-    2.  Select whether to apply an action to all known bots, a specific bot, or to 200+ bots (**other**).
+    1.  Click the **Known Bots** tab. 
+    2.  Configure the enforcement action for known bots and traffic that spoofs them.
 
-        <Callout type="info">
+        1.  Select the desired type of bot from the left hand pane. 
+        2.  From the **Default Known Bot Action** option, select the default type of enforcement action that will be applied for the current bot category.
+        3.  From the **Default Spoof Bot Action** option, select the default type of enforcement action that will be applied to traffic that spoofs the current bot category.
 
-          Toggle **other** to apply an action to 200+ known bots. This option excludes the bots listed above it.
+        4.  From the **Action Overrides** section, review your configuration and override it as needed.
 
-        </Callout>
-
-    3.  From the **Actions** column, select the action that will be applied to each known bot that was enabled in the previous step.
-    4.  From the **Spoof Actions** column, select the action that will be applied to requests that spoof each known bot that was enabled in step 5.ii.
-    5.  Repeat steps ii - iv as needed.
+            1.  Override a bot token's enforcement action by selecting a different enforcement action from the **Action** column.
+            2.  Override the enforcement action for traffic that spoofs a specific bot by selecting a different enforcement action from the **Spoof Bot** column.
+            
+            <Info>
+              Certain bot categories contain an `other` entry. This entry represents a collection of lesser-known bots.
+            </Info>
+        5.  Repeat the above steps for each bot category.
 
 6.  Review the default rule(s) for identifying bots from the **Bot Rules** tab. 
 
@@ -631,7 +635,7 @@ You may create, modify, and delete Bot Manager configurations.
         -   **Bot Score > 90:** This rule flags a request when its bot score is greater than 90. A high bot score is a good indicator that the request was submitted by a bot.
         -   **JA3 Block placeholder:** Update the placeholder value defined within this rule with the JA3 fingerprints that will be blocked. If you do not wish to block requests by JA3 fingerprint, then you should delete this rule by clicking on it and then clicking the <Image inline src="/images/v7/icons/delete-2.png" alt="Delete" /> icon.
 
-6.  Optional. Create rules for identifying bots from the **Bot Rules** tab. A rule is satisfied when a match is found for each of its conditions.
+7.  Optional. Create rules for identifying bots from the **Bot Rules** tab. A rule is satisfied when a match is found for each of its conditions.
 
     1.  Click **+ New Rule**. 
     2.  In the **Rule message** option, type a brief description for this rule.
@@ -672,7 +676,7 @@ You may create, modify, and delete Bot Manager configurations.
         </Info>
 
     7.  Optional. Add another rule by repeating the above steps.
-7.  **Bot Manager Advanced:** Optional. Identify traffic that will bypass bot detection.
+8.  **Bot Manager Advanced:** Optional. Identify traffic that will bypass bot detection.
 
     1.  Click the **Exceptions** tab.
     2.  Add the desired URL(s), user agent(s), JA3 fingerprint(s), JA4 fingerprint(s), and cookie(s) as [exception(s)](#exceptions).
@@ -683,7 +687,7 @@ You may create, modify, and delete Bot Manager configurations.
 
         </Callout>
 
-8.  Click **Save**.
+9.  Click **Save**.
 
 **To modify a Bot Manager configuration**
 1.  Navigate to the **Bot Manager** page.

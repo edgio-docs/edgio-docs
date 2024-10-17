@@ -236,15 +236,16 @@ You may create, modify, and delete managed rules.
 1.  Navigate to the **Managed Rules** page.
     {{ SECURITY_NAV }} **Managed Rules**.
 2.  Click **+ New Managed Ruleset**.
-3.  <a id="create-name" />In the **Name** option, type the unique name by which this managed rule will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
-4.  Optional. In the **Response Header Name** option, set the name of the response header that will be included with blocked requests. This name may only consist of alphanumeric characters and dashes.
-5.  Determine whether {{ PRODUCT }} will [ignore specific cookies, request headers, or query string arguments](#preventing-false-positives-ignore-list) when assessing whether a request is a threat.
+3.  Optional. Allow {{ PRODUCT }} to autotune your managed rule using machine-learning models by toggling the **Autotune** option. Autotuning is only meant to be used for managed rules running in [audit mode](/applications/security/security_applications#threat-detection-mode). 
+4.  <a id="create-name" />In the **Name** option, type the unique name by which this managed rule will be identified. This name should be sufficiently descriptive to identify it when setting up a Security Application configuration.
+5.  Optional. In the **Response Header Name** option, set the name of the response header that will be included with blocked requests. This name may only consist of alphanumeric characters and dashes.
+6.  Determine whether {{ PRODUCT }} will [ignore specific cookies, request headers, or query string arguments](#preventing-false-positives-ignore-list) when assessing whether a request is a threat.
     1.  Add a cookie, request header, or query string argument that should be ignored by typing it within the **Ignore Cookies**, **Ignore Header**, or the **Ignore Query Arguments** option and then pressing `ENTER`.
     2.  Repeat the above step for each cookie, request header, or query string argument that {{ PRODUCT }} should ignore.
-6.  **Advanced Users Only**
+7.  **Advanced Users Only**
 
     Customize [query string limits](#file-size-and-query-string-limits-advanced) by expanding **More Details** and then making the necessary adjustments.
-7.  Enable the desired threat detection rules and define the threat identification threshold.
+8.  Enable the desired threat detection rules and define the threat identification threshold.
     1.  Click the **Inbound Policies** tab. By default, this managed rule will use the latest rule set. 
     
     2.  Optional. Assign a rule set by disabling the **Automatically opt-in to the latest ruleset** option and then selecting the desired rule set from the **Ruleset ERS** option. The list of policies shown below this section will be automatically refreshed to reflect the selected rule set.
@@ -273,8 +274,8 @@ You may create, modify, and delete managed rules.
 
     4.  Review all enabled policies and rules to ensure that the legitimate traffic is not targeted by mistake.
 
-8.  {{ PRODUCT_SECURITY }} Premier only. Optional. Prevent data leakage in the response sent to the client by clicking the **Outbound Policies** tab and then enabling the desired outbound rules.
-9.  <a id="create-rule-exception" />Optional. Define the type of requests for which specific rules will be ignored.
+9.  {{ PRODUCT_SECURITY }} Premier only. Optional. Prevent data leakage in the response sent to the client by clicking the **Outbound Policies** tab and then enabling the desired outbound rules.
+10. <a id="create-rule-exception" />Optional. Define the type of requests for which specific rules will be ignored.
     1.  Click the **Exceptions** tab.
     2.  Click **+ Add New Condition**.
     3.  From the **Parameter** option, select whether requests will be identified by argument (i.e., query string argument or request body parameter), cookie, or request header.
@@ -283,7 +284,7 @@ You may create, modify, and delete managed rules.
         -   A regular expression pattern for the query string argument / request body parameter, cookie, or request header by which requests will be identified. Mark the **Regex?** option to indicate that the specified value should be interpreted as a regular expression.
     5.  In the **Applied Rule ID's** option, type the ID for a rule that will be ignored when processing the requests
         identified in steps 9.iii and 9.iv and then press `ENTER`. Repeat this step as needed.
-10.  Click **Save**.
+11. Click **Save**.
 
 <Callout type="important">
 

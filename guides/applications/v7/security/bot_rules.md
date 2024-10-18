@@ -260,7 +260,7 @@ Skips either known bot or spoofed bot detection. This enforcement action is only
 -   {{ PRODUCT }} can continue to [screen requests](/applications/security/waf#threat-detection) that skip known bot or spoofed bot screening. 
 -   A request can be flagged as a bot through bot rules regardless of whether this enforcement action is applied to a request. This means that it is possible for a bot rule's enforcement action to be applied to a request instead of this enforcement action.
 
-    [View Bot Rules screening workflow.](#bot-manager-advanced)
+    [View Bot Manager screening workflow.](#bot-manager-advanced)
 
 ### reCAPTCHA {/*recaptcha*/}
 

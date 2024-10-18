@@ -1,12 +1,12 @@
 title: Known Bot Object
 type: object
-description: Contains the set of known bots that Edgio may automatically detect and the enforcement action that may be applied to them.
+description: Contains a category's bot tokens and their enforcement action configuration.
 properties:
   action_type:
     type: string
     description: |
 
-      The type of enforcement action that will be applied to a known bot. 
+      A known bot's enforcement action. 
 
       <a href="https://docs.edg.io/guides/security/bot_rules#actions" target="_blank">Learn more about enforcement actions.</a>
 
@@ -23,7 +23,7 @@ properties:
     type: string
     description: |
 
-      The type of enforcement action that will be applied when a attempt to spoof this bot type is found.
+      The enforcement action for requests that spoof a known bot. 
 
       <a href="https://docs.edg.io/guides/security/bot_rules#actions" target="_blank">Learn more about enforcement actions.</a>
 
@@ -41,7 +41,7 @@ properties:
     type: string
 
   strict_match:
-    description: Determines whether an additional check is required to categorize traffic as spoofed. If disabled, requests that originate from the known bot's ASN will not be considered to be spoofed traffic.
+    description: Determines whether an additional check is required to flag traffic as spoofed. If disabled, requests that originate from the known bot's ASN will not be flagged as spoofed traffic.
     type: boolean
 
 required:

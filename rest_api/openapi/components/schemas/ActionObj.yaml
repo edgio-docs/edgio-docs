@@ -16,3 +16,5 @@ properties:
     $ref: ./RecaptchaAction.yaml
   SILENT_CLOSE:
     $ref: ./SilentClose.yaml
+  IGNORE:
+    $ref: ./IgnoreAction.yaml

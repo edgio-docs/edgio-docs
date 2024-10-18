@@ -14,7 +14,7 @@ There are three versions of Bot Manager. Key differences between these versions 
     -   The ability to bypass bot detection for specific traffic profiles. 
     -   Actionable near real-time data on detected bots through which you may fine-tune your configuration to reduce false positives.
 -   **Premier Bot Manager:** This version provides all of the functionality that comes with Advanced and Standard Bot Manager. Additionally, it provides:
-    -   Automatic bot detection using dedicated machine learning models tailored to your traffic profile. These models establish a baseline for normal website behavior and then compare all requests to this traffic pattern. <!--    -   Improved unknown bot detection and classification.-->
+    -   Automatic bot detection using dedicated machine learning models tailored to your traffic profile. These models establish a baseline for normal website behavior and then they compare all requests to this traffic pattern. <!--    -   Improved unknown bot detection and classification.-->
     -   Bot detection through JA4 signatures.
 
 <Callout type="info">
@@ -33,7 +33,7 @@ Standard Bot Manager requires a client (e.g., a web browser) to solve a JavaScri
 
 ### Premier and Advanced Bot Manager {/*bot-manager-advanced*/}
 
-Premier and Advanced Bot Manager inspects each request to determine whether it is bot traffic.
+Premier and Advanced Bot Manager inspect each request to determine whether it is bot traffic.
 
 1.  Does the request match an exception? [Exceptions](#exceptions) identify trafic that should bypass bot detection.
 2.  Does the request match a rule?  A rule defines the criteria that our service will use to identify bot traffic.
@@ -51,7 +51,7 @@ Premier and Advanced Bot Manager inspects each request to determine whether it i
 
         </Callout>
 
-    -   The JA3 or JA4 (requires {{ PRODUCT }} Premier) fingerprint assigned to the request. Fingerprints allow us to classify traffic.
+    -   The JA3 or JA4 (requires Premier Bot Manager or {{ PRODUCT }} Premier) fingerprint assigned to the request. Fingerprints allow us to classify traffic.
 
 3.  Does the request match a known good bot (e.g., search bot)?
 4.  Does the request spoof a known good bot?
@@ -252,9 +252,15 @@ Returns a custom response.
 
 ### Ignore {/*ignore*/}
 
-Skips Bot Rules screening. This enforcement action is only available when setting up known bot detection.
+Skips either known bot or spoofed bot detection. This enforcement action is only available when [setting up known bot detection](#known-bot-detection-setup).
 
-{{ PRODUCT }} can continue to [screen requests](/applications/security/waf#threat-detection) that skip Bot Rules screening. 
+**Key information:**
+
+-   Requires Premier Bot Manager, Advanced Bot Manager, {{ PRODUCT }} Premier, or {{ PRODUCT }} Enterprise.
+-   {{ PRODUCT }} can continue to [screen requests](/applications/security/waf#threat-detection) that skip known bot or spoofed bot screening. 
+-   A request can be flagged as a bot through bot rules regardless of whether this enforcement action is applied to a request. This means that it is possible for a bot rule's enforcement action to be applied to a request instead of this enforcement action.
+
+    [View Bot Manager screening workflow.](#bot-manager-advanced)
 
 ### reCAPTCHA {/*recaptcha*/}
 
@@ -619,7 +625,7 @@ You may create, modify, and delete Bot Manager configurations.
 
     Set the **URL** option to the full URL to which requests will be redirected.
 
-5.  **Premier and Advanced Bot Manager:** Set up known bot and spoofed bot detection.
+5.  <a id="known-bot-detection-setup" />**Premier and Advanced Bot Manager:** Set up known bot and spoofed bot detection.
 
     1.  Click the **Known Bots** tab. 
     2.  Configure the enforcement action for known bots and traffic that spoofs them.

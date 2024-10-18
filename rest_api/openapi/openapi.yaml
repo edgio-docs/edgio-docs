@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Edgio REST API
-  version: 0.5.0
+  version: 0.6.0
   x-logo:
     url: 'https://docs.edg.io/_next/static/media/edgio-dark.ea0d686f.webp'
     backgroundColor: '#FFFFFF'

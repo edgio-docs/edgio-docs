@@ -1,0 +1,53 @@
+title: Known Bot Category Object
+type: object
+description: Contains a list of known bot categories and their configuration. 
+properties:
+  action_type:
+    type: string
+    description: |
+
+      The default enforcement action for this category's known bots. Edgio uses this enforcement action whenever a bot token, whose configuration may be defined under the `companies` array, has not been assigned an enforcement action.
+
+      <a href="https://docs.edg.io/guides/security/bot_rules#actions" target="_blank">Learn more about enforcement actions.</a>
+
+    enum:
+      - ALERT
+      - BLOCK_REQUEST
+      - CUSTOM_RESPONSE
+      - BROWSER_CHALLENGE
+      - REDIRECT_302
+      - RECAPTCHA
+      - SILENT_CLOSE
+      - IGNORE
+
+  spoof_action_type:
+    type: string
+    description: |
+
+      The default enforcement action for requests that spoof this category's known bots. Edgio uses this enforcement action whenever a bot token, whose configuration may be defined under the `companies` array, has not been assigned an enforcement action for spoofed requests.
+
+      <a href="https://docs.edg.io/guides/security/bot_rules#actions" target="_blank">Learn more about enforcement actions.</a>
+
+    enum:
+      - ALERT
+      - BLOCK_REQUEST
+      - CUSTOM_RESPONSE
+      - BROWSER_CHALLENGE
+      - REDIRECT_302
+      - RECAPTCHA
+      - SILENT_CLOSE
+      - IGNORE
+
+  category:
+    description: The type of bot.
+    type: string
+
+  companies:
+    description: Contains a category's bot tokens and the enforcement action that will be applied to it and traffic that spoofs it. 
+    type: array
+    items:
+      $ref: ./KnownBotObj.yaml
+
+required:
+  - action_type
+  - category

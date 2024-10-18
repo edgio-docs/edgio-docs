@@ -45,10 +45,16 @@ properties:
       type: string
   inspect_known_bots:
     type: boolean
-    description: Determines whether Edgio will automatically detect the known bots defined within the `known_bots` array.
+    description: Determines whether Edgio will automatically detect the known bots defined within the `categories` array. If `categories` is not present, then this property will be applied to the `known_bots` array.
+  categories:
+    type: array
+    description: Contains a list of known bot categories. Each category contains a list of known bots that can be automatically detected by Edgio and a configuration that determines how known bot and spoofed bot traffic will be handled.
+    items:
+      $ref: ./KnownBotCatObj.yaml
   known_bots:
     type: array
-    description: Contains the set of known bots that Edgio may automatically detect and the enforcement action that may be applied to them.
+    description: Use `categories` instead. This property will be ignored when `categories` is present. Contains the set of known bots that Edgio may automatically detect and the enforcement action that may be applied to them.
+    deprecated: true
     items:
       $ref: ./KnownBotObj.yaml
   customer_id:

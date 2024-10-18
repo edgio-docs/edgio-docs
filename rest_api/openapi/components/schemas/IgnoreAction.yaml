@@ -1,0 +1,15 @@
+title: Ignore Action
+type: object
+description: Skips known bot or spoofed bot detection. Edgio can continue screening these requests through additional security layers (e.g., custom rules or managed rules).
+properties:
+  id:
+    type: string
+    description: The enforcement action's system-defined ID.
+  name:
+    type: string
+    description: The enforcement action's name.
+  enf_type:
+    type: string
+    description: The type of enforcement action. 
+    enum:
+      - IGNORE

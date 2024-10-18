@@ -4,7 +4,7 @@ title: Bot Manager
 
 Bot Manager is designed to mitigate undesired bot traffic and prevent them from performing undesired or malicious activity, such as scraping your site, carding, taking over accounts through credential stuffing, spamming your forms, launching DDoS attacks, and committing ad fraud.
 
-There are two versions of Bot Manager. Key differences between these versions are highlighted below.
+There are three versions of Bot Manager. Key differences between these versions are highlighted below.
 
 -   **Standard Bot Manager:** This version is designed to mitigate basic bots by requiring a browser to solve a JavaScript-based challenge.
 -   **Advanced Bot Manager:** This version provides all of the functionality that comes with Standard Bot Manager. Additionally, it provides:

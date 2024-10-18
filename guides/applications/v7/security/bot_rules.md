@@ -252,12 +252,15 @@ Returns a custom response.
 
 ### Ignore {/*ignore*/}
 
-Skips known bot or spoofed bot detection. This enforcement action is only available when setting up known bot detection.
+Skips either known bot or spoofed bot detection. This enforcement action is only available when [setting up known bot detection](#known-bot-detection-setup).
 
 **Key information:**
 
+-   Requires Premier Bot Manager, Advanced Bot Manager, {{ PRODUCT }} Premier, or {{ PRODUCT }} Enterprise.
 -   {{ PRODUCT }} can continue to [screen requests](/applications/security/waf#threat-detection) that skip known bot or spoofed bot screening. 
--   A request can be flagged as a bot through bot rules regardless of whether this enforcement action is assigned to a known bot or a spoofed bot. 
+-   A request can be flagged as a bot through bot rules regardless of whether this enforcement action is applied to a request. This means that it is possible for a bot rule's enforcement action to be applied to a request instead of this enforcement action.
+
+    [View Bot Rules screening workflow.](#bot-manager-advanced)
 
 ### reCAPTCHA {/*recaptcha*/}
 
@@ -622,7 +625,7 @@ You may create, modify, and delete Bot Manager configurations.
 
     Set the **URL** option to the full URL to which requests will be redirected.
 
-5.  **Premier and Advanced Bot Manager:** Set up known bot and spoofed bot detection.
+5.  <a id="known-bot-detection-setup" />**Premier and Advanced Bot Manager:** Set up known bot and spoofed bot detection.
 
     1.  Click the **Known Bots** tab. 
     2.  Configure the enforcement action for known bots and traffic that spoofs them.

@@ -60,7 +60,7 @@ tags:
     x-displayName: Organizations
     description: Automate organization management.
   - name: members
-    x-displayName: Organization Members
+    x-displayName: Members
     description: |
 
       Automate an organization's membership including the role assigned to each member.
@@ -803,6 +803,7 @@ x-tagGroups:
   - name: Organizations
     tags:
       - organizations
+      - members
   - name: Properties
     tags:
       - properties

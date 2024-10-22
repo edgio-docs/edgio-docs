@@ -1,0 +1,96 @@
+type: object
+properties:
+  name:
+    type: string
+    description: The organization's name.
+  partner_id:
+    type: string
+    description: >-
+      The system-defined ID for the partner under which this organization will
+      be created.
+  tier:
+    type: string
+    description: The organization's tier.
+    enum:
+      - free
+      - professional
+      - enterprise
+      - premier
+    example: professional
+  limit_max_environments:
+    type: integer
+    format: int32
+    description: The organization's limit on the number of environments.
+    minimum: 1
+  mtls_enabled:
+    type: boolean
+    description: The organization's availibility of the mTLS feature.
+  edge_functions_enabled:
+    type: boolean
+    description: The organization's availibility of the Edge Functions feature.
+  features:
+    type: array
+    description: The organization's internal service level settings.
+    items:
+      type: object
+      properties:
+        feature_code:
+          type: string
+          description: The organization's feature code to configure
+          enum:
+            - app/waf
+            - app/bot-security
+            - app/api-security
+            - app/client-waf
+        params:
+          type: object
+          properties:
+            tier:
+              type: string
+              description: The feature code tier to configure
+              enum:
+                - basic
+                - advanced
+                - standard
+            quantity:
+              type: integer
+              format: int32
+              description: The feature code quantity to configure
+              minimum: 1
+              maximum: 98
+          required:
+            - tier
+            - quantity
+      required:
+        - feature_code
+        - params
+    example:
+      - feature_code: app/bot-security
+        params:
+          tier: basic
+          quantity: 2
+      - feature_code: app/api-security
+        params:
+          tier: standard
+          quantity: 2
+  asm_enabled:
+    type: boolean
+    description: The organization's availibility of the ASM feature.
+  asm_show_by_default:
+    type: boolean
+    description: The organization's setting to show ASM by default.
+  asm_seed_validation:
+    type: string
+    description: The organization's ASM seed values.
+  asm_collection_limit:
+    type: integer
+    format: int32
+    description: The organization's upper limit on ASM collections.
+  asm_asset_limit:
+    type: integer
+    format: int32
+    description: The organization's maximum limit on ASM  assets.
+  asm_allow_edgio_ips:
+    type: boolean
+    description: The organization's setting to allow ASM be accessed by Edgio IPs.
+description: Updates an organization.

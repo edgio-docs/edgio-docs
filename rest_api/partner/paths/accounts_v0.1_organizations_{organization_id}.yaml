@@ -1,20 +1,15 @@
 delete:
-  summary: Delete Partner Member
-  description: Deletes a partner's member.
+  summary: Delete Organization
+  description: Deletes an organization.
   parameters:
     - in: path
-      name: partner_id
+      name: organization_id
       description: >
-        The partner's system-defined ID.
+        The organization's system-defined ID.
 
 
-        From the Edgio Console, navigate to the desired partner and then click
-        **Settings**. It is listed under **Partner ID**.
-      required: true
-      schema:
-        type: string
-    - in: path
-      name: member_id
+        From the Edgio Console, navigate to the desired organization and then
+        click **Settings**. It is listed under **Organization ID**.
       required: true
       schema:
         type: string
@@ -64,25 +59,20 @@ delete:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
   tags:
-    - partner-members
-  operationId: deleteAccountsV01PartnersPartnerIdMembersMemberId
+    - organizations
+  operationId: deleteAccountsV01OrganizationsOrganizationId
 patch:
-  summary: Update Partner Member
-  description: Updates a partner's member.
+  summary: Update Organization
+  description: Updates an organization.
   parameters:
     - in: path
-      name: partner_id
+      name: organization_id
       description: >
-        The partner's system-defined ID.
+        The organization's system-defined ID.
 
 
-        From the Edgio Console, navigate to the desired partner and then click
-        **Settings**. It is listed under **Partner ID**.
-      required: true
-      schema:
-        type: string
-    - in: path
-      name: member_id
+        From the Edgio Console, navigate to the desired organization and then
+        click **Settings**. It is listed under **Organization ID**.
       required: true
       schema:
         type: string
@@ -91,7 +81,7 @@ patch:
       application/json:
         schema:
           $ref: >-
-            ../components/schemas/patchAccountsV01PartnersPartnerIdMembersMemberId.yaml
+            ../components/schemas/patchAccountsV01OrganizationsOrganizationId.yaml
     required: true
   security:
     - accountsScope:
@@ -102,7 +92,7 @@ patch:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/Accounts_V1_Entities_Partner_Member.yaml
+            $ref: ../components/schemas/Accounts_V1_Entities_Organization.yaml
     '400':
       description: Bad Request
       content:
@@ -143,25 +133,20 @@ patch:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
   tags:
-    - partner-members
-  operationId: patchAccountsV01PartnersPartnerIdMembersMemberId
+    - organizations
+  operationId: patchAccountsV01OrganizationsOrganizationId
 get:
-  summary: Get Partner Member
-  description: Retrieves information about a partner's member.
+  summary: Get Organization
+  description: Retrieves information about an organization.
   parameters:
     - in: path
-      name: partner_id
+      name: organization_id
       description: >
-        The partner's system-defined ID.
+        The organization's system-defined ID.
 
 
-        From the Edgio Console, navigate to the desired partner and then click
-        **Settings**. It is listed under **Partner ID**.
-      required: true
-      schema:
-        type: string
-    - in: path
-      name: member_id
+        From the Edgio Console, navigate to the desired organization and then
+        click **Settings**. It is listed under **Organization ID**.
       required: true
       schema:
         type: string
@@ -174,7 +159,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/Accounts_V1_Entities_Partner_Member.yaml
+            $ref: ../components/schemas/Accounts_V1_Entities_Organization.yaml
     '400':
       description: Bad Request
       content:
@@ -215,5 +200,5 @@ get:
           schema:
             $ref: ../components/schemas/BaseApi_Entities_Error_ServerError.yaml
   tags:
-    - partner-members
-  operationId: getAccountsV01PartnersPartnerIdMembersMemberId
+    - organizations
+  operationId: getAccountsV01OrganizationsOrganizationId

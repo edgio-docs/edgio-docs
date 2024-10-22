@@ -15,9 +15,9 @@ properties:
   items:
     type: array
     items:
-      $ref: ./Accounts_V1_Entities_Member.yaml
-    description: List of users.
+      $ref: ./Accounts_V1_Entities_Organization.yaml
+    description: List of organizations.
 required:
   - '@type'
   - '@id'
-description: Accounts_V1_Entities_Member_Collection model
+description: Accounts_V1_Entities_Organization_Collection model
